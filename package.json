@@ -2,6 +2,7 @@
   "name": "nexus-rpg",
   "version": "0.0.0",
   "private": true,
+  "homepage": "http://BeskarDev.github.io/nexus-rpg",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
