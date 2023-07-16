@@ -28,3 +28,10 @@
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
+
+@media only screen and (max-device-height: 640px) 
+                   and (orientation: landscape) {
+                    .navbar.navbar--fixed-top {
+                      height: 6rem;
+                    }
+}

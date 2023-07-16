@@ -39,10 +39,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -80,6 +76,48 @@ const config = {
             sidebarId: 'basicRulesSidebar',
             position: 'left',
             label: '🎲 Basic Rules',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'adventurerSidebar',
+            position: 'left',
+            label: '👳‍♂️ Adventurers',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'statisticsSidebar',
+            position: 'left',
+            label: '📊 Statistics',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'equipmentSidebar',
+            position: 'left',
+            label: '🛡️ Equipment',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'combatSidebar',
+            position: 'left',
+            label: '⚔ Combat',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'sceneSidebar',
+            position: 'left',
+            label: '⏳ Scenes',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'magicSidebar',
+            position: 'left',
+            label: '🧙‍♂️ Magic',
+          },
+          {
+            type: 'docSidebar',
+            sidebarId: 'creatureSidebar',
+            position: 'left',
+            label: '🐲 Creatures',
           },
           {
             href: 'https://github.com/BeskarDev/nexus-rpg',
