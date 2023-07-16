@@ -88,7 +88,3 @@ Using this rule enforces a wider spread of XP in many different skills without h
 > 
 
 Your spend XP in a skill determine how many talents you can learn for that skill (2 XP per talent rank). Choose any number of talents with a total XP cost up to the amount of spend XP in your skill and that are of equal or lower rank than your skill. Talents can be learned immediately during your training time when spending the XP for a skill. You can also hold onto your spend XP in a skill when you are saving up for a talent. You must first learn a lower rank of a talent before acquiring its next higher rank.
-
-### Prestige Paths (TODO)
-
-Prestige Paths are a way for adventurers to specialise even further in their choice of Skill Talents. Each Prestige Path requires two skills at higher ranks for adventurers to be able to spend XP on their Talents.

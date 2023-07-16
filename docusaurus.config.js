@@ -51,6 +51,18 @@ const config = {
     ],
   ],
 
+  themes: [
+    [
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      ({
+        hashed: true,
+        language: ["en"],
+      }),
+    ],
+  ],
+
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -65,15 +77,9 @@ const config = {
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {
-            type: 'docSidebar',
             sidebarId: 'basicRulesSidebar',
             position: 'left',
-            label: 'Basic Rules',
+            label: '🎲 Basic Rules',
           },
           {
             href: 'https://github.com/BeskarDev/nexus-rpg',
@@ -86,7 +92,19 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      zoom: {
+        selector: '.markdown :not(em) > img',
+        config: {
+          // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
+          background: {
+            light: 'rgb(255, 255, 255)',
+            dark: 'rgb(50, 50, 50)'
+          }
+        }
+      }
     }),
+
+    plugins: [require.resolve("docusaurus-plugin-image-zoom")]
 };
 
 module.exports = config;
