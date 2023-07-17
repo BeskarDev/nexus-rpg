@@ -76,9 +76,17 @@ When you or one of your allies act on an answer you got from spending Discovery,
 
 ### Boons and Banes
 
-Whenever an effect asks you to “gain a boon” or “suffer a bane”, add another 1d6 to your roll. If you would add both boons and banes to a roll, cancel them out one by one before rolling.
+Whenever you're instructed to “gain a boon” or “suffer a bane” in an effect, roll an additional 1d6 to your dice roll. If you're required to add both boons and banes, only roll extra d6s based on the difference between the two.
 
 If you roll with boons, pick the highest result among the d6 for your roll and add it to your Attribute Die. Rolling with banes forces you to take the lowest result instead.
+
+> Examples:
+- Roll with +1 boon → You roll your Attribute Die + 2d6 (take the highest d6) + Skill Rank.
+- Roll with +1 bane → You roll your Attribute Die + 2d6 (take the lowest d6) + Skill Rank.
+- Roll with +1 boon and +1 bane → You roll your Attribute Die + 1d6 (boon and bane cancel each other out) + Skill Rank.
+- Roll with +2 boons and +1 bane → You roll your Attribute Die + 2d6 (only one boon remains, take the highest d6) + Skill Rank.
+- Roll with +1 boons and +2 bane → You roll your Attribute Die + 2d6 (only one bane remains, take the lowest d6) + Skill Rank.
+>
 
 ### Rolling for Untrained Skills
 

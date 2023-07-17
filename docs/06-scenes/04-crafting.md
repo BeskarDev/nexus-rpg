@@ -41,7 +41,9 @@ Depending on how you roll, your crafting attempt will have different outcomes.
 
 **Blunder.** You create the item for 3/4 it’s cost and in 2 x the normal amount of time.
 
-> For calculating an increase or decrease in time required to craft an item, treat the item’s cost as twice or half as high. Then compare that value to how much cost you can cover per week.
-
-If you would have to interrupt your crafting, because you don’t have enough coins to pay for the process or it took longer than anticipated, you can interrupt your work and continue later on. When doing so, you don’t roll Crafting again, but must fulfil the original roll’s outcome. Until then, the item is unusable for it’s intended purpose.
 >
+>For calculating an increase or decrease in time required to craft an item, treat the item’s cost as twice or half as high. Then compare that value to how much cost you can cover per week.
+>
+>If you completed the item faster than anticipated, you can use any amount of weeks you saved for other downtime activities.
+>
+>If you would have to interrupt your crafting because you don’t have enough coins to pay for the process or it took longer than anticipated, you can interrupt your work and continue later on. When doing so, you don’t roll Crafting again, but must fulfil the original roll’s outcome. Until then, the item is unusable for it’s intended purpose.

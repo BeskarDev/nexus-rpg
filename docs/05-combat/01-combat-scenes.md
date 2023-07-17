@@ -18,7 +18,7 @@ If you attempt to surprise your enemies at the start of combat, each participati
 
 **Getting Surprised**
 
-If enemies try to surprise the adventurers on the other hand, each of the enemies has to roll Agility + Cunning against each of the adventurers’ Resist. An adventurer is considered hidden from all enemies they succeeded against.
+If enemies try to surprise the adventurers on the other hand, each of the enemies has to roll Agility + Cunning against each of the adventurers’ Resist. An enemy is considered hidden from all adventurers they succeeded against.
 
 ### Initiative
 
