@@ -59,7 +59,7 @@ When you miss your target when throwing an alchemical item that has some area ef
 
 On a successful attack, you deal damage to the enemy. 
 
-- Your base damage is equal to half of the attribute you rolled your attack with. Per default, this is 1/2 Strength for melee weapons, 1/2 Agility for ranged weapons, 1/2 Spirit für mystic spells, and 1/2 Mind for arcane spells.
+- Your base damage is equal to half of the attribute you rolled your attack with. Per default, this is 1/2 Strength for melee weapons, 1/2 Agility for ranged weapons, 1/2 Spirit for mystic spells, and 1/2 Mind for arcane spells.
 - You add extra damage from your weapon or spell, plus any extra damage from abilities or other effects.
 - The total amount of damage is then reduced by the enemy’s Armor Value (AV). Your damage can’t be reduced below 1.
 
