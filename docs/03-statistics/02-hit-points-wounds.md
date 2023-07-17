@@ -64,7 +64,7 @@ Non-lethal attacks inflict two Fatigue. You also suffer varying amounts of Fatig
 
 During a night‘s rest, you remove two Fatigue. If you have a bad night, instead only remove one Fatigue.
 
-> When suffering an Injury or Fatigue, mark one of your Wounds on your Adventurer Sheet with a ○ ****for an Injury. A ╱ marks your first Fatigue for a Wound. Add a ╲ for a second Fatigue of a Wound into the same Wound mark, so that both Fatigue together show a ╳.
+> When suffering an Injury or Fatigue, mark one of your Wounds on your Adventurer Sheet with a ○ for an Injury. A ╱ marks your first Fatigue for a Wound. Add a ╲ for a second Fatigue of a Wound into the same Wound mark, so that both Fatigue together show a ╳.
 
 If you first suffer one Fatigue and then one Injury, the Wound from the Injury counts as your first Wound, even if you suffer a second Fatigue later, and thus also suffering another Wound from having two Fatigue.
 > 
