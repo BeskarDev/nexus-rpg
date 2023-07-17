@@ -56,12 +56,12 @@ Each companion also gains additional attacks, abilities, or other modifiers base
 
 ### Example Animal Types
 
-******Dog (Tier 1)******
+**Dog (Tier 1)**
 
 - **Animal Scent.** This creature gains +1 boon on Perception rolls based on smell.
 - **Overpowering Bite.** On a strong or critical success for this creature’s attacks, attempts to grapple the target.
 
-******Cat (Tier 1)******
+**Cat (Tier 1)**
 
 - **Night Vision.** This creature can see up to a short distance in dim light as in bright light. Sources of dim light let it see one range category further than normal.
 - **Cat’s Grace.** Increase the Agility of this creature by one step (this also add +1 Dodge). This creature can use Agility for it’s attack rolls. When this creature would take falling damage, treat it’s distance as one category lower.
