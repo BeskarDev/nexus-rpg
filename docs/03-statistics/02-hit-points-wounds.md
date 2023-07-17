@@ -48,11 +48,11 @@ Whenever you take an Injury…
 - and the damage is equal to or higher than your max HP —> suffer +1 Injury
 - and the damage is equal to or higher than twice your max HP —> suffer +2 Injuries
 
-**********************Treating Injuries**********************
+**Treating Injuries**
 
 During a night‘s rest, you can attempt to treat one of your Injuries. Make a Supply check for your materials and roll Mind + Nature. On a success, the Injury is treated and you no longer suffer it‘s negative effect. The Injury re-opens when you are reduced to 0 HP again.
 
-********************************Healing Injuries********************************
+**Healing Injuries**
 
 You can permanently remove a treated Injury by succeeding on a hard Strength + Fortitude roll during another night‘s rest or during downtime (see Downtime Activities for more detail).
 

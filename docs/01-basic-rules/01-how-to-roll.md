@@ -99,7 +99,7 @@ Some abilities allow you to re-roll certain tests. When choosing to do so, you m
 
 ## Dice Checks
 
-Dice Checks are all dice rolls, which aren’t considered skill tests and are referenced as “checks” in the rules. Dice Checks normally include a single die against a static TN.
+Dice Checks are all dice rolls which aren’t considered skill tests and are referenced as “checks” in the rules. Dice Checks normally include a single die against a static TN.
 
 For example, you must succeed on a Durability check when your weapon is about to be damaged. You roll your weapons durability die (d6 for a mundane weapon). On a 3+, your weapon doesn’t get damaged.
 
