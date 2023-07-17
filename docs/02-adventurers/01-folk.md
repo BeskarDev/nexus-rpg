@@ -8,7 +8,7 @@ During adventurer creation, choose one of these Folks for your adventurer to be.
 
 ## The Old Folk
 
-The Old Folk consist of those species, that have a cultural history spanning thousands of years. Any of them have been through great achievements, wealth, but also tragedy and catastrophe. 
+The Old Folk consist of those species that have a cultural history spanning thousands of years. Any of them have been through great achievements, wealth, but also tragedy and catastrophe. 
 
 ### Dwarf
 
