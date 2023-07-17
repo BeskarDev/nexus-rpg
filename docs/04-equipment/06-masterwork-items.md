@@ -33,7 +33,7 @@ When a craftsman creates a masterwork item, they can choose one of the following
 3. **Spiked.** This shield deals +1 weapon damage.
 4. **Sturdy.** Using Combat Arts to bash or shove with this shield impose +1 bane on the target’s roll against the effect.
 
-## Spell Focus Masterwork Properties
+## Spell Talisman Masterwork Properties
 
 1. **Deflecting.** This Spell Focus gains +1 Parry as a property.
 2. **Glowing.** This Spell Focus can emit light with short range. When using the focus for light and you have to roll a Supply Check for light, instead roll a Durability Check for your Focus. If you fail, the item isn't damaged, but it can't emit light until the next day. 
