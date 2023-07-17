@@ -56,3 +56,4 @@ For a play group which already has played Nexus RPG for a while and doesn‘t wa
 ## Adventurer Sheet
 You can print out this sheet to record your adventurer's statistics, equipment, and connections within the game world.
 ![](./img/adventurer-sheet-p1.jpg)
+![](./img/adventurer-sheet-p2.jpg)
