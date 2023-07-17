@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## **Light**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style="min-width:400px">**Effect**</div>
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '400px'}}>**Effect**</div>
 ---|---|---|---|---|---|---
  **Dazzling Light** | 0 | 0 | vs. Dodge | Medium |  | You create a small point of light at the target location. The light provides dim light in short range of it. The light can also move with you while staying in range. When targeted at a creature, you can make the light explode in their face instead.<br />Weak. Deal +2 radiant damage.<br />Strong. Deal +4 radiant damage. The target is also briefly blinded.<br />Critical. Deal +6 radiant damage. The target is also briefly blinded and dazed. 
  **Illuminated Sight** | 0 | 0 | Moderate (8) | Self | enchant (eyes) | You concentrate light energy into your eyes, enhancing your eye sight and making you able to pierce through concealing environments.<br />On a success, you can see in dim light as in bright light. You also gain +1 boon on Spirit rolls to spot hidden or invisible creatures. This spell lasts for a medium duration. 

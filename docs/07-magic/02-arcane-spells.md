@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## **Evocation**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style="min-width:400px">**Effect**</div>
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '400px'}}>**Effect**</div>
 ---|---|---|---|---|---|---
  **Flickering Flame** | 0 | 0 | vs. Dodge | Medium |  | You create a small flame in your palm. It provides light at a close range. You can throw the flame as a projectile.<br />Weak. Deals +2 fire damage. <br />Strong. Deals +4 fire damage and the target suffers burning (2) for a short duration.<br />Critical. Deals +6 fire damage and the target suffers burning (4) for a short duration. 
  **Frost Snap** | 0 | 0 | vs. Dodge | Medium |  | By snapping your fingers, you explosively chill the air around the target.<br />Weak. You deal +2 frost damage. <br />Strong. You deal +4 frost damage and the target is briefly slowed.<br />Critical. You deal +6 frost damage and the target is briefly dazed and slowed. 
