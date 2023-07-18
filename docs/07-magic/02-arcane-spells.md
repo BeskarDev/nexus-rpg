@@ -25,7 +25,7 @@ sidebar_position: 2
 
 ## **Illusion**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Distracting Whispers** | 0 | 0 | vs. Resist | Medium |  | You whisper faint, unintelligible voices into the target&#x27;s mind, breaking their poise and distracting them.<br />Weak. Deal +0 psychic damage (ignoring AV).<br />Strong. Deal +2 psychic damage (ignoring AV) and the target is briefly distracted by the whispers. <br />Critical. Deal +4 psychic damage (ignoring AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude at the end of their turns to end the effect early. 
  **Horrific Vision** | 0 | 0 | vs. Resist | Medium |  | You conjure false visions into the target‘s mind, making them project horrific events of them or their loved ones.<br />Weak. Deal +0 psychic damage (ignoring AV).<br />Strong. Deal +2 psychic damage (ignoring AV) and the target is briefly frightened. <br />Critical. Deal +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude at the end of their turns to end the effect early. 
@@ -37,7 +37,7 @@ sidebar_position: 2
 
 ## **Conjuration**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Arcane Glyph** | 0 | 0 | Moderate (8) | Touch | ritual (minutes), singular | Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br /><br />Explosion. Roll vs. Dodge for each creature close to the glyph. On a hit, each target takes +0 (weak) / +2 (strong) / +4 (critical) blast damage.<br /><br />Alarm. A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br /><br />Spell Effect. Choose one of your other non-ritual spells targeting one or multiple creatures in no more than close range. Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br /><br />Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br />Once the condition is met, the glyph erupts with the chosen effect. 
  **Arcane Missiles** | 0 | 0 | vs. Dodge | Medium |  | Conjure one or multiple small projectiles or pure arcane energy and lunge them against a target.<br />Weak. Deal +2 blast damage.<br />Strong. Two hits that deal +2 blast damage each.<br />Critical. Three hits that deal +2 blast damage each. 
@@ -50,7 +50,7 @@ sidebar_position: 2
 
 ## **Telepathy**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Detect Magic** | 0 | 0 | Moderate (8) | Short |  | You attune your vision to the lingering auras of magical influence.<br />On a success, you detect any magical auras within range emanated by creatures, items, or other magical effects, such as illusions.<br />Weak. You briefly know the general direction of each aura during the moment when this spell is cast.<br />Strong. Same as a weak success, and you keep track of all detected auras within range for a short duration.<br />Critical. Same as a strong success, and you know magical nature, the discipline, or tradition of the detected auras. 
  **Mental Link** | 0 | 0 | vs. Resist | Medium | quick | You focus on the mind of another creature you can see within range. Cast this spell on your turn.<br />On a success, you can either send a brief message, thought, or mental image to the target, or get insight into their immediate surface thoughts and current emotions. 
@@ -63,7 +63,7 @@ sidebar_position: 2
 
 ## **Telekinetics**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Kinetic Pull** | 0 | 0 | vs. Dodge | Short |  | You telekinetically hold onto a target object or creature of medium or smaller size within range and violently pull them towards you.<br />When targeting an object held by a creature, you suffer +1 bane on the roll.<br />Weak. Pull the target up to a close distance towards you.<br />Strong. Pull the target up to a close distance towards you and they fall prone.<br />Critical. Pull the target up to a short distance towards you and they fall prone.<br />This Movement is treated the same as pushing in regards to Opportunity Attacks, larger creatures, and other effects. 
  **Kinetic Push** | 0 | 0 | vs. Dodge | Short |  | You rapidly extend your open hand forward, shooting a blast wave against the target from it.<br />Weak. Deal +2 blast damage.<br />Strong. Deal +4 blast damage and push the target close.<br />Critical. Deal +6 blast damage and push the target a short distance. 
@@ -78,7 +78,7 @@ sidebar_position: 2
 
 ## **Necromancy**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Drain Life** | 0 | 0 | vs. Resist | Medium |  | You inflict the target with a spectral necrotic energy, draining their very life force.<br />Weak. Deal +2 necrotic damage.<br />Strong. Deal +4 necrotic damage and regain +0 HP.<br />Critical. Deal +6 necrotic damage and regain +2 HP. 
  **Enfeebling Grasp** | 0 | 0 | vs. Resist | Medium |  | You summon a ghostly translucent claw, taking hold of the target and draining their strength.<br />Weak. Deal +2 necrotic damage.<br />Strong. Deal +4 necrotic damage and briefly reduce their Strength die by one step.<br />Critical. Deal +6 necrotic damage and reduce their Strength die by one step for a short duration.<br />They can roll Spirit + Fortitude at the end of their turns to end the effect early. 
