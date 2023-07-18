@@ -44,15 +44,12 @@ In between adventurers, the group can spend their XP on different aspects of the
 
 While XP has to be spend upfront, you don‘t have to spend the required time all at once. So you can train over multiple downtimes to unlock a single improvement.
 
-| Improvement | XP Cost |
+| **Improvement** | **XP Cost** |
 | --- | --- |
-| Improve Skill | 1 or more |
-| Improve Attribute to d6 | 4 |
-| Improve Attribute to d8 | 4 |
-| Improve Attribute to d10 | 6 |
-| Improve Attribute to d12 | 8 |
+| Improve Skill | 1 or more XP |
+| Improve Attribute One Step | 4 XP |
 
-### Learn New Skills
+## Learn New Skills
 
 You start the game with a number of skills you already learned based on your upbringing and background. You can learn entirely new skills during downtime by spend time and coin. At the end of that time, you learn the new skill and can improve it with XP. You can only ever learn up to 12 skills.
 
