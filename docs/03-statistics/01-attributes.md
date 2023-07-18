@@ -36,6 +36,8 @@ Different abilities and skills call for bonuses to be added depending on your at
 
 In the same adventurers can improve their skills, they can also improve their attributes with XP. Any adventurer can only ever improve one single attribute to a d12 and another second attribute to d10. The other two attributes can only ever be improved to d8 at most.
 
+Improving an attribute by one die size requires spending 4 XP and one week of downtime.
+
 ### Temporarily changing Attributes
 
 Some effects from items, abilities, or spells modify certain attributes by increasing or decreasing them by a number of steps. When doing so, derivative statistics are not affected by the changed attribute (e.g. HP, or Focus). Only the rolled dice for tests with the changed attribute, or base damage based on it are affected.
