@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# 🎒 Items & Supply
+# 🎒 Items & Encumbrance
 
-# Items
+## Items
 
 You can buy, sell, and find a variety of items that are useful for your adventures.
 
@@ -18,7 +18,7 @@ Supplies are consumable goods, that are not tracked as normal equipment. Instead
 
 Each Supply’s load always remains the same, regardless of it‘s Resource Die size. For example, when you carry provisions in any amount, they always take up 1 load.
 
-### Increasing and Decreasing Supply
+### **Increasing and Decreasing Supply**
 
 When you gain supply, increase it‘s Resource Die by one step for each unit. Buying supplies is done so unit by unit.
 
@@ -55,21 +55,21 @@ Bundles are a special type of supply. They are foremost weapons, but can be used
 
 You can attempt to repair any damaged item during a night's rest, provided you carry the appropriate tools and material supplies for the type of item you want to repair. Roll Mind + Crafting. On a success, the item is no longer damaged. After each roll, regardless of result, also make a Supply Check for your materials.
 
-# Encumbrance
+## Encumbrance
 
 Adventurers carry around a lot of equipment and loot. Encumbrance determines the amount of items they are able to carry with them on their person.
 
-## Carrying Items
+### Carrying Items
 
 Normally any adventurer can only carry what they can hold in their hands, or wear on their body. To be able to carry more items than that, they need containers. Containers are worn items that can hold onto additional items. How many items any container can hold at maximum is determined by the items combined load (see below).
 
-## Item Load
+### Item Load
 
 Carrying items accumulate load, which is an abstraction of weight and size. Once you carry too much load, you are either encumbered or even over-encumbered.
 
 Generally, an item the size of a melon or up to 2 kilograms in weight is considered 1 load. Items the size of an orange or a few hundred grams in weight are 0.5 load. Smaller items are considered to have 0 load.
 
-## Becoming encumbered
+### Becoming encumbered
 
 An adventurer’s maximum amount of load they can carry without being encumbered is equal to 6 + Strength. Once you carry 10 + Strength, you are over-encumbered and can‘t carry any more load. How much you can carry is also affected by your method of storage. These values assume you carry a backpack and enough bags and pouches to store your items.
 
@@ -87,7 +87,7 @@ Being encumbered or over-encumbered causes several effects.
 
 **Over-Encumbered.** You can‘t move. You can‘t use any Actions or do any rolls for physical activity.
 
-# Item Quality
+## Item Quality
 
 1. **Primitive** (worth 1-50 coins)
     - can be crafted even by apprentice craftsmen
@@ -111,7 +111,7 @@ Being encumbered or over-encumbered causes several effects.
     - requires legendary magical ingredients, formulae lost to mortals, and the gods themselves as craftsmen
     - the pinnacle of the most powerful people’s possession, crafted in ancient times or by the gods themselves
 
-# Items, Gear, Tools & Livestock
+## Items, Gear, Tools & Livestock
  **Name**                                    | **Category**   | **Quality** | **Load** | **Cost** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                  
 ---------------------------------------------|----------------|-------------|----------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  **Pouch**                                   | Container      | 1           | 0        | 5        | Can hold up to 2 load.                                                                                                                                                                                                                                                                                                                                                                                           
