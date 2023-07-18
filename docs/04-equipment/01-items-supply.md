@@ -113,7 +113,7 @@ Being encumbered or over-encumbered causes several effects.
 
 ## Items & Livestock
 
-## Container
+### Container
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
@@ -122,7 +122,7 @@ Being encumbered or over-encumbered causes several effects.
  **Backpack** | 1 | 1 | 20 | Can hold up to 10 load. 
  **Wooden Chest** | 2 | 1 | 50 | Can hold up to 30 load. 
 
-## Gear
+### Gear
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
@@ -140,7 +140,7 @@ Being encumbered or over-encumbered causes several effects.
  **Bundle of Scrolls** | 3 | 1 | 200 | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature. 
  **Fine Clothes** | 3 | 1 | 200 | Clothes of a noble or rich merchant made from exotic materials. 
 
-## Supplies
+### Supplies
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
@@ -151,7 +151,7 @@ Being encumbered or over-encumbered causes several effects.
  **Materials** | 1 | 1 | 20 | Worth one unit of materials. 
  **Bolts** | 2 | 1 | 30 | Worth one unit of ammo for crossbows. Comes with a bolt case. 
 
-## Tools
+### Tools
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
@@ -177,21 +177,21 @@ Being encumbered or over-encumbered causes several effects.
  **Musical Instrument** | 2 | 1 | 100 | Any common type of stringed, woodwind, brass or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourin, or macaras for percussion instruments. 
  **Thieves‘ Tools** | 2 | 1 | 100 | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you fail to pick a lock, spend 1 use. 
 
-## Transportation
+### Transportation
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
  **Cart** | 1 | 50 | 100 | A small, two-wheeled cart. Can hold one driver, plus up to 50 load in items, or up to four medium creatures in the back. Requires a mount to pull the cart.  
  **Chariot** | 2 | 20 | 500 | A simple wooden chariot for one or two people to stand in. Requires a mount to pull the chariot. 
 
-## Animal
+### Animal
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
  **Guard Dog (or young Jaguar, Boar, etc.)** | 1 | 12 | 50 | A dog that underwent basic training to fight for and protect it&#x27;s owner. Can be trained as a tame animal companion.  
  **Draft Horse (or Donkey, Mule)** | 1 | 130 | 200 | A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see it‘s statistics. 
 
-## Spell Talisman
+### Spell Talisman
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
@@ -202,7 +202,7 @@ Being encumbered or over-encumbered causes several effects.
  **Arcane Conduit (strong)** | 4 | 0 | 3000 | Arcane spells cast with this focus deal +2 spell damage or restore +2 HP per SL. 
  **Mystic Talisman (strong)** | 4 | 0 | 3000 | Mystic spells cast with this talisman deal +2 spell damage or restore +2 HP per SL. 
 
-## Alchemicals
+### Alchemicals
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
