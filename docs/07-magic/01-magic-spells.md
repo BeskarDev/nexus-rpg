@@ -87,6 +87,12 @@ You can only cast one spell of rank 1 or higher per turn. You can still cast ano
 | --- | --- | --- | --- | --- | --- | --- |
 | Focus Cost | 0 Focus | 2 Focus | 4 Focus | 6 Focus | 8 Focus | 10 Focus |
 
+### Spell Damage
+
+Many spells deal damage to one or more creatures. The first effect of a spell for a given SL usually lists it's spell damage, describing something like “Deals +X damage”. Similarly to weapons, spells also multiply their spell damage with increasing SL. Though, while for weapons this is described implicitly in the Attacking section, each spell lists their total spell damage for each SL directly within it's effect.
+
+When a spell's effect lists “+X damage” or “+X HP”, also add your Spell Base Damage to that number.
+
 ## Spell Concentration
 
 Some spells require Concentration to be cast. These spells most often have continuous effects that last for a certain duration. You can only concentration on once such spell at a time. Each time you take damage, while concentrating on a spell, you have to roll Spirit + Fortitude. If you fail this roll, your spell ends immediately. The difficulty of the roll depends on the amount of damage that you took.
