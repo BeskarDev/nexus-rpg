@@ -18,7 +18,7 @@ Supplies are consumable goods, that are not tracked as normal equipment. Instead
 
 Each Supply’s load always remains the same, regardless of it‘s Resource Die size. For example, when you carry provisions in any amount, they always take up 1 load.
 
-### **Increasing and Decreasing Supply**
+### Increasing and Decreasing Supply
 
 When you gain supply, increase it‘s Resource Die by one step for each unit. Buying supplies is done so unit by unit.
 
