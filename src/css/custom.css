@@ -48,6 +48,6 @@ a.navbar__item {
 }
 
 img.medium-zoom-image.medium-zoom-image--opened {
-  padding-top: 30px;
+  /* padding-top: 30px; */
   z-index: 300;
 }
