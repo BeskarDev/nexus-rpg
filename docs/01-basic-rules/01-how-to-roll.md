@@ -107,8 +107,18 @@ Some abilities allow you to re-roll certain tests. When choosing to do so, you m
 
 ## Dice Checks
 
-Dice Checks are all dice rolls which aren’t considered skill tests and are referenced as “checks” in the rules. Dice Checks normally include a single die against a static TN.
+Dice Checks are all dice rolls which aren’t considered skill tests and are referenced as “checks” in the rules. Dice Checks normally include a single die against a static TN. Anytime the rules ask you to make a check of some kind (i.e. Durability or Supply), you roll the associated die and compare the result to the possible outcomes for that kind of check.
 
-For example, you must succeed on a Durability check when your weapon is about to be damaged. You roll your weapons durability die (d6 for a mundane weapon). On a 3+, your weapon doesn’t get damaged.
+### Durability Checks
+
+You must roll a Durability check, when some item you are wearing, carrying, or wielding is at the risk of being damaged. Each item has a corresponding Durability die based on it’s material or size. If nothing else is mentioned for an item, it is always assumed to have a d6 Durability die.
+
+If you roll a 1 or a 2 with your Durability check, a normal item get’s damaged or an already damaged item becomes destroyed. For more details, see the Weapon & Armor Properties section. You can attempt to repair damaged or destroyed items, as described in the Downtime section.
+
+### Supply Checks
+
+Your Supplies are general stocks of useful items, such as provisions, light sources, or common materials. Whenever you have to make a Supply check, the die depends on how much Supply of that kind you have left. If you roll a 1 or a 2, the Supply’s die size decreases by one step or you use up all of your remaining Supply, if it already was at a d4. See more under Supply in the Items section.
+
+### Individual Checks
 
 Some checks don’t require a target number to succeed, but instead have different outcomes based on the result. For example, you roll a d6 when **frightened**. On a 1, you cower in fear and can’t act or move. On a 2-5, you simply run away from the source of your fear. On a 6, you can act normally, but suffer a bane on all skill rolls.
