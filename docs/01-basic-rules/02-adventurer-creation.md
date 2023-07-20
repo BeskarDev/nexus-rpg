@@ -45,11 +45,11 @@ For a play group which already has played Nexus RPG for a while and doesn‘t wa
 
 | Adventuring Tier | Attributes* | XP for Skills & Talents | Coins |
 | --- | --- | --- | --- |
-| Tier 2 (capable) | d8 / d6 / d6 / d6 | 10 XP total (max. 4 XP per skill) | 800 coins |
-| Tier 3 (experienced) | d8 / d8 / d6 / d6 | 20 XP total (max. 8 XP per skill) | 2.000 coins |
-| Tier 4 (seasoned) | d10 / d8 / d6 / d6 | 30 XP total (max. 12 XP per skill) | 5.000 coins |
-| Tier 5 (heroic) | d10 / d10 / d6 / d6 | 40 XP total (max. 16 XP per skill) | 12.500 coins |
-| Tier 6 (legendary) | d12 / d10 / d6 / d6 | 50 XP total (max. 20 XP per skill) | 30.000 coins |
+| Tier 2 (capable) | d6 / d6 / d6 / d6 | 10 XP total (max. 4 XP per skill) | 800 coins |
+| Tier 3 (experienced) | d8 / d6 / d6 / d6 | 20 XP total (max. 8 XP per skill) | 2.000 coins |
+| Tier 4 (seasoned) | d8 / d8 / d6 / d6 | 30 XP total (max. 12 XP per skill) | 5.000 coins |
+| Tier 5 (heroic) | d10 / d8 / d6 / d6 | 40 XP total (max. 16 XP per skill) | 12.500 coins |
+| Tier 6 (legendary) | d10 / d10 / d6 / d6 | 50 XP total (max. 20 XP per skill) | 30.000 coins |
 
 * You can choose to increase one attribute by one step, but you must also decrease one other attribute by one step.
 
