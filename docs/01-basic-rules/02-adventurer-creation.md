@@ -22,12 +22,9 @@ When creating a new adventurer, follow the steps below:
     *Duty, Fame, Fortune, Freedom, Justice, Knowledge, Power, Redemption, Revenge, Survival*
 6. **Choose your Skills**
     - Choose a number of skills available from your upbringing and background to learn. If you would gain the same skill from both, you can choose another skill that would fit either your upbringing or background.
-    - Spend 2 XP on three skills you learned from your Upbringing and Background each. The rest of the skills start at 0 XP.
-        - If your group consists of less than four adventurers, each adventurer can spend 2 XP on another skill they have learned for each member they are below four.
-        So if your group has three members, each one can spend 2 XP on another one skill. If it consists of two members, each one can spend 2 XP on another two skills.
-    - Choose Talents for the skills you spend XP on.
+    - Your chosen skills start at 0 XP. After your adventures, you can spend XP on your learned skills and unlock talents for them with enough XP.
     - If you learned Archery or Fighting, you learn Combat Arts for weapons of the learned skill. See the Combat Arts section for more details.
-    - If you learned Arcana or Mysticism, you learn spells for the skill. See the Magic section for more details.
+    - If you learned Arcana or Mysticism, you learn spells for the learned skill. See the Magic section for more details.
 7. **Choose your Equipment**
     - Starting Items:
         - A backpack (holds up to 10 load, 1 load, 20 coin) and two pouches (each holds up to 2 load, 0 load, 5 coin)
