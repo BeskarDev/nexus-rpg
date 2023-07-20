@@ -83,7 +83,7 @@ An adventurer’s maximum amount of load they can carry without being encumbered
 
 Being encumbered or over-encumbered causes several effects.
 
-**Encumbered.** You suffer +1 bane on Strength or Agility rolls for movement, such as climbing or swimming and on Fortitude rolls during travel.
+**Encumbered.** You suffer +1 bane on Strength or Agility rolls for movement, such as climbing or swimming, and during travel.
 
 **Over-Encumbered.** You can‘t move. You can‘t use any Actions or do any rolls for physical activity.
 
