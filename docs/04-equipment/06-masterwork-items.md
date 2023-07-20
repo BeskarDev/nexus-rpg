@@ -17,7 +17,7 @@ When a craftsman creates a masterwork item, they can choose one of the following
 1. **Balanced.** If your Attribute Die results in a 1 or a 2 on your attack rolls, you can re-roll the test. You must take the results of the new roll. If this is a pierce weapon, you can also re-roll on a 3 for your Attribute Die.
 2. **Elegant.** This weapon loses 1 load (min. 0,5) and gains the agile property.
 3. **Massive.** This non-light weapon gains heavy (d8) or increases its heavy property by one step (max. d12) if it is already heavy. It deals +1 weapon damage and increases it‘s load by 1.
-4. **Sharp.** This non-crush weapon gains the slash property. If it already was a slash weapon, it deals +1 slash damage instead.
+4. **Sharp.** This non-crush weapon gains the slash property. If it already was a slash weapon, it deals +1 weapon damage instead.
 
 ## Ranged Weapon Masterwork Properties
 
