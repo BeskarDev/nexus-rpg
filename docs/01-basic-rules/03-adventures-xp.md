@@ -67,7 +67,7 @@ As you spend more XP, you advance your rank in that skill at certain thresholds.
 
 #### Optional Rule: XP Pacing
 
-> With this, the maximum amount of XP you can spend in each individual skill is determined by the total amount of XP you have spend on all of your skills combined.
+> With this optional rule, the maximum amount of XP you can spend in each individual skill is determined by the total amount of XP you have spend on all of your skills combined.
 > 
 
 If a group of adventurers prefers a more balanced approach to how much XP they can spend on individual skills, consider using this optional rule.
@@ -76,7 +76,7 @@ Using this rule enforces a wider spread of XP in many different skills without h
 
 | Adventuring Tier | Tier 1 (fresh) | Tier 2 (capable) | Tier 3 (experienced) | Tier 4 (seasoned) | Tier 5 (heroic) | Tier 6 (legendary)  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Total XP Spend | ≥ 10 XP | 11-20 XP | 21-30 XP | 31-40 XP | 41-50 XP | 51+ XP |
+| Total XP Spend On Skills | ≥ 10 XP | 11-20 XP | 21-30 XP | 31-40 XP | 41-50 XP | 51+ XP |
 | Max. XP per Skill | 4 XP each | 8 XP each | 12 XP each | 16 XP each | 20 XP each | 30 XP each |
 
 ### Learning Talents
