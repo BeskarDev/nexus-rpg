@@ -40,7 +40,7 @@ Practicing mystic magic can take many forms. Devoting yourself to a god and chan
 
 - Your Focus is equal to (Spirit - 2) + (2 x Mysticism).
 - Choose your traditions and learn two rank 0 spells for them. You can either choose:
-    - Devotion (choose one tradition, you learn +1 spell for it now and anytime you gain a rank in Mysticism)
+    - Devotion (choose one tradition, you learn +1 spell for it immediately and whenever you learn new spells from gaining a rank in Mysticism)
     - Balance (choose two opposing traditions)
     - Scholar (choose three traditions, but neither of them can oppose another one of them)
 - Whenever you gain a rank in Mysticism, learn two new spells of equal or lower rank for any tradition you learned.
