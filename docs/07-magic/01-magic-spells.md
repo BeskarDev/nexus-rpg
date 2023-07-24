@@ -118,6 +118,7 @@ As a guide to the GM in deciding, the following rules should always be followed 
 - Any spell with a physical effect targeting creatures can also be directed at objects or surfaces.
 - Any physical form the spell effect takes or produces vanishes after the spells duration, unless the spell specifically states otherwise.
 - Any physical substance the spell effect produces provides no nutritious value and can’t be used in place of food or drink, unless the spell specifically states otherwise.
+- When any spell effect influences the mind or actions of a creature, they are aware that the thoughts or actions are not their own. If they also saw you casting the spell, they are also aware of you being the source of the effect.
 - Any spell that targets a location can do so anywhere on the ground, along a wall, or even in the air, provided the physical effect of the spell can reasonably take form at the chosen location (e.g. you can’t make a vine grow in the air without some ground or wall).
 - You can treat a rank 0 spell as continuous, provided you aren’t in combat or any other kind of danger.
 - You can’t bend the spell’s number of targets.
