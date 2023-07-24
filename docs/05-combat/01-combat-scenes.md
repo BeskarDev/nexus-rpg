@@ -76,7 +76,7 @@ Use a variety of skills during combat to help you and your allies or hinder your
 
 ## Quick Actions
 
-Quick Actions are things you can do outside of your turn. Quick Actions always have triggers for when they can be used. You can use one Quick Action, regaining it at the start of each of your turns. Quick Actions can also be used directly on your turn for Combat Arts.
+Quick Actions are small actions which take up no more than a few seconds. They can also be quick reactive abilities outside of your own turn during combat. Quick Actions always have triggers for when they can be used. You can use one Quick Action on your turn or between your turns. You regain access to your Quick Action at the start of each of your turns.
 
 | Quick Action | Trigger | Effect |
 | --- | --- | --- |
