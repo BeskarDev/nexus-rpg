@@ -30,7 +30,8 @@ When creating a new adventurer, follow the steps below:
         - A backpack (holds up to 10 load, 1 load, 20 coin) and two pouches (each holds up to 2 load, 0 load, 5 coin)
         - Traveler‘s Clothes (0 load, 20 coin)
         - Hemp Rope (1 load, 20 coin), a camping kit (1 load, 50 coin), and one additional tool of your choice
-        - Supplies: 2 units (d6, 1 load) of provisions and 2 units (d6, 1 load) of torches for light.
+        - Supplies: 2 units (d6, 1 load) of provisions and 2 units (d6, 1 load) of torches (emit bright light in close range and dim light in short range when lit)
+        - 10 coins (can’t be spend during adventurer creation)
     - You also get 350 coins to spend on additional equipment and items.
         - Choosing a weapon that requires ammo gives you 2 units (d6) of that ammo for free
         - You keep coins you don’t spend
