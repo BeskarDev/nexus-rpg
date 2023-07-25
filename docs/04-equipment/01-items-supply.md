@@ -65,21 +65,36 @@ Normally any adventurer can only carry what they can hold in their hands, or wea
 
 ### Item Load
 
-Carrying items accumulate load, which is an abstraction of weight and size. Once you carry too much load, you are either encumbered or even over-encumbered.
+Carrying items accumulate load. Load is an abstracted measurement of weight and size. Once you carry too much load, you are either encumbered or even over-encumbered.
 
 Generally, an item the size of a melon or up to 2 kilograms in weight is considered 1 load. Items the size of an orange or a few hundred grams in weight are 0.5 load. Smaller items are considered to have 0 load.
 
+| Item, Object, or Animal | Load |
+| --- | --- |
+| dagger, linen bag | 0.5 |
+| longsword, metal lantern, chicken | 1 |
+| greatsword, domestic cat | 2 |
+| wooden chest, small dog | 5 |
+| metal chest, wild cat | 10 |
+| wooden cart, big dog | 20 |
+| wild boar, small crocodile | 50 |
+| small bear, tiger, lion | 100 |
+| horse | 200 |
+| large crocodile | 500 |
+| hippopotamus, rhinoceros | 1,000 |
+| elephant | 2,000 |
+
 ### Becoming encumbered
 
-An adventurer’s maximum amount of load they can carry without being encumbered is equal to 6 + Strength. Once you carry 10 + Strength, you are over-encumbered and can‘t carry any more load. How much you can carry is also affected by your method of storage. These values assume you carry a backpack and enough bags and pouches to store your items.
+An adventurer’s maximum amount of load they can carry without being encumbered is equal to 2 x Strength. Once you carry 3 x Strength in load, you are over-encumbered and can‘t carry any more load. How much you can carry is also affected by your method of storage. These values assume you carry a backpack and enough bags and pouches to store your items.
 
 | Strength | Encumbrance Limit | Over-Encumbrance Limit |
 | --- | --- | --- |
-| d4 | 10 | 14 |
-| d6 | 12 | 16 |
-| d8 | 14 | 18 |
-| d10 | 16 | 20 |
-| d12 | 18 | 22 |
+| d4 | 8 load | 12 load |
+| d6 | 12 load | 18 load |
+| d8 | 16 load | 24 load |
+| d10 | 20 load | 30 load |
+| d12 | 24 load | 36 load |
 
 Being encumbered or over-encumbered causes several effects.
 
