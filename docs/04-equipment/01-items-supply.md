@@ -104,25 +104,25 @@ Being encumbered or over-encumbered causes several effects.
 
 ## Item Quality
 
-1. **Primitive** (worth 1-50 coins)
+1. **Primitive** (worth 1-100 coins)
     - can be crafted even by apprentice craftsmen
     - found basically anywhere, even the most primitive settlements
-2. **Simple** (worth 50-500 coins)
+2. **Simple** (worth 100-500 coins)
     - can be crafted by novice craftsmen
     - found in all civilised settlements
 3. **Advanced** (worth 500-2,000 coins)
     - require adept craftsmen to create
     - found in large settlements, or with secluded craftsmen
-4. **Formidable** (worth 2,000-5,000 coins)
+4. **Formidable** (worth 2,000-10,000 coins)
     - the pinnacle of non-magical craftsmanship and material attainable in the mortal realms
     - only found in huge capitol cities, or hard to reach secluded craftsmen
-5. **Exceptional** (worth 5,000-10,000 coins)
+5. **Exceptional** (worth 10,000-50,000 coins)
     - require magical ingredients, complex formulae, and only the most skilled craftsmen
     - only rarely found in huge capitol cities, or legendary craftsmen
-6. **Epic** (worth 10,000-50,000 coins)
+6. **Epic** (worth 50,000-250,000 coins)
     - require powerful magical ingredients, ancient formulae, and are the height of mortal craftsmanship
     - only in the possession of the most powerful people, or masterworks from legendary craftsmen
-7. **Legendary** (worth 50,000+ coins)
+7. **Legendary** (worth 250,000+ coins)
     - requires legendary magical ingredients, formulae lost to mortals, and the gods themselves as craftsmen
     - the pinnacle of the most powerful people’s possession, crafted in ancient times or by the gods themselves
 
