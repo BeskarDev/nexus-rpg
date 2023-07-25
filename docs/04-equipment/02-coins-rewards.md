@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 💰 Coins & Rewards
 
-# Coins
+## Coins
 
 Adventurers amass wealth in the abstracted form of coins over their adventures. While this wealth is denoted in coins, it is an abstraction which also includes other groups of valuables fit for barter:
 
@@ -24,15 +24,15 @@ One coin is the cost of a bag of grain, a simple meal at a market, or the daily 
 > The amount of coins an adventurer carries around with them takes up no load. But note, that any found treasure does take up a varying amount of load, depending on what assortment of items the treasure consists of. Only once the adventurers successfully bring the treasure back into an appropriately sized settlement and take some downtime there, are they able to add their won treasure to their wealth of coins (more details under the “Sell Treasure” Activity in the Downtime section).
 > 
 
-# Rewards
+## Rewards
 
-Adventurers find loot along their adventures and typically receive a larger sum of coins for completing a task, or from an enemies treasure hoard. The following table shows the typical amount of coins adventurers should receive, depending on the aspired tier of their exploits.
+Adventurers find loot along their adventures and typically receive a larger sum of coins for completing a difficult task or from a powerful enemy’s treasure hoard. The following table shows the typical amount of coins adventurers should receive, depending on the aspired tier of their exploits.
 
 | Adventuring Tier | Smaller Loot | Large Treasure or Reward |
 | --- | --- | --- |
-| 1 (fresh) | 1d4 x 10 coins / Quality 1 items | 2d6 x 50 (~350) coins / Quality 2 items |
-| 2 (capable) | 1d4 x 20 coins / Quality 2 items | 2d6 x 100 (~700) coins / Quality 3 items |
-| 3 (experienced) | 1d4 x 50 coins / Quality 3 items | 2d6 x 500 (~3,500) coins / Quality 4 items |
-| 4 (seasoned) | 1d4 x 100 coins / Quality 4 items | 2d6 x 1,000 (~7,000) coins / Quality 5 items |
-| 5 (heroic) | 1d4 x 500 coins / Quality 5 items | 2d6 x 5,000 (~35,000) coins / Quality 6 items |
-| 6 (legendary)  | 1d4 x 1,000 coins / Quality 6 items | 2d6 x 10,000 (~70,000) coins / Quality 7 items |
+| 1 (fresh) | 2d4 x 10 (~50) coins / <br />Quality 1 items | 2d6 x 50 (~350) coins / <br />Quality 2 items |
+| 2 (capable) | 2d4 x 20 (~100) coins / <br />Quality 2 items | 2d6 x 100 (~700) coins / <br />Quality 3 items |
+| 3 (experienced) | 2d4 x 100 (~500) coins / <br />Quality 3 items | 2d6 x 500 (~3,500) coins / <br />Quality 4 items |
+| 4 (seasoned) | 2d4 x 200 (~1,000) coins / <br />Quality 4 items | 2d6 x 1,000 (~7,000) coins /<br />Quality 5 items |
+| 5 (heroic) | 2d4 x 1,000 (~5.000) coins / <br />Quality 5 items | 2d6 x 5,000 (~35,000) coins / <br />Quality 6 items |
+| 6 (legendary)  | 2d4 x 2,000 (~10,000) coins / <br />Quality 6 items | 2d6 x 10,000 (~70,000) coins / <br />Quality 7 items |
