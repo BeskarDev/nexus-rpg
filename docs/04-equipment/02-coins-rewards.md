@@ -31,8 +31,8 @@ Adventurers find loot along their adventures and typically receive a larger sum 
 | Adventuring Tier | Smaller Loot | Large Treasure or Reward |
 | --- | --- | --- |
 | 1 (fresh) | 2d4 x 10 (~50) coins / <br />Quality 1 items | 2d6 x 50 (~350) coins / <br />Quality 2 items |
-| 2 (capable) | 2d4 x 20 (~100) coins / <br />Quality 2 items | 2d6 x 100 (~700) coins / <br />Quality 3 items |
+| 2 (capable) | 2d4 x 50 (~250) coins / <br />Quality 2 items | 2d6 x 100 (~700) coins / <br />Quality 3 items |
 | 3 (experienced) | 2d4 x 100 (~500) coins / <br />Quality 3 items | 2d6 x 500 (~3,500) coins / <br />Quality 4 items |
-| 4 (seasoned) | 2d4 x 200 (~1,000) coins / <br />Quality 4 items | 2d6 x 1,000 (~7,000) coins /<br />Quality 5 items |
-| 5 (heroic) | 2d4 x 1,000 (~5.000) coins / <br />Quality 5 items | 2d6 x 5,000 (~35,000) coins / <br />Quality 6 items |
-| 6 (legendary)  | 2d4 x 2,000 (~10,000) coins / <br />Quality 6 items | 2d6 x 10,000 (~70,000) coins / <br />Quality 7 items |
+| 4 (seasoned) | 2d4 x 500 (~2,500) coins / <br />Quality 4 items | 2d6 x 2,000 (~14,000) coins / <br />Quality 5 items |
+| 5 (heroic) | 2d4 x 2,000 (~10.000) coins / <br />Quality 5 items | 2d6 x 10,000 (~70,000) coins / <br />Quality 6 items |
+| 6 (legendary)  | 2d4 x 10,000 (~50,000) coins / <br />Quality 6 items | 2d6 x 50,000 (~350,000) coins / <br />Quality 7 items |
