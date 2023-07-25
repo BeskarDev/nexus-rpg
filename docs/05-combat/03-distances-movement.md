@@ -44,9 +44,16 @@ When you attempt to control your fall, roll Agility + Athletics. You can only at
 | --- | --- | --- | --- | --- | --- | --- |
 | Damage | 5 | 10 | 20 | 40 | 60 | 100 |
 
-### **Moving Objects**
+### Moving Objects
 
-You are able to move heavy objects up to 10 x Strength in load. If the object exceeds your Over-Encumbrance, you require one minute to move it a short distance.
+You are able to move heavy objects depending on your Strength:
+
+- up to 3 x Strength: move normally.
+- up to 10 x Strength: move as in difficult terrain.
+- up to 20 x Strength: move a short distance over one delving turn.
+
+> These ranged assume you have move the object without support. For example, dragging an object on the ground instead of carrying it might increase the size and weight of objects you can move.
+>
 
 ### Crawling, Crouching, Climbing, and Swimming
 
