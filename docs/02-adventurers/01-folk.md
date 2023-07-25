@@ -52,7 +52,7 @@ A race of towering beings, with incredible strength and endurance. They are ofte
 
 **Cultures:** Yettnar (Mountain-Hunes), Khutu (Steppe-Hunes), Ta’uuri (Island-Hunes)
 
-**Giant’s Blood.** +2 HP. Add +4 load for how much you can carry before becoming encumbered or over-encumbered.
+**Giant’s Blood.** +2 HP. Increase your Strength multiplier by 1 for how much load you can carry before becoming encumbered or over-encumbered.
 
 **Stoic Mind.** You gain +1 boon on Spirit rolls against being dazed or frightened.
 
