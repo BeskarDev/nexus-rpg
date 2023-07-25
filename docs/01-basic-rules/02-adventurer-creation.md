@@ -40,15 +40,18 @@ When creating a new adventurer, follow the steps below:
 
 For a play group which already has played Nexus RPG for a while and doesn‘t want to repeat the early phase of adventuring life for their characters, you can decide on one of the following advanced starts.
 
-| Adventuring Tier | Attributes* | XP for Skills & Talents | Coins |
+| Adventuring Tier | Attributes* | XP for Skills & Talents** | Coins |
 | --- | --- | --- | --- |
 | Tier 2 (capable) | d6 / d6 / d6 / d6 | 10 XP total (max. 4 XP per skill) | 850 coins |
-| Tier 3 (experienced) | d8 / d6 / d6 / d6 | 20 XP total (max. 8 XP per skill) | 2,100 coins |
-| Tier 4 (seasoned) | d8 / d8 / d6 / d6 | 30 XP total (max. 12 XP per skill) | 5,200 coins |
-| Tier 5 (heroic) | d10 / d8 / d6 / d6 | 40 XP total (max. 16 XP per skill) | 12,500 coins |
-| Tier 6 (legendary) | d10 / d10 / d6 / d6 | 50 XP total (max. 20 XP per skill) | 31,000 coins |
+| Tier 3 (experienced) | d8 / d6 / d6 / d6 | 20 XP total (max. 8 XP per skill) | 3,500 coins |
+| Tier 4 (seasoned) | d8 / d8 / d6 / d6 | 30 XP total (max. 12 XP per skill) | 14,000 coins |
+| Tier 5 (heroic) | d10 / d8 / d6 / d6 | 40 XP total (max. 16 XP per skill) | 70,000 coins |
+| Tier 6 (legendary) | d10 / d10 / d6 / d6 | 50 XP total (max. 20 XP per skill) | 350,000 coins |
 
 * You can choose to increase one attribute by one step, but you must also decrease one other attribute by one step.
+
+** If your group consists of less than four adventurers, each adventurer can spend +2 XP for each member they are below four.
+So if your group has three members, each one can spend 2 XP on another one skill. If it consists of two members, each one can spend 2 XP on another two skills.
 
 ## Adventurer Sheet
 You can print out this sheet to record your adventurer's statistics, equipment, and connections within the game world.
