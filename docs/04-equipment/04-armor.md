@@ -17,7 +17,7 @@ You can only ever gain AV from one armor, one shield, and one helmet at a time, 
  **Leather (or Padded Cloth, Heavy Robes)**                      | Light Armor | 2      |                           | 2           | 1        | 50           
  **Banded Leather (or Studded Leather, Piecemeal Mail)**         | Light Armor | 3      |                           | 2           | 2        | 200            
  **Chain Mail (or Linothorax, Bone Lamellar, Horn Lamellar)**    | Light Armor | 4      | noisy                     | 3           | 3        | 1000     
- **Scale Mail (or Disk Plate, Wood Plates, Shell Plates)**       | Heavy Armor | 4      | heavy (d6), noisy, rigid 1  | 2           | 3        | 500      
+ **Scale Mail (or Disk Plate, Wood Plates, Shell Plates)**       | Heavy Armor | 4      | heavy (d6), noisy, rigid 1  | 2           | 2        | 500      
  **Breastplate (or Plate Cuirass, Splint Mail)**                 | Heavy Armor | 5      | heavy (d8), noisy, rigid 1  | 2           | 3        | 1000     
  **Plate Harness (or Segmented Plate, Heavy Lamellar, O-Yoroi)** | Heavy Armor | 6      | heavy (d10), noisy, rigid 2 | 3           | 4        | 2000     
  **Open Helmet**                                                 | Helmet      | 1      |                           | 1           | 2        | 200     
