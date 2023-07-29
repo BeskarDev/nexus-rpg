@@ -20,7 +20,7 @@ Carved of the stone itself, the dwarves have a deep connection to the earth. The
 
 **Stoneskin.** You gain +1 AV.
 
-**Squat Build.** You gain +1 boon on rolls against effects that knock you prone or push you.
+**Squat Build.** You impose +1 bane on rolls that attempt to knock you prone or push you. Also when you are pushed, reduce the distance by one step (being pushed close instead doesn’t push you at all).
 
 ### Elf
 
@@ -36,7 +36,7 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 ### Gnome
 
-Natural psychics with the ability to read other peoples' intentions and surface thoughts, the gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company.
+Natural psychics with the ability to read other peoples' intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company.
 
 **Cultures:** Auflin (Willow-Gnomes), Burrin (Den-Gnomes) 
 
@@ -74,7 +74,7 @@ The Old Folk most often hold superstitions against them, as many view them not w
 
 ### Goblin
 
-A cunning and resourceful race, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset.
+A cunning and resourceful race of small statue, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset.
 
 **Cultures:** Sniknez (Cave-Goblins), Goki (Monkey-Goblins)
 
@@ -104,7 +104,7 @@ A proud and regal race, with a deep connection to the natural world and a revere
 
 **Powerful Roar.** You can use your Action in combat to unleash a powerful lion’s roar. Every enemy within short distance has to roll Spirit + Fortitude. If they fail, they are frightened of you. They can re-roll against their fear at the start of their turns. You can use this ability once per combat.
 
-**Sharp Claws.** You can use your claws (+1 weapon damage, light, slash) as brawling weapons instead of unarmed attacks.
+**Sharp Claws.** You can use your claws (2 weapon damage, light, slash) as brawling weapons instead of unarmed attacks.
 
 ### Lizardfolk
 
@@ -116,4 +116,4 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 
 **Aquatic Nature.** You can hold your breath for 4 + 1/2 Strength minutes.
 
-**Reptile Jaws.** You can use your bite (+2 weapon damage, crush) as a brawling weapon instead of unarmed attacks.
+**Reptile Jaws.** You can use your bite (3 weapon damage, crush) as a brawling weapon instead of unarmed attacks.
