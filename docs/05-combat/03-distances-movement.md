@@ -34,7 +34,7 @@ You can also move in melee range of specific locations or objects within an area
 
 ### Falling Damage
 
-When you fall uncontrollably for a close or longer distance, you take falling damage upon hitting the ground. Falling damage ignores AV and increases with each distance.
+When you fall uncontrollably for a close or longer distance, you take falling damage upon hitting the ground. Falling damage ignores AV and increases with each distance. If you take damage from falling, you also fall prone.
 
 You generally fall an extreme distance during one encounter turn, or until you hit the ground.
 
