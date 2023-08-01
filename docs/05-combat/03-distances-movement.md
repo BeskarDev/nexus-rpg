@@ -32,17 +32,23 @@ Being in melee range can be shared between groups of multiple creatures, as make
 
 You can also move in melee range of specific locations or objects within an area, such as cover.
 
-### Falling Damage
+### Falling
 
-When you fall uncontrollably for a close or longer distance, you take falling damage upon hitting the ground. Falling damage ignores AV and increases with each distance. If you take damage from falling, you also fall prone.
+Many effects and abilities might leave you without solid ground beneath your feet. You can generally fall in two different ways.
 
-You generally fall an extreme distance during one encounter turn, or until you hit the ground.
+- Falling involuntarily by some harmful effect.
+- Falling voluntarily by your own actions. When you attempt to control your fall, roll Agility + Athletics as an Action. The difficulty is easy for a close distance and is increased by one step for each additional falling distance. If you succeed, you reduce the damage you take to one step lower than normal.
 
-When you attempt to control your fall, roll Agility + Athletics. You can only attempt this roll if you initiated the fall by yourself. The difficulty is easy for a close distance and is increased by one step for each additional falling distance. If you succeed, you reduce the damage you take to one step lower.
+Under normal circumstances, you fall up to a very long distance during one encounter turn or until you hit the ground.
+
+- If you fall outside of your own turn, you can use an appropriate Quick Action before falling the distance.
+- If you fall during your own turn, you can use an Action or Quick Action before falling the distance.
+
+Depending on the distance you have fallen before hitting the ground, you take damage as follows. Falling damage ignores your AV. If you take damage from falling, you also fall prone. 
 
 | Distance | Close | Short | Medium | Long | Very Long | Extreme |
 | --- | --- | --- | --- | --- | --- | --- |
-| Damage | 5 | 10 | 20 | 40 | 60 | 100 |
+| Damage | 5 | 10 | 20 | 40 | 60 | 80 |
 
 ### Moving Objects
 
