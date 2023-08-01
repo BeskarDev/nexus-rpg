@@ -39,7 +39,7 @@ Many effects and abilities might leave you without solid ground beneath your fee
 - Falling involuntarily by some harmful effect.
 - Falling voluntarily by your own actions. When you attempt to control your fall, roll Agility + Athletics as an Action. The difficulty is easy for a close distance and is increased by one step for each additional falling distance. If you succeed, you reduce the damage you take to one step lower than normal.
 
-Under normal circumstances, you fall up to a very long distance during one encounter turn or until you hit the ground.
+Under normal circumstances, you fall up to a very long distance during one encounter turn or until you hit the ground. If you would fall over multiple turns, you first fall a very long distance immediately and then the same distance at the end of each of your turns until you hit the ground.
 
 - If you fall outside of your own turn, you can use an appropriate Quick Action before falling the distance.
 - If you fall during your own turn, you can use an Action or Quick Action before falling the distance.
