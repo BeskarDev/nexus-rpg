@@ -12,7 +12,7 @@ sidebar_position: 5
  **bundle** | You carry multiple pieces of this weapon. They are treated as their own type of Supply and deplete with use, using the same rules as ammo. Note, that you can only carry d12 (5 units) of all your carried bundle weapons combined (see the Supply rules for more detail).<br />You can also use bundle weapon in melee, but suffer +1 bane on attacks due to their small reach. 
  **covering** | Can be placed down using an Action to act as stationary cover from a direction of your choice without you holding the item. You can use another Action to pick the item up again.  
  **crush** | Ignore 1/2 of the enemy’s AV. If you have another ability, that reduces the enemy’s Defense. Apply both reductions after each other. For example, if you ignore 1/2 AV twice, you ignore 3/4 AV in total. 
- **damaged** | You suffer +1 bane on attack with a weapon, or the AV is reduced by 1 for armor, helmets, or shields (min. 0). Another failed Durability check for this item destroys it, making it unusable until repaired. 
+ **damaged** | You suffer +1 bane on attacks with a weapon or the AV bonus is halved for armor, helmets, or shields (min. 0). Another failed Durability check for this item destroys it, making it unusable until repaired. 
  **dodge X** | Increase your Dodge by X. 
  **double-sided** | This weapon can be used like dual-wielding two light weapons of the same type. 
  **entangle** | Before making an attack against a target the same size or smaller than you, you can choose to also grapple the target. When doing so, this attack also counts as a Grapple Action. On a hit, the target is grappled by your weapon. The grapple ends early when you make another attack with this weapon, unless it is a bundle weapon. 
