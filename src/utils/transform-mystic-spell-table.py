@@ -19,6 +19,12 @@ def split_table_by_Tradition(input_file, output_file):
             tables[Tradition] = []
         # Exclude the "Tradition" column using slicing
         table_row = '|'.join(columns[:1] + columns[2:])
+
+        # Bolden key strings
+        table_row = table_row.replace('Weak.', '**Weak.**')
+        table_row = table_row.replace('Strong.', '**Strong.**')
+        table_row = table_row.replace('Critical.', '**Critical.**')
+
         tables[Tradition].append(table_row)
 
     # Output the tables to the new markdown file

@@ -19,6 +19,15 @@ def split_table_by_skill_requirement(input_file, output_file):
             tables[skill_requirement] = []
         # Exclude the "Skill Requirement" column
         table_row = columns[0] + '|' + columns[2]
+
+        # Bolden key strings
+        table_row = table_row.replace('(Rank 1)', '**(Rank 1)**')
+        table_row = table_row.replace('(Rank 2)', '**(Rank 2)**')
+        table_row = table_row.replace('(Rank 3)', '**(Rank 3)**')
+        table_row = table_row.replace('Weak.', '**Weak.**')
+        table_row = table_row.replace('Strong.', '**Strong.**')
+        table_row = table_row.replace('Critical.', '**Critical.**')
+
         tables[skill_requirement].append(table_row)
 
     # Output the tables to the new markdown file
