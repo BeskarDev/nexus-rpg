@@ -4,9 +4,9 @@ sidebar_position: 1
 
 # 🔮 Magic & Spells
 
-# Magic
+## Magic
 
-## Learning a magic skill
+### Learning a magic skill
 
 Any character can only learn of of the two magic skills. When first learning one of the two magic skills, you gain the following traits for it.
 
@@ -16,6 +16,7 @@ Arcane magic channels the power of the caster’s mind. You can create magical e
 
 Being an arcanist was, for the longest time, considered to be a heretical mutation and such individuals were shunned from their communities. But since the arcane awakening of the humans, the usefulness of these arcanists as members of court and weapons of war was slowly acknowledged.
 
+- Your Spell Base Damage is 1/2 your Mind.
 - Your Focus is equal to (Mind - 2) + (2 x Arcana).
 - Choose your first discipline and learn two rank 0 spells for it.
 - Whenever you gain a rank in Arcana, learn two new spells of equal or lower rank for any discipline you learned or adopt a new discipline and learn one rank 0 spell for it.
@@ -38,6 +39,7 @@ Mystic magic manipulates the world around you and channels it’s energy to turn
 
 Practicing mystic magic can take many forms. Devoting yourself to a god and channeling it‘s magic, or communing with the spirits of the world directly. Almost every community has at least one person among them practicing mystic magic. From the shaman of the village, over a circle of witches, to a full priesthood to a major deity.
 
+- Your Spell Base Damage is 1/2 your Spirit.
 - Your Focus is equal to (Spirit - 2) + (2 x Mysticism).
 - Choose your traditions and learn two rank 0 spells for them. You can either choose:
     - Devotion (choose one tradition, you learn +1 spell for it immediately and whenever you learn new spells from gaining a rank in Mysticism)
@@ -55,9 +57,9 @@ Mystic Traditions are grouped up into opposing ideals. Most practitioners of mys
 - Nature (*earth, animals, plants*) — Tempest (*storms, earthquakes, lava*)
 - Peace (*calmness, protection, selflessness*) — War (*fury, violence, pride*)
 
-# Spells
+## Spells
 
-## Focus
+### Focus
 
 Focus represents your ability to cast spells. If you don’t have Arcana or Mysticism learned, you have 0 Focus. If you have learned one of the skills, your Focus is calculated as described above.
 
@@ -71,7 +73,7 @@ Whenever you attempt to cast a spell, you can only do so, if you have 1 or more 
 | d10 Attribute | 8 | 10 | 12 | 14 | 16 | 18 |
 | d12 Attribute | 10 | 12 | 14 | 16 | 18 | 20 |
 
-## Casting a spell
+### Casting a spell
 
 You cast a spell by rolling either Mind + Arcana for arcane spells, or Spirit + Mysticism for mystic spells.
 
@@ -93,7 +95,7 @@ Many spells deal damage to one or more creatures. The first effect of a spell fo
 
 When a spell's effect lists “+X damage” or “+X HP”, also add your Spell Base Damage to that number.
 
-## Spell Concentration
+### Spell Concentration
 
 Some spells require Concentration to be cast. These spells most often have continuous effects that last for a certain duration. You can only concentration on once such spell at a time. Each time you take damage, while concentrating on a spell, you have to roll Spirit + Fortitude. If you fail this roll, your spell ends immediately. The difficulty of the roll depends on the amount of damage that you took.
 
@@ -101,7 +103,7 @@ Some spells require Concentration to be cast. These spells most often have conti
 | --- | --- | --- | --- | --- | --- |
 | Difficulty | easy (6) | moderate (8) | hard (10) | very hard (12) | extremely hard (14) |
 
-## Bending Spell Effects
+### Bending Spell Effects
 
 The effects of any given spell describe the most general use case for it. But any crafty spell caster might want to do something with their spells that isn’t directly supported by their effects but would fit within the general description of how the spell acts and works.
 

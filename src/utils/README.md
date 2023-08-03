@@ -7,7 +7,7 @@ HowTo:
 - make sure multi-select type columns are converted to text (and reverse after export)
 - export as HTML
 - go to [https://tableconvert.com/html-to-markdown](https://tableconvert.com/html-to-markdown)
-- replace \n with <br/>
+- replace `\n` with `<br/>`
 - put name column into the left most position
 - check:
     - [✓] First row as headers

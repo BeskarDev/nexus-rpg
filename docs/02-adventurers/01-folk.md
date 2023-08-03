@@ -44,7 +44,7 @@ Natural psychics with the ability to read other peoples' intentions and surface 
 
 **Scent of Illusions.** You can instinctively make out illusions and invisible things. You gain +1 boon on Spirit rolls to identify magical falsehoods and illusions and impose +1 bane on rolls to fool you with falsehoods or illusions. 
 
-**Small Statue.** You gain +1 boon on Agility rolls to hide or move stealthily. You can only wield versatile weapons two-handed and don‘t add any bonus damage from doing so.
+**Small Statue.** You gain +1 boon on Agility rolls to hide or move stealthily. You can only wield versatile weapons two-handed and don‘t add a bonus to weapon damage from it.
 
 ### Hune
 

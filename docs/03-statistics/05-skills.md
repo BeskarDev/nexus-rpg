@@ -54,3 +54,46 @@ Skills bestowed upon you by an arcane birthright, or hard fought through spiritu
  **Arcana**     | Magic Skill   | The skill of using arcane magic to cast spells and manipulate the world around them.                                                                                                                                                     | Train this skill through spellcasting with a mentor, studying ancient grimoires or texts, experimenting with different magical correspondences or symbols, practicing divination or scrying, or participating in rituals with other practitioners.                                  
  **Mysticism**  | Magic Skill   | The skill of using spiritual magic to connect with the supernatural and to cast spells that draw upon divine or mystical energies.                                                                                                       | Train this skill through meditation or prayer, studying ancient mystical texts or philosophies, seeking out and learning from spiritual masters, experimenting with different forms of energy work or healing, or practicing different forms of divination or prophecy.             
 
+## **Examples of Discovery Rolls per Skill**
+
+When you attempt to gain insights into a subject matter for any expert skill, you can roll for Discovery. Below are example topics of what you can roll for Discovery about for each expert skill.
+
+### Crafting
+
+- Alchemy and Potion Making (properties and effects of different substances, creating magical elixirs)
+- Smithing and Metalwork (methods of forging, tempering, and shaping different metals)
+- Textile Arts (cloth weaving, leatherworking, and jewelry making techniques)
+
+### Education
+
+- History and Culture (knowledge of historical events, societies, and cultural practices)
+- Linguistics and Translation (meaning of written scripts or spoken languages you don't know)
+- Strategic Knowledge (tactics, battle plans, and information about enemies or locations)
+
+### Insight
+
+- Empathy (emotional state, personality, or life of another intelligent creature)
+- Deduction (chain of events, responsible entity of an event, time an event took place, or who might know more about an event)
+
+### Lore
+
+- Mythology and Legends (legends, gods, and creatures from various cultures)
+- Magical Arts and Arcane Knowledge (spellcasting traditions, magical artifacts, enchantments)
+- Supernatural Entities and Dimensions (vampires, werewolves, ghosts, planes of existence)
+
+### Nature
+
+- Flora and Fauna (knowledge of plants, animals, and their behavior in natural environments)
+- Medicinal Practices (identification of medicinal plants, natural remedies, and first aid)
+
+### Streetwise
+
+- Urban Legends and Mysteries (myths, rumors, and unsolved mysteries specific to cities or regions)
+- Underground Networks and Criminal Elements (criminal organizations, hidden markets, smuggling routes)
+- Local Customs and Navigation (knowledge of city layout, cultural practices, and finding your way)
+
+### Survival
+
+- Animal Handling and Tracking (animal behavior, tracking skills, and communication with animals)
+- Wilderness Navigation and Trapping (using maps, compasses, finding resources, setting traps)
+- Shelter Building and Fire Starting (constructing shelters, creating fire, survival in the wild)

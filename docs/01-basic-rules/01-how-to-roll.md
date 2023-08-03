@@ -86,7 +86,7 @@ If you roll with boons, pick the highest result among the d6 for your roll and a
 - Roll with +1 boon and +1 bane → You roll your Attribute Die + 1d6 (boon and bane cancel each other out) + Skill Rank.
 - Roll with +2 boons and +1 bane → You roll your Attribute Die + 2d6 (only one boon remains, take the highest d6) + Skill Rank.
 - Roll with +1 boons and +2 bane → You roll your Attribute Die + 2d6 (only one bane remains, take the lowest d6) + Skill Rank.
->
+> 
 
 ### Rolling for Untrained Skills
 

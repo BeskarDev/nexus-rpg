@@ -59,7 +59,7 @@ You are able to move heavy objects depending on your Strength:
 - up to 20 x Strength: move a short distance over one delving turn.
 
 > These ranged assume you have move the object without support. For example, dragging an object on the ground instead of carrying it might increase the size and weight of objects you can move.
->
+> 
 
 ### Crawling, Crouching, Climbing, and Swimming
 
