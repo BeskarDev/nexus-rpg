@@ -18,7 +18,7 @@ Carved of the stone itself, the dwarves have a deep connection to the earth. The
 
 **Dwarven Sight.** You are able to roughly make out differences in temperature by sight. You can see a medium distance in absolute darkness as in dim light. You gain +1 boon on Perception rolls for seeing at melee range, but suffer +1 bane instead at long range or further.
 
-**Stoneskin.** You gain +1 AV.
+**Stoneskin.** You gain +1 AV. When you have to roll Fortitude to withstand poison, intoxication, or illness, you gain +1 boon on the roll.
 
 **Squat Build.** You impose +1 bane on rolls that attempt to knock you prone or push you. Also when you are pushed, reduce the distance by one step (being pushed close instead doesn’t push you at all).
 
