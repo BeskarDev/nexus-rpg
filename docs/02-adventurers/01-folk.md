@@ -14,7 +14,7 @@ The Old Folk consist of those species that have a cultural history spanning thou
 
 Carved of the stone itself, the dwarves have a deep connection to the earth. They are masters of mining and metalworking, and are renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination is a testament to their unbreakable bond with the earth.
 
-**Cultures:** Dhurvar (Ice-Dwarves), Ghahar (Gold-Dwarves), Urduk (Grey-Dwarves)
+**Cultures:** Dhurvar (Ice-Dwarves), Mahruk (Gold-Dwarves), Ghahar (Fortress-Dwarves), Urduk (Grey-Dwarves)
 
 **Dwarven Sight.** You are able to roughly make out differences in temperature by sight. You can see a medium distance in absolute darkness as in dim light. You gain +1 boon on Perception rolls for seeing at melee range, but suffer +1 bane instead at long range or further.
 
