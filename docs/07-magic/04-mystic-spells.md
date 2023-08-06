@@ -6,7 +6,7 @@ sidebar_position: 4
 
 ## **Light**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Dazzling Light** | 0 | 0 | vs. Dodge | Medium |  | You create a small point of light at the target location. The light provides dim light in short range of it. The light can also move with you while staying in range. When targeted at a creature, you can make the light explode in their face instead.<br />**Weak.** Deal +2 radiant damage.<br />**Strong.** Deal +4 radiant damage. The target is also briefly blinded.<br />**Critical.** Deal +6 radiant damage. The target is also briefly blinded and dazed. 
  **Illuminated Sight** | 0 | 0 | Moderate (8) | Self | enchant (eyes) | You concentrate light energy into your eyes, enhancing your eye sight and making you able to pierce through concealing environments.<br />On a success, you can see in dim light as in bright light. You also gain +1 boon on Spirit rolls to spot hidden or invisible creatures. This spell lasts for a medium duration. 
@@ -23,7 +23,7 @@ sidebar_position: 4
 
 ## **Twilight**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Dark Sight** | 0 | 0 | Moderate (8) | Self | enchant (eyes) | You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br />On a success, you can see a medium distance in absolute darkness as in dim light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration. 
  **Night’s Grasp** | 0 | 0 | vs. Dodge | Medium |  | You magically animate the shadows around a creature, clawing and grasping for the target with ghostly coldness.<br />**Weak.** The target suffers +2 frost damage.<br />**Strong.** The target suffers +4 frost damage and is briefly slowed.<br />**Critical.** The target suffers +6 frost damage and is briefly grappled by the shadows. 
@@ -41,7 +41,7 @@ sidebar_position: 4
 
 ## **Life**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Life Shield** | 0 | 0 | Moderate (8) | Medium | singular | On a success, the target is surrounded by a near invisible shield of life force. The shield grants 10 temporary HP and lasts until reduced to 0, or expires after a short duration.<br />Any single creature can only benefit from this spell once per encounter. 
  **Restore Life** | 0 | 0 | Special | Short |  | You let vitalizing energy flow into your target, restoring a living creatures health or harming an undead creature.<br />When targeting a living creature, roll vs. moderate difficulty (8). When targeting an undead creature, roll vs. their Resist.<br />**Weak.** Restore +2 HP to your target or deal +2 radiant damage against an undead target.<br />**Strong.** Restore +4 HP to your target or deal +4 radiant damage against an undead target.<br />**Critical.** Restore +6 HP to your target or deal +6 radiant damage against an undead target. 
@@ -56,7 +56,7 @@ sidebar_position: 4
 
 ## **Death**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Enfeebling Touch** | 0 | 0 | vs. Resist | Medium |  | You summon a swirl of negative energy, engulfing the target and draining their strength.<br />**Weak.** Deal +2 necrotic damage.<br />**Strong.** Deal +4 necrotic damage and briefly reduce their Strength die by one step.<br />**Critical.** Deal +6 necrotic damage and reduce their Strength die by one step for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
  **Glimpse of Mortality** | 0 | 0 | vs. Resist | Medium |  | You project a scene of the target‘s final moments before death into their mind, in which they die in agony at the hands of yourself and your allies.<br />**Weak.** The target suffers +0 psychic damage (ignoring AV).<br />**Strong.** The target suffers +2 psychic damage (ignoring AV) and the target is briefly frightened.<br />**Critical.** The target suffers +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
@@ -69,7 +69,7 @@ sidebar_position: 4
 
 ## **Nature**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Bestial Adaptation** | 0 | 0 | Moderate (8) | Self | enchant (body) | You adopt the physical characteristics of one chosen type of animal. Choose one of the following:<br />- Graceful (You can move through difficult terrain without penalty)<br />- Perceptive (+1 boon on Perception rolls)<br />- Strong (+1 boon on Strength + Athletics rolls, +2 damage on unarmed attacks)<br />- Tough (+2 AV as armor)<br />On a success, you gain the chosen effect.<br />This spell lasts for a short duration. 
  **Lashing Vine** | 0 | 0 | Special | Medium |  | You animate a natural vine or let one spring from the ground in range. The vine can either lash at (vs. Parry) or grab (vs. Parry or Dodge) any target close to it. The vine counts as a medium creature for grappling.<br />**Weak.** Deal +2 damage (lash) or grapple the target (grab).<br />**Strong.** Deal +4 damage (lash) or deal +0 damage and grapple the target (grab).<br />**Critical.** Deal +6 damage (lash) or deal +2 damage, grapple, and briefly restrain the target (grab).<br />if you continue to cast this spell over multiple turns, the vine can remain for the duration. Otherwise the vine quickly withers and vanishes after using this spell. 
@@ -89,7 +89,7 @@ sidebar_position: 4
 
 ## **Tempest**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Gust** | 0 | 0 | vs. Dodge | Short |  | You summon a vortex of swirling air, clashing against your target and pulling them off their feet.<br />**Weak.** Deal +2 blast damage.<br />**Strong.** Deal +4 blast damage and push the target close.<br />**Critical.** Deal +6 blast damage and push the target a short distance. 
  **Static Shock** | 0 | 0 | vs. Dodge | Medium |  | You generate a small electric discharge from your fingertip against a target.<br />**Weak.** Deal +2 lightning damage.<br />**Strong.** Deal +4 lightning damage to the target and you can deal +2 lightning damage to one other creature in melee range of the target.<br />**Critical.** Deal +6 lightning damage to the target and you can deal +4 lightning damage to one other creature in melee range of the target. 
@@ -112,7 +112,7 @@ sidebar_position: 4
 
 ## **Peace**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Aura of Sanctuary** | 0 | 0 | Moderate (8) | Medium | singular, quick | You shield a creature in range with a magical aura discouraging other creatures from inflicting harm on them. Cast this spell as a Quick Action on your turn.<br />On a success, the target is shielded by the aura for a short duration. While shielded by the aura, whenever another creature attempts to attack them, the attacker has to roll Spirit + Fortitude vs. your Resist. On a failure, they are unable to attack the shielded creature and must choose a new target.<br />This spell ends early, if the shielded creature attacks any other creature. 
  **Calming Influence** | 0 | 0 | vs. Resist | Short |  | You calm the mind of one creature in range. You suffer +1 bane on this spell, if the target is actively engaged in combat or another dangerous situation.<br />On a success, the target is shortly charmed by you and will act with empathy and friendliness towards you. 
@@ -126,7 +126,7 @@ sidebar_position: 4
 
 ## **War**
 
- **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** 
+ **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> 
 ---|---|---|---|---|---|---
  **Battle Surge** | 0 | 0 | Moderate (8) | Medium | singular, quick | Heighten the senses of a creature in range, making it more fierce in battle.<br />On a success, the target briefly gains +1 Movement and +1 boon on the first attack they roll for on their next turn. 
  **Mighty Strike** | 0 | 0 | Special | Self |  | Conjure raw spiritual strength into your weapon attack.<br />Choose one weapon you are holding. Roll an attack with that weapon using Spirit + Mysticism. On a hit, also use your spell base damage instead of that of the weapon. 
