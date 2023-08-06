@@ -34,7 +34,7 @@ def split_table_by_Tradition(input_file, output_file):
             file.write("## **" + Tradition.strip('**') + "**\n\n")
 
             # Write the modified table header (without the "Tradition" column)
-            file.write(' **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** \n')
+            file.write(' **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> \n')
             file.write('---|---|---|---|---|---|---\n')
 
             # Write the modified table rows (without the "Tradition" column)
