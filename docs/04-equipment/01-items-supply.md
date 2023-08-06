@@ -8,9 +8,33 @@ sidebar_position: 1
 
 You can buy, sell, and find a variety of items that are useful for your adventures.
 
+### Item Quality
+
+1. **Primitive** (worth 1-50 coins)
+    - can be crafted even by apprentice craftsmen
+    - found basically anywhere, even the most primitive settlements
+2. **Simple** (worth 50-500 coins)
+    - can be crafted by novice craftsmen
+    - found in all civilized settlements
+3. **Advanced** (worth 500-2,000 coins)
+    - require adept craftsmen to create
+    - found in large settlements, or with secluded craftsmen
+4. **Formidable** (worth 2,000-10,000 coins)
+    - the pinnacle of non-magical craftsmanship and material attainable in the mortal realms
+    - only found in huge capitol cities, or hard to reach secluded craftsmen
+5. **Exceptional** (worth 10,000-50,000 coins)
+    - require magical ingredients, complex formulae, and only the most skilled craftsmen
+    - only rarely found in huge capitol cities, or legendary craftsmen
+6. **Epic** (worth 50,000-250,000 coins)
+    - require powerful magical ingredients, ancient formulae, and are the height of mortal craftsmanship
+    - only in the possession of the most powerful people, or masterworks from legendary craftsmen
+7. **Legendary** (worth 250,000+ coins)
+    - requires legendary magical ingredients, formulae lost to mortals, and the gods themselves as craftsmen
+    - the pinnacle of the most powerful people’s possession, crafted in ancient times or by the gods themselves
+
 ## Tools
 
-When you have a tool in your possession that would help you accomplish a roll you are about to attempt, add +1 boon. This roll has to be possible without the tool, otherwise it just enables the roll but doesn’t grant the boon. You can only benefit from one tool per roll.
+When you have a tool in your possession that would help you accomplish a roll you are about to attempt, gain +1 boon on the roll. This roll has to be possible without the tool, otherwise it just enables the roll but doesn’t grant the boon. You can only benefit from one tool per roll.
 
 ## Supply
 
@@ -53,7 +77,7 @@ Bundles are a special type of supply. They are foremost weapons, but can be used
 
 ## Repairing damaged items
 
-You can attempt to repair any damaged item during a night's rest, provided you carry the appropriate tools and material supplies for the type of item you want to repair. Roll Mind + Crafting. On a success, the item is no longer damaged. After each roll, regardless of result, also make a Supply Check for your materials.
+While carrying a crafting kit, you can attempt to repair a damaged item during a night's rest. Roll Mind + Crafting against 6 + the item’s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged. Destroyed items can‘t be repaired this way and instead require a downtime activity.
 
 ## Encumbrance
 
@@ -101,30 +125,6 @@ Being encumbered or over-encumbered causes several effects.
 **Encumbered.** You suffer +1 bane on Strength or Agility rolls for movement, such as climbing or swimming, and during travel.
 
 **Over-Encumbered.** You can‘t move. You can‘t use any Actions or do any rolls for physical activity.
-
-## Item Quality
-
-1. **Primitive** (worth 1-100 coins)
-    - can be crafted even by apprentice craftsmen
-    - found basically anywhere, even the most primitive settlements
-2. **Simple** (worth 100-500 coins)
-    - can be crafted by novice craftsmen
-    - found in all civilised settlements
-3. **Advanced** (worth 500-2,000 coins)
-    - require adept craftsmen to create
-    - found in large settlements, or with secluded craftsmen
-4. **Formidable** (worth 2,000-10,000 coins)
-    - the pinnacle of non-magical craftsmanship and material attainable in the mortal realms
-    - only found in huge capitol cities, or hard to reach secluded craftsmen
-5. **Exceptional** (worth 10,000-50,000 coins)
-    - require magical ingredients, complex formulae, and only the most skilled craftsmen
-    - only rarely found in huge capitol cities, or legendary craftsmen
-6. **Epic** (worth 50,000-250,000 coins)
-    - require powerful magical ingredients, ancient formulae, and are the height of mortal craftsmanship
-    - only in the possession of the most powerful people, or masterworks from legendary craftsmen
-7. **Legendary** (worth 250,000+ coins)
-    - requires legendary magical ingredients, formulae lost to mortals, and the gods themselves as craftsmen
-    - the pinnacle of the most powerful people’s possession, crafted in ancient times or by the gods themselves
 
 ## Items & Livestock
 
