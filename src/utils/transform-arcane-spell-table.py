@@ -34,7 +34,7 @@ def split_table_by_discipline(input_file, output_file):
             file.write("## **" + discipline.strip('**') + "**\n\n")
 
             # Write the modified table header (without the "Discipline" column)
-            file.write(' **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | **Effect** \n')
+            file.write(' **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> \n')
             file.write('---|---|---|---|---|---|---\n')
 
             # Write the modified table rows (without the "Discipline" column)
