@@ -128,32 +128,39 @@ Being encumbered or over-encumbered causes several effects.
 
 ## Items & Livestock
 
-### Container
+### Containers
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
- **Pouch** | 1 | 0 | 5 | Can hold up to 2 load. 
- **Linen Bag** | 1 | 0.5 | 10 | Can hold up to 5 load. 
- **Backpack** | 1 | 1 | 20 | Can hold up to 10 load. 
- **Wooden Chest** | 2 | 1 | 50 | Can hold up to 30 load. 
+ **Pouch** | 1 | 0 | 1 | Can hold up to 2 load. 
+ **Linen Bag** | 1 | 0.5 | 5 | Can hold up to 5 load. 
+ **Backpack** | 1 | 1 | 10 | Can hold up to 10 load. 
+ **Wooden Chest** | 1 | 5 | 50 | Can hold up to 50 load. 
 
 ### Gear
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
  **Simple Clothes** | 1 | 0 | 5 | Simple, functional clothes. 
- **Rope (Hemp)** | 1 | 1 | 20 | Covers a medium distance. Can be split up into multiple more fragile strings. 
- **Shovel** | 1 | 1 | 20 | You can dig a hole with it! 
- **Traveler‘s Clothes** | 2 | 0 | 20 | Sturdy clothes made for harsh weather and long journeys. 
+ **Rope (Hemp)** | 1 | 1 | 10 | Covers a medium distance. Can be split up into multiple more fragile strings. 
+ **Shovel** | 1 | 1 | 10 | You can dig a hole with it! 
+ **Traveler‘s Clothes** | 1 | 0 | 10 | Sturdy clothes made for harsh weather and long journeys. 
+ **Wineskin** | 1 | 1 | 10 | Intoxicates on frequent consumption. Has 5 uses. Spend 1 use to be intoxicated for 1 hour. While being intoxicated, you are poisoned. 
+ **Oil Flask** | 1 | 1 | 50 | Worth one unit of light for a lantern. 
+ **Pickaxe** | 1 | 2 | 50 | Used for mining rock and minerals. 
+ **Portable Ram** | 1 | 2 | 50 | Roll Strength + Athletics with this ram to force a door open - very loudly. 
+ **Camping Kit** | 2 | 1 | 50 | Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night‘s rest for up to two people. 
+ **Crafting Kit** | 2 | 1 | 50 | Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night&#x27;s rest. Roll Mind + Crafting against 6 + the item’s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged. 
  **Lantern** | 2 | 1 | 50 | Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (close distance). The lantern is not considered as Supply. 
- **Oil Flask** | 2 | 1 | 50 | Worth one unit of light for a lantern. 
- **Pickaxe** | 2 | 2 | 50 | Used for mining rock and minerals. 
- **Portable Ram** | 2 | 2 | 50 | Roll Strength + Athletics with this ram to force a door open - very loudly. 
- **Wineskin** | 2 | 1 | 50 | Intoxicates on frequent consumption. Has 5 uses. Spend 1 use to be intoxicated for 1 hour. While being intoxicated, you are poisoned. 
- **Rope (Silk)** | 2 | 1 | 100 | Covers a long distance. More delicate than hemp. 
- **Bundle of Maps** | 3 | 1 | 200 | Contains several maps for a specific region. Has 5 uses. Spend 1 use to consult the maps and gain +1 boon on a Nature roll. 
- **Bundle of Scrolls** | 3 | 1 | 200 | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature. 
- **Fine Clothes** | 3 | 1 | 200 | Clothes of a noble or rich merchant made from exotic materials. 
+ **Rope (Silk)** | 2 | 1 | 50 | Covers a long distance. More delicate than hemp, without suffering in strength. 
+ **Alchemist‘s Supplies** | 2 | 1 | 100 | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance. 
+ **Arcane Conduit** | 2 | 0 | 100 | A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast arcane spells. 
+ **Bundle of Maps** | 2 | 1 | 100 | Contains several maps for a specific region. Has 5 uses. Spend 1 use to consult the maps and gain +1 boon on a Nature roll. 
+ **Bundle of Scrolls** | 2 | 1 | 100 | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature. 
+ **Healer‘s Kit** | 2 | 1 | 100 | Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br />Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don’t have to make a Supply check for your materials and you automatically succeed on the roll. 
+ **Mystic Talisman** | 2 | 0 | 100 | A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast mystical spells. 
+ **Thieves‘ Tools** | 2 | 1 | 100 | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you blunder a roll to pick a lock, spend 1 use. 
+ **Fine Clothes** | 3 | 1 | 500 | Clothes of a noble or rich merchant made from exotic materials. 
 
 ### Supplies
 
@@ -161,7 +168,7 @@ Being encumbered or over-encumbered causes several effects.
 ---|---|---|---|---
  **Throwing Stones** | 1 | 1 | 5 | Worth one unit of ammo for slings and slingshots. 
  **Provisions** | 1 | 1 | 10 | Worth one unit of provisions. 
- **Torch** | 1 | 1 | 10 | Worth one unit of light. Emits bright light in close range and dim light in short range when lit. You can also use a lit torch as an improvised weapon dealing 2 fire damage.  
+ **Torch** | 1 | 1 | 10 | Worth one unit of light. Emit bright light in close range and dim light in short range when lit. You can also use a lit torch as an improvised weapon dealing 2 fire damage.  
  **Arrows** | 1 | 1 | 20 | Worth one unit of ammo for bows. Comes with a quiver. 
  **Materials** | 1 | 1 | 20 | Worth one unit of materials. 
  **Bolts** | 2 | 1 | 30 | Worth one unit of ammo for crossbows. Comes with a bolt case. 
@@ -172,52 +179,36 @@ Being encumbered or over-encumbered causes several effects.
 ---|---|---|---|---
  **Adventuring Gear** | 2 | 1 | 50 | Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. 
  **Brewer‘s Tools** | 2 | 1 | 50 | Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. 
- **Camping Kit** | 2 | 1 | 50 | Contains a tent, tent pegs, a tinder box, and a bedroll. Requirement for gaining the benefits of a night‘s rest. 
  **Carpenter‘ Tools** | 2 | 1 | 50 | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. 
  **Climber‘s Kit** | 2 | 1 | 50 | Contains pitons, boot tips, gloves, and a harness. 
  **Cook‘s Utensils** | 2 | 1 | 50 | Contains a metal pot, knives, forks, a stirring spoon, and a ladle. 
  **Disguise Kit** | 2 | 1 | 50 | Contains cosmetics, hair dye, small props, and a few different pieces of clothing. 
- **Healer‘s Kit** | 2 | 1 | 50 | Contains powders, bandages, a mortar and pestle, and clippers to collect plants. Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don’t have to make a Supply check for your materials and you automatically succeed on the roll. 
+ **Gaming Set** | 2 | 1 | 50 | Contains all pieces to play a specific game, such as a board, cards, dice, or tokens. 
  **Leatherworker‘s Tools** | 2 | 1 | 50 | Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps. 
  **Mason‘s Tools** | 2 | 1 | 50 | Contains a small trowel, a hammer, a chisel, brushes, and a square. 
  **Navigator‘s Tools** | 2 | 1 | 50 | Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill. 
  **Painter‘s Supplies** | 2 | 1 | 50 | Contains an easel, canvas, brushes, charcoal sticks, and a palette. 
  **Smith‘s Tools** | 2 | 1 | 50 | Contains hammers, tongs, charcoal, rags, and a whetstone. 
- **Trapmaker‘s Tools** | 2 | 1 | 50 | Includes a variety of items such as wires, springs, small gears, hinges, and hooks, as well as a set of specialized pliers, wire cutters, and a small handsaw. 
  **Weaver‘s Tools** | 2 | 1 | 50 | Contains thread, needles, and scraps of cloth. 
  **Woodcarver‘s Tools** | 2 | 1 | 50 | Contains a knife, a gourge, and a small saw. 
- **Alchemist‘s Supplies** | 2 | 1 | 100 | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance. 
- **Gaming Set** | 2 | 1 | 100 | Contains all pieces to play a specific game, such as a board, cards, dice, or tokens. 
  **Jeweler‘s Tools** | 2 | 1 | 100 | Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass. 
  **Musical Instrument** | 2 | 1 | 100 | Any common type of stringed, woodwind, brass or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourin, or macaras for percussion instruments. 
- **Thieves‘ Tools** | 2 | 1 | 100 | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you fail to pick a lock, spend 1 use. 
 
 ### Transportation
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
- **Cart** | 1 | 50 | 100 | A small, two-wheeled cart. Can hold one driver, plus up to 50 load in items, or up to four medium creatures in the back. Requires a mount to pull the cart.  
- **Chariot** | 2 | 20 | 500 | A simple wooden chariot for one or two people to stand in. Requires a mount to pull the chariot. 
+ **Cart** | 2 | 20 | 100 | A small two-wheeled wooden cart holding up to 200 load or up to four medium creatures. Can be drawn by a person or mount. 
+ **Chariot** | 2 | 20 | 500 | A wooden chariot for one or two people to stand in. Requires a mount to pull the chariot. 
 
-### Animal
+### Animals
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
  **Guard Dog (or young Jaguar, Boar, etc.)** | 1 | 12 | 50 | A dog that underwent basic training to fight for and protect it&#x27;s owner. Can be trained as a tame animal companion.  
- **Draft Horse (or Donkey, Mule)** | 1 | 130 | 200 | A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see it‘s statistics. 
+ **Draft Horse (or Donkey, Mule)** | 1 | 130 | 100 | A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see it‘s statistics. 
 
-### Spell Talisman
-
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
----|---|---|---|---
- **Arcane Conduit (weak)** | 2 | 0 | 200 | A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast arcane spells. 
- **Mystic Talisman (weak)** | 2 | 0 | 200 | A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast mystical spells. 
- **Arcane Conduit (decent)** | 3 | 0 | 1000 | Arcane spells cast with this focus deal +1 spell damage or restore +1 HP per SL. 
- **Mystic Talisman (decent)** | 3 | 0 | 1000 | Mystic spells cast with this talisman deal +1 spell damage or restore +1 HP per SL. 
- **Arcane Conduit (strong)** | 4 | 0 | 3000 | Arcane spells cast with this focus deal +2 spell damage or restore +2 HP per SL. 
- **Mystic Talisman (strong)** | 4 | 0 | 3000 | Mystic spells cast with this talisman deal +2 spell damage or restore +2 HP per SL. 
-
-### Alchemicals
+### Alchemical
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
@@ -228,8 +219,7 @@ Being encumbered or over-encumbered causes several effects.
  **Weapon Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +2 poison damage. The poison lasts for a short duration. 
  **Fire Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target. 
  **Smoke Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light. 
- **Potion of Healing (decent)** | 3 | 0 | 200 | As an action, drink this potion to regain 8 HP. 
- **Weapon Poison (decent)** | 3 | 0.5 | 200 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +2 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
- **Potion of Healing (strong)** | 4 | 0 | 500 | As an action, drink this potion to regain 12 HP. 
- **Weapon Poison (strong)** | 4 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +4 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
-
+ **Potion of Healing (decent)** | 3 | 0 | 500 | As an action, drink this potion to regain 8 HP. 
+ **Weapon Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +2 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
+ **Potion of Healing (strong)** | 4 | 0 | 2000 | As an action, drink this potion to regain 12 HP. 
+ **Weapon Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +4 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
