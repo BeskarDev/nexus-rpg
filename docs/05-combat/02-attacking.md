@@ -35,7 +35,7 @@ When you have nothing to defend yourself with, you can still throw a punch. Figh
 
 ### Non-lethal Attacks
 
-When you hit an enemy with a melee weapon and you would inflict an Injury to them, you can choose to inflict two Fatigue to them instead. When doing so, the target also has to roll Strength + Fortitude. The difficulty of the roll is hard (10) for a target with one Wound or very hard (12) for a target with two Wounds. The target automatically fails, if they suffered three Wounds already. If they fail, they fall unconscious for a short duration, or until they are woken up by another creature or event.
+When you hit an enemy with a melee weapon and you would inflict an Injury to them, you can choose to inflict two Fatigue to them instead. When doing so, the target also has to roll Strength + Fortitude. The difficulty of the roll is moderate (8) for a target with one Wound or hard (10) for a target with two Wounds. The target automatically fails, if they suffered three Wounds already. If they fail, they fall unconscious for a short duration, or until they are woken up by another creature or event.
 
 ## Ranged Attacks
 
