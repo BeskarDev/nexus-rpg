@@ -33,6 +33,10 @@ To attack with a melee weapon or spell you have to be in melee range of your tar
 
 When you have nothing to defend yourself with, you can still throw a punch. Fighting unarmed doesn’t count as wielding a weapon, and reduces your base Parry to 6. When you hit with an unarmed attack, you only deal your base damage but no weapon damage (you can still benefit from other effects that increase your damage).
 
+### Non-lethal Attacks
+
+When you hit an enemy with a melee weapon and you would inflict an Injury to them, you can choose to inflict two Fatigue to them instead. When doing so, the target also has to roll Strength + Fortitude. The difficulty of the roll is hard (10) for a target with one Wound or very hard (12) for a target with two Wounds. The target automatically fails, if they suffered three Wounds already. If they fail, they fall unconscious for a short duration, or until they are woken up by another creature or event.
+
 ## Ranged Attacks
 
 Ranged attacks require your target to be visible and within your weapon’s or spell’s range.
@@ -64,10 +68,6 @@ On a successful attack, you deal damage to the enemy.
 - The total amount of damage is then reduced by the enemy’s Armor Value (AV). Your damage can’t be reduced below 1.
 
 If you use a weapon or cast a spell that adds a specific damage type, such as fire, all of the damage from the attack counts as that damage type.
-
-### Non-lethal Attacks
-
-When you hit an enemy with a melee weapon and you would inflict an Injury to them, you can choose to inflict two Fatigue to them instead, potentially just knocking them unconscious without killing them.
 
 ### Lasting Damage
 
