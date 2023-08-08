@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# 🧥 Armor
+# 🛡️ Armor
 
 Armor grants it‘s wearer protection in exchange for decreased mobility.
 
