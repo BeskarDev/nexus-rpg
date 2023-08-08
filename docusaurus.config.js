@@ -93,7 +93,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'equipmentSidebar',
             position: 'left',
-            label: '🛡️ Equipment',
+            label: '👜 Equipment',
           },
           {
             type: 'docSidebar',
