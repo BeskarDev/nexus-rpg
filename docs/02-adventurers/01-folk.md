@@ -12,7 +12,7 @@ The Old Folk consist of those species that have a cultural history spanning thou
 
 ### Dwarf
 
-<img src="./img/dwarf.png" alt="dwarf" width="300"/>
+![folk-img](./img/dwarf.jpg)
 
 Carved of the stone itself, the dwarves have a deep connection to the earth. They are masters of mining and metalworking, and are renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination is a testament to their unbreakable bond with the earth.
 
@@ -26,7 +26,7 @@ Carved of the stone itself, the dwarves have a deep connection to the earth. The
 
 ### Elf
 
-<img src="./img/elf.jpg" alt="dwarf" width="300"/>
+![folk-img](./img/elf.jpg)
 
 Living in a spiritual symbiotic state with the life force of nature in their immediate environment, the elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering.
 
@@ -40,7 +40,7 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 ### Gnome
 
-<img src="./img/gnome.jpg" alt="dwarf" width="300"/>
+![folk-img](./img/gnome.jpg)
 
 Natural psychics with the ability to read other peoples' intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company.
 
@@ -55,6 +55,7 @@ Natural psychics with the ability to read other peoples' intentions and surface 
 ### Hune
 
 <img src="./img/hune.png" alt="dwarf" width="300"/>
+![folk-img](./img/hune.jpg)
 
 A race of towering beings, with incredible strength and endurance. They are often solitary and reclusive, but possess a deep wisdom and knowledge of the world.
 
@@ -66,7 +67,7 @@ A race of towering beings, with incredible strength and endurance. They are ofte
 
 ### Orc
 
-<img src="./img/orc.png" alt="dwarf" width="300"/>
+![folk-img](./img/orc.jpg)
 
 Coming from violent and brutal cultures, the orcs have a reputation for brutality and savagery. While many have adopted a much more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable wills make them formidable allies.
 
@@ -84,7 +85,7 @@ The Old Folk most often hold superstitions against them, as many view them not w
 
 ### Goblin
 
-<img src="./img/goblin.png" alt="dwarf" width="300"/>
+![folk-img](./img/goblin.jpg)
 
 A cunning and resourceful race of small statue, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset.
 
@@ -98,7 +99,7 @@ A cunning and resourceful race of small statue, with a knack for trickery and de
 
 ### Human
 
-<img src="./img/human.jpg" alt="dwarf" width="300"/>
+![folk-img](./img/human.jpg)
 
 The newest folk among all the New Folk, humans possess a natural arcane ability that makes many other folk scared of them. Others try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges.
 
@@ -110,7 +111,7 @@ The newest folk among all the New Folk, humans possess a natural arcane ability 
 
 ### Lionfolk
 
-<img src="./img/lionfolk.png" alt="dwarf" width="300"/>
+![folk-img](./img/lionfolk.jpg)
 
 A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with.
 
@@ -124,7 +125,7 @@ A proud and regal race, with a deep connection to the natural world and a revere
 
 ### Lizardfolk
 
-<img src="./img/lizardfolk.png" alt="dwarf" width="300"/>
+![folk-img](./img/lizardfolk.jpg)
 
 A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous, but possess a wisdom and cunning born of their harsh environment.
 
