@@ -54,7 +54,6 @@ Natural psychics with the ability to read other peoples' intentions and surface 
 
 ### Hune
 
-<img src="./img/hune.png" alt="dwarf" width="300"/>
 ![folk-img](./img/hune.png)
 
 A race of towering beings, with incredible strength and endurance. They are often solitary and reclusive, but possess a deep wisdom and knowledge of the world.
