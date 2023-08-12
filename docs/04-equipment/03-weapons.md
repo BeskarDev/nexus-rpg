@@ -10,9 +10,9 @@ sidebar_position: 3
  **Hatchet (or Broadaxe, Cleaver, War Sickle)**                            | Axe      | 2          | agile, light, slash                                    | 1           | 1        | 50       
  **Battleaxe (or Crescent Axe)**                                           | Axe      | 3          | slash, versatile (+1)                                 | 2           | 1        | 100      
  **Greataxe (or Elipson Axe, War Scythe)**                                 | Axe      | 4          | heavy (d8), slash, two-handed                          | 2           | 2        | 200      
+ **Dart (or Throwing Knife, Throwing Star, Chakram)**                      | Blade    | 2          | agile, bundle, light, pierce, thrown (short)             | 1           | 0.5      | 50       
  **Scimitar (or Khopesh, Kopis, Kukri, Machete, Macuahuitl, Shotel)**      | Blade    | 2          | agile, light, slash                                    | 1           | 1        | 50       
  **Shortsword (or Dagger, Xiphos, Duan Jian, Wakizashi)**                  | Blade    | 2          | agile, light, pierce                                   | 1           | 1        | 50       
- **Dart (or Throwing Knife, Throwing Star, Chakram)**                      | Blade    | 2          | agile, bundle, light, pierce, thrown (short)             | 1           | 0.5      | 50       
  **Broadsword (or Katana, Dao)**                                           | Blade    | 3          | slash, versatile (+1)                                 | 2           | 1        | 100      
  **Longsword (or Bastard Sword, Rapier, Jian)**                            | Blade    | 3          | pierce, versatile (+1)                                | 2           | 1        | 100      
  **Great Saber (or Rhomphaia, Odachi, Miaodao)**                          | Blade    | 4          | heavy (d8), slash, two-handed                          | 2           | 1        | 200      
@@ -27,8 +27,8 @@ sidebar_position: 3
  **Spiked Chain (or Kusarigama)**                                          | Brawling | 2          | double-sided, reach, switch (crush / slash), two-handed | 2           | 1        | 200      
  **Light Crossbow (or Gastraphetes)**                                      | Crossbow | 4          | ammo, heavy (d6), range (long), reload, two-handed       | 3           | 2        | 500      
  **Heavy Crossbow (or Hand Ballista)**                                     | Crossbow | 6          | ammo, heavy (d8), range (very long), reload, two-handed  | 3           | 3        | 1000     
- **Club (or Tonfa, Nunchaku, War Scepter)**                                | Mace     | 2          | agile, crush, light                                    | 1           | 1        | 50       
  **Throwing Club (or Light Hammer)**                                       | Mace     | 2          | agile, bundle, crush, light, thrown (short)              | 1           | 0.5      | 50       
+ **Club (or Tonfa, Nunchaku, War Scepter)**                                | Mace     | 2          | agile, crush, light                                    | 1           | 1        | 50       
  **Mace (or War Club, Flail, Morningstar, Warhammer, Warpick)**            | Mace     | 3          | crush, versatile (+1)                                 | 2           | 1        | 100      
  **Maul (or Greatclub, Kanabo, Polehammer)**                               | Mace     | 4          | crush, heavy (d8), two-handed                          | 2           | 2        | 200      
  **Javelin (or Harpoon)**                                                  | Polearm  | 2          | bundle, light, thrown (medium)                         | 1           | 1        | 50       
@@ -41,4 +41,6 @@ sidebar_position: 3
  **Heavy Shield**                                                          | Shield   | 2          | AV +2, heavy (d8), parry +2, rigid 1                    | 2           | 2        | 500      
  **Great Shield**                                                          | Shield   | 3          | AV +3, covering, heavy (d10), parry +2, rigid 2          | 3           | 2        | 1000     
  **Sling (or Slingshot)**                                                  | Thrown   | 2          | ammo, crush, thrown (medium), two-handed                | 1           | 0.5      | 50       
- **Bola (or Net)**                                                         | Thrown   | 2          | bundle, entangle, heavy (d6), thrown (short)            | 1           | 0.5      | 50       
+ **Bola (or Net)**                                                         | Thrown   | 2          | bundle, entangle, heavy (d6), thrown (short)            | 1           | 0.5      | 50     
+ **Blowpipe**                                                         | Thrown   | 1          | ammo, pierce, range (medium)            | 1           | 0.5      | 50     
+ 
