@@ -74,11 +74,11 @@ Master creatures…
 
 - can take a number of Wounds equal to the number of adventurers fighting them (min. 3). When they suffer a Wound, they regain all of their HP.
 - If they start dying, they automatically die at the end of the scene.
-- once they take a Wound, they recover from all negative conditions and effects, that affect them.
+- once they take a Wound, they recover from all negative conditions and effects that previously affected them.
+- when they succeed on a roll to withstand or recover from any condition, they are immune to that condition for the rest of the scene.
 - can spend Resolve to re-roll any test. They gain a fixed amount of Resolve per scene, usually between 1 and 3 depending on their tier.
 - don’t have to roll for Morale.
-- take one Action after each of the adventurers turns in addition to their own turn.
-- when they succeed on a roll to withstand or recover from any condition, they are immune to that condition for the rest of the scene.
+- take one extra turn at extremely slow Initiative.
 
 ## Building a Creature
 
