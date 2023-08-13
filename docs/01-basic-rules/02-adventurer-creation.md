@@ -9,7 +9,7 @@ sidebar_position: 2
 When creating a new adventurer, follow the steps below:
 
 1. **Choose your Attributes**
-    - You start with a d6 in all attributes. You can then choose to increase one attribute to d8, but you must also decrease one to d4.
+    - You start with a d6 in all attributes. You can then choose to increase one attribute to d8, but you must also decrease one to d4 when doing so.
 2. **Choose your Folk**
     - Also choose a culture for your folk. You learn the language of your chosen culture, in addition to the common language of the region.
 3. **Choose your Upbringing**
