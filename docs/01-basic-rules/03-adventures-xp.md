@@ -40,7 +40,7 @@ If they resolved an adventure during that gaming session, they each gain XP base
 
 ## Experience Points (XP)
 
-In between adventurers, the group can spend their XP on different aspects of their characters during downtime. The group can decide on the length of their in-game downtime or the GM can set a limit until the next adventure awaits. Spending XP to improve something about your character also has to be explainable in the world of the characters. So improving a skill might require finding a mentor, or studying at some place.
+In between adventurers, the group can spend their XP on different aspects of their characters during downtime. The group can decide on the length of their in-game downtime or the GM can set a limit until the next adventure awaits. Spending XP to improve something about your character also has to be explainable in the world of the characters. So improving a skill might require finding a mentor or studying at some place.
 
 While XP has to be spend upfront, you don‘t have to spend the required time all at once. So you can train over multiple downtimes to unlock a single improvement.
 
