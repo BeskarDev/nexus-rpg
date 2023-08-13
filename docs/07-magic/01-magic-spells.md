@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ### Learning a magic skill
 
-Any character can only learn of of the two magic skills. When first learning one of the two magic skills, you gain the following traits for it.
+Any character can only learn one of the two magic skills Arcana and Mysticism. When first learning one of the two magic skills, you gain the following traits for it.
 
 ### Arcana
 
