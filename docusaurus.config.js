@@ -145,7 +145,7 @@ const config = {
           alt: 'Nexus RPG Logo',
           src: 'img/logo.png',
           href: 'https://beskardev.github.io/nexus-rpg/',
-          width: 160,
+          width: 51,
           height: 51,
         },
         copyright: `Copyright © ${new Date().getFullYear()} BeskarDev on GitHub`,
