@@ -151,7 +151,7 @@ Being encumbered or over-encumbered causes several effects.
  **Portable Ram** | 1 | 2 | 50 | Roll Strength + Athletics with this ram to force a door open - very loudly. 
  **Camping Kit** | 2 | 1 | 50 | Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night‘s rest for up to two people. 
  **Crafting Kit** | 2 | 1 | 50 | Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night&#x27;s rest. Roll Mind + Crafting against 6 + the item’s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged. 
- **Lantern** | 2 | 1 | 50 | Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (close distance). The lantern is not considered as Supply. 
+ **Lantern** | 2 | 1 | 50 | Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (only dim light in close distance). The lantern is not considered as Supply. 
  **Rope (Silk)** | 2 | 1 | 50 | Covers a long distance. More delicate than hemp, without suffering in strength. 
  **Alchemist‘s Supplies** | 2 | 1 | 100 | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance. 
  **Arcane Conduit** | 2 | 0 | 100 | A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast arcane spells. 
@@ -167,6 +167,7 @@ Being encumbered or over-encumbered causes several effects.
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
  **Throwing Stones** | 1 | 1 | 5 | Worth one unit of ammo for slings and slingshots. 
+ **Blowdarts** | 1 | 1 | 10 | Worth one unit of ammo for blowpipes. 
  **Provisions** | 1 | 1 | 10 | Worth one unit of provisions. 
  **Torch** | 1 | 1 | 10 | Worth one unit of light. Emit bright light in close range and dim light in short range when lit. You can also use a lit torch as an improvised weapon dealing 2 fire damage.  
  **Arrows** | 1 | 1 | 20 | Worth one unit of ammo for bows. Comes with a quiver. 
@@ -205,7 +206,7 @@ Being encumbered or over-encumbered causes several effects.
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
- **Guard Dog (or young Jaguar, Boar, etc.)** | 1 | 12 | 50 | A dog that underwent basic training to fight for and protect it&#x27;s owner. Can be trained as a tame animal companion.  
+ **Guard Dog (or young Jaguar, Boar, etc.)** | 1 | 12 | 50 | A dog or other similar sized animal that underwent basic training to fight and protect it&#x27;s owner. Can be trained as a tame animal companion, provided you have the Survival talent with the same name.  
  **Draft Horse (or Donkey, Mule)** | 1 | 130 | 100 | A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see it‘s statistics. 
 
 ### Alchemical
@@ -214,12 +215,15 @@ Being encumbered or over-encumbered causes several effects.
 ---|---|---|---|---
  **Antitoxin** | 2 | 0.5 | 50 | As an action, drink this liquid to cure you of one source of poison affecting you. 
  **Acid Vial** | 2 | 0.5 | 100 | Counts as a thrown weapon (bundle, thrown (short)) dealing +3 acid damage as weapon damage. 
- **Flammable Paste** | 2 | 0 | 100 | Has 5 uses. Spend 1 use as an Action to apply the paste to any weapon or one ammo supply. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort. Any strong or critical attack with the ignited weapon or ammunition inflicts burning (2) on the target. Once ignited, the paste lasts for a short duration. 
- **Potion of Healing (weak)** | 2 | 0 | 100 | As an action, drink this potion to regain 4 HP. 
- **Weapon Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +2 poison damage. The poison lasts for a short duration. 
+ **Flammable Paste** | 2 | 0 | 100 | Has 5 uses. Spend 1 use as an Action to apply the paste to any weapon or one type of ammo supply. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort. <br />Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignoring AV) to the target. The ignited paste lasts for a short duration. 
+ **Paralyzing Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, the target is poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
+ **Potion of Healing (weak)** | 2 | 0 | 100 | Drink this potion as an Action to regain 4 HP. 
+ **Weapon Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignoring AV) to the target. 
  **Fire Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target. 
  **Smoke Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light. 
- **Potion of Healing (decent)** | 3 | 0 | 500 | As an action, drink this potion to regain 8 HP. 
- **Weapon Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +2 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
- **Potion of Healing (strong)** | 4 | 0 | 2000 | As an action, drink this potion to regain 12 HP. 
- **Weapon Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +4 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
+ **Paralyzing Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, the target is poisoned and faltering for a short duration. They can roll a hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
+ **Potion of Healing (decent)** | 3 | 0 | 500 | Drink this potion as an Action to regain 8 HP. 
+ **Weapon Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignoring AV) to the target. 
+ **Paralyzing Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, the target is poisoned, faltering, and X for a short duration. They can roll a very hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
+ **Potion of Healing (strong)** | 4 | 0 | 2000 | Drink this potion as an Action to regain 16 HP. 
+ **Weapon Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignoring AV) to the target. 

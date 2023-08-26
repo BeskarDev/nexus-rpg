@@ -18,11 +18,11 @@ Carved of the stone itself, the dwarves have a deep connection to the earth. The
 
 **Cultures:** Dhurvar (Ice-Dwarves), Mahruk (Gold-Dwarves), Ghahar (Fortress-Dwarves), Urduk (Grey-Dwarves)
 
-**Dwarven Sight.** You are able to roughly make out differences in temperature by sight. You can see a medium distance in absolute darkness as in dim light. You gain +1 boon on Perception rolls for seeing at melee range, but suffer +1 bane instead at long range or further.
+**Dwarven Sight.** You are able to roughly make out differences in temperature by sight, granting you vision even in total darkness. You can see at melee range in absolute darkness as in bright light and up to a medium distance as in dim light.
 
-**Stoneskin.** You gain +1 AV. When you have to roll Fortitude to withstand poison, intoxication, or illness, you gain +1 boon on the roll.
+**Stoneskin.** You gain +1 AV. When you have to roll with Fortitude to withstand poison, intoxication, or illness, you gain +1 boon on the roll.
 
-**Squat Build.** You impose +1 bane on rolls that attempt to knock you prone or push you. Also when you are pushed, reduce the distance by one step (being pushed close instead doesn’t push you at all).
+**Squat Build.** You impose +1 bane on rolls that attempt to knock you prone or push you. Also when you are pushed, reduce the distance by one step (if you would be pushed close, instead you aren‘t pushed at all).
 
 ### Elf
 
@@ -32,11 +32,11 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 **Cultures:** Ra’thep (Sun-Elves), Sylvar (Forest-Elves), Alfir (Shadow-Elves), Ho’shien (River-Elves)
 
-**Night Vision.** You can see a short distance in absolute darkness as in dim light.
+**Night Vision.** You can see one range category further from sources of bright and dim light.
 
 **Fleet-Footed.** You can choose to gain +1 Movement during your turn. You can use this ability once per combat.
 
-**Spiritual Symbiosis.** You take nourishment from nature around you. While in the wilderness, you only need to sleep for 4 hours each night, allowing you to use the remaining 4 hours for light non-physical activity.
+**Spiritual Symbiosis.** You take nourishment from the natural world around you. While in wilderness with lush vegetation, you only need to sleep for 4 hours each night, allowing you to use the remaining 4 hours for light non-physical activity.
 
 ### Gnome
 
@@ -50,7 +50,11 @@ Natural psychics with the ability to read other peoples' intentions and surface 
 
 **Scent of Illusions.** You can instinctively make out illusions and invisible things. You gain +1 boon on Spirit rolls to identify magical falsehoods and illusions and impose +1 bane on rolls to fool you with falsehoods or illusions. 
 
-**Small Statue.** You gain +1 boon on Agility rolls to hide or move stealthily. You can only wield versatile weapons two-handed and don‘t add a bonus to weapon damage from it.
+**Small Statue.** You are of small size. This grants you the following effects:
+
+- You gain +1 boon on Agility rolls to hide or move stealthily.
+- You can only wield versatile weapons two-handed and don‘t add a bonus to weapon damage from it.
+
 
 ### Hune
 
@@ -62,7 +66,7 @@ A race of towering beings, with incredible strength and endurance. They are ofte
 
 **Giant’s Blood.** +2 HP. Increase your Strength multiplier by 1 for how much load you can carry before becoming encumbered or over-encumbered.
 
-**Stoic Mind.** You gain +1 boon on Spirit rolls against being dazed or frightened.
+**Stoic Mind.** +1 Resist. You gain +1 boon on Spirit + Fortitude rolls.
 
 ### Orc
 
@@ -74,7 +78,7 @@ Coming from violent and brutal cultures, the orcs have a reputation for brutalit
 
 **Orcish Fury.** When you roll a critical success on an attack with a melee weapon, add you weapon damage an additional time to the total damage.
 
-**Pride above Death.** When you would suffer one Wound, you can choose to ignore it. You can use this ability once per day.
+**Pride above Death.** When you would suffer one Injury, you can choose to ignore it. You can use this ability once per day.
 
 ## The New Folk
 
@@ -90,11 +94,14 @@ A cunning and resourceful race of small statue, with a knack for trickery and de
 
 **Cultures:** Sniknez (Cave-Goblins), Goki (Monkey-Goblins)
 
-**Night Vision.** You can see a short distance in absolute darkness as in dim light.
+**Night Vision.** You can see one range category further from sources of bright and dim light.
 
-**Quick Escape.** When an enemy missed you with a melee attack, you can use your Quick Action to move close without provoking Opportunity Attacks. You can use this ability once between turns.
+**Quick Escape.** When an enemy missed you with a melee attack, you can choose to move close without provoking Opportunity Attacks. You can use this ability once between turns.
 
-**Small Statue.** You gain +1 boon on Agility rolls to hide or move stealthily. You can only wield versatile weapons with two hands and don‘t add any bonus damage from it.
+**Small Statue.** You are of small size. This grants you the following effects:
+
+- You gain +1 boon on Agility rolls to hide or move stealthily.
+- You can only wield versatile weapons two-handed and don‘t add a bonus to weapon damage from it.
 
 ### Human
 
@@ -116,7 +123,7 @@ A proud and regal race, with a deep connection to the natural world and a revere
 
 **Cultures:** Jakharii (Savannah-Lionfolk), Saghal (Jungle-Pantherfolk)
 
-**Night Vision.** You can see a short distance in absolute darkness as in dim light.
+**Night Vision.** You can see one range category further from sources of bright and dim light.
 
 **Powerful Roar.** You can use your Action in combat to unleash a powerful lion’s roar. Every enemy within short distance has to roll Spirit + Fortitude. If they fail, they are frightened of you. They can re-roll against their fear at the start of their turns. You can use this ability once per combat.
 
@@ -130,7 +137,7 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 
 **Cultures:** Vaashk (Marshland-Crocodilefolk), Quex-kul (Jungle-Lizardfolk)
 
-**Thick Scales.** While you wear no armor, your natural scales grant +2 AV.
+**Thick Scales.** Your natural scales grant +2 AV as armor.
 
 **Aquatic Nature.** You can hold your breath for 4 + 1/2 Strength minutes.
 

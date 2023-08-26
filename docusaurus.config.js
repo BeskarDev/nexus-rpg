@@ -148,7 +148,7 @@ const config = {
           width: 51,
           height: 51,
         },
-        copyright: `Copyright © ${new Date().getFullYear()} BeskarDev on GitHub`,
+        copyright: `Copyright © ${new Date().getFullYear()} BeskarDev - Art generated with https://leonardo.ai/`,
       },
     }),
 

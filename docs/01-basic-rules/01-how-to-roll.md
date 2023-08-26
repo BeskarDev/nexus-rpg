@@ -42,36 +42,18 @@ If you…
 - roll 2 or more above the TN, you score a strong success.
 - roll 4 or more above the TN, you score a critical success.
 
+> For example, you roll a test against a moderate difficulty of 8. If you roll a 8 or 9, it is a weak success. A 10 or 11 would be a strong success and a 12 or higher would be a critical success.
+> 
+
 | Difference to TN | Success Level (SL) | Description |
 | --- | --- | --- |
 | -4 or lower | Blunder | You fail horribly at your task. This situation gets worse or your failure has a major negative consequence. |
 | -3 to -1 | Failure | You fail at your task and something bad happens as a result of it. |
 | 0 to 1 | Weak | You barely succeed. In a stressful situation, your success might have some cost or consequence attached. |
-| 2 to 3 | Strong | You succeed fully and convincingly. Without strings attached. |
+| 2 to 3 | Strong | You succeed fully and without strings attached. |
 | 4 or more | Critical | You succeed in the best way possible. Your success comes with positive side effects. |
 
 > Note that failing or blundering a roll shouldn’t just mean that the adventurer is stuck in a situation - that’s never fun. Either something bad happens as a result of their roll and after they deal with the bad thing, they can try the roll again, OR something bad happens and the situation is resolved regardless, just in a disadvantageous way to the adventurer.
-> 
-
-### Roll for Discovery
-
-Use this kind of skill test whenever you want to attempt to gain knowledge about a situation, place, object, person, creature, or any other subject matter in the form of Discovery.
-
-You can only roll for Discovery with expert skills you have learned.
-
-You announce the subject you wish to gain Discovery for and the GM tells you the TN to do so.
-
-**Weak.** You gain one Discovery.
-
-**Strong.** You gain two Discovery.
-
-**Critical.** You gain three Discovery.
-
-For the rest of the scene, you can use one Discovery to make one assumption, observation, or ask the GM one closed question. The GM must answer if your assumption or observation is generally true or false, or answer your question with yes, no, or a short explanation.
-
-When you or one of your allies act on an answer you got from spending Discovery, gain +1 boon on the roll. You can use all available Discovery for the rest of the scene, but not re-roll for Discovery about the same subject.
-
-> See examples for what you can roll for Discovery about under “Skills”.
 > 
 
 ### Boons and Banes
@@ -80,12 +62,12 @@ Whenever you're instructed to “gain a boon” or “suffer a bane” in an eff
 
 If you roll with boons, pick the highest result among the d6 for your roll and add it to your Attribute Die. Rolling with banes forces you to take the lowest result instead.
 
-> Examples:
-- Roll with +1 boon → You roll your Attribute Die + 2d6 (take the highest d6) + Skill Rank.
-- Roll with +1 bane → You roll your Attribute Die + 2d6 (take the lowest d6) + Skill Rank.
+> There exist the following cases of rolling with boons and/or banes.
+- Roll with +1 boon → You roll your Attribute Die + 2d6 (take the highest of the two d6) + Skill Rank.
+- Roll with +1 bane → You roll your Attribute Die + 2d6 (take the lowest of the two d6) + Skill Rank.
 - Roll with +1 boon and +1 bane → You roll your Attribute Die + 1d6 (boon and bane cancel each other out) + Skill Rank.
-- Roll with +2 boons and +1 bane → You roll your Attribute Die + 2d6 (only one boon remains, take the highest d6) + Skill Rank.
-- Roll with +1 boons and +2 bane → You roll your Attribute Die + 2d6 (only one bane remains, take the lowest d6) + Skill Rank.
+- Roll with +2 boons and +1 bane → You roll your Attribute Die + 2d6 (only one boon remains, take the highest of the two d6) + Skill Rank.
+- Roll with +1 boons and +2 bane → You roll your Attribute Die + 2d6 (only one bane remains, take the lowest of the two d6) + Skill Rank.
 > 
 
 ### Rolling for Untrained Skills
@@ -100,6 +82,9 @@ You suffer +1 bane on
 You can’t attempt to roll
 
 - untrained magic skills
+
+> For example, rolling Fortitude to withstand the scorching sun while traveling through the desert, without having that skill trained, doesn’t impose any penalties. Meanwhile, rolling Nature to understand the properties of some ominous plant in the wild imposes +1 bane on the roll if untrained.
+> 
 
 ### Re-rolling tests
 

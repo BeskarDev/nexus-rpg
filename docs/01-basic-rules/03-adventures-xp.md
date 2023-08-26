@@ -44,12 +44,12 @@ In between adventurers, the group can spend their XP on different aspects of the
 
 While XP has to be spend upfront, you don‘t have to spend the required time all at once. So you can train over multiple downtimes to unlock a single improvement.
 
-| **Improvement** | **XP Cost** |
+| Improvement | XP Cost |
 | --- | --- |
 | Improve Skill | 1 or more XP |
 | Improve Attribute One Step | 4 XP |
 
-## Learn New Skills
+### Learn New Skills
 
 You start the game with a number of skills you already learned based on your upbringing and background. You can learn entirely new skills during downtime by spend time and coin. At the end of that time, you learn the new skill and can improve it with XP. You can only ever learn up to 12 skills.
 
@@ -65,23 +65,26 @@ As you spend more XP, you advance your rank in that skill at certain thresholds.
 | --- | --- | --- | --- | --- | --- | --- |
 | Spend XP | 0-1 | 2-5 | 6-11 | 12-19 | 20-29 | 30 |
 
-#### Optional Rule: XP Pacing
+### Optional Rule: XP Pacing
 
-> With this optional rule, the maximum amount of XP you can spend in each individual skill is determined by the total amount of XP you have spend on all of your skills combined.
+> Consider using this rule, if your group prefers a more paced approach to how much XP they can spend on individual skills and attributes.
 > 
 
-If a group of adventurers prefers a more balanced approach to how much XP they can spend on individual skills, consider using this optional rule.
+With this optional rule, the maximum amount of XP you can spend in each individual skill is determined by the total amount of XP you have spend so far.
 
-Using this rule enforces a wider spread of XP in many different skills without having one super advanced skill, while all others are much lower.
+For example, when starting a new adventuring campaign at the default start, you start with 6 spend XP in total (2 XP over three skills). Any XP you gain from your adventures allows you to invest 2 XP per skill more (up to 4 XP per skill total). Once you spend 12 XP in total on your skills and attributes (i.e. with 4 XP in three different skills, or 4 XP in two different skills and 4 XP for upgrading one attribute dice by one step), you are now able to invest up to 8 XP per skill instead and even increase your attributes to up to a d10.
 
 | Adventuring Tier | Tier 1 (fresh) | Tier 2 (capable) | Tier 3 (experienced) | Tier 4 (seasoned) | Tier 5 (heroic) | Tier 6 (legendary)  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Total XP Spend On Skills | ≥ 10 XP | 11-20 XP | 21-30 XP | 31-40 XP | 41-50 XP | 51+ XP |
-| Max. XP per Skill | 4 XP each | 8 XP each | 12 XP each | 16 XP each | 20 XP each | 30 XP each |
+| Total XP Spend On Skills | ≥ 0 XP | ≥ 12 XP | ≥ 24 XP | ≥ 36 XP | ≥ 48 XP | ≥ 60 XP |
+| Max. XP per Skill | 4 XP each (Rank 1) | 8 XP each (Rank 2)  | 12 XP each (Rank 3) | 16 XP each (Rank 3) | 20 XP each (Rank 4) | 30 XP each (Rank 5) |
+| Max. Attribute Dice | d8 | d10 | d10 | d12 | d12 | d12 |
 
 ### Learning Talents
 
-> Every 2 XP in a skill unlocks a new talent or a new rank for an existing talent.
+> Every 2 XP in a skill unlocks a new talent at rank 1 or a new rank for an existing talent.
 > 
 
-Your spend XP in a skill determine how many talents you can learn for that skill (2 XP per talent rank). Choose any number of talents with a total XP cost up to the amount of spend XP in your skill and that are of equal or lower rank than your skill. Talents can be learned immediately during your training time when spending the XP for a skill. You can also hold onto your spend XP in a skill when you are saving up for a talent. You must first learn a lower rank of a talent before acquiring its next higher rank.
+Your spend XP in a skill determine how many ranks of talents you can learn for that skill (2 XP per talent rank). Choose any number of talent ranks with a total XP cost up to the amount of spend XP in your skill. You can only choose a talent rank of equal or lower value than your associated skill rank and if you unlocked all of the talent’s previous ranks.
+
+Talents can be learned immediately during your training time when spending the XP for a skill. You can also hold onto your spend XP in a skill when you are saving up for a talent. You must first learn a lower rank of a talent before acquiring its next higher rank.
