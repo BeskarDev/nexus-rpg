@@ -16,7 +16,7 @@ Arcane magic channels the power of the caster’s mind. You can create magical e
 
 Being an arcanist was, for the longest time, considered to be a heretical mutation and such individuals were shunned from their communities. But since the arcane awakening of the humans, the usefulness of these arcanists as members of court and weapons of war was slowly acknowledged.
 
-- Your Spell Base Damage is 1/2 your Mind.
+- Your Spell Power is 1/2 your Mind.
 - Your Focus is equal to (Mind - 2) + (2 x Arcana).
 - Choose your first discipline and learn two rank 0 spells for it.
 - Whenever you gain a rank in Arcana, learn two new spells of equal or lower rank for any discipline you learned or adopt a new discipline and learn one rank 0 spell for it.
@@ -39,7 +39,7 @@ Mystic magic manipulates the world around you and channels it’s energy to turn
 
 Practicing mystic magic can take many forms. Devoting yourself to a god and channeling it‘s magic, or communing with the spirits of the world directly. Almost every community has at least one person among them practicing mystic magic. From the shaman of the village, over a circle of witches, to a full priesthood to a major deity.
 
-- Your Spell Base Damage is 1/2 your Spirit.
+- Your Spell Power is 1/2 your Spirit.
 - Your Focus is equal to (Spirit - 2) + (2 x Mysticism).
 - Choose your traditions and learn two rank 0 spells for them. You can either choose:
     - Devotion (choose one tradition, you learn +1 spell for it immediately and whenever you learn new spells from gaining a rank in Mysticism)
@@ -93,7 +93,12 @@ You can only cast one spell of rank 1 or higher per turn. You can still cast ano
 
 Many spells deal damage to one or more creatures. The first effect of a spell for a given SL usually lists it's spell damage, describing something like “Deals +X damage”. Similarly to weapons, spells also multiply their spell damage with increasing SL. Though, while for weapons this is described implicitly in the Attacking section, each spell lists their total spell damage for each SL directly within it's effect.
 
-When a spell's effect lists “+X damage” or “+X HP”, also add your Spell Base Damage to that number.
+When a spell's effect lists “+X damage” for damage or “+X HP” for healing, use your Spell Power (1/2 Mind/Spirit) as a base value, and add that number to it, as well as any other damage or healing modifiers.
+
+Inversely, if a spell’s effect only lists “X damage” or “X HP” without a “+”, you don’t use your Spell Power as a base value, but only the listed value and any other applicable modifiers.
+
+> For example, you cast the arcane spell Flickering Flame. You have a d8 for your Mind attribute. First, roll Mind + Arcana vs. the target’s Dodge. On a weak hit, you deal 6 fire damage to them. 4 damage from your Spell Power (1/2 Mind) and “+2 fire damage” from the spell’s effect for a weak success.
+> 
 
 ### Spell Concentration
 
