@@ -144,7 +144,7 @@ const config = {
         logo: {
           alt: 'Nexus RPG Logo',
           src: 'img/logo.png',
-          href: 'https://beskardev.github.io/nexus-rpg/',
+          href: 'https://github.com/BeskarDev',
           width: 51,
           height: 51,
         },
