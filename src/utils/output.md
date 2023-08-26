@@ -1,96 +1,898 @@
-### Containers
+## **Light**
 
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
+### **Dazzling Light**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- **Pouch** | 1 | 0 | 1 | Can hold up to 2 load. 
- **Linen Bag** | 1 | 0.5 | 5 | Can hold up to 5 load. 
- **Backpack** | 1 | 1 | 10 | Can hold up to 10 load. 
- **Wooden Chest** | 1 | 5 | 50 | Can hold up to 50 load. 
+ 0 | 0 | vs. Dodge | Medium | -
 
-### Gear
+**Effect**<br /> You create a small point of light at the target location. The light provides dim light in short range of it. The light can also move with you while staying in range. When targeted at a creature, you can make the light explode in their face instead.<br />**Weak.** Deal +2 radiant damage.<br />**Strong.** Deal +4 radiant damage. The target is also briefly blinded.<br />**Critical.** Deal +6 radiant damage. The target is also briefly blinded and dazed. 
 
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
+
+### **Illuminated Sight**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- **Simple Clothes** | 1 | 0 | 5 | Simple, functional clothes. 
- **Rope (Hemp)** | 1 | 1 | 10 | Covers a medium distance. Can be split up into multiple more fragile strings. 
- **Shovel** | 1 | 1 | 10 | You can dig a hole with it! 
- **Traveler‘s Clothes** | 1 | 0 | 10 | Sturdy clothes made for harsh weather and long journeys. 
- **Wineskin** | 1 | 1 | 10 | Intoxicates on frequent consumption. Has 5 uses. Spend 1 use to be intoxicated for 1 hour. While being intoxicated, you are poisoned. 
- **Oil Flask** | 1 | 1 | 50 | Worth one unit of light for a lantern. 
- **Pickaxe** | 1 | 2 | 50 | Used for mining rock and minerals. 
- **Portable Ram** | 1 | 2 | 50 | Roll Strength + Athletics with this ram to force a door open - very loudly. 
- **Camping Kit** | 2 | 1 | 50 | Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night‘s rest for up to two people. 
- **Crafting Kit** | 2 | 1 | 50 | Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night&#x27;s rest. Roll Mind + Crafting against 6 + the item’s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged. 
- **Lantern** | 2 | 1 | 50 | Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (close distance). The lantern is not considered as Supply. 
- **Rope (Silk)** | 2 | 1 | 50 | Covers a long distance. More delicate than hemp, without suffering in strength. 
- **Alchemist‘s Supplies** | 2 | 1 | 100 | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance. 
- **Arcane Conduit** | 2 | 0 | 100 | A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast arcane spells. 
- **Bundle of Maps** | 2 | 1 | 100 | Contains several maps for a specific region. Has 5 uses. Spend 1 use to consult the maps and gain +1 boon on a Nature roll. 
- **Bundle of Scrolls** | 2 | 1 | 100 | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature. 
- **Healer‘s Kit** | 2 | 1 | 100 | Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br />Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don’t have to make a Supply check for your materials and you automatically succeed on the roll. 
- **Mystic Talisman** | 2 | 0 | 100 | A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast mystical spells. 
- **Thieves‘ Tools** | 2 | 1 | 100 | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you blunder a roll to pick a lock, spend 1 use. 
- **Fine Clothes** | 3 | 1 | 500 | Clothes of a noble or rich merchant made from exotic materials. 
+ 0 | 0 | Moderate (8) | Self | enchant (eyes)
 
-### Supplies
+**Effect**<br /> You concentrate light energy into your eyes, enhancing your eye sight and making you able to pierce through concealing environments.<br />On a success, you can see one range category further from sources of bright and dim light. You also gain +1 boon on Perception rolls. This spell lasts for a medium duration. 
 
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
+
+### **Revealing Burst**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- **Throwing Stones** | 1 | 1 | 5 | Worth one unit of ammo for slings and slingshots. 
- **Provisions** | 1 | 1 | 10 | Worth one unit of provisions. 
- **Torch** | 1 | 1 | 10 | Worth one unit of light. Emit bright light in close range and dim light in short range when lit. You can also use a lit torch as an improvised weapon dealing 2 fire damage.  
- **Arrows** | 1 | 1 | 20 | Worth one unit of ammo for bows. Comes with a quiver. 
- **Materials** | 1 | 1 | 20 | Worth one unit of materials. 
- **Bolts** | 2 | 1 | 30 | Worth one unit of ammo for crossbows. Comes with a bolt case. 
+ 0 | 0 | vs. Resist | Short | -
 
-### Tools
+**Effect**<br /> You let loose a burst of radiant energy in all directions, revealing any magical falsehoods, such as illusions, shapeshifters, or invisible creatures in range. For illusions, you roll vs. the Resist of the illusion’s creator.<br />**Weak.** Any magical falsehood is marked by a shimmer of light. Rolls that target any marked target gain +1 boon. The mark lasts for a short duration.<br />**Strong.** Any magical falsehood is immediately broken.<br />**Critical.** Any magical falsehood is immediately broken and any creature revealed by this is briefly shaken. 
 
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
+
+### **Blessing of Light**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- **Adventuring Gear** | 2 | 1 | 50 | Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. 
- **Brewer‘s Tools** | 2 | 1 | 50 | Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. 
- **Carpenter‘ Tools** | 2 | 1 | 50 | Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. 
- **Climber‘s Kit** | 2 | 1 | 50 | Contains pitons, boot tips, gloves, and a harness. 
- **Cook‘s Utensils** | 2 | 1 | 50 | Contains a metal pot, knives, forks, a stirring spoon, and a ladle. 
- **Disguise Kit** | 2 | 1 | 50 | Contains cosmetics, hair dye, small props, and a few different pieces of clothing. 
- **Gaming Set** | 2 | 1 | 50 | Contains all pieces to play a specific game, such as a board, cards, dice, or tokens. 
- **Leatherworker‘s Tools** | 2 | 1 | 50 | Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps. 
- **Mason‘s Tools** | 2 | 1 | 50 | Contains a small trowel, a hammer, a chisel, brushes, and a square. 
- **Navigator‘s Tools** | 2 | 1 | 50 | Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill. 
- **Painter‘s Supplies** | 2 | 1 | 50 | Contains an easel, canvas, brushes, charcoal sticks, and a palette. 
- **Smith‘s Tools** | 2 | 1 | 50 | Contains hammers, tongs, charcoal, rags, and a whetstone. 
- **Weaver‘s Tools** | 2 | 1 | 50 | Contains thread, needles, and scraps of cloth. 
- **Woodcarver‘s Tools** | 2 | 1 | 50 | Contains a knife, a gourge, and a small saw. 
- **Jeweler‘s Tools** | 2 | 1 | 100 | Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass. 
- **Musical Instrument** | 2 | 1 | 100 | Any common type of stringed, woodwind, brass or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourin, or macaras for percussion instruments. 
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (eyes)
 
-### Transportation
+**Effect**<br /> You bless a creature with the magical power of light, making them enlightened to their surroundings.<br />On a success, the creature gains the following effects:<br />- You can see one range category further from sources of bright and dim light.<br />- You gain +1 boon on Perception rolls.<br />This spell lasts for a long duration. 
 
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
+
+### **Locate Trinket**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- **Cart** | 2 | 20 | 100 | A small two-wheeled wooden cart holding up to 200 load or up to four medium creatures. Can be drawn by a person or mount. 
- **Chariot** | 2 | 20 | 500 | A wooden chariot for one or two people to stand in. Requires a mount to pull the chariot. 
+ 1 | 2 | Moderate (8) | Touch | singular
 
-### Animals
+**Effect**<br /> Touch a small object and imbue it with truth revealing magic. The object must comfortably fit within the palm of your hand and can be no larger.<br />On a success, you always know the location of the imbued trinket while it is in the same sphere of existence as you. This spell lasts for a long duration. 
 
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
+
+### **Protect from Influence**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- **Guard Dog (or young Jaguar, Boar, etc.)** | 1 | 12 | 50 | A dog that underwent basic training to fight for and protect it&#x27;s owner. Can be trained as a tame animal companion.  
- **Draft Horse (or Donkey, Mule)** | 1 | 130 | 100 | A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see it‘s statistics. 
+ 1 | 2 | Moderate (8) | Medium | singular, quick
 
-### Alchemical
+**Effect**<br /> Channel the light’s protective magic into one creature within range, bolstering their mental defenses. Cast this spell as a Quick Action on your turn.<br />On a success, the target gains +1 boon on rolls to resist any mental effects and gains resistance to psychic damage. Attempts to influence their mind also suffer +1 bane. This spell lasts for a short duration. 
 
- **Name** | **Quality** | **Load** | **Cost** | **Description** 
+
+### **Radiant Burst**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- **Antitoxin** | 2 | 0.5 | 50 | As an action, drink this liquid to cure you of one source of poison affecting you. 
- **Acid Vial** | 2 | 0.5 | 100 | Counts as a thrown weapon (bundle, thrown (short)) dealing +3 acid damage as weapon damage. 
- **Flammable Paste** | 2 | 0 | 100 | Has 5 uses. Spend 1 use as an Action to apply the paste to any weapon or one ammo supply. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort. Any strong or critical attack with the ignited weapon or ammunition inflicts burning (2) on the target. Once ignited, the paste lasts for a short duration. 
- **Potion of Healing (weak)** | 2 | 0 | 100 | As an action, drink this potion to regain 4 HP. 
- **Weapon Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +2 poison damage. The poison lasts for a short duration. 
- **Fire Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target. 
- **Smoke Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light. 
- **Potion of Healing (decent)** | 3 | 0 | 500 | As an action, drink this potion to regain 8 HP. 
- **Weapon Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +2 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
- **Potion of Healing (strong)** | 4 | 0 | 2000 | As an action, drink this potion to regain 12 HP. 
- **Weapon Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one ammo supply in poison. While coated, attacks with that weapon or ammo deal +4 poison damage. On strong or critical hits, the target is also poisoned for a short duration. The poison lasts for a short duration. 
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> You let forth a burst of radiant energy, streaking towards a target location and exploding in burning light.<br />**Weak.** Deal +2 radiant damage to any creature in melee range of the target location.<br />**Strong.** Deal +4 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded.<br />**Critical.** Deal +6 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded. Each target is also briefly blinded and dazed. 
+
+
+### **Radiant Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of the sun.<br />On a success, the weapon emits bright light in melee range and dim light in close range of it and deals +2 radiant damage. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Sense Spirits**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | you sense the auras of daimon and other spiritual creatures around you |  | -
+
+**Effect**<br />  
+
+
+### **Sun Sphere**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | concentrate
+
+**Effect**<br /> You conjure a small orb of flame resembling a miniature sun.<br />On a success, the sphere appears at the target location. It also shines bright light in close range and dim light in short range of it.  Any creature in melee range of it takes +4 fire damage when they first come into contact with it and at the start of each of their turns.<br />On each of your following turns, you can use your Quick Action to move the beam a close distance within range. The sphere lasts for a short duration.  
+
+
+### **Break Curse**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Touch | ritual (minutes)
+
+**Effect**<br /> You initiate a purifying ritual to remove harmful influences from a creature’s soul.<br />On a success, you break one curse the creature is afflicted with. Any single creature can only benefit from this spell once per day. 
+
+
+### **Destroy Undeath**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Short | -
+
+**Effect**<br /> You channel the power of divine light, flooding undead creatures around you with it in an attempt to annihilate them instantly.<br />**Weak.** Any undead creature in range of tier 0 or 1 is instantly destroyed and can’t reanimate.<br />**Strong.** Any undead creature in range of tier 0 or 1 is instantly destroyed and can’t reanimate. Any other undead creature in range is also briefly frightened of you, ignoring any immunity they might have against the condition.<br />**Critical.** Any undead creature in range of tier 0 or 1 is instantly destroyed and can’t reanimate. Any other undead creature in range is also frightened of you for a short duration, ignoring any immunity they might have against the condition. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+
+### **Sunbeam**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
+
+**Effect**<br /> You call down a pillar of light at the target location, revealing any falsehoods and burning creatures within it.<br />On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines bright light in close range and dim light in short range of it. Any magical falsehoods, such as illusions, shapeshifters, or invisible creatures inside the beam is immediately revealed.<br />Any creatures inside the beam take +8 radiant damage when they first come into contact with it and at the start of each of their turns.<br />On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
+
+
+## **Twilight**
+
+### **Dark Sight**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Self | enchant (eyes)
+
+**Effect**<br /> You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br />On a success, you can see a medium distance in absolute darkness as in dim light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration. 
+
+
+### **Night’s Grasp**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect**<br /> You magically animate the shadows around a creature, clawing and grasping for the target with ghostly coldness.<br />**Weak.** The target suffers +2 frost damage.<br />**Strong.** The target suffers +4 frost damage and is briefly slowed.<br />**Critical.** The target suffers +6 frost damage and is briefly grappled by the shadows. 
+
+
+### **Shadow Veil**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | -
+
+**Effect**<br /> You create an area of magical shadow, making it hard to see through it. Target any area of dim light in range.<br />On a success, the magical shadow appears in a close radius around the target area. The area is now considered as absolute darkness.<br /><br />The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area. 
+
+
+### **Whispers of Doubt**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect**<br /> You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br />**Weak.** The target suffers +0 psychic damage (ignoring AV).<br />**Strong.** The target suffers +2 psychic damage (ignoring AV) and the target is briefly confused.<br />**Critical.** The target suffers +4 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+
+### **Cloak of Night**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | singular
+
+**Effect**<br /> You clad a creature in a magical cloak made of darkness.<br />On a success, the creature wearing the cloak gains the following effects:<br />- You have resistance against frost damage.<br />- You gain +1 boon on Agility + Cunning rolls to hide or move silently.<br />The cloak lasts for a medium duration or until discarded by the creature. 
+
+
+### **Curse of Twilight**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
+
+**Effect**<br /> You curse a creature with the magical power of twilight, bringing the fear of night into their heart.<br />On a success, the creature suffers the following effects:<br />- They see in bright light as in dim light.<br />- They suffer +1 bane on Perception and Initiative rolls.<br />This curse lasts for a long duration. 
+
+
+### **Lunar Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of the night.<br />On a success, the weapon emits dim light in close range of it and deals +2 frost damage. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Moon Sphere**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | concentrate
+
+**Effect**<br /> You conjure a small orb of freezing coldness resembling a miniature moon.<br />On a success, the sphere appears at the target location. It also shines dim light in short range of it. Any creature in melee range of it takes +4 frost damage when they first come into contact with it and at the start of each of their turns.<br />On each of your following turns, you can use your Quick Action to move the beam a close distance within range. The sphere lasts for a short duration.  
+
+
+### **Shadow Meld**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Self | concentrate
+
+**Effect**<br /> You submerge into the shadows around you. Cast this spell while standing in dim light or darkness.<br />On a success, you merge with the shadows and become invisible. While invisible, you are hidden from any creature which hasn‘t an ability to see through invisibility.<br />This spell lasts for a short duration, until you attack or cast another spell, or until you enter bright light. 
+
+
+### **Whisper of Dreams**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | -
+
+**Effect**<br /> You lull a creature’s mind with whispers of sleep. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br />On a success, the creature falls unconscious for a medium duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they wake up. 
+
+
+### **Everlasting Night**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
+
+**Effect**<br /> You cloud an area in absolute darkness and no light may pierce through it.<br />On a success, the close area around the target location becomes absolute darkness. Any light source within it immediately goes out.<br />This spell lasts for a medium duration. 
+
+
+### **Moonbeam**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
+
+**Effect**<br /> You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br />On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +8 frost damage when they first come into contact with it and at the start of each of their turns.<br />On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
+
+
+### **Shadow Step**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | -
+
+**Effect**<br /> You fully submerge into the shadows and re-appear at another darkened location. While standing in dim light or darkness, choose any other location you can see in range that is also in dim light or darkness.<br />On a success, you teleport to the chosen location. 
+
+
+## **Life**
+
+### **Life Shield**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | singular
+
+**Effect**<br /> On a success, the target is surrounded by a near invisible shield of life force. The shield grants 5 temporary HP and lasts until reduced to 0, or expires after a short duration.<br />Any single creature can only benefit from this spell once per scene. 
+
+
+### **Restore Life**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Short | -
+
+**Effect**<br /> You let vitalizing energy flow into your target, restoring a living creatures health or harming an undead creature.<br />When targeting a living creature, roll vs. moderate difficulty (8). When targeting an undead creature, roll vs. their Resist.<br />**Weak.** Restore +2 HP to your target or deal +2 radiant damage against an undead target.<br />**Strong.** Restore +4 HP to your target or deal +4 radiant damage against an undead target.<br />**Critical.** Restore +6 HP to your target or deal +6 radiant damage against an undead target. 
+
+
+### **Verdant Blast**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect**<br /> You form a condensed mass of positive energy, blasting the enemy and healing nearby allies.<br />**Weak.** Deal +2 radiant damage.<br />**Strong.** Deal +4 radiant damage and restore 2 HP to allies in melee range of the target.<br />**Critical.** Deal +6 radiant damage and restore 4 HP to allies in melee range of the target. 
+
+
+### **Blessing of Life**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular
+
+**Effect**<br /> You bless a creature with the magical power of life, bolstering their vitality.<br />On a success, the creature gains the following effects:<br />- You gain 5 temporary HP. They replenish after a short break.<br />- You gain +1 boon on Fortitude rolls.<br />This spell lasts for a long duration. 
+
+
+### **Heal Wound**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | ritual (minutes)
+
+**Effect**<br /> You focus life-giving magic into an injury, mending it quickly.<br />On a success, you heal one Wound from a creature. Any single creature can only benefit from this spell once per day. 
+
+
+### **Overflow of Life**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | -
+
+**Effect**<br /> You overwork the vital system of the target, returning them to consciousness or causing them a heart attack if already conscious. The target must be a living creature.<br />**Weak.** If the target is dying, they stop dying but remain unconscious. If the target is unconscious, they wake up. If the target is conscious, they take +3 damage.<br />**Strong.** If the target is dying, they stop dying and wake up. If the target is unconscious, they wake up. If the target is conscious, they take +6 damage.<br />**Critical.** If the target is dying, they stop dying, wake up, and one of their Injuries is instantly treated (their choice). If the target is unconscious, they wake up. If the target is conscious, they take +9 damage. 
+
+
+### **Rapid Vitality**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | quick
+
+**Effect**<br /> You quickly refresh a creature’s stamina. Cast this spell on your turn.<br />**Weak.** Restore +2 HP to your target.<br />**Strong.** Restore +4 HP to your target.<br />**Critical.** Restore +6 HP to your target. 
+
+
+### **Vitalizing Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of vitality.<br />On a success, any hit the weapon’s bearer makes with it restores 1/2 x your Spirit as HP to them. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Hallow Ground**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Close | concentrate
+
+**Effect**<br /> You hallow the ground around you, healing all allies standing on it.<br />On a success, each ally in range of the hallow ground restores +2 HP when you cast the spell and at the start of each of their turns.<br />The hallow ground remains stationary at the position where you cast it for a short duration. 
+
+
+### **Healing Burst**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | blast (cone)
+
+**Effect**<br /> You conjure a wave of healing energy, restoring the endurance of any ally within it.<br />**Weak.** Restore +2 HP to each ally.<br />**Strong.** Restore +4 HP to each ally.<br />**Critical.** Restore +6 HP to each ally. 
+
+
+## **Death**
+
+### **Enfeebling Touch**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect**<br /> You summon a swirl of negative energy, engulfing the target and draining their strength.<br />**Weak.** Deal +2 necrotic damage.<br />**Strong.** Deal +4 necrotic damage and briefly reduce their Strength die by one step.<br />**Critical.** Deal +6 necrotic damage and reduce their Strength die by one step for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+
+### **Glimpse of Mortality**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect**<br /> You project a scene of the target‘s final moments before death into their mind, in which they die in agony at the hands of yourself and your allies.<br />**Weak.** The target suffers +0 psychic damage (ignoring AV).<br />**Strong.** The target suffers +2 psychic damage (ignoring AV) and the target is briefly frightened.<br />**Critical.** The target suffers +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+
+### **Spared from Death**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Short | -
+
+**Effect**<br /> You help a dying creature in range to cling onto life.<br />**Weak.** +1 to the dice result of the dying creature.<br />**Strong.** +2 to the dice result of the dying creature.<br />**Critical.** You stop the creature from dying, but they remain unconscious. 
+
+
+### **Curse of Death**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
+
+**Effect**<br /> You curse a creature with the magical power of death, withering their mortal body.<br />On a success, the creature suffers the following effects:<br />- Their maximum HP are reduced by 5.<br />- They suffer +1 bane on Fortitude rolls.<br />This curse lasts for a long duration. 
+
+
+### **Early Grave**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Parry | Medium | -
+
+**Effect**<br /> Skeletal hands sprout from the ground, scratching at the target and attempting to pull them below the earth.<br />**Weak.** Deal +3 necrotic damage.<br />**Strong.** Deal +6 necrotic damage and the target is grappled by the hands.<br />**Critical.** Deal +9 necrotic damage and the target is grappled and briefly restrained by the hands. 
+
+
+### **Necrotic Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of death.<br />On a success, the weapon deals +2 necrotic damage. On a strong or critical hit, the attack’s target also suffers 2 lasting necrotic damage for a short duration. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Shivering Ray**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> You shoot a icy blue beam from the tip of your finger, rigidifying the target.<br />**Weak.** You deal +3 frost damage. <br />**Strong.** You deal +6 frost damage and the target is briefly slowed.<br />**Critical.** You deal +9 frost damage and the target is briefly dazed and slowed. 
+
+
+### **Cloud of Sickness**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect**<br /> You summon a cloud of necrotic energy, sickening creatures within it. The cloud extends in a close area around the target location and targets all living creatures within it.<br />**Weak.** Deal +3 necrotic damage to each target.<br />**Strong.** Deal +6 necrotic damage to each target.<br />**Critical.** Deal +9 necrotic damage to each target.<br />Any creature is also poisoned while inside the cloud’s area.<br />The cloud lasts for a short duration. It can also be expelled early by any effect causing strong winds in the same area of influence. 
+
+
+## **Nature**
+
+### **Bestial Adaptation**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Self | enchant (body)
+
+**Effect**<br /> You adopt the physical characteristics of one chosen type of animal. Choose one of the following:<br />- Graceful (You can move through difficult terrain without penalty)<br />- Perceptive (+1 boon on Perception rolls)<br />- Strong (+1 boon on Strength + Athletics rolls, +2 damage on unarmed attacks)<br />- Tough (+2 AV as armor)<br />On a success, you gain the chosen effect.<br />This spell lasts for a short duration. 
+
+
+### **Lashing Vine**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Medium | -
+
+**Effect**<br /> You animate a natural vine or let one spring from the ground in range. The vine can either lash at (vs. Parry) or grab (vs. Parry or Dodge) any target close to it. The vine counts as a medium creature for grappling.<br />**Weak.** Deal +2 damage (lash) or grapple the target (grab).<br />**Strong.** Deal +4 damage (lash) or deal +0 damage and grapple the target (grab).<br />**Critical.** Deal +6 damage (lash) or deal +2 damage, grapple, and briefly restrain the target (grab).<br />if you continue to cast this spell over multiple turns, the vine can remain for the duration. Otherwise the vine quickly withers and vanishes after using this spell. 
+
+
+### **Poison Mist**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Short | -
+
+**Effect**<br /> Spray a cloud of poisonous mist against your target.<br />**Weak.** Deal +2 poison damage.<br />**Strong.** Deal +4 poison damage and the target is briefly poisoned.<br />**Critical.** Deal +6 poison damage and the target is poisoned for a short duration. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+
+### **Rejuvenation**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Short | singular
+
+**Effect**<br /> Conjure magical energy into one creature in range, rapidly increasing their natural regenerative capacity.<br />**Weak.** The target shortly regains +0 HP at the start of each of their turns.<br />**Strong.** The target shortly regains +2 HP at the start of each of their turns.<br />**Critical.** The target shortly regains +4 HP at the start of each of their turns. 
+
+
+### **Beast Form**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Self | enchant (body)
+
+**Effect**<br /> You shape shift into the form of a small or medium sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following:<br /><br />Beast Form (small/medium animal)<br />Attributes. d6/d8 STR, d8/d6 AGI<br />Defenses. 7/8 Parry, 9/8 Dodge<br />AV. 2 (natural light)<br />Skills. Fighting, Fortitude (equal to your Mysticism)<br />Attacks:<br />- Strike (choose crush or slash, also agile for small size). 6 damage (4 base + 2 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br />Abilities:<br />- Keen Scent. Gain +1 boon on Perception rolls based on smell.<br />- Night Vision. You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br /><br />You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious. 
+
+
+### **Blessing of Nature**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular
+
+**Effect**<br /> You bless a creature with the magical power of nature, whereby plants and animals act benevolently towards them.<br />On a success, the creature gains the following effects:<br />- You can move through difficult terrain without penalty.<br />- You gain +1 boon on Athletics and Survival rolls.<br />This spell lasts for a long duration. 
+
+
+### **Mesh of Vines**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> Instantly sprout a mesh of spiked vines, covering the target location. On a success, spiked vines fill an area close to the target location. This spell targets each creature in the area.<br />**Weak.** Deal +0 damage against each target.<br />**Strong.** Deal +2 damage against each target and they are grappled by the vines.<br />**Critical.** Deal +2 damage against each target and they are grappled and restrained by the vines.<br />The area is considered difficult terrain. The vines last for a short duration. 
+
+
+### **Rock Throw**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> Magically animate a large stone and throw it against your target in range.<br />**Weak.** Deal +4 crush damage.<br />**Strong.** Deal +8 crush damage and the target is pushed close.<br />**Critical.** Deal +12 crush damage, the target is pushed close and falls prone. 
+
+
+### **Sticks to Snakes**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Close | concentrate
+
+**Effect**<br /> You throw out a bundle of sticks, which then turn into withering snakes under your control. You must roll a Supply check for materials when casting this spell.<br />On a success, you summon a swarm of snakes at the target location under your control (treat them as a companion for combat).<br />The swarm remains for a medium duration, until dismissed by you, or when killed. 
+
+
+### **Venomous Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of a serpent‘s fangs.<br />On a success, the weapon deals +2 poison damage. On a strong or critical hit, the attack‘s target is briefly poisoned. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Wild Companion**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | ritual (hours), singular
+
+**Effect**<br /> You can’t cast this spell if you haven’t learned the “Animal Companion” talent.<br />You set up a ritual to summon a spiritual beast of the land. As part of casting this spell, you must also spend 100 coins in incense and other sacred ingredients. Choose any kind of animal companion of a tier equal to or lower than your Mysticism (see more under Animal Companions).<br />On a success, you summon a spiritual being in your chosen animal form. It’s statistics are the same as that of a mundane animal companion, but it’s creature type is “daimon (primal)” instead.<br /><br />You have a psychic connection to your companion, as long as the two of you are on the same sphere of existence. This connection manifests itself as an intuitive sharing of emotions. You can use this connection to tell your familiar what to do and where to go nonverbally. You can also spend your turn meditating to fully experience all senses of your familiar. While meditating this way, you are considered unconscious and are unaware of your own body‘s surroundings.<br />Any creature capable of sensing magical auras will notice the primal nature of your companion. The companion remains until killed, but can be re-summoned with another ritual. You can choose a new form for your companion each time you cast this spell. 
+
+
+### **Greater Beast Form**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | enchant (body)
+
+**Effect**<br /> You shape shift into the form of a tiny or large sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following:<br /><br />Beast Form (tiny/large animal)<br />Attributes. d4/d12 STR, d8/d6 AGI<br />Defenses. 7/9 Parry, 9/8 Dodge<br />AV. 0/4 (natural light)<br />Skills. Fighting, Fortitude (equal to your Mysticism)<br />Attacks:<br />- Strike (choose crush or slash, also agile for tiny size). 5/10 damage (4/6 base + 1/4 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br />Abilities:<br />- Keen Scent. Gain +1 boon on Perception rolls based on smell.<br />- Night Vision. You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br /><br />You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious. 
+
+
+### **Law of the Strongest**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate, singular
+
+**Effect**<br /> You fill a creature‘s body with nature‘s empowering magic. The target has to be a creature of medium or smaller size.<br />On a success, the target‘s body grows to large size along with all of their worn equipment and held items (as long as they stay in contact with their body). While enlarged by this spell, they gain the following effects:<br />- Gain 5 temporary HP.<br />- Increase your Strength die by one step.<br />- You gain +1 Parry and lose -1 Dodge.<br />- You gain +1 AV.<br />- You deal +1 weapon damage on melee attacks.<br />All of these effects are added a number of times for each size category difference to the target‘s original size.<br />This spell lasts for a short duration. 
+
+
+### **Melt Ground**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
+
+**Effect**<br /> let the ground become soft and trap creatures inside it  
+
+
+### **Rock Skin**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | enchant (body), singular
+
+**Effect**<br /> Harden a creature‘s skin to be strong as rock.<br />On a success, the target gains 1/2 your Spirit as AV (armor) for a medium duration. If they suffer an Injury, the armor breaks. 
+
+
+### **Life from Stone**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | target a large or smaller object or structure made from stone or wood. it comes alive as an automaton under your control for a short duration.  |  | -
+
+**Effect**<br />  
+
+
+### **Petrification**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | concentrate
+
+**Effect**<br /> You turn a creature into inanimate stone. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br />**Weak.** The target is petrified for a short duration.<br />**Strong.** The target is petrified for a medium duration.<br />**Critical.** The target is petrified for a long duration.<br />A petrified creature is stunned and unconscious. They also have 10 AV while petrified. If the target takes damage while petrified by this spell, roll for Spell Concentration as if you took the same amount of damage. 
+
+
+## **Tempest**
+
+### **Gust**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Short | -
+
+**Effect**<br /> You summon a vortex of swirling air, clashing against your target and pulling them off their feet.<br />**Weak.** Deal +2 blast damage.<br />**Strong.** Deal +4 blast damage and push the target close.<br />**Critical.** Deal +6 blast damage and push the target a short distance. 
+
+
+### **Static Shock**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect**<br /> You generate a small electric discharge from your fingertip against a target.<br />**Weak.** Deal +2 lightning damage.<br />**Strong.** Deal +4 lightning damage to the target and you can deal +2 lightning damage to one other creature in melee range of the target.<br />**Critical.** Deal +6 lightning damage to the target and you can deal +4 lightning damage to one other creature in melee range of the target. 
+
+
+### **Wind Slash**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect**<br /> Hurl a blade of compressed air against your target.<br />**Weak.** Deal +0 damage or +4 damage against a target in light or no armor.<br />**Strong.** Deal +2 damage or +6 damage against a target in light or no armor.<br />**Critical.** Deal +4 damage or +8 damage against a target in light or no armor. 
+
+
+### **Bursting Crackle**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | -
+
+**Effect**<br /> You gather an electric charge at a single point within range and release it with a powerful blast, creating a loud thunder. Target all creatures in melee range of the target location.<br />**Weak.** Deal +2 blast damage against each target.<br />**Strong.** Deal +4 blast damage against each target and they are briefly dazed and deafened.<br />**Critical.** Deal +6 blast damage against each target and they are briefly dazed and deafened. 
+
+
+### **Curse of Tempest**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
+
+**Effect**<br /> You curse a creature with the magical power of tempest, turning nature itself against them.<br />On a success, the creature suffers the following effects:<br />- While moving in natural environments, it is always considered difficult terrain for them.<br />- They suffer +1 bane on Athletics and Survival rolls.<br />This curse lasts for a long duration. 
+
+
+### **Earthen Tremor**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Short | blast (cone)
+
+**Effect**<br /> You send shockwaves through the earth, causing the ground to tremble violently. Target‘s all creatures in the spell’s area.<br />**Weak.** Deal +2 damage to each target.<br />**Strong.** Deal +4 damage to each target and they are briefly faltering.<br />**Critical.** Deal +6 damage to each target and they are briefly faltering. 
+
+
+### **Electrified Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of storms.<br />On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the attack‘s target is briefly faltering. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Lightning Javelin**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> You conjure pure lightning in the form of a spear and hurl it against a creature.<br />**Weak.** Deal +4 lightning damage. <br />**Strong.** Deal +8 lightning damage and the target is briefly faltering.<br />**Critical.** Deal +12 lightning damage and the target is briefly faltering. 
+
+
+### **Storm Coat**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Short | enchant (body), singular
+
+**Effect**<br /> You weave a protective coat of elemental energies around a creature.<br />On a success, the creature gains the following effects:<br />- You gain resistance against frost and lightning damage.<br />- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignoring AV). 
+
+
+### **Volcanic Bolt**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> You magically dissolve a small amount of earth or rock into lava. You can magically hurl the lava against a creature.<br />**Weak.** Deal +4 fire damage. <br />**Strong.** Deal +8 fire damage and they suffer burning (2) for a short duration.<br />**Critical.** Deal +12 fire damage and they suffer burning (4) for a short duration. 
+
+
+### **Wind Hose**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> You create a powerful swirl of air around the target location, pulling smaller, loose objects into it’s vortex.<br />**Weak.** Deal +3 force damage.<br />**Strong.** Deal +6 force damage and if the target is medium or smaller in size, they are also grappled by the wind hose.<br />**Critical.** Deal +9 force damage and if the target is medium or smaller in size, they are also grappled and restrained by the wind hose.<br />When you successfully cast this spell against a target and it is grappled by the wind hose, you gain +1 boon when casting the spell again against the same target on your next turn. 
+
+
+### **Magma Burst**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | -
+
+**Effect**<br /> You channel the earth’s wrath, making the target location’s ground burst with lava. Target all creatures in melee range of it.<br />**Weak.** Deal +4 fire damage to each target. <br />**Strong.** Deal +8 fire damage to each target and they suffer burning (2) for a short duration.<br />**Critical.** Deal +12 fire damage to each target and they suffer burning (4) for a short duration.<br />The target location remains covered with cracks filled with lava for a short duration, after which it cools down and remains as solid rock.<br />Each creature ending their turn in melee range of it automatically suffer the effects of a weak hit.<br />If any creature has direct contact with the lava, they instead automatically suffer the effects of a critical hit. 
+
+
+### **Pyroclasm**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Short | blast (cone)
+
+**Effect**<br /> You slam the earth before you and it erupts with force, spitting flaming hot lava into the air.<br />**Weak.** Deal +4 fire damage to each target. <br />**Strong.** Deal +8 fire damage to each target and they fall prone.<br />**Critical.** Deal +12 fire damage to each target, they fall prone, and their Movement briefly becomes 0.<br />The area affected by this spell remains as broken ground and is considered difficult terrain. 
+
+
+### **Storm Bolt**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | blast (line)
+
+**Effect**<br /> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br />**Weak.** Deal +4 lightning damage to each target.<br />**Strong.** Deal +8 lightning damage to each target and they are briefly faltering.<br />**Critical.** Deal +12 lightning damage to each target and they are briefly faltering. 
+
+
+### **Thunder Cloud**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | concentrate
+
+**Effect**<br /> You summon a dark cloud brewing with electricity. The cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three enemies below the cloud.<br />**Weak.** Deal +4 lightning damage against each target.<br />**Strong.** Deal +8 lightning damage against each target.<br />**Critical.** Deal +12 lightning damage against each target.<br />On each of your following turns, you can use your Action or Quick Action to target another one creature with this spell and roll vs. their Dodge.<br />The cloud lasts for a short duration. 
+
+
+### **Thunderous Clap**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Short | -
+
+**Effect**<br /> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br />**Weak.** Deal +4 damage to each target.<br />**Strong.** Deal +8 damage to each target and they are knocked prone and briefly deafened.<br />**Critical.** Deal +12 damage to each target and they are pushed close, knocked prone, and briefly deafened. 
+
+
+### **Cyclone**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Long | -
+
+**Effect**<br /> You create a massive cyclone that engulfs a wide area. Target all creatures in short range of the target area.<br />**Weak.** Deal +4 blast damage to each target and they are pushed a close distance away from the center of the cyclone.<br />**Strong.** Deal +8 blast damage to each target and they are pushed a short distance away from the center of the cyclone.<br />**Critical.** Deal +12 blast damage to each target and they are pushed a medium distance away from the center of the cyclone. 
+
+
+### **Avatar of Storms**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extremely Hard (14) | Self | concentrate, enchant (body)
+
+**Effect**<br /> You become one with the storm, transforming into a living tempest of elemental energy.<br />On a success, you gain the following effects:<br />- You are able to fly and gain +1 Movement per turn.<br />- You gain resistance against frost, lightning, and physical damage.<br />- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignoring AV).<br />- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br />This form lasts for a short duration. 
+
+
+## **Peace**
+
+### **Aura of Sanctuary**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | singular, quick
+
+**Effect**<br /> You shield a creature in range with a magical aura discouraging other creatures from inflicting harm on them. Cast this spell as a Quick Action on your turn.<br />On a success, the target is shielded by the aura for a short duration. While shielded by the aura, whenever another creature attempts to attack them, the attacker has to roll Spirit + Fortitude vs. your Resist. On a failure, they are unable to attack the shielded creature and must choose a new target.<br />This spell ends early, if the shielded creature attacks any other creature. 
+
+
+### **Calming Influence**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Short | -
+
+**Effect**<br /> You calm the mind of one creature in range. You suffer +1 bane on this spell, if the target is actively engaged in combat or another dangerous situation.<br />On a success, the target is shortly charmed by you and will act with empathy and friendliness towards you. 
+
+
+### **Tranquil Mind**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Short | -
+
+**Effect**<br /> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br />**Weak.** Restore +2 HP to an ally or deal +0 psychic damage (ignoring AV) against an enemy.<br />**Strong.** Restore +4 HP to an ally or deal +2 psychic damage (ignoring AV) against an enemy and they are briefly dazed.<br />**Critical.** Restore +6 HP to an ally or deal +4 psychic damage (ignoring AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
+
+
+### **Blessing of Peace**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular
+
+**Effect**<br /> You bless a creature with the magical power of peace, calming their mind and making others like them more.<br />On a success, the creature gains the following effects:<br />- You gain +1 Resist.<br />- You gain +1 boon on Influence and Insight rolls.<br />This spell lasts for a long duration. 
+
+
+### **Harmonic Link**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | concentrate, singular
+
+**Effect**<br /> You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br />On a success, you establish the link between you and your ally. While the link holds, both of you gain the following effects:<br />- Attacks against a target both of you can perceive gain +1 boon.<br />- Attacks from creatures both of you can perceive suffer +1 bane against you.<br />- If either one of you takes damage, both of you take half of the damage instead.<br />The link lasts for a medium duration or until you are further away from each other than the range of this spell. 
+
+
+### **Pacifying Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of tranquility.<br />On a success, the weapon‘s bearer gains +1 Parry. On a strong or critical hit, the attack‘s target is briefly dazed. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Share Harm**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | quick
+
+**Effect**<br /> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignoring AV). 
+
+
+### **Dome of Sanctuary**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | concentrate
+
+**Effect**<br /> You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br />**Weak.** Deal +2 psychic damage (ignoring AV) against every target.<br />**Strong.** Deal +4 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome.<br />**Critical.** Deal +6 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome and fall prone.<br />Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can’t enter.<br />Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration. 
+
+
+### **Spell-breaking Wave**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect**<br /> You send a wave of pacifying energy towards a creature, removing enchantments and breaking spell effects. Either choose one enchantment affecting them or choose one spell they are concentrating on or that has an effect that lasts for a duration.<br />On a success, the enchantment or spell effect ends. 
+
+
+## **War**
+
+### **Battle Surge**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | singular, quick
+
+**Effect**<br /> Heighten the senses of a creature in range, making it more fierce in battle.<br />Cast this spell during the target’s turn. On a success, the target gains +1 Movement and +1 boon on their next attack roll during their current turn. 
+
+
+### **Mighty Strike**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Self | -
+
+**Effect**<br /> Conjure raw spiritual strength into your weapon attack.<br />Choose one weapon you are holding. Roll an attack with that weapon using Spirit + Mysticism. On a hit, also use your spell base damage instead of that of the weapon. 
+
+
+### **Spectral Slash**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Parry | Medium | -
+
+**Effect**<br /> Conjure a spectral blade that cuts at an enemy.<br />**Weak.** Deal +2 damage.<br />**Strong.** Deal +4 damage and the target suffers bleeding (2) until healed.<br />**Critical.** Deal +6 damage and the target suffers bleeding (4) until healed. 
+
+
+### **Curse of War**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
+
+**Effect**<br /> You curse a creature with the magical power of war, suffocating them in the agony of battle.<br />On a success, the creature suffers the following effects:<br />- They take +2 damage from any source.<br />- Whenever they take 10 or more damage from one attack, they have to roll Spirit + Fortitude. On a failure, they are briefly frightened.<br />This curse lasts for a long duration. 
+
+
+### **Heroic Weapon**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular, enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of courage.<br />On a success, the weapon deals +2 damage. On a strong or critical hit, the attack‘s target is briefly frightened. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br />This spell lasts for a medium duration. 
+
+
+### **Tear Wound**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | -
+
+**Effect**<br /> You exploit open wounds, cuts, and bruises, making them cause the target immense pain. You can only target a creature that is below their max. HP with this spell.<br />**Weak.** Deal +4 damage.<br />**Strong.** Deal +8 damage and the target suffers bleeding (2) until healed.<br />**Critical.** Deal +12 damage and the target suffers bleeding (4) until healed. 
+
+
+### **War Cry**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | quick
+
+**Effect**<br /> You roar with the voice of the bravest warrior spirits, shaking all enemies in range to their core.<br />On a success, each enemy is briefly frightened of you. Any creature can only be affected by this spell once per scene. 
+
+
+### **Weapon Spirit**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Parry | Medium | concentrate
+
+**Effect**<br /> To use this spell, you must first sacrifice a physical weapon along spiritual ingredients worth 100 coins in a ritual taking one exploration turn.<br /><br />When you cast this spell, you summon an animated, spiritual version of one of the weapons you sacrificed for this spell levitating above the ground within range and obeying your command. On your turns, you can move it a short distance within range and make one melee attack. Roll Spirit + Mysticism for the attack and treat the result as a normal weapon attack. 
+
+
+### **Ancestral Warriors**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | concentrate
+
+**Effect**<br /> You conjure the memory of fallen ancestors around you. They appear as ghostly warriors of your chosen culture.<br />On a success, they swirl around you in close range. Any enemy in range takes +4 force damage when you cast this spell and at the start of each of their turns. The area in range is also considered difficult terrain for enemies.<br />This spell lasts for a short duration. 
+
+
+### **Blood Sacrifice**
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | quick
+
+**Effect**<br /> You cut into your own flesh, granting you the ancestor’s power in return. Cast this spell on your turn.<br />You lose 5 HP as part of casting this spell, regardless of the result.<br />On a success, you gain the following effects:<br />- Gain +1 boon on weapon attacks.<br />- Add 2 x Mysticism to weapon damage. 
+
 

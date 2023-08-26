@@ -17,33 +17,30 @@ def split_table_by_discipline(input_file, output_file):
         discipline = columns[1].strip()
         if discipline not in tables:
             tables[discipline] = []
-        # Exclude the "Discipline" column using slicing
-        table_row = '|'.join(columns[:1] + columns[2:])
 
-        # Bolden key strings
-        table_row = table_row.replace('Weak.', '**Weak.**')
-        table_row = table_row.replace('Strong.', '**Strong.**')
-        table_row = table_row.replace('Critical.', '**Critical.**')
+        name = columns[0].strip()
+        columns[6] = ' ' + (columns[6].replace(',', ', ').strip() or '-') # add whitespaces between properties
+        basic_info = '|'.join(columns[2:7])
+        detailed_effect = columns[7]
 
-        tables[discipline].append(table_row)
+        # Bolden key strings in the detailed effect
+        detailed_effect = detailed_effect.replace('Weak.', '**Weak.**')
+        detailed_effect = detailed_effect.replace('Strong.', '**Strong.**')
+        detailed_effect = detailed_effect.replace('Critical.', '**Critical.**')
+
+        tables[discipline].append((name, basic_info, detailed_effect))
 
     # Output the tables to the new markdown file
     with open(output_file, 'w') as file:
-        for discipline, table_rows in tables.items():
-            # Write the header above each table
+        for discipline, table_data in tables.items():
             file.write("## **" + discipline.strip('**') + "**\n\n")
 
-            # Write the modified table header (without the "Discipline" column)
-            file.write(' **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> \n')
-            file.write('---|---|---|---|---|---|---\n')
-
-            # Write the modified table rows (without the "Discipline" column)
-            for row in table_rows:
-                file.write(row)
-
-            # Add a newline between tables
-            file.write('\n')
-
+            for name, basic_info, detailed_effect in table_data:
+                file.write("### " + name + "\n\n")
+                file.write('**Rank** | **Focus** | **Target** | **Range** | **Properties**\n')
+                file.write('---|---|---|---|---\n')
+                file.write(basic_info + '\n\n')
+                file.write('**Effect**<br />' + detailed_effect + '\n\n')
 
 # Example usage
 input_file = 'input.md'

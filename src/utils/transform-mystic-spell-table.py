@@ -1,4 +1,4 @@
-def split_table_by_Tradition(input_file, output_file):
+def split_table_by_tradition(input_file, output_file):
     with open(input_file, 'r') as file:
         content = file.readlines()
 
@@ -14,38 +14,35 @@ def split_table_by_Tradition(input_file, output_file):
             continue
 
         columns = row.split('|')
-        Tradition = columns[1].strip()
-        if Tradition not in tables:
-            tables[Tradition] = []
-        # Exclude the "Tradition" column using slicing
-        table_row = '|'.join(columns[:1] + columns[2:])
+        tradition = columns[1].strip()
+        if tradition not in tables:
+            tables[tradition] = []
 
-        # Bolden key strings
-        table_row = table_row.replace('Weak.', '**Weak.**')
-        table_row = table_row.replace('Strong.', '**Strong.**')
-        table_row = table_row.replace('Critical.', '**Critical.**')
+        name = columns[0].strip()
+        columns[6] = ' ' + (columns[6].replace(',', ', ').strip() or '-') # add whitespaces between properties
+        basic_info = '|'.join(columns[2:7])
+        detailed_effect = columns[7]
 
-        tables[Tradition].append(table_row)
+        # Bolden key strings in the detailed effect
+        detailed_effect = detailed_effect.replace('Weak.', '**Weak.**')
+        detailed_effect = detailed_effect.replace('Strong.', '**Strong.**')
+        detailed_effect = detailed_effect.replace('Critical.', '**Critical.**')
+
+        tables[tradition].append((name, basic_info, detailed_effect))
 
     # Output the tables to the new markdown file
     with open(output_file, 'w') as file:
-        for Tradition, table_rows in tables.items():
-            # Write the header above each table
-            file.write("## **" + Tradition.strip('**') + "**\n\n")
+        for tradition, table_data in tables.items():
+            file.write("## **" + tradition.strip('**') + "**\n\n")
 
-            # Write the modified table header (without the "Tradition" column)
-            file.write(' **Name** | **Rank** | **Focus** | **Target** | **Range** | **Properties** | <div style={{minWidth: '300px'}}>**Effect**</div> \n')
-            file.write('---|---|---|---|---|---|---\n')
-
-            # Write the modified table rows (without the "Tradition" column)
-            for row in table_rows:
-                file.write(row)
-
-            # Add a newline between tables
-            file.write('\n')
-
+            for name, basic_info, detailed_effect in table_data:
+                file.write("### " + name + "\n\n")
+                file.write('**Rank** | **Focus** | **Target** | **Range** | **Properties**\n')
+                file.write('---|---|---|---|---\n')
+                file.write(basic_info + '\n\n')
+                file.write('**Effect**<br />' + detailed_effect + '\n\n')
 
 # Example usage
 input_file = 'input.md'
 output_file = 'output.md'
-split_table_by_Tradition(input_file, output_file)
+split_table_by_tradition(input_file, output_file)
