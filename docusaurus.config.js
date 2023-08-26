@@ -139,7 +139,17 @@ const config = {
             dark: 'rgb(50, 50, 50)'
           }
         }
-      }
+      },
+      footer: {
+        logo: {
+          alt: 'Nexus RPG Logo',
+          src: 'img/logo.png',
+          href: 'https://beskardev.github.io/nexus-rpg/',
+          width: 160,
+          height: 51,
+        },
+        copyright: `Copyright © ${new Date().getFullYear()} BeskarDev on GitHub`,
+      },
     }),
 
     plugins: [require.resolve("docusaurus-plugin-image-zoom")]

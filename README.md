@@ -1,41 +1,20 @@
-# Website
+Shield: [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
 
-### Installation
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
-```
-$ yarn
-```
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
 
-### Local Development
+# Nexus RPG
 
-```
-$ yarn start
-```
+Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Disclaimer for Play
 
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+While this game has been in development for the last 4 years, it is still under active development and only has been playtested for a few times.
+All rules, player options, and other content are subject to change.
+The content of this game will update regularily and without notice.
