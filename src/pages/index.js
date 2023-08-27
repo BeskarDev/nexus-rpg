@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <Layout
       title='Home'
-      description="A skill-based ancient fantasy TTRPG!">
+      description="Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!">
       <HomepageHeader />
       <main>
       </main>
