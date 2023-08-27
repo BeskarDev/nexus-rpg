@@ -41,12 +41,15 @@ While Wounds from Fatigue heal relatively quickly, Wounds form Injuries take a l
 
 ### Injuries
 
-You take an Injury when your HP is reduced to 0. While your HP is at 0, you suffer another Injury from any successful attack.
+You take an Injury whenever your HP is reduced to 0. While your HP is at 0, you suffer an Injury from any successful attack against you.
 
 Whenever you take an Injury…
 
 - and the damage is equal to or higher than your max HP —> suffer +1 Injury
 - and the damage is equal to or higher than twice your max HP —> suffer +2 Injuries
+
+> Note, that attacks, that deal damage to you multiple times, still only inflict one Injury to you. Only if the damage of any of the attack’s hits surpasses the above mentioned thresholds, do you take multiple Injuries from the attack.
+>
 
 **Treating Injuries**
 
