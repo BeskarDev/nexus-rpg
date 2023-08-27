@@ -25,6 +25,11 @@ export default function Home() {
       description="Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!">
       <HomepageHeader />
       <main>
+        <div className={clsx(styles.heroContainer)} >
+          <h2 className="hero__title">Disclaimer for Play</h1>
+          <p className="hero__subtitle">While this game has been in development for the last 4 years, it is still under active development and only has been playtested for a few times. All rules, player options, and other content are subject to change. The content of this game will update regularily and without notice.</p>
+        </div>
+      </div>
       </main>
     </Layout>
   );
