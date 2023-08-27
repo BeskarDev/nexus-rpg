@@ -7,7 +7,7 @@
   padding: 2rem 6rem;
   text-align: center;
   overflow: hidden;
-  height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
 }
 
 .heroContainer {
@@ -16,6 +16,17 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   color: white;
+}
+
+.contentContainer {
+  padding: 1rem 2rem 0.5rem;
+  background-color: rgba(184, 129, 12, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  color: white;
+  margin-top: 2rem;
+  margin-inline: auto;
+  text-align: left;
 }
 
 @media screen and (max-width: 996px) {
