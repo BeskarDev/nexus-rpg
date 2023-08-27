@@ -48,7 +48,7 @@ Whenever you take an Injury…
 - and the damage is equal to or higher than your max HP —> suffer +1 Injury
 - and the damage is equal to or higher than twice your max HP —> suffer +2 Injuries
 
-> Note, that attacks, that deal damage to you multiple times, still only inflict one Injury to you. Only if the damage of any of the attack’s hits surpasses the above mentioned thresholds, do you take multiple Injuries from the attack.
+> Note that attacks, that deal damage to you multiple times, still only inflict one Injury to you. Only if the damage of any of the attack’s hits surpasses the above mentioned thresholds, do you take multiple Injuries from the attack.
 >
 
 **Treating Injuries**
