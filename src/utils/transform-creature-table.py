@@ -33,7 +33,7 @@ def generate_output(data):
         output.append(f"## Tier {tier}\n\n")
         for row in rows:
             output.append(f"### {row['Name']}\n\n")
-            output.append(f"(*{row['Size']} {row['Category']} {row['Type']}*)  \n")
+            output.append(f"*{row['Size']} {row['Category']} {row['Type']}*  \n")
             output.append("| **Initiative** | **HP** | **AV (Types)** |  \n")
             output.append("|---|---|---|  \n")
             output.append(f"| {row['Initiative']} | {row['HP']} | {row['AV (Types)'].replace(' / ', ' | ')} |  \n\n")
