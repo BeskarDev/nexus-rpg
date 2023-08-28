@@ -2,7 +2,7 @@
 
 ### Cat
 
-*Tiny (-2) Basic Animal*  
+*Tiny (-2), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -24,7 +24,7 @@
 
 ### Dog
 
-*Small (-1) Basic Animal*  
+*Small (-1), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -46,7 +46,7 @@
 
 ### Draft Horse
 
-*Large (+1) Basic Animal*  
+*Large (+1), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -68,7 +68,7 @@
 
 ### Eagle
 
-*Tiny (-2) Basic Animal*  
+*Tiny (-2), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -92,7 +92,7 @@
 
 ### Black Bear
 
-*Medium (-) Basic Animal*  
+*Medium (-), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -114,7 +114,7 @@
 
 ### Boar
 
-*Medium (-) Basic Animal*  
+*Medium (-), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -136,7 +136,7 @@
 
 ### Swarm of Snakes
 
-*Medium (-) Basic Animal*  
+*Medium (-), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -160,7 +160,7 @@
 
 ### Wolf
 
-*Medium (-) Basic Animal*  
+*Medium (-), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -182,7 +182,7 @@
 
 ### Small Earth Elemental
 
-*Small (-1) Basic Daimon (Primal)*  
+*Small (-1), Basic Daimon (Primal)*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -208,7 +208,7 @@
 
 ### Small Fire Elemental
 
-*Small (-1) Basic Daimon (Primal)*  
+*Small (-1), Basic Daimon (Primal)*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -234,7 +234,7 @@
 
 ### Goblin
 
-*Small (-1) Basic Humanoid*  
+*Small (-1), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -256,7 +256,7 @@
 
 ### Kobold
 
-*Small (-1) Basic Humanoid*  
+*Small (-1), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -278,7 +278,7 @@
 
 ### Nakesh Cultist (Acolyte)
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -302,7 +302,7 @@
 
 ### Nakesh Cultist (Assassin)
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -326,7 +326,7 @@
 
 ### Nakesh Cultist (Warrior)
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -350,7 +350,7 @@
 
 ### Orc Warrior
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -372,7 +372,7 @@
 
 ### Soldier
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -394,7 +394,7 @@
 
 ### Goblin Boss
 
-*Small (-1) Master Humanoid*  
+*Small (-1), Master Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -416,7 +416,7 @@
 
 ### Rust Scarab
 
-*Small (-1) Basic Monstrosity*  
+*Small (-1), Basic Monstrosity*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -438,7 +438,7 @@
 
 ### Plague Zombie
 
-*Medium (-) Basic Undead*  
+*Medium (-), Basic Undead*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -464,7 +464,7 @@
 
 ### Skeleton
 
-*Medium (-) Basic Undead*  
+*Medium (-), Basic Undead*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -490,7 +490,7 @@
 
 ### Zombie
 
-*Medium (-) Basic Undead*  
+*Medium (-), Basic Undead*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -518,7 +518,7 @@
 
 ### Brown Bear
 
-*Large (+1) Basic Animal*  
+*Large (+1), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -540,7 +540,7 @@
 
 ### Giant Scorpion
 
-*Large (+1) Basic Animal*  
+*Large (+1), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -562,7 +562,7 @@
 
 ### Giant Venomous Snake
 
-*Large (+1) Basic Animal*  
+*Large (+1), Basic Animal*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -584,7 +584,7 @@
 
 ### Medium Fire Elemental
 
-*Medium (-) Basic Daimon (Primal)*  
+*Medium (-), Basic Daimon (Primal)*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -610,7 +610,7 @@
 
 ### Ogre
 
-*Large (+1) Basic Giant*  
+*Large (+1), Basic Giant*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -632,7 +632,7 @@
 
 ### Ogre Brute
 
-*Large (+1) Elite Giant*  
+*Large (+1), Elite Giant*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -654,7 +654,7 @@
 
 ### Gladiator
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -676,7 +676,7 @@
 
 ### Nakesh Cultist (Fanatic)
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -700,7 +700,7 @@
 
 ### Nakesh Cultist (Sorcerer)
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -724,7 +724,7 @@
 
 ### Veteran
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -746,7 +746,7 @@
 
 ### Nakesh Cult Leader
 
-*Medium (-) Master Humanoid*  
+*Medium (-), Master Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -772,7 +772,7 @@
 
 ### Large Fire Elemental
 
-*Large (+1) Basic Daimon (Primal)*  
+*Large (+1), Basic Daimon (Primal)*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -798,7 +798,7 @@
 
 ### Wyvern
 
-*Large (+1) Basic Dragon*  
+*Large (+1), Basic Dragon*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -822,7 +822,7 @@
 
 ### Young Dragon
 
-*Large (+1) Elite Dragon*  
+*Large (+1), Elite Dragon*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -846,7 +846,7 @@
 
 ### Troll
 
-*Large (+1) Basic Giant*  
+*Large (+1), Basic Giant*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -868,7 +868,7 @@
 
 ### Officer
 
-*Medium (-) Basic Humanoid*  
+*Medium (-), Basic Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -888,9 +888,9 @@
 
 **Abilities**<br />-  
 
-### Undead Naga (Soldier)
+### Naga Soldier Skeleton
 
-*Large (+1) Basic Undead*  
+*Large (+1), Basic Undead*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -918,7 +918,7 @@
 
 ### Adult Dragon
 
-*Huge (+2) Elite Dragon*  
+*Huge (+2), Elite Dragon*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -940,7 +940,7 @@
 
 ### Mountain Giant
 
-*Huge (+2) Basic Giant*  
+*Huge (+2), Basic Giant*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -962,7 +962,7 @@
 
 ### General
 
-*Medium (-) Elite Humanoid*  
+*Medium (-), Elite Humanoid*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -984,7 +984,7 @@
 
 ### Hydra
 
-*- - -*  
+*-, - -*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
@@ -1008,7 +1008,7 @@
 
 ### Old Dragon
 
-*Gargantuan (+3) Elite Dragon*  
+*Gargantuan (+3), Elite Dragon*  
 
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
