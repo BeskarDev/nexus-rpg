@@ -17,9 +17,9 @@ function HomepageHeader() {
       <div className={clsx(styles.contentContainer)} >
           <div style={{paddingTop: '0.5rem', display: 'flex', gap: '0.5rem'}}>
             <WarningAmberIcon />
-            <h3>{'Disclaimer for Play'}</h3>
+            <h3>Disclaimer for Play</h3>
           </div>
-          <p>{'While this game has been in development for the last 4 years, it is still under active development and only has been playtested for a few times. All rules, player options, and other content are still incomplete and subject to change. The content of this game will update regularily and without notice.'}</p>
+          <p>While this game has been in development for the last 4 years, it is still under active development and only has been playtested for a few times. All rules, player options, and other content are subject to change. The content of this game will still change frequently and without notice (though I try to list all major changes in the github release notes).</p>
         </div>
     </header>
   );

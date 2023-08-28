@@ -13,8 +13,8 @@ This work is licensed under a
 
 Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!
 
-## Disclaimer for Play
+## Disclaimer
 
 While this game has been in development for the last 4 years, it is still under active development and only has been playtested for a few times.
-All rules, player options, and other content are still incomplete and subject to change.
-The content of this game will update regularily and without notice.
+All rules, player options, and other content are subject to change.
+The content of this game will still change frequently and without notice (though I try to list all major changes in the github release notes).

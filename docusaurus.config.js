@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Nexus RPG',
-  tagline: 'A skill-based ancient fantasy TTRPG!',
+  tagline: 'Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
