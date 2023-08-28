@@ -9,6 +9,7 @@ sidebar_position: 3
 ### Cat
 
 (*Tiny (-2) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 5 | 0 |  
@@ -30,6 +31,7 @@ sidebar_position: 3
 ### Dog
 
 (*Small (-1) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 10 | 0 |  
@@ -51,6 +53,7 @@ sidebar_position: 3
 ### Draft Horse
 
 (*Large (+1) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Slow | 20 | 2 (natural light) |  
@@ -72,6 +75,7 @@ sidebar_position: 3
 ### Eagle
 
 (*Tiny (-2) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 5 | 0 |  
@@ -95,6 +99,7 @@ sidebar_position: 3
 ### Black Bear
 
 (*Medium (-) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 20 | 2 (natural light) |  
@@ -116,6 +121,7 @@ sidebar_position: 3
 ### Boar
 
 (*Medium (-) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 20 | 2 (natural light) |  
@@ -137,6 +143,7 @@ sidebar_position: 3
 ### Swarm of Snakes
 
 (*Medium (-) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 10 | 0 |  
@@ -160,6 +167,7 @@ sidebar_position: 3
 ### Wolf
 
 (*Medium (-) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 10 | 1 (natural light) |  
@@ -181,6 +189,7 @@ sidebar_position: 3
 ### Small Earth Elemental
 
 (*Small (-1) Basic Daimon (Primal)*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Slow | 10 | 4 (natural heavy) |  
@@ -206,6 +215,7 @@ sidebar_position: 3
 ### Small Fire Elemental
 
 (*Small (-1) Basic Daimon (Primal)*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 10 | 0 |  
@@ -231,6 +241,7 @@ sidebar_position: 3
 ### Goblin
 
 (*Small (-1) Basic Humanoid*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 10 | 2 (light) |  
@@ -252,6 +263,7 @@ sidebar_position: 3
 ### Kobold
 
 (*Small (-1) Basic Humanoid*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 10 | 1 (natural light) |  
@@ -273,6 +285,7 @@ sidebar_position: 3
 ### Orc Warrior
 
 (*Medium (-) Basic Humanoid*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 20 | 2 (light) |  
@@ -294,6 +307,7 @@ sidebar_position: 3
 ### Soldier
 
 (*Medium (-) Basic Humanoid*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 10 | 3 (light) |  
@@ -315,6 +329,7 @@ sidebar_position: 3
 ### Goblin Boss
 
 (*Small (-1) Master Humanoid*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 3x10 | 3 (light) |  
@@ -336,6 +351,7 @@ sidebar_position: 3
 ### Rust Scarab
 
 (*Small (-1) Basic Monstrosity*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 10 | 4 (natural heavy) |  
@@ -357,6 +373,7 @@ sidebar_position: 3
 ### Plague Zombie
 
 (*Medium (-) Basic Undead*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Slow | 20 | 2 (natural light) |  
@@ -382,6 +399,7 @@ sidebar_position: 3
 ### Skeleton
 
 (*Medium (-) Basic Undead*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 10 | 4 (natural heavy) |  
@@ -407,6 +425,7 @@ sidebar_position: 3
 ### Zombie
 
 (*Medium (-) Basic Undead*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Slow | 20 | 2 (natural light) |  
@@ -434,6 +453,7 @@ sidebar_position: 3
 ### Brown Bear
 
 (*Large (+1) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 30 | 4 (natural light) |  
@@ -455,6 +475,7 @@ sidebar_position: 3
 ### Giant Scorpion
 
 (*Large (+1) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 30 | 5 (natural heavy) |  
@@ -476,6 +497,7 @@ sidebar_position: 3
 ### Giant Venomous Snake
 
 (*Large (+1) Basic Animal*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 30 | 3 (natural light) |  
@@ -497,6 +519,7 @@ sidebar_position: 3
 ### Medium Fire Elemental
 
 (*Medium (-) Basic Daimon (Primal)*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 20 | 2 (natural light) |  
@@ -522,6 +545,7 @@ sidebar_position: 3
 ### Ogre
 
 (*Large (+1) Basic Giant*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Slow | 30 | 3 (light) |  
@@ -543,6 +567,7 @@ sidebar_position: 3
 ### Ogre Brute
 
 (*Large (+1) Elite Giant*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Slow | 2x30 | 4 (light) |  
@@ -564,6 +589,7 @@ sidebar_position: 3
 ### Gladiator
 
 (*Medium (-) Basic Humanoid*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 30 | 4 (natural light + helmet + shield) |  
@@ -585,6 +611,7 @@ sidebar_position: 3
 ### Veteran
 
 (*Medium (-) Basic Humanoid*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 20 | 6 (heavy + helmet + shield) |  
@@ -608,6 +635,7 @@ sidebar_position: 3
 ### Large Fire Elemental
 
 (*Large (+1) Basic Daimon (Primal)*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Fast | 30 | 4 (natural light) |  
@@ -633,6 +661,7 @@ sidebar_position: 3
 ### Young Dragon
 
 (*Large (+1) Elite Dragon*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 2x30 | 8 (natural heavy) |  
@@ -656,6 +685,7 @@ sidebar_position: 3
 ### Troll
 
 (*Large (+1) Basic Giant*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Normal | 40 | 3 (natural light) |  
@@ -679,6 +709,7 @@ sidebar_position: 3
 ### Mountain Giant
 
 (*Huge (+2) Basic Giant*)  
+
 | **Initiative** | **HP** | **AV (Types)** |  
 |---|---|---|  
 | Slow | 60 | 4 (natural light) |  
