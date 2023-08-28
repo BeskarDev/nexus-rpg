@@ -67,3 +67,16 @@ img[alt=folk-img] { width: 300px; }
 .footer__logo {
   margin-top: 0;
 }
+
+table thead, table tr:nth-child(2n) {
+  background-color: transparent;
+}
+
+table tr {
+  border-top: none;
+}
+
+table td, table th {
+  border: none;
+  padding: 0.25rem 0.5rem;
+}

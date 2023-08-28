@@ -18,6 +18,19 @@ def process_table_row(row):
         'Abilities': abilities.strip()
     }
 
+def format_actions_abilities(text):
+    lines = text.split('<br />')
+    formatted_lines = []
+    
+    for line in lines:
+        parts = line.split('. ', 1)
+        if len(parts) >= 2:
+            formatted_lines.append(f"**{parts[0]}.** {parts[1]}")
+        else:
+            formatted_lines.append(line)
+    
+    return '<br />'.join(formatted_lines)
+
 def generate_output(data):
     output = []
     
@@ -36,7 +49,7 @@ def generate_output(data):
             output.append(f"*{row['Size']} {row['Category']} {row['Type']}*  \n\n")
             output.append("| **Initiative** | **HP** | **AV (Types)** |  \n")
             output.append("|---|---|---|  \n")
-            output.append(f"| {row['Initiative']} | {row['HP']} | {row['AV (Types)'].replace(' / ', ' | ')} |  \n\n")
+            output.append(f"| {row['Initiative']} | {row['HP']} | {row['AV (Types)']} |  \n\n")
             output.append("| **STR** | **AGI** | **SPI** | **MND** |  \n")
             output.append("|---|---|---|---|  \n")
             output.append(f"| {row['Stats'].replace(' / ', ' | ')} |  \n\n")
@@ -51,8 +64,8 @@ def generate_output(data):
             if row['Resistances'] != '-':
                 output.append(f"**Resistances**<br />{row['Resistances']}  \n\n")
             
-            output.append(f"**Actions**<br />{row['Actions']}  \n\n")
-            output.append(f"**Abilities**<br />{row['Abilities']}  \n\n")
+            output.append(f"**Actions**<br />{format_actions_abilities(row['Actions'])}  \n\n")
+            output.append(f"**Abilities**<br />{format_actions_abilities(row['Abilities'])}  \n\n")
 
     return ''.join(output)
 
