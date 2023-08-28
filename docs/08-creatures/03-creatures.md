@@ -204,9 +204,9 @@ sidebar_position: 3
 
 **Skills**<br />Fighting 0, Fortitude 1  
 
-**Weaknesses**<br />blast damage  
-
 **Resistances**<br />physical damage expect from crush weapons  
+
+**Weaknesses**<br />blast damage  
 
 **Actions**<br />**Smash (crush).** 7 damage (4 base + 3 weapon). On a strong or critical hit, the target falls prone.  
 
@@ -230,9 +230,9 @@ sidebar_position: 3
 
 **Skills**<br />Fighting 0, Fortitude 1, Perception 1  
 
-**Weaknesses**<br />frost damage, damage from water  
-
 **Resistances**<br />physical damage  
+
+**Weaknesses**<br />frost damage, damage from water  
 
 **Actions**<br />**Burning Lash.** 6 fire damage (4 base + 2 weapon). On a strong or critical hit, inflicts burning (2) for a short duration.  
 
@@ -460,9 +460,9 @@ sidebar_position: 3
 
 **Skills**<br />Endurance 1, Fighting 0  
 
-**Weaknesses**<br />slash weapons, radiant damage  
-
 **Resistances**<br />necrotic damage, poison damage  
+
+**Weaknesses**<br />slash weapons, radiant damage  
 
 **Actions**<br />**Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**Rotten Bite (only if grappling).** 8 poison damage (4 base + 4 weapon).<br />**Spew Plague (thrown (short)).** 8 poison damage (4 base + 4 weapon).  
 
@@ -486,9 +486,9 @@ sidebar_position: 3
 
 **Skills**<br />Fighting 1, Perception 1  
 
-**Weaknesses**<br />crush weapons, radiant damage  
-
 **Resistances**<br />necrotic damage  
+
+**Weaknesses**<br />crush weapons, radiant damage  
 
 **Actions**<br />Claw. 5 damage (3 base + 2 weapon).<br />**Longsword (pierce, versatile (+1)).** 6 damage (3 base + 3 weapon).  
 
@@ -512,9 +512,9 @@ sidebar_position: 3
 
 **Skills**<br />Endurance 1, Fighting 0  
 
-**Weaknesses**<br />radiant damage  
-
 **Resistances**<br />necrotic damage  
+
+**Weaknesses**<br />radiant damage  
 
 **Actions**<br />**Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**Rotten Bite (only if grappling).** 8 poison damage (4 base + 4 weapon).  
 
@@ -606,9 +606,9 @@ sidebar_position: 3
 
 **Skills**<br />Fighting 1, Fortitude 2, Perception 2  
 
-**Weaknesses**<br />frost damage, damage from water  
-
 **Resistances**<br />physical damage  
+
+**Weaknesses**<br />frost damage, damage from water  
 
 **Actions**<br />**Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**Burning Lash.** 8 fire damage (5 base + 3 weapon). On a strong or critical hit, inflicts burning (4) for a short duration.<br />**Flame Bolt (range (medium)).** 7 fire damage (5 base + 2 weapon). On a strong or critical hit, inflicts burning (2) for a short duration.  
 
@@ -794,9 +794,9 @@ sidebar_position: 3
 
 **Skills**<br />Fighting 2, Fortitude 3, Perception 3  
 
-**Weaknesses**<br />frost damage, damage from water  
-
 **Resistances**<br />physical damage  
+
+**Weaknesses**<br />frost damage, damage from water  
 
 **Actions**<br />**Fast Strikes.** This creature can attack or cast spells twice per turn, unless it uses Incineration.<br />**Burning Lash.** 12 fire damage (6 base + 6 weapon). On a strong or critical hit, inflicts burning (6) for a short duration.<br />**Flame Bolt (range (medium)).** 10 fire damage (6 base + 4 weapon). On a strong or critical hit, inflicts burning (4) for a short duration.<br />**Incineration (blast (short), recharge (d6)).** Spirit + Fortitude vs. Dodge. 10 fire damage (6 base + 4 weapon) against each target. On a strong or critical hit, inflicts burning (4) for a short duration.  
 
@@ -894,7 +894,7 @@ sidebar_position: 3
 
 **Abilities**<br />-  
 
-### Naga Soldier Skeleton
+### Naga Mummy
 
 *Large (+1), Basic Undead*  
 
@@ -912,9 +912,9 @@ sidebar_position: 3
 
 **Skills**<br />Arcana 1, Fighting 1, Fortitude 1, Insight 1, Perception 1  
 
-**Weaknesses**<br />radiant damage  
-
 **Resistances**<br />necrotic damage  
+
+**Weaknesses**<br />radiant damage  
 
 **Actions**<br />**Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**Fan Glaive (heavy (d10), reach, slash, two-handed).** 10 damage (5 base + 5 weapon).<br />**Tail (crush).** 9 damage (5 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**Drain Life (target: vs.** Resist, range: short). Roll Mind + Arcana. Deals 4 + 2 necrotic damage per SL. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.  
 

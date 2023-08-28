@@ -58,11 +58,11 @@ def generate_output(data):
             output.append(f"| {row['Parry / Dodge / Resist'].replace(' / ', ' | ')} |  \n\n")
             output.append(f"**Skills**<br />{row['Skills']}  \n\n")
 
-            if row['Weaknesses'] != '-':
-                output.append(f"**Weaknesses**<br />{row['Weaknesses']}  \n\n")
-        
             if row['Resistances'] != '-':
                 output.append(f"**Resistances**<br />{row['Resistances']}  \n\n")
+                
+            if row['Weaknesses'] != '-':
+                output.append(f"**Weaknesses**<br />{row['Weaknesses']}  \n\n")
             
             output.append(f"**Actions**<br />{format_actions_abilities(row['Actions'])}  \n\n")
             output.append(f"**Abilities**<br />{format_actions_abilities(row['Abilities'])}  \n\n")
