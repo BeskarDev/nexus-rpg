@@ -30,7 +30,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-h1, h2, h3, h4, h5, h6 {
+html, body {
   font-family: 'Exo 2', sans-serif;
 }
 
