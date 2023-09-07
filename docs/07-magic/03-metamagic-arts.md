@@ -15,7 +15,5 @@ You can use a Metamagic Art you know by increasing the Focus cost as part of cas
 | Prolonged Spell | +1 Focus cost on a spell that lasts for a duration. Increase the duration by one step (up to a long duration). |
 | Shaped Spell | +1 Focus cost on a spell that affects multiple targets. You can exclude any number of targets from the spell’s effect. |
 | Shredding Spell | +2 Focus cost on a spell dealing damage to ignore 1/2 of the target’s AV. |
-| Quickened Spell | +2 Focus cost to either:
-- Reduce the casting time of a non-ritual spell to a Quick Action. You must still cast the spell on your turn.
-- Reduce the casting time of a ritual spell by one time interval (e.g. travel to exploration). A casting time of a delving turn is reduced to an Action instead. |
+| Quickened Spell | +2 Focus cost to either:<br />- Reduce the casting time of a non-ritual spell to a Quick Action. You must still cast the spell on your turn.<br />- Reduce the casting time of a ritual spell by one time interval (e.g. travel to exploration). A casting time of a delving turn is reduced to an Action instead. |
 | Widened Spell | +2 Focus cost on a spell vs. Dodge that deals damage to all creatures in range of the target location. Increase the radius by one category (max. long) and decrease the damage by -2 per SL against each target. |
