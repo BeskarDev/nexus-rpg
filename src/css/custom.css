@@ -30,6 +30,10 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Exo 2', sans-serif;
+}
+
 /* @media only screen and (max-device-height: 640px) 
                    and (orientation: landscape) {
                     .navbar.navbar--fixed-top {
