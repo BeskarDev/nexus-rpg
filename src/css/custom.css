@@ -82,7 +82,7 @@ table tr {
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
-table tr:last-child {
+table tbody tr:last-child {
   border-bottom: none;
 }
 
