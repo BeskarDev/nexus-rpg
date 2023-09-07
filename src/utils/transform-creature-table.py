@@ -25,7 +25,7 @@ def format_actions_abilities(text):
     for line in lines:
         parts = line.split('. ', 1)
         if len(parts) >= 2:
-            formatted_lines.append(f"**{parts[0]}.** {parts[1]}")
+            formatted_lines.append(f"**- {parts[0]}.** {parts[1]}")
         else:
             formatted_lines.append(line)
     
@@ -47,15 +47,16 @@ def generate_output(data):
         for row in rows:
             output.append(f"### {row['Name']}\n\n")
             output.append(f"*{row['Size']}, {row['Category']} {row['Type']}* \n\n")
-            output.append(f"**Initiative** {row['Initiative']}\n\n")
-            output.append(f"**HP** {row['HP']}, **AV** {row['AV (Types)']}\n\n")
+            output.append(f"**Initiative** {row['Initiative']}<br />")
+
+            output.append(f"**HP** {row['HP']}, **AV** {row['AV (Types)']}<br />")
 
             stat_list = [s.strip() for s in row['Stats'].split('/')]
             if len(stat_list) == 4:
-                output.append(f"**STR** {stat_list[0]}, **AGI** {stat_list[1]}, **SPI** {stat_list[2]}, **MND** {stat_list[3]}\n\n")
+                output.append(f"**STR** {stat_list[0]}, **AGI** {stat_list[1]}, **SPI** {stat_list[2]}, **MND** {stat_list[3]}<br />")
 
             defense_list = [s.strip() for s in row['Parry / Dodge / Resist'].split('/')]
-            if len(stat_list) == 3:
+            if len(defense_list) == 3:
                 output.append(f"**Parry** {defense_list[0]}, **Dodge** {defense_list[1]}, **Resist** {defense_list[2]}\n\n")
 
             output.append(f"**Skills** {row['Skills']}\n\n")
