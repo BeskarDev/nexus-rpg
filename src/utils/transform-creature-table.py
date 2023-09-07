@@ -46,26 +46,28 @@ def generate_output(data):
         output.append(f"## Tier {tier}\n\n")
         for row in rows:
             output.append(f"### {row['Name']}\n\n")
-            output.append(f"*{row['Size']}, {row['Category']} {row['Type']}*  \n\n")
-            output.append("| **Initiative** | **HP** | **AV (Types)** |  \n")
-            output.append("|---|---|---|  \n")
-            output.append(f"| {row['Initiative']} | {row['HP']} | {row['AV (Types)']} |  \n\n")
-            output.append("| **STR** | **AGI** | **SPI** | **MND** |  \n")
-            output.append("|---|---|---|---|  \n")
-            output.append(f"| {row['Stats'].replace(' / ', ' | ')} |  \n\n")
-            output.append("| **Parry** | **Dodge** | **Resist** |  \n")
-            output.append("|---|---|---|  \n")
-            output.append(f"| {row['Parry / Dodge / Resist'].replace(' / ', ' | ')} |  \n\n")
-            output.append(f"**Skills**<br />{row['Skills']}  \n\n")
+            output.append(f"*{row['Size']}, {row['Category']} {row['Type']}* \n\n")
+            output.append(f"**Initiative** {row['Initiative']}\n\n")
+            output.append(f"**HP** {row['HP']}, **AV** {row['AV (Types)']}\n\n")
+
+            stat_list = [s.strip() for s in row['Stats'].split('/')]
+            if len(stat_list) == 4:
+                output.append(f"**STR** {stat_list[0]}, **AGI** {stat_list[1]}, **SPI** {stat_list[2]}, **MND** {stat_list[3]}\n\n")
+
+            defense_list = [s.strip() for s in row['Parry / Dodge / Resist'].split('/')]
+            if len(stat_list) == 3:
+                output.append(f"**Parry** {defense_list[0]}, **Dodge** {defense_list[1]}, **Resist** {defense_list[2]}\n\n")
+
+            output.append(f"**Skills** {row['Skills']}\n\n")
 
             if row['Resistances'] != '-':
-                output.append(f"**Resistances**<br />{row['Resistances']}  \n\n")
+                output.append(f"**Resistances** {row['Resistances']}\n\n")
                 
             if row['Weaknesses'] != '-':
-                output.append(f"**Weaknesses**<br />{row['Weaknesses']}  \n\n")
+                output.append(f"**Weaknesses** {row['Weaknesses']}\n\n")
             
-            output.append(f"**Actions**<br />{format_actions_abilities(row['Actions'])}  \n\n")
-            output.append(f"**Abilities**<br />{format_actions_abilities(row['Abilities'])}  \n\n")
+            output.append(f"**Actions**<br />{format_actions_abilities(row['Actions'])}\n\n")
+            output.append(f"**Abilities**<br />{format_actions_abilities(row['Abilities'])}\n\n")
 
     return ''.join(output)
 
