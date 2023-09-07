@@ -79,6 +79,11 @@ table thead, table tr:nth-child(2n) {
 
 table tr {
   border-top: none;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+table tr:last-child {
+  border-bottom: none;
 }
 
 table td, table th {
