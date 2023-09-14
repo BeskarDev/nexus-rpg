@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # ✨ Resolve
 
-Resolve is a resource that represents the adventurers tenacity, luck, and will to fight on. You can have a maximum of 3 Resolve at any point and can spend it at different points of time to gain an advantage or get back up on your feet.
+Resolve is a resource that represents the adventurer's tenacity, luck, and will to fight on. You can have a maximum of 3 Resolve at any point and can spend it at different points of time to gain an advantage or get back up on your feet.
 
 Spend 1 Resolve to
 

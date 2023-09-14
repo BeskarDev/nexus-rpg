@@ -4,9 +4,9 @@ sidebar_position: 5
 
 # 👥 NPC Relations
 
-These are the important NPCs that the adventurers have relations with. Each character starts with one of each, giving the GM the opportunity to personalize adventurers through their relations. This also gives the adventurers a link to the gaming world and it’s people.
+These are the important NPCs that the adventurers have relations with. Each character starts with one of each, allowing the GM to personalize adventurers through their relations. This also gives the adventurers a link to the gaming world and its people.
 
-While the adventurers can take actions to gain new allies and contacts, rivals are typically the result of some failure.
+While the adventurers can take action to gain new allies and contacts, rivals are typically the result of some failure.
 
 ## Types of NPC Relations
 
@@ -22,11 +22,11 @@ Types of Allies:
 
 ### Contacts
 
-People you know, have worked or lived with before. More professional that personal relationships. They will do you a favour, but ask for something in return. You can be less sure of their allegiance towards you if their own interests don’t align with yours.
+People you know, have worked or lived with before. More professional than personal relationships. They will do you a favor, but ask for something in return. You can be less sure of their allegiance towards you if their interests don’t align with yours.
 
 ### Rivals
 
-People who are opposed to you and your goals. Might be of the same profession as you, or people you crossed, or wronged in your past. They will not help you out, unless your goals align absolutely and they gain an advantage from cooperation. They might also attempt to hurt you or destroy your reputation.
+People who are opposed to you and your goals. Might be of the same profession as you, or people you crossed, or wronged in your past. They will not help you out unless your goals align absolutely and they gain an advantage from cooperation. They might also attempt to hurt you or destroy your reputation.
 
 ## NPC Ranks
 
@@ -36,7 +36,7 @@ For example, if you have a historian with rank 2 as a contact, they roll with +2
 
 ## Gaining new Relations
 
-During the game you can gain new NPC relations. You might gain a new ally if you assisted them on an adventure, find contacts during downtime, or make a new rival from an enemy that survived during your adventures.
+During the game, you can gain new NPC relations. You might gain a new ally if you assisted them on an adventure, find contacts during downtime, or make a new rival from an enemy that survived during your adventures.
 
 ## Changing Relations
 

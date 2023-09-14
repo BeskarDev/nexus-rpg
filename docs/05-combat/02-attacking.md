@@ -19,11 +19,15 @@ You have to have learned the skill required by your weapon (Fighting for melee w
 
 | SL | Effect |
 | --- | --- |
-| Blunder | Choose one:<br />- Roll a Durability Check for the weapon you attacked with.<br />- Roll a Supply Check if your weapon uses ammo.<br />- One item you are holding is knocked to the ground somewhere close. |
+| Blunder | Choose one:
+- Roll a Durability Check for the weapon you attacked with.
+- Roll a Supply Check if your weapon uses ammo.
+- One item you are holding is knocked to the ground somewhere close. |
 | Failure | You miss your target. |
 | Weak | You hit your target with 1 x weapon damage. |
 | Strong | You hit your target with 2 x weapon damage. |
-| Critical | You hit your target with 3 x weapon damage.<br />Also the target has to roll a Durability Check for their armor, helmet, shield, weapon, or other held item (their choice). |
+| Critical | You hit your target with 3 x weapon damage.
+Also, the target has to roll a Durability Check for their armor, helmet, shield, weapon, or other held item (their choice). |
 
 ## Melee Attacks
 
@@ -35,13 +39,13 @@ When you have nothing to defend yourself with, you can still throw a punch. Figh
 
 ### Non-lethal Attacks
 
-When you hit an enemy with a melee weapon and you would inflict an Injury to them, you can choose to inflict two Fatigue to them instead. When doing so, the target also has to roll Strength + Fortitude. The difficulty of the roll is moderate (8) for a target with one Wound or hard (10) for a target with two Wounds. The target automatically fails, if they suffered three Wounds already. If they fail, they fall unconscious for a short duration, or until they are woken up by another creature or event.
+When you hit an enemy with a melee weapon and you would inflict an Injury on them, you can choose to inflict two Fatigue on them instead. When doing so, the target also has to roll Strength + Fortitude. The difficulty of the roll is moderate (8) for a target with one Wound or hard (10) for a target with two Wounds. The target automatically fails, if they suffered three Wounds already. If they fail, they fall unconscious for a short duration, or until they are woken up by another creature or event.
 
 ## Ranged Attacks
 
 Ranged attacks require your target to be visible and within your weapon’s or spell’s range.
 
-### Attacking at higher range
+### Attacking at a higher range
 
 When attacking with a ranged weapon or spell at any range further than medium or a thrown weapon at any further range than short, you suffer a cumulative +1 bane for each range category beyond that range. You can’t attack beyond the range listed for the weapon or spell.
 
@@ -71,11 +75,11 @@ If you use a weapon or cast a spell that adds a specific damage type, such as fi
 
 ### Lasting Damage
 
-When some effect inflicts some amount lasting damage on you, you first take no damage from it. Instead, at the start of each of your turns, you take that amount of damage (ignoring Armor). You continue to take the lasting damage, until the effect ends, or you remove it via some action. For example, the bleed property inflicts lasting damage, which can be removed by rolling Spirit + Nature as an Action.
+When some effect inflicts some amount of lasting damage on you, you first take no damage from it. Instead, at the start of each of your turns, you take that amount of damage (ignoring Armor). You continue to take the lasting damage, until the effect ends, or you remove it via some action. For example, the bleed property inflicts lasting damage, which can be removed by rolling Spirit + Nature as an Action.
 
 ### Damage Types
 
-There exist multiple damage types which describe the various ways of inflicting harm. If some effect adds damage of a specific type to an attack, all of the attack‘s damage is treated as of that damage type.
+There exist multiple damage types which describe the various ways of inflicting harm. If some effect adds damage of a specific type to an attack, all of the attack‘s damage is treated as that damage type.
 
 > If an attack, spell, or effect mentions no specific damage type, the damage is always assumed to be physical.
 > 
@@ -100,19 +104,19 @@ Adventurers and other creatures can gain resistances or weaknesses to certain da
 - Resistance: You take 1/2 x damage (rounded up).
 - Weakness: You take 1.5 x damage (rounded up).
 
-You apply these resistances and weaknesses first before subtracting your AV or modifying the damage in any other ways. If you would gain a resistance or weakness from multiple conditions against the same damage, you still only apply it once. If you would apply both resistances and weaknesses against the same damage, cancel them out with each other and apply normal damage.
+You apply these resistances and weaknesses first before subtracting your AV or modifying the damage in any other way. If you gain resistance or weakness from multiple conditions against the same damage, you still only apply it once. If you apply both resistances and weaknesses against the same damage, cancel them out with each other and apply normal damage.
 
 ## Attack Options
 
-When attacking, you have access to different options through weapon properties or combat manoeuvres.
+When attacking, you have access to different options through weapon properties or combat maneuvers.
 
 ### Dual-wielding
 
-When you are wielding two light melee weapons, you can attack with both of them in the same Action. Each weapon counts as it‘s own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks.
+When you are wielding two light melee weapons, you can attack with both of them in the same Action. Each weapon counts as its own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks.
 
 ### Attacking multiple targets
 
-Some effects allow you to hit multiple targets with the same attack. For this, compare your roll to each targets Defense that would be hit. Your SL is calculated for each target individually. Inflict your normal damage to each target that you hit successfully.
+Some effects allow you to hit multiple targets with the same attack. For this, compare your roll to each target's Defense that would be hit. Your SL is calculated for each target individually. Inflict your normal damage on each target that you hit successfully.
 
 ## Improvised Weapons
 

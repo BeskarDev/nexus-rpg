@@ -11,14 +11,14 @@ When creating a new adventurer, follow the steps below:
 1. **Choose your Attributes**
     - You start with a d6 in all attributes. You can then choose to increase one attribute to d8, but you must also decrease one to d4 when doing so.
 2. **Choose your Folk**
-    - Also choose a culture for your folk. You learn the language of your chosen culture, in addition to the common language of the region.
+    - Also, choose a culture for your folk. You learn the language of your chosen culture, in addition to the common language of the region.
 3. **Choose your Upbringing**
 4. **Choose your Background**
 5. **Ask yourself the following questions** (you can also leave some of the questions open and determine them dynamically in the story during play)
-    - Who is a good friend, colleague or important family member you can call for aid? (Write down as your Ally)
+    - Who is a good friend, colleague, or important family member you can call for aid? (Write down as your Ally)
     - Who is a person in your life that you can rely on for information, knowledge, or skills? (Write down as your Contact)
-    - Who did you anger, came into conflict with, or holds a grudge against you? (Write down as your Rival)
-    - Why did you become an adventurer? Pick one of the following keywords or choose your own (Write down as your Motivation).
+    - Who did you anger, come into conflict with, or hold a grudge against you? (Write down as your Rival)
+    - Why did you become an adventurer? Pick one of the following keywords or choose your own (Write down your Motivation).
     *Duty, Fame, Fortune, Freedom, Justice, Knowledge, Power, Redemption, Revenge, Survival*
 6. **Choose your Skills**
     - Your upbringing and background give examples of fitting skills for your adventurer. Write down all suggested skills, or replace any number of them with other skills you see more fitting for your adventurer. At the end, you should have written down exactly seven distinct skills.
@@ -27,19 +27,24 @@ When creating a new adventurer, follow the steps below:
     - If you learned Arcana or Mysticism, you learn spells for the learned skill. See the Magic section for more details.
 7. **Choose your Equipment**
     - Starting Items:
-        - A backpack (holds up to 10 load, 1 load, 10 coin) and two pouches (each holds up to 2 load, 0 load, 5 coin)
+        - A backpack (holds up to 10 load, 1 load, 10 coins)
+        - Two pouches (each holds up to 2 load, 0 load, 1 coin)
         - Traveler‘s Clothes (0 load, 10 coin)
-        - Hemp Rope (1 load, 10 coin), a camping kit (1 load, 50 coin), and one additional tool of your choice
-        - Supplies: 2 units (d6, 1 load) of provisions and 2 units (d6, 1 load) of torches (emit bright light in close range and dim light in short range when lit)
-        - 10 coins (can’t be spend during adventurer creation)
+        - Hemp Rope (covers a medium distance, 1 load, 10 coins)
+        - Camping kit (provides shelter for a night‘s rest for up to two people, 1 load, 50 coins)
+        - One additional tool of your choice
+        - Supplies:
+            - 2 units (d6) of provisions (1 load, 10 coins per unit)
+            - 2 units (d6) of torches (emit bright light in close range and dim light in short range when lit, 1 load, 10 coins per unit)
+        - 10 coins (can’t be spent during adventurer creation)
     - You also get 350 coins to spend on additional equipment and items.
         - Choosing a weapon that requires ammo gives you 2 units (d6) of that ammo for free
         - You keep coins you don’t spend
 8. **Start with 1 Resolve and fill out the remaining statistics on your adventurer sheet**
 
-## Advanced Adventurer Creation
+### Advanced Adventurer Creation
 
-For a play group which already has played Nexus RPG for a while and doesn‘t want to repeat the early phase of adventuring life for their characters, you can decide on one of the following advanced starts.
+For a playgroup that already has played Nexus RPG for a while and doesn‘t want to repeat the early phase of adventuring life for their characters, you can decide on one of the following advanced starts.
 
 | Adventuring Tier | Starting XP | Max. Attribute Dice* | Coins |
 | --- | --- | --- | --- |
@@ -51,3 +56,18 @@ For a play group which already has played Nexus RPG for a while and doesn‘t wa
 | Tier 6 (legendary) | 90 XP total (max. 30 XP per skill) | d12 | 1,500,000 coins |
 
 * You can spend 4 XP to increase one of your attributes by one die size. You can do so multiple times up to the max. dice size per Adventuring Tier.
+
+### Smaller Playgroups
+
+This game assumes a group of four adventurers to band together. If your playgroup consists of fewer people than that, consider granting each adventurer one more skill at the XP cap of your chosen starting tier for each player they are below four.
+
+> For example, when playing with a group of two people and no advanced starting tier, they may each choose two more of their skills to invest 2 XP each into. This would leave them with five skills which have 2 XP invested into each of them instead of the normal three skills.
+> 
+
+## Adventurer Sheet
+
+You can print out this sheet to record your adventurer's statistics, equipment, and connections within the game world.
+
+![](./img/adventurer-sheet-p1.jpg)
+
+![](./img/adventurer-sheet-p2.jpg)

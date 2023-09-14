@@ -15,7 +15,7 @@ Most times you will pick up your dice to roll a Skill Test! Whenever the rules r
 
 **Skill Rank:** If you have learned a skill that would help the situation, add your Rank in it to the roll.
 
-**Target Number (TN):** Either picked by the GM based on the Difficulty, or determined by some game mechanic (e.g. an enemy’s Defense). If no other difficulty is mentioned for a roll, it is always moderate (8).
+**Target Number (TN):** Either picked by the GM based on the Difficulty or determined by some game mechanic (e.g. an enemy’s Defense). If no other difficulty is mentioned for a roll, it is always moderate (8).
 
 | Difficulty | TN | Example |
 | --- | --- | --- |
@@ -32,7 +32,7 @@ The most basic of skill tasks for simple checks if any given action succeeds. Yo
 
 ### Success Levels
 
-For when you not only need to know if you failed or succeeded, but how bad or well it went you can determine your Success Level relative to the TN you rolled against.
+For when you not only need to know if you failed or succeeded but how bad or well it went you can determine your Success Level relative to the TN you rolled against.
 
 If you…
 
@@ -92,13 +92,13 @@ Some abilities allow you to re-roll certain tests. When choosing to do so, you m
 
 ## Dice Checks
 
-Dice Checks are all dice rolls which aren’t considered skill tests and are referenced as “checks” in the rules. Dice Checks normally include a single die against a static TN. Anytime the rules ask you to make a check of some kind (i.e. Durability or Supply), you roll the associated die and compare the result to the possible outcomes for that kind of check.
+Dice Checks are all dice rolls that aren’t considered skill tests and are referenced as “checks” in the rules. Dice Checks normally include a single die against a static TN. Anytime the rules ask you to make a check of some kind (i.e. Durability or Supply), you roll the associated die and compare the result to the possible outcomes for that kind of check.
 
 ### Durability Checks
 
-You must roll a Durability check, when some item you are wearing, carrying, or wielding is at the risk of being damaged. Each item has a corresponding Durability die based on it’s material or size. If nothing else is mentioned for an item, it is always assumed to have a d6 Durability die.
+You must roll a Durability check, when some item you are wearing, carrying, or wielding is at the risk of being damaged. Each item has a corresponding Durability die based on its material or size. If nothing else is mentioned for an item, it is always assumed to have a d6 Durability die.
 
-If you roll a 1 or a 2 with your Durability check, a normal item get’s damaged or an already damaged item becomes destroyed. For more details, see the Weapon & Armor Properties section. You can attempt to repair damaged or destroyed items, as described in the Downtime section.
+If you roll a 1 or a 2 with your Durability check, a normal item gets damaged, or an already damaged item becomes destroyed. For more details, see the Weapon & Armor Properties section. You can attempt to repair damaged or destroyed items, as described in the Downtime section.
 
 ### Supply Checks
 
@@ -106,4 +106,4 @@ Your Supplies are general stocks of useful items, such as provisions, light sour
 
 ### Individual Checks
 
-Some checks don’t require a target number to succeed, but instead have different outcomes based on the result. For example, you roll a d6 when **frightened**. On a 1, you cower in fear and can’t act or move. On a 2-5, you simply run away from the source of your fear. On a 6, you can act normally, but suffer a bane on all skill rolls.
+Some checks don’t require a target number to succeed but instead have different outcomes based on the result. For example, you roll a d6 when **frightened**. On a 1, you cower in fear and can’t act or move. On a 2-5, you simply run away from the source of your fear. On a 6, you can act normally, but suffer a bane on all skill rolls.

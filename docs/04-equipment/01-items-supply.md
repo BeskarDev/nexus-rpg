@@ -10,41 +10,44 @@ You can buy, sell, and find a variety of items that are useful for your adventur
 
 ### Item Quality
 
-1. **Primitive** (worth 1-50 coins)
+1. <span style="color: var(--ifm-color-quality-1);">**Primitive**</span> (worth 1-50 coins)
     - can be crafted even by apprentice craftsmen
-    - found basically anywhere, even the most primitive settlements
-2. **Simple** (worth 50-500 coins)
+    - found anywhere, even the most primitive settlements
+2. <span style="color: var(--ifm-color-quality-2);">**Simple**</span> (worth 50-500 coins)
     - can be crafted by novice craftsmen
     - found in all civilized settlements
-3. **Advanced** (worth 500-2,000 coins)
+3. <span style="color: var(--ifm-color-quality-3);">**Advanced**</span> (worth 500-2,000 coins)
     - require adept craftsmen to create
     - found in large settlements, or with secluded craftsmen
-4. **Formidable** (worth 2,000-10,000 coins)
+4. <span style="color: var(--ifm-color-quality-4);">**Formidable**</span> (worth 2,000-10,000 coins)
     - the pinnacle of non-magical craftsmanship and material attainable in the mortal realms
-    - only found in huge capitol cities, or hard to reach secluded craftsmen
-5. **Exceptional** (worth 10,000-50,000 coins)
+    - only found in huge capital cities, or hard-to-reach secluded craftsmen
+5. <span style="color: var(--ifm-color-quality-5);">**Exceptional**</span> (worth 10,000-50,000 coins)
     - require magical ingredients, complex formulae, and only the most skilled craftsmen
-    - only rarely found in huge capitol cities, or legendary craftsmen
-6. **Epic** (worth 50,000-250,000 coins)
-    - require powerful magical ingredients, ancient formulae, and are the height of mortal craftsmanship
+    - only rarely found in huge capital cities or legendary craftsmen
+6. <span style="color: var(--ifm-color-quality-6);">**Epic**</span> (worth 50,000-250,000 coins)
+    - require powerful magical ingredients, and ancient formulae, and are the height of mortal craftsmanship
     - only in the possession of the most powerful people, or masterworks from legendary craftsmen
-7. **Legendary** (worth 250,000+ coins)
+7. <span style="color: var(--ifm-color-quality-7);">**Legendary**</span> (worth 250,000-1,000,000 coins)
     - requires legendary magical ingredients, formulae lost to mortals, and the gods themselves as craftsmen
     - the pinnacle of the most powerful people’s possession, crafted in ancient times or by the gods themselves
+8. <span style="color: var(--ifm-color-quality-8);">**Mythical**</span> (worth 1,000,000+ coins)
+    - the absolute peak of divine craftsmanship
+    - each of these items has a long history and anybody coming into their possession is destined for greatness
 
 ## Tools
 
-When you have a tool in your possession that would help you accomplish a roll you are about to attempt, gain +1 boon on the roll. This roll has to be possible without the tool, otherwise it just enables the roll but doesn’t grant the boon. You can only benefit from one tool per roll.
+When you have a tool in your possession that would help you accomplish a roll you are about to attempt, gain +1 boon on the roll. This roll has to be possible without the tool, otherwise, it just enables the roll but doesn’t grant the boon. You can only benefit from one tool per roll.
 
 ## Supply
 
-Supplies are consumable goods, that are not tracked as normal equipment. Instead, each type of supply has an associated Resource Die between d4 (1 unit) and d12 (5 units), where a d12 or 5 units are the most amount one person can physically take with them. At certain points during the game, you will have to roll your Resource Die. When you roll a 1 or 2, reduce your Resource Die by one step. Instead of reducing a d4 Resource Die, you consume all your remaining supply of that type.
+Supplies are consumable goods, that are not tracked as normal equipment. Instead, each type of supply has an associated Resource Die between d4 (1 unit) and d12 (5 units), where a d12 or 5 units is the most amount one person can physically take with them. At certain points during the game, you will have to roll your Resource Die. When you roll a 1 or 2, reduce your Resource Die by one step. Instead of reducing a d4 Resource Die, you consume all your remaining supply of that type.
 
-Each Supply’s load always remains the same, regardless of it‘s Resource Die size. For example, when you carry provisions in any amount, they always take up 1 load.
+Each Supply’s load always remains the same, regardless of its Resource Die size. For example, when you carry provisions in any amount, they always take up 1 load.
 
 ### Increasing and Decreasing Supply
 
-When you gain supply, increase it‘s Resource Die by one step for each unit. Buying supplies is done so unit by unit.
+When you gain supply, increase its Resource Die by one step for each unit. Buying supplies is done unit by unit.
 
 When you lose one unit of supply, reduce the supply‘s Resource Die.
 
@@ -73,7 +76,7 @@ Common, natural materials for repairing equipment, crafting simple items, buildi
 
 **Bundles**
 
-Bundles are a special type of supply. They are foremost weapons, but can be used like ammunition for attacking. They also include other items, such as alchemical substances. See the description for „bundle“ under the Weapon and Armor Properties for more details.
+Bundles are a special type of supply. They are foremost weapons but can be used as ammunition for attacking. They also include other items, such as alchemical substances. See the description for „bundle“ under the Weapon and Armor Properties for more details.
 
 ## Repairing damaged items
 
@@ -81,7 +84,7 @@ While carrying a crafting kit, you can attempt to repair a damaged item during a
 
 ## Encumbrance
 
-Adventurers carry around a lot of equipment and loot. Encumbrance determines the amount of items they are able to carry with them on their person.
+Adventurers carry around a lot of equipment and loot. Encumbrance determines the amount of items they can carry with them on their person.
 
 ### Carrying Items
 
@@ -102,7 +105,7 @@ Generally, an item the size of a melon or up to 2 kilograms in weight is conside
 | metal chest, wild cat | 10 |
 | wooden cart, big dog | 20 |
 | wild boar, small crocodile | 50 |
-| small bear, tiger, lion | 100 |
+| a small bear, tiger, lion | 100 |
 | horse | 200 |
 | large crocodile | 500 |
 | hippopotamus, rhinoceros | 1,000 |
@@ -156,8 +159,8 @@ Being encumbered or over-encumbered causes several effects.
  **Alchemist‘s Supplies** | 2 | 1 | 100 | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance. 
  **Arcane Conduit** | 2 | 0 | 100 | A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast arcane spells. 
  **Bundle of Maps** | 2 | 1 | 100 | Contains several maps for a specific region. Has 5 uses. Spend 1 use to consult the maps and gain +1 boon on a Nature roll. 
- **Bundle of Scrolls** | 2 | 1 | 100 | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature. 
- **Healer‘s Kit** | 2 | 1 | 100 | Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br />Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don’t have to make a Supply check for your materials and you automatically succeed on the roll. 
+ **Bundle of Scrolls** | 2 | 1 | 100 | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or the history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature. 
+ **Healer‘s Kit** | 2 | 1 | 100 | Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don’t have to make a Supply check for your materials and you automatically succeed on the roll. 
  **Mystic Talisman** | 2 | 0 | 100 | A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spell focus to cast mystical spells. 
  **Thieves‘ Tools** | 2 | 1 | 100 | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you blunder a roll to pick a lock, spend 1 use. 
  **Fine Clothes** | 3 | 1 | 500 | Clothes of a noble or rich merchant made from exotic materials. 
@@ -166,6 +169,7 @@ Being encumbered or over-encumbered causes several effects.
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
+ **Kestros Darts** | 1 | 1 | 5 | Worth one unit of ammo for kestros. 
  **Throwing Stones** | 1 | 1 | 5 | Worth one unit of ammo for slings and slingshots. 
  **Blowdarts** | 1 | 1 | 10 | Worth one unit of ammo for blowpipes. 
  **Provisions** | 1 | 1 | 10 | Worth one unit of provisions. 
@@ -184,7 +188,7 @@ Being encumbered or over-encumbered causes several effects.
  **Climber‘s Kit** | 2 | 1 | 50 | Contains pitons, boot tips, gloves, and a harness. 
  **Cook‘s Utensils** | 2 | 1 | 50 | Contains a metal pot, knives, forks, a stirring spoon, and a ladle. 
  **Disguise Kit** | 2 | 1 | 50 | Contains cosmetics, hair dye, small props, and a few different pieces of clothing. 
- **Gaming Set** | 2 | 1 | 50 | Contains all pieces to play a specific game, such as a board, cards, dice, or tokens. 
+ **Gaming Set** | 2 | 1 | 50 | Contains all the pieces to play a specific game, such as a board, cards, dice, or tokens. 
  **Leatherworker‘s Tools** | 2 | 1 | 50 | Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps. 
  **Mason‘s Tools** | 2 | 1 | 50 | Contains a small trowel, a hammer, a chisel, brushes, and a square. 
  **Navigator‘s Tools** | 2 | 1 | 50 | Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill. 
@@ -193,7 +197,7 @@ Being encumbered or over-encumbered causes several effects.
  **Weaver‘s Tools** | 2 | 1 | 50 | Contains thread, needles, and scraps of cloth. 
  **Woodcarver‘s Tools** | 2 | 1 | 50 | Contains a knife, a gourge, and a small saw. 
  **Jeweler‘s Tools** | 2 | 1 | 100 | Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass. 
- **Musical Instrument** | 2 | 1 | 100 | Any common type of stringed, woodwind, brass or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourin, or macaras for percussion instruments. 
+ **Musical Instrument** | 2 | 1 | 100 | Any common type of string, woodwind, brass, or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourine, or macaras for percussion instruments. 
 
 ### Transportation
 
@@ -206,8 +210,8 @@ Being encumbered or over-encumbered causes several effects.
 
  **Name** | **Quality** | **Load** | **Cost** | **Description** 
 ---|---|---|---|---
- **Guard Dog (or young Jaguar, Boar, etc.)** | 1 | 12 | 50 | A dog or other similar sized animal that underwent basic training to fight and protect it&#x27;s owner. Can be trained as a tame animal companion, provided you have the Survival talent with the same name.  
- **Draft Horse (or Donkey, Mule)** | 1 | 130 | 100 | A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see it‘s statistics. 
+ **Guard Dog (or young Jaguar, Boar, etc.)** | 1 | 12 | 50 | A dog or other similar-sized animal that underwent basic training to fight and protect its owner. Can be trained as a tame animal companion, provided you have the Survival talent with the same name.  
+ **Draft Horse (or Donkey, Mule)** | 1 | 130 | 100 | A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see its statistics. 
 
 ### Alchemical
 
@@ -215,15 +219,16 @@ Being encumbered or over-encumbered causes several effects.
 ---|---|---|---|---
  **Antitoxin** | 2 | 0.5 | 50 | As an action, drink this liquid to cure you of one source of poison affecting you. 
  **Acid Vial** | 2 | 0.5 | 100 | Counts as a thrown weapon (bundle, thrown (short)) dealing +3 acid damage as weapon damage. 
- **Flammable Paste** | 2 | 0 | 100 | Has 5 uses. Spend 1 use as an Action to apply the paste to any weapon or one type of ammo supply. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort. <br />Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignoring AV) to the target. The ignited paste lasts for a short duration. 
- **Paralyzing Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, the target is poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
+ **Flammable Paste** | 2 | 0 | 100 | Has 5 uses. Spend 1 use as an Action to apply the paste to any weapon or one type of ammo supply. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort. <br/>Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignoring AV) to the target. The ignited paste lasts for a short duration. 
+ **Paralyzing Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
  **Potion of Healing (weak)** | 2 | 0 | 100 | Drink this potion as an Action to regain 4 HP. 
- **Weapon Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignoring AV) to the target. 
+ **Weapon Poison (weak)** | 2 | 0.5 | 100 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignoring AV) to the target. 
  **Fire Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target. 
  **Smoke Bomb** | 2 | 0.5 | 200 | Counts as a thrown weapon (bundle, thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light. 
- **Paralyzing Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, the target is poisoned and faltering for a short duration. They can roll a hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
+ **Heightening Potion** | 3 | 0 | 500 | basically battle stimulant 
+ **Paralyzing Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned and faltering for a short duration. They can roll a hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
  **Potion of Healing (decent)** | 3 | 0 | 500 | Drink this potion as an Action to regain 8 HP. 
- **Weapon Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignoring AV) to the target. 
- **Paralyzing Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, the target is poisoned, faltering, and X for a short duration. They can roll a very hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene. 
+ **Weapon Poison (decent)** | 3 | 0.5 | 500 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignoring AV) to the target. 
+ **Paralyzing Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned, faltering, and X for a short duration. They can roll a very hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune to this poison’s effects for the rest of the scene. 
  **Potion of Healing (strong)** | 4 | 0 | 2000 | Drink this potion as an Action to regain 16 HP. 
- **Weapon Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br />When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignoring AV) to the target. 
+ **Weapon Poison (strong)** | 4 | 0.5 | 2000 | Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignoring AV) to the target. 

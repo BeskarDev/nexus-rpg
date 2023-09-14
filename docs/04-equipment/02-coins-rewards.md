@@ -8,10 +8,10 @@ sidebar_position: 2
 
 Adventurers amass wealth in the abstracted form of coins over their adventures. While this wealth is denoted in coins, it is an abstraction which also includes other groups of valuables fit for barter:
 
-- Actual Coins (*local, foreign or ancient*)
+- Actual Coins (*local, foreign, or ancient*)
 - Currency (*metal bars, certificates, stocks*)
-- Gems (*rough, cut, pulverised*)
-- Art Objects (*paintings, jewellery, sculptures, decorated items, clothes, dishes, instruments, clockworks*)
+- Gems (*rough, cut, pulverized*)
+- Art Objects (*paintings, jewelry, sculptures, decorated items, clothes, dishes, instruments, clockworks*)
 - Books/Scrolls (*poetry, story, magical, religious, nature, political, historical, geographical*)
 - Creature Parts (*furs, hides, bones, organs, scales, secretions*)
 - Trade Goods (*beverages, spices, cosmetics, perfumes, dyes, lumber, metals, textiles*)
@@ -19,7 +19,7 @@ Adventurers amass wealth in the abstracted form of coins over their adventures. 
 - Crafting Materials (*recipes, formulas, materials, magical ingredients*)
 - Items (*tools, gear, supplies, weapons, armor, magic items*)
 
-One coin is the cost of a bag of grain, a simple meal at a market, or the daily pay of an unskilled labourer.
+One coin is the cost of a bag of grain, a simple meal at a market, or the daily pay of an unskilled laborer.
 
 > The amount of coins an adventurer carries around with them takes up no load. But note, that any found treasure does take up a varying amount of load, depending on what assortment of items the treasure consists of. Only once the adventurers successfully bring the treasure back into an appropriately sized settlement and take some downtime there, are they able to add their won treasure to their wealth of coins (more details under the “Sell Treasure” Activity in the Downtime section).
 > 

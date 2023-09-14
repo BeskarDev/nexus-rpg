@@ -1,580 +1,907 @@
-## Tier 0
+## Light
 
-### Cat
+### Dazzling Light
 
-*Tiny (-2), Basic Animal* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
 
-**Initiative** Fast<br />**HP** 5, **AV** 0<br />**STR** d4, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 6
+**Effect**<br /> You create a small point of light at the target location. The light provides dim light in short range of it. The light can also move with you while staying in range. When targeted at a creature, you can make the light explode in their face instead.<br/>**Weak.** Deal +2 radiant damage.<br/>**Strong.** Deal +4 radiant damage. The target is also briefly blinded.<br/>**Critical.** Deal +6 radiant damage. The target is also briefly blinded and dazed. 
 
-**Skills** Fighting 0, Perception 1, Survival 1
 
-**Actions**<br />**- Claw.** 3 damage (2 base + 1 weapon).
+### Illuminated Sight
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Self | enchant (eyes)
 
-### Dog
+**Effect**<br /> You concentrate light energy into your eyes, enhancing your eye sight and making you able to pierce through concealing environments.<br/>On a success, you can see one range category further from sources of bright and dim light. You also gain +1 boon on Perception rolls. This spell lasts for a medium duration. 
 
-*Small (-1), Basic Animal* 
 
-**Initiative** Normal<br />**HP** 10, **AV** 0<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 8, **Resist** 6
+### Revealing Burst
 
-**Skills** Fighting 0, Perception 1, Survival 1
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Short | -
 
-**Actions**<br />**- Bite.** 5 damage (3 base + 2 weapon). On a hit, attempts to grapple the target.
+**Effect**<br /> You let loose a burst of radiant energy in all directions, revealing any magical falsehoods, such as illusions, shapeshifters, or invisible creatures in range. For illusions, you roll vs. the Resist of the illusion’s creator.<br/>**Weak.** Any magical falsehood is marked by a shimmer of light. Rolls that target any marked target gain +1 boon. The mark lasts for a short duration.<br/>**Strong.** Any magical falsehood is immediately broken.<br/>**Critical.** Any magical falsehood is immediately broken and any creature revealed by this is briefly shaken. 
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
 
-### Draft Horse
+### Blessing of Light
 
-*Large (+1), Basic Animal* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (eyes)
 
-**Initiative** Slow<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d10, **AGI** d4, **SPI** d4, **MND** d4-2<br />**Parry** 8, **Dodge** 6, **Resist** 6
+**Effect**<br /> You bless a creature with the magical power of light, making them enlightened to their surroundings.<br/>On a success, the creature gains the following effects:<br/>- You can see one range category further from sources of bright and dim light.<br/>- You gain +1 boon on Perception rolls.<br/>This spell lasts for a long duration. 
 
-**Skills** Fortitude 1, Perception 1
 
-**Actions**<br />**- Back Hoof (crush).** 5 damage. On a strong or critical success, the target falls prone.
+### Locate Trinket
 
-**Abilities**<br />**- Fast Stride.** This creature gains +1 Movement on it‘s turns.<br />**- Easily Scared.** This creature suffers +1 bane on rolls for morale and against fear.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular
 
-### Eagle
+**Effect**<br /> Touch a small object and imbue it with truth revealing magic. The object must comfortably fit within the palm of your hand and can be no larger.<br/>On a success, you always know the location of the imbued trinket while it is in the same sphere of existence as you. This spell lasts for a long duration. 
 
-*Tiny (-2), Basic Animal* 
 
-**Initiative** Fast<br />**HP** 5, **AV** 0<br />**STR** d4, **AGI** d8, **SPI** d6, **MND** d4-2<br />**Parry** 7, **Dodge** 10, **Resist** 6
+### Protect from Influence
 
-**Skills** Fighting 0, Perception 1, Survival 1
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | singular,  quick
 
-**Actions**<br />**- Beak (pierce).** 4 damage (2 base + 2 weapon).<br />**- Talons (slash).** 4 damage (2 base + 2 weapon).
+**Effect**<br /> Channel the light’s protective magic into one creature within range, bolstering their mental defenses. Cast this spell as a Quick Action on your turn.<br/>On a success, the target gains +1 boon on rolls to resist any mental effects and gains resistance to psychic damage. Attempts to influence their mind also suffer +1 bane. This spell lasts for a short duration. 
 
-**Abilities**<br />**- Eagle Eye.** This creature gains +1 boon on Perception rolls that rely on sight.<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during it‘s turn in total.
 
-## Tier 1
+### Radiant Burst
 
-### Black Bear
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
 
-*Medium (-), Basic Animal* 
+**Effect**<br /> You let forth a burst of radiant energy, streaking towards a target location and exploding in burning light.<br/>**Weak.** Deal +2 radiant damage to any creature in melee range of the target location.<br/>**Strong.** Deal +4 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded.<br/>**Critical.** Deal +6 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded. Each target is also briefly blinded and dazed. 
 
-**Initiative** Normal<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d10, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 9, **Dodge** 7, **Resist** 6
 
-**Skills** Fighting 0, Fortitude 1, Perception 1, Survival 1
+### Radiant Weapon
 
-**Actions**<br />**- Bite (crush).** 8 damage (5 base + 3 weapon). On a strong or critical hit against a creature of equal or smaller size, the target drops prone.<br />**- Claw (slash).** 7 damage (5 base + 2 weapon). On a strong or critical hit, the target suffers bleeding (2).
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.
+**Effect**<br /> Imbue a weapon with the power of the sun.<br/>On a success, the weapon emits bright light in melee range and dim light in close range of it and deals +2 radiant damage. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
-### Boar
 
-*Medium (-), Basic Animal* 
+### Sense Spirits
 
-**Initiative** Normal<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 9, **Dodge** 8, **Resist** 7
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | you sense the auras of daimon and other spiritual creatures around you |  | -
 
-**Skills** Fighting 0, Fortitude 1, Survival 1
+**Effect**<br />  
 
-**Actions**<br />**- Tusks (crush).** 6 damage (4 base + 2 weapon). On a strong or critical hit against a creature of equal or smaller size, the target falls prone.
 
-**Abilities**<br />**- Charge.** If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack and deals +2 damage.<br />**- Relentless.** The first time this creature would suffer an Injury, they can ignore it.
+### Sun Sphere
 
-### Swarm of Snakes
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | concentrate
 
-*Medium (-), Basic Animal* 
+**Effect**<br /> You conjure a small orb of flame resembling a miniature sun.<br/>On a success, the sphere appears at the target location. It also shines bright light in close range and dim light in short range of it.  Any creature in melee range of it takes +4 fire damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a close distance within range. The sphere lasts for a short duration.  
 
-**Initiative** Normal<br />**HP** 10, **AV** 0<br />**STR** d4, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 8, **Dodge** 9, **Resist** 7
 
-**Skills** -
+### Break Curse
 
-**Resistances** any damage targeting a single creature
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Touch | ritual (minutes)
 
-**Actions**<br />**- Poison Bite (agile).** 7 poison damage (3 base + 4 weapon) or 5 poison damage (3 base + 2 weapon) if this swarm has already lost half it’s max. HP. On a strong or critical hit, the target is also poisoned for a short duration.
+**Effect**<br /> You initiate a purifying ritual to remove harmful influences from a creature’s soul.<br/>On a success, you break one curse the creature is afflicted with. Any single creature can only benefit from this spell once per day. 
 
-**Abilities**<br />**- Swarm.** This swarm consists of many individual creatures that act in unison. The swarm is immune against any conditions inflicted from effects that target a single creature.
 
-### Wolf
+### Destroy Undeath
 
-*Medium (-), Basic Animal* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Short | -
 
-**Initiative** Normal<br />**HP** 10, **AV** 1 (natural light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 7
+**Effect**<br /> You channel the power of divine light, flooding undead creatures around you with it in an attempt to annihilate them instantly.<br/>**Weak.** Any undead creature in range of tier 0 or 1 is instantly destroyed and can’t reanimate.<br/>**Strong.** Any undead creature in range of tier 0 or 1 is instantly destroyed and can’t reanimate. Any other undead creature in range is also briefly frightened of you, ignoring any immunity they might have against the condition.<br/>**Critical.** Any undead creature in range of tier 0 or 1 is instantly destroyed and can’t reanimate. Any other undead creature in range is also frightened of you for a short duration, ignoring any immunity they might have against the condition. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-**Skills** Fighting 0, Fortitude 1, Perception 1, Survival 1
 
-**Actions**<br />**- Bite.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.
+### Sunbeam
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Wolf Pack.** While in a troop or in melee range of allies, this creature‘s attacks gain +1 boon.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
 
-### Small Earth Elemental
+**Effect**<br /> You call down a pillar of light at the target location, revealing any falsehoods and burning creatures within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines bright light in close range and dim light in short range of it. Any magical falsehoods, such as illusions, shapeshifters, or invisible creatures inside the beam is immediately revealed.<br/>Any creatures inside the beam take +8 radiant damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
 
-*Small (-1), Basic Daimon (Primal)* 
 
-**Initiative** Slow<br />**HP** 10, **AV** 4 (natural heavy)<br />**STR** d8, **AGI** d4, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 8
+## Twilight
 
-**Skills** Fighting 0, Fortitude 1
+### Dark Sight
 
-**Resistances** physical damage expect from crush weapons
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Self | enchant (eyes)
 
-**Weaknesses** blast damage
+**Effect**<br /> You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br/>On a success, you can see a medium distance in absolute darkness as in dim light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration. 
 
-**Actions**<br />**- Smash (crush).** 7 damage (4 base + 3 weapon). On a strong or critical hit, the target falls prone.
 
-**Abilities**<br />**- Earth Dive.** This creature can move through natural stone and earth as through water. Moving this way doesn‘t count as difficult terrain and there are no traces left of it‘s path.<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Stone Body.** This creature is immune against being dazed or stunned.<br />**- Tremor Sense.** This creature can feel the vibrations in the ground in a short distance around it. It is never considered blinded against any creature moving on the ground in this area.
+### Night’s Grasp
 
-### Small Fire Elemental
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
 
-*Small (-1), Basic Daimon (Primal)* 
+**Effect**<br /> You magically animate the shadows around a creature, clawing and grasping for the target with ghostly coldness.<br/>**Weak.** The target suffers +2 frost damage.<br/>**Strong.** The target suffers +4 frost damage and is briefly slowed.<br/>**Critical.** The target suffers +6 frost damage and is briefly grappled by the shadows. 
 
-**Initiative** Fast<br />**HP** 10, **AV** 0<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 9, **Resist** 7
 
-**Skills** Fighting 0, Fortitude 1, Perception 1
+### Shadow Veil
 
-**Resistances** physical damage
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | -
 
-**Weaknesses** frost damage, damage from water
+**Effect**<br /> You create an area of magical shadow, making it hard to see through it. Target any area of dim light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered as absolute darkness.<br/><br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area. 
 
-**Actions**<br />**- Burning Lash.** 6 fire damage (4 base + 2 weapon). On a strong or critical hit, inflicts burning (2) for a short duration.
 
-**Abilities**<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Flame Body.** This creature is immune against fire damage, burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 2 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+### Whispers of Doubt
 
-### Goblin
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
 
-*Small (-1), Basic Humanoid* 
+**Effect**<br /> You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br/>**Weak.** The target suffers +0 psychic damage (ignoring AV).<br/>**Strong.** The target suffers +2 psychic damage (ignoring AV) and the target is briefly confused.<br/>**Critical.** The target suffers +4 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-**Initiative** Fast<br />**HP** 10, **AV** 2 (light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
 
-**Skills** Archery 0, Athletics 0, Cunning 1, Fighting 1, Perception 0
+### Cloak of Night
 
-**Actions**<br />**- Dagger (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Slingshot (ammo, crush, thrown (medium), two-handed).** 6 damage (4 base + 2 weapon).
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | singular
 
-**Abilities**<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.<br />**- Quick Escape.** When this creature was missed by a melee attack, it can move close.
+**Effect**<br /> You clad a creature in a magical cloak made of darkness.<br/>On a success, the creature wearing the cloak gains the following effects:<br/>- You have resistance against frost damage.<br/>- You gain +1 boon on Agility + Cunning rolls to hide or move silently.<br/>The cloak lasts for a medium duration or until discarded by the creature. 
 
-### Kobold
 
-*Small (-1), Basic Humanoid* 
+### Curse of Twilight
 
-**Initiative** Normal<br />**HP** 10, **AV** 1 (natural light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d4<br />**Parry** 8, **Dodge** 10, **Resist** 7
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
 
-**Skills** Archery 1, Crafting (woodworking) 0, Cunning 1, Fighting 1, Nature 0
+**Effect**<br /> You curse a creature with the magical power of twilight, bringing the fear of night into their heart.<br/>On a success, the creature suffers the following effects:<br/>- They see in bright light as in dim light.<br/>- They suffer +1 bane on Perception and Initiative rolls.<br/>This curse lasts for a long duration. 
 
-**Actions**<br />**- Cleaver (agile, light, slash).** 6 damage (4 base + 2 weapon).<br />**- Sling (ammo, crush, thrown (medium), two-handed).** 6 damage (4 base + 2 weapon).
 
-**Abilities**<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.<br />**- Wolf Pack.** While in a troop or in melee range of allies, this creature‘s attacks gain +1 boon on melee attack.
+### Lunar Weapon
 
-### Nakesh Cultist (Acolyte)
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
 
-*Medium (-), Basic Humanoid* 
+**Effect**<br /> Imbue a weapon with the power of the night.<br/>On a success, the weapon emits dim light in close range of it and deals +2 frost damage. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
-**Initiative** Normal<br />**HP** 10, **AV** 2 (natural light)<br />**STR** d6, **AGI** d6, **SPI** d6, **MND** d8<br />**Parry** 7, **Dodge** 8, **Resist** 9
 
-**Skills** Arcana 1, Cunning 1, Influence 1, Lore 1, Perception 1
+### Moon Sphere
 
-**Resistances** poison damage
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | concentrate
 
-**Actions**<br />**- Dagger (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Poison Mist (target: vs.** Dodge, range: short). Roll Mind + Arcana. Deals 4 + 2 poison damage per SL. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
+**Effect**<br /> You conjure a small orb of freezing coldness resembling a miniature moon.<br/>On a success, the sphere appears at the target location. It also shines dim light in short range of it. Any creature in melee range of it takes +4 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a close distance within range. The sphere lasts for a short duration.  
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br />- Attack Thoughts<br />- Control Beast (only snakes)<br />- Subtle Suggestion<br />**- Snake Mutation.** This creature is immune against being poisoned.
 
-### Nakesh Cultist (Assassin)
+### Shadow Meld
 
-*Medium (-), Basic Humanoid* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Self | concentrate
 
-**Initiative** Normal<br />**HP** 10, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 8, **Dodge** 9, **Resist** 7
+**Effect**<br /> You submerge into the shadows around you. Cast this spell while standing in dim light or darkness.<br/>On a success, you merge with the shadows and become invisible. While invisible, you are hidden from any creature which hasn‘t an ability to see through invisibility.<br/>This spell lasts for a short duration, until you attack or cast another spell, or until you enter bright light. 
 
-**Skills** Arcana 1, Archery 1, Cunning 1, Fighting 1, Influence 1, Lore 1, Perception 1
 
-**Resistances** poison damage
+### Whisper of Dreams
 
-**Actions**<br />**- Dagger (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Shortbow (ammo, range (medium), two-handed).** 6 damage (4 base + 2 weapon).
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | -
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br />- Control Beast (only snakes)<br />- Venomous Weapon<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.<br />**- Snake Mutation.** This creature is immune against being poisoned.
+**Effect**<br /> You lull a creature’s mind with whispers of sleep. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a medium duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they wake up. 
 
-### Nakesh Cultist (Warrior)
 
-*Medium (-), Basic Humanoid* 
+### Everlasting Night
 
-**Initiative** Normal<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 8, **Resist** 7
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
 
-**Skills** Cunning 1, Fighting 1, Perception 1
+**Effect**<br /> You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes absolute darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration. 
 
-**Resistances** poison damage
 
-**Actions**<br />**- Fan Axe (heavy (d8), slash, two-handed).** 8 damage (4 base + 4 weapon). On a strong hit, the target also suffers bleeding (2). On a critical hit, the target also suffers bleeding (4).
+### Moonbeam
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br />- Control Beast (only snakes)<br />- War Cry<br />**- Snake Mutation.** This creature is immune against being poisoned.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
 
-### Orc Warrior
+**Effect**<br /> You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +8 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
 
-*Medium (-), Basic Humanoid* 
 
-**Initiative** Normal<br />**HP** 20, **AV** 2 (light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 7
+### Shadow Step
 
-**Skills** Athletics 1, Fighting 1, Fortitude 1
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | -
 
-**Actions**<br />**- Battleaxe (slash, versatile (+1)).** 7 damage (4 base + 3 weapon).
+**Effect**<br /> You fully submerge into the shadows and re-appear at another darkened location. While standing in dim light or darkness, choose any other location you can see in range that is also in dim light or darkness.<br/>On a success, you teleport to the chosen location. 
 
-**Abilities**<br />**- Orcish Fury.** When this creature hits with a melee weapon and rolls a critical success, add it‘s weapon damage an additional time to the total damage.
 
-### Soldier
+## Life
 
-*Medium (-), Basic Humanoid* 
+### Life Shield
 
-**Initiative** Normal<br />**HP** 10, **AV** 3 (light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 8, **Resist** 7
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | singular
 
-**Skills** Archery 1, Fighting 1, Perception 1
+**Effect**<br /> On a success, the target is surrounded by a near invisible shield of life force. The shield grants 5 temporary HP and lasts until reduced to 0, or expires after a short duration.<br/>Any single creature can only benefit from this spell once per scene. 
 
-**Actions**<br />**- Spear (pierce, reach, two-handed).** 7 damage (4 base + 3 weapon).<br />**- Shortsword (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Shortbow (ammo, range (medium), two-handed).** 6 damage (4 base + 2 weapon).
 
-**Abilities**<br />-
+### Restore Life
 
-### Goblin Boss
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Short | -
 
-*Small (-1), Master Humanoid* 
+**Effect**<br /> You let vitalizing energy flow into your target, restoring a living creatures health or harming an undead creature.<br/>When targeting a living creature, roll vs. moderate difficulty (8). When targeting an undead creature, roll vs. their Resist.<br/>**Weak.** Restore +2 HP to your target or deal +2 radiant damage against an undead target.<br/>**Strong.** Restore +4 HP to your target or deal +4 radiant damage against an undead target.<br/>**Critical.** Restore +6 HP to your target or deal +6 radiant damage against an undead target. 
 
-**Initiative** Fast<br />**HP** 3x10, **AV** 3 (light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
 
-**Skills** Archery 0, Athletics 0, Cunning 1, Fighting 1, Perception 0
+### Verdant Blast
 
-**Actions**<br />**- Fast Strikes.** This creature can attack twice per turn.<br />**- Scimitar (agile, light, slash).** 6 damage (4 base + 2 weapon).<br />**- Whip (agile, entangle, light, reach, slash).** 6 damage (4 base + 2 weapon).<br />**- Dart (agile, bundle, light, pierce, thrown (short)).** 6 damage (4 base + 2 weapon).
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
 
-**Abilities**<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.<br />**- Rally Goblin.** On this creature‘s turn, it can target one goblin visible in medium range. That goblin immediately makes an attack against one target of this creature‘s choice. The goblin gain +1 boon on the attack. This ability can be used once per turn.<br />**- Quick Escape.** When this creature was missed by a melee attack, it can move close.<br />**- Sacrifice Goblin (Quick Action).** When this creature would be hit by an attack, it can redirect the attack to target one goblin close to them.<br />**- Goblin Reinforcements (Master Ability).** This ability automatically activates once this creature has taken half their max. Wounds (rounded up). Once activated, this creature summons 1d4+2 goblins, which appear at any location in short range of this creature.
+**Effect**<br /> You form a condensed mass of positive energy, blasting the enemy and healing nearby allies.<br/>**Weak.** Deal +2 radiant damage.<br/>**Strong.** Deal +4 radiant damage and restore 2 HP to allies in melee range of the target.<br/>**Critical.** Deal +6 radiant damage and restore 4 HP to allies in melee range of the target. 
 
-### Rust Scarab
 
-*Small (-1), Basic Monstrosity* 
+### Blessing of Life
 
-**Initiative** Fast<br />**HP** 10, **AV** 4 (natural heavy)<br />**STR** d6, **AGI** d6, **SPI** d6, **MND** d4-1<br />**Parry** 9, **Dodge** 9, **Resist** 7
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular
 
-**Skills** Fighting 0, Fortitude 1, Perception 1, Survival 1
+**Effect**<br /> You bless a creature with the magical power of life, bolstering their vitality.<br/>On a success, the creature gains the following effects:<br/>- You gain 5 temporary HP. They replenish after a short break.<br/>- You gain +1 boon on Fortitude rolls.<br/>This spell lasts for a long duration. 
 
-**Actions**<br />**- Corroding Bite.** 5 damage (3 base + 2 weapon). On a hit, the target has to roll a Durability check for one metal item they are holding or wearing (their choice).
 
-**Abilities**<br />**- Metal Scent.** This creature can instinctively scent the location of any metal in short distance. It can’t be surprised by any creature wearing metal armor, or wielding a metal weapon.<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.
+### Heal Wound
 
-### Plague Zombie
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | ritual (minutes)
 
-*Medium (-), Basic Undead* 
+**Effect**<br /> You focus life-giving magic into an injury, mending it quickly.<br/>On a success, you heal one Wound from a creature. Any single creature can only benefit from this spell once per day. 
 
-**Initiative** Slow<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d4, **SPI** d4, **MND** d4-1<br />**Parry** 7, **Dodge** 6, **Resist** 8
 
-**Skills** Endurance 1, Fighting 0
+### Overflow of Life
 
-**Resistances** necrotic damage, poison damage
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | -
 
-**Weaknesses** slash weapons, radiant damage
+**Effect**<br /> You overwork the vital system of the target, returning them to consciousness or causing them a heart attack if already conscious. The target must be a living creature.<br/>**Weak.** If the target is dying, they stop dying but remain unconscious. If the target is unconscious, they wake up. If the target is conscious, they take +3 damage.<br/>**Strong.** If the target is dying, they stop dying and wake up. If the target is unconscious, they wake up. If the target is conscious, they take +6 damage.<br/>**Critical.** If the target is dying, they stop dying, wake up, and one of their Injuries is instantly treated (their choice). If the target is unconscious, they wake up. If the target is conscious, they take +9 damage. 
 
-**Actions**<br />**- Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**- Rotten Bite (only if grappling).** 8 poison damage (4 base + 4 weapon).<br />**- Spew Plague (thrown (short)).** 8 poison damage (4 base + 4 weapon).
 
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can‘t use Quick Actions.
+### Rapid Vitality
 
-### Skeleton
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | quick
 
-*Medium (-), Basic Undead* 
+**Effect**<br /> You quickly refresh a creature’s stamina. Cast this spell on your turn.<br/>**Weak.** Restore +2 HP to your target.<br/>**Strong.** Restore +4 HP to your target.<br/>**Critical.** Restore +6 HP to your target. 
 
-**Initiative** Normal<br />**HP** 10, **AV** 4 (natural heavy)<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 7
 
-**Skills** Fighting 1, Perception 1
+### Vitalizing Weapon
 
-**Resistances** necrotic damage
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
 
-**Weaknesses** crush weapons, radiant damage
+**Effect**<br /> Imbue a weapon with the power of vitality.<br/>On a success, any hit the weapon’s bearer makes with it restores 1/2 x your Spirit as HP to them. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
-**Actions**<br />Claw. 5 damage (3 base + 2 weapon).<br />**- Longsword (pierce, versatile (+1)).** 6 damage (3 base + 3 weapon).
 
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Unholy Reanimation.** This creature can’t take Wounds, but is instead destroyed once reduce to 0 HP. When this creature is destroyed, it is reanimated at the start of it‘s next turn with 1 HP, unless it was destroyed by a crush weapon or radiant damage. It also doesn‘t regenerate if it‘s remains were smashed with a melee weapon while at 0 HP before it‘s next turn.
+### Hallow Ground
 
-### Zombie
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Close | concentrate
 
-*Medium (-), Basic Undead* 
+**Effect**<br /> You hallow the ground around you, healing all allies standing on it.<br/>On a success, each ally in range of the hallow ground restores +2 HP when you cast the spell and at the start of each of their turns.<br/>The hallow ground remains stationary at the position where you cast it for a short duration. 
 
-**Initiative** Slow<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d4, **SPI** d4, **MND** d4-1<br />**Parry** 7, **Dodge** 6, **Resist** 8
 
-**Skills** Endurance 1, Fighting 0
+### Healing Burst
 
-**Resistances** necrotic damage
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | blast (cone)
 
-**Weaknesses** radiant damage
+**Effect**<br /> You conjure a wave of healing energy, restoring the endurance of any ally within it.<br/>**Weak.** Restore +2 HP to each ally.<br/>**Strong.** Restore +4 HP to each ally.<br/>**Critical.** Restore +6 HP to each ally. 
 
-**Actions**<br />**- Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**- Rotten Bite (only if grappling).** 8 poison damage (4 base + 4 weapon).
 
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can‘t use Quick Actions.
+## Death
 
-## Tier 2
+### Enfeebling Touch
 
-### Brown Bear
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
 
-*Large (+1), Basic Animal* 
+**Effect**<br /> You summon a swirl of negative energy, engulfing the target and draining their strength.<br/>**Weak.** Deal +2 necrotic damage.<br/>**Strong.** Deal +4 necrotic damage and briefly reduce their Strength die by one step.<br/>**Critical.** Deal +6 necrotic damage and reduce their Strength die by one step for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-**Initiative** Normal<br />**HP** 30, **AV** 4 (natural light)<br />**STR** d12, **AGI** d6, **SPI** d6, **MND** d4-2<br />**Parry** 10, **Dodge** 8, **Resist** 8
 
-**Skills** Fighting 0, Fortitude 2, Perception 2, Survival 2
+### Glimpse of Mortality
 
-**Actions**<br />**- Bite (crush).** 11 damage (6 base + 5 weapon). On a strong or critical hit against a creature of equal or smaller size, the target drops prone.<br />**- Claw (slash).** 10 damage (6 base + 4 weapon). On a strong or critical hit, the target suffers bleeding (4).
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.
+**Effect**<br /> You project a scene of the target‘s final moments before death into their mind, in which they die in agony at the hands of yourself and your allies.<br/>**Weak.** The target suffers +0 psychic damage (ignoring AV).<br/>**Strong.** The target suffers +2 psychic damage (ignoring AV) and the target is briefly frightened.<br/>**Critical.** The target suffers +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-### Giant Scorpion
 
-*Large (+1), Basic Animal* 
+### Spared from Death
 
-**Initiative** Normal<br />**HP** 30, **AV** 5 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d4, **MND** d4-2<br />**Parry** 10, **Dodge** 8, **Resist** 8
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Short | -
 
-**Skills** Fighting 0, Fortitude 2, Perception 2, Survival 2
+**Effect**<br /> You help a dying creature in range to cling onto life.<br/>**Weak.** +1 to the dice result of the dying creature.<br/>**Strong.** +2 to the dice result of the dying creature.<br/>**Critical.** You stop the creature from dying, but they remain unconscious. 
 
-**Actions**<br />**- 2 x Claw (crush, light).** 8 damage (6 base + 2 weapon). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that claw can’t be used to attack any other target.<br />**- Sting (pierce, reach).** 10 poison damage (6 base + 4 weapon). On a strong or critical hit, the target is also poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early.
 
-**Abilities**<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.
+### Curse of Death
 
-### Giant Venomous Snake
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
 
-*Large (+1), Basic Animal* 
+**Effect**<br /> You curse a creature with the magical power of death, withering their mortal body.<br/>On a success, the creature suffers the following effects:<br/>- Their maximum HP are reduced by 5.<br/>- They suffer +1 bane on Fortitude rolls.<br/>This curse lasts for a long duration. 
 
-**Initiative** Fast<br />**HP** 30, **AV** 3 (natural light)<br />**STR** d12, **AGI** d8, **SPI** d6, **MND** d4-2<br />**Parry** 9, **Dodge** 9, **Resist** 8
 
-**Skills** Archery 0, Fighting 0, Perception 1, Survival 1
+### Early Grave
 
-**Actions**<br />**- Bite (slash).** 10 poison damage (6 base + 4 weapon). On a strong or critical hit, the target is also poisoned for a short duration.<br />**- Constrict (crush).** 8 damage (6 base + 2 weapon). On a hit, the target is automatically grappled. If the target is the same size or smaller than this creature, it is restrained while grappled by this attack. This creature can only grapple one target at a time with this attack.<br />**- Poison Spit (range (medium)).** 8 poison damage (4 base + 4 weapon). On a strong or critical hit, the target is also poisoned for a short duration.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Parry | Medium | -
 
-**Abilities**<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.
+**Effect**<br /> Skeletal hands sprout from the ground, scratching at the target and attempting to pull them below the earth.<br/>**Weak.** Deal +3 necrotic damage.<br/>**Strong.** Deal +6 necrotic damage and the target is grappled by the hands.<br/>**Critical.** Deal +9 necrotic damage and the target is grappled and briefly restrained by the hands. 
 
-### Medium Fire Elemental
 
-*Medium (-), Basic Daimon (Primal)* 
+### Necrotic Weapon
 
-**Initiative** Fast<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d10, **AGI** d10, **SPI** d8, **MND** d6<br />**Parry** 9, **Dodge** 10, **Resist** 8
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
 
-**Skills** Fighting 1, Fortitude 2, Perception 2
+**Effect**<br /> Imbue a weapon with the power of death.<br/>On a success, the weapon deals +2 necrotic damage. On a strong or critical hit, the attack’s target also suffers 2 lasting necrotic damage for a short duration. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
-**Resistances** physical damage
 
-**Weaknesses** frost damage, damage from water
+### Shivering Ray
 
-**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**- Burning Lash.** 8 fire damage (5 base + 3 weapon). On a strong or critical hit, inflicts burning (4) for a short duration.<br />**- Flame Bolt (range (medium)).** 7 fire damage (5 base + 2 weapon). On a strong or critical hit, inflicts burning (2) for a short duration.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
 
-**Abilities**<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Flame Body.** This creature is immune against fire damage, burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 4 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+**Effect**<br /> You shoot a icy blue beam from the tip of your finger, rigidifying the target.<br/>**Weak.** You deal +3 frost damage. <br/>**Strong.** You deal +6 frost damage and the target is briefly slowed.<br/>**Critical.** You deal +9 frost damage and the target is briefly dazed and slowed. 
 
-### Ogre
 
-*Large (+1), Basic Giant* 
+### Cloud of Sickness
 
-**Initiative** Slow<br />**HP** 30, **AV** 3 (light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
 
-**Skills** Athletics 1, Fortitude 1, Fighting 0, Survival 1
+**Effect**<br /> You summon a cloud of necrotic energy, sickening creatures within it. The cloud extends in a close area around the target location and targets all living creatures within it.<br/>**Weak.** Deal +3 necrotic damage to each target.<br/>**Strong.** Deal +6 necrotic damage to each target.<br/>**Critical.** Deal +9 necrotic damage to each target.<br/>Any creature is also poisoned while inside the cloud’s area.<br/>The cloud lasts for a short duration. It can also be expelled early by any effect causing strong winds in the same area of influence. 
 
-**Actions**<br />**- Giant Club (crush, fragile, heavy (d10), two-handed).** 12 damage (6 base + 6 weapon).<br />**- Wide Swing (crush).** 8 damage (6 base + 2 weapon) against all opponents in melee range.
 
-**Abilities**<br />**- Knockback.** On a strong hit or critical hit from this creature’s attacks, all targets have to roll Strength/Agility + Athletics. If it was a critical success, the roll is hard. On a success, they are pushed close. On a failure, they are pushed close and also knocked prone.
+## Nature
 
-### Ogre Brute
+### Bestial Adaptation
 
-*Large (+1), Elite Giant* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Self | enchant (body)
 
-**Initiative** Slow<br />**HP** 2x30, **AV** 4 (light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
+**Effect**<br /> You adopt the physical characteristics of one chosen type of animal. Choose one of the following:<br/>- Graceful (You can move through difficult terrain without penalty)<br/>- Perceptive (+1 boon on Perception rolls)<br/>- Strong (+1 boon on Strength + Athletics rolls, +2 damage on unarmed attacks)<br/>- Tough (+2 AV as armor)<br/>On a success, you gain the chosen effect.<br/>This spell lasts for a short duration. 
 
-**Skills** Athletics 1, Fortitude 1, Fighting 0, Survival 1
 
-**Actions**<br />**- Giant Club (crush, heavy (d10), two-handed).** 12 damage (6 base + 6 weapon).<br />**- Wide Swing (crush).** 8 damage (6 base + 2 weapon) against all opponents in melee range.
+### Lashing Vine
 
-**Abilities**<br />**- Knockback.** On a strong hit or critical hit from this creature’s attacks, all targets have to roll Strength/Agility + Athletics. If it was a critical success, the roll is hard. On a success, they are pushed close. On a failure, they are pushed close and also knocked prone.<br />**- Ear-shattering Roar (Elite Ability).** When this creature suffers a Wound, it immediately lets loose an ear-shattering roar. Every enemy within short distance has to roll Spirit + Fortitude. If they fail, they take 6 sonic damage (ignoring AV) and are frightened of this creature. They can re-roll against their fear at the start of their turns.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Medium | -
 
-### Gladiator
+**Effect**<br /> You animate a natural vine or let one spring from the ground in range. The vine can either lash at (vs. Parry) or grab (vs. Parry or Dodge) any target close to it. The vine counts as a medium creature for grappling.<br/>**Weak.** Deal +2 damage (lash) or grapple the target (grab).<br/>**Strong.** Deal +4 damage (lash) or deal +0 damage and grapple the target (grab).<br/>**Critical.** Deal +6 damage (lash) or deal +2 damage, grapple, and briefly restrain the target (grab).<br/>if you continue to cast this spell over multiple turns, the vine can remain for the duration. Otherwise the vine quickly withers and vanishes after using this spell. 
 
-*Medium (-), Basic Humanoid* 
 
-**Initiative** Normal<br />**HP** 30, **AV** 4 (natural light + helmet + shield)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 9, **Resist** 9
+### Poison Mist
 
-**Skills** Archery 1, Athletics 1, Fighting 1, Fortitude 1, Insight 1
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Short | -
 
-**Actions**<br />Spear.<br />Heavy Shield.
+**Effect**<br /> Spray a cloud of poisonous mist against your target.<br/>**Weak.** Deal +2 poison damage.<br/>**Strong.** Deal +4 poison damage and the target is briefly poisoned.<br/>**Critical.** Deal +6 poison damage and the target is poisoned for a short duration. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-**Abilities**<br />**- Body of Bronze.** This creature adds it’s Fortitude to AV as armor.
 
-### Nakesh Cultist (Fanatic)
+### Rejuvenation
 
-*Medium (-), Basic Humanoid* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Short | singular
 
-**Initiative** Normal<br />**HP** 30, **AV** 4 (natural light)<br />**STR** d8, **AGI** d10, **SPI** d8, **MND** d6<br />**Parry** 9, **Dodge** 10, **Resist** 8
+**Effect**<br /> Conjure magical energy into one creature in range, rapidly increasing their natural regenerative capacity.<br/>**Weak.** The target shortly regains +0 HP at the start of each of their turns.<br/>**Strong.** The target shortly regains +2 HP at the start of each of their turns.<br/>**Critical.** The target shortly regains +4 HP at the start of each of their turns. 
 
-**Skills** Cunning 2, Fighting 1, Influence 2, Perception 2
 
-**Resistances** poison damage
+### Beast Form
 
-**Actions**<br />**- Fast Strikes.** This creature can attack twice per turn.<br />**- Khopesh (agile, light, slash).** 7 damage (5 base + 2 weapon).<br />**- Poisoned Darts (agile, bundle, light, pierce, thrown (short)).** 6 poison damage (4 base + 2 weapon). On a strong or critical hit, the target is also briefly poisoned.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Self | enchant (body)
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Control Beast (only snakes)<br />- Subtle Suggestion<br />- Venomous Weapon<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
+**Effect**<br /> You shape shift into the form of a small or medium sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following:<br/><br/>Beast Form (small/medium animal)<br/>Attributes. d6/d8 STR, d8/d6 AGI<br/>Defenses. 7/8 Parry, 9/8 Dodge<br/>AV. 2 (natural light)<br/>Skills. Fighting, Fortitude (equal to your Mysticism)<br/>Attacks:<br/>- Strike (choose crush or slash, also agile for small size). 6 damage (4 base + 2 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br/>Abilities:<br/>- Keen Scent. Gain +1 boon on Perception rolls based on smell.<br/>- Night Vision. You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br/><br/>You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious. 
 
-### Nakesh Cultist (Sorcerer)
 
-*Medium (-), Basic Humanoid* 
+### Blessing of Nature
 
-**Initiative** Normal<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d10<br />**Parry** 8, **Dodge** 9, **Resist** 10
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular
 
-**Skills** Arcana 2, Cunning 2, Fighting 0, Influence 2, Lore 2, Perception 2
+**Effect**<br /> You bless a creature with the magical power of nature, whereby plants and animals act benevolently towards them.<br/>On a success, the creature gains the following effects:<br/>- You can move through difficult terrain without penalty.<br/>- You gain +1 boon on Athletics and Survival rolls.<br/>This spell lasts for a long duration. 
 
-**Resistances** poison damage
 
-**Actions**<br />**- Scepter (crush, reach, versatile (+1)).** 8 damage (5 base + 3 weapon).<br />**- Poison Mist (target: vs.** Dodge, range: short). Roll Mind + Arcana. Deals 5 + 2 poison damage per SL. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
+### Mesh of Vines
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Attack Thoughts (Rank 1)<br />- Control Beast (only snakes, Rank 1)<br />- Subtle Suggestion (Rank 1)<br />- Forced Suggestion (Rank 2)<br />- Cloud of Sickness (Rank 2)<br />- Nullify Spell (Rank 2)<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
 
-### Veteran
+**Effect**<br /> Instantly sprout a mesh of spiked vines, covering the target location. On a success, spiked vines fill an area close to the target location. This spell targets each creature in the area.<br/>**Weak.** Deal +0 damage against each target.<br/>**Strong.** Deal +2 damage against each target and they are grappled by the vines.<br/>**Critical.** Deal +2 damage against each target and they are grappled and restrained by the vines.<br/>The area is considered difficult terrain. The vines last for a short duration. 
 
-*Medium (-), Basic Humanoid* 
 
-**Initiative** Normal<br />**HP** 20, **AV** 6 (heavy + helmet + shield)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 10, **Dodge** 8, **Resist** 9
+### Rock Throw
 
-**Skills** Athletics 2, Archery 2, Education 1, Fighting 2, Perception 1
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
 
-**Actions**<br />**- Fast Strikes.** This creature can attack twice per turn.<br />**- Spear (pierce, reach, versatile (+1)).** 7 damage (4 base + 3 weapon).<br />**- Broadsword (slash, versatile (+1)).** 7 damage (4 base + 3 weapon).<br />**- Light Shield (AV +1, parry +1).** 5 damage (4 base + 1 weapon).<br />**- Longbow (ammo, heavy (d6), range (long), two-handed).** 7 damage (4 base + 3 weapon).
+**Effect**<br /> Magically animate a large stone and throw it against your target in range.<br/>**Weak.** Deal +4 crush damage.<br/>**Strong.** Deal +8 crush damage and the target is pushed close.<br/>**Critical.** Deal +12 crush damage, the target is pushed close and falls prone. 
 
-**Abilities**<br />**- Versatile Fighter.** This creature can choose to either add +1 boon, deal +2 damage per SL, make a second attack with +1 bane, make the target fall prone (melee only), or disarm the target (melee only) on any attack it makes. It can choose any one option only once per combat.<br />**- Constitution.** Once per combat, this creature use it’s Quick Action on it’s turn to regain 8 HP.
 
-### Nakesh Cult Leader
+### Sticks to Snakes
 
-*Medium (-), Master Humanoid* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Close | concentrate
 
-**Initiative** Normal<br />**HP** 3x20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d10<br />**Parry** 8, **Dodge** 9, **Resist** 10
+**Effect**<br /> You throw out a bundle of sticks, which then turn into withering snakes under your control. You must roll a Supply check for materials when casting this spell.<br/>On a success, you summon a swarm of snakes at the target location under your control (treat them as a companion for combat).<br/>The swarm remains for a medium duration, until dismissed by you, or when killed. 
 
-**Skills** Arcana 2, Cunning 2, Fighting 0, Influence 2, Lore 2, Perception 2
 
-**Resistances** poison damage
+### Venomous Weapon
 
-**Actions**<br />**- Serpent Scepter (crush, reach, versatile (+1)).** Roll attacks with Mind + Arcana. 8 force damage (5 base + 3 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed a short distance away instead.<br />**- Poison Mist (target: vs.** Dodge, range: short). Roll Mind + Arcana. Deals 5 + 2 poison damage per SL. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
 
-**Abilities**<br />**- Serpine Retreat (Master Ability).** This ability automatically activates once this creature has taken half their max. Wounds (rounded up). Once activated, this creature bursts into a cluster of snakes, dealing 6 poison damage to all creatures in melee range of it and it can move up to a long distance. Other creatures can’t use Quick Actions or other abilities in response to this ability. After moving, this creature can cast it’s spells again as if it were a new scene.<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Attack Thoughts (Rank 1)<br />- Control Beast (only snakes, Rank 1)<br />- Subtle Suggestion (Rank 1)<br />- Forced Suggestion (Rank 2)<br />- Cloud of Sickness (Rank 2)<br />- Nullify Spell (Rank 2)<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
+**Effect**<br /> Imbue a weapon with the power of a serpent‘s fangs.<br/>On a success, the weapon deals +2 poison damage. On a strong or critical hit, the attack‘s target is briefly poisoned. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
-## Tier 3
 
-### Large Fire Elemental
+### Wild Companion
 
-*Large (+1), Basic Daimon (Primal)* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | ritual (hours),  singular
 
-**Initiative** Fast<br />**HP** 30, **AV** 4 (natural light)<br />**STR** d12, **AGI** d12, **SPI** d8, **MND** d6<br />**Parry** 9, **Dodge** 10, **Resist** 8
+**Effect**<br /> You can’t cast this spell if you haven’t learned the “Animal Companion” talent.<br/>You set up a ritual to summon a spiritual beast of the land. As part of casting this spell, you must also spend 100 coins in incense and other sacred ingredients. Choose any kind of animal companion of a tier equal to or lower than your Mysticism (see more under Animal Companions).<br/>On a success, you summon a spiritual being in your chosen animal form. It’s statistics are the same as that of a mundane animal companion, but it’s creature type is “daimon (primal)” instead.<br/><br/>You have a psychic connection to your companion, as long as the two of you are on the same sphere of existence. This connection manifests itself as an intuitive sharing of emotions. You can use this connection to tell your familiar what to do and where to go nonverbally. You can also spend your turn meditating to fully experience all senses of your familiar. While meditating this way, you are considered unconscious and are unaware of your own body‘s surroundings.<br/>Any creature capable of sensing magical auras will notice the primal nature of your companion. The companion remains until killed, but can be re-summoned with another ritual. You can choose a new form for your companion each time you cast this spell. 
 
-**Skills** Fighting 2, Fortitude 3, Perception 3
 
-**Resistances** physical damage
+### Greater Beast Form
 
-**Weaknesses** frost damage, damage from water
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | enchant (body)
 
-**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn, unless it uses Incineration.<br />**- Burning Lash.** 12 fire damage (6 base + 6 weapon). On a strong or critical hit, inflicts burning (6) for a short duration.<br />**- Flame Bolt (range (medium)).** 10 fire damage (6 base + 4 weapon). On a strong or critical hit, inflicts burning (4) for a short duration.<br />**- Incineration (blast (short), recharge (d6)).** Spirit + Fortitude vs. Dodge. 10 fire damage (6 base + 4 weapon) against each target. On a strong or critical hit, inflicts burning (4) for a short duration.
+**Effect**<br /> You shape shift into the form of a tiny or large sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following:<br/><br/>Beast Form (tiny/large animal)<br/>Attributes. d4/d12 STR, d8/d6 AGI<br/>Defenses. 7/9 Parry, 9/8 Dodge<br/>AV. 0/4 (natural light)<br/>Skills. Fighting, Fortitude (equal to your Mysticism)<br/>Attacks:<br/>- Strike (choose crush or slash, also agile for tiny size). 5/10 damage (4/6 base + 1/4 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br/>Abilities:<br/>- Keen Scent. Gain +1 boon on Perception rolls based on smell.<br/>- Night Vision. You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br/><br/>You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious. 
 
-**Abilities**<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Flame Body.** This creature is immune against fire damage, burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 6 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
 
-### Wyvern
+### Heat Metal
 
-*Large (+1), Basic Dragon* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Short | concentrate
 
-**Initiative** Normal<br />**HP** 50, **AV** 6 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 12, **Dodge** 9, **Resist** 9
+**Effect**<br /> You let a metallic object rapidly increase in temperature, harming anyone touching it.<br/>Choose any metallic object or creature of medium or smaller size.<br/>On a success, the target becomes burning hot. Any creature holding or wearing the object suffers +2 fire damage (ignoring AV) at the start of each turn they continue to do so.<br/>If the target is a weapon, it imposes +1 bane on attacks with it.<br/>If the target is a piece of armor or a helmet, it‘s AV bonus is halved.<br/>This spell lasts for a short duration. 
 
-**Skills** Archery 2, Athletics 3, Cunning 3, Fighting 1, Perception 3
 
-**Resistances** poison damage
+### Law of the Strongest
 
-**Actions**<br />Fangs.<br />Claw.<br />Stinger.
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate,  singular
 
-**Abilities**<br />-
+**Effect**<br /> You fill a creature‘s body with nature‘s empowering magic. The target has to be a creature of medium or smaller size.<br/>On a success, the target‘s body grows to large size along with all of their worn equipment and held items (as long as they stay in contact with their body). While enlarged by this spell, they gain the following effects:<br/>- Gain 5 temporary HP.<br/>- Increase your Strength die by one step.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You gain +1 AV.<br/>- You deal +1 weapon damage on melee attacks.<br/>All of these effects are added a number of times for each size category difference to the target‘s original size.<br/>This spell lasts for a short duration. 
 
-### Young Dragon
 
-*Large (+1), Elite Dragon* 
+### Melt Ground
 
-**Initiative** Normal<br />**HP** 2x30, **AV** 8 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 9, **Resist** 9
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
 
-**Skills** Athletics 1, Fighting 2, Fortitude 2, Perception 1, Survival 1
+**Effect**<br /> let the ground become soft and trap creatures inside it  
 
-**Resistances** fire damage
 
-**Actions**<br />**- 2 x Claw (light, slash).** 10 damage (6 base + 4 weapon).<br />**- Bite (crush, reach).** 12 damage (6 base + 6 weapon). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that claw can’t be used to attack any other target.<br />**- Tail.** (crush, reach). 10 damage (6 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Dragon’s Breath (recharge (d6)).** Strength + Fortitude vs. Dodge. Target all creatures in melee range, or in one area within short range. On a success, each target suffers 12 fire damage. On a strong or critical success, each target also suffers burning (4).<br />**- Fiery Wrath (Elite Ability).** When this creature suffers a Wound, it immediately regains it’s Dragon’s Breath and uses it.
+### Rock Skin
 
-**Abilities**<br />-
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | enchant (body),  singular
 
-### Troll
+**Effect**<br /> Harden a creature‘s skin to be strong as rock.<br/>On a success, the target gains 1/2 your Spirit as AV (armor) for a medium duration. If they suffer an Injury, the armor breaks. 
 
-*Large (+1), Basic Giant* 
 
-**Initiative** Normal<br />**HP** 40, **AV** 3 (natural light)<br />**STR** d12, **AGI** d8, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 9, **Resist** 8
+### Life from Stone
 
-**Skills** Athletics 2, Endurance 2, Fighting 1, Perception 2, Survival 2
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | target a large or smaller object or structure made from stone or wood. it comes alive as an automaton under your control for a short duration.  |  | -
 
-**Actions**<br />**- 2 x Claw (light).** 10 damage (6 base + 4 weapon). On a hit, attempts to grapple the target.<br />**- Bite (only if grappling).** 12 damage (6 base + 6 weapon). On a hit, the target is poisoned for a short duration.<br />**- Poisonous Spit (range (medium)).** 8 poison damage (4 base + 4 weapon). On a hit, the target is briefly poisoned.
+**Effect**<br />  
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Regeneration.** This creature regains 10 HP at the start of each of it‘s turns, unless it has taken fire or acid damage since it’s last turn. This creature even regenerates while at 0 HP and only dies from it’s Wounds, if it can‘t regenerate at the start of it‘s turn.
 
-### Officer
+### Petrification
 
-*Medium (-), Basic Humanoid* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | concentrate
 
-**Initiative** Normal<br />**HP** 30, **AV** -<br />**Skills** -
+**Effect**<br /> You turn a creature into inanimate stone. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>**Weak.** The target is petrified for a short duration.<br/>**Strong.** The target is petrified for a medium duration.<br/>**Critical.** The target is petrified for a long duration.<br/>A petrified creature is stunned and unconscious. They also have 10 AV while petrified. If the target takes damage while petrified by this spell, roll for Spell Concentration as if you took the same amount of damage. 
 
-**Actions**<br />-
 
-**Abilities**<br />-
+## Tempest
 
-### Naga Mummy
+### Gust
 
-*Large (+1), Basic Undead* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Short | -
 
-**Initiative** Fast<br />**HP** 40, **AV** 5 (natural heavy)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d8<br />**Parry** 10, **Dodge** 10, **Resist** 9
+**Effect**<br /> You summon a vortex of swirling air, clashing against your target and pulling them off their feet.<br/>**Weak.** Deal +2 blast damage.<br/>**Strong.** Deal +4 blast damage and push the target close.<br/>**Critical.** Deal +6 blast damage and push the target a short distance. 
 
-**Skills** Arcana 1, Fighting 1, Fortitude 1, Insight 1, Perception 1
 
-**Resistances** necrotic damage
+### Static Shock
 
-**Weaknesses** radiant damage
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
 
-**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**- Fan Glaive (heavy (d10), reach, slash, two-handed).** 10 damage (5 base + 5 weapon).<br />**- Tail (crush).** 9 damage (5 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Drain Life (target: vs.** Resist, range: short). Roll Mind + Arcana. Deals 4 + 2 necrotic damage per SL. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.
+**Effect**<br /> You generate a small electric discharge from your fingertip against a target.<br/>**Weak.** Deal +2 lightning damage.<br/>**Strong.** Deal +4 lightning damage to the target and you can deal +2 lightning damage to one other creature in melee range of the target.<br/>**Critical.** Deal +6 lightning damage to the target and you can deal +4 lightning damage to one other creature in melee range of the target. 
 
-**Abilities**<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Control Beast (only snakes, Rank 1)<br />- Death Bolt (Rank 1)<br />- Grasp of Decay (Rank 1)<br />- Subtle Suggestion (Rank 1)<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.
 
-## Tier 4
+### Wind Slash
 
-### Adult Dragon
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
 
-*Huge (+2), Elite Dragon* 
+**Effect**<br /> Hurl a blade of compressed air against your target.<br/>**Weak.** Deal +0 damage or +4 damage against a target in light or no armor.<br/>**Strong.** Deal +2 damage or +6 damage against a target in light or no armor.<br/>**Critical.** Deal +4 damage or +8 damage against a target in light or no armor. 
 
-**Initiative** Normal<br />**HP** -, **AV** -<br />**Skills** -
 
-**Actions**<br />-
+### Bursting Crackle
 
-**Abilities**<br />-
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | -
 
-### Mountain Giant
+**Effect**<br /> You gather an electric charge at a single point within range and release it with a powerful blast, creating a loud thunder. Target all creatures in melee range of the target location.<br/>**Weak.** Deal +2 blast damage against each target.<br/>**Strong.** Deal +4 blast damage against each target and they are briefly dazed and deafened.<br/>**Critical.** Deal +6 blast damage against each target and they are briefly dazed and deafened. 
 
-*Huge (+2), Basic Giant* 
 
-**Initiative** Slow<br />**HP** 60, **AV** 4 (natural light)<br />**STR** d12+2, **AGI** d6, **SPI** d8, **MND** d6<br />**Parry** 12, **Dodge** 10, **Resist** 11
+### Curse of Tempest
 
-**Skills** Athletics 1, Fighting 1, Fortitude 1
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
 
-**Actions**<br />**- Slam (reach).** 12 damage (8 base + 4 weapon). On a strong or critical hit, the target falls prone.<br />**- Kick.** 12 damage (8 base + 4 weapon). On a strong hit, the target is pushed a close distance. On a critical hit, the target is pushed a short distance and falls prone. <br />**- Boulder Throw (ammo, crush, range (very long)).** 16 damage (8 base + 8 weapon).
+**Effect**<br /> You curse a creature with the magical power of tempest, turning nature itself against them.<br/>On a success, the creature suffers the following effects:<br/>- While moving in natural environments, it is always considered difficult terrain for them.<br/>- They suffer +1 bane on Athletics and Survival rolls.<br/>This curse lasts for a long duration. 
 
-**Abilities**<br />-
 
-### General
+### Earthen Tremor
 
-*Medium (-), Elite Humanoid* 
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Short | blast (cone)
 
-**Initiative** Normal<br />**HP** 40, **AV** -<br />**Skills** -
+**Effect**<br /> You send shockwaves through the earth, causing the ground to tremble violently. Target‘s all creatures in the spell’s area.<br/>**Weak.** Deal +2 damage to each target.<br/>**Strong.** Deal +4 damage to each target and they are briefly faltering.<br/>**Critical.** Deal +6 damage to each target and they are briefly faltering. 
 
-**Actions**<br />-
 
-**Abilities**<br />-
+### Electrified Weapon
 
-### Hydra
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
 
-*-, - -* 
+**Effect**<br /> Imbue a weapon with the power of storms.<br/>On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the attack‘s target is briefly faltering. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
-**Initiative** -<br />**HP** -, **AV** -<br />**Skills** -
 
-**Actions**<br />-
+### Lightning Javelin
 
-**Abilities**<br />-
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
 
-## Tier 5
+**Effect**<br /> You conjure pure lightning in the form of a spear and hurl it against a creature.<br/>**Weak.** Deal +4 lightning damage. <br/>**Strong.** Deal +8 lightning damage and the target is briefly faltering.<br/>**Critical.** Deal +12 lightning damage and the target is briefly faltering. 
 
-### Old Dragon
 
-*Gargantuan (+3), Elite Dragon* 
+### Storm Coat
 
-**Initiative** Normal<br />**HP** -, **AV** -<br />**Skills** -
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Short | enchant (body),  singular
 
-**Actions**<br />-
+**Effect**<br /> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects:<br/>- You gain resistance against frost and lightning damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignoring AV). 
 
-**Abilities**<br />-
+
+### Volcanic Bolt
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> You magically dissolve a small amount of earth or rock into lava. You can magically hurl the lava against a creature.<br/>**Weak.** Deal +4 fire damage. <br/>**Strong.** Deal +8 fire damage and they suffer burning (2) for a short duration.<br/>**Critical.** Deal +12 fire damage and they suffer burning (4) for a short duration. 
+
+
+### Wind Hose
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect**<br /> You create a powerful swirl of air around the target location, pulling smaller, loose objects into it’s vortex.<br/>**Weak.** Deal +3 force damage.<br/>**Strong.** Deal +6 force damage and if the target is medium or smaller in size, they are also grappled by the wind hose.<br/>**Critical.** Deal +9 force damage and if the target is medium or smaller in size, they are also grappled and restrained by the wind hose.<br/>When you successfully cast this spell against a target and it is grappled by the wind hose, you gain +1 boon when casting the spell again against the same target on your next turn. 
+
+
+### Magma Burst
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | -
+
+**Effect**<br /> You channel the earth’s wrath, making the target location’s ground burst with lava. Target all creatures in melee range of it.<br/>**Weak.** Deal +4 fire damage to each target. <br/>**Strong.** Deal +8 fire damage to each target and they suffer burning (2) for a short duration.<br/>**Critical.** Deal +12 fire damage to each target and they suffer burning (4) for a short duration.<br/>The target location remains covered with cracks filled with lava for a short duration, after which it cools down and remains as solid rock.<br/>Each creature ending their turn in melee range of it automatically suffer the effects of a weak hit.<br/>If any creature has direct contact with the lava, they instead automatically suffer the effects of a critical hit. 
+
+
+### Pyroclasm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Short | blast (cone)
+
+**Effect**<br /> You slam the earth before you and it erupts with force, spitting flaming hot lava into the air.<br/>**Weak.** Deal +4 fire damage to each target. <br/>**Strong.** Deal +8 fire damage to each target and they fall prone.<br/>**Critical.** Deal +12 fire damage to each target, they fall prone, and their Movement briefly becomes 0.<br/>The area affected by this spell remains as broken ground and is considered difficult terrain. 
+
+
+### Storm Bolt
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | blast (line)
+
+**Effect**<br /> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/>**Weak.** Deal +4 lightning damage to each target.<br/>**Strong.** Deal +8 lightning damage to each target and they are briefly faltering.<br/>**Critical.** Deal +12 lightning damage to each target and they are briefly faltering. 
+
+
+### Thunder Cloud
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | concentrate
+
+**Effect**<br /> You summon a dark cloud brewing with electricity. The cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three enemies below the cloud.<br/>**Weak.** Deal +4 lightning damage against each target.<br/>**Strong.** Deal +8 lightning damage against each target.<br/>**Critical.** Deal +12 lightning damage against each target.<br/>On each of your following turns, you can use your Action or Quick Action to target another one creature with this spell and roll vs. their Dodge.<br/>The cloud lasts for a short duration. 
+
+
+### Thunderous Clap
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Short | -
+
+**Effect**<br /> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/>**Weak.** Deal +4 damage to each target.<br/>**Strong.** Deal +8 damage to each target and they are knocked prone and briefly deafened.<br/>**Critical.** Deal +12 damage to each target and they are pushed close, knocked prone, and briefly deafened. 
+
+
+### Cyclone
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Long | -
+
+**Effect**<br /> You create a massive cyclone that engulfs a wide area. Target all creatures in short range of the target area.<br/>**Weak.** Deal +4 blast damage to each target and they are pushed a close distance away from the center of the cyclone.<br/>**Strong.** Deal +8 blast damage to each target and they are pushed a short distance away from the center of the cyclone.<br/>**Critical.** Deal +12 blast damage to each target and they are pushed a medium distance away from the center of the cyclone. 
+
+
+### Avatar of Storms
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extremely Hard (14) | Self | concentrate,  enchant (body)
+
+**Effect**<br /> You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignoring AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. 
+
+
+## Peace
+
+### Aura of Sanctuary
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | singular,  quick
+
+**Effect**<br /> You shield a creature in range with a magical aura discouraging other creatures from inflicting harm on them. Cast this spell as a Quick Action on your turn.<br/>On a success, the target is shielded by the aura for a short duration. While shielded by the aura, whenever another creature attempts to attack them, the attacker has to roll Spirit + Fortitude vs. your Resist. On a failure, they are unable to attack the shielded creature and must choose a new target.<br/>This spell ends early, if the shielded creature attacks any other creature. 
+
+
+### Calming Influence
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Short | -
+
+**Effect**<br /> You calm the mind of one creature in range. You suffer +1 bane on this spell, if the target is actively engaged in combat or another dangerous situation.<br/>On a success, the target is shortly charmed by you and will act with empathy and friendliness towards you. 
+
+
+### Tranquil Mind
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Short | -
+
+**Effect**<br /> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br/>**Weak.** Restore +2 HP to an ally or deal +0 psychic damage (ignoring AV) against an enemy.<br/>**Strong.** Restore +4 HP to an ally or deal +2 psychic damage (ignoring AV) against an enemy and they are briefly dazed.<br/>**Critical.** Restore +6 HP to an ally or deal +4 psychic damage (ignoring AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
+
+
+### Blessing of Peace
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular
+
+**Effect**<br /> You bless a creature with the magical power of peace, calming their mind and making others like them more.<br/>On a success, the creature gains the following effects:<br/>- You gain +1 Resist.<br/>- You gain +1 boon on Influence and Insight rolls.<br/>This spell lasts for a long duration. 
+
+
+### Harmonic Link
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Medium | concentrate,  singular
+
+**Effect**<br /> You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, both of you gain the following effects:<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you.<br/>- If either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell. 
+
+
+### Pacifying Weapon
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of tranquility.<br/>On a success, the weapon‘s bearer gains +1 Parry. On a strong or critical hit, the attack‘s target is briefly dazed. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
+
+
+### Share Harm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | quick
+
+**Effect**<br /> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignoring AV). 
+
+
+### Dome of Sanctuary
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | concentrate
+
+**Effect**<br /> You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br/>**Weak.** Deal +2 psychic damage (ignoring AV) against every target.<br/>**Strong.** Deal +4 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome.<br/>**Critical.** Deal +6 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome and fall prone.<br/>Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can’t enter.<br/>Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration. 
+
+
+### Spell-breaking Wave
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect**<br /> You send a wave of pacifying energy towards a creature, removing enchantments and breaking spell effects. Either choose one enchantment affecting them or choose one spell they are concentrating on or that has an effect that lasts for a duration.<br/>On a success, the enchantment or spell effect ends. 
+
+
+## War
+
+### Battle Surge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Moderate (8) | Medium | singular,  quick
+
+**Effect**<br /> Heighten the senses of a creature in range, making it more fierce in battle.<br/>Cast this spell during the target’s turn. On a success, the target gains +1 Movement and +1 boon on their next attack roll during their current turn. 
+
+
+### Mighty Strike
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Self | -
+
+**Effect**<br /> Conjure raw spiritual strength into your weapon attack.<br/>Choose one weapon you are holding. Roll an attack with that weapon using Spirit + Mysticism. On a hit, also use your spell base damage instead of that of the weapon. 
+
+
+### Spectral Slash
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Parry | Medium | -
+
+**Effect**<br /> Conjure a spectral blade that cuts at an enemy.<br/>**Weak.** Deal +2 damage.<br/>**Strong.** Deal +4 damage and the target suffers bleeding (2) until healed.<br/>**Critical.** Deal +6 damage and the target suffers bleeding (4) until healed. 
+
+
+### Curse of War
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | singular
+
+**Effect**<br /> You curse a creature with the magical power of war, suffocating them in the agony of battle.<br/>On a success, the creature suffers the following effects:<br/>- They take +2 damage from any source.<br/>- Whenever they take 10 or more damage from one attack, they have to roll Spirit + Fortitude. On a failure, they are briefly frightened.<br/>This curse lasts for a long duration. 
+
+
+### Heroic Weapon
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Moderate (8) | Touch | singular,  enchant (weapon)
+
+**Effect**<br /> Imbue a weapon with the power of courage.<br/>On a success, the weapon deals +2 damage. On a strong or critical hit, the attack‘s target is briefly frightened. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
+
+
+### Tear Wound
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | -
+
+**Effect**<br /> You exploit open wounds, cuts, and bruises, making them cause the target immense pain. You can only target a creature that is below their max. HP with this spell.<br/>**Weak.** Deal +4 damage.<br/>**Strong.** Deal +8 damage and the target suffers bleeding (2) until healed.<br/>**Critical.** Deal +12 damage and the target suffers bleeding (4) until healed. 
+
+
+### War Cry
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | quick
+
+**Effect**<br /> You roar with the voice of the bravest warrior spirits, shaking all enemies in range to their core.<br/>On a success, each enemy is briefly frightened of you. Any creature can only be affected by this spell once per scene. 
+
+
+### Weapon Spirit
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Parry | Medium | concentrate
+
+**Effect**<br /> To use this spell, you must first sacrifice a physical weapon along spiritual ingredients worth 100 coins in a ritual taking one exploration turn.<br/><br/>When you cast this spell, you summon an animated, spiritual version of one of the weapons you sacrificed for this spell levitating above the ground within range and obeying your command. On your turns, you can move it a short distance within range and make one melee attack. Roll Spirit + Mysticism for the attack and treat the result as a normal weapon attack. 
+
+
+### Ancestral Warriors
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | concentrate
+
+**Effect**<br /> You conjure the memory of fallen ancestors around you. They appear as ghostly warriors of your chosen culture.<br/>On a success, they swirl around you in close range. Any enemy in range takes +4 force damage when you cast this spell and at the start of each of their turns. The area in range is also considered difficult terrain for enemies.<br/>This spell lasts for a short duration. 
+
+
+### Blood Sacrifice
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | quick
+
+**Effect**<br /> You cut into your own flesh, granting you the ancestor’s power in return. Cast this spell on your turn.<br/>You lose 5 HP as part of casting this spell, regardless of the result.<br/>On a success, you gain the following effects:<br/>- Gain +1 boon on weapon attacks.<br/>- Add 2 x Mysticism to weapon damage. 
+
 

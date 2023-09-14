@@ -4,11 +4,11 @@ sidebar_position: 7
 
 # 💎 Weapon & Armor Materials
 
-Weapons and armor can be made out of a variety of materials. While the default materials don‘t alter the items properties (even if it’s quality differs from the item quality), lower or higher quality materials do. An items quality is adjusted to that of the special material.
+Weapons and armor can be made out of a variety of materials. While the default materials don‘t alter the item's properties (even if its quality differs from the item's quality), lower or higher-quality materials do. An item's quality is adjusted to that of the special material.
 
 ## Ammo from Special Materials
 
-In addition to upgrading the weapon itself, you can also use ammo from special materials for it. The cost for one unit of special ammo is equal half the cost per load of the material. Using this ammo adds the material's bonuses for a non-heavy weapon to the weapon's attacks.
+In addition to upgrading the weapon itself, you can also use ammo from special materials for it. The cost for one unit of special ammo is equal to half the cost per load of the material. Using this ammo adds the material's bonuses for a non-heavy weapon to the weapon's attacks.
 
 ## Special Materials
 

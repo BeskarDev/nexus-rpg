@@ -6,13 +6,13 @@ sidebar_position: 1
 
 # Mounts
 
-You can ride a creature that is suitable as a mount and one or more sizes above you. While mounted, you can move with your mounts Movement during your turn. You also travel faster (1,5x travel speed) and Fortitude rolls during travel only affect your mount and not you.
+You can ride a creature that is suitable as a mount and one or more sizes above you. While mounted, you can move with your mount’s Movement during your turn. You also travel faster (1.5x travel speed) and Fortitude rolls during travel only affect your mount and not you.
 
-When you need to attempt difficult riding manoeuvres, roll Agility + Nature to guide your mount.
+When you need to attempt difficult riding maneuvers, roll Agility + Nature to guide your mount.
 
-Your mount is no active combatant during combat, unless it is also a companion (see below). Creatures that are smaller than your mount suffer +1 bane on attacks against you, while mounted.
+Your mount is no active combatant during combat unless it is also a companion (see below). Creatures that are smaller than your mount suffer +1 bane on attacks against you, while mounted.
 
-You also have to roll Spirit + Nature in situations which scare or confuse your mount. The difficulty of this roll depends on the intensity of the situation. Failing the roll inflicts the confused condition on your mount. After failing, you can re-attempt your roll at the start of your turns. The following situations force you to make this roll:
+You also have to roll Spirit + Nature in situations that scare or confuse your mount. The difficulty of this roll depends on the intensity of the situation. Failing the roll inflicts the confused condition on your mount. After failing, you can re-attempt your roll at the start of your turns. The following situations force you to make this roll:
 
 - Your mount takes damage.
 - A loud noise erupts.
@@ -22,17 +22,19 @@ You also have to roll Spirit + Nature in situations which scare or confuse your 
 
 Companions are powerful NPCs that accompany you on your adventures. You can obtain access to various NPC companions - bestial, humanoid, or other.
 
+For example, adventurers wanting an Animal Companion will have to take the Survival Talent with the same name. 
+
 ## Companions during combat
 
 Every companion is assigned to one specific adventurer, who guides and leads them. The companion takes their turn during combat either directly before or after their assigned adventurer (your choice).
 
 ### Health
 
-The companion has two Health Marks. When they are reduced to 0 HP, they start suffering Wounds or Fatigue the same way as an adventurer. The only difference being, when they have taken two Wounds, they are instantly dead. If they suffered one Wound and one Fatigue, they instead start dying the same as adventurers.
+The companion has two Health Marks. When they are reduced to 0 HP, they start suffering Wounds or Fatigue the same way as an adventurer. The only difference is, that when they have taken two Wounds, they are instantly dead. If they suffered one Wound and one Fatigue, they instead start dying the same as adventurers.
 
 ### Morale
 
-Companions aren't as battle hardened as adventurers and need to roll Spirit + Fortitude to hold their morale in tough situations. The following situations require your companion to roll for morale during combat:
+Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fortitude to hold their morale in tough situations. The following situations require your companion to roll for morale during combat:
 
 - The companion is engaged with an enemy 2 or more tiers above them.
 - The companion takes a Wound or Fatigue.
@@ -52,7 +54,7 @@ Companions aren't as battle hardened as adventurers and need to roll Spirit + Fo
 | Attack (claw/bite/etc.) | 5 damage (3 base + 2 weapon). | 7 damage (4 base + 3 weapon). | 9 damage (5 base + 4 weapon). | 11 damage (6 base + 5 weapon). |
 | Movement | 1 | 1 | 2 | 2 |
 
-Each companion also gains additional attacks, abilities, or other modifiers based on it’s animal type.
+Each companion also gains additional attacks, abilities, or other modifiers based on its animal type.
 
 ### Example Animal Types
 
@@ -64,7 +66,7 @@ Each companion also gains additional attacks, abilities, or other modifiers base
 **Cat (Tier 1)**
 
 - **Night Vision.** This creature can see up to a short distance in dim light as in bright light. Sources of dim light let it see one range category further than normal.
-- **Cat’s Grace.** Increase the Agility of this creature by one step (this also add +1 Dodge). This creature can use Agility for it’s attack rolls. When this creature would take falling damage, treat it’s distance as one category lower.
+- **Cat’s Grace.** Increase the Agility of this creature by one step (this also adds +1 Dodge). This creature can use Agility for its attack rolls. When this creature would take falling damage, treat its distance as one category lower.
 
 **Wolf (Tier 2)**
 
@@ -75,7 +77,7 @@ Each companion also gains additional attacks, abilities, or other modifiers base
 **Large Cat (Tier 2)**
 
 - **Night Vision.** This creature can see up to a short distance in dim light as in bright light. Sources of dim light let it see one range category further than normal.
-- **Cat’s Grace.** Increase the Agility of this creature by one step (this also add +1 Dodge). This creature can use Agility for it’s attack rolls. When this creature would take falling damage, treat it’s distance as one category lower.
+- **Cat’s Grace.** Increase the Agility of this creature by one step (this also adds +1 Dodge). This creature can use Agility for its attack rolls. When this creature would take falling damage, treat its distance as one category lower.
 - **Pounce.** This creature can take the Charge Combat Art once per combat.
 
 ### Riding an animal companion

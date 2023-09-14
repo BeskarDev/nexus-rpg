@@ -6,9 +6,9 @@ sidebar_position: 2
 
 ## Hit Points (HP)
 
-HP are your short-term condition during a fight. When you take damage, first reduce it by your Armor Value (AV) and subtract the result (min. 1) from your HP. If you don’t have any HP left, you instead suffer Wounds (see below).
+HP is your short-term condition during a fight. When you take damage, first reduce it by your Armor Value (AV) and subtract the result (min. 1) from your HP. If you don’t have any HP left, you instead suffer Wounds (see below).
 
-You start the game with HP equal to 12 + Strength (see the table below). You can also gain additional HP through talents, but you can never exceed 40 HP in total. You regain all of your HP after you had time for a short break.
+You start the game with HP equal to 12 + Strength (see the table below). You can also gain additional HP through talents, but you can never exceed 40 HP in total. You regain all of your HP after you have time for a short break.
 
 | Strength | d4 | d6 | d8 | d10 | d12 |
 | --- | --- | --- | --- | --- | --- |
@@ -18,7 +18,7 @@ You start the game with HP equal to 12 + Strength (see the table below). You can
 
 Some abilities and effects grant you temporary HP. This second pool of HP is first subtracted from when you take damage. It also doesn‘t replenish during a short break but is simply gone, once all of it has been taken away by damage taken.
 
-If you would gain temporary HP from multiple sources, you only gain the highest one among them.
+If you gain temporary HP from multiple sources, you only gain the highest one among them.
 
 ## Wounds
 
@@ -26,7 +26,7 @@ If you would gain temporary HP from multiple sources, you only gain the highest 
 Besides, it is far more valuable to sell defeated foes back to their people than kill them outright and facing the wrath of their peers.
 > 
 
-While HP determine your short-term endurance, Wounds displays your long-term condition. When you run out of HP or are suffering from extreme conditions, you start to take Wounds in the form of either Injuries or Fatigue. 
+While HP determines your short-term endurance, Wounds displays your long-term condition. When you run out of HP or are suffering from extreme conditions, you start to take Wounds in the form of either Injuries or Fatigue. 
 
 Any Adventurer can take up to three Wounds from any combination of Injuries and Fatigue. When you suffer your first Wound, roll 1d4 and suffer the effects below as long as that Wound lasts.
 
@@ -35,9 +35,9 @@ Any Adventurer can take up to three Wounds from any combination of Injuries and 
 3. **Head Injury.** +1 bane on Spirit rolls.
 4. **Concussion.** +1 bane on Mind rolls.
 
-When you suffer your second Wound, roll another d4 - re-rolling the result you got for your first Wound. When you suffer your third Wound, you roll another d4 until it comes up with a result different to your first and second Wounds.
+When you suffer your second Wound, roll another d4 - re-rolling the result you got for your first Wound. When you suffer your third Wound, you roll another d4 until it comes up with a result different from your first and second Wounds.
 
-While Wounds from Fatigue heal relatively quickly, Wounds form Injuries take a lot of time to heal. When you suffer your third Wound, you also either start dying or fall unconscious, depending on if your third Wound was from an Injury or Fatigue respectively.
+While Wounds from Fatigue heal relatively quickly, Wounds from Injuries take a lot of time to heal. When you suffer your third Wound, you also either start dying or fall unconscious, depending on whether your third Wound was from an Injury or Fatigue respectively.
 
 ### Injuries
 
@@ -49,19 +49,19 @@ Whenever you take an Injury…
 - and the damage is equal to or higher than twice your max HP —> suffer +2 Injuries
 
 > Note that attacks that deal damage to you multiple times still only inflict one Injury to you. Only if the damage of any of the attack’s hits surpasses the above mentioned thresholds, do you take multiple Injuries from the attack.
->
+> 
 
 **Treating Injuries**
 
-During a night‘s rest, you can attempt to treat one of your Injuries. Make a Supply check for your materials and roll Mind + Nature. On a success, the Injury is treated and you no longer suffer it‘s negative effect. The Injury re-opens when you are reduced to 0 HP again.
+During a night‘s rest, you can attempt to treat one of your Injuries. Make a Supply check for your materials and roll Mind + Nature. On a success, the Injury is treated and you no longer suffer its negative effect. The Injury re-opens when you are reduced to 0 HP again.
 
 **Healing Injuries**
 
-You can permanently remove a treated Injury by succeeding on a hard Strength + Fortitude roll during another night‘s rest or during downtime (see Downtime Activities for more detail).
+You can permanently remove a treated Injury by succeeding on a hard Strength + Fortitude roll during another night‘s rest or downtime (see Downtime Activities for more detail).
 
 ### Fatigue
 
-Non-lethal attacks inflict two Fatigue. You also suffer varying amounts of Fatigue from extreme conditions during travel, mental attacks or other extremely exhausting activities. In contrast to Injuries, you need to suffer two Fatigue to suffer one Wound from it.
+Non-lethal attacks inflict two Fatigue. You also suffer varying amounts of Fatigue from extreme conditions during travel, mental attacks, or other extremely exhausting activities. In contrast to Injuries, you need to suffer two Fatigue to suffer one Wound from it.
 
 **Healing Fatigue**
 
@@ -78,7 +78,7 @@ Once you suffer your third Wound with two or more Injuries, you start dying. Whe
 
 When you first start dying, roll a d4.
 
-When you roll the die, the result of the roll determines the amount of turns until you die. Reduce the die face by 1 on each of your following turns. During those turns you remain unconscious and dying. When a creature successfully attacks you while dying, you instantly die. Allies can also attempt to stop you from dying on their own turns. With the right gear, another creature can make a Spirit + Nature roll.
+When you roll the die, the result of the roll determines the amount of turns until you die. Reduce the die face by 1 on each of your following turns. During those turns you remain unconscious and dying. When a creature successfully attacks you while dying, you instantly die. Allies can also attempt to stop you from dying on their turns. With the right gear, another creature can make a Spirit + Nature roll.
 
 **Weak.** +1 to the dice result.
 

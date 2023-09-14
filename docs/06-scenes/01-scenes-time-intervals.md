@@ -4,13 +4,13 @@ sidebar_position: 1
 
 # 🎭 Scenes & Time Intervals
 
-When you play this game, you do so in separate scenes which each fall into one of the following time intervals. Which time interval you are in with your scene depends on the speed and scope of your groups current storytelling.
+When you play this game, you do so in separate scenes which each fall into one of the following time intervals. Which time interval you are in with your scene depends on the speed and scope of your group's current storytelling.
 
-Each time interval has their own definition of a turn, which is a span of time a single action for the current time interval takes. Turns help to keep the story moving along and not dragging down. You can generally do things which take a lot less time that your current time intervals turns without needing a whole turn to do them.
+Each time interval has its own definition of a turn, which is a period a single action for the current time interval takes. Turns help to keep the story moving along and not dragging down. You can generally do things that take a lot less time than your current time interval turns without needing a whole turn to do them.
 
 Different abilities call for these time interval turns to determine the duration or execution time of an effect or ability.
 
-During more stretched out portions of play, you might skip turns to progress the story naturally. You might also want to end that certain scenes early when their outcome is certain and just narrate the end of it shortly. For example when the winners of a combat are already determined, but some enemies remain. Instead of going through the motions, without any remaining danger of loosing, that combat can just end and the adventurers decide what they do with those remaining enemies.
+During more stretched-out portions of play, you might skip turns to progress the story naturally. You might also want to end certain scenes early when their outcome is certain and just narrate the end of it shortly. For example when the winners of a combat are already determined, but some enemies remain. Instead of going through the motions, without any remaining danger of losing, that combat can just end and the adventurers decide what they do with those remaining enemies.
 
 ## Encounter
 

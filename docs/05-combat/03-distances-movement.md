@@ -6,7 +6,7 @@ sidebar_position: 3
 
 ## Distances
 
-Various effects and abilities list of of the following distances to describe their range.
+Various effects and abilities list the following distances to describe their range.
 
 | Distance | Description | In Meters | In Areas |
 | --- | --- | --- | --- |
@@ -39,10 +39,10 @@ Many effects and abilities might leave you without solid ground beneath your fee
 - Falling involuntarily by some harmful effect.
 - Falling voluntarily by your own actions. When you attempt to control your fall, roll Agility + Athletics as an Action. The difficulty is easy for a close distance and is increased by one step for each additional falling distance. If you succeed, you reduce the damage you take to one step lower than normal.
 
-Under normal circumstances, you fall up to a very long distance during one encounter turn or until you hit the ground. If you would fall over multiple turns, you first fall a very long distance immediately and then the same distance at the end of each of your turns until you hit the ground.
+Under normal circumstances, you fall up to a very long distance during one encounter turn or until you hit the ground. If you fall over multiple turns, you first fall a very long distance immediately and then the same distance at the end of each of your turns until you hit the ground.
 
-- If you fall outside of your own turn, you can use an appropriate Quick Action before falling the distance.
-- If you fall during your own turn, you can use an Action or Quick Action before falling the distance.
+- If you fall outside of your turn, you can use an appropriate Quick Action before falling the distance.
+- If you fall during your turn, you can use an Action or Quick Action before falling the distance.
 
 Depending on the distance you have fallen before hitting the ground, you take damage as follows. Falling damage ignores your AV. If you take damage from falling, you also fall prone. 
 
@@ -52,7 +52,7 @@ Depending on the distance you have fallen before hitting the ground, you take da
 
 ### Moving Objects
 
-You are able to move heavy objects depending on your Strength:
+You can move heavy objects depending on your Strength:
 
 - up to 3 x Strength: move normally.
 - up to 10 x Strength: move as in difficult terrain.
@@ -63,17 +63,17 @@ You are able to move heavy objects depending on your Strength:
 
 ### Crawling, Crouching, Climbing, and Swimming
 
-With these variants of Movement, you move as if in difficult terrain (2 Movement instead of 1 for a short distance). You might also be required to succeed on a Strength/Agility + Athletics roll to be able to move at all, as when climbing along a crumbling wall, or swimming in rushing waters.
+With these variants of Movement, you move as if in difficult terrain (2 Movement instead of 1 for a short distance). You might also be required to succeed on a Strength/Agility + Athletics roll to be able to move at all, as when climbing along a crumbling wall or swimming in rushing waters.
 
 ### Jumping
 
-If you moved at least a close distance, you can jump a close distance without rolling. Otherwise, you have to succeed on a Strength + Athletics roll.
+If you move at least a close distance, you can jump a close distance without rolling. Otherwise, you have to succeed on a Strength + Athletics roll.
 
 ### Suffering conditions during Movement
 
 If you are swimming or flying and suffer conditions that reduce your Movement to 0 or drop you prone, you lose control of your Movement. You immediately start drowning or falling respectively. You drown for a short distance or fall a very long distance each turn you can‘t move.
 
-If you are climbing and are pushed or knocked prone, you also lose control of your Movement and start falling. Though you might be able to stop your fall by succeeding on a Strength/Agility + Athletics roll. If you do, you stop falling after the distance you were pushed, or a close distance otherwise.
+If you are climbing and are pushed or knocked prone, you also lose control of your Movement and start falling. However, you might be able to stop your fall by succeeding on a Strength/Agility + Athletics roll. If you do, you stop falling after the distance you were pushed or a close distance otherwise.
 
 ## Areas
 
@@ -91,6 +91,7 @@ Examples of area properties include:
 - **Dim Light.** Any rolls requiring sight in or through this area suffer +1 bane.
 - **Total Darkness.** Any creature is considered blinded for looking into or through this area.
 - **Difficult Terrain.** Requires 2 Movement to move into this area (you can spend this Movement over multiple turns). Moving into or out of melee range requires 1 Movement.
-- **Elevated.** This area is up-hill or on a higher elevation. Ranged attacks from this area to an un-elevated area gain +1 boon. Special movement such as climbing or flying might be required to enter this area.
+- **Elevated.** This area is uphill or on a higher elevation. Ranged attacks from this area to an un-elevated area gain +1 boon. Special movements such as climbing or flying might be required to enter this area.
 - **Tiny.** All creatures in this area are automatically in melee range of each other.
-- **Special Location.** This area includes a special location that creatures can move into melee range with, to gain certain effects. Examples are a lever for a nearby drawbridge, a magical fountain with healing water, or a pillar which can be climbed or hidden behind.
+- **Special Location.** This area includes a special location that creatures can move into melee range with, to gain certain effects. Examples are a lever for a nearby drawbridge, a magical fountain with healing water, or a pillar that can be climbed or hidden behind.
+- **Underwater.** Creatures can’t breathe or fire missile weapons. Lightning damage spreads around the source and target, automatically dealing 1/2 of its damage to any creature close to either of them if in contact with the water.

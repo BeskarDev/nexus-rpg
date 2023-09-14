@@ -4,14 +4,16 @@ sidebar_position: 2
 
 # 📜 Creature Rules
 
+# Creature Rules
+
 Creatures act in the same basic ways, as adventurers do. But some details differ:
 
-- Spell-casting creatures don’t use Focus for their spells. Instead they are limited in their use of individual spells. They can only cast each spell once. After they have cast each spell once, they regain their single use of each spell again.
+- Spell-casting creatures don’t use Focus for their spells. Instead, they are limited in their use of individual spells. They can only cast each spell once. After they have cast each spell once, they regain their single use of each spell again.
 - Creature attacks or abilities refer to different groups of combatants with the following meanings.
-    - “Creature”: refers to the creature themselves.
+    - “Creature”: refers to the creatures themselves.
     - “Creatures”: refers to all creatures, regardless of allegiance.
     - “Allies”: refers to all other creatures aligned with the creature.
-    - “Opponents”: refers to the adventurers, their allies, as well as other creature groups which are opposed to the creature and their allies.
+    - “Opponents”: refers to the adventurers, their allies, as well as other creature groups that are opposed to the creature and their allies.
 
 ## Creature Categories
 
@@ -19,7 +21,7 @@ Creatures can come in different categories representing their importance and pow
 
 ### Basic
 
-The most simple type of creature you encounter almost every combat. They are goons that die quick and can't do too much. But beware them in great numbers.
+The most simple type of creature you encounter in almost every combat. They are goons who die quickly and can't do too much. But beware them in great numbers.
 
 Basic creatures…
 
@@ -39,20 +41,28 @@ When the tide of battle turns against them, they need to roll Spirit + Fortitude
 
 Larger numbers of the same type of basic creature can also be grouped into troops. Typically three or more creatures with the same statistics should be grouped into a troop.
 
-For this, treat the whole troop as one creature. The troop retains all of the normal statistics of the creature type. Each time the troop is reduced to 0 HP, one of it‘s members dies. This can also mean that a large amount of damage from a single attack can take out multiple members of the troop.
+For this, treat the whole troop as one creature. The troop retains all of the normal statistics of the creature type. Whenever an attack’s damage is equal to or higher than the troop's HP, one of its members dies. This can also mean that a large amount of damage from a single attack can take out multiple members of the troop at once. Should the number of members be reduced below three, treat the remaining creatures as single combatants instead and immediately roll for morale for them.
 
-When the troop rolls for a test which it‘s members have ranks in the skill for, they don‘t use that skills rank, but instead add +1 for each member of the troop beyond the first to the roll. They add the same bonus to damage on a successful attack. 
+The troop can also be targeted by attacks and other effects that affect multiple enemies. For this, treat each affected member of the troop as a single creature but apply the total damage to the entire troop. If the effect applies conditions or other effects on only a fraction of the troop, treat them as two separate troops between those creatures affected and those that are not.
 
-Troops always target the same creature with their attacks and abilities. The troop size can also dynamically adjust for targeting multiple creatures. For this, choose how many creatures target each individual creature and treat the troop size accordingly for rolls that target that creature.
+> For example, the adventurers face a troop of five goblins. The troop has 10 HP and 2 AV, the same as a single goblin. One of the adventurers attacks the troop with a cleave attack, targeting three of it’s members. They hit and deal 13 damage to each target. The goblin troop’s 2 AV reduces this to 11 damage per target and therefore 33 damage in total against the troop itself. From this damage, three goblins in the troop die and a third loses 3 HP. Since the troop has less than three members left, the GM immediately rolls for Morale to see, if the two remaining goblins flee or continue the fight as single creatures**.**
+> 
 
-For attacks that hit multiple members of the troop, add up that damage and take out individual members as if the damage came from a single attack. 
+When the troop rolls for a test which its members have ranks in the skill for, they don‘t use that skill rank, but instead add a bonus equal to half of the size of the troop (rounded up). On a successful attack, they add the same bonus multiplied by their SL to the damage.
 
-In situations, in which a subset of members of a troop is affected by some effect, treat them as their own separated troop. For example, when an adventurer uses their Quick Action to evade one of the troop member’s attacks, the evaded member is treated separately for attacking.
+> For example, the same troop of five goblin warriors attacks with their daggers. They roll their attack with 1d8 (Agility) + 1d6 + 3 (half troop size, rounded up). On a weak hit, they deal 9 damage (4 base + 2 weapon + 3 troop). A strong hit would deal 14 damage (4 base + 2*2 weapon + 2*3 troop) and a critical hit 19 damage (4 base + 3*2 weapon + 3*3 troop).
+> 
+
+Troops always choose the same target(s) with their attacks and abilities. The troop size can also dynamically adjust for different targets. For this, choose how many creatures target each individual creature and treat the troop size accordingly for rolls that target that creature.
+
+In situations, in which a subset of members of a troop is affected by some effect, treat them as their own separated troop. For example, when an adventurer uses their Quick Action to evade one of the troop members’ attacks, the evaded member is treated separately for attacking.
 
 > In short, when grouping multiple creatures into a troop:
-- One of the troop members dies whenever at 0 HP (damage from a single attack can kill multiple troop members)
-- Roll for trained skills with +1 for each member beyond the first
-- Add +1 to damage for each member beyond the first
+- One of the troop members dies whenever they take damage equal to their HP (damage from a single attack can kill multiple troop members)
+- Apply damage to multiple troop members against the whole troop
+- Disband the troop, once their numbers are reduced below three
+- Roll for trained skills with half of the size of the troop (rounded up) instead of their skill rank
+- Add damage equal to half of the size of the troop (rounded up) multiplied by the SL of their attack
 > 
 
 ### Elite
@@ -82,30 +92,33 @@ Master creatures…
 
 ## Building a Creature
 
-Each creature power level is separated into six tiers corresponding to the six tiers of adventuring difficulty. Their statistics have a general range that should be followed for each tier. If an creature has one statistic of a higher tier, it should balance out with another one from a lower tier.
+Each creature's power level is separated into six tiers corresponding to the six tiers of adventuring difficulty. Their statistics have a general range that should be followed for each tier. If a creature has one statistic of a higher tier, it should balance out with another statistic from a lower tier.
 
-|  | Tier 0 (trivial) | Tier 1 (common) | Tier 2 (strong) | Tier 3 (powerful) | <div style={{ minWidth: '74px' }}>Tier 4 (epic)</div> | Tier 5 (legendary) | Tier 6 (mythical) |
+|  | Tier 0 (trivial) | Tier 1 (common) | Tier 2 (strong) | Tier 3 (powerful) | Tier 4 (epic) | Tier 5 (legendary) | Tier 6 (mythical) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Hit Points | 5-10 | 10-20 | 20-30 | 30-40 | 40-60 | 60-80 | 80-100 |
 | Primary Attribute | d6 | d8 | d10 | d12 | d12 | d12 | d12 |
 | Defenses | 8 / 7 / 6 | 9 / 8 / 7 | 10 / 9 / 8 | 11 / 10 / 9 | 12 / 11 / 10 | 13 / 12 / 11 | 14 / 13 / 12 |
-| AV | 0-1 | 2-3 | 4-5 | 6-7 | 8-9 | 10-12 | 13-16 |
+| AV | 0 | 2 | 4 | 6 | 8 | 10 | 12 |
 | Damage | 3-4 | 4-6 | 6-12 | 12-18 | 18-24 | 24-30 | 30-36 |
-| Combat Skill Rank | 0 | 0 | 1 | 2 | 3 | 4 | 5 |
+| Skill Rank (Combat / Other) | 0 / 0 | 0 / 1 | 1 / 2 | 2 / 3 | 3 / 4 | 4 / 5 | 5 / 5 |
+| Ability Difficulty | Easy (6) | Easy (6) | Moderate (8) | Hard (10) | Very Hard (12) | Extremely Hard (14) | Nearly Impossible (16) |
 
 ### Calculating creature statistics
 
-- **Hit Points.** Choose if the creature is physically weak or strong. Pick the lower or higher number of HP for their tier respectively.
+- **Hit Points.** Choose if the creature leans towards being physically weak or strong. Pick the lower or higher number of HP for their tier respectively.
 - **Primary Attribute.** Choose which of the four attributes (Strength, Agility, Spirit, or Mind) is the creature’s primary characteristic. Set that attribute to the given die size for their tier. The other three attributes can only be of a lower die size than the primary one.
-- **Defenses.** Decide on what the creature’s good, normal, and bad Defenses are (Parry, Dodge, or Resist). Generally, stronger creatures have good Parry, nimble creatures have good Dodge, and wise or aware creatures have good Resist. Match the three given values for their tier accordingly (or choose a normal Defense for each) and add or subtract their Size modifier as described below.
+- **Defenses.** Decide on what the creature’s good, normal, and bad Defenses are (Parry, Dodge, or Resist). Generally, stronger creatures have good Parry, nimble creatures have good Dodge and wise or aware creatures have good Resist. Match the three given values for their tier accordingly (or choose a normal Defense for each) and add or subtract their Size modifier as described below.
     - Larger creatures subtract their Size modifier from Dodge.
     - Smaller creatures add their Size modifier to Dodge.
-- **AV.** Choose an appropriate AV based on the natural hardiness of the creature’s body and add any bonuses or penalties they might get from their size or equipped items. The total result should fit into the given range for their tier.
-- **Damage.** Determine the base damage of the creatures attacks based on if their attacks use force (1/2 Strength), swiftness (1/2 Agility), willpower (1/2 Spirit), or wits (1/2 Mind). If they wield a weapon, use it’s base damage instead.
+- **AV.** Choose an appropriate AV based on the natural hardiness of the creature’s body and add any bonuses or penalties they might get from their size or equipped items. The total result should not exceed the given value for their tier.
+- **Damage.** Determine the base damage of the creature’s attacks based on whether their attacks use force (1/2 Strength), swiftness (1/2 Agility), willpower (1/2 Spirit), or wits (1/2 Mind). If they wield a weapon, use its base damage instead.
     - The added weapon or spell damage should result in the attack’s damage falling into the given range for their tier on a weak hit.
-    - Strong or critical hits should never result in an amount of damage double it’s normal amount. If they would, choose a slightly lower weapon or spell damage.
+    - Strong or critical hits should never result in an amount of damage double its normal amount. If they would, choose a slightly lower weapon or spell damage.
     - When using a normal weapon on a larger enemy, increase the weapon damage by +1 for each size category above medium.
-- **Combat Skill Rank.** Choose the appropriate way of how the creature fights. If they attack at melee (Fighting), keep a distance (Archery), or even sling spells or other magical effects (Arcana/Mysticism). Allocate the skill rank for their tier to that skill. They may also have ranks in other skills, for combat or otherwise. These skills should all be of the same or lower rank than their combat skill is.
+- **Skill Rank.** For the creature’s combat skill, choose the appropriate way for the creature to fight. If they attack at melee (Fighting), keep a distance (Archery), or even sling spells or other magical effects (Arcana/Mysticism). Allocate the skill rank for their tier to that skill. If the creature’s associated attribute for combat is higher than their tier, consider reducing their combat skill rank by 1 for each die step above their tier.
+They may also have ranks in other skills that fit into their identity. These skills should all be of the same rank, depending on the creature‘s tier.
+- **************************************Ability Difficulty.************************************** Use this difficulty for any rolls that adventurers have to make as a response to the creature‘s attacks and abilities.
 
 ### Quickly improving an existing creature
 
@@ -118,15 +131,33 @@ When the GM quickly needs to alter the difficulty of any type of creature. For e
 - +/- 2 weapon damage
 - +/- 1 Skill Rank
 
+## Creature Units
+
+- Infantry (low damage, low health, medium mobility)
+- Ranged (medium damage, low health, medium mobility)
+- Brute (high damage, high health, low mobility)
+- Cavalry (medium damage, low health, high mobility)
+- Artillery (high damage, medium health, low mobility)
+
+| Unit | Damage | Health | Mobility | Range | Numbers | Tactic |
+| --- | --- | --- | --- | --- | --- | --- |
+| Infantry | low | low | medium | short | high | strength in numbers, block enemy movement |
+| Ranged | low | low | medium | long | high | attack from flanks, high places, or safe distance |
+| Brute | high | high | slow | short | few | advancing into melee, or guarding allies |
+| Cavalry | medium | low | high | short | some | fast attack from flanks |
+| Artillery | high | medium | low | medium | few | area of effect attacks, or controlling effects |
+| Spawner | low | medium | low | medium | few | summon more and more allies |
+| Elie/Boss | high | high | high | medium | singular | combine multiple unit types |
+
 ## Creatures with multiple parts
 
-Some creatures consist of multiple parts. Either because of their sheer size, or because it is an objects with multiple parts, or a unit consisting of multiple creatures, such as a rider and their mount.
+Some creatures consist of multiple parts. Either because of their sheer size, because it is an object with multiple parts, or a unit consisting of multiple creatures, such as a rider and their mount.
 
-Each individual part has their own HP, Defenses, and attacks. A creature can target a specific part of such a creature or object with an attack, but suffers +1 bane on the roll. Once a part is brought to 0 HP, it is considered disabled and the creature suffers a Wound from it (if it is a vital part) . A disabled part no longer contributes it's attacks and abilities to the entire creature or object.
+Each individual part has its own HP, Defenses, and attacks. A creature can target a specific part of such a creature or object with an attack but suffers +1 bane on the roll. Once a part is brought to 0 HP, it is considered disabled and the creature suffers a Wound from it (if it is a vital part). A disabled part no longer contributes its attacks and abilities to the entire creature or object.
 
 An example is targeting a large dragon's wings to bring it down to the ground.
 
-When the adventurers first encounter or start a combat with a creature or object with multiple parts, the GM informs them about all available parts as targets. 
+When the adventurers first encounter or start combat with a creature or object with multiple parts, the GM informs them about all available parts as targets. 
 
 ## Looting Equipment from Creatures
 

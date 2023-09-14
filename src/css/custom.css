@@ -31,6 +31,22 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-color-grey: #959595;
+  --ifm-color-brown: #ba8670;
+  --ifm-color-yellow: #cb9a4b;
+  --ifm-color-green: #54a275;
+  --ifm-color-blue: #5b82c1;
+  --ifm-color-purple: #9764ca;
+  --ifm-color-orange: #c07846;
+  --ifm-color-red: #e55654;
+  --ifm-color-quality-1: var(--ifm-color-grey);
+  --ifm-color-quality-2: var(--ifm-color-brown);
+  --ifm-color-quality-3: var(--ifm-color-yellow);
+  --ifm-color-quality-4: var(--ifm-color-green);
+  --ifm-color-quality-5: var(--ifm-color-blue);
+  --ifm-color-quality-6: var(--ifm-color-purple);
+  --ifm-color-quality-7: var(--ifm-color-orange);
+  --ifm-color-quality-8: var(--ifm-color-red);
 }
 
 html, body, h1, h2, h3, h4, h5, h6 {

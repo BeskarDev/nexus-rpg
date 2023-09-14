@@ -10,9 +10,9 @@ sidebar_position: 3
  **Hatchet (or Broadaxe, Cleaver, War Sickle)** | 1 | Axe | 2 | agile, light, slash | 0.5 | 50 
  **Battleaxe (or Crescent Axe)** | 2 | Axe | 3 | slash, versatile (+1) | 1 | 100 
  **Greataxe (or Elipson Axe, War Scythe)** | 2 | Axe | 4 | heavy (d8), slash, two-handed | 2 | 200 
+ **Dart (or Throwing Knife, Throwing Star, Chakram)** | 1 | Blade | 2 | agile, bundle, light, pierce, thrown (short) | 0.5 | 50 
  **Scimitar (or Khopesh, Kopis, Kukri, Machete, Macuahuitl, Shotel)** | 1 | Blade | 2 | agile, light, slash | 0.5 | 50 
  **Shortsword (or Dagger, Xiphos, Duan Jian, Wakizashi)** | 1 | Blade | 2 | agile, light, pierce | 0.5 | 50 
- **Dart (or Throwing Knife, Throwing Star, Chakram)** | 1 | Blade | 2 | agile, bundle, light, pierce, thrown (short) | 0.5 | 50 
  **Broadsword (or Katana, Dao)** | 2 | Blade | 3 | slash, versatile (+1) | 1 | 100 
  **Longsword (or Bastard Sword, Rapier, Jian)** | 2 | Blade | 3 | pierce, versatile (+1) | 1 | 100 
  **Great Saber (or Rhomphaia, Odachi, Miaodao)** | 2 | Blade | 4 | heavy (d8), slash, two-handed | 2 | 200 
@@ -41,6 +41,7 @@ sidebar_position: 3
  **Heavy Shield** | 2 | Shield | 2 | AV +2, heavy (d8), parry +2, rigid 1 | 2 | 500 
  **Great Shield** | 3 | Shield | 3 | AV +3, covering, heavy (d10), parry +2, rigid 2 | 2 | 1000 
  **Blowpipe** | 1 | Thrown | 1 | ammo, blowpipe, pierce, range (medium) | 0.5 | 50 
- **Sling (or Slingshot)** | 1 | Thrown | 2 | ammo, crush, thrown (medium), two-handed | 0.5 | 50 
  **Bola (or Net)** | 1 | Thrown | 2 | bundle, entangle, heavy (d6), thrown (short) | 0.5 | 50 
+ **Kestros** | 2 | Thrown | 2 | ammo, pierce, range (medium), two-handed | 0.5 | 50 
+ **Sling (or Slingshot)** | 1 | Thrown | 2 | ammo, crush, thrown (medium), two-handed | 0.5 | 50 
 

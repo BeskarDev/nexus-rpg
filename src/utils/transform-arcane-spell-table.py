@@ -33,10 +33,10 @@ def split_table_by_discipline(input_file, output_file):
     # Output the tables to the new markdown file
     with open(output_file, 'w') as file:
         for discipline, table_data in tables.items():
-            file.write("## **" + discipline.strip('**') + "**\n\n")
+            file.write("## " + discipline.strip('**') + "\n\n")
 
             for name, basic_info, detailed_effect in table_data:
-                file.write("### " + name + "\n\n")
+                file.write("### " + name.strip('**') + "\n\n")
                 file.write('**Rank** | **Focus** | **Target** | **Range** | **Properties**\n')
                 file.write('---|---|---|---|---\n')
                 file.write(basic_info + '\n\n')
