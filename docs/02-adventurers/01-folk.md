@@ -162,7 +162,8 @@ A proud and regal race, with a deep connection to the natural world and a revere
 
 A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment.
 
-**Cultures:** Vaashk (Marshland-Crocodilefolk), Quexa-kul (Jungle-Lizardfolk)
+**Cultures:** Vaashk (Swamp-Lizardfolk)
+, Quexa-kul (Jungle-Lizardfolk)
 
 **Size.** Lizardfolk are medium sized, growing up to 1,80 to 1,90 meters tall on average.
 
