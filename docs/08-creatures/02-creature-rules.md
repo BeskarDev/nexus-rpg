@@ -118,7 +118,7 @@ Each creature's power level is separated into six tiers corresponding to the six
     - When using a normal weapon on a larger enemy, increase the weapon damage by +1 for each size category above medium.
 - **Skill Rank.** For the creature’s combat skill, choose the appropriate way for the creature to fight. If they attack at melee (Fighting), keep a distance (Archery), or even sling spells or other magical effects (Arcana/Mysticism). Allocate the skill rank for their tier to that skill. If the creature’s associated attribute for combat is higher than their tier, consider reducing their combat skill rank by 1 for each die step above their tier.
 They may also have ranks in other skills that fit into their identity. These skills should all be of the same rank, depending on the creature‘s tier.
-- **************************************Ability Difficulty.************************************** Use this difficulty for any rolls that adventurers have to make as a response to the creature‘s attacks and abilities.
+- **Ability Difficulty.** Use this difficulty for any rolls that adventurers have to make as a response to the creature‘s attacks and abilities.
 
 ### Quickly improving an existing creature
 
