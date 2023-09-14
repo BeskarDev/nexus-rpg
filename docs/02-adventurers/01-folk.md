@@ -169,7 +169,7 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 
 **Age.** Lizardfolk reach adulthood at 10 and are considered of old age at 35 years. They can live up to 45 years on average.
 
-**Thick Scales.** Your natural scales grant +2 AV as armor.
+**Thick Scales.** Your natural scales grant +3 AV as armor.
 
 **Aquatic Nature.** You can hold your breath for 4 + 1/2 Strength minutes.
 
