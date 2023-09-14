@@ -10,28 +10,28 @@ You can buy, sell, and find a variety of items that are useful for your adventur
 
 ### Item Quality
 
-1. <span style="color: var(--ifm-color-quality-1);">**Primitive**</span> (worth 1-50 coins)
+1. <span style={{color: 'var(--ifm-color-quality-1)'}}>**Primitive**</span> (worth 1-50 coins)
     - can be crafted even by apprentice craftsmen
     - found anywhere, even the most primitive settlements
-2. <span style="color: var(--ifm-color-quality-2);">**Simple**</span> (worth 50-500 coins)
+2. <span style={{color: 'var(--ifm-color-quality-2)'}}>**Simple**</span> (worth 50-500 coins)
     - can be crafted by novice craftsmen
     - found in all civilized settlements
-3. <span style="color: var(--ifm-color-quality-3);">**Advanced**</span> (worth 500-2,000 coins)
+3. <span style={{color: 'var(--ifm-color-quality-3)'}}>**Advanced**</span> (worth 500-2,000 coins)
     - require adept craftsmen to create
     - found in large settlements, or with secluded craftsmen
-4. <span style="color: var(--ifm-color-quality-4);">**Formidable**</span> (worth 2,000-10,000 coins)
+4. <span style={{color: 'var(--ifm-color-quality-4)'}}>**Formidable**</span> (worth 2,000-10,000 coins)
     - the pinnacle of non-magical craftsmanship and material attainable in the mortal realms
     - only found in huge capital cities, or hard-to-reach secluded craftsmen
-5. <span style="color: var(--ifm-color-quality-5);">**Exceptional**</span> (worth 10,000-50,000 coins)
+5. <span style={{color: 'var(--ifm-color-quality-5)'}}>**Exceptional**</span> (worth 10,000-50,000 coins)
     - require magical ingredients, complex formulae, and only the most skilled craftsmen
     - only rarely found in huge capital cities or legendary craftsmen
-6. <span style="color: var(--ifm-color-quality-6);">**Epic**</span> (worth 50,000-250,000 coins)
+6. <span style={{color: 'var(--ifm-color-quality-6)'}}>**Epic**</span> (worth 50,000-250,000 coins)
     - require powerful magical ingredients, and ancient formulae, and are the height of mortal craftsmanship
     - only in the possession of the most powerful people, or masterworks from legendary craftsmen
-7. <span style="color: var(--ifm-color-quality-7);">**Legendary**</span> (worth 250,000-1,000,000 coins)
+7. <span style={{color: 'var(--ifm-color-quality-7)'}}>**Legendary**</span> (worth 250,000-1,000,000 coins)
     - requires legendary magical ingredients, formulae lost to mortals, and the gods themselves as craftsmen
     - the pinnacle of the most powerful people’s possession, crafted in ancient times or by the gods themselves
-8. <span style="color: var(--ifm-color-quality-8);">**Mythical**</span> (worth 1,000,000+ coins)
+8. <span style={{color: 'var(--ifm-color-quality-8)'}}>**Mythical**</span> (worth 1,000,000+ coins)
     - the absolute peak of divine craftsmanship
     - each of these items has a long history and anybody coming into their possession is destined for greatness
 
