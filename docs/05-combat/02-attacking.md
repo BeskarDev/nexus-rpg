@@ -19,10 +19,7 @@ You have to have learned the skill required by your weapon (Fighting for melee w
 
 | SL | Effect |
 | --- | --- |
-| Blunder | Choose one:
-- Roll a Durability Check for the weapon you attacked with.
-- Roll a Supply Check if your weapon uses ammo.
-- One item you are holding is knocked to the ground somewhere close. |
+| Blunder | Choose one:<br/>- Roll a Durability Check for the weapon you attacked with.<br/>- Roll a Supply Check if your weapon uses ammo.<br/>- One item you are holding is knocked to the ground somewhere close. |
 | Failure | You miss your target. |
 | Weak | You hit your target with 1 x weapon damage. |
 | Strong | You hit your target with 2 x weapon damage. |
