@@ -54,14 +54,7 @@ The following actions are available to all combatants.
 | Cast Spell | Cast a Spell you know and have enough Focus for. |
 | Dash | +1 Movement this turn. |
 | Defend | Attacks against you suffer +1 bane. You can Evade or Guard without spending your Quick Action until your next turn. |
-| Grapple | Attempt to lock your enemy into a grapple. Target an enemy you are in melee range of. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher) considering both of your sizes: 
-- A creature one size larger imposes +1 bane on rolls to grapple it and gains +1 boon on rolls to escape the smaller creature grapple.
-- A creature smaller grants +1 boon on rolls to grapple it and suffers +1 bane on rolls to escape the larger creature grapple for each size it is smaller.
-- A creature two or more sizes larger can’t be grappled, pushed, or knocked prone by the smaller creature.
-
-On a success, you are both locked in a grapple. If both of you are of the same size, both your Movement becomes 0. If one of you is larger or smaller, the smaller creature automatically moves with the Movement of the larger creature. If any one of you is moved away by some effect, such as being pushed, the grapple ends. 
-
-The target can use their Action to roll Strength/Agility + Athletics against your Parry. On a success, they escape your grapple. You can also willingly end the grapple on your turn. |
+| Grapple | Attempt to lock your enemy into a grapple. Target an enemy you are in melee range of. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher) considering both of your sizes:<br/>- A creature one size larger imposes +1 bane on rolls to grapple it and gains +1 boon on rolls to escape the smaller creature grapple.<br/>- A creature smaller grants +1 boon on rolls to grapple it and suffers +1 bane on rolls to escape the larger creature grapple for each size it is smaller.<br/>- A creature two or more sizes larger can’t be grappled, pushed, or knocked prone by the smaller creature.<br/><br/>On a success, you are both locked in a grapple. If both of you are of the same size, both your Movement becomes 0. If one of you is larger or smaller, the smaller creature automatically moves with the Movement of the larger creature. If any one of you is moved away by some effect, such as being pushed, the grapple ends.<br/><br/>The target can use their Action to roll Strength/Agility + Athletics against your Parry. On a success, they escape your grapple. You can also willingly end the grapple on your turn. |
 | Help | Help an ally with a roll. Target an ally you are in melee range of. Announce for what Action you want to help your ally on their next turn. They gain +1 boon on that roll on their next turn. |
 | Retreat | Enemies can‘t use Opportunity Attacks against you this turn, while you spend Movement. |
 | Use Skill | There are different Actions you can take by rolling for a skill. See the list below for more details, or use an Improvised Action for any situation not covered by the existing Use Skill Actions. |
@@ -73,13 +66,10 @@ Use a variety of skills during combat to help you and your allies or hinder your
 
 | Action | Effect |
 | --- | --- |
-| Demoralize | Attempt to break an enemy’s spirit. Target an enemy in short range that can see and hear you. Roll Strength/Spirit + Influence vs. Resist. On a success, they are briefly frightened of you.
-You can only use this Action once against any individual creature. |
-| Distract | Attempt to break an enemy’s focus. Target an enemy in short range that can see and hear you. Roll Mind + Cunning vs. Resist. On a success, they are briefly distracted by you.
-You can only use this Action once against any individual creature. |
+| Demoralize | Attempt to break an enemy’s spirit. Target an enemy in short range that can see and hear you. Roll Strength/Spirit + Influence vs. Resist. On a success, they are briefly frightened of you.<br/>You can only use this Action once against any individual creature. |
+| Distract | Attempt to break an enemy’s focus. Target an enemy in short range that can see and hear you. Roll Mind + Cunning vs. Resist. On a success, they are briefly distracted by you.<br/>You can only use this Action once against any individual creature. |
 | Hide | Attempt to hide from enemies that currently can‘t perceive you. Roll Agility + Cunning vs. Resist for all creatures you attempt to hide from. On a success, you are hidden from them. |
-| Shove | Attempt to push an enemy away from you. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher).
-On a success, you push them a close distance away from you. |
+| Shove | Attempt to push an enemy away from you. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher).<br/>On a success, you push them a close distance away from you. |
 | Spot | Attempt to spot any hidden or invisible enemy. They must be in your line of sight or range of hearing. Roll Spirit + Perception vs. Dodge. On a success, they are no longer hidden from you. |
 | Trip | Attempt to knock an enemy to the ground. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher). On a success, you knock them prone. |
 | Vault | Attempt to quickly cross difficult terrain. When entering difficult terrain, roll Agility + Athletics. On a success, you can move through it without spending extra Movement. On a failure, your Movement becomes 0 for the turn. |
