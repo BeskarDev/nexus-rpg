@@ -369,7 +369,7 @@ sidebar_position: 4
 ---|---|---|---|---
  1 | 2 | vs. Resist | Short | singular
 
-**Effect**<br /> You curse a creature with the magical power of death, withering their mortal body.<br/>On a success, the creature suffers the following effects:<br/>- Their maximum HP are reduced by 5.<br/>- They suffer +1 bane on Fortitude rolls.<br/>This curse lasts for a long duration. 
+**Effect**<br /> You curse a creature with the magical power of death, withering their mortal body.<br/>On a success, the creature suffers the following effects:<br/>- Their maximum HP are reduced by 5. - They can&#x27;t regain HP. <br/>- They suffer +1 bane on Fortitude rolls.<br/>This curse lasts for a long duration. 
 
 
 ### Early Grave
@@ -827,7 +827,7 @@ sidebar_position: 4
 ---|---|---|---|---
  0 | 0 | Moderate (8) | Medium | singular,  quick
 
-**Effect**<br /> Heighten the senses of a creature in range, making it more fierce in battle.<br/>Cast this spell during the target’s turn. On a success, the target gains +1 Movement and +1 boon on their next attack roll during their current turn. 
+**Effect**<br /> Heighten the senses of a creature in range, making it more fierce in battle.<br/>Cast this spell during the target’s turn. As part of casting this spell, spend 2 HP. On a success, the target gains +1 Movement and +1 boon on their next attack roll during their current turn. 
 
 
 ### Mighty Strike
@@ -836,7 +836,7 @@ sidebar_position: 4
 ---|---|---|---|---
  0 | 0 | Special | Self | -
 
-**Effect**<br /> Conjure raw spiritual strength into your weapon attack.<br/>Choose one weapon you are holding. Roll an attack with that weapon using Spirit + Mysticism. On a hit, also use your spell base damage instead of that of the weapon. 
+**Effect**<br /> Conjure raw spiritual strength into your weapon attack.<br/>Choose one weapon you are holding. Roll an attack with that weapon using Spirit + Mysticism. On a hit, also use your spell power instead of the attribute you would use for the weapon (Strength/Agility). 
 
 
 ### Spectral Slash
