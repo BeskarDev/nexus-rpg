@@ -35,7 +35,7 @@ export default function Home() {
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
         </div>         
-        <h2 style={{ marginTop: '3rem', padding: '1rem', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '8px', color: 'white' }}>Chapters</h2>
+        <h2 style={{ marginTop: '3rem', padding: '1rem', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '8px', color: 'white', maxWidth: '1400px', marginInline: 'auto' }}>Chapters</h2>
         <main style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', maxWidth: '1400px', marginInline: 'auto' }}>
           {items.map((item, index) => <Card key={index} {...item} />)}
         </main>
