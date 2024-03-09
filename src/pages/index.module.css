@@ -24,7 +24,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   color: white;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-inline: auto;
   text-align: left;
 }
@@ -39,4 +39,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card {
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  background-color: var(--ifm-navbar-background-color);
+  transition: 0.3s;
+  cursor: pointer;
+  text-align: center;
+  min-width: 5rem;
+  width: 20rem;
+  flex-grow: 1;
+}
+
+.card:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.card h2 {
+  color: var(--ifm-navbar-link-color);
+  margin: 0;
+}
+
+.card:hover h2 {
+  color: var(--ifm-navbar-link-hover-color);
+  text-decoration: none;
+}
+
+.card:active {
+  transform: scale(0.9);
 }
