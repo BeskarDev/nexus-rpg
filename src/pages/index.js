@@ -8,10 +8,8 @@ import styles from './index.module.css';
 
 function Card({ label, href }) {
   return (
-    <a href={href} style={{textDecoration: 'none'}}>
-      <div className={clsx(styles.card)}>
-        <h2>{label}</h2>
-      </div>
+    <a href={href} className={clsx(styles.card)}>
+      <h2>{label}</h2>
     </a>
   );
 }

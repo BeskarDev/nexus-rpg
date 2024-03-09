@@ -41,7 +41,7 @@
   justify-content: center;
 }
 
-.card {
+a.card {
   padding: 1.5rem 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -52,22 +52,24 @@
   min-width: 5rem;
   width: 20rem;
   flex-grow: 1;
+  text-decoration: none;
 }
 
-.card:hover {
+a.card:hover {
   background: var(--ifm-color-emphasis-200);
 }
 
-.card h2 {
+a.card h2 {
   color: var(--ifm-navbar-link-color);
   margin: 0;
+  text-decoration: none;
 }
 
-.card:hover h2 {
+a.card:hover h2 {
   color: var(--ifm-navbar-link-hover-color);
   text-decoration: none;
 }
 
-.card:active {
+a.card:active {
   transform: scale(0.9);
 }
