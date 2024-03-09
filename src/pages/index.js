@@ -36,7 +36,7 @@ export default function Home() {
           <p className="hero__subtitle">{siteConfig.tagline}</p>
         </div>         
         <h2 style={{ marginTop: '3rem', padding: '1rem', backgroundColor: 'rgba(0,0,0,0.5)', borderRadius: '8px', color: 'white' }}>Chapters</h2>
-        <main style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+        <main style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', maxWidth: '1400px', marginInline: 'auto' }}>
           {items.map((item, index) => <Card key={index} {...item} />)}
         </main>
         <div className={clsx(styles.contentContainer)}>
