@@ -8,9 +8,11 @@ import styles from './index.module.css';
 
 function Card({ label, href }) {
   return (
-    <div className={clsx(styles.card)} onClick={() => window.location.href = href}>
-      <h2>{label}</h2>
-    </div>
+    <a href={href}>
+      <div className={clsx(styles.card)}>
+        <h2>{label}</h2>
+      </div>
+    </a>
   );
 }
 
