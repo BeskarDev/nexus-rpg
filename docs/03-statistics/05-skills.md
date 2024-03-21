@@ -20,15 +20,15 @@ All skills are grouped by their type of usage.
 
 **Basic Skills**
 
-General skills every person can attempt, even without training for it.
+General skills every person uses to some degree during their day to day activities. 
 
 **Expert Skills**
 
-Special skills of knowledge or craftsmanship. Without training for them, you have little hope of succeeding at related tasks.
+Special skills of knowledge or craftsmanship.
 
 **Combat Skills**
 
-Skills for fighting with weapons up close and afar. Handling a weapon without training is a bad idea.
+Skills for fighting with weapons up close and afar.
 
 **Magic Skills**
 

@@ -29,7 +29,7 @@ When creating a new adventurer, follow the steps below:
     - Starting Items:
         - A backpack (holds up to 10 load, 1 load, 10 coins)
         - Two pouches (each holds up to 2 load, 0 load, 1 coin)
-        - Traveler‘s Clothes (0 load, 10 coin)
+        - Traveler‘s Clothes (0 load, 50 coins)
         - Hemp Rope (covers a medium distance, 1 load, 10 coins)
         - Camping kit (provides shelter for a night‘s rest for up to two people, 1 load, 50 coins)
         - One additional tool of your choice

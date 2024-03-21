@@ -76,7 +76,7 @@ For example, when starting a new adventuring campaign at the default start, you 
 
 | Adventuring Tier | Tier 1 (fresh) | Tier 2 (capable) | Tier 3 (experienced) | Tier 4 (seasoned) | Tier 5 (heroic) | Tier 6 (legendary)  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Total XP Spend On Skills | ≥ 0 XP | ≥ 12 XP | ≥ 24 XP | ≥ 36 XP | ≥ 48 XP | ≥ 60 XP |
+| Total XP spend | ≥ 0 XP | ≥ 12 XP | ≥ 24 XP | ≥ 36 XP | ≥ 48 XP | ≥ 60 XP |
 | Max. XP per Skill | 4 XP each (Rank 1) | 8 XP each (Rank 2)  | 12 XP each (Rank 3) | 16 XP each (Rank 3) | 20 XP each (Rank 4) | 30 XP each (Rank 5) |
 | Max. Attribute Dice | d8 | d10 | d10 | d12 | d12 | d12 |
 
