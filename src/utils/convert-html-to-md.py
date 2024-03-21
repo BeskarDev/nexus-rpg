@@ -46,6 +46,9 @@ def html_table_to_dataframe(html_file):
       cell_text = TAG_RE.sub('', cell_text)
       cell_text = cell_text.replace('(<br/>', '(')
       cell_text = cell_text.replace('(Rank 1)', '**(Rank 1)**').replace('(Rank 2)', '**(Rank 2)**').replace('(Rank 3)', '**(Rank 3)**')
+      cell_text = cell_text.replace('Weak.<br/>', 'Weak.').replace('Strong.<br/>', 'Strong.').replace('Critical.<br/>', 'Critical.')
+      cell_text = cell_text.replace('<br/><br/>Weak.', '<br/>**Weak.**').replace('<br/><br/>Strong.', '<br/>**Strong.**').replace('<br/><br/>Critical.', '<br/>**Critical.**')
+      cell_text = cell_text.replace('<br/>Weak.', '<br/>**Weak.**').replace('<br/>Strong.', '<br/>**Strong.**').replace('<br/>Critical.', '<br/>**Critical.**')
       cell_text = cell_text.replace('Battle Stance', '**Battle Stance**')
       cell_text = cell_text.replace('<br/><br/><br/><br/><br/>', '<br/><br/>')
       cell_text = cell_text.replace('<br/><br/><br/><br/>', '<br/><br/>')
@@ -64,24 +67,42 @@ def html_table_to_dataframe(html_file):
   return df
 
 
-def df_to_markdown_github(df, output_file):
+def df_to_markdown(df, filename):
   """
-  This function converts a Pandas DataFrame to a markdown file with Github flavored table formatting.
+  This function takes a pandas dataframe and saves it as a markdown file.
 
   Args:
-      df (pandas.DataFrame): The DataFrame to convert.
-      output_file (str): Path to the output markdown file.
+      df (pandas.DataFrame): The dataframe to be converted.
+      filename (str): The name of the output markdown file.
   """
-  # Convert DataFrame to markdown string with Github flavored tables
-  md_table = df.to_markdown(index=False, tablefmt='github')
+  df = df.dropna()
 
-  # Write the markdown string to the output file
-  with open(output_file, 'w') as f:
-    f.write(md_table)
+  # Reorder columns with 'Name' as the first column
+  df = df[['Name'] + list(df.drop('Name', axis=1))]
+
+  # Wrap 'Name' column values in bold markdown syntax
+  df['Name'] = df['Name'].map('**{}**'.format)
+
+  # Create markdown table header with separators for all columns
+  column_separators = ["---"] * len(df.columns)
+  markdown_table = "{}".format(" | ".join(df.columns)) + "\n"
+  markdown_table += "{}\n".format(" | ".join(column_separators))
+
+  # Iterate through each row in the dataframe and add it to the markdown table
+  for index, row in df.iterrows():
+    formatted_row = ["{}"] * len(df.columns)
+    for i, value in enumerate(row.values):
+      formatted_row[i] = str(value)  # Ensure all values are strings for consistent formatting
+    markdown_table += "{}\n".format(" | ".join(formatted_row))
+
+  # Save the markdown table to a file
+  with open(filename, 'w') as f:
+    f.write(markdown_table)
+
 
 # Example usage
 df = html_table_to_dataframe("input.html")
-df_to_markdown_github(df, "output.md")
+df_to_markdown(df, "output.md")
 
 # Print confirmation message
 print("Successfully converted HTML table to markdown file with Github formatting!")
