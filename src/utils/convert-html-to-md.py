@@ -1,6 +1,20 @@
+import os
+import argparse
 import pandas as pd
 from bs4 import BeautifulSoup
 import re
+
+def fix_multiple_tags(text):
+    """Fixes multiple occurrences of HTML tags in a string."""
+
+    pattern = r"(<(?:strong|em)>)\1+"  # Handle multiple opening tags
+    text = re.sub(pattern, r"\1", text)
+
+    pattern = r"(</(?:strong|em)>)\1+"  # Handle multiple closing tags
+    text = re.sub(pattern, r"\1", text)
+
+    return text
+
 
 def html_table_to_dataframe(html_file):
   """
@@ -39,21 +53,41 @@ def html_table_to_dataframe(html_file):
   # Extract data from each table row (skip the header row if it exists)
   for row in table.find_all('tr'):
     row_data = []
-    for cell in row.find_all('td'):
-      # Convert strong elements to markdown format
+    for cell_index, cell in enumerate(row.find_all('td')):
       cell_text = str(cell)
-      TAG_RE = re.compile(r'<(?!br\s*\/?)[^>]+>')
-      cell_text = TAG_RE.sub('', cell_text)
-      cell_text = cell_text.replace('(<br/>', '(')
-      cell_text = cell_text.replace('(Rank 1)', '**(Rank 1)**').replace('(Rank 2)', '**(Rank 2)**').replace('(Rank 3)', '**(Rank 3)**')
-      cell_text = cell_text.replace('Weak.<br/>', 'Weak.').replace('Strong.<br/>', 'Strong.').replace('Critical.<br/>', 'Critical.')
-      cell_text = cell_text.replace('<br/><br/>Weak.', '<br/>**Weak.**').replace('<br/><br/>Strong.', '<br/>**Strong.**').replace('<br/><br/>Critical.', '<br/>**Critical.**')
-      cell_text = cell_text.replace('<br/>Weak.', '<br/>**Weak.**').replace('<br/>Strong.', '<br/>**Strong.**').replace('<br/>Critical.', '<br/>**Critical.**')
-      cell_text = cell_text.replace('Battle Stance', '**Battle Stance**')
-      cell_text = cell_text.replace('<br/><br/><br/><br/><br/>', '<br/><br/>')
-      cell_text = cell_text.replace('<br/><br/><br/><br/>', '<br/><br/>')
-      cell_text = cell_text.replace('<br/><br/><br/>', '<br/><br/>')
+          
+      # Check if cell belongs to "Properties" column
+      if headers and headers[cell_index] == "Properties":
+          # Combine text from all span elements within the cell
+          properties = [str(span.text.strip()) for span in cell.find_all('span')]
+          properties.sort()
+          cell_text = ", ".join(properties)
+      else:
+          # Remove tags for other cells
+          TAG_RE =re.compile(r'<(?!(br\s*\/?|strong|\/strong|em|\/em))[^>]+>')
+          cell_text = TAG_RE.sub('', cell_text)
+          cell_text = re.sub(r'\xa0', ' ', cell_text)
+          
+          # Fix too many tags / order of tags
+          cell_text = fix_multiple_tags(cell_text)
+          cell_text = cell_text.replace('(<br/>', '(')
+          cell_text = cell_text.replace('<strong><br/><br/></strong>', '')
+          cell_text = cell_text.replace('<strong><br/>', '<br/><strong>')
+          cell_text = cell_text.replace('<br/></strong>', '</strong>')
+          cell_text = cell_text.replace('<em><br/><br/></em>', '')
+          cell_text = cell_text.replace('<br/><br/><br/><br/><br/>', '<br/><br/>')
+          cell_text = cell_text.replace('<br/><br/><br/><br/>', '<br/><br/>')
+          cell_text = cell_text.replace('<br/><br/><br/>', '<br/><br/>')
+          
+          # Fix formatting
+          cell_text = cell_text.replace('<br/><br/><strong>Weak.', '<br/><strong>Weak.').replace('<br/><br/><strong>Strong.', '<br/><strong>Strong.').replace('<br/><br/><strong>Critical.', '<br/><strong>Critical.')
+          cell_text = cell_text.replace('<br/> <br/><br/>', '<br/><br/>')
+          cell_text = cell_text.replace('<br/><br/><strong><br/>', '<br/><br/><strong>')
+          cell_text = cell_text.replace('- <br/>', '- ')
+          cell_text = cell_text.replace('<br/><strong>- </strong>', '- ')
+          
       row_data.append(cell_text)
+          
     data.append(row_data)
 
   # Create the DataFrame from the data with the extracted headers (or handle missing headers)
@@ -100,9 +134,34 @@ def df_to_markdown(df, filename):
     f.write(markdown_table)
 
 
-# Example usage
-df = html_table_to_dataframe("input.html")
-df_to_markdown(df, "output.md")
+if __name__ == "__main__":
+  parser = argparse.ArgumentParser(description="Convert HTML to Markdown")
+  parser.add_argument("input_files", nargs="+", help="Paths to the input HTML files (including the 'input' subdirectory)")
+  args = parser.parse_args()
 
-# Print confirmation message
-print("Successfully converted HTML table to markdown file with Github formatting!")
+  for input_file in args.input_files:
+    # Check if file exists with full path
+    if not os.path.isfile(input_file):
+      print(f"Error: File '{input_file}' does not exist.")
+      continue  # Skip to the next file if this one doesn't exist
+    
+    # Convert file to DataFrame
+    df = html_table_to_dataframe(input_file)
+    
+    # Get filename without the "input" subdirectory
+    filename = os.path.basename(input_file)
+    # Remove extension
+    filename, extension = os.path.splitext(filename)
+
+    # Create output directory if it doesn't exist
+    output_dir = os.path.join(os.getcwd(), "output")
+    if not os.path.exists(output_dir):
+      os.makedirs(output_dir)
+      
+    # Create output filename with markdown extension
+    output_file = os.path.join(output_dir, filename + ".md")
+      
+    df_to_markdown(df, output_file)
+
+    # Print confirmation message
+    print(f"Successfully converted {filename}!")
