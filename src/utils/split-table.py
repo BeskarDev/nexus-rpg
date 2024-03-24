@@ -50,7 +50,7 @@ def split_table_md(input_file, split_column):
   df.columns = df.columns.str.strip()
 
   # Split groups by the split column
-  split_groups = df.groupby(split_column)
+  split_groups = df.groupby(split_column, sort=False)
 
   # Generate the content for the output markdown file
   output_content = ""
