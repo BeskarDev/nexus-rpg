@@ -655,7 +655,7 @@
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Short | blast (cone)
 
-**Effect**<br /> You send shockwaves through the earth, causing the ground to tremble violently. Target‘s all creatures in the spell’s area.<br/><strong>Weak. </strong>Deal +2 damage to each target.<br/><strong>Strong. </strong>Deal +4 damage to each target and they are briefly faltering.<br/><strong>Critical. </strong>Deal +6 damage to each target and they are briefly faltering.
+**Effect**<br /> You send shockwaves through the earth, causing the ground to tremble violently. Target‘s all creatures in the spell’s area.<br/><strong>Weak. </strong>Deal +2 damage to each target.<br/><strong>Strong. </strong>Deal +4 damage to each target and they are briefly staggered.<br/><strong>Critical. </strong>Deal +6 damage to each target and they are briefly staggered.
 
 
 ### Electrified Weapon
@@ -664,7 +664,7 @@
 ---|---|---|---|---
  1 | 2 | Moderate (8) | Touch | enchant (weapon),  singular
 
-**Effect**<br /> Imbue a weapon with the power of storms.<br/>On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the attack‘s target is briefly faltering. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration.<br/>
+**Effect**<br /> Imbue a weapon with the power of storms.<br/>On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the attack‘s target is briefly staggered. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration.<br/>
 
 
 ### Lightning Javelin
@@ -673,7 +673,7 @@
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Medium | -
 
-**Effect**<br /> You conjure pure lightning in the form of a spear and hurl it against a creature.<br/><strong>Weak.</strong><em> </em>Deal +4 lightning damage. <br/><strong>Strong.</strong> Deal +8 lightning damage and the target is briefly faltering.<br/><strong>Critical.</strong> Deal +12 lightning damage and the target is briefly faltering.
+**Effect**<br /> You conjure pure lightning in the form of a spear and hurl it against a creature.<br/><strong>Weak.</strong><em> </em>Deal +4 lightning damage. <br/><strong>Strong.</strong> Deal +8 lightning damage and the target is briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage and the target is briefly staggered.
 
 
 ### Storm Coat
@@ -727,7 +727,7 @@
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Medium | blast (line)
 
-**Effect**<br /> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly faltering.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly faltering.
+**Effect**<br /> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly staggered.
 
 
 ### Thunder Cloud

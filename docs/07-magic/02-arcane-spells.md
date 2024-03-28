@@ -93,7 +93,7 @@ sidebar_position: 2
 ---|---|---|---|---
  1 | 2 | Moderate (8) | Self | enchant (weapon),  singular
 
-**Effect**<br /> Enchant your weapon with magical frost.<br/>On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the target is briefly faltering. You can make a weapon attack as part of casting this spell.<br/>This spell lasts for a medium duration.<br/>
+**Effect**<br /> Enchant your weapon with magical frost.<br/>On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the target is briefly staggered. You can make a weapon attack as part of casting this spell.<br/>This spell lasts for a medium duration.<br/>
 
 
 ### Scorching Beams
@@ -138,7 +138,7 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Medium | blast (line)
 
-**Effect**<br /> You summon a powerful strike of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly faltering.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly faltering.
+**Effect**<br /> You summon a powerful strike of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly staggered.
 
 
 ### Black Flame Bolt
