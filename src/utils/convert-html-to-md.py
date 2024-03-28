@@ -111,11 +111,12 @@ def df_to_markdown(df, filename):
   """
   df = df.dropna()
 
-  # Reorder columns with 'Name' as the first column
-  df = df[['Name'] + list(df.drop('Name', axis=1))]
+  if 'Name' in df.columns:
+    # Reorder columns with 'Name' as the first column
+    df = df[['Name'] + list(df.drop('Name', axis=1))]
 
-  # Wrap 'Name' column values in bold markdown syntax
-  df['Name'] = df['Name'].map('**{}**'.format)
+    # Wrap 'Name' column values in bold markdown syntax
+    df['Name'] = df['Name'].map('**{}**'.format)
 
   # Create markdown table header with separators for all columns
   column_separators = ["---"] * len(df.columns)
