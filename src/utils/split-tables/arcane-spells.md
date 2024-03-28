@@ -1,9 +1,3 @@
----
-sidebar_position: 2
----
-
-# 🔆 Arcane Spells
-
 ## Evocation
 
 ### Flickering Flame
@@ -680,4 +674,5 @@ sidebar_position: 2
  2 | 4 | vs. Resist | Medium | concentrate
 
 **Effect**<br /> You summon a shroud of necrotic energy, inflicting fear on any creature within it. The shroud extends in a close area around the target location and targets all living creatures within it.<br/><strong>Weak.</strong> Deal +3 necrotic damage to each target.<br/><strong>Strong.</strong> Deal +6 necrotic damage to each target and they are briefly frightened by the shroud.<br/><strong>Critical.</strong> Deal +9 necrotic damage to each target and they are briefly frightened by the shroud.<br/>Any living creature attempting to enter the shroud for the first time on their turns has to roll Spirit + Fortitude vs. your Resist. On a failure, they take +6 necrotic damage and are overwhelmed by intense fear are briefly frightened by the shroud, and instantly have to roll their Fear check.<br/>The shroud lasts for a short duration. It can also be expelled early by any effect causing strong winds in the same area of influence.<br/>
+
 

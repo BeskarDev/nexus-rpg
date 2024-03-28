@@ -1,18 +1,3 @@
----
-sidebar_position: 4
----
-
-# 🛡️ Armor
-
-Armor grants it‘s wearer protection in exchange for decreased mobility.
-
-## Gaining AV from multiple sources
-
-By equipping many different types of protective items, as well as other abilities and effects, you gain a cumulative amount of AV from all those sources.
-
-You can only ever gain AV from one armor, one shield, and one helmet at a time, in addition to other effects which don‘t specify one of those three sources of AV. Other abilities might also grant AV in place for armor, a shield, or a helmet. For example, when an ability mentions „gain +X AV as armor“ you can only add that AV bonus in place of other armor you would wear.
-
-## Armor & Helmets
 
 ### Light Armor 
 Name | Quality | AV | Properties | Load | Cost

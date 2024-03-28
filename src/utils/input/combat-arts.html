@@ -1,0 +1,676 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Combat Arts</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="6b948039-5553-4b00-a37e-e6c6b34338fb" class="page sans"><header><h1 class="page-title">Combat Arts</h1><p class="page-description"></p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesMultipleSelect"><path d="M1.91602 4.83789C2.44238 4.83789 2.87305 4.40723 2.87305 3.87402C2.87305 3.34766 2.44238 2.91699 1.91602 2.91699C1.38281 2.91699 0.952148 3.34766 0.952148 3.87402C0.952148 4.40723 1.38281 4.83789 1.91602 4.83789ZM5.1084 4.52344H14.3984C14.7607 4.52344 15.0479 4.23633 15.0479 3.87402C15.0479 3.51172 14.7607 3.22461 14.3984 3.22461H5.1084C4.74609 3.22461 4.45898 3.51172 4.45898 3.87402C4.45898 4.23633 4.74609 4.52344 5.1084 4.52344ZM1.91602 9.03516C2.44238 9.03516 2.87305 8.60449 2.87305 8.07129C2.87305 7.54492 2.44238 7.11426 1.91602 7.11426C1.38281 7.11426 0.952148 7.54492 0.952148 8.07129C0.952148 8.60449 1.38281 9.03516 1.91602 9.03516ZM5.1084 8.7207H14.3984C14.7607 8.7207 15.0479 8.43359 15.0479 8.07129C15.0479 7.70898 14.7607 7.42188 14.3984 7.42188H5.1084C4.74609 7.42188 4.45898 7.70898 4.45898 8.07129C4.45898 8.43359 4.74609 8.7207 5.1084 8.7207ZM1.91602 13.2324C2.44238 13.2324 2.87305 12.8018 2.87305 12.2686C2.87305 11.7422 2.44238 11.3115 1.91602 11.3115C1.38281 11.3115 0.952148 11.7422 0.952148 12.2686C0.952148 12.8018 1.38281 13.2324 1.91602 13.2324ZM5.1084 12.918H14.3984C14.7607 12.918 15.0479 12.6309 15.0479 12.2686C15.0479 11.9062 14.7607 11.6191 14.3984 11.6191H5.1084C4.74609 11.6191 4.45898 11.9062 4.45898 12.2686C4.45898 12.6309 4.74609 12.918 5.1084 12.918Z"></path></svg></span>Weapons</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesText"><path d="M1.56738 3.25879H14.4258C14.7676 3.25879 15.0479 2.97852 15.0479 2.63672C15.0479 2.29492 14.7744 2.02148 14.4258 2.02148H1.56738C1.21875 2.02148 0.952148 2.29492 0.952148 2.63672C0.952148 2.97852 1.22559 3.25879 1.56738 3.25879ZM1.56738 6.84082H14.4258C14.7676 6.84082 15.0479 6.56055 15.0479 6.21875C15.0479 5.87695 14.7744 5.60352 14.4258 5.60352H1.56738C1.21875 5.60352 0.952148 5.87695 0.952148 6.21875C0.952148 6.56055 1.22559 6.84082 1.56738 6.84082ZM1.56738 10.4229H14.4258C14.7676 10.4229 15.0479 10.1426 15.0479 9.80078C15.0479 9.45898 14.7744 9.18555 14.4258 9.18555H1.56738C1.21875 9.18555 0.952148 9.45898 0.952148 9.80078C0.952148 10.1426 1.22559 10.4229 1.56738 10.4229ZM1.56738 14.0049H8.75879C9.10059 14.0049 9.38086 13.7246 9.38086 13.3828C9.38086 13.041 9.10742 12.7676 8.75879 12.7676H1.56738C1.21875 12.7676 0.952148 13.041 0.952148 13.3828C0.952148 13.7246 1.22559 14.0049 1.56738 14.0049Z"></path></svg></span>Effect</th></tr></thead><tbody><tr id="a648626e-52ea-4401-b20f-f906ddb702c4"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-pink">Crossbow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Aimed-Shot-a648626e52ea4401b20ff906ddb702c4?pvs=21">Aimed Shot</a></td><td class="cell-Icr|">If you don’t move during your turn, you gain +1 boon on the attack. </td></tr><tr id="dd16edcf-befc-499e-9f19-f110007f93db"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Barrage-dd16edcfbefc499e9f19f110007f93db?pvs=21">Barrage</a></td><td class="cell-Icr|">You can roll another attack with a non-heavy ranged weapon, but suffer +1 bane on it.</td></tr><tr id="0dc0e339-18f7-4d6b-9db3-364c07e5a4e3"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Brutal-Strike-0dc0e33918f74d6b9db3364c07e5a4e3?pvs=21">Brutal Strike</a></td><td class="cell-Icr|">You suffer +1 bane on the attack with a heavy melee weapon.<br/><br/><strong>Weak.</strong> + 1/4 x Strength to damage.<br/><br/><strong>Strong. </strong>+ 1/2 x Strength to damage.<br/><br/><strong>Critical.</strong> + Strength to damage.</td></tr><tr id="b9914f04-f5a4-4e92-ab3e-6af3356e497f"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span><span class="selected-value select-value-color-orange">Shield</span></td><td class="cell-title"><a href="https://www.notion.so/Charge-b9914f04f5a44e92ab3e6af3356e497f?pvs=21">Charge</a></td><td class="cell-Icr|">You can only target a creature in short distance or further away from you with this melee attack. You can spend 1 Movement for free towards your target before the attack. This attack also counts as a Shove Action.<br/><br/><strong>Weak.</strong> +2 damage. <br/><br/><strong>Strong. </strong>+3 damage. The target is pushed close.<br/><br/><strong>Critical.</strong> +4 damage. The target is pushed close and knocked prone. You may follow your target to where they are pushed without spending Movement.</td></tr><tr id="fe6fc4a4-badf-492d-86bf-10603e36df64"><td class="cell-aTqT"><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Choking-Grip-fe6fc4a4badf492d86bf10603e36df64?pvs=21">Choking Grip</a></td><td class="cell-Icr|">You can use this Combat Art when attempting to grapple a target with an attack. If the target wears a helmet, you suffer +1 bane on the attack. <br/><br/><strong>Weak.</strong> +2 damage.<br/><br/><strong>Strong.</strong> +3 damage. The target is also restrained while grappled by your weapon.<br/><br/><strong>Critical. </strong>+4 damage. The target is also briefly dazed and restrained while grappled by your weapon.</td></tr><tr id="9be62adb-80c4-4a34-93c6-e6f2e07e7406"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Cleave-9be62adb80c44a3493c6e6f2e07e7406?pvs=21">Cleave</a></td><td class="cell-Icr|">Your attack with a two-handed melee weapon hits up to 2 additional creatures in your weapon&#x27;s reach. On a hit, subtract your weapon damage once from the total damage you deal against each target.</td></tr><tr id="2a405456-c881-47d5-8766-e28f01e8fe1f"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Deep-Cut-2a405456c88147d58766e28f01e8fe1f?pvs=21">Deep Cut</a></td><td class="cell-Icr|">On a hit with a slash melee weapon against a target in light or no armor, inflict bleeding equal to your weapon damage for a short duration.<br/><br/><strong>Strong.</strong> Rolls to end the bleeding condition early are hard.<br/><br/><strong>Critical.</strong> Rolls to end the bleeding condition early are very hard.</td></tr><tr id="21d51f2d-c072-4e69-a4cc-c50c8f979f96"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span><span class="selected-value select-value-color-orange">Shield</span></td><td class="cell-title"><a href="https://www.notion.so/Defensive-Strike-21d51f2dc0724e69a4ccc50c8f979f96?pvs=21">Defensive Strike</a></td><td class="cell-Icr|">On a hit with a melee weapon, you gain the effects of the Defend Action.</td></tr><tr id="dc5b9336-a6cf-4bea-b4f1-c6626bdc2e17"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-pink">Crossbow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Disabling-Shot-dc5b9336a6cf4beab4f1c6626bdc2e17?pvs=21">Disabling Shot</a></td><td class="cell-Icr|">On a hit with a crush or heavy ranged weapon, the target must roll Strength + Fortitude. If they wear heavy armor or a helmet, they gain +1 boon on the roll (or +2 boons when wearing both).<br/><br/><strong>Weak.</strong> If they fail, they are briefly dazed.<br/><br/><strong>Strong.</strong> If they succeed, they are briefly dazed. If they fail, they are briefly stunned instead.<br/><br/><strong>Critical. </strong>Same as a strong success, but the target’s roll is hard.</td></tr><tr id="201c1df1-ac86-4a16-8932-4a87444b7855"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Disarm-201c1df1ac864a1689324a87444b7855?pvs=21">Disarm</a></td><td class="cell-Icr|">Immediately after this attack, use the Disarm action against the same target.</td></tr><tr id="b8d0cd0e-8940-4a05-a86f-aee8641466eb"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-pink">Crossbow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Disarming-Shot-b8d0cd0e89404a05a86faee8641466eb?pvs=21">Disarming Shot</a></td><td class="cell-Icr|">Immediately after this attack, use the Disarm action against the same target. You can only choose a one-handed item the target holds, that isn’t a shield. Roll Strength/Agility + Archery for the disarm instead. For a non-light item, you suffer +1 bane on your roll.</td></tr><tr id="a9e874e0-2773-4def-b47f-3926b45f4318"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Divert-Attention-a9e874e027734defb47f3926b45f4318?pvs=21">Divert Attention</a></td><td class="cell-Icr|">This melee attack also counts as a Distract Action.<br/><br/><strong>Weak.</strong> The target is briefly distracted by you.<br/><br/><strong>Strong.</strong> The target is distracted by you for a short duration. They can re-roll their Spirit + Insight test at the end of each of their turns to end the effect early.<br/><br/><strong>Critical.</strong> Same as a strong success, but the target‘s roll is hard.</td></tr><tr id="dd58c5dc-9a10-49ff-9b31-dc002ac2ecab"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Evasive-Strike-dd58c5dc9a1049ff9b31dc002ac2ecab?pvs=21">Evasive Strike</a></td><td class="cell-Icr|">On a hit with a melee weapon, you gain the effects of the Retreat Action.</td></tr><tr id="acf21459-f9ea-4afd-a3dd-e462d21fb488"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Exhilarating-Strike-acf21459f9ea4afda3dde462d21fb488?pvs=21">Exhilarating Strike</a></td><td class="cell-Icr|"><strong>Weak.</strong> You and all allies close to you regain 1/2 x your Spirit as HP.<br/><br/><strong>Strong.</strong> Same as a weak success, but they also gain +1 boon on the one roll on their next turns (their choice).<br/><br/><strong>Critical. </strong>Same as a strong success, but they also deal +2 damage with one attack on their next turn.</td></tr><tr id="32c54211-c8a8-41ea-b1e1-f852c471d2b0"><td class="cell-aTqT"><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Feint-32c54211c8a841eab1e1f852c471d2b0?pvs=21">Feint</a></td><td class="cell-Icr|">If you don’t move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon.</td></tr><tr id="782bbed4-ce0f-4bdb-a900-a9fa4dd41459"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Felling-Strike-782bbed4ce0f4bdba900a9fa4dd41459?pvs=21">Felling Strike</a></td><td class="cell-Icr|">This melee attack also counts as a Trip Action.<br/><br/><strong>Weak.</strong> The target falls prone.<br/><br/><strong>Strong.</strong> The target falls prone and their Movement briefly becomes 0.<br/><br/><strong>Critical.</strong> The target falls prone, their Movement briefly becomes 0, and they are briefly dazed.</td></tr><tr id="498608bd-64c9-41cd-b058-cc1566cf0cd2"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Flurry-498608bd64c941cdb058cc1566cf0cd2?pvs=21">Flurry</a></td><td class="cell-Icr|">You can roll another attack with a non-heavy melee weapon, but suffer +1 bane on it.</td></tr><tr id="bc63c825-e462-4993-8f92-1253e8143121"><td class="cell-aTqT"><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-orange">Shield</span></td><td class="cell-title"><a href="https://www.notion.so/Head-Smack-bc63c825e46249938f921253e8143121?pvs=21">Head Smack</a></td><td class="cell-Icr|">On a hit with a crush melee weapon or shield, the target must roll Strength + Fortitude. If they wear a helmet, they gain +1 boon on the roll.<br/><br/><strong>Weak.</strong> If they fail, they are briefly confused. <br/><br/><strong>Strong.</strong> If they succeed, they are briefly confused. If they fail, they are confused for a short duration instead. They can re-roll their Mind + Fortitude test at the end of each of their turns to end the effect early.<br/><br/><strong>Critical. </strong>Same as a strong success, but the target’s roll is hard. </td></tr><tr id="a3c9a76f-507c-4d6a-8281-9336a07913bb"><td class="cell-aTqT"><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-orange">Shield</span></td><td class="cell-title"><a href="https://www.notion.so/Knockout-a3c9a76f507c4d6a82819336a07913bb?pvs=21">Knockout</a></td><td class="cell-Icr|">On a hit with a crush melee weapon or shield, the target must roll Strength + Fortitude. If they wear heavy armor or a helmet, they gain +1 boon on the roll (or +2 boons when wearing both).<br/><br/><strong>Weak.</strong> If they fail, they are briefly dazed.<br/><br/><strong>Strong.</strong> If they succeed, they are briefly dazed. If they fail, they are briefly stunned instead.<br/><br/><strong>Critical. </strong>Same as a strong success, but the target’s roll is hard. </td></tr><tr id="6100855a-3d5e-430e-81c2-8ac3f55be4c1"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-pink">Crossbow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Pinning-Shot-6100855a3d5e430e81c28ac3f55be4c1?pvs=21">Pinning Shot</a></td><td class="cell-Icr|"><strong>Weak.</strong> The target’s Movement briefly becomes 0.<br/><br/><strong>Strong.</strong> The target is briefly restrained.<br/><br/><strong>Critical.</strong> The target is restrained for a short duration. They can roll Strength + Athletics at the end of their turns to regain their Movement.</td></tr><tr id="c0fee650-f69a-45c8-9332-3a6f1d764fae"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-pink">Crossbow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Power-Shot-c0fee650f69a45c893323a6f1d764fae?pvs=21">Power Shot</a></td><td class="cell-Icr|">You suffer +1 bane on the attack with a ranged weapon.<br/><br/><strong>Weak.</strong> + 1/4 x Strength to damage.<br/><br/><strong>Strong. </strong>+ 1/2 x Strength to damage.<br/><br/><strong>Critical.</strong> + Strength to damage.</td></tr><tr id="c05aa56a-70d6-49a2-ac25-8aa9fb9a33bf"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-pink">Crossbow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Precise-Shot-c05aa56a70d649a2ac258aa9fb9a33bf?pvs=21">Precise Shot</a></td><td class="cell-Icr|">You suffer +1 bane on the attack with a ranged weapon.<br/><br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage.</td></tr><tr id="60201065-9a97-4cb3-a335-f3c7c38adb8e"><td class="cell-aTqT"><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Precise-Strike-602010659a974cb3a335f3c7c38adb8e?pvs=21">Precise Strike</a></td><td class="cell-Icr|">You suffer +1 bane on the attack with a pierce melee weapon.<br/><br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage.</td></tr><tr id="9873de58-0ae4-448d-9c6a-61a7a64f17e2"><td class="cell-aTqT"><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Quick-Lunge-9873de580ae4448d9c6a61a7a64f17e2?pvs=21">Quick Lunge</a></td><td class="cell-Icr|">Your attack with a pierce melee weapon targets the enemy’s Dodge instead of Parry. They can’t use a Quick Action in response to this attack.</td></tr><tr id="4ba241c5-2655-49c6-a87e-15b485bd2ae1"><td class="cell-aTqT"><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-orange">Shield</span></td><td class="cell-title"><a href="https://www.notion.so/Ram-Down-4ba241c5265549c6a87e15b485bd2ae1?pvs=21">Ram Down</a></td><td class="cell-Icr|">This melee attack also counts as a Shove Action.<br/><br/><strong>Weak.</strong> The target is pushed close.<br/><br/><strong>Strong.</strong> The target is pushed close and falls prone.<br/><br/><strong>Critical.</strong> The target is pushed close, falls prone, and is briefly dazed.<br/>You may follow your target to where they are pushed without spending Movement.<br/></td></tr><tr id="8ebb2c41-dc62-4844-9402-ace319de9f71"><td class="cell-aTqT"><span class="selected-value select-value-color-yellow">Brawl</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Snare-8ebb2c41dc6248449402ace319de9f71?pvs=21">Snare</a></td><td class="cell-Icr|">You can use this Combat Art when attempting to grapple a target.<br/><br/><strong>Weak.</strong> The target is also restrained while grappled by your weapon.<br/><br/><strong>Strong.</strong> Same as a weak success and the target also falls prone.<br/><br/><strong>Critical.</strong> Same as a weak success, the target also falls prone and is briefly dazed.</td></tr><tr id="f5030821-2dd1-457f-a4aa-1e0df35ec493"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-brown">Mace</span></td><td class="cell-title"><a href="https://www.notion.so/Splinter-f50308212dd1457fa4aa1e0df35ec493?pvs=21">Splinter</a></td><td class="cell-Icr|">This melee attack deals no damage to the target. Instead, choose one item the target holds that your weapon would be capable of damaging (wood or leather for axes, stone or metal for maces).<br/><br/><strong>Weak.</strong> The target rolls a Durability check for the item. On a failure, the item gets damaged.<br/><br/><strong>Strong.</strong> The target rolls the check for the item twice and must use the worst result. On a failure, the item gets damaged. If both dice would fail, the item is destroyed instead.<br/><br/><strong>Critical.</strong> The target rolls a Durability check for the item twice and must use the worst result. On a success, the item still gets damaged. On a failure, the item is destroyed instead.</td></tr><tr id="385ee87c-3c94-4dfb-a947-c16338eed4cb"><td class="cell-aTqT"><span class="selected-value select-value-color-red">Axe</span><span class="selected-value select-value-color-blue">Blade</span><span class="selected-value select-value-color-brown">Mace</span><span class="selected-value select-value-color-green">Polearm</span></td><td class="cell-title"><a href="https://www.notion.so/Terrifying-Strike-385ee87c3c944dfba947c16338eed4cb?pvs=21">Terrifying Strike</a></td><td class="cell-Icr|">This melee attack also counts as a Demoralize Action.<br/><br/><strong>Weak.</strong> The target is briefly frightened of you.<br/><br/><strong>Strong.</strong> The target is frightened of you for a short duration. They can roll Spirit + Fortitude at the end of each of their turns to end the effect early.<br/><br/><strong>Critical.</strong> Same as a strong success, but the target’s roll is hard.</td></tr><tr id="3a97b655-d946-4e4d-848a-4cac89477426"><td class="cell-aTqT"><span class="selected-value select-value-color-purple">Bow</span><span class="selected-value select-value-color-pink">Crossbow</span><span class="selected-value select-value-color-gray">Thrown</span></td><td class="cell-title"><a href="https://www.notion.so/Volley-3a97b655d9464e4d848a4cac89477426?pvs=21">Volley</a></td><td class="cell-Icr|">Your attack with a non-heavy ranged weapon hits up to 2 additional creatures in your weapon&#x27;s reach. On a hit, subtract your weapon damage once from the total damage you deal against each target.</td></tr></tbody></table><br/><br/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

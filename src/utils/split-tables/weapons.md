@@ -1,8 +1,3 @@
----
-sidebar_position: 3
----
-
-# 🗡️ Weapons
 
 ## Axe 
 Name | Quality | Damage | Properties | Load | Cost

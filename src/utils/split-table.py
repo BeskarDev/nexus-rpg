@@ -28,7 +28,7 @@ def split_table_md(input_file, split_column):
       split_column: Name of the column to split the table by.
   """
   # Get the output directory and filename based on the input path
-  output_dir = "split_tables"  # Adjust this directory if needed
+  output_dir = "split-tables"
   output_filename = os.path.splitext(os.path.basename(input_file))[0] + ".md"
   output_file = os.path.join(output_dir, output_filename)
 
@@ -55,8 +55,9 @@ def split_table_md(input_file, split_column):
   # Generate the content for the output markdown file
   output_content = ""
   for name, group_df in split_groups:
+    group_df = group_df.drop([split_column], axis=1) # delete split_column
     group_content = convert_group_md(group_df)
-    output_content += f"\n### {name}\n" + group_content + "\n"
+    output_content += f"\n## {name}\n" + group_content + "\n"
 
   # Write the content to the output file
   with open(output_file, 'w') as f:

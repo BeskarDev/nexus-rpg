@@ -4,8 +4,6 @@ sidebar_position: 2
 
 # 📜 Creature Rules
 
-# Creature Rules
-
 Creatures act in the same basic ways, as adventurers do. But some details differ:
 
 - Spell-casting creatures don’t use Focus for their spells. Instead, they are limited in their use of individual spells. They can only cast each spell once. After they have cast each spell once, they regain their single use of each spell again.
@@ -39,30 +37,37 @@ When the tide of battle turns against them, they need to roll Spirit + Fortitude
 
 **Troops**
 
-Larger numbers of the same type of basic creature can also be grouped into troops. Typically three or more creatures with the same statistics should be grouped into a troop.
+Larger numbers of the same type of basic creature can also be grouped into troops. Typically three or more creatures with the same statistics and equipment should be grouped into a troop.
 
-For this, treat the whole troop as one creature. The troop retains all of the normal statistics of the creature type. Whenever an attack’s damage is equal to or higher than the troop's HP, one of its members dies. This can also mean that a large amount of damage from a single attack can take out multiple members of the troop at once. Should the number of members be reduced below three, treat the remaining creatures as single combatants instead and immediately roll for morale for them.
+For this, treat the whole troop as one creature using the members statistics and the following rules:
 
-The troop can also be targeted by attacks and other effects that affect multiple enemies. For this, treat each affected member of the troop as a single creature but apply the total damage to the entire troop. If the effect applies conditions or other effects on only a fraction of the troop, treat them as two separate troops between those creatures affected and those that are not.
+- **HP.** Track the normal HP of one of the troop’s members and reduce it with any damage against the troop. Whenever the troop’s HP is reduced to 0, one of it’s members dies and their HP are reset to the maximum, being further reduced by any excess damage. Large amounts of damage from a single attack can also take out multiple of the troop’s members if it exceeds the troop’s HP multiple times.
+The troop is disbanded once their size is reduced to two or less.
+- **Area of Effect.** For **e**ffects that target multiple members of the troop, treat each member as a single creature. Damage applied to multiple members is added together and applied to the troop as a whole. When applying conditions or other lasting effects, split the original troop into two new troops (if enough members remain) between those affected and those that are not affected.
 
-> For example, the adventurers face a troop of five goblins. The troop has 10 HP and 2 AV, the same as a single goblin. One of the adventurers attacks the troop with a cleave attack, targeting three of it’s members. They hit and deal 13 damage to each target. The goblin troop’s 2 AV reduces this to 11 damage per target and therefore 33 damage in total against the troop itself. From this damage, three goblins in the troop die and a third loses 3 HP. Since the troop has less than three members left, the GM immediately rolls for Morale to see, if the two remaining goblins flee or continue the fight as single creatures**.**
+> **Example: Attacking a troop**
+The adventurers face a troop of five goblins. The troop has 10 HP and 2 AV, the same as a single goblin. One of the adventurers attacks the troop with a cleave attack, targeting three of it’s members. They hit and deal 13 damage to each target. The goblin troop’s 2 AV reduces this to 11 damage per target and therefore 33 damage in total against the troop itself. From this damage, three goblins in the troop die and a third loses 3 HP. Since the troop has less than three members left, the GM immediately rolls for Morale to see, if the two remaining goblins flee or continue the fight as single creatures**.**
 > 
+- **Targeting.** When choosing a target, all members of the troop choose the same target. You can split the original troop into multiple troops (if enough members remain) when you want to split the troop up for multiple targets.
+- **Troop Bonus.** This bonus is equal to half the troop size (rounded down).
+- **Rolling Tests.** Roll only once for the entire troop. If the members have ranks in the skill they roll with, add the troop bonus instead of that skill rank to the result.
+- **Dealing Damage.** Roll a single attack for the entire troop using the rules above. Troops don’t use the normal rules for dealing damage. Instead, the troop deals damage according to the SL of the roll:
+    - **Blunder.** No damage.
+    - **Failure.** (Base Damage + Weapon Damage) x Troop Bonus
+    - **Weak.** (Base Damage + Weapon Damage) x (1 + Troop Bonus)
+    - **Strong.** (Base Damage + Weapon Damage) x (2 + Troop Bonus)
+    - **Critical.** (Base Damage + Weapon Damage) x (3 + Troop Bonus)
+    
+    Any other abilities or effects that increase the damage of the troop are added only once to the total damage dealt.
+    
 
-When the troop rolls for a test which its members have ranks in the skill for, they don‘t use that skill rank, but instead add a bonus equal to half of the size of the troop (rounded up). On a successful attack, they add the same bonus multiplied by their SL to the damage.
-
-> For example, the same troop of five goblin warriors attacks with their daggers. They roll their attack with 1d8 (Agility) + 1d6 + 3 (half troop size, rounded up). On a weak hit, they deal 9 damage (4 base + 2 weapon + 3 troop). A strong hit would deal 14 damage (4 base + 2*2 weapon + 2*3 troop) and a critical hit 19 damage (4 base + 3*2 weapon + 3*3 troop).
-> 
-
-Troops always choose the same target(s) with their attacks and abilities. The troop size can also dynamically adjust for different targets. For this, choose how many creatures target each individual creature and treat the troop size accordingly for rolls that target that creature.
-
-In situations, in which a subset of members of a troop is affected by some effect, treat them as their own separated troop. For example, when an adventurer uses their Quick Action to evade one of the troop members’ attacks, the evaded member is treated separately for attacking.
-
-> In short, when grouping multiple creatures into a troop:
-- One of the troop members dies whenever they take damage equal to their HP (damage from a single attack can kill multiple troop members)
-- Apply damage to multiple troop members against the whole troop
-- Disband the troop, once their numbers are reduced below three
-- Roll for trained skills with half of the size of the troop (rounded up) instead of their skill rank
-- Add damage equal to half of the size of the troop (rounded up) multiplied by the SL of their attack
+> **Example: Getting attacked by a troop**
+A troop of five goblin warriors attacks you with their daggers (2 weapon damage). They roll their attack with 1d8 (Agility) + 1d6 + 2 (troop bonus). Based on the SL, they deal the following amount of damage:
+- **Blunder.** No damage.
+- **Failure.** 12 damage. ([4 base + 2 weapon] x 2)
+- **Weak.** 18 damage. ([4 base + 2 weapon] x 3)
+- **Strong.** 24 damage. ([4 base + 2 weapon] x 4)
+- **Critical.** 30 damage. ([4 base + 2 weapon] x 5)
 > 
 
 ### Elite
@@ -71,7 +76,7 @@ Few and far between you will encounter the elite among creatures.
 
 Elite creatures…
 
-- can take up to two Wounds. When they suffer their first Wound, they regain all of their HP.
+- can take up to two Wounds. When they suffer their first Wound, they regain all of their HP (this can't be negated).
 - If they start dying, they automatically die at the end of the scene.
 - can’t spend Resolve.
 - have to roll for Morale, but gain +1 boon on it.
@@ -82,13 +87,44 @@ Master creatures are the highlight of a whole adventure. They are often the powe
 
 Master creatures…
 
-- can take a number of Wounds equal to the number of adventurers fighting them (min. 3). When they suffer a Wound, they regain all of their HP.
-- If they start dying, they automatically die at the end of the scene.
+- can take a number of Wounds equal to the number of adventurers fighting them (min. 3). When they suffer a Wound, they regain all of their HP (this can't be negated).
 - once they take a Wound, they recover from all negative conditions and effects that previously affected them.
-- when they succeed on a roll to withstand or recover from any condition, they are immune to that condition for the rest of the scene.
-- can spend Resolve to re-roll any test. They gain a fixed amount of Resolve per scene, usually between 1 and 3 depending on their tier.
+- If they start dying, they automatically die at the end of the scene.
+- when they succeed on a roll to withstand or recover from any condition, they are immune to that type of condition for the rest of the scene.
 - don’t have to roll for Morale.
-- take one extra turn at extremely slow Initiative.
+
+## Size
+
+While adventurers are generally small or medium sized, there are a variety of other-sized creatures from tiny to colossal:
+
+| Size Category | Modifier | Example Creatures |
+| --- | --- | --- |
+| Tiny | -2 | house cat |
+| Small | -1 | domesticated dog |
+| Medium | +0 | wolf |
+| Large | +1 | horse |
+| Huge | +2 | mountain giant |
+| Gargantuan | +3 | fully-grown dragon |
+| Colossal | +4 | dragon turtle |
+
+Each size categories modifier influences several of the creatures statistics (see below)
+
+### Big creatures in melee combat
+
+While tiny to huge creatures are handled by the normal rules for distances and when you can attack creatures in melee, creatures bigger than that are an exception. Each creature of these size categories has the following rules applied to them:
+
+**Gargantuan (+3).** This creature fills up an entire area.
+
+- Other creatures can’t enter this creatures area, unless they grapple onto it or roll some other form of test to pass.
+- Creatures in adjacent areas are considered close to this creature. They can choose to get into melee range, as if they were in the same area with it.
+- When determining any other range category, treat any of the adjacent areas of this creature as the maximum distance you have to cover.
+
+**Colossal (+4).** This creature fills up multiple areas.
+
+- This creature takes up the area it is in, as well as all adjacent areas. It is considered to be within any of those areas at the same time.
+- Other creatures can’t enter this creatures areas, unless they grapple onto it or roll some other form of test to pass.
+- Creatures in adjacent areas to any of this creatures areas are considered close to this creature. They can choose to get into melee range, as if they were in the same area with it.
+- When determining any other range category, treat any of the adjacent areas of any of this creatures areas as the maximum distance you have to cover.
 
 ## Building a Creature
 

@@ -1,9 +1,3 @@
----
-sidebar_position: 4
----
-
-# 🧿 Mystic Spells
-
 ## Light
 
 ### Dazzling Light
@@ -963,3 +957,5 @@ sidebar_position: 4
  2 | 4 | Hard (10) | Self | quick
 
 **Effect**<br /> You cut into your own flesh, granting you the ancestor’s power in return. Cast this spell on your turn.<br/>You lose 5 HP as part of casting this spell, regardless of the result.<br/>On a success, you gain the following effects:<br/>- Gain +1 boon on weapon attacks.<br/>- Add 2 x Mysticism to weapon damage.<br/>
+
+

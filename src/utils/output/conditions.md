@@ -1,11 +1,3 @@
----
-sidebar_position: 4
----
-
-# 🌡️ Conditions
-
-You can suffer various conditions during the game. Each condition inflicts different effects on you. When you suffer a condition, the source also states how long it holds effect. When you suffer the same condition multiple times, you only are affected by it once. In the case of conditions with different potencies, such as bleeding, you only suffer the most potent version of the condition.
-
 Name | Description
 --- | ---
 **bleeding (X)** | You take X lasting damage. At the end of your turns, roll Strength + Fortitude to end the condition early. You or one of your allies can also use an Action to roll Spirit + Nature to quickly bandage up the wound. On a success, the condition ends early.

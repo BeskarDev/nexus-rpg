@@ -3,7 +3,6 @@ sidebar_position: 2
 ---
 
 # 🤺 Attacking
-
 You can attack with various weapons in melee or at range. You can also attack with a spell.
 
 | Attack | Skill Roll | Defense |
@@ -19,7 +18,10 @@ You have to have learned the skill required by your weapon (Fighting for melee w
 
 | SL | Effect |
 | --- | --- |
-| Blunder | Choose one:<br/>- Roll a Durability Check for the weapon you attacked with.<br/>- Roll a Supply Check if your weapon uses ammo.<br/>- One item you are holding is knocked to the ground somewhere close. |
+| Blunder | Choose one:
+- Roll a Durability Check for the weapon you attacked with.
+- Roll a Supply Check if your weapon uses ammo.
+- One item you are holding is knocked to the ground somewhere close. |
 | Failure | You miss your target. |
 | Weak | You hit your target with 1 x weapon damage. |
 | Strong | You hit your target with 2 x weapon damage. |
@@ -36,7 +38,7 @@ When you have nothing to defend yourself with, you can still throw a punch. Figh
 
 ### Non-lethal Attacks
 
-When you hit an enemy with a melee weapon and you would inflict an Injury on them, you can choose to inflict two Fatigue on them instead. When doing so, the target also has to roll Strength + Fortitude. The difficulty of the roll is moderate (8) for a target with one Wound or hard (10) for a target with two Wounds. The target automatically fails, if they suffered three Wounds already. If they fail, they fall unconscious for a short duration, or until they are woken up by another creature or event.
+When you hit an enemy with a melee weapon and you would inflict an Injury on them, you can choose to inflict two Fatigue on them instead. When doing so, the target also has to roll Strength + Fortitude. The difficulty of the roll is moderate (8) for a target with one Wound or hard (10) for a target with two Wounds. The target automatically fails, if they suffer their third Wound from your attack. If they fail, they fall unconscious for a short duration, or until they are woken up by another creature or effect.
 
 ## Ranged Attacks
 
@@ -52,9 +54,9 @@ If the target is only partially visible, add +1 bane to your ranged attack again
 
 ### Shooting into or out of Melee
 
-When you attack a target at range that is in melee with other creatures and you roll a blunder for this attack, you accidentally hit one of those creatures. Randomly determine which creature is hit. They take damage equal to your weapon or weak spell damage.
+When you attack a target at range that is in melee with other creatures, you suffer +1 bane on the roll. If you roll a blunder for this attack, you accidentally hit one of those creatures. Randomly determine which creature is hit. They take damage equal to your weapon or weak spell damage.
 
-When you attack at range while you have enemies you are in melee with, you suffer +1 bane on the roll.
+When you attack at range while you have enemies you are in melee with, you suffer +1 bane on the roll as well.
 
 ### Missing with a thrown Alchemical
 

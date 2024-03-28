@@ -1,9 +1,3 @@
----
-sidebar_position: 5
----
-
-# 📖 Spell Properties
-
 Name | Description
 --- | ---
 **blast (cone)** | This spell affects targets within range in a conial shape. Choose any direction for the cone and find out which creatures are affected along the way.<br/>Any creature in melee with you, which is reasonably within the direction of the spell’s cone, is affected.<br/>At close range, one group of creatures, which are in melee range of each other, are also affected.<br/>At short range, all creatures in one area adjacent to yours are affected.<br/>At medium range, all creatures in the area along the cone’s center, as well as in the two areas left and right from it are affected.<br/>For any range further than that, the cone affects one more area left and right from the center for each area it extends to in depth.<br/>
