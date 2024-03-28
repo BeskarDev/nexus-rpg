@@ -57,27 +57,24 @@ Improvised | If you want to do anything plausible, but not covered by the rules 
 
 Use a variety of skills during combat to help you and your allies or hinder your enemies.
 
-| Action | Effect |
-| --- | --- |
-| Demoralize | Attempt to break an enemy’s spirit. Target an enemy in short range that can see and hear you. Roll Strength/Spirit + Influence vs. Resist. On a success, they are briefly frightened of you.
-You can only use this Action once against any individual creature. |
-| Distract | Attempt to break an enemy’s focus. Target an enemy in short range that can see and hear you. Roll Mind + Cunning vs. Resist. On a success, they are briefly distracted by you.
-You can only use this Action once against any individual creature. |
-| Hide | Attempt to hide from enemies that currently can‘t perceive you. Roll Agility + Cunning vs. Resist for all creatures you attempt to hide from. On a success, you are hidden from them. |
-| Shove | Attempt to push an enemy away from you. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher).
-On a success, you push them a close distance away from you. |
-| Spot | Attempt to spot any hidden or invisible enemy. They must be in your line of sight or range of hearing. Roll Spirit + Perception vs. Dodge. On a success, they are no longer hidden from you. |
-| Trip | Attempt to knock an enemy to the ground. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher). On a success, you knock them prone. |
-| Vault | Attempt to quickly cross difficult terrain. When entering difficult terrain, roll Agility + Athletics. On a success, you can move through it without spending extra Movement. On a failure, your Movement becomes 0 for the turn. |
+Action | Effect
+--- | ---
+Demoralize | Attempt to break an enemy’s spirit. Target an enemy in short range that can see and hear you. Roll Strength/Spirit + Influence vs. Resist. On a success, they are briefly frightened of you.<br/>You can only use this Action once against any individual creature.<br/>
+Distract | Attempt to break an enemy’s focus. Target an enemy in short range that can see and hear you. Roll Mind + Cunning vs. Resist. On a success, they are briefly distracted by you.<br/>You can only use this Action once against any individual creature.<br/>
+Hide | Attempt to hide from enemies that currently can‘t perceive you. Roll Agility + Cunning vs. Resist for all creatures you attempt to hide from. On a success, you are hidden from them.
+Shove | Attempt to push an enemy away from you. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher).<br/>On a success, you push them a close distance away from you.<br/>
+Spot | Attempt to spot any hidden or invisible enemy. They must be in your line of sight or range of hearing. Roll Spirit + Perception vs. Dodge. On a success, they are no longer hidden from you.
+Trip | Attempt to knock an enemy to the ground. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher). On a success, you knock them prone.
+Vault | Attempt to quickly cross difficult terrain. When entering difficult terrain, roll Agility + Athletics. On a success, you can move through it without spending extra Movement. On a failure, your Movement becomes 0 for the turn.
 
 ## Quick Actions
 
 Quick Actions are small actions that take no more than a few seconds. They can also be quick reactive abilities outside of your turn during combat. Quick Actions always have triggers for when they can be used. You can use one Quick Action on your turn or between your turns. You regain access to your Quick Action at the end of each of your turns.
 
-| Quick Action | Trigger | Effect |
-| --- | --- | --- |
-| Evade | You are attacked by a melee or touch attack and don’t wear heavy armor. | Until your next turn, you can defend with your Dodge instead of your Parry. |
-| Guard | While wearing a shield, you are targeted by a ranged attack or area effect. | Until your next turn, you can defend with your Parry instead of your Dodge. |
-| Opportunity Attack | An enemy in your melee reach attempts to move out of melee (unless they are moved involuntarily by another source). | Roll an attack against the enemy with a melee weapon you wield. You can’t use any abilities or Combat Arts on this attack.<br />Instead of an attack, you can also attempt to grapple the enemy if they are in melee range. |
-| Protect Ally | When an ally close to you is attacked. | You quickly step into the way and take the hit instead. As part of this Quick Action, you move into melee range of your targeted ally. The enemy then rolls against your Defense. If they hit, you take the damage instead of your ally. |
-| Delay Action | You can use your Quick Action on your turn to delay your Action until some condition is met. | You can use that delayed Action once the condition is met before your next turn.  |
+Quick Action | Trigger | Effect
+--- | --- | ---
+Evade | You are attacked by a melee or touch attack and don’t wear heavy armor. | Until your next turn, you can defend with your Dodge instead of your Parry.
+Guard | While wearing a shield, you are targeted by a ranged attack or area effect. | Until your next turn, you can defend with your Parry instead of your Dodge.
+Opportunity Attack | An enemy in your melee reach attempts to move out of melee (unless they are moved involuntarily by another source). | Roll an attack against the enemy with a melee weapon you wield. You can’t use any abilities or Combat Arts on this attack.<br/>Instead of an attack, you can also attempt to grapple the enemy if they are in melee range.<br/>
+Protect Ally | When an ally close to you is attacked. | You quickly step into the way and take the hit instead. As part of this Quick Action, you move into melee range of your targeted ally. The enemy then rolls against your Defense. If they hit, you take the damage instead of your ally.
+Delay Action | You can use your Quick Action on your turn to delay your Action until some condition is met. | You can use that delayed Action once the condition is met before your next turn. 
