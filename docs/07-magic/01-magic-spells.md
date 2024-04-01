@@ -104,9 +104,28 @@ Inversely, if a spell’s effect only lists “X damage” or “X HP” without
 
 Some spells require Concentration to be cast. These spells most often have continuous effects that last for a certain duration. You can only concentrate on one such spell at a time. Each time you take damage while concentrating on a spell, you have to roll Spirit + Fortitude. If you fail this roll, your spell ends immediately. The difficulty of the roll depends on the amount of damage that you took.
 
-| Damage Taken | 5 or less | 6-10 | 11-20 | 21-30 | 31 or more |
-| --- | --- | --- | --- | --- | --- |
-| Difficulty | easy (6) | moderate (8) | hard (10) | very hard (12) | extremely hard (14) |
+| Damage Taken | 5 or less | 6-10 | 11-20 | 21-30 | 31-40 | 41 or more |
+| --- | --- | --- | --- | --- | --- | --- |
+| Difficulty | easy (6) | moderate (8) | hard (10) | very hard (12) | extremely hard (14) | nearly impossible (16) |
+
+### Heightening Spells
+
+Some spells allow you to cast them as a higher ranked version to increase their potency at the cost of more Focus. Look at the description of a spell under „Heightened Casting“ to see the changes to the spell‘s effect when doing so.
+
+> Some spells describe heightening effects, such as „deal +4/8/12 damage instead.“ or „inflict burning (2/4/6) instead“. If multiple values are separated by slashes, it refers to the increases effects with better SL. In the first example, the heightened spell would deal +4 damage on a weak success, +8 on a strong success, or +12 on a critical success. The same goes for conditions with multiple values listed.
+> 
+
+You can only heighten a spell up to a rank you are capable of casting normally. When heightening a spell to a higher rank, it‘s Focus Cost and Target Difficulty (only if the spell has a static Target Difficulty) are increased according to the following table:
+
+| Heightened Spell Rank | New Focus Cost | New Target Difficulty |
+| --- | --- | --- |
+| 2 | 4 | Moderate (8) |
+| 3 | 6 | Hard (10) |
+| 4 | 8 | Very Hard (12) |
+| 5 | 10 | Extremely Hard (14) |
+
+> For example, you have Mysticism at rank 2 and want to cast a heightened version of the rank 1 spell Storm Coat. Because of your Mysticism, you are able to heighten the spell to rank 2. When doing so, the focus cost of the spell is increases to 4 and the TN is increased from moderate (8) to hard (10). On a successful cast, the heightened effect of Storm Coat increases the damage reflected on attackers from +0 to +2 lighting damage.
+> 
 
 ### Bending Spell Effects
 

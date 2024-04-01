@@ -36,7 +36,11 @@ def split_table_by_tradition(input_file, output_file):
                 file.write('**Rank** | **Focus** | **Target** | **Range** | **Properties**\n')
                 file.write('---|---|---|---|---\n')
                 file.write(basic_info + '\n\n')
-                file.write('**Effect**\n' + detailed_effect + '\n<hr/>\n' + heightened_effect + '\n\n')
+                file.write('**Effect** <br/>' + detailed_effect)
+                if heightened_effect.strip() not in (None, ''):
+                    file.write('\n<hr/>\n\n')
+                    file.write('**Heightened** <br/>' + heightened_effect)
+                file.write('<hr/>\n\n')
 
 # Example usage
 input_file = 'output/mystic-spells.md'
