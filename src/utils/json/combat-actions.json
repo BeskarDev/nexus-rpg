@@ -1,42 +1,42 @@
 [
     {
-        "Action": "Attack",
-        "Effect": "Attack with your weapon (see more under Attacking)."
+        "action": "Attack",
+        "effect": "Attack with your weapon (see more under Attacking)."
     },
     {
-        "Action": "Cast Spell",
-        "Effect": "Cast a Spell you know and have enough Focus for."
+        "action": "Cast Spell",
+        "effect": "Cast a Spell you know and have enough Focus for."
     },
     {
-        "Action": "Dash",
-        "Effect": "Double your Movement this turn."
+        "action": "Dash",
+        "effect": "Double your Movement this turn."
     },
     {
-        "Action": "Defend",
-        "Effect": "Attacks against you suffer +1 bane. You can Evade or Guard without spending your Quick Action until your next turn."
+        "action": "Defend",
+        "effect": "Attacks against you suffer +1 bane. You can Evade or Guard without spending your Quick Action until your next turn."
     },
     {
-        "Action": "Disarm",
-        "Effect": "Choose one item the target holds and roll Strength + Athletics vs. their Parry or Dodge (whichever is higher). For a two-handed item or shield, you suffer +1 bane on your roll.<br/><strong>Weak.</strong> The chosen item is knocked to the ground directly below them.<br/><strong>Strong.</strong> The chosen item is knocked away to a random close location or you can grab it with a free hand (your choice).<br/><strong>Critical.</strong> The chosen item is knocked away to a random close location or you can grab it with a free hand (your choice). If it is knocked away, it is also stuck there. Any creature attempting to grab onto the item must roll Strength + Athletics as an Action. They pull the item free if they succeed."
+        "action": "Disarm",
+        "effect": "Choose one item the target holds and roll Strength + Athletics vs. their Parry or Dodge (whichever is higher). For a two-handed item or shield, you suffer +1 bane on your roll.<br/><strong>Weak.</strong> The chosen item is knocked to the ground directly below them.<br/><strong>Strong.</strong> The chosen item is knocked away to a random close location or you can grab it with a free hand (your choice).<br/><strong>Critical.</strong> The chosen item is knocked away to a random close location or you can grab it with a free hand (your choice). If it is knocked away, it is also stuck there. Any creature attempting to grab onto the item must roll Strength + Athletics as an Action. They pull the item free if they succeed."
     },
     {
-        "Action": "Grapple",
-        "Effect": "Attempt to lock your enemy into a grapple. Target an enemy you are in melee range of. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher) considering both of your sizes: <br/>- A creature one size larger imposes +1 bane on rolls to grapple it and gains +1 boon on rolls to escape the smaller creature grapple.<br/>- A creature smaller grants +1 boon on rolls to grapple it and suffers +1 bane on rolls to escape the larger creature grapple for each size it is smaller.<br/>- A creature two or more sizes larger can\u2019t be grappled, pushed, or knocked prone by the smaller creature.<br/><br/>On a success, you are both locked in a grapple. If both of you are of the same size, both your Movement becomes 0. If one of you is larger or smaller, the smaller creature automatically moves with the Movement of the larger creature. If any one of you is moved away by some effect, such as being pushed, the grapple ends. <br/><br/>The target can use their Action to roll Strength/Agility + Athletics against your Parry. On a success, they escape your grapple. You can also willingly end the grapple on your turn.<br/>"
+        "action": "Grapple",
+        "effect": "Attempt to lock your enemy into a grapple. Target an enemy you are in melee range of. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher) considering both of your sizes: <br/>- A creature one size larger imposes +1 bane on rolls to grapple it and gains +1 boon on rolls to escape the smaller creature grapple.<br/>- A creature smaller grants +1 boon on rolls to grapple it and suffers +1 bane on rolls to escape the larger creature grapple for each size it is smaller.<br/>- A creature two or more sizes larger can\u2019t be grappled, pushed, or knocked prone by the smaller creature.<br/><br/>On a success, you are both locked in a grapple. If both of you are of the same size, both your Movement becomes 0. If one of you is larger or smaller, the smaller creature automatically moves with the Movement of the larger creature. If any one of you is moved away by some effect, such as being pushed, the grapple ends. <br/><br/>The target can use their Action to roll Strength/Agility + Athletics against your Parry. On a success, they escape your grapple. You can also willingly end the grapple on your turn.<br/>"
     },
     {
-        "Action": "Help",
-        "Effect": "Help an ally with a roll. Target an ally you are in melee range of. Announce for what Action you want to help your ally on their next turn. They gain +1 boon on that roll on their next turn."
+        "action": "Help",
+        "effect": "Help an ally with a roll. Target an ally you are in melee range of. Announce for what Action you want to help your ally on their next turn. They gain +1 boon on that roll on their next turn."
     },
     {
-        "Action": "Retreat",
-        "Effect": "Enemies can\u2018t use Opportunity Attacks against you this turn, while you spend Movement."
+        "action": "Retreat",
+        "effect": "Enemies can\u2018t use Opportunity Attacks against you this turn, while you spend Movement."
     },
     {
-        "Action": "Use Skill",
-        "Effect": "There are different Actions you can take by rolling for a skill. See the list below for more details, or use an Improvised Action for any situation not covered by the existing Use Skill Actions."
+        "action": "Use Skill",
+        "effect": "There are different Actions you can take by rolling for a skill. See the list below for more details, or use an Improvised Action for any situation not covered by the existing Use Skill Actions."
     },
     {
-        "Action": "Improvised",
-        "Effect": "If you want to do anything plausible, but not covered by the rules or your adventurer sheet, you can still attempt it! Explain your intended results to the GM and they might let you roll for it. If it is not within your skill set, you might suffer +1 bane on the roll. You can for example attempt to trip an opponent, when you don't have the Trip Combat Art learned. The GM might rule that you gain the effects of the Trip Combat Art, but the attack deals no damage."
+        "action": "Improvised",
+        "effect": "If you want to do anything plausible, but not covered by the rules or your adventurer sheet, you can still attempt it! Explain your intended results to the GM and they might let you roll for it. If it is not within your skill set, you might suffer +1 bane on the roll. You can for example attempt to trip an opponent, when you don't have the Trip Combat Art learned. The GM might rule that you gain the effects of the Trip Combat Art, but the attack deals no damage."
     }
 ]

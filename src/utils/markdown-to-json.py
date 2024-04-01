@@ -23,10 +23,12 @@ def markdown_to_json(file_path):
 
   df = df.iloc[1:]  # Remove the first row (separator line)
 
-  # Remove trailing whitespace from column names
+  # Fix formatting
   df.columns = df.columns.str.strip()
+  df.columns = df.columns.str.lower()
   for col in df.columns:
     df[col] = df[col].str.strip()
+    df[col] = df[col].str.strip('**')
   
   # Replace empty lines with placeholder
   df = df.fillna('-')
