@@ -38,9 +38,8 @@ def split_table_by_tradition(input_file, output_file):
                 file.write(basic_info + '\n\n')
                 file.write('**Effect** <br/>' + detailed_effect)
                 if heightened_effect.strip() not in (None, ''):
-                    file.write('\n<hr/>\n\n')
-                    file.write('**Heightened** <br/>' + heightened_effect)
-                file.write('<hr/>\n\n')
+                    file.write('\n\n> **Heightened** <br/>' + heightened_effect.replace('<br/><br/><strong>(Rank', '<br/><strong>(Rank') + '\n>')
+                file.write('\n\n')
 
 # Example usage
 input_file = 'output/mystic-spells.md'
