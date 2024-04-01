@@ -1,0 +1,547 @@
+[
+    {
+        "Name": "**Arcane Spell Knowledge**",
+        "Skill Requirement": "Arcana",
+        "Description": "You can take higher ranks for this talent without having taken it\u2019s lower ranks provided your Mysticism also has the required rank.<br/><br/><strong>(Rank 1)</strong> Learn two rank 0 or 1 spells for any of your disciplines, or adopt a new discipline and learn one new rank 0 spell for it. You can choose this Talent multiple times.<br/><br/><strong>(Rank 2) </strong>Learn two rank 2 or lower spells for any of your disciplines. You can choose this Talent multiple times.<br/><br/><strong>(Rank 3) </strong>Learn two rank 3 or lower spells for any of your disciplines. You can choose this Talent multiple times."
+    },
+    {
+        "Name": "**Battle Mage**",
+        "Skill Requirement": "Arcana",
+        "Description": "<strong>(Rank 1)</strong> +2 HP. When you are attacked by an enemy and they roll against your Parry or Dodge, you can use your Quick Action and spend 2 Focus to conjure a momentary barrier of arcane force which adds your Arcana to both your Parry and Dodge until your next turn.<br/><br/><strong>(Rank 2)</strong> +2 HP. You can use your Arcana for weapon attacks instead of Archery/Fighting.<br/><br/><strong>(Rank 3) </strong>+2 HP. When you hit with a melee or ranged weapon, add your Arcana to the damage."
+    },
+    {
+        "Name": "**Mana Shield**",
+        "Skill Requirement": "Arcana",
+        "Description": "<strong>(Rank 1)</strong> When you successfully cast an arcane spell, you gain 2 + the spell's rank as AV (armor bonus). If you cast another arcane spell, only keep the highest AV bonus from this ability. This bonus lasts for a short duration or until you have taken damage from any source.<br/><br/><strong>(Rank 2)</strong> AV from your Mana Shield ability doesn\u2018t end from taking damage.<br/><br/><strong>(Rank 3)</strong> When you take damage, you can choose to double the AV bonus from your Mana Shield ability against it, but the ability\u2018s bonus immediately ends afterward."
+    },
+    {
+        "Name": "**Master of Fundamentals**",
+        "Skill Requirement": "Arcana",
+        "Description": "<strong>(Rank 1) </strong>When you cast an arcane rank 0 spell, you can choose to re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2) </strong>You gain the following abilities:<br/>- When you hit with an arcane rank 0 spell that deals damage, add your Arcana to the damage.<br/>- Instead of attacking for an Opportunity Attack, you can choose to cast an arcane rank 0 spell against the target.<br/><br/><strong>(Rank 3) </strong>When you cast an arcane rank 0 spell on your turn, you can use a Quick Action to cast the same spell again against any target but suffer +1 bane on the roll."
+    },
+    {
+        "Name": "**Spellblade**",
+        "Skill Requirement": "Arcana",
+        "Description": "<strong>(Rank 1) </strong>You can infuse one of your spells into a weapon attack. Choose any of your arcane rank 0 non-ritual spells that target the Defense of one or more enemies within your weapon\u2018s range.<br/>Roll your normal weapon attack. Treat the roll as an attack and as casting the chosen spell. With this attack, you can\u2019t use any other abilities or effects that apply to casting a spell.<br/>On a hit, apply the spell\u2018s effects according to the SL of your attack, in addition to your normal weapon attack. You add its spell damage to your attack\u2019s damage and the attack\u2019s damage type becomes that of the spell. Also, spend the spell\u2018s Focus cost, but increase it by 2.<br/><br/><strong>(Rank 2) </strong>You can also use arcane rank 1 non-ritual spells that target the Defense of one or more enemies within your weapon\u2018s range with your Spellblade ability.<br/><br/><strong>(Rank 3) </strong>You can also use arcane rank 2 non-ritual spells that target the Defense of one or more enemies within your weapon\u2018s range with your Spellblade ability."
+    },
+    {
+        "Name": "**Spellweaver**",
+        "Skill Requirement": "Arcana",
+        "Description": "<strong>(Rank 1) </strong>You are able to use Metamagic Arts along with your arcane spells. You learn any two Metamagic Arts.<br/><br/><strong>(Rank 2) </strong>Learn two more Metamagic Arts.<br/><br/><strong>(Rank 3) </strong>Learn two more Metamagic Arts."
+    },
+    {
+        "Name": "**Ammo Specialist**",
+        "Skill Requirement": "Archery",
+        "Description": "<strong>(Rank 1) </strong>When you have to roll a Supply check for your ammo, roll twice and take the higher result.<br/><br/><strong>(Rank 2) </strong>You carry special types of ammo with you. When attacking with a ranged weapon that uses ammo, you can choose between <strong>barbed</strong> (slash), <strong>bodkin</strong> (pierce), and <strong>blunt</strong> (crush). Your ranged weapon gains the property of the chosen option for this attack. Immediately after the attack, make a Supply check for your ammo.<br/><br/><strong>(Rank 3)</strong> When you attack with special ammo from your Ammo Specialist ability, you also add your Archery to the damage."
+    },
+    {
+        "Name": "**Art of Archery**",
+        "Skill Requirement": "Archery",
+        "Description": "(<strong>Rank 1) </strong>You learn two more Combat Arts which can be used with bows, crossbows, or thrown weapons.<br/><br/>(<strong>Rank 2) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with bows, crossbows, or thrown weapons.<br/>- Increase the difficulty of rolls imposed on your target by effects of Combat Arts for ranged weapons by one step.<br/><br/>(<strong>Rank 3) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with bows, crossbows, or thrown weapons.<br/>- You can choose to increase the SL of any Combat Art for ranged weapons you use by one step. You can use this ability once per scene.<br/>"
+    },
+    {
+        "Name": "**Crossbow Mastery**",
+        "Skill Requirement": "Archery",
+        "Description": "<strong>(Rank 1)</strong> You can also reload your crossbow using a Quick Action on your turn.<br/><br/><strong>(Rank 2)</strong> On a strong or critical hit with a crossbow, the target is briefly dazed.<br/><br/><strong>(Rank 3)</strong> When you hit with a crossbow, ignore 1/2 the target\u2018s AV."
+    },
+    {
+        "Name": "**Disciplined Archer**",
+        "Skill Requirement": "Archery",
+        "Description": "(<strong>Rank 1) </strong>You can choose to re-roll any attack roll with a ranged weapon. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> You can use your Combat Arts for ranged weapons two times per scene each, but each individual Combat Art not two turns in a row.<br/><br/><strong>(Rank 3) </strong>When you hit with a ranged weapon, you can choose to use your Quick Action to make another attack against any target but suffer +1 bane on the roll."
+    },
+    {
+        "Name": "**Expert Slinger**",
+        "Skill Requirement": "Archery",
+        "Description": "(<strong>Rank 1)</strong> When you have to make a Supply check for a bundle of thrown weapons, roll twice and take the higher result.<br/><br/><strong>(Rank 2)</strong> When you hit with a thrown weapon at close or short range, add your Archery to the damage.<br/><br/><strong>(Rank 3)</strong> After attacking with a thrown weapon on your turn, you can spend 1 Movement for free."
+    },
+    {
+        "Name": "**Rapid Shot**",
+        "Skill Requirement": "Archery",
+        "Description": "<strong>(Rank 1) </strong>When using your Action to attack with a non-heavy ranged weapon, you can attack twice with it, but you suffer +1 bane on both attacks.<br/><br/><strong>(Rank 2)</strong> You suffer no banes from using your Rapid Shot ability.<br/><br/><strong>(Rank 3)</strong> On a strong or critical hit with a non-heavy ranged weapon, the target suffers marked (4)."
+    },
+    {
+        "Name": "**Sharpshooter**",
+        "Skill Requirement": "Archery",
+        "Description": "<strong>(Rank 1) </strong>When attacking with a ranged weapon, you can ignore the first bane you would suffer from attacking beyond normal range.<br/><br/><strong>(Rank 2) </strong>When attacking with a ranged weapon, you suffer no banes from attacking beyond normal range.<br/><strong><br/>(Rank 3) </strong>When you attack with a ranged weapon at long range or more, you can skip all Movement this turn to inflict marked (equal to your Archery) on your target immediately before the attack."
+    },
+    {
+        "Name": "**Strong Grip**",
+        "Skill Requirement": "Archery",
+        "Description": "<strong>(Rank 1)</strong> Using the Power Shot Combat Art with a heavy ranged weapon doesn't impose +1 bane on your attack.<br/><br/><strong>(Rank 2)</strong> If your Strength die is one or more steps larger than the heavy property of a ranged weapon, you can choose to attack with it as if it were a non-heavy weapon. Effects that rely on a heavy weapon will not meet their condition anymore when doing so.<br/><br/><strong>(Rank 3)</strong> When you hit with a heavy ranged weapon, add +1/2 Strength to the damage."
+    },
+    {
+        "Name": "**Athletic Movement**",
+        "Skill Requirement": "Athletics",
+        "Description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1)</strong> When rolling Athletics during special types of Movement, such as crawling, crouching, climbing, swimming, while jumping, or when using the Vault action, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- You can also use the Vault Action using a Quick Action on your turn.<br/>- During special types of Movement, such as crawling, crouching, climbing, and swimming, you don\u2018t move as in difficult terrain.<br/><br/><strong>(Rank 3) </strong>You gain the following abilities:- When jumping, you can jump a short distance instead.<br/>- When you take falling damage, treat your distance as one category lower.<br/>"
+    },
+    {
+        "Name": "**Bulky**",
+        "Skill Requirement": "Athletics",
+        "Description": "<strong>(Rank 1) </strong>Gain +2 HP. Increase your Strength multiplier by 1 for how much load you can carry before becoming encumbered or over-encumbered.<br/><br/><strong>(Rank 2)</strong> Gain +2 HP. Double your Strength multiplier for moving heavy objects.<br/><br/><strong>(Rank 3)</strong> Gain +2 HP. You gain the following abilities:<br/>- Increase your Strength multiplier by 2 for how much load you can carry before becoming encumbered or over-encumbered instead.<br/>- Triple your Strength multiplier for moving heavy objects instead.<br/>"
+    },
+    {
+        "Name": "**Escape Artist**",
+        "Skill Requirement": "Athletics",
+        "Description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1)</strong> When you are the target of a Grapple, Shove, or Trip action or similar roll that attempts to grapple, push, or knock you prone, the attacker suffers +1 bane on their roll.<br/><br/><strong>(Rank 2) </strong>+1 Dodge. Whenever you can roll Athletics with an Action to end the effect that grapples or restrains you, you can also use a Quick Action on your turn for the roll instead.<br/><br/><strong>(Rank 3) </strong>+1 Dodge. When some attack against you that tries to grapple, push, or knock you prone fails, you can choose to immediately spend 1 Movement without provoking Opportunity Attacks from the attacker. You can use this ability once between your turns."
+    },
+    {
+        "Name": "**Evasion**",
+        "Skill Requirement": "Athletics",
+        "Description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1)</strong> You can also use the Retreat Action using a Quick Action on your turn.<br/><br/><strong>(Rank 2)</strong> You gain +1 Quick Action you can use between your turns.<br/><br/><strong>(Rank 3)</strong> When you take physical damage from any source, you can choose to halve that damage. You can use this ability once per scene."
+    },
+    {
+        "Name": "**Fast Stride**",
+        "Skill Requirement": "Athletics",
+        "Description": "You can\u2019t use any of these abilities while wearing heavy armor.<br/><br/><strong>(Rank 1) </strong>You can also use the Dash Action using a Quick Action on your turn.<br/><br/><strong>(Rank 2)</strong> +1 Dodge. During your turns, you get +1 Movement.<br/><br/><strong>(Rank 3) </strong>+1 Dodge. After a successful attack, you can choose to immediately move a close or short distance without provoking Opportunity Attacks."
+    },
+    {
+        "Name": "**Grappler**",
+        "Skill Requirement": "Athletics",
+        "Description": "<strong>(Rank 1) </strong>When you hit a target no more than one size larger than you with an unarmed attack or with a brawling weapon, you can choose to also grapple the target. When doing so, this attack also counts as a Grapple Action. On a hit, the target is grappled by you.<br/><br/><strong>(Rank 2)</strong> While you are grappling a creature and you hit them again with an unarmed attack or with a brawling weapon, you can choose to also restrain them while they are grappled by you.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- Creatures larger than you don\u2019t impose banes on your grapple rolls and don\u2019t gain boons from their Size to end your grapple against them.<br/>- While grappling, add your Athletics as damage to attacks against the grappled target.<br/>"
+    },
+    {
+        "Name": "**Light Armor Mastery**",
+        "Skill Requirement": "Athletics",
+        "Description": "<strong>(Rank 1)</strong> While wearing light armor and being attacked in melee, you can Evade without spending a Quick Action. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> +1 Dodge. Ignore the noisy property of light armor you wear. <br/><br/><strong>(Rank 3)</strong> +1 Dodge. You can use your Light Armor Mastery ability once between your turns instead."
+    },
+    {
+        "Name": "**Artisan**",
+        "Skill Requirement": "Crafting",
+        "Description": "<strong>(Rank 1)</strong> Choose one crafting profession (see Crafting under Downtime). You are able to create items of Quality 1 and Quality 2 of the chosen profession.<br/>You can choose this talent multiple times to learn additional crafting professions.<br/><br/><strong>(Rank 2)</strong> Choose one of your crafting professions. You are able to craft Quality 3 items of the chosen profession, or Quality 4 or you already were able to craft Quality 3 items.<br/>You can choose this talent multiple times.<br/><br/><strong>(Rank 3)</strong> Choose one crafting profession for which you can craft Quality 4 items. You are able to craft Quality 5 items of the chosen profession, or Quality 6 or you already were able to craft Quality 5 items.<br/>You can choose this talent multiple times.<br/>"
+    },
+    {
+        "Name": "**Fast Worker**",
+        "Skill Requirement": "Crafting",
+        "Description": "<strong>(Rank 1)</strong> You can craft items with a combined cost of 500 coins per week.<br/><strong><br/>(Rank 2)</strong> You can craft items with a combined cost of 2,000 coins per week.<br/><strong><br/>(Rank 3)</strong> You can craft items with a combined cost of 5,000 coins per week."
+    },
+    {
+        "Name": "**Nothing Wasted**",
+        "Skill Requirement": "Crafting",
+        "Description": "<strong>(Rank 1)</strong> When you have to roll a Supply check for materials, roll twice and take the higher result.<br/><br/><strong>(Rank 2)</strong> When you use a downtime activity to craft an item of one of your chosen professions, reduce the cost of crafting that item by 1/10 of the item's cost.<br/><br/><strong>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Work of Art**",
+        "Skill Requirement": "Crafting",
+        "Description": "<em>improve the selling price for items you crafted or fixed up during the selling roll.</em>"
+    },
+    {
+        "Name": "**Assassination**",
+        "Skill Requirement": "Cunning",
+        "Description": "<strong>(Rank 1)</strong> When you hit an enemy that is unaware of you with an attack for the first time during a scene, treat the SL of your attack against them as one step higher (max. critical success).<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- When you attack an enemy that hasn\u2019t yet taken a turn during combat, you gain +1 boon on the attack. <br/>- Missing an attack from stealth doesn\u2018t reveal your position to the target that is unaware of you.<br/><br/><strong>(Rank 3)</strong> When you hit an enemy that is unaware of you with an attack for the first time during that scene, add your Cunning to your weapon damage against them."
+    },
+    {
+        "Name": "**Devious Tactics**",
+        "Skill Requirement": "Cunning",
+        "Description": "<strong>(Rank 1)</strong> You can also use the Distract Action as a Quick Action on your turn. When doing so, you can choose any suitable object or creature to be the source of the distraction and not yourself.<br/><br/><strong>(Rank 2)</strong> When you use the Distract Action, you can target any number of close enemies instead.<br/><br/><strong>(Rank 3)</strong> Your attacks against a distracted enemy gain +1 boon and deal +2 damage."
+    },
+    {
+        "Name": "**Hidden Strike**",
+        "Skill Requirement": "Cunning",
+        "Description": "<strong>(Rank 1) </strong>While you have no weapon drawn and are seemingly unarmed, you can attack with one light melee weapon you carry as an Action or a Quick Action on your turn. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> +1 Dodge. When you attack with your Hidden Strike ability, you gain +1 boon on the attack.<br/><br/><strong>(Rank 3) </strong>+1 Dodge. When you hit with your Hidden Strike ability, the enemy is briefly stunned."
+    },
+    {
+        "Name": "**Leading the Way**",
+        "Skill Requirement": "Cunning",
+        "Description": "(<strong>Rank 1) </strong>When you and your allies attempt to sneak or surprise your enemies, all allies that can see you within close range of you can use the result of your roll instead of their own.<br/><br/><strong>(Rank 2)</strong> Your Leading the Way ability extends to allies who can see you within short distance of you.<br/><br/><strong>(Rank 3) </strong>Your Leading the Way ability extends to all allies that can see you within medium distance of you."
+    },
+    {
+        "Name": "**Roguish Wits**",
+        "Skill Requirement": "Cunning",
+        "Description": "<strong>(Rank 1)</strong> When you roll Cunning to convince somebody of a falsehood or make them doubt the truth of what they perceive, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2) </strong>When you are targeted by another creature you can see and they roll against one of your Defenses, you can use your Quick Action to add your Cunning to that Defense against their roll.<br/><br/><strong>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Sleight of Hand**",
+        "Skill Requirement": "Cunning",
+        "Description": "<strong>(Rank 1)</strong> When you roll Cunning to pickpocket an item, palm an object, or plant a false item, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> +1 Dodge. When you roll Agility + Cunning vs. Resist to pickpocket an item, palm an object, or plant a false item, the target doesn\u2018t notice your sleight of hand, even if you fail the roll. You can also use this against enemies in melee range during combat.<br/><br/><strong>(Rank 3)</strong> +1 Dodge. XXX"
+    },
+    {
+        "Name": "**Battle Commander **",
+        "Skill Requirement": "Education",
+        "Description": "guide your allies to victory!"
+    },
+    {
+        "Name": "**Diplomat**",
+        "Skill Requirement": "Education",
+        "Description": "(<strong>Rank 1)</strong> When you roll Education for behaviors, values, taboos, or etiquette of another culture or group of intelligent creatures, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2) </strong>When you roll Education for behaviors, values, taboos, or etiquette of another culture or group of intelligent creatures, you gain +1 boon on the roll.<br/><br/><strong>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Eloquent Talker**",
+        "Skill Requirement": "Education",
+        "Description": "-"
+    },
+    {
+        "Name": "**General Education**",
+        "Skill Requirement": "Education",
+        "Description": "(<strong>Rank 1) </strong>When you roll for any expert skill you haven\u2019t learned using Mind, you don\u2019t suffer +1 bane for it from it being an untrained skill for you.<br/><br/><strong>(Rank 2)</strong> When you roll for any expert skill using Mind, you can choose to add your Education instead of that other expert skill. You can use this ability once per scene.<br/><br/><strong>(Rank 3)</strong> When you roll using Mind + Education, you gain +1 boon on the roll."
+    },
+    {
+        "Name": "**Linguist**",
+        "Skill Requirement": "Education",
+        "Description": "(<strong>Rank 1) </strong>You gain the following abilities:<br/>- You learn one new common or exotic language.<br/>- You are able to communicate simple ideas with other intelligent, non-hostile creatures you don\u2019t share a language with by rolling Mind + Education (the GM decides on the difficulty of your communication attempt).<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- You learn two new common or exotic languages or one new ancient language.<br/>- When you roll with Education about the meaning of any written script, or spoken language you don\u2018t know, or to communicate simple ideas with other intelligent, non-hostile creatures you don\u2019t share a language with, you gain +1 boon on the roll.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- You learn two new common, exotic, or ancient languages. <br/>- XXX<br/>"
+    },
+    {
+        "Name": "**Tactician**",
+        "Skill Requirement": "Education",
+        "Description": "<strong>(Rank 1)</strong> During a delving turn, you can scheme a plan about the enemies you intend to fight or the location where your planned combat scene will take place. Once that scene begins, roll Mind + Education (the GM decides on the difficulty based on your description of how you prepare for the scene).<br/><strong>Weak.</strong> You and your allies can choose to re-roll your Initiative tests.<br/><strong>Strong.</strong> Same as a weak success and each of you gains +1 boon on the first roll during that scene.<br/><strong>Critical.</strong> Same as a strong success and the first roll any enemy makes against any of you suffers +1 bane.<br/><br/><strong>(Rank 2) </strong>When you roll Mind + Education at the beginning of a combat scene for your Tactician ability, you gain +1 boon on the roll.<br/><br/><strong>(Rank 3)</strong> When you roll Mind + Education at the beginning of a combat scene for your Tactician ability, each of you and your allies can also use one of the following abilities once during that scene on their own turn (allies use your Education for these abilities):<br/>- Add your Education to the damage of an attack.<br/>- Regain 2 x your Education as HP.<br/>"
+    },
+    {
+        "Name": "**Art of Fighting**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>(Rank 1) </strong>You learn two more Combat Arts which can be used with axes, blades, brawling, maces, polearms, or shields.<br/><br/><strong>(Rank 2) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with axes, blades, brawling, maces, polearms, or shields.<br/>- Increase the difficulty of rolls imposed on your target by effects of Combat Arts for melee weapons by one step.<br/><br/><strong>(Rank 3) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with axes, blades, brawling, maces, polearms, or shields.<br/>- You can choose to increase the SL of any Combat Art for melee weapons you use by one step. You can use this ability once per scene.<br/>"
+    },
+    {
+        "Name": "**Axe Mastery**",
+        "Skill Requirement": "Fighting",
+        "Description": "(<strong>Rank 1)</strong> On a hit with an axe, you can use your Quick Action to use the Disarm Action against the target immediately after the attack.<br/><br/><strong>(Rank 2)</strong> On a strong or critical hit with an axe against a target in light or no armor, inflict bleeding equal to your weapon damage for a short duration.<br/><br/><strong>(Rank 3)</strong> On a strong or critical hit with an axe, you can use your Quick Action to rend the target\u2018s armor or shield (your choice if both are present). The target rolls a Durability check for the item. On a failure, the item gets damaged or destroyed if already damaged."
+    },
+    {
+        "Name": "**Blade Mastery**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>(Rank 1)</strong> When attacking with a blade with either the pierce or slash property, you can choose to replace that property with the other one (slash instead of pierce or pierce instead of slash). When doing so, your weapon damage is reduced by 1 for this attack.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- On a strong or critical hit with a blade with the pierce property, ignore 1/2 of your target\u2018s AV.<br/>- On a strong or critical hit with a blade with the slash property, your target suffers marked (2).<br/><br/><strong>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Defensive Dueling**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>Battle Stance<br/></strong>(<strong>Rank 1) </strong>If you only wield a single non-heavy melee weapon and no shield, you can enter this stance. While in this stance, you gain +1 Parry.<br/><br/><strong>(Rank 2)</strong> While in this stance and if you successfully parry a melee attack against you since your last turn, add your Fighting to the damage against that creature with your next attack.<br/><br/><strong>(Rank 3)</strong> While in this stance, you gain +2 Parry instead and increase your weapon damage by 1 with non-heavy melee weapons."
+    },
+    {
+        "Name": "**Disciplined Fighter**",
+        "Skill Requirement": "Fighting",
+        "Description": "(<strong>Rank 1) </strong>You can choose to re-roll any attack roll with a melee weapon. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> You can use your Combat Arts for melee weapons two times per scene each, but each individual Combat Art not two turns in a row.<br/><br/><strong>(Rank 3)  </strong>When you hit with a melee weapon, you can choose to use your Quick Action to make another attack against any target but suffer +1 bane on the roll."
+    },
+    {
+        "Name": "**Dual Wielder**",
+        "Skill Requirement": "Fighting",
+        "Description": "(<strong>Rank 1) </strong>You suffer no banes for attacking with two light melee weapons.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- While wielding two melee weapons, you gain +1 Parry.<br/>- You can also use any non-heavy melee weapons for dual-wielding, but suffer +1 bane on attacks with them if they aren\u2019t light.<br/><br/><strong>(Rank 3)</strong> When attacking with two melee weapons, you can roll another attack with one of the weapons but you suffer +1 bane on it."
+    },
+    {
+        "Name": "**Heavy Weapon Mastery**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>(Rank 1)</strong> Using the Brutal Strike Combat Art with a heavy melee weapon doesn't impose +1 bane on your attack.<br/><br/><strong>(Rank 2) </strong>When you hit with a heavy melee weapon and the attack\u2018s damage reduces the target to 0 HP, you can make another attack against a different target. On a hit with this attack, subtract your weapon damage once from the total damage. You can use this ability once per turn.<br/><strong><br/>(Rank 3)</strong> When you hit with a heavy melee weapon, you can skip all Movement this turn to add +1/2 Strength to the attacks damage. You can use this ability once per turn."
+    },
+    {
+        "Name": "**Hoplite**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>Battle Stance<br/>(Rank 1) </strong>When you wield a polearm, you can enter this stance. While in this stance, you gain the following ability:<br/>- When an enemy moves into your weapon range, you can use a Quick Action for an Opportunity Attack against them.<br/><br/><strong>(Rank 2) </strong>While in this stance, you also gain the following abilities:<br/>- You don\u2018t suffer +1 bane from attacking with a reach polearm in melee range.<br/>- When you are pushed, reduce the distance by one step (being pushed close instead doesn\u2019t push you at all).<br/><br/><strong>(Rank 3) </strong>While in this stance, you also gain the following abilities:<br/>- When you use the Charge Combat Art, add +1/2 Strength to the damage.<br/>- You are immune to being knocked prone or getting pushed by other creatures.<br/>"
+    },
+    {
+        "Name": "**Mace Mastery**",
+        "Skill Requirement": "Fighting",
+        "Description": "(<strong>Rank 1)</strong> When you attack with a mace and don\u2018t blunder (even on a normal failure), you always at least deal damage equal to your weapon damage (ignoring AV) to the target. This applies even if the target\u2018s AV or a resistance would reduce the damage to a lower value. The only exception is the enemy being fully immune to your attack.<br/><br/><strong>(Rank 2)</strong> On a strong or critical hit with a mace, your target is briefly dazed.<br/><br/><strong>(Rank 3)</strong> On a hit with a mace, you can use your Quick Action to ignore the target\u2018s AV completely."
+    },
+    {
+        "Name": "**Martial Artist**",
+        "Skill Requirement": "Fighting",
+        "Description": "(<strong>Rank 1)</strong> You gain the following abilities:<br/>- You can use unarmed attacks, any non-heavy polearm, brawling, or improvised weapon as if it were agile.<br/>- You don\u2019t suffer +1 bane when attacking with improvised weapons.<br/>- You can Guard against ranged attacks without holding a shield.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- You can use any non-heavy melee weapon as if it were agile.<br/>- You ignore the fragile property of improvised weapons and can use Combat Arts with them as if they were brawling weapons.<br/>- When you Guard against a ranged weapon attack and they miss you, you can use your Quick Action to make an Opportunity Attack against the attacker using the weapon or piece of ammunition they used in their attack against you. On a hit, treat this as a normal weapon attack with the attacker\u2018s weapon.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- When you hit with an agile melee weapon, you can choose to make another attack with it. You suffer +1 bane on this attack.<br/>- You can choose to Guard without using a Quick Action. You can use this ability once per scene.<br/>"
+    },
+    {
+        "Name": "**Protective Stance**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>Battle Stance<br/></strong>(<strong>Rank 1) </strong>While you wield a shield, you can enter this stance on your turn. While in this stance, when you use Protect Ally, the enemy suffers +1 bane on the attack against you.<br/><br/><strong>(Rank 2)</strong> While in this stance, you can use a Quick Action to half the damage an ally in your melee range takes from an attack. You can use this ability once between your turns.<br/><br/><strong>(Rank 3)</strong> While in this stance, when you use Protect Ally, you have resistance against the damage you take from the attack."
+    },
+    {
+        "Name": "**Pugilist**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>(Rank 1)</strong> +2 HP. You gain the following abilities:<br/>- Your unarmed attacks count as light brawling weapons that deal 2 weapon damage.<br/>- While you wield no weapons, you gain +1 Parry.<br/><br/><strong>(Rank 2)</strong> +2 HP. You gain the following abilities:<br/>- Unarmed attacks deal 3 weapon damage instead. <br/>- When you hit an enemy with a brawling weapon, you can use Distract against them as a Quick Action. You gain +1 boon on this roll.<br/><br/><strong>(Rank 3)</strong> +2 HP. You gain the following abilities:<br/>- Unarmed attacks deal 4 weapon damage instead. <br/>- When you have hit an enemy with a brawling weapon, you regain your Fortitude as HP.<br/>"
+    },
+    {
+        "Name": "**Riposte**",
+        "Skill Requirement": "Fighting",
+        "Description": "(<strong>Rank 1) </strong>When an enemy misses their melee attack against your Parry and while you wield a non-heavy melee weapon, you can use a Quick Action to roll an Opportunity Attack against that enemy.<br/><br/><strong>(Rank 2)</strong> When you hit an enemy with an Opportunity Attack, their Movement is reduced to 0 for the rest of their turn.<br/><br/><strong>(Rank 3)</strong> When you use your Riposte ability to make an Opportunity Attack and you hit, the enemy is briefly dazed."
+    },
+    {
+        "Name": "**Shield Mastery**",
+        "Skill Requirement": "Fighting",
+        "Description": "<strong>(Rank 1) </strong>When an enemy hits you with a melee attack while you wield a shield, you can use a Quick Action to reduce the SL of their attack by one step (min. failure). Immediately after the attack, roll a Durability check for your shield.<br/><strong><br/>(Rank 2)</strong> Reduce the rigid property of shields you wield by 1.<br/><br/><strong>(Rank 3) </strong>When you use your Shield Mastery ability and have to make a Durability check of your shield, make the check twice and take the higher result."
+    },
+    {
+        "Name": "**Adrenaline Rush**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<em>something with taking damage to gain benefits.</em>"
+    },
+    {
+        "Name": "**Battle Rage**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<strong>Battle Stance<br/></strong>(<strong>Rank 1) </strong>While you wear no heavy armor, you can enter this stance on your turn. While in this stance, you gain the following effects:<br/>- You gain +1 boon on all non-attack Strength rolls.<br/>- When attacking with a melee weapon using Strength, add your Fortitude to the damage.<br/>- You suffer +1 bane on all Mind rolls and can\u2019t cast or concentrate on spells.<br/><br/>When the scene ends or you fall unconscious, you automatically leave this stance. When this happens, roll Strength + Fortitude. On a failure, you suffer one Fatigue.<br/><br/>(<strong>Rank 2) </strong>While in this stance, you also gain the following effects:<br/>- You gain +1 Resist.<br/>- When entering this stance, gain 10 temporary HP.<br/><br/><strong>(Rank 3)</strong> While in this stance, you also gain the following effects:<br/>- You gain +2 Resist instead.<br/>- You ignore the effects of Wounds you suffer.<br/>"
+    },
+    {
+        "Name": "**Body of Bronze**",
+        "Skill Requirement": "Fortitude",
+        "Description": "(<strong>Rank 1) </strong>+2 HP. While you wear no armor, add 1 + your Fortitude to your AV (armor bonus).<br/><br/>(<strong>Rank 2) </strong>+2 HP. While you wear no armor, you are immune to being dazed or stunned.<br/><br/><strong>(Rank 3)</strong> +2 HP. While you wear no armor, you have resistance against physical damage."
+    },
+    {
+        "Name": "**Drunken Technique**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<strong>Battle Stance<br/></strong>(<strong>Rank 1)</strong> While intoxicated, you can enter this stance on your turn. While in this stance, you gain the following effects:<br/>- When an enemy misses you with a melee attack, you can spend a Quick Action to redirect the attack against another creature in melee range. The attack automatically hits as a weak success.<br/>- When you are prone, you can stand up on your turn without spending Movement.<br/><br/>(<strong>Rank 2)</strong> While in the Drunken Technique stance, you also gain the following effects:<br/>- You gain +1 Dodge.<br/>- You can Evade any melee attack from an enemy without using a Quick Action.<br/><br/><strong>(Rank 3)</strong> While in the Drunken Technique stance, you also gain the following effects:<br/>- You gain +1 Resist.<br/>- You don\u2019t suffer +1 bane from being poisoned.<br/>- XXX<br/>"
+    },
+    {
+        "Name": "**Explorer\u2018s Tenacity**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<strong>(Rank 1)</strong> Gain +2 HP. When you roll Fortitude during travel to withstand the elements, the climate, or other environmental hazards, you can re-roll the test.<br/><br/><strong>(Rank 2) </strong>Gain +2 HP. You gain the following abilities:<br/>- During a night\u2019s rest or bad night, you lose double the normal amount of Fatigue.<br/>- When you suffer an Injury, you can choose to suffer one Fatigue instead. You can use this ability once per day.<br/><br/><strong>(Rank 3)</strong> Gain +2 HP. You gain the following abilities:<br/>- During a bad night, you still can roll a hard Strength + Fortitude test to heal one previously treated Injury.<br/>- When you have to make a Supply check for provisions during travel, roll twice and take the higher result. When you would automatically lose units of provisions, reduce the amount you lose by one.<br/>"
+    },
+    {
+        "Name": "**Hard to Kill**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<strong>(Rank 1)</strong> +2 HP. When you suffer a Wound or start dying and have to roll 1d4 in either situation, roll twice and choose any one of the results.<br/><br/><strong>(Rank 2)</strong> +2 HP. When you would suffer one Wound, you can choose to ignore it. You can use this ability once per day.<br/><br/><strong>(Rank 3)</strong> +2 HP. When you use your Hard to Kill ability to ignore a Wound, you immediately regain your Strength as HP."
+    },
+    {
+        "Name": "**Heavy Armor Mastery**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<strong>(Rank 1) </strong>While wearing heavy armor and when you take damage, you can use a Quick Action to double the AV bonus of your worn armor against that attack. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> Reduce the rigid property of heavy armor you wear by 1.<br/><br/><strong>(Rank 3)</strong> You can use your Heavy Armor Mastery ability once between your turns instead."
+    },
+    {
+        "Name": "**Juggernaut**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<strong>(Rank 1) </strong>+2 HP. While in melee range with multiple enemies, you gain +1 AV for every two of them. You can gain up to 1 + Fortitude as AV from this ability.<br/><br/><strong>(Rank 2) </strong>+2 HP. When you use the Cleave Combat Art, you can target any number of enemies in your weapon's reach. Also, you don't subtract your weapon damage from your total damage by the effect of Cleave. <br/><br/><strong>(Rank 3) </strong>+2 HP. Any of your melee attacks against a single enemy also inflicts damage against a second enemy in your weapon's reach, provided your attack roll would also hit them. Subtract your weapon damage once from the total damage against that second enemy. Any other effects of your attack also affect the second enemy."
+    },
+    {
+        "Name": "**Second Wind**",
+        "Skill Requirement": "Fortitude",
+        "Description": "(<strong>Rank 1) </strong>Gain +2 HP. You can use your Action or Quick Action on your turn to regain 1/2 Strength + Fortitude as HP. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> Gain +2 HP. When you use your Second Wind ability, you regain Strength + 2 x Fortitude as HP instead.<br/><br/><strong>(Rank 3)</strong> Gain +2 HP. You can use your Second Wind ability twice per scene, but still only once per turn."
+    },
+    {
+        "Name": "**Strong Mind**",
+        "Skill Requirement": "Fortitude",
+        "Description": "<strong>(Rank 1)</strong> When you have to roll Spirit + Fortitude to concentrate on a spell or withstand an effect that attempts to frighten you, break your morale, charm you, or otherwise influence your mind, you can re-roll the test.<br/><br/><strong>(Rank 2)</strong> +1 Resist. While you are under the influence of an effect that frightens you, charms you, or otherwise influences your mind, you can choose to immediately end the effect. You can use this ability once per scene.<br/><br/><strong>(Rank 3)</strong> +1 Resist. You gain resistance against psychic damage."
+    },
+    {
+        "Name": "**Tough Stomach**",
+        "Skill Requirement": "Fortitude",
+        "Description": "(<strong>Rank 1) </strong>Gain +2 HP. When you have to roll Fortitude to withstand poison, intoxication, or illnesses, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> Gain +2 HP. When you are suffering the poisoned, frightened, or dazed condition, you can use a Quick Action to end it immediately. You can use this ability once per scene.<br/><br/><strong>(Rank 3) </strong>Gain +2 HP. You can use your Tough Stomach ability to immediately end a condition affecting you once between your turns instead."
+    },
+    {
+        "Name": "**Born Haggler**",
+        "Skill Requirement": "Influence",
+        "Description": "<strong>(Rank 1)</strong> You always sell an item for at least half its cost, regardless of your roll.<br/><br/><strong>(Rank 2) </strong>When selling items during downtime, add +1 boon to your Influence roll for selling.<br/><br/><strong>(Rank 3)</strong> When searching for rare items during downtime, add +1 boon to your Influence roll to find the items you are looking for."
+    },
+    {
+        "Name": "**Fast Talking**",
+        "Skill Requirement": "Influence",
+        "Description": "(<strong>Rank 1) </strong>When you fail an Influence roll in any social situation, you can choose to re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> You can also use your Fast Talking ability to assist an ally in conversation. When doing so, they can add your Influence instead of their own to a roll.<br/><br/><strong>(Rank 3)</strong> Immediately before combat begins and if you and your enemies see, hear, and understand each other, you can attempt to verbally confuse them.<br/>Roll Mind + Influence vs. Resist against all enemies hearing and understanding you. On a success, their Initiative is reduced by one category and they are briefly dazed.<br/>"
+    },
+    {
+        "Name": "**Inspire Ally**",
+        "Skill Requirement": "Influence",
+        "Description": "(<strong>Rank 1) </strong>Inspire an ally that can see and hear you within short range. You can use this ability to grant an ally +1 boon on a roll they are about to make. You can use this ability once between turns and up to a number of times equal to your Influence per scene.<br/><br/><strong>(Rank 2) </strong>Whenever you use Inspire Ally on the attack roll of an ally and they hit their target, they add your Influence to the damage.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- You can also use Inspire Ally on yourself.<br/>- Whenever you use Inspire Ally, the target regains your Influence as HP.<br/>"
+    },
+    {
+        "Name": "**Insult to Injury**",
+        "Skill Requirement": "Influence",
+        "Description": "<strong>(Rank 1) </strong>After you hit an enemy with an attack, you can use a Quick Action to use Distract with +1 boon against them.<br/><br/><strong>(Rank 2)</strong> While an enemy is distracted by you, you or one of your allies add your Influence to the damage against them.<br/><br/><strong>(Rank 3)</strong> When an enemy distracted by you would lose the condition because they took damage from another creature than you, you can use a Quick Action to immediately use Distract against them again to continue the distraction."
+    },
+    {
+        "Name": "**Leading Presence **",
+        "Skill Requirement": "Influence",
+        "Description": "(<strong>Rank 1)</strong> While you can see and hear each other, allies in short distance of you gain the following effects:<br/>- You gain +1 boon on your Initiative roll.<br/>- You gain +1 boon on Spirit rolls against being frightened or losing morale.<br/><br/><strong>(Rank 2)</strong> While you can see and hear each other, allies in short distance of you gain the following effects:<br/>- You gain +1 Resist.<br/>- You deal +2 damage.<br/><br/><strong>(Rank 3)</strong> You also gain the effects of your Leading Presence ability and it extends to all allies in long distance of you."
+    },
+    {
+        "Name": "**Empath**",
+        "Skill Requirement": "Insight",
+        "Description": "<strong>(Rank 1)</strong> When you roll Insight about the emotional state, personality, or life of another intelligent creature, you can re-roll the test. You can use this ability once per scene.<br/><strong><br/>(Rank 2)</strong> When you roll Insight about the emotional state, personality, or life of another intelligent creature, you gain +1 boon on the roll.<br/><br/><strong>(Rank 3)</strong> You can use your Action or Quick Action during your turn to roll Spirit + Insight vs. Resist against a creature you can see.<br/>On a success, you use your insights into the creature\u2019s emotional state, personality, or life to distract them for a short duration. They can roll Spirit + Insight at the end of their turns to end the effect early. Any creature you failed this roll against or that succeeded on their roll against this ability is immune against it for the rest of the scene.<br/>"
+    },
+    {
+        "Name": "**Intuitive Appraisal**",
+        "Skill Requirement": "Insight",
+        "Description": "<strong>(Rank 1) </strong>After spending a delving turn with an object, you can estimate its Quality and material worth in coin (not including magical properties). <br/><br/><strong>(Rank 2) </strong>You gain +1 boon on any Spirit roll during downtime to buy items.<br/><strong><br/>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Piercing Look**",
+        "Skill Requirement": "Insight",
+        "Description": "<strong>(Rank 1)</strong> When you roll Insight to know if a creature is lying or how they will act, you can re-roll the test. You can use this ability once per scene.<br/><strong><br/>(Rank 2)</strong> As an Action or a Quick Action on your turn, you can focus your attention on one creature you can see in long range. Roll Spirit + Insight vs. Resist. On a success, your rolls against the creature gain +1 boon and any rolls the creature makes against you suffer +1 bane. This effect lasts for a short duration. You can succeed on this ability once per scene.<br/><br/><strong>(Rank 3)</strong> When you use your Piercing Look ability to focus your attention on one creature you can see and the target dies or falls unconscious, you can use your ability again on your next turn against another target."
+    },
+    {
+        "Name": "**Sense of Deduction**",
+        "Skill Requirement": "Insight",
+        "Description": "<strong>(Rank 1) </strong>When you roll Insight about a chain of events, the responsible entity of an event, the time an event took place, or who might know more about an event, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2) </strong>When you roll Insight about a chain of events, the responsible entity of an event, time an event took place, or who might know more about an event, you gain +1 boon on the roll.<br/><strong><br/>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Attuned**",
+        "Skill Requirement": "Lore",
+        "Description": "increase your number of Attunement slots and gain special abilities in relation to those items"
+    },
+    {
+        "Name": "**Channel Superstition**",
+        "Skill Requirement": "Lore",
+        "Description": "<strong>(Rank 1)</strong> When you use the Demoralize Action and roll a strong or critical success, the target is frightened of you for a short duration. They can roll Spirit + Fortitude at the end of each of their turns to end the effect early.<br/><br/><strong>(Rank 2)</strong> When you use the Demoralize Action, you can target any number of enemies in short range.<br/><br/><strong>(Rank 3)</strong> When a creature frightened of you rolls Spirit + Fortitude at the end of their turn to end the effect, increase the difficulty of the roll by one step."
+    },
+    {
+        "Name": "**Consult the Myths**",
+        "Skill Requirement": "Lore",
+        "Description": "(<strong>Rank 1) </strong>When you roll Lore about a magical or supernatural place or creature, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> When you roll Lore about a magical or supernatural place or creature, you gain +1 boon on the roll.<br/><br/><strong>(Rank 3)</strong> You can use your Action or Quick Action during your turn to roll Spirit + Lore vs. Resist against a supernatural creature.<br/>On a success, you repeatedly chant an ancient phrase, that dazes them for a short duration. They can roll Spirit + Fortitude at the end of their turns to end the effect early. Any creature you failed this roll against or that succeeded on their roll against this ability is immune against it for the rest of the scene.<br/>"
+    },
+    {
+        "Name": "**Identify Artifact**",
+        "Skill Requirement": "Lore",
+        "Description": "<strong>(Rank 1) </strong>You gain the following abilities:<br/>- You can take a delving turn to sense if an item you hold has magical properties.<br/>- After spending an exploration turn with an object, roll Spirit + Lore to identify its magical properties.<br/><strong>Weak.</strong> The GM tells you the general nature of the item\u2018s magical properties, such as damage, element, spell, or something else.<br/><strong>Strong.</strong> The GM tells you one specific magical effect of the item.<br/><strong>Critical.</strong> The GM tells you everything about the magical effects of the item, even if it was cursed.<br/>You can use this ability once per item. If you fail, you need to consult other experts.<br/><br/><strong>(Rank 2) </strong>XXX <br/><strong><br/>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Mage Hunter**",
+        "Skill Requirement": "Lore",
+        "Description": "<strong>(Rank 1) </strong>When an enemy has to roll for Spell Concentration from damage you have dealt to them, they suffer +1 bane on the roll.<br/><strong><br/>(Rank 2) </strong>+1 Resist. When an enemy in your melee range is casting a spell, you can use a Quick Action to make an Opportunity Attack against them.<br/><strong><br/>(Rank 3) </strong>+1 Resist. When an enemy targets you with a spell, you can use a Quick Action to add your Lore to your Defense."
+    },
+    {
+        "Name": "**Magical Sense**",
+        "Skill Requirement": "Lore",
+        "Description": "gain boons against magic and intuit resistances, weaknesses and other abilities from creatures."
+    },
+    {
+        "Name": "**Armor of the Faithful**",
+        "Skill Requirement": "Mysticism",
+        "Description": "(<strong>Rank 1) </strong>+2 HP. While you wear no armor, add 1 + your Mysticism to your AV (armor bonus).<br/><br/>(<strong>Rank 2)</strong> +2 HP. While you wear no armor, you can use your Mysticism for weapon attacks instead of Archery/Fighting.<br/><br/><strong>(Rank 3)</strong> +2 HP. While you wear no armor, you are immune to being feared or confused."
+    },
+    {
+        "Name": "**Communal Practices**",
+        "Skill Requirement": "Mysticism",
+        "Description": "<strong>(Rank 1)</strong> When you cast a singular mystic spell that targets a creature, you can choose a second target to also gain the same effects. If the spell requires rolling vs. a creature\u2018s Defense, your roll must hit both targets. You can use this ability once per scene.<br/><br/><strong>(Rank 2) </strong>When you cast a spell that affects multiple targets, you can exclude any number of targets from the spell\u2019s effect.<br/><br/><strong>(Rank 3)</strong> When you use your Communal Practices ability, you can choose a number of additional targets up to your Mysticism instead."
+    },
+    {
+        "Name": "**Divine Favor**",
+        "Skill Requirement": "Mysticism",
+        "Description": "you can pray to your god or other spiritual patron to bestow blessings on you and your allies. you gain a number of Favor equal to your Mysticism per day to spend on such blessings."
+    },
+    {
+        "Name": "**Divine Rites**",
+        "Skill Requirement": "Mysticism",
+        "Description": "<strong>(Rank 1)</strong> During a short break, you can officiate a divine rite to commune with the spiritual energies of your tradition. You regain half your max. Focus. You can use this ability a number of times per day equal to your Mysticism.<br/><br/><strong>(Rank 2)</strong> When you roll a critical success on any mystic spell of rank 1 or higher, you only spend half of its Focus cost (min. 1).<br/><br/><strong>(Rank 3)</strong> During a short break and if you have less Focus remaining than half your max. Focus, you regain Focus up to half your max. Focus. If you also use your Divine Rites ability during this short break, you instead regain all of your Focus."
+    },
+    {
+        "Name": "**Elemental Adept**",
+        "Skill Requirement": "Mysticism",
+        "Description": "<strong>(Rank 1)</strong> When you hit with a mystic spell that deals damage, you can choose to ignore any resistances against it\u2018s damage type. You can use this ability once between turns.<br/><br/><strong>(Rank 2)</strong> When you use your Elemental Adept ability, you also treat damage immunities against your spell\u2018s damage type as resistances instead.<br/><br/><strong>(Rank 3)</strong> When you use your Elemental Adept ability, you can choose to instead remove all of the target\u2018s resistances and reduce their damage immunities to resistances for a short duration. You can choose this option only once per scene."
+    },
+    {
+        "Name": "**Master of Principles**",
+        "Skill Requirement": "Mysticism",
+        "Description": "<strong>(Rank 1) </strong>When you cast a mystic rank 0 spell, you can choose to re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2) </strong>You gain the following abilities:<br/>- When you hit with a mystic rank 0 spell that deals damage, add your Mysticism to the damage.<br/>- Instead of attacking for an Opportunity Attack, you can choose to cast a mystic rank 0 spell against the target.<br/><br/><strong>(Rank 3) </strong>When you cast a mystic rank 0 spell on your turn, you can use a Quick Action to cast the same spell again against any target but suffer +1 bane on the roll."
+    },
+    {
+        "Name": "**Mystic Champion**",
+        "Skill Requirement": "Mysticism",
+        "Description": "<strong>(Rank 1) </strong>You can infuse one of your spells into a weapon attack. Choose any of your mystic rank 0 non-ritual spells that target the Defense of one or more enemies within your weapon\u2018s range.<br/>Roll your normal weapon attack. Treat the roll as an attack and as casting the chosen spell. With this attack, you can\u2019t use any other abilities or effects that apply to casting a spell.<br/>On a hit, apply the spell\u2018s effects according to the SL of your attack, in addition to your normal weapon attack. You add its spell damage to your attack\u2019s damage and the attack\u2019s damage type becomes that of the spell. Also, spend the spell\u2018s Focus cost, but increase it by 2.<br/><br/><strong>(Rank 2) </strong>You can also use mystic rank 1 non-ritual spells that target the Defense of one or more enemies within your weapon\u2018s range with your Spellblade ability.<br/><br/><strong>(Rank 3) </strong>You can also use mystic rank 2 non-ritual spells that target the Defense of one or more enemies within your weapon\u2018s range with your Spellblade ability."
+    },
+    {
+        "Name": "**Mystical Spell Knowledge**",
+        "Skill Requirement": "Mysticism",
+        "Description": "You can take higher ranks for this talent without having taken it\u2019s lower ranks provided your Mysticism also has the required rank.<br/><strong><br/>(Rank 1)</strong> Learn two rank 0 or 1 spells for any of your traditions. You can choose this Talent multiple times.<br/><br/><strong>(Rank 2) </strong>Learn two rank 2 or lower spells for any of your traditions. You can choose this Talent multiple times.<br/><br/><strong>(Rank 3)</strong> Learn two rank 3 or lower spells for any of your traditions. You can choose this Talent multiple times."
+    },
+    {
+        "Name": "**Rune Scribe**",
+        "Skill Requirement": "Mysticism",
+        "Description": "<em>you can store your learned spells into scrolls to be invoked at a later time.</em>"
+    },
+    {
+        "Name": "**Shape Changer**",
+        "Skill Requirement": "Mysticism",
+        "Description": "<strong>(Rank 1)</strong> When you cast a spell that transforms your physical form, you gain the following effects:<br/>- You gain 10 temporary HP<br/>- Increase your weapon damage by your Mysticism<br/><br/><strong>(Rank 2)</strong> When you cast a spell that changes your physical form, you also gain the following effects:<br/>- Add your Mysticism to your AV<br/>- You can attack twice per turn<br/><br/><strong>(Rank 3)</strong> When you cast a spell that changes your physical form, you gain the following effects:<br/>- You gain resistance against physical damage<br/>- Your gain resistance against fire, frost, lightning, or blast damage (choose one when casting the spell). You can also choose to deal damage of the chosen type with your attacks<br/>"
+    },
+    {
+        "Name": "**Animal Companion**",
+        "Skill Requirement": "Nature",
+        "Description": "(<strong>Rank 1) </strong>You can control animal companions of a tier equal or lower to your Nature (tier 1: tame, tier 2: wild, tier 3: ferocious, tier 4: monstrous). Your animal companion gains the following abilities, while you can command it:<br/>- Your companion may use your Nature instead of any skill they have trained for rolls (their statistics are still calculated by their own skill ranks).<br/>- When you have a companion of a tier lower than your Nature, apply the basic statistics of the highest tier available to you to it. You can choose, if its size increases or stays the same as from its original tier.<br/><br/><strong>(Rank 2)</strong> Choose one:<br/>- You can instead control two animal companions that are both of a tier equal to or lower to half your Nature (rounded down).<br/>- Your animal companion can learn two Combat Arts, appropriate for its types of attacks (ignoring the normal types of weapons the Combat Arts can be used with). It can use these Combat Arts, while under your control.<br/><br/>(<strong>Rank 3) </strong>Choose one:<br/>- When you or one of your animal companions under your control hits a target, the other ones gain +1 boon on attacks against that same target during their turn this round.<br/>- Your animal companions add your Nature to their weapon damage.<br/>"
+    },
+    {
+        "Name": "**Beast Lore**",
+        "Skill Requirement": "Nature",
+        "Description": "(<strong>Rank 1) </strong>When you roll Nature to gain insights into an animal\u2019s or other natural beast\u2019s attitude, behaviors, or characteristics, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- When you roll Nature to gain insights into an animal\u2019s or other natural beast\u2019s attitude, behaviors, or characteristics, you gain +1 boon on the roll.<br/>- You can communicate simple ideas with an animal or other natural beast, that is not aggressive towards you, by rolling Spirit + Nature (the GM decides on the difficulty of your communication attempt). This can include asking them to do a task for you or gaining information about the creature\u2018s natural environment.<br/><br/><strong>(Rank 3)</strong> You can use your Action or Quick Action during your turn to roll Spirit + Nature vs. Resist against an animal or other natural beast.<br/>On a success, you charm them for a short duration. They can roll Mind + Insight at the end of their turns to end the effect early. The effect also ends early if they take damage from any source. Any creature you failed this roll against or that succeeded on their roll against this ability is immune against it for the rest of the scene.<br/>"
+    },
+    {
+        "Name": "**Expert Rider**",
+        "Skill Requirement": "Nature",
+        "Description": "<strong>(Rank 1)</strong> You gain the following abilities:<br/>- When you have to roll to calm or not fall from your mount, you gain +1 boon on the roll.<br/>- Melee attack while mounted against unmounted enemies gain +1 boon.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- You impose +1 bane on any melee attack against your mount.<br/>- When you use the Charge Combat Art while mounted and hit your target, increase the SL of the attack by one step (max. critical success).<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- You automatically succeed on rolls to calm your mount. <br/>- Add your Nature to your mounts AV.<br/>"
+    },
+    {
+        "Name": "**Field Medic**",
+        "Skill Requirement": "Nature",
+        "Description": "<strong>(Rank 1)</strong> You gain the following abilities:<br/>- When you roll Spirit + Nature to save a creature from dying, gain +1 boon on the roll.<br/>- You can quickly attempt to treat a wounded creature during one delving turn. Make a Supply Check for materials and roll Spirit + Nature. On a success, one Injury the creature is suffering is treated.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- When you roll Spirit + Nature to save a creature from dying, add +1 to their die result regardless of the result of your roll.<br/>- When you roll a Supply Check for materials while treating Injuries, roll it twice and take the higher result.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- When you stop a creature from dying, they regain their consciousness and restore 2 x your Nature as HP.<br/>"
+    },
+    {
+        "Name": "**Knowledgeable Wanderer**",
+        "Skill Requirement": "Nature",
+        "Description": "<strong>(Rank 1)</strong> +2 HP. You don\u2018t suffer +1 bane on rolls during travel for taking on multiple roles.<br/><br/><strong>(Rank 2)</strong> +2 HP. You gain +1 boon on your travel rolls to navigate. Treat your blunders for these rolls as normal failures.<br/><br/><strong>(Rank 3)</strong> +2 HP. XXX"
+    },
+    {
+        "Name": "**Plant Lore**",
+        "Skill Requirement": "Nature",
+        "Description": "(<strong>Rank 1) </strong>When you roll Nature to gain information about a plant\u2019s, herb\u2019s, or plant creature\u2019s behaviors, characteristics, or properties, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- When you roll Nature to gain information about a plant\u2019s, herb\u2019s, or plant creature\u2019s behaviors, characteristics, or properties, you gain +1 boon on the roll.<br/>- When you forage materials during travel, you gain +1 unit of them.<br/><br/><strong>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Poison Maker**",
+        "Skill Requirement": "Nature",
+        "Description": "<strong>(Rank 1)</strong> You can spend one exploration turn to turn natural ingredients into poison. Choose one of the following poisons:<br/>- Weapon Poison (weak)<br/>- \u2026<br/>Make a Supply check for your materials and roll Mind + Nature. On a success, you gain the chosen poison. <br/><br/><strong>(Rank 2)</strong> When making poison, you can also choose one of the following poisons:<br/>- Weapon Poison (decent)<br/>- \u2026<br/>Make a Supply check for your materials and roll a hard Mind + Nature test. On a success, you gain the chosen poison.  <br/><br/><strong>(Rank 3)</strong> When making poison, you can also choose one of the following poisons:<br/>- Weapon Poison (strong)<br/>- \u2026<br/>Make a Supply check for your materials and roll a very hard Mind + Nature test. On a success, you gain the chosen poison.  <br/>"
+    },
+    {
+        "Name": "**Blind Senses**",
+        "Skill Requirement": "Perception",
+        "Description": "<strong>(Rank 1)</strong> While you are blinded but not deafened, you gain the following abilities:<br/>- Your rolls requiring sight toward targets close to you only suffer +1 bane from you being blinded.<br/>- Attacks against you from creatures close to you don\u2019t gain +1 boon from you being blinded.<br/>- You can use Quick Actions between your turns toward creatures you can\u2018t see in close range.<br/><br/><strong>(Rank 2)</strong> +1 Resist. You can use your Action or Quick Action on your turn to attempt to sense all creatures around you, even if you can\u2018t see them. Roll Spirit + Perception vs. Dodge. If you succeed, you are aware of a creature\u2018s location and movement and are not considered blinded against them while they remain in short distance from you.<br/><br/><strong>(Rank 3)</strong> +1 Resist. When you use your Blind Senses ability, you extend your awareness to all creatures in medium distance."
+    },
+    {
+        "Name": "**Danger Sense**",
+        "Skill Requirement": "Perception",
+        "Description": "<strong>(Rank 1)</strong> When you roll for Initiative, you can re-roll the test.<br/><strong><br/>(Rank 2)</strong> +1 Resist. When enemies attempt to surprise you at the start of combat or you are attacked by a trap, add your Perception to your Resist against the enemies\u2019  surprise rolls.<br/><br/><strong>(Rank 3)</strong> +1 Resist. You gain the following abilities:<br/>- While you can see and hear each other, allies in short distance of you can use your Resist against enemies attempting to surprise them at the start of combat or when they are attacked by a trap.<br/>- After rolling for Initiative, you can choose to ignore results below 8, taking 8 as the result instead.<br/>"
+    },
+    {
+        "Name": "**Dungeon Delver**",
+        "Skill Requirement": "Perception",
+        "Description": "<strong>(Rank 1)</strong> When you encounter some kind of trap or other mechanical or magical mechanism, you can take a minute to roll Mind + Perception.<br/><strong>Weak.</strong> You understand the basic effects of activating the mechanism (pit trap, wall blades, ground spikes, \u2026). You gain +1 boon on rolls to avoid activating the mechanism.<br/><strong>Strong.</strong> You have a more detailed understanding of how the mechanism works. You also gain +1 boon on rolls to disable it.<br/><strong>Critical. </strong>You fully understand how the mechanism works and what its effects are. Allies close to you gain +1 boon to avoid the mechanism. You also gain resistance against damage from this mechanism\u2018s effects.<br/>You can use this ability once per mechanism.<br/><br/><strong>(Rank 2) </strong>+1 Resist. When you roll dice as part of determining some kind of item gained from treasure, roll twice and pick either result.<br/><br/><strong>(Rank 3)</strong> +1 Resist. When you roll dice to determine the amount of coin you gain from treasure, roll an extra die and choose the highest results from among them, equal to the original amount of dice."
+    },
+    {
+        "Name": "**Eagle Eye**",
+        "Skill Requirement": "Perception",
+        "Description": "<strong>(Rank 1)</strong> You gain the following abilities:<br/>- You can use the Spot Action as an Action or a Quick Action on your turn.<br/>- When you roll Perception to see anything hidden, obscured, or invisible, you can re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> Attacking a target behind cover at range doesn\u2018t impose +1 bane on your attack from their cover.<br/><br/><strong>(Rank 3)</strong> Your Perception rolls don\u2019t suffer banes from perceiving small details at far distances. You can make out any detail you would see at close range, even up to very far range."
+    },
+    {
+        "Name": "**Identify Weakness**",
+        "Skill Requirement": "Perception",
+        "Description": "<strong>(Rank 1) </strong>You can use your Action or Quick Action on your turn to identify a weak spot of a creature or object you can see in long range. Roll Spirit + Perception vs. Resist.<br/>On a success, add your Perception to the damage of attacks against the target and ignore their resistances against your attack\u2019s damage type.<br/>This effect lasts for a short duration. You can succeed on the roll of this ability once per scene.<br/><br/><strong>(Rank 2)</strong> When you use your Identify Weakness ability to focus your attention on one creature you can see and the target dies or falls unconscious, you can use your ability again on your next turn against another target.<br/><strong><br/>(Rank 3)</strong> When you hit the target of your Identify Weakness ability with an attack, you can choose to have them be vulnerable against your attack\u2019s damage type. After the attack, roll Spirit + Perception vs. Resist again. On a failure, your Identify Weakness ability ends."
+    },
+    {
+        "Name": "**I Know A Guy**",
+        "Skill Requirement": "Streetwise",
+        "Description": "<strong>(Rank 1)</strong> During downtime in a settlement you have previously used the Carouse activity in, you can forgo using Buy Item, Sell Item, or Find Contact. Instead, roll Spirit + Streetwise. On a success, you know somebody related to what you are looking for but the results are more unpredictable.<br/><strong>Weak.</strong> Your contact holds a grudge against you from your last interaction. They can get you what you are looking for but have a major request in return.<br/><strong>Strong.</strong> Your contact can get you what you are looking for but with a small request in return.<br/><strong>Critical.</strong> Your contact can get you what you are looking for without any additional requests in return.<br/>Can be used once between adventures.<br/><br/><strong>(Rank 2)</strong> XXX<br/><br/><strong>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Jack of All Trades**",
+        "Skill Requirement": "Streetwise",
+        "Description": "<strong>(Rank 1)</strong> You can choose to add your Streetwise to any roll instead of another skill, except for magic skills. You can use this ability once per scene.<br/><strong><br/>(Rank 2)</strong> After you have used your Jack of All Trades ability to replace a skill and succeeded on the roll, you can continue to add your Streetwise to rolls instead of that same skill for the rest of the scene.<br/><br/><strong>(Rank 3)</strong> After you have used your Jack of All Trades ability to replace a skill and succeeded on the roll, you can use it again during the same scene for another skill."
+    },
+    {
+        "Name": "**Swashbuckler**",
+        "Skill Requirement": "Streetwise",
+        "Description": "<strong>(Rank 1)</strong> Gain +2 HP. When you hit an enemy with a light melee weapon, this turn that enemy can\u2019t use Quick Actions or other abilities outside of their own turn against you.<br/><br/><strong>(Rank 2) </strong>Gain +2 HP. If you hit a creature with a light melee weapon, you gain +1 boon on the next attack with a light melee weapon against them during the same turn.<br/><br/><strong>(Rank 3)</strong> Gain +2 HP. After you hit a creature with a light melee weapon, you can use a Quick Action to immediately spend 1 Movement. You can use this ability once between your turns."
+    },
+    {
+        "Name": "**Thug Tactics**",
+        "Skill Requirement": "Streetwise",
+        "Description": "<strong>(Rank 1) </strong>When you are in melee range with at least one ally and you outnumber the enemies you are in melee range with, gain +1 boon on attacks against them.<br/><br/><strong>(Rank 2)</strong> Your allies that you are in melee range with also gain +1 boon against outnumbered enemies you are in melee range with.<br/><br/><strong>(Rank 3) </strong>Outnumbered enemies suffer +1 bane on attacks against you and allies you are in melee range with."
+    },
+    {
+        "Name": "**Explorer of Nature**",
+        "Skill Requirement": "Survival",
+        "Description": "<strong>(Rank 1)</strong> Choose one of the following environments: Desert, Forest, Mountain, Plains, Sea, Swamp, or Tundra.<br/>When exploring or traveling in the chosen environment, and you roll Survival or Nature related to the environment or its inhabitants, you can choose to re-roll the test. You can use this ability once per scene.<br/><br/><strong>(Rank 2)</strong> Choose a second environment.<br/>You also gain the following abilities when exploring or traveling in one of your chosen environments:<br/>- If you are the navigator, reduce the amount of options you have to choose from a blunder or failure by one.<br/>- If you are the scout, reduce the Encounter Die by one step regardless of the outcome of your roll.<br/>- If you roll to gather supplies during exploration or travel and you succeed on the roll, you always gain one more unit of supply available (if multiple types of supply can be chosen, choose one).<br/><br/><strong>(Rank 3)</strong> Choose a third environment. You also gain the following abilities when exploring or traveling in one of your chosen environments:<br/>- XXX<br/>"
+    },
+    {
+        "Name": "**Makeshift Artisan**",
+        "Skill Requirement": "Survival",
+        "Description": "<strong>(Rank 1)</strong> You can take one exploration turn to craft simple tools and weapons from the natural materials you have available. Make a Supply check for materials and roll Agility + Survival. On a success, you create a single Quality 1 weapon or piece of gear with the fragile property or one unit of ammo (arrows, bolts, or throwing stones).<br/><strong><br/>(Rank 2)</strong> You can also use your Makeshift Artisan ability to create Quality 2 items. When doing so, make your Supply check for materials twice and take the lower result.<br/><br/><strong>(Rank 3)</strong> When you attack using weapons or ammo you created with your Makeshift Artisan ability, you can choose to instantly destroy the weapon or lose one unit of that ammo after a hit with it. When doing so, add its weapon damage an additional time to the damage."
+    },
+    {
+        "Name": "**Monster Hunter**",
+        "Skill Requirement": "Survival",
+        "Description": "<strong>(Rank 1)</strong> You can use an Action or a Quick Action on your turn to focus your sight on one creature that is at least one size larger than you to analyze its movements and behaviors. Add your Survival to the damage against them.<br/>This effect lasts a short duration or until you use it again against another larger creature. <br/><br/><strong>(Rank 2)</strong> While you have a target with your Monster Hunter ability, you can Evade and Guard against them without spending a Quick Action.<br/><strong><br/>(Rank 3)</strong> While you have a target with your Monster Hunter ability and you hit them with an attack, you can choose to roll Spirit + Survival vs. Resist. On a success, they are briefly stunned. You can use this ability once per scene."
+    },
+    {
+        "Name": "**Relentless Tracker**",
+        "Skill Requirement": "Survival",
+        "Description": "<strong>(Rank 1)</strong> When you roll Survival to follow tracks, identify them, or gain information from them, you can choose to re-roll the test. You can use this ability once per scene.<br/><strong><br/>(Rank 2)</strong> XXX<br/><strong><br/>(Rank 3)</strong> XXX"
+    },
+    {
+        "Name": "**Trap Maker**",
+        "Skill Requirement": "Survival",
+        "Description": "<strong>(Rank 1)</strong> You can use one exploration turn to lay a trap. Make a Supply check for your materials and roll Spirit + Survival. On a success, choose one of the following effects (or choose a fitting, individual effect):<br/>- Pit (a creature falls a short distance into the pit)<br/>- Falling Rocks (a creature takes 10 crush damage and falls prone)<br/>- Net (a creature is restrained by the net)<br/>You lay a trap with the chosen effect. It automatically activates once a creature comes into contact with it. Once activated, the target has to roll Agility + Athletics. On a failure, they suffer the trap\u2018s effect.<br/><br/><strong>(Rank 2)</strong> You gain the following abilities:<br/>- You can also use your Trap Maker ability during a delving turn. When doing so, make the Supply check twice and take the lower result.<br/>- When a creature has to roll for one of your traps, the difficulty of their roll is hard.<br/><br/><strong>(Rank 3)</strong> You gain the following abilities:<br/>- When a creature suffers your trap\u2019s effect, add 2 x your Survival to the damage.<br/>- When a creature has to roll for one of your traps, the difficulty of their roll is very hard. <br/>"
+    },
+    {
+        "Name": "**Wilderness Expert**",
+        "Skill Requirement": "Survival",
+        "Description": "<strong>(Rank 1) </strong>While carrying Cook\u2018s Utensils, you can improve the provisions of the group. During a night\u2018s rest or bad night, when the group would make a Supply Check for their provisions, roll Spirit + Survival. On a success, each member rolls their Supply Check twice and takes the higher result.<br/><strong><br/>(Rank 2)</strong> You gain the following abilities:<br/>- When you have to roll Survival to establish a camp, you gain +1 boon on the roll.<br/>- When you are attacked while resting, you can still roll Spirit + Perception to quickly wake up before the attack, but suffer +1 bane on the roll.<br/><br/><strong>(Rank 3)</strong> XXX"
+    }
+]
