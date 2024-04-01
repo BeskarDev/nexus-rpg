@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 🐎 Mounts & Companions
 
-# Mounts
+## Mounts
 
 You can ride a creature that is suitable as a mount and one or more sizes above you. While mounted, you can move with your mount’s Movement during your turn. You also travel faster (1.5x travel speed) and Fortitude rolls during travel only affect your mount and not you.
 
@@ -18,21 +18,21 @@ You also have to roll Spirit + Nature in situations that scare or confuse your m
 - A loud noise erupts.
 - Your mount is close to an undead or otherwise supernatural creature.
 
-# Companions
+## Companions
 
 Companions are powerful NPCs that accompany you on your adventures. You can obtain access to various NPC companions - bestial, humanoid, or other.
 
 For example, adventurers wanting an Animal Companion will have to take the Survival Talent with the same name. 
 
-## Companions during combat
+### Companions during combat
 
 Every companion is assigned to one specific adventurer, who guides and leads them. The companion takes their turn during combat either directly before or after their assigned adventurer (your choice).
 
-### Health
+**Health**
 
 The companion has two Health Marks. When they are reduced to 0 HP, they start suffering Wounds or Fatigue the same way as an adventurer. The only difference is, that when they have taken two Wounds, they are instantly dead. If they suffered one Wound and one Fatigue, they instead start dying the same as adventurers.
 
-### Morale
+**Morale**
 
 Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fortitude to hold their morale in tough situations. The following situations require your companion to roll for morale during combat:
 

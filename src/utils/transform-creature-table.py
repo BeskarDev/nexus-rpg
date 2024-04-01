@@ -1,3 +1,5 @@
+# TODO: this file is probably broken with new convertion script
+
 def process_table_row(row):
     tier, animal_type, category, size, initiative, name, hp, av_types, stats, parry_dodge_resist, skills, weaknesses, resistances, actions, abilities = row.split('|')
     return {

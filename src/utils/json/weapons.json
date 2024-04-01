@@ -1,0 +1,344 @@
+[
+    {
+        "Name": "**Handaxe (or Throwing Axe)**",
+        "Quality": "1",
+        "Type": "Axe",
+        "Damage": "2",
+        "Properties": "agile, bundle, light, slash, thrown (short/medium)",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Hatchet (or Broadaxe, Cleaver, War Sickle)**",
+        "Quality": "1",
+        "Type": "Axe",
+        "Damage": "2",
+        "Properties": "agile, light, slash",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Battleaxe (or Crescent Axe)**",
+        "Quality": "2",
+        "Type": "Axe",
+        "Damage": "3",
+        "Properties": "slash, versatile (+1)",
+        "Load": "1",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Greataxe (or Elipson Axe, War Scythe)**",
+        "Quality": "2",
+        "Type": "Axe",
+        "Damage": "4",
+        "Properties": "heavy (d8), slash, two-handed",
+        "Load": "2",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Dart (or Throwing Knife, Throwing Star, Chakram)**",
+        "Quality": "1",
+        "Type": "Blade",
+        "Damage": "2",
+        "Properties": "agile, bundle, light, pierce, thrown (short/medium)",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Scimitar (or Khopesh, Kopis, Kukri, Machete, Macuahuitl, Shotel)**",
+        "Quality": "1",
+        "Type": "Blade",
+        "Damage": "2",
+        "Properties": "agile, light, slash",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Shortsword (or Dagger, Gladius, Xiphos, Duan Jian, Wakizashi)**",
+        "Quality": "1",
+        "Type": "Blade",
+        "Damage": "2",
+        "Properties": "agile, light, pierce",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Broadsword (or Katana, Dao, Yatagan)**",
+        "Quality": "2",
+        "Type": "Blade",
+        "Damage": "3",
+        "Properties": "slash, versatile (+1)",
+        "Load": "1",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Longsword (or Bastard Sword, Rapier, Jian)**",
+        "Quality": "2",
+        "Type": "Blade",
+        "Damage": "3",
+        "Properties": "pierce, versatile (+1)",
+        "Load": "1",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Greatsaber (or Rhomphaia, Odachi, Miaodao)**",
+        "Quality": "2",
+        "Type": "Blade",
+        "Damage": "4",
+        "Properties": "heavy (d8), slash, two-handed",
+        "Load": "2",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Greatsword (or Claymore, Gim)**",
+        "Quality": "2",
+        "Type": "Blade",
+        "Damage": "4",
+        "Properties": "heavy (d8), pierce, two-handed",
+        "Load": "2",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Twinblade**",
+        "Quality": "2",
+        "Type": "Blade",
+        "Damage": "2",
+        "Properties": "agile, double-sided, pierce, two-handed",
+        "Load": "2",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Shortbow (or Hunting Bow)**",
+        "Quality": "1",
+        "Type": "Bow",
+        "Damage": "3",
+        "Properties": "ammo, range (short/long), two-handed",
+        "Load": "1",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Longbow (or Composite Bow)**",
+        "Quality": "2",
+        "Type": "Bow",
+        "Damage": "4",
+        "Properties": "ammo, heavy (d6), range (medium/very long), two-handed",
+        "Load": "2",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Warbow (or Greatbow)**",
+        "Quality": "2",
+        "Type": "Bow",
+        "Damage": "5",
+        "Properties": "ammo, heavy (d8), range (long/extreme), two-handed",
+        "Load": "2",
+        "Cost": "500"
+    },
+    {
+        "Name": "**Whip (or Urumi)**",
+        "Quality": "1",
+        "Type": "Brawling",
+        "Damage": "2",
+        "Properties": "agile, entangle, light, reach, slash",
+        "Load": "1",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Cestus (or Spiked Gauntlet, Push Dagger)**",
+        "Quality": "2",
+        "Type": "Brawling",
+        "Damage": "2",
+        "Properties": "crush, light",
+        "Load": "0.5",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Claw (or Arm Blade, Katar)**",
+        "Quality": "2",
+        "Type": "Brawling",
+        "Damage": "2",
+        "Properties": "light, slash",
+        "Load": "0.5",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Spiked Chain (or Kusarigama)**",
+        "Quality": "2",
+        "Type": "Brawling",
+        "Damage": "2",
+        "Properties": "double-sided, reach, switch (crush / slash), two-handed",
+        "Load": "1",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Light Crossbow (or Gastraphetes)**",
+        "Quality": "3",
+        "Type": "Crossbow",
+        "Damage": "4",
+        "Properties": "ammo, heavy (d6), range (medium/very long), reload, two-handed",
+        "Load": "2",
+        "Cost": "500"
+    },
+    {
+        "Name": "**Heavy Crossbow (or Hand Ballista)**",
+        "Quality": "3",
+        "Type": "Crossbow",
+        "Damage": "6",
+        "Properties": "ammo, heavy (d8), range (long/extreme), reload, two-handed",
+        "Load": "3",
+        "Cost": "1000"
+    },
+    {
+        "Name": "**Club (or Tonfa, Nunchaku, War Scepter)**",
+        "Quality": "1",
+        "Type": "Mace",
+        "Damage": "2",
+        "Properties": "agile, crush, light",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Throwing Club (or Light Hammer)**",
+        "Quality": "1",
+        "Type": "Mace",
+        "Damage": "2",
+        "Properties": "agile, bundle, crush, light, thrown (short/medium)",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Mace (or War Club, Flail, Morningstar, Warhammer, Warpick)**",
+        "Quality": "2",
+        "Type": "Mace",
+        "Damage": "3",
+        "Properties": "crush, versatile (+1)",
+        "Load": "1",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Maul (or Greatclub, Kanabo, Polehammer)**",
+        "Quality": "2",
+        "Type": "Mace",
+        "Damage": "4",
+        "Properties": "crush, heavy (d8), two-handed",
+        "Load": "2",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Javelin (or Harpoon)**",
+        "Quality": "1",
+        "Type": "Polearm",
+        "Damage": "2",
+        "Properties": "bundle, light, pierce, thrown (short/long)",
+        "Load": "1",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Short Spear (or Trident)**",
+        "Quality": "1",
+        "Type": "Polearm",
+        "Damage": "2",
+        "Properties": "light, pierce, thrown (short/medium), versatile (+1)",
+        "Load": "1",
+        "Cost": "100"
+    },
+    {
+        "Name": "**Glaive (or Halberd, Bardiche, Poleaxe, Podao, Dagger-Axe, Swordstaff)**",
+        "Quality": "2",
+        "Type": "Polearm",
+        "Damage": "4",
+        "Properties": "reach, slash, two-handed",
+        "Load": "2",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Quarterstaff (or Scepter)**",
+        "Quality": "2",
+        "Type": "Polearm",
+        "Damage": "3",
+        "Properties": "crush, reach, versatile (+1)",
+        "Load": "1",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Spear (or Winged Spear) **",
+        "Quality": "2",
+        "Type": "Polearm",
+        "Damage": "3",
+        "Properties": "pierce, reach, versatile (+1)",
+        "Load": "1",
+        "Cost": "200"
+    },
+    {
+        "Name": "**Buckler**",
+        "Quality": "2",
+        "Type": "Shield",
+        "Damage": "1",
+        "Properties": "light, parry +1",
+        "Load": "0.5",
+        "Cost": "150"
+    },
+    {
+        "Name": "**Light Shield**",
+        "Quality": "2",
+        "Type": "Shield",
+        "Damage": "1",
+        "Properties": "AV +1, parry +1",
+        "Load": "1",
+        "Cost": "150"
+    },
+    {
+        "Name": "**Heavy Shield**",
+        "Quality": "2",
+        "Type": "Shield",
+        "Damage": "2",
+        "Properties": "AV +2, heavy (d8), parry +2, rigid 1",
+        "Load": "2",
+        "Cost": "500"
+    },
+    {
+        "Name": "**Great Shield**",
+        "Quality": "3",
+        "Type": "Shield",
+        "Damage": "3",
+        "Properties": "AV +3, covering, heavy (d10), parry +2, rigid 2",
+        "Load": "2",
+        "Cost": "1000"
+    },
+    {
+        "Name": "**Blowpipe**",
+        "Quality": "1",
+        "Type": "Thrown",
+        "Damage": "1",
+        "Properties": "ammo, blowpipe, pierce, range (short/long)",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Bola (or Net)**",
+        "Quality": "1",
+        "Type": "Thrown",
+        "Damage": "2",
+        "Properties": "bundle, entangle, heavy (d6), thrown (close/short)",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Kestros**",
+        "Quality": "2",
+        "Type": "Thrown",
+        "Damage": "3",
+        "Properties": "ammo, pierce, thrown (short/long), two-handed",
+        "Load": "0.5",
+        "Cost": "50"
+    },
+    {
+        "Name": "**Sling (or Slingshot)**",
+        "Quality": "1",
+        "Type": "Thrown",
+        "Damage": "3",
+        "Properties": "ammo, crush, thrown (short/long), two-handed",
+        "Load": "0.5",
+        "Cost": "50"
+    }
+]

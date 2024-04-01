@@ -22,11 +22,11 @@ If you gain temporary HP from multiple sources, you only gain the highest one am
 
 ## Wounds
 
-> Most creatures consider surrender or fleeing, when wounded. Seldom do fights between cultured creatures lead to death. Most often fights are decided earlier and consequences of failure are more often capture or theft, than death.
+> Most intelligent creatures consider surrender or fleeing when wounded. Seldom do fights between cultured individuals lead to death. Most often fights are decided earlier and consequences of failure are more often capture or theft, than death.
 Besides, it is far more valuable to sell defeated foes back to their people than kill them outright and facing the wrath of their peers.
 > 
 
-While HP determines your short-term endurance, Wounds displays your long-term condition. When you run out of HP or are suffering from extreme conditions, you start to take Wounds in the form of either Injuries or Fatigue. 
+While HP determines your short-term endurance, Wounds displays your long-term health. When you run out of HP or are suffering from extreme conditions, you start to take Wounds in the form of either Injuries or Fatigue. 
 
 Any Adventurer can take up to three Wounds from any combination of Injuries and Fatigue. When you suffer your first Wound, roll 1d4 and suffer the effects below as long as that Wound lasts.
 
@@ -48,12 +48,12 @@ Whenever you take an Injury…
 - and the damage is equal to or higher than your max HP —> suffer +1 Injury
 - and the damage is equal to or higher than twice your max HP —> suffer +2 Injuries
 
-> Note that attacks that deal damage to you multiple times still only inflict one Injury to you. Only if the damage of any of the attack’s hits surpasses the above mentioned thresholds, do you take multiple Injuries from the attack.
+> Note that attacks that deal damage to you multiple times from a single roll still only inflict one Injury to you. Only if the damage of any of the attack’s damage instances surpasses the above mentioned thresholds, do you take multiple Injuries from the attack.
 > 
 
 **Treating Injuries**
 
-During a night‘s rest, you can attempt to treat one of your Injuries. Make a Supply check for your materials and roll Mind + Nature. On a success, the Injury is treated and you no longer suffer its negative effect. The Injury re-opens when you are reduced to 0 HP again.
+During a night‘s rest, you can attempt to treat one of your Injuries. Make a Supply check for your materials and roll Mind + Nature. On a success, the Injury is treated and you no longer suffer its negative effect. The Injury re-opens when you are reduced to 0 HP again, which also results in you suffering its negative effect again.
 
 **Healing Injuries**
 
