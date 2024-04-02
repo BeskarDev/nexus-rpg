@@ -1,16 +1,16 @@
 .combat-art--container {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5mm;
+  gap: 1mm;
 }
 
 .combat-art--card {
   padding: 1rem;
   background-color: white;
-  width: 64mm;
-  height: 89mm;
+  width: 63mm;
+  height: 88mm;
   border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 2mm;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -42,7 +42,6 @@
 
 @media print {
   .page-break {
-    margin-top: 1rem;
     display: block;
     break-after: page;
   }
@@ -50,6 +49,6 @@
 
 @page {
   /*size: a4 portrait;*/
-  size: 195mm 270mm;
+  size: 194mm 269mm;
   margin: 1mm;
 }
