@@ -1,14 +1,14 @@
 .combat-art--container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1px;
+  gap: 0.5mm;
 }
 
 .combat-art--card {
   padding: 1rem;
   background-color: white;
-  width: 6.4cm;
-  height: 8.9cm;
+  width: 64mm;
+  height: 89mm;
   border: 1px solid black;
   border-radius: 4px;
   display: flex;
@@ -49,6 +49,7 @@
 }
 
 @page {
-  size: a4 portrait;
-  margin: 8mm;
+  /*size: a4 portrait;*/
+  size: 195mm 270mm;
+  margin: 1mm;
 }

@@ -41,15 +41,16 @@ export const CombatArtsGrid: React.FC = () => {
     combatArts.filter(ca => selectedCombatArts.includes(ca.name))
   ), [combatArts, selectedCombatArts])
 
+  const selectAll = () => setSelectedCombatArts(combatArts.map(ca => ca.name))
+  const deselectAll = () => setSelectedCombatArts([])
+
   return (
     <ThemeProvider theme={theme}>
       <Stack flexDirection="row" gap={1} alignItems="center" sx={{ mb: 2, py: 2, px: 3, backgroundColor: 'white', borderRadius: '8px' }}>
-        <Button variant="contained" onClick={handlePrint} >PRINT</Button>
+        <Button variant="contained" size="large" onClick={handlePrint} >PRINT</Button>
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="demo-multiple-checkbox-label">Combat Arts</InputLabel>
+          <InputLabel >Combat Arts</InputLabel>
           <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
             multiple
             value={selectedCombatArts}
             onChange={handleChange}
@@ -66,6 +67,8 @@ export const CombatArtsGrid: React.FC = () => {
             ))}
           </Select>
         </FormControl>
+        <Button variant="outlined" size="small" onClick={selectAll}>Select all</Button>
+        <Button variant="outlined" size="small" onClick={deselectAll}>Deselect all</Button>
       </Stack>
       <Typography variant="subtitle1">{filteredCombatArts.length} Combat Arts will be printed:</Typography>
       <div className="combat-art--container" ref={componentRef}>
