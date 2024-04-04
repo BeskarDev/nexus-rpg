@@ -1,74 +1,74 @@
 [
     {
-        "Name": "**Leather (or Padded Cloth, Heavy Robes)**",
-        "Quality": "1",
-        "Type": "Light Armor",
-        "AV": "2",
-        "Properties": "-",
-        "Load": "1",
-        "Cost": "50"
+        "name": "Leather (or Padded Cloth, Heavy Robes)",
+        "quality": "1",
+        "type": "Light Armor",
+        "av": "2",
+        "properties": "-",
+        "load": "1",
+        "cost": "50"
     },
     {
-        "Name": "**Banded Leather (or Studded Leather, Piecemeal Mail)**",
-        "Quality": "2",
-        "Type": "Light Armor",
-        "AV": "3",
-        "Properties": "-",
-        "Load": "2",
-        "Cost": "500"
+        "name": "Banded Leather (or Studded Leather, Piecemeal Mail)",
+        "quality": "2",
+        "type": "Light Armor",
+        "av": "3",
+        "properties": "-",
+        "load": "2",
+        "cost": "500"
     },
     {
-        "Name": "**Chain Mail (or Linothorax, Bone Lamellar, Horn Lamellar)**",
-        "Quality": "3",
-        "Type": "Light Armor",
-        "AV": "4",
-        "Properties": "noisy",
-        "Load": "2",
-        "Cost": "1000"
+        "name": "Chain Mail (or Linothorax, Bone Lamellar, Horn Lamellar)",
+        "quality": "3",
+        "type": "Light Armor",
+        "av": "4",
+        "properties": "noisy",
+        "load": "2",
+        "cost": "1000"
     },
     {
-        "Name": "**Scale Mail (or Disk Plate, Wood Plates, Shell Plates)**",
-        "Quality": "2",
-        "Type": "Heavy Armor",
-        "AV": "4",
-        "Properties": "heavy (d6), noisy",
-        "Load": "2",
-        "Cost": "500"
+        "name": "Scale Mail (or Disk Plate, Wood Plates, Shell Plates)",
+        "quality": "2",
+        "type": "Heavy Armor",
+        "av": "4",
+        "properties": "heavy (d6), noisy",
+        "load": "2",
+        "cost": "500"
     },
     {
-        "Name": "**Breastplate (or Plate Cuirass, Splint Mail)**",
-        "Quality": "3",
-        "Type": "Heavy Armor",
-        "AV": "5",
-        "Properties": "heavy (d8), noisy, rigid 1",
-        "Load": "2",
-        "Cost": "1000"
+        "name": "Breastplate (or Plate Cuirass, Splint Mail)",
+        "quality": "3",
+        "type": "Heavy Armor",
+        "av": "5",
+        "properties": "heavy (d8), noisy, rigid 1",
+        "load": "2",
+        "cost": "1000"
     },
     {
-        "Name": "**Plate Harness (or Segmented Plate, Heavy Lamellar, O-Yoroi)**",
-        "Quality": "3",
-        "Type": "Heavy Armor",
-        "AV": "6",
-        "Properties": "heavy (d10), noisy, rigid 2",
-        "Load": "3",
-        "Cost": "2000"
+        "name": "Plate Harness (or Segmented Plate, Heavy Lamellar, O-Yoroi)",
+        "quality": "3",
+        "type": "Heavy Armor",
+        "av": "6",
+        "properties": "heavy (d10), noisy, rigid 2",
+        "load": "3",
+        "cost": "2000"
     },
     {
-        "Name": "**Open Helmet**",
-        "Quality": "2",
-        "Type": "Helmet",
-        "AV": "1",
-        "Properties": "-",
-        "Load": "1",
-        "Cost": "200"
+        "name": "Open Helmet",
+        "quality": "2",
+        "type": "Helmet",
+        "av": "1",
+        "properties": "-",
+        "load": "1",
+        "cost": "200"
     },
     {
-        "Name": "**Closed Helmet**",
-        "Quality": "3",
-        "Type": "Helmet",
-        "AV": "2",
-        "Properties": "narrowed",
-        "Load": "1",
-        "Cost": "500"
+        "name": "Closed Helmet",
+        "quality": "3",
+        "type": "Helmet",
+        "av": "2",
+        "properties": "narrowed",
+        "load": "1",
+        "cost": "500"
     }
 ]

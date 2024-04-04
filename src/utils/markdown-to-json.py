@@ -23,10 +23,18 @@ def markdown_to_json(file_path):
 
   df = df.iloc[1:]  # Remove the first row (separator line)
 
-  # Remove trailing whitespace from column names
+  # Fix formatting
   df.columns = df.columns.str.strip()
+  df.columns = df.columns.str.lower()
   for col in df.columns:
     df[col] = df[col].str.strip()
+    df[col] = df[col].str.strip('**')
+    
+  if 'effect' in df.columns:
+    df['effect'] = df['effect'].str.replace('<br/><br/>', '<br/>')
+    
+  if 'heightened' in df.columns:
+    df['heightened'] = df['heightened'].str.replace('<br/><br/>', '<br/>')
   
   # Replace empty lines with placeholder
   df = df.fillna('-')
@@ -50,8 +58,8 @@ def markdown_to_json(file_path):
 # Get current working directory
 current_dir = os.getcwd()
 
-# Get all markdown files in output directory (relative to current directory)
-output_dir = os.path.join(current_dir, "output")
+# Get all markdown files in directory (relative to current directory)
+output_dir = os.path.join(current_dir, "markdown")
 for filename in os.listdir(output_dir):
   if filename.endswith(".md"):
     filepath = os.path.join(output_dir, filename)

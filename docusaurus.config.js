@@ -151,6 +151,12 @@ const config = {
             label: '🐲 Creatures',
           },
           {
+            type: 'docSidebar',
+            sidebarId: 'characterSheetSidebar',
+            position: 'right',
+            label: '⚙️ Tools',
+          },
+          {
             href: 'https://github.com/BeskarDev/nexus-rpg',
             label: 'GitHub',
             position: 'right',

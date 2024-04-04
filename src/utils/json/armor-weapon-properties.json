@@ -1,106 +1,106 @@
 [
     {
-        "Name": "**agile**",
-        "Description": "You can roll attacks with Agility instead of Strength. When doing so, also use Agility as your base damage."
+        "name": "agile",
+        "description": "You can roll attacks with Agility instead of Strength. When doing so, also use Agility as your base damage."
     },
     {
-        "Name": "**ammo**",
-        "Description": "Needs ammunition to attack."
+        "name": "ammo",
+        "description": "Needs ammunition to attack."
     },
     {
-        "Name": "**AV +X**",
-        "Description": "Increases your Armor Value (AV) by X."
+        "name": "AV +X",
+        "description": "Increases your Armor Value (AV) by X."
     },
     {
-        "Name": "**blowpipe**",
-        "Description": "Attacking an unaware target with this weapon doesn\u2019t reveal your position. Hitting with this weapon, while its ammo is coated in any kind of poison, allows you to multiply that poison\u2019s damage by your attack\u2019s SL the same way you do for weapon damage (weak: x1, strong: x2, or critical: x3)."
+        "name": "blowpipe",
+        "description": "Attacking an unaware target with this weapon doesn\u2019t reveal your position. Hitting with this weapon, while its ammo is coated in any kind of poison, allows you to multiply that poison\u2019s damage by your attack\u2019s SL the same way you do for weapon damage (weak: x1, strong: x2, or critical: x3)."
     },
     {
-        "Name": "**bundle**",
-        "Description": "You carry multiple of this weapon in a bundle. Bundle weapons are treated as their own type of Supply and deplete with use, using the same rules as ammo. Effects that apply to a single weapon apply to the entire bundle instead.<br/>You can also use a bundle weapon in melee, but suffer +1 bane on attacks. You can also dual-wield bundle weapons in melee and at range, even if you only have one unit left.<br/>"
+        "name": "bundle",
+        "description": "You carry multiple of this weapon in a bundle. Bundle weapons are treated as their own type of Supply and deplete with use, using the same rules as ammo. Effects that apply to a single weapon apply to the entire bundle instead.<br/>You can also use a bundle weapon in melee, but suffer +1 bane on attacks. You can also dual-wield bundle weapons in melee and at range, even if you only have one unit left.<br/>"
     },
     {
-        "Name": "**covering**",
-        "Description": "Can be placed down using an Action to act as a stationary cover from a direction of your choice without you holding the item. You can use another Action to pick the item up again."
+        "name": "covering",
+        "description": "Can be placed down using an Action to act as a stationary cover from a direction of your choice without you holding the item. You can use another Action to pick the item up again."
     },
     {
-        "Name": "**crush**",
-        "Description": "Ignore 1/2 of the enemy\u2019s AV (rounded up). If you gain this effect from multiple sources, you ignore all of the enemy\u2019s AV instead."
+        "name": "crush",
+        "description": "Ignore 1/2 of the enemy\u2019s AV (rounded up). If you gain this effect from multiple sources, you ignore all of the enemy\u2019s AV instead."
     },
     {
-        "Name": "**damaged**",
-        "Description": "You suffer +1 bane on attacks with a weapon or the AV bonus is halved for armor, helmets, or shields (min. 0). Another failed Durability check for this item destroys it, making it unusable until repaired."
+        "name": "damaged",
+        "description": "You suffer +1 bane on attacks with a weapon or the AV bonus is halved for armor, helmets, or shields (min. 0). Another failed Durability check for this item destroys it, making it unusable until repaired."
     },
     {
-        "Name": "**double-sided**",
-        "Description": "This weapon can be used like dual-wielding two light weapons of the same type."
+        "name": "double-sided",
+        "description": "This weapon can be used like dual-wielding two light weapons of the same type."
     },
     {
-        "Name": "**entangle**",
-        "Description": "Before making an attack against a target the same size or smaller than you, you can choose to also grapple the target. When doing so, this attack also counts as a Grapple Action. On a hit, the target is grappled by your weapon. The grapple ends early when you make another attack with this weapon unless it is a bundle weapon."
+        "name": "entangle",
+        "description": "Before making an attack against a target the same size or smaller than you, you can choose to also grapple the target. When doing so, this attack also counts as a Grapple Action. On a hit, the target is grappled by your weapon. The grapple ends early when you make another attack with this weapon unless it is a bundle weapon."
     },
     {
-        "Name": "**fragile**",
-        "Description": "You must roll a Durability Check for this item after each use. This includes after each hit for a weapon or after each time you are hit by an attack for a shield, helmet, or armor."
+        "name": "fragile",
+        "description": "You must roll a Durability Check for this item after each use. This includes after each hit for a weapon or after each time you are hit by an attack for a shield, helmet, or armor."
     },
     {
-        "Name": "**heavy (dX)**",
-        "Description": "For each Strength value below dX, suffer +1 bane on attacks for weapons or +1 bane on all Strength rolls for armor."
+        "name": "heavy (dX)",
+        "description": "For each Strength value below dX, suffer +1 bane on attacks for weapons or +1 bane on all Strength rolls for armor."
     },
     {
-        "Name": "**light**",
-        "Description": "Can be dual-wielded."
+        "name": "light",
+        "description": "Can be dual-wielded."
     },
     {
-        "Name": "**narrowed**",
-        "Description": "You suffer +1 bane on Perception rolls (including Initiative)."
+        "name": "narrowed",
+        "description": "You suffer +1 bane on Perception rolls (including Initiative)."
     },
     {
-        "Name": "**noisy**",
-        "Description": "You suffer +1 bane on Cunning rolls (including surprising enemies)."
+        "name": "noisy",
+        "description": "You suffer +1 bane on Cunning rolls (including surprising enemies)."
     },
     {
-        "Name": "**parry X**",
-        "Description": "Increase your Parry by X. You can only benefit from one held item with this property at a time."
+        "name": "parry X",
+        "description": "Increase your Parry by X. You can only benefit from one held item with this property at a time."
     },
     {
-        "Name": "**pierce**",
-        "Description": "If your Attribute Die results in a 1 or a 2 on your attack rolls, you can re-roll the test. You must take the results of the new roll."
+        "name": "pierce",
+        "description": "If your Attribute Die results in a 1 or a 2 on your attack rolls, you can re-roll the test. You must take the results of the new roll."
     },
     {
-        "Name": "**range (normal/max)**",
-        "Description": "You can attack with this ranged weapon at the given normal range. When attacking a target further away, you suffer +1 bane for each range step beyond your normal range, up to your max. distance."
+        "name": "range (normal/max)",
+        "description": "You can attack with this ranged weapon at the given normal range. When attacking a target further away, you suffer +1 bane for each range step beyond your normal range, up to your max. distance."
     },
     {
-        "Name": "**reach**",
-        "Description": "You can attack enemies at close range. While any enemy is within melee range of you, you suffer +1 bane on the attack."
+        "name": "reach",
+        "description": "You can attack enemies at close range. While any enemy is within melee range of you, you suffer +1 bane on the attack."
     },
     {
-        "Name": "**reload**",
-        "Description": "After attacking with this weapon, it needs to be reloaded before you can make another attack with it. As an Action or by skipping all Movement during your turn, you can reload the weapon."
+        "name": "reload",
+        "description": "After attacking with this weapon, it needs to be reloaded before you can make another attack with it. As an Action or by skipping all Movement during your turn, you can reload the weapon."
     },
     {
-        "Name": "**rigid X**",
-        "Description": "You suffer +X bane(s) on the following rolls:<br/>- Strength rolls for physical exertion during travel, climbing, swimming, or sprinting.<br/>- Agility rolls.<br/>- Arcana rolls to cast spells. <br/>If you wear or wield multiple rigid items, you only suffer the penalties from the highest property among them. <br/>"
+        "name": "rigid X",
+        "description": "You suffer +X bane(s) on the following rolls:<br/>- Strength rolls for physical exertion during travel, climbing, swimming, or sprinting.<br/>- Agility rolls.<br/>- Arcana rolls to cast spells. <br/>If you wear or wield multiple rigid items, you only suffer the penalties from the highest property among them. <br/>"
     },
     {
-        "Name": "**slash**",
-        "Description": "On a hit against an enemy in light or no armor, add your weapon damage an additional time to the total damage."
+        "name": "slash",
+        "description": "On a hit against an enemy in light or no armor, add your weapon damage an additional time to the total damage."
     },
     {
-        "Name": "**switch**",
-        "Description": "Choose one of the properties listed for this weapon to gain for an attack. If you make multiple attacks during the same turn, switch between the listed properties for each individual attack."
+        "name": "switch",
+        "description": "Choose one of the properties listed for this weapon to gain for an attack. If you make multiple attacks during the same turn, switch between the listed properties for each individual attack."
     },
     {
-        "Name": "**thrown (normal/max)**",
-        "Description": "This weapon or its ammo can be thrown for ranged attacks at the given normal range. When attacking a target further away, you suffer +1 bane for each range step beyond your normal range, up to your max. distance.<br/>You can roll thrown attacks with Strength instead of Agility (also for the base damage) and Fighting instead of Archery (choose any combination of either option). If the weapon is thrown, it is treated as a thrown ranged weapon even if it is normally a melee weapon.<br/>"
+        "name": "thrown (normal/max)",
+        "description": "This weapon or its ammo can be thrown for ranged attacks at the given normal range. When attacking a target further away, you suffer +1 bane for each range step beyond your normal range, up to your max. distance.<br/>You can roll thrown attacks with Strength instead of Agility (also for the base damage) and Fighting instead of Archery (choose any combination of either option). If the weapon is thrown, it is treated as a thrown ranged weapon even if it is normally a melee weapon.<br/>"
     },
     {
-        "Name": "**two-handed**",
-        "Description": "Requires both hands to attack. You can still choose to attack with only one hand but suffer +2 banes on the attack roll."
+        "name": "two-handed",
+        "description": "Requires both hands to attack. You can still choose to attack with only one hand but suffer +2 banes on the attack roll."
     },
     {
-        "Name": "**versatile (+X)**",
-        "Description": "This weapon can also be used with both hands. When doing so, it is treated as a two-handed weapon and deals +X weapon damage. Creatures smaller than medium size can only wield this weapon two-handed and don\u2018t add any bonus damage."
+        "name": "versatile (+X)",
+        "description": "This weapon can also be used with both hands. When doing so, it is treated as a two-handed weapon and deals +X weapon damage. Creatures smaller than medium size can only wield this weapon two-handed and don\u2018t add any bonus damage."
     }
 ]
