@@ -155,7 +155,7 @@ if __name__ == "__main__":
     filename, extension = os.path.splitext(filename)
 
     # Create output directory if it doesn't exist
-    output_dir = os.path.join(os.getcwd(), "output")
+    output_dir = os.path.join(os.getcwd(), "markdown")
     if not os.path.exists(output_dir):
       os.makedirs(output_dir)
       

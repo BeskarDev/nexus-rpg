@@ -1,11 +1,11 @@
 import { Button, Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, SelectChangeEvent, Stack, ThemeProvider, Typography } from '@mui/material';
 import { theme } from '@site/src/hooks/createTheme';
-import { CombatArt } from '@site/src/types/CombatArt';
+import { MysticSpell } from '@site/src/types/MysticSpell';
 import React, { useMemo, useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import combatArtsData from '../../utils/json/combat-arts.json';
-import { CombatArtCard } from './CombatArtCard';
-import './combatArtStyles.css';
+import mysticSpellData from '../../utils/json/mystic-spells.json';
+import './mysticSpellsStyles.css';
+import { MysticSpellCard } from './MysticSpellCard';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -18,14 +18,14 @@ const MenuProps = {
   },
 };
 
-export const CombatArts: React.FC = () => {
-  const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>([]);
+export const MysticSpells: React.FC = () => {
+  const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<string[]>([]);
 
-  const handleChange = (event: SelectChangeEvent<typeof selectedCombatArts>) => {
+  const handleChange = (event: SelectChangeEvent<typeof selectedMysticSpells>) => {
     const {
       target: { value },
     } = event;
-    setSelectedCombatArts(
+    setSelectedMysticSpells(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
@@ -35,33 +35,33 @@ export const CombatArts: React.FC = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
-  const combatArts: CombatArt[] = combatArtsData;
+  const mysticSpells: MysticSpell[] = mysticSpellData;
 
-  const filteredCombatArts = useMemo(() => (
-    combatArts.filter(ca => selectedCombatArts.includes(ca.name))
-  ), [combatArts, selectedCombatArts])
+  const filteredMysticSpells = useMemo(() => (
+    mysticSpells.filter(ca => selectedMysticSpells.includes(ca.name))
+  ), [mysticSpells, selectedMysticSpells])
 
-  const selectAll = () => setSelectedCombatArts(combatArts.map(ca => ca.name))
-  const deselectAll = () => setSelectedCombatArts([])
+  const selectAll = () => setSelectedMysticSpells(mysticSpells.map(ca => ca.name))
+  const deselectAll = () => setSelectedMysticSpells([])
 
   return (
     <ThemeProvider theme={theme}>
       <Stack flexDirection="row" gap={1} alignItems="center" sx={{ mb: 2, py: 2, px: 3, backgroundColor: 'white', borderRadius: '8px' }}>
         <Button variant="contained" size="large" onClick={handlePrint} >PRINT</Button>
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel >Combat Arts</InputLabel>
+          <InputLabel >Mystic Spells</InputLabel>
           <Select
             multiple
-            value={selectedCombatArts}
+            value={selectedMysticSpells}
             onChange={handleChange}
-            input={<OutlinedInput label="Combat Arts" />}
+            input={<OutlinedInput label="Mystic Spells" />}
             renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
             sx={{ backgroundColor: 'white' }}
           >
-            {combatArts.map(({ name }) => (
+            {mysticSpells.map(({ name }) => (
               <MenuItem key={name} value={name}>
-                <Checkbox checked={selectedCombatArts.indexOf(name) > -1} />
+                <Checkbox checked={selectedMysticSpells.indexOf(name) > -1} />
                 <ListItemText primary={name} />
               </MenuItem>
             ))}
@@ -70,15 +70,15 @@ export const CombatArts: React.FC = () => {
         <Button variant="outlined" size="small" onClick={selectAll}>Select all</Button>
         <Button variant="outlined" size="small" onClick={deselectAll}>Deselect all</Button>
       </Stack>
-      <Typography variant="subtitle1">{filteredCombatArts.length} Combat Arts will be printed:</Typography>
-      <div className="combat-art--container" ref={componentRef}>
-        {filteredCombatArts.map((combatArt, index) => (
+      <Typography variant="subtitle1">{filteredMysticSpells.length} Mystic Spells will be printed:</Typography>
+      <div className="mystic-spell--container" ref={componentRef}>
+        {filteredMysticSpells.map((mysticSpell, index) => (
           <>
-            <CombatArtCard key={combatArt.name} {...combatArt} />
+            <MysticSpellCard key={mysticSpell.name} {...mysticSpell} />
             {Boolean(index % 9 === 8) && <div className="page-break" />}
           </>
         ))}
-        {!filteredCombatArts.length && <Typography variant="body2">Select some Combat Arts above to include them for printing.</Typography>}
+        {!filteredMysticSpells.length && <Typography variant="body2">Select some Mystic Spells above to include them for printing.</Typography>}
       </div>
     </ThemeProvider>
   );

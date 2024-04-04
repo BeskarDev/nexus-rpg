@@ -1,1 +1,1 @@
-export {CombatArtsGrid} from './CombatArts'
+export { CombatArts } from './CombatArts'

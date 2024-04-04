@@ -1,0 +1,24 @@
+.mystic-spell--container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+}
+
+@media all {
+  .page-break {
+    display: none;
+  }
+}
+
+@media print {
+  .page-break {
+    display: block;
+    break-after: page;
+  }
+}
+
+@page {
+  /*size: a4 portrait;*/
+  size: 192mm 267mm;
+  margin: 1mm;
+}

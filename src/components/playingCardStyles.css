@@ -14,7 +14,7 @@
 
 .playing-card--card__inner {
     position: relative;
-    padding: 3mm 6mm;
+    padding: 3mm 5mm;
     height: 100%;
     width: 100%;
     border-radius: 2mm;
@@ -56,21 +56,38 @@
     overflow-y: hidden;
 }
 
-.playing-card--card p.text-size--md.MuiTypography-body1 {
+.playing-card--card p.MuiTypography-body2 {
+    font-size: 7pt;
+    line-height: 1.25;
+    color: black;
+}
+
+.playing-card--card p.text-size--lg.MuiTypography-body1 {
     font-size: 9pt;
     line-height: 1.25;
     color: black;
 }
 
-.playing-card--card p.text-size--sm.MuiTypography-body1 {
+.playing-card--card p.text-size--md.MuiTypography-body1 {
     font-size: 8pt;
-    line-height: 1.25;
+    line-height: 1.2;
+    color: black;
+}
+
+.playing-card--card p.text-size--sm.MuiTypography-body1 {
+    font-size: 7pt;
+    line-height: 1.1;
     color: black;
 }
 
 .playing-card--card p.text-size--xs.MuiTypography-body1 {
-    font-size: 7.5pt;
-    line-height: 1.25;
+    font-size: 6pt;
+    line-height: 1.2;
     color: black;
 }
 
+.playing-card--card p.text-size--xxs.MuiTypography-body1 {
+    font-size: 5.5pt;
+    line-height: 1.1;
+    color: black;
+}

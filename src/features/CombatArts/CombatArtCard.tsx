@@ -1,8 +1,17 @@
 import { Divider, Typography } from '@mui/material';
-import { PlayingCard, setFontSizeClass } from '@site/src/components/PlayingCard';
+import { PlayingCard } from '@site/src/components/PlayingCard';
 import parse from 'html-react-parser';
 import React from 'react';
 import { CombatArt } from "src/types/CombatArt";
+
+const setFontSizeClass = (text: string) => {
+  if (text.length <= 400) {
+    return 'text-size--lg'
+  } else if (text.length <= 500) {
+    return 'text-size--md'
+  } 
+  return 'text-size--sm'
+}
 
 export const CombatArtCard: React.FC<CombatArt> = ({ name, weapons, effect }) => {
   return (

@@ -3,7 +3,7 @@ def split_table_by_tradition(input_file, output_file):
         content = file.readlines()
 
     # Find the table header and rows
-    header_index = content.index('Name | Tradition | Rank | Focus | Target | Range | Properties | Effect | Heightened Casting\n')
+    header_index = content.index('Name | Tradition | Rank | Focus | Target | Range | Properties | Effect | Heightened\n')
     rows = content[header_index + 2:]
 
     # Split the rows into tables based on the "Tradition" column
