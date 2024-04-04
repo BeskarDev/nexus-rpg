@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { PlayingCard } from './PlayingCard';
-import { CombatArt } from '@site/src/types/CombatArt';
-import combatArtsData from '../../utils/json/combat-arts.json';
-import { Box, Button, Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, SelectChangeEvent, Stack, ThemeProvider, Typography, createTheme } from '@mui/material';
-import { useReactToPrint } from 'react-to-print';
-import './combatArtStyles.css';
+import { Button, Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select, SelectChangeEvent, Stack, ThemeProvider, Typography } from '@mui/material';
 import { theme } from '@site/src/hooks/createTheme';
+import { CombatArt } from '@site/src/types/CombatArt';
+import React, { useMemo, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import combatArtsData from '../../utils/json/combat-arts.json';
+import { CombatArtCard } from './CombatArtCard';
+import './combatArtStyles.css';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -74,7 +74,7 @@ export const CombatArtsGrid: React.FC = () => {
       <div className="combat-art--container" ref={componentRef}>
         {filteredCombatArts.map((combatArt, index) => (
           <>
-            <PlayingCard key={combatArt.name} {...combatArt} />
+            <CombatArtCard key={combatArt.name} {...combatArt} />
             {Boolean(index % 9 === 8) && <div className="page-break" />}
           </>
         ))}

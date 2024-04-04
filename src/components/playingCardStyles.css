@@ -1,0 +1,76 @@
+.playing-card--card {
+    padding: 3mm;
+    background-color: var(--ifm-hr-background-color);
+    width: 63mm;
+    height: 88mm;
+
+    overflow: hidden;
+}
+
+.playing-card--card svg#card-frame {
+    position: absolute;
+    pointer-events: none;
+}
+
+.playing-card--card__inner {
+    position: relative;
+    padding: 3mm 6mm;
+    height: 100%;
+    width: 100%;
+    border-radius: 2mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.playing-card--content {
+    display: flex;
+    flex-direction: column;
+}
+
+.playing-card--card span.MuiTypography-caption.playing-card--copyright {
+    align-self: center;
+    margin-bottom: -19px;
+    font-size: 5pt;
+}
+
+.playing-card--card h5 {
+    font-size: 12pt;
+    color: black;
+}
+
+.playing-card--card h6 {
+    font-size: 10pt;
+    color: black;
+}
+
+.playing-card--card span.MuiTypography-caption {
+    font-size: 6pt;
+    color: var(--ifm-color-gray-800);
+}
+
+.playing-card--card p.MuiTypography-body1 {
+    font-size: 9pt;
+    line-height: 1.25;
+    color: black;
+    overflow-y: hidden;
+}
+
+.playing-card--card p.text-size--md.MuiTypography-body1 {
+    font-size: 9pt;
+    line-height: 1.25;
+    color: black;
+}
+
+.playing-card--card p.text-size--sm.MuiTypography-body1 {
+    font-size: 8pt;
+    line-height: 1.25;
+    color: black;
+}
+
+.playing-card--card p.text-size--xs.MuiTypography-body1 {
+    font-size: 7.5pt;
+    line-height: 1.25;
+    color: black;
+}
+
