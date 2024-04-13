@@ -30,7 +30,7 @@ Carved of the stone itself, the dwarves have a deep connection to the earth. The
 
 ### Elf
 
-![folk-img](./img/elf.jpg)
+![folk-img](./img/elf.png)
 
 Living in a spiritual symbiotic state with the life force of nature in their immediate environment, the elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering.
 
@@ -48,7 +48,7 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 ### Gnome
 
-![folk-img](./img/gnome.jpg)
+![folk-img](./img/gnome.png)
 
 Natural psychics with the ability to read other peoples' intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company.
 
@@ -124,7 +124,7 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 
 ### Human
 
-![folk-img](./img/human.jpg)
+![folk-img](./img/human.png)
 
 The newest folk among all the New Folk, humans possess a natural arcane ability that makes many other folks scared of them. Others try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges.
 
