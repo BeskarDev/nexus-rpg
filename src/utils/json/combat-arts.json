@@ -1,147 +1,147 @@
 [
-    {
-        "name": "Aimed Shot",
-        "weapons": "Bow, Crossbow, Thrown",
-        "effect": "If you don\u2019t move during your turn, you gain +1 boon on the attack."
-    },
-    {
-        "name": "Barrage",
-        "weapons": "Bow, Thrown",
-        "effect": "You can roll another attack with a non-heavy ranged weapon, but suffer +1 bane on it."
-    },
-    {
-        "name": "Brutal Strike",
-        "weapons": "Axe, Blade, Mace, Polearm",
-        "effect": "You suffer +1 bane on the attack with a heavy melee weapon.<br/><strong>Weak.</strong> + 1/4 x Strength to damage.<br/><strong>Strong. </strong>+ 1/2 x Strength to damage.<br/><strong>Critical.</strong> + Strength to damage."
-    },
-    {
-        "name": "Charge",
-        "weapons": "Axe, Blade, Mace, Polearm, Shield",
-        "effect": "You can only target a creature in short distance or further away from you with this melee attack. You can spend 1 Movement for free towards your target before the attack. This attack also counts as a Shove Action.<br/><strong>Weak.</strong> +2 damage. <br/><strong>Strong. </strong>+3 damage. The target is pushed close.<br/><strong>Critical.</strong> +4 damage. The target is pushed close and knocked prone. You may follow your target to where they are pushed without spending Movement."
-    },
-    {
-        "name": "Choking Grip",
-        "weapons": "Brawl, Thrown",
-        "effect": "You can use this Combat Art when attempting to grapple a target with an attack. If the target wears a helmet, you suffer +1 bane on the attack. <br/><strong>Weak.</strong> +2 damage.<br/><strong>Strong.</strong> +3 damage. The target is also restrained while grappled by your weapon.<br/><strong>Critical. </strong>+4 damage. The target is also briefly dazed and restrained while grappled by your weapon."
-    },
-    {
-        "name": "Cleave",
-        "weapons": "Axe, Blade, Mace, Polearm",
-        "effect": "Your attack with a two-handed melee weapon hits up to 2 additional creatures in your weapon's reach. On a hit, subtract your weapon damage once from the total damage you deal against each target."
-    },
-    {
-        "name": "Deep Cut",
-        "weapons": "Axe, Blade, Brawl, Polearm",
-        "effect": "On a hit with a slash melee weapon against a target in light or no armor, inflict bleeding equal to your weapon damage for a short duration.<br/><strong>Strong.</strong> Rolls to end the bleeding condition early are hard.<br/><strong>Critical.</strong> Rolls to end the bleeding condition early are very hard."
-    },
-    {
-        "name": "Defensive Strike",
-        "weapons": "Axe, Blade, Brawl, Mace, Polearm, Shield",
-        "effect": "On a hit with a melee weapon, you gain the effects of the Defend Action."
-    },
-    {
-        "name": "Disabling Shot",
-        "weapons": "Bow, Crossbow, Thrown",
-        "effect": "On a hit with a crush or heavy ranged weapon, the target must roll Strength + Fortitude. If they wear heavy armor or a helmet, they gain +1 boon on the roll (or +2 boons when wearing both).<br/><strong>Weak.</strong> If they fail, they are briefly dazed.<br/><strong>Strong.</strong> If they succeed, they are briefly dazed. If they fail, they are briefly stunned instead.<br/><strong>Critical. </strong>Same as a strong success, but the target\u2019s roll is hard."
-    },
-    {
-        "name": "Disarm",
-        "weapons": "Axe, Blade, Brawl, Mace, Polearm",
-        "effect": "Immediately after this attack, use the Disarm action against the same target."
-    },
-    {
-        "name": "Disarming Shot",
-        "weapons": "Bow, Crossbow, Thrown",
-        "effect": "Immediately after this attack, use the Disarm action against the same target. You can only choose a one-handed item the target holds, that isn\u2019t a shield. Roll Strength/Agility + Archery for the disarm instead. For a non-light item, you suffer +1 bane on your roll."
-    },
-    {
-        "name": "Divert Attention",
-        "weapons": "Axe, Blade, Brawl, Mace, Polearm",
-        "effect": "This melee attack also counts as a Distract Action.<br/><strong>Weak.</strong> The target is briefly distracted by you.<br/><strong>Strong.</strong> The target is distracted by you for a short duration. They can re-roll their Spirit + Insight test at the end of each of their turns to end the effect early.<br/><strong>Critical.</strong> Same as a strong success, but the target\u2018s roll is hard."
-    },
-    {
-        "name": "Evasive Strike",
-        "weapons": "Axe, Blade, Brawl, Polearm",
-        "effect": "On a hit with a melee weapon, you gain the effects of the Retreat Action."
-    },
-    {
-        "name": "Exhilarating Strike",
-        "weapons": "Axe, Blade, Brawl, Mace, Polearm",
-        "effect": "<strong>Weak.</strong> You and all allies close to you regain 1/2 x your Spirit as HP.<br/><strong>Strong.</strong> Same as a weak success, but they also gain +1 boon on the one roll on their next turns (their choice).<br/><strong>Critical. </strong>Same as a strong success, but they also deal +2 damage with one attack on their next turn."
-    },
-    {
-        "name": "Feint",
-        "weapons": "Blade, Brawl, Polearm",
-        "effect": "If you don\u2019t move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon."
-    },
-    {
-        "name": "Felling Strike",
-        "weapons": "Axe, Blade, Brawl, Mace, Polearm, Thrown",
-        "effect": "This melee attack also counts as a Trip Action.<br/><strong>Weak.</strong> The target falls prone.<br/><strong>Strong.</strong> The target falls prone and their Movement briefly becomes 0.<br/><strong>Critical.</strong> The target falls prone, their Movement briefly becomes 0, and they are briefly dazed."
-    },
-    {
-        "name": "Flurry",
-        "weapons": "Axe, Blade, Brawl, Mace, Polearm",
-        "effect": "You can roll another attack with a non-heavy melee weapon, but suffer +1 bane on it."
-    },
-    {
-        "name": "Head Smack",
-        "weapons": "Brawl, Mace, Shield",
-        "effect": "On a hit with a crush melee weapon or shield, the target must roll Strength + Fortitude. If they wear a helmet, they gain +1 boon on the roll.<br/><strong>Weak.</strong> If they fail, they are briefly confused. <br/><strong>Strong.</strong> If they succeed, they are briefly confused. If they fail, they are confused for a short duration instead. They can re-roll their Mind + Fortitude test at the end of each of their turns to end the effect early.<br/><strong>Critical. </strong>Same as a strong success, but the target\u2019s roll is hard."
-    },
-    {
-        "name": "Knockout",
-        "weapons": "Brawl, Mace, Shield",
-        "effect": "On a hit with a crush melee weapon or shield, the target must roll Strength + Fortitude. If they wear heavy armor or a helmet, they gain +1 boon on the roll (or +2 boons when wearing both).<br/><strong>Weak.</strong> If they fail, they are briefly dazed.<br/><strong>Strong.</strong> If they succeed, they are briefly dazed. If they fail, they are briefly stunned instead.<br/><strong>Critical. </strong>Same as a strong success, but the target\u2019s roll is hard."
-    },
-    {
-        "name": "Pinning Shot",
-        "weapons": "Bow, Crossbow, Thrown",
-        "effect": "<strong>Weak.</strong> The target\u2019s Movement briefly becomes 0.<br/><strong>Strong.</strong> The target is briefly restrained.<br/><strong>Critical.</strong> The target is restrained for a short duration. They can roll Strength + Athletics at the end of their turns to regain their Movement."
-    },
-    {
-        "name": "Power Shot",
-        "weapons": "Bow, Crossbow, Thrown",
-        "effect": "You suffer +1 bane on the attack with a ranged weapon.<br/><strong>Weak.</strong> + 1/4 x Strength to damage.<br/><strong>Strong. </strong>+ 1/2 x Strength to damage.<br/><strong>Critical.</strong> + Strength to damage."
-    },
-    {
-        "name": "Precise Shot",
-        "weapons": "Bow, Crossbow, Thrown",
-        "effect": "You suffer +1 bane on the attack with a ranged weapon.<br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage."
-    },
-    {
-        "name": "Precise Strike",
-        "weapons": "Blade, Brawl, Polearm",
-        "effect": "You suffer +1 bane on the attack with a pierce melee weapon.<br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage."
-    },
-    {
-        "name": "Quick Lunge",
-        "weapons": "Blade, Brawl, Polearm",
-        "effect": "Your attack with a pierce melee weapon targets the enemy\u2019s Dodge instead of Parry. They can\u2019t use a Quick Action in response to this attack."
-    },
-    {
-        "name": "Ram Down",
-        "weapons": "Brawl, Mace, Shield",
-        "effect": "This melee attack also counts as a Shove Action.<br/><strong>Weak.</strong> The target is pushed close.<br/><strong>Strong.</strong> The target is pushed close and falls prone.<br/><strong>Critical.</strong> The target is pushed close, falls prone, and is briefly dazed.<br/>You may follow your target to where they are pushed without spending Movement.<br/>"
-    },
-    {
-        "name": "Snare",
-        "weapons": "Brawl, Thrown",
-        "effect": "You can use this Combat Art when attempting to grapple a target.<br/><strong>Weak.</strong> The target is also restrained while grappled by your weapon.<br/><strong>Strong.</strong> Same as a weak success and the target also falls prone.<br/><strong>Critical.</strong> Same as a weak success, the target also falls prone and is briefly dazed."
-    },
-    {
-        "name": "Splinter",
-        "weapons": "Axe, Mace",
-        "effect": "This melee attack deals no damage to the target. Instead, choose one item the target holds that your weapon would be capable of damaging (wood or leather for axes, stone or metal for maces).<br/><strong>Weak.</strong> The target rolls a Durability check for the item. On a failure, the item gets damaged.<br/><strong>Strong.</strong> The target rolls the check for the item twice and must use the worst result. On a failure, the item gets damaged. If both dice would fail, the item is destroyed instead.<br/><strong>Critical.</strong> The target rolls a Durability check for the item twice and must use the worst result. On a success, the item still gets damaged. On a failure, the item is destroyed instead."
-    },
-    {
-        "name": "Terrifying Strike",
-        "weapons": "Axe, Blade, Mace, Polearm",
-        "effect": "This melee attack also counts as a Demoralize Action.<br/><strong>Weak.</strong> The target is briefly frightened of you.<br/><strong>Strong.</strong> The target is frightened of you for a short duration. They can roll Spirit + Fortitude at the end of each of their turns to end the effect early.<br/><strong>Critical.</strong> Same as a strong success, but the target\u2019s roll is hard."
-    },
-    {
-        "name": "Volley",
-        "weapons": "Bow, Crossbow, Thrown",
-        "effect": "Your attack with a non-heavy ranged weapon hits up to 2 additional creatures in your weapon's reach. On a hit, subtract your weapon damage once from the total damage you deal against each target."
-    }
+  {
+    "name": "Aimed Shot",
+    "weapons": "Bow, Crossbow, Thrown",
+    "effect": "If you don\u2019t move during your turn, you gain +1 boon on the attack."
+  },
+  {
+    "name": "Barrage",
+    "weapons": "Bow, Thrown",
+    "effect": "You can roll another attack with a non-heavy ranged weapon, but suffer +1 bane on it."
+  },
+  {
+    "name": "Brutal Strike",
+    "weapons": "Axe, Blade, Mace, Polearm",
+    "effect": "You suffer +1 bane on the attack with a heavy melee weapon.<br/><strong>Weak.</strong> + 1/4 x Strength to damage.<br/><strong>Strong. </strong>+ 1/2 x Strength to damage.<br/><strong>Critical.</strong> + Strength to damage."
+  },
+  {
+    "name": "Charge",
+    "weapons": "Axe, Blade, Mace, Polearm, Shield",
+    "effect": "You can only target a creature in short distance or further away from you with this melee attack. You can spend 1 Movement for free towards your target before the attack. This attack also counts as a Shove Action.<br/><strong>Weak.</strong> +2 damage. <br/><strong>Strong. </strong>+3 damage. The target is pushed close.<br/><strong>Critical.</strong> +4 damage. The target is pushed close and knocked prone. You may follow your target to where they are pushed without spending Movement."
+  },
+  {
+    "name": "Choking Grip",
+    "weapons": "Brawl, Thrown",
+    "effect": "You can use this Combat Art when attempting to grapple a target with an attack. If the target wears a helmet, you suffer +1 bane on the attack. <br/><strong>Weak.</strong> +2 damage.<br/><strong>Strong.</strong> +3 damage. The target is also restrained while grappled by your weapon.<br/><strong>Critical. </strong>+4 damage. The target is also briefly dazed and restrained while grappled by your weapon."
+  },
+  {
+    "name": "Cleave",
+    "weapons": "Axe, Blade, Mace, Polearm",
+    "effect": "Your attack with a two-handed melee weapon hits up to 2 additional creatures in your weapon's reach. On a hit, subtract your weapon damage once from the total damage you deal against each target."
+  },
+  {
+    "name": "Deep Cut",
+    "weapons": "Axe, Blade, Brawl, Polearm",
+    "effect": "On a hit with a slash melee weapon against a target in light or no armor, inflict bleeding equal to your weapon damage for a short duration.<br/><strong>Strong.</strong> Rolls to end the bleeding condition early are hard.<br/><strong>Critical.</strong> Rolls to end the bleeding condition early are very hard."
+  },
+  {
+    "name": "Defensive Strike",
+    "weapons": "Axe, Blade, Brawl, Mace, Polearm, Shield",
+    "effect": "On a hit with a melee weapon, you gain the effects of the Defend Action."
+  },
+  {
+    "name": "Disabling Shot",
+    "weapons": "Bow, Crossbow, Thrown",
+    "effect": "On a hit with a crush or heavy ranged weapon, the target must roll Strength + Fortitude. If they wear heavy armor or a helmet, they gain +1 boon on the roll (or +2 boons when wearing both).<br/><strong>Weak.</strong> If they fail, they are briefly dazed.<br/><strong>Strong.</strong> If they succeed, they are briefly dazed. If they fail, they are briefly stunned instead.<br/><strong>Critical. </strong>Same as a strong success, but the target\u2019s roll is hard."
+  },
+  {
+    "name": "Disarm",
+    "weapons": "Axe, Blade, Brawl, Mace, Polearm",
+    "effect": "Immediately after this attack, use the Disarm action against the same target."
+  },
+  {
+    "name": "Disarming Shot",
+    "weapons": "Bow, Crossbow, Thrown",
+    "effect": "Immediately after this attack, use the Disarm action against the same target. You can only choose a one-handed item the target holds, that isn\u2019t a shield. Roll Strength/Agility + Archery for the disarm instead. For a non-light item, you suffer +1 bane on your roll."
+  },
+  {
+    "name": "Divert Attention",
+    "weapons": "Axe, Blade, Brawl, Mace, Polearm",
+    "effect": "This melee attack also counts as a Distract Action.<br/><strong>Weak.</strong> The target is briefly distracted by you.<br/><strong>Strong.</strong> The target is distracted by you for a short duration. They can re-roll their Spirit + Insight test at the end of each of their turns to end the effect early.<br/><strong>Critical.</strong> Same as a strong success, but the target\u2018s roll is hard."
+  },
+  {
+    "name": "Evasive Strike",
+    "weapons": "Axe, Blade, Brawl, Polearm",
+    "effect": "On a hit with a melee weapon, you gain the effects of the Retreat Action."
+  },
+  {
+    "name": "Exhilarating Strike",
+    "weapons": "Axe, Blade, Brawl, Mace, Polearm",
+    "effect": "<strong>Weak.</strong> You and all allies close to you regain 1/2 x your Spirit as HP.<br/><strong>Strong.</strong> Same as a weak success, but they also gain +1 boon on the one roll on their next turns (their choice).<br/><strong>Critical. </strong>Same as a strong success, but they also deal +2 damage with one attack on their next turn."
+  },
+  {
+    "name": "Feint",
+    "weapons": "Blade, Brawl, Polearm",
+    "effect": "If you don\u2019t move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon."
+  },
+  {
+    "name": "Felling Strike",
+    "weapons": "Axe, Blade, Brawl, Mace, Polearm, Thrown",
+    "effect": "This melee attack also counts as a Trip Action.<br/><strong>Weak.</strong> The target falls prone.<br/><strong>Strong.</strong> The target falls prone and their Movement briefly becomes 0.<br/><strong>Critical.</strong> The target falls prone, their Movement briefly becomes 0, and they are briefly dazed."
+  },
+  {
+    "name": "Flurry",
+    "weapons": "Axe, Blade, Brawl, Mace, Polearm",
+    "effect": "You can roll another attack with a non-heavy melee weapon, but suffer +1 bane on it."
+  },
+  {
+    "name": "Head Smack",
+    "weapons": "Brawl, Mace, Shield",
+    "effect": "On a hit with a crush melee weapon or shield, the target must roll Strength + Fortitude. If they wear a helmet, they gain +1 boon on the roll.<br/><strong>Weak.</strong> If they fail, they are briefly confused. <br/><strong>Strong.</strong> If they succeed, they are briefly confused. If they fail, they are confused for a short duration instead. They can re-roll their Mind + Fortitude test at the end of each of their turns to end the effect early.<br/><strong>Critical. </strong>Same as a strong success, but the target\u2019s roll is hard."
+  },
+  {
+    "name": "Knockout",
+    "weapons": "Brawl, Mace, Shield",
+    "effect": "On a hit with a crush melee weapon or shield, the target must roll Strength + Fortitude. If they wear heavy armor or a helmet, they gain +1 boon on the roll (or +2 boons when wearing both).<br/><strong>Weak.</strong> If they fail, they are briefly dazed.<br/><strong>Strong.</strong> If they succeed, they are briefly dazed. If they fail, they are briefly stunned instead.<br/><strong>Critical. </strong>Same as a strong success, but the target\u2019s roll is hard."
+  },
+  {
+    "name": "Pinning Shot",
+    "weapons": "Bow, Crossbow, Thrown",
+    "effect": "<strong>Weak.</strong> The target\u2019s Movement briefly becomes 0.<br/><strong>Strong.</strong> The target is briefly restrained.<br/><strong>Critical.</strong> The target is restrained for a short duration. They can roll Strength + Athletics at the end of their turns to regain their Movement."
+  },
+  {
+    "name": "Power Shot",
+    "weapons": "Bow, Crossbow, Thrown",
+    "effect": "You suffer +1 bane on the attack with a ranged weapon.<br/><strong>Weak.</strong> + 1/4 x Strength to damage.<br/><strong>Strong. </strong>+ 1/2 x Strength to damage.<br/><strong>Critical.</strong> + Strength to damage."
+  },
+  {
+    "name": "Precise Shot",
+    "weapons": "Bow, Crossbow, Thrown",
+    "effect": "You suffer +1 bane on the attack with a ranged weapon.<br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage."
+  },
+  {
+    "name": "Precise Strike",
+    "weapons": "Blade, Brawl, Polearm",
+    "effect": "You suffer +1 bane on the attack with a pierce melee weapon.<br/><strong>Weak.</strong> Ignore 1/2 AV (rounded up).<br/><strong>Strong. </strong>Ignore 1/2 AV (rounded up) and add 1/4 x Agility to damage.<br/><strong>Critical.</strong> Ignore 1/2 AV (rounded up) and add 1/2 x Agility to damage."
+  },
+  {
+    "name": "Quick Lunge",
+    "weapons": "Blade, Brawl, Polearm",
+    "effect": "Your attack with a pierce melee weapon targets the enemy\u2019s Dodge instead of Parry. They can\u2019t use a Quick Action in response to this attack."
+  },
+  {
+    "name": "Ram Down",
+    "weapons": "Brawl, Mace, Shield",
+    "effect": "This melee attack also counts as a Shove Action.<br/><strong>Weak.</strong> The target is pushed close.<br/><strong>Strong.</strong> The target is pushed close and falls prone.<br/><strong>Critical.</strong> The target is pushed close, falls prone, and is briefly dazed.<br/>You may follow your target to where they are pushed without spending Movement.<br/>"
+  },
+  {
+    "name": "Snare",
+    "weapons": "Brawl, Thrown",
+    "effect": "You can use this Combat Art when attempting to grapple a target.<br/><strong>Weak.</strong> The target is also restrained while grappled by your weapon.<br/><strong>Strong.</strong> Same as a weak success and the target also falls prone.<br/><strong>Critical.</strong> Same as a weak success, the target also falls prone and is briefly dazed."
+  },
+  {
+    "name": "Splinter",
+    "weapons": "Axe, Mace",
+    "effect": "This melee attack deals no damage to the target. Instead, choose one item the target holds that your weapon would be capable of damaging (wood or leather for axes, stone or metal for maces).<br/><strong>Weak.</strong> The target rolls a Durability check for the item. On a failure, the item gets damaged.<br/><strong>Strong.</strong> The target rolls the check for the item twice and must use the worst result. On a failure, the item gets damaged. If both dice would fail, the item is destroyed instead.<br/><strong>Critical.</strong> The target rolls a Durability check for the item twice and must use the worst result. On a success, the item still gets damaged. On a failure, the item is destroyed instead."
+  },
+  {
+    "name": "Terrifying Strike",
+    "weapons": "Axe, Blade, Mace, Polearm",
+    "effect": "This melee attack also counts as a Demoralize Action.<br/><strong>Weak.</strong> The target is briefly frightened of you.<br/><strong>Strong.</strong> The target is frightened of you for a short duration. They can roll Spirit + Fortitude at the end of each of their turns to end the effect early.<br/><strong>Critical.</strong> Same as a strong success, but the target\u2019s roll is hard."
+  },
+  {
+    "name": "Volley",
+    "weapons": "Bow, Crossbow, Thrown",
+    "effect": "Your attack with a non-heavy ranged weapon hits up to 2 additional creatures in your weapon's reach. On a hit, subtract your weapon damage once from the total damage you deal against each target."
+  }
 ]

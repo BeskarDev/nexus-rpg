@@ -1,6 +1,5 @@
-import { Spell } from "./Spell";
+import { Spell } from './Spell'
 
 export type MysticSpell = {
-    tradition: string;
-  } & Spell;
-  
+  tradition: string
+} & Spell
