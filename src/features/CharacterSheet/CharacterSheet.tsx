@@ -16,6 +16,7 @@ import {
 	getDoc,
 	getDocs,
 	getFirestore,
+	updateDoc,
 } from 'firebase/firestore'
 import { app, auth, store } from '@site/src/config/firebase'
 
@@ -31,6 +32,7 @@ export const CharacterSheet: React.FC = () => {
 	if (auth?.currentUser) {
 		const userUid = auth.currentUser.uid
 		const userDocRef = doc(collection(store, 'user-data'), userUid)
+
 		getDoc(userDocRef)
 			.then((docSnapshot) => {
 				if (docSnapshot.exists) {
@@ -42,6 +44,20 @@ export const CharacterSheet: React.FC = () => {
 			})
 			.catch((error) => {
 				console.error('Error fetching user data:', error)
+			})
+
+		// Field to update and its new value (replace with your field name and value)
+		const fieldToUpdate = 'other'
+		const newValue = 'foobar'
+
+		updateDoc(userDocRef, {
+			[fieldToUpdate]: newValue,
+		})
+			.then(() => {
+				console.log('User data updated successfully!')
+			})
+			.catch((error) => {
+				console.error('Error updating user data:', error)
 			})
 	}
 
