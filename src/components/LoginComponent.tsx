@@ -1,8 +1,90 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { signIn, signOut } from '../config/auth'
+import {
+	Alert,
+	Box,
+	Button,
+	Card,
+	CardContent,
+	TextField,
+	Typography,
+	useColorScheme,
+} from '@mui/material'
+import { useAuth } from '../hooks/firebaseAuthContext'
+import { useColorMode } from '@docusaurus/theme-common'
 
 export const LoginComponent: React.FC = () => {
-	const [currentUser, setCurrentUser] = useState(null)
-	const [userLoggedIn, setUserLoggedIn] = useState(false)
+	const { colorMode } = useColorMode()
+	const { setMode } = useColorScheme()
 
-	return <div></div>
+	useEffect(() => {
+		setMode(colorMode)
+	}, [colorMode])
+
+	const { userLoggedIn, currentUser } = useAuth()
+
+	if (userLoggedIn && currentUser?.email) {
+		return (
+			<Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+				<Typography>Hello there {currentUser?.email ?? ''}</Typography>
+				<Button variant="contained" color="primary" onClick={() => signOut()}>
+					LOGOUT
+				</Button>
+			</Box>
+		)
+	}
+
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [isSigningIn, setIsSigningIn] = useState(false)
+	const [errorMessage, setErrorMessage] = useState('')
+
+	const onSubmit = async (e) => {
+		e.preventDefault()
+		if (!isSigningIn) {
+			setIsSigningIn(true)
+			await signIn(email, password).catch((reason) => setErrorMessage(reason))
+			setIsSigningIn(false)
+		}
+	}
+
+	return (
+		<Box
+			component="form"
+			onSubmit={onSubmit}
+			sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+		>
+			<TextField
+				required
+				type="email"
+				label="email"
+				placeholder="type your email"
+				value={email}
+				onChange={(e) => {
+					setEmail(e.target.value)
+				}}
+				InputLabelProps={{ shrink: true }}
+			/>
+			<TextField
+				required
+				type="password"
+				label="password"
+				placeholder="type your password"
+				value={password}
+				onChange={(e) => {
+					setPassword(e.target.value)
+				}}
+				InputLabelProps={{ shrink: true }}
+			/>
+			<Button
+				type="submit"
+				variant="contained"
+				color="primary"
+				disabled={isSigningIn}
+			>
+				LOGIN
+			</Button>
+			{errorMessage && <Alert severity="error">{errorMessage}</Alert>}
+		</Box>
+	)
 }
