@@ -11,16 +11,8 @@ import {
 	useColorScheme,
 } from '@mui/material'
 import { useAuth } from '../hooks/firebaseAuthContext'
-import { useColorMode } from '@docusaurus/theme-common'
 
 export const LoginComponent: React.FC = () => {
-	const { colorMode } = useColorMode()
-	const { setMode } = useColorScheme()
-
-	useEffect(() => {
-		setMode(colorMode)
-	}, [colorMode])
-
 	const { userLoggedIn, currentUser } = useAuth()
 
 	if (userLoggedIn && currentUser?.email) {
