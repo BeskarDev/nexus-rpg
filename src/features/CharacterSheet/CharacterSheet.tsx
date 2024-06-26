@@ -1,22 +1,26 @@
 import {
 	Box,
-	Button,
-	CssBaseline,
 	Experimental_CssVarsProvider,
 	Tab,
 	Tabs,
-	ThemeProvider,
-	Typography,
 	experimental_extendTheme,
 } from '@mui/material'
 import { LoginComponent } from '@site/src/components/LoginComponent'
+import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 import { theme } from '@site/src/hooks/createTheme'
 import { AuthProvider } from '@site/src/hooks/firebaseAuthContext'
-import React from 'react'
+import React, { useEffect } from 'react'
+import {
+	collection,
+	doc,
+	getDoc,
+	getDocs,
+	getFirestore,
+} from 'firebase/firestore'
+import { app, auth, store } from '@site/src/config/firebase'
 
 export const CharacterSheet: React.FC = () => {
 	const [value, setValue] = React.useState(0)
-	// const { colorMode } = useColorMode()
 
 	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
 		setValue(newValue)
@@ -24,9 +28,27 @@ export const CharacterSheet: React.FC = () => {
 
 	const customTheme = experimental_extendTheme(theme)
 
+	if (auth?.currentUser) {
+		const userUid = auth.currentUser.uid
+		const userDocRef = doc(collection(store, 'user-data'), userUid)
+		getDoc(userDocRef)
+			.then((docSnapshot) => {
+				if (docSnapshot.exists) {
+					const userData = docSnapshot.data()
+					console.log(userData) // This is the JS object containing all fields and values
+				} else {
+					console.log('No such document for user:', userUid)
+				}
+			})
+			.catch((error) => {
+				console.error('Error fetching user data:', error)
+			})
+	}
+
 	return (
 		<AuthProvider>
 			<Experimental_CssVarsProvider theme={customTheme}>
+				<ThemeSwitcher />
 				<Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
 					<Tabs
 						value={value}
