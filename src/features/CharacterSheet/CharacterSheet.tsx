@@ -1,23 +1,45 @@
-import { Button, ThemeProvider, Typography } from '@mui/material'
+import {
+	Box,
+	Button,
+	CssBaseline,
+	Experimental_CssVarsProvider,
+	Tab,
+	Tabs,
+	ThemeProvider,
+	Typography,
+	experimental_extendTheme,
+} from '@mui/material'
+import { LoginComponent } from '@site/src/components/LoginComponent'
 import { theme } from '@site/src/hooks/createTheme'
-import { initializeApp } from 'firebase/app'
-import { GoogleAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth'
+import { AuthProvider } from '@site/src/hooks/firebaseAuthContext'
 import React from 'react'
 
 export const CharacterSheet: React.FC = () => {
+	const [value, setValue] = React.useState(0)
+	// const { colorMode } = useColorMode()
+
+	const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+		setValue(newValue)
+	}
+
+	const customTheme = experimental_extendTheme(theme)
+
 	return (
-		<ThemeProvider theme={theme}>
-			{!auth.currentUser && (
-				<div>
-					Make sure to login first!{' '}
-					<Button
-						onClick={() => signInWithRedirect(auth, new GoogleAuthProvider())}
+		<AuthProvider>
+			<Experimental_CssVarsProvider theme={customTheme}>
+				<Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 2 }}>
+					<Tabs
+						value={value}
+						onChange={handleChange}
+						aria-label="basic tabs example"
 					>
-						Login
-					</Button>
-				</div>
-			)}
-			<div>Here be your character sheet (coming soon™️)...</div>
-		</ThemeProvider>
+						<Tab id="0" label="Item One" />
+						<Tab id="1" label="Item Two" />
+						<Tab id="2" label="Item Three" />
+					</Tabs>
+				</Box>
+				<LoginComponent />
+			</Experimental_CssVarsProvider>
+		</AuthProvider>
 	)
 }
