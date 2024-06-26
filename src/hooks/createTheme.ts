@@ -1,7 +1,7 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material'
 
 export const theme = createTheme({
-    typography: {
-      fontFamily: "'Exo 2'",
-    }
-  })
+  typography: {
+    fontFamily: "'Exo 2'",
+  },
+})

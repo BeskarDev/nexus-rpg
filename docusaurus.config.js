@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer/themes/github')
+const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -45,7 +45,7 @@ const config = {
       attributes: {
         rel: 'preconnect',
         href: 'https://fonts.gstatic.com',
-        crossorigin: 'true'
+        crossorigin: 'true',
       },
     },
     {
@@ -54,7 +54,7 @@ const config = {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap',
       },
-    }
+    },
   ],
 
   presets: [
@@ -75,14 +75,13 @@ const config = {
   themes: [
     [
       /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      ({
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
         hashed: true,
-        language: ["en"],
-      }),
+        language: ['en'],
+      },
     ],
   ],
-
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -91,7 +90,7 @@ const config = {
       image: 'img/docusaurus-social-card.jpg',
       docs: {
         sidebar: {
-          hideable: true,  
+          hideable: true,
           autoCollapseCategories: true,
         },
       },
@@ -173,9 +172,9 @@ const config = {
           // options you can specify via https://github.com/francoischalifour/medium-zoom#usage
           background: {
             light: 'rgb(255, 255, 255)',
-            dark: 'rgb(50, 50, 50)'
-          }
-        }
+            dark: 'rgb(50, 50, 50)',
+          },
+        },
       },
       footer: {
         logo: {
@@ -189,16 +188,16 @@ const config = {
       },
     }),
 
-    plugins: [
-      require.resolve("docusaurus-plugin-image-zoom"),
-      [
-        "docusaurus-plugin-dotenv",
-        {
-          path: "./.env.local",
-          systemvars: true,
-        },
-      ],
-    ]
-};
+  plugins: [
+    require.resolve('docusaurus-plugin-image-zoom'),
+    [
+      'docusaurus-plugin-dotenv',
+      {
+        path: './.env.local',
+        systemvars: true,
+      },
+    ],
+  ],
+}
 
-module.exports = config;
+module.exports = config
