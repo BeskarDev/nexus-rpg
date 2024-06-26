@@ -1,5 +1,5 @@
 import { Spell } from './Spell'
 
 export type ArcaneSpell = {
-  discipline: string
+	discipline: string
 } & Spell
