@@ -2,9 +2,9 @@ import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
 import React from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { DeepPartial } from './CharacterSheetContainer'
+import { SkillsTab } from './CharacterSheetTabs/SkillsTab'
 import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
 import { Character } from './types/Character'
-import { SkillsTab } from './CharacterSheetTabs/SkillsTab'
 
 export const AttributeField = styled(TextField)({
 	maxWidth: '5rem',
@@ -62,7 +62,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					<Tab id="5" label="Other" />
 				</Tabs>
 			</Box>
-			<SwipeableViews
+			{/* <SwipeableViews
 				index={activeTab}
 				onChangeIndex={(index) => setActiveTab(index)}
 				enableMouseEvents={false}
@@ -72,14 +72,21 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					character={character}
 					updateCharacter={updateCharacter}
 				/>
-				<SkillsTab 
-					character={character}
-					updateCharacter={updateCharacter} />
+				<SkillsTab character={character} updateCharacter={updateCharacter} />
 				<div>tab 3</div>
 				<div>tab 4</div>
 				<div>tab 5</div>
 				<div>tab 6</div>
-			</SwipeableViews>
+			</SwipeableViews> */}
+			{activeTab === 0 && (
+				<StatisticsTab
+					character={character}
+					updateCharacter={updateCharacter}
+				/>
+			)}
+			{activeTab === 1 && (
+				<SkillsTab character={character} updateCharacter={updateCharacter} />
+			)}
 		</>
 	)
 }

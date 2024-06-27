@@ -16,12 +16,10 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 	updateSkill,
 	deleteSkill,
 }) => {
-  console.log('render row for', skill)
 	const [name, setName] = useState(skill.name)
 
 	return (
 		<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-      <Box>IM HERE!</Box>
 			<AttributeField
 				type="number"
 				size="small"
@@ -32,8 +30,9 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 					})
 				}
 				label="Rank"
+				helperText=""
 				sx={{
-					maxWidth: '4rem',  
+					maxWidth: '4rem',
 					'& .MuiOutlinedInput-root': {
 						'& .MuiOutlinedInput-notchedOutline': {
 							borderWidth: '2px',
@@ -46,6 +45,7 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 				value={name}
 				onChange={(event) => setName(event.target.value)}
 				onBlur={() => updateSkill({ name })}
+				helperText=""
 				sx={{ maxWidth: '12rem' }}
 			/>
 			<AttributeField
@@ -58,9 +58,15 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 					})
 				}
 				label="XP"
+				helperText=""
 				sx={{ maxWidth: '4rem' }}
 			/>
-			<IconButton size="small" edge="end" aria-label="delete" onClick={deleteSkill}>
+			<IconButton
+				size="small"
+				edge="end"
+				aria-label="delete"
+				onClick={deleteSkill}
+			>
 				<Delete />
 			</IconButton>
 		</Box>
