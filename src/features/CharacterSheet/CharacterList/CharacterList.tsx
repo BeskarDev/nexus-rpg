@@ -10,9 +10,10 @@ import {
 	ListItem,
 	ListItemAvatar,
 	ListItemText,
+	Link,
 } from '@mui/material'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { UserAvatar } from '../UserAvatar'
 import { db } from '@site/src/config/firebase'
 import {
@@ -30,22 +31,28 @@ import { DeleteButton } from './DeleteButton'
 
 export type Character = DocumentData & {
 	docRef: DocumentReference<DocumentData, DocumentData>
+	docId: string
 }
 
 export const CharacterList: React.FC = () => {
 	const [characters, setCharacters] = React.useState<Character[]>([])
 	const { currentUser } = useAuth()
 
+	useEffect(() => {
+		getDocuments()
+	}, [])
+
 	const userUid = currentUser.uid
-	const collectionRef = collection(db, userUid)
 
 	const getDocuments = async () => {
 		try {
+			const collectionRef = collection(db, userUid)
 			const q = query(collectionRef) // Create a query to get all documents
 			const querySnapshot = await getDocs(q) // Use getDocs to fetch documents
 
 			const allDocs: Character[] = querySnapshot.docs.map((doc) => ({
 				docRef: doc.ref,
+				docId: doc.id,
 				...doc.data(),
 			}))
 			setCharacters(allDocs)
@@ -54,14 +61,12 @@ export const CharacterList: React.FC = () => {
 		}
 	}
 
-	getDocuments()
-
 	return (
 		<List dense={false}>
 			{Boolean(characters.length) &&
 				characters.map((char) => (
 					<ListItem
-						key={char.docId}
+						key={char['name']}
 						secondaryAction={<DeleteButton char={char} />}
 					>
 						<ListItemAvatar>
@@ -69,7 +74,11 @@ export const CharacterList: React.FC = () => {
 								<ListAlt />
 							</Avatar>
 						</ListItemAvatar>
-						<ListItemText primary={char['field1']} />
+						<Link
+							href={`${window.location.href.split('?')[0]}?id=${char.docId}`}
+						>
+							<ListItemText primary={char['name']} />
+						</Link>
 					</ListItem>
 				))}
 		</List>
