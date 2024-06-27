@@ -1,76 +1,74 @@
 {
-  "workbench.startupEditor": "none",
-  "editor.bracketPairColorization.enabled": true,
-  "editor.guides.bracketPairs": "active",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
-  },
-  "editor.suggestSelection": "first",
-  "editor.inlineSuggest.enabled": true,
-  "editor.mouseWheelZoom": true,
-  "files.eol": "\n",
-  "files.insertFinalNewline": true,
-  "files.associations": {
-    "*.env.local": "env",
-    "*.env.development": "env",
-    "*.env.test": "env",
-    "*.env.production": "env",
-    "*.ftlh": "ftl"
-  },
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
-  "terminal.integrated.fontSize": 13,
-  "terminal.integrated.scrollback": 10000,
-  "explorer.confirmDragAndDrop": false,
-  "explorer.confirmDelete": false,
-  "git.enableSmartCommit": true,
-  "git.confirmSync": false,
-  "git.postCommitCommand": "push",
-  "git.branchProtection": [
-    "main"
-  ],
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[scss]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "git.autofetch": true,
-  "githubPullRequests.pullBranch": "never",
-  "extensions.ignoreRecommendations": true,
-  "editor.stickyScroll.enabled": true,
-  "editor.formatOnSave": true,
-  "git.ignoreRebaseWarning": true,
-  "scm.repositories.sortOrder": "name",
-  "scm.repositories.visible": 0,
-  "scm.providerCountBadge": "auto",
-  "githubPullRequests.fileListLayout": "tree",
-  "editor.indentSize": "tabSize",
-  "editor.tabSize": 2,
-  "editor.detectIndentation": false,
+	"workbench.startupEditor": "none",
+	"editor.bracketPairColorization.enabled": true,
+	"editor.guides.bracketPairs": "active",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.organizeImports": "explicit"
+	},
+	"editor.suggestSelection": "first",
+	"editor.inlineSuggest.enabled": true,
+	"editor.mouseWheelZoom": true,
+	"files.eol": "\n",
+	"files.insertFinalNewline": true,
+	"files.associations": {
+		"*.env.local": "env",
+		"*.env.development": "env",
+		"*.env.test": "env",
+		"*.env.production": "env",
+		"*.ftlh": "ftl"
+	},
+	"files.exclude": {
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
+	},
+	"terminal.integrated.fontSize": 13,
+	"terminal.integrated.scrollback": 10000,
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"git.enableSmartCommit": true,
+	"git.confirmSync": false,
+	"git.postCommitCommand": "push",
+	"git.branchProtection": ["main"],
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"git.autofetch": true,
+	"githubPullRequests.pullBranch": "never",
+	"extensions.ignoreRecommendations": true,
+	"editor.stickyScroll.enabled": true,
+	"editor.formatOnSave": true,
+	"git.ignoreRebaseWarning": true,
+	"scm.repositories.sortOrder": "name",
+	"scm.repositories.visible": 0,
+	"scm.providerCountBadge": "auto",
+	"githubPullRequests.fileListLayout": "tree",
+	"editor.indentSize": "tabSize",
+	"editor.tabSize": 2,
+	"editor.detectIndentation": false
 }

@@ -1,10 +1,4 @@
-import {
-	Box,
-	Checkbox,
-	FormControlLabel,
-	FormGroup,
-	TextField,
-} from '@mui/material'
+import { Box, TextField } from '@mui/material'
 import React from 'react'
 
 import { AttributeField, SectionHeader } from '../CharacterSheet'
