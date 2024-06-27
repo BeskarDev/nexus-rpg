@@ -11,11 +11,16 @@ import { mapDocToCharacter } from './mapDocToCharacter'
 
 const SAVE_CHARACTER_TIMEOUT = 30_000
 
+export type DeepPartial<T> = {
+	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
+}
+
 export const CharacterSheetContainer: React.FC = () => {
 	const { userLoggedIn, currentUser } = useAuth()
 	const [activeCharacter, setActiveCharacter] = useState<Character>(undefined)
 	const [unsavedChanges, setUnsavedChanges] = useState(false)
 	const [saveTimeout, setSaveTimeout] = useState(false)
+	const [autosave, setAutosave] = useState(false)
 	const [loadingSave, setLoadingSave] = useState(false)
 
 	const queryString = window.location.search
@@ -24,18 +29,21 @@ export const CharacterSheetContainer: React.FC = () => {
 
 	useEffect(() => {
 		if (activeCharacterId && currentUser && unsavedChanges && !saveTimeout) {
+			setSaveTimeout(true)
 			setTimeout(() => {
-				setSaveTimeout(true)
+				setAutosave(true)
 			}, SAVE_CHARACTER_TIMEOUT)
 		}
 	}, [activeCharacter])
 
 	useEffect(() => {
-		if (activeCharacterId && currentUser && unsavedChanges && saveTimeout) {
+		if (activeCharacterId && currentUser && unsavedChanges && autosave) {
+			console.log('auto save in progress')
 			saveCharacter()
+			setAutosave(false)
 			setSaveTimeout(false)
 		}
-	}, [saveTimeout])
+	}, [autosave])
 
 	useEffect(() => {
 		if (activeCharacterId && currentUser) {
@@ -45,9 +53,28 @@ export const CharacterSheetContainer: React.FC = () => {
 		}
 	}, [activeCharacterId])
 
-	const updateCharacter = (newChar: Partial<Character>) => {
+	const updateCharacter = (update: DeepPartial<Character>) => {
 		setUnsavedChanges(true)
-		setActiveCharacter((curr) => ({ ...curr, ...newChar }))
+		setActiveCharacter((prevCharacter) => {
+			// Create a new object using spread syntax
+			const newCharacter = { ...prevCharacter }
+
+			// Loop through the update object
+			for (const key in update) {
+				// Handle nested objects like statistics
+				if (key === 'statistics' && typeof update[key] === 'object') {
+					newCharacter.statistics = {
+						...prevCharacter.statistics,
+						...update.statistics,
+					}
+				} else {
+					// Update top-level properties directly
+					newCharacter[key] = update[key]
+				}
+			}
+
+			return newCharacter
+		})
 	}
 
 	const saveCharacter = async () => {
