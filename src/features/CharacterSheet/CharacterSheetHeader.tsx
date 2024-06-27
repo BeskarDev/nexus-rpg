@@ -12,24 +12,31 @@ import {
 	TextField,
 	IconButton,
 	Link,
+	CircularProgress,
 } from '@mui/material'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React, { useEffect } from 'react'
 import { UserAvatar } from './UserAvatar'
 import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
-import { Reply, Star } from '@mui/icons-material'
+import { Reply, Save, Star } from '@mui/icons-material'
 
 const MAX_NAME_LENGTH = 1_000
 
 export type CharacterSheetHeaderProps = {
 	active: boolean
 	activeName?: string
+	unsavedChanges: boolean
+	saveCharacter: () => void
+	loadingSave: boolean
 }
 
 export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	active,
 	activeName,
+	unsavedChanges,
+	saveCharacter,
+	loadingSave,
 }) => {
 	const { userLoggedIn, currentUser } = useAuth()
 	const [open, setOpen] = React.useState(false)
@@ -95,6 +102,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						>
 							new character
 						</Button>
+					)}
+					{active && (
+						<IconButton disabled={!unsavedChanges} onClick={saveCharacter}>
+							{loadingSave ? <CircularProgress size={20} /> : <Save />}
+						</IconButton>
 					)}
 					<UserAvatar />
 				</Box>

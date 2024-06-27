@@ -45,6 +45,7 @@ export const LoginComponent: React.FC = () => {
 			onSubmit={onSubmit}
 			sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
 		>
+			<Typography variant="h6">Login</Typography>
 			<TextField
 				required
 				type="email"
