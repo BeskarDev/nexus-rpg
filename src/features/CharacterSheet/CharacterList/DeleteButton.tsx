@@ -18,10 +18,12 @@ import { Character } from './CharacterList'
 import { deleteDoc } from 'firebase/firestore'
 
 export type DeleteButtonProps = {
-	char: Character
+	handleDeleteCharacter: () => void
 }
 
-export const DeleteButton: React.FC<DeleteButtonProps> = ({ char }) => {
+export const DeleteButton: React.FC<DeleteButtonProps> = ({
+	handleDeleteCharacter,
+}) => {
 	const [open, setOpen] = React.useState(false)
 
 	const handleOpen = () => {
@@ -33,7 +35,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({ char }) => {
 	}
 
 	const handleConfirm = async () => {
-		await deleteDoc(char.docRef)
+		handleDeleteCharacter()
 		setOpen(false)
 	}
 

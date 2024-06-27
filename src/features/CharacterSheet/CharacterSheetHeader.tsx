@@ -86,7 +86,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					{active && activeName}
 				</Typography>
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
-					{
+					{!active && (
 						<Button
 							variant="outlined"
 							size="small"
@@ -95,7 +95,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						>
 							new character
 						</Button>
-					}
+					)}
 					<UserAvatar />
 				</Box>
 			</Box>
@@ -135,6 +135,12 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						onChange={(e) => {
 							if (e.target.value.length <= MAX_NAME_LENGTH) {
 								setName(e.target.value)
+							}
+						}}
+						onKeyDown={(e) => {
+							if (e.key === 'Enter') {
+								e.preventDefault()
+								handleConfirm()
 							}
 						}}
 						InputLabelProps={{ shrink: true }}

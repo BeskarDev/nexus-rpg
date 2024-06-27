@@ -62,13 +62,22 @@ export const CharacterList: React.FC = () => {
 		}
 	}
 
+	const handleDeleteCharacter = async (char: Character) => {
+		await deleteDoc(char.docRef)
+		setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
+	}
+
 	return (
 		<List>
 			{Boolean(characters.length) &&
 				characters.map((char) => (
 					<ListItem
 						key={char['name']}
-						secondaryAction={<DeleteButton char={char} />}
+						secondaryAction={
+							<DeleteButton
+								handleDeleteCharacter={() => handleDeleteCharacter(char)}
+							/>
+						}
 					>
 						<Link
 							href={`${window.location.href.split('?')[0]}?id=${char.docId}`}
