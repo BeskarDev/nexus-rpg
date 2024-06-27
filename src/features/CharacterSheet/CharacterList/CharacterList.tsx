@@ -11,6 +11,7 @@ import {
 	ListItemAvatar,
 	ListItemText,
 	Link,
+	ListItemButton,
 } from '@mui/material'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React, { useEffect } from 'react'
@@ -62,22 +63,28 @@ export const CharacterList: React.FC = () => {
 	}
 
 	return (
-		<List dense={false}>
+		<List>
 			{Boolean(characters.length) &&
 				characters.map((char) => (
 					<ListItem
 						key={char['name']}
 						secondaryAction={<DeleteButton char={char} />}
 					>
-						<ListItemAvatar>
-							<Avatar>
-								<ListAlt />
-							</Avatar>
-						</ListItemAvatar>
 						<Link
 							href={`${window.location.href.split('?')[0]}?id=${char.docId}`}
+							sx={{ width: '100%', textDecoration: 'none' }}
 						>
-							<ListItemText primary={char['name']} />
+							<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
+								<ListItemAvatar>
+									<Avatar>
+										<ListAlt />
+									</Avatar>
+								</ListItemAvatar>
+								<ListItemText
+									primary={char['name']}
+									sx={{ textDecoration: 'none' }}
+								/>
+							</ListItemButton>
 						</Link>
 					</ListItem>
 				))}
