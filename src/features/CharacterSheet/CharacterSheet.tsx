@@ -1,8 +1,8 @@
-import { Box, Tabs, Tab, TextField, styled, Typography } from '@mui/material'
-import { useAuth } from '@site/src/hooks/firebaseAuthContext'
-import React, { useEffect } from 'react'
-import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
+import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
+import React from 'react'
+import SwipeableViews from 'react-swipeable-views'
 import { DeepPartial } from './CharacterSheetContainer'
+import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
 import { Character } from './types/Character'
 
 export const AttributeField = styled(TextField)({
@@ -61,12 +61,22 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					<Tab id="5" label="Other" />
 				</Tabs>
 			</Box>
-			{activeTab === 0 && (
+			<SwipeableViews
+				index={activeTab}
+				onChangeIndex={(index) => setActiveTab(index)}
+				enableMouseEvents={false}
+				animateHeight
+			>
 				<StatisticsTab
 					character={character}
 					updateCharacter={updateCharacter}
 				/>
-			)}
+				<div>tab 2</div>
+				<div>tab 3</div>
+				<div>tab 4</div>
+				<div>tab 5</div>
+				<div>tab 6</div>
+			</SwipeableViews>
 		</>
 	)
 }
