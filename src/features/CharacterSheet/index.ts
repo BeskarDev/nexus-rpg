@@ -1,1 +1,1 @@
-export { CharacterSheet } from './CharacterSheet'
+export { CharacterSheetContainer } from './CharacterSheetContainer'

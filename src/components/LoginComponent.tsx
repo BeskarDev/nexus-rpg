@@ -14,6 +14,10 @@ import { useAuth } from '../hooks/firebaseAuthContext'
 
 export const LoginComponent: React.FC = () => {
 	const { userLoggedIn, currentUser } = useAuth()
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [isSigningIn, setIsSigningIn] = useState(false)
+	const [errorMessage, setErrorMessage] = useState('')
 
 	if (userLoggedIn && currentUser?.email) {
 		return (
@@ -25,11 +29,6 @@ export const LoginComponent: React.FC = () => {
 			</Box>
 		)
 	}
-
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [isSigningIn, setIsSigningIn] = useState(false)
-	const [errorMessage, setErrorMessage] = useState('')
 
 	const onSubmit = async (e) => {
 		e.preventDefault()
