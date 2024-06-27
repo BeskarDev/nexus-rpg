@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-complete-tag",
+        "wallabyjs.console-ninja",
+        "dbaeumer.vscode-eslint",
+        "iulian-radu-at.find-unused-exports",
+        "streetsidesoftware.code-spell-checker"
+    ]
+}
