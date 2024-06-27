@@ -9,12 +9,13 @@ import { CharacterSheet } from './CharacterSheet'
 import { Character } from './CharacterList/CharacterList'
 import { mapDocToCharacter } from './mapDocToCharacter'
 
-const SAVE_CHARACTER_INTERVAL = 30_000
+const SAVE_CHARACTER_TIMEOUT = 30_000
 
 export const CharacterSheetContainer: React.FC = () => {
 	const { userLoggedIn, currentUser } = useAuth()
 	const [activeCharacter, setActiveCharacter] = useState<Character>(undefined)
 	const [unsavedChanges, setUnsavedChanges] = useState(false)
+	const [saveTimeout, setSaveTimeout] = useState(false)
 	const [loadingSave, setLoadingSave] = useState(false)
 
 	const queryString = window.location.search
@@ -22,11 +23,19 @@ export const CharacterSheetContainer: React.FC = () => {
 	const activeCharacterId = urlParams.get('id') ?? undefined
 
 	useEffect(() => {
-		if (activeCharacterId && currentUser) {
-			const interval = setInterval(() => saveCharacter, SAVE_CHARACTER_INTERVAL)
-			return () => clearInterval(interval)
+		if (activeCharacterId && currentUser && unsavedChanges && !saveTimeout) {
+			setTimeout(() => {
+				setSaveTimeout(true)
+			}, SAVE_CHARACTER_TIMEOUT)
 		}
-	}, [])
+	}, [activeCharacter])
+
+	useEffect(() => {
+		if (activeCharacterId && currentUser && unsavedChanges && saveTimeout) {
+			saveCharacter()
+			setSaveTimeout(false)
+		}
+	}, [saveTimeout])
 
 	useEffect(() => {
 		if (activeCharacterId && currentUser) {
@@ -48,6 +57,7 @@ export const CharacterSheetContainer: React.FC = () => {
 			await updateDoc(activeCharacter.docRef, {
 				...activeCharacter,
 			} as Omit<Character, 'docRef' | 'docId'>)
+			setUnsavedChanges(false)
 			setLoadingSave(false)
 		}
 		console.log('done saving character')

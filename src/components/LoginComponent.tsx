@@ -55,7 +55,6 @@ export const LoginComponent: React.FC = () => {
 				onChange={(e) => {
 					setEmail(e.target.value)
 				}}
-				InputLabelProps={{ shrink: true }}
 			/>
 			<TextField
 				required
@@ -66,7 +65,6 @@ export const LoginComponent: React.FC = () => {
 				onChange={(e) => {
 					setPassword(e.target.value)
 				}}
-				InputLabelProps={{ shrink: true }}
 			/>
 			<Button
 				type="submit"
