@@ -3,10 +3,10 @@ import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React, { useEffect } from 'react'
 import { Character } from './CharacterList/CharacterList'
 import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
+import { DeepPartial } from './CharacterSheetContainer'
 
 export const AttributeField = styled(TextField)({
 	maxWidth: '5rem',
-	borderRadius: 4,
 })
 AttributeField.defaultProps = {
 	size: 'medium',
@@ -26,7 +26,7 @@ SectionHeader.defaultProps = {
 
 export type CharacterSheetProps = {
 	character: Character
-	updateCharacter: (newChar: Partial<Character>) => void
+	updateCharacter: (update: DeepPartial<Character>) => void
 }
 
 export const CharacterSheet: React.FC<CharacterSheetProps> = ({
@@ -54,10 +54,11 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					allowScrollButtonsMobile
 				>
 					<Tab id="0" label="Statistics" />
-					<Tab id="1" label="Equipment" />
-					<Tab id="2" label="Spells" />
-					<Tab id="2" label="Social" />
-					<Tab id="2" label="Other" />
+					<Tab id="1" label="Skills" />
+					<Tab id="2" label="Equipment" />
+					<Tab id="3" label="Spells" />
+					<Tab id="4" label="Social" />
+					<Tab id="5" label="Other" />
 				</Tabs>
 			</Box>
 			{activeTab === 0 && (

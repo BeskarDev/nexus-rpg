@@ -35,10 +35,17 @@ export type Character = DocumentData & {
 	docRef: DocumentReference<DocumentData, DocumentData>
 	docId: string
 	name: string
-	strength: string
-	agility: string
-	spirit: string
-	mind: string
+	statistics: {
+		healthTotal: number
+		healthCurrent: number
+		strength: string
+		agility: string
+		spirit: string
+		mind: string
+		parry: number
+		dodge: number
+		resist: number
+	}
 }
 
 export const CharacterList: React.FC = () => {
