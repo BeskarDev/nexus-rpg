@@ -1,7 +1,28 @@
-import { Box, Tabs, Tab, TextField } from '@mui/material'
+import { Box, Tabs, Tab, TextField, styled, Typography } from '@mui/material'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React, { useEffect } from 'react'
 import { Character } from './CharacterList/CharacterList'
+import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
+
+export const AttributeField = styled(TextField)({
+	maxWidth: '5rem',
+	borderRadius: 4,
+})
+AttributeField.defaultProps = {
+	size: 'medium',
+	inputProps: {
+		sx: {
+			textAlign: 'center',
+		},
+	},
+}
+
+export const SectionHeader = styled(Typography)(({ theme }) => ({
+	marginBottom: `${theme.spacing(0.75)} !important`,
+}))
+SectionHeader.defaultProps = {
+	fontWeight: 'bold',
+}
 
 export type CharacterSheetProps = {
 	character: Character
@@ -28,9 +49,8 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 				<Tabs
 					value={activeTab}
 					onChange={handleTabChange}
-					centered
 					variant="scrollable"
-					scrollButtons="auto"
+					scrollButtons={false}
 					allowScrollButtonsMobile
 				>
 					<Tab id="0" label="Statistics" />
@@ -40,36 +60,12 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					<Tab id="2" label="Other" />
 				</Tabs>
 			</Box>
-			<Box sx={{ display: 'flex', gap: 2 }}>
-				<TextField
-					value={character.strength}
-					onChange={(event) =>
-						updateCharacter({ strength: event.target.value })
-					}
-					label="Strength"
+			{activeTab === 0 && (
+				<StatisticsTab
+					character={character}
+					updateCharacter={updateCharacter}
 				/>
-				<TextField
-					value={character.agility}
-					onChange={(event) =>
-						updateCharacter({ strength: event.target.value })
-					}
-					label="Agility"
-				/>
-				<TextField
-					value={character.spirit}
-					onChange={(event) =>
-						updateCharacter({ strength: event.target.value })
-					}
-					label="Spirit"
-				/>
-				<TextField
-					value={character.mind}
-					onChange={(event) =>
-						updateCharacter({ strength: event.target.value })
-					}
-					label="Mind"
-				/>
-			</Box>
+			)}
 		</>
 	)
 }
