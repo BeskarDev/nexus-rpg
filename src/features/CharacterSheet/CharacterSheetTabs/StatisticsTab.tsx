@@ -1,11 +1,12 @@
-import { Box } from '@mui/material'
+import { Box, TextField } from '@mui/material'
 import React from 'react'
 import { Character } from '../CharacterList/CharacterList'
 import { AttributeField, SectionHeader } from '../CharacterSheet'
+import { DeepPartial } from '../CharacterSheetContainer'
 
 export type StatisticsTabProps = {
 	character: Character
-	updateCharacter: (newChar: Partial<Character>) => void
+	updateCharacter: (update: DeepPartial<Character>) => void
 }
 
 export const StatisticsTab: React.FC<StatisticsTabProps> = ({
@@ -13,31 +14,110 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 	updateCharacter,
 }) => {
 	return (
-		<Box>
-			<SectionHeader>Attributes</SectionHeader>
-			<Box sx={{ display: 'flex', gap: 2 }}>
-				<AttributeField
-					value={character.strength}
-					onChange={(event) =>
-						updateCharacter({ strength: event.target.value })
-					}
-					label="Strength"
-				/>
-				<AttributeField
-					value={character.agility}
-					onChange={(event) => updateCharacter({ agility: event.target.value })}
-					label="Agility"
-				/>
-				<AttributeField
-					value={character.spirit}
-					onChange={(event) => updateCharacter({ spirit: event.target.value })}
-					label="Spirit"
-				/>
-				<AttributeField
-					value={character.mind}
-					onChange={(event) => updateCharacter({ mind: event.target.value })}
-					label="Mind"
-				/>
+		<Box
+			sx={{ display: 'flex', gap: { md: 4, sm: 2, xs: 1 }, flexWrap: 'wrap' }}
+		>
+			<Box>
+				<SectionHeader>Health & Wounds</SectionHeader>
+				<Box sx={{ display: 'flex', gap: 1 }}>
+					<TextField
+						type="number"
+						value={character.statistics.healthTotal}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { healthTotal: Number(event.target.value) },
+							})
+						}
+						label="Total Health"
+						helperText="12 + Strength"
+						sx={{ maxWidth: '10rem' }}
+					/>
+					<TextField
+						type="number"
+						value={character.statistics.healthCurrent}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { healthCurrent: Number(event.target.value) },
+							})
+						}
+						label="Current Health"
+						sx={{ maxWidth: '7rem' }}
+					/>
+				</Box>
+			</Box>
+			<Box>
+				<SectionHeader>Attributes</SectionHeader>
+				<Box sx={{ display: 'flex', gap: 1 }}>
+					<AttributeField
+						value={character.statistics.strength}
+						onChange={(event) =>
+							updateCharacter({ statistics: { strength: event.target.value } })
+						}
+						label="Strength"
+					/>
+					<AttributeField
+						value={character.statistics.agility}
+						onChange={(event) =>
+							updateCharacter({ statistics: { agility: event.target.value } })
+						}
+						label="Agility"
+					/>
+					<AttributeField
+						value={character.statistics.spirit}
+						onChange={(event) =>
+							updateCharacter({ statistics: { spirit: event.target.value } })
+						}
+						label="Spirit"
+					/>
+					<AttributeField
+						value={character.statistics.mind}
+						onChange={(event) =>
+							updateCharacter({ statistics: { mind: event.target.value } })
+						}
+						label="Mind"
+					/>
+				</Box>
+			</Box>
+			<Box>
+				<SectionHeader>Defenses</SectionHeader>
+				<Box sx={{ display: 'flex', gap: 1 }}>
+					<AttributeField
+						type="number"
+						value={character.statistics.parry}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { parry: Number(event.target.value) },
+							})
+						}
+						label="Parry"
+						helperText="7 + Fighting"
+						sx={{ maxWidth: '7rem' }}
+					/>
+					<AttributeField
+						type="number"
+						value={character.statistics.dodge}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { dodge: Number(event.target.value) },
+							})
+						}
+						label="Dodge"
+						helperText="5 + 1/2 Agility"
+						sx={{ maxWidth: '7rem' }}
+					/>
+					<AttributeField
+						type="number"
+						value={character.statistics.resist}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { resist: Number(event.target.value) },
+							})
+						}
+						label="Resist"
+						helperText="5 + 1/2 Spirit"
+						sx={{ maxWidth: '7rem' }}
+					/>
+				</Box>
 			</Box>
 		</Box>
 	)
