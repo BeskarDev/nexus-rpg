@@ -1,9 +1,9 @@
 import { Box, Tabs, Tab, TextField, styled, Typography } from '@mui/material'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React, { useEffect } from 'react'
-import { Character } from './CharacterList/CharacterList'
 import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
 import { DeepPartial } from './CharacterSheetContainer'
+import { Character } from './types/Character'
 
 export const AttributeField = styled(TextField)({
 	maxWidth: '5rem',

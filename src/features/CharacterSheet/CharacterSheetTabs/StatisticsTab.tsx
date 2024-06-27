@@ -1,8 +1,9 @@
 import { Box, TextField } from '@mui/material'
 import React from 'react'
-import { Character } from '../CharacterList/CharacterList'
+
 import { AttributeField, SectionHeader } from '../CharacterSheet'
 import { DeepPartial } from '../CharacterSheetContainer'
+import { Character } from '../types/Character'
 
 export type StatisticsTabProps = {
 	character: Character
@@ -22,10 +23,10 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 				<Box sx={{ display: 'flex', gap: 1 }}>
 					<TextField
 						type="number"
-						value={character.statistics.healthTotal}
+						value={character.statistics.health.total}
 						onChange={(event) =>
 							updateCharacter({
-								statistics: { healthTotal: Number(event.target.value) },
+								statistics: { health: { total: Number(event.target.value) } },
 							})
 						}
 						label="Total Health"
@@ -34,10 +35,10 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 					/>
 					<TextField
 						type="number"
-						value={character.statistics.healthCurrent}
+						value={character.statistics.health.current}
 						onChange={(event) =>
 							updateCharacter({
-								statistics: { healthCurrent: Number(event.target.value) },
+								statistics: { health: { current: Number(event.target.value) } },
 							})
 						}
 						label="Current Health"
@@ -49,30 +50,38 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 				<SectionHeader>Attributes</SectionHeader>
 				<Box sx={{ display: 'flex', gap: 1 }}>
 					<AttributeField
-						value={character.statistics.strength}
+						value={character.statistics.strength.value}
 						onChange={(event) =>
-							updateCharacter({ statistics: { strength: event.target.value } })
+							updateCharacter({
+								statistics: { strength: { value: event.target.value } },
+							})
 						}
 						label="Strength"
 					/>
 					<AttributeField
-						value={character.statistics.agility}
+						value={character.statistics.agility.value}
 						onChange={(event) =>
-							updateCharacter({ statistics: { agility: event.target.value } })
+							updateCharacter({
+								statistics: { agility: { value: event.target.value } },
+							})
 						}
 						label="Agility"
 					/>
 					<AttributeField
-						value={character.statistics.spirit}
+						value={character.statistics.spirit.value}
 						onChange={(event) =>
-							updateCharacter({ statistics: { spirit: event.target.value } })
+							updateCharacter({
+								statistics: { spirit: { value: event.target.value } },
+							})
 						}
 						label="Spirit"
 					/>
 					<AttributeField
-						value={character.statistics.mind}
+						value={character.statistics.mind.value}
 						onChange={(event) =>
-							updateCharacter({ statistics: { mind: event.target.value } })
+							updateCharacter({
+								statistics: { mind: { value: event.target.value } },
+							})
 						}
 						label="Mind"
 					/>

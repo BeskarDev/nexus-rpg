@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
+import { Delete, Warning } from '@mui/icons-material'
 import {
-	Avatar,
-	AvatarProps,
 	Button,
 	Dialog,
 	DialogActions,
@@ -9,13 +7,8 @@ import {
 	DialogContentText,
 	DialogTitle,
 	IconButton,
-	Menu,
-	MenuItem,
 } from '@mui/material'
-import { Delete, Person, Warning } from '@mui/icons-material'
-import { LoginComponent } from '@site/src/components/LoginComponent'
-import { Character } from './CharacterList'
-import { deleteDoc } from 'firebase/firestore'
+import React from 'react'
 
 export type DeleteButtonProps = {
 	handleDeleteCharacter: () => void

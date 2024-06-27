@@ -20,6 +20,9 @@ import { UserAvatar } from './UserAvatar'
 import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
 import { Reply, Save, Star } from '@mui/icons-material'
+import { Character } from './types/Character'
+import { DeepPartial } from './CharacterSheetContainer'
+import { createInitialCharacter } from './createInitialCharacter'
 
 const MAX_NAME_LENGTH = 1_000
 
@@ -59,7 +62,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		try {
 			const userUid = currentUser.uid
 			const collectionRef = collection(db, userUid)
-			await addDoc(collectionRef, { name })
+			await addDoc(collectionRef, createInitialCharacter(name))
 			setName('')
 			setOpen(false)
 			window.location.href = window.location.href.split('?')[0]
