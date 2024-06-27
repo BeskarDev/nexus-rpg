@@ -1,27 +1,23 @@
+import { Reply, Save, Star } from '@mui/icons-material'
 import {
 	Box,
-	Tabs,
-	Tab,
 	Button,
-	Typography,
+	CircularProgress,
 	Dialog,
 	DialogActions,
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
-	TextField,
 	IconButton,
 	Link,
-	CircularProgress,
+	TextField,
+	Typography,
 } from '@mui/material'
-import { useAuth } from '@site/src/hooks/firebaseAuthContext'
-import React, { useEffect } from 'react'
-import { UserAvatar } from './UserAvatar'
-import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
-import { Reply, Save, Star } from '@mui/icons-material'
-import { Character } from './types/Character'
-import { DeepPartial } from './CharacterSheetContainer'
+import { useAuth } from '@site/src/hooks/firebaseAuthContext'
+import { addDoc, collection } from 'firebase/firestore'
+import React from 'react'
+import { UserAvatar } from './UserAvatar'
 import { createInitialCharacter } from './createInitialCharacter'
 
 const MAX_NAME_LENGTH = 1_000
@@ -75,12 +71,16 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		<>
 			<Box
 				sx={{
+					position: 'sticky',
+					top: '60px',
+					zIndex: 100,
+					backgroundColor: 'var(--ifm-background-color)',
 					display: 'flex',
 					gap: 2,
 					borderBottom: 1,
 					borderColor: 'divider',
 					alignItems: 'center',
-					pb: 1,
+					py: 1,
 					mb: 2,
 				}}
 			>
@@ -91,7 +91,14 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						</IconButton>
 					</Link>
 				)}
-				<Typography variant="h5">
+				<Typography
+					variant="h6"
+					sx={{
+						whiteSpace: 'nowrap',
+						overflow: 'hidden',
+						textOverflow: 'ellipsis',
+					}}
+				>
 					{!active && 'Your Characters'}
 					{active && activeName}
 				</Typography>

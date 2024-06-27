@@ -69,41 +69,43 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 						sx={{ maxWidth: '7rem' }}
 					/>
 				</Box>
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						flexWrap: 'wrap',
-						gap: 1,
-					}}
-				>
-					<SectionHeader>Wounds</SectionHeader>
+			</Box>
+			<Box
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					flexWrap: 'wrap',
+					gap: 1,
+				}}
+			>
+				<SectionHeader>Wounds</SectionHeader>
+				<Box>
 					<WoundCheckbox
 						checked={health.woundOne}
-						onChange={(event) =>
+						onChange={() =>
 							updateCharacter({
 								statistics: {
-									health: { woundOne: Boolean(event.target.value) },
+									health: { woundOne: !health.woundOne },
 								},
 							})
 						}
 					/>
 					<WoundCheckbox
 						checked={health.woundTwo}
-						onChange={(event) =>
+						onChange={() =>
 							updateCharacter({
 								statistics: {
-									health: { woundTwo: Boolean(event.target.value) },
+									health: { woundTwo: !health.woundTwo },
 								},
 							})
 						}
 					/>
 					<WoundCheckbox
 						checked={health.woundThree}
-						onChange={(event) =>
+						onChange={() =>
 							updateCharacter({
 								statistics: {
-									health: { woundThree: Boolean(event.target.value) },
+									health: { woundThree: !health.woundThree },
 								},
 							})
 						}
