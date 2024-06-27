@@ -1,45 +1,86 @@
-import {
-	Box,
-	Experimental_CssVarsProvider,
-	experimental_extendTheme,
-} from '@mui/material'
-import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
-import { theme } from '@site/src/hooks/createTheme'
-import { AuthProvider, useAuth } from '@site/src/hooks/firebaseAuthContext'
-import React, { useEffect } from 'react'
-import { CharacterSheetHeader } from './CharacterSheetHeader'
-import { CharacterList } from './CharacterList'
+import { Box, Typography } from '@mui/material'
 import { db } from '@site/src/config/firebase'
-import { getDoc, doc } from 'firebase/firestore'
+import { useAuth } from '@site/src/hooks/firebaseAuthContext'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import React, { useEffect, useState } from 'react'
+import { CharacterList } from './CharacterList'
+import { CharacterSheetHeader } from './CharacterSheetHeader'
+import { CharacterSheet } from './CharacterSheet'
+import { Character } from './CharacterList/CharacterList'
+import { mapDocToCharacter } from './mapDocToCharacter'
+
+const SAVE_CHARACTER_INTERVAL = 30_000
 
 export const CharacterSheetContainer: React.FC = () => {
 	const { userLoggedIn, currentUser } = useAuth()
-	const [activeCharacter, setActiveCharacter] = React.useState(undefined)
-
-	if (!userLoggedIn) {
-		return <Box>Please log in first</Box>
-	}
+	const [activeCharacter, setActiveCharacter] = useState<Character>(undefined)
+	const [unsavedChanges, setUnsavedChanges] = useState(false)
+	const [loadingSave, setLoadingSave] = useState(false)
 
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
 	const activeCharacterId = urlParams.get('id') ?? undefined
 
 	useEffect(() => {
-		if (activeCharacterId) {
+		if (activeCharacterId && currentUser) {
+			const interval = setInterval(() => saveCharacter, SAVE_CHARACTER_INTERVAL)
+			return () => clearInterval(interval)
+		}
+	}, [])
+
+	useEffect(() => {
+		if (activeCharacterId && currentUser) {
 			getDoc(doc(db, `${currentUser.uid}/${activeCharacterId}`)).then((doc) => {
-				setActiveCharacter(doc.data())
+				setActiveCharacter(mapDocToCharacter(doc))
 			})
 		}
 	}, [activeCharacterId])
+
+	const updateCharacter = (newChar: Partial<Character>) => {
+		setUnsavedChanges(true)
+		setActiveCharacter((curr) => ({ ...curr, ...newChar }))
+	}
+
+	const saveCharacter = async () => {
+		console.log('about to save character...')
+		if (unsavedChanges) {
+			setLoadingSave(true)
+			await updateDoc(activeCharacter.docRef, {
+				...activeCharacter,
+			} as Omit<Character, 'docRef' | 'docId'>)
+			setLoadingSave(false)
+		}
+		console.log('done saving character')
+	}
 
 	return (
 		<>
 			<CharacterSheetHeader
 				active={Boolean(activeCharacterId)}
-				activeName={activeCharacter && activeCharacter['name']}
+				activeName={activeCharacter && activeCharacter.name}
+				unsavedChanges={unsavedChanges}
+				saveCharacter={saveCharacter}
+				loadingSave={loadingSave}
 			/>
-			{!activeCharacterId && <CharacterList />}
-			{activeCharacterId && <div>active character...</div>}
+			{!userLoggedIn && (
+				<Box
+					sx={{
+						m: 5,
+						width: '100%',
+						display: 'flex',
+						justifyContent: 'center',
+					}}
+				>
+					<Typography variant="h6">Please log in first</Typography>
+				</Box>
+			)}
+			{userLoggedIn && !activeCharacterId && <CharacterList />}
+			{userLoggedIn && activeCharacterId && (
+				<CharacterSheet
+					character={activeCharacter}
+					updateCharacter={updateCharacter}
+				/>
+			)}
 		</>
 	)
 }

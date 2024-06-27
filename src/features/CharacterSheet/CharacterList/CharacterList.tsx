@@ -29,10 +29,16 @@ import {
 } from 'firebase/firestore'
 import { Delete, Folder, ListAlt } from '@mui/icons-material'
 import { DeleteButton } from './DeleteButton'
+import { mapDocToCharacter } from '../mapDocToCharacter'
 
 export type Character = DocumentData & {
 	docRef: DocumentReference<DocumentData, DocumentData>
 	docId: string
+	name: string
+	strength: string
+	agility: string
+	spirit: string
+	mind: string
 }
 
 export const CharacterList: React.FC = () => {
@@ -51,11 +57,9 @@ export const CharacterList: React.FC = () => {
 			const q = query(collectionRef) // Create a query to get all documents
 			const querySnapshot = await getDocs(q) // Use getDocs to fetch documents
 
-			const allDocs: Character[] = querySnapshot.docs.map((doc) => ({
-				docRef: doc.ref,
-				docId: doc.id,
-				...doc.data(),
-			}))
+			const allDocs: Character[] = querySnapshot.docs.map((doc) =>
+				mapDocToCharacter(doc),
+			)
 			setCharacters(allDocs)
 		} catch (error) {
 			console.error('Error fetching documents: ', error)
