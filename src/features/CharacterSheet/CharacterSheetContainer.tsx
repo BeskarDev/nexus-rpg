@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react'
 import { CharacterList } from './CharacterList'
 import { CharacterSheetHeader } from './CharacterSheetHeader'
 import { CharacterSheet } from './CharacterSheet'
-import { Character } from './CharacterList/CharacterList'
 import { mapDocToCharacter } from './mapDocToCharacter'
+import { Character, CharacterDocument } from './types/Character'
 
 const SAVE_CHARACTER_TIMEOUT = 30_000
 
@@ -17,7 +17,8 @@ export type DeepPartial<T> = {
 
 export const CharacterSheetContainer: React.FC = () => {
 	const { userLoggedIn, currentUser } = useAuth()
-	const [activeCharacter, setActiveCharacter] = useState<Character>(undefined)
+	const [activeCharacter, setActiveCharacter] =
+		useState<CharacterDocument>(undefined)
 	const [unsavedChanges, setUnsavedChanges] = useState(false)
 	const [saveTimeout, setSaveTimeout] = useState(false)
 	const [autosave, setAutosave] = useState(false)
@@ -56,25 +57,32 @@ export const CharacterSheetContainer: React.FC = () => {
 	const updateCharacter = (update: DeepPartial<Character>) => {
 		setUnsavedChanges(true)
 		setActiveCharacter((prevCharacter) => {
-			// Create a new object using spread syntax
 			const newCharacter = { ...prevCharacter }
 
-			// Loop through the update object
-			for (const key in update) {
-				// Handle nested objects like statistics
-				if (key === 'statistics' && typeof update[key] === 'object') {
-					newCharacter.statistics = {
-						...prevCharacter.statistics,
-						...update.statistics,
+			function mergeDeep(target: any, source: any) {
+				if (isObject(target) && isObject(source)) {
+					for (const key in source) {
+						if (isObject(source[key])) {
+							// Recursive call for nested objects
+							target[key] = mergeDeep(target[key] || {}, source[key])
+						} else {
+							// Update value for non-objects
+							target[key] = source[key]
+						}
 					}
 				} else {
-					// Update top-level properties directly
-					newCharacter[key] = update[key]
+					// Replace entire value if not objects
+					return source
 				}
+				return target
 			}
 
-			return newCharacter
+			return mergeDeep(newCharacter, update)
 		})
+	}
+
+	function isObject(value: any) {
+		return value !== null && typeof value === 'object'
 	}
 
 	const saveCharacter = async () => {
@@ -94,7 +102,7 @@ export const CharacterSheetContainer: React.FC = () => {
 		<>
 			<CharacterSheetHeader
 				active={Boolean(activeCharacterId)}
-				activeName={activeCharacter && activeCharacter.name}
+				activeName={activeCharacter && activeCharacter.personal.name}
 				unsavedChanges={unsavedChanges}
 				saveCharacter={saveCharacter}
 				loadingSave={loadingSave}

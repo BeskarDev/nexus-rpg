@@ -30,26 +30,10 @@ import {
 import { Delete, Folder, ListAlt } from '@mui/icons-material'
 import { DeleteButton } from './DeleteButton'
 import { mapDocToCharacter } from '../mapDocToCharacter'
-
-export type Character = DocumentData & {
-	docRef: DocumentReference<DocumentData, DocumentData>
-	docId: string
-	name: string
-	statistics: {
-		healthTotal: number
-		healthCurrent: number
-		strength: string
-		agility: string
-		spirit: string
-		mind: string
-		parry: number
-		dodge: number
-		resist: number
-	}
-}
+import { Character, CharacterDocument } from '../types/Character'
 
 export const CharacterList: React.FC = () => {
-	const [characters, setCharacters] = React.useState<Character[]>([])
+	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])
 	const { currentUser } = useAuth()
 
 	useEffect(() => {
@@ -64,7 +48,7 @@ export const CharacterList: React.FC = () => {
 			const q = query(collectionRef) // Create a query to get all documents
 			const querySnapshot = await getDocs(q) // Use getDocs to fetch documents
 
-			const allDocs: Character[] = querySnapshot.docs.map((doc) =>
+			const allDocs: CharacterDocument[] = querySnapshot.docs.map((doc) =>
 				mapDocToCharacter(doc),
 			)
 			setCharacters(allDocs)
@@ -73,7 +57,7 @@ export const CharacterList: React.FC = () => {
 		}
 	}
 
-	const handleDeleteCharacter = async (char: Character) => {
+	const handleDeleteCharacter = async (char: CharacterDocument) => {
 		await deleteDoc(char.docRef)
 		setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
 	}
@@ -83,7 +67,7 @@ export const CharacterList: React.FC = () => {
 			{Boolean(characters.length) &&
 				characters.map((char) => (
 					<ListItem
-						key={char['name']}
+						key={char.personal.name}
 						secondaryAction={
 							<DeleteButton
 								handleDeleteCharacter={() => handleDeleteCharacter(char)}
@@ -101,7 +85,7 @@ export const CharacterList: React.FC = () => {
 									</Avatar>
 								</ListItemAvatar>
 								<ListItemText
-									primary={char['name']}
+									primary={char.personal.name}
 									sx={{ textDecoration: 'none' }}
 								/>
 							</ListItemButton>
