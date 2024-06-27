@@ -4,6 +4,7 @@ import SwipeableViews from 'react-swipeable-views'
 import { DeepPartial } from './CharacterSheetContainer'
 import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
 import { Character } from './types/Character'
+import { SkillsTab } from './CharacterSheetTabs/SkillsTab'
 
 export const AttributeField = styled(TextField)({
 	maxWidth: '5rem',
@@ -71,7 +72,9 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					character={character}
 					updateCharacter={updateCharacter}
 				/>
-				<div>tab 2</div>
+				<SkillsTab 
+					character={character}
+					updateCharacter={updateCharacter} />
 				<div>tab 3</div>
 				<div>tab 4</div>
 				<div>tab 5</div>
