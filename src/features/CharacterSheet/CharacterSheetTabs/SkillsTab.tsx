@@ -87,6 +87,11 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						label="Total XP"
 						helperText=""
 						sx={{ maxWidth: '7rem' }}
+						inputProps={{
+							sx: {
+								textAlign: 'right',
+							},
+						}}
 					/>
 					<AttributeField
 						type="number"

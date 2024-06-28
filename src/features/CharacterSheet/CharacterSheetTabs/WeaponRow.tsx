@@ -37,7 +37,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				}
 				onBlur={() => updateWeapon({ name: weapon.name })}
 				label="Name"
-				sx={{ maxWidth: '14rem', flexGrow: 1 }}
+				sx={{ maxWidth: '13rem', flexGrow: 1 }}
 			/>
 			<TextField
 				variant="standard"
@@ -47,7 +47,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				}
 				onBlur={() => updateWeapon({ damage: weapon.damage })}
 				label="Damage"
-				sx={{ maxWidth: '8rem', flexGrow: 0 }}
+				sx={{ maxWidth: '7rem', flexGrow: 0 }}
 			/>
 			<TextField
 				variant="standard"
@@ -70,6 +70,11 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				onChange={(event) => updateWeapon({ cost: Number(event.target.value) })}
 				label="Cost"
 				sx={{ maxWidth: '8rem', flexGrow: 0 }}
+				inputProps={{
+					sx: {
+						textAlign: 'right',
+					},
+				}}
 			/>
 			<AttributeField
 				type="number"
