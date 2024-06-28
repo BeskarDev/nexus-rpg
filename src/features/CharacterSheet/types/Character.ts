@@ -33,9 +33,9 @@ export type Statistics = {
 		total: number
 		temp: number
 		current: number
-		woundOne: boolean
-		woundTwo: boolean
-		woundThree: boolean
+		woundOne: Wound
+		woundTwo: Wound
+		woundThree: Wound
 	}
 	av: {
 		armor: number
@@ -51,6 +51,12 @@ export type Statistics = {
 	dodge: number
 	resist: number
 	resolve: number
+}
+
+export type Wound = {
+	injury: boolean
+	fatigueOne: boolean
+	fatigueTwo: boolean
 }
 
 export type Attribute = {
@@ -96,11 +102,7 @@ export type Items = {
 
 export type Weapon = {
 	name: string
-	damage: {
-		base: number
-		weapon: number
-		other: string
-	}
+	damage: string
 	properties: string
 	cost: number
 	load: number

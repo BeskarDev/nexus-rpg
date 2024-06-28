@@ -9,9 +9,6 @@ export const theme = createTheme({
 			defaultProps: {
 				InputLabelProps: { shrink: true },
 				fullWidth: true,
-				// add the whitespace for empty helperText even if helperText is undefined
-				// drawback: empty helperText will still remove the created whitespace.
-				helperText: ' ',
 				margin: 'dense',
 				size: 'medium',
 				variant: 'outlined',

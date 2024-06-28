@@ -1,7 +1,7 @@
-import { Box, IconButton, Typography } from '@mui/material'
+import { Box, IconButton, Tooltip } from '@mui/material'
 import React from 'react'
 
-import { AddCircle } from '@mui/icons-material'
+import { AddCircle, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../CharacterSheet'
 import { DeepPartial } from '../CharacterSheetContainer'
 import { Character, Skill } from '../types/Character'
@@ -28,9 +28,10 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 	}
 
 	const updateSkill = (update: Partial<Skill>, index: number) => {
-		skills[index] = { ...skills[index], ...update }
+		const newSkills = [...skills]
+		newSkills[index] = { ...skills[index], ...update }
 		return updateCharacter({
-			skills: { skills },
+			skills: { skills: newSkills },
 		})
 	}
 
@@ -73,38 +74,38 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 				justifyContent: 'center',
 			}}
 		>
-			<Box sx={{ mx: 'auto', display: 'flex' }}>
-				<AttributeField
-					type="number"
-					value={xp.total}
-					onChange={(event) =>
-						updateCharacter({
-							skills: { xp: { total: Number(event.target.value) } },
-						})
-					}
-					label="Total XP"
-					helperText=""
-					sx={{ maxWidth: '7rem' }}
-				/>
-				<AttributeField
-					type="number"
-					value={xp.spend}
-					onChange={(event) =>
-						updateCharacter({
-							skills: { xp: { spend: Number(event.target.value) } },
-						})
-					}
-					label="Spend XP"
-					helperText=""
-					sx={{ maxWidth: '7rem' }}
-				/>
-			</Box>
-
-			<Box sx={{ width: '100%', flexGrow: 1 }} />
-
 			<Box sx={{ mb: 2, maxWidth: '24rem' }}>
+				<Box sx={{ mx: 'auto', display: 'flex' }}>
+					<AttributeField
+						type="number"
+						value={xp.total}
+						onChange={(event) =>
+							updateCharacter({
+								skills: { xp: { total: Number(event.target.value) } },
+							})
+						}
+						label="Total XP"
+						helperText=""
+						sx={{ maxWidth: '7rem' }}
+					/>
+					<AttributeField
+						type="number"
+						value={xp.spend}
+						onChange={(event) =>
+							updateCharacter({
+								skills: { xp: { spend: Number(event.target.value) } },
+							})
+						}
+						label="Spend XP"
+						helperText=""
+						sx={{ maxWidth: '7rem' }}
+					/>
+				</Box>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Skills</SectionHeader>
+					<Tooltip title="0-1 XP (rank 0), 2-5 XP (rank 1), 6-11 XP (rank 2), 12-19 XP (rank 3), 20-29 XP (rank 4), 30 XP (rank 5)">
+						<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+					</Tooltip>
 					<IconButton onClick={addNewSkill} sx={{ mb: 0.75 }}>
 						<AddCircle />
 					</IconButton>
@@ -119,10 +120,6 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						/>
 					))}
 				</Box>
-				<Typography variant="caption" sx={{ whiteSpace: 'break-spaces' }}>
-					0-1 XP (rank 0), 2-5 XP (rank 1), 6-11 XP (rank 2), 12-19 XP (rank 3),
-					20-29 XP (rank 4), 30 XP (rank 5)
-				</Typography>
 			</Box>
 
 			<Box sx={{ flexGrow: 1, maxWidth: '30rem' }}>

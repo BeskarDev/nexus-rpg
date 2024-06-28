@@ -21,9 +21,21 @@ export const createInitialCharacter = (name: string): Character => ({
 			total: 0,
 			temp: 0,
 			current: 0,
-			woundOne: false,
-			woundTwo: false,
-			woundThree: false,
+			woundOne: {
+				injury: false,
+				fatigueOne: false,
+				fatigueTwo: false,
+			},
+			woundTwo: {
+				injury: false,
+				fatigueOne: false,
+				fatigueTwo: false,
+			},
+			woundThree: {
+				injury: false,
+				fatigueOne: false,
+				fatigueTwo: false,
+			},
 		},
 		av: {
 			armor: 0,
