@@ -2,9 +2,9 @@ import { Box, IconButton, Tooltip } from '@mui/material'
 import React, { useMemo } from 'react'
 
 import { AddCircle, HelpOutline } from '@mui/icons-material'
-import { AttributeField, SectionHeader } from '../CharacterSheet'
-import { DeepPartial } from '../CharacterSheetContainer'
-import { Character, Item, Weapon } from '../types/Character'
+import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { DeepPartial } from '../../CharacterSheetContainer'
+import { Character, Item, Weapon } from '../../types/Character'
 
 import { EquipmentRow } from './EquipmentRow'
 import { ItemRow } from './ItemRow'
