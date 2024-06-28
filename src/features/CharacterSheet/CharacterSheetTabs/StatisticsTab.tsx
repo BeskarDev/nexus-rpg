@@ -13,22 +13,22 @@ export type StatisticsTabProps = {
 }
 
 export const StatisticsTab: React.FC<StatisticsTabProps> = ({
-	character,
+	character: {
+		statistics: {
+			health,
+			av,
+			strength,
+			agility,
+			spirit,
+			mind,
+			parry,
+			dodge,
+			resist,
+			resolve,
+		},
+	},
 	updateCharacter,
 }) => {
-	const {
-		health,
-		av,
-		strength,
-		agility,
-		spirit,
-		mind,
-		parry,
-		dodge,
-		resist,
-		resolve,
-	} = character.statistics
-
 	const totalAV: number = useMemo(
 		() => av.armor + av.helmet + av.shield + av.other,
 		[av.armor + av.helmet + av.shield + av.other],

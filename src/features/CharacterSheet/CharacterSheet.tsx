@@ -1,10 +1,10 @@
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
 import React from 'react'
-import SwipeableViews from 'react-swipeable-views'
 import { DeepPartial } from './CharacterSheetContainer'
 import { SkillsTab } from './CharacterSheetTabs/SkillsTab'
 import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
 import { Character } from './types/Character'
+import { useDeviceSize } from './utils/useDeviceSize'
 
 export const AttributeField = styled(TextField)({
 	maxWidth: '5rem',
@@ -35,6 +35,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 	updateCharacter,
 }) => {
 	const [activeTab, setActiveTab] = React.useState(0)
+	const { isMobile } = useDeviceSize()
 
 	if (!character) {
 		return undefined
@@ -46,46 +47,48 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 
 	return (
 		<>
-			<Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
-				<Tabs
-					value={activeTab}
-					onChange={handleTabChange}
-					variant="scrollable"
-					scrollButtons={false}
-					allowScrollButtonsMobile
-				>
-					<Tab id="0" label="Statistics" />
-					<Tab id="1" label="Skills" />
-					<Tab id="2" label="Equipment" />
-					<Tab id="3" label="Spells" />
-					<Tab id="4" label="Social" />
-					<Tab id="5" label="Other" />
-				</Tabs>
-			</Box>
-			{/* <SwipeableViews
-				index={activeTab}
-				onChangeIndex={(index) => setActiveTab(index)}
-				enableMouseEvents={false}
-				animateHeight
-			>
-				<StatisticsTab
-					character={character}
-					updateCharacter={updateCharacter}
-				/>
-				<SkillsTab character={character} updateCharacter={updateCharacter} />
-				<div>tab 3</div>
-				<div>tab 4</div>
-				<div>tab 5</div>
-				<div>tab 6</div>
-			</SwipeableViews> */}
-			{activeTab === 0 && (
-				<StatisticsTab
-					character={character}
-					updateCharacter={updateCharacter}
-				/>
+			{isMobile && (
+				<>
+					<Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+						<Tabs
+							value={activeTab}
+							onChange={handleTabChange}
+							variant="scrollable"
+							scrollButtons={false}
+							allowScrollButtonsMobile
+						>
+							<Tab id="0" label="Statistics" />
+							<Tab id="1" label="Skills" />
+							<Tab id="2" label="Equipment" />
+							<Tab id="3" label="Spells" />
+							<Tab id="4" label="Social" />
+							<Tab id="5" label="Other" />
+						</Tabs>
+					</Box>
+					{activeTab === 0 && (
+						<StatisticsTab
+							character={character}
+							updateCharacter={updateCharacter}
+						/>
+					)}
+					{activeTab === 1 && (
+						<SkillsTab
+							character={character}
+							updateCharacter={updateCharacter}
+						/>
+					)}
+				</>
 			)}
-			{activeTab === 1 && (
-				<SkillsTab character={character} updateCharacter={updateCharacter} />
+			{!isMobile && (
+				<>
+					<Typography variant="h6">Statistics</Typography>
+					<StatisticsTab
+						character={character}
+						updateCharacter={updateCharacter}
+					/>
+					<Typography variant="h6">Skills</Typography>
+					<SkillsTab character={character} updateCharacter={updateCharacter} />
+				</>
 			)}
 		</>
 	)
