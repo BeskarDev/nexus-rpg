@@ -173,7 +173,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 							updateCharacter({ personal: { name: personal.name } })
 						}
 						label="Name"
-						sx={{ maxWidth: '20rem' }}
+						sx={{ maxWidth: '15rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -185,7 +185,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 							updateCharacter({ personal: { folk: personal.folk } })
 						}
 						label="Folk"
-						sx={{ maxWidth: '16rem' }}
+						sx={{ maxWidth: '10rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -197,7 +197,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 							updateCharacter({ personal: { upbringing: personal.upbringing } })
 						}
 						label="Upbringing"
-						sx={{ maxWidth: '16rem' }}
+						sx={{ maxWidth: '10rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -209,7 +209,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 							updateCharacter({ personal: { background: personal.background } })
 						}
 						label="Background"
-						sx={{ maxWidth: '16rem' }}
+						sx={{ maxWidth: '10rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -221,7 +221,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 							updateCharacter({ personal: { motivation: personal.motivation } })
 						}
 						label="Motivation"
-						sx={{ maxWidth: '16rem' }}
+						sx={{ maxWidth: '10rem' }}
 					/>
 
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
@@ -236,7 +236,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 							updateCharacter({ personal: { height: personal.height } })
 						}
 						label="Height"
-						sx={{ maxWidth: '10rem' }}
+						sx={{ maxWidth: '6rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -248,7 +248,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 							updateCharacter({ personal: { weight: personal.weight } })
 						}
 						label="Weight"
-						sx={{ maxWidth: '10rem' }}
+						sx={{ maxWidth: '6rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -258,7 +258,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 						}
 						onBlur={() => updateCharacter({ personal: { age: personal.age } })}
 						label="Age"
-						sx={{ maxWidth: '10rem' }}
+						sx={{ maxWidth: '6rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -274,10 +274,13 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 								personal: { description: personal.description },
 							})
 						}
-						sx={{ maxWidth: '25rem' }}
+						label="Description"
+						sx={{ maxWidth: '20rem' }}
 					/>
 				</Box>
 			</Box>
+
+			<Box sx={{ width: '100%', flexGrow: 1, mb: 1 }} />
 
 			<Box>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
@@ -336,7 +339,9 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 				</Box>
 			</Box>
 
-			<Box>
+			<Box sx={{ width: '100%', flexGrow: 1 }} />
+
+			<Box sx={{ minWidth: '18rem', mt: 1 }}>
 				<SectionHeader>Personal Notes</SectionHeader>
 				<TextField
 					multiline
@@ -349,7 +354,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 					onBlur={() =>
 						updateCharacter({ personal: { notes: personal.notes } })
 					}
-					sx={{ maxWidth: '25rem' }}
+					sx={{ maxWidth: '18rem' }}
 				/>
 			</Box>
 		</Box>
