@@ -71,7 +71,6 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-				justifyContent: 'center',
 			}}
 		>
 			<Box sx={{ mb: 2, maxWidth: '24rem' }}>

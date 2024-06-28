@@ -41,7 +41,6 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-				justifyContent: 'center',
 			}}
 		>
 			<Box>
@@ -127,7 +126,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 							})
 						}
 						label="Max. HP"
-						helperText="12 + Strength"
+						helperText="12 + STR"
 						sx={{ maxWidth: '7rem' }}
 					/>
 				</Box>
@@ -201,7 +200,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 							})
 						}
 						label="Dodge"
-						helperText="5 + ½ Agility"
+						helperText="5 + ½ AGI"
 						sx={{ maxWidth: '6rem' }}
 					/>
 					<AttributeField
@@ -213,7 +212,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 							})
 						}
 						label="Resist"
-						helperText="5 + ½ Spirit"
+						helperText="5 + ½ SPI"
 						sx={{ maxWidth: '6rem' }}
 					/>
 				</Box>
