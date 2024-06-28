@@ -61,7 +61,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 							display: 'flex',
 							justifyContent: 'center',
 							position: 'sticky',
-							top: '117px',
+							top: '116px',
 							zIndex: 100,
 							backgroundColor:
 								colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',

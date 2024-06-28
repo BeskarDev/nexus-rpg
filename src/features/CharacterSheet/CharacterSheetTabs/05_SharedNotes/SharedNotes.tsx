@@ -87,7 +87,7 @@ export const SharedNotes: React.FC = () => {
 			<Box
 				sx={{
 					position: 'sticky',
-					top: '165px',
+					top: '164px',
 					zIndex: 100,
 					backgroundColor:
 						colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
