@@ -2,11 +2,11 @@ import { Box, IconButton, Tooltip } from '@mui/material'
 import React from 'react'
 
 import { AddCircle, HelpOutline } from '@mui/icons-material'
-import { AttributeField, SectionHeader } from '../CharacterSheet'
-import { DeepPartial } from '../CharacterSheetContainer'
-import { Character, Skill } from '../types/Character'
+import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { DeepPartial } from '../../CharacterSheetContainer'
+import { Character, Skill } from '../../types/Character'
 
-import { AbilityRow } from './AbilityRow'
+import { AbilityRow } from '../AbilityRow'
 import { SkillRow } from './SkillRow'
 
 export type SkillsTabProps = {

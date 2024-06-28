@@ -1,38 +1,12 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
+import { Box, Tab, Tabs, Typography } from '@mui/material'
 import React from 'react'
-import { DeepPartial } from './CharacterSheetContainer'
+import { CharacterSheetProps } from './CharacterSheet'
 import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { SkillsTab } from './CharacterSheetTabs/01_Skills/SkillsTab'
 import { ItemsTab } from './CharacterSheetTabs/02_Items/ItemsTab'
 import { SpellsTab } from './CharacterSheetTabs/03_Spells/SpellsTab'
-import { PersonalTab } from './CharacterSheetTabs/04_Personal/PersonalTab'
-import { Character } from './types/Character'
 import { useDeviceSize } from './utils/useDeviceSize'
-
-export const AttributeField = styled(TextField)({
-	maxWidth: '5rem',
-})
-AttributeField.defaultProps = {
-	size: 'medium',
-	inputProps: {
-		sx: {
-			textAlign: 'center',
-		},
-	},
-}
-
-export const SectionHeader = styled(Typography)(({ theme }) => ({
-	marginBottom: `${theme.spacing(0.75)} !important`,
-}))
-SectionHeader.defaultProps = {
-	fontWeight: 'bold',
-}
-
-export type CharacterSheetProps = {
-	character: Character
-	updateCharacter: (update: DeepPartial<Character>) => void
-}
 
 export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 	character,
@@ -123,11 +97,6 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					<ItemsTab character={character} updateCharacter={updateCharacter} />
 					<Typography variant="h6">Spells</Typography>
 					<SpellsTab character={character} updateCharacter={updateCharacter} />
-					<Typography variant="h6">Personal</Typography>
-					<PersonalTab
-						character={character}
-						updateCharacter={updateCharacter}
-					/>
 				</>
 			)}
 		</>

@@ -2,9 +2,9 @@ import { Box, IconButton, TextField, Tooltip } from '@mui/material'
 import React from 'react'
 
 import { AddCircle, HelpOutline } from '@mui/icons-material'
-import { AttributeField, SectionHeader } from '../CharacterSheet'
-import { DeepPartial } from '../CharacterSheetContainer'
-import { Character, Spell } from '../types/Character'
+import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { DeepPartial } from '../../CharacterSheetContainer'
+import { Character, Spell } from '../../types/Character'
 import { SpellRow } from './SpellRow'
 
 export type SpellsTabProps = {

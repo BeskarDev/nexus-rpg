@@ -1,11 +1,11 @@
 import { Box } from '@mui/material'
 import React, { useMemo } from 'react'
 
-import { AttributeField, SectionHeader } from '../CharacterSheet'
-import { DeepPartial } from '../CharacterSheetContainer'
-import { Character } from '../types/Character'
+import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { DeepPartial } from '../../CharacterSheetContainer'
+import { Character } from '../../types/Character'
 
-import { AttributeColumn } from './AttributeColumn'
+import { AttributeColumn } from '../AttributeColumn'
 import { WoundCheckbox } from './WoundCheckbox'
 
 export type StatisticsTabProps = {

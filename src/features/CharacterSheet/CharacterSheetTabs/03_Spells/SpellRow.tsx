@@ -2,8 +2,8 @@ import { Box, IconButton, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
-import { AttributeField } from '../CharacterSheet'
-import { Spell } from '../types/Character'
+import { AttributeField } from '../../CharacterSheet'
+import { Spell } from '../../types/Character'
 
 export type SpellRowProps = {
 	spell: Spell
