@@ -1,36 +1,20 @@
+import { ListAlt } from '@mui/icons-material'
 import {
-	Box,
-	Tabs,
-	Tab,
-	Button,
-	Typography,
-	List,
 	Avatar,
-	IconButton,
+	Link,
+	List,
 	ListItem,
 	ListItemAvatar,
-	ListItemText,
-	Link,
 	ListItemButton,
+	ListItemText,
 } from '@mui/material'
-import { useAuth } from '@site/src/hooks/firebaseAuthContext'
-import React, { useEffect } from 'react'
-import { UserAvatar } from '../UserAvatar'
 import { db } from '@site/src/config/firebase'
-import {
-	DocumentData,
-	DocumentReference,
-	collection,
-	deleteDoc,
-	doc,
-	getDoc,
-	getDocs,
-	query,
-} from 'firebase/firestore'
-import { Delete, Folder, ListAlt } from '@mui/icons-material'
+import { useAuth } from '@site/src/hooks/firebaseAuthContext'
+import { collection, deleteDoc, getDocs, query } from 'firebase/firestore'
+import React, { useEffect } from 'react'
+import { CharacterDocument } from '../types/Character'
+import { mapDocToCharacter } from '../utils/mapDocToCharacter'
 import { DeleteButton } from './DeleteButton'
-import { mapDocToCharacter } from '../mapDocToCharacter'
-import { Character, CharacterDocument } from '../types/Character'
 
 export const CharacterList: React.FC = () => {
 	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])

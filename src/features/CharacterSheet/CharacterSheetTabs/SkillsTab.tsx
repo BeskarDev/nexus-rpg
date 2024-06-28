@@ -5,6 +5,7 @@ import { AddCircle } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../CharacterSheet'
 import { DeepPartial } from '../CharacterSheetContainer'
 import { Character, Skill } from '../types/Character'
+
 import { AbilityRow } from './AbilityRow'
 import { SkillRow } from './SkillRow'
 

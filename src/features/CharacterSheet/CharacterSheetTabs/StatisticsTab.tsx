@@ -4,6 +4,7 @@ import React, { useMemo } from 'react'
 import { AttributeField, SectionHeader } from '../CharacterSheet'
 import { DeepPartial } from '../CharacterSheetContainer'
 import { Character } from '../types/Character'
+
 import { WoundCheckbox } from './WoundCheckbox'
 
 export type StatisticsTabProps = {
