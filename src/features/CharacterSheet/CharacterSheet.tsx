@@ -78,7 +78,6 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 							<Tab id="2" label="Items" />
 							<Tab id="3" label="Spells" />
 							<Tab id="4" label="Personal" />
-							<Tab id="5" label="Other" />
 						</Tabs>
 					</Box>
 					{activeTab === 0 && (
