@@ -1,3 +1,4 @@
+import { useColorMode } from '@docusaurus/theme-common'
 import { Reply, Save, Star } from '@mui/icons-material'
 import {
 	Box,
@@ -38,6 +39,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	loadingSave,
 }) => {
 	const { userLoggedIn, currentUser } = useAuth()
+	const { colorMode } = useColorMode()
 	const [open, setOpen] = React.useState(false)
 	const [name, setName] = React.useState('')
 
@@ -74,7 +76,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					position: 'sticky',
 					top: '60px',
 					zIndex: 100,
-					backgroundColor: 'var(--ifm-background-color)',
+					backgroundColor:
+						colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
 					display: 'flex',
 					gap: 2,
 					borderBottom: 1,

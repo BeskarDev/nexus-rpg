@@ -1,4 +1,4 @@
-import { Box, IconButton } from '@mui/material'
+import { Box, IconButton, Typography } from '@mui/material'
 import React from 'react'
 
 import { AddCircle } from '@mui/icons-material'
@@ -102,7 +102,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Box sx={{ mb: 2 }}>
+			<Box sx={{ mb: 2, maxWidth: '24rem' }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Skills</SectionHeader>
 					<IconButton onClick={addNewSkill} sx={{ mb: 0.75 }}>
@@ -119,6 +119,10 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						/>
 					))}
 				</Box>
+				<Typography variant="caption" sx={{ whiteSpace: 'break-spaces' }}>
+					0-1 XP (rank 0), 2-5 XP (rank 1), 6-11 XP (rank 2), 12-19 XP (rank 3),
+					20-29 XP (rank 4), 30 XP (rank 5)
+				</Typography>
 			</Box>
 
 			<Box sx={{ flexGrow: 1, maxWidth: '30rem' }}>
