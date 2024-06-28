@@ -113,7 +113,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 				</>
 			)}
 			{!isMobile && (
-				<Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+				<>
 					<Typography variant="h6">Statistics</Typography>
 					<StatisticsTab
 						character={character}
@@ -131,7 +131,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 						updateCharacter={updateCharacter}
 					/>
 					<SharedNotes />
-				</Box>
+				</>
 			)}
 		</>
 	)
