@@ -25,7 +25,6 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				value={ability}
 				onChange={(event) => setAbility(event.target.value)}
 				onBlur={() => updateAbility(ability)}
-				helperText=""
 				sx={{ maxWidth: '25rem' }}
 			/>
 			<IconButton

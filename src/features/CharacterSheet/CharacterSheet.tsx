@@ -1,6 +1,8 @@
+import { useColorMode } from '@docusaurus/theme-common'
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
 import React from 'react'
 import { DeepPartial } from './CharacterSheetContainer'
+import { ItemsTab } from './CharacterSheetTabs/ItemsTab'
 import { SkillsTab } from './CharacterSheetTabs/SkillsTab'
 import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
 import { Character } from './types/Character'
@@ -36,6 +38,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 }) => {
 	const [activeTab, setActiveTab] = React.useState(0)
 	const { isMobile } = useDeviceSize()
+	const { colorMode } = useColorMode()
 
 	if (!character) {
 		return undefined
@@ -49,7 +52,18 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 		<>
 			{isMobile && (
 				<>
-					<Box sx={{ mb: 2, display: 'flex', justifyContent: 'center' }}>
+					<Box
+						sx={{
+							mb: 2,
+							display: 'flex',
+							justifyContent: 'center',
+							position: 'sticky',
+							top: '117px',
+							zIndex: 100,
+							backgroundColor:
+								colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
+						}}
+					>
 						<Tabs
 							value={activeTab}
 							onChange={handleTabChange}
@@ -59,7 +73,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 						>
 							<Tab id="0" label="Statistics" />
 							<Tab id="1" label="Skills" />
-							<Tab id="2" label="Equipment" />
+							<Tab id="2" label="Items" />
 							<Tab id="3" label="Spells" />
 							<Tab id="4" label="Social" />
 							<Tab id="5" label="Other" />
@@ -77,6 +91,9 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 							updateCharacter={updateCharacter}
 						/>
 					)}
+					{activeTab === 2 && (
+						<ItemsTab character={character} updateCharacter={updateCharacter} />
+					)}
 				</>
 			)}
 			{!isMobile && (
@@ -88,6 +105,8 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					/>
 					<Typography variant="h6">Skills</Typography>
 					<SkillsTab character={character} updateCharacter={updateCharacter} />
+					<Typography variant="h6">Items</Typography>
+					<ItemsTab character={character} updateCharacter={updateCharacter} />
 				</>
 			)}
 		</>

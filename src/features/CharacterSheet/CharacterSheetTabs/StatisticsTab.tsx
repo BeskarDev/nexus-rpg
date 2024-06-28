@@ -5,6 +5,7 @@ import { AttributeField, SectionHeader } from '../CharacterSheet'
 import { DeepPartial } from '../CharacterSheetContainer'
 import { Character } from '../types/Character'
 
+import { AttributeColumn } from './AttributeColumn'
 import { WoundCheckbox } from './WoundCheckbox'
 
 export type StatisticsTabProps = {
@@ -46,38 +47,38 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 			<Box>
 				<SectionHeader>Attributes</SectionHeader>
 				<Box sx={{ display: 'flex', gap: 1 }}>
-					<AttributeField
-						value={strength.value}
-						onChange={(event) =>
+					<AttributeColumn
+						attribute={strength}
+						updateAttribute={(update) =>
 							updateCharacter({
-								statistics: { strength: { value: event.target.value } },
+								statistics: { strength: { ...strength, ...update } },
 							})
 						}
 						label="Strength"
 					/>
-					<AttributeField
-						value={agility.value}
-						onChange={(event) =>
+					<AttributeColumn
+						attribute={agility}
+						updateAttribute={(update) =>
 							updateCharacter({
-								statistics: { agility: { value: event.target.value } },
+								statistics: { agility: { ...agility, ...update } },
 							})
 						}
 						label="Agility"
 					/>
-					<AttributeField
-						value={spirit.value}
-						onChange={(event) =>
+					<AttributeColumn
+						attribute={spirit}
+						updateAttribute={(update) =>
 							updateCharacter({
-								statistics: { spirit: { value: event.target.value } },
+								statistics: { spirit: { ...spirit, ...update } },
 							})
 						}
 						label="Spirit"
 					/>
-					<AttributeField
-						value={mind.value}
-						onChange={(event) =>
+					<AttributeColumn
+						attribute={mind}
+						updateAttribute={(update) =>
 							updateCharacter({
-								statistics: { mind: { value: event.target.value } },
+								statistics: { mind: { ...mind, ...update } },
 							})
 						}
 						label="Mind"
@@ -142,31 +143,31 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 				<SectionHeader>Wounds</SectionHeader>
 				<Box>
 					<WoundCheckbox
-						checked={health.woundOne}
-						onChange={() =>
+						{...health.woundOne}
+						setWound={(update) =>
 							updateCharacter({
 								statistics: {
-									health: { woundOne: !health.woundOne },
+									health: { woundOne: { ...health.woundOne, ...update } },
 								},
 							})
 						}
 					/>
 					<WoundCheckbox
-						checked={health.woundTwo}
-						onChange={() =>
+						{...health.woundTwo}
+						setWound={(update) =>
 							updateCharacter({
 								statistics: {
-									health: { woundTwo: !health.woundTwo },
+									health: { woundTwo: { ...health.woundTwo, ...update } },
 								},
 							})
 						}
 					/>
 					<WoundCheckbox
-						checked={health.woundThree}
-						onChange={() =>
+						{...health.woundThree}
+						setWound={(update) =>
 							updateCharacter({
 								statistics: {
-									health: { woundThree: !health.woundThree },
+									health: { woundThree: { ...health.woundThree, ...update } },
 								},
 							})
 						}
@@ -189,7 +190,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 						}
 						label="Parry"
 						helperText="7 + Fighting"
-						sx={{ maxWidth: '7rem' }}
+						sx={{ maxWidth: '6rem' }}
 					/>
 					<AttributeField
 						type="number"
@@ -200,8 +201,8 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 							})
 						}
 						label="Dodge"
-						helperText="5 + 1/2 Agility"
-						sx={{ maxWidth: '7rem' }}
+						helperText="5 + ½ Agility"
+						sx={{ maxWidth: '6rem' }}
 					/>
 					<AttributeField
 						type="number"
@@ -212,8 +213,8 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 							})
 						}
 						label="Resist"
-						helperText="5 + 1/2 Spirit"
-						sx={{ maxWidth: '7rem' }}
+						helperText="5 + ½ Spirit"
+						sx={{ maxWidth: '6rem' }}
 					/>
 				</Box>
 			</Box>
@@ -245,6 +246,18 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 			<Box>
 				<SectionHeader>AV</SectionHeader>
 				<Box sx={{ display: 'flex' }}>
+					<AttributeField
+						value={totalAV}
+						label="Total"
+						sx={{
+							mr: 1,
+							'& .MuiOutlinedInput-root': {
+								'& .MuiOutlinedInput-notchedOutline': {
+									borderWidth: '2px',
+								},
+							},
+						}}
+					/>
 					<AttributeField
 						type="number"
 						value={av.armor}
@@ -284,12 +297,6 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 							})
 						}
 						label="Other"
-					/>
-					<AttributeField
-						value={totalAV}
-						label="Total"
-						disabled
-						sx={{ ml: 1 }}
 					/>
 				</Box>
 			</Box>

@@ -30,7 +30,6 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 					})
 				}
 				label="Rank"
-				helperText=""
 				sx={{
 					maxWidth: '4rem',
 					'& .MuiOutlinedInput-root': {
@@ -45,7 +44,6 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 				value={name}
 				onChange={(event) => setName(event.target.value)}
 				onBlur={() => updateSkill({ name })}
-				helperText=""
 				sx={{ maxWidth: '12rem' }}
 			/>
 			<AttributeField
@@ -58,7 +56,6 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 					})
 				}
 				label="XP"
-				helperText=""
 				sx={{ maxWidth: '4rem' }}
 			/>
 			<IconButton
