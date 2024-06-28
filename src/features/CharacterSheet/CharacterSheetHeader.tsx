@@ -18,7 +18,7 @@ import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { addDoc, collection } from 'firebase/firestore'
 import React from 'react'
 import { UserAvatar } from './UserAvatar'
-import { createInitialCharacter } from './createInitialCharacter'
+import { createInitialCharacter } from './utils/createInitialCharacter'
 
 const MAX_NAME_LENGTH = 1_000
 

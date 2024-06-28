@@ -4,10 +4,10 @@ import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { CharacterList } from './CharacterList'
-import { CharacterSheetHeader } from './CharacterSheetHeader'
 import { CharacterSheet } from './CharacterSheet'
-import { mapDocToCharacter } from './mapDocToCharacter'
+import { CharacterSheetHeader } from './CharacterSheetHeader'
 import { Character, CharacterDocument } from './types/Character'
+import { mapDocToCharacter } from './utils/mapDocToCharacter'
 
 const SAVE_CHARACTER_TIMEOUT = 30_000
 
