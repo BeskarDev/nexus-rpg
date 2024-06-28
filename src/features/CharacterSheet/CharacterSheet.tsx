@@ -4,6 +4,7 @@ import React from 'react'
 import { DeepPartial } from './CharacterSheetContainer'
 import { ItemsTab } from './CharacterSheetTabs/ItemsTab'
 import { SkillsTab } from './CharacterSheetTabs/SkillsTab'
+import { SpellsTab } from './CharacterSheetTabs/SpellsTab'
 import { StatisticsTab } from './CharacterSheetTabs/StatisticsTab'
 import { Character } from './types/Character'
 import { useDeviceSize } from './utils/useDeviceSize'
@@ -94,6 +95,12 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					{activeTab === 2 && (
 						<ItemsTab character={character} updateCharacter={updateCharacter} />
 					)}
+					{activeTab === 3 && (
+						<SpellsTab
+							character={character}
+							updateCharacter={updateCharacter}
+						/>
+					)}
 				</>
 			)}
 			{!isMobile && (
@@ -107,6 +114,8 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 					<SkillsTab character={character} updateCharacter={updateCharacter} />
 					<Typography variant="h6">Items</Typography>
 					<ItemsTab character={character} updateCharacter={updateCharacter} />
+					<Typography variant="h6">Spells</Typography>
+					<SpellsTab character={character} updateCharacter={updateCharacter} />
 				</>
 			)}
 		</>

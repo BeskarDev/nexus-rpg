@@ -104,7 +104,6 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-				justifyContent: 'center',
 			}}
 		>
 			<Box
@@ -159,7 +158,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 						})
 					}
 					label="Encumbered"
-					helperText="2 * Strength"
+					helperText="2 * STR"
 					sx={{
 						maxWidth: '6.5rem',
 					}}
@@ -176,9 +175,10 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 						})
 					}
 					label="Overencumbered"
-					helperText="3 * Strength"
+					helperText="3 * STR"
 					sx={{
 						maxWidth: '7.5rem',
+						mr: 1,
 					}}
 				/>
 				<Tooltip
