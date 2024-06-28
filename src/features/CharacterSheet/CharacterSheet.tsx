@@ -7,6 +7,7 @@ import { SkillsTab } from './CharacterSheetTabs/01_Skills/SkillsTab'
 import { ItemsTab } from './CharacterSheetTabs/02_Items/ItemsTab'
 import { SpellsTab } from './CharacterSheetTabs/03_Spells/SpellsTab'
 import { PersonalTab } from './CharacterSheetTabs/04_Personal/PersonalTab'
+import { SharedNotes } from './CharacterSheetTabs/05_SharedNotes/SharedNotes'
 import { Character } from './types/Character'
 import { useDeviceSize } from './utils/useDeviceSize'
 
@@ -78,6 +79,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 							<Tab id="2" label="Items" />
 							<Tab id="3" label="Spells" />
 							<Tab id="4" label="Personal" />
+							<Tab id="5" label="Shared Notes" />
 						</Tabs>
 					</Box>
 					{activeTab === 0 && (
@@ -107,10 +109,11 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 							updateCharacter={updateCharacter}
 						/>
 					)}
+					{activeTab === 5 && <SharedNotes />}
 				</>
 			)}
 			{!isMobile && (
-				<>
+				<Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
 					<Typography variant="h6">Statistics</Typography>
 					<StatisticsTab
 						character={character}
@@ -127,7 +130,8 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 						character={character}
 						updateCharacter={updateCharacter}
 					/>
-				</>
+					<SharedNotes />
+				</Box>
 			)}
 		</>
 	)
