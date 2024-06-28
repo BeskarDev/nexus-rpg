@@ -107,97 +107,93 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 				justifyContent: 'center',
 			}}
 		>
-			<Box>
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-					<SectionHeader>Coins & Encumbrance</SectionHeader>
-					<Tooltip
-						title={
-							<>
-								<b>Encumbered.</b> You suffer +1 bane on Strength or Agility
-								rolls for movement, such as climbing or swimming, and during
-								travel.
-								<br />
-								<b>Over-Encumbered.</b> You can‘t move. You can‘t use any
-								Actions or do any rolls for physical activity.
-							</>
-						}
-					>
-						<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
-					</Tooltip>
-				</Box>
-				<Box sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
-					<AttributeField
-						type="number"
-						size="medium"
-						value={coins}
-						onChange={(event) =>
-							updateCharacter({ items: { coins: Number(event.target.value) } })
-						}
-						label="Coins"
-						sx={{
-							mr: 1,
-							maxWidth: '12rem',
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
+			<Box
+				sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', mb: 1 }}
+			>
+				<AttributeField
+					type="number"
+					size="medium"
+					value={coins}
+					onChange={(event) =>
+						updateCharacter({ items: { coins: Number(event.target.value) } })
+					}
+					label="Coins"
+					sx={{
+						mr: 1,
+						maxWidth: '12rem',
+						'& .MuiOutlinedInput-root': {
+							'& .MuiOutlinedInput-notchedOutline': {
+								borderWidth: '2px',
 							},
-						}}
-						inputProps={{
-							sx: {
-								textAlign: 'right',
+						},
+					}}
+					inputProps={{
+						sx: {
+							textAlign: 'right',
+						},
+					}}
+				/>
+				<AttributeField
+					size="medium"
+					value={currentLoad}
+					label="Current Load"
+					sx={{
+						mr: 1,
+						maxWidth: '7rem',
+						'& .MuiOutlinedInput-root': {
+							'& .MuiOutlinedInput-notchedOutline': {
+								borderWidth: '2px',
 							},
-						}}
-					/>
-					<AttributeField
-						size="medium"
-						value={currentLoad}
-						label="Current Load"
-						sx={{
-							mr: 1,
-							maxWidth: '7rem',
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
+						},
+					}}
+				/>
+				<AttributeField
+					type="number"
+					size="small"
+					value={encumbrance.encumberedAt}
+					onChange={(event) =>
+						updateCharacter({
+							items: {
+								encumbrance: { encumberedAt: Number(event.target.value) },
 							},
-						}}
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={encumbrance.encumberedAt}
-						onChange={(event) =>
-							updateCharacter({
-								items: {
-									encumbrance: { encumberedAt: Number(event.target.value) },
-								},
-							})
-						}
-						label="Encumbered"
-						helperText="2 * Strength"
-						sx={{
-							maxWidth: '6.5rem',
-						}}
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={encumbrance.overencumberedAt}
-						onChange={(event) =>
-							updateCharacter({
-								items: {
-									encumbrance: { encumberedAt: Number(event.target.value) },
-								},
-							})
-						}
-						label="Overencumbered"
-						helperText="3 * Strength"
-						sx={{
-							maxWidth: '7.5rem',
-						}}
-					/>
-				</Box>
+						})
+					}
+					label="Encumbered"
+					helperText="2 * Strength"
+					sx={{
+						maxWidth: '6.5rem',
+					}}
+				/>
+				<AttributeField
+					type="number"
+					size="small"
+					value={encumbrance.overencumberedAt}
+					onChange={(event) =>
+						updateCharacter({
+							items: {
+								encumbrance: { encumberedAt: Number(event.target.value) },
+							},
+						})
+					}
+					label="Overencumbered"
+					helperText="3 * Strength"
+					sx={{
+						maxWidth: '7.5rem',
+					}}
+				/>
+				<Tooltip
+					title={
+						<>
+							<b>Encumbered.</b> You suffer +1 bane on Strength or Agility rolls
+							for movement, such as climbing or swimming, and during travel.
+							<br />
+							<b>Over-Encumbered.</b> You can‘t move. You can‘t use any Actions
+							or do any rolls for physical activity.
+						</>
+					}
+				>
+					<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+				</Tooltip>
 			</Box>
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
