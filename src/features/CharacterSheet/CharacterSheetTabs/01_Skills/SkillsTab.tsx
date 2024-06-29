@@ -1,7 +1,14 @@
-import { Box, IconButton, Tooltip } from '@mui/material'
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Box,
+	IconButton,
+	Tooltip,
+} from '@mui/material'
 import React, { useMemo } from 'react'
 
-import { AddCircle, HelpOutline } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character, Skill } from '../../types/Character'
@@ -125,14 +132,24 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 				</Box>
 			</Box>
 
-			<Box sx={{ flexGrow: 1, maxWidth: '30rem' }}>
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-					<SectionHeader>Abilities</SectionHeader>
-					<IconButton onClick={addNewAbility} sx={{ mb: 0.75 }}>
-						<AddCircle />
-					</IconButton>
-				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+			<Accordion sx={{ flexGrow: 1, maxWidth: '30rem' }}>
+				<AccordionSummary expandIcon={<ExpandMore />}>
+					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+						<SectionHeader>Abilities</SectionHeader>
+						<IconButton
+							onClick={(event) => {
+								addNewAbility()
+								event.stopPropagation()
+							}}
+							sx={{ mb: 0.75 }}
+						>
+							<AddCircle />
+						</IconButton>
+					</Box>
+				</AccordionSummary>
+				<AccordionDetails
+					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+				>
 					{abilities.map((a, index) => (
 						<AbilityRow
 							key={a + index}
@@ -141,8 +158,8 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 							deleteAbility={() => deleteAbility(index)}
 						/>
 					))}
-				</Box>
-			</Box>
+				</AccordionDetails>
+			</Accordion>
 		</Box>
 	)
 }
