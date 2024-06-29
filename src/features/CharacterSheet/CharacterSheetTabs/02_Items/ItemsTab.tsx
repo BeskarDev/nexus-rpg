@@ -170,7 +170,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 					onChange={(event) =>
 						updateCharacter({
 							items: {
-								encumbrance: { encumberedAt: Number(event.target.value) },
+								encumbrance: { overencumberedAt: Number(event.target.value) },
 							},
 						})
 					}

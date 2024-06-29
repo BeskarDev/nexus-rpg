@@ -18,10 +18,16 @@ import {
 } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
+import { useDeviceSize } from '../../utils/useDeviceSize'
 
-export const SharedNotes: React.FC = () => {
+export type SharedNotesProps = {
+	characterId: string
+}
+
+export const SharedNotes: React.FC<SharedNotesProps> = ({ characterId }) => {
 	const { currentUser } = useAuth()
 	const { colorMode } = useColorMode()
+	const { isMobile } = useDeviceSize()
 	const [ref, setRef] = useState(undefined)
 
 	const [unsavedChanges, setUnsavedChanges] = useState(false)
@@ -42,7 +48,7 @@ export const SharedNotes: React.FC = () => {
 			try {
 				const q = query(
 					collection(db, 'shared-notes'),
-					where('allowedUsers', 'array-contains', currentUser.uid),
+					where('allowedCharacters', 'array-contains', characterId),
 				)
 				const querySnapshot = await getDocs(q)
 
@@ -62,9 +68,6 @@ export const SharedNotes: React.FC = () => {
 
 		fetchData()
 	}, [currentUser])
-
-	if (isLoading) return <p>Loading...</p>
-	if (error) return <p>Error: {error}</p>
 
 	const updateNotes = (notes: string) => {
 		setNotes(notes)
@@ -86,9 +89,9 @@ export const SharedNotes: React.FC = () => {
 		<>
 			<Box
 				sx={{
-					position: 'sticky',
+					position: isMobile ? 'sticky' : 'static',
 					top: '164px',
-					zIndex: 100,
+					zIndex: isMobile ? 100 : 'auto',
 					backgroundColor:
 						colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
 					display: 'flex',
@@ -114,14 +117,22 @@ export const SharedNotes: React.FC = () => {
 			>
 				shared across multiple users. make sure to not edit at the same time!
 			</Typography>
-			<TextField
-				multiline
-				minRows={20}
-				maxRows={20}
-				value={notes}
-				onChange={(event) => updateNotes(event.target.value)}
-				sx={{ maxWidth: '100%' }}
-			/>
+			{error && (
+				<Typography sx={{ mt: 1 }}>
+					Error: No shared notes connected to your character.
+				</Typography>
+			)}
+			{isLoading && <CircularProgress />}
+			{!error && !isLoading && (
+				<TextField
+					multiline
+					minRows={20}
+					maxRows={20}
+					value={notes}
+					onChange={(event) => updateNotes(event.target.value)}
+					sx={{ maxWidth: '100%' }}
+				/>
+			)}
 		</>
 	)
 }
