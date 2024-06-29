@@ -133,7 +133,7 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 
 				<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-				<Accordion defaultExpanded>
+				<Accordion>
 					<AccordionSummary expandIcon={<ExpandMore />}>
 						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 							<SectionHeader>Spells</SectionHeader>
