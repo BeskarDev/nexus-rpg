@@ -1,7 +1,14 @@
-import { Box, IconButton, Tooltip } from '@mui/material'
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Box,
+	IconButton,
+	Tooltip,
+} from '@mui/material'
 import React, { useMemo } from 'react'
 
-import { AddCircle, HelpOutline } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character, Item, Weapon } from '../../types/Character'
@@ -198,26 +205,36 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Box sx={{ mb: 2 }}>
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-					<SectionHeader>Weapons</SectionHeader>
-					<Tooltip
-						title={
-							<>
-								damage = base + (weapon * SL) + other
-								<br />
-								base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND
-								(arcana)
-							</>
-						}
-					>
-						<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
-					</Tooltip>
-					<IconButton onClick={addNewWeapon} sx={{ mb: 0.75 }}>
-						<AddCircle />
-					</IconButton>
-				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+			<Accordion sx={{ mb: 2 }}>
+				<AccordionSummary expandIcon={<ExpandMore />}>
+					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+						<SectionHeader>Weapons</SectionHeader>
+						<Tooltip
+							title={
+								<>
+									damage = base + (weapon * SL) + other
+									<br />
+									base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND
+									(arcana)
+								</>
+							}
+						>
+							<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+						</Tooltip>
+						<IconButton
+							onClick={(event) => {
+								addNewWeapon()
+								event.stopPropagation()
+							}}
+							sx={{ mb: 0.75 }}
+						>
+							<AddCircle />
+						</IconButton>
+					</Box>
+				</AccordionSummary>
+				<AccordionDetails
+					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+				>
 					{weapons.map((w, index) => (
 						<WeaponRow
 							key={w.name + index}
@@ -226,14 +243,18 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 							deleteWeapon={() => deleteWeapon(w)}
 						/>
 					))}
-				</Box>
-			</Box>
+				</AccordionDetails>
+			</Accordion>
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Box sx={{ mb: 2, maxWidth: '28rem' }}>
-				<SectionHeader>Equipment</SectionHeader>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+			<Accordion sx={{ mb: 2, maxWidth: '28rem' }}>
+				<AccordionSummary expandIcon={<ExpandMore />}>
+					<SectionHeader>Equipment</SectionHeader>
+				</AccordionSummary>
+				<AccordionDetails
+					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+				>
 					<EquipmentRow
 						label="Head"
 						equipment={equipment.head}
@@ -362,17 +383,27 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 							})
 						}
 					/>
-				</Box>
-			</Box>
+				</AccordionDetails>
+			</Accordion>
 
-			<Box sx={{ mb: 2 }}>
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-					<SectionHeader>Items</SectionHeader>
-					<IconButton onClick={addNewItem} sx={{ mb: 0.75 }}>
-						<AddCircle />
-					</IconButton>
-				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+			<Accordion sx={{ mb: 2, maxWidth: '28rem' }}>
+				<AccordionSummary expandIcon={<ExpandMore />}>
+					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+						<SectionHeader>Items</SectionHeader>
+						<IconButton
+							onClick={(event) => {
+								addNewItem()
+								event.stopPropagation()
+							}}
+							sx={{ mb: 0.75 }}
+						>
+							<AddCircle />
+						</IconButton>
+					</Box>
+				</AccordionSummary>
+				<AccordionDetails
+					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+				>
 					{items.map((i, index) => (
 						<ItemRow
 							key={i.name + index}
@@ -381,8 +412,8 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 							deleteItem={() => deleteItem(i)}
 						/>
 					))}
-				</Box>
-			</Box>
+				</AccordionDetails>
+			</Accordion>
 		</Box>
 	)
 }

@@ -1,7 +1,15 @@
-import { Box, IconButton, TextField, Tooltip } from '@mui/material'
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Box,
+	IconButton,
+	TextField,
+	Tooltip,
+} from '@mui/material'
 import React from 'react'
 
-import { AddCircle, HelpOutline } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character, Spell } from '../../types/Character'
@@ -125,22 +133,34 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 
 				<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-					<SectionHeader>Spells</SectionHeader>
-					<IconButton onClick={addNewSpell} sx={{ mb: 0.75 }}>
-						<AddCircle />
-					</IconButton>
-				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-					{spells.map((s, index) => (
-						<SpellRow
-							key={s.name + index}
-							spell={s}
-							updateSpell={(update) => updateSpell(update, index)}
-							deleteSpell={() => deleteSpell(s)}
-						/>
-					))}
-				</Box>
+				<Accordion defaultExpanded>
+					<AccordionSummary expandIcon={<ExpandMore />}>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<SectionHeader>Spells</SectionHeader>
+							<IconButton
+								onClick={(event) => {
+									addNewSpell()
+									event.stopPropagation()
+								}}
+								sx={{ mb: 0.75 }}
+							>
+								<AddCircle />
+							</IconButton>
+						</Box>
+					</AccordionSummary>
+					<AccordionDetails
+						sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+					>
+						{spells.map((s, index) => (
+							<SpellRow
+								key={s.name + index}
+								spell={s}
+								updateSpell={(update) => updateSpell(update, index)}
+								deleteSpell={() => deleteSpell(s)}
+							/>
+						))}
+					</AccordionDetails>
+				</Accordion>
 			</Box>
 		</Box>
 	)

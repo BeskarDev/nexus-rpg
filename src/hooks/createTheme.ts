@@ -14,5 +14,38 @@ export const theme = createTheme({
 				variant: 'outlined',
 			},
 		},
+		MuiAccordion: {
+			styleOverrides: {
+				root: {
+					height: 'fit-content',
+					borderRadius: 4,
+					boxShadow: 'none !important',
+					marginTop: '16px !important',
+					'&.Mui-expanded': {
+						boxShadow: 'none !important',
+						marginBottom: '16px !important',
+					},
+					'&:before': {
+						display: 'none',
+					},
+				},
+			},
+		},
+		MuiAccordionSummary: {
+			styleOverrides: {
+				root: {
+					margin: '0 !important',
+					'&.Mui-expanded': {
+						margin: '0 !important',
+					},
+				},
+				content: {
+					margin: '0 !important',
+					'&.Mui-expanded': {
+						margin: '0 !important',
+					},
+				},
+			},
+		},
 	},
 })
