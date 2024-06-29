@@ -1,5 +1,5 @@
 import { Box, IconButton, Tooltip } from '@mui/material'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { AddCircle, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
@@ -19,6 +19,11 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 	updateCharacter,
 }) => {
 	const { xp, skills, abilities } = character.skills
+
+	const spendXP = useMemo(
+		() => skills.map((s) => s.xp).reduce((partialSum, a) => partialSum + a, 0),
+		[character],
+	)
 
 	const addNewSkill = () => {
 		skills.push({ name: 'new skill', rank: 0, xp: 0 })
@@ -93,13 +98,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						}}
 					/>
 					<AttributeField
-						type="number"
-						value={xp.spend}
-						onChange={(event) =>
-							updateCharacter({
-								skills: { xp: { spend: Number(event.target.value) } },
-							})
-						}
+						value={spendXP}
 						label="Spend XP"
 						helperText=""
 						sx={{ maxWidth: '7rem' }}
