@@ -205,7 +205,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion sx={{ mb: 2 }}>
+			<Accordion sx={{ maxWidth: '56rem', flexGrow: 1, mb: 1 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 						<SectionHeader>Weapons</SectionHeader>
@@ -248,7 +248,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion sx={{ mb: 2, maxWidth: '28rem' }}>
+			<Accordion sx={{ maxWidth: '30rem', flexGrow: 1, mb: 2 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<SectionHeader>Equipment</SectionHeader>
 				</AccordionSummary>
@@ -386,7 +386,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 				</AccordionDetails>
 			</Accordion>
 
-			<Accordion sx={{ mb: 2, maxWidth: '28rem' }}>
+			<Accordion sx={{ maxWidth: '35rem', flexGrow: 1, mb: 2 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 						<SectionHeader>Items</SectionHeader>
