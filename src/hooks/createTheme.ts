@@ -35,8 +35,11 @@ export const theme = createTheme({
 			styleOverrides: {
 				root: {
 					margin: '0 !important',
+					paddingTop: '6px',
+					minHeight: '52px',
 					'&.Mui-expanded': {
 						margin: '0 !important',
+						minHeight: '52px',
 					},
 				},
 				content: {

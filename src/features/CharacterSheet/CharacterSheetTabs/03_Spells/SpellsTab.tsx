@@ -107,7 +107,7 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 						label="Current Focus"
 						helperText=""
 						sx={{
-							maxWidth: '5rem',
+							maxWidth: '7rem',
 							'& .MuiOutlinedInput-root': {
 								'& .MuiOutlinedInput-notchedOutline': {
 									borderWidth: '2px',
@@ -124,7 +124,7 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 							})
 						}
 						label="Max. Focus"
-						sx={{ maxWidth: '5rem', mr: 1 }}
+						sx={{ maxWidth: '6rem', mr: 1 }}
 					/>
 					<Tooltip title="(SPI/MND - 2) + (2 * Mysticism/Arcana)">
 						<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
