@@ -1,4 +1,4 @@
-import { Box, IconButton, TextField } from '@mui/material'
+import { Box, IconButton, TextField, TextFieldProps } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
@@ -7,12 +7,13 @@ export type AbilityRowProps = {
 	ability: string
 	updateAbility: (update: string) => void
 	deleteAbility: () => void
-}
+} & TextFieldProps
 
 export const AbilityRow: React.FC<AbilityRowProps> = ({
 	ability: initialAbility,
 	updateAbility,
 	deleteAbility,
+	...props
 }) => {
 	const [ability, setAbility] = useState(initialAbility)
 
@@ -25,7 +26,8 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				value={ability}
 				onChange={(event) => setAbility(event.target.value)}
 				onBlur={() => updateAbility(ability)}
-				sx={{ maxWidth: '25rem' }}
+				{...props}
+				sx={{ maxWidth: '25rem', ...props.sx }}
 			/>
 			<IconButton
 				size="small"

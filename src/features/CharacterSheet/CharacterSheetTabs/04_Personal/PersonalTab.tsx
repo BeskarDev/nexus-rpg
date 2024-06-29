@@ -282,7 +282,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1, mb: 1 }} />
 
-			<Box>
+			<Box sx={{ maxWidth: '100%', flexGrow: 1, mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Allies</SectionHeader>
 					<IconButton onClick={addNewAlly} sx={{ mb: 0.75 }}>
@@ -301,7 +301,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 				</Box>
 			</Box>
 
-			<Box>
+			<Box sx={{ maxWidth: '100%', flexGrow: 1, mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Contacts</SectionHeader>
 					<IconButton onClick={addNewContact} sx={{ mb: 0.75 }}>
@@ -320,7 +320,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 				</Box>
 			</Box>
 
-			<Box>
+			<Box sx={{ maxWidth: '100%', flexGrow: 1, mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Rivals</SectionHeader>
 					<IconButton onClick={addNewRival} sx={{ mb: 0.75 }}>
@@ -341,7 +341,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Box sx={{ minWidth: '18rem', mt: 1 }}>
+			<Box sx={{ minWidth: '100%', mt: 1 }}>
 				<SectionHeader>Personal Notes</SectionHeader>
 				<TextField
 					multiline
@@ -354,7 +354,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 					onBlur={() =>
 						updateCharacter({ personal: { notes: personal.notes } })
 					}
-					sx={{ maxWidth: '18rem' }}
+					sx={{ maxWidth: '100%' }}
 				/>
 			</Box>
 		</Box>
