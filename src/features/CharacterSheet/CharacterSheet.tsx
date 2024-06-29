@@ -31,11 +31,13 @@ SectionHeader.defaultProps = {
 }
 
 export type CharacterSheetProps = {
+	characterId: string
 	character: Character
 	updateCharacter: (update: DeepPartial<Character>) => void
 }
 
 export const CharacterSheet: React.FC<CharacterSheetProps> = ({
+	characterId,
 	character,
 	updateCharacter,
 }) => {
@@ -109,7 +111,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 							updateCharacter={updateCharacter}
 						/>
 					)}
-					{activeTab === 5 && <SharedNotes />}
+					{activeTab === 5 && <SharedNotes characterId={characterId} />}
 				</>
 			)}
 			{!isMobile && (
@@ -130,7 +132,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 						character={character}
 						updateCharacter={updateCharacter}
 					/>
-					<SharedNotes />
+					<SharedNotes characterId={characterId} />
 				</>
 			)}
 		</>

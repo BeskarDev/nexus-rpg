@@ -122,6 +122,7 @@ export const CharacterSheetContainer: React.FC = () => {
 			{userLoggedIn && !activeCharacterId && <CharacterList />}
 			{userLoggedIn && activeCharacterId && (
 				<CharacterSheet
+					characterId={activeCharacterId}
 					character={activeCharacter}
 					updateCharacter={updateCharacter}
 				/>
