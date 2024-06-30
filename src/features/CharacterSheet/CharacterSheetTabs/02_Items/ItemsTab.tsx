@@ -50,6 +50,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 				items: { encumbrance: { currentLoad: newCurrentLoad } },
 			})
 		}
+		return newCurrentLoad
 	}, [character])
 
 	const addNewWeapon = () => {
