@@ -31,21 +31,39 @@ export const WoundCheckbox: React.FC<WoundCheckbox> = ({
 					icon={<HeartBrokenOutlined />}
 					checkedIcon={<HeartBroken color="error" />}
 					checked={injury}
-					onChange={() => setWound({ injury: !injury })}
+					onChange={() =>
+						setWound({
+							injury: !injury,
+							fatigueOne: !injury ? false : fatigueOne,
+							fatigueTwo: !injury ? false : fatigueTwo,
+						})
+					}
 				/>
 				<Checkbox
 					size="small"
 					icon={<WaterDropOutlined />}
 					checkedIcon={<WaterDrop color="warning" />}
 					checked={fatigueOne}
-					onChange={() => setWound({ fatigueOne: !fatigueOne })}
+					onChange={() =>
+						setWound({
+							injury: !fatigueOne ? false : injury,
+							fatigueOne: !fatigueOne,
+							fatigueTwo: fatigueOne ? false : fatigueTwo,
+						})
+					}
 				/>
 				<Checkbox
 					size="small"
 					icon={<WaterDropOutlined />}
 					checkedIcon={<WaterDrop color="warning" />}
 					checked={fatigueTwo}
-					onChange={() => setWound({ fatigueTwo: !fatigueTwo })}
+					onChange={() =>
+						setWound({
+							injury: !fatigueTwo ? false : injury,
+							fatigueOne: !fatigueTwo ? true : fatigueOne,
+							fatigueTwo: !fatigueTwo,
+						})
+					}
 				/>
 			</Box>
 		</Box>
