@@ -1,5 +1,5 @@
 import { Box, IconButton, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
 import { AttributeField } from '../../CharacterSheet'
@@ -18,17 +18,39 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 }) => {
 	const [name, setName] = useState(skill.name)
 
+	const skillRank = useMemo(() => {
+		let rank: number
+		switch (true) {
+			case skill.xp <= 1:
+				rank = 0
+				break
+			case skill.xp <= 5:
+				rank = 1
+				break
+			case skill.xp <= 11:
+				rank = 2
+				break
+			case skill.xp <= 19:
+				rank = 3
+				break
+			case skill.xp <= 29:
+				rank = 4
+				break
+			default:
+				rank = 5
+				break
+		}
+		updateSkill({ rank })
+		return rank
+	}, [skill.xp])
+
 	return (
 		<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 			<AttributeField
+				disabled
 				type="number"
 				size="small"
-				value={skill.rank}
-				onChange={(event) =>
-					updateSkill({
-						rank: Number(event.target.value),
-					})
-				}
+				value={skillRank}
 				label="Rank"
 				sx={{
 					maxWidth: '4rem',

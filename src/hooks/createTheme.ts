@@ -14,6 +14,16 @@ export const theme = createTheme({
 				variant: 'outlined',
 			},
 		},
+		MuiOutlinedInput: {
+			styleOverrides: {
+				input: {
+					'&.Mui-disabled': {
+						color: 'white',
+						['-webkit-text-fill-color']: 'white',
+					},
+				},
+			},
+		},
 		MuiAccordion: {
 			styleOverrides: {
 				root: {

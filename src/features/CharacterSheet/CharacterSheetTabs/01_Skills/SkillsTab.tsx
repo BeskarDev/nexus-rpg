@@ -105,6 +105,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						}}
 					/>
 					<AttributeField
+						disabled
 						value={spendXP}
 						label="Spend XP"
 						helperText=""
