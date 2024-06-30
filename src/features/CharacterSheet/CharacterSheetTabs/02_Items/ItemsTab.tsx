@@ -140,6 +140,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 					}}
 				/>
 				<AttributeField
+					disabled
 					size="medium"
 					value={currentLoad}
 					label="Current Load"
