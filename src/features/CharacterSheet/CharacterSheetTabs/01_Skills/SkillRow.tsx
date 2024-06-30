@@ -40,7 +40,9 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 				rank = 5
 				break
 		}
-		updateSkill({ rank })
+		if (rank != skill.rank) {
+			updateSkill({ rank })
+		}
 		return rank
 	}, [skill.xp])
 

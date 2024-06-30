@@ -44,7 +44,12 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 		const itemLoad = items
 			.map((i) => i.load * i.amount)
 			.reduce((partialSum, a) => partialSum + a, 0)
-		return weaponLoad + equipmentLoad + itemLoad
+		const newCurrentLoad = weaponLoad + equipmentLoad + itemLoad
+		if (newCurrentLoad != encumbrance.currentLoad) {
+			updateCharacter({
+				items: { encumbrance: { currentLoad: newCurrentLoad } },
+			})
+		}
 	}, [character])
 
 	const addNewWeapon = () => {
