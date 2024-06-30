@@ -27,10 +27,15 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 }) => {
 	const { xp, skills, abilities } = character.skills
 
-	const spendXP = useMemo(
-		() => skills.map((s) => s.xp).reduce((partialSum, a) => partialSum + a, 0),
-		[character],
-	)
+	const spendXP = useMemo(() => {
+		const newSpendXP = skills
+			.map((s) => s.xp)
+			.reduce((partialSum, a) => partialSum + a, 0)
+		if (newSpendXP != xp.spend) {
+			updateCharacter({ skills: { xp: { spend: newSpendXP } } })
+		}
+		return newSpendXP
+	}, [character])
 
 	const addNewSkill = () => {
 		skills.push({ name: 'new skill', rank: 0, xp: 0 })
