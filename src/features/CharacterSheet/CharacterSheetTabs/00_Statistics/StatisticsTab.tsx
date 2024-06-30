@@ -6,6 +6,7 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character } from '../../types/Character'
 
 import { AttributeColumn } from '../AttributeColumn'
+import { RestingButtonGroup } from './RestingButtonGroup'
 import { WoundCheckbox } from './WoundCheckbox'
 
 export type StatisticsTabProps = {
@@ -14,7 +15,10 @@ export type StatisticsTabProps = {
 }
 
 export const StatisticsTab: React.FC<StatisticsTabProps> = ({
-	character: {
+	character,
+	updateCharacter,
+}) => {
+	const {
 		statistics: {
 			health,
 			av,
@@ -27,9 +31,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 			resist,
 			resolve,
 		},
-	},
-	updateCharacter,
-}) => {
+	} = character
 	const totalAV: number = useMemo(
 		() => av.armor + av.helmet + av.shield + av.other,
 		[av.armor + av.helmet + av.shield + av.other],
@@ -43,6 +45,20 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 				flexWrap: 'wrap',
 			}}
 		>
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'right',
+					width: '100%',
+					flexGrow: 1,
+					mb: 2,
+				}}
+			>
+				<RestingButtonGroup
+					character={character}
+					updateCharacter={updateCharacter}
+				/>
+			</Box>
 			<Box>
 				<SectionHeader>Attributes</SectionHeader>
 				<Box sx={{ display: 'flex', gap: 1 }}>
