@@ -246,6 +246,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 				<SectionHeader>AV</SectionHeader>
 				<Box sx={{ display: 'flex' }}>
 					<AttributeField
+						disabled
 						value={totalAV}
 						label="Total"
 						sx={{
@@ -259,6 +260,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 					/>
 					<AttributeField
 						type="number"
+						size="small"
 						value={av.armor}
 						onChange={(event) =>
 							updateCharacter({
@@ -269,6 +271,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 					/>
 					<AttributeField
 						type="number"
+						size="small"
 						value={av.helmet}
 						onChange={(event) =>
 							updateCharacter({
@@ -279,6 +282,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 					/>
 					<AttributeField
 						type="number"
+						size="small"
 						value={av.shield}
 						onChange={(event) =>
 							updateCharacter({
@@ -289,6 +293,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 					/>
 					<AttributeField
 						type="number"
+						size="small"
 						value={av.other}
 						onChange={(event) =>
 							updateCharacter({
