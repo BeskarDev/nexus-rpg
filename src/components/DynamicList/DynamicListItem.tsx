@@ -1,35 +1,31 @@
-import InboxIcon from '@mui/icons-material/Inbox'
-import { Avatar, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
+import { DragHandle } from '@mui/icons-material'
+import { ListItem, ListItemIcon, ListItemProps } from '@mui/material'
 import React from 'react'
 import { Draggable } from 'react-beautiful-dnd'
-import { Item } from './DynamicList'
 
 export type DynamicListItemProps = {
-	item: Item
+	id: string
 	index: number
-}
+} & ListItemProps
 
 export const DynamicListItem: React.FC<DynamicListItemProps> = ({
-	item,
+	id,
 	index,
+	children,
+	...props
 }) => {
 	return (
-		<Draggable draggableId={item.id} index={index}>
-			{(provided, snapshot) => (
+		<Draggable draggableId={id} index={index}>
+			{(provided) => (
 				<ListItem
 					ref={provided.innerRef}
 					{...provided.draggableProps}
-					sx={snapshot.isDragging ? { background: 'rgb(235,235,235)' } : ''}
+					{...props}
 				>
-					<ListItemAvatar {...provided.dragHandleProps}>
-						<Avatar>
-							<InboxIcon />
-						</Avatar>
-					</ListItemAvatar>
-					<ListItemText
-						primary={item.primary + index}
-						secondary={item.secondary + index}
-					/>
+					<ListItemIcon {...provided.dragHandleProps}>
+						<DragHandle />
+					</ListItemIcon>
+					{children}
 				</ListItem>
 			)}
 		</Draggable>

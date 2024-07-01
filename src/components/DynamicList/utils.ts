@@ -4,16 +4,13 @@ export const reorder = <T>(
 	startIndex: number,
 	endIndex: number,
 ): T[] => {
+	console.log('reorder with', list, startIndex, endIndex)
 	const result = Array.from(list)
+	console.log('result1', result)
 	const [removed] = result.splice(startIndex, 1)
+	console.log('removed', removed)
 	result.splice(endIndex, 0, removed)
+	console.log('result2', result)
 
 	return result
 }
-
-export const getItems = (count: number) =>
-	Array.from({ length: count }, (v, k) => k).map((k) => ({
-		id: `Item ${k + 1}`,
-		primary: 'foo',
-		secondary: 'bar',
-	}))

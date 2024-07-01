@@ -1,3 +1,4 @@
+import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import {
 	Accordion,
 	AccordionDetails,
@@ -7,12 +8,13 @@ import {
 	Tooltip,
 } from '@mui/material'
 import React, { useMemo } from 'react'
-
-import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
+import { DropResult } from 'react-beautiful-dnd'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character, Skill } from '../../types/Character'
 
+import { DynamicList, reorder } from '@site/src/components/DynamicList'
+import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { AbilityRow } from '../AbilityRow'
 import { SkillRow } from './SkillRow'
 
@@ -58,6 +60,17 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 			skills: { xp, skills: newSkills, abilities },
 		})
 		skills.pop()
+	}
+
+	const onSkillReorder = ({ destination, source }: DropResult) => {
+		console.log('onSkillReorder with', destination, source)
+		// dropped outside the list
+		if (!destination) return
+
+		const newSkills = reorder([...skills], source.index, destination.index)
+		return updateCharacter({
+			skills: { skills: newSkills },
+		})
 	}
 
 	const addNewAbility = () => {
@@ -126,16 +139,17 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+				<DynamicList onDragEnd={onSkillReorder}>
 					{skills.map((s, index) => (
-						<SkillRow
-							key={s.name + index}
-							skill={s}
-							updateSkill={(update) => updateSkill(update, index)}
-							deleteSkill={() => deleteSkill(s)}
-						/>
+						<DynamicListItem key={s.name + index} id={s.name} index={index}>
+							<SkillRow
+								skill={s}
+								updateSkill={(update) => updateSkill(update, index)}
+								deleteSkill={() => deleteSkill(s)}
+							/>
+						</DynamicListItem>
 					))}
-				</Box>
+				</DynamicList>
 			</Box>
 
 			<Accordion sx={{ flexGrow: 1, maxWidth: '30rem' }}>

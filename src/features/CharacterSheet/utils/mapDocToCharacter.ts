@@ -5,6 +5,7 @@ export const mapDocToCharacter = (
 	doc: DocumentSnapshot<DocumentData, DocumentData>,
 ): CharacterDocument => {
 	const docData = { ...(doc.data() as Character) }
+
 	const character: CharacterDocument = {
 		docRef: doc.ref,
 		docId: doc.id,
