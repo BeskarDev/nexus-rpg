@@ -1,6 +1,12 @@
 import { useColorMode } from '@docusaurus/theme-common'
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
-import React from 'react'
+import {
+	DynamicList,
+	getItems,
+	reorder,
+} from '@site/src/components/DynamicList'
+import React, { useState } from 'react'
+import { DropResult } from 'react-beautiful-dnd'
 import { DeepPartial } from './CharacterSheetContainer'
 import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { SkillsTab } from './CharacterSheetTabs/01_Skills/SkillsTab'
@@ -44,6 +50,17 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 	const [activeTab, setActiveTab] = React.useState(0)
 	const { isMobile } = useDeviceSize()
 	const { colorMode } = useColorMode()
+
+	const [items, setItems] = useState(getItems(10))
+
+	const onDragEnd = ({ destination, source }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newItems = reorder(items, source.index, destination.index)
+
+		setItems(newItems)
+	}
 
 	if (!character) {
 		return undefined
@@ -116,6 +133,7 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 			)}
 			{!isMobile && (
 				<>
+					<DynamicList items={items} onDragEnd={onDragEnd} />
 					<Typography variant="h6">Statistics</Typography>
 					<StatisticsTab
 						character={character}
