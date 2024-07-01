@@ -1,15 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { Alert, Box, Button, TextField, Typography } from '@mui/material'
+import React, { useState } from 'react'
 import { signIn, signOut } from '../config/auth'
-import {
-	Alert,
-	Box,
-	Button,
-	Card,
-	CardContent,
-	TextField,
-	Typography,
-	useColorScheme,
-} from '@mui/material'
 import { useAuth } from '../hooks/firebaseAuthContext'
 
 export const LoginComponent: React.FC = () => {
@@ -43,7 +34,7 @@ export const LoginComponent: React.FC = () => {
 		<Box
 			component="form"
 			onSubmit={onSubmit}
-			sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+			sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
 		>
 			<Typography variant="h6">Login</Typography>
 			<TextField
@@ -55,6 +46,11 @@ export const LoginComponent: React.FC = () => {
 				onChange={(e) => {
 					setEmail(e.target.value)
 				}}
+				onKeyDown={(event) => {
+					if (event.key === 'Tab') {
+						event.stopPropagation()
+					}
+				}}
 			/>
 			<TextField
 				required
@@ -64,6 +60,11 @@ export const LoginComponent: React.FC = () => {
 				value={password}
 				onChange={(e) => {
 					setPassword(e.target.value)
+				}}
+				onKeyDown={(event) => {
+					if (event.key === 'Tab') {
+						event.stopPropagation()
+					}
 				}}
 			/>
 			<Button

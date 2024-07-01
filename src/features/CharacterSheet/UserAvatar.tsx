@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { Avatar, AvatarProps, Menu, MenuItem } from '@mui/material'
-import { Person } from '@mui/icons-material'
+import { Avatar, AvatarProps, Menu } from '@mui/material'
 import { LoginComponent } from '@site/src/components/LoginComponent'
+import React from 'react'
 
 export const UserAvatar: React.FC<AvatarProps> = (props) => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -32,6 +31,11 @@ export const UserAvatar: React.FC<AvatarProps> = (props) => {
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}
+				onKeyDown={(event) => {
+					if (event.key === 'Tab') {
+						event.stopPropagation()
+					}
+				}}
 				MenuListProps={{ sx: { p: 2 } }}
 			>
 				<LoginComponent />
