@@ -22,10 +22,15 @@ export type Personal = {
 	age: string
 	description: string
 	motivation: string
-	allies: string[]
-	contacts: string[]
-	rivals: string[]
+	allies: Relation[]
+	contacts: Relation[]
+	rivals: Relation[]
 	notes: string
+}
+
+export type Relation = {
+	id: string
+	description: string
 }
 
 export type Statistics = {
@@ -70,13 +75,19 @@ export type Skills = {
 		spend: number
 	}
 	skills: Skill[]
-	abilities: string[]
+	abilities: Ability[]
 }
 
 export type Skill = {
+	id: string
 	name: string
 	rank: number
 	xp: number
+}
+
+export type Ability = {
+	id: string
+	description: string
 }
 
 export type Items = {
@@ -101,6 +112,7 @@ export type Items = {
 }
 
 export type Weapon = {
+	id: string
 	name: string
 	damage: string
 	properties: string
@@ -116,6 +128,7 @@ export type Equipment = {
 }
 
 export type Item = Equipment & {
+	id: string
 	amount: number
 }
 
@@ -130,6 +143,7 @@ export type Spells = {
 }
 
 export type Spell = {
+	id: string
 	name: string
 	rank: number
 	cost: number
