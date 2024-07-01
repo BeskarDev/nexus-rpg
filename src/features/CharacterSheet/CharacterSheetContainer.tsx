@@ -8,6 +8,7 @@ import { CharacterSheet } from './CharacterSheet'
 import { CharacterSheetHeader } from './CharacterSheetHeader'
 import { Character, CharacterDocument } from './types/Character'
 import { mapDocToCharacter } from './utils/mapDocToCharacter'
+import { migrateDoc } from './utils/migrateDoc'
 
 const SAVE_CHARACTER_TIMEOUT = 30_000
 
@@ -49,7 +50,19 @@ export const CharacterSheetContainer: React.FC = () => {
 	useEffect(() => {
 		if (activeCharacterId && currentUser) {
 			getDoc(doc(db, `${currentUser.uid}/${activeCharacterId}`)).then((doc) => {
-				setActiveCharacter(mapDocToCharacter(doc))
+				const character = mapDocToCharacter(doc)
+				const migratedCharacter = migrateDoc(doc)
+
+				//if(character != migratedCharacter)
+				console.log('original character', character)
+				console.log('migrated character', migratedCharacter)
+				console.log('equals', character == migratedCharacter)
+
+				setActiveCharacter({
+					...migratedCharacter,
+					docId: character.docId,
+					docRef: character.docRef,
+				})
 			})
 		}
 	}, [activeCharacterId])
