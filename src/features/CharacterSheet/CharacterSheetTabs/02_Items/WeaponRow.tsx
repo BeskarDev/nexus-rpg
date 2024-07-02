@@ -25,8 +25,6 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				alignItems: 'center',
 				flexWrap: 'wrap',
 				pb: 1,
-				borderBottom: 1,
-				borderColor: 'divider',
 			}}
 		>
 			<TextField

@@ -68,19 +68,17 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 	}
 
 	const onSkillReorder = ({ source, destination }: DropResult) => {
-		console.log('onSkillReorder with', source, destination)
 		// dropped outside the list
 		if (!destination) return
 
-		const newSkills = reorder([...skills], source.index, destination.index)
-		console.log('skills after reorder', newSkills)
+		const newSkills = reorder(skills, source.index, destination.index)
 		return updateCharacter({
 			skills: { xp, skills: newSkills, abilities },
 		})
 	}
 
 	const addNewAbility = () => {
-		abilities.push({ id: crypto.randomUUID(), description: '' })
+		abilities.splice(0, 0, { id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			skills: { xp, skills, abilities },
 		})
@@ -99,6 +97,16 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 			skills: { xp, skills, abilities: newAbilities },
 		})
 		abilities.pop()
+	}
+
+	const onAbilityReorder = ({ source, destination }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newAbilities = reorder(abilities, source.index, destination.index)
+		return updateCharacter({
+			skills: { xp, skills, abilities: newAbilities },
+		})
 	}
 
 	return (
@@ -145,7 +153,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<DynamicList onDragEnd={onSkillReorder}>
+				<DynamicList droppableId="skills" onDragEnd={onSkillReorder}>
 					{skills.map((s, index) => (
 						<DynamicListItem key={s.id} id={s.id} index={index}>
 							<SkillRow
@@ -173,17 +181,19 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 						</IconButton>
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails
-					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
-				>
-					{abilities.map((a, index) => (
-						<AbilityRow
-							key={a.id}
-							ability={a.description}
-							updateAbility={(update) => updateAbility(update, index)}
-							deleteAbility={() => deleteAbility(index)}
-						/>
-					))}
+				<AccordionDetails>
+					<DynamicList droppableId="abilities" onDragEnd={onAbilityReorder}>
+						{abilities.map((a, index) => (
+							<DynamicListItem key={a.id} id={a.id} index={index}>
+								<AbilityRow
+									key={a.id}
+									ability={a.description}
+									updateAbility={(update) => updateAbility(update, index)}
+									deleteAbility={() => deleteAbility(index)}
+								/>
+							</DynamicListItem>
+						))}
+					</DynamicList>
 				</AccordionDetails>
 			</Accordion>
 		</Box>

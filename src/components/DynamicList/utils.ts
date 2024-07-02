@@ -1,5 +1,5 @@
 // to also copy elements and not just use same references
-const deepCopy = <T>(arr: T[]): T[] => {
+export const deepCopy = <T>(arr: T[]): T[] => {
 	return JSON.parse(JSON.stringify(arr)) as T[]
 }
 

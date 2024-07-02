@@ -25,8 +25,6 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 				alignItems: 'center',
 				flexWrap: 'wrap',
 				pb: 1,
-				borderBottom: 1,
-				borderColor: 'divider',
 			}}
 		>
 			<TextField

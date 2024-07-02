@@ -28,8 +28,6 @@ export const EquipmentRow: React.FC<EquipmentRowProps> = ({
 					alignItems: 'center',
 					flexWrap: 'wrap',
 					pb: 1,
-					borderBottom: 1,
-					borderColor: 'divider',
 				}}
 			>
 				<TextField

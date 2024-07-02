@@ -7,22 +7,30 @@ import {
 } from 'react-beautiful-dnd'
 
 export type DynamicListProps = {
+	droppableId: string
 	onDragEnd: OnDragEndResponder
 } & ListProps
 
 export const DynamicList: React.FC<DynamicListProps> = React.memo(
-	({ onDragEnd, children, ...props }) => {
+	({ droppableId, onDragEnd, children, ...props }) => {
 		return (
 			<DragDropContext onDragEnd={onDragEnd}>
-				<Droppable droppableId="droppable-list">
+				<Droppable droppableId={droppableId}>
 					{(provided) => (
-						<List
-							ref={provided.innerRef}
-							{...provided.droppableProps}
-							{...props}
-						>
-							{children}
-						</List>
+						<>
+							{children && (
+								<List
+									disablePadding
+									ref={provided.innerRef}
+									{...provided.droppableProps}
+									{...props}
+									sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+								>
+									{children}
+								</List>
+							)}
+							{provided.placeholder}
+						</>
 					)}
 				</Droppable>
 			</DragDropContext>
