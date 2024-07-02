@@ -21,8 +21,9 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 					ref={provided.innerRef}
 					{...provided.draggableProps}
 					{...props}
+					sx={{ p: 0, ...props.sx }}
 				>
-					<ListItemIcon {...provided.dragHandleProps}>
+					<ListItemIcon {...provided.dragHandleProps} sx={{ minWidth: '32px' }}>
 						<DragHandle />
 					</ListItemIcon>
 					{children}

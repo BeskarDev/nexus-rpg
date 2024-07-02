@@ -25,8 +25,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				alignItems: 'center',
 				flexWrap: 'wrap',
 				pb: 1,
-				borderBottom: 1,
-				borderColor: 'divider',
 			}}
 		>
 			<AttributeField

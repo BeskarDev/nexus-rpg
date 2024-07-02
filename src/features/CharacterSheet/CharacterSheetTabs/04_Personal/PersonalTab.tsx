@@ -2,6 +2,8 @@ import { Box, IconButton, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
 import { AddCircle } from '@mui/icons-material'
+import { reorder } from '@site/src/components/DynamicList'
+import { DropResult } from 'react-beautiful-dnd'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character } from '../../types/Character'
@@ -16,26 +18,12 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 	character,
 	updateCharacter,
 }) => {
-	const {
-		name,
-		folk,
-		upbringing,
-		background,
-		height,
-		weight,
-		age,
-		description,
-		motivation,
-		allies,
-		contacts,
-		rivals,
-		notes,
-	} = character.personal
+	const { allies, contacts, rivals } = character.personal
 
 	const [personal, setPersonal] = useState(character.personal)
 
 	const addNewAlly = () => {
-		allies.push({ id: crypto.randomUUID(), description: '' })
+		allies.splice(0, 0, { id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			personal: { allies },
 		})
@@ -53,26 +41,24 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 		const newAllies = [...allies].filter((_, i) => i != index)
 		updateCharacter({
 			personal: {
-				name,
-				folk,
-				upbringing,
-				background,
-				height,
-				weight,
-				age,
-				description,
-				motivation,
 				allies: newAllies,
-				contacts,
-				rivals,
-				notes,
 			},
 		})
 		allies.pop()
 	}
 
+	const onAllyReorder = ({ source, destination }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newAllies = reorder(allies, source.index, destination.index)
+		return updateCharacter({
+			personal: { allies: newAllies },
+		})
+	}
+
 	const addNewContact = () => {
-		contacts.push({ id: crypto.randomUUID(), description: '' })
+		contacts.splice(0, 0, { id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			personal: { contacts },
 		})
@@ -90,26 +76,14 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 		const newContacts = [...contacts].filter((_, i) => i != index)
 		updateCharacter({
 			personal: {
-				name,
-				folk,
-				upbringing,
-				background,
-				height,
-				weight,
-				age,
-				description,
-				motivation,
-				allies,
 				contacts: newContacts,
-				rivals,
-				notes,
 			},
 		})
 		contacts.pop()
 	}
 
 	const addNewRival = () => {
-		rivals.push({ id: crypto.randomUUID(), description: '' })
+		rivals.splice(0, 0, { id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			personal: { rivals },
 		})
@@ -127,19 +101,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 		const newRivals = [...rivals].filter((_, i) => i != index)
 		updateCharacter({
 			personal: {
-				name,
-				folk,
-				upbringing,
-				background,
-				height,
-				weight,
-				age,
-				description,
-				motivation,
-				allies,
-				contacts,
 				rivals: newRivals,
-				notes,
 			},
 		})
 		rivals.pop()

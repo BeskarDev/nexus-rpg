@@ -10,6 +10,9 @@ import {
 import React from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
+import { DynamicList, reorder } from '@site/src/components/DynamicList'
+import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
+import { DropResult } from 'react-beautiful-dnd'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character, Spell } from '../../types/Character'
@@ -27,7 +30,7 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 	const { magicSkill, specialization, focus, spells } = character.spells
 
 	const addNewSpell = () => {
-		spells.push({
+		spells.splice(0, 0, {
 			id: crypto.randomUUID(),
 			name: 'new spell',
 			rank: 0,
@@ -53,9 +56,19 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 	const deleteSpell = (spell: Spell) => {
 		const newSpells = [...spells].filter((s) => s != spell)
 		updateCharacter({
-			spells: { magicSkill, specialization, focus, spells: newSpells },
+			spells: { spells: newSpells },
 		})
 		spells.pop()
+	}
+
+	const onSpellReorder = ({ source, destination }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newSpells = reorder(spells, source.index, destination.index)
+		return updateCharacter({
+			spells: { spells: newSpells },
+		})
 	}
 
 	return (
@@ -149,17 +162,20 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 							</IconButton>
 						</Box>
 					</AccordionSummary>
-					<AccordionDetails
-						sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
-					>
-						{spells.map((s, index) => (
-							<SpellRow
-								key={s.id}
-								spell={s}
-								updateSpell={(update) => updateSpell(update, index)}
-								deleteSpell={() => deleteSpell(s)}
-							/>
-						))}
+
+					<AccordionDetails>
+						<DynamicList droppableId="spells" onDragEnd={onSpellReorder}>
+							{spells.map((s, index) => (
+								<DynamicListItem key={s.id} id={s.id} index={index}>
+									<SpellRow
+										key={s.id}
+										spell={s}
+										updateSpell={(update) => updateSpell(update, index)}
+										deleteSpell={() => deleteSpell(s)}
+									/>
+								</DynamicListItem>
+							))}
+						</DynamicList>
 					</AccordionDetails>
 				</Accordion>
 			</Box>

@@ -9,10 +9,13 @@ import {
 import React, { useMemo } from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
+import { DropResult } from 'react-beautiful-dnd'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { Character, Item, Weapon } from '../../types/Character'
 
+import { DynamicList, reorder } from '@site/src/components/DynamicList'
+import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { EquipmentRow } from './EquipmentRow'
 import { ItemRow } from './ItemRow'
 import { WeaponRow } from './WeaponRow'
@@ -54,7 +57,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 	}, [character])
 
 	const addNewWeapon = () => {
-		weapons.push({
+		weapons.splice(0, 0, {
 			id: crypto.randomUUID(),
 			name: 'new weapon',
 			damage: '',
@@ -78,13 +81,23 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 	const deleteWeapon = (weapon: Weapon) => {
 		const newWeapons = [...weapons].filter((s) => s != weapon)
 		updateCharacter({
-			items: { coins, encumbrance, weapons: newWeapons, equipment, items },
+			items: { weapons: newWeapons },
 		})
 		weapons.pop()
 	}
 
+	const onWeaponReorder = ({ source, destination }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newWeapons = reorder(weapons, source.index, destination.index)
+		return updateCharacter({
+			items: { weapons: newWeapons },
+		})
+	}
+
 	const addNewItem = () => {
-		items.push({
+		items.splice(0, 0, {
 			id: crypto.randomUUID(),
 			name: 'new item',
 			properties: '',
@@ -108,9 +121,19 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 	const deleteItem = (item: Item) => {
 		const newItems = [...items].filter((s) => s != item)
 		updateCharacter({
-			items: { coins, encumbrance, weapons, equipment, items: newItems },
+			items: { items: newItems },
 		})
 		items.pop()
+	}
+
+	const onItemReorder = ({ source, destination }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newItems = reorder(items, source.index, destination.index)
+		return updateCharacter({
+			items: { items: newItems },
+		})
 	}
 
 	return (
@@ -241,17 +264,19 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 						</IconButton>
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails
-					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
-				>
-					{weapons.map((w, index) => (
-						<WeaponRow
-							key={w.id}
-							weapon={w}
-							updateWeapon={(update) => updateWeapon(update, index)}
-							deleteWeapon={() => deleteWeapon(w)}
-						/>
-					))}
+				<AccordionDetails>
+					<DynamicList droppableId="weapons" onDragEnd={onWeaponReorder}>
+						{weapons.map((w, index) => (
+							<DynamicListItem key={w.id} id={w.id} index={index}>
+								<WeaponRow
+									key={w.id}
+									weapon={w}
+									updateWeapon={(update) => updateWeapon(update, index)}
+									deleteWeapon={() => deleteWeapon(w)}
+								/>
+							</DynamicListItem>
+						))}
+					</DynamicList>
 				</AccordionDetails>
 			</Accordion>
 
@@ -410,17 +435,19 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 						</IconButton>
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails
-					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
-				>
-					{items.map((i, index) => (
-						<ItemRow
-							key={i.id}
-							item={i}
-							updateItem={(update) => updateItem(update, index)}
-							deleteItem={() => deleteItem(i)}
-						/>
-					))}
+				<AccordionDetails>
+					<DynamicList droppableId="items" onDragEnd={onItemReorder}>
+						{items.map((i, index) => (
+							<DynamicListItem key={i.id} id={i.id} index={index}>
+								<ItemRow
+									key={i.id}
+									item={i}
+									updateItem={(update) => updateItem(update, index)}
+									deleteItem={() => deleteItem(i)}
+								/>
+							</DynamicListItem>
+						))}
+					</DynamicList>
 				</AccordionDetails>
 			</Accordion>
 		</Box>
