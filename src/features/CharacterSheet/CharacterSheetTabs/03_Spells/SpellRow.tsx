@@ -1,5 +1,5 @@
 import { Box, IconButton, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
 import { AttributeField } from '../../CharacterSheet'
@@ -18,6 +18,14 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 }) => {
 	const [spell, setSpell] = useState<Spell>(initialSpell)
 
+	const spellCost = useMemo(() => {
+		const newSpellCost = initialSpell.rank * 2
+		if (newSpellCost !== initialSpell.cost) {
+			updateSpell({ cost: newSpellCost })
+		}
+		return newSpellCost
+	}, [initialSpell])
+
 	return (
 		<Box
 			sx={{
@@ -25,9 +33,11 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				alignItems: 'center',
 				flexWrap: 'wrap',
 				pb: 1,
+				columnGap: 1,
 			}}
 		>
 			<AttributeField
+				size="small"
 				type="number"
 				value={initialSpell.rank}
 				onChange={(event) => updateSpell({ rank: Number(event.target.value) })}
@@ -43,11 +53,12 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}}
 			/>
 			<AttributeField
+				disabled
+				size="small"
 				type="number"
-				value={initialSpell.cost}
-				onChange={(event) => updateSpell({ cost: Number(event.target.value) })}
+				value={spellCost}
 				label="Cost"
-				sx={{ maxWidth: '5rem', flexGrow: 0, mr: 1 }}
+				sx={{ maxWidth: '5rem', flexGrow: 0 }}
 			/>
 			<TextField
 				variant="standard"
@@ -57,7 +68,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}
 				onBlur={() => updateSpell({ name: spell.name })}
 				label="Name"
-				sx={{ maxWidth: '12rem', flexGrow: 1 }}
+				sx={{ maxWidth: { sm: '14rem', xs: '100%' }, flexGrow: 1 }}
 			/>
 			<TextField
 				variant="standard"
@@ -70,10 +81,11 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}
 				onBlur={() => updateSpell({ properties: spell.properties })}
 				label="Properties"
-				sx={{ maxWidth: '10rem', flexGrow: 1, mr: 1 }}
+				sx={{ maxWidth: { sm: '12rem', xs: '100%' }, flexGrow: 1 }}
 				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<AttributeField
+				size="small"
 				value={spell.target}
 				onChange={(event) =>
 					setSpell((s) => ({ ...s, target: event.target.value }))
@@ -84,6 +96,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<AttributeField
+				size="small"
 				value={spell.range}
 				onChange={(event) =>
 					setSpell((s) => ({ ...s, range: event.target.value }))
@@ -94,6 +107,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<TextField
+				size="small"
 				multiline
 				minRows={1}
 				maxRows={5}
@@ -103,7 +117,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}
 				onBlur={() => updateSpell({ effect: spell.effect })}
 				label="Effect"
-				sx={{ maxWidth: '46rem' }}
+				sx={{ maxWidth: '51.5rem' }}
 				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<IconButton

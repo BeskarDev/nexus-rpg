@@ -18,7 +18,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	const [ability, setAbility] = useState(initialAbility)
 
 	return (
-		<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+		<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexGrow: 1 }}>
 			<TextField
 				multiline
 				minRows={1}
