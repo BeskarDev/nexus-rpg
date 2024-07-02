@@ -7,7 +7,7 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material'
-import React, { useId, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -40,7 +40,12 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 	}, [character])
 
 	const addNewSkill = () => {
-		skills.push({ id: useId(), name: 'new skill', rank: 0, xp: 0 })
+		skills.splice(0, 0, {
+			id: crypto.randomUUID(),
+			name: 'new skill',
+			rank: 0,
+			xp: 0,
+		})
 		updateCharacter({
 			skills: { xp, skills, abilities },
 		})
@@ -62,19 +67,20 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 		skills.pop()
 	}
 
-	const onSkillReorder = ({ destination, source }: DropResult) => {
-		console.log('onSkillReorder with', destination, source)
+	const onSkillReorder = ({ source, destination }: DropResult) => {
+		console.log('onSkillReorder with', source, destination)
 		// dropped outside the list
 		if (!destination) return
 
 		const newSkills = reorder([...skills], source.index, destination.index)
+		console.log('skills after reorder', newSkills)
 		return updateCharacter({
-			skills: { skills: newSkills },
+			skills: { xp, skills: newSkills, abilities },
 		})
 	}
 
 	const addNewAbility = () => {
-		abilities.push({ id: useId(), description: '' })
+		abilities.push({ id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			skills: { xp, skills, abilities },
 		})
@@ -141,7 +147,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 				</Box>
 				<DynamicList onDragEnd={onSkillReorder}>
 					{skills.map((s, index) => (
-						<DynamicListItem key={s.id} id={s.name} index={index}>
+						<DynamicListItem key={s.id} id={s.id} index={index}>
 							<SkillRow
 								skill={s}
 								updateSkill={(update) => updateSkill(update, index)}
