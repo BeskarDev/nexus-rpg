@@ -2,7 +2,8 @@ import { Box, IconButton, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
 import { AddCircle } from '@mui/icons-material'
-import { reorder } from '@site/src/components/DynamicList'
+import { DynamicList, reorder } from '@site/src/components/DynamicList'
+import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -82,6 +83,16 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 		contacts.pop()
 	}
 
+	const onContactReorder = ({ source, destination }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newContacts = reorder(contacts, source.index, destination.index)
+		return updateCharacter({
+			personal: { contacts: newContacts },
+		})
+	}
+
 	const addNewRival = () => {
 		rivals.splice(0, 0, { id: crypto.randomUUID(), description: '' })
 		updateCharacter({
@@ -107,11 +118,21 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 		rivals.pop()
 	}
 
+	const onRivalReorder = ({ source, destination }: DropResult) => {
+		// dropped outside the list
+		if (!destination) return
+
+		const newRivals = reorder(rivals, source.index, destination.index)
+		return updateCharacter({
+			personal: { rivals: newRivals },
+		})
+	}
+
 	return (
 		<Box
 			sx={{
 				display: 'flex',
-				columnGap: { md: 4, sm: 2, xs: 1 },
+				columnGap: 3,
 				flexWrap: 'wrap',
 			}}
 		>
@@ -244,61 +265,67 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1, mb: 1 }} />
 
-			<Box sx={{ maxWidth: '100%', flexGrow: 1, mb: 1 }}>
+			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Allies</SectionHeader>
 					<IconButton onClick={addNewAlly} sx={{ mb: 0.75 }}>
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+				<DynamicList droppableId="allies" onDragEnd={onAllyReorder}>
 					{allies.map((a, index) => (
-						<AbilityRow
-							key={a.id}
-							ability={a.description}
-							updateAbility={(update) => updateAlly(update, index)}
-							deleteAbility={() => deleteAlly(index)}
-						/>
+						<DynamicListItem key={a.id} id={a.id} index={index}>
+							<AbilityRow
+								key={a.id}
+								ability={a.description}
+								updateAbility={(update) => updateAlly(update, index)}
+								deleteAbility={() => deleteAlly(index)}
+							/>
+						</DynamicListItem>
 					))}
-				</Box>
+				</DynamicList>
 			</Box>
 
-			<Box sx={{ maxWidth: '100%', flexGrow: 1, mb: 1 }}>
+			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Contacts</SectionHeader>
 					<IconButton onClick={addNewContact} sx={{ mb: 0.75 }}>
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+				<DynamicList droppableId="contacts" onDragEnd={onContactReorder}>
 					{contacts.map((c, index) => (
-						<AbilityRow
-							key={c.id}
-							ability={c.description}
-							updateAbility={(update) => updateContact(update, index)}
-							deleteAbility={() => deleteContact(index)}
-						/>
+						<DynamicListItem key={c.id} id={c.id} index={index}>
+							<AbilityRow
+								key={c.id}
+								ability={c.description}
+								updateAbility={(update) => updateContact(update, index)}
+								deleteAbility={() => deleteContact(index)}
+							/>
+						</DynamicListItem>
 					))}
-				</Box>
+				</DynamicList>
 			</Box>
 
-			<Box sx={{ maxWidth: '100%', flexGrow: 1, mb: 1 }}>
+			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Rivals</SectionHeader>
 					<IconButton onClick={addNewRival} sx={{ mb: 0.75 }}>
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+				<DynamicList droppableId="rivals" onDragEnd={onRivalReorder}>
 					{rivals.map((r, index) => (
-						<AbilityRow
-							key={r.id}
-							ability={r.description}
-							updateAbility={(update) => updateRival(update, index)}
-							deleteAbility={() => deleteRival(index)}
-						/>
+						<DynamicListItem key={r.id} id={r.id} index={index}>
+							<AbilityRow
+								key={r.id}
+								ability={r.description}
+								updateAbility={(update) => updateRival(update, index)}
+								deleteAbility={() => deleteRival(index)}
+							/>
+						</DynamicListItem>
 					))}
-				</Box>
+				</DynamicList>
 			</Box>
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
