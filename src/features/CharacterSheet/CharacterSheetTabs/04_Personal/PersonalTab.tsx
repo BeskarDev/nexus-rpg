@@ -1,5 +1,5 @@
 import { Box, IconButton, TextField } from '@mui/material'
-import React, { useId, useState } from 'react'
+import React, { useState } from 'react'
 
 import { AddCircle } from '@mui/icons-material'
 import { SectionHeader } from '../../CharacterSheet'
@@ -35,7 +35,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 	const [personal, setPersonal] = useState(character.personal)
 
 	const addNewAlly = () => {
-		allies.push({ id: useId(), description: '' })
+		allies.push({ id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			personal: { allies },
 		})
@@ -72,7 +72,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 	}
 
 	const addNewContact = () => {
-		contacts.push({ id: useId(), description: '' })
+		contacts.push({ id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			personal: { contacts },
 		})
@@ -109,7 +109,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 	}
 
 	const addNewRival = () => {
-		rivals.push({ id: useId(), description: '' })
+		rivals.push({ id: crypto.randomUUID(), description: '' })
 		updateCharacter({
 			personal: { rivals },
 		})

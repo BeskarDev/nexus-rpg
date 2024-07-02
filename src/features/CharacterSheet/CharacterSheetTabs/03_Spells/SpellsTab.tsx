@@ -7,7 +7,7 @@ import {
 	TextField,
 	Tooltip,
 } from '@mui/material'
-import React, { useId } from 'react'
+import React from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
@@ -28,7 +28,7 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 
 	const addNewSpell = () => {
 		spells.push({
-			id: useId(),
+			id: crypto.randomUUID(),
 			name: 'new spell',
 			rank: 0,
 			cost: 0,

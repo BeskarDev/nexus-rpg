@@ -6,7 +6,7 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material'
-import React, { useId, useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
@@ -55,7 +55,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 	const addNewWeapon = () => {
 		weapons.push({
-			id: useId(),
+			id: crypto.randomUUID(),
 			name: 'new weapon',
 			damage: '',
 			properties: '',
@@ -85,7 +85,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 	const addNewItem = () => {
 		items.push({
-			id: useId(),
+			id: crypto.randomUUID(),
 			name: 'new item',
 			properties: '',
 			cost: 0,
