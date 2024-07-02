@@ -7,7 +7,7 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material'
-import React, { useMemo } from 'react'
+import React, { useId, useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -40,7 +40,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 	}, [character])
 
 	const addNewSkill = () => {
-		skills.push({ name: 'new skill', rank: 0, xp: 0 })
+		skills.push({ id: useId(), name: 'new skill', rank: 0, xp: 0 })
 		updateCharacter({
 			skills: { xp, skills, abilities },
 		})
@@ -74,14 +74,14 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 	}
 
 	const addNewAbility = () => {
-		abilities.push('')
+		abilities.push({ id: useId(), description: '' })
 		updateCharacter({
 			skills: { xp, skills, abilities },
 		})
 	}
 
 	const updateAbility = (update: string, index: number) => {
-		abilities[index] = update
+		abilities[index] = { ...abilities[index], description: update }
 		return updateCharacter({
 			skills: { abilities },
 		})
@@ -141,7 +141,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 				</Box>
 				<DynamicList onDragEnd={onSkillReorder}>
 					{skills.map((s, index) => (
-						<DynamicListItem key={s.name + index} id={s.name} index={index}>
+						<DynamicListItem key={s.id} id={s.name} index={index}>
 							<SkillRow
 								skill={s}
 								updateSkill={(update) => updateSkill(update, index)}
@@ -172,8 +172,8 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 				>
 					{abilities.map((a, index) => (
 						<AbilityRow
-							key={a + index}
-							ability={a}
+							key={a.id}
+							ability={a.description}
 							updateAbility={(update) => updateAbility(update, index)}
 							deleteAbility={() => deleteAbility(index)}
 						/>

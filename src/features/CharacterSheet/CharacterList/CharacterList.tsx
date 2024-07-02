@@ -51,7 +51,7 @@ export const CharacterList: React.FC = () => {
 			{Boolean(characters.length) &&
 				characters.map((char) => (
 					<ListItem
-						key={char.personal.name}
+						key={char.docId}
 						secondaryAction={
 							<DeleteButton
 								handleDeleteCharacter={() => handleDeleteCharacter(char)}

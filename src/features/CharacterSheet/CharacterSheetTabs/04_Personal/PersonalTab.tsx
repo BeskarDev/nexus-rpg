@@ -1,5 +1,5 @@
 import { Box, IconButton, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useId, useState } from 'react'
 
 import { AddCircle } from '@mui/icons-material'
 import { SectionHeader } from '../../CharacterSheet'
@@ -35,7 +35,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 	const [personal, setPersonal] = useState(character.personal)
 
 	const addNewAlly = () => {
-		allies.push('')
+		allies.push({ id: useId(), description: '' })
 		updateCharacter({
 			personal: { allies },
 		})
@@ -43,7 +43,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 	const updateAlly = (update: string, index: number) => {
 		const newAllies = [...allies]
-		newAllies[index] = update
+		newAllies[index] = { ...allies[index], description: update }
 		return updateCharacter({
 			personal: { allies: newAllies },
 		})
@@ -72,7 +72,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 	}
 
 	const addNewContact = () => {
-		contacts.push('')
+		contacts.push({ id: useId(), description: '' })
 		updateCharacter({
 			personal: { contacts },
 		})
@@ -80,7 +80,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 	const updateContact = (update: string, index: number) => {
 		const newContacts = [...contacts]
-		newContacts[index] = update
+		newContacts[index] = { ...contacts[index], description: update }
 		return updateCharacter({
 			personal: { contacts: newContacts },
 		})
@@ -109,7 +109,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 	}
 
 	const addNewRival = () => {
-		rivals.push('')
+		rivals.push({ id: useId(), description: '' })
 		updateCharacter({
 			personal: { rivals },
 		})
@@ -117,7 +117,7 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 	const updateRival = (update: string, index: number) => {
 		const newRivals = [...rivals]
-		newRivals[index] = update
+		newRivals[index] = { ...rivals[index], description: update }
 		return updateCharacter({
 			personal: { rivals: newRivals },
 		})
@@ -292,8 +292,8 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 					{allies.map((a, index) => (
 						<AbilityRow
-							key={a + index}
-							ability={a}
+							key={a.id}
+							ability={a.description}
 							updateAbility={(update) => updateAlly(update, index)}
 							deleteAbility={() => deleteAlly(index)}
 						/>
@@ -311,8 +311,8 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 					{contacts.map((c, index) => (
 						<AbilityRow
-							key={c + index}
-							ability={c}
+							key={c.id}
+							ability={c.description}
 							updateAbility={(update) => updateContact(update, index)}
 							deleteAbility={() => deleteContact(index)}
 						/>
@@ -330,8 +330,8 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 					{rivals.map((r, index) => (
 						<AbilityRow
-							key={r + index}
-							ability={r}
+							key={r.id}
+							ability={r.description}
 							updateAbility={(update) => updateRival(update, index)}
 							deleteAbility={() => deleteRival(index)}
 						/>

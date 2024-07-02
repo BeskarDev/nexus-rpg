@@ -53,16 +53,14 @@ export const CharacterSheetContainer: React.FC = () => {
 				const character = mapDocToCharacter(doc)
 				const migratedCharacter = migrateDoc(doc)
 
-				//if(character != migratedCharacter)
-				console.log('original character', character)
-				console.log('migrated character', migratedCharacter)
-				console.log('equals', character == migratedCharacter)
+				if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
+					console.log('save migrated character', migratedCharacter)
+					updateDoc(migratedCharacter.docRef, {
+						...migratedCharacter,
+					} as Omit<Character, 'docRef' | 'docId'>)
+				}
 
-				setActiveCharacter({
-					...migratedCharacter,
-					docId: character.docId,
-					docRef: character.docRef,
-				})
+				setActiveCharacter(migratedCharacter)
 			})
 		}
 	}, [activeCharacterId])
