@@ -21,9 +21,11 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 	return (
 		<Box
 			sx={{
+				width: '100%',
 				display: 'flex',
 				alignItems: 'center',
 				flexWrap: 'wrap',
+				columnGap: 1,
 				pb: 1,
 			}}
 		>
@@ -35,7 +37,10 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				}
 				onBlur={() => updateWeapon({ name: weapon.name })}
 				label="Name"
-				sx={{ maxWidth: '13rem', flexGrow: 1 }}
+				sx={{
+					maxWidth: { sm: '13rem', xs: '100%' },
+					flexGrow: 1,
+				}}
 			/>
 			<TextField
 				variant="standard"
@@ -45,7 +50,9 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				}
 				onBlur={() => updateWeapon({ damage: weapon.damage })}
 				label="Damage"
-				sx={{ maxWidth: '7rem', flexGrow: 0 }}
+				sx={{
+					maxWidth: { sm: '7rem', xs: '100%' },
+				}}
 			/>
 			<TextField
 				variant="standard"
@@ -58,7 +65,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				}
 				onBlur={() => updateWeapon({ properties: weapon.properties })}
 				label="Properties"
-				sx={{ maxWidth: '20rem', flexGrow: 1 }}
+				sx={{ maxWidth: { sm: '20rem', xs: '100%' }, flexGrow: 1 }}
 				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<AttributeField
@@ -67,7 +74,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				value={initialWeapon.cost}
 				onChange={(event) => updateWeapon({ cost: Number(event.target.value) })}
 				label="Cost"
-				sx={{ maxWidth: '8rem', flexGrow: 0 }}
+				sx={{ maxWidth: '6rem', flexGrow: 0 }}
 				inputProps={{
 					sx: {
 						textAlign: 'right',
@@ -87,6 +94,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				edge="end"
 				aria-label="delete"
 				onClick={deleteWeapon}
+				sx={{ my: 'auto' }}
 			>
 				<Delete />
 			</IconButton>

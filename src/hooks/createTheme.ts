@@ -14,6 +14,36 @@ export const theme = createTheme({
 				variant: 'outlined',
 			},
 		},
+		MuiInputBase: {
+			variants: [
+				{
+					props: { size: 'small' },
+					style: {
+						fontSize: 12,
+					},
+				},
+			],
+		},
+		MuiInputLabel: {
+			variants: [
+				{
+					props: { size: 'small' },
+					style: {
+						top: 3,
+						fontSize: 12,
+					},
+				},
+			],
+		},
+		MuiInput: {
+			styleOverrides: {
+				underline: {
+					'&.MuiInputBase-sizeSmall': {
+						paddingBottom: '6px',
+					},
+				},
+			},
+		},
 		MuiOutlinedInput: {
 			styleOverrides: {
 				input: {

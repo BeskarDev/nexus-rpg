@@ -24,9 +24,11 @@ export const EquipmentRow: React.FC<EquipmentRowProps> = ({
 			</Typography>
 			<Box
 				sx={{
+					width: '100%',
 					display: 'flex',
 					alignItems: 'center',
 					flexWrap: 'wrap',
+					columnGap: 1,
 					pb: 1,
 				}}
 			>
@@ -38,7 +40,7 @@ export const EquipmentRow: React.FC<EquipmentRowProps> = ({
 					}
 					onBlur={() => updateEquipment({ name: equipment.name })}
 					label="Name"
-					sx={{ maxWidth: '12rem', flexGrow: 1 }}
+					sx={{ maxWidth: { sm: '12rem', xs: '100%' }, flexGrow: 1 }}
 				/>
 				<TextField
 					variant="standard"
@@ -51,7 +53,7 @@ export const EquipmentRow: React.FC<EquipmentRowProps> = ({
 					}
 					onBlur={() => updateEquipment({ properties: equipment.properties })}
 					label="Properties"
-					sx={{ maxWidth: '16rem', flexGrow: 1 }}
+					sx={{ maxWidth: { sm: '16rem', xs: '100%' }, flexGrow: 1 }}
 					inputProps={{ sx: { fontSize: 12 } }}
 				/>
 				<AttributeField
@@ -62,7 +64,7 @@ export const EquipmentRow: React.FC<EquipmentRowProps> = ({
 						updateEquipment({ cost: Number(event.target.value) })
 					}
 					label="Cost"
-					sx={{ maxWidth: '8rem', flexGrow: 0 }}
+					sx={{ maxWidth: '6rem', flexGrow: 0 }}
 					inputProps={{
 						sx: {
 							textAlign: 'right',

@@ -62,12 +62,10 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 	}
 
 	const onSpellReorder = ({ source, destination }: DropResult) => {
-		console.log('reorder spell from', source, destination)
 		// dropped outside the list
 		if (!destination) return
 
 		const newSpells = reorder(spells, source.index, destination.index)
-		console.log('new spells', newSpells)
 		return updateCharacter({
 			spells: { magicSkill, specialization, focus, spells: newSpells },
 		})
