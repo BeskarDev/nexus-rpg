@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material'
+import { deepCopy } from '@site/src/components/DynamicList/utils'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
@@ -68,7 +69,10 @@ export const CharacterSheetContainer: React.FC = () => {
 	const updateCharacter = (update: DeepPartial<Character>) => {
 		setUnsavedChanges(true)
 		setActiveCharacter((prevCharacter) => {
-			const newCharacter = { ...prevCharacter }
+			const newCharacter: CharacterDocument = {
+				...deepCopy<CharacterDocument>(prevCharacter),
+				docRef: prevCharacter.docRef,
+			}
 
 			function mergeDeep(target: any, source: any) {
 				if (isObject(target) && isObject(source)) {
