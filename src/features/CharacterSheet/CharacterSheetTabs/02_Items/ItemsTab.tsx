@@ -4,6 +4,7 @@ import {
 	AccordionSummary,
 	Box,
 	IconButton,
+	Theme,
 	Tooltip,
 } from '@mui/material'
 import React, { useMemo } from 'react'
@@ -136,6 +137,15 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 		})
 	}
 
+	const getLoadColor = (theme: Theme) => {
+		if (currentLoad >= encumbrance.overencumberedAt) {
+			return theme.palette.error.main
+		} else if (currentLoad >= encumbrance.encumberedAt) {
+			return theme.palette.warning.main
+		}
+		return theme.palette.common.white
+	}
+
 	return (
 		<Box
 			sx={{
@@ -145,7 +155,13 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 			}}
 		>
 			<Box
-				sx={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', mb: 1 }}
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					flexWrap: 'wrap',
+					mb: 1,
+					columnGap: 1,
+				}}
 			>
 				<AttributeField
 					type="number"
@@ -156,7 +172,6 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 					}
 					label="Coins"
 					sx={{
-						mr: 1,
 						maxWidth: '12rem',
 						'& .MuiOutlinedInput-root': {
 							'& .MuiOutlinedInput-notchedOutline': {
@@ -176,10 +191,17 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 					value={currentLoad}
 					label="Current Load"
 					sx={{
-						mr: 1,
 						maxWidth: '7rem',
+						'& .MuiFormLabel-root.MuiInputLabel-root.Mui-disabled': {
+							color: (theme) => getLoadColor(theme),
+						},
 						'& .MuiOutlinedInput-root': {
+							'& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled': {
+								color: (theme) => getLoadColor(theme),
+								['-webkit-text-fill-color']: (theme) => getLoadColor(theme),
+							},
 							'& .MuiOutlinedInput-notchedOutline': {
+								borderColor: (theme) => getLoadColor(theme),
 								borderWidth: '2px',
 							},
 						},
@@ -199,7 +221,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 					label="Encumbered"
 					helperText="2 * STR"
 					sx={{
-						maxWidth: '6.5rem',
+						maxWidth: '5rem',
 					}}
 				/>
 				<AttributeField
@@ -216,8 +238,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 					label="Overencumbered"
 					helperText="3 * STR"
 					sx={{
-						maxWidth: '7.5rem',
-						mr: 1,
+						maxWidth: '6rem',
 					}}
 				/>
 				<Tooltip
@@ -231,13 +252,13 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 						</>
 					}
 				>
-					<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+					<HelpOutline fontSize="small" sx={{ mt: 1, mb: 'auto' }} />
 				</Tooltip>
 			</Box>
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion sx={{ maxWidth: '56rem', flexGrow: 1, mb: 1 }}>
+			<Accordion sx={{ maxWidth: '60rem', flexGrow: 1, mb: 1 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 						<SectionHeader>Weapons</SectionHeader>
@@ -282,7 +303,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion sx={{ maxWidth: '30rem', flexGrow: 1, mb: 2 }}>
+			<Accordion sx={{ maxWidth: '31rem', flexGrow: 1, mb: 2 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<SectionHeader>Equipment</SectionHeader>
 				</AccordionSummary>
@@ -420,7 +441,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 				</AccordionDetails>
 			</Accordion>
 
-			<Accordion sx={{ maxWidth: '35rem', flexGrow: 1, mb: 2 }}>
+			<Accordion sx={{ maxWidth: '38rem', flexGrow: 1, mb: 2 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 						<SectionHeader>Items</SectionHeader>

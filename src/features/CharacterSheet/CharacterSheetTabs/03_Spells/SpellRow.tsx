@@ -30,14 +30,13 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 		<Box
 			sx={{
 				display: 'flex',
-				alignItems: 'center',
+				alignItems: 'baseline',
 				flexWrap: 'wrap',
 				pb: 1,
 				columnGap: 1,
 			}}
 		>
 			<AttributeField
-				size="small"
 				type="number"
 				value={initialSpell.rank}
 				onChange={(event) => updateSpell({ rank: Number(event.target.value) })}
@@ -54,11 +53,10 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 			/>
 			<AttributeField
 				disabled
-				size="small"
 				type="number"
 				value={spellCost}
 				label="Cost"
-				sx={{ maxWidth: '5rem', flexGrow: 0 }}
+				sx={{ maxWidth: '4rem', flexGrow: 0 }}
 			/>
 			<TextField
 				variant="standard"
@@ -71,6 +69,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				sx={{ maxWidth: { sm: '14rem', xs: '100%' }, flexGrow: 1 }}
 			/>
 			<TextField
+				size="small"
 				variant="standard"
 				multiline
 				minRows={1}
@@ -82,7 +81,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				onBlur={() => updateSpell({ properties: spell.properties })}
 				label="Properties"
 				sx={{ maxWidth: { sm: '12rem', xs: '100%' }, flexGrow: 1 }}
-				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<AttributeField
 				size="small"
@@ -93,7 +91,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				onBlur={() => updateSpell({ target: spell.target })}
 				label="Target"
 				sx={{ maxWidth: '7rem', flexGrow: 0 }}
-				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<AttributeField
 				size="small"
@@ -104,7 +101,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				onBlur={() => updateSpell({ range: spell.range })}
 				label="Range"
 				sx={{ maxWidth: '7rem', flexGrow: 0 }}
-				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<TextField
 				size="small"
@@ -117,14 +113,14 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}
 				onBlur={() => updateSpell({ effect: spell.effect })}
 				label="Effect"
-				sx={{ maxWidth: '51.5rem' }}
-				inputProps={{ sx: { fontSize: 12 } }}
+				sx={{ maxWidth: '50.5rem' }}
 			/>
 			<IconButton
 				size="small"
 				edge="end"
 				aria-label="delete"
 				onClick={deleteSpell}
+				sx={{ my: 'auto' }}
 			>
 				<Delete />
 			</IconButton>

@@ -21,9 +21,11 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 	return (
 		<Box
 			sx={{
+				width: '100%',
 				display: 'flex',
 				alignItems: 'center',
 				flexWrap: 'wrap',
+				columnGap: 1,
 				pb: 1,
 			}}
 		>
@@ -35,7 +37,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 				}
 				onBlur={() => updateItem({ name: item.name })}
 				label="Name"
-				sx={{ maxWidth: '13rem', flexGrow: 1 }}
+				sx={{ maxWidth: { sm: '13rem', xs: '100%' }, flexGrow: 1 }}
 			/>
 			<TextField
 				variant="standard"
@@ -48,7 +50,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 				}
 				onBlur={() => updateItem({ properties: item.properties })}
 				label="Properties"
-				sx={{ maxWidth: '20rem', flexGrow: 1 }}
+				sx={{ maxWidth: { sm: '20rem', xs: '100%' }, flexGrow: 1 }}
 				inputProps={{ sx: { fontSize: 12 } }}
 			/>
 			<AttributeField
@@ -57,7 +59,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 				value={initialItem.cost}
 				onChange={(event) => updateItem({ cost: Number(event.target.value) })}
 				label="Cost"
-				sx={{ maxWidth: '8rem', flexGrow: 0 }}
+				sx={{ maxWidth: '6rem', flexGrow: 0 }}
 				inputProps={{
 					sx: {
 						textAlign: 'right',
@@ -78,7 +80,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 				value={initialItem.amount}
 				onChange={(event) => updateItem({ amount: Number(event.target.value) })}
 				label="Amount"
-				sx={{ maxWidth: '6rem', flexGrow: 0 }}
+				sx={{ maxWidth: '4rem', flexGrow: 0 }}
 			/>
 			<IconButton
 				size="small"
