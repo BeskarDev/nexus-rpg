@@ -6,7 +6,7 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material'
-import React, { useMemo } from 'react'
+import React, { useId, useMemo } from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
@@ -55,6 +55,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 	const addNewWeapon = () => {
 		weapons.push({
+			id: useId(),
 			name: 'new weapon',
 			damage: '',
 			properties: '',
@@ -84,6 +85,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 	const addNewItem = () => {
 		items.push({
+			id: useId(),
 			name: 'new item',
 			properties: '',
 			cost: 0,
@@ -244,7 +246,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 				>
 					{weapons.map((w, index) => (
 						<WeaponRow
-							key={w.name + index}
+							key={w.id}
 							weapon={w}
 							updateWeapon={(update) => updateWeapon(update, index)}
 							deleteWeapon={() => deleteWeapon(w)}
@@ -413,7 +415,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 				>
 					{items.map((i, index) => (
 						<ItemRow
-							key={i.name + index}
+							key={i.id}
 							item={i}
 							updateItem={(update) => updateItem(update, index)}
 							deleteItem={() => deleteItem(i)}
