@@ -89,10 +89,10 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 	const deleteWeapon = (weapon: Weapon) => {
 		const newWeapons = [...weapons].filter((s) => s != weapon)
+		weapons.pop()
 		updateCharacter({
 			items: { weapons: newWeapons },
 		})
-		weapons.pop()
 	}
 
 	const onWeaponReorder = ({ source, destination }: DropResult) => {
@@ -129,10 +129,10 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 	const deleteItem = (item: Item) => {
 		const newItems = [...items].filter((s) => s != item)
+		items.pop()
 		updateCharacter({
 			items: { items: newItems },
 		})
-		items.pop()
 	}
 
 	const onItemReorder = ({ source, destination }: DropResult) => {

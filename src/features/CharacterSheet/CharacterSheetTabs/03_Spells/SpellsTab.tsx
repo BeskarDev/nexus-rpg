@@ -63,10 +63,10 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 
 	const deleteSpell = (spell: Spell) => {
 		const newSpells = [...spells].filter((s) => s != spell)
+		spells.pop()
 		updateCharacter({
 			spells: { spells: newSpells },
 		})
-		spells.pop()
 	}
 
 	const onSpellReorder = ({ source, destination }: DropResult) => {
