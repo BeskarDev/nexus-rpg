@@ -6,6 +6,7 @@ import {
 	Personal,
 	Skills,
 	Spells,
+	Statistics,
 } from '../../../types/Character'
 
 export const migrateDoc = (
@@ -15,6 +16,10 @@ export const migrateDoc = (
 	const updatedDoc = { ...data }
 
 	Object.entries(data).forEach(([key, value]) => {
+		if (key === 'statistics') {
+			updatedDoc.statistics = migrateStatistics(value)
+			return
+		}
 		if (key === 'skills') {
 			updatedDoc.skills = migrateSkills(value)
 			return
@@ -39,6 +44,40 @@ export const migrateDoc = (
 		...(updatedDoc as Character),
 	}
 	return migratedDoc
+}
+
+const migrateStatistics = (data: any): Statistics => {
+	return {
+		...data,
+		strength: {
+			...data.strength,
+			value:
+				typeof data.strength.value === 'string'
+					? Number(data.strength.value.split('d')[1])
+					: data.strength.value,
+		},
+		agility: {
+			...data.agility,
+			value:
+				typeof data.agility.value === 'string'
+					? Number(data.agility.value.split('d')[1])
+					: data.agility.value,
+		},
+		spirit: {
+			...data.spirit,
+			value:
+				typeof data.spirit.value === 'string'
+					? Number(data.spirit.value.split('d')[1])
+					: data.spirit.value,
+		},
+		mind: {
+			...data.mind,
+			value:
+				typeof data.mind.value === 'string'
+					? Number(data.mind.value.split('d')[1])
+					: data.mind.value,
+		},
+	} as Statistics
 }
 
 const migrateSkills = (data: any): Skills => {

@@ -1,8 +1,12 @@
 import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
-import { Box, Checkbox } from '@mui/material'
+import { Box, Checkbox, MenuItem } from '@mui/material'
+import {
+	Attribute,
+	AttributeType,
+	attributeTypeArray,
+} from '@site/src/types/Character'
 import React from 'react'
-import { Attribute } from '../../../types/Character'
-import { AttributeField } from '../CharacterSheet'
+import { AttributeField } from '../../CharacterSheet'
 
 export type AttributeColumnProps = {
 	attribute: Attribute
@@ -24,10 +28,24 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 			}}
 		>
 			<AttributeField
+				select
 				value={attribute.value}
-				onChange={(event) => updateAttribute({ value: event.target.value })}
+				onChange={(event) =>
+					updateAttribute({
+						value: Number(event.target.value) as AttributeType,
+					})
+				}
 				label={label}
-			/>
+				sx={{
+					width: '6rem',
+				}}
+			>
+				{attributeTypeArray.map((at) => (
+					<MenuItem key={at} value={at}>
+						d{at}
+					</MenuItem>
+				))}
+			</AttributeField>
 			<Checkbox
 				size="small"
 				icon={<HeartBrokenOutlined />}

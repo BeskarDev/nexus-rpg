@@ -67,6 +67,7 @@ export const CharacterSheetContainer: React.FC = () => {
 	}, [activeCharacterId])
 
 	const updateCharacter = (update: DeepPartial<Character>) => {
+		const copiedUpdate = deepCopy(update)
 		setUnsavedChanges(true)
 		setActiveCharacter((prevCharacter) => {
 			const newCharacter: CharacterDocument = {
@@ -92,7 +93,7 @@ export const CharacterSheetContainer: React.FC = () => {
 				return target
 			}
 
-			return mergeDeep(newCharacter, update)
+			return mergeDeep(newCharacter, copiedUpdate)
 		})
 	}
 
