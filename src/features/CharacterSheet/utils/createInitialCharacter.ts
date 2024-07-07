@@ -44,19 +44,19 @@ export const createInitialCharacter = (name: string): Character => ({
 			other: 0,
 		},
 		strength: {
-			value: '',
+			value: 6,
 			wounded: false,
 		},
 		agility: {
-			value: '',
+			value: 6,
 			wounded: false,
 		},
 		spirit: {
-			value: '',
+			value: 6,
 			wounded: false,
 		},
 		mind: {
-			value: '',
+			value: 6,
 			wounded: false,
 		},
 		parry: 0,

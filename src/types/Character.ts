@@ -65,9 +65,12 @@ export type Wound = {
 }
 
 export type Attribute = {
-	value: string
+	value: AttributeType
 	wounded: boolean
 }
+
+export const attributeTypeArray = [4, 6, 8, 10, 12] as const
+export type AttributeType = (typeof attributeTypeArray)[number]
 
 export type Skills = {
 	xp: {

@@ -5,7 +5,7 @@ import { Character } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 
-import { AttributeColumn } from '../AttributeColumn'
+import { AttributeColumn } from './AttributeColumn'
 import { RestingButtonGroup } from './RestingButtonGroup'
 import { WoundCheckbox } from './WoundCheckbox'
 

@@ -18,8 +18,8 @@ export const theme = createTheme({
 			styleOverrides: {
 				input: {
 					'&.Mui-disabled': {
-						color: 'white',
-						['-webkit-text-fill-color']: 'white',
+						color: 'var(--mui-palette-text-primary)',
+						['-webkit-text-fill-color']: 'var(--mui-palette-text-primary)',
 					},
 				},
 			},
@@ -56,8 +56,8 @@ export const theme = createTheme({
 			styleOverrides: {
 				input: {
 					'&.Mui-disabled': {
-						color: 'white',
-						['-webkit-text-fill-color']: 'white',
+						color: 'var(--mui-palette-text-primary)',
+						['-webkit-text-fill-color']: 'var(--mui-palette-text-primary)',
 					},
 				},
 			},
