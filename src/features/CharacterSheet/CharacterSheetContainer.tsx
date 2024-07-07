@@ -71,7 +71,7 @@ export const CharacterSheetContainer: React.FC = () => {
 		setUnsavedChanges(true)
 		setActiveCharacter((prevCharacter) => {
 			const newCharacter: CharacterDocument = {
-				...deepCopy<CharacterDocument>(prevCharacter),
+				...prevCharacter,
 				docRef: prevCharacter.docRef,
 			}
 

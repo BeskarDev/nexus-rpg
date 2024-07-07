@@ -40,12 +40,12 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 	const deleteAlly = (index: number) => {
 		const newAllies = [...allies].filter((_, i) => i != index)
+		allies.pop()
 		updateCharacter({
 			personal: {
 				allies: newAllies,
 			},
 		})
-		allies.pop()
 	}
 
 	const onAllyReorder = ({ source, destination }: DropResult) => {
@@ -75,12 +75,12 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 	const deleteContact = (index: number) => {
 		const newContacts = [...contacts].filter((_, i) => i != index)
+		contacts.pop()
 		updateCharacter({
 			personal: {
 				contacts: newContacts,
 			},
 		})
-		contacts.pop()
 	}
 
 	const onContactReorder = ({ source, destination }: DropResult) => {
@@ -110,12 +110,12 @@ export const PersonalTab: React.FC<PersonalTabProps> = ({
 
 	const deleteRival = (index: number) => {
 		const newRivals = [...rivals].filter((_, i) => i != index)
+		rivals.pop()
 		updateCharacter({
 			personal: {
 				rivals: newRivals,
 			},
 		})
-		rivals.pop()
 	}
 
 	const onRivalReorder = ({ source, destination }: DropResult) => {

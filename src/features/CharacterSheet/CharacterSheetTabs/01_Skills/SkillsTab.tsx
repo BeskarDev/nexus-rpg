@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import React, { useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
-import { Character, Skill } from '../../../../types/Character'
+import { Ability, Character, Skill } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 
@@ -54,17 +54,18 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 	const updateSkill = (update: Partial<Skill>, index: number) => {
 		const newSkills = [...skills]
 		newSkills[index] = { ...skills[index], ...update }
+		skills[index] = newSkills[index]
 		return updateCharacter({
 			skills: { skills: newSkills },
 		})
 	}
 
 	const deleteSkill = (skill: Skill) => {
-		const newSkills = [...skills].filter((s) => s != skill)
+		const newSkills = [...skills].filter((s) => s.id !== skill.id)
+		skills.pop()
 		updateCharacter({
 			skills: { xp, skills: newSkills, abilities },
 		})
-		skills.pop()
 	}
 
 	const onSkillReorder = ({ source, destination }: DropResult) => {
@@ -91,12 +92,12 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 		})
 	}
 
-	const deleteAbility = (index: number) => {
-		const newAbilities = [...abilities].filter((_, i) => i != index)
+	const deleteAbility = (ability: Ability) => {
+		const newAbilities = [...abilities].filter((a) => a.id !== ability.id)
+		abilities.pop()
 		updateCharacter({
 			skills: { xp, skills, abilities: newAbilities },
 		})
-		abilities.pop()
 	}
 
 	const onAbilityReorder = ({ source, destination }: DropResult) => {
@@ -189,7 +190,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 									key={a.id}
 									ability={a.description}
 									updateAbility={(update) => updateAbility(update, index)}
-									deleteAbility={() => deleteAbility(index)}
+									deleteAbility={() => deleteAbility(a)}
 								/>
 							</DynamicListItem>
 						))}
