@@ -11,12 +11,13 @@ import React, { useMemo } from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { DropResult } from 'react-beautiful-dnd'
+import { Character, Item, Weapon } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
-import { Character, Item, Weapon } from '../../types/Character'
 
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
+import { deepCopy } from '@site/src/components/DynamicList/utils'
 import { EquipmentRow } from './EquipmentRow'
 import { ItemRow } from './ItemRow'
 import { WeaponRow } from './WeaponRow'
@@ -61,7 +62,14 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 		weapons.splice(0, 0, {
 			id: crypto.randomUUID(),
 			name: 'new weapon',
-			damage: '',
+			damage: {
+				base: 0,
+				weapon: 0,
+				otherWeak: 0,
+				otherStrong: 0,
+				otherCritical: 0,
+				type: 'physical',
+			},
 			properties: '',
 			cost: 0,
 			load: 0,
@@ -75,7 +83,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 		const newWeapons = [...weapons]
 		newWeapons[index] = { ...weapons[index], ...update }
 		return updateCharacter({
-			items: { weapons: newWeapons },
+			items: { weapons: deepCopy(newWeapons) },
 		})
 	}
 
@@ -258,7 +266,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion sx={{ maxWidth: '60rem', flexGrow: 1, mb: 1 }}>
+			<Accordion sx={{ maxWidth: '65rem', flexGrow: 1, mb: 1 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 						<SectionHeader>Weapons</SectionHeader>

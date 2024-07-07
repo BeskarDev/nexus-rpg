@@ -1,5 +1,5 @@
 import { DocumentData, DocumentSnapshot } from 'firebase/firestore'
-import { Character, CharacterDocument } from '../types/Character'
+import { Character, CharacterDocument } from '../../../types/Character'
 
 export const mapDocToCharacter = (
 	doc: DocumentSnapshot<DocumentData, DocumentData>,

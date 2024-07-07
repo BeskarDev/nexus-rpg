@@ -114,11 +114,34 @@ export type Items = {
 export type Weapon = {
 	id: string
 	name: string
-	damage: string
+	damage: Damage
 	properties: string
 	cost: number
 	load: number
 }
+
+export type Damage = {
+	base: number
+	weapon: number
+	otherWeak: number
+	otherStrong: number
+	otherCritical: number
+	type: DamageType
+}
+
+export const damageTypeArray = [
+	'acid',
+	'blast',
+	'fire',
+	'frost',
+	'lighting',
+	'necrotic',
+	'psychic',
+	'physical',
+	'poison',
+	'radiant',
+] as const
+export type DamageType = (typeof damageTypeArray)[number]
 
 export type Equipment = {
 	name: string
@@ -150,5 +173,6 @@ export type Spell = {
 	target: string
 	range: string
 	properties: string
+	damage: Damage
 	effect: string
 }

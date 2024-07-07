@@ -9,9 +9,9 @@ import {
 } from '@mui/material'
 import React, { useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
+import { Character, Skill } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
-import { Character, Skill } from '../../types/Character'
 
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'

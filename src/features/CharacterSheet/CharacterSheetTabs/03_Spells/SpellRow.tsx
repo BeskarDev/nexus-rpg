@@ -2,8 +2,9 @@ import { Box, IconButton, TextField } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
+import { Spell } from '../../../../types/Character'
 import { AttributeField } from '../../CharacterSheet'
-import { Spell } from '../../types/Character'
+import { DamageFields } from '../DamageFields'
 
 export type SpellRowProps = {
 	spell: Spell
@@ -34,6 +35,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				flexWrap: 'wrap',
 				pb: 1,
 				columnGap: 1,
+				maxWidth: '47rem',
 			}}
 		>
 			<AttributeField
@@ -66,7 +68,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}
 				onBlur={() => updateSpell({ name: spell.name })}
 				label="Name"
-				sx={{ maxWidth: { sm: '14rem', xs: '100%' }, flexGrow: 1 }}
+				sx={{ maxWidth: { sm: '16rem', xs: '100%' }, flexGrow: 1 }}
 			/>
 			<TextField
 				size="small"
@@ -80,8 +82,9 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}
 				onBlur={() => updateSpell({ properties: spell.properties })}
 				label="Properties"
-				sx={{ maxWidth: { sm: '12rem', xs: '100%' }, flexGrow: 1 }}
+				sx={{ maxWidth: { sm: '14rem', xs: '100%' }, flexGrow: 1 }}
 			/>
+			<Box sx={{ width: '100%', flexGrow: 1 }} />
 			<AttributeField
 				size="small"
 				value={spell.target}
@@ -102,6 +105,13 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				label="Range"
 				sx={{ maxWidth: '7rem', flexGrow: 0 }}
 			/>
+			<DamageFields
+				type="spell"
+				damage={initialSpell.damage}
+				updateDamage={(update) =>
+					updateSpell({ damage: { ...initialSpell.damage, ...update } })
+				}
+			/>
 			<TextField
 				size="small"
 				multiline
@@ -113,7 +123,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				}
 				onBlur={() => updateSpell({ effect: spell.effect })}
 				label="Effect"
-				sx={{ maxWidth: '50.5rem' }}
+				sx={{ maxWidth: '40rem' }}
 			/>
 			<IconButton
 				size="small"

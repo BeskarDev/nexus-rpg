@@ -6,7 +6,7 @@ import {
 	Personal,
 	Skills,
 	Spells,
-} from '../types/Character'
+} from '../../../types/Character'
 
 export const migrateDoc = (
 	doc: DocumentSnapshot<DocumentData, DocumentData>,
@@ -65,6 +65,17 @@ const migrateItems = (data: any): Items => {
 		weapons: data.weapons.map((weapon) => ({
 			...weapon,
 			id: weapon.id || crypto.randomUUID(),
+			damage:
+				typeof weapon.damage === 'string'
+					? {
+							base: 0,
+							weapon: 0,
+							otherWeak: 0,
+							otherStrong: 0,
+							otherCritical: 0,
+							type: 'physical',
+						}
+					: weapon.damage,
 		})),
 		items: data.items.map((item) => ({
 			...item,
@@ -79,6 +90,17 @@ const migrateSpells = (data: any): Spells => {
 		spells: data.spells.map((spell) => ({
 			...spell,
 			id: spell.id || crypto.randomUUID(),
+			damage:
+				spell.damage === undefined
+					? {
+							base: 0,
+							weapon: 0,
+							otherWeak: 0,
+							otherStrong: 0,
+							otherCritical: 0,
+							type: 'physical',
+						}
+					: spell.damage,
 		})),
 	} as Spells
 }

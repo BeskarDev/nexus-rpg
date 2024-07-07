@@ -12,7 +12,7 @@ import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { collection, deleteDoc, getDocs, query } from 'firebase/firestore'
 import React, { useEffect } from 'react'
-import { CharacterDocument } from '../types/Character'
+import { CharacterDocument } from '../../../types/Character'
 import { mapDocToCharacter } from '../utils/mapDocToCharacter'
 import { DeleteButton } from './DeleteButton'
 

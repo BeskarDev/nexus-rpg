@@ -2,8 +2,9 @@ import { Box, IconButton, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
+import { Weapon } from '../../../../types/Character'
 import { AttributeField } from '../../CharacterSheet'
-import { Weapon } from '../../types/Character'
+import { DamageFields } from '../DamageFields'
 
 export type WeaponRowProps = {
 	weapon: Weapon
@@ -42,17 +43,12 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 					flexGrow: 1,
 				}}
 			/>
-			<TextField
-				variant="standard"
-				value={weapon.damage}
-				onChange={(event) =>
-					setWeapon((w) => ({ ...w, damage: event.target.value }))
+			<DamageFields
+				type="weapon"
+				damage={initialWeapon.damage}
+				updateDamage={(update) =>
+					updateWeapon({ damage: { ...initialWeapon.damage, ...update } })
 				}
-				onBlur={() => updateWeapon({ damage: weapon.damage })}
-				label="Damage"
-				sx={{
-					maxWidth: { sm: '7rem', xs: '100%' },
-				}}
 			/>
 			<TextField
 				variant="standard"

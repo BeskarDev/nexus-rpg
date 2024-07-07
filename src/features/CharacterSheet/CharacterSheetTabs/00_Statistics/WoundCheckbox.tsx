@@ -6,7 +6,7 @@ import {
 } from '@mui/icons-material'
 import { Box, Checkbox } from '@mui/material'
 import React from 'react'
-import { Wound } from '../../types/Character'
+import { Wound } from '../../../../types/Character'
 
 export type WoundCheckbox = Wound & {
 	setWound: (wound: Partial<Wound>) => void

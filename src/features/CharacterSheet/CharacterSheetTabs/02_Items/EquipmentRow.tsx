@@ -1,8 +1,8 @@
 import { Box, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
+import { Equipment } from '../../../../types/Character'
 import { AttributeField } from '../../CharacterSheet'
-import { Equipment } from '../../types/Character'
 
 export type EquipmentRowProps = {
 	label: string

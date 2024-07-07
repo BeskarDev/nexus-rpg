@@ -15,8 +15,8 @@ import {
 	SvgIcon,
 } from '@mui/material'
 import React, { useState } from 'react'
+import { Character } from '../../../../types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
-import { Character } from '../../types/Character'
 
 export type RestingButtonGroupProps = {
 	character: Character
