@@ -1,6 +1,7 @@
 import { useColorMode } from '@docusaurus/theme-common'
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
 import React from 'react'
+import { Character } from '../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { SkillsTab } from './CharacterSheetTabs/01_Skills/SkillsTab'
@@ -8,7 +9,6 @@ import { ItemsTab } from './CharacterSheetTabs/02_Items/ItemsTab'
 import { SpellsTab } from './CharacterSheetTabs/03_Spells/SpellsTab'
 import { PersonalTab } from './CharacterSheetTabs/04_Personal/PersonalTab'
 import { SharedNotes } from './CharacterSheetTabs/05_SharedNotes/SharedNotes'
-import { Character } from './types/Character'
 import { useDeviceSize } from './utils/useDeviceSize'
 
 export const AttributeField = styled(TextField)({

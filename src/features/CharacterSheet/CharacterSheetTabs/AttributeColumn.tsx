@@ -1,8 +1,8 @@
 import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
 import { Box, Checkbox } from '@mui/material'
 import React from 'react'
+import { Attribute } from '../../../types/Character'
 import { AttributeField } from '../CharacterSheet'
-import { Attribute } from '../types/Character'
 
 export type AttributeColumnProps = {
 	attribute: Attribute

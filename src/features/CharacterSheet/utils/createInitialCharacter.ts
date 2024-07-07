@@ -1,4 +1,4 @@
-import { Character } from '../types/Character'
+import { Character } from '../../../types/Character'
 
 export const createInitialCharacter = (name: string): Character => ({
 	personal: {

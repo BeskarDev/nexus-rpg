@@ -2,8 +2,8 @@ import { Box, IconButton, TextField } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
+import { Item } from '../../../../types/Character'
 import { AttributeField } from '../../CharacterSheet'
-import { Item } from '../../types/Character'
 
 export type ItemRowProps = {
 	item: Item

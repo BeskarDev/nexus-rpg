@@ -13,9 +13,9 @@ import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
+import { Character, Spell } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
-import { Character, Spell } from '../../types/Character'
 import { SpellRow } from './SpellRow'
 
 export type SpellsTabProps = {
@@ -38,6 +38,14 @@ export const SpellsTab: React.FC<SpellsTabProps> = ({
 			target: '',
 			range: '',
 			properties: '',
+			damage: {
+				base: 0,
+				weapon: 0,
+				otherWeak: 0,
+				otherStrong: 0,
+				otherCritical: 0,
+				type: 'physical',
+			},
 			effect: '',
 		})
 		updateCharacter({

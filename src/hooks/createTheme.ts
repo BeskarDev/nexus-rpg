@@ -15,6 +15,14 @@ export const theme = createTheme({
 			},
 		},
 		MuiInputBase: {
+			styleOverrides: {
+				input: {
+					'&.Mui-disabled': {
+						color: 'white',
+						['-webkit-text-fill-color']: 'white',
+					},
+				},
+			},
 			variants: [
 				{
 					props: { size: 'small' },

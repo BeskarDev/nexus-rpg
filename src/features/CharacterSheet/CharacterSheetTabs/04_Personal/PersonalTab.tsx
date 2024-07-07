@@ -5,9 +5,9 @@ import { AddCircle } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
+import { Character } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
-import { Character } from '../../types/Character'
 import { AbilityRow } from '../AbilityRow'
 
 export type PersonalTabProps = {
