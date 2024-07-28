@@ -28,6 +28,7 @@
 		"@mui/icons-material": "^5.15.20",
 		"@mui/lab": "^5.0.0-alpha.170",
 		"@mui/material": "^5.14.6",
+		"@reduxjs/toolkit": "^2.2.7",
 		"clsx": "^1.2.1",
 		"docusaurus-plugin-dotenv": "^1.0.1",
 		"docusaurus-plugin-image-zoom": "^1.0.1",
@@ -40,6 +41,7 @@
 		"react-device-detect": "^2.2.3",
 		"react-dom": "^18.2.0",
 		"react-firebaseui": "^6.0.0",
+		"react-redux": "^9.1.2",
 		"react-to-print": "^2.15.1"
 	},
 	"devDependencies": {
