@@ -5,23 +5,23 @@ import { AddCircle } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
-import { Character } from '../../../../types/Character'
+import { CharacterDocument } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
+import { characterSheetActions } from '../../characterSheetReducer'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { AbilityRow } from '../AbilityRow'
 
-export type PersonalTabProps = {
-	character: Character
-	updateCharacter: (update: DeepPartial<Character>) => void
-}
+export const PersonalTab: React.FC = () => {
+	const dispatch = useAppDispatch()
+	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
+	const { allies, contacts, rivals } = activeCharacter.personal
+	const [personal, setPersonal] = useState(activeCharacter.personal)
 
-export const PersonalTab: React.FC<PersonalTabProps> = ({
-	character,
-	updateCharacter,
-}) => {
-	const { allies, contacts, rivals } = character.personal
-
-	const [personal, setPersonal] = useState(character.personal)
+	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
+		dispatch(characterSheetActions.updateCharacter(update))
+	}
 
 	const addNewAlly = () => {
 		allies.splice(0, 0, { id: crypto.randomUUID(), description: '' })

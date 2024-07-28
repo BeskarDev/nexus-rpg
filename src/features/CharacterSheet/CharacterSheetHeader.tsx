@@ -18,28 +18,26 @@ import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { addDoc, collection } from 'firebase/firestore'
 import React from 'react'
+import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
 import { createInitialCharacter } from './utils/createInitialCharacter'
 
 const MAX_NAME_LENGTH = 1_000
 
 export type CharacterSheetHeaderProps = {
-	active: boolean
-	activeName?: string
-	unsavedChanges: boolean
 	saveCharacter: () => void
-	loadingSave: boolean
 }
 
 export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
-	active,
-	activeName,
-	unsavedChanges,
 	saveCharacter,
-	loadingSave,
 }) => {
 	const { userLoggedIn, currentUser } = useAuth()
 	const { colorMode } = useColorMode()
+
+	const { activeCharacter, loadingSave, unsavedChanges } = useAppSelector(
+		(state) => state.characterSheet,
+	)
+
 	const [open, setOpen] = React.useState(false)
 	const [name, setName] = React.useState('')
 
@@ -87,7 +85,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					mb: 2,
 				}}
 			>
-				{active && (
+				{activeCharacter !== undefined && (
 					<Link href={window.location.href.split('?')[0]}>
 						<IconButton>
 							<Reply />
@@ -102,11 +100,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						textOverflow: 'ellipsis',
 					}}
 				>
-					{!active && 'Your Characters'}
-					{active && activeName}
+					{activeCharacter === undefined && 'Your Characters'}
+					{activeCharacter !== undefined && activeCharacter.personal.name}
 				</Typography>
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
-					{!active && (
+					{activeCharacter === undefined && (
 						<Button
 							variant="outlined"
 							size="small"
@@ -116,7 +114,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							new character
 						</Button>
 					)}
-					{active && (
+					{activeCharacter !== undefined && (
 						<IconButton disabled={!unsavedChanges} onClick={saveCharacter}>
 							{loadingSave ? <CircularProgress size={20} /> : <Save />}
 						</IconButton>

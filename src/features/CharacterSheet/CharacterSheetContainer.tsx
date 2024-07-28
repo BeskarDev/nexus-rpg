@@ -1,13 +1,15 @@
 import { Box, Typography } from '@mui/material'
-import { deepCopy } from '@site/src/components/DynamicList/utils'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
-import { Character, CharacterDocument } from '../../types/Character'
+import React, { useEffect } from 'react'
+import { Character } from '../../types/Character'
 import { CharacterList } from './CharacterList'
 import { CharacterSheet } from './CharacterSheet'
 import { CharacterSheetHeader } from './CharacterSheetHeader'
+import { characterSheetActions } from './characterSheetReducer'
+import { useAppDispatch } from './hooks/useAppDispatch'
+import { useAppSelector } from './hooks/useAppSelector'
 import { mapDocToCharacter } from './utils/mapDocToCharacter'
 import { migrateDoc } from './utils/migrateDoc'
 
@@ -19,12 +21,9 @@ export type DeepPartial<T> = {
 
 export const CharacterSheetContainer: React.FC = () => {
 	const { userLoggedIn, currentUser } = useAuth()
-	const [activeCharacter, setActiveCharacter] =
-		useState<CharacterDocument>(undefined)
-	const [unsavedChanges, setUnsavedChanges] = useState(false)
-	const [saveTimeout, setSaveTimeout] = useState(false)
-	const [autosave, setAutosave] = useState(false)
-	const [loadingSave, setLoadingSave] = useState(false)
+	const { activeCharacter, autosave, saveTimeout, unsavedChanges } =
+		useAppSelector((state) => state.characterSheet)
+	const dispatch = useAppDispatch()
 
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
@@ -32,9 +31,9 @@ export const CharacterSheetContainer: React.FC = () => {
 
 	useEffect(() => {
 		if (activeCharacterId && currentUser && unsavedChanges && !saveTimeout) {
-			setSaveTimeout(true)
+			dispatch(characterSheetActions.setSaveTimeout(true))
 			setTimeout(() => {
-				setAutosave(true)
+				dispatch(characterSheetActions.setAutosave(true))
 			}, SAVE_CHARACTER_TIMEOUT)
 		}
 	}, [activeCharacter])
@@ -43,8 +42,8 @@ export const CharacterSheetContainer: React.FC = () => {
 		if (activeCharacterId && currentUser && unsavedChanges && autosave) {
 			console.log('auto save in progress')
 			saveCharacter()
-			setAutosave(false)
-			setSaveTimeout(false)
+			dispatch(characterSheetActions.setAutosave(false))
+			dispatch(characterSheetActions.setSaveTimeout(false))
 		}
 	}, [autosave])
 
@@ -61,68 +60,32 @@ export const CharacterSheetContainer: React.FC = () => {
 					} as Omit<Character, 'docRef' | 'docId'>)
 				}
 
-				setActiveCharacter(migratedCharacter)
+				dispatch(characterSheetActions.setCharacter(migratedCharacter))
 			})
 		}
 	}, [activeCharacterId])
 
 	const updateCharacter = (update: DeepPartial<Character>) => {
-		const copiedUpdate = deepCopy(update)
-		setUnsavedChanges(true)
-		setActiveCharacter((prevCharacter) => {
-			const newCharacter: CharacterDocument = {
-				...prevCharacter,
-				docRef: prevCharacter.docRef,
-			}
-
-			function mergeDeep(target: any, source: any) {
-				if (isObject(target) && isObject(source)) {
-					for (const key in source) {
-						if (isObject(source[key])) {
-							// Recursive call for nested objects
-							target[key] = mergeDeep(target[key] || {}, source[key])
-						} else {
-							// Update value for non-objects
-							target[key] = source[key]
-						}
-					}
-				} else {
-					// Replace entire value if not objects
-					return source
-				}
-				return target
-			}
-
-			return mergeDeep(newCharacter, copiedUpdate)
-		})
-	}
-
-	function isObject(value: any) {
-		return value !== null && typeof value === 'object'
+		dispatch(characterSheetActions.setUnsavedChanges(true))
+		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
 	const saveCharacter = async () => {
 		console.log('about to save character...')
 		if (unsavedChanges) {
-			setLoadingSave(true)
+			dispatch(characterSheetActions.setLoadingSave(true))
 			await updateDoc(activeCharacter.docRef, {
 				...activeCharacter,
 			} as Omit<Character, 'docRef' | 'docId'>)
-			setUnsavedChanges(false)
-			setLoadingSave(false)
+			dispatch(characterSheetActions.setUnsavedChanges(false))
+			dispatch(characterSheetActions.setLoadingSave(false))
 		}
 		console.log('done saving character')
 	}
 
 	return (
 		<>
-			<CharacterSheetHeader
-				active={Boolean(activeCharacterId)}
-				activeName={activeCharacter && activeCharacter.personal.name}
-				unsavedChanges={unsavedChanges}
-				saveCharacter={saveCharacter}
-				loadingSave={loadingSave}
-			/>
+			<CharacterSheetHeader saveCharacter={saveCharacter} />
 			{!userLoggedIn && (
 				<Box
 					sx={{
@@ -136,13 +99,7 @@ export const CharacterSheetContainer: React.FC = () => {
 				</Box>
 			)}
 			{userLoggedIn && !activeCharacterId && <CharacterList />}
-			{userLoggedIn && activeCharacterId && (
-				<CharacterSheet
-					characterId={activeCharacterId}
-					character={activeCharacter}
-					updateCharacter={updateCharacter}
-				/>
-			)}
+			{userLoggedIn && activeCharacterId && <CharacterSheet />}
 		</>
 	)
 }

@@ -9,25 +9,26 @@ import {
 } from '@mui/material'
 import React, { useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
-import { Ability, Character, Skill } from '../../../../types/Character'
+import { Ability, CharacterDocument, Skill } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
-import { DeepPartial } from '../../CharacterSheetContainer'
 
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
+import { DeepPartial } from '../../CharacterSheetContainer'
+import { characterSheetActions } from '../../characterSheetReducer'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { AbilityRow } from '../AbilityRow'
 import { SkillRow } from './SkillRow'
 
-export type SkillsTabProps = {
-	character: Character
-	updateCharacter: (update: DeepPartial<Character>) => void
-}
+export const SkillsTab: React.FC = () => {
+	const dispatch = useAppDispatch()
+	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
+	const { xp, skills, abilities } = activeCharacter.skills
 
-export const SkillsTab: React.FC<SkillsTabProps> = ({
-	character,
-	updateCharacter,
-}) => {
-	const { xp, skills, abilities } = character.skills
+	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
+		dispatch(characterSheetActions.updateCharacter(update))
+	}
 
 	const spendXP = useMemo(() => {
 		const newSpendXP = skills
@@ -37,7 +38,7 @@ export const SkillsTab: React.FC<SkillsTabProps> = ({
 			updateCharacter({ skills: { xp: { spend: newSpendXP } } })
 		}
 		return newSpendXP
-	}, [character])
+	}, [activeCharacter])
 
 	const addNewSkill = () => {
 		skills.splice(0, 0, {
