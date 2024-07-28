@@ -48,7 +48,7 @@ export const CharacterSheetContainer: React.FC = () => {
 	}, [autosave])
 
 	useEffect(() => {
-		if (activeCharacterId && currentUser) {
+		if (activeCharacterId && currentUser && !activeCharacter) {
 			getDoc(doc(db, `${currentUser.uid}/${activeCharacterId}`)).then((doc) => {
 				const character = mapDocToCharacter(doc)
 				const migratedCharacter = migrateDoc(doc)
@@ -63,12 +63,7 @@ export const CharacterSheetContainer: React.FC = () => {
 				dispatch(characterSheetActions.setCharacter(migratedCharacter))
 			})
 		}
-	}, [activeCharacterId])
-
-	const updateCharacter = (update: DeepPartial<Character>) => {
-		dispatch(characterSheetActions.setUnsavedChanges(true))
-		dispatch(characterSheetActions.updateCharacter(update))
-	}
+	}, [activeCharacterId, activeCharacter])
 
 	const saveCharacter = async () => {
 		console.log('about to save character...')
@@ -85,7 +80,10 @@ export const CharacterSheetContainer: React.FC = () => {
 
 	return (
 		<>
-			<CharacterSheetHeader saveCharacter={saveCharacter} />
+			<CharacterSheetHeader
+				activeCharacterId={activeCharacterId}
+				saveCharacter={saveCharacter}
+			/>
 			{!userLoggedIn && (
 				<Box
 					sx={{
@@ -99,7 +97,9 @@ export const CharacterSheetContainer: React.FC = () => {
 				</Box>
 			)}
 			{userLoggedIn && !activeCharacterId && <CharacterList />}
-			{userLoggedIn && activeCharacterId && <CharacterSheet />}
+			{userLoggedIn && activeCharacterId && activeCharacter && (
+				<CharacterSheet />
+			)}
 		</>
 	)
 }

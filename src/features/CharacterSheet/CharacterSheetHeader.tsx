@@ -25,10 +25,12 @@ import { createInitialCharacter } from './utils/createInitialCharacter'
 const MAX_NAME_LENGTH = 1_000
 
 export type CharacterSheetHeaderProps = {
+	activeCharacterId: string
 	saveCharacter: () => void
 }
 
 export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
+	activeCharacterId,
 	saveCharacter,
 }) => {
 	const { userLoggedIn, currentUser } = useAuth()
@@ -85,7 +87,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					mb: 2,
 				}}
 			>
-				{activeCharacter !== undefined && (
+				{activeCharacterId && (
 					<Link href={window.location.href.split('?')[0]}>
 						<IconButton>
 							<Reply />
@@ -100,11 +102,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						textOverflow: 'ellipsis',
 					}}
 				>
-					{activeCharacter === undefined && 'Your Characters'}
-					{activeCharacter !== undefined && activeCharacter.personal.name}
+					{!activeCharacterId && 'Your Characters'}
+					{activeCharacterId && activeCharacter?.personal.name}
 				</Typography>
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
-					{activeCharacter === undefined && (
+					{!activeCharacterId && (
 						<Button
 							variant="outlined"
 							size="small"
@@ -114,7 +116,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							new character
 						</Button>
 					)}
-					{activeCharacter !== undefined && (
+					{activeCharacterId && (
 						<IconButton disabled={!unsavedChanges} onClick={saveCharacter}>
 							{loadingSave ? <CircularProgress size={20} /> : <Save />}
 						</IconButton>
