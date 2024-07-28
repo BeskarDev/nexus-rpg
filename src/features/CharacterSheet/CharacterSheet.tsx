@@ -1,14 +1,13 @@
 import { useColorMode } from '@docusaurus/theme-common'
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
 import React from 'react'
-import { Character } from '../../types/Character'
-import { DeepPartial } from './CharacterSheetContainer'
 import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { SkillsTab } from './CharacterSheetTabs/01_Skills/SkillsTab'
 import { ItemsTab } from './CharacterSheetTabs/02_Items/ItemsTab'
 import { SpellsTab } from './CharacterSheetTabs/03_Spells/SpellsTab'
 import { PersonalTab } from './CharacterSheetTabs/04_Personal/PersonalTab'
 import { SharedNotes } from './CharacterSheetTabs/05_SharedNotes/SharedNotes'
+import { useAppSelector } from './hooks/useAppSelector'
 import { useDeviceSize } from './utils/useDeviceSize'
 
 export const AttributeField = styled(TextField)({
@@ -30,22 +29,14 @@ SectionHeader.defaultProps = {
 	fontWeight: 'bold',
 }
 
-export type CharacterSheetProps = {
-	characterId: string
-	character: Character
-	updateCharacter: (update: DeepPartial<Character>) => void
-}
-
-export const CharacterSheet: React.FC<CharacterSheetProps> = ({
-	characterId,
-	character,
-	updateCharacter,
-}) => {
+export const CharacterSheet: React.FC = () => {
 	const [activeTab, setActiveTab] = React.useState(0)
 	const { isMobile } = useDeviceSize()
 	const { colorMode } = useColorMode()
 
-	if (!character) {
+	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
+
+	if (!activeCharacter) {
 		return undefined
 	}
 
@@ -84,55 +75,27 @@ export const CharacterSheet: React.FC<CharacterSheetProps> = ({
 							<Tab id="5" label="Shared Notes" />
 						</Tabs>
 					</Box>
-					{activeTab === 0 && (
-						<StatisticsTab
-							character={character}
-							updateCharacter={updateCharacter}
-						/>
-					)}
-					{activeTab === 1 && (
-						<SkillsTab
-							character={character}
-							updateCharacter={updateCharacter}
-						/>
-					)}
-					{activeTab === 2 && (
-						<ItemsTab character={character} updateCharacter={updateCharacter} />
-					)}
-					{activeTab === 3 && (
-						<SpellsTab
-							character={character}
-							updateCharacter={updateCharacter}
-						/>
-					)}
-					{activeTab === 4 && (
-						<PersonalTab
-							character={character}
-							updateCharacter={updateCharacter}
-						/>
-					)}
-					{activeTab === 5 && <SharedNotes characterId={characterId} />}
+					{activeTab === 0 && <StatisticsTab />}
+					{activeTab === 1 && <SkillsTab />}
+					{activeTab === 2 && <ItemsTab />}
+					{activeTab === 3 && <SpellsTab />}
+					{activeTab === 4 && <PersonalTab />}
+					{activeTab === 5 && <SharedNotes />}
 				</>
 			)}
 			{!isMobile && (
 				<>
 					<Typography variant="h6">Statistics</Typography>
-					<StatisticsTab
-						character={character}
-						updateCharacter={updateCharacter}
-					/>
+					<StatisticsTab />
 					<Typography variant="h6">Skills</Typography>
-					<SkillsTab character={character} updateCharacter={updateCharacter} />
+					<SkillsTab />
 					<Typography variant="h6">Items</Typography>
-					<ItemsTab character={character} updateCharacter={updateCharacter} />
+					<ItemsTab />
 					<Typography variant="h6">Spells</Typography>
-					<SpellsTab character={character} updateCharacter={updateCharacter} />
+					<SpellsTab />
 					<Typography variant="h6">Personal</Typography>
-					<PersonalTab
-						character={character}
-						updateCharacter={updateCharacter}
-					/>
-					<SharedNotes characterId={characterId} />
+					<PersonalTab />
+					<SharedNotes />
 				</>
 			)}
 		</>

@@ -11,27 +11,29 @@ import React, { useMemo } from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { DropResult } from 'react-beautiful-dnd'
-import { Character, Item, Weapon } from '../../../../types/Character'
+import { CharacterDocument, Item, Weapon } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { deepCopy } from '@site/src/components/DynamicList/utils'
+import { characterSheetActions } from '../../characterSheetReducer'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { EquipmentRow } from './EquipmentRow'
 import { ItemRow } from './ItemRow'
 import { WeaponRow } from './WeaponRow'
 
-export type ItemsTabProps = {
-	character: Character
-	updateCharacter: (update: DeepPartial<Character>) => void
-}
+export const ItemsTab: React.FC = () => {
+	const dispatch = useAppDispatch()
+	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
+	const { coins, encumbrance, weapons, equipment, items } =
+		activeCharacter.items
 
-export const ItemsTab: React.FC<ItemsTabProps> = ({
-	character,
-	updateCharacter,
-}) => {
-	const { coins, encumbrance, weapons, equipment, items } = character.items
+	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
+		dispatch(characterSheetActions.updateCharacter(update))
+	}
 
 	const currentLoad: number = useMemo(() => {
 		const weaponLoad = weapons
@@ -56,7 +58,7 @@ export const ItemsTab: React.FC<ItemsTabProps> = ({
 			})
 		}
 		return newCurrentLoad
-	}, [character])
+	}, [activeCharacter])
 
 	const addNewWeapon = () => {
 		weapons.splice(0, 0, {

@@ -18,13 +18,10 @@ import {
 } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
 
-export type SharedNotesProps = {
-	characterId: string
-}
-
-export const SharedNotes: React.FC<SharedNotesProps> = ({ characterId }) => {
+export const SharedNotes: React.FC = () => {
 	const { currentUser } = useAuth()
 	const { colorMode } = useColorMode()
 	const { isMobile } = useDeviceSize()
@@ -36,6 +33,10 @@ export const SharedNotes: React.FC<SharedNotesProps> = ({ characterId }) => {
 
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState(null)
+
+	const { docId: characterId } = useAppSelector(
+		(state) => state.characterSheet.activeCharacter,
+	)
 
 	useEffect(() => {
 		const fetchData = async () => {

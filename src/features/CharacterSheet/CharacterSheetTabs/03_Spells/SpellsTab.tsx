@@ -13,21 +13,22 @@ import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
-import { Character, Spell } from '../../../../types/Character'
+import { CharacterDocument, Spell } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
+import { characterSheetActions } from '../../characterSheetReducer'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { SpellRow } from './SpellRow'
 
-export type SpellsTabProps = {
-	character: Character
-	updateCharacter: (update: DeepPartial<Character>) => void
-}
+export const SpellsTab: React.FC = () => {
+	const dispatch = useAppDispatch()
+	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
+	const { magicSkill, specialization, focus, spells } = activeCharacter.spells
 
-export const SpellsTab: React.FC<SpellsTabProps> = ({
-	character,
-	updateCharacter,
-}) => {
-	const { magicSkill, specialization, focus, spells } = character.spells
+	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
+		dispatch(characterSheetActions.updateCharacter(update))
+	}
 
 	const addNewSpell = () => {
 		spells.splice(0, 0, {

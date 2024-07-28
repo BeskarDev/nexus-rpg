@@ -1,37 +1,37 @@
 import { Box } from '@mui/material'
 import React, { useMemo } from 'react'
 
-import { Character } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
-import { DeepPartial } from '../../CharacterSheetContainer'
 
+import { CharacterDocument } from '@site/src/types/Character'
+import { DeepPartial } from '../../CharacterSheetContainer'
+import { characterSheetActions } from '../../characterSheetReducer'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
 import { AttributeColumn } from './AttributeColumn'
 import { RestingButtonGroup } from './RestingButtonGroup'
 import { WoundCheckbox } from './WoundCheckbox'
 
-export type StatisticsTabProps = {
-	character: Character
-	updateCharacter: (update: DeepPartial<Character>) => void
-}
-
-export const StatisticsTab: React.FC<StatisticsTabProps> = ({
-	character,
-	updateCharacter,
-}) => {
+export const StatisticsTab: React.FC = () => {
+	const dispatch = useAppDispatch()
+	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const {
-		statistics: {
-			health,
-			av,
-			strength,
-			agility,
-			spirit,
-			mind,
-			parry,
-			dodge,
-			resist,
-			resolve,
-		},
-	} = character
+		health,
+		av,
+		strength,
+		agility,
+		spirit,
+		mind,
+		parry,
+		dodge,
+		resist,
+		resolve,
+	} = activeCharacter.statistics
+
+	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
+		dispatch(characterSheetActions.updateCharacter(update))
+	}
+
 	const totalAV: number = useMemo(
 		() => av.armor + av.helmet + av.shield + av.other,
 		[av.armor + av.helmet + av.shield + av.other],
@@ -55,7 +55,7 @@ export const StatisticsTab: React.FC<StatisticsTabProps> = ({
 				}}
 			>
 				<RestingButtonGroup
-					character={character}
+					character={activeCharacter}
 					updateCharacter={updateCharacter}
 				/>
 			</Box>
