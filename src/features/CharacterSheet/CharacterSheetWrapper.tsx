@@ -12,7 +12,6 @@ import { setupStore } from './store'
 
 export const CharacterSheetWrapper: React.FC = () => {
 	const customTheme = experimental_extendTheme(theme)
-
 	const store = setupStore()
 
 	return (

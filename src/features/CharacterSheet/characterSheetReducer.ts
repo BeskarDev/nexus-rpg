@@ -72,6 +72,7 @@ export const {
 				return target
 			}
 
+			state.unsavedChanges = true
 			state.activeCharacter = mergeDeep(newCharacter, copiedUpdate)
 		},
 	},

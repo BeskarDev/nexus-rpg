@@ -7,7 +7,6 @@ import { ItemsTab } from './CharacterSheetTabs/02_Items/ItemsTab'
 import { SpellsTab } from './CharacterSheetTabs/03_Spells/SpellsTab'
 import { PersonalTab } from './CharacterSheetTabs/04_Personal/PersonalTab'
 import { SharedNotes } from './CharacterSheetTabs/05_SharedNotes/SharedNotes'
-import { useAppSelector } from './hooks/useAppSelector'
 import { useDeviceSize } from './utils/useDeviceSize'
 
 export const AttributeField = styled(TextField)({
@@ -33,12 +32,6 @@ export const CharacterSheet: React.FC = () => {
 	const [activeTab, setActiveTab] = React.useState(0)
 	const { isMobile } = useDeviceSize()
 	const { colorMode } = useColorMode()
-
-	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-
-	if (!activeCharacter) {
-		return undefined
-	}
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setActiveTab(newValue)
