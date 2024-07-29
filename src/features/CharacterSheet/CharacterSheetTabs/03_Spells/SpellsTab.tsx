@@ -7,7 +7,7 @@ import {
 	TextField,
 	Tooltip,
 } from '@mui/material'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
@@ -24,7 +24,10 @@ import { SpellRow } from './SpellRow'
 export const SpellsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { magicSkill, specialization, focus, spells } = activeCharacter.spells
+	const { magicSkill, specialization, focus, spells } = useMemo(
+		() => activeCharacter.spells,
+		[activeCharacter.spells],
+	)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -46,10 +49,12 @@ export const SpellsTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newSpells = reorder(spells, source.index, destination.index)
-		return updateCharacter({
-			spells: { magicSkill, specialization, focus, spells: newSpells },
-		})
+		dispatch(
+			characterSheetActions.reorderSpell({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	return (

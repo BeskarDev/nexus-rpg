@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { deepCopy } from '@site/src/components/DynamicList/utils'
+import { deepCopy, reorder } from '@site/src/components/DynamicList/utils'
 import {
 	Ability,
 	CharacterDocument,
@@ -110,6 +110,18 @@ export const {
 					(s) => s.id !== action.payload.id,
 				)
 		},
+		reorderSkill: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.skills = reorder(
+				state.activeCharacter.skills.skills,
+				source,
+				destination,
+			)
+		},
 		addNewAbility: (state) => {
 			state.unsavedChanges = true
 			state.activeCharacter.skills.abilities.splice(0, 0, {
@@ -135,6 +147,18 @@ export const {
 				state.activeCharacter.skills.abilities.filter(
 					(s) => s.id !== action.payload.id,
 				)
+		},
+		reorderAbility: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.abilities = reorder(
+				state.activeCharacter.skills.abilities,
+				source,
+				destination,
+			)
 		},
 		addNewWeapon: (state) => {
 			state.unsavedChanges = true
@@ -173,6 +197,18 @@ export const {
 					(s) => s.id !== action.payload.id,
 				)
 		},
+		reorderWeapon: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.items.weapons = reorder(
+				state.activeCharacter.items.weapons,
+				source,
+				destination,
+			)
+		},
 		addNewItem: (state) => {
 			state.unsavedChanges = true
 			state.activeCharacter.items.items.splice(0, 0, {
@@ -202,6 +238,18 @@ export const {
 				state.activeCharacter.items.items.filter(
 					(s) => s.id !== action.payload.id,
 				)
+		},
+		reorderItem: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.items.items = reorder(
+				state.activeCharacter.items.items,
+				source,
+				destination,
+			)
 		},
 		addNewSpell: (state) => {
 			state.unsavedChanges = true
@@ -243,6 +291,18 @@ export const {
 					(s) => s.id !== action.payload.id,
 				)
 		},
+		reorderSpell: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.spells.spells = reorder(
+				state.activeCharacter.spells.spells,
+				source,
+				destination,
+			)
+		},
 		addNewAlly: (state) => {
 			state.unsavedChanges = true
 			state.activeCharacter.personal.allies.splice(0, 0, {
@@ -268,6 +328,18 @@ export const {
 				state.activeCharacter.personal.allies.filter(
 					(_, i) => i != action.payload,
 				)
+		},
+		reorderAlly: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.personal.allies = reorder(
+				state.activeCharacter.personal.allies,
+				source,
+				destination,
+			)
 		},
 		addNewContact: (state) => {
 			state.unsavedChanges = true
@@ -295,6 +367,18 @@ export const {
 					(_, i) => i != action.payload,
 				)
 		},
+		reorderContact: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.personal.contacts = reorder(
+				state.activeCharacter.personal.contacts,
+				source,
+				destination,
+			)
+		},
 		addNewRival: (state) => {
 			state.unsavedChanges = true
 			state.activeCharacter.personal.rivals.splice(0, 0, {
@@ -320,6 +404,18 @@ export const {
 				state.activeCharacter.personal.rivals.filter(
 					(_, i) => i != action.payload,
 				)
+		},
+		reorderRival: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.personal.rivals = reorder(
+				state.activeCharacter.personal.rivals,
+				source,
+				destination,
+			)
 		},
 	},
 })

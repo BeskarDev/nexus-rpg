@@ -27,8 +27,10 @@ import { WeaponRow } from './WeaponRow'
 export const ItemsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { coins, encumbrance, weapons, equipment, items } =
-		activeCharacter.items
+	const { coins, encumbrance, weapons, equipment, items } = useMemo(
+		() => activeCharacter.items,
+		[activeCharacter.items],
+	)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -75,10 +77,12 @@ export const ItemsTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newWeapons = reorder(weapons, source.index, destination.index)
-		return updateCharacter({
-			items: { weapons: newWeapons },
-		})
+		dispatch(
+			characterSheetActions.reorderWeapon({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	const addNewItem = () => {
@@ -97,10 +101,12 @@ export const ItemsTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newItems = reorder(items, source.index, destination.index)
-		return updateCharacter({
-			items: { items: newItems },
-		})
+		dispatch(
+			characterSheetActions.reorderItem({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	const getLoadColor = (theme: Theme) => {

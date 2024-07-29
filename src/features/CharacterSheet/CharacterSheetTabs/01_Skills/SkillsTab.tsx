@@ -24,7 +24,10 @@ import { SkillRow } from './SkillRow'
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { xp, skills, abilities } = activeCharacter.skills
+	const { xp, skills, abilities } = useMemo(
+		() => activeCharacter.skills,
+		[activeCharacter.skills],
+	)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -56,10 +59,12 @@ export const SkillsTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newSkills = reorder(skills, source.index, destination.index)
-		return updateCharacter({
-			skills: { xp, skills: newSkills, abilities },
-		})
+		dispatch(
+			characterSheetActions.reorderSkill({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	const addNewAbility = () => {
@@ -78,10 +83,12 @@ export const SkillsTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newAbilities = reorder(abilities, source.index, destination.index)
-		return updateCharacter({
-			skills: { xp, skills, abilities: newAbilities },
-		})
+		dispatch(
+			characterSheetActions.reorderAbility({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	return (
