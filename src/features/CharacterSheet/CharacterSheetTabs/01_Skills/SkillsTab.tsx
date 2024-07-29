@@ -41,32 +41,15 @@ export const SkillsTab: React.FC = () => {
 	}, [activeCharacter])
 
 	const addNewSkill = () => {
-		skills.splice(0, 0, {
-			id: crypto.randomUUID(),
-			name: 'new skill',
-			rank: 0,
-			xp: 0,
-		})
-		updateCharacter({
-			skills: { xp, skills, abilities },
-		})
+		dispatch(characterSheetActions.addNewSkill())
 	}
 
 	const updateSkill = (update: Partial<Skill>, index: number) => {
-		const newSkills = [...skills]
-		newSkills[index] = { ...skills[index], ...update }
-		skills[index] = newSkills[index]
-		return updateCharacter({
-			skills: { skills: newSkills },
-		})
+		dispatch(characterSheetActions.updateSkill({ update, index }))
 	}
 
 	const deleteSkill = (skill: Skill) => {
-		const newSkills = [...skills].filter((s) => s.id !== skill.id)
-		skills.pop()
-		updateCharacter({
-			skills: { xp, skills: newSkills, abilities },
-		})
+		dispatch(characterSheetActions.deleteSkill(skill))
 	}
 
 	const onSkillReorder = ({ source, destination }: DropResult) => {
@@ -80,25 +63,15 @@ export const SkillsTab: React.FC = () => {
 	}
 
 	const addNewAbility = () => {
-		abilities.splice(0, 0, { id: crypto.randomUUID(), description: '' })
-		updateCharacter({
-			skills: { xp, skills, abilities },
-		})
+		dispatch(characterSheetActions.addNewAbility())
 	}
 
 	const updateAbility = (update: string, index: number) => {
-		abilities[index] = { ...abilities[index], description: update }
-		return updateCharacter({
-			skills: { abilities },
-		})
+		dispatch(characterSheetActions.updateAbility({ update, index }))
 	}
 
 	const deleteAbility = (ability: Ability) => {
-		const newAbilities = [...abilities].filter((a) => a.id !== ability.id)
-		abilities.pop()
-		updateCharacter({
-			skills: { xp, skills, abilities: newAbilities },
-		})
+		dispatch(characterSheetActions.deleteAbility(ability))
 	}
 
 	const onAbilityReorder = ({ source, destination }: DropResult) => {
