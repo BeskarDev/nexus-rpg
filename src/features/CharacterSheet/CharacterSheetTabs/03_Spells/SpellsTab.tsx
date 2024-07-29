@@ -31,43 +31,15 @@ export const SpellsTab: React.FC = () => {
 	}
 
 	const addNewSpell = () => {
-		spells.splice(0, 0, {
-			id: crypto.randomUUID(),
-			name: 'new spell',
-			rank: 0,
-			cost: 0,
-			target: '',
-			range: '',
-			properties: '',
-			damage: {
-				base: 0,
-				weapon: 0,
-				otherWeak: 0,
-				otherStrong: 0,
-				otherCritical: 0,
-				type: 'physical',
-			},
-			effect: '',
-		})
-		updateCharacter({
-			spells: { magicSkill, specialization, focus, spells },
-		})
+		dispatch(characterSheetActions.addNewSpell())
 	}
 
 	const updateSpell = (update: Partial<Spell>, index: number) => {
-		const newSpells = [...spells]
-		newSpells[index] = { ...spells[index], ...update }
-		return updateCharacter({
-			spells: { spells: newSpells },
-		})
+		dispatch(characterSheetActions.updateSpell({ update, index }))
 	}
 
 	const deleteSpell = (spell: Spell) => {
-		const newSpells = [...spells].filter((s) => s != spell)
-		spells.pop()
-		updateCharacter({
-			spells: { spells: newSpells },
-		})
+		dispatch(characterSheetActions.deleteSpell(spell))
 	}
 
 	const onSpellReorder = ({ source, destination }: DropResult) => {

@@ -5,7 +5,6 @@
   "editor.guides.bracketPairs": "active",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "explicit"
   },
   "editor.suggestSelection": "first",
   "editor.inlineSuggest.enabled": true,

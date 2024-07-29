@@ -1,6 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { deepCopy } from '@site/src/components/DynamicList/utils'
-import { Ability, CharacterDocument, Skill } from '@site/src/types/Character'
+import {
+	Ability,
+	CharacterDocument,
+	Item,
+	Skill,
+	Spell,
+	Weapon,
+} from '@site/src/types/Character'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 
@@ -76,6 +83,7 @@ export const {
 			state.activeCharacter = mergeDeep(newCharacter, copiedUpdate)
 		},
 		addNewSkill: (state) => {
+			state.unsavedChanges = true
 			state.activeCharacter.skills.skills.splice(0, 0, {
 				id: crypto.randomUUID(),
 				name: 'new skill',
@@ -89,18 +97,21 @@ export const {
 		) => {
 			const update = action.payload.update
 			const index = action.payload.index
+			state.unsavedChanges = true
 			state.activeCharacter.skills.skills[index] = {
 				...state.activeCharacter.skills.skills[index],
 				...update,
 			}
 		},
 		deleteSkill: (state, action: PayloadAction<Skill>) => {
+			state.unsavedChanges = true
 			state.activeCharacter.skills.skills =
 				state.activeCharacter.skills.skills.filter(
 					(s) => s.id !== action.payload.id,
 				)
 		},
 		addNewAbility: (state) => {
+			state.unsavedChanges = true
 			state.activeCharacter.skills.abilities.splice(0, 0, {
 				id: crypto.randomUUID(),
 				description: '',
@@ -112,15 +123,202 @@ export const {
 		) => {
 			const update = action.payload.update
 			const index = action.payload.index
+			state.unsavedChanges = true
 			state.activeCharacter.skills.abilities[index] = {
 				...state.activeCharacter.skills.abilities[index],
 				description: update,
 			}
 		},
 		deleteAbility: (state, action: PayloadAction<Ability>) => {
+			state.unsavedChanges = true
 			state.activeCharacter.skills.abilities =
 				state.activeCharacter.skills.abilities.filter(
 					(s) => s.id !== action.payload.id,
+				)
+		},
+		addNewWeapon: (state) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.weapons.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: 'new weapon',
+				damage: {
+					base: 0,
+					weapon: 0,
+					otherWeak: 0,
+					otherStrong: 0,
+					otherCritical: 0,
+					type: 'physical',
+				},
+				properties: '',
+				cost: 0,
+				load: 0,
+			})
+		},
+		updateWeapon: (
+			state,
+			action: PayloadAction<{ update: Partial<Weapon>; index: number }>,
+		) => {
+			const update = action.payload.update
+			const index = action.payload.index
+			state.unsavedChanges = true
+			state.activeCharacter.items.weapons[index] = {
+				...state.activeCharacter.items.weapons[index],
+				...update,
+			}
+		},
+		deleteWeapon: (state, action: PayloadAction<Weapon>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.weapons =
+				state.activeCharacter.items.weapons.filter(
+					(s) => s.id !== action.payload.id,
+				)
+		},
+		addNewItem: (state) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.items.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: 'new item',
+				properties: '',
+				cost: 0,
+				load: 0,
+				amount: 0,
+			})
+		},
+		updateItem: (
+			state,
+			action: PayloadAction<{ update: Partial<Item>; index: number }>,
+		) => {
+			const update = action.payload.update
+			const index = action.payload.index
+			state.unsavedChanges = true
+			state.activeCharacter.items.items[index] = {
+				...state.activeCharacter.items.items[index],
+				...update,
+			}
+		},
+		deleteItem: (state, action: PayloadAction<Item>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.items =
+				state.activeCharacter.items.items.filter(
+					(s) => s.id !== action.payload.id,
+				)
+		},
+		addNewSpell: (state) => {
+			state.unsavedChanges = true
+			state.activeCharacter.spells.spells.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: 'new spell',
+				rank: 0,
+				cost: 0,
+				target: '',
+				range: '',
+				properties: '',
+				damage: {
+					base: 0,
+					weapon: 0,
+					otherWeak: 0,
+					otherStrong: 0,
+					otherCritical: 0,
+					type: 'physical',
+				},
+				effect: '',
+			})
+		},
+		updateSpell: (
+			state,
+			action: PayloadAction<{ update: Partial<Spell>; index: number }>,
+		) => {
+			const update = action.payload.update
+			const index = action.payload.index
+			state.unsavedChanges = true
+			state.activeCharacter.spells.spells[index] = {
+				...state.activeCharacter.spells.spells[index],
+				...update,
+			}
+		},
+		deleteSpell: (state, action: PayloadAction<Spell>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.spells.spells =
+				state.activeCharacter.spells.spells.filter(
+					(s) => s.id !== action.payload.id,
+				)
+		},
+		addNewAlly: (state) => {
+			state.unsavedChanges = true
+			state.activeCharacter.personal.allies.splice(0, 0, {
+				id: crypto.randomUUID(),
+				description: '',
+			})
+		},
+		updateAlly: (
+			state,
+			action: PayloadAction<{ update: string; index: number }>,
+		) => {
+			const update = action.payload.update
+			const index = action.payload.index
+			state.unsavedChanges = true
+			state.activeCharacter.personal.allies[index] = {
+				...state.activeCharacter.personal.allies[index],
+				description: update,
+			}
+		},
+		deleteAlly: (state, action: PayloadAction<number>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.personal.allies =
+				state.activeCharacter.personal.allies.filter(
+					(_, i) => i != action.payload,
+				)
+		},
+		addNewContact: (state) => {
+			state.unsavedChanges = true
+			state.activeCharacter.personal.contacts.splice(0, 0, {
+				id: crypto.randomUUID(),
+				description: '',
+			})
+		},
+		updateContact: (
+			state,
+			action: PayloadAction<{ update: string; index: number }>,
+		) => {
+			const update = action.payload.update
+			const index = action.payload.index
+			state.unsavedChanges = true
+			state.activeCharacter.personal.contacts[index] = {
+				...state.activeCharacter.personal.contacts[index],
+				description: update,
+			}
+		},
+		deleteContact: (state, action: PayloadAction<number>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.personal.contacts =
+				state.activeCharacter.personal.contacts.filter(
+					(_, i) => i != action.payload,
+				)
+		},
+		addNewRival: (state) => {
+			state.unsavedChanges = true
+			state.activeCharacter.personal.rivals.splice(0, 0, {
+				id: crypto.randomUUID(),
+				description: '',
+			})
+		},
+		updateRival: (
+			state,
+			action: PayloadAction<{ update: string; index: number }>,
+		) => {
+			const update = action.payload.update
+			const index = action.payload.index
+			state.unsavedChanges = true
+			state.activeCharacter.personal.rivals[index] = {
+				...state.activeCharacter.personal.rivals[index],
+				description: update,
+			}
+		},
+		deleteRival: (state, action: PayloadAction<number>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.personal.rivals =
+				state.activeCharacter.personal.rivals.filter(
+					(_, i) => i != action.payload,
 				)
 		},
 	},

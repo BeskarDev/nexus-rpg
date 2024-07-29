@@ -17,7 +17,6 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
-import { deepCopy } from '@site/src/components/DynamicList/utils'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -61,40 +60,15 @@ export const ItemsTab: React.FC = () => {
 	}, [activeCharacter])
 
 	const addNewWeapon = () => {
-		weapons.splice(0, 0, {
-			id: crypto.randomUUID(),
-			name: 'new weapon',
-			damage: {
-				base: 0,
-				weapon: 0,
-				otherWeak: 0,
-				otherStrong: 0,
-				otherCritical: 0,
-				type: 'physical',
-			},
-			properties: '',
-			cost: 0,
-			load: 0,
-		})
-		updateCharacter({
-			items: { coins, encumbrance, weapons, equipment, items },
-		})
+		dispatch(characterSheetActions.addNewWeapon())
 	}
 
 	const updateWeapon = (update: Partial<Weapon>, index: number) => {
-		const newWeapons = [...weapons]
-		newWeapons[index] = { ...weapons[index], ...update }
-		return updateCharacter({
-			items: { weapons: deepCopy(newWeapons) },
-		})
+		dispatch(characterSheetActions.updateWeapon({ update, index }))
 	}
 
 	const deleteWeapon = (weapon: Weapon) => {
-		const newWeapons = [...weapons].filter((s) => s != weapon)
-		weapons.pop()
-		updateCharacter({
-			items: { weapons: newWeapons },
-		})
+		dispatch(characterSheetActions.deleteWeapon(weapon))
 	}
 
 	const onWeaponReorder = ({ source, destination }: DropResult) => {
@@ -108,33 +82,15 @@ export const ItemsTab: React.FC = () => {
 	}
 
 	const addNewItem = () => {
-		items.splice(0, 0, {
-			id: crypto.randomUUID(),
-			name: 'new item',
-			properties: '',
-			cost: 0,
-			load: 0,
-			amount: 0,
-		})
-		updateCharacter({
-			items: { coins, encumbrance, weapons, equipment, items },
-		})
+		dispatch(characterSheetActions.addNewItem())
 	}
 
 	const updateItem = (update: Partial<Item>, index: number) => {
-		const newItems = [...items]
-		newItems[index] = { ...items[index], ...update }
-		return updateCharacter({
-			items: { items: newItems },
-		})
+		dispatch(characterSheetActions.updateItem({ update, index }))
 	}
 
 	const deleteItem = (item: Item) => {
-		const newItems = [...items].filter((s) => s != item)
-		items.pop()
-		updateCharacter({
-			items: { items: newItems },
-		})
+		dispatch(characterSheetActions.deleteItem(item))
 	}
 
 	const onItemReorder = ({ source, destination }: DropResult) => {
