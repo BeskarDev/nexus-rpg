@@ -1,5 +1,5 @@
 import { Box, IconButton, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { AddCircle } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
@@ -16,7 +16,10 @@ import { AbilityRow } from '../AbilityRow'
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { allies, contacts, rivals } = activeCharacter.personal
+	const { allies, contacts, rivals } = useMemo(
+		() => activeCharacter.personal,
+		[activeCharacter.personal],
+	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
@@ -39,10 +42,12 @@ export const PersonalTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newAllies = reorder(allies, source.index, destination.index)
-		return updateCharacter({
-			personal: { allies: newAllies },
-		})
+		dispatch(
+			characterSheetActions.reorderAlly({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	const addNewContact = () => {
@@ -61,10 +66,12 @@ export const PersonalTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newContacts = reorder(contacts, source.index, destination.index)
-		return updateCharacter({
-			personal: { contacts: newContacts },
-		})
+		dispatch(
+			characterSheetActions.reorderContact({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	const addNewRival = () => {
@@ -83,10 +90,12 @@ export const PersonalTab: React.FC = () => {
 		// dropped outside the list
 		if (!destination) return
 
-		const newRivals = reorder(rivals, source.index, destination.index)
-		return updateCharacter({
-			personal: { rivals: newRivals },
-		})
+		dispatch(
+			characterSheetActions.reorderRival({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
 	}
 
 	return (
