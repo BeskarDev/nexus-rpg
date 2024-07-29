@@ -1,5 +1,5 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { Reply, Save, Star } from '@mui/icons-material'
+import { Download, Reply, Save, Star } from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -12,6 +12,7 @@ import {
 	IconButton,
 	Link,
 	TextField,
+	Tooltip,
 	Typography,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
@@ -21,6 +22,8 @@ import React from 'react'
 import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
 import { createInitialCharacter } from './utils/createInitialCharacter'
+import { downloadFile } from './utils/donwloadFile'
+import { Character, CharacterDocument } from '@site/src/types/Character'
 
 const MAX_NAME_LENGTH = 1_000
 
@@ -67,6 +70,19 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		} catch (error) {
 			console.error('Error creating document: ', error)
 		}
+	}
+
+	const downloadCharacter = (event: React.MouseEvent<HTMLButtonElement>) => {
+		event.preventDefault()
+		downloadFile({
+			data: JSON.stringify({
+				...activeCharacter,
+				docId: undefined,
+				docRef: undefined,
+			} as CharacterDocument),
+			fileName: `${activeCharacter.personal.name.replaceAll(' ', '_')}-nexus-character-sheet.json`,
+			fileType: 'text/json',
+		})
 	}
 
 	return (
@@ -117,9 +133,23 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						</Button>
 					)}
 					{activeCharacterId && (
-						<IconButton disabled={!unsavedChanges} onClick={saveCharacter}>
-							{loadingSave ? <CircularProgress size={20} /> : <Save />}
-						</IconButton>
+						<>
+							<Tooltip title="save character">
+								<span>
+									<IconButton
+										disabled={!unsavedChanges}
+										onClick={saveCharacter}
+									>
+										{loadingSave ? <CircularProgress size={20} /> : <Save />}
+									</IconButton>
+								</span>
+							</Tooltip>
+							<Tooltip title="download character">
+								<IconButton onClick={downloadCharacter}>
+									<Download />
+								</IconButton>
+							</Tooltip>
+						</>
 					)}
 					<UserAvatar />
 				</Box>
