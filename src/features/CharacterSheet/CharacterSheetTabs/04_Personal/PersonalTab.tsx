@@ -24,28 +24,15 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const addNewAlly = () => {
-		allies.splice(0, 0, { id: crypto.randomUUID(), description: '' })
-		updateCharacter({
-			personal: { allies },
-		})
+		dispatch(characterSheetActions.addNewAlly())
 	}
 
 	const updateAlly = (update: string, index: number) => {
-		const newAllies = [...allies]
-		newAllies[index] = { ...allies[index], description: update }
-		return updateCharacter({
-			personal: { allies: newAllies },
-		})
+		dispatch(characterSheetActions.updateAlly({ update, index }))
 	}
 
 	const deleteAlly = (index: number) => {
-		const newAllies = [...allies].filter((_, i) => i != index)
-		allies.pop()
-		updateCharacter({
-			personal: {
-				allies: newAllies,
-			},
-		})
+		dispatch(characterSheetActions.deleteAlly(index))
 	}
 
 	const onAllyReorder = ({ source, destination }: DropResult) => {
@@ -59,28 +46,15 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const addNewContact = () => {
-		contacts.splice(0, 0, { id: crypto.randomUUID(), description: '' })
-		updateCharacter({
-			personal: { contacts },
-		})
+		dispatch(characterSheetActions.addNewContact())
 	}
 
 	const updateContact = (update: string, index: number) => {
-		const newContacts = [...contacts]
-		newContacts[index] = { ...contacts[index], description: update }
-		return updateCharacter({
-			personal: { contacts: newContacts },
-		})
+		dispatch(characterSheetActions.updateContact({ update, index }))
 	}
 
 	const deleteContact = (index: number) => {
-		const newContacts = [...contacts].filter((_, i) => i != index)
-		contacts.pop()
-		updateCharacter({
-			personal: {
-				contacts: newContacts,
-			},
-		})
+		dispatch(characterSheetActions.deleteContact(index))
 	}
 
 	const onContactReorder = ({ source, destination }: DropResult) => {
@@ -94,28 +68,15 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const addNewRival = () => {
-		rivals.splice(0, 0, { id: crypto.randomUUID(), description: '' })
-		updateCharacter({
-			personal: { rivals },
-		})
+		dispatch(characterSheetActions.addNewRival())
 	}
 
 	const updateRival = (update: string, index: number) => {
-		const newRivals = [...rivals]
-		newRivals[index] = { ...rivals[index], description: update }
-		return updateCharacter({
-			personal: { rivals: newRivals },
-		})
+		dispatch(characterSheetActions.updateRival({ update, index }))
 	}
 
 	const deleteRival = (index: number) => {
-		const newRivals = [...rivals].filter((_, i) => i != index)
-		rivals.pop()
-		updateCharacter({
-			personal: {
-				rivals: newRivals,
-			},
-		})
+		dispatch(characterSheetActions.deleteRival(index))
 	}
 
 	const onRivalReorder = ({ source, destination }: DropResult) => {
