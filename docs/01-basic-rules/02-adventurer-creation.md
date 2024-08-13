@@ -34,11 +34,11 @@ When creating a new adventurer, follow the steps below:
         - Camping kit (provides shelter for a night‘s rest for up to two people, 1 load, 50 coins)
         - One additional tool of your choice
         - Supplies:
-            - 2 units (d6) of provisions (1 load, 10 coins per unit)
-            - 2 units (d6) of torches (emit bright light in close range and dim light in short range when lit, 1 load, 10 coins per unit)
+            - rations (d6 Resource Die, 1 load, 10 coins per unit)
+            - torches (d6 Resource Die, emit bright light in close range and dim light in short range when lit, 1 load, 10 coins per unit)
         - 10 coins (can’t be spent during adventurer creation)
     - You also get 350 coins to spend on additional equipment and items.
-        - Choosing a weapon that requires ammo gives you 2 units (d6) of that ammo for free
+        - Choosing a weapon that requires ammo gives you one unit of that weapon’s ammo for free (e.g. arrows (d8) for a bow)
         - You keep coins you don’t spend
 8. **Start with 1 Resolve and fill out the remaining statistics on your adventurer sheet**
 

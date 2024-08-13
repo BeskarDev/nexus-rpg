@@ -105,7 +105,7 @@ You must roll a Durability check, when some item you are wearing, carrying, or w
 
 ### Supply Checks
 
-Your Supplies are general stocks of useful items, such as provisions, light sources, or common materials. Whenever you have to make a Supply check, the die depends on how much Supply of that kind you have left. If you roll a 1 or a 2, the Supply’s die size decreases by one step or you use up all of your remaining Supply, if it already was at a d4. See more under Supply in the Items section.
+Your supplies are general stocks of useful items, such as rations, light sources, or crafting materials. Whenever you have to make a Supply check, the die depends on how much Supply of that kind you have left. If you roll a 1 or a 2, the Supply’s die size decreases by one step or you use up all of your remaining Supply, if you only had 1 left. See more under Supply in the Items section.
 
 ### Individual Checks
 

@@ -67,15 +67,35 @@ When you have a tool in your possession that would help you accomplish a roll yo
 
 ## Supply
 
-Supplies are consumable goods, that are not tracked as normal equipment. Instead, each type of supply has an associated Resource Die between d4 (1 unit) and d12 (5 units), where a d12 or 5 units is the most amount one person can physically take with them. At certain points during the game, you will have to roll your Resource Die. When you roll a 1 or 2, reduce your Resource Die by one step. Instead of reducing a d4 Resource Die, you consume all your remaining supply of that type.
+Supply items are consumable goods that you can buy in larger quantities. Supply items all come with a Resource Die between 1d4 and 1d12. These dice represent an abstract amount of individual units of that supply that you carry with you.
 
-Each Supply’s load always remains the same, regardless of its Resource Die size. For example, when you carry provisions in any amount, they always take up 1 load.
+Different moments during gameplay will call for a Supply check for different types of supply items. When doing so, roll the current Resource Die for your Supply. If your roll a 1 or a 2, reduce the Resource Die of your supply by one step. If you would have to reduce a d4, instead denote a “1”. This means you have one last unit of that supply left. When you would have to make a Supply check for any supply item you only have “1” left, you automatically use up your last unit of that supply and remove it from your inventory.
 
-### Increasing and Decreasing Supply
+> As an example, if you carry “torches (d6)” as supply, it means you carry multiple torches with you. After using one of these torches for some time, you will have to make a Supply check with it’s resource die. If you roll a 1 or a 2 on that Supply check, decrease your supply’s Resource Die to d4. This indicates, that you are slowly using up your stock of torches, without having to track each individual torch.
+> 
 
-When you gain supply, increase its Resource Die by one step for each unit. Buying supplies is done unit by unit.
+### Average Uses per Resource Die size
 
-When you lose one unit of supply, reduce the supply‘s Resource Die.
+| Resource Die | Remaining Uses |
+| --- | --- |
+| d12 | 20 |
+| d10 | 14 |
+| d8 | 9 |
+| d6 | 5 |
+| d4 | 2 |
+| 1 | 1 |
+
+### Item Load for Supply
+
+Each supply item takes up load, the same as any other item. The only difference is that you don’t change the supply’s load when you change it’s Resource Die.
+
+### Carrying multiple stacks of Supply
+
+When you wish to carry more units of any type of supply, you can do so by acquiring more of it as separate supply items. Each individual supply item has it’s own Resource Die and load it takes up. Whenever you have to make a Supply check while carrying multiple of the same supply items, roll for the individual supply item with the lowest current Resource Die (or choose one between them, if multiple supply items have the same Resource Die).
+
+### Restocking Supply
+
+If you don’t want to buy a whole new stack, you can fill up any supply item with a reduced Resource Die for half the normal price of that supply item. This resets the supply item’s Resource Die back to it’s starting size.
 
 ### Types of Supply
 
@@ -85,7 +105,7 @@ Supply is grouped into different types that can be used for different purposes d
 
 Roll once after a fight, in which you used ammo. You need different types of ammo for different types of ranged weapons.
 
-**Provisions**
+**Rations**
 
 Roll once at the end of each day to receive the effects of a night‘s rest. A successful foraging or hunting roll might allow you to re-stock during travel.
 
@@ -100,12 +120,6 @@ Common, natural materials for repairing equipment, crafting simple items, buildi
 **Bundles**
 
 Bundles are a special type of supply. They are foremost weapons but can be used as ammunition for attacking at range. They also include other items, such as alchemical substances. See the description for „bundle“ weapons under the Weapon and Armor Properties for more details.
-
-### Carrying multiple versions of the same type of Supply
-
-The maximum amount of Supply units you can carry are accumulated across each type of supply. For instance, you are only able to carry up to 5 units of ammunition. If you carry 3 units of arrows, you can only carry 2 more units of any type of ammunition (e.g. bolts).
-
-If you carry mixed Supply of the same type (e.g. arrows and bolts), they only take up load once. If they take up different amounts of load, only count the highest one.
 
 ## Item Durability
 

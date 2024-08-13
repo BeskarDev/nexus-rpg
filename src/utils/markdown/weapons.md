@@ -1,10 +1,10 @@
 Name | Quality | Type | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | --- | ---
-**Handaxe / Throwing Axe** | 1 | Axe | 2 | agile, bundle, light, slash, thrown (short/medium) | 1 | 50
+**Handaxe / Throwing Axe** | 1 | Axe | 2 | agile, bundle (d6), light, slash, thrown (short/medium) | 1 | 50
 **Hatchet / Broadaxe / Cleaver / War Sickle** | 1 | Axe | 2 | agile, light, slash | 1 | 50
 **Battleaxe / Crescent Axe** | 2 | Axe | 3 | slash, versatile (+1) | 1 | 100
 **Greataxe / Elipson Axe / War Scythe** | 2 | Axe | 4 | heavy (d8), slash, two-handed | 2 | 200
-**Dart / Throwing Knife / Throwing Star / Chakram** | 1 | Blade | 2 | agile, bundle, light, pierce, thrown (short/medium) | 1 | 50
+**Dart / Throwing Knife / Throwing Star / Chakram** | 1 | Blade | 2 | agile, bundle (d6), light, pierce, thrown (short/medium) | 1 | 50
 **Scimitar / Khopesh / Kopis / Kukri / Machete / Macuahuitl / Shotel** | 1 | Blade | 2 | agile, light, slash | 1 | 50
 **Shortsword / Dagger / Gladius / Xiphos / Duan Jian / Wakizashi** | 1 | Blade | 2 | agile, light, pierce | 1 | 50
 **Broadsword / Katana / Dao / Yatagan** | 2 | Blade | 3 | slash, versatile (+1) | 1 | 100
@@ -22,10 +22,10 @@ Name | Quality | Type | Damage | Properties | Load | Cost
 **Light Crossbow / Gastraphetes** | 3 | Crossbow | 4 | ammo, heavy (d6), range (medium/very long), reload, two-handed | 2 | 500
 **Heavy Crossbow / Hand Ballista** | 3 | Crossbow | 6 | ammo, heavy (d8), range (long/extreme), reload, two-handed | 3 | 1000
 **Club / Tonfa / Nunchaku / War Scepter** | 1 | Mace | 2 | agile, crush, light | 1 | 50
-**Throwing Club / Light Hammer** | 1 | Mace | 2 | agile, bundle, crush, light, thrown (short/medium) | 1 | 50
+**Throwing Club / Light Hammer** | 1 | Mace | 2 | agile, bundle (d6), crush, light, thrown (short/medium) | 1 | 50
 **Mace / War Club / Flail / Morningstar / Warhammer / Warpick** | 2 | Mace | 3 | crush, versatile (+1) | 1 | 100
 **Maul / Greatclub / Kanabo / Polehammer** | 2 | Mace | 4 | crush, heavy (d8), two-handed | 2 | 200
-**Javelin / Harpoon** | 1 | Polearm | 2 | bundle, light, pierce, thrown (short/long) | 1 | 50
+**Javelin / Harpoon** | 1 | Polearm | 2 | bundle (d4), light, pierce, thrown (short/long) | 1 | 50
 **Short Spear / Trident** | 1 | Polearm | 2 | light, pierce, thrown (short/medium), versatile (+1) | 1 | 100
 **Glaive / Halberd / Poleaxe / Dagger-Axe / Swordstaff / Podao / Naginata** | 2 | Polearm | 4 | reach, slash, two-handed | 2 | 200
 **Quarterstaff / Scepter** | 2 | Polearm | 3 | crush, reach, versatile (+1) | 1 | 200
@@ -35,6 +35,6 @@ Name | Quality | Type | Damage | Properties | Load | Cost
 **Heavy Shield** | 2 | Shield | 2 | AV +2, heavy (d8), parry +2, rigid 1 | 2 | 500
 **Great Shield** | 3 | Shield | 3 | AV +3, covering, heavy (d10), parry +2, rigid 2 | 2 | 1000
 **Blowpipe** | 1 | Thrown | 1 | ammo, blowpipe, pierce, range (short/long) | 1 | 50
-**Bola / Net** | 1 | Thrown | 2 | bundle, entangle, heavy (d6), thrown (close/short) | 1 | 50
+**Bola / Net** | 1 | Thrown | 2 | bundle (d4), entangle, heavy (d6), thrown (close/short) | 1 | 50
 **Sling / Slingshot** | 1 | Thrown | 3 | ammo, crush, thrown (short/long), two-handed | 1 | 50
 **Kestros** | 2 | Thrown | 3 | ammo, pierce, thrown (short/long), two-handed | 1 | 50

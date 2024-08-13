@@ -2,7 +2,7 @@
 ## Axe 
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
-**Handaxe / Throwing Axe**  | 1  | 2  | agile, bundle, light, slash, thrown (short/medium)  | 1  | 50
+**Handaxe / Throwing Axe**  | 1  | 2  | agile, bundle (d6), light, slash, thrown (short/medium)  | 1  | 50
 **Hatchet / Broadaxe / Cleaver / War Sickle**  | 1  | 2  | agile, light, slash  | 1  | 50
 **Battleaxe / Crescent Axe**  | 2  | 3  | slash, versatile (+1)  | 1  | 100
 **Greataxe / Elipson Axe / War Scythe**  | 2  | 4  | heavy (d8), slash, two-handed  | 2  | 200
@@ -11,7 +11,7 @@ Name | Quality | Damage | Properties | Load | Cost
 ## Blade 
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
-**Dart / Throwing Knife / Throwing Star / Chakram**  | 1  | 2  | agile, bundle, light, pierce, thrown (short/medium)  | 1  | 50
+**Dart / Throwing Knife / Throwing Star / Chakram**  | 1  | 2  | agile, bundle (d6), light, pierce, thrown (short/medium)  | 1  | 50
 **Scimitar / Khopesh / Kopis / Kukri / Machete / Macuahuitl / Shotel**  | 1  | 2  | agile, light, slash  | 1  | 50
 **Shortsword / Dagger / Gladius / Xiphos / Duan Jian / Wakizashi**  | 1  | 2  | agile, light, pierce  | 1  | 50
 **Broadsword / Katana / Dao / Yatagan**  | 2  | 3  | slash, versatile (+1)  | 1  | 100
@@ -49,7 +49,7 @@ Name | Quality | Damage | Properties | Load | Cost
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Club / Tonfa / Nunchaku / War Scepter**  | 1  | 2  | agile, crush, light  | 1  | 50
-**Throwing Club / Light Hammer**  | 1  | 2  | agile, bundle, crush, light, thrown (short/medium)  | 1  | 50
+**Throwing Club / Light Hammer**  | 1  | 2  | agile, bundle (d6), crush, light, thrown (short/medium)  | 1  | 50
 **Mace / War Club / Flail / Morningstar / Warhammer / Warpick**  | 2  | 3  | crush, versatile (+1)  | 1  | 100
 **Maul / Greatclub / Kanabo / Polehammer**  | 2  | 4  | crush, heavy (d8), two-handed  | 2  | 200
 
@@ -57,7 +57,7 @@ Name | Quality | Damage | Properties | Load | Cost
 ## Polearm 
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
-**Javelin / Harpoon**  | 1  | 2  | bundle, light, pierce, thrown (short/long)  | 1  | 50
+**Javelin / Harpoon**  | 1  | 2  | bundle (d4), light, pierce, thrown (short/long)  | 1  | 50
 **Short Spear / Trident**  | 1  | 2  | light, pierce, thrown (short/medium), versatile (+1)  | 1  | 100
 **Glaive / Halberd / Poleaxe / Dagger-Axe / Swordstaff / Podao / Naginata**  | 2  | 4  | reach, slash, two-handed  | 2  | 200
 **Quarterstaff / Scepter**  | 2  | 3  | crush, reach, versatile (+1)  | 1  | 200
@@ -77,7 +77,7 @@ Name | Quality | Damage | Properties | Load | Cost
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Blowpipe**  | 1  | 1  | ammo, blowpipe, pierce, range (short/long)  | 1  | 50
-**Bola / Net**  | 1  | 2  | bundle, entangle, heavy (d6), thrown (close/short)  | 1  | 50
+**Bola / Net**  | 1  | 2  | bundle (d4), entangle, heavy (d6), thrown (close/short)  | 1  | 50
 **Sling / Slingshot**  | 1  | 3  | ammo, crush, thrown (short/long), two-handed  | 1  | 50
 **Kestros**  | 2  | 3  | ammo, pierce, thrown (short/long), two-handed  | 1  | 50
 
