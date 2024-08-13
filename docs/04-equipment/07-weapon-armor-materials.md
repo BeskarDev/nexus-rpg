@@ -8,37 +8,47 @@ Weapons and armor can be made out of a variety of materials. While the default m
 
 ## Ammo from Special Materials
 
-In addition to upgrading the weapon itself, you can also use ammo from special materials for it. The cost for one unit of special ammo is equal to half the cost per load of the material. Using this ammo adds the material's bonuses for a non-heavy weapon to the weapon's attacks.
+In addition to upgrading the weapon itself, you can also use ammo from special materials for attacks. The cost for one unit of special ammo is equal to half the cost per load of the material.
 
 ## Special Materials
 
- **Name** | **Quality** | **Cost per Load** | **Durability** | **Properties** 
----|---|---|---|---
- **Bone** | 1 (Primitive) | 1/2 item cost | d4 | The item is fragile. 
- **Copper** | 1 (Primitive) | 1/2 item cost | d4 | The item is fragile. 
- **Fresh Wood** | 1 (Primitive) | 1/2 item cost | d4 | The item is fragile. 
- **Stone** | 1 (Primitive) | 1/2 item cost | d4 | The item is fragile. 
- **Brass** | 2 (Simple) | - | d6 | Default material for metallic armor, helmets, and shields. 
- **Bronze** | 2 (Simple) | - | d6 | Default material for metallic armor, helmets, and shields. 
- **Hard Wood** | 2 (Simple) | - | d6 | Default material for weapon shafts and light shields. 
- **Iron** | 2 (Simple) | - | d6 | Default material for metallic armor, helmets, and shields in some regions. 
- **Leather** | 2 (Simple) | - | d6 | Default material for light armor and light shields. 
- **Obsidian** | 2 (Simple) | +100 | d6 | The item is fragile.<br />- Weapon: +1 damage. 
- **Chitin** | 3 (Advanced) | +500 | d6 | Some chitinous creatures can be harvested for their chitin plates. They can be used as a lighter, organic alternative to metals.<br /><br />- Armor/Helmet/Shield: The item’s load is halved (min. 1/2 load). 
- **Brimstone Bronze** | 4 (Formidable) | +2,000 | d6 | - Weapon: Attacks deal fire damage. On a strong hit, this weapon inflicts burning (2). On a strong critical, this weapon inflicts burning (4). <br />- Ammo: +1 damage and attacks deal fire damage.<br />- Armor: Wearing the armor grants you Resistance against fire damage.<br />- Helmet: Wearing the helmet grants you Resistance against fire damage.<br />- Shield: Parrying with the shield grants you Resistance against fire damage.  
- **Dragon Bone** | 4 (Formidable) | +2,000 | d6 | - Weapon: Increase the weapon damage by 1 (non-heavy) or 2 (heavy).<br />- Ammo: +1 damage. 
- **Dragon Scales** | 4 (Formidable) | +2,000 | d8 | - Armor: +1 AV (light) or +2 AV (heavy).<br />- Helmet/Shield: +1 AV. 
- **Dwarf-Steel** | 4 (Formidable) | +2,000 | d8 | Silvery metal emitting constant warmness. Imported from the desert fortresses of the dwarves. The secret to creating this magical steel is strongly protected by them.<br /><br />- Weapon: Increase the weapon damage by 1 (non-heavy) or 2 (heavy).<br />- Armor: +1 AV (light) or +2 AV (heavy).<br />- Helmet/Shield: +1 AV.<br />- Ammo: +1 damage. 
- **Iron-Silk** | 4 (Formidable) | +2,000 | d6 | Harvested from giant spiders in volcanic regions. Threads made from Iron-Silk are as sturdy as metal without much weight.<br /><br />- Light Armor: The item’s load is halved (min. 1/2 load). 
- **Meteorite** | 4 (Formidable) | +2,000 | d8 | Blueish iron ore of the cosmos, said to be imbued with iinnate magical energies.<br /><br />- Weapon: Increase the weapon damage by 1 (non-heavy) or 2 (heavy).<br />- Armor: +1 AV (light) or +2 AV (heavy).<br />- Helmet/Shield: +1 AV.<br />- Ammo: +1 damage. 
- **Silverwood** | 4 (Formidable) | +2,000 | d8 | Very sturdy wood of the Silverleaf Oak with shiny silver veins running through it.<br /><br />- Weapon: Increase the weapon damage by 1 (non-heavy) or 2 (heavy).<br />- Shield: +1 AV. 
- **Truesilver** | 4 (Formidable) | +2,000 | d6 | A magical alloy that has a poisonous effect against certain supernatural creatures.<br /><br />- Weapon/Ammo: Werecreatures, fiends, and undead are vulnerable to this weapon&#x27;s or ammo&#x27;s damage. <br />- Armor: Attacks from werecreatures, fiends, and undead inflict 4 damage (ignoring AV) against the attacker. <br />- Shield: Parrying with the shield imposes +1 bane on attacks from werecreatures, fiends, and undead against you. 
- **Lunarite** | 5 (Exceptional) | +10,000 | d10 | Midnight-blue crystals. One of the three celestial crystals, found in the deepest caverns of the underworld. Mixed with iron in a magic ritual to create a black-blue alloy that absorbs light and is always cold to the touch. The material absorbs magical energy, either used as armor to protect against magic, or as restrains which prevent the user from casting magic.<br /><br />Items made from this material are immune against any enchantments or effects from spells affecting them. You can‘t cast spells while wearing any item made from this material.<br />- Weapon: Increase the weapon damage by 1 (non-heavy) or 2 (heavy). Ignore resistances against the weapon’s damage.<br />- Armor: Wearing the armor grants you resistance against non-physical damage you take from spells and magical effects.<br />- Helmet: Wearing the helmet grants you resistance against psychic damage.<br />- Shield: Parrying with the shield grants you resistance against non-physical damage you take from spells and magical effects.<br />- Ammo: +1 damage. Ignore resistances against the weapon’s damage. 
- **Night‘s Wood** | 5 (Exceptional) | +10,000 | d8 | Silverwood infused with the spiritual power of the moon. The creation ritual is a well kept secret of the Alfir.<br /><br />- Weapon: Increase the weapon damage by 2 (non-heavy) or 3 (heavy). Attacks deal arcane damage.<br />- Armor: +1 AV (light) or +2 AV (heavy). The item’s load is halved (min. 1/2 load).<br />- Shield: +1 AV. 
- **Orichalcum** | 5 (Exceptional) | +10,000 | d8 | Very rare light-blue metal that is almost weightless. A magic ritual grants the item exceptional flexibility and hardness without increasing the ore’s weight.<br /><br />- Weapon: Increase the weapon damage by 2 (non-heavy) or 3 (heavy). The item’s load is halved (min. 1/2 load).<br />- Armor: +2 AV (light) or +3 AV (heavy). Reduce rigid property by 1. The item’s load is halved (min. 1/2 load).<br />- Helmet or Shield: +2 AV. The item’s load is halved (min. 1/2 load).<br />- Ammo: +2 damage. 
- **Solarite** | 5 (Exceptional) | +10,000 | d8 | Red-golden crystals. One of the three celestial crystals, found atop the peaks of the celestial mountains. Mixed with bronze in a magic ritual to create a red-golden alloy that emits constant warmth. Rapid movements briefly ignite the material with immense heat.<br /><br />- Weapon: Increase the weapon damage by 2 (non-heavy) or 3 (heavy). Attacks deal fire damage.<br />- Ammo: +2 damage. Attacks deal fire damage. 
- **Aegium** | 6 (Epic) | +50,000 | d12 | White-golden metal from the high spirit realms themselves. Are said to be the god’s favored metal.<br /><br />- Weapon: Increase the weapon damage by 3 (non-heavy) or 4 (heavy).<br />- Armor: +3 AV (light) or +4 AV (heavy).<br />- Helmet or Shield: +3 AV.<br />- Ammo: +3 damage. 
- **Elder Dragon Bones** | 6 (Epic) | +50,000 | d10 | - Weapon: Increase the weapon damage by 3 (non-heavy) or 4 (heavy). Attacks deal fire damage.<br />- Ammo: +3 damage. 
- **Elder Dragon Scales** | 6 (Epic) | +50,000 | d10 | - Armor: +2 AV (light) or +3 AV (heavy). Wearing the armor grants you Resistance against fire damage.<br />- Helmet: +2 AV.<br />- Shield: +2 AV. Parrying with the shield grants you Resistance against fire damage. 
- **Eternite** | 6 (Epic) | +50,000 | d10 | Light ocean-blue crystal. Most rare of the three celestial crystals. Shaped in a magic ritual, creating a semitransparent dark-blue alloy with what looks like tiny stars inside the material.<br /><br />- Weapon: Increase the weapon damage by 2 (non-heavy) or 3 (heavy). Attacks ignore 1/2 the enemy’s AV (rounded up). <br />- Ammo: +2 damage. Attacks ignore 1/2 the enemy’s AV (rounded up).  
- **Titanium** | 6 (Epic) | +50,000 | d12 | Deep magenta coloured metal with a shiny light tint at it’s edges said to be created where cracks in the fabric of the material world collide with the lower spirit realms. Only found in places of deep magical power. Items made from it possess a thin, natural energy shield around them, lessening impacts made with high velocity against the material.<br /><br />- Weapon: Increase the weapon damage by 3 (non-heavy) or 4 (heavy).<br />- Armor: +2 AV (light) or +3 AV (heavy). Wearing the armor grants you Resistance against physical damage.<br />- Helmet: +2 AV. Wearing the helmet makes you immune against being shaken.<br />- Shield: +2 AV. Parrying with the shield grants you Resistance against physical damage.<br />- Ammo: +3 damage. 
+### Primitive Materials (Quality 1)
+
+| d10 | Cost per load | Material | Properties |
+| --- | --- | --- | --- |
+| 1-2 | 1/2 base cost | Bone | The item is fragile. |
+| 3-4 | 1/2 base cost | Copper | The item is fragile. |
+| 5- | 1/2 base cost | Fresh Wood | The item is fragile. |
+| 7-8 | 1/2 base cost | Stone | The item is fragile. |
+| 9-10 | 1/2 base cost | Flint | The item is fragile. |
+
+### Default Materials (Quality 2)
+
+| d10 | Cost per load | Material | Properties |
+| --- | --- | --- | --- |
+| 1-2 | base cost | Brass | Default material for metallic armor, helmets, and shields. |
+| 3-4 | base cost | Bronze | Default material for metallic weapons, armor, helmets, and shields. |
+| 5-6 | base cost | Hard Wood | Default material for weapon shafts, bows, arrows, and light shields. |
+| 7-8 | base cost | Leather | Default material for light armor and light shields. |
+| 9-10 | base cost | Horn | Default material for weapon shafts, bows, arrows, and light shields. |
+
+### Exotic Materials (Quality 3)
+
+| d10 | Cost per load | Material | Properties |
+| --- | --- | --- | --- |
+| 1-2 | +100 | Chitin | Some chitinous creatures can be harvested for their chitin plates. They can be used as a lighter, organic alternative to metals.<br/><br/>- Armor/Helmet/Shield: The item’s load is halved (min. 1 load). |
+| 3-4 | +100 | Iron | While a relatively common metal, many cultures revolt against using iron, as it has a warding effect against spirits of the natural world and is thus considered evil or cursed. Therefore it is also known as “Cursestone” and most often used to sap away the magic from any imprisoned mystics.<br/><br/>The item has the following properties:<br/>- Can’t be enchanted through mystic magic.<br/>- You can‘t cast mystic spells while wearing any item made from this material.<br/>- Spirit creatures are vulnerable against damage from this item. |
+| 5-6 | +100 | Obsidian | A volcanic mineral which can be crafted into very sharp razor blades, though they are extremely brittle and break easily.<br/><br/>The item is fragile.<br/>- Ammo/Weapon: Increase the weapon damage by 1 (enhancement bonus). |
+| 7-8 | +100 | Monster Bone | A variety of monstrous creatures possess such strength that even their bones are as sturdy as metal. Using such bones for weapons, armor, helmets, or shields provides a comparable quality as their common counterparts. |
+| 9-10 | +100 | Iron-Silk | Harvested from giant spiders in volcanic regions. Threads made from Iron-Silk are as sturdy as metal without much weight.<br/><br/>- Light Armor: The item’s load is halved (min. 1 load). |
+
+### Potent Materials (Quality 4)
+
+| d6 | Cost per load | Material | Properties |
+| --- | --- | --- | --- |
+| 1 | +2,000 | Brimstone Bronze | This bronze alloy is created with a special sort of copper only found in highly volcanic regions. The resulting metal captures the magical energies of fire in small veins running through it.<br/><br/>- Ammo: +1 damage and attacks deal fire damage.<br/>- Armor: Wearing the armor grants you Resistance against fire damage.<br/>- Helmet: Wearing the helmet grants you Resistance against fire damage.<br/>- Shield: Parrying with the shield grants you Resistance against fire damage.<br/>- Spellcasting Anchor: When dealing fire damage with a spell, add 1/2 x Spirit/Mind as damage.<br/>- Weapon: Attacks deal fire damage. On a strong hit, this weapon inflicts burning (2). On a strong critical, this weapon inflicts burning (4).  |
+| 2 | +2,000 | Dragon Bone | Dragons are renowned creatures for their immense might and ability to control the elements of their domain. As such even their bones are infused with their power and can be used for powerful equipment.<br/><br/>- Ammo: +2 damage.<br/>- Spellcasting Anchor: Increase your spell damage by +2/+4/+6 (enhancement bonus).<br/>- Weapon: Increase the weapon damage by 2 (enhancement bonus). |
+| 3 | +2,000 | Dragon Scales | Dragons are renowned creatures for their immense might and ability to control the elements of their domain. Their scales are extremely hard and can be used in the creation of armor, helmets, or shields.<br/><br/>Increase the item’s Durability die by one step.<br/>- Armor/Helmet/Shield: +1 AV. |
+| 4 | +2,000 | Dwarf-Steel | Silvery metal emitting constant warmness. Imported from the desert fortresses of the dwarves. The secret to creating this magical steel is strongly protected by the dwarves.<br/><br/>Increase the item’s Durability die by one step.<br/>- Ammo: +2 damage.<br/>- Armor/Helmet/Shield: +1 AV.<br/>- Weapon: Increase the weapon damage by 1 (enhancement bonus). |
+| 5 | +2,000 | Meteorite | Blueish silver ore fallen out of the cosmos. It is said to be imbued with innate magical energies from unknown places. Some treat it with fear, others with reverence.<br/><br/>Increase the item’s Durability die by one step.<br/>- Ammo: +2 damage.<br/>- Armor/Helmet/Shield: +1 AV.<br/>- Spellcasting Anchor: Increase your spell damage by +2/+4/+6 (enhancement bonus).<br/>- Weapon: Increase the weapon damage by 1 (enhancement bonus). |
+| 6 | +2,000 | Silverwood | Very sturdy wood of the Silverleaf Oak with shiny silver veins running through it. The tree’s sap is said to be poisonous to creatures of the night. It can be used as a non-metallic alternative.<br/><br/>- Heavy Armor: Creatures of the night suffer +1 bane on attacks against you.<br/>- Shield: When a creature of the night attacks against your Parry, they suffer +1 bane on the attack.<br/>- Weapon: Creatures of the night are vulnerable against damage from this weapon.<br/><br/>Creatures of the night include werewolfs, vampires, doppelgangers, any kind of undead, and others (noted in the creature’s statistics). |

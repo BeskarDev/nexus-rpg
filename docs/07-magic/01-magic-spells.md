@@ -20,7 +20,7 @@ Being an arcanist was, for the longest time, considered to be a heretical mutati
 - Your Focus is equal to (Mind - 2) + (2 x Arcana).
 - Choose your first discipline and learn two rank 0 spells for it.
 - Whenever you gain a rank in Arcana, learn two new spells of equal or lower rank for any discipline you learned or adopt a new discipline and learn one rank 0 spell for it.
-- You must be holding an arcane conduit in your hand to cast arcane spells.
+- You must be holding an arcane conduit as a spellcasting anchor in your hand to cast arcane spells.
 
 **Arcane Disciplines**
 
@@ -35,18 +35,16 @@ Arcane Disciplines stand in no direct relation to one another but display the va
 
 ### Mysticism
 
-Mystic magic manipulates the world around you and channels its energy to turn into spells.
+Mystic magic manipulates the world around you and channels its energy by speaking Words of Power to turn into spells.
 
 Practicing mystic magic can take many forms. Devoting yourself to a god and channeling its magic, or communing with the spirits of the world directly. Almost every community has at least one person among them practicing mystic magic. From the shaman of the village, over a circle of witches, to a full priesthood to a major deity.
 
 - Your Spell Power is 1/2 your Spirit.
 - Your Focus is equal to (Spirit - 2) + (2 x Mysticism).
-- Choose your traditions:
-    - Devotion (choose one tradition, and you learn three spells for it immediately and three instead of two spells whenever you learn new spells from gaining a rank in Mysticism)
-    - Balance (choose two opposing traditions and learn two spells from among them)
-    - Scholar (choose three traditions in which neither of them opposes another one of them and learn two spells from among them)
-- Whenever you gain a rank in Mysticism, learn two new spells of equal or lower rank for any tradition you learned.
-- You must be holding a mystic talisman in your hand to cast mystic spells.
+- Choose your traditions in one of two ways (this can’t be changed afterwards):
+  - **Balance.** Choose any two traditions and learn two spells from among them. Whenever you gain a rank in Mysticism, learn two new spells of equal or lower rank for any of your traditions.
+  - **Devotion.** Choose one tradition and learn three spells from it. Whenever you gain a rank in Mysticism, learn three new spells of equal or lower rank for your tradition.
+- You must be holding a mystic talisman as a spellcasting anchor in your hand to cast mystic spells.
 
 **Mystic Traditions**
 
@@ -98,7 +96,7 @@ When a spell's effect lists “+X damage” for damage or “+X HP” for healin
 Inversely, if a spell’s effect only lists “X damage” or “X HP” without a “+”, you don’t use your Spell Power as a base value, but only the listed value and any other applicable modifiers.
 
 > For example, you cast the arcane spell Flickering Flame. You have a d8 for your Mind attribute. First, roll Mind + Arcana vs. the target’s Dodge. On a weak hit, you deal 6 fire damage to them. 4 damage from your Spell Power (1/2 Mind) and “+2 fire damage” from the spell’s effect for a weak success.
-> 
+>
 
 ### Spell Concentration
 
@@ -106,26 +104,26 @@ Some spells require Concentration to be cast. These spells most often have conti
 
 | Damage Taken | 5 or less | 6-10 | 11-20 | 21-30 | 31-40 | 41 or more |
 | --- | --- | --- | --- | --- | --- | --- |
-| Difficulty | easy (6) | moderate (8) | hard (10) | very hard (12) | extremely hard (14) | nearly impossible (16) |
+| Difficulty | Easy (6) | Medium (8) | Hard (10) | Very Hard (12) | Extreme (14) | Legendary (16) |
 
 ### Heightening Spells
 
-Some spells allow you to cast them as a higher ranked version to increase their potency at the cost of more Focus. Look at the description of a spell under „Heightened Casting“ to see the changes to the spell‘s effect when doing so.
+Some spells allow you to cast them as a higher ranked version to increase their potency at the cost of more Focus. Look at the description of a spell under „Heightened“ to see the changes to the spell‘s effect when doing so.
 
 > Some spells describe heightening effects, such as „deal +4/8/12 damage instead.“ or „inflict burning (2/4/6) instead“. If multiple values are separated by slashes, it refers to the increases effects with better SL. In the first example, the heightened spell would deal +4 damage on a weak success, +8 on a strong success, or +12 on a critical success. The same goes for conditions with multiple values listed.
-> 
+>
 
 You can only heighten a spell up to a rank you are capable of casting normally. When heightening a spell to a higher rank, it‘s Focus Cost and Target Difficulty (only if the spell has a static Target Difficulty) are increased according to the following table:
 
 | Heightened Spell Rank | New Focus Cost | New Target Difficulty |
 | --- | --- | --- |
-| 2 | 4 | Moderate (8) |
+| 2 | 4 | Medium (8) |
 | 3 | 6 | Hard (10) |
 | 4 | 8 | Very Hard (12) |
-| 5 | 10 | Extremely Hard (14) |
+| 5 | 10 | Extreme (14) |
 
 > For example, you have Mysticism at rank 2 and want to cast a heightened version of the rank 1 spell Storm Coat. Because of your Mysticism, you are able to heighten the spell to rank 2. When doing so, the focus cost of the spell is increases to 4 and the TN is increased from moderate (8) to hard (10). On a successful cast, the heightened effect of Storm Coat increases the damage reflected on attackers from +0 to +2 lighting damage.
-> 
+>
 
 ### Bending Spell Effects
 
@@ -134,7 +132,7 @@ The effects of any given spell describe the most general use case for it. But an
 In this case, you can attempt to bend the spell’s effect.
 
 > Note, that bending spell effects is different to arcane spell casters ability to alter spells with their Metamagic Arts. Bending spell effects is generally less potent than that.
-> 
+>
 
 When doing so, describe your intention with the bend spell effect and how you would accomplish this to the GM. The GM can then decide if this bending effect still fits the general idea of the spell and how it might work within the rules.
 

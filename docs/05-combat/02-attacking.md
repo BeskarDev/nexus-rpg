@@ -3,6 +3,7 @@ sidebar_position: 2
 ---
 
 # 🤺 Attacking
+
 You can attack with various weapons in melee or at range. You can also attack with a spell.
 
 | Attack | Skill Roll | Defense |
@@ -18,15 +19,11 @@ You have to have learned the skill required by your weapon (Fighting for melee w
 
 | SL | Effect |
 | --- | --- |
-| Blunder | Choose one:
-- Roll a Durability Check for the weapon you attacked with.
-- Roll a Supply Check if your weapon uses ammo.
-- One item you are holding is knocked to the ground somewhere close. |
+| Blunder | Choose one:<br/>- Roll a Durability Check for the weapon you attacked with.<br/>- Roll a Supply Check if your weapon uses ammo.<br/>- One item you are holding is knocked to the ground somewhere close. |
 | Failure | You miss your target. |
 | Weak | You hit your target with 1 x weapon damage. |
 | Strong | You hit your target with 2 x weapon damage. |
-| Critical | You hit your target with 3 x weapon damage.
-Also, the target has to roll a Durability Check for their armor, helmet, shield, weapon, or other held item (their choice). |
+| Critical | You hit your target with 3 x weapon damage.<br/>Also, the target has to roll a Durability Check for their armor, helmet, shield, weapon, or other held item (their choice). |
 
 ## Melee Attacks
 
@@ -64,7 +61,7 @@ When you miss your target when throwing an alchemical item that has some area ef
 
 ## Damage
 
-On a successful attack, you deal damage to the enemy. 
+On a successful attack, you deal damage to the enemy.
 
 - Your base damage is equal to half of the attribute you rolled your attack with. Per default, this is 1/2 Strength for melee weapons, 1/2 Agility for ranged weapons, 1/2 Spirit for mystic spells, and 1/2 Mind for arcane spells.
 - You add extra damage from your weapon or spell, plus any extra damage from abilities or other effects.
@@ -81,7 +78,7 @@ When some effect inflicts some amount of lasting damage on you, you first take n
 There exist multiple damage types which describe the various ways of inflicting harm. If some effect adds damage of a specific type to an attack, all of the attack‘s damage is treated as that damage type.
 
 > If an attack, spell, or effect mentions no specific damage type, the damage is always assumed to be physical.
-> 
+>
 
 | Damage Type | Description |
 | --- | --- |
@@ -103,7 +100,7 @@ Adventurers and other creatures can gain resistances or weaknesses to certain da
 - Resistance: You take 1/2 x damage (rounded up).
 - Weakness: You take 1.5 x damage (rounded up).
 
-You apply these resistances and weaknesses first before subtracting your AV or modifying the damage in any other way. If you gain resistance or weakness from multiple conditions against the same damage, you still only apply it once. If you apply both resistances and weaknesses against the same damage, cancel them out with each other and apply normal damage.
+You apply these modifiers after subtracting your AV or modifying the damage in any other way. If you gain resistance or weakness from multiple conditions against the same damage, you still only apply it once. If you apply both resistances and weaknesses against the same damage, cancel them out with each other and apply normal damage.
 
 ## Attack Options
 
@@ -111,7 +108,7 @@ When attacking, you have access to different options through weapon properties o
 
 ### Dual-wielding
 
-When you are wielding two light melee weapons, you can attack with both of them in the same Action. Each weapon counts as its own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks.
+While you are wielding two light melee weapons, you can attack with both of them in the same Action. Each weapon attack counts as its own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks.
 
 ### Attacking multiple targets
 
@@ -128,3 +125,19 @@ Attacks with improvised weapons suffer +1 bane and deal damage based on their si
 | light | 2 | d4 |
 | one-handed | 3 | d4 |
 | two-handed | 4 | d6 |
+
+## Attacking Objects
+
+Sometimes you want to attack free-standing objects, such as to break into a door or cut the rope of a chandelier. When doing so, make a normal attack roll either in melee or at range against the object, provided you have any realistic chance of damaging the object with your chosen weapon (e.g. you can’t smash a door by firing a normal arrow).
+
+Objects have a Defense (counting for both Parry and Dodge), AV, and HP, the same as creatures. Once the HP are reduced to 0, the object is destroyed.
+
+Refer to the table below to see what the statistics of any given object are.
+
+| Object Type | Defense | AV | HP |
+| --- | --- | --- | --- |
+| rope | 12 | 0 | 5 |
+| ceramic vase or pot | 10 | 2 (light) | 5 |
+| wooden door or chest | 8 | 5 (light) | 10 |
+| metal door or chest | 8 | 10 (heavy) | 20 |
+| stone wall | 8 | 20 (heavy) | 40 |

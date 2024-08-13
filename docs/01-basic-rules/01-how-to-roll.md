@@ -15,16 +15,19 @@ Most times you will pick up your dice to roll a Skill Test! Whenever the rules r
 
 **Skill Rank:** If you have learned a skill that would help the situation, add your Rank in it to the roll.
 
-**Target Number (TN):** Either picked by the GM based on the Difficulty or determined by some game mechanic (e.g. an enemy’s Defense). If no other difficulty is mentioned for a roll, it is always moderate (8).
+**Target Number (TN):** Either picked by the GM based on the Difficulty or determined by some game mechanic (e.g. an enemy’s Defense). If no other difficulty is mentioned for a roll, it is always medium (8).
 
-| Difficulty | TN | Example |
+| Difficulty | TN | Examples (Strength, Agility, Spirit, Mind) |
 | --- | --- | --- |
-| Easy | 6 | convince an ally to help you out |
-| Moderate | 8 | haggle with a merchant |
-| Hard | 10 | notice the uneven stone tile which springs a trap |
-| Very Hard | 12 | quickly leap over wet stones in a rushing river |
-| Extremely Hard | 14 | bend iron bars with your bare hands |
-| Nearly Impossible | 16 | hold the massive falling stone pillar from falling on your allies |
+| Trivial* | 4 | push open a stuck window, hop over a stream, recognize a common plant, remember a basic fact |
+| Easy | 6 | jump over a small hole in the floor, dodge a thrown rock, sense someone’s mood, recount a local folktale |
+| Medium | 8 | climb a rough cliff face, perform a complex dance, notice a hidden predator at night, understand the cause of natural phenomenon |
+| Hard | 10 | climb a rough cliff face barehanded, perform a complex dance, notice a hidden predator at night, decipher a coded message |
+| Very Hard | 12 | lift a boulder, precisely land on a narrow ledge, calm a ferocious beast, understand a complex mechanism |
+| Extreme | 14 | uproot a tree, dodge a barrage of arrows, intuitively sense an approaching ambush, understand the workings of an otherworldly portal |
+| Legendary | 16 | topple a huge stone statue, perform a gravity-defying acrobatic feat, predict an impending natural disaster, decipher an ancient forgotten language |
+
+** unless you are very bad at the given task, it is automatically assumed that you can succeed on trivial tasks.*
 
 ### Pass or Fail
 
@@ -36,31 +39,33 @@ For when you not only need to know if you failed or succeeded but how bad or wel
 
 If you…
 
-- roll 4 or more below the TN, you blundered.
+- roll 6 or more below the TN, you blundered.
 - roll below the TN, you failed.
 - roll the exact TN or one above it, you score a weak success.
-- roll 2 or more above the TN, you score a strong success.
-- roll 4 or more above the TN, you score a critical success.
+- roll 3 or more above the TN, you score a strong success.
+- roll 6 or more above the TN, you score a critical success.
 
-> For example, you roll a test against a moderate difficulty of 8. If you roll a 8 or 9, it is a weak success. A 10 or 11 would be a strong success and a 12 or higher would be a critical success.
+> For example, you roll a test against a medium difficulty of 8. If you roll a 8, 9, or 10, it is a weak success. An 11, 12, or 13 would be a strong success and a 14 or higher would be a critical success.
 > 
 
 | Difference to TN | Success Level (SL) | Description |
 | --- | --- | --- |
-| -4 or lower | Blunder | You fail horribly at your task. This situation gets worse or your failure has a major negative consequence. |
-| -3 to -1 | Failure | You fail at your task and something bad happens as a result of it. |
-| 0 to 1 | Weak | You barely succeed. In a stressful situation, your success might have some cost or consequence attached. |
-| 2 to 3 | Strong | You succeed fully and without strings attached. |
-| 4 or more | Critical | You succeed in the best way possible. Your success comes with positive side effects. |
+| -6 or lower | Blunder | You fail horribly at your task. This situation gets worse or your failure has a major negative consequence. |
+| -5 to -1 | Failure | You fail at your task and something bad happens as a result of it. |
+| 0 to 2 | Weak | You barely succeed. In a stressful situation, your success might have some cost or consequence attached. |
+| 3 to 5 | Strong | You succeed fully and without strings attached. |
+| 6 or more | Critical | You succeed in the best way possible. Your success comes with positive side effects. |
 
 > Note that failing or blundering a roll shouldn’t just mean that the adventurer is stuck in a situation - that’s never fun. Either something bad happens as a result of their roll and after they deal with the bad thing, they can try the roll again, OR something bad happens and the situation is resolved regardless, just in a disadvantageous way to the adventurer.
 > 
 
 ### Boons and Banes
 
-Whenever you're instructed to “gain a boon” or “suffer a bane” in an effect, roll an additional 1d6 to your dice roll. If you're required to add both boons and banes, only roll extra d6s based on the difference between the two.
+Whenever you're instructed to “gain a boon” or “suffer a bane” in an effect, roll an additional 1d6 to your dice roll. If you're required to add both boons and banes, cancel them out one to one and only roll an extra 1d6 if any boons or banes remain. 
 
-If you roll with boons, pick the highest result among the d6 for your roll and add it to your Attribute Die. Rolling with banes forces you to take the lowest result instead.
+If you roll with boons, pick the highest result among the 2d6 for your roll and add it to your Attribute Die. Rolling with banes forces you to take the lowest result instead.
+
+If you would ever benefit from. two or more boons or suffer two or more banes, you still roll with 2d6 and pick one of the results, but you also gain a +1 bonus for boons or - 1 penalty of banes beyond the first. 
 
 > There exist the following cases of rolling with boons and/or banes.
 - Roll with +1 boon → You roll your Attribute Die + 2d6 (take the highest of the two d6) + Skill Rank.
@@ -96,9 +101,7 @@ Dice Checks are all dice rolls that aren’t considered skill tests and are refe
 
 ### Durability Checks
 
-You must roll a Durability check, when some item you are wearing, carrying, or wielding is at the risk of being damaged. Each item has a corresponding Durability die based on its material or size. If nothing else is mentioned for an item, it is always assumed to have a d6 Durability die.
-
-If you roll a 1 or a 2 with your Durability check, a normal item gets damaged, or an already damaged item becomes destroyed. For more details, see the Weapon & Armor Properties section. You can attempt to repair damaged or destroyed items, as described in the Downtime section.
+You must roll a Durability check, when some item you are wearing, carrying, or wielding is at the risk of being damaged. Each item has a corresponding Durability die based on its material or size (see Item Durability for more details).
 
 ### Supply Checks
 
