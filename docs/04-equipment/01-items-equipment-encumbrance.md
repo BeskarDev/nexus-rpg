@@ -23,13 +23,14 @@ Adventurers amass wealth in the abstracted form of coins over their adventures. 
 One coin is the cost of a bag of grain, a simple meal at a market, or the daily pay of an unskilled laborer.
 
 > The amount of coins an adventurer carries around with them takes up no load. But note, that any found treasure does take up a varying amount of load, depending on what assortment of items the treasure consists of. Only once the adventurers successfully bring the treasure back into an appropriately sized settlement and take some downtime there, are they able to add their won treasure to their wealth of coins (more details under the “Sell Treasure” Activity in the Downtime section).
-> 
+>
 
 ## Items
 
 You can buy, sell, and find a variety of items that are useful for your adventures.
 
 ### Item Quality
+
 An item’s Quality determines how hard is it to create, find, and how much it is worth.
 
 > Note that the worth of consumable items is treated as one Quality lower.
@@ -106,9 +107,25 @@ The maximum amount of Supply units you can carry are accumulated across each typ
 
 If you carry mixed Supply of the same type (e.g. arrows and bolts), they only take up load once. If they take up different amounts of load, only count the highest one.
 
+## Item Durability
+
+Each item has a Durability die associated with it, representing it’s hardness and resistance to being damage or destroyed. See the table below to see the Durability die of all kinds of items and equipment. Note, that special materials and enchantments can modify an item’s original Durability die.
+
+| Item Type Examples | Durability Die |
+| --- | --- |
+| glass, ceramic, cloth | d4 |
+| light or normal weapons, light armor, wood, leather | d6 |
+| heavy weapons, heavy armor, metal, stone | d8 |
+
+If you roll a 1 or a 2 with your Durability check, a non-damaged item gets damaged or an already damaged item becomes destroyed. For more details on the effects, see the Weapon & Armor Properties section. You can attempt to repair damaged or destroyed items, as described in the Downtime section.
+
+### Increasing or decreasing Durability
+
+Any effects that increase or decrease Durability will add or remove a number of steps from the item’s Durability die. Reducing Durability lower than a d4 or increasing it above d12 will affect the dice the same as for Attribute die (d4 to d4-1 and d12 to d12+1, modifiers are added or subtracted from the result). Any Durability die can never be decreased below d4-1 or increased above d12+1, as that would make you automatically fail or succeed on Durability checks.
+
 ## Repairing damaged items
 
-While carrying a crafting kit, you can attempt to repair a damaged item during a night's rest. Roll Mind + Crafting against 6 + the item’s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged. Destroyed items can‘t be repaired this way and instead require a downtime activity.
+While carrying a crafting kit, you can attempt to repair a damaged item during a night's rest. Roll Agility/Mind + Crafting against 6 + the item’s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged. Destroyed items can‘t be repaired this way and instead require a downtime activity to be usable again.
 
 # Equipment
 
@@ -131,30 +148,37 @@ Adventurers carry around a lot of equipment and loot. Encumbrance determines the
 
 ### Carrying Items
 
-Normally any adventurer can only carry what they can hold in their hands, or wear on their body. To be able to carry more items than that, they need containers. Containers are worn items that can hold onto additional items. How many items any container can hold at maximum is determined by the items combined load (see below).
+Normally any adventurer can only carry what they can hold in their hands or wear on their body. To be able to carry more items than that, they need containers. Containers are worn items that can hold onto additional items. How many items any container can hold at maximum is determined by the items combined load (see below).
 
 ### Item Load
 
 Carrying items accumulate load. Load is an abstracted measurement of weight and size. Once you carry too much load, you are either encumbered or even over-encumbered.
 
-Generally, an item weighting up to 2 kilograms or up to the size of a water melon is considered 1 load. Items weighting up to 1 kilogram or the size of mango are 0.5 load. Smaller items are considered to have 0 load.
+Generally, an item fitting into one hand takes up 1 load. An item requiring two hands to hold takes up 2 load. Items so small, you can fit multiple of them in a single hand take up 0 load, unless you carry enough of them together.
 
-All equipment has listed how much load they take up. When determining the load of any 
+> For example, a shortsword takes up 1 load, while a two-handed greatsword takes up 2 load. A single gem is 0 load, but a bag of multiple dozen gems takes up 1 load.
+>
 
 ### Becoming encumbered
 
-An adventurer’s maximum amount of load they can carry without being encumbered is equal to 2 x Strength. Once you carry 3 x Strength in load, you are over-encumbered and can‘t carry any more load. How much you can carry is also affected by your method of storage. These values assume you carry a backpack and enough bags and pouches to store your items.
+An adventurer’s maximum amount of load they can carry without being encumbered is equal to Strength + 4. Once you carry 2 x Strength + 4 in load, you are over-encumbered and can‘t carry any more load. How much you can carry is also affected by your method of storage. These values assume you carry a backpack and enough bags and pouches to store your items.
 
 | Strength | Encumbrance Limit | Over-Encumbrance Limit |
 | --- | --- | --- |
 | d4 | 8 load | 12 load |
-| d6 | 12 load | 18 load |
-| d8 | 16 load | 24 load |
-| d10 | 20 load | 30 load |
-| d12 | 24 load | 36 load |
+| d6 | 10 load | 16 load |
+| d8 | 12 load | 20 load |
+| d10 | 14 load | 24 load |
+| d12 | 16 load | 28 load |
 
 Being encumbered or over-encumbered causes several effects.
 
-**Encumbered.** You suffer +1 bane on Strength or Agility rolls for movement, such as climbing or swimming, and during travel.
+**Encumbered.** You suffer +1 bane on Strength or Agility rolls for movement, such as climbing or swimming, and during travel. You also can’t take the Dash Action or the Evade Quick Action.
 
 **Over-Encumbered.** You can‘t move. You can‘t use any Actions or do any rolls for physical activity.
+
+### Fighting while encumbered
+
+When carrying a lot of treasure or gear and suddenly a fight erupts, you can choose to drop your backpack and all items within to the ground during your turn without taking an Action.
+
+The backpack can be picked back up or searched for any specific item by using an Action.

@@ -42,6 +42,6 @@ def split_table_by_tradition(input_file, output_file):
                 file.write('\n\n')
 
 # Example usage
-input_file = 'output/mystic-spells.md'
+input_file = 'markdown/mystic-spells.md'
 output_file = 'split-tables/mystic-spells.md'
 split_table_by_tradition(input_file, output_file)

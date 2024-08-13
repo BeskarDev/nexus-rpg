@@ -52,9 +52,13 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 Natural psychics with the ability to read other peoples' intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company.
 
-**Cultures:** Auflin (Willow-Gnomes), Burrin (Den-Gnomes) 
+**Cultures:** Auflin (Willow-Gnomes), Burrin (Den-Gnomes)
 
-**Natural Empath.** You can read surface thoughts and emotions of any close creature by rolling Spirit + Insight. You can also project your feelings to a creature close to you, allowing you to communicate simple ideas with animals and other creatures. You also intuitively know how many living creatures are close around you and their general direction.
+**Size.** Gnomes are of small size, growing up to 0,90 to 1,00 meters tall on average with a stout build.
+
+**Age.** Gnomes reach adulthood at 25 and are considered of old age at 80 years. They can live up to 120 years on average.
+
+**Natural Empath.** You can read the surface thoughts and emotions of any close creature by rolling Spirit + Insight. You can also project your feelings to a creature close to you, allowing you to communicate simple ideas with animals and other creatures. You also intuitively know how many living creatures are close to you and their general direction.
 
 **Scent of Illusions.** You can instinctively make out illusions and invisible things. You gain +1 boon on Spirit rolls to identify magical falsehoods and illusions and impose +1 bane on rolls to fool you with falsehoods or illusions. 
 
@@ -75,7 +79,7 @@ A race of towering beings with incredible strength and endurance. They are often
 
 **Age.** Hunes reach adulthood at 30 and are considered of old age at 100 years. They can live up to 130 years on average.
 
-**Giant’s Blood.** +2 HP. Increase your Strength multiplier by 1 for how much load you can carry before becoming encumbered or over-encumbered.
+**Giant’s Blood.** +2 HP. Add +2 to your encumbrance and over-encumbrance limits.
 
 **Stoic Mind.** +1 Resist. You gain +1 boon on Spirit + Fortitude rolls.
 
@@ -111,7 +115,7 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 
 **Size.** Goblins are of small size, growing up to 0,90 to 1,00 meters tall on average with a skinny build.
 
-**Age.** Gnomes reach adulthood at 10 and are considered of old age at 35 years. They can live up to 45 years on average.
+**Age.** Goblins reach adulthood at 10 and are considered of old age at 35 years. They can live up to 45 years on average.
 
 **Night Vision.** You can see one range category further from sources of bright and dim light.
 

@@ -16,11 +16,11 @@ Name | Description
 **narrowed** | You suffer +1 bane on Perception rolls (including Initiative).
 **noisy** | You suffer +1 bane on Cunning rolls (including surprising enemies).
 **parry X** | Increase your Parry by X. You can only benefit from one held item with this property at a time.
-**pierce** | If your Attribute Die results in a 1 or a 2 on your attack rolls, you can re-roll the test. You must take the results of the new roll. 
+**pierce** | If you fail an attack roll, you can re-roll the test once between your turns.
 **range (normal/max)** | You can attack with this ranged weapon at the given normal range. When attacking a target further away, you suffer +1 bane for each range step beyond your normal range, up to your max. distance.
 **reach** | You can attack enemies at close range. While any enemy is within melee range of you, you suffer +1 bane on the attack.
 **reload** | After attacking with this weapon, it needs to be reloaded before you can make another attack with it. As an Action or by skipping all Movement during your turn, you can reload the weapon.
-**rigid X** | You suffer +X bane(s) on the following rolls:<br/>- Strength rolls for physical exertion during travel, climbing, swimming, or sprinting.<br/>- Agility rolls.<br/>- Arcana rolls to cast spells. <br/>If you wear or wield multiple rigid items, you only suffer the penalties from the highest property among them. <br/>
+**rigid X** | You suffer +X bane(s) on the following rolls:<br/>- Strength rolls for physical exertion during travel, climbing, swimming, or sprinting.<br/>- Agility rolls.<br/>- Arcana rolls to cast spells. <br/>If you wear or wield multiple rigid items, you suffer all their penalties combined.<br/>
 **slash** | On a hit against an enemy in light or no armor, add your weapon damage an additional time to the total damage.
 **switch** | Choose one of the properties listed for this weapon to gain for an attack. If you make multiple attacks during the same turn, switch between the listed properties for each individual attack.
 **thrown (normal/max)** | This weapon or its ammo can be thrown for ranged attacks at the given normal range. When attacking a target further away, you suffer +1 bane for each range step beyond your normal range, up to your max. distance.<br/>You can roll thrown attacks with Strength instead of Agility (also for the base damage) and Fighting instead of Archery (choose any combination of either option). If the weapon is thrown, it is treated as a thrown ranged weapon even if it is normally a melee weapon.<br/>
