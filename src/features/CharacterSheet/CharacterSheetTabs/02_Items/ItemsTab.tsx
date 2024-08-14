@@ -191,7 +191,7 @@ export const ItemsTab: React.FC = () => {
 						})
 					}
 					label="Encumbered"
-					helperText="2 * STR"
+					helperText="STR + 4"
 					sx={{
 						maxWidth: '5rem',
 					}}
@@ -208,7 +208,7 @@ export const ItemsTab: React.FC = () => {
 						})
 					}
 					label="Overencumbered"
-					helperText="3 * STR"
+					helperText="2 * STR + 4"
 					sx={{
 						maxWidth: '6rem',
 					}}

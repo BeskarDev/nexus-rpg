@@ -86,7 +86,7 @@ export const {
 			state.unsavedChanges = true
 			state.activeCharacter.skills.skills.splice(0, 0, {
 				id: crypto.randomUUID(),
-				name: 'new skill',
+				name: '',
 				rank: 0,
 				xp: 0,
 			})
@@ -164,7 +164,7 @@ export const {
 			state.unsavedChanges = true
 			state.activeCharacter.items.weapons.splice(0, 0, {
 				id: crypto.randomUUID(),
-				name: 'new weapon',
+				name: '',
 				damage: {
 					base: 0,
 					weapon: 0,
@@ -213,11 +213,11 @@ export const {
 			state.unsavedChanges = true
 			state.activeCharacter.items.items.splice(0, 0, {
 				id: crypto.randomUUID(),
-				name: 'new item',
+				name: '',
 				properties: '',
 				cost: 0,
 				load: 0,
-				amount: 0,
+				amount: 1,
 			})
 		},
 		updateItem: (
@@ -255,7 +255,7 @@ export const {
 			state.unsavedChanges = true
 			state.activeCharacter.spells.spells.splice(0, 0, {
 				id: crypto.randomUUID(),
-				name: 'new spell',
+				name: '',
 				rank: 0,
 				cost: 0,
 				target: '',
