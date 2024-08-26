@@ -11,7 +11,7 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { AbilityRow } from '../AbilityRow'
+import { NpcRow } from './NpcRow'
 
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -245,11 +245,11 @@ export const PersonalTab: React.FC = () => {
 				<DynamicList droppableId="allies" onDragEnd={onAllyReorder}>
 					{allies.map((a, index) => (
 						<DynamicListItem key={a.id} id={a.id} index={index}>
-							<AbilityRow
+							<NpcRow
 								key={a.id}
-								ability={a.description}
-								updateAbility={(update) => updateAlly(update, index)}
-								deleteAbility={() => deleteAlly(index)}
+								description={a.description}
+								updateNpc={(update) => updateAlly(update, index)}
+								deleteNpc={() => deleteAlly(index)}
 							/>
 						</DynamicListItem>
 					))}
@@ -266,11 +266,11 @@ export const PersonalTab: React.FC = () => {
 				<DynamicList droppableId="contacts" onDragEnd={onContactReorder}>
 					{contacts.map((c, index) => (
 						<DynamicListItem key={c.id} id={c.id} index={index}>
-							<AbilityRow
+							<NpcRow
 								key={c.id}
-								ability={c.description}
-								updateAbility={(update) => updateContact(update, index)}
-								deleteAbility={() => deleteContact(index)}
+								description={c.description}
+								updateNpc={(update) => updateContact(update, index)}
+								deleteNpc={() => deleteContact(index)}
 							/>
 						</DynamicListItem>
 					))}
@@ -287,11 +287,11 @@ export const PersonalTab: React.FC = () => {
 				<DynamicList droppableId="rivals" onDragEnd={onRivalReorder}>
 					{rivals.map((r, index) => (
 						<DynamicListItem key={r.id} id={r.id} index={index}>
-							<AbilityRow
+							<NpcRow
 								key={r.id}
-								ability={r.description}
-								updateAbility={(update) => updateRival(update, index)}
-								deleteAbility={() => deleteRival(index)}
+								description={r.description}
+								updateNpc={(update) => updateRival(update, index)}
+								deleteNpc={() => deleteRival(index)}
 							/>
 						</DynamicListItem>
 					))}

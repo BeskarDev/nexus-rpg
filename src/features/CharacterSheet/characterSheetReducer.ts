@@ -126,19 +126,20 @@ export const {
 			state.unsavedChanges = true
 			state.activeCharacter.skills.abilities.splice(0, 0, {
 				id: crypto.randomUUID(),
+				title: '',
 				description: '',
 			})
 		},
 		updateAbility: (
 			state,
-			action: PayloadAction<{ update: string; index: number }>,
+			action: PayloadAction<{ update: Partial<Ability>; index: number }>,
 		) => {
 			const update = action.payload.update
 			const index = action.payload.index
 			state.unsavedChanges = true
 			state.activeCharacter.skills.abilities[index] = {
 				...state.activeCharacter.skills.abilities[index],
-				description: update,
+				...update,
 			}
 		},
 		deleteAbility: (state, action: PayloadAction<Ability>) => {

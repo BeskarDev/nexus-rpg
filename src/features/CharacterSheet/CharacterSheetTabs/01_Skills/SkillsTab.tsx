@@ -9,7 +9,12 @@ import {
 } from '@mui/material'
 import React, { useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
-import { Ability, AttributeType, CharacterDocument, Skill } from '../../../../types/Character'
+import {
+	Ability,
+	AttributeType,
+	CharacterDocument,
+	Skill,
+} from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
@@ -18,8 +23,8 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { AbilityRow } from '../AbilityRow'
 import { SkillRow } from './SkillRow'
+import { AbilityRow } from './AbilityRow'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -33,21 +38,27 @@ export const SkillsTab: React.FC = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-  const calculateXpForAttribute = (attribute: AttributeType): number => {
-    return 2 * (attribute - 6) // d4: -4, d6: 0, d8: 4, d10: 8, d12: 12
-  }
+	const calculateXpForAttribute = (attribute: AttributeType): number => {
+		return 2 * (attribute - 6) // d4: -4, d6: 0, d8: 4, d10: 8, d12: 12
+	}
 
 	const spendXP = useMemo(() => {
 		let newSpendXP = skills
 			.map((s) => s.xp)
 			.reduce((partialSum, a) => partialSum + a, 0)
 
-    newSpendXP += calculateXpForAttribute(activeCharacter.statistics.strength.value)
-    newSpendXP += calculateXpForAttribute(activeCharacter.statistics.agility.value)
-    newSpendXP += calculateXpForAttribute(activeCharacter.statistics.spirit.value)
-    newSpendXP += calculateXpForAttribute(activeCharacter.statistics.mind.value)
+		newSpendXP += calculateXpForAttribute(
+			activeCharacter.statistics.strength.value,
+		)
+		newSpendXP += calculateXpForAttribute(
+			activeCharacter.statistics.agility.value,
+		)
+		newSpendXP += calculateXpForAttribute(
+			activeCharacter.statistics.spirit.value,
+		)
+		newSpendXP += calculateXpForAttribute(activeCharacter.statistics.mind.value)
 
-    if (newSpendXP != xp.spend) {
+		if (newSpendXP != xp.spend) {
 			updateCharacter({ skills: { xp: { spend: newSpendXP } } })
 		}
 		return newSpendXP
@@ -81,7 +92,7 @@ export const SkillsTab: React.FC = () => {
 		dispatch(characterSheetActions.addNewAbility())
 	}
 
-	const updateAbility = (update: string, index: number) => {
+	const updateAbility = (update: Partial<Ability>, index: number) => {
 		dispatch(characterSheetActions.updateAbility({ update, index }))
 	}
 
@@ -158,7 +169,7 @@ export const SkillsTab: React.FC = () => {
 				</DynamicList>
 			</Box>
 
-			<Accordion sx={{ flexGrow: 1, maxWidth: '30rem' }}>
+			<Accordion defaultExpanded sx={{ flexGrow: 1, maxWidth: '30rem' }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 						<SectionHeader>Abilities</SectionHeader>
@@ -176,10 +187,16 @@ export const SkillsTab: React.FC = () => {
 				<AccordionDetails>
 					<DynamicList droppableId="abilities" onDragEnd={onAbilityReorder}>
 						{abilities.map((a, index) => (
-							<DynamicListItem key={a.id} id={a.id} index={index}>
+							<DynamicListItem
+								key={a.id}
+								id={a.id}
+								index={index}
+								sx={{ alignItems: 'baseline' }}
+							>
 								<AbilityRow
 									key={a.id}
-									ability={a.description}
+									title={a.title}
+									description={a.description}
 									updateAbility={(update) => updateAbility(update, index)}
 									deleteAbility={() => deleteAbility(a)}
 								/>

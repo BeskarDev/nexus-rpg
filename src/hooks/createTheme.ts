@@ -67,11 +67,11 @@ export const theme = createTheme({
 				root: {
 					height: 'fit-content',
 					borderRadius: 4,
-					boxShadow: 'none !important',
-					marginTop: '16px !important',
+					boxShadow: 'none',
+					marginTop: '16px',
 					'&.Mui-expanded': {
-						boxShadow: 'none !important',
-						marginBottom: '16px !important',
+						boxShadow: 'none',
+						marginBottom: '16px',
 					},
 					'&:before': {
 						display: 'none',
@@ -82,18 +82,18 @@ export const theme = createTheme({
 		MuiAccordionSummary: {
 			styleOverrides: {
 				root: {
-					margin: '0 !important',
+					margin: '0',
 					paddingTop: '6px',
 					minHeight: '52px',
 					'&.Mui-expanded': {
-						margin: '0 !important',
+						margin: '0',
 						minHeight: '52px',
 					},
 				},
 				content: {
-					margin: '0 !important',
+					margin: '0',
 					'&.Mui-expanded': {
-						margin: '0 !important',
+						margin: '0',
 					},
 				},
 			},

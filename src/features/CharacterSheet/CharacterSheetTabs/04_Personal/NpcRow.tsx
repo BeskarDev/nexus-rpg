@@ -3,19 +3,19 @@ import React, { useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
 
-export type AbilityRowProps = {
-	ability: string
-	updateAbility: (update: string) => void
-	deleteAbility: () => void
+export type NpcRowProps = {
+	description: string
+	updateNpc: (update: string) => void
+	deleteNpc: () => void
 } & TextFieldProps
 
-export const AbilityRow: React.FC<AbilityRowProps> = ({
-	ability: initialAbility,
-	updateAbility,
-	deleteAbility,
+export const NpcRow: React.FC<NpcRowProps> = ({
+	description: initialDescription,
+	updateNpc,
+	deleteNpc,
 	...props
 }) => {
-	const [ability, setAbility] = useState(initialAbility)
+	const [description, setDescription] = useState(initialDescription)
 
 	return (
 		<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexGrow: 1 }}>
@@ -23,9 +23,9 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				multiline
 				minRows={1}
 				maxRows={5}
-				value={ability}
-				onChange={(event) => setAbility(event.target.value)}
-				onBlur={() => updateAbility(ability)}
+				value={description}
+				onChange={(event) => setDescription(event.target.value)}
+				onBlur={() => updateNpc(description)}
 				{...props}
 				sx={{ maxWidth: '25rem', ...props.sx }}
 			/>
@@ -33,7 +33,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				size="small"
 				edge="end"
 				aria-label="delete"
-				onClick={deleteAbility}
+				onClick={deleteNpc}
 			>
 				<Delete />
 			</IconButton>

@@ -90,6 +90,7 @@ export type Skill = {
 
 export type Ability = {
 	id: string
+	title: string
 	description: string
 }
 
