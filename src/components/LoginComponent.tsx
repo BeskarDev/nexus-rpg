@@ -8,9 +8,9 @@ export const LoginComponent: React.FC = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [isSigningIn, setIsSigningIn] = useState(false)
-	const [errorMessage, setErrorMessage] = useState('')
+	const [error, setError] = useState(false)
 
-	if (userLoggedIn && currentUser?.email) {
+	if (userLoggedIn && currentUser?.email && !error) {
 		return (
 			<Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
 				<Typography>Hello there {currentUser?.email ?? ''}</Typography>
@@ -25,7 +25,9 @@ export const LoginComponent: React.FC = () => {
 		e.preventDefault()
 		if (!isSigningIn) {
 			setIsSigningIn(true)
-			await signIn(email, password).catch((reason) => setErrorMessage(reason))
+			await signIn(email, password)
+				.then(() => setError(false))
+				.catch(() => setError(true))
 			setIsSigningIn(false)
 		}
 	}
@@ -36,6 +38,11 @@ export const LoginComponent: React.FC = () => {
 			onSubmit={onSubmit}
 			sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
 		>
+			{error && (
+				<Alert severity="error">
+					Error during login! Please check your credentials.
+				</Alert>
+			)}
 			<Typography variant="h6">Login</Typography>
 			<TextField
 				required
@@ -75,7 +82,6 @@ export const LoginComponent: React.FC = () => {
 			>
 				LOGIN
 			</Button>
-			{errorMessage && <Alert severity="error">{errorMessage}</Alert>}
 		</Box>
 	)
 }

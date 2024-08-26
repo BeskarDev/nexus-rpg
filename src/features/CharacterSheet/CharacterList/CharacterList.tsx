@@ -24,6 +24,10 @@ export const CharacterList: React.FC = () => {
 		getDocuments()
 	}, [])
 
+	if (!currentUser) {
+		return undefined
+	}
+
 	const userUid = currentUser.uid
 
 	const getDocuments = async () => {
