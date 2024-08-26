@@ -115,7 +115,7 @@ export const ItemsTab: React.FC = () => {
 		} else if (currentLoad >= encumbrance.encumberedAt) {
 			return theme.palette.warning.main
 		}
-		return theme.palette.common.white
+		return theme.palette.text.primary
 	}
 
 	return (
@@ -216,7 +216,9 @@ export const ItemsTab: React.FC = () => {
 				<Tooltip
 					title={
 						<>
-							<b>Encumbered.</b> You suffer +1 bane on Strength or Agility rolls for movement, such as climbing or swimming, and during travel. You also can’t take the Dash Action or the Evade Quick Action.
+							<b>Encumbered.</b> You suffer +1 bane on Strength or Agility rolls
+							for movement, such as climbing or swimming, and during travel. You
+							also can’t take the Dash Action or the Evade Quick Action.
 							<br />
 							<b>Over-Encumbered.</b> You can‘t move. You can‘t use any Actions
 							or do any rolls for physical activity.

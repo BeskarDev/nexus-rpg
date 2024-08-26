@@ -1,10 +1,14 @@
-import { Box, IconButton, TextField } from '@mui/material'
+import { Avatar, Box, Button, IconButton, TextField } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
 import { Delete } from '@mui/icons-material'
 import { Spell } from '../../../../types/Character'
 import { AttributeField } from '../../CharacterSheet'
 import { DamageFields } from '../DamageFields'
+import { characterSheetActions } from '../../characterSheetReducer'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { useAppSelector } from '../../hooks/useAppSelector'
+import { UserAvatar } from '../../UserAvatar'
 
 export type SpellRowProps = {
 	spell: Spell
@@ -18,6 +22,8 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	deleteSpell,
 }) => {
 	const [spell, setSpell] = useState<Spell>(initialSpell)
+	const dispatch = useAppDispatch()
+	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 
 	const spellCost = useMemo(() => {
 		const newSpellCost = initialSpell.rank * 2
@@ -26,6 +32,16 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 		}
 		return newSpellCost
 	}, [initialSpell])
+
+	const castSpell = () => {
+		dispatch(
+			characterSheetActions.updateCharacter({
+				spells: {
+					focus: { current: activeCharacter.spells.focus.current - spell.cost },
+				},
+			}),
+		)
+	}
 
 	return (
 		<Box
@@ -53,13 +69,26 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 					},
 				}}
 			/>
-			<AttributeField
-				disabled
-				type="number"
-				value={spellCost}
-				label="Cost"
-				sx={{ maxWidth: '4rem', flexGrow: 0 }}
-			/>
+			<Avatar
+				onClick={castSpell}
+				sx={{
+					bgcolor: (theme) => 'transparent',
+					border: (theme) => `1px solid ${theme.palette.text.primary}`,
+					color: (theme) => theme.palette.text.primary,
+					height: 32,
+					width: 32,
+					fontSize: '1rem',
+					cursor: 'pointer',
+					transition: 'opacity 200ms ease-in-out',
+					'&:hover': {
+						opacity: 0.7,
+					},
+					maxWidth: '4rem',
+					flexGrow: 0,
+				}}
+			>
+				{spellCost}
+			</Avatar>
 			<TextField
 				variant="standard"
 				value={spell.name}

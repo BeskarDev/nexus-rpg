@@ -137,7 +137,7 @@ export const damageTypeArray = [
 	'blast',
 	'fire',
 	'frost',
-	'lighting',
+	'lightning',
 	'necrotic',
 	'psychic',
 	'physical',
