@@ -242,7 +242,11 @@ export const PersonalTab: React.FC = () => {
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<DynamicList droppableId="allies" onDragEnd={onAllyReorder}>
+				<DynamicList
+					droppableId="allies"
+					onDragEnd={onAllyReorder}
+					sx={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '25vh' }}
+				>
 					{allies.map((a, index) => (
 						<DynamicListItem key={a.id} id={a.id} index={index}>
 							<NpcRow
@@ -263,7 +267,11 @@ export const PersonalTab: React.FC = () => {
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<DynamicList droppableId="contacts" onDragEnd={onContactReorder}>
+				<DynamicList
+					droppableId="contacts"
+					onDragEnd={onContactReorder}
+					sx={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '20vh' }}
+				>
 					{contacts.map((c, index) => (
 						<DynamicListItem key={c.id} id={c.id} index={index}>
 							<NpcRow
@@ -284,7 +292,11 @@ export const PersonalTab: React.FC = () => {
 						<AddCircle />
 					</IconButton>
 				</Box>
-				<DynamicList droppableId="rivals" onDragEnd={onRivalReorder}>
+				<DynamicList
+					droppableId="rivals"
+					onDragEnd={onRivalReorder}
+					sx={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '20vh' }}
+				>
 					{rivals.map((r, index) => (
 						<DynamicListItem key={r.id} id={r.id} index={index}>
 							<NpcRow

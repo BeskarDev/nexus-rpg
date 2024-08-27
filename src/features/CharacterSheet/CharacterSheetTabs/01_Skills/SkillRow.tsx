@@ -68,7 +68,7 @@ export const SkillRow: React.FC<SkillRowProps> = ({
 				value={name}
 				onChange={(event) => setName(event.target.value)}
 				onBlur={() => updateSkill({ name })}
-				sx={{ maxWidth: '12rem' }}
+				sx={{ maxWidth: '8rem' }}
 			/>
 			<AttributeField
 				type="number"

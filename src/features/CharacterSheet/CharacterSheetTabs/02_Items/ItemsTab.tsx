@@ -258,7 +258,7 @@ export const ItemsTab: React.FC = () => {
 						</IconButton>
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails>
+				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '25vh' }}>
 					<DynamicList droppableId="weapons" onDragEnd={onWeaponReorder}>
 						{weapons.map((w, index) => (
 							<DynamicListItem key={w.id} id={w.id} index={index}>
@@ -281,7 +281,13 @@ export const ItemsTab: React.FC = () => {
 					<SectionHeader>Equipment</SectionHeader>
 				</AccordionSummary>
 				<AccordionDetails
-					sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: 1,
+						overflowY: 'auto',
+						maxHeight: '25vh',
+					}}
 				>
 					<EquipmentRow
 						label="Head"
@@ -416,7 +422,13 @@ export const ItemsTab: React.FC = () => {
 
 			<Accordion defaultExpanded sx={{ maxWidth: '38rem', flexGrow: 1, mb: 2 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
-					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+					<Box
+						sx={{
+							display: 'flex',
+							gap: 1,
+							alignItems: 'center',
+						}}
+					>
 						<SectionHeader>Items</SectionHeader>
 						<IconButton
 							onClick={(event) => {
@@ -429,7 +441,7 @@ export const ItemsTab: React.FC = () => {
 						</IconButton>
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails>
+				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '42.5vh' }}>
 					<DynamicList droppableId="items" onDragEnd={onItemReorder}>
 						{items.map((i, index) => (
 							<DynamicListItem key={i.id} id={i.id} index={index}>

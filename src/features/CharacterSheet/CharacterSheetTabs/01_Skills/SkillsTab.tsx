@@ -184,7 +184,7 @@ export const SkillsTab: React.FC = () => {
 						</IconButton>
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails>
+				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '50vh' }}>
 					<DynamicList droppableId="abilities" onDragEnd={onAbilityReorder}>
 						{abilities.map((a, index) => (
 							<DynamicListItem

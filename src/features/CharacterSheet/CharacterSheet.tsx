@@ -78,17 +78,46 @@ export const CharacterSheet: React.FC = () => {
 			)}
 			{!isMobile && (
 				<>
-					<Typography variant="h6">Statistics</Typography>
-					<StatisticsTab />
-					<Typography variant="h6">Skills</Typography>
-					<SkillsTab />
-					<Typography variant="h6">Items</Typography>
-					<ItemsTab />
-					<Typography variant="h6">Spells</Typography>
-					<SpellsTab />
-					<Typography variant="h6">Personal</Typography>
-					<PersonalTab />
-					<SharedNotes />
+					<Box
+						sx={{
+							mb: 2,
+							display: 'flex',
+							flexWrap: 'wrap',
+							gap: 2,
+							justifyContent: 'left',
+							backgroundColor:
+								colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
+						}}
+					>
+						<Box sx={{ mt: 1, maxWidth: '30rem' }}>
+							<StatisticsTab />
+						</Box>
+						<Box
+							sx={{
+								maxWidth: { lg: '40rem', xl: '49rem' },
+							}}
+						>
+							<Tabs
+								value={activeTab}
+								onChange={handleTabChange}
+								variant="scrollable"
+								scrollButtons={false}
+								allowScrollButtonsMobile
+								sx={{ mb: 2 }}
+							>
+								<Tab id="0" label="Skills" />
+								<Tab id="1" label="Items" />
+								<Tab id="2" label="Spells" />
+								<Tab id="3" label="Personal" />
+								<Tab id="4" label="Shared Notes" />
+							</Tabs>
+							{activeTab === 0 && <SkillsTab />}
+							{activeTab === 1 && <ItemsTab />}
+							{activeTab === 2 && <SpellsTab />}
+							{activeTab === 3 && <PersonalTab />}
+							{activeTab === 4 && <SharedNotes />}
+						</Box>
+					</Box>
 				</>
 			)}
 		</>

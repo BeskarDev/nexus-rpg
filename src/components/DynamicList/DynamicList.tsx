@@ -24,7 +24,12 @@ export const DynamicList: React.FC<DynamicListProps> = React.memo(
 									ref={provided.innerRef}
 									{...provided.droppableProps}
 									{...props}
-									sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}
+									sx={{
+										...props.sx,
+										display: 'flex',
+										flexDirection: 'column',
+										gap: 1,
+									}}
 								>
 									{children}
 								</List>

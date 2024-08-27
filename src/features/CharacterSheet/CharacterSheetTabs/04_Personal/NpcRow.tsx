@@ -18,7 +18,9 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 	const [description, setDescription] = useState(initialDescription)
 
 	return (
-		<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexGrow: 1 }}>
+		<Box
+			sx={{ display: 'flex', gap: 1, alignItems: 'center', flexGrow: 1, mr: 1 }}
+		>
 			<TextField
 				multiline
 				minRows={1}
@@ -27,7 +29,7 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 				onChange={(event) => setDescription(event.target.value)}
 				onBlur={() => updateNpc(description)}
 				{...props}
-				sx={{ maxWidth: '25rem', ...props.sx }}
+				sx={{ flexGrow: 1, ...props.sx }}
 			/>
 			<IconButton
 				size="small"
