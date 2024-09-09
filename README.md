@@ -11,7 +11,9 @@ This work is licensed under a
 
 # Nexus RPG
 
-Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!
+Welcome to Nexus RPG. A sword and sorcery TTRPG with wide mechanical options set in a world inspired by real-world ancient cultures from across the earth.
+
+In this game, you will play as a daring group of adventurers with individual skill sets. Choose freely from different skills, which each provide different sets of abilities, to craft your character.
 
 ## Disclaimer
 
