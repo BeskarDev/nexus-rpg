@@ -31,7 +31,7 @@ export default function Home() {
 	return (
 		<Layout
 			title="Home"
-			description="Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!"
+			description="Welcome to Nexus RPG. A sword and sorcery TTRPG with wide mechanical options set in a world inspired by real-world ancient cultures from across the earth.\n\nIn this game, you will play as a daring group of adventurers with individual skill sets. Choose freely from different skills, which each provide different sets of abilities, to craft your character."
 		>
 			<header
 				className={clsx(styles.heroBanner)}
