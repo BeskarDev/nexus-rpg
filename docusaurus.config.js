@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Nexus RPG',
-	tagline: 'Welcome to Nexus RPG. A skill-based ancient fantasy TTRPG!',
+	tagline: 'Welcome to Nexus RPG. A sword and sorcery TTRPG with wide mechanical options set in a world inspired by real-world ancient cultures from across the earth.\n\nIn this game, you will play as a daring group of adventurers with individual skill sets. Choose freely from different skills, which each provide different sets of abilities, to craft your character.',
 	favicon: 'img/favicon.ico',
 
 	// Set the production url of your site here
