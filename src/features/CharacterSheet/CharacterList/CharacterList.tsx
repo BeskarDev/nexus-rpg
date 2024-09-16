@@ -16,9 +16,11 @@ import { CharacterDocument } from '../../../types/Character'
 import { mapDocToCharacter } from '../utils/mapDocToCharacter'
 import { DeleteButton } from './DeleteButton'
 
+const DOC_BLACKLIST = ['player-info']
+
 export const CharacterList: React.FC = () => {
 	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])
-	const { currentUser } = useAuth()
+	const { currentUser, setIsAdmin } = useAuth()
 
 	useEffect(() => {
 		getDocuments()
@@ -36,9 +38,28 @@ export const CharacterList: React.FC = () => {
 			const q = query(collectionRef) // Create a query to get all documents
 			const querySnapshot = await getDocs(q) // Use getDocs to fetch documents
 
-			const allDocs: CharacterDocument[] = querySnapshot.docs.map((doc) =>
-				mapDocToCharacter(doc),
-			)
+			const allowedCollections: string[] =
+				querySnapshot.docs.find((doc) => doc.id === 'player-info')?.data()
+					.allowedCollections ?? []
+			setIsAdmin(Boolean(allowedCollections.length))
+
+			const allDocs: CharacterDocument[] = querySnapshot.docs
+				.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
+				.map((doc) => mapDocToCharacter(userUid, doc))
+
+			if (Boolean(allowedCollections.length)) {
+				await allowedCollections.map(async (collectionId) => {
+					const collectionRef = collection(db, collectionId)
+					const q = query(collectionRef)
+					const querySnapshot = await getDocs(q)
+					allDocs.push(
+						...querySnapshot.docs
+							.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
+							.map((doc) => mapDocToCharacter(collectionId, doc)),
+					)
+				})
+			}
+
 			setCharacters(allDocs)
 		} catch (error) {
 			console.error('Error fetching documents: ', error)
@@ -63,7 +84,7 @@ export const CharacterList: React.FC = () => {
 						}
 					>
 						<Link
-							href={`${window.location.href.split('?')[0]}?id=${char.docId}`}
+							href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
 							sx={{ width: '100%', textDecoration: 'none' }}
 						>
 							<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
@@ -73,7 +94,7 @@ export const CharacterList: React.FC = () => {
 									</Avatar>
 								</ListItemAvatar>
 								<ListItemText
-									primary={char.personal.name}
+									primary={char?.personal?.name ?? '?'}
 									sx={{ textDecoration: 'none' }}
 								/>
 							</ListItemButton>

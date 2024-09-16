@@ -3,6 +3,7 @@ import { DocumentData, DocumentReference } from 'firebase/firestore'
 export type CharacterDocument = {
 	docRef: DocumentReference<DocumentData, DocumentData>
 	docId: string
+	collectionId: string
 } & Character
 
 export type Character = {

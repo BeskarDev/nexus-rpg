@@ -27,7 +27,10 @@ export const CharacterSheetContainer: React.FC = () => {
 
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
-	const activeCharacterId = urlParams.get('id') ?? undefined
+	const [collectionId, activeCharacterId] = urlParams.get('id')?.split('-') ?? [
+		undefined,
+		undefined,
+	]
 
 	useEffect(() => {
 		if (activeCharacterId && currentUser && unsavedChanges && !saveTimeout) {
@@ -48,10 +51,10 @@ export const CharacterSheetContainer: React.FC = () => {
 	}, [autosave])
 
 	useEffect(() => {
-		if (activeCharacterId && currentUser && !activeCharacter) {
-			getDoc(doc(db, `${currentUser.uid}/${activeCharacterId}`)).then((doc) => {
-				const character = mapDocToCharacter(doc)
-				const migratedCharacter = migrateDoc(doc)
+		if (collectionId && activeCharacterId && currentUser && !activeCharacter) {
+			getDoc(doc(db, `${collectionId}/${activeCharacterId}`)).then((doc) => {
+				const character = mapDocToCharacter(collectionId, doc)
+				const migratedCharacter = migrateDoc(collectionId, doc)
 
 				if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
 					console.log('save migrated character', migratedCharacter)
@@ -63,7 +66,7 @@ export const CharacterSheetContainer: React.FC = () => {
 				dispatch(characterSheetActions.setCharacter(migratedCharacter))
 			})
 		}
-	}, [activeCharacterId, activeCharacter])
+	}, [collectionId, activeCharacterId, activeCharacter])
 
 	const saveCharacter = async () => {
 		console.log('about to save character...')

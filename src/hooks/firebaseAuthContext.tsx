@@ -7,11 +7,15 @@ const AuthContext = createContext<{
 	isEmailUser: boolean
 	currentUser: User
 	setCurrentUser: (user: User) => void
+	isAdmin: boolean
+	setIsAdmin: (isAdmin: boolean) => void
 }>({
 	userLoggedIn: false,
 	isEmailUser: false,
 	currentUser: {} as User,
 	setCurrentUser: () => {},
+	isAdmin: false,
+	setIsAdmin: () => {},
 })
 
 export function useAuth() {
@@ -22,6 +26,7 @@ export function AuthProvider({ children }) {
 	const [currentUser, setCurrentUser] = useState(null)
 	const [userLoggedIn, setUserLoggedIn] = useState(false)
 	const [isEmailUser, setIsEmailUser] = useState(false)
+	const [isAdmin, setIsAdmin] = useState(false)
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -56,6 +61,8 @@ export function AuthProvider({ children }) {
 		isEmailUser,
 		currentUser,
 		setCurrentUser,
+		isAdmin,
+		setIsAdmin,
 	}
 
 	return (

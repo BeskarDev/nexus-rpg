@@ -10,6 +10,7 @@ import {
 } from '../../../types/Character'
 
 export const migrateDoc = (
+	collectionId: string,
 	doc: DocumentSnapshot<DocumentData, DocumentData>,
 ): CharacterDocument => {
 	const data = doc.data()
@@ -41,6 +42,7 @@ export const migrateDoc = (
 	const migratedDoc: CharacterDocument = {
 		docRef: doc.ref,
 		docId: doc.id,
+		collectionId,
 		...(updatedDoc as Character),
 	}
 	return migratedDoc
