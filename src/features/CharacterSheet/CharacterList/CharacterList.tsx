@@ -48,6 +48,7 @@ export const CharacterList: React.FC = () => {
 				.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
 				.map((doc) => mapDocToCharacter(userUid, doc))
 
+			setCharacters(allDocs)
 			console.log('allDocs (before)', allDocs)
 			if (Boolean(allowedCollections.length)) {
 				await allowedCollections.map(async (collectionId) => {
@@ -55,16 +56,15 @@ export const CharacterList: React.FC = () => {
 					const q = query(collectionRef)
 					const querySnapshot = await getDocs(q)
 					console.log('querySnapshot', querySnapshot)
-					allDocs.push(
+					setCharacters((chars) => [
+						...chars,
 						...querySnapshot.docs
 							.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
 							.map((doc) => mapDocToCharacter(collectionId, doc)),
-					)
+					])
 				})
 			}
-
 			console.log('allDocs (after)', allDocs)
-			setCharacters(allDocs)
 		} catch (error) {
 			console.error('Error fetching documents: ', error)
 		}
