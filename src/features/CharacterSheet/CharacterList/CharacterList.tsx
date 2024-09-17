@@ -42,6 +42,7 @@ export const CharacterList: React.FC = () => {
 				querySnapshot.docs.find((doc) => doc.id === 'player-info')?.data()
 					.allowedCollections ?? []
 			setIsAdmin(Boolean(allowedCollections.length))
+			console.log('allowedCollections', allowedCollections)
 
 			const allDocs: CharacterDocument[] = querySnapshot.docs
 				.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
@@ -57,6 +58,7 @@ export const CharacterList: React.FC = () => {
 							.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
 							.map((doc) => mapDocToCharacter(collectionId, doc)),
 					)
+					setCharacters(allDocs)
 				})
 			}
 
