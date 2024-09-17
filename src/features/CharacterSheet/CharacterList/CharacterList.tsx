@@ -42,20 +42,17 @@ export const CharacterList: React.FC = () => {
 				querySnapshot.docs.find((doc) => doc.id === 'player-info')?.data()
 					.allowedCollections ?? []
 			setIsAdmin(Boolean(allowedCollections.length))
-			console.log('allowedCollections', allowedCollections)
 
 			const allDocs: CharacterDocument[] = querySnapshot.docs
 				.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
 				.map((doc) => mapDocToCharacter(userUid, doc))
 
 			setCharacters(allDocs)
-			console.log('allDocs (before)', allDocs)
 			if (Boolean(allowedCollections.length)) {
 				await allowedCollections.map(async (collectionId) => {
 					const collectionRef = collection(db, collectionId)
 					const q = query(collectionRef)
 					const querySnapshot = await getDocs(q)
-					console.log('querySnapshot', querySnapshot)
 					setCharacters((chars) => [
 						...chars,
 						...querySnapshot.docs
@@ -64,7 +61,6 @@ export const CharacterList: React.FC = () => {
 					])
 				})
 			}
-			console.log('allDocs (after)', allDocs)
 		} catch (error) {
 			console.error('Error fetching documents: ', error)
 		}
