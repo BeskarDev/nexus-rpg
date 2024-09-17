@@ -53,6 +53,7 @@ export const CharacterList: React.FC = () => {
 					const collectionRef = collection(db, collectionId)
 					const q = query(collectionRef)
 					const querySnapshot = await getDocs(q)
+					console.log('querySnapshot', querySnapshot)
 					allDocs.push(
 						...querySnapshot.docs
 							.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
