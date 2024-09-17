@@ -175,9 +175,34 @@ export type Spell = {
 	name: string
 	rank: number
 	cost: number
-	target: string
-	range: string
+	target: TargetType
+	range: RangeType
 	properties: string
 	damage: Damage
 	effect: string
 }
+
+export const targetTypeArray = [
+	'Parry',
+	'Dodge',
+	'Resist',
+	'special',
+	'8',
+	'10',
+	'12',
+	'14',
+] as const
+export type TargetType = (typeof targetTypeArray)[number]
+
+export const rangeTypeArray = [
+	'self',
+	'touch',
+	'melee',
+	'close',
+	'short',
+	'medium',
+	'long',
+	'very long',
+	'extreme',
+] as const
+export type RangeType = (typeof rangeTypeArray)[number]

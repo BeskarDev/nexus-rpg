@@ -152,7 +152,12 @@ export const SpellsTab: React.FC = () => {
 					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '60vh' }}>
 						<DynamicList droppableId="spells" onDragEnd={onSpellReorder}>
 							{spells.map((s, index) => (
-								<DynamicListItem key={s.id} id={s.id} index={index}>
+								<DynamicListItem
+									key={s.id}
+									id={s.id}
+									index={index}
+									sx={{ alignItems: 'baseline' }}
+								>
 									<SpellRow
 										key={s.id}
 										spell={s}

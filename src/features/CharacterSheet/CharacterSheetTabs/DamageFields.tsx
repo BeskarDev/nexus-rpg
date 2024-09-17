@@ -51,6 +51,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 			>
 				<TextField
 					disabled
+					size="small"
 					variant="standard"
 					value={`${weakDamage}/${strongDamage}/${criticalDamage}`}
 					label="W/S/C"
@@ -60,6 +61,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 				/>
 				<TextField
 					disabled
+					size="small"
 					variant="standard"
 					value={damage.type}
 					label="Type"
