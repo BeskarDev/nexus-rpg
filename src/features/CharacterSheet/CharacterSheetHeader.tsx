@@ -37,8 +37,6 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	saveCharacter,
 }) => {
 	const { userLoggedIn, currentUser } = useAuth()
-	const { colorMode } = useColorMode()
-
 	const { activeCharacter, loadingSave, unsavedChanges } = useAppSelector(
 		(state) => state.characterSheet,
 	)
@@ -92,8 +90,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					position: 'sticky',
 					top: '60px',
 					zIndex: 100,
-					backgroundColor:
-						colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
+					backgroundColor: 'var(--ifm-background-color)',
 					display: 'flex',
 					gap: 2,
 					borderBottom: 1,

@@ -121,18 +121,22 @@ export type Weapon = {
 	name: string
 	damage: Damage
 	properties: string
+	description: string
 	cost: number
 	load: number
 }
 
 export type Damage = {
-	base: number
+	base: BaseDamageType
 	weapon: number
 	otherWeak: number
 	otherStrong: number
 	otherCritical: number
 	type: DamageType
 }
+
+export const baseDamageTypeArray = ['', 'STR', 'AGI', 'SPI', 'MND'] as const
+export type BaseDamageType = (typeof baseDamageTypeArray)[number]
 
 export const damageTypeArray = [
 	'acid',
@@ -151,14 +155,35 @@ export type DamageType = (typeof damageTypeArray)[number]
 export type Equipment = {
 	name: string
 	properties: string
+	description: string
+	slot: EquipmentSlotType
 	cost: number
 	load: number
 }
 
+export const equipmentSlotTypeArray = [
+	'',
+	'head',
+	'neck',
+	'back',
+	'body',
+	'hands',
+	'ring (1)',
+	'ring (2)',
+	'ring (3)',
+	'waist',
+	'feet',
+] as const
+export type EquipmentSlotType = (typeof equipmentSlotTypeArray)[number]
+
 export type Item = Equipment & {
 	id: string
+	container: ContainerType
 	amount: number
 }
+
+export const containerTypeArray = ['', 'worn', 'quick', 'backpack'] as const
+export type ContainerType = (typeof containerTypeArray)[number]
 
 export type Spells = {
 	magicSkill: string
@@ -183,6 +208,7 @@ export type Spell = {
 }
 
 export const targetTypeArray = [
+	'',
 	'Parry',
 	'Dodge',
 	'Resist',
@@ -195,6 +221,7 @@ export const targetTypeArray = [
 export type TargetType = (typeof targetTypeArray)[number]
 
 export const rangeTypeArray = [
+	'',
 	'self',
 	'touch',
 	'melee',

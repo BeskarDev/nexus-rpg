@@ -72,7 +72,7 @@ export const CombatArts: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor: 'white',
+					backgroundColor: 'var(--ifm-background-color)',
 					borderRadius: '8px',
 				}}
 			>
@@ -88,7 +88,7 @@ export const CombatArts: React.FC = () => {
 						input={<OutlinedInput label="Combat Arts" />}
 						renderValue={(selected) => selected.join(', ')}
 						MenuProps={MenuProps}
-						sx={{ backgroundColor: 'white' }}
+						sx={{ backgroundColor: 'var(--ifm-background-color)' }}
 					>
 						{combatArts.map(({ name }) => (
 							<MenuItem key={name} value={name}>

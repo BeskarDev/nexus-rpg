@@ -20,7 +20,6 @@ import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListIte
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { EquipmentRow } from './EquipmentRow'
 import { ItemRow } from './ItemRow'
 import { WeaponRow } from './WeaponRow'
 
@@ -40,19 +39,10 @@ export const ItemsTab: React.FC = () => {
 		const weaponLoad = weapons
 			.map((w) => w.load)
 			.reduce((partialSum, a) => partialSum + a, 0)
-		const equipmentLoad = Object.keys(equipment)
-			.map((k) =>
-				k !== 'rings'
-					? Number(equipment[k].load)
-					: equipment[k]
-							.map((r) => r.load)
-							.reduce((partialSum, a) => partialSum + a, 0),
-			)
-			.reduce((partialSum, a) => partialSum + a, 0)
 		const itemLoad = items
 			.map((i) => i.load * i.amount)
 			.reduce((partialSum, a) => partialSum + a, 0)
-		const newCurrentLoad = weaponLoad + equipmentLoad + itemLoad
+		const newCurrentLoad = weaponLoad + itemLoad
 		if (newCurrentLoad != encumbrance.currentLoad) {
 			updateCharacter({
 				items: { encumbrance: { currentLoad: newCurrentLoad } },
@@ -258,10 +248,17 @@ export const ItemsTab: React.FC = () => {
 						</IconButton>
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '25vh' }}>
+				<AccordionDetails
+					sx={{ overflowY: 'auto', maxHeight: { sm: '20vh', sx: '35vh' } }}
+				>
 					<DynamicList droppableId="weapons" onDragEnd={onWeaponReorder}>
 						{weapons.map((w, index) => (
-							<DynamicListItem key={w.id} id={w.id} index={index}>
+							<DynamicListItem
+								key={w.id}
+								id={w.id}
+								index={index}
+								sx={{ alignItems: 'baseline' }}
+							>
 								<WeaponRow
 									key={w.id}
 									weapon={w}
@@ -276,151 +273,7 @@ export const ItemsTab: React.FC = () => {
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion defaultExpanded sx={{ maxWidth: '31rem', flexGrow: 1, mb: 2 }}>
-				<AccordionSummary expandIcon={<ExpandMore />}>
-					<SectionHeader>Equipment</SectionHeader>
-				</AccordionSummary>
-				<AccordionDetails
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						gap: 1,
-						overflowY: 'auto',
-						maxHeight: '25vh',
-					}}
-				>
-					<EquipmentRow
-						label="Head"
-						equipment={equipment.head}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: { head: { ...equipment.head, ...update } },
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Neck"
-						equipment={equipment.neck}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: { neck: { ...equipment.neck, ...update } },
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Back"
-						equipment={equipment.back}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: { neck: { ...equipment.neck, ...update } },
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Body"
-						equipment={equipment.body}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: { body: { ...equipment.body, ...update } },
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Hands"
-						equipment={equipment.hands}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: { hands: { ...equipment.hands, ...update } },
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Ring 1"
-						equipment={equipment.rings[0]}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: {
-										rings: [
-											{ ...equipment.rings[0], ...update },
-											equipment.rings[1],
-											equipment.rings[2],
-										],
-									},
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Ring 2"
-						equipment={equipment.rings[1]}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: {
-										rings: [
-											equipment.rings[0],
-											{ ...equipment.rings[1], ...update },
-											equipment.rings[2],
-										],
-									},
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Ring 3"
-						equipment={equipment.rings[2]}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: {
-										rings: [
-											equipment.rings[0],
-											equipment.rings[1],
-											{ ...equipment.rings[2], ...update },
-										],
-									},
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Waist"
-						equipment={equipment.waist}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: { waist: { ...equipment.waist, ...update } },
-								},
-							})
-						}
-					/>
-					<EquipmentRow
-						label="Feet"
-						equipment={equipment.feet}
-						updateEquipment={(update) =>
-							updateCharacter({
-								items: {
-									equipment: { feet: { ...equipment.feet, ...update } },
-								},
-							})
-						}
-					/>
-				</AccordionDetails>
-			</Accordion>
-
-			<Accordion defaultExpanded sx={{ maxWidth: '38rem', flexGrow: 1, mb: 2 }}>
+			<Accordion defaultExpanded sx={{ maxWidth: '65rem', flexGrow: 1, mb: 2 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box
 						sx={{
@@ -429,7 +282,7 @@ export const ItemsTab: React.FC = () => {
 							alignItems: 'center',
 						}}
 					>
-						<SectionHeader>Items</SectionHeader>
+						<SectionHeader>Equipment & Items</SectionHeader>
 						<IconButton
 							onClick={(event) => {
 								addNewItem()
@@ -444,7 +297,12 @@ export const ItemsTab: React.FC = () => {
 				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '42.5vh' }}>
 					<DynamicList droppableId="items" onDragEnd={onItemReorder}>
 						{items.map((i, index) => (
-							<DynamicListItem key={i.id} id={i.id} index={index}>
+							<DynamicListItem
+								key={i.id}
+								id={i.id}
+								index={index}
+								sx={{ alignItems: 'baseline' }}
+							>
 								<ItemRow
 									key={i.id}
 									item={i}

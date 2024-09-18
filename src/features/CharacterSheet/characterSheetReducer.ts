@@ -175,6 +175,7 @@ export const {
 					type: 'physical',
 				},
 				properties: '',
+				description: '',
 				cost: 0,
 				load: 0,
 			})
@@ -216,8 +217,11 @@ export const {
 				id: crypto.randomUUID(),
 				name: '',
 				properties: '',
+				description: '',
 				cost: 0,
 				load: 0,
+				container: 'backpack',
+				slot: '',
 				amount: 1,
 			})
 		},

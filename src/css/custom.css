@@ -6,51 +6,61 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --ifm-footer-padding-vertical: var(--ifm-spacing-vertical);
-  --ifm-heading-font-family: 'Exo 2', sans-serif;
-  --ifm-paragraph-margin-bottom: 1rem;
-  --ifm-leading: 1rem;
+	--ifm-color-primary: #2e8555;
+	--ifm-color-primary-dark: #29784c;
+	--ifm-color-primary-darker: #277148;
+	--ifm-color-primary-darkest: #205d3b;
+	--ifm-color-primary-light: #33925d;
+	--ifm-color-primary-lighter: #359962;
+	--ifm-color-primary-lightest: #3cad6e;
+	--ifm-background-color: var(--ifm-color-emphasis-100);
+	--ifm-footer-background-color: var(--ifm-color-emphasis-200);
+	--ifm-code-font-size: 95%;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+	--ifm-footer-padding-vertical: var(--ifm-spacing-vertical);
+	--ifm-heading-font-family: 'Exo 2', sans-serif;
+	--ifm-paragraph-margin-bottom: 1rem;
+	--ifm-leading: 1rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --ifm-color-grey: #959595;
-  --ifm-color-brown: #ba8670;
-  --ifm-color-yellow: #cb9a4b;
-  --ifm-color-green: #54a275;
-  --ifm-color-blue: #5b82c1;
-  --ifm-color-purple: #9764ca;
-  --ifm-color-orange: #c07846;
-  --ifm-color-red: #e55654;
-  --ifm-color-quality-1: var(--ifm-color-grey);
-  --ifm-color-quality-2: var(--ifm-color-brown);
-  --ifm-color-quality-3: var(--ifm-color-yellow);
-  --ifm-color-quality-4: var(--ifm-color-green);
-  --ifm-color-quality-5: var(--ifm-color-blue);
-  --ifm-color-quality-6: var(--ifm-color-purple);
-  --ifm-color-quality-7: var(--ifm-color-orange);
-  --ifm-color-quality-8: var(--ifm-color-red);
+	--ifm-color-primary: #25c2a0;
+	--ifm-color-primary-dark: #21af90;
+	--ifm-color-primary-darker: #1fa588;
+	--ifm-color-primary-darkest: #1a8870;
+	--ifm-color-primary-light: #29d5b0;
+	--ifm-color-primary-lighter: #32d8b4;
+	--ifm-color-primary-lightest: #4fddbf;
+	--ifm-footer-background-color: #0f0f10;
+	--docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+	--ifm-color-grey: #959595;
+	--ifm-color-brown: #ba8670;
+	--ifm-color-yellow: #cb9a4b;
+	--ifm-color-green: #54a275;
+	--ifm-color-blue: #5b82c1;
+	--ifm-color-purple: #9764ca;
+	--ifm-color-orange: #c07846;
+	--ifm-color-red: #e55654;
+	--ifm-color-quality-1: var(--ifm-color-grey);
+	--ifm-color-quality-2: var(--ifm-color-brown);
+	--ifm-color-quality-3: var(--ifm-color-yellow);
+	--ifm-color-quality-4: var(--ifm-color-green);
+	--ifm-color-quality-5: var(--ifm-color-blue);
+	--ifm-color-quality-6: var(--ifm-color-purple);
+	--ifm-color-quality-7: var(--ifm-color-orange);
+	--ifm-color-quality-8: var(--ifm-color-red);
 }
 
-html, body, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Exo 2', sans-serif;
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Exo 2', sans-serif;
 }
 
 /* @media only screen and (max-device-height: 640px) 
@@ -61,50 +71,54 @@ html, body, h1, h2, h3, h4, h5, h6 {
 }*/
 
 div.navbar__inner {
-  flex-wrap: nowrap;
+	flex-wrap: nowrap;
 }
 
 a.navbar__item {
-  overflow: hidden;
-  line-height: 2.25rem;
-  height: 100%;
-  
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+	overflow: hidden;
+	line-height: 2.25rem;
+	height: 100%;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 img.medium-zoom-image.medium-zoom-image--opened {
-  /* padding-top: 30px; */
-  z-index: 300;
+	/* padding-top: 30px; */
+	z-index: 300;
 }
 
-img[alt=folk-img] { width: 300px; }
+img[alt='folk-img'] {
+	width: 300px;
+}
 
 @media (max-width: 996px) {
-  .navbar__search-input {
-      width: 12rem;
-  }
+	.navbar__search-input {
+		width: 12rem;
+	}
 }
 
 .footer__logo {
-  margin-top: 0;
+	margin-top: 0;
 }
 
-table thead, table tr:nth-child(2n) {
-  background-color: transparent;
+table thead,
+table tr:nth-child(2n) {
+	background-color: transparent;
 }
 
 table tr {
-  border-top: none;
-  border-bottom: 1px solid var(--ifm-toc-border-color);
+	border-top: none;
+	border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
 table tbody tr:last-child {
-  border-bottom: none;
+	border-bottom: none;
 }
 
-table td, table th {
-  border: none;
-  padding: 0.25rem 0.5rem;
+table td,
+table th {
+	border: none;
+	padding: 0.25rem 0.5rem;
 }

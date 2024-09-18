@@ -1,8 +1,22 @@
 import { Settings } from '@mui/icons-material'
-import { Box, IconButton, Menu, MenuItem, TextField } from '@mui/material'
-import { Damage, DamageType, damageTypeArray } from '@site/src/types/Character'
+import {
+	Box,
+	IconButton,
+	Menu,
+	MenuItem,
+	TextField,
+	Typography,
+} from '@mui/material'
+import {
+	BaseDamageType,
+	baseDamageTypeArray,
+	Damage,
+	DamageType,
+	damageTypeArray,
+} from '@site/src/types/Character'
 import React, { useMemo } from 'react'
 import { AttributeField, SectionHeader } from '../CharacterSheet'
+import { useAppSelector } from '../hooks/useAppSelector'
 
 export type DamageFieldsProps = {
 	type: 'weapon' | 'spell'
@@ -17,18 +31,38 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 }) => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
+	const { strength, agility, spirit, mind } = useAppSelector(
+		(state) => state.characterSheet.activeCharacter.statistics,
+	)
+
+	const baseDamage: number = useMemo(() => {
+		switch (damage.base) {
+			case 'STR':
+				return strength.value / 2
+			case 'AGI':
+				return agility.value / 2
+			case 'SPI':
+				return spirit.value / 2
+			case 'MND':
+				return mind.value / 2
+			case '':
+				return 0
+			default:
+				return damage.base
+		}
+	}, [damage.base, strength, agility, spirit, mind])
 
 	const weakDamage = useMemo(
-		() => damage.base + damage.weapon + damage.otherWeak,
-		[damage],
+		() => baseDamage + damage.weapon + damage.otherWeak,
+		[damage, baseDamage],
 	)
 	const strongDamage = useMemo(
-		() => damage.base + damage.weapon * 2 + damage.otherStrong,
-		[damage],
+		() => baseDamage + damage.weapon * 2 + damage.otherStrong,
+		[damage, baseDamage],
 	)
 	const criticalDamage = useMemo(
-		() => damage.base + damage.weapon * 3 + damage.otherCritical,
-		[damage],
+		() => baseDamage + damage.weapon * 3 + damage.otherCritical,
+		[damage, baseDamage],
 	)
 
 	const handleClick = (
@@ -53,20 +87,10 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 					disabled
 					size="small"
 					variant="standard"
-					value={`${weakDamage}/${strongDamage}/${criticalDamage}`}
-					label="W/S/C"
+					value={`${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`}
+					label="Damage"
 					sx={{
-						maxWidth: '6rem',
-					}}
-				/>
-				<TextField
-					disabled
-					size="small"
-					variant="standard"
-					value={damage.type}
-					label="Type"
-					sx={{
-						maxWidth: '4.5rem',
+						maxWidth: { sm: '7rem', xs: '5.25rem' },
 					}}
 				/>
 				<IconButton size="small" onClick={handleClick}>
@@ -80,17 +104,29 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 				MenuListProps={{ sx: { p: 2, maxWidth: '20rem' } }}
 			>
 				<SectionHeader>Damage Calculator</SectionHeader>
+				<Typography variant="subtitle2">
+					Set the individual components for calculation your damage. The result
+					will display as "X/Y/Z", where X = weak hit, Y = strong hit, and Z =
+					critical hit.
+				</Typography>
 				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
 					<AttributeField
+						select
 						size="small"
 						type="number"
 						value={damage.base}
 						onChange={(event) =>
-							updateDamage({ base: Number(event.target.value) })
+							updateDamage({ base: event.target.value as BaseDamageType })
 						}
 						label="Base"
 						sx={{ maxWidth: '5.5rem' }}
-					/>
+					>
+						{baseDamageTypeArray.map((attribute) => (
+							<MenuItem key={attribute} value={attribute}>
+								{attribute}
+							</MenuItem>
+						))}
+					</AttributeField>
 					<AttributeField
 						size="small"
 						type="number"

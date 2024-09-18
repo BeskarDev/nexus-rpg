@@ -1,6 +1,6 @@
 import { useColorMode } from '@docusaurus/theme-common'
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { SkillsTab } from './CharacterSheetTabs/01_Skills/SkillsTab'
 import { ItemsTab } from './CharacterSheetTabs/02_Items/ItemsTab'
@@ -29,9 +29,32 @@ SectionHeader.defaultProps = {
 }
 
 export const CharacterSheet: React.FC = () => {
-	const [activeTab, setActiveTab] = React.useState(0)
-	const { isMobile } = useDeviceSize()
-	const { colorMode } = useColorMode()
+	const queryString = window.location.search
+	const urlParams = new URLSearchParams(queryString)
+	const initialActiveTab = urlParams.get('tab') ?? '0'
+	const [activeTab, setActiveTab] = React.useState<number>(
+		Number.parseInt(initialActiveTab),
+	)
+
+	const { isMobile, viewChanged } = useDeviceSize()
+
+	useEffect(() => {
+		urlParams.set('tab', '' + activeTab)
+		const newUrl = `${window.location.pathname}?${urlParams.toString()}`
+		window.history.replaceState({}, '', newUrl)
+	}, [activeTab])
+
+	useEffect(() => {
+		if (viewChanged) {
+			// active tab count has one more item in mobile view
+			// to keep the same view, the active tab has to be adjusted
+			if (isMobile) {
+				setActiveTab(activeTab + 1)
+			} else {
+				setActiveTab(activeTab > 0 ? activeTab - 1 : 0)
+			}
+		}
+	}, [isMobile])
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setActiveTab(newValue)
@@ -49,8 +72,7 @@ export const CharacterSheet: React.FC = () => {
 							position: 'sticky',
 							top: '116px',
 							zIndex: 100,
-							backgroundColor:
-								colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
+							backgroundColor: 'var(--ifm-background-color)',
 						}}
 					>
 						<Tabs
@@ -85,8 +107,7 @@ export const CharacterSheet: React.FC = () => {
 							flexWrap: 'wrap',
 							gap: 2,
 							justifyContent: 'left',
-							backgroundColor:
-								colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
+							backgroundColor: 'var(--ifm-background-color)',
 						}}
 					>
 						<Box sx={{ mt: 1, maxWidth: '30rem' }}>

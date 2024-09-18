@@ -23,7 +23,6 @@ import { useDeviceSize } from '../../utils/useDeviceSize'
 
 export const SharedNotes: React.FC = () => {
 	const { currentUser } = useAuth()
-	const { colorMode } = useColorMode()
 	const { isMobile } = useDeviceSize()
 	const [ref, setRef] = useState(undefined)
 
@@ -93,8 +92,7 @@ export const SharedNotes: React.FC = () => {
 					position: isMobile ? 'sticky' : 'static',
 					top: '164px',
 					zIndex: isMobile ? 100 : 'auto',
-					backgroundColor:
-						colorMode === 'dark' ? 'var(--ifm-background-color)' : 'white',
+					backgroundColor: 'var(--ifm-background-color)',
 					display: 'flex',
 					alignItems: 'center',
 					gap: 1,

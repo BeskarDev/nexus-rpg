@@ -73,7 +73,7 @@ export const ArcaneSpells: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor: 'white',
+					backgroundColor: 'var(--ifm-background-color)',
 					borderRadius: '8px',
 				}}
 			>
@@ -89,7 +89,7 @@ export const ArcaneSpells: React.FC = () => {
 						input={<OutlinedInput label="Arcane Spells" />}
 						renderValue={(selected) => selected.join(', ')}
 						MenuProps={MenuProps}
-						sx={{ backgroundColor: 'white' }}
+						sx={{ backgroundColor: 'var(--ifm-background-color)' }}
 					>
 						{arcaneSpells.map(({ name }) => (
 							<MenuItem key={name} value={name}>

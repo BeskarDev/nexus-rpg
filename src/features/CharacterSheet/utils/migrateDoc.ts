@@ -121,6 +121,7 @@ const migrateItems = (data: any): Items => {
 		items: data.items.map((item) => ({
 			...item,
 			id: item.id || crypto.randomUUID(),
+			container: item.container || 'backpack',
 		})),
 	} as Items
 }

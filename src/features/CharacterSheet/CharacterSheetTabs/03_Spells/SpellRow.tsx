@@ -82,7 +82,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						display: 'flex',
 						alignItems: 'baseline',
 						flexWrap: 'wrap',
-						pb: 1,
 						columnGap: 1,
 						maxWidth: '47rem',
 					}}
@@ -91,11 +90,12 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						onClick={castSpell}
 						sx={{
 							bgcolor: (theme) => 'transparent',
-							border: (theme) => `1px solid ${theme.palette.text.primary}`,
+							border: (theme) => `2px solid ${theme.palette.text.primary}`,
 							color: (theme) => theme.palette.text.primary,
 							height: 32,
 							width: 32,
-							fontSize: '1rem',
+							fontSize: 14,
+							fontWeight: 'bold',
 							cursor: 'pointer',
 							transition: 'opacity 200ms ease-in-out',
 							'&:hover': {
@@ -170,7 +170,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						display: 'flex',
 						alignItems: 'baseline',
 						flexWrap: 'wrap',
-						pb: 1,
 						columnGap: 1,
 						maxWidth: '47rem',
 					}}
@@ -179,7 +178,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						size="small"
 						multiline
 						minRows={1}
-						maxRows={5}
+						maxRows={10}
 						value={spell.effect}
 						onChange={(event) =>
 							setSpell((s) => ({ ...s, effect: event.target.value }))
@@ -219,12 +218,8 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						size="small"
 						value={spell.target}
 						onChange={(event) =>
-							setSpell((s) => ({
-								...s,
-								target: event.target.value as TargetType,
-							}))
+							updateSpell({ target: event.target.value as TargetType })
 						}
-						onBlur={() => updateSpell({ target: spell.target })}
 						label="Target"
 						sx={{ maxWidth: '6rem', flexGrow: 0 }}
 					>
@@ -239,12 +234,8 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						size="small"
 						value={spell.range}
 						onChange={(event) =>
-							setSpell((s) => ({
-								...s,
-								range: event.target.value as RangeType,
-							}))
+							updateSpell({ range: event.target.value as RangeType })
 						}
-						onBlur={() => updateSpell({ range: spell.range })}
 						label="Range"
 						sx={{ maxWidth: '7rem', flexGrow: 0 }}
 					>
