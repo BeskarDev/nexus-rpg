@@ -1,6 +1,8 @@
 import {
 	Button,
 	Checkbox,
+	Experimental_CssVarsProvider,
+	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -32,6 +34,7 @@ const MenuProps = {
 }
 
 export const CombatArts: React.FC = () => {
+	const customTheme = experimental_extendTheme()
 	const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>(
 		[],
 	)
@@ -63,7 +66,7 @@ export const CombatArts: React.FC = () => {
 	const deselectAll = () => setSelectedCombatArts([])
 
 	return (
-		<ThemeProvider theme={theme}>
+		<Experimental_CssVarsProvider theme={customTheme}>
 			<Stack
 				flexDirection="row"
 				gap={1}
@@ -72,7 +75,7 @@ export const CombatArts: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor: 'var(--ifm-background-color)',
+					backgroundColor: 'white',
 					borderRadius: '8px',
 				}}
 			>
@@ -88,7 +91,7 @@ export const CombatArts: React.FC = () => {
 						input={<OutlinedInput label="Combat Arts" />}
 						renderValue={(selected) => selected.join(', ')}
 						MenuProps={MenuProps}
-						sx={{ backgroundColor: 'var(--ifm-background-color)' }}
+						sx={{ backgroundColor: 'white' }}
 					>
 						{combatArts.map(({ name }) => (
 							<MenuItem key={name} value={name}>
@@ -121,6 +124,6 @@ export const CombatArts: React.FC = () => {
 					</Typography>
 				)}
 			</div>
-		</ThemeProvider>
+		</Experimental_CssVarsProvider>
 	)
 }

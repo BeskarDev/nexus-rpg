@@ -1,6 +1,8 @@
 import {
 	Button,
 	Checkbox,
+	Experimental_CssVarsProvider,
+	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -32,6 +34,7 @@ const MenuProps = {
 }
 
 export const MysticSpells: React.FC = () => {
+	const customTheme = experimental_extendTheme()
 	const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<
 		string[]
 	>([])
@@ -64,7 +67,7 @@ export const MysticSpells: React.FC = () => {
 	const deselectAll = () => setSelectedMysticSpells([])
 
 	return (
-		<ThemeProvider theme={theme}>
+		<Experimental_CssVarsProvider theme={customTheme}>
 			<Stack
 				flexDirection="row"
 				gap={1}
@@ -73,7 +76,7 @@ export const MysticSpells: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor: 'var(--ifm-background-color)',
+					backgroundColor: 'white',
 					borderRadius: '8px',
 				}}
 			>
@@ -89,7 +92,7 @@ export const MysticSpells: React.FC = () => {
 						input={<OutlinedInput label="Mystic Spells" />}
 						renderValue={(selected) => selected.join(', ')}
 						MenuProps={MenuProps}
-						sx={{ backgroundColor: 'var(--ifm-background-color)' }}
+						sx={{ backgroundColor: 'white' }}
 					>
 						{mysticSpells.map(({ name }) => (
 							<MenuItem key={name} value={name}>
@@ -122,6 +125,6 @@ export const MysticSpells: React.FC = () => {
 					</Typography>
 				)}
 			</div>
-		</ThemeProvider>
+		</Experimental_CssVarsProvider>
 	)
 }
