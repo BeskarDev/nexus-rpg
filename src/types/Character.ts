@@ -129,6 +129,7 @@ export type Weapon = {
 export type Damage = {
 	base: BaseDamageType
 	weapon: number
+	other: number
 	otherWeak: number
 	otherStrong: number
 	otherCritical: number
