@@ -268,7 +268,7 @@ export const {
 				range: '',
 				properties: '',
 				damage: {
-					base: 'SPI',
+					base: '',
 					weapon: 0,
 					other: 0,
 					otherWeak: 0,
