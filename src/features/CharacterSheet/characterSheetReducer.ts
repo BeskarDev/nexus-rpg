@@ -167,8 +167,9 @@ export const {
 				id: crypto.randomUUID(),
 				name: '',
 				damage: {
-					base: 0,
+					base: 'STR',
 					weapon: 0,
+					other: 0,
 					otherWeak: 0,
 					otherStrong: 0,
 					otherCritical: 0,
@@ -267,8 +268,9 @@ export const {
 				range: '',
 				properties: '',
 				damage: {
-					base: 0,
+					base: 'SPI',
 					weapon: 0,
+					other: 0,
 					otherWeak: 0,
 					otherStrong: 0,
 					otherCritical: 0,
