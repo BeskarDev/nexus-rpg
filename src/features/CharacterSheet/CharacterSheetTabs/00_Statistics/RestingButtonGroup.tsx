@@ -5,6 +5,8 @@ import {
 	Thunderstorm,
 } from '@mui/icons-material'
 import {
+	Box,
+	BoxProps,
 	Button,
 	ButtonGroup,
 	Dialog,
@@ -21,7 +23,7 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 export type RestingButtonGroupProps = {
 	character: Character
 	updateCharacter: (update: DeepPartial<Character>) => void
-}
+} & BoxProps
 
 type RestingType = 'shortBreak' | 'nightsRest' | 'badNight'
 const restingOptions: {
@@ -104,6 +106,7 @@ const restingOptions: {
 export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	character,
 	updateCharacter,
+	...props
 }) => {
 	const [open, setOpen] = useState(false)
 	const [dialogType, setDialogType] = useState<RestingType>('shortBreak')
@@ -193,7 +196,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	}
 
 	return (
-		<>
+		<Box {...props}>
 			<ButtonGroup variant="outlined">
 				<Button onClick={() => handleOpen('shortBreak')}>Short Break</Button>
 				<Button onClick={() => handleOpen('nightsRest')}>Night's Rest</Button>
@@ -225,6 +228,6 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 					</Button>
 				</DialogActions>
 			</Dialog>
-		</>
+		</Box>
 	)
 }

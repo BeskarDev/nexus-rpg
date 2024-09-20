@@ -9,6 +9,7 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import { CharacterSheetContainer } from './CharacterSheetContainer'
 import { setupStore } from './store'
+import './characterSheet.css'
 
 export const CharacterSheetWrapper: React.FC = () => {
 	const customTheme = experimental_extendTheme(theme)

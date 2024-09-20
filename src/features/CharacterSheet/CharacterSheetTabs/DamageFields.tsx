@@ -93,7 +93,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						maxWidth: { sm: '7rem', xs: '5.25rem' },
 					}}
 				/>
-				<IconButton size="small" onClick={handleClick}>
+				<IconButton size="small" onClick={handleClick} sx={{ ml: -0.5 }}>
 					<Settings fontSize="small" />
 				</IconButton>
 			</Box>
