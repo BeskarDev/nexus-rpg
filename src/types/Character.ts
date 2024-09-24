@@ -103,16 +103,6 @@ export type Items = {
 		currentLoad: number
 	}
 	weapons: Weapon[]
-	equipment: {
-		head?: Equipment
-		neck?: Equipment
-		back?: Equipment
-		body?: Equipment
-		hands?: Equipment
-		rings?: Equipment[]
-		waist?: Equipment
-		feet?: Equipment
-	}
 	items: Item[]
 }
 
@@ -129,6 +119,7 @@ export type Weapon = {
 export type Damage = {
 	base: BaseDamageType
 	weapon: number
+	other: number
 	otherWeak: number
 	otherStrong: number
 	otherCritical: number

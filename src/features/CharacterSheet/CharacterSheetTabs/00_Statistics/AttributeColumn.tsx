@@ -1,5 +1,10 @@
-import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
-import { Box, Checkbox, MenuItem } from '@mui/material'
+import {
+	HeartBroken,
+	HeartBrokenOutlined,
+	PanTool,
+	SvgIconComponent,
+} from '@mui/icons-material'
+import { Box, Checkbox, Icon, InputAdornment, MenuItem } from '@mui/material'
 import {
 	Attribute,
 	AttributeType,
@@ -11,12 +16,14 @@ import { AttributeField } from '../../CharacterSheet'
 export type AttributeColumnProps = {
 	attribute: Attribute
 	label: string
+	icon: React.ReactNode
 	updateAttribute: (update: Partial<Attribute>) => void
 }
 
 export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 	attribute,
 	label,
+	icon,
 	updateAttribute,
 }) => {
 	return (
@@ -24,7 +31,6 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				alignItems: 'center',
 			}}
 		>
 			<AttributeField
@@ -36,8 +42,22 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 					})
 				}
 				label={label}
+				InputProps={{
+					startAdornment: (
+						<InputAdornment
+							position="start"
+							sx={{ pr: 0.5, fontSize: '0.75rem' }}
+						>
+							{icon}
+						</InputAdornment>
+					),
+					sx: {
+						px: 1,
+						fontWeight: 'bold',
+					},
+				}}
 				sx={{
-					width: '6rem',
+					maxWidth: '8rem',
 				}}
 			>
 				{attributeTypeArray.map((at) => (

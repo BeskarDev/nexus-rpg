@@ -111,6 +111,7 @@ const migrateItems = (data: any): Items => {
 					? {
 							base: 0,
 							weapon: 0,
+							other: 0,
 							otherWeak: 0,
 							otherStrong: 0,
 							otherCritical: 0,
@@ -137,6 +138,7 @@ const migrateSpells = (data: any): Spells => {
 					? {
 							base: 0,
 							weapon: 0,
+							other: 0,
 							otherWeak: 0,
 							otherStrong: 0,
 							otherCritical: 0,

@@ -1,15 +1,23 @@
-import { Box } from '@mui/material'
-import React, { useMemo } from 'react'
+import { Box, Typography } from '@mui/material'
+import React from 'react'
 
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { AttributeField } from '../../CharacterSheet'
 
+import {
+	BubbleChart,
+	DirectionsRun,
+	PanTool,
+	Visibility,
+} from '@mui/icons-material'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { AttributeColumn } from './AttributeColumn'
+import { AvField } from './AvField'
 import { RestingButtonGroup } from './RestingButtonGroup'
+import { RoundTextField } from './RoundTextField'
 import { WoundCheckbox } from './WoundCheckbox'
 
 export const StatisticsTab: React.FC = () => {
@@ -32,11 +40,6 @@ export const StatisticsTab: React.FC = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const totalAV: number = useMemo(
-		() => av.armor + av.helmet + av.shield + av.other,
-		[av.armor + av.helmet + av.shield + av.other],
-	)
-
 	return (
 		<Box
 			sx={{
@@ -49,19 +52,42 @@ export const StatisticsTab: React.FC = () => {
 				sx={{
 					display: 'flex',
 					justifyContent: 'right',
+					flexWrap: 'wrap-reverse',
 					width: '100%',
 					flexGrow: 1,
 					mb: 2,
+					gap: 2,
 				}}
 			>
+				<RoundTextField
+					type="number"
+					value={resolve}
+					onChange={(event) =>
+						updateCharacter({
+							statistics: { resolve: Number(event.target.value) },
+						})
+					}
+					label="Resolve"
+					helperText="max. 3"
+					sx={{
+						mt: 0,
+						mr: 'auto',
+					}}
+				/>
 				<RestingButtonGroup
 					character={activeCharacter}
 					updateCharacter={updateCharacter}
 				/>
 			</Box>
-			<Box>
-				<SectionHeader>Attributes</SectionHeader>
-				<Box sx={{ display: 'flex', gap: 1 }}>
+			<Box
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					width: '100%',
+					gap: 1,
+				}}
+			>
+				<Box sx={{ display: 'flex', width: '100%', overflowX: 'auto', gap: 1 }}>
 					<AttributeColumn
 						attribute={strength}
 						updateAttribute={(update) =>
@@ -70,6 +96,7 @@ export const StatisticsTab: React.FC = () => {
 							})
 						}
 						label="Strength"
+						icon={<PanTool fontSize="inherit" />}
 					/>
 					<AttributeColumn
 						attribute={agility}
@@ -79,6 +106,7 @@ export const StatisticsTab: React.FC = () => {
 							})
 						}
 						label="Agility"
+						icon={<DirectionsRun fontSize="inherit" />}
 					/>
 					<AttributeColumn
 						attribute={spirit}
@@ -88,6 +116,7 @@ export const StatisticsTab: React.FC = () => {
 							})
 						}
 						label="Spirit"
+						icon={<Visibility fontSize="inherit" />}
 					/>
 					<AttributeColumn
 						attribute={mind}
@@ -97,13 +126,11 @@ export const StatisticsTab: React.FC = () => {
 							})
 						}
 						label="Mind"
+						icon={<BubbleChart fontSize="inherit" />}
 					/>
 				</Box>
-			</Box>
-
-			<Box>
-				<SectionHeader>Health</SectionHeader>
-				<Box sx={{ display: 'flex' }}>
+				<Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+					<AvField />
 					<AttributeField
 						type="number"
 						value={health.current}
@@ -114,7 +141,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Current HP"
 						sx={{
-							maxWidth: '10rem',
+							maxWidth: '6rem',
 							'& .MuiOutlinedInput-root': {
 								'& .MuiOutlinedInput-notchedOutline': {
 									borderWidth: '2px',
@@ -122,78 +149,80 @@ export const StatisticsTab: React.FC = () => {
 							},
 						}}
 					/>
-					<AttributeField
-						type="number"
-						value={health.temp}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { health: { temp: Number(event.target.value) } },
-							})
-						}
-						label="Temp. HP"
-						sx={{ maxWidth: '5rem' }}
-					/>
-					<AttributeField
-						type="number"
-						value={health.total}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { health: { total: Number(event.target.value) } },
-							})
-						}
-						label="Max. HP"
-						helperText="12 + STR"
-						sx={{ maxWidth: '7rem' }}
-					/>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+						}}
+					>
+						<AttributeField
+							size="small"
+							type="number"
+							value={health.temp}
+							onChange={(event) =>
+								updateCharacter({
+									statistics: { health: { temp: Number(event.target.value) } },
+								})
+							}
+							label="Temp. HP"
+						/>
+						<AttributeField
+							size="small"
+							type="number"
+							value={health.total}
+							onChange={(event) =>
+								updateCharacter({
+									statistics: { health: { total: Number(event.target.value) } },
+								})
+							}
+							label="Max. HP"
+							helperText="12 + STR"
+						/>
+					</Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'top',
+						}}
+					>
+						<Typography variant="caption">Wounds</Typography>
+						<Box>
+							<WoundCheckbox
+								{...health.woundOne}
+								setWound={(update) =>
+									updateCharacter({
+										statistics: {
+											health: { woundOne: { ...health.woundOne, ...update } },
+										},
+									})
+								}
+							/>
+							<WoundCheckbox
+								{...health.woundTwo}
+								setWound={(update) =>
+									updateCharacter({
+										statistics: {
+											health: { woundTwo: { ...health.woundTwo, ...update } },
+										},
+									})
+								}
+							/>
+							<WoundCheckbox
+								{...health.woundThree}
+								setWound={(update) =>
+									updateCharacter({
+										statistics: {
+											health: {
+												woundThree: { ...health.woundThree, ...update },
+											},
+										},
+									})
+								}
+							/>
+						</Box>
+					</Box>
 				</Box>
-			</Box>
-
-			<Box
-				sx={{
-					display: 'flex',
-					flexDirection: 'column',
-					flexWrap: 'wrap',
-				}}
-			>
-				<SectionHeader>Wounds</SectionHeader>
-				<Box>
-					<WoundCheckbox
-						{...health.woundOne}
-						setWound={(update) =>
-							updateCharacter({
-								statistics: {
-									health: { woundOne: { ...health.woundOne, ...update } },
-								},
-							})
-						}
-					/>
-					<WoundCheckbox
-						{...health.woundTwo}
-						setWound={(update) =>
-							updateCharacter({
-								statistics: {
-									health: { woundTwo: { ...health.woundTwo, ...update } },
-								},
-							})
-						}
-					/>
-					<WoundCheckbox
-						{...health.woundThree}
-						setWound={(update) =>
-							updateCharacter({
-								statistics: {
-									health: { woundThree: { ...health.woundThree, ...update } },
-								},
-							})
-						}
-					/>
-				</Box>
-			</Box>
-
-			<Box sx={{ width: '100%', flexGrow: 1 }} />
-
-			<Box>
-				<SectionHeader>Defenses</SectionHeader>
 				<Box sx={{ display: 'flex', gap: 1 }}>
 					<AttributeField
 						type="number"
@@ -230,93 +259,6 @@ export const StatisticsTab: React.FC = () => {
 						label="Resist"
 						helperText="5 + ½ SPI"
 						sx={{ maxWidth: '6rem' }}
-					/>
-				</Box>
-			</Box>
-
-			<Box>
-				<SectionHeader>Resolve</SectionHeader>
-				<Box sx={{ display: 'flex', gap: 1 }}>
-					<AttributeField
-						type="number"
-						value={resolve}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { resolve: Number(event.target.value) },
-							})
-						}
-						helperText="max. 3"
-						sx={{
-							maxWidth: '7rem',
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
-							},
-						}}
-					/>
-				</Box>
-			</Box>
-
-			<Box>
-				<SectionHeader>AV</SectionHeader>
-				<Box sx={{ display: 'flex' }}>
-					<AttributeField
-						disabled
-						value={totalAV}
-						label="Total"
-						sx={{
-							mr: 1,
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
-							},
-						}}
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={av.armor}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { av: { armor: Number(event.target.value) } },
-							})
-						}
-						label="Armor"
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={av.helmet}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { av: { helmet: Number(event.target.value) } },
-							})
-						}
-						label="Helmet"
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={av.shield}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { av: { shield: Number(event.target.value) } },
-							})
-						}
-						label="Shield"
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={av.other}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { av: { other: Number(event.target.value) } },
-							})
-						}
-						label="Other"
 					/>
 				</Box>
 			</Box>

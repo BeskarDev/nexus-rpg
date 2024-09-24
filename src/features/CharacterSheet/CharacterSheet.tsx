@@ -105,17 +105,17 @@ export const CharacterSheet: React.FC = () => {
 							mb: 2,
 							display: 'flex',
 							flexWrap: 'wrap',
-							gap: 2,
+							gap: 6,
 							justifyContent: 'left',
 							backgroundColor: 'var(--ifm-background-color)',
 						}}
 					>
-						<Box sx={{ mt: 1, maxWidth: '30rem' }}>
+						<Box sx={{ mt: 1, maxWidth: '25rem' }}>
 							<StatisticsTab />
 						</Box>
 						<Box
 							sx={{
-								maxWidth: { lg: '40rem', xl: '49rem' },
+								maxWidth: { md: '25rem', lg: '35rem', xl: '50rem' },
 							}}
 						>
 							<Tabs

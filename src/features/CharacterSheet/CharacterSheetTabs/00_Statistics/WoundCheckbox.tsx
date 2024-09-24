@@ -38,6 +38,9 @@ export const WoundCheckbox: React.FC<WoundCheckbox> = ({
 							fatigueTwo: !injury ? false : fatigueTwo,
 						})
 					}
+					sx={{
+						p: 0.5,
+					}}
 				/>
 				<Checkbox
 					size="small"
@@ -51,6 +54,9 @@ export const WoundCheckbox: React.FC<WoundCheckbox> = ({
 							fatigueTwo: fatigueOne ? false : fatigueTwo,
 						})
 					}
+					sx={{
+						p: 0.5,
+					}}
 				/>
 				<Checkbox
 					size="small"
@@ -64,6 +70,9 @@ export const WoundCheckbox: React.FC<WoundCheckbox> = ({
 							fatigueTwo: !fatigueTwo,
 						})
 					}
+					sx={{
+						p: 0.5,
+					}}
 				/>
 			</Box>
 		</Box>

@@ -82,7 +82,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						display: 'flex',
 						alignItems: 'baseline',
 						flexWrap: 'wrap',
-						columnGap: 1,
+						columnGap: 0.5,
 						maxWidth: '47rem',
 					}}
 				>

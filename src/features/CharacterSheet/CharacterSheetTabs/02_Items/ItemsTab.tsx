@@ -26,7 +26,7 @@ import { WeaponRow } from './WeaponRow'
 export const ItemsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { coins, encumbrance, weapons, equipment, items } = useMemo(
+	const { coins, encumbrance, weapons, items } = useMemo(
 		() => activeCharacter.items,
 		[activeCharacter.items],
 	)
@@ -181,7 +181,7 @@ export const ItemsTab: React.FC = () => {
 						})
 					}
 					label="Encumbered"
-					helperText="STR + 4"
+					helperText="STR + 6"
 					sx={{
 						maxWidth: '5rem',
 					}}
@@ -198,7 +198,7 @@ export const ItemsTab: React.FC = () => {
 						})
 					}
 					label="Overencumbered"
-					helperText="2 * STR + 4"
+					helperText="2 * STR + 6"
 					sx={{
 						maxWidth: '6rem',
 					}}

@@ -53,15 +53,15 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 	}, [damage.base, strength, agility, spirit, mind])
 
 	const weakDamage = useMemo(
-		() => baseDamage + damage.weapon + damage.otherWeak,
+		() => baseDamage + damage.weapon + damage.other + damage.otherWeak,
 		[damage, baseDamage],
 	)
 	const strongDamage = useMemo(
-		() => baseDamage + damage.weapon * 2 + damage.otherStrong,
+		() => baseDamage + damage.weapon * 2 + damage.other + damage.otherStrong,
 		[damage, baseDamage],
 	)
 	const criticalDamage = useMemo(
-		() => baseDamage + damage.weapon * 3 + damage.otherCritical,
+		() => baseDamage + damage.weapon * 3 + damage.other + damage.otherCritical,
 		[damage, baseDamage],
 	)
 
@@ -93,7 +93,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						maxWidth: { sm: '7rem', xs: '5.25rem' },
 					}}
 				/>
-				<IconButton size="small" onClick={handleClick}>
+				<IconButton size="small" onClick={handleClick} sx={{ ml: -0.5 }}>
 					<Settings fontSize="small" />
 				</IconButton>
 			</Box>
@@ -138,6 +138,16 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						sx={{ maxWidth: '5.5rem' }}
 					/>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
+					<AttributeField
+						size="small"
+						type="number"
+						value={damage.other}
+						onChange={(event) =>
+							updateDamage({ other: Number(event.target.value) })
+						}
+						label="Other"
+						sx={{ maxWidth: '5.5rem' }}
+					/>
 					<AttributeField
 						size="small"
 						type="number"
