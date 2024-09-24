@@ -50,11 +50,12 @@ const WoundIndicator = styled(Avatar)({
 })
 
 const SkillRankIndicator = styled(Avatar)({
-	width: 32,
-	height: 32,
+	width: 24,
+	height: 24,
 	backgroundColor: 'transparent',
 	color: 'black',
 	border: '1px solid black',
+	fontSize: '14px',
 })
 
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
@@ -303,28 +304,36 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 										display: 'flex',
 										flexDirection: 'column',
 										alignItems: 'center',
-										mt: 0.5,
+										mt: 0.75,
 									}}
 								>
 									{index == 0 && (
-										<Typography color="text.secondary" variant="caption">
+										<Typography
+											color="text.secondary"
+											variant="caption"
+											sx={{ fontSize: '9px' }}
+										>
 											Rank
 										</Typography>
 									)}
 									<SkillRankIndicator>{skill.rank}</SkillRankIndicator>
 								</Box>
 								<TextField
+									size="small"
 									variant="standard"
 									value={skill.name}
 									label={index == 0 ? 'Skill' : ''}
+									sx={{ '& input': { p: 0 } }}
 								/>
 								<TextField
+									size="small"
 									variant="standard"
 									value={skill.xp}
 									label={index == 0 ? 'XP' : ''}
 									sx={{
 										maxWidth: '2rem',
 										'& input': {
+											p: 0,
 											textAlign: 'center',
 										},
 									}}
@@ -344,7 +353,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 					<Typography color="text.secondary" variant="caption" sx={{ ml: 1 }}>
 						Abilities
 					</Typography>
-					<Box component="ul" sx={{ pl: 3 }}>
+					<Box component="ul" sx={{ pl: 3, '& li + li': { mt: 1.5 } }}>
 						{char.skills.abilities.map((ability) => (
 							<Typography component="li" variant="body2">
 								{ability.title}
