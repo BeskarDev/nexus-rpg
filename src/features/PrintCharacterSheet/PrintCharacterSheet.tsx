@@ -1,11 +1,17 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { Box, styled, TextField } from '@mui/material'
+import { Alert, Box, Button, styled, TextField } from '@mui/material'
 import { Character } from '@site/src/types/Character'
 import React, { useEffect, useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import { SectionHeader } from '../CharacterSheet/CharacterSheet'
 import './printCharacterSheetStyles.css'
 import { sampleImport } from './sampleImport'
+import { StatisticsTab } from '../CharacterSheet/CharacterSheetTabs/00_Statistics/StatisticsTab'
+import { StatisticsSheet } from './sheets/0_Statistics'
+import { SkillsSheet } from './sheets/1_Skills'
+import { EquipmentSheet } from './sheets/2_Equipment'
+import { SpellsSheet } from './sheets/3_Spells'
+import { PersonalSheet } from './sheets/4_Personal'
 
 const AttributeField = styled(TextField)({
 	maxWidth: '4.5rem',
@@ -26,7 +32,7 @@ export const PrintCharacterSheet: React.FC = () => {
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>(sampleImport)
 
-	const character: Character = useMemo(() => {
+	const char: Character = useMemo(() => {
 		try {
 			return characterJsonString
 				? (JSON.parse(characterJsonString) as Character)
@@ -44,6 +50,10 @@ export const PrintCharacterSheet: React.FC = () => {
 
 	return (
 		<Box>
+			<Alert variant="filled" severity="info" sx={{ mb: 2 }}>
+				If you're having trouble with not seeing everything on the sheets, make
+				sure to use light mode!
+			</Alert>
 			<Box>
 				<TextField
 					multiline
@@ -54,33 +64,18 @@ export const PrintCharacterSheet: React.FC = () => {
 					onChange={(event) => setCharacterJsonString(event.target.value)}
 					sx={{ mb: 2 }}
 				/>
+				<Button variant="contained" size="large" onClick={handlePrint}>
+					PRINT
+				</Button>
 			</Box>
 
-			{Boolean(character) && (
-				<Box>
-					<SectionHeader>Attributes</SectionHeader>
-					<Box sx={{ display: 'flex', gap: 1 }}>
-						<AttributeField
-							label="Strength"
-							value={`d${character.statistics.strength.value}`}
-							sx={{ fontWeight: 'bold' }}
-						/>
-						<AttributeField
-							label="Agility"
-							value={`d${character.statistics.agility.value}`}
-							sx={{ fontWeight: 'bold' }}
-						/>
-						<AttributeField
-							label="Spirit"
-							value={`d${character.statistics.spirit.value}`}
-							sx={{ fontWeight: 'bold' }}
-						/>
-						<AttributeField
-							label="Mind"
-							value={`d${character.statistics.mind.value}`}
-							sx={{ fontWeight: 'bold' }}
-						/>
-					</Box>
+			{Boolean(char) && (
+				<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>
+					<StatisticsSheet char={char} />
+					<SkillsSheet />
+					<EquipmentSheet />
+					<SpellsSheet />
+					<PersonalSheet />
 				</Box>
 			)}
 		</Box>

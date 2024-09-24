@@ -1,4 +1,5 @@
 import {
+	CssBaseline,
 	Experimental_CssVarsProvider,
 	experimental_extendTheme,
 } from '@mui/material'
@@ -14,6 +15,7 @@ export const PrintCharacterSheetWrapper: React.FC = () => {
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
 			<ThemeSwitcher />
+			<CssBaseline />
 			<PrintCharacterSheet />
 		</Experimental_CssVarsProvider>
 	)
