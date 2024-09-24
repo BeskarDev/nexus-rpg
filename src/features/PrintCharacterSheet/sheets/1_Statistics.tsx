@@ -5,6 +5,7 @@ import { Character, Wound } from '@site/src/types/Character'
 import { RoundTextField } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/RoundTextField'
 import { DiceGuide } from '../assets/DiceGuide'
 import { WoundCheckbox } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/WoundCheckbox'
+import { OutlinedTextfield } from '../PrintCharacterSheet'
 
 const CharacterHeaderTextField = styled(TextField)({
 	marginTop: 0,
@@ -27,17 +28,6 @@ const AttributeField = styled(RoundTextField)({
 	},
 	'& .MuiFormHelperText-root': {
 		marginTop: 0,
-	},
-})
-
-const OutlinedTextfield = styled(TextField)({
-	'& .MuiOutlinedInput-root': {
-		'& .MuiOutlinedInput-notchedOutline': {
-			borderColor: 'black',
-		},
-		'& .MuiInputBase-input.MuiOutlinedInput-input': {
-			textAlign: 'right',
-		},
 	},
 })
 
@@ -167,7 +157,11 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 									left: -10,
 								},
 								'& .MuiOutlinedInput-root': {
-									borderRadius: '1rem',
+									borderRadius: '0.5rem',
+									'& .MuiOutlinedInput-notchedOutline': {
+										border: '2px dotted black',
+										borderTopColor: 'transparent',
+									},
 								},
 							}}
 						/>

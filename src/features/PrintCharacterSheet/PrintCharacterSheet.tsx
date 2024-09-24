@@ -7,8 +7,7 @@ import { SectionHeader } from '../CharacterSheet/CharacterSheet'
 import './printCharacterSheetStyles.css'
 import { sampleImport } from './sampleImport'
 import { StatisticsTab } from '../CharacterSheet/CharacterSheetTabs/00_Statistics/StatisticsTab'
-import { StatisticsSheet } from './sheets/0_Statistics'
-import { SkillsSheet } from './sheets/1_Skills'
+import { StatisticsSheet } from './sheets/1_Statistics'
 import { EquipmentSheet } from './sheets/2_Equipment'
 import { SpellsSheet } from './sheets/3_Spells'
 import { PersonalSheet } from './sheets/4_Personal'
@@ -27,6 +26,17 @@ AttributeField.defaultProps = {
 		},
 	},
 }
+
+export const OutlinedTextfield = styled(TextField)({
+	'& .MuiOutlinedInput-root': {
+		'& .MuiOutlinedInput-notchedOutline': {
+			borderColor: 'black',
+		},
+		'& .MuiInputBase-input.MuiOutlinedInput-input': {
+			textAlign: 'right',
+		},
+	},
+})
 
 export const PrintCharacterSheet: React.FC = () => {
 	const [characterJsonString, setCharacterJsonString] =
@@ -72,8 +82,7 @@ export const PrintCharacterSheet: React.FC = () => {
 			{Boolean(char) && (
 				<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>
 					<StatisticsSheet char={char} />
-					<SkillsSheet />
-					<EquipmentSheet />
+					<EquipmentSheet char={char} />
 					<SpellsSheet />
 					<PersonalSheet />
 				</Box>
