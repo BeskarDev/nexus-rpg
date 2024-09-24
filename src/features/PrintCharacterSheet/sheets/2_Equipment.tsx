@@ -134,6 +134,36 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Typography color="text.secondary" variant="caption">
 					Equipment & Items
 				</Typography>
+				<Box sx={{ display: 'flex' }}>
+					<Typography
+						color="text.secondary"
+						variant="caption"
+						sx={{ fontSize: '9px', mr: 11 }}
+					>
+						Name
+					</Typography>
+					<Typography
+						color="text.secondary"
+						variant="caption"
+						sx={{ fontSize: '9px', mr: 1 }}
+					>
+						Container/Slot
+					</Typography>
+					<Typography
+						color="text.secondary"
+						variant="caption"
+						sx={{ fontSize: '9px', mr: 0.5 }}
+					>
+						Cost
+					</Typography>
+					<Typography
+						color="text.secondary"
+						variant="caption"
+						sx={{ fontSize: '9px' }}
+					>
+						Load
+					</Typography>
+				</Box>
 				<Box
 					sx={{ display: 'flex', rowGap: 0, columnGap: 1, flexWrap: 'wrap' }}
 				>
