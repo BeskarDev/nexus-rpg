@@ -51,8 +51,8 @@ export const PrintCharacterSheet: React.FC = () => {
 	return (
 		<Box>
 			<Alert variant="filled" severity="info" sx={{ mb: 2 }}>
-				If you're having trouble with not seeing everything on the sheets, make
-				sure to use light mode!
+				If you're having trouble seeing everything on the sheets, make sure to
+				use light mode (the printed result isn't affected either way)!
 			</Alert>
 			<Box>
 				<TextField
