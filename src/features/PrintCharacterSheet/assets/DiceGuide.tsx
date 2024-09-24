@@ -2,8 +2,8 @@ import React from 'react'
 
 export const DiceGuide: React.FC = () => (
 	<svg
-		width="29"
-		height="195"
+		width="34.8"
+		height="234"
 		viewBox="0 0 29 195"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
