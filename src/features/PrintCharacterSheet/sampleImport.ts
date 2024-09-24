@@ -253,7 +253,7 @@ export const sampleImport = JSON.stringify({
 	},
 	statistics: {
 		strength: {
-			wounded: false,
+			wounded: true,
 			value: 4,
 		},
 		resist: 8,
@@ -269,21 +269,21 @@ export const sampleImport = JSON.stringify({
 		health: {
 			woundTwo: {
 				injury: false,
-				fatigueTwo: false,
+				fatigueTwo: true,
 				fatigueOne: false,
 			},
 			total: 16,
 			woundThree: {
-				fatigueOne: false,
+				fatigueOne: true,
 				injury: false,
-				fatigueTwo: false,
+				fatigueTwo: true,
 			},
 			temp: 0,
 			current: 16,
 			woundOne: {
 				fatigueTwo: false,
 				fatigueOne: false,
-				injury: false,
+				injury: true,
 			},
 		},
 		mind: {

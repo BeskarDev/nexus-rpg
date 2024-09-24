@@ -28,7 +28,7 @@ RoundTextField.defaultProps = {
 		sx: {
 			maxWidth: '100%',
 			left: -10,
-			top: -1,
+			top: -2,
 			overflow: 'visible',
 		},
 	},
