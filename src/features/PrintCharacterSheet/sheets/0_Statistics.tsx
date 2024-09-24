@@ -49,6 +49,14 @@ const WoundIndicator = styled(Avatar)({
 	border: '2px solid black',
 })
 
+const SkillRankIndicator = styled(Avatar)({
+	width: 32,
+	height: 32,
+	backgroundColor: 'transparent',
+	color: 'black',
+	border: '1px solid black',
+})
+
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 	const displayWound = (wound: Wound) => {
 		if (wound.injury) {
@@ -77,7 +85,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 					label="Background"
 				/>
 			</Box>
-			<Box sx={{ display: 'flex', gap: 1 }}>
+			<Box sx={{ display: 'flex', gap: 1, height: '8rem' }}>
 				<DiceGuide />
 				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 					<Box sx={{ display: 'flex', gap: 1 }}>
@@ -253,6 +261,95 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 								</WoundIndicator>
 							</Box>
 						</Box>
+					</Box>
+				</Box>
+			</Box>
+			<Box sx={{ display: 'flex', height: '100%' }}>
+				<Box sx={{ width: '50%' }}>
+					<Box sx={{ display: 'flex', mt: 4 }}>
+						<OutlinedTextfield
+							value={char.skills.xp.spend}
+							label="XP (spend)"
+							sx={{
+								ml: 7,
+								maxWidth: '5rem',
+								'& .MuiOutlinedInput-root': {
+									borderRadius: '8px 0px 0px 8px',
+								},
+							}}
+						/>
+						<OutlinedTextfield
+							value={char.skills.xp.total}
+							label="XP (total)"
+							sx={{
+								maxWidth: '5rem',
+								'& .MuiOutlinedInput-root': {
+									borderRadius: '0px 8px 8px 0px',
+								},
+							}}
+						/>
+					</Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							mt: -0.5,
+						}}
+					>
+						{char.skills.skills.map((skill, index) => (
+							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+								<Box
+									sx={{
+										display: 'flex',
+										flexDirection: 'column',
+										alignItems: 'center',
+										mt: 0.5,
+									}}
+								>
+									{index == 0 && (
+										<Typography color="text.secondary" variant="caption">
+											Rank
+										</Typography>
+									)}
+									<SkillRankIndicator>{skill.rank}</SkillRankIndicator>
+								</Box>
+								<TextField
+									variant="standard"
+									value={skill.name}
+									label={index == 0 ? 'Skill' : ''}
+								/>
+								<TextField
+									variant="standard"
+									value={skill.xp}
+									label={index == 0 ? 'XP' : ''}
+									sx={{
+										maxWidth: '2rem',
+										'& input': {
+											textAlign: 'center',
+										},
+									}}
+								/>
+							</Box>
+						))}
+					</Box>
+				</Box>
+				<Box
+					sx={{
+						width: '50%',
+						ml: 0.5,
+						border: '1px dotted black',
+						borderRadius: '0.5rem',
+					}}
+				>
+					<Typography color="text.secondary" variant="caption" sx={{ ml: 1 }}>
+						Abilities
+					</Typography>
+					<Box component="ul" sx={{ pl: 3 }}>
+						{char.skills.abilities.map((ability) => (
+							<Typography component="li" variant="body2">
+								{ability.title}
+							</Typography>
+						))}
 					</Box>
 				</Box>
 			</Box>
