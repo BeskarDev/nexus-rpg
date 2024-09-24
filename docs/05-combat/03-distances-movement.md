@@ -8,16 +8,16 @@ sidebar_position: 3
 
 Various effects and abilities list the following distances to describe their range.
 
-| Distance | Description | In Meters | In Feet | In Areas |
-| --- | --- | --- | --- | --- |
-| Melee | touching or fighting distance | <2 meters | <5 feet | 0 areas |
-| Close | within a few steps | 2-4 meters | 5-15 feet | 0 areas |
-| Short | normal speaking distance | 5-10 meters | 16-30 feet | 1 area |
-| Medium | a short sprint | 11-20 meters | 31-60 feet | 2 areas |
-| Long | louder shouting distance | 21-40 meters | 61-120 feet | 3-4 areas |
-| Very Long | unhindered viewing distance | 41-80 meters | 121-240 feet | 5-8 areas |
-| Extreme | barely perceivable if at all | 81-160 meters | 241-480 feet | 9-16 areas |
-| Out of Range | too far away to perceive or interact with | - | - | - |
+| Distance     | Description                               | In Meters     | In Feet      | In Areas   |
+| ------------ | ----------------------------------------- | ------------- | ------------ | ---------- |
+| Melee        | touching or fighting distance             | \<2 meters    | \<5 feet     | 0 areas    |
+| Close        | within a few steps                        | 2-4 meters    | 5-15 feet    | 0 areas    |
+| Short        | normal speaking distance                  | 5-10 meters   | 16-30 feet   | 1 area     |
+| Medium       | a short sprint                            | 11-20 meters  | 31-60 feet   | 2 areas    |
+| Long         | louder shouting distance                  | 21-40 meters  | 61-120 feet  | 3-4 areas  |
+| Very Long    | unhindered viewing distance               | 41-80 meters  | 121-240 feet | 5-8 areas  |
+| Extreme      | barely perceivable if at all              | 81-160 meters | 241-480 feet | 9-16 areas |
+| Out of Range | too far away to perceive or interact with | -             | -            | -          |
 
 ## Movement
 
@@ -48,8 +48,8 @@ Under normal circumstances, you fall up to a very long distance during one encou
 Depending on the distance you have fallen before hitting the ground, you take damage as follows. Falling damage ignores your AV. If you take damage from falling, you also fall prone.
 
 | Distance | Close | Short | Medium | Long | Very Long | Extreme |
-| --- | --- | --- | --- | --- | --- | --- |
-| Damage | 5 | 10 | 20 | 40 | 60 | 80 |
+| -------- | ----- | ----- | ------ | ---- | --------- | ------- |
+| Damage   | 5     | 10    | 20     | 40   | 60        | 80      |
 
 ### Moving Objects
 
@@ -76,7 +76,6 @@ If you are climbing and are pushed or knocked prone, you also lose control of yo
 Areas are an abstraction of connected spaces during combat. When using a battle map for combat, define enclosed areas for small, connected spaces. One area can be a connected space of up to 6 by 6 meters (or 20 by 20 feet). Creatures within the same area are close to each other, while those one area apart are within short distance of each other, and so on.
 
 > For visualisation, you can use index cards for individual areas. Write down a distinct name for each card and note its area properties. Place your cards next to each other to show how they are connected. You can use any gaming tokens for active combatants and place them onto the cards. Group up tokens that are in a melee.
->
 
 ### Area Properties
 
