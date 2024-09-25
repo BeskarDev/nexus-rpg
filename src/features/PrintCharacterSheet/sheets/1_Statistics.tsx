@@ -5,18 +5,11 @@ import { Character, Wound } from '@site/src/types/Character'
 import { RoundTextField } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/RoundTextField'
 import { DiceGuide } from '../assets/DiceGuide'
 import { WoundCheckbox } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/WoundCheckbox'
-import { OutlinedTextfield } from '../PrintCharacterSheet'
-
-const CharacterHeaderTextField = styled(TextField)({
-	marginTop: 0,
-	'& .MuiInputBase-input.MuiInput-input': {
-		paddingBottom: 0,
-	},
-})
-CharacterHeaderTextField.defaultProps = {
-	size: 'small',
-	variant: 'standard',
-}
+import {
+	CharacterHeaderTextField,
+	OutlinedTextfield,
+	RankIndicator,
+} from '../PrintCharacterSheet'
 
 const AttributeField = styled(RoundTextField)({
 	marginBottom: 0,
@@ -39,15 +32,6 @@ const WoundIndicator = styled(Avatar)({
 	border: '2px solid black',
 })
 
-const SkillRankIndicator = styled(Avatar)({
-	width: 24,
-	height: 24,
-	backgroundColor: 'transparent',
-	color: 'black',
-	border: '1px solid black',
-	fontSize: '14px',
-})
-
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 	const displayWound = (wound: Wound) => {
 		if (wound.injury) {
@@ -64,7 +48,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 
 	return (
 		<SheetLayout>
-			<Box sx={{ display: 'flex', gap: 1 }}>
+			<Box sx={{ display: 'flex', gap: 1, mt: -0.5 }}>
 				<CharacterHeaderTextField value={char.personal.name} label="Name" />
 				<CharacterHeaderTextField value={char.personal.folk} label="Folk" />
 				<CharacterHeaderTextField
@@ -175,7 +159,10 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							sx={{
 								maxWidth: '8rem',
 								'& .MuiOutlinedInput-root': {
-									pb: 2,
+									'& input': {
+										pt: 1,
+										pb: 5.2,
+									},
 									'& .MuiOutlinedInput-notchedOutline': {
 										borderWidth: '2px',
 									},
@@ -261,25 +248,31 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 			</Box>
 			<Box sx={{ display: 'flex', height: '100%' }}>
 				<Box sx={{ width: '50%' }}>
-					<Box sx={{ display: 'flex', mt: 4 }}>
+					<Box sx={{ display: 'flex', mt: 6 }}>
 						<OutlinedTextfield
 							value={char.skills.xp.spend}
-							label="XP (spend)"
+							label="Spend XP"
 							sx={{
 								ml: 7,
 								maxWidth: '5rem',
 								'& .MuiOutlinedInput-root': {
 									borderRadius: '8px 0px 0px 8px',
+									'& input': {
+										py: 1,
+									},
 								},
 							}}
 						/>
 						<OutlinedTextfield
 							value={char.skills.xp.total}
-							label="XP (total)"
+							label="Total XP"
 							sx={{
 								maxWidth: '5rem',
 								'& .MuiOutlinedInput-root': {
 									borderRadius: '0px 8px 8px 0px',
+								},
+								'& input': {
+									py: 1,
 								},
 							}}
 						/>
@@ -310,7 +303,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 											Rank
 										</Typography>
 									)}
-									<SkillRankIndicator>{skill.rank}</SkillRankIndicator>
+									<RankIndicator>{skill.rank}</RankIndicator>
 								</Box>
 								<TextField
 									size="small"
@@ -344,15 +337,19 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 						borderRadius: '0.5rem',
 					}}
 				>
-					<Typography color="text.secondary" variant="caption" sx={{ ml: 1 }}>
+					<Typography
+						color="text.secondary"
+						variant="caption"
+						sx={{ ml: 1, mb: 0.5 }}
+					>
 						Abilities
 					</Typography>
-					<Box component="ul" sx={{ pl: 3, '& li + li': { mt: 1.5 } }}>
+					<Box component="ul" sx={{ pl: 3, '& li + li': { mt: 1 } }}>
 						{char.skills.abilities.map((ability) => (
 							<Typography
 								component="li"
 								variant="body2"
-								sx={{ fontSize: '11px' }}
+								sx={{ fontSize: '10px' }}
 							>
 								{ability.title}
 							</Typography>

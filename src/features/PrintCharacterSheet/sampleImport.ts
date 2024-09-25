@@ -86,24 +86,6 @@ export const sampleImport = JSON.stringify({
 		specialization: 'Conjuration, Illusion',
 		spells: [
 			{
-				target: '',
-				name: '',
-				effect: '',
-				id: '1d780353-01b3-4294-a24d-aab0cd8b1237',
-				range: '',
-				properties: '',
-				damage: {
-					otherWeak: 0,
-					otherStrong: 0,
-					weapon: 0,
-					base: 0,
-					otherCritical: 0,
-					type: 'physical',
-				},
-				cost: 0,
-				rank: 0,
-			},
-			{
 				rank: 0,
 				id: '50db0c51-ad0a-4bf9-9ad9-7c331b71ba94',
 				properties: '',
@@ -112,6 +94,7 @@ export const sampleImport = JSON.stringify({
 				cost: 0,
 				target: '8',
 				damage: {
+					other: 0,
 					weapon: 0,
 					otherWeak: 2,
 					otherCritical: 2,
@@ -125,6 +108,7 @@ export const sampleImport = JSON.stringify({
 			{
 				name: 'Extraplanar Pocket',
 				damage: {
+					other: 0,
 					weapon: 0,
 					otherStrong: 0,
 					otherCritical: 0,
@@ -149,6 +133,7 @@ export const sampleImport = JSON.stringify({
 				range: 'medium',
 				properties: 'concentrate, illusory',
 				damage: {
+					other: 0,
 					base: 0,
 					type: 'physical',
 					otherCritical: 0,
@@ -170,6 +155,7 @@ export const sampleImport = JSON.stringify({
 				effect:
 					'You touch any medium or smaller item, temporarily infusing it with arcane energy.\nOn a success, the item increases it’s Durability die by one step. If it is a weapon, it deals +1 weapon damage. If it is an armor, shield, or helmet, it grants +1 AV.\nThese effects last for a long duration. This spell counts as an enchantment for a weapon, armor, shield, helmet, or other item depending on which type of item you infused.',
 				damage: {
+					other: 0,
 					otherWeak: 0,
 					otherStrong: 0,
 					type: 'physical',
@@ -189,6 +175,7 @@ export const sampleImport = JSON.stringify({
 				properties: 'concentrate, illusory',
 				cost: 2,
 				damage: {
+					other: 0,
 					otherCritical: 0,
 					weapon: 0,
 					base: 0,
@@ -400,6 +387,7 @@ export const sampleImport = JSON.stringify({
 				name: 'Scepter',
 				id: '108895ba-accd-405d-bdf2-541b63a93915',
 				damage: {
+					other: 0,
 					type: 'physical',
 					otherStrong: 0,
 					otherWeak: 0,
@@ -416,6 +404,7 @@ export const sampleImport = JSON.stringify({
 				id: 'aec1b755-6eed-4ebb-bea1-e8f2cf7368fa',
 				cost: 0,
 				damage: {
+					other: 0,
 					otherStrong: 0,
 					otherCritical: 0,
 					weapon: 2,
