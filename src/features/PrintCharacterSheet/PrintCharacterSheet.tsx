@@ -74,6 +74,7 @@ export const PrintCharacterSheet: React.FC = () => {
 
 	const componentRef = useRef()
 	const handlePrint = useReactToPrint({
+		documentTitle: char?.personal.name + '-character-sheet',
 		content: () => componentRef.current,
 	})
 
