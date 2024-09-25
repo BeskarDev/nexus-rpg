@@ -344,12 +344,12 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 					>
 						Abilities
 					</Typography>
-					<Box component="ul" sx={{ pl: 3, '& li + li': { mt: 1 } }}>
+					<Box component="ul" sx={{ pl: 3 }}>
 						{char.skills.abilities.map((ability) => (
 							<Typography
 								component="li"
 								variant="body2"
-								sx={{ fontSize: '10px' }}
+								sx={{ fontSize: '9px' }}
 							>
 								{ability.title}
 							</Typography>
