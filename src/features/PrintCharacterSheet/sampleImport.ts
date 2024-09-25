@@ -195,47 +195,55 @@ export const sampleImport = JSON.stringify({
 	personal: {
 		contacts: [
 			{
-				description: '',
+				description: 'qgwqegqegqgqe',
 				id: 'e6ef00db-50df-4780-9662-1590037802a6',
 			},
 		],
 		upbringing: 'Academic',
-		weight: '',
+		weight: '-50kg',
 		allies: [
 			{
-				description: '',
+				description: 'wegwegwgweg',
 				id: '81414d51-4638-47bb-a6ce-e2c31b5792ec',
 			},
 			{
-				description: '',
+				description: 'wgegwegwegewg',
 				id: '7816ad3b-3ad6-47b6-9d53-9884ad5fcd6a',
 			},
 			{
-				description: '',
+				description: 'gwegwegwegewgewg',
 				id: '35aa24ea-527c-42d4-830b-bcd0ebcf6730',
 			},
 		],
 		folk: 'Human',
-		age: '',
-		motivation: '',
-		notes: '',
-		height: '',
+		age: '12',
+		motivation: 'None',
+		notes: `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. 
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. 
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.`,
+		height: '2000m',
 		rivals: [
 			{
-				description: '',
+				description: 'qwgqgwgqwgwq',
 				id: '723a8648-dcaf-4af5-89d7-23c5b2f11499',
 			},
 			{
-				description: '',
+				description: 'qwgw qwgfwqg',
 				id: '7ccd78ee-7271-4b53-9b17-c161b4b2b05a',
 			},
 			{
 				id: 'ff9826fd-3e5a-4810-adee-22f895359cd3',
-				description: '',
+				description: 'wqgwqgwqg qgwqgq ',
 			},
 		],
 		background: 'Magus',
-		description: '',
+		description: 'He be there and stuff...',
 		name: 'Sorcerer',
 	},
 	statistics: {

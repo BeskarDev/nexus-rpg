@@ -187,21 +187,21 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					<Typography
 						color="text.secondary"
 						variant="caption"
-						sx={{ fontSize: '9px', mr: 10.5 }}
+						sx={{ fontSize: '9px', mr: 9 }}
 					>
 						Name
 					</Typography>
 					<Typography
 						color="text.secondary"
 						variant="caption"
-						sx={{ fontSize: '9px', mr: 0.5 }}
+						sx={{ fontSize: '9px', mr: 1 }}
 					>
 						Container/Slot
 					</Typography>
 					<Typography
 						color="text.secondary"
 						variant="caption"
-						sx={{ fontSize: '9px', mr: 0.5 }}
+						sx={{ fontSize: '9px', mr: 1 }}
 					>
 						Cost
 					</Typography>
@@ -217,13 +217,13 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					sx={{ display: 'flex', rowGap: 0, columnGap: 2, flexWrap: 'wrap' }}
 				>
 					{char.items.items.map((item, index) => (
-						<Box sx={{ display: 'flex', alignItems: 'center' }}>
+						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
 							<TextField
 								size="small"
 								variant="standard"
 								value={item.name}
 								sx={{
-									width: '7rem',
+									width: '6.5rem',
 									mt: 0.5,
 									'& .MuiInputBase-root': {
 										pb: 0.5,
@@ -264,7 +264,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 								variant="standard"
 								value={item.load}
 								sx={{
-									maxWidth: '2rem',
+									maxWidth: '1.5rem',
 									mt: 0.5,
 									'& input': {
 										p: 0,
