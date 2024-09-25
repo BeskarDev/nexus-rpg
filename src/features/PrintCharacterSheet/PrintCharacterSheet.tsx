@@ -1,5 +1,5 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { Alert, Box, Button, styled, TextField } from '@mui/material'
+import { Alert, Avatar, Box, Button, styled, TextField } from '@mui/material'
 import { Character } from '@site/src/types/Character'
 import React, { useEffect, useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
@@ -36,6 +36,26 @@ export const OutlinedTextfield = styled(TextField)({
 			textAlign: 'right',
 		},
 	},
+})
+
+export const CharacterHeaderTextField = styled(TextField)({
+	marginTop: 0,
+	'& .MuiInputBase-input.MuiInput-input': {
+		paddingBottom: 0,
+	},
+})
+CharacterHeaderTextField.defaultProps = {
+	size: 'small',
+	variant: 'standard',
+}
+
+export const RankIndicator = styled(Avatar)({
+	width: 24,
+	height: 24,
+	backgroundColor: 'transparent',
+	color: 'black',
+	border: '1px solid black',
+	fontSize: '14px',
 })
 
 export const PrintCharacterSheet: React.FC = () => {
@@ -81,10 +101,10 @@ export const PrintCharacterSheet: React.FC = () => {
 
 			{Boolean(char) && (
 				<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>
+					<PersonalSheet char={char} />
 					<StatisticsSheet char={char} />
 					<EquipmentSheet char={char} />
-					<SpellsSheet />
-					<PersonalSheet />
+					<SpellsSheet char={char} />
 				</Box>
 			)}
 		</Box>

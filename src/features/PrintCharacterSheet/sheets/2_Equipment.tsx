@@ -1,9 +1,45 @@
 import { Box, TextField, Typography } from '@mui/material'
 import { SheetLayout } from './SheetLayout'
-import { Character } from '@site/src/types/Character'
+import {
+	BaseDamageType,
+	Character,
+	Damage,
+	Weapon,
+} from '@site/src/types/Character'
 import { OutlinedTextfield } from '../PrintCharacterSheet'
 
 export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
+	const calculateBaseDamage = (base: BaseDamageType) => {
+		switch (base) {
+			case 'STR':
+				return char.statistics.strength.value / 2
+			case 'AGI':
+				return char.statistics.agility.value / 2
+			case 'SPI':
+				return char.statistics.spirit.value / 2
+			case 'MND':
+				return char.statistics.mind.value / 2
+			default:
+				return 0
+		}
+	}
+
+	const printDamageField = ({
+		base,
+		weapon,
+		other,
+		otherWeak,
+		otherStrong,
+		otherCritical,
+	}: Damage) => {
+		const baseDamage = calculateBaseDamage(base)
+		const weakDamage = baseDamage + weapon + other + otherWeak
+		const strongDamage = baseDamage + weapon * 2 + other + otherStrong
+		const criticalDamage = baseDamage + weapon * 3 + other + otherCritical
+
+		return `${weakDamage}/${strongDamage}/${criticalDamage} (${weapon})`
+	}
+
 	return (
 		<SheetLayout>
 			<Box sx={{ display: 'flex', gap: 1 }}>
@@ -12,6 +48,9 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					label="Coins"
 					sx={{
 						maxWidth: '10rem',
+						'& input': {
+							py: 1,
+						},
 					}}
 				/>
 				<OutlinedTextfield
@@ -19,6 +58,9 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					label="Current Load"
 					sx={{
 						maxWidth: '6rem',
+						'& input': {
+							py: 1,
+						},
 					}}
 				/>
 				<OutlinedTextfield
@@ -27,6 +69,9 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					label="Encumbered"
 					sx={{
 						maxWidth: '5rem',
+						'& input': {
+							py: 0.5,
+						},
 					}}
 				/>
 				<OutlinedTextfield
@@ -35,6 +80,9 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					label="Overencumbered"
 					sx={{
 						maxWidth: '6rem',
+						'& input': {
+							py: 0.5,
+						},
 					}}
 				/>
 			</Box>
@@ -43,7 +91,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					border: '1px dotted black',
 					borderRadius: '0.5rem',
 					px: 1,
-					height: '28%',
+					height: '32%',
 					overflowY: 'hidden',
 				}}
 			>
@@ -59,20 +107,20 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 								value={weapon.name}
 								label={index == 0 ? 'Name' : ''}
 								sx={{
-									maxWidth: '7rem',
+									maxWidth: '8rem',
 									mt: 0.5,
-									'& input': { p: 0 },
+									'& input': { p: 0, fontSize: '10px' },
 								}}
 							/>
 							<TextField
 								size="small"
 								variant="standard"
-								value={`+${weapon.damage.weapon}/${weapon.damage.weapon * 2}/${weapon.damage.weapon * 3}`}
+								value={printDamageField({ ...weapon.damage })}
 								label={index == 0 ? 'Damage' : ''}
 								sx={{
 									maxWidth: '4rem',
 									mt: 0.5,
-									'& input': { p: 0 },
+									'& input': { p: 0, fontSize: '10px' },
 								}}
 							/>
 							<TextField
@@ -81,10 +129,11 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 								value={weapon.properties}
 								label={index == 0 ? 'Properties' : ''}
 								sx={{
-									maxWidth: '12rem',
+									maxWidth: '11rem',
 									mt: 0.5,
 									'& input': {
 										p: 0,
+										fontSize: '10px',
 									},
 								}}
 							/>
@@ -98,7 +147,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 									mt: 0.5,
 									'& input': {
 										fontSize: '10px',
-										py: 0.2,
+										py: 0,
 										textAlign: 'right',
 									},
 								}}
@@ -113,7 +162,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 									mt: 0.5,
 									'& input': {
 										fontSize: '10px',
-										py: 0.2,
+										py: 0,
 										textAlign: 'center',
 									},
 								}}
@@ -138,14 +187,14 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					<Typography
 						color="text.secondary"
 						variant="caption"
-						sx={{ fontSize: '9px', mr: 11 }}
+						sx={{ fontSize: '9px', mr: 10.5 }}
 					>
 						Name
 					</Typography>
 					<Typography
 						color="text.secondary"
 						variant="caption"
-						sx={{ fontSize: '9px', mr: 1 }}
+						sx={{ fontSize: '9px', mr: 0.5 }}
 					>
 						Container/Slot
 					</Typography>
@@ -165,7 +214,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					</Typography>
 				</Box>
 				<Box
-					sx={{ display: 'flex', rowGap: 0, columnGap: 1, flexWrap: 'wrap' }}
+					sx={{ display: 'flex', rowGap: 0, columnGap: 2, flexWrap: 'wrap' }}
 				>
 					{char.items.items.map((item, index) => (
 						<Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -174,9 +223,12 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 								variant="standard"
 								value={item.name}
 								sx={{
-									maxWidth: '7.25rem',
+									width: '7rem',
 									mt: 0.5,
-									'& input': { p: 0 },
+									'& .MuiInputBase-root': {
+										pb: 0.5,
+									},
+									'& input': { p: 0, fontSize: '9px' },
 								}}
 							/>
 							<TextField
@@ -187,8 +239,8 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 									maxWidth: '2.5rem',
 									mt: 0.5,
 									'& input': {
+										p: 0,
 										fontSize: '8px',
-										py: 0.35,
 										textOverflow: 'ellipsis',
 									},
 								}}
@@ -198,11 +250,11 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 								variant="standard"
 								value={item.cost}
 								sx={{
-									maxWidth: '2.5rem',
+									maxWidth: '2rem',
 									mt: 0.5,
 									'& input': {
-										fontSize: '10px',
-										py: 0.175,
+										p: 0,
+										fontSize: '8px',
 										textAlign: 'right',
 									},
 								}}
@@ -212,11 +264,11 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 								variant="standard"
 								value={item.load}
 								sx={{
-									maxWidth: '1.5rem',
+									maxWidth: '2rem',
 									mt: 0.5,
 									'& input': {
-										fontSize: '10px',
-										py: 0.175,
+										p: 0,
+										fontSize: '8px',
 										textAlign: 'center',
 									},
 								}}
