@@ -5,7 +5,6 @@ import React, { useEffect, useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import { SectionHeader } from '../CharacterSheet/CharacterSheet'
 import './printCharacterSheetStyles.css'
-import { sampleImport } from './sampleImport'
 import { StatisticsTab } from '../CharacterSheet/CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { StatisticsSheet } from './sheets/1_Statistics'
 import { EquipmentSheet } from './sheets/2_Equipment'
@@ -60,7 +59,7 @@ export const RankIndicator = styled(Avatar)({
 
 export const PrintCharacterSheet: React.FC = () => {
 	const [characterJsonString, setCharacterJsonString] =
-		React.useState<string>(sampleImport)
+		React.useState<string>('')
 
 	const char: Character = useMemo(() => {
 		try {
