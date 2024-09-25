@@ -101,10 +101,10 @@ export const PrintCharacterSheet: React.FC = () => {
 
 			{Boolean(char) && (
 				<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>
-					<PersonalSheet char={char} />
 					<StatisticsSheet char={char} />
 					<EquipmentSheet char={char} />
 					<SpellsSheet char={char} />
+					<PersonalSheet char={char} />
 				</Box>
 			)}
 		</Box>
