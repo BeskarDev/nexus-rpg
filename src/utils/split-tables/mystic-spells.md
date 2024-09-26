@@ -94,7 +94,7 @@
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | concentrate
 
-**Effect** <br/> You conjure a small orb of flame resembling a miniature sun.<br/>On a success, the sphere appears at the target location. It also shines bright light in close range and dim light in short range of it.  Any creature in melee range of it takes +4 fire damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a close distance within range. The sphere lasts for a short duration. <br/> 
+**Effect** <br/> You conjure a small orb of flame resembling a miniature sun.<br/>On a success, the sphere appears at the target location. It also shines bright light in close range and dim light in short range of it.  Any creature in melee range of it takes +4 fire damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a close distance within range. The sphere lasts for a short duration.<br/> 
 
 ### Break Curse
 
@@ -328,6 +328,18 @@
 
 >
 
+### Aid
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | enchant (body)
+
+**Effect** <br/> Bolster your allies’ toughness with a blessing.<br/>On a success, choose up to four creatures in range. They each gain 10 temporary HP for a long duration.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Each target gains 20 temporary HP instead.
+
+>
+
 ### Hallow Ground
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -428,6 +440,14 @@
 
 ## Nature
 
+### Acid Splash
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect** <br/> You conjure a short spray of acid, burning through the target’s surface.<br/><strong>Weak.</strong> Deal +2 acid damage and ignore 1/2 the target’s AV.<br/><strong>Strong.</strong> Deal +4 acid damage and ignore 1/2 the target’s AV.<br/><strong>Critical.</strong> Deal +6 acid damage and ignore 1/2 the target’s AV. 
+
 ### Bestial Adaptation
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -460,13 +480,21 @@
 
 **Effect** <br/> Conjure magical energy into one creature in range, rapidly increasing their natural regenerative capacity.<br/><strong>Weak. </strong>The target shortly regains +0 HP at the start of each of their turns.<br/><strong>Strong. </strong>The target shortly regains +2 HP at the start of each of their turns.<br/><strong>Critical. </strong>The target shortly regains +4 HP at the start of each of their turns. 
 
+### Shillelagh
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Special | Self | -
+
+**Effect** <br/> You imbue a wooden weapon with nature’s power to strike your enemy with. Choose any crush weapon you are holding that ist made from wood. Roll an attack with that weapon using Spirit + Mysticism. On a hit, also use your spell power instead of the attribute you would use for the weapon (Strength/Agility). 
+
 ### Beast Form
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | enchant (body)
 
-**Effect** <br/> You shape shift into the form of a small or medium sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following:<br/><br/><strong>Beast Form</strong> (small<em>/medium animal</em>)<br/><br/><strong>Attributes.</strong> d6/d8 STR, d8/d6 AGI<br/><br/><strong>Defenses.</strong> 7/8 Parry, 9/8 Dodge<br/><br/><strong>AV.</strong> 2 (natural light)<br/><br/><strong>Skills.</strong> Fighting, Fortitude (equal to your Mysticism)<br/><br/><strong>Attacks</strong>:<br/>- <strong>Strike</strong> (choose crush or slash, also agile for small size). 6 damage (4 base + 2 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br/><br/><strong>Abilities</strong>:<br/>- <strong>Keen Scent</strong>. Gain +1 boon on Perception rolls based on smell.<br/>- <strong>Night Vision. </strong>You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br/><br/>You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious.<br/> 
+**Effect** <br/> You shape shift into the form of a small or medium sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following ones. Choose either a small or a medium form. When choosing small, take the first value whenever multiple ones are listed for the same attribute, or the second value for medium respectively.<br/><br/><strong>Beast Form</strong> (small<em>/medium animal</em>)<br/><br/><strong>HP.</strong> You gain 10 temporary HP while in beast form.<br/><br/><strong>Attributes.</strong> d6/d8 STR, d8/d6 AGI<br/><br/><strong>Defenses.</strong> 7/8 Parry, 9/8 Dodge<br/><br/><strong>AV.</strong> 2 (natural light)<br/><br/><strong>Skills.</strong> Fighting, Fortitude (equal to your Mysticism)<br/><br/><strong>Attacks</strong>:<br/>- <strong>Strike</strong> (choose crush or slash, also agile for small size). 7 damage (4 base + 3 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br/><br/><strong>Abilities</strong>:<br/>- <strong>Keen Scent</strong>. Gain +1 boon on Perception rolls based on smell.<br/>- <strong>Night Vision. </strong>You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br/><br/>You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious.<br/> 
 
 ### Blessing of Nature
 
@@ -526,7 +554,7 @@
 ---|---|---|---|---
  2 | 4 | Hard (10) | Self | enchant (body)
 
-**Effect** <br/> You shape shift into the form of a tiny or large sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following:<br/><br/><strong>Beast Form</strong> (<em>tiny/large animal</em>)<br/><br/><strong>Attributes.</strong> d4/d12 STR, d8/d6 AGI<br/><br/><strong>Defenses.</strong> 7/9 Parry, 9/8 Dodge<br/><br/><strong>AV.</strong> 0/4 (natural light)<br/><br/><strong>Skills.</strong> Fighting, Fortitude (equal to your Mysticism)<br/><br/><strong>Attacks</strong>:<br/>- <strong>Strike</strong> (choose crush or slash, also agile for tiny size). 5/10 damage (4/6 base + 1/4 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br/><br/><strong>Abilities</strong>:<br/>- <strong>Keen Scent</strong>. Gain +1 boon on Perception rolls based on smell.<br/>- <strong>Night Vision. </strong>You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br/><br/>You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious.<br/> 
+**Effect** <br/> You shape shift into the form of a tiny or large sized land-based animal. Choose any animal form you encountered before. Replace part of your statistics with the following ones. Choose either a tiny or a large form. When choosing tiny, take the first value whenever multiple ones are listed for the same attribute, or the second value for large respectively.<br/><br/><strong>Beast Form</strong> (<em>tiny/large animal</em>)<br/><br/><strong>HP.</strong> You gain 20 temporary HP while in beast form.<br/><br/><strong>Attributes.</strong> d4/d12 STR, d8/d6 AGI<br/><br/><strong>Defenses.</strong> 8/9 Parry, 9/8 Dodge<br/><br/><strong>AV.</strong> 0/4 (natural light)<br/><br/><strong>Skills.</strong> Fighting, Fortitude (equal to your Mysticism)<br/><br/><strong>Attacks</strong>:<br/>- <strong>Strike</strong> (choose crush or slash, also agile for tiny size). 5/10 damage (4/6 base + 1/4 weapon). On a strong or critical hit against a creature of equal or smaller size, attempt a grapple or the target drops prone.<br/><br/><strong>Abilities</strong>:<br/>- <strong>Keen Scent</strong>. Gain +1 boon on Perception rolls based on smell.<br/>- <strong>Night Vision. </strong>You can see up to a short distance in dim light as in bright light. Sources of dim light let you see one range category further than normal.<br/><br/>You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration. Your beast form lasts for a medium duration, until you end it, or until you fall unconscious.<br/> 
 
 ### Heat Metal
 
@@ -632,7 +660,7 @@
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | -
 
-**Effect** <br/> You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage against each target.<br/><strong>Strong.</strong> Deal +4 blast damage against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage against each target and they are briefly dazed and deafened. 
+**Effect** <br/> You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage (ignoring 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignoring 1/2 AV) against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage (ignoring 1/2 AV) against each target and they are briefly dazed and deafened. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target all creatures in short range of the target location instead.<br/>
 
@@ -656,7 +684,7 @@
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Short | blast (cone)
 
-**Effect** <br/> You send shockwaves through the earth, causing the ground to tremble violently. Target‘s all creatures in the spell’s area.<br/><strong>Weak. </strong>Deal +2 damage to each target.<br/><strong>Strong. </strong>Deal +4 damage to each target and they are briefly staggered.<br/><strong>Critical. </strong>Deal +6 damage to each target and they are briefly staggered. 
+**Effect** <br/> You send shockwaves through the earth, causing the ground to tremble violently. Target all creatures in the spell’s area.<br/><strong>Weak. </strong>Deal +2 damage to each target.<br/><strong>Strong. </strong>Deal +4 damage to each target and they are briefly staggered.<br/><strong>Critical. </strong>Deal +6 damage to each target and they are briefly staggered. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to medium.<br/><strong>(Rank 3) </strong>Choose one:<br/>- Deal +6/+12/+18 damage to each target instead.<br/>- Increase the spell‘s range to long.<br/>
 
@@ -716,9 +744,21 @@
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Medium | -
 
-**Effect** <br/> You create a powerful swirl of air around the target location, pulling smaller, loose objects into it’s vortex.<br/><strong>Weak.</strong><em> </em>Deal +3 blast damage.<br/><strong>Strong.</strong> Deal +6 blast damage and if the target is medium or smaller in size, they are also grappled by the wind hose.<br/><strong>Critical.</strong> Deal +9 blast damage and if the target is medium or smaller in size, they are also grappled and restrained by the wind hose.<br/>When you successfully cast this spell against a target and it is grappled by the wind hose, you gain +1 boon when casting the spell again against the same target on your next turn.<br/> 
+**Effect** <br/> You create a powerful swirl of air around the target location, pulling smaller, loose objects into it’s vortex.<br/><strong>Weak.</strong><em> </em>Deal +3 damage.<br/><strong>Strong.</strong> Deal +6 damage and if the target is medium or smaller in size, they are also grappled by the wind hose.<br/><strong>Critical.</strong> Deal +9 damage and if the target is medium or smaller in size, they are also grappled and restrained by the wind hose.<br/>When you successfully cast this spell against a target and it is grappled by the wind hose, you gain +1 boon when casting the spell again against the same target on your next turn.<br/> 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +5/+10/+15 blast damage instead.<br/>- You can also target large creatures for grappling.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +7/+14/+21 blast damage instead.<br/>- You can also target huge creatures for grappling.<br/>
+> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +5/+10/+15 damage instead.<br/>- You can also target large creatures for grappling.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +7/+14/+21 damage instead.<br/>- You can also target huge creatures for grappling.<br/>
+
+>
+
+### Conjure Elemental
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Long | concentrate
+
+**Effect** <br/> You conjure a being of pure elemental power. Choose either air, earth, fire, or water.<br/>On a success, an elemental creature of the chosen element appears at any point within range.<br/>Treat the elemental as your companion (see Mounts &amp; Companions for more). It is friendly towards you and your allies while you maintain concentration for this spell.<br/>The elemental has the statistics of a wild animal companion (tier 2). In addition, it gains a companion trait, according to which element you have chosen.<br/>You can dismiss the elemental as a Quick Action during your turn. Otherwise it remains until reduced to 0 HP or for a short duration.<br/>If you lose concentration on this spell, the elemental becomes hostile to you and your allies. Roll initiative for it and treat it as an enemy. You can’t dismiss the elemental anymore and it remains until reduced to 0 HP or after the spell’s duration.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> You conjure an elemental with the statistics of a ferocious animal companion (tier 3) instead.
 
 >
 
@@ -731,6 +771,18 @@
 **Effect** <br/> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly staggered. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Increase the spell‘s range to long.<br/>
+
+>
+
+### Lightning Step
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | quick
+
+**Effect** <br/> In a sudden flash of lightning you move at the speed of sound to another place. Cast this spell on your turn.<br/>Choose any point within range you can see, where you would be able to move to by walking, climbing, swimming, or jumping.<br/>On a success, you instantly move to the chosen location (this isn’t teleportation) without provoking Opportunity Attacks. When you arrive, you produce a loud booming sound, dealing +2 blast damage to all creatures in close range of you. Your Movement for the rest of the turn becomes 0.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Increase the spell’s range to long and deal +4 blast damage instead.
 
 >
 
@@ -762,9 +814,9 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Dodge | Medium | concentrate
+ 2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You summon a dark cloud brewing with electricity. The cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can target another one creature with this spell and roll vs. their Dodge.<br/>The cloud lasts for a short duration.<br/> 
+**Effect** <br/> You summon a dark cloud brewing with electricity. The cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud and roll Spirit + Mysticism vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can target another one creature with this spell and roll Spirit + Mysticism vs. their Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration.<br/> 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target up to five creatures below the cloud instead.<br/>
 
@@ -776,7 +828,7 @@
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | -
 
-**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast damage to each target.<br/><strong>Strong. </strong>Deal +8 blast damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage to each target and they are pushed close, knocked prone, and briefly deafened. 
+**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignoring 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignoring 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignoring 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Increase the spell‘s range to medium.<br/>
 
@@ -794,13 +846,73 @@
 
 >
 
+### Wind Ward
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 6 | Hard (10) | Self | concentrate,  enchant (body)
+
+**Effect** <br/> A swirling storm forms around you and follows your movements. On a success, you create a strong wind centered around you and extending in close range. While the wind remains, it has the following effects:<br/>- You and every other creature in the wind’s area is deafened.<br/>- Small sources of flames (e.g. torches) are extinguished in the wind’s area.<br/>- The wind’s area is considered difficult terrain for every creature besides you.<br/>- Any ranged attacks moving in, out, or through the wind’s are suffer +1 bane.<br/>- While in the wind’s area, every other creature takes +2 damage at the start of each of their turns.<br/>The wind remains for a medium duration.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The wind extends in short range of you and other creatures in the wind’s area takes +4 damage at the start of each of their turns instead.
+
+>
+
+### Chain Lightning
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Medium | -
+
+**Effect** <br/> You conjure a bolt of lightning which arcs from creature to creature. Choose a first target within range and a second target in short range of the first. Repeat this for up to a third and fourth target which each have to be in short range of the previous target respectively.<br/><strong>Weak.</strong> Deal +6 lightning damage to each target.<br/><strong>Strong.</strong> Deal +12 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +18 lightning damage to each target and they are briefly staggered. 
+
+### Cone of Cold
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Medium | blast (cone)
+
+**Effect** <br/> You invoke the power of a blizzard and unleash a wave of freezing cold air and icy shards.<br/><strong>Weak.</strong> Deal +6 frost damage to each target.<br/><strong>Strong.</strong> Deal +12 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +18 frost damage to each target and they are briefly slowed. 
+
 ### Cyclone
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Long | concentrate
+
+**Effect** <br/> You create a massive cyclone that engulfs a wide space. On a success, you summon a violent vortex of air engulfing everything within short distance of the target area and a long distance into the air.<br/>Target each creature in the cyclone’s range and roll Spirit + Mysticism vs. their Dodge.<br/>On a hit, deal +8 damage (or +12 against flying creatures) to each target and they are pushed a short distance into the center of the cyclone. If they are already within the center area of the cyclone, they fall prone instead.<br/>The cyclone’s area is considered difficult terrain.<br/>On each of your following turns, you can use your Action to repeat the roll against all creatures within the cyclone. Before or after repeating the roll, you can choose to move the cyclone a short distance within range.<br/>The cyclone lasts for a short duration.<br/> 
+
+### Lightning Volley
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Long | -
 
-**Effect** <br/> You create a massive cyclone that engulfs a wide area. Target all creatures in short range of the target area.<br/><strong>Weak.</strong> Deal +4 blast damage to each target and they are pushed a close distance away from the center of the cyclone.<br/><strong>Strong. </strong>Deal +8 blast damage to each target and they are pushed a short distance away from the center of the cyclone.<br/><strong>Critical. </strong>Deal +12 blast damage to each target and they are pushed a medium distance away from the center of the cyclone. 
+**Effect** <br/> You form three hovering rays of lightning above you. You can shoot each ray at the same or different targets and roll one attack for each ray.<br/><strong>Weak.</strong><em> </em>The beam deals +4 lightning damage to it’s target and +2 lightning damage against any other creature in their melee range.<br/><strong>Strong.</strong> The beam deals +8 lightning damage and +4 lightning damage against any other creature in their melee range.<br/><strong>Critical.</strong> The beam deals +12 lightning damage and +6 lightning damage against any other creature in their melee range. 
+
+### Sandstorm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 |  |  | -
+
+**Effect** <br/> <em>obscures vision, reduces movement and deals repeated damaged without needing to roll for an attack</em> 
+
+### Shattering Orb
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Long | -
+
+**Effect** <br/> You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +6 blast damage (ignoring 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignoring 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +18 blast damage (ignoring 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
+
+### Wind Wall
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Long | concentrate
+
+**Effect** <br/> A intense updraft creates a wall made of wind. Choose any shape for the wall in a continuous path along the ground with up to a medium distance from start to end within range. The wall also extends a short distance into the air.<br/>On a success, the wall appears. Any huge or smaller creature in melee range of the wall takes +8 damage (or +12 against flying creatures) and is pushed a close distance away from it. Anytime a creature comes into melee range with the wall again, this is repeated.<br/>While the wall remains, flying creatures or creatures with gaseous form can’t pass through it. Any ranged attacks (excluding those with large projectiles, such as siege engines or a giant’s boulder) through the wall are diverted upward and automatically miss.<br/>Any non-flying creature can attempt to move through the wind wall. When doing so, the creature can roll a very hard Strength + Athletics test. On a success, they may move through the wall by spending 1 Movement. On a failure, they take +8 damage, are pushed a close distance away from it, and their Movement becomes 0 for the rest of their turn.<br/>The wall remains for a short duration.<br/> 
 
 ### Avatar of Storms
 
@@ -808,7 +920,47 @@
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Self | concentrate,  enchant (body)
 
-**Effect** <br/> You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignoring AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration.<br/> 
+**Effect** <br/> You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain 10 temporary HP.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignoring AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in this form for a longer time.<br/> 
+
+### Control Water
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Extreme | concentrate
+
+**Effect** <br/> You control a large amount of water and shape it to your will. Choose an area of water covering a long distance in all directions from the target location within range. In addition, you can choose one of the following options to manipulate the water in your affected area.<br/><br/><strong>Flood. </strong>You rise the standing water level in your spell’s area by up to a close distance up (which then counts as a large body of water on your next turn). The water levels stay elevated for a medium duration or until you choose another option for this spell.<br/>If using this option on a large body of water, you instead cause the water in your spell’s area to cause a massive wave that travels from one end of the area to the other and then crashes violently. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the wave and takes +12 damage (ignoring 1/2 AV). Aquatic creatures take no damage but are still forced to move with the wave. The flood repeats during each of your turns for a medium duration or until you choose another option for this spell.<br/><br/><strong>Split.</strong> Choose any line within the waters area from end to end where you part the water and create a trench with a width covering a close distance. The sides of the trench for a wall of water. The trench remains for a medium duration or until you choose another option for this spell. When the trench closes, the waters snap back violently. Any creature within the closing trench takes +16 damage (ignoring 1/2 AV), is briefly staggered, and remains underwater where the trench used to be.<br/><br/><strong>Redirect. </strong>You force the water in the spell’s area to flow in any direction of your choosing. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the water’s flow until reaching the end of the spell’s area. The redirected flow remains for a medium duration or until you choose another option for this spell.<br/>Whirlpool. TODO<br/>On each of your following turns, you can use your Action to repeat the roll for the same or a different option. If you fail the roll, the spell ends.<br/> 
+
+### Control Weather
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 |  |  | -
+
+**Effect** <br/> <em>change the weather on a large scale</em> 
+
+### Control Winds
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Extreme | concentrate
+
+**Effect** <br/> <em>control the winds around you in different ways over a longer period of time. Options: Gust, Downdraft, Updraft</em> 
+
+### Earthquake
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 |  |  | -
+
+**Effect** <br/> <em>break up a large area of earth</em> 
+
+### Lightning Storm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 |  |  | -
+
+**Effect** <br/> <em>repeated lightning bolts hitting multiple targets</em> 
 
 ## Peace
 
@@ -988,5 +1140,17 @@
 ---|---|---|---|---
  2 | 4 | Hard (10) | Self | quick
 
-**Effect** <br/> You cut into your own flesh, granting you the ancestor’s power in return. Cast this spell on your turn.<br/>You lose 5 HP as part of casting this spell, regardless of the result.<br/>On a success, you gain the following effects:<br/>- Gain +1 boon on weapon attacks.<br/>- Add 2 x Mysticism to weapon damage.<br/> 
+**Effect** <br/> You cut into your own flesh, granting you the ancestor’s power in return. Cast this spell on your turn.<br/>You lose 5 HP as part of casting this spell regardless of the result.<br/>On a success, you gain the following effects:<br/>- Gain +1 boon on weapon attacks.<br/>- Add 2 x Mysticism to weapon damage.<br/> 
+
+### Haste
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | concentrate,  enchant (body)
+
+**Effect** <br/> You drastically heighten a creature’s senses, granting them supernatural speed at the cost of straining their body.<br/>Choose a willing creature in range. On a success, the target gains the following effects:<br/>- gain +1 Movement per turn<br/>- gain +1 Parry and Dodge<br/>- gain +1 boon on all Strength and Agility rolls<br/>- you can replace your Quick Action on your turn for a second Action<br/>The spell lasts for a short duration. When the spell ends, the target suffers one Fatigue and is briefly paralyzed.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose a second target to also gain the spell‘s effects.
+
+>
 

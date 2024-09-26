@@ -61,7 +61,7 @@ When you miss your target when throwing an alchemical item that has some area ef
 
 ## Damage
 
-On a successful attack, you deal damage to the enemy.
+On a successful attack, you deal damage to the enemy. 
 
 - Your base damage is equal to half of the attribute you rolled your attack with. Per default, this is 1/2 Strength for melee weapons, 1/2 Agility for ranged weapons, 1/2 Spirit for mystic spells, and 1/2 Mind for arcane spells.
 - You add extra damage from your weapon or spell, plus any extra damage from abilities or other effects.
@@ -78,7 +78,7 @@ When some effect inflicts some amount of lasting damage on you, you first take n
 There exist multiple damage types which describe the various ways of inflicting harm. If some effect adds damage of a specific type to an attack, all of the attack‘s damage is treated as that damage type.
 
 > If an attack, spell, or effect mentions no specific damage type, the damage is always assumed to be physical.
->
+> 
 
 | Damage Type | Description |
 | --- | --- |
@@ -108,7 +108,7 @@ When attacking, you have access to different options through weapon properties o
 
 ### Dual-wielding
 
-While you are wielding two light melee weapons, you can attack with both of them in the same Action. Each weapon attack counts as its own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks.
+While you are wielding two light weapons, you can attack with both of them in the same Action. Each weapon attack counts as its own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks, unless you use natural weapons that are part of your body (e.g. a lionfolk’s claws or any monster’s natural attacks).
 
 ### Attacking multiple targets
 
@@ -118,13 +118,19 @@ Some effects allow you to hit multiple targets with the same attack. For this, c
 
 When you don’t have any real weapons handy, you may want to use any available objects as improvised weapons, such as tools or inventory.
 
-Attacks with improvised weapons suffer +1 bane and deal damage based on their size. Improvised weapons all have the fragile property and a Durability die depending on their size.
+Attacks with improvised weapons suffer +1 bane and deal damage based on their size. Improvised weapons all have the fragile property, one from the crush, pierce, or slash properties, and a Durability die depending on their size.
 
 | Improvised Weapon Size | Weapon Damage | Durability |
 | --- | --- | --- |
 | light | 2 | d4 |
 | one-handed | 3 | d4 |
 | two-handed | 4 | d6 |
+
+| Weapon Property | Examples |
+| --- | --- |
+| crush | wooden plank, rock, metal bar |
+| pierce | broken ceramic, sharp stick |
+| slash | kitchen knife, broken sword |
 
 ## Attacking Objects
 

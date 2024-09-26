@@ -4,31 +4,44 @@ sidebar_position: 2
 
 # 💬 Languages
 
-You can speak, write, and read various languages. From the common tongue used in any given region to ancient and forgotten languages found in the ruins of ancient people.
+You can learn to speak, write, and read various languages of the world from the common tongue used in any given region to ancient and forgotten languages found in the ruins of ancient people.
 
-An adventurer learns additional languages depending on their Mind.
+Adventurers learns additional languages depending on their Mind or through additional talents.
 
-| Mind | Languages |
-| --- | --- |
-| d4 | common and folk |
-| d6 | common and folk |
-| d8 | common, folk, and one additional language |
-| d10 | common, folk, and two additional languages |
-| d12 | common, folk, and three additional languages |
-
-Stages:
-
-1. Broken (+1 bane)
-2. Fluent (normally)
+| Mind | Extra Languages |
+| ---- | --------------- |
+| d4   | none            |
+| d6   | none            |
+| d8   | one             |
+| d10  | two             |
+| d12  | three           |
 
 ## Common Languages
 
-Common languages are any language spoken by cultures in the region. This depends on what cultures of folks are living there, or have a higher presence through trade.
+Common languages are any language spoken by larger cultures. Any character is assumed to speak and understand Tradespeak which is a universal language spoken by all people, unless they are highly isolated from other cultures.
+
+| Language | Example Speakers                 |
+| -------- | -------------------------------- |
+| Dwarvish | Dwarves                          |
+| Elvish   | Elves                            |
+| Giant    | Hunes, Minotaurs, Giants         |
+| Gnomish  | Gnomes                           |
+| Goblin   | Goblinoids                       |
+| Orc      | Orcs                             |
+| Trade    | Any commoners, merchants, humans |
 
 ## Exotic Languages
 
-This includes any language spoken by cultures from a different region entirely. Can also include other languages from groups of creatures in the region, which are not part of the civilized world, such as hidden or more primitive groups of folks.
+These languages are only spoken by small groups of peoples, very isolated communities, or cultures of the past.
+
+| Language | Example Speakers |
+| -------- | ---------------- |
+| TODO     |                  |
 
 ## Ancient Languages
 
-Languages are either dead and forgotten by the world or languages spoken in the spirit realms.
+Languages are either dead and forgotten by the world or only spoken in the spirit realms.
+
+| Language | Example Speakers |
+| -------- | ---------------- |
+| TODO     |                  |

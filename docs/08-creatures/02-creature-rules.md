@@ -8,14 +8,14 @@ Creatures act in the same basic ways, as adventurers do. But some details differ
 
 - Spell-casting creatures don’t use Focus for their spells. Instead, they are limited in their use of individual spells. They can only cast each spell once. After they have cast each spell once, they regain their single use of each spell again.
 - Creature attacks or abilities refer to different groups of combatants with the following meanings.
-  - “Creature”: refers to the creatures themselves.
-  - “Creatures”: refers to all creatures, regardless of allegiance.
-  - “Allies”: refers to all other creatures aligned with the creature.
-  - “Opponents”: refers to the adventurers, their allies, as well as other creature groups that are opposed to the creature and their allies.
+    - “Creature”: refers to the creatures themselves.
+    - “Creatures”: refers to all creatures, regardless of allegiance.
+    - “Allies”: refers to all other creatures aligned with the creature.
+    - “Opponents”: refers to the adventurers, their allies, as well as other creature groups that are opposed to the creature and their allies.
 
 ## Creature Categories
 
-Creatures can come in different categories representing their importance and power level.
+Creatures can come in different categories representing their importance and power level. 
 
 ### Basic
 
@@ -47,32 +47,32 @@ The troop is disbanded once their size is reduced to two or less.
 
 > **Example: Attacking a troop**
 The adventurers face a troop of five goblins. The troop has 10 HP and 2 AV, the same as a single goblin. One of the adventurers attacks the troop with a cleave attack, targeting three of it’s members. They hit and deal 13 damage to each target. The goblin troop’s 2 AV reduces this to 11 damage per target and therefore 33 damage in total against the troop itself. From this damage, three goblins in the troop die and a third loses 3 HP. Since the troop has less than three members left, the GM immediately rolls for Morale to see, if the two remaining goblins flee or continue the fight as single creatures**.**
->
+> 
 - **Targeting.** When choosing a target, all members of the troop choose the same target. You can split the original troop into multiple troops (if enough members remain) when you want to split the troop up for multiple targets.
 - **Troop Bonus.** This bonus is equal to half the troop size (rounded down).
 - **Rolling Tests.** Roll only once for the entire troop. If the members have ranks in the skill they roll with, add the troop bonus instead of that skill rank to the result.
 - **Dealing Damage.** Roll a single attack for the entire troop using the rules above. Troops don’t use the normal rules for dealing damage. Instead, the troop deals damage according to the SL of the roll:
-  - **Blunder.** No damage.
-  - **Failure.** (Base Damage + Weapon Damage) x Troop Bonus
-  - **Weak.** (Base Damage + Weapon Damage) x (1 + Troop Bonus)
-  - **Strong.** (Base Damage + Weapon Damage) x (2 + Troop Bonus)
-  - **Critical.** (Base Damage + Weapon Damage) x (3 + Troop Bonus)
-
+    - **Blunder.** No damage.
+    - **Failure.** (Base Damage + Weapon Damage) x Troop Bonus
+    - **Weak.** (Base Damage + Weapon Damage) x (1 + Troop Bonus)
+    - **Strong.** (Base Damage + Weapon Damage) x (2 + Troop Bonus)
+    - **Critical.** (Base Damage + Weapon Damage) x (3 + Troop Bonus)
+    
     Any other abilities or effects that increase the damage of the troop are added only once to the total damage dealt.
+    
 
 > **Example: Getting attacked by a troop**
 A troop of five goblin warriors attacks you with their daggers (2 weapon damage). They roll their attack with 1d8 (Agility) + 1d6 + 2 (troop bonus). Based on the SL, they deal the following amount of damage:
-
 - **Blunder.** No damage.
 - **Failure.** 12 damage. ([4 base + 2 weapon] x 2)
 - **Weak.** 18 damage. ([4 base + 2 weapon] x 3)
 - **Strong.** 24 damage. ([4 base + 2 weapon] x 4)
 - **Critical.** 30 damage. ([4 base + 2 weapon] x 5)
->
+> 
 
 ### Elite
 
-Few and far between you will encounter the elite among creatures.
+Few and far between you will encounter the elite among creatures. 
 
 Elite creatures…
 
@@ -135,8 +135,10 @@ Each creature's power level is separated into six tiers corresponding to the six
 | Hit Points | 1-10 | 10-20 | 20-40 | 30-60 | 40-80 | 50-100 | 60-120 |
 | Primary Attribute | d6 | d8 | d10 | d12 | d12+1 | d12+2 | d12+3 |
 | Defenses | 7 | 8 | 9 | 10 | 11 | 12 | 13 |
-| AV | 0-2 | 2-4 | 3-6 | 4-8 | 5-10 | 6-12 | 7-14 |
-| Weapon Damage | 1-2 | 2-4 | 4-6 | 6-9 | 8-12 | 10-15 | 12-18 |
+| Base AV
+(light / heavy) | 0 / 2 | 2 / 4 | 3 / 6 | 4 / 8 | 5 / 10 | 6 / 12 | 7 / 14 |
+| Weapon Damage
+(low / high) | 1 / 3 | 2 / 4 | 3 / 5 | 4 / 6 | 5 / 7 | 6 / 8 | 7 / 9 |
 | Skill Rank | 0 / 0 | 0 / 1 | 1 / 2 | 2 / 3 | 3 / 4 | 4 / 5 | 5 / 5 |
 | Ability Difficulty | Trivial (4) | Easy (6) | Moderate (8) | Hard (10) | Very Hard (12) | Extreme (14) | Legendary (16) |
 
@@ -145,14 +147,15 @@ Each creature's power level is separated into six tiers corresponding to the six
 - **Hit Points.** Choose a creatures HP based on it’s Tier and if it generally frail or sturdy.
 You don’t have to choose the minimum or maximum HP for a creature’s tier, but can also choose a more nuanced value in between. Although, you should always keep a creature’s HP divisible by 10 to focus on meaningful differences and simplify the math.
 - **Primary Attribute.** Choose which of the four attributes (Strength, Agility, Spirit, or Mind) is the creature’s primary characteristic. Set that attribute to a d6 + increased by one dice step for each of it’s Tier. The other attributes should generally be one, two, and three dice steps below the primary attribute respectively.
-- **Defenses.** The average Defense of a creature is 7 + it’s Tier. You can increase and decrease the individual Defenses, but should always keep the average at that value and not increase or decrease any single Defense more than 2 below or above the average.
-  - Larger creatures add their Size modifier to Parry but subtract it from Dodge.
-  - Smaller creatures add their Size modifier to Dodge but subtract it from Parry.
-- **AV.** Choose if the creature absorbs little or a lot of damage based on it’s natural armor or any worn pieces of armor. The result should be equal to it’s Tier + 1 (low) or 2 x (Tier + 1) (high).
-- **Weapon Damage.** Most damaging attacks for a creature should use 1/2 their primary attribute as the base damage. Then decide if the creature generally deals low or high damage and assign their attacks a fitting weapon damage (which multiplies with increased SL). The weapon damage for a creature can be calculated with 2 x it’s Tier (low) or 3 x it’s Tier (high).
-  - For more nuanced attack options, you can also calculate the total damage the creature should deal and divide the total into multiple, less powerful attacks.
-  - Attacks hitting multiple targets should also generally deal only half the creature’s total damage to any target.
-  - You can also increase the creature’s base damage by reducing their weapon damage accordingly. Keep in mind, that generally a critical hit from a creature should deal no more than twice the total damage of a weak hit.
+- **Defenses.** The base Defense of a creature is 7 + it’s Tier. You can increase and decrease the individual Defenses, but should always keep the average at that value and not increase or decrease any single Defense more than 2 below or above the average.
+    - Larger creatures add 1/2 their Size modifier to Parry but subtract it from Dodge.
+    - Smaller creatures add 1/2 their Size modifier to Dodge but subtract it from Parry.
+- **AV.** A creature’s base AV should be equal to it’s Tier + 1 (0 AV for Tier 0 creatures instead). Different modifiers also affect the creature’s AV:
+    - Larger creatures add their Size modifier to their AV.
+    - Smaller creatures subtract their Size modifier from their AV (min. 0).
+    - Creatures with natural heavy armor have a base AV equal to 2 x Tier + 2 instead.
+- **Weapon Damage.** Most damaging attacks for a creature should use 1/2 their primary attribute as the base damage. Then decide if the creature generally deals low or high damage and assign their attacks a fitting weapon damage (which multiplies with increased SL) and damage type. Calculate the weapon damage with Tier + 1 (low) or Tier + 3 (high).
+    - Attacks hitting multiple targets should deal only half the creature’s total damage to it’s targets.
 - **Skill Rank.** The creature’s combat or magic skills should be equal to their Tier - 1. All other skills the creature has reasonably learned should be equal to their Tier.
 - **Ability Difficulty.** Any of the creature’s abilities should have a Difficulty of TN 4 + 2 x it’s Tier.
 
@@ -182,7 +185,7 @@ Each individual part has its own HP, Defenses, and attacks. A creature can targe
 
 An example is targeting a large dragon's wings to bring it down to the ground.
 
-When the adventurers first encounter or start combat with a creature or object with multiple parts, the GM informs them about all available parts as targets.
+When the adventurers first encounter or start combat with a creature or object with multiple parts, the GM informs them about all available parts as targets. 
 
 ## Looting Equipment from Creatures
 

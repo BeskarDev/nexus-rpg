@@ -130,14 +130,6 @@
 
 ## Illusion
 
-### Distracting Whispers
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 0 | 0 | vs. Resist | Medium | -
-
-**Effect** <br/> You whisper faint, unintelligible voices into the target's mind, breaking their poise and distracting them.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly distracted by the whispers.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
-
 ### Horrific Vision
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -146,13 +138,29 @@
 
 **Effect** <br/> You conjure false visions into the target‘s mind, making them project horrific events of them or their loved ones.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly frightened.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-### Mirage
+### Maddening Whispers
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Resist | Medium | -
+
+**Effect** <br/> You produce unintelligible voices of madness into the target’s mind, distracting them and breaking their mental fortitude.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly distracted by the whispers.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+### Minor Illusion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  0 | 0 | Medium (8) | Medium | concentrate,  illusory
 
-**Effect** <br/> You can create a stationary image of a creature or object. Choose a small or medium sized form for your mirage. On a success, your chosen mirage appears. It lasts a short duration or until you move out of range of it. 
+**Effect** <br/> You can create a stationary image of a small or medium sized creature or object. On a success, your chosen illusion appears at the target location in range. Attempts to physically interact with the illusion automatically reveal it to be an illusion.<br/>The illusion lasts for a short duration or until you move out of range of it. You can immediately recast this spell as an Action at the end of the duration to maintain the illusion for a longer time.<br/> 
+
+### Color Spray
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Close | blast (cone)
+
+**Effect** <br/> You conjure a cloud of flashing multi-colored lights from your palm. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Each target is briefly blinded.<br/><strong>Strong. </strong>Each target is briefly blinded and dazed.<br/><strong>Critical. </strong>Each target is briefly blinded and stunned. 
 
 ### Disguise Form
 
@@ -168,7 +176,11 @@
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | concentrate,  illusory
 
-**Effect** <br/> Using an illusionary creature, you fool your target into believing they are attacked by the illusion. Choose a small or medium sized humanoid form for your false enemy. On a success, the target imagines the false enemy to be attacking them in melee.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy. The target’s roll to see through the false enemy is hard.<br/><br/>You can use your Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, apply the spells effects again. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it for free.<br/> 
+**Effect** <br/> Using an illusionary creature, you fool your target into believing they are attacked by the illusion. Choose a small or medium sized form for your false enemy. On a success, the target imagines the false enemy to be attacking them in melee.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy. The target’s roll to see through the false enemy’s illusion is hard.<br/>You can use your Quick Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, apply the spell’s effects again. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it without spending additional Focus.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) instead.
+
+>
 
 ### Illusory Trap
 
@@ -176,25 +188,33 @@
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | illusory
 
-**Effect** <br/> You make a creature believe that they triggered a trap.<br/>On a success, they believe they set of the trap and are pinned by it. Choose any plausible form for the illusory trap to take.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is restrained by the illusory trap.<br/>After the target believes it was pinned by the trap, the illusion lasts for a short duration or until they see through it.<br/> 
+**Effect** <br/> You make a creature believe that they triggered a trap.<br/>On a success, they believe they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. hunting trap or trap hole).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is grappled and restrained by the illusory trap.<br/>After the target believes it was pinned by the trap, the illusion lasts for a short duration or until they see through it.<br/> 
 
-### Phantom Selves
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) instead.
+
+>
+
+### Mirror Image
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | concentrate,  illusory,  quick
 
-**Effect** <br/> You create illusionary duplicates of yourself, mimicking your actions to confuse enemies about your true location. Cast this spell on your turn.<br/><strong>Weak.</strong> You create a second phantom version of you that stays directly at your side and mimics your movements.<br/><strong>Strong. </strong>You create two phantom selves instead.<br/><strong>Critical. </strong>You create three phantom selves instead. <br/><br/>When an enemy tries to attack you and hasn’t seen through the phantom selves illusion, randomly determine if they hit you or one of your phantom selves. If they hit a phantom, it disappears.<br/>Otherwise the phantoms last for a short duration.<br/> 
+**Effect** <br/> You create illusionary duplicates of yourself, mimicking your actions to confuse enemies about your true position. Cast this spell only during your turn.<br/>On a success, you create three duplicates of yourself that stay at your side and mimic your movements.<br/>When a creature attempts to target you with an attack, spell, or other effect, roll 1d12. While you have three duplicates, a result of 4 or higher redirect’s the effect to one of your duplicates. With two duplicates, you need a 5 or higher and with only one duplicate you need a 7 or higher.<br/>Each duplicate has a general Defense of 7 + your Arcana. If they hit a duplicate, it disappears.<br/>Otherwise the duplicates last for up to a short duration.<br/> 
 
-### Hallucinatory Assault
+### Hallucinated Swarm
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Resist | Medium | -
+ 2 | 4 | vs. Resist | Short | blast (cone)
 
-**Effect** <br/> Create an illusory swarm of creatures or projectiles that assail the senses of a creature, making them panic.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignoring AV) and the target is briefly confused.<strong> <br/>Critical. </strong>Deal +12 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +8 psychic damage (ignoring AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-### Illusionary Camouflage
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignoring AV) instead.
+
+>
+
+### Illusionary Terrain
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -202,13 +222,29 @@
 
 **Effect** <br/> Create a large scale illusion, blending into the environment by mimicking the surrounding scenery.<br/>Choose any inanimate object, structure, or environmental feature that encompasses up to a close three dimensional area.<br/>On a success, the illusion appears and lasts for a medium duration, even if you move out of range of it.<br/> 
 
+> **Heightened** <br/> <strong>(Rank 3)</strong> The illusion can cover up to a short distance in all three dimensions instead.
+
+>
+
 ### Invisibility
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  2 | 4 | Hard (10) | Self | concentrate,  illusory,  quick
 
-**Effect** <br/> You shroud yourself in illusions of your surroundings, hiding you from the sights of others. Cast this spell on your turn.<br/>On a success, you are invisible. While invisible, you are hidden from any creature, which hasn’t successfully rolled against this spells illusion, or has an innate ability to see through invisibility.<br/>This spell lasts for a short duration or until you attack or cast another spell.<br/> 
+**Effect** <br/> You shroud yourself in illusions of your surroundings, hiding you from the sights of others. Cast this spell on your turn.<br/>On a success, you turn invisible. While invisible, you are hidden from any creature which hasn’t successfully rolled against this spells illusion or has an innate ability to see through invisibility.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> You can remain invisible up to a medium duration instead.
+
+>
+
+### Major Illusion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate,  illusory
+
+**Effect** <br/> You summon the image of an object, creature, or other visible phenomenon, which can be large or smaller. I appears absolutely real, mimicking sounds, smells, movements, and even temperature (tough it won’t deal actual damage).<br/>On a success, your chosen illusion appears at the target location in range.<br/>While you are in range of the illusion, you can use your Quick Action to let the illusion change in any way or move within range. It will follow your instructions as long as it takes, so it can mimic walking to another location or having a conversation with another creature.<br/>Attempts to physically interact with the illusion automatically reveal it to be an illusion. The illusion lasts for up to a short duration, even if you move out of range. You can immediately recast this spell as an Action at the end of the duration to maintain the illusion for a longer time.<br/> 
 
 ### Waking Dream
 
@@ -216,7 +252,35 @@
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | concentrate,  illusory
 
-**Effect** <br/> You trap a creature in their dreams. The target has to be of a tier equal to or lower than your Arcana. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a medium duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they can roll Spirit + Perception vs. your Resist to break free of the illusion.<br/> 
+**Effect** <br/> You trap a creature in their dreams. The target has to be of a tier equal to or lower than your Arcana. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a short duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they can roll Spirit + Perception vs. your Resist to break free of the illusion.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The target remains unconscious for up to a medium duration instead.
+
+>
+
+### Mislead
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Self | concentrate,  illusory
+
+**Effect** <br/> You turn invisible at the very same time as you create a mirror image of yourself, leading creatures to believe you still remain where you were.<br/>On a success, you turn invisible and can immediately move a close distance (no Quick Actions can be used in response to this Movement). While invisible, you are hidden from any creature which hasn’t successfully rolled against this spells illusion or has an innate ability to see through invisibility.<br/>You also create a duplicate at your previous location which remains for the spell’s duration. On your following turns, you can use your Quick Action to make the duplicate move a short distance, gesture, speak, or act in any other way you choose.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time.<br/> 
+
+### Phantasmal Killer
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | concentrate,  illusory
+
+**Effect** <br/> You force a creature to be surrounded by their nightmares and deepest fears, only perceivable by them.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignoring AV).<br/><strong>Critical. </strong>Deal +12 psychic damage (ignoring AV).<br/>On a success, the target is also frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/><br/>While frightened by this spell, you can use your Quick Action on your following turns to roll Mind + Arcana vs. the target’s Resist. On a success, deal another +4 psychic damage (ignoring AV) to them.<br/> 
+
+### Seeming
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) |  | -
+
+**Effect** <br/> <em>Change the appearance of a group of creatures with illusions.</em> 
 
 ## Conjuration
 
@@ -244,13 +308,21 @@
 
 **Effect** <br/> Choose one item taking up 1 load or less and hold it out before you. Cast this spell on your turn.<br/>On a success, your hand reaches into an extraplanar pocket, either storing the item you are holding or withdrawing an item you stored beforehand from it during your turn.<br/><br/>You can only ever store items with a combined load of up to 2 + Arcana in the extraplanar pocket. When storing supply in it, you can‘t store more than a d12 (or 5 units) for any single type of supply in it.<br/><br/>Once you are unconcious, any stored item re-appears before you.<br/> 
 
-### Familiar Conjuring
+### Alarm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Short | ritual (minutes),  singular
+
+**Effect** <br/> You mark an area with an arcane sigil that functions as an alarm.<br/>When beginning to cast the spell, choose an opening or passage way no larger than a close distance. You can also choose individual creatures which should be ignored by the alarm and if the alarm activates audibly or mentally.<br/>On a success, you set an alarm that activates once a tiny or larger creature moves through or touches the enchanted area given your specified instructions.<br/>A mental alarm is only perceptibly by you while you are no more than an hour’s walk away from the alarm and even wakes you up if you are sleeping.<br/>An audible alarm briefly produces the sound of a bell which is hearable within of medium distance of the alarm.<br/>The alarm lasts until triggered by a creature or for a long duration.<br/> 
+
+### Conjure Familiar
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | Medium (8) | Touch | ritual (hours),  singular
 
-**Effect** <br/> You set up a ritual to summon an arcane familiar from unknown places beyond this world. As part of casting this spell, you must also spend 100 coins in incense and other occult ingredients. Choose a tiny animal form for your familiar (e.g. cat, bird, spider, …).<br/>On a success, you summon your arcane familiar in the chosen form (treat the familiar as a companion for combat). The familiar has the following statistics:<br/><br/><strong>Arcane Familiar</strong> (<em>tiny extraplanar</em>)<br/><br/><strong>HP.</strong> 5 / <strong>AV.</strong> 0 / <strong>Attributes.</strong> d4 STR / d6 AGI / d4 SPI / d6 MND / <strong>Defenses.</strong> 6 Parry / 8 Dodge / 7 Resist / <strong>Skills.</strong> Cunning, Perception (equal to your Arcana)<br/><br/><strong>Attacks.<br/></strong>- <strong>Strike.</strong> 3 damage (2 base + 1 weapon).<br/><br/><strong>Abilities:</strong><br/>- <strong>Night Vision.</strong> This creature can see up to a close distance in dim light as in bright light. Sources of dim light let it see one range category further than normal.<br/>- <strong>Natural Movement.</strong> Depending on the form this creature takes, it can can climb or swim without treating it as difficult terrain, or can fly.<br/><br/>You have a psychic connection to your familiar, as long as the two of you are on the same sphere of existence. This connection manifests itself as an intuitive sharing of emotions. You can use this connection to tell your familiar what to do and where to go nonverbally. You can also spend your turn meditating to fully experience all senses of your familiar. While meditating this way, you are considered unconscious and are unaware of your own body‘s surroundings.<br/>Any creature capable of sensing magical auras will notice the extraplanar nature of your familiar. Most civilized folks will see this as unnatural and evil. The familiar remains until killed, but can be re-summoned with another ritual. You can choose a new form for your familiar each time you cast this spell.<br/> 
+**Effect** <br/> You set up a ritual to summon an arcane familiar from unknown places beyond this world. As part of casting this spell, you must also spend 100 coins in incense and other occult ingredients. Choose your familiars physical appearance from the list of animal traits in the Companion section.<br/>On a success, you summon your arcane familiar in the chosen form (treat the familiar as a tame companion (tier 0) for combat).<br/>You have a psychic connection to your familiar, as long as the two of you are on the same sphere of existence. This connection manifests itself as an intuitive sharing of emotions. You can use this connection to tell your familiar what to do and where to go nonverbally. You can also spend your turn meditating to fully experience all senses of your familiar. While meditating this way, you are considered unconscious and are unaware of your own body‘s surroundings.<br/>Any creature capable of sensing magical auras will notice the extraplanar nature of your familiar. Most civilized folks will see this as unnatural and evil. The familiar remains until killed, but can be re-summoned with another ritual. You can choose a new form for your familiar each time you cast this spell.<br/> 
 
 ### Hale of Blades
 
@@ -266,7 +338,7 @@
 ---|---|---|---|---
  1 | 2 | Medium (8) | Touch | enchant (*),  singular
 
-**Effect** <br/> You touch any medium or smaller item, temporarily infusing it with arcane energy.<br/>On a success, the item increases it’s Durability die by one step. If it is a weapon, it deals +1 weapon damage. If it is an armor, shield, or helmet, it grants +1 AV.<br/>These effects last for a long duration. This spell counts as an enchantment for a weapon, armor, shield, helmet, or other item depending on which type of item you infused.<br/> 
+**Effect** <br/> You touch any medium or smaller item, temporarily infusing it with arcane energy.<br/>On a success, the item increases it’s Durability die by one step. If it is a weapon, increase it’s weapon damage by 1 (enhancement bonus). If it is a spellcasting anchor, increase your spell damage by +1/2/3 (enhancement bonus). If it is an armor, shield, or helmet, it grants +1 AV (enhancement bonus).<br/>These effects last for a long duration. This spell counts as an enchantment for a weapon, armor, shield, helmet, or other item depending on which type of item you infused.<br/> 
 
 ### Arcane Barrage
 
@@ -405,6 +477,14 @@
  2 | 4 | vs. Resist | Short | blast (cone)
 
 **Effect** <br/> You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignoring AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+### Wave of Madness
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Short | blast (cone),  illusory
+
+**Effect** <br/>  
 
 ### Invade Dreams
 

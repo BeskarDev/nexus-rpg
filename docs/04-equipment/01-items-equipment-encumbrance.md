@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# 🎒 Items, Equipment & Encumbrance
+# 🎒 Equipment & Encumbrance
 
 ## Coins
 
@@ -23,7 +23,7 @@ Adventurers amass wealth in the abstracted form of coins over their adventures. 
 One coin is the cost of a bag of grain, a simple meal at a market, or the daily pay of an unskilled laborer.
 
 > The amount of coins an adventurer carries around with them takes up no load. But note, that any found treasure does take up a varying amount of load, depending on what assortment of items the treasure consists of. Only once the adventurers successfully bring the treasure back into an appropriately sized settlement and take some downtime there, are they able to add their won treasure to their wealth of coins (more details under the “Sell Treasure” Activity in the Downtime section).
->
+> 
 
 ## Items
 
@@ -45,19 +45,19 @@ An item’s Quality determines how hard is it to create, find, and how much it i
 3. <span style={{color: 'var(--ifm-color-quality-3)',fontWeight: 'bold'}}>Advanced</span> (worth 500-2,000 coins)
     - require adept craftsmen to create
     - found in large settlements, or with secluded craftsmen
-4. <span style={{color: 'var(--ifm-color-quality-4)',fontWeight: 'bold'}}>Formidable</span> (worth 2,000-10,000 coins)
+4. <span style={{color: 'var(--ifm-color-quality-4)',fontWeight: 'bold'}}>Formidable</span> (worth 2,000-5,000 coins)
     - the pinnacle of non-magical craftsmanship and material attainable in the mortal realms
     - only found in huge capital cities, or hard-to-reach secluded craftsmen
-5. <span style={{color: 'var(--ifm-color-quality-5)',fontWeight: 'bold'}}>Exceptional</span> (worth 10,000-50,000 coins)
+5. <span style={{color: 'var(--ifm-color-quality-5)',fontWeight: 'bold'}}>Exceptional</span> (worth 5,000-20,000 coins)
     - require magical ingredients, complex formulae, and only the most skilled craftsmen
     - only rarely found in huge capital cities or legendary craftsmen
-6. <span style={{color: 'var(--ifm-color-quality-6)',fontWeight: 'bold'}}>Epic</span> (worth 50,000-250,000 coins)
+6. <span style={{color: 'var(--ifm-color-quality-6)',fontWeight: 'bold'}}>Epic</span> (worth 20,000-100,000 coins)
     - require powerful magical ingredients, and ancient formulae, and are the height of mortal craftsmanship
     - only in the possession of the most powerful people, or masterworks from legendary craftsmen
-7. <span style={{color: 'var(--ifm-color-quality-7)',fontWeight: 'bold'}}>Legendary</span> (worth 250,000-1,000,000 coins)
+7. <span style={{color: 'var(--ifm-color-quality-7)',fontWeight: 'bold'}}>Legendary</span> (worth 100,000-500,000 coins)
     - requires legendary magical ingredients, formulae lost to mortals, and the gods themselves as craftsmen
     - the pinnacle of the most powerful people’s possession, crafted in ancient times or by the gods themselves
-8. <span style={{color: 'var(--ifm-color-quality-8)',fontWeight: 'bold'}}>Mythical</span> (worth 1,000,000+ coins)
+8. <span style={{color: 'var(--ifm-color-quality-8)',fontWeight: 'bold'}}>Mythical</span> (worth 500,000+ coins)
     - the absolute peak of divine craftsmanship
     - each of these items has a long history and anybody coming into their possession is destined for greatness
 
@@ -160,39 +160,45 @@ Equipment are the types of items that you carry on your person. You can only eve
 
 Adventurers carry around a lot of equipment and loot. Encumbrance determines the amount of items they can carry with them on their person.
 
-### Carrying Items
-
-Normally any adventurer can only carry what they can hold in their hands or wear on their body. To be able to carry more items than that, they need containers. Containers are worn items that can hold onto additional items. How many items any container can hold at maximum is determined by the items combined load (see below).
-
 ### Item Load
 
-Carrying items accumulate load. Load is an abstracted measurement of weight and size. Once you carry too much load, you are either encumbered or even over-encumbered.
+Carrying items accumulates load. Load is an abstracted measurement of weight and size. Once you carry too much load, you are either encumbered or even over-encumbered.
 
 Generally, an item fitting into one hand takes up 1 load. An item requiring two hands to hold takes up 2 load. Items so small, you can fit multiple of them in a single hand take up 0 load, unless you carry enough of them together.
 
 > For example, a shortsword takes up 1 load, while a two-handed greatsword takes up 2 load. A single gem is 0 load, but a bag of multiple dozen gems takes up 1 load.
->
+> 
 
-### Becoming encumbered
+### Carrying Items
 
-An adventurer’s maximum amount of load they can carry without being encumbered is equal to Strength + 4. Once you carry 2 x Strength + 4 in load, you are over-encumbered and can‘t carry any more load. How much you can carry is also affected by your method of storage. These values assume you carry a backpack and enough bags and pouches to store your items.
+You can carry items in your hands, strapped on your person, or within your backpack. You can choose to have quick access to any kind of smaller item (max. 1 load each), such as potions, magic scrolls, or other weapons. You carry these items visibly on your person and not in your backpack.
+
+**Switching held items during combat**
+
+At the start of your turn, you can switch your held items with other items you have quick access to freely. You can also freely use any item you have quick access to during your turn. Retrieving any item from your backpack requires an Action instead.
+
+**Dropping your backpack**
+
+When carrying a lot of treasure or gear and suddenly a fight erupts, you can choose to drop your backpack and all items within to the ground during your turn without taking an Action. The backpack can be picked back up or searched for any specific item by using an Action.
+
+**Items in storage**
+
+When you have access to your own house or some other storage institution, you can store items there that you don’t want to carry with you on your adventures.
+
+### Carrying Capacity
+
+An adventurer’s maximum amount of load they can carry without being encumbered is equal to Strength + 6. Once you carry 2 x Strength + 6 in load, you are over-encumbered and can‘t carry any more load. How much you can carry is also affected by your method of storage. These values assume you carry a backpack and enough bags and pouches to store your items.
 
 | Strength | Encumbrance Limit | Over-Encumbrance Limit |
 | --- | --- | --- |
-| d4 | 8 load | 12 load |
-| d6 | 10 load | 16 load |
-| d8 | 12 load | 20 load |
-| d10 | 14 load | 24 load |
-| d12 | 16 load | 28 load |
+| d4 | 10 load | 14 load |
+| d6 | 12 load | 18 load |
+| d8 | 14 load | 22 load |
+| d10 | 16 load | 26 load |
+| d12 | 18 load | 30 load |
 
 Being encumbered or over-encumbered causes several effects.
 
 **Encumbered.** You suffer +1 bane on Strength or Agility rolls for movement, such as climbing or swimming, and during travel. You also can’t take the Dash Action or the Evade Quick Action.
 
 **Over-Encumbered.** You can‘t move. You can‘t use any Actions or do any rolls for physical activity.
-
-### Fighting while encumbered
-
-When carrying a lot of treasure or gear and suddenly a fight erupts, you can choose to drop your backpack and all items within to the ground during your turn without taking an Action.
-
-The backpack can be picked back up or searched for any specific item by using an Action.

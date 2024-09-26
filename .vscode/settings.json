@@ -64,7 +64,7 @@
   "githubPullRequests.pullBranch": "never",
   "extensions.ignoreRecommendations": true,
   "editor.stickyScroll.enabled": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "git.ignoreRebaseWarning": true,
   "scm.repositories.sortOrder": "name",
   "scm.repositories.visible": 0,

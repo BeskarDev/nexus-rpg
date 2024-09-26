@@ -41,45 +41,185 @@ Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fo
 - You fall unconscious, start dying, or are dead.
 - The number of enemies the companion is engaged with is two times or more than the number of allies (also counting the companion itself).
 
-## Animal Companions
+### Companion Statistics
 
-| Tier | 1 (Tame) | 2 (Wild) | 3 (Ferocious) | 4 (Monstrous) |
-| --- | --- | --- | --- | --- |
-| Size | Small (-1) | Medium (0) | Large (+1) | Huge (+2) |
-| HP | 10 | 20 | 30 | 40 |
-| AV | 1 (natural light) | 2 (natural light) | 4 (natural light) | 6 (natural light) |
-| STR / AGI / SPI / MND | d6 / d6 / d4 / d4 | d8 / d6 / d6 / d4 | d10 / d8 / d6 / d4 | d12 / d10 / d8 / d4 |
-| Parry / Dodge / Resist | 6 / 9 / 7 | 8 / 8 / 8 | 10 / 8 / 8 | 11 / 8 / 9 |
-| Skills | Fighting (Rank 0), Fortitude (Rank 0), Perception (Rank 0), Survival (Rank 0) | Fighting (Rank 1), Fortitude (Rank 1), Perception (Rank 1), Survival (Rank 1) | Fighting (Rank 1), Fortitude (Rank 2), Perception (Rank 2), Survival (Rank 2) | Fighting (Rank 2), Fortitude (Rank 3), Perception (Rank 3), Survival (Rank 3) |
-| Attack (claw/bite/etc.) | 5 damage (3 base + 2 weapon). | 7 damage (4 base + 3 weapon). | 9 damage (5 base + 4 weapon). | 11 damage (6 base + 5 weapon). |
-| Movement | 1 | 1 | 2 | 2 |
+| Tier | 0 (Tame) | 1 (Trained) | 2 (Wild) | 3 (Ferocious) | 4 (Monstrous) |
+| --- | --- | --- | --- | --- | --- |
+| Size | Tiny (-2) | Small (-1) | Medium (0) | Large (+1) | Huge (+2) |
+| HP | 5 | 10 | 20 | 30 | 40 |
+| AV | 1 (natural light) | 2 (natural light) | 4 (natural light) | 6 (natural light) | 8 (natural light) |
+| STR / AGI / SPI / MND | d4 / d6 / d4 / d4-2 | d6 / d6 / d6 / d4-2 | d8 / d8 / d6 / d4-1 | d10 / d10 / d8 / d4-1 | d12 / d10 / d8 / d4 |
+| Parry / Dodge / Resist | 6 / 8 / 7 | 8 / 8 / 8 | 9 / 9 / 9 | 10 / 10 / 10 | 12 / 10 / 11 |
+| Skill Rank | 0 | 1 | 2 | 3 | 4 |
+| Attack (claw/bite/etc.) | 3/4/5 damage 
+(2 base + 1 weapon) | 6/9/12 damage 
+(3 base + 3 weapon) | 8/12/16 damage 
+(4 base + 4 weapon) | 10/15/20 damage 
+(5 base + 5 weapon) | 12/18/24 damage 
+(6 base + 6 weapon) |
+| Movement/turn | 1 | 1 | 1 | 2 | 2 |
 
 Each companion also gains additional attacks, abilities, or other modifiers based on its animal type.
 
-### Example Animal Types
+## Companion Traits
 
-**Dog (Tier 1)**
+Each companion will have one of the following traits, representing the type of creature they are. These traits will alter the normal companion statistics and give the companion new abilities specific to their creature type.
 
-- **Animal Scent.** This creature gains +1 boon on Perception rolls based on smell.
-- **Overpowering Bite.** On a strong or critical success for this creature’s attacks, attempts to grapple the target.
+### Animal Traits
 
-**Cat (Tier 1)**
+Animal traits represent the general family of animal your companion is associated with. For example, it is up to you if your companion with the canine trait is a shepherd dog, a bulldog, a wolf, or a hyena.
 
-- **Night Vision.** This creature can see up to a short distance in dim light as in bright light. Sources of dim light let it see one range category further than normal.
-- **Cat’s Grace.** Increase the Agility of this creature by one step (this also adds +1 Dodge). This creature can use Agility for its attack rolls. When this creature would take falling damage, treat its distance as one category lower.
+#### **Ape**
 
-**Wolf (Tier 2)**
+- **Attributes.** Increase Mind by one step.
+- **Skills.** Athletics, Fighting (-1 rank), Perception, Survival
+- **Attacks**
+    - **Fist** (*light*). Deals -1 weapon damage (min. 1).
+    - **Rock** (*ammo, crush, thrown (close/short)*). normal damage.
+- **Abilities**
+    - **Natural Climber.** This creature can climb without treating it as difficult terrain.
 
-- **Animal Scent.** This creature gains +1 boon on Perception rolls based on smell.
-- **Overpowering Bite.** On a strong or critical success for this creature’s attacks, attempts to grapple the target.
-- **Wolf Pack.** While in a troop or in melee range of allies, this creature‘s attacks gain +1 boon.
+#### **Bat**
 
-**Large Cat (Tier 2)**
+- **Abilities**
+    - **Flying.** This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
 
-- **Night Vision.** This creature can see up to a short distance in dim light as in bright light. Sources of dim light let it see one range category further than normal.
-- **Cat’s Grace.** Increase the Agility of this creature by one step (this also adds +1 Dodge). This creature can use Agility for its attack rolls. When this creature would take falling damage, treat its distance as one category lower.
-- **Pounce.** This creature can take the Charge Combat Art once per combat.
+#### **Bear**
 
-### Riding an animal companion
+- **HP.** +10 HP.
+- **Skills.** Athletics, Fighting (-1 rank), Fortitude, Perception, Survival
+
+#### **Bird**
+
+- **Abilities**
+    - **Flying.** This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
+
+#### **Boar**
+
+#### **Bull**
+
+#### **Camel**
+
+#### **Canine**
+
+#### **Cat**
+
+- **Defenses.** -1 Parry, +1 Dodge.
+- **Attributes.** -1d Spirit.
+- **Skills.** Cunning equal to Tier.
+- **Abilities**
+    - **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
+
+#### **Crab**
+
+- **HP.** +10 HP.
+- **AV.** + Tier (natural heavy).
+- **Defenses.** +1 Parry, -1 Dodge.
+- **Abilities**
+    - **Slow Movement.** Can’t use more than 1 Movement per turn.
+
+#### **Frog**
+
+#### **Hippopotamus**
+
+#### **Horse**
+
+#### **Lizard**
+
+- **AV.** + Tier (natural heavy)
+
+#### **Raven**
+
+**Abilities**
+
+- **Flying (wings).** This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
+
+#### **Rodent**
+
+#### **Snake**
+
+#### **Spider**
+
+#### **Stag**
+
+### Elemental Traits
+
+Elemental companions are summoned from the primal planes, either via a binding magic item, magical contract, or spell.
+
+#### **Air**
+
+- **Attributes.** -1d Strength, +1d Agility
+- **Defenses.** +1 Dodge.
+- **Skills.** Athletics, Fighting (-1 rank), Perception
+- **Immunities.** poison damage, being poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
+- **Resistances.** blast, lightning, physical (except from water)
+- **Weaknesses.** fire
+- **Attacks**
+    - **Slam** (*agile, crush*). On a strong or critical hit, the target is pushed close.
+    - **Lightning Strike** (*thrown (medium)*). Deals lightning damage with -1 weapon damage (min. 1). On a strong or critical hit, the target is briefly staggered.
+- **Abilities**
+    - **Flying (hover).** This creature can fly with +1 Movement per turn.
+    - **Air Form.** This creature can move through any space as narrow as a keyhole.
+
+#### **Earth**
+
+- **HP.** +10 HP.
+- **AV.** + Tier (natural heavy)
+- **Attributes.** +1d Strength, -1d Agility
+- **Defenses.** +1 Parry, -1 Dodge
+- **Skills.** Fighting (-1 rank), Fortitude
+- **Immunities.** poison damage, being poisoned, bleeding, prone, unconscious
+- **Resistances.** physical (except from crush weapons)
+- **Weaknesses.** blast
+- **Attacks**
+    - **Slam** (*crush*). On a strong or critical hit, the target falls prone.
+    - **Earth Spikes** (*crush*). Target all creatures in melee range. On a hit, subtract the weapon damage once from the total damage against each target.
+- **Abilities**
+    - **Tremorsense.** This creature can perceive the location of moving creatures and objects on connected surfaces with it’s own in medium range.
+    - **Earth Glide.** This creature can burrow through natural earth and stone as part of it’s normal Movement.
+
+#### **Fire**
+
+- **Attributes.** -1d Strength, +1d Agility
+- **Defenses.** +1 Dodge.
+- **Skills.** Fighting (-1 rank), Fortitude, Perception
+- **Immunities.** poison damage, being poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
+- **Resistances.** acid, physical (except from water)
+- **Weaknesses.** frost, damage from water
+- **Attacks**
+    - **Touch** (*agile*). Deals fire damage. On a strong or critical hit, inflicts burning (equal to 2 x Tier) for a short duration.
+    - **Flame Bolt** (*thrown (short/medium)*). Deals fire damage with -1 weapon damage (min. 1). On a strong or critical hit, inflicts burning (equal to 2 x Tier) for a short duration.
+- **Abilities**
+    - **Fire Form.** This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers it’s Tier x 2 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+
+#### **Water**
+
+- **Skills.** Fighting (-1 rank), Fortitude
+- **Immunities.** poison damage, being poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
+- **Resistances.** physical
+- **Weaknesses.** frost
+- **Attacks**
+    - **Slam** (*crush*). On a strong or critical hit, the target falls prone.
+    - **Whelm** (*crush*)**.** This melee attack can only target creatures of the same or smaller Size than this creature. If targeting smaller creatures in melee range, you can target multiple, where two creatures of a particular Size count as one creature of one Size larger (for example, two small goblins count as one medium creature). The combined Size of all target’s can’t exceed this creature’s Size.
+    Deals -1 weapon damage (min. 1). On a hit, each target is grappled, restrained, and suffocating until this creature uses another Action than Whelm on a following turn or is moved out of melee range. On a failure, the target is pushed close.
+- **Abilities**
+    - **Aquatic (fast).** This creature is immune to drowning. This creature can swim with +2 Movement per turn.
+    - **Water Form.**  This creature can move through any space as narrow as a keyhole. If this creature suffers frost damage, it is briefly slowed.
+
+### Undead Traits
+
+#### **Ghost**
+
+#### **Skeleton**
+
+- **AV.** + Tier (natural heavy).
+
+#### **Zombie**
+
+### Draconic Traits
+
+#### **Fire**
+
+## Riding an animal companion
 
 Some animal companions are large enough and have the anatomy to be ridable. When fighting while riding an animal companion, you share your companion‘s movement with them during your turns. You can still both take actions on your individual turns.
