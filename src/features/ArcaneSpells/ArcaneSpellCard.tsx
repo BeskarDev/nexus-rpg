@@ -12,7 +12,7 @@ const setFontSizeClass = (effect: string, heightened: string) => {
 		return 'text-size--md'
 	} else if (text.length <= 800) {
 		return 'text-size--sm'
-	} else if (text.length <= 1000) {
+	} else if (text.length <= 1100) {
 		return 'text-size--xs'
 	}
 	return 'text-size--xxs'
@@ -68,15 +68,15 @@ export const ArcaneSpellCard: React.FC<ArcaneSpell> = ({
 				<Box sx={{ width: '24px' }} />
 			</Box>
 			<Typography
-				variant="body2"
-				sx={{ alignSelf: 'center', mx: '-8px', mt: '-2px', fontSize: '8px' }}
+				variant="body1"
+				sx={{ alignSelf: 'center', mx: '-8px', mt: '-4px', fontSize: '8px', lineHeight: 1.1 }}
 			>
-				R{rank} {discipline}, {target}, {range} range
+				R{rank} {discipline}, {target}, {range.toLowerCase()} range
 			</Typography>
 			{properties !== '-' && (
 				<Typography
-					variant="body2"
-					sx={{ alignSelf: 'center', mt: 0.25, mx: '-8px', fontSize: '8px' }}
+					variant="body1"
+					sx={{ alignSelf: 'center', mt: 0.25, mx: '-8px', fontSize: '8px', lineHeight: 1.1 }}
 				>
 					{properties}
 				</Typography>
