@@ -816,7 +816,7 @@
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You summon a dark cloud brewing with electricity. The cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud and roll Spirit + Mysticism vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can target another one creature with this spell and roll Spirit + Mysticism vs. their Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration.<br/> 
+**Effect** <br/> You summon a dark cloud brewing with electricity. The cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration.<br/> 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target up to five creatures below the cloud instead.<br/>
 
@@ -880,7 +880,7 @@
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You create a massive cyclone that engulfs a wide space. On a success, you summon a violent vortex of air engulfing everything within short distance of the target area and a long distance into the air.<br/>Target each creature in the cyclone’s range and roll Spirit + Mysticism vs. their Dodge.<br/>On a hit, deal +8 damage (or +12 against flying creatures) to each target and they are pushed a short distance into the center of the cyclone. If they are already within the center area of the cyclone, they fall prone instead.<br/>The cyclone’s area is considered difficult terrain.<br/>On each of your following turns, you can use your Action to repeat the roll against all creatures within the cyclone. Before or after repeating the roll, you can choose to move the cyclone a short distance within range.<br/>The cyclone lasts for a short duration.<br/> 
+**Effect** <br/> You create a massive cyclone that engulfs a wide space. On a success, you summon a violent vortex of air engulfing everything within short distance of the target area and a long distance into the air.<br/>Target each creature in the cyclone’s range and use your roll’s result vs. their Dodge.<br/>On a hit, deal +8 damage (or +12 against flying creatures) to each target and they are pushed a short distance into the center of the cyclone. If they are already within the center area of the cyclone, they fall prone instead.<br/>The cyclone’s area is considered difficult terrain.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Dodge against all creatures within the cyclone. Before or after repeating the roll, you can choose to move the cyclone a short distance within range.<br/>The cyclone lasts for a short duration.<br/> 
 
 ### Lightning Volley
 
@@ -1122,9 +1122,9 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Parry | Medium | concentrate
+ 1 | 2 | Medium (8) | Medium | concentrate
 
-**Effect** <br/> To use this spell, you must first sacrifice a physical weapon along spiritual ingredients worth 100 coins in a ritual taking one exploration turn.<br/><br/>When you cast this spell, you summon an animated, spiritual version of one of the weapons you sacrificed for this spell levitating above the ground within range and obeying your command. On your turns, you can move it a short distance within range and make one melee attack. Roll Spirit + Mysticism for the attack and treat the result as a normal weapon attack.<br/> 
+**Effect** <br/> To use this spell, you must first sacrifice a physical weapon along spiritual ingredients worth 100 coins in a ritual taking one exploration turn.<br/><br/>On a success, you summon an animated, spiritual version of one of the weapons you sacrificed for this spell levitating above the ground within range and obeying your command. The weapon can immediately make an attack against a target in range. Use your roll’s result for this attack. On each of your following turns, you can move the spiritual weapon a short distance within range and repeat the roll to make an attack with it.<br/> 
 
 ### Ancestral Warriors
 

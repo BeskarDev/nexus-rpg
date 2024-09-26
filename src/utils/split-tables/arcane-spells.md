@@ -108,9 +108,9 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | Special | Medium | -
+ 2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> You form a long spear-like ice shard, hovering above your hand. You can choose to use the ice lance as a melee weapon, or throw it against a target within range.<br/><br/><strong>Weapon.</strong> You can immediately make a melee attack against a target in reach using the ice lance. The ice lance deals +5 frost weapon damage, has the fragile, pierce, reach, and versatile (+1) properties, and d6 Durability. You roll attacks with it using Mind + Arcana und use your spell base damage for it. The ice lance lasts for a short duration, or until destroyed.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range.<br/><strong>Weak.</strong> You deal +6 frost damage.<br/><strong>Strong.</strong> You deal +12 frost damage.<br/><strong>Critical.</strong> You deal +18 frost damage. 
+**Effect** <br/> You form a long spear-like ice shard, hovering above your hand. On a success, you can choose to use the ice lance as a melee weapon or throw it against a target within range. The ice lance lasts for a short duration or until destroyed.<br/><br/><strong>Weapon.</strong> Use your roll’s result as a melee attack against a target in reach using the ice lance. The ice lance deals +5 frost weapon damage, has the fragile, pierce, reach, and versatile (+1) properties, and d6 Durability. You can use your spell power instead of your melee power for the base damage with this weapon. On your following turns, you can attack with it again by rolling Mind + Arcana.<br/><br/><strong>Throw.</strong> Use your roll’s result vs. Dodge against a single target in range.<br/><strong>Weak.</strong> You deal +6 frost damage.<br/><strong>Strong.</strong> You deal +12 frost damage.<br/><strong>Critical.</strong> You deal +18 frost damage. 
 
 ### Lightning Strike
 
@@ -272,7 +272,7 @@
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | concentrate,  illusory
 
-**Effect** <br/> You force a creature to be surrounded by their nightmares and deepest fears, only perceivable by them.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignoring AV).<br/><strong>Critical. </strong>Deal +12 psychic damage (ignoring AV).<br/>On a success, the target is also frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/><br/>While frightened by this spell, you can use your Quick Action on your following turns to roll Mind + Arcana vs. the target’s Resist. On a success, deal another +4 psychic damage (ignoring AV) to them.<br/> 
+**Effect** <br/> You force a creature to be surrounded by their nightmares and deepest fears, only perceivable by them.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignoring AV).<br/><strong>Critical. </strong>Deal +12 psychic damage (ignoring AV).<br/>On a success, the target is also frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/><br/>While frightened by this spell, you can use your Quick Action on your following turns to repeat the roll vs. Resist. On a success, deal another +4 psychic damage (ignoring AV) to them.<br/> 
 
 ### Seeming
 
