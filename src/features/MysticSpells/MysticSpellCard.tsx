@@ -12,7 +12,7 @@ const setFontSizeClass = (effect: string, heightened: string) => {
 		return 'text-size--md'
 	} else if (text.length <= 800) {
 		return 'text-size--sm'
-	} else if (text.length <= 1100) {
+	} else if (text.length <= 1000) {
 		return 'text-size--xs'
 	}
 	return 'text-size--xxs'
@@ -27,7 +27,7 @@ export const MysticSpellCard: React.FC<MysticSpell> = ({
 	range,
 	properties,
 	effect,
-	heightened,
+	heightened = '-',
 }) => {
 	return (
 		<PlayingCard>
@@ -69,14 +69,14 @@ export const MysticSpellCard: React.FC<MysticSpell> = ({
 			</Box>
 			<Typography
 				variant="body2"
-				sx={{ alignSelf: 'center', mx: '-8px', mt: '-2px' }}
+				sx={{ alignSelf: 'center', mx: '-8px', mt: '-2px', fontSize: '8px' }}
 			>
-				Rank {rank} {tradition}, {target}, {range}
+				R{rank} {tradition}, {target}, {range} range
 			</Typography>
 			{properties !== '-' && (
 				<Typography
 					variant="body2"
-					sx={{ alignSelf: 'center', mt: 0.25, mx: '-8px' }}
+					sx={{ alignSelf: 'center', mt: 0.25, mx: '-8px', fontSize: '8px' }}
 				>
 					{properties}
 				</Typography>
