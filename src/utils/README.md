@@ -1,6 +1,6 @@
 # Converting huge markdown tables into multiple smaller ones
 
-HowTo:
+How To:
 
 - go to table in notion and export as HTML
 - rename resulting `.html` file to fitting name
@@ -12,3 +12,5 @@ HowTo:
   - arcane spells: `python transform-arcane-spell-table.py`
   - mystic spells: `python transform-mystic-spell-table.py`
 - At the end, paste the contents into the corresponding docs page.
+
+> If you want to also update the json files that the `tools` section relies on, execute `python markdown-to-json.py` at the end.

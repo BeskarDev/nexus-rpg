@@ -1,602 +1,618 @@
 [
-	{
-		"name": "Guard Dog (or young Jaguar, Boar, etc.)",
-		"quality": "1",
-		"category": "Animals",
-		"load": "12",
-		"cost": "50",
-		"description": "A dog or other similar-sized animal that underwent basic training to fight and protect its owner. Can be trained as a tame animal companion, provided you have the Survival talent with the same name."
-	},
-	{
-		"name": "Draft Horse (or Donkey, Mule)",
-		"quality": "1",
-		"category": "Animals",
-		"load": "130",
-		"cost": "100",
-		"description": "A largely untrained horse, fit to pull a vehicle but not to be ridden. See under Creatures to see its statistics."
-	},
-	{
-		"name": "Antitoxin",
-		"quality": "2",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "20",
-		"description": "As an action, drink this liquid to cure you of one source of poison affecting you."
-	},
-	{
-		"name": "Acid Vial",
-		"quality": "2",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "50",
-		"description": "Counts as a thrown weapon (bundle, thrown (short)) dealing +3 acid damage as weapon damage."
-	},
-	{
-		"name": "Flammable Paste",
-		"quality": "2",
-		"category": "Alchemical",
-		"load": "0",
-		"cost": "50",
-		"description": "Has 5 uses. Spend 1 use as an Action to apply the paste to any weapon or one type of ammo supply. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort. <br/>Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignoring AV) to the target. The ignited paste lasts for a short duration.<br/>"
-	},
-	{
-		"name": "Paralyzing Poison (weak)",
-		"quality": "2",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "50",
-		"description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. If they succeed, they are also immune against this poison\u2019s effects for the rest of the scene.<br/>"
-	},
-	{
-		"name": "Weapon Poison (weak)",
-		"quality": "2",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "50",
-		"description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignoring AV) to the target.<br/>"
-	},
-	{
-		"name": "Fire Bomb",
-		"quality": "3",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "100",
-		"description": "Counts as a thrown weapon (bundle, thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target."
-	},
-	{
-		"name": "Smoke Bomb",
-		"quality": "3",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "100",
-		"description": "Counts as a thrown weapon (bundle, thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light."
-	},
-	{
-		"name": "Heightening Potion",
-		"quality": "3",
-		"category": "Alchemical",
-		"load": "0",
-		"cost": "200",
-		"description": "As an Action or by skipping all Movement this turn, you can drink this potion to gain +1 Movement per turn and +1 boon on all attack rolls for a short duration. After this effect ends, roll Strength + Fortitude. On a failure, you suffer one Fatigue. On a blunder, you suffer two Fatigue instead."
-	},
-	{
-		"name": "Potion of Healing (weak)",
-		"quality": "3",
-		"category": "Alchemical",
-		"load": "0",
-		"cost": "200",
-		"description": "As an Action or by skipping all Movement this turn, you can drink this potion to regain 8 HP."
-	},
-	{
-		"name": "Paralyzing Poison (decent)",
-		"quality": "3",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "500",
-		"description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned and staggered for a short duration. They can roll a hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison\u2019s effects for the rest of the scene.<br/>"
-	},
-	{
-		"name": "Weapon Poison (decent)",
-		"quality": "3",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "500",
-		"description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignoring AV) to the target.<br/>"
-	},
-	{
-		"name": "Potion of Healing (decent)",
-		"quality": "4",
-		"category": "Alchemical",
-		"load": "0",
-		"cost": "500",
-		"description": "Drink this potion as an Action to regain 16 HP."
-	},
-	{
-		"name": "Weapon Poison (strong)",
-		"quality": "4",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "2000",
-		"description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignoring AV) to the target.<br/>"
-	},
-	{
-		"name": "Paralyzing Poison (strong)",
-		"quality": "5",
-		"category": "Alchemical",
-		"load": "0.5",
-		"cost": "2000",
-		"description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison. The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned and stunned for a short duration. They can roll a very hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune to this poison\u2019s effects for the rest of the scene.<br/>"
-	},
-	{
-		"name": "Potion of Healing (strong)",
-		"quality": "5",
-		"category": "Alchemical",
-		"load": "0",
-		"cost": "2000",
-		"description": "Drink this potion as an Action to regain 24 HP."
-	},
-	{
-		"name": "Simple Clothes",
-		"quality": "1",
-		"category": "Clothes",
-		"load": "0",
-		"cost": "5",
-		"description": "Simple, functional clothes."
-	},
-	{
-		"name": "Traveler\u2018s Clothes",
-		"quality": "2",
-		"category": "Clothes",
-		"load": "0",
-		"cost": "50",
-		"description": "Sturdy clothes made for harsh weather and long journeys."
-	},
-	{
-		"name": "Fine Clothes",
-		"quality": "3",
-		"category": "Clothes",
-		"load": "1",
-		"cost": "500",
-		"description": "Clothes of a noble or wealthy merchant made from high quality materials."
-	},
-	{
-		"name": "Extravagant Clothes",
-		"quality": "4",
-		"category": "Clothes",
-		"load": "1",
-		"cost": "2000",
-		"description": "Clothes worthy of a king or queen made from the most exotic materials."
-	},
-	{
-		"name": "Pouch",
-		"quality": "1",
-		"category": "Containers",
-		"load": "0",
-		"cost": "1",
-		"description": "A simple pouch to be carried around by hand or on a belt. Can hold up to 2 load."
-	},
-	{
-		"name": "Linen Bag",
-		"quality": "1",
-		"category": "Containers",
-		"load": "0.5",
-		"cost": "5",
-		"description": "A rough bag of linen made to hold wheat, fruits, or other items. Can hold up to 5 load."
-	},
-	{
-		"name": "Backpack",
-		"quality": "1",
-		"category": "Containers",
-		"load": "1",
-		"cost": "10",
-		"description": "A simple backpack or satchel. Can hold up to 10 load."
-	},
-	{
-		"name": "Wooden Chest",
-		"quality": "1",
-		"category": "Containers",
-		"load": "5",
-		"cost": "50",
-		"description": "A wooden container for storing small to medium sized objects. Can hold up to 50 load."
-	},
-	{
-		"name": "Traveler\u2019s Backpack",
-		"quality": "2",
-		"category": "Containers",
-		"load": "1",
-		"cost": "50",
-		"description": "A sturdy backpack for longer periods of travel. Can hold up to 15 load."
-	},
-	{
-		"name": "Reinforced Chest",
-		"quality": "2",
-		"category": "Containers",
-		"load": "10",
-		"cost": "500",
-		"description": "A chest reinforced with strips of bronze, brass, or lead. Can hold up to 100 load."
-	},
-	{
-		"name": "Explorer\u2019s Backpack",
-		"quality": "3",
-		"category": "Containers",
-		"load": "1",
-		"cost": "200",
-		"description": "A high-quality backpack made to resist the longest journeys. Can hold up to 20 load."
-	},
-	{
-		"name": "Rope (Hemp)",
-		"quality": "1",
-		"category": "Gear",
-		"load": "1",
-		"cost": "10",
-		"description": "Covers a medium distance. Can be split up into multiple more fragile strings."
-	},
-	{
-		"name": "Shovel",
-		"quality": "1",
-		"category": "Gear",
-		"load": "1",
-		"cost": "10",
-		"description": "You can dig a hole with it!"
-	},
-	{
-		"name": "Wineskin",
-		"quality": "1",
-		"category": "Gear",
-		"load": "1",
-		"cost": "10",
-		"description": "Intoxicates on frequent consumption. Has 5 uses. Spend 1 use to be intoxicated for 1 hour. While being intoxicated, you are poisoned."
-	},
-	{
-		"name": "Oil Flask",
-		"quality": "1",
-		"category": "Gear",
-		"load": "1",
-		"cost": "50",
-		"description": "Worth one unit of light for a lantern.<br/>You can also empty one unit of oil to cover a close area in oil, turning it into difficult terrain.<br/>"
-	},
-	{
-		"name": "Pickaxe",
-		"quality": "1",
-		"category": "Gear",
-		"load": "2",
-		"cost": "50",
-		"description": "Used for mining rock and minerals."
-	},
-	{
-		"name": "Portable Ram",
-		"quality": "1",
-		"category": "Gear",
-		"load": "2",
-		"cost": "50",
-		"description": "Roll Strength + Athletics with this ram to force a door open - very loudly."
-	},
-	{
-		"name": "Camping Kit",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night\u2018s rest for up to two people."
-	},
-	{
-		"name": "Crafting Kit",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night's rest. Roll Agility/Mind + Crafting against 5 + the item\u2019s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged."
-	},
-	{
-		"name": "Lantern",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "50",
-		"description": "Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (only dim light in close distance). The lantern is not considered as Supply."
-	},
-	{
-		"name": "Rope (Silk)",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "50",
-		"description": "Covers a long distance. More delicate than hemp without suffering in strength."
-	},
-	{
-		"name": "Alchemist\u2018s Supplies",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "100",
-		"description": "Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance."
-	},
-	{
-		"name": "Arcane Conduit",
-		"quality": "2",
-		"category": "Gear",
-		"load": "0",
-		"cost": "100",
-		"description": "A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a spell focus to cast arcane spells."
-	},
-	{
-		"name": "Bundle of Maps",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "100",
-		"description": "Contains several maps for a specific region. Has 5 uses. Spend 1 use to consult the maps and gain +1 boon on a Nature roll."
-	},
-	{
-		"name": "Bundle of Scrolls",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "100",
-		"description": "Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or the history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature."
-	},
-	{
-		"name": "Healer\u2018s Kit",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "100",
-		"description": "Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don\u2019t have to make a Supply check for your materials and you automatically succeed on the roll.<br/>"
-	},
-	{
-		"name": "Mystic Talisman",
-		"quality": "2",
-		"category": "Gear",
-		"load": "0",
-		"cost": "100",
-		"description": "A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a spell focus to cast mystical spells."
-	},
-	{
-		"name": "Thieves\u2018 Tools",
-		"quality": "2",
-		"category": "Gear",
-		"load": "1",
-		"cost": "100",
-		"description": "Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you blunder a roll to pick a lock, spend 1 use."
-	},
-	{
-		"name": "Kestros Darts",
-		"quality": "1",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "5",
-		"description": "Worth one unit of ammo for kestros."
-	},
-	{
-		"name": "Throwing Stones",
-		"quality": "1",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "5",
-		"description": "Worth one unit of ammo for slings and slingshots."
-	},
-	{
-		"name": "Blowdarts",
-		"quality": "1",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "10",
-		"description": "Worth one unit of ammo for blowpipes."
-	},
-	{
-		"name": "Primitive Materials",
-		"quality": "1",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "10",
-		"description": "Worth one unit of materials (Quality 1)."
-	},
-	{
-		"name": "Provisions",
-		"quality": "1",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "10",
-		"description": "Worth one unit of provisions."
-	},
-	{
-		"name": "Torch",
-		"quality": "1",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "10",
-		"description": "Worth one unit of light. Emit bright light in close range and dim light in short range when lit. You can also use a lit torch as an improvised weapon dealing 2 fire damage."
-	},
-	{
-		"name": "Arrows",
-		"quality": "1",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "20",
-		"description": "Worth one unit of ammo for bows. Comes with a quiver."
-	},
-	{
-		"name": "Bolts",
-		"quality": "2",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "30",
-		"description": "Worth one unit of ammo for crossbows. Comes with a bolt case."
-	},
-	{
-		"name": "Simple Materials",
-		"quality": "2",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "50",
-		"description": "Worth one unit of materials (Quality 2)."
-	},
-	{
-		"name": "Advanced Materials",
-		"quality": "3",
-		"category": "Supplies",
-		"load": "1",
-		"cost": "500",
-		"description": "Worth one unit of materials (Quality 3)."
-	},
-	{
-		"name": "Adventuring Gear",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes."
-	},
-	{
-		"name": "Brewer\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing."
-	},
-	{
-		"name": "Carpenter\u2018 Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel."
-	},
-	{
-		"name": "Climber\u2018s Kit",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains pitons, boot tips, gloves, and a harness."
-	},
-	{
-		"name": "Cook\u2018s Utensils",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a metal pot, knives, forks, a stirring spoon, and a ladle."
-	},
-	{
-		"name": "Disguise Kit",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains cosmetics, hair dye, small props, and a few different pieces of clothing."
-	},
-	{
-		"name": "Gaming Set",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains all the pieces to play a specific game, such as a board, cards, dice, or tokens."
-	},
-	{
-		"name": "Leatherworker\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps."
-	},
-	{
-		"name": "Mason\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a small trowel, a hammer, a chisel, brushes, and a square."
-	},
-	{
-		"name": "Navigator\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill."
-	},
-	{
-		"name": "Painter\u2018s Supplies",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains an easel, canvas, brushes, charcoal sticks, and a palette."
-	},
-	{
-		"name": "Smith\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains hammers, tongs, charcoal, rags, and a whetstone."
-	},
-	{
-		"name": "Weaver\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains thread, needles, and scraps of cloth."
-	},
-	{
-		"name": "Woodcarver\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "50",
-		"description": "Contains a knife, a gourge, and a small saw."
-	},
-	{
-		"name": "Jeweler\u2018s Tools",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "100",
-		"description": "Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass."
-	},
-	{
-		"name": "Musical Instrument",
-		"quality": "2",
-		"category": "Tools",
-		"load": "1",
-		"cost": "100",
-		"description": "Any common type of string, woodwind, brass, or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourine, or macaras for percussion instruments."
-	},
-	{
-		"name": "Small Trinket",
-		"quality": "1",
-		"category": "Trade Goods",
-		"load": "0",
-		"cost": "50",
-		"description": "Any type of simple but rare item that has some aesthetic, or sentimental value, such as a carved figurine, a silver ring, a glass vial, a brass compass, a leather pouch, a dried flower, a crystal pendant, a feather quill, a ceramic mask, or a wooden flute."
-	},
-	{
-		"name": "Untitled",
-		"quality": "2",
-		"category": "Trade Goods",
-		"load": "0",
-		"cost": "50",
-		"description": "Any type of simple but rare item that has some aesthetic, or sentimental value, such as a carved figurine, a silver ring, a glass vial, a brass compass, a leather pouch, a dried flower, a crystal pendant, a feather quill, a ceramic mask, or a wooden flute."
-	},
-	{
-		"name": "Cart",
-		"quality": "2",
-		"category": "Transportation",
-		"load": "20",
-		"cost": "100",
-		"description": "A small two-wheeled wooden cart holding up to 200 load or up to four medium creatures. Can be drawn by a person or mount."
-	},
-	{
-		"name": "Chariot",
-		"quality": "2",
-		"category": "Transportation",
-		"load": "20",
-		"cost": "500",
-		"description": "A wooden chariot for one or two people to stand in. Requires a mount to pull the chariot."
-	}
+    {
+        "name": "Guard Dog (or young Jaguar, Boar, etc.)",
+        "quality": "1",
+        "category": "Animals",
+        "load": "-",
+        "cost": "50",
+        "description": "A dog or other similar-sized animal that underwent basic training to fight and protect its owner. Can be trained as a tame animal companion, provided you have the Survival talent with the same name."
+    },
+    {
+        "name": "Draft Horse (or Donkey, Mule)",
+        "quality": "1",
+        "category": "Animals",
+        "load": "-",
+        "cost": "100",
+        "description": "A largely untrained horse, fit to hold gear or pull a vehicle but not to be ridden. Can hold up to 20 load. See under Creatures to see its statistics."
+    },
+    {
+        "name": "Camel",
+        "quality": "1",
+        "category": "Animals",
+        "load": "-",
+        "cost": "200",
+        "description": "Can be ridden by up to two medium creatures. For each creature not riding, the camel can hold up to 15 load instead (so max. 30 load)."
+    },
+    {
+        "name": "Antitoxin",
+        "quality": "2",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "20",
+        "description": "Has 5 uses. As an action, spend 1 use to drink from this liquid to cure you of one source of poison affecting you."
+    },
+    {
+        "name": "Acid Vial",
+        "quality": "2",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "50",
+        "description": "Counts as a thrown weapon (bundle (d4), thrown (short)) dealing +3 acid damage as weapon damage."
+    },
+    {
+        "name": "Flammable Paste",
+        "quality": "2",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "50",
+        "description": "Has 5 uses. Spend 1 use as an Action to apply the paste to any weapon or one type of ammo supply. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort (this counts as a temporary weapon enchantment).<br/>Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignoring AV) to the target. The ignited paste lasts for a short duration, after which it is fully burned away.<br/>"
+    },
+    {
+        "name": "Paralyzing Poison (weak)",
+        "quality": "2",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "50",
+        "description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. If they succeed, they are also immune against this poison\u2019s effects for the rest of the scene.<br/>"
+    },
+    {
+        "name": "Weapon Poison (weak)",
+        "quality": "2",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "50",
+        "description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignoring AV) to the target.<br/>"
+    },
+    {
+        "name": "Fire Bomb",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "100",
+        "description": "Counts as a thrown weapon (bundle (d4), thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target."
+    },
+    {
+        "name": "Smoke Bomb",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "100",
+        "description": "Counts as a thrown weapon (bundle (d4), thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light."
+    },
+    {
+        "name": "Heightening Potion",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "0",
+        "cost": "200",
+        "description": "As an Action or by skipping all Movement this turn, you can drink this potion to gain +1 Movement per turn and +1 boon on all attack rolls for a short duration. After this effect ends, roll Strength + Fortitude. On a failure, you suffer one Fatigue. On a blunder, you suffer two Fatigue instead."
+    },
+    {
+        "name": "Potion of Healing (weak)",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "0",
+        "cost": "200",
+        "description": "As an Action or by skipping all Movement this turn, you can drink this potion to regain 8 HP."
+    },
+    {
+        "name": "Paralyzing Poison (decent)",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "500",
+        "description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned and staggered for a short duration. They can roll a hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison\u2019s effects for the rest of the scene.<br/>"
+    },
+    {
+        "name": "Weapon Poison (decent)",
+        "quality": "3",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "500",
+        "description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignoring AV) to the target.<br/>"
+    },
+    {
+        "name": "Potion of Healing (decent)",
+        "quality": "4",
+        "category": "Alchemy",
+        "load": "0",
+        "cost": "500",
+        "description": "Drink this potion as an Action to regain 16 HP."
+    },
+    {
+        "name": "Weapon Poison (strong)",
+        "quality": "4",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "2,000",
+        "description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignoring AV) to the target.<br/>"
+    },
+    {
+        "name": "Paralyzing Poison (strong)",
+        "quality": "5",
+        "category": "Alchemy",
+        "load": "1",
+        "cost": "2,000",
+        "description": "Has 5 uses. Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned and stunned for a short duration. They can roll a very hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune to this poison\u2019s effects for the rest of the scene.<br/>"
+    },
+    {
+        "name": "Potion of Healing (strong)",
+        "quality": "5",
+        "category": "Alchemy",
+        "load": "0",
+        "cost": "2,000",
+        "description": "Drink this potion as an Action to regain 24 HP."
+    },
+    {
+        "name": "Simple Clothes",
+        "quality": "1",
+        "category": "Clothes",
+        "load": "0",
+        "cost": "5",
+        "description": "Simple, functional clothes."
+    },
+    {
+        "name": "Traveler\u2018s Clothes",
+        "quality": "2",
+        "category": "Clothes",
+        "load": "0",
+        "cost": "50",
+        "description": "Sturdy clothes made for harsh weather and long journeys."
+    },
+    {
+        "name": "Fine Clothes",
+        "quality": "3",
+        "category": "Clothes",
+        "load": "1",
+        "cost": "500",
+        "description": "Clothes of a noble or wealthy merchant made from high quality materials."
+    },
+    {
+        "name": "Extravagant Clothes",
+        "quality": "4",
+        "category": "Clothes",
+        "load": "1",
+        "cost": "2,000",
+        "description": "Clothes worthy of a king or queen made from the most exotic materials."
+    },
+    {
+        "name": "Pouch",
+        "quality": "1",
+        "category": "Containers",
+        "load": "0",
+        "cost": "1",
+        "description": "A simple pouch to be carried around by hand or on a belt. Can hold up to 2 load."
+    },
+    {
+        "name": "Linen Bag",
+        "quality": "1",
+        "category": "Containers",
+        "load": "0",
+        "cost": "5",
+        "description": "A rough bag of linen made to hold wheat, fruits, or other items. Can hold up to 5 load."
+    },
+    {
+        "name": "Backpack",
+        "quality": "1",
+        "category": "Containers",
+        "load": "1",
+        "cost": "10",
+        "description": "A simple backpack or satchel. Can hold up to 10 load."
+    },
+    {
+        "name": "Wooden Chest",
+        "quality": "1",
+        "category": "Containers",
+        "load": "5",
+        "cost": "50",
+        "description": "A wooden container for storing small to medium sized objects. Can hold up to 50 load."
+    },
+    {
+        "name": "Traveler\u2019s Backpack",
+        "quality": "2",
+        "category": "Containers",
+        "load": "1",
+        "cost": "50",
+        "description": "A sturdy backpack for longer periods of travel. Can hold up to 15 load."
+    },
+    {
+        "name": "Reinforced Chest",
+        "quality": "2",
+        "category": "Containers",
+        "load": "10",
+        "cost": "500",
+        "description": "A chest reinforced with strips of bronze, brass, or lead. Can hold up to 100 load."
+    },
+    {
+        "name": "Explorer\u2019s Backpack",
+        "quality": "3",
+        "category": "Containers",
+        "load": "1",
+        "cost": "200",
+        "description": "A high-quality backpack made to resist the longest journeys. Can hold up to 20 load."
+    },
+    {
+        "name": "Rope (Hemp)",
+        "quality": "1",
+        "category": "Gear",
+        "load": "1",
+        "cost": "10",
+        "description": "Covers a medium distance. Can be split up into multiple more fragile strings."
+    },
+    {
+        "name": "Shovel",
+        "quality": "1",
+        "category": "Gear",
+        "load": "1",
+        "cost": "10",
+        "description": "You can dig a hole with it!"
+    },
+    {
+        "name": "Wineskin",
+        "quality": "1",
+        "category": "Gear",
+        "load": "1",
+        "cost": "10",
+        "description": "Intoxicates on frequent consumption. Has 5 uses. Spend 1 use to be intoxicated for 1 hour. While being intoxicated, you are poisoned."
+    },
+    {
+        "name": "Oil Flask",
+        "quality": "1",
+        "category": "Gear",
+        "load": "1",
+        "cost": "50",
+        "description": "Worth one unit of light for a lantern.<br/>You can also empty one unit of oil to cover a close area in oil, turning it into difficult terrain.<br/>"
+    },
+    {
+        "name": "Pickaxe",
+        "quality": "1",
+        "category": "Gear",
+        "load": "2",
+        "cost": "50",
+        "description": "Used for mining rock and minerals."
+    },
+    {
+        "name": "Portable Ram",
+        "quality": "1",
+        "category": "Gear",
+        "load": "2",
+        "cost": "50",
+        "description": "Roll Strength + Athletics with this ram to force a door open - very loudly."
+    },
+    {
+        "name": "Camping Kit",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night\u2018s rest for up to two people."
+    },
+    {
+        "name": "Crafting Kit",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night's rest. Roll Agility/Mind + Crafting against 5 + the item\u2019s Quality as the difficulty and make a Supply check for materials. On a success, the item is no longer damaged."
+    },
+    {
+        "name": "Lantern",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "50",
+        "description": "Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (only dim light in close distance). The lantern is not considered as Supply."
+    },
+    {
+        "name": "Rope (Silk)",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "50",
+        "description": "Covers a long distance. More delicate than hemp without suffering in strength."
+    },
+    {
+        "name": "Alchemist\u2018s Supplies",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "100",
+        "description": "Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance."
+    },
+    {
+        "name": "Arcane Conduit",
+        "quality": "2",
+        "category": "Gear",
+        "load": "0",
+        "cost": "100",
+        "description": "A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a spellcasting anchor to cast arcane spells."
+    },
+    {
+        "name": "Bundle of Maps",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "100",
+        "description": "Contains several maps for a specific region. Has 5 uses. Spend 1 use to consult the maps and gain +1 boon on a Nature roll."
+    },
+    {
+        "name": "Bundle of Scrolls",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "100",
+        "description": "Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or the history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature."
+    },
+    {
+        "name": "Healer\u2018s Kit",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "100",
+        "description": "Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don\u2019t have to make a Supply check for your materials and you automatically succeed on the roll.<br/>"
+    },
+    {
+        "name": "Mystic Talisman",
+        "quality": "2",
+        "category": "Gear",
+        "load": "0",
+        "cost": "100",
+        "description": "A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a spellcasting anchor to cast mystical spells."
+    },
+    {
+        "name": "Thieves\u2018 Tools",
+        "quality": "2",
+        "category": "Gear",
+        "load": "1",
+        "cost": "100",
+        "description": "Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you blunder a roll to pick a lock, spend 1 use."
+    },
+    {
+        "name": "Kestros Darts (d6)",
+        "quality": "1",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "5",
+        "description": "A small pouch containing a dozen darts."
+    },
+    {
+        "name": "Throwing Stones (d6)",
+        "quality": "1",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "5",
+        "description": "A small pouch containing polished stones used for slings and slingshots."
+    },
+    {
+        "name": "Blowdarts (d6)",
+        "quality": "1",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "10",
+        "description": "A small pouch containing a dozen darts for blowpipes."
+    },
+    {
+        "name": "Primitive Materials (d6)",
+        "quality": "1",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "10",
+        "description": "A small sack containing primitive crafting materials, such as rough strips of animal hide and coarse plant fibers, jagged shards of flint, bone splinters, and sinew."
+    },
+    {
+        "name": "Rations (d6)",
+        "quality": "1",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "10",
+        "description": "Contains about half a week of rations consisting of dried meat, fruits, and nuts."
+    },
+    {
+        "name": "Torch (d6)",
+        "quality": "1",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "10",
+        "description": "Contains about a full night of torch light.<br/>A lit torch emits bright light in close range and dim light in short range when lit. By making a Supply check for them, you can also use a lit torch as an improvised weapon dealing 2 fire damage.<br/>"
+    },
+    {
+        "name": "Arrows (d8)",
+        "quality": "1",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "20",
+        "description": "Comes with a quiver and with about two dozen arrows."
+    },
+    {
+        "name": "Bolts (d8)",
+        "quality": "2",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "30",
+        "description": "A bolt case containing about two dozen crossbow bolts."
+    },
+    {
+        "name": "Simple Materials (d6)",
+        "quality": "2",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "50",
+        "description": "A small sack containing simple crafting materials, such as strips of leather and cloth, bits of metal, nails, and thread."
+    },
+    {
+        "name": "Advanced Materials (d6)",
+        "quality": "3",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "500",
+        "description": "A well-stocked pouch containing high-quality crafting materials, such as supple tanned leather, fine linen cloth, bronze rods, brass wire, and sturdy twine."
+    },
+    {
+        "name": "Formidable Materials (d6)",
+        "quality": "4",
+        "category": "Supplies",
+        "load": "1",
+        "cost": "2,000",
+        "description": "A lavishly adorned satchel containing formidable crafting materials, such as shimmering dragonhide, ethereal mooncloth, dwarf-steel ingots, electrum wire, and silken spider thread imbued with magical properties."
+    },
+    {
+        "name": "Adventuring Gear",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes."
+    },
+    {
+        "name": "Brewer\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing."
+    },
+    {
+        "name": "Carpenter\u2018 Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel."
+    },
+    {
+        "name": "Climber\u2018s Kit",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains pitons, boot tips, gloves, and a harness."
+    },
+    {
+        "name": "Cook\u2018s Utensils",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a metal pot, knives, forks, a stirring spoon, and a ladle."
+    },
+    {
+        "name": "Disguise Kit",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains cosmetics, hair dye, small props, and a few different pieces of clothing."
+    },
+    {
+        "name": "Gaming Set",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains all the pieces to play a specific game, such as a board, cards, dice, or tokens."
+    },
+    {
+        "name": "Leatherworker\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps."
+    },
+    {
+        "name": "Mason\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a small trowel, a hammer, a chisel, brushes, and a square."
+    },
+    {
+        "name": "Navigator\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill."
+    },
+    {
+        "name": "Painter\u2018s Supplies",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains an easel, canvas, brushes, charcoal sticks, and a palette."
+    },
+    {
+        "name": "Smith\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains hammers, tongs, charcoal, rags, and a whetstone."
+    },
+    {
+        "name": "Weaver\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains thread, needles, and scraps of cloth."
+    },
+    {
+        "name": "Woodcarver\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "50",
+        "description": "Contains a knife, a gourge, and a small saw."
+    },
+    {
+        "name": "Jeweler\u2018s Tools",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "100",
+        "description": "Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass."
+    },
+    {
+        "name": "Musical Instrument",
+        "quality": "2",
+        "category": "Tools",
+        "load": "1",
+        "cost": "100",
+        "description": "Any common type of string, woodwind, brass, or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourine, or macaras for percussion instruments."
+    },
+    {
+        "name": "Small Trinket",
+        "quality": "1",
+        "category": "Trade Goods",
+        "load": "0",
+        "cost": "50",
+        "description": "Any type of simple but rare item that has some aesthetic, or sentimental value, such as a carved figurine, a silver ring, a glass vial, a brass compass, a leather pouch, a dried flower, a crystal pendant, a feather quill, a ceramic mask, or a wooden flute."
+    },
+    {
+        "name": "Untitled",
+        "quality": "2",
+        "category": "Trade Goods",
+        "load": "0",
+        "cost": "50",
+        "description": "Any type of simple but rare item that has some aesthetic, or sentimental value, such as a carved figurine, a silver ring, a glass vial, a brass compass, a leather pouch, a dried flower, a crystal pendant, a feather quill, a ceramic mask, or a wooden flute."
+    },
+    {
+        "name": "Cart",
+        "quality": "2",
+        "category": "Transportation",
+        "load": "-",
+        "cost": "100",
+        "description": "A small two-wheeled wooden cart holding up to 50 load or up to four medium creatures. Can be drawn by a person or mount."
+    },
+    {
+        "name": "Chariot",
+        "quality": "2",
+        "category": "Transportation",
+        "load": "-",
+        "cost": "500",
+        "description": "A wooden chariot to hold up to 20 load or for one or two people to stand in. Requires a mount to pull the chariot."
+    }
 ]
