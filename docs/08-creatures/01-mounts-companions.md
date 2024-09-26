@@ -51,12 +51,7 @@ Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fo
 | STR / AGI / SPI / MND | d4 / d6 / d4 / d4-2 | d6 / d6 / d6 / d4-2 | d8 / d8 / d6 / d4-1 | d10 / d10 / d8 / d4-1 | d12 / d10 / d8 / d4 |
 | Parry / Dodge / Resist | 6 / 8 / 7 | 8 / 8 / 8 | 9 / 9 / 9 | 10 / 10 / 10 | 12 / 10 / 11 |
 | Skill Rank | 0 | 1 | 2 | 3 | 4 |
-| Attack (claw/bite/etc.) | 3/4/5 damage 
-(2 base + 1 weapon) | 6/9/12 damage 
-(3 base + 3 weapon) | 8/12/16 damage 
-(4 base + 4 weapon) | 10/15/20 damage 
-(5 base + 5 weapon) | 12/18/24 damage 
-(6 base + 6 weapon) |
+| Attack (claw/bite/etc.) | 3/4/5 damage<br/>(2 base + 1 weapon) | 6/9/12 damage<br/>(3 base + 3 weapon) | 8/12/16 damage<br/>(4 base + 4 weapon) | 10/15/20 damage<br/>(5 base + 5 weapon) | 12/18/24 damage<br/>(6 base + 6 weapon) |
 | Movement/turn | 1 | 1 | 1 | 2 | 2 |
 
 Each companion also gains additional attacks, abilities, or other modifiers based on its animal type.
