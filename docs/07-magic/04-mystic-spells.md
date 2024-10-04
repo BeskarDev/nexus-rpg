@@ -762,9 +762,9 @@ sidebar_position: 4
 ---|---|---|---|---
  2 | 4 | Hard (10) | Long | concentrate
 
-**Effect** <br/> You conjure a being of pure elemental power. Choose either air, earth, fire, or water.<br/>On a success, an elemental creature of the chosen element appears at any point within range.<br/>Treat the elemental as your companion (see Mounts &amp; Companions for more). It is friendly towards you and your allies while you maintain concentration for this spell.<br/>The elemental has the statistics of a wild animal companion (tier 2). In addition, it gains a companion trait, according to which element you have chosen.<br/>You can dismiss the elemental as a Quick Action during your turn. Otherwise it remains until reduced to 0 HP or for a short duration.<br/>If you lose concentration on this spell, the elemental becomes hostile to you and your allies. Roll initiative for it and treat it as an enemy. You can’t dismiss the elemental anymore and it remains until reduced to 0 HP or after the spell’s duration.<br/> 
+**Effect** <br/> You conjure a being of pure elemental power. Choose either air, earth, fire, or water.<br/>On a success, an elemental creature of the chosen element appears at any point within range.<br/>Treat the elemental as your companion (see Mounts &amp; Companions for more). It is friendly towards you and your allies while you maintain concentration for this spell.<br/>The elemental has the statistics of a tier 2 companion. In addition, it gains a companion trait, according to which element you have chosen.<br/>You can dismiss the elemental as a Quick Action during your turn. Otherwise it remains until reduced to 0 HP or for a short duration.<br/>If you lose concentration on this spell, the elemental becomes hostile to you and your allies. Roll initiative for it and treat it as an enemy. You can’t dismiss the elemental anymore and it remains until reduced to 0 HP or after the spell’s duration.<br/> 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> You conjure an elemental with the statistics of a ferocious animal companion (tier 3) instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> You conjure an elemental with the statistics of a tier 3 companion instead.
 
 >
 
