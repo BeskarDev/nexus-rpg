@@ -98,9 +98,9 @@ sidebar_position: 2
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Dodge | Long | -
+ 2 | 4 | Hard (10) | Long | -
 
-**Effect** <br/> You channel a violent sphere of flame, pulsing with energy. Then throw it towards the target location.<br/>This spell targets every creature in close range of the target location.<br/><strong>Weak.</strong><em> </em>Deals +4 fire damage to all targets. <br/><strong>Strong.</strong> Deals +8 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +12 fire damage to all targets and each of them suffers burning (6) for a short duration. 
+**Effect** <br/> You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll’s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +4 fire damage to all targets. <br/><strong>Strong.</strong> Deals +8 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +12 fire damage to all targets and each of them suffers burning (6) for a short duration. 
 
 ### Frost Wave
 
@@ -251,6 +251,26 @@ sidebar_position: 2
  2 | 4 | Hard (10) | Medium | concentrate,  illusory
 
 **Effect** <br/> You summon the image of an object, creature, or other visible phenomenon, which can be large or smaller. I appears absolutely real, mimicking sounds, smells, movements, and even temperature (tough it won’t deal actual damage).<br/>On a success, your chosen illusion appears at the target location in range.<br/>While you are in range of the illusion, you can use your Quick Action to let the illusion change in any way or move within range. It will follow your instructions as long as it takes, so it can mimic walking to another location or having a conversation with another creature.<br/>Attempts to physically interact with the illusion automatically reveal it to be an illusion. The illusion lasts for up to a short duration, even if you move out of range. You can immediately recast this spell as an Action at the end of the duration to maintain the illusion for a longer time.<br/> 
+
+### Misdirection
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | quick
+
+**Effect** <br/> You alter a creature’s perceived positioning and stance for just a moment to confuse an attacker. Choose any creature in range that is currently being attacked vs. their Parry or Dodge (after the attacker has rolled). On a success, reduce the SL of the attacker by one step (min. blunder). 
+
+### Trap Room
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | illusory
+
+**Effect** <br/> You create a spacial illusion where a deadly trap or hazard springs into being. Target all creatures in close range of the target location.<br/>On a success, each target believes they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. crumbling ceiling or spikes from the ground).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against each target and they are grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) against each target and they are grappled and restrained by the illusory trap.<br/>After a target believes they were pinned by the trap, the illusion lasts for a short duration or until they see through it.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) against each target instead.
+
+>
 
 ### Waking Dream
 
