@@ -185,6 +185,18 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						maxWidth: '47rem',
 					}}
 				>
+        {initialSpell.damage.base != '' && 
+        <TextField
+          size="small"
+          variant="standard"
+          value={spell.properties}
+          fullWidth
+          onChange={(event) =>
+            setSpell((s) => ({ ...s, properties: event.target.value }))
+          }
+          onBlur={() => updateSpell({ properties: spell.properties })}
+          label="Properties"
+        />}
 					<TextField
 						size="small"
 						multiline
@@ -199,19 +211,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						sx={{ maxWidth: '40rem' }}
 					/>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
-
-          {initialSpell.damage.base != '' && 
-					<TextField
-						size="small"
-						variant="standard"
-						value={spell.properties}
-						onChange={(event) =>
-							setSpell((s) => ({ ...s, properties: event.target.value }))
-						}
-						onBlur={() => updateSpell({ properties: spell.properties })}
-						label="Properties"
-						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
-					/>}
 					<AttributeField
 						select
 						size="small"
