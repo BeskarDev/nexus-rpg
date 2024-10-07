@@ -117,7 +117,7 @@ const migrateItems = (data: any): Items => {
 							otherCritical: 0,
 							type: 'physical',
 						}
-					: weapon.damage,
+					: {...weapon.damage, other: weapon.damage.other || 0 },
 		})),
 		items: data.items.map((item) => ({
 			...item,
@@ -130,6 +130,7 @@ const migrateItems = (data: any): Items => {
 const migrateSpells = (data: any): Spells => {
 	return {
 		...data,
+    spellCatalystDamage: data.spellCatalystDamage || 0,
 		spells: data.spells.map((spell) => ({
 			...spell,
 			id: spell.id || crypto.randomUUID(),
@@ -144,7 +145,7 @@ const migrateSpells = (data: any): Spells => {
 							otherCritical: 0,
 							type: 'physical',
 						}
-					: spell.damage,
+					: {...spell.damage, other: spell.damage.other || 0 },
 		})),
 	} as Spells
 }

@@ -183,6 +183,7 @@ export type Spells = {
 		total: number
 		current: number
 	}
+  spellCatalystDamage: number
 	spells: Spell[]
 }
 

@@ -44,6 +44,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
+          px: 0,
 					flexDirection: 'row-reverse',
 					'& .MuiAccordionSummary-content': {
 						display: 'block',
@@ -69,7 +70,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						}
 						onBlur={() => updateItem({ name: item.name })}
 						label="Name"
-						sx={{ maxWidth: { sm: '12rem', xs: '8.25rem' } }}
+						sx={{ maxWidth: { sm: '12rem', xs: '8rem' } }}
 					/>
 					<TextField
 						size="small"
@@ -88,45 +89,50 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							size="small"
 							variant="standard"
 							value={initialItem.container}
-							label="Container"
-							sx={{ maxWidth: '3.5rem' }}
+							label="Storage"
+							sx={{ maxWidth: '3.75rem' }}
 						/>
 					)}
 					{initialItem.container == 'worn' && (
 						<AttributeField
-							disabled
+              disabled
 							size="small"
 							variant="standard"
 							value={initialItem.slot}
 							label="Slot"
-							sx={{ maxWidth: '3.5rem' }}
+							sx={{ maxWidth: '3.75rem' }}
 						/>
 					)}
 					<AttributeField
-						disabled
 						size="small"
 						variant="standard"
 						value={initialItem.cost}
+						onChange={(event) =>
+							updateItem({ cost: Number(event.target.value) })
+						}
 						label="Cost"
 						sx={{ maxWidth: '3.5rem' }}
 					/>
 					<AttributeField
-						disabled
 						size="small"
 						variant="standard"
 						value={initialItem.load}
+            onChange={(event) =>
+              updateItem({ load: Number(event.target.value) })
+            }
 						label="Load"
 						sx={{ maxWidth: '1.5rem' }}
 					/>
 					<AttributeField
 						type="number"
 						size="small"
+						variant="standard"
 						value={initialItem.amount}
 						onChange={(event) =>
 							updateItem({ amount: Number(event.target.value) })
 						}
 						label="Amount"
-						sx={{ maxWidth: '4rem', flexGrow: 0 }}
+						sx={{ maxWidth: '2.5rem', flexGrow: 0 }}
 					/>
 				</Box>
 			</AccordionSummary>
@@ -161,7 +167,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						onChange={(event) =>
 							updateItem({ container: event.target.value as ContainerType })
 						}
-						label="Container"
+						label="Storage"
 						sx={{ maxWidth: '5rem' }}
 					>
 						{containerTypeArray.map((container) => (
@@ -188,31 +194,6 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
-					<AttributeField
-						type="number"
-						size="small"
-						value={initialItem.cost}
-						onChange={(event) =>
-							updateItem({ cost: Number(event.target.value) })
-						}
-						label="Cost"
-						sx={{ maxWidth: '7.5rem' }}
-						inputProps={{
-							sx: {
-								textAlign: 'right',
-							},
-						}}
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={initialItem.load}
-						onChange={(event) =>
-							updateItem({ load: Number(event.target.value) })
-						}
-						label="Load"
-						sx={{ maxWidth: '4rem' }}
-					/>
 					<IconButton
 						size="small"
 						edge="end"

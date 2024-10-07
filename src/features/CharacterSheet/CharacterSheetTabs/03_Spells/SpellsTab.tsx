@@ -24,10 +24,8 @@ import { SpellRow } from './SpellRow'
 export const SpellsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { magicSkill, specialization, focus, spells } = useMemo(
-		() => activeCharacter.spells,
-		[activeCharacter.spells],
-	)
+	const { magicSkill, specialization, focus, spellCatalystDamage, spells } =
+		useMemo(() => activeCharacter.spells, [activeCharacter.spells])
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -71,7 +69,7 @@ export const SpellsTab: React.FC = () => {
 						mx: 'auto',
 						display: 'flex',
 						alignItems: 'center',
-						flexWrap: 'wrap',
+						gap: 1,
 					}}
 				>
 					<TextField
@@ -83,7 +81,7 @@ export const SpellsTab: React.FC = () => {
 							})
 						}
 						label="Magic Skill"
-						sx={{ maxWidth: '7rem' }}
+						sx={{ maxWidth: '8rem' }}
 					/>
 					<TextField
 						variant="standard"
@@ -94,8 +92,37 @@ export const SpellsTab: React.FC = () => {
 							})
 						}
 						label="Specialization"
-						sx={{ maxWidth: '16rem', mr: 1 }}
+						sx={{ mr: 1 }}
 					/>
+				</Box>
+				<Box
+					sx={{
+						mt: 1,
+						mx: 'auto',
+						display: 'flex',
+						alignItems: 'flex-start',
+						flexWrap: 'wrap',
+						gap: 1,
+					}}
+				>
+					<AttributeField
+						size="small"
+						type="number"
+						value={spellCatalystDamage}
+						onChange={(event) =>
+							updateCharacter({
+								spells: { spellCatalystDamage: Number(event.target.value) },
+							})
+						}
+						label="Spell Catalyst"
+						helperText=" "
+						sx={{
+							maxWidth: '5.5rem',
+						}}
+					/>
+					<Tooltip title="bonus damage per SL from your Spell Catalyst">
+						<HelpOutline fontSize="small" sx={{ mt: 1, mb: 0.75 }} />
+					</Tooltip>
 					<AttributeField
 						type="number"
 						value={focus.current}
@@ -107,7 +134,8 @@ export const SpellsTab: React.FC = () => {
 						label="Current Focus"
 						helperText=""
 						sx={{
-							maxWidth: '7rem',
+							ml: 'auto',
+							maxWidth: '6rem',
 							'& .MuiOutlinedInput-root': {
 								'& .MuiOutlinedInput-notchedOutline': {
 									borderWidth: '2px',
@@ -116,6 +144,7 @@ export const SpellsTab: React.FC = () => {
 						}}
 					/>
 					<AttributeField
+						size="small"
 						type="number"
 						value={focus.total}
 						onChange={(event) =>
@@ -124,10 +153,11 @@ export const SpellsTab: React.FC = () => {
 							})
 						}
 						label="Max. Focus"
-						sx={{ maxWidth: '6rem', mr: 1 }}
+						helperText=" "
+						sx={{ maxWidth: '5rem', mr: 1 }}
 					/>
 					<Tooltip title="(SPI/MND - 2) + (2 * Mysticism/Arcana)">
-						<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+						<HelpOutline fontSize="small" sx={{ mt: 1, mb: 0.75 }} />
 					</Tooltip>
 				</Box>
 

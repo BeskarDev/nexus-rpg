@@ -38,6 +38,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
+          px: 0,
 					flexDirection: 'row-reverse',
 					'& .MuiAccordionSummary-content': {
 						display: 'block',
@@ -63,7 +64,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						onBlur={() => updateWeapon({ name: weapon.name })}
 						label="Name"
 						sx={{
-							maxWidth: { sm: '12rem', xs: '8rem' },
+							maxWidth: { sm: '12rem', xs: '7.5rem' },
 						}}
 					/>
 					<DamageFields

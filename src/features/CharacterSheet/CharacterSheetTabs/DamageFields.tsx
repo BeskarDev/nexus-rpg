@@ -31,8 +31,8 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 }) => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
-	const { strength, agility, spirit, mind } = useAppSelector(
-		(state) => state.characterSheet.activeCharacter.statistics,
+	const { statistics: {strength, agility, spirit, mind}, spells: {spellCatalystDamage} } = useAppSelector(
+		(state) => state.characterSheet.activeCharacter,
 	)
 
 	const baseDamage: number = useMemo(() => {
@@ -53,15 +53,15 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 	}, [damage.base, strength, agility, spirit, mind])
 
 	const weakDamage = useMemo(
-		() => baseDamage + damage.weapon + damage.other + damage.otherWeak,
+		() => baseDamage + damage.weapon + (type == 'spell' ? spellCatalystDamage : 0) + damage.other + damage.otherWeak,
 		[damage, baseDamage],
 	)
 	const strongDamage = useMemo(
-		() => baseDamage + damage.weapon * 2 + damage.other + damage.otherStrong,
+		() => baseDamage + damage.weapon * 2 + (type == 'spell' ? spellCatalystDamage * 2 : 0) + damage.other + damage.otherStrong,
 		[damage, baseDamage],
 	)
 	const criticalDamage = useMemo(
-		() => baseDamage + damage.weapon * 3 + damage.other + damage.otherCritical,
+		() => baseDamage + damage.weapon * 3 + (type == 'spell' ? spellCatalystDamage * 3 : 0) + damage.other + damage.otherCritical,
 		[damage, baseDamage],
 	)
 
@@ -90,7 +90,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 					value={`${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`}
 					label="Damage"
 					sx={{
-						maxWidth: { sm: '7rem', xs: '5.25rem' },
+						maxWidth: '6.5rem',
 					}}
 				/>
 				<IconButton size="small" onClick={handleClick} sx={{ ml: -0.5 }}>

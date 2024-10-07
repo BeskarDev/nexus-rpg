@@ -71,6 +71,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
+          px: 0,
 					flexDirection: 'row-reverse',
 					'& .MuiAccordionSummary-content': {
 						display: 'block',
@@ -108,13 +109,15 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						{spellCost}
 					</Avatar>
 					<AttributeField
-						disabled
 						size="small"
 						variant="standard"
 						value={initialSpell.rank}
+						onChange={(event) =>
+							updateSpell({ rank: Number(event.target.value) })
+						}
 						label="Rank"
 						sx={{
-							maxWidth: '2rem',
+							maxWidth: '1.5rem',
 							flexGrow: 0,
 							'& .MuiOutlinedInput-root': {
 								'& .MuiOutlinedInput-notchedOutline': {
@@ -132,14 +135,14 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						}
 						onBlur={() => updateSpell({ name: spell.name })}
 						label="Name"
-						sx={{ maxWidth: '10rem', flexGrow: 1 }}
+						sx={{ maxWidth: '9rem', flexGrow: 1 }}
 					/>
 
 					<AttributeField
 						disabled
 						size="small"
 						variant="standard"
-						value={spell.target}
+						value={initialSpell.target}
 						label="Target"
 						sx={{ maxWidth: '3rem', flexGrow: 0 }}
 					/>
@@ -147,10 +150,18 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						disabled
 						size="small"
 						variant="standard"
-						value={spell.range}
+						value={initialSpell.range}
 						label="Range"
 						sx={{ maxWidth: '4rem', flexGrow: 0 }}
 					/>
+          {initialSpell.damage.base != '' ? 
+					<DamageFields
+						type="spell"
+						damage={initialSpell.damage}
+						updateDamage={(update) =>
+							updateSpell({ damage: { ...initialSpell.damage, ...update } })
+						}
+					/> : 
 					<TextField
 						size="small"
 						variant="standard"
@@ -161,7 +172,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						onBlur={() => updateSpell({ properties: spell.properties })}
 						label="Properties"
 						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
-					/>
+					/>}
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -188,35 +199,23 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						sx={{ maxWidth: '40rem' }}
 					/>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
-					<DamageFields
-						type="spell"
-						damage={initialSpell.damage}
-						updateDamage={(update) =>
-							updateSpell({ damage: { ...initialSpell.damage, ...update } })
-						}
-					/>
-					<AttributeField
-						type="number"
+
+          {initialSpell.damage.base != '' && 
+					<TextField
 						size="small"
-						value={initialSpell.rank}
+						variant="standard"
+						value={spell.properties}
 						onChange={(event) =>
-							updateSpell({ rank: Number(event.target.value) })
+							setSpell((s) => ({ ...s, properties: event.target.value }))
 						}
-						label="Rank"
-						sx={{
-							maxWidth: '4rem',
-							flexGrow: 0,
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
-							},
-						}}
-					/>
+						onBlur={() => updateSpell({ properties: spell.properties })}
+						label="Properties"
+						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
+					/>}
 					<AttributeField
 						select
 						size="small"
-						value={spell.target}
+						value={initialSpell.target}
 						onChange={(event) =>
 							updateSpell({ target: event.target.value as TargetType })
 						}
@@ -232,7 +231,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 					<AttributeField
 						select
 						size="small"
-						value={spell.range}
+						value={initialSpell.range}
 						onChange={(event) =>
 							updateSpell({ range: event.target.value as RangeType })
 						}
