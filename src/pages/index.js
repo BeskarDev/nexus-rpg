@@ -72,15 +72,13 @@ export default function Home() {
 				<div className={clsx(styles.contentContainer)}>
 					<div style={{ paddingTop: '0.5rem', display: 'flex', gap: '0.5rem' }}>
 						<WarningAmberIcon />
-						<h3>Disclaimer for Play</h3>
+						<h3>Disclaimer</h3>
 					</div>
 					<p>
-						While this game has been in development for the last 4 years, it is
-						still under active development and only has been playtested for a
-						few times. All rules, player options, and other content are subject
-						to change. The content of this game will still change frequently and
-						without notice (though I try to list all major changes in the github
-						release notes).
+						The rules of this game are still incomplete and everything is subject to change!
+					</p>
+					<p>
+						Nexus RPG is a single-person passion project and has been in developement for the last 5 years. As only a close group of friends has yet played this game regurily, not every rule or character option has had the chance to be thorouly playtested.
 					</p>
 				</div>
 			</header>
