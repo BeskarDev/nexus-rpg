@@ -15,8 +15,8 @@ Welcome to Nexus RPG. A sword and sorcery TTRPG with wide mechanical options set
 
 In this game, you will play as a daring group of adventurers with individual skill sets. Choose freely from different skills, which each provide different sets of abilities, to craft your character.
 
-## Disclaimer
+> **Disclaimer**<br/>
+> The rules of this game are still incomplete and everything is subject to change!<br/>
+> Nexus RPG is a single-person passion project and has been in developement for the last 5 years. As only a close group of friends has yet played this game regurily, not every rule or character option has had the chance to be thorouly playtested.
+> 
 
-While this game has been in development for the last 4 years, it is still under active development and only has been playtested for a few times.
-All rules, player options, and other content are subject to change.
-The content of this game will still change frequently and without notice (though I try to list all major changes in the github release notes).
