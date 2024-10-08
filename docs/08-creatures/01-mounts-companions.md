@@ -164,7 +164,7 @@ Elemental companions are summoned from the primal planes, either via a binding m
 - **Defenses.** +1 Parry, -1 Dodge
 - **Skills.** Fighting (-1 rank), Fortitude
 - **Immunities.** poison damage, being poisoned, bleeding, prone, unconscious
-- **Resistances.** physical (except from crush weapons)
+- **Resistances.** psychic
 - **Weaknesses.** blast
 - **Attacks**
     - **Slam** (*crush*). On a strong or critical hit, the target falls prone.
