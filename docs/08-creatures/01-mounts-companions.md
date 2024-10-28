@@ -66,6 +66,7 @@ Animal traits represent the general family of animal your companion is associate
 
 #### **Ape**
 
+- TODO
 - **Attributes.** Increase Mind by one step.
 - **Skills.** Athletics, Fighting (-1 rank), Perception, Survival
 - **Attacks**
@@ -76,37 +77,52 @@ Animal traits represent the general family of animal your companion is associate
 
 #### **Bat**
 
+- TODO
 - **Abilities**
     - **Flying.** This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
 
 #### **Bear**
 
+- TODO
 - **HP.** +10 HP.
 - **Skills.** Athletics, Fighting (-1 rank), Fortitude, Perception, Survival
 
 #### **Bird**
 
+- TODO
 - **Abilities**
     - **Flying.** This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
 
 #### **Boar**
 
+- TODO
+
 #### **Bull**
+
+- TODO
 
 #### **Camel**
 
+- TODO
+
 #### **Canine**
+
+- TODO
 
 #### **Cat**
 
-- **Defenses.** -1 Parry, +1 Dodge.
-- **Attributes.** -1d Spirit.
-- **Skills.** Cunning equal to Tier.
+- **Skills.** Athletics, Cunning, Fighting (-1 rank), Perception, Survival
+- **Attacks**
+    - **Bite** (*crush*). On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this attack can’t be used to attack any other target.
+    - **Claw** (*light, slash*). Deals -1 weapon damage (min. 1).
 - **Abilities**
     - **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
+    - **Night Vision.** This creature can see one range category further from sources of bright and dim light.
+    - **Pounce.** If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone.
 
 #### **Crab**
 
+- TODO
 - **HP.** +10 HP.
 - **AV.** + Tier (natural heavy).
 - **Defenses.** +1 Parry, -1 Dodge.
@@ -115,15 +131,24 @@ Animal traits represent the general family of animal your companion is associate
 
 #### **Frog**
 
+- TODO
+
 #### **Hippopotamus**
+
+- TODO
 
 #### **Horse**
 
+- TODO
+
 #### **Lizard**
 
+- TODO
 - **AV.** + Tier (natural heavy)
 
 #### **Raven**
+
+- TODO
 
 **Abilities**
 
@@ -131,11 +156,31 @@ Animal traits represent the general family of animal your companion is associate
 
 #### **Rodent**
 
+- TODO
+
+#### **Scorpion**
+
+- **HP.** +10 HP.
+- **AV.** + Tier (natural heavy).
+- **Skills.** Athletics, Cunning, Fighting (-1 rank), Fortitude, Perception, Perception
+- **Attacks**
+    - **Pincer** (*crush, light*). Deals -1 weapon damage (min. 1). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that pincer can’t be used to attack any other target.
+    - **Stinger** (*pierce*). If this creature is Large or larger, this attack has reach. Deals poison damage. On a strong or critical hit, the target is also poisoned for a short duration. While poisoned by this attack, the target also takes lasting poison damage equal to this attack’s weapon damage. They can roll Strength + Fortitude at the end of their turns to end the effect early.
+- **Abilities**
+    - **Blindsight (short).** This creature can perceive it‘s surroundings at short range without relying on sight.
+    - **Burrow.** This creature can move through loose earth or mud as in difficult terrain.
+
 #### **Snake**
+
+- TODO
 
 #### **Spider**
 
+- TODO
+
 #### **Stag**
+
+- TODO
 
 ### Elemental Traits
 
@@ -146,15 +191,15 @@ Elemental companions are summoned from the primal planes, either via a binding m
 - **Attributes.** -1d Strength, +1d Agility
 - **Defenses.** +1 Dodge.
 - **Skills.** Athletics, Fighting (-1 rank), Perception
-- **Immunities.** poison damage, being poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
+- **Immunities.** poison damage, poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
 - **Resistances.** blast, lightning, physical (except from water)
 - **Weaknesses.** fire
 - **Attacks**
     - **Slam** (*agile, crush*). On a strong or critical hit, the target is pushed close.
     - **Lightning Strike** (*thrown (medium)*). Deals lightning damage with -1 weapon damage (min. 1). On a strong or critical hit, the target is briefly staggered.
 - **Abilities**
-    - **Flying (hover).** This creature can fly with +1 Movement per turn.
-    - **Air Form.** This creature can move through any space as narrow as a keyhole.
+    - **Flying (hover).** This creature can fly freely by hovering in the air with +1 Movement per turn.
+    - **Air Form.** This creature can move through any space as narrow as one centimetre.
 
 #### **Earth**
 
@@ -163,7 +208,7 @@ Elemental companions are summoned from the primal planes, either via a binding m
 - **Attributes.** +1d Strength, -1d Agility
 - **Defenses.** +1 Parry, -1 Dodge
 - **Skills.** Fighting (-1 rank), Fortitude
-- **Immunities.** poison damage, being poisoned, bleeding, prone, unconscious
+- **Immunities.** poison damage, poisoned, bleeding, prone, unconscious
 - **Resistances.** psychic
 - **Weaknesses.** blast
 - **Attacks**
@@ -178,7 +223,7 @@ Elemental companions are summoned from the primal planes, either via a binding m
 - **Attributes.** -1d Strength, +1d Agility
 - **Defenses.** +1 Dodge.
 - **Skills.** Fighting (-1 rank), Fortitude, Perception
-- **Immunities.** poison damage, being poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
+- **Immunities.** poison damage, poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
 - **Resistances.** acid, physical (except from water)
 - **Weaknesses.** frost, damage from water
 - **Attacks**
@@ -190,7 +235,7 @@ Elemental companions are summoned from the primal planes, either via a binding m
 #### **Water**
 
 - **Skills.** Fighting (-1 rank), Fortitude
-- **Immunities.** poison damage, being poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
+- **Immunities.** poison damage, poisoned, bleeding, grappled, paralyzed, prone, restrained, unconscious
 - **Resistances.** physical
 - **Weaknesses.** frost
 - **Attacks**
@@ -198,8 +243,8 @@ Elemental companions are summoned from the primal planes, either via a binding m
     - **Whelm** (*crush*)**.** This melee attack can only target creatures of the same or smaller Size than this creature. If targeting smaller creatures in melee range, you can target multiple, where two creatures of a particular Size count as one creature of one Size larger (for example, two small goblins count as one medium creature). The combined Size of all target’s can’t exceed this creature’s Size.
     Deals -1 weapon damage (min. 1). On a hit, each target is grappled, restrained, and suffocating until this creature uses another Action than Whelm on a following turn or is moved out of melee range. On a failure, the target is pushed close.
 - **Abilities**
-    - **Aquatic (fast).** This creature is immune to drowning. This creature can swim with +2 Movement per turn.
-    - **Water Form.**  This creature can move through any space as narrow as a keyhole. If this creature suffers frost damage, it is briefly slowed.
+    - **Aquatic (fast).** This creature is immune to drowning and can swim with normal Movement. Also, this creature can swim with +2 Movement per turn.
+    - **Water Form.**  This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, it is briefly slowed.
 
 ### Undead Traits
 
@@ -214,6 +259,55 @@ Elemental companions are summoned from the primal planes, either via a binding m
 ### Draconic Traits
 
 #### **Fire**
+
+### Aberration Traits
+
+#### **Chuul**
+
+- **HP.** +10 HP
+- **AV.** + Tier (natural heavy)
+- **Attributes.** +1d Strength, -1d Agility
+- **Defenses.** +1 Parry, -1 Dodge
+- **Skills.** Fighting (-1 rank), Fortitude, Perception
+- **Immunities.** poison damage, poisoned
+- **Resistances.** psychic
+- **Weaknesses.** blast
+- **Attacks**
+    - **Pincer** (*crush, light*). Deals -1 weapon damage (min. 1). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that pincer can’t be used to attack any other target and this creature can use it’s Quick Action on it’s turn to make an attack with it’s Tentacles with +1 boon against the target.
+    - **Tentacles** (*pierce*). This attack deals no damage. On a hit, the target is poisoned for a short duration. While poisoned by this attack, the target is also stunned. They can roll Strength + Fortitude at the end of their turns to end the effect early.
+- **Abilities**
+    - **Aquatic.** This creature is immune to drowning and can swim with normal Movement.
+    - **Magic Sense (long)**. This creature can intuitively sense sources of magic within long range.
+    - **Night Vision.** This creature can see one range category further from sources of bright and dim light.
+
+#### **Grell**
+
+- **Skills.** Cunning, Fighting (-1 rank), Perception
+- **Immunities.** lightning damage, blinded, prone
+- **Attacks**
+    - **Beak** (*crush*).
+    - **Tentacles** (*pierce*). If this creature is Medium or larger, this attack has reach. On a strong or critical hit, the target is grappled and poisoned for a short duration. While poisoned by this attack, the target is also stunned. They can roll Strength + Fortitude at the end of their turns to end the effect early. While grappling, this creature can use it’s Quick Action on it’s turn to make a Beak attack with +1 boon against the target.
+- **Abilities**
+    - **Blindsight (medium).** This creature can perceive it‘s surroundings at medium range without relying on sight.
+    - **Flying (hover).** This creature can fly freely by hovering in the air.
+
+#### **Floating Eye**
+
+- **Attributes.** -1d Strength, +1d Agility
+- **Defenses.** -1 Parry, +1 Dodge
+- **Skills.** Arcana (-1 rank), Cunning, Fighting (-1 rank), Perception
+- **Immunities.** prone
+- **Weaknesses.** radiant
+- **Attacks**
+    - **Bite** (*crush*). Deals -1 weapon damage (min. 1).
+    - **Eye Rays.** This creature can shoot two randomly chosen arcane eye rays (roll 1d4 per eye ray). Choose one or two targets within medium range before rolling the eye rays effects. Roll Agility + Arcana once per eye ray and apply the effects:
+    **1. Dazing Ray.** Compare the result vs. Resist. On a success, the target is charmed and distracted for a short duration by this creature.
+    **2. Fear Ray.** Compare the result vs. Resist. On a success, the target is briefly frightened.
+    **3. Frost Ray.** Treat the roll as a range attack vs. Dodge. Deals frost damage with +1 weapon damage.
+    **4. Telekinetic Ray.** Compare the result vs. Parry. On a success, the target is pushed a short distance away from this creature. If the target is of smaller Size than this creature, this creature can move the target freely in any direction for a short distance instead.
+- **Abilities**
+    - **Darkvision (medium/long).** This creature can see at medium range in absolute darkness as in bright light and up to a long distance as in dim light.
+    - **Flying (hover).** This creature can fly freely by hovering in the air.
 
 ## Riding an animal companion
 

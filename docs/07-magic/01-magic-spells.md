@@ -20,7 +20,7 @@ Being an arcanist was, for the longest time, considered to be a heretical mutati
 - Your Focus is equal to (Mind - 2) + (2 x Arcana).
 - Choose your first discipline and learn two rank 0 spells for it.
 - Whenever you gain a rank in Arcana, learn two new spells of equal or lower rank for any discipline you learned or adopt a new discipline and learn one rank 0 spell for it.
-- You must be holding an arcane conduit as a spellcasting anchor in your hand to cast arcane spells.
+- You must be holding an arcane conduit as a Spell Catalyst in your hand to cast arcane spells.
 
 **Arcane Origin**
 
@@ -50,7 +50,7 @@ Practicing mystic magic can take many forms. Devoting yourself to a god and chan
 - Choose your traditions in one of two ways (this can’t be changed afterwards):
     - **Balance.** Choose any two traditions and learn two spells from among them. Whenever you gain a rank in Mysticism, learn two new spells of equal or lower rank for any of your traditions.
     - **Devotion.** Choose one tradition and learn three spells from it. Whenever you gain a rank in Mysticism, learn three new spells of equal or lower rank for your tradition.
-- You must be holding a mystic talisman as a spellcasting anchor in your hand to cast mystic spells.
+- You must be holding a mystic talisman as a Spell Catalyst in your hand to cast mystic spells.
 
 **Mystic Pact**
 

@@ -452,7 +452,7 @@ sidebar_position: 4
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Medium | -
 
-**Effect** <br/> You conjure a short spray of acid, burning through the target’s surface.<br/><strong>Weak.</strong> Deal +2 acid damage and ignore 1/2 the target’s AV.<br/><strong>Strong.</strong> Deal +4 acid damage and ignore 1/2 the target’s AV.<br/><strong>Critical.</strong> Deal +6 acid damage and ignore 1/2 the target’s AV. 
+**Effect** <br/> You conjure a short spray of acid, burning through the target’s surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignoring 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignoring 1/2 AV). 
 
 ### Bestial Adaptation
 
@@ -729,6 +729,18 @@ sidebar_position: 4
 **Effect** <br/> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects:<br/>- You gain resistance against blast, frost, and lightning damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignoring AV).<br/> 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignoring AV) instead.
+
+>
+
+### Storm Shield
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> You quickly conjure a personal barrier of swirling air. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you can defend with your Resist instead of Parry or Dodge until your next turn. When a melee attack against you fails, the attacker takes +0 blast damage (ignoring AV). If a ranged attack against you fails, you can divert the attack towards another creature in close range. If the ranged attack blunders, you can even divert it back to the attacker. When diverting an attack to another creature, it automatically hits with a weak success.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2) </strong>Failed melee attacks inflict +2 blast damage (ignoring AV) instead. Diverted ranged attacks deal +2 damage.<br/><strong>(Rank 3) </strong>Failed melee attacks inflict +4 blast damage (ignoring AV) instead. Diverted ranged attacks deal +4 damage.
 
 >
 
@@ -1041,6 +1053,14 @@ sidebar_position: 4
  2 | 4 | vs. Resist | Medium | concentrate
 
 **Effect** <br/> You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against every target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome and fall prone.<br/>Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can’t enter.<br/>Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration.<br/> 
+
+### Slow
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Long | concentrate
+
+**Effect** <br/> You partially immobilize a group of creatures. Choose a close area within range and target up to six creatures within the area.<br/>On a success, any target is stunned for a short duration. At the end of their turns, they can roll Spirit + Fortitude to end the effect early.<br/> 
 
 ### Spell-breaking Wave
 

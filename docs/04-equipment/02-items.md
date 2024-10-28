@@ -44,13 +44,13 @@ Name | Quality | Load | Cost | Description
 ## Containers 
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
-**Pouch**  | 1  | 0  | 1  | A simple pouch to be carried around by hand or on a belt. Can hold up to 2 load.
+**Pouch**  | 1  | 0  | 1  | A simple pouch to be carried around by hand or on a belt. Can hold up to 1 load.
 **Linen Bag**  | 1  | 0  | 5  | A rough bag of linen made to hold wheat, fruits, or other items. Can hold up to 5 load.
-**Backpack**  | 1  | 1  | 10  | A simple backpack or satchel. Can hold up to 10 load.
+**Backpack**  | 1  | 1  | 10  | A simple backpack or satchel. If this is your first backpack, it takes up 0 load instead.
 **Wooden Chest**  | 1  | 5  | 50  | A wooden container for storing small to medium sized objects. Can hold up to 50 load.
-**Traveler’s Backpack**  | 2  | 1  | 50  | A sturdy backpack for longer periods of travel. Can hold up to 15 load.
+**Traveler’s Backpack**  | 2  | 1  | 50  | A sturdy backpack for longer periods of travel. If this is your first backpack, it takes up 0 load instead and it adds +2 to your carry capacity limits.
 **Reinforced Chest**  | 2  | 10  | 500  | A chest reinforced with strips of bronze, brass, or lead. Can hold up to 100 load.
-**Explorer’s Backpack**  | 3  | 1  | 200  | A high-quality backpack made to resist the longest journeys. Can hold up to 20 load.
+**Explorer’s Backpack**  | 3  | 1  | 200  | A high-quality backpack made to resist the longest journeys. If this is your first backpack, it takes up 0 load instead and it adds +4 to your carry capacity limits.
 
 
 ## Gear 
@@ -67,11 +67,11 @@ Name | Quality | Load | Cost | Description
 **Lantern**  | 2  | 1  | 50  | Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (only dim light in close distance). The lantern is not considered as Supply.
 **Rope (Silk)**  | 2  | 1  | 50  | Covers a long distance. More delicate than hemp without suffering in strength.
 **Alchemist‘s Supplies**  | 2  | 1  | 100  | Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients. Has 5 uses. Spend 1 use instead of making a Supply check for materials when crafting some medicinal or alchemical substance.
-**Arcane Conduit**  | 2  | 0  | 100  | A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spellcasting anchor to cast arcane spells.
+**Arcane Conduit**  | 2  | 0  | 100  | A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a Spell Catalyst to cast arcane spells.
 **Bundle of Maps**  | 2  | 1  | 100  | Contains several maps for a specific region. Has 5 uses. Spend 1 use to consult the maps and gain +1 boon on a Nature roll.
 **Bundle of Scrolls**  | 2  | 1  | 100  | Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or the history of a region. Has 5 uses. Spend 1 use to consult the scrolls and gain +1 boon on a roll with either Education, Lore, or Nature.
 **Healer‘s Kit**  | 2  | 1  | 100  | Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Has 5 uses. Spend 1 use when you attempt to treat a Wound. You don’t have to make a Supply check for your materials and you automatically succeed on the roll.<br/>
-**Mystic Talisman**  | 2  | 0  | 100  | A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a spellcasting anchor to cast mystical spells.
+**Mystic Talisman**  | 2  | 0  | 100  | A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, …). Can be used as a Spell Catalyst to cast mystical spells.
 **Thieves‘ Tools**  | 2  | 1  | 100  | Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers. Has 5 uses. Each time you blunder a roll to pick a lock, spend 1 use.
 
 
@@ -124,4 +124,3 @@ Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Cart**  | 2  | - | 100  | A small two-wheeled wooden cart holding up to 50 load or up to four medium creatures. Can be drawn by a person or mount.
 **Chariot**  | 2  | - | 500  | A wooden chariot to hold up to 20 load or for one or two people to stand in. Requires a mount to pull the chariot.
-
