@@ -23,7 +23,7 @@ A masterwork weapon costs 3 x base item cost + 200 coins (extra costs for specia
 
 Masterwork weapons increase their normal weapon damage by 1 (enhancement bonus).
 
-### Masterwork Spell Anchor
+### Masterwork Spell Catalyst
 
 Masterwork arcane conduits or mystic talismans increase your spell damage by +1/+2/+3 (enhancement bonus).
 
