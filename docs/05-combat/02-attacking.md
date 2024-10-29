@@ -31,7 +31,8 @@ To attack with a melee weapon or spell you have to be in melee range of your tar
 
 ### Unarmed Attacks
 
-When you have nothing to defend yourself with, you can still throw a punch. Fighting unarmed doesn’t count as wielding a weapon, and reduces your base Parry to 6. When you hit with an unarmed attack, you only deal your base damage but no weapon damage (you can still benefit from other effects that increase your damage).
+When you have nothing to defend yourself with, you can still throw a punch!
+Unarmed attacks are made with Strength + Fighting and have 1 weapon damage (but no further weapon properties). Unarmed attacks don’t count as wielding a weapon in regards to Combat Arts or other abilities, unless you use your natural weapons or have the Pugilist talent.
 
 ### Non-lethal Attacks
 
@@ -108,7 +109,7 @@ When attacking, you have access to different options through weapon properties o
 
 ### Dual-wielding
 
-While you are wielding two light weapons, you can attack with both of them in the same Action. Each weapon attack counts as its own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks, unless you use natural weapons that are part of your body (e.g. a lionfolk’s claws or any monster’s natural attacks).
+While you are wielding two light weapons, you can attack with both of them in the same Action. Each weapon attack counts as its own attack, for which you can choose the same or different targets. You suffer +1 bane on these attacks, unless you use unarmed attacks or natural weapons that are part of your body (e.g. a lionfolk’s claws or any monster’s natural attacks).
 
 ### Attacking multiple targets
 
