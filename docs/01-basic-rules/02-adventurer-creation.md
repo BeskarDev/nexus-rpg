@@ -27,8 +27,8 @@ When creating a new adventurer, follow the steps below:
     - If you learned Arcana or Mysticism, you learn spells for the learned skill. See the Magic section for more details.
 7. **Choose your Equipment**
     - Starting Items:
-        - A backpack (holds up to 10 load, 1 load, 10 coins)
-        - Two pouches (each holds up to 2 load, 0 load, 1 coin)
+        - A backpack (0 load (only first one, normally 1 load), 10 coins)
+        - Two pouches (can hold up to 1 load, 0 load, 1 coin)
         - Traveler‘s Clothes (0 load, 50 coins)
         - Hemp Rope (covers a medium distance, 1 load, 10 coins)
         - Camping kit (provides shelter for a night‘s rest for up to two people, 1 load, 50 coins)
@@ -62,7 +62,7 @@ For a playgroup that already has played Nexus RPG for a while and doesn‘t want
 This game assumes a group of four adventurers to band together. If your playgroup consists of fewer people than that, consider granting each adventurer one more skill at the XP cap of your chosen starting tier for each player they are below four.
 
 > For example, when playing with a group of two people and no advanced starting tier, they may each choose two more of their skills to invest 2 XP each into. This would leave them with five skills which have 2 XP invested into each of them instead of the normal three skills.
-> 
+>
 
 ## Adventurer Sheet
 
