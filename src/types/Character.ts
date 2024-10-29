@@ -195,6 +195,7 @@ export type Spell = {
 	target: TargetType
 	range: RangeType
 	properties: string
+  dealsDamage: boolean
 	damage: Damage
 	effect: string
 }

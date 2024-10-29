@@ -134,6 +134,7 @@ const migrateSpells = (data: any): Spells => {
 		spells: data.spells.map((spell) => ({
 			...spell,
 			id: spell.id || crypto.randomUUID(),
+      dealsDamage: Boolean(spell.damage.base),
 			damage:
 				spell.damage === undefined
 					? {

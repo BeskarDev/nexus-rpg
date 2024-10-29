@@ -267,6 +267,7 @@ export const {
 				target: '',
 				range: '',
 				properties: '',
+        dealsDamage: false,
 				damage: {
 					base: '',
 					weapon: 0,

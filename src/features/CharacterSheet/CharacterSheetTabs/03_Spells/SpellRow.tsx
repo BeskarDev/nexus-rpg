@@ -5,6 +5,8 @@ import {
 	Avatar,
 	Box,
 	Button,
+	Checkbox,
+	FormControlLabel,
 	IconButton,
 	MenuItem,
 	TextField,
@@ -71,7 +73,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
-          px: 0,
+					px: 0,
 					flexDirection: 'row-reverse',
 					'& .MuiAccordionSummary-content': {
 						display: 'block',
@@ -154,25 +156,27 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						label="Range"
 						sx={{ maxWidth: '4rem', flexGrow: 0 }}
 					/>
-          {initialSpell.damage.base != '' ? 
-					<DamageFields
-						type="spell"
-						damage={initialSpell.damage}
-						updateDamage={(update) =>
-							updateSpell({ damage: { ...initialSpell.damage, ...update } })
-						}
-					/> : 
-					<TextField
-						size="small"
-						variant="standard"
-						value={spell.properties}
-						onChange={(event) =>
-							setSpell((s) => ({ ...s, properties: event.target.value }))
-						}
-						onBlur={() => updateSpell({ properties: spell.properties })}
-						label="Properties"
-						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
-					/>}
+					{initialSpell.dealsDamage ? (
+						<DamageFields
+							type="spell"
+							damage={initialSpell.damage}
+							updateDamage={(update) =>
+								updateSpell({ damage: { ...initialSpell.damage, ...update } })
+							}
+						/>
+					) : (
+						<TextField
+							size="small"
+							variant="standard"
+							value={spell.properties}
+							onChange={(event) =>
+								setSpell((s) => ({ ...s, properties: event.target.value }))
+							}
+							onBlur={() => updateSpell({ properties: spell.properties })}
+							label="Properties"
+							sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
+						/>
+					)}
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -185,18 +189,19 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						maxWidth: '47rem',
 					}}
 				>
-        {initialSpell.damage.base != '' && 
-        <TextField
-          size="small"
-          variant="standard"
-          value={spell.properties}
-          fullWidth
-          onChange={(event) =>
-            setSpell((s) => ({ ...s, properties: event.target.value }))
-          }
-          onBlur={() => updateSpell({ properties: spell.properties })}
-          label="Properties"
-        />}
+					{initialSpell.dealsDamage && (
+						<TextField
+							size="small"
+							variant="standard"
+							value={spell.properties}
+							fullWidth
+							onChange={(event) =>
+								setSpell((s) => ({ ...s, properties: event.target.value }))
+							}
+							onBlur={() => updateSpell({ properties: spell.properties })}
+							label="Properties"
+						/>
+					)}
 					<TextField
 						size="small"
 						multiline
@@ -211,6 +216,22 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						sx={{ maxWidth: '40rem' }}
 					/>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={initialSpell.dealsDamage}
+								onChange={() =>
+									updateSpell({ dealsDamage: !initialSpell.dealsDamage })
+								}
+							/>
+						}
+						label="show damage"
+						sx={{
+							'& .MuiFormControlLabel-label': {
+								fontSize: '10px',
+							},
+						}}
+					/>
 					<AttributeField
 						select
 						size="small"

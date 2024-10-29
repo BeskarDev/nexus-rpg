@@ -89,6 +89,7 @@ export const createInitialCharacter = (name: string): Character => ({
 			total: 0,
 			current: 0,
 		},
+    spellCatalystDamage: 0,
 		spells: [],
 	},
 })
