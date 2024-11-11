@@ -91,6 +91,8 @@ img.medium-zoom-image.medium-zoom-image--opened {
 
 img[alt='folk-img'] {
 	width: 300px;
+  float: left;
+  padding: 12px;
 }
 
 @media (max-width: 996px) {
