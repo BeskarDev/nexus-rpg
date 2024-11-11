@@ -1,5 +1,5 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { Save } from '@mui/icons-material'
+import { Replay, Save } from '@mui/icons-material'
 import {
 	Box,
 	CircularProgress,
@@ -45,29 +45,34 @@ export const SharedNotes: React.FC = () => {
 				return
 			}
 
-			try {
-				const q = query(
-					collection(db, 'shared-notes'),
-					where('allowedCharacters', 'array-contains', characterId),
-				)
-				const querySnapshot = await getDocs(q)
-
-				if (querySnapshot.empty) {
-					setError('No shared notes found')
-				} else {
-					setRef(querySnapshot.docs[0].ref)
-					const data = querySnapshot.docs[0].data()
-					setNotes(data.notes)
-				}
-			} catch (err) {
-				setError(err.message)
-			} finally {
-				setIsLoading(false)
-			}
+			await fetchNotes()
 		}
 
 		fetchData()
 	}, [currentUser])
+
+	const fetchNotes = async () => {
+		setIsLoading(true)
+		try {
+			const q = query(
+				collection(db, 'shared-notes'),
+				where('allowedCharacters', 'array-contains', characterId),
+			)
+			const querySnapshot = await getDocs(q)
+
+			if (querySnapshot.empty) {
+				setError('No shared notes found')
+			} else {
+				setRef(querySnapshot.docs[0].ref)
+				const data = querySnapshot.docs[0].data()
+				setNotes(data.notes)
+			}
+		} catch (err) {
+			setError(err.message)
+		} finally {
+			setIsLoading(false)
+		}
+	}
 
 	const updateNotes = (notes: string) => {
 		setNotes(notes)
@@ -97,10 +102,17 @@ export const SharedNotes: React.FC = () => {
 					alignItems: 'center',
 					gap: 1,
 					width: '100%',
-          maxWidth: { lg: 'unset', xl: '47rem' },
+					maxWidth: { lg: 'unset', xl: '47rem' },
 				}}
 			>
 				<SectionHeader>Shared Notes</SectionHeader>
+				<IconButton
+					disabled={isLoading || loadingSave}
+					onClick={fetchNotes}
+					sx={{ mb: '6px' }}
+				>
+					{loadingSave ? <CircularProgress size={20} /> : <Replay />}
+				</IconButton>
 				<IconButton
 					disabled={!unsavedChanges}
 					onClick={saveNotes}
@@ -122,17 +134,21 @@ export const SharedNotes: React.FC = () => {
 					Error: No shared notes connected to your character.
 				</Typography>
 			)}
-			{isLoading && <CircularProgress />}
-			{!error && !isLoading && (
-				<TextField
-					multiline
-					minRows={20}
-					maxRows={20}
-					value={notes}
-					onChange={(event) => updateNotes(event.target.value)}
-					sx={{ maxWidth: '100%' }}
-				/>
-			)}
+			<TextField
+				disabled={error || isLoading || loadingSave}
+				multiline
+				minRows={20}
+				maxRows={20}
+				value={notes}
+				onChange={(event) => updateNotes(event.target.value)}
+				sx={{
+					maxWidth: '100%',
+					'& textarea.Mui-disabled': {
+						color: 'inherit',
+						['-webkit-text-fill-color']: 'inherit',
+					},
+				}}
+			/>
 		</>
 	)
 }
