@@ -114,6 +114,7 @@ export const ItemsTab: React.FC = () => {
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
+        maxWidth: '47rem'
 			}}
 		>
 			<Box

@@ -174,7 +174,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 							}
 							onBlur={() => updateSpell({ properties: spell.properties })}
 							label="Properties"
-							sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
+							sx={{ maxWidth: '10rem' }}
 						/>
 					)}
 				</Box>

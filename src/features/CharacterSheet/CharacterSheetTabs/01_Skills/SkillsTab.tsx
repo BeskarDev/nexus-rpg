@@ -120,7 +120,7 @@ export const SkillsTab: React.FC = () => {
 				flexWrap: 'wrap',
 			}}
 		>
-			<Box sx={{ mb: 2, maxWidth: '24rem' }}>
+			<Box sx={{ mb: 2, maxWidth: '25rem' }}>
 				<Box sx={{ mx: 'auto', display: 'flex' }}>
 					<AttributeField
 						type="number"
@@ -169,7 +169,7 @@ export const SkillsTab: React.FC = () => {
 				</DynamicList>
 			</Box>
 
-			<Accordion defaultExpanded sx={{ flexGrow: 1, maxWidth: '30rem' }}>
+			<Accordion defaultExpanded sx={{ flexGrow: 1, width: '25rem' }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 						<SectionHeader>Abilities</SectionHeader>

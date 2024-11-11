@@ -1,4 +1,3 @@
-import { useColorMode } from '@docusaurus/theme-common'
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
 import React, { useEffect } from 'react'
 import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
@@ -115,7 +114,7 @@ export const CharacterSheet: React.FC = () => {
 						</Box>
 						<Box
 							sx={{
-								maxWidth: { md: '25rem', lg: '35rem', xl: '50rem' },
+								maxWidth: { md: '25rem', lg: '35rem', xl: '60rem' },
 							}}
 						>
 							<Tabs

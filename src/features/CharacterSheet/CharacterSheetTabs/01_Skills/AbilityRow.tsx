@@ -1,19 +1,15 @@
 import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Box,
-	IconButton,
-	TextField,
-	TextFieldProps,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  IconButton,
+  TextField
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { AddCircle, Delete, ExpandMore } from '@mui/icons-material'
+import { Delete, ExpandMore } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
-import { DynamicList } from '@site/src/components/DynamicList'
-import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
-import { SectionHeader } from '../../CharacterSheet'
 
 export type AbilityRowProps = {
 	title: string
@@ -36,7 +32,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		<Accordion
 			expanded={expanded}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '30rem', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: '35rem', mt: 0 }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMore onClick={() => setExpanded(!expanded)} />}
@@ -55,6 +51,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 					}}
 				>
 					<TextField
+            fullWidth
 						variant="standard"
 						value={title}
 						onChange={(event) => setTitle(event.target.value)}

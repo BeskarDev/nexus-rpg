@@ -97,6 +97,7 @@ export const SharedNotes: React.FC = () => {
 					alignItems: 'center',
 					gap: 1,
 					width: '100%',
+          maxWidth: { lg: 'unset', xl: '47rem' },
 				}}
 			>
 				<SectionHeader>Shared Notes</SectionHeader>

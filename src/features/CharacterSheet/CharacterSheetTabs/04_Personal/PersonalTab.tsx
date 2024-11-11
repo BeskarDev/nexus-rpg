@@ -104,6 +104,7 @@ export const PersonalTab: React.FC = () => {
 				display: 'flex',
 				columnGap: 3,
 				flexWrap: 'wrap',
+				maxWidth: { lg: 'unset', xl: '47rem' },
 			}}
 		>
 			<Box>

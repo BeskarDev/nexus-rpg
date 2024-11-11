@@ -61,6 +61,7 @@ export const SpellsTab: React.FC = () => {
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
+        maxWidth: '38rem'
 			}}
 		>
 			<Box sx={{ mb: 2 }}>
