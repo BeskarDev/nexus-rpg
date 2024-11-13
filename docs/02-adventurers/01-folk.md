@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 🧝‍♀️ Folk
 
-![banner-img](./img/folk-banner.png)
+![banner-img](/img/banner/folk-banner.png)
 
 During adventurer creation, choose one of these Folks for your adventurer to be. Each folk also has various cultures, which are home to different regions of the world.
 

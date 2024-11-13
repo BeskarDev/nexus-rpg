@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # 💰 Items
 
+![banner-img](/img/banner/items-banner.png)
+
 ## Animals 
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---

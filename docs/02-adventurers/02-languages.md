@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # 💬 Languages
 
+![banner-img](/img/banner/languages-banner.png)
+
 You can learn to speak, write, and read various languages of the world from the common tongue used in any given region to ancient and forgotten languages found in the ruins of ancient people.
 
 Adventurers learns additional languages depending on their Mind or through additional talents.

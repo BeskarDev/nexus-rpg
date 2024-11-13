@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # 🖼 Upbringing
 
+![banner-img](/img/banner/upbringing-banner.png)
+
 Choose the upbringing of your adventurer. This determines in what environment they were born and lived during their youth.
 
 | Name | Description | Suggested Skills |

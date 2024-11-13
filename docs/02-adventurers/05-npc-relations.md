@@ -4,6 +4,8 @@ sidebar_position: 5
 
 # 👥 NPC Relations
 
+![banner-img](/img/banner/npc-relations-banner.png)
+
 These are the important NPCs that the adventurers have relations with. Each character starts with one of each, allowing the GM to personalize adventurers through their relations. This also gives the adventurers a link to the gaming world and its people.
 
 While the adventurers can take action to gain new allies and contacts, rivals are typically the result of some failure.

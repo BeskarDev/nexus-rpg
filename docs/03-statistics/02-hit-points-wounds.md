@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # ❤️ Hit Points & Wounds
 
+![banner-img](/img/banner/hp-wounds-banner.png)
+
 ## Hit Points (HP)
 
 HP is your short-term condition during a fight. When you take damage, first reduce it by your Armor Value (AV) and subtract the result (min. 1) from your HP. If you don’t have any HP left, you instead suffer Wounds (see below).

@@ -36,7 +36,7 @@ export default function Home() {
 			<header
 				className={clsx(styles.heroBanner)}
 				style={{
-					background: `no-repeat center/cover url(${require('@site/static/img/home-banner.png').default})`,
+					background: `no-repeat center/cover url(${require('@site/static/img/banner/home-banner.png').default})`,
 				}}
 			>
 				<div className={clsx(styles.heroContainer)}>
