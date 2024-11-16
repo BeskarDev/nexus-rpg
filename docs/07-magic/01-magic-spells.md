@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 🔮 Magic & Spells
 
+![banner-img](/img/banner/magic-banner.png)
+
 ## Magic
 
 ### Learning a magic skill

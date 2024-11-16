@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 🎭 Scenes & Time Intervals
 
+![banner-img](/img/banner/scenes-banner.png)
+
 When you play this game, you do so in separate scenes which each fall into one of the following time intervals. Which time interval you are in with your scene depends on the speed and scope of your group's current storytelling.
 
 Each time interval has its own definition of a turn, which is a period a single action for the current time interval takes. Turns help to keep the story moving along and not dragging down. You can generally do things that take a lot less time than your current time interval turns without needing a whole turn to do them.

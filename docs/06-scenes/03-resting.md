@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # 🏕️ Resting
 
+![banner-img](/img/banner/resting-banner.png)
+
 There are different time frames for resting.
 
 ## A short break

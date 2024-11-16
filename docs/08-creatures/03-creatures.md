@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # 👹 Creatures
 
+![banner-img](/img/banner/creatures-banner.png)
+
 ## Tier 0
 
 ### Cat

@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 🐎 Mounts & Companions
 
+![banner-img](/img/banner/mounts-companions-banner.png)
+
 ## Mounts
 
 You can ride a creature that is suitable as a mount and one or more sizes above you. While mounted, you can move with your mount’s Movement during your turn. You also travel faster (1.5x travel speed) and Fortitude rolls during travel only affect your mount and not you.

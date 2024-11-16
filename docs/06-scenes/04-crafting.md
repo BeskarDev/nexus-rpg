@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # 🔨 Crafting
 
+![banner-img](/img/banner/crafting-banner.png)
+
 ## Crafting Professions
 
 - Alchemy (craft potions, salves, and other herbal remedies)

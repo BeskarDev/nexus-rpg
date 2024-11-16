@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # 📋 Adventurer Creation
 
+![banner-img](/img/banner/adventurer-creation-banner.png)
+
 ## Creation Steps
 
 When creating a new adventurer, follow the steps below:
