@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 💥 Combat Scenes
 
+![banner-img](/img/banner/combat-scenes-banner.png)
+
 ## Starting Combat
 
 At the start of combat, first, determine if one or more groups involved are surprised (see below). After that, everyone rolls for Initiative!

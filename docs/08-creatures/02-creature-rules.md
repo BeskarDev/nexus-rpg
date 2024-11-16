@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # 📜 Creature Rules
 
+![banner-img](/img/banner/creature-rules-banner.png)
+
 Creatures act in the same basic ways, as adventurers do. But some details differ:
 
 - Spell-casting creatures don’t use Focus for their spells. Instead, they are limited in their use of individual spells. They can only cast each spell once. After they have cast each spell once, they regain their single use of each spell again.

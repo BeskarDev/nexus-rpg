@@ -4,6 +4,8 @@ sidebar_position: 5
 
 # #️⃣ Weapon & Armor Properties
 
+![banner-img](/img/banner/weapon-armor-properties-banner.png)
+
 Name | Description
 --- | ---
 **agile** | You can roll attacks with Agility instead of Strength. When doing so, also use Agility as your base damage.

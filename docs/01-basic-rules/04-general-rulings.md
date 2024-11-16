@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # ℹ️ General Rulings
 
+![banner-img](/img/banner/rulings-banner.png)
+
 ## Rounding Decimals
 
 Whenever you divide some number and end up with an decimal fraction, round down to the nearest integer unless the rule says otherwise.

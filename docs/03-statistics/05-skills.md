@@ -4,6 +4,8 @@ sidebar_position: 5
 
 # 🤸‍♂️ Skills
 
+![banner-img](/img/banner/skills-banner.png)
+
 Any adventurer is capable of several different skills, which help them on their journeys.
 
 ## Skill Ranks

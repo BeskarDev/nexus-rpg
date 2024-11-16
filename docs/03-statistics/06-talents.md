@@ -4,6 +4,8 @@ sidebar_position: 6
 
 # 🎯 Talents
 
+![banner-img](/img/banner/talents-banner.png)
+
 ## Arcana 
 Name | Description
 --- | ---

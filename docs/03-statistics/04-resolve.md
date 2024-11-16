@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # ✨ Resolve
 
+![banner-img](/img/banner/resolve-banner.png)
+
 Resolve represents the adventurer's tenacity, divine favour, and will to fight on. You can have a maximum of 3 Resolve at any point and can spend it at any time. 
 
 Spend 1 Resolve to:

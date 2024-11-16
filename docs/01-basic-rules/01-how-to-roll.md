@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 🎲 How To Roll
 
+![banner-img](/img/banner/how-to-roll-banner.png)
+
 ## Skill Tests
 
 Most times you will pick up your dice to roll a Skill Test! Whenever the rules require you to “make a roll” or “roll a test”, this is what it means.

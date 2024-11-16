@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # 🧿 Mystic Spells
 
+![banner-img](/img/banner/mystic-spells-banner.png)
+
 ## Light
 
 ### Dazzling Light

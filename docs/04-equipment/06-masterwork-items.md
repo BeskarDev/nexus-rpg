@@ -4,6 +4,8 @@ sidebar_position: 6
 
 # ⚒️ Masterwork & Exotic Weapons
 
+![banner-img](/img/banner/masterwork-exotic-weapons-banner.png)
+
 ## Masterwork Weapons
 
 Normal weapons represent the default of what would be available from an average craftsman, perhaps the level of quality you can expect from a large production for an army. Masterwork weapons on the other hand are singular pieces, often commissioned by great individuals to fit their specific needs and act as a symbol of wealth and power.

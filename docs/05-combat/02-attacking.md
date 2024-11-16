@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # 🤺 Attacking
 
+![banner-img](/img/banner/attacking-banner.png)
+
 You can attack with various weapons in melee or at range. You can also attack with a spell.
 
 | Attack | Skill Roll | Defense |

@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # 🔆 Arcane Spells
 
+![banner-img](/img/banner/arcane-spells-banner.png)
+
 ## Evocation
 
 ### Flickering Flame

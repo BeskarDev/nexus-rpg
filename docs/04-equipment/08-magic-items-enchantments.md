@@ -4,6 +4,8 @@ sidebar_position: 8
 
 # 🪄 Magic Items & Enchantments
 
+![banner-img](/img/banner/magic-items-banner.png)
+
 ## Spell Scrolls
 
 Spell scrolls contain sacred words or ancient arcane symbols written with magical ink. These magical inscriptions contain single uses of specific spells, which any intelligent creature can read aloud to invoke the spell’s effect, after which the scroll turns to dust.

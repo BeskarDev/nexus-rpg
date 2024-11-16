@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 💪 Attributes
 
+![banner-img](/img/banner/attributes-banner.png)
+
 There are 4 attributes in the game:
 
 | Attribute | Description |

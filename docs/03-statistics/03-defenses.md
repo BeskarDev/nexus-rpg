@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # 🛡 Defenses
 
+![banner-img](/img/banner/defenses-banner.png)
+
 When you are being attacked, the TN is always one of your three Defenses.
 
 | Defense | used against | starting value |

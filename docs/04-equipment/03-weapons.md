@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # 🗡️ Weapons
 
+![banner-img](/img/banner/weapons-banner.png)
+
 ## Axe 
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---

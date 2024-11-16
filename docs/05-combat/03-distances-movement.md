@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # 📏 Distances & Movement
 
+![banner-img](/img/banner/distances-movement-banner.png)
+
 ## Distances
 
 Various effects and abilities list the following distances to describe their range.

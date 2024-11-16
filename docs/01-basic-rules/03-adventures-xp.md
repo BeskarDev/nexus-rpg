@@ -4,6 +4,8 @@ sidebar_position: 3
 
 # ⭐ Adventures & XP
 
+![banner-img](/img/banner/adventures-xp-banner.png)
+
 ## Adventures
 
 The very reason your adventurers set out on epic journeys and risk their life for glory and wealth.

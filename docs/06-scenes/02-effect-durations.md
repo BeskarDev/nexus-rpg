@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # ⚡ Effect Durations
 
+![banner-img](/img/banner/effect-duration-banner.png)
+
 ## Briefly
 
 This effect on you lasts until the end of your next encounter turn.

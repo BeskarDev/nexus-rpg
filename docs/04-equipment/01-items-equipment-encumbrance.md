@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # 🎒 Equipment & Encumbrance
 
+![banner-img](/img/banner/equipment-banner.png)
+
 ## Coins
 
 Adventurers amass wealth in the abstracted form of coins over their adventures. While this wealth is denoted in coins, it is an abstraction which also includes other groups of valuables fit for barter:

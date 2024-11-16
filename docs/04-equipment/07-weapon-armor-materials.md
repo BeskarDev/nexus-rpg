@@ -4,6 +4,8 @@ sidebar_position: 7
 
 # 💎 Weapon & Armor Materials
 
+![banner-img](/img/banner/weapon-armor-materials-banner.png)
+
 Weapons and armor can be made out of a variety of materials. While the default materials don‘t alter the item's properties (even if its quality differs from the item's quality), lower or higher-quality materials do. An item's quality is adjusted to that of the special material.
 
 ## Ammo from Special Materials

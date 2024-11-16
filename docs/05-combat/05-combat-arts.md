@@ -4,6 +4,8 @@ sidebar_position: 5
 
 # 🔶 Combat Arts
 
+![banner-img](/img/banner/combat-arts-banner.png)
+
 ## Learning Combat Arts
 
 An adventurer can learn many different Combat Arts throughout their career. When you first learn either the Fighting or Archery skill, you can choose one Combat Art for melee or ranged weapons respectively. Once you gain a rank in either skill, you can choose another appropriate Combat Art. You can learn additional Combat Arts through talents.

@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # 💼 Background
 
+![banner-img](/img/banner/background-banner.png)
+
 Choose your adventurer’s background. This includes what profession they pursued, or in which environment they lived during their adult life and before choosing the path of an adventurer.
 
 Also think about what your adventurers motivation for adventuring could be, depending on what kind of life they lived before.

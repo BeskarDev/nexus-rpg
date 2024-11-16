@@ -4,6 +4,8 @@ sidebar_position: 4
 
 # 🛡️ Armor
 
+![banner-img](/img/banner/armor-banner.png)
+
 Armor grants it‘s wearer protection in exchange for decreased mobility.
 
 ## Stacking AV Bonuses
