@@ -123,6 +123,7 @@ export const SkillsTab: React.FC = () => {
 			<Box sx={{ mb: 2, maxWidth: '25rem' }}>
 				<Box sx={{ mx: 'auto', display: 'flex' }}>
 					<AttributeField
+						size="small"
 						type="number"
 						value={xp.total}
 						onChange={(event) =>
@@ -140,6 +141,7 @@ export const SkillsTab: React.FC = () => {
 						}}
 					/>
 					<AttributeField
+						size="small"
 						disabled
 						value={spendXP}
 						label="Spend XP"
