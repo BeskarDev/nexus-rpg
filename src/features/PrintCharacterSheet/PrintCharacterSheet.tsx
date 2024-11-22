@@ -10,6 +10,7 @@ import { StatisticsSheet } from './sheets/1_Statistics'
 import { EquipmentSheet } from './sheets/2_Equipment'
 import { SpellsSheet } from './sheets/3_Spells'
 import { PersonalSheet } from './sheets/4_Personal'
+import { emptyCharacter } from './assets/emptyCharacter'
 
 const AttributeField = styled(TextField)({
 	maxWidth: '4.5rem',
@@ -59,7 +60,7 @@ export const RankIndicator = styled(Avatar)({
 
 export const PrintCharacterSheet: React.FC = () => {
 	const [characterJsonString, setCharacterJsonString] =
-		React.useState<string>('')
+		React.useState<string>(emptyCharacter)
 
 	const char: Character = useMemo(() => {
 		try {

@@ -115,7 +115,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 							<TextField
 								size="small"
 								variant="standard"
-								value={printDamageField({ ...weapon.damage })}
+								value={weapon.damage ? printDamageField({ ...weapon.damage }): ' '}
 								label={index == 0 ? 'Damage' : ''}
 								sx={{
 									maxWidth: '4rem',

@@ -66,10 +66,10 @@ This game assumes a group of four adventurers to band together. If your playgrou
 > For example, when playing with a group of two people and no advanced starting tier, they may each choose two more of their skills to invest 2 XP each into. This would leave them with five skills which have 2 XP invested into each of them instead of the normal three skills.
 >
 
-## Adventurer Sheet
+## Character Sheet
 
 You can print out this sheet to record your adventurer's statistics, equipment, and connections within the game world.
 
-![](./img/adventurer-sheet-p1.jpg)
+![](./img/character-sheet-p1.jpg)
 
-![](./img/adventurer-sheet-p2.jpg)
+![](./img/character-sheet-p2.jpg)

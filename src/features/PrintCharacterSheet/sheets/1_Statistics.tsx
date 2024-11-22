@@ -65,7 +65,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 					<Box sx={{ display: 'flex', gap: 1 }}>
 						<AttributeField
-							value={'d' + char.statistics.strength.value}
+							value={char.statistics.strength.value ? 'd' + char.statistics.strength.value : ' '}
 							label="Strength"
 							helperText={char.statistics.strength.wounded ? '( W )' : '(___)'}
 							sx={{
@@ -75,7 +75,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							}}
 						/>
 						<AttributeField
-							value={'d' + char.statistics.agility.value}
+							value={char.statistics.agility.value ? 'd' + char.statistics.agility.value : ' '}
 							label="Agility"
 							helperText={char.statistics.agility.wounded ? '( W )' : '(___)'}
 							sx={{
@@ -85,7 +85,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							}}
 						/>
 						<AttributeField
-							value={'d' + char.statistics.spirit.value}
+							value={char.statistics.spirit.value ? 'd' + char.statistics.spirit.value : ' '}
 							label="Spirit"
 							helperText={char.statistics.spirit.wounded ? '( W )' : '(___)'}
 							sx={{
@@ -95,7 +95,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							}}
 						/>
 						<AttributeField
-							value={'d' + char.statistics.mind.value}
+							value={char.statistics.mind.value ? 'd' + char.statistics.mind.value : ' '}
 							label="Mind"
 							helperText={char.statistics.mind.wounded ? '( W )' : '(___)'}
 							sx={{
