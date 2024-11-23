@@ -2,12 +2,17 @@
     {
         "name": "Arcane Spell Knowledge",
         "skill requirement": "Arcana",
-        "description": "You can take higher ranks for this talent without having taken it\u2019s lower ranks provided your Mysticism also has the required rank.<br/><br/><strong>(Rank 1)</strong> Learn two rank 0 or 1 spells for any of your disciplines, or adopt a new discipline and learn one new rank 0 spell for it. You can choose this Talent multiple times.<br/><br/><strong>(Rank 2) </strong>Learn two rank 2 or lower spells for any of your disciplines. You can choose this Talent multiple times.<br/><br/><strong>(Rank 3) </strong>Learn two rank 3 or lower spells for any of your disciplines. You can choose this Talent multiple times."
+        "description": "You can take higher ranks for this talent without having taken it\u2019s lower ranks provided your Mysticism also has the required rank.<br/><br/><strong>(Rank 1)</strong> +2 Focus. Learn two rank 0 or 1 spells for any of your disciplines, or adopt a new discipline and learn one new rank 0 spell for it. You can choose this Talent multiple times.<br/><br/><strong>(Rank 2) </strong>+2 Focus.<strong> </strong>Learn two rank 2 or lower spells for any of your disciplines. You can choose this Talent multiple times.<br/><br/><strong>(Rank 3) +</strong>2 Focus.<strong> </strong>Learn two rank 3 or lower spells for any of your disciplines. You can choose this Talent multiple times.<br/><br/><strong>(Rank 4) </strong>+2 Focus. Learn two rank 4 or lower spells for any of your disciplines. You can choose this Talent multiple times."
     },
     {
         "name": "Battle Mage",
         "skill requirement": "Arcana",
-        "description": "<strong>(Rank 1)</strong> +2 HP. When you are attacked by an enemy and they roll against your Parry or Dodge, you can use your Quick Action and spend 2 Focus to conjure a momentary barrier of arcane force which adds your Arcana to both your Parry and Dodge until your next turn.<br/><br/><strong>(Rank 2)</strong> +2 HP. You can roll Mind + Arcana for weapon attacks.<br/><br/><strong>(Rank 3) </strong>+2 HP. When you hit with a melee or ranged weapon, add your Arcana to the damage."
+        "description": "<strong>(Rank 1)</strong> +2 HP. When you are attacked by an enemy and they roll against your Parry or Dodge, you can use your Quick Action and spend 2 Focus to conjure a momentary barrier of arcane force which adds your Arcana to both your Parry and Dodge until your next turn.<br/><br/><strong>(Rank 2)</strong> +2 HP. You can roll Mind + Arcana for weapon attacks.<br/><br/><strong>(Rank 3) </strong>+2 HP. When you hit with a melee or ranged weapon, add your Arcana to the damage.<br/><br/><strong>(Rank 4)</strong> +2 HP. After you have attacked with a melee or ranged weapon, you can use your Quick Action to cast any rank 0 spell targeting a single creature."
+    },
+    {
+        "name": "Inexhaustible Mind",
+        "skill requirement": "Arcana",
+        "description": "<strong>(Rank 1)</strong> During a short break, you can meditate to recharge your mind\u2019s power. You regain half your max. Focus. You can use this ability a number of times per day equal to your Arcana.<br/><br/><strong>(Rank 2)</strong> When you have no Focus left, you can still cast spells by spending 2 HP for every 1 Focus you would have to spend normally.<br/><br/><strong>(Rank 3)</strong> When you use your Inexhaustible Mind ability during a short break, you regain all your Focus instead."
     },
     {
         "name": "Mana Shield",
@@ -27,7 +32,7 @@
     {
         "name": "Spellweaver",
         "skill requirement": "Arcana",
-        "description": "<strong>(Rank 1) </strong>You are able to use Metamagic Arts along with your arcane spells. You learn any two Metamagic Arts.<br/><br/><strong>(Rank 2) </strong>Learn two more Metamagic Arts.<br/><br/><strong>(Rank 3) </strong>Learn two more Metamagic Arts."
+        "description": "<strong>(Rank 1) </strong>+2 Focus. You are able to use Metamagic Arts along with your arcane spells. You learn any two Metamagic Arts.<br/><br/><strong>(Rank 2) </strong>+2 Focus. Learn two more Metamagic Arts.<br/><br/><strong>(Rank 3) </strong>+2 Focus. Learn two more Metamagic Arts."
     },
     {
         "name": "Ammo Specialist",
@@ -37,7 +42,7 @@
     {
         "name": "Art of Archery",
         "skill requirement": "Archery",
-        "description": "(<strong>Rank 1) </strong>You learn two more Combat Arts which can be used with bows, crossbows, or thrown weapons.<br/><br/>(<strong>Rank 2) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with bows, crossbows, or thrown weapons.<br/>- Increase the difficulty of rolls imposed on your target by effects of Combat Arts for ranged weapons by one step.<br/><br/>(<strong>Rank 3) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with bows, crossbows, or thrown weapons.<br/>- You can choose to increase the SL of any Combat Art for ranged weapons you use by one step. You can use this ability once per scene.<br/>"
+        "description": "(<strong>Rank 1) </strong>You learn two more Combat Arts for any ranged weapons.<br/><br/>(<strong>Rank 2) </strong>You learn two more Combat Arts for any ranged weapons.<br/><br/>(<strong>Rank 3) </strong>You gain the following abilities:- Whenever you can learn new Combat Arts for any ranged weapons, you can now choose Supreme Combat Arts instead. <br/>- You learn two more Combat Arts or Supreme Combat Arts for any ranged weapons.<br/><br/><strong>(Rank 4)</strong> You learn two more Combat Arts or Supreme Combat Arts for any ranged weapons."
     },
     {
         "name": "Crossbow Mastery",
@@ -62,7 +67,7 @@
     {
         "name": "Sharpshooter",
         "skill requirement": "Archery",
-        "description": "<strong>(Rank 1) </strong>When attacking with a ranged weapon, you can ignore the first bane you would suffer from attacking beyond normal range.<br/><br/><strong>(Rank 2) </strong>When attacking with a ranged weapon, you suffer no banes from attacking beyond normal range.<br/><strong><br/>(Rank 3) </strong>When you attack with a ranged weapon at long range or more, you can skip all Movement this turn to inflict marked (equal to your Archery) on your target immediately before the attack."
+        "description": "<strong>(Rank 1) </strong>When attacking with a ranged weapon, you can ignore the first bane you would suffer from attacking beyond normal range.<br/><br/><strong>(Rank 2) </strong>When attacking with a ranged weapon, you suffer no banes from attacking beyond normal range.<br/><strong><br/>(Rank 3) </strong>When you skip all Movement this turn (before and after the attack) and when you attack with a ranged weapon at long range or more, you can inflict marked (equal to your Archery) on your target immediately before the attack."
     },
     {
         "name": "Strong Grip",
@@ -192,7 +197,7 @@
     {
         "name": "Art of Fighting",
         "skill requirement": "Fighting",
-        "description": "<strong>(Rank 1) </strong>You learn two more Combat Arts which can be used with axes, blades, brawling, maces, polearms, or shields.<br/><br/><strong>(Rank 2) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with axes, blades, brawling, maces, polearms, or shields.<br/>- Increase the difficulty of rolls imposed on your target by effects of Combat Arts for melee weapons by one step.<br/><br/><strong>(Rank 3) </strong>You gain the following abilities:<br/>- You learn two more Combat Arts which can be used with axes, blades, brawling, maces, polearms, or shields.<br/>- You can choose to increase the SL of any Combat Art for melee weapons you use by one step. You can use this ability once per scene.<br/>"
+        "description": "<strong>(Rank 1) </strong>You learn two more Combat Arts for any melee weapons.<br/><br/><strong>(Rank 2) </strong>You learn two more Combat Arts for any melee weapons.<br/><br/><strong>(Rank 3) </strong>You gain the following abilities:- Whenever you can learn new Combat Arts for any melee weapons, you can now choose Supreme Combat Arts instead. <br/>- You learn two more Combat Arts or Supreme Combat Arts for any melee weapons.<br/><br/><strong>(Rank 4) </strong>You learn two more Combat Arts or Supreme Combat Arts for any melee weapons."
     },
     {
         "name": "Axe Mastery",
@@ -222,7 +227,7 @@
     {
         "name": "Heavy Weapon Mastery",
         "skill requirement": "Fighting",
-        "description": "<strong>(Rank 1)</strong> Using the Brutal Strike Combat Art with a heavy melee weapon doesn't impose +1 bane on your attack.<br/><br/><strong>(Rank 2) </strong>When you hit with a heavy melee weapon and the attack\u2018s damage reduces the target to 0 HP, you can make another attack against a different target. On a hit with this attack, subtract your weapon damage once from the total damage. You can use this ability once per turn.<br/><strong><br/>(Rank 3)</strong> When you hit with a heavy melee weapon, you can skip all Movement this turn to add +1/2 Strength to the attacks damage. You can use this ability once per turn."
+        "description": "<strong>(Rank 1)</strong> Using the Brutal Strike Combat Art with a heavy melee weapon doesn't impose +1 bane on your attack.<br/><br/><strong>(Rank 2) </strong>When you hit with a heavy melee weapon and the attack\u2018s damage reduces the target to 0 HP, you can make another attack against a different target. On a hit with this attack, subtract your weapon damage once from the total damage. You can use this ability once per turn.<br/><strong><br/>(Rank 3)</strong> When you skip all Movement this turn (before and after the attack), on a hit with a heavy melee weapon, you can add +1/2 Strength to the attacks damage. You can use this ability once per turn."
     },
     {
         "name": "Hoplite",
@@ -257,7 +262,7 @@
     {
         "name": "Shield Mastery",
         "skill requirement": "Fighting",
-        "description": "<strong>(Rank 1) </strong>When an enemy hits you with a melee attack while you wield a shield, you can use a Quick Action to reduce the SL of their attack by one step (min. failure). Immediately after the attack, roll a Durability check for your shield.<br/><strong><br/>(Rank 2)</strong> Reduce the rigid property of shields you wield by 1.<br/><br/><strong>(Rank 3) </strong>When you use your Shield Mastery ability and have to make a Durability check of your shield, make the check twice and take the higher result."
+        "description": "<strong>(Rank 1) </strong>When an enemy hits you with a melee attack while you wield a shield, you can use a Quick Action to reduce the SL of their attack by one step (min. failure). Immediately after the attack, roll a Durability check for your shield.<br/><strong><br/>(Rank 2)</strong> Reduce the rigid property of shields you wield by 1. When you make a melee attack with any weapon you are holding, you can choose to use your shield\u2019s Combat Arts with that weapon attack.<br/><br/><strong>(Rank 3) </strong>When you use your Shield Mastery ability and have to make a Durability check of your shield, make the check twice and take the higher result."
     },
     {
         "name": "Adrenaline Rush",
@@ -377,7 +382,7 @@
     {
         "name": "Divine Scholar",
         "skill requirement": "Lore",
-        "description": "<em>You can\u2019t choose this talent if you already learned Mysticism and chose Devotion for your tradition. You also lose access to this talent\u2019s benefits, if you ever do so later.<br/><br/></em><br/><strong>(Rank 1)</strong> Through studies of different traditions and cults, you expand you horizon of mystical knowledge. Choose one mystic tradition and learn one spell of rank 0 from it.<br/>If you already learned Mysticism, you can now also choose spells from this tradition like any other of your traditions.<br/>If you weren\u2019t able to cast spells before, use your Lore instead of Mysticism for calculating your Focus and any rolls made to cast the spell using the rules for mystic spells.<br/><br/><strong>(Rank 2)</strong> +2 Focus. Choose one more tradition (or the same) and learn one spell of rank 1 or lower from it.<br/><strong><br/>(Rank 3)</strong> +2 Focus. Choose one more tradition (or one of the same) and learn one spell of rank 2 or lower from it."
+        "description": "<em>You can\u2019t choose this talent if you already learned Arcana or Mysticism and chose Devotion for your tradition. You also lose access to this talent\u2019s benefits, if you ever do so later.<br/><br/></em><br/><strong>(Rank 1)</strong> Through studies of different traditions and cults, you expand you horizon of mystical knowledge. Choose one mystic tradition and learn one spell of rank 0 from it.<br/>If you already learned Mysticism, you can now also choose spells from this tradition like any other of your traditions.<br/>If you weren\u2019t able to cast spells before, use your Lore instead of Mysticism for calculating your Focus and any rolls made to cast the spell using the rules for mystic spells.<br/><br/><strong>(Rank 2)</strong> +2 Focus. Choose one more tradition (or the same) and learn one spell of rank 1 or lower from it.<br/><strong><br/>(Rank 3)</strong> +2 Focus. Choose one more tradition (or one of the same) and learn one spell of rank 2 or lower from it."
     },
     {
         "name": "Identify Artifact",
@@ -437,7 +442,7 @@
     {
         "name": "Mystical Spell Knowledge",
         "skill requirement": "Mysticism",
-        "description": "You can take higher ranks for this talent without having taken it\u2019s lower ranks provided your Mysticism also has the required rank.<br/><strong><br/>(Rank 1)</strong> Learn two rank 0 or 1 spells for any of your traditions. You can choose this Talent multiple times.<br/><br/><strong>(Rank 2) </strong>Learn two rank 2 or lower spells for any of your traditions. You can choose this Talent multiple times.<br/><br/><strong>(Rank 3)</strong> Learn two rank 3 or lower spells for any of your traditions. You can choose this Talent multiple times."
+        "description": "You can take higher ranks for this talent without having taken it\u2019s lower ranks provided your Mysticism also has the required rank.<br/><strong><br/>(Rank 1)</strong> +2 Focus. Learn two rank 0 or 1 spells for any of your traditions. You can choose this Talent multiple times.<br/><br/><strong>(Rank 2) </strong>+2 Focus. Learn two rank 2 or lower spells for any of your traditions. You can choose this Talent multiple times.<br/><br/><strong>(Rank 3)</strong> +2 Focus. Learn two rank 3 or lower spells for any of your traditions. You can choose this Talent multiple times.<br/><br/><strong>(Rank 4)</strong> +2 Focus. Learn two rank 4 or lower spells for any of your traditions. You can choose this Talent multiple times."
     },
     {
         "name": "Shape Changer",
@@ -447,7 +452,7 @@
     {
         "name": "Animal Companion",
         "skill requirement": "Nature",
-        "description": "(<strong>Rank 1) </strong>You can control animal companions of a tier equal or lower to your Nature (tier 1: tame, tier 2: wild, tier 3: ferocious, tier 4: monstrous). Your animal companion gains the following abilities, while you can command it:<br/>- Your companion may use your Nature instead of any skill they have trained for rolls (their statistics are still calculated by their own skill ranks).<br/>- When you have a companion of a tier lower than your Nature, apply the basic statistics of the highest tier available to you to it. You can choose, if its size increases or stays the same as from its original tier.<br/><br/><strong>(Rank 2)</strong> Choose one:<br/>- You can instead control two animal companions that are both of a tier equal to or lower to half your Nature (rounded down).<br/>- Your animal companion can learn two Combat Arts, appropriate for its types of attacks (ignoring the normal types of weapons the Combat Arts can be used with). It can use these Combat Arts, while under your control.<br/><br/>(<strong>Rank 3) </strong>Choose one:<br/>- When you or one of your animal companions under your control hits a target, the other ones gain +1 boon on attacks against that same target during their turn this round.<br/>- Your animal companions add your Nature to their weapon damage.<br/>"
+        "description": "(<strong>Rank 1) </strong>You can control animal companions of a tier equal or lower to your Nature. Choose any type of animal and apply it\u2019s traits to the base statistics. Use the rules in the Mounts &amp; Companions section for how to control your animal companion.<br/><br/><strong>(Rank 2)</strong> Choose one:<br/>- You can instead control two animal companions that are both of a tier equal to or lower to half your Nature (rounded down). Choose the same or different animal traits for both of them.<br/>- Your animal companion can learn two Combat Arts, appropriate for its types of attacks (ignoring the normal types of weapons the Combat Arts can be used with). It can use these Combat Arts while under your control. The normal rules for how and when to use Combat Arts also apply to your companion.<br/><br/>(<strong>Rank 3) </strong>Choose one:<br/>- When you or one of your animal companions under your control hits a target, the other ones gain +1 boon on attacks against that same target during their turn this round.<br/>- Your animal companions add your Nature to their damage.<br/>"
     },
     {
         "name": "Beast Lore",

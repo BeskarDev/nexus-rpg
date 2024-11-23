@@ -121,6 +121,17 @@
         "heightened": "-"
     },
     {
+        "name": "True Strike",
+        "tradition": "Light",
+        "rank": "1",
+        "focus": "2",
+        "target": "vs. Resist",
+        "range": "Short",
+        "properties": "quick",
+        "effect": "You focus on a creatures thoughts, gaining insight into their defenses. Cast this spell on your turn.<br/>On a success, increase the SL of your next attack until the end of your next turn by one step (max. critical success).<br/>",
+        "heightened": "-"
+    },
+    {
         "name": "Break Curse",
         "tradition": "Light",
         "rank": "2",
@@ -381,8 +392,8 @@
         "target": "Medium (8)",
         "range": "Medium",
         "properties": "-",
-        "effect": "You overwork the vital system of the target, returning them to consciousness or causing them a heart attack if already conscious. The target must be a living creature.<br/><strong>Weak.</strong> If the target is dying, they stop dying but remain unconscious. If the target is unconscious, they wake up. If the target is conscious, they take +3 damage.<br/><strong>Strong.</strong> If the target is dying, they stop dying and wake up. If the target is unconscious, they wake up. If the target is conscious, they take +6 damage.<br/><strong>Critical.</strong> If the target is dying, they stop dying, wake up, and one of their Injuries is instantly treated (their choice). If the target is unconscious, they wake up. If the target is conscious, they take +9 damage.",
-        "heightened": "-"
+        "effect": "You overwork the vital system of the target, returning them to consciousness or causing them a heart attack if already conscious. The target must be a living creature.<br/><strong>Weak.</strong> If the target is dying, they stop dying but remain unconscious. If the target is unconscious, they wake up. If the target is conscious, they take +3 radiant damage.<br/><strong>Strong.</strong> If the target is dying, they stop dying and wake up. If the target is unconscious, they wake up. If the target is conscious, they take +6 radiant damage.<br/><strong>Critical.</strong> If the target is dying, they stop dying, wake up, and one of their Injuries is instantly treated (their choice). If the target is unconscious, they wake up. If the target is conscious, they take +9 radiant damage.",
+        "heightened": "<strong>(Rank 2)</strong> If the target is conscious, they take +5/10/15 radiant damage instead.<br/><strong>(Rank 3)</strong> If the target is conscious, they take +7/14/21 radiant damage instead."
     },
     {
         "name": "Rapid Vitality",
@@ -393,7 +404,7 @@
         "range": "Medium",
         "properties": "quick",
         "effect": "You quickly envigorate a creature. Cast this spell on your turn.<br/><strong>Weak.</strong> Restore +2 HP to your target.<br/><strong>Strong.</strong> Restore +4 HP to your target.<br/><strong>Critical. </strong>Restore +6 HP to your target.",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 2)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 3)</strong> Restore +6/12/18 HP instead."
     },
     {
         "name": "Vitalizing Weapon",
@@ -418,6 +429,17 @@
         "heightened": "<strong>(Rank 3)</strong> Each target gains 20 temporary HP instead."
     },
     {
+        "name": "Cleanse",
+        "tradition": "Life",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Medium",
+        "properties": "quick, singular",
+        "effect": "Relieve a creature from any negative conditions. Cast this spell on your turn. Target a willing creature. On a success, remove the following conditions from the target: bleeding, burning, blinded, charmed, confused, dazed, deafened, frightened, paralyzed, poisoned, silenced, slowed, staggered, and stunned. This doesn\u2019t remove conditions applied by a continuous effect that affects the target indirectly, such as an persistent area effect.",
+        "heightened": "<strong>(Rank 3)</strong> Choose an additional willing target in range."
+    },
+    {
         "name": "Hallow Ground",
         "tradition": "Life",
         "rank": "2",
@@ -426,7 +448,7 @@
         "range": "Close",
         "properties": "concentrate",
         "effect": "You hallow the ground around you, healing all allies standing on it.<br/>On a success, each ally in range of the hallow ground restores +2 HP when you cast the spell and at the start of each of their turns.<br/>The hallow ground remains stationary at the position where you cast it for a short duration.<br/>",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 3)</strong> Restore +4 HP instead."
     },
     {
         "name": "Healing Burst",
@@ -437,6 +459,28 @@
         "range": "Short",
         "properties": "blast (cone)",
         "effect": "You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally.",
+        "heightened": "<strong>(Rank 3)</strong> Restore +5/10/15 HP instead."
+    },
+    {
+        "name": "Abundance of Life",
+        "tradition": "Life",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone\u2019s life force and instantly heal one of their Wounds and regain +8 HP. Any single creature can only benefit from this effect of this spell once per day.<br/>The zone lasts for a medium duration.<br/>",
+        "heightened": "-"
+    },
+    {
+        "name": "Vitality Surge",
+        "tradition": "Life",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "blast (cone)",
+        "effect": "You unleash a devastating explosion of pure life force that overwhelms your enemies' vital systems while gently reinvigorating your allies.<br/>Target all hostile creatures and your allies within the spell\u2019s area. Compare the roll against a very hard Difficulty (12) to calculate the SL for your allies.<br/><strong>Weak.</strong> Deal +6 radiant damage to each hostile target. Restore +3 HP to each ally.<br/><strong>Strong.</strong> Deal +12 radiant damage to each hostile target and they are briefly dazed. Restore +6 HP to each ally.<br/><strong>Critical.</strong> Deal +18 radiant damage to each hostile target and they are briefly stunned. Restore +9 HP to each ally.",
         "heightened": "-"
     },
     {
@@ -546,7 +590,7 @@
         "target": "vs. Dodge",
         "range": "Medium",
         "properties": "-",
-        "effect": "You conjure a short spray of acid, burning through the target\u2019s surface.<br/><strong>Weak.</strong> Deal +2 acid damage and ignore 1/2 the target\u2019s AV.<br/><strong>Strong.</strong> Deal +4 acid damage and ignore 1/2 the target\u2019s AV.<br/><strong>Critical.</strong> Deal +6 acid damage and ignore 1/2 the target\u2019s AV.",
+        "effect": "You conjure a short spray of acid, burning through the target\u2019s surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignoring 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignoring 1/2 AV).",
         "heightened": "-"
     },
     {
@@ -891,6 +935,17 @@
         "heightened": "<strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignoring AV) instead."
     },
     {
+        "name": "Storm Shield",
+        "tradition": "Tempest",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Self",
+        "properties": "quick",
+        "effect": "You quickly conjure a personal barrier of swirling air. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you can defend with your Resist instead of Parry or Dodge until your next turn. When a melee attack against you fails, the attacker takes +0 blast damage (ignoring AV). If a ranged attack against you fails, you can divert the attack towards another creature in close range. If the ranged attack blunders, you can even divert it back to the attacker. When diverting an attack to another creature, it automatically hits with a weak success.<br/>",
+        "heightened": "<strong>(Rank 2) </strong>Failed melee attacks inflict +2 blast damage (ignoring AV) instead. Diverted ranged attacks deal +2 damage.<br/><strong>(Rank 3) </strong>Failed melee attacks inflict +4 blast damage (ignoring AV) instead. Diverted ranged attacks deal +4 damage."
+    },
+    {
         "name": "Volcanic Bolt",
         "tradition": "Tempest",
         "rank": "1",
@@ -920,8 +975,8 @@
         "target": "Hard (10)",
         "range": "Long",
         "properties": "concentrate",
-        "effect": "You conjure a being of pure elemental power. Choose either air, earth, fire, or water.<br/>On a success, an elemental creature of the chosen element appears at any point within range.<br/>Treat the elemental as your companion (see Mounts &amp; Companions for more). It is friendly towards you and your allies while you maintain concentration for this spell.<br/>The elemental has the statistics of a wild animal companion (tier 2). In addition, it gains a companion trait, according to which element you have chosen.<br/>You can dismiss the elemental as a Quick Action during your turn. Otherwise it remains until reduced to 0 HP or for a short duration.<br/>If you lose concentration on this spell, the elemental becomes hostile to you and your allies. Roll initiative for it and treat it as an enemy. You can\u2019t dismiss the elemental anymore and it remains until reduced to 0 HP or after the spell\u2019s duration.<br/>",
-        "heightened": "<strong>(Rank 3)</strong> You conjure an elemental with the statistics of a ferocious animal companion (tier 3) instead."
+        "effect": "You conjure a being of pure elemental power. Choose either air, earth, fire, or water.<br/>On a success, an elemental creature of the chosen element appears at any point within range.<br/>Treat the elemental as your companion (see Mounts &amp; Companions for more). It is friendly towards you and your allies while you maintain concentration for this spell.<br/>The elemental has the statistics of a tier 2 companion. In addition, it gains a companion trait, according to which element you have chosen.<br/>You can dismiss the elemental as a Quick Action during your turn. Otherwise it remains until reduced to 0 HP or for a short duration.<br/>If you lose concentration on this spell, the elemental becomes hostile to you and your allies. Roll initiative for it and treat it as an enemy. You can\u2019t dismiss the elemental anymore and it remains until reduced to 0 HP or after the spell\u2019s duration.<br/>",
+        "heightened": "<strong>(Rank 3)</strong> You conjure an elemental with the statistics of a tier 3 companion instead."
     },
     {
         "name": "Lightning Bolt",
@@ -1205,9 +1260,9 @@
         "focus": "2",
         "target": "Medium (8)",
         "range": "Medium",
-        "properties": "concentrate, singular",
-        "effect": "You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, both of you gain the following effects:<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you.<br/>- If either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell.<br/>",
-        "heightened": "-"
+        "properties": "concentrate",
+        "effect": "You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, if either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell.<br/>",
+        "heightened": "<strong>(Rank 2) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/><strong>(Rank 3) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you.<br/>"
     },
     {
         "name": "Pacifying Weapon",
@@ -1229,7 +1284,7 @@
         "range": "Medium",
         "properties": "quick",
         "effect": "Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignoring AV).",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 2)</strong> Add your Mysticism to the damage the attacker takes.<br/><strong>(Rank 3)</strong> Add 2 x your Mysticism to the damage the attacker takes."
     },
     {
         "name": "Dome of Sanctuary",
@@ -1240,6 +1295,17 @@
         "range": "Medium",
         "properties": "concentrate",
         "effect": "You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against every target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome and fall prone.<br/>Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can\u2019t enter.<br/>Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration.<br/>",
+        "heightened": "-"
+    },
+    {
+        "name": "Slow",
+        "tradition": "Peace",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You partially immobilize a group of creatures. Choose a close area within range and target up to six creatures within the area.<br/>On a success, any target is stunned for a short duration. At the end of their turns, they can roll Spirit + Fortitude to end the effect early.<br/>",
         "heightened": "-"
     },
     {
@@ -1257,11 +1323,33 @@
         "name": "Anti-Magic Field",
         "tradition": "Peace",
         "rank": "3",
-        "focus": "8",
+        "focus": "6",
         "target": "Very Hard (12)",
         "range": "Medium",
         "properties": "concentrate",
-        "effect": "create an area of anti-magic, allowing no spells to be cast within it. also, temporary magical effects within it end immediately.",
+        "effect": "You create a sphere of pure anti-magic.<br/>On a success, you conjure the spherical field covering a close area around the target location. Within the field, all spellcasting or lasting magical effects are suppressed.<br/>Any magical effect moving into the field is also immediately dispelled and magical area of effects exclude the space of the field.<br/>The field lasts for a short duration.<br/>",
+        "heightened": "-"
+    },
+    {
+        "name": "Martyrdom's Blessing",
+        "tradition": "Peace",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Short",
+        "properties": "singular",
+        "effect": "You bestow a powerful blessing of self-sacrifice upon an ally or yourself.<br/>On a success, the target gains the following benefits for a short duration:<br/>- Whenever an ally within medium range would take damage, they can choose to take that damage instead. When taking damage for an ally this way, they gain resistance to that damage.<br/>- After taking damage for at least one ally, the first attack roll on the target\u2019s and that ally\u2019s next turn both gain +1 boon.<br/>",
+        "heightened": "-"
+    },
+    {
+        "name": "Pacifying Presence",
+        "tradition": "Peace",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignoring AV).<br/>",
         "heightened": "-"
     },
     {

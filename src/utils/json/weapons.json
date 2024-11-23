@@ -36,15 +36,6 @@
         "cost": "200"
     },
     {
-        "name": "Dart / Throwing Knife / Throwing Star / Chakram",
-        "quality": "1",
-        "type": "Blade",
-        "damage": "2",
-        "properties": "agile, bundle (d6), light, pierce, thrown (short/medium)",
-        "load": "1",
-        "cost": "50"
-    },
-    {
         "name": "Scimitar / Khopesh / Kopis / Kukri / Machete / Macuahuitl / Shotel",
         "quality": "1",
         "type": "Blade",
@@ -59,6 +50,15 @@
         "type": "Blade",
         "damage": "2",
         "properties": "agile, light, pierce",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Dart / Throwing Knife / Throwing Star / Chakram",
+        "quality": "1",
+        "type": "Blade",
+        "damage": "2",
+        "properties": "agile, bundle (d6), light, pierce, thrown (short/medium)",
         "load": "1",
         "cost": "50"
     },
@@ -90,20 +90,20 @@
         "cost": "200"
     },
     {
-        "name": "Greatsword / Claymore / Gim",
-        "quality": "2",
-        "type": "Blade",
-        "damage": "4",
-        "properties": "heavy (d8), pierce, two-handed",
-        "load": "2",
-        "cost": "200"
-    },
-    {
         "name": "Twinblade",
         "quality": "2",
         "type": "Blade",
         "damage": "2",
         "properties": "agile, double-sided, pierce, two-handed",
+        "load": "2",
+        "cost": "200"
+    },
+    {
+        "name": "Greatsword / Claymore / Gim",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "4",
+        "properties": "heavy (d8), pierce, two-handed",
         "load": "2",
         "cost": "200"
     },
@@ -144,20 +144,20 @@
         "cost": "50"
     },
     {
-        "name": "Cestus / Spiked Gauntlet / Push Dagger",
-        "quality": "2",
-        "type": "Brawling",
-        "damage": "2",
-        "properties": "crush, light",
-        "load": "1",
-        "cost": "100"
-    },
-    {
         "name": "Claw / Arm Blade / Katar",
         "quality": "2",
         "type": "Brawling",
         "damage": "2",
         "properties": "light, slash",
+        "load": "1",
+        "cost": "100"
+    },
+    {
+        "name": "Cestus / Spiked Gauntlet / Push Dagger",
+        "quality": "2",
+        "type": "Brawling",
+        "damage": "2",
+        "properties": "crush, light",
         "load": "1",
         "cost": "100"
     },
@@ -243,21 +243,21 @@
         "cost": "100"
     },
     {
-        "name": "Glaive / Halberd / Poleaxe / Dagger-Axe / Swordstaff / Podao / Naginata",
-        "quality": "2",
-        "type": "Polearm",
-        "damage": "4",
-        "properties": "reach, slash, two-handed",
-        "load": "2",
-        "cost": "200"
-    },
-    {
         "name": "Quarterstaff / Scepter",
         "quality": "2",
         "type": "Polearm",
         "damage": "3",
         "properties": "crush, reach, versatile (+1)",
         "load": "1",
+        "cost": "200"
+    },
+    {
+        "name": "Glaive / Halberd / Poleaxe / Dagger-Axe / Swordstaff / Podao / Naginata",
+        "quality": "2",
+        "type": "Polearm",
+        "damage": "4",
+        "properties": "reach, slash, two-handed",
+        "load": "2",
         "cost": "200"
     },
     {
@@ -270,20 +270,20 @@
         "cost": "200"
     },
     {
-        "name": "Buckler",
+        "name": "Light Shield",
         "quality": "2",
         "type": "Shield",
-        "damage": "1",
-        "properties": "light, parry +1",
+        "damage": "2",
+        "properties": "AV +1, crush, parry +1",
         "load": "1",
         "cost": "150"
     },
     {
-        "name": "Light Shield",
+        "name": "Buckler",
         "quality": "2",
         "type": "Shield",
-        "damage": "1",
-        "properties": "AV +1, parry +1",
+        "damage": "2",
+        "properties": "crush, light, parry +1",
         "load": "1",
         "cost": "150"
     },
@@ -291,8 +291,8 @@
         "name": "Heavy Shield",
         "quality": "2",
         "type": "Shield",
-        "damage": "2",
-        "properties": "AV +2, heavy (d8), parry +2, rigid 1",
+        "damage": "3",
+        "properties": "AV +2, crush, heavy (d8), parry +1, rigid 1",
         "load": "2",
         "cost": "500"
     },
@@ -301,7 +301,7 @@
         "quality": "3",
         "type": "Shield",
         "damage": "3",
-        "properties": "AV +3, covering, heavy (d10), parry +2, rigid 2",
+        "properties": "AV +3, crush, heavy (d10), parry +2, rigid 2",
         "load": "2",
         "cost": "1000"
     },
@@ -315,15 +315,6 @@
         "cost": "50"
     },
     {
-        "name": "Bola / Net",
-        "quality": "1",
-        "type": "Thrown",
-        "damage": "2",
-        "properties": "bundle (d4), entangle, heavy (d6), thrown (close/short)",
-        "load": "1",
-        "cost": "50"
-    },
-    {
         "name": "Sling / Slingshot",
         "quality": "1",
         "type": "Thrown",
@@ -333,7 +324,16 @@
         "cost": "50"
     },
     {
-        "name": "Kestros",
+        "name": "Bola / Net",
+        "quality": "1",
+        "type": "Thrown",
+        "damage": "2",
+        "properties": "bundle (d4), entangle, heavy (d6), thrown (close/short)",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Spear Thrower / Kestros",
         "quality": "2",
         "type": "Thrown",
         "damage": "3",

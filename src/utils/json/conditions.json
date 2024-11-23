@@ -61,7 +61,7 @@
     },
     {
         "name": "pushed",
-        "description": "You are involuntarily moved a specified distance away from your current location away from the source that pushed you. <br/>If you are pushed into a solid object that ends your movement, take falling damage as if you had fallen the same distance you moved before hitting the object. You don\u2019t trigger Opportunity Attacks with this movement.<br/>"
+        "description": "You are involuntarily moved a specified distance away from your current location away from the source that pushed you. <br/>If you are pushed into another creature or solid object that ends your movement, take falling damage as if you had fallen the same distance you moved before hitting the creature or object. You don\u2019t trigger Opportunity Attacks with this movement. If you are moved into another creature, they also take the same amount of damage.<br/>"
     },
     {
         "name": "restrained",

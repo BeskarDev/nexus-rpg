@@ -96,6 +96,14 @@
 
 **Effect** <br/> You conjure a small orb of flame resembling a miniature sun.<br/>On a success, the sphere appears at the target location. It also shines bright light in close range and dim light in short range of it.  Any creature in melee range of it takes +4 fire damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a close distance within range. The sphere lasts for a short duration.<br/> 
 
+### True Strike
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Short | quick
+
+**Effect** <br/> You focus on a creatures thoughts, gaining insight into their defenses. Cast this spell on your turn.<br/>On a success, increase the SL of your next attack until the end of your next turn by one step (max. critical success).<br/> 
+
 ### Break Curse
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -306,7 +314,11 @@
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | -
 
-**Effect** <br/> You overwork the vital system of the target, returning them to consciousness or causing them a heart attack if already conscious. The target must be a living creature.<br/><strong>Weak.</strong> If the target is dying, they stop dying but remain unconscious. If the target is unconscious, they wake up. If the target is conscious, they take +3 damage.<br/><strong>Strong.</strong> If the target is dying, they stop dying and wake up. If the target is unconscious, they wake up. If the target is conscious, they take +6 damage.<br/><strong>Critical.</strong> If the target is dying, they stop dying, wake up, and one of their Injuries is instantly treated (their choice). If the target is unconscious, they wake up. If the target is conscious, they take +9 damage. 
+**Effect** <br/> You overwork the vital system of the target, returning them to consciousness or causing them a heart attack if already conscious. The target must be a living creature.<br/><strong>Weak.</strong> If the target is dying, they stop dying but remain unconscious. If the target is unconscious, they wake up. If the target is conscious, they take +3 radiant damage.<br/><strong>Strong.</strong> If the target is dying, they stop dying and wake up. If the target is unconscious, they wake up. If the target is conscious, they take +6 radiant damage.<br/><strong>Critical.</strong> If the target is dying, they stop dying, wake up, and one of their Injuries is instantly treated (their choice). If the target is unconscious, they wake up. If the target is conscious, they take +9 radiant damage. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> If the target is conscious, they take +5/10/15 radiant damage instead.<br/><strong>(Rank 3)</strong> If the target is conscious, they take +7/14/21 radiant damage instead.
+
+>
 
 ### Rapid Vitality
 
@@ -315,6 +327,10 @@
  1 | 2 | Medium (8) | Medium | quick
 
 **Effect** <br/> You quickly envigorate a creature. Cast this spell on your turn.<br/><strong>Weak.</strong> Restore +2 HP to your target.<br/><strong>Strong.</strong> Restore +4 HP to your target.<br/><strong>Critical. </strong>Restore +6 HP to your target. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 3)</strong> Restore +6/12/18 HP instead.
+
+>
 
 ### Vitalizing Weapon
 
@@ -340,6 +356,18 @@
 
 >
 
+### Cleanse
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | quick,  singular
+
+**Effect** <br/> Relieve a creature from any negative conditions. Cast this spell on your turn. Target a willing creature. On a success, remove the following conditions from the target: bleeding, burning, blinded, charmed, confused, dazed, deafened, frightened, paralyzed, poisoned, silenced, slowed, staggered, and stunned. This doesn’t remove conditions applied by a continuous effect that affects the target indirectly, such as an persistent area effect. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose an additional willing target in range.
+
+>
+
 ### Hallow Ground
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -348,6 +376,10 @@
 
 **Effect** <br/> You hallow the ground around you, healing all allies standing on it.<br/>On a success, each ally in range of the hallow ground restores +2 HP when you cast the spell and at the start of each of their turns.<br/>The hallow ground remains stationary at the position where you cast it for a short duration.<br/> 
 
+> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4 HP instead.
+
+>
+
 ### Healing Burst
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -355,6 +387,26 @@
  2 | 4 | Hard (10) | Short | blast (cone)
 
 **Effect** <br/> You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +5/10/15 HP instead.
+
+>
+
+### Abundance of Life
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Long | concentrate
+
+**Effect** <br/> You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone’s life force and instantly heal one of their Wounds and regain +8 HP. Any single creature can only benefit from this effect of this spell once per day.<br/>The zone lasts for a medium duration.<br/> 
+
+### Vitality Surge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Medium | blast (cone)
+
+**Effect** <br/> You unleash a devastating explosion of pure life force that overwhelms your enemies' vital systems while gently reinvigorating your allies.<br/>Target all hostile creatures and your allies within the spell’s area. Compare the roll against a very hard Difficulty (12) to calculate the SL for your allies.<br/><strong>Weak.</strong> Deal +6 radiant damage to each hostile target. Restore +3 HP to each ally.<br/><strong>Strong.</strong> Deal +12 radiant damage to each hostile target and they are briefly dazed. Restore +6 HP to each ally.<br/><strong>Critical.</strong> Deal +18 radiant damage to each hostile target and they are briefly stunned. Restore +9 HP to each ally. 
 
 ## Death
 
@@ -1016,9 +1068,13 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | Medium (8) | Medium | concentrate,  singular
+ 1 | 2 | Medium (8) | Medium | concentrate
 
-**Effect** <br/> You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, both of you gain the following effects:<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you.<br/>- If either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell.<br/> 
+**Effect** <br/> You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, if either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/><strong>(Rank 3) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you.<br/>
+
+>
 
 ### Pacifying Weapon
 
@@ -1039,6 +1095,10 @@
  1 | 2 | vs. Resist | Medium | quick
 
 **Effect** <br/> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignoring AV). 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Add your Mysticism to the damage the attacker takes.<br/><strong>(Rank 3)</strong> Add 2 x your Mysticism to the damage the attacker takes.
+
+>
 
 ### Dome of Sanctuary
 
@@ -1068,9 +1128,25 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 8 | Very Hard (12) | Medium | concentrate
+ 3 | 6 | Very Hard (12) | Medium | concentrate
 
-**Effect** <br/> create an area of anti-magic, allowing no spells to be cast within it. also, temporary magical effects within it end immediately.  
+**Effect** <br/> You create a sphere of pure anti-magic.<br/>On a success, you conjure the spherical field covering a close area around the target location. Within the field, all spellcasting or lasting magical effects are suppressed.<br/>Any magical effect moving into the field is also immediately dispelled and magical area of effects exclude the space of the field.<br/>The field lasts for a short duration.<br/> 
+
+### Martyrdom's Blessing
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Short | singular
+
+**Effect** <br/> You bestow a powerful blessing of self-sacrifice upon an ally or yourself.<br/>On a success, the target gains the following benefits for a short duration:<br/>- Whenever an ally within medium range would take damage, they can choose to take that damage instead. When taking damage for an ally this way, they gain resistance to that damage.<br/>- After taking damage for at least one ally, the first attack roll on the target’s and that ally’s next turn both gain +1 boon.<br/> 
+
+### Pacifying Presence
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Long | concentrate
+
+**Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignoring AV).<br/> 
 
 ## War
 

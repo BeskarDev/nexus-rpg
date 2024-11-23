@@ -24,13 +24,29 @@
 
 **Effect** <br/> You generate a small electric discharge from your fingertip against a target.<br/><strong>Weak.</strong> Deal +2 lightning damage.<br/><strong>Strong. </strong>Deal +4 lightning damage to the target and you can deal +2 lightning damage to one other creature in melee range of the target.<br/><strong>Critical. </strong>Deal +6 lightning damage to the target and you can deal +4 lightning damage to one other creature in melee range of the target.<br/>You can also use the flame to ignite flammable materials in range, such as tinder or straw.<br/> 
 
+### Chromatic Orb
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect** <br/> You focus elemental energy into a concentrated orb and hurl it against a target. When casting the spell, choose one damage type between acid (ignore 1/2 AV), fire (burning (2/4/6)), frost (briefly slowed), lightning (briefly staggered), or poison (briefly poisoned).<br/><strong>Weak.</strong> Deals +4 damage of the chosen damage type and apply the additional effect mentioned for that damage type.<br/><strong>Strong.</strong> Deals +8 damage of the chosen damage type and apply the additional effect mentioned for that damage type.<br/><strong>Critical. </strong>Deals +12 damage of the chosen damage type and apply the additional effect mentioned for that damage type. 
+
+> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +6/12/18 damage instead.<br/><strong>(Rank 3) </strong>Deal +8/16/24 damage instead.
+
+>
+
 ### Elemental Ward
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | Medium (8) | Self | concentrate,  quick
+ 1 | 2 | Medium (8) | Self | quick
 
-**Effect** <br/> You surround yourself in a ward that absorbs elemental energies affecting you. Cast this spell before taking damage or on your turn.<br/>On a success, you gain resistance against fire, frost, and lightning damage. This spell lasts for a short duration.<br/> 
+**Effect** <br/> You surround yourself in a ward that absorbs elemental energies affecting you. Cast this spell before taking damage or on your turn.<br/>On a success, you briefly gain resistance against acid, fire, frost, lightning, and poison damage.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2) </strong>While the spell lasts, inflict half of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignoring AV).<br/><strong>(Rank 3) </strong>While the spell lasts, inflict the same amount of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignoring AV) instead.
+
+>
 
 ### Flame Burst
 
@@ -40,6 +56,10 @@
 
 **Effect** <br/> Holding your open hand out, a wide burst of fire erupts from it.<br/><strong>Weak.</strong><em> </em>Deals +2 fire damage to all targets. <br/><strong>Strong.</strong> Deals +4 fire damage to all targets.<br/><strong>Critical.</strong> Deals +6 fire damage to all targets and each of them suffers burning (2) for a short duration. 
 
+> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/8/12 damage against each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 damage against each target instead.
+
+>
+
 ### Flaming Weapon
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -47,6 +67,10 @@
  1 | 2 | Medium (8) | Self | enchant (weapon),  singular
 
 **Effect** <br/> Enchant your weapon with magical flames.<br/>On a success, the weapon emits bright light in melee range and dim light in close range of it and deals +2 fire damage. You can make a weapon attack as part of casting this spell.<br/>This spell lasts for a medium duration.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 fire damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 fire damage instead.
+
+>
 
 ### Frozen Weapon
 
@@ -56,13 +80,21 @@
 
 **Effect** <br/> Enchant your weapon with magical frost.<br/>On a success, the weapon deals +2 frost damage. On a strong or critical hit, the target is briefly slowed. You can make a weapon attack as part of casting this spell.<br/>This spell lasts for a medium duration.<br/> 
 
+> **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 frost damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 frost damage instead.
+
+>
+
 ### Ice Shards
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Medium | -
 
-**Effect** <br/> You form an icicle in your grasp. The icicle explodes on impact, sending out razor sharp shards around it.<br/><strong>Weak.</strong> Deal +3 frost damage.<strong> </strong>The shards explode, dealing +0 frost damage to all creatures in melee range of the target (if the attack roll hits vs. their Dodge).<br/><strong>Strong. </strong>Deal +6 frost damage. The shards explode, dealing +2 frost damage to all creatures in melee range of the target (if the attack roll hits vs. their Dodge).<br/><strong>Critical. </strong>Deal +9 frost damage. The shards explode, dealing +4 frost damage to all creatures in melee range of the target (if the attack roll hits vs. their Dodge). 
+**Effect** <br/> You form an icicle in your grasp. The icicle explodes on impact, sending out razor sharp shards around it.<br/><strong>Weak.</strong> Deal +4 frost damage to the target.<br/><strong>Strong. </strong>Deal +8 frost damage to the target.<br/><strong>Critical. </strong>Deal +12 frost damage to the target.<br/>Also on a success, the icicle explodes upon impact, dealing +2 frost damage to all other creatures in melee range of the target.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +6/12/18 damage to the target and +4 damage with the explosion instead.<br/><strong>(Rank 3) </strong>Deal +8/16/24 damage to the target and +6 damage with the explosion instead.
+
+>
 
 ### Lightning Arc
 
@@ -94,7 +126,7 @@
 ---|---|---|---|---
  2 | 4 | Hard (10) | Long | -
 
-**Effect** <br/> You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll’s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +4 fire damage to all targets. <br/><strong>Strong.</strong> Deals +8 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +12 fire damage to all targets and each of them suffers burning (6) for a short duration. 
+**Effect** <br/> You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll’s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +4 fire damage to all targets and each of them suffers burning (2) for a short duration.<br/><strong>Strong.</strong> Deals +8 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +12 fire damage to all targets and each of them suffers burning (6) for a short duration. 
 
 ### Frost Wave
 
@@ -590,9 +622,9 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Resist | Short | concentrate
+ 1 | 2 | vs. Resist | Short | quick
 
-**Effect** <br/> You focus on a creatures thoughts, gaining insight into their defenses.<br/>On a success, increase the SL of your next attack until the end of your next turn by one step (failure to weak success, weak success to strong success, and so on).<br/> 
+**Effect** <br/> You focus on a creatures thoughts, gaining insight into their defenses. Cast this spell on your turn.<br/>On a success, increase the SL of your next attack until the end of your next turn by one step (max. critical success).<br/> 
 
 ### Counterspell
 

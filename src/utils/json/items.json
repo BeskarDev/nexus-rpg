@@ -181,7 +181,7 @@
         "category": "Containers",
         "load": "0",
         "cost": "1",
-        "description": "A simple pouch to be carried around by hand or on a belt. Can hold up to 2 load."
+        "description": "A simple pouch to be carried around by hand or on a belt. Can hold up to 1 load."
     },
     {
         "name": "Linen Bag",
@@ -197,7 +197,7 @@
         "category": "Containers",
         "load": "1",
         "cost": "10",
-        "description": "A simple backpack or satchel. Can hold up to 10 load."
+        "description": "A simple backpack or satchel. If this is your first backpack, it takes up 0 load instead."
     },
     {
         "name": "Wooden Chest",
@@ -213,7 +213,7 @@
         "category": "Containers",
         "load": "1",
         "cost": "50",
-        "description": "A sturdy backpack for longer periods of travel. Can hold up to 15 load."
+        "description": "A sturdy backpack for longer periods of travel. If this is your first backpack, it takes up 0 load instead and it adds +2 to your carry capacity limits."
     },
     {
         "name": "Reinforced Chest",
@@ -229,7 +229,7 @@
         "category": "Containers",
         "load": "1",
         "cost": "200",
-        "description": "A high-quality backpack made to resist the longest journeys. Can hold up to 20 load."
+        "description": "A high-quality backpack made to resist the longest journeys. If this is your first backpack, it takes up 0 load instead and it adds +4 to your carry capacity limits."
     },
     {
         "name": "Rope (Hemp)",
@@ -325,7 +325,7 @@
         "category": "Gear",
         "load": "0",
         "cost": "100",
-        "description": "A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a spellcasting anchor to cast arcane spells."
+        "description": "A small hand-hold object infused by an elemental gem or similar arcane conduit. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a Spell Catalyst to cast arcane spells."
     },
     {
         "name": "Bundle of Maps",
@@ -357,7 +357,7 @@
         "category": "Gear",
         "load": "0",
         "cost": "100",
-        "description": "A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a spellcasting anchor to cast mystical spells."
+        "description": "A small hand-hold object holding a mystical artifact, or similar object radiating mystical power. Can also be combined with another hand-held item (weapon, shield, \u2026). Can be used as a Spell Catalyst to cast mystical spells."
     },
     {
         "name": "Thieves\u2018 Tools",
