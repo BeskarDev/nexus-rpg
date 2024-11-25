@@ -301,7 +301,7 @@
         "quality": "3",
         "type": "Shield",
         "damage": "3",
-        "properties": "AV +3, crush, heavy (d10), parry +2, rigid 2",
+        "properties": "AV +3, crush, heavy (d10), parry +1, rigid 2",
         "load": "2",
         "cost": "1000"
     },

@@ -10,11 +10,13 @@ sidebar_position: 2
 
 HP is your short-term condition during a fight. When you take damage, first reduce it by your Armor Value (AV) and subtract the result (min. 1) from your HP. If you don’t have any HP left, you instead suffer Wounds (see below).
 
-You start the game with HP equal to 12 + Strength (see the table below). You can also gain additional HP through talents, but you can never exceed 40 HP in total. You regain all of your HP after you have time for a short break.
+You start the game with HP equal to 12 + Strength (see the table below). With each Character Level above one you gain another +2 HP, which is also described in the Character Progression section. You regain all of your HP after you have time for a short break.
 
 | Strength | d4 | d6 | d8 | d10 | d12 |
 | --- | --- | --- | --- | --- | --- |
 | HP | 16 | 18 | 20 | 22 | 24 |
+
+You can also gain additional HP through talents, but you can never exceed 50 HP in total from all sources combined.
 
 ### Temporary HP
 
@@ -69,7 +71,7 @@ Non-lethal attacks inflict two Fatigue. You also suffer varying amounts of Fatig
 
 During a night‘s rest, you remove two Fatigue. If you have a bad night, instead only remove one Fatigue.
 
-> When suffering an Injury or Fatigue, mark one of your Wounds on your Adventurer Sheet with a ○ for an Injury. A ╱ marks your first Fatigue for a Wound. Add a ╲ for a second Fatigue of a Wound into the same Wound mark, so that both Fatigue together show a ╳.
+> When suffering an Injury or Fatigue, mark one of your Wounds on your Adventurer Sheet with a | for an Injury. A ╱ marks your first Fatigue for a Wound. Add a ╲ for a second Fatigue of a Wound into the same Wound mark, so that both Fatigue together show a ╳.
 
 If you first suffer one Fatigue and then one Injury, the Wound from the Injury counts as your first Wound, even if you suffer a second Fatigue later, and thus also suffering another Wound from having two Fatigue.
 > 

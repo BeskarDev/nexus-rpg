@@ -41,6 +41,8 @@ def split_table_by_discipline(input_file, output_file):
                     file.write('\n\n> **Heightened** <br/>' + heightened_effect.replace('<br/><br/><strong>(Rank', '<br/><strong>(Rank') + '\n>')
                 file.write('\n\n')
 
+    print(f"Subtables written to: {output_file}")
+
 # Example usage
 input_file = 'markdown/arcane-spells.md'
 output_file = 'split-tables/arcane-spells.md'

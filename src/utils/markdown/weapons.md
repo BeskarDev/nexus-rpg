@@ -33,7 +33,7 @@ Name | Quality | Type | Damage | Properties | Load | Cost
 **Light Shield** | 2 | Shield | 2 | AV +1, crush, parry +1 | 1 | 150
 **Buckler** | 2 | Shield | 2 | crush, light, parry +1 | 1 | 150
 **Heavy Shield** | 2 | Shield | 3 | AV +2, crush, heavy (d8), parry +1, rigid 1 | 2 | 500
-**Great Shield** | 3 | Shield | 3 | AV +3, crush, heavy (d10), parry +2, rigid 2 | 2 | 1000
+**Great Shield** | 3 | Shield | 3 | AV +3, crush, heavy (d10), parry +1, rigid 2 | 2 | 1000
 **Blowpipe** | 1 | Thrown | 1 | ammo, blowpipe, pierce, range (short/long) | 1 | 50
 **Sling / Slingshot** | 1 | Thrown | 3 | ammo, crush, thrown (short/long), two-handed | 1 | 50
 **Bola / Net** | 1 | Thrown | 2 | bundle (d4), entangle, heavy (d6), thrown (close/short) | 1 | 50

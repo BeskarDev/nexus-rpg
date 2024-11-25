@@ -77,7 +77,7 @@ Name | Quality | Damage | Properties | Load | Cost
 **Light Shield**  | 2  | 2  | AV +1, crush, parry +1  | 1  | 150
 **Buckler**  | 2  | 2  | crush, light, parry +1  | 1  | 150
 **Heavy Shield**  | 2  | 3  | AV +2, crush, heavy (d8), parry +1, rigid 1  | 2  | 500
-**Great Shield**  | 3  | 3  | AV +3, crush, heavy (d10), parry +2, rigid 2  | 2  | 1000
+**Great Shield**  | 3  | 3  | AV +3, crush, heavy (d10), parry +1, rigid 2  | 2  | 1000
 
 
 ## Thrown 

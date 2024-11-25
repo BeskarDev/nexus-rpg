@@ -168,7 +168,7 @@
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | singular
 
-**Effect** <br/> You clad a creature in a magical cloak made of darkness.<br/>On a success, the creature wearing the cloak gains the following effects:<br/>- You have resistance against frost damage.<br/>- You gain +1 boon on Agility + Cunning rolls to hide or move silently.<br/>The cloak lasts for a medium duration or until discarded by the creature.<br/> 
+**Effect** <br/> You clad a creature in a magical cloak made of darkness.<br/>On a success, the creature wearing the cloak gains the following effects:<br/>- You have resistance against frost damage.<br/>- You gain +1 boon on Agility + Stealth rolls to hide or move silently.<br/>The cloak lasts for a medium duration or until discarded by the creature.<br/> 
 
 ### Curse of Twilight
 
@@ -1146,7 +1146,7 @@
 ---|---|---|---|---
  3 | 6 | vs. Resist | Long | concentrate
 
-**Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignoring AV).<br/> 
+**Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignoring AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect.<br/> 
 
 ## War
 

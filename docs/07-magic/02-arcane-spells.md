@@ -150,7 +150,7 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> You form a long spear-like ice shard, hovering above your hand. On a success, you can choose to use the ice lance as a melee weapon or throw it against a target within range. The ice lance lasts for a short duration or until destroyed.<br/><br/><strong>Weapon.</strong> Use your roll’s result as a melee attack against a target in reach using the ice lance. The ice lance deals +5 frost weapon damage, has the fragile, pierce, reach, and versatile (+1) properties, and d6 Durability. You can use your spell power instead of your melee power for the base damage with this weapon. On your following turns, you can attack with it again by rolling Mind + Arcana.<br/><br/><strong>Throw.</strong> Use your roll’s result vs. Dodge against a single target in range.<br/><strong>Weak.</strong> You deal +6 frost damage.<br/><strong>Strong.</strong> You deal +12 frost damage.<br/><strong>Critical.</strong> You deal +18 frost damage. 
+**Effect** <br/> You form a long spear-like ice shard, hovering above your hand. On a success, you can choose to use the ice lance as a melee weapon or throw it against a target within range. The ice lance lasts for a short duration or until destroyed.<br/><br/><strong>Weapon.</strong> Use your roll’s result as a melee attack against a target in reach using the ice lance. The ice lance deals +5 frost weapon damage, has the fragile, pierce, reach, and versatile (+1) properties, and d6 Durability. You can use your spell power instead of your melee power for the base damage with this weapon. On your following turns, you can attack with it again by rolling Mind + Arcana.<br/><br/><strong>Throw.</strong> Use your roll’s result vs. Dodge against a single target in range.<br/><strong>Weak.</strong> Deal +6 frost damage.<br/><strong>Strong.</strong> Deal +12 frost damage.<br/><strong>Critical.</strong> Deal +18 frost damage. 
 
 ### Lightning Strike
 
@@ -344,6 +344,14 @@ sidebar_position: 2
 
 ## Conjuration
 
+### Arcane Bolt
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | vs. Dodge | Medium | -
+
+**Effect** <br/> Produce a small arcane projectile and hurl it against a target.<br/><strong>Weak.</strong> Deals +2 blast damage (ignoring 1/2 AV).<br/><strong>Strong. </strong>Deals +4 blast damage (ignoring 1/2 AV) and the target is briefly dazed.<br/><strong>Critical. </strong>Deals +6 blast damage (ignoring 1/2 AV) and the target is briefly dazed. 
+
 ### Arcane Glyph
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -351,14 +359,6 @@ sidebar_position: 2
  0 | 0 | Medium (8) | Touch | ritual (minutes),  singular
 
 **Effect** <br/> Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br/><br/><strong>Explosion. </strong>Roll vs. Dodge targeting each creature close to the glyph. On a hit, each target takes +2/4/6 blast damage (ignoring 1/2 AV).<br/><br/><strong>Alarm.</strong> A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br/><br/><strong>Spell Effect. </strong>Choose one of your other non-ritual spells targeting one or multiple creatures in no more than short range.<strong> </strong>Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br/><br/>Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br/>Once the condition is met, the glyph erupts with the chosen effect.<br/> 
-
-### Arcane Missiles
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 0 | 0 | Medium (8) | Medium | -
-
-**Effect** <br/> Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignoring 1/2 AV).<br/> 
 
 ### Extraplanar Pocket
 
@@ -385,6 +385,18 @@ sidebar_position: 2
 **Effect** <br/> You summon an arcane barrier of semi-translucent energy that provides cover and let’s nothing through. The barrier takes the dimensions of a rectangular door (2 meters x 1 meter) and can be oriented in any direction.<br/>On a success, you create the barrier within range in the desired orientation, as long as it touches some solid surface or object. Standing behind the barrier provides cover.<br/><br/>The barrier is immovable and lasts for a short duration or until destroyed. The barrier can be destroyed like any other object. It has 6 Parry and Dodge, 4 AV, and 20 HP.<br/> 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The barrier has 8 Parry and Dodge, 6 AV, and 30 HP instead.<br/><strong>(Rank 3)</strong> The barrier has 10 Parry and Dodge, 8 AV, and 40 HP instead.
+
+>
+
+### Arcane Missiles
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | -
+
+**Effect** <br/> Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignoring 1/2 AV).<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Each missile deals +4 blast damage (ignoring 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 blast damage (ignoring 1/2 AV) instead.
 
 >
 
@@ -426,9 +438,9 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> Conjure a barrage of small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missile.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +4 blast damage (ignoring 1/2 AV).<br/> 
+**Effect** <br/> Conjure a barrage of small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missile.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignoring 1/2 AV).<br/> 
 
-> **Heightened** <br/> (Rank 3) Each missile deals +6 blast damage (ignoring 1/2 AV) instead.
+> **Heightened** <br/> (Rank 3) Each missile deals +4 blast damage (ignoring 1/2 AV) instead.
 
 >
 
@@ -754,7 +766,7 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You push yourself against the pull of the earth, letting you hover visibly above the ground.<br/>On a success, you start levitating. While levitating, you gain the following effects:<br/>- You gain +1 boon on Agility + Cunning rolls to move silently.<br/>- You can’t move more than a short distance per turn.<br/>- You ignore the effects of difficult terrain from the ground below you.<br/>- You don‘t trigger any mechanisms in the ground, such as pressure plates.<br/>- When you would fall, you instead softly glide a short distance per round lower.<br/>The levitation lasts for a medium duration. If the spell ends while you still fall, you fall the remaining distance as normal.<br/> 
+**Effect** <br/> You push yourself against the pull of the earth, letting you hover visibly above the ground.<br/>On a success, you start levitating. While levitating, you gain the following effects:<br/>- You gain +1 boon on Agility + Stealth rolls to move silently.<br/>- You can’t move more than a short distance per turn.<br/>- You ignore the effects of difficult terrain from the ground below you.<br/>- You don‘t trigger any mechanisms in the ground, such as pressure plates.<br/>- When you would fall, you instead softly glide a short distance per round lower.<br/>The levitation lasts for a medium duration. If the spell ends while you still fall, you fall the remaining distance as normal.<br/> 
 
 ### Orbiting Shards
 

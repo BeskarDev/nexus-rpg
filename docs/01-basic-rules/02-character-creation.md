@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# 📋 Adventurer Creation
+# 📋 Character Creation
 
-![banner-img](/img/banner/adventurer-creation-banner.png)
+![banner-img](/img/banner/character-creation-banner.png)
 
 ## Creation Steps
 

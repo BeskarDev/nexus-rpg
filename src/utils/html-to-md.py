@@ -137,32 +137,33 @@ def df_to_markdown(df, filename):
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="Convert HTML to Markdown")
-  parser.add_argument("input_files", nargs="+", help="Paths to the input HTML files (including the 'input' subdirectory)")
+  parser.add_argument("input_dir", default="input", nargs="?", help="Path to the input directory (default: input)")
   args = parser.parse_args()
 
-  for input_file in args.input_files:
-    # Check if file exists with full path
-    if not os.path.isfile(input_file):
-      print(f"Error: File '{input_file}' does not exist.")
-      continue  # Skip to the next file if this one doesn't exist
-    
-    # Convert file to DataFrame
-    df = html_table_to_dataframe(input_file)
-    
-    # Get filename without the "input" subdirectory
-    filename = os.path.basename(input_file)
-    # Remove extension
-    filename, extension = os.path.splitext(filename)
+  input_dir = os.path.abspath(args.input_dir)
 
-    # Create output directory if it doesn't exist
-    output_dir = os.path.join(os.getcwd(), "markdown")
-    if not os.path.exists(output_dir):
-      os.makedirs(output_dir)
-      
-    # Create output filename with markdown extension
-    output_file = os.path.join(output_dir, filename + ".md")
-      
-    df_to_markdown(df, output_file)
+  if not os.path.exists(input_dir):
+      print(f"Error: Input directory '{input_dir}' does not exist.")
+      exit(1)
 
-    # Print confirmation message
-    print(f"Successfully converted {filename}!")
+  for filename in os.listdir(input_dir):
+      input_file = os.path.join(input_dir, filename)
+
+      if os.path.isfile(input_file):
+          # Convert file to DataFrame
+          df = html_table_to_dataframe(input_file)
+
+          # Get filename without extension
+          filename, extension = os.path.splitext(filename)
+
+          # Create output directory if it doesn't exist
+          output_dir = os.path.join(os.getcwd(), "markdown")
+          if not os.path.exists(output_dir):
+              os.makedirs(output_dir)
+
+          # Create output filename with markdown extension
+          output_file = os.path.join(output_dir, filename + ".md")
+
+          df_to_markdown(df, output_file)
+
+          print(f"Successfully converted {filename}!")
