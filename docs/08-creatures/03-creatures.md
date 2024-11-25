@@ -146,7 +146,7 @@ sidebar_position: 3
 
 **Initiative** Fast<br />**HP** 10, **AV** 2 (light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
 
-**Skills** Archery 0, Athletics 0, Cunning 1, Fighting 1, Perception 0
+**Skills** Archery 0, Athletics 0, Stealth 1, Fighting 1, Perception 0
 
 **Actions**<br />**- Dagger (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Slingshot (ammo, crush, thrown (medium), two-handed).** 6 damage (4 base + 2 weapon).
 
@@ -158,7 +158,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 10, **AV** 1 (natural light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d4<br />**Parry** 8, **Dodge** 10, **Resist** 7
 
-**Skills** Archery 1, Crafting (woodworking) 0, Cunning 1, Fighting 1, Nature 0
+**Skills** Archery 1, Crafting (woodworking) 0, Stealth 1, Fighting 1, Nature 0
 
 **Actions**<br />**- Cleaver (agile, light, slash).** 6 damage (4 base + 2 weapon).<br />**- Sling (ammo, crush, thrown (medium), two-handed).** 6 damage (4 base + 2 weapon).
 
@@ -170,7 +170,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 10, **AV** 2 (natural light)<br />**STR** d6, **AGI** d6, **SPI** d6, **MND** d8<br />**Parry** 7, **Dodge** 8, **Resist** 9
 
-**Skills** Arcana 1, Cunning 1, Influence 1, Lore 1, Perception 1
+**Skills** Arcana 1, Stealth 1, Influence 1, Lore 1, Perception 1
 
 **Resistances** poison damage
 
@@ -184,7 +184,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 10, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 8, **Dodge** 9, **Resist** 7
 
-**Skills** Arcana 1, Archery 1, Cunning 1, Fighting 1, Influence 1, Lore 1, Perception 1
+**Skills** Arcana 1, Archery 1, Stealth 1, Fighting 1, Influence 1, Lore 1, Perception 1
 
 **Resistances** poison damage
 
@@ -198,7 +198,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 8, **Resist** 7
 
-**Skills** Cunning 1, Fighting 1, Perception 1
+**Skills** Stealth 1, Fighting 1, Perception 1
 
 **Resistances** poison damage
 
@@ -236,7 +236,7 @@ sidebar_position: 3
 
 **Initiative** Fast<br />**HP** 3x10, **AV** 3 (light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
 
-**Skills** Archery 0, Athletics 0, Cunning 1, Fighting 1, Perception 0
+**Skills** Archery 0, Athletics 0, Stealth 1, Fighting 1, Perception 0
 
 **Actions**<br />**- Fast Strikes.** This creature can attack twice per turn.<br />**- Scimitar (agile, light, slash).** 6 damage (4 base + 2 weapon).<br />**- Whip (agile, entangle, light, reach, slash).** 6 damage (4 base + 2 weapon).<br />**- Dart (agile, bundle, light, pierce, thrown (short)).** 6 damage (4 base + 2 weapon).
 
@@ -398,7 +398,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 30, **AV** 4 (natural light)<br />**STR** d8, **AGI** d10, **SPI** d8, **MND** d6<br />**Parry** 9, **Dodge** 10, **Resist** 8
 
-**Skills** Cunning 2, Fighting 1, Influence 2, Perception 2
+**Skills** Stealth 2, Fighting 1, Influence 2, Perception 2
 
 **Resistances** poison damage
 
@@ -412,7 +412,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d10<br />**Parry** 8, **Dodge** 9, **Resist** 10
 
-**Skills** Arcana 2, Cunning 2, Fighting 0, Influence 2, Lore 2, Perception 2
+**Skills** Arcana 2, Stealth 2, Fighting 0, Influence 2, Lore 2, Perception 2
 
 **Resistances** poison damage
 
@@ -438,7 +438,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 3x20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d10<br />**Parry** 8, **Dodge** 9, **Resist** 10
 
-**Skills** Arcana 2, Cunning 2, Fighting 0, Influence 2, Lore 2, Perception 2
+**Skills** Arcana 2, Stealth 2, Fighting 0, Influence 2, Lore 2, Perception 2
 
 **Resistances** poison damage
 
@@ -470,7 +470,7 @@ sidebar_position: 3
 
 **Initiative** Normal<br />**HP** 50, **AV** 6 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 12, **Dodge** 9, **Resist** 9
 
-**Skills** Archery 2, Athletics 3, Cunning 3, Fighting 1, Perception 3
+**Skills** Archery 2, Athletics 3, Stealth 3, Fighting 1, Perception 3
 
 **Resistances** poison damage
 

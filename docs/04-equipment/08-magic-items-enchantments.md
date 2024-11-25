@@ -141,7 +141,7 @@ Most weapons, Spell Catalysts, armor, and shields will have [prefix] enchantment
 | 3 | **temperate.** This item provides magical protection from extreme cold or extreme heat (choose one). You don’t have to roll a test during travel or exploration to resist the chosen form of extreme climate. |
 | 4 | **stalwart.** While wearing this item, whenever an effect would inflict the charmed, confused, dazed, frightened, paralyzed, staggered, or stunned condition on you, you can choose to not suffer that condition (you can use this after rolling a test against the effect). You can use this ability once per day. |
 | 5 | **tough.** While wearing this item, whenever you suffer damage, you can choose to gain resistance against that attack’s damage. You can use this ability once per day. |
-| 6 | **silent.** While wearing this item, either reduce it’s rigid property by 1 (min. 0), remove it’s noisy property, or gain +1 boon on Cunning rolls to move silently or surprise your enemies. You must choose the applicable effect in the given order, depending on the properties of the item. |
+| 6 | **silent.** While wearing this item, either reduce it’s rigid property by 1 (min. 0), remove it’s noisy property, or gain +1 boon on Stealth rolls to move silently or surprise your enemies. You must choose the applicable effect in the given order, depending on the properties of the item. |
 
 ### Wearable Enchantments
 

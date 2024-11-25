@@ -57,7 +57,7 @@
     },
     {
         "name": "noisy",
-        "description": "You suffer +1 bane on Cunning rolls (including surprising enemies)."
+        "description": "You suffer +1 bane on Stealth rolls (including surprising enemies)."
     },
     {
         "name": "parry X",

@@ -16,11 +16,11 @@ Whenever one group of combatants tries to get the upper hand on their foes, roll
 
 **Surprising Enemies**
 
-If you attempt to surprise your enemies at the start of combat, each participating adventurer rolls Agility + Cunning against each of the enemies’ Resist. An adventurer is considered hidden from all the enemies they succeeded against.
+If you attempt to surprise your enemies at the start of combat, each participating adventurer rolls Agility + Stealth against each of the enemies’ Resist. An adventurer is considered hidden from all the enemies they succeeded against.
 
 **Getting Surprised**
 
-If enemies try to surprise the adventurers on the other hand, each of the enemies has to roll Agility + Cunning against each of the adventurers’ Resist. An enemy is considered hidden from all adventurers they succeeded against.
+If enemies try to surprise the adventurers on the other hand, each of the enemies has to roll Agility + Stealth against each of the adventurers’ Resist. An enemy is considered hidden from all adventurers they succeeded against.
 
 ### Initiative
 
@@ -62,8 +62,8 @@ Use a variety of skills during combat to help you and your allies or hinder your
 | Action | Effect |
 | --- | --- |
 | Demoralize | Attempt to break an enemy’s spirit. Target an enemy in short range that can see and hear you. Roll Strength/Spirit + Influence vs. Resist. On a success, they are briefly frightened of you.<br/>You can only use this Action once against any individual creature. |
-| Distract | Attempt to break an enemy’s focus. Target an enemy in short range that can see and hear you. Roll Mind + Cunning vs. Resist. On a success, they are briefly distracted by you.<br/>You can only use this Action once against any individual creature. |
-| Hide | Attempt to hide from enemies that currently can‘t perceive you. Roll Agility + Cunning vs. Resist for all creatures you attempt to hide from. On a success, you are hidden from them. |
+| Distract | Attempt to break an enemy’s focus. Target an enemy in short range that can see and hear you. Roll Mind + Stealth vs. Resist. On a success, they are briefly distracted by you.<br/>You can only use this Action once against any individual creature. |
+| Hide | Attempt to hide from enemies that currently can‘t perceive you. Roll Agility + Stealth vs. Resist for all creatures you attempt to hide from. On a success, you are hidden from them. |
 | Shove | Attempt to push an enemy away from you. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher).<br/>On a success, you push them a close distance away from you. |
 | Spot | Attempt to spot any hidden or invisible enemy. They must be in your line of sight or range of hearing. Roll Spirit + Perception vs. Dodge. On a success, they are no longer hidden from you. |
 | Trip | Attempt to knock an enemy to the ground. Target an enemy you are in melee range of and that is the same size or smaller than you. Roll Strength + Athletics vs. their Parry or Dodge (whichever is higher). On a success, you knock them prone. |

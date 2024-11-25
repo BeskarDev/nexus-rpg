@@ -14,7 +14,7 @@ Name | Description
 **heavy (dX)** | For each Strength value below dX, suffer +1 bane on attacks for weapons or +1 bane on all Strength rolls for armor.
 **light** | Can be dual-wielded.
 **narrowed** | You suffer +1 bane on Perception rolls (including Initiative).
-**noisy** | You suffer +1 bane on Cunning rolls (including surprising enemies).
+**noisy** | You suffer +1 bane on Stealth rolls (including surprising enemies).
 **parry X** | Increase your Parry by X. You can only benefit from one held item with this property at a time.
 **pierce** | If you fail an attack roll, you can re-roll the test once between your turns.
 **range (normal/max)** | You can attack with this ranged weapon at the given normal range. When attacking a target further away, you suffer +1 bane for each range step beyond your normal range, up to your max. distance.

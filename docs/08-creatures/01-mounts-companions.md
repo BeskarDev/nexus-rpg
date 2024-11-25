@@ -113,7 +113,7 @@ Animal traits represent the general family of animal your companion is associate
 
 #### **Cat**
 
-- **Skills.** Athletics, Cunning, Fighting (-1 rank), Perception, Survival
+- **Skills.** Athletics, Stealth, Fighting (-1 rank), Perception, Survival
 - **Attacks**
     - **Bite** (*crush*). On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this attack can’t be used to attack any other target.
     - **Claw** (*light, slash*). Deals -1 weapon damage (min. 1).
@@ -164,7 +164,7 @@ Animal traits represent the general family of animal your companion is associate
 
 - **HP.** +10 HP.
 - **AV.** + Tier (natural heavy).
-- **Skills.** Athletics, Cunning, Fighting (-1 rank), Fortitude, Perception, Perception
+- **Skills.** Athletics, Stealth, Fighting (-1 rank), Fortitude, Perception, Perception
 - **Attacks**
     - **Pincer** (*crush, light*). Deals -1 weapon damage (min. 1). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that pincer can’t be used to attack any other target.
     - **Stinger** (*pierce*). If this creature is Large or larger, this attack has reach. Deals poison damage. On a strong or critical hit, the target is also poisoned for a short duration. While poisoned by this attack, the target also takes lasting poison damage equal to this attack’s weapon damage. They can roll Strength + Fortitude at the end of their turns to end the effect early.
@@ -284,7 +284,7 @@ Elemental companions are summoned from the primal planes, either via a binding m
 
 #### **Grell**
 
-- **Skills.** Cunning, Fighting (-1 rank), Perception
+- **Skills.** Stealth, Fighting (-1 rank), Perception
 - **Immunities.** lightning damage, blinded, prone
 - **Attacks**
     - **Beak** (*crush*).
@@ -297,7 +297,7 @@ Elemental companions are summoned from the primal planes, either via a binding m
 
 - **Attributes.** -1d Strength, +1d Agility
 - **Defenses.** -1 Parry, +1 Dodge
-- **Skills.** Arcana (-1 rank), Cunning, Fighting (-1 rank), Perception
+- **Skills.** Arcana (-1 rank), Stealth, Fighting (-1 rank), Perception
 - **Immunities.** prone
 - **Weaknesses.** radiant
 - **Attacks**
