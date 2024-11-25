@@ -1,16 +1,13 @@
-import { useColorMode } from '@docusaurus/theme-common'
 import { Alert, Avatar, Box, Button, styled, TextField } from '@mui/material'
 import { Character } from '@site/src/types/Character'
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import { SectionHeader } from '../CharacterSheet/CharacterSheet'
+import { emptyCharacter } from './assets/emptyCharacter'
 import './printCharacterSheetStyles.css'
-import { StatisticsTab } from '../CharacterSheet/CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { StatisticsSheet } from './sheets/1_Statistics'
 import { EquipmentSheet } from './sheets/2_Equipment'
 import { SpellsSheet } from './sheets/3_Spells'
 import { PersonalSheet } from './sheets/4_Personal'
-import { emptyCharacter } from './assets/emptyCharacter'
 
 const AttributeField = styled(TextField)({
 	maxWidth: '4.5rem',
@@ -81,6 +78,9 @@ export const PrintCharacterSheet: React.FC = () => {
 
 	return (
 		<Box>
+      <style type="text/css" media="print">{"\
+        @page {\ size: 267mm 192mm;\ }\
+      "}</style>
 			<Alert variant="filled" severity="info" sx={{ mb: 2 }}>
 				If you're having trouble seeing everything on the sheets, make sure to
 				use light mode (the printed result isn't affected either way)!

@@ -6,12 +6,12 @@
 
 @media print {
 	.page-break {
-		display: block !important;
-		break-after: page !important;
+		display: block;
+		break-after: page;
 	}
 }
 
 @page {
-	size: 267mm 192mm !important;
-	margin: 0.5mm !important;
+	size: 267mm 192mm;
+	margin: 0.5mm;
 }

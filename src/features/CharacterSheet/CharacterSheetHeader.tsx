@@ -1,29 +1,29 @@
-import { useColorMode } from '@docusaurus/theme-common'
 import { Download, Reply, Save, Star } from '@mui/icons-material'
 import {
-	Box,
-	Button,
-	CircularProgress,
-	Dialog,
-	DialogActions,
-	DialogContent,
-	DialogContentText,
-	DialogTitle,
-	IconButton,
-	Link,
-	TextField,
-	Tooltip,
-	Typography,
+  Box,
+  Button,
+  CircularProgress,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+  Link,
+  TextField,
+  Tooltip,
+  Typography,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
+import { CharacterDocument } from '@site/src/types/Character'
 import { addDoc, collection } from 'firebase/firestore'
 import React from 'react'
 import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
+import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
 import { createInitialCharacter } from './utils/createInitialCharacter'
 import { downloadFile } from './utils/donwloadFile'
-import { Character, CharacterDocument } from '@site/src/types/Character'
 
 const MAX_NAME_LENGTH = 1_000
 
@@ -116,7 +116,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					}}
 				>
 					{!activeCharacterId && 'Your Characters'}
-					{activeCharacterId && activeCharacter?.personal.name}
+					{activeCharacterId &&
+						activeCharacter &&
+						`${activeCharacter?.personal.name} (Level ${calculateCharacterLevel(activeCharacter?.skills.xp.spend)})`}
 				</Typography>
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
 					{!activeCharacterId && (

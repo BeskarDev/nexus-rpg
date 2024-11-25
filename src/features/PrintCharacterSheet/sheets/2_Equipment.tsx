@@ -221,7 +221,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 							<TextField
 								size="small"
 								variant="standard"
-								value={item.name}
+								value={`${item.name} ${item.amount > 1 ? 'x' + item.amount : ''}`}
 								sx={{
 									width: '6.5rem',
 									mt: 0.5,

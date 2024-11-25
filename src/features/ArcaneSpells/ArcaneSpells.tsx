@@ -53,7 +53,7 @@ export const ArcaneSpells: React.FC = () => {
 
 	const componentRef = useRef()
 	const handlePrint = useReactToPrint({
-		content: () => componentRef.current,
+		content: () => componentRef.current
 	})
 	const arcaneSpells: ArcaneSpell[] = arcaneSpellData
 
@@ -68,6 +68,9 @@ export const ArcaneSpells: React.FC = () => {
 
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
+      <style type="text/css" media="print">{"\
+        @page {\ size: 192mm 267mm;\ }\
+      "}</style>
 			<Stack
 				flexDirection="row"
 				gap={1}

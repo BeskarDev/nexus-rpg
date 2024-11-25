@@ -1,30 +1,29 @@
 import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
 import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Box,
-	IconButton,
-	Tooltip,
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  IconButton,
+  Tooltip,
 } from '@mui/material'
 import React, { useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import {
-	Ability,
-	AttributeType,
-	CharacterDocument,
-	Skill,
+  Ability,
+  CharacterDocument,
+  Skill
 } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
-import { DynamicList, reorder } from '@site/src/components/DynamicList'
+import { DynamicList } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { SkillRow } from './SkillRow'
 import { AbilityRow } from './AbilityRow'
+import { SkillRow } from './SkillRow'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -38,25 +37,10 @@ export const SkillsTab: React.FC = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const calculateXpForAttribute = (attribute: AttributeType): number => {
-		return 2 * (attribute - 6) // d4: -4, d6: 0, d8: 4, d10: 8, d12: 12
-	}
-
 	const spendXP = useMemo(() => {
 		let newSpendXP = skills
 			.map((s) => s.xp)
 			.reduce((partialSum, a) => partialSum + a, 0)
-
-		newSpendXP += calculateXpForAttribute(
-			activeCharacter.statistics.strength.value,
-		)
-		newSpendXP += calculateXpForAttribute(
-			activeCharacter.statistics.agility.value,
-		)
-		newSpendXP += calculateXpForAttribute(
-			activeCharacter.statistics.spirit.value,
-		)
-		newSpendXP += calculateXpForAttribute(activeCharacter.statistics.mind.value)
 
 		if (newSpendXP != xp.spend) {
 			updateCharacter({ skills: { xp: { spend: newSpendXP } } })

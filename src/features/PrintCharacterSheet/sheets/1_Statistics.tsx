@@ -10,6 +10,7 @@ import {
 	OutlinedTextfield,
 	RankIndicator,
 } from '../PrintCharacterSheet'
+import { calculateCharacterLevel } from '../../CharacterSheet/utils/calculateCharacterLevel'
 
 const AttributeField = styled(RoundTextField)({
 	marginBottom: 0,
@@ -65,7 +66,11 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Box sx={{ display: 'flex', flexDirection: 'column' }}>
 					<Box sx={{ display: 'flex', gap: 1 }}>
 						<AttributeField
-							value={char.statistics.strength.value ? 'd' + char.statistics.strength.value : ' '}
+							value={
+								char.statistics.strength.value
+									? 'd' + char.statistics.strength.value
+									: ' '
+							}
 							label="Strength"
 							helperText={char.statistics.strength.wounded ? '( W )' : '(___)'}
 							sx={{
@@ -75,7 +80,11 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							}}
 						/>
 						<AttributeField
-							value={char.statistics.agility.value ? 'd' + char.statistics.agility.value : ' '}
+							value={
+								char.statistics.agility.value
+									? 'd' + char.statistics.agility.value
+									: ' '
+							}
 							label="Agility"
 							helperText={char.statistics.agility.wounded ? '( W )' : '(___)'}
 							sx={{
@@ -85,7 +94,11 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							}}
 						/>
 						<AttributeField
-							value={char.statistics.spirit.value ? 'd' + char.statistics.spirit.value : ' '}
+							value={
+								char.statistics.spirit.value
+									? 'd' + char.statistics.spirit.value
+									: ' '
+							}
 							label="Spirit"
 							helperText={char.statistics.spirit.wounded ? '( W )' : '(___)'}
 							sx={{
@@ -95,7 +108,11 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							}}
 						/>
 						<AttributeField
-							value={char.statistics.mind.value ? 'd' + char.statistics.mind.value : ' '}
+							value={
+								char.statistics.mind.value
+									? 'd' + char.statistics.mind.value
+									: ' '
+							}
 							label="Mind"
 							helperText={char.statistics.mind.wounded ? '( W )' : '(___)'}
 							sx={{
@@ -248,31 +265,45 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 			</Box>
 			<Box sx={{ display: 'flex', height: '100%' }}>
 				<Box sx={{ width: '50%' }}>
-					<Box sx={{ display: 'flex', mt: 6 }}>
+					<Box sx={{ display: 'flex', mt: 6, alignItems: "center" }}>
+						<RoundTextField
+							value={(typeof char.skills.xp.spend == 'number') ? calculateCharacterLevel(char.skills.xp.spend) : ' '}
+							label="Level"
+							sx={{
+								ml: 5,
+                mr: 1,
+								'& .MuiFormLabel-root.MuiInputLabel-root': {
+                  top: 1,
+									left: -2,
+                  fontSize: '12px',
+								},
+							}}
+						/>
 						<OutlinedTextfield
+							size="small"
 							value={char.skills.xp.spend}
 							label="Spend XP"
 							sx={{
-								ml: 7,
-								maxWidth: '5rem',
+								maxWidth: '4.5rem',
 								'& .MuiOutlinedInput-root': {
 									borderRadius: '8px 0px 0px 8px',
 									'& input': {
-										py: 1,
+										py: 1.5,
 									},
 								},
 							}}
 						/>
 						<OutlinedTextfield
+							size="small"
 							value={char.skills.xp.total}
 							label="Total XP"
 							sx={{
-								maxWidth: '5rem',
+								maxWidth: '4.5rem',
 								'& .MuiOutlinedInput-root': {
 									borderRadius: '0px 8px 8px 0px',
 								},
 								'& input': {
-									py: 1,
+									py: 1.5,
 								},
 							}}
 						/>

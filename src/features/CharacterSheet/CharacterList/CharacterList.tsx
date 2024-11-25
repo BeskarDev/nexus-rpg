@@ -15,6 +15,7 @@ import React, { useEffect } from 'react'
 import { CharacterDocument } from '../../../types/Character'
 import { mapDocToCharacter } from '../utils/mapDocToCharacter'
 import { DeleteButton } from './DeleteButton'
+import { calculateCharacterLevel } from '../utils/calculateCharacterLevel'
 
 const DOC_BLACKLIST = ['player-info']
 
@@ -94,7 +95,11 @@ export const CharacterList: React.FC = () => {
 									</Avatar>
 								</ListItemAvatar>
 								<ListItemText
-									primary={char?.personal?.name ?? '?'}
+									primary={
+										char
+											? `${char.personal.name} (Level ${calculateCharacterLevel(char.skills.xp.spend)})`
+											: 'Your Character'
+									}
 									sx={{ textDecoration: 'none' }}
 								/>
 							</ListItemButton>

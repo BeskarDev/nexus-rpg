@@ -21,7 +21,7 @@ AttributeField.defaultProps = {
 }
 
 export const SectionHeader = styled(Typography)(({ theme }) => ({
-	marginBottom: `${theme.spacing(0.75)} !important`,
+	marginBottom: `${theme.spacing(0.75)} `,
 }))
 SectionHeader.defaultProps = {
 	fontWeight: 'bold',

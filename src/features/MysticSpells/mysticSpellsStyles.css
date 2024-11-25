@@ -12,8 +12,8 @@
 
 @media print {
   .page-break {
-    display: block;
-    break-after: page;
+		display: block;
+		break-after: page;
   }
 }
 

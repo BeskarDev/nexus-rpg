@@ -68,6 +68,9 @@ export const MysticSpells: React.FC = () => {
 
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
+      <style type="text/css" media="print">{"\
+        @page {\ size: 192mm 267mm;\ }\
+      "}</style>
 			<Stack
 				flexDirection="row"
 				gap={1}
