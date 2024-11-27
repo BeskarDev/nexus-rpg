@@ -54,7 +54,7 @@ Your Character Level advances automatically when your total spent XP reaches spe
 | Level (Title) | Total XP | Max XP per Skill | Level Up Rewards |
 | --- | --- | --- | --- |
 | **1** (Fresh) | 0 | 2 XP (Rank 1) | - |
-| **2** (Novice) | 10 | 4 XP (Rank 1) | +2 HP, +1d on one Attribute (max. d8) |
+| **2** (Novice) | 10 | 4 XP (Rank 1) | +2 HP |
 | **3** (Capable) | 16 | 6 XP (Rank 2) | +2 HP, +1 Defense base value |
 | **4** (Adept) | 24 | 10 XP (Rank 2) | +2 HP, +1d on one Attribute (max. d10) |
 | **5** (Experienced) | 32 | 12 XP (Rank 3) | +2 HP, +1 Defense base value |
