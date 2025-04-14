@@ -14,7 +14,7 @@ The Old Folk consist of those species that have a cultural history spanning thou
 
 ### Dwarf
 
-![folk-img](./img/dwarf.png)
+![folk-img](./img/dwarf.jpeg)
 
 Carved of the stone itself, the dwarves have a deep connection to the earth. They are masters of mining and metalworking and are renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination is a testament to their unbreakable bond with the earth.
 
@@ -32,7 +32,7 @@ Carved of the stone itself, the dwarves have a deep connection to the earth. The
 
 ### Elf
 
-![folk-img](./img/elf.png)
+![folk-img](./img/elf.jpeg)
 
 Living in a spiritual symbiotic state with the life force of nature in their immediate environment, the elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering.
 
@@ -71,7 +71,7 @@ Natural psychics with the ability to read other peoples' intentions and surface 
 
 ### Hune
 
-![folk-img](./img/hune.png)
+![folk-img](./img/hune.jpeg)
 
 A race of towering beings with incredible strength and endurance. They are often nomadic and reclusive but possess a deep wisdom and knowledge of the world.
 
@@ -87,7 +87,7 @@ A race of towering beings with incredible strength and endurance. They are often
 
 ### Orc
 
-![folk-img](./img/orc.png)
+![folk-img](./img/orc.jpeg)
 
 Coming from violent and brutal cultures, the orcs have a reputation for brutality and savagery. While many have adopted a much more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies.
 
@@ -109,7 +109,7 @@ The Old Folk most often hold superstitions against them, as many view them as no
 
 ### Goblin
 
-![folk-img](./img/goblin.png)
+![folk-img](./img/goblin.jpeg)
 
 A cunning and resourceful race of small build, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset.
 
@@ -130,7 +130,7 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 
 ### Human
 
-![folk-img](./img/human.png)
+![folk-img](./img/human.jpeg)
 
 The newest folk among all the New Folk, humans possess a natural arcane ability that makes many other folks scared of them. Others try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges.
 
@@ -146,7 +146,7 @@ The newest folk among all the New Folk, humans possess a natural arcane ability 
 
 ### Lionfolk
 
-![folk-img](./img/lionfolk.png)
+![folk-img](./img/lionfolk.jpeg)
 
 A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with.
 
@@ -164,7 +164,7 @@ A proud and regal race, with a deep connection to the natural world and a revere
 
 ### Lizardfolk
 
-![folk-img](./img/lizardfolk.png)
+![folk-img](./img/lizardfolk.jpeg)
 
 A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment.
 
@@ -183,7 +183,7 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 
 ### Minotaurs
 
-![folk-img](./img/minotaur.png)
+![folk-img](./img/minotaur.jpeg)
 
 A horned, furry species known for their immense strength and unwavering determination. They are fiercely protective of their clan and territories, often seen as guardians of sacred places. Their physical prowess is matched by their sense of honor, making them formidable allies and respected adversaries.
 
