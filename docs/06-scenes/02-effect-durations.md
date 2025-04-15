@@ -20,4 +20,4 @@ This effect on you lasts for one hour or one exploration turn.
 
 ## Long
 
-This effect on you lasts until you rest at the end of the day or for one travel turn.
+This effect on you lasts until the end of a night’s rest or for one travel turn.

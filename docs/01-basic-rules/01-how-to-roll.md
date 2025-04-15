@@ -21,13 +21,13 @@ Most times you will pick up your dice to roll a Skill Test! Whenever the rules r
 
 | Difficulty | TN | Examples (Strength, Agility, Spirit, Mind) |
 | --- | --- | --- |
-| Trivial* | 4 | push open a stuck window, hop over a stream, recognize a common plant, remember a basic fact |
-| Easy | 6 | jump over a small hole in the floor, dodge a thrown rock, sense someone’s mood, recount a local folktale |
-| Medium | 8 | climb a rough cliff face, perform a complex dance, notice a hidden predator at night, understand the cause of natural phenomenon |
-| Hard | 10 | climb a rough cliff face barehanded, perform a complex dance, notice a hidden predator at night, decipher a coded message |
-| Very Hard | 12 | lift a boulder, precisely land on a narrow ledge, calm a ferocious beast, understand a complex mechanism |
-| Extreme | 14 | uproot a tree, dodge a barrage of arrows, intuitively sense an approaching ambush, understand the workings of an otherworldly portal |
-| Legendary | 16 | topple a huge stone statue, perform a gravity-defying acrobatic feat, predict an impending natural disaster, decipher an ancient forgotten language |
+| Trivial* | 4 | *push open a stuck window, hop over a stream, recognize a common plant, remember a basic fact* |
+| Easy | 6 | *jump over a small hole in the floor, dodge a thrown rock, sense someone’s mood, recount a local folktale* |
+| Medium | 8 | *climb a rough cliff face, perform a complex dance, notice a hidden predator at night, understand the cause of natural phenomenon* |
+| Hard | 10 | *climb a rough cliff face barehanded, perform a complex dance, notice a hidden predator at night, decipher a coded message* |
+| Very Hard | 12 | *lift a boulder, precisely land on a narrow ledge, calm a ferocious beast, understand a complex mechanism* |
+| Extreme | 14 | *uproot a tree, dodge a barrage of arrows, intuitively sense an approaching ambush, understand the workings of an otherworldly portal* |
+| Legendary | 16 | *topple a huge stone statue, perform a gravity-defying acrobatic feat, predict an impending natural disaster, decipher an ancient forgotten language* |
 
 ** unless you are very bad at the given task, it is automatically assumed that you can succeed on trivial tasks.*
 
@@ -47,7 +47,7 @@ If you…
 - roll 3 or more above the TN, you score a strong success.
 - roll 6 or more above the TN, you score a critical success.
 
-> For example, you roll a test against a medium difficulty of 8. If you roll a 8, 9, or 10, it is a weak success. An 11, 12, or 13 would be a strong success and a 14 or higher would be a critical success.
+> For example, you roll a test against a medium difficulty of 8. If you roll a 8-10, it is a weak success. An 11-13 would be a strong success and a 14 or higher would be a critical success.
 > 
 
 | Difference to TN | Success Level (SL) | Description |

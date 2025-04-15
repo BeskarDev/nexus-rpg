@@ -16,18 +16,20 @@ When creating a new adventurer, follow the steps below:
     - Also, choose a culture for your folk. You learn the language of your chosen culture, in addition to the common language of the region.
 3. **Choose your Upbringing**
 4. **Choose your Background**
-5. **Ask yourself the following questions** (you can also leave some of the questions open and determine them dynamically in the story during play)
-    - Who is a good friend, colleague, or important family member you can call for aid? (Write down as your Ally)
-    - Who is a person in your life that you can rely on for information, knowledge, or skills? (Write down as your Contact)
-    - Who did you anger, come into conflict with, or hold a grudge against you? (Write down as your Rival)
-    - Why did you become an adventurer? Pick one of the following keywords or choose your own (Write down your Motivation).
-    *Duty, Fame, Fortune, Freedom, Justice, Knowledge, Power, Redemption, Revenge, Survival*
-6. **Choose your Skills**
+5. **Determine your starting NPC Relationships**
+    1. You start the game with three NPC relationships
+    2. Randomly determine each NPCs role or simply choose from the list in the NPCs section
+    3. Choose between your NPC relationships one to have an intimate (+2), one an indifferent (+0), and one a hostile (-2) disposition towards you
+6. **Why did you become an adventurer?**
+Pick one of the following keywords or choose your own (Write down your Motivation).
+*Duty, Fame, Fortune, Freedom, Justice, Knowledge, Power, Redemption, Revenge, Survival*
+7. **Choose your Skills**
     - Your upbringing and background give examples of fitting skills for your adventurer. Write down all suggested skills, or replace any number of them with other skills you see more fitting for your adventurer. At the end, you should have written down exactly seven distinct skills.
     - Choose three of these seven skills to start with 2 XP each. With this, these skills are improved to rank 1 and you can choose one rank 1 talent for each of them. Your other skills start at 0 XP and therefore rank 0. After your adventures, you can spend more XP on your learned skills and unlock talents for them with enough XP.
     - If you learned Archery or Fighting, you learn Combat Arts for weapons of the learned skill. See the Combat Arts section for more details.
     - If you learned Arcana or Mysticism, you learn spells for the learned skill. See the Magic section for more details.
-7. **Choose your Equipment**
+    - If you learned Crafting, you learn one crafting profession. See the Crafting Professions section for more details.
+8. **Choose your Equipment**
     - Starting Items:
         - A backpack (0 load (only first one, normally 1 load), 10 coins)
         - Two pouches (can hold up to 1 load, 0 load, 1 coin)
@@ -42,29 +44,7 @@ When creating a new adventurer, follow the steps below:
     - You also get 350 coins to spend on additional equipment and items.
         - Choosing a weapon that requires ammo gives you one unit of that weapon’s ammo for free (e.g. arrows (d8) for a bow)
         - You keep coins you don’t spend
-8. **Start with 1 Resolve and fill out the remaining statistics on your adventurer sheet**
-
-### Advanced Adventurer Creation
-
-For a playgroup that already has played Nexus RPG for a while and doesn‘t want to repeat the early phase of adventuring life for their characters, you can decide on one of the following advanced starts.
-
-| Adventuring Tier | Starting XP | Max. Attribute Dice* | Coins |
-| --- | --- | --- | --- |
-| Tier 1 (fresh) | 12 XP total (max. 4 XP per skill) | d8 | 850 coins |
-| Tier 2 (capable) | 24 XP total (max. 8 XP per skill) | d10 | 3,500 coins |
-| Tier 3 (experienced) | 36 XP total (max. 12 XP per skill) | d10 | 14,000 coins |
-| Tier 4 (seasoned) | 48 XP total (max. 16 XP per skill) | d12 | 70,000 coins |
-| Tier 5 (heroic) | 60 XP total (max. 20 XP per skill) | d12 | 350,000 coins |
-| Tier 6 (legendary) | 90 XP total (max. 30 XP per skill) | d12 | 1,500,000 coins |
-
-* You can spend 4 XP to increase one of your attributes by one die size. You can do so multiple times up to the max. dice size per Adventuring Tier.
-
-### Smaller Playgroups
-
-This game assumes a group of four adventurers to band together. If your playgroup consists of fewer people than that, consider granting each adventurer one more skill at the XP cap of your chosen starting tier for each player they are below four.
-
-> For example, when playing with a group of two people and no advanced starting tier, they may each choose two more of their skills to invest 2 XP each into. This would leave them with five skills which have 2 XP invested into each of them instead of the normal three skills.
->
+9. **Start with 1 Resolve and fill out the remaining statistics on your adventurer sheet**
 
 ## Character Sheet
 

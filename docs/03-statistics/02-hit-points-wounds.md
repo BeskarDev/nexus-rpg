@@ -57,7 +57,7 @@ Whenever you take an Injury…
 
 **Treating Injuries**
 
-During a night‘s rest, you can attempt to treat one of your Injuries. Make a Supply check for your materials and roll Mind + Nature. On a success, the Injury is treated and you no longer suffer its negative effect. The Injury re-opens when you are reduced to 0 HP again, which also results in you suffering its negative effect again.
+During a night‘s rest, you can attempt to treat one of your Injuries. Make a Supply check for your materials and roll Spirit/Mind + Nature. On a success, the Injury is treated and you no longer suffer its negative effect. The Injury re-opens when you are reduced to 0 HP again, which also results in you suffering its negative effect again.
 
 **Healing Injuries**
 

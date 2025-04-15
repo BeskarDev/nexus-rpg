@@ -47,7 +47,7 @@ For this, treat the whole troop as one creature using the members statistics and
 The troop is disbanded once their size is reduced to two or less.
 - **Area of Effect.** For **e**ffects that target multiple members of the troop, treat each member as a single creature. Damage applied to multiple members is added together and applied to the troop as a whole. When applying conditions or other lasting effects, split the original troop into two new troops (if enough members remain) between those affected and those that are not affected.
 
-> **Example: Attacking a troop**
+> **Example: Attacking a troop<br/>**
 The adventurers face a troop of five goblins. The troop has 10 HP and 2 AV, the same as a single goblin. One of the adventurers attacks the troop with a cleave attack, targeting three of it’s members. They hit and deal 13 damage to each target. The goblin troop’s 2 AV reduces this to 11 damage per target and therefore 33 damage in total against the troop itself. From this damage, three goblins in the troop die and a third loses 3 HP. Since the troop has less than three members left, the GM immediately rolls for Morale to see, if the two remaining goblins flee or continue the fight as single creatures**.**
 > 
 - **Targeting.** When choosing a target, all members of the troop choose the same target. You can split the original troop into multiple troops (if enough members remain) when you want to split the troop up for multiple targets.
@@ -63,7 +63,7 @@ The adventurers face a troop of five goblins. The troop has 10 HP and 2 AV, the 
     Any other abilities or effects that increase the damage of the troop are added only once to the total damage dealt.
     
 
-> **Example: Getting attacked by a troop**
+> **Example: Getting attacked by a troop<br/>**
 A troop of five goblin warriors attacks you with their daggers (2 weapon damage). They roll their attack with 1d8 (Agility) + 1d6 + 2 (troop bonus). Based on the SL, they deal the following amount of damage:
 - **Blunder.** No damage.
 - **Failure.** 12 damage. ([4 base + 2 weapon] x 2)
@@ -130,36 +130,43 @@ While tiny to huge creatures are handled by the normal rules for distances and w
 
 ## Building a Creature
 
-Each creature's power level is separated into six tiers corresponding to the six tiers of adventuring difficulty. Their statistics have a general range that should be followed for each tier. If a creature has one statistic of a higher tier, it should balance out with another statistic from a lower tier.
+Each creature's power level is separated into ten tiers corresponding to the ten levels adventurers can advance in experience. As not all creatures are the same of course, balance out higher-tier statistics with lower-tier ones so the creature balances out at their intended tier.
 
-|  | Tier 0 (trivial) | Tier 1 (common) | Tier 2 (strong) | Tier 3 (powerful) | Tier 4 (epic) | Tier 5 (legendary) | Tier 6 (mythical) |
+> A single creature of any Tier should be a decent challenge for a single adventurer of the same Level. But kepp in mind that special abilities and the number of combatants on either side will strongly influence this baseline of challenge. The GM should always use their inutition when determining the appropriate degree of challenge an enemy encounter should have for the adventuring group.
+> 
+
+|  | HP | AV (light / heavy) | Defense | Max. Attribute | Skill Rank (1st / 2nd) | Weapon Damage | Ability Difficulty |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Hit Points | 1-10 | 10-20 | 20-40 | 30-60 | 40-80 | 50-100 | 60-120 |
-| Primary Attribute | d6 | d8 | d10 | d12 | d12+1 | d12+2 | d12+3 |
-| Defenses | 7 | 8 | 9 | 10 | 11 | 12 | 13 |
-| Base AV
-(light / heavy) | 0 / 2 | 2 / 4 | 3 / 6 | 4 / 8 | 5 / 10 | 6 / 12 | 7 / 14 |
-| Weapon Damage
-(low / high) | 1 / 3 | 2 / 4 | 3 / 5 | 4 / 6 | 5 / 7 | 6 / 8 | 7 / 9 |
-| Skill Rank | 0 / 0 | 0 / 1 | 1 / 2 | 2 / 3 | 3 / 4 | 4 / 5 | 5 / 5 |
-| Ability Difficulty | Trivial (4) | Easy (6) | Moderate (8) | Hard (10) | Very Hard (12) | Extreme (14) | Legendary (16) |
+| Tier 0 | 5 | 0 / 1 | 6 | d6 | 0 / 0 | 2 | TN 6 |
+| Tier 1 | 10 | 1 / 2 | 7 | d6 | 0 / 1 | 3 | TN 7 |
+| Tier 2 | 20 | 2 / 4 | 8 | d8 | 1 / 1 | 4 | TN 8 |
+| Tier 3 | 30 | 3 / 6 | 9 | d8 | 1 / 2 | 5 | TN 9 |
+| Tier 4 | 40 | 4 / 8 | 10 | d10 | 2 / 2 | 6 | TN 10 |
+| Tier 5 | 50 | 5 / 10 | 11 | d10 | 2 / 3 | 7 | TN 11 |
+| Tier 6 | 60 | 6 / 12 | 12 | d12 | 3 / 3 | 8 | TN 12 |
+| Tier 7 | 70 | 7 / 14 | 13 | d12 | 3 / 4 | 9 | TN 13 |
+| Tier 8 | 80 | 8 / 16 | 14 | d12+1 | 4 / 4 | 10 | TN 14 |
+| Tier 9 | 90 | 9 / 18 | 15 | d12+2 | 4 / 5 | 11 | TN 15 |
+| Tier 10 | 100 | 10 / 20 | 16 | d12+3 | 5 / 5 | 12 | TN 16 |
 
 ### Calculating creature statistics
 
-- **Hit Points.** Choose a creatures HP based on it’s Tier and if it generally frail or sturdy.
-You don’t have to choose the minimum or maximum HP for a creature’s tier, but can also choose a more nuanced value in between. Although, you should always keep a creature’s HP divisible by 10 to focus on meaningful differences and simplify the math.
-- **Primary Attribute.** Choose which of the four attributes (Strength, Agility, Spirit, or Mind) is the creature’s primary characteristic. Set that attribute to a d6 + increased by one dice step for each of it’s Tier. The other attributes should generally be one, two, and three dice steps below the primary attribute respectively.
-- **Defenses.** The base Defense of a creature is 7 + it’s Tier. You can increase and decrease the individual Defenses, but should always keep the average at that value and not increase or decrease any single Defense more than 2 below or above the average.
-    - Larger creatures add 1/2 their Size modifier to Parry but subtract it from Dodge.
-    - Smaller creatures add 1/2 their Size modifier to Dodge but subtract it from Parry.
-- **AV.** A creature’s base AV should be equal to it’s Tier + 1 (0 AV for Tier 0 creatures instead). Different modifiers also affect the creature’s AV:
-    - Larger creatures add their Size modifier to their AV.
-    - Smaller creatures subtract their Size modifier from their AV (min. 0).
-    - Creatures with natural heavy armor have a base AV equal to 2 x Tier + 2 instead.
-- **Weapon Damage.** Most damaging attacks for a creature should use 1/2 their primary attribute as the base damage. Then decide if the creature generally deals low or high damage and assign their attacks a fitting weapon damage (which multiplies with increased SL) and damage type. Calculate the weapon damage with Tier + 1 (low) or Tier + 3 (high).
+- **Hit Points.** Choose a creatures HP based on it’s Tier. A more frail or sturdy creature should have HP from a lower or higher tier respectively. This decision can be made by the creature‘s Size or other physical traits.
+- **AV.** A creature’s base AV should be equal to it’s Tier or double it‘s tier for heavy armor (a hard shell, full metal armor, etc.). Different modifiers also affect the creature’s AV:
+    - Larger creatures should have AV from one Tier higher.
+    - Smaller creatures should have AV from one Tier lower.
+- **Defenses.** The base Defense of a creature is 6 + it’s Tier. You can increase and decrease the values of individual Defenses but should always keep the average at the creature‘s Tier. When adjusting individual Defenses in Tier, you should stay within two steps from it‘s original Tier, as to not make the much too low or too high.
+    - Larger creatures should take Parry from one or two steps above their Tier and Dodge from one or two tier below it (one tier for large or huge, two tiers for gargantuan or colossal).
+    - Smaller creatures should take Dodge from one or two steps above their Tier and Parry from one or two tier below it (one tier for small, two tiers for tiny).
+- **Max. Attribute.** Choose which of the four attributes (Strength, Agility, Spirit, or Mind) is the creature’s primary characteristic. Set that attribute to the denoted max. attribute value and the other three to values below that.
+- **Skill Rank.** The creature‘s skill ranks between their primary skills (arcana, archery, fighting, and mysticism) and secondary skills (all other) should reflect the two values denoted by their Tier. Creatures with an even Tier have all of their skills at 1/2 their Tier, whereas creatures with an odd Tier have 1/2 their Tier - 1 for their primary attributes and 1/2 their Tier for their secondary attributes.
+- **Weapon Damage.** Most damaging attacks for a creature should use 1/2 their primary attribute as the base damage. Their weapon or spell damage should then be equal to their Tier + 2. Keep in mind that this value is multiplied by the SL of their attacks and any other attacks that don‘t use the default damage formula, should reflect roughly the same range of damage output.
     - Attacks hitting multiple targets should deal only half the creature’s total damage to it’s targets.
-- **Skill Rank.** The creature’s combat or magic skills should be equal to their Tier - 1. All other skills the creature has reasonably learned should be equal to their Tier.
-- **Ability Difficulty.** Any of the creature’s abilities should have a Difficulty of TN 4 + 2 x it’s Tier.
+- **Ability Difficulty.** Whenever the creature uses abilities that forces their targets to roll instead, the Difficulty of that roll should be 6 + the creature‘s Tier.
+
+## Creature Abilities
+
+TODO
 
 ## Creature Units
 

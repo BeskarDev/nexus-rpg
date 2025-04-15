@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ## Mounts
 
-You can ride a creature that is suitable as a mount and one or more sizes above you. While mounted, you can move with your mount’s Movement during your turn. You also travel faster (1.5x travel speed) and Fortitude rolls during travel only affect your mount and not you.
+You can ride a creature that is suitable as a mount and one or more Sizes above you. A flying mount has to be at least two Sizes above you. While mounted, you can move with your mount’s Movement during your turn. You also travel faster (1.5x travel speed) and Fortitude rolls during travel only affect your mount and not you.
 
 When you need to attempt difficult riding maneuvers, roll Agility + Nature to guide your mount.
 
@@ -45,16 +45,22 @@ Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fo
 
 ### Companion Statistics
 
-| Tier | 0 (Tame) | 1 (Trained) | 2 (Wild) | 3 (Ferocious) | 4 (Monstrous) |
-| --- | --- | --- | --- | --- | --- |
-| Size | Tiny (-2) | Small (-1) | Medium (0) | Large (+1) | Huge (+2) |
-| HP | 5 | 10 | 20 | 30 | 40 |
-| AV | 1 (natural light) | 2 (natural light) | 4 (natural light) | 6 (natural light) | 8 (natural light) |
-| STR / AGI / SPI / MND | d4 / d6 / d4 / d4-2 | d6 / d6 / d6 / d4-2 | d8 / d8 / d6 / d4-1 | d10 / d10 / d8 / d4-1 | d12 / d10 / d8 / d4 |
-| Parry / Dodge / Resist | 6 / 8 / 7 | 8 / 8 / 8 | 9 / 9 / 9 | 10 / 10 / 10 | 12 / 10 / 11 |
-| Skill Rank | 0 | 1 | 2 | 3 | 4 |
-| Attack (claw/bite/etc.) | 3/4/5 damage<br/>(2 base + 1 weapon) | 6/9/12 damage<br/>(3 base + 3 weapon) | 8/12/16 damage<br/>(4 base + 4 weapon) | 10/15/20 damage<br/>(5 base + 5 weapon) | 12/18/24 damage<br/>(6 base + 6 weapon) |
-| Movement/turn | 1 | 1 | 1 | 2 | 2 |
+| Tier | 0 (Tame) | 1 (Trained) | 2 (Wild) | 3 (Ferocious) | 4 (Monstrous) | 5 (Primeval) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Max. Size | Tiny | Small | Medium | Large | Large | Huge |
+| HP | 5 | 10 | 20 | 30 | 40 | 50 |
+| AV | 1 (natural light) | 2 (natural light) | 3 (natural light) | 4 (natural light) | 5 (natural light) | 6 (natural light) |
+| STR / AGI / SPI / MND | d4 / d6 / d4 / d4-2 | d6 / d6 / d6 / d4-2 | d8 / d8 / d6 / d4-1 | d10 / d10 / d8 / d4-1 | d12 / d10 / d8 / d4 | d12+1 / d12 / d8 / d6 |
+| Parry / Dodge / Resist | 7 / 7 / 7 | 8 / 8 / 8 | 9 / 9 / 9 | 10 / 10 / 10 | 11 / 11 / 11 | 12 / 12 / 12 |
+| Skill Rank | 0 | 1 | 2 | 3 | 4 | 5 |
+| Attack (claw/bite/etc.) | 3/4/5 damage<br/>(2 base + 1 weapon) | 5/7/9 damage<br/>(3 base + 2 weapon) | 7/10/13 damage<br/>(4 base + 3 weapon) | 9/13/17 damage<br/>(5 base + 4 weapon) | 11/16/21 damage<br/>(6 base + 5 weapon) | 13/19/25 damage<br/>(7 base + 6 weapon) |
+| Movement/turn | 1 | 1 | 1 | 2 | 2 | 3 |
+
+### Companion Size Modifier
+
+| Tiny | Small | Medium | Large | Huge |
+| --- | --- | --- | --- | --- |
+| -2 Parry, +2 Dodge | -1 Parry, +1 Dodge | - | +1 Parry / -1 Dodge | +2 Parry / -2 Dodge |
 
 Each companion also gains additional attacks, abilities, or other modifiers based on its animal type.
 
@@ -130,6 +136,12 @@ Animal traits represent the general family of animal your companion is associate
 - **Defenses.** +1 Parry, -1 Dodge.
 - **Abilities**
     - **Slow Movement.** Can’t use more than 1 Movement per turn.
+
+#### **Crocodile**
+
+- Todo
+- Abilities
+    - Death Roll. Extra damage and prone on grappled target
 
 #### **Frog**
 
