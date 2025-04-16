@@ -57,7 +57,7 @@ def html_table_to_dataframe(html_file):
       cell_text = str(cell)
           
       # Check if cell belongs to "Properties" column
-      if headers and (headers[cell_index] == "Properties" or headers[cell_index] == "Weapons"):
+      if headers and (headers[cell_index] == "Properties" or headers[cell_index] == "Weapons" or headers[cell_index] == "Skills"):
           # Combine text from all span elements within the cell
           properties = [str(span.text.strip()) for span in cell.find_all('span')]
           properties.sort()

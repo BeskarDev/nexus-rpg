@@ -17,6 +17,7 @@ if __name__ == "__main__":
       "items.md": "Category",
       "talents.md": "Skill Requirement",
       "weapons.md": "Type",
+      "companion-traits.md": "Type",
   }
 
   split_tables(table_dict)
