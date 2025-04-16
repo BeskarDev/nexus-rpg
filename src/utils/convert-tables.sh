@@ -9,6 +9,7 @@ printf "\nSplitting Markdown tables...\n"
 python split-tables.py
 python transform-arcane-spell-table.py
 python transform-mystic-spell-table.py
+python transform-companion-traits-table.py
 
 sleep 1
 

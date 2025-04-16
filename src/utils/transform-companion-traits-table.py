@@ -52,32 +52,85 @@ def restructure_markdown_table(input_filepath, output_filepath):
         with open(output_filepath, 'w') as outfile:
             grouped = df.groupby('Type', dropna=False, sort=False)  # Ensure rows without 'Type' are not excluded
             for type_name, group in grouped:
-                outfile.write(f"## {type_name if pd.notna(type_name) else 'Unknown'}\n\n")  # Handle missing 'Type'
+                outfile.write(f"### {type_name if pd.notna(type_name) else 'Unknown'}\n\n")  # Handle missing 'Type'
                 for index, row in group.iterrows():
-                    outfile.write(f"### {row['Name'] if pd.notna(row['Name']) else 'Unnamed'}\n\n")  # Handle missing 'Name'
-                    outfile.write("| Statistic | Value |\n")
-                    outfile.write("|---|---|\n")
-                    for col in ['HP', 'AV', 'Strength', 'Agility', 'Spirit', 'Mind', 'Parry', 'Dodge', 'Resist']:
-                        if pd.notna(row[col]) and row[col] != '':
-                            outfile.write(f"| {col} | {row[col]} |\n")
+                    outfile.write(f"#### {row['Name'] if pd.notna(row['Name']) else 'Unnamed'}\n\n")  # Handle missing 'Name'
+
+                    combined_data = {
+                      "Stats": {col: row[col] if pd.notna(row[col]) and row[col] != '' else '-' for col in ['HP', 'AV']},
+                      "Attributes": ", ".join(
+                        f"{f'+{value}d' if value and int(value) > 0 else f'{value}d'} {key}"
+                        for key, value in {col: row[col] if pd.notna(row[col]) else '' for col in ['Strength', 'Agility', 'Spirit', 'Mind']}.items()
+                        if value
+                      ),
+                      "Defenses": ", ".join(
+                        f"{f'+{value}' if value and int(value) > 0 else f'{value}'} {key}"
+                        for key, value in {col: row[col] if pd.notna(row[col]) else '' for col in ['Parry', 'Dodge', 'Resist']}.items()
+                        if value
+                      )
+                    }
+
+                    # Combine all keys and values into a single table
+                    all_headers = []
+                    all_values = []
+                    for category, data in combined_data.items():
+                      if category == "Attributes":
+                        all_headers.append("Attributes")
+                        all_values.append(data if data else "-")
+                      elif category == "Defenses":
+                        all_headers.append("Defenses")
+                        all_values.append(data if data else "-")
+                      else:
+                        for key, value in data.items():
+                          all_headers.append(f"{key}")
+                          if key in ['HP', 'Parry', 'Dodge', 'Resist']:
+                            try:
+                              all_values.append(f"+{value}" if value and int(value) > 0 else f"{value}")
+                            except ValueError:
+                              all_values.append(f"{value}")  # Fallback to original value if parsing fails
+                          else:
+                            all_values.append(value)
+
+                    if all_headers:
+                      outfile.write("| " + " | ".join(all_headers) + " |\n")
+                      outfile.write("| " + " | ".join(["---"] * len(all_headers)) + " |\n")
+                      outfile.write("| " + " | ".join(str(value) for value in all_values) + " |\n")
+
                     outfile.write("\n")
-                    outfile.write(f"**Size:** {row['Size'] if pd.notna(row['Size']) else 'Unknown'}\n")
-                    outfile.write(f"**Skills:** {row['Skills'] if pd.notna(row['Skills']) else 'None'}\n")
+                    outfile.write(f"**Skills:** {row['Skills'] if pd.notna(row['Skills']) else 'None'}\n\n")
                     if pd.notna(row['Immunities']) and row['Immunities'] != '':
-                        outfile.write(f"**Immunities:** {row['Immunities']}\n")
+                        outfile.write(f"**Immunities:** {row['Immunities']}\n\n")
                     if pd.notna(row['Resistances']) and row['Resistances'] != '':
-                        outfile.write(f"**Resistances:** {row['Resistances']}\n")
+                        outfile.write(f"**Resistances:** {row['Resistances']}\n\n")
                     if pd.notna(row['Weaknesses']) and row['Weaknesses'] != '':
-                        outfile.write(f"**Weaknesses:** {row['Weaknesses']}\n")
-                    outfile.write(f"**Attack 1:** {row['Attack 1'] if pd.notna(row['Attack 1']) else 'None'}\n")
+                        outfile.write(f"**Weaknesses:** {row['Weaknesses']}\n\n")
+
+                    # Group attacks and abilities into list items
+                    attacks = []
+                    if pd.notna(row['Attack 1']) and row['Attack 1'] != '':
+                      attacks.append(row['Attack 1'])
                     if pd.notna(row['Attack 2']) and row['Attack 2'] != '':
-                        outfile.write(f"**Attack 2:** {row['Attack 2']}\n")
+                      attacks.append(row['Attack 2'])
+
+                    abilities = []
                     if pd.notna(row['Ability 1']) and row['Ability 1'] != '':
-                        outfile.write(f"**Ability 1:** {row['Ability 1']}\n")
+                      abilities.append(row['Ability 1'])
                     if pd.notna(row['Ability 2']) and row['Ability 2'] != '':
-                        outfile.write(f"**Ability 2:** {row['Ability 2']}\n")
+                      abilities.append(row['Ability 2'])
                     if pd.notna(row['Ability 3']) and row['Ability 3'] != '':
-                        outfile.write(f"**Ability 3:** {row['Ability 3']}\n")
+                      abilities.append(row['Ability 3'])
+
+                    if attacks:
+                      outfile.write("**Attacks:**\n")
+                      for attack in attacks:
+                        outfile.write(f"- {attack}\n")
+                      outfile.write("\n")
+
+                    if abilities:
+                      outfile.write("**Abilities:**\n")
+                      for ability in abilities:
+                        outfile.write(f"- {ability}\n")
+                      outfile.write("\n")
                     outfile.write("\n")
 
         print(f"Successfully restructured data and saved to '{output_filepath}'.")
