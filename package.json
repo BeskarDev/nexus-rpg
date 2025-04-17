@@ -19,8 +19,8 @@
 		"firebase:deploy": "firebase deploy"
 	},
 	"dependencies": {
-		"@docusaurus/core": "^3.5.2",
-		"@docusaurus/preset-classic": "^3.5.2",
+		"@docusaurus/core": "^3.7.0",
+		"@docusaurus/preset-classic": "^3.7.0",
 		"@easyops-cn/docusaurus-search-local": "^0.44.5",
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",
@@ -45,9 +45,9 @@
 		"react-to-print": "^2.15.1"
 	},
 	"devDependencies": {
-		"@docusaurus/module-type-aliases": "^3.5.2",
-		"@docusaurus/tsconfig": "^3.5.2",
-		"@docusaurus/types": "^3.5.2",
+		"@docusaurus/module-type-aliases": "^3.7.0",
+		"@docusaurus/tsconfig": "^3.7.0",
+		"@docusaurus/types": "^3.7.0",
 		"@types/react": "^18.2.73",
 		"@types/react-dom": "^18.2.23",
 		"prettier": "^3.3.2",
