@@ -104,7 +104,7 @@ export const keywords: Record<string, string> = {
   "switch": "/docs/equipment/armor-weapon-properties",
   "thrown": "/docs/equipment/armor-weapon-properties",
   "two-handed": "/docs/equipment/armor-weapon-properties",
-  "versatile": "/docs/equipment/armor-weapon-properties",
+  "versatile (+1)": "/docs/equipment/armor-weapon-properties",
 
   // Combat
   "Initiative": "/docs/combat/combat-scenes#initiative",
@@ -114,6 +114,8 @@ export const keywords: Record<string, string> = {
   "Turns": "/docs/combat/combat-scenes#combat-turns",
   "Action": "/docs/combat/combat-scenes#actions",
   "Actions": "/docs/combat/combat-scenes#actions",
+  "Quick Action": "/docs/combat/combat-scenes#quick-actions",
+  "Quick Actions": "/docs/combat/combat-scenes#quick-actions",
   "Attack": "/docs/combat/combat-scenes#combat-turns",
   "attack": "/docs/combat/combat-scenes#combat-turns",
   "attacks": "/docs/combat/combat-scenes#combat-turns",

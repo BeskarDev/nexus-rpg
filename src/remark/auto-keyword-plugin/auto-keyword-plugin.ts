@@ -26,38 +26,66 @@ const autoKeywordPlugin = (options) => {
 
       // Create a Map from the keywords object
       const keywordMap = new Map(
-        Object.entries(keywords).map(([key, value]) => [key, value])
+        Object.entries(keywords).map(([key, value]) => [key.toLowerCase(), value])
       );
 
-      const words: string[] = node.value.split(/\s/);
+      const words: string[] = node.value.split(/(?<!_)\b|(?<=-)/).filter(Boolean);
       let hasKeyword = false;
+      const processedWords: any[] = [];
+      let i = 0;
 
-      const processedWords = words.map((word, i) => {
-        // Check if the word starts with exclude prefix to exclude it from being a link
-        if (word.startsWith(EXCLUSION_PREFIX)) {
-          console.log('Excluding keyword:', word, node.type, parent.type);
-          const strippedWord = word.slice(1); // Remove the prefix
-          console.log('Stripped word:', strippedWord);
-          return { type: 'text', value: i === 0 ? strippedWord : ' ' + strippedWord, processed: true };
+      while (i < words.length) {
+        let match = null;
+        let matchLength = 0;
+
+        // Check for multi-word keywords starting from the current word
+        for (let j = words.length; j > i; j--) {
+          const phrase = words.slice(i, j).join(' ').toLowerCase();
+          if (keywordMap.has(phrase)) {
+            match = phrase;
+            matchLength = j - i;
+            break;
+          }
         }
-        // Ensure we only process plain text nodes, not existing links
-        else if (keywordMap.has(word)) {
+
+        if (match) {
           hasKeyword = true;
-          return {
+          processedWords.push({
             type: 'link',
-            url: keywordMap.get(word),
-            children: [{ type: 'text', value: i === 0 ? word : ' ' + word, processed: true }],
+            url: keywordMap.get(match),
+            children: [{ type: 'text', value: match, processed: true }],
             data: {
               hProperties: {
                 style: 'font-variant: small-caps; text-transform: lowercase; font-size: large;',
               },
             },
             processed: true,
-          };
+          });
+          i += matchLength; // Skip the matched words
+        } else {
+          const word = words[i];
+          if (word.startsWith(EXCLUSION_PREFIX)) {
+            const strippedWord = word.slice(1); // Remove the prefix
+            processedWords.push({ type: 'text', value: strippedWord, processed: true });
+          } else {
+            processedWords.push({ type: 'text', value: word, processed: true });
+          }
+          i++;
         }
 
-        return { type: 'text', value: i === 0 ? word : ' ' + word, processed: true };
-      });
+        // Add spaces after each processed word (except for the last word)
+        if (match) {
+          const lastWord = processedWords[processedWords.length - 1].children[0].value;
+          if (!/^[.,']$/.test(lastWord)) {
+            processedWords[processedWords.length - 1].children[0].value += ' ';
+          }
+        } else if (i < words.length) {
+          const lastWord = processedWords[processedWords.length - 1].value;
+          if (!/^[.,']$/.test(lastWord)) {
+            processedWords[processedWords.length - 1].value += ' ';
+          }
+        }
+      }
 
       if (hasKeyword) {
         // Replace the current node with the processed nodes
