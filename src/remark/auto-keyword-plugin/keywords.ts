@@ -228,7 +228,11 @@ export const keywords: Record<string, string> = {
   "heightening": "/docs/magic/magic-spells#heightening-spells",
 
   // Creatures
+  "size": "/docs/creatures/creature-rules#size",
   "Size": "/docs/creatures/creature-rules#size",
+  "sizes": "/docs/creatures/creature-rules#size",
+  "Sizes": "/docs/creatures/creature-rules#size",
   "sized": "/docs/creatures/creature-rules#size",
+  "Sized": "/docs/creatures/creature-rules#size",
 
 }
