@@ -4,6 +4,8 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
+const autoKeywordPlugin = require('./src/remark/auto-keyword-plugin');
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
 	title: 'Nexus RPG',
@@ -55,21 +57,6 @@ const config = {
 				href: 'https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap',
 			},
 		},
-	],
-
-	presets: [
-		[
-			'classic',
-			/** @type {import('@docusaurus/preset-classic').Options} */
-			({
-				docs: {
-					sidebarPath: require.resolve('./sidebars.js'),
-				},
-				theme: {
-					customCss: require.resolve('./src/css/custom.css'),
-				},
-			}),
-		],
 	],
 
 	themes: [
@@ -184,7 +171,7 @@ const config = {
 					width: 51,
 					height: 51,
 				},
-				copyright: `Copyright © ${new Date().getFullYear()} BeskarDev - Art generated with https://leonardo.ai/`,
+				copyright: `Copyright © ${new Date().getFullYear()} BeskarDev - Placeholder Art is AI generated`,
 			},
 		}),
 
@@ -196,6 +183,22 @@ const config = {
 				path: './.env',
 				systemvars: true,
 			},
+		],
+	],
+
+	presets: [
+		[
+			'classic',
+			/** @type {import('@docusaurus/preset-classic').Options} */
+			({
+				docs: {
+					sidebarPath: require.resolve('./sidebars.js'),
+          remarkPlugins: [autoKeywordPlugin]
+				},
+				theme: {
+					customCss: require.resolve('./src/css/custom.css'),
+				},
+			}),
 		],
 	],
 }
