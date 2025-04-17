@@ -18,7 +18,7 @@ def convert_group_md(df):
 
   return markdown_table
 
-def split_table_md(input_file, split_column):
+def split_table_md(input_file, split_column, header_size="##"):
   """
   Splits a markdown table in a markdown file and writes subtables alphabetically to a single markdown file.
   The output filename is automatically generated based on the input filename.
@@ -26,6 +26,7 @@ def split_table_md(input_file, split_column):
   Args:
       input_file: Path to the markdown file containing the table.
       split_column: Name of the column to split the table by.
+      header_size: Markdown header size (e.g., "##", "###"). Default is "##".
   """
   # Get the output directory and filename based on the input path
   output_dir = "split-tables"
@@ -55,15 +56,15 @@ def split_table_md(input_file, split_column):
   # Generate the content for the output markdown file
   output_content = ""
   for name, group_df in split_groups:
-    group_df = group_df.drop([split_column], axis=1) # delete split_column
+    group_df = group_df.drop([split_column], axis=1)  # delete split_column
     group_content = convert_group_md(group_df)
-    output_content += f"\n## {name}\n" + group_content + "\n"
+    output_content += f"\n{header_size} {name}\n" + group_content + "\n"  # Use configurable header size
 
   # Write the content to the output file
   with open(output_file, 'w') as f:
     f.write(output_content)
   print(f"Subtables written to: {output_file}")
-  
+
 
 if __name__ == "__main__":
   import argparse
@@ -71,7 +72,7 @@ if __name__ == "__main__":
   parser = argparse.ArgumentParser(description="Split markdown table by column")
   parser.add_argument("input_file", help="Path to the markdown file")
   parser.add_argument("split_column", help="Name of the column to split the table by")
+  parser.add_argument("--header_size", default="##", help="Markdown header size (default: ##)")
   args = parser.parse_args()
 
-  split_table_md(args.input_file, args.split_column)
-  
+  split_table_md(args.input_file, args.split_column, args.header_size)

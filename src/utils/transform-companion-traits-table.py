@@ -133,7 +133,7 @@ def restructure_markdown_table(input_filepath, output_filepath):
                       outfile.write("\n")
                     outfile.write("\n")
 
-        print(f"Successfully restructured data and saved to '{output_filepath}'.")
+        print(f"Subtables written to: {output_filepath}")
 
     except FileNotFoundError:
         print(f"Error: Input file '{input_filepath}' not found.")

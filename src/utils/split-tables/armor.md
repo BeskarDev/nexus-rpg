@@ -1,5 +1,5 @@
 
-## Light Armor 
+### Light Armor 
 Name | Quality | AV | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Leather / Padded Cloth / Heavy Robes**  | 1  | 2  | - | 1  | 50
@@ -7,7 +7,7 @@ Name | Quality | AV | Properties | Load | Cost
 **Chain Mail / Linothorax / Bone Lamellar / Horn Lamellar**  | 3  | 4  | noisy  | 2  | 1000
 
 
-## Heavy Armor 
+### Heavy Armor 
 Name | Quality | AV | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Scale Mail / Disk Plate / Wood Plates /  Shell Plates**  | 2  | 4  | heavy (d6), noisy  | 3  | 500
@@ -15,7 +15,7 @@ Name | Quality | AV | Properties | Load | Cost
 **Plate Harness / Segmented Plate / Heavy Lamellar / O-Yoroi**  | 3  | 6  | heavy (d10), noisy, rigid 2  | 4  | 2000
 
 
-## Helmet 
+### Helmet 
 Name | Quality | AV | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Open Helmet**  | 2  | 1  | - | 1  | 200

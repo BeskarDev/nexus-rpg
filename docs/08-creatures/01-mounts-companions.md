@@ -1,10 +1,10 @@
-import CompanionTraits from "../src/utils/split-tables/companion-traits.md"
-
 ---
 sidebar_position: 1
 ---
 
 # 🐎 Mounts & Companions
+
+import CompanionTraits from "../../src/utils/split-tables/companion-traits.md"
 
 ![banner-img](/img/banner/mounts-companions-banner.png)
 
