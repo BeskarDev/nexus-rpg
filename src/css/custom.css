@@ -132,3 +132,11 @@ table th {
 	border: none;
 	padding: 0.25rem 0.5rem;
 }
+
+.markdown > pre, .markdown > ul, .markdown > p {
+  margin-bottom: calc(var(--ifm-leading) / 2);
+}
+
+.markdown > ul {
+  margin-top: calc(-1 * var(--ifm-leading) / 2);
+}
