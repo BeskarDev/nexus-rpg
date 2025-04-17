@@ -29,21 +29,31 @@ const autoKeywordPlugin = (options) => {
         Object.entries(keywords).map(([key, value]) => [key.toLowerCase(), value])
       );
 
-      const words: string[] = node.value.split(/(?<!_)\b|(?<=-)/).filter(Boolean);
+      // Split text into words and punctuation while preserving spaces
+      const wordsWithSpaces = node.value.split(/(\s+|[.,!?;:"'(){}\[\]])/); 
       let hasKeyword = false;
       const processedWords: any[] = [];
       let i = 0;
 
-      while (i < words.length) {
+      while (i < wordsWithSpaces.length) {
+        const current = wordsWithSpaces[i];
+
+        if (i % 2 === 1 || /^[.,!?;:"'(){}\[\]]$/.test(current)) {
+          // If it's a space or punctuation, add it directly
+          processedWords.push({ type: 'text', value: current, processed: true });
+          i++;
+          continue;
+        }
+
         let match = null;
         let matchLength = 0;
 
         // Check for multi-word keywords starting from the current word
-        for (let j = words.length; j > i; j--) {
-          const phrase = words.slice(i, j).join(' ').toLowerCase();
+        for (let j = i; j < wordsWithSpaces.length; j += 2) {
+          const phrase = wordsWithSpaces.slice(i, j + 1).filter((_, idx) => idx % 2 === 0).join(' ').toLowerCase();
           if (keywordMap.has(phrase)) {
             match = phrase;
-            matchLength = j - i;
+            matchLength = j - i + 1;
             break;
           }
         }
@@ -61,9 +71,9 @@ const autoKeywordPlugin = (options) => {
             },
             processed: true,
           });
-          i += matchLength; // Skip the matched words
+          i += matchLength; // Skip the matched words and spaces
         } else {
-          const word = words[i];
+          const word = current;
           if (word.startsWith(EXCLUSION_PREFIX)) {
             const strippedWord = word.slice(1); // Remove the prefix
             processedWords.push({ type: 'text', value: strippedWord, processed: true });
@@ -71,19 +81,6 @@ const autoKeywordPlugin = (options) => {
             processedWords.push({ type: 'text', value: word, processed: true });
           }
           i++;
-        }
-
-        // Add spaces after each processed word (except for the last word)
-        if (match) {
-          const lastWord = processedWords[processedWords.length - 1].children[0].value;
-          if (!/^[.,']$/.test(lastWord)) {
-            processedWords[processedWords.length - 1].children[0].value += ' ';
-          }
-        } else if (i < words.length) {
-          const lastWord = processedWords[processedWords.length - 1].value;
-          if (!/^[.,']$/.test(lastWord)) {
-            processedWords[processedWords.length - 1].value += ' ';
-          }
         }
       }
 
