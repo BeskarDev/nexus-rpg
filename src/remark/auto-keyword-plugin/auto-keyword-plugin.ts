@@ -29,8 +29,8 @@ const autoKeywordPlugin = (options) => {
         Object.entries(keywords).map(([key, value]) => [key.toLowerCase(), value])
       );
 
-      // Split text into words and punctuation while preserving spaces
-      const wordsWithSpaces = node.value.split(/(\s+|[.,!?;:"'(){}\[\]])/); 
+      // Split text into words and punctuation while preserving spaces and special characters
+      const wordsWithSpaces = node.value.split(/(\s+|[.,!?;:"'(){}\[\]/\\+*-])/); 
       let hasKeyword = false;
       const processedWords: any[] = [];
       let i = 0;
@@ -38,7 +38,7 @@ const autoKeywordPlugin = (options) => {
       while (i < wordsWithSpaces.length) {
         const current = wordsWithSpaces[i];
 
-        if (i % 2 === 1 || /^[.,!?;:"'(){}\[\]]$/.test(current)) {
+        if (i % 2 === 1 || /^[.,!?;:"'(){}\[\]/\\+*-]$/.test(current)) {
           // If it's a space or punctuation, add it directly
           processedWords.push({ type: 'text', value: current, processed: true });
           i++;
@@ -50,7 +50,10 @@ const autoKeywordPlugin = (options) => {
 
         // Check for multi-word keywords starting from the current word
         for (let j = i; j < wordsWithSpaces.length; j += 2) {
-          const phrase = wordsWithSpaces.slice(i, j + 1).filter((_, idx) => idx % 2 === 0).join(' ').toLowerCase();
+          const phrase = wordsWithSpaces.slice(i, j + 1)
+            .filter((_, idx) => idx % 2 === 0 || /^[.,!?;:"'(){}\[\]/\\+*-]$/.test(wordsWithSpaces[idx]))
+            .join(' ')
+            .toLowerCase();
           if (keywordMap.has(phrase)) {
             match = phrase;
             matchLength = j - i + 1;

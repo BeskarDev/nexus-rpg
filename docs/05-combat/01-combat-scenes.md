@@ -38,10 +38,6 @@ During combat, adventurers and enemies can use one of a variety of Actions on th
 
 You can also drop, sheathe, draw, or switch weapons or other carried items on your turn without taking an Action (within reason).
 
-### Using Battle Stances
-
-Battle Stances are passive abilities that you can learn through talents. You can only have one Battle Stance active at a time and switch between them once on your turn. You can determine your active Battle Stance before combat starts unless you are surprised.
-
 ## Actions
 
 The following actions are available to all combatants.
