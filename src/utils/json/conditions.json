@@ -32,7 +32,11 @@
         "description": "You apply the following effects:<br/>- You suffer +1 bane on all rolls unless they are against the source of your distraction.<br/>- Attacks against you gain +1 boon against you, unless they are from the source of your distraction.<br/>- You can only use Quick Actions against the source of your distraction.<br/>This condition ends early when you take damage from anything different than the source of your distraction.<br/>"
     },
     {
-        "name": "frightened ",
+        "name": "famished",
+        "description": "You suffer +1 bane on all rolls. You can end this condition by consuming food and water."
+    },
+    {
+        "name": "frightened",
         "description": "At the start of your turn, roll a d6 Fear Check.<br/><br/><strong>1.</strong> You cower in fear and can\u2019t take Actions, Quick Actions or move.<br/><br/><strong>2-5.</strong> You can only move in directions which increases your distance to the source of your fear. You suffer +1 bane on rolls which target the source of your fear.<br/><br/><strong>6. </strong>You can act normally but still suffer +1 bane on rolls which target the source of your fear."
     },
     {

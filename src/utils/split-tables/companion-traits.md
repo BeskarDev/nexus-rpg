@@ -17,6 +17,24 @@
 - <strong>Tool Usage.</strong> This creature can use simple tools and weapons (only Quality 1) after being trained with them for at least a medium duration.
 
 
+#### **Badger**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| - | - | - | - |
+
+**Skills:** Fighting (-1), Perception, Survival
+
+**Attacks:**
+- <strong>Bite</strong> (<em>pierce</em>). Deals normal weapon damage.
+- <strong>Claw</strong> (<em>light, slash</em>). Deals -1 weapon damage (min. 1).
+
+**Abilities:**
+- <strong>Burrow. </strong>This creature can move freely through loose earth, treating it as difficult terrain.
+- <strong>Keen Scent.</strong> This creature gains +1 boon on Perception rolls based on smell.
+- <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
+
+
 #### **Bat**
 
 | HP | AV | Attributes | Defenses |
@@ -51,6 +69,23 @@
 - <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
 
 
+#### **Beetle**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| - | +2 (heavy) | - | - |
+
+**Skills:** Fighting (-1), Fortitude, Survival
+
+**Attacks:**
+- <strong>Horn</strong> (<em>pierce</em>). Deals normal weapon damage. On a strong or critical hit, the target is either knocked prone or pushed close (your choice).
+- <strong>Mandibles</strong> (<em>crush</em>). On a strong or critical hit against a creature of equal or smaller Size, the target is grappled. While grappled, this creature can’t attack any other target.
+
+**Abilities:**
+- <strong>Flying (Wings). </strong>This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
+- <strong>Wall Climb. </strong>This creature can climb on any vertical surface without rolling.
+
+
 #### **Bird**
 
 | HP | AV | Attributes | Defenses |
@@ -61,7 +96,7 @@
 
 **Attacks:**
 - <strong>Beak</strong> (<em>agile, pierce</em>). Deals normal weapon damage. On a strong or critical hit, the target suffers bleeding (2 x Tier).
-- <strong>Talons</strong> (<em>agile, light, slash</em>). Deals -1 weapon damage.
+- <strong>Talons</strong> (<em>agile, light, slash</em>). Deals -1 weapon damage (min. 1).
 
 **Abilities:**
 - <strong>Dive Attack. </strong>After flying at least a short distance downwards, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
@@ -113,7 +148,7 @@
 **Skills:** Athletics, Fighting (-1), Perception, Survival
 
 **Attacks:**
-- <strong>Bite</strong> (<em>pierce</em>). Deals -1 weapon damage.
+- <strong>Bite</strong> (<em>pierce</em>). Deals -1 weapon damage (min. 1).
 - <strong>Constrict</strong> (<em>crush</em>). Deals normal weapon damage. On a strong or critical hit and if the target is the same Size or smaller, the target is also grappled and restrained. While constricted, this attack can’t be used to attack any other target.
 
 **Abilities:**
@@ -308,6 +343,23 @@
 - <strong>Fast Movement. </strong>This creature has +1 Movement and can cover twice the normal distance during travel.
 - <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
 - <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+
+
+#### **Turtle**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+
+**Skills:** Fighting (-1), Fortitude, Survival
+
+**Attacks:**
+- Bite (crush). Deals normal weapon damage. On a strong or critical hit, the target suffers bleeding (2 x Tier).
+
+**Abilities:**
+- <strong>Amphibious.</strong> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
+- <strong>Shell Defense.</strong> As a Quick Action, this creature can withdraw into its shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until it uses another Quick Action to emerge.
+- <strong>Slow Movement (Land).</strong> This creature can’t use more than 1 Movement per turn while on land.
 
 
 ### Elemental
