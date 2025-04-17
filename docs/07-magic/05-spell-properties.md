@@ -6,6 +6,16 @@ sidebar_position: 5
 
 ![banner-img](/img/banner/spell-properties-banner.png)
 
-import SpellProperties from "../../src/utils/markdown/spell-properties.md"
+Name | Description
+--- | ---
+**blast (cone)** | This spell affects targets within range in a conial shape. Choose any direction for the cone and find out which creatures are affected along the way.<br/>Any creature in melee with you, which is reasonably within the direction of the spell’s cone, is affected.<br/>At close range, one group of creatures, which are in melee range of each other, are also affected.<br/>At short range, all creatures in one area adjacent to yours are affected.<br/>At medium range, all creatures in the area along the cone’s center, as well as in the two areas left and right from it are affected.<br/>For any range further than that, the cone affects one more area left and right from the center for each area it extends to in depth.<br/>
+**blast (line)** | This spell affects targets between the spell’s point of origin and target location. When you target a creature, all other creatures in melee range with them are targeted as well. Any creature or group of creatures at melee range with each other that are reasonably on the spell‘s line of effect are also targeted by it. 
+**concentrate** | You are required to hold your Spell Concentration while this spell‘s duration lasts. You can only hold your Spell Concentration on one spell at a time. You can choose to end concentrating on a spell at any time.
+**enchant (X)** | This spell enchants some part of your person (body, eyes, etc.)  or one piece of equipment (weapon, armor, etc.). You can only benefit from one such enchantment for each individual part at a time.
+**illusory** | The target can roll Spirit + Perception vs. your Resist as an Action, or after physically interacting with the illusion of this spell, such as attacking it, to see through it.<br/>A target that has previously successfully saved against this spell’s effects is immune against the spell’s illusion.<br/>
+**material (X)** | You need the mentioned material cost to cast this spell. A successful cast doesn‘t destroy the material.
+**material cost (X)** | You need the mentioned material cost to cast this spell. A blunder or successful cast destroys the material.
+**quick** | You can cast this spell using a Quick Action at the specified time, or cast it normally using an Action on your turn.
+**ritual (X)** | Casting this spell takes up more time than a single Action. A ritual spell has to be cast as an activity of the given time interval (minutes → delving, hours → exploration, days → travel, weeks → downtime). While you cast the spell, you must focus your entire attention on it and can’t perform other tasks at the same time. While casting a ritual spell, you are using your Spell Concentration on the spell.
+**singular** | You can only ever cast this spell once at a time. If you cast the spell again, the spell’s lasting effect of the previous cast ends.
 
-<SpellProperties />

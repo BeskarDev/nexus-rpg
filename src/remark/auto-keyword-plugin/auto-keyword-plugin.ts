@@ -10,14 +10,15 @@ const EXCLUSION_PREFIX = '_';
  */
 const autoKeywordPlugin = (options) => {
   return (tree) => {
-    visit(tree, 'text', (node: Node & { value: string, processed: boolean }, index: number, parent: Parent) => {
+    visit(tree, 'text', (node: Node & { value: string, processed: boolean }, index: number, parent: Parent & { name: string }) => {
       // Ensure the parent exists, is not a heading, and the node is plain text
       if (
         !parent ||
         parent.type === 'heading' ||
         parent.type === 'link' ||
         parent.type === 'strong' ||
-        parent.type === 'tableCell' ||
+        (parent.type === 'tableCell' && parent.children.length <= 1 && node.value.split(' ').length <= 1) ||
+        parent.name === 'strong' ||
         node.type !== 'text' ||
         node.processed // Skip nodes that are already processed
       ) {

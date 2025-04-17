@@ -82,6 +82,7 @@ export const keywords: Record<string, string> = {
   "blowpipe": "/docs/equipment/armor-weapon-properties",
   "bundle": "/docs/equipment/armor-weapon-properties",
   "covering": "/docs/equipment/armor-weapon-properties",
+  "crush": "/docs/equipment/armor-weapon-properties",
   "damaged": "/docs/equipment/armor-weapon-properties",
   "double-sided": "/docs/equipment/armor-weapon-properties",
   "entangle": "/docs/equipment/armor-weapon-properties",
@@ -97,10 +98,10 @@ export const keywords: Record<string, string> = {
   "reload": "/docs/equipment/armor-weapon-properties",
   "rigid": "/docs/equipment/armor-weapon-properties",
   "slash": "/docs/equipment/armor-weapon-properties",
-  "switch (crush / slash)": "/docs/equipment/armor-weapon-properties",
+  "switch": "/docs/equipment/armor-weapon-properties",
   "thrown": "/docs/equipment/armor-weapon-properties",
   "two-handed": "/docs/equipment/armor-weapon-properties",
-  "versatile (+1)": "/docs/equipment/armor-weapon-properties",
+  "versatile": "/docs/equipment/armor-weapon-properties",
 
   // Combat
   "Initiative": "/docs/combat/combat-scenes#initiative",
