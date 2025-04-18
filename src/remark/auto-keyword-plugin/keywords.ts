@@ -52,8 +52,6 @@ export const keywords: Record<string, string> = {
   // Statistics
   "Attribute": "/docs/statistics/attributes",
   "Attributes": "/docs/statistics/attributes",
-  "attribute": "/docs/statistics/attributes",
-  "attributes": "/docs/statistics/attributes",
   "Strength": "/docs/statistics/attributes",
   "STR": "/docs/statistics/attributes",
   "Agility": "/docs/statistics/attributes",
