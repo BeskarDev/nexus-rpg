@@ -42,6 +42,8 @@ export const keywords: Record<string, string> = {
   "Skill Rank": "/docs/basic-rules/character-progression#skill-ranks",
   "level": "/docs/basic-rules/character-progression#character-level",
   "Level": "/docs/basic-rules/character-progression#character-level",
+  "character level": "/docs/basic-rules/character-progression#character-level",
+  "Character Level": "/docs/basic-rules/character-progression#character-level",
 
   // Adventurers
   "Language": "/docs/adventurers/languages",
