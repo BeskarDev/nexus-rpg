@@ -131,7 +131,7 @@ Each item has a Durability die associated with it, representing it’s hardness 
 | --- | --- |
 | glass, ceramic, cloth | d4 |
 | light or normal weapons, light armor, wood, leather | d6 |
-| heavy weapons, heavy armor, metal, stone | d8 |
+| heavy weapons, Heavy armor, metal, stone | d8 |
 
 If you roll a 1 or a 2 with your Durability check, a non-damaged item gets damaged or an already damaged item becomes destroyed. For more details on the effects, see the Weapon & Armor Properties section. You can attempt to repair damaged or destroyed items, as described in the Downtime section.
 

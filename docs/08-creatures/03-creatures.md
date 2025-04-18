@@ -112,7 +112,7 @@ sidebar_position: 3
 
 *Small (-1), Basic Daimon (Primal)* 
 
-**Initiative** Slow<br />**HP** 10, **AV** 4 (natural heavy)<br />**STR** d8, **AGI** d4, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 8
+**Initiative** Slow<br />**HP** 10, **AV** 4 (natural Heavy)<br />**STR** d8, **AGI** d4, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 8
 
 **Skills** Fighting 0, Fortitude 1
 
@@ -144,7 +144,7 @@ sidebar_position: 3
 
 *Small (-1), Basic Humanoid* 
 
-**Initiative** Fast<br />**HP** 10, **AV** 2 (light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
+**Initiative** Fast<br />**HP** 10, **AV** 2 (Light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
 
 **Skills** Archery 0, Athletics 0, Stealth 1, Fighting 1, Perception 0
 
@@ -202,7 +202,7 @@ sidebar_position: 3
 
 **Resistances** poison damage
 
-**Actions**<br />**- Fan Axe (heavy (d8), slash, two-handed).** 8 damage (4 base + 4 weapon). On a strong hit, the target also suffers bleeding (2). On a critical hit, the target also suffers bleeding (4).
+**Actions**<br />**- Fan Axe (Heavy (d8), slash, two-handed).** 8 damage (4 base + 4 weapon). On a strong hit, the target also suffers bleeding (2). On a critical hit, the target also suffers bleeding (4).
 
 **Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br />- Control Beast (only snakes)<br />- War Cry<br />**- Snake Mutation.** This creature is immune against being poisoned.
 
@@ -210,7 +210,7 @@ sidebar_position: 3
 
 *Medium (-), Basic Humanoid* 
 
-**Initiative** Normal<br />**HP** 20, **AV** 2 (light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 7
+**Initiative** Normal<br />**HP** 20, **AV** 2 (Light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 7
 
 **Skills** Athletics 1, Fighting 1, Fortitude 1
 
@@ -222,7 +222,7 @@ sidebar_position: 3
 
 *Medium (-), Basic Humanoid* 
 
-**Initiative** Normal<br />**HP** 10, **AV** 3 (light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 8, **Resist** 7
+**Initiative** Normal<br />**HP** 10, **AV** 3 (Light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 8, **Resist** 7
 
 **Skills** Archery 1, Fighting 1, Perception 1
 
@@ -234,7 +234,7 @@ sidebar_position: 3
 
 *Small (-1), Master Humanoid* 
 
-**Initiative** Fast<br />**HP** 3x10, **AV** 3 (light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
+**Initiative** Fast<br />**HP** 3x10, **AV** 3 (Light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
 
 **Skills** Archery 0, Athletics 0, Stealth 1, Fighting 1, Perception 0
 
@@ -246,7 +246,7 @@ sidebar_position: 3
 
 *Small (-1), Basic Monstrosity* 
 
-**Initiative** Fast<br />**HP** 10, **AV** 4 (natural heavy)<br />**STR** d6, **AGI** d6, **SPI** d6, **MND** d4-1<br />**Parry** 9, **Dodge** 9, **Resist** 7
+**Initiative** Fast<br />**HP** 10, **AV** 4 (natural Heavy)<br />**STR** d6, **AGI** d6, **SPI** d6, **MND** d4-1<br />**Parry** 9, **Dodge** 9, **Resist** 7
 
 **Skills** Fighting 0, Fortitude 1, Perception 1, Survival 1
 
@@ -274,7 +274,7 @@ sidebar_position: 3
 
 *Medium (-), Basic Undead* 
 
-**Initiative** Normal<br />**HP** 10, **AV** 4 (natural heavy)<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 7
+**Initiative** Normal<br />**HP** 10, **AV** 4 (natural Heavy)<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 7
 
 **Skills** Fighting 1, Perception 1
 
@@ -320,7 +320,7 @@ sidebar_position: 3
 
 *Large (+1), Basic Animal* 
 
-**Initiative** Normal<br />**HP** 30, **AV** 5 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d4, **MND** d4-2<br />**Parry** 10, **Dodge** 8, **Resist** 8
+**Initiative** Normal<br />**HP** 30, **AV** 5 (natural Heavy)<br />**STR** d12, **AGI** d8, **SPI** d4, **MND** d4-2<br />**Parry** 10, **Dodge** 8, **Resist** 8
 
 **Skills** Fighting 0, Fortitude 2, Perception 2, Survival 2
 
@@ -360,7 +360,7 @@ sidebar_position: 3
 
 *Large (+1), Basic Giant* 
 
-**Initiative** Slow<br />**HP** 30, **AV** 3 (light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
+**Initiative** Slow<br />**HP** 30, **AV** 3 (Light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
 
 **Skills** Athletics 1, Fortitude 1, Fighting 0, Survival 1
 
@@ -372,7 +372,7 @@ sidebar_position: 3
 
 *Large (+1), Elite Giant* 
 
-**Initiative** Slow<br />**HP** 2x30, **AV** 4 (light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
+**Initiative** Slow<br />**HP** 2x30, **AV** 4 (Light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
 
 **Skills** Athletics 1, Fortitude 1, Fighting 0, Survival 1
 
@@ -424,7 +424,7 @@ sidebar_position: 3
 
 *Medium (-), Basic Humanoid* 
 
-**Initiative** Normal<br />**HP** 20, **AV** 6 (heavy + helmet + shield)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 10, **Dodge** 8, **Resist** 9
+**Initiative** Normal<br />**HP** 20, **AV** 6 (Heavy + helmet + shield)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 10, **Dodge** 8, **Resist** 9
 
 **Skills** Athletics 2, Archery 2, Education 1, Fighting 2, Perception 1
 
@@ -468,7 +468,7 @@ sidebar_position: 3
 
 *Large (+1), Basic Dragon* 
 
-**Initiative** Normal<br />**HP** 50, **AV** 6 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 12, **Dodge** 9, **Resist** 9
+**Initiative** Normal<br />**HP** 50, **AV** 6 (natural Heavy)<br />**STR** d12, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 12, **Dodge** 9, **Resist** 9
 
 **Skills** Archery 2, Athletics 3, Stealth 3, Fighting 1, Perception 3
 
@@ -482,13 +482,13 @@ sidebar_position: 3
 
 *Large (+1), Elite Dragon* 
 
-**Initiative** Normal<br />**HP** 2x30, **AV** 8 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 9, **Resist** 9
+**Initiative** Normal<br />**HP** 2x30, **AV** 8 (natural Heavy)<br />**STR** d12, **AGI** d8, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 9, **Resist** 9
 
 **Skills** Athletics 1, Fighting 2, Fortitude 2, Perception 1, Survival 1
 
 **Resistances** fire damage
 
-**Actions**<br />**- 2 x Claw (light, slash).** 10 damage (6 base + 4 weapon).<br />**- Bite (crush, reach).** 12 damage (6 base + 6 weapon). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that claw can’t be used to attack any other target.<br />**- Tail.** (crush, reach). 10 damage (6 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Dragon’s Breath (recharge (d6)).** Strength + Fortitude vs. Dodge. Target all creatures in melee range, or in one area within short range. On a success, each target suffers 12 fire damage. On a strong or critical success, each target also suffers burning (4).<br />**- Fiery Wrath (Elite Ability).** When this creature suffers a Wound, it immediately regains it’s Dragon’s Breath and uses it.
+**Actions**<br />**- 2 x Claw (Light, slash).** 10 damage (6 base + 4 weapon).<br />**- Bite (crush, reach).** 12 damage (6 base + 6 weapon). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that claw can’t be used to attack any other target.<br />**- Tail.** (crush, reach). 10 damage (6 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Dragon’s Breath (recharge (d6)).** Strength + Fortitude vs. Dodge. Target all creatures in melee range, or in one area within short range. On a success, each target suffers 12 fire damage. On a strong or critical success, each target also suffers burning (4).<br />**- Fiery Wrath (Elite Ability).** When this creature suffers a Wound, it immediately regains it’s Dragon’s Breath and uses it.
 
 **Abilities**<br />-
 
@@ -500,7 +500,7 @@ sidebar_position: 3
 
 **Skills** Athletics 2, Endurance 2, Fighting 1, Perception 2, Survival 2
 
-**Actions**<br />**- 2 x Claw (light).** 10 damage (6 base + 4 weapon). On a hit, attempts to grapple the target.<br />**- Bite (only if grappling).** 12 damage (6 base + 6 weapon). On a hit, the target is poisoned for a short duration.<br />**- Poisonous Spit (range (medium)).** 8 poison damage (4 base + 4 weapon). On a hit, the target is briefly poisoned.
+**Actions**<br />**- 2 x Claw (Light).** 10 damage (6 base + 4 weapon). On a hit, attempts to grapple the target.<br />**- Bite (only if grappling).** 12 damage (6 base + 6 weapon). On a hit, the target is poisoned for a short duration.<br />**- Poisonous Spit (range (medium)).** 8 poison damage (4 base + 4 weapon). On a hit, the target is briefly poisoned.
 
 **Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Regeneration.** This creature regains 10 HP at the start of each of it‘s turns, unless it has taken fire or acid damage since it’s last turn. This creature even regenerates while at 0 HP and only dies from it’s Wounds, if it can‘t regenerate at the start of it‘s turn.
 
@@ -518,7 +518,7 @@ sidebar_position: 3
 
 *Large (+1), Basic Undead* 
 
-**Initiative** Fast<br />**HP** 40, **AV** 5 (natural heavy)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d8<br />**Parry** 10, **Dodge** 10, **Resist** 9
+**Initiative** Fast<br />**HP** 40, **AV** 5 (natural Heavy)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d8<br />**Parry** 10, **Dodge** 10, **Resist** 9
 
 **Skills** Arcana 1, Fighting 1, Fortitude 1, Insight 1, Perception 1
 
@@ -526,7 +526,7 @@ sidebar_position: 3
 
 **Weaknesses** radiant damage
 
-**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**- Fan Glaive (heavy (d10), reach, slash, two-handed).** 10 damage (5 base + 5 weapon).<br />**- Tail (crush).** 9 damage (5 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Drain Life (target: vs.** Resist, range: short). Roll Mind + Arcana. Deals 4 + 2 necrotic damage per SL. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.
+**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**- Fan Glaive (Heavy (d10), reach, slash, two-handed).** 10 damage (5 base + 5 weapon).<br />**- Tail (crush).** 9 damage (5 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Drain Life (target: vs.** Resist, range: short). Roll Mind + Arcana. Deals 4 + 2 necrotic damage per SL. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.
 
 **Abilities**<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Control Beast (only snakes, Rank 1)<br />- Death Bolt (Rank 1)<br />- Grasp of Decay (Rank 1)<br />- Subtle Suggestion (Rank 1)<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.
 

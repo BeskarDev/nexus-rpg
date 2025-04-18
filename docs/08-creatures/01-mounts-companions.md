@@ -126,7 +126,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (light) | +1d Strength | - |
+| +10 | +1 (Light) | +1d Strength | - |
 
 **Skills:** Athletics, Fighting (-1), Fortitude, Perception, Survival
 
@@ -143,7 +143,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (heavy) | - | - |
+| - | +2 (Heavy) | - | - |
 
 **Skills:** Fighting (-1), Fortitude, Survival
 
@@ -178,7 +178,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (light) | +1d Strength | - |
+| +10 | +1 (Light) | +1d Strength | - |
 
 **Skills:** Fighting (-1), Fortitude, Perception, Survival
 
@@ -213,7 +213,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (light) | - | - |
+| +10 | +1 (Light) | - | - |
 
 **Skills:** Athletics, Fighting (-1), Perception, Survival
 
@@ -230,7 +230,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude, Stealth, Survival
 
@@ -247,7 +247,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (heavy) | - | - |
+| - | +2 (Heavy) | - | - |
 
 **Skills:** Fighting (-1), Stealth, Survival
 
@@ -299,7 +299,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (light) | +1d Strength, -1d Agility | - |
+| +10 | +1 (Light) | +1d Strength, -1d Agility | - |
 
 **Skills:** Fighting (-1), Fortitude, Perception, Survival
 
@@ -334,7 +334,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (heavy) | - | - |
+| - | +2 (Heavy) | - | - |
 
 **Skills:** Fighting (-1), Perception, Stealth, Survival
 
@@ -419,7 +419,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude, Survival
 
@@ -461,7 +461,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude
 
@@ -532,7 +532,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude, Perception
 
@@ -556,7 +556,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (heavy) | -1d Strength, +1d Agility | - |
+| - | +2 (Heavy) | -1d Strength, +1d Agility | - |
 
 **Skills:** Arcana (-1), Fighting (-1), Perception, Stealth
 

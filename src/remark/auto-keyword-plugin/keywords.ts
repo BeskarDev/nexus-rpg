@@ -4,7 +4,10 @@ export const keywords: Record<string, string> = {
   // Basic Rules
   "Difficulty": "/docs/basic-rules/how-to-roll#skill-tests",
   "TN": "/docs/basic-rules/how-to-roll#skill-tests",
+  "Target Number": "/docs/basic-rules/how-to-roll#skill-tests",
   "SL": "/docs/basic-rules/how-to-roll#success-levels",
+  "Success Level": "/docs/basic-rules/how-to-roll#success-levels",
+  "Success Levels": "/docs/basic-rules/how-to-roll#success-levels",
   "Blunder": "/docs/basic-rules/how-to-roll#success-levels",
   "Failure": "/docs/basic-rules/how-to-roll#success-levels",
   "Weak": "/docs/basic-rules/how-to-roll#success-levels",
@@ -15,8 +18,14 @@ export const keywords: Record<string, string> = {
   "bane": "/docs/basic-rules/how-to-roll#boons-and-banes",
   "banes": "/docs/basic-rules/how-to-roll#boons-and-banes",
   "roll": "/docs/basic-rules/how-to-roll#skill-tests",
+  "rolls": "/docs/basic-rules/how-to-roll#skill-tests",
+  "rolling": "/docs/basic-rules/how-to-roll#skill-tests",
+  "Roll": "/docs/basic-rules/how-to-roll#skill-tests",
+  "Rolls": "/docs/basic-rules/how-to-roll#skill-tests",
+  "Rolling": "/docs/basic-rules/how-to-roll#skill-tests",
   "test": "/docs/basic-rules/how-to-roll#skill-tests",
   "re-roll": "/docs/basic-rules/how-to-roll#re-rolling-tests",
+  "re-rolls": "/docs/basic-rules/how-to-roll#re-rolling-tests",
   "re-rolling": "/docs/basic-rules/how-to-roll#re-rolling-tests",
   "XP": "/docs/basic-rules/character-progression#experience-points-xp",
   "rank": "/docs/basic-rules/character-progression#skill-ranks",
@@ -31,10 +40,6 @@ export const keywords: Record<string, string> = {
   "languages": "/docs/adventurers/languages",
 
   // Statistics
-  "Attribute": "/docs/statistics/attributes",
-  "Attributes": "/docs/statistics/attributes",
-  "attribute": "/docs/statistics/attributes",
-  "attributes": "/docs/statistics/attributes",
   "Strength": "/docs/statistics/attributes",
   "STR": "/docs/statistics/attributes",
   "Agility": "/docs/statistics/attributes",
@@ -75,6 +80,7 @@ export const keywords: Record<string, string> = {
 
   // Equipment
   "Supply": "/docs/equipment/items-equipment-encumbrance#supply",
+  "Supplies": "/docs/equipment/items-equipment-encumbrance#supply",
   "load": "/docs/equipment/items-equipment-encumbrance#item-load",
   "Load": "/docs/equipment/items-equipment-encumbrance#item-load",
   "agile": "/docs/equipment/armor-weapon-properties",
@@ -102,6 +108,8 @@ export const keywords: Record<string, string> = {
   "thrown": "/docs/equipment/armor-weapon-properties",
   "two-handed": "/docs/equipment/armor-weapon-properties",
   "versatile": "/docs/equipment/armor-weapon-properties",
+  "Light": "/docs/equipment/armor#light-armor",
+  "Heavy": "/docs/equipment/armor#heavy-armor",
 
   // Combat
   "Initiative": "/docs/combat/combat-scenes#initiative",
@@ -175,6 +183,10 @@ export const keywords: Record<string, string> = {
   "extreme distance": "/docs/combat/distances-movement#distances",
   "out of range": "/docs/combat/distances-movement#distances",
   "Movement": "/docs/combat/distances-movement#movement",
+  "condition": "/docs/combat/conditions",
+  "conditions": "/docs/combat/conditions",
+  "Condition": "/docs/combat/conditions",
+  "Conditions": "/docs/combat/conditions",
   "bleeding": "/docs/combat/conditions",
   "blinded": "/docs/combat/conditions",
   "burning": "/docs/combat/conditions",
@@ -206,8 +218,11 @@ export const keywords: Record<string, string> = {
   "scenes": "/docs/scenes/scenes-time-intervals",
   "Scenes": "/docs/scenes/scenes-time-intervals",
   "briefly": "/docs/scenes/effect-durations#briefly",
+  "short": "/docs/scenes/effect-durations#short",
   "short duration": "/docs/scenes/effect-durations#short",
+  "medium": "/docs/scenes/effect-durations#medium",
   "medium duration": "/docs/scenes/effect-durations#medium",
+  "long": "/docs/scenes/effect-durations#long",
   "long duration": "/docs/scenes/effect-durations#long",
   "short break": "/docs/scenes/resting#a-short-break",
   "night's rest": "/docs/scenes/resting#a-nights-rest",
@@ -221,13 +236,7 @@ export const keywords: Record<string, string> = {
   "Focus": "/docs/magic/magic-spells#focus",
   "concentration": "/docs/magic/magic-spells#spell-concentration",
   "Concentration": "/docs/magic/magic-spells#spell-concentration",
-  "spell": "/docs/magic/magic-spells#spells",
-  "spells": "/docs/magic/magic-spells#spells",
-  "Spells": "/docs/magic/magic-spells#spells",
-  "Spell": "/docs/magic/magic-spells#spells",
-  "heightened": "/docs/magic/magic-spells#heightening-spells",
-  "heightening": "/docs/magic/magic-spells#heightening-spells",
-
+  
   // Creatures
   "size": "/docs/creatures/creature-rules#size",
   "Size": "/docs/creatures/creature-rules#size",
@@ -235,5 +244,13 @@ export const keywords: Record<string, string> = {
   "Sizes": "/docs/creatures/creature-rules#size",
   "sized": "/docs/creatures/creature-rules#size",
   "Sized": "/docs/creatures/creature-rules#size",
-
+  "tiny": "/docs/creatures/creature-rules#size",
+  "small size": "/docs/creatures/creature-rules#size",
+  "small Size": "/docs/creatures/creature-rules#size",
+  "medium size": "/docs/creatures/creature-rules#size",
+  "medium Size": "/docs/creatures/creature-rules#size",
+  "large": "/docs/creatures/creature-rules#size",
+  "huge": "/docs/creatures/creature-rules#size",
+  "colossal": "/docs/creatures/creature-rules#size",
+  "gargantuan": "/docs/creatures/creature-rules#size",
 }

@@ -106,8 +106,8 @@ While adventurers are generally small or medium sized, there are a variety of ot
 | Medium | +0 | wolf |
 | Large | +1 | horse |
 | Huge | +2 | mountain giant |
-| Gargantuan | +3 | fully-grown dragon |
-| Colossal | +4 | dragon turtle |
+| Colossal | +3 | fully-grown dragon |
+| Gargantuan | +4 | dragon turtle |
 
 Each size categories modifier influences several of the creatures statistics (see below)
 
@@ -135,7 +135,7 @@ Each creature's power level is separated into ten tiers corresponding to the ten
 > A single creature of any Tier should be a decent challenge for a single adventurer of the same Level. But kepp in mind that special abilities and the number of combatants on either side will strongly influence this baseline of challenge. The GM should always use their inutition when determining the appropriate degree of challenge an enemy encounter should have for the adventuring group.
 > 
 
-|  | HP | AV (light / heavy) | Defense | Max. Attribute | Skill Rank (1st / 2nd) | Weapon Damage | Ability Difficulty |
+|  | HP | AV (Light / Heavy) | Defense | Max. Attribute | Skill Rank (1st / 2nd) | Weapon Damage | Ability Difficulty |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Tier 0 | 5 | 0 / 1 | 6 | d6 | 0 / 0 | 2 | TN 6 |
 | Tier 1 | 10 | 1 / 2 | 7 | d6 | 0 / 1 | 3 | TN 7 |
@@ -152,7 +152,7 @@ Each creature's power level is separated into ten tiers corresponding to the ten
 ### Calculating creature statistics
 
 - **Hit Points.** Choose a creatures HP based on it’s Tier. A more frail or sturdy creature should have HP from a lower or higher tier respectively. This decision can be made by the creature‘s Size or other physical traits.
-- **AV.** A creature’s base AV should be equal to it’s Tier or double it‘s tier for heavy armor (a hard shell, full metal armor, etc.). Different modifiers also affect the creature’s AV:
+- **AV.** A creature’s base AV should be equal to it’s Tier or double it‘s tier for Heavy armor (a hard shell, full metal armor, etc.). Different modifiers also affect the creature’s AV:
     - Larger creatures should have AV from one Tier higher.
     - Smaller creatures should have AV from one Tier lower.
 - **Defenses.** The base Defense of a creature is 6 + it’s Tier. You can increase and decrease the values of individual Defenses but should always keep the average at the creature‘s Tier. When adjusting individual Defenses in Tier, you should stay within two steps from it‘s original Tier, as to not make the much too low or too high.
