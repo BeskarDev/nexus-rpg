@@ -50,6 +50,10 @@ export const keywords: Record<string, string> = {
   "languages": "/docs/adventurers/languages",
 
   // Statistics
+  "Attribute": "/docs/statistics/attributes",
+  "Attributes": "/docs/statistics/attributes",
+  "attribute": "/docs/statistics/attributes",
+  "attributes": "/docs/statistics/attributes",
   "Strength": "/docs/statistics/attributes",
   "STR": "/docs/statistics/attributes",
   "Agility": "/docs/statistics/attributes",
