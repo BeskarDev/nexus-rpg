@@ -53,10 +53,11 @@ const autoKeywordPlugin = (options) => {
             .slice(i, j + 1)
             .filter((_, idx) => idx % 2 === 0 || /^[.,!?;:"'(){}\[\]/\\+*]$/.test(wordsWithSpaces[idx]))
             .join(' ');
+
           if (keywordMap.has(phrase)) {
+            // Always prioritize the longest match
             match = phrase;
             matchLength = j - i + 1;
-            break;
           }
         }
 
