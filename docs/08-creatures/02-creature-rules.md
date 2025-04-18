@@ -115,13 +115,13 @@ Each size categories modifier influences several of the creatures statistics (se
 
 While tiny to huge creatures are handled by the normal rules for distances and when you can attack creatures in melee, creatures bigger than that are an exception. Each creature of these size categories has the following rules applied to them:
 
-**Gargantuan (+3).** This creature fills up an entire area.
+**Colossal (+3).** This creature fills up an entire area.
 
 - Other creatures can’t enter this creatures area, unless they grapple onto it or roll some other form of test to pass.
 - Creatures in adjacent areas are considered close to this creature. They can choose to get into melee range, as if they were in the same area with it.
 - When determining any other range category, treat any of the adjacent areas of this creature as the maximum distance you have to cover.
 
-**Colossal (+4).** This creature fills up multiple areas.
+**Gargantuan (+4).** This creature fills up multiple areas.
 
 - This creature takes up the area it is in, as well as all adjacent areas. It is considered to be within any of those areas at the same time.
 - Other creatures can’t enter this creatures areas, unless they grapple onto it or roll some other form of test to pass.
