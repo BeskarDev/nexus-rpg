@@ -38,6 +38,8 @@ export const keywords: Record<string, string> = {
   "XP": "/docs/basic-rules/character-progression#experience-points-xp",
   "rank": "/docs/basic-rules/character-progression#skill-ranks",
   "Rank": "/docs/basic-rules/character-progression#skill-ranks",
+  "skill rank": "/docs/basic-rules/character-progression#skill-ranks",
+  "Skill Rank": "/docs/basic-rules/character-progression#skill-ranks",
   "level": "/docs/basic-rules/character-progression#character-level",
   "Level": "/docs/basic-rules/character-progression#character-level",
 
