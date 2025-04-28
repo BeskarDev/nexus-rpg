@@ -6,11 +6,13 @@ import { Draggable } from 'react-beautiful-dnd'
 export type DynamicListItemProps = {
 	id: string
 	index: number
+	dragDisabled?: boolean
 } & ListItemProps
 
 export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 	id,
 	index,
+	dragDisabled,
 	children,
 	...props
 }) => {
@@ -23,9 +25,14 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 					{...props}
 					sx={{ p: 0, ...props.sx }}
 				>
-					<ListItemIcon {...provided.dragHandleProps} sx={{ minWidth: '32px' }}>
-						<DragHandle />
-					</ListItemIcon>
+					{!dragDisabled && (
+						<ListItemIcon
+							{...provided.dragHandleProps}
+							sx={{ minWidth: '32px' }}
+						>
+							<DragHandle />
+						</ListItemIcon>
+					)}
 					{children}
 				</ListItem>
 			)}

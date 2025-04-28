@@ -7,12 +7,14 @@ export type NpcRowProps = {
 	description: string
 	updateNpc: (update: string) => void
 	deleteNpc: () => void
+	dragDisabled?: boolean
 } & TextFieldProps
 
 export const NpcRow: React.FC<NpcRowProps> = ({
 	description: initialDescription,
 	updateNpc,
 	deleteNpc,
+	dragDisabled,
 	...props
 }) => {
 	const [description, setDescription] = useState(initialDescription)
@@ -29,16 +31,18 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 				onChange={(event) => setDescription(event.target.value)}
 				onBlur={() => updateNpc(description)}
 				{...props}
-				sx={{ flexGrow: 1, ...props.sx }}
+				sx={{ flexGrow: 1, width: '14rem', ...props.sx }}
 			/>
-			<IconButton
-				size="small"
-				edge="end"
-				aria-label="delete"
-				onClick={deleteNpc}
-			>
-				<Delete />
-			</IconButton>
+			{!dragDisabled && (
+				<IconButton
+					size="small"
+					edge="end"
+					aria-label="delete"
+					onClick={deleteNpc}
+				>
+					<Delete />
+				</IconButton>
+			)}
 		</Box>
 	)
 }

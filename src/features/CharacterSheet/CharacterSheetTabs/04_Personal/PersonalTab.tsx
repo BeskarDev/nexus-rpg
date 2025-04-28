@@ -1,7 +1,16 @@
-import { Box, IconButton, TextField } from '@mui/material'
+import {
+	Box,
+	IconButton,
+	TextField,
+	Button,
+	Switch,
+	Typography,
+	FormControlLabel,
+  Tooltip,
+} from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
-import { AddCircle } from '@mui/icons-material'
+import { AddCircle, BuildCircle, Reorder } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
@@ -21,9 +30,14 @@ export const PersonalTab: React.FC = () => {
 		[activeCharacter.personal],
 	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
+	const [showControls, setShowReorder] = useState(false) // State to toggle reorder icons
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
+	}
+
+	const toggleReorder = () => {
+		setShowReorder((prev) => !prev)
 	}
 
 	const addNewAlly = () => {
@@ -108,7 +122,17 @@ export const PersonalTab: React.FC = () => {
 			}}
 		>
 			<Box>
-				<SectionHeader>Your Character</SectionHeader>
+				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+					<Typography fontWeight="bold">Your Character</Typography>
+          <Tooltip title="enable this to add, delete, or reorder lists">
+            <IconButton
+              onClick={toggleReorder}
+              color={showControls ? 'primary' : 'default'}
+            >
+              <BuildCircle />
+            </IconButton>
+          </Tooltip>
+				</Box>
 				<Box
 					sx={{
 						display: 'flex',
@@ -234,27 +258,39 @@ export const PersonalTab: React.FC = () => {
 				</Box>
 			</Box>
 
-			<Box sx={{ width: '100%', flexGrow: 1, mb: 1 }} />
+			<Box sx={{ width: '100%', flexGrow: 1, mb: 2 }} />
 
 			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Allies</SectionHeader>
-					<IconButton onClick={addNewAlly} sx={{ mb: 0.75 }}>
-						<AddCircle />
-					</IconButton>
+          {showControls && (
+            <IconButton onClick={addNewAlly} sx={{ mb: 0.75 }}>
+              <AddCircle />
+            </IconButton>
+          )}
 				</Box>
 				<DynamicList
 					droppableId="allies"
 					onDragEnd={onAllyReorder}
-					sx={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '25vh' }}
+					sx={{
+						overflowY: 'auto',
+						overflowX: 'hidden',
+						maxHeight: '25vh',
+					}}
 				>
 					{allies.map((a, index) => (
-						<DynamicListItem key={a.id} id={a.id} index={index}>
+						<DynamicListItem
+							key={a.id}
+							id={a.id}
+							index={index}
+							dragDisabled={!showControls}
+						>
 							<NpcRow
 								key={a.id}
 								description={a.description}
 								updateNpc={(update) => updateAlly(update, index)}
 								deleteNpc={() => deleteAlly(index)}
+								dragDisabled={!showControls}
 							/>
 						</DynamicListItem>
 					))}
@@ -264,22 +300,34 @@ export const PersonalTab: React.FC = () => {
 			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Contacts</SectionHeader>
-					<IconButton onClick={addNewContact} sx={{ mb: 0.75 }}>
-						<AddCircle />
-					</IconButton>
+          {showControls && (
+            <IconButton onClick={addNewContact} sx={{ mb: 0.75 }}>
+              <AddCircle />
+            </IconButton>
+          )}
 				</Box>
 				<DynamicList
 					droppableId="contacts"
 					onDragEnd={onContactReorder}
-					sx={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '20vh' }}
+					sx={{
+						overflowY: 'auto',
+						overflowX: 'hidden',
+						maxHeight: '20vh',
+					}}
 				>
 					{contacts.map((c, index) => (
-						<DynamicListItem key={c.id} id={c.id} index={index}>
+						<DynamicListItem
+							key={c.id}
+							id={c.id}
+							index={index}
+							dragDisabled={!showControls}
+						>
 							<NpcRow
 								key={c.id}
 								description={c.description}
 								updateNpc={(update) => updateContact(update, index)}
 								deleteNpc={() => deleteContact(index)}
+								dragDisabled={!showControls}
 							/>
 						</DynamicListItem>
 					))}
@@ -289,22 +337,34 @@ export const PersonalTab: React.FC = () => {
 			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Rivals</SectionHeader>
-					<IconButton onClick={addNewRival} sx={{ mb: 0.75 }}>
-						<AddCircle />
-					</IconButton>
+          {showControls && (
+            <IconButton onClick={addNewRival} sx={{ mb: 0.75 }}>
+              <AddCircle />
+            </IconButton>
+          )}
 				</Box>
 				<DynamicList
 					droppableId="rivals"
 					onDragEnd={onRivalReorder}
-					sx={{ overflowY: 'auto', overflowX: 'hidden', maxHeight: '20vh' }}
+					sx={{
+						overflowY: 'auto',
+						overflowX: 'hidden',
+						maxHeight: '20vh',
+					}}
 				>
 					{rivals.map((r, index) => (
-						<DynamicListItem key={r.id} id={r.id} index={index}>
+						<DynamicListItem
+							key={r.id}
+							id={r.id}
+							index={index}
+							dragDisabled={!showControls}
+						>
 							<NpcRow
 								key={r.id}
 								description={r.description}
 								updateNpc={(update) => updateRival(update, index)}
 								deleteNpc={() => deleteRival(index)}
+								dragDisabled={!showControls}
 							/>
 						</DynamicListItem>
 					))}
