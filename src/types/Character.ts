@@ -7,12 +7,14 @@ export type CharacterDocument = {
 } & Character
 
 export type Character = {
-	personal: Personal
-	statistics: Statistics
-	skills: Skills
-	items: Items
-	spells: Spells
+  personal: Personal
+  statistics: Statistics
+  skills: Skills
+  items: Items
+  spells: Spells
+  companions: Companion[]
 }
+
 export type Personal = {
 	name: string
   playerName: string
@@ -227,3 +229,10 @@ export const rangeTypeArray = [
 	'extreme',
 ] as const
 export type RangeType = (typeof rangeTypeArray)[number]
+
+export type Companion = {
+  id: string
+  name: string
+  statistics: Statistics
+  skills: Skill[]
+}

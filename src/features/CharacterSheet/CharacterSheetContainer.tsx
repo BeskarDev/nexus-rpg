@@ -57,10 +57,7 @@ export const CharacterSheetContainer: React.FC = () => {
         const character = mapDocToCharacter(collectionId, docSnapshot)
         const migratedCharacter = await migrateDoc(collectionId, docSnapshot)
 
-        console.log('migrated character', migratedCharacter.personal.playerName)
-
         if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
-          console.log('save migrated character', migratedCharacter)
           await updateDoc(migratedCharacter.docRef, {
             ...migratedCharacter,
           } as Omit<Character, 'docRef' | 'docId'>)

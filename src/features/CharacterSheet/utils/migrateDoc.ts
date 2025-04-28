@@ -2,6 +2,7 @@ import { collection, doc, DocumentData, DocumentSnapshot, getDoc } from 'firebas
 import {
 	Character,
 	CharacterDocument,
+	Companion,
 	Items,
 	Personal,
 	Skills,
@@ -17,6 +18,10 @@ export const migrateDoc = async (
 	const data = doc.data()
 	const updatedDoc = { ...data }
 
+  if (!Object.keys(data).includes('companions')) {
+    updatedDoc.companions = []
+  }
+
 	const promises = Object.entries(data).map(async ([key, value]) => {
 		if (key === 'statistics') {
 			updatedDoc.statistics = migrateStatistics(value)
@@ -28,6 +33,8 @@ export const migrateDoc = async (
 			updatedDoc.spells = migrateSpells(value)
 		} else if (key === 'personal') {
 			updatedDoc.personal = await migratePersonal(value)
+		} else if (key === 'companions') {
+			updatedDoc.companions = migrateCompanions(value)
 		}
 	})
   
@@ -39,7 +46,6 @@ export const migrateDoc = async (
 		collectionId,
 		...(updatedDoc as Character),
 	}
-  console.log('migratedDoc', migratedDoc.personal.playerName)
 	return migratedDoc
 }
 
@@ -190,4 +196,8 @@ const migratePersonal = async (data: any): Promise<Personal> => {
 				: rival
 		}),
 	} as Personal
+}
+
+const migrateCompanions = (data: any): Companion[] => {
+  return data as Companion[]
 }

@@ -6,6 +6,7 @@ import {
 	Item,
 	Skill,
 	Spell,
+	Statistics,
 	Weapon,
 } from '@site/src/types/Character'
 import { Character } from './../../types/Character'
@@ -267,7 +268,7 @@ export const {
 				target: '',
 				range: '',
 				properties: '',
-        dealsDamage: false,
+				dealsDamage: false,
 				damage: {
 					base: '',
 					weapon: 0,
@@ -424,6 +425,77 @@ export const {
 				source,
 				destination,
 			)
+		},
+		addNewCompanion: (state) => {
+			state.activeCharacter.companions.push({
+				id: crypto.randomUUID(),
+				name: '',
+				statistics: {
+					health: {
+						total: 0,
+						temp: 0,
+						current: 0,
+						woundOne: {
+							injury: false,
+							fatigueOne: false,
+							fatigueTwo: false,
+						},
+						woundTwo: {
+							injury: false,
+							fatigueOne: false,
+							fatigueTwo: false,
+						},
+						woundThree: {
+							injury: false,
+							fatigueOne: false,
+							fatigueTwo: false,
+						},
+					},
+					av: {
+						armor: 0,
+						helmet: 0,
+						shield: 0,
+						other: 0,
+					},
+					strength: {
+						value: 6,
+						wounded: false,
+					},
+					agility: {
+						value: 6,
+						wounded: false,
+					},
+					spirit: {
+						value: 6,
+						wounded: false,
+					},
+					mind: {
+						value: 6,
+						wounded: false,
+					},
+					parry: 0,
+					dodge: 0,
+					resist: 0,
+					resolve: 0,
+				},
+				skills: [],
+			})
+		},
+		updateCompanion: (state, action) => {
+			const { index, update } = action.payload
+			state.activeCharacter.companions[index] = {
+				...state.activeCharacter.companions[index],
+				...update,
+			}
+		},
+		deleteCompanion: (state, action) => {
+			const index = action.payload
+			state.activeCharacter.companions.splice(index, 1)
+		},
+		reorderCompanion: (state, action) => {
+			const { source, destination } = action.payload
+			const [moved] = state.activeCharacter.companions.splice(source, 1)
+			state.activeCharacter.companions.splice(destination, 0, moved)
 		},
 	},
 })
