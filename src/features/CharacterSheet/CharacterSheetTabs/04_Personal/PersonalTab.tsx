@@ -30,14 +30,14 @@ export const PersonalTab: React.FC = () => {
 		[activeCharacter.personal],
 	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
-	const [showControls, setShowReorder] = useState(false) // State to toggle reorder icons
+	const [showControls, setShowControls] = useState(false)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const toggleReorder = () => {
-		setShowReorder((prev) => !prev)
+	const toggleControls = () => {
+		setShowControls((prev) => !prev)
 	}
 
 	const addNewAlly = () => {
@@ -126,7 +126,7 @@ export const PersonalTab: React.FC = () => {
 					<Typography fontWeight="bold">Your Character</Typography>
           <Tooltip title="enable this to add, delete, or reorder lists">
             <IconButton
-              onClick={toggleReorder}
+              onClick={toggleControls}
               color={showControls ? 'primary' : 'default'}
             >
               <BuildCircle />
