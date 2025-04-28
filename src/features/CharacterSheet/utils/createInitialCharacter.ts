@@ -1,8 +1,9 @@
 import { Character } from '../../../types/Character'
 
-export const createInitialCharacter = (name: string): Character => ({
+export const createInitialCharacter = (name: string, playerName: string): Character => ({
 	personal: {
 		name,
+    playerName,
 		folk: '',
 		upbringing: '',
 		background: '',

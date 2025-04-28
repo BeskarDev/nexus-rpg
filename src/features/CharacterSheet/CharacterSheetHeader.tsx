@@ -17,7 +17,7 @@ import {
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { CharacterDocument } from '@site/src/types/Character'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import React from 'react'
 import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
@@ -61,7 +61,10 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		try {
 			const userUid = currentUser.uid
 			const collectionRef = collection(db, userUid)
-			await addDoc(collectionRef, createInitialCharacter(name))
+      
+      const playerName = (await getDoc(doc(db, userUid, 'player-info'))).data()?.name || 'Unknown'
+
+			await addDoc(collectionRef, createInitialCharacter(name, playerName))
 			setName('')
 			setOpen(false)
 			window.location.href = window.location.href.split('?')[0]

@@ -15,6 +15,7 @@ export type Character = {
 }
 export type Personal = {
 	name: string
+  playerName: string
 	folk: string
 	upbringing: string
 	background: string

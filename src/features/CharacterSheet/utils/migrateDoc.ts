@@ -1,4 +1,4 @@
-import { DocumentData, DocumentSnapshot } from 'firebase/firestore'
+import { collection, doc, DocumentData, DocumentSnapshot, getDoc } from 'firebase/firestore'
 import {
 	Character,
 	CharacterDocument,
@@ -8,36 +8,30 @@ import {
 	Spells,
 	Statistics,
 } from '../../../types/Character'
+import { db } from '@site/src/config/firebase'
 
-export const migrateDoc = (
+export const migrateDoc = async (
 	collectionId: string,
 	doc: DocumentSnapshot<DocumentData, DocumentData>,
-): CharacterDocument => {
+): Promise<CharacterDocument> => {
 	const data = doc.data()
 	const updatedDoc = { ...data }
 
-	Object.entries(data).forEach(([key, value]) => {
+	const promises = Object.entries(data).map(async ([key, value]) => {
 		if (key === 'statistics') {
 			updatedDoc.statistics = migrateStatistics(value)
-			return
-		}
-		if (key === 'skills') {
+		} else if (key === 'skills') {
 			updatedDoc.skills = migrateSkills(value)
-			return
-		}
-		if (key === 'items') {
+		} else if (key === 'items') {
 			updatedDoc.items = migrateItems(value)
-			return
-		}
-		if (key === 'spells') {
+		} else if (key === 'spells') {
 			updatedDoc.spells = migrateSpells(value)
-			return
-		}
-		if (key === 'personal') {
-			updatedDoc.personal = migratePersonal(value)
-			return
+		} else if (key === 'personal') {
+			updatedDoc.personal = await migratePersonal(value)
 		}
 	})
+  
+	await Promise.all(promises)
 
 	const migratedDoc: CharacterDocument = {
 		docRef: doc.ref,
@@ -45,6 +39,7 @@ export const migrateDoc = (
 		collectionId,
 		...(updatedDoc as Character),
 	}
+  console.log('migratedDoc', migratedDoc.personal.playerName)
 	return migratedDoc
 }
 
@@ -151,9 +146,25 @@ const migrateSpells = (data: any): Spells => {
 	} as Spells
 }
 
-const migratePersonal = (data: any): Personal => {
+const migratePersonal = async (data: any): Promise<Personal> => {
+  const url = new URL(window.location.href);
+  const idParam = url.searchParams.get('id');
+
+  if (!idParam) {
+    throw new Error('URL parameter "id" is missing.');
+  }
+
+  const [collectionId, docId] = idParam.split('-');
+  if (!collectionId || !docId) {
+    throw new Error('Invalid "id" parameter format in URL.');
+  }
+
+  const playerInfoDoc = await getDoc(doc(db, collectionId, 'player-info'));
+  const playerName: string = playerInfoDoc.data()?.name;
+
 	return {
 		...data,
+    playerName: data.playerName !== undefined ? data.playerName : playerName,
 		allies: data.allies.map((ally) => {
 			return typeof ally === 'string'
 				? {

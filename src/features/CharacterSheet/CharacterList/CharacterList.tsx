@@ -7,6 +7,7 @@ import {
 	ListItemAvatar,
 	ListItemButton,
 	ListItemText,
+	Typography, // Import Typography for headers
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
@@ -21,7 +22,7 @@ const DOC_BLACKLIST = ['player-info']
 
 export const CharacterList: React.FC = () => {
 	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])
-	const { currentUser, setIsAdmin } = useAuth()
+	const { currentUser, isAdmin, setIsAdmin } = useAuth()
 
 	useEffect(() => {
 		getDocuments()
@@ -72,40 +73,91 @@ export const CharacterList: React.FC = () => {
 		setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
 	}
 
+	const buildCharacterName = (char: CharacterDocument) =>
+		`${char.personal.name} (${char.personal.folk} ${char.personal.background}, Level ${calculateCharacterLevel(char.skills.xp.spend)})`
+
 	return (
 		<List>
-			{Boolean(characters.length) &&
-				characters.map((char) => (
-					<ListItem
-						key={char.docId}
-						secondaryAction={
-							<DeleteButton
-								handleDeleteCharacter={() => handleDeleteCharacter(char)}
-							/>
-						}
-					>
-						<Link
-							href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
-							sx={{ width: '100%', textDecoration: 'none' }}
-						>
-							<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
-								<ListItemAvatar>
-									<Avatar>
-										<ListAlt />
-									</Avatar>
-								</ListItemAvatar>
-								<ListItemText
-									primary={
-										char
-											? `${char.personal.name} (Level ${calculateCharacterLevel(char.skills.xp.spend)})`
-											: 'Your Character'
-									}
-									sx={{ textDecoration: 'none' }}
+			{isAdmin
+				? // Group characters by playerName if the user is an admin
+					Object.entries(
+						characters.reduce(
+							(groups, char) => {
+								const playerName = char.personal.playerName || 'Unknown Player'
+								if (!groups[playerName]) {
+									groups[playerName] = []
+								}
+								groups[playerName].push(char)
+								return groups
+							},
+							{} as Record<string, CharacterDocument[]>,
+						),
+					)
+						.sort(([a], [b]) => a.localeCompare(b)) // Sort playerName alphabetically
+						.map(([playerName, playerCharacters]) => (
+							<React.Fragment key={playerName}>
+								<Typography variant="subtitle2" sx={{ mt: 2, mb: 1 }}>
+									{playerName}
+								</Typography>
+								{playerCharacters.map((char) => (
+									<ListItem
+										key={char.docId}
+										secondaryAction={
+											<DeleteButton
+												handleDeleteCharacter={() =>
+													handleDeleteCharacter(char)
+												}
+											/>
+										}
+									>
+										<Link
+											href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
+											sx={{ width: '100%', textDecoration: 'none' }}
+										>
+											<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
+												<ListItemAvatar>
+													<Avatar>
+														<ListAlt />
+													</Avatar>
+												</ListItemAvatar>
+												<ListItemText
+													primary={buildCharacterName(char)}
+													sx={{ textDecoration: 'none' }}
+												/>
+											</ListItemButton>
+										</Link>
+									</ListItem>
+								))}
+							</React.Fragment>
+						))
+				: // Render characters normally if the user is not an admin
+					characters.map((char) => (
+						<ListItem
+							key={char.docId}
+							secondaryAction={
+								<DeleteButton
+									handleDeleteCharacter={() => handleDeleteCharacter(char)}
 								/>
-							</ListItemButton>
-						</Link>
-					</ListItem>
-				))}
+							}
+						>
+							<Link
+								href={`${window.location.href.split('?')[0]}?id=${char.collectionId}-${char.docId}`}
+								sx={{ width: '100%', textDecoration: 'none' }}
+							>
+								<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
+									<ListItemAvatar>
+										<Avatar>
+											<ListAlt />
+										</Avatar>
+									</ListItemAvatar>
+									<ListItemText
+										primary={buildCharacterName(char)}
+										sx={{ textDecoration: 'none' }}
+									/>
+								</ListItemButton>
+							</Link>
+						</ListItem>
+					))}
 		</List>
 	)
 }
