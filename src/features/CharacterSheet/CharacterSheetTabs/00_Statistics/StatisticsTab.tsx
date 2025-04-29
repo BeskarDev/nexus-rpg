@@ -130,7 +130,7 @@ export const StatisticsTab: React.FC = () => {
 					/>
 				</Box>
 				<Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
-					<AvField />
+					<AvField av={av} updateFn={updateCharacter} />
 					<AttributeField
 						type="number"
 						value={health.current}
@@ -186,7 +186,7 @@ export const StatisticsTab: React.FC = () => {
 							justifyContent: 'top',
 						}}
 					>
-						<Typography variant="caption">Wounds</Typography>
+						<Typography variant="caption" sx={{ color: theme => theme.palette.text.secondary, fontSize: '10px' }}>Wounds</Typography>
 						<Box>
 							<WoundCheckbox
 								{...health.woundOne}

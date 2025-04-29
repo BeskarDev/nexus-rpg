@@ -3,6 +3,7 @@ import { deepCopy, reorder } from '@site/src/components/DynamicList/utils'
 import {
 	Ability,
 	CharacterDocument,
+	Companion,
 	Item,
 	Skill,
 	Spell,
@@ -427,9 +428,12 @@ export const {
 			)
 		},
 		addNewCompanion: (state) => {
+			state.unsavedChanges = true
 			state.activeCharacter.companions.push({
 				id: crypto.randomUUID(),
 				name: '',
+        type: '',
+        size: '',
 				statistics: {
 					health: {
 						total: 0,
@@ -445,17 +449,13 @@ export const {
 							fatigueOne: false,
 							fatigueTwo: false,
 						},
-						woundThree: {
-							injury: false,
-							fatigueOne: false,
-							fatigueTwo: false,
-						},
 					},
 					av: {
 						armor: 0,
 						helmet: 0,
 						shield: 0,
 						other: 0,
+            type: '',
 					},
 					strength: {
 						value: 6,
@@ -483,18 +483,26 @@ export const {
 		},
 		updateCompanion: (state, action) => {
 			const { index, update } = action.payload
-			state.activeCharacter.companions[index] = {
+			const copiedUpdate = deepCopy(update)
+
+			const newCompanion: Companion = {
 				...state.activeCharacter.companions[index],
-				...update,
 			}
+
+			state.unsavedChanges = true
+			state.activeCharacter.companions[index] = mergeDeep(newCompanion, copiedUpdate)
 		},
 		deleteCompanion: (state, action) => {
 			const index = action.payload
+
+			state.unsavedChanges = true
 			state.activeCharacter.companions.splice(index, 1)
 		},
 		reorderCompanion: (state, action) => {
 			const { source, destination } = action.payload
 			const [moved] = state.activeCharacter.companions.splice(source, 1)
+
+			state.unsavedChanges = true
 			state.activeCharacter.companions.splice(destination, 0, moved)
 		},
 	},

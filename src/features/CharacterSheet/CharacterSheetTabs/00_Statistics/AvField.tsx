@@ -2,29 +2,46 @@ import { useMemo } from 'react'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings } from '@mui/icons-material'
-import { Box, IconButton, Menu, Typography } from '@mui/material'
+import {
+	Box,
+	IconButton,
+	Menu,
+	MenuItem,
+	TextField,
+	TextFieldProps,
+	Typography,
+} from '@mui/material'
 import React from 'react'
-import { CharacterDocument } from '@site/src/types/Character'
+import {
+	avType,
+	avTypeArray,
+	CharacterDocument,
+	Companion,
+	Statistics,
+} from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 
-export const AvField = () => {
-	const dispatch = useAppDispatch()
+export const AvField: React.FC<
+	{
+		av: Statistics['av']
+		updateFn: (
+			update: DeepPartial<CharacterDocument | Companion>,
+		) => void
+	} & TextFieldProps
+> = ({ av, updateFn, ...props }) => {
+	if (!av) {
+		return undefined
+	}
+
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
-	const { av } = useAppSelector(
-		(state) => state.characterSheet.activeCharacter.statistics,
-	)
 
 	const totalAV: number = useMemo(
 		() => av.armor + av.helmet + av.shield + av.other,
 		[av.armor + av.helmet + av.shield + av.other],
 	)
-
-	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
-		dispatch(characterSheetActions.updateCharacter(update))
-	}
 
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -43,14 +60,17 @@ export const AvField = () => {
 					display: 'flex',
 					alignItems: 'center',
 					columnGap: 0.5,
+					...props.sx,
 				}}
 			>
 				<AttributeField
+					{...props}
 					disabled
-					value={totalAV}
+					value={av.type ? `${totalAV} (${av.type})` : `${totalAV}`}
 					label="AV"
 					sx={{
 						mr: 1,
+						maxWidth: '6rem',
 						'& .MuiOutlinedInput-root': {
 							'& .MuiOutlinedInput-notchedOutline': {
 								borderWidth: '2px',
@@ -72,50 +92,92 @@ export const AvField = () => {
 				<Typography variant="subtitle2">
 					Set the individual sources of AV.
 				</Typography>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.armor}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { armor: Number(event.target.value) } },
-						})
-					}
-					label="Armor"
-				/>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.helmet}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { helmet: Number(event.target.value) } },
-						})
-					}
-					label="Helmet"
-				/>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.shield}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { shield: Number(event.target.value) } },
-						})
-					}
-					label="Shield"
-				/>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.other}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { other: Number(event.target.value) } },
-						})
-					}
-					label="Other"
-				/>
+				<Box
+					sx={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						alignItems: 'center',
+						columnGap: 1,
+					}}
+				>
+					<AttributeField
+						type="number"
+						size="small"
+						value={av.armor}
+						onChange={(event) =>
+							updateFn(
+								{
+									statistics: { av: { armor: Number(event.target.value) } },
+								},
+							)
+						}
+						label="Armor"
+						sx={{ maxWidth: '4rem' }}
+					/>
+					<AttributeField
+						type="number"
+						size="small"
+						value={av.helmet}
+						onChange={(event) =>
+							updateFn(
+								{
+									statistics: { av: { helmet: Number(event.target.value) } },
+								},
+							)
+						}
+						label="Helmet"
+						sx={{ maxWidth: '4rem' }}
+					/>
+					<AttributeField
+						type="number"
+						size="small"
+						value={av.shield}
+						onChange={(event) =>
+							updateFn(
+								{
+									statistics: { av: { shield: Number(event.target.value) } },
+								},
+							)
+						}
+						label="Shield"
+						sx={{ maxWidth: '4rem' }}
+					/>
+					<AttributeField
+						type="number"
+						size="small"
+						value={av.other}
+						onChange={(event) =>
+							updateFn(
+								{
+									statistics: { av: { other: Number(event.target.value) } },
+								},
+							)
+						}
+						label="Other"
+						sx={{ maxWidth: '4rem' }}
+					/>
+					<TextField
+						select
+						size="small"
+						variant="standard"
+						value={av.type}
+						onChange={(event) =>
+							updateFn(
+								{
+									statistics: { av: { type: event.target.value as avType } },
+								},
+							)
+						}
+						label="Type"
+						sx={{ maxWidth: '4rem', mt: 0.5 }}
+					>
+						{avTypeArray.map((type) => (
+							<MenuItem key={type} value={type}>
+								{type}
+							</MenuItem>
+						))}
+					</TextField>
+				</Box>
 			</Menu>
 		</>
 	)

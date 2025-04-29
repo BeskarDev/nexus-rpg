@@ -6,6 +6,8 @@
     "dbaeumer.vscode-eslint",
     "iulian-radu-at.find-unused-exports",
     "streetsidesoftware.code-spell-checker",
-    "yoavbls.pretty-ts-errors"
+    "yoavbls.pretty-ts-errors",
+    "GitHub.copilot",
+    "GitHub.copilot-chat"
   ]
 }

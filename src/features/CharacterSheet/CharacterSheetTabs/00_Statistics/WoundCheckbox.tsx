@@ -4,27 +4,30 @@ import {
 	WaterDrop,
 	WaterDropOutlined,
 } from '@mui/icons-material'
-import { Box, Checkbox } from '@mui/material'
+import { Box, BoxProps, Checkbox } from '@mui/material'
 import React from 'react'
 import { Wound } from '../../../../types/Character'
 
 export type WoundCheckbox = Wound & {
 	setWound: (wound: Partial<Wound>) => void
-}
+} & BoxProps
 
 export const WoundCheckbox: React.FC<WoundCheckbox> = ({
 	injury,
 	fatigueOne,
 	fatigueTwo,
 	setWound,
+	...props
 }) => {
 	return (
 		<Box>
 			<Box
+				{...props}
 				sx={{
 					display: 'flex',
 					flexDirection: 'row',
 					alignItems: 'center',
+					...props.sx,
 				}}
 			>
 				<Checkbox

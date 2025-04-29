@@ -6,6 +6,7 @@ import {
 	AccordionSummary,
 	AccordionDetails,
 	Tooltip,
+  Typography,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
@@ -51,13 +52,14 @@ export const CompanionsTab: React.FC = () => {
 		<Box
 			sx={{
 				display: 'flex',
+        flexDirection: 'column',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
 				maxWidth: '47rem',
 			}}
 		>
 			<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-				<SectionHeader>Companions</SectionHeader>
+				<Typography fontWeight="bold">Companions</Typography>
 				<Tooltip title="enable this to add, delete, or reorder lists">
 					<IconButton
 						onClick={toggleControls}
@@ -72,7 +74,6 @@ export const CompanionsTab: React.FC = () => {
 							addNewCompanion()
 							event.stopPropagation()
 						}}
-						sx={{ mb: 0.75 }}
 					>
 						<AddCircle />
 					</IconButton>
@@ -80,11 +81,11 @@ export const CompanionsTab: React.FC = () => {
 			</Box>
 			<DynamicList droppableId="companions" onDragEnd={onCompanionReorder}>
 				{companions.map((companion, index) => (
-					<DynamicListItem key={companion.id} id={companion.id} index={index}>
+					<DynamicListItem key={companion.id} id={companion.id} index={index} dragDisabled={!showControls}>
 						<CompanionEntry companion={companion} index={index} showControls={showControls} />
 					</DynamicListItem>
 				))}
 			</DynamicList>
-		</Box>
+      </Box>
 	)
 }

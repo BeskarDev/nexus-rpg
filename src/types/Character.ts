@@ -37,6 +37,12 @@ export type Relation = {
 	description: string
 }
 
+export const avTypeArray = [
+	'',
+	'light',
+	'heavy',
+] as const
+export type avType = (typeof avTypeArray)[number]
 export type Statistics = {
 	health: {
 		total: number
@@ -51,6 +57,7 @@ export type Statistics = {
 		helmet: number
 		shield: number
 		other: number
+    type: avType
 	}
 	strength: Attribute
 	agility: Attribute
@@ -230,9 +237,22 @@ export const rangeTypeArray = [
 ] as const
 export type RangeType = (typeof rangeTypeArray)[number]
 
+export const sizeTypeArray = [
+	'',
+	'tiny',
+	'small',
+	'medium',
+	'large',
+	'huge',
+] as const
+export type sizeType = (typeof sizeTypeArray)[number]
 export type Companion = {
   id: string
   name: string
-  statistics: Statistics
+  type: string
+  size: sizeType
+  statistics: Omit<Statistics, 'health'> & {
+    health: Omit<Statistics['health'], 'woundThree'>
+  }
   skills: Skill[]
 }

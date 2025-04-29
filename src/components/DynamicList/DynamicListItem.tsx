@@ -25,10 +25,10 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 					{...props}
 					sx={{ p: 0, ...props.sx }}
 				>
-					{!dragDisabled && (
+					{(
 						<ListItemIcon
 							{...provided.dragHandleProps}
-							sx={{ minWidth: '32px' }}
+							sx={{ minWidth: '32px', display: dragDisabled ? 'none' : 'inherit' }}
 						>
 							<DragHandle />
 						</ListItemIcon>
