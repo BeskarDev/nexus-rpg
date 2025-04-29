@@ -40,7 +40,11 @@ export const CompanionEntry: React.FC<{
 		<Accordion
 			expanded={expanded}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '47rem', mt: 0 }}
+			sx={{
+				flexGrow: 1,
+				maxWidth: showControls ? 'calc(100% - 3rem)' : 'calc(100% - 1rem)',
+				mt: 0,
+			}}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMore />}
@@ -73,7 +77,7 @@ export const CompanionEntry: React.FC<{
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
-				<Box sx={{ display: 'flex', gap: 1 }}>
+				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
 					<TextField
 						size="small"
 						variant="standard"
@@ -82,6 +86,7 @@ export const CompanionEntry: React.FC<{
 							updateCompanion({ name: event.target.value }, index)
 						}
 						label="Name"
+						sx={{ width: '12rem', flexGrow: 1 }}
 					/>
 					<TextField
 						size="small"
@@ -91,6 +96,7 @@ export const CompanionEntry: React.FC<{
 							updateCompanion({ type: event.target.value }, index)
 						}
 						label="Type"
+						sx={{ ml: 'auto', maxWidth: '6rem' }}
 					/>
 					<TextField
 						select
@@ -101,6 +107,7 @@ export const CompanionEntry: React.FC<{
 							updateCompanion({ size: event.target.value as sizeType }, index)
 						}
 						label="Size"
+						sx={{ maxWidth: '6rem' }}
 					>
 						{sizeTypeArray.map((type) => (
 							<MenuItem key={type} value={type}>
@@ -109,7 +116,14 @@ export const CompanionEntry: React.FC<{
 						))}
 					</TextField>
 				</Box>
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+				<Box
+					sx={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						alignItems: 'center',
+						gap: 1,
+					}}
+				>
 					<AttributeField
 						size="small"
 						type="number"
@@ -224,13 +238,13 @@ export const CompanionEntry: React.FC<{
 						updateFn={(update: DeepPartial<Companion>) =>
 							updateCompanion(
 								{
-                  statistics: {
-                    av: {
-                      ...companion.statistics.av,
-                      ...update.statistics?.av,
-                    },
-                  }
-                },
+									statistics: {
+										av: {
+											...companion.statistics.av,
+											...update.statistics?.av,
+										},
+									},
+								},
 								index,
 							)
 						}
