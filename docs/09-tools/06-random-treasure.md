@@ -661,7 +661,7 @@ Spices and Dyes
 | 1 | Hat | Cap | Necklace | Brooch | Cloak | Robe |
 | 2 | Mask | Helm | Amulet | Pauldron | Cape | Gown |
 | 3 | Veil | Coif | Choker | Epaulet | Wrap | Tunic-Robe |
-| 4 | Cowl | Headband | Pendant |  | Shawl | Tabard |
+| 4 | Cowl | Headband | Pendant | Spaulder | Shawl | Tabard |
 | 5 | Circlet | Beret | Scarf | Mantlelet | Poncho | Ceremonial Gown |
 | 6 | Faceplate | Crest | Gorget | Shoulder Wrap | Mantle | Vestments |
 
