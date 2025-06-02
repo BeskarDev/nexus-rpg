@@ -678,7 +678,7 @@ Spices and Dyes
 
 ## Armor / Shield
 
-### **Leather Armor**
+### Leather Armor
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -697,7 +697,7 @@ Spices and Dyes
 
 ---
 
-### **Banded Leather**
+### Banded Leather
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -716,7 +716,7 @@ Spices and Dyes
 
 ---
 
-### **Chain Mail**
+### Chain Mail
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -735,7 +735,7 @@ Spices and Dyes
 
 ---
 
-### **Scale Mail**
+### Scale Mail
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -754,7 +754,7 @@ Spices and Dyes
 
 ---
 
-### **Helmet**
+### Helmet
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -771,7 +771,7 @@ Spices and Dyes
 | 11 | Wicker-laced hide | Folded band helm | Feathered back |
 | 12 | Lacquered bronze | Ritual mask helm | Narrow eye slits |
 
-### **Buckler**
+### Buckler
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -790,7 +790,7 @@ Spices and Dyes
 
 ---
 
-### **Light Shield**
+### Light Shield
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -809,7 +809,7 @@ Spices and Dyes
 
 ---
 
-### **Heavy Shield**
+### Heavy Shield
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -826,7 +826,7 @@ Spices and Dyes
 | 11 | Stone-carved front | Sacred slab | Echoing when dropped |
 | 12 | Engraved bronze | Ceremonial wall | Inlaid runes |
 
-### **Breastplate**
+### Breastplate
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -845,7 +845,7 @@ Spices and Dyes
 
 ---
 
-### **Plate Harness**
+### Plate Harness
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -904,7 +904,7 @@ Spices and Dyes
 
 ---
 
-### **Bow**
+### Bow
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -923,7 +923,7 @@ Spices and Dyes
 
 ---
 
-### **Brawling**
+### Brawling
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -942,7 +942,7 @@ Spices and Dyes
 
 ---
 
-### **Crossbow**
+### Crossbow
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -961,7 +961,7 @@ Spices and Dyes
 
 ---
 
-### **Mace**
+### Mace
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -980,7 +980,7 @@ Spices and Dyes
 
 ---
 
-### **Polearm**
+### Polearm
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -999,7 +999,7 @@ Spices and Dyes
 
 ---
 
-### **Thrown**
+### Thrown
 
 | d12 | Material | Form/Variant | Detail/Trait |
 | --- | --- | --- | --- |
@@ -1018,7 +1018,7 @@ Spices and Dyes
 
 ---
 
-### **Arcane Conduit**
+### Arcane Conduit
 
 | d12 | Material | Form / Variant | Detail / Trait |
 | --- | --- | --- | --- |
@@ -1037,7 +1037,7 @@ Spices and Dyes
 
 ---
 
-### **Mystic Talisman**
+### Mystic Talisman
 
 | d12 | Material | Form / Variant | Detail / Trait |
 | --- | --- | --- | --- |
@@ -1051,5 +1051,8 @@ Spices and Dyes
 | 8 | Antler-mounted | Spirit Hook | Suspended on woven cord |
 | 9 | Bronze-etched | Circle Sigil | Covered in spirals |
 | 10 | Crystal-fused | Veil Focus | Glints with inner light |
+| 11 | Wicker-strung | Prayer Tangle | Smells faintly of herbs |
+| 12 | Meteorite-studded | Soul Seal | Buzzes faintly in silence |
+
 | 11 | Wicker-strung | Prayer Tangle | Smells faintly of herbs |
 | 12 | Meteorite-studded | Soul Seal | Buzzes faintly in silence |
