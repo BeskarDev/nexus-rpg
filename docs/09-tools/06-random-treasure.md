@@ -472,7 +472,7 @@ Possible materials are grouped by their source and split into four different qua
 | 11 | Rough vessels | Polished ceramic | Spirit-touched ware | Heaven's craft |
 | 12 | Terracotta | Slip-painted ware | Elemental ceramic | God's handiwork |
 
-Spices and Dyes
+**Spices and Dyes**
 
 | d12 | Low-Quality | Medium-Quality | High-Quality | Supreme-Quality |
 | --- | --- | --- | --- | --- |
