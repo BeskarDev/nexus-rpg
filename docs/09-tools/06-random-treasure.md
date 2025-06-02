@@ -22,6 +22,8 @@ Something found in a treasure chest or other smaller cache of loot. Often requir
 
 Powerful items marking the peak of any treasure hoard, often requiring the conquest of a whole dungeon, defeating a powerful leader, or the completion of a perilous quest.
 
+## Random Treasure by Level
+
 | Level | Simple Loot | Minor Treasure | Major Treasure |
 | --- | --- | --- | --- |
 | 1 | 1 x Q1 | 1 x Q2, 1d3 x Q1 | 1 x Q3, 1d3 x Q2, 1d3 x Q1 |
