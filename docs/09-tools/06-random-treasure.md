@@ -678,189 +678,193 @@ Possible materials are grouped by their source and split into four different qua
 
 ## Armor / Shield
 
-### Leather Armor
+### Leather
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Quilted cotton | Padded cloth | Stitch-lined seams |
-| 2 | Woven hemp | Heavy robes | Faded dye bands |
-| 3 | Dyed leather | Soft jerkin | Water-darkened spots |
-| 4 | Felted wool | Loose coat | Fringed edges |
-| 5 | Reed-laced hide | Robe with ties | Smells of smoke |
-| 6 | Deerskin | Padded mantle | Worn elbow patches |
-| 7 | Bronze-studded | Hooded wrap | Clasp at collar |
-| 8 | Tanned boar hide | Split-tunic | Deep creases |
-| 9 | Bark-inset cloth | Quilted vest | Forest-stained |
-| 10 | Stuffed linen | Sleeveless robe | Sweat-stained trim |
-| 11 | Plant fiber weave | Side-fastened robe | Loose stitching |
-| 12 | Painted hide | Worn robes | Decorated hem |
+| 1 | Quilted-padded | Gambeson | Stitch-lined seams |
+| 2 | Woven-textile | Jerkin | Faded dye bands |
+| 3 | Dyed-leather | Leather tunic | Water-darkened spots |
+| 4 | Felted-textile | Padded coat | Fringed edges |
+| 5 | Hide-laced | Hide tabard | Smells faintly of smoke |
+| 6 | Tanned-hide | Padded mantle | Worn elbow patches |
+| 7 | Studded-hide | Hooded jerkin | Bronze rivets at collar |
+| 8 | Boar-hide | Split-front tunic | Deep creases at seams |
+| 9 | Bark-reinforced | Quilted vest | Forest-stained fibers |
+| 10 | Stuffed-textile | Sleeveless tunic | Sweat-stained trim |
+| 11 | Plant-fiber weave | Side-fastened coat | Loose stitching at seams |
+| 12 | Painted-hide | Worn robe | Decorated hem shows wear |
 
 ---
 
 ### Banded Leather
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze-studded hide | Studded leather | Green-patina studs |
-| 2 | Hardened bark | Piecemeal mail | Woven with cord |
-| 3 | Riveted leather | Ring-bound vest | Shoulder slits |
-| 4 | Horn-backed hide | Layered jerkin | Irregular stud pattern |
-| 5 | Rawhide straps | Plated tunic | Rust-dusted fittings |
-| 6 | Boar leather | Crude mail hybrid | Snapped strap marks |
+| 1 | Studded-hide | Studded cuirass | Green-patina studs |
+| 2 | Bark-hardened hide | Lamellar vest | Woven with cord |
+| 3 | Riveted-hide | Ring-bound vest | Shoulder slits for mobility |
+| 4 | Horn-laminated hide | Layered jerkin | Irregular stud pattern |
+| 5 | Rawhide-strapped | Plated tunic | Rust-dusted fittings |
+| 6 | Boar-leather | Mail-hybrid vest | Snapped strap marks |
 | 7 | Bronze-reinforced | Banded cuirass | Echoes when tapped |
-| 8 | Painted leather | Paired segments | Hand-etched signs |
-| 9 | Shell-inlaid leather | Overlapping bands | Ridge over chest |
+| 8 | Painted-leather | Paired segments | Hand-etched signs |
+| 9 | Shell-inlaid hide | Overlapping bands | Ridge over chest |
 | 10 | Stone-riveted hide | Interlocked mail | Pebbled texture |
-| 11 | Laced horn pieces | Lined jerkin | Shallow cuts |
+| 11 | Laced-horn pieces | Lined jerkin | Shallow cuts along edges |
 | 12 | Bone-wired hide | Vented plates | Smoothed edges |
 
 ---
 
 ### Chain Mail
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Twisted bronze links | Linothorax | Ornate shoulder straps |
-| 2 | Bone plates | Bone lamellar | Screeched when moved |
-| 3 | Horn segments | Horn lamellar | Scrimshaw carvings |
-| 4 | Layered linen | Reinforced tunic | Faded crest patch |
+| 1 | Twisted-bronze links | Mail hauberk | Ornate shoulder straps |
+| 2 | Bone-plate panels | Bone lamellar cuirass | Screeched when moved |
+| 3 | Horn-segment plates | Horn lamellar vest | Scrimshaw carvings |
+| 4 | Layered-textile core | Reinforced tunic | Faded crest patch |
 | 5 | Sinew-bound chain | Lamellar cuirass | Hangs unevenly |
-| 6 | Copper wire links | Plated harness | Friction-burnished |
-| 7 | Lacquered bone | Ribbed armor | Soft clinking sound |
-| 8 | Bronze scales | Overlapping lamellar | Worn around collar |
-| 9 | Hardened horn | Reinforced mail | Dull tone when struck |
+| 6 | Copper-wire links | Plated harness | Friction-burnished finish |
+| 7 | Lacquered-bone scales | Ribbed armor | Soft clinking sound |
+| 8 | Bronze-scale strips | Overlapping lamellar | Worn around collar |
+| 9 | Hardened-horn plates | Reinforced mail | Dull tone when struck |
 | 10 | Coral-embedded links | Stitched cuirass | Strange salty scent |
-| 11 | Cloth-wrapped chain | Riveted mail | Stained under arms |
-| 12 | Flint-linked mesh | Tiled vest | Irregular outline |
+| 11 | Cloth-wrapped chain | Riveted mail tunic | Stained under arms |
+| 12 | Flint-linked mesh | Tiled vest | Irregular outline at hem |
 
 ---
 
 ### Scale Mail
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze scales | Disk plate | Dented edges |
-| 2 | Wood slats | Wood plates | Burnt ends |
-| 3 | Shell pieces | Shell plates | Iridescent shine |
-| 4 | Bark scales | Bark lamellar | Peeling texture |
-| 5 | Copper scales | Ribbed plates | Rattles slightly |
-| 6 | Horn chips | Natural plates | Grooved ridges |
-| 7 | Bone segments | Scale harness | Uneven layering |
-| 8 | Stone scales | Layered slabs | Cracks at joints |
-| 9 | Lacquered wood | Coated plate | Smooth surface |
-| 10 | Coral fragments | Marine lamellar | Ocean-smelling |
-| 11 | Bronze-leaf | Leaf-scale armor | Symbol etched center |
-| 12 | Chitin shells | Exoskeletal plates | Insect-like shape |
+| 1 | Bronze-scale plates | Scale cuirass | Dented edges |
+| 2 | Wood-slat strips | Wood-plate vest | Burnt ends at seams |
+| 3 | Shell-scale pieces | Shell-scale armor | Iridescent shine |
+| 4 | Bark-scale lamellae | Bark lamellar coat | Peeling texture |
+| 5 | Copper-scale plates | Ribbed plate vest | Rattles slightly when walked |
+| 6 | Horn-chip overlays | Natural-scale coat | Grooved ridges |
+| 7 | Bone-segment scales | Scale harness | Uneven layering at back |
+| 8 | Stone-scale plates | Layered slab vest | Cracks at joints |
+| 9 | Lacquered-wood slats | Coated plate armor | Smooth surface |
+| 10 | Coral-fragment scales | Marine lamellar vest | Faint ocean scent |
+| 11 | Bronze-leaf scales | Leaf-scale cuirass | Symbol etched at center |
+| 12 | Chitin-shell plates | Exoskeletal cuirass | Insect-like symmetry |
 
 ---
 
 ### Helmet
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
 | 1 | Leather-wrapped | Reinforced turban | Embroidered trim |
-| 2 | Studded hide | Studded leather hood | Bronze ear caps |
-| 3 | Woven bark | Lamellar cap | Tied chin strap |
-| 4 | Carved horn | Open-faced helm | High crown |
-| 5 | Bronze-capped | Crested helmet | Flared ridge |
-| 6 | Bone plates | Skullguard hood | Curved dome |
-| 7 | Shell strips | Layered headwrap | Chimed when shaken |
-| 8 | Quilted wool | Thick hood | Smells of herbs |
-| 9 | Copper-laced leather | Padded coif | Worn brow |
-| 10 | Fossil helm | Domed plate cap | Engraved motifs |
-| 11 | Wicker-laced hide | Folded band helm | Feathered back |
-| 12 | Lacquered bronze | Ritual mask helm | Narrow eye slits |
+| 2 | Studded-hide | Studded leather hood | Bronze ear caps |
+| 3 | Woven-bark strips | Lamellar cap | Tied chin strap |
+| 4 | Carved-horn panels | Open-faced helm | High, flared crown |
+| 5 | Bronze-capped leather | Crested helmet | Flared ridge down center |
+| 6 | Bone-plate segments | Skullguard hood | Curved dome over brow |
+| 7 | Shell-strip layered | Layered headwrap | Chimed when shaken |
+| 8 | Quilted-textile | Padded hood | Smells of pressed herbs |
+| 9 | Copper-laced leather | Padded coif | Worn brow indentation |
+| 10 | Fossil-infused metal | Domed plate cap | Engraved motifs around rim |
+| 11 | Wicker-laced hide | Folded band helm | Feathered back plume |
+| 12 | Lacquered-bronze | Ritual mask helm | Narrow eye slits |
+
+---
 
 ### Buckler
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Hardened leather | Round buckler | Worn hand grip |
-| 2 | Bone slats | Bone disc | Grooved rim |
-| 3 | Bronze faceplate | Bossed buckler | Central spike |
-| 4 | Horn laminate | Strapped shield | Glossy finish |
-| 5 | Bark layers | Oval buckler | Cracked edge |
-| 6 | Bronze-studded | Domed guard | Rubbed bronze shine |
-| 7 | Wicker weave | Patterned buckler | Painted spiral |
-| 8 | Shell inlay | Coastal buckler | Iridescent center |
-| 9 | Bronze-inset wood | Compact disc | Tap rings out |
-| 10 | Chitin fragment | Organic plate | Dull chitin ridges |
-| 11 | Smoked hide | Round shield | Smells of ash |
-| 12 | Sinew-wrapped | Wrist guard | Flexible tension |
+| 1 | Hardened-leather | Round buckler | Worn hand grip |
+| 2 | Bone-slat strips | Bone disc buckler | Grooved rim |
+| 3 | Bronze-faceplate | Bossed buckler | Central spike protruding |
+| 4 | Horn-laminated wood | Strapped shield | Glossy finish on exterior |
+| 5 | Bark-layered core | Oval buckler | Cracked edge at side |
+| 6 | Studded-bronze face | Domed buckler | Rubbed bronze shine |
+| 7 | Wicker-woven frame | Patterned buckler | Painted spiral motif |
+| 8 | Shell-inlaid center | Coastal buckler | Iridescent center |
+| 9 | Bronze-inset wood | Compact disc buckler | Tap rings out when struck |
+| 10 | Chitin-fragment | Organic plate | Dull chitin ridges |
+| 11 | Smoked-hide | Round shield | Smells faintly of ash |
+| 12 | Sinew-wrapped frame | Wrist guard | Flexible tension |
 
 ---
 
 ### Light Shield
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze-edged wood | Tear-drop shield | Crest motif |
-| 2 | Painted leather | Flat shield | Tribal markings |
-| 3 | Hardened hide | Oval guard | Curved to fit arm |
-| 4 | Horn plating | Ridge shield | Thick top edge |
-| 5 | Bone paneling | Tall oval | Drilled charm holes |
-| 6 | Polished bronze | Round shield | Blinding glint |
-| 7 | Bark-backed hide | Leaf-shaped guard | Smooth grain |
-| 8 | Stone-rimmed wood | Obsidian-edge | Jagged upper ridge |
-| 9 | Lacquered wood | Sloped shield | Deep red gloss |
-| 10 | Wicker core | Tribal disc | Feather-bound grip |
-| 11 | Metal-stitched leather | Split-guard | Crude seam pattern |
-| 12 | Mixed shell inlay | Decorative shield | Wave-like texture |
+| 1 | Bronze-edged wood | Tear-drop shield | Crest motif engraved |
+| 2 | Painted-hide | Flat shield | Tribal markings around rim |
+| 3 | Hardened-hide | Oval guard | Curved to fit forearm |
+| 4 | Horn-plated wood | Ridge shield | Thick top edge for deflection |
+| 5 | Bone-panel laminate | Tall oval shield | Drilled charm holes |
+| 6 | Polished-bronze face | Round shield | Blinding glint in sunlight |
+| 7 | Bark-backed leather | Leaf-shaped shield | Smooth, flowing grain |
+| 8 | Stone-rimmed wood | Obsidian-edge shield | Jagged upper ridge |
+| 9 | Lacquered-wood core | Sloped shield | Deep red gloss |
+| 10 | Wicker-core frame | Disc shield | Feather-bound hand grip |
+| 11 | Metal-stitched leather | Split-guard shield | Crude seam pattern visible |
+| 12 | Mixed-shell inlay | Decorative shield | Wave-like texture over face |
 
 ---
 
 ### Heavy Shield
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze slab | Tower shield | Embossed front |
-| 2 | Reinforced wood | Kite shield | Scorch lines |
-| 3 | Shell plates | Overlapped wall | Wide and heavy |
-| 4 | Bone-bound frame | Wedge-shaped shield | Clunky edges |
-| 5 | Horn-panelled | Wide wall guard | Grooved grip |
-| 6 | Layered hide & bark | Heavy oval shield | Extra strap for support |
-| 7 | Copper-faced wood | Standing shield | Loud when struck |
-| 8 | Fossil-laminated | Ancient patterning | Dusty to the touch |
-| 9 | Chitinous shell | Beast-faced plate | Insectoid symmetry |
-| 10 | Ash-core bronze | Reinforced plate | Cross-riveted straps |
-| 11 | Stone-carved front | Sacred slab | Echoing when dropped |
-| 12 | Engraved bronze | Ceremonial wall | Inlaid runes |
+| 1 | Bronze-slab face | Tower shield | Embossed front relief |
+| 2 | Reinforced wood core | Kite shield | Scorch lines from torches |
+| 3 | Shell-plate overlay | Overlapped wall shield | Wide, heavy curvature |
+| 4 | Bone-bound frame | Wedge-shaped shield | Clunky edges along sides |
+| 5 | Horn-paneled face | Wide wall guard | Grooved grip for two hands |
+| 6 | Layered-hide & bark | Heavy oval shield | Extra strap for support |
+| 7 | Copper-faced wood | Standing shield | Loud clang when dropped |
+| 8 | Fossil-laminated face | Ancient slab shield | Dusty to the touch |
+| 9 | Chitinous-shell cover | Beast-faced shield | Insectoid symmetry in design |
+| 10 | Ash-core bronze layer | Reinforced plate | Cross-riveted straps |
+| 11 | Stone-carved front | Sacred slab shield | Echoes when dropped |
+| 12 | Engraved-bronze face | Ceremonial wall shield | Inlaid runes along perimeter |
+
+---
 
 ### Breastplate
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Forged bronze | Plate cuirass | Sunburst design |
-| 2 | Splinted wood | Splint mail | Rigid backline |
-| 3 | Carved bone | Sculpted front | Grooved center ridge |
-| 4 | Embossed copper | Ornamental plate | Floral etching |
-| 5 | Horn slabs | Inset armor | Ridge-banded |
-| 6 | Wrought bronze | Heavy cuirass | Pounded chestplate |
-| 7 | Lacquered scales | Ridged armor | Reflects torchlight |
+| 1 | Forged-bronze plate | Plate cuirass | Sunburst design at chest |
+| 2 | Splinted-wood segments | Splint mail tunic | Rigid backline visible |
+| 3 | Carved-bone panels | Bone cuirass | Grooved center ridge |
+| 4 | Embossed-copper plate | Ornamental plate | Floral etching details |
+| 5 | Horn-slab overlays | Inset armor | Ridge-banded edges |
+| 6 | Wrought-bronze shell | Heavy cuirass | Pounded chestplate texture |
+| 7 | Lacquered-scale cover | Ridged armor | Reflects torchlight |
 | 8 | Leather-lined metal | Framed cuirass | Peeling outer layer |
-| 9 | Cast metal | Vented breastplate | Riveted armpits |
-| 10 | Fossil plates | Stone cuirass | Ancient markings |
-| 11 | Mixed shell inlay | Natural patterning | Mosaic motif |
-| 12 | Gold-tinted bronze | Parade cuirass | Decorated with spirals |
+| 9 | Cast-metal plate | Vented breastplate | Riveted armpit vents |
+| 10 | Fossil-plate panels | Stone cuirass | Ancient markings etched in |
+| 11 | Mixed-shell inlay | Mosaic cuirass | Intricate mosaic motif |
+| 12 | Gold-tinted-bronze | Parade cuirass | Decorated with spirals |
 
 ---
 
 ### Plate Harness
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze segments | Segmented plate | Hinge-jointed |
-| 2 | Bone plates | Heavy lamellar | Tied with sinew |
-| 3 | Horn ridges | O-Yoroi | Wide shoulder plates |
-| 4 | Ironwood insets | War harness | Tree-ring motif |
-| 5 | Stone bands | Layered defense | Cracks from battle |
-| 6 | Lacquered copper | Full body set | Reflective under light |
-| 7 | Mixed material | Ornate lamellar | Bound in dark silk cords |
-| 8 | Wrought bronze | Segment cuirass | Etched face mask |
-| 9 | Composite plates | Ridge-overlap | Imposing silhouette |
-| 10 | Shell-covered | Carapace armor | Smells like the sea |
-| 11 | Ash-glazed bronze | Ritual harness | Symbolic inlays |
-| 12 | Fossil-embedded | Towering plate | Echoes with steps |
+| 1 | Bronze-segment plates | Segmented plate | Hinge-jointed at waist |
+| 2 | Bone-plate panels | Heavy lamellar | Tied together with sinew |
+| 3 | Horn-ridge overlays | Ō-yoroi harness | Wide shoulder plates |
+| 4 | Ironwood inset segments | War harness | Tree-ring motif on plates |
+| 5 | Stone-banded strips | Layered defense armor | Cracks from past battles |
+| 6 | Lacquered-copper sheets | Full body set | Reflective under torchlight |
+| 7 | Mixed-material lamellae | Ornate lamellar | Bound in dark silk cords |
+| 8 | Wrought-bronze segments | Segmented cuirass | Etched face-mask motif |
+| 9 | Composite-plate strips | Ridge-overlap armor | Imposing silhouette at dawn |
+| 10 | Shell-covered overlays | Carapace armor | Smells faintly of the sea |
+| 11 | Ash-glazed bronze plates | Ritual harness | Symbolic inlays glow softly |
+| 12 | Fossil-embedded plating | Towering plate armor | Echoes with each step |
 
 ---
 
@@ -868,191 +872,190 @@ Possible materials are grouped by their source and split into four different qua
 
 ### Axe
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze-headed | Throwing axe | Chipped edge |
-| 2 | Bone-bladed | Handaxe | Wrapped in sinew |
-| 3 | Horn-faced | Hatchet | Notched blade |
-| 4 | Stone-carved | Cleaver | Ashwood grip |
-| 5 | Chitin-etched | War sickle | Curved like a fang |
-| 6 | Copper-inlaid | Broadaxe | Split haft |
-| 7 | Bronze-banded | Battleaxe | Heavy for size |
-| 8 | Ironwood hafted | Crescent axe | Weight-balanced |
-| 9 | Obsidian-bladed | Greataxe | Jagged cutting edge |
-| 10 | Shell-reinforced | Elipson axe | Wide blade span |
-| 11 | Fossil-edged | War scythe | Spiraled shaft |
-| 12 | Riveted bronze | Heavy cleaver | Humming when swung |
+| 1 | Metal-forged head | Throwing axe | Edge etched with spirals |
+| 2 | Bone-crafted head | Handaxe | Haft wrapped in worn cloth |
+| 3 | Horn-laminated | Hatchet | Fine notches along blade |
+| 4 | Stone-carved head | Cleaver | Subtle swirl patterns |
+| 5 | Composite-built | War sickle | Handle faintly polished |
+| 6 | Metal-cast head | Broadaxe | Copper veins catch light |
+| 7 | Metal-forged blade | Battleaxe | Patina flecks on edge |
+| 8 | Hardened wood core | Crescent axe | Smooth curve, nearly silent |
+| 9 | Glassy stone-knapped | Greataxe | Jagged silhouette |
+| 10 | Shell-layered | Elipson axe | Pearlescent sheen |
+| 11 | Fossil-composite | War scythe | Shaft engraved with glyphs |
+| 12 | Metal-forged head | Heavy cleaver | Deep hammer marks |
 
 ---
 
 ### Blade
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze-forged | Throwing knife | Curved like a talon |
-| 2 | Obsidian-edged | Dagger | Grooved for grip |
-| 3 | Chiseled stone | Kris | Wavy blade |
-| 4 | Ironwood-inlaid | Gladius | Thickened tip |
-| 5 | Shell-backed | Greatsword | Leaf-shaped blade |
-| 6 | Gold-hilted | Shortsword | Finely balanced |
-| 7 | Bone-hilted | Kopis | Hooked inward |
-| 8 | Chitin-bound | Kukri | Broad near the point |
-| 9 | Copper-etched | Khopesh | Crescent shape |
-| 10 | Meteoric alloy | Longsword | Faint blue sheen |
-| 11 | Laminated bronze | Macuahuitl | Inset with obsidian |
-| 12 | Silvered bronze | Twinblade | Split hilt design |
+| 1 | Metal-forged | Throwing knife | Slight curve on spine |
+| 2 | Glassy stone-knapped | Dagger | Hilt carved with runes |
+| 3 | Stone-carved | Kris | Blade ripples like water |
+| 4 | Wood-cored | Gladius | Pommel carved from single piece |
+| 5 | Shell-reinforced | Greatsword | Leaf-like gleam under light |
+| 6 | Precious metal-forged | Shortsword | Subtle shimmer, very light |
+| 7 | Organic-composite | Kopis | Inward hook bears faint ridges |
+| 8 | Chitin-laminated | Kukri | Broad point with faint sheen |
+| 9 | Metal-forged | Khopesh | Crescent edge tapered thin |
+| 10 | Meteor-infused | Longsword | Hilt hums softly when swung |
+| 11 | Metal-forged with insets | Macuahuitl | Obsidian chips set in blade |
+| 12 | Precious metal-forged | Twinblade | Split hilt woven with threads |
 
 ---
 
 ### Bow
 
-| d12 | Material | Form/Variant | Detail/Trait |
+|  | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Yew-limbed | Shortbow | Wrapped in sinew |
-| 2 | Ash-carved | Hunting bow | Etched with runes |
-| 3 | Horn-laminated | Longbow | Taut and silent |
-| 4 | Bone-reinforced | Composite bow | Curved like a crescent |
-| 5 | Bronze-capped | Warbow | Heavy draw tension |
-| 6 | Ironwood-backed | Greatbow | Painted limbs |
-| 7 | Wicker-bound | Shortbow | Lightweight and narrow |
-| 8 | Chitin-ribbed | Hunting bow | Organic texture |
-| 9 | Oak-flexed | Longbow | Smells of fresh resin |
-| 10 | Shell-inlaid | Warbow | Clatters faintly |
-| 11 | Gold-filamented | Composite bow | Radiates warmth |
-| 12 | Obsidian-knobbed | Greatbow | Dark and reflective |
+| 1 | Wood-carved | Shortbow | Grip wrapped in tanned leather |
+| 2 | Hardwood-carved | Recurve bow | Limbs etched with runes |
+| 3 | Horn-backed | Longbow | Almost silent when drawn |
+| 4 | Bone-backed | Composite bow | Slight crescent to the limbs |
+| 5 | Metal-tipped | Warbow | Tension lines carved into limb |
+| 6 | Reinforced wood-core | Greatbow | Painted motifs along shaft |
+| 7 | Wicker-bound | Hunting bow | Slim profile, snug grip |
+| 8 | Chitin-backed | Reflex bow | Organic texture, light reflex |
+| 9 | Oak-carved | Horse bow | Light scent of fresh resin |
+| 10 | Shell-backed | Flatbow | Limbs rattle slightly |
+| 11 | Thread-woven | Siege bow | Warm to the touch |
+| 12 | Glassy stone-tipped | Yew longbow | Dark, reflective sheen |
 
 ---
 
 ### Brawling
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze-spiked | Cestus | Heavy across the knuckles |
-| 2 | Bone-clawed | Katar | Hooks inward |
-| 3 | Leather-wrapped | Arm blade | Concealed attachment |
-| 4 | Chitin-jointed | Claw | Segmented fingers |
-| 5 | Ironwood-linked | Nunchaku | Snaps loudly |
-| 6 | Obsidian-knotted | War whip | Black and jagged |
-| 7 | Corded rope | Whip | Worn from use |
-| 8 | Silver-chased | Urumi | Razor-thin coil |
-| 9 | Horn-carved | Spiked gauntlet | Inlaid with tiny studs |
-| 10 | Fossil-framed | Push dagger | Narrow triangular blade |
-| 11 | Woven sinew | Chain whip | Rattles when moved |
-| 12 | Steel-tipped | Spiked chain | Twisted with barbs |
+| 1 | Metal-spiked | Cestus | Knuckles dented, weighty |
+| 2 | Bone-crafted | Katar | Inward hooks polished sharp |
+| 3 | Leather-wrapped | Arm blade | Leather worn near edge |
+| 4 | Chitin-plated | Claw | Segmented plates flex |
+| 5 | Linked wood-core | Nunchaku | Joints creak softly |
+| 6 | Stone-knotted | War whip | Black stones glint faintly |
+| 7 | Cord-bound | Whip | Frayed ends show age |
+| 8 | Metal-chased | Urumi | Coil springs back easily |
+| 9 | Horn-carved | Spiked gauntlet | Tiny studs catch light |
+| 10 | Fossil-framed | Push dagger | Triangular blade chipped |
+| 11 | Woven sinew | Chain whip | Links rattle on motion |
+| 12 | Metal-tipped | Spiked chain | Barbs catch faint spark |
 
 ---
 
 ### Crossbow
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze-strung | Light crossbow | Slim trigger |
-| 2 | Bone-framed | Gastraphetes | Noisy when cocked |
-| 3 | Shell-backed | Hand ballista | Two-handed grip |
-| 4 | Copper-plated | Heavy crossbow | Thick string housing |
-| 5 | Oak-bodied | Light crossbow | Rough-hewn stock |
-| 6 | Ironwood-cased | Heavy crossbow | Long reloading crank |
-| 7 | Gold-inlaid | Gastraphetes | Stylized bolts |
-| 8 | Wicker-stocked | Light crossbow | Lightweight frame |
-| 9 | Laminated horn | Hand ballista | Bow arms curve outward |
-| 10 | Obsidian-decorated | Heavy crossbow | Blades along the limbs |
-| 11 | Rope-bound | Light crossbow | Smells of pitch |
-| 12 | Quartz-socketed | Gastraphetes | Humming core piece |
+| 1 | Metal-strung | Light crossbow | Slim trigger engraved |
+| 2 | Bone-framed | Heavy crossbow | Cocking mechanism squeaks |
+| 3 | Shell-reinforced | Arbalest | Two-handed brace fits snug |
+| 4 | Metal-plated | Repeating crossbow | Housing bears hammer marks |
+| 5 | Wood-bodied | Hand crossbow | Rough-hewn stock |
+| 6 | Wood-cased | Siege crossbow | Long crank shows wear |
+| 7 | Decorated metal | Steel prod bow | Bolt slots carved with swirls |
+| 8 | Wicker-stocked | Mounted crossbow | Very lightweight frame |
+| 9 | Horn-backed | Light arbalest | Curved arms polished smooth |
+| 10 | Stone-inlaid | Heavy ballista | Limb edges jagged to glance |
+| 11 | Cord-bound | Pistol crossbow | Pitch scent lingers |
+| 12 | Crystal-socketed | Steel-tendon bow | Core faintly glows |
 
 ---
 
 ### Mace
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Stone-headed | Club | Crude but solid |
-| 2 | Bronze-spiked | Flail | Weighted chain ends |
-| 3 | Obsidian-studded | Morningstar | Gleams faintly |
-| 4 | Ironwood-gripped | Warpick | Hooked like a fang |
-| 5 | Gold-etched | Mace | Ornate religious motifs |
-| 6 | Shell-tipped | Warhammer | Broad and flat |
-| 7 | Chitin-ribbed | Club | Ridged and segmented |
-| 8 | Bone-flanged | War club | Pale and fossil-like |
-| 9 | Fossil-knobbed | Light hammer | Pitted from age |
-| 10 | Brass-framed | Maul | Wide-blunted ends |
-| 11 | Lead-cored | Kanabo | Heavy to lift |
-| 12 | Steel-banded | Greatclub | Reinforced for smashing |
+| 1 | Stone-headed | Cudgel | Rough, unpolished surface |
+| 2 | Metal-spiked | Flail | Chain links rattling |
+| 3 | Stone-studded | Morningstar | Dark stones catch torchlight |
+| 4 | Wood-headed | Warpick | Hook carved from single piece |
+| 5 | Metal-headed | Mace | Religious glyphs inscribed |
+| 6 | Shell-tipped | Warhammer | Broad face shimmer |
+| 7 | Chitin-plated | Knobkerrie | Ridged segments feel cold |
+| 8 | Bone-flanged | War club | Pale hue, ancient cracks |
+| 9 | Fossil-headed | Light hammer | Pitted surface shows age |
+| 10 | Metal-framed | Maul | Blunt ends hammered flat |
+| 11 | Weighted core | Kanabo | Noticeable heft in swing |
+| 12 | Metal-banded | Greatclub | Smash-reinforced at edges |
 
 ---
 
 ### Polearm
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Bronze-headed | Glaive | Blade curved outward |
-| 2 | Bone-pointed | Javelin | Barbed tip |
-| 3 | Obsidian-edged | Dagger-axe | Flat and deadly |
-| 4 | Horn-forged | Trident | Three-pronged head |
-| 5 | Wicker-shafted | Quarterstaff | Wrapped grip |
-| 6 | Ironwood-hafted | Spear | Winged sides |
-| 7 | Shell-fitted | Swordstaff | Long and double-edged |
-| 8 | Chitin-split | Halberd | Axe-blade and hook combo |
-| 9 | Gold-inset | Scepter | Small and ceremonial |
-| 10 | Bone-socketed | Naginata | Slashing pole blade |
-| 11 | Twine-bound | Harpoon | Roped barbs |
-| 12 | Meteor-marked | Podao | Subtle shimmer |
+| 1 | Metal-headed | Glaive | Sharp outward curve |
+| 2 | Bone-pointed | Javelin | Tip bears barbs |
+| 3 | Stone-edged | Dagger-axe | Flat, deadly silhouette |
+| 4 | Hollow-horn | Trident | Three prongs carved finely |
+| 5 | Wicker-shafted | Quarterstaff | Wrapped grip holds firm |
+| 6 | Wood-shafted | Spear | Winged sides ground smooth |
+| 7 | Shell-fitted | Swordstaff | Double-edge glints in light |
+| 8 | Chitin-headed | Halberd | Axe-hook combination seamless |
+| 9 | Metal-headed | Scepter | Ceremonial, surprisingly light |
+| 10 | Bone-headed | Naginata | Slashing blade curved wide |
+| 11 | Cord-bound | Harpoon | Barbed line frays slightly |
+| 12 | Meteor-infused | Podao | Subtle shimmer along edge |
 
 ---
 
 ### Thrown
 
-| d12 | Material | Form/Variant | Detail/Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Leather-slinged | Sling | Simple and worn |
-| 2 | Stone-weighted | Bola | Twin ends etched |
-| 3 | Bone-hooked | Net | Barbed ends |
-| 4 | Bronze-wired | Spear thrower | Smooth channel |
-| 5 | Shell-braided | Sling | Twisted like rope |
-| 6 | Gold-threaded | Net | Reflective in light |
-| 7 | Obsidian-chipped | Bola | Sharp and balanced |
-| 8 | Antler-spined | Kestros | Thorn-like spurs |
-| 9 | Ironwood-framed | Spear thrower | Ridged handle |
-| 10 | Reed-woven | Net | Light and fast |
-| 11 | Fossil-fused | Bola | Smooth fossil inlay |
-| 12 | Chitin-hooked | Kestros | Wound around horn grip |
+| 1 | Cord-bound | Sling | Frayed at edges |
+| 2 | Weighted stone | Bola | Ends etched with patterns |
+| 3 | Bone-barbed | Throwing hammer | Head dented, weighty |
+| 4 | Metal-channeled | Throwing knife | Groove worn smooth |
+| 5 | Woven shell | Chakram | Circular blade gleams |
+| 6 | Thread-woven | Javelin | Feathered shaft, well-balanced |
+| 7 | Stone-weighted | Dart | Tip chipped slightly |
+| 8 | Antler-spined | Throwing axe | Thorn spurs polished sharp |
+| 9 | Wood-carved | Atlatl (spear thrower) | Handle ridges follow grain |
+| 10 | Reed-woven | Throwing star | Extremely lightweight |
+| 11 | Fossil-weighted | Tossed net | Surface pitted with age |
+| 12 | Chitin-barbed | Kestros | Horn strips wrapped tightly |
 
 ---
 
 ### Arcane Conduit
 
-| d12 | Material | Form / Variant | Detail / Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Crystalline-bound | Spiral Wand | Glows when held |
-| 2 | Silver-laced | Channel Ring | Etched with sigils |
-| 3 | Obsidian-cored | Arc Rod | Rings faintly when moved |
+| 1 | Crystal-bound | Spiral Wand | Held glow under fingertips |
+| 2 | Metal-traced | Channel Ring | Sigils shimmer faintly |
+| 3 | Stone-cored | Arc Rod | Faint ring echoes when tapped |
 | 4 | Bone-carved | Horn Baton | Warm to the touch |
-| 5 | Gold-inlaid | Orb Handle | Suspended in a bronze cage |
-| 6 | Glass-threaded | Prism Scepter | Hollow interior |
-| 7 | Ash-wood | Crooked Staff | Smooth and blackened |
-| 8 | Coral-studded | Spiral Fork | Dotted with sea-polished nodules |
-| 9 | Fossil-veined | Knot Rod | Ancient runes embedded |
-| 10 | Chitin-wrapped | Wand Loop | Buzzes softly when active |
-| 11 | Quartz-set | Crystal Antenna | Refracts ambient light |
-| 12 | Meteor-metal-capped | Ironroot Branch | Crackles with latent energy |
+| 5 | Metal-caged | Orb Handle | Bronze suspension holds sphere |
+| 6 | Glass-threaded | Prism Scepter | Hollow core refracts light |
+| 7 | Wood-carved | Crooked Staff | Smooth black polish |
+| 8 | Coral-studded | Spiral Fork | Sea-polished glow |
+| 9 | Fossil-veined | Knot Rod | Ancient runes faintly etched |
+| 10 | Chitin-wrapped | Wand Loop | Soft buzz resonates lightly |
+| 11 | Crystal-set | Crystal Antenna | Light refracts in facets |
+| 12 | Meteor-infused | Ironroot Branch | Energy crackles along grain |
 
 ---
 
 ### Mystic Talisman
 
-| d12 | Material | Form / Variant | Detail / Trait |
+| d12 | Material | Form/Variant | Detail |
 | --- | --- | --- | --- |
-| 1 | Gold-leafed | Medallion Disc | Stamped with celestial symbols |
-| 2 | Bone-scrimshawed | Spirit Fetish | Whorled carvings |
+| 1 | Metal-leafed | Medallion Disc | Celestial stamps around rim |
+| 2 | Bone-carved | Spirit Fetish | Whorl carvings catch moonlight |
 | 3 | Glass-formed | Tear Pendant | Cool to the touch |
-| 4 | Shell-backed | Ancestral Shell | Bound with silk thread |
-| 5 | Leather-wrapped | Dream Pouch | Rattles faintly |
-| 6 | Silver-chased | Guardian Coin | Inset with a black pearl |
-| 7 | Obsidian-framed | Night Eye Charm | Dull and opaque |
-| 8 | Antler-mounted | Spirit Hook | Suspended on woven cord |
-| 9 | Bronze-etched | Circle Sigil | Covered in spirals |
-| 10 | Crystal-fused | Veil Focus | Glints with inner light |
-| 11 | Wicker-strung | Prayer Tangle | Smells faintly of herbs |
-| 12 | Meteorite-studded | Soul Seal | Buzzes faintly in silence |
+| 4 | Shell-backed | Ancestral Shell | Bound with silk, softly iridescent |
+| 5 | Leather-wrapped | Dream Pouch | Faint rattle from within |
+| 6 | Metal-chased | Guardian Coin | Pearl inset glints in light |
+| 7 | Stone-framed | Night Eye Charm | Dull, opaque center |
+| 8 | Antler-mounted | Spirit Hook | Hung by braided cord |
+| 9 | Metal-etched | Circle Sigil | Spiral-covered surface |
+| 10 | Crystal-fused | Veil Focus | Inner light pulses softly |
+| 11 | Wicker-strung | Prayer Tangle | Herb scent drifts subtly |
+| 12 | Stone-studded | Soul Seal | Silent buzz when held |
 
-| 11 | Wicker-strung | Prayer Tangle | Smells faintly of herbs |
-| 12 | Meteorite-studded | Soul Seal | Buzzes faintly in silence |
+---
