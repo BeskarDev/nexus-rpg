@@ -36,7 +36,7 @@ Carved of the stone itself, the dwarves have a deep connection to the earth. The
 
 Living in a spiritual symbiotic state with the life force of nature in their immediate environment, the elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering.
 
-**Cultures:** Ra’thep (Sun-Elves), Sylvar (Forest-Elves), Alfir (Shadow-Elves), Ho’shien (River-Elves)
+**Cultures:** Anutep (Sun-Elves), Sylvar (Forest-Elves), Alfir (Shadow-Elves), Ho’shien (River-Elves)
 
 **Size.** Elves are medium sized, growing slightly taller than humans at 1,70 to 1,80 meters tall on average with a slender build.
 
