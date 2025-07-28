@@ -26,13 +26,13 @@ Each attribute is represented by a die size, reflecting your adventurer's capabi
 
 | Die Size | Rating | Examples |
 | --- | --- | --- |
-| **d4-1 or less** | Terrible | **STR**: Unable to carry basic equipment<br>**AGI**: Constantly stumbling and tripping<br>**SPI**: Oblivious to obvious dangers<br>**MND**: Struggling with basic concepts |
-| **d4** | Poor | **STR**: Quickly exhausted by physical labor<br>**AGI**: Slow to react to sudden movements<br>**SPI**: Missing common social cues<br>**MND**: Frequently confused by new information |
-| **d6** | Average | **STR**: Able to perform a day's labor<br>**AGI**: Moving competently in most situations<br>**SPI**: Sensing when something feels wrong<br>**MND**: Understanding common knowledge and concepts |
-| **d8** | Good | **STR**: Winning contests of might against ordinary folk<br>**AGI**: Moving with precision through difficult terrain<br>**SPI**: Perceiving hidden motives<br>**MND**: Solving complex problems with ease |
-| **d10** | Excellent | **STR**: Carrying burdens that would exhaust others<br>**AGI**: Moving with perfect balance and coordination<br>**SPI**: Reading intentions with uncanny accuracy<br>**MND**: Mastering multiple fields of knowledge |
-| **d12** | Incredible | **STR**: Breaking barriers thought impenetrable<br>**AGI**: Moving faster than the eye can track<br>**SPI**: Sensing things beyond mortal perception<br>**MND**: Understanding knowledge long forgotten |
-| **d12+1 or mode** | Monstrous | **STR**: Performing feats of strength from legends<br>**AGI**: Moving with impossible grace and speed<br>**SPI**: Perceiving across realms and dimensions<br>**MND**: Comprehending knowledge beyond mortal understanding |
+| **d4-1 or less** | Terrible | **STR**: Unable to carry basic equipment<br/>**AGI**: Constantly stumbling and tripping<br/>**SPI**: Oblivious to obvious dangers<br/>**MND**: Struggling with basic concepts |
+| **d4** | Poor | **STR**: Quickly exhausted by physical labor<br/>**AGI**: Slow to react to sudden movements<br/>**SPI**: Missing common social cues<br/>**MND**: Frequently confused by new information |
+| **d6** | Average | **STR**: Able to perform a day's labor<br/>**AGI**: Moving competently in most situations<br/>**SPI**: Sensing when something feels wrong<br/>**MND**: Understanding common knowledge and concepts |
+| **d8** | Good | **STR**: Winning contests of might against ordinary folk<br/>**AGI**: Moving with precision through difficult terrain<br/>**SPI**: Perceiving hidden motives<br/>**MND**: Solving complex problems with ease |
+| **d10** | Excellent | **STR**: Carrying burdens that would exhaust others<br/>**AGI**: Moving with perfect balance and coordination<br/>**SPI**: Reading intentions with uncanny accuracy<br/>**MND**: Mastering multiple fields of knowledge |
+| **d12** | Incredible | **STR**: Breaking barriers thought impenetrable<br/>**AGI**: Moving faster than the eye can track<br/>**SPI**: Sensing things beyond mortal perception<br/>**MND**: Understanding knowledge long forgotten |
+| **d12+1 or mode** | Monstrous | **STR**: Performing feats of strength from legends<br/>**AGI**: Moving with impossible grace and speed<br/>**SPI**: Perceiving across realms and dimensions<br/>**MND**: Comprehending knowledge beyond mortal understanding |
 
 ## Attribute Modifiers
 

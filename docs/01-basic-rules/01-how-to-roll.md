@@ -24,13 +24,13 @@ Most times you will pick up your dice to roll a Skill Test. Whenever the rules r
 
 | Difficulty | TN | Examples by Attribute |
 | --- | --- | --- |
-| Trivial* | 4 | **STR:** Push open a stuck door<br>**AGI:** Hop over a small stream<br>**SPI:** Sense obvious deception<br>**MND:** Recall common knowledge |
-| Easy | 6 | **STR:** Lift a heavy sack<br>**AGI:** Balance on a wide beam<br>**SPI:** Sense someone's mood<br>**MND:** Remember local customs |
-| Medium | 8 | **STR:** Climb a rough cliff<br>**AGI:** Dance through a crowded bazaar<br>**SPI:** Spot a hidden scorpion<br>**MND:** Identify a valuable gemstone |
-| Hard | 10 | **STR:** Bend iron bars<br>**AGI:** Navigate a narrow ledge<br>**SPI:** Resist a minor curse<br>**MND:** Translate an ancient dialect |
-| Very Hard | 12 | **STR:** Lift a boulder<br>**AGI:** Catch an arrow mid-flight<br>**SPI:** Calm a raging beast<br>**MND:** Decipher complex hieroglyphs |
-| Extreme | 14 | **STR:** Uproot a palm tree<br>**AGI:** Dodge multiple spear thrusts<br>**SPI:** Sense an approaching sandstorm<br>**MND:** Understand forgotten ritual magic |
-| Legendary | 16 | **STR:** Topple a stone obelisk<br>**AGI:** Perform impossible acrobatics<br>**SPI:** Commune with ancestral spirits<br>**MND:** Master a lost magical language |
+| Trivial* | 4 | **STR:** Push open a stuck door<br/>**AGI:** Hop over a small stream<br/>**SPI:** Sense obvious deception<br/>**MND:** Recall common knowledge |
+| Easy | 6 | **STR:** Lift a heavy sack<br/>**AGI:** Balance on a wide beam<br/>**SPI:** Sense someone's mood<br/>**MND:** Remember local customs |
+| Medium | 8 | **STR:** Climb a rough cliff<br/>**AGI:** Dance through a crowded bazaar<br/>**SPI:** Spot a hidden scorpion<br/>**MND:** Identify a valuable gemstone |
+| Hard | 10 | **STR:** Bend iron bars<br/>**AGI:** Navigate a narrow ledge<br/>**SPI:** Resist a minor curse<br/>**MND:** Translate an ancient dialect |
+| Very Hard | 12 | **STR:** Lift a boulder<br/>**AGI:** Catch an arrow mid-flight<br/>**SPI:** Calm a raging beast<br/>**MND:** Decipher complex hieroglyphs |
+| Extreme | 14 | **STR:** Uproot a palm tree<br/>**AGI:** Dodge multiple spear thrusts<br/>**SPI:** Sense an approaching sandstorm<br/>**MND:** Understand forgotten ritual magic |
+| Legendary | 16 | **STR:** Topple a stone obelisk<br/>**AGI:** Perform impossible acrobatics<br/>**SPI:** Commune with ancestral spirits<br/>**MND:** Master a lost magical language |
 
 ** Unless you are particularly unskilled at the given task, you automatically succeed on Trivial tasks.*
 

@@ -97,11 +97,11 @@ export const keywords: Record<string, string> = {
   "Mysticism": "/docs/statistics/skills#list-of-skills",
 
   // Equipment
-  "Supply": "/docs/equipment/items-equipment-encumbrance#supply",
-  "Supplies": "/docs/equipment/items-equipment-encumbrance#supply",
-  "Durability": "/docs/equipment/items-equipment-encumbrance#item-durability",
-  "load": "/docs/equipment/items-equipment-encumbrance#item-load",
-  "Load": "/docs/equipment/items-equipment-encumbrance#item-load",
+  "Supply": "/docs/equipment/items#supply",
+  "Supplies": "/docs/equipment/items#supply",
+  "Durability": "/docs/equipment/items#item-durability",
+  "load": "/docs/equipment/items#item-load",
+  "Load": "/docs/equipment/items#item-load",
   "agile": "/docs/equipment/armor-weapon-properties",
   "ammo": "/docs/equipment/armor-weapon-properties",
   "blowpipe": "/docs/equipment/armor-weapon-properties",
