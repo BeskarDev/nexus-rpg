@@ -1,7 +1,7 @@
 [
     {
         "name": "blast (cone)",
-        "description": "This spell affects targets within range in a conial shape. Choose any direction for the cone and find out which creatures are affected along the way.<br/>Any creature in melee with you, which is reasonably within the direction of the spell\u2019s cone, is affected.<br/>At close range, one group of creatures, which are in melee range of each other, are also affected.<br/>At short range, all creatures in one area adjacent to yours are affected.<br/>At medium range, all creatures in the area along the cone\u2019s center, as well as in the two areas left and right from it are affected.<br/>For any range further than that, the cone affects one more area left and right from the center for each area it extends to in depth.<br/>"
+        "description": "This spell affects targets within range in a conial shape. Choose any direction and center point at max. distance for the cone to find out which creatures are affected along the way.<br/>Generally, at it\u2018s furthest point the cone extends in breadth one range category less than in length. So at close range the cone\u2018s breadth extends in melee range, at short range it extends in close range, at medium range it extends in short range, and so on.<br/>Any creature in melee with you which is reasonably within the direction of the spell\u2019s cone, is also affected.<br/>"
     },
     {
         "name": "blast (line)",
@@ -13,7 +13,7 @@
     },
     {
         "name": "enchant (X)",
-        "description": "This spell enchants some part of your person (body, eyes, etc.)  or one piece of equipment (weapon, armor, etc.). You can only benefit from one such enchantment for each individual part at a time."
+        "description": "This spell enchants some part of your person (body, eyes, etc.)  or one piece of equipment (weapon, armor, etc.). You can only benefit from one such enchantment for each individual part at a time. This counts as a temporary enchantment in regards to already enchanted items."
     },
     {
         "name": "illusory",

@@ -150,9 +150,32 @@ Roll Spirit/Mind + Streetwise to gain rumors, NPC connections, or other benefits
 
 | Min. Settlement Rank | Requirements | Expenses |
 | --- | --- | --- |
-| 1 (Hamlet) | - | 50 coins/week |
+| 1 (Hamlet) | - | varies |
 
-Find high quality items by rolling Spirit/Mind + Influence.
+Attempt to sell rare items up 3 + the Settlement Rank in Quality. Determine up to one item per week you take this downtime activity, where you spend the following amount of coins in the search and deal-making with the potential buyer depending on the item‘s Quality:
+
+| Quality | Difficulty | Expenses |
+| --- | --- | --- |
+| 3 | TN 8 | 50 coins/week |
+| 4 | TN 10 | 100 coins/week |
+| 5 | TN 12 | 250 coins/week |
+| 6 | TN 14 | 500 coins/week |
+| 7 | TN 16 | 1,000 coins/week |
+
+At the end of the week, roll Spirit/Mind + Influence/Streetwise vs. the Difficulty set by the item‘s Quality to negotiate the buying price.
+
+**Blunder.** The buyer offers 30 percent of the normal cost of the item.
+
+**Failure.** The buyer offers 40 percent of the normal cost of the item.
+
+**Weak Success.** The buyer offers 50 percent of the normal cost of the item.
+
+**Strong Success.** The buyer offers 60 percent of the normal cost of the item.
+
+**Critical Success.** The buyer offers 70 percent of the normal cost of the item.
+
+> Refusing to close the deal, for example after blundering the negotiation, will very likely anger the buyer and impose +1 bane to all further attempts to sell the same item (this penalty will apply each time additionally when refusing a deal multiple times). This represents the buyer spreading the news about your bad deal within their sphere of influence.
+> 
 
 ### Recover
 

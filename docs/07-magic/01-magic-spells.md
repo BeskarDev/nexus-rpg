@@ -54,18 +54,46 @@ Practicing mystic magic can take many forms. Devoting yourself to a god and chan
     - **Devotion.** Choose one tradition and learn three spells from it. Whenever you gain a rank in Mysticism, learn three new spells of equal or lower rank for your tradition.
 - You must be holding a mystic talisman as a Spell Catalyst in your hand to cast mystic spells.
 
-**Mystic Pact**
+**Mystic Oath**
 
-When you make a pact with a god, goddess, or higher spirit to receive the divine ability to cast mystic spells, you must also swear to always adhere to your patron beings tenents. If you ever purposfully or repeatedly transgress them, you lose access to your spellcasting and must attone to regain them.
+When you make a pact with a god, goddess, or higher spirit to receive the divine ability to cast mystic spells, you must also swear an oath to adhere to your patron being’s tenents. If you ever purposfully or repeatedly transgress them, you lose access to your spellcasting and must attone to regain them.
 
 **Mystic Traditions**
 
 Mystic Traditions are grouped up into opposing ideals. Most practitioners of mysticism learn the aspects of multiple traditions, though some choose to devote themselves fully to a single tradition.
 
-- Light (*sun, illumination, truth*) — Twilight (*moon, dreams, secrets*)
-- Life (*vitality, blessings, community*) — Death (*plagues, curses, fear*)
-- Nature (*earth, animals, plants*) — Tempest (*storms, earthquakes, lava*)
-- Peace (*calmness, protection, selflessness*) — War (*fury, violence, pride*)
+- Light (*sun, illumination, truth*)
+    - Illuminate truth wherever darkness and deception hide. Never willingly perpetuate a lie that causes harm.
+    - Bring clarity to confusion and guidance to those who wander lost. Your wisdom must be a beacon for others.
+    - Face your fears openly, for shadows cannot exist in pure light. Never shrink from that which must be confronted, even within yourself.
+- Twilight (*moon, dreams, secrets*)
+    - Honor the balance between revelation and mystery. Never expose a secret that deserves protection.
+    - Explore the boundaries between consciousness and dream, finding wisdom in both realms. Never dismiss the messages that come in shadows.
+    - Embrace transformation as the moon changes its face. To remain unchanging is to deny the cycle of growth and renewal.
+- Life (*vitality, blessings, community*)
+    - Nurture growth wherever you find potential. Never needlessly destroy what can flourish.
+    - Share your abundance with those in need, for vitality flows between all things. Selfishness withers the soul.
+    - Honor the connections between all living beings. Never sever the bonds of community without grave cause.
+- Death (*plagues, curses, fear*)
+    - Accept the necessity of endings, for they make new beginnings possible. Never cling to what must rightfully pass away.
+    - Test the worthy through trial and adversity, for strength is forged through challenge. Comfort breeds weakness.
+    - Face mortality unflinchingly and speak hard truths without hesitation. Fear of the inevitable is the greatest deception.
+- Nature (*earth, animals, plants*)
+    - Respect the ancient rhythms of the natural world. Never take more than you need or disrupt what exists in harmony.
+    - Adapt to your surroundings as plants and animals do. Rigid thinking leads to extinction.
+    - Defend wild places and creatures against those who would destroy them for fleeting gain. The untamed must endure.
+- Tempest (*storms, earthquakes, lightning*)
+    - Embrace change and upheaval as necessary forces in the world. Stagnation is death; transformation is life.
+    - Strike decisively when action is required, with the sudden force of lightning. Hesitation weakens purpose.
+    - Test boundaries and challenge the established order. What cannot withstand the storm was never meant to stand.
+- Peace (*calmness, protection, selflessness, travel, law*)
+    - Seek resolution to conflict through understanding and compromise. Violence must be the final resort, not the first.
+    - Protect those who cannot protect themselves, standing as their shield. Never abandon the vulnerable to their fate.
+    - Practice inner calm even amidst chaos, for true peace begins within. A troubled mind cannot bring harmony to others.
+- War (*fury, violence, pride*)
+    - Hone your skills and strengthen your resolve daily. Complacency has no place in the warrior's heart.
+    - Honor worthy opponents and fight with dignity. Victory without honor is merely conquest.
+    - Know when to unleash your fury and when to sheathe your weapon. War without purpose is mere destruction; war with purpose is transformation.
 
 ## Spells
 
@@ -91,7 +119,10 @@ You cast a spell by rolling either Mind + Arcana for arcane spells, or Spirit + 
 When attempting to cast a spell at an object or location, which normally is targeted against a creature’s Defense, use the appropriate Difficulty for the spell’s rank instead (medium for rank 1, hard for rank 2, and so on).
 > 
 
-**Blunder.** The spell fails. Spend the spell’s Focus Cost.
+**Blunder.** The spell fails. Spend the spell’s Focus Cost. Also resolve one of these effects based on the nature of the spell:
+
+- **Arcane Spell.** Roll once on the arcane mishap table below.
+- **Mystic Spell.** You lose access to the spell until you undergo penance to your divine patron or re-align yourself with your spiritual source of power during the next night's rest. After the completed rest, you regain access to the spell.
 
 **Failure.** The spell fails but you don‘t have to spend its Focus Cost.
 
@@ -100,6 +131,17 @@ When attempting to cast a spell at an object or location, which normally is targ
 | Spell Rank | Rank 0 | Rank 1 | Rank 2 | Rank 3 | Rank 4 | Rank 5 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Focus Cost | 0 Focus | 2 Focus | 4 Focus | 6 Focus | 8 Focus | 10 Focus |
+
+**Arcane Mishap Table**
+
+| d100 | Todo |
+| --- | --- |
+|  |  |
+|  |  |
+
+### Spell Power
+
+Your spell power is the equivalent of base damage for weapons but for spells. It is calculated from 1/2 Mind for Arcana or 1/2 Spirit for Mysticism respectively. Any damage or healing value described in a spell’s effect refers **not** to your spell power but to the spell damage/healing instead.
 
 ### Spell Damage
 
@@ -111,6 +153,10 @@ Inversely, if a spell’s effect only lists “X damage” or “X HP” without
 
 > For example, you cast the arcane spell Flickering Flame. You have a d8 for your Mind attribute. First, roll Mind + Arcana vs. the target’s Dodge. On a weak hit, you deal 6 fire damage to them. 4 damage from your Spell Power (1/2 Mind) and “+2 fire damage” from the spell’s effect for a weak success.
 > 
+
+### Spell Healing
+
+Similarly to spell damage, spells recovering HP follow the same structure. When an effect refers to the “spell healing”, it refers to the base healing bonus of the spell written as “+2 HP” without the spell power being added.
 
 ### Spell Concentration
 

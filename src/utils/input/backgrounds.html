@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Backgrounds</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0c54d643-0633-4ae4-970d-5e3f96758298" class="page sans"><header><h1 class="page-title">Backgrounds</h1><p class="page-description"></p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><div data-testid="/icons/font_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/font_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/font_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Name</th><th><span class="icon property-icon"><div data-testid="/icons/description_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/description_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/description_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Description</th><th><span class="icon property-icon"><div data-testid="/icons/list_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/list_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/list_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Suggested Skills</th><th><span class="icon property-icon"><div data-testid="/icons/description_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/description_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/description_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Starting Item</th></tr></thead><tbody><tr id="074dd916-2ace-4bb0-b24b-f5df423f1a6f"><td class="cell-title"><a href="https://www.notion.so/Apothecary-074dd9162ace4bb0b24bf5df423f1a6f?pvs=21">Apothecary</a></td><td class="cell-CaMe">A character who is trained in the art of creating and administering medicinal remedies, poisons, and potions.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-gray">Crafting</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-green">Nature</span></td><td class="cell-u^Ma">Rare herb bundle</td></tr><tr id="fd9324d5-b44c-4d0a-b700-43c9ce47e50c"><td class="cell-title"><a href="https://www.notion.so/Artisan-fd9324d5b44c4d0ab70043c9ce47e50c?pvs=21">Artisan</a></td><td class="cell-CaMe">A character who crafts functional and beautiful items using techniques passed down through generations, creating pieces that honor both practical needs and artistic expression.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-gray">Crafting</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Clay tablet with master&#x27;s seal</td></tr><tr id="fdfbae69-438d-4431-a95b-11153fa45511"><td class="cell-title"><a href="https://www.notion.so/Artist-fdfbae69438d4431a95b11153fa45511?pvs=21">Artist</a></td><td class="cell-CaMe">A character who is skilled in creating and appreciating works of art, music, or performance.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-gray">Crafting</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Rare pigment pouch</td></tr><tr id="cd4d4575-b6a2-4877-8077-9c73e841ca74"><td class="cell-title"><a href="https://www.notion.so/Bandit-cd4d4575b6a2487780779c73e841ca74?pvs=21">Bandit</a></td><td class="cell-CaMe">A character who has made a living through robbery and theft, often working alone or as part of a group.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-default">Stealth</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Wooden clan mask</td></tr><tr id="6c636a0e-0c01-4946-a96e-4d9a026de40f"><td class="cell-title"><a href="https://www.notion.so/Barbarian-6c636a0e0c014946a96e4d9a026de40f?pvs=21">Barbarian</a></td><td class="cell-CaMe">A character who hails from tribal or nomadic societies outside of civilization&#x27;s reach, relying on primal instinct and raw strength rather than formal training.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Ancestor&#x27;s weapon hilt</td></tr><tr id="edbcc96d-edea-469c-afed-30b5fca4d178"><td class="cell-title"><a href="https://www.notion.so/Bard-edbcc96dedea469cafed30b5fca4d178?pvs=21">Bard</a></td><td class="cell-CaMe">A character who uses music and performance to tell stories and entertain, even channeling spiritual energy through song and dance.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-pink">Mysticism</span></td><td class="cell-u^Ma">Voice-changing throat pendant</td></tr><tr id="359e2b03-9127-49cd-b819-63113c05aa0d"><td class="cell-title"><a href="https://www.notion.so/Bounty-Hunter-359e2b03912749cdb81963113c05aa0d?pvs=21">Bounty Hunter</a></td><td class="cell-CaMe">A character who makes a living by tracking down and capturing wanted individuals and turning them over to the authorities for a reward.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-default">Stealth</span></td><td class="cell-u^Ma">Bounty claim seal</td></tr><tr id="3f07c24f-2dfd-41c0-b309-bd8140af8675"><td class="cell-title"><a href="https://www.notion.so/Cartographer-3f07c24f2dfd41c0b309bd8140af8675?pvs=21">Cartographer</a></td><td class="cell-CaMe">A character who creates maps and is knowledgeable about geography.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-green">Nature</span></td><td class="cell-u^Ma">Bronze astrolabe fragment</td></tr><tr id="3a5cd3bf-e1aa-40a7-b645-ebc5e8fcbe45"><td class="cell-title"><a href="https://www.notion.so/Criminal-3a5cd3bfe1aa40a7b645ebc5e8fcbe45?pvs=21">Criminal</a></td><td class="cell-CaMe">A character who has a background in illegal activities and survives through deception and stealth.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-default">Stealth</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Marked bone dice</td></tr><tr id="1eb541d5-8711-802a-a379-dcbf2f964125"><td class="cell-title"><a href="https://www.notion.so/Cult-Initiate-1eb541d58711802aa379dcbf2f964125?pvs=21">Cult Initiate</a></td><td class="cell-CaMe">A character who belongs to a secretive order that performs forbidden rituals to channel arcane energies, often operating in remote locations or underground sanctuaries.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-pink">Arcana</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span></td><td class="cell-u^Ma">Ritual bronze dagger</td></tr><tr id="6abb9473-4e9f-49b9-b3af-d74d4930744e"><td class="cell-title"><a href="https://www.notion.so/Druid-6abb94734e9f49b9b3afd74d4930744e?pvs=21">Druid</a></td><td class="cell-CaMe">A character who has a deep connection to nature and is capable of harnessing its power.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-pink">Mysticism</span><span class="selected-value select-value-color-green">Nature</span></td><td class="cell-u^Ma">Living seed necklace</td></tr><tr id="1eb541d5-8711-8073-ba06-e99665504568"><td class="cell-title"><a href="https://www.notion.so/Embalmer-1eb541d587118073ba06e99665504568?pvs=21">Embalmer</a></td><td class="cell-CaMe">A character who is trained in the arts of preparing bodies for the afterlife through specialized preservation techniques.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-gray">Crafting</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-green">Nature</span></td><td class="cell-u^Ma">Decorated canopic jar</td></tr><tr id="717fb844-f5d6-42f7-aab9-a6a33ef8e5f0"><td class="cell-title"><a href="https://www.notion.so/Entertainer-717fb844f5d642f7aab9a6a33ef8e5f0?pvs=21">Entertainer</a></td><td class="cell-CaMe">A character who makes a living through performance, often as a musician, actor, or acrobat.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Painted festival mask</td></tr><tr id="ede2f628-ce11-472a-ba8f-ed71dc1ff2cb"><td class="cell-title"><a href="https://www.notion.so/Farmhand-ede2f628ce11472aba8fed71dc1ff2cb?pvs=21">Farmhand</a></td><td class="cell-CaMe">A character who has worked on a farm, and has experience with manual labor, animal husbandry, and crop cultivation.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-gray">Crafting</span><span class="selected-value select-value-color-green">Nature</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Clay harvest deity figurine</td></tr><tr id="e07f59b3-d7da-4b84-90da-aa94fd33df33"><td class="cell-title"><a href="https://www.notion.so/Gladiator-e07f59b3d7da4b8490daaa94fd33df33?pvs=21">Gladiator</a></td><td class="cell-CaMe">A character who has trained and fought in the arena for entertainment and sport. They may have been forced into this life or chose it as a means of survival or fame.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Bronze victory laurel pin</td></tr><tr id="6a0917b0-258a-44fa-9cee-eed2867ce251"><td class="cell-title"><a href="https://www.notion.so/Guard-6a0917b0258a44fa9ceeeed2867ce251?pvs=21">Guard</a></td><td class="cell-CaMe">A character who has worked as a security guard or in a similar role, protecting people, places, or things.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Seal of Authority</td></tr><tr id="1eb541d5-8711-80a9-905b-da64fb9ae48f"><td class="cell-title"><a href="https://www.notion.so/Guardian-1eb541d5871180a9905bda64fb9ae48f?pvs=21">Guardian</a></td><td class="cell-CaMe">A character trained to protect sacred or valuable sites from trespassers, with knowledge of defensive tactics and sometimes ancient traditions.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Temple key fragment</td></tr><tr id="8f601762-4c52-42d1-a843-e85195edb012"><td class="cell-title"><a href="https://www.notion.so/Healer-8f6017624c5242d1a843e85195edb012?pvs=21">Healer</a></td><td class="cell-CaMe">A character who has knowledge of medicine and the ability to cure ailments.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-green">Nature</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Grateful patient’s memorabilia</td></tr><tr id="2a111cd4-c29e-4588-8d94-ba236a006e25"><td class="cell-title"><a href="https://www.notion.so/Hunter-2a111cd4c29e45888d94ba236a006e25?pvs=21">Hunter</a></td><td class="cell-CaMe">A character who makes a living through hunting and tracking game.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-orange">Archery</span><span class="selected-value select-value-color-green">Nature</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Prey bone whistle</td></tr><tr id="b3458570-3fe6-474f-bba5-52477c624eff"><td class="cell-title"><a href="https://www.notion.so/Innkeeper-b34585703fe6474fbba552477c624eff?pvs=21">Innkeeper</a></td><td class="cell-CaMe">A character who runs a place of lodging, serving food and drink to travelers and guests.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Hospitality clay cup</td></tr><tr id="2009b458-c027-4927-8a19-1caf1235d37f"><td class="cell-title"><a href="https://www.notion.so/Investigator-2009b458c02749278a191caf1235d37f?pvs=21">Investigator</a></td><td class="cell-CaMe">A character who uses logic and deduction to solve problems.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-default">Stealth</span></td><td class="cell-u^Ma">Milky magnifying lens</td></tr><tr id="17f8edf7-1c05-477d-bbc7-7c9e2a42ce1a"><td class="cell-title"><a href="https://www.notion.so/Magus-17f8edf71c05477dbbc77c9e2a42ce1a?pvs=21">Magus</a></td><td class="cell-CaMe">A character who possesses arcane powers strictly supervised by a religious order dedicated to the detection and eradication of arcane cults and other supernatural threats.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-pink">Arcana</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span></td><td class="cell-u^Ma">Order&#x27;s medallion</td></tr><tr id="328fc21d-fcac-42b2-976e-2706531081c2"><td class="cell-title"><a href="https://www.notion.so/Mercenary-328fc21dfcac42b2976e2706531081c2?pvs=21">Mercenary</a></td><td class="cell-CaMe">A character who hires themselves out as a soldier for hire and will work for whoever pays the most.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Blood-oath papyrus</td></tr><tr id="032a37c5-30d8-4f1a-84b1-b9dadec6d971"><td class="cell-title"><a href="https://www.notion.so/Merchant-032a37c530d84f1a84b1b9dadec6d971?pvs=21">Merchant</a></td><td class="cell-CaMe">A character who travels between settlements transporting and exchanging goods, navigating both physical routes and social customs.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-default">Stealth</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Rare foreign spice</td></tr><tr id="4ef07e14-5794-4fce-8f08-00566175c0c0"><td class="cell-title"><a href="https://www.notion.so/Monk-4ef07e1457944fce8f0800566175c0c0?pvs=21">Monk</a></td><td class="cell-CaMe">A character who follows a monastic lifestyle and is skilled in combat and spiritual practices.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-pink">Mysticism</span></td><td class="cell-u^Ma">Lacquered prayer beads</td></tr><tr id="aae1af51-f248-48f8-a031-aa673b269cf1"><td class="cell-title"><a href="https://www.notion.so/Officer-aae1af51f24848f8a031aa673b269cf1?pvs=21">Officer</a></td><td class="cell-CaMe">A character who has served in a military or law enforcement organization and has experience giving orders and managing troops. They may have risen through the ranks or been commissioned as a leader.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span></td><td class="cell-u^Ma">Ingraved command baton</td></tr><tr id="1eb541d5-8711-80dc-aeff-e4dac8429998"><td class="cell-title"><a href="https://www.notion.so/Pact-Bound-1eb541d5871180dcaeffe4dac8429998?pvs=21">Pact-Bound</a></td><td class="cell-CaMe">A character who has entered into a forbidden agreement with an otherworldly entity, gaining arcane knowledge and power in exchange for service or sacrifice, often at great personal cost.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-pink">Arcana</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span></td><td class="cell-u^Ma">Mark of the pact</td></tr><tr id="6519f9d4-c78a-4011-b9ed-0b41d8e6b257"><td class="cell-title"><a href="https://www.notion.so/Philosopher-6519f9d4c78a4011b9ed0b41d8e6b257?pvs=21">Philosopher</a></td><td class="cell-CaMe">A character who studies the nature of existence and reality.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span></td><td class="cell-u^Ma">Inscribed ivory thought-piece</td></tr><tr id="ea72cd53-38e8-4e7a-b728-e2786c90f8a6"><td class="cell-title"><a href="https://www.notion.so/Pirate-ea72cd5338e84e7ab728e2786c90f8a6?pvs=21">Pirate</a></td><td class="cell-CaMe">A character who makes a living through robbery and plunder on the high seas.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Foreign coin necklace</td></tr><tr id="8030caf2-9a32-421d-a2bd-9aa64f732659"><td class="cell-title"><a href="https://www.notion.so/Politician-8030caf29a32421da2bd9aa64f732659?pvs=21">Politician</a></td><td class="cell-CaMe">A character who is skilled in navigating the complex world of political intrigue and manipulation.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-default">Stealth</span></td><td class="cell-u^Ma">Noble&#x27;s letter of favor</td></tr><tr id="ce6332a1-a5bf-466e-ab64-21d9fb190744"><td class="cell-title"><a href="https://www.notion.so/Priest-ce6332a1a5bf466eab6421d9fb190744?pvs=21">Priest</a></td><td class="cell-CaMe">A character who is devoted to a religious faith and has knowledge of its beliefs and practices.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-pink">Mysticism</span></td><td class="cell-u^Ma">Holy symbol</td></tr><tr id="23cd39c7-76fa-435f-b36d-2cc7cae943c7"><td class="cell-title"><a href="https://www.notion.so/Ranger-23cd39c776fa435fb36d2cc7cae943c7?pvs=21">Ranger</a></td><td class="cell-CaMe">A character who is skilled in survival and tracking in the wilderness.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-orange">Archery</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Preserved beast claw</td></tr><tr id="1eb541d5-8711-8002-91ab-dc5a10f1bd71"><td class="cell-title"><a href="https://www.notion.so/Renegade-Mage-1eb541d58711800291abdc5a10f1bd71?pvs=21">Renegade Mage</a></td><td class="cell-CaMe">A character who combines martial training with forbidden arcane knowledge, often a deserter from state-controlled magic orders or a self-taught practitioner on the run.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-pink">Arcana</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Wooden face mask</td></tr><tr id="1eb541d5-8711-8080-b5b7-e95eb23c173e"><td class="cell-title"><a href="https://www.notion.so/Sacred-Warrior-1eb541d587118080b5b7e95eb23c173e?pvs=21">Sacred Warrior</a></td><td class="cell-CaMe">A character who has pledged their blade and life to a deity, serving as the martial arm of their faith and drawing strength from divine favor in battle.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-pink">Mysticism</span></td><td class="cell-u^Ma">Godbound brass gauntlet</td></tr><tr id="3f79a34b-80a3-43c8-99cc-8322add16288"><td class="cell-title"><a href="https://www.notion.so/Sailor-3f79a34b80a343c899cc8322add16288?pvs=21">Sailor</a></td><td class="cell-CaMe">A character who has experience with seafaring, navigation, and life at sea, including knowledge of ships and the ability to handle them.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Fish hook set</td></tr><tr id="c281e94c-f06d-4ec2-8257-fa418658a555"><td class="cell-title"><a href="https://www.notion.so/Scholar-c281e94cf06d4ec28257fa418658a555?pvs=21">Scholar</a></td><td class="cell-CaMe">A character who has dedicated their life to the pursuit of knowledge and academic study.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-green">Nature</span></td><td class="cell-u^Ma">Reusable wax tablet and stylus</td></tr><tr id="5bb1a58d-1e84-4ab0-af91-25804d7a42b8"><td class="cell-title"><a href="https://www.notion.so/Scribe-5bb1a58d1e844ab0af9125804d7a42b8?pvs=21">Scribe</a></td><td class="cell-CaMe">A character who is skilled in writing and copying texts.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-gray">Crafting</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span></td><td class="cell-u^Ma">Carved bone stylus and ink</td></tr><tr id="1245f3a1-91d2-457e-aa08-97d08fe055af"><td class="cell-title"><a href="https://www.notion.so/Seer-1245f3a191d2457eaa0897d08fe055af?pvs=21">Seer</a></td><td class="cell-CaMe">A character who possesses supernatural abilities to see and perceive things beyond the realm of ordinary perception.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-pink">Mysticism</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Obsidian scrying shard</td></tr><tr id="cbe213bf-f61c-4be2-a872-05606eaa488c"><td class="cell-title"><a href="https://www.notion.so/Servant-cbe213bff61c4be2a87205606eaa488c?pvs=21">Servant</a></td><td class="cell-CaMe">A character who has worked as a servant or in a similar role, serving a master or mistress.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Master&#x27;s house emblem</td></tr><tr id="aa6b2567-678f-44ee-9448-7976c685c7b1"><td class="cell-title"><a href="https://www.notion.so/Shaman-aa6b2567678f44ee94487976c685c7b1?pvs=21">Shaman</a></td><td class="cell-CaMe">A character who is a spiritual leader communicating with the spirit world and the ancestors to provide guidance and healing to their community. </td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-pink">Mysticism</span><span class="selected-value select-value-color-green">Nature</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Ancestor bone fetish</td></tr><tr id="8ba6570f-4518-4952-ba11-c8b58c6fe2ed"><td class="cell-title"><a href="https://www.notion.so/Soldier-8ba6570f45184952ba11c8b58c6fe2ed?pvs=21">Soldier</a></td><td class="cell-CaMe">A character who is trained in combat and serves in a military organization.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-orange">Archery</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-blue">Perception</span></td><td class="cell-u^Ma">Bronze battalion insignia</td></tr><tr id="626b431f-2590-49c9-b1ef-417d6f11c77b"><td class="cell-title"><a href="https://www.notion.so/Sorcerer-626b431f259049c9b1ef417d6f11c77b?pvs=21">Sorcerer</a></td><td class="cell-CaMe">A character who has a natural talent for magic and has honed their abilities through years of study and practice.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-pink">Arcana</span><span class="selected-value select-value-color-blue">Education</span><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span></td><td class="cell-u^Ma">Glowing crystal fragment</td></tr><tr id="f6e20d8e-0b64-422a-b788-a3a4419c767c"><td class="cell-title"><a href="https://www.notion.so/Spy-f6e20d8e0b64422ab788a3a4419c767c?pvs=21">Spy</a></td><td class="cell-CaMe">A character who gathers information through stealth and deceit.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-default">Stealth</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Cipher wheel</td></tr><tr id="6323c468-9cdb-4474-b14f-495ba2c2dfc6"><td class="cell-title"><a href="https://www.notion.so/Tavern-Fighter-6323c4689cdb4474b14f495ba2c2dfc6?pvs=21">Tavern Fighter</a></td><td class="cell-CaMe">A character who has made a living through brawling and fighting in taverns or other similar establishments.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-blue">Insight</span></td><td class="cell-u^Ma">Weighted wraps</td></tr><tr id="ed261593-7065-49ad-acfd-9801ee12ea8b"><td class="cell-title"><a href="https://www.notion.so/Thug-ed261593706549adacfd9801ee12ea8b?pvs=21">Thug</a></td><td class="cell-CaMe">A character who has a history of using violence and intimidation to achieve their goals. They may have been part of a criminal organization or worked as hired muscle.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-green">Athletics</span><span class="selected-value select-value-color-orange">Fighting</span><span class="selected-value select-value-color-red">Fortitude</span><span class="selected-value select-value-color-brown">Streetwise</span></td><td class="cell-u^Ma">Brass knuckle duster</td></tr><tr id="1eb541d5-8711-8032-ba16-c02649949167"><td class="cell-title"><a href="https://www.notion.so/Wilderness-Guide-1eb541d587118032ba16c02649949167?pvs=21">Wilderness Guide</a></td><td class="cell-CaMe">A character who leads travelers through dangerous terrains, whether desert wastes, dense jungles, or treacherous mountains, knowing where to find resources and avoid hazards.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-yellow">Influence</span><span class="selected-value select-value-color-green">Nature</span><span class="selected-value select-value-color-blue">Perception</span><span class="selected-value select-value-color-green">Survival</span></td><td class="cell-u^Ma">Shell compass</td></tr><tr id="412c4339-8be7-4c72-a50d-3c7e987db449"><td class="cell-title"><a href="https://www.notion.so/Witch-412c43398be74c72a50d3c7e987db449?pvs=21">Witch</a></td><td class="cell-CaMe">A character who has knowledge of magic and the supernatural and has honed their abilities through personal experience, intuition, and natural talent. They may have learned their abilities through a family tradition, communing with spirits and nature, or through experimentation and self-discovery.</td><td class="cell-d]Kt"><span class="selected-value select-value-color-blue">Insight</span><span class="selected-value select-value-color-yellow">Lore</span><span class="selected-value select-value-color-pink">Mysticism</span><span class="selected-value select-value-color-green">Nature</span></td><td class="cell-u^Ma">Ritual bone carving knife</td></tr></tbody></table><br/><br/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

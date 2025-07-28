@@ -6,10 +6,13 @@ sidebar_position: 3
 
 ![banner-img](/img/banner/metamagic-arts-banner.png)
 
+# Metamagic Arts
+
 You can use a Metamagic Art you know by increasing the Focus cost as part of casting a spell. Your spell has it’s normal effect in addition to the Metamagic Arts effects. You can only use one Metamagic Art per casting of a spell.
 
 | Name | Effect |
 | --- | --- |
+| Autonomous Spell | 2 x Focus cost on any spell with the concentrate property. The spell doesn‘t require Concentration and instead persists until the end of it‘s normal duration. You can‘t cancel the spell‘s effect manually before that. |
 | Condensed Spell | +1 Focus cost on a spell vs. Dodge that deals damage to all creatures in range of the target location. Reduce the radius by one category (min. melee) and increase the damage by +1 per SL against each target. |
 | Elemental Spell | +2 Focus cost to change a spell’s damage type from acid, blast, fire, frost, lightning, necrotic, poison, or radiant to any other damage type within the list. If the spell deals damage multiple times or over multiple turns, the new damage type applies to all instances of damage the spell deals. |
 | Empowered Spell | Increase the Focus cost by any amount up to your Arcana on a spell. You suffer +1 bane on the roll to cast the spell. On a hit, the spell deals +2 damage for each additional Focus you spend against a single enemy or +1 damage per extra Focus if the spell affects multiple enemies or deals damage multiple times. |

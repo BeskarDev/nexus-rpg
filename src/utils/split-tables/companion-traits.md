@@ -443,7 +443,7 @@
 
 **Immunities:** bleeding, grappled, paralyzed, poison, poisoned, prone, restrained, unconscious
 
-**Resistances:** physical
+**Resistances:** fire, physical
 
 **Weaknesses:** frost
 

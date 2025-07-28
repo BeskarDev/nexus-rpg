@@ -5,7 +5,11 @@
     },
     {
         "name": "ammo",
-        "description": "Needs ammunition to attack."
+        "description": "Needs ammunition to attack. After a fight using an ammo weapon, make a Supply check for your used ammo, spending 1 use on a failure."
+    },
+    {
+        "name": "apparel (X)",
+        "description": "This item can be worn in the given slot. While worn, it\u2019s load becomes 0. You can only wear one item in any given slot. Other apparel items not worn take up their normal load."
     },
     {
         "name": "AV +X",
@@ -17,11 +21,7 @@
     },
     {
         "name": "bundle (dX)",
-        "description": "This type of weapon comes in a bundle of multiple weapons, usually for throwing purposes. The same as with ammo, you have to make a Supply check at the end of combat for attacking withthe weapons from the bundle. Any effects, such as enchantments or weapon poisons apply to every item from the bundle.<br/>You can also use a bundle weapon in melee, but suffer +1 bane on attacks because of it\u2019s small size. You can also dual-wield weapons from the same bundle in melee and at range, if you have more than one left (d4 or more).<br/>"
-    },
-    {
-        "name": "covering",
-        "description": "Can be placed down using an Action to act as a stationary cover from a direction of your choice without you holding the item. You can use another Action to pick the item up again."
+        "description": "This type of weapon comes in a bundle of multiple units, usually for throwing purposes. The same as with ammo, you have to make a Supply check with the indicated Supply die at the end of combat for attacking with units from this weapon. Any effects, such as enchantments or weapon poisons apply to every unit from the bundle.<br/>You can also use a unit of a bundle weapon in melee, but suffer +1 bane on attacks because of it\u2019s small size. If you have more than one unit left (based on the weapon\u2019s remaining uses), you can also dual-wield weapons from the same bundle in melee and at range using the normal rules for light weapons.<br/>"
     },
     {
         "name": "crush",
@@ -36,12 +36,12 @@
         "description": "This weapon can be used like dual-wielding two light weapons of the same type."
     },
     {
-        "name": "entangle",
-        "description": "Before making an attack against a target the same size or smaller than you, you can choose to also grapple the target. When doing so, this attack also counts as a Grapple Action. On a hit, the target is grappled by your weapon. The grapple ends early when you make another attack with this weapon unless it is a bundle weapon."
+        "name": "entangle (X)",
+        "description": "Before making an attack against a target of Size X or smaller, you can choose to also grapple the target. When doing so, this attack also counts as a Grapple Action. On a hit, the target is grappled by your weapon (treat the weapon\u2019s Size as equal to the creature\u2019s for this condition). The grapple ends early when you make another attack with this weapon (not applicable to multiple pieces of a bundle weapon)."
     },
     {
         "name": "fragile",
-        "description": "You must roll a Durability Check for this item after each use. This includes after each hit for a weapon or after each time you are hit by an attack for a shield, helmet, or armor."
+        "description": "You must roll a Durability Check or Supply Check for this item after each use. For weapons and ammo, make the check after each successful attack (Durability Check for weapons, Supply Check for ammo or bundle weapons). For armor, shields, and helmets, also make the check for one of the items after each successful hit against you (your choice)."
     },
     {
         "name": "heavy (dX)",
@@ -57,7 +57,7 @@
     },
     {
         "name": "noisy",
-        "description": "You suffer +1 bane on Stealth rolls (including surprising enemies)."
+        "description": "You suffer +1 bane on Stealth rolls (including during Surprise)."
     },
     {
         "name": "parry X",
@@ -81,7 +81,7 @@
     },
     {
         "name": "rigid X",
-        "description": "You suffer +X bane(s) on the following rolls:<br/>- Strength rolls for physical exertion during travel, climbing, swimming, or sprinting.<br/>- Agility rolls.<br/>- Arcana rolls to cast spells. <br/>If you wear or wield multiple rigid items, you suffer all their penalties combined.<br/>"
+        "description": "You suffer +X bane(s) on the following rolls:<br/>- Strength and Agility rolls for any kind of movement (sneaking, sleight of hand, sprinting, jumping, climbing, swimming, etc.)<br/>- Arcana rolls to cast spells. <br/>If you wear or wield multiple rigid items, you suffer all their penalties combined.<br/>"
     },
     {
         "name": "slash",

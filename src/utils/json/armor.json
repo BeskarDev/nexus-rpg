@@ -1,6 +1,6 @@
 [
     {
-        "name": "Leather / Padded Cloth / Heavy Robes",
+        "name": "Leather",
         "quality": "1",
         "type": "Light Armor",
         "av": "2",
@@ -9,66 +9,57 @@
         "cost": "50"
     },
     {
-        "name": "Banded Leather / Studded Leather / Piecemeal Mail",
+        "name": "Banded Leather",
         "quality": "2",
         "type": "Light Armor",
         "av": "3",
         "properties": "-",
         "load": "2",
-        "cost": "500"
+        "cost": "150"
     },
     {
-        "name": "Chain Mail / Linothorax / Bone Lamellar / Horn Lamellar",
+        "name": "Chain Mail",
         "quality": "3",
         "type": "Light Armor",
         "av": "4",
         "properties": "noisy",
         "load": "2",
-        "cost": "1000"
+        "cost": "500"
     },
     {
-        "name": "Scale Mail / Disk Plate / Wood Plates /  Shell Plates",
+        "name": "Scale Mail",
         "quality": "2",
         "type": "Heavy Armor",
         "av": "4",
-        "properties": "heavy (d6), noisy",
+        "properties": "heavy (d6), rigid 1",
         "load": "3",
-        "cost": "500"
+        "cost": "250"
     },
     {
-        "name": "Breastplate / Plate Cuirass / Splint Mail",
+        "name": "Breastplate",
         "quality": "3",
         "type": "Heavy Armor",
         "av": "5",
-        "properties": "heavy (d8), noisy, rigid 1",
+        "properties": "heavy (d8), rigid 2",
         "load": "3",
-        "cost": "1000"
+        "cost": "750"
     },
     {
-        "name": "Plate Harness / Segmented Plate / Heavy Lamellar / O-Yoroi",
-        "quality": "3",
+        "name": "Plate Harness",
+        "quality": "4",
         "type": "Heavy Armor",
         "av": "6",
-        "properties": "heavy (d10), noisy, rigid 2",
+        "properties": "heavy (d10), rigid 3",
         "load": "4",
-        "cost": "2000"
+        "cost": "2,500"
     },
     {
-        "name": "Open Helmet",
+        "name": "Helmet",
         "quality": "2",
         "type": "Helmet",
         "av": "1",
-        "properties": "-",
+        "properties": "apparel (head)",
         "load": "1",
-        "cost": "200"
-    },
-    {
-        "name": "Closed Helmet",
-        "quality": "3",
-        "type": "Helmet",
-        "av": "2",
-        "properties": "narrowed",
-        "load": "1",
-        "cost": "500"
+        "cost": "150"
     }
 ]

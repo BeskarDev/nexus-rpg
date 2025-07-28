@@ -1,26 +1,3 @@
----
-sidebar_position: 5
----
-
-# 🔶 Combat Arts
-
-![banner-img](/img/banner/combat-arts-banner.png)
-
-## Learning Combat Arts
-
-An adventurer can learn many different Combat Arts throughout their career. When you first learn either the Fighting or Archery skill, you can choose one Combat Art for melee or ranged weapons respectively. Once you gain a rank in either skill, you can choose another appropriate Combat Art. You can learn additional Combat Arts through talents.
-
-### Learning Supreme Combat Arts
-
-Supreme Combat Arts represent the ultimate abilities any warrior can achieve, demonstrating their mastery over their combat abilities. They transcend mere physical ability and tap into the very power of a warrior‘s soul, which is only possible for true masters of combat.
-
-Obtaining the ability to use Supreme Combat Arts is possible via the talents Art of Fighting for melee weapons and Art of Archery for ranged weapons at rank 4 or higher respectively. Some Supreme Combat Arts require you to already have learned their basic form and replace those abilities. Any other abilities referencing the basic version of a Combat Art are also usable with their supreme form.
-
-## Using Combat Arts
-
-You can use an appropriate Combat Art as part of an attack on your turn. You must declare you are using a Combat Art before rolling for the attack. On a hit, the attack deals its normal damage in addition to the Combat Art’s effects. You can only use one Combat Art per turn and each individual Combat Art can only be used once per combat.
-
-## List of Combat Arts
 
 ### Basic 
 Name | Weapons | Effect
@@ -73,3 +50,4 @@ Name | Weapons | Effect
 **Supreme Cleave**  | Axe, Blade, Mace, Polearm  | You can only learn this Combat Art if you already know Cleave. This Combat Art replaces Cleave.<br/>Your attack with a two-handed melee weapon hits up to 4 additional creatures in your weapon's reach or one distance further (melee to close, close to short). On a hit, subtract your weapon damage once from the total damage you deal against each target.<br/>
 **Supreme Disarm**  | Axe, Blade, Brawl, Mace, Polearm  | You can only learn this Combat Art if you already know Disarm. This Combat Art replaces Disarm.<br/>After this attack, use the Disarm action against the same target with +2 boons. On a success, you can either throw the disarmed item up to short range or immediately grab it yourself if you have a free hand. Also, the target is briefly dazed by your maneuver.<br/>
 **Supreme Feint**  | Blade, Brawl, Polearm  | You can only learn this Combat Art if you already know Feint. This Combat Art replaces Feint.<br/>You execute a masterful feint that completely throws off your opponent's defenses. If you don't move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon. On a hit, you also deal +4 damage and the target is marked (4).<br/>
+

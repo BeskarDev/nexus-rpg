@@ -6,109 +6,155 @@ sidebar_position: 1
 
 ![banner-img](/img/banner/how-to-roll-banner.png)
 
-## Skill Tests
-
-Most times you will pick up your dice to roll a Skill Test! Whenever the rules require you to “make a roll” or “roll a test”, this is what it means.
-
-> Roll your Attribute Die + 1d6 + Skill Rank and compare the result to the Target Number (8 per default). If you meet or beat it, you succeed!
+> "When the sands are shifting beneath your feet, trust not in certainty but in the roll of fate's dice. Even the smallest pebble may tip the scales of destiny."
 > 
 
-**Attribute Die:** Pick either Strength (STR), Agility (AGI), Spirit (SPI), or Mind (MND). Whatever fits the situation.
+## Skill Tests
 
-**Skill Rank:** If you have learned a skill that would help the situation, add your Rank in it to the roll.
+Most times you will pick up your dice to roll a Skill Test. Whenever the rules require you to "make a roll" or "roll a test," this is what it means.
 
-**Target Number (TN):** Either picked by the GM based on the Difficulty or determined by some game mechanic (e.g. an enemy’s Defense). If no other difficulty is mentioned for a roll, it is always medium (8).
+> Roll your Attribute Die + 1d6 + Skill Rank and compare the result to the Target Number (8 by default). If you meet or beat it, you succeed!
+> 
 
-| Difficulty | TN | Examples (Strength, Agility, Spirit, Mind) |
+**Attribute Die:** Choose either Strength (STR), Agility (AGI), Spirit (SPI), or Mind (MND), depending on what best fits the situation.
+
+**Skill Rank:** If you have learned a skill that would help in the situation, add your Rank in that skill to the roll.
+
+**Target Number (TN):** Either determined by the Game Master (GM) based on the Difficulty or set by a game mechanic (such as an enemy's Defense). If no specific difficulty is mentioned for a roll, it is always Medium (8).
+
+| Difficulty | TN | Examples by Attribute |
 | --- | --- | --- |
-| Trivial* | 4 | *push open a stuck window, hop over a stream, recognize a common plant, remember a basic fact* |
-| Easy | 6 | *jump over a small hole in the floor, dodge a thrown rock, sense someone’s mood, recount a local folktale* |
-| Medium | 8 | *climb a rough cliff face, perform a complex dance, notice a hidden predator at night, understand the cause of natural phenomenon* |
-| Hard | 10 | *climb a rough cliff face barehanded, perform a complex dance, notice a hidden predator at night, decipher a coded message* |
-| Very Hard | 12 | *lift a boulder, precisely land on a narrow ledge, calm a ferocious beast, understand a complex mechanism* |
-| Extreme | 14 | *uproot a tree, dodge a barrage of arrows, intuitively sense an approaching ambush, understand the workings of an otherworldly portal* |
-| Legendary | 16 | *topple a huge stone statue, perform a gravity-defying acrobatic feat, predict an impending natural disaster, decipher an ancient forgotten language* |
+| Trivial* | 4 | **STR:** Push open a stuck door<br>**AGI:** Hop over a small stream<br>**SPI:** Sense obvious deception<br>**MND:** Recall common knowledge |
+| Easy | 6 | **STR:** Lift a heavy sack<br>**AGI:** Balance on a wide beam<br>**SPI:** Sense someone's mood<br>**MND:** Remember local customs |
+| Medium | 8 | **STR:** Climb a rough cliff<br>**AGI:** Dance through a crowded bazaar<br>**SPI:** Spot a hidden scorpion<br>**MND:** Identify a valuable gemstone |
+| Hard | 10 | **STR:** Bend iron bars<br>**AGI:** Navigate a narrow ledge<br>**SPI:** Resist a minor curse<br>**MND:** Translate an ancient dialect |
+| Very Hard | 12 | **STR:** Lift a boulder<br>**AGI:** Catch an arrow mid-flight<br>**SPI:** Calm a raging beast<br>**MND:** Decipher complex hieroglyphs |
+| Extreme | 14 | **STR:** Uproot a palm tree<br>**AGI:** Dodge multiple spear thrusts<br>**SPI:** Sense an approaching sandstorm<br>**MND:** Understand forgotten ritual magic |
+| Legendary | 16 | **STR:** Topple a stone obelisk<br>**AGI:** Perform impossible acrobatics<br>**SPI:** Commune with ancestral spirits<br>**MND:** Master a lost magical language |
 
-** unless you are very bad at the given task, it is automatically assumed that you can succeed on trivial tasks.*
+** Unless you are particularly unskilled at the given task, you automatically succeed on Trivial tasks.*
 
 ### Pass or Fail
 
-The most basic of skill tasks for simple checks if any given action succeeds. You announce your intended action and the GM tells you the TN for that roll. If you meet or beat the TN with the result of their roll, you simply succeed.
+The most basic skill tests determine if an action simply succeeds or fails. You announce your intended action, and the GM tells you the Target Number. If you meet or beat the TN with your roll, you succeed.
+
+> Sansar the Thief attempts to pick a lock on an ornate chest. The GM determines this is a Medium difficulty task (TN 8). Sansar rolls their AGI die (d8) + 1d6 + their Stealth skill rank of 2. The roll results in a 6 + 3 + 2 getting a total of 11. This exceeds the TN of 8, so Sansar successfully opens the chest.
+> 
 
 ### Success Levels
 
-For when you not only need to know if you failed or succeeded but how bad or well it went you can determine your Success Level relative to the TN you rolled against.
+Sometimes you need to know not just whether you succeeded or failed, but by how much. Success Levels determine the quality of your result relative to the Target Number.
 
-If you…
+If you...
 
-- roll 6 or more below the TN, you blundered.
-- roll below the TN, you failed.
-- roll the exact TN or one above it, you score a weak success.
-- roll 3 or more above the TN, you score a strong success.
-- roll 6 or more above the TN, you score a critical success.
-
-> For example, you roll a test against a medium difficulty of 8. If you roll a 8-10, it is a weak success. An 11-13 would be a strong success and a 14 or higher would be a critical success.
-> 
+- Roll 6 or more below the TN, you suffer a **Blunder**.
+- Roll below the TN, you **Fail**.
+- Roll the exact TN or up to 2 above it, you achieve a **Weak Success**.
+- Roll 3-5 above the TN, you achieve a **Strong Success**.
+- Roll 6 or more above the TN, you achieve a **Critical Success**.
 
 | Difference to TN | Success Level (SL) | Description |
 | --- | --- | --- |
-| -6 or lower | Blunder | You fail horribly at your task. This situation gets worse or your failure has a major negative consequence. |
-| -5 to -1 | Failure | You fail at your task and something bad happens as a result of it. |
-| 0 to 2 | Weak | You barely succeed. In a stressful situation, your success might have some cost or consequence attached. |
-| 3 to 5 | Strong | You succeed fully and without strings attached. |
-| 6 or more | Critical | You succeed in the best way possible. Your success comes with positive side effects. |
+| -6 or lower | Blunder | You fail catastrophically. The situation worsens significantly or your failure has major negative consequences. |
+| -5 to -1 | Failure | You fail at your task and face some negative consequence as a result. |
+| 0 to 2 | Weak Success | You barely succeed. In challenging situations, your success might come with some cost or consequence. |
+| 3 to 5 | Strong Success | You succeed completely without complications. |
+| 6 or more | Critical Success | You succeed brilliantly. Your success brings additional positive effects. |
 
-> Note that failing or blundering a roll shouldn’t just mean that the adventurer is stuck in a situation - that’s never fun. Either something bad happens as a result of their roll and after they deal with the bad thing, they can try the roll again, OR something bad happens and the situation is resolved regardless, just in a disadvantageous way to the adventurer.
+> Arzhag the Warrior attempts to climb the crumbling temple wall during a sandstorm, a Very Hard task (TN 12). They roll their Strength die (d10) + 1d6 + Athletics 3, for a total of 15. This is 3 above the TN, earning a Strong Success. Arzhag scales the wall efficiently despite the harsh conditions.
+> 
+
+> Remember: A failed roll should never simply halt progress. Either a negative consequence occurs that the adventurer must address before trying again, or the situation resolves in a way that's disadvantageous but allows the story to continue.
 > 
 
 ### Boons and Banes
 
-Whenever you're instructed to “gain a boon” or “suffer a bane” in an effect, roll an additional 1d6 to your dice roll. If you're required to add both boons and banes, cancel them out one to one and only roll an extra 1d6 if any boons or banes remain. 
+Certain situations grant you boons (advantages) or inflict banes (disadvantages) on your rolls. When instructed to "gain +1 boon" or "suffer +1 bane," roll an additional 1d6 for your test. When both boons and banes apply, they cancel each other out one-for-one.
 
-If you roll with boons, pick the highest result among the 2d6 for your roll and add it to your Attribute Die. Rolling with banes forces you to take the lowest result instead.
+With boons, you roll 2d6 and use the **higher** result along with your Attribute Die. With banes, you must use the **lower** result of the 2d6.
 
-If you would ever benefit from. two or more boons or suffer two or more banes, you still roll with 2d6 and pick one of the results, but you also gain a +1 bonus for boons or - 1 penalty of banes beyond the first. 
+Multiple boons or banes beyond the first add a +1 bonus or -1 penalty to your roll, respectively.
 
-> There exist the following cases of rolling with boons and/or banes.
-- Roll with +1 boon → You roll your Attribute Die + 2d6 (take the highest of the two d6) + Skill Rank.
-- Roll with +1 bane → You roll your Attribute Die + 2d6 (take the lowest of the two d6) + Skill Rank.
-- Roll with +1 boon and +1 bane → You roll your Attribute Die + 1d6 (boon and bane cancel each other out) + Skill Rank.
-- Roll with +2 boons and +1 bane → You roll your Attribute Die + 2d6 (only one boon remains, take the highest of the two d6) + Skill Rank.
-- Roll with +1 boons and +2 bane → You roll your Attribute Die + 2d6 (only one bane remains, take the lowest of the two d6) + Skill Rank.
+| Roll Condition | How to Roll |
+| --- | --- |
+| +1 boon | Attribute Die + 2d6 (take highest d6) + Skill Rank |
+| +1 bane | Attribute Die + 2d6 (take lowest d6) + Skill Rank |
+| +1 boon & +1 bane | Attribute Die + 1d6 + Skill Rank (they cancel out) |
+| +2 boons & +1 bane | Attribute Die + 2d6 (take highest d6) + Skill Rank + 1 |
+| +1 boon & +2 banes | Attribute Die + 2d6 (take lowest d6) + Skill Rank - 1 |
+
+> Nagkhan the Sorcerer attempts to identify a mysterious artifact using their Arcana skill. Due to poor lighting in the ancient tomb, they suffer +1 bane. However, they previously consulted relevant texts, granting +1 boon. The boon and bane cancel each other out, so Nagkhan rolls normally: Mind + 1d6 + Arcana rank.
 > 
 
 ### Rolling for Untrained Skills
 
-Without training, adventurers can only roll for general skills without penalties.
+Adventurers can attempt general skills without training and without penalty. However, specialized skills impose limitations when untrained:
 
-You suffer +1 bane on
+- **No Penalty:** General skills (Perception, Athletics, Influence, etc.)
+- **+1 Bane:** Untrained combat skills (Fighting, Archery)
+- **+1 Bane:** Untrained expert skills (Lore, Crafting, Survival)
+- **Cannot Attempt:** Untrained magic skills (Arcana, Mysticism)
 
-- untrained combat skills
-- untrained expert skills
-
-You can’t attempt to roll
-
-- untrained magic skills
-
-> For example, rolling Fortitude to withstand the scorching sun while traveling through the desert, without having that skill trained, doesn’t impose any penalties. Meanwhile, rolling Nature to understand the properties of some ominous plant in the wild imposes +1 bane on the roll if untrained.
+> When Arzhag the Warrior tries to identify medicinal plants in the oasis, they roll with Nature. Being untrained in this expert skill, they suffer +1 bane on their roll. Meanwhile, Sephi the Seer, when attempting to endure a scorching desert journey using Fortitude (a general skill), rolls without penalty despite being untrained.
 > 
 
-### Re-rolling tests
+### Re-rolling Tests
 
-Some abilities allow you to re-roll certain tests. When choosing to do so, you must take the result of the new roll.
+Some abilities, blessings, or magical effects allow you to re-roll certain tests. When choosing to do so, you must accept the result of the new roll, even if it's worse than your original result.
+
+> Blessed by Neiru's wisdom before a critical challenge, Sephi the Seer uses one of their Resolve to re-roll one Mind test. When trying to decipher ancient hieroglyphs and rolling poorly, they invoke this blessing for a second chance, but must accept whatever new result the dice show.
+> 
 
 ## Dice Checks
 
-Dice Checks are all dice rolls that aren’t considered skill tests and are referenced as “checks” in the rules. Dice Checks normally include a single die against a static TN. Anytime the rules ask you to make a check of some kind (i.e. Durability or Supply), you roll the associated die and compare the result to the possible outcomes for that kind of check.
+Dice Checks differ from Skill Tests and are referenced simply as “checks” in the rules. These typically involve rolling a single die and interpreting the result based on the type of check. When the rules call for a check (such as **Durability** or **Supply**), roll the appropriate die and follow the outcome guidelines for that check.
 
 ### Durability Checks
 
-You must roll a Durability check, when some item you are wearing, carrying, or wielding is at the risk of being damaged. Each item has a corresponding Durability die based on its material or size (see Item Durability for more details).
+When an item you are wearing, carrying, or wielding is at risk of damage, the GM may call for a **Durability check**. Each item has a **Durability die** based on its construction and material (see *Item Durability* in the Items section).
+
+To make a Durability check, roll the item’s Durability die:
+
+- On a **1–3**, **spend 1 use** for the item
+- On a **4+**, nothing happens—the item holds up
+
+If you lose the **third and final use**, the item becomes **damaged** (with reduced effectiveness, detailed under Weapon and Armor Properties). If you lose another use while the item is damaged, it becomes **broken** and unusable until repaired.
+
+> Example:
+> 
+> 
+> Arzhag’s bronze shield is struck by a golem. It’s a heavy metal item, so he rolls a **d8**. The result is a **2**—within the failure range—so the shield loses 1 use.
+> 
 
 ### Supply Checks
 
-Your supplies are general stocks of useful items, such as rations, light sources, or crafting materials. Whenever you have to make a Supply check, the die depends on how much Supply of that kind you have left. If you roll a 1 or a 2, the Supply’s die size decreases by one step or you use up all of your remaining Supply, if you only had 1 left. See more under Supply in the Items section.
+Supplies are treated like bundled items (rations, torches, arrows, crafting materials, etc.). Each supply has **3 uses**.
+
+To make a Supply check, roll the supply's **Durability die**, typically based on the bundle type (usually **d6**, but could vary by quality or scarcity):
+
+- On a **1–3**, **spend 1 use** for your supply
+- On a **4+**, no relevant change in your supply
+
+When all 3 uses are spent, that supply is **depleted**.
+
+> Example:
+> 
+> 
+> Sansar is running low on rations. After a day in the wilderness, the GM calls for a Supply Check. Their rations use a **d6** Durability die. Sansar rolls a **2**, spending 1 of the 3 uses. If all are spent, they’ll be out of food.
+> 
 
 ### Individual Checks
 
-Some checks don’t require a target number to succeed but instead have different outcomes based on the result. For example, you roll a d6 when **frightened**. On a 1, you cower in fear and can’t act or move. On a 2-5, you simply run away from the source of your fear. On a 6, you can act normally, but suffer a bane on all skill rolls.
+Some situations call for unique checks that don’t involve a TN but instead have varying effects based on the die result. These are referred to as **individual checks** and will define their own consequences (e.g. Fear or Confusion Checks).
+
+> Example:
+> 
+> 
+> When exposed to the terrifying form of Nakesh, Nagkhan must roll a **d6** Fear Check:
+> 
+> • On a **1**, they freeze in fear and can’t act
+> 
+> • On **2–5**, they flee in panic
+> 
+> • On a **6**, they act normally but suffer **+1 bane** on all rolls involving their fears
+>

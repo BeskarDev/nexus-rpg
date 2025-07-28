@@ -28,12 +28,12 @@
         "description": "Your rolls requiring hearing automatically fail."
     },
     {
-        "name": "distracted",
-        "description": "You apply the following effects:<br/>- You suffer +1 bane on all rolls unless they are against the source of your distraction.<br/>- Attacks against you gain +1 boon against you, unless they are from the source of your distraction.<br/>- You can only use Quick Actions against the source of your distraction.<br/>This condition ends early when you take damage from anything different than the source of your distraction.<br/>"
+        "name": "deprived",
+        "description": "You will suffer this condition from a lack of crucial needs, such as food, water, or sleep. While you are deprived, you suffer the following conditions: - You suffer +1 bane on all rolls. - You only regain up to half your max. HP from short breaks. - At the start of each day you suffer this condition, you also suffer 2 Fatigue. You can end this condition by having a night\u2019s rest with food and water again."
     },
     {
-        "name": "famished",
-        "description": "You suffer +1 bane on all rolls. You can end this condition by consuming food and water."
+        "name": "distracted",
+        "description": "You apply the following effects:<br/>- You suffer +1 bane on all rolls unless they are against the source of your distraction.<br/>- Attacks against you gain +1 boon against you, unless they are from the source of your distraction.<br/>- You can only use Quick Actions against the source of your distraction.<br/>This condition ends early when you take damage from anything different than the source of your distraction.<br/>"
     },
     {
         "name": "frightened",

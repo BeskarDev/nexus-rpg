@@ -1,19 +1,7 @@
----
-sidebar_position: 3
----
-
-# 🖼 Upbringing
-
-![banner-img](/img/banner/upbringing-banner.png)
-
-Choose the upbringing of your adventurer. This determines in what environment they were born and lived during their youth.
-
-### List of upbringings
-
 Name | Description | Suggested Skills
 --- | --- | ---
 **Agricultural** | Raised on a farm or in a rural area, with a focus on farming and manual labor. | Crafting, Nature, Survival
-**Apprenticed** | Raised as a member of a crafting or trade organization, with a focus on a specific trade. | Crafting, Insight, Perception
+**Artisanal** | Raised as a member of a crafting or trade organization, with a focus on a specific trade. | Crafting, Insight, Perception
 **Bardic** | Raised among storytellers, musicians, and keepers of oral tradition who preserve the myths and legends of the land. | Influence, Insight, Stealth
 **Clan member** | Raised in a close-knit family or community with a strong sense of shared identity and loyalty. | Influence, Insight, Survival
 **Criminal** | Raised in an environment of crime and lawlessness, with a focus on deceit and survival. | Insight, Stealth, Streetwise

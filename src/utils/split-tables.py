@@ -14,9 +14,10 @@ def split_tables(table_dict):
 if __name__ == "__main__":
   table_dict = {
       "armor.md": ("Type", "###"),
-      "items.md": ("Category", "##"),
+      "equipment.md": ("Category", "##"),
       "talents.md": ("Skill Requirement", "##"),
       "weapons.md": ("Type", "##"),
+      "combat-arts.md": ("Category", "###"),
   }
 
   split_tables(table_dict)

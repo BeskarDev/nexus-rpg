@@ -24,9 +24,9 @@ After setting up camp, having a decent meal, and having a full night's sleep, yo
 
 - regain up to 1 Resolve
 - regain all of your Focus
+- remove up to 2 points of Exhaustion
 - regain 1/day Abilities
-- lose two Fatigue
-- roll a hard Strength + Fortitude test to heal one previously treated Injury
+- roll a hard Strength + Fortitude test to heal one previously treated Wound
 - long-lasting effects end
 
 A night’s rest needs to last at least 8 hours, from which 2 hours can be used for light non-physical activity.
@@ -37,5 +37,17 @@ This option is met when you weren’t able to establish a proper camp for a nigh
 
 - regain 1/2 your max. Focus
 - regain 1/day Abilities
-- lose one Fatigue
+- long-lasting effects end
+
+## A full rest
+
+This requires you to spend a full day and night at a comfortable place, such as an inn. During this time, you may only partake in light physical activity for recreation without any real strain.
+
+At the end of a full rest, you:
+
+- regain up to 1 Resolve
+- regain all of your Focus
+- remove all of your Exhaustion
+- regain 1/day Abilities
+- for each treated Wound, roll a hard Strength + Fortitude test to potentially heal it
 - long-lasting effects end

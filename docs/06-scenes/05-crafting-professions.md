@@ -2,11 +2,9 @@
 sidebar_position: 5
 ---
 
-# 🔨 Crafting
+# 🔨 Crafting Professions
 
 ![banner-img](/img/banner/crafting-banner.png)
-
-# Crafting Professions
 
 You can learn different crafting professions which expand your character‘s toolkit beyond just their skills. Professions can be used to craft items, or earn an income.
 
@@ -28,8 +26,9 @@ While professions are mainly useful during your downtime, you can also make use 
 | Profession | Skill Test | Description |
 | --- | --- | --- |
 | **Alchemist** | Mind + Crafting | crafting potions, salves, and other herbal remedies |
-| **Smith** | Strength + Crafting | crafting metallic weapons, armor, shields, and other items |
 | **Cloth Weaver** | Agility + Crafting | weaving clothes, cloth armor, and other cloth objects for decoration or function |
-| **Leatherworker** | Agility + Crafting | crafting leather armor, clothes, shoes, or other items made from leather, such as a backpack |
-| **Woodworker** | Strength + Crafting | crafting bows, crossbows, wooden weapons, shields, and other wooden objects |
+| **Inscriber** | Spirit + Crafting | etching, carving, or painting mystical runes or glyphs onto materials to imbue them with magical effects |
 | **Jeweler** | Agility + Crafting | crafting valuable jewelry, polish gems, and create trinkets |
+| **Leatherworker** | Agility + Crafting | crafting leather armor, clothes, shoes, or other items made from leather, such as a backpack |
+| **Smith** | Strength + Crafting | crafting metallic weapons, armor, shields, and other items |
+| **Woodworker** | Strength + Crafting | crafting bows, crossbows, wooden weapons, shields, and other wooden objects |

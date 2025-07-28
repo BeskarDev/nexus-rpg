@@ -1,0 +1,680 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Equipment &amp; Livestock</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="816edf98-2845-45cc-8b22-c15e6e47a5b8" class="page sans"><header><h1 class="page-title">Equipment &amp; Livestock</h1><p class="page-description"></p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><div data-testid="/icons/hashtag_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/hashtag_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/hashtag_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Quality</th><th><span class="icon property-icon"><div data-testid="/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/arrow-circle-down_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/arrow-circle-down_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Category</th><th><span class="icon property-icon"><div data-testid="/icons/font_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/font_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/font_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Name</th><th><span class="icon property-icon"><div data-testid="/icons/hashtag_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/hashtag_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/hashtag_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Load</th><th><span class="icon property-icon"><div data-testid="/icons/hashtag_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/hashtag_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/hashtag_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Cost</th><th><span class="icon property-icon"><div data-testid="/icons/description_gray.svg" style="width:14px;height:14px;flex-shrink:0;transform:scale(1.2);mask:url(/icons/description_gray.svg?mode=light) no-repeat center;-webkit-mask:url(/icons/description_gray.svg?mode=light) no-repeat center;background-color:rgba(71, 70, 68, 0.6);fill:rgba(71, 70, 68, 0.6)"></div></span>Description</th></tr></thead><tbody><tr id="201541d5-8711-803d-bcc3-c75c533a6e82"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-green">Animals</span></td><td class="cell-title"><a href="https://www.notion.so/Animal-Companion-201541d58711803dbcc3c75c533a6e82?pvs=21">Animal Companion</a></td><td class="cell-iktk"></td><td class="cell-QyjH">75</td><td class="cell-V]:G">A wolf, large cat, or similar predator trained from youth to serve as a loyal companion. Bonds with one master and follows complex commands. Requires the Nature talent “Animal Companion” to control such a creature.</td></tr><tr id="7cc7b237-543d-446b-ac84-fcc5ed82d704"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-green">Animals</span></td><td class="cell-title"><a href="https://www.notion.so/Draft-Horse-7cc7b237543d446bac84fcc5ed82d704?pvs=21">Draft Horse</a></td><td class="cell-iktk"></td><td class="cell-QyjH">75</td><td class="cell-V]:G">A largely untrained horse (can also be a donkey or mule), fit to hold gear or pull a vehicle but not to be ridden. Can hold up to 20 load. See under Creatures to see its statistics.</td></tr><tr id="5de93529-3a86-4664-8118-32567650338c"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-green">Animals</span></td><td class="cell-title"><a href="https://www.notion.so/Guard-Dog-5de935293a864664811832567650338c?pvs=21">Guard Dog</a></td><td class="cell-iktk"></td><td class="cell-QyjH">75</td><td class="cell-V]:G">A dog or other similar-sized animal that underwent basic training to fight and protect its owner. Can be trained as a tame animal companion, provided you have the Survival talent with the same name. </td></tr><tr id="e03280a9-f7a1-440f-864d-117887ec6125"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-green">Animals</span></td><td class="cell-title"><a href="https://www.notion.so/Camel-e03280a9f7a1440f864d117887ec6125?pvs=21">Camel</a></td><td class="cell-iktk"></td><td class="cell-QyjH">250</td><td class="cell-V]:G">Can be ridden by up to two medium creatures. For each creature not riding, the camel can hold up to 15 load instead (so max. 30 load).</td></tr><tr id="201541d5-8711-80ca-bee8-db2d5ac3547b"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-green">Animals</span></td><td class="cell-title"><a href="https://www.notion.so/Riding-Horse-201541d5871180cabee8db2d5ac3547b?pvs=21">Riding Horse</a></td><td class="cell-iktk"></td><td class="cell-QyjH">250</td><td class="cell-V]:G">A well-trained horse suitable for riding and light combat. Can carry a rider plus up to 10 load. Responds to voice and leg commands.</td></tr><tr id="201541d5-8711-8015-90be-d4fc7b017ac0"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-green">Animals</span></td><td class="cell-title"><a href="https://www.notion.so/Trained-Hawk-Eagle-201541d58711801590bed4fc7b017ac0?pvs=21">Trained Hawk/Eagle</a></td><td class="cell-iktk"></td><td class="cell-QyjH">250</td><td class="cell-V]:G">A bird of prey trained for hunting and scouting. Can deliver messages over short distances and hunt small game.</td></tr><tr id="201541d5-8711-8064-8100-e6535d6a356a"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-green">Animals</span></td><td class="cell-title"><a href="https://www.notion.so/War-Horse-201541d5871180648100e6535d6a356a?pvs=21">War Horse</a></td><td class="cell-iktk"></td><td class="cell-QyjH">750</td><td class="cell-V]:G">A large, aggressive horse trained for battle. Can carry a rider plus up to 15 load. Trained to fight alongside its rider and strike enemies with hooves.</td></tr><tr id="201541d5-8711-800a-9b27-c953cba0236d"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Healing-Salve-weak-201541d58711800a9b27c953cba0236d?pvs=21">Healing Salve (weak)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">15</td><td class="cell-V]:G">Spend 1 use to apply this to a treated Wound of a target creature. The target creature gains +1 boon on their next roll to heal that Wound.<br/>Only one type of healing salve can be applied to any single creature at the same time. The salve lasts for a long duration.<br/></td></tr><tr id="353840a5-8fcf-41ba-b9b3-34af7ff0d4f3"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Acid-Vial-353840a58fcf41bab9b334af7ff0d4f3?pvs=21">Acid Vial</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">30</td><td class="cell-V]:G">Counts as a thrown weapon (bundle, thrown (short/medium)) dealing +3 acid damage as weapon damage. After attacking, spend 1 use.</td></tr><tr id="e1c459f7-674b-45b9-a24d-67c933d3d2d3"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Antitoxin-e1c459f7674b45b9a24d67c933d3d2d3?pvs=21">Antitoxin</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">30</td><td class="cell-V]:G">As an action, spend 1 use to drink from this liquid to cure you of one source of poison affecting you.</td></tr><tr id="c02d70a1-b0dd-4136-8797-f89beeca31f3"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Flammable-Paste-c02d70a1b0dd41368797f89beeca31f3?pvs=21">Flammable Paste</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">30</td><td class="cell-V]:G">Spend 1 use as an Action to apply the paste to one non-light weapon, two light weapons, or one type of ammo item. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort (this counts as a temporary weapon enchantment).<br/>Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignoring AV) to the target. The ignited paste lasts for a short duration, after which it is fully burned away.<br/></td></tr><tr id="201541d5-8711-800f-ae82-e6b703b7b82e"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Healing-Salve-simple-201541d58711800fae82e6b703b7b82e?pvs=21">Healing Salve (simple)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">30</td><td class="cell-V]:G">Spend 1 use to apply this to a treated Wound of a target creature. The target creature gains +2 boons on their next roll to heal that Wound.<br/>Only one type of healing salve can be applied to any single creature at the same time. The salve lasts for a long duration.<br/></td></tr><tr id="f078fe5d-c9c8-45fa-9397-9cb0f96a197b"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Paralyzing-Poison-weak-f078fe5dc9c845fa93979cb0f96a197b?pvs=21">Paralyzing Poison (weak)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">30</td><td class="cell-V]:G">Spend 1 use to coat one non-light weapon, two light weapons, or one type of ammo item in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene.<br/></td></tr><tr id="20a5254b-495c-47d4-85a2-bef512d2ed2a"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Weapon-Poison-weak-20a5254b495c47d485a2bef512d2ed2a?pvs=21">Weapon Poison (weak)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Spend 1 use to coat one non-light weapon, two light weapons, or one type of ammo item in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignoring AV) to the target.<br/></td></tr><tr id="6dcf6a2b-98ee-4008-a3e9-492418b86d43"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Fire-Bomb-6dcf6a2b98ee4008a3e9492418b86d43?pvs=21">Fire Bomb</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">Counts as a thrown weapon (bundle (d4), thrown (short)) dealing +3 fire damage as weapon damage. Damage is applied to all creatures in melee range of the target.</td></tr><tr id="201541d5-8711-8096-8da6-e498f3862668"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Healing-Salve-potent-201541d5871180968da6e498f3862668?pvs=21">Healing Salve (potent)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">Spend 1 use to apply this to a treated Wound of a target creature. That wound is automatically healed during the next night’s rest the target takes.<br/>Only one type of healing salve can be applied to any single creature at the same time. The salve lasts for a long duration.<br/></td></tr><tr id="7899e0b5-b20a-44ca-b2b9-0a7f681055bb"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Heightening-Potion-7899e0b5b20a44cab2b90a7f681055bb?pvs=21">Heightening Potion</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">As an Action or by skipping all Movement this turn, you can drink this potion to gain +1 Movement per turn and +1 boon on all attack rolls for a short duration. After this effect ends, roll Strength + Fortitude. On a failure, you suffer one Fatigue. On a blunder, you suffer two Fatigue instead.<br/>After drinking this potion, it is fully spend.<br/></td></tr><tr id="9bbff965-c63a-47a4-8f43-a74ff15be0b0"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Paralyzing-Poison-decent-9bbff965c63a47a48f43a74ff15be0b0?pvs=21">Paralyzing Poison (decent)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned and staggered for a short duration. They can roll a hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune against this poison’s effects for the rest of the scene.<br/></td></tr><tr id="84577b78-9e44-4a7e-8549-2eda242bbabb"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Potion-of-Healing-weak-84577b789e444a7e85492eda242bbabb?pvs=21">Potion of Healing (weak)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">As an Action or by skipping all Movement this turn, you can drink this potion to regain 8 HP.<br/>After drinking this potion, it is fully spend.<br/></td></tr><tr id="1239c677-74e4-4c0b-bde3-e01a51e16d1e"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Smoke-Bomb-1239c67774e44c0bbde3e01a51e16d1e?pvs=21">Smoke Bomb</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">Counts as a thrown weapon (bundle (d4), thrown (short)). Erupts in a cloud of smoke lasting a short duration in a close range of the point of impact. The smoke counts as an area with dim light.</td></tr><tr id="ff90fbb1-cab9-4252-b515-2afa28cd3a8a"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Weapon-Poison-decent-ff90fbb1cab94252b5152afa28cd3a8a?pvs=21">Weapon Poison (decent)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignoring AV) to the target.<br/></td></tr><tr id="9c6c2418-904d-436c-8de9-a4e0c6c27c21"><td class="cell-umiR">4</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Potion-of-Healing-decent-9c6c2418904d436c8de9a4e0c6c27c21?pvs=21">Potion of Healing (decent)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">375</td><td class="cell-V]:G">Drink this potion as an Action to regain 16 HP.<br/>After drinking this potion, it is fully spend.<br/></td></tr><tr id="0ffa42ad-ddce-4544-a291-d97e81c747fc"><td class="cell-umiR">4</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Weapon-Poison-strong-0ffa42adddce4544a291d97e81c747fc?pvs=21">Weapon Poison (strong)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">375</td><td class="cell-V]:G">Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignoring AV) to the target.<br/></td></tr><tr id="c0b5dbe5-f232-42cf-819e-ea2dc0765033"><td class="cell-umiR">5</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Paralyzing-Poison-strong-c0b5dbe5f23242cf819eea2dc0765033?pvs=21">Paralyzing Poison (strong)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">1,250</td><td class="cell-V]:G">Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, the target is poisoned and stunned for a short duration. They can roll a very hard Strength + Fortitude test at the end of their turns to end the effect early. If they succeed, they are also immune to this poison’s effects for the rest of the scene.<br/></td></tr><tr id="6bdd5bae-7d8a-431e-b567-0d9a4f717184"><td class="cell-umiR">5</td><td class="cell-iPyJ"><span class="selected-value select-value-color-pink">Alchemy</span></td><td class="cell-title"><a href="https://www.notion.so/Potion-of-Healing-strong-6bdd5bae7d8a431eb5670d9a4f717184?pvs=21">Potion of Healing (strong)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">1,250</td><td class="cell-V]:G">Drink this potion as an Action to regain 24 HP.<br/>After drinking this potion, it is fully spend.<br/></td></tr><tr id="84866c5b-a5bd-4ee7-824f-51ad22c4fd50"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-purple">Clothes</span></td><td class="cell-title"><a href="https://www.notion.so/Simple-Clothes-84866c5ba5bd4ee7824f51ad22c4fd50?pvs=21">Simple Clothes</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">5</td><td class="cell-V]:G">While worn, this takes up 0 load instead. Simple, functional clothes.</td></tr><tr id="d29ec754-31d1-4c1a-a459-44490dcf8a6f"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-purple">Clothes</span></td><td class="cell-title"><a href="https://www.notion.so/Traveler-s-Clothes-d29ec75431d14c1aa45944490dcf8a6f?pvs=21">Traveler‘s Clothes</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">25</td><td class="cell-V]:G">While worn, this takes up 0 load instead. Sturdy clothes made for harsh weather and long journeys.</td></tr><tr id="4bc2eaed-c066-463f-b32a-c5c223dc7c88"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-purple">Clothes</span></td><td class="cell-title"><a href="https://www.notion.so/Fine-Clothes-4bc2eaedc066463fb32ac5c223dc7c88?pvs=21">Fine Clothes</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">250</td><td class="cell-V]:G">While worn, this takes up 0 load instead. Clothes of a noble or wealthy merchant made from high quality materials.</td></tr><tr id="00604617-a25a-4075-bbcf-49efc778f795"><td class="cell-umiR">4</td><td class="cell-iPyJ"><span class="selected-value select-value-color-purple">Clothes</span></td><td class="cell-title"><a href="https://www.notion.so/Extravagant-Clothes-00604617a25a4075bbcf49efc778f795?pvs=21">Extravagant Clothes</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">750</td><td class="cell-V]:G">While worn, this takes up 0 load instead. Clothes worthy of a king or queen made from the most exotic materials.</td></tr><tr id="b79885ce-b1b6-43d0-9fe6-9c07343265b3"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Pouch-b79885ceb1b643d09fe69c07343265b3?pvs=21">Pouch</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">5</td><td class="cell-V]:G">A simple pouch to be carried around by hand or on a belt. Can hold up to 1 load.</td></tr><tr id="3d9db5ff-bdef-49ec-aaf5-b034d97afb10"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Linen-Bag-3d9db5ffbdef49ecaaf5b034d97afb10?pvs=21">Linen Bag</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">10</td><td class="cell-V]:G">A rough bag of linen made to hold wheat, fruits, or other items. Can hold up to 5 load.</td></tr><tr id="1909d4e7-5b80-4583-a88c-e39b7d114bf2"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Backpack-1909d4e75b804583a88ce39b7d114bf2?pvs=21">Backpack</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">15</td><td class="cell-V]:G">A simple backpack or satchel. If this is your first backpack, it takes up 0 load instead.</td></tr><tr id="201541d5-8711-80e3-8e7b-c8442768518b"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Large-Storage-Basket-201541d5871180e38e7bc8442768518b?pvs=21">Large Storage Basket</a></td><td class="cell-iktk">2</td><td class="cell-QyjH">25</td><td class="cell-V]:G">A woven basket for storing goods. Can hold up to 30 load but items are not secured.</td></tr><tr id="ef2b0a6c-24b2-4afe-bbe2-98b421f40c0e"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Wooden-Chest-ef2b0a6c24b24afebbe298b421f40c0e?pvs=21">Wooden Chest</a></td><td class="cell-iktk">5</td><td class="cell-QyjH">50</td><td class="cell-V]:G">A wooden container for storing small to medium sized objects. Can hold up to 50 load.</td></tr><tr id="21c541d5-8711-8099-ad1c-f0bd33fa890b"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Potion-Satchel-21c541d587118099ad1cf0bd33fa890b?pvs=21">Potion Satchel</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">25</td><td class="cell-V]:G">A small belt-strapped container made from hardened leather to store multiple potions or vials within it. Can hold up to four potions, vials, or other bottles.</td></tr><tr id="201541d5-8711-80b6-9f9b-f841226170bd"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Large-Ceramic-Storage-Jar-201541d5871180b69f9bf841226170bd?pvs=21">Large Ceramic Storage Jar</a></td><td class="cell-iktk">3</td><td class="cell-QyjH">50</td><td class="cell-V]:G">A large clay vessel for storing liquids or grains. Can hold up to 25 load of suitable materials.</td></tr><tr id="1b4f2f22-98b1-4e7b-86d8-cca35bedc98f"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Traveler-s-Backpack-1b4f2f2298b14e7b86d8cca35bedc98f?pvs=21">Traveler’s Backpack</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">A sturdy backpack for longer periods of travel. If this is your first backpack, it takes up 0 load instead and it adds +2 to your carry capacity limits.</td></tr><tr id="5b4cd8eb-59c2-4101-aff4-aae18501ee88"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Reinforced-Chest-5b4cd8eb59c24101aff4aae18501ee88?pvs=21">Reinforced Chest</a></td><td class="cell-iktk">10</td><td class="cell-QyjH">150</td><td class="cell-V]:G">A chest reinforced with strips of bronze, brass, or lead. Can hold up to 100 load.</td></tr><tr id="ad72dc79-be8a-4cfe-bd58-1a6781ab7a40"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Explorer-s-Backpack-ad72dc79be8a4cfebd581a6781ab7a40?pvs=21">Explorer’s Backpack</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">A high-quality backpack made to resist the longest journeys. If this is your first backpack, it takes up 0 load instead and it adds +4 to your carry capacity limits.</td></tr><tr id="201541d5-8711-805c-b36f-c011482852ca"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Merchant-s-Strongbox-201541d58711805cb36fc011482852ca?pvs=21">Merchant’s Strongbox</a></td><td class="cell-iktk">15</td><td class="cell-QyjH">375</td><td class="cell-V]:G">A heavily reinforced wooden chest with a complex lock (requiring a very hard Agility + Steath test with thieves tools to unlock). Can hold up to 150 load.</td></tr><tr id="205541d5-8711-80c0-817a-f7d3df0dc56c"><td class="cell-umiR">4</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Enchanted-Backpack-205541d5871180c0817af7d3df0dc56c?pvs=21">Enchanted Backpack</a></td><td class="cell-iktk"></td><td class="cell-QyjH">750</td><td class="cell-V]:G">A magically enhanced backpack, made for seasoned adventurers, that reduces the weight of items within it slightly. If this is your first backpack, it takes up 0 load instead and it adds +6 to your carry capacity limits.<br/>You can also magically retrieve any item within the backpack using an Action.<br/></td></tr><tr id="201541d5-8711-8087-9211-dc29ac9298e4"><td class="cell-umiR">4</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Stone-Coffer-201541d5871180879211dc29ac9298e4?pvs=21">Stone Coffer</a></td><td class="cell-iktk">25</td><td class="cell-QyjH">750</td><td class="cell-V]:G">A heavy stone container carved with protective runes. Can hold up to 200 load and provides magical protection (lock picking not possible without removing the enchantment).</td></tr><tr id="205541d5-8711-8040-9627-cfebf43d6a32"><td class="cell-umiR">5</td><td class="cell-iPyJ"><span class="selected-value select-value-color-gray">Container</span></td><td class="cell-title"><a href="https://www.notion.so/Bottomless-Backpack-205541d5871180409627cfebf43d6a32?pvs=21">Bottomless Backpack</a></td><td class="cell-iktk"></td><td class="cell-QyjH">2,500</td><td class="cell-V]:G">A magically enhanced backpack, made for well-off adventurers, that reduces the weight of items within it significantly. If this is your first backpack, it takes up 0 load instead and it adds +8 to your carry capacity limits.<br/>You can also magically retrieve any item within the backpack using a Quick Action on your turn.<br/></td></tr><tr id="d9f0fcca-43d6-4832-ae64-fdec9030c814"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Rope-Hemp-d9f0fcca43d64832ae64fdec9030c814?pvs=21">Rope (Hemp)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">10</td><td class="cell-V]:G">Covers a medium distance. Can be split up into multiple more fragile strings.</td></tr><tr id="d0be15bb-210a-4a1c-b1fc-a3ec56a04c76"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Shovel-d0be15bb210a4a1cb1fca3ec56a04c76?pvs=21">Shovel</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">15</td><td class="cell-V]:G">You can dig a hole with it!</td></tr><tr id="6afa8b1a-8801-49fb-a977-a80bc581a27c"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Oil-6afa8b1a880149fba977a80bc581a27c?pvs=21">Oil</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">25</td><td class="cell-V]:G">Comes in a small clay vial. Worth one unit of light for a lantern. You can also empty one unit of oil to cover a close area in it, turning it into slippery and difficult terrain.</td></tr><tr id="4e88472c-8e59-47b3-aad7-76c90cd6a6df"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Pickaxe-4e88472c8e5947b3aad776c90cd6a6df?pvs=21">Pickaxe</a></td><td class="cell-iktk">2</td><td class="cell-QyjH">30</td><td class="cell-V]:G">Used for mining rock and minerals.</td></tr><tr id="3badf59a-95a8-4ea4-b026-5d614d133c22"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Portable-Ram-3badf59a95a84ea4b0265d614d133c22?pvs=21">Portable Ram</a></td><td class="cell-iktk">2</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Roll Strength + Athletics with this ram to force a door open - very loudly.</td></tr><tr id="da4b95e1-970f-434a-ad79-cee2cb46804e"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Wineskin-da4b95e1970f434aad79cee2cb46804e?pvs=21">Wineskin</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">30</td><td class="cell-V]:G">An animal bladder filled with a cheap wine. Intoxicates on frequent consumption. Spend 1 use to become intoxicated for a medium duration. While being intoxicated, you are also poisoned.</td></tr><tr id="8a1bdcd4-4ece-4d63-b1ac-6b8b2ad528e1"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Alchemist-s-Supplies-8a1bdcd44ece4d63b1ac6b8b2ad528e1?pvs=21">Alchemist‘s Supplies</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains glass beakers with a metal frame, a glass stirring rod, a small mortar and pestle, a pouch of common alchemical ingredients.<br/>Spend 1 use in combination with base ingredients to craft alchemy items.<br/></td></tr><tr id="61435bc5-1f53-4e1e-90b9-a3a68922eeb9"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Camping-Kit-61435bc51f534e1e90b9a3a68922eeb9?pvs=21">Camping Kit</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night‘s rest for up to two people.</td></tr><tr id="b9a60342-45a6-430a-89a0-c4e59e9da940"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Healer-s-Kit-b9a6034245a6430a89a0c4e59e9da940?pvs=21">Healer‘s Kit</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains powders, bandages, a mortar and pestle, and clippers to collect plants.<br/>Spend 1 use to roll Spirit/Mind + Nature to attempt to treat a Wound.<br/></td></tr><tr id="736c3afe-ad0d-497e-a4ba-ba8568201c63"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Lantern-736c3afead0d497ea4baba8568201c63?pvs=21">Lantern</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Requires oil to be used as a source of light. Emits bright light in close range and dim light in medium range when lit. Can be dimmed (only dim light in close distance). The lantern is not considered as Supply.</td></tr><tr id="58fcfa9b-3f63-4818-a3e0-1b32556b00d6"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Repair-Kit-58fcfa9b3f634818a3e01b32556b00d6?pvs=21">Repair Kit</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a sturdy leather tool pouch with various crafting implements: a hammer, nails, a set of chisels, a small saw, a measuring tape, and a whetstone. Using the kit, you can attempt to repair a damaged item during a night&#x27;s rest. Spend 1 use and roll Agility/Mind + Crafting against 5 + the item’s Quality as the difficulty. On a success, the item is no longer damaged.</td></tr><tr id="3f22d3f3-fb8f-4285-89b9-fc2473caa759"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Thieves-Tools-3f22d3f3fb8f428589b9fc2473caa759?pvs=21">Thieves‘ Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a small file, a set of lock picks, a small mirror, a set of narrow-bladed scissors, and a pair of pliers.<br/>Each time you fail a roll to pick a lock, spend 1 use.<br/></td></tr><tr id="5bf33a54-2a25-472f-8f78-8c2f321a8a09"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Bundle-of-Maps-5bf33a542a25472f8f788c2f321a8a09?pvs=21">Bundle of Maps</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">75</td><td class="cell-V]:G">Contains several maps for a specific region. Spend 1 use to consult the maps about a specific area and gain +1 boon on Nature rolls for that area.</td></tr><tr id="4b5c85cf-920c-41b7-96db-b48dac307bfd"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Bundle-of-Scrolls-4b5c85cf920c41b796dbb48dac307bfd?pvs=21">Bundle of Scrolls</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">75</td><td class="cell-V]:G">Contains several scrolls with valuable knowledge about a topic, such as local politics, medicine, or the history of a region. Spend 1 use to consult the scrolls about a specific topic and gain +1 boon on rolls with either Education, Lore, or Nature regarding that topic.</td></tr><tr id="48e45e3c-c07b-4628-947e-b4cfea86ccf1"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Spell-Catalyst-Arcane-Conduit-48e45e3cc07b4628947eb4cfea86ccf1?pvs=21">Spell Catalyst (Arcane Conduit)</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">75</td><td class="cell-V]:G">A small object infused by an elemental gem or similar arcane conduit used to be able to cast arcane spells. Can be combined with another hand-held (weapon, shield, etc.) or worn (helmet, necklace, etc.) item.</td></tr><tr id="2b2ecd0e-d471-4f33-b5d4-423ee6c46b93"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Spell-Catalyst-Mystic-Talisman-2b2ecd0ed4714f33b5d4423ee6c46b93?pvs=21">Spell Catalyst (Mystic Talisman)</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">75</td><td class="cell-V]:G">A small object containing a divine symbol or other spiritual relic infused with mystical power used to be able to cast mystic spells. Can be combined with another hand-held (weapon, shield, etc.) or worn (helmet, necklace, etc.) item.</td></tr><tr id="2dffe59b-0591-4a3b-b8cb-c84a5f1a4705"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-yellow">Gear</span></td><td class="cell-title"><a href="https://www.notion.so/Rope-Silk-2dffe59b05914a3bb8cbc84a5f1a4705?pvs=21">Rope (Silk)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">125</td><td class="cell-V]:G">Covers a long distance. More delicate than hemp without suffering in strength.</td></tr><tr id="74218b81-6321-463e-b0e1-2c6db1647198"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Blowdarts-d8-74218b816321463eb0e12c6db1647198?pvs=21">Blowdarts (d8)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">5</td><td class="cell-V]:G">A small pouch containing a couple dozen darts for blowpipes. Has a d8 Supply die. After a fight using this type of ammo, make a Supply check and spend 1 use on a failure.</td></tr><tr id="7cfc6e74-4c4c-4669-90f3-8de3ed1f10db"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Throwing-Darts-d6-7cfc6e744c4c466990f38de3ed1f10db?pvs=21">Throwing Darts (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">5</td><td class="cell-V]:G">A small pouch containing a dozen darts for spear-throwers. Has a d6 Supply die. After a fight using this type of ammo, make a Supply check and spend 1 use on a failure.</td></tr><tr id="dea415b1-3e80-4455-9242-83ebaf444c0f"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Throwing-Stones-d6-dea415b13e804455924283ebaf444c0f?pvs=21">Throwing Stones (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">5</td><td class="cell-V]:G">A small pouch containing polished stones used for slings and slingshots. Has a d6 Supply die. After a fight using this type of ammo, make a Supply check and spend 1 use on a failure.</td></tr><tr id="80b6ca97-d207-4ba2-8b9f-64034e9ff7f3"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Arrows-d6-80b6ca97d2074ba28b9f64034e9ff7f3?pvs=21">Arrows (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">15</td><td class="cell-V]:G">Comes with a quiver and with about two dozen arrows. Has a d6 Supply die. After a fight using this type of ammo, make a Supply check and spend 1 use on a failure.</td></tr><tr id="abda00aa-8abd-44ec-b8f9-178fd6ae646a"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Simple-Rations-d4-abda00aa8abd44ecb8f9178fd6ae646a?pvs=21">Simple Rations (d4)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">15</td><td class="cell-V]:G">Contains a waterskin and a nutricious yet bland pack consisting of dried meat, fruits, and nuts. Has a d4 Supply die. At the end of each day, make a Supply Check as part of a night‘s rest.</td></tr><tr id="c028c013-5b4f-49c3-ac5b-ef2075e4311b"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Torch-d4-c028c0135b4f49c3ac5bef2075e4311b?pvs=21">Torch (d4)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">15</td><td class="cell-V]:G">Contains about a full night of torch light.<br/>A lit torch emits bright light in close range and dim light in short range when lit. Has a d4 Supply die. Make a Supply check when igniting a torch. You can also use a lit torch as an improvised fragile weapon dealing 2 fire damage.<br/></td></tr><tr id="695ed83c-5fc6-465d-b4d1-efc95e2d5fd6"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Primitive-Materials-d6-695ed83c5fc6465db4d1efc95e2d5fd6?pvs=21">Primitive Materials (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">25</td><td class="cell-V]:G">A small sack containing primitive crafting materials, such as rough strips of animal hide and coarse plant fibers, jagged shards of flint, bone splinters, and sinew. Has a d6 Supply die.</td></tr><tr id="ce4bac72-9388-45e8-8ea7-4b8f244b7bd0"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Bolts-d6-ce4bac72938845e88ea74b8f244b7bd0?pvs=21">Bolts (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">30</td><td class="cell-V]:G">A bolt case containing about two dozen crossbow bolts. Has a d6 Supply die. After a fight using this type of ammo, make a Supply check and spend 1 use on a failure.</td></tr><tr id="21f541d5-8711-80e2-aaa4-f195865a366a"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Balanced-Rations-d6-21f541d5871180e2aaa4f195865a366a?pvs=21">Balanced Rations (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">40</td><td class="cell-V]:G">Contains a waterskin and a well-rounded pack of cured meat, spiced grains, dried fruits, and soft cheese. More satisfying than simple fare. Has a d6 Supply die. At the end of each day, make a Supply Check as part of a night‘s rest.</td></tr><tr id="133459fe-088f-4506-8d27-26053a0b5432"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Simple-Materials-d6-133459fe088f45068d2726053a0b5432?pvs=21">Simple Materials (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">75</td><td class="cell-V]:G">A small sack containing simple crafting materials, such as strips of leather and cloth, bits of metal, nails, and thread. Has a d6 Supply die.</td></tr><tr id="21f541d5-8711-8057-93ed-fd30b950bb1f"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Luxury-Rations-d8-21f541d58711805793edfd30b950bb1f?pvs=21">Luxury Rations (d8)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">120</td><td class="cell-V]:G">Contains a waterskin and a rich selection of smoked meats, honeyed nuts, dried figs, and herbed flatbread. A morale-boosting indulgence. Has a d8 Supply die. At the end of each day, make a Supply Check as part of a night‘s rest.</td></tr><tr id="b24a2109-a6e5-45dd-8f3c-6c43ce4f86e6"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Advanced-Materials-d6-b24a2109a6e545dd8f3c6c43ce4f86e6?pvs=21">Advanced Materials (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">250</td><td class="cell-V]:G">A well-stocked pouch containing high-quality crafting materials, such as supple tanned leather, fine linen cloth, bronze rods, brass wire, and sturdy twine. Has a d6 Supply die.</td></tr><tr id="c7029521-4d59-4d8a-8ae2-77401ad727da"><td class="cell-umiR">4</td><td class="cell-iPyJ"><span class="selected-value select-value-color-orange">Supply</span></td><td class="cell-title"><a href="https://www.notion.so/Formidable-Materials-d6-c70295214d594d8a8ae277401ad727da?pvs=21">Formidable Materials (d6)</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">750</td><td class="cell-V]:G">A lavishly adorned satchel containing formidable crafting materials, such as shimmering dragonhide, ethereal mooncloth, dwarf-steel ingots, electrum wire, and silken spider thread imbued with magical properties. Has a d6 Supply die.</td></tr><tr id="eacce8f0-9009-4548-8c3e-bd94f3bf1669"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Adventuring-Gear-eacce8f0900945488c3ebd94f3bf1669?pvs=21">Adventuring Gear</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. Spend 1 use to produce one specific item from the list.</td></tr><tr id="afaf7e10-d045-4bc5-a675-f0f9ef770264"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Brewer-s-Tools-afaf7e10d0454bc5a675f0f9ef770264?pvs=21">Brewer‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a large glass jug, a quantity of hops, a siphon, and several feet of tubing. Spend 1 use to produce one specific item from the list.</td></tr><tr id="15713167-dc49-421b-ac53-c4c91691d192"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Carpenter-Tools-15713167dc49421bac53c4c91691d192?pvs=21">Carpenter‘ Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a saw, a hammer, nails, a hatchet, a square, a ruler, an adze, a plane, and a chisel. Spend 1 use to produce one specific item from the list.</td></tr><tr id="71a206d5-85e1-4fb3-ab58-19626c3f5908"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Climber-s-Kit-71a206d585e14fb3ab5819626c3f5908?pvs=21">Climber‘s Kit</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains pitons, boot tips, gloves, and a harness. Spend 1 use to produce one specific item from the list.</td></tr><tr id="9620906f-8cba-41d1-bf0a-d95362d78d42"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Cook-s-Utensils-9620906f8cba41d1bf0ad95362d78d42?pvs=21">Cook‘s Utensils</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a metal pot, knives, forks, a stirring spoon, and a ladle. Spend 1 use to produce one specific item from the list.</td></tr><tr id="21edc04d-496c-4ba6-8aad-82bb2143aad5"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Disguise-Kit-21edc04d496c4ba68aad82bb2143aad5?pvs=21">Disguise Kit</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains cosmetics, hair dye, small props, and a few different pieces of clothing. Spend 1 use to produce one specific item from the list.</td></tr><tr id="e57e5504-e56c-4bd5-893f-21464dbec12e"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Gaming-Set-e57e5504e56c4bd5893f21464dbec12e?pvs=21">Gaming Set</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains all the pieces to play a specific game, such as a board, cards, dice, or tokens. Spend 1 use to produce one specific item from the list.</td></tr><tr id="94af4f85-bc77-40f5-9637-c49f3a9bf935"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Leatherworker-s-Tools-94af4f85bc7740f59637c49f3a9bf935?pvs=21">Leatherworker‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a knife, a small mallet, an edger, a hole punch, thread, and leather scraps. Spend 1 use to produce one specific item from the list.</td></tr><tr id="fe3b0d33-60d3-4cac-856a-09a5d204bf4d"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Mason-s-Tools-fe3b0d3360d34cac856a09a5d204bf4d?pvs=21">Mason‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a small trowel, a hammer, a chisel, brushes, and a square. Spend 1 use to produce one specific item from the list.</td></tr><tr id="4eedbce7-19ed-4e6a-a507-f64434a6ca8f"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Navigator-s-Tools-4eedbce719ed4e6aa507f64434a6ca8f?pvs=21">Navigator‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a sextant, a compass, calipers, a ruler, parchment, ink, and a quill. Spend 1 use to produce one specific item from the list.</td></tr><tr id="642cf103-7468-484f-b757-c48419cc00ef"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Painter-s-Supplies-642cf1037468484fb757c48419cc00ef?pvs=21">Painter‘s Supplies</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains an easel, canvas, brushes, charcoal sticks, and a palette. Spend 1 use to produce one specific item from the list.</td></tr><tr id="6e66fcc7-7697-4ca7-893f-0128f8c36f9c"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Smith-s-Tools-6e66fcc776974ca7893f0128f8c36f9c?pvs=21">Smith‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains hammers, tongs, charcoal, rags, and a small whetstone. Spend 1 use to produce one specific item from the list.</td></tr><tr id="ef4cfc51-3a26-46cc-b34d-9ee33199e6a7"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Weaver-s-Tools-ef4cfc513a2646ccb34d9ee33199e6a7?pvs=21">Weaver‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains thread, needles, and scraps of cloth. Spend 1 use to produce one specific item from the list.</td></tr><tr id="962759f7-ed20-4fee-a8cb-7986623e3ca4"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Woodcarver-s-Tools-962759f7ed204feea8cb7986623e3ca4?pvs=21">Woodcarver‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">50</td><td class="cell-V]:G">Contains a knife, a gourge, and a small saw. Spend 1 use to produce one specific item from the list.</td></tr><tr id="769ccedd-9c22-4d0f-96fe-826b27d1cf99"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Musical-Instrument-769ccedd9c224d0f96fe826b27d1cf99?pvs=21">Musical Instrument</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">75</td><td class="cell-V]:G">Any common type of string, woodwind, brass, or percussion instrument. Examples include a harp, lire, or cithara for stringed instruments. A flute, pan pipes, or clarinet for woodwind instruments. A horn, trumpet, or tuba for brass instruments. Or lastly hand drums, a tambourine, or macaras for percussion instruments.</td></tr><tr id="857101ef-56c4-4f90-80d0-32b71d2ba40a"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-red">Toolkit</span></td><td class="cell-title"><a href="https://www.notion.so/Jeweler-s-Tools-857101ef56c44f9080d032b71d2ba40a?pvs=21">Jeweler‘s Tools</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">100</td><td class="cell-V]:G">Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass. Spend 1 use to produce one specific item from the list.</td></tr><tr id="265d1988-8db3-426e-884b-7b3905427dc6"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-blue">Trade Good</span></td><td class="cell-title"><a href="https://www.notion.so/Small-Trinket-265d19888db3426e884b7b3905427dc6?pvs=21">Small Trinket</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">25</td><td class="cell-V]:G">Any type of simple but rare item that has some aesthetic, or sentimental value, such as a carved figurine, a silver ring, a glass vial, a brass compass, a leather pouch, a dried flower, a crystal pendant, a feather quill, a ceramic mask, or a wooden flute.</td></tr><tr id="055c3706-a764-4ec0-b677-219f422d46a0"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-blue">Trade Good</span></td><td class="cell-title"><a href="https://www.notion.so/Fine-Trinket-055c3706a7644ec0b677219f422d46a0?pvs=21">Fine Trinket</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">75</td><td class="cell-V]:G">Any type of well-crafted item that has aesthetic or sentimental value.</td></tr><tr id="201541d5-8711-80a1-8408-e65ea7a24848"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-blue">Trade Good</span></td><td class="cell-title"><a href="https://www.notion.so/Precious-Ornament-201541d5871180a18408e65ea7a24848?pvs=21">Precious Ornament</a></td><td class="cell-iktk">0</td><td class="cell-QyjH">250</td><td class="cell-V]:G">Beautifully crafted decorative items made from precious materials like gold, silver, or rare stones.</td></tr><tr id="201541d5-8711-804b-9999-dc1c5f3e71dd"><td class="cell-umiR">4</td><td class="cell-iPyJ"><span class="selected-value select-value-color-blue">Trade Good</span></td><td class="cell-title"><a href="https://www.notion.so/Masterwork-Art-Piece-201541d58711804b9999dc1c5f3e71dd?pvs=21">Masterwork Art Piece</a></td><td class="cell-iktk">1</td><td class="cell-QyjH">750</td><td class="cell-V]:G">Exceptional works of art created by master craftsmen, suitable for royal courts or wealthy merchants.</td></tr><tr id="155541d5-8711-8055-9b37-ddf3cd575464"><td class="cell-umiR">1</td><td class="cell-iPyJ"><span class="selected-value select-value-color-brown">Transportation</span></td><td class="cell-title"><a href="https://www.notion.so/Handcart-155541d5871180559b37ddf3cd575464?pvs=21">Handcart</a></td><td class="cell-iktk"></td><td class="cell-QyjH">50</td><td class="cell-V]:G">A small hand-pulled wooden cart holding up to 20 load or one medium creatures. Can be drawn by a single person.</td></tr><tr id="28b53158-19f6-4ca9-a7ba-d65a94eca790"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-brown">Transportation</span></td><td class="cell-title"><a href="https://www.notion.so/Cart-28b5315819f64ca9a7bad65a94eca790?pvs=21">Cart</a></td><td class="cell-iktk"></td><td class="cell-QyjH">150</td><td class="cell-V]:G">A medium-sized two-wheeled wooden cart holding up to 50 load or up to four medium creatures. Can be drawn by two people or a mount.</td></tr><tr id="1fd2df40-2a4e-476f-b710-8b48941496e9"><td class="cell-umiR">2</td><td class="cell-iPyJ"><span class="selected-value select-value-color-brown">Transportation</span></td><td class="cell-title"><a href="https://www.notion.so/Chariot-1fd2df402a4e476fb7108b48941496e9?pvs=21">Chariot</a></td><td class="cell-iktk"></td><td class="cell-QyjH">300</td><td class="cell-V]:G">A wooden chariot to hold up to 20 load or for two people to stand in. Requires a mount to pull the chariot.</td></tr><tr id="201541d5-8711-80cf-847e-e07bfc480370"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-brown">Transportation</span></td><td class="cell-title"><a href="https://www.notion.so/Wagon-201541d5871180cf847ee07bfc480370?pvs=21">Wagon</a></td><td class="cell-iktk"></td><td class="cell-QyjH">1,000</td><td class="cell-V]:G">A large four-wheeled vehicle that can carry up to 100 load or eight medium creatures. Requires two draft animals to pull effectively.</td></tr><tr id="201541d5-8711-802a-b4ec-f777cb15c378"><td class="cell-umiR">3</td><td class="cell-iPyJ"><span class="selected-value select-value-color-brown">Transportation</span></td><td class="cell-title"><a href="https://www.notion.so/Royal-Chariot-201541d58711802ab4ecf777cb15c378?pvs=21">Royal Chariot</a></td><td class="cell-iktk"></td><td class="cell-QyjH">1,500</td><td class="cell-V]:G">An ornately decorated war chariot reinforced with bronze fittings. Holds up to 30 load.</td></tr></tbody></table><br/><br/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

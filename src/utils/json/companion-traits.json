@@ -566,7 +566,7 @@
         "resist": "-",
         "skills": "Fighting (-1), Fortitude",
         "immunities": "bleeding, grappled, paralyzed, poison, poisoned, prone, restrained, unconscious",
-        "resistances": "physical",
+        "resistances": "fire, physical",
         "weaknesses": "frost",
         "attack 1": "<strong>Slam</strong> (<em>crush</em>). On a strong or critical hit, the target falls prone.",
         "attack 2": "<strong>Whelm </strong>(<em>crush</em>)<strong>.</strong> This melee attack can only target creatures of the same or smaller Size than this creature. If targeting smaller creatures in melee range, you can target multiple, where two creatures of a particular Size count as one creature of one Size larger (for example, two small goblins count as one medium creature). The combined Size of all target\u2019s can\u2019t exceed this creature\u2019s Size.<br/>Deals -1 weapon damage (min. 1). On a hit, each target is grappled, restrained, and suffocating until this creature uses another Action than Whelm on a following turn or is moved out of melee range. On a failure, the target is pushed close.<br/>",

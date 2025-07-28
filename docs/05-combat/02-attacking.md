@@ -21,11 +21,11 @@ You have to have learned the skill required by your weapon (Fighting for melee w
 
 | SL | Effect |
 | --- | --- |
-| Blunder | Choose one:<br/>- Roll a Durability Check for the weapon you attacked with.<br/>- Roll a Supply Check if your weapon uses ammo.<br/>- One item you are holding is knocked to the ground somewhere close. |
+| Blunder | Choose one:<br/>- Roll a Durability Check for the weapon you attacked with.<br/>- Roll a Supply Check if your weapon uses ammo or is a bundle.<br/>- If none of the other options apply, suffer +1 bane on your next attack roll. |
 | Failure | You miss your target. |
 | Weak | You hit your target with 1 x weapon damage. |
 | Strong | You hit your target with 2 x weapon damage. |
-| Critical | You hit your target with 3 x weapon damage.<br/>Also, the target has to roll a Durability Check for their armor, helmet, shield, weapon, or other held item (their choice). |
+| Critical | You hit your target with 3 x weapon damage.<br/>Also, the target has to roll a Durability Check for their armor, helmet, or shield (their choice). |
 
 ## Melee Attacks
 
@@ -42,7 +42,7 @@ When you hit an enemy with a melee weapon and you would inflict an Injury on the
 
 ## Ranged Attacks
 
-Ranged attacks require your target to be visible and within your weapon’s or spell’s range.
+Ranged attacks require your target to be visible and within your weapon’s or spell’s range. Targets behind full cover can’t be targeted with ranged attacks.
 
 ### Attacking at a higher range
 

@@ -12,7 +12,7 @@ This effect on you lasts until the end of your next encounter turn.
 
 ## Short
 
-This effect on you lasts until you had a short break or for one delving turn.
+This effect on you lasts until you have a short break or for one delving turn.
 
 ## Medium
 

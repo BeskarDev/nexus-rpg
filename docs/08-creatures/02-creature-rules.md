@@ -17,7 +17,13 @@ Creatures act in the same basic ways, as adventurers do. But some details differ
 
 ## Creature Categories
 
-Creatures can come in different categories representing their importance and power level. 
+Creatures can come in different categories representing their importance and power level.
+
+|  | HP Modifier | Nr. of Wounds | Nr. of Attacks | Nr. of Abilities |
+| --- | --- | --- | --- | --- |
+| Basic | - | 1 | 1-2 | 1-3 |
+| Elite | +10 | 2 | 2-3 | 2-4 |
+| Lord | +20 | 3 | 3-5 | 3-6 |
 
 ### Basic
 
@@ -35,7 +41,7 @@ Basic creatures…
 When the tide of battle turns against them, they need to roll Spirit + Fortitude to hold their morale. The following situations require creatures to roll for morale:
 
 - The number of creatures is reduced below half their original size.
-- All elite or master creatures are dead or otherwise removed from the fight.
+- All elite creatures or lords are dead or otherwise removed from the fight.
 
 **Troops**
 
@@ -83,11 +89,11 @@ Elite creatures…
 - can’t spend Resolve.
 - have to roll for Morale, but gain +1 boon on it.
 
-### Master
+### Lord
 
-Master creatures are the highlight of a whole adventure. They are often the powerful leader of an entire faction of creatures.
+Lords are the highlight of a whole adventure. They are often the powerful leader of an entire faction of creatures.
 
-Master creatures…
+Lord creatures…
 
 - can take a number of Wounds equal to the number of adventurers fighting them (min. 3). When they suffer a Wound, they regain all of their HP (this can't be negated).
 - once they take a Wound, they recover from all negative conditions and effects that previously affected them.
@@ -106,8 +112,8 @@ While adventurers are generally small or medium sized, there are a variety of ot
 | Medium | +0 | wolf |
 | Large | +1 | horse |
 | Huge | +2 | mountain giant |
-| Colossal | +3 | fully-grown dragon |
-| Gargantuan | +4 | dragon turtle |
+| Gargantuan | +3 | fully-grown dragon |
+| Colossal | +4 | dragon turtle |
 
 Each size categories modifier influences several of the creatures statistics (see below)
 
@@ -115,13 +121,13 @@ Each size categories modifier influences several of the creatures statistics (se
 
 While tiny to huge creatures are handled by the normal rules for distances and when you can attack creatures in melee, creatures bigger than that are an exception. Each creature of these size categories has the following rules applied to them:
 
-**Colossal (+3).** This creature fills up an entire area.
+**Gargantuan (+3).** This creature fills up an entire area.
 
 - Other creatures can’t enter this creatures area, unless they grapple onto it or roll some other form of test to pass.
 - Creatures in adjacent areas are considered close to this creature. They can choose to get into melee range, as if they were in the same area with it.
 - When determining any other range category, treat any of the adjacent areas of this creature as the maximum distance you have to cover.
 
-**Gargantuan (+4).** This creature fills up multiple areas.
+**Colossal (+4).** This creature fills up multiple areas.
 
 - This creature takes up the area it is in, as well as all adjacent areas. It is considered to be within any of those areas at the same time.
 - Other creatures can’t enter this creatures areas, unless they grapple onto it or roll some other form of test to pass.
@@ -135,24 +141,24 @@ Each creature's power level is separated into ten tiers corresponding to the ten
 > A single creature of any Tier should be a decent challenge for a single adventurer of the same Level. But kepp in mind that special abilities and the number of combatants on either side will strongly influence this baseline of challenge. The GM should always use their inutition when determining the appropriate degree of challenge an enemy encounter should have for the adventuring group.
 > 
 
-|  | HP | AV (Light / Heavy) | Defense | Max. Attribute | Skill Rank (1st / 2nd) | Weapon Damage | Ability Difficulty |
+|  | HP | AV (light / heavy) | Defense | Max. Attribute | Skill Rank (1st / 2nd) | Weapon Damage | Ability Difficulty |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Tier 0 | 5 | 0 / 1 | 6 | d6 | 0 / 0 | 2 | TN 6 |
-| Tier 1 | 10 | 1 / 2 | 7 | d6 | 0 / 1 | 3 | TN 7 |
-| Tier 2 | 20 | 2 / 4 | 8 | d8 | 1 / 1 | 4 | TN 8 |
-| Tier 3 | 30 | 3 / 6 | 9 | d8 | 1 / 2 | 5 | TN 9 |
-| Tier 4 | 40 | 4 / 8 | 10 | d10 | 2 / 2 | 6 | TN 10 |
-| Tier 5 | 50 | 5 / 10 | 11 | d10 | 2 / 3 | 7 | TN 11 |
-| Tier 6 | 60 | 6 / 12 | 12 | d12 | 3 / 3 | 8 | TN 12 |
-| Tier 7 | 70 | 7 / 14 | 13 | d12 | 3 / 4 | 9 | TN 13 |
-| Tier 8 | 80 | 8 / 16 | 14 | d12+1 | 4 / 4 | 10 | TN 14 |
-| Tier 9 | 90 | 9 / 18 | 15 | d12+2 | 4 / 5 | 11 | TN 15 |
-| Tier 10 | 100 | 10 / 20 | 16 | d12+3 | 5 / 5 | 12 | TN 16 |
+| Tier 0 | 5 | 0 / 1 | 6 | d6 | 0 / 1 | 2 | TN 6 |
+| Tier 1 | 10 | 1 / 2 | 7 | d6 | 1 / 1 | 3 | TN 7 |
+| Tier 2 | 20 | 2 / 4 | 8 | d8 | 1 / 2 | 4 | TN 8 |
+| Tier 3 | 30 | 3 / 6 | 9 | d8 | 2 / 2 | 5 | TN 9 |
+| Tier 4 | 40 | 4 / 8 | 10 | d10 | 2 / 3 | 6 | TN 10 |
+| Tier 5 | 50 | 5 / 10 | 11 | d10 | 3 / 3 | 7 | TN 11 |
+| Tier 6 | 60 | 6 / 12 | 12 | d12 | 3 / 4 | 8 | TN 12 |
+| Tier 7 | 70 | 7 / 14 | 13 | d12 | 4 / 4 | 9 | TN 13 |
+| Tier 8 | 80 | 8 / 16 | 14 | d12+1 | 4 / 5 | 10 | TN 14 |
+| Tier 9 | 90 | 9 / 18 | 15 | d12+1 | 5 / 5 | 11 | TN 15 |
+| Tier 10 | 100 | 10 / 20 | 16 | d12+2 | 5 / 5 | 12 | TN 16 |
 
 ### Calculating creature statistics
 
 - **Hit Points.** Choose a creatures HP based on it’s Tier. A more frail or sturdy creature should have HP from a lower or higher tier respectively. This decision can be made by the creature‘s Size or other physical traits.
-- **AV.** A creature’s base AV should be equal to it’s Tier or double it‘s tier for Heavy armor (a hard shell, full metal armor, etc.). Different modifiers also affect the creature’s AV:
+- **AV.** A creature’s base AV should be equal to it’s Tier or double it‘s tier for heavy armor (a hard shell, full metal armor, etc.). Different modifiers also affect the creature’s AV:
     - Larger creatures should have AV from one Tier higher.
     - Smaller creatures should have AV from one Tier lower.
 - **Defenses.** The base Defense of a creature is 6 + it’s Tier. You can increase and decrease the values of individual Defenses but should always keep the average at the creature‘s Tier. When adjusting individual Defenses in Tier, you should stay within two steps from it‘s original Tier, as to not make the much too low or too high.
@@ -199,3 +205,9 @@ When the adventurers first encounter or start combat with a creature or object w
 ## Looting Equipment from Creatures
 
 Adventurers might want to add the equipment of fallen creatures to their own arsenal. With few exceptions, equipment from fallen creatures is always damaged, as a result of bad maintenance, or from the damage they suffered in the fight before. You can repair the Equipment during a rest, to return them to full strength.
+
+## Creature Abilities
+
+**Recharge (dX)**
+
+After using this ability, roll the die indicated and keep it visible for all players. At the end of each of the creature’s turns, reduce the die by one step. If it would be reduced to 0, the ability is available for use again.

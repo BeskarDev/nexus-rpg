@@ -1,21 +1,3 @@
----
-sidebar_position: 4
----
-
-# 💼 Background
-
-![banner-img](/img/banner/background-banner.png)
-
-Choose your adventurer’s background. This includes what profession they pursued, or in which environment they lived during their adult life and before choosing the path of an adventurer.
-
-Also think about what your adventurer’s motivation for adventuring could be, depending on what kind of life they lived before.
-
-### Gaining benefits from your background
-
-Up to once per scene, you can add +1 boon on any roll if your background would provide you with an advantage in the situation. Work with the GM which situations are appropriate for this.
-
-### List of backgrounds
-
 Name | Description | Suggested Skills | Starting Item
 --- | --- | --- | ---
 **Apothecary** | A character who is trained in the art of creating and administering medicinal remedies, poisons, and potions. | Crafting, Education, Insight, Nature | Rare herb bundle

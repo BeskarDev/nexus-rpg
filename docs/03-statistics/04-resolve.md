@@ -6,19 +6,37 @@ sidebar_position: 4
 
 ![banner-img](/img/banner/resolve-banner.png)
 
-Resolve represents the adventurer's tenacity, divine favour, and will to fight on. You can have a maximum of 3 Resolve at any point and can spend it at any time. 
+> "When the sun sets and shadows grow long, when your blade dulls and your strength fails, look within. The well of divine favor runs deeper than you know. This is the moment when heroes are forged.”
+> 
 
-Spend 1 Resolve to:
+Resolve represents an adventurer's tenacity, divine favor, and will to fight on. You can have a maximum of 3 Resolve at any time.
 
-- re-roll the result of one test and take the new result
-- regain 1/2 your max. HP on your turn (only once per scene)
-- regain 1/2 your max. Focus on your turn (only once per scene)
+## Using Resolve
 
-You regain Resolve through certain actions and decisions:
+You can spend 1 Resolve to **r**e-roll the result of one test and take the new result.
 
-- Regain 1 or more Resolve at the start of an adventure through your lifestyle during downtime (comfortable: 1, wealthy: 2, rich: 3)
+> Example: Arzhag spends 1 Resolve to re-roll a failed Strength test when attempting to move a fallen pillar blocking the party's escape route.
+> 
+
+## Regaining Resolve
+
+**You regain Resolve through certain actions and decisions:**
+
+- Regain 1 or more Resolve at the start of an adventure after at least one week of downtime
 - Regain 1 Resolve after a comfortable rest without interruptions
-- The GM should grant every adventurer +1 Resolve during a scene where they come up with an especially creative solution (only once per gaming session)
+- Gain +1 Resolve when you successfully invoke your Motivation during a skill test (once per gaming session)
+- The GM can grant every adventurer +1 Resolve for an especially creative solution (once per gaming session)
 
-> You only regain Resolve if you had less remaining. For example, when regaining 1 Resolve after a comfortable rest, you only do so, if you had 0 Resolve left. The exception to this is Resolve granted by the GM in a scene, which is instead added to your total Resolve (max. 3).
+You only regain Resolve if you had less remaining. For example, when regaining 1 Resolve after a comfortable rest, you only do so if you had 0 Resolve left. The exception is Resolve granted by the GM or through your Motivation, which is added to your total (max. 3).
+
+> Example: After infiltrating the forbidden archives, where Sansar used 1 Resolve to re-roll a Stealth test to succeed on hiding from the archive guardians, the party rests for the night. At the end of the rest, Sansar regains 1 Resolve because they had 0 remaining. If they hadn’t spend their 1 Resolve during the last day, they wouldn’t have regained it.
+> 
+
+### Invoking your Motivation
+
+Once per gaming session, you can invoke your Motivation during a critical moment in which you have to roll a skill test. Describe to the GM how this situation directly affects your motivation. Then the GM decides if the situation is fitting or not. If the situation meets your motivation and you succeed on that skill test, you also gain +1 Resolve.
+
+Your motivation can also change after a major event within the game’s story that affects your adventurer deeply. In this case, discuss the change with your GM and replace your motivation with a new one.
+
+> Example: Sephi the Seer is motivated by *Knowledge*, seeking to uncover the forgotten mysteries of the ancient temple ruins that dot the desert landscape. During a gaming session, the party discovers a sealed chamber with hieroglyphs no one can read. Sephi attempts an Education skill test to decipher them, invoking their Knowledge motivation: "Understanding these texts could reveal secrets lost for centuries—this is exactly why I left the temple to explore!" The GM agrees this directly ties to Sephi's motivation. Sephi succeeds on the Lore test, deciphering the ancient text and gaining +1 Resolve for acting in accordance with their driving purpose.
 >

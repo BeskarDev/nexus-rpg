@@ -6,42 +6,73 @@ sidebar_position: 1
 
 ![banner-img](/img/banner/attributes-banner.png)
 
-There are 4 attributes in the game:
+> "The four vessels of power granted to mortals—strength of body, quickness of movement, depth of spirit, and sharpness of mind—these define our path through the world and our legacy within it."
+> 
+
+## The Four Attributes
+
+Adventurers are defined by four fundamental attributes that represent their innate and developed capabilities:
 
 | Attribute | Description |
 | --- | --- |
-| Strength (*STR*) | Physical Power, Endurance, Grit |
-| Agility (*AGI*) | Physical Speed, Precision, Mobility |
-| Spirit (SPI) | Awareness, Intuition, Empathy |
-| Mind (MND) | Mental Strength, Intelligence, Logic |
+| **Strength (**STR**)** | Physical power, endurance, and fortitude |
+| **Agility (AGI)** | Speed, precision, and graceful movement |
+| **Spirit (SPI)** | Awareness, intuition, and connection to the unseen |
+| **Mind (MND)** | Mental acuity, knowledge, and wisdom |
 
-Each Attribute is represented by a die size and can be improved throughout the game:
+## Attribute Ratings
 
-| Die Size | Description | Examples (STR, AGI, SPI, MND) |
+Each attribute is represented by a die size, reflecting your adventurer's capabilities in that area. As you journey and gain experience, these attributes will improve based on your specialization.
+
+| Die Size | Rating | Examples |
 | --- | --- | --- |
-| d4-1 or less | terrible | feeble body, constantly tripping over your own feet, oblivious to your surroundings, or animalistic Intelligence |
-| d4 | bad | quickly out of breath, slow and clumsy, struggling to understand others, or often irrational |
-| d6 | decent | moderate endurance, decently fast and precise, sufficiently aware and empathetic, or no problems with logical thinking |
-| d8 | good | resilient and tough, capable of quick and controlled movements, highly perceptive, or adept at problem-solving and logical reasoning |
-| d10 | excellent | remarkable physical power and unwavering endurance, nimble and lightning-fast, exceptionally aware and deeply insightful, or master of complex logic and strategy |
-| d12 | incredible | capable of superhuman feats of strength and endurance, moving with blinding speed and astonishing precision, supernatural awareness and intuition, or genius-level intellect |
-| d12+1 or more | monstrous | titanic physical power and seeming almost indestructible, speed and mobility defying the laws of physics, bordering on omniscience, or possessing knowledge and insight beyond mortal comprehension. |
+| **d4-1 or less** | Terrible | **STR**: Unable to carry basic equipment<br>**AGI**: Constantly stumbling and tripping<br>**SPI**: Oblivious to obvious dangers<br>**MND**: Struggling with basic concepts |
+| **d4** | Poor | **STR**: Quickly exhausted by physical labor<br>**AGI**: Slow to react to sudden movements<br>**SPI**: Missing common social cues<br>**MND**: Frequently confused by new information |
+| **d6** | Average | **STR**: Able to perform a day's labor<br>**AGI**: Moving competently in most situations<br>**SPI**: Sensing when something feels wrong<br>**MND**: Understanding common knowledge and concepts |
+| **d8** | Good | **STR**: Winning contests of might against ordinary folk<br>**AGI**: Moving with precision through difficult terrain<br>**SPI**: Perceiving hidden motives<br>**MND**: Solving complex problems with ease |
+| **d10** | Excellent | **STR**: Carrying burdens that would exhaust others<br>**AGI**: Moving with perfect balance and coordination<br>**SPI**: Reading intentions with uncanny accuracy<br>**MND**: Mastering multiple fields of knowledge |
+| **d12** | Incredible | **STR**: Breaking barriers thought impenetrable<br>**AGI**: Moving faster than the eye can track<br>**SPI**: Sensing things beyond mortal perception<br>**MND**: Understanding knowledge long forgotten |
+| **d12+1 or mode** | Monstrous | **STR**: Performing feats of strength from legends<br>**AGI**: Moving with impossible grace and speed<br>**SPI**: Perceiving across realms and dimensions<br>**MND**: Comprehending knowledge beyond mortal understanding |
 
-Different abilities and skills call for bonuses to be added depending on your attributes. For this, reference the table below.
+## Attribute Modifiers
 
-|  | d4-1 | d4 | d6 | d8 | d10 | d12 | d12+1 |
+When skills, abilities, or spells require calculations based on attributes, use the following table:
+
+| Multiplier | d4-1 | d4 | d6 | d8 | d10 | d12 | d12+1 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1/4 x Attribute | 0 | 1 | 2 | 2 | 3 | 3 | 4 |
-| 1/2 x Attribute | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
-| 1 x Attribute | 3 | 4 | 6 | 8 | 10 | 12 | 13 |
-| 1.5 x Attribute | 5 | 6 | 9 | 12 | 15 | 18 | 19 |
+| **¼ × Attribute** | 0 | 1 | 2 | 2 | 3 | 3 | 4 |
+| **½ × Attribute** | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+| **1 × Attribute** | 3 | 4 | 6 | 8 | 10 | 12 | 13 |
+| **1½ × Attribute** | 5 | 6 | 9 | 12 | 15 | 18 | 19 |
 
-## Improving Attributes
+### Improving Attributes
 
-When gaining levels, an adventurer can periodically increase their attributes‘ die size permanently. See the Character Progression section for more details.
+As adventurers overcome challenges and grow in power, they may permanently increase their attributes when gaining levels. The path of improvement follows this progression:
 
-## Temporarily changing Attributes
+```
+d4 → d6 → d8 → d10 → d12
+```
 
-Some effects from items, abilities, or spells modify certain attributes by increasing or decreasing them by several steps. When doing so, derivative statistics are not affected by the changed attribute (e.g. HP, or Focus). Only the rolled dice for tests with the changed attribute, or base damage based on it are affected.
+See the Character Progression section for details on when and how attributes may be improved.
 
-If you would have to reduce an attribute from d4, it becomes d4-1. In the same way, an attribute already at d12 is increased to d12+1. Additional changes would further decrease or increase the modifier respectively.
+> Example: After completing a dangerous quest, Sansar the Thief advances from level 3 to level 4. They choose to improve their Agility from d8 to d10, reflecting the incredible reflexes developed while dodging numerous traps and other dangers.
+> 
+
+### Temporary Attribute Changes
+
+Curses, blessings, potions, and magical effects may temporarily alter an adventurer's attributes:
+
+- **Attribute Bonuses**: Increase the die size by the specified number of steps.
+- **Attribute Penalties**: Decrease the die size by the specified number of steps.
+
+> Important: Temporary changes to attributes do not affect derived statistics like Health Points or Focus. Only the dice rolled for attribute tests and base damage calculations are affected.
+> 
+
+**Die Size Limits**
+
+- An attribute reduced below d4 becomes d4-1
+- An attribute improved beyond d12 becomes d12+1
+- Additional changes beyond these extremes increase or decrease the modifier accordingly
+
+> Example: Nagkhan the Sorcerer drinks a Potion of Might +2, increasing their Strength by two steps from d6 to d10 for a medium duration. When rolling with Strength to lift a fallen pillar, they roll a d10 rather than a d6, but their maximum Health Points remain unchanged.
+>

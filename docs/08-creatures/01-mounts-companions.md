@@ -5,9 +5,6 @@ sidebar_position: 1
 # 🐎 Mounts & Companions
 
 ![banner-img](/img/banner/mounts-companions-banner.png)
-
-## Mounts
-
 You can ride a creature that is suitable as a mount and one or more Sizes above you. A flying mount has to be at least two Sizes above you. While mounted, you can move with your mount’s Movement during your turn. You also travel faster (1.5x travel speed) and Fortitude rolls during travel only affect your mount and not you.
 
 When you need to attempt difficult riding maneuvers, roll Agility + Nature to guide your mount.
@@ -45,7 +42,7 @@ Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fo
 
 ### Companion Statistics
 
-| Tier | 0 (Tame) | 1 (Trained) | 2 (Wild) | 3 (Ferocious) | 4 (Monstrous) | 5 (Primeval) |
+| Tier | 0 (Harmless) | 1 (Capable) | 2 (Dangerous) | 3 (Ferocious) | 4 (Monstrous) | 5 (Primeval) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Max. Size | Tiny | Small | Medium | Large | Large | Huge |
 | HP | 5 | 10 | 20 | 30 | 40 | 50 |
@@ -126,7 +123,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (Light) | +1d Strength | - |
+| +10 | +1 (light) | +1d Strength | - |
 
 **Skills:** Athletics, Fighting (-1), Fortitude, Perception, Survival
 
@@ -143,7 +140,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (Heavy) | - | - |
+| - | +2 (heavy) | - | - |
 
 **Skills:** Fighting (-1), Fortitude, Survival
 
@@ -178,7 +175,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (Light) | +1d Strength | - |
+| +10 | +1 (light) | +1d Strength | - |
 
 **Skills:** Fighting (-1), Fortitude, Perception, Survival
 
@@ -213,7 +210,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (Light) | - | - |
+| +10 | +1 (light) | - | - |
 
 **Skills:** Athletics, Fighting (-1), Perception, Survival
 
@@ -230,7 +227,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude, Stealth, Survival
 
@@ -247,7 +244,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (Heavy) | - | - |
+| - | +2 (heavy) | - | - |
 
 **Skills:** Fighting (-1), Stealth, Survival
 
@@ -299,7 +296,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +1 (Light) | +1d Strength, -1d Agility | - |
+| +10 | +1 (light) | +1d Strength, -1d Agility | - |
 
 **Skills:** Fighting (-1), Fortitude, Perception, Survival
 
@@ -334,7 +331,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (Heavy) | - | - |
+| - | +2 (heavy) | - | - |
 
 **Skills:** Fighting (-1), Perception, Stealth, Survival
 
@@ -419,7 +416,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude, Survival
 
@@ -461,7 +458,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude
 
@@ -513,7 +510,7 @@ Each companion will have one of the following traits, representing the type of c
 
 **Immunities:** bleeding, grappled, paralyzed, poison, poisoned, prone, restrained, unconscious
 
-**Resistances:** physical
+**Resistances:** fire, physical
 
 **Weaknesses:** frost
 
@@ -532,7 +529,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| +10 | +2 (Heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+| +10 | +2 (heavy) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
 
 **Skills:** Fighting (-1), Fortitude, Perception
 
@@ -556,7 +553,7 @@ Each companion will have one of the following traits, representing the type of c
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
-| - | +2 (Heavy) | -1d Strength, +1d Agility | - |
+| - | +2 (heavy) | -1d Strength, +1d Agility | - |
 
 **Skills:** Arcana (-1), Fighting (-1), Perception, Stealth
 
@@ -590,8 +587,3 @@ Each companion will have one of the following traits, representing the type of c
 **Abilities:**
 - <strong>Blindsight (medium).</strong> This creature can perceive it‘s surroundings at medium range without relying on sight.
 - <strong>Flying (hover).</strong> This creature can fly freely by hovering in the air.
-
-
-## Riding an animal companion
-
-Some animal companions are large enough and have the anatomy to be ridable. When fighting while riding an animal companion, you share your companion‘s movement with them during your turns. You can still both take actions on your individual turns.
