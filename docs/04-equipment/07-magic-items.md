@@ -151,30 +151,14 @@ There exist a variety of enchanted, magical, or naturally powerful materials, su
 
 | d8 | Material | Properties |
 | --- | --- | --- |
-| 1 | **Bone** | *Sourced from beasts or humanoids. Lightweight but brittle; breaks under strong impacts.*
-
-****1/2 item cost. The item gains the fragile property. |
-| 2 | **Copper** | *Soft reddish metal. Easy to shape, but poor durability for weapons or armor.*
-
-****1/2 item cost. The item gains the fragile property. |
-| 3 | **Fresh Wood** | *Cut from living trees without drying or treatment. Warps easily and lacks strength.*
-
-****1/2 item cost. The item gains the fragile property. |
-| 4 | **Stone** | *Rough, heavy, and crude. Can be shaped into tools or weapons, but prone to chipping.*
-
-****1/2 item cost. The item gains the fragile property. |
-| 5 | **Flint** | *Sharp when fractured. Good for cutting edges but extremely brittle.*
-
-****1/2 item cost. The item gains the fragile property. |
-| 6 | **Bark** | *Flexible but weak. Used for basic armor or bindings, mostly ceremonial or temporary.*
-
-****1/2 item cost. The item gains the fragile property. |
-| 7 | **Reed** | *Hollow and very light. Used for simple shafts or padding, but offers no real durability.*
-
-****1/2 item cost. The item gains the fragile property. |
-| 8 | **Shell** | *Hard outer layer from aquatic creatures. Smooth and rigid, but fragile under pressure.*
-
-****1/2 item cost. The item gains the fragile property. |
+| 1 | **Bone** | *Sourced from beasts or humanoids. Lightweight but brittle; breaks under strong impacts.*<br/><br/>1/2 item cost. The item gains the fragile property. |
+| 2 | **Copper** | *Soft reddish metal. Easy to shape, but poor durability for weapons or armor.* <br/><br/>1/2 item cost. The item gains the fragile property. |
+| 3 | **Fresh Wood** | *Cut from living trees without drying or treatment. Warps easily and lacks strength.*<br/><br/>1/2 item cost. The item gains the fragile property. |
+| 4 | **Stone** | *Rough, heavy, and crude. Can be shaped into tools or weapons, but prone to chipping.*<br/><br/>1/2 item cost. The item gains the fragile property. |
+| 5 | **Flint** | *Sharp when fractured. Good for cutting edges but extremely brittle.*<br/><br/>1/2 item cost. The item gains the fragile property. |
+| 6 | **Bark** | *Flexible but weak. Used for basic armor or bindings, mostly ceremonial or temporary.*<br/><br/>1/2 item cost. The item gains the fragile property. |
+| 7 | **Reed** | *Hollow and very light. Used for simple shafts or padding, but offers no real durability.*<br/><br/>1/2 item cost. The item gains the fragile property. |
+| 8 | **Shell** | *Hard outer layer from aquatic creatures. Smooth and rigid, but fragile under pressure.*<br/><br/>1/2 item cost. The item gains the fragile property. |
 
 #### **Mundane Materials (Q2)**
 
@@ -187,47 +171,22 @@ There exist a variety of enchanted, magical, or naturally powerful materials, su
 | 5 | **Horn** | *Solid, curved keratin. Used for weapon hilts, tips, and decorative armor parts.* |
 | 6 | **Hide** | *Thick, untreated skin. Tougher than leather, but less flexible.* |
 | 7 | **Antler** | *Hard and naturally curved. Effective for piercing weapons or rugged tools.* |
-| 8 | **Obsidian** | *Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.*
-
-**-** The item gains the fragile property.
-- Weapon/Ammo: +1 weapon damage (enhancement bonus). |
+| 8 | **Obsidian** | *Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.*<br/><br/>**-** The item gains the fragile property.<br/>- Weapon/Ammo: +1 weapon damage (enhancement bonus). |
 
 #### **Exotic Materials (Q3-4)**
 
 | d10 | Material | Properties |
 | --- | --- | --- |
-| 1 | **Chitin** | *Harvested from insectoid or crustacean monsters. Lighter than metal, but still strong and durable. Used as organic armor plating.*
-
-- Armor/Shield: -1 load (min. 0). |
-| 2 | **Iron** | *Relatively common metal, but culturally taboo in some regions. Said to repel spirits and weaken magic. Also known as "Cursestone" due to its effects on the supernatural.*
-
-- Weapon: +1 boon on attacks against spirit creatures.
-- Armor/Shield: +1 bane on Mysticism rolls to cast spells. |
-| 3 | **Monster Bone** | *Comes from large or magical creatures. Denser and stronger than normal bone, with durability close to metals.*
-
-- Weapon/Armor/Shield: -1 load (min. 0). |
-| 4 | **Monster Scales** | *Sourced from scaled beasts. Natural armor with good physical resistance.*
-
-- Armor/Shield: Once per scene, gain resistance to a single attack’s physical damage. |
-| 5 | **Giant Spider Silk** | *Collected from giant spiders bred for strength. Threads are extremely strong and light. Can be woven into flexible armor or restraint gear.*
-
-- Light Armor: -1 load (min. 0). |
-| 6 | **Silverroot** | *Root of the sacred Silverleaf Oak, threaded with silvery veins. The sap is poisonous to the cursed creatures of the night. Can be imbued into weapons with effects against those creatures.*
-
-- Weapon: +1 boon on attacks against lycanthropes and undead creatures. |
-| 7 | **Runebark** | *Tree bark with natural ancient patterns. Slightly magical and resists some spell effects.*
-
-- Armor/Shield: Once per scene, gain resistance to a single spell’s damage. |
-| 8 | **Dwarf-Steel** | *Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret; known for durability and excellent heat resistance.*
-
-- Any: Once per day, you can re-roll a Durability check for this item.
-- Heavy Armor: You don’t suffer a penalty for wearing heavy armor in extreme climates. |
-| 9 | **Darkwood** | *Dark wood with a mix of red and basalt layers that is much lighter than normal wood and resistant like metal. Often used for wooden weapons or shields. Has no effect on weapons only partially made of wood.*
-
-- Weapon/Shield: -1 load (min. 0). |
-| 10 | **Wyrmhide** | *Thick hide from lesser draconic creatures. Offers slight protection against elemental damage.*
-
-- Armor/Shield: Once per scene, gain resistance against any single damage source dealing acid, fire, frost, lightning, or poison damage. |
+| 1 | **Chitin** | *Harvested from insectoid or crustacean monsters. Lighter than metal, but still strong and durable. Used as organic armor plating.*<br/><br/>- Armor/Shield: -1 load (min. 0). |
+| 2 | **Iron** | *Relatively common metal, but culturally taboo in some regions. Said to repel spirits and weaken magic. Also known as "Cursestone" due to its effects on the supernatural.*<br/><br/>- Weapon: +1 boon on attacks against spirit creatures.<br/>- Armor/Shield: +1 bane on Mysticism rolls to cast spells. |
+| 3 | **Monster Bone** | *Comes from large or magical creatures. Denser and stronger than normal bone, with durability close to metals.*<br/><br/>- Weapon/Armor/Shield: -1 load (min. 0). |
+| 4 | **Monster Scales** | *Sourced from scaled beasts. Natural armor with good physical resistance.*<br/><br/>- Armor/Shield: Once per scene, gain resistance to a single attack’s physical damage. |
+| 5 | **Giant Spider Silk** | *Collected from giant spiders bred for strength. Threads are extremely strong and light. Can be woven into flexible armor or restraint gear.*<br/><br/>- Light Armor: -1 load (min. 0). |
+| 6 | **Silverroot** | *Root of the sacred Silverleaf Oak, threaded with silvery veins. The sap is poisonous to the cursed creatures of the night. Can be imbued into weapons with effects against those creatures.*<br/><br/>- Weapon: +1 boon on attacks against lycanthropes and undead creatures. |
+| 7 | **Runebark** | *Tree bark with natural ancient patterns. Slightly magical and resists some spell effects.*<br/><br/>- Armor/Shield: Once per scene, gain resistance to a single spell’s damage. |
+| 8 | **Dwarf-Steel** | *Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret; known for durability and excellent heat resistance.*<br/><br/>- Any: Once per day, you can re-roll a Durability check for this item.<br/>- Heavy Armor: You don’t suffer a penalty for wearing heavy armor in extreme climates. |
+| 9 | **Darkwood** | *Dark wood with a mix of red and basalt layers that is much lighter than normal wood and resistant like metal. Often used for wooden weapons or shields. Has no effect on weapons only partially made of wood.*<br/><br/>- Weapon/Shield: -1 load (min. 0). |
+| 10 | **Wyrmhide** | *Thick hide from lesser draconic creatures. Offers slight protection against elemental damage.*<br/><br/>- Armor/Shield: Once per scene, gain resistance against any single damage source dealing acid, fire, frost, lightning, or poison damage. |
 
 #### **Greater Materials (Q5-6)**
 
@@ -239,7 +198,7 @@ There exist a variety of enchanted, magical, or naturally powerful materials, su
 | 4 | **Dragon Scales** | *Large scales from dragons. Extremely durable and elementally attuned.* |
 | 5 | **Deep Iron** | *Heavy ore from deep underground. Strong against both physical and magical attacks.* |
 | 6 | **Phantom-Silk** | *Made from spectral spider silk. Very light, hard to detect, and partially intangible.* |
-| 7 | **Mithril** | *Lightweight, silvery metal. High durability with very low weight; ideal for fast fighters.* |
+| 7 | **Mithril** | *Lightweight, silvery metal. High durability with very low weight; ideal for fast fighters.*<br/><br/>- Armor/Shield: -1 load (min. 0). Reduce the item’s rigid property by 1 (min. 0). |
 | 8 | **Solarite** | *Red-gold crystal found on celestial mountain peaks. Mixed with bronze in a ritual to create a glowing, heat-reactive alloy. Generates intense heat when moved quickly.* |
 | 9 | **Lunarite** | *Deep blue crystal found in underworld caverns. Absorbs magical energy. Used in armor to resist spells or in restraints to suppress magic.* |
 | 10 | **Adamantite** | *Extremely hard and dense metal. Almost impossible to break or bend.* |
@@ -296,73 +255,71 @@ In each enchantment description, you will find in which Qualities they are avail
 
 | d6 | Prefix |
 | --- | --- |
-| 1 | <b>burning (Q4/Q5/Q6).</b> This projectile ignites itself when fired. On a hit, inflict burning (4/6/8) to the target. |
-| 2 | <b>draining (Q5).</b> On a hit, the target is briefly stunned. You can only use this effect once per scene against any individual target. |
-| 3 | <b>ensnaring (Q4/Q5/Q6).</b> On hit, magical vines erupt from the projectile to entangle the target. A large or smaller target is grappled by the vines. The target’s rolls to escape the grapple are made vs. medium/hard/very hard Difficulty (8/10/12). |
-| 4 | <b>shattering (Q4/Q5/Q6).</b> On a hit, the projectile explodes into a loud bang, dealing 4/6/8 blast damage (ignoring AV) to the target and each other creature within melee range of them. On a strong or critical hit, the target is also knocked prone. |
-| 5 | <b>seeking (Q4/Q6).</b> This shot curves unnaturally toward its mark. Ignore any penalties from range or cover and gain +1 boon on this attack. At Q6, you can also target creatures behind full cover, as long as there is a possible flight path for the projectile and you are aware of their location. |
-| 6 | <b>wounding (Q4/Q5/Q6).</b> On a hit, inflict bleeding (4/6/8) on the target. You can only use this effect once per scene against any individual target. |
+| 1 | **<b>burning (Q4/Q5/Q6).</b>** This projectile ignites itself when fired. On a hit, inflict burning (4/6/8) to the target. |
+| 2 | **<b>draining (Q5).</b>** On a hit, the target is briefly stunned. You can only use this effect once per scene against any individual target. |
+| 3 | **<b>ensnaring (Q4/Q5/Q6).</b>** On hit, magical vines erupt from the projectile to entangle the target. A large or smaller target is grappled by the vines. The target’s rolls to escape the grapple are made vs. medium/hard/very hard Difficulty (8/10/12). |
+| 4 | **<b>shattering (Q4/Q5/Q6).</b>** On a hit, the projectile explodes into a loud bang, dealing 4/6/8 blast damage (ignoring AV) to the target and each other creature within melee range of them. On a strong or critical hit, the target is also knocked prone. |
+| 5 | **<b>seeking (Q4/Q6).</b>** This shot curves unnaturally toward its mark. Ignore any penalties from range or cover and gain +1 boon on this attack. At Q6, you can also target creatures behind full cover, as long as there is a possible flight path for the projectile and you are aware of their location. |
+| 6 | **<b>wounding (Q4/Q5/Q6).</b>** On a hit, inflict bleeding (4/6/8) on the target. You can only use this effect once per scene against any individual target. |
 
 ### Weapon Enchantments
 
 | d10 | Prefix |
 | --- | --- |
-| 1 | <b>bloody (Q4/Q5/Q6).</b> On a strong or critical hit with this weapon, inflict bleeding (2/4/6) on the target. If your hit would inflict bleeding already, increase the amount by +2/+4/+6 instead. |
-| 2 | <b>booming (Q4/Q5/Q6).</b> On a hit with this weapon, you can choose to deal blast damage instead. On a strong or critical hit, the target is also pushed a close/short/medium distance.
-You can use this ability once/twice/thrice per day. |
-| 3 | <b>flaming (Q4/Q5/Q6).</b> While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration.<br/>While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignoring AV) on a hit. |
-| 4 | <b>infused (Q4/Q5/Q6).</b> While holding this weapon, you can use your Quick Action on your turn to regain 4/6/8 Focus. You can use this ability once per day. |
-| 5 | <b>morphing (Q4).</b> Choose any second type of weapon. When applying this enchantment during crafting, you must use and destroy that weapon (at least masterwork quality) as part of the enchanting process.<br/>This weapon combines both weapon forms into one, stretching or contracting it’s parts upon activation to assume a different shape. If you speak the command word as a Quick Action, the weapon transforms from one of it’s forms into the other one. The weapon retains all mundane and magical properties of the original weapons when their respective shape is used. |
-| 6 | <b>poisoner’s (Q4/Q6).</b> When applying any type of poison to this weapon, add +2/+4 to any poison damage it deals (for weapon poisons) or increase the difficulty to end the poisons effect by one/two step(s) (for paralyzing poisons). |
-| 7 | <b>returning (Q4).</b> After using a short break to attune yourself to it, the weapon becomes magically linked to your person. It gains the thrown (short/medium) property. While the weapon is in long range of you and you can see it, you can use a Quick Action to command it to return to you. If the weapon’s path is unobstructed, it quickly flies back into your hand (you must have a free hand to do this). |
-| 8 | <b>sentinel (Q4/Q5).</b> During this weapon’s creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon glows dimly whenever a creature of the chosen type is within long distance of you. At Q5, you also gain +1 boon on all rolls made targeting one of these creatures, including tracking, understanding, or attacking. |
-| 9 | <b>slaying (Q4/Q5/Q6).</b> During this weapon’s creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon deals +2/+4/+6 damage on a hit against the chosen type of creature. |
-| 10 | <b>sundering (Q4/Q5/Q6).</b> On a hit, you can choose to ignore 1/2 AV. You can use this ability once/twice/thrice per day. |
+| 1 | **<b>bloody (Q4/Q5/Q6).</b>** On a strong or critical hit with this weapon, inflict bleeding (2/4/6) on the target. If your hit would inflict bleeding already, increase the amount by +2/+4/+6 instead. |
+| 2 | **<b>booming (Q4/Q5/Q6).</b>** On a hit with this weapon, you can choose to deal blast damage instead. On a strong or critical hit, the target is also pushed a close/short/medium distance.<br/>You can use this ability once/twice/thrice per day. |
+| 3 | **<b>flaming (Q4/Q5/Q6).</b>** While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration.<br/>While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignoring AV) on a hit. |
+| 4 | **<b>infused (Q4/Q5/Q6).</b>** While holding this weapon, you can use your Quick Action on your turn to regain 4/6/8 Focus. You can use this ability once per day. |
+| 5 | **<b>morphing (Q4).</b>** Choose any second type of weapon. When applying this enchantment during crafting, you must use and destroy that weapon (at least masterwork quality) as part of the enchanting process.<br/>This weapon combines both weapon forms into one, stretching or contracting it’s parts upon activation to assume a different shape. If you speak the command word as a Quick Action, the weapon transforms from one of it’s forms into the other one. The weapon retains all mundane and magical properties of the original weapons when their respective shape is used. |
+| 6 | **<b>poisoner’s (Q4/Q6).</b>** When applying any type of poison to this weapon, add +2/+4 to any poison damage it deals (for weapon poisons) or increase the difficulty to end the poisons effect by one/two step(s) (for paralyzing poisons). |
+| 7 | **<b>returning (Q4).</b>** After using a short break to attune yourself to it, the weapon becomes magically linked to your person. It gains the thrown (short/medium) property. While the weapon is in long range of you and you can see it, you can use a Quick Action to command it to return to you. If the weapon’s path is unobstructed, it quickly flies back into your hand (you must have a free hand to do this). |
+| 8 | **<b>sentinel (Q4/Q5).</b>** During this weapon’s creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon glows dimly whenever a creature of the chosen type is within long distance of you. At Q5, you also gain +1 boon on all rolls made targeting one of these creatures, including tracking, understanding, or attacking. |
+| 9 | **<b>slaying (Q4/Q5/Q6).</b>** During this weapon’s creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon deals +2/+4/+6 damage on a hit against the chosen type of creature. |
+| 10 | **<b>sundering (Q4/Q5/Q6).</b>** On a hit, you can choose to ignore 1/2 AV. You can use this ability once/twice/thrice per day. |
 
 ### Spell Catalyst Enchantments
 
 | d6 | Prefix |
 | --- | --- |
-| 1 | <b>storing (Q4/Q5/Q6).</b> Once per day, you can choose any rank 1/2/3 spell you know. This item stores the chosen spell within it. You can cast the spell once per day from this item without spending Focus. |
-| 2 | <b>deflecting.</b> While wielding this item, it cloaks you in a magical aura and gains +1 Parry as a property. |
-| 3 | <b>g**lowing (Q4).</b> This item can emit light with short range by speaking it’s command word (no Action required). Speaking the command word again extinguishes the light. When using the item for light and you would have to roll a Supply Check for light, instead roll a Durability Check for this item. If you fail, the item isn't damaged, but it can't emit light until the next day. |
-| 4 | <b>stabilizing (Q4/Q5/Q6).</b> Once per turn, if you fail to cast a spell, you can re-roll the test. You can use this ability once/twice/thrice per day. |
-| 5 | <b>volatile (Q4/Q5/Q6).</b> Once per turn, when dealing damage with a spell, you can choose to add +2/+4/+6 damage to it. If you do, roll a Durability check for this item. |
-| 6 | <b>infused (Q4/Q5/Q6).</b> While holding this item, you can use your Quick Action during your turn to regain up to 4/6/8 Focus. You can use this ability once per day. |
+| 1 | **<b>storing (Q4/Q5/Q6).</b>** Once per day, you can choose any rank 1/2/3 spell you know. This item stores the chosen spell within it. You can cast the spell once per day from this item without spending Focus. |
+| 2 | **<b>deflecting.</b>** While wielding this item, it cloaks you in a magical aura and gains +1 Parry as a property. |
+| 3 | <b>g**lowing (Q4).</b>** This item can emit light with short range by speaking it’s command word (no Action required). Speaking the command word again extinguishes the light. When using the item for light and you would have to roll a Supply Check for light, instead roll a Durability Check for this item. If you fail, the item isn't damaged, but it can't emit light until the next day. |
+| 4 | **<b>stabilizing (Q4/Q5/Q6).</b>** Once per turn, if you fail to cast a spell, you can re-roll the test. You can use this ability once/twice/thrice per day. |
+| 5 | **<b>volatile (Q4/Q5/Q6).</b>** Once per turn, when dealing damage with a spell, you can choose to add +2/+4/+6 damage to it. If you do, roll a Durability check for this item. |
+| 6 | **<b>infused (Q4/Q5/Q6).</b>** While holding this item, you can use your Quick Action during your turn to regain up to 4/6/8 Focus. You can use this ability once per day. |
 
 ### Armor / Shield Enchantments
 
 | d6 | [prefix] Enchantment |
 | --- | --- |
-| 1 | <b>anchoring (Q4/Q5/Q6).</b> While wearing this item, when you would be pushed or knocked prone, you can ignore these effects. If it was a creature in melee range that attempted to push or knock you prone, they also take 2/4/6 damage (ignoring AV). You can use this ability once/twice/thrice per day. |
-| 2 | <b>blurring (Q4/Q5/Q6).</b> While wearing this item, you can use a Quick Action on your turn to activate the effects of the *Mirror Image* ****spell on yourself. The duplicates have 8/9/10 Defense.
-You can use this ability once/twice/thrice per day. |
-| 3 | <b>temperate (Q4).</b> This item provides magical protection from extreme cold or extreme heat (choose one). You don’t have to roll a test during travel or exploration to resist the chosen form of extreme climate. |
-| 4 | <b>stalwart (Q4).</b> While wearing this item, whenever an effect would inflict the charmed, confused, dazed, frightened, paralyzed, staggered, or stunned condition on you, you can choose to not suffer that condition (you can use this after rolling a test against the effect). You can use this ability once per day. |
-| 5 | <b>tough (Q4/Q5/Q6).</b> Once per turn, while wearing this item, when you suffer damage, you can choose to gain resistance against that damage. You can use this ability once/twice/thrice per day. |
-| 6 | <b>silent (Q4/Q6).</b> While wearing this item, either reduce it’s rigid property by 1/2 (min. 0), remove it’s noisy property, or gain +1 boon on Stealth rolls to move silently or surprise your enemies. You must choose the applicable effect in the given order, depending on the properties of the item. |
+| 1 | **<b>anchoring (Q4/Q5/Q6).</b>** While wearing this item, when you would be pushed or knocked prone, you can ignore these effects. If it was a creature in melee range that attempted to push or knock you prone, they also take 2/4/6 damage (ignoring AV). You can use this ability once/twice/thrice per day. |
+| 2 | **<b>blurring (Q4/Q5/Q6).</b>** While wearing this item, you can use a Quick Action on your turn to activate the effects of the *Mirror Image* ****spell on yourself. The duplicates have 8/9/10 Defense.<br/>You can use this ability once/twice/thrice per day. |
+| 3 | **<b>temperate (Q4).</b>** This item provides magical protection from extreme cold or extreme heat (choose one). You don’t have to roll a test during travel or exploration to resist the chosen form of extreme climate. |
+| 4 | **<b>stalwart (Q4).</b>** While wearing this item, whenever an effect would inflict the charmed, confused, dazed, frightened, paralyzed, staggered, or stunned condition on you, you can choose to not suffer that condition (you can use this after rolling a test against the effect). You can use this ability once per day. |
+| 5 | **<b>tough (Q4/Q5/Q6).</b>** Once per turn, while wearing this item, when you suffer damage, you can choose to gain resistance against that damage. You can use this ability once/twice/thrice per day. |
+| 6 | **<b>silent (Q4/Q6).</b>** While wearing this item, either reduce it’s rigid property by 1/2 (min. 0), remove it’s noisy property, or gain +1 boon on Stealth rolls to move silently or surprise your enemies. You must choose the applicable effect in the given order, depending on the properties of the item. |
 
 ### Wearable Enchantments
 
 | d20 | [suffix] Enchantment |
 | --- | --- |
-| 1 | <b>of Protection (Q4/Q5/Q6).</b> While wearing this item and not wearing armor, you gain +1/+2/+3 AV (enhancement bonus). |
-| 2 | <b>of Willpower (Q4/Q5/Q6).</b> While wearing the item, you gain +1/+2/+3 Resist (max. 10/12/14). |
-| 3 | <b>of Guarding (Q4/Q5/Q6).</b> While wearing the item, you gain +1/+2/+3 Parry (max. 10/12/14). |
-| 4 | <b>of Reflexes (Q4/Q5/Q6).</b> While wearing the item, you gain +1/+2/+3 Dodge (max. 10/12/14). |
-| 5 | <b>of Shielding (Q4/Q5/Q6).</b> While wearing this item, whenever you take non-physical damage, the brooch absorbs that damage instead. Once the item has absorbed a total of 10/15/20 damage, it can’t absorb any more damage.<br/>The item regains it’s ability after a night’s rest. |
-| 6 | <b>of Might (Q4/Q6).</b> While wearing this item, increase your Strength by one/two step(s) (up to d8/d10). |
-| 7 | <b>of Swiftness (Q4/Q6).</b> While wearing this item, increase your Agility by one/two step(s) (up to d8/d10). |
-| 8 | <b>of Wisdom (Q4/Q6).</b> While wearing this item, increase your Spirit by one/two step(s) (up to d8/d10). |
-| 9 | <b>of Intellect (Q4/Q6).</b> While wearing this item, increase your Mind by one/two step(s) (up to d8/d10). |
-| 10 | <b>of Ogre Strength (Q4/Q5/Q6).</b> While wearing this item, increase the weapon damage of your unarmed attacks by 1/2/3. |
-| 11 | <b>of Fast Stride (Q4/Q6).</b> While wearing this item, you gain +1/+2 Movement per turn. |
-| 12 | <b>of Pure Thought (Q4).</b> While wearing this item, you gain the following effects:<br/>- You are unaffected by effects which attempt to reveal your thoughts, charm you, or magically put you to sleep.<br/>- You gain resistance against psychic damage. |
-| 13 | <b>of Fortitude (Q4/Q5/Q6).</b> While wearing this item, it grants +2/+4/+6 HP. |
-| 14 | <b>of the Guardian (Q4/Q6).</b> This item grants the wielder +1/+2 boon(s) on Initiative rolls. |
-| 15 | <b>of Attunement (Q4/Q5/Q6).</b> While wearing this item, it grants +2/+4/+6 max. Focus. |
-| 16 | <b>of Comprehension (Q4).</b> While wearing this item, you can understand and speak (but not write) a specific language. The language is chosen during creation of the item and the creator must also be able to speak that language. |
-| 17 | <b>of Arcane Knowledge (Q4/Q5/Q6).</b> During the creation of this item, choose any arcane rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls). |
-| 18 | <b>of Divine Guidance (Q4/Q5/Q6).</b> During the creation of this item, choose any mystic rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls). |
-| 19 | <b>of Immunity (Q4).</b> During the creation of this item, choose one condition from (1) blinded,  (2) charmed, (3) confused, (4) dazed, (5) deafened, (6) frightened, (7) paralyzed, (8) poisoned, (9) silenced, (10) slowed, (11) staggered or (12) stunned. When finding this item, roll 1d12 to determine the condition.<br/>While wearing this item, you are immune against the chosen condition. |
-| 20 | <b>of Resistance (Q4).</b> During the creation of this item, choose one damage type from (1) acid, (2) blast, (3) fire, (4) frost, (5) lightning, (6) necrotic, (7) psychic, (8) poison, or (9) radiant. When finding this item, roll 1d10 (re-rolling a result of 10) to determine the condition.<br/>While wearing this item, you are resistant against the chosen damage type. |
+| 1 | **<b>of Protection (Q4/Q5/Q6).</b>** While wearing this item and not wearing armor, you gain +1/+2/+3 AV (enhancement bonus). |
+| 2 | **<b>of Willpower (Q4/Q5/Q6).</b>** While wearing the item, you gain +1/+2/+3 Resist (max. 10/12/14). |
+| 3 | **<b>of Guarding (Q4/Q5/Q6).</b>** While wearing the item, you gain +1/+2/+3 Parry (max. 10/12/14). |
+| 4 | **<b>of Reflexes (Q4/Q5/Q6).</b>** While wearing the item, you gain +1/+2/+3 Dodge (max. 10/12/14). |
+| 5 | **<b>of Shielding (Q4/Q5/Q6).</b>** While wearing this item, whenever you take non-physical damage, the brooch absorbs that damage instead. Once the item has absorbed a total of 10/15/20 damage, it can’t absorb any more damage.<br/>The item regains it’s ability after a night’s rest. |
+| 6 | **<b>of Might (Q4/Q6).</b>** While wearing this item, increase your Strength by one/two step(s) (up to d8/d10). |
+| 7 | **<b>of Swiftness (Q4/Q6).</b>** While wearing this item, increase your Agility by one/two step(s) (up to d8/d10). |
+| 8 | **<b>of Wisdom (Q4/Q6).</b>** While wearing this item, increase your Spirit by one/two step(s) (up to d8/d10). |
+| 9 | **<b>of Intellect (Q4/Q6).</b>** While wearing this item, increase your Mind by one/two step(s) (up to d8/d10). |
+| 10 | **<b>of Ogre Strength (Q4/Q5/Q6).</b>** While wearing this item, increase the weapon damage of your unarmed attacks by 1/2/3. |
+| 11 | **<b>of Fast Stride (Q4/Q6).</b>** While wearing this item, you gain +1/+2 Movement per turn. |
+| 12 | **<b>of Pure Thought (Q4).</b>** While wearing this item, you gain the following effects:<br/>- You are unaffected by effects which attempt to reveal your thoughts, charm you, or magically put you to sleep.<br/>- You gain resistance against psychic damage. |
+| 13 | **<b>of Fortitude (Q4/Q5/Q6).</b>** While wearing this item, it grants +2/+4/+6 HP. |
+| 14 | **<b>of the Guardian (Q4/Q6).</b>** This item grants the wielder +1/+2 boon(s) on Initiative rolls. |
+| 15 | **<b>of Attunement (Q4/Q5/Q6).</b>** While wearing this item, it grants +2/+4/+6 max. Focus. |
+| 16 | **<b>of Comprehension (Q4).</b>** While wearing this item, you can understand and speak (but not write) a specific language. The language is chosen during creation of the item and the creator must also be able to speak that language. |
+| 17 | **<b>of Arcane Knowledge (Q4/Q5/Q6).</b>** During the creation of this item, choose any arcane rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls). |
+| 18 | **<b>of Divine Guidance (Q4/Q5/Q6).</b>** During the creation of this item, choose any mystic rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls). |
+| 19 | **<b>of Immunity (Q4).</b>** During the creation of this item, choose one condition from (1) blinded,  (2) charmed, (3) confused, (4) dazed, (5) deafened, (6) frightened, (7) paralyzed, (8) poisoned, (9) silenced, (10) slowed, (11) staggered or (12) stunned. When finding this item, roll 1d12 to determine the condition.<br/>While wearing this item, you are immune against the chosen condition. |
+| 20 | **<b>of Resistance (Q4).</b>** During the creation of this item, choose one damage type from (1) acid, (2) blast, (3) fire, (4) frost, (5) lightning, (6) necrotic, (7) psychic, (8) poison, or (9) radiant. When finding this item, roll 1d10 (re-rolling a result of 10) to determine the condition.<br/>While wearing this item, you are resistant against the chosen damage type. |
