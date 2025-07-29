@@ -16,7 +16,7 @@ To calculate the prices of magic items, apply the following price modifier depen
 A Quality 6 magic longsword made from a special material and with an enchantment costs 20,100 coins (100 + 2 x 10,000).
 > 
 
-### **Magic Item Cost per Quality Tier**
+## Magic Item Cost per Quality Tier
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -26,6 +26,26 @@ A Quality 6 magic longsword made from a special material and with an enchantment
 | **6** (Greater Magic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins | +7,500 coins |
 | **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins | +25,000 coins |
 | **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +75,000 coins |
+
+### Wearable Equipment Base Costs
+
+When creating magic wearable items for different equipment slots, use these minimum base costs before applying the magic item price modifiers above:
+
+| Equipment Slot | Min. Base Cost |
+| --- | --- |
+| **Head** (helmet, headband, mask) | 50 coins |
+| **Neck** (amulet, brooch, scarf) | 50 coins |
+| **Back** (cape, cloak, mantle) | 100 coins |
+| **Body** (robe, tunic) | 100 coins |
+| **Hands** (bracers, bracelets, gloves) | 50 coins |
+| **Rings** | 50 coins |
+| **Waist** (belt, sash, girdle) | 50 coins |
+| **Feet** (boots, sandals, shoes) | 100 coins |
+
+> For example, a Quality 4 **amulet of protection** would cost 800 coins total (50 base cost + 750 wearable magic item modifier). A Quality 5 **cloak of strength** would cost 2,600 coins (100 base cost + 2,500 wearable magic item modifier).
+> 
+
+## Magic Item Effects
 
 ### Magic Weapons and Spell Catalysts
 

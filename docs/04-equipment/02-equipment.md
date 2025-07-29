@@ -6,7 +6,8 @@ sidebar_position: 2
 
 ![banner-img](/img/banner/items-banner.png)
 
-## Animals 
+## Animals
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Animal Companion**  | 1  | - | 75  | A wolf, large cat, or similar predator trained from youth to serve as a loyal companion. Bonds with one master and follows complex commands. Requires the Nature talent “Animal Companion” to control such a creature.
@@ -18,7 +19,8 @@ Name | Quality | Load | Cost | Description
 **War Horse**  | 3  | - | 750  | A large, aggressive horse trained for battle. Can carry a rider plus up to 15 load. Trained to fight alongside its rider and strike enemies with hooves.
 
 
-## Alchemy 
+## Alchemy
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Healing Salve (weak)**  | 1  | 1  | 15  | Spend 1 use to apply this to a treated Wound of a target creature. The target creature gains +1 boon on their next roll to heal that Wound.<br/>Only one type of healing salve can be applied to any single creature at the same time. The salve lasts for a long duration.<br/>
@@ -41,7 +43,8 @@ Name | Quality | Load | Cost | Description
 **Potion of Healing (strong)**  | 5  | 1  | 1,250  | Drink this potion as an Action to regain 24 HP.<br/>After drinking this potion, it is fully spend.<br/>
 
 
-## Clothes 
+## Clothes
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Simple Clothes**  | 1  | 1  | 5  | While worn, this takes up 0 load instead. Simple, functional clothes.
@@ -50,7 +53,8 @@ Name | Quality | Load | Cost | Description
 **Extravagant Clothes**  | 4  | 1  | 750  | While worn, this takes up 0 load instead. Clothes worthy of a king or queen made from the most exotic materials.
 
 
-## Container 
+## Container
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Pouch**  | 1  | 0  | 5  | A simple pouch to be carried around by hand or on a belt. Can hold up to 1 load.
@@ -69,7 +73,8 @@ Name | Quality | Load | Cost | Description
 **Bottomless Backpack**  | 5  | - | 2,500  | A magically enhanced backpack, made for well-off adventurers, that reduces the weight of items within it significantly. If this is your first backpack, it takes up 0 load instead and it adds +8 to your carry capacity limits.<br/>You can also magically retrieve any item within the backpack using a Quick Action on your turn.<br/>
 
 
-## Gear 
+## Gear
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Rope (Hemp)**  | 1  | 1  | 10  | Covers a medium distance. Can be split up into multiple more fragile strings.
@@ -91,7 +96,8 @@ Name | Quality | Load | Cost | Description
 **Rope (Silk)**  | 3  | 1  | 125  | Covers a long distance. More delicate than hemp without suffering in strength.
 
 
-## Supply 
+## Supply
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Blowdarts (d8)**  | 1  | 1  | 5  | A small pouch containing a couple dozen darts for blowpipes. Has a d8 Supply die. After a fight using this type of ammo, make a Supply check and spend 1 use on a failure.
@@ -109,7 +115,8 @@ Name | Quality | Load | Cost | Description
 **Formidable Materials (d6)**  | 4  | 1  | 750  | A lavishly adorned satchel containing formidable crafting materials, such as shimmering dragonhide, ethereal mooncloth, dwarf-steel ingots, electrum wire, and silken spider thread imbued with magical properties. Has a d6 Supply die.
 
 
-## Toolkit 
+## Toolkit
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Adventuring Gear**  | 2  | 1  | 50  | Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. Spend 1 use to produce one specific item from the list.
@@ -130,7 +137,8 @@ Name | Quality | Load | Cost | Description
 **Jeweler‘s Tools**  | 2  | 1  | 100  | Contains a small saw, hammer, files, pliers, tweezers, and a small magnifying glass. Spend 1 use to produce one specific item from the list.
 
 
-## Trade Good 
+## Trade Good
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Small Trinket**  | 1  | 0  | 25  | Any type of simple but rare item that has some aesthetic, or sentimental value, such as a carved figurine, a silver ring, a glass vial, a brass compass, a leather pouch, a dried flower, a crystal pendant, a feather quill, a ceramic mask, or a wooden flute.
@@ -139,7 +147,8 @@ Name | Quality | Load | Cost | Description
 **Masterwork Art Piece**  | 4  | 1  | 750  | Exceptional works of art created by master craftsmen, suitable for royal courts or wealthy merchants.
 
 
-## Transportation 
+## Transportation
+
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Handcart**  | 1  | - | 50  | A small hand-pulled wooden cart holding up to 20 load or one medium creatures. Can be drawn by a single person.
