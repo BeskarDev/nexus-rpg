@@ -42,6 +42,23 @@ These items hold no utilitarian function, but are used for barter and trade. You
 
 Carts, wagons, and chariots are included in this category. Similarly to containers, they can be used to store items or transport people. Some can be pulled by a person, others require one or more mounts to be moved.
 
+## Equipment
+
+Equipment are the types of items that you carry on your person. You can only ever wear one piece of equipment per slot (except rings) and benefit from their effects.
+
+**Equipment Slots**
+
+- Head (*helmet, headband, mask*)
+- Neck (*amulet, brooch, scarf*)
+- Back (*cape, cloak, mantle*)
+- Body (*armor, robe, tunic*)
+- Hands (*bracers, bracelets, gloves*)
+- Rings (up to two)
+- Waist (*belt, sash, girdle*)
+- Feet (*boots, sandals, shoes*)
+
+The most basic form of equipment are helmets (head slot) and armor (body slot). Other slots are either equipped with decorative items or at some point with magic items.
+
 ## Quality
 
 Each item has a Quality rating between 1 (primitive) and 8 (mythical) associated with it.
@@ -168,18 +185,3 @@ The Durability dies listed above are representative of the mundane form of the i
 | d12+1 | 1–2 |
 | d12+2 | 1 |
 | d12+3 | Indestructible (no check unless stated) |
-
-## Equipment
-
-Equipment are the types of items that you carry on your person. You can only ever wear one piece of equipment per slot (except rings) and benefit from their effects.
-
-**Equipment Slots**
-
-- Head (*helmet, headband, mask, …*)
-- Neck (*amulet, brooch, scarf, …*)
-- Back (*cape, cloak, mantle, …*)
-- Body (*armor, robe, tunic, …*)
-- Hands (*bracers, bracelets, gloves, …*)
-- Rings (up to three)
-- Waist (*belt, sash, girdle, …*)
-- Feet (*boots, sandals, shoes, …*)
