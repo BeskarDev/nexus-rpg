@@ -456,6 +456,53 @@
 - <strong>Water Form.</strong> This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, it is briefly slowed.
 
 
+### Undead
+
+#### **Skeleton**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| - | +2 (heavy) | - | +1 Dodge |
+
+**Skills:** Fighting (-1), Perception
+
+**Immunities:** bleeding, blinded, charmed, frightened, poison, poisoned, unconscious
+
+**Resistances:** necrotic
+
+**Weaknesses:** crush weapons, radiant
+
+**Attacks:**
+- <strong>Claw</strong> (<em>light, slash</em>). Deals -1 weapon damage (min. 1).
+- <strong>Weapon Attack</strong>. If equipped with weapons, this creature can use them normally with its Fighting skill.
+
+**Abilities:**
+- <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
+
+
+#### **Zombie**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +5 | +1 (light) | +1d Strength, -1d Agility | +1 Parry, -1 Dodge |
+
+**Skills:** Fighting (-1), Fortitude
+
+**Immunities:** bleeding, blinded, charmed, frightened, poison, poisoned, unconscious
+
+**Resistances:** necrotic
+
+**Weaknesses:** radiant
+
+**Attacks:**
+- <strong>Claw</strong> (<em>crush</em>). Deals normal weapon damage. On a strong or critical hit, the target is grappled.
+- <strong>Rotten Bite</strong> (<em>crush</em>). Can only be used against grappled targets. Deals normal weapon damage as poison damage.
+
+**Abilities:**
+- <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
+- <strong>Rotting Slowness.</strong> This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions.
+
+
 ### Aberration
 
 #### **Chuul**
