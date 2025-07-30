@@ -157,6 +157,18 @@ export const {
 				actionType: 'Other',
 			})
 		},
+		importAbilities: (state, action: PayloadAction<Partial<Ability>[]>) => {
+			state.unsavedChanges = true
+			const newAbilities = action.payload.map(ability => ({
+				id: crypto.randomUUID(),
+				title: '',
+				description: '',
+				tag: 'Other' as const,
+				actionType: 'Other' as const,
+				...ability,
+			}))
+			state.activeCharacter.skills.abilities.unshift(...newAbilities)
+		},
 		updateAbility: (
 			state,
 			action: PayloadAction<{ update: Partial<Ability>; index: number }>,
