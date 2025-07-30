@@ -7,7 +7,7 @@ import {
 	Theme,
 	Tooltip,
 } from '@mui/material'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 
 import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
 import { DropResult } from 'react-beautiful-dnd'
@@ -33,6 +33,60 @@ export const ItemsTab: React.FC = () => {
 	)
 	const [weaponSearchOpen, setWeaponSearchOpen] = useState(false)
 	const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
+
+	// Auto-update AV values when armor, helmet, or shield items change
+	useEffect(() => {
+		let armorAV = 0
+		let helmetAV = 0
+		let shieldAV = 0
+
+		// Check worn equipment for armor and helmet
+		items.forEach(item => {
+			if (item.container === 'worn' && item.properties) {
+				// Look for both "AV +X" and "+X AV" patterns
+				const avMatch = item.properties.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
+				if (avMatch) {
+					const av = parseInt(avMatch[1] || avMatch[2])
+					if (item.slot === 'body') {
+						armorAV = av
+					} else if (item.slot === 'head') {
+						helmetAV = av
+					}
+				}
+			}
+		})
+
+		// Check weapons for shields
+		weapons.forEach(weapon => {
+			if (weapon.properties) {
+				// Look for shield indicators in properties or name
+				const isShield = weapon.properties.toLowerCase().includes('shield') || 
+				                weapon.name.toLowerCase().includes('shield')
+				
+				if (isShield) {
+					// Look for both "AV +X" and "+X AV" patterns
+					const avMatch = weapon.properties.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
+					if (avMatch) {
+						shieldAV = parseInt(avMatch[1] || avMatch[2])
+					}
+				}
+			}
+		})
+
+		// Update AV values if they changed
+		const currentAV = activeCharacter.statistics.av
+		if (currentAV.armor !== armorAV || currentAV.helmet !== helmetAV || currentAV.shield !== shieldAV) {
+			dispatch(characterSheetActions.updateCharacter({
+				statistics: {
+					av: {
+						armor: armorAV,
+						helmet: helmetAV,
+						shield: shieldAV,
+					}
+				}
+			}))
+		}
+	}, [items, weapons, activeCharacter.statistics.av])
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))

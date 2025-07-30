@@ -59,8 +59,8 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 		}))
 
 		const armor: CombinedItemData[] = (armorData as ArmorData[]).map(item => {
-			// Build properties string with AV and other properties
-			let properties = `+${item.av} AV`
+			// Build properties string with AV and other properties in consistent format
+			let properties = `AV +${item.av}`
 			if (item.properties !== '-') {
 				properties += `, ${item.properties}`
 			}
