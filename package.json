@@ -41,8 +41,10 @@
 		"react-device-detect": "^2.2.3",
 		"react-dom": "^18.2.0",
 		"react-firebaseui": "^6.0.0",
+		"react-markdown": "^10.1.0",
 		"react-redux": "^9.1.2",
-		"react-to-print": "^2.15.1"
+		"react-to-print": "^2.15.1",
+		"remark-gfm": "^4.0.1"
 	},
 	"devDependencies": {
 		"@docusaurus/module-type-aliases": "^3.7.0",
