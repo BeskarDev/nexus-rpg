@@ -368,12 +368,15 @@ export const CompanionBuilder: React.FC = () => {
     if (!text) return text;
     
     return text
-      // Convert <strong> tags to **bold** and trim whitespace
-      .replace(/<strong>(.*?)<\/strong>/g, (match, content) => `**${content.trim()}**`)
+      // Convert <strong> tags to **bold** and trim whitespace, ensure space after
+      .replace(/<strong>(.*?)<\/strong>/g, (match, content) => `**${content.trim()}** `)
       // Convert <em> tags to *italic* and trim whitespace
       .replace(/<em>(.*?)<\/em>/g, (match, content) => `*${content.trim()}*`)
       // Remove any remaining HTML tags (fallback)
-      .replace(/<[^>]*>/g, '');
+      .replace(/<[^>]*>/g, '')
+      // Clean up any double spaces that might have been created
+      .replace(/\s+/g, ' ')
+      .trim();
   };
 
   const generateMarkdown = (companion: CompanionStats) => {
