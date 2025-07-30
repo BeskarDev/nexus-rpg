@@ -1,4 +1,4 @@
-import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
 import {
   Accordion,
   AccordionDetails,
@@ -7,11 +7,12 @@ import {
   IconButton,
   Tooltip,
 } from '@mui/material'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import {
   CharacterDocument,
-  Skill
+  Skill,
+  Ability
 } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
@@ -23,6 +24,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { CategorizedAbilities } from './CategorizedAbilities'
 import { SkillRow } from './SkillRow'
+import { CombatArtsSearchDialog } from './CombatArtsSearchDialog'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -31,6 +33,7 @@ export const SkillsTab: React.FC = () => {
 		() => activeCharacter.skills,
 		[activeCharacter.skills],
 	)
+	const [combatArtsSearchOpen, setCombatArtsSearchOpen] = useState(false)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -49,6 +52,10 @@ export const SkillsTab: React.FC = () => {
 
 	const addNewSkill = () => {
 		dispatch(characterSheetActions.addNewSkill())
+	}
+
+	const importCombatArts = (combatArts: Partial<Ability>[]) => {
+		dispatch(characterSheetActions.importAbilities(combatArts))
 	}
 
 	const updateSkill = (update: Partial<Skill>, index: number) => {

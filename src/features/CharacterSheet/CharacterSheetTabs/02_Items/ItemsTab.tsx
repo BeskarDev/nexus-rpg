@@ -7,9 +7,9 @@ import {
 	Theme,
 	Tooltip,
 } from '@mui/material'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 
-import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
 import { DropResult } from 'react-beautiful-dnd'
 import { CharacterDocument, Item, Weapon } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
@@ -22,6 +22,7 @@ import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { ItemRow } from './ItemRow'
 import { WeaponRow } from './WeaponRow'
+import { WeaponSearchDialog, EquipmentSearchDialog } from './SearchDialog'
 
 export const ItemsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -30,6 +31,62 @@ export const ItemsTab: React.FC = () => {
 		() => activeCharacter.items,
 		[activeCharacter.items],
 	)
+	const [weaponSearchOpen, setWeaponSearchOpen] = useState(false)
+	const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
+
+	// Auto-update AV values when armor, helmet, or shield items change
+	useEffect(() => {
+		let armorAV = 0
+		let helmetAV = 0
+		let shieldAV = 0
+
+		// Check worn equipment for armor and helmet
+		items.forEach(item => {
+			if (item.container === 'worn' && item.properties) {
+				// Look for both "AV +X" and "+X AV" patterns
+				const avMatch = item.properties.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
+				if (avMatch) {
+					const av = parseInt(avMatch[1] || avMatch[2])
+					if (item.slot === 'body') {
+						armorAV = av
+					} else if (item.slot === 'head') {
+						helmetAV = av
+					}
+				}
+			}
+		})
+
+		// Check weapons for shields
+		weapons.forEach(weapon => {
+			if (weapon.properties) {
+				// Look for shield indicators in properties or name
+				const isShield = weapon.properties.toLowerCase().includes('shield') || 
+				                weapon.name.toLowerCase().includes('shield')
+				
+				if (isShield) {
+					// Look for both "AV +X" and "+X AV" patterns
+					const avMatch = weapon.properties.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
+					if (avMatch) {
+						shieldAV = parseInt(avMatch[1] || avMatch[2])
+					}
+				}
+			}
+		})
+
+		// Update AV values if they changed
+		const currentAV = activeCharacter.statistics.av
+		if (currentAV.armor !== armorAV || currentAV.helmet !== helmetAV || currentAV.shield !== shieldAV) {
+			dispatch(characterSheetActions.updateCharacter({
+				statistics: {
+					av: {
+						armor: armorAV,
+						helmet: helmetAV,
+						shield: shieldAV,
+					}
+				}
+			}))
+		}
+	}, [items, weapons, activeCharacter.statistics.av])
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -53,6 +110,14 @@ export const ItemsTab: React.FC = () => {
 
 	const addNewWeapon = () => {
 		dispatch(characterSheetActions.addNewWeapon())
+	}
+
+	const importWeapons = (weapons: Partial<Weapon>[]) => {
+		dispatch(characterSheetActions.importWeapons(weapons))
+	}
+
+	const importEquipment = (equipment: Partial<Item>[]) => {
+		dispatch(characterSheetActions.importItems(equipment))
 	}
 
 	const updateWeapon = (update: Partial<Weapon>, index: number) => {
@@ -114,7 +179,7 @@ export const ItemsTab: React.FC = () => {
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-        maxWidth: '47rem'
+				maxWidth: '47rem',
 			}}
 		>
 			<Box
@@ -239,6 +304,7 @@ export const ItemsTab: React.FC = () => {
 							<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
 						</Tooltip>
 						<IconButton
+							size="small"
 							onClick={(event) => {
 								addNewWeapon()
 								event.stopPropagation()
@@ -247,6 +313,18 @@ export const ItemsTab: React.FC = () => {
 						>
 							<AddCircle />
 						</IconButton>
+						<Tooltip title="Search weapons from database">
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									setWeaponSearchOpen(true)
+									event.stopPropagation()
+								}}
+								sx={{ ml: -1, mb: 0.75 }}
+							>
+								<Search />
+							</IconButton>
+						</Tooltip>
 					</Box>
 				</AccordionSummary>
 				<AccordionDetails
@@ -274,7 +352,7 @@ export const ItemsTab: React.FC = () => {
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion defaultExpanded sx={{ maxWidth: '65rem', flexGrow: 1, mb: 2 }}>
+			<Accordion defaultExpanded sx={{ maxWidth: '65rem', flexGrow: 1, mb: 1 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box
 						sx={{
@@ -285,6 +363,7 @@ export const ItemsTab: React.FC = () => {
 					>
 						<SectionHeader>Equipment & Items</SectionHeader>
 						<IconButton
+              size="small"
 							onClick={(event) => {
 								addNewItem()
 								event.stopPropagation()
@@ -293,6 +372,18 @@ export const ItemsTab: React.FC = () => {
 						>
 							<AddCircle />
 						</IconButton>
+						<Tooltip title="Search Equipment & Items">
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									setEquipmentSearchOpen(true)
+									event.stopPropagation()
+								}}
+								sx={{ ml: -1, mb: 0.75 }}
+							>
+								<Search />
+							</IconButton>
+						</Tooltip>
 					</Box>
 				</AccordionSummary>
 				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '42.5vh' }}>
@@ -315,6 +406,20 @@ export const ItemsTab: React.FC = () => {
 					</DynamicList>
 				</AccordionDetails>
 			</Accordion>
+
+			<WeaponSearchDialog
+				open={weaponSearchOpen}
+				onClose={() => setWeaponSearchOpen(false)}
+				onImportWeapons={importWeapons}
+				character={activeCharacter}
+			/>
+
+			<EquipmentSearchDialog
+				open={equipmentSearchOpen}
+				onClose={() => setEquipmentSearchOpen(false)}
+				onImportEquipment={importEquipment}
+				character={activeCharacter}
+			/>
 		</Box>
 	)
 }

@@ -1,4 +1,4 @@
-import { AddCircle, ExpandMore, Build } from '@mui/icons-material'
+import { AddCircle, ExpandMore, Build, Search } from '@mui/icons-material'
 import {
 	Accordion,
 	AccordionDetails,
@@ -23,6 +23,7 @@ import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListIte
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
+import { CombatArtsSearchDialog } from './CombatArtsSearchDialog'
 import { AbilityRow } from './AbilityRow'
 
 export const CategorizedAbilities: React.FC = () => {
@@ -34,6 +35,7 @@ export const CategorizedAbilities: React.FC = () => {
 	)
 	
 	const [settingsMenuAnchor, setSettingsMenuAnchor] = useState<null | HTMLElement>(null)
+	const [isCombatArtsDialogOpen, setIsCombatArtsDialogOpen] = useState(false)
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
@@ -186,6 +188,20 @@ export const CategorizedAbilities: React.FC = () => {
 								>
 									<AddCircle />
 								</IconButton>
+								{tag === 'Combat Art' && (
+									<Tooltip title="Search Combat Arts from database">
+										<IconButton
+											size="small"
+											onClick={(event) => {
+												setIsCombatArtsDialogOpen(true)
+												event.stopPropagation()
+											}}
+											sx={{ ml: -1 }}
+										>
+											<Search />
+										</IconButton>
+									</Tooltip>
+								)}
 							</Box>
 						</AccordionSummary>
 						<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
@@ -218,6 +234,18 @@ export const CategorizedAbilities: React.FC = () => {
 					</Accordion>
 				)
 			})}
+			
+			<CombatArtsSearchDialog
+				open={isCombatArtsDialogOpen}
+				onClose={() => setIsCombatArtsDialogOpen(false)}
+				character={activeCharacter}
+				onImportCombatArts={(combatArts) => {
+					combatArts.forEach(combatArt => {
+						dispatch(characterSheetActions.importAbilities([combatArt]))
+					})
+					setIsCombatArtsDialogOpen(false)
+				}}
+			/>
 		</Box>
 	)
 }

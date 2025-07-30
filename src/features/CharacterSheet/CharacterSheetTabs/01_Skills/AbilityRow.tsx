@@ -90,6 +90,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
+          pl: 0,
 					flexDirection: 'row',
 				}}
 			>
