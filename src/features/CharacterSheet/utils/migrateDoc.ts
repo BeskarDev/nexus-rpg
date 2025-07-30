@@ -8,6 +8,7 @@ import {
 	Spells,
 	Statistics,
 } from '../../../types/Character'
+import { ABILITY_TAGS } from '../../../types/AbilityTag'
 import { db } from '@site/src/config/firebase'
 
 export const migrateDoc = async (
@@ -110,6 +111,9 @@ const migrateSkills = (data: any): Skills => {
 			
 			return migratedAbility;
 		}),
+		abilityCategoryVisibility: data.abilityCategoryVisibility || Object.fromEntries(
+			ABILITY_TAGS.map(tag => [tag, true])
+		),
 	} as Skills
 }
 

@@ -9,6 +9,7 @@ import {
 	Spell,
 	Weapon,
 } from '@site/src/types/Character'
+import { AbilityTag } from '@site/src/types/AbilityTag'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 
@@ -135,7 +136,7 @@ export const {
 				destination,
 			)
 		},
-		addNewAbility: (state, action?: PayloadAction<{ tag?: 'Combat Art' | 'Talent' | 'Folk' | 'Other' }>) => {
+		addNewAbility: (state, action?: PayloadAction<{ tag?: AbilityTag }>) => {
 			state.unsavedChanges = true
 			const tag = action?.payload?.tag || 'Other'
 			state.activeCharacter.skills.abilities.splice(0, 0, {
@@ -484,6 +485,23 @@ export const {
 				source,
 				destination,
 			)
+		},
+		toggleAbilityCategoryVisibility: (
+			state,
+			action: PayloadAction<AbilityTag>,
+		) => {
+			const category = action.payload
+			state.unsavedChanges = true
+			const currentVisibility = state.activeCharacter.skills.abilityCategoryVisibility?.[category] ?? true
+			if (!state.activeCharacter.skills.abilityCategoryVisibility) {
+				state.activeCharacter.skills.abilityCategoryVisibility = {
+					'Combat Art': true,
+					'Talent': true,
+					'Folk': true,
+					'Other': true,
+				}
+			}
+			state.activeCharacter.skills.abilityCategoryVisibility[category] = !currentVisibility
 		},
 	},
 })

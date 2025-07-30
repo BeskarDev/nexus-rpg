@@ -13,14 +13,15 @@ import React, { useState } from 'react'
 
 import { Delete, ExpandMore, DriveFileMove } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
+import { AbilityTag } from '@site/src/types/AbilityTag'
 
 export type AbilityRowProps = {
 	title: string
 	description: string
-	tag?: 'Combat Art' | 'Talent' | 'Folk' | 'Other'
-	availableTags: ('Combat Art' | 'Talent' | 'Folk' | 'Other')[]
+	tag?: AbilityTag
+	availableTags: AbilityTag[]
 	updateAbility: (update: Partial<Ability>) => void
-	moveToCategory: (newTag: 'Combat Art' | 'Talent' | 'Folk' | 'Other') => void
+	moveToCategory: (newTag: AbilityTag) => void
 	deleteAbility: () => void
 }
 
@@ -46,7 +47,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		setMoveMenuAnchor(null)
 	}
 
-	const handleMoveCategory = (newTag: 'Combat Art' | 'Talent' | 'Folk' | 'Other') => {
+	const handleMoveCategory = (newTag: AbilityTag) => {
 		moveToCategory(newTag)
 		handleMoveMenuClose()
 	}

@@ -1,4 +1,5 @@
 import { DocumentData, DocumentReference } from 'firebase/firestore'
+import { AbilityTag } from './AbilityTag'
 
 export type CharacterDocument = {
 	docRef: DocumentReference<DocumentData, DocumentData>
@@ -91,6 +92,7 @@ export type Skills = {
 	}
 	skills: Skill[]
 	abilities: Ability[]
+	abilityCategoryVisibility?: Record<AbilityTag, boolean>
 }
 
 export type Skill = {
@@ -104,7 +106,7 @@ export type Ability = {
 	id: string
 	title: string
 	description: string
-	tag: 'Combat Art' | 'Talent' | 'Folk' | 'Other'
+	tag: AbilityTag
 }
 
 export type Items = {

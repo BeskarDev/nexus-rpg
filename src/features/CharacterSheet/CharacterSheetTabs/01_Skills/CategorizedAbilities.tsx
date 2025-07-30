@@ -1,15 +1,22 @@
-import { AddCircle, ExpandMore } from '@mui/icons-material'
+import { AddCircle, ExpandMore, Build } from '@mui/icons-material'
 import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
 	Box,
 	IconButton,
+	Typography,
+	Tooltip,
+	Menu,
+	MenuItem,
+	FormControlLabel,
+	Checkbox,
 } from '@mui/material'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import { Ability } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
+import { ABILITY_TAGS, AbilityTag } from '../../../../types/AbilityTag'
 
 import { DynamicList } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
@@ -18,17 +25,15 @@ import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { AbilityRow } from './AbilityRow'
 
-export type AbilityTag = 'Combat Art' | 'Talent' | 'Folk' | 'Other'
-
-const ABILITY_TAGS: AbilityTag[] = ['Combat Art', 'Talent', 'Folk', 'Other']
-
 export const CategorizedAbilities: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { abilities } = useMemo(
+	const { abilities, abilityCategoryVisibility } = useMemo(
 		() => activeCharacter.skills,
 		[activeCharacter.skills],
 	)
+	
+	const [settingsMenuAnchor, setSettingsMenuAnchor] = useState<null | HTMLElement>(null)
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
@@ -71,6 +76,18 @@ export const CategorizedAbilities: React.FC = () => {
 		dispatch(characterSheetActions.deleteAbility(ability))
 	}
 
+	const toggleCategoryVisibility = (tag: AbilityTag) => {
+		dispatch(characterSheetActions.toggleAbilityCategoryVisibility(tag))
+	}
+
+	const handleSettingsMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+		setSettingsMenuAnchor(event.currentTarget)
+	}
+
+	const handleSettingsMenuClose = () => {
+		setSettingsMenuAnchor(null)
+	}
+
 	const onAbilityReorder = (tag: AbilityTag) => ({ source, destination }: DropResult) => {
 		// dropped outside the list
 		if (!destination) return
@@ -96,8 +113,61 @@ export const CategorizedAbilities: React.FC = () => {
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'column', width: '25rem' }}>
+			{/* Header with category settings menu */}
+			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
+				<Typography variant="h6">
+					Abilities
+				</Typography>
+				<Tooltip title="Category Settings">
+					<IconButton
+						size="small"
+						onClick={handleSettingsMenuOpen}
+						sx={{ 
+							border: '1px solid',
+							borderColor: 'divider',
+						}}
+					>
+						<Build fontSize="small" />
+					</IconButton>
+				</Tooltip>
+				
+				<Menu
+					anchorEl={settingsMenuAnchor}
+					open={Boolean(settingsMenuAnchor)}
+					onClose={handleSettingsMenuClose}
+					transformOrigin={{ horizontal: 'left', vertical: 'top' }}
+					anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+				>
+					{ABILITY_TAGS.map((tag) => {
+						const isVisible = abilityCategoryVisibility?.[tag] ?? true
+						return (
+							<MenuItem key={tag} dense>
+								<FormControlLabel
+									control={
+										<Checkbox
+											checked={isVisible}
+											onChange={() => {
+												toggleCategoryVisibility(tag)
+											}}
+											size="small"
+										/>
+									}
+									label={tag}
+									sx={{ width: '100%', margin: 0 }}
+								/>
+							</MenuItem>
+						)
+					})}
+				</Menu>
+			</Box>
+			
 			{ABILITY_TAGS.map((tag) => {
 				const tagAbilities = abilitiesByTag[tag]
+				const isVisible = abilityCategoryVisibility?.[tag] ?? true
+				
+				if (!isVisible) {
+					return null
+				}
 				
 				return (
 					<Accordion 
