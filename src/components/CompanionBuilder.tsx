@@ -445,9 +445,9 @@ ${markdownAbilities}`;
         variant="contained" 
         color="primary" 
         onClick={() => setOpen(true)}
-        sx={{ mt: 2, mb: 2 }}
+        sx={{ mb: 2 }}
       >
-        🐾 Open Companion Builder
+        🐾  Open Companion Builder
       </Button>
 
       <Dialog 
