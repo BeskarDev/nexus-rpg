@@ -26,6 +26,7 @@ export type Personal = {
 	age: string
 	description: string
 	motivation: string
+	profilePicture?: string
 	allies: Relation[]
 	contacts: Relation[]
 	rivals: Relation[]

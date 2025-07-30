@@ -21,6 +21,7 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { NpcRow } from './NpcRow'
+import { ProfilePictureUpload } from './ProfilePictureUpload'
 
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -121,141 +122,151 @@ export const PersonalTab: React.FC = () => {
 				maxWidth: { lg: 'unset', xl: '47rem' },
 			}}
 		>
-			<Box>
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-					<Typography fontWeight="bold">Your Character</Typography>
-          <Tooltip title="enable this to add, delete, or reorder lists">
-            <IconButton
-              onClick={toggleReorder}
-              color={showControls ? 'primary' : 'default'}
-            >
-              <BuildCircle />
-            </IconButton>
-          </Tooltip>
-				</Box>
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						flexWrap: 'wrap',
-						gap: 1,
-					}}
-				>
-					<TextField
-						variant="standard"
-						value={personal.name}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, name: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({ personal: { name: personal.name } })
-						}
-						label="Name"
-						sx={{ maxWidth: '15rem' }}
-					/>
-					<TextField
-						variant="standard"
-						value={personal.folk}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, folk: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({ personal: { folk: personal.folk } })
-						}
-						label="Folk"
-						sx={{ maxWidth: '10rem' }}
-					/>
-					<TextField
-						variant="standard"
-						value={personal.upbringing}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, upbringing: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({ personal: { upbringing: personal.upbringing } })
-						}
-						label="Upbringing"
-						sx={{ maxWidth: '10rem' }}
-					/>
-					<TextField
-						variant="standard"
-						value={personal.background}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, background: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({ personal: { background: personal.background } })
-						}
-						label="Background"
-						sx={{ maxWidth: '10rem' }}
-					/>
-					<TextField
-						variant="standard"
-						value={personal.motivation}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, motivation: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({ personal: { motivation: personal.motivation } })
-						}
-						label="Motivation"
-						sx={{ maxWidth: '10rem' }}
-					/>
+			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>
+				
+				<Box sx={{ flexGrow: 1 }}>
+					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
+						<Typography fontWeight="bold">Your Character</Typography>
+						<Tooltip title="enable this to add, delete, or reorder lists">
+							<IconButton
+								onClick={toggleReorder}
+								color={showControls ? 'primary' : 'default'}
+							>
+								<BuildCircle />
+							</IconButton>
+						</Tooltip>
+					</Box>
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							flexWrap: 'wrap',
+							gap: 1,
+						}}
+					>
+						<TextField
+							variant="standard"
+							value={personal.name}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, name: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({ personal: { name: personal.name } })
+							}
+							label="Name"
+							sx={{ maxWidth: '15rem' }}
+						/>
+						<TextField
+							variant="standard"
+							value={personal.folk}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, folk: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({ personal: { folk: personal.folk } })
+							}
+							label="Folk"
+							sx={{ maxWidth: '10rem' }}
+						/>
+						<TextField
+							variant="standard"
+							value={personal.upbringing}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, upbringing: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({ personal: { upbringing: personal.upbringing } })
+							}
+							label="Upbringing"
+							sx={{ maxWidth: '10rem' }}
+						/>
+						<TextField
+							variant="standard"
+							value={personal.background}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, background: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({ personal: { background: personal.background } })
+							}
+							label="Background"
+							sx={{ maxWidth: '10rem' }}
+						/>
+						<TextField
+							variant="standard"
+							value={personal.motivation}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, motivation: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({ personal: { motivation: personal.motivation } })
+							}
+							label="Motivation"
+							sx={{ maxWidth: '10rem' }}
+						/>
 
-					<Box sx={{ width: '100%', flexGrow: 1 }} />
+						<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-					<TextField
-						variant="standard"
-						value={personal.height}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, height: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({ personal: { height: personal.height } })
-						}
-						label="Height"
-						sx={{ maxWidth: '6rem' }}
-					/>
-					<TextField
-						variant="standard"
-						value={personal.weight}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, weight: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({ personal: { weight: personal.weight } })
-						}
-						label="Weight"
-						sx={{ maxWidth: '6rem' }}
-					/>
-					<TextField
-						variant="standard"
-						value={personal.age}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, age: event.target.value }))
-						}
-						onBlur={() => updateCharacter({ personal: { age: personal.age } })}
-						label="Age"
-						sx={{ maxWidth: '6rem' }}
-					/>
-					<TextField
-						variant="standard"
-						multiline
-						minRows={1}
-						maxRows={5}
-						value={personal.description}
-						onChange={(event) =>
-							setPersonal((p) => ({ ...p, description: event.target.value }))
-						}
-						onBlur={() =>
-							updateCharacter({
-								personal: { description: personal.description },
-							})
-						}
-						label="Description"
-						sx={{ maxWidth: '20rem' }}
-					/>
+						<TextField
+							variant="standard"
+							value={personal.height}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, height: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({ personal: { height: personal.height } })
+							}
+							label="Height"
+							sx={{ maxWidth: '6rem' }}
+						/>
+						<TextField
+							variant="standard"
+							value={personal.weight}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, weight: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({ personal: { weight: personal.weight } })
+							}
+							label="Weight"
+							sx={{ maxWidth: '6rem' }}
+						/>
+						<TextField
+							variant="standard"
+							value={personal.age}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, age: event.target.value }))
+							}
+							onBlur={() => updateCharacter({ personal: { age: personal.age } })}
+							label="Age"
+							sx={{ maxWidth: '6rem' }}
+						/>
+						<TextField
+							variant="standard"
+							multiline
+							minRows={1}
+							maxRows={5}
+							value={personal.description}
+							onChange={(event) =>
+								setPersonal((p) => ({ ...p, description: event.target.value }))
+							}
+							onBlur={() =>
+								updateCharacter({
+									personal: { description: personal.description },
+								})
+							}
+							label="Description"
+							sx={{ maxWidth: '20rem' }}
+						/>
+					</Box>
 				</Box>
+
+				<ProfilePictureUpload
+					profilePicture={personal.profilePicture}
+					onProfilePictureUpdate={(base64) =>
+						updateCharacter({ personal: { profilePicture: base64 } })
+					}
+				/>
 			</Box>
 
 			<Box sx={{ width: '100%', flexGrow: 1, mb: 2 }} />

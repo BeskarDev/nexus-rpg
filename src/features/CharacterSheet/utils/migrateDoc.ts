@@ -189,6 +189,7 @@ const migratePersonal = async (data: any): Promise<Personal> => {
 	return {
 		...data,
     playerName: data.playerName !== undefined ? data.playerName : playerName,
+		profilePicture: data.profilePicture || '',
 		allies: data.allies.map((ally) => {
 			return typeof ally === 'string'
 				? {

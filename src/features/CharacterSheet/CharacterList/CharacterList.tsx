@@ -116,7 +116,7 @@ export const CharacterList: React.FC = () => {
 										>
 											<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
 												<ListItemAvatar>
-													<Avatar>
+													<Avatar src={char.personal.profilePicture}>
 														<ListAlt />
 													</Avatar>
 												</ListItemAvatar>
@@ -146,7 +146,7 @@ export const CharacterList: React.FC = () => {
 							>
 								<ListItemButton sx={{ borderRadius: 30, mr: 2 }}>
 									<ListItemAvatar>
-										<Avatar>
+										<Avatar src={char.personal.profilePicture}>
 											<ListAlt />
 										</Avatar>
 									</ListItemAvatar>
