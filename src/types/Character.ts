@@ -1,5 +1,6 @@
 import { DocumentData, DocumentReference } from 'firebase/firestore'
 import { AbilityTag } from './AbilityTag'
+import { ActionType } from './ActionType'
 
 export type CharacterDocument = {
 	docRef: DocumentReference<DocumentData, DocumentData>
@@ -146,6 +147,7 @@ export type Ability = {
 	title: string
 	description: string
 	tag: AbilityTag
+	actionType?: ActionType
 }
 
 export type Items = {

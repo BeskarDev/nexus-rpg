@@ -8,17 +8,29 @@ import {
   MenuItem,
   Menu,
   Tooltip,
+  Select,
+  FormControl,
+  InputLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore, DriveFileMove } from '@mui/icons-material'
+import { 
+  Delete, 
+  ExpandMore, 
+  DriveFileMove, 
+  PlayArrow, 
+  Bolt, 
+  CircleOutlined,
+} from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
+import { ActionType, ACTION_TYPES } from '@site/src/types/ActionType'
 
 export type AbilityRowProps = {
 	title: string
 	description: string
 	tag?: AbilityTag
+	actionType?: ActionType
 	availableTags: AbilityTag[]
 	updateAbility: (update: Partial<Ability>) => void
 	moveToCategory: (newTag: AbilityTag) => void
@@ -29,6 +41,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	title: initialTitle,
 	description: initialDescription,
 	tag,
+	actionType: initialActionType,
 	availableTags,
 	updateAbility,
 	moveToCategory,
@@ -36,6 +49,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 }) => {
 	const [title, setTitle] = useState(initialTitle)
 	const [description, setDescription] = useState(initialDescription)
+	const [actionType, setActionType] = useState<ActionType>(initialActionType || 'Other')
 	const [expanded, setExpanded] = useState(false)
 	const [moveMenuAnchor, setMoveMenuAnchor] = useState<null | HTMLElement>(null)
 
@@ -52,6 +66,19 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		handleMoveMenuClose()
 	}
 
+	const getActionTypeIcon = (type: ActionType) => {
+		switch (type) {
+			case 'Action':
+				return <PlayArrow fontSize="small" />
+			case 'Quick Action':
+				return <Bolt fontSize="small" />
+			case 'Passive Ability':
+				return <CircleOutlined fontSize="small" />
+			default:
+				return null
+		}
+	}
+
 	return (
 		<Accordion
 			expanded={expanded}
@@ -63,7 +90,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
-					flexDirection: 'row-reverse',
+					flexDirection: 'row',
 				}}
 			>
 				<Box
@@ -74,6 +101,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						flexGrow: 1,
 					}}
 				>
+					{getActionTypeIcon(actionType)}
 					<TextField
             fullWidth
 						variant="standard"
@@ -98,28 +126,53 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						sx={{ mt: 0, maxWidth: '25rem' }}
 					/>
 					
-					{/* Action Buttons */}
-					<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
-						<Tooltip title="Move to another category">
-							<IconButton
-								size="small"
-								aria-label="move category"
-								onClick={handleMoveMenuOpen}
-								sx={{ p: 0.5 }}
+					{/* Action Type Dropdown and Action Buttons in same row */}
+					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'space-between' }}>
+						<FormControl size="small" sx={{ minWidth: '120px' }}>
+							<InputLabel id="action-type-label">Action Type</InputLabel>
+							<Select
+								labelId="action-type-label"
+								value={actionType}
+								label="Action Type"
+								onChange={(event) => {
+									const newActionType = event.target.value as ActionType
+									setActionType(newActionType)
+									updateAbility({ actionType: newActionType })
+								}}
 							>
-								<DriveFileMove />
-							</IconButton>
-						</Tooltip>
-						<Tooltip title="Delete this ability">
-							<IconButton
-								size="small"
-								aria-label="delete"
-								onClick={deleteAbility}
-								sx={{ p: 0.5 }}
-							>
-								<Delete />
-							</IconButton>
-						</Tooltip>
+								{ACTION_TYPES.map((type) => (
+									<MenuItem key={type} value={type}>
+										<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+											{getActionTypeIcon(type)}
+											{type}
+										</Box>
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
+						
+						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+							<Tooltip title="Move to another category">
+								<IconButton
+									size="small"
+									aria-label="move category"
+									onClick={handleMoveMenuOpen}
+									sx={{ p: 0.5 }}
+								>
+									<DriveFileMove />
+								</IconButton>
+							</Tooltip>
+							<Tooltip title="Delete this ability">
+								<IconButton
+									size="small"
+									aria-label="delete"
+									onClick={deleteAbility}
+									sx={{ p: 0.5 }}
+								>
+									<Delete />
+								</IconButton>
+							</Tooltip>
+						</Box>
 					</Box>
 				</Box>
 			</AccordionDetails>

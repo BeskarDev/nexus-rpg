@@ -101,6 +101,11 @@ const migrateSkills = (data: any): Skills => {
 				migratedAbility.tag = 'Other';
 			}
 			
+			// Add default actionType if missing
+			if (!migratedAbility.actionType) {
+				migratedAbility.actionType = 'Other';
+			}
+			
 			// Ensure id exists
 			if (!migratedAbility.id) {
 				migratedAbility.id = crypto.randomUUID();

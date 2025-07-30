@@ -154,6 +154,7 @@ export const {
 				title: '',
 				description: '',
 				tag,
+				actionType: 'Other',
 			})
 		},
 		updateAbility: (
