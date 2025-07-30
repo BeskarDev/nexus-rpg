@@ -298,7 +298,7 @@ export const ItemsTab: React.FC = () => {
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-			<Accordion defaultExpanded sx={{ maxWidth: '65rem', flexGrow: 1, mb: 2 }}>
+			<Accordion defaultExpanded sx={{ maxWidth: '65rem', flexGrow: 1, mb: 1 }}>
 				<AccordionSummary expandIcon={<ExpandMore />}>
 					<Box
 						sx={{
@@ -308,18 +308,6 @@ export const ItemsTab: React.FC = () => {
 						}}
 					>
 						<SectionHeader>Equipment & Items</SectionHeader>
-						<Tooltip title="Search Equipment & Items">
-							<IconButton
-								size="small"
-								onClick={(event) => {
-									setEquipmentSearchOpen(true)
-									event.stopPropagation()
-								}}
-								sx={{ mb: 0.75 }}
-							>
-								<Search />
-							</IconButton>
-						</Tooltip>
 						<IconButton
               size="small"
 							onClick={(event) => {
@@ -330,6 +318,18 @@ export const ItemsTab: React.FC = () => {
 						>
 							<AddCircle />
 						</IconButton>
+						<Tooltip title="Search Equipment & Items">
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									setEquipmentSearchOpen(true)
+									event.stopPropagation()
+								}}
+								sx={{ ml: -1, mb: 0.75 }}
+							>
+								<Search />
+							</IconButton>
+						</Tooltip>
 					</Box>
 				</AccordionSummary>
 				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '42.5vh' }}>
