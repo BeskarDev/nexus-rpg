@@ -140,7 +140,7 @@ export const CompanionsTab: React.FC = () => {
 				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
 					<SectionHeader sx={{mb: 0}}>Companions</SectionHeader>
 					<Tooltip 
-						title="You can import companions from the Companion Builder in the Tools section. Simply copy the generated markdown and paste it into a companion's description field."
+						title="You can import companions from the Companion Builder in the Mounts & Companions section. Simply copy the generated markdown and paste it into a companion's description field."
 						arrow
 						placement="right"
 					>
