@@ -108,17 +108,18 @@ As you adventure, you'll earn XP to improve these skills and unlock additional t
 
 Every adventurer begins with the following standard equipment:
 
-- **Starting Items:**
-    - A backpack (0 load for your first one, normally 1 load, worth 10 coins)
-    - Two pouches (can hold up to 1 load each, 0 load, worth 1 coin each)
-    - Traveler's Clothes (0 load when worn, normally 1 load, worth 50 coins)
-    - Hemp Rope (covers a medium distance, 1 load, worth 10 coins)
-    - Camping kit (shelter for up to two people, 1 load, worth 50 coins)
-    - One additional tool of your choice
-    - **Supplies:**
-        - Rations (d6 Resource Die, 1 load, worth 10 coins per unit)
-        - Torches (d6 Resource Die, emit bright light in close range and dim light in short range when lit, 1 load, worth 10 coins per unit)
-    - 10 coins (cannot be spent during character creation)
+**Starting Items:**
+
+- A backpack (0 load for your first one, normally 1 load, worth 15 coins)
+- Two pouches (can hold up to 1 load each, 0 load, worth 5 coins each)
+- Traveler's Clothes (0 load when worn, normally 1 load, worth 25 coins)
+- Hemp Rope (covers a medium distance, 1 load, worth 10 coins)
+- Camping kit (shelter for up to two people, 1 load, worth 50 coins)
+- One additional tool of your choice
+- **Supplies:**
+    - Rations (d4 Supply die, 1 load, worth 15 coins per unit)
+    - Torches (d4 Supply die, emit bright light in close range and dim light in short range when lit, 1 load, worth 15 coins per unit)
+- 10 coins (cannot be spent during character creation)
 
 Additionally, you receive 350 coins to spend on equipment and items of your choice:
 

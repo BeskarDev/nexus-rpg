@@ -2,12 +2,14 @@ import { Download, Reply, Save, Star } from '@mui/icons-material'
 import {
   Box,
   Button,
+  Checkbox,
   CircularProgress,
   Dialog,
   DialogActions,
   DialogContent,
   DialogContentText,
   DialogTitle,
+  FormControlLabel,
   IconButton,
   Link,
   TextField,
@@ -43,6 +45,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 	const [open, setOpen] = React.useState(false)
 	const [name, setName] = React.useState('')
+	const [includeStartingGear, setIncludeStartingGear] = React.useState(false)
 
 	const handleOpen = () => {
 		setOpen(true)
@@ -50,6 +53,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 	const handleAbort = () => {
 		setOpen(false)
+		setName('')
+		setIncludeStartingGear(false)
 	}
 
 	const handleConfirm = async () => {
@@ -64,8 +69,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
       
       const playerName = (await getDoc(doc(db, userUid, 'player-info'))).data()?.name || 'Unknown'
 
-			await addDoc(collectionRef, createInitialCharacter(name, playerName))
+			await addDoc(collectionRef, createInitialCharacter(name, playerName, includeStartingGear))
 			setName('')
+			setIncludeStartingGear(false)
 			setOpen(false)
 			window.location.href = window.location.href.split('?')[0]
 		} catch (error) {
@@ -201,6 +207,16 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							}
 						}}
 						InputLabelProps={{ shrink: true }}
+					/>
+					<FormControlLabel
+						control={
+							<Checkbox
+								checked={includeStartingGear}
+								onChange={(e) => setIncludeStartingGear(e.target.checked)}
+							/>
+						}
+						label="Include starting gear from character creation"
+						sx={{ mt: 1 }}
 					/>
 				</DialogContent>
 				<DialogActions sx={{ p: 2 }}>
