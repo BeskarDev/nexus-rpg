@@ -10,7 +10,6 @@ import {
 import React, { useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import {
-  Ability,
   CharacterDocument,
   Skill
 } from '../../../../types/Character'
@@ -22,13 +21,13 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { AbilityRow } from './AbilityRow'
+import { CategorizedAbilities } from './CategorizedAbilities'
 import { SkillRow } from './SkillRow'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { xp, skills, abilities } = useMemo(
+	const { xp, skills } = useMemo(
 		() => activeCharacter.skills,
 		[activeCharacter.skills],
 	)
@@ -66,30 +65,6 @@ export const SkillsTab: React.FC = () => {
 
 		dispatch(
 			characterSheetActions.reorderSkill({
-				source: source.index,
-				destination: destination.index,
-			}),
-		)
-	}
-
-	const addNewAbility = () => {
-		dispatch(characterSheetActions.addNewAbility())
-	}
-
-	const updateAbility = (update: Partial<Ability>, index: number) => {
-		dispatch(characterSheetActions.updateAbility({ update, index }))
-	}
-
-	const deleteAbility = (ability: Ability) => {
-		dispatch(characterSheetActions.deleteAbility(ability))
-	}
-
-	const onAbilityReorder = ({ source, destination }: DropResult) => {
-		// dropped outside the list
-		if (!destination) return
-
-		dispatch(
-			characterSheetActions.reorderAbility({
 				source: source.index,
 				destination: destination.index,
 			}),
@@ -155,42 +130,7 @@ export const SkillsTab: React.FC = () => {
 				</DynamicList>
 			</Box>
 
-			<Accordion defaultExpanded sx={{ flexGrow: 1, width: '25rem' }}>
-				<AccordionSummary expandIcon={<ExpandMore />}>
-					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-						<SectionHeader>Abilities</SectionHeader>
-						<IconButton
-							onClick={(event) => {
-								addNewAbility()
-								event.stopPropagation()
-							}}
-							sx={{ mb: 0.75 }}
-						>
-							<AddCircle />
-						</IconButton>
-					</Box>
-				</AccordionSummary>
-				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '50vh' }}>
-					<DynamicList droppableId="abilities" onDragEnd={onAbilityReorder}>
-						{abilities.map((a, index) => (
-							<DynamicListItem
-								key={a.id}
-								id={a.id}
-								index={index}
-								sx={{ alignItems: 'baseline' }}
-							>
-								<AbilityRow
-									key={a.id}
-									title={a.title}
-									description={a.description}
-									updateAbility={(update) => updateAbility(update, index)}
-									deleteAbility={() => deleteAbility(a)}
-								/>
-							</DynamicListItem>
-						))}
-					</DynamicList>
-				</AccordionDetails>
-			</Accordion>
+			<CategorizedAbilities />
 		</Box>
 	)
 }

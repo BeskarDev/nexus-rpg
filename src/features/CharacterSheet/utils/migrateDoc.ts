@@ -85,12 +85,30 @@ const migrateSkills = (data: any): Skills => {
 			id: skill.id || crypto.randomUUID(),
 		})),
 		abilities: data.abilities.map((ability) => {
-			return typeof ability === 'string'
+			const migratedAbility = typeof ability === 'string'
 				? {
 						id: crypto.randomUUID(),
+						title: '',
 						description: ability,
 					}
-				: ability
+				: ability;
+			
+			// Add default tag if missing
+			if (!migratedAbility.tag) {
+				migratedAbility.tag = 'Other';
+			}
+			
+			// Ensure id exists
+			if (!migratedAbility.id) {
+				migratedAbility.id = crypto.randomUUID();
+			}
+			
+			// Ensure title exists
+			if (!migratedAbility.title) {
+				migratedAbility.title = '';
+			}
+			
+			return migratedAbility;
 		}),
 	} as Skills
 }

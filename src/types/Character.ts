@@ -104,6 +104,7 @@ export type Ability = {
 	id: string
 	title: string
 	description: string
+	tag: 'Combat Art' | 'Talent' | 'Folk' | 'Other'
 }
 
 export type Items = {

@@ -135,12 +135,14 @@ export const {
 				destination,
 			)
 		},
-		addNewAbility: (state) => {
+		addNewAbility: (state, action?: PayloadAction<{ tag?: 'Combat Art' | 'Talent' | 'Folk' | 'Other' }>) => {
 			state.unsavedChanges = true
+			const tag = action?.payload?.tag || 'Other'
 			state.activeCharacter.skills.abilities.splice(0, 0, {
 				id: crypto.randomUUID(),
 				title: '',
 				description: '',
+				tag,
 			})
 		},
 		updateAbility: (

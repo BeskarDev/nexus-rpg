@@ -4,29 +4,52 @@ import {
   AccordionSummary,
   Box,
   IconButton,
-  TextField
+  TextField,
+  MenuItem,
+  Menu,
+  Tooltip,
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore } from '@mui/icons-material'
+import { Delete, ExpandMore, DriveFileMove } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 
 export type AbilityRowProps = {
 	title: string
 	description: string
+	tag?: 'Combat Art' | 'Talent' | 'Folk' | 'Other'
+	availableTags: ('Combat Art' | 'Talent' | 'Folk' | 'Other')[]
 	updateAbility: (update: Partial<Ability>) => void
+	moveToCategory: (newTag: 'Combat Art' | 'Talent' | 'Folk' | 'Other') => void
 	deleteAbility: () => void
 }
 
 export const AbilityRow: React.FC<AbilityRowProps> = ({
 	title: initialTitle,
 	description: initialDescription,
+	tag,
+	availableTags,
 	updateAbility,
+	moveToCategory,
 	deleteAbility,
 }) => {
 	const [title, setTitle] = useState(initialTitle)
 	const [description, setDescription] = useState(initialDescription)
 	const [expanded, setExpanded] = useState(false)
+	const [moveMenuAnchor, setMoveMenuAnchor] = useState<null | HTMLElement>(null)
+
+	const handleMoveMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+		setMoveMenuAnchor(event.currentTarget)
+	}
+
+	const handleMoveMenuClose = () => {
+		setMoveMenuAnchor(null)
+	}
+
+	const handleMoveCategory = (newTag: 'Combat Art' | 'Talent' | 'Folk' | 'Other') => {
+		moveToCategory(newTag)
+		handleMoveMenuClose()
+	}
 
 	return (
 		<Accordion
@@ -58,29 +81,69 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						onBlur={() => updateAbility({ title })}
 						sx={{ maxWidth: '25rem' }}
 					/>
-					<IconButton
-						size="small"
-						edge="end"
-						aria-label="delete"
-						onClick={deleteAbility}
-					>
-						<Delete />
-					</IconButton>
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
-				<TextField
-					label="Description"
-					size="small"
-					multiline
-					minRows={1}
-					maxRows={30}
-					value={description}
-					onChange={(event) => setDescription(event.target.value)}
-					onBlur={() => updateAbility({ description })}
-					sx={{ mt: 0, maxWidth: '25rem' }}
-				/>
+				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+					<TextField
+						label="Description"
+						size="small"
+						multiline
+						minRows={1}
+						maxRows={10}
+						value={description}
+						onChange={(event) => setDescription(event.target.value)}
+						onBlur={() => updateAbility({ description })}
+						sx={{ mt: 0, maxWidth: '25rem' }}
+					/>
+					
+					{/* Action Buttons */}
+					<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+						<Tooltip title="Move to another category">
+							<IconButton
+								size="small"
+								aria-label="move category"
+								onClick={handleMoveMenuOpen}
+								sx={{ p: 0.5 }}
+							>
+								<DriveFileMove />
+							</IconButton>
+						</Tooltip>
+						<Tooltip title="Delete this ability">
+							<IconButton
+								size="small"
+								aria-label="delete"
+								onClick={deleteAbility}
+								sx={{ p: 0.5 }}
+							>
+								<Delete />
+							</IconButton>
+						</Tooltip>
+					</Box>
+				</Box>
 			</AccordionDetails>
+
+			{/* Move Category Menu */}
+			<Menu
+				anchorEl={moveMenuAnchor}
+				open={Boolean(moveMenuAnchor)}
+				onClose={handleMoveMenuClose}
+				MenuListProps={{
+					'aria-labelledby': 'move-category-button',
+				}}
+			>
+				{availableTags
+					.filter(t => t !== tag)
+					.map(tagOption => (
+						<MenuItem
+							key={tagOption}
+							onClick={() => handleMoveCategory(tagOption)}
+						>
+							Move to {tagOption}
+						</MenuItem>
+					))
+				}
+			</Menu>
 		</Accordion>
 	)
 }
