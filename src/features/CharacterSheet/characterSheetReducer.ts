@@ -208,6 +208,44 @@ export const {
 				load: 0,
 			})
 		},
+		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
+			state.unsavedChanges = true
+			const newWeapons = action.payload.map(weapon => ({
+				id: crypto.randomUUID(),
+				name: '',
+				damage: {
+					base: 'STR' as const,
+					weapon: 0,
+					other: 0,
+					otherWeak: 0,
+					otherStrong: 0,
+					otherCritical: 0,
+					type: 'physical' as const,
+				},
+				properties: '',
+				description: '',
+				cost: 0,
+				load: 0,
+				...weapon,
+			}))
+			state.activeCharacter.items.weapons.unshift(...newWeapons)
+		},
+		importItems: (state, action: PayloadAction<Partial<Item>[]>) => {
+			state.unsavedChanges = true
+			const newItems = action.payload.map(item => ({
+				id: crypto.randomUUID(),
+				name: '',
+				properties: '',
+				description: '',
+				slot: '' as const,
+				cost: 0,
+				load: 0,
+				container: '' as const,
+				amount: 1,
+				...item,
+			}))
+			state.activeCharacter.items.items.unshift(...newItems)
+		},
 		updateWeapon: (
 			state,
 			action: PayloadAction<{ update: Partial<Weapon>; index: number }>,
