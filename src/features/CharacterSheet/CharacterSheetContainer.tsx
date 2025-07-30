@@ -13,7 +13,7 @@ import { useAppSelector } from './hooks/useAppSelector'
 import { mapDocToCharacter } from './utils/mapDocToCharacter'
 import { migrateDoc } from './utils/migrateDoc'
 
-const SAVE_CHARACTER_TIMEOUT = 30_000
+const SAVE_CHARACTER_TIMEOUT = 1_000
 
 export type DeepPartial<T> = {
 	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]

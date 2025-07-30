@@ -18,6 +18,7 @@ import { AttributeColumn } from './AttributeColumn'
 import { AvField } from './AvField'
 import { RestingButtonGroup } from './RestingButtonGroup'
 import { RoundTextField } from './RoundTextField'
+import { StatusEffects } from './StatusEffects'
 import { WoundCheckbox } from './WoundCheckbox'
 
 export const StatisticsTab: React.FC = () => {
@@ -34,6 +35,7 @@ export const StatisticsTab: React.FC = () => {
 		dodge,
 		resist,
 		resolve,
+		statusEffects,
 	} = activeCharacter.statistics
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
@@ -55,7 +57,6 @@ export const StatisticsTab: React.FC = () => {
 					flexWrap: 'wrap-reverse',
 					width: '100%',
 					flexGrow: 1,
-					mb: 2,
 					gap: 2,
 				}}
 			>
@@ -87,6 +88,9 @@ export const StatisticsTab: React.FC = () => {
 					gap: 1,
 				}}
 			>
+				<Box sx={{ width: '100%' }}>
+					<StatusEffects statusEffects={statusEffects || []} />
+				</Box>
 				<Box sx={{ display: 'flex', width: '100%', overflowX: 'auto', gap: 1 }}>
 					<AttributeColumn
 						attribute={strength}

@@ -75,6 +75,8 @@ const migrateStatistics = (data: any): Statistics => {
 					? Number(data.mind.value.split('d')[1])
 					: data.mind.value,
 		},
+		// Ensure statusEffects array exists for new status effects feature
+		statusEffects: Array.isArray(data.statusEffects) ? data.statusEffects : [],
 	} as Statistics
 }
 

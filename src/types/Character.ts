@@ -69,6 +69,7 @@ export type Statistics = {
 	dodge: number
 	resist: number
 	resolve: number
+	statusEffects: StatusEffect[]
 }
 
 export type Wound = {
@@ -84,6 +85,43 @@ export type Attribute = {
 
 export const attributeTypeArray = [4, 6, 8, 10, 12] as const
 export type AttributeType = (typeof attributeTypeArray)[number]
+
+export type StatusEffect = {
+	id: string
+	name: StatusEffectType
+	active: boolean
+	duration?: number
+	narrativeDuration?: 'short' | 'medium' | 'long'
+	intensity?: number
+}
+
+export const statusEffectTypeArray = [
+	'bleeding',
+	'blinded',
+	'burning',
+	'charmed',
+	'confused',
+	'dazed',
+	'deafened',
+	'deprived',
+	'distracted',
+	'frightened',
+	'grappled',
+	'hidden',
+	'marked',
+	'paralyzed',
+	'poisoned',
+	'prone',
+	'pushed',
+	'restrained',
+	'silenced',
+	'slowed',
+	'staggered',
+	'stunned',
+	'suffocating',
+	'unconscious',
+] as const
+export type StatusEffectType = (typeof statusEffectTypeArray)[number]
 
 export type Skills = {
 	xp: {

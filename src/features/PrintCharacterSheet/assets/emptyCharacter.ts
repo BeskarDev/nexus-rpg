@@ -828,7 +828,8 @@ export const emptyCharacter = `
     "resist": " ",
     "resolve": " ",
     "parry": " ",
-    "strength": { "value": "", "wounded": false }
+    "strength": { "value": "", "wounded": false },
+    "statusEffects": []
   },
   "skills": {
     "abilities": [],
