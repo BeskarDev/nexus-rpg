@@ -12,6 +12,7 @@ export type Character = {
 	skills: Skills
 	items: Items
 	spells: Spells
+	companions: Companion[]
 }
 export type Personal = {
 	name: string
@@ -33,6 +34,15 @@ export type Personal = {
 export type Relation = {
 	id: string
 	description: string
+}
+
+export type Companion = {
+	id: string
+	name: string
+	markdown: string
+	currentHP: number
+	maxHP: number
+	wounded: boolean
 }
 
 export type Statistics = {

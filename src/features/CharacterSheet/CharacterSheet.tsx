@@ -5,7 +5,8 @@ import { SkillsTab } from './CharacterSheetTabs/01_Skills/SkillsTab'
 import { ItemsTab } from './CharacterSheetTabs/02_Items/ItemsTab'
 import { SpellsTab } from './CharacterSheetTabs/03_Spells/SpellsTab'
 import { PersonalTab } from './CharacterSheetTabs/04_Personal/PersonalTab'
-import { SharedNotes } from './CharacterSheetTabs/05_SharedNotes/SharedNotes'
+import { CompanionsTab } from './CharacterSheetTabs/05_Companions/CompanionsTab'
+import { SharedNotes } from './CharacterSheetTabs/06_SharedNotes/SharedNotes'
 import { useDeviceSize } from './utils/useDeviceSize'
 
 export const AttributeField = styled(TextField)({
@@ -86,7 +87,8 @@ export const CharacterSheet: React.FC = () => {
 							<Tab id="2" label="Items" />
 							<Tab id="3" label="Spells" />
 							<Tab id="4" label="Personal" />
-							<Tab id="5" label="Shared Notes" />
+							<Tab id="5" label="Companions" />
+							<Tab id="6" label="Shared Notes" />
 						</Tabs>
 					</Box>
 					{activeTab === 0 && <StatisticsTab />}
@@ -94,7 +96,8 @@ export const CharacterSheet: React.FC = () => {
 					{activeTab === 2 && <ItemsTab />}
 					{activeTab === 3 && <SpellsTab />}
 					{activeTab === 4 && <PersonalTab />}
-					{activeTab === 5 && <SharedNotes />}
+					{activeTab === 5 && <CompanionsTab />}
+					{activeTab === 6 && <SharedNotes />}
 				</>
 			)}
 			{!isMobile && (
@@ -129,13 +132,15 @@ export const CharacterSheet: React.FC = () => {
 								<Tab id="1" label="Items" />
 								<Tab id="2" label="Spells" />
 								<Tab id="3" label="Personal" />
-								<Tab id="4" label="Shared Notes" />
+								<Tab id="4" label="Companions" />
+								<Tab id="5" label="Shared Notes" />
 							</Tabs>
 							{activeTab === 0 && <SkillsTab />}
 							{activeTab === 1 && <ItemsTab />}
 							{activeTab === 2 && <SpellsTab />}
 							{activeTab === 3 && <PersonalTab />}
-							{activeTab === 4 && <SharedNotes />}
+							{activeTab === 4 && <CompanionsTab />}
+							{activeTab === 5 && <SharedNotes />}
 						</Box>
 					</Box>
 				</>

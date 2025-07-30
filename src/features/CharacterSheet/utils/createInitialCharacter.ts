@@ -93,4 +93,5 @@ export const createInitialCharacter = (name: string, playerName: string): Charac
     spellCatalystDamage: 0,
 		spells: [],
 	},
+	companions: [],
 })

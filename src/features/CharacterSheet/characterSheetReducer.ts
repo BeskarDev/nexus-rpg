@@ -3,6 +3,7 @@ import { deepCopy, reorder } from '@site/src/components/DynamicList/utils'
 import {
 	Ability,
 	CharacterDocument,
+	Companion,
 	Item,
 	Skill,
 	Spell,
@@ -69,7 +70,19 @@ export const {
 			state.loadingSave = action.payload
 		},
 		setCharacter: (state, action: PayloadAction<CharacterDocument>) => {
-			state.activeCharacter = action.payload
+			const character = action.payload
+			// Migrate older characters that don't have companions array
+			if (!character.companions) {
+				character.companions = []
+			}
+			// Migrate companions that don't have HP/wounded fields
+			character.companions = character.companions.map(companion => ({
+				currentHP: 0,
+				maxHP: 0,
+				wounded: false,
+				...companion,
+			}))
+			state.activeCharacter = character
 		},
 		updateCharacter: (state, action: PayloadAction<DeepPartial<Character>>) => {
 			const copiedUpdate = deepCopy(action.payload)
@@ -421,6 +434,51 @@ export const {
 			state.unsavedChanges = true
 			state.activeCharacter.personal.rivals = reorder(
 				state.activeCharacter.personal.rivals,
+				source,
+				destination,
+			)
+		},
+		// Companions actions
+		addNewCompanion: (state) => {
+			state.unsavedChanges = true
+			state.activeCharacter.companions.unshift({
+				id: Date.now().toString(),
+				name: 'New Companion',
+				markdown: '',
+				currentHP: 0,
+				maxHP: 0,
+				wounded: false,
+			})
+		},
+		updateCompanion: (
+			state,
+			action: PayloadAction<{ id: string; updates: Partial<Companion> }>,
+		) => {
+			const { id, updates } = action.payload
+			const index = state.activeCharacter.companions.findIndex(c => c.id === id)
+			if (index !== -1) {
+				state.unsavedChanges = true
+				state.activeCharacter.companions[index] = {
+					...state.activeCharacter.companions[index],
+					...updates,
+				}
+			}
+		},
+		deleteCompanion: (state, action: PayloadAction<Companion>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.companions =
+				state.activeCharacter.companions.filter(
+					(companion) => companion.id != action.payload.id,
+				)
+		},
+		reorderCompanion: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.companions = reorder(
+				state.activeCharacter.companions,
 				source,
 				destination,
 			)
