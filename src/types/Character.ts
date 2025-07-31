@@ -148,6 +148,7 @@ export type Ability = {
 	description: string
 	tag: AbilityTag
 	actionType?: ActionType
+	rank?: number // For talents: 1, 2, or 3
 }
 
 export type Items = {

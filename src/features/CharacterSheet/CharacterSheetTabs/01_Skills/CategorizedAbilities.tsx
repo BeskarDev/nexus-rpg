@@ -24,6 +24,7 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { CombatArtsSearchDialog } from './CombatArtsSearchDialog'
+import { TalentsSearchDialog } from '../02_Items/SearchDialog/TalentsSearchDialog'
 import { AbilityRow } from './AbilityRow'
 
 export const CategorizedAbilities: React.FC = () => {
@@ -36,6 +37,7 @@ export const CategorizedAbilities: React.FC = () => {
 	
 	const [settingsMenuAnchor, setSettingsMenuAnchor] = useState<null | HTMLElement>(null)
 	const [isCombatArtsDialogOpen, setIsCombatArtsDialogOpen] = useState(false)
+	const [isTalentsDialogOpen, setIsTalentsDialogOpen] = useState(false)
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
@@ -202,6 +204,20 @@ export const CategorizedAbilities: React.FC = () => {
 										</IconButton>
 									</Tooltip>
 								)}
+								{tag === 'Talent' && (
+									<Tooltip title="Search Talents from database">
+										<IconButton
+											size="small"
+											onClick={(event) => {
+												setIsTalentsDialogOpen(true)
+												event.stopPropagation()
+											}}
+											sx={{ ml: -1 }}
+										>
+											<Search />
+										</IconButton>
+									</Tooltip>
+								)}
 							</Box>
 						</AccordionSummary>
 						<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
@@ -214,7 +230,7 @@ export const CategorizedAbilities: React.FC = () => {
 										key={ability.id}
 										id={ability.id}
 										index={index}
-										sx={{ alignItems: 'baseline' }}
+										sx={{ alignItems: 'center' }}
 									>
 										<AbilityRow
 											key={ability.id}
@@ -222,6 +238,7 @@ export const CategorizedAbilities: React.FC = () => {
 											description={ability.description}
 											tag={ability.tag}
 											actionType={ability.actionType}
+											rank={ability.rank}
 											availableTags={ABILITY_TAGS}
 											updateAbility={(update) => updateAbility(update, ability.id)}
 											moveToCategory={(newTag) => moveAbilityToCategory(ability.id, newTag)}
@@ -244,6 +261,18 @@ export const CategorizedAbilities: React.FC = () => {
 						dispatch(characterSheetActions.importAbilities([combatArt]))
 					})
 					setIsCombatArtsDialogOpen(false)
+				}}
+			/>
+			
+			<TalentsSearchDialog
+				open={isTalentsDialogOpen}
+				onClose={() => setIsTalentsDialogOpen(false)}
+				character={activeCharacter}
+				onImportTalents={(talents) => {
+					talents.forEach(talent => {
+						dispatch(characterSheetActions.importAbilities([talent]))
+					})
+					setIsTalentsDialogOpen(false)
 				}}
 			/>
 		</Box>

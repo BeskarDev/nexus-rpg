@@ -4,6 +4,22 @@ import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import weaponsData from '../../../../../utils/json/weapons.json'
 import { Weapon, CharacterDocument, BaseDamageType, DamageType } from '../../../../../types/Character'
 
+// Function to get color for weapon types
+const getWeaponTypeColor = (type: string): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+	switch (type) {
+		case 'Axe': return 'error'
+		case 'Blade': return 'primary'
+		case 'Bow': return 'success'
+		case 'Brawling': return 'warning'
+		case 'Crossbow': return 'info'
+		case 'Mace': return 'secondary'
+		case 'Polearm': return 'error'
+		case 'Shield': return 'info'
+		case 'Thrown': return 'warning'
+		default: return 'secondary'
+	}
+}
+
 export type WeaponSearchDialogProps = {
 	open: boolean
 	onClose: () => void
@@ -89,6 +105,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 					label={value} 
 					size="small" 
 					variant="outlined"
+					color={getWeaponTypeColor(value)}
 					sx={{ fontSize: '0.75rem' }}
 				/>
 			)

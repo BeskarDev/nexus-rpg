@@ -5,6 +5,23 @@ import equipmentData from '../../../../../utils/json/equipment.json'
 import armorData from '../../../../../utils/json/armor.json'
 import { Item, CharacterDocument } from '../../../../../types/Character'
 
+// Function to get color for equipment categories
+const getCategoryColor = (category: string): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+	switch (category) {
+		case 'Alchemy': return 'primary'
+		case 'Animals': return 'success'
+		case 'Clothes': return 'secondary'
+		case 'Container': return 'info'
+		case 'Gear': return 'warning'
+		case 'Supply': return 'secondary'
+		case 'Toolkit': return 'info'
+		case 'Trade Good': return 'warning'
+		case 'Transportation': return 'success'
+		case 'Armor': return 'error' // For armor items
+		default: return 'secondary'
+	}
+}
+
 export type EquipmentSearchDialogProps = {
 	open: boolean
 	onClose: () => void
@@ -104,7 +121,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 					label={value} 
 					size="small" 
 					variant="outlined"
-					color={item.type === 'armor' ? 'primary' : 'default'}
+					color={getCategoryColor(value)}
 					sx={{ fontSize: '0.75rem' }}
 				/>
 			)

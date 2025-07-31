@@ -3,6 +3,32 @@ import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import talentsData from '../../../../../utils/json/talents.json'
 import { CharacterDocument } from '../../../../../types/Character'
+import { sanitizeHtml } from '../../../../../utils/htmlSanitizer'
+
+// 16 Skills, 6 MUI colors: primary, secondary, error, warning, info, success
+// Ziel: Keine Farbe direkt nacheinander im Alphabet wiederholen
+const skillColorMap: Record<string, 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'> = {
+  'Athletics':   'primary',
+  'Fortitude':   'secondary',
+  'Influence':   'error',
+  'Insight':     'warning',
+  'Perception':  'info',
+  'Stealth':     'success',
+  'Arcana':      'secondary',
+  'Archery':     'error',
+  'Crafting':    'warning',
+  'Education':   'info',
+  'Fighting':    'success',
+  'Lore':        'primary',
+  'Mysticism':   'error',
+  'Nature':      'warning',
+  'Streetwise':  'info',
+  'Survival':    'success',
+}
+
+const getSkillColor = (skill: string): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+  return skillColorMap[skill] || 'secondary';
+}
 
 export type TalentsSearchDialogProps = {
 	open: boolean
@@ -30,14 +56,9 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 			key: 'name',
 			label: 'Talent',
 			render: (value, talent) => (
-				<>
-					<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-						{talent.name}
-					</Typography>
-					<Typography variant="caption" color="text.secondary">
-						Requires: {talent['skill requirement']}
-					</Typography>
-				</>
+				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+					{talent.name}
+				</Typography>
 			)
 		},
 		{
@@ -48,7 +69,7 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 					label={value} 
 					size="small" 
 					variant="outlined"
-					color="secondary"
+					color={getSkillColor(value)}
 					sx={{ fontSize: '0.75rem' }}
 				/>
 			)
@@ -65,12 +86,12 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 						WebkitLineClamp: 3,
 						WebkitBoxOrient: 'vertical',
 						overflow: 'hidden',
-						lineHeight: 1.2
+						lineHeight: 1.2,
+						whiteSpace: 'pre-line' // Preserve newlines from sanitized HTML
 					}}
-					dangerouslySetInnerHTML={{
-						__html: value.replace(/<br\/>/g, ' ').replace(/<[^>]*>/g, '')
-					}}
-				/>
+				>
+					{sanitizeHtml(value)}
+				</Typography>
 			)
 		}
 	]
@@ -80,10 +101,10 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 			.filter((talent) => selectedTalents.has(talent.name))
 			.map((talent) => ({
 				id: crypto.randomUUID(),
-				name: talent.name,
-				description: talent.description,
-				skillRequirement: talent['skill requirement'],
-				rank: 1,
+				title: talent.name,
+				description: sanitizeHtml(talent.description),
+				tag: 'Talent' as const,
+				rank: 1, // Default to rank 1
 			}))
 
 		onImportTalents(talentsToImport)

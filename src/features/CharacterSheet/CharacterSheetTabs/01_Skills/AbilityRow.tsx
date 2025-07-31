@@ -31,6 +31,7 @@ export type AbilityRowProps = {
 	description: string
 	tag?: AbilityTag
 	actionType?: ActionType
+	rank?: number
 	availableTags: AbilityTag[]
 	updateAbility: (update: Partial<Ability>) => void
 	moveToCategory: (newTag: AbilityTag) => void
@@ -42,6 +43,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	description: initialDescription,
 	tag,
 	actionType: initialActionType,
+	rank: initialRank,
 	availableTags,
 	updateAbility,
 	moveToCategory,
@@ -50,6 +52,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	const [title, setTitle] = useState(initialTitle)
 	const [description, setDescription] = useState(initialDescription)
 	const [actionType, setActionType] = useState<ActionType>(initialActionType || 'Other')
+	const [rank, setRank] = useState<number>(initialRank || 1)
 	const [expanded, setExpanded] = useState(false)
 	const [moveMenuAnchor, setMoveMenuAnchor] = useState<null | HTMLElement>(null)
 
@@ -90,8 +93,9 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
-          pl: 0,
+		      pl: 0,
 					flexDirection: 'row',
+          alignItems: 'center',
 				}}
 			>
 				<Box
@@ -102,14 +106,25 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						flexGrow: 1,
 					}}
 				>
-					{getActionTypeIcon(actionType)}
 					<TextField
-            fullWidth
+						fullWidth
 						variant="standard"
 						value={title}
 						onChange={(event) => setTitle(event.target.value)}
 						onBlur={() => updateAbility({ title })}
 						sx={{ maxWidth: '25rem' }}
+						InputProps={{
+						  startAdornment: (
+							<Box component="span" sx={{ display: 'flex', alignItems: 'center', mr: 1 }}>
+							  {getActionTypeIcon(actionType)}
+							</Box>
+						  ),
+						  endAdornment: tag === 'Talent' && rank >= 1 && rank <= 5 ? (
+							<Box component="span" sx={{ color: 'text.secondary', mx: 1, fontSize: '1.15em' }}>
+							  {['①','②','③','④','⑤'][rank-1]}
+							</Box>
+						  ) : undefined,
+						}}
 					/>
 				</Box>
 			</AccordionSummary>
@@ -129,28 +144,53 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 					
 					{/* Action Type Dropdown and Action Buttons in same row */}
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'space-between' }}>
-						<FormControl size="small" sx={{ minWidth: '120px' }}>
-							<InputLabel id="action-type-label">Action Type</InputLabel>
-							<Select
-								labelId="action-type-label"
-								value={actionType}
-								label="Action Type"
-								onChange={(event) => {
-									const newActionType = event.target.value as ActionType
-									setActionType(newActionType)
-									updateAbility({ actionType: newActionType })
-								}}
-							>
-								{ACTION_TYPES.map((type) => (
-									<MenuItem key={type} value={type}>
-										<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-											{getActionTypeIcon(type)}
-											{type}
-										</Box>
-									</MenuItem>
-								))}
-							</Select>
-						</FormControl>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<FormControl size="small" sx={{ width: '9.5rem' }}>
+								<InputLabel id="action-type-label">Action Type</InputLabel>
+								<Select
+									labelId="action-type-label"
+									value={actionType}
+									label="Action Type"
+									onChange={(event) => {
+										const newActionType = event.target.value as ActionType
+										setActionType(newActionType)
+										updateAbility({ actionType: newActionType })
+									}}
+								>
+									{ACTION_TYPES.map((type) => (
+										<MenuItem key={type} value={type}>
+											<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+												{getActionTypeIcon(type)}
+												{type}
+											</Box>
+										</MenuItem>
+									))}
+								</Select>
+							</FormControl>
+							
+							{/* Rank Selection for Talents */}
+							{tag === 'Talent' && (
+								<FormControl size="small" sx={{ width: '4rem' }}>
+									<InputLabel id="rank-label">Rank</InputLabel>
+									<Select
+										labelId="rank-label"
+										value={rank}
+										label="Rank"
+										onChange={(event) => {
+											const newRank = Number(event.target.value)
+											setRank(newRank)
+											updateAbility({ rank: newRank })
+										}}
+									>
+										<MenuItem value={1}>1</MenuItem>
+										<MenuItem value={2}>2</MenuItem>
+										<MenuItem value={3}>3</MenuItem>
+										<MenuItem value={4}>4</MenuItem>
+										<MenuItem value={5}>5</MenuItem>
+									</Select>
+								</FormControl>
+							)}
+						</Box>
 						
 						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 							<Tooltip title="Move to another category">

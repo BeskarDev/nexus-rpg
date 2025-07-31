@@ -3,18 +3,15 @@ import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from '../02_Items/SearchDialog/GenericSearchDialog'
 import combatArtsData from '../../../../utils/json/combat-arts.json'
 import { CharacterDocument, Ability } from '../../../../types/Character'
+import { sanitizeHtml } from '../../../../utils/htmlSanitizer'
 
-// Helper function to sanitize HTML tags from text
-const sanitizeHtml = (html: string): string => {
-	return html
-		.replace(/<br\s*\/?>/gi, '\n') // Replace <br> and <br/> with newlines
-		.replace(/<\/?strong>/gi, '') // Remove <strong> tags
-		.replace(/<\/?em>/gi, '') // Remove <em> tags
-		.replace(/<\/?b>/gi, '') // Remove <b> tags
-		.replace(/<\/?i>/gi, '') // Remove <i> tags
-		.replace(/<\/?u>/gi, '') // Remove <u> tags
-		.replace(/<[^>]*>/g, '') // Remove any remaining HTML tags
-		.trim()
+// Function to get color for combat art categories
+const getCategoryColor = (category: string): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+	switch (category) {
+		case 'Basic': return 'info'
+		case 'Supreme': return 'error'
+		default: return 'secondary'
+	}
 }
 
 export type CombatArtsSearchDialogProps = {
@@ -44,14 +41,9 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 			key: 'name',
 			label: 'Combat Art',
 			render: (value, combatArt) => (
-				<>
-					<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-						{combatArt.name}
-					</Typography>
-					<Typography variant="caption" color="text.secondary">
-						{combatArt.category}
-					</Typography>
-				</>
+				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+					{combatArt.name}
+				</Typography>
 			)
 		},
 		{
@@ -80,7 +72,7 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 					label={value} 
 					size="small" 
 					variant="outlined"
-					color={value === 'Supreme' ? 'primary' : 'default'}
+					color={getCategoryColor(value)}
 					sx={{ fontSize: '0.75rem' }}
 				/>
 			)
