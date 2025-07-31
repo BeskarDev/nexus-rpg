@@ -183,10 +183,10 @@
         "name": "Heavy Crossbow",
         "quality": "3",
         "type": "Crossbow",
-        "damage": "5",
+        "damage": "6",
         "properties": "ammo, heavy (d8), range (long/extreme), reload, two-handed",
         "load": "3",
-        "cost": "500"
+        "cost": "750"
     },
     {
         "name": "Throwing Club",

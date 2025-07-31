@@ -20,7 +20,7 @@ Name | Quality | Type | Damage | Properties | Load | Cost
 **Cestus** | 2 | Brawling | 2 | agile, crush, light | 1 | 50
 **Spiked Chain** | 2 | Brawling | 2 | double-sided, reach, switch (crush / slash), two-handed | 2 | 150
 **Light Crossbow** | 3 | Crossbow | 4 | ammo, range (medium/very long), reload, two-handed | 2 | 250
-**Heavy Crossbow** | 3 | Crossbow | 5 | ammo, heavy (d8), range (long/extreme), reload, two-handed | 3 | 500
+**Heavy Crossbow** | 3 | Crossbow | 6 | ammo, heavy (d8), range (long/extreme), reload, two-handed | 3 | 750
 **Throwing Club** | 2 | Mace | 2 | bundle (d4), crush, light, thrown (short/medium) | 1 | 25
 **Club** | 2 | Mace | 2 | agile, crush, light | 1 | 50
 **Mace** | 2 | Mace | 3 | crush, versatile (+1) | 1 | 100

@@ -42,7 +42,7 @@ Name | Quality | Damage | Properties | Load | Cost
 Name | Quality | Damage | Properties | Load | Cost
 --- | --- | --- | --- | --- | ---
 **Light Crossbow**  | 3  | 4  | ammo, range (medium/very long), reload, two-handed  | 2  | 250
-**Heavy Crossbow**  | 3  | 5  | ammo, heavy (d8), range (long/extreme), reload, two-handed  | 3  | 500
+**Heavy Crossbow**  | 3  | 6  | ammo, heavy (d8), range (long/extreme), reload, two-handed  | 3  | 750
 
 
 ## Mace 
