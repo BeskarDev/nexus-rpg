@@ -17,6 +17,16 @@ Creating your adventurer is the first step in your journey through the sun-scorc
 
 When creating a new adventurer, follow these nine steps:
 
+> 1. Attributes
+> 2. Folk
+> 3. Upbringing
+> 4. Background
+> 5. NPC Relationships
+> 6. Motivation
+> 7. Skills
+> 8. Equipment
+> 9. Final Details
+
 ### 1. Choose Your Attributes
 
 Every adventurer possesses four core attributes that represent their natural capabilities:
