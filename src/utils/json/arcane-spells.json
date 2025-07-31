@@ -1100,6 +1100,17 @@
         "heightened": "<strong>(Rank 2)</strong> Deal 4 necrotic damage (ignoring AV) instead. The necrotic shield charges 12 HP + the total amount of HP drained instead.<br/><strong>(Rank 3)</strong> Deal 6 necrotic damage (ignoring AV) instead. The necrotic shield charges 18 HP + the total amount of HP drained instead."
     },
     {
+        "name": "Ray of Lethargy",
+        "discipline": "Necromancy",
+        "rank": "1",
+        "focus": "2",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You extend your hand, unleashing a thin beam of necrotic energy that saps the vigor from your foe.<br/><strong>Weak.</strong> Deal +2 necrotic damage and the target is briefly slowed.<br/><strong>Strong.</strong> Deal +4 necrotic damage and the target is slowed for a short duration.<br/><strong>Critical.</strong> Deal +6 necrotic damage and the target is briefly staggered and slowed for a short duration.<br/>At the end of their turns, they can roll Strength + Fortitude vs. your Resist to end the effect early.<br/>",
+        "heightened": "<strong>(Rank 2) </strong>Deal +4/+8/+12 damage instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 damage instead."
+    },
+    {
         "name": "Animate Horde",
         "discipline": "Necromancy",
         "rank": "2",

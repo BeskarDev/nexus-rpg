@@ -922,6 +922,18 @@
 
 >
 
+### Ray of Lethargy
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Dodge | Medium | -
+
+**Effect** <br/> You extend your hand, unleashing a thin beam of necrotic energy that saps the vigor from your foe.<br/><strong>Weak.</strong> Deal +2 necrotic damage and the target is briefly slowed.<br/><strong>Strong.</strong> Deal +4 necrotic damage and the target is slowed for a short duration.<br/><strong>Critical.</strong> Deal +6 necrotic damage and the target is briefly staggered and slowed for a short duration.<br/>At the end of their turns, they can roll Strength + Fortitude vs. your Resist to end the effect early.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/+8/+12 damage instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 damage instead.
+
+>
+
 ### Animate Horde
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
