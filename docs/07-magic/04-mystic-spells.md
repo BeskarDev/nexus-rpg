@@ -137,29 +137,29 @@ toc_max_heading_level: 2
 
 **Effect** <br/> You call down a pillar of light at the target location, revealing any falsehoods and burning creatures within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines bright light in close range and dim light in short range of it. Any magical falsehoods, such as illusions, shapeshifters, or invisible creatures inside the beam is immediately revealed.<br/>Any creatures inside the beam take +8 radiant damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration. <br/> 
 
+### Blessing of Dawn
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Short | enchant (body),  singular
+
+**Effect** <br/> You invoke the power of the rising sun, blessing an ally with dawn's radiance and renewal. On a success, the target gains the following effects for a short duration:<br/>- They regain 4 HP at the start of each of their turns<br/>- They gain immunity to fear and charm effects<br/>- They can see through magical darkness and illusions<br/>- Once per turn, they can re-roll any test<br/>- They emit bright light in close range and dim light in short range<br/> 
+
 ### Purifying Light
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | Very Hard (12) | Long | -
+ 3 | 6 | vs. Dodge | Medium | blast (cone)
 
-**Effect** <br/> You create an explosion of pure, cleansing light that burns away darkness and evil influences.<br/>Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +6 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +12 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +18 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.<br/> 
+**Effect** <br/> You unleash a devastating cone of solar energy that burns and blinds everything in its path.<br/><strong>Weak.</strong> Deal +6 radiant damage to each target and they are briefly blinded.<br/><strong>Strong.</strong> Deal +12 radiant damage to each target and they are blinded for a short duration.<br/><strong>Critical.</strong> Deal +18 radiant damage to each target and they are blinded for a short duration and briefly stunned. 
 
 ### Solar Flare
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | vs. Dodge | Long | blast (cone)
+ 3 | 6 | Very Hard (12) | Long | -
 
-**Effect** <br/> You unleash a devastating cone of solar energy that burns and blinds everything in its path.<br/><strong>Weak.</strong> Deal +6 radiant damage to each target and they are briefly blinded.<br/><strong>Strong.</strong> Deal +12 radiant damage to each target and they are blinded for a short duration.<br/><strong>Critical.</strong> Deal +18 radiant damage to each target and they are blinded for a short duration and briefly stunned.<br/>Any creatures with light sensitivity or that are undead take an additional +6 radiant damage from this spell.<br/> 
-
-### Blessing of Dawn
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 3 | 6 | Very Hard (12) | Short | enchant (body), singular
-
-**Effect** <br/> You invoke the power of the rising sun, blessing an ally with dawn's radiance and renewal.<br/>On a success, the target gains the following effects for a long duration:<br/>- They regain +2 HP at the start of each of their turns<br/>- They gain immunity to fear and charm effects<br/>- They can see through magical darkness and illusions<br/>- Once per day, they can reroll any failed saving throw<br/>- They emit bright light in close range and dim light in short range<br/> 
+**Effect** <br/> You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +6 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +12 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +18 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.<br/> 
 
 ## Twilight
 
@@ -194,13 +194,6 @@ toc_max_heading_level: 2
  0 | 0 | Medium (8) | Medium | -
 
 **Effect** <br/> You create an area of magical shadow, making it hard to see through it. Target any area of dim light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered as absolute darkness.<br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area.<br/> 
-### Mirror of Shadows
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 0 | 0 | Medium (8) | Self | enchant (face)
-
-**Effect** <br/> You weave shadows around your face to create a false appearance, blending deception with twilight magic.<br/>On a success, your facial features become obscured and shift subtly, making you difficult to identify. You gain +1 boon on rolls to disguise yourself or avoid recognition. Whenever anyone attempts to remember specific details about your appearance, they must first succeed on a Spirit + Perception roll vs. your Resist. On a failure, they can only recall vague, conflicting details.<br/>This spell lasts for a medium duration or until you choose to end it.<br/> 
 
 ### Whispers of Doubt
 
@@ -282,25 +275,13 @@ toc_max_heading_level: 2
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | Hard (10) | Self | concentrate
+ 2 | 4 | Hard (10) | Self | concentrate
 
-**Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range.<br/>On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you until the start of their next turn and take +1 psychic damage (ignoring AV). A creature can only be affected by this saving throw once per turn.<br/>Creatures that succeed on their saving throw are immune to this spell's fear effect until the spell ends.<br/> 
+**Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range. On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you for the rest of their turn and take +4 psychic damage (ignoring AV). A creature can only be affected by this spell once per turn. Creatures that succeed on their test are immune to this spell's fear effect until the spell ends. 
 
-### Haunting Shadows
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignoring AV) instead.<br/>
 
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 1 | 2 | vs. Resist | Medium | concentrate
-
-**Effect** <br/> You conjure vengeful shadows that follow and torment a target with chilling whispers and ghostly touches.<br/>On a success, spectral shadows begin haunting the target. The target takes +3 psychic damage at the start of each of their turns, followed by +2 frost damage. The shadows whisper disturbing thoughts, causing the target to suffer +1 bane on concentration rolls.<br/>The haunting lasts for a short duration. The target can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/> 
-
-### Twilight Bind
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 1 | 2 | vs. Resist | Medium | concentrate
-
-**Effect** <br/> You weave twilight magic into a creature's mind, temporarily turning them from foe to friend through shadow manipulation.<br/>The target must be of a tier equal to or lower than your Mysticism. On a success, the target becomes charmed by you and treats you and your allies as friends for a short duration. The charmed creature takes +2 psychic damage at the start of each of their turns as the foreign magic conflicts with their will.<br/>The creature can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. If the creature takes damage from you or your allies, they can immediately make this saving throw with +1 boon.<br/> 
+>
 
 ### Everlasting Night
 
@@ -332,7 +313,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> You create a zone of absolute silence, muffling all sound within it. Choose a close area within range.<br/>On a success, the area becomes completely silent. No sound can be made within the area or pass through it. Creatures within the area cannot speak, cast spells with verbal components, or make noise. Any creatures attempting to hide within the area gain +2 boons on Stealth rolls as they cannot be detected by sound.<br/>The silence lasts for a medium duration.<br/> 
+**Effect** <br/> create an area of absolute silence. stealthing creatures aren't revealed by sound within it 
 
 ### Terrors of the Dark
 
@@ -340,7 +321,31 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | -
 
-**Effect** <br/> You fill an area with frightening shadows that take the shape of each creature's worst fears.<br/>Choose a close area within range that contains dim light or darkness. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target is briefly frightened and takes +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Each target is frightened for a short duration and takes +4 psychic damage (ignoring AV). They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the fear early.<br/><strong>Critical.</strong> Each target is frightened for a short duration and briefly stunned, taking +6 psychic damage (ignoring AV). They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the fear early.<br/> 
+**Effect** <br/> You fill an area with frightening shadows that take the shape of each creature's worst fears. Choose a close area within range that contains dim light or darkness. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target is briefly frightened and takes +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Each target is frightened for a short duration and takes +4 psychic damage (ignoring AV).<br/><strong>Critical.</strong> Each target is frightened for a short duration, briefly stunned, and takes +6 psychic damage (ignoring AV).<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3) </strong>Each target takes +4/+8/+12 psychic damage (ignoring AV) instead.
+
+>
+
+### Twilight Bind
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You weave twilight magic into a creature's mind, temporarily turning them from foe to friend through shadow manipulation clouding their perception of reality. The target must be of a tier equal to or lower than your Mysticism. On a success, the target becomes charmed by you and treats you and your allies as friends for a short duration.<br/>The creature can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. If the creature takes damage from you or your allies, they can immediately make this roll with +1 boon.<br/>You can only cast this spell once against any individual creature once per day.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The spell lasts for a medium duration instead.
+
+>
+
+### Nightmare Realm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Medium | concentrate
+
+**Effect** <br/> You trap targets in a twilight realm of their own fears and doubts, where they manifest monsters of their own mind. Choose a close area within range. Target all hostile creatures within the area.<br/>On a success, the realm persists for a short duration. Use your roll’s result vs. their Resist.<br/><strong>Weak. </strong>Each target takes +4 psychic damage (ignoring AV).<br/><strong>Strong. </strong>Each target takes +8 psychic damage (ignoring AV) and is briefly staggered.<br/><strong>Critical. </strong>Each target takes +12 psychic damage (ignoring AV) and is briefly stunned.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Resist against all hostile creatures within the nightmare realm.<br/> 
 
 ### Shadow Clone
 
@@ -348,31 +353,15 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Medium | concentrate
 
-**Effect** <br/> You shape shadows into a perfect duplicate of yourself that can act independently in darkened areas.<br/>On a success, you create a shadow clone in any area of dim light or darkness within range. The clone has your appearance but is made of living shadow. It has 1 HP, your movement speed, and can perform simple tasks and basic attacks using your statistics. The clone can only exist in dim light or darkness - if it enters bright light, it is immediately destroyed.<br/>The clone lasts for a medium duration, until destroyed, or until you dismiss it. You can command the clone telepathically and see through its senses as a Quick Action.<br/> 
+**Effect** <br/> You shape shadows into a perfect duplicate of yourself that can act independently in darkened areas. On a success, you create a shadow clone in any area of dim light or darkness within range. The clone has your appearance but is made of living shadow. It has 1 HP, your Movement, and can perform simple tasks and basic attacks (no Combat Arts or other abilities) using your statistics. The clone can only exist in dim light or darkness. If it enters bright light, it is immediately destroyed.<br/>As a Quick Action, you can switch places with your shadow clone, instantly teleporting to its location while it appears where you were standing.<br/>The clone lasts for a medium duration, until destroyed, or until you dismiss it. You can command the clone telepathically.<br/> 
 
-> **Heightened** <br/> You can switch places with your shadow clone as a Quick Action, teleporting to its location while it appears where you were standing.
+### Embrace of Night
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Medium | concentrate,  enchant (body)
 
 **Effect** <br/> You merge temporarily with the essence of twilight, gaining supernatural abilities in the balance between light and dark. On a success, you gain the following effects:<br/>- You become invisible while in dim light or darkness<br/>- You gain resistance to psychic and frost damage<br/>- You can pass through solid objects as if they were difficult terrain while invisible<br/>- Your twilight mysticism spells cost 2 less Focus (minimum 0)<br/>This transformation lasts for a short duration.<br/> 
-
-### Embrace of Night
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 3 | 6 | Very Hard (12) | Self | concentrate, enchant (body)
-
-**Effect** <br/> You merge temporarily with the essence of twilight, gaining supernatural abilities in the balance between light and dark.<br/>On a success, you gain the following effects:<br/>- You become invisible while in dim light or darkness<br/>- You gain resistance to psychic and frost damage<br/>- You can pass through solid objects as if they were difficult terrain while invisible<br/>- Your twilight mysticism spells cost 1 less Focus (minimum 0)<br/>This transformation lasts for a short duration.<br/>
-
-### Nightmare Realm
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 3 | 6 | vs. Resist | Short | concentrate
-
-**Effect** <br/> You trap targets in a twilight realm of their own fears and doubts, dealing ongoing psychic and frost damage.<br/>Choose a close area within range. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 psychic damage and +2 frost damage, then is briefly frightened.<br/><strong>Strong.</strong> Each target takes +8 psychic damage and +4 frost damage, then is frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the fear early.<br/><strong>Critical.</strong> Each target takes +12 psychic damage and +6 frost damage, then is frightened and briefly stunned. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the fear early.<br/>The realm persists for a short duration, and any creature that starts their turn in the area takes +2 psychic damage.<br/>
 
 ## Life
 
@@ -532,7 +521,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  0 | 0 | vs. Parry | Melee | -
 
-**Effect** <br/> Your touch carries the cold of the grave, sapping warmth and vitality from your target.<br/><strong>Weak.</strong> Deal +2 frost damage and the target cannot regain HP until the end of your next turn.<br/><strong>Strong.</strong> Deal +4 frost damage and the target cannot regain HP until the end of your next turn.<br/><strong>Critical.</strong> Deal +6 frost damage and the target cannot regain HP until the end of your next turn.<br/> 
+**Effect** <br/> Your touch carries the cold of the grave, sapping warmth and vitality from your target.<br/><strong>Weak.</strong> Deal +3 frost damage.<br/><strong>Strong.</strong> Deal +6 frost damage and the target briefly cannot regain HP.<br/><strong>Critical.</strong> Deal +9 frost damage and the target briefly cannot regain HP. 
 
 ### Decay
 
@@ -540,7 +529,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  0 | 0 | Medium (8) | Short | -
 
-**Effect** <br/> You accelerate the natural decay of organic matter, causing wood to rot, food to spoil, and cloth to fray.<br/>On a success, you can rapidly age and decay non-living organic materials (such as wooden objects, food, or clothing) within range. This spell affects objects up to medium size and can be used to:<br/>- Spoil food or drink, making it inedible<br/>- Weaken wooden doors, weapons, or structures (reducing their durability)<br/>- Age clothing or leather to the point of tearing<br/>This spell lasts briefly, but its effects are permanent on the targeted materials.<br/> 
+**Effect** <br/> You accelerate the natural decay of organic matter, causing wood to rot, food to spoil, and cloth to fray. You can’t target objects carried, worn, or wielded by a creature. On a success, you can rapidly age and decay a small area of non-living organic materials (such as wooden objects, food, or clothing) within range. This spell affects objects up to medium Size and can be used to:<br/>- Spoil food or drink, making it inedible (remove 1 use from rations)<br/>- Weaken wooden doors, weapons, or structures (make a Durability check for that object)<br/>- Age clothing or leather to the point of tearing<br/> 
 
 ### Enfeebling Touch
 
@@ -572,7 +561,11 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Medium | -
 
-**Effect** <br/> You conjure razor-sharp crystallized blood shards and hurl them at your target, piercing their flesh and drawing life force back to you.<br/><strong>Weak.</strong> Deal +4 necrotic damage and regain 2 HP.<br/><strong>Strong.</strong> Deal +8 necrotic damage and regain 4 HP.<br/><strong>Critical.</strong> Deal +12 necrotic damage and regain 6 HP. 
+**Effect** <br/> You conjure razor-sharp crystallized blood shards and hurl them at your target, piercing their flesh and drawing life force back to you.<br/><strong>Weak.</strong> Deal +3 necrotic damage and regain 2 HP.<br/><strong>Strong.</strong> Deal +6 necrotic damage and regain 4 HP.<br/><strong>Critical.</strong> Deal +9 necrotic damage and regain 6 HP. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +5/+10/+15 necrotic damage and regain 3/6/9 HP instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 necrotic damage and regain 4/8/12 HP instead.
+
+>
 
 ### Curse of Death
 
@@ -612,7 +605,11 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  1 | 2 | vs. Parry | Melee | -
 
-**Effect** <br/> Your touch carries the power of decay, causing flesh to wither and rot where you grasp your target.<br/><strong>Weak.</strong> Deal +3 necrotic damage and the target suffers +1 bane on their next attack roll.<br/><strong>Strong.</strong> Deal +6 necrotic damage and the target is briefly sickened (reducing all their attributes by one die step).<br/><strong>Critical.</strong> Deal +9 necrotic damage and the target is sickened for a short duration (reducing all their attributes by one die step). They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> Your touch carries the power of decay, causing flesh to wither and rot where you grasp your target.<br/><strong>Weak.</strong> Deal +4 necrotic damage and the target is briefly poisoned.<br/><strong>Strong.</strong> Deal +8 necrotic damage and the target is briefly poisoned and staggered.<br/><strong>Critical.</strong> Deal +12 necrotic damage and the target is poisoned for a short duration. While poisoned by this effect, they are also staggered. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +6/+12/+18 necrotic damage instead.<br/><strong>(Rank 3)</strong> Deal +8/+16/+24 necrotic damage instead.
+
+>
 
 ### Shivering Ray
 
@@ -642,29 +639,9 @@ toc_max_heading_level: 2
 
 **Effect** <br/> You summon a cloud of necrotic energy, sickening creatures within it. The cloud extends in a close area around the target location and targets all living creatures within it.<br/><strong>Weak.</strong> Deal +3 necrotic damage to each target.<br/><strong>Strong.</strong> Deal +6 necrotic damage to each target.<br/><strong>Critical.</strong> Deal +9 necrotic damage to each target.<br/>Any creature is also poisoned while inside the cloud’s area.<br/>The cloud lasts for a short duration. It can also be expelled early by any effect causing strong winds in the same area of influence.<br/> 
 
-### Circle of Death
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +5/+10/+15 necrotic damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 necrotic damage to each target instead.
 
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 2 | 4 | Hard (10) | Medium | concentrate
-
-**Effect** <br/> You draw a mystical circle filled with symbols of mortality, creating a zone where life force withers.<br/>On a success, you create the circle in close range of the target location. While the circle remains, any living creature that starts their turn within it takes +4 necrotic damage and suffers +1 bane on healing effects. Undead creatures in the circle instead regain +2 HP at the start of their turns.<br/>The circle lasts for a short duration.<br/> 
-
-### Wither
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 2 | 4 | vs. Resist | Short | concentrate
-
-**Effect** <br/> You channel entropic energy into a creature, causing their body to age and decay rapidly.<br/>On a success, the target suffers the following effects:<br/>- They take +2 necrotic damage at the start of each of their turns.<br/>- Their maximum HP is reduced by 2 at the start of each of their turns.<br/>- They suffer +1 bane on all physical attribute rolls (Strength and Agility).<br/>This spell lasts for a short duration. Any HP reduction from this spell is restored when the spell ends.<br/> 
-
-### Mortal Coil
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 3 | 6 | vs. Resist | Medium | -
-
-**Effect** <br/> You bind a creature's life force to your own, creating a connection that shares their suffering while draining their vitality.<br/><strong>Weak.</strong> Deal +6 necrotic damage and regain half that amount as HP. The target's next successful attack against you deals half damage.<br/><strong>Strong.</strong> Deal +12 necrotic damage and regain half that amount as HP. The target's next two successful attacks against you deal half damage.<br/><strong>Critical.</strong> Deal +18 necrotic damage and regain half that amount as HP. For a short duration, any damage the target takes is also reflected to them as 2 additional necrotic damage.<br/> 
+>
 
 ### Death's Door
 
@@ -672,15 +649,16 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | -
 
-**Effect** <br/> You show the target a vision of their own death, paralyzing them with the certainty of mortality. The target must be of a tier equal to or lower than your Mysticism.<br/><strong>Weak.</strong> The target is briefly stunned and takes +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> The target is stunned for a short duration and takes +8 psychic damage (ignoring AV). They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the stun early.<br/><strong>Critical.</strong> The target is paralyzed for a short duration and takes +12 psychic damage (ignoring AV). They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the paralysis early.<br/> 
+**Effect** <br/> You show the target a vision of their own death, paralyzing them with the certainty of mortality. The target must be of a tier equal to or lower than your Mysticism.<br/><strong>Weak.</strong> The target takes +4 psychic damage (ignoring AV) and is briefly stunned.<br/><strong>Strong.</strong> The target takes +8 psychic damage (ignoring AV) and is stunned for a short duration.<br/><strong>Critical.</strong> The target takes +12 psychic damage (ignoring AV) and is paralyzed for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>If they take damage from any source, they can immediately make the roll with +1 boon.<br/>You can only cast this spell once against any creature per scene.<br/> 
 
-### Poison Bloom
+### Grave’s Bloom
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | vs. Resist | Short | -
+ 3 | 6 | vs. Resist | Medium | -
 
-**Effect** <br/> You channel the essence of natural toxins into an area, creating a field where death's poisons flourish.<br/>Choose a close area within range. Target all living creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 poison damage and is briefly poisoned.<br/><strong>Strong.</strong> Each target takes +8 poison damage and is poisoned for a short duration. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the poisoned condition early.<br/><strong>Critical.</strong> Each target takes +12 poison damage and is poisoned for a short duration. Additionally, they suffer +2 poison damage at the start of each of their turns while poisoned. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the condition early.<br/>
+**Effect** <br/> You channel the essence of natural toxins into an area, creating a blooming field of highly poisonous flowers, which then erupt into a cloud of death. Choose a close area within range. Target all living creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 poison damage and is briefly poisoned.<br/><strong>Strong.</strong> Each target takes +8 poison damage and is poisoned for a short duration.<br/><strong>Critical.</strong> Each target takes +12 poison damage, is briefly confused, and is poisoned for a short duration.<br/>They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/> 
+
 ## Nature
 
 ### Acid Splash
@@ -1474,37 +1452,6 @@ toc_max_heading_level: 2
  3 | 6 | vs. Resist | Long | concentrate
 
 **Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignoring AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect.<br/> 
-### Gentle Passage
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 0 | 0 | Medium (8) | Touch | -
-
-**Effect** <br/> You provide comfort to a creature in pain, easing their suffering through peaceful magic.<br/>On a success, you can provide one of the following benefits:<br/>- Remove one point of Fatigue from the target<br/>- Allow a dying creature to make their death saving throw with +1 boon<br/>- Reduce the duration of any pain-causing condition by one step (long becomes medium, etc.)<br/>- Provide supernatural comfort that grants +1 boon on their next Spirit-based roll<br/> 
-
-### Mediate
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 1 | 2 | vs. Resist | Short | -
-
-**Effect** <br/> You use peaceful magic to calm hostile emotions and encourage cooperation between conflicting parties.<br/>Target two creatures that are hostile to each other within range. On a success, both targets become neutral toward each other for a medium duration. During this time, they cannot attack each other and are more inclined to listen to reasonable proposals for peaceful resolution.<br/>This spell has no effect if either target has taken damage from the other in the last minute.<br/> 
-
-### Circle of Protection
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 2 | 4 | Hard (10) | Self | concentrate
-
-**Effect** <br/> You create a circle of protective energy around yourself that shields you and nearby allies.<br/>On a success, you create a protective aura extending in close range around you. While the spell is active:<br/>- You and allies within the circle gain +1 to all Defenses<br/>- Any hostile creature attempting to enter the circle must succeed on a Spirit + Fortitude roll vs. your Resist or be unable to enter<br/>- The circle moves with you and lasts for a short duration<br/> 
-
-### Sanctuary of Harmony
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 3 | 6 | Very Hard (12) | Medium | concentrate
-
-**Effect** <br/> You create a large area of supernatural peace where violence becomes nearly impossible.<br/>On a success, you designate a short area around the target location as a sanctuary. Within this area:<br/>- All creatures gain resistance to all damage types<br/>- Any creature attempting to make an attack must succeed on a Spirit + Fortitude roll vs. your Resist or be unable to attack<br/>- Hostile magic effects are suppressed within the area<br/>- All creatures within the area feel compelled to resolve conflicts through words rather than violence<br/>The sanctuary lasts for a medium duration and cannot be moved.<br/>
 
 ## War
 
