@@ -6,6 +6,8 @@ import {
 	MenuItem,
 	TextField,
 	Typography,
+	Checkbox,
+	Tooltip,
 } from '@mui/material'
 import {
 	BaseDamageType,
@@ -31,9 +33,10 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 }) => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
-	const { statistics: {strength, agility, spirit, mind}, spells: {spellCatalystDamage} } = useAppSelector(
-		(state) => state.characterSheet.activeCharacter,
-	)
+	const {
+		statistics: { strength, agility, spirit, mind },
+		spells: { spellCatalystDamage },
+	} = useAppSelector((state) => state.characterSheet.activeCharacter)
 
 	const baseDamage: number = useMemo(() => {
 		switch (damage.base) {
@@ -52,18 +55,59 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 		}
 	}, [damage.base, strength, agility, spirit, mind])
 
-	const weakDamage = useMemo(
-		() => baseDamage + damage.weapon + (type == 'spell' ? spellCatalystDamage : 0) + damage.other + damage.otherWeak,
-		[damage, baseDamage],
-	)
-	const strongDamage = useMemo(
-		() => baseDamage + damage.weapon * 2 + (type == 'spell' ? spellCatalystDamage * 2 : 0) + damage.other + damage.otherStrong,
-		[damage, baseDamage],
-	)
-	const criticalDamage = useMemo(
-		() => baseDamage + damage.weapon * 3 + (type == 'spell' ? spellCatalystDamage * 3 : 0) + damage.other + damage.otherCritical,
-		[damage, baseDamage],
-	)
+	const weakDamage = useMemo(() => {
+		if (damage.staticDamage) {
+			return (
+				baseDamage +
+				damage.weapon +
+				(type == 'spell' ? spellCatalystDamage : 0) +
+				damage.other
+			)
+		}
+		return (
+			baseDamage +
+			damage.weapon +
+			(type == 'spell' ? spellCatalystDamage : 0) +
+			damage.other +
+			damage.otherWeak
+		)
+	}, [damage, baseDamage, type, spellCatalystDamage])
+
+	const strongDamage = useMemo(() => {
+		if (damage.staticDamage) {
+			return (
+				baseDamage +
+				damage.weapon +
+				(type == 'spell' ? spellCatalystDamage : 0) +
+				damage.other
+			)
+		}
+		return (
+			baseDamage +
+			damage.weapon * 2 +
+			(type == 'spell' ? spellCatalystDamage * 2 : 0) +
+			damage.other +
+			damage.otherStrong
+		)
+	}, [damage, baseDamage, type, spellCatalystDamage])
+
+	const criticalDamage = useMemo(() => {
+		if (damage.staticDamage) {
+			return (
+				baseDamage +
+				damage.weapon +
+				(type == 'spell' ? spellCatalystDamage : 0) +
+				damage.other
+			)
+		}
+		return (
+			baseDamage +
+			damage.weapon * 3 +
+			(type == 'spell' ? spellCatalystDamage * 3 : 0) +
+			damage.other +
+			damage.otherCritical
+		)
+	}, [damage, baseDamage, type, spellCatalystDamage])
 
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -87,7 +131,11 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 					disabled
 					size="small"
 					variant="standard"
-					value={`${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`}
+					value={
+						damage.staticDamage
+							? `${weakDamage} ${damage.type}`
+							: `${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`
+					}
 					label="Damage"
 					sx={{
 						maxWidth: '6.5rem',
@@ -104,10 +152,11 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 				MenuListProps={{ sx: { p: 2, maxWidth: '20rem' } }}
 			>
 				<SectionHeader>Damage Calculator</SectionHeader>
-				<Typography variant="subtitle2">
+				<Typography variant="subtitle2" sx={{ mb: 1 }}>
 					Set the individual components for calculation your damage. The result
-					will display as "X/Y/Z", where X = weak hit, Y = strong hit, and Z =
-					critical hit.
+					will display as {damage.staticDamage ? '"X"' : '"X/Y/Z"'}, where X =
+					weak hit
+					{damage.staticDamage ? '' : ', Y = strong hit, and Z = critical hit'}.
 				</Typography>
 				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
 					<AttributeField
@@ -157,6 +206,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						}
 						label="Other (Weak)"
 						sx={{ maxWidth: '5.5rem' }}
+						disabled={damage.staticDamage}
 					/>
 					<AttributeField
 						size="small"
@@ -167,6 +217,7 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						}
 						label="Other (Strong)"
 						sx={{ maxWidth: '5.5rem' }}
+						disabled={damage.staticDamage}
 					/>
 					<AttributeField
 						size="small"
@@ -177,7 +228,20 @@ export const DamageFields: React.FC<DamageFieldsProps> = ({
 						}
 						label="Other (Critical)"
 						sx={{ maxWidth: '5.5rem' }}
+						disabled={damage.staticDamage}
 					/>
+					<Box sx={{ display: 'flex', alignItems: 'center' }}>
+						<Tooltip title="Static damage uses fixed values instead of scaling">
+							<Checkbox
+								checked={damage.staticDamage || false}
+								onChange={(event) =>
+									updateDamage({ staticDamage: event.target.checked })
+								}
+								size="small"
+							/>
+						</Tooltip>
+						<Typography variant="caption">static</Typography>
+					</Box>
 					<Box sx={{ width: '100%', flexGrow: 1 }} />
 					<TextField
 						size="small"

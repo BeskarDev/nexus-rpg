@@ -180,6 +180,7 @@ export type Damage = {
 	otherStrong: number
 	otherCritical: number
 	type: DamageType
+	staticDamage?: boolean
 }
 
 export const baseDamageTypeArray = ['', 'STR', 'AGI', 'SPI', 'MND'] as const

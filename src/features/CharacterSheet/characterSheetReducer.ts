@@ -353,6 +353,7 @@ export const {
 					otherStrong: 0,
 					otherCritical: 0,
 					type: 'physical',
+					staticDamage: false,
 				},
 				effect: '',
 			})
@@ -387,6 +388,32 @@ export const {
 				source,
 				destination,
 			)
+		},
+		importSpells: (state, action: PayloadAction<Partial<Spell>[]>) => {
+			state.unsavedChanges = true
+			const newSpells = action.payload.map(spell => ({
+				id: crypto.randomUUID(),
+				name: '',
+				rank: 0,
+				cost: 0,
+				target: '' as any,
+				range: '' as any,
+				properties: '',
+				dealsDamage: false,
+				damage: {
+					base: '' as const,
+					weapon: 0,
+					other: 0,
+					otherWeak: 0,
+					otherStrong: 0,
+					otherCritical: 0,
+					type: 'physical' as const,
+					staticDamage: false,
+				},
+				effect: '',
+				...spell,
+			}))
+			state.activeCharacter.spells.spells.unshift(...newSpells)
 		},
 		addNewAlly: (state) => {
 			state.unsavedChanges = true

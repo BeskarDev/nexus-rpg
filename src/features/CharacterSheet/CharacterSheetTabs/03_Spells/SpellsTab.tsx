@@ -6,10 +6,14 @@ import {
 	IconButton,
 	TextField,
 	Tooltip,
+	Select,
+	MenuItem,
+	FormControl,
+	InputLabel,
 } from '@mui/material'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 
-import { AddCircle, ExpandMore, HelpOutline } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
@@ -20,12 +24,20 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { SpellRow } from './SpellRow'
+import { SpellsSearchDialog } from './SpellsSearchDialog'
 
 export const SpellsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const { magicSkill, specialization, focus, spellCatalystDamage, spells } =
 		useMemo(() => activeCharacter.spells, [activeCharacter.spells])
+
+	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
+
+	// Determine magic type based on magic skill
+	const magicType: 'Arcana' | 'Mysticism' | null = 
+		magicSkill === 'Mysticism' ? 'Mysticism' : 
+		magicSkill === 'Arcana' ? 'Arcana' : null
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -73,17 +85,22 @@ export const SpellsTab: React.FC = () => {
 						gap: 1,
 					}}
 				>
-					<TextField
-						variant="standard"
-						value={magicSkill}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { magicSkill: event.target.value },
-							})
-						}
-						label="Magic Skill"
-						sx={{ maxWidth: '8rem' }}
-					/>
+					<FormControl variant="standard" sx={{ minWidth: '8rem' }}>
+						<InputLabel>Magic Skill</InputLabel>
+						<Select
+							value={magicSkill}
+							onChange={(event) =>
+								updateCharacter({
+									spells: { magicSkill: event.target.value },
+								})
+							}
+							label="Magic Skill"
+						>
+							<MenuItem value="">None</MenuItem>
+							<MenuItem value="Arcana">Arcana</MenuItem>
+							<MenuItem value="Mysticism">Mysticism</MenuItem>
+						</Select>
+					</FormControl>
 					<TextField
 						variant="standard"
 						value={specialization}
@@ -177,6 +194,19 @@ export const SpellsTab: React.FC = () => {
 							>
 								<AddCircle />
 							</IconButton>
+							<Tooltip title={`Search ${magicType === 'Arcana' ? 'Arcane' : magicType === 'Mysticism' ? 'Mystic' : ''} Spells from database`}>
+								<IconButton
+									size="small"
+									onClick={(event) => {
+										setIsSpellsDialogOpen(true)
+										event.stopPropagation()
+									}}
+									sx={{ ml: -1, mb: 0.75 }}
+									disabled={!magicType}
+								>
+									<Search />
+								</IconButton>
+							</Tooltip>
 						</Box>
 					</AccordionSummary>
 
@@ -201,6 +231,19 @@ export const SpellsTab: React.FC = () => {
 					</AccordionDetails>
 				</Accordion>
 			</Box>
+			
+			<SpellsSearchDialog
+				open={isSpellsDialogOpen}
+				onClose={() => setIsSpellsDialogOpen(false)}
+				character={activeCharacter}
+				magicType={magicType!}
+				onImportSpells={(spells) => {
+					spells.forEach(spell => {
+						dispatch(characterSheetActions.importSpells([spell]))
+					})
+					setIsSpellsDialogOpen(false)
+				}}
+			/>
 		</Box>
 	)
 }
