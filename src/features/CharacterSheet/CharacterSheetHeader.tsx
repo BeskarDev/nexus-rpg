@@ -1,4 +1,4 @@
-import { Download, Reply, Save, Star } from '@mui/icons-material'
+import { ArrowBackIosNew, ChevronLeft, Download, Reply, Save, Star } from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -112,7 +112,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				{activeCharacterId && (
 					<Link href={window.location.href.split('?')[0]}>
 						<IconButton>
-							<Reply />
+							<ArrowBackIosNew />
 						</IconButton>
 					</Link>
 				)}
