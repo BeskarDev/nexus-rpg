@@ -203,7 +203,7 @@ export const StatisticsTab: React.FC = () => {
 				<AvField />
 
 				{/* HP section */}
-				<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'flex-start' }}>
+				<Box sx={{ display: 'flex', gap: 1, alignItems: 'flex-start' }}>
 					<AttributeField
 						type="number"
 						value={health.current}

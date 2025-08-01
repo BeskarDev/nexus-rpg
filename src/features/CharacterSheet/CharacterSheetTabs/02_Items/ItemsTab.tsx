@@ -41,7 +41,7 @@ export const ItemsTab: React.FC = () => {
 		let shieldAV = 0
 
 		// Check worn equipment for armor and helmet
-		items.forEach(item => {
+		items.forEach((item) => {
 			if (item.container === 'worn' && item.properties) {
 				// Look for both "AV +X" and "+X AV" patterns
 				const avMatch = item.properties.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
@@ -57,15 +57,18 @@ export const ItemsTab: React.FC = () => {
 		})
 
 		// Check weapons for shields
-		weapons.forEach(weapon => {
+		weapons.forEach((weapon) => {
 			if (weapon.properties) {
 				// Look for shield indicators in properties or name
-				const isShield = weapon.properties.toLowerCase().includes('shield') || 
-				                weapon.name.toLowerCase().includes('shield')
-				
+				const isShield =
+					weapon.properties.toLowerCase().includes('shield') ||
+					weapon.name.toLowerCase().includes('shield')
+
 				if (isShield) {
 					// Look for both "AV +X" and "+X AV" patterns
-					const avMatch = weapon.properties.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
+					const avMatch = weapon.properties.match(
+						/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i,
+					)
 					if (avMatch) {
 						shieldAV = parseInt(avMatch[1] || avMatch[2])
 					}
@@ -75,16 +78,22 @@ export const ItemsTab: React.FC = () => {
 
 		// Update AV values if they changed
 		const currentAV = activeCharacter.statistics.av
-		if (currentAV.armor !== armorAV || currentAV.helmet !== helmetAV || currentAV.shield !== shieldAV) {
-			dispatch(characterSheetActions.updateCharacter({
-				statistics: {
-					av: {
-						armor: armorAV,
-						helmet: helmetAV,
-						shield: shieldAV,
-					}
-				}
-			}))
+		if (
+			currentAV.armor !== armorAV ||
+			currentAV.helmet !== helmetAV ||
+			currentAV.shield !== shieldAV
+		) {
+			dispatch(
+				characterSheetActions.updateCharacter({
+					statistics: {
+						av: {
+							armor: armorAV,
+							helmet: helmetAV,
+							shield: shieldAV,
+						},
+					},
+				}),
+			)
 		}
 	}, [items, weapons, activeCharacter.statistics.av])
 
@@ -107,6 +116,27 @@ export const ItemsTab: React.FC = () => {
 		}
 		return newCurrentLoad
 	}, [activeCharacter])
+
+	const carryCapacity = useMemo(
+		() =>
+			{
+        console.log('Calculating carry capacity:', {
+          strength: activeCharacter.statistics.strength.value,
+          carryModifier: encumbrance.carryModifier,
+        })
+        const result = Number(activeCharacter.statistics.strength.value) / 2 +
+          8 +
+          Number(encumbrance.carryModifier || 0)
+        console.log('Carry capacity:', result)
+        return result
+      },
+		[activeCharacter.statistics.strength, encumbrance.carryModifier],
+	)
+
+	const maxCapacity = useMemo(
+		() => carryCapacity * 2,
+		[carryCapacity],
+	)
 
 	const addNewWeapon = () => {
 		dispatch(characterSheetActions.addNewWeapon())
@@ -165,9 +195,9 @@ export const ItemsTab: React.FC = () => {
 	}
 
 	const getLoadColor = (theme: Theme) => {
-		if (currentLoad >= encumbrance.overencumberedAt) {
+		if (currentLoad >= maxCapacity) {
 			return theme.palette.error.main
-		} else if (currentLoad >= encumbrance.encumberedAt) {
+		} else if (currentLoad >= carryCapacity) {
 			return theme.palette.warning.main
 		}
 		return theme.palette.text.primary
@@ -219,7 +249,7 @@ export const ItemsTab: React.FC = () => {
 					value={currentLoad}
 					label="Current Load"
 					sx={{
-						maxWidth: '7rem',
+						maxWidth: '6rem',
 						'& .MuiFormLabel-root.MuiInputLabel-root.Mui-disabled': {
 							color: (theme) => getLoadColor(theme),
 						},
@@ -238,46 +268,57 @@ export const ItemsTab: React.FC = () => {
 				<AttributeField
 					type="number"
 					size="small"
-					value={encumbrance.encumberedAt}
-					onChange={(event) =>
-						updateCharacter({
-							items: {
-								encumbrance: { encumberedAt: Number(event.target.value) },
-							},
-						})
-					}
-					label="Encumbered"
-					helperText="STR + 6"
+					value={carryCapacity}
+					disabled
+					label="Carry Capacity"
+					helperText="½ STR + 8"
 					sx={{
-						maxWidth: '5rem',
+						maxWidth: '6rem',
 					}}
 				/>
 				<AttributeField
 					type="number"
 					size="small"
-					value={encumbrance.overencumberedAt}
+					value={encumbrance.carryModifier}
 					onChange={(event) =>
 						updateCharacter({
 							items: {
-								encumbrance: { overencumberedAt: Number(event.target.value) },
+								encumbrance: { carryModifier: Number(event.target.value) },
 							},
 						})
 					}
-					label="Overencumbered"
-					helperText="2 * STR + 6"
+					label="Mod"
+					helperText=" "
 					sx={{
-						maxWidth: '6rem',
+						maxWidth: '3.5rem',
+					}}
+				/>
+				<AttributeField
+					type="number"
+					size="small"
+					value={maxCapacity}
+					disabled
+					label="Max"
+					helperText=" "
+					sx={{
+						maxWidth: '3.5rem',
 					}}
 				/>
 				<Tooltip
 					title={
 						<>
-							<b>Encumbered.</b> You suffer +1 bane on Strength or Agility rolls
-							for movement, such as climbing or swimming, and during travel. You
-							also can’t take the Dash Action or the Evade Quick Action.
+							<b>Encumbered.</b> While encumbered, you suffer the following
+							effects:
 							<br />
-							<b>Over-Encumbered.</b> You can‘t move. You can‘t use any Actions
-							or do any rolls for physical activity.
+							- You suffer +1 bane on Strength/Agility rolls for any kind of
+							movement (climbing, swimming, jumping, …)
+							<br />
+							- You can’t take the Dash Action or the Evade Quick Action
+							<br />- Whenever you suffer Fatigue during travel, you suffer +1
+							Fatigue
+							<br />
+							You can never physically carry more than 2 x your carrying
+							capacity.
 						</>
 					}
 				>
@@ -363,7 +404,7 @@ export const ItemsTab: React.FC = () => {
 					>
 						<SectionHeader>Equipment & Items</SectionHeader>
 						<IconButton
-              size="small"
+							size="small"
 							onClick={(event) => {
 								addNewItem()
 								event.stopPropagation()

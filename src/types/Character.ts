@@ -151,6 +151,7 @@ export type Items = {
 	encumbrance: {
 		encumberedAt: number
 		overencumberedAt: number
+    carryModifier: number
 		currentLoad: number
 	}
 	weapons: Weapon[]
