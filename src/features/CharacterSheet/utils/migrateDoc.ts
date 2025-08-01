@@ -45,38 +45,93 @@ export const migrateDoc = async (
 }
 
 const migrateStatistics = (data: any): Statistics => {
+	// Migrate old wound structure to new format
+	let migratedData = { ...data }
+	
+	// If old health structure exists, migrate it
+	if (data.health && (data.health.woundOne || data.health.woundTwo || data.health.woundThree)) {
+		// Remove old wound structure from health
+		const { woundOne, woundTwo, woundThree, ...healthWithoutWounds } = data.health
+		migratedData.health = healthWithoutWounds
+		
+		// Count total wounds from old system
+		const oldWounds = [woundOne, woundTwo, woundThree].filter(wound => wound?.injury)
+		
+		// Migrate old wounded flags or assign wounds randomly
+		let woundCount = 0
+		const attributes = ['strength', 'agility', 'spirit', 'mind']
+		
+		// First pass: preserve existing wounded flags
+		for (const attr of attributes) {
+			if (data[attr]?.wounded && woundCount < 3) {
+				migratedData[attr] = {
+					...data[attr],
+					wounded: true
+				}
+				woundCount++
+			} else {
+				migratedData[attr] = {
+					...data[attr],
+					wounded: false
+				}
+			}
+		}
+		
+		// Second pass: add remaining wounds randomly to unwounded attributes
+		while (woundCount < oldWounds.length && woundCount < 3) {
+			const unwoundedAttrs = attributes.filter(attr => !migratedData[attr].wounded)
+			if (unwoundedAttrs.length === 0) break
+			
+			const randomAttr = unwoundedAttrs[Math.floor(Math.random() * unwoundedAttrs.length)]
+			migratedData[randomAttr].wounded = true
+			woundCount++
+		}
+	}
+	
+	// Add fatigue system if not present
+	if (!migratedData.fatigue) {
+		migratedData.fatigue = {
+			current: 0,
+			max: 6
+		}
+	}
+
 	return {
-		...data,
+		...migratedData,
 		strength: {
-			...data.strength,
+			...migratedData.strength,
 			value:
-				typeof data.strength.value === 'string'
-					? Number(data.strength.value.split('d')[1])
-					: data.strength.value,
+				typeof migratedData.strength.value === 'string'
+					? Number(migratedData.strength.value.split('d')[1])
+					: migratedData.strength.value,
+			wounded: migratedData.strength.wounded || false,
 		},
 		agility: {
-			...data.agility,
+			...migratedData.agility,
 			value:
-				typeof data.agility.value === 'string'
-					? Number(data.agility.value.split('d')[1])
-					: data.agility.value,
+				typeof migratedData.agility.value === 'string'
+					? Number(migratedData.agility.value.split('d')[1])
+					: migratedData.agility.value,
+			wounded: migratedData.agility.wounded || false,
 		},
 		spirit: {
-			...data.spirit,
+			...migratedData.spirit,
 			value:
-				typeof data.spirit.value === 'string'
-					? Number(data.spirit.value.split('d')[1])
-					: data.spirit.value,
+				typeof migratedData.spirit.value === 'string'
+					? Number(migratedData.spirit.value.split('d')[1])
+					: migratedData.spirit.value,
+			wounded: migratedData.spirit.wounded || false,
 		},
 		mind: {
-			...data.mind,
+			...migratedData.mind,
 			value:
-				typeof data.mind.value === 'string'
-					? Number(data.mind.value.split('d')[1])
-					: data.mind.value,
+				typeof migratedData.mind.value === 'string'
+					? Number(migratedData.mind.value.split('d')[1])
+					: migratedData.mind.value,
+			wounded: migratedData.mind.wounded || false,
 		},
 		// Ensure statusEffects array exists for new status effects feature
-		statusEffects: Array.isArray(data.statusEffects) ? data.statusEffects : [],
+		statusEffects: Array.isArray(migratedData.statusEffects) ? migratedData.statusEffects : [],
 	} as Statistics
 }
 

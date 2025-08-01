@@ -53,9 +53,10 @@ export type Statistics = {
 		total: number
 		temp: number
 		current: number
-		woundOne: Wound
-		woundTwo: Wound
-		woundThree: Wound
+	}
+	fatigue: {
+		current: number
+		max: number
 	}
 	av: {
 		armor: number
@@ -72,12 +73,6 @@ export type Statistics = {
 	resist: number
 	resolve: number
 	statusEffects: StatusEffect[]
-}
-
-export type Wound = {
-	injury: boolean
-	fatigueOne: boolean
-	fatigueTwo: boolean
 }
 
 export type Attribute = {

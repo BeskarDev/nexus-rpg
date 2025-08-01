@@ -1,10 +1,8 @@
 import {
 	HeartBroken,
 	HeartBrokenOutlined,
-	PanTool,
-	SvgIconComponent,
 } from '@mui/icons-material'
-import { Box, Checkbox, Icon, InputAdornment, MenuItem } from '@mui/material'
+import { Box, Checkbox, InputAdornment, MenuItem, Tooltip, Typography } from '@mui/material'
 import {
 	Attribute,
 	AttributeType,
@@ -18,6 +16,22 @@ export type AttributeColumnProps = {
 	label: string
 	icon: React.ReactNode
 	updateAttribute: (update: Partial<Attribute>) => void
+	totalWounds: number
+}
+
+const getWoundTooltip = (label: string) => {
+	switch (label) {
+		case 'Strength':
+			return 'Broken Bone (upper body): +1 bane on STR rolls'
+		case 'Agility':
+			return 'Broken Bone (legs): +1 bane on AGI rolls'
+		case 'Spirit':
+			return 'Head Injury: +1 bane on SPI rolls'
+		case 'Mind':
+			return 'Concussion: +1 bane on MND rolls'
+		default:
+			return 'Wound: +1 bane on rolls'
+	}
 }
 
 export const AttributeColumn: React.FC<AttributeColumnProps> = ({
@@ -25,12 +39,26 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 	label,
 	icon,
 	updateAttribute,
+	totalWounds,
 }) => {
+	const handleWoundChange = () => {
+		if (!attribute.wounded) {
+			// Adding a wound
+			if (totalWounds >= 3) return // Max 3 wounds
+			updateAttribute({ wounded: true })
+		} else {
+			// Removing a wound
+			updateAttribute({ wounded: false })
+		}
+	}
+
 	return (
 		<Box
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
+				alignItems: 'center',
+				width: '6rem',
 			}}
 		>
 			<AttributeField
@@ -57,7 +85,7 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 					},
 				}}
 				sx={{
-					maxWidth: '8rem',
+					maxWidth: '6rem',
 				}}
 			>
 				{attributeTypeArray.map((at) => (
@@ -66,14 +94,25 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 					</MenuItem>
 				))}
 			</AttributeField>
-			<Checkbox
-				size="small"
-				icon={<HeartBrokenOutlined />}
-				checkedIcon={<HeartBroken color="error" />}
-				checked={attribute.wounded}
-				onChange={() => updateAttribute({ wounded: !attribute.wounded })}
-				sx={{ position: 'relative', top: -8 }}
-			/>
+			
+			<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+				<Tooltip title={getWoundTooltip(label)} placement="bottom">
+					<Checkbox
+						size="small"
+						icon={<HeartBrokenOutlined />}
+						checkedIcon={<HeartBroken color="error" />}
+						checked={attribute.wounded}
+						disabled={!attribute.wounded && totalWounds >= 3}
+						onChange={handleWoundChange}
+						sx={{ p: 0.25 }}
+					/>
+				</Tooltip>
+				{attribute.wounded && (
+					<Typography variant="caption" color="error" sx={{ textAlign: 'center', lineHeight: 1 }}>
+						+1 bane
+					</Typography>
+				)}
+			</Box>
 		</Box>
 	)
 }

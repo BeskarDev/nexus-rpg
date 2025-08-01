@@ -19,6 +19,7 @@ import {
 import React, { useState } from 'react'
 import { Character } from '../../../../types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
+import { useDeviceSize } from '../../utils/useDeviceSize'
 
 export type RestingButtonGroupProps = {
 	character: Character
@@ -110,6 +111,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 }) => {
 	const [open, setOpen] = useState(false)
 	const [dialogType, setDialogType] = useState<RestingType>('shortBreak')
+	const { isMobile } = useDeviceSize()
 
 	const handleOpen = (type: RestingType) => {
 		setDialogType(type)
@@ -198,9 +200,15 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	return (
 		<Box {...props}>
 			<ButtonGroup variant="outlined">
-				<Button onClick={() => handleOpen('shortBreak')}>Short Break</Button>
-				<Button onClick={() => handleOpen('nightsRest')}>Night's Rest</Button>
-				<Button onClick={() => handleOpen('badNight')}>Bad Night</Button>
+				<Button size={isMobile ? 'small' : 'medium'} onClick={() => handleOpen('shortBreak')}>
+					Short Break
+				</Button>
+				<Button size={isMobile ? 'small' : 'medium'} onClick={() => handleOpen('nightsRest')}>
+					Night's Rest
+				</Button>
+				<Button size={isMobile ? 'small' : 'medium'} onClick={() => handleOpen('badNight')}>
+					Bad Night
+				</Button>
 			</ButtonGroup>
 			<Dialog open={open} onClose={handleAbort} fullWidth maxWidth="xs">
 				<DialogTitle

@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Tooltip } from '@mui/material'
 import React from 'react'
 
 import { AttributeField } from '../../CharacterSheet'
@@ -16,16 +16,17 @@ import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { AttributeColumn } from './AttributeColumn'
 import { AvField } from './AvField'
+import { FatigueTracker } from './FatigueTracker'
 import { RestingButtonGroup } from './RestingButtonGroup'
 import { RoundTextField } from './RoundTextField'
 import { StatusEffects } from './StatusEffects'
-import { WoundCheckbox } from './WoundCheckbox'
 
 export const StatisticsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const {
 		health,
+		fatigue,
 		av,
 		strength,
 		agility,
@@ -42,22 +43,41 @@ export const StatisticsTab: React.FC = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
+	// Calculate effective max HP (base max HP minus fatigue penalty)
+	const fatigueHpPenalty = (fatigue?.current || 0) * 2
+	const effectiveMaxHP = health.total - fatigueHpPenalty
+
+	// Count total wounds across all attributes
+	const totalWounds = [strength, agility, spirit, mind].filter(
+		(attr) => attr.wounded,
+	).length
+
+	// Ensure current HP doesn't exceed effective max HP
+	React.useEffect(() => {
+		if (health.current > effectiveMaxHP) {
+			updateCharacter({
+				statistics: { health: { current: effectiveMaxHP } },
+			})
+		}
+	}, [effectiveMaxHP, health.current])
+
 	return (
 		<Box
 			sx={{
 				display: 'flex',
-				columnGap: { md: 4, sm: 2, xs: 1 },
-				flexWrap: 'wrap',
+				flexDirection: 'column',
+				gap: 2,
+				maxWidth: '100%',
 			}}
 		>
+			{/* Top row - Resolve, Fatigue, Resting */}
 			<Box
 				sx={{
 					display: 'flex',
-					justifyContent: 'right',
-					flexWrap: 'wrap-reverse',
-					width: '100%',
-					flexGrow: 1,
-					gap: 2,
+					flexWrap: 'wrap',
+					gap: 1,
+					alignItems: 'flex-start',
+					justifyContent: 'space-between',
 				}}
 			>
 				<RoundTextField
@@ -72,26 +92,38 @@ export const StatisticsTab: React.FC = () => {
 					helperText="max. 3"
 					sx={{
 						mt: 0,
-						mr: 'auto',
 					}}
 				/>
+
 				<RestingButtonGroup
 					character={activeCharacter}
 					updateCharacter={updateCharacter}
 				/>
 			</Box>
+
+			{/* Status Effects */}
+			<StatusEffects statusEffects={statusEffects || []} />
+
+			{/* Main stats row */}
 			<Box
 				sx={{
 					display: 'flex',
 					flexWrap: 'wrap',
-					width: '100%',
 					gap: 1,
+					alignItems: 'flex-start',
 				}}
 			>
-				<Box sx={{ width: '100%' }}>
-					<StatusEffects statusEffects={statusEffects || []} />
-				</Box>
-				<Box sx={{ display: 'flex', width: '100%', overflowX: 'auto', gap: 1 }}>
+				{/* Attributes */}
+				<Box
+					sx={{
+						display: 'flex',
+						gap: 0.5,
+						overflowX: 'auto',
+						minWidth: 0,
+						flexShrink: 0,
+						height: '6.5rem',
+					}}
+				>
 					<AttributeColumn
 						attribute={strength}
 						updateAttribute={(update) =>
@@ -101,6 +133,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Strength"
 						icon={<PanTool fontSize="inherit" />}
+						totalWounds={totalWounds}
 					/>
 					<AttributeColumn
 						attribute={agility}
@@ -111,6 +144,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Agility"
 						icon={<DirectionsRun fontSize="inherit" />}
+						totalWounds={totalWounds}
 					/>
 					<AttributeColumn
 						attribute={spirit}
@@ -121,6 +155,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Spirit"
 						icon={<Visibility fontSize="inherit" />}
+						totalWounds={totalWounds}
 					/>
 					<AttributeColumn
 						attribute={mind}
@@ -131,103 +166,111 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Mind"
 						icon={<BubbleChart fontSize="inherit" />}
+						totalWounds={totalWounds}
 					/>
 				</Box>
-				<Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
-					<AvField />
+			</Box>
+
+			{/* Health, AV and Defenses row */}
+			<Box
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					gap: 1,
+					alignItems: 'flex-start',
+				}}
+			>
+				<AvField />
+
+				{/* HP section */}
+				<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'flex-start' }}>
 					<AttributeField
 						type="number"
 						value={health.current}
-						onChange={(event) =>
+						onChange={(event) => {
+							const newCurrent = Number(event.target.value)
+							const clampedCurrent = Math.min(newCurrent, effectiveMaxHP)
 							updateCharacter({
-								statistics: { health: { current: Number(event.target.value) } },
+								statistics: { health: { current: clampedCurrent } },
 							})
-						}
+						}}
 						label="Current HP"
 						sx={{
-							maxWidth: '6rem',
+							maxWidth: '5rem',
 							'& .MuiOutlinedInput-root': {
 								'& .MuiOutlinedInput-notchedOutline': {
 									borderWidth: '2px',
 								},
 							},
 						}}
+						InputProps={{
+							sx: {
+								color:
+									health.current === effectiveMaxHP
+										? 'success.main'
+										: health.current <= 0
+											? 'error.main'
+											: 'text.primary',
+							},
+						}}
 					/>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-						}}
-					>
-						<AttributeField
-							size="small"
-							type="number"
-							value={health.temp}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: { health: { temp: Number(event.target.value) } },
-								})
-							}
-							label="Temp. HP"
-						/>
-						<AttributeField
-							size="small"
-							type="number"
-							value={health.total}
-							onChange={(event) =>
-								updateCharacter({
-									statistics: { health: { total: Number(event.target.value) } },
-								})
-							}
-							label="Max. HP"
-							helperText="12 + STR"
-						/>
-					</Box>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'top',
-						}}
-					>
-						<Typography variant="caption">Wounds</Typography>
-						<Box>
-							<WoundCheckbox
-								{...health.woundOne}
-								setWound={(update) =>
-									updateCharacter({
-										statistics: {
-											health: { woundOne: { ...health.woundOne, ...update } },
-										},
-									})
-								}
-							/>
-							<WoundCheckbox
-								{...health.woundTwo}
-								setWound={(update) =>
-									updateCharacter({
-										statistics: {
-											health: { woundTwo: { ...health.woundTwo, ...update } },
-										},
-									})
-								}
-							/>
-							<WoundCheckbox
-								{...health.woundThree}
-								setWound={(update) =>
-									updateCharacter({
-										statistics: {
-											health: {
-												woundThree: { ...health.woundThree, ...update },
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+						{/* Tooltip for Temp HP */}
+						<Tooltip title="Temporary HP: Used first when taking damage. Does not replenish on rest and vanishes when depleted. Only the highest value applies if gained from multiple sources.">
+							<span>
+								<AttributeField
+									size="small"
+									type="number"
+									value={health.temp}
+									onChange={(event) =>
+										updateCharacter({
+											statistics: {
+												health: { temp: Number(event.target.value) },
 											},
-										},
-									})
-								}
-							/>
-						</Box>
+										})
+									}
+									label="Temp"
+									sx={{ maxWidth: '4rem', mb: 0 }}
+								/>
+							</span>
+						</Tooltip>
+						{/* Tooltip for Max HP */}
+						<Tooltip title="Max HP: 12 + Strength. Increases by +2 per level. Fatigue reduces max HP. Cannot exceed 50 from all sources.">
+							<span>
+								<AttributeField
+									size="small"
+									type="number"
+									value={health.total}
+									onChange={(event) =>
+										updateCharacter({
+											statistics: {
+												health: { total: Number(event.target.value) },
+											},
+										})
+									}
+									label="Max"
+									sx={{ maxWidth: '4rem', mb: 0 }}
+								/>
+							</span>
+						</Tooltip>
+					</Box>
+
+					{/* Fatigue Tracker */}
+					<Box sx={{ ml: 1, mt: '-2px', maxWidth: '5rem' }}>
+						<FatigueTracker
+							current={fatigue?.current || 0}
+							max={fatigue?.max || 6}
+							onFatigueChange={(newFatigue) =>
+								updateCharacter({
+									statistics: { fatigue: newFatigue },
+								})
+							}
+						/>
 					</Box>
 				</Box>
-				<Box sx={{ display: 'flex', gap: 1 }}>
+
+				<Box sx={{ display: 'flex', flexDirection: 'row', gap: 0.5 }}>
+					{/* Defenses */}
 					<AttributeField
 						type="number"
 						value={parry}
@@ -238,7 +281,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Parry"
 						helperText="7 + Fighting"
-						sx={{ maxWidth: '6rem' }}
+						sx={{ maxWidth: '5.5rem' }}
 					/>
 					<AttributeField
 						type="number"
@@ -250,7 +293,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Dodge"
 						helperText="5 + ½ AGI"
-						sx={{ maxWidth: '6rem' }}
+						sx={{ maxWidth: '5.5rem' }}
 					/>
 					<AttributeField
 						type="number"
@@ -262,7 +305,7 @@ export const StatisticsTab: React.FC = () => {
 						}
 						label="Resist"
 						helperText="5 + ½ SPI"
-						sx={{ maxWidth: '6rem' }}
+						sx={{ maxWidth: '5.5rem' }}
 					/>
 				</Box>
 			</Box>
