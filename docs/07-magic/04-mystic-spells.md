@@ -192,7 +192,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  0 | 0 | Medium (8) | Self | enchant (face)
 
-**Effect** <br/> You weave shadows around your face to create a false appearance, blending deception with twilight magic.<br/>On a success, your facial features become obscured and shift subtly, making you difficult to identify. You gain +1 boon on rolls to disguise yourself or avoid recognition. Anyone attempting to remember specific details about your appearance suffers +1 bane on their rolls.<br/>This spell lasts for a medium duration or until you choose to end it.<br/> 
+**Effect** <br/> You weave shadows around your face to create a false appearance, blending deception with twilight magic.<br/>On a success, your facial features become obscured and shift subtly, making you difficult to identify. You gain +1 boon on rolls to disguise yourself or avoid recognition. Whenever anyone attempts to remember specific details about your appearance, they must first succeed on a Spirit + Perception roll vs. your Resist. On a failure, they can only recall vague, conflicting details.<br/>This spell lasts for a medium duration or until you choose to end it.<br/> 
 
 ### Whispers of Doubt
 
@@ -258,6 +258,30 @@ toc_max_heading_level: 2
 
 **Effect** <br/> You lull a creature’s mind with whispers of sleep. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a medium duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they wake up.<br/> 
 
+### Aura of Fear
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Hard (10) | Self | concentrate
+
+**Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range.<br/>On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you until the start of their next turn and take +1 psychic damage (ignoring AV). A creature can only be affected by this saving throw once per turn.<br/>Creatures that succeed on their saving throw are immune to this spell's fear effect until the spell ends.<br/> 
+
+### Haunting Shadows
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You conjure vengeful shadows that follow and torment a target with chilling whispers and ghostly touches.<br/>On a success, spectral shadows begin haunting the target. The target takes +3 psychic damage at the start of each of their turns, followed by +2 frost damage. The shadows whisper disturbing thoughts, causing the target to suffer +1 bane on concentration rolls.<br/>The haunting lasts for a short duration. The target can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/> 
+
+### Twilight Bind
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You weave twilight magic into a creature's mind, temporarily turning them from foe to friend through shadow manipulation.<br/>The target must be of a tier equal to or lower than your Mysticism. On a success, the target becomes charmed by you and treats you and your allies as friends for a short duration. The charmed creature takes +2 psychic damage at the start of each of their turns as the foreign magic conflicts with their will.<br/>The creature can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. If the creature takes damage from you or your allies, they can immediately make this saving throw with +1 boon.<br/> 
+
 ### Everlasting Night
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -317,6 +341,14 @@ toc_max_heading_level: 2
  3 | 6 | Very Hard (12) | Self | concentrate, enchant (body)
 
 **Effect** <br/> You merge temporarily with the essence of twilight, gaining supernatural abilities in the balance between light and dark.<br/>On a success, you gain the following effects:<br/>- You become invisible while in dim light or darkness<br/>- You gain resistance to psychic and frost damage<br/>- You can pass through solid objects as if they were difficult terrain while invisible<br/>- Your twilight mysticism spells cost 1 less Focus (minimum 0)<br/>This transformation lasts for a short duration.<br/>
+
+### Nightmare Realm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Short | concentrate
+
+**Effect** <br/> You trap targets in a twilight realm of their own fears and doubts, dealing ongoing psychic and frost damage.<br/>Choose a close area within range. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 psychic damage and +2 frost damage, then is briefly frightened.<br/><strong>Strong.</strong> Each target takes +8 psychic damage and +4 frost damage, then is frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the fear early.<br/><strong>Critical.</strong> Each target takes +12 psychic damage and +6 frost damage, then is frightened and briefly stunned. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the fear early.<br/>The realm persists for a short duration, and any creature that starts their turn in the area takes +2 psychic damage.<br/>
 
 ## Life
 
@@ -590,13 +622,13 @@ toc_max_heading_level: 2
 
 **Effect** <br/> You channel entropic energy into a creature, causing their body to age and decay rapidly.<br/>On a success, the target suffers the following effects:<br/>- They take +2 necrotic damage at the start of each of their turns.<br/>- Their maximum HP is reduced by 2 at the start of each of their turns.<br/>- They suffer +1 bane on all physical attribute rolls (Strength and Agility).<br/>This spell lasts for a short duration. Any HP reduction from this spell is restored when the spell ends.<br/> 
 
-### Animate Dead
+### Mortal Coil
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | Very Hard (12) | Short | concentrate
+ 3 | 6 | vs. Resist | Medium | -
 
-**Effect** <br/> You channel necrotic energy into a corpse, temporarily reanimating it as an undead servant. You must target a corpse that has been dead no longer than one day.<br/>On a success, the corpse rises as a skeleton or zombie (your choice) under your control. It has the statistics of a Tier 2 companion but with the undead creature type and immunity to poison damage and the poisoned condition.<br/>You can command the undead as your companion for the spell's duration. The undead remains animated for a medium duration, until destroyed, or until you dismiss it.<br/> 
+**Effect** <br/> You bind a creature's life force to your own, creating a connection that shares their suffering while draining their vitality.<br/><strong>Weak.</strong> Deal +6 necrotic damage and regain half that amount as HP. The target's next successful attack against you deals half damage.<br/><strong>Strong.</strong> Deal +12 necrotic damage and regain half that amount as HP. The target's next two successful attacks against you deal half damage.<br/><strong>Critical.</strong> Deal +18 necrotic damage and regain half that amount as HP. For a short duration, any damage the target takes is also reflected to them as 2 additional necrotic damage.<br/> 
 
 ### Death's Door
 
@@ -606,13 +638,13 @@ toc_max_heading_level: 2
 
 **Effect** <br/> You show the target a vision of their own death, paralyzing them with the certainty of mortality. The target must be of a tier equal to or lower than your Mysticism.<br/><strong>Weak.</strong> The target is briefly stunned and takes +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> The target is stunned for a short duration and takes +8 psychic damage (ignoring AV). They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the stun early.<br/><strong>Critical.</strong> The target is paralyzed for a short duration and takes +12 psychic damage (ignoring AV). They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the paralysis early.<br/> 
 
-### Speak with Dead
+### Poison Bloom
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | Very Hard (12) | Touch | ritual (minutes)
+ 3 | 6 | vs. Resist | Short | -
 
-**Effect** <br/> You respectfully commune with the spirit of a deceased creature, seeking their wisdom and knowledge. The corpse must have died within the past week and still have a mouth.<br/>On a success, the spirit returns to briefly inhabit the corpse and answer your questions. You can ask up to three questions, which the spirit will answer truthfully to the best of their knowledge from when they were alive. The spirit speaks in any language they knew in life.<br/>The spirit's knowledge is limited to what they knew when alive, and they cannot learn new information or see events that occurred after their death. Once the spell ends, the same corpse cannot be targeted by this spell again.<br/>
+**Effect** <br/> You channel the essence of natural toxins into an area, creating a field where death's poisons flourish.<br/>Choose a close area within range. Target all living creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 poison damage and is briefly poisoned.<br/><strong>Strong.</strong> Each target takes +8 poison damage and is poisoned for a short duration. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the poisoned condition early.<br/><strong>Critical.</strong> Each target takes +12 poison damage and is poisoned for a short duration. Additionally, they suffer +2 poison damage at the start of each of their turns while poisoned. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the condition early.<br/>
 ## Nature
 
 ### Acid Splash
