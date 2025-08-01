@@ -53,6 +53,7 @@ import {
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import conditionsData from '@site/src/utils/json/conditions.json'
+import { sanitizeHtml } from '@site/src/utils/htmlSanitizer'
 
 // Icon mapping for status effects using Material-UI icons
 const statusEffectIcons: Record<StatusEffectType, React.ReactElement> = {
@@ -233,7 +234,7 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 				c.name.toLowerCase().replace(/\s*\(x\)/g, '') ===
 				conditionName.toLowerCase().replace(/\s*\(x\)/g, ''),
 		)
-		return condition?.description || ''
+		return sanitizeHtml(condition?.description || '')
 	}
 
 	const requiresIntensity = (conditionName: string) => {

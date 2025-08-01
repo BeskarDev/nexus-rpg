@@ -45,12 +45,6 @@ export const FatigueTracker: React.FC<FatigueProps> = ({
 					-{fatigueHpPenalty} max HP
 				</Typography>
 			)}
-			
-			{current >= max && (
-				<Typography variant="caption" color="error">
-					Unconscious
-				</Typography>
-			)}
 		</Box>
 	)
 }

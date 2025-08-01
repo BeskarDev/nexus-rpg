@@ -39,6 +39,26 @@ export const StatisticsTab: React.FC = () => {
 		statusEffects,
 	} = activeCharacter.statistics
 
+	React.useEffect(() => {
+		if (fatigue?.current === 6 && !statusEffects.some((s) => s.name === 'unconscious')) {
+			updateCharacter({
+				statistics: {
+					statusEffects: [
+						...statusEffects,
+						{
+							id: crypto.randomUUID(),
+							name: 'unconscious',
+							active: true,
+							duration: undefined,
+							narrativeDuration: undefined,
+							intensity: undefined,
+						},
+					],
+				},
+			})
+		}
+	}, [fatigue?.current])
+
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
@@ -102,7 +122,7 @@ export const StatisticsTab: React.FC = () => {
 			</Box>
 
 			{/* Status Effects */}
-			<StatusEffects statusEffects={statusEffects || []} />
+			<StatusEffects statusEffects={statusEffects} />
 
 			{/* Main stats row */}
 			<Box
