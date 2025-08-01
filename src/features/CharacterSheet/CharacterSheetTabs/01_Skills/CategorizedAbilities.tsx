@@ -119,10 +119,10 @@ export const CategorizedAbilities: React.FC = () => {
 		<Box sx={{ display: 'flex', flexDirection: 'column', width: '25rem' }}>
 			{/* Header with category settings menu */}
 			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-				<Typography variant="h6">
+				<SectionHeader sx={{ mb: 0}}>
 					Abilities
-				</Typography>
-				<Tooltip title="Category Settings">
+				</SectionHeader>
+				<Tooltip title="toggle ability categories">
 					<IconButton
 						size="small"
 						onClick={handleSettingsMenuOpen}
@@ -131,7 +131,7 @@ export const CategorizedAbilities: React.FC = () => {
 							borderColor: 'divider',
 						}}
 					>
-						<Build fontSize="small" />
+						<Build fontSize="inherit" />
 					</IconButton>
 				</Tooltip>
 				

@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
-import { AddCircle, BuildCircle, Reorder } from '@mui/icons-material'
+import { AddCircle, Build, BuildCircle, Reorder } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from 'react-beautiful-dnd'
@@ -126,14 +126,19 @@ export const PersonalTab: React.FC = () => {
 				
 				<Box sx={{ flexGrow: 1 }}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
-						<Typography fontWeight="bold">Your Character</Typography>
+						<SectionHeader sx={{ mb: 0 }}>Your Character</SectionHeader>
 						<Tooltip title="enable this to add, delete, or reorder lists">
-							<IconButton
+              <IconButton
+                size="small"
 								onClick={toggleReorder}
 								color={showControls ? 'primary' : 'default'}
-							>
-								<BuildCircle />
-							</IconButton>
+                sx={{ 
+                  border: '1px solid',
+                  borderColor: 'divider',
+                }}
+              >
+                <Build fontSize="inherit" />
+              </IconButton>
 						</Tooltip>
 					</Box>
 					<Box
