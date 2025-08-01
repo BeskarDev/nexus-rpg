@@ -179,6 +179,14 @@ toc_max_heading_level: 2
 
 **Effect** <br/> You magically animate the shadows around a creature, clawing and grasping for the target with ghostly coldness.<br/><strong>Weak. </strong>The target suffers +2 frost damage.<br/><strong>Strong.</strong> The target suffers +4 frost damage and is briefly slowed.<br/><strong>Critical.</strong> The target suffers +6 frost damage and is briefly grappled by the shadows.<br/>You can also cast this spell to cool down an object, such as extinguishing the last embers of a campfire.<br/> 
 
+### Obscuring Veil
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 0 | 0 | Medium (8) | Self | enchant (body)
+
+**Effect** <br/> You weave shadows around your face to create a false appearance, blending deception with twilight magic. On a success, your facial features become obscured and shift subtly, making you difficult to identify. You gain +1 boon on rolls to disguise yourself or avoid recognition. Whenever anyone attempts to remember specific details about your appearance, they must first succeed on a Spirit + Perception roll vs. your Resist. On a failure, they can only recall vague, conflicting details.<br/>This spell lasts for a medium duration or until you choose to end it.<br/> 
+
 ### Shadow Veil
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -219,6 +227,18 @@ toc_max_heading_level: 2
 **Effect** <br/> You curse a creature with the magical power of twilight, bringing the fear of night into their heart.<br/>On a success, the creature suffers the following effects:<br/>- They see in bright light as in dim light.<br/>- They suffer +1 bane on Perception and Initiative rolls.<br/>This curse lasts for a long duration.<br/> 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target suffers a weakness to either frost or psychic damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to both frost and psychic damage for the spell‘s duration.
+
+>
+
+### Haunting Shadows
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You conjure vengeful shadows that follow and torment a target with chilling whispers and ghostly touches. On a success, imaginary spectral shadows begin haunting the target. The target takes +2 psychic damage (ignoring AV) at the start of each of their turns. The shadows whisper disturbing thoughts, causing the target to suffer +1 bane on Spirit and Mind rolls.<br/>The haunting lasts for a short duration. The target can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> The target takes +4 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>The target takes +6 psychic damage (ignoring AV) instead.
 
 >
 
@@ -332,7 +352,11 @@ toc_max_heading_level: 2
 
 > **Heightened** <br/> You can switch places with your shadow clone as a Quick Action, teleporting to its location while it appears where you were standing.
 
->
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Medium | concentrate,  enchant (body)
+
+**Effect** <br/> You merge temporarily with the essence of twilight, gaining supernatural abilities in the balance between light and dark. On a success, you gain the following effects:<br/>- You become invisible while in dim light or darkness<br/>- You gain resistance to psychic and frost damage<br/>- You can pass through solid objects as if they were difficult terrain while invisible<br/>- Your twilight mysticism spells cost 2 less Focus (minimum 0)<br/>This transformation lasts for a short duration.<br/> 
 
 ### Embrace of Night
 
@@ -597,6 +621,18 @@ toc_max_heading_level: 2
  1 | 2 | vs. Dodge | Medium | -
 
 **Effect** <br/> You shoot a icy blue beam from the tip of your finger, rigidifying the target.<br/><strong>Weak.</strong> You deal +3 frost damage. <br/><strong>Strong.</strong> You deal +6 frost damage and the target is briefly slowed.<br/><strong>Critical.</strong> You deal +9 frost damage and the target is briefly dazed and slowed. 
+
+### Circle of Death
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | concentrate
+
+**Effect** <br/> You draw a mystical circle filled with symbols of mortality, creating a zone where death is inevitable. On a success, you create the circle in close range of the target location. While the circle remains, any creature that starts their turn within it takes +4 necrotic damage (ignoring AV) and can’t regain HP. Any undead creature takes +4 radiant damage (ignoring AV) instead, as their souls long to return to the grave.<br/>The circle lasts for a short duration.<br/> 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Each creature takes +6 necrotic or radiant damage (ignoring AV) instead.
+
+>
 
 ### Cloud of Sickness
 
@@ -865,7 +901,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> You dramatically accelerate the growth of plant life in the target area.<br/>On a success, choose one of the following effects:<br/><br/><strong>Barrier.</strong> Create a wall of tough plants which covers a close distance in width and height. The barrier has 20 HP, 2 AV (Light), 8 Defense, and provides cover. Climbing the barrier requires a Strength + Athletics roll.<br/><br/><strong>Platform.</strong> Create a stable platform of intertwined branches covering up to a close area that can support creature with medium Size or smaller. The platform can grow up to a short distance above ground level. Any creatures standing on the space where the branches grow into the air are safely lifted up with it. For damaging the platform, use the same statistics as for the Barrier option.<br/><br/><strong>Harvest.</strong> Magically fertilize soil within medium range of the target area. Any fruit, vegetable, or other crop on that soil will be immune against disease and grow twice as fast.<br/>When you choose Barrier or Platform, the plants remain for a short duration. If you choose Harvest, the effect remains until the plants are fully grown.<br/> 
+**Effect** <br/> You dramatically accelerate the growth of plant life in the target area.<br/>On a success, choose one of the following effects:<br/><br/><strong>Barrier.</strong> Create a wall of tough plants which covers a close distance in width and height. The barrier has 20 HP, 2 AV (light), 8 Defense, and provides cover. Climbing the barrier requires a Strength + Athletics roll.<br/><br/><strong>Platform.</strong> Create a stable platform of intertwined branches covering up to a close area that can support creature with medium Size or smaller. The platform can grow up to a short distance above ground level. Any creatures standing on the space where the branches grow into the air are safely lifted up with it. For damaging the platform, use the same statistics as for the Barrier option.<br/><br/><strong>Harvest.</strong> Magically fertilize soil within medium range of the target area. Any fruit, vegetable, or other crop on that soil will be immune against disease and grow twice as fast.<br/>When you choose Barrier or Platform, the plants remain for a short duration. If you choose Harvest, the effect remains until the plants are fully grown.<br/> 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Apply these effects for each option:<br/><br/><strong>Barrier. </strong>The wall can cover up to a short distance in width and height instead. It also has 30 HP and 4 AV instead.<br/><br/><strong>Platform. </strong>The platform can grow up to a medium distance above ground level instead.<br/><br/><strong>Harvest.</strong> Fertilize soil within long range of the target area instead.
 
@@ -945,7 +981,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You infuse a large or smaller object or structure made from stone or wood with primal energy, bringing it to life as a construct.<br/>On a success, the target object animates and becomes a creature under your control with statistics equal to a Tier 3 companion with the Size of the original object. In addition, use the following traits for it:<br/><br/><strong>HP</strong>. +10 HP<br/><br/><strong>AV.</strong> + Tier (natural Heavy)<br/><br/><strong>Attributes.</strong> +1d Strength, -1d Agility<br/><br/><strong>Defenses.</strong> +1 Parry, -1 Dodge<br/><br/><strong>Skills.</strong> Fighting (-1 rank), Fortitude<br/><br/><strong>Immunities.</strong> poison damage, poisoned, bleeding, prone, unconscious<br/><br/><strong>Resistances.</strong> psychic<br/><br/><strong>Weaknesses.</strong> blast<br/><br/><strong>Attacks</strong><br/>- Slam (<em>crush</em>). On a strong or critical hit, the target falls prone.<br/>The construct remains animated for a short duration, until dismissed by you, or until it’s HP are reduced to 0.<br/> 
+**Effect** <br/> You infuse a large or smaller object or structure made from stone or wood with primal energy, bringing it to life as a construct.<br/>On a success, the target object animates and becomes a creature under your control with statistics equal to a Tier 3 companion with the Size of the original object. In addition, use the following traits for it:<br/><br/><strong>HP</strong>. +10 HP<br/><br/><strong>AV.</strong> + Tier (natural heavy)<br/><br/><strong>Attributes.</strong> +1d Strength, -1d Agility<br/><br/><strong>Defenses.</strong> +1 Parry, -1 Dodge<br/><br/><strong>Skills.</strong> Fighting (-1 rank), Fortitude<br/><br/><strong>Immunities.</strong> poison damage, poisoned, bleeding, prone, unconscious<br/><br/><strong>Resistances.</strong> psychic<br/><br/><strong>Weaknesses.</strong> blast<br/><br/><strong>Attacks</strong><br/>- Slam (<em>crush</em>). On a strong or critical hit, the target falls prone.<br/>The construct remains animated for a short duration, until dismissed by you, or until it’s HP are reduced to 0.<br/> 
 
 ### Nature's Judgment
 
@@ -961,7 +997,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  3 | 6 | vs. Resist | Short | concentrate
 
-**Effect** <br/> You turn a creature into inanimate stone. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the target starts to turn to stone and is stunned.<br/>At the end of their next turn, repeat the roll for this spell. If you succeed, the petrification continues and they are now paralyzed.<br/>At the end of their turn after that, repeat the roll for this spell again. If you succeed again, they are fully petrified.<br/>A petrified creature is paralyzed and unconscious. A petrified creature also has 10 AV (Heavy natural armor) unless they had more AV normally.<br/>The creature remains petrified while you remain concentrated on the spell. When the creature takes damage during this time, make a Concentration roll as if you took the same amount of damage. After a medium duration concentrating on this spell, the petrification becomes permanent and has to be lifted by an effect that can break curses or petrification (for example, the Break Curse spell or a Potion of Stone to Flesh).<br/> 
+**Effect** <br/> You turn a creature into inanimate stone. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the target starts to turn to stone and is stunned.<br/>At the end of their next turn, repeat the roll for this spell. If you succeed, the petrification continues and they are now paralyzed.<br/>At the end of their turn after that, repeat the roll for this spell again. If you succeed again, they are fully petrified.<br/>A petrified creature is paralyzed and unconscious. A petrified creature also has 10 AV (heavy natural armor) unless they had more AV normally.<br/>The creature remains petrified while you remain concentrated on the spell. When the creature takes damage during this time, make a Concentration roll as if you took the same amount of damage. After a medium duration concentrating on this spell, the petrification becomes permanent and has to be lifted by an effect that can break curses or petrification (for example, the Break Curse spell or a Potion of Stone to Flesh).<br/> 
 
 ### Control Weather
 
