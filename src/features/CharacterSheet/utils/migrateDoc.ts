@@ -182,7 +182,7 @@ const migrateSkills = (data: any): Skills => {
 const migrateItems = (data: any): Items => {
 	return {
 		...data,
-		weapons: data.weapons.map((weapon) => ({
+		weapons: (data.weapons || []).map((weapon) => ({
 			...weapon,
 			id: weapon.id || crypto.randomUUID(),
 			damage:
@@ -198,7 +198,7 @@ const migrateItems = (data: any): Items => {
 						}
 					: {...weapon.damage, other: weapon.damage.other || 0 },
 		})),
-		items: data.items.map((item) => ({
+		items: (data.items || []).map((item) => ({
 			...item,
 			id: item.id || crypto.randomUUID(),
 			container: item.container || 'backpack',

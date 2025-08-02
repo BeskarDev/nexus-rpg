@@ -32,7 +32,7 @@ import { WeaponSearchDialog, EquipmentSearchDialog } from './SearchDialog'
 export const ItemsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { coins, encumbrance, weapons, items, itemLocationVisibility } = useMemo(
+	const { coins, encumbrance, weapons = [], items = [], itemLocationVisibility } = useMemo(
 		() => activeCharacter.items,
 		[activeCharacter.items],
 	)
@@ -55,7 +55,7 @@ export const ItemsTab: React.FC = () => {
 			// Migration logic for existing data
 			if (weapon.location) {
 				// Map old location names to new ones
-				switch (weapon.location) {
+				switch (weapon.location as any) {
 					case 'weapons':
 					case 'Equipped Weapons':
 						location = 'worn'
@@ -88,7 +88,7 @@ export const ItemsTab: React.FC = () => {
 			// Migration logic for existing data
 			if (item.location) {
 				// Map old location names to new ones
-				switch (item.location) {
+				switch (item.location as any) {
 					case 'weapons':
 					case 'Equipped Weapons':
 						location = 'worn'
@@ -144,7 +144,7 @@ export const ItemsTab: React.FC = () => {
 		})
 
 		// Check equipped weapons for shields
-		const equippedWeapons = itemsByLocation['weapons'] as Weapon[]
+		const equippedWeapons = itemsByLocation['worn'].filter(item => 'damage' in item) as Weapon[]
 		equippedWeapons.forEach((weapon) => {
 			if (weapon.properties) {
 				// Look for shield indicators in properties or name

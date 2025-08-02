@@ -94,6 +94,13 @@ export const {
 			if (!Array.isArray(character.statistics.statusEffects)) {
 				character.statistics.statusEffects = []
 			}
+			// Migrate older characters that don't have weapons/items arrays
+			if (!character.items.weapons) {
+				character.items.weapons = []
+			}
+			if (!character.items.items) {
+				character.items.items = []
+			}
 			state.activeCharacter = character
 		},
 		updateCharacter: (state, action: PayloadAction<DeepPartial<Character>>) => {
@@ -641,11 +648,10 @@ export const {
 			const currentVisibility = state.activeCharacter.items.itemLocationVisibility?.[location] ?? true
 			if (!state.activeCharacter.items.itemLocationVisibility) {
 				state.activeCharacter.items.itemLocationVisibility = {
-					'Equipped Weapons': true,
-					'Equipped Gear': true,
-					'Carried Items': true,
-					'On Mount': true,
-					'In Storage': true,
+					'worn': true,
+					'carried': true,
+					'mount': true,
+					'storage': true,
 				}
 			}
 			state.activeCharacter.items.itemLocationVisibility[location] = !currentVisibility
