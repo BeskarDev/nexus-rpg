@@ -291,17 +291,17 @@ export const ItemsTab: React.FC = () => {
 		<Box
 			sx={{
 				display: 'flex',
-				flexDirection: 'column',
-				maxWidth: '65rem',
+				columnGap: { md: 4, sm: 2, xs: 1 },
+				flexWrap: 'wrap',
+				maxWidth: '47rem',
 			}}
 		>
-			{/* Header with coins and load info */}
 			<Box
 				sx={{
 					display: 'flex',
 					alignItems: 'center',
 					flexWrap: 'wrap',
-					mb: 2,
+					mb: 1,
 					columnGap: 1,
 				}}
 			>
@@ -397,7 +397,7 @@ export const ItemsTab: React.FC = () => {
 							- You suffer +1 bane on Strength/Agility rolls for any kind of
 							movement (climbing, swimming, jumping, …)
 							<br />
-							- You can't take the Dash Action or the Evade Quick Action
+							- You can’t take the Dash Action or the Evade Quick Action
 							<br />- Whenever you suffer Fatigue during travel, you suffer +1
 							Fatigue
 							<br />
@@ -410,165 +410,127 @@ export const ItemsTab: React.FC = () => {
 				</Tooltip>
 			</Box>
 
-			{/* Header with settings menu */}
-			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-				<SectionHeader sx={{ mb: 0}}>
-					Items & Equipment
-				</SectionHeader>
-				<Tooltip title="toggle inventory categories">
-					<IconButton
-						size="small"
-						onClick={handleSettingsMenuOpen}
-						sx={{ 
-							border: '1px solid',
-							borderColor: 'divider',
+			<Box sx={{ width: '100%', flexGrow: 1 }} />
+
+			<Accordion defaultExpanded sx={{ maxWidth: '65rem', flexGrow: 1, mb: 1 }}>
+				<AccordionSummary expandIcon={<ExpandMore />}>
+					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+						<SectionHeader>Weapons</SectionHeader>
+						<Tooltip
+							title={
+								<>
+									damage = base + (weapon * SL) + other
+									<br />
+									base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND
+									(arcana)
+								</>
+							}
+						>
+							<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+						</Tooltip>
+						<IconButton
+							size="small"
+							onClick={(event) => {
+								addNewWeapon()
+								event.stopPropagation()
+							}}
+							sx={{ mb: 0.75 }}
+						>
+							<AddCircle />
+						</IconButton>
+						<Tooltip title="Search weapons from database">
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									setWeaponSearchOpen(true)
+									event.stopPropagation()
+								}}
+								sx={{ ml: -1, mb: 0.75 }}
+							>
+								<Search />
+							</IconButton>
+						</Tooltip>
+					</Box>
+				</AccordionSummary>
+				<AccordionDetails
+					sx={{ overflowY: 'auto', maxHeight: { sm: '20vh', sx: '35vh' } }}
+				>
+					<DynamicList droppableId="weapons" onDragEnd={onWeaponReorder}>
+						{weapons.map((w, index) => (
+							<DynamicListItem
+								key={w.id}
+								id={w.id}
+								index={index}
+								sx={{ alignItems: 'baseline' }}
+							>
+								<WeaponRow
+									key={w.id}
+									weapon={w}
+									updateWeapon={(update) => updateWeapon(update, index)}
+									deleteWeapon={() => deleteWeapon(w)}
+								/>
+							</DynamicListItem>
+						))}
+					</DynamicList>
+				</AccordionDetails>
+			</Accordion>
+
+			<Box sx={{ width: '100%', flexGrow: 1 }} />
+
+			<Accordion defaultExpanded sx={{ maxWidth: '65rem', flexGrow: 1, mb: 1 }}>
+				<AccordionSummary expandIcon={<ExpandMore />}>
+					<Box
+						sx={{
+							display: 'flex',
+							gap: 1,
+							alignItems: 'center',
 						}}
 					>
-						<Build fontSize="inherit" />
-					</IconButton>
-				</Tooltip>
-				
-				<Menu
-					anchorEl={settingsMenuAnchor}
-					open={Boolean(settingsMenuAnchor)}
-					onClose={handleSettingsMenuClose}
-					transformOrigin={{ horizontal: 'left', vertical: 'top' }}
-					anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-				>
-					{ITEM_LOCATIONS.map((location) => {
-						const isVisible = itemLocationVisibility?.[location] ?? true
-						return (
-							<MenuItem key={location} dense>
-								<FormControlLabel
-									control={
-										<Checkbox
-											checked={isVisible}
-											onChange={() => {
-												toggleLocationVisibility(location)
-											}}
-											size="small"
-										/>
-									}
-									label={location}
-									sx={{ width: '100%', margin: 0 }}
-								/>
-							</MenuItem>
-						)
-					})}
-				</Menu>
-			</Box>
-			
-			{/* Categorized inventory sections */}
-			{ITEM_LOCATIONS.map((location) => {
-				const locationItems = itemsByLocation[location]
-				const isVisible = itemLocationVisibility?.[location] ?? true
-				
-				if (!isVisible) {
-					return null
-				}
-				
-				return (
-					<Accordion 
-						key={location}
-						defaultExpanded 
-						sx={{ flexGrow: 1, mb: 1 }}
-					>
-						<AccordionSummary expandIcon={<ExpandMore />}>
-							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-								<SectionHeader sx={{ mb: 0 }}>{location}</SectionHeader>
-								{location === 'Equipped Weapons' && (
-									<>
-										<Tooltip title="damage = base + (weapon * SL) + other, base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND (arcana)">
-											<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
-										</Tooltip>
-										<IconButton
-											size="small"
-											onClick={(event) => {
-												addNewWeaponToLocation('Equipped Weapons')
-												event.stopPropagation()
-											}}
-											sx={{ mb: 0.75 }}
-										>
-											<AddCircle />
-										</IconButton>
-										<Tooltip title="Search weapons from database">
-											<IconButton
-												size="small"
-												onClick={(event) => {
-													setWeaponSearchOpen(true)
-													event.stopPropagation()
-												}}
-												sx={{ ml: -1, mb: 0.75 }}
-											>
-												<Search />
-											</IconButton>
-										</Tooltip>
-									</>
-								)}
-								{location !== 'Equipped Weapons' && (
-									<>
-										<IconButton
-											size="small"
-											onClick={(event) => {
-												addNewItemToLocation(location)
-												event.stopPropagation()
-											}}
-											sx={{ mb: 0.75 }}
-										>
-											<AddCircle />
-										</IconButton>
-										{location === 'Equipped Gear' && (
-											<Tooltip title="Search Equipment & Items">
-												<IconButton
-													size="small"
-													onClick={(event) => {
-														setEquipmentSearchOpen(true)
-														event.stopPropagation()
-													}}
-													sx={{ ml: -1, mb: 0.75 }}
-												>
-													<Search />
-												</IconButton>
-											</Tooltip>
-										)}
-									</>
-								)}
-							</Box>
-						</AccordionSummary>
-						<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
-							<DynamicList 
-								droppableId={`items-${location}`} 
-								onDragEnd={onItemReorder}
+						<SectionHeader>Equipment & Items</SectionHeader>
+						<IconButton
+							size="small"
+							onClick={(event) => {
+								addNewItem()
+								event.stopPropagation()
+							}}
+							sx={{ mb: 0.75 }}
+						>
+							<AddCircle />
+						</IconButton>
+						<Tooltip title="Search Equipment & Items">
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									setEquipmentSearchOpen(true)
+									event.stopPropagation()
+								}}
+								sx={{ ml: -1, mb: 0.75 }}
 							>
-								{locationItems.map((item, index) => (
-									<DynamicListItem
-										key={item.id}
-										id={item.id}
-										index={index}
-										sx={{ alignItems: 'baseline' }}
-									>
-										{'damage' in item ? (
-											<WeaponRow
-												key={item.id}
-												weapon={item as Weapon}
-												updateWeapon={(update) => updateWeapon(update, weapons.findIndex(w => w.id === item.id))}
-												deleteWeapon={() => deleteWeapon(item as Weapon)}
-											/>
-										) : (
-											<ItemRow
-												key={item.id}
-												item={item as Item}
-												updateItem={(update) => updateItem(update, items.findIndex(i => i.id === item.id))}
-												deleteItem={() => deleteItem(item as Item)}
-											/>
-										)}
-									</DynamicListItem>
-								))}
-							</DynamicList>
-						</AccordionDetails>
-					</Accordion>
-				)
-			})}
+								<Search />
+							</IconButton>
+						</Tooltip>
+					</Box>
+				</AccordionSummary>
+				<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '42.5vh' }}>
+					<DynamicList droppableId="items" onDragEnd={onItemReorder}>
+						{items.map((i, index) => (
+							<DynamicListItem
+								key={i.id}
+								id={i.id}
+								index={index}
+								sx={{ alignItems: 'baseline' }}
+							>
+								<ItemRow
+									key={i.id}
+									item={i}
+									updateItem={(update) => updateItem(update, index)}
+									deleteItem={() => deleteItem(i)}
+								/>
+							</DynamicListItem>
+						))}
+					</DynamicList>
+				</AccordionDetails>
+			</Accordion>
 
 			<WeaponSearchDialog
 				open={weaponSearchOpen}
@@ -586,4 +548,3 @@ export const ItemsTab: React.FC = () => {
 		</Box>
 	)
 }
-

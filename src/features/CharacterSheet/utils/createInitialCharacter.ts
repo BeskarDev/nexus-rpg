@@ -1,4 +1,5 @@
 import { Character } from '../../../types/Character'
+import { ItemLocation } from '../../../types/ItemLocation'
 import { v4 as uuidv4 } from 'uuid'
 
 export const createInitialCharacter = (name: string, playerName: string, includeStartingGear: boolean = false): Character => {
@@ -80,6 +81,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 		encumbrance: {
 			encumberedAt: 0,
 			overencumberedAt: 0,
+			carryModifier: 0,
 			currentLoad: 0,
 		},
 		weapons: [],
@@ -94,6 +96,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 0,
 				container: 'worn',
 				amount: 1,
+				location: 'Equipped Gear' as ItemLocation,
 			},
 			{
 				id: uuidv4(),
@@ -105,6 +108,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 0,
 				container: 'worn',
 				amount: 2,
+				location: 'Equipped Gear' as ItemLocation,
 			},
 			{
 				id: uuidv4(),
@@ -116,6 +120,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 0,
 				container: 'worn',
 				amount: 1,
+				location: 'Equipped Gear' as ItemLocation,
 			},
 			{
 				id: uuidv4(),
@@ -127,6 +132,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 1,
 				container: 'backpack',
 				amount: 1,
+				location: 'Carried Items' as ItemLocation,
 			},
 			{
 				id: uuidv4(),
@@ -138,6 +144,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 1,
 				container: 'backpack',
 				amount: 1,
+				location: 'Carried Items' as ItemLocation,
 			},
 			{
 				id: uuidv4(),
@@ -149,6 +156,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 1,
 				container: 'backpack',
 				amount: 1,
+				location: 'Carried Items' as ItemLocation,
 			},
 			{
 				id: uuidv4(),
@@ -160,6 +168,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 1,
 				container: 'backpack',
 				amount: 1,
+				location: 'Carried Items' as ItemLocation,
 			},
 			{
 				id: uuidv4(),
@@ -171,6 +180,7 @@ export const createInitialCharacter = (name: string, playerName: string, include
 				load: 1,
 				container: 'backpack',
 				amount: 1,
+				location: 'Carried Items' as ItemLocation,
 			},
 		] : [],
 	},

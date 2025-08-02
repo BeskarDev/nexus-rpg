@@ -17,6 +17,7 @@ import {
 	equipmentSlotTypeArray,
 	Item,
 } from '../../../../types/Character'
+import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
 
 export type ItemRowProps = {
@@ -83,19 +84,17 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						label="Properties"
 						sx={{ maxWidth: { sm: '12rem', xs: '7rem' } }}
 					/>
-					{initialItem.container != 'worn' && (
+					<AttributeField
+						disabled
+						size="small"
+						variant="standard"
+						value={initialItem.location || 'Carried Items'}
+						label="Location"
+						sx={{ maxWidth: '6rem' }}
+					/>
+					{initialItem.location === 'Equipped Gear' && initialItem.slot && (
 						<AttributeField
 							disabled
-							size="small"
-							variant="standard"
-							value={initialItem.container}
-							label="Storage"
-							sx={{ maxWidth: '3.75rem' }}
-						/>
-					)}
-					{initialItem.container == 'worn' && (
-						<AttributeField
-              disabled
 							size="small"
 							variant="standard"
 							value={initialItem.slot}
@@ -163,21 +162,21 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						select
 						size="small"
 						variant="standard"
-						value={initialItem.container}
+						value={initialItem.location || 'Carried Items'}
 						onChange={(event) =>
-							updateItem({ container: event.target.value as ContainerType })
+							updateItem({ location: event.target.value as ItemLocation })
 						}
-						label="Storage"
-						sx={{ maxWidth: '5rem' }}
+						label="Location"
+						sx={{ maxWidth: '8rem' }}
 					>
-						{containerTypeArray.map((container) => (
-							<MenuItem key={container} value={container}>
-								{container}
+						{ITEM_LOCATIONS.filter(loc => loc !== 'Equipped Weapons').map((location) => (
+							<MenuItem key={location} value={location}>
+								{location}
 							</MenuItem>
 						))}
 					</AttributeField>
 					<AttributeField
-						disabled={initialItem.container != 'worn'}
+						disabled={!initialItem.location || initialItem.location !== 'Equipped Gear'}
 						select
 						size="small"
 						variant="standard"
@@ -194,6 +193,22 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
+					{(initialItem.location === 'On Mount' || initialItem.location === 'In Storage') && (
+						<TextField
+							size="small"
+							variant="standard"
+							value={initialItem.location === 'On Mount' ? (initialItem.mountInfo || '') : (initialItem.storageInfo || '')}
+							onChange={(event) => {
+								if (initialItem.location === 'On Mount') {
+									updateItem({ mountInfo: event.target.value })
+								} else {
+									updateItem({ storageInfo: event.target.value })
+								}
+							}}
+							label={initialItem.location === 'On Mount' ? 'Mount' : 'Storage Location'}
+							sx={{ maxWidth: '8rem' }}
+						/>
+					)}
 					<IconButton
 						size="small"
 						edge="end"

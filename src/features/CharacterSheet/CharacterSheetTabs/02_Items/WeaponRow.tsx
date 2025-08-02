@@ -5,11 +5,13 @@ import {
 	Box,
 	IconButton,
 	TextField,
+	MenuItem,
 } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete, ExpandMore } from '@mui/icons-material'
 import { Weapon } from '../../../../types/Character'
+import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
 import { DamageFields } from '../DamageFields'
 
@@ -85,6 +87,14 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						label="Properties"
 						sx={{ maxWidth: '18rem' }}
 					/>
+					<AttributeField
+						disabled
+						size="small"
+						variant="standard"
+						value={initialWeapon.location || 'Equipped Weapons'}
+						label="Location"
+						sx={{ maxWidth: '6rem' }}
+					/>
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -134,6 +144,39 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						label="Load"
 						sx={{ maxWidth: '4rem', flexGrow: 0 }}
 					/>
+					<AttributeField
+						select
+						size="small"
+						variant="standard"
+						value={initialWeapon.location || 'Equipped Weapons'}
+						onChange={(event) =>
+							updateWeapon({ location: event.target.value as ItemLocation })
+						}
+						label="Location"
+						sx={{ maxWidth: '8rem' }}
+					>
+						{ITEM_LOCATIONS.map((location) => (
+							<MenuItem key={location} value={location}>
+								{location}
+							</MenuItem>
+						))}
+					</AttributeField>
+					{(initialWeapon.location === 'On Mount' || initialWeapon.location === 'In Storage') && (
+						<TextField
+							size="small"
+							variant="standard"
+							value={initialWeapon.location === 'On Mount' ? (initialWeapon.mountInfo || '') : (initialWeapon.storageInfo || '')}
+							onChange={(event) => {
+								if (initialWeapon.location === 'On Mount') {
+									updateWeapon({ mountInfo: event.target.value })
+								} else {
+									updateWeapon({ storageInfo: event.target.value })
+								}
+							}}
+							label={initialWeapon.location === 'On Mount' ? 'Mount' : 'Storage Location'}
+							sx={{ maxWidth: '8rem' }}
+						/>
+					)}
 					<IconButton
 						size="small"
 						edge="end"
