@@ -206,8 +206,8 @@ def main():
         # Parse content based on type
         if args.type == 'mystic-spells':
             data = parse_mystic_spells(content)
-            headers = ['name', 'tradition', 'rank', 'focus', 'target', 'range', 'properties', 'effect', 'heightened']
-            write_csv(data, output_path, headers)
+            # For backward compatibility, use the legacy format
+            write_csv(data, output_path)
         else:  # generic
             tables = parse_generic_table(content)
             if tables:
