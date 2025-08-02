@@ -88,20 +88,10 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						disabled
 						size="small"
 						variant="standard"
-						value={initialItem.location || 'Carried Items'}
-						label="Location"
+						value={initialItem.location === 'worn' && initialItem.slot ? initialItem.slot : (initialItem.location || 'carried')}
+						label={initialItem.location === 'worn' && initialItem.slot ? "Slot" : "Location"}
 						sx={{ maxWidth: '6rem' }}
 					/>
-					{initialItem.location === 'Equipped Gear' && initialItem.slot && (
-						<AttributeField
-							disabled
-							size="small"
-							variant="standard"
-							value={initialItem.slot}
-							label="Slot"
-							sx={{ maxWidth: '3.75rem' }}
-						/>
-					)}
 					<AttributeField
 						size="small"
 						variant="standard"
@@ -162,21 +152,26 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						select
 						size="small"
 						variant="standard"
-						value={initialItem.location || 'Carried Items'}
-						onChange={(event) =>
-							updateItem({ location: event.target.value as ItemLocation })
-						}
+						value={initialItem.location || 'carried'}
+						onChange={(event) => {
+							const newLocation = event.target.value as ItemLocation
+							updateItem({ location: newLocation })
+							// Clear slot if not worn
+							if (newLocation !== 'worn' && initialItem.slot) {
+								updateItem({ slot: '' })
+							}
+						}}
 						label="Location"
 						sx={{ maxWidth: '8rem' }}
 					>
-						{ITEM_LOCATIONS.filter(loc => loc !== 'Equipped Weapons').map((location) => (
+						{ITEM_LOCATIONS.filter(loc => loc !== 'weapons').map((location) => (
 							<MenuItem key={location} value={location}>
 								{location}
 							</MenuItem>
 						))}
 					</AttributeField>
 					<AttributeField
-						disabled={!initialItem.location || initialItem.location !== 'Equipped Gear'}
+						disabled={!initialItem.location || initialItem.location !== 'worn'}
 						select
 						size="small"
 						variant="standard"
@@ -193,19 +188,19 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
-					{(initialItem.location === 'On Mount' || initialItem.location === 'In Storage') && (
+					{(initialItem.location === 'mount' || initialItem.location === 'storage') && (
 						<TextField
 							size="small"
 							variant="standard"
-							value={initialItem.location === 'On Mount' ? (initialItem.mountInfo || '') : (initialItem.storageInfo || '')}
+							value={initialItem.location === 'mount' ? (initialItem.mountInfo || '') : (initialItem.storageInfo || '')}
 							onChange={(event) => {
-								if (initialItem.location === 'On Mount') {
+								if (initialItem.location === 'mount') {
 									updateItem({ mountInfo: event.target.value })
 								} else {
 									updateItem({ storageInfo: event.target.value })
 								}
 							}}
-							label={initialItem.location === 'On Mount' ? 'Mount' : 'Storage Location'}
+							label={initialItem.location === 'mount' ? 'Mount' : 'Storage Location'}
 							sx={{ maxWidth: '8rem' }}
 						/>
 					)}

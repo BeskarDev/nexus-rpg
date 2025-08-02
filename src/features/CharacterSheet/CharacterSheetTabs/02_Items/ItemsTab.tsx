@@ -43,16 +43,16 @@ export const ItemsTab: React.FC = () => {
 	// Organize items and weapons by location
 	const itemsByLocation = useMemo(() => {
 		const organized: Record<ItemLocation, (Item | Weapon)[]> = {
-			'Equipped Weapons': [],
-			'Equipped Gear': [],
-			'Carried Items': [],
-			'On Mount': [],
-			'In Storage': []
+			'weapons': [],
+			'worn': [],
+			'carried': [],
+			'mount': [],
+			'storage': []
 		}
 
 		// Add weapons to their locations (with fallback for existing data without location)
 		weapons.forEach((weapon) => {
-			const location = weapon.location || 'Equipped Weapons'
+			const location = weapon.location || 'weapons'
 			organized[location].push(weapon)
 		})
 
@@ -62,11 +62,30 @@ export const ItemsTab: React.FC = () => {
 			
 			// Migration logic for existing data
 			if (item.location) {
-				location = item.location
+				// Map old location names to new ones
+				switch (item.location) {
+					case 'Equipped Weapons':
+						location = 'weapons'
+						break
+					case 'Equipped Gear':
+						location = 'worn'
+						break
+					case 'Carried Items':
+						location = 'carried'
+						break
+					case 'On Mount':
+						location = 'mount'
+						break
+					case 'In Storage':
+						location = 'storage'
+						break
+					default:
+						location = item.location as ItemLocation
+				}
 			} else if (item.container === 'worn') {
-				location = 'Equipped Gear'
+				location = 'worn'
 			} else {
-				location = 'Carried Items'
+				location = 'carried'
 			}
 			
 			organized[location].push(item)
@@ -82,7 +101,7 @@ export const ItemsTab: React.FC = () => {
 		let shieldAV = 0
 
 		// Check equipped gear for armor and helmet
-		const equippedGear = itemsByLocation['Equipped Gear'] as Item[]
+		const equippedGear = itemsByLocation['worn'] as Item[]
 		equippedGear.forEach((item) => {
 			if (item.properties) {
 				// Look for both "AV +X" and "+X AV" patterns
@@ -99,7 +118,7 @@ export const ItemsTab: React.FC = () => {
 		})
 
 		// Check equipped weapons for shields
-		const equippedWeapons = itemsByLocation['Equipped Weapons'] as Weapon[]
+		const equippedWeapons = itemsByLocation['weapons'] as Weapon[]
 		equippedWeapons.forEach((weapon) => {
 			if (weapon.properties) {
 				// Look for shield indicators in properties or name
@@ -150,8 +169,8 @@ export const ItemsTab: React.FC = () => {
 		
 		// Count weapons from equipped weapons and carried items
 		const carriedWeapons = [
-			...itemsByLocation['Equipped Weapons'],
-			...itemsByLocation['Carried Items'].filter(item => 'damage' in item)
+			...itemsByLocation['weapons'],
+			...itemsByLocation['carried'].filter(item => 'damage' in item)
 		] as Weapon[]
 		
 		const weaponLoad = carriedWeapons
@@ -160,8 +179,8 @@ export const ItemsTab: React.FC = () => {
 		
 		// Count items from equipped gear and carried items
 		const carriedItems = [
-			...itemsByLocation['Equipped Gear'],
-			...itemsByLocation['Carried Items'].filter(item => !('damage' in item))
+			...itemsByLocation['worn'],
+			...itemsByLocation['carried'].filter(item => !('damage' in item))
 		] as Item[]
 		
 		const itemLoad = carriedItems
@@ -268,12 +287,12 @@ export const ItemsTab: React.FC = () => {
 	}
 
 	// Add new items to specific locations
-	const addNewWeaponToLocation = (location: ItemLocation = 'Equipped Weapons') => {
+	const addNewWeaponToLocation = (location: ItemLocation = 'weapons') => {
 		dispatch(characterSheetActions.addNewWeapon())
 		// The weapon will be created with the default location
 	}
 
-	const addNewItemToLocation = (location: ItemLocation = 'Carried Items') => {
+	const addNewItemToLocation = (location: ItemLocation = 'carried') => {
 		dispatch(characterSheetActions.addNewItem())
 		// The item will be created with the default location
 	}
@@ -466,6 +485,18 @@ export const ItemsTab: React.FC = () => {
 				if (!isVisible) {
 					return null
 				}
+
+				// Define location display names and headers
+				const getLocationDisplayName = (loc: ItemLocation) => {
+					switch (loc) {
+						case 'weapons': return 'Weapons'
+						case 'worn': return 'Worn Equipment'
+						case 'carried': return 'Carried Items'
+						case 'mount': return 'On Mount'
+						case 'storage': return 'In Storage'
+						default: return loc
+					}
+				}
 				
 				return (
 					<Accordion 
@@ -475,8 +506,8 @@ export const ItemsTab: React.FC = () => {
 					>
 						<AccordionSummary expandIcon={<ExpandMore />}>
 							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-								<SectionHeader sx={{ mb: 0 }}>{location}</SectionHeader>
-								{location === 'Equipped Weapons' && (
+								<SectionHeader sx={{ mb: 0 }}>{getLocationDisplayName(location)}</SectionHeader>
+								{location === 'weapons' && (
 									<>
 										<Tooltip title="damage = base + (weapon * SL) + other, base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND (arcana)">
 											<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
@@ -484,7 +515,7 @@ export const ItemsTab: React.FC = () => {
 										<IconButton
 											size="small"
 											onClick={(event) => {
-												addNewWeaponToLocation('Equipped Weapons')
+												addNewWeaponToLocation('weapons')
 												event.stopPropagation()
 											}}
 											sx={{ mb: 0.75 }}
@@ -505,7 +536,7 @@ export const ItemsTab: React.FC = () => {
 										</Tooltip>
 									</>
 								)}
-								{location !== 'Equipped Weapons' && (
+								{location !== 'weapons' && (
 									<>
 										<IconButton
 											size="small"
@@ -517,7 +548,7 @@ export const ItemsTab: React.FC = () => {
 										>
 											<AddCircle />
 										</IconButton>
-										{location === 'Equipped Gear' && (
+										{location === 'worn' && (
 											<Tooltip title="Search Equipment & Items">
 												<IconButton
 													size="small"

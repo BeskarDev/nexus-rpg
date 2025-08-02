@@ -219,7 +219,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
-				location: 'Equipped Weapons' as ItemLocation,
+				location: 'weapons' as ItemLocation,
 			})
 		},
 		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
@@ -240,7 +240,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
-				location: 'Equipped Weapons' as ItemLocation,
+				location: 'weapons' as ItemLocation,
 				...weapon,
 			}))
 			state.activeCharacter.items.weapons.unshift(...newWeapons)
@@ -257,7 +257,7 @@ export const {
 				load: 0,
 				container: '' as const,
 				amount: 1,
-				location: 'Carried Items' as ItemLocation,
+				location: 'carried' as ItemLocation,
 				...item,
 			}))
 			state.activeCharacter.items.items.unshift(...newItems)
@@ -305,7 +305,7 @@ export const {
 				container: 'backpack',
 				slot: '',
 				amount: 1,
-				location: 'Carried Items' as ItemLocation,
+				location: 'carried' as ItemLocation,
 			})
 		},
 		updateItem: (

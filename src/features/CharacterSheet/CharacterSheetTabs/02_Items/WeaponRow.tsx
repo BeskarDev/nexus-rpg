@@ -91,7 +91,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						disabled
 						size="small"
 						variant="standard"
-						value={initialWeapon.location || 'Equipped Weapons'}
+						value={initialWeapon.location || 'weapons'}
 						label="Location"
 						sx={{ maxWidth: '6rem' }}
 					/>
@@ -148,7 +148,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						select
 						size="small"
 						variant="standard"
-						value={initialWeapon.location || 'Equipped Weapons'}
+						value={initialWeapon.location || 'weapons'}
 						onChange={(event) =>
 							updateWeapon({ location: event.target.value as ItemLocation })
 						}
@@ -161,19 +161,19 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
-					{(initialWeapon.location === 'On Mount' || initialWeapon.location === 'In Storage') && (
+					{(initialWeapon.location === 'mount' || initialWeapon.location === 'storage') && (
 						<TextField
 							size="small"
 							variant="standard"
-							value={initialWeapon.location === 'On Mount' ? (initialWeapon.mountInfo || '') : (initialWeapon.storageInfo || '')}
+							value={initialWeapon.location === 'mount' ? (initialWeapon.mountInfo || '') : (initialWeapon.storageInfo || '')}
 							onChange={(event) => {
-								if (initialWeapon.location === 'On Mount') {
+								if (initialWeapon.location === 'mount') {
 									updateWeapon({ mountInfo: event.target.value })
 								} else {
 									updateWeapon({ storageInfo: event.target.value })
 								}
 							}}
-							label={initialWeapon.location === 'On Mount' ? 'Mount' : 'Storage Location'}
+							label={initialWeapon.location === 'mount' ? 'Mount' : 'Storage Location'}
 							sx={{ maxWidth: '8rem' }}
 						/>
 					)}
