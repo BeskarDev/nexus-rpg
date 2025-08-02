@@ -12,6 +12,7 @@ import {
 	Weapon,
 } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
+import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 
@@ -218,6 +219,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
+				location: 'Equipped Weapons',
 			})
 		},
 		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
@@ -238,6 +240,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
+				location: 'Equipped Weapons',
 				...weapon,
 			}))
 			state.activeCharacter.items.weapons.unshift(...newWeapons)
@@ -254,6 +257,7 @@ export const {
 				load: 0,
 				container: '' as const,
 				amount: 1,
+				location: 'Carried Items',
 				...item,
 			}))
 			state.activeCharacter.items.items.unshift(...newItems)
@@ -301,6 +305,7 @@ export const {
 				container: 'backpack',
 				slot: '',
 				amount: 1,
+				location: 'Carried Items',
 			})
 		},
 		updateItem: (
@@ -590,6 +595,24 @@ export const {
 				}
 			}
 			state.activeCharacter.skills.abilityCategoryVisibility[category] = !currentVisibility
+		},
+		toggleItemLocationVisibility: (
+			state,
+			action: PayloadAction<ItemLocation>,
+		) => {
+			const location = action.payload
+			state.unsavedChanges = true
+			const currentVisibility = state.activeCharacter.items.itemLocationVisibility?.[location] ?? true
+			if (!state.activeCharacter.items.itemLocationVisibility) {
+				state.activeCharacter.items.itemLocationVisibility = {
+					'Equipped Weapons': true,
+					'Equipped Gear': true,
+					'Carried Items': true,
+					'On Mount': true,
+					'In Storage': true,
+				}
+			}
+			state.activeCharacter.items.itemLocationVisibility[location] = !currentVisibility
 		},
 		// Status Effects actions
 		addStatusEffect: (state, action: PayloadAction<StatusEffectType>) => {

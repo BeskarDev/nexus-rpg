@@ -1,6 +1,7 @@
 import { DocumentData, DocumentReference } from 'firebase/firestore'
 import { AbilityTag } from './AbilityTag'
 import { ActionType } from './ActionType'
+import { ItemLocation } from './ItemLocation'
 
 export type CharacterDocument = {
 	docRef: DocumentReference<DocumentData, DocumentData>
@@ -156,6 +157,7 @@ export type Items = {
 	}
 	weapons: Weapon[]
 	items: Item[]
+	itemLocationVisibility?: Record<ItemLocation, boolean>
 }
 
 export type Weapon = {
@@ -166,6 +168,9 @@ export type Weapon = {
 	description: string
 	cost: number
 	load: number
+	location: ItemLocation
+	mountInfo?: string
+	storageInfo?: string
 }
 
 export type Damage = {
@@ -224,6 +229,9 @@ export type Item = Equipment & {
 	id: string
 	container: ContainerType
 	amount: number
+	location: ItemLocation
+	mountInfo?: string
+	storageInfo?: string
 }
 
 export const containerTypeArray = ['', 'worn', 'quick', 'backpack'] as const
