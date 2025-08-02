@@ -164,7 +164,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						label="Location"
 						sx={{ maxWidth: '8rem' }}
 					>
-						{ITEM_LOCATIONS.filter(loc => loc !== 'weapons').map((location) => (
+						{ITEM_LOCATIONS.map((location) => (
 							<MenuItem key={location} value={location}>
 								{location}
 							</MenuItem>

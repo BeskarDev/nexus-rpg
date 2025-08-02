@@ -219,7 +219,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
-				location: 'weapons' as ItemLocation,
+				location: 'worn' as ItemLocation,
 			})
 		},
 		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
@@ -240,7 +240,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
-				location: 'weapons' as ItemLocation,
+				location: 'worn' as ItemLocation,
 				...weapon,
 			}))
 			state.activeCharacter.items.weapons.unshift(...newWeapons)
@@ -306,6 +306,42 @@ export const {
 				slot: '',
 				amount: 1,
 				location: 'carried' as ItemLocation,
+			})
+		},
+		addNewItemToLocation: (state, action: PayloadAction<ItemLocation>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.items.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: '',
+				properties: '',
+				description: '',
+				cost: 0,
+				load: 0,
+				container: action.payload === 'worn' ? 'worn' : 'backpack',
+				slot: action.payload === 'worn' ? '' : '',
+				amount: 1,
+				location: action.payload,
+			})
+		},
+		addNewWeaponToLocation: (state, action: PayloadAction<ItemLocation>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.weapons.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: '',
+				damage: {
+					base: 'STR',
+					weapon: 0,
+					other: 0,
+					otherWeak: 0,
+					otherStrong: 0,
+					otherCritical: 0,
+					type: 'physical',
+				},
+				properties: '',
+				description: '',
+				cost: 0,
+				load: 0,
+				location: action.payload,
 			})
 		},
 		updateItem: (

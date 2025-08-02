@@ -43,7 +43,6 @@ export const ItemsTab: React.FC = () => {
 	// Organize items and weapons by location
 	const itemsByLocation = useMemo(() => {
 		const organized: Record<ItemLocation, (Item | Weapon)[]> = {
-			'weapons': [],
 			'worn': [],
 			'carried': [],
 			'mount': [],
@@ -52,7 +51,33 @@ export const ItemsTab: React.FC = () => {
 
 		// Add weapons to their locations (with fallback for existing data without location)
 		weapons.forEach((weapon) => {
-			const location = weapon.location || 'weapons'
+			let location: ItemLocation
+			// Migration logic for existing data
+			if (weapon.location) {
+				// Map old location names to new ones
+				switch (weapon.location) {
+					case 'weapons':
+					case 'Equipped Weapons':
+						location = 'worn'
+						break
+					case 'Equipped Gear':
+						location = 'worn'
+						break
+					case 'Carried Items':
+						location = 'carried'
+						break
+					case 'On Mount':
+						location = 'mount'
+						break
+					case 'In Storage':
+						location = 'storage'
+						break
+					default:
+						location = weapon.location as ItemLocation
+				}
+			} else {
+				location = 'worn' // Default for weapons without location
+			}
 			organized[location].push(weapon)
 		})
 
@@ -64,8 +89,9 @@ export const ItemsTab: React.FC = () => {
 			if (item.location) {
 				// Map old location names to new ones
 				switch (item.location) {
+					case 'weapons':
 					case 'Equipped Weapons':
-						location = 'weapons'
+						location = 'worn'
 						break
 					case 'Equipped Gear':
 						location = 'worn'
@@ -167,9 +193,9 @@ export const ItemsTab: React.FC = () => {
 		// Only count items and weapons that are carried (not on mount or in storage)
 		let totalLoad = 0
 		
-		// Count weapons from equipped weapons and carried items
+		// Count weapons from worn and carried items
 		const carriedWeapons = [
-			...itemsByLocation['weapons'],
+			...itemsByLocation['worn'].filter(item => 'damage' in item),
 			...itemsByLocation['carried'].filter(item => 'damage' in item)
 		] as Weapon[]
 		
@@ -177,9 +203,9 @@ export const ItemsTab: React.FC = () => {
 			.map((w) => w.load)
 			.reduce((partialSum, a) => partialSum + a, 0)
 		
-		// Count items from equipped gear and carried items
+		// Count items from worn and carried items
 		const carriedItems = [
-			...itemsByLocation['worn'],
+			...itemsByLocation['worn'].filter(item => !('damage' in item)),
 			...itemsByLocation['carried'].filter(item => !('damage' in item))
 		] as Item[]
 		
@@ -287,14 +313,12 @@ export const ItemsTab: React.FC = () => {
 	}
 
 	// Add new items to specific locations
-	const addNewWeaponToLocation = (location: ItemLocation = 'weapons') => {
-		dispatch(characterSheetActions.addNewWeapon())
-		// The weapon will be created with the default location
+	const addNewWeaponToLocation = (location: ItemLocation = 'worn') => {
+		dispatch(characterSheetActions.addNewWeaponToLocation(location))
 	}
 
 	const addNewItemToLocation = (location: ItemLocation = 'carried') => {
-		dispatch(characterSheetActions.addNewItem())
-		// The item will be created with the default location
+		dispatch(characterSheetActions.addNewItemToLocation(location))
 	}
 
 	const getLoadColor = (theme: Theme) => {
@@ -304,6 +328,85 @@ export const ItemsTab: React.FC = () => {
 			return theme.palette.warning.main
 		}
 		return theme.palette.text.primary
+	}
+
+	// Calculate load for a specific location
+	const calculateLocationLoad = (location: ItemLocation): number => {
+		const locationItems = itemsByLocation[location]
+		const weaponLoad = locationItems
+			.filter(item => 'damage' in item)
+			.map((w) => (w as Weapon).load)
+			.reduce((sum, load) => sum + load, 0)
+		
+		const itemLoad = locationItems
+			.filter(item => !('damage' in item))
+			.map((i) => (i as Item).load * (i as Item).amount)
+			.reduce((sum, load) => sum + load, 0)
+		
+		return weaponLoad + itemLoad
+	}
+
+	// Component for displaying location load info
+	const LocationLoadDisplay: React.FC<{ 
+		location: ItemLocation, 
+		name: string, 
+		currentLoad: number, 
+		maxLoad: number,
+		onNameChange: (name: string) => void,
+		onMaxLoadChange: (maxLoad: number) => void 
+	}> = ({ location, name, currentLoad, maxLoad, onNameChange, onMaxLoadChange }) => {
+		const getLoadColor = (theme: Theme) => {
+			if (maxLoad > 0) {
+				if (currentLoad >= maxLoad) {
+					return theme.palette.error.main
+				} else if (currentLoad >= maxLoad * 0.8) {
+					return theme.palette.warning.main
+				}
+			}
+			return theme.palette.text.primary
+		}
+
+		return (
+			<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 1 }}>
+				<AttributeField
+					size="small"
+					value={name}
+					onChange={(event) => onNameChange(event.target.value)}
+					label={location === 'mount' ? 'Mount Name' : 'Storage Name'}
+					sx={{ maxWidth: '10rem' }}
+				/>
+				<AttributeField
+					disabled
+					size="small"
+					value={currentLoad}
+					label="Current Load"
+					sx={{
+						maxWidth: '6rem',
+						'& .MuiFormLabel-root.MuiInputLabel-root.Mui-disabled': {
+							color: (theme) => getLoadColor(theme),
+						},
+						'& .MuiOutlinedInput-root': {
+							'& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled': {
+								color: (theme) => getLoadColor(theme),
+								['-webkit-text-fill-color']: (theme) => getLoadColor(theme),
+							},
+							'& .MuiOutlinedInput-notchedOutline': {
+								borderColor: (theme) => getLoadColor(theme),
+								borderWidth: '2px',
+							},
+						},
+					}}
+				/>
+				<AttributeField
+					type="number"
+					size="small"
+					value={maxLoad}
+					onChange={(event) => onMaxLoadChange(Number(event.target.value))}
+					label="Max Load"
+					sx={{ maxWidth: '6rem' }}
+				/>
+			</Box>
+		)
 	}
 
 	return (
@@ -454,152 +557,396 @@ export const ItemsTab: React.FC = () => {
 					transformOrigin={{ horizontal: 'left', vertical: 'top' }}
 					anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
 				>
-					{ITEM_LOCATIONS.map((location) => {
-						const isVisible = itemLocationVisibility?.[location] ?? true
-						return (
-							<MenuItem key={location} dense>
-								<FormControlLabel
-									control={
-										<Checkbox
-											checked={isVisible}
-											onChange={() => {
-												toggleLocationVisibility(location)
-											}}
-											size="small"
-										/>
-									}
-									label={location}
-									sx={{ width: '100%', margin: 0 }}
+					<MenuItem dense>
+						<FormControlLabel
+							control={
+								<Checkbox
+									checked={itemLocationVisibility?.['worn'] ?? true}
+									onChange={() => {
+										toggleLocationVisibility('worn')
+									}}
+									size="small"
 								/>
-							</MenuItem>
-						)
-					})}
+							}
+							label="Weapons & Equipment"
+							sx={{ width: '100%', margin: 0 }}
+						/>
+					</MenuItem>
+					<MenuItem dense>
+						<FormControlLabel
+							control={
+								<Checkbox
+									checked={itemLocationVisibility?.['carried'] ?? true}
+									onChange={() => {
+										toggleLocationVisibility('carried')
+									}}
+									size="small"
+								/>
+							}
+							label="Inventory"
+							sx={{ width: '100%', margin: 0 }}
+						/>
+					</MenuItem>
+					<MenuItem dense>
+						<FormControlLabel
+							control={
+								<Checkbox
+									checked={itemLocationVisibility?.['mount'] ?? true}
+									onChange={() => {
+										toggleLocationVisibility('mount')
+									}}
+									size="small"
+								/>
+							}
+							label="On Mount"
+							sx={{ width: '100%', margin: 0 }}
+						/>
+					</MenuItem>
+					<MenuItem dense>
+						<FormControlLabel
+							control={
+								<Checkbox
+									checked={itemLocationVisibility?.['storage'] ?? true}
+									onChange={() => {
+										toggleLocationVisibility('storage')
+									}}
+									size="small"
+								/>
+							}
+							label="In Storage"
+							sx={{ width: '100%', margin: 0 }}
+						/>
+					</MenuItem>
 				</Menu>
 			</Box>
 			
 			{/* Categorized inventory sections */}
-			{ITEM_LOCATIONS.map((location) => {
-				const locationItems = itemsByLocation[location]
-				const isVisible = itemLocationVisibility?.[location] ?? true
-				
-				if (!isVisible) {
-					return null
-				}
-
-				// Define location display names and headers
-				const getLocationDisplayName = (loc: ItemLocation) => {
-					switch (loc) {
-						case 'weapons': return 'Weapons'
-						case 'worn': return 'Worn Equipment'
-						case 'carried': return 'Carried Items'
-						case 'mount': return 'On Mount'
-						case 'storage': return 'In Storage'
-						default: return loc
-					}
-				}
-				
-				return (
-					<Accordion 
-						key={location}
-						defaultExpanded 
-						sx={{ flexGrow: 1, mb: 1 }}
-					>
-						<AccordionSummary expandIcon={<ExpandMore />}>
-							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-								<SectionHeader sx={{ mb: 0 }}>{getLocationDisplayName(location)}</SectionHeader>
-								{location === 'weapons' && (
-									<>
-										<Tooltip title="damage = base + (weapon * SL) + other, base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND (arcana)">
-											<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
-										</Tooltip>
-										<IconButton
-											size="small"
-											onClick={(event) => {
-												addNewWeaponToLocation('weapons')
-												event.stopPropagation()
-											}}
-											sx={{ mb: 0.75 }}
-										>
-											<AddCircle />
-										</IconButton>
-										<Tooltip title="Search weapons from database">
-											<IconButton
-												size="small"
-												onClick={(event) => {
-													setWeaponSearchOpen(true)
-													event.stopPropagation()
-												}}
-												sx={{ ml: -1, mb: 0.75 }}
-											>
-												<Search />
-											</IconButton>
-										</Tooltip>
-									</>
-								)}
-								{location !== 'weapons' && (
-									<>
-										<IconButton
-											size="small"
-											onClick={(event) => {
-												addNewItemToLocation(location)
-												event.stopPropagation()
-											}}
-											sx={{ mb: 0.75 }}
-										>
-											<AddCircle />
-										</IconButton>
-										{location === 'worn' && (
-											<Tooltip title="Search Equipment & Items">
-												<IconButton
-													size="small"
-													onClick={(event) => {
-														setEquipmentSearchOpen(true)
-														event.stopPropagation()
-													}}
-													sx={{ ml: -1, mb: 0.75 }}
-												>
-													<Search />
-												</IconButton>
-											</Tooltip>
-										)}
-									</>
-								)}
-							</Box>
-						</AccordionSummary>
-						<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
-							<DynamicList 
-								droppableId={`items-${location}`} 
-								onDragEnd={onItemReorder}
+			{/* Weapons Section (from worn location) */}
+			{(itemLocationVisibility?.['worn'] ?? true) && (
+				<Accordion 
+					key="weapons-section"
+					defaultExpanded 
+					sx={{ flexGrow: 1, mb: 1 }}
+				>
+					<AccordionSummary expandIcon={<ExpandMore />}>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<SectionHeader sx={{ mb: 0 }}>Weapons</SectionHeader>
+							<Tooltip title="damage = base + (weapon * SL) + other, base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND (arcana)">
+								<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+							</Tooltip>
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									addNewWeaponToLocation('worn')
+									event.stopPropagation()
+								}}
+								sx={{ mb: 0.75 }}
 							>
-								{locationItems.map((item, index) => (
-									<DynamicListItem
+								<AddCircle />
+							</IconButton>
+							<Tooltip title="Search weapons from database">
+								<IconButton
+									size="small"
+									onClick={(event) => {
+										setWeaponSearchOpen(true)
+										event.stopPropagation()
+									}}
+									sx={{ ml: -1, mb: 0.75 }}
+								>
+									<Search />
+								</IconButton>
+							</Tooltip>
+						</Box>
+					</AccordionSummary>
+					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
+						<DynamicList 
+							droppableId="items-weapons" 
+							onDragEnd={onItemReorder}
+						>
+							{itemsByLocation['worn'].filter(item => 'damage' in item).map((weapon, index) => (
+								<DynamicListItem
+									key={weapon.id}
+									id={weapon.id}
+									index={index}
+									sx={{ alignItems: 'baseline' }}
+								>
+									<WeaponRow
+										key={weapon.id}
+										weapon={weapon as Weapon}
+										updateWeapon={(update) => updateWeapon(update, weapons.findIndex(w => w.id === weapon.id))}
+										deleteWeapon={() => deleteWeapon(weapon as Weapon)}
+									/>
+								</DynamicListItem>
+							))}
+						</DynamicList>
+					</AccordionDetails>
+				</Accordion>
+			)}
+
+			{/* Equipment Section (non-weapon items from worn location) */}
+			{(itemLocationVisibility?.['worn'] ?? true) && (
+				<Accordion 
+					key="equipment-section"
+					defaultExpanded 
+					sx={{ flexGrow: 1, mb: 1 }}
+				>
+					<AccordionSummary expandIcon={<ExpandMore />}>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<SectionHeader sx={{ mb: 0 }}>Equipment</SectionHeader>
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									addNewItemToLocation('worn')
+									event.stopPropagation()
+								}}
+								sx={{ mb: 0.75 }}
+							>
+								<AddCircle />
+							</IconButton>
+						</Box>
+					</AccordionSummary>
+					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
+						<DynamicList 
+							droppableId="items-equipment" 
+							onDragEnd={onItemReorder}
+						>
+							{itemsByLocation['worn'].filter(item => !('damage' in item)).map((item, index) => (
+								<DynamicListItem
+									key={item.id}
+									id={item.id}
+									index={index}
+									sx={{ alignItems: 'baseline' }}
+								>
+									<ItemRow
 										key={item.id}
-										id={item.id}
-										index={index}
-										sx={{ alignItems: 'baseline' }}
-									>
-										{'damage' in item ? (
-											<WeaponRow
-												key={item.id}
-												weapon={item as Weapon}
-												updateWeapon={(update) => updateWeapon(update, weapons.findIndex(w => w.id === item.id))}
-												deleteWeapon={() => deleteWeapon(item as Weapon)}
-											/>
-										) : (
-											<ItemRow
-												key={item.id}
-												item={item as Item}
-												updateItem={(update) => updateItem(update, items.findIndex(i => i.id === item.id))}
-												deleteItem={() => deleteItem(item as Item)}
-											/>
-										)}
-									</DynamicListItem>
-								))}
-							</DynamicList>
-						</AccordionDetails>
-					</Accordion>
-				)
-			})}
+										item={item as Item}
+										updateItem={(update) => updateItem(update, items.findIndex(i => i.id === item.id))}
+										deleteItem={() => deleteItem(item as Item)}
+									/>
+								</DynamicListItem>
+							))}
+						</DynamicList>
+					</AccordionDetails>
+				</Accordion>
+			)}
+
+			{/* Inventory Section (carried items) */}
+			{(itemLocationVisibility?.['carried'] ?? true) && (
+				<Accordion 
+					key="inventory-section"
+					defaultExpanded 
+					sx={{ flexGrow: 1, mb: 1 }}
+				>
+					<AccordionSummary expandIcon={<ExpandMore />}>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<SectionHeader sx={{ mb: 0 }}>Inventory</SectionHeader>
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									addNewItemToLocation('carried')
+									event.stopPropagation()
+								}}
+								sx={{ mb: 0.75 }}
+							>
+								<AddCircle />
+							</IconButton>
+							<Tooltip title="Search Equipment & Items">
+								<IconButton
+									size="small"
+									onClick={(event) => {
+										setEquipmentSearchOpen(true)
+										event.stopPropagation()
+									}}
+									sx={{ ml: -1, mb: 0.75 }}
+								>
+									<Search />
+								</IconButton>
+							</Tooltip>
+						</Box>
+					</AccordionSummary>
+					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
+						<DynamicList 
+							droppableId="items-carried" 
+							onDragEnd={onItemReorder}
+						>
+							{itemsByLocation['carried'].map((item, index) => (
+								<DynamicListItem
+									key={item.id}
+									id={item.id}
+									index={index}
+									sx={{ alignItems: 'baseline' }}
+								>
+									{'damage' in item ? (
+										<WeaponRow
+											key={item.id}
+											weapon={item as Weapon}
+											updateWeapon={(update) => updateWeapon(update, weapons.findIndex(w => w.id === item.id))}
+											deleteWeapon={() => deleteWeapon(item as Weapon)}
+										/>
+									) : (
+										<ItemRow
+											key={item.id}
+											item={item as Item}
+											updateItem={(update) => updateItem(update, items.findIndex(i => i.id === item.id))}
+											deleteItem={() => deleteItem(item as Item)}
+										/>
+									)}
+								</DynamicListItem>
+							))}
+						</DynamicList>
+					</AccordionDetails>
+				</Accordion>
+			)}
+
+			{/* Mount Section */}
+			{(itemLocationVisibility?.['mount'] ?? true) && (
+				<Accordion 
+					key="mount-section"
+					defaultExpanded 
+					sx={{ flexGrow: 1, mb: 1 }}
+				>
+					<AccordionSummary expandIcon={<ExpandMore />}>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<SectionHeader sx={{ mb: 0 }}>On Mount</SectionHeader>
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									addNewItemToLocation('mount')
+									event.stopPropagation()
+								}}
+								sx={{ mb: 0.75 }}
+							>
+								<AddCircle />
+							</IconButton>
+						</Box>
+					</AccordionSummary>
+					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
+						<LocationLoadDisplay
+							location="mount"
+							name={itemsByLocation['mount'][0]?.mountInfo || ''}
+							currentLoad={calculateLocationLoad('mount')}
+							maxLoad={0} // TODO: Add mount max load to character data
+							onNameChange={(name) => {
+								// Update all items in this location with the new mount name
+								itemsByLocation['mount'].forEach((item) => {
+									if ('damage' in item) {
+										updateWeapon({ mountInfo: name }, weapons.findIndex(w => w.id === item.id))
+									} else {
+										updateItem({ mountInfo: name }, items.findIndex(i => i.id === item.id))
+									}
+								})
+							}}
+							onMaxLoadChange={(maxLoad) => {
+								// TODO: Add mount max load storage to character data
+							}}
+						/>
+						<DynamicList 
+							droppableId="items-mount" 
+							onDragEnd={onItemReorder}
+						>
+							{itemsByLocation['mount'].map((item, index) => (
+								<DynamicListItem
+									key={item.id}
+									id={item.id}
+									index={index}
+									sx={{ alignItems: 'baseline' }}
+								>
+									{'damage' in item ? (
+										<WeaponRow
+											key={item.id}
+											weapon={item as Weapon}
+											updateWeapon={(update) => updateWeapon(update, weapons.findIndex(w => w.id === item.id))}
+											deleteWeapon={() => deleteWeapon(item as Weapon)}
+										/>
+									) : (
+										<ItemRow
+											key={item.id}
+											item={item as Item}
+											updateItem={(update) => updateItem(update, items.findIndex(i => i.id === item.id))}
+											deleteItem={() => deleteItem(item as Item)}
+										/>
+									)}
+								</DynamicListItem>
+							))}
+						</DynamicList>
+					</AccordionDetails>
+				</Accordion>
+			)}
+
+			{/* Storage Section */}
+			{(itemLocationVisibility?.['storage'] ?? true) && (
+				<Accordion 
+					key="storage-section"
+					defaultExpanded 
+					sx={{ flexGrow: 1, mb: 1 }}
+				>
+					<AccordionSummary expandIcon={<ExpandMore />}>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<SectionHeader sx={{ mb: 0 }}>In Storage</SectionHeader>
+							<IconButton
+								size="small"
+								onClick={(event) => {
+									addNewItemToLocation('storage')
+									event.stopPropagation()
+								}}
+								sx={{ mb: 0.75 }}
+							>
+								<AddCircle />
+							</IconButton>
+						</Box>
+					</AccordionSummary>
+					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
+						<LocationLoadDisplay
+							location="storage"
+							name={itemsByLocation['storage'][0]?.storageInfo || ''}
+							currentLoad={calculateLocationLoad('storage')}
+							maxLoad={0} // TODO: Add storage max load to character data
+							onNameChange={(name) => {
+								// Update all items in this location with the new storage name
+								itemsByLocation['storage'].forEach((item) => {
+									if ('damage' in item) {
+										updateWeapon({ storageInfo: name }, weapons.findIndex(w => w.id === item.id))
+									} else {
+										updateItem({ storageInfo: name }, items.findIndex(i => i.id === item.id))
+									}
+								})
+							}}
+							onMaxLoadChange={(maxLoad) => {
+								// TODO: Add storage max load storage to character data
+							}}
+						/>
+						<DynamicList 
+							droppableId="items-storage" 
+							onDragEnd={onItemReorder}
+						>
+							{itemsByLocation['storage'].map((item, index) => (
+								<DynamicListItem
+									key={item.id}
+									id={item.id}
+									index={index}
+									sx={{ alignItems: 'baseline' }}
+								>
+									{'damage' in item ? (
+										<WeaponRow
+											key={item.id}
+											weapon={item as Weapon}
+											updateWeapon={(update) => updateWeapon(update, weapons.findIndex(w => w.id === item.id))}
+											deleteWeapon={() => deleteWeapon(item as Weapon)}
+										/>
+									) : (
+										<ItemRow
+											key={item.id}
+											item={item as Item}
+											updateItem={(update) => updateItem(update, items.findIndex(i => i.id === item.id))}
+											deleteItem={() => deleteItem(item as Item)}
+										/>
+									)}
+								</DynamicListItem>
+							))}
+						</DynamicList>
+					</AccordionDetails>
+				</Accordion>
+			)}
 
 			<WeaponSearchDialog
 				open={weaponSearchOpen}

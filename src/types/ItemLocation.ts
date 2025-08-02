@@ -1,5 +1,4 @@
 export const ITEM_LOCATIONS = [
-	'weapons',
 	'worn', 
 	'carried',
 	'mount',
