@@ -16,7 +16,7 @@ if __name__ == "__main__":
       "armor.md": ("Type", "###"),
       "equipment.md": ("Category", "##"),
       "talents.md": ("Skill Requirement", "##"),
-      "weapons.md": ("Type", "##"),
+      "weapons.md": ("Type", "###"),
       "combat-arts.md": ("Category", "###"),
   }
 

@@ -249,7 +249,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | blast (cone)
 
-**Effect** <br/> Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +8 psychic damage (ignoring AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignoring AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignoring AV) instead.
 
@@ -973,7 +973,7 @@ toc_max_heading_level: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +6 damage against each target.<br/><strong>Strong.</strong> Deal +12 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +18 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects.<br/> 
+**Effect** <br/> You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +6 damage against each target.<br/><strong>Strong.</strong> Deal +12 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +18 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects.<br/> 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The explosion deals +8/+16/+24 damage to all targets instead.
 
