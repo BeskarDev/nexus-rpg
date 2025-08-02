@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Convert Markdown files to CSV format for importing into databases.
-Enhanced to support all markdown table formats and preserve HTML for Notion CSV import.
+Enhanced to support all markdown table formats with plain text output for Notion compatibility.
 """
 
 import os
@@ -10,11 +10,10 @@ import csv
 import argparse
 from pathlib import Path
 
-def sanitize_html_for_notion(text):
+def strip_all_formatting(text):
     """
-    Sanitize and format HTML content for Notion CSV import.
-    Converts markdown formatting to HTML tags that Notion recognizes.
-    Preserves newlines and formatting for proper Notion display.
+    Strip all HTML tags and markdown formatting for plain text CSV output.
+    Notion doesn't support HTML or markdown in CSV imports, so we remove all formatting.
     """
     if not text:
         return ""
@@ -22,20 +21,23 @@ def sanitize_html_for_notion(text):
     # Clean up the text first
     text = text.strip()
     
-    # Convert markdown bold (**text**) to HTML bold (<strong>text</strong>)
-    text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', text)
+    # Remove markdown bold (**text**) formatting
+    text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
     
-    # Convert markdown italic (*text*) to HTML italic (<em>text</em>)  
-    text = re.sub(r'\*(?!\*)(.*?)\*(?!\*)', r'<em>\1</em>', text)
+    # Remove markdown italic (*text*) formatting
+    text = re.sub(r'\*(?!\*)(.*?)\*(?!\*)', r'\1', text)
     
-    # Preserve existing <br/> and <br> tags
-    text = re.sub(r'<br\s*/?>', '<br/>', text)
+    # Remove all HTML tags (including <strong>, <em>, <br/>, etc.)
+    text = re.sub(r'<[^>]+>', '', text)
     
-    # Convert line breaks to HTML breaks for Notion
-    text = re.sub(r'\n+', '<br/>', text)
+    # Convert line breaks to spaces to keep content on single lines
+    text = re.sub(r'\n+', ' ', text)
     
-    # Clean up any double breaks
-    text = re.sub(r'(<br/>){3,}', '<br/><br/>', text)
+    # Clean up multiple spaces
+    text = re.sub(r'\s+', ' ', text)
+    
+    # Strip again to remove any trailing whitespace
+    text = text.strip()
     
     return text
 
@@ -74,12 +76,12 @@ def parse_generic_table(markdown_content):
             
             # This is a data row
             if current_table and len(cells) == len(headers):
-                # Create a row dict with sanitized HTML content
+                # Create a row dict with sanitized content
                 row_dict = {}
                 for i, cell in enumerate(cells):
                     if i < len(headers):
-                        # Sanitize the content for Notion
-                        sanitized_content = sanitize_html_for_notion(cell)
+                        # Strip all formatting for plain text CSV
+                        sanitized_content = strip_all_formatting(cell)
                         row_dict[headers[i]] = sanitized_content
                 current_table['rows'].append(row_dict)
         else:
