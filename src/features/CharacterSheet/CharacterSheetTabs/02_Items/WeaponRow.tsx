@@ -5,11 +5,14 @@ import {
 	Box,
 	IconButton,
 	TextField,
+	MenuItem,
+	Divider,
 } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete, ExpandMore } from '@mui/icons-material'
 import { Weapon } from '../../../../types/Character'
+import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
 import { DamageFields } from '../DamageFields'
 
@@ -38,7 +41,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
-          px: 0,
+					px: 0,
 					flexDirection: 'row-reverse',
 					'& .MuiAccordionSummary-content': {
 						display: 'block',
@@ -83,7 +86,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						}
 						onBlur={() => updateWeapon({ properties: weapon.properties })}
 						label="Properties"
-						sx={{ maxWidth: '18rem' }}
+						sx={{ maxWidth: '14rem' }}
 					/>
 				</Box>
 			</AccordionSummary>
@@ -134,6 +137,48 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						label="Load"
 						sx={{ maxWidth: '4rem', flexGrow: 0 }}
 					/>
+					<AttributeField
+						select
+						size="small"
+						variant="standard"
+						value={initialWeapon.location || 'worn'}
+						onChange={(event) =>
+							updateWeapon({ location: event.target.value as ItemLocation })
+						}
+						label="Location"
+						sx={{ maxWidth: '4.25rem' }}
+					>
+						{ITEM_LOCATIONS.map((location) => (
+							<MenuItem key={location} value={location}>
+								{location}
+							</MenuItem>
+						))}
+					</AttributeField>
+					{(initialWeapon.location === 'mount' ||
+						initialWeapon.location === 'storage') && (
+						<TextField
+							size="small"
+							variant="standard"
+							value={
+								initialWeapon.location === 'mount'
+									? initialWeapon.mountInfo || ''
+									: initialWeapon.storageInfo || ''
+							}
+							onChange={(event) => {
+								if (initialWeapon.location === 'mount') {
+									updateWeapon({ mountInfo: event.target.value })
+								} else {
+									updateWeapon({ storageInfo: event.target.value })
+								}
+							}}
+							label={
+								initialWeapon.location === 'mount'
+									? 'Mount'
+									: 'Storage Location'
+							}
+							sx={{ maxWidth: '8rem' }}
+						/>
+					)}
 					<IconButton
 						size="small"
 						edge="end"

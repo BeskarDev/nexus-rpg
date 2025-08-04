@@ -12,6 +12,7 @@ import {
 	Weapon,
 } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
+import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 
@@ -92,6 +93,31 @@ export const {
 			// Ensure statusEffects is always an array
 			if (!Array.isArray(character.statistics.statusEffects)) {
 				character.statistics.statusEffects = []
+			}
+			// Migrate older characters that don't have weapons/items arrays
+			if (!character.items.weapons) {
+				character.items.weapons = []
+			}
+			if (!character.items.items) {
+				character.items.items = []
+			}
+			// Ensure encumbrance has mount and storage max load fields
+			if (!character.items.encumbrance) {
+				character.items.encumbrance = {
+					encumberedAt: 0,
+					overencumberedAt: 0,
+					carryModifier: 0,
+					currentLoad: 0,
+					mountMaxLoad: 0,
+					storageMaxLoad: 0,
+				}
+			} else {
+				if (character.items.encumbrance.mountMaxLoad === undefined) {
+					character.items.encumbrance.mountMaxLoad = 0
+				}
+				if (character.items.encumbrance.storageMaxLoad === undefined) {
+					character.items.encumbrance.storageMaxLoad = 0
+				}
 			}
 			state.activeCharacter = character
 		},
@@ -218,6 +244,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
+				location: 'worn' as ItemLocation,
 			})
 		},
 		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
@@ -238,6 +265,7 @@ export const {
 				description: '',
 				cost: 0,
 				load: 0,
+				location: 'worn' as ItemLocation,
 				...weapon,
 			}))
 			state.activeCharacter.items.weapons.unshift(...newWeapons)
@@ -254,6 +282,7 @@ export const {
 				load: 0,
 				container: '' as const,
 				amount: 1,
+				location: 'carried' as ItemLocation,
 				...item,
 			}))
 			state.activeCharacter.items.items.unshift(...newItems)
@@ -301,6 +330,43 @@ export const {
 				container: 'backpack',
 				slot: '',
 				amount: 1,
+				location: 'carried' as ItemLocation,
+			})
+		},
+		addNewItemToLocation: (state, action: PayloadAction<ItemLocation>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.items.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: '',
+				properties: '',
+				description: '',
+				cost: 0,
+				load: 0,
+				container: action.payload === 'worn' ? 'worn' : 'backpack',
+				slot: action.payload === 'worn' ? '' : '',
+				amount: 1,
+				location: action.payload,
+			})
+		},
+		addNewWeaponToLocation: (state, action: PayloadAction<ItemLocation>) => {
+			state.unsavedChanges = true
+			state.activeCharacter.items.weapons.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: '',
+				damage: {
+					base: 'STR',
+					weapon: 0,
+					other: 0,
+					otherWeak: 0,
+					otherStrong: 0,
+					otherCritical: 0,
+					type: 'physical',
+				},
+				properties: '',
+				description: '',
+				cost: 0,
+				load: 0,
+				location: action.payload,
 			})
 		},
 		updateItem: (
@@ -590,6 +656,23 @@ export const {
 				}
 			}
 			state.activeCharacter.skills.abilityCategoryVisibility[category] = !currentVisibility
+		},
+		toggleItemLocationVisibility: (
+			state,
+			action: PayloadAction<ItemLocation>,
+		) => {
+			const location = action.payload
+			state.unsavedChanges = true
+			const currentVisibility = state.activeCharacter.items.itemLocationVisibility?.[location] ?? true
+			if (!state.activeCharacter.items.itemLocationVisibility) {
+				state.activeCharacter.items.itemLocationVisibility = {
+					'worn': true,
+					'carried': true,
+					'mount': true,
+					'storage': true,
+				}
+			}
+			state.activeCharacter.items.itemLocationVisibility[location] = !currentVisibility
 		},
 		// Status Effects actions
 		addStatusEffect: (state, action: PayloadAction<StatusEffectType>) => {

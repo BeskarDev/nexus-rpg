@@ -180,9 +180,21 @@ const migrateSkills = (data: any): Skills => {
 }
 
 const migrateItems = (data: any): Items => {
+	// Ensure encumbrance object exists with default values
+	const encumbrance = {
+		encumberedAt: 0,
+		overencumberedAt: 0,
+		carryModifier: 0,
+		currentLoad: 0,
+		mountMaxLoad: 0,
+		storageMaxLoad: 0,
+		...data.encumbrance, // Override with existing values if they exist
+	}
+
 	return {
 		...data,
-		weapons: data.weapons.map((weapon) => ({
+		encumbrance,
+		weapons: (data.weapons || []).map((weapon) => ({
 			...weapon,
 			id: weapon.id || crypto.randomUUID(),
 			damage:
@@ -198,7 +210,7 @@ const migrateItems = (data: any): Items => {
 						}
 					: {...weapon.damage, other: weapon.damage.other || 0 },
 		})),
-		items: data.items.map((item) => ({
+		items: (data.items || []).map((item) => ({
 			...item,
 			id: item.id || crypto.randomUUID(),
 			container: item.container || 'backpack',

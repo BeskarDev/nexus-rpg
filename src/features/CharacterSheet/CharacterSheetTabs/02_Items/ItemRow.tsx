@@ -17,6 +17,7 @@ import {
 	equipmentSlotTypeArray,
 	Item,
 } from '../../../../types/Character'
+import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
 
 export type ItemRowProps = {
@@ -70,7 +71,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						}
 						onBlur={() => updateItem({ name: item.name })}
 						label="Name"
-						sx={{ maxWidth: { sm: '12rem', xs: '8rem' } }}
+						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
 					/>
 					<TextField
 						size="small"
@@ -81,28 +82,16 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						}
 						onBlur={() => updateItem({ properties: item.properties })}
 						label="Properties"
-						sx={{ maxWidth: { sm: '12rem', xs: '7rem' } }}
+						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
 					/>
-					{initialItem.container != 'worn' && (
-						<AttributeField
-							disabled
-							size="small"
-							variant="standard"
-							value={initialItem.container}
-							label="Storage"
-							sx={{ maxWidth: '3.75rem' }}
-						/>
-					)}
-					{initialItem.container == 'worn' && (
-						<AttributeField
-              disabled
-							size="small"
-							variant="standard"
-							value={initialItem.slot}
-							label="Slot"
-							sx={{ maxWidth: '3.75rem' }}
-						/>
-					)}
+					<AttributeField
+						disabled
+						size="small"
+						variant="standard"
+						value={initialItem.location === 'worn' && initialItem.slot ? initialItem.slot : (initialItem.location || 'carried')}
+						label={initialItem.location === 'worn' && initialItem.slot ? "Slot" : "Location"}
+						sx={{ maxWidth: '4.25rem' }}
+					/>
 					<AttributeField
 						size="small"
 						variant="standard"
@@ -163,21 +152,26 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						select
 						size="small"
 						variant="standard"
-						value={initialItem.container}
-						onChange={(event) =>
-							updateItem({ container: event.target.value as ContainerType })
-						}
-						label="Storage"
-						sx={{ maxWidth: '5rem' }}
+						value={initialItem.location || 'carried'}
+						onChange={(event) => {
+							const newLocation = event.target.value as ItemLocation
+							updateItem({ location: newLocation })
+							// Clear slot if not worn
+							if (newLocation !== 'worn' && initialItem.slot) {
+								updateItem({ slot: '' })
+							}
+						}}
+						label="Location"
+						sx={{ maxWidth: '4.25rem' }}
 					>
-						{containerTypeArray.map((container) => (
-							<MenuItem key={container} value={container}>
-								{container}
+						{ITEM_LOCATIONS.map((location) => (
+							<MenuItem key={location} value={location}>
+								{location}
 							</MenuItem>
 						))}
 					</AttributeField>
 					<AttributeField
-						disabled={initialItem.container != 'worn'}
+						disabled={!initialItem.location || initialItem.location !== 'worn'}
 						select
 						size="small"
 						variant="standard"
@@ -186,7 +180,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							updateItem({ slot: event.target.value as EquipmentSlotType })
 						}
 						label="Equipped Slot"
-						sx={{ maxWidth: '5rem' }}
+						sx={{ maxWidth: '4.25rem' }}
 					>
 						{equipmentSlotTypeArray.map((slot) => (
 							<MenuItem key={slot} value={slot}>
