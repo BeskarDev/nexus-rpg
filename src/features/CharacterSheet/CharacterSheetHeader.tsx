@@ -1,4 +1,4 @@
-import { ArrowBackIosNew, ChevronLeft, Download, Reply, Save, Star } from '@mui/icons-material'
+import { ArrowBackIosNew, ChevronLeft, Download, Reply, Save, Star, Upload } from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -15,12 +15,15 @@ import {
   TextField,
   Tooltip,
   Typography,
+  Alert,
+  Divider,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { CharacterDocument } from '@site/src/types/Character'
 import { addDoc, collection, doc, getDoc } from 'firebase/firestore'
 import React from 'react'
+import { Character } from '@site/src/types/Character'
 import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
 import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
@@ -50,6 +53,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const [name, setName] = React.useState('')
 	const [includeStartingGear, setIncludeStartingGear] = React.useState(false)
 	const [downloadingAll, setDownloadingAll] = React.useState(false)
+	const [importedCharacter, setImportedCharacter] = React.useState<Character | null>(null)
+	const [importError, setImportError] = React.useState<string | null>(null)
 
 	const handleOpen = () => {
 		setOpen(true)
@@ -59,11 +64,58 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		setOpen(false)
 		setName('')
 		setIncludeStartingGear(false)
+		setImportedCharacter(null)
+		setImportError(null)
 	}
 
 	const handleConfirm = async () => {
 		createNewCharacter()
 		setOpen(false)
+	}
+
+	const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files?.[0]
+		if (!file) return
+
+		// Reset previous state
+		setImportError(null)
+		setImportedCharacter(null)
+
+		const reader = new FileReader()
+		reader.onload = (e) => {
+			try {
+				const jsonString = e.target?.result as string
+				const parsedCharacter = JSON.parse(jsonString) as Character
+
+				// Basic validation to ensure it's a character object
+				if (!parsedCharacter.personal?.name) {
+					throw new Error('Invalid character file: missing character name')
+				}
+
+				if (!parsedCharacter.personal?.playerName) {
+					throw new Error('Invalid character file: missing player name')
+				}
+
+				// Set the imported character and auto-fill the name
+				setImportedCharacter(parsedCharacter)
+				setName(parsedCharacter.personal.name)
+				setImportError(null)
+
+			} catch (error) {
+				console.error('Error parsing character file:', error)
+				setImportError('Invalid character file. Please select a valid Nexus RPG character JSON file.')
+				setImportedCharacter(null)
+				setName('')
+			}
+		}
+
+		reader.onerror = () => {
+			setImportError('Error reading file. Please try again.')
+			setImportedCharacter(null)
+			setName('')
+		}
+
+		reader.readAsText(file)
 	}
 
 	const createNewCharacter = async () => {
@@ -73,13 +125,33 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
       
       const playerName = (await getDoc(doc(db, userUid, 'player-info'))).data()?.name || 'Unknown'
 
-			await addDoc(collectionRef, createInitialCharacter(name, playerName, includeStartingGear))
+			let characterData: Character
+
+			if (importedCharacter) {
+				// Use imported character data but update player name to current user
+				characterData = {
+					...importedCharacter,
+					personal: {
+						...importedCharacter.personal,
+						name: name, // Use the name from the input field (allows user to modify)
+						playerName: playerName, // Set to current user's player name
+					}
+				}
+			} else {
+				// Create new character from scratch
+				characterData = createInitialCharacter(name, playerName, includeStartingGear)
+			}
+
+			await addDoc(collectionRef, characterData)
 			setName('')
 			setIncludeStartingGear(false)
+			setImportedCharacter(null)
+			setImportError(null)
 			setOpen(false)
 			window.location.href = window.location.href.split('?')[0]
 		} catch (error) {
 			console.error('Error creating document: ', error)
+			setImportError('Error creating character. Please try again.')
 		}
 	}
 
@@ -212,14 +284,55 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText id="alert-dialog-description" sx={{ mb: 2 }}>
-						What's your characters name?
+						{importedCharacter 
+							? `Import and customize "${importedCharacter.personal.name}"` 
+							: "What's your characters name?"
+						}
 					</DialogContentText>
+
+					{!importedCharacter && (
+						<>
+							<Box sx={{ mb: 2 }}>
+								<Button
+									variant="outlined"
+									component="label"
+									startIcon={<Upload />}
+									fullWidth
+									sx={{ mb: 1 }}
+								>
+									Upload Character JSON
+									<input
+										type="file"
+										accept=".json"
+										hidden
+										onChange={handleFileUpload}
+									/>
+								</Button>
+								<Typography variant="caption" color="text.secondary">
+									Import a previously exported Nexus RPG character
+								</Typography>
+							</Box>
+
+							<Divider sx={{ my: 2 }}>
+								<Typography variant="caption" color="text.secondary">
+									OR
+								</Typography>
+							</Divider>
+						</>
+					)}
+
+					{importError && (
+						<Alert severity="error" sx={{ mb: 2 }}>
+							{importError}
+						</Alert>
+					)}
+
 					<TextField
 						required
 						fullWidth
 						type="text"
 						label="character name"
-						placeholder="type your character's name"
+						placeholder={importedCharacter ? "Modify character name" : "type your character's name"}
 						value={name}
 						onChange={(e) => {
 							if (e.target.value.length <= MAX_NAME_LENGTH) {
@@ -234,16 +347,40 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						}}
 						InputLabelProps={{ shrink: true }}
 					/>
-					<FormControlLabel
-						control={
-							<Checkbox
-								checked={includeStartingGear}
-								onChange={(e) => setIncludeStartingGear(e.target.checked)}
-							/>
-						}
-						label="Include starting gear from character creation"
-						sx={{ mt: 1 }}
-					/>
+
+					{!importedCharacter && (
+						<FormControlLabel
+							control={
+								<Checkbox
+									checked={includeStartingGear}
+									onChange={(e) => setIncludeStartingGear(e.target.checked)}
+								/>
+							}
+							label="Include starting gear from character creation"
+							sx={{ mt: 1 }}
+						/>
+					)}
+
+					{importedCharacter && (
+						<>
+							<Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+								✓ Character data loaded successfully
+							</Typography>
+							<Box sx={{ mt: 1 }}>
+								<Button 
+									variant="text" 
+									size="small"
+									onClick={() => {
+										setImportedCharacter(null)
+										setName('')
+										setImportError(null)
+									}}
+								>
+									Start over with new character
+								</Button>
+							</Box>
+						</>
+					)}
 				</DialogContent>
 				<DialogActions sx={{ p: 2 }}>
 					<Button onClick={handleAbort}>Cancel</Button>
@@ -253,7 +390,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						onClick={handleConfirm}
 						autoFocus
 					>
-						Confirm
+						{importedCharacter ? 'Import Character' : 'Create Character'}
 					</Button>
 				</DialogActions>
 			</Dialog>
