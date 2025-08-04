@@ -49,6 +49,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const [open, setOpen] = React.useState(false)
 	const [name, setName] = React.useState('')
 	const [includeStartingGear, setIncludeStartingGear] = React.useState(false)
+	const [downloadingAll, setDownloadingAll] = React.useState(false)
 
 	const handleOpen = () => {
 		setOpen(true)
@@ -97,7 +98,12 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 	const downloadAllCharactersAsZip = async (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault()
-		await downloadAllCharacters(characters)
+		setDownloadingAll(true)
+		try {
+			await downloadAllCharacters(characters)
+		} finally {
+			setDownloadingAll(false)
+		}
 	}
 
 	return (
@@ -140,13 +146,13 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
 					{!activeCharacterId && (
 						<>
-							<Tooltip title="download all characters">
+							<Tooltip title={`Download all ${characters.length} character${characters.length !== 1 ? 's' : ''} as ZIP`}>
 								<span>
 									<IconButton 
-										disabled={!userLoggedIn || characters.length === 0}
+										disabled={!userLoggedIn || characters.length === 0 || downloadingAll}
 										onClick={downloadAllCharactersAsZip}
 									>
-										<Download />
+										{downloadingAll ? <CircularProgress size={20} /> : <Download />}
 									</IconButton>
 								</span>
 							</Tooltip>
