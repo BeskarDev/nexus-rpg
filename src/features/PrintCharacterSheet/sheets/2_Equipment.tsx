@@ -108,7 +108,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					Weapons
 				</Typography>
 				<Box sx={{ mt: -0.5 }}>
-					{char.items.weapons.map((weapon, index) => (
+					{char.items.weapons.filter(w => w.location === 'worn').map((weapon, index) => (
 						<Box key={weapon.id} sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 							<TextField
 								size="small"
@@ -225,7 +225,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Box
 					sx={{ display: 'flex', rowGap: 0, columnGap: 2, flexWrap: 'wrap' }}
 				>
-					{sortedItems.map((item, index) => (
+					{sortedItems.filter(i => i.location === 'worn' || i.location === 'carried').map((item, index) => (
 						<Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
 							<TextField
 								size="small"
@@ -243,7 +243,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 							<TextField
 								size="small"
 								variant="standard"
-								value={item.location === 'worn' ? item.slot : item.location}
+								value={item.location === 'worn' && item.slot ? item.slot : item.location}
 								sx={{
 									maxWidth: '2.5rem',
 									mt: 0.5,

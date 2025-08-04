@@ -179,6 +179,22 @@ const migrateSkills = (data: any): Skills => {
 	} as Skills
 }
 
+const determineItemLocation = (item: any): string => {
+  if (item.location) {
+    return item.location;
+  }
+  switch (item.container) {
+    case 'backpack':
+      return 'carried';
+    case 'quick':
+      return 'worn';
+    case 'worn':
+      return 'worn';
+    default:
+      return 'carried';
+  }
+}
+
 const migrateItems = (data: any): Items => {
 	// Ensure encumbrance object exists with default values
 	const encumbrance = {
@@ -209,11 +225,13 @@ const migrateItems = (data: any): Items => {
 							type: 'physical',
 						}
 					: {...weapon.damage, other: weapon.damage.other || 0 },
+      location: weapon.location || 'worn',
 		})),
 		items: (data.items || []).map((item) => ({
 			...item,
 			id: item.id || crypto.randomUUID(),
 			container: item.container || 'backpack',
+      location: determineItemLocation(item) || 'carried',
 		})),
 	} as Items
 }

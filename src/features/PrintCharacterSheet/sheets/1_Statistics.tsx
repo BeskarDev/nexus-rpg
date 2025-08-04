@@ -1,4 +1,4 @@
-import { Avatar, Box, styled, TextField, Typography } from '@mui/material'
+import { Avatar, Box, InputAdornment, styled, TextField, Typography } from '@mui/material'
 import { SheetLayout } from './SheetLayout'
 import React from 'react'
 import { Character } from '@site/src/types/Character'
@@ -225,13 +225,15 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 						/>
 						{char.statistics.fatigue && (
 							<OutlinedTextfield
+                size="small"
 								value={char.statistics.fatigue.current}
-								label="Fatigue (1-6)"
+								label="Fatigue"
+                InputProps={{
+                  endAdornment: <InputAdornment position="end" sx={{ mt: '2px' }}>/ {char.statistics.fatigue.max}</InputAdornment>,
+                }}
 								sx={{
-									maxWidth: '6rem',
-									'& .MuiInputBase-input.MuiOutlinedInput-input': {
-										py: 1,
-									},
+									maxWidth: '4rem',
+                  ml: 'auto',
 								}}
 							/>
 						)}
@@ -356,20 +358,20 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 						if (abilities.length === 0) return null
 						
 						return (
-							<Box key={category} sx={{ mb: 1 }}>
+							<Box key={category} sx={{ mt: -1 }}>
 								<Typography
 									variant="caption"
 									sx={{ fontWeight: 'bold', fontSize: '8px', color: 'text.primary' }}
 								>
 									{category}
 								</Typography>
-								<Box component="ul" sx={{ pl: 2, mt: 0, mb: 0.5 }}>
+								<Box component="ul" sx={{ pl: 2, my: 0 }}>
 									{abilities.map((ability) => (
 										<Typography
 											key={ability.id}
 											component="li"
 											variant="body2"
-											sx={{ fontSize: '9px' }}
+											sx={{ fontSize: '9px', mt: '0px !important' }}
 										>
 											{ability.title}
 										</Typography>
