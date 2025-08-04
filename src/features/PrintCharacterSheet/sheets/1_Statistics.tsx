@@ -34,15 +34,25 @@ const WoundIndicator = styled(Avatar)({
 })
 
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
-	const displayWound = (wound: Wound) => {
-		if (wound.injury) {
-			return 'I'
+	const getWoundedAttributes = () => {
+		const woundedAttrs = []
+		if (char.statistics.strength.wounded) woundedAttrs.push('STR')
+		if (char.statistics.agility.wounded) woundedAttrs.push('AGI')
+		if (char.statistics.spirit.wounded) woundedAttrs.push('SPI')
+		if (char.statistics.mind.wounded) woundedAttrs.push('MND')
+		return woundedAttrs
+	}
+
+	const displayWound = (woundIndex: number) => {
+		const woundedAttrs = getWoundedAttributes()
+		if (woundIndex < woundedAttrs.length) {
+			return woundedAttrs[woundIndex]
 		}
-		if (wound.fatigueOne && !wound.fatigueTwo) {
-			return '/'
-		}
-		if (wound.fatigueOne && wound.fatigueTwo) {
-			return 'X'
+		// Show fatigue levels based on current fatigue
+		const fatigueThresholds = [2, 4, 6] // Fatigue levels for each wound slot
+		if (char.statistics.fatigue && char.statistics.fatigue.current > fatigueThresholds[woundIndex]) {
+			const fatigueLevel = Math.min(2, Math.floor((char.statistics.fatigue.current - fatigueThresholds[woundIndex]) / 2) + 1)
+			return fatigueLevel === 1 ? '/' : 'X'
 		}
 		return ' '
 	}
@@ -224,21 +234,49 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							justifyContent: 'space-between',
 						}}
 					>
-						<OutlinedTextfield
-							value={
-								char.statistics.av.armor +
-								char.statistics.av.helmet +
-								char.statistics.av.shield +
-								char.statistics.av.other
-							}
-							label="AV"
-							sx={{
-								maxWidth: '5rem',
-								'& .MuiInputBase-input.MuiOutlinedInput-input': {
-									py: 1,
-								},
-							}}
-						/>
+						<Box sx={{ display: 'flex', gap: 1 }}>
+							<OutlinedTextfield
+								value={
+									char.statistics.av.armor +
+									char.statistics.av.helmet +
+									char.statistics.av.shield +
+									char.statistics.av.other
+								}
+								label="AV"
+								sx={{
+									maxWidth: '5rem',
+									'& .MuiInputBase-input.MuiOutlinedInput-input': {
+										py: 1,
+									},
+								}}
+							/>
+							{char.statistics.fatigue && (
+								<Box sx={{ display: 'flex', flexDirection: 'column' }}>
+									<OutlinedTextfield
+										size="small"
+										value={char.statistics.fatigue.current}
+										label="Fatigue"
+										sx={{
+											maxWidth: '3rem',
+											'& .MuiInputBase-input.MuiOutlinedInput-input': {
+												py: 0.75,
+											},
+										}}
+									/>
+									<OutlinedTextfield
+										size="small"
+										value={char.statistics.fatigue.max}
+										label="Max"
+										sx={{
+											maxWidth: '3rem',
+											'& .MuiInputBase-input.MuiOutlinedInput-input': {
+												py: 0.75,
+											},
+										}}
+									/>
+								</Box>
+							)}
+						</Box>
 						<Box sx={{ mt: -2 }}>
 							<Typography color="text.secondary" variant="caption">
 								Wounds
@@ -250,13 +288,13 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 								}}
 							>
 								<WoundIndicator>
-									{displayWound(char.statistics.health.woundOne)}
+									{displayWound(0)}
 								</WoundIndicator>
 								<WoundIndicator>
-									{displayWound(char.statistics.health.woundTwo)}
+									{displayWound(1)}
 								</WoundIndicator>
 								<WoundIndicator>
-									{displayWound(char.statistics.health.woundThree)}
+									{displayWound(2)}
 								</WoundIndicator>
 							</Box>
 						</Box>
