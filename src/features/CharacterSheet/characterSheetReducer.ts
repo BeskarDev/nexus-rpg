@@ -101,6 +101,24 @@ export const {
 			if (!character.items.items) {
 				character.items.items = []
 			}
+			// Ensure encumbrance has mount and storage max load fields
+			if (!character.items.encumbrance) {
+				character.items.encumbrance = {
+					encumberedAt: 0,
+					overencumberedAt: 0,
+					carryModifier: 0,
+					currentLoad: 0,
+					mountMaxLoad: 0,
+					storageMaxLoad: 0,
+				}
+			} else {
+				if (character.items.encumbrance.mountMaxLoad === undefined) {
+					character.items.encumbrance.mountMaxLoad = 0
+				}
+				if (character.items.encumbrance.storageMaxLoad === undefined) {
+					character.items.encumbrance.storageMaxLoad = 0
+				}
+			}
 			state.activeCharacter = character
 		},
 		updateCharacter: (state, action: PayloadAction<DeepPartial<Character>>) => {

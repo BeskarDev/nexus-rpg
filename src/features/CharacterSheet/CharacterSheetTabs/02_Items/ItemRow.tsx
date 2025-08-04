@@ -71,7 +71,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						}
 						onBlur={() => updateItem({ name: item.name })}
 						label="Name"
-						sx={{ maxWidth: { sm: '12rem', xs: '8rem' } }}
+						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
 					/>
 					<TextField
 						size="small"
@@ -82,7 +82,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						}
 						onBlur={() => updateItem({ properties: item.properties })}
 						label="Properties"
-						sx={{ maxWidth: { sm: '12rem', xs: '7rem' } }}
+						sx={{ maxWidth: { sm: '10rem', xs: '7rem' } }}
 					/>
 					<AttributeField
 						disabled
@@ -90,7 +90,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						variant="standard"
 						value={initialItem.location === 'worn' && initialItem.slot ? initialItem.slot : (initialItem.location || 'carried')}
 						label={initialItem.location === 'worn' && initialItem.slot ? "Slot" : "Location"}
-						sx={{ maxWidth: '6rem' }}
+						sx={{ maxWidth: '4.25rem' }}
 					/>
 					<AttributeField
 						size="small"
@@ -162,7 +162,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							}
 						}}
 						label="Location"
-						sx={{ maxWidth: '8rem' }}
+						sx={{ maxWidth: '4.25rem' }}
 					>
 						{ITEM_LOCATIONS.map((location) => (
 							<MenuItem key={location} value={location}>
@@ -180,7 +180,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							updateItem({ slot: event.target.value as EquipmentSlotType })
 						}
 						label="Equipped Slot"
-						sx={{ maxWidth: '5rem' }}
+						sx={{ maxWidth: '4.25rem' }}
 					>
 						{equipmentSlotTypeArray.map((slot) => (
 							<MenuItem key={slot} value={slot}>
@@ -188,22 +188,6 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
-					{(initialItem.location === 'mount' || initialItem.location === 'storage') && (
-						<TextField
-							size="small"
-							variant="standard"
-							value={initialItem.location === 'mount' ? (initialItem.mountInfo || '') : (initialItem.storageInfo || '')}
-							onChange={(event) => {
-								if (initialItem.location === 'mount') {
-									updateItem({ mountInfo: event.target.value })
-								} else {
-									updateItem({ storageInfo: event.target.value })
-								}
-							}}
-							label={initialItem.location === 'mount' ? 'Mount' : 'Storage Location'}
-							sx={{ maxWidth: '8rem' }}
-						/>
-					)}
 					<IconButton
 						size="small"
 						edge="end"

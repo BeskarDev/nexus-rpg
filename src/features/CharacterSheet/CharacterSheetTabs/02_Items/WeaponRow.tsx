@@ -6,6 +6,7 @@ import {
 	IconButton,
 	TextField,
 	MenuItem,
+	Divider,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -40,7 +41,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
-          px: 0,
+					px: 0,
 					flexDirection: 'row-reverse',
 					'& .MuiAccordionSummary-content': {
 						display: 'block',
@@ -85,15 +86,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						}
 						onBlur={() => updateWeapon({ properties: weapon.properties })}
 						label="Properties"
-						sx={{ maxWidth: '18rem' }}
-					/>
-					<AttributeField
-						disabled
-						size="small"
-						variant="standard"
-						value={initialWeapon.location || 'weapons'}
-						label="Location"
-						sx={{ maxWidth: '6rem' }}
+						sx={{ maxWidth: '14rem' }}
 					/>
 				</Box>
 			</AccordionSummary>
@@ -148,12 +141,12 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						select
 						size="small"
 						variant="standard"
-						value={initialWeapon.location || 'weapons'}
+						value={initialWeapon.location || 'worn'}
 						onChange={(event) =>
 							updateWeapon({ location: event.target.value as ItemLocation })
 						}
 						label="Location"
-						sx={{ maxWidth: '8rem' }}
+						sx={{ maxWidth: '4.25rem' }}
 					>
 						{ITEM_LOCATIONS.map((location) => (
 							<MenuItem key={location} value={location}>
@@ -161,11 +154,16 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
-					{(initialWeapon.location === 'mount' || initialWeapon.location === 'storage') && (
+					{(initialWeapon.location === 'mount' ||
+						initialWeapon.location === 'storage') && (
 						<TextField
 							size="small"
 							variant="standard"
-							value={initialWeapon.location === 'mount' ? (initialWeapon.mountInfo || '') : (initialWeapon.storageInfo || '')}
+							value={
+								initialWeapon.location === 'mount'
+									? initialWeapon.mountInfo || ''
+									: initialWeapon.storageInfo || ''
+							}
 							onChange={(event) => {
 								if (initialWeapon.location === 'mount') {
 									updateWeapon({ mountInfo: event.target.value })
@@ -173,7 +171,11 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 									updateWeapon({ storageInfo: event.target.value })
 								}
 							}}
-							label={initialWeapon.location === 'mount' ? 'Mount' : 'Storage Location'}
+							label={
+								initialWeapon.location === 'mount'
+									? 'Mount'
+									: 'Storage Location'
+							}
 							sx={{ maxWidth: '8rem' }}
 						/>
 					)}

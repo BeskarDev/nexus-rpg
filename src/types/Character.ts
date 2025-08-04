@@ -154,6 +154,8 @@ export type Items = {
 		overencumberedAt: number
     carryModifier: number
 		currentLoad: number
+		mountMaxLoad: number
+		storageMaxLoad: number
 	}
 	weapons: Weapon[]
 	items: Item[]

@@ -10,6 +10,7 @@ import {
 	MenuItem,
 	FormControlLabel,
 	Checkbox,
+  Divider,
 } from '@mui/material'
 import React, { useMemo, useState, useEffect } from 'react'
 
@@ -355,6 +356,19 @@ export const ItemsTab: React.FC = () => {
 		onNameChange: (name: string) => void,
 		onMaxLoadChange: (maxLoad: number) => void 
 	}> = ({ location, name, currentLoad, maxLoad, onNameChange, onMaxLoadChange }) => {
+		// Local state to prevent focus loss during typing
+		const [localName, setLocalName] = useState(name)
+		const [localMaxLoad, setLocalMaxLoad] = useState(maxLoad)
+
+		// Update local state when props change (e.g., when switching characters)
+		useEffect(() => {
+			setLocalName(name)
+		}, [name])
+
+		useEffect(() => {
+			setLocalMaxLoad(maxLoad)
+		}, [maxLoad])
+
 		const getLoadColor = (theme: Theme) => {
 			if (maxLoad > 0) {
 				if (currentLoad >= maxLoad) {
@@ -370,10 +384,12 @@ export const ItemsTab: React.FC = () => {
 			<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 1 }}>
 				<AttributeField
 					size="small"
-					value={name}
-					onChange={(event) => onNameChange(event.target.value)}
+          variant="standard"
+					value={localName}
+					onChange={(event) => setLocalName(event.target.value)}
+					onBlur={() => onNameChange(localName)}
 					label={location === 'mount' ? 'Mount Name' : 'Storage Name'}
-					sx={{ maxWidth: '10rem' }}
+					sx={{ mt: 0, maxWidth: { sm: '10rem', xs: '8rem' } }}
 				/>
 				<AttributeField
 					disabled
@@ -381,7 +397,7 @@ export const ItemsTab: React.FC = () => {
 					value={currentLoad}
 					label="Current Load"
 					sx={{
-						maxWidth: '6rem',
+						maxWidth: '5rem',
 						'& .MuiFormLabel-root.MuiInputLabel-root.Mui-disabled': {
 							color: (theme) => getLoadColor(theme),
 						},
@@ -400,10 +416,16 @@ export const ItemsTab: React.FC = () => {
 				<AttributeField
 					type="number"
 					size="small"
-					value={maxLoad}
-					onChange={(event) => onMaxLoadChange(Number(event.target.value))}
+					value={localMaxLoad}
+					onChange={(event) => {
+						const newValue = Number(event.target.value)
+						setLocalMaxLoad(newValue)
+					}}
+					onBlur={() => {
+						onMaxLoadChange(localMaxLoad)
+					}}
 					label="Max Load"
-					sx={{ maxWidth: '6rem' }}
+					sx={{ maxWidth: '5rem' }}
 				/>
 			</Box>
 		)
@@ -625,7 +647,7 @@ export const ItemsTab: React.FC = () => {
 			{(itemLocationVisibility?.['worn'] ?? true) && (
 				<Accordion 
 					key="weapons-section"
-					defaultExpanded 
+					defaultExpanded
 					sx={{ flexGrow: 1, mb: 1 }}
 				>
 					<AccordionSummary expandIcon={<ExpandMore />}>
@@ -825,7 +847,7 @@ export const ItemsTab: React.FC = () => {
 							location="mount"
 							name={itemsByLocation['mount'][0]?.mountInfo || ''}
 							currentLoad={calculateLocationLoad('mount')}
-							maxLoad={0} // TODO: Add mount max load to character data
+							maxLoad={encumbrance.mountMaxLoad || 0}
 							onNameChange={(name) => {
 								// Update all items in this location with the new mount name
 								itemsByLocation['mount'].forEach((item) => {
@@ -837,7 +859,11 @@ export const ItemsTab: React.FC = () => {
 								})
 							}}
 							onMaxLoadChange={(maxLoad) => {
-								// TODO: Add mount max load storage to character data
+								updateCharacter({
+									items: {
+										encumbrance: { mountMaxLoad: maxLoad },
+									},
+								})
 							}}
 						/>
 						<DynamicList 
@@ -900,7 +926,7 @@ export const ItemsTab: React.FC = () => {
 							location="storage"
 							name={itemsByLocation['storage'][0]?.storageInfo || ''}
 							currentLoad={calculateLocationLoad('storage')}
-							maxLoad={0} // TODO: Add storage max load to character data
+							maxLoad={encumbrance.storageMaxLoad || 0}
 							onNameChange={(name) => {
 								// Update all items in this location with the new storage name
 								itemsByLocation['storage'].forEach((item) => {
@@ -912,7 +938,11 @@ export const ItemsTab: React.FC = () => {
 								})
 							}}
 							onMaxLoadChange={(maxLoad) => {
-								// TODO: Add storage max load storage to character data
+								updateCharacter({
+									items: {
+										encumbrance: { storageMaxLoad: maxLoad },
+									},
+								})
 							}}
 						/>
 						<DynamicList 
