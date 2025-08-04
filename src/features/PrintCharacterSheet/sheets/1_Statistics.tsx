@@ -1,10 +1,9 @@
 import { Avatar, Box, styled, TextField, Typography } from '@mui/material'
 import { SheetLayout } from './SheetLayout'
 import React from 'react'
-import { Character, Wound } from '@site/src/types/Character'
+import { Character } from '@site/src/types/Character'
 import { RoundTextField } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/RoundTextField'
 import { DiceGuide } from '../assets/DiceGuide'
-import { WoundCheckbox } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/WoundCheckbox'
 import {
 	CharacterHeaderTextField,
 	OutlinedTextfield,

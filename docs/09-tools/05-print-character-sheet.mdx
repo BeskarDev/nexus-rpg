@@ -4,6 +4,38 @@ sidebar_position: 5
 
 # 📜 Print Character Sheet
 
+Use this tool to print physical character sheets from your character data. This tool works with the current character model format and displays all character information across multiple sheets.
+
+## How to Use
+
+1. **Import Character Data**: Paste your character's JSON data into the text field below
+2. **Preview**: The sheets will automatically update to show your character's information
+3. **Print**: Click the "PRINT" button to generate a printable version
+
+## Features
+
+- **Statistics Sheet**: Character attributes, health, fatigue, wounds, skills, and abilities
+- **Equipment Sheet**: Weapons, armor, items, and encumbrance information  
+- **Spells Sheet**: Magic skills, spells, focus, and spell damage calculations
+- **Personal Sheet**: Character background, description, relationships, and notes
+
+## Character Data Format
+
+The tool expects character data in the current Nexus RPG character model format, which includes:
+
+- **Personal information**: Name, folk, background, physical details, relationships
+- **Statistics**: Health, fatigue, attributes, defensive values, status effects
+- **Skills**: Experience points, skill ranks, abilities and talents
+- **Equipment**: Weapons, items, encumbrance tracking
+- **Spells**: Magic skills, focus, spell lists with damage calculations
+- **Companions**: Animal companions or allied creatures
+
+## Print Tips
+
+- Use **light mode** for better visibility while editing (print output is unaffected)
+- Ensure your browser's print settings are configured for the correct paper size
+- The sheets are optimized for landscape printing
+
 import { PrintCharacterSheetWrapper } from '@site/src/features/PrintCharacterSheet'
 
 <PrintCharacterSheetWrapper />
