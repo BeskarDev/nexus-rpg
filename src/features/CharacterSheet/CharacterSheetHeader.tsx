@@ -26,17 +26,20 @@ import { UserAvatar } from './UserAvatar'
 import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
 import { createInitialCharacter } from './utils/createInitialCharacter'
 import { downloadFile } from './utils/donwloadFile'
+import { downloadAllCharacters } from './utils/downloadAllCharacters'
 
 const MAX_NAME_LENGTH = 1_000
 
 export type CharacterSheetHeaderProps = {
 	activeCharacterId: string
 	saveCharacter: () => void
+	characters: CharacterDocument[]
 }
 
 export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	activeCharacterId,
 	saveCharacter,
+	characters,
 }) => {
 	const { userLoggedIn, currentUser } = useAuth()
 	const { activeCharacter, loadingSave, unsavedChanges } = useAppSelector(
@@ -92,6 +95,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		})
 	}
 
+	const downloadAllCharactersAsZip = async (event: React.MouseEvent<HTMLButtonElement>) => {
+		event.preventDefault()
+		await downloadAllCharacters(characters)
+	}
+
 	return (
 		<>
 			<Box
@@ -131,14 +139,26 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				</Typography>
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
 					{!activeCharacterId && (
-						<Button
-							variant="outlined"
-							size="small"
-							disabled={!userLoggedIn}
-							onClick={handleOpen}
-						>
-							new character
-						</Button>
+						<>
+							<Tooltip title="download all characters">
+								<span>
+									<IconButton 
+										disabled={!userLoggedIn || characters.length === 0}
+										onClick={downloadAllCharactersAsZip}
+									>
+										<Download />
+									</IconButton>
+								</span>
+							</Tooltip>
+							<Button
+								variant="outlined"
+								size="small"
+								disabled={!userLoggedIn}
+								onClick={handleOpen}
+							>
+								new character
+							</Button>
+						</>
 					)}
 					{activeCharacterId && (
 						<>

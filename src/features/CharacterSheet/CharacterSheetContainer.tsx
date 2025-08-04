@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
-import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc } from 'firebase/firestore'
 import React, { useEffect } from 'react'
-import { Character } from '../../types/Character'
+import { Character, CharacterDocument } from '../../types/Character'
 import { CharacterList } from './CharacterList'
 import { CharacterSheet } from './CharacterSheet'
 import { CharacterSheetHeader } from './CharacterSheetHeader'
@@ -14,16 +14,18 @@ import { mapDocToCharacter } from './utils/mapDocToCharacter'
 import { migrateDoc } from './utils/migrateDoc'
 
 const SAVE_CHARACTER_TIMEOUT = 1_000
+const DOC_BLACKLIST = ['player-info']
 
 export type DeepPartial<T> = {
 	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
 }
 
 export const CharacterSheetContainer: React.FC = () => {
-	const { userLoggedIn, currentUser } = useAuth()
+	const { userLoggedIn, currentUser, isAdmin, setIsAdmin } = useAuth()
 	const { activeCharacter, autosave, saveTimeout, unsavedChanges } =
 		useAppSelector((state) => state.characterSheet)
 	const dispatch = useAppDispatch()
+	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])
 
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
@@ -31,6 +33,53 @@ export const CharacterSheetContainer: React.FC = () => {
 		undefined,
 		undefined,
 	]
+
+	// Fetch all characters when user is logged in and no active character
+	useEffect(() => {
+		if (userLoggedIn && currentUser && !activeCharacterId) {
+			getDocuments()
+		}
+	}, [userLoggedIn, currentUser, activeCharacterId])
+
+	const getDocuments = async () => {
+		try {
+			const userUid = currentUser.uid
+			const collectionRef = collection(db, userUid)
+			const q = query(collectionRef)
+			const querySnapshot = await getDocs(q)
+
+			const allowedCollections: string[] =
+				querySnapshot.docs.find((doc) => doc.id === 'player-info')?.data()
+					.allowedCollections ?? []
+			setIsAdmin(Boolean(allowedCollections.length))
+
+			const allDocs: CharacterDocument[] = querySnapshot.docs
+				.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
+				.map((doc) => mapDocToCharacter(userUid, doc))
+
+			setCharacters(allDocs)
+			if (Boolean(allowedCollections.length)) {
+				await allowedCollections.map(async (collectionId) => {
+					const collectionRef = collection(db, collectionId)
+					const q = query(collectionRef)
+					const querySnapshot = await getDocs(q)
+					setCharacters((chars) => [
+						...chars,
+						...querySnapshot.docs
+							.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
+							.map((doc) => mapDocToCharacter(collectionId, doc)),
+					])
+				})
+			}
+		} catch (error) {
+			console.error('Error fetching documents: ', error)
+		}
+	}
+
+	const handleDeleteCharacter = async (char: CharacterDocument) => {
+		await deleteDoc(char.docRef)
+		setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
+	}
 
 	useEffect(() => {
 		if (activeCharacterId && currentUser && unsavedChanges && !saveTimeout) {
@@ -91,6 +140,7 @@ export const CharacterSheetContainer: React.FC = () => {
 			<CharacterSheetHeader
 				activeCharacterId={activeCharacterId}
 				saveCharacter={saveCharacter}
+				characters={characters}
 			/>
 			{!userLoggedIn && (
 				<Box
@@ -104,7 +154,12 @@ export const CharacterSheetContainer: React.FC = () => {
 					<Typography variant="h6">Please log in first</Typography>
 				</Box>
 			)}
-			{userLoggedIn && !activeCharacterId && <CharacterList />}
+			{userLoggedIn && !activeCharacterId && (
+				<CharacterList 
+					characters={characters}
+					handleDeleteCharacter={handleDeleteCharacter}
+				/>
+			)}
 			{userLoggedIn && activeCharacterId && activeCharacter && (
 				<CharacterSheet />
 			)}
