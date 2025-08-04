@@ -40,6 +40,15 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 		return `${weakDamage}/${strongDamage}/${criticalDamage} (${weapon})`
 	}
 
+	// Sort items: worn first, then carried
+	const sortedItems = [...char.items.items].sort((a, b) => {
+		// Worn items first
+		if (a.location === 'worn' && b.location !== 'worn') return -1
+		if (b.location === 'worn' && a.location !== 'worn') return 1
+		// Then sort alphabetically within each group
+		return a.name.localeCompare(b.name)
+	})
+
 	return (
 		<SheetLayout>
 			<Box sx={{ display: 'flex', gap: 1 }}>
@@ -66,7 +75,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<OutlinedTextfield
 					size="small"
 					value={char.items.encumbrance.encumberedAt}
-					label="Encumbered"
+					label="Carry Cap"
 					sx={{
 						maxWidth: '5rem',
 						'& input': {
@@ -77,7 +86,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<OutlinedTextfield
 					size="small"
 					value={char.items.encumbrance.overencumberedAt}
-					label="Overencumbered"
+					label="Max Cap"
 					sx={{
 						maxWidth: '6rem',
 						'& input': {
@@ -100,7 +109,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				</Typography>
 				<Box sx={{ mt: -0.5 }}>
 					{char.items.weapons.map((weapon, index) => (
-						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+						<Box key={weapon.id} sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 							<TextField
 								size="small"
 								variant="standard"
@@ -196,7 +205,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 						variant="caption"
 						sx={{ fontSize: '9px', mr: 1 }}
 					>
-						Container/Slot
+						Location/Slot
 					</Typography>
 					<Typography
 						color="text.secondary"
@@ -216,8 +225,8 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Box
 					sx={{ display: 'flex', rowGap: 0, columnGap: 2, flexWrap: 'wrap' }}
 				>
-					{char.items.items.map((item, index) => (
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+					{sortedItems.map((item, index) => (
+						<Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
 							<TextField
 								size="small"
 								variant="standard"
@@ -234,7 +243,7 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 							<TextField
 								size="small"
 								variant="standard"
-								value={item.container == 'worn' ? item.slot : item.container}
+								value={item.location === 'worn' ? item.slot : item.location}
 								sx={{
 									maxWidth: '2.5rem',
 									mt: 0.5,
