@@ -76,6 +76,13 @@ export type Statistics = {
 	statusEffects: StatusEffect[]
 }
 
+// Legacy wound type for backwards compatibility with print tool
+export type Wound = {
+	injury: boolean
+	fatigueOne: boolean
+	fatigueTwo: boolean
+}
+
 export type Attribute = {
 	value: AttributeType
 	wounded: boolean

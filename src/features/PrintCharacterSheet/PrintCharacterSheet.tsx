@@ -1,6 +1,6 @@
-import { Alert, Avatar, Box, Button, styled, TextField } from '@mui/material'
+import { Alert, Avatar, Box, Button, Dialog, DialogContent, DialogTitle, IconButton, styled, TextField, Typography } from '@mui/material'
 import { Character } from '@site/src/types/Character'
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import { emptyCharacter } from './assets/emptyCharacter'
 import './printCharacterSheetStyles.css'
@@ -58,6 +58,7 @@ export const RankIndicator = styled(Avatar)({
 export const PrintCharacterSheet: React.FC = () => {
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>(emptyCharacter)
+	const [helpDialogOpen, setHelpDialogOpen] = useState(false)
 
 	const char: Character = useMemo(() => {
 		try {
@@ -85,20 +86,68 @@ export const PrintCharacterSheet: React.FC = () => {
 				If you're having trouble seeing everything on the sheets, make sure to
 				use light mode (the printed result isn't affected either way)!
 			</Alert>
-			<Box>
-				<TextField
-					multiline
-					minRows={5}
-					maxRows={5}
-					label="Import Character as JSON"
-					value={characterJsonString}
-					onChange={(event) => setCharacterJsonString(event.target.value)}
-					sx={{ mb: 2 }}
-				/>
-				<Button variant="contained" size="large" onClick={handlePrint}>
-					PRINT
-				</Button>
+			<Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1 }}>
+				<Box sx={{ flex: 1 }}>
+					<TextField
+						multiline
+						minRows={5}
+						maxRows={5}
+						fullWidth
+						label="Import Character as JSON"
+						value={characterJsonString}
+						onChange={(event) => setCharacterJsonString(event.target.value)}
+						sx={{ mb: 2 }}
+					/>
+				</Box>
+				<IconButton
+					onClick={() => setHelpDialogOpen(true)}
+					sx={{ mt: 1 }}
+					size="small"
+				>
+					?
+				</IconButton>
 			</Box>
+			<Button variant="contained" size="large" onClick={handlePrint}>
+				PRINT
+			</Button>
+
+			<Dialog open={helpDialogOpen} onClose={() => setHelpDialogOpen(false)} maxWidth="md">
+				<DialogTitle>Print Character Sheet Help</DialogTitle>
+				<DialogContent>
+					<Typography variant="h6" gutterBottom>How to Use</Typography>
+					<Typography variant="body2" paragraph>
+						1. <strong>Import Character Data</strong>: Paste your character's JSON data into the text field<br/>
+						2. <strong>Preview</strong>: The sheets will automatically update to show your character's information<br/>
+						3. <strong>Print</strong>: Click the "PRINT" button to generate a printable version
+					</Typography>
+
+					<Typography variant="h6" gutterBottom>Features</Typography>
+					<Typography variant="body2" paragraph>
+						• <strong>Statistics Sheet</strong>: Character attributes, health, fatigue, skills, and abilities<br/>
+						• <strong>Equipment Sheet</strong>: Weapons, armor, items, and encumbrance information<br/>
+						• <strong>Spells Sheet</strong>: Magic skills, spells, focus, and spell damage calculations<br/>
+						• <strong>Personal Sheet</strong>: Character background, description, relationships, and notes
+					</Typography>
+
+					<Typography variant="h6" gutterBottom>Character Data Format</Typography>
+					<Typography variant="body2" paragraph>
+						The tool expects character data in the current Nexus RPG character model format, which includes:<br/>
+						• Personal information: Name, folk, background, physical details, relationships<br/>
+						• Statistics: Health, fatigue, attributes, defensive values, status effects<br/>
+						• Skills: Experience points, skill ranks, abilities and talents<br/>
+						• Equipment: Weapons, items, encumbrance tracking<br/>
+						• Spells: Magic skills, focus, spell lists with damage calculations<br/>
+						• Companions: Animal companions or allied creatures
+					</Typography>
+
+					<Typography variant="h6" gutterBottom>Print Tips</Typography>
+					<Typography variant="body2">
+						• Use <strong>light mode</strong> for better visibility while editing (print output is unaffected)<br/>
+						• Ensure your browser's print settings are configured for the correct paper size<br/>
+						• The sheets are optimized for landscape printing
+					</Typography>
+				</DialogContent>
+			</Dialog>
 
 			{Boolean(char) && (
 				<Box sx={{ display: 'flex', flexWrap: 'wrap' }} ref={componentRef}>

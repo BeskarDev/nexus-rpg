@@ -152,7 +152,7 @@ export const SpellsSheet: React.FC<{ char: Character }> = ({ char }) => {
 									'& input': { p: 0, fontSize: '9px' },
 								}}
 							/>
-							{Boolean(spell.damage.base) && (
+							{Boolean(spell.dealsDamage) && (
 								<TextField
 									size="small"
 									variant="standard"

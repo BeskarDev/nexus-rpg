@@ -1,10 +1,9 @@
-import { Avatar, Box, styled, TextField, Typography } from '@mui/material'
+import { Avatar, Box, InputAdornment, styled, TextField, Typography } from '@mui/material'
 import { SheetLayout } from './SheetLayout'
 import React from 'react'
-import { Character, Wound } from '@site/src/types/Character'
+import { Character } from '@site/src/types/Character'
 import { RoundTextField } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/RoundTextField'
 import { DiceGuide } from '../assets/DiceGuide'
-import { WoundCheckbox } from '../../CharacterSheet/CharacterSheetTabs/00_Statistics/WoundCheckbox'
 import {
 	CharacterHeaderTextField,
 	OutlinedTextfield,
@@ -25,27 +24,19 @@ const AttributeField = styled(RoundTextField)({
 	},
 })
 
-const WoundIndicator = styled(Avatar)({
-	width: 24,
-	height: 24,
-	backgroundColor: 'transparent',
-	color: 'black',
-	border: '2px solid black',
-})
-
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
-	const displayWound = (wound: Wound) => {
-		if (wound.injury) {
-			return 'I'
+	// Group abilities by tag/category
+	const groupedAbilities = char.skills.abilities.reduce((groups, ability) => {
+		const tag = ability.tag || 'Other'
+		if (!groups[tag]) {
+			groups[tag] = []
 		}
-		if (wound.fatigueOne && !wound.fatigueTwo) {
-			return '/'
-		}
-		if (wound.fatigueOne && wound.fatigueTwo) {
-			return 'X'
-		}
-		return ' '
-	}
+		groups[tag].push(ability)
+		return groups
+	}, {} as Record<string, typeof char.skills.abilities>)
+
+	// Define the order of categories
+	const categoryOrder = ['Combat Art', 'Talent', 'Folk', 'Other']
 
 	return (
 		<SheetLayout>
@@ -216,14 +207,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							/>
 						</Box>
 					</Box>
-					<Box
-						sx={{
-							display: 'flex',
-							gap: 1,
-							alignItems: 'center',
-							justifyContent: 'space-between',
-						}}
-					>
+					<Box sx={{ display: 'flex', gap: 1 }}>
 						<OutlinedTextfield
 							value={
 								char.statistics.av.armor +
@@ -239,27 +223,20 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 								},
 							}}
 						/>
-						<Box sx={{ mt: -2 }}>
-							<Typography color="text.secondary" variant="caption">
-								Wounds
-							</Typography>
-							<Box
+						{char.statistics.fatigue && (
+							<OutlinedTextfield
+                size="small"
+								value={char.statistics.fatigue.current}
+								label="Fatigue"
+                InputProps={{
+                  endAdornment: <InputAdornment position="end" sx={{ mt: '2px' }}>/ {char.statistics.fatigue.max}</InputAdornment>,
+                }}
 								sx={{
-									display: 'flex',
-									gap: 1,
+									maxWidth: '4rem',
+                  ml: 'auto',
 								}}
-							>
-								<WoundIndicator>
-									{displayWound(char.statistics.health.woundOne)}
-								</WoundIndicator>
-								<WoundIndicator>
-									{displayWound(char.statistics.health.woundTwo)}
-								</WoundIndicator>
-								<WoundIndicator>
-									{displayWound(char.statistics.health.woundThree)}
-								</WoundIndicator>
-							</Box>
-						</Box>
+							/>
+						)}
 					</Box>
 				</Box>
 			</Box>
@@ -316,7 +293,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 						}}
 					>
 						{char.skills.skills.map((skill, index) => (
-							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<Box key={skill.id} sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 								<Box
 									sx={{
 										display: 'flex',
@@ -366,26 +343,43 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 						ml: 0.5,
 						border: '1px dotted black',
 						borderRadius: '0.5rem',
+						px: 1,
 					}}
 				>
 					<Typography
 						color="text.secondary"
 						variant="caption"
-						sx={{ ml: 1, mb: 0.5 }}
+						sx={{ ml: 0, mb: 0.5 }}
 					>
 						Abilities
 					</Typography>
-					<Box component="ul" sx={{ pl: 3 }}>
-						{char.skills.abilities.map((ability) => (
-							<Typography
-								component="li"
-								variant="body2"
-								sx={{ fontSize: '9px' }}
-							>
-								{ability.title}
-							</Typography>
-						))}
-					</Box>
+					{categoryOrder.map(category => {
+						const abilities = groupedAbilities[category] || []
+						if (abilities.length === 0) return null
+						
+						return (
+							<Box key={category} sx={{ mt: -1 }}>
+								<Typography
+									variant="caption"
+									sx={{ fontWeight: 'bold', fontSize: '8px', color: 'text.primary' }}
+								>
+									{category}
+								</Typography>
+								<Box component="ul" sx={{ pl: 2, my: 0 }}>
+									{abilities.map((ability) => (
+										<Typography
+											key={ability.id}
+											component="li"
+											variant="body2"
+											sx={{ fontSize: '9px', mt: '0px !important' }}
+										>
+											{ability.title}
+										</Typography>
+									))}
+								</Box>
+							</Box>
+						)
+					})}
 				</Box>
 			</Box>
 		</SheetLayout>
