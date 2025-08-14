@@ -1,0 +1,50 @@
+---
+title: Creature Cards
+description: Print creature stat blocks as cards for tabletop play
+---
+
+import { CreatureCards } from '@site/src/features/CreatureCards/CreatureCards'
+
+# Creature Cards
+
+This tool converts creature stat blocks from markdown format into printable cards for easy reference during tabletop sessions.
+
+## How to Use
+
+1. **Upload or paste** your creature markdown content
+2. **Parse** the markdown to extract creature data
+3. **Select** which creatures to print
+4. **Print** the cards on standard paper
+
+The system intelligently creates:
+- **Compact cards** for simple creatures (single card with all info)
+- **Detail cards** for complex creatures (separate cards for stats, attacks, and abilities)
+
+## Markdown Format
+
+Your creature stat blocks should follow this format:
+
+```markdown
+## Creature Name
+*Tier X Basic/Elite/Lord creature*
+
+| Attribute | Value |
+|-----------|-------|
+| Might     | X     |
+| Agility   | X     |
+| Intellect | X     |
+| Influence | X     |
+
+**Hit Points:** X  
+**Initiative:** X  
+**Armor:** X/X  
+**Movement:** X  
+
+### Attacks
+- **Attack Name** (properties) damage - description
+
+### Abilities
+- **Ability Name** - description
+```
+
+<CreatureCards />
