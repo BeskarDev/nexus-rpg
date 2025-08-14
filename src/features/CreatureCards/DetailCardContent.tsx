@@ -95,7 +95,7 @@ export const DetailCardContent: React.FC<DetailCardContentProps> = ({
             <Typography
               variant="body1"
               className={setFontSizeClass(allContent)}
-              sx={{ mb: 0 }}
+              sx={{ mb: 0, whiteSpace: 'pre-line' }}
             >
               {ability.description}
             </Typography>

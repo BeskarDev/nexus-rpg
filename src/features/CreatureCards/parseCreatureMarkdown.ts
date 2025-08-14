@@ -89,7 +89,7 @@ const parseCreatureContent = (name: string, type: string, content: string): Crea
   // Parse abilities
   const abilitiesSection = content.match(/\*\*Abilities:\*\*([\s\S]*)/)
   const abilities = abilitiesSection ? parseAbilities(abilitiesSection[1]) : []
-  
+
   return {
     name,
     tier,
@@ -149,30 +149,68 @@ const parseAbilities = (abilitiesText: string): Ability[] => {
   const abilities: Ability[] = []
   const lines = abilitiesText.split('\n').filter(line => line.trim())
   
+  let currentAbility: Ability | null = null
+  let spells: string[] = []
+  
   for (const line of lines) {
-    if (!line.trim().startsWith('- **')) continue
+    const trimmedLine = line.trim()
+    
+    // Check if this is a spell line (indented with 2 or more spaces and starts with -)
+    if (currentAbility && line.match(/^\s{2,}- /)) {
+      // Extract spell and add it to the spells array
+      const spellMatch = trimmedLine.match(/^- (.+)/)
+      if (spellMatch) {
+        spells.push(spellMatch[1].trim())
+      }
+      continue
+    }
+    
+    // Check if this is a main ability line
+    if (!trimmedLine.startsWith('- **')) {
+      continue
+    }
+    
+    // Save the previous ability if we were building one
+    if (currentAbility) {
+      // Add spells as comma-separated list if any
+      if (spells.length > 0) {
+        currentAbility.description += `\n${spells.join(', ')}`
+        spells = [] // Reset for next ability
+      }
+      abilities.push(currentAbility)
+      currentAbility = null
+    }
     
     // Handle abilities with recharge: - **Name** (Recharge d6). description
-    let match = line.match(/- \*\*([^*]+)\*\*\s*\(([^)]+)\)\.\s*(.+)/)
+    let match = trimmedLine.match(/- \*\*([^*]+)\*\*\s*\(([^)]+)\)\.\s*(.+)/)
     if (match) {
       const [, name, recharge, description] = match
-      abilities.push({
+      currentAbility = {
         name: name.trim(),
         description: description.trim(),
         recharge: recharge.trim(),
-      })
+      }
       continue
     }
     
     // Handle regular abilities: - **Name.** description  
-    match = line.match(/- \*\*([^*]+)\*\*\s*(.+)/)
+    match = trimmedLine.match(/- \*\*([^*]+)\*\*\s*(.+)/)
     if (match) {
       const [, name, description] = match
-      abilities.push({
+      currentAbility = {
         name: name.trim().replace(/\.$/, ''), // Remove trailing period from name
         description: description.trim(),
-      })
+      }
     }
+  }
+  
+  // Don't forget to add the last ability
+  if (currentAbility) {
+    // Add spells as comma-separated list if any
+    if (spells.length > 0) {
+      currentAbility.description += `\n${spells.join(', ')}`
+    }
+    abilities.push(currentAbility)
   }
   
   return abilities

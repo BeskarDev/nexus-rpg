@@ -105,7 +105,7 @@ const splitAbilities = (abilities: Ability[]): Ability[][] => {
   const totalContentLength = getContentLength(abilities)
   
   // Middle ground: Allow good amount of content but split before clipping
-  if (totalContentLength <= 1000) {
+  if (totalContentLength <= 1200) {
     return [abilities] // No splitting needed - font scaling can handle this
   }
   
@@ -118,7 +118,7 @@ const splitAbilities = (abilities: Ability[]): Ability[][] => {
     const abilityLength = getContentLength([ability])
     
     // Split when chunk would cause clipping even with font scaling
-    if (currentChunkLength + abilityLength > 800 && currentChunk.length > 0) {
+    if (currentChunkLength + abilityLength > 1000 && currentChunk.length > 0) {
       chunks.push(currentChunk)
       currentChunk = [ability]
       currentChunkLength = abilityLength
