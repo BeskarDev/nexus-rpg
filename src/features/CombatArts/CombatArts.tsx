@@ -11,11 +11,13 @@ import {
 	Select,
 	SelectChangeEvent,
 	Stack,
+	TextField,
 	ThemeProvider,
 	Typography,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { CombatArt } from '@site/src/types/CombatArt'
+import { Character } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import combatArtsData from '../../utils/json/combat-arts.json'
@@ -38,6 +40,7 @@ export const CombatArts: React.FC = () => {
 	const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>(
 		[],
 	)
+	const [characterJsonString, setCharacterJsonString] = React.useState<string>('')
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedCombatArts>,
@@ -49,6 +52,23 @@ export const CombatArts: React.FC = () => {
 			// On autofill we get a stringified value.
 			typeof value === 'string' ? value.split(',') : value,
 		)
+	}
+
+	const handleCharacterUpload = (jsonString: string) => {
+		setCharacterJsonString(jsonString)
+		try {
+			if (jsonString.trim()) {
+				const character: Character = JSON.parse(jsonString)
+				const characterAbilityNames = character.skills?.abilities?.map(ability => ability.title) || []
+				setSelectedCombatArts(prev => {
+					const existingArts = new Set(prev)
+					characterAbilityNames.forEach(name => existingArts.add(name))
+					return Array.from(existingArts)
+				})
+			}
+		} catch (error) {
+			console.error('Failed to parse character JSON:', error)
+		}
 	}
 
 	const componentRef = useRef()
@@ -71,9 +91,8 @@ export const CombatArts: React.FC = () => {
         @page {\ size: 192mm 267mm;\ }\
       "}</style>
 			<Stack
-				flexDirection="row"
-				gap={1}
-				alignItems="center"
+				flexDirection="column"
+				gap={2}
 				sx={{
 					mb: 2,
 					py: 2,
@@ -82,34 +101,46 @@ export const CombatArts: React.FC = () => {
 					borderRadius: '8px',
 				}}
 			>
-				<Button variant="contained" size="large" onClick={handlePrint}>
-					PRINT
-				</Button>
-				<FormControl sx={{ m: 1, width: 300 }}>
-					<InputLabel>Combat Arts</InputLabel>
-					<Select
-						multiple
-						value={selectedCombatArts}
-						onChange={handleChange}
-						input={<OutlinedInput label="Combat Arts" />}
-						renderValue={(selected) => selected.join(', ')}
-						MenuProps={MenuProps}
-						sx={{ backgroundColor: 'white' }}
-					>
-						{combatArts.map(({ name }) => (
-							<MenuItem key={name} value={name}>
-								<Checkbox checked={selectedCombatArts.indexOf(name) > -1} />
-								<ListItemText primary={name} />
-							</MenuItem>
-						))}
-					</Select>
-				</FormControl>
-				<Button variant="outlined" size="small" onClick={selectAll}>
-					Select all
-				</Button>
-				<Button variant="outlined" size="small" onClick={deselectAll}>
-					Deselect all
-				</Button>
+				<Stack flexDirection="row" gap={1} alignItems="center">
+					<Button variant="contained" size="large" onClick={handlePrint}>
+						PRINT
+					</Button>
+					<FormControl sx={{ m: 1, width: 300 }}>
+						<InputLabel>Combat Arts</InputLabel>
+						<Select
+							multiple
+							value={selectedCombatArts}
+							onChange={handleChange}
+							input={<OutlinedInput label="Combat Arts" />}
+							renderValue={(selected) => selected.join(', ')}
+							MenuProps={MenuProps}
+							sx={{ backgroundColor: 'white' }}
+						>
+							{combatArts.map(({ name }) => (
+								<MenuItem key={name} value={name}>
+									<Checkbox checked={selectedCombatArts.indexOf(name) > -1} />
+									<ListItemText primary={name} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+					<Button variant="outlined" size="small" onClick={selectAll}>
+						Select all
+					</Button>
+					<Button variant="outlined" size="small" onClick={deselectAll}>
+						Deselect all
+					</Button>
+				</Stack>
+				<TextField
+					multiline
+					minRows={3}
+					maxRows={5}
+					fullWidth
+					label="Import Character as JSON (automatically adds character's abilities)"
+					value={characterJsonString}
+					onChange={(event) => handleCharacterUpload(event.target.value)}
+					placeholder="Paste character JSON here to automatically select matching abilities..."
+				/>
 			</Stack>
 			<Typography variant="subtitle1">
 				{filteredCombatArts.length} Combat Arts will be printed:
