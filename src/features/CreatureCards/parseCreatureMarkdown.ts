@@ -95,7 +95,7 @@ const parseCreatureContent = (name: string, type: string, content: string): Crea
     tier,
     category,
     type,
-    hp: parseInt(hp),
+    hp: hp.trim(), // Keep as string to preserve patterns like "2×50"
     av,
     str,
     agi,

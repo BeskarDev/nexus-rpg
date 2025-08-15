@@ -3,7 +3,7 @@ export interface Creature {
   tier: number
   category: string // Basic, Elite, Lord
   type: string // e.g., "Medium Undead"
-  hp: number
+  hp: string // Can be a number like "50" or a pattern like "2×50" for elite/lord
   av: string
   str: string
   agi: string

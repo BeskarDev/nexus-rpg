@@ -38,7 +38,7 @@ const getStatsFontSize = (skills: string[], immunities: string[], resistances: s
 }
 
 interface CreatureStatsProps {
-  hp: number
+  hp: string // Can be a number like "50" or a pattern like "2×50" for elite/lord
   av: string
   str: string
   agi: string
