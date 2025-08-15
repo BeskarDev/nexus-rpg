@@ -42,15 +42,15 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
         characterSheetActions.updateCharacter({
           statistics: {
             av: {
-              armor: armorAV,
-              helmet: helmetAV,
-              shield: shieldAV,
+              armor: armorAV ?? currentAV.armor,
+              helmet: helmetAV ?? currentAV.helmet,
+              shield: shieldAV ?? currentAV.shield,
             },
           },
         }),
       )
     }
-  }, [itemsByLocation, activeCharacter.statistics.av, dispatch])
+  }, [itemsByLocation])
 
   const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
     dispatch(characterSheetActions.updateCharacter(update))

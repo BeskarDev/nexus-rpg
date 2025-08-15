@@ -18,7 +18,7 @@ sidebar_position: 3
 
 **Actions**<br />**- Claw.** 3 damage (2 base + 1 weapon).
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.
+**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.<br />**- Night Vision.** This creature can see one ra**Abilities**<br />**- Blindsight (close).** This creature can perceive it's surroundings at close range without relying on sight.<br />**- Innate Spellcasting.** This creature can cast the following arcane spells rolling Mind + Arcana once per scene each:<br />- Death Bolt (Rank 1)<br />- Grasp of Decay (Rank 1)<br />- Arcane Bolt (Rank 0)<br />- Enfeebling Grasp (Rank 0)<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.ge category further from sources of bright and dim light.
 
 ### Dog
 
@@ -57,6 +57,78 @@ sidebar_position: 3
 **Abilities**<br />**- Eagle Eye.** This creature gains +1 boon on Perception rolls that rely on sight.<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during it‘s turn in total.
 
 ## Tier 1
+
+### Zombie (Gnoll)
+
+*Medium (-), Basic Undead* 
+
+**HP** 10, **AV** 1 (natural light)<br />**STR** d8, **AGI** d4, **SPI** d4, **MND** d4<br />**Parry** 8, **Dodge** 6, **Resist** 7
+
+**Skills** Fighting 1
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+
+**Actions**<br />**- Rotting Claws (slash).** 6 damage (4 base + 2 weapon). On a strong or critical hit, the target suffers bleeding (2) for a short duration.<br />**- Shambling Slam (crush).** 7 damage (4 base + 3 weapon). On a strong or critical hit against a creature of equal or smaller size, the target falls prone.
+
+**Abilities**<br />**- Undead Resilience.** When this creature would be reduced to 0 HP, roll a d6. On a 5-6, it instead remains at 1 HP and gains +2 damage on its next attack.<br />**- Shambling Gait.** This creature needs +1 Movement to move a close or short distance, but can move through other creatures' areas.
+
+### Zombie (Hyena)
+
+*Small (-1), Basic Undead* 
+
+**HP** 10, **AV** 0<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 7, **Dodge** 8, **Resist** 7
+
+**Skills** Fighting 1
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+
+**Actions**<br />**- Infected Bite (pierce).** 6 damage (3 base + 3 weapon). On a strong or critical hit, the target becomes poisoned for a short duration.
+
+**Abilities**<br />**- Pack Hunter.** This creature gains +1 boon on attacks when another ally is in melee range of the target.<br />**- Cackling Moan.** As an Action, this creature can emit a disturbing moan. All living creatures in close range must roll Spirit + Fortitude vs. TN 7 or become briefly frightened.
+
+### Zombie (Vulture)
+
+*Small (-1), Basic Undead* 
+
+**HP** 10, **AV** 0<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d4<br />**Parry** 6, **Dodge** 9, **Resist** 7
+
+**Skills** Fighting 1, Perception 1
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+
+**Actions**<br />**- Diseased Talons (slash).** 6 damage (2 base + 4 weapon). On a strong or critical hit, the target becomes poisoned for a short duration.<br />**- Carrion Beak (pierce).** 5 damage (2 base + 3 weapon).
+
+**Abilities**<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.<br />**- Carrion Sense.** This creature gains +2 boons on Perception rolls to detect wounded or dying creatures.
+
+### Zombie (Drowned)
+
+*Medium (-), Basic Undead* 
+
+**HP** 10, **AV** 0<br />**STR** d8, **AGI** d4, **SPI** d6, **MND** d4<br />**Parry** 8, **Dodge** 6, **Resist** 8
+
+**Skills** Fighting 1, Athletics 1
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** cold
+
+**Actions**<br />**- Waterlogged Grasp.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**- Drowning Touch.** 5 damage (4 base + 1 weapon). Target must roll Strength + Fortitude vs. TN 7 or become briefly suffocating.
+
+**Abilities**<br />**- Aquatic.** This creature can breathe underwater and gains +1 Movement when swimming.<br />**- Waterlogged Body.** When this creature takes fire damage, it takes half damage but creates a cloud of steam in melee range that provides concealment until the end of the next turn.
+
+### Skeleton (Tomb Guardian)
+
+*Medium (-), Basic Undead* 
+
+**HP** 10, **AV** 4 (natural heavy)<br />**STR** d8, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 9, **Dodge** 7, **Resist** 7
+
+**Skills** Fighting 1
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** piercing
+
+**Actions**<br />**- Ancient Spear (pierce, reach).** 6 damage (4 base + 2 weapon). Can attack at close range, +1 bane if enemy in melee.<br />**- Shield Bash (crush).** 5 damage (4 base + 1 weapon). On a strong or critical hit, the target is briefly dazed.
+
+**Abilities**<br />**- Guardian's Vigilance.** This creature gains +1 boon on attacks against creatures that moved into its reach this turn.<br />**- Bone Reassembly (Quick Action, Reactive).** When reduced to 0 HP, roll a d6. On a 4-6, the skeleton immediately reforms with 1 HP at the end of the current turn.
 
 ### Black Bear
 
@@ -304,6 +376,21 @@ sidebar_position: 3
 
 ## Tier 2
 
+### Mummified Giant Snake
+
+*Large (+1), Basic Undead* 
+
+**HP** 20, **AV** 3 (natural light)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 10, **Resist** 8
+
+**Skills** Fighting 1, Stealth 2
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** fire
+
+**Actions**<br />**- Mummified Coils (crush).** 8 damage (5 base + 3 weapon). On a hit, attempts to grapple the target. While grappling, the snake can use Constrict as a Quick Action.<br />**- Desiccating Bite (pierce).** 9 damage (5 base + 4 weapon). Target must roll Spirit + Fortitude vs. TN 8 or become briefly deprived.
+
+**Abilities**<br />**- Constrict (Quick Action, Reactive).** When grappling a creature, deal 6 damage (5 base + 1 weapon) to the grappled target. The target cannot breathe while grappled.<br />**- Ancient Preservation.** When this creature takes fire damage, it gains +2 damage on its next attack as the preserving oils ignite briefly.
+
 ### Brown Bear
 
 *Large (+1), Basic Animal* 
@@ -532,6 +619,68 @@ sidebar_position: 3
 
 ## Tier 4
 
+### Gargoyle
+
+*Medium (-), Basic Construct* 
+
+**HP** 30, **AV** 8 (natural heavy)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 11, **Dodge** 10, **Resist** 10
+
+**Skills** Fighting 2, Perception 3, Stealth 2
+
+**Immunities** bleeding, charmed, confused, frightened, poisoned, unconscious
+**Resistances** physical
+
+**Actions**<br />**- Stone Claws (slash).** 8 damage (5 base + 3 weapon). On a strong or critical hit, the target suffers bleeding (4) for a short duration.<br />**- Swooping Strike (agile).** 9 damage (4 base + 5 weapon). Can only be used while flying. On a hit, the target is knocked prone.
+
+**Abilities**<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.<br />**- Stone Camouflage.** While motionless against stone surfaces, this creature gains +3 boons on Stealth rolls and can't be detected by normal sight.<br />**- Guardian's Vigil.** When this creature is motionless for a full turn, it gains +2 AV and resistance to all damage types until it moves or attacks.
+
+### Skeleton (Manticore)
+
+*Large (+1), Elite Undead* 
+
+**HP** 2×40, **AV** 8 (natural heavy)<br />**STR** d10, **AGI** d10, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 12, **Resist** 10
+
+**Skills** Fighting 2, Archery 3, Perception 2
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** piercing
+
+**Actions**<br />**- Bone Claws (slash).** 8 damage (5 base + 3 weapon).<br />**- Skeletal Bite (crush).** 10 damage (5 base + 5 weapon). On a strong or critical hit, the target is grappled.<br />**- Bone Spikes (pierce, range (long)).** 9 damage (5 base + 4 weapon). Can fire up to 3 spikes per turn at different targets.
+
+**Abilities**<br />**- Elite Trigger - Bone Storm.** When the first life pool is depleted, the manticore's rage erupts. It immediately fires bone spikes at all enemies within long range (no action required) and gains +2 weapon damage for the remainder of the scene.<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.<br />**- Spike Volley (Quick Action, Proactive).** Once per turn, fire a single bone spike at any target within range as a Quick Action.
+
+### Mummy
+
+*Medium (-), Basic Undead* 
+
+**HP** 40, **AV** 4 (natural light)<br />**STR** d10, **AGI** d6, **SPI** d10, **MND** d8<br />**Parry** 10, **Dodge** 8, **Resist** 12
+
+**Skills** Fighting 2, Fortitude 3, Mysticism 2
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** fire
+**Weaknesses** radiant
+
+**Actions**<br />**- Withering Touch.** 8 damage (5 base + 3 weapon). Target must roll Strength + Fortitude vs. TN 10 or become briefly deprived.<br />**- Mummy's Grasp (crush).** 9 damage (5 base + 4 weapon). On a hit, attempts to grapple the target.
+
+**Abilities**<br />**- Terrifying Presence.** When first seen, all living creatures within close range must roll Spirit + Fortitude vs. TN 10 or become briefly frightened.<br />**- Curse of Decay.** Any creature that takes damage from this mummy's attacks becomes cursed. Cursed creatures suffer +1 bane on all rolls until they receive magical healing or complete a long rest.<br />**- Desiccating Aura.** All living creatures that start their turn in melee range take 2 necrotic damage as their life force is slowly drained.
+
+### Mummy (Priest)
+
+*Medium (-), Basic Undead* 
+
+**HP** 40, **AV** 3 (natural light)<br />**STR** d8, **AGI** d6, **SPI** d12, **MND** d10<br />**Parry** 9, **Dodge** 8, **Resist** 13
+
+**Skills** Fighting 2, Mysticism 3, Insight 2, Religion 3
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** necrotic
+**Weaknesses** radiant
+
+**Actions**<br />**- Staff Strike (reach, two-handed).** 8 damage (4 base + 4 weapon). +1 bane if used one-handed.<br />**- Necrotic Touch.** 7 damage (4 base + 3 weapon). Target must roll Spirit + Fortitude vs. TN 10 or suffer -1 to all attributes for a short duration.
+
+**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following arcane spells rolling Mind + Arcana once per scene each:<br />  - Drain Life (Rank 0)<br />  - Necromantic Sight (Rank 0)<br />  - Death Bolt (Rank 1)<br />  - Chromatic Orb (Rank 1)<br />**- Divine Authority.** Once per scene, this creature can command all undead within medium range. They gain +1 boon on their next attack and move up to their Movement toward the priest's chosen target.<br />**- Unholy Blessing.** As an Action, this creature can touch an undead ally and restore 10 HP to them while granting them +2 damage on their next attack.
+
 ### Adult Dragon
 
 *Huge (+2), Elite Dragon* 
@@ -575,6 +724,37 @@ sidebar_position: 3
 **Abilities**<br />-
 
 ## Tier 5
+
+### Bone Naga
+
+*Large (+1), Elite Undead* 
+
+**HP** 2×50, **AV** 5 (natural light)<br />**STR** d10, **AGI** d10, **SPI** d12, **MND** d10<br />**Parry** 11, **Dodge** 12, **Resist** 13
+
+**Skills** Fighting 3, Arcana 3, Mysticism 3, Insight 3
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** necrotic, piercing
+
+**Actions**<br />**- Bone Fangs (pierce).** 9 damage (5 base + 4 weapon). Target must roll Spirit + Fortitude vs. TN 11 or become briefly paralyzed.<br />**- Constricting Coils (crush).** 10 damage (5 base + 5 weapon). On a hit, attempts to grapple the target. While grappling, can use Crushing Embrace as a Quick Action.<br />**- Necrotic Bolt (range (long)).** 8 damage (5 base + 3 weapon). Target must roll Spirit + Fortitude vs. TN 11 or become briefly dazed.
+
+**Abilities**<br />**- Elite Trigger - Undead Mastery.** When the first life pool is depleted, ancient necromantic power awakens. The Bone Naga's Spirit increases to d12+1 and it can cast each of its spells twice per scene for the remainder of combat.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />  - Aura of Fear (Rank 2)<br />  - Moonbeam (Rank 2)<br />  - Shadow Step (Rank 2)<br />  - Curse of Twilight (Rank 1)<br />**- Crushing Embrace (Quick Action, Reactive).** When grappling a creature, deal 7 damage (5 base + 2 weapon) to the grappled target and they must roll Strength + Fortitude vs. TN 11 or become briefly stunned.<br />**- Serpentine Grace (Quick Action, Reactive).** When targeted by an attack, the Bone Naga can attempt to dodge with supernatural grace. Roll Agility + Athletics vs. TN 11. On a success, gain +3 Dodge against the triggering attack.
+
+### Mummy Lord
+
+*Medium (-), Lord Undead* 
+
+**HP** 3×50, **AV** 6 (natural heavy)<br />**STR** d10, **AGI** d8, **SPI** d12+1, **MND** d12<br />**Parry** 11, **Dodge** 10, **Resist** 11
+
+**Skills** Fighting 3, Arcana 3, Mysticism 3, Religion 3, Insight 3
+
+**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Resistances** fire, necrotic
+**Weaknesses** radiant
+
+**Actions**<br />**- Withering Grasp.** 9 damage (5 base + 4 weapon). Target must roll Strength + Fortitude vs. TN 11 or become briefly deprived and suffer -1 to one attribute for a medium duration.<br />**- Pharaoh's Scepter (two-handed, reach).** 11 damage (5 base + 6 weapon). +2 banes if used one-handed. On a strong or critical hit, target is knocked prone.<br />**- Death Glare (range (medium)).** Spirit + Mysticism vs. Resist. Target takes 8 necrotic damage (5 base + 3 weapon) and must roll Spirit + Fortitude vs. TN 11 or become briefly frightened.<br />**- Ancient Command.** Command all undead within long range. They gain +2 boons on their next attack and can move up to their Movement toward the Mummy Lord's chosen target.<br />**- Sandstorm Burst (blast (short), recharge (5-6)).** Spirit + Mysticism vs. Dodge. All creatures in range take 9 damage (5 base + 4 weapon) and are briefly blinded by swirling sand.
+
+**Abilities**<br />**- Lord Trigger - Royal Wrath.** When any life pool is depleted, the Mummy Lord's divine authority manifests. All enemies within medium range must roll Spirit + Fortitude vs. TN 13 or become frightened for a short duration. The Mummy Lord also regains use of any recharge abilities.<br />**- Lord Trigger - Undead Dominion.** When any life pool is depleted, summon 2d4 Tier 1 undead creatures in adjacent areas. These undead last until the end of the scene.<br />**- Innate Spellcasting.** This creature can cast the following arcane spells rolling Mind + Arcana once per scene each:<br />  - Wither (Rank 3, Necromancy)<br />  - Negative Energy Flood (Rank 3, Necromancy)<br />  - Black Flame Bolt (Rank 3, Evocation)<br />  - Fireball (Rank 2, Evocation)<br />  - Eldritch Tendrils (Rank 2, Conjuration)<br />  - Death Mark (Rank 2, Necromancy)<br />**- Ancient Authority (Quick Action, Proactive).** Once per turn, the Mummy Lord can command any undead ally within medium range to immediately make an attack or move up to their Movement.<br />**- Necrotic Aura (Quick Action, Reactive).** When an enemy ends their turn within close range, they take 3 necrotic damage as their life force is drained to sustain the Mummy Lord.<br />**- Pharaoh's Curse.** Any creature that deals damage to the Mummy Lord becomes cursed. Cursed creatures suffer +1 bane on all rolls and take 2 necrotic damage at the start of their turns. The curse can be removed by magical healing or by defeating the Mummy Lord.
 
 ### Old Dragon
 

@@ -213,6 +213,10 @@ Required when any life pool is depleted. Design 1-2 triggers:
 - **Light armor**: Equal to creature's tier
 - **Heavy armor**: Double the creature's tier  
 - **Size adjustments**: Larger creatures +1 tier AV, smaller creatures -1 tier AV
+- **CRITICAL - Creature Type Guidelines**:
+  - **Bone-based creatures**: Use natural heavy armor due to dense structure
+  - **Stone/metal constructs**: Typically use natural heavy armor unless specifically agile
+  - **When using higher tier AV**: Must balance by reducing another stat by equivalent amount (e.g., reduce HP by one tier if increasing AV by one tier)
 
 #### Defenses (Parry/Dodge/Resist)
 - **Base**: 6 + creature's tier for all three
@@ -220,6 +224,7 @@ Required when any life pool is depleted. Design 1-2 triggers:
 - **Size effects**: 
   - Large/Huge: Parry +1-2 tiers, Dodge -1-2 tiers
   - Small/Tiny: Dodge +1-2 tiers, Parry -1-2 tiers
+- **CRITICAL - Resist Limits**: Resist should rarely exceed 6 + tier + 2. High mental attributes don't automatically justify excessive Resist values - maintain tier-appropriate balance.
 
 #### Attributes
 - **Primary attribute**: Set to tier's "Max Attribute" value
@@ -321,6 +326,10 @@ Create additional abilities based on creature category:
 - Supernatural effects mimicking spells
 - Aura effects affecting nearby creatures
 - **CRITICAL**: When giving creatures spellcasting abilities, you MUST verify that all referenced spells actually exist in the game's spell lists
+- **CRITICAL - Spell Rank Balance**: Creatures can only cast spells up to their relevant skill rank. Match spell ranks to the creature's actual skill level in Arcana/Mysticism
+- **CRITICAL - Spellcasting Attributes**: Always use the correct attribute pairings for spellcasting:
+  - **Arcane Magic**: Mind + Arcana (wizard, sorcerer, warlock magic)
+  - **Mystic Magic**: Spirit + Mysticism (priest, cleric, paladin, druid, monk magic)
 - **Arcane vs. Mystic Magic**:
   - **Arcane**: Wizard, Sorcerer, Warlock magic - raw magical power, elemental forces, illusions, enchantments
   - **Mystic**: Priest, Cleric, Paladin, Druid, Monk magic - divine power, nature magic, light/shadow, life/death
@@ -369,8 +378,8 @@ Create additional abilities based on creature category:
 #### Mechanical Checklist
 - [ ] HP appropriate for tier and category
 - [ ] HP format correct for category (basic: "40", elite: "2×40", lord: "3×40")
-- [ ] AV follows tier guidelines
-- [ ] Defenses average to 6 + tier
+- [ ] AV follows tier guidelines and creature type (bone/stone creatures typically use heavy armor)
+- [ ] Defenses average to 6 + tier (Resist should rarely exceed 6 + tier + 2)
 - [ ] Damage formula correctly applied (X/2X+base/3X+base)
 - [ ] Ability TNs equal 6 + tier
 - [ ] Skill ranks match tier expectations
@@ -385,8 +394,11 @@ Create additional abilities based on creature category:
 - [ ] Lord creatures have at least one reactive Quick Action ability
 - [ ] Lord creatures have at least one proactive Quick Action ability
 - [ ] All conditions and spells referenced actually exist in the Nexus RPG rules
+- [ ] Spellcasting creatures can only cast spells up to their relevant skill rank
+- [ ] Spellcasting creatures use correct attribute pairings (Mind + Arcana for arcane, Spirit + Mysticism for mystic)
 - [ ] If using tier adjustment for thematic reasons, ensure one stat is reduced while another is increased by the same amount
 - [ ] Spellcasting abilities only reference spells that exist in the arcane or mystic spell lists
+- [ ] All weapon properties, damage types, ranges, and conditions used are valid in the system
 
 #### Thematic Checklist  
 - [ ] Abilities reflect creature nature and role
@@ -406,10 +418,19 @@ Create additional abilities based on creature category:
 
 ## Common Mistakes to Avoid
 
-### ❌ **Incorrect HP Format**
-- **Wrong**: Elite with "50 HP" (should be "2×40")
-- **Wrong**: Lord with "60 HP" (should be "3×40")
-- **Right**: Use life pool format for Elite/Lord creatures
+### ❌ **Armor Value Errors**
+- **Wrong**: Bone-based creature with light armor
+- **Right**: Bone/stone creatures typically use heavy armor due to material density
+- **Wrong**: High AV without balancing reduction elsewhere
+- **Right**: When increasing AV above tier standard, reduce another stat equivalently
+
+### ❌ **Resist Value Errors**
+- **Wrong**: Resist values significantly above tier guidelines
+- **Right**: Keep Resist within reasonable bounds (rarely above 6 + tier + 2)
+
+### ❌ **Spell Rank Errors**
+- **Wrong**: Creatures casting spells above their skill rank
+- **Right**: Match spell ranks to actual skill levels in Arcana/Mysticism
 
 ### ❌ **Missing Trigger Abilities**
 - Elite creatures MUST have an ability that triggers when first life pool depletes
