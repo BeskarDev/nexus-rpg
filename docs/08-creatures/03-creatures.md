@@ -58,102 +58,6 @@ sidebar_position: 3
 
 ## Tier 1
 
-### Zombie
-
-*Medium (-), Basic Undead* 
-
-**HP** 10, **AV** 1 (natural light)<br />**STR** d6, **AGI** d4, **SPI** d4, **MND** d4-1<br />**Parry** 7, **Dodge** 6, **Resist** 7
-
-**Skills** Endurance 1, Fighting 1
-
-**Resistances** necrotic damage
-
-**Weaknesses** radiant damage
-
-**Actions**<br />**- Claw.** 4/6/8 damage (3 base + 3 weapon). On a hit, attempts to grapple the target.<br />**- Rotten Bite (only if grappling).** 6/10/14 damage (3 base + 3 weapon).
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions.
-
-### Zombie Gnoll
-
-*Medium (-), Basic Undead* 
-
-**HP** 10, **AV** 1 (natural light)<br />**STR** d6, **AGI** d4, **SPI** d4, **MND** d4-1<br />**Parry** 7, **Dodge** 7, **Resist** 7
-
-**Skills** Fighting 1, Perception 1
-
-**Resistances** necrotic damage
-
-**Weaknesses** radiant damage
-
-**Actions**<br />**- Rusty Spear (pierce, reach, two-handed).** 5/7/9 damage (3 base + 2 weapon). On a critical hit, the target contracts a disease (roll Spirit + Fortitude vs. TN 7 or become poisoned for a medium duration).<br />**- Bite (only if grappling).** 5/9/13 damage (3 base + 2 weapon).
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions.<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
-
-### Zombie Hyena
-
-*Medium (-), Basic Undead* 
-
-**HP** 10, **AV** 1 (natural light)<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 7, **Dodge** 7, **Resist** 7
-
-**Skills** Perception 1
-
-**Resistances** necrotic damage
-
-**Weaknesses** radiant damage
-
-**Actions**<br />**- Bite.** 4/6/8 damage (3 base + 3 weapon). On a hit, attempts to grapple the target.
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions.<br />**- Pack Tactics.** While in a troop or in melee range of allies, this creature's attacks gain +1 boon.
-
-### Zombie Vulture
-
-*Small (-1), Basic Undead* 
-
-**HP** 10, **AV** 0<br />**STR** d4, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 8, **Dodge** 8, **Resist** 7
-
-**Skills** Perception 1
-
-**Resistances** necrotic damage
-
-**Weaknesses** radiant damage
-
-**Actions**<br />**- Beak (pierce).** 4/6/8 damage (3 base + 3 weapon).<br />**- Talons (slash).** 4/6/8 damage (3 base + 3 weapon).
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions.<br />**- Carrion Sense.** This creature can instinctively sense corpses and dying creatures within medium range.
-
-### Drowned Zombie
-
-*Medium (-), Basic Undead* 
-
-**HP** 10, **AV** 1 (natural light)<br />**STR** d6, **AGI** d4, **SPI** d4, **MND** d4-1<br />**Parry** 7, **Dodge** 6, **Resist** 7
-
-**Skills** Athletics 1, Fighting 1
-
-**Resistances** necrotic damage, cold damage
-
-**Weaknesses** radiant damage, fire damage
-
-**Actions**<br />**- Claw.** 4/6/8 damage (3 base + 3 weapon). On a hit, attempts to grapple the target.<br />**- Drowning Grasp (only if grappling).** 4/6/8 damage (3 base + 3 weapon). Target makes Spirit + Fortitude vs. TN 7 or begins drowning (can't speak or breathe, disadvantage on all rolls until freed).
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions.<br />**- Waterlogged.** This creature moves at half speed on land but can swim at full speed underwater.
-
-### Skeleton Humanoid
-
-*Medium (-), Basic Undead* 
-
-**HP** 10, **AV** 3 (natural light)<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 8, **Resist** 7
-
-**Skills** Fighting 1, Perception 1
-
-**Resistances** necrotic damage
-
-**Weaknesses** crush weapons, radiant damage
-
-**Actions**<br />**- Shortsword (agile, light, pierce).** 4/6/8 damage (3 base + 3 weapon).<br />**- Shortbow (ammo, range (medium), two-handed).** 4/6/8 damage (3 base + 3 weapon).
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Unholy Reanimation.** This creature can't take Wounds, but is instead destroyed once reduced to 0 HP. When this creature is destroyed, it is reanimated at the start of its next turn with 1 HP, unless it was destroyed by a crush weapon or radiant damage. It also doesn't regenerate if its remains were smashed with a melee weapon while at 0 HP before its next turn.
-
 ### Black Bear
 
 *Medium (-), Basic Animal* 
@@ -544,54 +448,6 @@ sidebar_position: 3
 
 ## Tier 3
 
-### Skeleton Manticore
-
-*Large (+1), Elite Undead*
-
-**HP** 2×30, **AV** 6 (natural heavy)<br />**STR** d8, **AGI** d8, **SPI** d8, **MND** d8<br />**Parry** 11, **Dodge** 11, **Resist** 11
-
-**Skills** Fighting 2, Perception 2, Athletics 2
-
-**Resistances** necrotic damage
-
-**Weaknesses** crush weapons, radiant damage
-
-**Actions**<br />**- Bone Claws (slash).** 9/11/13 damage (4 base + 5 weapon). If the target takes damage, they begin bleeding.<br />**- Tail Spike Volley (ammo, pierce, range (long)).** 7/9/11 damage (4 base + 3 weapon). Targets up to three creatures within close range of each other.<br />**- Crushing Bite (crush, only if grappling).** 11/17/23 damage (4 base + 7 weapon).
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Unholy Reanimation.** This creature can't take Wounds, but is instead destroyed once reduced to 0 HP. When this creature is destroyed, it is reanimated at the start of its next turn with 1 HP, unless it was destroyed by a crush weapon or radiant damage. It also doesn't regenerate if its remains were smashed with a melee weapon while at 0 HP before its next turn.<br />**- Elite Trigger - Bone Storm.** When the first life pool is depleted, the manticore's rage intensifies. It gains +2 weapon damage on all attacks and can use Tail Spike Volley as a Quick Action for the remainder of the scene.<br />**- Pounce (Quick Action, Proactive).** If the manticore moves at least one area, its next melee attack gains +2 boons and attempts to grapple the target.<br />**- Bone Armor (Quick Action, Reactive).** When targeted by an attack, the manticore can shift its bone plates. Roll Spirit + Endurance vs. TN 9. On a success, gain +2 AV against the triggering attack. On a strong success, gain +4 AV. On a critical success, gain +6 AV and the attacker takes 3 necrotic damage from bone shards.
-
-### Gargoyle
-
-*Medium (-), Basic Construct*
-
-**HP** 30, **AV** 6 (natural heavy)<br />**STR** d8, **AGI** d8, **SPI** d8, **MND** d8<br />**Parry** 9, **Dodge** 9, **Resist** 9
-
-**Skills** Fighting 2, Perception 2, Stealth 2
-
-**Resistances** physical damage from non-magical weapons
-
-**Weaknesses** thunder damage
-
-**Actions**<br />**- Claw (slash).** 8/10/12 damage (4 base + 4 weapon). If the target takes damage, they begin bleeding.<br />**- Bite (crush).** 9/13/17 damage (4 base + 5 weapon).<br />**- Wing Buffet (targets up to 3 creatures within close range).** 6/8/10 damage (4 base + 2 weapon). Targets must roll Strength + Athletics vs. TN 9 or be pushed close and fall prone.
-
-**Abilities**<br />**- Construct Nature.** This creature is immune against bleeding, being charmed, confused, frightened, poisoned, or falling unconscious.<br />**- Stone Camouflage.** While motionless against stone surfaces, this creature gains +3 boons on Stealth rolls and appears to be a statue.<br />**- Damage Resistance.** This creature takes half damage from physical attacks made with non-magical weapons.<br />**- Flight.** This creature can fly and hover in place.
-
-### Mummy Giant Snake
-
-*Large (+1), Basic Undead*
-
-**HP** 30, **AV** 3 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d8, **MND** d8<br />**Parry** 10, **Dodge** 10, **Resist** 10
-
-**Skills** Fighting 2, Perception 2, Athletics 2, Stealth 2
-
-**Resistances** necrotic damage, physical damage
-
-**Weaknesses** fire damage, radiant damage
-
-**Actions**<br />**- Constricting Coils (reach).** 7/9/11 damage (4 base + 3 weapon). On a hit, attempts to grapple the target. While grappling, the snake deals 6 damage automatically at the start of each turn.<br />**- Mummified Bite (pierce).** 9/13/17 damage (4 base + 5 weapon). Target makes Spirit + Fortitude vs. TN 9 or contracts mummy rot (poisoned for a long duration, can't be healed until cured).<br />**- Dust Cloud (affects all creatures within close range).** Target roll Agility + Athletics vs. TN 9 or become blinded for a short duration.
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Mummy Rot Aura.** Living creatures that start their turn within close range must roll Spirit + Fortitude vs. TN 9 or become diseased (lose 1 HP per hour until cured).<br />**- Serpentine Movement.** This creature can move through spaces as narrow as 2 feet without squeezing and gains +1 boon on Athletics rolls for climbing.<br />**- Damage Resistance.** This creature takes half damage from physical attacks.
-
 ### Large Fire Elemental
 
 *Large (+1), Basic Daimon (Primal)* 
@@ -676,22 +532,6 @@ sidebar_position: 3
 
 ## Tier 4
 
-### Mummy Unholy Priest
-
-*Medium (-), Basic Undead*
-
-**HP** 40, **AV** 8 (chain mail + shield)<br />**STR** d10, **AGI** d8, **SPI** d10, **MND** d10<br />**Parry** 10, **Dodge** 10, **Resist** 12
-
-**Skills** Fighting 2, Mysticism 3, Theology 3, Lore 2
-
-**Resistances** necrotic damage, physical damage
-
-**Weaknesses** fire damage, radiant damage
-
-**Actions**<br />**- Cursed Mace (crush).** 9/13/17 damage (5 base + 4 weapon). On a strong hit, target is cursed (+1 bane on all rolls for short duration).<br />**- Unholy Symbol (range: medium).** Roll Spirit + Mysticism vs. target's Resist. 7/9/11 necrotic damage (5 base + 2 weapon). On a strong hit, target is frightened for short duration.
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Mummy Rot Aura.** Living creatures that start their turn within close range must roll Spirit + Fortitude vs. TN 10 or become diseased (lose 1 HP per hour until cured).<br />**- Damage Resistance.** This creature takes half damage from physical attacks.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Hold Person (Rank 2)<br />- Cloud of Sickness (Rank 2)<br />- Silence (Rank 2)<br />- Unholy Weapon (Rank 2)<br />- Bone Prison (Rank 3)<br />- Dispel Magic (Rank 3)
-
 ### Adult Dragon
 
 *Huge (+2), Elite Dragon* 
@@ -736,22 +576,6 @@ sidebar_position: 3
 
 ## Tier 5
 
-### Bone Naga
-
-*Large (+1), Elite Undead*
-
-**HP** 2×50, **AV** 10 (natural heavy)<br />**STR** d8, **AGI** d10, **SPI** d10, **MND** d12<br />**Parry** 12, **Dodge** 12, **Resist** 13
-
-**Skills** Fighting 3, Arcana 4, Mysticism 3, Lore 3, Perception 3
-
-**Resistances** necrotic damage, cold damage
-
-**Weaknesses** radiant damage, fire damage
-
-**Actions**<br />**- Bone Bite (pierce, crush).** 9/11/13 damage (5 base + 4 weapon). Target makes Spirit + Fortitude vs. TN 11 or becomes paralyzed for a short duration.<br />**- Tail Lash (reach, slash).** 8/10/12 damage (5 base + 3 weapon). Targets up to two creatures within reach. On a strong hit, targets are pushed close and fall prone.<br />**- Bone Shard Spray (range: short, targets all in area).** 7/9/11 damage (5 base + 2 weapon). Roll Spirit + Arcana vs. target's Dodge.
-
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Elite Trigger - Necromantic Surge.** When the first life pool is depleted, dark energy surges through the naga's bones. All attributes increase by one die size and it can cast spells as Quick Actions for the remainder of the scene.<br />**- Bone Armor (Quick Action, Reactive).** When targeted by an attack, the naga can reinforce its bone structure. Roll Spirit + Mysticism vs. TN 11. On a success, gain +3 AV against the triggering attack. On a strong success, gain +6 AV. On a critical success, gain +9 AV and reflect 6 necrotic damage back to the attacker.<br />**- Spell Weaving (Quick Action, Proactive).** The naga can cast a spell and make a weapon attack in the same turn, or cast two spells if it doesn't attack.<br />**- Serpentine Grace.** This creature can move through spaces as narrow as 3 feet without squeezing and gains +2 boons on Athletics rolls for climbing or swimming.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Arcana once per scene each:<br />- Hold Person (Rank 2)<br />- Bone Prison (Rank 3)<br />- Death Ray (Rank 3)<br />- Disintegrate (Rank 3)<br />- Polymorph (Rank 3)<br />- Soul Burn (Rank 3)
-
 ### Old Dragon
 
 *Gargantuan (+3), Elite Dragon* 
@@ -761,23 +585,3 @@ sidebar_position: 3
 **Actions**<br />-
 
 **Abilities**<br />-
-
-## Tier 6
-
-### Mummy Lord
-
-*Medium (-), Lord Undead*
-
-**HP** 3×50, **AV** 12 (natural heavy)<br />**STR** d12, **AGI** d8, **SPI** d12+1, **MND** d10<br />**Parry** 15, **Dodge** 10, **Resist** 15
-
-**Skills** Arcana (3), Athletics (4), Fighting (3), Fortitude (3), History (4), Intimidation (3), Mysticism (3), Perception (4), Survival (4)
-
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-
-**Resistances** necrotic; physical damage from non-magical weapons
-
-**Weaknesses** fire
-
-**Actions**<br />**- Rotting Fist (crush).** 14/22/30 damage (6 base + 8 weapon). Target makes Spirit + Fortitude vs. TN 12 or contracts mummy rot.<br />**- Dreadful Glare.** Spirit + Arcana vs. Resist. Target one creature within medium range. On a success, target is frightened for medium duration. On a strong success, target is also paralyzed for brief duration. On a critical success, target is paralyzed for short duration.<br />**- Sandstorm Blast.** Strength + Arcana vs. Dodge. Target all creatures in one area within short range. On a success, each target suffers 10/16/22 slashing damage (6 base + 4 weapon) and is blinded for brief duration.
-
-**Abilities**<br />**- Mummy Rot.** A creature infected with mummy rot can't regain hit points, and its hit point maximum decreases by 10 every 24 hours. If a creature's hit point maximum drops to 0 from this disease, the creature dies and crumbles to dust. The disease can be cured by greater healing magic or by destroying the mummy lord.<br />**- Legendary Resistance.** This creature can spend 1 Resolve to automatically succeed on any failed save.<br />**- Undead Fortitude.** When reduced to 0 hit points, this creature can roll Spirit + Fortitude vs. TN 12. On a success, it instead drops to 1 hit point.<br />**- Spellcasting.** This creature knows and can cast the following spells as a Tier 6 caster (once per scene each): *Animate Corpse*, *Black Flame Bolt*, *Control Undead*, *Horrific Vision*, *Phantasmal Killer*, *Withering Claw*.<br />**- Wrappings Shield (Quick Action, Reactive).** When targeted by an attack, the Mummy Lord can unravel its wrappings to deflect the blow. Roll Spirit + Arcana vs. TN 12. On a success, gain +2 AV against the triggering attack. On a strong success, gain +4 AV. On a critical success, gain +6 AV and the attacker is briefly entangled by the wrappings.<br />**- Desert Mirage (Quick Action).** The Mummy Lord creates illusory duplicates of itself. Roll Spirit + Arcana vs. TN 12. On a success, create 2 illusory duplicates in adjacent areas. On a strong success, create 3 duplicates. On a critical success, create 4 duplicates. The duplicates last for brief duration and provide +1 bane to attacks targeting the Mummy Lord for each active duplicate.<br />**- Lord Trigger - Ancient Fury.** When any life pool is depleted, the Mummy Lord's rage awakens the ancient curses within. All attributes increase by one die size, it gains +4 weapon damage, and all enemies within short range must make Spirit + Fortitude vs. TN 14 or be cursed (suffer +2 banes on all rolls) for the remainder of the scene.<br />**- Lord Trigger - Sandstorm Aura.** When any life pool is depleted, the area fills with swirling sand. All areas within medium range of the Mummy Lord become difficult terrain, and creatures starting their turn in these areas suffer 6 slashing damage (ignoring AV) and are blinded until the start of their next turn.
