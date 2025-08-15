@@ -19,11 +19,11 @@ Creatures act in the same basic ways, as adventurers do. But some details differ
 
 Creatures can come in different categories representing their importance and power level.
 
-|  | HP Modifier | Nr. of Wounds | Nr. of Attacks | Nr. of Abilities |
-| --- | --- | --- | --- | --- |
-| Basic | - | 1 | 1-2 | 1-3 |
-| Elite | +10 | 2 | 2-3 | 2-4 |
-| Lord | +20 | 3 | 3-5 | 3-6 |
+|  | Nr. of Wounds | Nr. of Attacks | Nr. of Abilities |
+| --- | --- | --- | --- |
+| Basic | 1 | 1-2 | 1-3 |
+| Elite | 2 | 2-3 | 2-4 |
+| Lord | 3 | 3-5 | 3-6 |
 
 ### Basic
 
@@ -84,9 +84,8 @@ Few and far between you will encounter the elite among creatures.
 
 Elite creatures…
 
-- can take up to two Wounds. When they suffer their first Wound, they regain all of their HP (this can't be negated).
-- If they start dying, they automatically die at the end of the scene.
-- can’t spend Resolve.
+- can take up to two Wounds. When they suffer their first Wound, they regain all of their HP (this can't be negated) and recover from all negative conditions and effects affecting them.
+- they start the scene with 1 Resolve.
 - have to roll for Morale, but gain +1 boon on it.
 
 ### Lord
@@ -95,10 +94,10 @@ Lords are the highlight of a whole adventure. They are often the powerful leader
 
 Lord creatures…
 
-- can take a number of Wounds equal to the number of adventurers fighting them (min. 3). When they suffer a Wound, they regain all of their HP (this can't be negated).
-- once they take a Wound, they recover from all negative conditions and effects that previously affected them.
-- If they start dying, they automatically die at the end of the scene.
+- can take up to three Wounds. When they suffer a Wound, they regain all of their HP (this can't be negated) and recover from all negative conditions and effects affecting them.
 - when they succeed on a roll to withstand or recover from any condition, they are immune to that type of condition for the rest of the scene.
+- they start the scene with 3 Resolve.- 
+- get a second round per turn at half their original Initiative.
 - don’t have to roll for Morale.
 
 ## Size
