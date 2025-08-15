@@ -2,766 +2,1007 @@
 sidebar_position: 3
 ---
 
-# 👹 Creatures
+# 🐻 Creatures
 
-![banner-img](/img/banner/creatures-banner.png)
+The following sections contains creature stat blocks for use by the GM. A creature stat block contains all the information necessary to run a creature as a character.
+
+For how to create your own creatures, see [Creature Rules](./02-creature-rules.md).
 
 ## Tier 0
 
-### Cat
+### **Cat** (Small Animal)
 
-*Tiny (-2), Basic Animal* 
+**Tier:** 0 (Basic)
 
-**HP** 5, **AV** 0<br />**STR** d4, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 6
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 5  | 0  | d4 | d6 | d4 | d4  | 6     | 7     | 6      |
 
-**Skills** Fighting 0, Perception 1, Survival 1
+**Skills:** Athletics (0), Perception (1), Stealth (1)
 
-**Actions**<br />**- Claw.** 3 damage (2 base + 1 weapon).
+**Attacks:**
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.<br />**- Night Vision.** This creature can see one ra**Abilities**<br />**- Blindsight (close).** This creature can perceive it's surroundings at close range without relying on sight.<br />**- Innate Spellcasting.** This creature can cast the following arcane spells rolling Mind + Arcana once per scene each:<br />- Death Bolt (Rank 1)<br />- Grasp of Decay (Rank 1)<br />- Arcane Bolt (Rank 0)<br />- Enfeebling Grasp (Rank 0)<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.ge category further from sources of bright and dim light.
+- **Bite.** 2/3/4 damage (base 2 + weapon 0). On a hit, attempts to grapple the target.
 
-### Dog
+**Abilities:**
 
-*Small (-1), Basic Animal* 
+- **Natural Climber.** This creature can climb without treating it as difficult terrain.
+- **Night Vision.** This creature can see in dim light as if it were bright light and in darkness as if it were dim light.
 
-**HP** 10, **AV** 0<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 8, **Resist** 6
+---
 
-**Skills** Fighting 0, Perception 1, Survival 1
+### **Dog** (Small Animal)
 
-**Actions**<br />**- Bite.** 5 damage (3 base + 2 weapon). On a hit, attempts to grapple the target.
+**Tier:** 0 (Basic)
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0  | d6 | d6 | d4 | d4  | 8     | 8     | 6      |
 
-### Draft Horse
+**Skills:** Fighting (1)
 
-*Large (+1), Basic Animal* 
+**Attacks:**
 
-**HP** 20, **AV** 2 (natural light)<br />**STR** d10, **AGI** d4, **SPI** d4, **MND** d4-2<br />**Parry** 8, **Dodge** 6, **Resist** 6
+- **Bite.** 5/6/7 damage (base 3 + weapon 2). On a hit, attempts to grapple the target.
 
-**Skills** Fortitude 1, Perception 1
+**Abilities:**
 
-**Actions**<br />**- Back Hoof (crush).** 5 damage. On a strong or critical success, the target falls prone.
+- **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
 
-**Abilities**<br />**- Fast Stride.** This creature gains +1 Movement on it‘s turns.<br />**- Easily Scared.** This creature suffers +1 bane on rolls for morale and against fear.
+---
 
-### Eagle
+### **Draft Horse** (Large Animal)
 
-*Tiny (-2), Basic Animal* 
+**Tier:** 0 (Basic)
 
-**HP** 5, **AV** 0<br />**STR** d4, **AGI** d8, **SPI** d6, **MND** d4-2<br />**Parry** 7, **Dodge** 10, **Resist** 6
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 20 | 2  | d10| d4 | d4 | d4  | 8     | 6     | 6      |
 
-**Skills** Fighting 0, Perception 1, Survival 1
+**Skills:** Athletics (0)
 
-**Actions**<br />**- Beak (pierce).** 4 damage (2 base + 2 weapon).<br />**- Talons (slash).** 4 damage (2 base + 2 weapon).
+**Attacks:**
 
-**Abilities**<br />**- Eagle Eye.** This creature gains +1 boon on Perception rolls that rely on sight.<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during it‘s turn in total.
+- **Back Hoof** (*crush*). 5/6/7 damage (base 5 + weapon 0). On a strong or critical success, the target falls prone.
+
+**Abilities:**
+
+- **Fast Stride.** This creature gains +1 Movement on its turns.
+- **Easily Scared.** This creature suffers +1 bane on rolls for morale and against fear.
+
+---
+
+### **Eagle** (Tiny Animal)
+
+**Tier:** 0 (Basic)
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 5  | 0  | d4 | d8 | d4 | d4  | 6     | 8     | 6      |
+
+**Skills:** Perception (1)
+
+**Attacks:**
+
+- **Talons** (*slash*). 2/4/6 damage (base 2 + weapon 0).
+
+**Abilities:**
+
+- **Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Keen Sight.** This creature gains +2 boons on Perception rolls based on sight.
+
+---
 
 ## Tier 1
 
-### Zombie (Gnoll)
+### **Zombie (Gnoll)** (Medium Undead)
 
-*Medium (-), Basic Undead* 
+**Tier:** 1 (Basic)
 
-**HP** 10, **AV** 1 (natural light)<br />**STR** d8, **AGI** d4, **SPI** d4, **MND** d4<br />**Parry** 8, **Dodge** 6, **Resist** 7
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1  | d8 | d4 | d4 | d4  | 8     | 6     | 7      |
 
-**Skills** Fighting 1
+**Skills:** Fighting (1)
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**Actions**<br />**- Rotting Claws (slash).** 6 damage (4 base + 2 weapon). On a strong or critical hit, the target suffers bleeding (2) for a short duration.<br />**- Shambling Slam (crush).** 7 damage (4 base + 3 weapon). On a strong or critical hit against a creature of equal or smaller size, the target falls prone.
+**Attacks:**
 
-**Abilities**<br />**- Undead Resilience.** When this creature would be reduced to 0 HP, roll a d6. On a 5-6, it instead remains at 1 HP and gains +2 damage on its next attack.<br />**- Shambling Gait.** This creature needs +1 Movement to move a close or short distance, but can move through other creatures' areas.
+- **Rotting Claws** (*slash*). 6/8/10 damage (base 4 + weapon 2). On a strong or critical hit, the target suffers bleeding (2) for a short duration.
+- **Shambling Slam** (*crush*). 7/10/13 damage (base 4 + weapon 3). On a strong or critical hit against a creature of equal or smaller size, the target falls prone.
 
-### Zombie (Hyena)
+**Abilities:**
 
-*Small (-1), Basic Undead* 
+- **Undead Resilience.** When this creature would be reduced to 0 HP, roll a d6. On a 5-6, it instead remains at 1 HP and gains +2 damage on its next attack.
+- **Shambling Gait.** This creature needs +1 Movement to move a close or short distance, but can move through other creatures' areas.
 
-**HP** 10, **AV** 0<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 7, **Dodge** 8, **Resist** 7
+---
 
-**Skills** Fighting 1
+### **Zombie (Hyena)** (Small Undead)
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Tier:** 1 (Basic)
 
-**Actions**<br />**- Infected Bite (pierce).** 6 damage (3 base + 3 weapon). On a strong or critical hit, the target becomes poisoned for a short duration.
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0  | d6 | d6 | d4 | d4  | 7     | 8     | 7      |
 
-**Abilities**<br />**- Pack Hunter.** This creature gains +1 boon on attacks when another ally is in melee range of the target.<br />**- Cackling Moan.** As an Action, this creature can emit a disturbing moan. All living creatures in close range must roll Spirit + Fortitude vs. TN 7 or become briefly frightened.
+**Skills:** Fighting (1)
 
-### Zombie (Vulture)
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-*Small (-1), Basic Undead* 
+**Attacks:**
 
-**HP** 10, **AV** 0<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d4<br />**Parry** 6, **Dodge** 9, **Resist** 7
+- **Infected Bite** (*pierce*). 6/9/12 damage (base 3 + weapon 3). On a strong or critical hit, the target becomes poisoned for a short duration.
 
-**Skills** Fighting 1, Perception 1
+**Abilities:**
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+- **Pack Hunter.** This creature gains +1 boon on attacks when another ally is in melee range of the target.
+- **Cackling Moan.** As an Action, this creature can emit a disturbing moan. All living creatures in close range must roll Spirit + Fortitude vs. TN 7 or become briefly frightened.
 
-**Actions**<br />**- Diseased Talons (slash).** 6 damage (2 base + 4 weapon). On a strong or critical hit, the target becomes poisoned for a short duration.<br />**- Carrion Beak (pierce).** 5 damage (2 base + 3 weapon).
+---
 
-**Abilities**<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.<br />**- Carrion Sense.** This creature gains +2 boons on Perception rolls to detect wounded or dying creatures.
+### **Zombie (Vulture)** (Small Undead)
 
-### Zombie (Drowned)
+**Tier:** 1 (Basic)
 
-*Medium (-), Basic Undead* 
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0  | d4 | d8 | d4 | d4  | 6     | 9     | 7      |
 
-**HP** 10, **AV** 0<br />**STR** d8, **AGI** d4, **SPI** d6, **MND** d4<br />**Parry** 8, **Dodge** 6, **Resist** 8
+**Skills:** Fighting (1), Perception (1)
 
-**Skills** Fighting 1, Athletics 1
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** cold
+**Attacks:**
 
-**Actions**<br />**- Waterlogged Grasp.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**- Drowning Touch.** 5 damage (4 base + 1 weapon). Target must roll Strength + Fortitude vs. TN 7 or become briefly suffocating.
+- **Diseased Talons** (*slash*). 6/8/10 damage (base 2 + weapon 4). On a strong or critical hit, the target becomes poisoned for a short duration.
+- **Carrion Beak** (*pierce*). 5/8/11 damage (base 2 + weapon 3).
 
-**Abilities**<br />**- Aquatic.** This creature can breathe underwater and gains +1 Movement when swimming.<br />**- Waterlogged Body.** When this creature takes fire damage, it takes half damage but creates a cloud of steam in melee range that provides concealment until the end of the next turn.
+**Abilities:**
 
-### Skeleton (Tomb Guardian)
+- **Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Carrion Sense.** This creature gains +2 boons on Perception rolls to detect wounded or dying creatures.
 
-*Medium (-), Basic Undead* 
+---
 
-**HP** 10, **AV** 4 (natural heavy)<br />**STR** d8, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 9, **Dodge** 7, **Resist** 7
+### **Zombie (Drowned)** (Medium Undead)
 
-**Skills** Fighting 1
+**Tier:** 1 (Basic)
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** piercing
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0  | d8 | d4 | d6 | d4  | 8     | 6     | 8      |
 
-**Actions**<br />**- Ancient Spear (pierce, reach).** 6 damage (4 base + 2 weapon). Can attack at close range, +1 bane if enemy in melee.<br />**- Shield Bash (crush).** 5 damage (4 base + 1 weapon). On a strong or critical hit, the target is briefly dazed.
+**Skills:** Fighting (1), Athletics (1)
 
-**Abilities**<br />**- Guardian's Vigilance.** This creature gains +1 boon on attacks against creatures that moved into its reach this turn.<br />**- Bone Reassembly (Quick Action, Reactive).** When reduced to 0 HP, roll a d6. On a 4-6, the skeleton immediately reforms with 1 HP at the end of the current turn.
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-### Black Bear
+**Resistances:** cold
 
-*Medium (-), Basic Animal* 
+**Attacks:**
 
-**HP** 20, **AV** 2 (natural light)<br />**STR** d10, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 9, **Dodge** 7, **Resist** 6
+- **Waterlogged Grasp.** 6/8/10 damage (base 4 + weapon 2). On a hit, attempts to grapple the target.
+- **Drowning Touch.** 5/6/7 damage (base 4 + weapon 1). Target must roll Strength + Fortitude vs. TN 7 or become briefly suffocating.
 
-**Skills** Fighting 0, Fortitude 1, Perception 1, Survival 1
+**Abilities:**
 
-**Actions**<br />**- Bite (crush).** 8 damage (5 base + 3 weapon). On a strong or critical hit against a creature of equal or smaller size, the target drops prone.<br />**- Claw (slash).** 7 damage (5 base + 2 weapon). On a strong or critical hit, the target suffers bleeding (2).
+- **Aquatic.** This creature can breathe underwater and gains +1 Movement when swimming.
+- **Waterlogged Body.** When this creature takes fire damage, it takes half damage but creates a cloud of steam in melee range that provides concealment until the end of the next turn.
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.
+---
 
-### Boar
+### **Skeleton (Tomb Guardian)** (Medium Undead)
 
-*Medium (-), Basic Animal* 
+**Tier:** 1 (Basic)
 
-**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 9, **Dodge** 8, **Resist** 7
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 4  | d8 | d6 | d4 | d4  | 9     | 7     | 7      |
 
-**Skills** Fighting 0, Fortitude 1, Survival 1
+**Skills:** Fighting (1)
 
-**Actions**<br />**- Tusks (crush).** 6 damage (4 base + 2 weapon). On a strong or critical hit against a creature of equal or smaller size, the target falls prone.
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**Abilities**<br />**- Charge.** If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack and deals +2 damage.<br />**- Relentless.** The first time this creature would suffer an Injury, they can ignore it.
+**Resistances:** piercing
 
-### Swarm of Snakes
+**Attacks:**
 
-*Medium (-), Basic Animal* 
+- **Ancient Spear** (*pierce, reach*). 6/8/10 damage (base 4 + weapon 2). Can attack at close range, +1 bane if enemy in melee.
+- **Shield Bash** (*crush*). 5/6/7 damage (base 4 + weapon 1). On a strong or critical hit, the target is briefly dazed.
 
-**HP** 10, **AV** 0<br />**STR** d4, **AGI** d6, **SPI** d4, **MND** d4-2<br />**Parry** 8, **Dodge** 9, **Resist** 7
+**Abilities:**
 
-**Skills** -
+- **Guardian's Vigilance.** This creature gains +1 boon on attacks against creatures that moved into its reach this turn.
+- **Bone Reassembly (Quick Action, Reactive).** When reduced to 0 HP, roll a d6. On a 4-6, the skeleton immediately reforms with 1 HP at the end of the current turn.
 
-**Resistances** any damage targeting a single creature
+---
 
-**Actions**<br />**- Poison Bite (agile).** 7 poison damage (3 base + 4 weapon) or 5 poison damage (3 base + 2 weapon) if this swarm has already lost half it’s max. HP. On a strong or critical hit, the target is also poisoned for a short duration.
+### **Black Bear** (Medium Animal)
 
-**Abilities**<br />**- Swarm.** This swarm consists of many individual creatures that act in unison. The swarm is immune against any conditions inflicted from effects that target a single creature.
+**Tier:** 1 (Basic)
 
-### Wolf
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1  | d8 | d6 | d6 | d4  | 8     | 7     | 7      |
 
-*Medium (-), Basic Animal* 
+**Skills:** Fighting (1), Athletics (1), Perception (1)
 
-**HP** 10, **AV** 1 (natural light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 7
+**Attacks:**
 
-**Skills** Fighting 0, Fortitude 1, Perception 1, Survival 1
+- **Claws** (*slash*). 6/8/10 damage (base 4 + weapon 2). On a strong or critical hit, the target suffers bleeding (2) for a short duration.
+- **Bite** (*crush*). 7/10/13 damage (base 4 + weapon 3). On a hit, attempts to grapple the target.
 
-**Actions**<br />**- Bite.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.
+**Abilities:**
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Wolf Pack.** While in a troop or in melee range of allies, this creature‘s attacks gain +1 boon.
+- **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
 
-### Small Earth Elemental
+---
 
-*Small (-1), Basic Daimon (Primal)* 
+### **Boar** (Medium Animal)
 
-**HP** 10, **AV** 4 (natural Heavy)<br />**STR** d8, **AGI** d4, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 8
+**Tier:** 1 (Basic)
 
-**Skills** Fighting 0, Fortitude 1
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1  | d8 | d6 | d6 | d4  | 8     | 7     | 7      |
 
-**Resistances** physical damage expect from crush weapons
+**Skills:** Fighting (1), Athletics (1)
 
-**Weaknesses** blast damage
+**Attacks:**
 
-**Actions**<br />**- Smash (crush).** 7 damage (4 base + 3 weapon). On a strong or critical hit, the target falls prone.
+- **Tusks** (*pierce*). 6/8/10 damage (base 4 + weapon 2). On a strong or critical hit, the target is knocked prone.
 
-**Abilities**<br />**- Earth Dive.** This creature can move through natural stone and earth as through water. Moving this way doesn‘t count as difficult terrain and there are no traces left of it‘s path.<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Stone Body.** This creature is immune against being dazed or stunned.<br />**- Tremor Sense.** This creature can feel the vibrations in the ground in a short distance around it. It is never considered blinded against any creature moving on the ground in this area.
+**Abilities:**
 
-### Small Fire Elemental
+- **Charge.** If this creature moves at least a close distance before attacking, it deals +2 damage and gains +1 boon on the attack.
+- **Relentless.** When this creature is reduced to 0 HP but not killed outright, it can make one final attack before dying.
 
-*Small (-1), Basic Daimon (Primal)* 
+---
 
-**HP** 10, **AV** 0<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 9, **Resist** 7
+### **Swarm of Snakes** (Medium Beast)
 
-**Skills** Fighting 0, Fortitude 1, Perception 1
+**Tier:** 1 (Basic)
 
-**Resistances** physical damage
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0  | d6 | d8 | d6 | d4  | 7     | 8     | 7      |
 
-**Weaknesses** frost damage, damage from water
+**Skills:** Fighting (1), Stealth (1)
 
-**Actions**<br />**- Burning Lash.** 6 fire damage (4 base + 2 weapon). On a strong or critical hit, inflicts burning (2) for a short duration.
+**Resistances:** physical
 
-**Abilities**<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Flame Body.** This creature is immune against fire damage, burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 2 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+**Attacks:**
 
-### Goblin
+- **Venomous Bites.** 6/8/10 damage (base 3 + weapon 3). Target must roll Spirit + Fortitude vs. TN 7 or become briefly poisoned.
 
-*Small (-1), Basic Humanoid* 
+**Abilities:**
 
-**HP** 10, **AV** 2 (Light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
+- **Swarm.** This creature can occupy the same space as other creatures and can move through any opening large enough for a Tiny creature. It takes double damage from area effects.
+- **Disturbing Presence.** Living creatures in melee range suffer +1 bane on attack rolls due to the unsettling nature of the swarm.
 
-**Skills** Archery 0, Athletics 0, Stealth 1, Fighting 1, Perception 0
+---
 
-**Actions**<br />**- Dagger (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Slingshot (ammo, crush, thrown (medium), two-handed).** 6 damage (4 base + 2 weapon).
+### **Wolf** (Medium Animal)
 
-**Abilities**<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.<br />**- Quick Escape.** When this creature was missed by a melee attack, it can move close.
+**Tier:** 1 (Basic)
 
-### Kobold
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0  | d8 | d8 | d6 | d4  | 8     | 8     | 7      |
 
-*Small (-1), Basic Humanoid* 
+**Skills:** Fighting (1), Athletics (1), Perception (1), Stealth (1)
 
-**HP** 10, **AV** 1 (natural light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d4<br />**Parry** 8, **Dodge** 10, **Resist** 7
+**Attacks:**
 
-**Skills** Archery 1, Crafting (woodworking) 0, Stealth 1, Fighting 1, Nature 0
+- **Bite** (*pierce*). 6/8/10 damage (base 4 + weapon 2). On a hit, attempts to grapple the target.
 
-**Actions**<br />**- Cleaver (agile, light, slash).** 6 damage (4 base + 2 weapon).<br />**- Sling (ammo, crush, thrown (medium), two-handed).** 6 damage (4 base + 2 weapon).
+**Abilities:**
 
-**Abilities**<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.<br />**- Wolf Pack.** While in a troop or in melee range of allies, this creature‘s attacks gain +1 boon on melee attack.
+- **Pack Tactics.** This creature gains +1 boon on attacks when another ally is within close range of the target.
+- **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
 
-### Nakesh Cultist (Acolyte)
+---
 
-*Medium (-), Basic Humanoid* 
+### **Small Earth Elemental** (Small Daimon)
 
-**HP** 10, **AV** 2 (natural light)<br />**STR** d6, **AGI** d6, **SPI** d6, **MND** d8<br />**Parry** 7, **Dodge** 8, **Resist** 9
+**Tier:** 1 (Basic)
 
-**Skills** Arcana 1, Stealth 1, Influence 1, Lore 1, Perception 1
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2  | d8 | d4 | d6 | d4  | 8     | 6     | 7      |
 
-**Resistances** poison damage
+**Skills:** Fighting (1), Fortitude (1)
 
-**Actions**<br />**- Dagger (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Poison Mist (target: vs.** Dodge, range: short). Roll Mind + Arcana. Deals 4 + 2 poison damage per SL. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
+**Immunities:** bleeding, poisoned, unconscious
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br />- Attack Thoughts<br />- Control Beast (only snakes)<br />- Subtle Suggestion<br />**- Snake Mutation.** This creature is immune against being poisoned.
+**Resistances:** physical
 
-### Nakesh Cultist (Assassin)
+**Weaknesses:** lightning
 
-*Medium (-), Basic Humanoid* 
+**Attacks:**
 
-**HP** 10, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 8, **Dodge** 9, **Resist** 7
+- **Stone Fist** (*crush*). 6/8/10 damage (base 4 + weapon 2). On a strong or critical hit, the target is briefly dazed.
 
-**Skills** Arcana 1, Archery 1, Stealth 1, Fighting 1, Influence 1, Lore 1, Perception 1
+**Abilities:**
 
-**Resistances** poison damage
+- **Earth Glide.** This creature can burrow through nonmagical, unworked earth and stone without disturbing the material it moves through.
+- **Tremorsense.** This creature can detect and pinpoint the origin of vibrations within close range.
 
-**Actions**<br />**- Dagger (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Shortbow (ammo, range (medium), two-handed).** 6 damage (4 base + 2 weapon).
+---
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br />- Control Beast (only snakes)<br />- Venomous Weapon<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.<br />**- Snake Mutation.** This creature is immune against being poisoned.
+### **Small Fire Elemental** (Small Daimon)
 
-### Nakesh Cultist (Warrior)
+**Tier:** 1 (Basic)
 
-*Medium (-), Basic Humanoid* 
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0  | d6 | d8 | d6 | d4  | 7     | 8     | 7      |
 
-**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 8, **Resist** 7
+**Skills:** Fighting (1), Athletics (1)
 
-**Skills** Stealth 1, Fighting 1, Perception 1
+**Immunities:** bleeding, fire, burning, poisoned, unconscious
 
-**Resistances** poison damage
+**Weaknesses:** cold, water
 
-**Actions**<br />**- Fan Axe (Heavy (d8), slash, two-handed).** 8 damage (4 base + 4 weapon). On a strong hit, the target also suffers bleeding (2). On a critical hit, the target also suffers bleeding (4).
+**Attacks:**
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br />- Control Beast (only snakes)<br />- War Cry<br />**- Snake Mutation.** This creature is immune against being poisoned.
+- **Flame Touch.** 6/8/10 fire damage (base 3 + weapon 3). On a strong or critical hit, inflicts burning (2) for a short duration.
 
-### Orc Warrior
+**Abilities:**
 
-*Medium (-), Basic Humanoid* 
+- **Illumination.** This creature sheds bright light in close range and dim light for one range category beyond that.
+- **Fire Body.** If this creature is hit by an attack at melee range, the attacker suffers 2 fire damage (ignoring AV). If this creature comes into contact with water, it takes 2 damage each turn.
 
-**HP** 20, **AV** 2 (Light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 8, **Resist** 7
+---
 
-**Skills** Athletics 1, Fighting 1, Fortitude 1
+### **Goblin** (Small Humanoid)
 
-**Actions**<br />**- Battleaxe (slash, versatile (+1)).** 7 damage (4 base + 3 weapon).
+**Tier:** 1 (Basic)
 
-**Abilities**<br />**- Orcish Fury.** When this creature hits with a melee weapon and rolls a critical success, add it‘s weapon damage an additional time to the total damage.
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1  | d6 | d8 | d6 | d6  | 7     | 8     | 7      |
 
-### Soldier
+**Skills:** Fighting (1), Stealth (1)
 
-*Medium (-), Basic Humanoid* 
+**Attacks:**
 
-**HP** 10, **AV** 3 (Light)<br />**STR** d8, **AGI** d6, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 8, **Resist** 7
+- **Scimitar** (*agile, light, slash*). 6/8/10 damage (base 3 + weapon 3).
+- **Shortbow** (*ammo, range (medium), two-handed*). 6/8/10 damage (base 3 + weapon 3).
 
-**Skills** Archery 1, Fighting 1, Perception 1
+**Abilities:**
 
-**Actions**<br />**- Spear (pierce, reach, two-handed).** 7 damage (4 base + 3 weapon).<br />**- Shortsword (agile, light, pierce).** 6 damage (4 base + 2 weapon).<br />**- Shortbow (ammo, range (medium), two-handed).** 6 damage (4 base + 2 weapon).
+- **Nimble Escape.** This creature can use its Quick Action to take the Dash or Hide action.
 
-**Abilities**<br />-
+---
 
-### Goblin Boss
+### **Kobold** (Small Humanoid)
 
-*Small (-1), Master Humanoid* 
+**Tier:** 1 (Basic)
 
-**HP** 3x10, **AV** 3 (Light)<br />**STR** d4, **AGI** d8, **SPI** d4, **MND** d6<br />**Parry** 8, **Dodge** 10, **Resist** 7
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1  | d6 | d8 | d6 | d6  | 7     | 8     | 7      |
 
-**Skills** Archery 0, Athletics 0, Stealth 1, Fighting 1, Perception 0
+**Skills:** Fighting (1), Stealth (1)
 
-**Actions**<br />**- Fast Strikes.** This creature can attack twice per turn.<br />**- Scimitar (agile, light, slash).** 6 damage (4 base + 2 weapon).<br />**- Whip (agile, entangle, light, reach, slash).** 6 damage (4 base + 2 weapon).<br />**- Dart (agile, bundle, light, pierce, thrown (short)).** 6 damage (4 base + 2 weapon).
+**Attacks:**
 
-**Abilities**<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.<br />**- Rally Goblin.** On this creature‘s turn, it can target one goblin visible in medium range. That goblin immediately makes an attack against one target of this creature‘s choice. The goblin gain +1 boon on the attack. This ability can be used once per turn.<br />**- Quick Escape.** When this creature was missed by a melee attack, it can move close.<br />**- Sacrifice Goblin (Quick Action).** When this creature would be hit by an attack, it can redirect the attack to target one goblin close to them.<br />**- Goblin Reinforcements (Master Ability).** This ability automatically activates once this creature has taken half their max. Wounds (rounded up). Once activated, this creature summons 1d4+2 goblins, which appear at any location in short range of this creature.
+- **Dagger** (*agile, light, pierce*). 6/8/10 damage (base 3 + weapon 3).
+- **Sling** (*ammo, range (short)*). 5/6/7 damage (base 3 + weapon 2).
 
-### Rust Scarab
+**Abilities:**
 
-*Small (-1), Basic Monstrosity* 
+- **Pack Tactics.** This creature gains +1 boon on attacks when another ally is within close range of the target.
+- **Sunlight Sensitivity.** This creature suffers +1 bane on attack rolls and Perception checks in bright sunlight.
 
-**HP** 10, **AV** 4 (natural Heavy)<br />**STR** d6, **AGI** d6, **SPI** d6, **MND** d4-1<br />**Parry** 9, **Dodge** 9, **Resist** 7
+---
 
-**Skills** Fighting 0, Fortitude 1, Perception 1, Survival 1
+### **Nakesh Cultist (Acolyte)** (Medium Humanoid)
 
-**Actions**<br />**- Corroding Bite.** 5 damage (3 base + 2 weapon). On a hit, the target has to roll a Durability check for one metal item they are holding or wearing (their choice).
+**Tier:** 1 (Basic)
 
-**Abilities**<br />**- Metal Scent.** This creature can instinctively scent the location of any metal in short distance. It can’t be surprised by any creature wearing metal armor, or wielding a metal weapon.<br />**- Night Vision.** This creature can see one range category further from sources of bright and dim light.
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1  | d6 | d6 | d8 | d6  | 7     | 7     | 8      |
 
-### Plague Zombie
+**Skills:** Fighting (1), Mysticism (1), Religion (1)
 
-*Medium (-), Basic Undead* 
+**Attacks:**
 
-**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d4, **SPI** d4, **MND** d4-1<br />**Parry** 7, **Dodge** 6, **Resist** 8
+- **Mace** (*crush*). 6/8/10 damage (base 3 + weapon 3).
 
-**Skills** Endurance 1, Fighting 0
+**Abilities:**
 
-**Resistances** necrotic damage, poison damage
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Dazzling Light (Rank 0)
+  - Control Beast (only snakes, Rank 1)
+- **Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If unconscious or killed, they revert to their own form.
 
-**Weaknesses** slash weapons, radiant damage
+---
 
-**Actions**<br />**- Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**- Rotten Bite (only if grappling).** 8 poison damage (4 base + 4 weapon).<br />**- Spew Plague (thrown (short)).** 8 poison damage (4 base + 4 weapon).
+### **Nakesh Cultist (Assassin)** (Medium Humanoid)
 
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can‘t use Quick Actions.
+**Tier:** 1 (Basic)
 
-### Skeleton
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1  | d6 | d8 | d6 | d6  | 7     | 8     | 7      |
 
-*Medium (-), Basic Undead* 
+**Skills:** Fighting (1), Stealth (1), Athletics (1)
 
-**HP** 10, **AV** 4 (natural Heavy)<br />**STR** d6, **AGI** d6, **SPI** d4, **MND** d4-1<br />**Parry** 8, **Dodge** 9, **Resist** 7
+**Attacks:**
 
-**Skills** Fighting 1, Perception 1
+- **Shortsword** (*agile, light, slash*). 6/8/10 damage (base 3 + weapon 3).
+- **Poisoned Dagger** (*agile, light, pierce*). 6/8/10 poison damage (base 3 + weapon 3). On a strong or critical hit, target becomes briefly poisoned.
 
-**Resistances** necrotic damage
+**Abilities:**
 
-**Weaknesses** crush weapons, radiant damage
+- **Sneak Attack.** If this creature has advantage on an attack or the target hasn't acted yet this round, deal +4 damage.
+- **Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If unconscious or killed, they revert to their own form.
 
-**Actions**<br />Claw. 5 damage (3 base + 2 weapon).<br />**- Longsword (pierce, versatile (+1)).** 6 damage (3 base + 3 weapon).
+---
 
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Unholy Reanimation.** This creature can’t take Wounds, but is instead destroyed once reduce to 0 HP. When this creature is destroyed, it is reanimated at the start of it‘s next turn with 1 HP, unless it was destroyed by a crush weapon or radiant damage. It also doesn‘t regenerate if it‘s remains were smashed with a melee weapon while at 0 HP before it‘s next turn.
+### **Nakesh Cultist (Warrior)** (Medium Humanoid)
 
-### Zombie
+**Tier:** 1 (Basic)
 
-*Medium (-), Basic Undead* 
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2  | d8 | d6 | d6 | d6  | 8     | 7     | 7      |
 
-**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d4, **SPI** d4, **MND** d4-1<br />**Parry** 7, **Dodge** 6, **Resist** 8
+**Skills:** Fighting (1), Athletics (1)
 
-**Skills** Endurance 1, Fighting 0
+**Attacks:**
 
-**Resistances** necrotic damage
+- **Spear** (*pierce, reach, versatile (+1)*). 6/8/10 damage (base 4 + weapon 2). +1 bane if enemy in melee.
+- **Light Shield** (*crush*). 5/6/7 damage (base 4 + weapon 1).
 
-**Weaknesses** radiant damage
+**Abilities:**
 
-**Actions**<br />**- Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br />**- Rotten Bite (only if grappling).** 8 poison damage (4 base + 4 weapon).
+- **Shield Wall.** When fighting alongside another ally with a shield, both gain +1 AV.
+- **Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If unconscious or killed, they revert to their own form.
 
-**Abilities**<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br />**- Rotting Slowness.** This creature can only move or take an Action per turn, not both. This creature can‘t use Quick Actions.
+---
+
+### **Orc Warrior** (Medium Humanoid)
+
+**Tier:** 1 (Basic)
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2  | d8 | d6 | d6 | d6  | 8     | 7     | 7      |
+
+**Skills:** Fighting (1), Athletics (1), Intimidation (1)
+
+**Attacks:**
+
+- **Greataxe** (*heavy, slash, two-handed*). 7/10/13 damage (base 4 + weapon 3). +2 banes if used one-handed.
+- **Javelin** (*pierce, thrown (short)*). 6/8/10 damage (base 4 + weapon 2).
+
+**Abilities:**
+
+- **Aggressive.** As a bonus action, this creature can move up to its speed toward a hostile creature it can see.
+- **Relentless Endurance.** When this creature is reduced to 0 HP but not killed outright, it drops to 1 HP instead. Once used, this ability can't be used again until the creature finishes a long rest.
+
+---
 
 ## Tier 2
 
-### Mummified Giant Snake
+### **Mummified Giant Snake** (Large Undead)
 
-*Large (+1), Basic Undead* 
+**Tier:** 2 (Basic)
 
-**HP** 20, **AV** 3 (natural light)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 9, **Dodge** 10, **Resist** 8
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 20 | 3  | d10| d8 | d6 | d4  | 9     | 10    | 8      |
 
-**Skills** Fighting 1, Stealth 2
+**Skills:** Fighting (1), Stealth (2)
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** fire
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**Actions**<br />**- Mummified Coils (crush).** 8 damage (5 base + 3 weapon). On a hit, attempts to grapple the target. While grappling, the snake can use Constrict as a Quick Action.<br />**- Desiccating Bite (pierce).** 9 damage (5 base + 4 weapon). Target must roll Spirit + Fortitude vs. TN 8 or become briefly deprived.
+**Resistances:** fire
 
-**Abilities**<br />**- Constrict (Quick Action, Reactive).** When grappling a creature, deal 6 damage (5 base + 1 weapon) to the grappled target. The target cannot breathe while grappled.<br />**- Ancient Preservation.** When this creature takes fire damage, it gains +2 damage on its next attack as the preserving oils ignite briefly.
+**Attacks:**
 
-### Brown Bear
+- **Mummified Coils** (*crush*). 8/11/14 damage (base 5 + weapon 3). On a hit, attempts to grapple the target. While grappling, the snake can use Constrict as a Quick Action.
+- **Desiccating Bite** (*pierce*). 9/13/17 damage (base 5 + weapon 4). Target must roll Spirit + Fortitude vs. TN 8 or become briefly deprived.
 
-*Large (+1), Basic Animal* 
+**Abilities:**
 
-**HP** 30, **AV** 4 (natural light)<br />**STR** d12, **AGI** d6, **SPI** d6, **MND** d4-2<br />**Parry** 10, **Dodge** 8, **Resist** 8
+- **Constrict (Quick Action, Reactive).** When grappling a creature, deal 6/7/8 damage (base 5 + weapon 1) to the grappled target. The target cannot breathe while grappled.
+- **Ancient Preservation.** When this creature takes fire damage, it gains +2 damage on its next attack as the preserving oils ignite briefly.
 
-**Skills** Fighting 0, Fortitude 2, Perception 2, Survival 2
-
-**Actions**<br />**- Bite (crush).** 11 damage (6 base + 5 weapon). On a strong or critical hit against a creature of equal or smaller size, the target drops prone.<br />**- Claw (slash).** 10 damage (6 base + 4 weapon). On a strong or critical hit, the target suffers bleeding (4).
-
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Natural Climber.** This creature can climb without treating it as difficult terrain.
-
-### Giant Scorpion
-
-*Large (+1), Basic Animal* 
-
-**HP** 30, **AV** 5 (natural Heavy)<br />**STR** d12, **AGI** d8, **SPI** d4, **MND** d4-2<br />**Parry** 10, **Dodge** 8, **Resist** 8
-
-**Skills** Fighting 0, Fortitude 2, Perception 2, Survival 2
-
-**Actions**<br />**- 2 x Claw (crush, light).** 8 damage (6 base + 2 weapon). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that claw can’t be used to attack any other target.<br />**- Sting (pierce, reach).** 10 poison damage (6 base + 4 weapon). On a strong or critical hit, the target is also poisoned for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early.
-
-**Abilities**<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.
-
-### Giant Venomous Snake
-
-*Large (+1), Basic Animal* 
-
-**HP** 30, **AV** 3 (natural light)<br />**STR** d12, **AGI** d8, **SPI** d6, **MND** d4-2<br />**Parry** 9, **Dodge** 9, **Resist** 8
-
-**Skills** Archery 0, Fighting 0, Perception 1, Survival 1
-
-**Actions**<br />**- Bite (slash).** 10 poison damage (6 base + 4 weapon). On a strong or critical hit, the target is also poisoned for a short duration.<br />**- Constrict (crush).** 8 damage (6 base + 2 weapon). On a hit, the target is automatically grappled. If the target is the same size or smaller than this creature, it is restrained while grappled by this attack. This creature can only grapple one target at a time with this attack.<br />**- Poison Spit (range (medium)).** 8 poison damage (4 base + 4 weapon). On a strong or critical hit, the target is also poisoned for a short duration.
-
-**Abilities**<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.
-
-### Medium Fire Elemental
-
-*Medium (-), Basic Daimon (Primal)* 
-
-**HP** 20, **AV** 2 (natural light)<br />**STR** d10, **AGI** d10, **SPI** d8, **MND** d6<br />**Parry** 9, **Dodge** 10, **Resist** 8
-
-**Skills** Fighting 1, Fortitude 2, Perception 2
-
-**Resistances** physical damage
-
-**Weaknesses** frost damage, damage from water
-
-**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**- Burning Lash.** 8 fire damage (5 base + 3 weapon). On a strong or critical hit, inflicts burning (4) for a short duration.<br />**- Flame Bolt (range (medium)).** 7 fire damage (5 base + 2 weapon). On a strong or critical hit, inflicts burning (2) for a short duration.
-
-**Abilities**<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Flame Body.** This creature is immune against fire damage, burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 4 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
-
-### Ogre
-
-*Large (+1), Basic Giant* 
-
-**HP** 30, **AV** 3 (Light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
-
-**Skills** Athletics 1, Fortitude 1, Fighting 0, Survival 1
-
-**Actions**<br />**- Giant Club (crush, fragile, heavy (d10), two-handed).** 12 damage (6 base + 6 weapon).<br />**- Wide Swing (crush).** 8 damage (6 base + 2 weapon) against all opponents in melee range.
-
-**Abilities**<br />**- Knockback.** On a strong hit or critical hit from this creature’s attacks, all targets have to roll Strength/Agility + Athletics. If it was a critical success, the roll is hard. On a success, they are pushed close. On a failure, they are pushed close and also knocked prone.
-
-### Ogre Brute
-
-*Large (+1), Elite Giant* 
-
-**HP** 2x30, **AV** 4 (Light)<br />**STR** d12, **AGI** d6, **SPI** d4, **MND** d4<br />**Parry** 10, **Dodge** 8, **Resist** 8
-
-**Skills** Athletics 1, Fortitude 1, Fighting 0, Survival 1
-
-**Actions**<br />**- Giant Club (crush, heavy (d10), two-handed).** 12 damage (6 base + 6 weapon).<br />**- Wide Swing (crush).** 8 damage (6 base + 2 weapon) against all opponents in melee range.
-
-**Abilities**<br />**- Knockback.** On a strong hit or critical hit from this creature’s attacks, all targets have to roll Strength/Agility + Athletics. If it was a critical success, the roll is hard. On a success, they are pushed close. On a failure, they are pushed close and also knocked prone.<br />**- Ear-shattering Roar (Elite Ability).** When this creature suffers a Wound, it immediately lets loose an ear-shattering roar. Every enemy within short distance has to roll Spirit + Fortitude. If they fail, they take 6 sonic damage (ignoring AV) and are frightened of this creature. They can re-roll against their fear at the start of their turns.
-
-### Gladiator
-
-*Medium (-), Basic Humanoid* 
-
-**HP** 30, **AV** 4 (natural light + helmet + shield)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 9, **Dodge** 9, **Resist** 9
-
-**Skills** Archery 1, Athletics 1, Fighting 1, Fortitude 1, Insight 1
-
-**Actions**<br />Spear.<br />Heavy Shield.
-
-**Abilities**<br />**- Body of Bronze.** This creature adds it’s Fortitude to AV as armor.
-
-### Nakesh Cultist (Fanatic)
-
-*Medium (-), Basic Humanoid* 
-
-**HP** 30, **AV** 4 (natural light)<br />**STR** d8, **AGI** d10, **SPI** d8, **MND** d6<br />**Parry** 9, **Dodge** 10, **Resist** 8
-
-**Skills** Stealth 2, Fighting 1, Influence 2, Perception 2
-
-**Resistances** poison damage
-
-**Actions**<br />**- Fast Strikes.** This creature can attack twice per turn.<br />**- Khopesh (agile, light, slash).** 7 damage (5 base + 2 weapon).<br />**- Poisoned Darts (agile, bundle, light, pierce, thrown (short)).** 6 poison damage (4 base + 2 weapon). On a strong or critical hit, the target is also briefly poisoned.
-
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Control Beast (only snakes)<br />- Subtle Suggestion<br />- Venomous Weapon<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
-
-### Nakesh Cultist (Sorcerer)
-
-*Medium (-), Basic Humanoid* 
-
-**HP** 20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d10<br />**Parry** 8, **Dodge** 9, **Resist** 10
-
-**Skills** Arcana 2, Stealth 2, Fighting 0, Influence 2, Lore 2, Perception 2
-
-**Resistances** poison damage
-
-**Actions**<br />**- Scepter (crush, reach, versatile (+1)).** 8 damage (5 base + 3 weapon).<br />**- Poison Mist (target: vs.** Dodge, range: short). Roll Mind + Arcana. Deals 5 + 2 poison damage per SL. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
-
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Attack Thoughts (Rank 1)<br />- Control Beast (only snakes, Rank 1)<br />- Subtle Suggestion (Rank 1)<br />- Forced Suggestion (Rank 2)<br />- Cloud of Sickness (Rank 2)<br />- Nullify Spell (Rank 2)<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
-
-### Veteran
-
-*Medium (-), Basic Humanoid* 
-
-**HP** 20, **AV** 6 (Heavy + helmet + shield)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 10, **Dodge** 8, **Resist** 9
-
-**Skills** Athletics 2, Archery 2, Education 1, Fighting 2, Perception 1
-
-**Actions**<br />**- Fast Strikes.** This creature can attack twice per turn.<br />**- Spear (pierce, reach, versatile (+1)).** 7 damage (4 base + 3 weapon).<br />**- Broadsword (slash, versatile (+1)).** 7 damage (4 base + 3 weapon).<br />**- Light Shield (AV +1, parry +1).** 5 damage (4 base + 1 weapon).<br />**- Longbow (ammo, heavy (d6), range (long), two-handed).** 7 damage (4 base + 3 weapon).
-
-**Abilities**<br />**- Versatile Fighter.** This creature can choose to either add +1 boon, deal +2 damage per SL, make a second attack with +1 bane, make the target fall prone (melee only), or disarm the target (melee only) on any attack it makes. It can choose any one option only once per combat.<br />**- Constitution.** Once per combat, this creature use it’s Quick Action on it’s turn to regain 8 HP.
-
-### Nakesh Cult Leader
-
-*Medium (-), Master Humanoid* 
-
-**HP** 3x20, **AV** 2 (natural light)<br />**STR** d8, **AGI** d8, **SPI** d6, **MND** d10<br />**Parry** 8, **Dodge** 9, **Resist** 10
-
-**Skills** Arcana 2, Stealth 2, Fighting 0, Influence 2, Lore 2, Perception 2
-
-**Resistances** poison damage
-
-**Actions**<br />**- Serpent Scepter (crush, reach, versatile (+1)).** Roll attacks with Mind + Arcana. 8 force damage (5 base + 3 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed a short distance away instead.<br />**- Poison Mist (target: vs.** Dodge, range: short). Roll Mind + Arcana. Deals 5 + 2 poison damage per SL. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
-
-**Abilities**<br />**- Serpine Retreat (Master Ability).** This ability automatically activates once this creature has taken half their max. Wounds (rounded up). Once activated, this creature bursts into a cluster of snakes, dealing 6 poison damage to all creatures in melee range of it and it can move up to a long distance. Other creatures can’t use Quick Actions or other abilities in response to this ability. After moving, this creature can cast it’s spells again as if it were a new scene.<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Attack Thoughts (Rank 1)<br />- Control Beast (only snakes, Rank 1)<br />- Subtle Suggestion (Rank 1)<br />- Forced Suggestion (Rank 2)<br />- Cloud of Sickness (Rank 2)<br />- Nullify Spell (Rank 2)<br />**- Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
+---
 
 ## Tier 3
 
-### Large Fire Elemental
+### **Gladiator** (Medium Humanoid)
 
-*Large (+1), Basic Daimon (Primal)* 
+**Tier:** 3 (Basic)
 
-**HP** 30, **AV** 4 (natural light)<br />**STR** d12, **AGI** d12, **SPI** d8, **MND** d6<br />**Parry** 9, **Dodge** 10, **Resist** 8
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 4  | d8 | d8 | d6 | d6  | 9     | 9     | 9      |
 
-**Skills** Fighting 2, Fortitude 3, Perception 3
+**Skills:** Archery (1), Athletics (1), Fighting (1), Fortitude (1), Insight (1)
 
-**Resistances** physical damage
+**Attacks:**
 
-**Weaknesses** frost damage, damage from water
+- **Spear** (*pierce, reach, versatile (+1)*). 8/11/14 damage (base 4 + weapon 4). +1 bane if enemy in melee.
+- **Heavy Shield** (*crush*). 5/6/7 damage (base 4 + weapon 1). Can be used with spear.
 
-**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn, unless it uses Incineration.<br />**- Burning Lash.** 12 fire damage (6 base + 6 weapon). On a strong or critical hit, inflicts burning (6) for a short duration.<br />**- Flame Bolt (range (medium)).** 10 fire damage (6 base + 4 weapon). On a strong or critical hit, inflicts burning (4) for a short duration.<br />**- Incineration (blast (short), recharge (d6)).** Spirit + Fortitude vs. Dodge. 10 fire damage (6 base + 4 weapon) against each target. On a strong or critical hit, inflicts burning (4) for a short duration.
+**Abilities:**
 
-**Abilities**<br />**- Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, or falling unconscious.<br />**- Flame Body.** This creature is immune against fire damage, burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 6 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+- **Body of Bronze.** This creature adds its Fortitude skill rank to AV as natural armor.
 
-### Wyvern
+---
 
-*Large (+1), Basic Dragon* 
+### **Nakesh Cultist (Fanatic)** (Medium Humanoid)
 
-**HP** 50, **AV** 6 (natural Heavy)<br />**STR** d12, **AGI** d8, **SPI** d6, **MND** d4<br />**Parry** 12, **Dodge** 9, **Resist** 9
+**Tier:** 3 (Basic)
 
-**Skills** Archery 2, Athletics 3, Stealth 3, Fighting 1, Perception 3
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 4  | d8 | d10| d8 | d6  | 9     | 10    | 8      |
 
-**Resistances** poison damage
+**Skills:** Stealth (2), Fighting (1), Influence (2), Perception (2)
 
-**Actions**<br />Fangs.<br />Claw.<br />Stinger.
+**Resistances:** poison
 
-**Abilities**<br />-
+**Attacks:**
 
-### Young Dragon
+- **Khopesh** (*agile, light, slash*). 7/9/11 damage (base 5 + weapon 2). Can dual-wield.
+- **Poisoned Darts** (*agile, bundle, light, pierce, thrown (short)*). 6/8/10 poison damage (base 4 + weapon 2). On a strong or critical hit, the target is also briefly poisoned.
 
-*Large (+1), Elite Dragon* 
+**Abilities:**
 
-**HP** 2x30, **AV** 8 (natural Heavy)<br />**STR** d12, **AGI** d8, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 9, **Resist** 9
+- **Fast Strikes.** This creature can attack twice per turn.
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Control Beast (only snakes, Rank 1)
+  - Subtle Suggestion (Rank 1)
+  - Venomous Weapon (Rank 1)
+- **Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
 
-**Skills** Athletics 1, Fighting 2, Fortitude 2, Perception 1, Survival 1
+---
 
-**Resistances** fire damage
+### **Nakesh Cultist (Sorcerer)** (Medium Humanoid)
 
-**Actions**<br />**- 2 x Claw (Light, slash).** 10 damage (6 base + 4 weapon).<br />**- Bite (crush, reach).** 12 damage (6 base + 6 weapon). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that claw can’t be used to attack any other target.<br />**- Tail.** (crush, reach). 10 damage (6 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Dragon’s Breath (recharge (d6)).** Strength + Fortitude vs. Dodge. Target all creatures in melee range, or in one area within short range. On a success, each target suffers 12 fire damage. On a strong or critical success, each target also suffers burning (4).<br />**- Fiery Wrath (Elite Ability).** When this creature suffers a Wound, it immediately regains it’s Dragon’s Breath and uses it.
+**Tier:** 3 (Basic)
 
-**Abilities**<br />-
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 2  | d8 | d8 | d6 | d10 | 8     | 9     | 10     |
 
-### Troll
+**Skills:** Arcana (2), Stealth (2), Fighting (0), Influence (2), Lore (2), Perception (2)
 
-*Large (+1), Basic Giant* 
+**Resistances:** poison
 
-**HP** 40, **AV** 3 (natural light)<br />**STR** d12, **AGI** d8, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 9, **Resist** 8
+**Attacks:**
 
-**Skills** Athletics 2, Endurance 2, Fighting 1, Perception 2, Survival 2
+- **Scepter** (*crush, reach, versatile (+1)*). 8/11/14 damage (base 5 + weapon 3).
+- **Poison Mist** (*range (short)*). Mind + Arcana vs. Dodge. 9/11/13 poison damage (base 5 + weapon 4). On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead.
 
-**Actions**<br />**- 2 x Claw (Light).** 10 damage (6 base + 4 weapon). On a hit, attempts to grapple the target.<br />**- Bite (only if grappling).** 12 damage (6 base + 6 weapon). On a hit, the target is poisoned for a short duration.<br />**- Poisonous Spit (range (medium)).** 8 poison damage (4 base + 4 weapon). On a hit, the target is briefly poisoned.
+**Abilities:**
 
-**Abilities**<br />**- Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br />**- Regeneration.** This creature regains 10 HP at the start of each of it‘s turns, unless it has taken fire or acid damage since it’s last turn. This creature even regenerates while at 0 HP and only dies from it’s Wounds, if it can‘t regenerate at the start of it‘s turn.
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Attack Thoughts (Rank 1)
+  - Control Beast (only snakes, Rank 1)
+  - Subtle Suggestion (Rank 1)
+  - Forced Suggestion (Rank 2)
+  - Cloud of Sickness (Rank 2)
+  - Nullify Spell (Rank 2)
+- **Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
 
-### Officer
+---
 
-*Medium (-), Basic Humanoid* 
+### **Veteran** (Medium Humanoid)
 
-**HP** 30, **AV** -<br />**Skills** -
+**Tier:** 3 (Basic)
 
-**Actions**<br />-
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 6  | d8 | d8 | d6 | d6  | 10    | 8     | 9      |
 
-**Abilities**<br />-
+**Skills:** Athletics (2), Archery (2), Education (1), Fighting (2), Perception (1)
 
-### Naga Mummy
+**Attacks:**
 
-*Large (+1), Basic Undead* 
+- **Spear** (*pierce, reach, versatile (+1)*). 9/12/15 damage (base 4 + weapon 5). +1 bane if enemy in melee.
+- **Broadsword** (*slash, versatile (+1)*). 9/12/15 damage (base 4 + weapon 5).
+- **Light Shield** (*crush*). 7/8/9 damage (base 4 + weapon 3).
+- **Longbow** (*ammo, heavy (d6), range (long), two-handed*). 9/12/15 damage (base 4 + weapon 5).
 
-**HP** 40, **AV** 5 (natural Heavy)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d8<br />**Parry** 10, **Dodge** 10, **Resist** 9
+**Abilities:**
 
-**Skills** Arcana 1, Fighting 1, Fortitude 1, Insight 1, Perception 1
+- **Fast Strikes.** This creature can attack twice per turn.
+- **Versatile Fighter.** This creature can choose to either add +1 boon, deal +2 damage per success level, make a second attack with +1 bane, make the target fall prone (melee only), or disarm the target (melee only) on any attack it makes. It can choose any one option only once per combat.
+- **Constitution.** Once per combat, this creature can use its Quick Action on its turn to regain 8 HP.
 
-**Resistances** necrotic damage
+---
 
-**Weaknesses** radiant damage
+### **Nakesh Cult Leader** (Medium Humanoid)
 
-**Actions**<br />**- Fast Strikes.** This creature can attack or cast spells twice per turn.<br />**- Fan Glaive (Heavy (d10), reach, slash, two-handed).** 10 damage (5 base + 5 weapon).<br />**- Tail (crush).** 9 damage (5 base + 4 weapon). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.<br />**- Drain Life (target: vs.** Resist, range: short). Roll Mind + Arcana. Deals 4 + 2 necrotic damage per SL. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.
+**Tier:** 3 (Lord)
 
-**Abilities**<br />**- Blindsight (close).** This creature can perceive it‘s surroundings at close range without relying on sight.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />- Control Beast (only snakes, Rank 1)<br />- Death Bolt (Rank 1)<br />- Grasp of Decay (Rank 1)<br />- Subtle Suggestion (Rank 1)<br />**- Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 3×30 | 2 | d8 | d8 | d6 | d10 | 8     | 9     | 10     |
+
+**Skills:** Arcana (2), Stealth (2), Fighting (0), Influence (2), Lore (2), Perception (2)
+
+**Resistances:** poison
+
+**Attacks:**
+
+- **Serpent Scepter** (*crush, reach, versatile (+1)*). 8/11/14 force damage (base 5 + weapon 3). Roll attacks with Mind + Arcana. On a strong hit, the target is pushed close. On a critical hit, the target is pushed a short distance away instead.
+- **Poison Mist** (*range (short)*). Mind + Arcana vs. Dodge. 9/11/13 poison damage (base 5 + weapon 4). On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead.
+
+**Abilities:**
+
+- **Lord Trigger - Serpentine Retreat.** When any life pool is depleted, this creature bursts into a cluster of snakes, dealing 6 poison damage to all creatures in melee range and can move up to a long distance. Other creatures can't use Quick Actions or other abilities in response to this ability. After moving, this creature can cast its spells again as if it were a new scene.
+- **Blindsight (close).** This creature can perceive its surroundings at close range without relying on sight.
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Attack Thoughts (Rank 1)
+  - Control Beast (only snakes, Rank 1)
+  - Subtle Suggestion (Rank 1)
+  - Forced Suggestion (Rank 2)
+  - Cloud of Sickness (Rank 2)
+  - Nullify Spell (Rank 2)
+- **Shapeshifting.** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
+
+---
+
+### **Large Fire Elemental** (Large Daimon)
+
+**Tier:** 3 (Basic)
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 4  | d12| d12| d8 | d6  | 9     | 10    | 8      |
+
+**Skills:** Fighting (2), Fortitude (3), Perception (3)
+
+**Immunities:** fire, burning
+
+**Resistances:** physical
+
+**Weaknesses:** cold, water
+
+**Attacks:**
+
+- **Burning Lash.** 12/18/24 fire damage (base 6 + weapon 6). On a strong or critical hit, inflicts burning (6) for a short duration.
+- **Flame Bolt** (*range (medium)*). 10/14/18 fire damage (base 6 + weapon 4). On a strong or critical hit, inflicts burning (4) for a short duration.
+- **Incineration** (*blast (short), recharge (5-6)*). Spirit + Fortitude vs. Dodge. 10/14/18 fire damage (base 6 + weapon 4) against each target. On a strong or critical hit, inflicts burning (4) for a short duration.
+
+**Abilities:**
+
+- **Fast Strikes.** This creature can attack or cast spells twice per turn, unless it uses Incineration.
+- **Ethereal Form.** This creature is immune to bleeding, poison damage, being poisoned, or falling unconscious.
+- **Flame Body.** This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 6 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+
+---
+
+### **Wyvern** (Large Dragon)
+
+**Tier:** 3 (Basic)
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 6  | d12| d8 | d6 | d4  | 12    | 9     | 9      |
+
+**Skills:** Archery (2), Athletics (3), Stealth (3), Fighting (1), Perception (3)
+
+**Resistances:** poison
+
+**Attacks:**
+
+- **Fangs** (*pierce*). 12/18/24 damage (base 6 + weapon 6). On a strong or critical hit, target becomes briefly poisoned.
+- **Claws** (*slash*). 10/14/18 damage (base 6 + weapon 4).
+- **Stinger** (*pierce, reach*). 9/12/15 poison damage (base 6 + weapon 3). Target must roll Spirit + Fortitude vs. TN 9 or become poisoned for a short duration.
+
+**Abilities:**
+
+- **Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Flyby Attack.** This creature doesn't provoke opportunity attacks when it flies out of an enemy's reach.
+
+---
+
+### **Young Dragon** (Large Dragon)
+
+**Tier:** 3 (Elite)
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 2×30 | 8 | d12| d8 | d8 | d6  | 11    | 9     | 9      |
+
+**Skills:** Athletics (1), Fighting (2), Fortitude (2), Perception (1), Survival (1)
+
+**Resistances:** fire
+
+**Attacks:**
+
+- **Claws** (*light, slash*). 10/14/18 damage (base 6 + weapon 4). Can attack twice per turn.
+- **Bite** (*crush, reach*). 12/18/24 damage (base 6 + weapon 6). On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained.
+- **Tail** (*crush, reach*). 10/14/18 damage (base 6 + weapon 4). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.
+- **Dragon's Breath** (*recharge (5-6)*). Strength + Fortitude vs. Dodge. Target all creatures in melee range, or in one area within short range. On a success, each target suffers 12/16/20 fire damage. On a strong or critical success, each target also suffers burning (4).
+
+**Abilities:**
+
+- **Elite Trigger - Fiery Wrath.** When the first life pool is depleted, this creature immediately regains its Dragon's Breath and uses it.
+- **Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+
+---
+
+### **Troll** (Large Giant)
+
+**Tier:** 3 (Basic)
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 3  | d12| d8 | d8 | d6  | 11    | 9     | 8      |
+
+**Skills:** Athletics (2), Endurance (2), Fighting (1), Perception (2), Survival (2)
+
+**Attacks:**
+
+- **Claws** (*light*). 10/14/18 damage (base 6 + weapon 4). On a hit, attempts to grapple the target. Can attack twice per turn.
+- **Bite** (*only if grappling*). 12/18/24 damage (base 6 + weapon 6). On a hit, the target is poisoned for a short duration.
+- **Poisonous Spit** (*range (medium)*). 8/10/12 poison damage (base 4 + weapon 4). On a hit, the target is briefly poisoned.
+
+**Abilities:**
+
+- **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.
+- **Regeneration.** This creature regains 10 HP at the start of each of its turns, unless it has taken fire or acid damage since its last turn. This creature even regenerates while at 0 HP and only dies from its Wounds, if it can't regenerate at the start of its turn.
+
+---
+
+### **Naga Mummy** (Large Undead)
+
+**Tier:** 3 (Basic)
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 5  | d10| d8 | d6 | d8  | 10    | 10    | 9      |
+
+**Skills:** Arcana (1), Fighting (1), Fortitude (1), Insight (1), Perception (1)
+
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+
+**Resistances:** necrotic
+
+**Weaknesses:** radiant
+
+**Attacks:**
+
+- **Fan Glaive** (*heavy (d10), reach, slash, two-handed*). 10/15/20 damage (base 5 + weapon 5).
+- **Tail** (*crush*). 9/13/17 damage (base 5 + weapon 4). On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.
+- **Drain Life** (*range (short)*). Mind + Arcana vs. Resist. 8/12/16 necrotic damage (base 4 + weapon 4). On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.
+
+**Abilities:**
+
+- **Fast Strikes.** This creature can attack or cast spells twice per turn.
+- **Blindsight (close).** This creature can perceive its surroundings at close range without relying on sight.
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Control Beast (only snakes, Rank 1)
+  - Death Bolt (Rank 1)
+  - Grasp of Decay (Rank 1)
+  - Subtle Suggestion (Rank 1)
+
+---
 
 ## Tier 4
 
-### Gargoyle
+### **Gargoyle** (Medium Construct)
 
-*Medium (-), Basic Construct* 
+**Tier:** 4 (Basic)
 
-**HP** 30, **AV** 8 (natural heavy)<br />**STR** d10, **AGI** d8, **SPI** d6, **MND** d6<br />**Parry** 11, **Dodge** 10, **Resist** 10
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 8  | d10| d8 | d6 | d6  | 12    | 10    | 10     |
 
-**Skills** Fighting 2, Perception 3, Stealth 2
+**Skills:** Fighting (2), Perception (3), Stealth (2)
 
-**Immunities** bleeding, charmed, confused, frightened, poisoned, unconscious
-**Resistances** physical
+**Immunities:** bleeding, charmed, confused, frightened, poisoned, unconscious
 
-**Actions**<br />**- Stone Claws (slash).** 8 damage (5 base + 3 weapon). On a strong or critical hit, the target suffers bleeding (4) for a short duration.<br />**- Swooping Strike (agile).** 9 damage (4 base + 5 weapon). Can only be used while flying. On a hit, the target is knocked prone.
+**Resistances:** physical
 
-**Abilities**<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.<br />**- Stone Camouflage.** While motionless against stone surfaces, this creature gains +3 boons on Stealth rolls and can't be detected by normal sight.<br />**- Guardian's Vigil.** When this creature is motionless for a full turn, it gains +2 AV and resistance to all damage types until it moves or attacks.
+**Attacks:**
 
-### Skeleton (Manticore)
+- **Stone Claws** (*slash*). 8/11/14 damage (base 5 + weapon 3). On a strong or critical hit, the target suffers bleeding (4) for a short duration.
+- **Swooping Strike** (*agile*). 9/14/19 damage (base 4 + weapon 5). Can only be used while flying. On a hit, the target is knocked prone.
 
-*Large (+1), Elite Undead* 
+**Abilities:**
 
-**HP** 2×40, **AV** 8 (natural heavy)<br />**STR** d10, **AGI** d10, **SPI** d8, **MND** d6<br />**Parry** 11, **Dodge** 12, **Resist** 10
+- **Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Stone Camouflage.** While motionless against stone surfaces, this creature gains +3 boons on Stealth rolls and can't be detected by normal sight.
+- **Guardian's Vigil.** When this creature is motionless for a full turn, it gains +2 AV and resistance to all damage types until it moves or attacks.
 
-**Skills** Fighting 2, Archery 3, Perception 2
+---
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** piercing
+### **Skeleton (Manticore)** (Large Undead)
 
-**Actions**<br />**- Bone Claws (slash).** 8 damage (5 base + 3 weapon).<br />**- Skeletal Bite (crush).** 10 damage (5 base + 5 weapon). On a strong or critical hit, the target is grappled.<br />**- Bone Spikes (pierce, range (long)).** 9 damage (5 base + 4 weapon). Can fire up to 3 spikes per turn at different targets.
+**Tier:** 4 (Elite)
 
-**Abilities**<br />**- Elite Trigger - Bone Storm.** When the first life pool is depleted, the manticore's rage erupts. It immediately fires bone spikes at all enemies within long range (no action required) and gains +2 weapon damage for the remainder of the scene.<br />**- Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.<br />**- Spike Volley (Quick Action, Proactive).** Once per turn, fire a single bone spike at any target within range as a Quick Action.
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 2×40 | 8 | d10| d10| d8 | d6  | 11    | 12    | 10     |
 
-### Mummy
+**Skills:** Fighting (2), Archery (3), Perception (2)
 
-*Medium (-), Basic Undead* 
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**HP** 40, **AV** 4 (natural light)<br />**STR** d10, **AGI** d6, **SPI** d10, **MND** d8<br />**Parry** 10, **Dodge** 8, **Resist** 12
+**Resistances:** piercing
 
-**Skills** Fighting 2, Fortitude 3, Mysticism 2
+**Attacks:**
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** fire
-**Weaknesses** radiant
+- **Bone Claws** (*slash*). 8/11/14 damage (base 5 + weapon 3).
+- **Skeletal Bite** (*crush*). 10/15/20 damage (base 5 + weapon 5). On a strong or critical hit, the target is grappled.
+- **Bone Spikes** (*pierce, range (long)*). 9/13/17 damage (base 5 + weapon 4). Can fire up to 3 spikes per turn at different targets.
 
-**Actions**<br />**- Withering Touch.** 8 damage (5 base + 3 weapon). Target must roll Strength + Fortitude vs. TN 10 or become briefly deprived.<br />**- Mummy's Grasp (crush).** 9 damage (5 base + 4 weapon). On a hit, attempts to grapple the target.
+**Abilities:**
 
-**Abilities**<br />**- Terrifying Presence.** When first seen, all living creatures within close range must roll Spirit + Fortitude vs. TN 10 or become briefly frightened.<br />**- Curse of Decay.** Any creature that takes damage from this mummy's attacks becomes cursed. Cursed creatures suffer +1 bane on all rolls until they receive magical healing or complete a long rest.<br />**- Desiccating Aura.** All living creatures that start their turn in melee range take 2 necrotic damage as their life force is slowly drained.
+- **Elite Trigger - Bone Storm.** When the first life pool is depleted, the manticore's rage erupts. It immediately fires bone spikes at all enemies within long range (no action required) and gains +2 weapon damage for the remainder of the scene.
+- **Flying.** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Spike Volley (Quick Action, Proactive).** Once per turn, fire a single bone spike at any target within range as a Quick Action.
 
-### Mummy (Priest)
+---
 
-*Medium (-), Basic Undead* 
+### **Mummy** (Medium Undead)
 
-**HP** 40, **AV** 3 (natural light)<br />**STR** d8, **AGI** d6, **SPI** d12, **MND** d10<br />**Parry** 9, **Dodge** 8, **Resist** 13
+**Tier:** 4 (Basic)
 
-**Skills** Fighting 2, Mysticism 3, Insight 2, Religion 3
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 4  | d10| d6 | d10| d8  | 10    | 8     | 12     |
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** necrotic
-**Weaknesses** radiant
+**Skills:** Fighting (2), Fortitude (3), Mysticism (2)
 
-**Actions**<br />**- Staff Strike (reach, two-handed).** 8 damage (4 base + 4 weapon). +1 bane if used one-handed.<br />**- Necrotic Touch.** 7 damage (4 base + 3 weapon). Target must roll Spirit + Fortitude vs. TN 10 or suffer -1 to all attributes for a short duration.
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**Abilities**<br />**- Innate Spellcasting.** This creature can cast the following arcane spells rolling Mind + Arcana once per scene each:<br />  - Drain Life (Rank 0)<br />  - Necromantic Sight (Rank 0)<br />  - Death Bolt (Rank 1)<br />  - Chromatic Orb (Rank 1)<br />**- Divine Authority.** Once per scene, this creature can command all undead within medium range. They gain +1 boon on their next attack and move up to their Movement toward the priest's chosen target.<br />**- Unholy Blessing.** As an Action, this creature can touch an undead ally and restore 10 HP to them while granting them +2 damage on their next attack.
+**Resistances:** fire
 
-### Adult Dragon
+**Weaknesses:** radiant
 
-*Huge (+2), Elite Dragon* 
+**Attacks:**
 
-**HP** -, **AV** -<br />**Skills** -
+- **Withering Touch.** 8/11/14 damage (base 5 + weapon 3). Target must roll Strength + Fortitude vs. TN 10 or become briefly deprived.
+- **Mummy's Grasp** (*crush*). 9/13/17 damage (base 5 + weapon 4). On a hit, attempts to grapple the target.
 
-**Actions**<br />-
+**Abilities:**
 
-**Abilities**<br />-
+- **Terrifying Presence.** When first seen, all living creatures within close range must roll Spirit + Fortitude vs. TN 10 or become briefly frightened.
+- **Curse of Decay.** Any creature that takes damage from this mummy's attacks suffers +1 bane on all rolls until they receive magical healing or complete a long rest.
+- **Desiccating Aura.** All living creatures that start their turn in melee range take 2 necrotic damage as their life force is slowly drained.
 
-### Mountain Giant
+---
 
-*Huge (+2), Basic Giant* 
+### **Mummy (Priest)** (Medium Undead)
 
-**HP** 60, **AV** 4 (natural light)<br />**STR** d12+2, **AGI** d6, **SPI** d8, **MND** d6<br />**Parry** 12, **Dodge** 10, **Resist** 11
+**Tier:** 4 (Basic)
 
-**Skills** Athletics 1, Fighting 1, Fortitude 1
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 3  | d8 | d6 | d12| d10 | 9     | 8     | 13     |
 
-**Actions**<br />**- Slam (reach).** 12 damage (8 base + 4 weapon). On a strong or critical hit, the target falls prone.<br />**- Kick.** 12 damage (8 base + 4 weapon). On a strong hit, the target is pushed a close distance. On a critical hit, the target is pushed a short distance and falls prone. <br />**- Boulder Throw (ammo, crush, range (very long)).** 16 damage (8 base + 8 weapon).
+**Skills:** Fighting (2), Mysticism (3), Insight (2), Religion (3)
 
-**Abilities**<br />-
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-### General
+**Resistances:** necrotic
 
-*Medium (-), Elite Humanoid* 
+**Weaknesses:** radiant
 
-**HP** 40, **AV** -<br />**Skills** -
+**Attacks:**
 
-**Actions**<br />-
+- **Staff Strike** (*reach, two-handed*). 8/12/16 damage (base 4 + weapon 4). +2 banes if used one-handed.
+- **Necrotic Touch.** 7/10/13 damage (base 4 + weapon 3). Target must roll Spirit + Fortitude vs. TN 10 or suffer -1 to all attributes for a short duration.
 
-**Abilities**<br />-
+**Abilities:**
 
-### Hydra
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Dazzling Light (Rank 0)
+  - Divine Light (Rank 1)
+  - Death Bolt (Rank 1)
+  - Dark Healing (Rank 1)
+- **Divine Authority.** Once per scene, this creature can command all undead within medium range. They gain +1 boon on their next attack and move up to their Movement toward the priest's chosen target.
+- **Unholy Blessing.** As an Action, this creature can touch an undead ally and restore 10 HP to them while granting them +2 damage on their next attack.
 
-*-, - -* 
+---
 
-**HP** -, **AV** -<br />**Skills** -
+### **Mountain Giant** (Huge Giant)
 
-**Actions**<br />-
+**Tier:** 4 (Basic)
 
-**Abilities**<br />-
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 60 | 4  | d12+2| d6| d8 | d6  | 12    | 10    | 11     |
+
+**Skills:** Athletics (1), Fighting (1), Fortitude (1)
+
+**Attacks:**
+
+- **Slam** (*reach*). 12/16/20 damage (base 8 + weapon 4). On a strong or critical hit, the target falls prone.
+- **Kick.** 12/16/20 damage (base 8 + weapon 4). On a strong hit, the target is pushed a close distance. On a critical hit, the target is pushed a short distance and falls prone.
+- **Boulder Throw** (*ammo, crush, range (very long)*). 16/24/32 damage (base 8 + weapon 8).
+
+**Abilities:**
+
+- **Stone Skin.** This creature has resistance to physical damage.
+- **Tremor Stomp.** As an Action, this creature can stomp the ground. All creatures within close range must roll Agility + Athletics vs. TN 10 or fall prone.
+
+---
 
 ## Tier 5
 
-### Bone Naga
+### **Bone Naga** (Large Undead)
 
-*Large (+1), Elite Undead* 
+**Tier:** 5 (Elite)
 
-**HP** 2×50, **AV** 5 (natural light)<br />**STR** d10, **AGI** d10, **SPI** d12, **MND** d10<br />**Parry** 11, **Dodge** 12, **Resist** 13
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 2×50 | 5 | d10| d10| d12| d10 | 11    | 12    | 13     |
 
-**Skills** Fighting 3, Arcana 3, Mysticism 3, Insight 3
+**Skills:** Fighting (3), Arcana (3), Mysticism (3), Insight (3)
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** necrotic, piercing
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**Actions**<br />**- Bone Fangs (pierce).** 9 damage (5 base + 4 weapon). Target must roll Spirit + Fortitude vs. TN 11 or become briefly paralyzed.<br />**- Constricting Coils (crush).** 10 damage (5 base + 5 weapon). On a hit, attempts to grapple the target. While grappling, can use Crushing Embrace as a Quick Action.<br />**- Necrotic Bolt (range (long)).** 8 damage (5 base + 3 weapon). Target must roll Spirit + Fortitude vs. TN 11 or become briefly dazed.
+**Resistances:** necrotic, piercing
 
-**Abilities**<br />**- Elite Trigger - Undead Mastery.** When the first life pool is depleted, ancient necromantic power awakens. The Bone Naga's Spirit increases to d12+1 and it can cast each of its spells twice per scene for the remainder of combat.<br />**- Innate Spellcasting.** This creature can cast the following spells rolling Spirit + Mysticism once per scene each:<br />  - Aura of Fear (Rank 2)<br />  - Moonbeam (Rank 2)<br />  - Shadow Step (Rank 2)<br />  - Curse of Twilight (Rank 1)<br />**- Crushing Embrace (Quick Action, Reactive).** When grappling a creature, deal 7 damage (5 base + 2 weapon) to the grappled target and they must roll Strength + Fortitude vs. TN 11 or become briefly stunned.<br />**- Serpentine Grace (Quick Action, Reactive).** When targeted by an attack, the Bone Naga can attempt to dodge with supernatural grace. Roll Agility + Athletics vs. TN 11. On a success, gain +3 Dodge against the triggering attack.
+**Attacks:**
 
-### Mummy Lord
+- **Bone Fangs** (*pierce*). 9/13/17 damage (base 5 + weapon 4). Target must roll Spirit + Fortitude vs. TN 11 or become briefly paralyzed.
+- **Constricting Coils** (*crush*). 10/15/20 damage (base 5 + weapon 5). On a hit, attempts to grapple the target. While grappling, can use Crushing Embrace as a Quick Action.
+- **Necrotic Bolt** (*range (long)*). 8/11/14 damage (base 5 + weapon 3). Target must roll Spirit + Fortitude vs. TN 11 or become briefly dazed.
 
-*Medium (-), Lord Undead* 
+**Abilities:**
 
-**HP** 3×50, **AV** 6 (natural heavy)<br />**STR** d10, **AGI** d8, **SPI** d12+1, **MND** d12<br />**Parry** 11, **Dodge** 10, **Resist** 11
+- **Elite Trigger - Undead Mastery.** When the first life pool is depleted, ancient necromantic power awakens. The Bone Naga's Spirit increases to d12+1 and it can cast each of its spells twice per scene for the remainder of combat.
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Aura of Fear (Rank 2)
+  - Moonbeam (Rank 2)
+  - Shadow Step (Rank 2)
+  - Curse of Twilight (Rank 1)
+- **Crushing Embrace (Quick Action, Reactive).** When grappling a creature, deal 7/9/11 damage (base 5 + weapon 2) to the grappled target and they must roll Strength + Fortitude vs. TN 11 or become briefly stunned.
+- **Serpentine Grace (Quick Action, Reactive).** When targeted by an attack, the Bone Naga can attempt to dodge with supernatural grace. Roll Agility + Athletics vs. TN 11. On a success, gain +3 Dodge against the triggering attack.
 
-**Skills** Fighting 3, Arcana 3, Mysticism 3, Religion 3, Insight 3
+---
 
-**Immunities** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-**Resistances** fire, necrotic
-**Weaknesses** radiant
+### **Mummy Lord** (Medium Undead)
 
-**Actions**<br />**- Withering Grasp.** 9 damage (5 base + 4 weapon). Target must roll Strength + Fortitude vs. TN 11 or become briefly deprived and suffer -1 to one attribute for a medium duration.<br />**- Pharaoh's Scepter (two-handed, reach).** 11 damage (5 base + 6 weapon). +2 banes if used one-handed. On a strong or critical hit, target is knocked prone.<br />**- Death Glare (range (medium)).** Spirit + Mysticism vs. Resist. Target takes 8 necrotic damage (5 base + 3 weapon) and must roll Spirit + Fortitude vs. TN 11 or become briefly frightened.<br />**- Ancient Command.** Command all undead within long range. They gain +2 boons on their next attack and can move up to their Movement toward the Mummy Lord's chosen target.<br />**- Sandstorm Burst (blast (short), recharge (5-6)).** Spirit + Mysticism vs. Dodge. All creatures in range take 9 damage (5 base + 4 weapon) and are briefly blinded by swirling sand.
+**Tier:** 5 (Lord)
 
-**Abilities**<br />**- Lord Trigger - Royal Wrath.** When any life pool is depleted, the Mummy Lord's divine authority manifests. All enemies within medium range must roll Spirit + Fortitude vs. TN 13 or become frightened for a short duration. The Mummy Lord also regains use of any recharge abilities.<br />**- Lord Trigger - Undead Dominion.** When any life pool is depleted, summon 2d4 Tier 1 undead creatures in adjacent areas. These undead last until the end of the scene.<br />**- Innate Spellcasting.** This creature can cast the following arcane spells rolling Mind + Arcana once per scene each:<br />  - Wither (Rank 3, Necromancy)<br />  - Negative Energy Flood (Rank 3, Necromancy)<br />  - Black Flame Bolt (Rank 3, Evocation)<br />  - Fireball (Rank 2, Evocation)<br />  - Eldritch Tendrils (Rank 2, Conjuration)<br />  - Death Mark (Rank 2, Necromancy)<br />**- Ancient Authority (Quick Action, Proactive).** Once per turn, the Mummy Lord can command any undead ally within medium range to immediately make an attack or move up to their Movement.<br />**- Necrotic Aura (Quick Action, Reactive).** When an enemy ends their turn within close range, they take 3 necrotic damage as their life force is drained to sustain the Mummy Lord.<br />**- Pharaoh's Curse.** Any creature that deals damage to the Mummy Lord becomes cursed. Cursed creatures suffer +1 bane on all rolls and take 2 necrotic damage at the start of their turns. The curse can be removed by magical healing or by defeating the Mummy Lord.
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 3×50 | 6 | d10| d8 | d12+1| d12| 11    | 10    | 14     |
 
-### Old Dragon
+**Skills:** Fighting (3), Arcana (3), Mysticism (3), Religion (3), Insight (3)
 
-*Gargantuan (+3), Elite Dragon* 
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
 
-**HP** -, **AV** -<br />**Skills** -
+**Resistances:** fire, necrotic
 
-**Actions**<br />-
+**Weaknesses:** radiant
 
-**Abilities**<br />-
+**Attacks:**
+
+- **Withering Grasp.** 9/13/17 damage (base 5 + weapon 4). Target must roll Strength + Fortitude vs. TN 11 or become briefly deprived and suffer -1 to one attribute for a medium duration.
+- **Pharaoh's Scepter** (*two-handed, reach*). 11/17/23 damage (base 5 + weapon 6). +2 banes if used one-handed. On a strong or critical hit, target is knocked prone.
+- **Death Glare** (*range (medium)*). Spirit + Mysticism vs. Resist. Target takes 8/11/14 damage (base 5 + weapon 3) necrotic and must roll Spirit + Fortitude vs. TN 11 or become briefly frightened.
+- **Ancient Command.** Command all undead within long range. They gain +2 boons on their next attack and can move up to their Movement toward the Mummy Lord's chosen target.
+- **Sandstorm Burst** (*blast (short), recharge (5-6)*). Spirit + Mysticism vs. Dodge. All creatures in range take 9/13/17 damage (base 5 + weapon 4) and are briefly blinded by swirling sand.
+
+**Abilities:**
+
+- **Lord Trigger - Royal Wrath.** When any life pool is depleted, the Mummy Lord's divine authority manifests. All enemies within medium range must roll Spirit + Fortitude vs. TN 13 or become frightened for a short duration. The Mummy Lord also regains use of any recharge abilities.
+- **Lord Trigger - Undead Dominion.** When any life pool is depleted, summon 2d4 Tier 1 undead creatures in adjacent areas. These undead last until the end of the scene.
+- **Innate Spellcasting.** This creature can cast the following mystic spells rolling Spirit + Mysticism once per scene each:
+  - Divine Light (Rank 3)
+  - Dispel Magic (Rank 3)
+  - Turn Undead (Rank 2)
+  - Dark Healing (Rank 2)
+  - Death Bolt (Rank 1)
+- **Ancient Authority (Quick Action, Proactive).** Once per turn, the Mummy Lord can command any undead ally within medium range to immediately make an attack or move up to their Movement.
+- **Necrotic Aura (Quick Action, Reactive).** When an enemy ends their turn within close range, they take 3 necrotic damage as their life force is drained to sustain the Mummy Lord.
+- **Pharaoh's Curse.** Any creature that deals damage to the Mummy Lord suffers +1 bane on all rolls and takes 2 necrotic damage at the start of their turns. The curse can be removed by magical healing or by defeating the Mummy Lord.
