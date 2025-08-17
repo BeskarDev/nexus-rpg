@@ -127,17 +127,24 @@ const parseAttacks = (attacksText: string): Attack[] => {
     
     // Match: - **Name** (*properties*). damage. Optional description
     // Example: - **Claws** (*light, slash*). 6/10/14 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.
-    const match = line.match(/- \*\*([^*]+)\*\*\s*\(([^)]*)\)\.\s*([^.]+\.?)(.*)/)
+    // Handle nested parentheses in properties like (*thrown (close/short)*)
+    const match = line.match(/- \*\*([^*]+)\*\*\s*\((.*?)\)\.\s*(.*)/)
     if (match) {
-      const [, name, propertiesText, damage, description] = match
+      const [, name, propertiesText, restOfLine] = match
       // Remove the asterisks from properties and clean up
       const cleanProperties = propertiesText.replace(/\*/g, '').split(',').map(p => p.trim()).filter(p => p.length > 0)
+      
+      // Split the rest into damage and description
+      // Look for the first sentence ending with period that could be damage
+      const sentences = restOfLine.split(/\.(?:\s|$)/)
+      const damage = sentences[0] + '.'
+      const description = sentences.slice(1).join('. ').trim()
       
       attacks.push({
         name: name.trim(),
         properties: cleanProperties,
         damage: damage.trim(),
-        description: description?.trim() || undefined,
+        description: description || undefined,
       })
     }
   }

@@ -32,9 +32,10 @@ export const SpellsSheet: React.FC<{ char: Character }> = ({ char }) => {
 		otherCritical,
 	}: Damage) => {
 		const baseDamage = calculateBaseDamage(base)
-		const weakDamage = baseDamage + weapon + other + otherWeak
-		const strongDamage = baseDamage + weapon * 2 + other + otherStrong
-		const criticalDamage = baseDamage + weapon * 3 + other + otherCritical
+		const spellCatalystDamage = char.spells.spellCatalystDamage
+		const weakDamage = baseDamage + weapon + spellCatalystDamage + other + otherWeak
+		const strongDamage = baseDamage + weapon * 2 + spellCatalystDamage * 2 + other + otherStrong
+		const criticalDamage = baseDamage + weapon * 3 + spellCatalystDamage * 3 + other + otherCritical
 
 		return `${weakDamage}/${strongDamage}/${criticalDamage}`
 	}
