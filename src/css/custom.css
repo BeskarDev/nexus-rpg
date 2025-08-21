@@ -181,24 +181,29 @@ a.chip:hover {
 /* Attribute chips */
 .chip--attribute {
   font-weight: bold;
-  border-radius: 4px; /* Less rounded than default 12px */
+  border-radius: 0; /* No rounded edges for attributes */
   font-size: 0.7rem;
 }
 
 /* Color variants */
 .chip--red {
-  background-color: var(--ifm-color-red);
+  background-color: #ff6b6b; /* Pastel red for attributes */
   color: white;
 }
 
 .chip--blue {
-  background-color: var(--ifm-color-blue);
+  background-color: #74c0fc; /* Pastel blue for attributes */
   color: white;
 }
 
 .chip--green {
-  background-color: var(--ifm-color-green);
+  background-color: #69db7c; /* Pastel green for attributes */
   color: white;
+}
+
+.chip--light-purple {
+  background-color: #d0bfff; /* Light purple for attributes */
+  color: black;
 }
 
 .chip--yellow {
@@ -226,145 +231,179 @@ a.chip:hover {
   color: white;
 }
 
-/* Additional color variants for improved diversity */
-.chip--lime {
-  background-color: #228b22; /* Darker lime for better contrast */
+/* Pastel color variants for improved diversity and softer appearance */
+.chip--lime-pastel {
+  background-color: #c3f0ca; /* Pastel lime */
+  color: black;
+}
+
+.chip--cyan-pastel {
+  background-color: #a5f3fc; /* Pastel cyan */
+  color: black;
+}
+
+.chip--pink-pastel {
+  background-color: #fbb6ce; /* Pastel pink */
+  color: black;
+}
+
+.chip--gold-pastel {
+  background-color: #fed766; /* Pastel gold */
+  color: black;
+}
+
+.chip--olive-pastel {
+  background-color: #d4d48a; /* Pastel olive */
+  color: black;
+}
+
+.chip--maroon-pastel {
+  background-color: #e06b6b; /* Pastel maroon */
   color: white;
 }
 
-.chip--cyan {
-  background-color: #008b8b; /* Darker cyan for better contrast */
+.chip--navy-pastel {
+  background-color: #7c93c3; /* Pastel navy */
   color: white;
 }
 
-.chip--pink {
-  background-color: #c71585; /* Darker pink for better contrast */
+.chip--indigo-pastel {
+  background-color: #a78bfa; /* Pastel indigo */
   color: white;
 }
 
-.chip--gold {
-  background-color: #b8860b; /* Darker gold for better contrast */
-  color: white;
+.chip--teal-pastel {
+  background-color: #7dd3fc; /* Pastel teal */
+  color: black;
 }
 
-.chip--olive {
-  background-color: #6b6b00; /* Darker olive for better contrast */
-  color: white;
+.chip--slate-pastel {
+  background-color: #cbd5e1; /* Pastel slate */
+  color: black;
 }
 
-.chip--maroon {
-  background-color: #800000;
-  color: white;
+.chip--tan-pastel {
+  background-color: #fed7aa; /* Pastel tan */
+  color: black;
 }
 
-.chip--navy {
-  background-color: #000080;
-  color: white;
+.chip--silver-pastel {
+  background-color: #e2e8f0; /* Pastel silver */
+  color: black;
 }
 
-.chip--indigo {
-  background-color: #4b0082;
-  color: white;
+.chip--copper-pastel {
+  background-color: #fdba74; /* Pastel copper */
+  color: black;
 }
 
-.chip--teal {
-  background-color: #008080;
-  color: white;
+.chip--bronze-pastel {
+  background-color: #fed7aa; /* Pastel bronze */
+  color: black;
 }
 
-.chip--slate {
-  background-color: #2f4f4f; /* Darker slate for better contrast */
-  color: white;
+.chip--steel-pastel {
+  background-color: #bfdbfe; /* Pastel steel */
+  color: black;
 }
 
-.chip--tan {
-  background-color: #8b7355; /* Darker tan for better contrast */
-  color: white;
+.chip--amber-pastel {
+  background-color: #fde68a; /* Pastel amber */
+  color: black;
 }
 
-.chip--silver {
-  background-color: #708090; /* Darker silver for better contrast */
-  color: white;
+.chip--orange-pastel {
+  background-color: #fed7aa; /* Pastel orange */
+  color: black;
 }
 
-.chip--copper {
-  background-color: #b87333;
-  color: white;
+.chip--brown-pastel {
+  background-color: #d6d3d1; /* Pastel brown */
+  color: black;
 }
 
-.chip--bronze {
-  background-color: #cd7f32;
-  color: white;
+.chip--red-pastel {
+  background-color: #fca5a5; /* Pastel red */
+  color: black;
 }
 
-.chip--steel {
-  background-color: #4682b4;
-  color: white;
+.chip--green-pastel {
+  background-color: #bbf7d0; /* Pastel green */
+  color: black;
 }
 
-.chip--amber {
-  background-color: #cc9900; /* Darker amber for better contrast */
-  color: white;
+.chip--purple-pastel {
+  background-color: #e9d5ff; /* Pastel purple */
+  color: black;
 }
 
-/* Unique attribute colors */
-.chip--crimson {
-  background-color: #dc143c;
-  color: white;
+.chip--blue-pastel {
+  background-color: #bfdbfe; /* Pastel blue */
+  color: black;
 }
 
-.chip--electric {
-  background-color: #0066ff;
-  color: white;
+.chip--yellow-pastel {
+  background-color: #fde68a; /* Pastel yellow */
+  color: black;
 }
 
-.chip--violet {
-  background-color: #8a2be2;
-  color: white;
-}
-
-.chip--golden {
-  background-color: #daa520;
-  color: white;
+.chip--grey-pastel {
+  background-color: #e5e7eb; /* Pastel grey */
+  color: black;
 }
 
 /* Dark mode adjustments for better contrast */
-[data-theme='dark'] .chip--yellow {
-  background-color: #ffd700;
+[data-theme='dark'] .chip--light-purple {
+  background-color: #c084fc;
   color: black;
 }
 
-[data-theme='dark'] .chip--gold {
-  background-color: #ffd700;
+[data-theme='dark'] .chip--red {
+  background-color: #f87171;
   color: black;
 }
 
-[data-theme='dark'] .chip--lime {
-  background-color: #32cd32;
+[data-theme='dark'] .chip--green {
+  background-color: #4ade80;
   color: black;
 }
 
-[data-theme='dark'] .chip--cyan {
-  background-color: #00bcd4;
+[data-theme='dark'] .chip--blue {
+  background-color: #60a5fa;
   color: black;
 }
 
-[data-theme='dark'] .chip--tan {
-  background-color: #deb887;
+[data-theme='dark'] .chip--yellow-pastel {
+  background-color: #fbbf24;
   color: black;
 }
 
-[data-theme='dark'] .chip--silver {
-  background-color: #c0c0c0;
+[data-theme='dark'] .chip--gold-pastel {
+  background-color: #f59e0b;
   color: black;
 }
 
-[data-theme='dark'] .chip--amber {
-  background-color: #ffbf00;
+[data-theme='dark'] .chip--lime-pastel {
+  background-color: #84cc16;
   color: black;
 }
 
-[data-theme='dark'] .chip--golden {
-  background-color: #ffd700;
+[data-theme='dark'] .chip--cyan-pastel {
+  background-color: #06b6d4;
+  color: black;
+}
+
+[data-theme='dark'] .chip--tan-pastel {
+  background-color: #d97706;
+  color: black;
+}
+
+[data-theme='dark'] .chip--silver-pastel {
+  background-color: #94a3b8;
+  color: black;
+}
+
+[data-theme='dark'] .chip--amber-pastel {
+  background-color: #f59e0b;
   color: black;
 }

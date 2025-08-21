@@ -3,57 +3,58 @@ export interface ChipMapping {
   [key: string]: {
     color: string;
     type: string;
+    displayText?: string;
   };
 }
 
 export const chipMappings: ChipMapping = {
-  // Damage Types (9 total)
-  'acid': { color: 'lime', type: 'damage' },
-  'blast': { color: 'orange', type: 'damage' },
-  'fire': { color: 'red', type: 'damage' },
-  'frost': { color: 'cyan', type: 'damage' },
-  'lightning': { color: 'yellow', type: 'damage' },
-  'necrotic': { color: 'purple', type: 'damage' },
-  'poison': { color: 'green', type: 'damage' },
-  'psychic': { color: 'pink', type: 'damage' },
-  'radiant': { color: 'gold', type: 'damage' },
+  // Damage Types (9 total) - More pastel colors
+  'acid': { color: 'lime-pastel', type: 'damage' },
+  'blast': { color: 'orange-pastel', type: 'damage' },
+  'fire': { color: 'red-pastel', type: 'damage' },
+  'frost': { color: 'cyan-pastel', type: 'damage' },
+  'lightning': { color: 'yellow-pastel', type: 'damage' },
+  'necrotic': { color: 'purple-pastel', type: 'damage' },
+  'poison': { color: 'green-pastel', type: 'damage' },
+  'psychic': { color: 'pink-pastel', type: 'damage' },
+  'radiant': { color: 'gold-pastel', type: 'damage' },
 
-  // Skills (16 total)
-  'Athletics': { color: 'orange', type: 'skill' },
-  'Crafting': { color: 'brown', type: 'skill' },
-  'Nature': { color: 'green', type: 'skill' },
-  'Survival': { color: 'olive', type: 'skill' },
-  'Fighting': { color: 'red', type: 'skill' },
-  'Fortitude': { color: 'maroon', type: 'skill' },
-  'Perception': { color: 'blue', type: 'skill' },
-  'Arcana': { color: 'purple', type: 'skill' },
-  'Influence': { color: 'gold', type: 'skill' },
-  'Lore': { color: 'navy', type: 'skill' },
-  'Mysticism': { color: 'indigo', type: 'skill' },
-  'Insight': { color: 'teal', type: 'skill' },
-  'Stealth': { color: 'grey', type: 'skill' },
-  'Streetwise': { color: 'slate', type: 'skill' },
-  'Education': { color: 'blue', type: 'skill' },
-  'Archery': { color: 'tan', type: 'skill' },
+  // Skills (16 total) - More pastel colors
+  'Athletics': { color: 'orange-pastel', type: 'skill' },
+  'Crafting': { color: 'brown-pastel', type: 'skill' },
+  'Nature': { color: 'green-pastel', type: 'skill' },
+  'Survival': { color: 'olive-pastel', type: 'skill' },
+  'Fighting': { color: 'red-pastel', type: 'skill' },
+  'Fortitude': { color: 'maroon-pastel', type: 'skill' },
+  'Perception': { color: 'blue-pastel', type: 'skill' },
+  'Arcana': { color: 'purple-pastel', type: 'skill' },
+  'Influence': { color: 'gold-pastel', type: 'skill' },
+  'Lore': { color: 'navy-pastel', type: 'skill' },
+  'Mysticism': { color: 'indigo-pastel', type: 'skill' },
+  'Insight': { color: 'teal-pastel', type: 'skill' },
+  'Stealth': { color: 'grey-pastel', type: 'skill' },
+  'Streetwise': { color: 'slate-pastel', type: 'skill' },
+  'Education': { color: 'blue-pastel', type: 'skill' },
+  'Archery': { color: 'tan-pastel', type: 'skill' },
 
-  // Weapon Categories (9 total)
-  'Axe': { color: 'brown', type: 'weapon' },
-  'Blade': { color: 'silver', type: 'weapon' },
-  'Bow': { color: 'tan', type: 'weapon' },
-  'Brawling': { color: 'orange', type: 'weapon' },
-  'Crossbow': { color: 'copper', type: 'weapon' },
-  'Mace': { color: 'grey', type: 'weapon' },
-  'Polearm': { color: 'bronze', type: 'weapon' },
-  'Shield': { color: 'steel', type: 'weapon' },
-  'Thrown': { color: 'amber', type: 'weapon' },
+  // Weapon Categories (9 total) - More pastel colors
+  'Axe': { color: 'brown-pastel', type: 'weapon' },
+  'Blade': { color: 'silver-pastel', type: 'weapon' },
+  'Bow': { color: 'tan-pastel', type: 'weapon' },
+  'Brawling': { color: 'orange-pastel', type: 'weapon' },
+  'Crossbow': { color: 'copper-pastel', type: 'weapon' },
+  'Mace': { color: 'grey-pastel', type: 'weapon' },
+  'Polearm': { color: 'bronze-pastel', type: 'weapon' },
+  'Shield': { color: 'steel-pastel', type: 'weapon' },
+  'Thrown': { color: 'amber-pastel', type: 'weapon' },
 
-  // Attributes (4 total) - Unique colors not used by other types
-  'Strength': { color: 'crimson', type: 'attribute' },
-  'STR': { color: 'crimson', type: 'attribute' },
-  'Agility': { color: 'electric', type: 'attribute' },
-  'AGI': { color: 'electric', type: 'attribute' },
-  'Spirit': { color: 'violet', type: 'attribute' },
-  'SPI': { color: 'violet', type: 'attribute' },
-  'Mind': { color: 'golden', type: 'attribute' },
-  'MND': { color: 'golden', type: 'attribute' },
+  // Attributes (4 total) - New colors as requested: STR -> red, AGI -> green, SPI -> light purple, MND -> blue
+  'Strength': { color: 'red', type: 'attribute' },
+  'STR': { color: 'red', type: 'attribute' },
+  'Agility': { color: 'green', type: 'attribute' },
+  'AGI': { color: 'green', type: 'attribute' },
+  'Spirit': { color: 'light-purple', type: 'attribute' },
+  'SPI': { color: 'light-purple', type: 'attribute' },
+  'Mind': { color: 'blue', type: 'attribute' },
+  'MND': { color: 'blue', type: 'attribute' },
 };

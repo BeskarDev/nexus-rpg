@@ -7,15 +7,48 @@ import { chipMappings } from './chip-mappings';
  * Transforms damage types, skills, weapon categories, and attributes as specified.
  */
 const tableChipsPlugin = (options = {}) => {
-  return (tree) => {
+  return (tree, file) => {
     visit(tree, 'text', (node: Node & { value: string, processed?: boolean }, index: number, parent: Parent & { type: string, children: any[] }) => {
       // Skip nodes that are already processed
       if (node.processed) {
         return;
       }
 
-      // Create a Map from the chip mappings object
-      const chipMap = new Map(Object.entries(chipMappings));
+      // Check if this is the Combat Arts file for weapon chips
+      const isCombatArtsFile = file?.path?.includes('05-combat-arts.md') || file?.history?.[0]?.includes('05-combat-arts.md');
+      
+      // Check if this is an attribute explanation section where we should NOT transform to shorthand
+      const isAttributeExplanationFile = file?.path?.includes('01-basic-rules/02-how-to-roll.md') || 
+                                         file?.history?.[0]?.includes('01-basic-rules/02-how-to-roll.md') ||
+                                         file?.path?.includes('03-statistics/01-attributes.md') || 
+                                         file?.history?.[0]?.includes('03-statistics/01-attributes.md');
+
+      // Create a Map from the chip mappings object, filtering weapon types based on file
+      const chipMap = new Map();
+      for (const [key, value] of Object.entries(chipMappings)) {
+        // Only include weapon chips in Combat Arts file
+        if (value.type === 'weapon' && !isCombatArtsFile) {
+          continue;
+        }
+        
+        // Handle attribute shorthand transformation
+        if (value.type === 'attribute' && !isAttributeExplanationFile) {
+          // Transform full attribute names to shorthand in chip display
+          if (key === 'Strength') {
+            chipMap.set(key, { ...value, displayText: 'STR' });
+          } else if (key === 'Agility') {
+            chipMap.set(key, { ...value, displayText: 'AGI' });
+          } else if (key === 'Spirit') {
+            chipMap.set(key, { ...value, displayText: 'SPI' });
+          } else if (key === 'Mind') {
+            chipMap.set(key, { ...value, displayText: 'MND' });
+          } else {
+            chipMap.set(key, value);
+          }
+        } else {
+          chipMap.set(key, value);
+        }
+      }
 
       // Split text into words and punctuation while preserving spaces and special characters
       const wordsWithSpaces = node.value.split(/(\s+|[.,!?;:"'(){}\[\]/\\+*])/);
@@ -53,10 +86,11 @@ const tableChipsPlugin = (options = {}) => {
         if (match) {
           hasChip = true;
           const chipInfo = chipMap.get(match);
+          const displayText = chipInfo.displayText || match;
           processedWords.push({
             type: 'link',
             url: '#', // Dummy URL since we just want a styled span
-            children: [{ type: 'text', value: match, processed: true }],
+            children: [{ type: 'text', value: displayText, processed: true }],
             data: {
               hProperties: {
                 className: [`chip`, `chip--${chipInfo.color}`, `chip--${chipInfo.type}`],
