@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 env:
-  NODE_VERSION: '22.0.0'
+  NODE_VERSION: '20'
 
 jobs:
   build_and_preview:
@@ -29,8 +29,8 @@ jobs:
           echo "Node.js version: $(node --version)"
           echo "NPM version: $(npm --version)"
           # Ensure we're using the correct Node.js version
-          if ! node --version | grep -q "v22"; then
-            echo "ERROR: Expected Node.js v22.x.x but got $(node --version)"
+          if ! node --version | grep -q "v20"; then
+            echo "ERROR: Expected Node.js v20.x.x but got $(node --version)"
             exit 1
           fi
 
