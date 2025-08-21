@@ -164,6 +164,7 @@ a.chip:hover {
 /* Damage type chips */
 .chip--damage {
   font-variant: small-caps;
+  padding: 3px 8px; /* Fixed vertical padding to be uniform */
 }
 
 /* Skill chips */
@@ -451,4 +452,177 @@ a.chip:hover {
 [data-theme='dark'] .chip--charcoal-pastel {
   background-color: #9ca3af;
   color: black;
+}
+
+/* Vibrant color variants for damage types */
+.chip--acid-vibrant {
+  background-color: #84cc16; /* Vibrant lime green */
+  color: white;
+}
+
+.chip--blast-vibrant {
+  background-color: #ea580c; /* Vibrant orange */
+  color: white;
+}
+
+.chip--fire-vibrant {
+  background-color: #dc2626; /* Vibrant red */
+  color: white;
+}
+
+.chip--frost-vibrant {
+  background-color: #0891b2; /* Vibrant cyan */
+  color: white;
+}
+
+.chip--lightning-vibrant {
+  background-color: #eab308; /* Vibrant yellow */
+  color: white;
+}
+
+.chip--necrotic-vibrant {
+  background-color: #7c3aed; /* Vibrant purple */
+  color: white;
+}
+
+.chip--poison-vibrant {
+  background-color: #16a34a; /* Vibrant green */
+  color: white;
+}
+
+.chip--psychic-vibrant {
+  background-color: #ec4899; /* Vibrant pink */
+  color: white;
+}
+
+.chip--radiant-vibrant {
+  background-color: #d97706; /* Vibrant gold */
+  color: white;
+}
+
+/* Vibrant color variants for skills */
+.chip--athletics-vibrant {
+  background-color: #22c55e; /* Vibrant green */
+  color: white;
+}
+
+.chip--crafting-vibrant {
+  background-color: #a16207; /* Vibrant brown */
+  color: white;
+}
+
+.chip--nature-vibrant {
+  background-color: #059669; /* Vibrant emerald */
+  color: white;
+}
+
+.chip--survival-vibrant {
+  background-color: #15803d; /* Vibrant forest green */
+  color: white;
+}
+
+.chip--fighting-vibrant {
+  background-color: #dc2626; /* Vibrant red */
+  color: white;
+}
+
+.chip--fortitude-vibrant {
+  background-color: #991b1b; /* Vibrant maroon */
+  color: white;
+}
+
+.chip--perception-vibrant {
+  background-color: #2563eb; /* Vibrant blue */
+  color: white;
+}
+
+.chip--arcana-vibrant {
+  background-color: #7c3aed; /* Vibrant purple */
+  color: white;
+}
+
+.chip--influence-vibrant {
+  background-color: #d97706; /* Vibrant amber */
+  color: white;
+}
+
+.chip--lore-vibrant {
+  background-color: #0891b2; /* Vibrant teal */
+  color: white;
+}
+
+.chip--mysticism-vibrant {
+  background-color: #a855f7; /* Vibrant violet */
+  color: white;
+}
+
+.chip--insight-vibrant {
+  background-color: #0369a1; /* Vibrant sky blue */
+  color: white;
+}
+
+.chip--stealth-vibrant {
+  background-color: #374151; /* Vibrant charcoal */
+  color: white;
+}
+
+.chip--streetwise-vibrant {
+  background-color: #ea580c; /* Vibrant rust */
+  color: white;
+}
+
+.chip--education-vibrant {
+  background-color: #1e40af; /* Vibrant navy */
+  color: white;
+}
+
+.chip--archery-vibrant {
+  background-color: #92400e; /* Vibrant tan */
+  color: white;
+}
+
+/* Vibrant color variants for weapon types - very distinct colors */
+.chip--axe-vibrant {
+  background-color: #7c2d12; /* Deep brown */
+  color: white;
+}
+
+.chip--blade-vibrant {
+  background-color: #64748b; /* Steel grey */
+  color: white;
+}
+
+.chip--bow-vibrant {
+  background-color: #a16207; /* Wood brown */
+  color: white;
+}
+
+.chip--brawling-vibrant {
+  background-color: #dc2626; /* Fighting red */
+  color: white;
+}
+
+.chip--crossbow-vibrant {
+  background-color: #374151; /* Dark grey */
+  color: white;
+}
+
+.chip--mace-vibrant {
+  background-color: #4338ca; /* Royal blue */
+  color: white;
+}
+
+.chip--polearm-vibrant {
+  background-color: #059669; /* Emerald green */
+  color: white;
+}
+
+.chip--shield-vibrant {
+  background-color: #7c3aed; /* Shield purple */
+  color: white;
+}
+
+.chip--thrown-vibrant {
+  background-color: #ea580c; /* Orange */
+  color: white;
 }

@@ -14,6 +14,11 @@ const tableChipsPlugin = (options = {}) => {
         return;
       }
 
+      // Skip if this text node is within a heading
+      if (parent && parent.type === 'heading') {
+        return; // Skip transformation in headings
+      }
+
       // Check if this is the Combat Arts file for weapon chips
       const isCombatArtsFile = file?.path?.includes('05-combat-arts.md') || file?.history?.[0]?.includes('05-combat-arts.md');
       
