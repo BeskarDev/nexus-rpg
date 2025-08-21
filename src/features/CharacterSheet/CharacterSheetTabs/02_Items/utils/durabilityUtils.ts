@@ -51,18 +51,7 @@ export function getDurabilityForItem(item: Item | Weapon): DurabilityDie {
 		}
 	} else {
 		// For non-weapons (items)
-		// d8 for heavy armor, metal, stone items
-		if (
-			allText.includes('heavy armor') ||
-			allText.includes('heavy') ||
-			allText.includes('metal') ||
-			allText.includes('stone') ||
-			allText.includes('armor')
-		) {
-			return 'd8'
-		}
-		
-		// d6 for light armor, wood, leather items
+		// d6 for light armor, wood, leather items first
 		if (
 			allText.includes('light armor') ||
 			allText.includes('light') ||
@@ -73,6 +62,17 @@ export function getDurabilityForItem(item: Item | Weapon): DurabilityDie {
 			allText.includes('gear')
 		) {
 			return 'd6'
+		}
+		
+		// d8 for heavy armor, metal, stone items
+		if (
+			allText.includes('heavy armor') ||
+			allText.includes('heavy') ||
+			allText.includes('metal') ||
+			allText.includes('stone') ||
+			allText.includes('armor')
+		) {
+			return 'd8'
 		}
 	}
 
