@@ -25,7 +25,7 @@ env:
   NODE_VERSION: '18'
 
 jobs:
-  setup-agent-environment:
+  copilot-setup-steps:
     runs-on: ubuntu-latest
     name: Setup Copilot Agent Environment
     

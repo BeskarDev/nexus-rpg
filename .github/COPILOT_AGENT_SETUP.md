@@ -13,7 +13,7 @@ The Copilot Agent Mode setup provides:
 ## Setup Components
 
 ### 1. Workflow File
-- **Location**: `.github/workflows/copilot-agent-setup.yml`
+- **Location**: `.github/workflows/copilot-setup-steps.yml`
 - **Trigger**: Manual dispatch or repository dispatch events
 - **Features**:
   - Auto-detects package manager (Yarn/NPM)
@@ -118,7 +118,7 @@ export CUSTOM_AGENT_SETTING=value
 ```
 
 ### Workflow Customization
-Modify `.github/workflows/copilot-agent-setup.yml` to:
+Modify `.github/workflows/copilot-setup-steps.yml` to:
 - Add additional setup steps
 - Configure different Node.js versions
 - Add custom validation steps
