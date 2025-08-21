@@ -140,3 +140,81 @@ table th {
 .markdown > ul {
   margin-top: calc(-1 * var(--ifm-leading) / 2);
 }
+
+/* Chip styles for table content */
+a.chip, .chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  text-decoration: none !important;
+  cursor: default;
+  pointer-events: none; /* Disable clicking */
+}
+
+a.chip:hover {
+  text-decoration: none !important;
+}
+
+/* Damage type chips */
+.chip--damage {
+  font-variant: small-caps;
+}
+
+/* Skill chips */
+.chip--skill {
+  font-style: italic;
+}
+
+/* Weapon category chips */
+.chip--weapon {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+/* Color variants */
+.chip--red {
+  background-color: var(--ifm-color-red);
+  color: white;
+}
+
+.chip--blue {
+  background-color: var(--ifm-color-blue);
+  color: white;
+}
+
+.chip--green {
+  background-color: var(--ifm-color-green);
+  color: white;
+}
+
+.chip--yellow {
+  background-color: var(--ifm-color-yellow);
+  color: black;
+}
+
+.chip--purple {
+  background-color: var(--ifm-color-purple);
+  color: white;
+}
+
+.chip--orange {
+  background-color: var(--ifm-color-orange);
+  color: white;
+}
+
+.chip--brown {
+  background-color: var(--ifm-color-brown);
+  color: white;
+}
+
+.chip--grey {
+  background-color: var(--ifm-color-grey);
+  color: white;
+}
