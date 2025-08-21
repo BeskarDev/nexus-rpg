@@ -18,8 +18,8 @@ const tableChipsPlugin = (options = {}) => {
       const isCombatArtsFile = file?.path?.includes('05-combat-arts.md') || file?.history?.[0]?.includes('05-combat-arts.md');
       
       // Check if this is an attribute explanation section where we should NOT transform to shorthand
-      const isAttributeExplanationFile = file?.path?.includes('01-basic-rules/02-how-to-roll.md') || 
-                                         file?.history?.[0]?.includes('01-basic-rules/02-how-to-roll.md') ||
+      const isAttributeExplanationFile = file?.path?.includes('01-basic-rules/01-how-to-roll.md') || 
+                                         file?.history?.[0]?.includes('01-basic-rules/01-how-to-roll.md') ||
                                          file?.path?.includes('03-statistics/01-attributes.md') || 
                                          file?.history?.[0]?.includes('03-statistics/01-attributes.md');
 

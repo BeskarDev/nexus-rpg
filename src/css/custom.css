@@ -181,7 +181,7 @@ a.chip:hover {
 /* Attribute chips */
 .chip--attribute {
   font-weight: bold;
-  border-radius: 0; /* No rounded edges for attributes */
+  border-radius: 0 !important; /* No rounded edges for attributes - override base chip rule */
   font-size: 0.7rem;
 }
 
