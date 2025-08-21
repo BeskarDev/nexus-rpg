@@ -3,9 +3,13 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	Box,
+	Checkbox,
+	FormGroup,
+	FormControlLabel,
 	IconButton,
 	MenuItem,
 	TextField,
+	Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -13,6 +17,8 @@ import { Delete, ExpandMore } from '@mui/icons-material'
 import {
 	ContainerType,
 	containerTypeArray,
+	DurabilityDie,
+	durabilityDieArray,
 	EquipmentSlotType,
 	equipmentSlotTypeArray,
 	Item,
@@ -131,6 +137,31 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						label="Amount"
 						sx={{ maxWidth: '2.5rem', flexGrow: 0 }}
 					/>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+						{[1, 2, 3].map((useNumber) => (
+							<Checkbox
+								key={useNumber}
+								size="small"
+								checked={initialItem.uses >= useNumber}
+								onChange={(event) => {
+									const newUses = event.target.checked
+										? Math.max(initialItem.uses, useNumber)
+										: Math.min(initialItem.uses, useNumber - 1)
+									updateItem({ uses: newUses })
+								}}
+								sx={{ padding: 0.25 }}
+							/>
+						))}
+						{initialItem.uses >= 3 && (
+							<Typography
+								variant="caption"
+								color="error"
+								sx={{ ml: 0.5, fontSize: '0.65rem' }}
+							>
+								damaged
+							</Typography>
+						)}
+					</Box>
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -193,6 +224,51 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						{equipmentSlotTypeArray.map((slot) => (
 							<MenuItem key={slot} value={slot}>
 								{slot}
+							</MenuItem>
+						))}
+					</AttributeField>
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+						<Typography variant="caption">Uses</Typography>
+						<FormGroup row>
+							{[1, 2, 3].map((useNumber) => (
+								<FormControlLabel
+									key={useNumber}
+									control={
+										<Checkbox
+											size="small"
+											checked={initialItem.uses >= useNumber}
+											onChange={(event) => {
+												const newUses = event.target.checked
+													? Math.max(initialItem.uses, useNumber)
+													: Math.min(initialItem.uses, useNumber - 1)
+												updateItem({ uses: newUses })
+											}}
+										/>
+									}
+									label={useNumber.toString()}
+								/>
+							))}
+						</FormGroup>
+						{initialItem.uses >= 3 && (
+							<Typography variant="caption" color="error">
+								Item is damaged
+							</Typography>
+						)}
+					</Box>
+					<AttributeField
+						select
+						size="small"
+						variant="standard"
+						value={initialItem.durability || ''}
+						onChange={(event) =>
+							updateItem({ durability: event.target.value as DurabilityDie })
+						}
+						label="Durability"
+						sx={{ maxWidth: '4.25rem' }}
+					>
+						{durabilityDieArray.map((die) => (
+							<MenuItem key={die} value={die}>
+								{die || 'None'}
 							</MenuItem>
 						))}
 					</AttributeField>
