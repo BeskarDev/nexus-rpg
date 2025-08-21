@@ -140,14 +140,14 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						disabled
 						size="small"
 						variant="standard"
-						value={`${3 - initialItem.uses}/3`}
+						value={`${3 - (initialItem.uses || 0)}/3`}
 						label="Uses"
 						sx={{ 
 							maxWidth: '2.5rem',
 							'& .MuiInputBase-input': {
-								color: initialItem.uses >= 3 
+								color: (initialItem.uses || 0) === 3 
 									? 'error.main' 
-									: initialItem.uses === 2 
+									: (initialItem.uses || 0) === 2 
 									? 'warning.main' 
 									: 'text.primary'
 							}
@@ -225,7 +225,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 								<Checkbox
 									key={useNumber}
 									size="small"
-									checked={initialItem.uses >= useNumber}
+									checked={(initialItem.uses || 0) >= useNumber}
 									onChange={(event) => {
 										const newUses = event.target.checked
 											? useNumber
@@ -236,7 +236,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 								/>
 							))}
 						</FormGroup>
-						{initialItem.uses >= 3 && initialItem.location === 'worn' && initialItem.slot && (
+						{(initialItem.uses || 0) >= 3 && initialItem.location === 'worn' && initialItem.slot && (
 							<Typography variant="caption" color="error">
 								Item is damaged
 							</Typography>

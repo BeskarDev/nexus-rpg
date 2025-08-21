@@ -95,14 +95,14 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						disabled
 						size="small"
 						variant="standard"
-						value={`${3 - initialWeapon.uses}/3`}
+						value={`${3 - (initialWeapon.uses || 0)}/3`}
 						label="Uses"
 						sx={{ 
 							maxWidth: '2.5rem',
 							'& .MuiInputBase-input': {
-								color: initialWeapon.uses >= 3 
+								color: (initialWeapon.uses || 0) === 3 
 									? 'error.main' 
-									: initialWeapon.uses === 2 
+									: (initialWeapon.uses || 0) === 2 
 									? 'warning.main' 
 									: 'text.primary'
 							}
@@ -206,7 +206,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 								<Checkbox
 									key={useNumber}
 									size="small"
-									checked={initialWeapon.uses >= useNumber}
+									checked={(initialWeapon.uses || 0) >= useNumber}
 									onChange={(event) => {
 										const newUses = event.target.checked
 											? useNumber
@@ -217,7 +217,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 								/>
 							))}
 						</FormGroup>
-						{initialWeapon.uses >= 3 && (
+						{(initialWeapon.uses || 0) >= 3 && (
 							<Typography variant="caption" color="error">
 								Weapon is damaged
 							</Typography>

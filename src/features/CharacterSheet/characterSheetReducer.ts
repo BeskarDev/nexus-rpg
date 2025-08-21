@@ -103,6 +103,17 @@ export const {
 			if (!character.items.items) {
 				character.items.items = []
 			}
+			// Migrate weapons and items to include uses and durability if missing
+			character.items.weapons = character.items.weapons.map((weapon) => ({
+				uses: 0,
+				durability: '',
+				...weapon,
+			}))
+			character.items.items = character.items.items.map((item) => ({
+				uses: 0,
+				durability: '',
+				...item,
+			}))
 			// Ensure encumbrance has mount and storage max load fields
 			if (!character.items.encumbrance) {
 				character.items.encumbrance = {
