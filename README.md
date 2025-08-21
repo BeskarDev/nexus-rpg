@@ -20,3 +20,45 @@ In this game, you will play as a daring group of adventurers with individual ski
 > Nexus RPG is a single-person passion project and has been in developement for the last 5 years. As only a close group of friends has yet played this game regurily, not every rule or character option has had the chance to be thorouly playtested.
 > 
 
+## 🤖 GitHub Copilot Agent Support
+
+This repository includes optimized setup for GitHub Copilot agents with automated dependency caching and environment configuration. 
+
+**Quick Setup**: The Copilot Agent workflow automatically handles environment setup when needed, or you can manually trigger it from the Actions tab.
+
+📖 **Documentation**: See [`.github/COPILOT_AGENT_SETUP.md`](.github/COPILOT_AGENT_SETUP.md) for detailed setup instructions and customization options.
+
+## 🚀 Development
+
+This website is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
+
+### Installation
+
+```bash
+yarn install
+```
+
+### Local Development
+
+```bash
+yarn start
+```
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build
+
+```bash
+yarn build
+```
+
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Deployment
+
+```bash
+yarn deploy
+```
+
+Builds the website and deploys it to Firebase Hosting.
+

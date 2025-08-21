@@ -1,0 +1,151 @@
+name: Copilot Agent Environment Setup
+
+# This workflow sets up the environment for GitHub Copilot agents
+# It can be triggered manually or by agent-specific events
+# Implements dependency caching as per GitHub's agent customization guidelines
+
+on:
+  workflow_dispatch:
+    inputs:
+      cache_strategy:
+        description: 'Cache strategy to use'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - npm
+          - yarn
+          - skip
+  # Triggered when Copilot agents need environment setup
+  repository_dispatch:
+    types: [copilot-agent-setup]
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+    name: Setup Copilot Agent Environment
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Ensure we have full history for agents that may need it
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          # Don't use built-in cache here, we'll handle it manually for flexibility
+          cache: ''
+
+      - name: Detect package manager
+        id: detect-pm
+        run: |
+          if [[ "${{ github.event.inputs.cache_strategy }}" == "npm" ]]; then
+            echo "package_manager=npm" >> $GITHUB_OUTPUT
+            echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event.inputs.cache_strategy }}" == "yarn" ]]; then
+            echo "package_manager=yarn" >> $GITHUB_OUTPUT
+            echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
+          elif [[ "${{ github.event.inputs.cache_strategy }}" == "skip" ]]; then
+            echo "package_manager=skip" >> $GITHUB_OUTPUT
+            echo "lockfile=none" >> $GITHUB_OUTPUT
+          else
+            # Auto-detect based on lockfiles
+            if [[ -f "yarn.lock" ]]; then
+              echo "package_manager=yarn" >> $GITHUB_OUTPUT
+              echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
+            elif [[ -f "package-lock.json" ]]; then
+              echo "package_manager=npm" >> $GITHUB_OUTPUT  
+              echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
+            else
+              echo "package_manager=npm" >> $GITHUB_OUTPUT
+              echo "lockfile=package.json" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Cache dependencies (Yarn)
+        if: steps.detect-pm.outputs.package_manager == 'yarn'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/yarn
+            node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Cache dependencies (NPM)
+        if: steps.detect-pm.outputs.package_manager == 'npm'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json', 'package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+
+      - name: Install dependencies (Yarn)
+        if: steps.detect-pm.outputs.package_manager == 'yarn'
+        run: |
+          echo "Installing dependencies with Yarn..."
+          yarn install --frozen-lockfile --prefer-offline
+          echo "Yarn installation completed"
+
+      - name: Install dependencies (NPM)
+        if: steps.detect-pm.outputs.package_manager == 'npm'
+        run: |
+          echo "Installing dependencies with NPM..."
+          npm ci --prefer-offline
+          echo "NPM installation completed"
+
+      - name: Run agent setup script
+        run: |
+          if [[ -f ".github/scripts/copilot-setup.sh" ]]; then
+            echo "Running Copilot agent setup script..."
+            chmod +x .github/scripts/copilot-setup.sh
+            .github/scripts/copilot-setup.sh
+          else
+            echo "No custom setup script found, using default setup"
+            echo "Agent environment ready for Nexus RPG project"
+          fi
+
+      - name: Verify installation
+        if: steps.detect-pm.outputs.package_manager != 'skip'
+        run: |
+          echo "Verifying installation..."
+          echo "Node.js version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          if command -v yarn &> /dev/null; then
+            echo "Yarn version: $(yarn --version)"
+          fi
+          echo "Checking if Docusaurus is available..."
+          if [[ "${{ steps.detect-pm.outputs.package_manager }}" == "yarn" ]]; then
+            yarn docusaurus --version
+          else
+            npx docusaurus --version
+          fi
+
+      - name: Create agent environment summary
+        run: |
+          echo "🤖 Copilot Agent Environment Setup Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment Details:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Node.js: $(node --version)" >> $GITHUB_STEP_SUMMARY
+          echo "- Package Manager: ${{ steps.detect-pm.outputs.package_manager }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Lockfile: ${{ steps.detect-pm.outputs.lockfile }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Repository: ${{ github.repository }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Available Commands:**" >> $GITHUB_STEP_SUMMARY
+          echo "- \`yarn start\` or \`npm start\` - Start development server" >> $GITHUB_STEP_SUMMARY
+          echo "- \`yarn build\` or \`npm run build\` - Build the site" >> $GITHUB_STEP_SUMMARY
+          echo "- \`yarn serve\` or \`npm run serve\` - Serve built site" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Project Type:** Nexus RPG Documentation (Docusaurus)" >> $GITHUB_STEP_SUMMARY
