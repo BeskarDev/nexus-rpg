@@ -183,27 +183,30 @@ a.chip:hover {
   font-weight: bold;
   border-radius: 0 !important; /* No rounded edges for attributes - override base chip rule */
   font-size: 0.7rem;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding: 2px 6px; /* Reduced horizontal padding */
 }
 
 /* Color variants */
 .chip--red {
-  background-color: #ff6b6b; /* Pastel red for attributes */
+  background-color: #dc2626; /* Darker red for attributes - better contrast */
   color: white;
 }
 
 .chip--blue {
-  background-color: #74c0fc; /* Pastel blue for attributes */
+  background-color: #2563eb; /* Darker blue for attributes - better contrast */
   color: white;
 }
 
 .chip--green {
-  background-color: #69db7c; /* Pastel green for attributes */
+  background-color: #16a34a; /* Darker green for attributes - better contrast */
   color: white;
 }
 
 .chip--light-purple {
-  background-color: #d0bfff; /* Light purple for attributes */
-  color: black;
+  background-color: #9333ea; /* Darker purple for attributes - better contrast */
+  color: white;
 }
 
 .chip--yellow {
@@ -352,25 +355,46 @@ a.chip:hover {
   color: black;
 }
 
+/* Additional pastel colors for better skill distribution */
+.chip--forest-green-pastel {
+  background-color: #86efac; /* Forest green pastel for Athletics */
+  color: black;
+}
+
+.chip--sage-green-pastel {
+  background-color: #a7f3d0; /* Sage green pastel for Survival */
+  color: black;
+}
+
+.chip--violet-pastel {
+  background-color: #ddd6fe; /* Violet pastel for Mysticism */
+  color: black;
+}
+
+.chip--charcoal-pastel {
+  background-color: #d1d5db; /* Charcoal pastel for Stealth */
+  color: black;
+}
+
 /* Dark mode adjustments for better contrast */
 [data-theme='dark'] .chip--light-purple {
-  background-color: #c084fc;
-  color: black;
+  background-color: #a855f7; /* Darker purple for dark mode */
+  color: white;
 }
 
 [data-theme='dark'] .chip--red {
-  background-color: #f87171;
-  color: black;
+  background-color: #dc2626; /* Keep consistent with light mode */
+  color: white;
 }
 
 [data-theme='dark'] .chip--green {
-  background-color: #4ade80;
-  color: black;
+  background-color: #16a34a; /* Keep consistent with light mode */
+  color: white;
 }
 
 [data-theme='dark'] .chip--blue {
-  background-color: #60a5fa;
-  color: black;
+  background-color: #2563eb; /* Keep consistent with light mode */
+  color: white;
 }
 
 [data-theme='dark'] .chip--yellow-pastel {
@@ -405,5 +429,26 @@ a.chip:hover {
 
 [data-theme='dark'] .chip--amber-pastel {
   background-color: #f59e0b;
+  color: black;
+}
+
+/* Dark mode adjustments for new skill colors */
+[data-theme='dark'] .chip--forest-green-pastel {
+  background-color: #22c55e;
+  color: black;
+}
+
+[data-theme='dark'] .chip--sage-green-pastel {
+  background-color: #34d399;
+  color: black;
+}
+
+[data-theme='dark'] .chip--violet-pastel {
+  background-color: #a855f7;
+  color: black;
+}
+
+[data-theme='dark'] .chip--charcoal-pastel {
+  background-color: #9ca3af;
   color: black;
 }

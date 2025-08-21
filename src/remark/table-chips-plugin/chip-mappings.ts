@@ -19,22 +19,22 @@ export const chipMappings: ChipMapping = {
   'psychic': { color: 'pink-pastel', type: 'damage' },
   'radiant': { color: 'gold-pastel', type: 'damage' },
 
-  // Skills (16 total) - More pastel colors
-  'Athletics': { color: 'orange-pastel', type: 'skill' },
+  // Skills (16 total) - More balanced color distribution with more greens and clearer basic colors
+  'Athletics': { color: 'forest-green-pastel', type: 'skill' },
   'Crafting': { color: 'brown-pastel', type: 'skill' },
   'Nature': { color: 'green-pastel', type: 'skill' },
-  'Survival': { color: 'olive-pastel', type: 'skill' },
+  'Survival': { color: 'sage-green-pastel', type: 'skill' },
   'Fighting': { color: 'red-pastel', type: 'skill' },
   'Fortitude': { color: 'maroon-pastel', type: 'skill' },
   'Perception': { color: 'blue-pastel', type: 'skill' },
   'Arcana': { color: 'purple-pastel', type: 'skill' },
   'Influence': { color: 'gold-pastel', type: 'skill' },
-  'Lore': { color: 'navy-pastel', type: 'skill' },
-  'Mysticism': { color: 'indigo-pastel', type: 'skill' },
-  'Insight': { color: 'teal-pastel', type: 'skill' },
-  'Stealth': { color: 'grey-pastel', type: 'skill' },
-  'Streetwise': { color: 'slate-pastel', type: 'skill' },
-  'Education': { color: 'blue-pastel', type: 'skill' },
+  'Lore': { color: 'amber-pastel', type: 'skill' },
+  'Mysticism': { color: 'violet-pastel', type: 'skill' },
+  'Insight': { color: 'cyan-pastel', type: 'skill' },
+  'Stealth': { color: 'charcoal-pastel', type: 'skill' },
+  'Streetwise': { color: 'bronze-pastel', type: 'skill' },
+  'Education': { color: 'navy-pastel', type: 'skill' },
   'Archery': { color: 'tan-pastel', type: 'skill' },
 
   // Weapon Categories (9 total) - More pastel colors
