@@ -98,8 +98,10 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						value={`${3 - (initialWeapon.uses || 0)}/3`}
 						label="Uses"
 						sx={{ 
-							maxWidth: '2.5rem',
-							'& .MuiInputBase-input': {
+							maxWidth: '2.5rem'
+						}}
+						InputProps={{
+							sx: {
 								color: (initialWeapon.uses || 0) === 3 
 									? 'error.main' 
 									: (initialWeapon.uses || 0) === 2 

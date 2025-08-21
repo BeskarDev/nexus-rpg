@@ -143,8 +143,10 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						value={`${3 - (initialItem.uses || 0)}/3`}
 						label="Uses"
 						sx={{ 
-							maxWidth: '2.5rem',
-							'& .MuiInputBase-input': {
+							maxWidth: '2.5rem'
+						}}
+						InputProps={{
+							sx: {
 								color: (initialItem.uses || 0) === 3 
 									? 'error.main' 
 									: (initialItem.uses || 0) === 2 
