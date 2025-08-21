@@ -51,9 +51,9 @@ export type Companion = {
 
 export type Statistics = {
 	health: {
-		total: number
-		temp: number
 		current: number
+		temp: number
+		maxHpModifier: number
 	}
 	fatigue: {
 		current: number

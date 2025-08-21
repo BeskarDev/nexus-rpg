@@ -26,9 +26,9 @@ export const createInitialCharacter = (
 		},
 		statistics: {
 			health: {
-				total: 0,
+				current: 18, // Default for d6 strength at level 1 (12 + 6)
 				temp: 0,
-				current: 0,
+				maxHpModifier: 0,
 			},
 			av: {
 				armor: 0,

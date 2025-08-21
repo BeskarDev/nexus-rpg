@@ -17,6 +17,7 @@ import {
 	RankIndicator,
 } from '../PrintCharacterSheet'
 import { calculateCharacterLevel } from '../../CharacterSheet/utils/calculateCharacterLevel'
+import { calculateMaxHp } from '../../CharacterSheet/utils/calculateHp'
 
 const AttributeField = styled(RoundTextField)({
 	marginBottom: 0,
@@ -32,6 +33,13 @@ const AttributeField = styled(RoundTextField)({
 })
 
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
+	// Calculate max HP using the new formula
+	const maxHp = calculateMaxHp(
+		char.statistics.strength.value,
+		char.skills.xp.total,
+		char.statistics.health.maxHpModifier || 0
+	)
+
 	// Group abilities by tag/category
 	const groupedAbilities = char.skills.abilities.reduce(
 		(groups, ability) => {
@@ -206,7 +214,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 							/>
 							<OutlinedTextfield
 								size="small"
-								value={char.statistics.health.total}
+								value={maxHp}
 								label="Max. HP"
 								sx={{
 									maxWidth: '4rem',

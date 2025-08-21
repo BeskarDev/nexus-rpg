@@ -18,6 +18,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 import { Character } from '../../../../types/Character'
+import { calculateMaxHp } from '../../utils/calculateHp'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { useDeviceSize } from '../../utils/useDeviceSize'
 
@@ -113,6 +114,13 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	const [dialogType, setDialogType] = useState<RestingType>('shortBreak')
 	const { isMobile } = useDeviceSize()
 
+	// Calculate current max HP using the new formula
+	const currentMaxHp = calculateMaxHp(
+		character.statistics.strength.value,
+		character.skills.xp.total,
+		character.statistics.health.maxHpModifier || 0
+	)
+
 	const handleOpen = (type: RestingType) => {
 		setDialogType(type)
 		setOpen(true)
@@ -128,7 +136,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	}
 
 	const removeFatigue = (amount: number) => {
-		const { current, temp, total, ...wounds } = character.statistics.health
+		const { current, temp, maxHpModifier, ...wounds } = character.statistics.health
 		let i = amount
 		Object.keys(wounds)
 			.sort((a, b) => sortWounds(a, b))
@@ -156,7 +164,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 			case 'shortBreak':
 				updateCharacter({
 					statistics: {
-						health: { current: character.statistics.health.total },
+						health: { current: currentMaxHp },
 					},
 				})
 				break
@@ -164,7 +172,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 				removeFatigue(2)
 				updateCharacter({
 					statistics: {
-						health: { current: character.statistics.health.total },
+						health: { current: currentMaxHp },
 						resolve: Math.max(character.statistics.resolve, 1),
 					},
 					spells: {
@@ -178,7 +186,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 				removeFatigue(1)
 				updateCharacter({
 					statistics: {
-						health: { current: character.statistics.health.total },
+						health: { current: currentMaxHp },
 					},
 					spells: {
 						focus: {
