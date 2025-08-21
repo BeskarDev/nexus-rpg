@@ -47,13 +47,13 @@ export const chipMappings: ChipMapping = {
   'Shield': { color: 'steel', type: 'weapon' },
   'Thrown': { color: 'amber', type: 'weapon' },
 
-  // Attributes (4 total)
-  'Strength': { color: 'red', type: 'attribute' },
-  'STR': { color: 'red', type: 'attribute' },
-  'Agility': { color: 'green', type: 'attribute' },
-  'AGI': { color: 'green', type: 'attribute' },
-  'Spirit': { color: 'blue', type: 'attribute' },
-  'SPI': { color: 'blue', type: 'attribute' },
-  'Mind': { color: 'purple', type: 'attribute' },
-  'MND': { color: 'purple', type: 'attribute' },
+  // Attributes (4 total) - Unique colors not used by other types
+  'Strength': { color: 'crimson', type: 'attribute' },
+  'STR': { color: 'crimson', type: 'attribute' },
+  'Agility': { color: 'electric', type: 'attribute' },
+  'AGI': { color: 'electric', type: 'attribute' },
+  'Spirit': { color: 'violet', type: 'attribute' },
+  'SPI': { color: 'violet', type: 'attribute' },
+  'Mind': { color: 'golden', type: 'attribute' },
+  'MND': { color: 'golden', type: 'attribute' },
 };
