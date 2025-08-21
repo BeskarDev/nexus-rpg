@@ -3,18 +3,14 @@ import { visit } from 'unist-util-visit';
 import { chipMappings } from './chip-mappings';
 
 /**
- * A remark plugin to automatically convert specific keywords in table cells to colored chips.
- * Only transforms damage types, skills, and weapon categories as specified.
+ * A remark plugin to automatically convert specific keywords in all text to colored chips.
+ * Transforms damage types, skills, weapon categories, and attributes as specified.
  */
 const tableChipsPlugin = (options = {}) => {
   return (tree) => {
     visit(tree, 'text', (node: Node & { value: string, processed?: boolean }, index: number, parent: Parent & { type: string, children: any[] }) => {
-      // Only process text nodes that are inside table cells
-      if (
-        !parent ||
-        parent.type !== 'tableCell' ||
-        node.processed // Skip nodes that are already processed
-      ) {
+      // Skip nodes that are already processed
+      if (node.processed) {
         return;
       }
 
