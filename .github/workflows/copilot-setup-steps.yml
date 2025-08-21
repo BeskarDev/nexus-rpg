@@ -22,7 +22,7 @@ on:
     types: [copilot-agent-setup]
 
 env:
-  NODE_VERSION: '18'
+  NODE_VERSION: '22'
 
 jobs:
   copilot-setup-steps:

@@ -75,10 +75,14 @@ export default function Home() {
 						<h3>Disclaimer</h3>
 					</div>
 					<p>
-						The rules of this game are still incomplete and everything is subject to change!
+						The rules of this game are still incomplete and everything is
+						subject to change!
 					</p>
 					<p>
-						Nexus RPG is a single-person passion project and has been in developement for the last 5 years. As only a close group of friends has yet played this game regurily, not every rule or character option has had the chance to be thorouly playtested.
+						Nexus RPG is a single-person passion project and has been in
+						developement for the last 5 years. As only a close group of friends
+						has yet played this game regurily, not every rule or character
+						option has had the chance to be thorouly playtested.
 					</p>
 				</div>
 			</header>

@@ -3,18 +3,15 @@ import { Box } from '@mui/material'
 
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { WeaponSearchDialog, EquipmentSearchDialog } from './SearchDialog'
-import { 
-  ItemsHeader, 
-  ItemsSettingsMenu, 
-  InventorySection 
-} from './components'
+import { ItemsHeader, ItemsSettingsMenu, InventorySection } from './components'
 import { useItemManagement } from './hooks'
 
 export const ItemsTab: React.FC = () => {
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const [weaponSearchOpen, setWeaponSearchOpen] = useState(false)
 	const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
-	const [settingsMenuAnchor, setSettingsMenuAnchor] = useState<null | HTMLElement>(null)
+	const [settingsMenuAnchor, setSettingsMenuAnchor] =
+		useState<null | HTMLElement>(null)
 
 	const {
 		coins,
@@ -74,7 +71,7 @@ export const ItemsTab: React.FC = () => {
 				onSettingsMenuClose={handleSettingsMenuClose}
 				onToggleLocationVisibility={toggleLocationVisibility}
 			/>
-			
+
 			{/* Weapons Section */}
 			{(itemLocationVisibility?.['worn'] ?? true) && (
 				<InventorySection
@@ -154,9 +151,15 @@ export const ItemsTab: React.FC = () => {
 					onLocationNameChange={(name) => {
 						itemsByLocation['mount'].forEach((item) => {
 							if ('damage' in item) {
-								updateWeapon({ mountInfo: name }, weapons.findIndex(w => w.id === item.id))
+								updateWeapon(
+									{ mountInfo: name },
+									weapons.findIndex((w) => w.id === item.id),
+								)
 							} else {
-								updateItem({ mountInfo: name }, items.findIndex(i => i.id === item.id))
+								updateItem(
+									{ mountInfo: name },
+									items.findIndex((i) => i.id === item.id),
+								)
 							}
 						})
 					}}
@@ -191,9 +194,15 @@ export const ItemsTab: React.FC = () => {
 					onLocationNameChange={(name) => {
 						itemsByLocation['storage'].forEach((item) => {
 							if ('damage' in item) {
-								updateWeapon({ storageInfo: name }, weapons.findIndex(w => w.id === item.id))
+								updateWeapon(
+									{ storageInfo: name },
+									weapons.findIndex((w) => w.id === item.id),
+								)
 							} else {
-								updateItem({ storageInfo: name }, items.findIndex(i => i.id === item.id))
+								updateItem(
+									{ storageInfo: name },
+									items.findIndex((i) => i.id === item.id),
+								)
 							}
 						})
 					}}
@@ -223,4 +232,3 @@ export const ItemsTab: React.FC = () => {
 		</Box>
 	)
 }
-

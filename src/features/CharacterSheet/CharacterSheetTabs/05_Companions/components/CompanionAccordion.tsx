@@ -1,11 +1,5 @@
-import {
-	ExpandMore,
-} from '@mui/icons-material'
-import {
-	Accordion,
-	AccordionSummary,
-	AccordionDetails,
-} from '@mui/material'
+import { ExpandMore } from '@mui/icons-material'
+import { Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import React from 'react'
 import { Companion } from '../../../../../types/Character'
 import { CompanionHeaderControls } from './CompanionHeaderControls'
@@ -48,10 +42,10 @@ export const CompanionAccordion: React.FC<CompanionAccordionProps> = ({
 	onDeleteClick,
 }) => {
 	return (
-		<Accordion 
+		<Accordion
 			expanded={isExpanded}
 			onChange={() => onToggle(companion.id)}
-      sx={{ minWidth: '30rem' }}
+			sx={{ minWidth: '30rem' }}
 		>
 			<AccordionSummary expandIcon={<ExpandMore />}>
 				<CompanionHeaderControls

@@ -2,21 +2,38 @@ import React, { useState } from 'react'
 import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import weaponsData from '../../../../../utils/json/weapons.json'
-import { Weapon, CharacterDocument, BaseDamageType, DamageType } from '../../../../../types/Character'
+import {
+	Weapon,
+	CharacterDocument,
+	BaseDamageType,
+	DamageType,
+} from '../../../../../types/Character'
 
 // Function to get color for weapon types
-const getWeaponTypeColor = (type: string): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+const getWeaponTypeColor = (
+	type: string,
+): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
 	switch (type) {
-		case 'Axe': return 'error'
-		case 'Blade': return 'primary'
-		case 'Bow': return 'success'
-		case 'Brawling': return 'warning'
-		case 'Crossbow': return 'info'
-		case 'Mace': return 'secondary'
-		case 'Polearm': return 'error'
-		case 'Shield': return 'info'
-		case 'Thrown': return 'warning'
-		default: return 'secondary'
+		case 'Axe':
+			return 'error'
+		case 'Blade':
+			return 'primary'
+		case 'Bow':
+			return 'success'
+		case 'Brawling':
+			return 'warning'
+		case 'Crossbow':
+			return 'info'
+		case 'Mace':
+			return 'secondary'
+		case 'Polearm':
+			return 'error'
+		case 'Shield':
+			return 'info'
+		case 'Thrown':
+			return 'warning'
+		default:
+			return 'secondary'
 	}
 }
 
@@ -49,35 +66,36 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 	const getBaseDamageType = (weapon: WeaponData): BaseDamageType => {
 		const weaponType = weapon.type.toLowerCase()
 		const properties = weapon.properties.toLowerCase()
-		
+
 		// Check if it's a ranged weapon type
-		const isRanged = weaponType === 'bow' || 
-		                 weaponType === 'crossbow' ||
-		                 weaponType === 'thrown' ||
-		                 properties.includes('thrown') ||
-		                 properties.includes('range')
-		
+		const isRanged =
+			weaponType === 'bow' ||
+			weaponType === 'crossbow' ||
+			weaponType === 'thrown' ||
+			properties.includes('thrown') ||
+			properties.includes('range')
+
 		const isThrown = weaponType === 'thrown' || properties.includes('thrown')
 		const isAgile = properties.includes('agile')
-		
+
 		const strValue = character.statistics.strength.value
 		const agiValue = character.statistics.agility.value
-		
+
 		// Special case: thrown ranged weapons use STR if it's higher than AGI
 		if (isRanged && isThrown) {
 			return strValue > agiValue ? 'STR' : 'AGI'
 		}
-		
+
 		// Other ranged weapons always use AGI
 		if (isRanged) {
 			return 'AGI'
 		}
-		
+
 		// Agile weapons use AGI if character has higher AGI than STR
 		if (isAgile) {
 			return agiValue > strValue ? 'AGI' : 'STR'
 		}
-		
+
 		// Default to STR for melee weapons
 		return 'STR'
 	}
@@ -95,20 +113,20 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 						Quality {weapon.quality}
 					</Typography>
 				</>
-			)
+			),
 		},
 		{
 			key: 'type',
 			label: 'Type',
 			render: (value) => (
-				<Chip 
-					label={value} 
-					size="small" 
+				<Chip
+					label={value}
+					size="small"
 					variant="outlined"
 					color={getWeaponTypeColor(value)}
 					sx={{ fontSize: '0.75rem' }}
 				/>
-			)
+			),
 		},
 		{
 			key: 'damage',
@@ -118,55 +136,49 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				const baseDamage = getBaseDamageType(weapon)
 				return (
 					<>
-						<Typography variant="body2">
-							{value}
-						</Typography>
-						<Typography variant="caption" color="text.secondary" display="block">
+						<Typography variant="body2">{value}</Typography>
+						<Typography
+							variant="caption"
+							color="text.secondary"
+							display="block"
+						>
 							({baseDamage})
 						</Typography>
 					</>
 				)
-			}
+			},
 		},
 		{
 			key: 'load',
 			label: 'Load',
 			align: 'center',
-			render: (value) => (
-				<Typography variant="body2">
-					{value}
-				</Typography>
-			)
+			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'cost',
 			label: 'Cost',
 			align: 'center',
-			render: (value) => (
-				<Typography variant="body2">
-					{value}
-				</Typography>
-			)
+			render: (value) => <Typography variant="body2">{value}</Typography>,
 		},
 		{
 			key: 'properties',
 			label: 'Properties',
 			sortable: false,
 			render: (value) => (
-				<Typography 
-					variant="caption" 
-					sx={{ 
+				<Typography
+					variant="caption"
+					sx={{
 						display: '-webkit-box',
 						WebkitLineClamp: 2,
 						WebkitBoxOrient: 'vertical',
 						overflow: 'hidden',
-						lineHeight: 1.2
+						lineHeight: 1.2,
 					}}
 				>
 					{value}
 				</Typography>
-			)
-		}
+			),
+		},
 	]
 
 	const handleImport = () => {

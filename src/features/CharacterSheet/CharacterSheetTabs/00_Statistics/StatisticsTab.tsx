@@ -40,7 +40,10 @@ export const StatisticsTab: React.FC = () => {
 	} = activeCharacter.statistics
 
 	React.useEffect(() => {
-		if (fatigue?.current === 6 && !statusEffects.some((s) => s.name === 'unconscious')) {
+		if (
+			fatigue?.current === 6 &&
+			!statusEffects.some((s) => s.name === 'unconscious')
+		) {
 			updateCharacter({
 				statistics: {
 					statusEffects: [

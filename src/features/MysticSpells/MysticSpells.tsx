@@ -40,7 +40,8 @@ export const MysticSpells: React.FC = () => {
 	const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<
 		string[]
 	>([])
-	const [characterJsonString, setCharacterJsonString] = React.useState<string>('')
+	const [characterJsonString, setCharacterJsonString] =
+		React.useState<string>('')
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedMysticSpells>,
@@ -59,10 +60,11 @@ export const MysticSpells: React.FC = () => {
 		try {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
-				const characterSpellNames = character.spells?.spells?.map(spell => spell.name) || []
-				setSelectedMysticSpells(prev => {
+				const characterSpellNames =
+					character.spells?.spells?.map((spell) => spell.name) || []
+				setSelectedMysticSpells((prev) => {
 					const existingSpells = new Set(prev)
-					characterSpellNames.forEach(name => existingSpells.add(name))
+					characterSpellNames.forEach((name) => existingSpells.add(name))
 					return Array.from(existingSpells)
 				})
 			}
@@ -88,9 +90,13 @@ export const MysticSpells: React.FC = () => {
 
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
-      <style type="text/css" media="print">{"\
-        @page {\ size: 192mm 267mm;\ }\
-      "}</style>
+			<style type="text/css" media="print">
+				{
+					'\
+        @page { size: 192mm 267mm; }\
+      '
+				}
+			</style>
 			<Stack
 				flexDirection="column"
 				gap={2}

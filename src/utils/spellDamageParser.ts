@@ -17,7 +17,10 @@ export type ParsedDamage = {
  * @param magicType The type of magic (Arcana uses MND, Mysticism uses SPI)
  * @returns Parsed damage object
  */
-export const parseDamageFromEffect = (effect: string, magicType: 'Arcana' | 'Mysticism'): ParsedDamage => {
+export const parseDamageFromEffect = (
+	effect: string,
+	magicType: 'Arcana' | 'Mysticism',
+): ParsedDamage => {
 	const damage: ParsedDamage = {
 		base: magicType === 'Mysticism' ? 'SPI' : 'MND',
 		weapon: 0,
@@ -33,9 +36,15 @@ export const parseDamageFromEffect = (effect: string, magicType: 'Arcana' | 'Mys
 	const cleanEffect = effect.replace(/<[^>]*>/g, ' ')
 
 	// Look for damage patterns in weak/strong/critical sections
-	const weakMatch = cleanEffect.match(/Weak\.\s*.*?(\+?)(\d+)\s*(?:(\w+)\s+)?damage/i)
-	const strongMatch = cleanEffect.match(/Strong\.\s*.*?(\+?)(\d+)\s*(?:(\w+)\s+)?damage/i)
-	const criticalMatch = cleanEffect.match(/Critical\.\s*.*?(\+?)(\d+)\s*(?:(\w+)\s+)?damage/i)
+	const weakMatch = cleanEffect.match(
+		/Weak\.\s*.*?(\+?)(\d+)\s*(?:(\w+)\s+)?damage/i,
+	)
+	const strongMatch = cleanEffect.match(
+		/Strong\.\s*.*?(\+?)(\d+)\s*(?:(\w+)\s+)?damage/i,
+	)
+	const criticalMatch = cleanEffect.match(
+		/Critical\.\s*.*?(\+?)(\d+)\s*(?:(\w+)\s+)?damage/i,
+	)
 
 	// Fallback: generic '+X damage' (e.g. Cyclone) and alternative in Klammern
 	// Suche: '+8 damage (or +12 ...)'
@@ -70,7 +79,11 @@ export const parseDamageFromEffect = (effect: string, magicType: 'Arcana' | 'Mys
 				damage.otherCritical = criticalDamage
 				damage.staticDamage = false
 			}
-		} else if (weakDamage > 0 && strongDamage === weakDamage && criticalDamage === weakDamage) {
+		} else if (
+			weakDamage > 0 &&
+			strongDamage === weakDamage &&
+			criticalDamage === weakDamage
+		) {
 			damage.other = weakDamage
 			damage.staticDamage = true
 		} else {
@@ -85,7 +98,7 @@ export const parseDamageFromEffect = (effect: string, magicType: 'Arcana' | 'Mys
 		const dmgType = genericAll[0][2]?.toLowerCase()
 		damage.other = dmg
 		damage.staticDamage = true
-		damage.type = dmgType ? mapDamageType(dmgType) as DamageType : 'physical'
+		damage.type = dmgType ? (mapDamageType(dmgType) as DamageType) : 'physical'
 		// Wenn ein alternatives Vorkommen existiert (z.B. (or +12 ...)), trage es als otherCritical ein
 		if (altMatch) {
 			const altDmg = parseInt(altMatch[1]) || 0
@@ -105,22 +118,22 @@ export const parseDamageFromEffect = (effect: string, magicType: 'Arcana' | 'Mys
  */
 const mapDamageType = (damageType: string): string => {
 	const typeMap: Record<string, string> = {
-		'fire': 'fire',
-		'frost': 'frost',
-		'lightning': 'lightning',
-		'acid': 'acid',
-		'necrotic': 'necrotic',
-		'radiant': 'radiant',
-		'psychic': 'psychic',
-		'poison': 'poison',
-		'blast': 'blast',
-		'physical': 'physical',
+		fire: 'fire',
+		frost: 'frost',
+		lightning: 'lightning',
+		acid: 'acid',
+		necrotic: 'necrotic',
+		radiant: 'radiant',
+		psychic: 'psychic',
+		poison: 'poison',
+		blast: 'blast',
+		physical: 'physical',
 		// Common variations
-		'cold': 'frost',
-		'ice': 'frost',
-		'electric': 'lightning',
-		'shock': 'lightning',
-		'force': 'blast',
+		cold: 'frost',
+		ice: 'frost',
+		electric: 'lightning',
+		shock: 'lightning',
+		force: 'blast',
 	}
 
 	return typeMap[damageType] || 'physical'

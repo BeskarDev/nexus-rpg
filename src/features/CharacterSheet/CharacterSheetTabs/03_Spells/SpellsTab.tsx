@@ -35,9 +35,12 @@ export const SpellsTab: React.FC = () => {
 	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
 
 	// Determine magic type based on magic skill
-	const magicType: 'Arcana' | 'Mysticism' | null = 
-		magicSkill === 'Mysticism' ? 'Mysticism' : 
-		magicSkill === 'Arcana' ? 'Arcana' : null
+	const magicType: 'Arcana' | 'Mysticism' | null =
+		magicSkill === 'Mysticism'
+			? 'Mysticism'
+			: magicSkill === 'Arcana'
+				? 'Arcana'
+				: null
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -73,7 +76,7 @@ export const SpellsTab: React.FC = () => {
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-        maxWidth: '38rem'
+				maxWidth: '38rem',
 			}}
 		>
 			<Box sx={{ mb: 2 }}>
@@ -194,7 +197,9 @@ export const SpellsTab: React.FC = () => {
 							>
 								<AddCircle />
 							</IconButton>
-							<Tooltip title={`Search ${magicType === 'Arcana' ? 'Arcane' : magicType === 'Mysticism' ? 'Mystic' : ''} Spells from database`}>
+							<Tooltip
+								title={`Search ${magicType === 'Arcana' ? 'Arcane' : magicType === 'Mysticism' ? 'Mystic' : ''} Spells from database`}
+							>
 								<IconButton
 									size="small"
 									onClick={(event) => {
@@ -231,14 +236,14 @@ export const SpellsTab: React.FC = () => {
 					</AccordionDetails>
 				</Accordion>
 			</Box>
-			
+
 			<SpellsSearchDialog
 				open={isSpellsDialogOpen}
 				onClose={() => setIsSpellsDialogOpen(false)}
 				character={activeCharacter}
 				magicType={magicType!}
 				onImportSpells={(spells) => {
-					spells.forEach(spell => {
+					spells.forEach((spell) => {
 						dispatch(characterSheetActions.importSpells([spell]))
 					})
 					setIsSpellsDialogOpen(false)

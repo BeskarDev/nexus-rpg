@@ -40,7 +40,8 @@ export const ArcaneSpells: React.FC = () => {
 	const [selectedArcaneSpells, setSelectedArcaneSpells] = React.useState<
 		string[]
 	>([])
-	const [characterJsonString, setCharacterJsonString] = React.useState<string>('')
+	const [characterJsonString, setCharacterJsonString] =
+		React.useState<string>('')
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedArcaneSpells>,
@@ -59,10 +60,11 @@ export const ArcaneSpells: React.FC = () => {
 		try {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
-				const characterSpellNames = character.spells?.spells?.map(spell => spell.name) || []
-				setSelectedArcaneSpells(prev => {
+				const characterSpellNames =
+					character.spells?.spells?.map((spell) => spell.name) || []
+				setSelectedArcaneSpells((prev) => {
 					const existingSpells = new Set(prev)
-					characterSpellNames.forEach(name => existingSpells.add(name))
+					characterSpellNames.forEach((name) => existingSpells.add(name))
 					return Array.from(existingSpells)
 				})
 			}
@@ -73,7 +75,7 @@ export const ArcaneSpells: React.FC = () => {
 
 	const componentRef = useRef()
 	const handlePrint = useReactToPrint({
-		content: () => componentRef.current
+		content: () => componentRef.current,
 	})
 	const arcaneSpells: ArcaneSpell[] = arcaneSpellData
 
@@ -88,9 +90,13 @@ export const ArcaneSpells: React.FC = () => {
 
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
-      <style type="text/css" media="print">{"\
-        @page {\ size: 192mm 267mm;\ }\
-      "}</style>
+			<style type="text/css" media="print">
+				{
+					'\
+        @page { size: 192mm 267mm; }\
+      '
+				}
+			</style>
 			<Stack
 				flexDirection="column"
 				gap={2}

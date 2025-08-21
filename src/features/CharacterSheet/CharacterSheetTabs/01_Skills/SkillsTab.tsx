@@ -1,19 +1,15 @@
 import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  IconButton,
-  Tooltip,
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Box,
+	IconButton,
+	Tooltip,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
-import {
-  CharacterDocument,
-  Skill,
-  Ability
-} from '../../../../types/Character'
+import { CharacterDocument, Skill, Ability } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
 import { DynamicList } from '@site/src/components/DynamicList'

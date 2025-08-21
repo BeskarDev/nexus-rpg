@@ -1,12 +1,12 @@
 {
-  "recommendations": [
-    "esbenp.prettier-vscode",
-    "formulahendry.auto-close-tag",
-    "formulahendry.auto-complete-tag",
-    "dbaeumer.vscode-eslint",
-    "iulian-radu-at.find-unused-exports",
-    "streetsidesoftware.code-spell-checker",
-    "yoavbls.pretty-ts-errors",
-    "github.copilot"
-  ]
+	"recommendations": [
+		"esbenp.prettier-vscode",
+		"formulahendry.auto-close-tag",
+		"formulahendry.auto-complete-tag",
+		"dbaeumer.vscode-eslint",
+		"iulian-radu-at.find-unused-exports",
+		"streetsidesoftware.code-spell-checker",
+		"yoavbls.pretty-ts-errors",
+		"github.copilot"
+	]
 }

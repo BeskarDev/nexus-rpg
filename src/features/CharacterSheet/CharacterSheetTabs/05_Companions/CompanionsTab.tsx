@@ -1,11 +1,5 @@
 import { Add, HelpOutline, Info } from '@mui/icons-material'
-import {
-	Box,
-	Button,
-	Typography,
-	Tooltip,
-	IconButton,
-} from '@mui/material'
+import { Box, Button, Typography, Tooltip, IconButton } from '@mui/material'
 import React, { useState, useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import { SectionHeader } from '../../CharacterSheet'
@@ -48,7 +42,9 @@ export const CompanionsTab: React.FC = () => {
 
 	// Delete dialog state
 	const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
-	const [companionToDelete, setCompanionToDelete] = useState<string | null>(null)
+	const [companionToDelete, setCompanionToDelete] = useState<string | null>(
+		null,
+	)
 
 	const handleAddCompanion = () => {
 		const newCompanionId = addCompanion()
@@ -138,13 +134,13 @@ export const CompanionsTab: React.FC = () => {
 				}}
 			>
 				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-					<SectionHeader sx={{mb: 0}}>Companions</SectionHeader>
-					<Tooltip 
+					<SectionHeader sx={{ mb: 0 }}>Companions</SectionHeader>
+					<Tooltip
 						title="You can import companions from the Companion Builder in the Mounts & Companions section. Simply copy the generated markdown and paste it into a companion's description field."
 						arrow
 						placement="right"
 					>
-							<HelpOutline fontSize="small" />
+						<HelpOutline fontSize="small" />
 					</Tooltip>
 				</Box>
 				<Tooltip title="Add a new companion to your character sheet">

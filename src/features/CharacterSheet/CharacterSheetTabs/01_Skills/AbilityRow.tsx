@@ -1,26 +1,26 @@
 import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Box,
-  IconButton,
-  TextField,
-  MenuItem,
-  Menu,
-  Tooltip,
-  Select,
-  FormControl,
-  InputLabel,
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Box,
+	IconButton,
+	TextField,
+	MenuItem,
+	Menu,
+	Tooltip,
+	Select,
+	FormControl,
+	InputLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { 
-  Delete, 
-  ExpandMore, 
-  DriveFileMove, 
-  PlayArrow, 
-  Bolt, 
-  CircleOutlined,
+import {
+	Delete,
+	ExpandMore,
+	DriveFileMove,
+	PlayArrow,
+	Bolt,
+	CircleOutlined,
 } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
@@ -51,7 +51,9 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 }) => {
 	const [title, setTitle] = useState(initialTitle)
 	const [description, setDescription] = useState(initialDescription)
-	const [actionType, setActionType] = useState<ActionType>(initialActionType || 'Other')
+	const [actionType, setActionType] = useState<ActionType>(
+		initialActionType || 'Other',
+	)
 	const [rank, setRank] = useState<number>(initialRank || 1)
 	const [expanded, setExpanded] = useState(false)
 	const [moveMenuAnchor, setMoveMenuAnchor] = useState<null | HTMLElement>(null)
@@ -93,9 +95,9 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
-		      pl: 0,
+					pl: 0,
 					flexDirection: 'row',
-          alignItems: 'center',
+					alignItems: 'center',
 				}}
 			>
 				<Box
@@ -114,16 +116,23 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						onBlur={() => updateAbility({ title })}
 						sx={{ maxWidth: '25rem' }}
 						InputProps={{
-						  startAdornment: (
-							<Box component="span" sx={{ display: 'flex', alignItems: 'center', mr: 1 }}>
-							  {getActionTypeIcon(actionType)}
-							</Box>
-						  ),
-						  endAdornment: tag === 'Talent' && rank >= 1 && rank <= 5 ? (
-							<Box component="span" sx={{ color: 'text.secondary', mx: 1, fontSize: '1.15em' }}>
-							  {['①','②','③','④','⑤'][rank-1]}
-							</Box>
-						  ) : undefined,
+							startAdornment: (
+								<Box
+									component="span"
+									sx={{ display: 'flex', alignItems: 'center', mr: 1 }}
+								>
+									{getActionTypeIcon(actionType)}
+								</Box>
+							),
+							endAdornment:
+								tag === 'Talent' && rank >= 1 && rank <= 5 ? (
+									<Box
+										component="span"
+										sx={{ color: 'text.secondary', mx: 1, fontSize: '1.15em' }}
+									>
+										{['①', '②', '③', '④', '⑤'][rank - 1]}
+									</Box>
+								) : undefined,
 						}}
 					/>
 				</Box>
@@ -141,9 +150,16 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						onBlur={() => updateAbility({ description })}
 						sx={{ mt: 0, maxWidth: '25rem' }}
 					/>
-					
+
 					{/* Action Type Dropdown and Action Buttons in same row */}
-					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'space-between' }}>
+					<Box
+						sx={{
+							display: 'flex',
+							gap: 1,
+							alignItems: 'center',
+							justifyContent: 'space-between',
+						}}
+					>
 						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 							<FormControl size="small" sx={{ width: '9.5rem' }}>
 								<InputLabel id="action-type-label">Action Type</InputLabel>
@@ -159,7 +175,9 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 								>
 									{ACTION_TYPES.map((type) => (
 										<MenuItem key={type} value={type}>
-											<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+											<Box
+												sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+											>
 												{getActionTypeIcon(type)}
 												{type}
 											</Box>
@@ -167,7 +185,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 									))}
 								</Select>
 							</FormControl>
-							
+
 							{/* Rank Selection for Talents */}
 							{tag === 'Talent' && (
 								<FormControl size="small" sx={{ width: '4rem' }}>
@@ -191,7 +209,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 								</FormControl>
 							)}
 						</Box>
-						
+
 						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 							<Tooltip title="Move to another category">
 								<IconButton
@@ -228,16 +246,15 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				}}
 			>
 				{availableTags
-					.filter(t => t !== tag)
-					.map(tagOption => (
+					.filter((t) => t !== tag)
+					.map((tagOption) => (
 						<MenuItem
 							key={tagOption}
 							onClick={() => handleMoveCategory(tagOption)}
 						>
 							Move to {tagOption}
 						</MenuItem>
-					))
-				}
+					))}
 			</Menu>
 		</Accordion>
 	)

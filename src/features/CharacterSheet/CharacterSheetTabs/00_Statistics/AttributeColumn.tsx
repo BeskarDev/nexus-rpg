@@ -1,8 +1,12 @@
+import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
 import {
-	HeartBroken,
-	HeartBrokenOutlined,
-} from '@mui/icons-material'
-import { Box, Checkbox, InputAdornment, MenuItem, Tooltip, Typography } from '@mui/material'
+	Box,
+	Checkbox,
+	InputAdornment,
+	MenuItem,
+	Tooltip,
+	Typography,
+} from '@mui/material'
 import {
 	Attribute,
 	AttributeType,
@@ -94,8 +98,10 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 					</MenuItem>
 				))}
 			</AttributeField>
-			
-			<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+
+			<Box
+				sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+			>
 				<Tooltip title={getWoundTooltip(label)} placement="bottom">
 					<Checkbox
 						size="small"
@@ -108,7 +114,11 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 					/>
 				</Tooltip>
 				{attribute.wounded && (
-					<Typography variant="caption" color="error" sx={{ textAlign: 'center', lineHeight: 1 }}>
+					<Typography
+						variant="caption"
+						color="error"
+						sx={{ textAlign: 'center', lineHeight: 1 }}
+					>
 						+1 bane
 					</Typography>
 				)}

@@ -1,7 +1,4 @@
-import {
-	HeartBroken,
-	HeartBrokenOutlined,
-} from '@mui/icons-material'
+import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
 import { Checkbox } from '@mui/material'
 import React from 'react'
 

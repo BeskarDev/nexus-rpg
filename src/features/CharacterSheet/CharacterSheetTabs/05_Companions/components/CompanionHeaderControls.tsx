@@ -1,8 +1,4 @@
-import {
-	TextField,
-	Typography,
-	Box,
-} from '@mui/material'
+import { TextField, Typography, Box } from '@mui/material'
 import React from 'react'
 import { Companion } from '../../../../../types/Character'
 import { CompanionWoundCheckbox } from './CompanionWoundCheckbox'
@@ -17,7 +13,9 @@ interface CompanionHeaderControlsProps {
 	onWoundedChange: (companionId: string, wounded: boolean) => void
 }
 
-export const CompanionHeaderControls: React.FC<CompanionHeaderControlsProps> = ({
+export const CompanionHeaderControls: React.FC<
+	CompanionHeaderControlsProps
+> = ({
 	companion,
 	editingId,
 	editName,

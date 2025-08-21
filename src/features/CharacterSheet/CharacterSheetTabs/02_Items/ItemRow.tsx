@@ -45,7 +45,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 				sx={{
 					gap: 1,
 					pt: 0,
-          px: 0,
+					px: 0,
 					flexDirection: 'row-reverse',
 					'& .MuiAccordionSummary-content': {
 						display: 'block',
@@ -88,8 +88,16 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						disabled
 						size="small"
 						variant="standard"
-						value={initialItem.location === 'worn' && initialItem.slot ? initialItem.slot : (initialItem.location || 'carried')}
-						label={initialItem.location === 'worn' && initialItem.slot ? "Slot" : "Location"}
+						value={
+							initialItem.location === 'worn' && initialItem.slot
+								? initialItem.slot
+								: initialItem.location || 'carried'
+						}
+						label={
+							initialItem.location === 'worn' && initialItem.slot
+								? 'Slot'
+								: 'Location'
+						}
 						sx={{ maxWidth: '4.25rem' }}
 					/>
 					<AttributeField
@@ -106,9 +114,9 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						size="small"
 						variant="standard"
 						value={initialItem.load}
-            onChange={(event) =>
-              updateItem({ load: Number(event.target.value) })
-            }
+						onChange={(event) =>
+							updateItem({ load: Number(event.target.value) })
+						}
 						label="Load"
 						sx={{ maxWidth: '1.5rem' }}
 					/>

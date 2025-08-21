@@ -40,7 +40,8 @@ export const CombatArts: React.FC = () => {
 	const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>(
 		[],
 	)
-	const [characterJsonString, setCharacterJsonString] = React.useState<string>('')
+	const [characterJsonString, setCharacterJsonString] =
+		React.useState<string>('')
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedCombatArts>,
@@ -59,10 +60,11 @@ export const CombatArts: React.FC = () => {
 		try {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
-				const characterAbilityNames = character.skills?.abilities?.map(ability => ability.title) || []
-				setSelectedCombatArts(prev => {
+				const characterAbilityNames =
+					character.skills?.abilities?.map((ability) => ability.title) || []
+				setSelectedCombatArts((prev) => {
 					const existingArts = new Set(prev)
-					characterAbilityNames.forEach(name => existingArts.add(name))
+					characterAbilityNames.forEach((name) => existingArts.add(name))
 					return Array.from(existingArts)
 				})
 			}
@@ -87,9 +89,13 @@ export const CombatArts: React.FC = () => {
 
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
-      <style type="text/css" media="print">{"\
-        @page {\ size: 192mm 267mm;\ }\
-      "}</style>
+			<style type="text/css" media="print">
+				{
+					'\
+        @page { size: 192mm 267mm; }\
+      '
+				}
+			</style>
 			<Stack
 				flexDirection="column"
 				gap={2}

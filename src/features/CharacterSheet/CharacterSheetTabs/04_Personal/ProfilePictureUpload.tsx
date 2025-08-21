@@ -34,7 +34,12 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 	const MAX_FILE_SIZE = 500 * 1024 // 500KB limit for Firestore document size considerations
 	const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 
-	const resizeImage = (file: File, maxWidth: number, maxHeight: number, quality: number): Promise<string> => {
+	const resizeImage = (
+		file: File,
+		maxWidth: number,
+		maxHeight: number,
+		quality: number,
+	): Promise<string> => {
 		return new Promise((resolve, reject) => {
 			const canvas = document.createElement('canvas')
 			const ctx = canvas.getContext('2d')
@@ -43,7 +48,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 			img.onload = () => {
 				// Calculate new dimensions
 				let { width, height } = img
-				
+
 				if (width > height) {
 					if (width > maxWidth) {
 						height = (height * maxWidth) / width
@@ -82,24 +87,30 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 			}
 
 			// Initial file size check
-			if (file.size > 5 * 1024 * 1024) { // 5MB
+			if (file.size > 5 * 1024 * 1024) {
+				// 5MB
 				setError('File size must be less than 5MB')
 				return
 			}
 
 			// Resize and compress image
 			let base64 = await resizeImage(file, 200, 200, 0.8)
-			
+
 			// Check if base64 is still too large and compress further if needed
 			while (base64.length > MAX_FILE_SIZE && base64.length > 0) {
-				const currentQuality = Math.max(0.1, 0.8 * (MAX_FILE_SIZE / base64.length))
+				const currentQuality = Math.max(
+					0.1,
+					0.8 * (MAX_FILE_SIZE / base64.length),
+				)
 				base64 = await resizeImage(file, 150, 150, currentQuality)
-				
+
 				if (currentQuality <= 0.1) break // Prevent infinite loop
 			}
 
 			if (base64.length > MAX_FILE_SIZE) {
-				setError('Image is too large even after compression. Please try a smaller image.')
+				setError(
+					'Image is too large even after compression. Please try a smaller image.',
+				)
 				return
 			}
 
@@ -114,12 +125,14 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 		}
 	}
 
-	const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+	const handleFileUpload = async (
+		event: React.ChangeEvent<HTMLInputElement>,
+	) => {
 		const file = event.target.files?.[0]
 		if (!file) return
 
 		await processFile(file)
-		
+
 		// Clear the input
 		if (fileInputRef.current) {
 			fileInputRef.current.value = ''
@@ -132,7 +145,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 
 		const files = event.dataTransfer.files
 		const file = files[0]
-		
+
 		if (file) {
 			await processFile(file)
 		}
@@ -164,7 +177,14 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 	}
 
 	return (
-		<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1 }}>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				gap: 1,
+			}}
+		>
 			<Box sx={{ position: 'relative' }}>
 				<Paper
 					elevation={dragOver ? 4 : 1}
@@ -253,7 +273,10 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 							) : (
 								<PhotoCamera sx={{ fontSize: 32 }} />
 							)}
-							<Typography variant="caption" sx={{ fontSize: '0.65rem', textAlign: 'center' }}>
+							<Typography
+								variant="caption"
+								sx={{ fontSize: '0.65rem', textAlign: 'center' }}
+							>
 								{dragOver ? 'Drop here' : 'Click or drag'}
 							</Typography>
 						</Box>
@@ -283,15 +306,26 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 			</Box>
 
 			{error && (
-				<Alert severity="error" sx={{ mt: 1, fontSize: '0.75rem', maxWidth: '200px' }}>
+				<Alert
+					severity="error"
+					sx={{ mt: 1, fontSize: '0.75rem', maxWidth: '200px' }}
+				>
 					{error}
 				</Alert>
 			)}
 
-			<Typography variant="caption" color="text.secondary" sx={{ textAlign: 'center' }}>
+			<Typography
+				variant="caption"
+				color="text.secondary"
+				sx={{ textAlign: 'center' }}
+			>
 				Character Portrait
 			</Typography>
-			<Typography variant="caption" color="text.secondary" sx={{ textAlign: 'center', fontSize: '0.65rem' }}>
+			<Typography
+				variant="caption"
+				color="text.secondary"
+				sx={{ textAlign: 'center', fontSize: '0.65rem' }}
+			>
 				Max 500KB • Auto-resized to 200×200
 			</Typography>
 		</Box>

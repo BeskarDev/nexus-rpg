@@ -7,27 +7,32 @@ import { sanitizeHtml } from '../../../../../utils/htmlSanitizer'
 
 // 16 Skills, 6 MUI colors: primary, secondary, error, warning, info, success
 // Ziel: Keine Farbe direkt nacheinander im Alphabet wiederholen
-const skillColorMap: Record<string, 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'> = {
-  'Athletics':   'primary',
-  'Fortitude':   'secondary',
-  'Influence':   'error',
-  'Insight':     'warning',
-  'Perception':  'info',
-  'Stealth':     'success',
-  'Arcana':      'secondary',
-  'Archery':     'error',
-  'Crafting':    'warning',
-  'Education':   'info',
-  'Fighting':    'success',
-  'Lore':        'primary',
-  'Mysticism':   'error',
-  'Nature':      'warning',
-  'Streetwise':  'info',
-  'Survival':    'success',
+const skillColorMap: Record<
+	string,
+	'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+> = {
+	Athletics: 'primary',
+	Fortitude: 'secondary',
+	Influence: 'error',
+	Insight: 'warning',
+	Perception: 'info',
+	Stealth: 'success',
+	Arcana: 'secondary',
+	Archery: 'error',
+	Crafting: 'warning',
+	Education: 'info',
+	Fighting: 'success',
+	Lore: 'primary',
+	Mysticism: 'error',
+	Nature: 'warning',
+	Streetwise: 'info',
+	Survival: 'success',
 }
 
-const getSkillColor = (skill: string): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-  return skillColorMap[skill] || 'secondary';
+const getSkillColor = (
+	skill: string,
+): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+	return skillColorMap[skill] || 'secondary'
 }
 
 export type TalentsSearchDialogProps = {
@@ -59,41 +64,41 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{talent.name}
 				</Typography>
-			)
+			),
 		},
 		{
 			key: 'skill requirement',
 			label: 'Skill',
 			render: (value) => (
-				<Chip 
-					label={value} 
-					size="small" 
+				<Chip
+					label={value}
+					size="small"
 					variant="outlined"
 					color={getSkillColor(value)}
 					sx={{ fontSize: '0.75rem' }}
 				/>
-			)
+			),
 		},
 		{
 			key: 'description',
 			label: 'Description',
 			sortable: false,
 			render: (value) => (
-				<Typography 
-					variant="caption" 
-					sx={{ 
+				<Typography
+					variant="caption"
+					sx={{
 						display: '-webkit-box',
 						WebkitLineClamp: 3,
 						WebkitBoxOrient: 'vertical',
 						overflow: 'hidden',
 						lineHeight: 1.2,
-						whiteSpace: 'pre-line' // Preserve newlines from sanitized HTML
+						whiteSpace: 'pre-line', // Preserve newlines from sanitized HTML
 					}}
 				>
 					{sanitizeHtml(value)}
 				</Typography>
-			)
-		}
+			),
+		},
 	]
 
 	const handleImport = () => {
