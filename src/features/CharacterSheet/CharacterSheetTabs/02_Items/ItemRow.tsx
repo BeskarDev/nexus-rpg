@@ -136,26 +136,23 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						label="Amount"
 						sx={{ maxWidth: '2.5rem', flexGrow: 0 }}
 					/>
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-						<Typography
-							variant="caption"
-							sx={{ 
-								fontSize: '0.75rem',
-								color: initialItem.uses >= 3 ? 'error.main' : 'text.secondary'
-							}}
-						>
-							{3 - initialItem.uses}/3
-						</Typography>
-						{initialItem.uses >= 3 && (
-							<Typography
-								variant="caption"
-								color="error"
-								sx={{ ml: 0.5, fontSize: '0.65rem' }}
-							>
-								damaged
-							</Typography>
-						)}
-					</Box>
+					<AttributeField
+						disabled
+						size="small"
+						variant="standard"
+						value={`${3 - initialItem.uses}/3`}
+						label="Uses"
+						sx={{ 
+							maxWidth: '2.5rem',
+							'& .MuiInputBase-input': {
+								color: initialItem.uses >= 3 
+									? 'error.main' 
+									: initialItem.uses === 2 
+									? 'warning.main' 
+									: 'text.primary'
+							}
+						}}
+					/>
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -221,9 +218,9 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}>
 						<Typography variant="caption">Uses</Typography>
-						<FormGroup row>
+						<FormGroup row sx={{ gap: 0.25 }}>
 							{[1, 2, 3].map((useNumber) => (
 								<Checkbox
 									key={useNumber}
@@ -235,10 +232,11 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 											: useNumber - 1
 										updateItem({ uses: newUses })
 									}}
+									sx={{ p: 0.25 }}
 								/>
 							))}
 						</FormGroup>
-						{initialItem.uses >= 3 && (
+						{initialItem.uses >= 3 && initialItem.location === 'worn' && initialItem.slot && (
 							<Typography variant="caption" color="error">
 								Item is damaged
 							</Typography>

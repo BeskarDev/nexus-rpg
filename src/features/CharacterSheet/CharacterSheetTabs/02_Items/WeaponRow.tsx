@@ -91,26 +91,23 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						label="Properties"
 						sx={{ maxWidth: '14rem' }}
 					/>
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-						<Typography
-							variant="caption"
-							sx={{ 
-								fontSize: '0.75rem',
-								color: initialWeapon.uses >= 3 ? 'error.main' : 'text.secondary'
-							}}
-						>
-							{3 - initialWeapon.uses}/3
-						</Typography>
-						{initialWeapon.uses >= 3 && (
-							<Typography
-								variant="caption"
-								color="error"
-								sx={{ ml: 0.5, fontSize: '0.65rem' }}
-							>
-								damaged
-							</Typography>
-						)}
-					</Box>
+					<AttributeField
+						disabled
+						size="small"
+						variant="standard"
+						value={`${3 - initialWeapon.uses}/3`}
+						label="Uses"
+						sx={{ 
+							maxWidth: '2.5rem',
+							'& .MuiInputBase-input': {
+								color: initialWeapon.uses >= 3 
+									? 'error.main' 
+									: initialWeapon.uses === 2 
+									? 'warning.main' 
+									: 'text.primary'
+							}
+						}}
+					/>
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -202,9 +199,9 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 							sx={{ maxWidth: '8rem' }}
 						/>
 					)}
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}>
 						<Typography variant="caption">Uses</Typography>
-						<FormGroup row>
+						<FormGroup row sx={{ gap: 0.25 }}>
 							{[1, 2, 3].map((useNumber) => (
 								<Checkbox
 									key={useNumber}
@@ -216,6 +213,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 											: useNumber - 1
 										updateWeapon({ uses: newUses })
 									}}
+									sx={{ p: 0.25 }}
 								/>
 							))}
 						</FormGroup>
