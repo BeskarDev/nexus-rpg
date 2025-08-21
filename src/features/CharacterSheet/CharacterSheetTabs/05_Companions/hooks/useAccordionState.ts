@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import { Companion } from '../../../../../types/Character'
 
 export const useAccordionState = (companions: Companion[]) => {
-	const [expandedAccordions, setExpandedAccordions] = useState<Set<string>>(new Set())
+	const [expandedAccordions, setExpandedAccordions] = useState<Set<string>>(
+		new Set(),
+	)
 
 	// Initialize with first companion expanded only when companions are first loaded
 	useEffect(() => {
@@ -12,7 +14,7 @@ export const useAccordionState = (companions: Companion[]) => {
 	}, [companions.length])
 
 	const toggleAccordion = (companionId: string) => {
-		setExpandedAccordions(prev => {
+		setExpandedAccordions((prev) => {
 			const newSet = new Set(prev)
 			if (newSet.has(companionId)) {
 				newSet.delete(companionId)
@@ -24,11 +26,11 @@ export const useAccordionState = (companions: Companion[]) => {
 	}
 
 	const expandAccordion = (companionId: string) => {
-		setExpandedAccordions(prev => new Set([...prev, companionId]))
+		setExpandedAccordions((prev) => new Set([...prev, companionId]))
 	}
 
 	const expandNewCompanion = (companionId: string) => {
-		setExpandedAccordions(prev => new Set([companionId, ...prev]))
+		setExpandedAccordions((prev) => new Set([companionId, ...prev]))
 	}
 
 	return {

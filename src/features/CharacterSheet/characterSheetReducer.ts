@@ -80,7 +80,7 @@ export const {
 				character.companions = []
 			}
 			// Migrate companions that don't have HP/wounded fields
-			character.companions = character.companions.map(companion => ({
+			character.companions = character.companions.map((companion) => ({
 				currentHP: 0,
 				maxHP: 0,
 				wounded: false,
@@ -185,7 +185,7 @@ export const {
 		},
 		importAbilities: (state, action: PayloadAction<Partial<Ability>[]>) => {
 			state.unsavedChanges = true
-			const newAbilities = action.payload.map(ability => ({
+			const newAbilities = action.payload.map((ability) => ({
 				id: crypto.randomUUID(),
 				title: '',
 				description: '',
@@ -249,7 +249,7 @@ export const {
 		},
 		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
 			state.unsavedChanges = true
-			const newWeapons = action.payload.map(weapon => ({
+			const newWeapons = action.payload.map((weapon) => ({
 				id: crypto.randomUUID(),
 				name: '',
 				damage: {
@@ -272,7 +272,7 @@ export const {
 		},
 		importItems: (state, action: PayloadAction<Partial<Item>[]>) => {
 			state.unsavedChanges = true
-			const newItems = action.payload.map(item => ({
+			const newItems = action.payload.map((item) => ({
 				id: crypto.randomUUID(),
 				name: '',
 				properties: '',
@@ -410,7 +410,7 @@ export const {
 				target: '',
 				range: '',
 				properties: '',
-        dealsDamage: false,
+				dealsDamage: false,
 				damage: {
 					base: '',
 					weapon: 0,
@@ -457,7 +457,7 @@ export const {
 		},
 		importSpells: (state, action: PayloadAction<Partial<Spell>[]>) => {
 			state.unsavedChanges = true
-			const newSpells = action.payload.map(spell => ({
+			const newSpells = action.payload.map((spell) => ({
 				id: crypto.randomUUID(),
 				name: '',
 				rank: 0,
@@ -612,7 +612,9 @@ export const {
 			action: PayloadAction<{ id: string; updates: Partial<Companion> }>,
 		) => {
 			const { id, updates } = action.payload
-			const index = state.activeCharacter.companions.findIndex(c => c.id === id)
+			const index = state.activeCharacter.companions.findIndex(
+				(c) => c.id === id,
+			)
 			if (index !== -1) {
 				state.unsavedChanges = true
 				state.activeCharacter.companions[index] = {
@@ -646,16 +648,19 @@ export const {
 		) => {
 			const category = action.payload
 			state.unsavedChanges = true
-			const currentVisibility = state.activeCharacter.skills.abilityCategoryVisibility?.[category] ?? true
+			const currentVisibility =
+				state.activeCharacter.skills.abilityCategoryVisibility?.[category] ??
+				true
 			if (!state.activeCharacter.skills.abilityCategoryVisibility) {
 				state.activeCharacter.skills.abilityCategoryVisibility = {
 					'Combat Art': true,
-					'Talent': true,
-					'Folk': true,
-					'Other': true,
+					Talent: true,
+					Folk: true,
+					Other: true,
 				}
 			}
-			state.activeCharacter.skills.abilityCategoryVisibility[category] = !currentVisibility
+			state.activeCharacter.skills.abilityCategoryVisibility[category] =
+				!currentVisibility
 		},
 		toggleItemLocationVisibility: (
 			state,
@@ -663,29 +668,33 @@ export const {
 		) => {
 			const location = action.payload
 			state.unsavedChanges = true
-			const currentVisibility = state.activeCharacter.items.itemLocationVisibility?.[location] ?? true
+			const currentVisibility =
+				state.activeCharacter.items.itemLocationVisibility?.[location] ?? true
 			if (!state.activeCharacter.items.itemLocationVisibility) {
 				state.activeCharacter.items.itemLocationVisibility = {
-					'worn': true,
-					'carried': true,
-					'mount': true,
-					'storage': true,
+					worn: true,
+					carried: true,
+					mount: true,
+					storage: true,
 				}
 			}
-			state.activeCharacter.items.itemLocationVisibility[location] = !currentVisibility
+			state.activeCharacter.items.itemLocationVisibility[location] =
+				!currentVisibility
 		},
 		// Status Effects actions
 		addStatusEffect: (state, action: PayloadAction<StatusEffectType>) => {
 			state.unsavedChanges = true
 			const statusEffectType = action.payload
 			// Check if status effect already exists
-			const existingIndex = state.activeCharacter.statistics.statusEffects.findIndex(
-				effect => effect.name === statusEffectType
-			)
-			
+			const existingIndex =
+				state.activeCharacter.statistics.statusEffects.findIndex(
+					(effect) => effect.name === statusEffectType,
+				)
+
 			if (existingIndex >= 0) {
 				// If it exists, just make sure it's active
-				state.activeCharacter.statistics.statusEffects[existingIndex].active = true
+				state.activeCharacter.statistics.statusEffects[existingIndex].active =
+					true
 			} else {
 				// Add new status effect (omit undefined fields for Firebase compatibility)
 				const newStatusEffect: StatusEffect = {
@@ -698,32 +707,36 @@ export const {
 		},
 		updateStatusEffect: (
 			state,
-			action: PayloadAction<{ id: string; update: Partial<StatusEffect>; clearFields?: string[] }>
+			action: PayloadAction<{
+				id: string
+				update: Partial<StatusEffect>
+				clearFields?: string[]
+			}>,
 		) => {
 			state.unsavedChanges = true
 			const { id, update, clearFields } = action.payload
 			const index = state.activeCharacter.statistics.statusEffects.findIndex(
-				effect => effect.id === id
+				(effect) => effect.id === id,
 			)
 			if (index >= 0) {
 				// Filter out undefined values to prevent Firebase errors
 				const filteredUpdate = Object.fromEntries(
-					Object.entries(update).filter(([_, value]) => value !== undefined)
+					Object.entries(update).filter(([_, value]) => value !== undefined),
 				)
-				
+
 				// Start with the current effect
 				let updatedEffect = {
 					...state.activeCharacter.statistics.statusEffects[index],
 					...filteredUpdate,
 				}
-				
+
 				// Clear specified fields
 				if (clearFields) {
-					clearFields.forEach(field => {
+					clearFields.forEach((field) => {
 						delete (updatedEffect as any)[field]
 					})
 				}
-				
+
 				state.activeCharacter.statistics.statusEffects[index] = updatedEffect
 			}
 		},
@@ -731,18 +744,20 @@ export const {
 			state.unsavedChanges = true
 			const id = action.payload
 			const index = state.activeCharacter.statistics.statusEffects.findIndex(
-				effect => effect.id === id
+				(effect) => effect.id === id,
 			)
 			if (index >= 0) {
-				state.activeCharacter.statistics.statusEffects[index].active = 
+				state.activeCharacter.statistics.statusEffects[index].active =
 					!state.activeCharacter.statistics.statusEffects[index].active
 			}
 		},
 		removeStatusEffect: (state, action: PayloadAction<string>) => {
 			state.unsavedChanges = true
 			const id = action.payload
-			state.activeCharacter.statistics.statusEffects = 
-				state.activeCharacter.statistics.statusEffects.filter(effect => effect.id !== id)
+			state.activeCharacter.statistics.statusEffects =
+				state.activeCharacter.statistics.statusEffects.filter(
+					(effect) => effect.id !== id,
+				)
 		},
 	},
 })

@@ -1,22 +1,30 @@
-import { ArrowBackIosNew, ChevronLeft, Download, Reply, Save, Star, Upload } from '@mui/icons-material'
 import {
-  Box,
-  Button,
-  Checkbox,
-  CircularProgress,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  FormControlLabel,
-  IconButton,
-  Link,
-  TextField,
-  Tooltip,
-  Typography,
-  Alert,
-  Divider,
+	ArrowBackIosNew,
+	ChevronLeft,
+	Download,
+	Reply,
+	Save,
+	Star,
+	Upload,
+} from '@mui/icons-material'
+import {
+	Box,
+	Button,
+	Checkbox,
+	CircularProgress,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+	FormControlLabel,
+	IconButton,
+	Link,
+	TextField,
+	Tooltip,
+	Typography,
+	Alert,
+	Divider,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
@@ -53,7 +61,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const [name, setName] = React.useState('')
 	const [includeStartingGear, setIncludeStartingGear] = React.useState(false)
 	const [downloadingAll, setDownloadingAll] = React.useState(false)
-	const [importedCharacter, setImportedCharacter] = React.useState<Character | null>(null)
+	const [importedCharacter, setImportedCharacter] =
+		React.useState<Character | null>(null)
 	const [importError, setImportError] = React.useState<string | null>(null)
 
 	const handleOpen = () => {
@@ -100,10 +109,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				setImportedCharacter(parsedCharacter)
 				setName(parsedCharacter.personal.name)
 				setImportError(null)
-
 			} catch (error) {
 				console.error('Error parsing character file:', error)
-				setImportError('Invalid character file. Please select a valid Nexus RPG character JSON file.')
+				setImportError(
+					'Invalid character file. Please select a valid Nexus RPG character JSON file.',
+				)
 				setImportedCharacter(null)
 				setName('')
 			}
@@ -122,8 +132,10 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		try {
 			const userUid = currentUser.uid
 			const collectionRef = collection(db, userUid)
-      
-      const playerName = (await getDoc(doc(db, userUid, 'player-info'))).data()?.name || 'Unknown'
+
+			const playerName =
+				(await getDoc(doc(db, userUid, 'player-info'))).data()?.name ||
+				'Unknown'
 
 			let characterData: Character
 
@@ -135,11 +147,15 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						...importedCharacter.personal,
 						name: name, // Use the name from the input field (allows user to modify)
 						playerName: playerName, // Set to current user's player name
-					}
+					},
 				}
 			} else {
 				// Create new character from scratch
-				characterData = createInitialCharacter(name, playerName, includeStartingGear)
+				characterData = createInitialCharacter(
+					name,
+					playerName,
+					includeStartingGear,
+				)
 			}
 
 			await addDoc(collectionRef, characterData)
@@ -168,7 +184,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		})
 	}
 
-	const downloadAllCharactersAsZip = async (event: React.MouseEvent<HTMLButtonElement>) => {
+	const downloadAllCharactersAsZip = async (
+		event: React.MouseEvent<HTMLButtonElement>,
+	) => {
 		event.preventDefault()
 		setDownloadingAll(true)
 		try {
@@ -218,13 +236,21 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				<Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
 					{!activeCharacterId && (
 						<>
-							<Tooltip title={`Download all ${characters.length} character${characters.length !== 1 ? 's' : ''} as ZIP`}>
+							<Tooltip
+								title={`Download all ${characters.length} character${characters.length !== 1 ? 's' : ''} as ZIP`}
+							>
 								<span>
-									<IconButton 
-										disabled={!userLoggedIn || characters.length === 0 || downloadingAll}
+									<IconButton
+										disabled={
+											!userLoggedIn || characters.length === 0 || downloadingAll
+										}
 										onClick={downloadAllCharactersAsZip}
 									>
-										{downloadingAll ? <CircularProgress size={20} /> : <Download />}
+										{downloadingAll ? (
+											<CircularProgress size={20} />
+										) : (
+											<Download />
+										)}
 									</IconButton>
 								</span>
 							</Tooltip>
@@ -284,10 +310,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText id="alert-dialog-description" sx={{ mb: 2 }}>
-						{importedCharacter 
-							? `Import and customize "${importedCharacter.personal.name}"` 
-							: "What's your characters name?"
-						}
+						{importedCharacter
+							? `Import and customize "${importedCharacter.personal.name}"`
+							: "What's your characters name?"}
 					</DialogContentText>
 
 					{!importedCharacter && (
@@ -332,7 +357,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 						fullWidth
 						type="text"
 						label="character name"
-						placeholder={importedCharacter ? "Modify character name" : "type your character's name"}
+						placeholder={
+							importedCharacter
+								? 'Modify character name'
+								: "type your character's name"
+						}
 						value={name}
 						onChange={(e) => {
 							if (e.target.value.length <= MAX_NAME_LENGTH) {
@@ -367,8 +396,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 								✓ Character data loaded successfully
 							</Typography>
 							<Box sx={{ mt: 1 }}>
-								<Button 
-									variant="text" 
+								<Button
+									variant="text"
 									size="small"
 									onClick={() => {
 										setImportedCharacter(null)

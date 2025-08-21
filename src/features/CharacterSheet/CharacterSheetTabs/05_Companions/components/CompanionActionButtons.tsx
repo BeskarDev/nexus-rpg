@@ -1,4 +1,12 @@
-import { Edit, Save, Cancel, Delete, Check, CheckOutlined, CheckCircle } from '@mui/icons-material'
+import {
+	Edit,
+	Save,
+	Cancel,
+	Delete,
+	Check,
+	CheckOutlined,
+	CheckCircle,
+} from '@mui/icons-material'
 import { Box, IconButton, Tooltip } from '@mui/material'
 import React from 'react'
 import { Companion } from '../../../../../types/Character'
@@ -42,7 +50,7 @@ export const CompanionActionButtons: React.FC<CompanionActionButtonsProps> = ({
 								onCancelEditing()
 							}}
 							size="small"
-              sx={{ ml: 0.5 }}
+							sx={{ ml: 0.5 }}
 						>
 							<Cancel />
 						</IconButton>
@@ -55,7 +63,7 @@ export const CompanionActionButtons: React.FC<CompanionActionButtonsProps> = ({
 							}}
 							color="error"
 							size="small"
-              sx={{ ml: 1 }}
+							sx={{ ml: 1 }}
 						>
 							<Delete />
 						</IconButton>

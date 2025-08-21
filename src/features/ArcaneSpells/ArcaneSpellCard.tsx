@@ -69,14 +69,26 @@ export const ArcaneSpellCard: React.FC<ArcaneSpell> = ({
 			</Box>
 			<Typography
 				variant="caption"
-				sx={{ alignSelf: 'center', mx: '-8px', mt: '-4px', fontSize: '8px', lineHeight: 1.1 }}
+				sx={{
+					alignSelf: 'center',
+					mx: '-8px',
+					mt: '-4px',
+					fontSize: '8px',
+					lineHeight: 1.1,
+				}}
 			>
 				R{rank} {discipline}, {target}, {range.toLowerCase()} range
 			</Typography>
 			{properties !== '-' && (
 				<Typography
 					variant="caption"
-					sx={{ alignSelf: 'center', mt: 0.25, mx: '-8px', fontSize: '8px', lineHeight: 1.1 }}
+					sx={{
+						alignSelf: 'center',
+						mt: 0.25,
+						mx: '-8px',
+						fontSize: '8px',
+						lineHeight: 1.1,
+					}}
 				>
 					{properties}
 				</Typography>

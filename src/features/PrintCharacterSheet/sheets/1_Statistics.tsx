@@ -1,4 +1,11 @@
-import { Avatar, Box, InputAdornment, styled, TextField, Typography } from '@mui/material'
+import {
+	Avatar,
+	Box,
+	InputAdornment,
+	styled,
+	TextField,
+	Typography,
+} from '@mui/material'
 import { SheetLayout } from './SheetLayout'
 import React from 'react'
 import { Character } from '@site/src/types/Character'
@@ -26,14 +33,17 @@ const AttributeField = styled(RoundTextField)({
 
 export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 	// Group abilities by tag/category
-	const groupedAbilities = char.skills.abilities.reduce((groups, ability) => {
-		const tag = ability.tag || 'Other'
-		if (!groups[tag]) {
-			groups[tag] = []
-		}
-		groups[tag].push(ability)
-		return groups
-	}, {} as Record<string, typeof char.skills.abilities>)
+	const groupedAbilities = char.skills.abilities.reduce(
+		(groups, ability) => {
+			const tag = ability.tag || 'Other'
+			if (!groups[tag]) {
+				groups[tag] = []
+			}
+			groups[tag].push(ability)
+			return groups
+		},
+		{} as Record<string, typeof char.skills.abilities>,
+	)
 
 	// Define the order of categories
 	const categoryOrder = ['Combat Art', 'Talent', 'Folk', 'Other']
@@ -225,15 +235,19 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 						/>
 						{char.statistics.fatigue && (
 							<OutlinedTextfield
-                size="small"
+								size="small"
 								value={char.statistics.fatigue.current}
 								label="Fatigue"
-                InputProps={{
-                  endAdornment: <InputAdornment position="end" sx={{ mt: '2px' }}>/ {char.statistics.fatigue.max}</InputAdornment>,
-                }}
+								InputProps={{
+									endAdornment: (
+										<InputAdornment position="end" sx={{ mt: '2px' }}>
+											/ {char.statistics.fatigue.max}
+										</InputAdornment>
+									),
+								}}
 								sx={{
 									maxWidth: '4rem',
-                  ml: 'auto',
+									ml: 'auto',
 								}}
 							/>
 						)}
@@ -242,17 +256,21 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 			</Box>
 			<Box sx={{ display: 'flex', height: '100%' }}>
 				<Box sx={{ width: '50%' }}>
-					<Box sx={{ display: 'flex', mt: 6, alignItems: "center" }}>
+					<Box sx={{ display: 'flex', mt: 6, alignItems: 'center' }}>
 						<RoundTextField
-							value={(typeof char.skills.xp.spend == 'number') ? calculateCharacterLevel(char.skills.xp.spend) : ' '}
+							value={
+								typeof char.skills.xp.spend == 'number'
+									? calculateCharacterLevel(char.skills.xp.spend)
+									: ' '
+							}
 							label="Level"
 							sx={{
 								ml: 5,
-                mr: 1,
+								mr: 1,
 								'& .MuiFormLabel-root.MuiInputLabel-root': {
-                  top: 1,
+									top: 1,
 									left: -2,
-                  fontSize: '12px',
+									fontSize: '12px',
 								},
 							}}
 						/>
@@ -293,7 +311,10 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 						}}
 					>
 						{char.skills.skills.map((skill, index) => (
-							<Box key={skill.id} sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+							<Box
+								key={skill.id}
+								sx={{ display: 'flex', gap: 1, alignItems: 'center' }}
+							>
 								<Box
 									sx={{
 										display: 'flex',
@@ -353,15 +374,19 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 					>
 						Abilities
 					</Typography>
-					{categoryOrder.map(category => {
+					{categoryOrder.map((category) => {
 						const abilities = groupedAbilities[category] || []
 						if (abilities.length === 0) return null
-						
+
 						return (
 							<Box key={category} sx={{ mt: -1 }}>
 								<Typography
 									variant="caption"
-									sx={{ fontWeight: 'bold', fontSize: '8px', color: 'text.primary' }}
+									sx={{
+										fontWeight: 'bold',
+										fontSize: '8px',
+										color: 'text.primary',
+									}}
 								>
 									{category}
 								</Typography>

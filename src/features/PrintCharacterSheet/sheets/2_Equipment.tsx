@@ -108,76 +108,83 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 					Weapons
 				</Typography>
 				<Box sx={{ mt: -0.5 }}>
-					{char.items.weapons.filter(w => w.location === 'worn').map((weapon, index) => (
-						<Box key={weapon.id} sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
-							<TextField
-								size="small"
-								variant="standard"
-								value={weapon.name}
-								label={index == 0 ? 'Name' : ''}
-								sx={{
-									maxWidth: '8rem',
-									mt: 0.5,
-									'& input': { p: 0, fontSize: '10px' },
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={weapon.damage ? printDamageField({ ...weapon.damage }): ' '}
-								label={index == 0 ? 'Damage' : ''}
-								sx={{
-									maxWidth: '4rem',
-									mt: 0.5,
-									'& input': { p: 0, fontSize: '10px' },
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={weapon.properties}
-								label={index == 0 ? 'Properties' : ''}
-								sx={{
-									maxWidth: '11rem',
-									mt: 0.5,
-									'& input': {
-										p: 0,
-										fontSize: '10px',
-									},
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={weapon.cost}
-								label={index == 0 ? 'Cost' : ''}
-								sx={{
-									maxWidth: '2.5rem',
-									mt: 0.5,
-									'& input': {
-										fontSize: '10px',
-										py: 0,
-										textAlign: 'right',
-									},
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={weapon.load}
-								label={index == 0 ? 'Load' : ''}
-								sx={{
-									maxWidth: '1.5rem',
-									mt: 0.5,
-									'& input': {
-										fontSize: '10px',
-										py: 0,
-										textAlign: 'center',
-									},
-								}}
-							/>
-						</Box>
-					))}
+					{char.items.weapons
+						.filter((w) => w.location === 'worn')
+						.map((weapon, index) => (
+							<Box
+								key={weapon.id}
+								sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}
+							>
+								<TextField
+									size="small"
+									variant="standard"
+									value={weapon.name}
+									label={index == 0 ? 'Name' : ''}
+									sx={{
+										maxWidth: '8rem',
+										mt: 0.5,
+										'& input': { p: 0, fontSize: '10px' },
+									}}
+								/>
+								<TextField
+									size="small"
+									variant="standard"
+									value={
+										weapon.damage ? printDamageField({ ...weapon.damage }) : ' '
+									}
+									label={index == 0 ? 'Damage' : ''}
+									sx={{
+										maxWidth: '4rem',
+										mt: 0.5,
+										'& input': { p: 0, fontSize: '10px' },
+									}}
+								/>
+								<TextField
+									size="small"
+									variant="standard"
+									value={weapon.properties}
+									label={index == 0 ? 'Properties' : ''}
+									sx={{
+										maxWidth: '11rem',
+										mt: 0.5,
+										'& input': {
+											p: 0,
+											fontSize: '10px',
+										},
+									}}
+								/>
+								<TextField
+									size="small"
+									variant="standard"
+									value={weapon.cost}
+									label={index == 0 ? 'Cost' : ''}
+									sx={{
+										maxWidth: '2.5rem',
+										mt: 0.5,
+										'& input': {
+											fontSize: '10px',
+											py: 0,
+											textAlign: 'right',
+										},
+									}}
+								/>
+								<TextField
+									size="small"
+									variant="standard"
+									value={weapon.load}
+									label={index == 0 ? 'Load' : ''}
+									sx={{
+										maxWidth: '1.5rem',
+										mt: 0.5,
+										'& input': {
+											fontSize: '10px',
+											py: 0,
+											textAlign: 'center',
+										},
+									}}
+								/>
+							</Box>
+						))}
 				</Box>
 			</Box>
 			<Box
@@ -225,65 +232,74 @@ export const EquipmentSheet: React.FC<{ char: Character }> = ({ char }) => {
 				<Box
 					sx={{ display: 'flex', rowGap: 0, columnGap: 2, flexWrap: 'wrap' }}
 				>
-					{sortedItems.filter(i => i.location === 'worn' || i.location === 'carried').map((item, index) => (
-						<Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-							<TextField
-								size="small"
-								variant="standard"
-								value={`${item.name} ${item.amount > 1 ? 'x' + item.amount : ''}`}
-								sx={{
-									width: '6.5rem',
-									mt: 0.5,
-									'& .MuiInputBase-root': {
-										pb: 0.5,
-									},
-									'& input': { p: 0, fontSize: '9px' },
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={item.location === 'worn' && item.slot ? item.slot : item.location}
-								sx={{
-									maxWidth: '2.5rem',
-									mt: 0.5,
-									'& input': {
-										p: 0,
-										fontSize: '8px',
-										textOverflow: 'ellipsis',
-									},
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={item.cost}
-								sx={{
-									maxWidth: '2rem',
-									mt: 0.5,
-									'& input': {
-										p: 0,
-										fontSize: '8px',
-										textAlign: 'right',
-									},
-								}}
-							/>
-							<TextField
-								size="small"
-								variant="standard"
-								value={item.load}
-								sx={{
-									maxWidth: '1.5rem',
-									mt: 0.5,
-									'& input': {
-										p: 0,
-										fontSize: '8px',
-										textAlign: 'center',
-									},
-								}}
-							/>
-						</Box>
-					))}
+					{sortedItems
+						.filter((i) => i.location === 'worn' || i.location === 'carried')
+						.map((item, index) => (
+							<Box
+								key={item.id}
+								sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}
+							>
+								<TextField
+									size="small"
+									variant="standard"
+									value={`${item.name} ${item.amount > 1 ? 'x' + item.amount : ''}`}
+									sx={{
+										width: '6.5rem',
+										mt: 0.5,
+										'& .MuiInputBase-root': {
+											pb: 0.5,
+										},
+										'& input': { p: 0, fontSize: '9px' },
+									}}
+								/>
+								<TextField
+									size="small"
+									variant="standard"
+									value={
+										item.location === 'worn' && item.slot
+											? item.slot
+											: item.location
+									}
+									sx={{
+										maxWidth: '2.5rem',
+										mt: 0.5,
+										'& input': {
+											p: 0,
+											fontSize: '8px',
+											textOverflow: 'ellipsis',
+										},
+									}}
+								/>
+								<TextField
+									size="small"
+									variant="standard"
+									value={item.cost}
+									sx={{
+										maxWidth: '2rem',
+										mt: 0.5,
+										'& input': {
+											p: 0,
+											fontSize: '8px',
+											textAlign: 'right',
+										},
+									}}
+								/>
+								<TextField
+									size="small"
+									variant="standard"
+									value={item.load}
+									sx={{
+										maxWidth: '1.5rem',
+										mt: 0.5,
+										'& input': {
+											p: 0,
+											fontSize: '8px',
+											textAlign: 'center',
+										},
+									}}
+								/>
+							</Box>
+						))}
 				</Box>
 			</Box>
 		</SheetLayout>

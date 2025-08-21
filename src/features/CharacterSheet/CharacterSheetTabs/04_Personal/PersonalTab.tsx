@@ -6,7 +6,7 @@ import {
 	Switch,
 	Typography,
 	FormControlLabel,
-  Tooltip,
+	Tooltip,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
@@ -123,22 +123,21 @@ export const PersonalTab: React.FC = () => {
 			}}
 		>
 			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>
-				
 				<Box sx={{ flexGrow: 1 }}>
 					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
 						<SectionHeader sx={{ mb: 0 }}>Your Character</SectionHeader>
 						<Tooltip title="enable this to add, delete, or reorder lists">
-              <IconButton
-                size="small"
+							<IconButton
+								size="small"
 								onClick={toggleReorder}
 								color={showControls ? 'primary' : 'default'}
-                sx={{ 
-                  border: '1px solid',
-                  borderColor: 'divider',
-                }}
-              >
-                <Build fontSize="inherit" />
-              </IconButton>
+								sx={{
+									border: '1px solid',
+									borderColor: 'divider',
+								}}
+							>
+								<Build fontSize="inherit" />
+							</IconButton>
 						</Tooltip>
 					</Box>
 					<Box
@@ -180,7 +179,9 @@ export const PersonalTab: React.FC = () => {
 								setPersonal((p) => ({ ...p, upbringing: event.target.value }))
 							}
 							onBlur={() =>
-								updateCharacter({ personal: { upbringing: personal.upbringing } })
+								updateCharacter({
+									personal: { upbringing: personal.upbringing },
+								})
 							}
 							label="Upbringing"
 							sx={{ maxWidth: '10rem' }}
@@ -192,7 +193,9 @@ export const PersonalTab: React.FC = () => {
 								setPersonal((p) => ({ ...p, background: event.target.value }))
 							}
 							onBlur={() =>
-								updateCharacter({ personal: { background: personal.background } })
+								updateCharacter({
+									personal: { background: personal.background },
+								})
 							}
 							label="Background"
 							sx={{ maxWidth: '10rem' }}
@@ -204,7 +207,9 @@ export const PersonalTab: React.FC = () => {
 								setPersonal((p) => ({ ...p, motivation: event.target.value }))
 							}
 							onBlur={() =>
-								updateCharacter({ personal: { motivation: personal.motivation } })
+								updateCharacter({
+									personal: { motivation: personal.motivation },
+								})
 							}
 							label="Motivation"
 							sx={{ maxWidth: '10rem' }}
@@ -242,7 +247,9 @@ export const PersonalTab: React.FC = () => {
 							onChange={(event) =>
 								setPersonal((p) => ({ ...p, age: event.target.value }))
 							}
-							onBlur={() => updateCharacter({ personal: { age: personal.age } })}
+							onBlur={() =>
+								updateCharacter({ personal: { age: personal.age } })
+							}
 							label="Age"
 							sx={{ maxWidth: '6rem' }}
 						/>
@@ -279,11 +286,11 @@ export const PersonalTab: React.FC = () => {
 			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Allies</SectionHeader>
-          {showControls && (
-            <IconButton onClick={addNewAlly} sx={{ mb: 0.75 }}>
-              <AddCircle />
-            </IconButton>
-          )}
+					{showControls && (
+						<IconButton onClick={addNewAlly} sx={{ mb: 0.75 }}>
+							<AddCircle />
+						</IconButton>
+					)}
 				</Box>
 				<DynamicList
 					droppableId="allies"
@@ -316,11 +323,11 @@ export const PersonalTab: React.FC = () => {
 			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Contacts</SectionHeader>
-          {showControls && (
-            <IconButton onClick={addNewContact} sx={{ mb: 0.75 }}>
-              <AddCircle />
-            </IconButton>
-          )}
+					{showControls && (
+						<IconButton onClick={addNewContact} sx={{ mb: 0.75 }}>
+							<AddCircle />
+						</IconButton>
+					)}
 				</Box>
 				<DynamicList
 					droppableId="contacts"
@@ -353,11 +360,11 @@ export const PersonalTab: React.FC = () => {
 			<Box sx={{ maxWidth: '100%', mb: 1 }}>
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 					<SectionHeader>Rivals</SectionHeader>
-          {showControls && (
-            <IconButton onClick={addNewRival} sx={{ mb: 0.75 }}>
-              <AddCircle />
-            </IconButton>
-          )}
+					{showControls && (
+						<IconButton onClick={addNewRival} sx={{ mb: 0.75 }}>
+							<AddCircle />
+						</IconButton>
+					)}
 				</Box>
 				<DynamicList
 					droppableId="rivals"

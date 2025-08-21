@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
 import { Typography, Chip } from '@mui/material'
-import { SearchDialog, SearchDialogColumn } from '../02_Items/SearchDialog/GenericSearchDialog'
+import {
+	SearchDialog,
+	SearchDialogColumn,
+} from '../02_Items/SearchDialog/GenericSearchDialog'
 import combatArtsData from '../../../../utils/json/combat-arts.json'
 import { CharacterDocument, Ability } from '../../../../types/Character'
 import { sanitizeHtml } from '../../../../utils/htmlSanitizer'
 
 // Function to get color for combat art categories
-const getCategoryColor = (category: string): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+const getCategoryColor = (
+	category: string,
+): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
 	switch (category) {
-		case 'Basic': return 'info'
-		case 'Supreme': return 'error'
-		default: return 'secondary'
+		case 'Basic':
+			return 'info'
+		case 'Supreme':
+			return 'error'
+		default:
+			return 'secondary'
 	}
 }
 
@@ -34,7 +42,9 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 	onImportCombatArts,
 	character,
 }) => {
-	const [selectedCombatArts, setSelectedCombatArts] = useState<Set<string>>(new Set())
+	const [selectedCombatArts, setSelectedCombatArts] = useState<Set<string>>(
+		new Set(),
+	)
 
 	const columns: SearchDialogColumn<CombatArtData>[] = [
 		{
@@ -44,59 +54,59 @@ export const CombatArtsSearchDialog: React.FC<CombatArtsSearchDialogProps> = ({
 				<Typography variant="body2" sx={{ fontWeight: 'medium' }}>
 					{combatArt.name}
 				</Typography>
-			)
+			),
 		},
 		{
 			key: 'weapons',
 			label: 'Weapons',
 			render: (value) => (
-				<Typography 
-					variant="caption" 
-					sx={{ 
+				<Typography
+					variant="caption"
+					sx={{
 						display: '-webkit-box',
 						WebkitLineClamp: 2,
 						WebkitBoxOrient: 'vertical',
 						overflow: 'hidden',
-						lineHeight: 1.2
+						lineHeight: 1.2,
 					}}
 				>
 					{value}
 				</Typography>
-			)
+			),
 		},
 		{
 			key: 'category',
 			label: 'Type',
 			render: (value) => (
-				<Chip 
-					label={value} 
-					size="small" 
+				<Chip
+					label={value}
+					size="small"
 					variant="outlined"
 					color={getCategoryColor(value)}
 					sx={{ fontSize: '0.75rem' }}
 				/>
-			)
+			),
 		},
 		{
 			key: 'effect',
 			label: 'Effect',
 			sortable: false,
 			render: (value) => (
-				<Typography 
-					variant="caption" 
-					sx={{ 
+				<Typography
+					variant="caption"
+					sx={{
 						display: '-webkit-box',
 						WebkitLineClamp: 3,
 						WebkitBoxOrient: 'vertical',
 						overflow: 'hidden',
 						lineHeight: 1.2,
-						whiteSpace: 'pre-line' // Preserve newlines from sanitized HTML
+						whiteSpace: 'pre-line', // Preserve newlines from sanitized HTML
 					}}
 				>
 					{sanitizeHtml(value)}
 				</Typography>
-			)
-		}
+			),
+		},
 	]
 
 	const handleImport = () => {

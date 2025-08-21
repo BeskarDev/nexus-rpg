@@ -249,9 +249,9 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 			sx={{
 				py: 1,
 				px: 2,
-        mb: 1,
+				mb: 1,
 				maxWidth: '100%',
-        boxShadow: 'none',
+				boxShadow: 'none',
 			}}
 		>
 			<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>

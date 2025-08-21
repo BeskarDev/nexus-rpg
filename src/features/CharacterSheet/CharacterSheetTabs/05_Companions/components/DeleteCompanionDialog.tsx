@@ -24,17 +24,13 @@ export const DeleteCompanionDialog: React.FC<DeleteCompanionDialogProps> = ({
 			<DialogTitle>Delete Companion</DialogTitle>
 			<DialogContent>
 				<Typography>
-					Are you sure you want to delete this companion? This action cannot
-					be undone.
+					Are you sure you want to delete this companion? This action cannot be
+					undone.
 				</Typography>
 			</DialogContent>
 			<DialogActions>
 				<Button onClick={onCancel}>Cancel</Button>
-				<Button
-					onClick={onConfirm}
-					color="error"
-					variant="contained"
-				>
+				<Button onClick={onConfirm} color="error" variant="contained">
 					Delete
 				</Button>
 			</DialogActions>

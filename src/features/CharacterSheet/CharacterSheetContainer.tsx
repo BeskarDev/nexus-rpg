@@ -1,7 +1,15 @@
 import { Box, Typography } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
-import { collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc } from 'firebase/firestore'
+import {
+	collection,
+	deleteDoc,
+	doc,
+	getDoc,
+	getDocs,
+	query,
+	updateDoc,
+} from 'firebase/firestore'
 import React, { useEffect } from 'react'
 import { Character, CharacterDocument } from '../../types/Character'
 import { CharacterList } from './CharacterList'
@@ -99,28 +107,35 @@ export const CharacterSheetContainer: React.FC = () => {
 		}
 	}, [autosave])
 
-  useEffect(() => {
-    const fetchAndMigrateCharacter = async () => {
-      if (collectionId && activeCharacterId && currentUser && !activeCharacter) {
-        const docSnapshot = await getDoc(doc(db, `${collectionId}/${activeCharacterId}`))
-        const character = mapDocToCharacter(collectionId, docSnapshot)
-        const migratedCharacter = await migrateDoc(collectionId, docSnapshot)
+	useEffect(() => {
+		const fetchAndMigrateCharacter = async () => {
+			if (
+				collectionId &&
+				activeCharacterId &&
+				currentUser &&
+				!activeCharacter
+			) {
+				const docSnapshot = await getDoc(
+					doc(db, `${collectionId}/${activeCharacterId}`),
+				)
+				const character = mapDocToCharacter(collectionId, docSnapshot)
+				const migratedCharacter = await migrateDoc(collectionId, docSnapshot)
 
-        console.log('migrated character', migratedCharacter.personal.playerName)
+				console.log('migrated character', migratedCharacter.personal.playerName)
 
-        if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
-          console.log('save migrated character', migratedCharacter)
-          await updateDoc(migratedCharacter.docRef, {
-            ...migratedCharacter,
-          } as Omit<Character, 'docRef' | 'docId'>)
-        }
+				if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
+					console.log('save migrated character', migratedCharacter)
+					await updateDoc(migratedCharacter.docRef, {
+						...migratedCharacter,
+					} as Omit<Character, 'docRef' | 'docId'>)
+				}
 
-        dispatch(characterSheetActions.setCharacter(migratedCharacter))
-      }
-    }
+				dispatch(characterSheetActions.setCharacter(migratedCharacter))
+			}
+		}
 
-    fetchAndMigrateCharacter()
-  }, [collectionId, activeCharacterId, activeCharacter])
+		fetchAndMigrateCharacter()
+	}, [collectionId, activeCharacterId, activeCharacter])
 
 	const saveCharacter = async () => {
 		console.log('about to save character...')
@@ -155,7 +170,7 @@ export const CharacterSheetContainer: React.FC = () => {
 				</Box>
 			)}
 			{userLoggedIn && !activeCharacterId && (
-				<CharacterList 
+				<CharacterList
 					characters={characters}
 					handleDeleteCharacter={handleDeleteCharacter}
 				/>

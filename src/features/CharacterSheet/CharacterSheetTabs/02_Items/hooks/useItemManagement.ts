@@ -5,183 +5,181 @@ import { ItemLocation } from '../../../../../types/ItemLocation'
 import { DeepPartial } from '../../../CharacterSheetContainer'
 import { characterSheetActions } from '../../../characterSheetReducer'
 import { useAppDispatch } from '../../../hooks/useAppDispatch'
-import { 
-  organizeItemsByLocation, 
-  calculateCurrentLoad, 
-  extractArmorValues,
-  OrganizedItems,
-  calculateLocationLoad
+import {
+	organizeItemsByLocation,
+	calculateCurrentLoad,
+	extractArmorValues,
+	OrganizedItems,
+	calculateLocationLoad,
 } from '../utils/itemUtils'
 
 export const useItemManagement = (activeCharacter: CharacterDocument) => {
-  const dispatch = useAppDispatch()
-  
-  const { coins, encumbrance, weapons = [], items = [], itemLocationVisibility } = useMemo(
-    () => activeCharacter.items,
-    [activeCharacter.items],
-  )
+	const dispatch = useAppDispatch()
 
-  // Organize items and weapons by location
-  const itemsByLocation = useMemo(() => 
-    organizeItemsByLocation(weapons, items),
-    [weapons, items]
-  )
+	const {
+		coins,
+		encumbrance,
+		weapons = [],
+		items = [],
+		itemLocationVisibility,
+	} = useMemo(() => activeCharacter.items, [activeCharacter.items])
 
-  // Auto-update AV values when armor, helmet, or shield items change
-  useEffect(() => {
-    const { armorAV, helmetAV, shieldAV } = extractArmorValues(itemsByLocation)
+	// Organize items and weapons by location
+	const itemsByLocation = useMemo(
+		() => organizeItemsByLocation(weapons, items),
+		[weapons, items],
+	)
 
-    // Update AV values if they changed
-    const currentAV = activeCharacter.statistics.av
-    if (
-      currentAV.armor !== armorAV ||
-      currentAV.helmet !== helmetAV ||
-      currentAV.shield !== shieldAV
-    ) {
-      dispatch(
-        characterSheetActions.updateCharacter({
-          statistics: {
-            av: {
-              armor: armorAV ?? currentAV.armor,
-              helmet: helmetAV ?? currentAV.helmet,
-              shield: shieldAV ?? currentAV.shield,
-            },
-          },
-        }),
-      )
-    }
-  }, [itemsByLocation])
+	// Auto-update AV values when armor, helmet, or shield items change
+	useEffect(() => {
+		const { armorAV, helmetAV, shieldAV } = extractArmorValues(itemsByLocation)
 
-  const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
-    dispatch(characterSheetActions.updateCharacter(update))
-  }
+		// Update AV values if they changed
+		const currentAV = activeCharacter.statistics.av
+		if (
+			currentAV.armor !== armorAV ||
+			currentAV.helmet !== helmetAV ||
+			currentAV.shield !== shieldAV
+		) {
+			dispatch(
+				characterSheetActions.updateCharacter({
+					statistics: {
+						av: {
+							armor: armorAV ?? currentAV.armor,
+							helmet: helmetAV ?? currentAV.helmet,
+							shield: shieldAV ?? currentAV.shield,
+						},
+					},
+				}),
+			)
+		}
+	}, [itemsByLocation])
 
-  const currentLoad: number = useMemo(() => {
-    const newCurrentLoad = calculateCurrentLoad(itemsByLocation)
-    if (newCurrentLoad !== encumbrance.currentLoad) {
-      updateCharacter({
-        items: { encumbrance: { currentLoad: newCurrentLoad } },
-      })
-    }
-    return newCurrentLoad
-  }, [itemsByLocation, encumbrance.currentLoad])
+	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
+		dispatch(characterSheetActions.updateCharacter(update))
+	}
 
-  const carryCapacity = useMemo(
-    () => {
-      console.log('Calculating carry capacity:', {
-        strength: activeCharacter.statistics.strength.value,
-        carryModifier: encumbrance.carryModifier,
-      })
-      const result = Number(activeCharacter.statistics.strength.value) / 2 +
-        8 +
-        Number(encumbrance.carryModifier || 0)
-      console.log('Carry capacity:', result)
-      return result
-    },
-    [activeCharacter.statistics.strength, encumbrance.carryModifier],
-  )
+	const currentLoad: number = useMemo(() => {
+		const newCurrentLoad = calculateCurrentLoad(itemsByLocation)
+		if (newCurrentLoad !== encumbrance.currentLoad) {
+			updateCharacter({
+				items: { encumbrance: { currentLoad: newCurrentLoad } },
+			})
+		}
+		return newCurrentLoad
+	}, [itemsByLocation, encumbrance.currentLoad])
 
-  const maxCapacity = useMemo(
-    () => carryCapacity * 2,
-    [carryCapacity],
-  )
+	const carryCapacity = useMemo(() => {
+		console.log('Calculating carry capacity:', {
+			strength: activeCharacter.statistics.strength.value,
+			carryModifier: encumbrance.carryModifier,
+		})
+		const result =
+			Number(activeCharacter.statistics.strength.value) / 2 +
+			8 +
+			Number(encumbrance.carryModifier || 0)
+		console.log('Carry capacity:', result)
+		return result
+	}, [activeCharacter.statistics.strength, encumbrance.carryModifier])
 
-  // Action handlers
-  const addNewWeapon = () => {
-    dispatch(characterSheetActions.addNewWeapon())
-  }
+	const maxCapacity = useMemo(() => carryCapacity * 2, [carryCapacity])
 
-  const importWeapons = (weapons: Partial<Weapon>[]) => {
-    dispatch(characterSheetActions.importWeapons(weapons))
-  }
+	// Action handlers
+	const addNewWeapon = () => {
+		dispatch(characterSheetActions.addNewWeapon())
+	}
 
-  const importEquipment = (equipment: Partial<Item>[]) => {
-    dispatch(characterSheetActions.importItems(equipment))
-  }
+	const importWeapons = (weapons: Partial<Weapon>[]) => {
+		dispatch(characterSheetActions.importWeapons(weapons))
+	}
 
-  const updateWeapon = (update: Partial<Weapon>, index: number) => {
-    dispatch(characterSheetActions.updateWeapon({ update, index }))
-  }
+	const importEquipment = (equipment: Partial<Item>[]) => {
+		dispatch(characterSheetActions.importItems(equipment))
+	}
 
-  const deleteWeapon = (weapon: Weapon) => {
-    dispatch(characterSheetActions.deleteWeapon(weapon))
-  }
+	const updateWeapon = (update: Partial<Weapon>, index: number) => {
+		dispatch(characterSheetActions.updateWeapon({ update, index }))
+	}
 
-  const onWeaponReorder = ({ source, destination }: DropResult) => {
-    if (!destination) return
-    dispatch(
-      characterSheetActions.reorderWeapon({
-        source: source.index,
-        destination: destination.index,
-      }),
-    )
-  }
+	const deleteWeapon = (weapon: Weapon) => {
+		dispatch(characterSheetActions.deleteWeapon(weapon))
+	}
 
-  const addNewItem = () => {
-    dispatch(characterSheetActions.addNewItem())
-  }
+	const onWeaponReorder = ({ source, destination }: DropResult) => {
+		if (!destination) return
+		dispatch(
+			characterSheetActions.reorderWeapon({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
+	}
 
-  const updateItem = (update: Partial<Item>, index: number) => {
-    dispatch(characterSheetActions.updateItem({ update, index }))
-  }
+	const addNewItem = () => {
+		dispatch(characterSheetActions.addNewItem())
+	}
 
-  const deleteItem = (item: Item) => {
-    dispatch(characterSheetActions.deleteItem(item))
-  }
+	const updateItem = (update: Partial<Item>, index: number) => {
+		dispatch(characterSheetActions.updateItem({ update, index }))
+	}
 
-  const onItemReorder = ({ source, destination }: DropResult) => {
-    if (!destination) return
-    dispatch(
-      characterSheetActions.reorderItem({
-        source: source.index,
-        destination: destination.index,
-      }),
-    )
-  }
+	const deleteItem = (item: Item) => {
+		dispatch(characterSheetActions.deleteItem(item))
+	}
 
-  const toggleLocationVisibility = (location: ItemLocation) => {
-    dispatch(characterSheetActions.toggleItemLocationVisibility(location))
-  }
+	const onItemReorder = ({ source, destination }: DropResult) => {
+		if (!destination) return
+		dispatch(
+			characterSheetActions.reorderItem({
+				source: source.index,
+				destination: destination.index,
+			}),
+		)
+	}
 
-  const addNewWeaponToLocation = (location: ItemLocation = 'worn') => {
-    dispatch(characterSheetActions.addNewWeaponToLocation(location))
-  }
+	const toggleLocationVisibility = (location: ItemLocation) => {
+		dispatch(characterSheetActions.toggleItemLocationVisibility(location))
+	}
 
-  const addNewItemToLocation = (location: ItemLocation = 'carried') => {
-    dispatch(characterSheetActions.addNewItemToLocation(location))
-  }
+	const addNewWeaponToLocation = (location: ItemLocation = 'worn') => {
+		dispatch(characterSheetActions.addNewWeaponToLocation(location))
+	}
 
-  const getLocationLoad = (location: ItemLocation): number => {
-    return calculateLocationLoad(itemsByLocation[location])
-  }
+	const addNewItemToLocation = (location: ItemLocation = 'carried') => {
+		dispatch(characterSheetActions.addNewItemToLocation(location))
+	}
 
-  return {
-    // State
-    coins,
-    encumbrance,
-    weapons,
-    items,
-    itemLocationVisibility,
-    itemsByLocation,
-    currentLoad,
-    carryCapacity,
-    maxCapacity,
-    
-    // Actions
-    updateCharacter,
-    addNewWeapon,
-    importWeapons,
-    importEquipment,
-    updateWeapon,
-    deleteWeapon,
-    onWeaponReorder,
-    addNewItem,
-    updateItem,
-    deleteItem,
-    onItemReorder,
-    toggleLocationVisibility,
-    addNewWeaponToLocation,
-    addNewItemToLocation,
-    getLocationLoad,
-  }
+	const getLocationLoad = (location: ItemLocation): number => {
+		return calculateLocationLoad(itemsByLocation[location])
+	}
+
+	return {
+		// State
+		coins,
+		encumbrance,
+		weapons,
+		items,
+		itemLocationVisibility,
+		itemsByLocation,
+		currentLoad,
+		carryCapacity,
+		maxCapacity,
+
+		// Actions
+		updateCharacter,
+		addNewWeapon,
+		importWeapons,
+		importEquipment,
+		updateWeapon,
+		deleteWeapon,
+		onWeaponReorder,
+		addNewItem,
+		updateItem,
+		deleteItem,
+		onItemReorder,
+		toggleLocationVisibility,
+		addNewWeaponToLocation,
+		addNewItemToLocation,
+		getLocationLoad,
+	}
 }

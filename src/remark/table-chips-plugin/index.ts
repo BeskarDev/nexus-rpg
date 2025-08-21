@@ -1,3 +1,3 @@
-import tableChipsPlugin from './table-chips-plugin';
+import tableChipsPlugin from './table-chips-plugin'
 
-export default tableChipsPlugin;
+export default tableChipsPlugin

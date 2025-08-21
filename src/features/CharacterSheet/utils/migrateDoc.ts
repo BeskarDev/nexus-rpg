@@ -1,4 +1,10 @@
-import { collection, doc, DocumentData, DocumentSnapshot, getDoc } from 'firebase/firestore'
+import {
+	collection,
+	doc,
+	DocumentData,
+	DocumentSnapshot,
+	getDoc,
+} from 'firebase/firestore'
 import {
 	Character,
 	CharacterDocument,
@@ -31,7 +37,7 @@ export const migrateDoc = async (
 			updatedDoc.personal = await migratePersonal(value)
 		}
 	})
-  
+
 	await Promise.all(promises)
 
 	const migratedDoc: CharacterDocument = {
@@ -40,59 +46,68 @@ export const migrateDoc = async (
 		collectionId,
 		...(updatedDoc as Character),
 	}
-  console.log('migratedDoc', migratedDoc.personal.playerName)
+	console.log('migratedDoc', migratedDoc.personal.playerName)
 	return migratedDoc
 }
 
 const migrateStatistics = (data: any): Statistics => {
 	// Migrate old wound structure to new format
 	let migratedData = { ...data }
-	
+
 	// If old health structure exists, migrate it
-	if (data.health && (data.health.woundOne || data.health.woundTwo || data.health.woundThree)) {
+	if (
+		data.health &&
+		(data.health.woundOne || data.health.woundTwo || data.health.woundThree)
+	) {
 		// Remove old wound structure from health
-		const { woundOne, woundTwo, woundThree, ...healthWithoutWounds } = data.health
+		const { woundOne, woundTwo, woundThree, ...healthWithoutWounds } =
+			data.health
 		migratedData.health = healthWithoutWounds
-		
+
 		// Count total wounds from old system
-		const oldWounds = [woundOne, woundTwo, woundThree].filter(wound => wound?.injury)
-		
+		const oldWounds = [woundOne, woundTwo, woundThree].filter(
+			(wound) => wound?.injury,
+		)
+
 		// Migrate old wounded flags or assign wounds randomly
 		let woundCount = 0
 		const attributes = ['strength', 'agility', 'spirit', 'mind']
-		
+
 		// First pass: preserve existing wounded flags
 		for (const attr of attributes) {
 			if (data[attr]?.wounded && woundCount < 3) {
 				migratedData[attr] = {
 					...data[attr],
-					wounded: true
+					wounded: true,
 				}
 				woundCount++
 			} else {
 				migratedData[attr] = {
 					...data[attr],
-					wounded: false
+					wounded: false,
 				}
 			}
 		}
-		
+
 		// Second pass: add remaining wounds randomly to unwounded attributes
 		while (woundCount < oldWounds.length && woundCount < 3) {
-			const unwoundedAttrs = attributes.filter(attr => !migratedData[attr].wounded)
+			const unwoundedAttrs = attributes.filter(
+				(attr) => !migratedData[attr].wounded,
+			)
 			if (unwoundedAttrs.length === 0) break
-			
-			const randomAttr = unwoundedAttrs[Math.floor(Math.random() * unwoundedAttrs.length)]
+
+			const randomAttr =
+				unwoundedAttrs[Math.floor(Math.random() * unwoundedAttrs.length)]
 			migratedData[randomAttr].wounded = true
 			woundCount++
 		}
 	}
-	
+
 	// Add fatigue system if not present
 	if (!migratedData.fatigue) {
 		migratedData.fatigue = {
 			current: 0,
-			max: 6
+			max: 6,
 		}
 	}
 
@@ -131,7 +146,9 @@ const migrateStatistics = (data: any): Statistics => {
 			wounded: migratedData.mind.wounded || false,
 		},
 		// Ensure statusEffects array exists for new status effects feature
-		statusEffects: Array.isArray(migratedData.statusEffects) ? migratedData.statusEffects : [],
+		statusEffects: Array.isArray(migratedData.statusEffects)
+			? migratedData.statusEffects
+			: [],
 	} as Statistics
 }
 
@@ -143,56 +160,57 @@ const migrateSkills = (data: any): Skills => {
 			id: skill.id || crypto.randomUUID(),
 		})),
 		abilities: data.abilities.map((ability) => {
-			const migratedAbility = typeof ability === 'string'
-				? {
-						id: crypto.randomUUID(),
-						title: '',
-						description: ability,
-					}
-				: ability;
-			
+			const migratedAbility =
+				typeof ability === 'string'
+					? {
+							id: crypto.randomUUID(),
+							title: '',
+							description: ability,
+						}
+					: ability
+
 			// Add default tag if missing
 			if (!migratedAbility.tag) {
-				migratedAbility.tag = 'Other';
+				migratedAbility.tag = 'Other'
 			}
-			
+
 			// Add default actionType if missing
 			if (!migratedAbility.actionType) {
-				migratedAbility.actionType = 'Other';
+				migratedAbility.actionType = 'Other'
 			}
-			
+
 			// Ensure id exists
 			if (!migratedAbility.id) {
-				migratedAbility.id = crypto.randomUUID();
+				migratedAbility.id = crypto.randomUUID()
 			}
-			
+
 			// Ensure title exists
 			if (!migratedAbility.title) {
-				migratedAbility.title = '';
+				migratedAbility.title = ''
 			}
-			
-			return migratedAbility;
+
+			return migratedAbility
 		}),
-		abilityCategoryVisibility: data.abilityCategoryVisibility || Object.fromEntries(
-			ABILITY_TAGS.map(tag => [tag, true])
-		),
+		abilityCategoryVisibility:
+			data.abilityCategoryVisibility ||
+			Object.fromEntries(ABILITY_TAGS.map((tag) => [tag, true])),
 	} as Skills
 }
 
 const determineItemLocation = (item: any): string => {
-  if (item.location) {
-    return item.location;
-  }
-  switch (item.container) {
-    case 'backpack':
-      return 'carried';
-    case 'quick':
-      return 'worn';
-    case 'worn':
-      return 'worn';
-    default:
-      return 'carried';
-  }
+	if (item.location) {
+		return item.location
+	}
+	switch (item.container) {
+		case 'backpack':
+			return 'carried'
+		case 'quick':
+			return 'worn'
+		case 'worn':
+			return 'worn'
+		default:
+			return 'carried'
+	}
 }
 
 const migrateItems = (data: any): Items => {
@@ -224,14 +242,14 @@ const migrateItems = (data: any): Items => {
 							otherCritical: 0,
 							type: 'physical',
 						}
-					: {...weapon.damage, other: weapon.damage.other || 0 },
-      location: weapon.location || 'worn',
+					: { ...weapon.damage, other: weapon.damage.other || 0 },
+			location: weapon.location || 'worn',
 		})),
 		items: (data.items || []).map((item) => ({
 			...item,
 			id: item.id || crypto.randomUUID(),
 			container: item.container || 'backpack',
-      location: determineItemLocation(item) || 'carried',
+			location: determineItemLocation(item) || 'carried',
 		})),
 	} as Items
 }
@@ -239,11 +257,11 @@ const migrateItems = (data: any): Items => {
 const migrateSpells = (data: any): Spells => {
 	return {
 		...data,
-    spellCatalystDamage: data.spellCatalystDamage || 0,
+		spellCatalystDamage: data.spellCatalystDamage || 0,
 		spells: data.spells.map((spell) => ({
 			...spell,
 			id: spell.id || crypto.randomUUID(),
-      dealsDamage: Boolean(spell.damage.base),
+			dealsDamage: Boolean(spell.damage.base),
 			damage:
 				spell.damage === undefined
 					? {
@@ -255,30 +273,30 @@ const migrateSpells = (data: any): Spells => {
 							otherCritical: 0,
 							type: 'physical',
 						}
-					: {...spell.damage, other: spell.damage.other || 0 },
+					: { ...spell.damage, other: spell.damage.other || 0 },
 		})),
 	} as Spells
 }
 
 const migratePersonal = async (data: any): Promise<Personal> => {
-  const url = new URL(window.location.href);
-  const idParam = url.searchParams.get('id');
+	const url = new URL(window.location.href)
+	const idParam = url.searchParams.get('id')
 
-  if (!idParam) {
-    throw new Error('URL parameter "id" is missing.');
-  }
+	if (!idParam) {
+		throw new Error('URL parameter "id" is missing.')
+	}
 
-  const [collectionId, docId] = idParam.split('-');
-  if (!collectionId || !docId) {
-    throw new Error('Invalid "id" parameter format in URL.');
-  }
+	const [collectionId, docId] = idParam.split('-')
+	if (!collectionId || !docId) {
+		throw new Error('Invalid "id" parameter format in URL.')
+	}
 
-  const playerInfoDoc = await getDoc(doc(db, collectionId, 'player-info'));
-  const playerName: string = playerInfoDoc.data()?.name;
+	const playerInfoDoc = await getDoc(doc(db, collectionId, 'player-info'))
+	const playerName: string = playerInfoDoc.data()?.name
 
 	return {
 		...data,
-    playerName: data.playerName !== undefined ? data.playerName : playerName,
+		playerName: data.playerName !== undefined ? data.playerName : playerName,
 		profilePicture: data.profilePicture || '',
 		allies: data.allies.map((ally) => {
 			return typeof ally === 'string'

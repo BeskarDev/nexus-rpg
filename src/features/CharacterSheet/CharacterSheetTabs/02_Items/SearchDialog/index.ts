@@ -1,5 +1,8 @@
 export { SearchDialog } from './GenericSearchDialog'
-export type { SearchDialogColumn, SearchDialogProps } from './GenericSearchDialog'
+export type {
+	SearchDialogColumn,
+	SearchDialogProps,
+} from './GenericSearchDialog'
 export { WeaponSearchDialog } from './WeaponSearchDialog'
 export type { WeaponSearchDialogProps } from './WeaponSearchDialog'
 export { EquipmentSearchDialog } from './EquipmentSearchDialog'

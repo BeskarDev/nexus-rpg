@@ -19,7 +19,7 @@ export type Character = {
 }
 export type Personal = {
 	name: string
-  playerName: string
+	playerName: string
 	folk: string
 	upbringing: string
 	background: string
@@ -159,7 +159,7 @@ export type Items = {
 	encumbrance: {
 		encumberedAt: number
 		overencumberedAt: number
-    carryModifier: number
+		carryModifier: number
 		currentLoad: number
 		mountMaxLoad: number
 		storageMaxLoad: number
@@ -253,7 +253,7 @@ export type Spells = {
 		total: number
 		current: number
 	}
-  spellCatalystDamage: number
+	spellCatalystDamage: number
 	spells: Spell[]
 }
 
@@ -265,7 +265,7 @@ export type Spell = {
 	target: TargetType
 	range: RangeType
 	properties: string
-  dealsDamage: boolean
+	dealsDamage: boolean
 	damage: Damage
 	effect: string
 }

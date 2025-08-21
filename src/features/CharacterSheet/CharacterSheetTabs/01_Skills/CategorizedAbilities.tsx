@@ -34,17 +34,18 @@ export const CategorizedAbilities: React.FC = () => {
 		() => activeCharacter.skills,
 		[activeCharacter.skills],
 	)
-	
-	const [settingsMenuAnchor, setSettingsMenuAnchor] = useState<null | HTMLElement>(null)
+
+	const [settingsMenuAnchor, setSettingsMenuAnchor] =
+		useState<null | HTMLElement>(null)
 	const [isCombatArtsDialogOpen, setIsCombatArtsDialogOpen] = useState(false)
 	const [isTalentsDialogOpen, setIsTalentsDialogOpen] = useState(false)
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
 			'Combat Art': [],
-			'Talent': [],
-			'Folk': [],
-			'Other': [],
+			Talent: [],
+			Folk: [],
+			Other: [],
 		}
 
 		abilities.forEach((ability) => {
@@ -60,19 +61,21 @@ export const CategorizedAbilities: React.FC = () => {
 	}
 
 	const updateAbility = (update: Partial<Ability>, abilityId: string) => {
-		const index = abilities.findIndex(a => a.id === abilityId)
+		const index = abilities.findIndex((a) => a.id === abilityId)
 		if (index >= 0) {
 			dispatch(characterSheetActions.updateAbility({ update, index }))
 		}
 	}
 
 	const moveAbilityToCategory = (abilityId: string, newTag: AbilityTag) => {
-		const index = abilities.findIndex(a => a.id === abilityId)
+		const index = abilities.findIndex((a) => a.id === abilityId)
 		if (index >= 0) {
-			dispatch(characterSheetActions.updateAbility({ 
-				update: { tag: newTag }, 
-				index 
-			}))
+			dispatch(
+				characterSheetActions.updateAbility({
+					update: { tag: newTag },
+					index,
+				}),
+			)
 		}
 	}
 
@@ -92,41 +95,45 @@ export const CategorizedAbilities: React.FC = () => {
 		setSettingsMenuAnchor(null)
 	}
 
-	const onAbilityReorder = (tag: AbilityTag) => ({ source, destination }: DropResult) => {
-		// dropped outside the list
-		if (!destination) return
+	const onAbilityReorder =
+		(tag: AbilityTag) =>
+		({ source, destination }: DropResult) => {
+			// dropped outside the list
+			if (!destination) return
 
-		const tagAbilities = abilitiesByTag[tag]
-		const sourceAbility = tagAbilities[source.index]
-		
-		// Check if we're dragging within the same category
-		if (source.droppableId === destination.droppableId) {
-			// Same category reordering
-			const destinationAbility = tagAbilities[destination.index]
-			const sourceGlobalIndex = abilities.findIndex(a => a.id === sourceAbility.id)
-			const destinationGlobalIndex = abilities.findIndex(a => a.id === destinationAbility.id)
+			const tagAbilities = abilitiesByTag[tag]
+			const sourceAbility = tagAbilities[source.index]
 
-			dispatch(
-				characterSheetActions.reorderAbility({
-					source: sourceGlobalIndex,
-					destination: destinationGlobalIndex,
-				}),
-			)
+			// Check if we're dragging within the same category
+			if (source.droppableId === destination.droppableId) {
+				// Same category reordering
+				const destinationAbility = tagAbilities[destination.index]
+				const sourceGlobalIndex = abilities.findIndex(
+					(a) => a.id === sourceAbility.id,
+				)
+				const destinationGlobalIndex = abilities.findIndex(
+					(a) => a.id === destinationAbility.id,
+				)
+
+				dispatch(
+					characterSheetActions.reorderAbility({
+						source: sourceGlobalIndex,
+						destination: destinationGlobalIndex,
+					}),
+				)
+			}
 		}
-	}
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'column', width: '25rem' }}>
 			{/* Header with category settings menu */}
 			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
-				<SectionHeader sx={{ mb: 0}}>
-					Abilities
-				</SectionHeader>
+				<SectionHeader sx={{ mb: 0 }}>Abilities</SectionHeader>
 				<Tooltip title="toggle ability categories">
 					<IconButton
 						size="small"
 						onClick={handleSettingsMenuOpen}
-						sx={{ 
+						sx={{
 							border: '1px solid',
 							borderColor: 'divider',
 						}}
@@ -134,7 +141,7 @@ export const CategorizedAbilities: React.FC = () => {
 						<Build fontSize="inherit" />
 					</IconButton>
 				</Tooltip>
-				
+
 				<Menu
 					anchorEl={settingsMenuAnchor}
 					open={Boolean(settingsMenuAnchor)}
@@ -164,21 +171,17 @@ export const CategorizedAbilities: React.FC = () => {
 					})}
 				</Menu>
 			</Box>
-			
+
 			{ABILITY_TAGS.map((tag) => {
 				const tagAbilities = abilitiesByTag[tag]
 				const isVisible = abilityCategoryVisibility?.[tag] ?? true
-				
+
 				if (!isVisible) {
 					return null
 				}
-				
+
 				return (
-					<Accordion 
-						key={tag}
-						defaultExpanded 
-						sx={{ flexGrow: 1 }}
-					>
+					<Accordion key={tag} defaultExpanded sx={{ flexGrow: 1 }}>
 						<AccordionSummary expandIcon={<ExpandMore />}>
 							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 								<SectionHeader sx={{ mb: 0 }}>{tag}</SectionHeader>
@@ -221,8 +224,8 @@ export const CategorizedAbilities: React.FC = () => {
 							</Box>
 						</AccordionSummary>
 						<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
-							<DynamicList 
-								droppableId={`abilities-${tag}`} 
+							<DynamicList
+								droppableId={`abilities-${tag}`}
 								onDragEnd={onAbilityReorder(tag)}
 							>
 								{tagAbilities.map((ability, index) => (
@@ -240,8 +243,12 @@ export const CategorizedAbilities: React.FC = () => {
 											actionType={ability.actionType}
 											rank={ability.rank}
 											availableTags={ABILITY_TAGS}
-											updateAbility={(update) => updateAbility(update, ability.id)}
-											moveToCategory={(newTag) => moveAbilityToCategory(ability.id, newTag)}
+											updateAbility={(update) =>
+												updateAbility(update, ability.id)
+											}
+											moveToCategory={(newTag) =>
+												moveAbilityToCategory(ability.id, newTag)
+											}
 											deleteAbility={() => deleteAbility(ability)}
 										/>
 									</DynamicListItem>
@@ -251,25 +258,25 @@ export const CategorizedAbilities: React.FC = () => {
 					</Accordion>
 				)
 			})}
-			
+
 			<CombatArtsSearchDialog
 				open={isCombatArtsDialogOpen}
 				onClose={() => setIsCombatArtsDialogOpen(false)}
 				character={activeCharacter}
 				onImportCombatArts={(combatArts) => {
-					combatArts.forEach(combatArt => {
+					combatArts.forEach((combatArt) => {
 						dispatch(characterSheetActions.importAbilities([combatArt]))
 					})
 					setIsCombatArtsDialogOpen(false)
 				}}
 			/>
-			
+
 			<TalentsSearchDialog
 				open={isTalentsDialogOpen}
 				onClose={() => setIsTalentsDialogOpen(false)}
 				character={activeCharacter}
 				onImportTalents={(talents) => {
-					talents.forEach(talent => {
+					talents.forEach((talent) => {
 						dispatch(characterSheetActions.importAbilities([talent]))
 					})
 					setIsTalentsDialogOpen(false)

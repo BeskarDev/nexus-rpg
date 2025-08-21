@@ -69,8 +69,8 @@ export function SearchDialog<T>({
 			const query = searchQuery.toLowerCase()
 			filtered = filtered.filter((item) =>
 				searchFields.some((field) =>
-					String(item[field]).toLowerCase().includes(query)
-				)
+					String(item[field]).toLowerCase().includes(query),
+				),
 			)
 		}
 
@@ -170,14 +170,23 @@ export function SearchDialog<T>({
 					{selectedItems.size > 0 && ` · ${selectedItems.size} selected`}
 				</Typography>
 
-				<TableContainer component={Paper} sx={{ maxHeight: '450px', overflow: 'auto' }}>
+				<TableContainer
+					component={Paper}
+					sx={{ maxHeight: '450px', overflow: 'auto' }}
+				>
 					<Table stickyHeader size="small">
 						<TableHead>
 							<TableRow>
 								<TableCell padding="checkbox">
 									<Checkbox
-										indeterminate={selectedItems.size > 0 && selectedItems.size < filteredData.length}
-										checked={filteredData.length > 0 && selectedItems.size === filteredData.length}
+										indeterminate={
+											selectedItems.size > 0 &&
+											selectedItems.size < filteredData.length
+										}
+										checked={
+											filteredData.length > 0 &&
+											selectedItems.size === filteredData.length
+										}
 										onChange={(e) => handleSelectAll(e.target.checked)}
 									/>
 								</TableCell>
@@ -246,7 +255,8 @@ export function SearchDialog<T>({
 					variant="contained"
 					disabled={selectedItems.size === 0}
 				>
-					{importButtonText} {selectedItems.size} item{selectedItems.size !== 1 ? 's' : ''}
+					{importButtonText} {selectedItems.size} item
+					{selectedItems.size !== 1 ? 's' : ''}
 				</Button>
 			</DialogActions>
 		</Dialog>

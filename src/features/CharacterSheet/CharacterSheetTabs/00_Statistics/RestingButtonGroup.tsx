@@ -200,13 +200,22 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	return (
 		<Box {...props}>
 			<ButtonGroup variant="outlined">
-				<Button size={isMobile ? 'small' : 'medium'} onClick={() => handleOpen('shortBreak')}>
+				<Button
+					size={isMobile ? 'small' : 'medium'}
+					onClick={() => handleOpen('shortBreak')}
+				>
 					Short Break
 				</Button>
-				<Button size={isMobile ? 'small' : 'medium'} onClick={() => handleOpen('nightsRest')}>
+				<Button
+					size={isMobile ? 'small' : 'medium'}
+					onClick={() => handleOpen('nightsRest')}
+				>
 					Night's Rest
 				</Button>
-				<Button size={isMobile ? 'small' : 'medium'} onClick={() => handleOpen('badNight')}>
+				<Button
+					size={isMobile ? 'small' : 'medium'}
+					onClick={() => handleOpen('badNight')}
+				>
 					Bad Night
 				</Button>
 			</ButtonGroup>
