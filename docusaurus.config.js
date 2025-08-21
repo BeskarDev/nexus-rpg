@@ -5,6 +5,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github')
 const darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
 const autoKeywordPlugin = require('./src/remark/auto-keyword-plugin');
+const tableChipsPlugin = require('./src/remark/table-chips-plugin');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -193,7 +194,7 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve('./sidebars.js'),
-          remarkPlugins: [autoKeywordPlugin]
+          remarkPlugins: [tableChipsPlugin, autoKeywordPlugin]
 				},
 				theme: {
 					customCss: require.resolve('./src/css/custom.css'),
