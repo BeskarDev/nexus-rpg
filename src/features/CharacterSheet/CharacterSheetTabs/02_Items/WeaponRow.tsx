@@ -6,7 +6,6 @@ import {
 	Checkbox,
 	Divider,
 	FormGroup,
-	FormControlLabel,
 	IconButton,
 	MenuItem,
 	TextField,
@@ -93,20 +92,15 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						sx={{ maxWidth: '14rem' }}
 					/>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-						{[1, 2, 3].map((useNumber) => (
-							<Checkbox
-								key={useNumber}
-								size="small"
-								checked={initialWeapon.uses >= useNumber}
-								onChange={(event) => {
-									const newUses = event.target.checked
-										? Math.max(initialWeapon.uses, useNumber)
-										: Math.min(initialWeapon.uses, useNumber - 1)
-									updateWeapon({ uses: newUses })
-								}}
-								sx={{ padding: 0.25 }}
-							/>
-						))}
+						<Typography
+							variant="caption"
+							sx={{ 
+								fontSize: '0.75rem',
+								color: initialWeapon.uses >= 3 ? 'error.main' : 'text.secondary'
+							}}
+						>
+							{3 - initialWeapon.uses}/3
+						</Typography>
 						{initialWeapon.uses >= 3 && (
 							<Typography
 								variant="caption"
@@ -212,21 +206,16 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						<Typography variant="caption">Uses</Typography>
 						<FormGroup row>
 							{[1, 2, 3].map((useNumber) => (
-								<FormControlLabel
+								<Checkbox
 									key={useNumber}
-									control={
-										<Checkbox
-											size="small"
-											checked={initialWeapon.uses >= useNumber}
-											onChange={(event) => {
-												const newUses = event.target.checked
-													? Math.max(initialWeapon.uses, useNumber)
-													: Math.min(initialWeapon.uses, useNumber - 1)
-												updateWeapon({ uses: newUses })
-											}}
-										/>
-									}
-									label={useNumber.toString()}
+									size="small"
+									checked={initialWeapon.uses >= useNumber}
+									onChange={(event) => {
+										const newUses = event.target.checked
+											? useNumber
+											: useNumber - 1
+										updateWeapon({ uses: newUses })
+									}}
 								/>
 							))}
 						</FormGroup>
