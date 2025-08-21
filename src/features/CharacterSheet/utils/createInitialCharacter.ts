@@ -29,21 +29,6 @@ export const createInitialCharacter = (
 				total: 0,
 				temp: 0,
 				current: 0,
-				woundOne: {
-					injury: false,
-					fatigueOne: false,
-					fatigueTwo: false,
-				},
-				woundTwo: {
-					injury: false,
-					fatigueOne: false,
-					fatigueTwo: false,
-				},
-				woundThree: {
-					injury: false,
-					fatigueOne: false,
-					fatigueTwo: false,
-				},
 			},
 			av: {
 				armor: 0,
@@ -71,6 +56,11 @@ export const createInitialCharacter = (
 			dodge: 0,
 			resist: 0,
 			resolve: 0,
+			fatigue: {
+				current: 0,
+				max: 0,
+			},
+			statusEffects: [],
 		},
 		skills: {
 			xp: {
@@ -87,6 +77,8 @@ export const createInitialCharacter = (
 				overencumberedAt: 0,
 				carryModifier: 0,
 				currentLoad: 0,
+				mountMaxLoad: 0,
+				storageMaxLoad: 0,
 			},
 			weapons: [],
 			items: includeStartingGear
@@ -103,6 +95,8 @@ export const createInitialCharacter = (
 							container: 'worn',
 							amount: 1,
 							location: 'Equipped Gear' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 						{
 							id: uuidv4(),
@@ -116,6 +110,8 @@ export const createInitialCharacter = (
 							container: 'worn',
 							amount: 2,
 							location: 'Equipped Gear' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 						{
 							id: uuidv4(),
@@ -129,6 +125,8 @@ export const createInitialCharacter = (
 							container: 'worn',
 							amount: 1,
 							location: 'Equipped Gear' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 						{
 							id: uuidv4(),
@@ -142,6 +140,8 @@ export const createInitialCharacter = (
 							container: 'backpack',
 							amount: 1,
 							location: 'Carried Items' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 						{
 							id: uuidv4(),
@@ -155,6 +155,8 @@ export const createInitialCharacter = (
 							container: 'backpack',
 							amount: 1,
 							location: 'Carried Items' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 						{
 							id: uuidv4(),
@@ -168,6 +170,8 @@ export const createInitialCharacter = (
 							container: 'backpack',
 							amount: 1,
 							location: 'Carried Items' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 						{
 							id: uuidv4(),
@@ -181,6 +185,8 @@ export const createInitialCharacter = (
 							container: 'backpack',
 							amount: 1,
 							location: 'Carried Items' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 						{
 							id: uuidv4(),
@@ -194,6 +200,8 @@ export const createInitialCharacter = (
 							container: 'backpack',
 							amount: 1,
 							location: 'Carried Items' as ItemLocation,
+							uses: 0,
+							durability: '',
 						},
 					]
 				: [],

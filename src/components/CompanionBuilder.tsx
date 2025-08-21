@@ -697,7 +697,7 @@ ${markdownAbilities}`
 																	{attr.toUpperCase()}
 																</Typography>
 																<Typography variant="body2" fontWeight="bold">
-																	{value}
+																	{String(value)}
 																</Typography>
 															</Grid>
 														))}

@@ -230,12 +230,11 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 								}}
 								imgProps={{
 									// Prevent image from being treated as zoomable by Docusaurus
-									'data-zoom-src': undefined,
 									draggable: false,
 									style: {
 										cursor: uploading ? 'default' : 'pointer',
 									},
-								}}
+								} as any}
 							/>
 							{currentImage && !uploading && (
 								<IconButton

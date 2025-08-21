@@ -4,6 +4,7 @@ import {
 	Ability,
 	CharacterDocument,
 	Companion,
+	DurabilityDie,
 	Item,
 	Skill,
 	Spell,
@@ -15,6 +16,7 @@ import { AbilityTag } from '@site/src/types/AbilityTag'
 import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
+import { getDurabilityForItem } from './CharacterSheetTabs/02_Items/utils/durabilityUtils'
 
 function isObject(value: any) {
 	return value !== null && typeof value === 'object'
@@ -101,6 +103,17 @@ export const {
 			if (!character.items.items) {
 				character.items.items = []
 			}
+			// Migrate weapons and items to include uses and durability if missing
+			character.items.weapons = character.items.weapons.map((weapon) => ({
+				uses: 0,
+				durability: '',
+				...weapon,
+			}))
+			character.items.items = character.items.items.map((item) => ({
+				uses: 0,
+				durability: '',
+				...item,
+			}))
 			// Ensure encumbrance has mount and storage max load fields
 			if (!character.items.encumbrance) {
 				character.items.encumbrance = {
@@ -245,46 +258,66 @@ export const {
 				cost: 0,
 				load: 0,
 				location: 'worn' as ItemLocation,
+				uses: 0,
+				durability: '',
 			})
 		},
 		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
 			state.unsavedChanges = true
-			const newWeapons = action.payload.map((weapon) => ({
-				id: crypto.randomUUID(),
-				name: '',
-				damage: {
-					base: 'STR' as const,
-					weapon: 0,
-					other: 0,
-					otherWeak: 0,
-					otherStrong: 0,
-					otherCritical: 0,
-					type: 'physical' as const,
-				},
-				properties: '',
-				description: '',
-				cost: 0,
-				load: 0,
-				location: 'worn' as ItemLocation,
-				...weapon,
-			}))
+			const newWeapons = action.payload.map((weapon) => {
+				const newWeapon = {
+					id: crypto.randomUUID(),
+					name: '',
+					damage: {
+						base: 'STR' as const,
+						weapon: 0,
+						other: 0,
+						otherWeak: 0,
+						otherStrong: 0,
+						otherCritical: 0,
+						type: 'physical' as const,
+					},
+					properties: '',
+					description: '',
+					cost: 0,
+					load: 0,
+					location: 'worn' as ItemLocation,
+					uses: 0,
+					durability: '' as DurabilityDie,
+					...weapon,
+				}
+				// Auto-fill durability if not already set
+				if (!newWeapon.durability) {
+					newWeapon.durability = getDurabilityForItem(newWeapon)
+				}
+				return newWeapon
+			})
 			state.activeCharacter.items.weapons.unshift(...newWeapons)
 		},
 		importItems: (state, action: PayloadAction<Partial<Item>[]>) => {
 			state.unsavedChanges = true
-			const newItems = action.payload.map((item) => ({
-				id: crypto.randomUUID(),
-				name: '',
-				properties: '',
-				description: '',
-				slot: '' as const,
-				cost: 0,
-				load: 0,
-				container: '' as const,
-				amount: 1,
-				location: 'carried' as ItemLocation,
-				...item,
-			}))
+			const newItems = action.payload.map((item) => {
+				const newItem = {
+					id: crypto.randomUUID(),
+					name: '',
+					properties: '',
+					description: '',
+					slot: '' as const,
+					cost: 0,
+					load: 0,
+					container: '' as const,
+					amount: 1,
+					location: 'carried' as ItemLocation,
+					uses: 0,
+					durability: '' as DurabilityDie,
+					...item,
+				}
+				// Auto-fill durability if not already set
+				if (!newItem.durability) {
+					newItem.durability = getDurabilityForItem(newItem)
+				}
+				return newItem
+			})
 			state.activeCharacter.items.items.unshift(...newItems)
 		},
 		updateWeapon: (
@@ -331,6 +364,8 @@ export const {
 				slot: '',
 				amount: 1,
 				location: 'carried' as ItemLocation,
+				uses: 0,
+				durability: '',
 			})
 		},
 		addNewItemToLocation: (state, action: PayloadAction<ItemLocation>) => {
@@ -346,6 +381,8 @@ export const {
 				slot: action.payload === 'worn' ? '' : '',
 				amount: 1,
 				location: action.payload,
+				uses: 0,
+				durability: '',
 			})
 		},
 		addNewWeaponToLocation: (state, action: PayloadAction<ItemLocation>) => {
@@ -367,6 +404,8 @@ export const {
 				cost: 0,
 				load: 0,
 				location: action.payload,
+				uses: 0,
+				durability: '',
 			})
 		},
 		updateItem: (

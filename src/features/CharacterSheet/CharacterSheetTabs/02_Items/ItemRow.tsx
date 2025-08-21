@@ -3,9 +3,12 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	Box,
+	Checkbox,
+	FormGroup,
 	IconButton,
 	MenuItem,
 	TextField,
+	Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -13,6 +16,8 @@ import { Delete, ExpandMore } from '@mui/icons-material'
 import {
 	ContainerType,
 	containerTypeArray,
+	DurabilityDie,
+	durabilityDieArray,
 	EquipmentSlotType,
 	equipmentSlotTypeArray,
 	Item,
@@ -131,6 +136,25 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						label="Amount"
 						sx={{ maxWidth: '2.5rem', flexGrow: 0 }}
 					/>
+					<AttributeField
+						disabled
+						size="small"
+						variant="standard"
+						value={`${3 - (initialItem.uses || 0)}/3`}
+						label="Uses"
+						sx={{ 
+							maxWidth: '2.5rem'
+						}}
+						InputProps={{
+							sx: {
+								color: (initialItem.uses || 0) === 3 
+									? 'error.main' 
+									: (initialItem.uses || 0) === 2 
+									? 'warning.main' 
+									: 'text.primary'
+							}
+						}}
+					/>
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -193,6 +217,47 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						{equipmentSlotTypeArray.map((slot) => (
 							<MenuItem key={slot} value={slot}>
 								{slot}
+							</MenuItem>
+						))}
+					</AttributeField>
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}>
+						<Typography variant="caption">Uses</Typography>
+						<FormGroup row sx={{ gap: 0.25 }}>
+							{[1, 2, 3].map((useNumber) => (
+								<Checkbox
+									key={useNumber}
+									size="small"
+									checked={(initialItem.uses || 0) >= useNumber}
+									onChange={(event) => {
+										const newUses = event.target.checked
+											? useNumber
+											: useNumber - 1
+										updateItem({ uses: newUses })
+									}}
+									sx={{ p: 0.25 }}
+								/>
+							))}
+						</FormGroup>
+						{(initialItem.uses || 0) >= 3 && initialItem.location === 'worn' && initialItem.slot && (
+							<Typography variant="caption" color="error">
+								Item is damaged
+							</Typography>
+						)}
+					</Box>
+					<AttributeField
+						select
+						size="small"
+						variant="standard"
+						value={initialItem.durability || ''}
+						onChange={(event) =>
+							updateItem({ durability: event.target.value as DurabilityDie })
+						}
+						label="Durability"
+						sx={{ maxWidth: '4.25rem' }}
+					>
+						{durabilityDieArray.map((die) => (
+							<MenuItem key={die} value={die}>
+								{die || 'None'}
 							</MenuItem>
 						))}
 					</AttributeField>

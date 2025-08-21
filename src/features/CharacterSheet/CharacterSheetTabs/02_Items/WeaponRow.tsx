@@ -3,15 +3,18 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	Box,
-	IconButton,
-	TextField,
-	MenuItem,
+	Checkbox,
 	Divider,
+	FormGroup,
+	IconButton,
+	MenuItem,
+	TextField,
+	Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete, ExpandMore } from '@mui/icons-material'
-import { Weapon } from '../../../../types/Character'
+import { DurabilityDie, durabilityDieArray, Weapon } from '../../../../types/Character'
 import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
 import { DamageFields } from '../DamageFields'
@@ -87,6 +90,25 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						onBlur={() => updateWeapon({ properties: weapon.properties })}
 						label="Properties"
 						sx={{ maxWidth: '14rem' }}
+					/>
+					<AttributeField
+						disabled
+						size="small"
+						variant="standard"
+						value={`${3 - (initialWeapon.uses || 0)}/3`}
+						label="Uses"
+						sx={{ 
+							maxWidth: '2.5rem'
+						}}
+						InputProps={{
+							sx: {
+								color: (initialWeapon.uses || 0) === 3 
+									? 'error.main' 
+									: (initialWeapon.uses || 0) === 2 
+									? 'warning.main' 
+									: 'text.primary'
+							}
+						}}
 					/>
 				</Box>
 			</AccordionSummary>
@@ -179,6 +201,47 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 							sx={{ maxWidth: '8rem' }}
 						/>
 					)}
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}>
+						<Typography variant="caption">Uses</Typography>
+						<FormGroup row sx={{ gap: 0.25 }}>
+							{[1, 2, 3].map((useNumber) => (
+								<Checkbox
+									key={useNumber}
+									size="small"
+									checked={(initialWeapon.uses || 0) >= useNumber}
+									onChange={(event) => {
+										const newUses = event.target.checked
+											? useNumber
+											: useNumber - 1
+										updateWeapon({ uses: newUses })
+									}}
+									sx={{ p: 0.25 }}
+								/>
+							))}
+						</FormGroup>
+						{(initialWeapon.uses || 0) >= 3 && (
+							<Typography variant="caption" color="error">
+								Weapon is damaged
+							</Typography>
+						)}
+					</Box>
+					<AttributeField
+						select
+						size="small"
+						variant="standard"
+						value={initialWeapon.durability || ''}
+						onChange={(event) =>
+							updateWeapon({ durability: event.target.value as DurabilityDie })
+						}
+						label="Durability"
+						sx={{ maxWidth: '4.25rem' }}
+					>
+						{durabilityDieArray.map((die) => (
+							<MenuItem key={die} value={die}>
+								{die || 'None'}
+							</MenuItem>
+						))}
+					</AttributeField>
 					<IconButton
 						size="small"
 						edge="end"

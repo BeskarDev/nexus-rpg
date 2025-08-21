@@ -22,7 +22,7 @@ on:
     types: [copilot-agent-setup]
 
 env:
-  NODE_VERSION: '22'
+  NODE_VERSION: '20'
 
 jobs:
   copilot-setup-steps:
@@ -42,6 +42,16 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           # Don't use built-in cache here, we'll handle it manually for flexibility
           cache: ''
+          
+      - name: Verify Node.js version
+        run: |
+          echo "Node.js version: $(node --version)"
+          echo "NPM version: $(npm --version)"
+          # Ensure we're using the correct Node.js version
+          if ! node --version | grep -q "v20"; then
+            echo "ERROR: Expected Node.js v20.x.x but got $(node --version)"
+            exit 1
+          fi
 
       - name: Detect package manager
         id: detect-pm
