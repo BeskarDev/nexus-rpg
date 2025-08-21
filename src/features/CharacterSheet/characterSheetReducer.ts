@@ -4,6 +4,7 @@ import {
 	Ability,
 	CharacterDocument,
 	Companion,
+	DurabilityDie,
 	Item,
 	Skill,
 	Spell,
@@ -245,6 +246,8 @@ export const {
 				cost: 0,
 				load: 0,
 				location: 'worn' as ItemLocation,
+				uses: 0,
+				durability: '',
 			})
 		},
 		importWeapons: (state, action: PayloadAction<Partial<Weapon>[]>) => {
@@ -266,6 +269,8 @@ export const {
 				cost: 0,
 				load: 0,
 				location: 'worn' as ItemLocation,
+				uses: 0,
+				durability: '' as DurabilityDie,
 				...weapon,
 			}))
 			state.activeCharacter.items.weapons.unshift(...newWeapons)
@@ -283,6 +288,8 @@ export const {
 				container: '' as const,
 				amount: 1,
 				location: 'carried' as ItemLocation,
+				uses: 0,
+				durability: '' as DurabilityDie,
 				...item,
 			}))
 			state.activeCharacter.items.items.unshift(...newItems)
@@ -331,6 +338,8 @@ export const {
 				slot: '',
 				amount: 1,
 				location: 'carried' as ItemLocation,
+				uses: 0,
+				durability: '',
 			})
 		},
 		addNewItemToLocation: (state, action: PayloadAction<ItemLocation>) => {
@@ -346,6 +355,8 @@ export const {
 				slot: action.payload === 'worn' ? '' : '',
 				amount: 1,
 				location: action.payload,
+				uses: 0,
+				durability: '',
 			})
 		},
 		addNewWeaponToLocation: (state, action: PayloadAction<ItemLocation>) => {
@@ -367,6 +378,8 @@ export const {
 				cost: 0,
 				load: 0,
 				location: action.payload,
+				uses: 0,
+				durability: '',
 			})
 		},
 		updateItem: (
