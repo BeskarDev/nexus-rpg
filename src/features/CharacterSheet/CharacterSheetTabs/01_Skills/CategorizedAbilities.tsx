@@ -242,7 +242,7 @@ export const CategorizedAbilities: React.FC = () => {
 											tag={ability.tag}
 											actionType={ability.actionType}
 											rank={ability.rank}
-											availableTags={ABILITY_TAGS}
+											availableTags={[...ABILITY_TAGS]}
 											updateAbility={(update) =>
 												updateAbility(update, ability.id)
 											}
