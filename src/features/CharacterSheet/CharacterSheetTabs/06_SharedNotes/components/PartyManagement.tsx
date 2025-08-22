@@ -163,9 +163,14 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				severity: 'success'
 			})
 		} catch (error) {
+			console.error('Confirm action error:', error)
+			let errorMessage = 'Action failed'
+			if (error instanceof Error) {
+				errorMessage = error.message || errorMessage
+			}
 			setSnackbar({
 				open: true,
-				message: 'Action failed',
+				message: errorMessage,
 				severity: 'error'
 			})
 		}

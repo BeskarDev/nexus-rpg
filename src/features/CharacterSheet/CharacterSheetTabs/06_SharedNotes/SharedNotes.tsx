@@ -305,7 +305,12 @@ export const SharedNotes: React.FC = () => {
 	}
 
 	const handleDeleteParty = async () => {
-		if (!partyInfo || !characterId) return
+		if (!partyInfo || !characterId) {
+			console.error('Missing party info or character ID for deletion')
+			return
+		}
+		
+		console.log('Attempting to delete party:', { partyId: partyInfo.party.id, characterId })
 		
 		setPartyLoading(true)
 		try {
@@ -315,6 +320,7 @@ export const SharedNotes: React.FC = () => {
 			setOriginalNotes('')
 		} catch (error) {
 			console.error('Failed to delete party:', error)
+			setError(error instanceof Error ? error.message : 'Failed to delete party')
 			throw error
 		} finally {
 			setPartyLoading(false)

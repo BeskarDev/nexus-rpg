@@ -211,26 +211,46 @@ export class PartyService {
 	 * Delete a party entirely (only allowed if you're the only member or the creator)
 	 */
 	static async deleteParty(partyId: string, characterId: string): Promise<void> {
-		const partyRef = doc(db, 'parties', partyId)
-		const partyDoc = await getDoc(partyRef)
-		
-		if (!partyDoc.exists()) {
-			throw new Error('Party not found')
+		try {
+			console.log('PartyService.deleteParty called with:', { partyId, characterId })
+			
+			const partyRef = doc(db, 'parties', partyId)
+			const partyDoc = await getDoc(partyRef)
+			
+			if (!partyDoc.exists()) {
+				throw new Error('Party not found')
+			}
+			
+			const party = partyDoc.data() as Party
+			console.log('Party data:', party)
+			
+			// Only allow deletion if the character is the only member
+			if (party.members.length !== 1 || !party.members.includes(characterId)) {
+				throw new Error('You can only delete a party if you are the only member')
+			}
+			
+			// Remove party reference from character
+			const [collectionId, docId] = characterId.split('-')
+			console.log('Updating character:', { collectionId, docId })
+			
+			if (!collectionId || !docId) {
+				throw new Error('Invalid character ID format')
+			}
+			
+			await updateDoc(doc(db, collectionId, docId), { partyId: null })
+			console.log('Character updated successfully')
+			
+			// Delete the party
+			await deleteDoc(partyRef)
+			console.log('Party deleted successfully')
+			
+		} catch (error) {
+			console.error('PartyService.deleteParty error:', error)
+			if (error instanceof Error) {
+				throw error
+			}
+			throw new Error('Failed to delete party: Unknown error')
 		}
-		
-		const party = partyDoc.data() as Party
-		
-		// Only allow deletion if the character is the only member
-		if (party.members.length !== 1 || !party.members.includes(characterId)) {
-			throw new Error('You can only delete a party if you are the only member')
-		}
-		
-		// Remove party reference from character
-		const [collectionId, docId] = characterId.split('-')
-		await updateDoc(doc(db, collectionId, docId), { partyId: null })
-		
-		// Delete the party
-		await deleteDoc(partyRef)
 	}
 
 	/**
