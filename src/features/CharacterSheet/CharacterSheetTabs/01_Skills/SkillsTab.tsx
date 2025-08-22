@@ -239,7 +239,7 @@ export const SkillsTab: React.FC = () => {
 				)}
 
 				{/* Selected Skills as Chips */}
-				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
+				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2 }}>
 					{skills
 						.slice()
 						.sort((a, b) => a.name.localeCompare(b.name))
@@ -265,40 +265,46 @@ export const SkillsTab: React.FC = () => {
 						const skillRank = calculateSkillRank(skill.xp)
 
 						return (
-							<Box key={skill.id} sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+							<Box key={skill.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
 								<Chip
 									label={skill.name}
 									onDelete={() => handleSkillDeletion(skill.name)}
 									sx={{
 										backgroundColor: getSkillChipColor(skill.name),
+										color: 'white',
+										minWidth: '120px',
 										'& .MuiChip-label': {
 											fontWeight: 500,
 										},
+										'& .MuiChip-deleteIcon': {
+											color: 'rgba(255, 255, 255, 0.7)',
+											'&:hover': {
+												color: 'white',
+											},
+										},
 									}}
 								/>
-								<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5 }}>
-									<Typography variant="caption" sx={{ fontSize: '0.7rem', color: 'text.secondary' }}>
-										Rank {skillRank}
-									</Typography>
-									<AttributeField
-										size="small"
-										type="number"
-										value={skill.xp}
-										onChange={(e) => updateSkill(skill.name, { xp: Number(e.target.value) })}
-										label="XP"
-										sx={{ 
-											width: '60px',
-											'& .MuiInputBase-input': {
-												padding: '4px 6px',
-												fontSize: '0.75rem',
-												textAlign: 'center'
-											},
-											'& .MuiInputLabel-root': {
-												fontSize: '0.7rem',
-											}
-										}}
-									/>
-								</Box>
+								<Typography variant="caption" sx={{ fontSize: '0.7rem', color: 'text.secondary', minWidth: '50px' }}>
+									Rank {skillRank}
+								</Typography>
+								<AttributeField
+									size="small"
+									type="number"
+									value={skill.xp}
+									onChange={(e) => updateSkill(skill.name, { xp: Number(e.target.value) })}
+									label="XP"
+									sx={{ 
+										width: '60px',
+										'& .MuiInputBase-input': {
+											padding: '4px 6px',
+											fontSize: '0.75rem',
+											textAlign: 'center'
+										},
+										'& .MuiInputLabel-root': {
+											fontSize: '0.7rem',
+										}
+									}}
+								/>
 							</Box>
 						)
 					})}
@@ -358,6 +364,16 @@ export const SkillsTab: React.FC = () => {
 									onDelete={() => removeProfession(profession)}
 									sx={{
 										backgroundColor: getProfessionChipColor(profession),
+										color: 'white',
+										'& .MuiChip-label': {
+											fontWeight: 500,
+										},
+										'& .MuiChip-deleteIcon': {
+											color: 'rgba(255, 255, 255, 0.7)',
+											'&:hover': {
+												color: 'white',
+											},
+										},
 									}}
 								/>
 							))}
