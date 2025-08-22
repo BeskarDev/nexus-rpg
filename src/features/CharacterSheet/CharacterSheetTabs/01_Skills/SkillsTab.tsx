@@ -145,12 +145,34 @@ export const SkillsTab: React.FC = () => {
 		dispatch(characterSheetActions.removeProfession(professionName))
 	}
 
-	const updateSkill = (skillName: string, update: { xp?: number }) => {
+	const updateSkill = (skillName: string, update: { xp?: number; rank?: number }) => {
 		const skillIndex = skills.findIndex((s) => s.name === skillName)
 		if (skillIndex >= 0) {
+			// Calculate rank from XP if XP is being updated
+			let skillUpdate = { ...update }
+			if (update.xp !== undefined) {
+				const calculateSkillRank = (xp: number): number => {
+					switch (true) {
+						case xp <= 1:
+							return 0
+						case xp <= 5:
+							return 1
+						case xp <= 11:
+							return 2
+						case xp <= 19:
+							return 3
+						case xp <= 29:
+							return 4
+						default:
+							return 5
+					}
+				}
+				skillUpdate.rank = calculateSkillRank(update.xp)
+			}
+			
 			dispatch(
 				characterSheetActions.updateSkill({
-					update,
+					update: skillUpdate,
 					index: skillIndex,
 				}),
 			)

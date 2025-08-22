@@ -73,6 +73,23 @@ export type Statistics = {
 	parry: number
 	dodge: number
 	resist: number
+	// New detailed defense structures for auto-calculation
+	parryDetails?: {
+		base: number // auto-calculated: 7 + Fighting
+		levelBonus: number // auto-calculated: +1 at levels 3,5,7,9
+		shieldBonus: number // manual input, auto-populated from equipped shield
+		other: number // manual input
+	}
+	dodgeDetails?: {
+		base: number // auto-calculated: 5 + ½ Agility
+		levelBonus: number // auto-calculated: +1 at levels 3,5,7,9
+		other: number // manual input
+	}
+	resistDetails?: {
+		base: number // auto-calculated: 5 + ½ max(Spirit, Mind)
+		levelBonus: number // auto-calculated: +1 at levels 3,5,7,9
+		other: number // manual input
+	}
 	resolve: number
 	statusEffects: StatusEffect[]
 }

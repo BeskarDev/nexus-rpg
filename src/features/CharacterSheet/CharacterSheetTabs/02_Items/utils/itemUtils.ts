@@ -142,3 +142,36 @@ export const extractArmorValues = (itemsByLocation: OrganizedItems) => {
 
 	return { armorAV, helmetAV, shieldAV }
 }
+
+/**
+ * Extracts Parry defense bonus from equipped shields
+ */
+export const extractShieldParryBonus = (itemsByLocation: OrganizedItems): number => {
+	let shieldParryBonus = 0
+
+	// Check equipped weapons for shields
+	const equippedWeapons = itemsByLocation.worn.filter(
+		(item) => 'damage' in item,
+	) as Weapon[]
+	
+	equippedWeapons.forEach((weapon) => {
+		if (weapon.properties) {
+			// Look for shield indicators in properties or name
+			const isShield =
+				weapon.properties.toLowerCase().includes('shield') ||
+				weapon.name.toLowerCase().includes('shield')
+
+			if (isShield) {
+				// Look for parry bonus patterns: "Parry +X", "+X Parry", "Defense +X", "+X Defense"
+				const parryMatch = weapon.properties.match(
+					/(?:(?:Parry|Defense)\s*\+(\d+)|\+(\d+)\s*(?:Parry|Defense))/i,
+				)
+				if (parryMatch) {
+					shieldParryBonus = parseInt(parryMatch[1] || parryMatch[2])
+				}
+			}
+		}
+	})
+
+	return shieldParryBonus
+}

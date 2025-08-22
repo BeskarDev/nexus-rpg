@@ -97,14 +97,34 @@ export const {
 			if (!Array.isArray(character.statistics.statusEffects)) {
 				character.statistics.statusEffects = []
 			}
-			// Migrate skills to use normalized names
+			// Migrate skills to use normalized names and ensure ranks are calculated correctly
 			if (character.skills && character.skills.skills) {
 				character.skills.skills = character.skills.skills.map((skill) => {
 					const normalizedName = normalizeSkillName(skill.name) || skill.name
+					
+					// Calculate correct rank from XP for existing characters
+					const calculateSkillRank = (xp: number): number => {
+						switch (true) {
+							case xp <= 1:
+								return 0
+							case xp <= 5:
+								return 1
+							case xp <= 11:
+								return 2
+							case xp <= 19:
+								return 3
+							case xp <= 29:
+								return 4
+							default:
+								return 5
+						}
+					}
+					
 					return {
 						...skill,
 						name: normalizedName,
 						id: skill.id || crypto.randomUUID(),
+						rank: calculateSkillRank(skill.xp), // Ensure rank matches XP
 					}
 				})
 			}

@@ -142,6 +142,12 @@ export const createMockCharacter = (): CharacterDocument => {
 					rank: 1,
 					xp: 2,
 				},
+				{
+					id: generateId(),
+					name: 'Fighting',
+					rank: 1,
+					xp: 4,
+				},
 			],
 			professions: ['Alchemist', 'Inscriber'],
 			abilities: [
