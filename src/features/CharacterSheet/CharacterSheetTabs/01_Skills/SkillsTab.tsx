@@ -1,15 +1,22 @@
-import { HelpOutline } from '@mui/icons-material'
+import { Add, HelpOutline } from '@mui/icons-material'
 import {
 	Box,
+	Button,
 	Chip,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
 	FormControl,
+	IconButton,
 	InputLabel,
 	MenuItem,
 	Select,
 	Tooltip,
 	Typography,
 } from '@mui/material'
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { CharacterDocument } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
@@ -32,6 +39,13 @@ export const SkillsTab: React.FC = () => {
 		() => activeCharacter.skills,
 		[activeCharacter.skills],
 	)
+
+	// State for controlling dropdown visibility
+	const [showSkillDropdown, setShowSkillDropdown] = useState(false)
+	const [showProfessionDropdown, setShowProfessionDropdown] = useState(false)
+	
+	// State for skill deletion confirmation
+	const [skillToDelete, setSkillToDelete] = useState<string | null>(null)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -80,7 +94,29 @@ export const SkillsTab: React.FC = () => {
 	const addSkill = (skillName: string) => {
 		if (canAddSkills && availableSkills.includes(skillName)) {
 			dispatch(characterSheetActions.addSkill(skillName))
+			setShowSkillDropdown(false) // Hide dropdown after adding
 		}
+	}
+
+	const handleSkillDeletion = (skillName: string) => {
+		setSkillToDelete(skillName)
+	}
+
+	const confirmSkillDeletion = () => {
+		if (skillToDelete) {
+			dispatch(characterSheetActions.removeSkill(skillToDelete))
+			// If removing Crafting, also remove all professions
+			if (skillToDelete === 'Crafting') {
+				professions.forEach(profession => {
+					dispatch(characterSheetActions.removeProfession(profession))
+				})
+			}
+			setSkillToDelete(null)
+		}
+	}
+
+	const cancelSkillDeletion = () => {
+		setSkillToDelete(null)
 	}
 
 	const removeSkill = (skillName: string) => {
@@ -96,6 +132,7 @@ export const SkillsTab: React.FC = () => {
 	const addProfession = (professionName: string) => {
 		if (hasCraftingSkill && availableProfessions.includes(professionName)) {
 			dispatch(characterSheetActions.addProfession(professionName))
+			setShowProfessionDropdown(false) // Hide dropdown after adding
 		}
 	}
 
@@ -155,6 +192,17 @@ export const SkillsTab: React.FC = () => {
 				{/* Skills Section */}
 				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
 					<SectionHeader>Skills</SectionHeader>
+					{canAddSkills && availableSkills.length > 0 && (
+						<Tooltip title="Add Skill">
+							<IconButton
+								size="small"
+								onClick={() => setShowSkillDropdown(!showSkillDropdown)}
+								sx={{ ml: 1 }}
+							>
+								<Add fontSize="small" />
+							</IconButton>
+						</Tooltip>
+					)}
 					<Tooltip title="0-1 XP (rank 0), 2-5 XP (rank 1), 6-11 XP (rank 2), 12-19 XP (rank 3), 20-29 XP (rank 4), 30 XP (rank 5)">
 						<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
 					</Tooltip>
@@ -173,7 +221,7 @@ export const SkillsTab: React.FC = () => {
 				</Typography>
 
 				{/* Skills Dropdown */}
-				{canAddSkills && availableSkills.length > 0 && (
+				{showSkillDropdown && canAddSkills && availableSkills.length > 0 && (
 					<FormControl fullWidth sx={{ mb: 2 }}>
 						<InputLabel>Add Skill</InputLabel>
 						<Select
@@ -181,7 +229,7 @@ export const SkillsTab: React.FC = () => {
 							value=""
 							onChange={(e) => addSkill(e.target.value)}
 						>
-							{availableSkills.map(skill => (
+							{availableSkills.sort().map(skill => (
 								<MenuItem key={skill} value={skill}>
 									{skill}
 								</MenuItem>
@@ -192,7 +240,10 @@ export const SkillsTab: React.FC = () => {
 
 				{/* Selected Skills as Chips */}
 				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
-					{skills.map(skill => {
+					{skills
+						.slice()
+						.sort((a, b) => a.name.localeCompare(b.name))
+						.map(skill => {
 						// Calculate skill rank outside of useMemo to avoid React Hook errors
 						const calculateSkillRank = (xp: number): number => {
 							switch (true) {
@@ -217,7 +268,7 @@ export const SkillsTab: React.FC = () => {
 							<Box key={skill.id} sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
 								<Chip
 									label={skill.name}
-									onDelete={() => removeSkill(skill.name)}
+									onDelete={() => handleSkillDeletion(skill.name)}
 									sx={{
 										backgroundColor: getSkillChipColor(skill.name),
 										'& .MuiChip-label': {
@@ -256,7 +307,20 @@ export const SkillsTab: React.FC = () => {
 				{/* Professions Section */}
 				{hasCraftingSkill && (
 					<Box sx={{ mt: 3 }}>
-						<SectionHeader>Crafting Professions</SectionHeader>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
+							<SectionHeader>Crafting Professions</SectionHeader>
+							{availableProfessions.length > 0 && (
+								<Tooltip title="Add Profession">
+									<IconButton
+										size="small"
+										onClick={() => setShowProfessionDropdown(!showProfessionDropdown)}
+										sx={{ ml: 1 }}
+									>
+										<Add fontSize="small" />
+									</IconButton>
+								</Tooltip>
+							)}
+						</Box>
 						<Typography 
 							variant="body2" 
 							sx={{ mb: 2, color: 'text.secondary' }}
@@ -265,7 +329,7 @@ export const SkillsTab: React.FC = () => {
 						</Typography>
 
 						{/* Professions Dropdown */}
-						{availableProfessions.length > 0 && (
+						{showProfessionDropdown && availableProfessions.length > 0 && (
 							<FormControl fullWidth sx={{ mb: 2 }}>
 								<InputLabel>Add Profession</InputLabel>
 								<Select
@@ -273,7 +337,7 @@ export const SkillsTab: React.FC = () => {
 									value=""
 									onChange={(e) => addProfession(e.target.value)}
 								>
-									{availableProfessions.map(profession => (
+									{availableProfessions.sort().map(profession => (
 										<MenuItem key={profession} value={profession}>
 											{profession}
 										</MenuItem>
@@ -284,7 +348,10 @@ export const SkillsTab: React.FC = () => {
 
 						{/* Selected Professions as Chips */}
 						<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-							{professions.map(profession => (
+							{professions
+								.slice()
+								.sort((a, b) => a.localeCompare(b))
+								.map(profession => (
 								<Chip
 									key={profession}
 									label={profession}
@@ -300,6 +367,32 @@ export const SkillsTab: React.FC = () => {
 			</Box>
 
 			<CategorizedAbilities />
+
+			{/* Skill Deletion Confirmation Dialog */}
+			<Dialog
+				open={skillToDelete !== null}
+				onClose={cancelSkillDeletion}
+				aria-labelledby="delete-skill-dialog-title"
+				aria-describedby="delete-skill-dialog-description"
+			>
+				<DialogTitle id="delete-skill-dialog-title">
+					Confirm Skill Deletion
+				</DialogTitle>
+				<DialogContent>
+					<DialogContentText id="delete-skill-dialog-description">
+						Are you sure you want to remove the <strong>{skillToDelete}</strong> skill? 
+						{skillToDelete === 'Crafting' && professions.length > 0 && (
+							<span> This will also remove all selected professions.</span>
+						)}
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={cancelSkillDeletion}>Cancel</Button>
+					<Button onClick={confirmSkillDeletion} color="error" variant="contained">
+						Delete
+					</Button>
+				</DialogActions>
+			</Dialog>
 		</Box>
 	)
 }
