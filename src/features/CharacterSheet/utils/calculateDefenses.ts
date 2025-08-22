@@ -1,5 +1,7 @@
 import { AttributeType, Character } from '@site/src/types/Character'
 import { calculateCharacterLevel } from './calculateCharacterLevel'
+import { extractShieldParryBonus } from '../CharacterSheetTabs/02_Items/utils/itemUtils'
+import { organizeItemsByLocation } from '../CharacterSheetTabs/02_Items/utils/itemUtils'
 
 /**
  * Convert attribute die value to the numeric value used in calculations
@@ -66,4 +68,50 @@ export const calculateResistBase = (character: Character): number => {
 	const mindValue = getAttributeValue(character.statistics.mind.value)
 	const maxAttribute = Math.max(spiritValue, mindValue)
 	return 5 + Math.floor(maxAttribute / 2)
+}
+
+/**
+ * Migrate old character defense values to new detailed defense structures.
+ * This function preserves the original manual values by calculating the discrepancy
+ * between old values and auto-calculated values, putting the difference in the "other" fields.
+ */
+export const migrateCharacterDefenses = (character: Character) => {
+	// Get auto-calculated values
+	const autoParryBase = calculateParryBase(character)
+	const autoDodgeBase = calculateDodgeBase(character)
+	const autoResistBase = calculateResistBase(character)
+	const autoLevelBonus = calculateDefenseLevelBonus(character.skills.xp.total)
+	
+	// Get shield bonus for parry
+	const itemsByLocation = organizeItemsByLocation(character.items.weapons, character.items.items)
+	const autoShieldBonus = extractShieldParryBonus(itemsByLocation)
+	
+	// Get old manual values
+	const oldParry = character.statistics.parry
+	const oldDodge = character.statistics.dodge
+	const oldResist = character.statistics.resist
+	
+	// Calculate discrepancies (what was manually adjusted beyond auto-calculation)
+	const parryOther = oldParry - (autoParryBase + autoLevelBonus + autoShieldBonus)
+	const dodgeOther = oldDodge - (autoDodgeBase + autoLevelBonus)
+	const resistOther = oldResist - (autoResistBase + autoLevelBonus)
+	
+	return {
+		parryDetails: {
+			base: autoParryBase,
+			levelBonus: autoLevelBonus,
+			shieldBonus: autoShieldBonus,
+			other: parryOther
+		},
+		dodgeDetails: {
+			base: autoDodgeBase,
+			levelBonus: autoLevelBonus,
+			other: dodgeOther
+		},
+		resistDetails: {
+			base: autoResistBase,
+			levelBonus: autoLevelBonus,
+			other: resistOther
+		}
+	}
 }

@@ -8,7 +8,7 @@ import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { calculateParryBase, calculateDefenseLevelBonus } from '../../utils/calculateDefenses'
+import { calculateParryBase, calculateDefenseLevelBonus, migrateCharacterDefenses } from '../../utils/calculateDefenses'
 import { extractShieldParryBonus } from '../02_Items/utils/itemUtils'
 import { organizeItemsByLocation } from '../02_Items/utils/itemUtils'
 
@@ -79,15 +79,11 @@ export const ParryField = () => {
 
 	// Initialize detailed structure if it doesn't exist
 	const initializeDetails = () => {
+		const migratedDefenses = migrateCharacterDefenses(activeCharacter)
 		updateCharacter({
 			statistics: {
-				parryDetails: {
-					base: autoBase,
-					levelBonus: autoLevelBonus,
-					shieldBonus: autoShieldBonus,
-					other: 0
-				},
-				parry: autoBase + autoLevelBonus + autoShieldBonus
+				parryDetails: migratedDefenses.parryDetails,
+				parry: activeCharacter.statistics.parry // Preserve the old manual value
 			}
 		})
 	}

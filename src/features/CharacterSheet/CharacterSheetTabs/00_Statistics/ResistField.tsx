@@ -8,7 +8,7 @@ import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { calculateResistBase, calculateDefenseLevelBonus } from '../../utils/calculateDefenses'
+import { calculateResistBase, calculateDefenseLevelBonus, migrateCharacterDefenses } from '../../utils/calculateDefenses'
 
 export const ResistField = () => {
 	const dispatch = useAppDispatch()
@@ -64,14 +64,11 @@ export const ResistField = () => {
 
 	// Initialize detailed structure if it doesn't exist
 	const initializeDetails = () => {
+		const migratedDefenses = migrateCharacterDefenses(activeCharacter)
 		updateCharacter({
 			statistics: {
-				resistDetails: {
-					base: autoBase,
-					levelBonus: autoLevelBonus,
-					other: 0
-				},
-				resist: autoBase + autoLevelBonus
+				resistDetails: migratedDefenses.resistDetails,
+				resist: activeCharacter.statistics.resist // Preserve the old manual value
 			}
 		})
 	}
