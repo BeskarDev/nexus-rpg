@@ -135,6 +135,7 @@ export type Skills = {
 		spend: number
 	}
 	skills: Skill[]
+	professions: string[]
 	abilities: Ability[]
 	abilityCategoryVisibility?: Record<AbilityTag, boolean>
 }
@@ -251,7 +252,17 @@ export type Item = Equipment & {
 export const containerTypeArray = ['', 'worn', 'quick', 'backpack'] as const
 export type ContainerType = (typeof containerTypeArray)[number]
 
-export const durabilityDieArray = ['', 'd4', 'd6', 'd8', 'd10', 'd12', 'd12+1', 'd12+2', 'd12+3'] as const
+export const durabilityDieArray = [
+	'',
+	'd4',
+	'd6',
+	'd8',
+	'd10',
+	'd12',
+	'd12+1',
+	'd12+2',
+	'd12+3',
+] as const
 export type DurabilityDie = (typeof durabilityDieArray)[number]
 
 export type Spells = {

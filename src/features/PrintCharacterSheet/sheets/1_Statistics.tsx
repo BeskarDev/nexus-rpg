@@ -37,7 +37,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 	const maxHp = calculateMaxHp(
 		char.statistics.strength.value,
 		char.skills.xp.total,
-		char.statistics.health.maxHpModifier || 0
+		char.statistics.health.maxHpModifier || 0,
 	)
 
 	// Group abilities by tag/category

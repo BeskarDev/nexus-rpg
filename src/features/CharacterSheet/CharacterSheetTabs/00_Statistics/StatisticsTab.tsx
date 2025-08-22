@@ -70,9 +70,13 @@ export const StatisticsTab: React.FC = () => {
 
 	// Calculate max HP using new formula and effective max HP (minus fatigue penalty)
 	const maxHP = React.useMemo(() => {
-		return calculateMaxHp(strength.value, activeCharacter.skills.xp.total, health.maxHpModifier || 0)
+		return calculateMaxHp(
+			strength.value,
+			activeCharacter.skills.xp.total,
+			health.maxHpModifier || 0,
+		)
 	}, [strength.value, activeCharacter.skills.xp.total, health.maxHpModifier])
-	
+
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
 	const effectiveMaxHP = maxHP - fatigueHpPenalty
 

@@ -1,15 +1,7 @@
 import { Box, Typography } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
-import {
-	collection,
-	deleteDoc,
-	doc,
-	getDoc,
-	getDocs,
-	query,
-	updateDoc,
-} from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import React, { useEffect } from 'react'
 import { Character, CharacterDocument } from '../../types/Character'
 import { CharacterList } from './CharacterList'
@@ -20,9 +12,9 @@ import { useAppDispatch } from './hooks/useAppDispatch'
 import { useAppSelector } from './hooks/useAppSelector'
 import { mapDocToCharacter } from './utils/mapDocToCharacter'
 import { migrateDoc } from './utils/migrateDoc'
+import { firebaseService } from '../../dev/firebaseService'
 
 const SAVE_CHARACTER_TIMEOUT = 1_000
-const DOC_BLACKLIST = ['player-info']
 
 export type DeepPartial<T> = {
 	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
@@ -37,47 +29,58 @@ export const CharacterSheetContainer: React.FC = () => {
 
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
-	const [collectionId, activeCharacterId] = urlParams.get('id')?.split('-') ?? [
-		undefined,
-		undefined,
-	]
+	const idParam = urlParams.get('id')
 
-	// Fetch all characters when user is logged in and no active character
+	// Parse the ID parameter more carefully to handle mock data
+	let collectionId: string | undefined
+	let activeCharacterId: string | undefined
+
+	if (idParam) {
+		// For mock data format: "mock-collection-mock-character-1"
+		// For production format: "collectionId-characterId"
+		const parts = idParam.split('-')
+		if (parts.length >= 2) {
+			if (parts[0] === 'mock' && parts[1] === 'collection') {
+				// Mock data case: "mock-collection-mock-character-1"
+				collectionId = 'mock-collection'
+				activeCharacterId = parts.slice(2).join('-') // "mock-character-1"
+			} else {
+				// Production case: "collectionId-characterId"
+				collectionId = parts[0]
+				activeCharacterId = parts.slice(1).join('-')
+			}
+		}
+	}
+
+	// Load characters when user is logged in (or in development mode)
 	useEffect(() => {
-		if (userLoggedIn && currentUser && !activeCharacterId) {
+		if (
+			(userLoggedIn && currentUser) ||
+			process.env.NODE_ENV === 'development'
+		) {
 			getDocuments()
 		}
 	}, [userLoggedIn, currentUser, activeCharacterId])
 
 	const getDocuments = async () => {
 		try {
-			const userUid = currentUser.uid
-			const collectionRef = collection(db, userUid)
-			const q = query(collectionRef)
-			const querySnapshot = await getDocs(q)
+			const userUid = currentUser?.uid || 'dev-user'
 
-			const allowedCollections: string[] =
-				querySnapshot.docs.find((doc) => doc.id === 'player-info')?.data()
-					.allowedCollections ?? []
-			setIsAdmin(Boolean(allowedCollections.length))
+			// Get user's collection
+			const userChars = await firebaseService.getCollection(userUid)
+			setCharacters(userChars)
 
-			const allDocs: CharacterDocument[] = querySnapshot.docs
-				.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
-				.map((doc) => mapDocToCharacter(userUid, doc))
+			// Check for admin permissions and load additional collections
+			const userInfo = await firebaseService.getUserInfo(userUid)
+			setIsAdmin(Boolean(userInfo.allowedCollections.length))
 
-			setCharacters(allDocs)
-			if (Boolean(allowedCollections.length)) {
-				await allowedCollections.map(async (collectionId) => {
-					const collectionRef = collection(db, collectionId)
-					const q = query(collectionRef)
-					const querySnapshot = await getDocs(q)
-					setCharacters((chars) => [
-						...chars,
-						...querySnapshot.docs
-							.filter((doc) => !DOC_BLACKLIST.includes(doc.id))
-							.map((doc) => mapDocToCharacter(collectionId, doc)),
-					])
-				})
+			// Load additional collections if user has admin access
+			if (userInfo.allowedCollections.length > 0) {
+				for (const adminCollectionId of userInfo.allowedCollections) {
+					const adminChars =
+						await firebaseService.getCollection(adminCollectionId)
+					setCharacters((chars) => [...chars, ...adminChars])
+				}
 			}
 		} catch (error) {
 			console.error('Error fetching documents: ', error)
@@ -85,12 +88,17 @@ export const CharacterSheetContainer: React.FC = () => {
 	}
 
 	const handleDeleteCharacter = async (char: CharacterDocument) => {
-		await deleteDoc(char.docRef)
+		await firebaseService.deleteDocument(char)
 		setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
 	}
 
 	useEffect(() => {
-		if (activeCharacterId && currentUser && unsavedChanges && !saveTimeout) {
+		if (
+			activeCharacterId &&
+			(currentUser || process.env.NODE_ENV === 'development') &&
+			unsavedChanges &&
+			!saveTimeout
+		) {
 			dispatch(characterSheetActions.setSaveTimeout(true))
 			setTimeout(() => {
 				dispatch(characterSheetActions.setAutosave(true))
@@ -99,7 +107,12 @@ export const CharacterSheetContainer: React.FC = () => {
 	}, [activeCharacter])
 
 	useEffect(() => {
-		if (activeCharacterId && currentUser && unsavedChanges && autosave) {
+		if (
+			activeCharacterId &&
+			(currentUser || process.env.NODE_ENV === 'development') &&
+			unsavedChanges &&
+			autosave
+		) {
 			console.log('auto save in progress')
 			saveCharacter()
 			dispatch(characterSheetActions.setAutosave(false))
@@ -112,38 +125,52 @@ export const CharacterSheetContainer: React.FC = () => {
 			if (
 				collectionId &&
 				activeCharacterId &&
-				currentUser &&
+				(currentUser || process.env.NODE_ENV === 'development') &&
 				!activeCharacter
 			) {
-				const docSnapshot = await getDoc(
-					doc(db, `${collectionId}/${activeCharacterId}`),
+				// Try to get character from our service first
+				let character = await firebaseService.getDocument(
+					collectionId,
+					activeCharacterId,
 				)
-				const character = mapDocToCharacter(collectionId, docSnapshot)
-				const migratedCharacter = await migrateDoc(collectionId, docSnapshot)
 
-				console.log('migrated character', migratedCharacter.personal.playerName)
+				// If not found in service and we're in production, fall back to direct Firebase
+				if (!character && process.env.NODE_ENV !== 'development') {
+					const docSnapshot = await getDoc(
+						doc(db, `${collectionId}/${activeCharacterId}`),
+					)
+					character = mapDocToCharacter(collectionId, docSnapshot)
+					const migratedCharacter = await migrateDoc(collectionId, docSnapshot)
 
-				if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
-					console.log('save migrated character', migratedCharacter)
-					await updateDoc(migratedCharacter.docRef, {
-						...migratedCharacter,
-					} as Omit<Character, 'docRef' | 'docId'>)
+					console.log(
+						'migrated character',
+						migratedCharacter.personal.playerName,
+					)
+
+					if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
+						console.log('save migrated character', migratedCharacter)
+						await updateDoc(migratedCharacter.docRef, {
+							...migratedCharacter,
+						} as Omit<Character, 'docRef' | 'docId'>)
+					}
+
+					character = migratedCharacter
 				}
 
-				dispatch(characterSheetActions.setCharacter(migratedCharacter))
+				if (character) {
+					dispatch(characterSheetActions.setCharacter(character))
+				}
 			}
 		}
 
 		fetchAndMigrateCharacter()
-	}, [collectionId, activeCharacterId, activeCharacter])
+	}, [collectionId, activeCharacterId, activeCharacter, currentUser])
 
 	const saveCharacter = async () => {
 		console.log('about to save character...')
 		if (unsavedChanges) {
 			dispatch(characterSheetActions.setLoadingSave(true))
-			await updateDoc(activeCharacter.docRef, {
-				...activeCharacter,
-			} as Omit<Character, 'docRef' | 'docId'>)
+			await firebaseService.updateDocument(activeCharacter)
 			dispatch(characterSheetActions.setUnsavedChanges(false))
 			dispatch(characterSheetActions.setLoadingSave(false))
 		}
@@ -157,7 +184,25 @@ export const CharacterSheetContainer: React.FC = () => {
 				saveCharacter={saveCharacter}
 				characters={characters}
 			/>
-			{!userLoggedIn && (
+			{/* Show development notice when in development mode and not logged in */}
+			{process.env.NODE_ENV === 'development' && !userLoggedIn && (
+				<Box
+					sx={{
+						m: 2,
+						p: 2,
+						backgroundColor: 'rgba(255, 152, 0, 0.1)',
+						border: '1px solid rgba(255, 152, 0, 0.5)',
+						borderRadius: 1,
+						textAlign: 'center',
+					}}
+				>
+					<Typography variant="body2" color="orange">
+						<strong>Development Mode:</strong> Using mock character data for
+						testing. Login not required.
+					</Typography>
+				</Box>
+			)}
+			{!userLoggedIn && process.env.NODE_ENV !== 'development' && (
 				<Box
 					sx={{
 						m: 5,
@@ -169,15 +214,16 @@ export const CharacterSheetContainer: React.FC = () => {
 					<Typography variant="h6">Please log in first</Typography>
 				</Box>
 			)}
-			{userLoggedIn && !activeCharacterId && (
-				<CharacterList
-					characters={characters}
-					handleDeleteCharacter={handleDeleteCharacter}
-				/>
-			)}
-			{userLoggedIn && activeCharacterId && activeCharacter && (
-				<CharacterSheet />
-			)}
+			{(userLoggedIn || process.env.NODE_ENV === 'development') &&
+				!activeCharacterId && (
+					<CharacterList
+						characters={characters}
+						handleDeleteCharacter={handleDeleteCharacter}
+					/>
+				)}
+			{(userLoggedIn || process.env.NODE_ENV === 'development') &&
+				activeCharacterId &&
+				activeCharacter && <CharacterSheet />}
 		</>
 	)
 }

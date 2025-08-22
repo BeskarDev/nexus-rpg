@@ -14,7 +14,11 @@ import {
 import React, { useState } from 'react'
 
 import { Delete, ExpandMore } from '@mui/icons-material'
-import { DurabilityDie, durabilityDieArray, Weapon } from '../../../../types/Character'
+import {
+	DurabilityDie,
+	durabilityDieArray,
+	Weapon,
+} from '../../../../types/Character'
 import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
 import { DamageFields } from '../DamageFields'
@@ -97,17 +101,18 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						variant="standard"
 						value={`${3 - (initialWeapon.uses || 0)}/3`}
 						label="Uses"
-						sx={{ 
-							maxWidth: '2.5rem'
+						sx={{
+							maxWidth: '2.5rem',
 						}}
 						InputProps={{
 							sx: {
-								color: (initialWeapon.uses || 0) === 3 
-									? 'error.main' 
-									: (initialWeapon.uses || 0) === 2 
-									? 'warning.main' 
-									: 'text.primary'
-							}
+								color:
+									(initialWeapon.uses || 0) === 3
+										? 'error.main'
+										: (initialWeapon.uses || 0) === 2
+											? 'warning.main'
+											: 'text.primary',
+							},
 						}}
 					/>
 				</Box>
@@ -201,7 +206,9 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 							sx={{ maxWidth: '8rem' }}
 						/>
 					)}
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}>
+					<Box
+						sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}
+					>
 						<Typography variant="caption">Uses</Typography>
 						<FormGroup row sx={{ gap: 0.25 }}>
 							{[1, 2, 3].map((useNumber) => (

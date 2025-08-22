@@ -36,7 +36,7 @@ import { PartyManagement } from './components/PartyManagement'
 export const SharedNotes: React.FC = () => {
 	const { currentUser } = useAuth()
 	const { isMobile } = useDeviceSize()
-	
+
 	const [partyInfo, setPartyInfo] = useState<PartyInfo | null>(null)
 	const [notes, setNotes] = useState('') // Local notes that user is editing
 	const [originalNotes, setOriginalNotes] = useState('') // Notes as they were when user started editing
@@ -52,26 +52,30 @@ export const SharedNotes: React.FC = () => {
 	// Use refs to track current state in the subscription callback
 	const notesRef = useRef(notes)
 	const originalNotesRef = useRef(originalNotes)
-	
+
 	// Update refs when state changes
 	useEffect(() => {
 		notesRef.current = notes
 	}, [notes])
-	
+
 	useEffect(() => {
 		originalNotesRef.current = originalNotes
 	}, [originalNotes])
 
 	// Derived state
 	const hasUnsavedChanges = notes !== originalNotes
-	const hasServerChanges = partyInfo ? partyInfo.party.notes !== originalNotes : false
+	const hasServerChanges = partyInfo
+		? partyInfo.party.notes !== originalNotes
+		: false
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
-	
+
 	// Construct the proper character ID format that PartyService expects
-	const characterId = activeCharacter ? `${activeCharacter.collectionId}-${activeCharacter.docId}` : ''
+	const characterId = activeCharacter
+		? `${activeCharacter.collectionId}-${activeCharacter.docId}`
+		: ''
 
 	// Real-time party subscription
 	useEffect(() => {
@@ -85,7 +89,7 @@ export const SharedNotes: React.FC = () => {
 
 			try {
 				setIsLoading(true)
-				
+
 				// Check if migration is needed
 				const needsMigration = await MigrationService.isMigrationNeeded()
 				if (needsMigration) {
@@ -103,13 +107,14 @@ export const SharedNotes: React.FC = () => {
 				}
 
 				// Get party for current character
-				const initialPartyInfo = await PartyService.getPartyByCharacterId(characterId)
+				const initialPartyInfo =
+					await PartyService.getPartyByCharacterId(characterId)
 				if (initialPartyInfo) {
 					setPartyInfo(initialPartyInfo)
 					const initialNotes = initialPartyInfo.party.notes
 					setNotes(initialNotes)
 					setOriginalNotes(initialNotes)
-					
+
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
 						initialPartyInfo.party.id,
@@ -131,14 +136,14 @@ export const SharedNotes: React.FC = () => {
 								setNotes('')
 								setOriginalNotes('')
 							}
-						}
+						},
 					)
 				} else {
 					setPartyInfo(null)
 					setNotes('')
 					setOriginalNotes('')
 				}
-				
+
 				setError(null)
 			} catch (err) {
 				console.error('Error setting up party:', err)
@@ -197,18 +202,21 @@ export const SharedNotes: React.FC = () => {
 	}, [partyInfo, notes])
 
 	// Handle conflict resolution
-	const handleConflictResolution = useCallback(async (overwrite: boolean) => {
-		setShowConflictDialog(false)
-		
-		if (overwrite) {
-			// User chose to overwrite - save their changes
-			await performSave()
-		} else {
-			// User chose to cancel - keep their local edits and don't save
-			// Do nothing - local state remains unchanged
-		}
-		setConflictNotes('')
-	}, [conflictNotes, performSave])
+	const handleConflictResolution = useCallback(
+		async (overwrite: boolean) => {
+			setShowConflictDialog(false)
+
+			if (overwrite) {
+				// User chose to overwrite - save their changes
+				await performSave()
+			} else {
+				// User chose to cancel - keep their local edits and don't save
+				// Do nothing - local state remains unchanged
+			}
+			setConflictNotes('')
+		},
+		[conflictNotes, performSave],
+	)
 
 	// Handle refresh notes from server
 	const refreshNotes = useCallback(() => {
@@ -226,7 +234,7 @@ export const SharedNotes: React.FC = () => {
 	// Perform the actual refresh operation
 	const performRefresh = useCallback(() => {
 		if (!partyInfo) return
-		
+
 		const serverNotes = partyInfo.party.notes
 		setNotes(serverNotes)
 		setOriginalNotes(serverNotes)
@@ -234,21 +242,28 @@ export const SharedNotes: React.FC = () => {
 	}, [partyInfo])
 
 	// Handle refresh confirmation
-	const handleRefreshConfirmation = useCallback((confirm: boolean) => {
-		if (confirm) {
-			performRefresh()
-		} else {
-			setShowRefreshDialog(false)
-		}
-	}, [performRefresh])
+	const handleRefreshConfirmation = useCallback(
+		(confirm: boolean) => {
+			if (confirm) {
+				performRefresh()
+			} else {
+				setShowRefreshDialog(false)
+			}
+		},
+		[performRefresh],
+	)
 
 	// Party management handlers
 	const handleCreateParty = async (name: string) => {
 		if (!currentUser || !characterId) return
-		
+
 		setPartyLoading(true)
 		try {
-			const partyId = await PartyService.createParty(name, characterId, currentUser.uid)
+			const partyId = await PartyService.createParty(
+				name,
+				characterId,
+				currentUser.uid,
+			)
 			const newPartyInfo = await PartyService.getPartyInfo(partyId)
 			setPartyInfo(newPartyInfo)
 		} catch (error) {
@@ -261,7 +276,7 @@ export const SharedNotes: React.FC = () => {
 
 	const handleAddMember = async (newCharacterId: string) => {
 		if (!partyInfo) return
-		
+
 		setPartyLoading(true)
 		try {
 			await PartyService.addCharacterToParty(partyInfo.party.id, newCharacterId)
@@ -275,10 +290,13 @@ export const SharedNotes: React.FC = () => {
 
 	const handleRemoveMember = async (memberCharacterId: string) => {
 		if (!partyInfo) return
-		
+
 		setPartyLoading(true)
 		try {
-			await PartyService.removeCharacterFromParty(partyInfo.party.id, memberCharacterId)
+			await PartyService.removeCharacterFromParty(
+				partyInfo.party.id,
+				memberCharacterId,
+			)
 		} catch (error) {
 			console.error('Failed to remove member:', error)
 			throw error
@@ -289,10 +307,13 @@ export const SharedNotes: React.FC = () => {
 
 	const handleLeaveParty = async () => {
 		if (!partyInfo || !characterId) return
-		
+
 		setPartyLoading(true)
 		try {
-			await PartyService.removeCharacterFromParty(partyInfo.party.id, characterId)
+			await PartyService.removeCharacterFromParty(
+				partyInfo.party.id,
+				characterId,
+			)
 			setPartyInfo(null)
 			setNotes('')
 			setOriginalNotes('')
@@ -306,22 +327,32 @@ export const SharedNotes: React.FC = () => {
 
 	const handleDeleteParty = async () => {
 		if (!partyInfo || !characterId || !currentUser) {
-			console.error('Missing party info, character ID, or current user for deletion')
+			console.error(
+				'Missing party info, character ID, or current user for deletion',
+			)
 			return
 		}
-		
-		console.log('Attempting to delete party by removing character:', { partyId: partyInfo.party.id, characterId })
-		
+
+		console.log('Attempting to delete party by removing character:', {
+			partyId: partyInfo.party.id,
+			characterId,
+		})
+
 		setPartyLoading(true)
 		try {
 			// When the last member leaves a party, it gets automatically deleted
-			await PartyService.removeCharacterFromParty(partyInfo.party.id, characterId)
+			await PartyService.removeCharacterFromParty(
+				partyInfo.party.id,
+				characterId,
+			)
 			setPartyInfo(null)
 			setNotes('')
 			setOriginalNotes('')
 		} catch (error) {
 			console.error('Failed to delete party:', error)
-			setError(error instanceof Error ? error.message : 'Failed to delete party')
+			setError(
+				error instanceof Error ? error.message : 'Failed to delete party',
+			)
 			throw error
 		} finally {
 			setPartyLoading(false)
@@ -330,7 +361,7 @@ export const SharedNotes: React.FC = () => {
 
 	const handleUpdatePartyName = async (newName: string) => {
 		if (!partyInfo) return
-		
+
 		setPartyLoading(true)
 		try {
 			await PartyService.updatePartyName(partyInfo.party.id, newName)
@@ -397,10 +428,7 @@ export const SharedNotes: React.FC = () => {
 					<Typography variant="h6" sx={{ mb: 1 }}>
 						Party Notes
 					</Typography>
-					<Typography
-						variant="caption"
-						sx={{ mb: 1, display: 'block' }}
-					>
+					<Typography variant="caption" sx={{ mb: 1, display: 'block' }}>
 						Make your changes and click Save to share with party members.
 					</Typography>
 					<TextField
@@ -420,7 +448,7 @@ export const SharedNotes: React.FC = () => {
 						}}
 						fullWidth
 					/>
-					
+
 					{/* Save Button and Status */}
 					<Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
 						<Button
@@ -431,7 +459,7 @@ export const SharedNotes: React.FC = () => {
 						>
 							{isSaving ? 'Saving...' : 'Save Notes'}
 						</Button>
-						
+
 						<Tooltip title="Refresh with latest notes from server">
 							<IconButton
 								onClick={refreshNotes}
@@ -441,19 +469,19 @@ export const SharedNotes: React.FC = () => {
 								<Refresh />
 							</IconButton>
 						</Tooltip>
-						
+
 						{hasUnsavedChanges && !isSaving && (
 							<Typography variant="caption" color="warning.main">
 								You have unsaved changes
 							</Typography>
 						)}
-						
+
 						{!hasUnsavedChanges && hasServerChanges && !isSaving && (
 							<Typography variant="caption" color="info.main">
 								There are changes from others
 							</Typography>
 						)}
-						
+
 						{!hasUnsavedChanges && !hasServerChanges && !isSaving && (
 							<Typography variant="caption" color="success.main">
 								All changes saved
@@ -468,16 +496,22 @@ export const SharedNotes: React.FC = () => {
 			)}
 
 			{/* Conflict Resolution Dialog */}
-			<Dialog open={showConflictDialog} onClose={() => setShowConflictDialog(false)} maxWidth="md" fullWidth>
+			<Dialog
+				open={showConflictDialog}
+				onClose={() => setShowConflictDialog(false)}
+				maxWidth="md"
+				fullWidth
+			>
 				<DialogTitle sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
 					<Warning color="warning" />
 					Notes Conflict Detected
 				</DialogTitle>
 				<DialogContent>
 					<Typography variant="body1" sx={{ mb: 2 }}>
-						Someone else has modified the notes while you were editing. What would you like to do?
+						Someone else has modified the notes while you were editing. What
+						would you like to do?
 					</Typography>
-					
+
 					<Typography variant="h6" sx={{ mb: 1 }}>
 						Your Version:
 					</Typography>
@@ -489,7 +523,7 @@ export const SharedNotes: React.FC = () => {
 						disabled
 						sx={{ mb: 2 }}
 					/>
-					
+
 					<Typography variant="h6" sx={{ mb: 1 }}>
 						Server Version (Latest):
 					</Typography>
@@ -502,30 +536,48 @@ export const SharedNotes: React.FC = () => {
 					/>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => handleConflictResolution(false)} color="primary">
+					<Button
+						onClick={() => handleConflictResolution(false)}
+						color="primary"
+					>
 						Cancel
 					</Button>
-					<Button onClick={() => handleConflictResolution(true)} variant="contained" color="warning">
+					<Button
+						onClick={() => handleConflictResolution(true)}
+						variant="contained"
+						color="warning"
+					>
 						Save Anyway
 					</Button>
 				</DialogActions>
 			</Dialog>
 
 			{/* Refresh Confirmation Dialog */}
-			<Dialog open={showRefreshDialog} onClose={() => setShowRefreshDialog(false)} maxWidth="sm" fullWidth>
-				<DialogTitle>
-					Refresh Notes
-				</DialogTitle>
+			<Dialog
+				open={showRefreshDialog}
+				onClose={() => setShowRefreshDialog(false)}
+				maxWidth="sm"
+				fullWidth
+			>
+				<DialogTitle>Refresh Notes</DialogTitle>
 				<DialogContent>
 					<Typography variant="body1">
-						You have unsaved changes. Refreshing will discard your changes and load the latest version from the server. Are you sure?
+						You have unsaved changes. Refreshing will discard your changes and
+						load the latest version from the server. Are you sure?
 					</Typography>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => handleRefreshConfirmation(false)} color="primary">
+					<Button
+						onClick={() => handleRefreshConfirmation(false)}
+						color="primary"
+					>
 						Cancel
 					</Button>
-					<Button onClick={() => handleRefreshConfirmation(true)} variant="contained" color="warning">
+					<Button
+						onClick={() => handleRefreshConfirmation(true)}
+						variant="contained"
+						color="warning"
+					>
 						Refresh Anyway
 					</Button>
 				</DialogActions>

@@ -1,11 +1,11 @@
-import { 
-	collection, 
-	getDocs, 
-	doc, 
-	getDoc, 
-	addDoc, 
+import {
+	collection,
+	getDocs,
+	doc,
+	getDoc,
+	addDoc,
 	updateDoc,
-	deleteDoc
+	deleteDoc,
 } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
 import { Party } from '@site/src/types/Party'
@@ -22,11 +22,11 @@ export class MigrationService {
 	 */
 	static async migrateSharedNotesToParties(): Promise<void> {
 		console.log('Starting migration of shared notes to parties...')
-		
+
 		try {
 			// Get all existing shared notes
 			const sharedNotesSnapshot = await getDocs(collection(db, 'shared-notes'))
-			
+
 			if (sharedNotesSnapshot.empty) {
 				console.log('No shared notes found to migrate')
 				return
@@ -34,26 +34,37 @@ export class MigrationService {
 
 			for (const noteDoc of sharedNotesSnapshot.docs) {
 				const noteData = noteDoc.data() as LegacySharedNote
-				
+
 				// Skip if no allowed characters
-				if (!noteData.allowedCharacters || noteData.allowedCharacters.length === 0) {
-					console.log(`Skipping shared note ${noteDoc.id} - no allowed characters`)
+				if (
+					!noteData.allowedCharacters ||
+					noteData.allowedCharacters.length === 0
+				) {
+					console.log(
+						`Skipping shared note ${noteDoc.id} - no allowed characters`,
+					)
 					continue
 				}
 
 				// Check if any of these characters already have a party
-				const hasExistingParty = await this.checkCharactersHaveParty(noteData.allowedCharacters)
+				const hasExistingParty = await this.checkCharactersHaveParty(
+					noteData.allowedCharacters,
+				)
 				if (hasExistingParty) {
-					console.log(`Skipping shared note ${noteDoc.id} - characters already have a party`)
+					console.log(
+						`Skipping shared note ${noteDoc.id} - characters already have a party`,
+					)
 					continue
 				}
 
 				// Get the first character to determine party creator
 				const firstCharacterId = noteData.allowedCharacters[0]
 				const creatorInfo = await this.getCharacterCreatorInfo(firstCharacterId)
-				
+
 				if (!creatorInfo) {
-					console.log(`Skipping shared note ${noteDoc.id} - cannot find creator info`)
+					console.log(
+						`Skipping shared note ${noteDoc.id} - cannot find creator info`,
+					)
 					continue
 				}
 
@@ -63,12 +74,14 @@ export class MigrationService {
 					notes: noteData.notes || '',
 					createdBy: creatorInfo.createdBy,
 					createdAt: new Date().toISOString(),
-					members: noteData.allowedCharacters
+					members: noteData.allowedCharacters,
 				}
 
 				// Add the party to the database
 				const partyRef = await addDoc(collection(db, 'parties'), party)
-				console.log(`Created party ${partyRef.id} from shared note ${noteDoc.id}`)
+				console.log(
+					`Created party ${partyRef.id} from shared note ${noteDoc.id}`,
+				)
 
 				// Update all member characters to reference this party
 				for (const characterId of noteData.allowedCharacters) {
@@ -90,17 +103,22 @@ export class MigrationService {
 	/**
 	 * Check if any characters already have a party assigned
 	 */
-	private static async checkCharactersHaveParty(characterIds: string[]): Promise<boolean> {
+	private static async checkCharactersHaveParty(
+		characterIds: string[],
+	): Promise<boolean> {
 		for (const characterId of characterIds) {
 			try {
 				const [collectionId, docId] = characterId.split('-')
 				const charDoc = await getDoc(doc(db, collectionId, docId))
-				
+
 				if (charDoc.exists() && charDoc.data().partyId) {
 					return true
 				}
 			} catch (error) {
-				console.warn(`Failed to check party for character ${characterId}:`, error)
+				console.warn(
+					`Failed to check party for character ${characterId}:`,
+					error,
+				)
 			}
 		}
 		return false
@@ -116,16 +134,19 @@ export class MigrationService {
 		try {
 			const [collectionId, docId] = characterId.split('-')
 			const charDoc = await getDoc(doc(db, collectionId, docId))
-			
+
 			if (charDoc.exists()) {
 				const charData = charDoc.data()
 				return {
 					characterName: charData.personal?.name || 'Unknown Character',
-					createdBy: collectionId // The collection ID is the user ID
+					createdBy: collectionId, // The collection ID is the user ID
 				}
 			}
 		} catch (error) {
-			console.warn(`Failed to get creator info for character ${characterId}:`, error)
+			console.warn(
+				`Failed to get creator info for character ${characterId}:`,
+				error,
+			)
 		}
 		return null
 	}
@@ -133,13 +154,21 @@ export class MigrationService {
 	/**
 	 * Update a character to reference a party
 	 */
-	private static async updateCharacterPartyReference(characterId: string, partyId: string): Promise<void> {
+	private static async updateCharacterPartyReference(
+		characterId: string,
+		partyId: string,
+	): Promise<void> {
 		try {
 			const [collectionId, docId] = characterId.split('-')
 			await updateDoc(doc(db, collectionId, docId), { partyId })
-			console.log(`Updated character ${characterId} with party reference ${partyId}`)
+			console.log(
+				`Updated character ${characterId} with party reference ${partyId}`,
+			)
 		} catch (error) {
-			console.warn(`Failed to update character ${characterId} with party reference:`, error)
+			console.warn(
+				`Failed to update character ${characterId} with party reference:`,
+				error,
+			)
 		}
 	}
 

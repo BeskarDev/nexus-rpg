@@ -15,6 +15,7 @@ import {
 	Statistics,
 } from '../../../types/Character'
 import { ABILITY_TAGS } from '../../../types/AbilityTag'
+import { normalizeSkillName } from '../../../constants/skills'
 import { db } from '@site/src/config/firebase'
 
 export const migrateDoc = async (
@@ -117,22 +118,26 @@ const migrateStatistics = (data: any): Statistics => {
 	}
 
 	// Migrate HP system from manual total to auto-calculated with modifier
-	if (migratedData.health && 'total' in migratedData.health && !('maxHpModifier' in migratedData.health)) {
+	if (
+		migratedData.health &&
+		'total' in migratedData.health &&
+		!('maxHpModifier' in migratedData.health)
+	) {
 		const oldMaxHp = migratedData.health.total || 0
-		
+
 		// Calculate what the new auto max HP should be
 		// We need to import the calculation functions here
 		const { calculateMaxHp } = require('./calculateHp')
 		const { calculateCharacterLevel } = require('./calculateCharacterLevel')
-		
+
 		// We need XP total to calculate level, so we'll need to handle this case where we might not have it
 		// For migration, we'll assume level 1 if we can't determine the level
 		const xpTotal = data.skills?.xp?.total || 0
 		const strength = migratedData.strength?.value || 4
-		
+
 		const newAutoMaxHp = calculateMaxHp(strength, xpTotal, 0)
 		const maxHpModifier = oldMaxHp - newAutoMaxHp
-		
+
 		// Migrate health structure
 		migratedData.health = {
 			current: migratedData.health.current || newAutoMaxHp,
@@ -194,10 +199,17 @@ const migrateStatistics = (data: any): Statistics => {
 const migrateSkills = (data: any): Skills => {
 	return {
 		...data,
-		skills: data.skills.map((skill) => ({
-			...skill,
-			id: skill.id || crypto.randomUUID(),
-		})),
+		skills: data.skills.map((skill) => {
+			// Normalize skill names during migration
+			const normalizedName = normalizeSkillName(skill.name) || skill.name
+			return {
+				...skill,
+				id: skill.id || crypto.randomUUID(),
+				name: normalizedName,
+			}
+		}),
+		// Initialize professions array if it doesn't exist
+		professions: data.professions || [],
 		abilities: data.abilities.map((ability) => {
 			const migratedAbility =
 				typeof ability === 'string'

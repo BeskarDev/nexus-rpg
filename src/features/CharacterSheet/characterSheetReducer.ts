@@ -17,6 +17,7 @@ import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 import { getDurabilityForItem } from './CharacterSheetTabs/02_Items/utils/durabilityUtils'
+import { normalizeSkillName } from '../../constants/skills'
 
 function isObject(value: any) {
 	return value !== null && typeof value === 'object'
@@ -96,6 +97,21 @@ export const {
 			if (!Array.isArray(character.statistics.statusEffects)) {
 				character.statistics.statusEffects = []
 			}
+			// Migrate skills to use normalized names
+			if (character.skills && character.skills.skills) {
+				character.skills.skills = character.skills.skills.map((skill) => {
+					const normalizedName = normalizeSkillName(skill.name) || skill.name
+					return {
+						...skill,
+						name: normalizedName,
+						id: skill.id || crypto.randomUUID(),
+					}
+				})
+			}
+			// Ensure professions array exists
+			if (!character.skills.professions) {
+				character.skills.professions = []
+			}
 			// Migrate older characters that don't have weapons/items arrays
 			if (!character.items.weapons) {
 				character.items.weapons = []
@@ -165,6 +181,37 @@ export const {
 				...state.activeCharacter.skills.skills[index],
 				...update,
 			}
+		},
+		addSkill: (state, action: PayloadAction<string>) => {
+			const skillName = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.skills.push({
+				id: crypto.randomUUID(),
+				name: skillName,
+				rank: 0,
+				xp: 0,
+			})
+		},
+		removeSkill: (state, action: PayloadAction<string>) => {
+			const skillName = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.skills =
+				state.activeCharacter.skills.skills.filter((s) => s.name !== skillName)
+		},
+		addProfession: (state, action: PayloadAction<string>) => {
+			const professionName = action.payload
+			state.unsavedChanges = true
+			if (!state.activeCharacter.skills.professions.includes(professionName)) {
+				state.activeCharacter.skills.professions.push(professionName)
+			}
+		},
+		removeProfession: (state, action: PayloadAction<string>) => {
+			const professionName = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.professions =
+				state.activeCharacter.skills.professions.filter(
+					(p) => p !== professionName,
+				)
 		},
 		deleteSkill: (state, action: PayloadAction<Skill>) => {
 			state.unsavedChanges = true
