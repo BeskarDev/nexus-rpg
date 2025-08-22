@@ -6,6 +6,7 @@ import {
 	IconButton,
 	TextField,
 	Typography,
+	Alert,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
@@ -13,81 +14,196 @@ import {
 	collection,
 	getDocs,
 	query,
-	updateDoc,
 	where,
+	onSnapshot,
+	Unsubscribe,
 } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
+import { PartyService } from '../../services/PartyService'
+import { MigrationService } from '../../services/MigrationService'
+import { PartyInfo } from '@site/src/types/Party'
+import { PartyManagement } from './components/PartyManagement'
 
 export const SharedNotes: React.FC = () => {
 	const { currentUser } = useAuth()
 	const { isMobile } = useDeviceSize()
-	const [ref, setRef] = useState(undefined)
-
-	const [unsavedChanges, setUnsavedChanges] = useState(false)
-	const [loadingSave, setLoadingSave] = useState(false)
+	
+	const [partyInfo, setPartyInfo] = useState<PartyInfo | null>(null)
 	const [notes, setNotes] = useState('')
-
 	const [isLoading, setIsLoading] = useState(true)
-	const [error, setError] = useState(null)
+	const [error, setError] = useState<string | null>(null)
+	const [migrationInProgress, setMigrationInProgress] = useState(false)
+	const [partyLoading, setPartyLoading] = useState(false)
 
 	const { docId: characterId } = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
 
+	// Real-time party subscription
 	useEffect(() => {
-		const fetchData = async () => {
-			if (!currentUser) {
-				setError('User not logged in')
+		let unsubscribe: Unsubscribe | null = null
+
+		const setupPartySubscription = async () => {
+			if (!currentUser || !characterId) {
 				setIsLoading(false)
 				return
 			}
 
-			await fetchNotes()
-		}
+			try {
+				setIsLoading(true)
+				
+				// Check if migration is needed
+				const needsMigration = await MigrationService.isMigrationNeeded()
+				if (needsMigration) {
+					setMigrationInProgress(true)
+					try {
+						await MigrationService.migrateSharedNotesToParties()
+					} catch (migrationError) {
+						console.error('Migration failed:', migrationError)
+						setError('Migration failed. Please contact support.')
+						setIsLoading(false)
+						return
+					} finally {
+						setMigrationInProgress(false)
+					}
+				}
 
-		fetchData()
-	}, [currentUser])
-
-	const fetchNotes = async () => {
-		setIsLoading(true)
-		try {
-			const q = query(
-				collection(db, 'shared-notes'),
-				where('allowedCharacters', 'array-contains', characterId),
-			)
-			const querySnapshot = await getDocs(q)
-
-			if (querySnapshot.empty) {
-				setError('No shared notes found')
-			} else {
-				setRef(querySnapshot.docs[0].ref)
-				const data = querySnapshot.docs[0].data()
-				setNotes(data.notes)
+				// Get party for current character
+				const initialPartyInfo = await PartyService.getPartyByCharacterId(characterId)
+				if (initialPartyInfo) {
+					setPartyInfo(initialPartyInfo)
+					setNotes(initialPartyInfo.party.notes)
+					
+					// Set up real-time subscription
+					unsubscribe = PartyService.subscribeToParty(
+						initialPartyInfo.party.id,
+						(updatedPartyInfo) => {
+							if (updatedPartyInfo) {
+								setPartyInfo(updatedPartyInfo)
+								setNotes(updatedPartyInfo.party.notes)
+							} else {
+								// Party was deleted
+								setPartyInfo(null)
+								setNotes('')
+							}
+						}
+					)
+				} else {
+					setPartyInfo(null)
+					setNotes('')
+				}
+				
+				setError(null)
+			} catch (err) {
+				console.error('Error setting up party:', err)
+				setError('Failed to load party information')
+			} finally {
+				setIsLoading(false)
 			}
-		} catch (err) {
-			setError(err.message)
+		}
+
+		setupPartySubscription()
+
+		return () => {
+			if (unsubscribe) {
+				unsubscribe()
+			}
+		}
+	}, [currentUser, characterId])
+
+	// Real-time notes update
+	const updateNotes = useCallback(async (newNotes: string) => {
+		setNotes(newNotes)
+		
+		if (partyInfo) {
+			try {
+				await PartyService.updatePartyNotes(partyInfo.party.id, newNotes)
+			} catch (error) {
+				console.error('Failed to update notes:', error)
+				setError('Failed to save notes')
+			}
+		}
+	}, [partyInfo])
+
+	// Party management handlers
+	const handleCreateParty = async (name: string) => {
+		if (!currentUser || !characterId) return
+		
+		setPartyLoading(true)
+		try {
+			const partyId = await PartyService.createParty(name, characterId, currentUser.uid)
+			const newPartyInfo = await PartyService.getPartyInfo(partyId)
+			setPartyInfo(newPartyInfo)
+		} catch (error) {
+			console.error('Failed to create party:', error)
+			throw error
 		} finally {
-			setIsLoading(false)
+			setPartyLoading(false)
 		}
 	}
 
-	const updateNotes = (notes: string) => {
-		setNotes(notes)
-		setUnsavedChanges(true)
+	const handleAddMember = async (newCharacterId: string) => {
+		if (!partyInfo) return
+		
+		setPartyLoading(true)
+		try {
+			await PartyService.addCharacterToParty(partyInfo.party.id, newCharacterId)
+		} catch (error) {
+			console.error('Failed to add member:', error)
+			throw error
+		} finally {
+			setPartyLoading(false)
+		}
 	}
 
-	const saveNotes = async () => {
-		console.log('about to save shared notes...')
-		if (unsavedChanges) {
-			setLoadingSave(true)
-			await updateDoc(ref, { notes })
-			setUnsavedChanges(false)
-			setLoadingSave(false)
+	const handleRemoveMember = async (memberCharacterId: string) => {
+		if (!partyInfo) return
+		
+		setPartyLoading(true)
+		try {
+			await PartyService.removeCharacterFromParty(partyInfo.party.id, memberCharacterId)
+		} catch (error) {
+			console.error('Failed to remove member:', error)
+			throw error
+		} finally {
+			setPartyLoading(false)
 		}
-		console.log('done saving shared notes')
+	}
+
+	const handleLeaveParty = async () => {
+		if (!partyInfo || !characterId) return
+		
+		setPartyLoading(true)
+		try {
+			await PartyService.removeCharacterFromParty(partyInfo.party.id, characterId)
+			setPartyInfo(null)
+			setNotes('')
+		} catch (error) {
+			console.error('Failed to leave party:', error)
+			throw error
+		} finally {
+			setPartyLoading(false)
+		}
+	}
+
+	if (!currentUser) {
+		return (
+			<Alert severity="error">
+				You must be logged in to access shared notes.
+			</Alert>
+		)
+	}
+
+	if (migrationInProgress) {
+		return (
+			<Box sx={{ display: 'flex', alignItems: 'center', gap: 2, p: 2 }}>
+				<CircularProgress size={24} />
+				<Typography>Migrating shared notes to new party system...</Typography>
+			</Box>
+		)
 	}
 
 	return (
@@ -105,50 +221,61 @@ export const SharedNotes: React.FC = () => {
 					maxWidth: { lg: 'unset', xl: '47rem' },
 				}}
 			>
-				<SectionHeader>Shared Notes</SectionHeader>
-				<IconButton
-					disabled={isLoading || loadingSave}
-					onClick={fetchNotes}
-					sx={{ mb: '6px' }}
-				>
-					{loadingSave ? <CircularProgress size={20} /> : <Replay />}
-				</IconButton>
-				<IconButton
-					disabled={!unsavedChanges}
-					onClick={saveNotes}
-					sx={{ mb: '6px' }}
-				>
-					{loadingSave ? <CircularProgress size={20} /> : <Save />}
-				</IconButton>
+				<SectionHeader>Shared Notes & Party</SectionHeader>
 			</Box>
-			<Typography
-				variant="caption"
-				sx={{
-					mb: 1,
-				}}
-			>
-				shared across multiple users. make sure to not edit at the same time!
-			</Typography>
-			{error && (
-				<Typography sx={{ mt: 1 }}>
-					Error: No shared notes connected to your character.
-				</Typography>
-			)}
-			<TextField
-				disabled={error || isLoading || loadingSave}
-				multiline
-				minRows={20}
-				maxRows={20}
-				value={notes}
-				onChange={(event) => updateNotes(event.target.value)}
-				sx={{
-					maxWidth: '100%',
-					'& textarea.Mui-disabled': {
-						color: 'inherit',
-						['-webkit-text-fill-color']: 'inherit',
-					},
-				}}
+
+			{/* Party Management Section */}
+			<PartyManagement
+				characterId={characterId}
+				partyInfo={partyInfo}
+				onCreateParty={handleCreateParty}
+				onAddMember={handleAddMember}
+				onRemoveMember={handleRemoveMember}
+				onLeaveParty={handleLeaveParty}
+				loading={partyLoading || isLoading}
 			/>
+
+			{/* Notes Section */}
+			{partyInfo ? (
+				<>
+					<Typography variant="h6" sx={{ mb: 1 }}>
+						Party Notes
+					</Typography>
+					<Typography
+						variant="caption"
+						sx={{ mb: 1, display: 'block' }}
+					>
+						Notes update in real-time for all party members.
+					</Typography>
+					<TextField
+						disabled={isLoading}
+						multiline
+						minRows={15}
+						maxRows={20}
+						value={notes}
+						onChange={(event) => updateNotes(event.target.value)}
+						placeholder="Share notes with your party here..."
+						sx={{
+							maxWidth: '100%',
+							'& textarea.Mui-disabled': {
+								color: 'inherit',
+								['-webkit-text-fill-color']: 'inherit',
+							},
+						}}
+						fullWidth
+					/>
+				</>
+			) : (
+				<Alert severity="info" sx={{ mt: 2 }}>
+					Create or join a party to access shared notes.
+				</Alert>
+			)}
+
+			{error && (
+				<Alert severity="error" sx={{ mt: 2 }}>
+					{error}
+				</Alert>
+			)}
 		</>
 	)
 }
