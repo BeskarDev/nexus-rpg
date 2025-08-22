@@ -1,5 +1,5 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { Replay, Save } from '@mui/icons-material'
+import { Save, Warning } from '@mui/icons-material'
 import {
 	Box,
 	CircularProgress,
@@ -7,6 +7,11 @@ import {
 	TextField,
 	Typography,
 	Alert,
+	Button,
+	Dialog,
+	DialogTitle,
+	DialogContent,
+	DialogActions,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
@@ -18,11 +23,10 @@ import {
 	onSnapshot,
 	Unsubscribe,
 } from 'firebase/firestore'
-import React, { useEffect, useState, useCallback, useRef } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
-import { useDebounce } from '../../hooks/useDebounce'
 import { PartyService } from '../../services/PartyService'
 import { MigrationService } from '../../services/MigrationService'
 import { PartyInfo } from '@site/src/types/Party'
@@ -33,28 +37,22 @@ export const SharedNotes: React.FC = () => {
 	const { isMobile } = useDeviceSize()
 	
 	const [partyInfo, setPartyInfo] = useState<PartyInfo | null>(null)
-	const [notes, setNotes] = useState('')
+	const [notes, setNotes] = useState('') // Local notes that user is editing
+	const [originalNotes, setOriginalNotes] = useState('') // Notes as they were when user started editing
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 	const [migrationInProgress, setMigrationInProgress] = useState(false)
 	const [partyLoading, setPartyLoading] = useState(false)
 	const [isSaving, setIsSaving] = useState(false)
+	const [showConflictDialog, setShowConflictDialog] = useState(false)
+	const [conflictNotes, setConflictNotes] = useState('')
 
-	// Track the last value we received from the database to avoid circular updates
-	const lastSyncedNotesRef = useRef<string>('')
-	// Track if user is actively editing (has unsaved changes)
-	const isEditingRef = useRef<boolean>(false)
-	// Track the last saved value to prevent unnecessary saves
-	const lastSavedNotesRef = useRef<string>('')
+	// Derived state
+	const hasUnsavedChanges = notes !== originalNotes
 
-	const activeCharacter = useAppSelector(
+	const { docId: characterId } = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
-	
-	const characterId = activeCharacter ? `${activeCharacter.collectionId}-${activeCharacter.docId}` : ''
-
-	// Debounce notes to prevent race conditions when typing quickly
-	const debouncedNotes = useDebounce(notes, 500) // 500ms delay
 
 	// Real-time party subscription
 	useEffect(() => {
@@ -91,10 +89,7 @@ export const SharedNotes: React.FC = () => {
 					setPartyInfo(initialPartyInfo)
 					const initialNotes = initialPartyInfo.party.notes
 					setNotes(initialNotes)
-					// Initialize tracking refs to the initial notes value
-					lastSyncedNotesRef.current = initialNotes
-					lastSavedNotesRef.current = initialNotes
-					isEditingRef.current = false
+					setOriginalNotes(initialNotes)
 					
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
@@ -102,32 +97,21 @@ export const SharedNotes: React.FC = () => {
 						(updatedPartyInfo) => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
-								
-								const incomingNotes = updatedPartyInfo.party.notes
-								
-								// Only apply sync updates if user is not actively editing
-								// and the incoming notes are different from what we last synced
-								if (!isEditingRef.current && incomingNotes !== lastSyncedNotesRef.current) {
-									lastSyncedNotesRef.current = incomingNotes
-									lastSavedNotesRef.current = incomingNotes
-									setNotes(incomingNotes)
-								}
+								// Update original notes to track what's in the database
+								// This allows us to detect conflicts without affecting user's local edits
+								setOriginalNotes(updatedPartyInfo.party.notes)
 							} else {
 								// Party was deleted
 								setPartyInfo(null)
 								setNotes('')
-								lastSyncedNotesRef.current = ''
-								lastSavedNotesRef.current = ''
-								isEditingRef.current = false
+								setOriginalNotes('')
 							}
 						}
 					)
 				} else {
 					setPartyInfo(null)
 					setNotes('')
-					lastSyncedNotesRef.current = ''
-					lastSavedNotesRef.current = ''
-					isEditingRef.current = false
+					setOriginalNotes('')
 				}
 				
 				setError(null)
@@ -148,52 +132,67 @@ export const SharedNotes: React.FC = () => {
 		}
 	}, [currentUser, characterId])
 
-	// Real-time notes update
+	// Update notes locally (no auto-save)
 	const updateNotes = useCallback((newNotes: string) => {
 		setNotes(newNotes)
-		// Mark that user is actively editing
-		isEditingRef.current = true
 	}, [])
 
-	// Save debounced notes to database
-	useEffect(() => {
-		const saveNotes = async () => {
-			// Only save if we have a party and debounced notes differ from last saved value
-			if (partyInfo && debouncedNotes !== lastSavedNotesRef.current) {
-				setIsSaving(true)
-				try {
-					await PartyService.updatePartyNotes(partyInfo.party.id, debouncedNotes)
-					// Update tracking refs to reflect what we just saved
-					lastSavedNotesRef.current = debouncedNotes
-					lastSyncedNotesRef.current = debouncedNotes
-					// User has finished editing for now
-					isEditingRef.current = false
-				} catch (error) {
-					console.error('Failed to update notes:', error)
-					setError('Failed to save notes')
-				} finally {
-					setIsSaving(false)
-				}
-			} else if (partyInfo) {
-				// Notes haven't changed, user is no longer actively editing
-				isEditingRef.current = false
-			}
+	// Manual save function with conflict detection
+	const saveNotes = useCallback(async () => {
+		if (!partyInfo || !hasUnsavedChanges) return
+
+		// Check if notes have been modified by someone else while we were editing
+		if (partyInfo.party.notes !== originalNotes) {
+			// Conflict detected - show confirmation dialog
+			setConflictNotes(partyInfo.party.notes)
+			setShowConflictDialog(true)
+			return
 		}
 
-		saveNotes()
-	}, [debouncedNotes, partyInfo])
+		// No conflict - save directly
+		await performSave()
+	}, [partyInfo, hasUnsavedChanges, originalNotes])
+
+	// Perform the actual save operation
+	const performSave = useCallback(async () => {
+		if (!partyInfo) return
+
+		setIsSaving(true)
+		try {
+			await PartyService.updatePartyNotes(partyInfo.party.id, notes)
+			// Update original notes to match what we just saved
+			setOriginalNotes(notes)
+			setError(null)
+		} catch (error) {
+			console.error('Failed to save notes:', error)
+			setError('Failed to save notes')
+		} finally {
+			setIsSaving(false)
+		}
+	}, [partyInfo, notes])
+
+	// Handle conflict resolution
+	const handleConflictResolution = useCallback(async (overwrite: boolean) => {
+		setShowConflictDialog(false)
+		
+		if (overwrite) {
+			// User chose to overwrite - save their changes
+			await performSave()
+		} else {
+			// User chose to keep server version - update local notes
+			setNotes(conflictNotes)
+			setOriginalNotes(conflictNotes)
+		}
+		setConflictNotes('')
+	}, [conflictNotes, performSave])
 
 	// Party management handlers
 	const handleCreateParty = async (name: string) => {
-		if (!currentUser || !characterId) {
-			throw new Error('User not authenticated or character not selected')
-		}
+		if (!currentUser || !characterId) return
 		
 		setPartyLoading(true)
 		try {
-			console.log('Creating party:', { name, characterId, userId: currentUser.uid })
 			const partyId = await PartyService.createParty(name, characterId, currentUser.uid)
-			console.log('Party created with ID:', partyId)
 			const newPartyInfo = await PartyService.getPartyInfo(partyId)
 			setPartyInfo(newPartyInfo)
 		} catch (error) {
@@ -210,11 +209,6 @@ export const SharedNotes: React.FC = () => {
 		setPartyLoading(true)
 		try {
 			await PartyService.addCharacterToParty(partyInfo.party.id, newCharacterId)
-			// Force refresh the party info to immediately show the new member
-			const updatedPartyInfo = await PartyService.getPartyInfo(partyInfo.party.id)
-			if (updatedPartyInfo) {
-				setPartyInfo(updatedPartyInfo)
-			}
 		} catch (error) {
 			console.error('Failed to add member:', error)
 			throw error
@@ -245,6 +239,7 @@ export const SharedNotes: React.FC = () => {
 			await PartyService.removeCharacterFromParty(partyInfo.party.id, characterId)
 			setPartyInfo(null)
 			setNotes('')
+			setOriginalNotes('')
 		} catch (error) {
 			console.error('Failed to leave party:', error)
 			throw error
@@ -325,7 +320,7 @@ export const SharedNotes: React.FC = () => {
 						variant="caption"
 						sx={{ mb: 1, display: 'block' }}
 					>
-						Notes update in real-time for all party members.
+						Make your changes and click Save to share with party members.
 					</Typography>
 					<TextField
 						disabled={isLoading}
@@ -343,14 +338,81 @@ export const SharedNotes: React.FC = () => {
 							},
 						}}
 						fullWidth
-						helperText={isSaving ? "Saving..." : "Notes auto-save as you type"}
 					/>
+					
+					{/* Save Button and Status */}
+					<Box sx={{ mt: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
+						<Button
+							variant="contained"
+							startIcon={isSaving ? <CircularProgress size={16} /> : <Save />}
+							onClick={saveNotes}
+							disabled={!hasUnsavedChanges || isSaving}
+						>
+							{isSaving ? 'Saving...' : 'Save Notes'}
+						</Button>
+						
+						{hasUnsavedChanges && !isSaving && (
+							<Typography variant="caption" color="warning.main">
+								You have unsaved changes
+							</Typography>
+						)}
+						
+						{!hasUnsavedChanges && !isSaving && (
+							<Typography variant="caption" color="success.main">
+								All changes saved
+							</Typography>
+						)}
+					</Box>
 				</>
 			) : (
 				<Alert severity="info" sx={{ mt: 2 }}>
 					Create or join a party to access shared notes.
 				</Alert>
 			)}
+
+			{/* Conflict Resolution Dialog */}
+			<Dialog open={showConflictDialog} onClose={() => setShowConflictDialog(false)} maxWidth="md" fullWidth>
+				<DialogTitle sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+					<Warning color="warning" />
+					Notes Conflict Detected
+				</DialogTitle>
+				<DialogContent>
+					<Typography variant="body1" sx={{ mb: 2 }}>
+						Someone else has modified the notes while you were editing. What would you like to do?
+					</Typography>
+					
+					<Typography variant="h6" sx={{ mb: 1 }}>
+						Your Version:
+					</Typography>
+					<TextField
+						multiline
+						rows={6}
+						value={notes}
+						fullWidth
+						disabled
+						sx={{ mb: 2 }}
+					/>
+					
+					<Typography variant="h6" sx={{ mb: 1 }}>
+						Server Version (Latest):
+					</Typography>
+					<TextField
+						multiline
+						rows={6}
+						value={conflictNotes}
+						fullWidth
+						disabled
+					/>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => handleConflictResolution(false)} color="primary">
+						Keep Server Version
+					</Button>
+					<Button onClick={() => handleConflictResolution(true)} variant="contained" color="warning">
+						Overwrite with My Version
+					</Button>
+				</DialogActions>
+			</Dialog>
 
 			{error && (
 				<Alert severity="error" sx={{ mt: 2 }}>
