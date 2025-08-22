@@ -40,10 +40,8 @@ export const SharedNotes: React.FC = () => {
 	const [partyLoading, setPartyLoading] = useState(false)
 	const [isSaving, setIsSaving] = useState(false)
 
-	// Track the last value received from database to prevent unnecessary updates
-	const lastReceivedNotesRef = useRef<string>('')
-	// Track when we're currently saving to ignore our own updates
-	const isSavingRef = useRef<boolean>(false)
+	// Track what's currently in the database (updated only by sync)
+	const databaseNotesRef = useRef<string>('')
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -87,9 +85,10 @@ export const SharedNotes: React.FC = () => {
 				const initialPartyInfo = await PartyService.getPartyByCharacterId(characterId)
 				if (initialPartyInfo) {
 					setPartyInfo(initialPartyInfo)
-					setNotes(initialPartyInfo.party.notes)
-					// Initialize the ref to the initial notes value
-					lastReceivedNotesRef.current = initialPartyInfo.party.notes
+					const initialNotes = initialPartyInfo.party.notes
+					setNotes(initialNotes)
+					// Initialize database ref to the initial notes value
+					databaseNotesRef.current = initialNotes
 					
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
@@ -98,24 +97,34 @@ export const SharedNotes: React.FC = () => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
 								
-								// Simple sync logic: only update if not saving and value is different
+								// Update database ref to track what's in the database
 								const incomingNotes = updatedPartyInfo.party.notes
-								if (!isSavingRef.current && incomingNotes !== lastReceivedNotesRef.current) {
-									lastReceivedNotesRef.current = incomingNotes
-									setNotes(incomingNotes)
-								}
+								databaseNotesRef.current = incomingNotes
+								
+								// Only apply sync updates if user hasn't made local changes
+								// We compare current notes to the OLD database value to detect local changes
+								setNotes(currentNotes => {
+									// If current notes match what was previously in database, user hasn't made changes
+									const previousDatabaseNotes = databaseNotesRef.current
+									if (currentNotes === previousDatabaseNotes) {
+										// No local changes, safe to apply sync update
+										return incomingNotes
+									}
+									// User has local changes - preserve them
+									return currentNotes
+								})
 							} else {
 								// Party was deleted
 								setPartyInfo(null)
 								setNotes('')
-								lastReceivedNotesRef.current = ''
+								databaseNotesRef.current = ''
 							}
 						}
 					)
 				} else {
 					setPartyInfo(null)
 					setNotes('')
-					lastReceivedNotesRef.current = ''
+					databaseNotesRef.current = ''
 				}
 				
 				setError(null)
@@ -144,23 +153,18 @@ export const SharedNotes: React.FC = () => {
 	// Save debounced notes to database
 	useEffect(() => {
 		const saveNotes = async () => {
-			// Only save if we have a party and the debounced notes differ from what we last received
-			if (partyInfo && debouncedNotes !== lastReceivedNotesRef.current) {
-				isSavingRef.current = true
+			// Only save if we have a party and user's debounced notes differ from what's in database
+			if (partyInfo && debouncedNotes !== databaseNotesRef.current) {
 				setIsSaving(true)
 				try {
 					await PartyService.updatePartyNotes(partyInfo.party.id, debouncedNotes)
-					// Update our reference to the saved value
-					lastReceivedNotesRef.current = debouncedNotes
+					// Update database ref to reflect what we just saved
+					databaseNotesRef.current = debouncedNotes
 				} catch (error) {
 					console.error('Failed to update notes:', error)
 					setError('Failed to save notes')
 				} finally {
 					setIsSaving(false)
-					// Small delay to ensure database update propagates before allowing sync updates
-					setTimeout(() => {
-						isSavingRef.current = false
-					}, 100)
 				}
 			}
 		}
