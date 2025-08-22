@@ -1,5 +1,5 @@
 import { useColorMode } from '@docusaurus/theme-common'
-import { Save, Warning } from '@mui/icons-material'
+import { Save, Warning, Refresh } from '@mui/icons-material'
 import {
 	Box,
 	CircularProgress,
@@ -12,6 +12,7 @@ import {
 	DialogTitle,
 	DialogContent,
 	DialogActions,
+	Tooltip,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
@@ -46,9 +47,11 @@ export const SharedNotes: React.FC = () => {
 	const [isSaving, setIsSaving] = useState(false)
 	const [showConflictDialog, setShowConflictDialog] = useState(false)
 	const [conflictNotes, setConflictNotes] = useState('')
+	const [showRefreshDialog, setShowRefreshDialog] = useState(false)
 
 	// Derived state
 	const hasUnsavedChanges = notes !== originalNotes
+	const hasServerChanges = partyInfo ? originalNotes !== partyInfo.party.notes : false
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -182,12 +185,43 @@ export const SharedNotes: React.FC = () => {
 			// User chose to overwrite - save their changes
 			await performSave()
 		} else {
-			// User chose to keep server version - update local notes
-			setNotes(conflictNotes)
-			setOriginalNotes(conflictNotes)
+			// User chose to cancel - keep their local edits and don't save
+			// Do nothing - local state remains unchanged
 		}
 		setConflictNotes('')
 	}, [conflictNotes, performSave])
+
+	// Handle refresh notes from server
+	const refreshNotes = useCallback(() => {
+		if (!partyInfo) return
+
+		if (hasUnsavedChanges) {
+			// Show confirmation dialog if there are unsaved changes
+			setShowRefreshDialog(true)
+		} else {
+			// No unsaved changes, refresh immediately
+			performRefresh()
+		}
+	}, [partyInfo, hasUnsavedChanges])
+
+	// Perform the actual refresh operation
+	const performRefresh = useCallback(() => {
+		if (!partyInfo) return
+		
+		const serverNotes = partyInfo.party.notes
+		setNotes(serverNotes)
+		setOriginalNotes(serverNotes)
+		setShowRefreshDialog(false)
+	}, [partyInfo])
+
+	// Handle refresh confirmation
+	const handleRefreshConfirmation = useCallback((confirm: boolean) => {
+		if (confirm) {
+			performRefresh()
+		} else {
+			setShowRefreshDialog(false)
+		}
+	}, [performRefresh])
 
 	// Party management handlers
 	const handleCreateParty = async (name: string) => {
@@ -354,13 +388,29 @@ export const SharedNotes: React.FC = () => {
 							{isSaving ? 'Saving...' : 'Save Notes'}
 						</Button>
 						
+						<Tooltip title="Refresh with latest notes from server">
+							<IconButton
+								onClick={refreshNotes}
+								disabled={isSaving}
+								color={hasServerChanges ? 'warning' : 'default'}
+							>
+								<Refresh />
+							</IconButton>
+						</Tooltip>
+						
 						{hasUnsavedChanges && !isSaving && (
 							<Typography variant="caption" color="warning.main">
 								You have unsaved changes
 							</Typography>
 						)}
 						
-						{!hasUnsavedChanges && !isSaving && (
+						{!hasUnsavedChanges && hasServerChanges && !isSaving && (
+							<Typography variant="caption" color="info.main">
+								There are changes from others
+							</Typography>
+						)}
+						
+						{!hasUnsavedChanges && !hasServerChanges && !isSaving && (
 							<Typography variant="caption" color="success.main">
 								All changes saved
 							</Typography>
@@ -409,10 +459,30 @@ export const SharedNotes: React.FC = () => {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={() => handleConflictResolution(false)} color="primary">
-						Keep Server Version
+						Cancel
 					</Button>
 					<Button onClick={() => handleConflictResolution(true)} variant="contained" color="warning">
-						Overwrite with My Version
+						Save Anyway
+					</Button>
+				</DialogActions>
+			</Dialog>
+
+			{/* Refresh Confirmation Dialog */}
+			<Dialog open={showRefreshDialog} onClose={() => setShowRefreshDialog(false)} maxWidth="sm" fullWidth>
+				<DialogTitle>
+					Refresh Notes
+				</DialogTitle>
+				<DialogContent>
+					<Typography variant="body1">
+						You have unsaved changes. Refreshing will discard your changes and load the latest version from the server. Are you sure?
+					</Typography>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => handleRefreshConfirmation(false)} color="primary">
+						Cancel
+					</Button>
+					<Button onClick={() => handleRefreshConfirmation(true)} variant="contained" color="warning">
+						Refresh Anyway
 					</Button>
 				</DialogActions>
 			</Dialog>
