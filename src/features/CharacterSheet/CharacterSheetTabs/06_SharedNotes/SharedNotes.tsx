@@ -44,6 +44,8 @@ export const SharedNotes: React.FC = () => {
 	const lastSavedNotesRef = useRef<string>('')
 	// Track the last synced notes value to prevent overwriting user input
 	const lastSyncedNotesRef = useRef<string>('')
+	// Track the current debounced value to detect user typing
+	const debouncedNotesRef = useRef<string>('')
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -53,6 +55,11 @@ export const SharedNotes: React.FC = () => {
 
 	// Debounce notes to prevent race conditions when typing quickly
 	const debouncedNotes = useDebounce(notes, 500) // 500ms delay
+	
+	// Update the ref whenever debounced notes change
+	useEffect(() => {
+		debouncedNotesRef.current = debouncedNotes
+	}, [debouncedNotes])
 
 	// Real-time party subscription
 	useEffect(() => {
@@ -88,9 +95,10 @@ export const SharedNotes: React.FC = () => {
 				if (initialPartyInfo) {
 					setPartyInfo(initialPartyInfo)
 					setNotes(initialPartyInfo.party.notes)
-					// Initialize both refs to the initial notes value
+					// Initialize all refs to the initial notes value
 					lastSavedNotesRef.current = initialPartyInfo.party.notes
 					lastSyncedNotesRef.current = initialPartyInfo.party.notes
+					debouncedNotesRef.current = initialPartyInfo.party.notes
 					
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
@@ -98,20 +106,25 @@ export const SharedNotes: React.FC = () => {
 						(updatedPartyInfo) => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
-								// Only update notes if:
-								// 1. The incoming notes are different from what we last synced
-								// 2. This prevents sync updates from interfering with local typing
-								if (updatedPartyInfo.party.notes !== lastSyncedNotesRef.current) {
-									lastSyncedNotesRef.current = updatedPartyInfo.party.notes
-									// Only update local notes if they haven't been modified since the last sync
-									// This prevents overwriting user input while they're typing
-									setNotes(prev => {
-										// If the user has made local changes (different from last sync), don't overwrite
-										if (prev === lastSyncedNotesRef.current || prev === updatedPartyInfo.party.notes) {
-											return updatedPartyInfo.party.notes
+								// Update notes from sync if they're different from what we have
+								const incomingNotes = updatedPartyInfo.party.notes
+								if (incomingNotes !== lastSyncedNotesRef.current) {
+									lastSyncedNotesRef.current = incomingNotes
+									
+									// Only update local notes if the user isn't actively typing
+									// We check if current notes match the debounced version to detect active typing
+									setNotes(currentNotes => {
+										// If this update comes from our own save, don't update
+										if (incomingNotes === lastSavedNotesRef.current) {
+											return currentNotes
 										}
-										// User is typing, don't overwrite their changes
-										return prev
+										// Don't overwrite if user is actively typing
+										// Check if notes have changed but haven't been debounced yet
+										if (currentNotes !== debouncedNotesRef.current) {
+											return currentNotes
+										}
+										// Apply the sync update - this allows real-time collaboration
+										return incomingNotes
 									})
 								}
 							} else {
@@ -120,6 +133,7 @@ export const SharedNotes: React.FC = () => {
 								setNotes('')
 								lastSavedNotesRef.current = ''
 								lastSyncedNotesRef.current = ''
+								debouncedNotesRef.current = ''
 							}
 						}
 					)
@@ -128,6 +142,7 @@ export const SharedNotes: React.FC = () => {
 					setNotes('')
 					lastSavedNotesRef.current = ''
 					lastSyncedNotesRef.current = ''
+					debouncedNotesRef.current = ''
 				}
 				
 				setError(null)
