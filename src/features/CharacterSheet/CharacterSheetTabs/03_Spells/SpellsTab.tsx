@@ -43,6 +43,26 @@ export const SpellsTab: React.FC = () => {
 				? 'Arcana'
 				: null
 
+	// Auto-detect magic skill from character's skills
+	const detectedMagicSkill = useMemo(() => {
+		const skills = activeCharacter.skills.skills || []
+		const hasArcana = skills.some(skill => skill.name === 'Arcana')
+		const hasMysticism = skills.some(skill => skill.name === 'Mysticism')
+		
+		if (hasArcana) return 'Arcana'
+		if (hasMysticism) return 'Mysticism'
+		return ''
+	}, [activeCharacter.skills.skills])
+
+	// Auto-sync magic skill if it doesn't match detected skill
+	React.useEffect(() => {
+		if (detectedMagicSkill !== magicSkill) {
+			updateCharacter({
+				spells: { magicSkill: detectedMagicSkill },
+			})
+		}
+	}, [detectedMagicSkill, magicSkill])
+
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
@@ -99,6 +119,7 @@ export const SpellsTab: React.FC = () => {
 								})
 							}
 							label="Magic Skill"
+							disabled={true}
 						>
 							<MenuItem value="">None</MenuItem>
 							<MenuItem value="Arcana">Arcana</MenuItem>
@@ -124,7 +145,7 @@ export const SpellsTab: React.FC = () => {
 						display: 'flex',
 						alignItems: 'flex-start',
 						flexWrap: 'wrap',
-						gap: 1,
+						gap: 2,
 					}}
 				>
 					<AttributeField
@@ -145,9 +166,7 @@ export const SpellsTab: React.FC = () => {
 					<Tooltip title="bonus damage per SL from your Spell Catalyst">
 						<HelpOutline fontSize="small" sx={{ mt: 1, mb: 0.75 }} />
 					</Tooltip>
-					<Box sx={{ ml: 'auto' }}>
-						<FocusField />
-					</Box>
+					<FocusField />
 				</Box>
 
 				<Box sx={{ width: '100%', flexGrow: 1 }} />

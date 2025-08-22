@@ -122,12 +122,11 @@ export const FocusField = () => {
 	}, [focus.current])
 
 	return (
-		<>
+		<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
 			<Button
 				variant="text"
 				color="inherit"
 				size="small"
-				onClick={handleClick}
 				sx={{
 					px: 1,
 					py: 0.5,
@@ -220,6 +219,14 @@ export const FocusField = () => {
 					</Box>
 				</Box>
 			</Button>
+
+			<IconButton
+				size="small"
+				onClick={handleClick}
+				sx={{ mt: -0.5 }}
+			>
+				<Settings fontSize="small" />
+			</IconButton>
 
 			{/* Configuration Menu */}
 			{open && (
@@ -318,6 +325,6 @@ export const FocusField = () => {
 					</Box>
 				</Menu>
 			)}
-		</>
+		</Box>
 	)
 }
