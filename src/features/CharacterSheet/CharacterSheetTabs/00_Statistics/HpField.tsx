@@ -105,7 +105,7 @@ export const HpField = () => {
 				<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					{/* HP Display */}
 					<Typography variant="body2" sx={{ fontWeight: 'bold', mb: 0.5 }}>
-						{health.current}/{effectiveMaxHp} HP
+						{health.current}/{maxHp} HP
 					</Typography>
 					
 					{/* HP Bar */}
@@ -140,20 +140,9 @@ export const HpField = () => {
 					Max HP: {baseHp} + {(characterLevel - 1) * 2} + {health.maxHpModifier || 0} = {maxHp}
 				</Typography>
 				
-				{/* Max HP (disabled, calculated) */}
+				{/* Current HP - First and larger */}
 				<AttributeField
 					type="number"
-					size="small"
-					value={maxHp}
-					disabled
-					label="Max HP (Calculated)"
-					sx={{ mb: 1 }}
-				/>
-				
-				{/* Current HP */}
-				<AttributeField
-					type="number"
-					size="small"
 					value={health.current}
 					onChange={(event) => {
 						const newCurrent = Number(event.target.value)
@@ -163,6 +152,16 @@ export const HpField = () => {
 						})
 					}}
 					label="Current HP"
+					sx={{ mb: 1 }}
+				/>
+				
+				{/* Max HP (disabled, calculated) */}
+				<AttributeField
+					type="number"
+					size="small"
+					value={maxHp}
+					disabled
+					label="Max HP (Calculated)"
 					sx={{ mb: 1 }}
 				/>
 				
