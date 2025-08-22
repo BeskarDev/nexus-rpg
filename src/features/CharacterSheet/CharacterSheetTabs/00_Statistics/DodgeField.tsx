@@ -86,7 +86,6 @@ export const DodgeField = () => {
 					disabled
 					value={dodgeDetails ? totalDodge : dodge}
 					label="Dodge"
-					helperText="5 + ½ AGI"
 					sx={{
 						mr: 1,
 						'& .MuiOutlinedInput-root': {
@@ -120,7 +119,8 @@ export const DodgeField = () => {
 						type="number"
 						size="small"
 						value={autoBase}
-						label="Base (5 + ½ AGI)"
+						label="Base"
+						helperText="5 + ½ AGI"
 					/>
 					<AttributeField
 						disabled

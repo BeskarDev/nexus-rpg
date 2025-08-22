@@ -101,7 +101,6 @@ export const ParryField = () => {
 					disabled
 					value={parryDetails ? totalParry : parry}
 					label="Parry"
-					helperText="7 + Fighting"
 					sx={{
 						mr: 1,
 						'& .MuiOutlinedInput-root': {
@@ -135,7 +134,8 @@ export const ParryField = () => {
 						type="number"
 						size="small"
 						value={autoBase}
-						label="Base (7 + Fighting)"
+						label="Base"
+						helperText="7 + Fighting"
 					/>
 					<AttributeField
 						disabled

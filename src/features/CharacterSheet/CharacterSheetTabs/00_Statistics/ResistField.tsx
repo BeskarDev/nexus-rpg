@@ -86,7 +86,6 @@ export const ResistField = () => {
 					disabled
 					value={resistDetails ? totalResist : resist}
 					label="Resist"
-					helperText="5 + ½ SPI/MND"
 					sx={{
 						mr: 1,
 						'& .MuiOutlinedInput-root': {
@@ -120,7 +119,8 @@ export const ResistField = () => {
 						type="number"
 						size="small"
 						value={autoBase}
-						label="Base (5 + ½ SPI/MND)"
+						label="Base"
+						helperText="5 + ½ SPI/MND"
 					/>
 					<AttributeField
 						disabled
