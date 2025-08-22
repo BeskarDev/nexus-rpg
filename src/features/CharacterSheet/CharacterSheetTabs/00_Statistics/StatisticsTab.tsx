@@ -17,6 +17,9 @@ import { useAppSelector } from '../../hooks/useAppSelector'
 import { calculateMaxHp } from '../../utils/calculateHp'
 import { AttributeColumn } from './AttributeColumn'
 import { AvField } from './AvField'
+import { ParryField } from './ParryField'
+import { DodgeField } from './DodgeField'
+import { ResistField } from './ResistField'
 import { HpField } from './HpField'
 import { FatigueTracker } from './FatigueTracker'
 import { RestingButtonGroup } from './RestingButtonGroup'
@@ -34,9 +37,6 @@ export const StatisticsTab: React.FC = () => {
 		agility,
 		spirit,
 		mind,
-		parry,
-		dodge,
-		resist,
 		resolve,
 		statusEffects,
 	} = activeCharacter.statistics
@@ -233,42 +233,9 @@ export const StatisticsTab: React.FC = () => {
 
 				<Box sx={{ display: 'flex', flexDirection: 'row', gap: 0.5 }}>
 					{/* Defenses */}
-					<AttributeField
-						type="number"
-						value={parry}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { parry: Number(event.target.value) },
-							})
-						}
-						label="Parry"
-						helperText="7 + Fighting"
-						sx={{ maxWidth: '5.5rem' }}
-					/>
-					<AttributeField
-						type="number"
-						value={dodge}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { dodge: Number(event.target.value) },
-							})
-						}
-						label="Dodge"
-						helperText="5 + ½ AGI"
-						sx={{ maxWidth: '5.5rem' }}
-					/>
-					<AttributeField
-						type="number"
-						value={resist}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: { resist: Number(event.target.value) },
-							})
-						}
-						label="Resist"
-						helperText="5 + ½ SPI"
-						sx={{ maxWidth: '5.5rem' }}
-					/>
+					<ParryField />
+					<DodgeField />
+					<ResistField />
 				</Box>
 			</Box>
 		</Box>
