@@ -173,6 +173,16 @@ export class PartyService {
 	}
 
 	/**
+	 * Update party name
+	 */
+	static async updatePartyName(partyId: string, name: string): Promise<void> {
+		if (!name?.trim()) {
+			throw new Error('Party name cannot be empty')
+		}
+		await updateDoc(doc(db, 'parties', partyId), { name: name.trim() })
+	}
+
+	/**
 	 * Listen for real-time party updates
 	 */
 	static subscribeToParty(partyId: string, callback: (partyInfo: PartyInfo | null) => void): Unsubscribe {

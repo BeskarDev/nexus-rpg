@@ -15,6 +15,7 @@ import { PartyMember } from '@site/src/types/Party'
 export interface PartyMemberItemProps {
 	member: PartyMember
 	isCurrentUser: boolean
+	isOnlyMember: boolean
 	onLeaveParty: () => void
 	onRemoveMember: () => void
 }
@@ -22,6 +23,7 @@ export interface PartyMemberItemProps {
 export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
 	member,
 	isCurrentUser,
+	isOnlyMember,
 	onLeaveParty,
 	onRemoveMember,
 }) => {
@@ -49,14 +51,17 @@ export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
 			/>
 			<Box sx={{ display: 'flex', gap: 1 }}>
 				{isCurrentUser ? (
-					<Tooltip title="Leave Party">
-						<IconButton 
-							onClick={onLeaveParty}
-							color="warning"
-							size="small"
-						>
-							<ExitToApp />
-						</IconButton>
+					<Tooltip title={isOnlyMember ? "Cannot leave - you are the only member" : "Leave Party"}>
+						<span>
+							<IconButton 
+								onClick={onLeaveParty}
+								color="warning"
+								size="small"
+								disabled={isOnlyMember}
+							>
+								<ExitToApp />
+							</IconButton>
+						</span>
 					</Tooltip>
 				) : (
 					<Tooltip title="Remove from Party">

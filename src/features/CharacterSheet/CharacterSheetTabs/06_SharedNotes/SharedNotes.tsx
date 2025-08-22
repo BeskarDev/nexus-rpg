@@ -22,6 +22,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
+import { useDebounce } from '../../hooks/useDebounce'
 import { PartyService } from '../../services/PartyService'
 import { MigrationService } from '../../services/MigrationService'
 import { PartyInfo } from '@site/src/types/Party'
@@ -37,12 +38,16 @@ export const SharedNotes: React.FC = () => {
 	const [error, setError] = useState<string | null>(null)
 	const [migrationInProgress, setMigrationInProgress] = useState(false)
 	const [partyLoading, setPartyLoading] = useState(false)
+	const [isSaving, setIsSaving] = useState(false)
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
 	
 	const characterId = activeCharacter ? `${activeCharacter.collectionId}-${activeCharacter.docId}` : ''
+
+	// Debounce notes to prevent race conditions when typing quickly
+	const debouncedNotes = useDebounce(notes, 500) // 500ms delay
 
 	// Real-time party subscription
 	useEffect(() => {
@@ -117,18 +122,28 @@ export const SharedNotes: React.FC = () => {
 	}, [currentUser, characterId])
 
 	// Real-time notes update
-	const updateNotes = useCallback(async (newNotes: string) => {
+	const updateNotes = useCallback((newNotes: string) => {
 		setNotes(newNotes)
-		
-		if (partyInfo) {
-			try {
-				await PartyService.updatePartyNotes(partyInfo.party.id, newNotes)
-			} catch (error) {
-				console.error('Failed to update notes:', error)
-				setError('Failed to save notes')
+	}, [])
+
+	// Save debounced notes to database
+	useEffect(() => {
+		const saveNotes = async () => {
+			if (partyInfo && debouncedNotes !== partyInfo.party.notes) {
+				setIsSaving(true)
+				try {
+					await PartyService.updatePartyNotes(partyInfo.party.id, debouncedNotes)
+				} catch (error) {
+					console.error('Failed to update notes:', error)
+					setError('Failed to save notes')
+				} finally {
+					setIsSaving(false)
+				}
 			}
 		}
-	}, [partyInfo])
+
+		saveNotes()
+	}, [debouncedNotes, partyInfo])
 
 	// Party management handlers
 	const handleCreateParty = async (name: string) => {
@@ -157,6 +172,11 @@ export const SharedNotes: React.FC = () => {
 		setPartyLoading(true)
 		try {
 			await PartyService.addCharacterToParty(partyInfo.party.id, newCharacterId)
+			// Force refresh the party info to immediately show the new member
+			const updatedPartyInfo = await PartyService.getPartyInfo(partyInfo.party.id)
+			if (updatedPartyInfo) {
+				setPartyInfo(updatedPartyInfo)
+			}
 		} catch (error) {
 			console.error('Failed to add member:', error)
 			throw error
@@ -189,6 +209,21 @@ export const SharedNotes: React.FC = () => {
 			setNotes('')
 		} catch (error) {
 			console.error('Failed to leave party:', error)
+			throw error
+		} finally {
+			setPartyLoading(false)
+		}
+	}
+
+	const handleUpdatePartyName = async (newName: string) => {
+		if (!partyInfo) return
+		
+		setPartyLoading(true)
+		try {
+			await PartyService.updatePartyName(partyInfo.party.id, newName)
+			// The real-time subscription will update partyInfo automatically
+		} catch (error) {
+			console.error('Failed to update party name:', error)
 			throw error
 		} finally {
 			setPartyLoading(false)
@@ -238,6 +273,7 @@ export const SharedNotes: React.FC = () => {
 				onAddMember={handleAddMember}
 				onRemoveMember={handleRemoveMember}
 				onLeaveParty={handleLeaveParty}
+				onUpdatePartyName={handleUpdatePartyName}
 				loading={partyLoading || isLoading}
 			/>
 
@@ -269,6 +305,7 @@ export const SharedNotes: React.FC = () => {
 							},
 						}}
 						fullWidth
+						helperText={isSaving ? "Saving..." : "Notes auto-save as you type"}
 					/>
 				</>
 			) : (
