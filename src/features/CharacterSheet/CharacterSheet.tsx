@@ -88,7 +88,7 @@ export const CharacterSheet: React.FC = () => {
 							<Tab id="3" label="Spells" />
 							<Tab id="4" label="Personal" />
 							<Tab id="5" label="Companions" />
-							<Tab id="6" label="Shared Notes" />
+							<Tab id="6" label="Party" />
 						</Tabs>
 					</Box>
 					{activeTab === 0 && <StatisticsTab />}
@@ -133,7 +133,7 @@ export const CharacterSheet: React.FC = () => {
 								<Tab id="2" label="Spells" />
 								<Tab id="3" label="Personal" />
 								<Tab id="4" label="Companions" />
-								<Tab id="5" label="Shared Notes" />
+								<Tab id="5" label="Party" />
 							</Tabs>
 							{activeTab === 0 && <SkillsTab />}
 							{activeTab === 1 && <ItemsTab />}

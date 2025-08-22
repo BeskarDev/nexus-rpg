@@ -18,7 +18,7 @@ import {
 	onSnapshot,
 	Unsubscribe,
 } from 'firebase/firestore'
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
@@ -39,6 +39,9 @@ export const SharedNotes: React.FC = () => {
 	const [migrationInProgress, setMigrationInProgress] = useState(false)
 	const [partyLoading, setPartyLoading] = useState(false)
 	const [isSaving, setIsSaving] = useState(false)
+
+	// Track the last saved notes value to prevent infinite loops
+	const lastSavedNotesRef = useRef<string>('')
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -83,6 +86,8 @@ export const SharedNotes: React.FC = () => {
 				if (initialPartyInfo) {
 					setPartyInfo(initialPartyInfo)
 					setNotes(initialPartyInfo.party.notes)
+					// Initialize the last saved notes reference
+					lastSavedNotesRef.current = initialPartyInfo.party.notes
 					
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
@@ -90,17 +95,30 @@ export const SharedNotes: React.FC = () => {
 						(updatedPartyInfo) => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
-								setNotes(updatedPartyInfo.party.notes)
+								// Only update notes if they differ from what we have locally
+								// This prevents overwriting user input while they're typing
+								setNotes(prev => {
+									// If the incoming notes are different from our last saved value,
+									// it means someone else made a change, so we should update
+									if (updatedPartyInfo.party.notes !== lastSavedNotesRef.current) {
+										lastSavedNotesRef.current = updatedPartyInfo.party.notes
+										return updatedPartyInfo.party.notes
+									}
+									// Otherwise, keep the current local value
+									return prev
+								})
 							} else {
 								// Party was deleted
 								setPartyInfo(null)
 								setNotes('')
+								lastSavedNotesRef.current = ''
 							}
 						}
 					)
 				} else {
 					setPartyInfo(null)
 					setNotes('')
+					lastSavedNotesRef.current = ''
 				}
 				
 				setError(null)
@@ -129,10 +147,16 @@ export const SharedNotes: React.FC = () => {
 	// Save debounced notes to database
 	useEffect(() => {
 		const saveNotes = async () => {
-			if (partyInfo && debouncedNotes !== partyInfo.party.notes) {
+			// Only save if:
+			// 1. We have a party
+			// 2. The debounced notes differ from our last saved value (not from the party info)
+			// 3. This prevents infinite loops when multiple users have notes open
+			if (partyInfo && debouncedNotes !== lastSavedNotesRef.current) {
 				setIsSaving(true)
 				try {
 					await PartyService.updatePartyNotes(partyInfo.party.id, debouncedNotes)
+					// Update our reference to the saved value
+					lastSavedNotesRef.current = debouncedNotes
 				} catch (error) {
 					console.error('Failed to update notes:', error)
 					setError('Failed to save notes')
