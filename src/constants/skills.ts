@@ -16,7 +16,7 @@ export const OFFICIAL_SKILLS = [
 	'Stealth',
 	'Streetwise',
 	'Survival',
-] as const
+]
 
 // Official crafting professions from the documentation, sorted alphabetically
 export const OFFICIAL_PROFESSIONS = [
@@ -27,7 +27,7 @@ export const OFFICIAL_PROFESSIONS = [
 	'Leatherworker',
 	'Smith',
 	'Woodworker',
-] as const
+]
 
 // Color mapping for skill chips using Docusaurus color scheme
 export const getSkillChipColor = (skill: string): string => {

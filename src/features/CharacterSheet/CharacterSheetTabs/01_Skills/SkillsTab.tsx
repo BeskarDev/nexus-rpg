@@ -192,42 +192,62 @@ export const SkillsTab: React.FC = () => {
 
 				{/* Selected Skills as Chips */}
 				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
-					{skills.map(skill => (
-						<Chip
-							key={skill.id}
-							label={
-								<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-									<span>{skill.name}</span>
-									<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-										<Typography variant="caption" sx={{ fontSize: '0.7rem' }}>
-											Rank {skill.rank} ({skill.xp} XP)
-										</Typography>
-										<AttributeField
-											size="small"
-											type="number"
-											value={skill.xp}
-											onChange={(e) => updateSkill(skill.name, { xp: Number(e.target.value) })}
-											sx={{ 
-												width: '50px',
-												'& .MuiInputBase-input': {
-													padding: '2px 4px',
-													fontSize: '0.7rem',
-													textAlign: 'center'
-												}
-											}}
-										/>
-									</Box>
-								</Box>
+					{skills.map(skill => {
+						const skillRank = useMemo(() => {
+							switch (true) {
+								case skill.xp <= 1:
+									return 0
+								case skill.xp <= 5:
+									return 1
+								case skill.xp <= 11:
+									return 2
+								case skill.xp <= 19:
+									return 3
+								case skill.xp <= 29:
+									return 4
+								default:
+									return 5
 							}
-							onDelete={() => removeSkill(skill.name)}
-							sx={{
-								backgroundColor: getSkillChipColor(skill.name),
-								'& .MuiChip-label': {
-									padding: '0 8px',
-								},
-							}}
-						/>
-					))}
+						}, [skill.xp])
+
+						return (
+							<Box key={skill.id} sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
+								<Chip
+									label={skill.name}
+									onDelete={() => removeSkill(skill.name)}
+									sx={{
+										backgroundColor: getSkillChipColor(skill.name),
+										'& .MuiChip-label': {
+											fontWeight: 500,
+										},
+									}}
+								/>
+								<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0.5 }}>
+									<Typography variant="caption" sx={{ fontSize: '0.7rem', color: 'text.secondary' }}>
+										Rank {skillRank}
+									</Typography>
+									<AttributeField
+										size="small"
+										type="number"
+										value={skill.xp}
+										onChange={(e) => updateSkill(skill.name, { xp: Number(e.target.value) })}
+										label="XP"
+										sx={{ 
+											width: '60px',
+											'& .MuiInputBase-input': {
+												padding: '4px 6px',
+												fontSize: '0.75rem',
+												textAlign: 'center'
+											},
+											'& .MuiInputLabel-root': {
+												fontSize: '0.7rem',
+											}
+										}}
+									/>
+								</Box>
+							</Box>
+						)
+					})}
 				</Box>
 
 				{/* Professions Section */}
