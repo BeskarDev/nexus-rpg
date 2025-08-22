@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, useEffect } from 'react'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Remove, Add } from '@mui/icons-material'
@@ -16,6 +16,7 @@ export const HpField = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 	const [damageHealAmount, setDamageHealAmount] = useState<number>(0)
 	const [woundHelperText, setWoundHelperText] = useState<string>('')
+	const [animationState, setAnimationState] = useState<'none' | 'damage' | 'healing' | 'tempHp'>('none')
 	const open = Boolean(anchorEl)
 	
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
@@ -46,6 +47,16 @@ export const HpField = () => {
 	const mainHpBarWidth = totalDisplayHp > 0 ? (effectiveMaxHp / totalDisplayHp) * 120 : 120
 	const tempHpBarWidth = totalDisplayHp > 0 ? ((health.temp || 0) / totalDisplayHp) * 120 : 0
 
+	// Animation effect cleanup
+	useEffect(() => {
+		if (animationState !== 'none') {
+			const timer = setTimeout(() => {
+				setAnimationState('none')
+			}, 600) // Animation duration
+			return () => clearTimeout(timer)
+		}
+	}, [animationState])
+
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
@@ -63,31 +74,62 @@ export const HpField = () => {
 		if (damageHealAmount <= 0) return
 
 		let newCurrentHp = health.current
+		let newTempHp = health.temp || 0
 		let woundText = ''
 
 		if (isDamage) {
-			newCurrentHp = Math.max(0, health.current - damageHealAmount)
-			
-			// Calculate wounds based on damage
-			if (health.current > 0 && newCurrentHp <= 0) {
-				woundText = '1 wound (HP dropped to 0 or below)'
-			}
-			
-			const excessDamage = damageHealAmount - health.current
-			if (excessDamage > 0) {
-				if (excessDamage >= effectiveMaxHp * 2) {
-					woundText = '2 additional wounds (damage exceeds twice max HP)'
-				} else if (excessDamage >= effectiveMaxHp) {
-					woundText = '1 additional wound (damage exceeds max HP)'
+			// First, remove temp HP
+			if (newTempHp > 0) {
+				const tempHpDamage = Math.min(damageHealAmount, newTempHp)
+				newTempHp -= tempHpDamage
+				const remainingDamage = damageHealAmount - tempHpDamage
+				
+				// Apply remaining damage to current HP
+				if (remainingDamage > 0) {
+					newCurrentHp = Math.max(0, health.current - remainingDamage)
+					
+					// Calculate wounds based on remaining damage
+					if (health.current > 0 && newCurrentHp <= 0) {
+						woundText = '1 wound (HP dropped to 0 or below)'
+					}
+					
+					const excessDamage = remainingDamage - health.current
+					if (excessDamage > 0) {
+						if (excessDamage >= effectiveMaxHp * 2) {
+							woundText = '2 additional wounds (damage exceeds twice max HP)'
+						} else if (excessDamage >= effectiveMaxHp) {
+							woundText = '1 additional wound (damage exceeds max HP)'
+						}
+					}
+				}
+			} else {
+				// No temp HP, apply all damage to current HP
+				newCurrentHp = Math.max(0, health.current - damageHealAmount)
+				
+				// Calculate wounds based on damage
+				if (health.current > 0 && newCurrentHp <= 0) {
+					woundText = '1 wound (HP dropped to 0 or below)'
+				}
+				
+				const excessDamage = damageHealAmount - health.current
+				if (excessDamage > 0) {
+					if (excessDamage >= effectiveMaxHp * 2) {
+						woundText = '2 additional wounds (damage exceeds twice max HP)'
+					} else if (excessDamage >= effectiveMaxHp) {
+						woundText = '1 additional wound (damage exceeds max HP)'
+					}
 				}
 			}
+			
+			setAnimationState('damage')
 		} else {
 			// Healing
 			newCurrentHp = Math.min(effectiveMaxHp, health.current + damageHealAmount)
+			setAnimationState('healing')
 		}
 
 		updateCharacter({
-			statistics: { health: { current: newCurrentHp } },
+			statistics: { health: { current: newCurrentHp, temp: newTempHp } },
 		})
 
 		if (woundText) {
@@ -109,7 +151,35 @@ export const HpField = () => {
 			>
 				<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					{/* HP Display */}
-					<Typography variant="body2" sx={{ fontWeight: 'bold', mb: 0.5 }}>
+					<Typography 
+						variant="body2" 
+						sx={{ 
+							fontWeight: 'bold', 
+							mb: 0.5,
+							transition: 'all 0.3s ease-in-out',
+							...(animationState === 'damage' && {
+								animation: 'shake 0.5s ease-in-out',
+								color: '#f44336'
+							}),
+							...(animationState === 'healing' && {
+								animation: 'pulse 0.5s ease-in-out',
+								color: '#4caf50'
+							}),
+							'@keyframes shake': {
+								'0%, 100%': { transform: 'translateX(0)' },
+								'25%': { transform: 'translateX(-2px)' },
+								'75%': { transform: 'translateX(2px)' }
+							},
+							'@keyframes pulse': {
+								'0%, 100%': { transform: 'scale(1)' },
+								'50%': { transform: 'scale(1.1)' }
+							},
+							'@keyframes glow': {
+								'0%, 100%': { filter: 'brightness(1)' },
+								'50%': { filter: 'brightness(1.5) drop-shadow(0 0 2px #2196f3)' }
+							}
+						}}
+					>
 						{health.current}/
 						<span 
 							style={{ 
@@ -120,7 +190,15 @@ export const HpField = () => {
 						</span>
 						{fatigueHpPenalty > 0 && ` (${maxHp})`}
 						{(health.temp > 0) && (
-							<span style={{ color: '#2196f3' }}> +{health.temp}</span>
+							<span 
+								style={{ 
+									color: '#2196f3',
+									transition: 'all 0.3s ease-in-out',
+									...(animationState === 'tempHp' && {
+										animation: 'glow 0.5s ease-in-out'
+									})
+								}}
+							> +{health.temp}</span>
 						)}
 						{' HP'}
 					</Typography>
@@ -139,6 +217,21 @@ export const HpField = () => {
 								position: 'absolute',
 								top: 0,
 								left: 0,
+								transition: 'all 0.3s ease-in-out',
+								...(animationState === 'damage' && {
+									animation: 'flashRed 0.5s ease-in-out',
+								}),
+								...(animationState === 'healing' && {
+									animation: 'flashGreen 0.5s ease-in-out',
+								}),
+								'@keyframes flashRed': {
+									'0%, 100%': { filter: 'brightness(1)' },
+									'50%': { filter: 'brightness(1.5) sepia(1) hue-rotate(330deg)' }
+								},
+								'@keyframes flashGreen': {
+									'0%, 100%': { filter: 'brightness(1)' },
+									'50%': { filter: 'brightness(1.5) sepia(1) hue-rotate(90deg)' }
+								}
 							}}
 						/>
 						
@@ -153,6 +246,14 @@ export const HpField = () => {
 									height: '6px',
 									backgroundColor: '#2196f3', // info blue color
 									borderRadius: '0 3px 3px 0',
+									transition: 'all 0.3s ease-in-out',
+									...(animationState === 'tempHp' && {
+										animation: 'glowBlue 0.5s ease-in-out',
+									}),
+									'@keyframes glowBlue': {
+										'0%, 100%': { filter: 'brightness(1)' },
+										'50%': { filter: 'brightness(1.8) drop-shadow(0 0 4px #2196f3)' }
+									}
 								}}
 							/>
 						)}
@@ -215,11 +316,16 @@ export const HpField = () => {
 						type="number"
 						size="small"
 						value={health.temp}
-						onChange={(event) =>
+						onChange={(event) => {
+							const newTempHp = Number(event.target.value)
 							updateCharacter({
-								statistics: { health: { temp: Number(event.target.value) } },
+								statistics: { health: { temp: newTempHp } },
 							})
-						}
+							// Trigger temp HP animation when changed
+							if (newTempHp !== health.temp) {
+								setAnimationState('tempHp')
+							}
+						}}
 						label="Temp HP"
 						sx={{ flex: 1 }}
 					/>
