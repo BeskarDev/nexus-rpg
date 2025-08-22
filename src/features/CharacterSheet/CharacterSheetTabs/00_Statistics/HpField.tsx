@@ -8,7 +8,8 @@ import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { calculateMaxHp } from '../../utils/calculateHp'
+import { calculateMaxHp, calculateBaseHpFromStrength } from '../../utils/calculateHp'
+import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
 
 export const HpField = () => {
 	const dispatch = useAppDispatch()
@@ -20,6 +21,8 @@ export const HpField = () => {
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const { health, fatigue, strength } = activeCharacter.statistics
 	const totalXp = activeCharacter.skills.xp.total
+	const characterLevel = calculateCharacterLevel(totalXp)
+	const baseHp = calculateBaseHpFromStrength(strength.value)
 
 	// Calculate max HP using the new formula
 	const maxHp = useMemo(() => {
@@ -34,7 +37,7 @@ export const HpField = () => {
 	const hpPercentage = effectiveMaxHp > 0 ? (health.current / effectiveMaxHp) * 100 : 0
 	const getHpColor = () => {
 		if (hpPercentage >= 50) return 'success'
-		if (hpPercentage >= 25) return 'warning'
+		if (hpPercentage >= 20) return 'warning'
 		return 'error'
 	}
 
@@ -111,44 +114,14 @@ export const HpField = () => {
 						value={Math.min(100, hpPercentage)}
 						color={getHpColor()}
 						sx={{
-							width: '80px',
+							width: '120px',
 							height: '6px',
 							borderRadius: '3px',
 							mb: 0.5,
 						}}
 					/>
 					
-					{/* Current HP Input (simplified for surface) */}
-					<AttributeField
-						type="number"
-						value={health.current}
-						onChange={(event) => {
-							const newCurrent = Number(event.target.value)
-							const clampedCurrent = Math.min(newCurrent, effectiveMaxHp)
-							updateCharacter({
-								statistics: { health: { current: clampedCurrent } },
-							})
-						}}
-						label="Current"
-						sx={{
-							maxWidth: '4rem',
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
-							},
-						}}
-						InputProps={{
-							sx: {
-								color:
-									health.current === effectiveMaxHp
-										? 'success.main'
-										: health.current <= 0
-											? 'error.main'
-											: 'text.primary',
-							},
-						}}
-					/>
+					{/* Current HP Input (simplified for surface) - REMOVED per feedback */}
 				</Box>
 				
 				<IconButton size="small" onClick={handleClick} sx={{ ml: 0.5 }}>
@@ -164,8 +137,18 @@ export const HpField = () => {
 			>
 				<SectionHeader>HP Configuration</SectionHeader>
 				<Typography variant="subtitle2" sx={{ mb: 2 }}>
-					Max HP: 12 + STR + (2 × Level) + Modifier = {maxHp}
+					Max HP: {baseHp} + {(characterLevel - 1) * 2} + {health.maxHpModifier || 0} = {maxHp}
 				</Typography>
+				
+				{/* Max HP (disabled, calculated) */}
+				<AttributeField
+					type="number"
+					size="small"
+					value={maxHp}
+					disabled
+					label="Max HP (Calculated)"
+					sx={{ mb: 1 }}
+				/>
 				
 				{/* Current HP */}
 				<AttributeField
@@ -211,19 +194,11 @@ export const HpField = () => {
 					sx={{ mb: 2 }}
 				/>
 				
-				{/* Damage/Healing Controls */}
+				{/* Damage/Healing Controls - TextField between buttons */}
 				<Typography variant="subtitle2" sx={{ mb: 1 }}>
 					Damage / Healing
 				</Typography>
 				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-					<AttributeField
-						type="number"
-						size="small"
-						value={damageHealAmount}
-						onChange={(event) => setDamageHealAmount(Number(event.target.value))}
-						label="Amount"
-						sx={{ flexGrow: 1 }}
-					/>
 					<Button
 						variant="outlined"
 						color="error"
@@ -234,6 +209,14 @@ export const HpField = () => {
 					>
 						Damage
 					</Button>
+					<AttributeField
+						type="number"
+						size="small"
+						value={damageHealAmount}
+						onChange={(event) => setDamageHealAmount(Number(event.target.value))}
+						label="Amount"
+						sx={{ flexGrow: 1 }}
+					/>
 					<Button
 						variant="outlined"
 						color="success"
