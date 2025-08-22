@@ -38,9 +38,11 @@ export const SharedNotes: React.FC = () => {
 	const [migrationInProgress, setMigrationInProgress] = useState(false)
 	const [partyLoading, setPartyLoading] = useState(false)
 
-	const { docId: characterId } = useAppSelector(
+	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
+	
+	const characterId = activeCharacter ? `${activeCharacter.collectionId}-${activeCharacter.docId}` : ''
 
 	// Real-time party subscription
 	useEffect(() => {
@@ -130,11 +132,15 @@ export const SharedNotes: React.FC = () => {
 
 	// Party management handlers
 	const handleCreateParty = async (name: string) => {
-		if (!currentUser || !characterId) return
+		if (!currentUser || !characterId) {
+			throw new Error('User not authenticated or character not selected')
+		}
 		
 		setPartyLoading(true)
 		try {
+			console.log('Creating party:', { name, characterId, userId: currentUser.uid })
 			const partyId = await PartyService.createParty(name, characterId, currentUser.uid)
+			console.log('Party created with ID:', partyId)
 			const newPartyInfo = await PartyService.getPartyInfo(partyId)
 			setPartyInfo(newPartyInfo)
 		} catch (error) {

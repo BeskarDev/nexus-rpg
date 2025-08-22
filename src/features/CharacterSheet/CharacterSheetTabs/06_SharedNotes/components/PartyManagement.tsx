@@ -65,9 +65,14 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				severity: 'success'
 			})
 		} catch (error) {
+			console.error('Party creation error:', error)
+			let errorMessage = 'Failed to create party'
+			if (error instanceof Error) {
+				errorMessage = error.message || errorMessage
+			}
 			setSnackbar({
 				open: true,
-				message: 'Failed to create party',
+				message: errorMessage,
 				severity: 'error'
 			})
 		}
@@ -136,7 +141,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 						component="code"
 						sx={{ 
 							fontFamily: 'monospace',
-							bgcolor: 'grey.100',
+							bgcolor: (theme) => theme.palette.mode === 'dark' ? 'grey.800' : 'grey.100',
 							px: 1,
 							py: 0.5,
 							borderRadius: 0.5,
@@ -264,6 +269,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				open={snackbar.open}
 				autoHideDuration={3000}
 				onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 			>
 				<Alert 
 					severity={snackbar.severity} 

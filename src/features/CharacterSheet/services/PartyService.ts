@@ -21,21 +21,53 @@ export class PartyService {
 	 * Create a new party
 	 */
 	static async createParty(name: string, creatorCharacterId: string, createdBy: string): Promise<string> {
-		const party: Omit<Party, 'id'> = {
-			name,
-			notes: '',
-			createdBy,
-			createdAt: new Date().toISOString(),
-			members: [creatorCharacterId]
+		try {
+			// Validate inputs
+			if (!name?.trim()) {
+				throw new Error('Party name is required')
+			}
+			if (!creatorCharacterId?.trim()) {
+				throw new Error('Creator character ID is required')
+			}
+			if (!createdBy?.trim()) {
+				throw new Error('Creator user ID is required')
+			}
+
+			// Validate character ID format
+			const characterIdParts = creatorCharacterId.split('-')
+			if (characterIdParts.length < 2) {
+				throw new Error('Invalid character ID format')
+			}
+
+			const party: Omit<Party, 'id'> = {
+				name: name.trim(),
+				notes: '',
+				createdBy,
+				createdAt: new Date().toISOString(),
+				members: [creatorCharacterId]
+			}
+			
+			// Create the party document
+			const docRef = await addDoc(collection(db, 'parties'), party)
+			
+			// Update the creator's character to reference this party
+			const [collectionId, docId] = creatorCharacterId.split('-')
+			try {
+				await updateDoc(doc(db, collectionId, docId), { partyId: docRef.id })
+			} catch (updateError) {
+				// If character update fails, clean up the created party
+				await deleteDoc(doc(db, 'parties', docRef.id))
+				throw new Error(`Failed to update character: ${updateError.message || 'Unknown error'}`)
+			}
+			
+			return docRef.id
+		} catch (error) {
+			console.error('PartyService.createParty error:', error)
+			if (error instanceof Error) {
+				throw error
+			}
+			throw new Error('Failed to create party: Unknown error')
 		}
-		
-		const docRef = await addDoc(collection(db, 'parties'), party)
-		
-		// Update the creator's character to reference this party
-		const [collectionId, docId] = creatorCharacterId.split('-')
-		await updateDoc(doc(db, collectionId, docId), { partyId: docRef.id })
-		
-		return docRef.id
 	}
 
 	/**
