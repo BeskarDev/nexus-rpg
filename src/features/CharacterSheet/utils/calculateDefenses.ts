@@ -4,18 +4,18 @@ import { extractShieldParryBonus } from '../CharacterSheetTabs/02_Items/utils/it
 import { organizeItemsByLocation } from '../CharacterSheetTabs/02_Items/utils/itemUtils'
 
 /**
- * Convert attribute die value to the numeric value used in calculations
- * d4=2, d6=3, d8=4, d10=5, d12=6
+ * Convert attribute die value to the numeric value used in defense calculations
+ * For defenses, we use the actual die value: d4=4, d6=6, d8=8, d10=10, d12=12
  */
 export const getAttributeValue = (attributeDie: AttributeType): number => {
 	const attributeValueMap: Record<AttributeType, number> = {
-		4: 2,  // d4 -> 2
-		6: 3,  // d6 -> 3
-		8: 4,  // d8 -> 4
-		10: 5, // d10 -> 5
-		12: 6, // d12 -> 6
+		4: 4,   // d4 -> 4
+		6: 6,   // d6 -> 6
+		8: 8,   // d8 -> 8
+		10: 10, // d10 -> 10
+		12: 12, // d12 -> 12
 	}
-	return attributeValueMap[attributeDie] || 2 // Default to d4 value if invalid
+	return attributeValueMap[attributeDie] || 4 // Default to d4 value if invalid
 }
 
 /**
