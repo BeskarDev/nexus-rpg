@@ -50,9 +50,12 @@ export const SharedNotes: React.FC = () => {
 	// Derived state
 	const hasUnsavedChanges = notes !== originalNotes
 
-	const { docId: characterId } = useAppSelector(
+	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
 	)
+	
+	// Construct the proper character ID format that PartyService expects
+	const characterId = activeCharacter ? `${activeCharacter.collectionId}-${activeCharacter.docId}` : ''
 
 	// Real-time party subscription
 	useEffect(() => {
