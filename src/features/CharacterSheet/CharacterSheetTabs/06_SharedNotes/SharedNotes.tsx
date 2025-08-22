@@ -40,12 +40,10 @@ export const SharedNotes: React.FC = () => {
 	const [partyLoading, setPartyLoading] = useState(false)
 	const [isSaving, setIsSaving] = useState(false)
 
-	// Track the last saved notes value to prevent infinite loops
-	const lastSavedNotesRef = useRef<string>('')
-	// Track the last synced notes value to prevent overwriting user input
-	const lastSyncedNotesRef = useRef<string>('')
-	// Track the current debounced value to detect user typing
-	const debouncedNotesRef = useRef<string>('')
+	// Track the last value received from database to prevent unnecessary updates
+	const lastReceivedNotesRef = useRef<string>('')
+	// Track when we're currently saving to ignore our own updates
+	const isSavingRef = useRef<boolean>(false)
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -55,11 +53,6 @@ export const SharedNotes: React.FC = () => {
 
 	// Debounce notes to prevent race conditions when typing quickly
 	const debouncedNotes = useDebounce(notes, 500) // 500ms delay
-	
-	// Update the ref whenever debounced notes change
-	useEffect(() => {
-		debouncedNotesRef.current = debouncedNotes
-	}, [debouncedNotes])
 
 	// Real-time party subscription
 	useEffect(() => {
@@ -95,10 +88,8 @@ export const SharedNotes: React.FC = () => {
 				if (initialPartyInfo) {
 					setPartyInfo(initialPartyInfo)
 					setNotes(initialPartyInfo.party.notes)
-					// Initialize all refs to the initial notes value
-					lastSavedNotesRef.current = initialPartyInfo.party.notes
-					lastSyncedNotesRef.current = initialPartyInfo.party.notes
-					debouncedNotesRef.current = initialPartyInfo.party.notes
+					// Initialize the ref to the initial notes value
+					lastReceivedNotesRef.current = initialPartyInfo.party.notes
 					
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
@@ -106,43 +97,25 @@ export const SharedNotes: React.FC = () => {
 						(updatedPartyInfo) => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
-								// Update notes from sync if they're different from what we have
+								
+								// Simple sync logic: only update if not saving and value is different
 								const incomingNotes = updatedPartyInfo.party.notes
-								if (incomingNotes !== lastSyncedNotesRef.current) {
-									lastSyncedNotesRef.current = incomingNotes
-									
-									// Only update local notes if the user isn't actively typing
-									// We check if current notes match the debounced version to detect active typing
-									setNotes(currentNotes => {
-										// If this update comes from our own save, don't update
-										if (incomingNotes === lastSavedNotesRef.current) {
-											return currentNotes
-										}
-										// Don't overwrite if user is actively typing
-										// Check if notes have changed but haven't been debounced yet
-										if (currentNotes !== debouncedNotesRef.current) {
-											return currentNotes
-										}
-										// Apply the sync update - this allows real-time collaboration
-										return incomingNotes
-									})
+								if (!isSavingRef.current && incomingNotes !== lastReceivedNotesRef.current) {
+									lastReceivedNotesRef.current = incomingNotes
+									setNotes(incomingNotes)
 								}
 							} else {
 								// Party was deleted
 								setPartyInfo(null)
 								setNotes('')
-								lastSavedNotesRef.current = ''
-								lastSyncedNotesRef.current = ''
-								debouncedNotesRef.current = ''
+								lastReceivedNotesRef.current = ''
 							}
 						}
 					)
 				} else {
 					setPartyInfo(null)
 					setNotes('')
-					lastSavedNotesRef.current = ''
-					lastSyncedNotesRef.current = ''
-					debouncedNotesRef.current = ''
+					lastReceivedNotesRef.current = ''
 				}
 				
 				setError(null)
@@ -171,23 +144,23 @@ export const SharedNotes: React.FC = () => {
 	// Save debounced notes to database
 	useEffect(() => {
 		const saveNotes = async () => {
-			// Only save if:
-			// 1. We have a party
-			// 2. The debounced notes differ from our last saved value
-			// 3. The user has actually made changes (not just sync updates)
-			if (partyInfo && debouncedNotes !== lastSavedNotesRef.current) {
+			// Only save if we have a party and the debounced notes differ from what we last received
+			if (partyInfo && debouncedNotes !== lastReceivedNotesRef.current) {
+				isSavingRef.current = true
 				setIsSaving(true)
 				try {
 					await PartyService.updatePartyNotes(partyInfo.party.id, debouncedNotes)
 					// Update our reference to the saved value
-					lastSavedNotesRef.current = debouncedNotes
-					// Also update the synced reference since we just saved this value
-					lastSyncedNotesRef.current = debouncedNotes
+					lastReceivedNotesRef.current = debouncedNotes
 				} catch (error) {
 					console.error('Failed to update notes:', error)
 					setError('Failed to save notes')
 				} finally {
 					setIsSaving(false)
+					// Small delay to ensure database update propagates before allowing sync updates
+					setTimeout(() => {
+						isSavingRef.current = false
+					}, 100)
 				}
 			}
 		}
