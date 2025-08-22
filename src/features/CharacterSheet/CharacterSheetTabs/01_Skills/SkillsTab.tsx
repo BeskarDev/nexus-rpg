@@ -281,28 +281,18 @@ export const SkillsTab: React.FC = () => {
 									}}
 								>
 									<Chip
-										label={skill.name}
+										label={`${skill.name} (Rank ${skillRank})`}
 										sx={{
 											backgroundColor: getSkillChipColor(skill.name),
 											color: 'white',
-											minWidth: '100px',
+											minWidth: '140px',
 											'& .MuiChip-label': {
 												fontWeight: 500,
-												paddingLeft: '8px',
-												paddingRight: '8px',
+												paddingLeft: '4px',
+												paddingRight: '4px',
 											},
 										}}
 									/>
-									<Typography
-										variant="caption"
-										sx={{
-											fontSize: '0.7rem',
-											color: 'text.secondary',
-											minWidth: '50px',
-										}}
-									>
-										Rank {skillRank}
-									</Typography>
 									<AttributeField
 										size="small"
 										type="number"
@@ -399,8 +389,8 @@ export const SkillsTab: React.FC = () => {
 											color: 'white',
 											'& .MuiChip-label': {
 												fontWeight: 500,
-												paddingLeft: '8px',
-												paddingRight: '8px',
+												paddingLeft: '4px',
+												paddingRight: '4px',
 											},
 											'& .MuiChip-deleteIcon': {
 												color: 'rgba(255, 255, 255, 0.7)',
