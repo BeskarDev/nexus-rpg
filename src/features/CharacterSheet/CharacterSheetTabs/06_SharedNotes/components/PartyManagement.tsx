@@ -96,9 +96,13 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				severity: 'success'
 			})
 		} catch (error) {
+			let errorMessage = 'Failed to add member'
+			if (error instanceof Error) {
+				errorMessage = error.message || errorMessage
+			}
 			setSnackbar({
 				open: true,
-				message: 'Failed to add member',
+				message: errorMessage,
 				severity: 'error'
 			})
 		}

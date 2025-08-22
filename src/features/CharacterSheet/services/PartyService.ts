@@ -127,10 +127,10 @@ export class PartyService {
 		
 		const party = partyDoc.data() as Party
 		if (!party.members.includes(characterId)) {
-			// Check if character is already in another party and remove them first
+			// Check if character is already in another party - if so, reject the request
 			const existingPartyInfo = await this.getPartyByCharacterId(characterId)
 			if (existingPartyInfo) {
-				await this.removeCharacterFromParty(existingPartyInfo.party.id, characterId)
+				throw new Error('Character is already in a party. They must leave their current party first before joining a new one.')
 			}
 			
 			// Add to new party
