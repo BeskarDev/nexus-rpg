@@ -24,7 +24,7 @@ import {
 	onSnapshot,
 	Unsubscribe,
 } from 'firebase/firestore'
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
@@ -49,9 +49,22 @@ export const SharedNotes: React.FC = () => {
 	const [conflictNotes, setConflictNotes] = useState('')
 	const [showRefreshDialog, setShowRefreshDialog] = useState(false)
 
+	// Use refs to track current state in the subscription callback
+	const notesRef = useRef(notes)
+	const originalNotesRef = useRef(originalNotes)
+	
+	// Update refs when state changes
+	useEffect(() => {
+		notesRef.current = notes
+	}, [notes])
+	
+	useEffect(() => {
+		originalNotesRef.current = originalNotes
+	}, [originalNotes])
+
 	// Derived state
 	const hasUnsavedChanges = notes !== originalNotes
-	const hasServerChanges = partyInfo ? originalNotes !== partyInfo.party.notes : false
+	const hasServerChanges = partyInfo ? partyInfo.party.notes !== originalNotes : false
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -103,9 +116,15 @@ export const SharedNotes: React.FC = () => {
 						(updatedPartyInfo) => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
-								// Update original notes to track what's in the database
-								// This allows us to detect conflicts without affecting user's local edits
-								setOriginalNotes(updatedPartyInfo.party.notes)
+								// Only update local notes if user hasn't made any local changes
+								// This prevents overwriting user's edits while they're typing
+								if (notesRef.current === originalNotesRef.current) {
+									// User hasn't made changes, safe to update both
+									setNotes(updatedPartyInfo.party.notes)
+									setOriginalNotes(updatedPartyInfo.party.notes)
+								}
+								// If user has unsaved changes, don't update their local state
+								// but partyInfo.party.notes will reflect the server state for conflict detection
 							} else {
 								// Party was deleted
 								setPartyInfo(null)
@@ -157,7 +176,7 @@ export const SharedNotes: React.FC = () => {
 
 		// No conflict - save directly
 		await performSave()
-	}, [partyInfo, hasUnsavedChanges, originalNotes])
+	}, [partyInfo, hasUnsavedChanges, originalNotes, notes])
 
 	// Perform the actual save operation
 	const performSave = useCallback(async () => {
