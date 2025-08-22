@@ -305,16 +305,17 @@ export const SharedNotes: React.FC = () => {
 	}
 
 	const handleDeleteParty = async () => {
-		if (!partyInfo || !characterId) {
-			console.error('Missing party info or character ID for deletion')
+		if (!partyInfo || !characterId || !currentUser) {
+			console.error('Missing party info, character ID, or current user for deletion')
 			return
 		}
 		
-		console.log('Attempting to delete party:', { partyId: partyInfo.party.id, characterId })
+		console.log('Attempting to delete party by removing character:', { partyId: partyInfo.party.id, characterId })
 		
 		setPartyLoading(true)
 		try {
-			await PartyService.deleteParty(partyInfo.party.id, characterId)
+			// When the last member leaves a party, it gets automatically deleted
+			await PartyService.removeCharacterFromParty(partyInfo.party.id, characterId)
 			setPartyInfo(null)
 			setNotes('')
 			setOriginalNotes('')

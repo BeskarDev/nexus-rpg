@@ -148,28 +148,53 @@ export class PartyService {
 	 * Remove a character from a party
 	 */
 	static async removeCharacterFromParty(partyId: string, characterId: string): Promise<void> {
-		const partyRef = doc(db, 'parties', partyId)
-		const partyDoc = await getDoc(partyRef)
-		
-		if (!partyDoc.exists()) {
-			throw new Error('Party not found')
+		try {
+			console.log('PartyService.removeCharacterFromParty called with:', { partyId, characterId })
+			
+			const partyRef = doc(db, 'parties', partyId)
+			const partyDoc = await getDoc(partyRef)
+			
+			if (!partyDoc.exists()) {
+				throw new Error('Party not found')
+			}
+			
+			const party = partyDoc.data() as Party
+			const updatedMembers = party.members.filter(id => id !== characterId)
+			
+			console.log('Party members before removal:', party.members)
+			console.log('Party members after removal:', updatedMembers)
+			
+			if (updatedMembers.length === 0) {
+				// Delete the party if no members left
+				console.log('No members left, deleting party')
+				await deleteDoc(partyRef)
+				console.log('Party deleted successfully')
+			} else {
+				console.log('Updating party with new member list')
+				await updateDoc(partyRef, {
+					members: updatedMembers
+				})
+				console.log('Party updated successfully')
+			}
+			
+			// Remove party reference from character
+			const [collectionId, docId] = characterId.split('-')
+			console.log('Updating character:', { collectionId, docId })
+			
+			if (!collectionId || !docId) {
+				throw new Error('Invalid character ID format - expected format: "collectionId-docId"')
+			}
+			
+			await updateDoc(doc(db, collectionId, docId), { partyId: null })
+			console.log('Character updated successfully')
+			
+		} catch (error) {
+			console.error('PartyService.removeCharacterFromParty error:', error)
+			if (error instanceof Error) {
+				throw error
+			}
+			throw new Error('Failed to remove character from party: Unknown error')
 		}
-		
-		const party = partyDoc.data() as Party
-		const updatedMembers = party.members.filter(id => id !== characterId)
-		
-		if (updatedMembers.length === 0) {
-			// Delete the party if no members left
-			await deleteDoc(partyRef)
-		} else {
-			await updateDoc(partyRef, {
-				members: updatedMembers
-			})
-		}
-		
-		// Remove party reference from character
-		const [collectionId, docId] = characterId.split('-')
-		await updateDoc(doc(db, collectionId, docId), { partyId: null })
 	}
 
 	/**
@@ -210,9 +235,13 @@ export class PartyService {
 	/**
 	 * Delete a party entirely (only allowed if you're the only member or the creator)
 	 */
-	static async deleteParty(partyId: string, characterId: string): Promise<void> {
+	static async deleteParty(partyId: string, characterId: string, currentUserId?: string): Promise<void> {
 		try {
-			console.log('PartyService.deleteParty called with:', { partyId, characterId })
+			console.log('PartyService.deleteParty called with:', { partyId, characterId, currentUserId })
+			
+			if (!partyId || !characterId) {
+				throw new Error('Party ID and character ID are required')
+			}
 			
 			const partyRef = doc(db, 'parties', partyId)
 			const partyDoc = await getDoc(partyRef)
@@ -234,15 +263,40 @@ export class PartyService {
 			console.log('Updating character:', { collectionId, docId })
 			
 			if (!collectionId || !docId) {
-				throw new Error('Invalid character ID format')
+				throw new Error('Invalid character ID format - expected format: "collectionId-docId"')
 			}
 			
-			await updateDoc(doc(db, collectionId, docId), { partyId: null })
-			console.log('Character updated successfully')
+			// Verify that the current user owns the character (if currentUserId is provided)
+			if (currentUserId && collectionId !== currentUserId) {
+				throw new Error('You can only delete parties for characters you own')
+			}
+			
+			// The collectionId should be the user's UID, verify character exists before attempting update
+			const characterRef = doc(db, collectionId, docId)
+			const characterDoc = await getDoc(characterRef)
+			
+			if (!characterDoc.exists()) {
+				throw new Error('Character not found - cannot update character document')
+			}
+			
+			console.log('Character document exists, proceeding with update')
+			
+			try {
+				await updateDoc(characterRef, { partyId: null })
+				console.log('Character updated successfully')
+			} catch (updateError) {
+				console.error('Failed to update character:', updateError)
+				throw new Error(`Failed to update character: ${updateError instanceof Error ? updateError.message : 'Unknown error'}`)
+			}
 			
 			// Delete the party
-			await deleteDoc(partyRef)
-			console.log('Party deleted successfully')
+			try {
+				await deleteDoc(partyRef)
+				console.log('Party deleted successfully')
+			} catch (deleteError) {
+				console.error('Failed to delete party:', deleteError)
+				throw new Error(`Failed to delete party: ${deleteError instanceof Error ? deleteError.message : 'Unknown error'}`)
+			}
 			
 		} catch (error) {
 			console.error('PartyService.deleteParty error:', error)
