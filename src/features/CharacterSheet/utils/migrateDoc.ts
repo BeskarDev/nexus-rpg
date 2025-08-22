@@ -15,6 +15,7 @@ import {
 	Statistics,
 } from '../../../types/Character'
 import { ABILITY_TAGS } from '../../../types/AbilityTag'
+import { normalizeSkillName } from '../../../constants/skills'
 import { db } from '@site/src/config/firebase'
 
 export const migrateDoc = async (
@@ -194,10 +195,17 @@ const migrateStatistics = (data: any): Statistics => {
 const migrateSkills = (data: any): Skills => {
 	return {
 		...data,
-		skills: data.skills.map((skill) => ({
-			...skill,
-			id: skill.id || crypto.randomUUID(),
-		})),
+		skills: data.skills.map((skill) => {
+			// Normalize skill names during migration
+			const normalizedName = normalizeSkillName(skill.name) || skill.name
+			return {
+				...skill,
+				id: skill.id || crypto.randomUUID(),
+				name: normalizedName,
+			}
+		}),
+		// Initialize professions array if it doesn't exist
+		professions: data.professions || [],
 		abilities: data.abilities.map((ability) => {
 			const migratedAbility =
 				typeof ability === 'string'

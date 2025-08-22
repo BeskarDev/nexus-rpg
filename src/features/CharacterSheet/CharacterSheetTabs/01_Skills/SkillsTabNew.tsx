@@ -25,7 +25,7 @@ import {
 	getProfessionChipColor 
 } from '../../../../constants/skills'
 
-export const SkillsTab: React.FC = () => {
+export const SkillsTabNew: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const { xp, skills, professions = [] } = useMemo(

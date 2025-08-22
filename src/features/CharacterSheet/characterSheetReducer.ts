@@ -166,6 +166,35 @@ export const {
 				...update,
 			}
 		},
+		addSkill: (state, action: PayloadAction<string>) => {
+			const skillName = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.skills.push({
+				id: crypto.randomUUID(),
+				name: skillName,
+				rank: 0,
+				xp: 0,
+			})
+		},
+		removeSkill: (state, action: PayloadAction<string>) => {
+			const skillName = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.skills = 
+				state.activeCharacter.skills.skills.filter(s => s.name !== skillName)
+		},
+		addProfession: (state, action: PayloadAction<string>) => {
+			const professionName = action.payload
+			state.unsavedChanges = true
+			if (!state.activeCharacter.skills.professions.includes(professionName)) {
+				state.activeCharacter.skills.professions.push(professionName)
+			}
+		},
+		removeProfession: (state, action: PayloadAction<string>) => {
+			const professionName = action.payload
+			state.unsavedChanges = true
+			state.activeCharacter.skills.professions = 
+				state.activeCharacter.skills.professions.filter(p => p !== professionName)
+		},
 		deleteSkill: (state, action: PayloadAction<Skill>) => {
 			state.unsavedChanges = true
 			state.activeCharacter.skills.skills =

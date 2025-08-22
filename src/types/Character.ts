@@ -135,6 +135,7 @@ export type Skills = {
 		spend: number
 	}
 	skills: Skill[]
+	professions: string[]
 	abilities: Ability[]
 	abilityCategoryVisibility?: Record<AbilityTag, boolean>
 }
