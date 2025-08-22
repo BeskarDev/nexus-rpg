@@ -1,4 +1,4 @@
-import { Character, CharacterDocument } from '../../../types/Character'
+import { Character, CharacterDocument } from '../types/Character'
 import { doc } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
 
@@ -7,10 +7,8 @@ const generateId = () => crypto.randomUUID()
 
 /**
  * Mock character data for local development testing.
- * This provides a complete character with all required fields
+ * This provides complete characters with all required fields
  * to test the skills dropdown and other UI components.
- * 
- * Only available in development environment.
  */
 export const createMockCharacter = (): CharacterDocument => {
 	const mockCharacter: Character = {
@@ -580,20 +578,4 @@ export const getMockCharacters = (): CharacterDocument[] => {
 		createMockCharacter(),
 		createSecondMockCharacter()
 	]
-}
-
-/**
- * Checks if we're in development environment.
- * In Docusaurus, we can check for NODE_ENV or use window.location
- */
-export const isDevelopmentEnvironment = (): boolean => {
-	// Check if we're on localhost or development server
-	if (typeof window !== 'undefined') {
-		return window.location.hostname === 'localhost' || 
-		       window.location.hostname === '127.0.0.1' ||
-		       window.location.hostname.includes('localhost')
-	}
-	
-	// Fallback for server-side rendering
-	return process.env.NODE_ENV === 'development'
 }
