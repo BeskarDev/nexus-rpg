@@ -33,10 +33,28 @@ export const CharacterSheetContainer: React.FC = () => {
 
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
-	const [collectionId, activeCharacterId] = urlParams.get('id')?.split('-') ?? [
-		undefined,
-		undefined,
-	]
+	const idParam = urlParams.get('id')
+	
+	// Parse the ID parameter more carefully to handle mock data
+	let collectionId: string | undefined
+	let activeCharacterId: string | undefined
+	
+	if (idParam) {
+		// For mock data format: "mock-collection-mock-character-1"
+		// For production format: "collectionId-characterId"
+		const parts = idParam.split('-')
+		if (parts.length >= 2) {
+			if (parts[0] === 'mock' && parts[1] === 'collection') {
+				// Mock data case: "mock-collection-mock-character-1"
+				collectionId = 'mock-collection'
+				activeCharacterId = parts.slice(2).join('-') // "mock-character-1"
+			} else {
+				// Production case: "collectionId-characterId"
+				collectionId = parts[0]
+				activeCharacterId = parts.slice(1).join('-')
+			}
+		}
+	}
 
 	// Load characters when user is logged in (or in development mode)
 	useEffect(() => {

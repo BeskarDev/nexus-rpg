@@ -193,22 +193,25 @@ export const SkillsTab: React.FC = () => {
 				{/* Selected Skills as Chips */}
 				<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 2 }}>
 					{skills.map(skill => {
-						const skillRank = useMemo(() => {
+						// Calculate skill rank outside of useMemo to avoid React Hook errors
+						const calculateSkillRank = (xp: number): number => {
 							switch (true) {
-								case skill.xp <= 1:
+								case xp <= 1:
 									return 0
-								case skill.xp <= 5:
+								case xp <= 5:
 									return 1
-								case skill.xp <= 11:
+								case xp <= 11:
 									return 2
-								case skill.xp <= 19:
+								case xp <= 19:
 									return 3
-								case skill.xp <= 29:
+								case xp <= 29:
 									return 4
 								default:
 									return 5
 							}
-						}, [skill.xp])
+						}
+						
+						const skillRank = calculateSkillRank(skill.xp)
 
 						return (
 							<Box key={skill.id} sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>

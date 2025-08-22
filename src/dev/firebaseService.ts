@@ -106,10 +106,11 @@ class FirebaseService {
 	}
 
 	async getUserInfo(userId: string): Promise<{ allowedCollections: string[] }> {
-		// In development, return mock admin permissions
+		// In development, return empty allowedCollections to avoid duplicates
+		// since getCollection() already returns mock data for any collection
 		if (this.isDevelopment()) {
 			console.log('🔧 Development mode: Mock admin permissions granted')
-			return { allowedCollections: ['mock-collection'] }
+			return { allowedCollections: [] } // Return empty to avoid duplicate mock characters
 		}
 
 		// Production: Get real user info

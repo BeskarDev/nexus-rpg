@@ -17,6 +17,7 @@ import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 import { getDurabilityForItem } from './CharacterSheetTabs/02_Items/utils/durabilityUtils'
+import { normalizeSkillName } from '../../constants/skills'
 
 function isObject(value: any) {
 	return value !== null && typeof value === 'object'
@@ -95,6 +96,21 @@ export const {
 			// Ensure statusEffects is always an array
 			if (!Array.isArray(character.statistics.statusEffects)) {
 				character.statistics.statusEffects = []
+			}
+			// Migrate skills to use normalized names
+			if (character.skills && character.skills.skills) {
+				character.skills.skills = character.skills.skills.map((skill) => {
+					const normalizedName = normalizeSkillName(skill.name) || skill.name
+					return {
+						...skill,
+						name: normalizedName,
+						id: skill.id || crypto.randomUUID(),
+					}
+				})
+			}
+			// Ensure professions array exists
+			if (!character.skills.professions) {
+				character.skills.professions = []
 			}
 			// Migrate older characters that don't have weapons/items arrays
 			if (!character.items.weapons) {
