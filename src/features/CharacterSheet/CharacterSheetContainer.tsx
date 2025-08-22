@@ -20,6 +20,7 @@ import { useAppDispatch } from './hooks/useAppDispatch'
 import { useAppSelector } from './hooks/useAppSelector'
 import { mapDocToCharacter } from './utils/mapDocToCharacter'
 import { migrateDoc } from './utils/migrateDoc'
+import { isDevelopmentEnvironment, getMockCharacters } from './utils/mockData'
 
 const SAVE_CHARACTER_TIMEOUT = 1_000
 const DOC_BLACKLIST = ['player-info']
@@ -41,6 +42,30 @@ export const CharacterSheetContainer: React.FC = () => {
 		undefined,
 		undefined,
 	]
+
+	// Check if we're in development environment
+	const isDev = isDevelopmentEnvironment()
+
+	// Load mock characters in development if not logged in
+	useEffect(() => {
+		if (isDev && !userLoggedIn && !activeCharacterId) {
+			console.log('Loading mock characters for development...')
+			setCharacters(getMockCharacters())
+			setIsAdmin(true) // Enable admin features for development
+		}
+	}, [isDev, userLoggedIn, activeCharacterId])
+
+	// Load mock character data in development when a specific mock character is selected
+	useEffect(() => {
+		if (isDev && collectionId === 'mock-collection' && activeCharacterId && !activeCharacter) {
+			console.log('Loading mock character for development:', activeCharacterId)
+			const mockCharacters = getMockCharacters()
+			const mockCharacter = mockCharacters.find(char => char.docId === activeCharacterId)
+			if (mockCharacter) {
+				dispatch(characterSheetActions.setCharacter(mockCharacter))
+			}
+		}
+	}, [isDev, collectionId, activeCharacterId, activeCharacter, dispatch])
 
 	// Fetch all characters when user is logged in and no active character
 	useEffect(() => {
@@ -85,6 +110,13 @@ export const CharacterSheetContainer: React.FC = () => {
 	}
 
 	const handleDeleteCharacter = async (char: CharacterDocument) => {
+		// Don't delete mock characters from Firebase, just remove from local state
+		if (isDev && char.collectionId === 'mock-collection') {
+			console.log('Mock character deletion simulation - removing from local state')
+			setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
+			return
+		}
+		
 		await deleteDoc(char.docRef)
 		setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
 	}
@@ -139,6 +171,14 @@ export const CharacterSheetContainer: React.FC = () => {
 
 	const saveCharacter = async () => {
 		console.log('about to save character...')
+		
+		// Don't save mock characters to Firebase
+		if (isDev && collectionId === 'mock-collection') {
+			console.log('Mock character save simulation - no actual save needed')
+			dispatch(characterSheetActions.setUnsavedChanges(false))
+			return
+		}
+		
 		if (unsavedChanges) {
 			dispatch(characterSheetActions.setLoadingSave(true))
 			await updateDoc(activeCharacter.docRef, {
@@ -157,7 +197,24 @@ export const CharacterSheetContainer: React.FC = () => {
 				saveCharacter={saveCharacter}
 				characters={characters}
 			/>
-			{!userLoggedIn && (
+			{/* Show development notice when using mock data */}
+			{isDev && !userLoggedIn && (
+				<Box
+					sx={{
+						m: 2,
+						p: 2,
+						backgroundColor: 'rgba(255, 152, 0, 0.1)',
+						border: '1px solid rgba(255, 152, 0, 0.5)',
+						borderRadius: 1,
+						textAlign: 'center'
+					}}
+				>
+					<Typography variant="body2" color="orange">
+						<strong>Development Mode:</strong> Using mock character data for testing. Login not required.
+					</Typography>
+				</Box>
+			)}
+			{!userLoggedIn && !isDev && (
 				<Box
 					sx={{
 						m: 5,
@@ -169,13 +226,13 @@ export const CharacterSheetContainer: React.FC = () => {
 					<Typography variant="h6">Please log in first</Typography>
 				</Box>
 			)}
-			{userLoggedIn && !activeCharacterId && (
+			{(userLoggedIn || isDev) && !activeCharacterId && (
 				<CharacterList
 					characters={characters}
 					handleDeleteCharacter={handleDeleteCharacter}
 				/>
 			)}
-			{userLoggedIn && activeCharacterId && activeCharacter && (
+			{(userLoggedIn || isDev) && activeCharacterId && activeCharacter && (
 				<CharacterSheet />
 			)}
 		</>
