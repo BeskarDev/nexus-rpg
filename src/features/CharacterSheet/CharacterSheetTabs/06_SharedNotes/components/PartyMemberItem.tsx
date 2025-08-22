@@ -9,7 +9,7 @@ import {
 	Tooltip,
 	Typography,
 } from '@mui/material'
-import { ExitToApp, PersonRemove } from '@mui/icons-material'
+import { ExitToApp, PersonRemove, Delete } from '@mui/icons-material'
 import { PartyMember } from '@site/src/types/Party'
 
 export interface PartyMemberItemProps {
@@ -18,6 +18,7 @@ export interface PartyMemberItemProps {
 	isOnlyMember: boolean
 	onLeaveParty: () => void
 	onRemoveMember: () => void
+	onDeleteParty: () => void
 }
 
 export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
@@ -26,6 +27,7 @@ export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
 	isOnlyMember,
 	onLeaveParty,
 	onRemoveMember,
+	onDeleteParty,
 }) => {
 	const memberName = `${member.name} (${member.folk} ${member.background}, Level ${member.level})`
 	
@@ -51,18 +53,27 @@ export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
 			/>
 			<Box sx={{ display: 'flex', gap: 1 }}>
 				{isCurrentUser ? (
-					<Tooltip title={isOnlyMember ? "Cannot leave - you are the only member" : "Leave Party"}>
-						<span>
+					isOnlyMember ? (
+						<Tooltip title="Delete Party">
+							<IconButton 
+								onClick={onDeleteParty}
+								color="error"
+								size="small"
+							>
+								<Delete />
+							</IconButton>
+						</Tooltip>
+					) : (
+						<Tooltip title="Leave Party">
 							<IconButton 
 								onClick={onLeaveParty}
 								color="warning"
 								size="small"
-								disabled={isOnlyMember}
 							>
 								<ExitToApp />
 							</IconButton>
-						</span>
-					</Tooltip>
+						</Tooltip>
+					)
 				) : (
 					<Tooltip title="Remove from Party">
 						<IconButton 

@@ -27,6 +27,7 @@ export interface PartyManagementProps {
 	onAddMember: (characterId: string) => Promise<void>
 	onRemoveMember: (characterId: string) => Promise<void>
 	onLeaveParty: () => Promise<void>
+	onDeleteParty: () => Promise<void>
 	onUpdatePartyName: (newName: string) => Promise<void>
 	loading: boolean
 }
@@ -38,6 +39,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 	onAddMember,
 	onRemoveMember,
 	onLeaveParty,
+	onDeleteParty,
 	onUpdatePartyName,
 	loading,
 }) => {
@@ -316,6 +318,13 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 										'Leave Party',
 										'Are you sure you want to leave this party? This cannot be undone.',
 										onLeaveParty
+									)
+								}
+								onDeleteParty={() =>
+									showConfirmDialog(
+										'Delete Party',
+										'Are you sure you want to delete this party? This will permanently remove all party data including shared notes.',
+										onDeleteParty
 									)
 								}
 								onRemoveMember={() =>

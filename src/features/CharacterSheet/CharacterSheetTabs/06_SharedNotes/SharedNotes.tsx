@@ -304,6 +304,23 @@ export const SharedNotes: React.FC = () => {
 		}
 	}
 
+	const handleDeleteParty = async () => {
+		if (!partyInfo || !characterId) return
+		
+		setPartyLoading(true)
+		try {
+			await PartyService.deleteParty(partyInfo.party.id, characterId)
+			setPartyInfo(null)
+			setNotes('')
+			setOriginalNotes('')
+		} catch (error) {
+			console.error('Failed to delete party:', error)
+			throw error
+		} finally {
+			setPartyLoading(false)
+		}
+	}
+
 	const handleUpdatePartyName = async (newName: string) => {
 		if (!partyInfo) return
 		
@@ -362,6 +379,7 @@ export const SharedNotes: React.FC = () => {
 				onAddMember={handleAddMember}
 				onRemoveMember={handleRemoveMember}
 				onLeaveParty={handleLeaveParty}
+				onDeleteParty={handleDeleteParty}
 				onUpdatePartyName={handleUpdatePartyName}
 				loading={partyLoading || isLoading}
 			/>
