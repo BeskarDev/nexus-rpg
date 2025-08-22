@@ -16,6 +16,7 @@ export type Character = {
 	items: Items
 	spells: Spells
 	companions: Companion[]
+	partyId?: string // Reference to the party this character belongs to
 }
 export type Personal = {
 	name: string

@@ -40,6 +40,11 @@ export const migrateDoc = async (
 
 	await Promise.all(promises)
 
+	// Add partyId field if it doesn't exist (for new party system)
+	if (!updatedDoc.partyId) {
+		updatedDoc.partyId = null
+	}
+
 	const migratedDoc: CharacterDocument = {
 		docRef: doc.ref,
 		docId: doc.id,
