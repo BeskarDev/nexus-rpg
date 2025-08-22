@@ -42,6 +42,8 @@ export const SharedNotes: React.FC = () => {
 
 	// Track the last saved notes value to prevent infinite loops
 	const lastSavedNotesRef = useRef<string>('')
+	// Track the last synced notes value to prevent overwriting user input
+	const lastSyncedNotesRef = useRef<string>('')
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -86,8 +88,9 @@ export const SharedNotes: React.FC = () => {
 				if (initialPartyInfo) {
 					setPartyInfo(initialPartyInfo)
 					setNotes(initialPartyInfo.party.notes)
-					// Initialize the last saved notes reference
+					// Initialize both refs to the initial notes value
 					lastSavedNotesRef.current = initialPartyInfo.party.notes
+					lastSyncedNotesRef.current = initialPartyInfo.party.notes
 					
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
@@ -95,23 +98,28 @@ export const SharedNotes: React.FC = () => {
 						(updatedPartyInfo) => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
-								// Only update notes if they differ from what we have locally
-								// This prevents overwriting user input while they're typing
-								setNotes(prev => {
-									// If the incoming notes are different from our last saved value,
-									// it means someone else made a change, so we should update
-									if (updatedPartyInfo.party.notes !== lastSavedNotesRef.current) {
-										lastSavedNotesRef.current = updatedPartyInfo.party.notes
-										return updatedPartyInfo.party.notes
-									}
-									// Otherwise, keep the current local value
-									return prev
-								})
+								// Only update notes if:
+								// 1. The incoming notes are different from what we last synced
+								// 2. This prevents sync updates from interfering with local typing
+								if (updatedPartyInfo.party.notes !== lastSyncedNotesRef.current) {
+									lastSyncedNotesRef.current = updatedPartyInfo.party.notes
+									// Only update local notes if they haven't been modified since the last sync
+									// This prevents overwriting user input while they're typing
+									setNotes(prev => {
+										// If the user has made local changes (different from last sync), don't overwrite
+										if (prev === lastSyncedNotesRef.current || prev === updatedPartyInfo.party.notes) {
+											return updatedPartyInfo.party.notes
+										}
+										// User is typing, don't overwrite their changes
+										return prev
+									})
+								}
 							} else {
 								// Party was deleted
 								setPartyInfo(null)
 								setNotes('')
 								lastSavedNotesRef.current = ''
+								lastSyncedNotesRef.current = ''
 							}
 						}
 					)
@@ -119,6 +127,7 @@ export const SharedNotes: React.FC = () => {
 					setPartyInfo(null)
 					setNotes('')
 					lastSavedNotesRef.current = ''
+					lastSyncedNotesRef.current = ''
 				}
 				
 				setError(null)
@@ -149,14 +158,16 @@ export const SharedNotes: React.FC = () => {
 		const saveNotes = async () => {
 			// Only save if:
 			// 1. We have a party
-			// 2. The debounced notes differ from our last saved value (not from the party info)
-			// 3. This prevents infinite loops when multiple users have notes open
+			// 2. The debounced notes differ from our last saved value
+			// 3. The user has actually made changes (not just sync updates)
 			if (partyInfo && debouncedNotes !== lastSavedNotesRef.current) {
 				setIsSaving(true)
 				try {
 					await PartyService.updatePartyNotes(partyInfo.party.id, debouncedNotes)
 					// Update our reference to the saved value
 					lastSavedNotesRef.current = debouncedNotes
+					// Also update the synced reference since we just saved this value
+					lastSyncedNotesRef.current = debouncedNotes
 				} catch (error) {
 					console.error('Failed to update notes:', error)
 					setError('Failed to save notes')
