@@ -23,6 +23,7 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
+import { FocusField } from '../00_Statistics/FocusField'
 import { SpellRow } from './SpellRow'
 import { SpellsSearchDialog } from './SpellsSearchDialog'
 
@@ -144,42 +145,9 @@ export const SpellsTab: React.FC = () => {
 					<Tooltip title="bonus damage per SL from your Spell Catalyst">
 						<HelpOutline fontSize="small" sx={{ mt: 1, mb: 0.75 }} />
 					</Tooltip>
-					<AttributeField
-						type="number"
-						value={focus.current}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { focus: { current: Number(event.target.value) } },
-							})
-						}
-						label="Current Focus"
-						helperText=""
-						sx={{
-							ml: 'auto',
-							maxWidth: '6rem',
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
-							},
-						}}
-					/>
-					<AttributeField
-						size="small"
-						type="number"
-						value={focus.total}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { focus: { total: Number(event.target.value) } },
-							})
-						}
-						label="Max. Focus"
-						helperText=" "
-						sx={{ maxWidth: '5rem', mr: 1 }}
-					/>
-					<Tooltip title="(SPI/MND - 2) + (2 * Mysticism/Arcana)">
-						<HelpOutline fontSize="small" sx={{ mt: 1, mb: 0.75 }} />
-					</Tooltip>
+					<Box sx={{ ml: 'auto' }}>
+						<FocusField />
+					</Box>
 				</Box>
 
 				<Box sx={{ width: '100%', flexGrow: 1 }} />
