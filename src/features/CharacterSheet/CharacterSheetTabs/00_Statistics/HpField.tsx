@@ -105,21 +105,51 @@ export const HpField = () => {
 				<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 					{/* HP Display */}
 					<Typography variant="body2" sx={{ fontWeight: 'bold', mb: 0.5 }}>
-						{health.current}/{maxHp} HP
+						{health.current}/
+						<span 
+							style={{ 
+								color: fatigueHpPenalty > 0 ? '#ff9800' : 'inherit' // warning color if fatigue present
+							}}
+						>
+							{effectiveMaxHp}
+						</span>
+						{fatigueHpPenalty > 0 && ` (${maxHp})`}
+						{(health.temp > 0) && ` +${health.temp}`}
+						{' HP'}
 					</Typography>
 					
-					{/* HP Bar */}
-					<LinearProgress
-						variant="determinate"
-						value={Math.min(100, hpPercentage)}
-						color={getHpColor()}
-						sx={{
-							width: '120px',
-							height: '6px',
-							borderRadius: '3px',
-							mb: 0.5,
-						}}
-					/>
+					{/* HP Bar Container for main HP + temp HP extension */}
+					<Box sx={{ position: 'relative', width: '120px', height: '6px', mb: 0.5 }}>
+						{/* Main HP Bar */}
+						<LinearProgress
+							variant="determinate"
+							value={Math.min(100, hpPercentage)}
+							color={getHpColor()}
+							sx={{
+								width: '120px',
+								height: '6px',
+								borderRadius: '3px',
+								position: 'absolute',
+								top: 0,
+								left: 0,
+							}}
+						/>
+						
+						{/* Temp HP Extension */}
+						{health.temp > 0 && (
+							<Box
+								sx={{
+									position: 'absolute',
+									top: 0,
+									left: '120px',
+									width: `${Math.min(60, (health.temp / effectiveMaxHp) * 120)}px`, // Scale temp HP relative to max HP, max 60px extension
+									height: '6px',
+									backgroundColor: '#2196f3', // info blue color
+									borderRadius: '0 3px 3px 0',
+								}}
+							/>
+						)}
+					</Box>
 					
 					{/* Current HP Input (simplified for surface) - REMOVED per feedback */}
 				</Box>
