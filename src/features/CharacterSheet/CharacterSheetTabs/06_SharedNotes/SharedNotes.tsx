@@ -40,8 +40,12 @@ export const SharedNotes: React.FC = () => {
 	const [partyLoading, setPartyLoading] = useState(false)
 	const [isSaving, setIsSaving] = useState(false)
 
-	// Track what's currently in the database (updated only by sync)
-	const databaseNotesRef = useRef<string>('')
+	// Track the last value we received from the database to avoid circular updates
+	const lastSyncedNotesRef = useRef<string>('')
+	// Track if user is actively editing (has unsaved changes)
+	const isEditingRef = useRef<boolean>(false)
+	// Track the last saved value to prevent unnecessary saves
+	const lastSavedNotesRef = useRef<string>('')
 
 	const activeCharacter = useAppSelector(
 		(state) => state.characterSheet.activeCharacter,
@@ -87,8 +91,10 @@ export const SharedNotes: React.FC = () => {
 					setPartyInfo(initialPartyInfo)
 					const initialNotes = initialPartyInfo.party.notes
 					setNotes(initialNotes)
-					// Initialize database ref to the initial notes value
-					databaseNotesRef.current = initialNotes
+					// Initialize tracking refs to the initial notes value
+					lastSyncedNotesRef.current = initialNotes
+					lastSavedNotesRef.current = initialNotes
+					isEditingRef.current = false
 					
 					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
@@ -97,34 +103,31 @@ export const SharedNotes: React.FC = () => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
 								
-								// Update database ref to track what's in the database
 								const incomingNotes = updatedPartyInfo.party.notes
-								databaseNotesRef.current = incomingNotes
 								
-								// Only apply sync updates if user hasn't made local changes
-								// We compare current notes to the OLD database value to detect local changes
-								setNotes(currentNotes => {
-									// If current notes match what was previously in database, user hasn't made changes
-									const previousDatabaseNotes = databaseNotesRef.current
-									if (currentNotes === previousDatabaseNotes) {
-										// No local changes, safe to apply sync update
-										return incomingNotes
-									}
-									// User has local changes - preserve them
-									return currentNotes
-								})
+								// Only apply sync updates if user is not actively editing
+								// and the incoming notes are different from what we last synced
+								if (!isEditingRef.current && incomingNotes !== lastSyncedNotesRef.current) {
+									lastSyncedNotesRef.current = incomingNotes
+									lastSavedNotesRef.current = incomingNotes
+									setNotes(incomingNotes)
+								}
 							} else {
 								// Party was deleted
 								setPartyInfo(null)
 								setNotes('')
-								databaseNotesRef.current = ''
+								lastSyncedNotesRef.current = ''
+								lastSavedNotesRef.current = ''
+								isEditingRef.current = false
 							}
 						}
 					)
 				} else {
 					setPartyInfo(null)
 					setNotes('')
-					databaseNotesRef.current = ''
+					lastSyncedNotesRef.current = ''
+					lastSavedNotesRef.current = ''
+					isEditingRef.current = false
 				}
 				
 				setError(null)
@@ -148,24 +151,32 @@ export const SharedNotes: React.FC = () => {
 	// Real-time notes update
 	const updateNotes = useCallback((newNotes: string) => {
 		setNotes(newNotes)
+		// Mark that user is actively editing
+		isEditingRef.current = true
 	}, [])
 
 	// Save debounced notes to database
 	useEffect(() => {
 		const saveNotes = async () => {
-			// Only save if we have a party and user's debounced notes differ from what's in database
-			if (partyInfo && debouncedNotes !== databaseNotesRef.current) {
+			// Only save if we have a party and debounced notes differ from last saved value
+			if (partyInfo && debouncedNotes !== lastSavedNotesRef.current) {
 				setIsSaving(true)
 				try {
 					await PartyService.updatePartyNotes(partyInfo.party.id, debouncedNotes)
-					// Update database ref to reflect what we just saved
-					databaseNotesRef.current = debouncedNotes
+					// Update tracking refs to reflect what we just saved
+					lastSavedNotesRef.current = debouncedNotes
+					lastSyncedNotesRef.current = debouncedNotes
+					// User has finished editing for now
+					isEditingRef.current = false
 				} catch (error) {
 					console.error('Failed to update notes:', error)
 					setError('Failed to save notes')
 				} finally {
 					setIsSaving(false)
 				}
+			} else if (partyInfo) {
+				// Notes haven't changed, user is no longer actively editing
+				isEditingRef.current = false
 			}
 		}
 
