@@ -91,7 +91,7 @@ export const ResistField = () => {
 					label="Resist"
 					helperText="5 + ½ SPI/MND"
 					sx={{
-						maxWidth: '5.5rem',
+						mr: 1,
 						'& .MuiOutlinedInput-root': {
 							'& .MuiOutlinedInput-notchedOutline': {
 								borderWidth: '2px',

@@ -50,18 +50,22 @@ export const ParryField = () => {
 	// Sync auto-calculated values when they change
 	React.useEffect(() => {
 		if (parryDetails) {
+			// Only auto-update shield bonus if it's currently 0 or matches the previous auto value
+			const shouldUpdateShieldBonus = 
+				details.shieldBonus === 0 || details.shieldBonus === autoShieldBonus
+			
 			updateCharacter({
 				statistics: { 
 					parryDetails: { 
 						base: autoBase,
 						levelBonus: autoLevelBonus,
-						shieldBonus: autoShieldBonus
+						...(shouldUpdateShieldBonus ? { shieldBonus: autoShieldBonus } : {})
 					},
 					parry: totalParry
 				},
 			})
 		}
-	}, [autoBase, autoLevelBonus, autoShieldBonus, totalParry])
+	}, [autoBase, autoLevelBonus, autoShieldBonus, totalParry, parryDetails])
 
 	const handleClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -103,7 +107,7 @@ export const ParryField = () => {
 					label="Parry"
 					helperText="7 + Fighting"
 					sx={{
-						maxWidth: '5.5rem',
+						mr: 1,
 						'& .MuiOutlinedInput-root': {
 							'& .MuiOutlinedInput-notchedOutline': {
 								borderWidth: '2px',
@@ -145,11 +149,20 @@ export const ParryField = () => {
 						label="Level Bonus"
 					/>
 					<AttributeField
-						disabled
 						type="number"
 						size="small"
-						value={autoShieldBonus}
+						value={details.shieldBonus}
+						onChange={(event) => {
+							const newShieldBonus = Number(event.target.value)
+							updateCharacter({
+								statistics: { 
+									parryDetails: { shieldBonus: newShieldBonus },
+									parry: autoBase + autoLevelBonus + newShieldBonus + details.other
+								},
+							})
+						}}
 						label="Shield Bonus"
+						helperText={autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined}
 					/>
 					<AttributeField
 						type="number"

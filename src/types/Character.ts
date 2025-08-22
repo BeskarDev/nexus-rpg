@@ -77,7 +77,7 @@ export type Statistics = {
 	parryDetails?: {
 		base: number // auto-calculated: 7 + Fighting
 		levelBonus: number // auto-calculated: +1 at levels 3,5,7,9
-		shieldBonus: number // auto-calculated from equipped shield
+		shieldBonus: number // manual input, auto-populated from equipped shield
 		other: number // manual input
 	}
 	dodgeDetails?: {

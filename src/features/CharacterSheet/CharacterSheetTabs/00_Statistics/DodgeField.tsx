@@ -91,7 +91,7 @@ export const DodgeField = () => {
 					label="Dodge"
 					helperText="5 + ½ AGI"
 					sx={{
-						maxWidth: '5.5rem',
+						mr: 1,
 						'& .MuiOutlinedInput-root': {
 							'& .MuiOutlinedInput-notchedOutline': {
 								borderWidth: '2px',
