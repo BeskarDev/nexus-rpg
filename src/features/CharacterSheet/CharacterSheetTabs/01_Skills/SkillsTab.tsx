@@ -389,8 +389,7 @@ export const SkillsTab: React.FC = () => {
 											color: 'white',
 											'& .MuiChip-label': {
 												fontWeight: 500,
-												paddingLeft: '4px',
-												paddingRight: '4px',
+												// Remove custom padding to use default MUI padding
 											},
 											'& .MuiChip-deleteIcon': {
 												color: 'rgba(255, 255, 255, 0.7)',
