@@ -33,13 +33,18 @@ export const HpField = () => {
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
 	const effectiveMaxHp = maxHp - fatigueHpPenalty
 
-	// Calculate HP bar color and progress
+	// Calculate HP bar color and progress with static bar sizing
+	const totalDisplayHp = effectiveMaxHp + (health.temp || 0)
 	const hpPercentage = effectiveMaxHp > 0 ? (health.current / effectiveMaxHp) * 100 : 0
 	const getHpColor = () => {
 		if (hpPercentage >= 50) return 'success'
 		if (hpPercentage >= 20) return 'warning'
 		return 'error'
 	}
+
+	// Calculate proportional widths for static bar length (120px total)
+	const mainHpBarWidth = totalDisplayHp > 0 ? (effectiveMaxHp / totalDisplayHp) * 120 : 120
+	const tempHpBarWidth = totalDisplayHp > 0 ? ((health.temp || 0) / totalDisplayHp) * 120 : 0
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -114,35 +119,37 @@ export const HpField = () => {
 							{effectiveMaxHp}
 						</span>
 						{fatigueHpPenalty > 0 && ` (${maxHp})`}
-						{(health.temp > 0) && ` +${health.temp}`}
+						{(health.temp > 0) && (
+							<span style={{ color: '#2196f3' }}> +{health.temp}</span>
+						)}
 						{' HP'}
 					</Typography>
 					
-					{/* HP Bar Container for main HP + temp HP extension */}
+					{/* HP Bar Container for static-length bar with proportional sections */}
 					<Box sx={{ position: 'relative', width: '120px', height: '6px', mb: 0.5 }}>
-						{/* Main HP Bar */}
+						{/* Main HP Bar - proportional width within 120px total */}
 						<LinearProgress
 							variant="determinate"
 							value={Math.min(100, hpPercentage)}
 							color={getHpColor()}
 							sx={{
-								width: '120px',
+								width: `${mainHpBarWidth}px`,
 								height: '6px',
-								borderRadius: '3px',
+								borderRadius: health.temp > 0 ? '3px 0 0 3px' : '3px',
 								position: 'absolute',
 								top: 0,
 								left: 0,
 							}}
 						/>
 						
-						{/* Temp HP Extension */}
+						{/* Temp HP Section - proportional width within 120px total */}
 						{health.temp > 0 && (
 							<Box
 								sx={{
 									position: 'absolute',
 									top: 0,
-									left: '120px',
-									width: `${Math.min(60, (health.temp / effectiveMaxHp) * 120)}px`, // Scale temp HP relative to max HP, max 60px extension
+									left: `${mainHpBarWidth}px`,
+									width: `${tempHpBarWidth}px`,
 									height: '6px',
 									backgroundColor: '#2196f3', // info blue color
 									borderRadius: '0 3px 3px 0',
@@ -170,7 +177,7 @@ export const HpField = () => {
 					Max HP: {baseHp} + {(characterLevel - 1) * 2} + {health.maxHpModifier || 0} = {maxHp}
 				</Typography>
 				
-				{/* Current HP - First and larger */}
+				{/* Current HP - First and larger with 2px borders */}
 				<AttributeField
 					type="number"
 					value={health.current}
@@ -182,7 +189,14 @@ export const HpField = () => {
 						})
 					}}
 					label="Current HP"
-					sx={{ mb: 1 }}
+					sx={{ 
+						mb: 1.5,
+						'& .MuiOutlinedInput-root': {
+							'& .MuiOutlinedInput-notchedOutline': {
+								borderWidth: '2px',
+							},
+						},
+					}}
 				/>
 				
 				{/* Max HP (disabled, calculated) */}
@@ -192,36 +206,37 @@ export const HpField = () => {
 					value={maxHp}
 					disabled
 					label="Max HP (Calculated)"
-					sx={{ mb: 1 }}
+					sx={{ mb: 1.5 }}
 				/>
 				
-				{/* Temp HP */}
-				<AttributeField
-					type="number"
-					size="small"
-					value={health.temp}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { health: { temp: Number(event.target.value) } },
-						})
-					}
-					label="Temp HP"
-					sx={{ mb: 1 }}
-				/>
-				
-				{/* Max HP Modifier */}
-				<AttributeField
-					type="number"
-					size="small"
-					value={health.maxHpModifier || 0}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { health: { maxHpModifier: Number(event.target.value) } },
-						})
-					}
-					label="Max HP Modifier"
-					sx={{ mb: 2 }}
-				/>
+				{/* Temp HP and Max HP Modifier in their own row */}
+				<Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+					<AttributeField
+						type="number"
+						size="small"
+						value={health.temp}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { health: { temp: Number(event.target.value) } },
+							})
+						}
+						label="Temp HP"
+						sx={{ flex: 1 }}
+					/>
+					
+					<AttributeField
+						type="number"
+						size="small"
+						value={health.maxHpModifier || 0}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { health: { maxHpModifier: Number(event.target.value) } },
+							})
+						}
+						label="Max HP Modifier"
+						sx={{ flex: 1 }}
+					/>
+				</Box>
 				
 				{/* Damage/Healing Controls - TextField between buttons */}
 				<Typography variant="subtitle2" sx={{ mb: 1 }}>
