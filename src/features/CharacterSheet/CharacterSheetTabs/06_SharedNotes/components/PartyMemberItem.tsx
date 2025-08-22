@@ -30,7 +30,7 @@ export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
 	onDeleteParty,
 }) => {
 	const memberName = `${member.name} (${member.folk} ${member.background}, Level ${member.level})`
-	
+
 	return (
 		<ListItem
 			sx={{
@@ -55,32 +55,20 @@ export const PartyMemberItem: React.FC<PartyMemberItemProps> = ({
 				{isCurrentUser ? (
 					isOnlyMember ? (
 						<Tooltip title="Delete Party">
-							<IconButton 
-								onClick={onDeleteParty}
-								color="error"
-								size="small"
-							>
+							<IconButton onClick={onDeleteParty} color="error" size="small">
 								<Delete />
 							</IconButton>
 						</Tooltip>
 					) : (
 						<Tooltip title="Leave Party">
-							<IconButton 
-								onClick={onLeaveParty}
-								color="warning"
-								size="small"
-							>
+							<IconButton onClick={onLeaveParty} color="warning" size="small">
 								<ExitToApp />
 							</IconButton>
 						</Tooltip>
 					)
 				) : (
 					<Tooltip title="Remove from Party">
-						<IconButton 
-							onClick={onRemoveMember}
-							color="error"
-							size="small"
-						>
+						<IconButton onClick={onRemoveMember} color="error" size="small">
 							<PersonRemove />
 						</IconButton>
 					</Tooltip>

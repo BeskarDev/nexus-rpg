@@ -195,8 +195,8 @@ export const {
 		removeSkill: (state, action: PayloadAction<string>) => {
 			const skillName = action.payload
 			state.unsavedChanges = true
-			state.activeCharacter.skills.skills = 
-				state.activeCharacter.skills.skills.filter(s => s.name !== skillName)
+			state.activeCharacter.skills.skills =
+				state.activeCharacter.skills.skills.filter((s) => s.name !== skillName)
 		},
 		addProfession: (state, action: PayloadAction<string>) => {
 			const professionName = action.payload
@@ -208,8 +208,10 @@ export const {
 		removeProfession: (state, action: PayloadAction<string>) => {
 			const professionName = action.payload
 			state.unsavedChanges = true
-			state.activeCharacter.skills.professions = 
-				state.activeCharacter.skills.professions.filter(p => p !== professionName)
+			state.activeCharacter.skills.professions =
+				state.activeCharacter.skills.professions.filter(
+					(p) => p !== professionName,
+				)
 		},
 		deleteSkill: (state, action: PayloadAction<Skill>) => {
 			state.unsavedChanges = true

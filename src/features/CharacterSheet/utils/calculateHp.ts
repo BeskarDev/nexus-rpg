@@ -5,15 +5,17 @@ import { calculateCharacterLevel } from './calculateCharacterLevel'
  * Calculate the base HP value from Strength attribute
  * Based on the table: d4=16, d6=18, d8=20, d10=22, d12=24
  */
-export const calculateBaseHpFromStrength = (strength: AttributeType): number => {
+export const calculateBaseHpFromStrength = (
+	strength: AttributeType,
+): number => {
 	const baseHpMap: Record<AttributeType, number> = {
-		4: 16,   // d4 -> 16 HP
-		6: 18,   // d6 -> 18 HP  
-		8: 20,   // d8 -> 20 HP
-		10: 22,  // d10 -> 22 HP
-		12: 24,  // d12 -> 24 HP
+		4: 16, // d4 -> 16 HP
+		6: 18, // d6 -> 18 HP
+		8: 20, // d8 -> 20 HP
+		10: 22, // d10 -> 22 HP
+		12: 24, // d12 -> 24 HP
 	}
-	
+
 	return baseHpMap[strength] || 16 // Default to d4 value if invalid
 }
 
@@ -26,11 +28,11 @@ export const calculateBaseHpFromStrength = (strength: AttributeType): number => 
 export const calculateMaxHp = (
 	strength: AttributeType,
 	totalXp: number,
-	maxHpModifier: number = 0
+	maxHpModifier: number = 0,
 ): number => {
 	const level = calculateCharacterLevel(totalXp)
 	const baseHp = calculateBaseHpFromStrength(strength)
 	const levelBonus = (level - 1) * 2 // Level 1 = no bonus, Level 2 = +2, etc.
-	
+
 	return baseHp + levelBonus + maxHpModifier
 }

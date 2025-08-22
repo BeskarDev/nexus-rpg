@@ -142,17 +142,18 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						variant="standard"
 						value={`${3 - (initialItem.uses || 0)}/3`}
 						label="Uses"
-						sx={{ 
-							maxWidth: '2.5rem'
+						sx={{
+							maxWidth: '2.5rem',
 						}}
 						InputProps={{
 							sx: {
-								color: (initialItem.uses || 0) === 3 
-									? 'error.main' 
-									: (initialItem.uses || 0) === 2 
-									? 'warning.main' 
-									: 'text.primary'
-							}
+								color:
+									(initialItem.uses || 0) === 3
+										? 'error.main'
+										: (initialItem.uses || 0) === 2
+											? 'warning.main'
+											: 'text.primary',
+							},
 						}}
 					/>
 				</Box>
@@ -220,7 +221,9 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}>
+					<Box
+						sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, p: 0.5 }}
+					>
 						<Typography variant="caption">Uses</Typography>
 						<FormGroup row sx={{ gap: 0.25 }}>
 							{[1, 2, 3].map((useNumber) => (
@@ -238,11 +241,13 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 								/>
 							))}
 						</FormGroup>
-						{(initialItem.uses || 0) >= 3 && initialItem.location === 'worn' && initialItem.slot && (
-							<Typography variant="caption" color="error">
-								Item is damaged
-							</Typography>
-						)}
+						{(initialItem.uses || 0) >= 3 &&
+							initialItem.location === 'worn' &&
+							initialItem.slot && (
+								<Typography variant="caption" color="error">
+									Item is damaged
+								</Typography>
+							)}
 					</Box>
 					<AttributeField
 						select

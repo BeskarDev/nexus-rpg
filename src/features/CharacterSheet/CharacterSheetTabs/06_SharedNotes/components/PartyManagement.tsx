@@ -61,14 +61,14 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 
 	const handleCreateParty = async () => {
 		if (!partyName.trim()) return
-		
+
 		try {
 			await onCreateParty(partyName.trim())
 			setPartyName('')
 			setSnackbar({
 				open: true,
 				message: 'Party created successfully!',
-				severity: 'success'
+				severity: 'success',
 			})
 		} catch (error) {
 			console.error('Party creation error:', error)
@@ -79,21 +79,21 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 			setSnackbar({
 				open: true,
 				message: errorMessage,
-				severity: 'error'
+				severity: 'error',
 			})
 		}
 	}
 
 	const handleAddMember = async () => {
 		if (!newMemberCharacterId.trim()) return
-		
+
 		try {
 			await onAddMember(newMemberCharacterId.trim())
 			setNewMemberCharacterId('')
 			setSnackbar({
 				open: true,
 				message: 'Member added successfully!',
-				severity: 'success'
+				severity: 'success',
 			})
 		} catch (error) {
 			let errorMessage = 'Failed to add member'
@@ -103,7 +103,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 			setSnackbar({
 				open: true,
 				message: errorMessage,
-				severity: 'error'
+				severity: 'error',
 			})
 		}
 	}
@@ -117,20 +117,20 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 
 	const handleSavePartyName = async () => {
 		if (!editedPartyName.trim()) return
-		
+
 		try {
 			await onUpdatePartyName(editedPartyName.trim())
 			setIsEditingName(false)
 			setSnackbar({
 				open: true,
 				message: 'Party name updated successfully!',
-				severity: 'success'
+				severity: 'success',
 			})
 		} catch (error) {
 			setSnackbar({
 				open: true,
 				message: 'Failed to update party name',
-				severity: 'error'
+				severity: 'error',
 			})
 		}
 	}
@@ -145,22 +145,31 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 		setSnackbar({
 			open: true,
 			message: 'Character ID copied to clipboard!',
-			severity: 'success'
+			severity: 'success',
 		})
 	}
 
-	const showConfirmDialog = (title: string, message: string, action: () => void) => {
+	const showConfirmDialog = (
+		title: string,
+		message: string,
+		action: () => void,
+	) => {
 		setConfirmDialog({ open: true, title, message, action })
 	}
 
 	const executeConfirmAction = async () => {
 		try {
 			await confirmDialog.action()
-			setConfirmDialog({ open: false, title: '', message: '', action: () => {} })
+			setConfirmDialog({
+				open: false,
+				title: '',
+				message: '',
+				action: () => {},
+			})
 			setSnackbar({
 				open: true,
 				message: 'Action completed successfully!',
-				severity: 'success'
+				severity: 'success',
 			})
 		} catch (error) {
 			console.error('Confirm action error:', error)
@@ -171,7 +180,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 			setSnackbar({
 				open: true,
 				message: errorMessage,
-				severity: 'error'
+				severity: 'error',
 			})
 		}
 	}
@@ -184,15 +193,16 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 					<Typography variant="body2" color="text.secondary">
 						Character ID:
 					</Typography>
-					<Typography 
+					<Typography
 						component="code"
-						sx={{ 
+						sx={{
 							fontFamily: 'monospace',
-							bgcolor: (theme) => theme.palette.mode === 'dark' ? 'grey.800' : 'grey.100',
+							bgcolor: (theme) =>
+								theme.palette.mode === 'dark' ? 'grey.800' : 'grey.100',
 							px: 1,
 							py: 0.5,
 							borderRadius: 0.5,
-							flexGrow: 1
+							flexGrow: 1,
 						}}
 					>
 						{characterId}
@@ -230,7 +240,8 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 						</Button>
 					</Box>
 					<Alert severity="info">
-						Create a party to share notes and coordinate with other players. Once created, you can invite others by sharing character IDs.
+						Create a party to share notes and coordinate with other players.
+						Once created, you can invite others by sharing character IDs.
 					</Alert>
 				</Paper>
 			) : (
@@ -248,7 +259,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 									autoFocus
 								/>
 								<Tooltip title="Save">
-									<IconButton 
+									<IconButton
 										onClick={handleSavePartyName}
 										disabled={!editedPartyName.trim() || loading}
 										color="primary"
@@ -258,7 +269,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 									</IconButton>
 								</Tooltip>
 								<Tooltip title="Cancel">
-									<IconButton 
+									<IconButton
 										onClick={handleCancelEdit}
 										disabled={loading}
 										size="small"
@@ -273,7 +284,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 									{partyInfo.party.name}
 								</Typography>
 								<Tooltip title="Edit party name">
-									<IconButton 
+									<IconButton
 										onClick={handleEditPartyName}
 										disabled={loading}
 										size="small"
@@ -284,7 +295,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 							</>
 						)}
 					</Box>
-					
+
 					{/* Add Member Section */}
 					<Box sx={{ mb: 3 }}>
 						<Typography variant="subtitle2" sx={{ mb: 1 }}>
@@ -322,25 +333,25 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 								member={member}
 								isCurrentUser={member.characterId === characterId}
 								isOnlyMember={partyInfo.members.length === 1}
-								onLeaveParty={() => 
+								onLeaveParty={() =>
 									showConfirmDialog(
 										'Leave Party',
 										'Are you sure you want to leave this party? This cannot be undone.',
-										onLeaveParty
+										onLeaveParty,
 									)
 								}
 								onDeleteParty={() =>
 									showConfirmDialog(
 										'Delete Party',
 										'Are you sure you want to delete this party? This will permanently remove all party data including shared notes.',
-										onDeleteParty
+										onDeleteParty,
 									)
 								}
 								onRemoveMember={() =>
 									showConfirmDialog(
 										'Remove Member',
 										`Are you sure you want to remove ${member.name} from the party?`,
-										() => onRemoveMember(member.characterId)
+										() => onRemoveMember(member.characterId),
 									)
 								}
 							/>
@@ -350,13 +361,20 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 			)}
 
 			{/* Confirmation Dialog */}
-			<Dialog open={confirmDialog.open} onClose={() => setConfirmDialog(prev => ({ ...prev, open: false }))}>
+			<Dialog
+				open={confirmDialog.open}
+				onClose={() => setConfirmDialog((prev) => ({ ...prev, open: false }))}
+			>
 				<DialogTitle>{confirmDialog.title}</DialogTitle>
 				<DialogContent>
 					<DialogContentText>{confirmDialog.message}</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={() => setConfirmDialog(prev => ({ ...prev, open: false }))}>
+					<Button
+						onClick={() =>
+							setConfirmDialog((prev) => ({ ...prev, open: false }))
+						}
+					>
 						Cancel
 					</Button>
 					<Button onClick={executeConfirmAction} color="error" autoFocus>
@@ -369,12 +387,12 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 			<Snackbar
 				open={snackbar.open}
 				autoHideDuration={3000}
-				onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+				onClose={() => setSnackbar((prev) => ({ ...prev, open: false }))}
 				anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
 			>
-				<Alert 
-					severity={snackbar.severity} 
-					onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}
+				<Alert
+					severity={snackbar.severity}
+					onClose={() => setSnackbar((prev) => ({ ...prev, open: false }))}
 				>
 					{snackbar.message}
 				</Alert>

@@ -4,14 +4,14 @@ import { DurabilityDie, Item, Weapon } from '../../../../../types/Character'
  * Determines the appropriate durability die for an item based on its properties
  * According to Equipment docs:
  * - d4: glass, ceramic, cloth
- * - d6: light or normal weapons, light armor, wood, leather  
+ * - d6: light or normal weapons, light armor, wood, leather
  * - d8: heavy or two-handed weapons, heavy armor, metal, stone
  */
 export function getDurabilityForItem(item: Item | Weapon): DurabilityDie {
 	const properties = item.properties?.toLowerCase() || ''
 	const name = item.name?.toLowerCase() || ''
 	const description = item.description?.toLowerCase() || ''
-	
+
 	const allText = `${properties} ${name} ${description}`
 
 	// Check for d4 materials (most fragile)
@@ -37,7 +37,7 @@ export function getDurabilityForItem(item: Item | Weapon): DurabilityDie {
 		) {
 			return 'd8'
 		}
-		
+
 		// d6 for light/normal weapons
 		if (
 			properties.includes('light') ||
@@ -63,7 +63,7 @@ export function getDurabilityForItem(item: Item | Weapon): DurabilityDie {
 		) {
 			return 'd6'
 		}
-		
+
 		// d8 for heavy armor, metal, stone items
 		if (
 			allText.includes('heavy armor') ||

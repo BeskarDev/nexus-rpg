@@ -118,7 +118,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	const currentMaxHp = calculateMaxHp(
 		character.statistics.strength.value,
 		character.skills.xp.total,
-		character.statistics.health.maxHpModifier || 0
+		character.statistics.health.maxHpModifier || 0,
 	)
 
 	const handleOpen = (type: RestingType) => {
@@ -136,7 +136,8 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	}
 
 	const removeFatigue = (amount: number) => {
-		const { current, temp, maxHpModifier, ...wounds } = character.statistics.health
+		const { current, temp, maxHpModifier, ...wounds } =
+			character.statistics.health
 		let i = amount
 		Object.keys(wounds)
 			.sort((a, b) => sortWounds(a, b))

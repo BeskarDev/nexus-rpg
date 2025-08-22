@@ -21,149 +21,158 @@ export const createMockCharacter = (): CharacterDocument => {
 			height: '6\'0"',
 			weight: '180 lbs',
 			age: '28',
-			description: 'A tall, scholarly figure with weathered hands and keen eyes. Wears practical robes suited for both study and adventure.',
-			motivation: 'To uncover the lost secrets of ancient civilizations and preserve knowledge for future generations.',
+			description:
+				'A tall, scholarly figure with weathered hands and keen eyes. Wears practical robes suited for both study and adventure.',
+			motivation:
+				'To uncover the lost secrets of ancient civilizations and preserve knowledge for future generations.',
 			profilePicture: '',
 			allies: [
 				{
 					id: generateId(),
-					description: 'Master Theron - Former mentor at the Academy of Sciences'
-				}
+					description:
+						'Master Theron - Former mentor at the Academy of Sciences',
+				},
 			],
 			contacts: [
 				{
 					id: generateId(),
-					description: 'Lyra - Information broker in the city\'s merchant quarter'
-				}
+					description:
+						"Lyra - Information broker in the city's merchant quarter",
+				},
 			],
 			rivals: [
 				{
 					id: generateId(),
-					description: 'Vex Shadowmere - Competing scholar who uses questionable methods'
-				}
+					description:
+						'Vex Shadowmere - Competing scholar who uses questionable methods',
+				},
 			],
-			notes: 'Fascinated by ancient texts and archaeological discoveries. Tends to get lost in research.'
+			notes:
+				'Fascinated by ancient texts and archaeological discoveries. Tends to get lost in research.',
 		},
 		statistics: {
 			health: {
 				current: 25,
 				temp: 0,
-				maxHpModifier: 0
+				maxHpModifier: 0,
 			},
 			fatigue: {
 				current: 0,
-				max: 6
+				max: 6,
 			},
 			av: {
 				armor: 1,
 				helmet: 0,
 				shield: 0,
-				other: 0
+				other: 0,
 			},
 			strength: {
 				value: 6,
-				wounded: false
+				wounded: false,
 			},
 			agility: {
 				value: 8,
-				wounded: false
+				wounded: false,
 			},
 			spirit: {
 				value: 10,
-				wounded: false
+				wounded: false,
 			},
 			mind: {
 				value: 12,
-				wounded: false
+				wounded: false,
 			},
 			parry: 8,
 			dodge: 10,
 			resist: 12,
 			resolve: 3,
-			statusEffects: []
+			statusEffects: [],
 		},
 		skills: {
 			xp: {
 				total: 45,
-				spend: 42
+				spend: 42,
 			},
 			skills: [
 				{
 					id: generateId(),
 					name: 'Arcana',
 					rank: 3,
-					xp: 12
+					xp: 12,
 				},
 				{
 					id: generateId(),
 					name: 'Education',
 					rank: 2,
-					xp: 6
+					xp: 6,
 				},
 				{
 					id: generateId(),
 					name: 'Lore',
 					rank: 2,
-					xp: 6
+					xp: 6,
 				},
 				{
 					id: generateId(),
 					name: 'Insight',
 					rank: 2,
-					xp: 6
+					xp: 6,
 				},
 				{
 					id: generateId(),
 					name: 'Perception',
 					rank: 2,
-					xp: 6
+					xp: 6,
 				},
 				{
 					id: generateId(),
 					name: 'Crafting',
 					rank: 1,
-					xp: 2
+					xp: 2,
 				},
 				{
 					id: generateId(),
 					name: 'Athletics',
 					rank: 1,
-					xp: 2
+					xp: 2,
 				},
 				{
 					id: generateId(),
 					name: 'Fortitude',
 					rank: 1,
-					xp: 2
-				}
+					xp: 2,
+				},
 			],
 			professions: ['Alchemist', 'Inscriber'],
 			abilities: [
 				{
 					id: generateId(),
 					title: 'Spell Weaving',
-					description: 'Can combine two spells of rank 1 or lower into a single casting.',
-					tag: 'Talent'
+					description:
+						'Can combine two spells of rank 1 or lower into a single casting.',
+					tag: 'Talent',
 				},
 				{
 					id: generateId(),
 					title: 'Ancient Knowledge',
-					description: 'Gain +2 boons when recalling information about historical events or civilizations.',
-					tag: 'Talent'
+					description:
+						'Gain +2 boons when recalling information about historical events or civilizations.',
+					tag: 'Talent',
 				},
 				{
 					id: generateId(),
 					title: 'Keen Mind',
-					description: 'Can perfectly recall anything seen or heard within the last month.',
-					tag: 'Talent'
-				}
+					description:
+						'Can perfectly recall anything seen or heard within the last month.',
+					tag: 'Talent',
+				},
 			],
 			abilityCategoryVisibility: {
 				'Combat Art': true,
-				'Talent': true,
-				'Folk': true,
-				'Other': true
-			}
+				Talent: true,
+				Folk: true,
+				Other: true,
+			},
 		},
 		items: {
 			coins: 250,
@@ -173,12 +182,12 @@ export const createMockCharacter = (): CharacterDocument => {
 				carryModifier: 0,
 				currentLoad: 6,
 				mountMaxLoad: 0,
-				storageMaxLoad: 0
+				storageMaxLoad: 0,
 			},
 			weapons: [
 				{
 					id: generateId(),
-					name: 'Scholar\'s Staff',
+					name: "Scholar's Staff",
 					damage: {
 						base: 'STR',
 						weapon: 3,
@@ -187,23 +196,25 @@ export const createMockCharacter = (): CharacterDocument => {
 						otherStrong: 0,
 						otherCritical: 0,
 						type: 'physical',
-						staticDamage: false
+						staticDamage: false,
 					},
 					properties: 'reach, two-handed, arcane catalyst',
-					description: 'A gnarled oak staff topped with a crystal focus. Serves as both walking aid and magical implement.',
+					description:
+						'A gnarled oak staff topped with a crystal focus. Serves as both walking aid and magical implement.',
 					cost: 45,
 					load: 2,
 					location: 'worn',
 					uses: 0,
-					durability: 'd8'
-				}
+					durability: 'd8',
+				},
 			],
 			items: [
 				{
 					id: generateId(),
-					name: 'Traveler\'s Robes',
+					name: "Traveler's Robes",
 					properties: 'light armor, +1 AV',
-					description: 'Well-made robes designed for comfort during long journeys.',
+					description:
+						'Well-made robes designed for comfort during long journeys.',
 					slot: 'body',
 					cost: 25,
 					load: 1,
@@ -211,13 +222,14 @@ export const createMockCharacter = (): CharacterDocument => {
 					amount: 1,
 					location: 'worn',
 					uses: 0,
-					durability: 'd6'
+					durability: 'd6',
 				},
 				{
 					id: generateId(),
 					name: 'Spellbook',
 					properties: 'arcane focus',
-					description: 'A leather-bound tome containing spell formulas and magical theory.',
+					description:
+						'A leather-bound tome containing spell formulas and magical theory.',
 					slot: '',
 					cost: 30,
 					load: 1,
@@ -225,13 +237,14 @@ export const createMockCharacter = (): CharacterDocument => {
 					amount: 1,
 					location: 'carried',
 					uses: 0,
-					durability: 'd6'
+					durability: 'd6',
 				},
 				{
 					id: generateId(),
 					name: 'Alchemy Kit',
 					properties: 'crafting tools',
-					description: 'A collection of vials, burners, and reagents for alchemical work.',
+					description:
+						'A collection of vials, burners, and reagents for alchemical work.',
 					slot: '',
 					cost: 50,
 					load: 2,
@@ -239,22 +252,22 @@ export const createMockCharacter = (): CharacterDocument => {
 					amount: 1,
 					location: 'carried',
 					uses: 0,
-					durability: 'd8'
-				}
+					durability: 'd8',
+				},
 			],
 			itemLocationVisibility: {
-				'worn': true,
-				'carried': true,
-				'mount': true,
-				'storage': true
-			}
+				worn: true,
+				carried: true,
+				mount: true,
+				storage: true,
+			},
 		},
 		spells: {
 			magicSkill: 'Arcana',
 			specialization: 'Evocation',
 			focus: {
 				total: 14,
-				current: 11
+				current: 11,
 			},
 			spellCatalystDamage: 0,
 			spells: [
@@ -275,9 +288,10 @@ export const createMockCharacter = (): CharacterDocument => {
 						otherStrong: 0,
 						otherCritical: 0,
 						type: 'radiant',
-						staticDamage: false
+						staticDamage: false,
 					},
-					effect: 'Creates a bright light source that lasts until concentration ends.'
+					effect:
+						'Creates a bright light source that lasts until concentration ends.',
 				},
 				{
 					id: generateId(),
@@ -296,9 +310,9 @@ export const createMockCharacter = (): CharacterDocument => {
 						otherStrong: 0,
 						otherCritical: 0,
 						type: 'psychic',
-						staticDamage: false
+						staticDamage: false,
 					},
-					effect: 'Launches a bolt of pure magical energy at a target.'
+					effect: 'Launches a bolt of pure magical energy at a target.',
 				},
 				{
 					id: generateId(),
@@ -317,21 +331,22 @@ export const createMockCharacter = (): CharacterDocument => {
 						otherStrong: 0,
 						otherCritical: 0,
 						type: 'psychic',
-						staticDamage: false
+						staticDamage: false,
 					},
-					effect: 'Creates a magical barrier that provides +2 AV until your next turn.'
-				}
-			]
+					effect:
+						'Creates a magical barrier that provides +2 AV until your next turn.',
+				},
+			],
 		},
 		companions: [],
-		partyId: undefined
+		partyId: undefined,
 	}
 
 	return {
 		...mockCharacter,
 		docRef: doc(db, 'mock-collection', 'mock-character-1'),
 		docId: 'mock-character-1',
-		collectionId: 'mock-collection'
+		collectionId: 'mock-collection',
 	}
 }
 
@@ -349,134 +364,139 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 			height: '5\'4"',
 			weight: '160 lbs',
 			age: '35',
-			description: 'A stout, muscular smith with calloused hands and burn scars from the forge. Her beard is braided with small metal trinkets.',
-			motivation: 'To forge legendary weapons that will be remembered for generations.',
+			description:
+				'A stout, muscular smith with calloused hands and burn scars from the forge. Her beard is braided with small metal trinkets.',
+			motivation:
+				'To forge legendary weapons that will be remembered for generations.',
 			profilePicture: '',
 			allies: [],
 			contacts: [],
 			rivals: [],
-			notes: 'Master of metalworking and weapon crafting. Values tradition and quality above all else.'
+			notes:
+				'Master of metalworking and weapon crafting. Values tradition and quality above all else.',
 		},
 		statistics: {
 			health: {
 				current: 32,
 				temp: 0,
-				maxHpModifier: 0
+				maxHpModifier: 0,
 			},
 			fatigue: {
 				current: 0,
-				max: 8
+				max: 8,
 			},
 			av: {
 				armor: 4,
 				helmet: 0,
 				shield: 2,
-				other: 0
+				other: 0,
 			},
 			strength: {
 				value: 12,
-				wounded: false
+				wounded: false,
 			},
 			agility: {
 				value: 8,
-				wounded: false
+				wounded: false,
 			},
 			spirit: {
 				value: 10,
-				wounded: false
+				wounded: false,
 			},
 			mind: {
 				value: 6,
-				wounded: false
+				wounded: false,
 			},
 			parry: 12,
 			dodge: 8,
 			resist: 9,
 			resolve: 4,
-			statusEffects: []
+			statusEffects: [],
 		},
 		skills: {
 			xp: {
 				total: 50,
-				spend: 48
+				spend: 48,
 			},
 			skills: [
 				{
 					id: generateId(),
 					name: 'Fighting',
 					rank: 3,
-					xp: 12
+					xp: 12,
 				},
 				{
 					id: generateId(),
 					name: 'Crafting',
 					rank: 3,
-					xp: 12
+					xp: 12,
 				},
 				{
 					id: generateId(),
 					name: 'Fortitude',
 					rank: 2,
-					xp: 6
+					xp: 6,
 				},
 				{
 					id: generateId(),
 					name: 'Athletics',
 					rank: 2,
-					xp: 6
+					xp: 6,
 				},
 				{
 					id: generateId(),
 					name: 'Perception',
 					rank: 2,
-					xp: 6
+					xp: 6,
 				},
 				{
 					id: generateId(),
 					name: 'Insight',
 					rank: 1,
-					xp: 2
+					xp: 2,
 				},
 				{
 					id: generateId(),
 					name: 'Streetwise',
 					rank: 1,
-					xp: 2
+					xp: 2,
 				},
 				{
 					id: generateId(),
 					name: 'Influence',
 					rank: 1,
-					xp: 2
-				}
+					xp: 2,
+				},
 			],
 			professions: ['Smith', 'Jeweler'],
 			abilities: [
 				{
 					id: generateId(),
 					title: 'Master Crafter',
-					description: 'Can create items of exceptional quality with +1 boon to crafting rolls.',
-					tag: 'Talent'
+					description:
+						'Can create items of exceptional quality with +1 boon to crafting rolls.',
+					tag: 'Talent',
 				},
 				{
 					id: generateId(),
 					title: 'Combat Reflexes',
-					description: 'Gain +1 to Initiative and can make opportunity attacks.',
-					tag: 'Combat Art'
+					description:
+						'Gain +1 to Initiative and can make opportunity attacks.',
+					tag: 'Combat Art',
 				},
 				{
 					id: generateId(),
 					title: 'Iron Will',
 					description: 'Gain +2 boons against fear and intimidation effects.',
-					tag: 'Talent'
-				}
+					tag: 'Talent',
+				},
 			],
 			abilityCategoryVisibility: {
 				'Combat Art': true,
-				'Talent': true,
-				'Folk': true,
-				'Other': true
-			}
+				Talent: true,
+				Folk: true,
+				Other: true,
+			},
 		},
 		items: {
 			coins: 180,
@@ -486,7 +506,7 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 				carryModifier: 0,
 				currentLoad: 14,
 				mountMaxLoad: 0,
-				storageMaxLoad: 0
+				storageMaxLoad: 0,
 			},
 			weapons: [
 				{
@@ -500,23 +520,25 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 						otherStrong: 0,
 						otherCritical: 0,
 						type: 'physical',
-						staticDamage: false
+						staticDamage: false,
 					},
 					properties: 'crush, two-handed',
-					description: 'A perfectly balanced warhammer of her own creation, inscribed with protective runes.',
+					description:
+						'A perfectly balanced warhammer of her own creation, inscribed with protective runes.',
 					cost: 120,
 					load: 3,
 					location: 'worn',
 					uses: 0,
-					durability: 'd10'
-				}
+					durability: 'd10',
+				},
 			],
 			items: [
 				{
 					id: generateId(),
 					name: 'Scale Mail',
 					properties: 'heavy armor, +4 AV',
-					description: 'Well-maintained scale armor that provides excellent protection.',
+					description:
+						'Well-maintained scale armor that provides excellent protection.',
 					slot: 'body',
 					cost: 80,
 					load: 4,
@@ -524,7 +546,7 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 					amount: 1,
 					location: 'worn',
 					uses: 0,
-					durability: 'd10'
+					durability: 'd10',
 				},
 				{
 					id: generateId(),
@@ -538,35 +560,35 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 					amount: 1,
 					location: 'worn',
 					uses: 0,
-					durability: 'd8'
-				}
+					durability: 'd8',
+				},
 			],
 			itemLocationVisibility: {
-				'worn': true,
-				'carried': true,
-				'mount': true,
-				'storage': true
-			}
+				worn: true,
+				carried: true,
+				mount: true,
+				storage: true,
+			},
 		},
 		spells: {
 			magicSkill: '',
 			specialization: '',
 			focus: {
 				total: 0,
-				current: 0
+				current: 0,
 			},
 			spellCatalystDamage: 0,
-			spells: []
+			spells: [],
 		},
 		companions: [],
-		partyId: undefined
+		partyId: undefined,
 	}
 
 	return {
 		...secondMockCharacter,
 		docRef: doc(db, 'mock-collection', 'mock-character-2'),
 		docId: 'mock-character-2',
-		collectionId: 'mock-collection'
+		collectionId: 'mock-collection',
 	}
 }
 
@@ -574,8 +596,5 @@ export const createSecondMockCharacter = (): CharacterDocument => {
  * List of all available mock characters for development testing
  */
 export const getMockCharacters = (): CharacterDocument[] => {
-	return [
-		createMockCharacter(),
-		createSecondMockCharacter()
-	]
+	return [createMockCharacter(), createSecondMockCharacter()]
 }

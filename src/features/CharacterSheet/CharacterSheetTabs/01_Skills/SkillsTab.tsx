@@ -1,4 +1,4 @@
-import { Add, HelpOutline } from '@mui/icons-material'
+import { Add, HelpOutline, Delete } from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -25,25 +25,26 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { CategorizedAbilities } from './CategorizedAbilities'
-import { 
-	OFFICIAL_SKILLS, 
-	OFFICIAL_PROFESSIONS, 
-	getSkillChipColor, 
-	getProfessionChipColor 
+import {
+	OFFICIAL_SKILLS,
+	OFFICIAL_PROFESSIONS,
+	getSkillChipColor,
+	getProfessionChipColor,
 } from '../../../../constants/skills'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { xp, skills, professions = [] } = useMemo(
-		() => activeCharacter.skills,
-		[activeCharacter.skills],
-	)
+	const {
+		xp,
+		skills,
+		professions = [],
+	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
 
 	// State for controlling dropdown visibility
 	const [showSkillDropdown, setShowSkillDropdown] = useState(false)
 	const [showProfessionDropdown, setShowProfessionDropdown] = useState(false)
-	
+
 	// State for skill deletion confirmation
 	const [skillToDelete, setSkillToDelete] = useState<string | null>(null)
 
@@ -63,27 +64,31 @@ export const SkillsTab: React.FC = () => {
 	}, [activeCharacter])
 
 	// Get currently selected skill names
-	const selectedSkillNames = useMemo(() => 
-		skills.map(skill => skill.name), 
-		[skills]
+	const selectedSkillNames = useMemo(
+		() => skills.map((skill) => skill.name),
+		[skills],
 	)
 
 	// Get available skills (not yet selected)
-	const availableSkills = useMemo(() => 
-		OFFICIAL_SKILLS.filter(skill => !selectedSkillNames.includes(skill)),
-		[selectedSkillNames]
+	const availableSkills = useMemo(
+		() =>
+			OFFICIAL_SKILLS.filter((skill) => !selectedSkillNames.includes(skill)),
+		[selectedSkillNames],
 	)
 
 	// Get available professions (not yet selected)
-	const availableProfessions = useMemo(() => 
-		OFFICIAL_PROFESSIONS.filter(profession => !professions.includes(profession)),
-		[professions]
+	const availableProfessions = useMemo(
+		() =>
+			OFFICIAL_PROFESSIONS.filter(
+				(profession) => !professions.includes(profession),
+			),
+		[professions],
 	)
 
 	// Check if Crafting skill is selected
-	const hasCraftingSkill = useMemo(() => 
-		selectedSkillNames.includes('Crafting'),
-		[selectedSkillNames]
+	const hasCraftingSkill = useMemo(
+		() => selectedSkillNames.includes('Crafting'),
+		[selectedSkillNames],
 	)
 
 	// Skills count validation
@@ -107,7 +112,7 @@ export const SkillsTab: React.FC = () => {
 			dispatch(characterSheetActions.removeSkill(skillToDelete))
 			// If removing Crafting, also remove all professions
 			if (skillToDelete === 'Crafting') {
-				professions.forEach(profession => {
+				professions.forEach((profession) => {
 					dispatch(characterSheetActions.removeProfession(profession))
 				})
 			}
@@ -123,7 +128,7 @@ export const SkillsTab: React.FC = () => {
 		dispatch(characterSheetActions.removeSkill(skillName))
 		// If removing Crafting, also remove all professions
 		if (skillName === 'Crafting') {
-			professions.forEach(profession => {
+			professions.forEach((profession) => {
 				dispatch(characterSheetActions.removeProfession(profession))
 			})
 		}
@@ -141,12 +146,14 @@ export const SkillsTab: React.FC = () => {
 	}
 
 	const updateSkill = (skillName: string, update: { xp?: number }) => {
-		const skillIndex = skills.findIndex(s => s.name === skillName)
+		const skillIndex = skills.findIndex((s) => s.name === skillName)
 		if (skillIndex >= 0) {
-			dispatch(characterSheetActions.updateSkill({ 
-				update, 
-				index: skillIndex 
-			}))
+			dispatch(
+				characterSheetActions.updateSkill({
+					update,
+					index: skillIndex,
+				}),
+			)
 		}
 	}
 
@@ -190,31 +197,30 @@ export const SkillsTab: React.FC = () => {
 				</Box>
 
 				{/* Skills Section */}
-				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
-					<SectionHeader>Skills</SectionHeader>
+				<Box sx={{ display: 'flex', alignItems: 'center', mb: 2, gap: 1 }}>
+					<SectionHeader sx={{ mb: 0 }}>Skills</SectionHeader>
 					{canAddSkills && availableSkills.length > 0 && (
 						<Tooltip title="Add Skill">
 							<IconButton
 								size="small"
 								onClick={() => setShowSkillDropdown(!showSkillDropdown)}
-								sx={{ ml: 1 }}
 							>
 								<Add fontSize="small" />
 							</IconButton>
 						</Tooltip>
 					)}
 					<Tooltip title="0-1 XP (rank 0), 2-5 XP (rank 1), 6-11 XP (rank 2), 12-19 XP (rank 3), 20-29 XP (rank 4), 30 XP (rank 5)">
-						<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
+						<HelpOutline fontSize="small" />
 					</Tooltip>
 				</Box>
 
 				{/* Skills Count Caption */}
-				<Typography 
-					variant="caption" 
-					sx={{ 
-						display: 'block', 
+				<Typography
+					variant="caption"
+					sx={{
+						display: 'block',
 						mb: 2,
-						color: hasMinimumSkills ? 'text.secondary' : 'error.main'
+						color: hasMinimumSkills ? 'text.secondary' : 'error.main',
 					}}
 				>
 					You have selected {skillsCount} of 12 skills (minimum 7 required)
@@ -229,7 +235,7 @@ export const SkillsTab: React.FC = () => {
 							value=""
 							onChange={(e) => addSkill(e.target.value)}
 						>
-							{availableSkills.sort().map(skill => (
+							{availableSkills.sort().map((skill) => (
 								<MenuItem key={skill} value={skill}>
 									{skill}
 								</MenuItem>
@@ -243,94 +249,120 @@ export const SkillsTab: React.FC = () => {
 					{skills
 						.slice()
 						.sort((a, b) => a.name.localeCompare(b.name))
-						.map(skill => {
-						// Calculate skill rank outside of useMemo to avoid React Hook errors
-						const calculateSkillRank = (xp: number): number => {
-							switch (true) {
-								case xp <= 1:
-									return 0
-								case xp <= 5:
-									return 1
-								case xp <= 11:
-									return 2
-								case xp <= 19:
-									return 3
-								case xp <= 29:
-									return 4
-								default:
-									return 5
+						.map((skill) => {
+							// Calculate skill rank outside of useMemo to avoid React Hook errors
+							const calculateSkillRank = (xp: number): number => {
+								switch (true) {
+									case xp <= 1:
+										return 0
+									case xp <= 5:
+										return 1
+									case xp <= 11:
+										return 2
+									case xp <= 19:
+										return 3
+									case xp <= 29:
+										return 4
+									default:
+										return 5
+								}
 							}
-						}
-						
-						const skillRank = calculateSkillRank(skill.xp)
 
-						return (
-							<Box key={skill.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-								<Chip
-									label={skill.name}
-									onDelete={() => handleSkillDeletion(skill.name)}
+							const skillRank = calculateSkillRank(skill.xp)
+
+							return (
+								<Box
+									key={skill.id}
 									sx={{
-										backgroundColor: getSkillChipColor(skill.name),
-										color: 'white',
-										minWidth: '120px',
-										'& .MuiChip-label': {
-											fontWeight: 500,
-										},
-										'& .MuiChip-deleteIcon': {
-											color: 'rgba(255, 255, 255, 0.7)',
-											'&:hover': {
-												color: 'white',
+										display: 'flex',
+										alignItems: 'center',
+										gap: 1,
+										width: '100%',
+									}}
+								>
+									<Chip
+										label={skill.name}
+										sx={{
+											backgroundColor: getSkillChipColor(skill.name),
+											color: 'white',
+											minWidth: '100px',
+											'& .MuiChip-label': {
+												fontWeight: 500,
+												paddingLeft: '8px',
+												paddingRight: '8px',
 											},
-										},
-									}}
-								/>
-								<Typography variant="caption" sx={{ fontSize: '0.7rem', color: 'text.secondary', minWidth: '50px' }}>
-									Rank {skillRank}
-								</Typography>
-								<AttributeField
-									size="small"
-									type="number"
-									value={skill.xp}
-									onChange={(e) => updateSkill(skill.name, { xp: Number(e.target.value) })}
-									label="XP"
-									sx={{ 
-										width: '60px',
-										'& .MuiInputBase-input': {
-											padding: '4px 6px',
-											fontSize: '0.75rem',
-											textAlign: 'center'
-										},
-										'& .MuiInputLabel-root': {
+										}}
+									/>
+									<Typography
+										variant="caption"
+										sx={{
 											fontSize: '0.7rem',
+											color: 'text.secondary',
+											minWidth: '50px',
+										}}
+									>
+										Rank {skillRank}
+									</Typography>
+									<AttributeField
+										size="small"
+										type="number"
+										value={skill.xp}
+										onChange={(e) =>
+											updateSkill(skill.name, { xp: Number(e.target.value) })
 										}
-									}}
-								/>
-							</Box>
-						)
-					})}
+										label="XP"
+										sx={{
+											width: '60px',
+											'& .MuiInputBase-input': {
+												padding: '4px 6px',
+												fontSize: '0.75rem',
+												textAlign: 'center',
+											},
+											'& .MuiInputLabel-root': {
+												fontSize: '0.7rem',
+											},
+										}}
+									/>
+									<Box sx={{ marginLeft: 'auto' }}>
+										<Tooltip title="Delete Skill">
+											<IconButton
+												size="small"
+												onClick={() => handleSkillDeletion(skill.name)}
+												sx={{
+													color: 'text.secondary',
+													'&:hover': {
+														color: 'error.main',
+													},
+												}}
+											>
+												<Delete fontSize="small" />
+											</IconButton>
+										</Tooltip>
+									</Box>
+								</Box>
+							)
+						})}
 				</Box>
 
 				{/* Professions Section */}
 				{hasCraftingSkill && (
 					<Box sx={{ mt: 3 }}>
-						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
-							<SectionHeader>Crafting Professions</SectionHeader>
+						<Box sx={{ display: 'flex', alignItems: 'center', mb: 2, gap: 1 }}>
+							<SectionHeader sx={{ mb: 0 }}>Crafting Professions</SectionHeader>
 							{availableProfessions.length > 0 && (
 								<Tooltip title="Add Profession">
 									<IconButton
 										size="small"
-										onClick={() => setShowProfessionDropdown(!showProfessionDropdown)}
-										sx={{ ml: 1 }}
+										onClick={() =>
+											setShowProfessionDropdown(!showProfessionDropdown)
+										}
 									>
 										<Add fontSize="small" />
 									</IconButton>
 								</Tooltip>
 							)}
 						</Box>
-						<Typography 
-							variant="body2" 
-							sx={{ mb: 2, color: 'text.secondary' }}
-						>
+						<Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
 							Select professions for your Crafting skill.
 						</Typography>
 
@@ -343,7 +375,7 @@ export const SkillsTab: React.FC = () => {
 									value=""
 									onChange={(e) => addProfession(e.target.value)}
 								>
-									{availableProfessions.sort().map(profession => (
+									{availableProfessions.sort().map((profession) => (
 										<MenuItem key={profession} value={profession}>
 											{profession}
 										</MenuItem>
@@ -357,26 +389,28 @@ export const SkillsTab: React.FC = () => {
 							{professions
 								.slice()
 								.sort((a, b) => a.localeCompare(b))
-								.map(profession => (
-								<Chip
-									key={profession}
-									label={profession}
-									onDelete={() => removeProfession(profession)}
-									sx={{
-										backgroundColor: getProfessionChipColor(profession),
-										color: 'white',
-										'& .MuiChip-label': {
-											fontWeight: 500,
-										},
-										'& .MuiChip-deleteIcon': {
-											color: 'rgba(255, 255, 255, 0.7)',
-											'&:hover': {
-												color: 'white',
+								.map((profession) => (
+									<Chip
+										key={profession}
+										label={profession}
+										onDelete={() => removeProfession(profession)}
+										sx={{
+											backgroundColor: getProfessionChipColor(profession),
+											color: 'white',
+											'& .MuiChip-label': {
+												fontWeight: 500,
+												paddingLeft: '8px',
+												paddingRight: '8px',
 											},
-										},
-									}}
-								/>
-							))}
+											'& .MuiChip-deleteIcon': {
+												color: 'rgba(255, 255, 255, 0.7)',
+												'&:hover': {
+													color: 'white',
+												},
+											},
+										}}
+									/>
+								))}
 						</Box>
 					</Box>
 				)}
@@ -396,7 +430,8 @@ export const SkillsTab: React.FC = () => {
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText id="delete-skill-dialog-description">
-						Are you sure you want to remove the <strong>{skillToDelete}</strong> skill? 
+						Are you sure you want to remove the <strong>{skillToDelete}</strong>{' '}
+						skill?
 						{skillToDelete === 'Crafting' && professions.length > 0 && (
 							<span> This will also remove all selected professions.</span>
 						)}
@@ -404,7 +439,11 @@ export const SkillsTab: React.FC = () => {
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={cancelSkillDeletion}>Cancel</Button>
-					<Button onClick={confirmSkillDeletion} color="error" variant="contained">
+					<Button
+						onClick={confirmSkillDeletion}
+						color="error"
+						variant="contained"
+					>
 						Delete
 					</Button>
 				</DialogActions>
