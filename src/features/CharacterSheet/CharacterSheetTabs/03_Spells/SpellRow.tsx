@@ -53,10 +53,11 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	}, [initialSpell])
 
 	const castSpell = () => {
+		const newFocusValue = Math.max(0, activeCharacter.spells.focus.current - spell.cost)
 		dispatch(
 			characterSheetActions.updateCharacter({
 				spells: {
-					focus: { current: activeCharacter.spells.focus.current - spell.cost },
+					focus: { current: newFocusValue },
 				},
 			}),
 		)

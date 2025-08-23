@@ -257,11 +257,13 @@ export const FocusField = () => {
 							type="number"
 							size="small"
 							value={focus.current}
-							onChange={(event) =>
+							onChange={(event) => {
+								const newValue = Number(event.target.value)
+								const clampedValue = Math.max(0, Math.min(maxFocus, newValue))
 								updateCharacter({
-									spells: { focus: { current: Number(event.target.value) } },
+									spells: { focus: { current: clampedValue } },
 								})
-							}
+							}}
 							label="Current"
 							sx={{ 
 								flex: 1,
