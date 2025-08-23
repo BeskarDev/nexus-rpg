@@ -1,8 +1,10 @@
+import { Page } from '@playwright/test'
+
 /**
  * Base Page Object Model for common functionality across all pages
  */
 export class BasePage {
-	constructor(public page: any) {}
+	constructor(public page: Page) {}
 
 	/**
 	 * Navigate to a specific URL

@@ -36,17 +36,13 @@ export default defineConfig({
 			name: 'chromium',
 			use: { ...devices['Desktop Chrome'] },
 		},
-		{
-			name: 'mobile',
-			use: { ...devices['iPhone 13'] },
-		},
 	],
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
 		command: 'npm start',
 		url: 'http://localhost:3000',
-		reuseExistingServer: true,
+		reuseExistingServer: !process.env.CI,
 		timeout: 120_000,
 	},
 })

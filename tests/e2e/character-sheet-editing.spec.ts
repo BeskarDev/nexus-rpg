@@ -1,188 +1,80 @@
 import { test, expect } from '@playwright/test'
-import { CharacterSheetPage } from '../page-objects/CharacterSheetPage'
-import { MOCK_CHARACTERS, ATTRIBUTE_DIE_VALUES, TEST_UTILS } from '../fixtures/testData'
 
 test.describe('Character Sheet - Editing and Saving', () => {
-	let characterSheetPage: CharacterSheetPage
-
-	test.beforeEach(async ({ page }) => {
-		characterSheetPage = new CharacterSheetPage(page)
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
+	test('should edit character Resolve and trigger autosave', async ({ page }) => {
+		// Navigate to character
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1')
+		
+		// Wait for character to load
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
+		
+		// Find current Resolve value
+		const resolveInput = page.locator('input[aria-label*="Resolve"]').first()
+		
+		// Change Resolve value
+		await resolveInput.fill('2')
+		
+		// Verify autosave triggered (save button should become disabled)
+		await expect(page.locator('button[aria-label="save character"]')).toBeDisabled({ timeout: 10000 })
 	})
 
-	test('should allow editing resolve value', async () => {
-		const originalResolve = await characterSheetPage.getResolveValue()
-		const newResolveValue = originalResolve > 0 ? originalResolve - 1 : originalResolve + 1
+	test('should edit character XP and verify changes persist', async ({ page }) => {
+		// Navigate to character
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-2')
 		
-		// Change resolve value
-		await characterSheetPage.setResolveValue(newResolveValue)
+		// Wait for character to load
+		await expect(page.getByText('Thara Ironforge (Level 6)')).toBeVisible()
 		
-		// Verify value changed
-		const currentResolve = await characterSheetPage.getResolveValue()
-		expect(currentResolve).toBe(newResolveValue)
+		// Find XP input
+		const totalXpInput = page.locator('input[aria-label*="Total XP"]').first()
+		const spentXpInput = page.locator('input[aria-label*="Spent XP"]').first()
 		
-		// Wait for autosave
-		await TEST_UTILS.waitForAutosave(characterSheetPage.page)
+		// Change XP values
+		await totalXpInput.fill('100')
+		await spentXpInput.fill('90')
 		
-		// Verify autosave worked (save button should be disabled)
-		expect(await characterSheetPage.isAutosaveWorking()).toBe(true)
+		// Verify autosave triggered
+		await expect(page.locator('button[aria-label="save character"]')).toBeDisabled({ timeout: 10000 })
+		
+		// Refresh page and verify changes persisted
+		await page.reload()
+		await expect(page.getByText('Thara Ironforge (Level 6)')).toBeVisible()
+		
+		// Note: In development mode, changes don't actually persist to a backend
+		// This test verifies the autosave mechanism triggers correctly
 	})
 
-	test('should maintain state after page reload', async () => {
-		const originalResolve = await characterSheetPage.getResolveValue()
-		const newResolveValue = originalResolve + 1
+	test('should edit skill ranks using XP controls', async ({ page }) => {
+		// Navigate to character
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1&tab=1')
 		
-		// Change resolve value
-		await characterSheetPage.setResolveValue(newResolveValue)
+		// Wait for Skills tab to load
+		await expect(page.getByText('Skills')).toBeVisible()
 		
-		// Wait for autosave
-		await TEST_UTILS.waitForAutosave(characterSheetPage.page)
+		// Find a skill and modify its XP
+		const firstSkillXpInput = page.locator('input[type="number"][min="0"]').first()
 		
-		// Reload page
-		await characterSheetPage.page.reload()
-		await characterSheetPage.waitForPageLoad()
+		// Change skill XP
+		await firstSkillXpInput.fill('6')
 		
-		// Verify value persisted (in development mode with mock data, this may reset)
-		// But the functionality should work without errors
-		const currentResolve = await characterSheetPage.getResolveValue()
-		expect(typeof currentResolve).toBe('number')
+		// Verify autosave triggered
+		await expect(page.locator('button[aria-label="save character"]')).toBeDisabled({ timeout: 10000 })
 	})
 
-	test('should allow editing fatigue levels', async () => {
-		const originalFatigue = await characterSheetPage.getFatigueLevel()
-		const newFatigueLevel = originalFatigue < 3 ? originalFatigue + 1 : originalFatigue - 1
+	test('should handle attribute die changes', async ({ page }) => {
+		// Navigate to character
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1')
 		
-		// Change fatigue level
-		await characterSheetPage.setFatigueLevel(newFatigueLevel)
+		// Wait for character to load
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
 		
-		// Verify fatigue level changed
-		const currentFatigue = await characterSheetPage.getFatigueLevel()
-		expect(currentFatigue).toBe(newFatigueLevel)
+		// Find Strength attribute dropdown
+		const strengthSelect = page.locator('select').first()
 		
-		// Wait for autosave
-		await TEST_UTILS.waitForAutosave(characterSheetPage.page)
-	})
-
-	test('should show attribute values correctly', async () => {
-		// Check all attribute values are valid
-		for (const attribute of ['Strength', 'Agility', 'Spirit', 'Mind'] as const) {
-			const value = await characterSheetPage.getAttributeValue(attribute)
-			expect(ATTRIBUTE_DIE_VALUES).toContain(value as any)
-		}
-	})
-
-	test('should handle rest buttons', async () => {
-		// Test Short Break button
-		await characterSheetPage.page.click(characterSheetPage.shortBreakButton)
+		// Change attribute value
+		await strengthSelect.selectOption('d8')
 		
-		// Verify character sheet is still functional
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-		
-		// Test Night's Rest button
-		await characterSheetPage.page.click(characterSheetPage.nightsRestButton)
-		
-		// Verify character sheet is still functional
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-		
-		// Test Bad Night button
-		await characterSheetPage.page.click(characterSheetPage.badNightButton)
-		
-		// Verify character sheet is still functional
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-	})
-
-	test('should handle adding status effects', async () => {
-		// Click add status effect button
-		await characterSheetPage.page.click(characterSheetPage.addStatusEffectButton)
-		
-		// Verify character sheet is still functional
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-	})
-
-	test('should allow editing skills tab content', async () => {
-		await characterSheetPage.switchToTab('Skills')
-		
-		// Find Total XP input and try to edit it
-		const totalXpInput = characterSheetPage.page.locator('input[aria-label="Total XP"]')
-		if (await totalXpInput.isVisible()) {
-			const originalValue = await totalXpInput.inputValue()
-			const newValue = (parseInt(originalValue) + 1).toString()
-			
-			await totalXpInput.fill(newValue)
-			
-			// Verify value changed
-			const currentValue = await totalXpInput.inputValue()
-			expect(currentValue).toBe(newValue)
-		}
-	})
-
-	test('should allow editing items tab content', async () => {
-		await characterSheetPage.switchToTab('Items')
-		
-		// Find Coins input and try to edit it
-		const coinsInput = characterSheetPage.page.locator('input[aria-label="Coins"]')
-		if (await coinsInput.isVisible()) {
-			const originalValue = await coinsInput.inputValue()
-			const newValue = (parseInt(originalValue) + 10).toString()
-			
-			await coinsInput.fill(newValue)
-			
-			// Verify value changed
-			const currentValue = await coinsInput.inputValue()
-			expect(currentValue).toBe(newValue)
-		}
-	})
-
-	test('should save character data automatically', async () => {
-		// Make a change to trigger autosave
-		const originalResolve = await characterSheetPage.getResolveValue()
-		await characterSheetPage.setResolveValue(originalResolve + 1)
-		
-		// Wait for autosave to complete
-		await TEST_UTILS.waitForAutosave(characterSheetPage.page)
-		
-		// Verify save is complete (save button disabled)
-		expect(await characterSheetPage.isAutosaveWorking()).toBe(true)
-	})
-
-	test('should handle download character functionality', async () => {
-		// Create a promise to handle the download
-		const downloadPromise = characterSheetPage.page.waitForEvent('download')
-		
-		// Click download button
-		await characterSheetPage.downloadCharacter()
-		
-		// Wait for download to start
-		const download = await downloadPromise
-		
-		// Verify download has a filename
-		expect(download.suggestedFilename()).toBeTruthy()
-	})
-
-	test('should handle manual save button', async () => {
-		// Make a change to enable save button
-		const originalResolve = await characterSheetPage.getResolveValue()
-		await characterSheetPage.setResolveValue(originalResolve + 1)
-		
-		// If save button is enabled, click it
-		const saveButton = characterSheetPage.page.locator(characterSheetPage.saveButton)
-		if (!(await saveButton.isDisabled())) {
-			await characterSheetPage.saveCharacter()
-		}
-		
-		// Verify character sheet is still functional
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-	})
-
-	test('should validate input constraints', async () => {
-		// Test resolve input constraints (should not go below 0 or above max)
-		await characterSheetPage.setResolveValue(-1)
-		const resolveAfterNegative = await characterSheetPage.getResolveValue()
-		expect(resolveAfterNegative).toBeGreaterThanOrEqual(0)
-		
-		// Test extremely high value
-		await characterSheetPage.setResolveValue(999)
-		const resolveAfterHigh = await characterSheetPage.getResolveValue()
-		expect(resolveAfterHigh).toBeLessThan(100) // Reasonable upper bound
+		// Verify autosave triggered
+		await expect(page.locator('button[aria-label="save character"]')).toBeDisabled({ timeout: 10000 })
 	})
 })

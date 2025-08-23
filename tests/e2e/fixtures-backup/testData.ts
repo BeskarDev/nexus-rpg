@@ -1,3 +1,5 @@
+import { Page } from '@playwright/test'
+
 /**
  * Test data and fixtures for Character Sheet E2E tests
  */
@@ -92,10 +94,10 @@ export const TEST_UTILS = {
 	/**
 	 * Wait for autosave to complete
 	 */
-	waitForAutosave: async (page: any) => {
+	waitForAutosave: async (page: Page) => {
 		// Wait for save button to become disabled (indicating autosave completed)
 		await page.waitForFunction(() => {
-			const saveButton = document.querySelector('button[aria-label="save character"]')
+			const saveButton = document.querySelector('button[aria-label="save character"]') as HTMLButtonElement
 			return saveButton?.disabled === true
 		}, { timeout: 10000 })
 	},
@@ -103,7 +105,7 @@ export const TEST_UTILS = {
 	/**
 	 * Check if element has specific text content
 	 */
-	hasTextContent: async (page: any, selector: string, expectedText: string): Promise<boolean> => {
+	hasTextContent: async (page: Page, selector: string, expectedText: string): Promise<boolean> => {
 		const element = await page.locator(selector)
 		const text = await element.textContent()
 		return text?.includes(expectedText) || false

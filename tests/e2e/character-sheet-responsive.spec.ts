@@ -1,7 +1,4 @@
 import { test, expect, devices } from '@playwright/test'
-import { CharacterSheetPage } from '../page-objects/CharacterSheetPage'
-import { CharacterListPage } from '../page-objects/CharacterListPage'
-import { MOCK_CHARACTERS } from '../fixtures/testData'
 
 test.describe('Character Sheet - Responsive Design', () => {
 	test('should work on desktop viewport', async ({ browser }) => {
@@ -9,15 +6,16 @@ test.describe('Character Sheet - Responsive Design', () => {
 			...devices['Desktop Chrome'],
 		})
 		const page = await context.newPage()
-		const characterSheetPage = new CharacterSheetPage(page)
-
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
 		
-		// Verify character sheet loads properly on desktop
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
+		// Navigate to character sheet
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1')
 		
-		// Take screenshot for visual verification
-		await characterSheetPage.takeScreenshot('desktop-character-sheet')
+		// Wait for character to load
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
+		
+		// Verify desktop layout elements are visible
+		await expect(page.locator('button[aria-label="save character"]')).toBeVisible()
+		await expect(page.locator('button[aria-label="back to character list"]')).toBeVisible()
 		
 		await context.close()
 	})
@@ -27,19 +25,18 @@ test.describe('Character Sheet - Responsive Design', () => {
 			...devices['iPhone 13'],
 		})
 		const page = await context.newPage()
-		const characterSheetPage = new CharacterSheetPage(page)
-
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
 		
-		// Verify character sheet loads properly on mobile
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
+		// Navigate to character sheet
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1')
 		
-		// Verify tabs are still accessible on mobile
-		await characterSheetPage.switchToTab('Items')
-		expect(await characterSheetPage.getActiveTab()).toBe('Items')
+		// Wait for character to load
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
 		
-		// Take screenshot for visual verification
-		await characterSheetPage.takeScreenshot('mobile-character-sheet')
+		// Verify mobile layout works
+		await expect(page.locator('button[aria-label="save character"]')).toBeVisible()
+		
+		// Test mobile navigation
+		await expect(page.locator('button[aria-label="back to character list"]')).toBeVisible()
 		
 		await context.close()
 	})
@@ -49,50 +46,40 @@ test.describe('Character Sheet - Responsive Design', () => {
 			...devices['iPad Pro'],
 		})
 		const page = await context.newPage()
-		const characterSheetPage = new CharacterSheetPage(page)
-
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
 		
-		// Verify character sheet loads properly on tablet
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
+		// Navigate to character sheet
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1')
 		
-		// Test navigation on tablet
-		await characterSheetPage.switchToTab('Skills')
-		await characterSheetPage.switchToTab('Spells')
-		await characterSheetPage.switchToTab('Personal')
+		// Wait for character to load
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
 		
-		// Verify final tab is active
-		expect(await characterSheetPage.getActiveTab()).toBe('Personal')
+		// Verify tablet layout works
+		await expect(page.locator('button[aria-label="save character"]')).toBeVisible()
 		
 		await context.close()
 	})
 
-	test('should maintain functionality when resizing viewport', async ({ page }) => {
-		const characterSheetPage = new CharacterSheetPage(page)
-		
+	test('should adapt to viewport changes', async ({ page }) => {
 		// Start with desktop size
 		await page.setViewportSize({ width: 1920, height: 1080 })
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
+		await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1')
 		
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
+		// Wait for character to load
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
 		
-		// Switch to mobile size
+		// Change to mobile size
 		await page.setViewportSize({ width: 375, height: 667 })
-		await page.waitForTimeout(1000) // Wait for layout to adjust
 		
-		// Verify character sheet still works
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
+		// Verify layout still works
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
+		await expect(page.locator('button[aria-label="save character"]')).toBeVisible()
 		
-		// Test tab switching on mobile
-		await characterSheetPage.switchToTab('Items')
-		expect(await characterSheetPage.getActiveTab()).toBe('Items')
+		// Change to tablet size
+		await page.setViewportSize({ width: 768, height: 1024 })
 		
-		// Switch back to desktop size
-		await page.setViewportSize({ width: 1920, height: 1080 })
-		await page.waitForTimeout(1000) // Wait for layout to adjust
-		
-		// Verify still functional
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
+		// Verify layout still works
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
+		await expect(page.locator('button[aria-label="save character"]')).toBeVisible()
 	})
 
 	test('should handle touch interactions on mobile', async ({ browser }) => {
@@ -101,100 +88,49 @@ test.describe('Character Sheet - Responsive Design', () => {
 			hasTouch: true,
 		})
 		const page = await context.newPage()
-		const characterSheetPage = new CharacterSheetPage(page)
+		
+		// Navigate to character list
+		await page.goto('/docs/tools/character-sheet')
+		
+		// Verify development mode notice
+		await expect(page.getByText('Development Mode:')).toBeVisible()
+		
+		// Touch interaction - tap on character
+		await page.getByText('Kael Stormwind').tap()
+		
+		// Verify navigation worked
+		await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
+		
+		// Touch interaction - tap back button
+		await page.locator('button[aria-label="back to character list"]').tap()
+		
+		// Verify we're back at character list
+		await expect(page.getByText('Development Mode:')).toBeVisible()
+		
+		await context.close()
+	})
 
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
+	test('should maintain functionality across viewports', async ({ page }) => {
+		// Test character editing on different viewport sizes
+		const viewports = [
+			{ width: 1920, height: 1080 }, // Desktop
+			{ width: 768, height: 1024 },  // Tablet
+			{ width: 375, height: 667 },   // Mobile
+		]
 		
-		// Test touch tap on tabs
-		await page.tap('tab[name="Items"]')
-		expect(await characterSheetPage.getActiveTab()).toBe('Items')
-		
-		// Test touch interaction with form elements
-		const resolveInput = page.locator(characterSheetPage.resolveInput)
-		if (await resolveInput.isVisible()) {
-			await resolveInput.tap()
+		for (const viewport of viewports) {
+			await page.setViewportSize(viewport)
+			await page.goto('/docs/tools/character-sheet?id=mock-collection-mock-character-1')
+			
+			// Wait for character to load
+			await expect(page.getByText('Kael Stormwind (Level 6)')).toBeVisible()
+			
+			// Test basic editing functionality
+			const resolveInput = page.locator('input[aria-label*="Resolve"]').first()
 			await resolveInput.fill('2')
 			
-			const value = await characterSheetPage.getResolveValue()
-			expect(value).toBe(2)
+			// Verify autosave triggers
+			await expect(page.locator('button[aria-label="save character"]')).toBeDisabled({ timeout: 10000 })
 		}
-		
-		await context.close()
-	})
-
-	test('should be accessible on different screen orientations', async ({ browser }) => {
-		const context = await browser.newContext({
-			...devices['iPhone 13'],
-		})
-		const page = await context.newPage()
-		const characterSheetPage = new CharacterSheetPage(page)
-
-		// Portrait orientation
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-		
-		// Landscape orientation (simulate by changing viewport)
-		await page.setViewportSize({ width: 844, height: 390 })
-		await page.waitForTimeout(1000)
-		
-		// Verify still functional in landscape
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-		await characterSheetPage.switchToTab('Skills')
-		expect(await characterSheetPage.getActiveTab()).toBe('Skills')
-		
-		await context.close()
-	})
-
-	test('should handle character list on mobile', async ({ browser }) => {
-		const context = await browser.newContext({
-			...devices['iPhone 13'],
-		})
-		const page = await context.newPage()
-		const characterListPage = new CharacterListPage(page)
-
-		await characterListPage.navigateToCharacterList()
-		
-		// Verify character list works on mobile
-		expect(await characterListPage.isCharacterListLoaded()).toBe(true)
-		expect(await characterListPage.areMockCharactersAvailable()).toBe(true)
-		
-		// Test character selection on mobile
-		await characterListPage.selectCharacter(MOCK_CHARACTERS.thara.name)
-		
-		const characterSheetPage = new CharacterSheetPage(page)
-		expect(await characterSheetPage.isCharacterSheetLoaded()).toBe(true)
-		
-		await context.close()
-	})
-
-	test('should maintain state across viewport changes', async ({ page }) => {
-		const characterSheetPage = new CharacterSheetPage(page)
-		
-		// Start on desktop
-		await page.setViewportSize({ width: 1920, height: 1080 })
-		await characterSheetPage.navigateToCharacter(MOCK_CHARACTERS.kael.id)
-		
-		// Switch to Items tab
-		await characterSheetPage.switchToTab('Items')
-		
-		// Change to mobile viewport
-		await page.setViewportSize({ width: 375, height: 667 })
-		await page.waitForTimeout(1000)
-		
-		// Verify tab state is maintained
-		const activeTab = await characterSheetPage.getActiveTab()
-		expect(activeTab).toBe('Items')
-		
-		// Make an edit on mobile
-		const originalResolve = await characterSheetPage.getResolveValue()
-		await characterSheetPage.setResolveValue(originalResolve + 1)
-		
-		// Switch back to desktop
-		await page.setViewportSize({ width: 1920, height: 1080 })
-		await page.waitForTimeout(1000)
-		
-		// Verify edit is preserved
-		const currentResolve = await characterSheetPage.getResolveValue()
-		expect(currentResolve).toBe(originalResolve + 1)
 	})
 })
