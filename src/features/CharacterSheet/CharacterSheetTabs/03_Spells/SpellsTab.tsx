@@ -46,9 +46,9 @@ export const SpellsTab: React.FC = () => {
 	// Auto-detect magic skill from character's skills
 	const detectedMagicSkill = useMemo(() => {
 		const skills = activeCharacter.skills.skills || []
-		const hasArcana = skills.some(skill => skill.name === 'Arcana')
-		const hasMysticism = skills.some(skill => skill.name === 'Mysticism')
-		
+		const hasArcana = skills.some((skill) => skill.name === 'Arcana')
+		const hasMysticism = skills.some((skill) => skill.name === 'Mysticism')
+
 		if (hasArcana) return 'Arcana'
 		if (hasMysticism) return 'Mysticism'
 		return ''

@@ -8,24 +8,32 @@ import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { calculateResistBase, calculateDefenseLevelBonus, migrateCharacterDefenses } from '../../utils/calculateDefenses'
+import {
+	calculateResistBase,
+	calculateDefenseLevelBonus,
+	migrateCharacterDefenses,
+} from '../../utils/calculateDefenses'
 
 export const ResistField = () => {
 	const dispatch = useAppDispatch()
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
-	const activeCharacter = useAppSelector((state) => state.characterSheet.activeCharacter)
+	const activeCharacter = useAppSelector(
+		(state) => state.characterSheet.activeCharacter,
+	)
 	const { resistDetails, resist } = activeCharacter.statistics
 
 	// Calculate auto values
 	const autoBase = calculateResistBase(activeCharacter)
-	const autoLevelBonus = calculateDefenseLevelBonus(activeCharacter.skills.xp.total)
+	const autoLevelBonus = calculateDefenseLevelBonus(
+		activeCharacter.skills.xp.total,
+	)
 
 	// Use detailed structure if available, otherwise create default values
 	const details = resistDetails || {
 		base: autoBase,
 		levelBonus: autoLevelBonus,
-		other: 0
+		other: 0,
 	}
 
 	const totalResist: number = useMemo(
@@ -41,12 +49,12 @@ export const ResistField = () => {
 	React.useEffect(() => {
 		if (resistDetails) {
 			updateCharacter({
-				statistics: { 
-					resistDetails: { 
+				statistics: {
+					resistDetails: {
 						base: autoBase,
-						levelBonus: autoLevelBonus
+						levelBonus: autoLevelBonus,
 					},
-					resist: totalResist
+					resist: totalResist,
 				},
 			})
 		}
@@ -68,8 +76,8 @@ export const ResistField = () => {
 		updateCharacter({
 			statistics: {
 				resistDetails: migratedDefenses.resistDetails,
-				resist: activeCharacter.statistics.resist // Preserve the old manual value
-			}
+				resist: activeCharacter.statistics.resist, // Preserve the old manual value
+			},
 		})
 	}
 
@@ -95,9 +103,9 @@ export const ResistField = () => {
 						},
 					}}
 				/>
-				<IconButton 
-					size="small" 
-					onClick={resistDetails ? handleClick : initializeDetails} 
+				<IconButton
+					size="small"
+					onClick={resistDetails ? handleClick : initializeDetails}
 					sx={{ ml: -1.5 }}
 				>
 					<Settings fontSize="small" />
@@ -135,9 +143,10 @@ export const ResistField = () => {
 						value={details.other}
 						onChange={(event) =>
 							updateCharacter({
-								statistics: { 
+								statistics: {
 									resistDetails: { other: Number(event.target.value) },
-									resist: autoBase + autoLevelBonus + Number(event.target.value)
+									resist:
+										autoBase + autoLevelBonus + Number(event.target.value),
 								},
 							})
 						}

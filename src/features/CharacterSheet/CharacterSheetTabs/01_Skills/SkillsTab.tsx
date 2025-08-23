@@ -1,4 +1,9 @@
-import { Add, HelpOutline, Delete } from '@mui/icons-material'
+import {
+	Add,
+	HelpOutline,
+	Delete,
+	FiberManualRecord,
+} from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -76,19 +81,21 @@ export const SkillsTab: React.FC = () => {
 
 	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {
-		let filteredSkills = OFFICIAL_SKILLS.filter((skill) => !selectedSkillNames.includes(skill))
-		
+		let filteredSkills = OFFICIAL_SKILLS.filter(
+			(skill) => !selectedSkillNames.includes(skill),
+		)
+
 		// If character has Arcana, hide Mysticism from dropdown
 		// If character has Mysticism, hide Arcana from dropdown
 		const hasArcana = selectedSkillNames.includes('Arcana')
 		const hasMysticism = selectedSkillNames.includes('Mysticism')
-		
+
 		if (hasArcana) {
-			filteredSkills = filteredSkills.filter(skill => skill !== 'Mysticism')
+			filteredSkills = filteredSkills.filter((skill) => skill !== 'Mysticism')
 		} else if (hasMysticism) {
-			filteredSkills = filteredSkills.filter(skill => skill !== 'Arcana')
+			filteredSkills = filteredSkills.filter((skill) => skill !== 'Arcana')
 		}
-		
+
 		return filteredSkills
 	}, [selectedSkillNames])
 
@@ -181,7 +188,10 @@ export const SkillsTab: React.FC = () => {
 		}
 	}
 
-	const updateSkill = (skillName: string, update: { xp?: number; rank?: number }) => {
+	const updateSkill = (
+		skillName: string,
+		update: { xp?: number; rank?: number },
+	) => {
 		const skillIndex = skills.findIndex((s) => s.name === skillName)
 		if (skillIndex >= 0) {
 			// Calculate rank from XP if XP is being updated
@@ -205,7 +215,7 @@ export const SkillsTab: React.FC = () => {
 				}
 				skillUpdate.rank = calculateSkillRank(update.xp)
 			}
-			
+
 			dispatch(
 				characterSheetActions.updateSkill({
 					update: skillUpdate,
@@ -341,13 +351,12 @@ export const SkillsTab: React.FC = () => {
 									<Chip
 										label={`${skill.name} (Rank ${skillRank})`}
 										variant="outlined"
-										avatar={
-											<Box
+										icon={
+											<FiberManualRecord
 												sx={{
 													width: 6,
 													height: 6,
-													borderRadius: '50%',
-													backgroundColor: getSkillChipColor(skill.name),
+													color: getSkillChipColor(skill.name),
 												}}
 											/>
 										}
@@ -480,8 +489,8 @@ export const SkillsTab: React.FC = () => {
 						)}
 					</Box>
 					<Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-						Select languages your character knows. Tradespeak is the common language
-						known by all characters.
+						Select languages your character knows. Tradespeak is the common
+						language known by all characters.
 					</Typography>
 
 					{/* Languages Dropdown */}

@@ -146,14 +146,16 @@ export const extractArmorValues = (itemsByLocation: OrganizedItems) => {
 /**
  * Extracts Parry defense bonus from equipped shields
  */
-export const extractShieldParryBonus = (itemsByLocation: OrganizedItems): number => {
+export const extractShieldParryBonus = (
+	itemsByLocation: OrganizedItems,
+): number => {
 	let shieldParryBonus = 0
 
 	// Check equipped weapons for shields
 	const equippedWeapons = itemsByLocation.worn.filter(
 		(item) => 'damage' in item,
 	) as Weapon[]
-	
+
 	equippedWeapons.forEach((weapon) => {
 		if (weapon.properties) {
 			// Look for shield indicators in properties or name

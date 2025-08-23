@@ -8,24 +8,32 @@ import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { calculateDodgeBase, calculateDefenseLevelBonus, migrateCharacterDefenses } from '../../utils/calculateDefenses'
+import {
+	calculateDodgeBase,
+	calculateDefenseLevelBonus,
+	migrateCharacterDefenses,
+} from '../../utils/calculateDefenses'
 
 export const DodgeField = () => {
 	const dispatch = useAppDispatch()
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
-	const activeCharacter = useAppSelector((state) => state.characterSheet.activeCharacter)
+	const activeCharacter = useAppSelector(
+		(state) => state.characterSheet.activeCharacter,
+	)
 	const { dodgeDetails, dodge } = activeCharacter.statistics
 
 	// Calculate auto values
 	const autoBase = calculateDodgeBase(activeCharacter)
-	const autoLevelBonus = calculateDefenseLevelBonus(activeCharacter.skills.xp.total)
+	const autoLevelBonus = calculateDefenseLevelBonus(
+		activeCharacter.skills.xp.total,
+	)
 
 	// Use detailed structure if available, otherwise create default values
 	const details = dodgeDetails || {
 		base: autoBase,
 		levelBonus: autoLevelBonus,
-		other: 0
+		other: 0,
 	}
 
 	const totalDodge: number = useMemo(
@@ -41,12 +49,12 @@ export const DodgeField = () => {
 	React.useEffect(() => {
 		if (dodgeDetails) {
 			updateCharacter({
-				statistics: { 
-					dodgeDetails: { 
+				statistics: {
+					dodgeDetails: {
 						base: autoBase,
-						levelBonus: autoLevelBonus
+						levelBonus: autoLevelBonus,
 					},
-					dodge: totalDodge
+					dodge: totalDodge,
 				},
 			})
 		}
@@ -68,8 +76,8 @@ export const DodgeField = () => {
 		updateCharacter({
 			statistics: {
 				dodgeDetails: migratedDefenses.dodgeDetails,
-				dodge: activeCharacter.statistics.dodge // Preserve the old manual value
-			}
+				dodge: activeCharacter.statistics.dodge, // Preserve the old manual value
+			},
 		})
 	}
 
@@ -95,9 +103,9 @@ export const DodgeField = () => {
 						},
 					}}
 				/>
-				<IconButton 
-					size="small" 
-					onClick={dodgeDetails ? handleClick : initializeDetails} 
+				<IconButton
+					size="small"
+					onClick={dodgeDetails ? handleClick : initializeDetails}
 					sx={{ ml: -1.5 }}
 				>
 					<Settings fontSize="small" />
@@ -135,9 +143,9 @@ export const DodgeField = () => {
 						value={details.other}
 						onChange={(event) =>
 							updateCharacter({
-								statistics: { 
+								statistics: {
 									dodgeDetails: { other: Number(event.target.value) },
-									dodge: autoBase + autoLevelBonus + Number(event.target.value)
+									dodge: autoBase + autoLevelBonus + Number(event.target.value),
 								},
 							})
 						}

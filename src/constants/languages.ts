@@ -1,7 +1,7 @@
 // Official languages from the documentation, categorized by type
 export const COMMON_LANGUAGES = [
 	'Catspeech',
-	'Dwarvish', 
+	'Dwarvish',
 	'Elvish',
 	'Giant',
 	'Gnomish',
@@ -14,7 +14,7 @@ export const COMMON_LANGUAGES = [
 export const ANCIENT_LANGUAGES = [
 	'Celestial',
 	'Dark Tongue',
-	'Draconic', 
+	'Draconic',
 	'Primordial',
 ] as const
 
@@ -31,21 +31,21 @@ export const DEFAULT_LANGUAGE = 'Tradespeak' as const
 export const getLanguageChipColor = (language: string): string => {
 	const colorMap: Record<string, string> = {
 		// Common languages - using varied skill colors
-		'Catspeech': '#3FA769', // Athletics green
-		'Dwarvish': '#B1642F', // Fighting brown
-		'Elvish': '#3E9B4E', // Nature green
-		'Giant': '#A14646', // Fortitude red
-		'Gnomish': '#4B91C0', // Perception blue
-		'Goblin': '#777777', // Stealth gray
-		'Lizardspeech': '#48A06C', // Survival green
-		'Orc': '#9C5635', // Streetwise brown
-		'Tradespeak': '#3C6FA8', // Education blue (primary for default language)
-		
+		Catspeech: '#3FA769', // Athletics green
+		Dwarvish: '#B1642F', // Fighting brown
+		Elvish: '#3E9B4E', // Nature green
+		Giant: '#A14646', // Fortitude red
+		Gnomish: '#4B91C0', // Perception blue
+		Goblin: '#777777', // Stealth gray
+		Lizardspeech: '#48A06C', // Survival green
+		Orc: '#9C5635', // Streetwise brown
+		Tradespeak: '#3C6FA8', // Education blue (primary for default language)
+
 		// Ancient languages - using more mystical/powerful skill colors
-		'Celestial': '#8E3F66', // Arcana purple
+		Celestial: '#8E3F66', // Arcana purple
 		'Dark Tongue': '#914C70', // Mysticism purple
-		'Draconic': '#C2892F', // Lore gold
-		'Primordial': '#B28A3F', // Influence gold
+		Draconic: '#C2892F', // Lore gold
+		Primordial: '#B28A3F', // Influence gold
 	}
 
 	return colorMap[language] || '#9A9A9A' // default crafting gray

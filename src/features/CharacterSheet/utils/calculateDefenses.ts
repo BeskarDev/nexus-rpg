@@ -9,9 +9,9 @@ import { organizeItemsByLocation } from '../CharacterSheetTabs/02_Items/utils/it
  */
 export const getAttributeValue = (attributeDie: AttributeType): number => {
 	const attributeValueMap: Record<AttributeType, number> = {
-		4: 4,   // d4 -> 4
-		6: 6,   // d6 -> 6
-		8: 8,   // d8 -> 8
+		4: 4, // d4 -> 4
+		6: 6, // d6 -> 6
+		8: 8, // d8 -> 8
 		10: 10, // d10 -> 10
 		12: 12, // d12 -> 12
 	}
@@ -21,9 +21,12 @@ export const getAttributeValue = (attributeDie: AttributeType): number => {
 /**
  * Get the rank of a skill from the character's skills array
  */
-export const getSkillRank = (character: Character, skillName: string): number => {
+export const getSkillRank = (
+	character: Character,
+	skillName: string,
+): number => {
 	const skill = character.skills.skills.find(
-		s => s.name.toLowerCase() === skillName.toLowerCase()
+		(s) => s.name.toLowerCase() === skillName.toLowerCase(),
 	)
 	return skill?.rank || 0
 }
@@ -33,14 +36,14 @@ export const getSkillRank = (character: Character, skillName: string): number =>
  */
 export const calculateDefenseLevelBonus = (totalXp: number): number => {
 	const level = calculateCharacterLevel(totalXp)
-	
+
 	// +1 to all defenses for each odd level starting at level 3
 	let bonus = 0
 	if (level >= 3) bonus++
 	if (level >= 5) bonus++
 	if (level >= 7) bonus++
 	if (level >= 9) bonus++
-	
+
 	return bonus
 }
 
@@ -81,37 +84,41 @@ export const migrateCharacterDefenses = (character: Character) => {
 	const autoDodgeBase = calculateDodgeBase(character)
 	const autoResistBase = calculateResistBase(character)
 	const autoLevelBonus = calculateDefenseLevelBonus(character.skills.xp.total)
-	
+
 	// Get shield bonus for parry
-	const itemsByLocation = organizeItemsByLocation(character.items.weapons, character.items.items)
+	const itemsByLocation = organizeItemsByLocation(
+		character.items.weapons,
+		character.items.items,
+	)
 	const autoShieldBonus = extractShieldParryBonus(itemsByLocation)
-	
+
 	// Get old manual values
 	const oldParry = character.statistics.parry
 	const oldDodge = character.statistics.dodge
 	const oldResist = character.statistics.resist
-	
+
 	// Calculate discrepancies (what was manually adjusted beyond auto-calculation)
-	const parryOther = oldParry - (autoParryBase + autoLevelBonus + autoShieldBonus)
+	const parryOther =
+		oldParry - (autoParryBase + autoLevelBonus + autoShieldBonus)
 	const dodgeOther = oldDodge - (autoDodgeBase + autoLevelBonus)
 	const resistOther = oldResist - (autoResistBase + autoLevelBonus)
-	
+
 	return {
 		parryDetails: {
 			base: autoParryBase,
 			levelBonus: autoLevelBonus,
 			shieldBonus: autoShieldBonus,
-			other: parryOther
+			other: parryOther,
 		},
 		dodgeDetails: {
 			base: autoDodgeBase,
 			levelBonus: autoLevelBonus,
-			other: dodgeOther
+			other: dodgeOther,
 		},
 		resistDetails: {
 			base: autoResistBase,
 			levelBonus: autoLevelBonus,
-			other: resistOther
-		}
+			other: resistOther,
+		},
 	}
 }

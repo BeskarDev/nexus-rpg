@@ -101,7 +101,7 @@ export const {
 			if (character.skills && character.skills.skills) {
 				character.skills.skills = character.skills.skills.map((skill) => {
 					const normalizedName = normalizeSkillName(skill.name) || skill.name
-					
+
 					// Calculate correct rank from XP for existing characters
 					const calculateSkillRank = (xp: number): number => {
 						switch (true) {
@@ -119,7 +119,7 @@ export const {
 								return 5
 						}
 					}
-					
+
 					return {
 						...skill,
 						name: normalizedName,
