@@ -106,6 +106,17 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 							},
 							maxWidth: '4rem',
 							flexGrow: 0,
+							animation: 'focusShine 5s ease-in-out infinite',
+							'@keyframes focusShine': {
+								'0%, 90%, 100%': { 
+									boxShadow: 'none',
+									transform: 'scale(1)',
+								},
+								'95%': { 
+									boxShadow: '0 0 8px 2px rgba(33, 150, 243, 0.6)',
+									transform: 'scale(1.05)',
+								},
+							},
 						}}
 					>
 						{spellCost}
