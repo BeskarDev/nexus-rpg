@@ -31,6 +31,11 @@ import {
 	getSkillChipColor,
 	getProfessionChipColor,
 } from '../../../../constants/skills'
+import {
+	ALL_LANGUAGES,
+	DEFAULT_LANGUAGE,
+	getLanguageChipColor,
+} from '../../../../constants/languages'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -39,11 +44,13 @@ export const SkillsTab: React.FC = () => {
 		xp,
 		skills,
 		professions = [],
+		languages = [DEFAULT_LANGUAGE],
 	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
 
 	// State for controlling dropdown visibility
 	const [showSkillDropdown, setShowSkillDropdown] = useState(false)
 	const [showProfessionDropdown, setShowProfessionDropdown] = useState(false)
+	const [showLanguageDropdown, setShowLanguageDropdown] = useState(false)
 
 	// State for skill deletion confirmation
 	const [skillToDelete, setSkillToDelete] = useState<string | null>(null)
@@ -94,6 +101,12 @@ export const SkillsTab: React.FC = () => {
 				(profession) => !professions.includes(profession),
 			),
 		[professions],
+	)
+
+	// Get available languages (not yet selected)
+	const availableLanguages = useMemo(
+		() => ALL_LANGUAGES.filter((language) => !languages.includes(language)),
+		[languages],
 	)
 
 	// Check if Crafting skill is selected
@@ -154,6 +167,20 @@ export const SkillsTab: React.FC = () => {
 
 	const removeProfession = (professionName: string) => {
 		dispatch(characterSheetActions.removeProfession(professionName))
+	}
+
+	const addLanguage = (languageName: string) => {
+		if (availableLanguages.includes(languageName)) {
+			dispatch(characterSheetActions.addLanguage(languageName))
+			setShowLanguageDropdown(false) // Hide dropdown after adding
+		}
+	}
+
+	const removeLanguage = (languageName: string) => {
+		// Prevent removal of Tradespeak (handled by reducer as well)
+		if (languageName !== DEFAULT_LANGUAGE) {
+			dispatch(characterSheetActions.removeLanguage(languageName))
+		}
 	}
 
 	const updateSkill = (skillName: string, update: { xp?: number; rank?: number }) => {
@@ -436,6 +463,82 @@ export const SkillsTab: React.FC = () => {
 						</Box>
 					</Box>
 				)}
+
+				{/* Languages Section */}
+				<Box sx={{ mt: 3 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 2, gap: 1 }}>
+						<SectionHeader sx={{ mb: 0 }}>Languages</SectionHeader>
+						{availableLanguages.length > 0 && (
+							<Tooltip title="Add Language">
+								<IconButton
+									size="small"
+									onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+								>
+									<Add fontSize="small" />
+								</IconButton>
+							</Tooltip>
+						)}
+					</Box>
+					<Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
+						Select languages your character knows. Tradespeak is the common language
+						known by all characters.
+					</Typography>
+
+					{/* Languages Dropdown */}
+					{showLanguageDropdown && availableLanguages.length > 0 && (
+						<FormControl fullWidth sx={{ mb: 2 }}>
+							<InputLabel>Add Language</InputLabel>
+							<Select
+								label="Add Language"
+								value=""
+								onChange={(e) => addLanguage(e.target.value)}
+							>
+								{availableLanguages.sort().map((language) => (
+									<MenuItem key={language} value={language}>
+										{language}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
+					)}
+
+					{/* Selected Languages as Chips */}
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+						{languages
+							.slice()
+							.sort((a, b) => {
+								// Sort Tradespeak first, then alphabetically
+								if (a === DEFAULT_LANGUAGE) return -1
+								if (b === DEFAULT_LANGUAGE) return 1
+								return a.localeCompare(b)
+							})
+							.map((language) => (
+								<Chip
+									key={language}
+									label={language}
+									{...(language !== DEFAULT_LANGUAGE && {
+										onDelete: () => removeLanguage(language),
+									})}
+									sx={{
+										backgroundColor: getLanguageChipColor(language),
+										color: 'white',
+										'& .MuiChip-label': {
+											fontWeight: 500,
+											...(language === DEFAULT_LANGUAGE && {
+												fontWeight: 600, // Make Tradespeak slightly bolder
+											}),
+										},
+										'& .MuiChip-deleteIcon': {
+											color: 'rgba(255, 255, 255, 0.7)',
+											'&:hover': {
+												color: 'white',
+											},
+										},
+									}}
+								/>
+							))}
+					</Box>
+				</Box>
 			</Box>
 
 			<CategorizedAbilities />

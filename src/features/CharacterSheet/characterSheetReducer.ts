@@ -132,6 +132,13 @@ export const {
 			if (!character.skills.professions) {
 				character.skills.professions = []
 			}
+			// Ensure languages array exists with Tradespeak as default
+			if (!character.skills.languages) {
+				character.skills.languages = ['Tradespeak']
+			} else if (!character.skills.languages.includes('Tradespeak')) {
+				// Add Tradespeak if it's missing (safety check)
+				character.skills.languages.unshift('Tradespeak')
+			}
 			// Migrate older characters that don't have weapons/items arrays
 			if (!character.items.weapons) {
 				character.items.weapons = []
@@ -232,6 +239,24 @@ export const {
 				state.activeCharacter.skills.professions.filter(
 					(p) => p !== professionName,
 				)
+		},
+		addLanguage: (state, action: PayloadAction<string>) => {
+			const languageName = action.payload
+			state.unsavedChanges = true
+			if (!state.activeCharacter.skills.languages.includes(languageName)) {
+				state.activeCharacter.skills.languages.push(languageName)
+			}
+		},
+		removeLanguage: (state, action: PayloadAction<string>) => {
+			const languageName = action.payload
+			state.unsavedChanges = true
+			// Prevent removal of Tradespeak (default language)
+			if (languageName !== 'Tradespeak') {
+				state.activeCharacter.skills.languages =
+					state.activeCharacter.skills.languages.filter(
+						(l) => l !== languageName,
+					)
+			}
 		},
 		deleteSkill: (state, action: PayloadAction<Skill>) => {
 			state.unsavedChanges = true

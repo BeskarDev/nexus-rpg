@@ -69,6 +69,7 @@ export const createInitialCharacter = (
 			},
 			skills: [],
 			professions: [],
+			languages: ['Tradespeak'],
 			abilities: [],
 		},
 		items: {

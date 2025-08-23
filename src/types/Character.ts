@@ -153,6 +153,7 @@ export type Skills = {
 	}
 	skills: Skill[]
 	professions: string[]
+	languages: string[]
 	abilities: Ability[]
 	abilityCategoryVisibility?: Record<AbilityTag, boolean>
 }

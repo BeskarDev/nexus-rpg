@@ -150,6 +150,7 @@ export const createMockCharacter = (): CharacterDocument => {
 				},
 			],
 			professions: ['Alchemist', 'Inscriber'],
+			languages: ['Tradespeak', 'Draconic', 'Elvish'],
 			abilities: [
 				{
 					id: generateId(),
@@ -475,6 +476,7 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 				},
 			],
 			professions: ['Smith', 'Jeweler'],
+			languages: ['Tradespeak', 'Giant'],
 			abilities: [
 				{
 					id: generateId(),
