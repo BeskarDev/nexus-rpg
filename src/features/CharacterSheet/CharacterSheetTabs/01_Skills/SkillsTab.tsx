@@ -1,8 +1,4 @@
-import {
-	Add,
-	HelpOutline,
-	Delete,
-} from '@mui/icons-material'
+import { Add, HelpOutline, Delete } from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -347,7 +343,9 @@ export const SkillsTab: React.FC = () => {
 										width: '100%',
 									}}
 								>
-									<Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+									<Box
+										sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}
+									>
 										<Chip
 											label={
 												<Box sx={{ display: 'flex', alignItems: 'center' }}>
