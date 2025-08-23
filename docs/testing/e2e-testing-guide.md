@@ -1,52 +1,54 @@
-# E2E Testing Strategy for Nexus RPG Character Sheet
+# Integration Testing Strategy for Nexus RPG Tools
 
-This document outlines the end-to-end testing strategy for the Nexus RPG Character Sheet and other custom React tools.
+This document outlines the integration testing strategy for the Nexus RPG Character Sheet and other custom React tools using Vitest.
 
 ## Overview
 
-We use [Playwright](https://playwright.dev/) for comprehensive E2E testing to ensure:
+We use [Vitest](https://vitest.dev/) with React Testing Library for comprehensive integration testing to ensure:
 - Critical user flows work correctly
 - Major refactors don't introduce regressions
-- Character Sheet functionality remains stable
-- Cross-browser and responsive compatibility
+- Character Sheet and tool functionality remains stable
+- Component integration and user interactions function properly
+
+## Key Benefits of Vitest Approach
+
+- **Faster test execution** - No browser startup overhead
+- **Better debugging experience** - Direct access to component state and props
+- **User-centric testing** - Focus on actual user interactions with components
+- **Easier maintenance** - Tests are more focused and less brittle than full E2E tests
+- **Better CI performance** - Reduced infrastructure requirements
 
 ## Test Structure
 
 ### Test Organization
 
 ```
-tests/e2e/
-├── page-objects/          # Page Object Models for component interactions
-│   ├── BasePage.ts       # Common functionality for all pages
-│   ├── CharacterListPage.ts
-│   └── CharacterSheetPage.ts
-├── fixtures/             # Test data and utilities
-│   └── testData.ts      # Mock characters, test constants
-├── utils/               # Test utilities and helpers
-└── *.spec.ts           # Test files
+tests/integration/
+├── character-sheet-basic.test.tsx      # Basic component rendering and functionality
+├── character-sheet-editing.test.tsx    # Form interactions and user input
+├── rpg-tools.test.tsx                  # Other RPG tools (spells, combat arts)
+└── ...                                 # Additional integration tests
 ```
 
 ### Test Categories
 
-1. **Basic Functionality** (`character-sheet-basic.spec.ts`)
-   - Page loading and navigation
-   - Character list functionality
+1. **Basic Functionality** (`character-sheet-basic.test.tsx`)
+   - Component rendering without errors
    - Development mode verification
+   - Navigation and URL parameter handling
+   - Responsive design behavior
 
-2. **Tab Navigation** (`character-sheet-tabs.spec.ts`)
-   - Tab switching and URL state
-   - Content verification per tab
-   - State persistence
+2. **Editing and Form Interactions** (`character-sheet-editing.test.tsx`)
+   - Form element detection and interaction
+   - User input handling and validation
+   - Tab navigation and component switching
+   - Save functionality and autosave behavior
 
-3. **Editing and Saving** (`character-sheet-editing.spec.ts`)
-   - Form interactions and autosave
-   - Data persistence across reloads
-   - File download functionality
-
-4. **Responsive Design** (`character-sheet-responsive.spec.ts`)
-   - Desktop, mobile, and tablet viewports
-   - Touch interactions
-   - Layout adaptability
+3. **RPG Tools Integration** (`rpg-tools.test.tsx`)
+   - Combat Arts tool functionality
+   - Arcane Spells filtering and search
+   - Mystic Spells tradition organization
+   - Cross-tool integration testing
 
 5. **Error Handling** (`character-sheet-error-handling.spec.ts`)
    - Network errors and edge cases
