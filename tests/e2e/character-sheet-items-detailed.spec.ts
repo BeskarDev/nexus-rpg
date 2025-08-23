@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
-import { ItemsPage } from '../page-objects/ItemsPage'
-import { TEST_CHARACTER_IDS, CHARACTER_SHEET_TABS, TEST_VALUES, WAIT_TIMES } from '../fixtures/testData'
+import { ItemsPage } from './page-objects/ItemsPage'
+import { TEST_CHARACTER_IDS, CHARACTER_SHEET_TABS, TEST_VALUES, WAIT_TIMES } from './fixtures/testData'
 
 test.describe('Character Sheet - Items Tab Components', () => {
 	let itemsPage: ItemsPage

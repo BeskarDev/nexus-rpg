@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test'
-import { BasePage } from '../page-objects/BasePage'
+import { BasePage } from './page-objects/BasePage'
 import { 
 	TEST_CHARACTER_IDS, 
 	CHARACTER_SHEET_TABS, 
@@ -7,7 +7,7 @@ import {
 	TEST_VIEWPORT_SIZES,
 	ERROR_SCENARIOS,
 	WAIT_TIMES 
-} from '../fixtures/testData'
+} from './fixtures/testData'
 
 test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 	let basePage: BasePage
@@ -36,13 +36,16 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 
 		// Test spell management functionality
 		if (spellButtons.length > 0) {
-			const addSpellButtons = spellButtons.filter(async (button) => {
+			const addSpellButtons = []
+			for (const button of spellButtons) {
 				const text = await button.textContent()
-				return text?.toLowerCase().includes('add')
-			})
+				if (text?.toLowerCase().includes('add')) {
+					addSpellButtons.push(button)
+				}
+			}
 
-			if ((await addSpellButtons.count()) > 0) {
-				const addButton = addSpellButtons.first()
+			if (addSpellButtons.length > 0) {
+				const addButton = addSpellButtons[0]
 				const isVisible = await addButton.isVisible().catch(() => false)
 				if (isVisible) {
 					await expect(addButton).toBeEnabled()

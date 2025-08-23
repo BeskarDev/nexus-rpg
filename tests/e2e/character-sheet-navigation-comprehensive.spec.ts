@@ -1,16 +1,16 @@
 import { test, expect } from '@playwright/test'
-import { BasePage } from '../page-objects/BasePage'
-import { StatisticsPage } from '../page-objects/StatisticsPage'
-import { SkillsPage } from '../page-objects/SkillsPage'
-import { ItemsPage } from '../page-objects/ItemsPage'
-import { PersonalPage } from '../page-objects/PersonalPage'
+import { BasePage } from './page-objects/BasePage'
+import { StatisticsPage } from './page-objects/StatisticsPage'
+import { SkillsPage } from './page-objects/SkillsPage'
+import { ItemsPage } from './page-objects/ItemsPage'
+import { PersonalPage } from './page-objects/PersonalPage'
 import { 
 	TEST_CHARACTER_IDS, 
 	CHARACTER_SHEET_TABS, 
 	TAB_NAMES, 
 	TEST_VALUES, 
 	WAIT_TIMES 
-} from '../fixtures/testData'
+} from './fixtures/testData'
 
 test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 	let basePage: BasePage
