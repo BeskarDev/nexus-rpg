@@ -84,7 +84,7 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 
 		// Test Statistics tab inputs
 		const statisticsPage = new StatisticsPage(basePage.page)
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
 		const strengthInput = statisticsPage.strengthInput
@@ -107,7 +107,7 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 
 		// Test Personal tab text inputs
 		const personalPage = new PersonalPage(basePage.page)
-		await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+		await personalPage.clickTabByName('PERSONAL')
 		await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
 		const nameInput = personalPage.characterNameInput
@@ -134,16 +134,17 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 	test('should handle rapid user interactions without errors', async () => {
 		await basePage.goto(TEST_CHARACTER_IDS.MOCK_CHARACTER_1)
 		
-		// Rapid clicking on tabs
+		// Rapid clicking on tabs - use tab names for viewport-aware navigation
+		const commonTabs = ['STATISTICS', 'SKILLS', 'ITEMS', 'PERSONAL'] as const
 		for (let i = 0; i < 10; i++) {
-			const randomTab = Math.floor(Math.random() * 4) // First 4 tabs
-			await basePage.clickTab(randomTab)
+			const randomTab = commonTabs[Math.floor(Math.random() * commonTabs.length)]
+			await basePage.clickTabByName(randomTab)
 			await basePage.page.waitForTimeout(50) // Very short wait
 		}
 
 		// Rapid input changes
 		const statisticsPage = new StatisticsPage(basePage.page)
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
 		const inputs = await basePage.allInputs.all()
@@ -176,8 +177,9 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 		})
 
 		// Try to interact with different tabs during "slow network"
-		for (let i = 0; i < 4; i++) {
-			await basePage.clickTab(i)
+		const mainTabs = ['STATISTICS', 'SKILLS', 'ITEMS', 'PERSONAL'] as const
+		for (const tabName of mainTabs) {
+			await basePage.clickTabByName(tabName)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Should still function during network delays
@@ -202,8 +204,9 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 		})
 
 		// Interact with all tabs to trigger any potential JS errors
-		for (let i = 0; i < 7; i++) {
-			await basePage.clickTab(i)
+		const allTabNames = Object.keys(CHARACTER_SHEET_TABS) as (keyof typeof CHARACTER_SHEET_TABS)[]
+		for (const tabName of allTabNames) {
+			await basePage.clickTabByName(tabName)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Try to interact with various elements in each tab
@@ -291,7 +294,7 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 		
 		// Try to corrupt component state by rapid state changes
 		const statisticsPage = new StatisticsPage(basePage.page)
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
 		// Rapidly change multiple inputs simultaneously
@@ -309,8 +312,9 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 		await Promise.all(promises)
 
 		// Switch tabs rapidly while state is changing
+		const baseTabs = ['STATISTICS', 'SKILLS', 'ITEMS', 'PERSONAL'] as const
 		for (let i = 0; i < 5; i++) {
-			await basePage.clickTab(i % 4)
+			await basePage.clickTabByName(baseTabs[i % baseTabs.length])
 			await basePage.page.waitForTimeout(100)
 		}
 
@@ -328,7 +332,7 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 		
 		// Create memory pressure by opening/closing dialogs rapidly
 		const skillsPage = new SkillsPage(basePage.page)
-		await skillsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+		await skillsPage.clickTabByName('SKILLS')
 		await skillsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
 		const searchButtons = await basePage.page.locator('button:has([data-testid="SearchIcon"])').all()
@@ -351,7 +355,7 @@ test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', (
 
 		// Test Items tab search dialogs
 		const itemsPage = new ItemsPage(basePage.page)
-		await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+		await itemsPage.clickTabByName('ITEMS')
 		await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
 		const itemSearchButtons = await basePage.page.locator('button:has([data-testid="SearchIcon"])').all()

@@ -90,13 +90,13 @@ test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 
 	test('should handle browser back/forward navigation', async () => {
 		// Navigate through several tabs
-		await basePage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+		await basePage.clickTabByName('SKILLS')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
-		await basePage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+		await basePage.clickTabByName('ITEMS')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
-		await basePage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+		await basePage.clickTabByName('PERSONAL')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		// Use browser back button
@@ -131,7 +131,7 @@ test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 
 	test('should maintain focus management during tab switches', async () => {
 		// Click on a tab
-		await basePage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await basePage.clickTabByName('STATISTICS')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		// Focus an input in the tab content
@@ -140,11 +140,11 @@ test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 			await inputs[0].focus()
 			
 			// Switch tabs
-			await basePage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+			await basePage.clickTabByName('SKILLS')
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Switch back
-			await basePage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+			await basePage.clickTabByName('STATISTICS')
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Verify focus management doesn't cause errors
@@ -208,7 +208,7 @@ test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 
 	test('should handle tab state during page refresh', async () => {
 		// Navigate to specific tab
-		await basePage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+		await basePage.clickTabByName('PERSONAL')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		// Refresh page
@@ -221,7 +221,7 @@ test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 		expect(hasPersonalContent).toBe(true)
 		
 		// Verify functionality still works after refresh
-		await basePage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await basePage.clickTabByName('STATISTICS')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		await basePage.verifyNoConsoleErrors()

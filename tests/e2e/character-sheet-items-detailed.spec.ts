@@ -273,10 +273,10 @@ test.describe('Character Sheet - Items Tab Components', () => {
 			await expect(coinsInput).toHaveValue(TEST_VALUES.COINS_VALUE)
 			
 			// Switch tabs and return
-			await itemsPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+			await itemsPage.clickTabByName('PERSONAL')
 			await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
-			await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+			await itemsPage.clickTabByName('ITEMS')
 			await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Verify value is maintained

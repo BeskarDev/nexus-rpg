@@ -20,7 +20,7 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 	})
 
 	test('should load and interact with Spells tab', async () => {
-		await basePage.clickTab(CHARACTER_SHEET_TABS.SPELLS)
+		await basePage.clickTabByName('SPELLS')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		// Verify Spells tab content
@@ -91,7 +91,7 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 	})
 
 	test('should load and interact with Companions tab', async () => {
-		await basePage.clickTab(CHARACTER_SHEET_TABS.COMPANIONS)
+		await basePage.clickTabByName('COMPANIONS')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		// Verify Companions tab content
@@ -135,7 +135,7 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 	})
 
 	test('should load and interact with Party tab', async () => {
-		await basePage.clickTab(CHARACTER_SHEET_TABS.PARTY)
+		await basePage.clickTabByName('PARTY')
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		// Verify Party tab content

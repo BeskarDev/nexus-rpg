@@ -150,10 +150,10 @@ test.describe('Character Sheet - Skills Tab Components', () => {
 				await expect(input).toHaveValue(TEST_VALUES.XP_VALUE)
 				
 				// Switch tabs and return
-				await skillsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+				await skillsPage.clickTabByName('ITEMS')
 				await skillsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 				
-				await skillsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+				await skillsPage.clickTabByName('SKILLS')
 				await skillsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 				
 				// Verify value is maintained

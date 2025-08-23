@@ -50,10 +50,10 @@ test.describe('Character Sheet - Statistics Tab Components', () => {
 		}
 
 		// Switch to another tab and back
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+		await statisticsPage.clickTabByName('SKILLS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
 		// Verify value is maintained

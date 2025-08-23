@@ -202,10 +202,10 @@ test.describe('Character Sheet - Personal Tab Components', () => {
 			await expect(nameInput).toHaveValue(TEST_VALUES.CHARACTER_NAME)
 			
 			// Switch tabs and return
-			await personalPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+			await personalPage.clickTabByName('STATISTICS')
 			await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
-			await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+			await personalPage.clickTabByName('PERSONAL')
 			await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Verify value is maintained
@@ -221,10 +221,10 @@ test.describe('Character Sheet - Personal Tab Components', () => {
 			await expect(notesTextarea).toHaveValue(TEST_VALUES.PERSONAL_NOTES)
 			
 			// Switch tabs and return
-			await personalPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+			await personalPage.clickTabByName('SKILLS')
 			await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
-			await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+			await personalPage.clickTabByName('PERSONAL')
 			await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Verify notes are maintained
@@ -247,10 +247,10 @@ test.describe('Character Sheet - Personal Tab Components', () => {
 			
 			if (editModeActive) {
 				// Switch tabs and return
-				await personalPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+				await personalPage.clickTabByName('ITEMS')
 				await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 				
-				await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+				await personalPage.clickTabByName('PERSONAL')
 				await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 				
 				// Check if edit mode is still active (may or may not persist based on implementation)
