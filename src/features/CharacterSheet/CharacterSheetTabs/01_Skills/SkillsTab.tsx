@@ -347,31 +347,37 @@ export const SkillsTab: React.FC = () => {
 										width: '100%',
 									}}
 								>
-									<Chip
-										label={
-											<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-												<Box
-													sx={{
-														width: 8,
-														height: 8,
-														borderRadius: '50%',
-														backgroundColor: getSkillChipColor(skill.name),
-														flexShrink: 0,
-													}}
-												/>
-												{`${skill.name} (Rank ${skillRank})`}
-											</Box>
-										}
-										variant="outlined"
-										sx={{
-											minWidth: '140px',
-											'& .MuiChip-label': {
-												fontWeight: 500,
-												paddingLeft: '8px',
-												paddingRight: '8px',
-											},
-										}}
-									/>
+									<Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+										<Chip
+											label={
+												<Box sx={{ display: 'flex', alignItems: 'center' }}>
+													<Box
+														sx={{
+															width: 8,
+															height: 8,
+															borderRadius: '50%',
+															backgroundColor: getSkillChipColor(skill.name),
+															flexShrink: 0,
+															marginRight: '8px',
+														}}
+													/>
+													{`${skill.name} (Rank ${skillRank})`}
+												</Box>
+											}
+											variant="outlined"
+											sx={{
+												flex: 1,
+												justifyContent: 'flex-start',
+												'& .MuiChip-label': {
+													fontWeight: 500,
+													paddingLeft: '12px',
+													paddingRight: '12px',
+													width: '100%',
+													justifyContent: 'flex-start',
+												},
+											}}
+										/>
+									</Box>
 									<AttributeField
 										size="small"
 										type="number"
@@ -382,6 +388,7 @@ export const SkillsTab: React.FC = () => {
 										label="XP"
 										sx={{
 											width: '60px',
+											flexShrink: 0,
 											'& .MuiInputBase-input': {
 												padding: '4px 6px',
 												fontSize: '0.75rem',
@@ -392,7 +399,7 @@ export const SkillsTab: React.FC = () => {
 											},
 										}}
 									/>
-									<Box sx={{ marginLeft: 'auto' }}>
+									<Box sx={{ flexShrink: 0 }}>
 										<Tooltip title="Delete Skill">
 											<IconButton
 												size="small"
