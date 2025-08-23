@@ -31,7 +31,7 @@ export const PersonalTab: React.FC = () => {
 		[activeCharacter.personal],
 	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
-	const [showControls, setShowReorder] = useState(false) // State to toggle reorder icons
+	const [showControls, setShowReorder] = useState(false)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -54,7 +54,6 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const onAllyReorder = ({ source, destination }: DropResult) => {
-		// dropped outside the list
 		if (!destination) return
 
 		dispatch(
@@ -78,7 +77,6 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const onContactReorder = ({ source, destination }: DropResult) => {
-		// dropped outside the list
 		if (!destination) return
 
 		dispatch(
@@ -102,7 +100,6 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const onRivalReorder = ({ source, destination }: DropResult) => {
-		// dropped outside the list
 		if (!destination) return
 
 		dispatch(

@@ -26,12 +26,11 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 	const [currentImage, setCurrentImage] = useState(profilePicture)
 	const fileInputRef = useRef<HTMLInputElement>(null)
 
-	// Update currentImage when profilePicture prop changes
 	React.useEffect(() => {
 		setCurrentImage(profilePicture)
 	}, [profilePicture])
 
-	const MAX_FILE_SIZE = 500 * 1024 // 500KB limit for Firestore document size considerations
+	const MAX_FILE_SIZE = 500 * 1024
 	const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp']
 
 	const resizeImage = (
@@ -46,7 +45,6 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 			const img = new Image()
 
 			img.onload = () => {
-				// Calculate new dimensions
 				let { width, height } = img
 
 				if (width > height) {
@@ -64,7 +62,6 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 				canvas.width = width
 				canvas.height = height
 
-				// Draw and compress
 				ctx?.drawImage(img, 0, 0, width, height)
 				const base64 = canvas.toDataURL('image/jpeg', quality)
 				resolve(base64)
@@ -80,15 +77,12 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 		setUploading(true)
 
 		try {
-			// Validate file type
 			if (!ALLOWED_TYPES.includes(file.type)) {
 				setError('Only JPEG, PNG, and WebP images are allowed')
 				return
 			}
 
-			// Initial file size check
 			if (file.size > 5 * 1024 * 1024) {
-				// 5MB
 				setError('File size must be less than 5MB')
 				return
 			}

@@ -68,7 +68,6 @@ export const StatisticsTab: React.FC = () => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	// Calculate max HP using new formula and effective max HP (minus fatigue penalty)
 	const maxHP = React.useMemo(() => {
 		return calculateMaxHp(
 			strength.value,
@@ -80,12 +79,10 @@ export const StatisticsTab: React.FC = () => {
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
 	const effectiveMaxHP = maxHP - fatigueHpPenalty
 
-	// Count total wounds across all attributes
 	const totalWounds = [strength, agility, spirit, mind].filter(
 		(attr) => attr.wounded,
 	).length
 
-	// Ensure current HP doesn't exceed effective max HP
 	React.useEffect(() => {
 		if (health.current > effectiveMaxHP) {
 			updateCharacter({

@@ -45,12 +45,9 @@ export const SkillsTab: React.FC = () => {
 		languages = [DEFAULT_LANGUAGE],
 	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
 
-	// State for controlling dropdown visibility
 	const [showSkillDropdown, setShowSkillDropdown] = useState(false)
 	const [showProfessionDropdown, setShowProfessionDropdown] = useState(false)
 	const [showLanguageDropdown, setShowLanguageDropdown] = useState(false)
-
-	// State for skill deletion confirmation
 	const [skillToDelete, setSkillToDelete] = useState<string | null>(null)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
@@ -68,20 +65,16 @@ export const SkillsTab: React.FC = () => {
 		return newSpendXP
 	}, [activeCharacter])
 
-	// Get currently selected skill names
 	const selectedSkillNames = useMemo(
 		() => skills.map((skill) => skill.name),
 		[skills],
 	)
 
-	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {
 		let filteredSkills = OFFICIAL_SKILLS.filter(
 			(skill) => !selectedSkillNames.includes(skill),
 		)
 
-		// If character has Arcana, hide Mysticism from dropdown
-		// If character has Mysticism, hide Arcana from dropdown
 		const hasArcana = selectedSkillNames.includes('Arcana')
 		const hasMysticism = selectedSkillNames.includes('Mysticism')
 
@@ -103,19 +96,16 @@ export const SkillsTab: React.FC = () => {
 		[professions],
 	)
 
-	// Get available languages (not yet selected)
 	const availableLanguages = useMemo(
 		() => ALL_LANGUAGES.filter((language) => !languages.includes(language)),
 		[languages],
 	)
 
-	// Check if Crafting skill is selected
 	const hasCraftingSkill = useMemo(
 		() => selectedSkillNames.includes('Crafting'),
 		[selectedSkillNames],
 	)
 
-	// Skills count validation
 	const skillsCount = selectedSkillNames.length
 	const canAddSkills = skillsCount < 12
 	const hasMinimumSkills = skillsCount >= 7
@@ -123,7 +113,7 @@ export const SkillsTab: React.FC = () => {
 	const addSkill = (skillName: string) => {
 		if (canAddSkills && availableSkills.includes(skillName)) {
 			dispatch(characterSheetActions.addSkill(skillName))
-			setShowSkillDropdown(false) // Hide dropdown after adding
+			setShowSkillDropdown(false)
 		}
 	}
 
@@ -134,7 +124,6 @@ export const SkillsTab: React.FC = () => {
 	const confirmSkillDeletion = () => {
 		if (skillToDelete) {
 			dispatch(characterSheetActions.removeSkill(skillToDelete))
-			// If removing Crafting, also remove all professions
 			if (skillToDelete === 'Crafting') {
 				professions.forEach((profession) => {
 					dispatch(characterSheetActions.removeProfession(profession))
@@ -150,7 +139,6 @@ export const SkillsTab: React.FC = () => {
 
 	const removeSkill = (skillName: string) => {
 		dispatch(characterSheetActions.removeSkill(skillName))
-		// If removing Crafting, also remove all professions
 		if (skillName === 'Crafting') {
 			professions.forEach((profession) => {
 				dispatch(characterSheetActions.removeProfession(profession))
@@ -161,7 +149,7 @@ export const SkillsTab: React.FC = () => {
 	const addProfession = (professionName: string) => {
 		if (hasCraftingSkill && availableProfessions.includes(professionName)) {
 			dispatch(characterSheetActions.addProfession(professionName))
-			setShowProfessionDropdown(false) // Hide dropdown after adding
+			setShowProfessionDropdown(false)
 		}
 	}
 
@@ -172,12 +160,11 @@ export const SkillsTab: React.FC = () => {
 	const addLanguage = (languageName: string) => {
 		if (availableLanguages.includes(languageName)) {
 			dispatch(characterSheetActions.addLanguage(languageName))
-			setShowLanguageDropdown(false) // Hide dropdown after adding
+			setShowLanguageDropdown(false)
 		}
 	}
 
 	const removeLanguage = (languageName: string) => {
-		// Prevent removal of Tradespeak (handled by reducer as well)
 		if (languageName !== DEFAULT_LANGUAGE) {
 			dispatch(characterSheetActions.removeLanguage(languageName))
 		}
