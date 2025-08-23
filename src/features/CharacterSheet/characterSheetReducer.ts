@@ -75,26 +75,26 @@ export const {
 		},
 		setCharacter: (state, action: PayloadAction<CharacterDocument>) => {
 			const character = action.payload
-			
+
 			if (!character.companions) {
 				character.companions = []
 			}
-			
+
 			character.companions = character.companions.map((companion) => ({
 				currentHP: 0,
 				maxHP: 0,
 				wounded: false,
 				...companion,
 			}))
-			
+
 			if (!character.statistics.statusEffects) {
 				character.statistics.statusEffects = []
 			}
-			
+
 			if (!Array.isArray(character.statistics.statusEffects)) {
 				character.statistics.statusEffects = []
 			}
-			
+
 			if (character.skills && character.skills.skills) {
 				character.skills.skills = character.skills.skills.map((skill) => {
 					const normalizedName = normalizeSkillName(skill.name) || skill.name
@@ -124,11 +124,11 @@ export const {
 					}
 				})
 			}
-			
+
 			if (!character.skills.professions) {
 				character.skills.professions = []
 			}
-			
+
 			if (!character.skills.languages) {
 				character.skills.languages = ['Tradespeak']
 			} else if (!character.skills.languages.includes('Tradespeak')) {
@@ -141,7 +141,7 @@ export const {
 			if (!character.items.items) {
 				character.items.items = []
 			}
-			
+
 			character.items.weapons = character.items.weapons.map((weapon) => ({
 				uses: 0,
 				durability: '',
@@ -152,7 +152,7 @@ export const {
 				durability: '',
 				...item,
 			}))
-			
+
 			if (!character.items.encumbrance) {
 				character.items.encumbrance = {
 					encumberedAt: 0,
