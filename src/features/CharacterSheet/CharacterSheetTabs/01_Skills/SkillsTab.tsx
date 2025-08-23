@@ -29,12 +29,10 @@ import {
 	OFFICIAL_SKILLS,
 	OFFICIAL_PROFESSIONS,
 	getSkillChipColor,
-	getProfessionChipColor,
 } from '../../../../constants/skills'
 import {
 	ALL_LANGUAGES,
 	DEFAULT_LANGUAGE,
-	getLanguageChipColor,
 } from '../../../../constants/languages'
 
 export const SkillsTab: React.FC = () => {
@@ -346,8 +344,8 @@ export const SkillsTab: React.FC = () => {
 										avatar={
 											<Box
 												sx={{
-													width: 8,
-													height: 8,
+													width: 6,
+													height: 6,
 													borderRadius: '50%',
 													backgroundColor: getSkillChipColor(skill.name),
 												}}
@@ -454,16 +452,6 @@ export const SkillsTab: React.FC = () => {
 										label={profession}
 										variant="outlined"
 										onDelete={() => removeProfession(profession)}
-										avatar={
-											<Box
-												sx={{
-													width: 8,
-													height: 8,
-													borderRadius: '50%',
-													backgroundColor: getProfessionChipColor(profession),
-												}}
-											/>
-										}
 										sx={{
 											'& .MuiChip-label': {
 												fontWeight: 500,
@@ -532,16 +520,6 @@ export const SkillsTab: React.FC = () => {
 									{...(language !== DEFAULT_LANGUAGE && {
 										onDelete: () => removeLanguage(language),
 									})}
-									avatar={
-										<Box
-											sx={{
-												width: 8,
-												height: 8,
-												borderRadius: '50%',
-												backgroundColor: getLanguageChipColor(language),
-											}}
-										/>
-									}
 									sx={{
 										'& .MuiChip-label': {
 											fontWeight: 500,
