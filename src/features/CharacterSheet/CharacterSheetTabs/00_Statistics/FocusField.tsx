@@ -141,7 +141,6 @@ export const FocusField = () => {
 					<Typography
 						variant="body2"
 						sx={{
-							fontSize: '1rem',
 							fontWeight: 'bold',
 							lineHeight: 1.2,
 							color: 'inherit',
@@ -247,34 +246,24 @@ export const FocusField = () => {
 						Focus Management
 					</Typography>
 
-					{/* Current Focus */}
-					<AttributeField
-						type="number"
-						size="small"
-						value={focus.current}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { focus: { current: Number(event.target.value) } },
-							})
-						}
-						label="Current Focus"
-						fullWidth
-						sx={{ mb: 2 }}
-					/>
-
 					{/* Auto-calculated Max Focus Display */}
+					<Typography variant="caption" display="block" sx={{ mb: 1, color: 'text.secondary' }}>
+						Based on {activeCharacter.spells.magicSkill || 'No Magic Skill'} formula
+					</Typography>
 					<AttributeField
 						type="number"
 						size="small"
 						value={calculateMaxFocus(activeCharacter)}
 						disabled
-						label="Auto-calculated Max Focus"
-						helperText={`Based on ${activeCharacter.spells.magicSkill || 'No Magic Skill'} formula`}
+						label="Max (Auto)"
 						fullWidth
 						sx={{ mb: 2 }}
 					/>
 
 					{/* Max Focus Modifier */}
+					<Typography variant="caption" display="block" sx={{ mb: 1, color: 'text.secondary' }}>
+						Additional bonus to max Focus
+					</Typography>
 					<AttributeField
 						type="number"
 						size="small"
@@ -286,14 +275,45 @@ export const FocusField = () => {
 								},
 							})
 						}
-						label="Max Focus Modifier"
-						helperText="Additional bonus to max Focus"
+						label="Modifier"
 						fullWidth
 						sx={{ mb: 2 }}
 					/>
 
-					{/* Damage/Heal Focus */}
-					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
+					{/* Current Focus */}
+					<AttributeField
+						type="number"
+						size="small"
+						value={focus.current}
+						onChange={(event) =>
+							updateCharacter({
+								spells: { focus: { current: Number(event.target.value) } },
+							})
+						}
+						label="Current"
+						fullWidth
+						sx={{ 
+							mb: 2,
+							'& .MuiOutlinedInput-root': {
+								'& .MuiOutlinedInput-notchedOutline': {
+									borderWidth: '2px',
+								},
+							},
+						}}
+					/>
+
+					{/* Spend/Restore Focus Controls */}
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
+						<Button
+							variant="outlined"
+							color="error"
+							size="small"
+							onClick={() => applyDamageOrHealing(true)}
+							startIcon={<Remove />}
+							disabled={damageHealAmount <= 0}
+						>
+							Spend
+						</Button>
 						<AttributeField
 							type="number"
 							size="small"
@@ -306,15 +326,7 @@ export const FocusField = () => {
 						/>
 						<Button
 							variant="outlined"
-							size="small"
-							onClick={() => applyDamageOrHealing(true)}
-							startIcon={<Remove />}
-							disabled={damageHealAmount <= 0}
-						>
-							Drain
-						</Button>
-						<Button
-							variant="outlined"
+							color="success"
 							size="small"
 							onClick={() => applyDamageOrHealing(false)}
 							startIcon={<Add />}
