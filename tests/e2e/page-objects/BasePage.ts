@@ -1,4 +1,5 @@
 import { Page, Locator, expect } from '@playwright/test'
+import { CHARACTER_SHEET_TABS } from '../fixtures/testData'
 
 /**
  * Base Page Object Model providing common functionality for all character sheet pages
@@ -8,6 +9,34 @@ export class BasePage {
 
 	constructor(page: Page) {
 		this.page = page
+	}
+
+	/**
+	 * Check if current viewport is mobile
+	 */
+	async isMobileViewport(): Promise<boolean> {
+		const viewport = this.page.viewportSize()
+		if (!viewport) return false
+		return viewport.width <= 768 // Based on typical mobile breakpoint
+	}
+
+	/**
+	 * Get tab index for given tab name, accounting for mobile vs desktop layout
+	 */
+	async getTabIndex(tabName: keyof typeof CHARACTER_SHEET_TABS): Promise<number> {
+		const isMobile = await this.isMobileViewport()
+		
+		if (isMobile) {
+			// In mobile view, all tabs including Statistics are clickable
+			return CHARACTER_SHEET_TABS[tabName]
+		} else {
+			// In desktop view, Statistics tab doesn't exist as a clickable tab, so we need to adjust indices
+			if (tabName === 'STATISTICS') {
+				throw new Error('Statistics tab is not clickable in desktop view - it is always visible')
+			}
+			// Subtract 1 from the mobile index to get desktop index (since Statistics is removed)
+			return CHARACTER_SHEET_TABS[tabName] - 1
+		}
 	}
 
 	/**
@@ -62,7 +91,15 @@ export class BasePage {
 	}
 
 	/**
-	 * Click on a specific tab
+	 * Click on a specific tab by name
+	 */
+	async clickTabByName(tabName: keyof typeof CHARACTER_SHEET_TABS): Promise<void> {
+		const tabIndex = await this.getTabIndex(tabName)
+		await this.clickTab(tabIndex)
+	}
+
+	/**
+	 * Click on a specific tab by index
 	 */
 	async clickTab(index: number): Promise<void> {
 		await this.getTabButton(index).click()

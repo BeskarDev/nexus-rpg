@@ -9,13 +9,16 @@ import {
 	CHARACTER_SHEET_TABS, 
 	TAB_NAMES, 
 	TEST_VALUES, 
-	WAIT_TIMES 
+	WAIT_TIMES,
+	TEST_VIEWPORT_SIZES
 } from './fixtures/testData'
 
 test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 	let basePage: BasePage
 
 	test.beforeEach(async ({ page }) => {
+		// Use mobile viewport to ensure all tabs including Statistics are available
+		await page.setViewportSize(TEST_VIEWPORT_SIZES.MOBILE)
 		basePage = new BasePage(page)
 		await basePage.goto(TEST_CHARACTER_IDS.MOCK_CHARACTER_1)
 	})

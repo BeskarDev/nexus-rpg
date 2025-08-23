@@ -8,13 +8,16 @@ import {
 	TEST_CHARACTER_IDS, 
 	CHARACTER_SHEET_TABS, 
 	ERROR_SCENARIOS,
-	WAIT_TIMES 
+	WAIT_TIMES,
+	TEST_VIEWPORT_SIZES
 } from './fixtures/testData'
 
 test.describe('Character Sheet - Comprehensive Error Handling and Edge Cases', () => {
 	let basePage: BasePage
 
 	test.beforeEach(async ({ page }) => {
+		// Use mobile viewport to ensure all tabs including Statistics are available
+		await page.setViewportSize(TEST_VIEWPORT_SIZES.MOBILE)
 		basePage = new BasePage(page)
 	})
 

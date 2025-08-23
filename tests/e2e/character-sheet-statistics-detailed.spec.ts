@@ -1,11 +1,13 @@
 import { test, expect } from '@playwright/test'
 import { StatisticsPage } from './page-objects/StatisticsPage'
-import { TEST_CHARACTER_IDS, CHARACTER_SHEET_TABS, TEST_VALUES, WAIT_TIMES } from './fixtures/testData'
+import { TEST_CHARACTER_IDS, CHARACTER_SHEET_TABS, TEST_VALUES, WAIT_TIMES, TEST_VIEWPORT_SIZES } from './fixtures/testData'
 
 test.describe('Character Sheet - Statistics Tab Components', () => {
 	let statisticsPage: StatisticsPage
 
 	test.beforeEach(async ({ page }) => {
+		// Use mobile viewport to ensure Statistics tab is clickable
+		await page.setViewportSize(TEST_VIEWPORT_SIZES.MOBILE)
 		statisticsPage = new StatisticsPage(page)
 		await statisticsPage.goto(TEST_CHARACTER_IDS.MOCK_CHARACTER_1)
 	})

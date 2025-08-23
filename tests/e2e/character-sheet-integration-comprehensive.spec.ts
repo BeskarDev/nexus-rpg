@@ -8,7 +8,8 @@ import {
 	TEST_CHARACTER_IDS, 
 	CHARACTER_SHEET_TABS, 
 	TEST_VALUES, 
-	WAIT_TIMES 
+	WAIT_TIMES,
+	TEST_VIEWPORT_SIZES
 } from './fixtures/testData'
 
 test.describe('Character Sheet - Cross-Tab Data Integration', () => {
@@ -18,6 +19,8 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 	let personalPage: PersonalPage
 
 	test.beforeEach(async ({ page }) => {
+		// Use mobile viewport to ensure all tabs including Statistics are available
+		await page.setViewportSize(TEST_VIEWPORT_SIZES.MOBILE)
 		statisticsPage = new StatisticsPage(page)
 		skillsPage = new SkillsPage(page)
 		itemsPage = new ItemsPage(page)

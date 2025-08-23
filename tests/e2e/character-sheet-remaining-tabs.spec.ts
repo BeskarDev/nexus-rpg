@@ -13,6 +13,8 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 	let basePage: BasePage
 
 	test.beforeEach(async ({ page }) => {
+		// Use mobile viewport to ensure all 7 tabs are available
+		await page.setViewportSize(TEST_VIEWPORT_SIZES.MOBILE)
 		basePage = new BasePage(page)
 		await basePage.goto(TEST_CHARACTER_IDS.MOCK_CHARACTER_1)
 	})
