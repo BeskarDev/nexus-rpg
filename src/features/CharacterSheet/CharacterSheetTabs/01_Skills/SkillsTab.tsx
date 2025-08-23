@@ -443,18 +443,20 @@ export const SkillsTab: React.FC = () => {
 									<Chip
 										key={profession}
 										label={profession}
+										variant="outlined"
 										onDelete={() => removeProfession(profession)}
 										sx={{
-											backgroundColor: getProfessionChipColor(profession),
-											color: 'white',
+											borderColor: getProfessionChipColor(profession),
+											color: getProfessionChipColor(profession),
 											'& .MuiChip-label': {
 												fontWeight: 500,
 												// Remove custom padding to use default MUI padding
 											},
 											'& .MuiChip-deleteIcon': {
-												color: 'rgba(255, 255, 255, 0.7)',
+												color: getProfessionChipColor(profession),
 												'&:hover': {
-													color: 'white',
+													color: getProfessionChipColor(profession),
+													opacity: 0.7,
 												},
 											},
 										}}
@@ -516,12 +518,13 @@ export const SkillsTab: React.FC = () => {
 								<Chip
 									key={language}
 									label={language}
+									variant="outlined"
 									{...(language !== DEFAULT_LANGUAGE && {
 										onDelete: () => removeLanguage(language),
 									})}
 									sx={{
-										backgroundColor: getLanguageChipColor(language),
-										color: 'white',
+										borderColor: getLanguageChipColor(language),
+										color: getLanguageChipColor(language),
 										'& .MuiChip-label': {
 											fontWeight: 500,
 											...(language === DEFAULT_LANGUAGE && {
@@ -529,9 +532,10 @@ export const SkillsTab: React.FC = () => {
 											}),
 										},
 										'& .MuiChip-deleteIcon': {
-											color: 'rgba(255, 255, 255, 0.7)',
+											color: getLanguageChipColor(language),
 											'&:hover': {
-												color: 'white',
+												color: getLanguageChipColor(language),
+												opacity: 0.7,
 											},
 										},
 									}}
