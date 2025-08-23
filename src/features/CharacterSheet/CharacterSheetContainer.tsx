@@ -10,11 +10,11 @@ import { CharacterSheetHeader } from './CharacterSheetHeader'
 import { characterSheetActions } from './characterSheetReducer'
 import { useAppDispatch } from './hooks/useAppDispatch'
 import { useAppSelector } from './hooks/useAppSelector'
+import { useRouteParams } from './hooks/useRouteParams'
+import { useAutosave } from './hooks/useAutosave'
 import { mapDocToCharacter } from './utils/mapDocToCharacter'
 import { migrateDoc } from './utils/migrateDoc'
 import { firebaseService } from '../../dev/firebaseService'
-
-const SAVE_CHARACTER_TIMEOUT = 1_000
 
 export type DeepPartial<T> = {
 	[P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P]
@@ -26,26 +26,27 @@ export const CharacterSheetContainer: React.FC = () => {
 		useAppSelector((state) => state.characterSheet)
 	const dispatch = useAppDispatch()
 	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])
+	const { collectionId, activeCharacterId } = useRouteParams()
 
-	const queryString = window.location.search
-	const urlParams = new URLSearchParams(queryString)
-	const idParam = urlParams.get('id')
-
-	let collectionId: string | undefined
-	let activeCharacterId: string | undefined
-
-	if (idParam) {
-		const parts = idParam.split('-')
-		if (parts.length >= 2) {
-			if (parts[0] === 'mock' && parts[1] === 'collection') {
-				collectionId = 'mock-collection'
-				activeCharacterId = parts.slice(2).join('-')
-			} else {
-				collectionId = parts[0]
-				activeCharacterId = parts.slice(1).join('-')
-			}
+	const saveCharacter = async () => {
+		console.log('about to save character...')
+		if (unsavedChanges) {
+			dispatch(characterSheetActions.setLoadingSave(true))
+			await firebaseService.updateDocument(activeCharacter)
+			dispatch(characterSheetActions.setUnsavedChanges(false))
+			dispatch(characterSheetActions.setLoadingSave(false))
 		}
+		console.log('done saving character')
 	}
+
+	useAutosave({
+		activeCharacterId,
+		hasUser: Boolean(currentUser) || process.env.NODE_ENV === 'development',
+		unsavedChanges,
+		saveTimeout,
+		autosave,
+		onSave: saveCharacter,
+	})
 
 	useEffect(() => {
 		if (
@@ -82,34 +83,6 @@ export const CharacterSheetContainer: React.FC = () => {
 		await firebaseService.deleteDocument(char)
 		setCharacters((chars) => chars.filter((c) => c.docId !== char.docId))
 	}
-
-	useEffect(() => {
-		if (
-			activeCharacterId &&
-			(currentUser || process.env.NODE_ENV === 'development') &&
-			unsavedChanges &&
-			!saveTimeout
-		) {
-			dispatch(characterSheetActions.setSaveTimeout(true))
-			setTimeout(() => {
-				dispatch(characterSheetActions.setAutosave(true))
-			}, SAVE_CHARACTER_TIMEOUT)
-		}
-	}, [unsavedChanges])
-
-	useEffect(() => {
-		if (
-			activeCharacterId &&
-			(currentUser || process.env.NODE_ENV === 'development') &&
-			unsavedChanges &&
-			autosave
-		) {
-			console.log('auto save in progress')
-			saveCharacter()
-			dispatch(characterSheetActions.setAutosave(false))
-			dispatch(characterSheetActions.setSaveTimeout(false))
-		}
-	}, [autosave])
 
 	useEffect(() => {
 		const fetchAndMigrateCharacter = async () => {
@@ -154,17 +127,6 @@ export const CharacterSheetContainer: React.FC = () => {
 
 		fetchAndMigrateCharacter()
 	}, [collectionId, activeCharacterId, activeCharacter, currentUser])
-
-	const saveCharacter = async () => {
-		console.log('about to save character...')
-		if (unsavedChanges) {
-			dispatch(characterSheetActions.setLoadingSave(true))
-			await firebaseService.updateDocument(activeCharacter)
-			dispatch(characterSheetActions.setUnsavedChanges(false))
-			dispatch(characterSheetActions.setLoadingSave(false))
-		}
-		console.log('done saving character')
-	}
 
 	return (
 		<>
