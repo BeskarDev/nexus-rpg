@@ -7,7 +7,7 @@ import {
 	ListItemAvatar,
 	ListItemButton,
 	ListItemText,
-	Typography, // Import Typography for headers
+	Typography,
 } from '@mui/material'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React from 'react'
@@ -32,8 +32,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 	return (
 		<List>
 			{isAdmin
-				? // Group characters by playerName if the user is an admin
-					Object.entries(
+				? Object.entries(
 						characters.reduce(
 							(groups, char) => {
 								const playerName = char.personal.playerName || 'Unknown Player'
@@ -46,7 +45,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 							{} as Record<string, CharacterDocument[]>,
 						),
 					)
-						.sort(([a], [b]) => a.localeCompare(b)) // Sort playerName alphabetically
+						.sort(([a], [b]) => a.localeCompare(b))
 						.map(([playerName, playerCharacters]) => (
 							<React.Fragment key={playerName}>
 								<Typography variant="subtitle2" sx={{ mt: 2, mb: 1 }}>

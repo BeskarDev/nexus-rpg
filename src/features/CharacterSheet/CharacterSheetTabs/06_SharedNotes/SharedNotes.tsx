@@ -38,8 +38,8 @@ export const SharedNotes: React.FC = () => {
 	const { isMobile } = useDeviceSize()
 
 	const [partyInfo, setPartyInfo] = useState<PartyInfo | null>(null)
-	const [notes, setNotes] = useState('') // Local notes that user is editing
-	const [originalNotes, setOriginalNotes] = useState('') // Notes as they were when user started editing
+	const [notes, setNotes] = useState('')
+	const [originalNotes, setOriginalNotes] = useState('')
 	const [isLoading, setIsLoading] = useState(true)
 	const [error, setError] = useState<string | null>(null)
 	const [migrationInProgress, setMigrationInProgress] = useState(false)
@@ -49,11 +49,9 @@ export const SharedNotes: React.FC = () => {
 	const [conflictNotes, setConflictNotes] = useState('')
 	const [showRefreshDialog, setShowRefreshDialog] = useState(false)
 
-	// Use refs to track current state in the subscription callback
 	const notesRef = useRef(notes)
 	const originalNotesRef = useRef(originalNotes)
 
-	// Update refs when state changes
 	useEffect(() => {
 		notesRef.current = notes
 	}, [notes])
@@ -62,7 +60,6 @@ export const SharedNotes: React.FC = () => {
 		originalNotesRef.current = originalNotes
 	}, [originalNotes])
 
-	// Derived state
 	const hasUnsavedChanges = notes !== originalNotes
 	const hasServerChanges = partyInfo
 		? partyInfo.party.notes !== originalNotes
@@ -72,12 +69,10 @@ export const SharedNotes: React.FC = () => {
 		(state) => state.characterSheet.activeCharacter,
 	)
 
-	// Construct the proper character ID format that PartyService expects
 	const characterId = activeCharacter
 		? `${activeCharacter.collectionId}-${activeCharacter.docId}`
 		: ''
 
-	// Real-time party subscription
 	useEffect(() => {
 		let unsubscribe: Unsubscribe | null = null
 
@@ -106,7 +101,6 @@ export const SharedNotes: React.FC = () => {
 					}
 				}
 
-				// Get party for current character
 				const initialPartyInfo =
 					await PartyService.getPartyByCharacterId(characterId)
 				if (initialPartyInfo) {
@@ -115,23 +109,16 @@ export const SharedNotes: React.FC = () => {
 					setNotes(initialNotes)
 					setOriginalNotes(initialNotes)
 
-					// Set up real-time subscription
 					unsubscribe = PartyService.subscribeToParty(
 						initialPartyInfo.party.id,
 						(updatedPartyInfo) => {
 							if (updatedPartyInfo) {
 								setPartyInfo(updatedPartyInfo)
-								// Only update local notes if user hasn't made any local changes
-								// This prevents overwriting user's edits while they're typing
 								if (notesRef.current === originalNotesRef.current) {
-									// User hasn't made changes, safe to update both
 									setNotes(updatedPartyInfo.party.notes)
 									setOriginalNotes(updatedPartyInfo.party.notes)
 								}
-								// If user has unsaved changes, don't update their local state
-								// but partyInfo.party.notes will reflect the server state for conflict detection
 							} else {
-								// Party was deleted
 								setPartyInfo(null)
 								setNotes('')
 								setOriginalNotes('')

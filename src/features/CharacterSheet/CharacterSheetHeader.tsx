@@ -86,7 +86,6 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		const file = event.target.files?.[0]
 		if (!file) return
 
-		// Reset previous state
 		setImportError(null)
 		setImportedCharacter(null)
 
@@ -96,7 +95,6 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				const jsonString = e.target?.result as string
 				const parsedCharacter = JSON.parse(jsonString) as Character
 
-				// Basic validation to ensure it's a character object
 				if (!parsedCharacter.personal?.name) {
 					throw new Error('Invalid character file: missing character name')
 				}
@@ -105,7 +103,6 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					throw new Error('Invalid character file: missing player name')
 				}
 
-				// Set the imported character and auto-fill the name
 				setImportedCharacter(parsedCharacter)
 				setName(parsedCharacter.personal.name)
 				setImportError(null)
@@ -140,17 +137,15 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 			let characterData: Character
 
 			if (importedCharacter) {
-				// Use imported character data but update player name to current user
 				characterData = {
 					...importedCharacter,
 					personal: {
 						...importedCharacter.personal,
-						name: name, // Use the name from the input field (allows user to modify)
-						playerName: playerName, // Set to current user's player name
+						name: name,
+						playerName: playerName,
 					},
 				}
 			} else {
-				// Create new character from scratch
 				characterData = createInitialCharacter(
 					name,
 					playerName,

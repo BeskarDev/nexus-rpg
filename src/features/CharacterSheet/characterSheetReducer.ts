@@ -27,15 +27,12 @@ function mergeDeep(target: any, source: any) {
 	if (isObject(target) && isObject(source)) {
 		for (const key in source) {
 			if (isObject(source[key])) {
-				// Recursive call for nested objects
 				target[key] = mergeDeep(target[key] || {}, source[key])
 			} else {
-				// Update value for non-objects
 				target[key] = source[key]
 			}
 		}
 	} else {
-		// Replace entire value if not objects
 		return source
 	}
 	return target
@@ -78,31 +75,30 @@ export const {
 		},
 		setCharacter: (state, action: PayloadAction<CharacterDocument>) => {
 			const character = action.payload
-			// Migrate older characters that don't have companions array
+			
 			if (!character.companions) {
 				character.companions = []
 			}
-			// Migrate companions that don't have HP/wounded fields
+			
 			character.companions = character.companions.map((companion) => ({
 				currentHP: 0,
 				maxHP: 0,
 				wounded: false,
 				...companion,
 			}))
-			// Migrate older characters that don't have statusEffects array
+			
 			if (!character.statistics.statusEffects) {
 				character.statistics.statusEffects = []
 			}
-			// Ensure statusEffects is always an array
+			
 			if (!Array.isArray(character.statistics.statusEffects)) {
 				character.statistics.statusEffects = []
 			}
-			// Migrate skills to use normalized names and ensure ranks are calculated correctly
+			
 			if (character.skills && character.skills.skills) {
 				character.skills.skills = character.skills.skills.map((skill) => {
 					const normalizedName = normalizeSkillName(skill.name) || skill.name
 
-					// Calculate correct rank from XP for existing characters
 					const calculateSkillRank = (xp: number): number => {
 						switch (true) {
 							case xp <= 1:
@@ -124,19 +120,18 @@ export const {
 						...skill,
 						name: normalizedName,
 						id: skill.id || crypto.randomUUID(),
-						rank: calculateSkillRank(skill.xp), // Ensure rank matches XP
+						rank: calculateSkillRank(skill.xp),
 					}
 				})
 			}
-			// Ensure professions array exists
+			
 			if (!character.skills.professions) {
 				character.skills.professions = []
 			}
-			// Ensure languages array exists with Tradespeak as default
+			
 			if (!character.skills.languages) {
 				character.skills.languages = ['Tradespeak']
 			} else if (!character.skills.languages.includes('Tradespeak')) {
-				// Add Tradespeak if it's missing (safety check)
 				character.skills.languages.unshift('Tradespeak')
 			}
 			// Migrate older characters that don't have weapons/items arrays
@@ -146,7 +141,7 @@ export const {
 			if (!character.items.items) {
 				character.items.items = []
 			}
-			// Migrate weapons and items to include uses and durability if missing
+			
 			character.items.weapons = character.items.weapons.map((weapon) => ({
 				uses: 0,
 				durability: '',
@@ -157,7 +152,7 @@ export const {
 				durability: '',
 				...item,
 			}))
-			// Ensure encumbrance has mount and storage max load fields
+			
 			if (!character.items.encumbrance) {
 				character.items.encumbrance = {
 					encumberedAt: 0,

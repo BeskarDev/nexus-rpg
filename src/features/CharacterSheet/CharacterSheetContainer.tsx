@@ -31,28 +31,22 @@ export const CharacterSheetContainer: React.FC = () => {
 	const urlParams = new URLSearchParams(queryString)
 	const idParam = urlParams.get('id')
 
-	// Parse the ID parameter more carefully to handle mock data
 	let collectionId: string | undefined
 	let activeCharacterId: string | undefined
 
 	if (idParam) {
-		// For mock data format: "mock-collection-mock-character-1"
-		// For production format: "collectionId-characterId"
 		const parts = idParam.split('-')
 		if (parts.length >= 2) {
 			if (parts[0] === 'mock' && parts[1] === 'collection') {
-				// Mock data case: "mock-collection-mock-character-1"
 				collectionId = 'mock-collection'
-				activeCharacterId = parts.slice(2).join('-') // "mock-character-1"
+				activeCharacterId = parts.slice(2).join('-')
 			} else {
-				// Production case: "collectionId-characterId"
 				collectionId = parts[0]
 				activeCharacterId = parts.slice(1).join('-')
 			}
 		}
 	}
 
-	// Load characters when user is logged in (or in development mode)
 	useEffect(() => {
 		if (
 			(userLoggedIn && currentUser) ||
@@ -66,15 +60,12 @@ export const CharacterSheetContainer: React.FC = () => {
 		try {
 			const userUid = currentUser?.uid || 'dev-user'
 
-			// Get user's collection
 			const userChars = await firebaseService.getCollection(userUid)
 			setCharacters(userChars)
 
-			// Check for admin permissions and load additional collections
 			const userInfo = await firebaseService.getUserInfo(userUid)
 			setIsAdmin(Boolean(userInfo.allowedCollections.length))
 
-			// Load additional collections if user has admin access
 			if (userInfo.allowedCollections.length > 0) {
 				for (const adminCollectionId of userInfo.allowedCollections) {
 					const adminChars =
@@ -128,13 +119,11 @@ export const CharacterSheetContainer: React.FC = () => {
 				(currentUser || process.env.NODE_ENV === 'development') &&
 				!activeCharacter
 			) {
-				// Try to get character from our service first
 				let character = await firebaseService.getDocument(
 					collectionId,
 					activeCharacterId,
 				)
 
-				// If not found in service and we're in production, fall back to direct Firebase
 				if (!character && process.env.NODE_ENV !== 'development') {
 					const docSnapshot = await getDoc(
 						doc(db, `${collectionId}/${activeCharacterId}`),
