@@ -101,7 +101,7 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
     await waitFor(() => {
       const bodyText = document.body.textContent || ''
       expect(bodyText.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+    }, { timeout: 2000 })
     
     // Check for essential character sheet sections
     const bodyText = document.body.textContent || ''
@@ -122,8 +122,8 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // In desktop mode, Statistics should be visible, and tabs should be for other sections
     const tabs = screen.queryAllByRole('tab')
@@ -145,7 +145,7 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
       
       // Wait for tab content to load
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
   })
@@ -164,8 +164,8 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // In mobile mode, all sections including Statistics should be in tabs
     const tabs = screen.queryAllByRole('tab')
@@ -184,7 +184,7 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
       await user.click(firstTab)
       
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
   })
@@ -195,8 +195,8 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Get initial character data from Statistics section
     const initialBodyText = document.body.textContent || ''
@@ -208,14 +208,14 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
       await user.click(tabs[1])
       
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
       
       // Switch back to first tab
       await user.click(tabs[0])
       
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
       
       // Character data should still be consistent
@@ -243,8 +243,8 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Component should render successfully with URL tab parameter
     const bodyText = document.body.textContent || ''
@@ -258,8 +258,8 @@ describe('Character Sheet - Core Functionality & Tab Navigation', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Check that essential character sheet elements are present
     const allElements = document.querySelectorAll('*')

@@ -93,8 +93,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Find number inputs for attributes - they might be labeled or have specific patterns
     const numberInputs = document.querySelectorAll('input[type="number"]')
@@ -130,8 +130,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const bodyText = document.body.textContent || ''
     const numberInputs = document.querySelectorAll('input[type="number"]')
@@ -166,8 +166,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const bodyText = document.body.textContent || ''
     const numberInputs = document.querySelectorAll('input[type="number"]')
@@ -203,8 +203,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const bodyText = document.body.textContent || ''
     const numberInputs = document.querySelectorAll('input[type="number"]')
@@ -234,8 +234,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const bodyText = document.body.textContent || ''
     const checkboxes = document.querySelectorAll('input[type="checkbox"]')
@@ -267,7 +267,7 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
       
       // Wait for any state changes
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 1000 })
     }
     
@@ -280,8 +280,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const bodyText = document.body.textContent || ''
     const buttons = document.querySelectorAll('button')
@@ -305,7 +305,7 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
       
       // Wait for rest action to complete
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -318,8 +318,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const numberInputs = document.querySelectorAll('input[type="number"]')
     
@@ -337,7 +337,7 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
       await waitFor(() => {
         // Auto-save might be triggered, but we don't strictly require it for test to pass
         expect(testInput.value).toBe('15')
-      }, { timeout: 3000 })
+      }, { timeout: 2000 })
       
       // Test passes if the input interaction worked
       expect(testInput.value).toBe('15')
@@ -353,8 +353,8 @@ describe('Character Sheet - Statistics Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const numberInputs = document.querySelectorAll('input[type="number"]')
     

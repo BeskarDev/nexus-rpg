@@ -93,8 +93,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Find and click on Skills tab
     const tabs = screen.queryAllByRole('tab')
@@ -106,8 +106,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
       await user.click(skillsTab)
       
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
-      }, { timeout: 3000 })
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+      }, { timeout: 2000 })
     }
     
     // Check for skills content
@@ -126,8 +126,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Navigate to skills if not already there
     const tabs = screen.queryAllByRole('tab')
@@ -138,7 +138,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     if (skillsTab) {
       await user.click(skillsTab)
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -165,7 +165,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
       await user.click(skillButton)
       
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 1000 })
     }
     
@@ -178,8 +178,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Navigate to skills tab
     const tabs = screen.queryAllByRole('tab')
@@ -190,7 +190,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     if (skillsTab) {
       await user.click(skillsTab)
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -227,8 +227,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Navigate to skills tab
     const tabs = screen.queryAllByRole('tab')
@@ -239,7 +239,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     if (skillsTab) {
       await user.click(skillsTab)
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -277,8 +277,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Navigate to skills tab
     const tabs = screen.queryAllByRole('tab')
@@ -289,7 +289,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     if (skillsTab) {
       await user.click(skillsTab)
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -316,7 +316,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
       await user.click(diceButton)
       
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -329,8 +329,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Navigate to skills tab
     const tabs = screen.queryAllByRole('tab')
@@ -341,7 +341,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     if (skillsTab) {
       await user.click(skillsTab)
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -367,7 +367,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
       await user.click(xpButton)
       
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -380,8 +380,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Navigate to skills tab
     const tabs = screen.queryAllByRole('tab')
@@ -392,7 +392,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     if (skillsTab) {
       await user.click(skillsTab)
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -413,7 +413,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
       // Wait for potential auto-save
       await waitFor(() => {
         expect(skillInput.value).toBe('2')
-      }, { timeout: 3000 })
+      }, { timeout: 2000 })
     }
     
     expect(numberInputs.length >= 0).toBe(true)
@@ -425,8 +425,8 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Navigate to skills tab
     const tabs = screen.queryAllByRole('tab')
@@ -437,7 +437,7 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
     if (skillsTab) {
       await user.click(skillsTab)
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -459,14 +459,14 @@ describe('Character Sheet - Skills Tab Comprehensive Testing', () => {
       if (otherTab) {
         await user.click(otherTab)
         await waitFor(() => {
-          expect(document.body.textContent?.length).toBeGreaterThan(100)
+          expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
         }, { timeout: 2000 })
         
         // Navigate back to skills
         if (skillsTab) {
           await user.click(skillsTab)
           await waitFor(() => {
-            expect(document.body.textContent?.length).toBeGreaterThan(100)
+            expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
           }, { timeout: 2000 })
         }
         

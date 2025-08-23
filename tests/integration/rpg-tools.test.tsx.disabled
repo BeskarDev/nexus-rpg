@@ -24,7 +24,7 @@ describe('RPG Tools Integration Tests', () => {
       
       await waitFor(() => {
         expect(document.body.innerHTML.length).toBeGreaterThan(50)
-      }, { timeout: 5000 })
+      }, { timeout: 2000 })
       
       const bodyText = document.body.textContent || ''
       const hasCombatContent = 
@@ -48,7 +48,7 @@ describe('RPG Tools Integration Tests', () => {
       
       await waitFor(() => {
         expect(document.body.innerHTML.length).toBeGreaterThan(50)
-      }, { timeout: 3000 })
+      }, { timeout: 2000 })
       
       // Look for interactive elements like buttons, selects, or form controls
       const buttons = document.querySelectorAll('button')
@@ -69,7 +69,7 @@ describe('RPG Tools Integration Tests', () => {
       
       await waitFor(() => {
         expect(document.body.innerHTML.length).toBeGreaterThan(50)
-      }, { timeout: 5000 })
+      }, { timeout: 2000 })
       
       const bodyText = document.body.textContent || ''
       const hasSpellContent = 
@@ -93,7 +93,7 @@ describe('RPG Tools Integration Tests', () => {
       
       await waitFor(() => {
         expect(document.body.innerHTML.length).toBeGreaterThan(50)
-      }, { timeout: 3000 })
+      }, { timeout: 2000 })
       
       // Look for filtering/search elements
       const searchInputs = Array.from(document.querySelectorAll('input')).filter(input =>
@@ -121,7 +121,7 @@ describe('RPG Tools Integration Tests', () => {
       
       await waitFor(() => {
         expect(document.body.innerHTML.length).toBeGreaterThan(50)
-      }, { timeout: 5000 })
+      }, { timeout: 2000 })
       
       const bodyText = document.body.textContent || ''
       const hasMysticContent = 
@@ -145,7 +145,7 @@ describe('RPG Tools Integration Tests', () => {
       
       await waitFor(() => {
         expect(document.body.innerHTML.length).toBeGreaterThan(50)
-      }, { timeout: 3000 })
+      }, { timeout: 2000 })
       
       // Look for tradition-specific elements
       const bodyText = document.body.textContent || ''
@@ -179,7 +179,7 @@ describe('RPG Tools Integration Tests', () => {
       
       await waitFor(() => {
         expect(document.body.innerHTML.length).toBeGreaterThan(100)
-      }, { timeout: 5000 })
+      }, { timeout: 2000 })
       
       // Verify all tools rendered
       const combatSection = document.querySelector('[data-testid="combat-arts"]')

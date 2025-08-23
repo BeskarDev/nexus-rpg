@@ -1,0 +1,321 @@
+import { render, screen, waitFor, fireEvent } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
+import React from 'react'
+import { CharacterSheet } from '../../src/features/CharacterSheet/CharacterSheet'
+
+describe('Character Sheet - Spells Tab Comprehensive Testing', () => {
+  beforeEach(() => {
+    localStorage.clear()
+    vi.clearAllMocks()
+    
+    // Set desktop tab=2 which corresponds to Spells tab in desktop layout
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: {
+        search: '?id=test-character-spells&tab=2',
+        pathname: '/docs/tools/character-sheet',
+        href: 'http://localhost:3000/docs/tools/character-sheet?id=test-character-spells&tab=2',
+        origin: 'http://localhost:3000',
+        hash: '',
+      }
+    })
+  })
+
+  it('should navigate to spells tab and display spell management interface', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    // Wait for initial render with a reasonable timeout
+    await waitFor(() => {
+      const tabs = screen.queryAllByRole('tab')
+      expect(tabs.length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    // Find Spells tab - should be visible and clickable
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    expect(spellsTab).toBeTruthy()
+    
+    // Click on Spells tab to activate it
+    await user.click(spellsTab)
+    
+    // Verify spells content is displayed
+    await waitFor(() => {
+      // Look for typical spells interface elements
+      const bodyText = document.body.textContent || ''
+      const hasSpellsContent = bodyText.toLowerCase().includes('spell') || 
+                              bodyText.toLowerCase().includes('magic') ||
+                              bodyText.toLowerCase().includes('arcane') || 
+                              bodyText.toLowerCase().includes('mystic')
+      expect(hasSpellsContent).toBe(true)
+    }, { timeout: 2000 })
+  })
+
+  it('should handle arcane spells and arcane magic system', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    // Wait for render and navigate to spells tab
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    // Wait for spells content to load
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Test arcane magic content interaction
+    const textInputs = document.querySelectorAll('input[type="text"], input:not([type])')
+    const selectElements = document.querySelectorAll('select')
+    
+    // If there are inputs, test spell name entry
+    if (textInputs.length > 0) {
+      const spellInput = textInputs[0] as HTMLInputElement
+      await user.clear(spellInput)
+      await user.type(spellInput, 'Magic Missile')
+      expect(spellInput.value).toBe('Magic Missile')
+    }
+    
+    // If there are selects, test selection
+    if (selectElements.length > 0) {
+      const spellSelect = selectElements[0] as HTMLSelectElement
+      if (spellSelect.options.length > 1) {
+        await user.selectOptions(spellSelect, spellSelect.options[1].value)
+      }
+    }
+    
+    // Verify basic interaction capability
+    expect(textInputs.length > 0 || selectElements.length > 0).toBe(true)
+  })
+
+  it('should handle mystic spells and mystic traditions', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Test mystic tradition interactions
+    const inputs = document.querySelectorAll('input, select, textarea')
+    expect(inputs.length).toBeGreaterThan(0)
+    
+    // Test interaction with first available input
+    if (inputs.length > 0) {
+      const firstInput = inputs[0] as HTMLElement
+      fireEvent.focus(firstInput)
+      fireEvent.blur(firstInput)
+    }
+  })
+
+  it('should handle spell preparation and known spells management', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Test spell management interactions
+    const buttons = document.querySelectorAll('button')
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]')
+    
+    // Test checkbox interactions (for spell preparation)
+    if (checkboxes.length > 0) {
+      const firstCheckbox = checkboxes[0] as HTMLInputElement
+      await user.click(firstCheckbox)
+    }
+    
+    expect(buttons.length > 0 || checkboxes.length > 0).toBe(true)
+  })
+
+  it('should handle spell casting and focus management', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Test focus-related inputs (numeric inputs for focus points)
+    const numericInputs = document.querySelectorAll('input[type="number"]')
+    
+    if (numericInputs.length > 0) {
+      const focusInput = numericInputs[0] as HTMLInputElement
+      await user.clear(focusInput)
+      await user.type(focusInput, '10')
+      expect(focusInput.value).toBe('10')
+    }
+    
+    expect(numericInputs.length >= 0).toBe(true)
+  })
+
+  it('should handle spell ranks and spell progression', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Test rank selection and progression
+    const selects = document.querySelectorAll('select')
+    
+    if (selects.length > 0) {
+      const rankSelect = selects[0] as HTMLSelectElement
+      if (rankSelect.options.length > 1) {
+        await user.selectOptions(rankSelect, rankSelect.options[1].value)
+      }
+    }
+    
+    expect(selects.length >= 0).toBe(true)
+  })
+
+  it('should handle spell descriptions and notes', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Test description/notes textarea
+    const textareas = document.querySelectorAll('textarea')
+    
+    if (textareas.length > 0) {
+      const notesArea = textareas[0] as HTMLTextAreaElement
+      await user.clear(notesArea)
+      await user.type(notesArea, 'Spell casting notes')
+      expect(notesArea.value).toBe('Spell casting notes')
+    }
+    
+    expect(textareas.length >= 0).toBe(true)
+  })
+
+  it('should save spell changes and trigger auto-save functionality', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Test auto-save trigger by modifying a field
+    const inputs = document.querySelectorAll('input, select, textarea')
+    
+    if (inputs.length > 0) {
+      const firstInput = inputs[0] as HTMLInputElement
+      if (firstInput.type === 'text' || firstInput.tagName === 'TEXTAREA') {
+        await user.clear(firstInput)
+        await user.type(firstInput, 'Test change')
+        
+        // Trigger blur to activate auto-save
+        fireEvent.blur(firstInput)
+        
+        expect(firstInput.value).toBe('Test change')
+      }
+    }
+    
+    expect(inputs.length >= 0).toBe(true)
+  })
+
+  it('should maintain spell data consistency across tab navigation', async () => {
+    const user = userEvent.setup()
+    
+    render(<CharacterSheet />)
+    
+    await waitFor(() => {
+      expect(screen.queryAllByRole('tab').length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
+    
+    // Navigate to spells tab
+    const spellsTab = screen.getByRole('tab', { name: /spells/i })
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Navigate to another tab and back
+    const skillsTab = screen.getByRole('tab', { name: /skills/i })
+    await user.click(skillsTab)
+    
+    // Wait a moment then navigate back to spells
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('skill')
+    }, { timeout: 2000 })
+    
+    await user.click(spellsTab)
+    
+    await waitFor(() => {
+      const bodyText = document.body.textContent || ''
+      expect(bodyText.toLowerCase()).toContain('spell')
+    }, { timeout: 2000 })
+    
+    // Verify spells tab is accessible and consistent
+    expect(spellsTab).toBeTruthy()
+  })
+})

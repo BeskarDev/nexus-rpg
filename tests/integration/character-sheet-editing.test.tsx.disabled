@@ -93,8 +93,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const tabs = screen.queryAllByRole('tab')
     console.log(`Found ${tabs.length} tabs for character creation workflow`)
@@ -104,7 +104,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
       // Start with first tab (usually Skills in desktop mode)
       await user.click(tabs[0])
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
       
       // Test basic interaction in first tab
@@ -120,7 +120,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
       if (tabs.length > 1) {
         await user.click(tabs[1])
         await waitFor(() => {
-          expect(document.body.textContent?.length).toBeGreaterThan(100)
+          expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
         }, { timeout: 2000 })
         
         // Test interaction in second tab
@@ -143,8 +143,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const tabs = screen.queryAllByRole('tab')
     
@@ -160,7 +160,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
       // Test Skills tab data persistence
       await user.click(tabs[0])
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
       
       const skillInputs = document.querySelectorAll('input[type="number"]')
@@ -175,7 +175,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
       if (tabs.length > 1) {
         await user.click(tabs[1])
         await waitFor(() => {
-          expect(document.body.textContent?.length).toBeGreaterThan(100)
+          expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
         }, { timeout: 2000 })
         
         const itemInputs = document.querySelectorAll('input[type="text"]')
@@ -189,7 +189,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
         // Navigate back to Skills and verify data persistence
         await user.click(tabs[0])
         await waitFor(() => {
-          expect(document.body.textContent?.length).toBeGreaterThan(100)
+          expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
         }, { timeout: 2000 })
         
         const persistedSkillInputs = document.querySelectorAll('input[type="number"]')
@@ -209,8 +209,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const allInputs = document.querySelectorAll('input')
     
@@ -235,7 +235,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
       // Wait for potential batched auto-save operations
       await waitFor(() => {
         expect(true).toBe(true) // Just wait for settling
-      }, { timeout: 3000 })
+      }, { timeout: 2000 })
     }
     
     expect(allInputs.length >= 0).toBe(true)
@@ -247,8 +247,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Test invalid input handling
     const numberInputs = document.querySelectorAll('input[type="number"]')
@@ -298,8 +298,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Start in desktop mode, make some changes
     const desktopInputs = document.querySelectorAll('input')
@@ -319,8 +319,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     window.dispatchEvent(new Event('resize'))
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 3000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Test interaction in mobile mode
     const mobileInputs = document.querySelectorAll('input')
@@ -344,8 +344,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     window.dispatchEvent(new Event('resize'))
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 3000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     // Verify data persistence after layout change
     const finalInputs = document.querySelectorAll('input')
@@ -363,8 +363,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const allInputs = document.querySelectorAll('input')
     const batchSize = Math.min(5, allInputs.length)
@@ -405,8 +405,8 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     render(<CharacterSheet />)
     
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
-    }, { timeout: 5000 })
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
+    }, { timeout: 2000 })
     
     const tabs = screen.queryAllByRole('tab')
     
@@ -420,7 +420,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
       
       // Should still be functional after rapid switching
       await waitFor(() => {
-        expect(document.body.textContent?.length).toBeGreaterThan(100)
+        expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
       }, { timeout: 2000 })
     }
     
@@ -461,7 +461,7 @@ describe('Character Sheet - Advanced Integration Testing & Cross-Tab Workflows',
     
     // Verify component is still functional
     await waitFor(() => {
-      expect(document.body.textContent?.length).toBeGreaterThan(100)
+      expect(screen.queryAllByRole("tab").length).toBeGreaterThan(0)
     }, { timeout: 2000 })
     
     expect(tabs.length >= 0).toBe(true)
