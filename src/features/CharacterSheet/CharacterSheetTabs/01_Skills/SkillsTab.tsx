@@ -2,7 +2,6 @@ import {
 	Add,
 	HelpOutline,
 	Delete,
-	FiberManualRecord,
 } from '@mui/icons-material'
 import {
 	Box,
@@ -349,23 +348,27 @@ export const SkillsTab: React.FC = () => {
 									}}
 								>
 									<Chip
-										label={`${skill.name} (Rank ${skillRank})`}
-										variant="outlined"
-										icon={
-											<FiberManualRecord
-												sx={{
-													width: 6,
-													height: 6,
-													color: getSkillChipColor(skill.name),
-												}}
-											/>
+										label={
+											<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+												<Box
+													sx={{
+														width: 8,
+														height: 8,
+														borderRadius: '50%',
+														backgroundColor: getSkillChipColor(skill.name),
+														flexShrink: 0,
+													}}
+												/>
+												{`${skill.name} (Rank ${skillRank})`}
+											</Box>
 										}
+										variant="outlined"
 										sx={{
 											minWidth: '140px',
 											'& .MuiChip-label': {
 												fontWeight: 500,
-												paddingLeft: '4px',
-												paddingRight: '4px',
+												paddingLeft: '8px',
+												paddingRight: '8px',
 											},
 										}}
 									/>
