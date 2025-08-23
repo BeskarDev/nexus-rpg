@@ -8,7 +8,11 @@ import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import { calculateParryBase, calculateDefenseLevelBonus, migrateCharacterDefenses } from '../../utils/calculateDefenses'
+import {
+	calculateParryBase,
+	calculateDefenseLevelBonus,
+	migrateCharacterDefenses,
+} from '../../utils/calculateDefenses'
 import { extractShieldParryBonus } from '../02_Items/utils/itemUtils'
 import { organizeItemsByLocation } from '../02_Items/utils/itemUtils'
 
@@ -16,18 +20,25 @@ export const ParryField = () => {
 	const dispatch = useAppDispatch()
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
-	const activeCharacter = useAppSelector((state) => state.characterSheet.activeCharacter)
+	const activeCharacter = useAppSelector(
+		(state) => state.characterSheet.activeCharacter,
+	)
 	const { parryDetails, parry } = activeCharacter.statistics
 
 	// Calculate auto values
 	const autoBase = calculateParryBase(activeCharacter)
-	const autoLevelBonus = calculateDefenseLevelBonus(activeCharacter.skills.xp.total)
-	
+	const autoLevelBonus = calculateDefenseLevelBonus(
+		activeCharacter.skills.xp.total,
+	)
+
 	// Get shield bonus from equipped items
 	const itemsByLocation = useMemo(() => {
-		return organizeItemsByLocation(activeCharacter.items.weapons, activeCharacter.items.items)
+		return organizeItemsByLocation(
+			activeCharacter.items.weapons,
+			activeCharacter.items.items,
+		)
 	}, [activeCharacter.items.weapons, activeCharacter.items.items])
-	
+
 	const autoShieldBonus = extractShieldParryBonus(itemsByLocation)
 
 	// Use detailed structure if available, otherwise create default values
@@ -35,11 +46,12 @@ export const ParryField = () => {
 		base: autoBase,
 		levelBonus: autoLevelBonus,
 		shieldBonus: autoShieldBonus,
-		other: 0
+		other: 0,
 	}
 
 	const totalParry: number = useMemo(
-		() => details.base + details.levelBonus + details.shieldBonus + details.other,
+		() =>
+			details.base + details.levelBonus + details.shieldBonus + details.other,
 		[details.base, details.levelBonus, details.shieldBonus, details.other],
 	)
 
@@ -51,17 +63,19 @@ export const ParryField = () => {
 	React.useEffect(() => {
 		if (parryDetails) {
 			// Only auto-update shield bonus if it's currently 0 or matches the previous auto value
-			const shouldUpdateShieldBonus = 
+			const shouldUpdateShieldBonus =
 				details.shieldBonus === 0 || details.shieldBonus === autoShieldBonus
-			
+
 			updateCharacter({
-				statistics: { 
-					parryDetails: { 
+				statistics: {
+					parryDetails: {
 						base: autoBase,
 						levelBonus: autoLevelBonus,
-						...(shouldUpdateShieldBonus ? { shieldBonus: autoShieldBonus } : {})
+						...(shouldUpdateShieldBonus
+							? { shieldBonus: autoShieldBonus }
+							: {}),
 					},
-					parry: totalParry
+					parry: totalParry,
 				},
 			})
 		}
@@ -83,8 +97,8 @@ export const ParryField = () => {
 		updateCharacter({
 			statistics: {
 				parryDetails: migratedDefenses.parryDetails,
-				parry: activeCharacter.statistics.parry // Preserve the old manual value
-			}
+				parry: activeCharacter.statistics.parry, // Preserve the old manual value
+			},
 		})
 	}
 
@@ -110,9 +124,9 @@ export const ParryField = () => {
 						},
 					}}
 				/>
-				<IconButton 
-					size="small" 
-					onClick={parryDetails ? handleClick : initializeDetails} 
+				<IconButton
+					size="small"
+					onClick={parryDetails ? handleClick : initializeDetails}
 					sx={{ ml: -1.5 }}
 				>
 					<Settings fontSize="small" />
@@ -151,14 +165,17 @@ export const ParryField = () => {
 						onChange={(event) => {
 							const newShieldBonus = Number(event.target.value)
 							updateCharacter({
-								statistics: { 
+								statistics: {
 									parryDetails: { shieldBonus: newShieldBonus },
-									parry: autoBase + autoLevelBonus + newShieldBonus + details.other
+									parry:
+										autoBase + autoLevelBonus + newShieldBonus + details.other,
 								},
 							})
 						}}
 						label="Shield Bonus"
-						helperText={autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined}
+						helperText={
+							autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined
+						}
 					/>
 					<AttributeField
 						type="number"
@@ -166,9 +183,13 @@ export const ParryField = () => {
 						value={details.other}
 						onChange={(event) =>
 							updateCharacter({
-								statistics: { 
+								statistics: {
 									parryDetails: { other: Number(event.target.value) },
-									parry: autoBase + autoLevelBonus + autoShieldBonus + Number(event.target.value)
+									parry:
+										autoBase +
+										autoLevelBonus +
+										autoShieldBonus +
+										Number(event.target.value),
 								},
 							})
 						}

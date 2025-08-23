@@ -53,7 +53,10 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	}, [initialSpell])
 
 	const castSpell = () => {
-		const newFocusValue = Math.max(0, activeCharacter.spells.focus.current - spell.cost)
+		const newFocusValue = Math.max(
+			0,
+			activeCharacter.spells.focus.current - spell.cost,
+		)
 		dispatch(
 			characterSheetActions.updateCharacter({
 				spells: {
@@ -109,11 +112,11 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 							flexGrow: 0,
 							animation: 'focusShine 5s ease-in-out infinite',
 							'@keyframes focusShine': {
-								'0%, 90%, 100%': { 
+								'0%, 90%, 100%': {
 									boxShadow: 'none',
 									transform: 'scale(1)',
 								},
-								'95%': { 
+								'95%': {
 									boxShadow: '0 0 8px 2px rgba(33, 150, 243, 0.6)',
 									transform: 'scale(1.05)',
 								},

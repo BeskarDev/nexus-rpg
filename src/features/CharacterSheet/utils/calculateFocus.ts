@@ -6,7 +6,7 @@ import { CharacterDocument } from '@site/src/types/Character'
  */
 export const calculateMaxFocus = (
 	character: CharacterDocument,
-	modifier: number = 0
+	modifier: number = 0,
 ): number => {
 	const { magicSkill } = character.spells
 	const { skills } = character.skills
@@ -18,7 +18,7 @@ export const calculateMaxFocus = (
 	}
 
 	// Find the magic skill rank
-	const magicSkillData = skills.find(skill => skill.name === magicSkill)
+	const magicSkillData = skills.find((skill) => skill.name === magicSkill)
 	const skillRank = magicSkillData ? magicSkillData.rank : 0
 
 	let baseAttribute = 0
@@ -31,8 +31,8 @@ export const calculateMaxFocus = (
 	}
 
 	// Calculate base Focus: (Attribute - 2) + (2 × Skill Rank)
-	const baseFocus = Math.max(0, (baseAttribute - 2) + (2 * skillRank))
-	
+	const baseFocus = Math.max(0, baseAttribute - 2 + 2 * skillRank)
+
 	return baseFocus + modifier
 }
 
@@ -42,12 +42,12 @@ export const calculateMaxFocus = (
 export const getMagicSkillRank = (character: CharacterDocument): number => {
 	const { magicSkill } = character.spells
 	const { skills } = character.skills
-	
+
 	if (!magicSkill || magicSkill === '') {
 		return 0
 	}
-	
-	const magicSkillData = skills.find(skill => skill.name === magicSkill)
+
+	const magicSkillData = skills.find((skill) => skill.name === magicSkill)
 	return magicSkillData ? magicSkillData.rank : 0
 }
 
@@ -57,12 +57,12 @@ export const getMagicSkillRank = (character: CharacterDocument): number => {
 export const getMagicAttribute = (character: CharacterDocument): number => {
 	const { magicSkill } = character.spells
 	const { mind, spirit } = character.statistics
-	
+
 	if (magicSkill === 'Arcana') {
 		return mind.value
 	} else if (magicSkill === 'Mysticism') {
 		return spirit.value
 	}
-	
+
 	return 0
 }

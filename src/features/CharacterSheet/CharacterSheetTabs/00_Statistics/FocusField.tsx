@@ -31,10 +31,17 @@ export const FocusField = () => {
 
 	// Calculate max Focus using the new formula
 	const maxFocus = useMemo(() => {
-		return calculateMaxFocus(activeCharacter, focusDetails?.maxFocusModifier || 0)
-	}, [activeCharacter.statistics.mind.value, activeCharacter.statistics.spirit.value, 
-		 activeCharacter.spells.magicSkill, activeCharacter.skills.skills, 
-		 focusDetails?.maxFocusModifier])
+		return calculateMaxFocus(
+			activeCharacter,
+			focusDetails?.maxFocusModifier || 0,
+		)
+	}, [
+		activeCharacter.statistics.mind.value,
+		activeCharacter.statistics.spirit.value,
+		activeCharacter.spells.magicSkill,
+		activeCharacter.skills.skills,
+		focusDetails?.maxFocusModifier,
+	])
 
 	// Calculate Focus bar color and progress with static bar sizing
 	const focusPercentage = maxFocus > 0 ? (focus.current / maxFocus) * 100 : 0
@@ -137,7 +144,13 @@ export const FocusField = () => {
 					fontWeight: 'bold',
 				}}
 			>
-				<Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+				<Box
+					sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'flex-start',
+					}}
+				>
 					<Typography
 						variant="body2"
 						sx={{
@@ -148,8 +161,12 @@ export const FocusField = () => {
 					>
 						<span
 							style={{
-								color: getFocusColor() === 'info' ? '#2196f3' : 
-									  getFocusColor() === 'warning' ? '#ff9800' : '#f44336',
+								color:
+									getFocusColor() === 'info'
+										? '#2196f3'
+										: getFocusColor() === 'warning'
+											? '#ff9800'
+											: '#f44336',
 								transition: 'all 0.3s ease-in-out',
 								...(animationState === 'damage' && {
 									animation: 'flashRed 0.5s ease-in-out',
@@ -219,11 +236,7 @@ export const FocusField = () => {
 				</Box>
 			</Button>
 
-			<IconButton
-				size="small"
-				onClick={handleClick}
-				sx={{ mt: -0.5 }}
-			>
+			<IconButton size="small" onClick={handleClick} sx={{ mt: -0.5 }}>
 				<Settings fontSize="small" />
 			</IconButton>
 
@@ -247,8 +260,19 @@ export const FocusField = () => {
 					</Typography>
 
 					{/* Formula explanation */}
-					<Typography variant="caption" display="block" sx={{ mb: 2, color: 'text.secondary' }}>
-						Max Focus = ({activeCharacter.spells.magicSkill === 'Arcana' ? 'Mind' : activeCharacter.spells.magicSkill === 'Mysticism' ? 'Spirit' : 'Attribute'} - 2) + (2 × {activeCharacter.spells.magicSkill || 'Skill'} rank) + modifier
+					<Typography
+						variant="caption"
+						display="block"
+						sx={{ mb: 2, color: 'text.secondary' }}
+					>
+						Max Focus = (
+						{activeCharacter.spells.magicSkill === 'Arcana'
+							? 'Mind'
+							: activeCharacter.spells.magicSkill === 'Mysticism'
+								? 'Spirit'
+								: 'Attribute'}{' '}
+						- 2) + (2 × {activeCharacter.spells.magicSkill || 'Skill'} rank) +
+						modifier
 					</Typography>
 
 					{/* Current, Max, and Modifier in one line */}
@@ -265,7 +289,7 @@ export const FocusField = () => {
 								})
 							}}
 							label="Current"
-							sx={{ 
+							sx={{
 								flex: 1,
 								'& .MuiOutlinedInput-root': {
 									'& .MuiOutlinedInput-notchedOutline': {
@@ -288,8 +312,10 @@ export const FocusField = () => {
 							value={focusDetails?.maxFocusModifier || 0}
 							onChange={(event) =>
 								updateCharacter({
-									spells: { 
-										focusDetails: { maxFocusModifier: Number(event.target.value) } 
+									spells: {
+										focusDetails: {
+											maxFocusModifier: Number(event.target.value),
+										},
 									},
 								})
 							}

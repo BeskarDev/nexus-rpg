@@ -1,4 +1,8 @@
-import { Add, HelpOutline, Delete } from '@mui/icons-material'
+import {
+	Add,
+	HelpOutline,
+	Delete,
+} from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -29,8 +33,11 @@ import {
 	OFFICIAL_SKILLS,
 	OFFICIAL_PROFESSIONS,
 	getSkillChipColor,
-	getProfessionChipColor,
 } from '../../../../constants/skills'
+import {
+	ALL_LANGUAGES,
+	DEFAULT_LANGUAGE,
+} from '../../../../constants/languages'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -39,11 +46,13 @@ export const SkillsTab: React.FC = () => {
 		xp,
 		skills,
 		professions = [],
+		languages = [DEFAULT_LANGUAGE],
 	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
 
 	// State for controlling dropdown visibility
 	const [showSkillDropdown, setShowSkillDropdown] = useState(false)
 	const [showProfessionDropdown, setShowProfessionDropdown] = useState(false)
+	const [showLanguageDropdown, setShowLanguageDropdown] = useState(false)
 
 	// State for skill deletion confirmation
 	const [skillToDelete, setSkillToDelete] = useState<string | null>(null)
@@ -71,19 +80,21 @@ export const SkillsTab: React.FC = () => {
 
 	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {
-		let filteredSkills = OFFICIAL_SKILLS.filter((skill) => !selectedSkillNames.includes(skill))
-		
+		let filteredSkills = OFFICIAL_SKILLS.filter(
+			(skill) => !selectedSkillNames.includes(skill),
+		)
+
 		// If character has Arcana, hide Mysticism from dropdown
 		// If character has Mysticism, hide Arcana from dropdown
 		const hasArcana = selectedSkillNames.includes('Arcana')
 		const hasMysticism = selectedSkillNames.includes('Mysticism')
-		
+
 		if (hasArcana) {
-			filteredSkills = filteredSkills.filter(skill => skill !== 'Mysticism')
+			filteredSkills = filteredSkills.filter((skill) => skill !== 'Mysticism')
 		} else if (hasMysticism) {
-			filteredSkills = filteredSkills.filter(skill => skill !== 'Arcana')
+			filteredSkills = filteredSkills.filter((skill) => skill !== 'Arcana')
 		}
-		
+
 		return filteredSkills
 	}, [selectedSkillNames])
 
@@ -94,6 +105,12 @@ export const SkillsTab: React.FC = () => {
 				(profession) => !professions.includes(profession),
 			),
 		[professions],
+	)
+
+	// Get available languages (not yet selected)
+	const availableLanguages = useMemo(
+		() => ALL_LANGUAGES.filter((language) => !languages.includes(language)),
+		[languages],
 	)
 
 	// Check if Crafting skill is selected
@@ -156,7 +173,24 @@ export const SkillsTab: React.FC = () => {
 		dispatch(characterSheetActions.removeProfession(professionName))
 	}
 
-	const updateSkill = (skillName: string, update: { xp?: number; rank?: number }) => {
+	const addLanguage = (languageName: string) => {
+		if (availableLanguages.includes(languageName)) {
+			dispatch(characterSheetActions.addLanguage(languageName))
+			setShowLanguageDropdown(false) // Hide dropdown after adding
+		}
+	}
+
+	const removeLanguage = (languageName: string) => {
+		// Prevent removal of Tradespeak (handled by reducer as well)
+		if (languageName !== DEFAULT_LANGUAGE) {
+			dispatch(characterSheetActions.removeLanguage(languageName))
+		}
+	}
+
+	const updateSkill = (
+		skillName: string,
+		update: { xp?: number; rank?: number },
+	) => {
 		const skillIndex = skills.findIndex((s) => s.name === skillName)
 		if (skillIndex >= 0) {
 			// Calculate rank from XP if XP is being updated
@@ -180,7 +214,7 @@ export const SkillsTab: React.FC = () => {
 				}
 				skillUpdate.rank = calculateSkillRank(update.xp)
 			}
-			
+
 			dispatch(
 				characterSheetActions.updateSkill({
 					update: skillUpdate,
@@ -313,19 +347,37 @@ export const SkillsTab: React.FC = () => {
 										width: '100%',
 									}}
 								>
-									<Chip
-										label={`${skill.name} (Rank ${skillRank})`}
-										sx={{
-											backgroundColor: getSkillChipColor(skill.name),
-											color: 'white',
-											minWidth: '140px',
-											'& .MuiChip-label': {
-												fontWeight: 500,
-												paddingLeft: '4px',
-												paddingRight: '4px',
-											},
-										}}
-									/>
+									<Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+										<Chip
+											label={
+												<Box sx={{ display: 'flex', alignItems: 'center' }}>
+													<Box
+														sx={{
+															width: 8,
+															height: 8,
+															borderRadius: '50%',
+															backgroundColor: getSkillChipColor(skill.name),
+															flexShrink: 0,
+															marginRight: '8px',
+														}}
+													/>
+													{`${skill.name} (Rank ${skillRank})`}
+												</Box>
+											}
+											variant="outlined"
+											sx={{
+												flex: 1,
+												justifyContent: 'flex-start',
+												'& .MuiChip-label': {
+													fontWeight: 500,
+													paddingLeft: '12px',
+													paddingRight: '12px',
+													width: '100%',
+													justifyContent: 'flex-start',
+												},
+											}}
+										/>
+									</Box>
 									<AttributeField
 										size="small"
 										type="number"
@@ -336,6 +388,7 @@ export const SkillsTab: React.FC = () => {
 										label="XP"
 										sx={{
 											width: '60px',
+											flexShrink: 0,
 											'& .MuiInputBase-input': {
 												padding: '4px 6px',
 												fontSize: '0.75rem',
@@ -346,7 +399,7 @@ export const SkillsTab: React.FC = () => {
 											},
 										}}
 									/>
-									<Box sx={{ marginLeft: 'auto' }}>
+									<Box sx={{ flexShrink: 0 }}>
 										<Tooltip title="Delete Skill">
 											<IconButton
 												size="small"
@@ -416,19 +469,12 @@ export const SkillsTab: React.FC = () => {
 									<Chip
 										key={profession}
 										label={profession}
+										variant="outlined"
 										onDelete={() => removeProfession(profession)}
 										sx={{
-											backgroundColor: getProfessionChipColor(profession),
-											color: 'white',
 											'& .MuiChip-label': {
 												fontWeight: 500,
 												// Remove custom padding to use default MUI padding
-											},
-											'& .MuiChip-deleteIcon': {
-												color: 'rgba(255, 255, 255, 0.7)',
-												'&:hover': {
-													color: 'white',
-												},
 											},
 										}}
 									/>
@@ -436,6 +482,75 @@ export const SkillsTab: React.FC = () => {
 						</Box>
 					</Box>
 				)}
+
+				{/* Languages Section */}
+				<Box sx={{ mt: 3 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 2, gap: 1 }}>
+						<SectionHeader sx={{ mb: 0 }}>Languages</SectionHeader>
+						{availableLanguages.length > 0 && (
+							<Tooltip title="Add Language">
+								<IconButton
+									size="small"
+									onClick={() => setShowLanguageDropdown(!showLanguageDropdown)}
+								>
+									<Add fontSize="small" />
+								</IconButton>
+							</Tooltip>
+						)}
+					</Box>
+					<Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
+						Select languages your character knows. Tradespeak is the common
+						language known by all characters.
+					</Typography>
+
+					{/* Languages Dropdown */}
+					{showLanguageDropdown && availableLanguages.length > 0 && (
+						<FormControl fullWidth sx={{ mb: 2 }}>
+							<InputLabel>Add Language</InputLabel>
+							<Select
+								label="Add Language"
+								value=""
+								onChange={(e) => addLanguage(e.target.value)}
+							>
+								{availableLanguages.sort().map((language) => (
+									<MenuItem key={language} value={language}>
+										{language}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
+					)}
+
+					{/* Selected Languages as Chips */}
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+						{languages
+							.slice()
+							.sort((a, b) => {
+								// Sort Tradespeak first, then alphabetically
+								if (a === DEFAULT_LANGUAGE) return -1
+								if (b === DEFAULT_LANGUAGE) return 1
+								return a.localeCompare(b)
+							})
+							.map((language) => (
+								<Chip
+									key={language}
+									label={language}
+									variant="outlined"
+									{...(language !== DEFAULT_LANGUAGE && {
+										onDelete: () => removeLanguage(language),
+									})}
+									sx={{
+										'& .MuiChip-label': {
+											fontWeight: 500,
+											...(language === DEFAULT_LANGUAGE && {
+												fontWeight: 600, // Make Tradespeak slightly bolder
+											}),
+										},
+									}}
+								/>
+							))}
+					</Box>
+				</Box>
 			</Box>
 
 			<CategorizedAbilities />

@@ -104,7 +104,7 @@ export const CharacterSheetContainer: React.FC = () => {
 				dispatch(characterSheetActions.setAutosave(true))
 			}, SAVE_CHARACTER_TIMEOUT)
 		}
-	}, [activeCharacter])
+	}, [unsavedChanges])
 
 	useEffect(() => {
 		if (
