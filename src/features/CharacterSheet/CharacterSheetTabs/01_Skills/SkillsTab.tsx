@@ -342,9 +342,18 @@ export const SkillsTab: React.FC = () => {
 								>
 									<Chip
 										label={`${skill.name} (Rank ${skillRank})`}
+										variant="outlined"
+										avatar={
+											<Box
+												sx={{
+													width: 8,
+													height: 8,
+													borderRadius: '50%',
+													backgroundColor: getSkillChipColor(skill.name),
+												}}
+											/>
+										}
 										sx={{
-											backgroundColor: getSkillChipColor(skill.name),
-											color: 'white',
 											minWidth: '140px',
 											'& .MuiChip-label': {
 												fontWeight: 500,
@@ -445,19 +454,20 @@ export const SkillsTab: React.FC = () => {
 										label={profession}
 										variant="outlined"
 										onDelete={() => removeProfession(profession)}
+										avatar={
+											<Box
+												sx={{
+													width: 8,
+													height: 8,
+													borderRadius: '50%',
+													backgroundColor: getProfessionChipColor(profession),
+												}}
+											/>
+										}
 										sx={{
-											borderColor: getProfessionChipColor(profession),
-											color: getProfessionChipColor(profession),
 											'& .MuiChip-label': {
 												fontWeight: 500,
 												// Remove custom padding to use default MUI padding
-											},
-											'& .MuiChip-deleteIcon': {
-												color: getProfessionChipColor(profession),
-												'&:hover': {
-													color: getProfessionChipColor(profession),
-													opacity: 0.7,
-												},
 											},
 										}}
 									/>
@@ -522,21 +532,22 @@ export const SkillsTab: React.FC = () => {
 									{...(language !== DEFAULT_LANGUAGE && {
 										onDelete: () => removeLanguage(language),
 									})}
+									avatar={
+										<Box
+											sx={{
+												width: 8,
+												height: 8,
+												borderRadius: '50%',
+												backgroundColor: getLanguageChipColor(language),
+											}}
+										/>
+									}
 									sx={{
-										borderColor: getLanguageChipColor(language),
-										color: getLanguageChipColor(language),
 										'& .MuiChip-label': {
 											fontWeight: 500,
 											...(language === DEFAULT_LANGUAGE && {
 												fontWeight: 600, // Make Tradespeak slightly bolder
 											}),
-										},
-										'& .MuiChip-deleteIcon': {
-											color: getLanguageChipColor(language),
-											'&:hover': {
-												color: getLanguageChipColor(language),
-												opacity: 0.7,
-											},
 										},
 									}}
 								/>
