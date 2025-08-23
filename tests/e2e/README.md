@@ -1,12 +1,18 @@
-# E2E Testing for Nexus RPG
+# Comprehensive E2E Test Suite for Character Sheet Tool
 
-This directory contains end-to-end tests for the Nexus RPG Character Sheet and other custom React tools using [Playwright](https://playwright.dev/).
+This directory contains a comprehensive end-to-end test suite for the Nexus RPG Character Sheet tool, providing complete coverage of all tabs and individual components to detect functional changes and regressions during refactoring.
 
 ## Quick Start
 
 ```bash
 # Install dependencies (if not already done)
 npm ci --legacy-peer-deps
+
+# Install Playwright browsers
+npx playwright install
+
+# Start development server (required for tests)
+npm start
 
 # Run all E2E tests
 npm run test:e2e
@@ -24,29 +30,69 @@ npm run test:e2e:debug
 npm run test:e2e:report
 ```
 
-## Test Coverage
+## Comprehensive Test Coverage
 
-### Character Sheet Tests
-- ✅ Basic functionality (loading, navigation, mock data)
-- ✅ Tab navigation and URL state persistence
-- ✅ Character editing and autosave functionality
-- ✅ Responsive design (desktop, mobile, tablet)
-- ✅ Error handling and edge cases
+### New Detailed Component Tests
+- ✅ **Statistics Tab Components** - Attributes, HP, Defenses, Fatigue, Resting
+- ✅ **Skills Tab Components** - XP, Skills, Abilities, Combat Arts, Talents, Search
+- ✅ **Items Tab Components** - Inventory, Weapons, Equipment, Load, Search
+- ✅ **Personal Tab Components** - Character details, Allies, Contacts, Rivals, Notes
+- ✅ **Spells Tab Components** - Spell management, Focus tracking
+- ✅ **Companions Tab Components** - Companion management
+- ✅ **Party Tab Components** - Party management, Shared notes
 
-### Test Files
+### Navigation and Integration Tests
+- ✅ **Tab Navigation** - Comprehensive tab switching, URL state, keyboard navigation
+- ✅ **Cross-Tab Integration** - Data consistency, calculated values, autosave
+- ✅ **Responsive Design** - All tabs tested across Desktop/Tablet/Mobile viewports
+
+### Error Handling and Edge Cases
+- ✅ **Input Validation** - Extreme values, XSS attempts, Unicode characters
+- ✅ **Network Conditions** - Slow networks, interruptions, offline scenarios
+- ✅ **User Interactions** - Rapid clicking, concurrent changes, memory pressure
+- ✅ **Browser Compatibility** - Feature detection, accessibility compliance
+
+### Enhanced Test Files
+
+#### Component-Level Tests
+- `character-sheet-statistics-detailed.spec.ts` - Complete Statistics tab testing
+- `character-sheet-skills-detailed.spec.ts` - Complete Skills tab testing
+- `character-sheet-items-detailed.spec.ts` - Complete Items tab testing
+- `character-sheet-personal-detailed.spec.ts` - Complete Personal tab testing
+
+#### Integration Tests
+- `character-sheet-navigation-comprehensive.spec.ts` - Tab navigation and state
+- `character-sheet-integration-comprehensive.spec.ts` - Cross-tab data consistency
+- `character-sheet-remaining-tabs.spec.ts` - Spells, Companions, Party tabs
+- `character-sheet-error-comprehensive.spec.ts` - Error handling and edge cases
+
+#### Legacy Tests (Updated)
 - `character-sheet-basic.spec.ts` - Core functionality
-- `character-sheet-tabs.spec.ts` - Tab navigation
+- `character-sheet-tabs.spec.ts` - Basic tab navigation
 - `character-sheet-editing.spec.ts` - Form interactions and saving
 - `character-sheet-responsive.spec.ts` - Multi-device testing
-- `character-sheet-error-handling.spec.ts` - Edge cases and errors
+- `character-sheet-error-handling.spec.ts` - Basic edge cases
 - `character-sheet-quick.spec.ts` - Quick verification tests
 
-## Features Tested
+## Key Features Tested
 
-✅ **Character List**
-- Load character list in development mode
-- Display mock characters (Kael Stormwind, Thara Ironforge)
-- Navigate to individual characters
+✅ **All Character Sheet Tabs**
+- Statistics: Attributes, HP, AV, Defenses, Fatigue, Status Effects
+- Skills: XP, Skill ranks, Abilities, Combat Arts, Talents, Search dialogs
+- Items: Inventory, Weapons, Equipment, Load management, Search functionality
+- Spells: Spell lists, Focus tracking, Magic school organization
+- Personal: Character details, Allies/Contacts/Rivals, Personal notes
+- Companions: Animal companion tracking and management
+- Party: Party member management, Shared notes
+
+✅ **Individual Component Testing**
+- Input field validation and interaction
+- Button functionality and workflows
+- Dialog opening, interaction, and closing
+- Drag and drop functionality
+- Search functionality across tabs
+- Add/Edit/Delete operations
+- Data persistence and autosave
 
 ✅ **Character Sheet Loading**
 - Direct URL navigation with character ID
