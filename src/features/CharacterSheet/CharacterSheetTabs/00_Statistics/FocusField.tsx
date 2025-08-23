@@ -246,61 +246,55 @@ export const FocusField = () => {
 						Focus Management
 					</Typography>
 
-					{/* Auto-calculated Max Focus Display */}
-					<Typography variant="caption" display="block" sx={{ mb: 1, color: 'text.secondary' }}>
-						Based on {activeCharacter.spells.magicSkill || 'No Magic Skill'} formula
+					{/* Formula explanation */}
+					<Typography variant="caption" display="block" sx={{ mb: 2, color: 'text.secondary' }}>
+						Max Focus = ({activeCharacter.spells.magicSkill === 'Arcana' ? 'Mind' : activeCharacter.spells.magicSkill === 'Mysticism' ? 'Spirit' : 'Attribute'} - 2) + (2 × {activeCharacter.spells.magicSkill || 'Skill'} rank) + modifier
 					</Typography>
-					<AttributeField
-						type="number"
-						size="small"
-						value={calculateMaxFocus(activeCharacter)}
-						disabled
-						label="Max (Auto)"
-						fullWidth
-						sx={{ mb: 2 }}
-					/>
 
-					{/* Max Focus Modifier */}
-					<Typography variant="caption" display="block" sx={{ mb: 1, color: 'text.secondary' }}>
-						Additional bonus to max Focus
-					</Typography>
-					<AttributeField
-						type="number"
-						size="small"
-						value={focusDetails?.maxFocusModifier || 0}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { 
-									focusDetails: { maxFocusModifier: Number(event.target.value) } 
+					{/* Current, Max, and Modifier in one line */}
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
+						<AttributeField
+							type="number"
+							size="small"
+							value={focus.current}
+							onChange={(event) =>
+								updateCharacter({
+									spells: { focus: { current: Number(event.target.value) } },
+								})
+							}
+							label="Current"
+							sx={{ 
+								flex: 1,
+								'& .MuiOutlinedInput-root': {
+									'& .MuiOutlinedInput-notchedOutline': {
+										borderWidth: '2px',
+									},
 								},
-							})
-						}
-						label="Modifier"
-						fullWidth
-						sx={{ mb: 2 }}
-					/>
-
-					{/* Current Focus */}
-					<AttributeField
-						type="number"
-						size="small"
-						value={focus.current}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { focus: { current: Number(event.target.value) } },
-							})
-						}
-						label="Current"
-						fullWidth
-						sx={{ 
-							mb: 2,
-							'& .MuiOutlinedInput-root': {
-								'& .MuiOutlinedInput-notchedOutline': {
-									borderWidth: '2px',
-								},
-							},
-						}}
-					/>
+							}}
+						/>
+						<AttributeField
+							type="number"
+							size="small"
+							value={calculateMaxFocus(activeCharacter)}
+							disabled
+							label="Max (Auto)"
+							sx={{ flex: 1 }}
+						/>
+						<AttributeField
+							type="number"
+							size="small"
+							value={focusDetails?.maxFocusModifier || 0}
+							onChange={(event) =>
+								updateCharacter({
+									spells: { 
+										focusDetails: { maxFocusModifier: Number(event.target.value) } 
+									},
+								})
+							}
+							label="Modifier"
+							sx={{ flex: 1 }}
+						/>
+					</Box>
 
 					{/* Spend/Restore Focus Controls */}
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
