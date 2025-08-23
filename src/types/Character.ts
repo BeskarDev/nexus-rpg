@@ -289,6 +289,9 @@ export type Spells = {
 		total: number
 		current: number
 	}
+	focusDetails?: {
+		maxFocusModifier: number
+	}
 	spellCatalystDamage: number
 	spells: Spell[]
 }

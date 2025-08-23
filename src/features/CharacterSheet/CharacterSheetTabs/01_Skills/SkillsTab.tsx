@@ -70,11 +70,22 @@ export const SkillsTab: React.FC = () => {
 	)
 
 	// Get available skills (not yet selected)
-	const availableSkills = useMemo(
-		() =>
-			OFFICIAL_SKILLS.filter((skill) => !selectedSkillNames.includes(skill)),
-		[selectedSkillNames],
-	)
+	const availableSkills = useMemo(() => {
+		let filteredSkills = OFFICIAL_SKILLS.filter((skill) => !selectedSkillNames.includes(skill))
+		
+		// If character has Arcana, hide Mysticism from dropdown
+		// If character has Mysticism, hide Arcana from dropdown
+		const hasArcana = selectedSkillNames.includes('Arcana')
+		const hasMysticism = selectedSkillNames.includes('Mysticism')
+		
+		if (hasArcana) {
+			filteredSkills = filteredSkills.filter(skill => skill !== 'Mysticism')
+		} else if (hasMysticism) {
+			filteredSkills = filteredSkills.filter(skill => skill !== 'Arcana')
+		}
+		
+		return filteredSkills
+	}, [selectedSkillNames])
 
 	// Get available professions (not yet selected)
 	const availableProfessions = useMemo(
