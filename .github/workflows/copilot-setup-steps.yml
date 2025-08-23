@@ -46,6 +46,7 @@ jobs:
       - name: Verify Node.js version
         run: |
           echo "Node.js version: $(node --version)"
+          echo "Yarn version: $(yarn --version)"
           echo "NPM version: $(npm --version)"
           # Ensure we're using the correct Node.js version
           if ! node --version | grep -q "v20"; then
@@ -131,10 +132,8 @@ jobs:
         run: |
           echo "Verifying installation..."
           echo "Node.js version: $(node --version)"
+          echo "Yarn version: $(yarn --version)"
           echo "NPM version: $(npm --version)"
-          if command -v yarn &> /dev/null; then
-            echo "Yarn version: $(yarn --version)"
-          fi
           echo "Checking if Docusaurus is available..."
           if [[ "${{ steps.detect-pm.outputs.package_manager }}" == "yarn" ]]; then
             yarn docusaurus --version
@@ -154,8 +153,9 @@ jobs:
           echo "- Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Available Commands:**" >> $GITHUB_STEP_SUMMARY
-          echo "- \`yarn start\` or \`npm start\` - Start development server" >> $GITHUB_STEP_SUMMARY
-          echo "- \`yarn build\` or \`npm run build\` - Build the site" >> $GITHUB_STEP_SUMMARY
-          echo "- \`yarn serve\` or \`npm run serve\` - Serve built site" >> $GITHUB_STEP_SUMMARY
+          echo "- \`yarn start\` - Start development server" >> $GITHUB_STEP_SUMMARY
+          echo "- \`yarn build\` - Build the site" >> $GITHUB_STEP_SUMMARY
+          echo "- \`yarn serve\` - Serve built site" >> $GITHUB_STEP_SUMMARY
+          echo "- \`yarn test:run\` - Run integration tests" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Project Type:** Nexus RPG Documentation (Docusaurus)" >> $GITHUB_STEP_SUMMARY

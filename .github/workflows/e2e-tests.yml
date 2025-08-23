@@ -21,25 +21,27 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: '20'
-        cache: 'npm'
+        cache: 'yarn'
     
-    - name: Cache npm dependencies
+    - name: Cache yarn dependencies
       uses: actions/cache@v4
-      id: npm-cache
+      id: yarn-cache
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        path: |
+          ~/.cache/yarn
+          node_modules
+        key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
         restore-keys: |
-          ${{ runner.os }}-node-
+          ${{ runner.os }}-yarn-
     
     - name: Install dependencies
-      run: npm ci --legacy-peer-deps
+      run: yarn install --frozen-lockfile --prefer-offline
     
     - name: Build application
-      run: npm run build
+      run: yarn build
     
     - name: Run Integration Tests
-      run: npm run test:run
+      run: yarn test:run
     
     - name: Upload Test Results
       uses: actions/upload-artifact@v4

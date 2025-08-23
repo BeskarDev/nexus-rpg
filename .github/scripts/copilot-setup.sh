@@ -127,17 +127,23 @@ cat > .copilot-commands.md << EOF
 ## Available Commands
 
 ### Development
-- \`yarn start\` or \`npm start\` - Start development server (with hot reload)
-- \`yarn build\` or \`npm run build\` - Build the production site
-- \`yarn serve\` or \`npm run serve\` - Serve the built site locally
-- \`yarn clear\` or \`npm run clear\` - Clear Docusaurus cache
+- \`yarn start\` - Start development server (with hot reload)
+- \`yarn build\` - Build the production site
+- \`yarn serve\` - Serve the built site locally
+- \`yarn clear\` - Clear Docusaurus cache
+
+### Testing
+- \`yarn test\` - Run integration tests in watch mode
+- \`yarn test:run\` - Run integration tests once (CI mode)
+- \`yarn test:ui\` - Run tests with interactive UI
+- \`yarn test:coverage\` - Run tests with coverage report
 
 ### Formatting & Quality
-- \`yarn format\` or \`npm run format\` - Format code with Prettier
-- \`yarn tsc:check\` or \`npm run tsc:check\` - TypeScript type checking
+- \`yarn format\` - Format code with Prettier
+- \`yarn tsc:check\` - TypeScript type checking
 
 ### Firebase Deployment
-- \`yarn deploy\` or \`npm run deploy\` - Build and deploy to Firebase
+- \`yarn deploy\` - Build and deploy to Firebase
 - \`yarn firebase:login\` - Login to Firebase
 - \`yarn firebase:deploy\` - Deploy to Firebase (after build)
 
@@ -203,5 +209,5 @@ echo "   • Environment config: .env.agent"
 echo "   • Quick reference: .copilot-commands.md"
 echo ""
 echo "🚀 Ready for agent operations!"
-echo "   Use 'yarn start' or 'npm start' to begin development"
+echo "   Use 'yarn start' to begin development"
 echo ""

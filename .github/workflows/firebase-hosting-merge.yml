@@ -25,6 +25,7 @@ jobs:
       - name: Verify Node.js version
         run: |
           echo "Node.js version: $(node --version)"
+          echo "Yarn version: $(yarn --version)"
           echo "NPM version: $(npm --version)"
           # Ensure we're using the correct Node.js version
           if ! node --version | grep -q "v20"; then

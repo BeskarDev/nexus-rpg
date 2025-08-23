@@ -60,36 +60,30 @@ tests/integration/
 ### Local Development
 
 ```bash
-# Run all E2E tests
-npm run test:e2e
+# Run all integration tests
+yarn test
+
+# Run tests once (CI mode)
+yarn test:run
 
 # Run with UI (interactive mode)
-npm run test:e2e:ui
+yarn test:ui
 
-# Run in headed mode (see browser)
-npm run test:e2e:headed
-
-# Debug mode (step through tests)
-npm run test:e2e:debug
-
-# View test report
-npm run test:e2e:report
+# Run with coverage
+yarn test:coverage
 ```
 
 ### Specific Test Patterns
 
 ```bash
 # Run specific test file
-npx playwright test character-sheet-basic
+yarn test character-sheet-basic
 
-# Run specific test by name
-npx playwright test --grep "should load character list"
+# Run specific test by pattern
+yarn test --grep "should load character list"
 
-# Run only mobile tests
-npx playwright test --project=mobile
-
-# Run with specific browser
-npx playwright test --project=chromium
+# Run tests with specific configuration
+yarn test --config vitest.config.ts
 ```
 
 ## Development Mode Testing
@@ -273,10 +267,10 @@ When E2E tests fail in CI:
 
 ### Debugging Tips
 
-1. **Use UI Mode**: `npm run test:e2e:ui` for interactive debugging
-2. **Add Screenshots**: Use `page.screenshot()` for visual debugging
-3. **Console Logs**: Check browser console for errors
-4. **Slow Motion**: Add `{ slowMo: 1000 }` to see actions clearly
+1. **Use UI Mode**: `yarn test:ui` for interactive debugging
+2. **Use Coverage**: `yarn test:coverage` to see test coverage reports
+3. **Console Logs**: Check browser console for errors in jsdom environment
+4. **Component State**: Debug component state and props directly in tests
 
 ## Future Enhancements
 
