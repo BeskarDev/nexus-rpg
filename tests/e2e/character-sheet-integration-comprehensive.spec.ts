@@ -31,7 +31,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 
 	test('should maintain data consistency across all tabs', async () => {
 		// Set data in Statistics tab
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const strengthInput = statisticsPage.strengthInput
@@ -43,7 +43,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		}
 
 		// Set data in Skills tab
-		await skillsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+		await skillsPage.clickTabByName('SKILLS')
 		await skillsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const xpInputs = await skillsPage.page.locator('input').filter({ hasText: /xp/i }).all()
@@ -60,7 +60,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		}
 
 		// Set data in Items tab
-		await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+		await itemsPage.clickTabByName('ITEMS')
 		await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const coinsInput = itemsPage.coinsInput
@@ -72,7 +72,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		}
 
 		// Set data in Personal tab
-		await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+		await personalPage.clickTabByName('PERSONAL')
 		await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const nameInput = personalPage.characterNameInput
@@ -84,14 +84,14 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		}
 
 		// Verify all data persists across tab switches
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		if (strengthVisible && await strengthInput.isEnabled()) {
 			await expect(strengthInput).toHaveValue(TEST_VALUES.ATTRIBUTE_VALUE)
 		}
 
-		await skillsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+		await skillsPage.clickTabByName('SKILLS')
 		await skillsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		if (allXpInputs.length > 0) {
@@ -102,14 +102,14 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 			}
 		}
 
-		await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+		await itemsPage.clickTabByName('ITEMS')
 		await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		if (coinsVisible && await coinsInput.isEnabled()) {
 			await expect(coinsInput).toHaveValue(TEST_VALUES.COINS_VALUE)
 		}
 
-		await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+		await personalPage.clickTabByName('PERSONAL')
 		await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		if (nameVisible && await nameInput.isEnabled()) {
@@ -119,7 +119,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 
 	test('should handle calculated values that span multiple tabs', async () => {
 		// Test Statistics calculations that may depend on other tabs
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		// Check for calculated HP field
@@ -138,7 +138,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		}
 
 		// Test carry capacity calculation that may depend on Strength
-		await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+		await itemsPage.clickTabByName('ITEMS')
 		await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const capacityField = itemsPage.carryCapacityField
@@ -151,7 +151,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		}
 
 		// Change Strength and verify calculations update
-		await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+		await statisticsPage.clickTabByName('STATISTICS')
 		await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const strengthInput = statisticsPage.strengthInput
@@ -163,14 +163,14 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 			await statisticsPage.page.waitForTimeout(WAIT_TIMES.AUTOSAVE)
 			
 			// Check if carry capacity updated
-			await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+			await itemsPage.clickTabByName('ITEMS')
 			await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Just verify no errors occurred during calculation update
 			await itemsPage.verifyNoConsoleErrors()
 			
 			// Restore original strength value
-			await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+			await statisticsPage.clickTabByName('STATISTICS')
 			await statisticsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			await strengthInput.fill(originalValue)
 		}
@@ -180,7 +180,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		// Make changes in multiple tabs rapidly
 		const changes = [
 			{
-				tab: CHARACTER_SHEET_TABS.STATISTICS,
+				tabName: 'STATISTICS' as const,
 				action: async () => {
 					const input = statisticsPage.strengthInput
 					const visible = await input.isVisible().catch(() => false)
@@ -190,7 +190,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 				}
 			},
 			{
-				tab: CHARACTER_SHEET_TABS.ITEMS,
+				tabName: 'ITEMS' as const,
 				action: async () => {
 					const input = itemsPage.coinsInput
 					const visible = await input.isVisible().catch(() => false)
@@ -200,7 +200,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 				}
 			},
 			{
-				tab: CHARACTER_SHEET_TABS.PERSONAL,
+				tabName: 'PERSONAL' as const,
 				action: async () => {
 					const input = personalPage.characterNameInput
 					const visible = await input.isVisible().catch(() => false)
@@ -213,7 +213,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 
 		// Execute changes
 		for (const change of changes) {
-			await personalPage.clickTab(change.tab)
+			await personalPage.clickTabByName(change.tabName)
 			await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			await change.action()
 			await personalPage.page.waitForTimeout(WAIT_TIMES.AUTOSAVE)
@@ -225,7 +225,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 
 		// Verify changes were saved
 		for (const change of changes) {
-			await personalPage.clickTab(change.tab)
+			await personalPage.clickTabByName(change.tabName)
 			await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			// Just verify no errors occurred - actual persistence depends on backend
 			await personalPage.verifyNoConsoleErrors()
@@ -235,24 +235,24 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 	test('should handle concurrent tab interactions', async () => {
 		// Simulate scenarios where user might interact with multiple tabs quickly
 		const rapidInteractions = async () => {
-			await statisticsPage.clickTab(CHARACTER_SHEET_TABS.STATISTICS)
+			await statisticsPage.clickTabByName('STATISTICS')
 			const strengthInput = statisticsPage.strengthInput
 			const strengthVisible = await strengthInput.isVisible().catch(() => false)
 			if (strengthVisible && await strengthInput.isEnabled()) {
 				await strengthInput.fill('16')
 			}
 
-			await skillsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+			await skillsPage.clickTabByName('SKILLS')
 			await skillsPage.page.waitForTimeout(200)
 
-			await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+			await itemsPage.clickTabByName('ITEMS')
 			const coinsInput = itemsPage.coinsInput
 			const coinsVisible = await coinsInput.isVisible().catch(() => false)
 			if (coinsVisible && await coinsInput.isEnabled()) {
 				await coinsInput.fill('300')
 			}
 
-			await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+			await personalPage.clickTabByName('PERSONAL')
 			await personalPage.page.waitForTimeout(200)
 		}
 
@@ -268,7 +268,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 
 	test('should handle search dialog interactions across tabs', async () => {
 		// Test Skills tab search
-		await skillsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+		await skillsPage.clickTabByName('SKILLS')
 		await skillsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const skillsSearchButtons = await skillsPage.page.locator('button:has([data-testid="SearchIcon"])').all()
@@ -278,11 +278,11 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 			await skillsPage.page.waitForTimeout(WAIT_TIMES.DIALOG_ANIMATION)
 			
 			// Switch tabs while dialog is open
-			await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+			await itemsPage.clickTabByName('ITEMS')
 			await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Switch back and close dialog
-			await skillsPage.clickTab(CHARACTER_SHEET_TABS.SKILLS)
+			await skillsPage.clickTabByName('SKILLS')
 			await skillsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			const dialog = skillsPage.searchDialog
@@ -295,7 +295,7 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		}
 
 		// Test Items tab search
-		await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+		await itemsPage.clickTabByName('ITEMS')
 		await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 		
 		const itemsSearchButtons = await itemsPage.page.locator('button:has([data-testid="SearchIcon"])').all()
@@ -305,11 +305,11 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 			await itemsPage.page.waitForTimeout(WAIT_TIMES.DIALOG_ANIMATION)
 			
 			// Switch tabs while dialog is open
-			await personalPage.clickTab(CHARACTER_SHEET_TABS.PERSONAL)
+			await personalPage.clickTabByName('PERSONAL')
 			await personalPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Switch back and close dialog
-			await itemsPage.clickTab(CHARACTER_SHEET_TABS.ITEMS)
+			await itemsPage.clickTabByName('ITEMS')
 			await itemsPage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			const dialog = itemsPage.weaponSearchDialog
@@ -329,18 +329,18 @@ test.describe('Character Sheet - Cross-Tab Data Integration', () => {
 		// Extended tab switching to test for memory leaks or performance issues
 		const cycles = 5
 		const tabSequence = [
-			CHARACTER_SHEET_TABS.STATISTICS,
-			CHARACTER_SHEET_TABS.SKILLS,
-			CHARACTER_SHEET_TABS.ITEMS,
-			CHARACTER_SHEET_TABS.PERSONAL,
-			CHARACTER_SHEET_TABS.ITEMS,
-			CHARACTER_SHEET_TABS.SKILLS,
-			CHARACTER_SHEET_TABS.STATISTICS
-		]
+			'STATISTICS',
+			'SKILLS',
+			'ITEMS',
+			'PERSONAL',
+			'ITEMS',
+			'SKILLS',
+			'STATISTICS'
+		] as const
 
 		for (let cycle = 0; cycle < cycles; cycle++) {
-			for (const tab of tabSequence) {
-				await personalPage.clickTab(tab)
+			for (const tabName of tabSequence) {
+				await personalPage.clickTabByName(tabName)
 				await personalPage.page.waitForTimeout(100)
 				
 				// Perform a small interaction in each tab

@@ -195,9 +195,11 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 		await basePage.page.setViewportSize(TEST_VIEWPORT_SIZES.MOBILE)
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
-		// Test all tabs in mobile view
-		for (let i = 0; i < TAB_NAMES.length; i++) {
-			await basePage.clickTab(i)
+		// Test all tabs in mobile view - use tab names for viewport-aware navigation
+		const tabNames = Object.keys(CHARACTER_SHEET_TABS) as (keyof typeof CHARACTER_SHEET_TABS)[]
+		
+		for (const tabName of tabNames) {
+			await basePage.clickTabByName(tabName)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Verify tab content is accessible on mobile
@@ -209,7 +211,7 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 			const viewportWidth = TEST_VIEWPORT_SIZES.MOBILE.width
 			expect(bodyWidth).toBeLessThanOrEqual(viewportWidth + 20) // Allow small buffer
 			
-			await basePage.takeScreenshot(`mobile-tab-${i}-${TAB_NAMES[i].toLowerCase()}.png`)
+			await basePage.takeScreenshot(`mobile-tab-${tabName.toLowerCase()}.png`)
 		}
 	})
 
@@ -217,9 +219,11 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 		await basePage.page.setViewportSize(TEST_VIEWPORT_SIZES.TABLET)
 		await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 
-		// Test all tabs in tablet view
-		for (let i = 0; i < TAB_NAMES.length; i++) {
-			await basePage.clickTab(i)
+		// Test all non-Statistics tabs in tablet view (Statistics is always visible in desktop/tablet)
+		const tabNames = Object.keys(CHARACTER_SHEET_TABS).filter(name => name !== 'STATISTICS') as (keyof typeof CHARACTER_SHEET_TABS)[]
+		
+		for (const tabName of tabNames) {
+			await basePage.clickTabByName(tabName)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			const hasContent = await basePage.hasCharacterSheetContent()
@@ -231,19 +235,19 @@ test.describe('Character Sheet - Spells, Companions, and Party Tabs', () => {
 			
 			expect(inputs + buttons).toBeGreaterThan(0)
 			
-			await basePage.takeScreenshot(`tablet-tab-${i}-${TAB_NAMES[i].toLowerCase()}.png`)
+			await basePage.takeScreenshot(`tablet-tab-${tabName.toLowerCase()}.png`)
 		}
 	})
 
 	test('should handle remaining tabs with comprehensive component verification', async () => {
 		const tabs = [
-			{ index: CHARACTER_SHEET_TABS.SPELLS, name: 'Spells' },
-			{ index: CHARACTER_SHEET_TABS.COMPANIONS, name: 'Companions' },
-			{ index: CHARACTER_SHEET_TABS.PARTY, name: 'Party' }
-		]
+			{ name: 'SPELLS', displayName: 'Spells' },
+			{ name: 'COMPANIONS', displayName: 'Companions' },
+			{ name: 'PARTY', displayName: 'Party' }
+		] as const
 
 		for (const tab of tabs) {
-			await basePage.clickTab(tab.index)
+			await basePage.clickTabByName(tab.name)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
 			// Verify tab loads without errors

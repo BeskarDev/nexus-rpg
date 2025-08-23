@@ -24,28 +24,34 @@ test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 	})
 
 	test('should load all tabs and verify content', async () => {
-		for (let i = 0; i < TAB_NAMES.length; i++) {
-			// Click on each tab
-			await basePage.clickTab(i)
+		const tabNames = Object.keys(CHARACTER_SHEET_TABS) as (keyof typeof CHARACTER_SHEET_TABS)[]
+		
+		for (const tabName of tabNames) {
+			// Click on each tab using viewport-aware navigation
+			await basePage.clickTabByName(tabName)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
-			// Verify tab is active
-			await basePage.verifyTabIsActive(i)
+			// Verify tab is active using the correct index
+			const tabIndex = await basePage.getTabIndex(tabName)
+			await basePage.verifyTabIsActive(tabIndex)
 			
 			// Verify tab content is present
 			const tabContent = await basePage.page.textContent('body')
-			expect(tabContent).toContain(TAB_NAMES[i])
+			const displayName = TAB_NAMES[CHARACTER_SHEET_TABS[tabName]]
+			expect(tabContent).toContain(displayName)
 			
 			// Take screenshot for documentation
-			await basePage.takeScreenshot(`tab-${i}-${TAB_NAMES[i].toLowerCase()}.png`)
+			await basePage.takeScreenshot(`tab-${tabName.toLowerCase()}.png`)
 		}
 	})
 
 	test('should handle rapid tab switching without errors', async () => {
+		const tabNames = Object.keys(CHARACTER_SHEET_TABS) as (keyof typeof CHARACTER_SHEET_TABS)[]
+		
 		// Rapidly switch between tabs
 		for (let cycle = 0; cycle < 3; cycle++) {
-			for (let i = 0; i < TAB_NAMES.length; i++) {
-				await basePage.clickTab(i)
+			for (const tabName of tabNames) {
+				await basePage.clickTabByName(tabName)
 				await basePage.page.waitForTimeout(200) // Shorter wait for rapid switching
 				
 				// Verify no console errors
@@ -54,22 +60,26 @@ test.describe('Character Sheet - Comprehensive Tab Navigation', () => {
 		}
 		
 		// Final verification that all tabs still work
-		for (let i = 0; i < TAB_NAMES.length; i++) {
-			await basePage.clickTab(i)
+		for (const tabName of tabNames) {
+			await basePage.clickTabByName(tabName)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
-			await basePage.verifyTabIsActive(i)
+			
+			// Verify tab is active using the correct index
+			const tabIndex = await basePage.getTabIndex(tabName)
+			await basePage.verifyTabIsActive(tabIndex)
 		}
 	})
 
 	test('should maintain URL state during tab navigation', async () => {
 		const baseUrl = '/docs/tools/character-sheet'
 		const characterId = TEST_CHARACTER_IDS.MOCK_CHARACTER_1
+		const tabNames = Object.keys(CHARACTER_SHEET_TABS) as (keyof typeof CHARACTER_SHEET_TABS)[]
 		
-		for (let i = 0; i < TAB_NAMES.length; i++) {
-			await basePage.clickTab(i)
+		for (const tabName of tabNames) {
+			await basePage.clickTabByName(tabName)
 			await basePage.page.waitForTimeout(WAIT_TIMES.COMPONENT_LOAD)
 			
-			// Check URL includes tab parameter
+			// Check URL includes character ID parameter
 			const currentUrl = basePage.page.url()
 			expect(currentUrl).toContain(`id=${characterId}`)
 			

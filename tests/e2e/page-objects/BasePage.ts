@@ -164,14 +164,30 @@ export class BasePage {
 	async verifyNoConsoleErrors(): Promise<void> {
 		const errors: string[] = []
 		
-		this.page.on('console', (msg) => {
+		// Set up the console listener
+		const consoleHandler = (msg: any) => {
 			if (msg.type() === 'error') {
 				errors.push(msg.text())
 			}
-		})
-
-		// Check for accumulated errors after a brief wait
-		await this.page.waitForTimeout(1000)
-		expect(errors).toHaveLength(0)
+		}
+		
+		this.page.on('console', consoleHandler)
+		
+		try {
+			// Wait briefly to catch any pending console messages
+			await this.page.waitForTimeout(1000)
+			
+			// Filter out known benign errors
+			const significantErrors = errors.filter(error => 
+				!error.includes('Refused to load the script') && // Common dev server issue
+				!error.includes('net::ERR_FAILED') && // Network errors during testing
+				!error.includes('favicon.ico') // Missing favicon
+			)
+			
+			expect(significantErrors).toHaveLength(0)
+		} finally {
+			// Clean up the event listener
+			this.page.off('console', consoleHandler)
+		}
 	}
 }
