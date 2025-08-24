@@ -46,13 +46,34 @@ export const migrateDoc = async (
 		updatedDoc.partyId = null
 	}
 
+	// Ensure personal object exists with default values if migration didn't create it
+	if (!updatedDoc.personal) {
+		updatedDoc.personal = {
+			name: '',
+			playerName: '',
+			folk: '',
+			upbringing: '',
+			background: '',
+			height: '',
+			weight: '',
+			age: '',
+			description: '',
+			motivation: '',
+			profilePicture: '',
+			allies: [],
+			contacts: [],
+			rivals: [],
+			notes: ''
+		}
+	}
+
 	const migratedDoc: CharacterDocument = {
 		docRef: doc.ref,
 		docId: doc.id,
 		collectionId,
 		...(updatedDoc as Character),
 	}
-	console.log('migratedDoc', migratedDoc.personal.playerName)
+	
 	return migratedDoc
 }
 
