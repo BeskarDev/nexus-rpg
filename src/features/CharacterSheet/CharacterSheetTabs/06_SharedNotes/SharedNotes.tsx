@@ -28,6 +28,7 @@ import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useDeviceSize } from '../../utils/useDeviceSize'
+import { logger } from '../../utils'
 import { PartyService } from '../../services/PartyService'
 import { MigrationService } from '../../services/MigrationService'
 import { PartyInfo } from '@site/src/types/Party'
@@ -97,7 +98,7 @@ export const SharedNotes: React.FC = () => {
 					try {
 						await MigrationService.migrateSharedNotesToParties()
 					} catch (migrationError) {
-						console.error('Migration failed:', migrationError)
+						logger.error('Migration failed', migrationError)
 						setError('Migration failed. Please contact support.')
 						setIsLoading(false)
 						return
@@ -146,7 +147,7 @@ export const SharedNotes: React.FC = () => {
 
 				setError(null)
 			} catch (err) {
-				console.error('Error setting up party:', err)
+				logger.error('Error setting up party', err)
 				setError('Failed to load party information')
 			} finally {
 				setIsLoading(false)
@@ -194,7 +195,7 @@ export const SharedNotes: React.FC = () => {
 			setOriginalNotes(notes)
 			setError(null)
 		} catch (error) {
-			console.error('Failed to save notes:', error)
+			logger.error('Failed to save notes', error)
 			setError('Failed to save notes')
 		} finally {
 			setIsSaving(false)
@@ -267,7 +268,7 @@ export const SharedNotes: React.FC = () => {
 			const newPartyInfo = await PartyService.getPartyInfo(partyId)
 			setPartyInfo(newPartyInfo)
 		} catch (error) {
-			console.error('Failed to create party:', error)
+			logger.error('Failed to create party', error)
 			throw error
 		} finally {
 			setPartyLoading(false)
@@ -281,7 +282,7 @@ export const SharedNotes: React.FC = () => {
 		try {
 			await PartyService.addCharacterToParty(partyInfo.party.id, newCharacterId)
 		} catch (error) {
-			console.error('Failed to add member:', error)
+			logger.error('Failed to add member', error)
 			throw error
 		} finally {
 			setPartyLoading(false)
@@ -298,7 +299,7 @@ export const SharedNotes: React.FC = () => {
 				memberCharacterId,
 			)
 		} catch (error) {
-			console.error('Failed to remove member:', error)
+			logger.error('Failed to remove member', error)
 			throw error
 		} finally {
 			setPartyLoading(false)
@@ -318,7 +319,7 @@ export const SharedNotes: React.FC = () => {
 			setNotes('')
 			setOriginalNotes('')
 		} catch (error) {
-			console.error('Failed to leave party:', error)
+			logger.error('Failed to leave party', error)
 			throw error
 		} finally {
 			setPartyLoading(false)
@@ -327,13 +328,13 @@ export const SharedNotes: React.FC = () => {
 
 	const handleDeleteParty = async () => {
 		if (!partyInfo || !characterId || !currentUser) {
-			console.error(
+			logger.error(
 				'Missing party info, character ID, or current user for deletion',
 			)
 			return
 		}
 
-		console.log('Attempting to delete party by removing character:', {
+		logger.debug('Attempting to delete party by removing character', {
 			partyId: partyInfo.party.id,
 			characterId,
 		})
@@ -349,7 +350,7 @@ export const SharedNotes: React.FC = () => {
 			setNotes('')
 			setOriginalNotes('')
 		} catch (error) {
-			console.error('Failed to delete party:', error)
+			logger.error('Failed to delete party', error)
 			setError(
 				error instanceof Error ? error.message : 'Failed to delete party',
 			)
@@ -367,7 +368,7 @@ export const SharedNotes: React.FC = () => {
 			await PartyService.updatePartyName(partyInfo.party.id, newName)
 			// The real-time subscription will update partyInfo automatically
 		} catch (error) {
-			console.error('Failed to update party name:', error)
+			logger.error('Failed to update party name', error)
 			throw error
 		} finally {
 			setPartyLoading(false)

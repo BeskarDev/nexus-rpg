@@ -18,6 +18,7 @@ import {
 } from '@mui/material'
 import { Add, ContentCopy, Edit, Save, Cancel } from '@mui/icons-material'
 import { PartyInfo } from '@site/src/types/Party'
+import { logger } from '../../../utils'
 import { PartyMemberItem } from './PartyMemberItem'
 
 export interface PartyManagementProps {
@@ -71,7 +72,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				severity: 'success',
 			})
 		} catch (error) {
-			console.error('Party creation error:', error)
+			logger.error('Party creation error', error)
 			let errorMessage = 'Failed to create party'
 			if (error instanceof Error) {
 				errorMessage = error.message || errorMessage
@@ -172,7 +173,7 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				severity: 'success',
 			})
 		} catch (error) {
-			console.error('Confirm action error:', error)
+			logger.error('Confirm action error', error)
 			let errorMessage = 'Action failed'
 			if (error instanceof Error) {
 				errorMessage = error.message || errorMessage
