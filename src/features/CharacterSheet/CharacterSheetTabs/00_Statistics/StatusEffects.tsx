@@ -229,6 +229,7 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 	}
 
 	const getConditionDescription = (conditionName: string) => {
+		if (!conditionName) return ''
 		const condition = conditionsData.find(
 			(c) =>
 				c.name.toLowerCase().replace(/\s*\(x\)/g, '') ===
@@ -238,6 +239,7 @@ export const StatusEffects: React.FC<StatusEffectsProps> = ({
 	}
 
 	const requiresIntensity = (conditionName: string) => {
+		if (!conditionName) return false
 		return (
 			conditionName.includes('(X)') ||
 			['bleeding', 'burning', 'marked'].includes(conditionName)
