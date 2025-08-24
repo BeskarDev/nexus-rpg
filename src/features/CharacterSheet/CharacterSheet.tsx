@@ -2,8 +2,8 @@ import { Box, TextField, Typography, styled } from '@mui/material'
 import React, { useEffect } from 'react'
 import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { useDeviceSize } from './utils/useDeviceSize'
-import { TabRenderer } from './components/TabRenderer'
-import { MOBILE_TAB_CONFIG, DESKTOP_TAB_CONFIG } from './constants/tabConfig'
+import { TabRenderer } from './components'
+import { MOBILE_TAB_CONFIG, DESKTOP_TAB_CONFIG } from './constants'
 
 export const AttributeField = styled(TextField)({
 	maxWidth: '5rem',

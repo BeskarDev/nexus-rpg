@@ -17,7 +17,7 @@ import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
 import { getDurabilityForItem } from './CharacterSheetTabs/02_Items/utils/durabilityUtils'
-import { migrateCharacterData } from './utils/characterMigration'
+import { migrateCharacterData } from './utils'
 
 function isObject(value: any) {
 	return value !== null && typeof value === 'object'
