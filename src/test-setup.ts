@@ -106,6 +106,46 @@ vi.mock('@site/src/features/CharacterSheet/utils/useDeviceSize', () => ({
   })
 }))
 
+// Mock Docusaurus dependencies
+vi.mock('@docusaurus/useDocusaurusContext', () => ({
+  default: () => ({
+    siteConfig: {
+      title: 'Test Site',
+      url: 'http://localhost:3000',
+      baseUrl: '/',
+      customFields: {},
+    },
+    i18n: {
+      currentLocale: 'en',
+      locales: ['en'],
+    },
+  })
+}))
+
+vi.mock('@docusaurus/theme-common', () => ({
+  useThemeConfig: () => ({}),
+  ThemeClassNames: {},
+  useColorMode: () => ({
+    colorMode: 'light',
+    setColorMode: vi.fn(),
+  }),
+}))
+
+// Mock Material-UI theme dependencies that might cause issues
+vi.mock('@mui/material', async (importOriginal) => {
+  const actual: any = await importOriginal()
+  return {
+    ...actual,
+    Experimental_CssVarsProvider: ({ children }: any) => children,
+    experimental_extendTheme: (theme: any) => theme,
+    useColorScheme: () => ({
+      mode: 'light',
+      setMode: vi.fn(),
+      systemMode: 'light',
+    }),
+  }
+})
+
 // Mock console methods to reduce noise in tests
 global.console = {
   ...console,
