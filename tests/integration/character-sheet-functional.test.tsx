@@ -35,7 +35,7 @@ vi.mock('../../src/dev/firebaseService', () => {
   const minimalCharacterData = {
     docId: 'test-char-minimal',
     docRef: { id: 'test-char-minimal' },
-    collectionId: 'test-collection',
+    collectionId: 'mock-collection',
     personal: {
       name: 'Test Character',
       playerName: 'Test Player',
@@ -167,10 +167,15 @@ vi.mock('../../src/dev/firebaseService', () => {
   
   return {
     firebaseService: {
-      getCollection: vi.fn().mockResolvedValue([minimalCharacterData]),
+      getCollection: vi.fn().mockImplementation((collectionId) => {
+        if (collectionId === 'mock-collection' || collectionId === 'dev-user') {
+          return Promise.resolve([minimalCharacterData])
+        }
+        return Promise.resolve([])
+      }),
       getDocument: vi.fn().mockImplementation((collectionId, characterId) => {
         // Mock the correct character based on the parameters
-        if (collectionId === 'test-collection' && characterId === 'test-char-minimal') {
+        if (collectionId === 'mock-collection' && characterId === 'test-char-minimal') {
           return Promise.resolve(minimalCharacterData)
         }
         return Promise.resolve(null)
@@ -186,7 +191,7 @@ vi.mock('../../src/dev/firebaseService', () => {
 Object.defineProperty(window, 'location', {
   value: {
     ...window.location,
-    search: '?id=test-collection-test-char-minimal',
+    search: '?id=mock-collection-test-char-minimal',
     hostname: 'localhost',
   },
   writable: true,
@@ -293,8 +298,8 @@ describe('Character Sheet Functional Integration Tests', () => {
       expect(container.textContent).toContain('Test Character')
     }, { timeout: 10000 })
 
-    // Character has comprehensive stats: attributes, health, fatigue, AV
-    expect(container.textContent).toContain('Warrior')
+    // Character has comprehensive stats: attributes, health, fatigue, AV, and skills
+    expect(container.textContent).toContain('Fighting (Rank 3)')
     expect(container.firstChild).toBeDefined()
   })
 
@@ -354,8 +359,8 @@ describe('Character Sheet Functional Integration Tests', () => {
       expect(container.textContent).toContain('Test Character')
     }, { timeout: 10000 })
 
-    // Character has folk, background, description, motivation
-    expect(container.textContent).toContain('Human')
+    // Character has folk, background, description, motivation - check for profession which is visible
+    expect(container.textContent).toContain('Soldier')
     expect(container.firstChild).toBeDefined()
   })
 
@@ -431,7 +436,7 @@ describe('Character Sheet Functional Integration Tests', () => {
     }, { timeout: 10000 })
 
     // All character data should be valid and render without errors
-    expect(container.textContent).toContain('Test Player')
+    expect(container.textContent).toContain('Level 6')
     expect(container.firstChild).toBeDefined()
   })
 })

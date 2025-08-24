@@ -77,7 +77,7 @@ export const {
 			state.loadingSave = action.payload
 		},
 		setCharacter: (state, action: PayloadAction<CharacterDocument>) => {
-			const character = action.payload
+			const character = deepCopy(action.payload) // Create a deep copy to avoid mutation errors
 			// Migrate older characters that don't have companions array
 			if (!character.companions) {
 				character.companions = []
