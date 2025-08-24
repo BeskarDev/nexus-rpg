@@ -37,8 +37,8 @@ export const PersonalTab: React.FC = () => {
 		setShowReorder((prev) => !prev)
 	}
 
-	// Always show new interface if npcRelationships array exists (even if empty)
-	const showNewInterface = npcRelationships !== undefined
+	// Always show the NPC relationships interface
+	const showNewInterface = true
 
 	return (
 		<Box

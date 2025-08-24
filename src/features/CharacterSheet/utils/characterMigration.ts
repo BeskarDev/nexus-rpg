@@ -125,5 +125,66 @@ export function migrateCharacterData(character: CharacterDocument): CharacterDoc
 		}
 	}
 
+	// Ensure npcRelationships array exists for new unified NPC system
+	if (!character.personal?.npcRelationships) {
+		// Ensure personal object exists
+		if (!character.personal) {
+			character.personal = {} as any
+		}
+		character.personal.npcRelationships = []
+
+		// Migrate legacy NPC data if it exists
+		const personal = character.personal as any
+		if (personal.allies || personal.contacts || personal.rivals) {
+			// Helper function to extract name from relationship description
+			const extractName = (description: string): string => {
+				// Try to find a name at the beginning (capitalized word)
+				const match = description.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*?)(?:\s*[-:,]|$)/)
+				return match ? match[1].trim() : description.split(' ')[0] || description
+			}
+
+			// Convert allies (disposition +1)
+			if (personal.allies && Array.isArray(personal.allies)) {
+				const convertedAllies = personal.allies.map((ally: any) => ({
+					id: crypto.randomUUID(),
+					name: extractName(ally.description || ally.name || ''),
+					role: 'Adventurer' as const,
+					disposition: 1,
+					description: ally.description || ally.name || '',
+				}))
+				character.personal.npcRelationships.push(...convertedAllies)
+			}
+
+			// Convert contacts (disposition 0)
+			if (personal.contacts && Array.isArray(personal.contacts)) {
+				const convertedContacts = personal.contacts.map((contact: any) => ({
+					id: crypto.randomUUID(),
+					name: extractName(contact.description || contact.name || ''),
+					role: 'Artisan' as const,
+					disposition: 0,
+					description: contact.description || contact.name || '',
+				}))
+				character.personal.npcRelationships.push(...convertedContacts)
+			}
+
+			// Convert rivals (disposition -1)
+			if (personal.rivals && Array.isArray(personal.rivals)) {
+				const convertedRivals = personal.rivals.map((rival: any) => ({
+					id: crypto.randomUUID(),
+					name: extractName(rival.description || rival.name || ''),
+					role: 'Scoundrel' as const,
+					disposition: -1,
+					description: rival.description || rival.name || '',
+				}))
+				character.personal.npcRelationships.push(...convertedRivals)
+			}
+
+			// Clean up legacy properties
+			delete personal.allies
+			delete personal.contacts
+			delete personal.rivals
+		}
+	}
+
 	return character
 }
