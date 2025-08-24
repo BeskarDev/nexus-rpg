@@ -12,6 +12,7 @@
 /test-results/
 /playwright-report/
 /playwright/.cache/
+/coverage
 
 # Misc
 .DS_Store
