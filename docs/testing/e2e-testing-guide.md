@@ -1,52 +1,54 @@
-# E2E Testing Strategy for Nexus RPG Character Sheet
+# Integration Testing Strategy for Nexus RPG Tools
 
-This document outlines the end-to-end testing strategy for the Nexus RPG Character Sheet and other custom React tools.
+This document outlines the integration testing strategy for the Nexus RPG Character Sheet and other custom React tools using Vitest.
 
 ## Overview
 
-We use [Playwright](https://playwright.dev/) for comprehensive E2E testing to ensure:
+We use [Vitest](https://vitest.dev/) with React Testing Library for comprehensive integration testing to ensure:
 - Critical user flows work correctly
 - Major refactors don't introduce regressions
-- Character Sheet functionality remains stable
-- Cross-browser and responsive compatibility
+- Character Sheet and tool functionality remains stable
+- Component integration and user interactions function properly
+
+## Key Benefits of Vitest Approach
+
+- **Faster test execution** - No browser startup overhead
+- **Better debugging experience** - Direct access to component state and props
+- **User-centric testing** - Focus on actual user interactions with components
+- **Easier maintenance** - Tests are more focused and less brittle than full E2E tests
+- **Better CI performance** - Reduced infrastructure requirements
 
 ## Test Structure
 
 ### Test Organization
 
 ```
-tests/e2e/
-├── page-objects/          # Page Object Models for component interactions
-│   ├── BasePage.ts       # Common functionality for all pages
-│   ├── CharacterListPage.ts
-│   └── CharacterSheetPage.ts
-├── fixtures/             # Test data and utilities
-│   └── testData.ts      # Mock characters, test constants
-├── utils/               # Test utilities and helpers
-└── *.spec.ts           # Test files
+tests/integration/
+├── character-sheet-basic.test.tsx      # Basic component rendering and functionality
+├── character-sheet-editing.test.tsx    # Form interactions and user input
+├── rpg-tools.test.tsx                  # Other RPG tools (spells, combat arts)
+└── ...                                 # Additional integration tests
 ```
 
 ### Test Categories
 
-1. **Basic Functionality** (`character-sheet-basic.spec.ts`)
-   - Page loading and navigation
-   - Character list functionality
+1. **Basic Functionality** (`character-sheet-basic.test.tsx`)
+   - Component rendering without errors
    - Development mode verification
+   - Navigation and URL parameter handling
+   - Responsive design behavior
 
-2. **Tab Navigation** (`character-sheet-tabs.spec.ts`)
-   - Tab switching and URL state
-   - Content verification per tab
-   - State persistence
+2. **Editing and Form Interactions** (`character-sheet-editing.test.tsx`)
+   - Form element detection and interaction
+   - User input handling and validation
+   - Tab navigation and component switching
+   - Save functionality and autosave behavior
 
-3. **Editing and Saving** (`character-sheet-editing.spec.ts`)
-   - Form interactions and autosave
-   - Data persistence across reloads
-   - File download functionality
-
-4. **Responsive Design** (`character-sheet-responsive.spec.ts`)
-   - Desktop, mobile, and tablet viewports
-   - Touch interactions
-   - Layout adaptability
+3. **RPG Tools Integration** (`rpg-tools.test.tsx`)
+   - Combat Arts tool functionality
+   - Arcane Spells filtering and search
+   - Mystic Spells tradition organization
+   - Cross-tool integration testing
 
 5. **Error Handling** (`character-sheet-error-handling.spec.ts`)
    - Network errors and edge cases
@@ -58,36 +60,30 @@ tests/e2e/
 ### Local Development
 
 ```bash
-# Run all E2E tests
-npm run test:e2e
+# Run all integration tests
+yarn test
+
+# Run tests once (CI mode)
+yarn test:run
 
 # Run with UI (interactive mode)
-npm run test:e2e:ui
+yarn test:ui
 
-# Run in headed mode (see browser)
-npm run test:e2e:headed
-
-# Debug mode (step through tests)
-npm run test:e2e:debug
-
-# View test report
-npm run test:e2e:report
+# Run with coverage
+yarn test:coverage
 ```
 
 ### Specific Test Patterns
 
 ```bash
 # Run specific test file
-npx playwright test character-sheet-basic
+yarn test character-sheet-basic
 
-# Run specific test by name
-npx playwright test --grep "should load character list"
+# Run specific test by pattern
+yarn test --grep "should load character list"
 
-# Run only mobile tests
-npx playwright test --project=mobile
-
-# Run with specific browser
-npx playwright test --project=chromium
+# Run tests with specific configuration
+yarn test --config vitest.config.ts
 ```
 
 ## Development Mode Testing
@@ -271,10 +267,10 @@ When E2E tests fail in CI:
 
 ### Debugging Tips
 
-1. **Use UI Mode**: `npm run test:e2e:ui` for interactive debugging
-2. **Add Screenshots**: Use `page.screenshot()` for visual debugging
-3. **Console Logs**: Check browser console for errors
-4. **Slow Motion**: Add `{ slowMo: 1000 }` to see actions clearly
+1. **Use UI Mode**: `yarn test:ui` for interactive debugging
+2. **Use Coverage**: `yarn test:coverage` to see test coverage reports
+3. **Console Logs**: Check browser console for errors in jsdom environment
+4. **Component State**: Debug component state and props directly in tests
 
 ## Future Enhancements
 

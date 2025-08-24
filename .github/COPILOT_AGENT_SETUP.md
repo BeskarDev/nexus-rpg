@@ -87,7 +87,7 @@ FAST_REFRESH=false
 
 ### `.copilot-commands.md`
 Quick reference guide for agents with:
-- Available npm/yarn commands
+- Available yarn commands
 - Project structure overview
 - Key files and directories
 - Agent-specific tips and best practices
