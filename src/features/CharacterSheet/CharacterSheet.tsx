@@ -1,6 +1,5 @@
 import { Box, Tab, Tabs, TextField, Typography, styled } from '@mui/material'
 import React, { useEffect } from 'react'
-import { StatisticsTab } from './CharacterSheetTabs/00_Statistics/StatisticsTab'
 import { useDeviceSize } from './utils/useDeviceSize'
 import { mobileTabsConfig, desktopTabsConfig, getTabComponent } from './utils'
 
@@ -101,7 +100,10 @@ export const CharacterSheet: React.FC = () => {
 						}}
 					>
 						<Box sx={{ mt: 1, maxWidth: '25rem' }}>
-							<StatisticsTab />
+							{(() => {
+								const StatisticsTabComponent = mobileTabsConfig.find(tab => tab.label === 'Statistics')?.component
+								return StatisticsTabComponent ? <StatisticsTabComponent /> : null
+							})()}
 						</Box>
 						<Box
 							sx={{
