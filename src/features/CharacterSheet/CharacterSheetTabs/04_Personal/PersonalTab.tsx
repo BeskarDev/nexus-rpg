@@ -1,10 +1,6 @@
 import {
 	Box,
 	IconButton,
-	Button,
-	Switch,
-	Typography,
-	FormControlLabel,
 	Tooltip,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
@@ -16,24 +12,21 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { useListCrud, useNpcRelationshipCrud } from '../../hooks'
-import { PersonalField, PersonalListSection, NpcRelationshipsSection } from '../../components'
+import { useNpcRelationshipCrud } from '../../hooks'
+import { PersonalField, NpcRelationshipsSection } from '../../components'
 import { ProfilePictureUpload } from './ProfilePictureUpload'
 
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { allies, contacts, rivals, npcRelationships } = useMemo(
+	const { npcRelationships } = useMemo(
 		() => activeCharacter.personal,
 		[activeCharacter.personal],
 	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
 	const [showControls, setShowReorder] = useState(false) // State to toggle reorder icons
 
-	// Use the reusable CRUD hooks
-	const allyCrud = useListCrud('ally')
-	const contactCrud = useListCrud('contact')
-	const rivalCrud = useListCrud('rival')
+	// Use the reusable CRUD hook
 	const npcRelationshipCrud = useNpcRelationshipCrud()
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
@@ -44,14 +37,8 @@ export const PersonalTab: React.FC = () => {
 		setShowReorder((prev) => !prev)
 	}
 
-	// Determine if we should show the new unified NPC relationships or the legacy lists
-	const hasNewNpcRelationships = npcRelationships && npcRelationships.length > 0
-	const hasLegacyRelationships = (allies && allies.length > 0) || (contacts && contacts.length > 0) || (rivals && rivals.length > 0)
-	
-	// Always show new interface if npcRelationships array exists (even if empty), 
-	// otherwise fall back to legacy interface if legacy data exists
+	// Always show new interface if npcRelationships array exists (even if empty)
 	const showNewInterface = npcRelationships !== undefined
-	const showLegacyInterface = !showNewInterface && hasLegacyRelationships
 
 	return (
 		<Box
@@ -214,7 +201,7 @@ export const PersonalTab: React.FC = () => {
 
 			<Box sx={{ width: '100%', flexGrow: 1, mb: 2 }} />
 
-			{/* New unified NPC relationships section */}
+			{/* NPC relationships section */}
 			{showNewInterface && (
 				<NpcRelationshipsSection
 					npcRelationships={npcRelationships || []}
@@ -224,44 +211,6 @@ export const PersonalTab: React.FC = () => {
 					onDelete={npcRelationshipCrud.delete}
 					onReorder={npcRelationshipCrud.onReorder}
 				/>
-			)}
-
-			{/* Legacy relationship lists - only show if new system is not present */}
-			{showLegacyInterface && (
-				<>
-					<PersonalListSection
-						title="Allies"
-						items={allies}
-						showControls={showControls}
-						onAdd={allyCrud.addNew}
-						onUpdate={allyCrud.update}
-						onDelete={allyCrud.delete}
-						onReorder={allyCrud.onReorder}
-						droppableId="allies"
-					/>
-
-					<PersonalListSection
-						title="Contacts"
-						items={contacts}
-						showControls={showControls}
-						onAdd={contactCrud.addNew}
-						onUpdate={contactCrud.update}
-						onDelete={contactCrud.delete}
-						onReorder={contactCrud.onReorder}
-						droppableId="contacts"
-					/>
-
-					<PersonalListSection
-						title="Rivals"
-						items={rivals}
-						showControls={showControls}
-						onAdd={rivalCrud.addNew}
-						onUpdate={rivalCrud.update}
-						onDelete={rivalCrud.delete}
-						onReorder={rivalCrud.onReorder}
-						droppableId="rivals"
-					/>
-				</>
 			)}
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
