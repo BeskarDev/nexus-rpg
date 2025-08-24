@@ -47,6 +47,11 @@ export const PersonalTab: React.FC = () => {
 	// Determine if we should show the new unified NPC relationships or the legacy lists
 	const hasNewNpcRelationships = npcRelationships && npcRelationships.length > 0
 	const hasLegacyRelationships = (allies && allies.length > 0) || (contacts && contacts.length > 0) || (rivals && rivals.length > 0)
+	
+	// Always show new interface if npcRelationships array exists (even if empty), 
+	// otherwise fall back to legacy interface if legacy data exists
+	const showNewInterface = npcRelationships !== undefined
+	const showLegacyInterface = !showNewInterface && hasLegacyRelationships
 
 	return (
 		<Box
@@ -210,17 +215,19 @@ export const PersonalTab: React.FC = () => {
 			<Box sx={{ width: '100%', flexGrow: 1, mb: 2 }} />
 
 			{/* New unified NPC relationships section */}
-			<NpcRelationshipsSection
-				npcRelationships={npcRelationships || []}
-				showControls={showControls}
-				onAdd={npcRelationshipCrud.addNew}
-				onUpdate={npcRelationshipCrud.update}
-				onDelete={npcRelationshipCrud.delete}
-				onReorder={npcRelationshipCrud.onReorder}
-			/>
+			{showNewInterface && (
+				<NpcRelationshipsSection
+					npcRelationships={npcRelationships || []}
+					showControls={showControls}
+					onAdd={npcRelationshipCrud.addNew}
+					onUpdate={npcRelationshipCrud.update}
+					onDelete={npcRelationshipCrud.delete}
+					onReorder={npcRelationshipCrud.onReorder}
+				/>
+			)}
 
-			{/* Legacy relationship lists - only show if they exist and new system is empty */}
-			{hasLegacyRelationships && !hasNewNpcRelationships && (
+			{/* Legacy relationship lists - only show if new system is not present */}
+			{showLegacyInterface && (
 				<>
 					<PersonalListSection
 						title="Allies"
