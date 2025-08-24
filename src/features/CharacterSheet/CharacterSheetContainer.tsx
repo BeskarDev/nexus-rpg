@@ -12,6 +12,7 @@ import { useAppDispatch } from './hooks/useAppDispatch'
 import { useAppSelector } from './hooks/useAppSelector'
 import { mapDocToCharacter } from './utils/mapDocToCharacter'
 import { migrateDoc } from './utils/migrateDoc'
+import { logger } from './utils'
 import { firebaseService } from '../../dev/firebaseService'
 
 const SAVE_CHARACTER_TIMEOUT = 1_000
@@ -83,7 +84,7 @@ export const CharacterSheetContainer: React.FC = () => {
 				}
 			}
 		} catch (error) {
-			console.error('Error fetching documents: ', error)
+			logger.error('Error fetching documents', error)
 		}
 	}
 
@@ -113,7 +114,7 @@ export const CharacterSheetContainer: React.FC = () => {
 			unsavedChanges &&
 			autosave
 		) {
-			console.log('auto save in progress')
+			logger.debug('Auto save in progress')
 			saveCharacter()
 			dispatch(characterSheetActions.setAutosave(false))
 			dispatch(characterSheetActions.setSaveTimeout(false))
@@ -143,7 +144,7 @@ export const CharacterSheetContainer: React.FC = () => {
 					const migratedCharacter = await migrateDoc(collectionId, docSnapshot)
 
 					if (JSON.stringify(character) !== JSON.stringify(migratedCharacter)) {
-						console.log('save migrated character', migratedCharacter)
+						logger.debug('Save migrated character', migratedCharacter)
 						await updateDoc(migratedCharacter.docRef, {
 							...migratedCharacter,
 						} as Omit<Character, 'docRef' | 'docId'>)
@@ -162,14 +163,14 @@ export const CharacterSheetContainer: React.FC = () => {
 	}, [collectionId, activeCharacterId, activeCharacter, currentUser])
 
 	const saveCharacter = async () => {
-		console.log('about to save character...')
+		logger.debug('About to save character...')
 		if (unsavedChanges) {
 			dispatch(characterSheetActions.setLoadingSave(true))
 			await firebaseService.updateDocument(activeCharacter)
 			dispatch(characterSheetActions.setUnsavedChanges(false))
 			dispatch(characterSheetActions.setLoadingSave(false))
 		}
-		console.log('done saving character')
+		logger.debug('Done saving character')
 	}
 
 	return (

@@ -38,6 +38,7 @@ import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
 import { createInitialCharacter } from './utils/createInitialCharacter'
 import { downloadFile } from './utils/donwloadFile'
 import { downloadAllCharacters } from './utils/downloadAllCharacters'
+import { logger } from './utils'
 
 const MAX_NAME_LENGTH = 1_000
 
@@ -110,7 +111,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				setName(parsedCharacter.personal.name)
 				setImportError(null)
 			} catch (error) {
-				console.error('Error parsing character file:', error)
+				logger.error('Error parsing character file', error)
 				setImportError(
 					'Invalid character file. Please select a valid Nexus RPG character JSON file.',
 				)
@@ -166,7 +167,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 			setOpen(false)
 			window.location.href = window.location.href.split('?')[0]
 		} catch (error) {
-			console.error('Error creating document: ', error)
+			logger.error('Error creating document', error)
 			setImportError('Error creating character. Please try again.')
 		}
 	}
