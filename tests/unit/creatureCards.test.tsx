@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { createValidCreatureMarkdown } from '../utils/combat-test-fixtures'
 
 // Mock react-to-print
 vi.mock('react-to-print', () => ({
@@ -29,9 +30,11 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should render the main CreatureCards component without crashing', async () => {
       render(<CreatureCards />)
       
-      // Check for key elements
-      expect(screen.getByText('PRINT')).toBeInTheDocument()
-      expect(screen.getByText('Parse Markdown')).toBeInTheDocument()
+      // Check for key elements that should always be present
+      expect(screen.getByText('Parse Creatures')).toBeInTheDocument()
+      expect(screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)).toBeInTheDocument()
+      expect(screen.getByText('Upload Markdown File')).toBeInTheDocument()
+      expect(screen.getByText('Upload and parse a markdown file with creature stat blocks to begin.')).toBeInTheDocument()
     })
 
     it('should render the markdown input field', async () => {
@@ -54,16 +57,28 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should handle parse markdown button click', async () => {
       render(<CreatureCards />)
       
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
+      
+      // Add some text to enable the button
+      await userEvent.type(markdownInput, 'some text')
       await userEvent.click(parseButton)
       
-      // Should not crash (might show error for empty markdown)
+      // Should not crash (might show error for invalid markdown)
       expect(parseButton).toBeInTheDocument()
     })
 
     it('should handle print button click', async () => {
       render(<CreatureCards />)
       
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
+      
+      // First parse some creatures to make PRINT button available
+      await userEvent.type(markdownInput, createValidCreatureMarkdown())
+      await userEvent.click(parseButton)
+      
+      // Now the PRINT button should be available
       const printButton = screen.getByText('PRINT')
       await userEvent.click(printButton)
       
@@ -101,20 +116,20 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should handle empty markdown input', async () => {
       render(<CreatureCards />)
       
-      const parseButton = screen.getByText('Parse Markdown')
+      const parseButton = screen.getByText('Parse Creatures')
       
-      // Try to parse with empty input
-      await userEvent.click(parseButton)
+      // Parse button should be disabled when there's no input
+      expect(parseButton).toHaveProperty('disabled', true)
       
-      // Should show error or handle gracefully
+      // Should show button but it should be disabled
       expect(parseButton).toBeInTheDocument()
     })
 
     it('should handle invalid markdown input', async () => {
       render(<CreatureCards />)
       
-      const markdownInput = screen.getByPlaceholderText(/enter creature markdown here/i)
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
       
       // Enter invalid markdown
       await userEvent.type(markdownInput, 'This is not valid creature markdown')
@@ -127,8 +142,8 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should attempt to parse simple markdown', async () => {
       render(<CreatureCards />)
       
-      const markdownInput = screen.getByPlaceholderText(/enter creature markdown here/i)
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
       
       // Enter simple markdown that might work
       const simpleMarkdown = `
@@ -163,8 +178,8 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should display error for parsing failures', async () => {
       render(<CreatureCards />)
       
-      const markdownInput = screen.getByPlaceholderText(/enter creature markdown here/i)
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
       
       // Enter clearly invalid data
       await userEvent.type(markdownInput, 'completely invalid data')
@@ -184,8 +199,8 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should clear previous errors on new parse', async () => {
       render(<CreatureCards />)
       
-      const markdownInput = screen.getByPlaceholderText(/enter creature markdown here/i)
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
       
       // First, cause an error
       await userEvent.type(markdownInput, 'invalid')
@@ -205,13 +220,17 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should maintain component state across interactions', async () => {
       render(<CreatureCards />)
       
-      const markdownInput = screen.getByPlaceholderText(/enter creature markdown here/i)
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
+      
+      // First parse some creatures to make PRINT button available
+      await userEvent.type(markdownInput, createValidCreatureMarkdown())
+      await userEvent.click(parseButton)
+      
+      // Now the PRINT button should be available
       const printButton = screen.getByText('PRINT')
       
       // Multiple interactions should not break component
-      await userEvent.type(markdownInput, 'test text')
-      await userEvent.click(parseButton)
       await userEvent.click(printButton)
       await userEvent.clear(markdownInput)
       await userEvent.type(markdownInput, 'different text')
@@ -225,7 +244,14 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should handle rapid user interactions', async () => {
       render(<CreatureCards />)
       
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
+      
+      // First parse some creatures to make PRINT button available
+      await userEvent.type(markdownInput, createValidCreatureMarkdown())
+      await userEvent.click(parseButton)
+      
+      // Now the PRINT button should be available
       const printButton = screen.getByText('PRINT')
       
       // Rapid clicking should not break component
@@ -277,8 +303,8 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should be keyboard navigable', async () => {
       render(<CreatureCards />)
       
-      const markdownInput = screen.getByPlaceholderText(/enter creature markdown here/i)
-      const parseButton = screen.getByText('Parse Markdown')
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
+      const parseButton = screen.getByText('Parse Creatures')
       
       // Should be able to focus elements
       markdownInput.focus()
@@ -293,7 +319,7 @@ describe('CreatureCards Tool - Basic Tests', () => {
     it('should handle large markdown input', async () => {
       render(<CreatureCards />)
       
-      const markdownInput = screen.getByPlaceholderText(/enter creature markdown here/i)
+      const markdownInput = screen.getByPlaceholderText(/paste your creature markdown here or upload a file/i)
       
       // Create large markdown content
       const largeMarkdown = 'Large markdown content: ' + 'A'.repeat(500)
