@@ -16,14 +16,14 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { useListCrud } from '../../hooks/useListCrud'
-import { PersonalField, PersonalListSection } from '../../components'
+import { useListCrud, useNpcRelationshipCrud } from '../../hooks'
+import { PersonalField, PersonalListSection, NpcRelationshipsSection } from '../../components'
 import { ProfilePictureUpload } from './ProfilePictureUpload'
 
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { allies, contacts, rivals } = useMemo(
+	const { allies, contacts, rivals, npcRelationships } = useMemo(
 		() => activeCharacter.personal,
 		[activeCharacter.personal],
 	)
@@ -34,6 +34,7 @@ export const PersonalTab: React.FC = () => {
 	const allyCrud = useListCrud('ally')
 	const contactCrud = useListCrud('contact')
 	const rivalCrud = useListCrud('rival')
+	const npcRelationshipCrud = useNpcRelationshipCrud()
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -42,6 +43,10 @@ export const PersonalTab: React.FC = () => {
 	const toggleReorder = () => {
 		setShowReorder((prev) => !prev)
 	}
+
+	// Determine if we should show the new unified NPC relationships or the legacy lists
+	const hasNewNpcRelationships = npcRelationships && npcRelationships.length > 0
+	const hasLegacyRelationships = (allies && allies.length > 0) || (contacts && contacts.length > 0) || (rivals && rivals.length > 0)
 
 	return (
 		<Box
@@ -204,38 +209,53 @@ export const PersonalTab: React.FC = () => {
 
 			<Box sx={{ width: '100%', flexGrow: 1, mb: 2 }} />
 
-			<PersonalListSection
-				title="Allies"
-				items={allies}
+			{/* New unified NPC relationships section */}
+			<NpcRelationshipsSection
+				npcRelationships={npcRelationships || []}
 				showControls={showControls}
-				onAdd={allyCrud.addNew}
-				onUpdate={allyCrud.update}
-				onDelete={allyCrud.delete}
-				onReorder={allyCrud.onReorder}
-				droppableId="allies"
+				onAdd={npcRelationshipCrud.addNew}
+				onUpdate={npcRelationshipCrud.update}
+				onDelete={npcRelationshipCrud.delete}
+				onReorder={npcRelationshipCrud.onReorder}
 			/>
 
-			<PersonalListSection
-				title="Contacts"
-				items={contacts}
-				showControls={showControls}
-				onAdd={contactCrud.addNew}
-				onUpdate={contactCrud.update}
-				onDelete={contactCrud.delete}
-				onReorder={contactCrud.onReorder}
-				droppableId="contacts"
-			/>
+			{/* Legacy relationship lists - only show if they exist and new system is empty */}
+			{hasLegacyRelationships && !hasNewNpcRelationships && (
+				<>
+					<PersonalListSection
+						title="Allies"
+						items={allies}
+						showControls={showControls}
+						onAdd={allyCrud.addNew}
+						onUpdate={allyCrud.update}
+						onDelete={allyCrud.delete}
+						onReorder={allyCrud.onReorder}
+						droppableId="allies"
+					/>
 
-			<PersonalListSection
-				title="Rivals"
-				items={rivals}
-				showControls={showControls}
-				onAdd={rivalCrud.addNew}
-				onUpdate={rivalCrud.update}
-				onDelete={rivalCrud.delete}
-				onReorder={rivalCrud.onReorder}
-				droppableId="rivals"
-			/>
+					<PersonalListSection
+						title="Contacts"
+						items={contacts}
+						showControls={showControls}
+						onAdd={contactCrud.addNew}
+						onUpdate={contactCrud.update}
+						onDelete={contactCrud.delete}
+						onReorder={contactCrud.onReorder}
+						droppableId="contacts"
+					/>
+
+					<PersonalListSection
+						title="Rivals"
+						items={rivals}
+						showControls={showControls}
+						onAdd={rivalCrud.addNew}
+						onUpdate={rivalCrud.update}
+						onDelete={rivalCrud.delete}
+						onReorder={rivalCrud.onReorder}
+						droppableId="rivals"
+					/>
+				</>
+			)}
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 

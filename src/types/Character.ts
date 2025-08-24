@@ -30,9 +30,12 @@ export type Personal = {
 	description: string
 	motivation: string
 	profilePicture?: string
+	// Legacy fields for backwards compatibility
 	allies: Relation[]
 	contacts: Relation[]
 	rivals: Relation[]
+	// New unified NPC relationships structure
+	npcRelationships: NpcRelationship[]
 	notes: string
 }
 
@@ -40,6 +43,34 @@ export type Relation = {
 	id: string
 	description: string
 }
+
+export type NpcRelationship = {
+	id: string
+	name: string
+	role: NpcRole
+	disposition: NpcDisposition
+	description: string
+}
+
+export const npcRoleArray = [
+	'Adventurer',
+	'Artisan', 
+	'Authority',
+	'Scholar',
+	'Scoundrel',
+	'Seeker',
+] as const
+export type NpcRole = (typeof npcRoleArray)[number]
+
+export const npcDispositionArray = [
+	{ value: -3, label: 'Hateful' },
+	{ value: -2, label: 'Hostile' },
+	{ value: -1, label: 'Suspicious' },
+	{ value: 0, label: 'Indifferent' },
+	{ value: 1, label: 'Friendly' },
+	{ value: 2, label: 'Intimate' },
+] as const
+export type NpcDisposition = (typeof npcDispositionArray)[number]['value']
 
 export type Companion = {
 	id: string

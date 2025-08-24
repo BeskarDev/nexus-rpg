@@ -4,38 +4,37 @@ import { DynamicList } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import React from 'react'
 import { DropResult } from 'react-beautiful-dnd'
-import { Relation } from '@site/src/types/Character'
+import { NpcRelationship } from '@site/src/types/Character'
 import { SectionHeader } from '../CharacterSheet'
-import { LegacyNpcRow } from '../CharacterSheetTabs/04_Personal/LegacyNpcRow'
+import { NpcRow } from '../CharacterSheetTabs/04_Personal/NpcRow'
 
-export type PersonalListSectionProps = {
-	title: string
-	items: Relation[]
+export type NpcRelationshipsSectionProps = {
+	npcRelationships: NpcRelationship[]
 	showControls: boolean
 	onAdd: () => void
-	onUpdate: (update: string, index: number) => void
+	onUpdate: (update: Partial<NpcRelationship>, index: number) => void
 	onDelete: (index: number) => void
 	onReorder: (result: DropResult) => void
-	droppableId: string
 }
 
 /**
- * Reusable component for managing lists in the Personal tab (allies, contacts, rivals)
+ * Component for managing NPC relationships using the new unified structure
  */
-export const PersonalListSection: React.FC<PersonalListSectionProps> = ({
-	title,
-	items,
+export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = ({
+	npcRelationships,
 	showControls,
 	onAdd,
 	onUpdate,
 	onDelete,
 	onReorder,
-	droppableId,
 }) => {
+	// Ensure we have a valid array to work with
+	const validNpcRelationships = npcRelationships || []
+
 	return (
-		<Box sx={{ maxWidth: '100%', mb: 1 }}>
+		<Box sx={{ maxWidth: '100%', mb: 2 }}>
 			<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-				<SectionHeader>{title}</SectionHeader>
+				<SectionHeader>NPC Relationships</SectionHeader>
 				{showControls && (
 					<IconButton onClick={onAdd} sx={{ mb: 0.75 }}>
 						<AddCircle />
@@ -43,25 +42,25 @@ export const PersonalListSection: React.FC<PersonalListSectionProps> = ({
 				)}
 			</Box>
 			<DynamicList
-				droppableId={droppableId}
+				droppableId="npc-relationships"
 				onDragEnd={onReorder}
 				sx={{
 					overflowY: 'auto',
 					overflowX: 'hidden',
-					maxHeight: '25vh',
+					maxHeight: '40vh',
 				}}
 			>
-				{items.map((item, index) => (
+				{validNpcRelationships.map((npc, index) => (
 					<DynamicListItem
-						key={item.id}
-						id={item.id}
+						key={npc.id}
+						id={npc.id}
 						index={index}
 						dragDisabled={!showControls}
-						sx={{ pr: 0 }}
+						sx={{ pr: 0, mb: 1 }}
 					>
-						<LegacyNpcRow
-							key={item.id}
-							description={item.description}
+						<NpcRow
+							key={npc.id}
+							npcRelationship={npc}
 							updateNpc={(update) => onUpdate(update, index)}
 							deleteNpc={() => onDelete(index)}
 							dragDisabled={!showControls}

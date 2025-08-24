@@ -6,6 +6,7 @@ import {
 	Companion,
 	DurabilityDie,
 	Item,
+	NpcRelationship,
 	Skill,
 	Spell,
 	StatusEffect,
@@ -625,6 +626,65 @@ export const {
 			state.unsavedChanges = true
 			state.activeCharacter.personal.rivals = reorder(
 				state.activeCharacter.personal.rivals,
+				source,
+				destination,
+			)
+		},
+		// NPC Relationships actions
+		addNewNpcRelationship: (state) => {
+			state.unsavedChanges = true
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+			}
+			state.activeCharacter.personal.npcRelationships.splice(0, 0, {
+				id: crypto.randomUUID(),
+				name: '',
+				role: 'Adventurer',
+				disposition: 0,
+				description: '',
+			})
+		},
+		updateNpcRelationship: (
+			state,
+			action: PayloadAction<{ update: Partial<NpcRelationship>; index: number }>,
+		) => {
+			const { update, index } = action.payload
+			state.unsavedChanges = true
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+			}
+			state.activeCharacter.personal.npcRelationships[index] = {
+				...state.activeCharacter.personal.npcRelationships[index],
+				...update,
+			}
+		},
+		deleteNpcRelationship: (state, action: PayloadAction<number>) => {
+			state.unsavedChanges = true
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+				return
+			}
+			state.activeCharacter.personal.npcRelationships =
+				state.activeCharacter.personal.npcRelationships.filter(
+					(_, i) => i !== action.payload,
+				)
+		},
+		reorderNpcRelationship: (
+			state,
+			action: PayloadAction<{ source: number; destination: number }>,
+		) => {
+			const { source, destination } = action.payload
+			state.unsavedChanges = true
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+				return
+			}
+			state.activeCharacter.personal.npcRelationships = reorder(
+				state.activeCharacter.personal.npcRelationships,
 				source,
 				destination,
 			)

@@ -63,6 +63,7 @@ export const migrateDoc = async (
 			allies: [],
 			contacts: [],
 			rivals: [],
+			npcRelationships: [],
 			notes: ''
 		}
 	}
@@ -366,7 +367,7 @@ const migratePersonal = async (data: any): Promise<Personal> => {
 	const playerInfoDoc = await getDoc(doc(db, collectionId, 'player-info'))
 	const playerName: string = playerInfoDoc.data()?.name
 
-	return {
+	const migratedData = {
 		...data,
 		playerName: data.playerName !== undefined ? data.playerName : playerName,
 		profilePicture: data.profilePicture || '',
@@ -394,5 +395,68 @@ const migratePersonal = async (data: any): Promise<Personal> => {
 					}
 				: rival
 		}),
-	} as Personal
+	}
+
+	// Migrate to new NPC relationships structure if it doesn't exist
+	if (!migratedData.npcRelationships) {
+		migratedData.npcRelationships = []
+
+		// Convert existing allies, contacts, and rivals to new structure
+		if (migratedData.allies) {
+			migratedData.allies.forEach((ally) => {
+				migratedData.npcRelationships.push({
+					id: ally.id || crypto.randomUUID(),
+					name: extractNameFromDescription(ally.description),
+					role: 'Adventurer', // Default role, user can change later
+					disposition: 2, // Allies are typically intimate
+					description: ally.description,
+				})
+			})
+		}
+
+		if (migratedData.contacts) {
+			migratedData.contacts.forEach((contact) => {
+				migratedData.npcRelationships.push({
+					id: contact.id || crypto.randomUUID(),
+					name: extractNameFromDescription(contact.description),
+					role: 'Seeker', // Default role, user can change later
+					disposition: 0, // Contacts are typically indifferent
+					description: contact.description,
+				})
+			})
+		}
+
+		if (migratedData.rivals) {
+			migratedData.rivals.forEach((rival) => {
+				migratedData.npcRelationships.push({
+					id: rival.id || crypto.randomUUID(),
+					name: extractNameFromDescription(rival.description),
+					role: 'Adventurer', // Default role, user can change later
+					disposition: -2, // Rivals are typically hostile
+					description: rival.description,
+				})
+			})
+		}
+	}
+
+	return migratedData as Personal
+}
+
+// Helper function to try to extract a name from the description
+const extractNameFromDescription = (description: string): string => {
+	if (!description) return ''
+	
+	// Try to extract name from common patterns like "Name - description" or "Name: description"
+	const nameMatch = description.match(/^([^-:,]+)[-:,]/)
+	if (nameMatch) {
+		return nameMatch[1].trim()
+	}
+
+	// Try to extract first few words as name
+	const words = description.trim().split(' ')
+	if (words.length >= 2) {
+		return words.slice(0, 2).join(' ')
+	}
+
+	return words[0] || ''
 }

@@ -47,6 +47,29 @@ export const createMockCharacter = (): CharacterDocument => {
 						'Vex Shadowmere - Competing scholar who uses questionable methods',
 				},
 			],
+			npcRelationships: [
+				{
+					id: generateId(),
+					name: 'Master Theron',
+					role: 'Scholar',
+					disposition: 2,
+					description: 'Former mentor at the Academy of Sciences. A wise and patient teacher who helped shape my understanding of ancient languages and arcane theory.',
+				},
+				{
+					id: generateId(),
+					name: 'Lyra Nightwhisper',
+					role: 'Scoundrel',
+					disposition: 0,
+					description: "Information broker in the city's merchant quarter. Reliable for trade secrets and rumors, but demands fair payment for her services.",
+				},
+				{
+					id: generateId(),
+					name: 'Vex Shadowmere',
+					role: 'Scholar',
+					disposition: -2,
+					description: 'Competing scholar who uses questionable methods. We clash over proper research ethics and she has sabotaged my work in the past.',
+				},
+			],
 			notes:
 				'Fascinated by ancient texts and archaeological discoveries. Tends to get lost in research.',
 		},
@@ -379,6 +402,15 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 			allies: [],
 			contacts: [],
 			rivals: [],
+			npcRelationships: [
+				{
+					id: generateId(),
+					name: 'Grim Stonebeard',
+					role: 'Artisan',
+					disposition: 1,
+					description: 'Fellow blacksmith and friendly rival. We often share techniques and compete in friendly crafting contests.',
+				},
+			],
 			notes:
 				'Master of metalworking and weapon crafting. Values tradition and quality above all else.',
 		},
