@@ -32,7 +32,8 @@ vi.mock('@site/src/hooks/useDeviceSize', () => ({
 
 // Mock Firebase service with minimal valid character data
 vi.mock('../../src/dev/firebaseService', () => {
-  const minimalCharacterData = {
+  // Function to create a fresh copy of character data for each call
+  const createMinimalCharacterData = () => ({
     docId: 'test-char-minimal',
     docRef: { id: 'test-char-minimal' },
     collectionId: 'mock-collection',
@@ -163,20 +164,20 @@ vi.mock('../../src/dev/firebaseService', () => {
     },
     companions: [],
     partyId: undefined
-  }
+  })
   
   return {
     firebaseService: {
       getCollection: vi.fn().mockImplementation((collectionId) => {
         if (collectionId === 'mock-collection' || collectionId === 'dev-user') {
-          return Promise.resolve([minimalCharacterData])
+          return Promise.resolve([createMinimalCharacterData()])
         }
         return Promise.resolve([])
       }),
       getDocument: vi.fn().mockImplementation((collectionId, characterId) => {
-        // Mock the correct character based on the parameters
+        // Mock the correct character based on the parameters - return fresh copy each time
         if (collectionId === 'mock-collection' && characterId === 'test-char-minimal') {
-          return Promise.resolve(minimalCharacterData)
+          return Promise.resolve(createMinimalCharacterData())
         }
         return Promise.resolve(null)
       }),
