@@ -24,7 +24,16 @@ export default defineConfig({
         'coverage/**',
         '**/*.config.*',
         '**/*.d.ts',
-        'src/test-setup.ts'
+        'src/test-setup.ts',
+        // Exclude documentation and config files
+        'sidebars.js',
+        'src/pages/**',
+        // Exclude internal tooling (remark plugins)
+        'src/remark/**',
+        // Exclude dev/mock files 
+        'src/dev/**',
+        // Exclude pure type definitions
+        'src/types/**'
       ]
     },
     // Mock modules that are not available in jsdom
