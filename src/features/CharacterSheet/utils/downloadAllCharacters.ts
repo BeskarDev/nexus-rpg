@@ -1,11 +1,12 @@
 import JSZip from 'jszip'
 import { CharacterDocument } from '../../../types/Character'
+import { logger } from './logger'
 
 export const downloadAllCharacters = async (
 	characters: CharacterDocument[],
 ) => {
 	if (!characters || characters.length === 0) {
-		console.warn('No characters to download')
+		logger.warn('No characters to download')
 		return
 	}
 
@@ -73,11 +74,11 @@ export const downloadAllCharacters = async (
 		document.body.removeChild(a)
 		URL.revokeObjectURL(url)
 
-		console.log(
+		logger.debug(
 			`Successfully downloaded ${characters.length} characters for ${Object.keys(charactersByPlayer).length} players`,
 		)
 	} catch (error) {
-		console.error('Error generating zip file:', error)
+		logger.error('Error generating zip file:', error)
 		alert('Failed to download characters. Please try again.')
 	}
 }

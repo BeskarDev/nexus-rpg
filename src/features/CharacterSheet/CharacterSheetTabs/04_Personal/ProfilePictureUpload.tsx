@@ -10,6 +10,7 @@ import {
 	Paper,
 } from '@mui/material'
 import { PhotoCamera, Delete, CloudUpload } from '@mui/icons-material'
+import { logger } from '../../utils'
 
 interface ProfilePictureUploadProps {
 	profilePicture?: string
@@ -118,7 +119,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 			onProfilePictureUpdate(base64)
 			setCurrentImage(base64) // Update local state immediately for instant feedback
 		} catch (err) {
-			console.error('Error processing profile picture:', err)
+			logger.error('Error processing profile picture:', err)
 			setError('Failed to process image. Please try again.')
 		} finally {
 			setUploading(false)

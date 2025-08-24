@@ -12,6 +12,7 @@ import {
 	OrganizedItems,
 	calculateLocationLoad,
 } from '../utils/itemUtils'
+import { logger } from '../../../utils'
 
 export const useItemManagement = (activeCharacter: CharacterDocument) => {
 	const dispatch = useAppDispatch()
@@ -70,7 +71,7 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 	}, [itemsByLocation, encumbrance.currentLoad])
 
 	const carryCapacity = useMemo(() => {
-		console.log('Calculating carry capacity:', {
+		logger.debug('Calculating carry capacity:', {
 			strength: activeCharacter.statistics.strength.value,
 			carryModifier: encumbrance.carryModifier,
 		})
@@ -78,7 +79,7 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 			Number(activeCharacter.statistics.strength.value) / 2 +
 			8 +
 			Number(encumbrance.carryModifier || 0)
-		console.log('Carry capacity:', result)
+		logger.debug('Carry capacity:', result)
 		return result
 	}, [activeCharacter.statistics.strength, encumbrance.carryModifier])
 
