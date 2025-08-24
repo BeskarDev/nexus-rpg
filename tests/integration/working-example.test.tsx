@@ -4,11 +4,80 @@ import { describe, it, expect, beforeEach, vi } from 'vitest'
 import React from 'react'
 import { CharacterSheetWrapper } from '../../src/features/CharacterSheet/CharacterSheetWrapper'
 
+// Mock the dev firebase service to prevent real API calls
+vi.mock('../../src/dev/firebaseService', () => {
+  // Create mock character inside the mock factory function
+  const mockCharacter = {
+    docId: 'mock-character-1',
+    docRef: { id: 'mock-character-1' },
+    personal: {
+      playerName: 'Test Player',
+      characterName: 'Test Character',
+      level: 1,
+      xp: 0,
+    },
+    statistics: {
+      attributes: {
+        strength: { base: 10, current: 10 },
+        agility: { base: 10, current: 10 },
+        spirit: { base: 10, current: 10 },
+        mind: { base: 10, current: 10 },
+      },
+      hp: { max: 20, current: 20 },
+      defenses: {
+        parry: 8,
+        dodge: 8,
+        resist: 8,
+      },
+    },
+    skills: {
+      general: [],
+      expert: [],
+    },
+    items: {
+      weapons: [],
+      armor: [],
+      inventory: [],
+      currency: { copper: 0, silver: 0, gold: 0 },
+    },
+    spells: {
+      arcane: [],
+      mystic: [],
+    },
+  }
+
+  return {
+    firebaseService: {
+      getAllCharacters: vi.fn().mockResolvedValue([]),
+      getCharacter: vi.fn().mockResolvedValue(mockCharacter),
+      getDocument: vi.fn().mockResolvedValue(mockCharacter),
+      saveCharacter: vi.fn().mockResolvedValue(undefined),
+      updateDocument: vi.fn().mockResolvedValue(undefined),
+      createCharacter: vi.fn().mockResolvedValue('mock-character-id'),
+      deleteCharacter: vi.fn().mockResolvedValue(undefined),
+      getCollection: vi.fn().mockResolvedValue([]),
+      getUserInfo: vi.fn().mockResolvedValue({ allowedCollections: [] }),
+      deleteDocument: vi.fn().mockResolvedValue(undefined),
+    }
+  }
+})
+
+// Mock URL parameters for character sheet
+Object.defineProperty(window, 'location', {
+  value: {
+    ...window.location,
+    search: '?id=mock-collection-mock-character-1',
+  },
+  writable: true,
+})
+
 // Simplified working test approach
 describe('Character Sheet - Working Integration Example', () => {
   beforeEach(() => {
     localStorage.clear()
     vi.clearAllMocks()
+    // Make sure we're in development mode for tests
+    process.env.NODE_ENV = 'development'
   })
 
   it('should successfully import and attempt to render the real CharacterSheetWrapper', async () => {
