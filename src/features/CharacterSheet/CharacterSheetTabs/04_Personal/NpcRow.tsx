@@ -71,12 +71,12 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 					sx={{ 
 						minHeight: 'auto',
 						'& .MuiAccordionSummary-content': { 
-							my: 1,
+							my: 0.5,
 							alignItems: 'center' 
 						} 
 					}}
 				>
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexGrow: 1, mr: 1 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexGrow: 1, mr: 0.5 }}>
 						<Typography variant="body2" sx={{ fontWeight: 'medium', minWidth: '8rem' }}>
 							{localData.name || 'Unnamed NPC'}
 						</Typography>
@@ -108,9 +108,9 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 						)}
 					</Box>
 				</AccordionSummary>
-				<AccordionDetails sx={{ pt: 0 }}>
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-						<Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+				<AccordionDetails sx={{ pt: 0, pb: 1 }}>
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+						<Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
 							<TextField
 								label="Name"
 								value={localData.name}

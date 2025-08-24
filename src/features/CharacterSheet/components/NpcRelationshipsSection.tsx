@@ -32,11 +32,11 @@ export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = (
 	const validNpcRelationships = npcRelationships || []
 
 	return (
-		<Box sx={{ maxWidth: '100%', mb: 2 }}>
-			<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+		<Box sx={{ maxWidth: '100%', mb: 1 }}>
+			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 				<SectionHeader>NPC Relationships</SectionHeader>
 				{showControls && (
-					<IconButton onClick={onAdd} sx={{ mb: 0.75 }}>
+					<IconButton onClick={onAdd} sx={{ mb: 0.5 }}>
 						<AddCircle />
 					</IconButton>
 				)}
@@ -56,7 +56,7 @@ export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = (
 						id={npc.id}
 						index={index}
 						dragDisabled={!showControls}
-						sx={{ pr: 0, mb: 1 }}
+						sx={{ pr: 0, mb: 0.5 }}
 					>
 						<NpcRow
 							key={npc.id}
