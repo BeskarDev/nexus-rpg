@@ -1,1 +1,0 @@
-export { TabRenderer } from './TabRenderer'
