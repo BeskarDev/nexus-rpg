@@ -15,6 +15,7 @@ import { db } from '@site/src/config/firebase'
 import { Party, PartyMember, PartyInfo } from '@site/src/types/Party'
 import { CharacterDocument } from '@site/src/types/Character'
 import { calculateCharacterLevel } from '../utils/calculateCharacterLevel'
+import { logger } from '../utils'
 
 export class PartyService {
 	/**
@@ -68,7 +69,7 @@ export class PartyService {
 
 			return docRef.id
 		} catch (error) {
-			console.error('PartyService.createParty error:', error)
+			logger.error('PartyService.createParty error:', error)
 			if (error instanceof Error) {
 				throw error
 			}
@@ -113,7 +114,7 @@ export class PartyService {
 					})
 				}
 			} catch (error) {
-				console.warn(
+				logger.warn(
 					`Failed to fetch character data for ${characterId}:`,
 					error,
 				)
@@ -166,7 +167,7 @@ export class PartyService {
 		characterId: string,
 	): Promise<void> {
 		try {
-			console.log('PartyService.removeCharacterFromParty called with:', {
+			logger.debug('PartyService.removeCharacterFromParty called with:', {
 				partyId,
 				characterId,
 			})
@@ -181,25 +182,25 @@ export class PartyService {
 			const party = partyDoc.data() as Party
 			const updatedMembers = party.members.filter((id) => id !== characterId)
 
-			console.log('Party members before removal:', party.members)
-			console.log('Party members after removal:', updatedMembers)
+			logger.debug('Party members before removal:', party.members)
+			logger.debug('Party members after removal:', updatedMembers)
 
 			if (updatedMembers.length === 0) {
 				// Delete the party if no members left
-				console.log('No members left, deleting party')
+				logger.debug('No members left, deleting party')
 				await deleteDoc(partyRef)
-				console.log('Party deleted successfully')
+				logger.debug('Party deleted successfully')
 			} else {
-				console.log('Updating party with new member list')
+				logger.debug('Updating party with new member list')
 				await updateDoc(partyRef, {
 					members: updatedMembers,
 				})
-				console.log('Party updated successfully')
+				logger.debug('Party updated successfully')
 			}
 
 			// Remove party reference from character
 			const [collectionId, docId] = characterId.split('-')
-			console.log('Updating character:', { collectionId, docId })
+			logger.debug('Updating character:', { collectionId, docId })
 
 			if (!collectionId || !docId) {
 				throw new Error(
@@ -208,9 +209,9 @@ export class PartyService {
 			}
 
 			await updateDoc(doc(db, collectionId, docId), { partyId: null })
-			console.log('Character updated successfully')
+			logger.debug('Character updated successfully')
 		} catch (error) {
-			console.error('PartyService.removeCharacterFromParty error:', error)
+			logger.error('PartyService.removeCharacterFromParty error:', error)
 			if (error instanceof Error) {
 				throw error
 			}
@@ -254,7 +255,7 @@ export class PartyService {
 				}
 			},
 			(error) => {
-				console.error('Error listening to party updates:', error)
+				logger.error('Error listening to party updates:', error)
 				callback(null)
 			},
 		)
@@ -269,7 +270,7 @@ export class PartyService {
 		currentUserId?: string,
 	): Promise<void> {
 		try {
-			console.log('PartyService.deleteParty called with:', {
+			logger.debug('PartyService.deleteParty called with:', {
 				partyId,
 				characterId,
 				currentUserId,
@@ -287,7 +288,7 @@ export class PartyService {
 			}
 
 			const party = partyDoc.data() as Party
-			console.log('Party data:', party)
+			logger.debug('Party data:', party)
 
 			// Only allow deletion if the character is the only member
 			if (party.members.length !== 1 || !party.members.includes(characterId)) {
@@ -298,7 +299,7 @@ export class PartyService {
 
 			// Remove party reference from character
 			const [collectionId, docId] = characterId.split('-')
-			console.log('Updating character:', { collectionId, docId })
+			logger.debug('Updating character:', { collectionId, docId })
 
 			if (!collectionId || !docId) {
 				throw new Error(
@@ -321,13 +322,13 @@ export class PartyService {
 				)
 			}
 
-			console.log('Character document exists, proceeding with update')
+			logger.debug('Character document exists, proceeding with update')
 
 			try {
 				await updateDoc(characterRef, { partyId: null })
-				console.log('Character updated successfully')
+				logger.debug('Character updated successfully')
 			} catch (updateError) {
-				console.error('Failed to update character:', updateError)
+				logger.error('Failed to update character:', updateError)
 				throw new Error(
 					`Failed to update character: ${updateError instanceof Error ? updateError.message : 'Unknown error'}`,
 				)
@@ -336,15 +337,15 @@ export class PartyService {
 			// Delete the party
 			try {
 				await deleteDoc(partyRef)
-				console.log('Party deleted successfully')
+				logger.debug('Party deleted successfully')
 			} catch (deleteError) {
-				console.error('Failed to delete party:', deleteError)
+				logger.error('Failed to delete party:', deleteError)
 				throw new Error(
 					`Failed to delete party: ${deleteError instanceof Error ? deleteError.message : 'Unknown error'}`,
 				)
 			}
 		} catch (error) {
-			console.error('PartyService.deleteParty error:', error)
+			logger.error('PartyService.deleteParty error:', error)
 			if (error instanceof Error) {
 				throw error
 			}

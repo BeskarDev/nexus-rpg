@@ -19,7 +19,7 @@
 				batch.update(docRef, newDocumentBody)
 			})
 			batch.commit().then(() => {
-				console.log(`updated all documents inside ${collectionName}`)
+				logger.debug(`updated all documents inside ${collectionName}`)
 			})
 		})
 } */

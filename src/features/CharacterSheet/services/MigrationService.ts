@@ -9,6 +9,7 @@ import {
 } from 'firebase/firestore'
 import { db } from '@site/src/config/firebase'
 import { Party } from '@site/src/types/Party'
+import { logger } from '../utils'
 
 export interface LegacySharedNote {
 	id: string
@@ -21,14 +22,14 @@ export class MigrationService {
 	 * Migrate all existing shared notes to the new party system
 	 */
 	static async migrateSharedNotesToParties(): Promise<void> {
-		console.log('Starting migration of shared notes to parties...')
+		logger.debug('Starting migration of shared notes to parties...')
 
 		try {
 			// Get all existing shared notes
 			const sharedNotesSnapshot = await getDocs(collection(db, 'shared-notes'))
 
 			if (sharedNotesSnapshot.empty) {
-				console.log('No shared notes found to migrate')
+				logger.debug('No shared notes found to migrate')
 				return
 			}
 
@@ -40,7 +41,7 @@ export class MigrationService {
 					!noteData.allowedCharacters ||
 					noteData.allowedCharacters.length === 0
 				) {
-					console.log(
+					logger.debug(
 						`Skipping shared note ${noteDoc.id} - no allowed characters`,
 					)
 					continue
@@ -51,7 +52,7 @@ export class MigrationService {
 					noteData.allowedCharacters,
 				)
 				if (hasExistingParty) {
-					console.log(
+					logger.debug(
 						`Skipping shared note ${noteDoc.id} - characters already have a party`,
 					)
 					continue
@@ -62,7 +63,7 @@ export class MigrationService {
 				const creatorInfo = await this.getCharacterCreatorInfo(firstCharacterId)
 
 				if (!creatorInfo) {
-					console.log(
+					logger.debug(
 						`Skipping shared note ${noteDoc.id} - cannot find creator info`,
 					)
 					continue
@@ -79,7 +80,7 @@ export class MigrationService {
 
 				// Add the party to the database
 				const partyRef = await addDoc(collection(db, 'parties'), party)
-				console.log(
+				logger.debug(
 					`Created party ${partyRef.id} from shared note ${noteDoc.id}`,
 				)
 
@@ -90,12 +91,12 @@ export class MigrationService {
 
 				// Delete the old shared note
 				await deleteDoc(noteDoc.ref)
-				console.log(`Deleted legacy shared note ${noteDoc.id}`)
+				logger.debug(`Deleted legacy shared note ${noteDoc.id}`)
 			}
 
-			console.log('Migration completed successfully')
+			logger.debug('Migration completed successfully')
 		} catch (error) {
-			console.error('Migration failed:', error)
+			logger.error('Migration failed:', error)
 			throw error
 		}
 	}
@@ -115,7 +116,7 @@ export class MigrationService {
 					return true
 				}
 			} catch (error) {
-				console.warn(
+				logger.warn(
 					`Failed to check party for character ${characterId}:`,
 					error,
 				)
@@ -143,7 +144,7 @@ export class MigrationService {
 				}
 			}
 		} catch (error) {
-			console.warn(
+			logger.warn(
 				`Failed to get creator info for character ${characterId}:`,
 				error,
 			)
@@ -161,11 +162,11 @@ export class MigrationService {
 		try {
 			const [collectionId, docId] = characterId.split('-')
 			await updateDoc(doc(db, collectionId, docId), { partyId })
-			console.log(
+			logger.debug(
 				`Updated character ${characterId} with party reference ${partyId}`,
 			)
 		} catch (error) {
-			console.warn(
+			logger.warn(
 				`Failed to update character ${characterId} with party reference:`,
 				error,
 			)
