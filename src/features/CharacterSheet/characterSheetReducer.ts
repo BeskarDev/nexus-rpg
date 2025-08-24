@@ -90,11 +90,19 @@ export const {
 				...companion,
 			}))
 			// Migrate older characters that don't have statusEffects array
-			if (!character.statistics.statusEffects) {
+			if (!character.statistics?.statusEffects) {
+				// Ensure statistics object exists
+				if (!character.statistics) {
+					character.statistics = {} as any
+				}
 				character.statistics.statusEffects = []
 			}
 			// Ensure statusEffects is always an array
-			if (!Array.isArray(character.statistics.statusEffects)) {
+			if (!Array.isArray(character.statistics?.statusEffects)) {
+				// Ensure statistics object exists
+				if (!character.statistics) {
+					character.statistics = {} as any
+				}
 				character.statistics.statusEffects = []
 			}
 			// Migrate skills to use normalized names and ensure ranks are calculated correctly
@@ -129,21 +137,37 @@ export const {
 				})
 			}
 			// Ensure professions array exists
-			if (!character.skills.professions) {
+			if (!character.skills?.professions) {
+				// Ensure skills object exists
+				if (!character.skills) {
+					character.skills = {} as any
+				}
 				character.skills.professions = []
 			}
 			// Ensure languages array exists with Tradespeak as default
-			if (!character.skills.languages) {
+			if (!character.skills?.languages) {
+				// Ensure skills object exists
+				if (!character.skills) {
+					character.skills = {} as any
+				}
 				character.skills.languages = ['Tradespeak']
 			} else if (!character.skills.languages.includes('Tradespeak')) {
 				// Add Tradespeak if it's missing (safety check)
 				character.skills.languages.unshift('Tradespeak')
 			}
 			// Migrate older characters that don't have weapons/items arrays
-			if (!character.items.weapons) {
+			if (!character.items?.weapons) {
+				// Ensure items object exists
+				if (!character.items) {
+					character.items = {} as any
+				}
 				character.items.weapons = []
 			}
-			if (!character.items.items) {
+			if (!character.items?.items) {
+				// Ensure items object exists
+				if (!character.items) {
+					character.items = {} as any
+				}
 				character.items.items = []
 			}
 			// Migrate weapons and items to include uses and durability if missing
@@ -158,7 +182,11 @@ export const {
 				...item,
 			}))
 			// Ensure encumbrance has mount and storage max load fields
-			if (!character.items.encumbrance) {
+			if (!character.items?.encumbrance) {
+				// Ensure items object exists
+				if (!character.items) {
+					character.items = {} as any
+				}
 				character.items.encumbrance = {
 					encumberedAt: 0,
 					overencumberedAt: 0,
