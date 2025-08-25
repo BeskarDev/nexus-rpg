@@ -58,7 +58,7 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 			expanded={expanded}
 			onChange={(_, isExpanded) => setExpanded(isExpanded)}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '47rem', mt: 0 }}
+			sx={{ flexGrow: 1, mt: 0 }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMore />}
