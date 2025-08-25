@@ -1,11 +1,7 @@
 import {
 	Box,
-	IconButton,
-	Tooltip,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
-
-import { Build } from '@mui/icons-material'
 import { CharacterDocument } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -24,17 +20,12 @@ export const PersonalTab: React.FC = () => {
 		[activeCharacter.personal],
 	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
-	const [showControls, setShowReorder] = useState(false) // State to toggle reorder icons
 
 	// Use the reusable CRUD hook
 	const npcRelationshipCrud = useNpcRelationshipCrud()
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
-	}
-
-	const toggleReorder = () => {
-		setShowReorder((prev) => !prev)
 	}
 
 	// Always show the NPC relationships interface
@@ -46,27 +37,11 @@ export const PersonalTab: React.FC = () => {
 				display: 'flex',
 				columnGap: 3,
 				flexWrap: 'wrap',
-				maxWidth: { lg: 'unset', xl: '47rem' },
 			}}
 		>
 			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>
 				<Box sx={{ flexGrow: 1 }}>
-					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
-						<SectionHeader sx={{ mb: 0 }}>Your Character</SectionHeader>
-						<Tooltip title="enable this to add, delete, or reorder lists">
-							<IconButton
-								size="small"
-								onClick={toggleReorder}
-								color={showControls ? 'primary' : 'default'}
-								sx={{
-									border: '1px solid',
-									borderColor: 'divider',
-								}}
-							>
-								<Build fontSize="inherit" />
-							</IconButton>
-						</Tooltip>
-					</Box>
+					<SectionHeader sx={{ mb: 2 }}>Your Character</SectionHeader>
 					<Box
 						sx={{
 							display: 'flex',
@@ -205,7 +180,6 @@ export const PersonalTab: React.FC = () => {
 			{showNewInterface && (
 				<NpcRelationshipsSection
 					npcRelationships={npcRelationships || []}
-					showControls={showControls}
 					onAdd={npcRelationshipCrud.addNew}
 					onUpdate={npcRelationshipCrud.update}
 					onDelete={npcRelationshipCrud.delete}

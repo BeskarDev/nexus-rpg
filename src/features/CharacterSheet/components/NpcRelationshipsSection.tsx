@@ -10,7 +10,6 @@ import { NpcRow } from '../CharacterSheetTabs/04_Personal/NpcRow'
 
 export type NpcRelationshipsSectionProps = {
 	npcRelationships: NpcRelationship[]
-	showControls: boolean
 	onAdd: () => void
 	onUpdate: (update: Partial<NpcRelationship>, index: number) => void
 	onDelete: (index: number) => void
@@ -22,7 +21,6 @@ export type NpcRelationshipsSectionProps = {
  */
 export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = ({
 	npcRelationships,
-	showControls,
 	onAdd,
 	onUpdate,
 	onDelete,
@@ -32,14 +30,12 @@ export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = (
 	const validNpcRelationships = npcRelationships || []
 
 	return (
-		<Box sx={{ maxWidth: '100%', mb: 1 }}>
+		<Box sx={{ mb: 1 }}>
 			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 				<SectionHeader>NPC Relationships</SectionHeader>
-				{showControls && (
-					<IconButton onClick={onAdd} sx={{ mb: 0.5 }}>
-						<AddCircle />
-					</IconButton>
-				)}
+				<IconButton onClick={onAdd} sx={{ mb: 0.5 }}>
+					<AddCircle />
+				</IconButton>
 			</Box>
 			<DynamicList
 				droppableId="npc-relationships"
@@ -55,7 +51,7 @@ export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = (
 						key={npc.id}
 						id={npc.id}
 						index={index}
-						dragDisabled={!showControls}
+						dragDisabled={false}
 						sx={{ pr: 0, mb: 0.5 }}
 					>
 						<NpcRow
@@ -63,7 +59,6 @@ export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = (
 							npcRelationship={npc}
 							updateNpc={(update) => onUpdate(update, index)}
 							deleteNpc={() => onDelete(index)}
-							dragDisabled={!showControls}
 						/>
 					</DynamicListItem>
 				))}

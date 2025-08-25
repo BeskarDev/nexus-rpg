@@ -8,7 +8,13 @@ import {
 	AccordionSummary,
 	AccordionDetails,
 	Typography,
-	Chip
+	Chip,
+	Dialog,
+	DialogTitle,
+	DialogContent,
+	DialogContentText,
+	DialogActions,
+	Button
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -19,7 +25,6 @@ export type NpcRowProps = {
 	npcRelationship: NpcRelationship
 	updateNpc: (update: Partial<NpcRelationship>) => void
 	deleteNpc: () => void
-	dragDisabled?: boolean
 } & Omit<TextFieldProps, 'value' | 'onChange'>
 
 const getDispositionColor = (disposition: NpcDisposition): 'success' | 'default' | 'error' => {
@@ -37,11 +42,11 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 	npcRelationship,
 	updateNpc,
 	deleteNpc,
-	dragDisabled,
 	...props
 }) => {
 	const [localData, setLocalData] = useState(npcRelationship)
 	const [expanded, setExpanded] = useState(false)
+	const [confirmDelete, setConfirmDelete] = useState(false)
 
 	const handleFieldUpdate = (field: keyof NpcRelationship, value: any) => {
 		const updatedData = { ...localData, [field]: value }
@@ -53,107 +58,142 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 		updateNpc({ description: localData.description })
 	}
 
+	const handleDeleteClick = (e: React.MouseEvent) => {
+		e.stopPropagation()
+		setConfirmDelete(true)
+	}
+
+	const handleConfirmDelete = () => {
+		deleteNpc()
+		setConfirmDelete(false)
+	}
+
+	const handleCancelDelete = () => {
+		setConfirmDelete(false)
+	}
+
 	return (
-		<Accordion
-			expanded={expanded}
-			onChange={(_, isExpanded) => setExpanded(isExpanded)}
-			disableGutters
-			sx={{ flexGrow: 1, mt: 0 }}
-		>
-			<AccordionSummary
-				expandIcon={<ExpandMore />}
-				sx={{
-					gap: 1,
-					pt: 0,
-					px: 0,
-					flexDirection: 'row-reverse',
-					'& .MuiAccordionSummary-content': {
-						display: 'block',
-					},
-				}}
+		<>
+			<Accordion
+				expanded={expanded}
+				onChange={(_, isExpanded) => setExpanded(isExpanded)}
+				disableGutters
+				sx={{ flexGrow: 1, mt: 0 }}
 			>
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-					<TextField
-						size="small"
-						variant="standard"
-						value={localData.name || 'Unnamed NPC'}
-						onChange={(e) => handleFieldUpdate('name', e.target.value)}
-						label="Name"
-						sx={{ minWidth: '8rem', flexGrow: 1 }}
-					/>
-					<Chip 
-						size="small" 
-						label={localData.role}
-						variant="outlined"
-						sx={{ minWidth: '4rem' }}
-					/>
-					<Chip 
-						size="small"
-						label={getDispositionLabel(localData.disposition)}
-						color={getDispositionColor(localData.disposition)}
-						variant="outlined"
-					/>
-					{!dragDisabled && (
+				<AccordionSummary
+					expandIcon={<ExpandMore />}
+					sx={{
+						gap: 1,
+						pt: 0,
+						px: 0,
+						flexDirection: 'row-reverse',
+						'& .MuiAccordionSummary-content': {
+							display: 'block',
+						},
+					}}
+				>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+						<TextField
+							size="small"
+							variant="standard"
+							value={localData.name || 'Unnamed NPC'}
+							onChange={(e) => handleFieldUpdate('name', e.target.value)}
+							label="Name"
+							sx={{ minWidth: '8rem', flexGrow: 1 }}
+						/>
+						<Chip 
+							size="small" 
+							label={localData.role}
+							variant="outlined"
+							sx={{ minWidth: '4rem' }}
+						/>
+						<Chip 
+							size="small"
+							label={getDispositionLabel(localData.disposition)}
+							color={getDispositionColor(localData.disposition)}
+							variant="outlined"
+						/>
 						<IconButton
 							size="small"
 							edge="end"
 							aria-label="delete"
-							onClick={(e) => {
-								e.stopPropagation()
-								deleteNpc()
-							}}
+							onClick={handleDeleteClick}
 						>
 							<Delete />
 						</IconButton>
-					)}
-				</Box>
-			</AccordionSummary>
-			<AccordionDetails>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-					<Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-						<TextField
-							select
-							label="Role"
-							value={localData.role}
-							onChange={(e) => handleFieldUpdate('role', e.target.value as NpcRole)}
-							sx={{ minWidth: '8rem' }}
-							size="small"
-						>
-							{npcRoleArray.map((role) => (
-								<MenuItem key={role} value={role}>
-									{role}
-								</MenuItem>
-							))}
-						</TextField>
-						<TextField
-							select
-							label="Disposition"
-							value={localData.disposition}
-							onChange={(e) => handleFieldUpdate('disposition', parseInt(e.target.value) as NpcDisposition)}
-							sx={{ minWidth: '10rem' }}
-							size="small"
-						>
-							{npcDispositionArray.map((disp) => (
-								<MenuItem key={disp.value} value={disp.value}>
-									{disp.label} ({disp.value >= 0 ? '+' : ''}{disp.value})
-								</MenuItem>
-							))}
-						</TextField>
 					</Box>
-					<TextField
-						multiline
-						minRows={2}
-						maxRows={6}
-						label="Description"
-						value={localData.description}
-						onChange={(e) => setLocalData(prev => ({ ...prev, description: e.target.value }))}
-						onBlur={handleDescriptionBlur}
-						placeholder="Describe this NPC and your relationship with them..."
-						sx={{ width: '100%' }}
-						size="small"
-					/>
-				</Box>
-			</AccordionDetails>
-		</Accordion>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+						<Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+							<TextField
+								select
+								label="Role"
+								value={localData.role}
+								onChange={(e) => handleFieldUpdate('role', e.target.value as NpcRole)}
+								sx={{ minWidth: '8rem' }}
+								size="small"
+							>
+								{npcRoleArray.map((role) => (
+									<MenuItem key={role} value={role}>
+										{role}
+									</MenuItem>
+								))}
+							</TextField>
+							<TextField
+								select
+								label="Disposition"
+								value={localData.disposition}
+								onChange={(e) => handleFieldUpdate('disposition', parseInt(e.target.value) as NpcDisposition)}
+								sx={{ minWidth: '10rem' }}
+								size="small"
+							>
+								{npcDispositionArray.map((disp) => (
+									<MenuItem key={disp.value} value={disp.value}>
+										{disp.label} ({disp.value >= 0 ? '+' : ''}{disp.value})
+									</MenuItem>
+								))}
+							</TextField>
+						</Box>
+						<TextField
+							multiline
+							minRows={2}
+							maxRows={6}
+							label="Description"
+							value={localData.description}
+							onChange={(e) => setLocalData(prev => ({ ...prev, description: e.target.value }))}
+							onBlur={handleDescriptionBlur}
+							placeholder="Describe this NPC and your relationship with them..."
+							sx={{ width: '100%' }}
+							size="small"
+						/>
+					</Box>
+				</AccordionDetails>
+			</Accordion>
+
+			{/* Delete Confirmation Dialog */}
+			<Dialog
+				open={confirmDelete}
+				onClose={handleCancelDelete}
+				aria-labelledby="delete-dialog-title"
+			>
+				<DialogTitle id="delete-dialog-title">
+					Delete NPC Relationship
+				</DialogTitle>
+				<DialogContent>
+					<DialogContentText>
+						Are you sure you want to delete your relationship with "{localData.name || 'this NPC'}"? This action cannot be undone.
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleCancelDelete}>
+						Cancel
+					</Button>
+					<Button onClick={handleConfirmDelete} color="error" autoFocus>
+						Delete
+					</Button>
+				</DialogActions>
+			</Dialog>
+		</>
 	)
 }
