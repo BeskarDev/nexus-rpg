@@ -14,12 +14,33 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogActions,
-	Button
+	Button,
+	Tooltip
 } from '@mui/material'
 import React, { useState } from 'react'
 
 import { Delete, ExpandMore } from '@mui/icons-material'
 import { NpcRelationship, npcRoleArray, npcDispositionArray, NpcRole, NpcDisposition } from '@site/src/types/Character'
+
+// Role descriptions from the documentation
+const roleDescriptions: Record<NpcRole, string> = {
+	'Adventurer': 'Adventurers are those who live for excitement, danger, and the thrill of exploration or combat. They might be mercenaries, bounty hunters, treasure hunters, outlaws, or wanderers who often take on high-risk tasks.',
+	'Artisan': 'Artisans are skilled crafters or builders, masters of their trade. They might be blacksmiths, carpenters, weavers, or architects who shape the world with their hands.',
+	'Authority': 'Authorities hold positions of power, law, or governance. They could be nobles, guards, judges, or anyone who wields social or political influence.',
+	'Scholar': 'Scholars are seekers of knowledge—whether academic, religious, or medical. They could be priests, healers, historians, or shamans who value study and wisdom above all else.',
+	'Scoundrel': 'Scoundrels are those who thrive in the shadows, relying on trickery, deceit, and manipulation to get what they want. They could be thieves, con artists, spies, or anyone with a hidden agenda.',
+	'Seeker': 'Seekers are individuals driven by a quest—whether for knowledge, wealth, or personal expression. They might be merchants, guides, entertainers, or anyone seeking something they don\'t yet possess.'
+}
+
+// Disposition descriptions from the documentation
+const dispositionDescriptions: Record<NpcDisposition, string> = {
+	[-3]: 'Actively despises the adventurer and will work to undermine them even at personal cost.',
+	[-2]: 'Opposes the adventurer\'s goals and requires significant persuasion or leverage to cooperate.',
+	[-1]: 'Distrusts the adventurer but may be convinced to assist for appropriate compensation.',
+	[0]: 'Has no strong feelings toward the adventurer and interacts purely transactionally.',
+	[1]: 'Views the adventurer favorably and is willing to offer modest assistance or discount.',
+	[2]: 'Considers the adventurer as family, close friend, or honored ally and offers substantial support.'
+}
 
 export type NpcRowProps = {
 	npcRelationship: NpcRelationship
@@ -38,6 +59,14 @@ const getDispositionColor = (disposition: NpcDisposition): 'success' | 'info' | 
 const getDispositionLabel = (disposition: NpcDisposition): string => {
 	const item = npcDispositionArray.find(d => d.value === disposition)
 	return item ? `${item.label} (${disposition >= 0 ? '+' : ''}${disposition})` : 'Unknown'
+}
+
+const getRoleDescription = (role: NpcRole): string => {
+	return roleDescriptions[role] || 'No description available.'
+}
+
+const getDispositionDescription = (disposition: NpcDisposition): string => {
+	return dispositionDescriptions[disposition] || 'No description available.'
 }
 
 export const NpcRow: React.FC<NpcRowProps> = ({
@@ -107,27 +136,31 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 								maxWidth: '12rem'
 							}}
 						/>
-						<Chip 
-							size="small" 
-							label={localData.role}
-							variant="outlined"
-							sx={{ 
-								minWidth: '4rem',
-								flexShrink: 0,
-								fontSize: '0.75rem'
-							}}
-						/>
-						<Chip 
-							size="small"
-							label={getDispositionLabel(localData.disposition)}
-							color={getDispositionColor(localData.disposition)}
-							variant="outlined"
-							sx={{ 
-								flexShrink: 0,
-								fontSize: '0.75rem',
-								maxWidth: { xs: '6rem', sm: 'none' }
-							}}
-						/>
+						<Tooltip title={getRoleDescription(localData.role)} arrow>
+							<Chip 
+								size="small" 
+								label={localData.role}
+								variant="outlined"
+								sx={{ 
+									minWidth: '4rem',
+									flexShrink: 0,
+									fontSize: '0.75rem'
+								}}
+							/>
+						</Tooltip>
+						<Tooltip title={getDispositionDescription(localData.disposition)} arrow>
+							<Chip 
+								size="small"
+								label={getDispositionLabel(localData.disposition)}
+								color={getDispositionColor(localData.disposition)}
+								variant="outlined"
+								sx={{ 
+									flexShrink: 0,
+									fontSize: '0.75rem',
+									maxWidth: { xs: '6rem', sm: 'none' }
+								}}
+							/>
+						</Tooltip>
 						<IconButton
 							size="small"
 							edge="end"
