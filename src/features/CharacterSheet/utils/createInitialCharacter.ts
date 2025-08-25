@@ -22,6 +22,7 @@ export const createInitialCharacter = (
 			allies: [],
 			contacts: [],
 			rivals: [],
+			npcRelationships: [],
 			notes: '',
 		},
 		statistics: {

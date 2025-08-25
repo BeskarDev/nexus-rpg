@@ -6,6 +6,7 @@ import {
 	Companion,
 	DurabilityDie,
 	Item,
+	NpcRelationship,
 	Skill,
 	Spell,
 	StatusEffect,
@@ -515,116 +516,61 @@ export const {
 			}))
 			state.activeCharacter.spells.spells.unshift(...newSpells)
 		},
-		addNewAlly: (state) => {
+		// NPC Relationships actions
+		addNewNpcRelationship: (state) => {
 			state.unsavedChanges = true
-			state.activeCharacter.personal.allies.splice(0, 0, {
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+			}
+			state.activeCharacter.personal.npcRelationships.splice(0, 0, {
 				id: crypto.randomUUID(),
+				name: '',
+				role: 'Adventurer',
+				disposition: 0,
 				description: '',
 			})
 		},
-		updateAlly: (
+		updateNpcRelationship: (
 			state,
-			action: PayloadAction<{ update: string; index: number }>,
+			action: PayloadAction<{ update: Partial<NpcRelationship>; index: number }>,
 		) => {
-			const update = action.payload.update
-			const index = action.payload.index
+			const { update, index } = action.payload
 			state.unsavedChanges = true
-			state.activeCharacter.personal.allies[index] = {
-				...state.activeCharacter.personal.allies[index],
-				description: update,
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+			}
+			state.activeCharacter.personal.npcRelationships[index] = {
+				...state.activeCharacter.personal.npcRelationships[index],
+				...update,
 			}
 		},
-		deleteAlly: (state, action: PayloadAction<number>) => {
+		deleteNpcRelationship: (state, action: PayloadAction<number>) => {
 			state.unsavedChanges = true
-			state.activeCharacter.personal.allies =
-				state.activeCharacter.personal.allies.filter(
-					(_, i) => i != action.payload,
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+				return
+			}
+			state.activeCharacter.personal.npcRelationships =
+				state.activeCharacter.personal.npcRelationships.filter(
+					(_, i) => i !== action.payload,
 				)
 		},
-		reorderAlly: (
+		reorderNpcRelationship: (
 			state,
 			action: PayloadAction<{ source: number; destination: number }>,
 		) => {
 			const { source, destination } = action.payload
 			state.unsavedChanges = true
-			state.activeCharacter.personal.allies = reorder(
-				state.activeCharacter.personal.allies,
-				source,
-				destination,
-			)
-		},
-		addNewContact: (state) => {
-			state.unsavedChanges = true
-			state.activeCharacter.personal.contacts.splice(0, 0, {
-				id: crypto.randomUUID(),
-				description: '',
-			})
-		},
-		updateContact: (
-			state,
-			action: PayloadAction<{ update: string; index: number }>,
-		) => {
-			const update = action.payload.update
-			const index = action.payload.index
-			state.unsavedChanges = true
-			state.activeCharacter.personal.contacts[index] = {
-				...state.activeCharacter.personal.contacts[index],
-				description: update,
+			// Ensure npcRelationships array exists
+			if (!state.activeCharacter.personal.npcRelationships) {
+				state.activeCharacter.personal.npcRelationships = []
+				return
 			}
-		},
-		deleteContact: (state, action: PayloadAction<number>) => {
-			state.unsavedChanges = true
-			state.activeCharacter.personal.contacts =
-				state.activeCharacter.personal.contacts.filter(
-					(_, i) => i != action.payload,
-				)
-		},
-		reorderContact: (
-			state,
-			action: PayloadAction<{ source: number; destination: number }>,
-		) => {
-			const { source, destination } = action.payload
-			state.unsavedChanges = true
-			state.activeCharacter.personal.contacts = reorder(
-				state.activeCharacter.personal.contacts,
-				source,
-				destination,
-			)
-		},
-		addNewRival: (state) => {
-			state.unsavedChanges = true
-			state.activeCharacter.personal.rivals.splice(0, 0, {
-				id: crypto.randomUUID(),
-				description: '',
-			})
-		},
-		updateRival: (
-			state,
-			action: PayloadAction<{ update: string; index: number }>,
-		) => {
-			const update = action.payload.update
-			const index = action.payload.index
-			state.unsavedChanges = true
-			state.activeCharacter.personal.rivals[index] = {
-				...state.activeCharacter.personal.rivals[index],
-				description: update,
-			}
-		},
-		deleteRival: (state, action: PayloadAction<number>) => {
-			state.unsavedChanges = true
-			state.activeCharacter.personal.rivals =
-				state.activeCharacter.personal.rivals.filter(
-					(_, i) => i != action.payload,
-				)
-		},
-		reorderRival: (
-			state,
-			action: PayloadAction<{ source: number; destination: number }>,
-		) => {
-			const { source, destination } = action.payload
-			state.unsavedChanges = true
-			state.activeCharacter.personal.rivals = reorder(
-				state.activeCharacter.personal.rivals,
+			state.activeCharacter.personal.npcRelationships = reorder(
+				state.activeCharacter.personal.npcRelationships,
 				source,
 				destination,
 			)

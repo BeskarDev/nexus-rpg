@@ -1,47 +1,35 @@
 import {
 	Box,
-	IconButton,
-	Button,
-	Switch,
-	Typography,
-	FormControlLabel,
-	Tooltip,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
-
-import { Build } from '@mui/icons-material'
 import { CharacterDocument } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { useListCrud } from '../../hooks/useListCrud'
-import { PersonalField, PersonalListSection } from '../../components'
+import { useNpcRelationshipCrud } from '../../hooks'
+import { PersonalField, NpcRelationshipsSection } from '../../components'
 import { ProfilePictureUpload } from './ProfilePictureUpload'
 
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { allies, contacts, rivals } = useMemo(
+	const { npcRelationships } = useMemo(
 		() => activeCharacter.personal,
 		[activeCharacter.personal],
 	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
-	const [showControls, setShowReorder] = useState(false) // State to toggle reorder icons
 
-	// Use the reusable CRUD hooks
-	const allyCrud = useListCrud('ally')
-	const contactCrud = useListCrud('contact')
-	const rivalCrud = useListCrud('rival')
+	// Use the reusable CRUD hook
+	const npcRelationshipCrud = useNpcRelationshipCrud()
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
 	}
 
-	const toggleReorder = () => {
-		setShowReorder((prev) => !prev)
-	}
+	// Always show the NPC relationships interface
+	const showNewInterface = true
 
 	return (
 		<Box
@@ -54,22 +42,7 @@ export const PersonalTab: React.FC = () => {
 		>
 			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>
 				<Box sx={{ flexGrow: 1 }}>
-					<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', mb: 2 }}>
-						<SectionHeader sx={{ mb: 0 }}>Your Character</SectionHeader>
-						<Tooltip title="enable this to add, delete, or reorder lists">
-							<IconButton
-								size="small"
-								onClick={toggleReorder}
-								color={showControls ? 'primary' : 'default'}
-								sx={{
-									border: '1px solid',
-									borderColor: 'divider',
-								}}
-							>
-								<Build fontSize="inherit" />
-							</IconButton>
-						</Tooltip>
-					</Box>
+					<SectionHeader sx={{ mb: 2 }}>Your Character</SectionHeader>
 					<Box
 						sx={{
 							display: 'flex',
@@ -204,38 +177,18 @@ export const PersonalTab: React.FC = () => {
 
 			<Box sx={{ width: '100%', flexGrow: 1, mb: 2 }} />
 
-			<PersonalListSection
-				title="Allies"
-				items={allies}
-				showControls={showControls}
-				onAdd={allyCrud.addNew}
-				onUpdate={allyCrud.update}
-				onDelete={allyCrud.delete}
-				onReorder={allyCrud.onReorder}
-				droppableId="allies"
-			/>
-
-			<PersonalListSection
-				title="Contacts"
-				items={contacts}
-				showControls={showControls}
-				onAdd={contactCrud.addNew}
-				onUpdate={contactCrud.update}
-				onDelete={contactCrud.delete}
-				onReorder={contactCrud.onReorder}
-				droppableId="contacts"
-			/>
-
-			<PersonalListSection
-				title="Rivals"
-				items={rivals}
-				showControls={showControls}
-				onAdd={rivalCrud.addNew}
-				onUpdate={rivalCrud.update}
-				onDelete={rivalCrud.delete}
-				onReorder={rivalCrud.onReorder}
-				droppableId="rivals"
-			/>
+			{/* NPC relationships section */}
+			{showNewInterface && (
+				<Box sx={{ width: '100%' }}>
+					<NpcRelationshipsSection
+						npcRelationships={npcRelationships || []}
+						onAdd={npcRelationshipCrud.addNew}
+						onUpdate={npcRelationshipCrud.update}
+						onDelete={npcRelationshipCrud.delete}
+						onReorder={npcRelationshipCrud.onReorder}
+					/>
+				</Box>
+			)}
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />
 
