@@ -54,114 +54,106 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 	}
 
 	return (
-		<Box sx={{ width: '100%' }}>
-			<Accordion 
-				expanded={expanded} 
-				onChange={(_, isExpanded) => setExpanded(isExpanded)}
-				sx={{ 
-					boxShadow: 'none',
-					border: '1px solid',
-					borderColor: 'divider',
-					'&:before': { display: 'none' },
-					borderRadius: 1
+		<Accordion
+			expanded={expanded}
+			onChange={(_, isExpanded) => setExpanded(isExpanded)}
+			disableGutters
+			sx={{ flexGrow: 1, maxWidth: '47rem', mt: 0 }}
+		>
+			<AccordionSummary
+				expandIcon={<ExpandMore />}
+				sx={{
+					gap: 1,
+					pt: 0,
+					px: 0,
+					flexDirection: 'row-reverse',
+					'& .MuiAccordionSummary-content': {
+						display: 'block',
+					},
 				}}
 			>
-				<AccordionSummary 
-					expandIcon={<ExpandMore />}
-					sx={{ 
-						minHeight: 'auto',
-						'& .MuiAccordionSummary-content': { 
-							my: 0.5,
-							alignItems: 'center' 
-						} 
-					}}
-				>
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexGrow: 1, mr: 0.5 }}>
-						<Typography variant="body2" sx={{ fontWeight: 'medium', minWidth: '8rem' }}>
-							{localData.name || 'Unnamed NPC'}
-						</Typography>
-						<Chip 
-							size="small" 
-							label={localData.role}
-							variant="outlined"
-							sx={{ minWidth: '4rem' }}
-						/>
-						<Chip 
+				<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+					<TextField
+						size="small"
+						variant="standard"
+						value={localData.name || 'Unnamed NPC'}
+						onChange={(e) => handleFieldUpdate('name', e.target.value)}
+						label="Name"
+						sx={{ minWidth: '8rem', flexGrow: 1 }}
+					/>
+					<Chip 
+						size="small" 
+						label={localData.role}
+						variant="outlined"
+						sx={{ minWidth: '4rem' }}
+					/>
+					<Chip 
+						size="small"
+						label={getDispositionLabel(localData.disposition)}
+						color={getDispositionColor(localData.disposition)}
+						variant="outlined"
+					/>
+					{!dragDisabled && (
+						<IconButton
 							size="small"
-							label={getDispositionLabel(localData.disposition)}
-							color={getDispositionColor(localData.disposition)}
-							variant="outlined"
-						/>
-						{!dragDisabled && (
-							<IconButton
-								size="small"
-								edge="end"
-								aria-label="delete"
-								onClick={(e) => {
-									e.stopPropagation()
-									deleteNpc()
-								}}
-								sx={{ ml: 'auto' }}
-							>
-								<Delete />
-							</IconButton>
-						)}
-					</Box>
-				</AccordionSummary>
-				<AccordionDetails sx={{ pt: 0, pb: 1 }}>
-					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-						<Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-							<TextField
-								label="Name"
-								value={localData.name}
-								onChange={(e) => handleFieldUpdate('name', e.target.value)}
-								sx={{ minWidth: '12rem', flexGrow: 1 }}
-								size="small"
-							/>
-							<TextField
-								select
-								label="Role"
-								value={localData.role}
-								onChange={(e) => handleFieldUpdate('role', e.target.value as NpcRole)}
-								sx={{ minWidth: '8rem' }}
-								size="small"
-							>
-								{npcRoleArray.map((role) => (
-									<MenuItem key={role} value={role}>
-										{role}
-									</MenuItem>
-								))}
-							</TextField>
-							<TextField
-								select
-								label="Disposition"
-								value={localData.disposition}
-								onChange={(e) => handleFieldUpdate('disposition', parseInt(e.target.value) as NpcDisposition)}
-								sx={{ minWidth: '10rem' }}
-								size="small"
-							>
-								{npcDispositionArray.map((disp) => (
-									<MenuItem key={disp.value} value={disp.value}>
-										{disp.label} ({disp.value >= 0 ? '+' : ''}{disp.value})
-									</MenuItem>
-								))}
-							</TextField>
-						</Box>
+							edge="end"
+							aria-label="delete"
+							onClick={(e) => {
+								e.stopPropagation()
+								deleteNpc()
+							}}
+						>
+							<Delete />
+						</IconButton>
+					)}
+				</Box>
+			</AccordionSummary>
+			<AccordionDetails>
+				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+					<Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
 						<TextField
-							multiline
-							minRows={2}
-							maxRows={6}
-							label="Description"
-							value={localData.description}
-							onChange={(e) => setLocalData(prev => ({ ...prev, description: e.target.value }))}
-							onBlur={handleDescriptionBlur}
-							placeholder="Describe this NPC and your relationship with them..."
-							sx={{ width: '100%' }}
+							select
+							label="Role"
+							value={localData.role}
+							onChange={(e) => handleFieldUpdate('role', e.target.value as NpcRole)}
+							sx={{ minWidth: '8rem' }}
 							size="small"
-						/>
+						>
+							{npcRoleArray.map((role) => (
+								<MenuItem key={role} value={role}>
+									{role}
+								</MenuItem>
+							))}
+						</TextField>
+						<TextField
+							select
+							label="Disposition"
+							value={localData.disposition}
+							onChange={(e) => handleFieldUpdate('disposition', parseInt(e.target.value) as NpcDisposition)}
+							sx={{ minWidth: '10rem' }}
+							size="small"
+						>
+							{npcDispositionArray.map((disp) => (
+								<MenuItem key={disp.value} value={disp.value}>
+									{disp.label} ({disp.value >= 0 ? '+' : ''}{disp.value})
+								</MenuItem>
+							))}
+						</TextField>
 					</Box>
-				</AccordionDetails>
-			</Accordion>
-		</Box>
+					<TextField
+						multiline
+						minRows={2}
+						maxRows={6}
+						label="Description"
+						value={localData.description}
+						onChange={(e) => setLocalData(prev => ({ ...prev, description: e.target.value }))}
+						onBlur={handleDescriptionBlur}
+						placeholder="Describe this NPC and your relationship with them..."
+						sx={{ width: '100%' }}
+						size="small"
+					/>
+				</Box>
+			</AccordionDetails>
+		</Accordion>
 	)
 }
