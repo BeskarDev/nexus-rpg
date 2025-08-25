@@ -14,7 +14,6 @@ on:
         type: choice
         options:
           - auto
-          - npm
           - yarn
           - skip
   # Triggered when Copilot agents need environment setup
@@ -57,28 +56,8 @@ jobs:
       - name: Detect package manager
         id: detect-pm
         run: |
-          if [[ "${{ github.event.inputs.cache_strategy }}" == "npm" ]]; then
-            echo "package_manager=npm" >> $GITHUB_OUTPUT
-            echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event.inputs.cache_strategy }}" == "yarn" ]]; then
-            echo "package_manager=yarn" >> $GITHUB_OUTPUT
-            echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
-          elif [[ "${{ github.event.inputs.cache_strategy }}" == "skip" ]]; then
-            echo "package_manager=skip" >> $GITHUB_OUTPUT
-            echo "lockfile=none" >> $GITHUB_OUTPUT
-          else
-            # Auto-detect based on lockfiles
-            if [[ -f "yarn.lock" ]]; then
-              echo "package_manager=yarn" >> $GITHUB_OUTPUT
-              echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
-            elif [[ -f "package-lock.json" ]]; then
-              echo "package_manager=npm" >> $GITHUB_OUTPUT  
-              echo "lockfile=package-lock.json" >> $GITHUB_OUTPUT
-            else
-              echo "package_manager=npm" >> $GITHUB_OUTPUT
-              echo "lockfile=package.json" >> $GITHUB_OUTPUT
-            fi
-          fi
+          echo "package_manager=yarn" >> $GITHUB_OUTPUT
+          echo "lockfile=yarn.lock" >> $GITHUB_OUTPUT
 
       - name: Cache dependencies (Yarn)
         if: steps.detect-pm.outputs.package_manager == 'yarn'
@@ -91,30 +70,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Cache dependencies (NPM)
-        if: steps.detect-pm.outputs.package_manager == 'npm'
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.npm
-            node_modules
-          key: ${{ runner.os }}-npm-${{ hashFiles('package-lock.json', 'package.json') }}
-          restore-keys: |
-            ${{ runner.os }}-npm-
-
       - name: Install dependencies (Yarn)
         if: steps.detect-pm.outputs.package_manager == 'yarn'
         run: |
           echo "Installing dependencies with Yarn..."
           yarn install --frozen-lockfile --prefer-offline
           echo "Yarn installation completed"
-
-      - name: Install dependencies (NPM)
-        if: steps.detect-pm.outputs.package_manager == 'npm'
-        run: |
-          echo "Installing dependencies with NPM..."
-          npm ci --prefer-offline
-          echo "NPM installation completed"
 
       - name: Run agent setup script
         run: |

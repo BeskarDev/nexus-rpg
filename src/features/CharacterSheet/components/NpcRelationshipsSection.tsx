@@ -30,7 +30,7 @@ export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = (
 	const validNpcRelationships = npcRelationships || []
 
 	return (
-		<Box sx={{ mb: 1 }}>
+		<Box sx={{ mb: 1, maxWidth: '34rem' }}>
 			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 				<SectionHeader>NPC Relationships</SectionHeader>
 				<IconButton onClick={onAdd} sx={{ mb: 0.5 }}>
@@ -43,7 +43,7 @@ export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = (
 				sx={{
 					overflowY: 'auto',
 					overflowX: 'hidden',
-					maxHeight: '40vh',
+					maxHeight: '30rem',
 				}}
 			>
 				{validNpcRelationships.map((npc, index) => (

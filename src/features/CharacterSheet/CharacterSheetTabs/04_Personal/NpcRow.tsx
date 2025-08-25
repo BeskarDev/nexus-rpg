@@ -27,9 +27,11 @@ export type NpcRowProps = {
 	deleteNpc: () => void
 } & Omit<TextFieldProps, 'value' | 'onChange'>
 
-const getDispositionColor = (disposition: NpcDisposition): 'success' | 'default' | 'error' => {
-	if (disposition >= 1) return 'success'
-	if (disposition === 0) return 'default' 
+const getDispositionColor = (disposition: NpcDisposition): 'success' | 'info' | 'default' | 'warning' | 'error' => {
+	if (disposition === 2) return 'success'
+	if (disposition === 1) return 'info'
+	if (disposition === 0) return 'default'
+	if (disposition === -1) return 'warning'
 	return 'error'
 }
 
@@ -78,21 +80,21 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 				expanded={expanded}
 				onChange={(_, isExpanded) => setExpanded(isExpanded)}
 				disableGutters
-				sx={{ flexGrow: 1, mt: 0 }}
+				sx={{ flexGrow: 1, mt: 0, mr: 1, width: '100%' }}
 			>
 				<AccordionSummary
 					expandIcon={<ExpandMore />}
 					sx={{
 						gap: 1,
 						pt: 0,
-						px: 0,
+						px: 1,
 						flexDirection: 'row-reverse',
 						'& .MuiAccordionSummary-content': {
 							display: 'block',
 						},
 					}}
 				>
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: '100%', minWidth: 0 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
 						<TextField
 							size="small"
 							variant="standard"
@@ -102,8 +104,7 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 							sx={{ 
 								flexGrow: 1, 
 								flexShrink: 1, 
-								minWidth: '8rem',
-								maxWidth: { xs: '12rem', sm: '15rem', md: 'none' }
+								maxWidth: '12rem'
 							}}
 						/>
 						<Chip 
@@ -132,7 +133,7 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 							edge="end"
 							aria-label="delete"
 							onClick={handleDeleteClick}
-							sx={{ flexShrink: 0 }}
+							sx={{ flexShrink: 0, ml: 'auto' }}
 						>
 							<Delete />
 						</IconButton>
