@@ -37,6 +37,7 @@ export const PersonalTab: React.FC = () => {
 				display: 'flex',
 				columnGap: 3,
 				flexWrap: 'wrap',
+				maxWidth: { lg: 'unset', xl: '47rem' },
 			}}
 		>
 			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>
@@ -178,13 +179,15 @@ export const PersonalTab: React.FC = () => {
 
 			{/* NPC relationships section */}
 			{showNewInterface && (
-				<NpcRelationshipsSection
-					npcRelationships={npcRelationships || []}
-					onAdd={npcRelationshipCrud.addNew}
-					onUpdate={npcRelationshipCrud.update}
-					onDelete={npcRelationshipCrud.delete}
-					onReorder={npcRelationshipCrud.onReorder}
-				/>
+				<Box sx={{ width: '100%' }}>
+					<NpcRelationshipsSection
+						npcRelationships={npcRelationships || []}
+						onAdd={npcRelationshipCrud.addNew}
+						onUpdate={npcRelationshipCrud.update}
+						onDelete={npcRelationshipCrud.delete}
+						onReorder={npcRelationshipCrud.onReorder}
+					/>
+				</Box>
 			)}
 
 			<Box sx={{ width: '100%', flexGrow: 1 }} />

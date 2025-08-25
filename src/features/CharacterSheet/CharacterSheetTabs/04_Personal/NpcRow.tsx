@@ -92,32 +92,47 @@ export const NpcRow: React.FC<NpcRowProps> = ({
 						},
 					}}
 				>
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: '100%', minWidth: 0 }}>
 						<TextField
 							size="small"
 							variant="standard"
 							value={localData.name || 'Unnamed NPC'}
 							onChange={(e) => handleFieldUpdate('name', e.target.value)}
 							label="Name"
-							sx={{ minWidth: '8rem', flexGrow: 1 }}
+							sx={{ 
+								flexGrow: 1, 
+								flexShrink: 1, 
+								minWidth: '8rem',
+								maxWidth: { xs: '12rem', sm: '15rem', md: 'none' }
+							}}
 						/>
 						<Chip 
 							size="small" 
 							label={localData.role}
 							variant="outlined"
-							sx={{ minWidth: '4rem' }}
+							sx={{ 
+								minWidth: '4rem',
+								flexShrink: 0,
+								fontSize: '0.75rem'
+							}}
 						/>
 						<Chip 
 							size="small"
 							label={getDispositionLabel(localData.disposition)}
 							color={getDispositionColor(localData.disposition)}
 							variant="outlined"
+							sx={{ 
+								flexShrink: 0,
+								fontSize: '0.75rem',
+								maxWidth: { xs: '6rem', sm: 'none' }
+							}}
 						/>
 						<IconButton
 							size="small"
 							edge="end"
 							aria-label="delete"
 							onClick={handleDeleteClick}
+							sx={{ flexShrink: 0 }}
 						>
 							<Delete />
 						</IconButton>
