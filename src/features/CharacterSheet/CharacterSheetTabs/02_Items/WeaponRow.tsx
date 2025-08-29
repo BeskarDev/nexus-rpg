@@ -10,10 +10,11 @@ import {
 	MenuItem,
 	TextField,
 	Typography,
+	Tooltip,
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore } from '@mui/icons-material'
+import { Delete, ExpandMore, BookmarkBorder } from '@mui/icons-material'
 import {
 	DurabilityDie,
 	durabilityDieArray,
@@ -27,12 +28,16 @@ export type WeaponRowProps = {
 	weapon: Weapon
 	updateWeapon: (update: Partial<Weapon>) => void
 	deleteWeapon: () => void
+	isInQuickRef?: boolean
+	onToggleQuickRef?: (weaponId: string) => void
 }
 
 export const WeaponRow: React.FC<WeaponRowProps> = ({
 	weapon: initialWeapon,
 	updateWeapon,
 	deleteWeapon,
+	isInQuickRef = false,
+	onToggleQuickRef,
 }) => {
 	const [weapon, setWeapon] = useState<Weapon>(initialWeapon)
 	const [expanded, setExpanded] = useState(false)
@@ -249,6 +254,20 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
+					{onToggleQuickRef && (
+						<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+							<IconButton
+								size="small"
+								onClick={() => onToggleQuickRef(initialWeapon.id)}
+								sx={{ 
+									my: 'auto',
+									color: isInQuickRef ? 'primary.main' : 'action.disabled'
+								}}
+							>
+								<BookmarkBorder />
+							</IconButton>
+						</Tooltip>
+					)}
 					<IconButton
 						size="small"
 						edge="end"

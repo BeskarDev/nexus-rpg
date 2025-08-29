@@ -210,6 +210,7 @@ export type QuickRefSelections = {
 	abilities: string[] // Array of ability IDs
 	weapons: string[] // Array of weapon IDs  
 	items: string[] // Array of item IDs
+	spells: string[] // Array of spell IDs
 	order?: Record<string, number> // Custom ordering for selected items
 }
 

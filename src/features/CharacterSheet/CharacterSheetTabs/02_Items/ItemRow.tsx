@@ -9,10 +9,11 @@ import {
 	MenuItem,
 	TextField,
 	Typography,
+	Tooltip,
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore } from '@mui/icons-material'
+import { Delete, ExpandMore, BookmarkBorder } from '@mui/icons-material'
 import {
 	ContainerType,
 	containerTypeArray,
@@ -29,12 +30,16 @@ export type ItemRowProps = {
 	item: Item
 	updateItem: (update: Partial<Item>) => void
 	deleteItem: () => void
+	isInQuickRef?: boolean
+	onToggleQuickRef?: (itemId: string) => void
 }
 
 export const ItemRow: React.FC<ItemRowProps> = ({
 	item: initialItem,
 	updateItem,
 	deleteItem,
+	isInQuickRef = false,
+	onToggleQuickRef,
 }) => {
 	const [item, setItem] = useState<Item>(initialItem)
 	const [expanded, setExpanded] = useState(false)
@@ -266,6 +271,19 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
+					{onToggleQuickRef && (
+						<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+							<IconButton
+								size="small"
+								onClick={() => onToggleQuickRef(initialItem.id)}
+								sx={{ 
+									color: isInQuickRef ? 'primary.main' : 'action.disabled'
+								}}
+							>
+								<BookmarkBorder />
+							</IconButton>
+						</Tooltip>
+					)}
 					<IconButton
 						size="small"
 						edge="end"

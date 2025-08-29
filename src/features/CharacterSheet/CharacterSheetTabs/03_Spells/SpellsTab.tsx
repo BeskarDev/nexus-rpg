@@ -35,6 +35,19 @@ export const SpellsTab: React.FC = () => {
 
 	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
 
+	// Get Quick Ref selections
+	const quickRefSelections = activeCharacter.skills.quickRefSelections || { 
+		abilities: [], 
+		weapons: [], 
+		items: [], 
+		spells: [] 
+	}
+
+	// Quick Ref handler for spells
+	const handleToggleSpellQuickRef = (spellId: string) => {
+		dispatch(characterSheetActions.toggleQuickRefSpell(spellId))
+	}
+
 	// Determine magic type based on magic skill
 	const magicType: 'Arcana' | 'Mysticism' | null =
 		magicSkill === 'Mysticism'
@@ -216,6 +229,8 @@ export const SpellsTab: React.FC = () => {
 										spell={s}
 										updateSpell={(update) => updateSpell(update, index)}
 										deleteSpell={() => deleteSpell(s)}
+										isInQuickRef={quickRefSelections.spells?.includes(s.id) || false}
+										onToggleQuickRef={handleToggleSpellQuickRef}
 									/>
 								</DynamicListItem>
 							))}

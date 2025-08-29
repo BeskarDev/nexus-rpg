@@ -748,6 +748,7 @@ export const {
 					abilities: [],
 					weapons: [],
 					items: [],
+					spells: [],
 				}
 			}
 			const current = state.activeCharacter.skills.quickRefSelections.abilities
@@ -768,6 +769,7 @@ export const {
 					abilities: [],
 					weapons: [],
 					items: [],
+					spells: [],
 				}
 			}
 			const current = state.activeCharacter.skills.quickRefSelections.weapons
@@ -788,6 +790,7 @@ export const {
 					abilities: [],
 					weapons: [],
 					items: [],
+					spells: [],
 				}
 			}
 			const current = state.activeCharacter.skills.quickRefSelections.items
@@ -800,6 +803,27 @@ export const {
 				current.push(itemId)
 			}
 		},
+		toggleQuickRefSpell: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const spellId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+				}
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.spells
+			const index = current.indexOf(spellId)
+			if (index !== -1) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(spellId)
+			}
+		},
 		clearQuickRef: (state) => {
 			state.unsavedChanges = true
 			if (state.activeCharacter.skills.quickRefSelections) {
@@ -807,6 +831,7 @@ export const {
 					abilities: [],
 					weapons: [],
 					items: [],
+					spells: [],
 				}
 			}
 		},

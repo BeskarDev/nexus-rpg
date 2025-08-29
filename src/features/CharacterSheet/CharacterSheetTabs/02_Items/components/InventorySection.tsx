@@ -42,6 +42,11 @@ interface InventorySectionProps {
 	deleteItem: (item: Item) => void
 	onLocationNameChange?: (name: string) => void
 	onMaxLoadChange?: (maxLoad: number) => void
+	// Quick Ref props
+	weaponsInQuickRef?: string[]
+	itemsInQuickRef?: string[]
+	onToggleWeaponQuickRef?: (weaponId: string) => void
+	onToggleItemQuickRef?: (itemId: string) => void
 }
 
 export const InventorySection: React.FC<InventorySectionProps> = ({
@@ -68,6 +73,11 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 	deleteItem,
 	onLocationNameChange,
 	onMaxLoadChange,
+	// Quick Ref props
+	weaponsInQuickRef = [],
+	itemsInQuickRef = [],
+	onToggleWeaponQuickRef,
+	onToggleItemQuickRef,
 }) => {
 	const filteredItems = showWeaponsOnly
 		? items.filter((item) => 'damage' in item)
@@ -161,6 +171,8 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 										)
 									}
 									deleteWeapon={() => deleteWeapon(item as Weapon)}
+									isInQuickRef={weaponsInQuickRef.includes(item.id)}
+									onToggleQuickRef={onToggleWeaponQuickRef}
 								/>
 							) : (
 								<ItemRow
@@ -173,6 +185,8 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 										)
 									}
 									deleteItem={() => deleteItem(item as Item)}
+									isInQuickRef={itemsInQuickRef.includes(item.id)}
+									onToggleQuickRef={onToggleItemQuickRef}
 								/>
 							)}
 						</DynamicListItem>

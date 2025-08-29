@@ -11,7 +11,6 @@ import {
 	Select,
 	FormControl,
 	InputLabel,
-	Checkbox,
 	FormControlLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
@@ -23,6 +22,9 @@ import {
 	PlayArrow,
 	Bolt,
 	CircleOutlined,
+	FlashOn,
+	AllInclusive,
+	BookmarkBorder,
 } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
@@ -87,6 +89,10 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				return <Bolt fontSize="small" />
 			case 'Passive Ability':
 				return <CircleOutlined fontSize="small" />
+			case 'Triggered':
+				return <FlashOn fontSize="small" />
+			case 'Free':
+				return <AllInclusive fontSize="small" />
 			default:
 				return null
 		}
@@ -221,18 +227,16 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 							{onToggleQuickRef && (
 								<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
-									<FormControlLabel
-										control={
-											<Checkbox
-												size="small"
-												checked={isInQuickRef}
-												onChange={() => onToggleQuickRef(abilityId)}
-												sx={{ p: 0.5 }}
-											/>
-										}
-										label=""
-										sx={{ m: 0 }}
-									/>
+									<IconButton
+										size="small"
+										onClick={() => onToggleQuickRef(abilityId)}
+										sx={{ 
+											p: 0.5,
+											color: isInQuickRef ? 'primary.main' : 'action.disabled'
+										}}
+									>
+										<BookmarkBorder fontSize="small" />
+									</IconButton>
 								</Tooltip>
 							)}
 							<Tooltip title="Move to another category">
