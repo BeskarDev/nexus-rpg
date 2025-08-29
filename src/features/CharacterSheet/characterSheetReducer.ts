@@ -739,5 +739,76 @@ export const {
 					(effect) => effect.id !== id,
 				)
 		},
+		// Quick Ref actions
+		toggleQuickRefAbility: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const abilityId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+				}
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.abilities
+			const index = current.indexOf(abilityId)
+			if (index >= 0) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(abilityId)
+			}
+		},
+		toggleQuickRefWeapon: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const weaponId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+				}
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.weapons
+			const index = current.indexOf(weaponId)
+			if (index >= 0) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(weaponId)
+			}
+		},
+		toggleQuickRefItem: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const itemId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+				}
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.items
+			const index = current.indexOf(itemId)
+			if (index >= 0) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(itemId)
+			}
+		},
+		clearQuickRef: (state) => {
+			state.unsavedChanges = true
+			if (state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+				}
+			}
+		},
 	},
 })

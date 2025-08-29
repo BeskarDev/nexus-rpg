@@ -11,6 +11,8 @@ import {
 	Select,
 	FormControl,
 	InputLabel,
+	Checkbox,
+	FormControlLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -36,6 +38,9 @@ export type AbilityRowProps = {
 	updateAbility: (update: Partial<Ability>) => void
 	moveToCategory: (newTag: AbilityTag) => void
 	deleteAbility: () => void
+	abilityId: string
+	isInQuickRef?: boolean
+	onToggleQuickRef?: (abilityId: string) => void
 }
 
 export const AbilityRow: React.FC<AbilityRowProps> = ({
@@ -48,6 +53,9 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	updateAbility,
 	moveToCategory,
 	deleteAbility,
+	abilityId,
+	isInQuickRef = false,
+	onToggleQuickRef,
 }) => {
 	const [title, setTitle] = useState(initialTitle)
 	const [description, setDescription] = useState(initialDescription)
@@ -211,6 +219,22 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						</Box>
 
 						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+							{onToggleQuickRef && (
+								<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+									<FormControlLabel
+										control={
+											<Checkbox
+												size="small"
+												checked={isInQuickRef}
+												onChange={() => onToggleQuickRef(abilityId)}
+												sx={{ p: 0.5 }}
+											/>
+										}
+										label=""
+										sx={{ m: 0 }}
+									/>
+								</Tooltip>
+							)}
 							<Tooltip title="Move to another category">
 								<IconButton
 									size="small"

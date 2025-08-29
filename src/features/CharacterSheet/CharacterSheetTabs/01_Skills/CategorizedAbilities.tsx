@@ -26,11 +26,16 @@ import { useAppSelector } from '../../hooks/useAppSelector'
 import { CombatArtsSearchDialog } from './CombatArtsSearchDialog'
 import { TalentsSearchDialog } from '../02_Items/SearchDialog/TalentsSearchDialog'
 import { AbilityRow } from './AbilityRow'
+import { QuickRefSection } from './QuickRefSection'
 
 export const CategorizedAbilities: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { abilities, abilityCategoryVisibility } = useMemo(
+	const { 
+		abilities, 
+		abilityCategoryVisibility,
+		quickRefSelections = { abilities: [], weapons: [], items: [] }
+	} = useMemo(
 		() => activeCharacter.skills,
 		[activeCharacter.skills],
 	)
@@ -83,6 +88,10 @@ export const CategorizedAbilities: React.FC = () => {
 		dispatch(characterSheetActions.deleteAbility(ability))
 	}
 
+	const toggleQuickRef = (abilityId: string) => {
+		dispatch(characterSheetActions.toggleQuickRefAbility(abilityId))
+	}
+
 	const toggleCategoryVisibility = (tag: AbilityTag) => {
 		dispatch(characterSheetActions.toggleAbilityCategoryVisibility(tag))
 	}
@@ -126,6 +135,9 @@ export const CategorizedAbilities: React.FC = () => {
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'column', width: '25rem' }}>
+			{/* Quick Ref Section */}
+			<QuickRefSection />
+			
 			{/* Header with category settings menu */}
 			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
 				<SectionHeader sx={{ mb: 0 }}>Abilities</SectionHeader>
@@ -250,6 +262,9 @@ export const CategorizedAbilities: React.FC = () => {
 												moveAbilityToCategory(ability.id, newTag)
 											}
 											deleteAbility={() => deleteAbility(ability)}
+											abilityId={ability.id}
+											isInQuickRef={quickRefSelections.abilities.includes(ability.id)}
+											onToggleQuickRef={toggleQuickRef}
 										/>
 									</DynamicListItem>
 								))}

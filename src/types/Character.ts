@@ -187,6 +187,7 @@ export type Skills = {
 	languages: string[]
 	abilities: Ability[]
 	abilityCategoryVisibility?: Record<AbilityTag, boolean>
+	quickRefSelections?: QuickRefSelections
 }
 
 export type Skill = {
@@ -203,6 +204,13 @@ export type Ability = {
 	tag: AbilityTag
 	actionType?: ActionType
 	rank?: number // For talents: 1, 2, or 3
+}
+
+export type QuickRefSelections = {
+	abilities: string[] // Array of ability IDs
+	weapons: string[] // Array of weapon IDs  
+	items: string[] // Array of item IDs
+	order?: Record<string, number> // Custom ordering for selected items
 }
 
 export type Items = {
