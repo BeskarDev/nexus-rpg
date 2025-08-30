@@ -61,7 +61,7 @@ All magic can be evaluated across **6 broad roles** for spell design:
 - **Damage Notes**: Death magic corrupts, decays, and poisons; attacks represent disease, decomposition, and destructive endings.
 
 ### 2.5 Nature
-- **Aspects**: earth, water, poison, animals, plants  
+- **Aspects**: earth, water, disease, animals, plants  
 - **Role Spread**: Excels: Utility | Decent: Healing, Support | Weak: Offense, Defense, Control  
 - **Damage Types**: Physical, Poison, Acid  
 - **Damage Notes**: Nature magic damages through environmental hazards, toxins, and attacks from animals or plants.
