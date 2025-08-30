@@ -1,6 +1,6 @@
 # Fantasy Magic System Design Guide
 
-This document defines the **design space** for a fantasy tabletop RPG magic system with **Mystic (Traditions) and Arcane (Disciplines) magic**. It is intended to guide spell generation, focusing on **themes, aspects, and role identities** rather than specific mechanics.
+This document defines the **design space** for a fantasy tabletop RPG magic system with **Mystic (Traditions) and Arcane (Disciplines) magic**. It is intended to guide spell generation, focusing on **themes, aspects, damage types, and role identities**, rather than specific mechanics.
 
 ---
 
@@ -38,59 +38,43 @@ All magic can be evaluated across **6 broad roles** for spell design:
 
 ### 2.1 Light
 - **Aspects**: sun, illumination, truth, clarity, judgement  
-- **Role Spread**:
-  - Excels: Support  
-  - Decent: Offense, Healing  
-  - Weak: Utility, Defense, Control  
+- **Role Spread**: Excels: Support | Decent: Offense, Healing | Weak: Utility, Defense, Control  
+- **Damage Types**: Radiant, Fire, Blast  
 
 ### 2.2 Twilight
 - **Aspects**: moon, dreams, secrets, fate, illusion  
-- **Role Spread**:
-  - Excels: Utility  
-  - Decent: Control, Support  
-  - Weak: Offense, Defense, Healing  
+- **Role Spread**: Excels: Utility | Decent: Control, Support | Weak: Offense, Defense, Healing  
+- **Damage Types**: Psychic, Frost  
 
 ### 2.3 Life
 - **Aspects**: vitality, blessings, community, hope, fertility  
-- **Role Spread**:
-  - Excels: Healing  
-  - Decent: Support, Utility  
-  - Weak: Offense, Defense, Control  
+- **Role Spread**: Excels: Healing | Decent: Support, Utility | Weak: Offense, Defense, Control  
+- **Damage Types**: Radiant, Psychic  
 
 ### 2.4 Death
 - **Aspects**: plagues, curses, fear, decay, ancestry  
-- **Role Spread**:
-  - Excels: Control  
-  - Decent: Offense, Utility  
-  - Weak: Healing, Support, Defense  
+- **Role Spread**: Excels: Control | Decent: Offense, Utility | Weak: Healing, Support, Defense  
+- **Damage Types**: Necrotic, Poison, Acid  
 
 ### 2.5 Nature
 - **Aspects**: earth, water, poison, animals, plants  
-- **Role Spread**:
-  - Excels: Utility  
-  - Decent: Healing, Support  
-  - Weak: Offense, Defense, Control  
+- **Role Spread**: Excels: Utility | Decent: Healing, Support | Weak: Offense, Defense, Control  
+- **Damage Types**: Physical, Poison, Acid  
 
 ### 2.6 Tempest
 - **Aspects**: hurricanes, earthquakes, thunderstorms, sandstorms, floods  
-- **Role Spread**:
-  - Excels: Offense  
-  - Decent: Control, Utility  
-  - Weak: Healing, Support, Defense  
+- **Role Spread**: Excels: Offense | Decent: Control, Utility | Weak: Healing, Support, Defense  
+- **Damage Types**: Lightning, Frost, Blast  
 
 ### 2.7 Peace
 - **Aspects**: calmness, protection, selflessness, travel, law  
-- **Role Spread**:
-  - Excels: Defense  
-  - Decent: Support, Healing  
-  - Weak: Offense, Control, Utility  
+- **Role Spread**: Excels: Defense | Decent: Support, Healing | Weak: Offense, Control, Utility  
+- **Damage Types**: Physical, Blast, Psychic  
 
 ### 2.8 War
 - **Aspects**: fury, pride, blood, justice, triumph  
-- **Role Spread**:
-  - Excels: Offense  
-  - Decent: Control, Support  
-  - Weak: Healing, Defense, Utility  
+- **Role Spread**: Excels: Offense | Decent: Control, Support | Weak: Healing, Defense, Utility  
+- **Damage Types**: Physical, Fire, Blast  
 
 ---
 
@@ -98,45 +82,33 @@ All magic can be evaluated across **6 broad roles** for spell design:
 
 ### 3.1 Evocation
 - **Aspects**: fire, frost, lightning, acid, blast  
-- **Role Spread**:
-  - Excels: Offense  
-  - Decent: Control, Defense  
-  - Weak: Healing, Support, Utility  
+- **Role Spread**: Excels: Offense | Decent: Control, Defense | Weak: Healing, Support, Utility  
+- **Damage Types**: Fire, Frost, Lightning, Acid, Blast  
 
 ### 3.2 Illusion
 - **Aspects**: trickery, misdirection, obfuscation, hallucinations, distortion  
-- **Role Spread**:
-  - Excels: Utility  
-  - Decent: Control, Support  
-  - Weak: Offense, Healing, Defense  
+- **Role Spread**: Excels: Utility | Decent: Control, Support | Weak: Offense, Healing, Defense  
+- **Damage Types**: Psychic, Blast, Frost  
 
 ### 3.3 Conjuration
 - **Aspects**: objects, creatures, teleportation, binding, force  
-- **Role Spread**:
-  - Excels: Utility  
-  - Decent: Offense, Support  
-  - Weak: Healing, Defense, Control  
+- **Role Spread**: Excels: Utility | Decent: Offense, Support | Weak: Healing, Defense, Control  
+- **Damage Types**: Physical, Blast, Acid  
 
 ### 3.4 Telepathy
 - **Aspects**: influence, communication, insight, domination, memory  
-- **Role Spread**:
-  - Excels: Control  
-  - Decent: Utility, Support  
-  - Weak: Offense, Healing, Defense  
+- **Role Spread**: Excels: Control | Decent: Utility, Support | Weak: Offense, Healing, Defense  
+- **Damage Types**: Psychic, Radiant, Necrotic  
 
 ### 3.5 Telekinetics
 - **Aspects**: move, repel, levitate, crush, gravity  
-- **Role Spread**:
-  - Excels: Utility  
-  - Decent: Offense, Defense  
-  - Weak: Healing, Support, Control  
+- **Role Spread**: Excels: Utility | Decent: Offense, Defense | Weak: Healing, Support, Control  
+- **Damage Types**: Physical, Blast, Lightning  
 
 ### 3.6 Necromancy
 - **Aspects**: decay, undeath, siphoning, defilement, puppetry  
-- **Role Spread**:
-  - Excels: Control  
-  - Decent: Offense, Utility  
-  - Weak: Healing, Support, Defense  
+- **Role Spread**: Excels: Control | Decent: Offense, Utility | Weak: Healing, Support, Defense  
+- **Damage Types**: Necrotic, Poison, Physical  
 
 ---
 
@@ -155,15 +127,17 @@ When generating a spell for this system:
 
 3. **Aspect Integration**:  
    - Each spell should incorporate **one or more aspects** for flavor.  
-   - For example:  
-     - Light / Illumination → “Reveal invisible enemies.”  
-     - Necromancy / Puppetry → “Animate corpse to serve caster.”
 
-4. **Consistency with Tradition/Discipline Identity**:  
+4. **Damage Type Integration**:  
+   - Spells should use one or more **assigned damage types** for the Tradition/Discipline.  
+   - Even supportive or utility-focused magic should have **at least some offensive options**, aligned with thematic identity.  
+   - Multi-effect spells may combine **two or three damage types** for variety.  
+
+5. **Consistency with Tradition/Discipline Identity**:  
    - Mystic Traditions: Spells should feel reverent, orderly, or life-affirming.  
    - Arcane Disciplines: Spells should feel selfish, transgressive, or unnatural.  
 
-5. **Spell Variety Guidance**:  
+6. **Spell Variety Guidance**:  
    - Use **primary aspect** for core effect.  
    - Combine **secondary aspects** for added versatility or thematic depth.  
    - Consider **opposing aspects** for tension (optional): e.g., Life + Nature for growth; Necromancy + Evocation for destructive decay.
@@ -176,7 +150,5 @@ This design space allows an AI to:
 
 - Generate **spells that respect the identity of the Tradition/Discipline**.  
 - Vary spells across **offensive, defensive, supportive, utility, healing, and control roles**.  
-- Use **aspects as flavor hooks** for creative effect design.  
-- Maintain **mechanical and thematic diversity** across Mystic and Arcane magic.  
-
----
+- Incorporate **aspects and multiple damage types** for thematic and mechanical flavor.  
+- Maintain **distinctiveness between Mystic and Arcane magic**, ensuring varied spell design options.
