@@ -20,6 +20,7 @@ import {
 	ExpandMore,
 	DriveFileMove,
 	BookmarkBorder,
+	Bookmark,
 } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
@@ -213,7 +214,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 											color: isInQuickRef ? 'primary.main' : 'action.disabled'
 										}}
 									>
-										<BookmarkBorder fontSize="small" />
+										{isInQuickRef ? <Bookmark fontSize="small" /> : <BookmarkBorder fontSize="small" />}
 									</IconButton>
 								</Tooltip>
 							)}

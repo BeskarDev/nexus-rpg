@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
-import { Delete, ExpandMore, BookmarkBorder } from '@mui/icons-material'
+import { Delete, ExpandMore, BookmarkBorder, Bookmark } from '@mui/icons-material'
 import {
 	RangeType,
 	rangeTypeArray,
@@ -294,7 +294,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 									color: isInQuickRef ? 'primary.main' : 'action.disabled'
 								}}
 							>
-								<BookmarkBorder />
+								{isInQuickRef ? <Bookmark /> : <BookmarkBorder />}
 							</IconButton>
 						</Tooltip>
 					)}

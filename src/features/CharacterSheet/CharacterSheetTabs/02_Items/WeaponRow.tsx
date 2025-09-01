@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore, BookmarkBorder } from '@mui/icons-material'
+import { Delete, ExpandMore, BookmarkBorder, Bookmark } from '@mui/icons-material'
 import {
 	DurabilityDie,
 	durabilityDieArray,
@@ -264,7 +264,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 									color: isInQuickRef ? 'primary.main' : 'action.disabled'
 								}}
 							>
-								<BookmarkBorder />
+								{isInQuickRef ? <Bookmark /> : <BookmarkBorder />}
 							</IconButton>
 						</Tooltip>
 					)}

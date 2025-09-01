@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore, BookmarkBorder } from '@mui/icons-material'
+import { Delete, ExpandMore, BookmarkBorder, Bookmark } from '@mui/icons-material'
 import {
 	ContainerType,
 	containerTypeArray,
@@ -280,7 +280,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 									color: isInQuickRef ? 'primary.main' : 'action.disabled'
 								}}
 							>
-								<BookmarkBorder />
+								{isInQuickRef ? <Bookmark /> : <BookmarkBorder />}
 							</IconButton>
 						</Tooltip>
 					)}
