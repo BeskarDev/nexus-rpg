@@ -19,16 +19,11 @@ import {
 	Delete,
 	ExpandMore,
 	DriveFileMove,
-	PlayArrow,
-	Bolt,
-	CircleOutlined,
-	FlashOn,
-	AllInclusive,
 	BookmarkBorder,
 } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
-import { ActionType, ACTION_TYPES } from '@site/src/types/ActionType'
+import { ActionType, ACTION_TYPES, getActionTypeIcon } from '@site/src/types/ActionType'
 
 export type AbilityRowProps = {
 	title: string
@@ -79,23 +74,6 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	const handleMoveCategory = (newTag: AbilityTag) => {
 		moveToCategory(newTag)
 		handleMoveMenuClose()
-	}
-
-	const getActionTypeIcon = (type: ActionType) => {
-		switch (type) {
-			case 'Action':
-				return <PlayArrow fontSize="small" />
-			case 'Quick Action':
-				return <Bolt fontSize="small" />
-			case 'Passive Ability':
-				return <CircleOutlined fontSize="small" />
-			case 'Triggered':
-				return <FlashOn fontSize="small" />
-			case 'Free':
-				return <AllInclusive fontSize="small" />
-			default:
-				return null
-		}
 	}
 
 	return (

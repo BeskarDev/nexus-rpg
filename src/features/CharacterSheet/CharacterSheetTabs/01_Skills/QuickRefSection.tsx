@@ -17,19 +17,15 @@ import {
 } from '@mui/material'
 import {
 	ExpandMore,
-	PlayArrow,
-	Bolt,
-	CircleOutlined,
-	FlashOn,
-	AllInclusive,
 	Clear,
 } from '@mui/icons-material'
 import { Ability, Weapon, Item, Spell } from '../../../../types/Character'
-import { ActionType } from '../../../../types/ActionType'
+import { ActionType, getActionTypeIcon } from '../../../../types/ActionType'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { characterSheetActions } from '../../characterSheetReducer'
+import { getSkillChipColor } from '../../../../constants/skills'
 
 type QuickRefGroup = {
 	title: string
@@ -42,25 +38,11 @@ type QuickRefItem = {
 	name: string
 	description: string
 	source: 'ability' | 'weapon' | 'item' | 'spell'
+	sourceCategory?: string // for abilities: 'Talent', 'Folk', etc.
 	actionType?: ActionType
 	rank?: number
-}
-
-const getActionTypeIcon = (type: ActionType) => {
-	switch (type) {
-		case 'Action':
-			return <PlayArrow fontSize="small" />
-		case 'Quick Action':
-			return <Bolt fontSize="small" />
-		case 'Passive Ability':
-			return <CircleOutlined fontSize="small" />
-		case 'Triggered':
-			return <FlashOn fontSize="small" />
-		case 'Free':
-			return <AllInclusive fontSize="small" />
-		default:
-			return <CircleOutlined fontSize="small" />
-	}
+	properties?: string // for items/weapons/spells
+	damage?: string // for weapons/spells that deal damage
 }
 
 export const QuickRefSection: React.FC = () => {
@@ -137,37 +119,53 @@ export const QuickRefSection: React.FC = () => {
 				name: ability.title,
 				description: ability.description,
 				source: 'ability' as const,
+				sourceCategory: ability.tag || 'Ability', // Show category instead of generic "Ability"
 				actionType: ability.actionType,
 				rank: ability.rank,
 			})),
-			...selectedWeapons.map(weapon => ({
-				id: weapon.id,
-				name: weapon.name,
-				description: weapon.description || `${weapon.damage.base} + ${weapon.damage.weapon} ${weapon.damage.type} damage`,
-				source: 'weapon' as const,
-				actionType: determineActionType(weapon),
-			})),
+			...selectedWeapons.map(weapon => {
+				const damageStr = weapon.damage ? `${weapon.damage.base} + ${weapon.damage.weapon} ${weapon.damage.type} damage` : undefined
+				return {
+					id: weapon.id,
+					name: weapon.name,
+					description: weapon.description || '',
+					source: 'weapon' as const,
+					sourceCategory: 'Weapon',
+					actionType: determineActionType(weapon),
+					properties: weapon.properties || undefined,
+					damage: damageStr,
+				}
+			}),
 			...selectedItems.map(item => ({
 				id: item.id,
 				name: item.name,
 				description: item.description,
 				source: 'item' as const,
+				sourceCategory: 'Item',
 				actionType: determineActionType(item),
+				properties: item.properties || undefined,
 			})),
-			...selectedSpells.map(spell => ({
-				id: spell.id,
-				name: spell.name,
-				description: spell.effect,
-				source: 'spell' as const,
-				actionType: determineActionType(spell),
-				rank: spell.rank,
-			})),
+			...selectedSpells.map(spell => {
+				const damageStr = spell.dealsDamage && spell.damage ? 
+					`${spell.damage.base} + ${spell.damage.weapon} ${spell.damage.type} damage` : undefined
+				return {
+					id: spell.id,
+					name: spell.name,
+					description: spell.effect,
+					source: 'spell' as const,
+					sourceCategory: 'Spell',
+					actionType: determineActionType(spell),
+					rank: spell.rank,
+					properties: spell.properties || undefined,
+					damage: damageStr,
+				}
+			}),
 		]
 
 		// Group by action type
 		const actions = quickRefItems.filter(item => item.actionType === 'Action')
 		const quickActions = quickRefItems.filter(item => item.actionType === 'Quick Action')
-		const passiveAbilities = quickRefItems.filter(item => item.actionType === 'Passive Ability')
+		const passiveAbilities = quickRefItems.filter(item => item.actionType === 'Passive')
 		const triggered = quickRefItems.filter(item => item.actionType === 'Triggered')
 		const free = quickRefItems.filter(item => item.actionType === 'Free')
 		const other = quickRefItems.filter(item => item.actionType === 'Other')
@@ -177,7 +175,7 @@ export const QuickRefSection: React.FC = () => {
 		if (actions.length > 0) {
 			groups.push({
 				title: 'Actions',
-				icon: <PlayArrow fontSize="small" />,
+				icon: getActionTypeIcon('Action'),
 				items: actions,
 			})
 		}
@@ -185,15 +183,15 @@ export const QuickRefSection: React.FC = () => {
 		if (quickActions.length > 0) {
 			groups.push({
 				title: 'Quick Actions',
-				icon: <Bolt fontSize="small" />,
+				icon: getActionTypeIcon('Quick Action'),
 				items: quickActions,
 			})
 		}
 		
 		if (passiveAbilities.length > 0) {
 			groups.push({
-				title: 'Passive Abilities',
-				icon: <CircleOutlined fontSize="small" />,
+				title: 'Passive',
+				icon: getActionTypeIcon('Passive'),
 				items: passiveAbilities,
 			})
 		}
@@ -201,7 +199,7 @@ export const QuickRefSection: React.FC = () => {
 		if (triggered.length > 0) {
 			groups.push({
 				title: 'Triggered',
-				icon: <FlashOn fontSize="small" />,
+				icon: getActionTypeIcon('Triggered'),
 				items: triggered,
 			})
 		}
@@ -209,7 +207,7 @@ export const QuickRefSection: React.FC = () => {
 		if (free.length > 0) {
 			groups.push({
 				title: 'Free',
-				icon: <AllInclusive fontSize="small" />,
+				icon: getActionTypeIcon('Free'),
 				items: free,
 			})
 		}
@@ -217,7 +215,7 @@ export const QuickRefSection: React.FC = () => {
 		if (other.length > 0) {
 			groups.push({
 				title: 'Other',
-				icon: <CircleOutlined fontSize="small" />,
+				icon: getActionTypeIcon('Other'),
 				items: other,
 			})
 		}
@@ -288,12 +286,32 @@ export const QuickRefSection: React.FC = () => {
 					<AccordionDetails>
 						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 							{group.items.map((item) => (
-								<Accordion key={item.id} disableGutters sx={{ boxShadow: 'none', border: '1px solid', borderColor: 'divider' }}>
+								<Accordion 
+									key={item.id} 
+									disableGutters 
+									sx={{ 
+										flexGrow: 1, 
+										mt: 0, 
+										mr: 1, 
+										width: '100%',
+										boxShadow: 'none', 
+										border: '1px solid', 
+										borderColor: 'divider'
+									}}
+								>
 									<AccordionSummary 
 										expandIcon={<ExpandMore />}
-										sx={{ minHeight: 'auto', '& .MuiAccordionSummary-content': { margin: '8px 0' } }}
+										sx={{
+											gap: 1,
+											pt: 0,
+											px: 1,
+											flexDirection: 'row-reverse',
+											'& .MuiAccordionSummary-content': {
+												display: 'block',
+											},
+										}}
 									>
-										<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: '100%' }}>
+										<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
 											{getActionTypeIcon(item.actionType || 'Other')}
 											<Typography variant="subtitle2" fontWeight="bold" sx={{ flexGrow: 1 }}>
 												{item.name}
@@ -310,19 +328,50 @@ export const QuickRefSection: React.FC = () => {
 												)}
 											</Typography>
 											<Chip 
-												label={item.source} 
+												label={item.sourceCategory || item.source} 
 												size="small" 
 												variant="outlined"
-												sx={{ textTransform: 'capitalize' }}
+												sx={{ 
+													textTransform: 'capitalize',
+													backgroundColor: item.sourceCategory && 
+														(item.sourceCategory === 'Talent' || item.sourceCategory === 'Combat Art' || item.sourceCategory === 'Folk')
+														? getSkillChipColor(item.sourceCategory) + '20'
+														: undefined,
+													borderColor: item.sourceCategory && 
+														(item.sourceCategory === 'Talent' || item.sourceCategory === 'Combat Art' || item.sourceCategory === 'Folk')
+														? getSkillChipColor(item.sourceCategory)
+														: undefined,
+													color: item.sourceCategory && 
+														(item.sourceCategory === 'Talent' || item.sourceCategory === 'Combat Art' || item.sourceCategory === 'Folk')
+														? getSkillChipColor(item.sourceCategory)
+														: undefined,
+													flexShrink: 0,
+													fontSize: '0.75rem'
+												}}
 											/>
 										</Box>
 									</AccordionSummary>
 									<AccordionDetails>
-										{item.description && (
-											<Typography variant="body2" color="text.secondary">
-												{item.description}
-											</Typography>
-										)}
+										<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+											{/* Properties caption for items, weapons, and spells */}
+											{item.properties && (
+												<Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+													Properties: {item.properties}
+												</Typography>
+											)}
+											{/* Damage caption for weapons and spells */}
+											{item.damage && (
+												<Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+													Damage: {item.damage}
+												</Typography>
+											)}
+											{/* Description */}
+											{item.description && (
+												<Typography variant="body2" color="text.secondary">
+													{item.description}
+												</Typography>
+											)}
+										</Box>
 									</AccordionDetails>
 								</Accordion>
 							))}
