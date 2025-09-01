@@ -19,7 +19,7 @@ import {
 	ExpandMore,
 	Clear,
 } from '@mui/icons-material'
-import { Ability, Weapon, Item, Spell } from '../../../../types/Character'
+import { Ability, Weapon, Item, Spell, Damage, BaseDamageType } from '../../../../types/Character'
 import { ActionType, getActionTypeIcon } from '../../../../types/ActionType'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -59,6 +59,68 @@ export const QuickRefSection: React.FC = () => {
 	const { items = [] } = useMemo(() => activeCharacter.items, [activeCharacter.items])
 	const spells = useMemo(() => activeCharacter.spells.spells || [], [activeCharacter.spells.spells])
 
+	// Helper function to calculate actual damage values
+	const calculateDamageDisplay = (damage: Damage, type: 'weapon' | 'spell'): string => {
+		const baseDamage = (() => {
+			switch (damage.base) {
+				case 'STR':
+					return activeCharacter.statistics.strength.value / 2
+				case 'AGI':
+					return activeCharacter.statistics.agility.value / 2
+				case 'SPI':
+					return activeCharacter.statistics.spirit.value / 2
+				case 'MND':
+					return activeCharacter.statistics.mind.value / 2
+				case '':
+					return 0
+				default:
+					return damage.base as number
+			}
+		})()
+
+		const spellCatalystDamage = type === 'spell' ? activeCharacter.spells.spellCatalystDamage : 0
+
+		if (damage.staticDamage) {
+			const staticValue = baseDamage + damage.weapon + spellCatalystDamage + damage.other
+			return `${staticValue} ${damage.type}`
+		} else {
+			const weakDamage = baseDamage + damage.weapon + spellCatalystDamage + damage.other + damage.otherWeak
+			const strongDamage = baseDamage + damage.weapon * 2 + spellCatalystDamage * 2 + damage.other + damage.otherStrong
+			const criticalDamage = baseDamage + damage.weapon * 3 + spellCatalystDamage * 3 + damage.other + damage.otherCritical
+			return `${weakDamage}/${strongDamage}/${criticalDamage} ${damage.type}`
+		}
+	}
+
+	// Helper function to get category color, ensuring no duplicates
+	const getCategoryColor = (category: string, sourceType: 'ability' | 'weapon' | 'item' | 'spell'): string => {
+		// For abilities, use skill colors based on category
+		if (sourceType === 'ability') {
+			switch (category) {
+				case 'Talent':
+					return getSkillChipColor('Fighting') // Brown
+				case 'Combat Art':
+					return getSkillChipColor('Athletics') // Green
+				case 'Folk':
+					return getSkillChipColor('Influence') // Gold
+				case 'Background':
+					return getSkillChipColor('Education') // Blue
+				default:
+					return getSkillChipColor('Insight') // Light blue
+			}
+		}
+		
+		// For other types, use distinct colors that don't conflict with ability categories
+		switch (sourceType) {
+			case 'weapon':
+				return getSkillChipColor('Archery') // Brown/orange (different from Fighting)
+			case 'item':
+				return getSkillChipColor('Crafting') // Gray
+			case 'spell':
+				return getSkillChipColor('Arcana') // Purple
+			default:
+				return getSkillChipColor('Perception') // Medium blue
+		}
+	}
 	// Function to determine action type for dynamic items
 	const determineActionType = (item: Weapon | Item | Spell): ActionType => {
 		if ('properties' in item && item.properties) {
@@ -124,7 +186,7 @@ export const QuickRefSection: React.FC = () => {
 				rank: ability.rank,
 			})),
 			...selectedWeapons.map(weapon => {
-				const damageStr = weapon.damage ? `${weapon.damage.base} + ${weapon.damage.weapon} ${weapon.damage.type} damage` : undefined
+				const damageStr = weapon.damage ? calculateDamageDisplay(weapon.damage, 'weapon') : undefined
 				return {
 					id: weapon.id,
 					name: weapon.name,
@@ -147,7 +209,7 @@ export const QuickRefSection: React.FC = () => {
 			})),
 			...selectedSpells.map(spell => {
 				const damageStr = spell.dealsDamage && spell.damage ? 
-					`${spell.damage.base} + ${spell.damage.weapon} ${spell.damage.type} damage` : undefined
+					calculateDamageDisplay(spell.damage, 'spell') : undefined
 				return {
 					id: spell.id,
 					name: spell.name,
@@ -269,8 +331,32 @@ export const QuickRefSection: React.FC = () => {
 			</Box>
 
 			{quickRefGroups.map((group, index) => (
-				<Accordion key={group.title} defaultExpanded={index === 0}>
-					<AccordionSummary expandIcon={<ExpandMore />}>
+				<Accordion 
+					key={group.title} 
+					defaultExpanded={index === 0}
+					disableGutters
+					sx={{ 
+						flexGrow: 1, 
+						mt: 0, 
+						mr: 1, 
+						width: '100%',
+						boxShadow: 'none', 
+						border: '1px solid', 
+						borderColor: 'divider'
+					}}
+				>
+					<AccordionSummary 
+						expandIcon={<ExpandMore />}
+						sx={{
+							gap: 1,
+							pt: 0,
+							px: 1,
+							flexDirection: 'row-reverse',
+							'& .MuiAccordionSummary-content': {
+								display: 'block',
+							},
+						}}
+					>
 						<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
 							{group.icon}
 							<Typography variant="subtitle2" fontWeight="bold">
@@ -283,7 +369,7 @@ export const QuickRefSection: React.FC = () => {
 							/>
 						</Box>
 					</AccordionSummary>
-					<AccordionDetails>
+					<AccordionDetails sx={{ pt: 0, px: 1 }}>
 						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 							{group.items.map((item) => (
 								<Accordion 
@@ -333,25 +419,16 @@ export const QuickRefSection: React.FC = () => {
 												variant="outlined"
 												sx={{ 
 													textTransform: 'capitalize',
-													backgroundColor: item.sourceCategory && 
-														(item.sourceCategory === 'Talent' || item.sourceCategory === 'Combat Art' || item.sourceCategory === 'Folk')
-														? getSkillChipColor(item.sourceCategory) + '20'
-														: undefined,
-													borderColor: item.sourceCategory && 
-														(item.sourceCategory === 'Talent' || item.sourceCategory === 'Combat Art' || item.sourceCategory === 'Folk')
-														? getSkillChipColor(item.sourceCategory)
-														: undefined,
-													color: item.sourceCategory && 
-														(item.sourceCategory === 'Talent' || item.sourceCategory === 'Combat Art' || item.sourceCategory === 'Folk')
-														? getSkillChipColor(item.sourceCategory)
-														: undefined,
+													backgroundColor: getCategoryColor(item.sourceCategory || item.source, item.source) + '20',
+													borderColor: getCategoryColor(item.sourceCategory || item.source, item.source),
+													color: getCategoryColor(item.sourceCategory || item.source, item.source),
 													flexShrink: 0,
 													fontSize: '0.75rem'
 												}}
 											/>
 										</Box>
 									</AccordionSummary>
-									<AccordionDetails>
+									<AccordionDetails sx={{ pt: 0, px: 1 }}>
 										<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 											{/* Properties caption for items, weapons, and spells */}
 											{item.properties && (
