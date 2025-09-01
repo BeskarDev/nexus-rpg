@@ -36,12 +36,10 @@ export const SpellsTab: React.FC = () => {
 	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
 
 	// Get Quick Ref selections
-	const quickRefSelections = activeCharacter.skills.quickRefSelections || { 
-		abilities: [], 
-		weapons: [], 
-		items: [], 
-		spells: [] 
-	}
+	const { quickRefSelections = { abilities: [], weapons: [], items: [], spells: [] } } = useMemo(
+		() => activeCharacter.skills,
+		[activeCharacter.skills]
+	)
 
 	// Quick Ref handler for spells
 	const handleToggleSpellQuickRef = (spellId: string) => {
@@ -229,7 +227,7 @@ export const SpellsTab: React.FC = () => {
 										spell={s}
 										updateSpell={(update) => updateSpell(update, index)}
 										deleteSpell={() => deleteSpell(s)}
-										isInQuickRef={quickRefSelections.spells?.includes(s.id) || false}
+										isInQuickRef={quickRefSelections.spells.includes(s.id)}
 										onToggleQuickRef={handleToggleSpellQuickRef}
 									/>
 								</DynamicListItem>
