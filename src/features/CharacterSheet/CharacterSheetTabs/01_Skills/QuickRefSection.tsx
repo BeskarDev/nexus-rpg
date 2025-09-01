@@ -112,7 +112,7 @@ export const QuickRefSection: React.FC = () => {
 		// For other types, use distinct colors that don't conflict with ability categories
 		switch (sourceType) {
 			case 'weapon':
-				return getSkillChipColor('Archery') // Brown/orange (different from Fighting)
+				return getSkillChipColor('Fortitude') // Red (distinct from all other categories)
 			case 'item':
 				return getSkillChipColor('Crafting') // Gray
 			case 'spell':
@@ -126,7 +126,7 @@ export const QuickRefSection: React.FC = () => {
 		if ('properties' in item && item.properties) {
 			// For spells and items, check properties for action type indicators
 			const props = item.properties.toLowerCase()
-			if (props.includes('quick action') || props.includes('reaction')) {
+			if (props.includes('quick action') || props.includes('reaction') || props.includes('quick')) {
 				return 'Quick Action'
 			}
 			if (props.includes('triggered') || props.includes('trigger')) {
