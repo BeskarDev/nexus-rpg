@@ -57,7 +57,7 @@ export const QuickRefSection: React.FC = () => {
 	
 	const { weapons = [] } = useMemo(() => activeCharacter.items, [activeCharacter.items])
 	const { items = [] } = useMemo(() => activeCharacter.items, [activeCharacter.items])
-	const { spells = [] } = useMemo(() => activeCharacter.spells, [activeCharacter.spells])
+	const spells = useMemo(() => activeCharacter.spells.spells || [], [activeCharacter.spells.spells])
 
 	// Function to determine action type for dynamic items
 	const determineActionType = (item: Weapon | Item | Spell): ActionType => {
