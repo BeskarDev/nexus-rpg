@@ -36,10 +36,12 @@ export const SpellsTab: React.FC = () => {
 	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
 
 	// Get Quick Ref selections
-	const { quickRefSelections = { abilities: [], weapons: [], items: [], spells: [] } } = useMemo(
-		() => activeCharacter.skills,
-		[activeCharacter.skills]
-	)
+	const quickRefSelections = activeCharacter.skills.quickRefSelections || { 
+		abilities: [], 
+		weapons: [], 
+		items: [], 
+		spells: [] 
+	}
 
 	// Quick Ref handler for spells
 	const handleToggleSpellQuickRef = (spellId: string) => {
