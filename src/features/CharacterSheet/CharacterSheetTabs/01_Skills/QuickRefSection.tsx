@@ -14,6 +14,10 @@ import {
 	DialogContent,
 	DialogActions,
 	DialogContentText,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
 } from '@mui/material'
 import {
 	ExpandMore,
@@ -21,7 +25,7 @@ import {
 	Bookmark,
 } from '@mui/icons-material'
 import { Ability, Weapon, Item, Spell, Damage, BaseDamageType } from '../../../../types/Character'
-import { ActionType, getActionTypeIcon } from '../../../../types/ActionType'
+import { ActionType, ACTION_TYPES, getActionTypeIcon } from '../../../../types/ActionType'
 import { SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
@@ -53,7 +57,13 @@ export const QuickRefSection: React.FC = () => {
 	
 	const {
 		abilities = [],
-		quickRefSelections = { abilities: [], weapons: [], items: [], spells: [] }
+		quickRefSelections = { 
+			abilities: [], 
+			weapons: [], 
+			items: [], 
+			spells: [],
+			actionTypeOverrides: {}
+		}
 	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
 	
 	const { weapons = [] } = useMemo(() => activeCharacter.items, [activeCharacter.items])
@@ -122,8 +132,20 @@ export const QuickRefSection: React.FC = () => {
 				return getSkillChipColor('Perception') // Medium blue
 		}
 	}
-	// Function to determine action type for dynamic items
-	const determineActionType = (item: Weapon | Item | Spell): ActionType => {
+	// Function to determine action type for dynamic items, checking overrides first
+	const determineActionType = (item: Weapon | Item | Spell | Ability): ActionType => {
+		const itemId = item.id
+		
+		// Check for manual override first
+		if (quickRefSelections.actionTypeOverrides?.[itemId]) {
+			return quickRefSelections.actionTypeOverrides[itemId]
+		}
+		
+		// For abilities, use their existing actionType
+		if ('actionType' in item && item.actionType) {
+			return item.actionType
+		}
+		
 		if ('properties' in item && item.properties) {
 			// For spells and items, check properties for action type indicators
 			const props = item.properties.toLowerCase()
@@ -321,6 +343,10 @@ export const QuickRefSection: React.FC = () => {
 		}
 	}
 
+	const handleActionTypeChange = (itemId: string, actionType: ActionType) => {
+		dispatch(characterSheetActions.setQuickRefActionType({ itemId, actionType }))
+	}
+
 	if (totalSelected === 0) {
 		return (
 			<Box sx={{ mb: 3 }}>
@@ -462,8 +488,32 @@ export const QuickRefSection: React.FC = () => {
 													{item.description}
 												</Typography>
 											)}
-											{/* Remove from Quick Ref button */}
-											<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+											{/* Action Type Dropdown and Remove from Quick Ref button */}
+											<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'space-between' }}>
+												<FormControl size="small" sx={{ width: '9.5rem' }}>
+													<InputLabel id={`quick-ref-action-type-${item.id}`}>Action Type</InputLabel>
+													<Select
+														labelId={`quick-ref-action-type-${item.id}`}
+														value={item.actionType || 'Action'}
+														label="Action Type"
+														onChange={(event) => {
+															const newActionType = event.target.value as ActionType
+															handleActionTypeChange(item.id, newActionType)
+														}}
+													>
+														{ACTION_TYPES.map((type) => (
+															<MenuItem key={type} value={type}>
+																<Box
+																	sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+																>
+																	{getActionTypeIcon(type)}
+																	{type}
+																</Box>
+															</MenuItem>
+														))}
+													</Select>
+												</FormControl>
+												
 												<Tooltip title="Remove from Quick Ref">
 													<IconButton
 														size="small"

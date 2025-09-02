@@ -14,6 +14,7 @@ import {
 	Weapon,
 } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
+import { ActionType } from '@site/src/types/ActionType'
 import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
@@ -848,8 +849,32 @@ export const {
 					weapons: [],
 					items: [],
 					spells: [],
+					actionTypeOverrides: {},
 				}
 			}
+		},
+		setQuickRefActionType: (
+			state,
+			action: PayloadAction<{ itemId: string; actionType: ActionType }>
+		) => {
+			state.unsavedChanges = true
+			const { itemId, actionType } = action.payload
+			
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+					actionTypeOverrides: {},
+				}
+			}
+			
+			if (!state.activeCharacter.skills.quickRefSelections.actionTypeOverrides) {
+				state.activeCharacter.skills.quickRefSelections.actionTypeOverrides = {}
+			}
+			
+			state.activeCharacter.skills.quickRefSelections.actionTypeOverrides[itemId] = actionType
 		},
 	},
 })

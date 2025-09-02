@@ -212,6 +212,7 @@ export type QuickRefSelections = {
 	items: string[] // Array of item IDs
 	spells: string[] // Array of spell IDs
 	order?: Record<string, number> // Custom ordering for selected items
+	actionTypeOverrides?: Record<string, ActionType> // Manual action type overrides for quick ref items
 }
 
 export type Items = {
