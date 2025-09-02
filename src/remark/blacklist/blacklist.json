@@ -13,5 +13,77 @@
     "keyword": "fire",
     "plugin": "table-chips",
     "comment": "Exclude 'fire' in damage type list where it's part of natural language description"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "Mind",
+    "plugin": "both",
+    "comment": "Exclude 'Mind' in 'Stoic Mind' ability name where it's part of ability name, not attribute reference"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "Nature",
+    "plugin": "both",
+    "comment": "Exclude 'Nature' in 'Aquatic Nature' ability name where it's part of ability name, not skill reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "keyword": "Fire",
+    "plugin": "both",
+    "comment": "Exclude 'Fire' in 'Fire Body' ability name where it's part of ability name, not damage type reference"
+  },
+  {
+    "file": "docs/04-equipment/02-equipment.md",
+    "keyword": "Fire",
+    "plugin": "both",
+    "comment": "Exclude 'Fire' in 'Fire Bomb' equipment name where it's part of item name, not damage type reference"
+  },
+  {
+    "file": "docs/03-statistics/06-talents.md",
+    "keyword": "Poison",
+    "plugin": "both",
+    "comment": "Exclude 'Poison' in 'Poison Maker' talent name where it's part of talent name, not damage type reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "keyword": "Poison",
+    "plugin": "both",
+    "comment": "Exclude 'Poison' in ability names like 'Poisoned Dagger', 'Poison Mist', etc. where it's part of ability name, not damage type reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "keyword": "Necrotic",
+    "plugin": "both",
+    "comment": "Exclude 'Necrotic' in ability names like 'Necrotic Touch', 'Necrotic Bolt', 'Necrotic Aura' where it's part of ability name, not damage type reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "keyword": "Shield",
+    "plugin": "both",
+    "comment": "Exclude 'Shield' in creature attack names like 'Light Shield', 'Heavy Shield', 'Shield Bash', 'Shield Wall' where it's part of attack name, not weapon category reference"
+  },
+  {
+    "file": "docs/05-combat/05-combat-arts.md",
+    "keyword": "Shield",
+    "plugin": "both",
+    "comment": "Exclude 'Shield' in 'Shield Avalanche' combat art name where it's part of combat art name, not weapon category reference"
+  },
+  {
+    "file": "docs/03-statistics/06-talents.md",
+    "keyword": "Shield",
+    "plugin": "both",
+    "comment": "Exclude 'Shield' in talent names like 'Mana Shield', 'Shield Mastery' where it's part of talent name, not weapon category reference"
+  },
+  {
+    "file": "docs/03-statistics/06-talents.md",
+    "keyword": "Fighting",
+    "plugin": "both",
+    "comment": "Exclude 'Fighting' in 'Art of Fighting' talent name where it's part of talent name, not skill reference"
+  },
+  {
+    "file": "docs/03-statistics/06-talents.md",
+    "keyword": "Nature",
+    "plugin": "both",
+    "comment": "Exclude 'Nature' in 'Explorer of Nature' talent name where it's part of talent name, not skill reference"
   }
 ]
