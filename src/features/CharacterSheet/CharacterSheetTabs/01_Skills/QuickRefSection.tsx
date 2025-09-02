@@ -239,7 +239,7 @@ export const QuickRefSection: React.FC = () => {
 			groups.push({
 				title: 'Actions',
 				icon: getActionTypeIcon('Action'),
-				items: actions,
+				items: actions.sort((a, b) => a.name.localeCompare(b.name)),
 			})
 		}
 		
@@ -247,7 +247,7 @@ export const QuickRefSection: React.FC = () => {
 			groups.push({
 				title: 'Quick Actions',
 				icon: getActionTypeIcon('Quick Action'),
-				items: quickActions,
+				items: quickActions.sort((a, b) => a.name.localeCompare(b.name)),
 			})
 		}
 		
@@ -255,7 +255,7 @@ export const QuickRefSection: React.FC = () => {
 			groups.push({
 				title: 'Passive',
 				icon: getActionTypeIcon('Passive'),
-				items: passiveAbilities,
+				items: passiveAbilities.sort((a, b) => a.name.localeCompare(b.name)),
 			})
 		}
 		
@@ -263,7 +263,7 @@ export const QuickRefSection: React.FC = () => {
 			groups.push({
 				title: 'Triggered',
 				icon: getActionTypeIcon('Triggered'),
-				items: triggered,
+				items: triggered.sort((a, b) => a.name.localeCompare(b.name)),
 			})
 		}
 		
@@ -271,7 +271,7 @@ export const QuickRefSection: React.FC = () => {
 			groups.push({
 				title: 'Free',
 				icon: getActionTypeIcon('Free'),
-				items: free,
+				items: free.sort((a, b) => a.name.localeCompare(b.name)),
 			})
 		}
 		
@@ -279,7 +279,7 @@ export const QuickRefSection: React.FC = () => {
 			groups.push({
 				title: 'Other',
 				icon: getActionTypeIcon('Other'),
-				items: other,
+				items: other.sort((a, b) => a.name.localeCompare(b.name)),
 			})
 		}
 
