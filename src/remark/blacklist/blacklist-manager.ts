@@ -8,8 +8,8 @@ export interface BlacklistEntry {
 	section?: string
 	/** Exact term to exclude from conversion */
 	keyword: string
-	/** Zero-based index of which match to exclude (optional, excludes all if not specified) */
-	matchIndex?: number
+	/** Zero-based index of which match to exclude (optional, excludes all if not specified). Can be a number or array of numbers. */
+	matchIndex?: number | number[]
 	/** Which plugin(s) to apply blacklist to */
 	plugin?: 'auto-keyword' | 'table-chips' | 'both'
 	/** Optional comment for documentation */
@@ -126,6 +126,10 @@ class BlacklistManager {
 			// If no matchIndex specified in blacklist, exclude all matches
 			if (entry.matchIndex === undefined) {
 				return true
+			}
+			// Support arrays of match indices
+			if (Array.isArray(entry.matchIndex)) {
+				return entry.matchIndex.includes(matchIndex)
 			}
 			// Otherwise, only exclude the specific match index
 			return entry.matchIndex === matchIndex
