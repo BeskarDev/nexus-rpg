@@ -2,16 +2,36 @@ import React, { useState } from 'react'
 import { Box } from '@mui/material'
 
 import { useAppSelector } from '../../hooks/useAppSelector'
+import { useAppDispatch } from '../../hooks/useAppDispatch'
+import { characterSheetActions } from '../../characterSheetReducer'
 import { WeaponSearchDialog, EquipmentSearchDialog } from './SearchDialog'
 import { ItemsHeader, ItemsSettingsMenu, InventorySection } from './components'
 import { useItemManagement } from './hooks'
 
 export const ItemsTab: React.FC = () => {
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
+	const dispatch = useAppDispatch()
 	const [weaponSearchOpen, setWeaponSearchOpen] = useState(false)
 	const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
 	const [settingsMenuAnchor, setSettingsMenuAnchor] =
 		useState<null | HTMLElement>(null)
+
+	// Get Quick Ref selections
+	const quickRefSelections = activeCharacter.skills.quickRefSelections || { 
+		abilities: [], 
+		weapons: [], 
+		items: [], 
+		spells: [] 
+	}
+
+	// Quick Ref handlers
+	const handleToggleWeaponQuickRef = (weaponId: string) => {
+		dispatch(characterSheetActions.toggleQuickRefWeapon(weaponId))
+	}
+
+	const handleToggleItemQuickRef = (itemId: string) => {
+		dispatch(characterSheetActions.toggleQuickRefItem(itemId))
+	}
 
 	const {
 		coins,
@@ -90,6 +110,10 @@ export const ItemsTab: React.FC = () => {
 					deleteWeapon={deleteWeapon}
 					updateItem={updateItem}
 					deleteItem={deleteItem}
+					weaponsInQuickRef={quickRefSelections.weapons}
+					itemsInQuickRef={quickRefSelections.items}
+					onToggleWeaponQuickRef={handleToggleWeaponQuickRef}
+					onToggleItemQuickRef={handleToggleItemQuickRef}
 				/>
 			)}
 
@@ -108,6 +132,10 @@ export const ItemsTab: React.FC = () => {
 					deleteWeapon={deleteWeapon}
 					updateItem={updateItem}
 					deleteItem={deleteItem}
+					weaponsInQuickRef={quickRefSelections.weapons}
+					itemsInQuickRef={quickRefSelections.items}
+					onToggleWeaponQuickRef={handleToggleWeaponQuickRef}
+					onToggleItemQuickRef={handleToggleItemQuickRef}
 				/>
 			)}
 
@@ -127,6 +155,10 @@ export const ItemsTab: React.FC = () => {
 					deleteWeapon={deleteWeapon}
 					updateItem={updateItem}
 					deleteItem={deleteItem}
+					weaponsInQuickRef={quickRefSelections.weapons}
+					itemsInQuickRef={quickRefSelections.items}
+					onToggleWeaponQuickRef={handleToggleWeaponQuickRef}
+					onToggleItemQuickRef={handleToggleItemQuickRef}
 				/>
 			)}
 
@@ -148,6 +180,10 @@ export const ItemsTab: React.FC = () => {
 					deleteWeapon={deleteWeapon}
 					updateItem={updateItem}
 					deleteItem={deleteItem}
+					weaponsInQuickRef={quickRefSelections.weapons}
+					itemsInQuickRef={quickRefSelections.items}
+					onToggleWeaponQuickRef={handleToggleWeaponQuickRef}
+					onToggleItemQuickRef={handleToggleItemQuickRef}
 					onLocationNameChange={(name) => {
 						itemsByLocation['mount'].forEach((item) => {
 							if ('damage' in item) {
@@ -191,6 +227,10 @@ export const ItemsTab: React.FC = () => {
 					deleteWeapon={deleteWeapon}
 					updateItem={updateItem}
 					deleteItem={deleteItem}
+					weaponsInQuickRef={quickRefSelections.weapons}
+					itemsInQuickRef={quickRefSelections.items}
+					onToggleWeaponQuickRef={handleToggleWeaponQuickRef}
+					onToggleItemQuickRef={handleToggleItemQuickRef}
 					onLocationNameChange={(name) => {
 						itemsByLocation['storage'].forEach((item) => {
 							if ('damage' in item) {

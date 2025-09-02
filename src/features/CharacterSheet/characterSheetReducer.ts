@@ -14,6 +14,7 @@ import {
 	Weapon,
 } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
+import { ActionType } from '@site/src/types/ActionType'
 import { ItemLocation } from '@site/src/types/ItemLocation'
 import { Character } from './../../types/Character'
 import { DeepPartial } from './CharacterSheetContainer'
@@ -738,6 +739,142 @@ export const {
 				state.activeCharacter.statistics.statusEffects.filter(
 					(effect) => effect.id !== id,
 				)
+		},
+		// Quick Ref actions
+		toggleQuickRefAbility: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const abilityId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+				}
+			}
+			// Ensure abilities array exists
+			if (!state.activeCharacter.skills.quickRefSelections.abilities) {
+				state.activeCharacter.skills.quickRefSelections.abilities = []
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.abilities
+			const index = current.indexOf(abilityId)
+			if (index >= 0) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(abilityId)
+			}
+		},
+		toggleQuickRefWeapon: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const weaponId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+				}
+			}
+			// Ensure weapons array exists
+			if (!state.activeCharacter.skills.quickRefSelections.weapons) {
+				state.activeCharacter.skills.quickRefSelections.weapons = []
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.weapons
+			const index = current.indexOf(weaponId)
+			if (index >= 0) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(weaponId)
+			}
+		},
+		toggleQuickRefItem: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const itemId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+				}
+			}
+			// Ensure items array exists
+			if (!state.activeCharacter.skills.quickRefSelections.items) {
+				state.activeCharacter.skills.quickRefSelections.items = []
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.items
+			const index = current.indexOf(itemId)
+			if (index >= 0) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(itemId)
+			}
+		},
+		toggleQuickRefSpell: (state, action: PayloadAction<string>) => {
+			state.unsavedChanges = true
+			const spellId = action.payload
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+				}
+			}
+			// Ensure spells array exists
+			if (!state.activeCharacter.skills.quickRefSelections.spells) {
+				state.activeCharacter.skills.quickRefSelections.spells = []
+			}
+			const current = state.activeCharacter.skills.quickRefSelections.spells
+			const index = current.indexOf(spellId)
+			if (index >= 0) {
+				// Remove if exists
+				current.splice(index, 1)
+			} else {
+				// Add if doesn't exist
+				current.push(spellId)
+			}
+		},
+		clearQuickRef: (state) => {
+			state.unsavedChanges = true
+			if (state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+					actionTypeOverrides: {},
+				}
+			}
+		},
+		setQuickRefActionType: (
+			state,
+			action: PayloadAction<{ itemId: string; actionType: ActionType }>
+		) => {
+			state.unsavedChanges = true
+			const { itemId, actionType } = action.payload
+			
+			if (!state.activeCharacter.skills.quickRefSelections) {
+				state.activeCharacter.skills.quickRefSelections = {
+					abilities: [],
+					weapons: [],
+					items: [],
+					spells: [],
+					actionTypeOverrides: {},
+				}
+			}
+			
+			if (!state.activeCharacter.skills.quickRefSelections.actionTypeOverrides) {
+				state.activeCharacter.skills.quickRefSelections.actionTypeOverrides = {}
+			}
+			
+			state.activeCharacter.skills.quickRefSelections.actionTypeOverrides[itemId] = actionType
 		},
 	},
 })

@@ -11,6 +11,7 @@ import {
 	Select,
 	FormControl,
 	InputLabel,
+	FormControlLabel,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -18,13 +19,12 @@ import {
 	Delete,
 	ExpandMore,
 	DriveFileMove,
-	PlayArrow,
-	Bolt,
-	CircleOutlined,
+	BookmarkBorder,
+	Bookmark,
 } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
-import { ActionType, ACTION_TYPES } from '@site/src/types/ActionType'
+import { ActionType, ACTION_TYPES, getActionTypeIcon } from '@site/src/types/ActionType'
 
 export type AbilityRowProps = {
 	title: string
@@ -36,6 +36,9 @@ export type AbilityRowProps = {
 	updateAbility: (update: Partial<Ability>) => void
 	moveToCategory: (newTag: AbilityTag) => void
 	deleteAbility: () => void
+	abilityId: string
+	isInQuickRef?: boolean
+	onToggleQuickRef?: (abilityId: string) => void
 }
 
 export const AbilityRow: React.FC<AbilityRowProps> = ({
@@ -48,6 +51,9 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	updateAbility,
 	moveToCategory,
 	deleteAbility,
+	abilityId,
+	isInQuickRef = false,
+	onToggleQuickRef,
 }) => {
 	const [title, setTitle] = useState(initialTitle)
 	const [description, setDescription] = useState(initialDescription)
@@ -69,19 +75,6 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	const handleMoveCategory = (newTag: AbilityTag) => {
 		moveToCategory(newTag)
 		handleMoveMenuClose()
-	}
-
-	const getActionTypeIcon = (type: ActionType) => {
-		switch (type) {
-			case 'Action':
-				return <PlayArrow fontSize="small" />
-			case 'Quick Action':
-				return <Bolt fontSize="small" />
-			case 'Passive Ability':
-				return <CircleOutlined fontSize="small" />
-			default:
-				return null
-		}
 	}
 
 	return (
@@ -211,6 +204,20 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						</Box>
 
 						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+							{onToggleQuickRef && (
+								<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+									<IconButton
+										size="small"
+										onClick={() => onToggleQuickRef(abilityId)}
+										sx={{ 
+											p: 0.5,
+											color: isInQuickRef ? 'primary.main' : 'action.disabled'
+										}}
+									>
+										{isInQuickRef ? <Bookmark fontSize="small" /> : <BookmarkBorder fontSize="small" />}
+									</IconButton>
+								</Tooltip>
+							)}
 							<Tooltip title="Move to another category">
 								<IconButton
 									size="small"

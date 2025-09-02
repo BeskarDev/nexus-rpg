@@ -249,7 +249,7 @@ export const SkillsTab: React.FC = () => {
 				</Box>
 
 				{/* Skills Section */}
-				<Box sx={{ display: 'flex', alignItems: 'center', mb: 2, gap: 1 }}>
+				<Box sx={{ display: 'flex', alignItems: 'center', mb: 1, gap: 1 }}>
 					<SectionHeader sx={{ mb: 0 }}>Skills</SectionHeader>
 					{canAddSkills && availableSkills.length > 0 && (
 						<Tooltip title="Add Skill">
@@ -265,18 +265,6 @@ export const SkillsTab: React.FC = () => {
 						<HelpOutline fontSize="small" />
 					</Tooltip>
 				</Box>
-
-				{/* Skills Count Caption */}
-				<Typography
-					variant="caption"
-					sx={{
-						display: 'block',
-						mb: 2,
-						color: hasMinimumSkills ? 'text.secondary' : 'error.main',
-					}}
-				>
-					You have selected {skillsCount} of 12 skills (minimum 7 required)
-				</Typography>
 
 				{/* Skills Dropdown */}
 				{showSkillDropdown && canAddSkills && availableSkills.length > 0 && (
@@ -297,7 +285,7 @@ export const SkillsTab: React.FC = () => {
 				)}
 
 				{/* Selected Skills as Chips */}
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 2 }}>
+				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 1 }}>
 					{skills
 						.slice()
 						.sort((a, b) => a.name.localeCompare(b.name))
@@ -407,8 +395,8 @@ export const SkillsTab: React.FC = () => {
 
 				{/* Professions Section */}
 				{hasCraftingSkill && (
-					<Box sx={{ mt: 3 }}>
-						<Box sx={{ display: 'flex', alignItems: 'center', mb: 2, gap: 1 }}>
+					<Box sx={{ mt: 1 }}>
+						<Box sx={{ display: 'flex', alignItems: 'center', mb: 1, gap: 1 }}>
 							<SectionHeader sx={{ mb: 0 }}>Crafting Professions</SectionHeader>
 							{availableProfessions.length > 0 && (
 								<Tooltip title="Add Profession">
@@ -423,9 +411,6 @@ export const SkillsTab: React.FC = () => {
 								</Tooltip>
 							)}
 						</Box>
-						<Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-							Select professions for your Crafting skill.
-						</Typography>
 
 						{/* Professions Dropdown */}
 						{showProfessionDropdown && availableProfessions.length > 0 && (
@@ -469,8 +454,8 @@ export const SkillsTab: React.FC = () => {
 				)}
 
 				{/* Languages Section */}
-				<Box sx={{ mt: 3 }}>
-					<Box sx={{ display: 'flex', alignItems: 'center', mb: 2, gap: 1 }}>
+				<Box sx={{ mt: 1 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', mb: 1, gap: 1 }}>
 						<SectionHeader sx={{ mb: 0 }}>Languages</SectionHeader>
 						{availableLanguages.length > 0 && (
 							<Tooltip title="Add Language">
@@ -483,10 +468,6 @@ export const SkillsTab: React.FC = () => {
 							</Tooltip>
 						)}
 					</Box>
-					<Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
-						Select languages your character knows. Tradespeak is the common
-						language known by all characters.
-					</Typography>
 
 					{/* Languages Dropdown */}
 					{showLanguageDropdown && availableLanguages.length > 0 && (

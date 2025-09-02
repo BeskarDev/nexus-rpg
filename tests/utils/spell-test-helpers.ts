@@ -30,7 +30,7 @@ export const mockMuiTheme = () => {
     const actual = await vi.importActual('@mui/material')
     return {
       ...actual,
-      Experimental_CssVarsProvider: ({ children }: { children: React.ReactNode }) => <div data-testid="theme-provider">{children}</div>,
+      Experimental_CssVarsProvider: ({ children }: { children: React.ReactNode }) => React.createElement('div', { 'data-testid': 'theme-provider' }, children),
       experimental_extendTheme: vi.fn(() => ({}))
     }
   })

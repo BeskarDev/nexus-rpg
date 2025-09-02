@@ -10,10 +10,11 @@ import {
 	IconButton,
 	MenuItem,
 	TextField,
+	Tooltip,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
-import { Delete, ExpandMore } from '@mui/icons-material'
+import { Delete, ExpandMore, BookmarkBorder, Bookmark } from '@mui/icons-material'
 import {
 	RangeType,
 	rangeTypeArray,
@@ -32,12 +33,16 @@ export type SpellRowProps = {
 	spell: Spell
 	updateSpell: (update: Partial<Spell>) => void
 	deleteSpell: () => void
+	isInQuickRef?: boolean
+	onToggleQuickRef?: (spellId: string) => void
 }
 
 export const SpellRow: React.FC<SpellRowProps> = ({
 	spell: initialSpell,
 	updateSpell,
 	deleteSpell,
+	isInQuickRef = false,
+	onToggleQuickRef,
 }) => {
 	const [spell, setSpell] = useState<Spell>(initialSpell)
 	const [expanded, setExpanded] = useState(false)
@@ -279,6 +284,20 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 							</MenuItem>
 						))}
 					</AttributeField>
+					{onToggleQuickRef && (
+						<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+							<IconButton
+								size="small"
+								onClick={() => onToggleQuickRef(initialSpell.id)}
+								sx={{ 
+									my: 'auto',
+									color: isInQuickRef ? 'primary.main' : 'action.disabled'
+								}}
+							>
+								{isInQuickRef ? <Bookmark /> : <BookmarkBorder />}
+							</IconButton>
+						</Tooltip>
+					)}
 					<IconButton
 						size="small"
 						edge="end"
