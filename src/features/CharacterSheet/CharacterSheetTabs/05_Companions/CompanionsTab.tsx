@@ -1,5 +1,5 @@
-import { Add, HelpOutline, Info } from '@mui/icons-material'
-import { Box, Button, Typography, Tooltip, IconButton } from '@mui/material'
+import { Add, HelpOutline, Info, Build } from '@mui/icons-material'
+import { Box, Button, Typography, Tooltip, IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
 import React, { useState, useMemo } from 'react'
 import { DropResult } from 'react-beautiful-dnd'
 import { SectionHeader } from '../../CharacterSheet'
@@ -11,6 +11,7 @@ import { CompanionAccordion } from './components/CompanionAccordion'
 import { DeleteCompanionDialog } from './components/DeleteCompanionDialog'
 import { useCompanionActions } from './hooks/useCompanionActions'
 import { useAccordionState } from './hooks/useAccordionState'
+import { CompanionBuilder } from '@site/src/components/CompanionBuilder'
 
 export const CompanionsTab: React.FC = () => {
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
@@ -45,6 +46,9 @@ export const CompanionsTab: React.FC = () => {
 	const [companionToDelete, setCompanionToDelete] = useState<string | null>(
 		null,
 	)
+
+	// Companion Builder dialog state
+	const [companionBuilderOpen, setCompanionBuilderOpen] = useState(false)
 
 	const handleAddCompanion = () => {
 		const newCompanionId = addCompanion()
@@ -123,6 +127,23 @@ export const CompanionsTab: React.FC = () => {
 		setEditMarkdown('')
 	}
 
+	const handleImportFromBuilder = (name: string, markdown: string) => {
+		// Create a new companion with the imported data
+		const newCompanionId = addCompanion()
+		
+		// Update the new companion with the imported data
+		updateCompanionWithAutoHP(newCompanionId, { name, markdown })
+		
+		// Auto-expand the new companion's accordion and start editing
+		expandNewCompanion(newCompanionId)
+		setEditingId(newCompanionId)
+		setEditName(name)
+		setEditMarkdown(markdown)
+		
+		// Close the builder dialog
+		setCompanionBuilderOpen(false)
+	}
+
 	return (
 		<Box sx={{ maxWidth: '47rem' }}>
 			<Box
@@ -143,15 +164,26 @@ export const CompanionsTab: React.FC = () => {
 						<HelpOutline fontSize="small" />
 					</Tooltip>
 				</Box>
-				<Tooltip title="Add a new companion to your character sheet">
-					<Button
-						variant="contained"
-						startIcon={<Add />}
-						onClick={handleAddCompanion}
-					>
-						Add Companion
-					</Button>
-				</Tooltip>
+				<Box sx={{ display: 'flex', gap: 1 }}>
+					<Tooltip title="Use the Companion Builder to create stat blocks">
+						<Button
+							variant="outlined"
+							startIcon={<Build />}
+							onClick={() => setCompanionBuilderOpen(true)}
+						>
+							Companion Builder
+						</Button>
+					</Tooltip>
+					<Tooltip title="Add a new companion to your character sheet">
+						<Button
+							variant="contained"
+							startIcon={<Add />}
+							onClick={handleAddCompanion}
+						>
+							Add Companion
+						</Button>
+					</Tooltip>
+				</Box>
 			</Box>
 
 			{companions.length > 0 && (
@@ -186,7 +218,7 @@ export const CompanionsTab: React.FC = () => {
 					color="text.secondary"
 					sx={{ textAlign: 'center', py: 4 }}
 				>
-					No companions added yet. Click "Add Companion" to get started.
+					No companions added yet. Use the "Companion Builder" to create stat blocks or click "Add Companion" to start manually.
 				</Typography>
 			)}
 
@@ -196,6 +228,27 @@ export const CompanionsTab: React.FC = () => {
 				onConfirm={handleDeleteConfirm}
 				onCancel={handleDeleteCancel}
 			/>
+
+			{/* Companion Builder Dialog */}
+			<Dialog
+				open={companionBuilderOpen}
+				onClose={() => setCompanionBuilderOpen(false)}
+				maxWidth="lg"
+				fullWidth
+			>
+				<DialogTitle>Companion Builder</DialogTitle>
+				<DialogContent>
+					<CompanionBuilder
+						showImportButton={true}
+						onImportCompanion={handleImportFromBuilder}
+					/>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setCompanionBuilderOpen(false)}>
+						Close
+					</Button>
+				</DialogActions>
+			</Dialog>
 		</Box>
 	)
 }

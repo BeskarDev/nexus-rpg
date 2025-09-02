@@ -151,7 +151,15 @@ function TabPanel(props: TabPanelProps) {
 	)
 }
 
-export const CompanionBuilder: React.FC = () => {
+interface CompanionBuilderProps {
+	showImportButton?: boolean
+	onImportCompanion?: (name: string, markdown: string) => void
+}
+
+export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({ 
+	showImportButton = false, 
+	onImportCompanion 
+}) => {
 	const [open, setOpen] = useState(false)
 	const [selectedTier, setSelectedTier] = useState<number>(0)
 	const [selectedSize, setSelectedSize] = useState<string>('')
@@ -853,16 +861,32 @@ ${markdownAbilities}`
 										}}
 									>
 										<Typography variant="h6">Markdown Output</Typography>
-										<Button
-											size="small"
-											onClick={() =>
-												navigator.clipboard.writeText(
-													generateMarkdown(builtCompanion),
-												)
-											}
-										>
-											Copy to Clipboard
-										</Button>
+										<Box sx={{ display: 'flex', gap: 1 }}>
+											<Button
+												size="small"
+												onClick={() =>
+													navigator.clipboard.writeText(
+														generateMarkdown(builtCompanion),
+													)
+												}
+											>
+												Copy to Clipboard
+											</Button>
+											{showImportButton && onImportCompanion && (
+												<Button
+													size="small"
+													variant="contained"
+													color="primary"
+													onClick={() => {
+														const markdown = generateMarkdown(builtCompanion)
+														const name = builtCompanion.trait.name
+														onImportCompanion(name, markdown)
+													}}
+												>
+													Import to Character
+												</Button>
+											)}
+										</Box>
 									</Box>
 									<Paper
 										variant="outlined"
