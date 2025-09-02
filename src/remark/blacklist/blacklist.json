@@ -179,5 +179,59 @@
     "keyword": "medium",
     "matchIndex": [0,2,3,4,5,6,7,8],
     "comment": "Exclude 'medium' in 'medium sized' folk descriptions where it's creature size, not duration reference"
+  },
+  {
+    "file": "docs/01-basic-rules/01-how-to-roll.md",
+    "keyword": "heavy",
+    "matchIndex": 0,
+    "comment": "Exclude 'heavy' in 'heavy sack' skill test example where it's descriptive weight, not armor property"
+  },
+  {
+    "file": "docs/01-basic-rules/02-character-creation.md",
+    "keyword": "light",
+    "matchIndex": [0,1],
+    "comment": "Exclude 'light' in torch descriptions 'bright light' and 'dim light' where it's illumination, not weapon property"
+  },
+  {
+    "file": "docs/01-basic-rules/02-character-creation.md",
+    "keyword": "reach",
+    "matchIndex": 0,
+    "comment": "Exclude 'reach' in 'reach that limit' where it's achieving a goal, not weapon property"
+  },
+  {
+    "file": "docs/01-basic-rules/03-character-progression.md",
+    "keyword": "reach",
+    "matchIndex": 0,
+    "comment": "Exclude 'reach' in 'reach the next threshold' where it's achieving a goal, not weapon property"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "light",
+    "matchIndex": [0,1,2,3,4,5],
+    "comment": "Exclude 'light' in folk descriptions like 'bright light', 'dim light', 'light activity' where it's illumination/intensity, not weapon property"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "reach",
+    "matchIndex": [0,1,2,3,4,5],
+    "comment": "Exclude 'reach' in folk age descriptions 'reach adulthood' where it's achieving age, not weapon property"
+  },
+  {
+    "file": "docs/02-adventurers/05-npc-relations.md",
+    "keyword": "heavy",
+    "matchIndex": 0,
+    "comment": "Exclude 'heavy' in 'heavy taxes' where it's describing severity, not armor property"
+  },
+  {
+    "file": "docs/06-scenes/03-resting.md",
+    "keyword": "heavy",
+    "matchIndex": 0,
+    "comment": "Exclude 'heavy' in 'heavy interruption' where it's describing severity, not armor property"
+  },
+  {
+    "file": "docs/06-scenes/03-resting.md",
+    "keyword": "light",
+    "matchIndex": [0,1],
+    "comment": "Exclude 'light' in sleep descriptions where it's illumination, not weapon property"
   }
 ]
