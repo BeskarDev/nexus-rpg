@@ -242,13 +242,14 @@ describe('CombatArts Tool - Basic Tests', () => {
       
       const textarea = screen.getByPlaceholderText(/paste character json here/i)
       
-      // Create large mock data
+      // Create large mock data - use paste instead of type for performance
       const largeData = 'A'.repeat(1000)
       
       await userEvent.click(textarea)
-      await userEvent.type(textarea, largeData)
+      await userEvent.paste(largeData)
       
-      expect(textarea).toBeInTheDocument()
+      // Verify the value was set
+      expect(textarea).toHaveValue(largeData)
     })
   })
 

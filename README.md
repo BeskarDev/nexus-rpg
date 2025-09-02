@@ -62,3 +62,30 @@ yarn deploy
 
 Builds the website and deploys it to Firebase Hosting.
 
+## 📝 Content Management
+
+### Plugin Blacklist System
+
+This project includes automatic keyword and chip conversion plugins that enhance the documentation by converting specific terms to links or styled elements. However, sometimes these conversions are unwanted in certain contexts.
+
+The blacklist system allows you to prevent automatic conversions for specific terms in particular locations. 
+
+**Blacklist Configuration**: [`src/remark/blacklist/blacklist.json`](src/remark/blacklist/blacklist.json)
+
+**Full Documentation**: [`src/remark/blacklist/README.md`](src/remark/blacklist/README.md)
+
+**Quick Example**:
+```json
+[
+  {
+    "file": "docs/example.md",
+    "section": "Section Title",
+    "keyword": "fire",
+    "matchIndex": 0,
+    "plugin": "table-chips"
+  }
+]
+```
+
+This would prevent the first occurrence of "fire" in the "Section Title" section of `docs/example.md` from being converted to a chip.
+
