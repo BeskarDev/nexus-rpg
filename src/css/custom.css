@@ -161,13 +161,6 @@ a.chip:hover {
   text-decoration: none !important;
 }
 
-/* Damage type chips */
-.chip--damage {
-  font-variant: small-caps;
-  padding: 3px 8px; /* Fixed vertical padding to be uniform */
-}
-
-
 /* Skill chips */
 .chip.chip--skill {
   position: relative;
