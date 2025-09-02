@@ -161,5 +161,23 @@
     "keyword": "frost",
     "matchIndex": 0,
     "comment": "Exclude 'frost' in 'Frost-resistant nomads' flavor description where it's descriptive, not damage type reference"
+  },
+  {
+    "file": "docs/01-basic-rules/02-character-creation.md",
+    "keyword": "Nature",
+    "matchIndex": 0,
+    "comment": "Exclude 'Nature' in 'nimble nature' flavor description where it's descriptive, not skill reference"
+  },
+  {
+    "file": "docs/02-adventurers/05-npc-relations.md",
+    "keyword": "close",
+    "matchIndex": 1,
+    "comment": "Exclude 'close' in 'close friend' description where it's descriptive relationship, not distance reference"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "medium",
+    "matchIndex": [0,2,3,4,5,6,7,8],
+    "comment": "Exclude 'medium' in 'medium sized' folk descriptions where it's creature size, not duration reference"
   }
 ]
