@@ -1,7 +1,7 @@
 [
   {
     "file": "docs/06-scenes/06-harvesting-creature-parts.md",
-    "section": "🔪 Harvesting Creature Parts",
+    "section": "\ud83d\udd2a Harvesting Creature Parts",
     "keyword": "Tool",
     "matchIndex": 0,
     "plugin": "auto-keyword",
@@ -85,5 +85,2917 @@
     "keyword": "Nature",
     "plugin": "both",
     "comment": "Exclude 'Nature' in 'Explorer of Nature' talent name where it's part of talent name, not skill reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 4,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 6,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 7,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 8,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 11,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 13,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 14,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 15,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 15,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 15,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 15,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 15,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 15,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 15,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 16,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 17,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 18,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 19,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 25,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 20,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 21,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 22,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 23,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 24,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 32,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 25,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 25,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 25,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 25,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 25,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 25,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 26,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 27,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 33,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 28,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 32,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 29,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 30,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 41,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 31,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 44,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 32,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 32,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 32,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 32,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 32,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 33,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 45,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 39,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 33,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 33,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 33,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 33,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 33,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 46,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 40,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 34,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 47,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 41,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 35,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 39,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 49,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 42,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 36,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 40,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 50,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 43,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 37,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 41,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 51,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 44,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "STR",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'STR' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "AGI",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'AGI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "SPI",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'SPI' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "MND",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'MND' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Parry",
+    "matchIndex": 38,
+    "plugin": "both",
+    "comment": "Exclude 'Parry' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Dodge",
+    "matchIndex": 43,
+    "plugin": "both",
+    "comment": "Exclude 'Dodge' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/03-creatures.md",
+    "section": "table-header",
+    "keyword": "Resist",
+    "matchIndex": 39,
+    "plugin": "both",
+    "comment": "Exclude 'Resist' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/02-creature-rules.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 9,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/02-creature-rules.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/02-creature-rules.md",
+    "section": "table-header",
+    "keyword": "Damage",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'Damage' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/08-creatures/02-creature-rules.md",
+    "section": "table-header",
+    "keyword": "Damage",
+    "matchIndex": 12,
+    "plugin": "both",
+    "comment": "Exclude 'Damage' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/01-basic-rules/01-how-to-roll.md",
+    "section": "table-header",
+    "keyword": "TN",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'TN' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/01-basic-rules/01-how-to-roll.md",
+    "section": "table-header",
+    "keyword": "TN",
+    "matchIndex": 10,
+    "plugin": "both",
+    "comment": "Exclude 'TN' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/01-basic-rules/01-how-to-roll.md",
+    "section": "table-header",
+    "keyword": "Success Level",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'Success Level' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/01-basic-rules/01-how-to-roll.md",
+    "section": "table-header",
+    "keyword": "SL",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'SL' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/05-combat/02-attacking.md",
+    "section": "table-header",
+    "keyword": "SL",
+    "matchIndex": 1,
+    "plugin": "both",
+    "comment": "Exclude 'SL' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/05-combat/02-attacking.md",
+    "section": "table-header",
+    "keyword": "Damage",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'Damage' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/05-combat/02-attacking.md",
+    "section": "table-header",
+    "keyword": "Damage",
+    "matchIndex": 5,
+    "plugin": "both",
+    "comment": "Exclude 'Damage' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/05-combat/02-attacking.md",
+    "section": "table-header",
+    "keyword": "HP",
+    "matchIndex": 2,
+    "plugin": "both",
+    "comment": "Exclude 'HP' in table header where it's used as column header, not as game mechanic reference"
+  },
+  {
+    "file": "docs/05-combat/02-attacking.md",
+    "section": "table-header",
+    "keyword": "AV",
+    "matchIndex": 3,
+    "plugin": "both",
+    "comment": "Exclude 'AV' in table header where it's used as column header, not as game mechanic reference"
   }
 ]
