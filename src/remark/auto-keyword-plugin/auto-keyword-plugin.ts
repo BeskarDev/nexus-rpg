@@ -1,15 +1,22 @@
 import { Node, Parent } from 'unist'
 import { visit } from 'unist-util-visit'
 import { keywords } from './keywords'
+import { isBlacklisted, BlacklistContext } from '../blacklist'
 
 const EXCLUSION_PREFIX = '_'
 
 /**
  * A remark plugin to automatically convert keywords in text nodes to links.
  * If you want to exclude a keyword from being a link, prefix it with an underscore (_).
+ * Also respects the blacklist configuration to prevent unwanted conversions.
  */
 const autoKeywordPlugin = (options) => {
-	return (tree) => {
+	return (tree, file) => {
+		// Track keyword match counts for blacklist checking
+		const keywordMatchCounts = new Map<string, number>()
+		
+		// Extract file path for blacklist context
+		const filePath = file?.path || file?.history?.[0] || ''
 		visit(
 			tree,
 			'text',
@@ -81,20 +88,55 @@ const autoKeywordPlugin = (options) => {
 					}
 
 					if (match) {
-						hasKeyword = true
-						processedWords.push({
-							type: 'link',
-							url: keywordMap.get(match),
-							children: [{ type: 'text', value: match, processed: true }],
-							data: {
-								hProperties: {
-									style:
-										'font-variant: small-caps; text-transform: lowercase; font-size: large;',
+						// Get current match count for this keyword
+						const currentCount = keywordMatchCounts.get(match) || 0
+						
+						// Create blacklist context
+						const blacklistContext: BlacklistContext = {
+							filePath,
+							pluginType: 'auto-keyword'
+						}
+						
+						// Check if this match should be blacklisted
+						const shouldExclude = isBlacklisted(match, blacklistContext, currentCount)
+						
+						// Increment match count
+						keywordMatchCounts.set(match, currentCount + 1)
+						
+						if (!shouldExclude) {
+							hasKeyword = true
+							processedWords.push({
+								type: 'link',
+								url: keywordMap.get(match),
+								children: [{ type: 'text', value: match, processed: true }],
+								data: {
+									hProperties: {
+										style:
+											'font-variant: small-caps; text-transform: lowercase; font-size: large;',
+									},
 								},
-							},
-							processed: true,
-						})
-						i += matchLength // Skip the matched words and spaces
+								processed: true,
+							})
+							i += matchLength // Skip the matched words and spaces
+						} else {
+							// Treat as regular text since it's blacklisted
+							const word = current
+							if (word.startsWith(EXCLUSION_PREFIX)) {
+								const strippedWord = word.slice(1) // Remove the prefix
+								processedWords.push({
+									type: 'text',
+									value: strippedWord,
+									processed: true,
+								})
+							} else {
+								processedWords.push({
+									type: 'text',
+									value: word,
+									processed: true,
+								})
+							}
+							i++
+						}
 					} else {
 						const word = current
 						if (word.startsWith(EXCLUSION_PREFIX)) {

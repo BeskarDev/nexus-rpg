@@ -1,0 +1,17 @@
+[
+  {
+    "file": "docs/06-scenes/06-harvesting-creature-parts.md",
+    "section": "🔪 Harvesting Creature Parts",
+    "keyword": "Tool",
+    "matchIndex": 0,
+    "plugin": "auto-keyword",
+    "comment": "Exclude first occurrence of 'Tool' in the category description where it's used as a category name, not as a link to equipment"
+  },
+  {
+    "file": "docs/07-magic/03-metamagic-arts.md",
+    "section": "Metamagic Arts",
+    "keyword": "fire",
+    "plugin": "table-chips",
+    "comment": "Exclude 'fire' in damage type list where it's part of natural language description"
+  }
+]

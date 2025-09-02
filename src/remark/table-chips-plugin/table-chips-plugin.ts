@@ -1,13 +1,21 @@
 import { Node, Parent } from 'unist'
 import { visit } from 'unist-util-visit'
 import { chipMappings } from './chip-mappings'
+import { isBlacklisted, BlacklistContext } from '../blacklist'
 
 /**
  * A remark plugin to automatically convert specific keywords in all text to colored chips.
  * Transforms damage types, skills, weapon categories, and attributes as specified.
+ * Also respects the blacklist configuration to prevent unwanted conversions.
  */
 const tableChipsPlugin = (options = {}) => {
 	return (tree, file) => {
+		// Track keyword match counts for blacklist checking
+		const keywordMatchCounts = new Map<string, number>()
+		
+		// Extract file path for blacklist context
+		const filePath = file?.path || file?.history?.[0] || ''
+		
 		visit(
 			tree,
 			'text',
@@ -109,28 +117,50 @@ const tableChipsPlugin = (options = {}) => {
 					}
 
 					if (match) {
-						hasChip = true
-						const chipInfo = chipMap.get(match)
-						const displayText = chipInfo.displayText || match
-						processedWords.push({
-							type: 'link',
-							url: '#', // Dummy URL since we just want a styled span
-							children: [{ type: 'text', value: displayText, processed: true }],
-							data: {
-								hProperties: {
-									className: [
-										`chip`,
-										`chip--${chipInfo.color}`,
-										`chip--${chipInfo.type}`,
-									],
-									'data-chip-type': chipInfo.type,
-									'aria-label': `${chipInfo.type}: ${match}`,
-									role: 'button',
+						// Get current match count for this keyword
+						const currentCount = keywordMatchCounts.get(match) || 0
+						
+						// Create blacklist context
+						const blacklistContext: BlacklistContext = {
+							filePath,
+							pluginType: 'table-chips'
+						}
+						
+						// Check if this match should be blacklisted
+						const shouldExclude = isBlacklisted(match, blacklistContext, currentCount)
+						
+						// Increment match count
+						keywordMatchCounts.set(match, currentCount + 1)
+						
+						if (!shouldExclude) {
+							hasChip = true
+							const chipInfo = chipMap.get(match)
+							const displayText = chipInfo.displayText || match
+							processedWords.push({
+								type: 'link',
+								url: '#', // Dummy URL since we just want a styled span
+								children: [{ type: 'text', value: displayText, processed: true }],
+								data: {
+									hProperties: {
+										className: [
+											`chip`,
+											`chip--${chipInfo.color}`,
+											`chip--${chipInfo.type}`,
+										],
+										'data-chip-type': chipInfo.type,
+										'aria-label': `${chipInfo.type}: ${match}`,
+										role: 'button',
+									},
 								},
-							},
-							processed: true,
-						})
-						i += matchLength // Skip the matched words and spaces
+								processed: true,
+							})
+							i += matchLength // Skip the matched words and spaces
+						} else {
+							// Treat as regular text since it's blacklisted
+							const word = current
+							processedWords.push({ type: 'text', value: word, processed: true })
+							i++
+						}
 					} else {
 						const word = current
 						processedWords.push({ type: 'text', value: word, processed: true })
