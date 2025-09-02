@@ -155,5 +155,11 @@
     "keyword": "quick",
     "matchIndex": [0,1],
     "comment": "Exclude 'quick' in 'quick access' equipment descriptions where it's descriptive, not action type reference"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "frost",
+    "matchIndex": 0,
+    "comment": "Exclude 'frost' in 'Frost-resistant nomads' flavor description where it's descriptive, not damage type reference"
   }
 ]

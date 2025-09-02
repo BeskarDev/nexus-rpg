@@ -58,7 +58,7 @@ describe('Blacklist Manager', () => {
 	})
 
 	describe('Plugin Type Filtering', () => {
-		it('should respect plugin-specific blacklist entries', () => {
+		it('should apply blacklist entries to both plugins', () => {
 			const autoKeywordContext: BlacklistContext = {
 				filePath: 'docs/06-scenes/06-harvesting-creature-parts.md',
 				pluginType: 'auto-keyword'
@@ -69,27 +69,27 @@ describe('Blacklist Manager', () => {
 				pluginType: 'table-chips'
 			}
 			
-			// 'Tool' is blacklisted for auto-keyword but not table-chips
+			// 'Tool' is blacklisted for both plugins since all entries now target both
 			expect(isBlacklisted('Tool', autoKeywordContext, 0)).toBe(true)
-			expect(isBlacklisted('Tool', tableChipsContext, 0)).toBe(false)
+			expect(isBlacklisted('Tool', tableChipsContext, 0)).toBe(true)
 		})
 
-		it('should handle "both" plugin setting', () => {
-			// We need a test case configured for both plugins
-			// For now, test with a theoretical entry
+		it('should handle consistent behavior across plugins', () => {
+			// Test that both plugins see the same blacklist behavior
 			const context1: BlacklistContext = {
-				filePath: 'docs/test-both.md',
+				filePath: 'docs/06-scenes/06-harvesting-creature-parts.md',
 				pluginType: 'auto-keyword'
 			}
 			
 			const context2: BlacklistContext = {
-				filePath: 'docs/test-both.md',
+				filePath: 'docs/06-scenes/06-harvesting-creature-parts.md',
 				pluginType: 'table-chips'
 			}
 			
-			// Since no such entry exists in our test config, both should return false
-			expect(isBlacklisted('test', context1, 0)).toBe(false)
-			expect(isBlacklisted('test', context2, 0)).toBe(false)
+			// Same keyword, same file, same index should behave identically
+			const result1 = isBlacklisted('Tool', context1, 0)
+			const result2 = isBlacklisted('Tool', context2, 0)
+			expect(result1).toBe(result2)
 		})
 	})
 
