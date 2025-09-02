@@ -134,7 +134,7 @@ export const CategorizedAbilities: React.FC = () => {
 		}
 
 	return (
-		<Box sx={{ display: 'flex', flexDirection: 'column', width: '25rem' }}>
+		<Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '25rem' }}>
 			{/* Quick Ref Section */}
 			<QuickRefSection />
 			

@@ -229,7 +229,7 @@ export const SpellsTab: React.FC = () => {
 										spell={s}
 										updateSpell={(update) => updateSpell(update, index)}
 										deleteSpell={() => deleteSpell(s)}
-										isInQuickRef={quickRefSelections.spells.includes(s.id)}
+										isInQuickRef={quickRefSelections.spells?.includes(s.id)}
 										onToggleQuickRef={handleToggleSpellQuickRef}
 									/>
 								</DynamicListItem>

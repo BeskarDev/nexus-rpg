@@ -751,6 +751,10 @@ export const {
 					spells: [],
 				}
 			}
+			// Ensure abilities array exists
+			if (!state.activeCharacter.skills.quickRefSelections.abilities) {
+				state.activeCharacter.skills.quickRefSelections.abilities = []
+			}
 			const current = state.activeCharacter.skills.quickRefSelections.abilities
 			const index = current.indexOf(abilityId)
 			if (index >= 0) {
@@ -771,6 +775,10 @@ export const {
 					items: [],
 					spells: [],
 				}
+			}
+			// Ensure weapons array exists
+			if (!state.activeCharacter.skills.quickRefSelections.weapons) {
+				state.activeCharacter.skills.quickRefSelections.weapons = []
 			}
 			const current = state.activeCharacter.skills.quickRefSelections.weapons
 			const index = current.indexOf(weaponId)
@@ -793,6 +801,10 @@ export const {
 					spells: [],
 				}
 			}
+			// Ensure items array exists
+			if (!state.activeCharacter.skills.quickRefSelections.items) {
+				state.activeCharacter.skills.quickRefSelections.items = []
+			}
 			const current = state.activeCharacter.skills.quickRefSelections.items
 			const index = current.indexOf(itemId)
 			if (index >= 0) {
@@ -814,9 +826,13 @@ export const {
 					spells: [],
 				}
 			}
+			// Ensure spells array exists
+			if (!state.activeCharacter.skills.quickRefSelections.spells) {
+				state.activeCharacter.skills.quickRefSelections.spells = []
+			}
 			const current = state.activeCharacter.skills.quickRefSelections.spells
 			const index = current.indexOf(spellId)
-			if (index !== -1) {
+			if (index >= 0) {
 				// Remove if exists
 				current.splice(index, 1)
 			} else {

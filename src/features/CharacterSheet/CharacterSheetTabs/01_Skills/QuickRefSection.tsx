@@ -18,6 +18,7 @@ import {
 import {
 	ExpandMore,
 	Clear,
+	Bookmark,
 } from '@mui/icons-material'
 import { Ability, Weapon, Item, Spell, Damage, BaseDamageType } from '../../../../types/Character'
 import { ActionType, getActionTypeIcon } from '../../../../types/ActionType'
@@ -303,6 +304,23 @@ export const QuickRefSection: React.FC = () => {
 		setConfirmDialogOpen(false)
 	}
 
+	const handleRemoveItem = (itemId: string, source: 'ability' | 'weapon' | 'item' | 'spell') => {
+		switch (source) {
+			case 'ability':
+				dispatch(characterSheetActions.toggleQuickRefAbility(itemId))
+				break
+			case 'weapon':
+				dispatch(characterSheetActions.toggleQuickRefWeapon(itemId))
+				break
+			case 'item':
+				dispatch(characterSheetActions.toggleQuickRefItem(itemId))
+				break
+			case 'spell':
+				dispatch(characterSheetActions.toggleQuickRefSpell(itemId))
+				break
+		}
+	}
+
 	if (totalSelected === 0) {
 		return (
 			<Box sx={{ mb: 3 }}>
@@ -402,15 +420,12 @@ export const QuickRefSection: React.FC = () => {
 											<Typography variant="subtitle2" fontWeight="bold" sx={{ flexGrow: 1 }}>
 												{item.name}
 												{item.rank && item.rank >= 1 && item.rank <= 5 && (
-													<>
-														{' '}
 														<Typography 
 															component="span" 
-															sx={{ color: 'text.secondary', fontSize: '1.15em' }}
+															sx={{ color: 'text.secondary', fontSize: '1.15em', ml: 1 }}
 														>
 															{['①', '②', '③', '④', '⑤'][item.rank - 1]}
 														</Typography>
-													</>
 												)}
 											</Typography>
 											<Chip 
@@ -428,8 +443,8 @@ export const QuickRefSection: React.FC = () => {
 											/>
 										</Box>
 									</AccordionSummary>
-									<AccordionDetails sx={{ pt: 0, px: 1 }}>
-										<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+									<AccordionDetails sx={{ p: 1, pt: 0 }}>
+										<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
 											{/* Properties caption for items, weapons, and spells */}
 											{item.properties && (
 												<Typography variant="caption" color="text.secondary" sx={{ fontStyle: 'italic' }}>
@@ -448,6 +463,20 @@ export const QuickRefSection: React.FC = () => {
 													{item.description}
 												</Typography>
 											)}
+											{/* Remove from Quick Ref button */}
+											<Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+												<Tooltip title="Remove from Quick Ref">
+													<IconButton
+														size="small"
+														onClick={() => handleRemoveItem(item.id, item.source)}
+														sx={{ 
+															color: 'primary.main'
+														}}
+													>
+														<Bookmark />
+													</IconButton>
+												</Tooltip>
+											</Box>
 										</Box>
 									</AccordionDetails>
 								</Accordion>
