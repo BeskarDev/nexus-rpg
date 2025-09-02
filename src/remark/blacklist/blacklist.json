@@ -133,5 +133,54 @@
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10],
     "plugin": "both",
     "comment": "Exclude all 'SL' occurrences in how-to-roll table headers"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "burning",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
+  },
+  {
+    "file": "docs/01-basic-rules/02-character-creation.md",
+    "keyword": "burning",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
+  },
+  {
+    "file": "docs/01-basic-rules/02-character-creation.md",
+    "keyword": "long",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'long' in 'long enough' introduction flavor text where it's not duration reference"
+  },
+  {
+    "file": "docs/07-magic/04-mystic-spells.md",
+    "keyword": "light",
+    "matchIndex": [0,1,2,3,4,5],
+    "plugin": "both",
+    "comment": "Exclude 'light' in spell flavor descriptions like 'shimmer of light', 'power of light', 'burning light' where it's descriptive, not mechanical effect"
+  },
+  {
+    "file": "docs/01-basic-rules/01-how-to-roll.md",
+    "keyword": "scorching",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'scorching' in 'scorching desert journey' example flavor text where it's descriptive, not damage type reference"
+  },
+  {
+    "file": "docs/02-adventurers/01-folk.md",
+    "keyword": "quick",
+    "matchIndex": 0,
+    "plugin": "both",
+    "comment": "Exclude 'quick' in 'quick wits' goblin description where it's descriptive, not action type reference"
+  },
+  {
+    "file": "docs/04-equipment/01-items.md",
+    "keyword": "quick",
+    "matchIndex": [0,1],
+    "plugin": "both",
+    "comment": "Exclude 'quick' in 'quick access' equipment descriptions where it's descriptive, not action type reference"
   }
 ]
