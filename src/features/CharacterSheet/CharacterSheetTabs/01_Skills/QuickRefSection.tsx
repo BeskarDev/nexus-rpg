@@ -489,7 +489,7 @@ export const QuickRefSection: React.FC = () => {
 												</Typography>
 											)}
 											{/* Action Type Dropdown and Remove from Quick Ref button */}
-											<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'space-between' }}>
+											<Box sx={{ display: 'flex', gap: 1, mt: 1, alignItems: 'center', justifyContent: 'end' }}>
 												<FormControl size="small" sx={{ width: '9.5rem' }}>
 													<InputLabel id={`quick-ref-action-type-${item.id}`}>Action Type</InputLabel>
 													<Select
