@@ -167,9 +167,44 @@ a.chip:hover {
   padding: 3px 8px; /* Fixed vertical padding to be uniform */
 }
 
+
 /* Skill chips */
-.chip--skill {
-  /* No special styling - use normal text */
+.chip.chip--skill {
+  position: relative;
+  border-radius: 0 !important; /* Override base chip border-radius completely */
+  padding: 2px 4px; /* Extra horizontal padding for triangular ends */
+  margin: 0 6px; /* Space for triangular pseudo-elements */
+  border: none;
+  height: 20px;
+  --chip-bg: var(--chip-background-color);
+}
+
+/* Left triangular point */
+.chip--skill::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 6px solid;
+  border-right-color: inherit;
+}
+
+/* Right triangular point */
+.chip--skill::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 6px solid;
+  border-left-color: inherit;
 }
 
 /* Weapon category chips */
@@ -182,7 +217,7 @@ a.chip:hover {
 /* Attribute chips */
 .chip--attribute {
   font-weight: bold;
-  border-radius: 0 !important; /* No rounded edges for attributes - override base chip rule */
+  border-radius: 2px !important; /* No rounded edges for attributes - override base chip rule */
   font-size: 0.7rem;
   margin-left: 3px;
   margin-right: 3px;
@@ -579,6 +614,87 @@ a.chip:hover {
 .chip--archery-vibrant {
   background-color: #92400e; /* Vibrant tan */
   color: white;
+}
+
+/* Triangular pseudo-elements for skill chips */
+.chip--athletics-vibrant::before, .chip--athletics-vibrant::after {
+  border-right-color: #22c55e;
+  border-left-color: #22c55e;
+}
+
+.chip--crafting-vibrant::before, .chip--crafting-vibrant::after {
+  border-right-color: #a16207;
+  border-left-color: #a16207;
+}
+
+.chip--nature-vibrant::before, .chip--nature-vibrant::after {
+  border-right-color: #059669;
+  border-left-color: #059669;
+}
+
+.chip--survival-vibrant::before, .chip--survival-vibrant::after {
+  border-right-color: #15803d;
+  border-left-color: #15803d;
+}
+
+.chip--fighting-vibrant::before, .chip--fighting-vibrant::after {
+  border-right-color: #dc2626;
+  border-left-color: #dc2626;
+}
+
+.chip--fortitude-vibrant::before, .chip--fortitude-vibrant::after {
+  border-right-color: #991b1b;
+  border-left-color: #991b1b;
+}
+
+.chip--perception-vibrant::before, .chip--perception-vibrant::after {
+  border-right-color: #2563eb;
+  border-left-color: #2563eb;
+}
+
+.chip--arcana-vibrant::before, .chip--arcana-vibrant::after {
+  border-right-color: #7c3aed;
+  border-left-color: #7c3aed;
+}
+
+.chip--influence-vibrant::before, .chip--influence-vibrant::after {
+  border-right-color: #d97706;
+  border-left-color: #d97706;
+}
+
+.chip--lore-vibrant::before, .chip--lore-vibrant::after {
+  border-right-color: #0891b2;
+  border-left-color: #0891b2;
+}
+
+.chip--mysticism-vibrant::before, .chip--mysticism-vibrant::after {
+  border-right-color: #a855f7;
+  border-left-color: #a855f7;
+}
+
+.chip--insight-vibrant::before, .chip--insight-vibrant::after {
+  border-right-color: #0369a1;
+  border-left-color: #0369a1;
+}
+
+.chip--stealth-vibrant::before, .chip--stealth-vibrant::after {
+  border-right-color: #374151;
+  border-left-color: #374151;
+}
+
+.chip--streetwise-vibrant::before, .chip--streetwise-vibrant::after {
+  border-right-color: #ea580c;
+  border-left-color: #ea580c;
+}
+
+.chip--education-vibrant::before, .chip--education-vibrant::after {
+  border-right-color: #1e40af;
+  border-left-color: #1e40af;
+}
+
+.chip--archery-vibrant::before, .chip--archery-vibrant::after {
+  border-right-color: #92400e;
+  border-left-color: #92400e;
 }
 
 /* Vibrant color variants for weapon types - very distinct colors */
