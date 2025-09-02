@@ -34,6 +34,13 @@ const tableChipsPlugin = (options = {}) => {
 					return // Skip transformation in headings
 				}
 
+				// Skip table headers (single words in table cells)
+				if (parent && parent.type === 'tableCell' &&
+					parent.children.length <= 1 &&
+					node.value.split(' ').length <= 1) {
+					return // Skip transformation in table headers
+				}
+
 				// Check if this is the Combat Arts file for weapon chips
 				const isCombatArtsFile =
 					file?.path?.includes('05-combat-arts.md') ||
