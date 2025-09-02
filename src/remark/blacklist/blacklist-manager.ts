@@ -77,7 +77,17 @@ class BlacklistManager {
 	 * Normalizes file path for comparison
 	 */
 	private normalizePath(path: string): string {
-		return path.replace(/\\/g, '/').replace(/^\/+/, '')
+		// Normalize slashes and remove leading slashes
+		let normalized = path.replace(/\\/g, '/').replace(/^\/+/, '')
+		
+		// If it's an absolute path starting with a drive/home directory, 
+		// extract just the docs/ part
+		const docsMatch = normalized.match(/.*\/docs\/(.+)$/)
+		if (docsMatch) {
+			normalized = 'docs/' + docsMatch[1]
+		}
+		
+		return normalized
 	}
 
 	/**
@@ -118,11 +128,19 @@ class BlacklistManager {
 				!context.currentSection ||
 				entry.section === context.currentSection
 
-			return fileMatches && pluginMatches && keywordMatches && sectionMatches
+			const matches = fileMatches && pluginMatches && keywordMatches && sectionMatches
+
+			return matches
 		})
 
+		// Debug logging for specific keywords
+		if (['STR', 'AGI', 'SPI', 'MND'].includes(keyword) && normalizedFilePath.includes('creatures.md')) {
+			console.log(`[blacklist] Checking ${keyword} index ${matchIndex} for ${context.pluginType} in ${normalizedFilePath}`)
+			console.log(`[blacklist] Found ${relevantEntries.length} relevant entries:`, relevantEntries.map(e => ({ keyword: e.keyword, matchIndex: e.matchIndex })))
+		}
+
 		// Check if any relevant entry should exclude this match
-		return relevantEntries.some((entry) => {
+		const result = relevantEntries.some((entry) => {
 			// If no matchIndex specified in blacklist, exclude all matches
 			if (entry.matchIndex === undefined) {
 				return true
@@ -134,6 +152,13 @@ class BlacklistManager {
 			// Otherwise, only exclude the specific match index
 			return entry.matchIndex === matchIndex
 		})
+
+		// Debug logging for result
+		if (['STR', 'AGI', 'SPI', 'MND'].includes(keyword) && normalizedFilePath.includes('creatures.md')) {
+			console.log(`[blacklist] ${keyword} index ${matchIndex}: result = ${result}`)
+		}
+
+		return result
 	}
 
 	/**
