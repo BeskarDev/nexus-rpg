@@ -4,183 +4,156 @@
     "section": "🔪 Harvesting Creature Parts",
     "keyword": "Tool",
     "matchIndex": 0,
-    "plugin": "auto-keyword",
     "comment": "Exclude first occurrence of 'Tool' in the category description where it's used as a category name, not as a link to equipment"
   },
   {
     "file": "docs/07-magic/03-metamagic-arts.md",
     "section": "Metamagic Arts",
     "keyword": "fire",
-    "plugin": "table-chips",
     "comment": "Exclude 'fire' in damage type list where it's part of natural language description"
   },
   {
     "file": "docs/02-adventurers/01-folk.md",
     "keyword": "Mind",
-    "plugin": "both",
     "comment": "Exclude 'Mind' in 'Stoic Mind' ability name where it's part of ability name, not attribute reference"
   },
   {
     "file": "docs/02-adventurers/01-folk.md",
     "keyword": "Nature",
-    "plugin": "both",
     "comment": "Exclude 'Nature' in 'Aquatic Nature' ability name where it's part of ability name, not skill reference"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "Fire",
-    "plugin": "both",
     "comment": "Exclude 'Fire' in 'Fire Body' ability name where it's part of ability name, not damage type reference"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "Poison",
-    "plugin": "both",
     "comment": "Exclude 'Poison' in ability names like 'Poisoned Dagger', 'Poison Mist', etc. where it's part of ability name, not damage type reference"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "Necrotic",
-    "plugin": "both",
     "comment": "Exclude 'Necrotic' in ability names like 'Necrotic Touch', 'Necrotic Bolt', 'Necrotic Aura' where it's part of ability name, not damage type reference"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "Shield",
-    "plugin": "both",
     "comment": "Exclude 'Shield' in creature attack names like 'Light Shield', 'Heavy Shield', 'Shield Bash', 'Shield Wall' where it's part of attack name, not weapon category reference"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "HP",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'HP' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "AV",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'AV' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "STR",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'STR' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "AGI",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'AGI' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "SPI",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'SPI' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "MND",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'MND' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "Parry",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'Parry' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "Dodge",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'Dodge' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/08-creatures/03-creatures.md",
     "keyword": "Resist",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "plugin": "both",
     "comment": "Exclude ALL 'Resist' occurrences in creature stat block table headers"
   },
   {
     "file": "docs/01-basic-rules/02-how-to-roll.md",
     "keyword": "TN",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10],
-    "plugin": "both",
     "comment": "Exclude all 'TN' occurrences in how-to-roll table headers"
   },
   {
     "file": "docs/01-basic-rules/02-how-to-roll.md",
     "keyword": "Success Level",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10],
-    "plugin": "both",
     "comment": "Exclude all 'Success Level' occurrences in how-to-roll table headers"
   },
   {
     "file": "docs/01-basic-rules/02-how-to-roll.md",
     "keyword": "SL",
     "matchIndex": [0,1,2,3,4,5,6,7,8,9,10],
-    "plugin": "both",
     "comment": "Exclude all 'SL' occurrences in how-to-roll table headers"
   },
   {
     "file": "docs/02-adventurers/01-folk.md",
     "keyword": "burning",
     "matchIndex": 0,
-    "plugin": "both",
     "comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
   },
   {
     "file": "docs/01-basic-rules/02-character-creation.md",
     "keyword": "burning",
     "matchIndex": 0,
-    "plugin": "both",
     "comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
   },
   {
     "file": "docs/01-basic-rules/02-character-creation.md",
     "keyword": "long",
     "matchIndex": 0,
-    "plugin": "both",
     "comment": "Exclude 'long' in 'long enough' introduction flavor text where it's not duration reference"
   },
   {
     "file": "docs/07-magic/04-mystic-spells.md",
     "keyword": "light",
     "matchIndex": [0,1,2,3,4,5],
-    "plugin": "both",
     "comment": "Exclude 'light' in spell flavor descriptions like 'shimmer of light', 'power of light', 'burning light' where it's descriptive, not mechanical effect"
   },
   {
     "file": "docs/01-basic-rules/01-how-to-roll.md",
     "keyword": "scorching",
     "matchIndex": 0,
-    "plugin": "both",
     "comment": "Exclude 'scorching' in 'scorching desert journey' example flavor text where it's descriptive, not damage type reference"
   },
   {
     "file": "docs/02-adventurers/01-folk.md",
     "keyword": "quick",
     "matchIndex": 0,
-    "plugin": "both",
     "comment": "Exclude 'quick' in 'quick wits' goblin description where it's descriptive, not action type reference"
   },
   {
     "file": "docs/04-equipment/01-items.md",
     "keyword": "quick",
     "matchIndex": [0,1],
-    "plugin": "both",
     "comment": "Exclude 'quick' in 'quick access' equipment descriptions where it's descriptive, not action type reference"
   }
 ]

@@ -10,8 +10,6 @@ export interface BlacklistEntry {
 	keyword: string
 	/** Zero-based index of which match to exclude (optional, excludes all if not specified). Can be a number or array of numbers. */
 	matchIndex?: number | number[]
-	/** Which plugin(s) to apply blacklist to */
-	plugin?: 'auto-keyword' | 'table-chips' | 'both'
 	/** Optional comment for documentation */
 	comment?: string
 }
@@ -112,12 +110,6 @@ class BlacklistManager {
 					normalizedFilePath.endsWith(entryFile)
 				)
 
-			// Check if plugin matches
-			const pluginMatches =
-				!entry.plugin ||
-				entry.plugin === 'both' ||
-				entry.plugin === context.pluginType
-
 			// Check if keyword matches (case-insensitive)
 			const keywordMatches =
 				entry.keyword.toLowerCase() === keyword.toLowerCase()
@@ -128,7 +120,7 @@ class BlacklistManager {
 				!context.currentSection ||
 				entry.section === context.currentSection
 
-			const matches = fileMatches && pluginMatches && keywordMatches && sectionMatches
+			const matches = fileMatches && keywordMatches && sectionMatches
 
 			return matches
 		})
