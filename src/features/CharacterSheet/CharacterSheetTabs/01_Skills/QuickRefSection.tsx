@@ -251,14 +251,6 @@ export const QuickRefSection: React.FC = () => {
 			})
 		}
 		
-		if (passiveAbilities.length > 0) {
-			groups.push({
-				title: 'Passive',
-				icon: getActionTypeIcon('Passive'),
-				items: passiveAbilities.sort((a, b) => a.name.localeCompare(b.name)),
-			})
-		}
-		
 		if (triggered.length > 0) {
 			groups.push({
 				title: 'Triggered',
@@ -272,6 +264,14 @@ export const QuickRefSection: React.FC = () => {
 				title: 'Free',
 				icon: getActionTypeIcon('Free'),
 				items: free.sort((a, b) => a.name.localeCompare(b.name)),
+			})
+		}
+		
+		if (passiveAbilities.length > 0) {
+			groups.push({
+				title: 'Passive',
+				icon: getActionTypeIcon('Passive'),
+				items: passiveAbilities.sort((a, b) => a.name.localeCompare(b.name)),
 			})
 		}
 		
@@ -416,7 +416,6 @@ export const QuickRefSection: React.FC = () => {
 										}}
 									>
 										<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-											{getActionTypeIcon(item.actionType || 'Other')}
 											<Typography variant="subtitle2" fontWeight="bold" sx={{ flexGrow: 1 }}>
 												{item.name}
 												{item.rank && item.rank >= 1 && item.rank <= 5 && (
