@@ -22,6 +22,8 @@ interface CompanionFormProps {
 	onTraitChange: (trait: CompanionTrait | null) => void
 	onReset: () => void
 	showResetButton: boolean
+	showImportButton?: boolean
+	onImportCompanion?: () => void
 }
 
 export const CompanionForm: React.FC<CompanionFormProps> = ({
@@ -33,6 +35,8 @@ export const CompanionForm: React.FC<CompanionFormProps> = ({
 	onTraitChange,
 	onReset,
 	showResetButton,
+	showImportButton = false,
+	onImportCompanion,
 }) => {
 	return (
 		<>
@@ -107,11 +111,23 @@ export const CompanionForm: React.FC<CompanionFormProps> = ({
 				</Grid>
 			</Grid>
 
-			{showResetButton && (
-				<Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
-					<Button variant="outlined" size="small" onClick={onReset}>
-						Reset All
-					</Button>
+			{(showResetButton || showImportButton) && (
+				<Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, mb: 2 }}>
+					{showImportButton && onImportCompanion && (
+						<Button 
+							variant="contained" 
+							size="small" 
+							onClick={onImportCompanion}
+							color="primary"
+						>
+							Import to Character
+						</Button>
+					)}
+					{showResetButton && (
+						<Button variant="outlined" size="small" onClick={onReset}>
+							Reset All
+						</Button>
+					)}
 				</Box>
 			)}
 		</>

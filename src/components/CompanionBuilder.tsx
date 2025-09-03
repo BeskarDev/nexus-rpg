@@ -16,6 +16,7 @@ import { CompanionForm } from './CompanionForm'
 import { CompanionStatBlock } from './CompanionStatBlock'
 import { CompanionOutputPanel } from './CompanionOutputPanel'
 import { TabPanel } from './TabPanel'
+import { generateMarkdown } from '../utils/companionFormatting'
 
 export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({ 
 	showImportButton = false, 
@@ -42,6 +43,21 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 	const handleResetAndTab = () => {
 		resetBuilder()
 		setActiveTab(0)
+	}
+
+	const handleImportFromForm = () => {
+		if (builtCompanion && onImportCompanion) {
+			const markdown = generateMarkdown(builtCompanion)
+			onImportCompanion(builtCompanion.trait.name, markdown)
+			setOpen(false) // Close the dialog after import
+		}
+	}
+
+	const handleImportFromTab = (name: string, markdown: string) => {
+		if (onImportCompanion) {
+			onImportCompanion(name, markdown)
+			setOpen(false) // Close the dialog after import
+		}
 	}
 
 	return (
@@ -72,6 +88,8 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 							onTraitChange={handleTraitChange}
 							onReset={handleResetAndTab}
 							showResetButton={!!builtCompanion}
+							showImportButton={!!builtCompanion && !!onImportCompanion}
+							onImportCompanion={handleImportFromForm}
 						/>
 
 						{builtCompanion && (
@@ -94,7 +112,7 @@ export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 										companion={builtCompanion}
 										outputType="markdown"
 										showImportButton={showImportButton}
-										onImportCompanion={onImportCompanion}
+										onImportCompanion={handleImportFromTab}
 									/>
 								</TabPanel>
 
