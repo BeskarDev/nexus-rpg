@@ -3,5 +3,13 @@
 	"compilerOptions": {
 		"jsx": "react-jsx",
 		"baseUrl": "."
-	}
+	},
+	"exclude": [
+		"**/*.test.ts",
+		"**/*.test.tsx",
+		"**/*.spec.ts", 
+		"**/*.spec.tsx",
+		"**/__tests__/**/*",
+		"tests/**/*"
+	]
 }

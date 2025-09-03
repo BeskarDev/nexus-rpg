@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Arcane Conduit",
+    "category": "spell-catalyst",
+    "cost": 75,
+    "properties": "spell catalyst",
+    "load": 0,
+    "quality": 2,
+    "description": "A small object infused by an elemental gem or similar arcane conduit used to be able to cast arcane spells."
+  },
+  {
+    "name": "Mystic Talisman", 
+    "category": "spell-catalyst",
+    "cost": 75,
+    "properties": "spell catalyst",
+    "load": 0,
+    "quality": 2,
+    "description": "A small object containing a divine symbol or other spiritual relic infused with mystical power used to be able to cast mystic spells."
+  }
+]

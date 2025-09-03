@@ -1,0 +1,122 @@
+[
+  {
+    "id": "chitin",
+    "name": "Chitin",
+    "description": "Harvested from insectoid or crustacean monsters. Lighter than metal, but still strong and durable.",
+    "qualityTiers": [3, 4],
+    "properties": "Armor/Shield: -1 load (min. 0).",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "dragonbone",
+    "name": "Dragon Bone",
+    "description": "Carved from the bones of ancient dragons. Holds magical properties and is incredibly durable.",
+    "qualityTiers": [3, 4, 5],
+    "properties": "Weapon: +1 Durability. Armor/Shield: +1 Durability.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "ironwood",
+    "name": "Ironwood",
+    "description": "A rare wood that has been infused with earth magic, making it as hard as iron but retaining wood's flexibility.",
+    "qualityTiers": [3, 4],
+    "properties": "Weapon: Can be wielded by druids without penalty. Shield: -1 load (min. 0).",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "shield", "spell-catalyst"]
+  },
+  {
+    "id": "silver",
+    "name": "Silver",
+    "description": "Pure silver forged into weapons and armor. Effective against undead and certain supernatural creatures.",
+    "qualityTiers": [3, 4],
+    "properties": "Weapon: +2 damage vs. undead and lycanthropes.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"]
+  },
+  {
+    "id": "cold-iron",
+    "name": "Cold Iron",
+    "description": "Iron forged without fire, using ancient techniques. Disrupts fey magic and supernatural abilities.",
+    "qualityTiers": [3, 4, 5],
+    "properties": "Weapon: +2 damage vs. fey and demons. Ignores supernatural damage resistance.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"]
+  },
+  {
+    "id": "mithril",
+    "name": "Mithril",
+    "description": "A lightweight, silver-colored metal that is stronger than steel and naturally resists magic.",
+    "qualityTiers": [4, 5, 6],
+    "properties": "Armor/Shield: -2 load (min. 0), +1 resistance vs. magic damage.",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield", "helmet"]
+  },
+  {
+    "id": "adamantine",
+    "name": "Adamantine",
+    "description": "An incredibly hard, dark metal that can cut through almost anything and is nearly indestructible.",
+    "qualityTiers": [5, 6, 7],
+    "properties": "Weapon: +2 Durability, ignores armor properties. Armor: +2 Durability, immune to critical hits.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor"]
+  },
+  {
+    "id": "meteor-iron",
+    "name": "Meteor Iron",
+    "description": "Metal from fallen stars, naturally magical and incredibly rare. Pulses with celestial energy.",
+    "qualityTiers": [5, 6, 7],
+    "properties": "Weapon: +1 damage vs. extraplanar creatures. Glows softly (provides dim light).",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "spell-catalyst"]
+  },
+  {
+    "id": "darksteel",
+    "name": "Darksteel",
+    "description": "A black metal that absorbs light and shadow. Favored by assassins and shadow magic practitioners.",
+    "qualityTiers": [4, 5, 6],
+    "properties": "Weapon: +1 stealth bonus when drawn. Armor: +1 stealth bonus.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor"]
+  },
+  {
+    "id": "crystal-steel",
+    "name": "Crystal Steel",
+    "description": "Steel infused with magical crystals, creating a translucent, resonant metal that amplifies magic.",
+    "qualityTiers": [5, 6, 7, 8],
+    "properties": "Spell Catalyst: +1 spell damage. Weapon: Can channel spell effects.",
+    "applicableCategories": ["spell-catalyst", "one-handed-weapon"]
+  },
+  {
+    "id": "voidstone",
+    "name": "Voidstone",
+    "description": "A dark, non-reflective stone that seems to absorb light and magical energy. Extremely rare.",
+    "qualityTiers": [6, 7, 8],
+    "properties": "Armor/Shield: +2 resistance vs. magic damage. Spell Catalyst: Can cast void/shadow spells.",
+    "applicableCategories": ["heavy-armor", "shield", "spell-catalyst"]
+  },
+  {
+    "id": "celestial-gold",
+    "name": "Celestial Gold",
+    "description": "Gold blessed by celestial beings, radiating divine energy and purity.",
+    "qualityTiers": [6, 7, 8],
+    "properties": "Weapon: +2 damage vs. undead and demons. Radiates bright light (medium range).",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "spell-catalyst", "wearable"]
+  },
+  {
+    "id": "dragonscale",
+    "name": "Dragonscale",
+    "description": "Scales from ancient dragons, each type providing different magical resistances.",
+    "qualityTiers": [4, 5, 6],
+    "properties": "Armor/Shield: +1 resistance vs. elemental damage (fire, ice, lightning, or acid).",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "feysteel",
+    "name": "Feysteel",
+    "description": "Metal forged in the Feywild, shifting between reality and dream. Unpredictable but powerful.",
+    "qualityTiers": [5, 6, 7],
+    "properties": "Weapon: Critical hits cause confusion (1 round). Armor: +1 resistance vs. enchantment effects.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor"]
+  },
+  {
+    "id": "shadowsilk",
+    "name": "Shadowsilk",
+    "description": "Silk woven from shadow spider webs, lighter than air but stronger than steel when worn.",
+    "qualityTiers": [4, 5, 6],
+    "properties": "Wearable: +2 stealth bonus, -1 load (min. 0).",
+    "applicableCategories": ["wearable", "light-armor"]
+  }
+]

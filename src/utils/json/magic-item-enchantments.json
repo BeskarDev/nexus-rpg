@@ -1,0 +1,290 @@
+[
+  {
+    "id": "flaming",
+    "name": "Flaming",
+    "description": "The item bursts into flames on command, dealing fire damage.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"],
+    "scaling": true
+  },
+  {
+    "id": "frost",
+    "name": "Frost",
+    "description": "The item is wreathed in freezing cold, dealing ice damage and potentially slowing enemies.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"],
+    "scaling": true
+  },
+  {
+    "id": "shocking",
+    "name": "Shocking",
+    "description": "The item crackles with electrical energy, dealing lightning damage.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"],
+    "scaling": true
+  },
+  {
+    "id": "corrosive",
+    "name": "Corrosive",
+    "description": "The item drips with acid that eats through armor and flesh.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"],
+    "scaling": true
+  },
+  {
+    "id": "keen",
+    "name": "Keen",
+    "description": "The weapon's edge is supernaturally sharp, increasing critical hit chance.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+    "scaling": false
+  },
+  {
+    "id": "defending",
+    "name": "Defending",
+    "description": "The weapon can be used defensively, providing a bonus to parrying.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+    "scaling": true
+  },
+  {
+    "id": "returning",
+    "name": "Returning",
+    "description": "The weapon magically returns to the wielder's hand after being thrown.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+    "scaling": false
+  },
+  {
+    "id": "vampiric",
+    "name": "Vampiric",
+    "description": "The weapon drains life force from victims, healing the wielder.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+    "scaling": true
+  },
+  {
+    "id": "ghost-touch",
+    "name": "Ghost Touch",
+    "description": "The weapon can strike incorporeal creatures as if they were solid.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+    "scaling": false
+  },
+  {
+    "id": "storing",
+    "name": "Storing",
+    "description": "Once per day, you can choose any rank 1/2/3 spell you know. This item stores the chosen spell within it. You can cast the spell once per day from this item without spending Focus.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["spell-catalyst"],
+    "scaling": true
+  },
+  {
+    "id": "deflecting",
+    "name": "Deflecting",
+    "description": "While wielding this item, it cloaks you in a magical aura and gains +1 Parry as a property.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["spell-catalyst"],
+    "scaling": false
+  },
+  {
+    "id": "glowing",
+    "name": "Glowing",
+    "description": "This item can emit light with short range by speaking its command word (no Action required). Speaking the command word again extinguishes the light.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["spell-catalyst"],
+    "scaling": false
+  },
+  {
+    "id": "stabilizing",
+    "name": "Stabilizing",
+    "description": "Once per turn, if you fail to cast a spell, you can re-roll the test. You can use this ability once/twice/thrice per day.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["spell-catalyst"],
+    "scaling": true
+  },
+  {
+    "id": "volatile",
+    "name": "Volatile",
+    "description": "Once per turn, when dealing damage with a spell, you can choose to add +2/+4/+6 damage to it. If you do, roll a Durability check for this item.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["spell-catalyst"],
+    "scaling": true
+  },
+  {
+    "id": "infused",
+    "name": "Infused",
+    "description": "While holding this item, you can use your Quick Action during your turn to regain up to 4/6/8 Focus. You can use this ability once per day.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "prefix",
+    "applicableCategories": ["spell-catalyst", "one-handed-weapon", "two-handed-weapon"],
+    "scaling": true
+  },
+  {
+    "id": "of-protection",
+    "name": "of Protection",
+    "description": "Provides a magical bonus to armor value or defensive capabilities.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield", "helmet", "wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-fire-resistance",
+    "name": "of Fire Resistance",
+    "description": "Grants resistance to fire damage and heat effects.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["light-armor", "heavy-armor", "wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-frost-resistance",
+    "name": "of Frost Resistance",
+    "description": "Grants resistance to cold damage and freezing effects.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["light-armor", "heavy-armor", "wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-lightning-resistance",
+    "name": "of Lightning Resistance",
+    "description": "Grants resistance to electrical damage and shock effects.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["light-armor", "heavy-armor", "wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-strength",
+    "name": "of Strength",
+    "description": "Enhances the wearer's physical strength and carrying capacity.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-agility",
+    "name": "of Agility",
+    "description": "Enhances the wearer's dexterity and reflexes.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-intellect",
+    "name": "of Intellect",
+    "description": "Enhances the wearer's mental capabilities and magical understanding.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-spirit",
+    "name": "of Spirit",
+    "description": "Enhances the wearer's willpower and spiritual fortitude.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-speed",
+    "name": "of Speed",
+    "description": "Increases the wearer's movement speed and initiative.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-stealth",
+    "name": "of Stealth",
+    "description": "Helps the wearer move silently and remain hidden.",
+    "qualityTiers": [3, 4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable", "light-armor"],
+    "scaling": true
+  },
+  {
+    "id": "of-spell-storing",
+    "name": "of Spell Storing",
+    "description": "Can store one or more spells for later use without expending Focus.",
+    "qualityTiers": [5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable", "spell-catalyst"],
+    "scaling": true
+  },
+  {
+    "id": "of-magic-resistance",
+    "name": "of Magic Resistance",
+    "description": "Provides resistance against magical attacks and spells.",
+    "qualityTiers": [4, 5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["light-armor", "heavy-armor", "wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-regeneration",
+    "name": "of Regeneration",
+    "description": "Slowly heals the wearer's wounds over time.",
+    "qualityTiers": [5, 6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-true-sight",
+    "name": "of True Sight",
+    "description": "Allows the wearer to see through illusions and detect invisible creatures.",
+    "qualityTiers": [6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable", "helmet"],
+    "scaling": false
+  },
+  {
+    "id": "of-flying",
+    "name": "of Flying",
+    "description": "Grants the wearer the ability to fly for limited periods.",
+    "qualityTiers": [7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable"],
+    "scaling": true
+  },
+  {
+    "id": "of-elemental-command",
+    "name": "of Elemental Command",
+    "description": "Grants the wearer command over elemental forces and creatures.",
+    "qualityTiers": [7, 8],
+    "type": "suffix",
+    "applicableCategories": ["wearable", "spell-catalyst"],
+    "scaling": false
+  },
+  {
+    "id": "of-spell-turning",
+    "name": "of Spell Turning",
+    "description": "Has a chance to reflect hostile spells back at the caster.",
+    "qualityTiers": [6, 7, 8],
+    "type": "suffix",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"],
+    "scaling": true
+  }
+]

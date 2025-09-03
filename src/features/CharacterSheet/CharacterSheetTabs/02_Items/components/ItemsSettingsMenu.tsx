@@ -7,8 +7,9 @@ import {
 	MenuItem,
 	FormControlLabel,
 	Checkbox,
+	Button,
 } from '@mui/material'
-import { Build } from '@mui/icons-material'
+import { Build, AutoFixHigh } from '@mui/icons-material'
 import { SectionHeader } from '../../../CharacterSheet'
 import { ItemLocation } from '../../../../../types/ItemLocation'
 
@@ -18,6 +19,7 @@ interface ItemsSettingsMenuProps {
 	onSettingsMenuOpen: (event: React.MouseEvent<HTMLElement>) => void
 	onSettingsMenuClose: () => void
 	onToggleLocationVisibility: (location: ItemLocation) => void
+	onOpenMagicItemBuilder?: () => void
 }
 
 export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
@@ -26,11 +28,13 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 	onSettingsMenuOpen,
 	onSettingsMenuClose,
 	onToggleLocationVisibility,
+	onOpenMagicItemBuilder,
 }) => {
 	return (
 		<>
 			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
 				<SectionHeader sx={{ mb: 0 }}>Items & Equipment</SectionHeader>
+        
 				<Tooltip title="toggle inventory categories">
 					<IconButton
 						size="small"
@@ -43,6 +47,25 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 						<Build fontSize="inherit" />
 					</IconButton>
 				</Tooltip>
+				
+				{onOpenMagicItemBuilder && (
+					<Tooltip title="Create custom magic item">
+						<Button
+							size="small"
+							variant="outlined"
+							startIcon={<AutoFixHigh />}
+							onClick={onOpenMagicItemBuilder}
+							sx={{
+								minWidth: 'auto',
+								px: 1,
+								textTransform: 'none',
+							}}
+						>
+							Magic Item Builder
+						</Button>
+					</Tooltip>
+				)}
+				
 
 				<Menu
 					anchorEl={settingsMenuAnchor}

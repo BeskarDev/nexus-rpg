@@ -118,7 +118,7 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							updateItem({ cost: Number(event.target.value) })
 						}
 						label="Cost"
-						sx={{ maxWidth: '3.5rem' }}
+						sx={{ maxWidth: '2.5rem' }}
 					/>
 					<AttributeField
 						size="small"

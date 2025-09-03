@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Box } from '@mui/material'
 
+import { Item, Weapon } from '../../../../types/Character'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { characterSheetActions } from '../../characterSheetReducer'
-import { WeaponSearchDialog, EquipmentSearchDialog } from './SearchDialog'
+import { WeaponSearchDialog, EquipmentSearchDialog, MagicItemBuilderDialog } from './SearchDialog'
 import { ItemsHeader, ItemsSettingsMenu, InventorySection } from './components'
 import { useItemManagement } from './hooks'
 
@@ -13,6 +14,7 @@ export const ItemsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [weaponSearchOpen, setWeaponSearchOpen] = useState(false)
 	const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
+	const [magicItemBuilderOpen, setMagicItemBuilderOpen] = useState(false)
 	const [settingsMenuAnchor, setSettingsMenuAnchor] =
 		useState<null | HTMLElement>(null)
 
@@ -31,6 +33,16 @@ export const ItemsTab: React.FC = () => {
 
 	const handleToggleItemQuickRef = (itemId: string) => {
 		dispatch(characterSheetActions.toggleQuickRefItem(itemId))
+	}
+
+	const handleCreateMagicItem = (item: Partial<Item> | Partial<Weapon>) => {
+		if ('damage' in item && item.damage) {
+			// It's a weapon
+			dispatch(characterSheetActions.importWeapons([item as Partial<Weapon>]))
+		} else {
+			// It's an item
+			dispatch(characterSheetActions.importItems([item as Partial<Item>]))
+		}
 	}
 
 	const {
@@ -90,6 +102,7 @@ export const ItemsTab: React.FC = () => {
 				onSettingsMenuOpen={handleSettingsMenuOpen}
 				onSettingsMenuClose={handleSettingsMenuClose}
 				onToggleLocationVisibility={toggleLocationVisibility}
+				onOpenMagicItemBuilder={() => setMagicItemBuilderOpen(true)}
 			/>
 
 			{/* Weapons Section */}
@@ -267,6 +280,13 @@ export const ItemsTab: React.FC = () => {
 				open={equipmentSearchOpen}
 				onClose={() => setEquipmentSearchOpen(false)}
 				onImportEquipment={importEquipment}
+				character={activeCharacter}
+			/>
+
+			<MagicItemBuilderDialog
+				open={magicItemBuilderOpen}
+				onClose={() => setMagicItemBuilderOpen(false)}
+				onCreateItem={handleCreateMagicItem}
 				character={activeCharacter}
 			/>
 		</Box>

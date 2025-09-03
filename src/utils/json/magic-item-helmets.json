@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Helmet",
+    "category": "helmet", 
+    "cost": 150,
+    "properties": "AV +1, apparel (head)",
+    "load": 1,
+    "quality": 2,
+    "slot": "head",
+    "description": "A protective helmet that covers the head and provides armor value."
+  }
+]

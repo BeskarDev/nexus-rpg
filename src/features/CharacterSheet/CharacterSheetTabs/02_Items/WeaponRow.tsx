@@ -79,7 +79,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						onBlur={() => updateWeapon({ name: weapon.name })}
 						label="Name"
 						sx={{
-							maxWidth: { sm: '12rem', xs: '7.5rem' },
+							maxWidth: { sm: '10rem', xs: '7.5rem' },
 						}}
 					/>
 					<DamageFields
