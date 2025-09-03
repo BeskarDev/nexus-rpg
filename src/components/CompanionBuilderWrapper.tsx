@@ -13,7 +13,7 @@ export const CompanionBuilderWrapper: React.FC = () => {
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
 			<ThemeSwitcher />
-			<CompanionBuilder />
+			<CompanionBuilder showImportButton={false} />
 		</Experimental_CssVarsProvider>
 	)
 }

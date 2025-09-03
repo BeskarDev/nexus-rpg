@@ -224,12 +224,12 @@ a.chip:hover {
 }
 
 .chip--blue {
-  background-color: #2563eb; /* Darker blue for attributes - better contrast */
+  background-color: #154dc7; /* Darker blue for attributes - better contrast */
   color: white;
 }
 
 .chip--green {
-  background-color: #16a34a; /* Darker green for attributes - better contrast */
+  background-color: #01752b; /* Darker green for attributes - better contrast */
   color: white;
 }
 
@@ -407,7 +407,7 @@ a.chip:hover {
 
 /* Dark mode adjustments for better contrast */
 [data-theme='dark'] .chip--light-purple {
-  background-color: #a855f7; /* Darker purple for dark mode */
+  background-color: #9c31ff; /* Darker purple for dark mode */
   color: white;
 }
 
@@ -417,12 +417,12 @@ a.chip:hover {
 }
 
 [data-theme='dark'] .chip--green {
-  background-color: #16a34a; /* Keep consistent with light mode */
+  background-color: #049037; /* Keep consistent with light mode */
   color: white;
 }
 
 [data-theme='dark'] .chip--blue {
-  background-color: #2563eb; /* Keep consistent with light mode */
+  background-color: #154dc7; /* Keep consistent with light mode */
   color: white;
 }
 
@@ -473,7 +473,7 @@ a.chip:hover {
 }
 
 [data-theme='dark'] .chip--violet-pastel {
-  background-color: #a855f7;
+  background-color: #9c31ff;
   color: black;
 }
 
@@ -514,7 +514,7 @@ a.chip:hover {
 }
 
 .chip--poison-vibrant {
-  background-color: #16a34a; /* Vibrant green */
+  background-color: #01752b; /* Vibrant green */
   color: white;
 }
 
@@ -560,7 +560,7 @@ a.chip:hover {
 }
 
 .chip--perception-vibrant {
-  background-color: #2563eb; /* Vibrant blue */
+  background-color: #154dc7; /* Vibrant blue */
   color: white;
 }
 
@@ -580,7 +580,7 @@ a.chip:hover {
 }
 
 .chip--mysticism-vibrant {
-  background-color: #a855f7; /* Vibrant violet */
+  background-color: #9c31ff; /* Vibrant violet */
   color: white;
 }
 
@@ -641,8 +641,8 @@ a.chip:hover {
 }
 
 .chip--perception-vibrant::before, .chip--perception-vibrant::after {
-  border-right-color: #2563eb;
-  border-left-color: #2563eb;
+  border-right-color: #154dc7;
+  border-left-color: #154dc7;
 }
 
 .chip--arcana-vibrant::before, .chip--arcana-vibrant::after {
@@ -661,8 +661,8 @@ a.chip:hover {
 }
 
 .chip--mysticism-vibrant::before, .chip--mysticism-vibrant::after {
-  border-right-color: #a855f7;
-  border-left-color: #a855f7;
+  border-right-color: #9c31ff;
+  border-left-color: #9c31ff;
 }
 
 .chip--insight-vibrant::before, .chip--insight-vibrant::after {
