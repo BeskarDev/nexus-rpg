@@ -47,9 +47,6 @@ export const CompanionsTab: React.FC = () => {
 		null,
 	)
 
-	// Companion Builder dialog state
-	const [companionBuilderOpen, setCompanionBuilderOpen] = useState(false)
-
 	const handleAddCompanion = () => {
 		const newCompanionId = addCompanion()
 		// Start editing the new companion
@@ -139,9 +136,6 @@ export const CompanionsTab: React.FC = () => {
 		setEditingId(newCompanionId)
 		setEditName(name)
 		setEditMarkdown(markdown)
-		
-		// Close the builder dialog
-		setCompanionBuilderOpen(false)
 	}
 
 	return (
@@ -166,13 +160,10 @@ export const CompanionsTab: React.FC = () => {
 				</Box>
 				<Box sx={{ display: 'flex', gap: 1 }}>
 					<Tooltip title="Use the Companion Builder to create stat blocks">
-						<Button
-							variant="outlined"
-							startIcon={<Build />}
-							onClick={() => setCompanionBuilderOpen(true)}
-						>
-							Companion Builder
-						</Button>
+            <CompanionBuilder
+              showImportButton={true}
+              onImportCompanion={handleImportFromBuilder}
+            />
 					</Tooltip>
 					<Tooltip title="Add a new companion to your character sheet">
 						<Button
@@ -228,27 +219,6 @@ export const CompanionsTab: React.FC = () => {
 				onConfirm={handleDeleteConfirm}
 				onCancel={handleDeleteCancel}
 			/>
-
-			{/* Companion Builder Dialog */}
-			<Dialog
-				open={companionBuilderOpen}
-				onClose={() => setCompanionBuilderOpen(false)}
-				maxWidth="lg"
-				fullWidth
-			>
-				<DialogTitle>Companion Builder</DialogTitle>
-				<DialogContent>
-					<CompanionBuilder
-						showImportButton={true}
-						onImportCompanion={handleImportFromBuilder}
-					/>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => setCompanionBuilderOpen(false)}>
-						Close
-					</Button>
-				</DialogActions>
-			</Dialog>
 		</Box>
 	)
 }

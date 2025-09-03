@@ -520,12 +520,11 @@ ${markdownAbilities}`
 	return (
 		<>
 			<Button
-				variant="contained"
+				variant="outlined"
 				color="primary"
 				onClick={() => setOpen(true)}
-				sx={{ mb: 2 }}
 			>
-				🐾 Open Companion Builder
+				Build Companion
 			</Button>
 
 			<Dialog
