@@ -171,14 +171,41 @@ export const parseAttackDamage = (
 		const strongDamage = Math.max(1, baseDamage + 2 * modifiedWeaponDamage)
 		const criticalDamage = Math.max(1, baseDamage + 3 * modifiedWeaponDamage)
 
-		// Remove the original damage text and related patterns
-		processedText = processedText
-			.replace(/Deals .*?weapon damage.*?\./g, '')
-			.trim()
-		processedText = processedText.replace(/\(min\.\s*\d+\)/g, '').trim()
+		// Extract damage type and additional info from the original text
+		let damageType = ''
+		let additionalInfo = ''
+		
+		// Look for damage type like "as blast damage"
+		const damageTypeMatch = processedText.match(/as (\w+) damage/i)
+		if (damageTypeMatch) {
+			damageType = ` ${damageTypeMatch[1].toLowerCase()}`
+		}
+		
+		// Look for additional damage modifiers like "(ignoring 1/2 AV)"
+		const additionalInfoMatch = processedText.match(/\(ignoring [^)]+\)/i)
+		if (additionalInfoMatch) {
+			additionalInfo = ` ${additionalInfoMatch[0]}`
+		}
 
-		// Add the calculated damage after the properties
-		const damageText = ` ${weakDamage}/${strongDamage}/${criticalDamage} damage (${baseDamage} base + ${modifiedWeaponDamage} weapon).`
+		// Remove the entire damage sentence more comprehensively
+		// This covers various damage sentence patterns
+		processedText = processedText
+			.replace(/Deals [^.]*?damage[^.]*?\./i, '') // Main damage sentence
+			.replace(/Deals [^.]*?damage[^.]*?$/i, '') // Damage sentence without ending period
+			.trim()
+
+		// Additional cleanup for any remaining fragments that might include damage info
+		// Remove any remaining "(min. X)" patterns and related fragments
+		processedText = processedText
+			.replace(/\s*\(min\.\s*\d+\)[^.]*?\./gi, '') // "(min. X)..." patterns
+			.replace(/\s*\d+\)\s*\([^)]*\)\s*as\s+\w+\s+damage\./gi, '') // "X) (...) as damage." patterns
+			.replace(/\s*\d+\)\s*as\s+\w+\s+damage\./gi, '') // "X) as damage." patterns
+			.replace(/\s*\d+\)\./gi, '') // Simple "X)." patterns left from (min. X)
+			.replace(/\.\s*\./g, '.') // Fix double periods
+			.trim()
+
+		// Construct the new damage text (without leading period since we'll handle that separately)
+		const damageText = `${weakDamage}/${strongDamage}/${criticalDamage}${damageType} damage (${baseDamage} base + ${modifiedWeaponDamage} weapon)${additionalInfo}.`
 
 		// Insert damage text after the attack name and properties
 		const propertiesMatch = processedText.match(
@@ -187,13 +214,27 @@ export const parseAttackDamage = (
 		if (propertiesMatch) {
 			processedText = processedText.replace(
 				/(<strong>.*?<\/strong>)\s*(\(<em>.*?<\/em>\))/,
-				`$1 $2.${damageText}`,
+				`$1 $2. ${damageText}`,
 			)
 		} else {
-			processedText = processedText.replace(
-				/(<strong>.*?<\/strong>)/,
-				`$1.${damageText}`,
-			)
+			// Check if the strong tag already ends with a period
+			const strongMatch = processedText.match(/(<strong>.*?<\/strong>)/)
+			if (strongMatch) {
+				const strongContent = strongMatch[1]
+				if (strongContent.endsWith('.</strong>')) {
+					// Keep the period and add damage after it
+					processedText = processedText.replace(
+						/(<strong>.*?<\/strong>)/,
+						`$1 ${damageText}`,
+					)
+				} else {
+					// Add period and damage
+					processedText = processedText.replace(
+						/(<strong>.*?<\/strong>)/,
+						`$1. ${damageText}`,
+					)
+				}
+			}
 		}
 	}
 
@@ -204,10 +245,6 @@ export const parseAttackDamage = (
 			return String(parseInt(multiplier) * tier)
 		},
 	)
-
-	// Clean up remaining artifacts from damage text removal - be more specific
-	processedText = processedText.replace(/\(min\.\s*\d+\)/g, '') // Remove any remaining (min. X) patterns
-	processedText = processedText.replace(/\s+\d+\)\./g, '') // Remove patterns like " 1)." but not regular ")."
 
 	// Clean up extra periods and spaces
 	processedText = processedText.replace(/\.\s*\./g, '.')
