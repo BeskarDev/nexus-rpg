@@ -7,7 +7,9 @@ import {
 	DialogContentText,
 	DialogTitle,
 	Chip,
+	IconButton,
 } from '@mui/material'
+import { Edit } from '@mui/icons-material'
 import React, { useMemo, useState } from 'react'
 import { CharacterDocument } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
@@ -26,6 +28,37 @@ import {
 	UpbringingData,
 	BackgroundData
 } from '../../components'
+
+/**
+ * Parses a comma-separated string of suggested skills and returns an array of skill names
+ */
+const parseSuggestedSkills = (suggestedSkills: string | undefined): string[] => {
+	if (!suggestedSkills) return []
+	
+	return suggestedSkills
+		.split(',')
+		.map(skill => skill.trim())
+		.filter(skill => skill.length > 0)
+}
+
+/**
+ * Resolves skill conflicts according to game rules.
+ * Currently handles the Arcana/Mysticism mutual exclusivity rule.
+ */
+const resolveSkillConflicts = (skills: string[]): string[] => {
+	const skillSet = new Set(skills)
+	
+	// Handle Arcana/Mysticism mutual exclusivity
+	if (skillSet.has('Arcana') && skillSet.has('Mysticism')) {
+		// If both are present, keep Arcana and remove Mysticism
+		skillSet.delete('Mysticism')
+	}
+	
+	return Array.from(skillSet)
+}
+import folkData from '../../../../utils/json/folk.json'
+import upbringingData from '../../../../utils/json/upbringings.json'
+import backgroundData from '../../../../utils/json/backgrounds.json'
 
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -86,50 +119,173 @@ export const PersonalTab: React.FC = () => {
 		setBackgroundDialogOpen(false)
 	}
 
-	// Apply changes functions
+	// Apply changes functions - name only (no auto-fill)
+	const applyFolkNameOnly = (folk: FolkData) => {
+		// Only update the name field
+		setPersonal((p) => ({ ...p, folk: folk.name }))
+		updateCharacter({ personal: { folk: folk.name } })
+	}
+
+	const applyUpbringingNameOnly = (upbringing: UpbringingData) => {
+		// Only update the name field
+		setPersonal((p) => ({ ...p, upbringing: upbringing.name }))
+		updateCharacter({ personal: { upbringing: upbringing.name } })
+	}
+
+	const applyBackgroundNameOnly = (background: BackgroundData) => {
+		// Only update the name field
+		setPersonal((p) => ({ ...p, background: background.name }))
+		updateCharacter({ personal: { background: background.name } })
+	}
+
+	// Apply changes functions - full replacement (with auto-fill)
 	const applyFolkChange = (folk: FolkData) => {
+		// Remove old folk content if there was a previous folk selected
+		if (activeCharacter.personal.folk) {
+			const oldFolk = (folkData as FolkData[]).find(f => f.name === activeCharacter.personal.folk)
+			if (oldFolk) {
+				// Remove old folk abilities
+				oldFolk.abilities.forEach(ability => {
+					const existingAbility = activeCharacter.skills.abilities.find(a => 
+						a.title === ability.name && a.tag === 'Folk'
+					)
+					if (existingAbility) {
+						dispatch(characterSheetActions.deleteAbility(existingAbility))
+					}
+				})
+
+				// Remove old folk languages (but keep Tradespeak)
+				oldFolk.languages.forEach(language => {
+					if (language !== 'Tradespeak') {
+						dispatch(characterSheetActions.removeLanguage(language))
+					}
+				})
+			}
+		}
+
 		// Update personal info
 		setPersonal((p) => ({ ...p, folk: folk.name }))
 		updateCharacter({ personal: { folk: folk.name } })
 
-		// Add folk abilities if they don't already exist
-		const existingAbilityNames = activeCharacter.skills.abilities.map(a => a.title)
-		const newAbilities = folk.abilities
-			.filter(ability => !existingAbilityNames.includes(ability.name))
-			.map(ability => ({
-				id: crypto.randomUUID(),
-				title: ability.name,
-				description: ability.description,
-				tag: 'Folk' as const,
-			}))
+		// Add new folk abilities
+		const newAbilities = folk.abilities.map(ability => ({
+			id: crypto.randomUUID(),
+			title: ability.name,
+			description: ability.description,
+			tag: 'Folk' as const,
+		}))
 
 		if (newAbilities.length > 0) {
 			dispatch(characterSheetActions.importAbilities(newAbilities))
 		}
 
-		// Add folk languages if they don't already exist
-		const existingLanguages = activeCharacter.skills.languages
-		const newLanguages = folk.languages.filter(lang => !existingLanguages.includes(lang))
-		
-		if (newLanguages.length > 0) {
-			dispatch(characterSheetActions.updateCharacter({
-				skills: {
-					languages: [...existingLanguages, ...newLanguages]
-				}
-			}))
-		}
+		// Add new folk languages
+		folk.languages.forEach(language => {
+			dispatch(characterSheetActions.addLanguage(language))
+		})
 	}
 
 	const applyUpbringingChange = (upbringing: UpbringingData) => {
+		// Remove old upbringing skills if there was a previous upbringing selected
+		if (activeCharacter.personal.upbringing) {
+			const oldUpbringing = (upbringingData as UpbringingData[]).find(u => u.name === activeCharacter.personal.upbringing)
+			if (oldUpbringing && oldUpbringing['suggested skills']) {
+				const oldSkills = parseSuggestedSkills(oldUpbringing['suggested skills'])
+
+				// Only remove skills that actually exist in the character's skill list
+				const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
+				oldSkills.forEach(skillName => {
+					if (existingSkillNames.includes(skillName)) {
+						dispatch(characterSheetActions.removeSkill(skillName))
+					}
+				})
+			}
+		}
+
 		setPersonal((p) => ({ ...p, upbringing: upbringing.name }))
 		updateCharacter({ personal: { upbringing: upbringing.name } })
+
+		// Add new upbringing suggested skills with conflict resolution
+		if (upbringing['suggested skills']) {
+			const suggestedSkills = parseSuggestedSkills(upbringing['suggested skills'])
+
+			// Get current character skills to check for conflicts and duplicates
+			const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
+			
+			// Filter out skills that already exist
+			const newSkills = suggestedSkills.filter(skillName => !existingSkillNames.includes(skillName))
+			
+			// Apply conflict resolution
+			const resolvedSkills = resolveSkillConflicts([...existingSkillNames, ...newSkills])
+			
+			// Find which skills need to be removed due to conflicts
+			const skillsToRemove = existingSkillNames.filter(skillName => !resolvedSkills.includes(skillName))
+			skillsToRemove.forEach(skillName => {
+				dispatch(characterSheetActions.removeSkill(skillName))
+			})
+			
+			// Add the new skills that survived conflict resolution
+			const finalNewSkills = resolvedSkills.filter(skillName => !existingSkillNames.includes(skillName))
+			finalNewSkills.forEach(skillName => {
+				dispatch(characterSheetActions.addSkill(skillName))
+			})
+		}
 	}
 
 	const applyBackgroundChange = (background: BackgroundData) => {
+		// Remove old background content if there was a previous background selected
+		if (activeCharacter.personal.background) {
+			const oldBackground = (backgroundData as BackgroundData[]).find(b => b.name === activeCharacter.personal.background)
+			if (oldBackground) {
+				// Remove old background skills
+				if (oldBackground['suggested skills']) {
+					const oldSkills = parseSuggestedSkills(oldBackground['suggested skills'])
+
+					// Only remove skills that actually exist in the character's skill list
+					const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
+					oldSkills.forEach(skillName => {
+						if (existingSkillNames.includes(skillName)) {
+							dispatch(characterSheetActions.removeSkill(skillName))
+						}
+					})
+				}
+
+				// Remove old background starting item
+				// Note: This is more complex as we'd need to track which items came from backgrounds
+				// For now, we'll just add the new item and let users manually remove old ones if needed
+			}
+		}
+
 		setPersonal((p) => ({ ...p, background: background.name }))
 		updateCharacter({ personal: { background: background.name } })
 
-		// Add background starting item if specified
+		// Add new background suggested skills with conflict resolution
+		if (background['suggested skills']) {
+			const suggestedSkills = parseSuggestedSkills(background['suggested skills'])
+
+			// Get current character skills to check for conflicts and duplicates
+			const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
+			
+			// Filter out skills that already exist
+			const newSkills = suggestedSkills.filter(skillName => !existingSkillNames.includes(skillName))
+			
+			// Apply conflict resolution
+			const resolvedSkills = resolveSkillConflicts([...existingSkillNames, ...newSkills])
+			
+			// Find which skills need to be removed due to conflicts
+			const skillsToRemove = existingSkillNames.filter(skillName => !resolvedSkills.includes(skillName))
+			skillsToRemove.forEach(skillName => {
+				dispatch(characterSheetActions.removeSkill(skillName))
+			})
+			
+			// Add the new skills that survived conflict resolution
+			const finalNewSkills = resolvedSkills.filter(skillName => !existingSkillNames.includes(skillName))
+			finalNewSkills.forEach(skillName => {
+				dispatch(characterSheetActions.addSkill(skillName))
+			})
+		}
+
+		// Add new background starting item if specified
 		if (background['starting item']) {
 			const newItem = {
 				name: background['starting item'],
@@ -150,20 +306,27 @@ export const PersonalTab: React.FC = () => {
 	const handleConfirmChange = (replaceExisting: boolean) => {
 		if (!pendingChange) return
 
-		if (replaceExisting) {
-			// Remove existing abilities/items related to the old choice if needed
-			// For simplicity, we'll just add the new ones
-		}
-
 		switch (pendingChange.type) {
 			case 'folk':
-				applyFolkChange(pendingChange.data as FolkData)
+				if (replaceExisting) {
+					applyFolkChange(pendingChange.data as FolkData)
+				} else {
+					applyFolkNameOnly(pendingChange.data as FolkData)
+				}
 				break
 			case 'upbringing':
-				applyUpbringingChange(pendingChange.data as UpbringingData)
+				if (replaceExisting) {
+					applyUpbringingChange(pendingChange.data as UpbringingData)
+				} else {
+					applyUpbringingNameOnly(pendingChange.data as UpbringingData)
+				}
 				break
 			case 'background':
-				applyBackgroundChange(pendingChange.data as BackgroundData)
+				if (replaceExisting) {
+					applyBackgroundChange(pendingChange.data as BackgroundData)
+				} else {
+					applyBackgroundNameOnly(pendingChange.data as BackgroundData)
+				}
 				break
 		}
 
@@ -211,49 +374,73 @@ export const PersonalTab: React.FC = () => {
 							sx={{ maxWidth: '15rem' }}
 						/>
 						
-						{/* Folk Selection Button */}
-						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-							<Button
-								variant="outlined"
+						{/* Folk Selection */}
+						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
+							<PersonalField
+								value={personal.folk}
+								onValueChange={(value) =>
+									setPersonal((p) => ({ ...p, folk: value }))
+								}
+								onBlur={() =>
+									updateCharacter({ personal: { folk: personal.folk } })
+								}
+								label="Folk"
+								sx={{ maxWidth: '10rem' }}
+							/>
+							<IconButton
 								size="small"
 								onClick={() => setFolkDialogOpen(true)}
-								sx={{ maxWidth: '10rem', justifyContent: 'flex-start' }}
+								sx={{ mb: 0.25 }}
+								title="Select from list"
 							>
-								{personal.folk || 'Select Folk'}
-							</Button>
-							<Box sx={{ fontSize: '0.75rem', color: 'text.secondary', pl: 1 }}>
-								Folk
-							</Box>
+								<Edit fontSize="small" />
+							</IconButton>
 						</Box>
 
-						{/* Upbringing Selection Button */}
-						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-							<Button
-								variant="outlined"
+						{/* Upbringing Selection */}
+						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
+							<PersonalField
+								value={personal.upbringing}
+								onValueChange={(value) =>
+									setPersonal((p) => ({ ...p, upbringing: value }))
+								}
+								onBlur={() =>
+									updateCharacter({ personal: { upbringing: personal.upbringing } })
+								}
+								label="Upbringing"
+								sx={{ maxWidth: '10rem' }}
+							/>
+							<IconButton
 								size="small"
 								onClick={() => setUpbringingDialogOpen(true)}
-								sx={{ maxWidth: '10rem', justifyContent: 'flex-start' }}
+								sx={{ mb: 0.25 }}
+								title="Select from list"
 							>
-								{personal.upbringing || 'Select Upbringing'}
-							</Button>
-							<Box sx={{ fontSize: '0.75rem', color: 'text.secondary', pl: 1 }}>
-								Upbringing
-							</Box>
+								<Edit fontSize="small" />
+							</IconButton>
 						</Box>
 
-						{/* Background Selection Button */}
-						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-							<Button
-								variant="outlined"
+						{/* Background Selection */}
+						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
+							<PersonalField
+								value={personal.background}
+								onValueChange={(value) =>
+									setPersonal((p) => ({ ...p, background: value }))
+								}
+								onBlur={() =>
+									updateCharacter({ personal: { background: personal.background } })
+								}
+								label="Background"
+								sx={{ maxWidth: '10rem' }}
+							/>
+							<IconButton
 								size="small"
 								onClick={() => setBackgroundDialogOpen(true)}
-								sx={{ maxWidth: '10rem', justifyContent: 'flex-start' }}
+								sx={{ mb: 0.25 }}
+								title="Select from list"
 							>
-								{personal.background || 'Select Background'}
-							</Button>
-							<Box sx={{ fontSize: '0.75rem', color: 'text.secondary', pl: 1 }}>
-								Background
-							</Box>
+								<Edit fontSize="small" />
+							</IconButton>
 						</Box>
 						<PersonalField
 							value={personal.motivation}
@@ -399,8 +586,7 @@ export const PersonalTab: React.FC = () => {
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						You already have a {pendingChange?.type} selected. Changing it will update your character's {pendingChange?.type} information.
-						Do you want to proceed and also replace any auto-filled abilities, languages, or items with the new selection?
+						You already have a {pendingChange?.type} selected. How would you like to handle this change?
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
@@ -411,14 +597,14 @@ export const PersonalTab: React.FC = () => {
 						onClick={() => handleConfirmChange(false)}
 						variant="outlined"
 					>
-						Change Only {pendingChange?.type}
+						Change Name Only
 					</Button>
 					<Button 
 						onClick={() => handleConfirmChange(true)}
 						variant="contained"
 						color="primary"
 					>
-						Change and Replace Auto-filled
+						Replace & Auto-fill
 					</Button>
 				</DialogActions>
 			</Dialog>

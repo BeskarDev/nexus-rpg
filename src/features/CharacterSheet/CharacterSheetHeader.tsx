@@ -68,7 +68,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 	const [open, setOpen] = React.useState(false)
 	const [name, setName] = React.useState('')
-	const [includeStartingGear, setIncludeStartingGear] = React.useState(false)
+	const [includeStartingGear, setIncludeStartingGear] = React.useState(true)
 	const [downloadingAll, setDownloadingAll] = React.useState(false)
 	const [importedCharacter, setImportedCharacter] =
 		React.useState<Character | null>(null)
@@ -91,7 +91,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const handleAbort = () => {
 		setOpen(false)
 		setName('')
-		setIncludeStartingGear(false)
+		setIncludeStartingGear(true)
 		setImportedCharacter(null)
 		setImportError(null)
 		// Reset selection states
@@ -189,7 +189,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 			await addDoc(collectionRef, characterData)
 			setName('')
-			setIncludeStartingGear(false)
+			setIncludeStartingGear(true)
 			setImportedCharacter(null)
 			setImportError(null)
 			// Reset selections
@@ -412,38 +412,73 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 					{!importedCharacter && (
 						<>
-							<Typography variant="body2" sx={{ mt: 2, mb: 1, fontWeight: 'medium' }}>
+							<Typography variant="body2" sx={{ mt: 2, mb: 2, fontWeight: 'medium' }}>
 								Optional Character Details
 							</Typography>
 							
-							<Box sx={{ display: 'flex', gap: 1, mb: 1 }}>
-								<Button
-									variant="outlined"
-									size="small"
-									onClick={() => setFolkDialogOpen(true)}
-									sx={{ flex: 1 }}
-								>
-									{selectedFolk ? selectedFolk.name : 'Select Folk'}
-								</Button>
-								<Button
-									variant="outlined"
-									size="small"
-									onClick={() => setUpbringingDialogOpen(true)}
-									sx={{ flex: 1 }}
-								>
-									{selectedUpbringing ? selectedUpbringing.name : 'Select Upbringing'}
-								</Button>
-							</Box>
-							
-							<Box sx={{ mb: 1 }}>
-								<Button
-									variant="outlined"
-									size="small"
-									onClick={() => setBackgroundDialogOpen(true)}
-									fullWidth
-								>
-									{selectedBackground ? selectedBackground.name : 'Select Background'}
-								</Button>
+							<Box sx={{ display: 'grid', gap: 2, mb: 2 }}>
+								{/* Folk Selection */}
+								<Box>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+										Folk
+									</Typography>
+									<Button
+										variant="outlined"
+										size="small"
+										onClick={() => setFolkDialogOpen(true)}
+										fullWidth
+										sx={{ 
+											justifyContent: 'flex-start',
+											textTransform: 'none',
+											color: selectedFolk ? 'text.primary' : 'text.secondary',
+											fontWeight: selectedFolk ? 'medium' : 'normal'
+										}}
+									>
+										{selectedFolk ? selectedFolk.name : 'Select Folk'}
+									</Button>
+								</Box>
+								
+								{/* Upbringing Selection */}
+								<Box>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+										Upbringing
+									</Typography>
+									<Button
+										variant="outlined"
+										size="small"
+										onClick={() => setUpbringingDialogOpen(true)}
+										fullWidth
+										sx={{ 
+											justifyContent: 'flex-start',
+											textTransform: 'none',
+											color: selectedUpbringing ? 'text.primary' : 'text.secondary',
+											fontWeight: selectedUpbringing ? 'medium' : 'normal'
+										}}
+									>
+										{selectedUpbringing ? selectedUpbringing.name : 'Select Upbringing'}
+									</Button>
+								</Box>
+								
+								{/* Background Selection */}
+								<Box>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+										Background
+									</Typography>
+									<Button
+										variant="outlined"
+										size="small"
+										onClick={() => setBackgroundDialogOpen(true)}
+										fullWidth
+										sx={{ 
+											justifyContent: 'flex-start',
+											textTransform: 'none',
+											color: selectedBackground ? 'text.primary' : 'text.secondary',
+											fontWeight: selectedBackground ? 'medium' : 'normal'
+										}}
+									>
+										{selectedBackground ? selectedBackground.name : 'Select Background'}
+									</Button>
+								</Box>
 							</Box>
 
 							{(selectedFolk || selectedUpbringing || selectedBackground) && (

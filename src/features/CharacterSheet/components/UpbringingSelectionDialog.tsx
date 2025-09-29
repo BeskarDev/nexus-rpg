@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Typography, Chip, Box } from '@mui/material'
-import { SearchDialog, SearchDialogColumn } from '../CharacterSheetTabs/02_Items/SearchDialog/GenericSearchDialog'
+import { SingleSelectionDialog, SingleSelectionDialogColumn } from './SingleSelectionDialog'
 import upbringingsData from '../../../utils/json/upbringings.json'
+import { getSkillChipColor } from '../../../constants/skills'
 
 export type UpbringingSelectionDialogProps = {
 	open: boolean
@@ -22,11 +23,11 @@ export const UpbringingSelectionDialog: React.FC<UpbringingSelectionDialogProps>
 	onSelectUpbringing,
 	selectedUpbringing,
 }) => {
-	const [selectedUpbringings, setSelectedUpbringings] = useState<Set<string>>(
-		new Set(selectedUpbringing ? [selectedUpbringing] : [])
+	const [selectedUpbringingKey, setSelectedUpbringingKey] = useState<string | null>(
+		selectedUpbringing || null
 	)
 
-	const columns: SearchDialogColumn<UpbringingData>[] = [
+	const columns: SingleSelectionDialogColumn<UpbringingData>[] = [
 		{
 			key: 'name',
 			label: 'Upbringing',
@@ -70,7 +71,12 @@ export const UpbringingSelectionDialog: React.FC<UpbringingSelectionDialogProps>
 							sx={{ 
 								fontSize: '0.7rem', 
 								mb: 0.25,
-								mr: 0.25
+								mr: 0.25,
+								borderColor: getSkillChipColor(skill.trim()),
+								color: getSkillChipColor(skill.trim()),
+								'&:hover': {
+									backgroundColor: getSkillChipColor(skill.trim()) + '20',
+								}
 							}}
 						/>
 					))}
@@ -79,10 +85,9 @@ export const UpbringingSelectionDialog: React.FC<UpbringingSelectionDialogProps>
 		},
 	]
 
-	const handleImport = () => {
-		if (selectedUpbringings.size === 1) {
-			const selectedUpbringingName = Array.from(selectedUpbringings)[0]
-			const upbringing = (upbringingsData as UpbringingData[]).find(u => u.name === selectedUpbringingName)
+	const handleConfirm = () => {
+		if (selectedUpbringingKey) {
+			const upbringing = (upbringingsData as UpbringingData[]).find(u => u.name === selectedUpbringingKey)
 			if (upbringing) {
 				onSelectUpbringing(upbringing)
 			}
@@ -91,18 +96,18 @@ export const UpbringingSelectionDialog: React.FC<UpbringingSelectionDialogProps>
 	}
 
 	return (
-		<SearchDialog
+		<SingleSelectionDialog
 			open={open}
 			onClose={onClose}
 			title="Select Upbringing"
 			data={upbringingsData as UpbringingData[]}
 			columns={columns}
 			searchFields={['name', 'description', 'suggested skills']}
-			selectedItems={selectedUpbringings}
-			onSelectionChange={setSelectedUpbringings}
-			onImport={handleImport}
+			selectedItem={selectedUpbringingKey}
+			onSelectionChange={setSelectedUpbringingKey}
+			onConfirm={handleConfirm}
 			getItemKey={(upbringing) => upbringing.name}
-			importButtonText="Select Upbringing"
+			confirmButtonText="Select Upbringing"
 			searchPlaceholder="Search by name, description, or suggested skills..."
 		/>
 	)

@@ -74,7 +74,7 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		
 		// Check if background starting item was added
 		const backgroundItem = character.items.items.find(item => 
-			item.name === 'Clay tablet with master\'s seal'
+			item.name === 'Clay Tablet With Master\'s Seal'
 		)
 		expect(backgroundItem).toBeDefined()
 		expect(backgroundItem?.location).toBe('worn')
@@ -100,9 +100,20 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		expect(character.skills.languages).toContain('Dwarven')
 		expect(character.skills.languages).toContain('Tradespeak')
 		
+		// Check suggested skills from upbringing and background are added
+		const skillNames = character.skills.skills.map(s => s.name)
+		expect(skillNames).toContain('Crafting') // From both upbringing and background
+		expect(skillNames).toContain('Insight') // From upbringing
+		expect(skillNames).toContain('Perception') // From both upbringing and background
+		expect(skillNames).toContain('Education') // From background
+		expect(skillNames).toContain('Fortitude') // From background
+		// Should not have duplicates even though Crafting and Perception appear in both
+		expect(character.skills.skills.filter(s => s.name === 'Crafting')).toHaveLength(1)
+		expect(character.skills.skills.filter(s => s.name === 'Perception')).toHaveLength(1)
+		
 		// Check background starting item
 		const backgroundItem = character.items.items.find(item => 
-			item.name === 'Clay tablet with master\'s seal'
+			item.name === 'Clay Tablet With Master\'s Seal'
 		)
 		expect(backgroundItem).toBeDefined()
 	})
@@ -134,7 +145,7 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		expect(character.personal.background).toBe('Artisan')
 		// Should not add any extra items beyond the standard starting gear
 		const backgroundItem = character.items.items.find(item => 
-			item.name === 'Clay tablet with master\'s seal'
+			item.name === 'Clay Tablet With Master\'s Seal'
 		)
 		expect(backgroundItem).toBeUndefined()
 	})

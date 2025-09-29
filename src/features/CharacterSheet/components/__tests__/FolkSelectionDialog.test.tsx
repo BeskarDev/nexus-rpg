@@ -53,7 +53,9 @@ describe('FolkSelectionDialog', () => {
 			/>
 		)
 
-		expect(screen.getByText('Select Folk')).toBeInTheDocument()
+		// Check for the dialog by looking for unique elements that should be present
+		expect(screen.getByPlaceholderText('Search by name, category, or description...')).toBeDefined()
+		expect(screen.getByText('2 items found')).toBeDefined()
 	})
 
 	it('does not render when closed', () => {
@@ -65,7 +67,7 @@ describe('FolkSelectionDialog', () => {
 			/>
 		)
 
-		expect(screen.queryByText('Select Folk')).not.toBeInTheDocument()
+		expect(screen.queryByPlaceholderText('Search by name, category, or description...')).toBeNull()
 	})
 
 	it('displays folk data correctly', async () => {
@@ -78,8 +80,8 @@ describe('FolkSelectionDialog', () => {
 		)
 
 		await waitFor(() => {
-			expect(screen.getByText('Dwarf')).toBeInTheDocument()
-			expect(screen.getByText('Elf')).toBeInTheDocument()
+			expect(screen.getByText('Dwarf')).toBeDefined()
+			expect(screen.getByText('Elf')).toBeDefined()
 			expect(screen.getAllByText('Old Folk')).toHaveLength(2)
 		})
 	})
@@ -97,8 +99,8 @@ describe('FolkSelectionDialog', () => {
 		fireEvent.change(searchInput, { target: { value: 'dwarf' } })
 
 		await waitFor(() => {
-			expect(screen.getByText('Dwarf')).toBeInTheDocument()
-			expect(screen.queryByText('Elf')).not.toBeInTheDocument()
+			expect(screen.getByText('Dwarf')).toBeDefined()
+			expect(screen.queryByText('Elf')).toBeNull()
 		})
 	})
 
@@ -111,12 +113,12 @@ describe('FolkSelectionDialog', () => {
 			/>
 		)
 
-		// Find and click the checkbox for Dwarf
+		// Find and click the radio button for Dwarf
 		const dwarfRow = await screen.findByText('Dwarf')
 		const row = dwarfRow.closest('tr')
-		const checkbox = row?.querySelector('input[type="checkbox"]')
-		if (checkbox) {
-			fireEvent.click(checkbox)
+		const radio = row?.querySelector('input[type="radio"]')
+		if (radio) {
+			fireEvent.click(radio)
 		}
 
 		// Click the Select Folk button

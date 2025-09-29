@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Typography, Chip, Box } from '@mui/material'
-import { SearchDialog, SearchDialogColumn } from '../CharacterSheetTabs/02_Items/SearchDialog/GenericSearchDialog'
+import { SingleSelectionDialog, SingleSelectionDialogColumn } from './SingleSelectionDialog'
 import backgroundsData from '../../../utils/json/backgrounds.json'
+import { getSkillChipColor } from '../../../constants/skills'
 
 export type BackgroundSelectionDialogProps = {
 	open: boolean
@@ -23,11 +24,11 @@ export const BackgroundSelectionDialog: React.FC<BackgroundSelectionDialogProps>
 	onSelectBackground,
 	selectedBackground,
 }) => {
-	const [selectedBackgrounds, setSelectedBackgrounds] = useState<Set<string>>(
-		new Set(selectedBackground ? [selectedBackground] : [])
+	const [selectedBackgroundKey, setSelectedBackgroundKey] = useState<string | null>(
+		selectedBackground || null
 	)
 
-	const columns: SearchDialogColumn<BackgroundData>[] = [
+	const columns: SingleSelectionDialogColumn<BackgroundData>[] = [
 		{
 			key: 'name',
 			label: 'Background',
@@ -71,7 +72,12 @@ export const BackgroundSelectionDialog: React.FC<BackgroundSelectionDialogProps>
 							sx={{ 
 								fontSize: '0.7rem', 
 								mb: 0.25,
-								mr: 0.25
+								mr: 0.25,
+								borderColor: getSkillChipColor(skill.trim()),
+								color: getSkillChipColor(skill.trim()),
+								'&:hover': {
+									backgroundColor: getSkillChipColor(skill.trim()) + '20',
+								}
 							}}
 						/>
 					))}
@@ -96,10 +102,9 @@ export const BackgroundSelectionDialog: React.FC<BackgroundSelectionDialogProps>
 		},
 	]
 
-	const handleImport = () => {
-		if (selectedBackgrounds.size === 1) {
-			const selectedBackgroundName = Array.from(selectedBackgrounds)[0]
-			const background = (backgroundsData as BackgroundData[]).find(b => b.name === selectedBackgroundName)
+	const handleConfirm = () => {
+		if (selectedBackgroundKey) {
+			const background = (backgroundsData as BackgroundData[]).find(b => b.name === selectedBackgroundKey)
 			if (background) {
 				onSelectBackground(background)
 			}
@@ -108,18 +113,18 @@ export const BackgroundSelectionDialog: React.FC<BackgroundSelectionDialogProps>
 	}
 
 	return (
-		<SearchDialog
+		<SingleSelectionDialog
 			open={open}
 			onClose={onClose}
 			title="Select Background"
 			data={backgroundsData as BackgroundData[]}
 			columns={columns}
 			searchFields={['name', 'description', 'suggested skills', 'starting item']}
-			selectedItems={selectedBackgrounds}
-			onSelectionChange={setSelectedBackgrounds}
-			onImport={handleImport}
+			selectedItem={selectedBackgroundKey}
+			onSelectionChange={setSelectedBackgroundKey}
+			onConfirm={handleConfirm}
 			getItemKey={(background) => background.name}
-			importButtonText="Select Background"
+			confirmButtonText="Select Background"
 			searchPlaceholder="Search by name, description, skills, or starting item..."
 		/>
 	)

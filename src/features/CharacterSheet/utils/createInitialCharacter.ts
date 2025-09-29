@@ -2,6 +2,46 @@ import { Character } from '../../../types/Character'
 import type { FolkData, UpbringingData, BackgroundData } from '../components'
 import { v4 as uuidv4 } from 'uuid'
 
+/**
+ * Capitalizes starting item names to match the item naming convention
+ */
+const capitalizeStartingItem = (itemName: string): string => {
+	return itemName
+		.toLowerCase()
+		.split(' ')
+		.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+		.join(' ')
+}
+
+/**
+ * Parses a comma-separated string of suggested skills and returns an array of skill names
+ */
+const parseSuggestedSkills = (suggestedSkills: string | undefined): string[] => {
+	if (!suggestedSkills) return []
+	
+	return suggestedSkills
+		.split(',')
+		.map(skill => skill.trim())
+		.filter(skill => skill.length > 0)
+}
+
+/**
+ * Resolves skill conflicts according to game rules.
+ * Currently handles the Arcana/Mysticism mutual exclusivity rule.
+ */
+const resolveSkillConflicts = (skills: string[]): string[] => {
+	const skillSet = new Set(skills)
+	
+	// Handle Arcana/Mysticism mutual exclusivity
+	if (skillSet.has('Arcana') && skillSet.has('Mysticism')) {
+		// If both are present, keep Arcana and remove Mysticism
+		// This is arbitrary but consistent - could also be user choice
+		skillSet.delete('Mysticism')
+	}
+	
+	return Array.from(skillSet)
+}
+
 export type CharacterCreationOptions = {
 	includeStartingGear?: boolean
 	folk?: FolkData
@@ -39,6 +79,27 @@ export const createInitialCharacter = (
 		})
 	}
 
+	// Collect skills from upbringing and background
+	const skillNames = []
+	if (upbringing?.['suggested skills']) {
+		skillNames.push(...parseSuggestedSkills(upbringing['suggested skills']))
+	}
+	if (background?.['suggested skills']) {
+		skillNames.push(...parseSuggestedSkills(background['suggested skills']))
+	}
+
+	// Remove duplicates and resolve conflicts
+	const uniqueSkillNames = [...new Set(skillNames)]
+	const resolvedSkillNames = resolveSkillConflicts(uniqueSkillNames)
+
+	// Create skill objects
+	const skills = resolvedSkillNames.map(skillName => ({
+		id: uuidv4(),
+		name: skillName,
+		rank: 1,
+		xp: 0,
+	}))
+
 	// Create starting item from background
 	const startingItems = []
 	if (includeStartingGear) {
@@ -54,7 +115,7 @@ export const createInitialCharacter = (
 		if (background?.['starting item']) {
 			startingItems.push({
 				id: uuidv4(),
-				name: background['starting item'],
+				name: capitalizeStartingItem(background['starting item']),
 				location: 'worn' as const,
 				load: 0,
 				notes: 'Background starting item',
@@ -123,7 +184,7 @@ export const createInitialCharacter = (
 				total: 0,
 				spend: 0,
 			},
-			skills: [],
+			skills: skills,
 			professions: [],
 			languages: languages,
 			abilities: abilities,
@@ -240,7 +301,7 @@ export const createInitialCharacter = (
 						// Add background starting item if present
 						...(background?.['starting item'] ? [{
 							id: uuidv4(),
-							name: background['starting item'],
+							name: capitalizeStartingItem(background['starting item']),
 							properties: [] as string[],
 							cost: 0,
 							weight: 0,

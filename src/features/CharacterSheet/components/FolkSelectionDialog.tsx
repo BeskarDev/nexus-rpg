@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Typography, Chip, Box } from '@mui/material'
-import { SearchDialog, SearchDialogColumn } from '../CharacterSheetTabs/02_Items/SearchDialog/GenericSearchDialog'
+import { SingleSelectionDialog, SingleSelectionDialogColumn } from './SingleSelectionDialog'
 import folkData from '../../../utils/json/folk.json'
 
 export type FolkSelectionDialogProps = {
@@ -27,11 +27,11 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 	onSelectFolk,
 	selectedFolk,
 }) => {
-	const [selectedFolks, setSelectedFolks] = useState<Set<string>>(
-		new Set(selectedFolk ? [selectedFolk] : [])
+	const [selectedFolkKey, setSelectedFolkKey] = useState<string | null>(
+		selectedFolk || null
 	)
 
-	const columns: SearchDialogColumn<FolkData>[] = [
+	const columns: SingleSelectionDialogColumn<FolkData>[] = [
 		{
 			key: 'name',
 			label: 'Folk',
@@ -136,10 +136,9 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 		},
 	]
 
-	const handleImport = () => {
-		if (selectedFolks.size === 1) {
-			const selectedFolkName = Array.from(selectedFolks)[0]
-			const folk = (folkData as FolkData[]).find(f => f.name === selectedFolkName)
+	const handleConfirm = () => {
+		if (selectedFolkKey) {
+			const folk = (folkData as FolkData[]).find(f => f.name === selectedFolkKey)
 			if (folk) {
 				onSelectFolk(folk)
 			}
@@ -148,18 +147,18 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 	}
 
 	return (
-		<SearchDialog
+		<SingleSelectionDialog
 			open={open}
 			onClose={onClose}
 			title="Select Folk"
 			data={folkData as FolkData[]}
 			columns={columns}
 			searchFields={['name', 'category', 'quote', 'description']}
-			selectedItems={selectedFolks}
-			onSelectionChange={setSelectedFolks}
-			onImport={handleImport}
+			selectedItem={selectedFolkKey}
+			onSelectionChange={setSelectedFolkKey}
+			onConfirm={handleConfirm}
 			getItemKey={(folk) => folk.name}
-			importButtonText="Select Folk"
+			confirmButtonText="Select Folk"
 			searchPlaceholder="Search by name, category, or description..."
 		/>
 	)
