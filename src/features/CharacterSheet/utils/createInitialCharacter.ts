@@ -1,19 +1,74 @@
 import { Character } from '../../../types/Character'
-import { ItemLocation } from '../../../types/ItemLocation'
+import type { FolkData, UpbringingData, BackgroundData } from '../components'
 import { v4 as uuidv4 } from 'uuid'
+
+export type CharacterCreationOptions = {
+	includeStartingGear?: boolean
+	folk?: FolkData
+	upbringing?: UpbringingData
+	background?: BackgroundData
+}
 
 export const createInitialCharacter = (
 	name: string,
 	playerName: string,
-	includeStartingGear: boolean = false,
+	options: CharacterCreationOptions = {},
 ): Character => {
+	const { includeStartingGear = false, folk, upbringing, background } = options
+
+	// Collect languages from folk and base languages
+	const languages = ['Tradespeak']
+	if (folk?.languages) {
+		folk.languages.forEach(lang => {
+			if (!languages.includes(lang)) {
+				languages.push(lang)
+			}
+		})
+	}
+
+	// Collect abilities from folk
+	const abilities = []
+	if (folk?.abilities) {
+		folk.abilities.forEach(ability => {
+			abilities.push({
+				id: uuidv4(),
+				title: ability.name,
+				description: ability.description,
+				tag: 'Folk Ability' as const,
+			})
+		})
+	}
+
+	// Create starting item from background
+	const startingItems = []
+	if (includeStartingGear) {
+		startingItems.push({
+			id: uuidv4(),
+			name: 'Clothes',
+			location: 'worn' as const,
+			load: 0,
+			notes: '',
+			durability: '',
+		})
+		
+		if (background?.['starting item']) {
+			startingItems.push({
+				id: uuidv4(),
+				name: background['starting item'],
+				location: 'worn' as const,
+				load: 0,
+				notes: 'Background starting item',
+				durability: '',
+			})
+		}
+	}
 	const baseCharacter: Character = {
 		personal: {
 			name,
 			playerName,
-			folk: '',
-			upbringing: '',
-			background: '',
+			folk: folk?.name || '',
+			upbringing: upbringing?.name || '',
+			background: background?.name || '',
 			height: '',
 			weight: '',
 			age: '',
@@ -70,8 +125,8 @@ export const createInitialCharacter = (
 			},
 			skills: [],
 			professions: [],
-			languages: ['Tradespeak'],
-			abilities: [],
+			languages: languages,
+			abilities: abilities,
 		},
 		items: {
 			coins: includeStartingGear ? 10 : 0,
@@ -89,123 +144,112 @@ export const createInitialCharacter = (
 						{
 							id: uuidv4(),
 							name: 'Backpack',
-							properties: '',
-							description:
-								'A simple backpack or satchel. If this is your first backpack, it takes up 0 load instead.',
-							slot: '',
+							properties: [] as string[],
 							cost: 15,
-							load: 0,
-							container: 'worn',
+							weight: 0,
+							container: 'worn' as const,
 							amount: 1,
-							location: 'Equipped Gear' as ItemLocation,
+							location: 'worn' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
 						{
 							id: uuidv4(),
 							name: 'Pouch',
-							properties: '',
-							description:
-								'A simple pouch to be carried around by hand or on a belt. Can hold up to 1 load.',
-							slot: '',
+							properties: [] as string[],
 							cost: 5,
-							load: 0,
-							container: 'worn',
+							weight: 0,
+							container: 'worn' as const,
 							amount: 2,
-							location: 'Equipped Gear' as ItemLocation,
+							location: 'worn' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
 						{
 							id: uuidv4(),
 							name: "Traveler's Clothes",
-							properties: '',
-							description:
-								'While worn, this takes up 0 load instead. Sturdy clothes made for harsh weather and long journeys.',
-							slot: '',
+							properties: [] as string[],
 							cost: 25,
-							load: 0,
-							container: 'worn',
+							weight: 0,
+							container: 'worn' as const,
 							amount: 1,
-							location: 'Equipped Gear' as ItemLocation,
+							location: 'worn' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
 						{
 							id: uuidv4(),
 							name: 'Rope (Hemp)',
-							properties: '',
-							description:
-								'Covers a medium distance. Can be split up into multiple more fragile strings.',
-							slot: '',
+							properties: [] as string[],
 							cost: 10,
-							load: 1,
-							container: 'backpack',
+							weight: 1,
+							container: 'backpack' as const,
 							amount: 1,
-							location: 'Carried Items' as ItemLocation,
+							location: 'carried' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
 						{
 							id: uuidv4(),
 							name: 'Camping Kit',
-							properties: '',
-							description:
-								"Contains a tent, tent pegs, a tinder box, and a bedroll. Provides shelter for a night's rest for up to two people.",
-							slot: '',
+							properties: [] as string[],
 							cost: 50,
-							load: 1,
-							container: 'backpack',
+							weight: 1,
+							container: 'backpack' as const,
 							amount: 1,
-							location: 'Carried Items' as ItemLocation,
+							location: 'carried' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
 						{
 							id: uuidv4(),
 							name: 'Adventuring Gear (Tool)',
-							properties: '',
-							description:
-								'Contains a crowbar, a hammer, a shovel, chalk, a wooden pole, and spikes. Spend 1 use to produce one specific item from the list.',
-							slot: '',
+							properties: [] as string[],
 							cost: 50,
-							load: 1,
-							container: 'backpack',
+							weight: 1,
+							container: 'backpack' as const,
 							amount: 1,
-							location: 'Carried Items' as ItemLocation,
+							location: 'carried' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
 						{
 							id: uuidv4(),
 							name: 'Simple Rations',
-							properties: 'd4 Supply die',
-							description:
-								"Contains a waterskin and a nutricious yet bland pack consisting of dried meat, fruits, and nuts. Has a d4 Supply die. At the end of each day, make a Supply Check as part of a night's rest.",
-							slot: '',
+							properties: ['d4 Supply die'] as string[],
 							cost: 15,
-							load: 1,
-							container: 'backpack',
+							weight: 1,
+							container: 'backpack' as const,
 							amount: 1,
-							location: 'Carried Items' as ItemLocation,
+							location: 'carried' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
 						{
 							id: uuidv4(),
 							name: 'Torch',
-							properties: 'd4 Supply die',
-							description:
-								'Contains about a full night of torch light. A lit torch emits bright light in close range and dim light in short range when lit. Has a d4 Supply die. Make a Supply check when igniting a torch.',
-							slot: '',
+							properties: ['d4 Supply die'] as string[],
 							cost: 15,
-							load: 1,
-							container: 'backpack',
+							weight: 1,
+							container: 'backpack' as const,
 							amount: 1,
-							location: 'Carried Items' as ItemLocation,
+							location: 'carried' as const,
 							uses: 0,
-							durability: '',
+							durability: '' as const,
 						},
+						// Add background starting item if present
+						...(background?.['starting item'] ? [{
+							id: uuidv4(),
+							name: background['starting item'],
+							properties: [] as string[],
+							cost: 0,
+							weight: 0,
+							container: 'worn' as const,
+							amount: 1,
+							location: 'worn' as const,
+							uses: 0,
+							durability: '' as const,
+						}] : [])
 					]
 				: [],
 		},

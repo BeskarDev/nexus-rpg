@@ -1,0 +1,372 @@
+[
+  {
+    "name": "Dwarf",
+    "category": "Old Folk",
+    "quote": "The stone remembers what flesh forgets. From the mountain quarries to the desert monuments, our crafts endure when empires crumble to dust.",
+    "description": "Carved of the stone itself, dwarves maintain a deep connection to the earth. They are masters of mining and metalworking, renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination reflects their unbreakable bond with the earth. In Atakhet, dwarven stoneworkers are highly prized for their ability to craft monuments that withstand the harsh desert conditions.",
+    "known_cultures": [
+      {
+        "name": "Mahruk",
+        "description": "TODO (merchant dwarves from the northern islands)"
+      },
+      {
+        "name": "Ghahar",
+        "description": "Master architects who construct impregnable strongholds, often serving as royal engineers in Atakhet"
+      },
+      {
+        "name": "Urduk",
+        "description": "TODO (evil djinn-serving dwarves from the ashen badlands)"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Dhurvar",
+        "description": "Stoic mountain dwellers who carve their homes from snow-covered mountainsides"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Dwarven Sight",
+        "description": "You can roughly make out differences in temperature by sight, granting you vision even in total darkness. You can see at melee range in absolute darkness as in bright light and up to a medium distance as in dim light."
+      },
+      {
+        "name": "Stoneskin",
+        "description": "You gain +1 AV. When you have to roll with Fortitude to withstand poison, intoxication, or illness, you gain +1 boon on the roll."
+      },
+      {
+        "name": "Squat Build",
+        "description": "You impose +1 bane on rolls that attempt to knock you prone or push you. Also when you are pushed, reduce the distance by one step (if you are pushed close, instead you aren't pushed at all)."
+      }
+    ],
+    "languages": [
+      "Dwarven"
+    ]
+  },
+  {
+    "name": "Elf",
+    "category": "Old Folk",
+    "quote": "We do not conquer the land—we commune with it. From the sacred river's source in the distant mountains to its delta where it meets the sea, each drop of water, each grain of sand carries a spirit you cannot hear.",
+    "description": "Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.",
+    "known_cultures": [
+      {
+        "name": "Anutep",
+        "description": "Dark-skinned desert dwellers who rule Atakhet as divine representatives, drawing power from the sun"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Sylvar",
+        "description": "Secretive woodland protectors who rarely venture beyond their forest borders"
+      },
+      {
+        "name": "Alfir",
+        "description": "Nocturnal elves who dwell in twilight realms and ancient tombs"
+      },
+      {
+        "name": "Ho'shien",
+        "description": "Nomadic traders who follow the great rivers, serving as vital links between isolated communities"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Night Vision",
+        "description": "You can see one range category further from sources of bright and dim light."
+      },
+      {
+        "name": "Fleet-Footed",
+        "description": "You can choose to gain +1 Movement during your turn. You can use this ability once per combat."
+      },
+      {
+        "name": "Spiritual Symbiosis",
+        "description": "You take nourishment from the natural world around you. While in the wilderness with lush vegetation, you only need to sleep for 4 hours each night, allowing you to use the remaining 4 hours for light non-physical activity."
+      }
+    ],
+    "languages": [
+      "Elvish"
+    ]
+  },
+  {
+    "name": "Gnome",
+    "category": "Old Folk",
+    "quote": "Your thoughts shine like torches in the night. From the river's source to its mangrove delta, secrets flow like water. From us? How amusing.",
+    "description": "Natural psychics with the ability to read other people's intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company. In Atakhet, gnomes often serve as diplomatic intermediaries, using their empathic abilities to foster understanding between different folk.",
+    "known_cultures": [
+      {
+        "name": "Auflin",
+        "description": "Gentle river-dwellers who establish communities near oases and waterways"
+      },
+      {
+        "name": "Burrin",
+        "description": "Industrious tunnel-builders who create elaborate underground communities"
+      }
+    ],
+    "far_away_cultures": [],
+    "abilities": [
+      {
+        "name": "Natural Empath",
+        "description": "You can read the surface thoughts and emotions of any close creature by rolling Spirit + Insight. You can also project your feelings to a creature close to you, allowing you to communicate simple ideas with animals and other creatures. You also intuitively know how many living creatures are close to you and their general direction."
+      },
+      {
+        "name": "Scent of Illusions",
+        "description": "You can instinctively make out illusions and invisible things. You gain +1 boon on Spirit rolls to identify magical falsehoods and illusions and impose +1 bane on rolls to fool you with falsehoods or illusions."
+      },
+      {
+        "name": "Small Stature",
+        "description": "You are of small size. This grants you the following effects:"
+      }
+    ],
+    "languages": [
+      "Gnomish"
+    ]
+  },
+  {
+    "name": "Hune",
+    "category": "Old Folk",
+    "quote": "We have watched civilizations rise and fall like the river delta's tides. From mountain peaks to swampland depths, patience is our greatest strength.",
+    "description": "A race of towering beings with incredible strength and endurance. They are often nomadic and reclusive but possess a deep wisdom and knowledge of the world. In the deserts of Atakhet, Hunes are often sought out as caravan guards or builders for grand monuments, their strength and endurance invaluable in the harsh climate.",
+    "known_cultures": [
+      {
+        "name": "Hataar",
+        "description": "Solitary herders and guardians of ancient mountain passes"
+      },
+      {
+        "name": "Empyros",
+        "description": "Seafaring traders who connect distant shores through elaborate trade networks"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Jotnir",
+        "description": "Frost-resistant nomads who navigate the frozen north with ease"
+      },
+      {
+        "name": "Ta'uuri",
+        "description": "Coastal dwellers who build impressive stone harbors and lighthouses"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Giant's Blood",
+        "description": "+2 HP. You also gain the following effects:"
+      },
+      {
+        "name": "Stoic Mind",
+        "description": "+1 Resist. You gain +1 boon on Spirit + Fortitude rolls."
+      }
+    ],
+    "languages": [
+      "Giant"
+    ]
+  },
+  {
+    "name": "Orc",
+    "category": "Old Folk",
+    "quote": "Our ancestors' deeds do not define us, but their strength flows in our veins like the great river through the desert. We build terraces on the mountain slopes where they once only destroyed.",
+    "description": "Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.",
+    "known_cultures": [
+      {
+        "name": "Orgon",
+        "description": "Seafaring warriors and traders who establish coastal settlements"
+      },
+      {
+        "name": "Gataka",
+        "description": "Expert hunters and trackers who navigate dense forests with ease"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Jinkai",
+        "description": "TODO (misty valley, culture of honor, metal-smithing)"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Orcish Fury",
+        "description": "When you roll a critical success on an attack with a melee weapon, add your weapon damage an additional time to the total damage."
+      },
+      {
+        "name": "Pride above Death",
+        "description": "When you suffer one Injury, you can choose to ignore it. You can use this ability once per day."
+      }
+    ],
+    "languages": [
+      "Orcish"
+    ]
+  },
+  {
+    "name": "Goblin",
+    "category": "New Folk",
+    "quote": "Underestimated is exactly where I prefer to be. Whether in the crowded bazaars or the dense mangrove swamps of the delta, by the time they realize their mistake, their coin purse is already in my hand.",
+    "description": "A cunning and resourceful race of small build, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset. In the deserts of Atakhet, goblins often serve as scouts or messengers, their small size and quick wits allowing them to navigate both the physical and social landscapes with surprising effectiveness.",
+    "known_cultures": [
+      {
+        "name": "Sniknez",
+        "description": "Subterranean dwellers who excel at finding hidden passages and resources"
+      },
+      {
+        "name": "Goki",
+        "description": "Agile climbers who establish communities in cliffs and treetops"
+      }
+    ],
+    "far_away_cultures": [],
+    "abilities": [
+      {
+        "name": "Night Vision",
+        "description": "You can see one range category further from sources of bright and dim light."
+      },
+      {
+        "name": "Quick Escape",
+        "description": "When an enemy misses you with a melee attack, you can choose to move close without provoking Opportunity Attacks. You can use this ability once between turns."
+      },
+      {
+        "name": "Small Stature",
+        "description": "You are of small size. This grants you the following effects:"
+      }
+    ],
+    "languages": [
+      "Goblin"
+    ]
+  },
+  {
+    "name": "Human",
+    "category": "New Folk",
+    "quote": "They fear what flows in our veins, yet seek to harness it like the waters of the great river. We walk a dangerous path between power and persecution, from the savannah's edge to the temple steps.",
+    "description": "The newest folk among all the New Folk, humans possess a natural arcane ability that makes many other folks scared of them. Others try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges. In Atakhet, humans often serve as advisors or arcane specialists, their natural magical talents both valued and closely monitored.",
+    "known_cultures": [
+      {
+        "name": "Khatok",
+        "description": "Nomadic tribes who navigate the grasslands at the desert's edge, many of them were brought to Atakhep for manual labor"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Vornheimr",
+        "description": "Hardy northerners who rarely venture into the southern deserts"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Will of Perseverance",
+        "description": "Re-roll the result of one test and take the new result. You can use this ability once per day."
+      },
+      {
+        "name": "Arcane Awakening",
+        "description": "You have a natural talent for the arcane arts. If you have learned Arcana, you gain +2 Focus. You can cast arcane spells without a Spell Catalyst, but suffer +1 bane on the roll."
+      }
+    ],
+    "languages": [
+      "Human Dialect"
+    ]
+  },
+  {
+    "name": "Catfolk",
+    "category": "New Folk",
+    "quote": "We hunt not just with claws and teeth, but with patience and respect. The savannah's beasts and the jungle's shadows have taught us when to strike and when to wait.",
+    "description": "A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with. In the realm of Atakhet, lionfolk often serve as desert guides or warriors, their natural hunting instincts and keen senses invaluable in the harsh environment.",
+    "known_cultures": [
+      {
+        "name": "Jakharii",
+        "description": "Tribal hunters who form tight-knit prides and control vast territories"
+      },
+      {
+        "name": "Saghal",
+        "description": "Stealthy predators who blend into their surroundings with remarkable ease"
+      }
+    ],
+    "far_away_cultures": [],
+    "abilities": [
+      {
+        "name": "Night Vision",
+        "description": "You can see one range category further from sources of bright and dim light."
+      },
+      {
+        "name": "Intimidating Roar",
+        "description": "You can use your Action in combat to unleash a powerful lion's roar. Roll Strength + Fortitude vs. Resist against each creature within short range. On a success, they are frightened of you. They can roll Spirit + Fortitude at the start of their turns. On a success, they stop being frightened. You can use this ability once per combat."
+      },
+      {
+        "name": "Sharp Claws",
+        "description": "You can use your claws (2 weapon damage, light, slash) as brawling weapons instead of unarmed attacks."
+      }
+    ],
+    "languages": [
+      "Catfolk"
+    ]
+  },
+  {
+    "name": "Lizardfolk",
+    "category": "New Folk",
+    "quote": "We remember when the desert was an ocean. Our blood is cold, but our memories are long, flowing from the mountain jungles to the vast delta swamps where we make our homes.",
+    "description": "A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment. In Atakhet, lizardfolk are often found near the life-giving oases and rivers, serving as guardians of these precious water sources.",
+    "known_cultures": [
+      {
+        "name": "Vaashk",
+        "description": "Amphibious dwellers who establish communities in wetlands and river deltas"
+      },
+      {
+        "name": "Quexa-kul",
+        "description": "Colorful tribes who move with surprising stealth through dense vegetation"
+      }
+    ],
+    "far_away_cultures": [],
+    "abilities": [
+      {
+        "name": "Thick Scales",
+        "description": "Your natural scales grant +3 AV (armor bonus). If you have another higher armor bonus, gain +1 AV instead."
+      },
+      {
+        "name": "Aquatic Nature",
+        "description": "You can hold your breath for 4 + 1/2 Strength minutes."
+      },
+      {
+        "name": "Reptile Jaws",
+        "description": "You can use your bite (3 weapon damage, crush) as a brawling weapon instead of unarmed attacks."
+      }
+    ],
+    "languages": [
+      "Lizardfolk"
+    ]
+  },
+  {
+    "name": "Minotaur",
+    "category": "New Folk",
+    "quote": "Our horns may be fearsome, but our hearts honor the ancient ways. We guard the sacred mountain passes and river crossings that others have forgotten, from savannah to delta.",
+    "description": "A horned, furry species known for their immense strength and unwavering determination. They are fiercely protective of their clan and territories, often seen as guardians of sacred places. Their physical prowess is matched by their sense of honor, making them formidable allies and respected adversaries. In Atakhet, minotaurs often serve as temple guardians or caravan protectors, their imposing presence deterring all but the most determined threats.",
+    "known_cultures": [
+      {
+        "name": "Minokos",
+        "description": "Seafaring traders who navigate treacherous waters with confidence"
+      },
+      {
+        "name": "Enkeddu",
+        "description": "Nomadic herders who follow seasonal migration patterns"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Yettnar",
+        "description": "Solitary mountain dwellers who guard ancient passes and shrines"
+      },
+      {
+        "name": "Khutu",
+        "description": "Swift runners who serve as messengers across vast plains"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Giant's Blood",
+        "description": "+2 HP. You also gain the following effects:"
+      },
+      {
+        "name": "Horns",
+        "description": "You can use your horns (3 weapon damage, crush) as a brawling weapon instead of unarmed attacks."
+      },
+      {
+        "name": "Goring Charge",
+        "description": "After you spend 1 or more Movement towards a creature and hit them with an attack using your horns, add your weapon damage an additional time to the total damage."
+      }
+    ],
+    "languages": [
+      "Giant"
+    ]
+  }
+]
