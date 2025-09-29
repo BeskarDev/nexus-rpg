@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Headband",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (head)",
+    "load": 0,
+    "quality": 2,
+    "slot": "head",
+    "description": "A decorative or functional band worn around the head."
+  },
+  {
+    "name": "Mask",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (head)",
+    "load": 0,
+    "quality": 2,
+    "slot": "head",
+    "description": "A face covering that can conceal identity or provide protection."
+  },
+  {
+    "name": "Amulet",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (neck)",
+    "load": 0,
+    "quality": 2,
+    "slot": "neck",
+    "description": "A protective charm worn around the neck."
+  },
+  {
+    "name": "Brooch",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (neck)",
+    "load": 0,
+    "quality": 2,
+    "slot": "neck",
+    "description": "A decorative pin worn at the neck or chest."
+  },
+  {
+    "name": "Scarf",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (neck)",
+    "load": 0,
+    "quality": 2,
+    "slot": "neck",
+    "description": "A length of fabric worn around the neck for warmth or style."
+  },
+  {
+    "name": "Cape",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (back)",
+    "load": 0,
+    "quality": 2,
+    "slot": "back",
+    "description": "A sleeveless cloak worn over the shoulders."
+  },
+  {
+    "name": "Cloak",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (back)",
+    "load": 0,
+    "quality": 2,
+    "slot": "back",
+    "description": "A loose outer garment worn over other clothing."
+  },
+  {
+    "name": "Mantle",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (back)",
+    "load": 0,
+    "quality": 2,
+    "slot": "back",
+    "description": "A ceremonial cloak worn as a symbol of authority."
+  },
+  {
+    "name": "Robe",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (body)",
+    "load": 0,
+    "quality": 2,
+    "slot": "body",
+    "description": "A long, loose-fitting garment worn as outer clothing."
+  },
+  {
+    "name": "Tunic",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (body)",
+    "load": 0,
+    "quality": 2,
+    "slot": "body",
+    "description": "A simple garment worn on the upper body."
+  },
+  {
+    "name": "Bracers",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (hands)",
+    "load": 0,
+    "quality": 2,
+    "slot": "hands",
+    "description": "Protective guards worn on the forearms."
+  },
+  {
+    "name": "Bracelets",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (hands)",
+    "load": 0,
+    "quality": 2,
+    "slot": "hands",
+    "description": "Decorative bands worn around the wrists."
+  },
+  {
+    "name": "Gloves",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (hands)",
+    "load": 0,
+    "quality": 2,
+    "slot": "hands",
+    "description": "Hand coverings that provide protection or dexterity."
+  },
+  {
+    "name": "Ring",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (ring)",
+    "load": 0,
+    "quality": 2,
+    "slot": "ring",
+    "description": "A circular band worn on the finger."
+  },
+  {
+    "name": "Belt",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (waist)",
+    "load": 0,
+    "quality": 2,
+    "slot": "waist",
+    "description": "A strap worn around the waist to hold clothing or equipment."
+  },
+  {
+    "name": "Sash",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (waist)",
+    "load": 0,
+    "quality": 2,
+    "slot": "waist",
+    "description": "A band of cloth worn around the waist or over the shoulder."
+  },
+  {
+    "name": "Girdle",
+    "category": "wearable",
+    "cost": 50,
+    "properties": "apparel (waist)",
+    "load": 0,
+    "quality": 2,
+    "slot": "waist",
+    "description": "A belt or cord worn around the waist."
+  },
+  {
+    "name": "Boots",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (feet)",
+    "load": 0,
+    "quality": 2,
+    "slot": "feet",
+    "description": "Sturdy footwear that reaches above the ankle."
+  },
+  {
+    "name": "Sandals",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (feet)",
+    "load": 0,
+    "quality": 2,
+    "slot": "feet",
+    "description": "Open footwear secured by straps."
+  },
+  {
+    "name": "Shoes",
+    "category": "wearable",
+    "cost": 100,
+    "properties": "apparel (feet)",
+    "load": 0,
+    "quality": 2,
+    "slot": "feet",
+    "description": "Enclosed footwear that covers the entire foot."
+  }
+]

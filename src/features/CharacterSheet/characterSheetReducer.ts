@@ -297,11 +297,9 @@ export const {
 				const newItem = {
 					id: crypto.randomUUID(),
 					name: '',
-					properties: '',
-					description: '',
+					properties: [] as string[],
 					slot: '' as const,
 					cost: 0,
-					load: 0,
 					container: '' as const,
 					amount: 1,
 					location: 'carried' as ItemLocation,
@@ -311,11 +309,94 @@ export const {
 				}
 				// Auto-fill durability if not already set
 				if (!newItem.durability) {
-					newItem.durability = getDurabilityForItem(newItem)
+					newItem.durability = getDurabilityForItem(newItem as Item)
 				}
 				return newItem
 			})
 			state.activeCharacter.items.items.unshift(...newItems)
+		},
+		importItemsToLocation: (state, action: PayloadAction<{ items: Partial<Item>[]; location: ItemLocation }>) => {
+			state.unsavedChanges = true
+			const { items, location } = action.payload
+			const newItems = items.map((item) => {
+				const newItem = {
+					id: crypto.randomUUID(),
+					name: '',
+					properties: [] as string[],
+					slot: '' as const,
+					cost: 0,
+					container: '' as const,
+					amount: 1,
+					location: location,
+					uses: 0,
+					durability: '' as DurabilityDie,
+					...item,
+				}
+				// Auto-fill durability if not already set
+				if (!newItem.durability) {
+					newItem.durability = getDurabilityForItem(newItem as Item)
+				}
+				return newItem
+			})
+			state.activeCharacter.items.items.unshift(...newItems)
+		},
+		importItemsWithSlotConflictResolution: (state, action: PayloadAction<{ items: Partial<Item>[]; location: ItemLocation }>) => {
+			state.unsavedChanges = true
+			const { items, location } = action.payload
+			
+			items.forEach((itemToImport) => {
+				const newItem = {
+					id: crypto.randomUUID(),
+					name: '',
+					properties: [] as string[],
+					slot: '' as const,
+					cost: 0,
+					container: '' as const,
+					amount: 1,
+					location: location,
+					uses: 0,
+					durability: '' as DurabilityDie,
+					...itemToImport,
+				}
+				
+				// Auto-fill durability if not already set
+				if (!newItem.durability) {
+					newItem.durability = getDurabilityForItem(newItem as Item)
+				}
+				
+				// Handle slot conflict resolution for worn items with slots
+				if (location === 'worn' && (newItem as any).slot && (newItem as any).slot !== '') {
+					const targetSlot = (newItem as any).slot
+					const currentItems = state.activeCharacter.items.items
+					
+					// Find items in the same slot (except rings which can stack up to 3)
+					const conflictingItems = currentItems.filter(item => 
+						item.location === 'worn' && 
+						item.container === 'worn' &&
+						(item as any).slot === targetSlot
+					)
+					
+					if (targetSlot === 'ring') {
+						// For rings, only move to inventory if there are already 3 rings
+						if (conflictingItems.length >= 3) {
+							// Move the oldest ring to carried/backpack
+							const oldestRing = conflictingItems[0]
+							oldestRing.location = 'carried'
+							oldestRing.container = 'backpack'
+							;(oldestRing as any).slot = ''
+						}
+					} else {
+						// For all other slots, move existing items to inventory
+						conflictingItems.forEach(item => {
+							item.location = 'carried'
+							item.container = 'backpack'
+							;(item as any).slot = ''
+						})
+					}
+				}
+				
+				state.activeCharacter.items.items.unshift(newItem)
+			})
 		},
 		updateWeapon: (
 			state,
@@ -353,12 +434,9 @@ export const {
 			state.activeCharacter.items.items.splice(0, 0, {
 				id: crypto.randomUUID(),
 				name: '',
-				properties: '',
-				description: '',
+				properties: [] as string[],
 				cost: 0,
-				load: 0,
 				container: 'backpack',
-				slot: '',
 				amount: 1,
 				location: 'carried' as ItemLocation,
 				uses: 0,
@@ -370,12 +448,9 @@ export const {
 			state.activeCharacter.items.items.splice(0, 0, {
 				id: crypto.randomUUID(),
 				name: '',
-				properties: '',
-				description: '',
+				properties: [] as string[],
 				cost: 0,
-				load: 0,
 				container: action.payload === 'worn' ? 'worn' : 'backpack',
-				slot: action.payload === 'worn' ? '' : '',
 				amount: 1,
 				location: action.payload,
 				uses: 0,

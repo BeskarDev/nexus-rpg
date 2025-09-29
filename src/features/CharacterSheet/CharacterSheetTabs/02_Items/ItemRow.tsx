@@ -25,6 +25,7 @@ import {
 } from '../../../../types/Character'
 import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
+import { QualityTier, qualityTierLabels } from './utils/magicItemsConfig'
 
 export type ItemRowProps = {
 	item: Item
@@ -118,14 +119,17 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 							updateItem({ cost: Number(event.target.value) })
 						}
 						label="Cost"
-						sx={{ maxWidth: '3.5rem' }}
+						sx={{ maxWidth: '2.5rem' }}
 					/>
 					<AttributeField
 						size="small"
 						variant="standard"
-						value={initialItem.load}
+						value={(initialItem as any).load || (initialItem as any).weight || 0}
 						onChange={(event) =>
-							updateItem({ load: Number(event.target.value) })
+							updateItem({ 
+								load: Number(event.target.value),
+								weight: Number(event.target.value)
+							} as any)
 						}
 						label="Load"
 						sx={{ maxWidth: '1.5rem' }}
@@ -186,6 +190,29 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						onBlur={() => updateItem({ description: item.description })}
 						label="Description"
 					/>
+					{/* Quality field for all items */}
+					<AttributeField
+						select
+						size="small"
+						variant="standard"
+						value={initialItem.quality || ''}
+						onChange={(event) => {
+							const value = event.target.value
+							const newQuality = value === '' ? undefined : Number(value) as QualityTier
+							updateItem({ quality: newQuality })
+						}}
+						label="Quality"
+						sx={{ maxWidth: '3rem' }}
+					>
+						<MenuItem value="">
+							-
+						</MenuItem>
+						{(Object.keys(qualityTierLabels) as unknown as QualityTier[]).map((quality) => (
+							<MenuItem key={quality} value={quality}>
+								Q{quality}
+							</MenuItem>
+						))}
+					</AttributeField>
 					<AttributeField
 						select
 						size="small"

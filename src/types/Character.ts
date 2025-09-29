@@ -243,6 +243,7 @@ export type Weapon = {
 	storageInfo?: string
 	uses: number // 0-3, when 3 the item is damaged
 	durability: DurabilityDie
+	quality?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 }
 
 export type Damage = {
@@ -274,12 +275,14 @@ export const damageTypeArray = [
 export type DamageType = (typeof damageTypeArray)[number]
 
 export type Equipment = {
-	name: string
-	properties: string
-	description: string
-	slot: EquipmentSlotType
-	cost: number
-	load: number
+  id: string
+  name: string
+  tags?: string[]
+  properties?: string[]
+  special?: string
+  weight?: number
+  cost?: number
+  quality?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 }
 
 export const equipmentSlotTypeArray = [
@@ -289,9 +292,7 @@ export const equipmentSlotTypeArray = [
 	'back',
 	'body',
 	'hands',
-	'ring (1)',
-	'ring (2)',
-	'ring (3)',
+	'ring',
 	'waist',
 	'feet',
 ] as const

@@ -1,0 +1,370 @@
+[
+  {
+    "id": "bone",
+    "name": "Bone",
+    "description": "Sourced from beasts or humanoids. Lightweight but brittle; breaks under strong impacts.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "shield", "ammo"]
+  },
+  {
+    "id": "copper",
+    "name": "Copper",
+    "description": "Soft reddish metal. Easy to shape, but poor durability for weapons or armor.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "fresh-wood",
+    "name": "Fresh Wood",
+    "description": "Cut from living trees without drying or treatment. Warps easily and lacks strength.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "shield", "spell-catalyst"]
+  },
+  {
+    "id": "stone",
+    "name": "Stone",
+    "description": "Rough, heavy, and crude. Can be shaped into tools or weapons, but prone to chipping.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"]
+  },
+  {
+    "id": "flint",
+    "name": "Flint",
+    "description": "Sharp when fractured. Good for cutting edges but extremely brittle.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["one-handed-weapon", "ammo"]
+  },
+  {
+    "id": "bark",
+    "name": "Bark",
+    "description": "Flexible but weak. Used for basic armor or bindings, mostly ceremonial or temporary.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["light-armor"]
+  },
+  {
+    "id": "reed",
+    "name": "Reed",
+    "description": "Hollow and very light. Used for simple shafts or padding, but offers no real durability.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["ammo", "spell-catalyst"]
+  },
+  {
+    "id": "shell",
+    "name": "Shell",
+    "description": "Hard outer layer from aquatic creatures. Smooth and rigid, but fragile under pressure.",
+    "qualityTiers": [1],
+    "properties": "1/2 item cost. The item gains the fragile property.",
+    "applicableCategories": ["light-armor", "shield"]
+  },
+  {
+    "id": "brass",
+    "name": "Brass",
+    "description": "Yellow-gold alloy. Decorative and corrosion-resistant, but not ideal for combat use.",
+    "qualityTiers": [2],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "shield", "wearable"]
+  },
+  {
+    "id": "bronze",
+    "name": "Bronze",
+    "description": "Standard metal for tools and weapons. Balanced in strength, weight, and workability.",
+    "qualityTiers": [2],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield", "helmet", "ammo"]
+  },
+  {
+    "id": "hardwood",
+    "name": "Hardwood",
+    "description": "Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.",
+    "qualityTiers": [2],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "shield", "spell-catalyst"]
+  },
+  {
+    "id": "leather",
+    "name": "Leather",
+    "description": "Treated animal skin. Flexible, provides basic protection; common for light armor.",
+    "qualityTiers": [2],
+    "properties": "",
+    "applicableCategories": ["light-armor", "wearable"]
+  },
+  {
+    "id": "horn",
+    "name": "Horn",
+    "description": "Solid, curved keratin. Used for weapon hilts, tips, and decorative armor parts.",
+    "qualityTiers": [2],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"]
+  },
+  {
+    "id": "hide",
+    "name": "Hide",
+    "description": "Thick, untreated skin. Tougher than leather, but less flexible.",
+    "qualityTiers": [2],
+    "properties": "",
+    "applicableCategories": ["light-armor", "heavy-armor"]
+  },
+  {
+    "id": "antler",
+    "name": "Antler",
+    "description": "Hard and naturally curved. Effective for piercing weapons or rugged tools.",
+    "qualityTiers": [2],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"]
+  },
+  {
+    "id": "obsidian",
+    "name": "Obsidian",
+    "description": "Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.",
+    "qualityTiers": [2],
+    "properties": "The item gains the fragile property. Weapon/Ammo: +1 weapon damage (enhancement bonus).",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"]
+  },
+  {
+    "id": "chitin",
+    "name": "Chitin",
+    "description": "Harvested from insectoid or crustacean monsters. Lighter than metal, but still strong and durable. Used as organic armor plating.",
+    "qualityTiers": [3, 4],
+    "properties": "Armor/Shield: -1 load (min. 0).",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "iron",
+    "name": "Iron",
+    "description": "Relatively common metal, but culturally taboo in some regions. Said to repel spirits and weaken magic. Also known as \"Cursestone\" due to its effects on the supernatural.",
+    "qualityTiers": [3, 4],
+    "properties": "Weapon: +1 boon on attacks against spirit creatures. Armor/Shield: +1 bane on Mysticism rolls to cast spells.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield", "helmet", "ammo"]
+  },
+  {
+    "id": "monster-bone",
+    "name": "Monster Bone",
+    "description": "Comes from large or magical creatures. Denser and stronger than normal bone, with durability close to metals.",
+    "qualityTiers": [3, 4],
+    "properties": "Weapon/Armor/Shield: -1 load (min. 0).",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "monster-scales",
+    "name": "Monster Scales",
+    "description": "Sourced from scaled beasts. Natural armor with good physical resistance.",
+    "qualityTiers": [3, 4],
+    "properties": "Armor/Shield: Once per scene, gain resistance to a single attack's physical damage.",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "giant-spider-silk",
+    "name": "Giant Spider Silk",
+    "description": "Collected from giant spiders bred for strength. Threads are extremely strong and light. Can be woven into flexible armor or restraint gear.",
+    "qualityTiers": [3, 4],
+    "properties": "Light Armor: -1 load (min. 0).",
+    "applicableCategories": ["light-armor"]
+  },
+  {
+    "id": "silverroot",
+    "name": "Silverroot",
+    "description": "Root of the sacred Silverleaf Oak, threaded with silvery veins. The sap is poisonous to the cursed creatures of the night. Can be imbued into weapons with effects against those creatures.",
+    "qualityTiers": [3, 4],
+    "properties": "Weapon: +1 boon on attacks against lycanthropes and undead creatures.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "ammo"]
+  },
+  {
+    "id": "runebark",
+    "name": "Runebark",
+    "description": "Tree bark with natural ancient patterns. Slightly magical and resists some spell effects.",
+    "qualityTiers": [3, 4],
+    "properties": "Armor/Shield: Once per scene, gain resistance to a single spell's damage.",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "dwarf-steel",
+    "name": "Dwarf-Steel",
+    "description": "Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret; known for durability and excellent heat resistance.",
+    "qualityTiers": [3, 4],
+    "properties": "Any: Once per day, you can re-roll a Durability check for this item. Heavy Armor: You don't suffer a penalty for wearing heavy armor in extreme climates.",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield", "helmet", "ammo"]
+  },
+  {
+    "id": "darkwood",
+    "name": "Darkwood",
+    "description": "Dark wood with a mix of red and basalt layers that is much lighter than normal wood and resistant like metal. Often used for wooden weapons or shields. Has no effect on weapons only partially made of wood.",
+    "qualityTiers": [3, 4],
+    "properties": "Weapon/Shield/Ammo: -1 load (min. 0).",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "shield", "spell-catalyst", "ammo"]
+  },
+  {
+    "id": "wyrmhide",
+    "name": "Wyrmhide",
+    "description": "Thick hide from lesser draconic creatures. Offers slight protection against elemental damage.",
+    "qualityTiers": [3, 4],
+    "properties": "Armor/Shield: Once per scene, gain resistance against any single damage source dealing acid, fire, frost, lightning, or poison damage.",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "meteorite",
+    "name": "Meteorite",
+    "description": "Blue-silver metal found in fallen stars. Imbued with natural magical energy. Some cultures revere or fear it due to its otherworldly origin.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "spell-catalyst"]
+  },
+  {
+    "id": "treantwood",
+    "name": "Treantwood",
+    "description": "Harvested from awakened trees. Tough and slightly regenerative, reacts to magic.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "shield", "spell-catalyst"]
+  },
+  {
+    "id": "dragon-bone",
+    "name": "Dragon Bone",
+    "description": "Bones from dragons carry elemental properties tied to their nature. Very strong and magically reactive. Used in powerful weapons or armor.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "dragon-scales",
+    "name": "Dragon Scales",
+    "description": "Large scales from dragons. Extremely durable and elementally attuned.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "deep-iron",
+    "name": "Deep Iron",
+    "description": "Heavy ore from deep underground. Strong against both physical and magical attacks.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield", "ammo"]
+  },
+  {
+    "id": "phantom-silk",
+    "name": "Phantom-Silk",
+    "description": "Made from spectral spider silk. Very light, hard to detect, and partially intangible.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["light-armor", "wearable"]
+  },
+  {
+    "id": "mithril",
+    "name": "Mithril",
+    "description": "Lightweight, silvery metal. High durability with very low weight; ideal for fast fighters.",
+    "qualityTiers": [5, 6],
+    "properties": "Armor/Shield: -1 load (min. 0). Reduce the item's rigid property by 1 (min. 0).",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield", "helmet"]
+  },
+  {
+    "id": "solarite",
+    "name": "Solarite",
+    "description": "Red-gold crystal found on celestial mountain peaks. Mixed with bronze in a ritual to create a glowing, heat-reactive alloy. Generates intense heat when moved quickly.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "spell-catalyst", "ammo"]
+  },
+  {
+    "id": "lunarite",
+    "name": "Lunarite",
+    "description": "Deep blue crystal found in underworld caverns. Absorbs magical energy. Used in armor to resist spells or in restraints to suppress magic.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield", "spell-catalyst"]
+  },
+  {
+    "id": "adamantite",
+    "name": "Adamantite",
+    "description": "Extremely hard and dense metal. Almost impossible to break or bend.",
+    "qualityTiers": [5, 6],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor"]
+  },
+  {
+    "id": "orichalcum",
+    "name": "Orichalcum",
+    "description": "Light-blue metal that is nearly weightless. Enchanted during forging to retain high flexibility and hardness. Very rare and extremely valuable.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "celestial-feathers",
+    "name": "Celestial Feathers",
+    "description": "Fallen feathers from divine beings. Extremely light and retains limited flight or levitation properties.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["light-armor", "wearable"]
+  },
+  {
+    "id": "elder-dragon-bone",
+    "name": "Elder Dragon Bone",
+    "description": "Fossilized remains of ancient dragons. Incredibly strong and still radiates elemental energy.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "elder-dragon-scales",
+    "name": "Elder Dragon Scales",
+    "description": "Rare, hardened scales from elder dragons. Strongly resistant to most elemental forces.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "aegium",
+    "name": "Aegium",
+    "description": "White-gold metal from the High Realms. Said to be used by divine beings. Very durable and carries innate divine magic.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield", "spell-catalyst", "wearable"]
+  },
+  {
+    "id": "eternite",
+    "name": "Eternite",
+    "description": "Ocean-blue crystal, most rare of the three celestial materials. Shaped into dark-blue metal with star-like patterns inside. Highly magical and used for powerful artifacts.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "spell-catalyst", "wearable"]
+  },
+  {
+    "id": "elderwood",
+    "name": "Elderwood",
+    "description": "Wood from ancient magical trees. Exceptionally strong and responds to magical input.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "shield", "spell-catalyst"]
+  },
+  {
+    "id": "dreamweave",
+    "name": "Dreamweave",
+    "description": "Fabric spun from magical dreams. Shifts in form slightly and resists mental or illusion magic.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["light-armor", "wearable"]
+  },
+  {
+    "id": "titanium",
+    "name": "Titanium",
+    "description": "Magenta metal with glowing edges. Found where magical rifts meet the Lower Realms. Naturally resists impact and holds an ambient magical aura.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "light-armor", "heavy-armor", "shield"]
+  },
+  {
+    "id": "infernal-horn",
+    "name": "Infernal Horn",
+    "description": "Taken from powerful infernal beasts. Resistant to heat and can channel demonic energy.",
+    "qualityTiers": [7, 8],
+    "properties": "",
+    "applicableCategories": ["one-handed-weapon", "two-handed-weapon", "spell-catalyst"]
+  }
+]

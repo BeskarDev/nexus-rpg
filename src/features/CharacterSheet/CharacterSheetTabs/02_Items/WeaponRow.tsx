@@ -23,6 +23,7 @@ import {
 import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
 import { DamageFields } from '../DamageFields'
+import { QualityTier, qualityTierLabels } from './utils/magicItemsConfig'
 
 export type WeaponRowProps = {
 	weapon: Weapon
@@ -79,7 +80,7 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						onBlur={() => updateWeapon({ name: weapon.name })}
 						label="Name"
 						sx={{
-							maxWidth: { sm: '12rem', xs: '7.5rem' },
+							maxWidth: { sm: '10rem', xs: '7.5rem' },
 						}}
 					/>
 					<DamageFields
@@ -169,6 +170,29 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						label="Load"
 						sx={{ maxWidth: '4rem', flexGrow: 0 }}
 					/>
+					{/* Quality field for all weapons */}
+					<AttributeField
+						select
+						size="small"
+						variant="standard"
+						value={initialWeapon.quality || ''}
+						onChange={(event) => {
+							const value = event.target.value
+							const newQuality = value === '' ? undefined : Number(value) as QualityTier
+							updateWeapon({ quality: newQuality })
+						}}
+						label="Quality"
+						sx={{ maxWidth: '3rem' }}
+					>
+						<MenuItem value="">
+							-
+						</MenuItem>
+						{(Object.keys(qualityTierLabels) as unknown as QualityTier[]).map((quality) => (
+							<MenuItem key={quality} value={quality}>
+								Q{quality}
+							</MenuItem>
+						))}
+					</AttributeField>
 					<AttributeField
 						select
 						size="small"

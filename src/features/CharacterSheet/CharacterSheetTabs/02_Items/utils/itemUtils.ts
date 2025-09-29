@@ -59,7 +59,12 @@ export const calculateLocationLoad = (
 
 	const itemLoad = locationItems
 		.filter((item) => !('damage' in item))
-		.map((i) => (i as Item).load * (i as Item).amount)
+		.map((i) => {
+			const item = i as Item
+			// Use weight if available, fallback to 0
+			const weight = (item as any).weight || 0
+			return weight * item.amount
+		})
 		.reduce((sum, load) => sum + load, 0)
 
 	return weaponLoad + itemLoad
@@ -86,7 +91,11 @@ export const calculateCurrentLoad = (
 	] as Item[]
 
 	const itemLoad = carriedItems
-		.map((i) => i.load * i.amount)
+		.map((i) => {
+			// Use weight if available, fallback to 0
+			const weight = (i as any).weight || 0
+			return weight * i.amount
+		})
 		.reduce((sum, load) => sum + load, 0)
 
 	return weaponLoad + itemLoad
@@ -104,14 +113,25 @@ export const extractArmorValues = (itemsByLocation: OrganizedItems) => {
 	const equippedGear = itemsByLocation.worn as Item[]
 	equippedGear.forEach((item) => {
 		if (item.properties && !('damage' in item)) {
+			// Handle properties as array (for Items) - join to string for matching
+			const propertiesString = Array.isArray(item.properties) 
+				? item.properties.join(', ') 
+				: item.properties
+			
 			// Look for both "AV +X" and "+X AV" patterns
-			const avMatch = item.properties.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
+			const avMatch = propertiesString.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
 			if (avMatch) {
 				const av = parseInt(avMatch[1] || avMatch[2])
-				if (item.slot === 'body') {
-					armorAV = av
-				} else if (item.slot === 'head') {
+				
+				// Determine if it's body armor or helmet based on name/properties
+				const itemName = item.name.toLowerCase()
+				const isHelmet = itemName.includes('helmet') || itemName.includes('cap') || itemName.includes('hood')
+				const isBodyArmor = itemName.includes('armor') || itemName.includes('mail') || itemName.includes('leather') || itemName.includes('plate')
+				
+				if (isHelmet) {
 					helmetAV = av
+				} else if (isBodyArmor) {
+					armorAV = av
 				}
 			}
 		}

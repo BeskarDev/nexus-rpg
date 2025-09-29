@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
-import { DeepPartial } from '../../CharacterSheetContainer'
+import { DeepPartial } from '../CharacterSheetContainer'
 import { calculateMaxHp } from '../utils/calculateHp'
 import { calculateCharacterLevel } from '../utils/calculateCharacterLevel'
 
@@ -130,13 +130,9 @@ export const useHpManagement = ({
 	}
 
 	const updateWounds = (wounds: number) => {
-		updateCharacter({
-			statistics: {
-				health: {
-					wounds: Math.max(0, wounds),
-				},
-			},
-		})
+		// Note: wounds tracking has been moved to a different system
+		// This function is kept for compatibility but doesn't update anything
+		console.warn('updateWounds called but wounds system has been migrated')
 	}
 
 	return {

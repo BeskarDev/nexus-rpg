@@ -102,6 +102,21 @@ export function migrateCharacterData(character: CharacterDocument): CharacterDoc
 		...item,
 	}))
 
+	// Migrate ring slots from individual slots to collective 'ring' slot
+	if (character.items.items) {
+		character.items.items = character.items.items.map((item) => {
+			// Convert old ring slot formats to new 'ring' slot
+			const itemSlot = item.slot as string // Cast to handle legacy values
+			if (itemSlot === 'ring (1)' || itemSlot === 'ring (2)' || itemSlot === 'ring (3)') {
+				return {
+					...item,
+					slot: 'ring' as any, // Cast to avoid type issues during migration
+				}
+			}
+			return item
+		})
+	}
+
 	// Ensure encumbrance has mount and storage max load fields
 	if (!character.items?.encumbrance) {
 		// Ensure items object exists

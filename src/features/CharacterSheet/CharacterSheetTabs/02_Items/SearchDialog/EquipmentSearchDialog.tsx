@@ -3,7 +3,8 @@ import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import equipmentData from '../../../../../utils/json/equipment.json'
 import armorData from '../../../../../utils/json/armor.json'
-import { Item, CharacterDocument } from '../../../../../types/Character'
+import { Item, CharacterDocument, ContainerType } from '../../../../../types/Character'
+import { QualityTier } from '../utils/magicItemsConfig'
 
 // Function to get color for equipment categories
 const getCategoryColor = (
@@ -40,6 +41,7 @@ export type EquipmentSearchDialogProps = {
 	onClose: () => void
 	onImportEquipment: (equipment: Partial<Item>[]) => void
 	character: CharacterDocument
+	targetLocation?: 'worn' | 'carried' | 'mount' | 'storage'
 }
 
 type EquipmentData = {
@@ -78,6 +80,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 	onClose,
 	onImportEquipment,
 	character,
+	targetLocation = 'carried',
 }) => {
 	const [selectedEquipment, setSelectedEquipment] = useState<Set<string>>(
 		new Set(),
@@ -112,8 +115,21 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 			}
 		})
 
-		return [...equipment, ...armor]
-	}, [])
+		const allItems = [...equipment, ...armor]
+
+		// Filter based on target location
+		if (targetLocation === 'worn') {
+			// For Equipment section, only show equippable items (armor and certain equipment categories)
+			const equippableCategories = ['Clothes', 'Container', 'Toolkit', 'Gear']
+			return allItems.filter(item => 
+				item.type === 'armor' || 
+				(item.type === 'equipment' && equippableCategories.includes(item.category))
+			)
+		}
+
+		// For other locations, show all items
+		return allItems
+	}, [targetLocation])
 
 	const columns: SearchDialogColumn<CombinedItemData>[] = [
 		{
@@ -194,14 +210,8 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 			const suggestedSlot = getEquipmentSlot(item)
 			if (!suggestedSlot) return 'backpack'
 
-			// Check if the suggested slot is already occupied by worn equipment
-			const currentItems = character.items?.items || []
-			const isSlotOccupied = currentItems.some(
-				(eq) => eq.slot === suggestedSlot && eq.container === 'worn',
-			)
-
-			// If slot is free, auto-equip as worn, otherwise put in backpack
-			return isSlotOccupied ? 'backpack' : 'worn'
+			// For armor items, default to worn unless specifically needed elsewhere
+			return 'worn'
 		}
 
 		// For regular equipment items, default to backpack
@@ -215,12 +225,16 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 				id: crypto.randomUUID(),
 				name: item.name,
 				description: item.description,
-				properties: item.properties || '',
-				slot: getEquipmentSlot(item) as any,
+				properties: item.properties ? item.properties.split(',').map(p => p.trim()) : [],
 				cost: parseInt(item.cost) || 0,
-				load: item.load === '-' ? 0 : parseInt(item.load) || 0,
-				container: getEquipmentContainer(item) as any,
+				weight: item.load === '-' ? 0 : parseInt(item.load) || 0,
+				container: (targetLocation === 'worn' ? 'worn' : 'backpack') as ContainerType,
 				amount: 1,
+				quality: parseInt(item.quality) as QualityTier,
+				// Add slot assignment for armor pieces when worn
+				...(targetLocation === 'worn' && item.type === 'armor' ? {
+					slot: getEquipmentSlot(item)
+				} : {})
 			}))
 
 		onImportEquipment(equipmentToImport)
