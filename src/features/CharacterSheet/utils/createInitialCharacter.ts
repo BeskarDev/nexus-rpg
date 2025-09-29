@@ -34,7 +34,7 @@ export const createInitialCharacter = (
 				id: uuidv4(),
 				title: ability.name,
 				description: ability.description,
-				tag: 'Folk Ability' as const,
+				tag: 'Folk' as const,
 			})
 		})
 	}
