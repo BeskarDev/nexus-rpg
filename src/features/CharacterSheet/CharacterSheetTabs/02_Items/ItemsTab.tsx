@@ -14,6 +14,7 @@ export const ItemsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [weaponSearchOpen, setWeaponSearchOpen] = useState(false)
 	const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
+	const [equipmentSearchLocation, setEquipmentSearchLocation] = useState<'worn' | 'carried' | 'mount' | 'storage'>('carried')
 	const [magicItemBuilderOpen, setMagicItemBuilderOpen] = useState(false)
 	const [settingsMenuAnchor, setSettingsMenuAnchor] =
 		useState<null | HTMLElement>(null)
@@ -45,6 +46,15 @@ export const ItemsTab: React.FC = () => {
 		}
 	}
 
+	const handleOpenEquipmentSearch = (location: 'worn' | 'carried' | 'mount' | 'storage') => {
+		setEquipmentSearchLocation(location)
+		setEquipmentSearchOpen(true)
+	}
+
+	const handleImportEquipmentToLocation = (equipment: Partial<Item>[]) => {
+		importEquipmentToLocation(equipment, equipmentSearchLocation)
+	}
+
 	const {
 		coins,
 		encumbrance,
@@ -58,6 +68,7 @@ export const ItemsTab: React.FC = () => {
 		updateCharacter,
 		importWeapons,
 		importEquipment,
+		importEquipmentToLocation,
 		updateWeapon,
 		deleteWeapon,
 		onItemReorder,
@@ -113,8 +124,10 @@ export const ItemsTab: React.FC = () => {
 					items={itemsByLocation['worn']}
 					weapons={weapons}
 					allItems={items}
+					character={activeCharacter}
 					showWeaponsOnly
 					showSearchButton
+					searchTooltip="Search weapons from database"
 					helpTooltip="damage = base + (weapon * SL) + other, base = ½ STR (melee), ½ AGI (ranged), ½ SPI (mysticism), ½ MND (arcana)"
 					onAddNewWeapon={() => addNewWeaponToLocation('worn')}
 					onSearchClick={() => setWeaponSearchOpen(true)}
@@ -138,8 +151,12 @@ export const ItemsTab: React.FC = () => {
 					items={itemsByLocation['worn']}
 					weapons={weapons}
 					allItems={items}
+					character={activeCharacter}
 					showItemsOnly
+					showSearchButton
+					searchTooltip="Search equipment and armor"
 					onAddNewItem={() => addNewItemToLocation('worn')}
+					onSearchClick={() => handleOpenEquipmentSearch('worn')}
 					onItemReorder={onItemReorder}
 					updateWeapon={updateWeapon}
 					deleteWeapon={deleteWeapon}
@@ -160,9 +177,11 @@ export const ItemsTab: React.FC = () => {
 					items={itemsByLocation['carried']}
 					weapons={weapons}
 					allItems={items}
+					character={activeCharacter}
 					showSearchButton
+					searchTooltip="Search items and equipment"
 					onAddNewItem={() => addNewItemToLocation('carried')}
-					onSearchClick={() => setEquipmentSearchOpen(true)}
+					onSearchClick={() => handleOpenEquipmentSearch('carried')}
 					onItemReorder={onItemReorder}
 					updateWeapon={updateWeapon}
 					deleteWeapon={deleteWeapon}
@@ -183,11 +202,15 @@ export const ItemsTab: React.FC = () => {
 					items={itemsByLocation['mount']}
 					weapons={weapons}
 					allItems={items}
+					character={activeCharacter}
+					showSearchButton
+					searchTooltip="Search items for mount storage"
 					showLoadDisplay
 					currentLoad={getLocationLoad('mount')}
 					maxLoad={encumbrance.mountMaxLoad || 0}
 					locationName={itemsByLocation['mount'][0]?.mountInfo || ''}
 					onAddNewItem={() => addNewItemToLocation('mount')}
+					onSearchClick={() => handleOpenEquipmentSearch('mount')}
 					onItemReorder={onItemReorder}
 					updateWeapon={updateWeapon}
 					deleteWeapon={deleteWeapon}
@@ -230,11 +253,15 @@ export const ItemsTab: React.FC = () => {
 					items={itemsByLocation['storage']}
 					weapons={weapons}
 					allItems={items}
+					character={activeCharacter}
+					showSearchButton
+					searchTooltip="Search items for storage"
 					showLoadDisplay
 					currentLoad={getLocationLoad('storage')}
 					maxLoad={encumbrance.storageMaxLoad || 0}
 					locationName={itemsByLocation['storage'][0]?.storageInfo || ''}
 					onAddNewItem={() => addNewItemToLocation('storage')}
+					onSearchClick={() => handleOpenEquipmentSearch('storage')}
 					onItemReorder={onItemReorder}
 					updateWeapon={updateWeapon}
 					deleteWeapon={deleteWeapon}
@@ -279,8 +306,9 @@ export const ItemsTab: React.FC = () => {
 			<EquipmentSearchDialog
 				open={equipmentSearchOpen}
 				onClose={() => setEquipmentSearchOpen(false)}
-				onImportEquipment={importEquipment}
+				onImportEquipment={handleImportEquipmentToLocation}
 				character={activeCharacter}
+				targetLocation={equipmentSearchLocation}
 			/>
 
 			<MagicItemBuilderDialog

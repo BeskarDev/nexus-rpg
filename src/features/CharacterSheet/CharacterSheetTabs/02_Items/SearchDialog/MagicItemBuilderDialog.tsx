@@ -54,9 +54,16 @@ import {
   getAvailableEnchantments,
   calculateMagicItemCost,
   getWeaponDamageBonus,
+  getAmmoDamageBonus,
   getArmorAVBonus,
+  getTotalAV,
+  getDurabilityDie,
+  getSpellDamageBonus,
   generateItemName,
   generateItemDescription,
+  calculatePropertyModifications,
+  calculateFinalLoad,
+  modifyPropertiesString,
 } from '../utils/magicItemsConfig'
 
 export type MagicItemBuilderDialogProps = {
@@ -103,6 +110,8 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
     }
   }, [selectedCategory])
 
+
+
   const availableMaterials = useMemo(() => {
     if (!selectedCategory || !selectedQuality) return []
     return getAvailableMaterials(selectedCategory, selectedQuality)
@@ -125,18 +134,30 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 
   const finalItemName = useMemo(() => {
     if (!selectedBaseItem) return ''
-    return generateItemName(selectedBaseItem, selectedMaterial || undefined, selectedEnchantment || undefined)
-  }, [selectedBaseItem, selectedMaterial, selectedEnchantment])
+    const baseName = generateItemName(selectedBaseItem, selectedMaterial || undefined, selectedEnchantment || undefined)
+    // For baseline magic ammo (no materials or enchantments), add "Magic" prefix
+    if (selectedCategory === 'ammo' && !selectedMaterial && !selectedEnchantment) {
+      return `Magic ${baseName}`
+    }
+    return baseName
+  }, [selectedBaseItem, selectedMaterial, selectedEnchantment, selectedCategory])
 
   const finalItemDescription = useMemo(() => {
     if (!selectedBaseItem || !selectedQuality) return ''
-    return generateItemDescription(
+    let description = generateItemDescription(
       selectedBaseItem,
       selectedQuality,
       selectedMaterial || undefined,
       selectedEnchantment || undefined
     )
-  }, [selectedBaseItem, selectedQuality, selectedMaterial, selectedEnchantment])
+    
+    // Add usage note for enchanted ammo
+    if (selectedCategory === 'ammo' && selectedEnchantment) {
+      description += '\n\nEach shot consumes 1 use, regardless of whether it hits.'
+    }
+    
+    return description
+  }, [selectedBaseItem, selectedQuality, selectedMaterial, selectedEnchantment, selectedCategory])
 
   const hasUnsavedChanges = useMemo(() => {
     return !!(selectedCategory || selectedBaseItem || selectedQuality || selectedMaterial || selectedEnchantment)
@@ -203,7 +224,11 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
       case 1: return !!selectedQuality
       case 2: return true // Materials are optional
       case 3: return true // Enchantments are optional
-      case 4: return !!(selectedMaterial || selectedEnchantment) // Must have at least one
+      case 4: 
+        // Ammo can be baseline magic ammo without materials or enchantments
+        if (selectedCategory === 'ammo') return true
+        // Other items must have at least one special feature
+        return !!(selectedMaterial || selectedEnchantment)
       default: return false
     }
   }
@@ -212,19 +237,24 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
     if (!selectedBaseItem || !selectedQuality) return
 
     const isWeapon = selectedCategory.includes('weapon') || selectedCategory === 'shield'
+    
+    // Calculate property modifications from material and enchantment
+    const modifications = calculatePropertyModifications(selectedCategory, selectedMaterial, selectedEnchantment)
+    const finalLoad = calculateFinalLoad(selectedBaseItem.load, modifications)
+    
     const baseProps = {
       name: finalItemName,
       description: finalItemDescription,
       cost: finalCost,
-      load: selectedBaseItem.load,
+      load: finalLoad,
       location: targetLocation,
       uses: 0,
-      durability: 'd8' as const,
+      durability: getDurabilityDie(selectedBaseItem, selectedQuality) as any,
     }
 
     if (isWeapon) {
-      const baseDamage = selectedBaseItem.damage || 0
-      const damageBonus = getWeaponDamageBonus(selectedBaseItem.quality, selectedQuality)
+      const baseDamage = Number(selectedBaseItem.damage) || 0
+      const damageBonus = getWeaponDamageBonus(Number(selectedBaseItem.quality), selectedQuality)
       
       const weapon: Partial<Weapon> = {
         ...baseProps,
@@ -238,15 +268,37 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
           type: 'physical',
         },
         properties: enhanceProperties(selectedBaseItem.properties, selectedQuality, isWeapon),
+        quality: selectedQuality,
+      }
+      onCreateItem(weapon)
+    } else if (selectedCategory === 'spell-catalyst') {
+      // Spell catalysts get spell damage bonuses but are stored as weapons
+      const baseDamage = Number(selectedBaseItem.damage) || 0
+      const spellDamageBonus = getSpellDamageBonus(selectedQuality)
+      
+      const weapon: Partial<Weapon> = {
+        ...baseProps,
+        damage: {
+          base: '',
+          weapon: baseDamage + spellDamageBonus,
+          other: 0,
+          otherWeak: 0,
+          otherStrong: 0,
+          otherCritical: 0,
+          type: 'physical',
+        },
+        properties: enhanceProperties(selectedBaseItem.properties, selectedQuality, false),
+        quality: selectedQuality,
       }
       onCreateItem(weapon)
     } else {
       const item: Partial<Item> = {
         ...baseProps,
         properties: enhanceProperties(selectedBaseItem.properties, selectedQuality, isWeapon),
-        container: selectedBaseItem.slot ? 'worn' : 'backpack',
+        container: targetLocation === 'worn' && selectedBaseItem.slot ? 'worn' : 'backpack',
         amount: 1,
-        slot: (selectedBaseItem.slot || '') as EquipmentSlotType,
+        slot: targetLocation === 'worn' ? (selectedBaseItem.slot || '') as EquipmentSlotType : '',
+        quality: selectedQuality,
       }
       onCreateItem(item)
     }
@@ -258,45 +310,50 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
   const enhanceProperties = (baseProperties: string, quality: QualityTier, isWeapon: boolean): string => {
     let properties = baseProperties
 
-    // Add quality-based bonuses
-    if (isWeapon && selectedBaseItem?.damage) {
-      const damageBonus = getWeaponDamageBonus(selectedBaseItem.quality, quality)
+    // Handle AV for armor, shields, and helmets 
+    if ((selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || 
+         selectedCategory === 'shield' || selectedCategory === 'helmet') && 
+        selectedBaseItem) {
+      const totalAV = getTotalAV(selectedBaseItem, quality)
+      
+      // Always check for existing AV in properties string first
+      if (properties.includes('AV +')) {
+        // Replace existing AV with total AV (use a more robust replacement)
+        properties = properties.replace(/AV \+\d+/g, `AV +${totalAV}`)
+      } else if (selectedBaseItem.baseAV && selectedBaseItem.baseAV > 0) {
+        // For items with separate baseAV field but no AV in properties string
+        properties = `AV +${totalAV}${properties ? ', ' + properties : ''}`
+      } else if (totalAV > 0) {
+        // Add AV for items that don't have base AV (like bucklers)
+        properties = `AV +${totalAV}${properties ? ', ' + properties : ''}`
+      }
+    }
+
+    // Handle damage bonus and supply/pieces for ammo
+    if (selectedCategory === 'ammo' && selectedBaseItem) {
+      const damageBonus = getAmmoDamageBonus(Number(selectedBaseItem.quality), quality)
+      let ammoProperties = []
+      
       if (damageBonus > 0) {
-        properties += `, +${damageBonus} weapon damage`
+        ammoProperties.push(`+${damageBonus} dmg`)
       }
+      
+      // Add supply or pieces description based on enchantment
+      if (selectedEnchantment) {
+        ammoProperties.push('3 pieces')
+      } else {
+        ammoProperties.push('supply')
+      }
+      
+      // Combine with existing properties
+      const baseProps = properties ? properties.replace(/supply/g, '').replace(/,\s*$/, '').replace(/^,\s*/, '') : ''
+      const allProps = baseProps ? [baseProps, ...ammoProperties] : ammoProperties
+      properties = allProps.filter(p => p.trim()).join(', ')
     }
 
-    // Add spell damage bonus for spell catalysts
-    if (selectedCategory === 'spell-catalyst') {
-      let spellDamageBonus = 0
-      if (quality >= 4) {
-        spellDamageBonus = quality - 3 // Q4=+1, Q5=+2, Q6=+3, etc.
-      }
-      // Q3 items get +0 spell damage if they're already Q3 base
-      if (spellDamageBonus > 0) {
-        properties += `, +${spellDamageBonus} spell damage`
-      }
-    }
-
-    if (!isWeapon && (selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || selectedCategory === 'helmet' || selectedCategory === 'shield')) {
-      const avBonus = getArmorAVBonus(quality)
-      if (avBonus > 0) {
-        properties += `, +${avBonus} AV (enhancement)`
-      }
-    }
-
-    // Add durability bonus
-    const durabilityBonuses: Record<QualityTier, string> = {
-      3: '',
-      4: ', +1d durability',
-      5: ', +1d durability',
-      6: ', +2d durability',
-      7: ', +2d durability',
-      8: ', +3d durability',
-    }
-    if (durabilityBonuses[quality]) {
-      properties += durabilityBonuses[quality]
-    }
+    // Apply material and enchantment property modifications
+    const modifications = calculatePropertyModifications(selectedCategory, selectedMaterial, selectedEnchantment)
+    properties = modifyPropertiesString(properties, modifications)
 
     return properties
   }
@@ -333,89 +390,97 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
             </FormControl>
 
             {selectedCategory && (
-              <>
-                {baseItems[selectedCategory].length === 1 ? (
-                  <Alert severity="info" sx={{ mt: 2 }}>
-                    Only one {selectedCategory.replace('-', ' ')} type available: <strong>{baseItems[selectedCategory][0].name}</strong> (automatically selected)
-                  </Alert>
-                ) : (
-                  <TableContainer component={Paper} sx={{ mt: 2 }}>
-                    <Table size="small">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell padding="checkbox"></TableCell>
-                          <TableCell>Name</TableCell>
-                          <TableCell align="center">Quality</TableCell>
-                          <TableCell align="center">Cost</TableCell>
-                          <TableCell align="center">Load</TableCell>
-                          {(selectedCategory === 'one-handed-weapon' || selectedCategory === 'two-handed-weapon' || selectedCategory === 'shield') && (
-                            <TableCell align="center">Damage</TableCell>
-                          )}
-                          <TableCell>Properties</TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {baseItems[selectedCategory].map((item) => (
-                          <TableRow
-                            key={item.name}
-                            hover
-                            onClick={() => setSelectedBaseItem(item)}
-                            sx={{ cursor: 'pointer', '&:hover': { bgcolor: 'action.hover' } }}
-                          >
-                            <TableCell padding="checkbox">
-                              <Radio
-                                checked={selectedBaseItem?.name === item.name}
-                                onChange={() => setSelectedBaseItem(item)}
-                                size="small"
-                              />
-                            </TableCell>
-                            <TableCell>
-                              <Box>
-                                <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-                                  {item.name}
-                                </Typography>
-                                {item.description && (
-                                  <Typography variant="caption" color="text.secondary">
-                                    {item.description}
-                                  </Typography>
-                                )}
-                              </Box>
-                            </TableCell>
-                            <TableCell align="center">
-                              <Typography variant="body2">{item.quality}</Typography>
-                            </TableCell>
-                            <TableCell align="center">
-                              <Typography variant="body2">{item.cost}</Typography>
-                            </TableCell>
-                            <TableCell align="center">
-                              <Typography variant="body2">{item.load}</Typography>
-                            </TableCell>
-                            {(selectedCategory === 'one-handed-weapon' || selectedCategory === 'two-handed-weapon' || selectedCategory === 'shield') && (
-                              <TableCell align="center">
-                                <Typography variant="body2">{item.damage || '-'}</Typography>
-                              </TableCell>
-                            )}
-                            <TableCell>
-                              <Typography
-                                variant="caption"
-                                sx={{
-                                  display: '-webkit-box',
-                                  WebkitLineClamp: 2,
-                                  WebkitBoxOrient: 'vertical',
-                                  overflow: 'hidden',
-                                  lineHeight: 1.2,
-                                }}
-                              >
-                                {item.properties}
+              <TableContainer component={Paper} sx={{ mt: 2 }}>
+                <Table size="small">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell padding="checkbox"></TableCell>
+                      <TableCell>Name</TableCell>
+                      <TableCell align="center">Quality</TableCell>
+                      <TableCell align="center">Cost</TableCell>
+                      <TableCell align="center">Load</TableCell>
+                      {(selectedCategory === 'one-handed-weapon' || selectedCategory === 'two-handed-weapon' || selectedCategory === 'shield') && (
+                        <TableCell align="center">Damage</TableCell>
+                      )}
+                      {(selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || selectedCategory === 'shield' || selectedCategory === 'helmet') && (
+                        <TableCell align="center">Base AV</TableCell>
+                      )}
+                      <TableCell>Properties</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {baseItems[selectedCategory].map((item) => (
+                      <TableRow
+                        key={item.name}
+                        hover
+                        onClick={() => {
+                          setSelectedBaseItem(item);
+                          setSelectedMaterial(null);
+                          setSelectedEnchantment(null);
+                        }}
+                        sx={{ cursor: 'pointer', '&:hover': { bgcolor: 'action.hover' } }}
+                      >
+                        <TableCell padding="checkbox">
+                          <Radio
+                            checked={selectedBaseItem?.name === item.name}
+                            onChange={() => {
+                              setSelectedBaseItem(item);
+                              setSelectedMaterial(null);
+                              setSelectedEnchantment(null);
+                            }}
+                            size="small"
+                          />
+                        </TableCell>
+                        <TableCell>
+                          <Box>
+                            <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+                              {item.name}
+                            </Typography>
+                            {item.description && (
+                              <Typography variant="caption" color="text.secondary">
+                                {item.description}
                               </Typography>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                )}
-              </>
+                            )}
+                          </Box>
+                        </TableCell>
+                        <TableCell align="center">
+                          <Typography variant="body2">{item.quality}</Typography>
+                        </TableCell>
+                        <TableCell align="center">
+                          <Typography variant="body2">{item.cost}</Typography>
+                        </TableCell>
+                        <TableCell align="center">
+                          <Typography variant="body2">{item.load}</Typography>
+                        </TableCell>
+                        {(selectedCategory === 'one-handed-weapon' || selectedCategory === 'two-handed-weapon' || selectedCategory === 'shield') && (
+                          <TableCell align="center">
+                            <Typography variant="body2">{item.damage || '-'}</Typography>
+                          </TableCell>
+                        )}
+                        {(selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || selectedCategory === 'shield' || selectedCategory === 'helmet') && (
+                          <TableCell align="center">
+                            <Typography variant="body2">{item.baseAV || '-'}</Typography>
+                          </TableCell>
+                        )}
+                        <TableCell>
+                          <Typography
+                            variant="caption"
+                            sx={{
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden',
+                              lineHeight: 1.2,
+                            }}
+                          >
+                            {item.properties}
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
             )}
           </Box>
         )
@@ -427,7 +492,10 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
               Choose Quality Tier
             </Typography>
             <Typography variant="body1" color="text.secondary" paragraph>
-              Higher quality items are more expensive but offer better bonuses and can access more powerful materials and enchantments.
+              {selectedCategory === 'ammo' 
+                ? 'Magic ammo deals extra damage and comes as supply units. Enchanted ammo comes as individual pieces (up to 3 per slot).'
+                : 'Higher quality items are more expensive but offer better bonuses and can access more powerful materials and enchantments.'
+              }
             </Typography>
             <TableContainer component={Paper}>
               <Table>
@@ -438,7 +506,8 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
                     <TableCell>Cost</TableCell>
                     {selectedBaseItem?.damage && <TableCell>Weapon Damage</TableCell>}
                     {selectedCategory === 'spell-catalyst' && <TableCell>Spell Damage</TableCell>}
-                    {(selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || selectedCategory === 'helmet') && (
+                    {selectedCategory === 'ammo' && <TableCell>Dmg Bonus</TableCell>}
+                    {(selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || selectedCategory === 'helmet' || selectedCategory === 'shield') && (
                       <TableCell>AV Bonus</TableCell>
                     )}
                   </TableRow>
@@ -468,12 +537,17 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
                       )}
                       {selectedCategory === 'spell-catalyst' && (
                         <TableCell>
-                          +{quality >= 4 ? quality - 3 : 0} spell damage
+                          +{getSpellDamageBonus(quality)} spell damage
                         </TableCell>
                       )}
-                      {(selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || selectedCategory === 'helmet') && (
+                      {selectedCategory === 'ammo' && selectedBaseItem && (
                         <TableCell>
-                          +{getArmorAVBonus(quality)}
+                          +{getAmmoDamageBonus(selectedBaseItem.quality, quality)}
+                        </TableCell>
+                      )}
+                      {(selectedCategory === 'light-armor' || selectedCategory === 'heavy-armor' || selectedCategory === 'helmet' || selectedCategory === 'shield') && (
+                        <TableCell>
+                          +{getArmorAVBonus(quality)} AV
                         </TableCell>
                       )}
                     </TableRow>
@@ -657,7 +731,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
               Review & Create Magic Item
             </Typography>
 
-            {!selectedMaterial && !selectedEnchantment && (
+            {!selectedMaterial && !selectedEnchantment && selectedCategory !== 'ammo' && (
               <Alert severity="warning" sx={{ mb: 2 }}>
                 You must select at least one special material or enchantment to create a magic item.
               </Alert>
@@ -680,7 +754,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
                   </Grid>
                   <Grid item xs={6}>
                     <Typography variant="body2" color="text.secondary">
-                      Load: <strong>{selectedBaseItem?.load}</strong>
+                      Load: <strong>{selectedBaseItem ? calculateFinalLoad(selectedBaseItem.load, calculatePropertyModifications(selectedCategory, selectedMaterial, selectedEnchantment)) : 0}</strong>
                     </Typography>
                   </Grid>
                   {selectedBaseItem?.damage && (
@@ -823,7 +897,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
             <Button
               variant="contained"
               onClick={handleCreateItem}
-              disabled={!selectedMaterial && !selectedEnchantment}
+              disabled={selectedCategory === 'ammo' ? false : (!selectedMaterial && !selectedEnchantment)}
               startIcon={<Add />}
               sx={{ minWidth: '120px' }}
             >

@@ -8,6 +8,7 @@ import {
 	BaseDamageType,
 	DamageType,
 } from '../../../../../types/Character'
+import { QualityTier } from '../utils/magicItemsConfig'
 
 // Function to get color for weapon types
 const getWeaponTypeColor = (
@@ -200,6 +201,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				description: `${weapon.type} weapon (Quality ${weapon.quality})`,
 				cost: parseInt(weapon.cost) || 0,
 				load: parseInt(weapon.load) || 0,
+				quality: parseInt(weapon.quality) as QualityTier,
 			}))
 
 		onImportWeapons(weaponsToImport)

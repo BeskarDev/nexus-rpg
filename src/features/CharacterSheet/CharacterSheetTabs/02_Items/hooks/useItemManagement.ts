@@ -98,6 +98,16 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 		dispatch(characterSheetActions.importItems(equipment))
 	}
 
+	const importEquipmentToLocation = (equipment: Partial<Item>[], location: ItemLocation) => {
+		if (location === 'worn') {
+			// Use slot conflict resolution for worn items
+			dispatch(characterSheetActions.importItemsWithSlotConflictResolution({ items: equipment, location }))
+		} else {
+			// Use normal import for other locations
+			dispatch(characterSheetActions.importItemsToLocation({ items: equipment, location }))
+		}
+	}
+
 	const updateWeapon = (update: Partial<Weapon>, index: number) => {
 		dispatch(characterSheetActions.updateWeapon({ update, index }))
 	}
@@ -171,6 +181,7 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 		addNewWeapon,
 		importWeapons,
 		importEquipment,
+		importEquipmentToLocation,
 		updateWeapon,
 		deleteWeapon,
 		onWeaponReorder,

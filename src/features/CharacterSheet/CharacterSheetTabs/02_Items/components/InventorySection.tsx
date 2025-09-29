@@ -12,7 +12,7 @@ import { DropResult } from 'react-beautiful-dnd'
 import { DynamicList } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { SectionHeader } from '../../../CharacterSheet'
-import { Item, Weapon } from '../../../../../types/Character'
+import { Item, Weapon, Character } from '../../../../../types/Character'
 import { ItemLocation } from '../../../../../types/ItemLocation'
 import { ItemRow } from '../ItemRow'
 import { WeaponRow } from '../WeaponRow'
@@ -24,9 +24,11 @@ interface InventorySectionProps {
 	items: (Item | Weapon)[]
 	weapons: Weapon[]
 	allItems: Item[]
+	character: Character
 	showWeaponsOnly?: boolean
 	showItemsOnly?: boolean
 	showSearchButton?: boolean
+	searchTooltip?: string
 	showLoadDisplay?: boolean
 	currentLoad?: number
 	maxLoad?: number
@@ -55,9 +57,11 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 	items,
 	weapons,
 	allItems,
+	character,
 	showWeaponsOnly = false,
 	showItemsOnly = false,
 	showSearchButton = false,
+	searchTooltip = "Search database",
 	showLoadDisplay = false,
 	currentLoad = 0,
 	maxLoad = 0,
@@ -126,7 +130,7 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 						</IconButton>
 					)}
 					{showSearchButton && onSearchClick && (
-						<Tooltip title="Search weapons from database">
+						<Tooltip title={searchTooltip}>
 							<IconButton
 								size="small"
 								onClick={(event) => {
@@ -178,6 +182,7 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 								<ItemRow
 									key={item.id}
 									item={item as Item}
+									character={character}
 									updateItem={(update) =>
 										updateItem(
 											update,
