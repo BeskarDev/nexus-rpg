@@ -17,8 +17,7 @@
 		"firebase:login": "firebase login",
 		"firebase:init": "firebase init",
 		"firebase:deploy": "firebase deploy",
-		"test": "vitest",
-		"test:run": "vitest run",
+		"test": "vitest run",
 		"test:ui": "vitest --ui",
 		"test:coverage": "vitest run --coverage"
 	},
