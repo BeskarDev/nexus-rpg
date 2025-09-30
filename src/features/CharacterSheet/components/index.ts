@@ -1,2 +1,10 @@
 export { PersonalField } from './PersonalField'
 export { NpcRelationshipsSection } from './NpcRelationshipsSection'
+export { FolkSelectionDialog } from './FolkSelectionDialog'
+export { UpbringingSelectionDialog } from './UpbringingSelectionDialog'
+export { BackgroundSelectionDialog } from './BackgroundSelectionDialog'
+export { SingleSelectionDialog } from './SingleSelectionDialog'
+
+export type { FolkData } from './FolkSelectionDialog'
+export type { UpbringingData } from './UpbringingSelectionDialog'
+export type { BackgroundData } from './BackgroundSelectionDialog'

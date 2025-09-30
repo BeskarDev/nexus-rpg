@@ -35,10 +35,18 @@ import { Character } from '@site/src/types/Character'
 import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
 import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
-import { createInitialCharacter } from './utils/createInitialCharacter'
+import { createInitialCharacter, CharacterCreationOptions } from './utils/createInitialCharacter'
 import { downloadFile } from './utils/donwloadFile'
 import { downloadAllCharacters } from './utils/downloadAllCharacters'
 import { logger } from './utils'
+import { 
+	FolkSelectionDialog, 
+	UpbringingSelectionDialog, 
+	BackgroundSelectionDialog,
+	FolkData,
+	UpbringingData,
+	BackgroundData
+} from './components'
 
 const MAX_NAME_LENGTH = 1_000
 
@@ -60,11 +68,21 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 	const [open, setOpen] = React.useState(false)
 	const [name, setName] = React.useState('')
-	const [includeStartingGear, setIncludeStartingGear] = React.useState(false)
+	const [includeStartingGear, setIncludeStartingGear] = React.useState(true)
 	const [downloadingAll, setDownloadingAll] = React.useState(false)
 	const [importedCharacter, setImportedCharacter] =
 		React.useState<Character | null>(null)
 	const [importError, setImportError] = React.useState<string | null>(null)
+
+	// Character creation selection states
+	const [selectedFolk, setSelectedFolk] = React.useState<FolkData | null>(null)
+	const [selectedUpbringing, setSelectedUpbringing] = React.useState<UpbringingData | null>(null)
+	const [selectedBackground, setSelectedBackground] = React.useState<BackgroundData | null>(null)
+	
+	// Dialog states
+	const [folkDialogOpen, setFolkDialogOpen] = React.useState(false)
+	const [upbringingDialogOpen, setUpbringingDialogOpen] = React.useState(false)
+	const [backgroundDialogOpen, setBackgroundDialogOpen] = React.useState(false)
 
 	const handleOpen = () => {
 		setOpen(true)
@@ -73,9 +91,17 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const handleAbort = () => {
 		setOpen(false)
 		setName('')
-		setIncludeStartingGear(false)
+		setIncludeStartingGear(true)
 		setImportedCharacter(null)
 		setImportError(null)
+		// Reset selection states
+		setSelectedFolk(null)
+		setSelectedUpbringing(null)
+		setSelectedBackground(null)
+		// Close all dialogs
+		setFolkDialogOpen(false)
+		setUpbringingDialogOpen(false)
+		setBackgroundDialogOpen(false)
 	}
 
 	const handleConfirm = async () => {
@@ -152,18 +178,24 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				}
 			} else {
 				// Create new character from scratch
-				characterData = createInitialCharacter(
-					name,
-					playerName,
+				const options: CharacterCreationOptions = {
 					includeStartingGear,
-				)
+					folk: selectedFolk || undefined,
+					upbringing: selectedUpbringing || undefined,
+					background: selectedBackground || undefined,
+				}
+				characterData = createInitialCharacter(name, playerName, options)
 			}
 
 			await addDoc(collectionRef, characterData)
 			setName('')
-			setIncludeStartingGear(false)
+			setIncludeStartingGear(true)
 			setImportedCharacter(null)
 			setImportError(null)
+			// Reset selections
+			setSelectedFolk(null)
+			setSelectedUpbringing(null)
+			setSelectedBackground(null)
 			setOpen(false)
 			window.location.href = window.location.href.split('?')[0]
 		} catch (error) {
@@ -379,6 +411,85 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					/>
 
 					{!importedCharacter && (
+						<>
+							<Typography variant="body2" sx={{ mt: 2, mb: 2, fontWeight: 'medium' }}>
+								Optional Character Details
+							</Typography>
+							
+							<Box sx={{ display: 'grid', gap: 2, mb: 2 }}>
+								{/* Folk Selection */}
+								<Box>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+										Folk
+									</Typography>
+									<Button
+										variant="outlined"
+										size="small"
+										onClick={() => setFolkDialogOpen(true)}
+										fullWidth
+										sx={{ 
+											justifyContent: 'flex-start',
+											textTransform: 'none',
+											color: selectedFolk ? 'text.primary' : 'text.secondary',
+											fontWeight: selectedFolk ? 'medium' : 'normal'
+										}}
+									>
+										{selectedFolk ? selectedFolk.name : 'Select Folk'}
+									</Button>
+								</Box>
+								
+								{/* Upbringing Selection */}
+								<Box>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+										Upbringing
+									</Typography>
+									<Button
+										variant="outlined"
+										size="small"
+										onClick={() => setUpbringingDialogOpen(true)}
+										fullWidth
+										sx={{ 
+											justifyContent: 'flex-start',
+											textTransform: 'none',
+											color: selectedUpbringing ? 'text.primary' : 'text.secondary',
+											fontWeight: selectedUpbringing ? 'medium' : 'normal'
+										}}
+									>
+										{selectedUpbringing ? selectedUpbringing.name : 'Select Upbringing'}
+									</Button>
+								</Box>
+								
+								{/* Background Selection */}
+								<Box>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+										Background
+									</Typography>
+									<Button
+										variant="outlined"
+										size="small"
+										onClick={() => setBackgroundDialogOpen(true)}
+										fullWidth
+										sx={{ 
+											justifyContent: 'flex-start',
+											textTransform: 'none',
+											color: selectedBackground ? 'text.primary' : 'text.secondary',
+											fontWeight: selectedBackground ? 'medium' : 'normal'
+										}}
+									>
+										{selectedBackground ? selectedBackground.name : 'Select Background'}
+									</Button>
+								</Box>
+							</Box>
+
+							{(selectedFolk || selectedUpbringing || selectedBackground) && (
+								<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
+									Selected details will auto-fill abilities, languages, and starting items.
+								</Typography>
+							)}
+						</>
+					)}
+
+					{!importedCharacter && (
 						<FormControlLabel
 							control={
 								<Checkbox
@@ -424,6 +535,37 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					</Button>
 				</DialogActions>
 			</Dialog>
+
+			{/* Selection Dialogs */}
+			<FolkSelectionDialog
+				open={folkDialogOpen}
+				onClose={() => setFolkDialogOpen(false)}
+				onSelectFolk={(folk) => {
+					setSelectedFolk(folk)
+					setFolkDialogOpen(false)
+				}}
+				selectedFolk={selectedFolk?.name}
+			/>
+
+			<UpbringingSelectionDialog
+				open={upbringingDialogOpen}
+				onClose={() => setUpbringingDialogOpen(false)}
+				onSelectUpbringing={(upbringing) => {
+					setSelectedUpbringing(upbringing)
+					setUpbringingDialogOpen(false)
+				}}
+				selectedUpbringing={selectedUpbringing?.name}
+			/>
+
+			<BackgroundSelectionDialog
+				open={backgroundDialogOpen}
+				onClose={() => setBackgroundDialogOpen(false)}
+				onSelectBackground={(background) => {
+					setSelectedBackground(background)
+					setBackgroundDialogOpen(false)
+				}}
+				selectedBackground={selectedBackground?.name}
+			/>
 		</>
 	)
 }
