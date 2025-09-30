@@ -663,24 +663,28 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 ### Spells
 
-**Tradition:** Nature (animals)
+**Tradition:** Nature (animals) - using Devotion (one tradition for 3 spells per rank)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
+**Starting Spells (3 from one tradition at rank 0-1):**
 - **Rank 0:** Animal Friendship, Speak with Animals
-- **Rank 1:** Animal Messenger, Beast Sense, Entangle, Summon Beast
+- **Rank 1:** Summon Beast
 
-### Playstyle
+*At rank 1, you know 6 total spells: 3 starting + 3 from gaining rank 1. Add three more rank 0-1 Nature spells like Animal Messenger, Beast Sense, and Entangle.*
 
-The Tamer is perfect for players who want to command multiple allies and control the battlefield indirectly. Direct allies and summoned creatures while staying protected behind reach weapons. Your beast companion fights alongside you. Polearm Mastery keeps enemies at bay while Wild Shape gives you versatility.
+### Playstyle & Advancement
 
-**Advancement:** Increase Nature and Mysticism to rank 2-3, get more summoning spells, improve beast companion through talents, and consider adding Lore for summoning knowledge.
+The Tamer is perfect for players who want to command multiple allies and control the battlefield indirectly. Direct allies and summoned creatures while staying protected behind reach weapons. Your beast companion fights alongside you. Polearm Mastery keeps enemies at bay while Wild Shape gives you versatility. Use Defensive Strike for survivability and Felling Strike to control enemy movement.
+
+**Advancement:** Increase Nature and Mysticism to rank 2-3 for more powerful summons and spell options, improve beast companion through talents, add Lore for summoning knowledge, and learn more Combat Arts for tactical variety.
 
 ---
 
 ## Alchemist
 
 **Role:** Striker / Utility
+
+**Overview:** A ranged specialist who uses bombs, potions, and alchemical devices to deal damage and solve problems.
 
 ### Attributes
 
@@ -701,21 +705,18 @@ The Tamer is perfect for players who want to command multiple allies and control
 - **Crafting** – *Quick Construction (Rank 1)* – Improvise items during exploration
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
 
-**Rank 0 Skills:** Lore, Perception, Insight, Nature
+**Rank 0 Skills:** Lore†, Perception, Insight, Nature
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
+- **Volley** – Hit multiple enemies with thrown weapons
+- **Barrage** – Make multiple attacks with thrown weapons
 
 ### Equipment
 
-- Sling (50 coins, 1 load)
-- Sling Bullets d8 (free with sling, 1 load)
-- Throwing Knives (25 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Brewer's Tools toolkit (50 coins, 1 load)
-- Acid Vial x3 (90 coins, 3 load)
-- Fire Bomb (125 coins, 1 load)
-- **Total Load:** 14 (equipment 9 + standard gear 5)
-- **Remaining Coins:** -40 (over budget, remove fire bomb)
-
-Final:
 - Sling (50 coins, 1 load)
 - Sling Bullets d8 (free, 1 load)
 - Throwing Knives (25 coins, 1 load)
@@ -724,19 +725,24 @@ Final:
 - Acid Vial x5 (150 coins, 5 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 15 (equipment 10 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 0
 
-### Playstyle
+### Playstyle & Advancement
 
-The Alchemist is perfect for players who enjoy crafting, creative problem-solving, and versatile utility options. Create bombs, potions, and devices to solve problems creatively. Quick Construction lets you improvise tools during adventures. Focus on crafting alchemical items during downtime. Expert Slinger makes you effective at short range with thrown items.
+The Alchemist is perfect for players who enjoy crafting, creative problem-solving, and versatile utility options. Create bombs, potions, and devices to solve problems creatively. Quick Construction lets you improvise tools during adventures. Focus on crafting alchemical items during downtime. Expert Slinger makes you effective at short range with thrown items and alchemical weapons. Use Volley to hit groups and Barrage for focused damage.
 
-**Advancement:** Increase Crafting to rank 2-3, raise Archery for better delivery, add Lore for formula knowledge, and consider Efficient Worker or Artisan talents.
+**Note:** Total load (15) significantly exceeds carry capacity (10) - you'll be heavily encumbered. Leave acid vials with the party or manage your load carefully. Consider dropping some items before combat.
+
+**Advancement:** Increase Crafting to rank 2-3 for better items, raise Archery for improved delivery and more Combat Arts, add Lore for formula knowledge, and consider Efficient Worker or Artisan talents.
 
 ---
 
 ## Hoplite
 
 **Role:** Tank / Controller
+
+**Overview:** A formation fighter with spear and shield, representing the Bronze Age soldier's tactical prowess.
 
 ### Attributes
 
@@ -757,7 +763,15 @@ The Alchemist is perfect for players who enjoy crafting, creative problem-solvin
 - **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
 - **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
 
-**Rank 0 Skills:** Fortitude, Perception, Insight, Archery
+**Rank 0 Skills:** Fortitude, Perception, Insight†, Archery
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Charge** – Move and shove while attacking
+- **Defensive Strike** – Gain Defend Action effects on hit
 
 ### Equipment
 
@@ -765,42 +779,24 @@ The Alchemist is perfect for players who enjoy crafting, creative problem-solvin
 - Light Shield (150 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
 - Javelins (50 coins, 1 load)
-- Adventuring Gear toolkit (50 coins, 1 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
-- **Remaining Coins:** -50 (over, remove adventuring gear)
-
-Final:
-- Spear (100 coins, 1 load)
-- Light Shield (150 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Javelins (50 coins, 1 load)
-- Carpenter's Tools toolkit (50 coins, 1 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
-- **Remaining Coins:** -50 (still over)
-
-Let me recalculate properly - I think I'm not handling the standard gear properly. Standard gear is 5 load total (rope 1, camping kit 1, toolkit 1, rations 1, torches 1).
-
-Correction - the toolkit is part of "One additional tool of your choice" which I need to specify from the toolkit section. Let me fix this:
-
-- Spear (100 coins, 1 load)
-- Light Shield (150 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Javelins (50 coins, 1 load)
-- **Toolkit:** Carpenter's Tools (included in standard gear, 1 load)
+- Carpenter's Tools toolkit (included in standard gear, 1 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
+- **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 0
 
-### Playstyle
+### Playstyle & Advancement
 
-The Hoplite is perfect for players who enjoy tactical positioning, defensive play, and Bronze Age military aesthetics. Control space with reach weapons and hold formation with allies. Polearm Mastery punishes enemies who approach, while Fast Stride allows repositioning. Commanding Presence helps coordinate your unit.
+The Hoplite is perfect for players who enjoy tactical positioning, defensive play, and Bronze Age military aesthetics. Control space with reach weapons and hold formation with allies. Polearm Mastery punishes enemies who approach, while Fast Stride allows repositioning. Commanding Presence helps coordinate your unit. Use Charge for aggressive pushes and Defensive Strike to hold the line.
 
-**Advancement:** Increase Fighting to rank 2-3, raise Athletics and Influence, add Fortitude for resilience, consider Shield Mastery or Protective Stance, and save for heavier armor (Scale Mail).
+**Advancement:** Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics and Influence for tactical command, add Fortitude for resilience, consider Shield Mastery or Protective Stance, and save for heavier armor (Scale Mail 250 coins).
 
 ---
 
 ## Slinger
 
 **Role:** Striker
+
+**Overview:** A mobile short-range skirmisher who uses slings and thrown weapons for hit-and-run tactics.
 
 ### Attributes
 
@@ -811,8 +807,8 @@ The Hoplite is perfect for players who enjoy tactical positioning, defensive pla
 ### Upbringing & Background
 
 - **Upbringing:** Nomadic (Archery, Nature, Survival)
-- **Background:** Custom Skills (Archery, Athletics, Stealth suggested)
-- **Starting Item:** Preserved beast claw (0 load)
+- **Background:** None listed - fully customized skills
+- **Starting Item:** None (consider taking a preserved beast claw or similar item worth 0 load)
 
 ### Skills
 
@@ -821,7 +817,15 @@ The Hoplite is perfect for players who enjoy tactical positioning, defensive pla
 - **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
 - **Stealth** – *Light Footed (Rank 1)* – Reduce noise and move silently
 
-**Rank 0 Skills:** Survival, Perception, Insight, Nature
+**Rank 0 Skills:** Survival, Perception, Insight†, Nature
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
+- **Aimed Shot** – Gain +1 boon when not moving
+- **Power Shot** – Add Strength to damage
 
 ### Equipment
 
@@ -829,23 +833,28 @@ The Hoplite is perfect for players who enjoy tactical positioning, defensive pla
 - Sling Bullets d8 (free, 1 load)
 - Javelins (50 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- **Toolkit:** Climber's Kit (included in standard gear, 1 load)
+- Climber's Kit toolkit (included in standard gear, 1 load)
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - Small Trinket x2 (50 coins, 0 load)
 - **Total Load:** 13 (equipment 8 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 10
 
-### Playstyle
+### Playstyle & Advancement
 
-The Slinger is perfect for players who want a mobile, hit-and-run playstyle with simple but effective ranged combat. Harass enemies from short range then reposition with Fast Stride. Expert Slinger adds Archery to damage at close range, making you surprisingly deadly up close. Light Footed keeps you stealthy.
+The Slinger is perfect for players who want a mobile, hit-and-run playstyle with simple but effective ranged combat. Harass enemies from short range then reposition with Fast Stride. Expert Slinger adds Archery to damage at close range, making you surprisingly deadly up close. Light Footed keeps you stealthy. Use Aimed Shot for reliable damage and Power Shot for finishing blows.
 
-**Advancement:** Increase Archery to rank 2-3, raise Athletics for mobility, add Survival for scouting, and consider Rapid Shot or more mobility talents.
+**Note:** Total load (13) exceeds carry capacity (11) - you'll be encumbered. Consider leaving healing salves with the party or dropping a trinket.
+
+**Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Athletics for mobility, add Survival for scouting, and consider Rapid Shot or more mobility talents.
 
 ---
 
 ## Rogue
 
 **Role:** Striker / Utility
+
+**Overview:** A sneaky infiltrator who uses tricks, stealth, and precision strikes to eliminate targets.
 
 ### Attributes
 
@@ -866,30 +875,43 @@ The Slinger is perfect for players who want a mobile, hit-and-run playstyle with
 - **Stealth** – *Unseen (Rank 1)* – Excel at hiding and sneaking
 - **Streetwise** – *Urban Navigator (Rank 1)* – Know cities and find what you need
 
-**Rank 0 Skills:** Insight, Perception, Athletics, Influence
+**Rank 0 Skills:** Insight, Perception, Athletics†, Influence†
+
+*† Customized skills (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Feint** – Gain +1 boon when not moving with non-heavy weapons
+- **Evasive Strike** – Gain Retreat Action effects on hit
 
 ### Equipment
 
 - Shortsword (50 coins, 1 load)
 - Throwing Knives (25 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- **Toolkit:** Disguise Kit (included in standard gear, 1 load)
+- Disguise Kit toolkit (included in standard gear, 1 load)
 - Weapon Poison (weak) x3 (150 coins, 3 load)
 - Small Trinket x3 (75 coins, 0 load)
 - **Total Load:** 12 (equipment 7 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
-### Playstyle
+### Playstyle & Advancement
 
-The Rogue is perfect for players who enjoy stealth, infiltration, skill-based challenges, and being the party's scout. Rely on stealth, surprise, and precision strikes. Use Unseen to get into position, then strike from advantage. Urban Navigator makes you invaluable in cities. Blade Mastery gives you versatility in combat.
+The Rogue is perfect for players who enjoy stealth, infiltration, skill-based challenges, and being the party's scout. Rely on stealth, surprise, and precision strikes. Use Unseen to get into position, then strike from advantage. Urban Navigator makes you invaluable in cities. Blade Mastery gives you versatility in combat. Use Feint for reliable attacks and Evasive Strike to retreat safely.
 
-**Advancement:** Increase Stealth and Fighting to rank 2-3, add Insight for reading people, consider Defensive Dueling or Riposte, and learn social skills for infiltration.
+**Note:** Total load (12) slightly exceeds carry capacity (11) - you'll be encumbered. Consider dropping a trinket or poison vial.
+
+**Advancement:** Increase Stealth and Fighting to rank 2-3 for more options and Combat Arts, add Insight for reading people, consider Defensive Dueling or Riposte, and learn social skills for infiltration.
 
 ---
 
 ## Monk
 
 **Role:** Striker / Controller
+
+**Overview:** An unarmed combat specialist with superhuman toughness and grappling techniques.
 
 ### Attributes
 
@@ -910,7 +932,15 @@ The Rogue is perfect for players who enjoy stealth, infiltration, skill-based ch
 - **Athletics** – *Grappler (Rank 1)* – Grapple on hit with unarmed/brawling weapons
 - **Fortitude** – *Body of Bronze (Rank 1)* – +2 HP, +1+Fortitude AV while unarmored
 
-**Rank 0 Skills:** Insight, Perception, Mysticism, Education
+**Rank 0 Skills:** Insight, Perception, Mysticism†, Education
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Choking Grip** – Restrain grappled targets
+- **Knockout** – Stun enemies with crush attacks
 
 ### Equipment
 
@@ -923,17 +953,19 @@ The Rogue is perfect for players who enjoy stealth, infiltration, skill-based ch
 - **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Remaining Coins:** 5
 
-### Playstyle
+### Playstyle & Advancement
 
-The Monk is perfect for players who want to fight without weapons or armor, using martial arts and grappling. Fight with fists and feet, using Grappler to control enemies and Body of Bronze for defense without armor. Pugilist makes unarmed strikes effective weapons. Your high mobility and control make you a disruptive force.
+The Monk is perfect for players who want to fight without weapons or armor, using martial arts and grappling. Fight with fists and feet, using Grappler to control enemies and Body of Bronze for defense without armor. Pugilist makes unarmed strikes effective weapons. Your high mobility and control make you a disruptive force. Use Choking Grip to restrain dangerous foes and Knockout to take out heavily armored enemies.
 
-**Advancement:** Increase Fighting and Athletics to rank 2-3, raise Fortitude for more toughness, add Insight for reading opponents, and consider Martial Artist or more unarmed talents.
+**Advancement:** Increase Fighting and Athletics to rank 2-3 for more Combat Arts and grappling options, raise Fortitude for more toughness, add Insight for reading opponents, and consider Martial Artist or more unarmed talents.
 
 ---
 
 ## Magus
 
 **Role:** Striker / Hybrid
+
+**Overview:** A melee fighter who infuses weapons with arcane magic, blending swordplay and spellcasting.
 
 ### Attributes
 
@@ -954,16 +986,25 @@ The Monk is perfect for players who want to fight without weapons or armor, usin
 - **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
 
-**Rank 0 Skills:** Lore, Perception, Insight, Streetwise
+**Rank 0 Skills:** Lore, Perception†, Insight, Streetwise
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Feint** – Gain +1 boon when not moving
+- **Precise Strike** – Ignore armor and add Agility to damage
 
 ### Equipment
 
 - Longsword (100 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- **Toolkit:** Smith's Tools (included in standard gear, 1 load)
+- Smith's Tools toolkit (included in standard gear, 1 load)
 - Acid Vial x5 (150 coins, 5 load)
 - Small Trinket x2 (50 coins, 0 load)
 - **Total Load:** 13 (equipment 8 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
 ### Spells
@@ -971,21 +1012,27 @@ The Monk is perfect for players who want to fight without weapons or armor, usin
 **Discipline:** Evocation (elemental) or Telekinetics (force)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
-- **Evocation:** Flickering Flame, Frost Snap, Chromatic Orb, Flaming Weapon, Scorching Beams
-- **Telekinetics:** Force Push, Kinetic Barrier, Levitate, Mage Hand, Telekinetic Strike
+**Starting Spells (2 rank 0 from chosen discipline):**
+- **Evocation:** Flickering Flame, Frost Snap
+- **Telekinetics:** Force Push, Mage Hand
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1. Add two rank 0-1 spells like Chromatic Orb and Flaming Weapon (Evocation) or Telekinetic Strike and Kinetic Barrier (Telekinetics).*
 
-The Magus is perfect for players who want to combine melee combat with spellcasting in a hybrid warrior-mage. Blend swordplay with arcane magic. Battle Mage provides magical defense while you fight in melee. Blade Mastery gives combat versatility. Use spells to enhance your combat effectiveness.
+### Playstyle & Advancement
 
-**Advancement:** Increase Arcana and Fighting equally to rank 2-3, take Spellblade talent at higher ranks, add Lore for magical knowledge, and consider Battle Mage rank 2 for casting with Mind.
+The Magus is perfect for players who want to combine melee combat with spellcasting in a hybrid warrior-mage. Blend swordplay with arcane magic. Battle Mage provides magical defense while you fight in melee. Blade Mastery gives combat versatility. Use spells to enhance your combat effectiveness. Use Feint for reliable attacks and Precise Strike against armored foes.
+
+**Note:** Total load (13) exceeds carry capacity (11) - you'll be encumbered. Consider leaving acid vials with the party or dropping trinkets.
+
+**Advancement:** Increase Arcana and Fighting equally to rank 2-3 for more spells and Combat Arts, take Spellblade talent at higher ranks, add Lore for magical knowledge, and consider Battle Mage rank 2 for casting with Mind.
 
 ---
 
 ## Warlord
 
 **Role:** Support / Controller
+
+**Overview:** A battlefield leader who commands allies and coordinates tactics through military expertise.
 
 ### Attributes
 
@@ -1002,34 +1049,45 @@ The Magus is perfect for players who want to combine melee combat with spellcast
 ### Skills
 
 **Rank 1 Skills:**
-- **Fighting** – *Art of Fighting (Rank 1)* – Learn two Combat Arts for melee weapons
+- **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
 - **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
 - **Education** – *Commander (Rank 1)* – Grant allies movement or boons as Quick Action
 
-**Rank 0 Skills:** Fortitude, Insight, Perception, Athletics
+**Rank 0 Skills:** Fortitude, Insight, Perception, Athletics†
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Exhilarating Strike** – Heal nearby allies on hit
+- **Defensive Strike** – Gain Defend Action effects on hit
 
 ### Equipment
 
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- **Toolkit:** Navigator's Tools (included in standard gear, 1 load)
+- Navigator's Tools toolkit (included in standard gear, 1 load)
 - Healing Salve (weak) (15 coins, 1 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
+- **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 10
 
-### Playstyle
+### Playstyle & Advancement
 
-The Warlord is perfect for players who enjoy supporting teammates, tactical play, and being the party leader. Empower allies through tactical commands while fighting competently. Commander talent grants allies movement or boons, making you a force multiplier. Commanding Presence and Art of Fighting make you an effective battlefield leader.
+The Warlord is perfect for players who want to lead the party tactically, enhancing allies rather than focusing on personal combat. Command the battlefield through tactical positioning and support. Commander lets you reposition allies or grant them advantages. Commanding Presence makes you a natural leader. Shield Mastery protects you while you direct the battle. Use Exhilarating Strike to heal allies and Defensive Strike to stay alive while commanding.
 
-**Advancement:** Increase Influence and Fighting to rank 2-3, raise Education for Tactician talent, add Fortitude for resilience, and consider higher Commander ranks for more benefits.
+**Advancement:** Increase Fighting and Influence to rank 2-3 for more Combat Arts and leadership abilities, raise Education for tactical options, add Fortitude for survivability, and consider more command-focused talents.
 
 ---
 
 ## Oracle
 
 **Role:** Support / Utility
+
+**Overview:** A divine prophet who uses foresight and omens to guide allies and reveal hidden truths.
 
 ### Attributes
 
@@ -1050,33 +1108,40 @@ The Warlord is perfect for players who enjoy supporting teammates, tactical play
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with religious and mystical knowledge
 - **Insight** – *Read Intentions (Rank 1)* – Sense motives and emotions
 
-**Rank 0 Skills:** Education, Perception, Influence, Stealth
+**Rank 0 Skills:** Education, Perception†, Influence, Stealth†
+
+*† Customized skills (not from upbringing/background suggestions)*
 
 ### Equipment
 
 - Quarterstaff (100 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- **Toolkit:** Painter's Supplies (included in standard gear, 1 load)
+- Painter's Supplies toolkit (included in standard gear, 1 load)
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - Fine Trinket (75 coins, 0 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 10
 
 ### Spells
 
-**Tradition:** Twilight (dreams/fate) or Light (truth/revelation)
+**Tradition:** Twilight (dreams/fate) or Light (truth/revelation) - using Balance (two traditions)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
-- **Twilight:** Dark Sight, Night's Grasp, Obscuring Veil, Shadow Veil, Whispers of Doubt, Cloak of Night
-- **Light:** Dazzling Light, Detect Lies, Illuminated Sight, Revealing Burst, Sense Spirits, True Strike
+**Starting Spells (2 from two traditions at rank 0-1):**
+- **Rank 0:** Dark Sight (Twilight), Sense Spirits (Light)
+- **Rank 1:** Shadow Veil (Twilight), Detect Lies (Light)
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
-The Oracle is perfect for players who enjoy support roles, being the party's guide, and themes of fate and prophecy. Use foresight and divination to guide allies and avoid danger. Read Intentions helps you understand others while your spells provide warnings and revelations. Spirit Walker adds mystical communication beyond normal perception.
+### Playstyle & Advancement
 
-**Advancement:** Increase Mysticism and Lore to rank 2-3, raise Insight for better intuition, learn more divination spells, add Education for broader knowledge, and consider prophecy-themed talents.
+The Oracle is perfect for players who enjoy support roles, being the party's guide, and themes of fate and prophecy. Use foresight and divination to guide allies and avoid danger. Read Intentions helps you understand others while your spells provide warnings and revelations. Spirit Walker adds mystical communication beyond normal perception. Combine illusions from Twilight with revelations from Light for versatile support.
+
+**Note:** Total load (11) slightly exceeds carry capacity (10) - you'll be encumbered. Consider leaving healing salves with the party or dropping a trinket.
+
+**Advancement:** Increase Mysticism and Lore to rank 2-3 for more powerful spells and deeper knowledge, raise Insight for better intuition, learn more divination and revelation spells, add Education for broader knowledge, and consider prophecy-themed talents.
 
 ---
 
