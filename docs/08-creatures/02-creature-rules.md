@@ -173,23 +173,20 @@ Each creature's power level is separated into ten tiers corresponding to the ten
 
 TODO
 
-## Creature Units
+## Creature Archetypes
 
-- Infantry (low damage, low health, medium mobility)
-- Ranged (medium damage, low health, medium mobility)
-- Brute (high damage, high health, low mobility)
-- Cavalry (medium damage, low health, high mobility)
-- Artillery (high damage, medium health, low mobility)
-
-| Unit | Damage | Health | Mobility | Range | Numbers | Tactic |
-| --- | --- | --- | --- | --- | --- | --- |
-| Infantry | low | low | medium | short | high | strength in numbers, block enemy movement |
-| Ranged | low | low | medium | long | high | attack from flanks, high places, or safe distance |
-| Brute | high | high | slow | short | few | advancing into melee, or guarding allies |
-| Cavalry | medium | low | high | short | some | fast attack from flanks |
-| Artillery | high | medium | low | medium | few | area of effect attacks, or controlling effects |
-| Spawner | low | medium | low | medium | few | summon more and more allies |
-| Elie/Boss | high | high | high | medium | singular | combine multiple unit types |
+| **Archetype** | **Stat Modifiers** | **Core Identity** | **Combat Role & Behavior** |
+| --- | --- | --- | --- |
+| Ambusher | Normal HP, Light Armor, High Dodge, Low Parry, Avg Resist, Fast movement | Stealth & Burst | Strikes from surprise, deals big damage in opening turns, fragile if exposed. |
+| Artillery | -1 Tier HP, Light/No Armor, Low Parry & Dodge, Avg Resist, +1 Tier Damage (ranged) | Long-Range Cannon | Fragile backliner with extreme ranged threat; prefers cover and distance. |
+| Bruiser | +1 Tier HP, Light Armor, High Parry, Low Dodge, Avg Resist | Frontline Brawler | Durable melee damage dealer, trades blows and pressures enemies up close. |
+| Defender | +2 Tier HP, Heavy Armor, High Parry & Resist, Low Dodge, -1 Tier Damage, Slower | Tank & Protector | Soaks damage, locks down foes, defends allies through positioning. |
+| Horde | -1 Tier HP, No/Light Armor, Low Defenses, -2 Tier Damage | Overwhelming Numbers | Group of many individual creatures acting together as a single unit. |
+| Controller | Normal HP, Light Armor, Avg Parry, High Resist, Low Dodge | Battlefield Shaper | Disables, manipulates, or spawns minions to change flow of battle. |
+| Ranged | Normal HP, Light Armor, Low Parry, Avg Dodge & Resist | Reliable Shooter | Balanced ranged attacker with consistent damage output. |
+| Standard | Normal HP, Light/Medium Armor, Avg everything | Baseline Soldier | Default „generalist“ enemy with no strong strengths or weaknesses. |
+| Skirmisher | Normal HP, Light Armor, Avg Parry, High Dodge, Low Resist, +1 Tier Movement, -1 Tier Damage | Mobile Harasser | Fast, evasive, focuses on hit-and-run tactics rather than raw damage. |
+| Support | Normal HP, Light Armor, Avg Parry & Dodge, High Resist, -1 Tier Damage | Ally Enhancer | Buffs, heals, or protects allies, rarely the primary damage source. |
 
 ## Creatures with multiple parts
 
