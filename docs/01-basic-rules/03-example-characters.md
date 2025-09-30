@@ -228,9 +228,9 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 - Mace (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Cook's Utensils toolkit (50 coins, 1 load)
-- **Total Load:** 9 (equipment 4 + standard gear 5)
+- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Cook's Utensils toolkit (25 coins, 1 load)
+- **Total Load:** 8 (equipment 3 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
@@ -285,13 +285,13 @@ The Cleric is perfect for players who want to support allies with healing and pr
 ### Equipment
 
 - Quarterstaff (100 coins, 1 load)
+- Spell Catalyst - Arcane Conduit (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
 - Smith's Tools toolkit (50 coins, 1 load)
-- Acid Vial x3 (90 coins, 3 load)
-- Small Trinket (25 coins, 0 load)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
+- Acid Vial x2 (60 coins, 2 load)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 35
+- **Remaining Coins:** 15
 
 ### Spells
 
@@ -306,8 +306,6 @@ The Cleric is perfect for players who want to support allies with healing and pr
 ### Playstyle & Advancement
 
 The Sorcerer is perfect for players who want to deal massive magical damage and control the battlefield through spells. Unleash raw arcane power with devastating offensive spells. Mana Shield protects you when enemies get close. Your high Focus pool lets you cast many spells per scene.
-
-**Note:** Total load (11) slightly exceeds carry capacity (10) - you'll be encumbered. Consider dropping acid vials or the trinket when traveling.
 
 **Advancement:** Increase Arcana to rank 2-3 for more powerful spells and additional spells known, add Insight for better awareness, consider Spellweaver or Inexhaustible Mind talents, and learn spell combinations that work together.
 
@@ -345,13 +343,13 @@ The Sorcerer is perfect for players who want to deal massive magical damage and 
 ### Equipment
 
 - Quarterstaff (100 coins, 1 load)
+- Spell Catalyst - Arcane Conduit (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
 - Disguise Kit toolkit (50 coins, 1 load)
-- Paralyzing Poison (weak) x3 (90 coins, 3 load)
-- Small Trinket (25 coins, 0 load)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
+- Paralyzing Poison (weak) x2 (60 coins, 2 load)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 35
+- **Remaining Coins:** 15
 
 ### Spells
 
@@ -367,8 +365,6 @@ The Sorcerer is perfect for players who want to deal massive magical damage and 
 ### Playstyle & Advancement
 
 The Warlock is perfect for players who enjoy morally complex characters with manipulative magic and dark themes. Wield eldritch powers through a dark pact. Use mind control, curses, and drain effects to control enemies. Read Intentions helps you understand and manipulate others. Master of Fundamentals ensures your rank 0 spells remain reliable.
-
-**Note:** Total load (11) slightly exceeds carry capacity (10) - you'll be encumbered. Consider dropping poison vials or the trinket when traveling.
 
 **Advancement:** Increase Arcana to rank 2-3 for more powerful spells and additional spells known, raise Lore for deeper occult knowledge, add Fortitude for resilience against backlash, and consider Spellweaver for Metamagic Arts.
 
@@ -413,9 +409,9 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Mason's Tools toolkit (50 coins, 1 load)
-- **Total Load:** 9 (equipment 4 + standard gear 5)
+- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Mason's Tools toolkit (25 coins, 1 load)
+- **Total Load:** 8 (equipment 3 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 0
 
@@ -470,11 +466,10 @@ The Paladin is perfect for players who want to be a holy warrior combining divin
 ### Equipment
 
 - Shortsword (50 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
+- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
 - Musical Instrument toolkit (75 coins, 1 load)
 - Fine Trinket x2 (150 coins, 0 load)
-- Small Trinket (25 coins, 0 load)
-- **Total Load:** 8 (equipment 3 + standard gear 5)
+- **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 0
 
@@ -529,13 +524,13 @@ The Bard is perfect for players who enjoy social interaction, support roles, and
 ### Equipment
 
 - Quarterstaff (100 coins, 1 load)
+- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
 - Brewer's Tools toolkit (50 coins, 1 load)
-- Healing Salve (simple) x3 (90 coins, 3 load)
-- Small Trinket (25 coins, 0 load)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
+- Healing Salve (simple) x2 (60 coins, 2 load)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 35
+- **Remaining Coins:** 15
 
 ### Spells
 
@@ -588,13 +583,14 @@ The Druid is perfect for players who want to blend with nature, shapeshift, and 
 ### Equipment
 
 - Short Spear (75 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
+- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
 - Weaver's Tools toolkit (50 coins, 1 load)
 - Healing Salve (simple) x4 (120 coins, 4 load)
-- Small Trinket (25 coins, 0 load)
-- **Total Load:** 12 (equipment 7 + standard gear 5)
+- **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 30
+  
+**Note:** Total load (11) exceeds carry capacity (10) - you'll be encumbered. Consider leaving one healing salve with the party to reduce load to 10.
 
 ### Spells
 
@@ -610,8 +606,6 @@ The Druid is perfect for players who want to blend with nature, shapeshift, and 
 ### Playstyle & Advancement
 
 The Shaman is perfect for players who enjoy spiritual themes, supporting through blessings, and connecting with ancestral powers. Bridge the physical and spirit worlds, calling on ancestors for aid. Use blessings to empower allies and curses to weaken enemies. Spirit Walker and Herbalist make you invaluable to your community.
-
-**Note:** Total load (12) exceeds carry capacity (10) - you'll be encumbered. Consider leaving some healing salves with the party or reducing equipment.
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Lore for deeper spiritual knowledge, add Insight for reading people and spirits, and consider more spirit-themed talents.
 
@@ -656,9 +650,10 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 - Spear (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Navigator's Tools toolkit (50 coins, 1 load)
-- **Total Load:** 9 (equipment 4 + standard gear 5)
+- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Navigator's Tools toolkit (25 coins, 1 load)
+- **Total Load:** 8 (equipment 3 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
 ### Spells
@@ -999,11 +994,11 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 ### Equipment
 
 - Longsword (100 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Smith's Tools toolkit (included in standard gear, 1 load)
-- Acid Vial x5 (150 coins, 5 load)
-- Small Trinket x2 (50 coins, 0 load)
-- **Total Load:** 13 (equipment 8 + standard gear 5)
+- Spell Catalyst - Arcane Conduit (75 coins, 0 load)
+- Smith's Tools toolkit (50 coins, 1 load)
+- Acid Vial x3 (90 coins, 3 load)
+- Small Trinket x2 (35 coins, 0 load)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
@@ -1021,8 +1016,6 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 ### Playstyle & Advancement
 
 The Magus is perfect for players who want to combine melee combat with spellcasting in a hybrid warrior-mage. Blend swordplay with arcane magic. Battle Mage provides magical defense while you fight in melee. Blade Mastery gives combat versatility. Use spells to enhance your combat effectiveness. Use Feint for reliable attacks and Precise Strike against armored foes.
-
-**Note:** Total load (13) exceeds carry capacity (11) - you'll be encumbered. Consider leaving acid vials with the party or dropping trinkets.
 
 **Advancement:** Increase Arcana and Fighting equally to rank 2-3 for more spells and Combat Arts, take Spellblade talent at higher ranks, add Lore for magical knowledge, and consider Battle Mage rank 2 for casting with Mind.
 
@@ -1115,12 +1108,11 @@ The Warlord is perfect for players who want to lead the party tactically, enhanc
 ### Equipment
 
 - Quarterstaff (100 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Painter's Supplies toolkit (included in standard gear, 1 load)
+- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Painter's Supplies toolkit (50 coins, 1 load)
 - Healing Salve (simple) x3 (90 coins, 3 load)
-- Fine Trinket (75 coins, 0 load)
 - Small Trinket (25 coins, 0 load)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 10
 
@@ -1138,8 +1130,6 @@ The Warlord is perfect for players who want to lead the party tactically, enhanc
 ### Playstyle & Advancement
 
 The Oracle is perfect for players who enjoy support roles, being the party's guide, and themes of fate and prophecy. Use foresight and divination to guide allies and avoid danger. Read Intentions helps you understand others while your spells provide warnings and revelations. Spirit Walker adds mystical communication beyond normal perception. Combine illusions from Twilight with revelations from Light for versatile support.
-
-**Note:** Total load (11) slightly exceeds carry capacity (10) - you'll be encumbered. Consider leaving healing salves with the party or dropping a trinket.
 
 **Advancement:** Increase Mysticism and Lore to rank 2-3 for more powerful spells and deeper knowledge, raise Insight for better intuition, learn more divination and revelation spells, add Education for broader knowledge, and consider prophecy-themed talents.
 
