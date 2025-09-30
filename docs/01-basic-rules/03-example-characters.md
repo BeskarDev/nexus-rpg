@@ -27,6 +27,8 @@ Feel free to customize these examples to match your vision or use them as-is for
 
 **Role:** Tank / Striker
 
+**Overview:** A reliable frontline combatant using shield and blade to protect allies while dishing out tactical damage.
+
 ### Attributes
 
 | STR | AGI | SPI | MND |
@@ -42,11 +44,19 @@ Feel free to customize these examples to match your vision or use them as-is for
 ### Skills
 
 **Rank 1 Skills:**
-- **Fighting** – *Art of Fighting (Rank 1)* – Learn two Combat Arts for melee weapons
+- **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
 - **Athletics** – *Stand Your Ground (Rank 1)* – Resist being knocked prone or pushed with Quick Action
 - **Fortitude** – *Second Wind (Rank 1)* – Regain HP with Quick Action once per scene
 
-**Rank 0 Skills:** Influence, Perception, Insight, Archery
+**Rank 0 Skills:** Influence, Perception, Insight†, Archery
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Defensive Strike** – Gain Defend Action effects on hit
+- **Charge** – Move and shove while attacking
 
 ### Equipment
 
@@ -55,19 +65,22 @@ Feel free to customize these examples to match your vision or use them as-is for
 - Leather Armor (50 coins, 1 load)
 - Adventuring Gear toolkit (50 coins, 1 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
+- **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 0
 
-### Playstyle
+### Playstyle & Advancement
 
-The Fighter is a reliable frontline combatant perfect for players who want straightforward, effective combat with tactical depth. Use your shield to protect allies and your versatile longsword to adapt to situations. Stand Your Ground keeps you in position while Second Wind provides survivability when needed. Art of Fighting gives you Combat Arts for different tactical situations.
+The Fighter is perfect for players who want straightforward, effective combat with tactical depth. Use your shield to protect allies and your versatile longsword to adapt to situations. Stand Your Ground keeps you in position while Second Wind provides survivability when needed. Combat Arts like Defensive Strike and Charge give you tactical options for different situations.
 
-**Advancement:** Increase Fighting and Fortitude to rank 2-3, add Influence for battlefield command, consider Heavy Armor Mastery or Shield Mastery talents, and learn more Combat Arts.
+**Advancement:** Increase Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Influence for battlefield command, consider Heavy Armor Mastery or more shield-focused talents.
 
 ---
 
 ## Barbarian
 
 **Role:** Striker / Tank
+
+**Overview:** A devastating melee combatant who channels primal fury into brutal attacks, trading defense for raw power.
 
 ### Attributes
 
@@ -78,8 +91,8 @@ The Fighter is a reliable frontline combatant perfect for players who want strai
 ### Upbringing & Background
 
 - **Upbringing:** Hunter-gatherer (Nature, Perception, Survival)
-- **Background:** Bandit (Athletics, Fighting, Stealth, Survival)
-- **Starting Item:** Wooden clan mask (0 load)
+- **Background:** Barbarian (Athletics, Fighting, Fortitude, Survival)
+- **Starting Item:** Ancestor's weapon hilt (0 load)
 
 ### Skills
 
@@ -88,7 +101,15 @@ The Fighter is a reliable frontline combatant perfect for players who want strai
 - **Athletics** – *Bulky (Rank 1)* – +2 HP and +2 carrying capacity
 - **Fortitude** – *Battle Rage (Rank 1)* – Enter rage for combat bonuses
 
-**Rank 0 Skills:** Survival, Perception, Nature, Stealth
+**Rank 0 Skills:** Survival, Perception, Nature, Stealth†
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Brutal Strike** – Deal extra Strength damage with heavy weapons (no bane thanks to Heavy Weapon Mastery!)
+- **Cleave** – Hit multiple enemies with your greataxe
 
 ### Equipment
 
@@ -99,19 +120,22 @@ The Fighter is a reliable frontline combatant perfect for players who want strai
 - Healing Salve (weak) (15 coins, 1 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 10
 
-### Playstyle
+### Playstyle & Advancement
 
-The Barbarian is a devastating melee combatant for players who want to deal massive damage and play aggressively, accepting risk for reward. Battle Rage provides combat bonuses while Heavy Weapon Mastery makes your greataxe even more deadly. Bulky gives you extra HP to survive when rage runs out. Avoid heavy armor to maintain rage effectiveness.
+The Barbarian is perfect for players who want to deal massive damage and play aggressively, accepting risk for reward. Battle Rage provides combat bonuses while Heavy Weapon Mastery makes Brutal Strike attacks deadly without suffering banes. Bulky gives you extra HP to survive when rage runs out. Avoid heavy armor to maintain rage effectiveness. Use Cleave to hit multiple foes and Brutal Strike for single-target devastation.
 
-**Advancement:** Increase Battle Rage ranks for greater power, raise Fighting and Fortitude to rank 2-3, add Survival for wilderness expertise, and consider Hard to Kill for survivability.
+**Advancement:** Increase Battle Rage ranks for greater power, raise Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Survival for wilderness expertise, and consider Hard to Kill for survivability.
 
 ---
 
 ## Ranger
 
 **Role:** Striker / Utility
+
+**Overview:** A ranged hunter with wilderness expertise who strikes from distance with precision while tracking prey.
 
 ### Attributes
 
@@ -132,7 +156,15 @@ The Barbarian is a devastating melee combatant for players who want to deal mass
 - **Survival** – *Tracker (Rank 1)* – Excel at tracking creatures
 - **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion
 
-**Rank 0 Skills:** Insight, Perception, Stealth, Fighting
+**Rank 0 Skills:** Insight†, Perception, Stealth†, Fighting
+
+*† Customized skills (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
+- **Aimed Shot** – Gain +1 boon when not moving
+- **Precise Shot** – Ignore armor and add Agility to damage
 
 ### Equipment
 
@@ -144,19 +176,24 @@ The Barbarian is a devastating melee combatant for players who want to deal mass
 - Healing Salve (weak) (15 coins, 1 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 12 (equipment 7 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 10
 
-### Playstyle
+### Playstyle & Advancement
 
-The Ranger is a ranged hunter perfect for players who enjoy ranged combat, wilderness survival, and having an animal companion. Strike from distance with precision while your beast companion provides tactical support. Sharpshooter allows effective long-range attacks, and Survival expertise makes you invaluable during wilderness travel.
+The Ranger is perfect for players who enjoy ranged combat, wilderness survival, and having an animal companion. Strike from distance with precision while your beast companion provides tactical support. Sharpshooter allows effective long-range attacks, and Survival expertise makes you invaluable during wilderness travel. Use Aimed Shot for reliable damage and Precise Shot when facing armored foes.
 
-**Advancement:** Increase Archery to rank 2-3 for more talents, raise Survival and Nature for wilderness mastery, add Perception for better awareness, and consider Disciplined Archer or Rapid Shot.
+**Note:** Total load (12) slightly exceeds carry capacity (11) - you'll be encumbered. Consider dropping a small trinket or managing load with your beast companion during travel.
+
+**Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Survival and Nature for wilderness mastery, add Perception for better awareness, and consider Disciplined Archer or Rapid Shot talents.
 
 ---
 
 ## Cleric
 
 **Role:** Support / Tank
+
+**Overview:** A divine spellcaster who heals and protects allies while holding the frontline with mace and shield.
 
 ### Attributes
 
@@ -177,7 +214,15 @@ The Ranger is a ranged hunter perfect for players who enjoy ranged combat, wilde
 - **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with religious knowledge
 
-**Rank 0 Skills:** Influence, Insight, Fortitude, Education
+**Rank 0 Skills:** Influence, Insight, Fortitude†, Education
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Defensive Strike** – Gain Defend Action effects on hit
+- **Exhilarating Strike** – Heal nearby allies on hit
 
 ### Equipment
 
@@ -186,28 +231,33 @@ The Ranger is a ranged hunter perfect for players who enjoy ranged combat, wilde
 - Leather Armor (50 coins, 1 load)
 - Cook's Utensils toolkit (50 coins, 1 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
 ### Spells
 
-**Tradition:** Life (healing focus) or Peace (protection focus)
+**Tradition:** Life (healing focus) or Peace (protection focus) - using Balance (two traditions)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 4 + 2 = 6
 
-**Recommended Spells (Rank 0-1):**
-- **Rank 0:** Dazzling Light, Illuminated Sight, Protect from Influence, Sense Spirits
-- **Rank 1:** Blessing of Light, Radiant Burst, Radiant Weapon, True Strike
+**Starting Spells (2 from two traditions at rank 0-1):**
+- **Rank 0:** Dazzling Light (Light), Sense Spirits (any)
+- **Rank 1:** Blessing of Light (Light), Radiant Weapon (Light)
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
-The Cleric is a divine spellcaster perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Intervention helps ensure your critical spells succeed.
+### Playstyle & Advancement
 
-**Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Fighting for better combat effectiveness, add Influence for religious authority, and consider Armor of the Faithful for unarmored defense builds.
+The Cleric is perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Intervention helps ensure your critical spells succeed. Use Defensive Strike to stay alive and Exhilarating Strike to keep allies in the fight.
+
+**Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Fighting for better combat effectiveness and more Combat Arts, add Influence for religious authority, and consider Armor of the Faithful for unarmored defense builds.
 
 ---
 
 ## Sorcerer
 
 **Role:** Striker
+
+**Overview:** A glass cannon spellcaster who deals massive magical damage through raw arcane power.
 
 ### Attributes
 
@@ -228,32 +278,19 @@ The Cleric is a divine spellcaster perfect for players who want to support allie
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with magical knowledge
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills with Mind
 
-**Rank 0 Skills:** Insight, Perception, Stealth, Influence
+**Rank 0 Skills:** Insight, Perception, Stealth†, Influence
+
+*† Customized skill (not from upbringing/background suggestions)*
 
 ### Equipment
 
-- Quarterstaff (100 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Jeweler's Tools toolkit (100 coins, 1 load)
-- Healing Potion (weak) (125 coins, 1 load) - saved for emergencies
-- **Total Load:** 9 (equipment 4 + standard gear 5)
-- **Remaining Coins:** -25 (overspent, remove healing potion to save 125)
-
-Let me recalculate:
-- Quarterstaff (100 coins, 1 load)
-- Leather Armor (50 coins, 1 load)
-- Smith's Tools toolkit (50 coins, 1 load)
-- Smoke Bomb x2 (250 coins, 2 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
-- **Remaining Coins:** -100 (still over)
-
-Final equipment:
 - Quarterstaff (100 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
 - Smith's Tools toolkit (50 coins, 1 load)
 - Acid Vial x3 (90 coins, 3 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 35
 
 ### Spells
@@ -261,21 +298,26 @@ Final equipment:
 **Discipline:** Evocation (direct damage)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
-- **Rank 0:** Flickering Flame, Frost Snap, Static Spark (for elemental variety)
-- **Rank 1:** Chromatic Orb, Elemental Ward, Flame Burst, Scorching Beams
+**Starting Spells (2 rank 0 from Evocation):**
+- **Rank 0:** Flickering Flame, Frost Snap
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1. Add two rank 0-1 spells like Chromatic Orb and Elemental Ward.*
 
-The Sorcerer is a glass cannon perfect for players who want to deal massive magical damage and control the battlefield through spells. Unleash raw arcane power with devastating offensive spells. Mana Shield protects you when enemies get close. Your high Focus pool lets you cast many spells per scene.
+### Playstyle & Advancement
 
-**Advancement:** Increase Arcana to rank 2-3 for more powerful spells, add Insight for better awareness, consider Spellweaver or Inexhaustible Mind, and learn spell combinations that work together.
+The Sorcerer is perfect for players who want to deal massive magical damage and control the battlefield through spells. Unleash raw arcane power with devastating offensive spells. Mana Shield protects you when enemies get close. Your high Focus pool lets you cast many spells per scene.
+
+**Note:** Total load (11) slightly exceeds carry capacity (10) - you'll be encumbered. Consider dropping acid vials or the trinket when traveling.
+
+**Advancement:** Increase Arcana to rank 2-3 for more powerful spells and additional spells known, add Insight for better awareness, consider Spellweaver or Inexhaustible Mind talents, and learn spell combinations that work together.
 
 ---
 
 ## Warlock
 
 **Role:** Striker / Controller
+
+**Overview:** An eldritch spellcaster who wields dark pact magic to curse enemies and drain their life force.
 
 ### Attributes
 
@@ -296,7 +338,9 @@ The Sorcerer is a glass cannon perfect for players who want to deal massive magi
 - **Lore** – *Forbidden Knowledge (Rank 1)* – Gain insights into forbidden subjects
 - **Insight** – *Read Intentions (Rank 1)* – Sense motives and emotions
 
-**Rank 0 Skills:** Fortitude, Influence, Stealth, Perception
+**Rank 0 Skills:** Fortitude†, Influence, Stealth†, Perception†
+
+*† Customized skills (not from upbringing/background suggestions)*
 
 ### Equipment
 
@@ -306,6 +350,7 @@ The Sorcerer is a glass cannon perfect for players who want to deal massive magi
 - Paralyzing Poison (weak) x3 (90 coins, 3 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 35
 
 ### Spells
@@ -313,21 +358,27 @@ The Sorcerer is a glass cannon perfect for players who want to deal massive magi
 **Discipline:** Telepathy (mind control) or Necromancy (life drain)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
-- **Telepathy:** Horrific Vision, Maddening Whispers, Mental Grasp, Mind Spike, Psychic Blade, Telepathic Bond
-- **Necromancy:** Chill Touch, Dark Whispers, Death's Embrace, Life Drain, Ray of Enfeeblement, Spectral Hand
+**Starting Spells (2 rank 0 from chosen discipline):**
+- **Telepathy:** Horrific Vision, Mental Grasp
+- **Necromancy:** Chill Touch, Dark Whispers
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1. Add two rank 0-1 spells like Mind Spike and Telepathic Bond (Telepathy) or Life Drain and Ray of Enfeeblement (Necromancy).*
+
+### Playstyle & Advancement
 
 The Warlock is perfect for players who enjoy morally complex characters with manipulative magic and dark themes. Wield eldritch powers through a dark pact. Use mind control, curses, and drain effects to control enemies. Read Intentions helps you understand and manipulate others. Master of Fundamentals ensures your rank 0 spells remain reliable.
 
-**Advancement:** Increase Arcana to rank 2-3, raise Lore for deeper occult knowledge, add Fortitude for resilience against backlash, and consider Spellweaver for Metamagic Arts.
+**Note:** Total load (11) slightly exceeds carry capacity (10) - you'll be encumbered. Consider dropping poison vials or the trinket when traveling.
+
+**Advancement:** Increase Arcana to rank 2-3 for more powerful spells and additional spells known, raise Lore for deeper occult knowledge, add Fortitude for resilience against backlash, and consider Spellweaver for Metamagic Arts.
 
 ---
 
 ## Paladin
 
 **Role:** Tank / Support
+
+**Overview:** A holy warrior combining divine magic with frontline combat, protected by heavy armor and faith.
 
 ### Attributes
 
@@ -344,41 +395,54 @@ The Warlock is perfect for players who enjoy morally complex characters with man
 ### Skills
 
 **Rank 1 Skills:**
-- **Fighting** – *Heavy Weapon Mastery (Rank 1)* – No bane on Brutal Strike with heavy weapons
+- **Fighting** – *Heavy Armor Mastery (Rank 1)* – Ignore movement penalty from heavy armor
 - **Mysticism** – *Divine Strike (Rank 1)* – Add Spirit to melee weapon damage once per turn
 - **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
 
-**Rank 0 Skills:** Fortitude, Insight, Lore, Perception
+**Rank 0 Skills:** Fortitude, Insight, Lore, Perception†
+
+*† Customized skill (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Defensive Strike** – Gain Defend Action effects on hit
+- **Terrifying Strike** – Frighten enemies with divine presence
 
 ### Equipment
 
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
-- Leather Armor (50 coins, 1 load) - upgrade to Scale Mail (250) when you can afford it
+- Leather Armor (50 coins, 1 load)
 - Mason's Tools toolkit (50 coins, 1 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
+- **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 0
 
 ### Spells
 
-**Tradition:** Light (truth/justice) or War (combat prowess)
+**Tradition:** Light (truth/justice) or War (combat prowess) - using Balance (two traditions)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 4 + 2 = 6
 
-**Recommended Spells (Rank 0-1):**
-- **Light:** Dazzling Light, Detect Lies, Illuminated Sight, Radiant Burst
-- **War:** Blessing of Strength, Divine Weapon, Inspiring Shout, Warrior's Resolve
+**Starting Spells (2 from two traditions at rank 0-1):**
+- **Rank 0:** Dazzling Light (Light), Detect Lies (Light)
+- **Rank 1:** Radiant Burst (Light), Warrior's Resolve (War)
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
-The Paladin is perfect for players who want to be armored protectors with divine power and strong moral convictions. Combine martial prowess with divine magic. Fight on the frontline while supporting allies with blessings and smiting evil. Divine Strike adds extra damage while Commanding Presence rallies your allies.
+### Playstyle & Advancement
 
-**Advancement:** Increase Fighting and Mysticism equally, save for heavy armor (Scale Mail 250 coins), add Fortitude for greater resilience, and consider Shield Mastery or more divine spells.
+The Paladin is perfect for players who want to be a holy warrior combining divine magic with frontline tanking. Use Divine Strike to enhance melee attacks and spells to support allies. Heavy Armor Mastery will be crucial once you upgrade to scale or plate mail. Commanding Presence makes you a natural party leader. Use Defensive Strike to stay alive and Terrifying Strike to control enemies.
+
+**Advancement:** Save coins to upgrade to Scale Mail (250) or Plate Armor (500), increase Fighting and Mysticism to rank 2-3 for more Combat Arts and spells, raise Fortitude for survivability, consider Shield Mastery or more divine-focused talents.
 
 ---
 
 ## Bard
 
 **Role:** Support / Controller
+
+**Overview:** A magical performer who uses music and stories to inspire allies and confound enemies with enchantments.
 
 ### Attributes
 
@@ -399,7 +463,9 @@ The Paladin is perfect for players who want to be armored protectors with divine
 - **Influence** – *Performer (Rank 1)* – Excel at entertaining and swaying crowds
 - **Education** – *Eloquent Talker (Rank 1)* – Use Education instead of Influence in social situations
 
-**Rank 0 Skills:** Stealth, Insight, Perception, Lore
+**Rank 0 Skills:** Stealth, Insight, Perception, Lore†
+
+*† Customized skill (not from upbringing/background suggestions)*
 
 ### Equipment
 
@@ -409,28 +475,33 @@ The Paladin is perfect for players who want to be armored protectors with divine
 - Fine Trinket x2 (150 coins, 0 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 8 (equipment 3 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 0
 
 ### Spells
 
-**Tradition:** Twilight (illusion/dreams) or Peace (calming/travel)
+**Tradition:** Twilight (illusion/dreams) or Peace (calming/travel) - using Balance (two traditions)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
-- **Twilight:** Dark Sight, Night's Grasp, Obscuring Veil, Shadow Veil, Whispers of Doubt
-- **Peace:** Calm Emotions, Protective Circle, Safe Haven, Swift Journey
+**Starting Spells (2 from two traditions at rank 0-1):**
+- **Rank 0:** Dark Sight (Twilight), Obscuring Veil (Twilight)
+- **Rank 1:** Shadow Veil (Twilight), Safe Haven (Peace)
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
-The Bard is perfect for players who enjoy social interaction, support roles, and creative problem-solving through magic. Use magic woven through performance to inspire allies and confound enemies. Eloquent Talker makes you a social powerhouse. Spirit Walker adds mystical insight beyond typical performers.
+### Playstyle & Advancement
 
-**Advancement:** Increase Mysticism and Influence to rank 2-3, add more social skills, learn versatile spells for different situations, and consider adding Stealth for infiltration.
+The Bard is perfect for players who enjoy social interaction, support roles, and creative problem-solving through magic. Use magic woven through performance to inspire allies and confound enemies. Eloquent Talker makes you a social powerhouse. Spirit Walker adds mystical insight beyond typical performers. Combine illusions with charm to control the battlefield.
+
+**Advancement:** Increase Mysticism and Influence to rank 2-3 for more spells and social power, add more social skills, learn versatile spells for different situations, and consider adding Stealth for infiltration.
 
 ---
 
 ## Druid
 
 **Role:** Support / Controller
+
+**Overview:** A nature spellcaster who shapeshifts and commands elemental forces through communion with the natural world.
 
 ### Attributes
 
@@ -451,7 +522,9 @@ The Bard is perfect for players who enjoy social interaction, support roles, and
 - **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion
 - **Survival** – *Forager (Rank 1)* – Excel at finding food and resources
 
-**Rank 0 Skills:** Lore, Insight, Perception, Athletics
+**Rank 0 Skills:** Lore, Insight, Perception†, Athletics†
+
+*† Customized skills (not from upbringing/background suggestions)*
 
 ### Equipment
 
@@ -461,28 +534,33 @@ The Bard is perfect for players who enjoy social interaction, support roles, and
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 35
 
 ### Spells
 
-**Tradition:** Nature (plants/animals) or Tempest (storms/earthquakes)
+**Tradition:** Nature (earth/animals/plants) or Tempest (storms/elements) - using Balance (two traditions)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
-- **Nature:** Animal Friendship, Barkskin, Entangle, Goodberry, Nature's Grasp, Speak with Animals
-- **Tempest:** Call Lightning, Fog Cloud, Gust of Wind, Thunderwave, Wind Wall
+**Starting Spells (2 from two traditions at rank 0-1):**
+- **Rank 0:** Animal Messenger (Nature), Verdant Growth (Nature)
+- **Rank 1:** Entangle (Nature), Call Lightning (Tempest)
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
-The Druid is perfect for players who love nature themes, shapeshifting, animal companions, and elemental magic. Channel nature's power through spells and work alongside a beast companion. Control the battlefield with plants, weather, and animals. Wild Shape lets you transform for various situations.
+### Playstyle & Advancement
 
-**Advancement:** Increase Mysticism to rank 2-3, raise Nature and Survival for wilderness mastery, add Lore for nature knowledge, and consider taking a second tradition or more companion talents.
+The Druid is perfect for players who want to blend with nature, shapeshift, and command elemental forces. Wild Shape provides incredible versatility, while Beast Companion gives you a loyal ally. Use nature magic to control the battlefield and support allies. Forager makes wilderness travel easier for the whole party.
+
+**Advancement:** Increase Mysticism to rank 2-3 for more powerful spells and Wild Shape options, raise Nature and Survival for wilderness mastery, add Lore for deeper nature knowledge, and consider more shapeshifting or elemental talents.
 
 ---
 
 ## Shaman
 
 **Role:** Support / Controller
+
+**Overview:** A spirit medium who communes with ancestors to bless allies and curse enemies through spiritual power.
 
 ### Attributes
 
@@ -503,7 +581,9 @@ The Druid is perfect for players who love nature themes, shapeshifting, animal c
 - **Nature** – *Herbalist (Rank 1)* – Create potent remedies
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with spiritual knowledge
 
-**Rank 0 Skills:** Insight, Survival, Perception, Influence
+**Rank 0 Skills:** Insight, Survival, Perception†, Influence†
+
+*† Customized skills (not from upbringing/background suggestions)*
 
 ### Equipment
 
@@ -513,28 +593,35 @@ The Druid is perfect for players who love nature themes, shapeshifting, animal c
 - Healing Salve (simple) x4 (120 coins, 4 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 12 (equipment 7 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 30
 
 ### Spells
 
-**Tradition:** Death (ancestors/curses) or Life (blessings/community)
+**Tradition:** Death (ancestors/curses) or Life (blessings/community) - using Balance (two traditions)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
-**Recommended Spells (Rank 0-1):**
-- **Death:** Chill Touch, Death's Embrace, Inflict Wounds, Ray of Enfeeblement, Speak with Dead
-- **Life:** Bless, Healing Touch, Life Surge, Purify Food and Water, Sanctuary
+**Starting Spells (2 from two traditions at rank 0-1):**
+- **Rank 0:** Chill Touch (Death), Speak with Dead (Death)
+- **Rank 1:** Inflict Wounds (Death), Healing Touch (Life)
 
-### Playstyle
+*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
+
+### Playstyle & Advancement
 
 The Shaman is perfect for players who enjoy spiritual themes, supporting through blessings, and connecting with ancestral powers. Bridge the physical and spirit worlds, calling on ancestors for aid. Use blessings to empower allies and curses to weaken enemies. Spirit Walker and Herbalist make you invaluable to your community.
 
-**Advancement:** Increase Mysticism to rank 2-3, raise Lore for deeper spiritual knowledge, add Insight for reading people and spirits, and consider more spirit-themed talents.
+**Note:** Total load (12) exceeds carry capacity (10) - you'll be encumbered. Consider leaving some healing salves with the party or reducing equipment.
+
+**Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Lore for deeper spiritual knowledge, add Insight for reading people and spirits, and consider more spirit-themed talents.
 
 ---
 
 ## Tamer
 
 **Role:** Support / Controller
+
+**Overview:** A summoner who fights indirectly through creature allies, using beasts and mystic summons for battlefield control.
 
 ### Attributes
 
@@ -545,8 +632,8 @@ The Shaman is perfect for players who enjoy spiritual themes, supporting through
 ### Upbringing & Background
 
 - **Upbringing:** Hunter-gatherer (Nature, Perception, Survival)
-- **Background:** Custom Skills (Fighting, Nature, Mysticism suggested)
-- **Starting Item:** Preserved beast claw (0 load)
+- **Background:** None listed - fully customized skills
+- **Starting Item:** None (consider taking Preserved beast claw or similar item worth 0 load)
 
 ### Skills
 
@@ -555,7 +642,15 @@ The Shaman is perfect for players who enjoy spiritual themes, supporting through
 - **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion (or multiple)
 - **Mysticism** – *Wild Shape (Rank 1)* – Transform into animal forms
 
-**Rank 0 Skills:** Lore, Survival, Insight, Perception
+**Rank 0 Skills:** Lore†, Survival, Insight†, Perception
+
+*† Customized skills (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Defensive Strike** – Gain Defend Action effects on hit
+- **Felling Strike** – Trip enemies while attacking
 
 ### Equipment
 
