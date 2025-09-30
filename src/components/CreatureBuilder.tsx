@@ -15,6 +15,7 @@ import { useCreatureBuilder } from '../hooks/useCreatureBuilder'
 import { CreatureBuilderForm } from './CreatureBuilderForm'
 import { CreatureBuilderStatBlock } from './CreatureBuilderStatBlock'
 import { CreatureBuilderOutputPanel } from './CreatureBuilderOutputPanel'
+import { CreatureAdvancedSettings } from './CreatureAdvancedSettings'
 import { TabPanel } from './TabPanel'
 
 export const CreatureBuilder: React.FC = () => {
@@ -30,6 +31,16 @@ export const CreatureBuilder: React.FC = () => {
 		handleTypeChange,
 		handleArchetypeChange,
 		handleNameChange,
+		handleCustomHP,
+		handleCustomAV,
+		handleCustomAttribute,
+		handleCustomDefense,
+		handleSkillsChange,
+		handleImmunitiesChange,
+		handleResistancesChange,
+		handleWeaknessesChange,
+		handleAttacksChange,
+		handleAbilitiesChange,
 		resetBuilder,
 	} = useCreatureBuilder()
 
@@ -80,24 +91,63 @@ export const CreatureBuilder: React.FC = () => {
 						/>
 
 						{builtCreature && (
-							<Paper sx={{ mt: 3, p: { xs: 1, sm: 2 } }}>
-								<Tabs
-									value={activeTab}
-									onChange={handleTabChange}
-									aria-label="creature preview tabs"
-								>
-									<Tab label="Preview" />
-									<Tab label="Markdown" />
-								</Tabs>
+							<>
+								<CreatureAdvancedSettings
+									customHP={state.customHP}
+									customAV={state.customAV}
+									customStr={state.customStr}
+									customAgi={state.customAgi}
+									customSpi={state.customSpi}
+									customMnd={state.customMnd}
+									customParry={state.customParry}
+									customDodge={state.customDodge}
+									customResist={state.customResist}
+									skills={state.skills}
+									immunities={state.immunities}
+									resistances={state.resistances}
+									weaknesses={state.weaknesses}
+									attacks={state.attacks}
+									abilities={state.abilities}
+									onCustomHPChange={handleCustomHP}
+									onCustomAVChange={handleCustomAV}
+									onCustomAttributeChange={handleCustomAttribute}
+									onCustomDefenseChange={handleCustomDefense}
+									onSkillsChange={handleSkillsChange}
+									onImmunitiesChange={handleImmunitiesChange}
+									onResistancesChange={handleResistancesChange}
+									onWeaknessesChange={handleWeaknessesChange}
+									onAttacksChange={handleAttacksChange}
+									onAbilitiesChange={handleAbilitiesChange}
+									baseHP={builtCreature.baseHp}
+									baseAV={builtCreature.av}
+									baseStr={builtCreature.str}
+									baseAgi={builtCreature.agi}
+									baseSpi={builtCreature.spi}
+									baseMnd={builtCreature.mnd}
+									baseParry={builtCreature.parry}
+									baseDodge={builtCreature.dodge}
+									baseResist={builtCreature.resist}
+								/>
 
-								<TabPanel value={activeTab} index={0}>
-									<CreatureBuilderStatBlock creature={builtCreature} />
-								</TabPanel>
+								<Paper sx={{ mt: 3, p: { xs: 1, sm: 2 } }}>
+									<Tabs
+										value={activeTab}
+										onChange={handleTabChange}
+										aria-label="creature preview tabs"
+									>
+										<Tab label="Preview" />
+										<Tab label="Markdown" />
+									</Tabs>
 
-								<TabPanel value={activeTab} index={1}>
-									<CreatureBuilderOutputPanel creature={builtCreature} />
-								</TabPanel>
-							</Paper>
+									<TabPanel value={activeTab} index={0}>
+										<CreatureBuilderStatBlock creature={builtCreature} />
+									</TabPanel>
+
+									<TabPanel value={activeTab} index={1}>
+										<CreatureBuilderOutputPanel creature={builtCreature} />
+									</TabPanel>
+								</Paper>
+							</>
 						)}
 
 						{!builtCreature && (
