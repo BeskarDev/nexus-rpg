@@ -125,7 +125,7 @@ Every adventurer begins with the following standard equipment:
 - Traveler's Clothes (0 load when worn, normally 1 load, worth 25 coins)
 - Hemp Rope (covers a medium distance, 1 load, worth 10 coins)
 - Camping kit (shelter for up to two people, 1 load, worth 50 coins)
-- One additional tool of your choice
+- One additional toolkit of your choice (from the Toolkit section)
 - **Supplies:**
     - Rations (d4 Supply die, 1 load, worth 15 coins per unit)
     - Torches (d4 Supply die, emit bright light in close range and dim light in short range when lit, 1 load, worth 15 coins per unit)
