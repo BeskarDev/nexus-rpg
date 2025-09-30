@@ -63,8 +63,8 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Adventuring Gear toolkit (50 coins, 1 load)
-- **Total Load:** 9 (equipment 4 + standard gear 5)
+- Adventuring Gear toolkit (50 coins, included in standard gear)
+- **Total Load:** 8 (equipment 3 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 0
 
@@ -116,10 +116,10 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Greataxe (150 coins, 2 load)
 - Leather Armor (50 coins, 1 load)
 - Javelins (50 coins, 1 load)
-- Climber's Kit toolkit (50 coins, 1 load)
+- Climber's Kit toolkit (50 coins, included in standard gear)
 - Healing Salve (weak) (15 coins, 1 load)
 - Small Trinket (25 coins, 0 load)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 10
 
@@ -172,18 +172,17 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 - Arrows d8 (free with bow, 1 load)
 - Shortsword (50 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Navigator's Tools toolkit (50 coins, 1 load)
+- Navigator's Tools toolkit (50 coins, included in standard gear)
 - Healing Salve (weak) (15 coins, 1 load)
-- Small Trinket (25 coins, 0 load)
-- **Total Load:** 12 (equipment 7 + standard gear 5)
+- **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 10
+- **Remaining Coins:** 35
 
 ### Playstyle & Advancement
 
 The Ranger is perfect for players who enjoy ranged combat, wilderness survival, and having an animal companion. Strike from distance with precision while your beast companion provides tactical support. Sharpshooter allows effective long-range attacks, and Survival expertise makes you invaluable during wilderness travel. Use Aimed Shot for reliable damage and Precise Shot when facing armored foes.
 
-**Note:** Total load (12) slightly exceeds carry capacity (11) - you'll be encumbered. Consider dropping a small trinket or managing load with your beast companion during travel.
+
 
 **Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Survival and Nature for wilderness mastery, add Perception for better awareness, and consider Disciplined Archer or Rapid Shot talents.
 
@@ -229,8 +228,8 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Mace (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Cook's Utensils toolkit (25 coins, 1 load)
-- **Total Load:** 8 (equipment 3 + standard gear 5)
+- Cook's Utensils toolkit (25 coins, included in standard gear)
+- **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
@@ -287,9 +286,9 @@ The Cleric is perfect for players who want to support allies with healing and pr
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Arcane Conduit (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
-- Smith's Tools toolkit (50 coins, 1 load)
+- Smith's Tools toolkit (50 coins, included in standard gear)
 - Acid Vial x2 (60 coins, 2 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 15
 
@@ -345,9 +344,9 @@ The Sorcerer is perfect for players who want to deal massive magical damage and 
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Arcane Conduit (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
-- Disguise Kit toolkit (50 coins, 1 load)
+- Disguise Kit toolkit (50 coins, included in standard gear)
 - Paralyzing Poison (weak) x2 (60 coins, 2 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 15
 
@@ -410,8 +409,8 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Mason's Tools toolkit (25 coins, 1 load)
-- **Total Load:** 8 (equipment 3 + standard gear 5)
+- Mason's Tools toolkit (25 coins, included in standard gear)
+- **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 0
 
@@ -467,9 +466,9 @@ The Paladin is perfect for players who want to be a holy warrior combining divin
 
 - Shortsword (50 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Musical Instrument toolkit (75 coins, 1 load)
+- Musical Instrument toolkit (75 coins, included in standard gear)
 - Fine Trinket x2 (150 coins, 0 load)
-- **Total Load:** 7 (equipment 2 + standard gear 5)
+- **Total Load:** 6 (equipment 1 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 0
 
@@ -526,7 +525,7 @@ The Bard is perfect for players who enjoy social interaction, support roles, and
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
-- Brewer's Tools toolkit (50 coins, 1 load)
+- Brewer's Tools toolkit (50 coins, included in standard gear)
 - Healing Salve (simple) x2 (60 coins, 2 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
@@ -584,13 +583,11 @@ The Druid is perfect for players who want to blend with nature, shapeshift, and 
 
 - Short Spear (75 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Weaver's Tools toolkit (50 coins, 1 load)
-- Healing Salve (simple) x4 (120 coins, 4 load)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
+- Weaver's Tools toolkit (50 coins, included in standard gear)
+- Healing Salve (simple) x3 (90 coins, 3 load)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 30
-  
-**Note:** Total load (11) exceeds carry capacity (10) - you'll be encumbered. Consider leaving one healing salve with the party to reduce load to 10.
+- **Remaining Coins:** 60
 
 ### Spells
 
@@ -651,8 +648,8 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Spear (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Navigator's Tools toolkit (25 coins, 1 load)
-- **Total Load:** 8 (equipment 3 + standard gear 5)
+- Navigator's Tools toolkit (25 coins, included in standard gear)
+- **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
@@ -716,12 +713,13 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 - Sling Bullets d8 (free, 1 load)
 - Throwing Knives (25 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Brewer's Tools toolkit (50 coins, 1 load)
-- Acid Vial x5 (150 coins, 5 load)
-- Small Trinket (25 coins, 0 load)
-- **Total Load:** 15 (equipment 10 + standard gear 5)
+- Brewer's Tools toolkit (50 coins, included in standard gear)
+- Acid Vial x3 (90 coins, 3 load)
+- **Total Load:** 12 (equipment 7 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 85
+
+**Note:** Total load (15) significantly exceeds carry capacity (10) - you'll be heavily encumbered. Leave acid vials with the party or manage your load carefully. Consider dropping some items before combat.
 
 ### Playstyle & Advancement
 
@@ -774,7 +772,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Light Shield (150 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
 - Javelins (50 coins, 1 load)
-- Carpenter's Tools toolkit (included in standard gear, 1 load)
+- Carpenter's Tools toolkit (included in standard gear)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
 - **Remaining Coins:** 0
@@ -828,18 +826,16 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 - Sling Bullets d8 (free, 1 load)
 - Javelins (50 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Climber's Kit toolkit (included in standard gear, 1 load)
-- Healing Salve (simple) x3 (90 coins, 3 load)
+- Climber's Kit toolkit (included in standard gear)
+- Healing Salve (simple) x2 (60 coins, 2 load)
 - Small Trinket x2 (50 coins, 0 load)
-- **Total Load:** 13 (equipment 8 + standard gear 5)
+- **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 10
+- **Remaining Coins:** 90
 
 ### Playstyle & Advancement
 
 The Slinger is perfect for players who want a mobile, hit-and-run playstyle with simple but effective ranged combat. Harass enemies from short range then reposition with Fast Stride. Expert Slinger adds Archery to damage at close range, making you surprisingly deadly up close. Light Footed keeps you stealthy. Use Aimed Shot for reliable damage and Power Shot for finishing blows.
-
-**Note:** Total load (13) exceeds carry capacity (11) - you'll be encumbered. Consider leaving healing salves with the party or dropping a trinket.
 
 **Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Athletics for mobility, add Survival for scouting, and consider Rapid Shot or more mobility talents.
 
@@ -885,18 +881,16 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Shortsword (50 coins, 1 load)
 - Throwing Knives (25 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Disguise Kit toolkit (included in standard gear, 1 load)
-- Weapon Poison (weak) x3 (150 coins, 3 load)
+- Disguise Kit toolkit (included in standard gear)
+- Weapon Poison (weak) x2 (100 coins, 2 load)
 - Small Trinket x3 (75 coins, 0 load)
-- **Total Load:** 12 (equipment 7 + standard gear 5)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 50
 
 ### Playstyle & Advancement
 
 The Rogue is perfect for players who enjoy stealth, infiltration, skill-based challenges, and being the party's scout. Rely on stealth, surprise, and precision strikes. Use Unseen to get into position, then strike from advantage. Urban Navigator makes you invaluable in cities. Blade Mastery gives you versatility in combat. Use Feint for reliable attacks and Evasive Strike to retreat safely.
-
-**Note:** Total load (12) slightly exceeds carry capacity (11) - you'll be encumbered. Consider dropping a trinket or poison vial.
 
 **Advancement:** Increase Stealth and Fighting to rank 2-3 for more options and Combat Arts, add Insight for reading people, consider Defensive Dueling or Riposte, and learn social skills for infiltration.
 
@@ -940,12 +934,13 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 ### Equipment
 
 - Quarterstaff (100 coins, 1 load) - backup weapon
-- **Toolkit:** Weaver's Tools (included in standard gear, 1 load)
+- **Toolkit:** Weaver's Tools (included in standard gear)
 - Healing Salve (potent) (125 coins, 1 load)
 - Healing Salve (simple) x2 (60 coins, 2 load)
 - Small Trinket x2 (50 coins, 0 load)
 - Rope, extra (10 coins, 1 load)
-- **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 5
 
 ### Playstyle & Advancement
@@ -995,10 +990,10 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 - Longsword (100 coins, 1 load)
 - Spell Catalyst - Arcane Conduit (75 coins, 0 load)
-- Smith's Tools toolkit (50 coins, 1 load)
+- Smith's Tools toolkit (50 coins, included in standard gear)
 - Acid Vial x3 (90 coins, 3 load)
 - Small Trinket x2 (35 coins, 0 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 0
 
@@ -1061,7 +1056,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Navigator's Tools toolkit (included in standard gear, 1 load)
+- Navigator's Tools toolkit (included in standard gear)
 - Healing Salve (weak) (15 coins, 1 load)
 - Small Trinket (25 coins, 0 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
@@ -1109,10 +1104,10 @@ The Warlord is perfect for players who want to lead the party tactically, enhanc
 
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Painter's Supplies toolkit (50 coins, 1 load)
+- Painter's Supplies toolkit (50 coins, included in standard gear)
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - Small Trinket (25 coins, 0 load)
-- **Total Load:** 10 (equipment 5 + standard gear 5)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
 - **Remaining Coins:** 10
 
