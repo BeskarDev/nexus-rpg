@@ -328,4 +328,11 @@
     "matchIndex": 0,
     "comment": "Exclude 'lightning' used in the spell name 'Lightning Javelin' (Druid section spell list)"
   }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "Education",
+    "matchIndex": [8,14,19,29],
+    "comment": "Exclude the 'Education' word when it's part of the talent name 'General Education' (Apothecary, Engineer, Magus, Sorcerer sections); keep the leading skill header '**Education**' linked"
+  }
 ]
