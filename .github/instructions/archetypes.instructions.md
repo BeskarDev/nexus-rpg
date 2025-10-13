@@ -120,6 +120,21 @@ Archetypes may blend multiple roles.
 - **Role**: Support / Utility  
 - **Identity Tags**: Prophecy & omens, guides allies, foresight warnings, fate-bound wisdom  
 
+### Gladiator / Arena Fighter
+- **Skills**: Fighting, Athletics, Influence, Fortitude  
+- **Role**: Striker / Controller  
+- **Identity Tags**: Arena showman, grapples & takedowns, reach weapons & nets, crowd pressure, finishing blows  
+
+### Duelist / Myrmidon
+- **Skills**: Fighting, Athletics, Stealth, Influence  
+- **Role**: Striker  
+- **Identity Tags**: Agile footwork, feints & ripostes, precision strikes, light armor skirmisher  
+
+### Engineer / Sapper
+- **Skills**: Crafting, Education, Archery, Perception  
+- **Role**: Support / Utility  
+- **Identity Tags**: Siege devices, traps & fortifications, improvised tools, battlefield logistics, thrown contraptions  
+
 ---
 
 ## Design Checklist for Archetype Support
