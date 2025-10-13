@@ -4,6 +4,8 @@ toc_min_heading_level: 2
 toc_max_heading_level: 2
 ---
 
+<!-- markdownlint-disable MD033 -->
+
 # 🎭 Quickstart Characters
 
 ![banner-img](/img/banner/character-creation-banner.png)
@@ -58,7 +60,9 @@ Feel free to customize these examples to match your vision or use them as-is for
 
 ## Apothecary
 
-:::details Role: Tank / Striker
+<details>
+<summary>Role: Tank / Striker</summary>
+
 
 Role: Tank / Striker
 
@@ -113,13 +117,15 @@ The Fighter is perfect for players who want straightforward, effective combat wi
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Bard
 
-:::details Role: Striker / Tank
+<details>
+<summary>Role: Striker / Tank</summary>
+
 
 Role: Striker / Tank
 
@@ -175,13 +181,15 @@ The Barbarian is perfect for players who want to deal massive damage and play ag
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Barbarian
 
-:::details Role: Striker / Utility
+<details>
+<summary>Role: Striker / Utility</summary>
+
 
 **Overview:** A ranged hunter with wilderness expertise who strikes from distance with precision while tracking prey.
 
@@ -236,13 +244,15 @@ The Ranger is perfect for players who enjoy ranged combat, wilderness survival, 
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Champion
 
-:::details Role: Support / Tank
+<details>
+<summary>Role: Support / Tank</summary>
+
 
 **Overview:** A divine spellcaster who heals and protects allies while holding the frontline with mace and shield.
 
@@ -311,13 +321,15 @@ The Priest is perfect for players who want to support allies with healing and pr
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Duelist
 
-:::details Role: Striker
+<details>
+<summary>Role: Striker</summary>
+
 
 **Overview:** A glass cannon spellcaster who deals massive magical damage through raw arcane power.
 
@@ -380,13 +392,15 @@ The Sorcerer is perfect for players who want to deal massive magical damage and 
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Druid
 
-:::details Role: Striker / Controller
+<details>
+<summary>Role: Striker / Controller</summary>
+
 
 **Overview:** An eldritch spellcaster who wields dark pact magic to curse enemies and drain their life force.
 
@@ -449,13 +463,15 @@ The Warlock is perfect for players who enjoy morally complex characters with man
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Engineer
 
-:::details Role: Tank / Support
+<details>
+<summary>Role: Tank / Support</summary>
+
 
 Role: Tank / Support
 
@@ -526,13 +542,15 @@ The Champion is perfect for players who want to be a holy warrior combining divi
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Fighter
 
-:::details Role: Support / Controller
+<details>
+<summary>Role: Support / Controller</summary>
+
 
 Role: Support / Controller
 
@@ -591,13 +609,15 @@ The Bard is perfect for players who enjoy social interaction, support roles, and
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Gladiator
 
-:::details Role: Support / Controller
+<details>
+<summary>Role: Support / Controller</summary>
+
 
 Role: Support / Controller
 
@@ -658,13 +678,15 @@ The Druid is perfect for players who want to blend with nature, shapeshift, and 
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Hoplite
 
-:::details Role: Support / Controller
+<details>
+<summary>Role: Support / Controller</summary>
+
 
 Role: Support / Controller
 
@@ -724,13 +746,15 @@ The Shaman is perfect for players who enjoy spiritual themes, supporting through
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Magus
 
-:::details Role: Support / Controller
+<details>
+<summary>Role: Support / Controller</summary>
+
 
 Role: Support / Controller
 
@@ -797,13 +821,15 @@ The Tamer is perfect for players who want to command multiple allies and control
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Monk
 
-:::details Role: Striker / Utility
+<details>
+<summary>Role: Striker / Utility</summary>
+
 
 Role: Striker / Utility
 
@@ -862,13 +888,15 @@ The Apothecary is perfect for players who enjoy crafting, creative problem-solvi
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Oracle
 
-:::details Role: Tank / Controller
+<details>
+<summary>Role: Tank / Controller</summary>
+
 
 Role: Tank / Controller
 
@@ -924,13 +952,15 @@ The Hoplite is perfect for players who enjoy tactical positioning, defensive pla
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Priest
 
-:::details Role: Striker
+<details>
+<summary>Role: Striker</summary>
+
 
 Role: Striker
 
@@ -987,13 +1017,15 @@ The Slinger is perfect for players who want a mobile, hit-and-run playstyle with
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Ranger
 
-:::details Role: Striker / Utility
+<details>
+<summary>Role: Striker / Utility</summary>
+
 
 Role: Striker / Utility
 
@@ -1049,13 +1081,15 @@ The Rogue is perfect for players who enjoy stealth, infiltration, skill-based ch
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Rogue
 
-:::details Role: Striker / Controller
+<details>
+<summary>Role: Striker / Controller</summary>
+
 
 Role: Striker / Controller
 
@@ -1111,13 +1145,15 @@ The Monk is perfect for players who want to fight without weapons or armor, usin
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Shaman
 
-:::details Role: Striker / Hybrid
+<details>
+<summary>Role: Striker / Hybrid</summary>
+
 
 Role: Striker / Hybrid
 
@@ -1188,13 +1224,15 @@ The Magus is perfect for players who want to combine melee combat with spellcast
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Slinger
 
-:::details Role: Support / Controller
+<details>
+<summary>Role: Support / Controller</summary>
+
 
 Role: Support / Controller
 
@@ -1250,13 +1288,15 @@ The Warlord is perfect for players who want to lead the party tactically, enhanc
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Sorcerer
 
-:::details Role: Support / Utility
+<details>
+<summary>Role: Support / Utility</summary>
+
 
 Role: Support / Utility
 
@@ -1316,13 +1356,15 @@ The Oracle is perfect for players who enjoy support roles, being the party's gui
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Tamer
 
-:::details Role: Striker / Controller
+<details>
+<summary>Role: Striker / Controller</summary>
+
 
 Role: Striker / Controller
 
@@ -1378,13 +1420,15 @@ The Gladiator is perfect for players who want flashy, high‑impact melee with c
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Warlock
 
-:::details Role: Striker
+<details>
+<summary>Role: Striker</summary>
+
 
 Role: Striker
 
@@ -1440,13 +1484,15 @@ The Duelist is perfect for players who prefer agility and precision over brute f
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
 
 ---
 
 ## Warlord
 
-:::details Role: Support / Utility
+<details>
+<summary>Role: Support / Utility</summary>
+
 
 Role: Support / Utility
 
@@ -1503,7 +1549,9 @@ The Engineer is perfect for players who enjoy battlefield problem‑solving and 
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
-:::
+</details>
+
+<!-- markdownlint-enable MD033 -->
 
 ---
 
