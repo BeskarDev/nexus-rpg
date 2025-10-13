@@ -7,7 +7,7 @@ sidebar_position: 3
 ![banner-img](/img/banner/character-creation-banner.png)
 
 > "The greatest warriors were once novices with nothing but determination and a well-chosen path."
-> 
+>
 
 ## Using These Examples
 
@@ -16,6 +16,7 @@ These quickstart characters demonstrate classic fantasy archetypes within Nexus 
 - **Starting XP:** 6 XP total (3 skills at rank 1 with 2 XP each, 4 skills at rank 0)
 - **Starting Coins:** 350 coins for equipment (plus 10 unspendable coins)
 - **Standard Gear:** Backpack, 2 pouches, traveler's clothes, hemp rope (1 load), camping kit (1 load), toolkit (1 load), rations d4 (1 load), torches d4 (1 load)
+  - If an archetype lists a specific toolkit, it's the one from Standard Gear: it costs 0 extra coins and its load is already counted in the 5-load Standard Gear.
 
 Each archetype includes recommended attributes, skill selections with talent choices, upbringing and background, equipment purchases within the 350 coin budget, and playstyle descriptions.
 
@@ -63,10 +64,10 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Adventuring Gear toolkit (50 coins, included in standard gear)
+- Adventuring Gear toolkit (included in standard gear)
 - **Total Load:** 8 (equipment 3 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 50
 
 ### Playstyle & Advancement
 
@@ -116,12 +117,11 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Greataxe (150 coins, 2 load)
 - Leather Armor (50 coins, 1 load)
 - Javelins (50 coins, 1 load)
-- Climber's Kit toolkit (50 coins, included in standard gear)
+- Climber's Kit toolkit (included in standard gear)
 - Healing Salve (weak) (15 coins, 1 load)
-- Small Trinket (25 coins, 0 load)
 - **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
-- **Remaining Coins:** 10
+- **Remaining Coins:** 85
 
 ### Playstyle & Advancement
 
@@ -172,11 +172,11 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 - Arrows d8 (free with bow, 1 load)
 - Shortsword (50 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Navigator's Tools toolkit (50 coins, included in standard gear)
+- Navigator's Tools toolkit (included in standard gear)
 - Healing Salve (weak) (15 coins, 1 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 35
+- **Remaining Coins:** 85
 
 ### Playstyle & Advancement
 
@@ -188,7 +188,7 @@ The Ranger is perfect for players who enjoy ranged combat, wilderness survival, 
 
 ---
 
-## Cleric
+## Priest
 
 **Role:** Support / Tank
 
@@ -228,25 +228,30 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Mace (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Cook's Utensils toolkit (25 coins, included in standard gear)
+- Cook's Utensils toolkit (included in standard gear)
 - **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 25
 
 ### Spells
 
-**Tradition:** Life (healing focus) or Peace (protection focus) - using Balance (two traditions)
+**Tradition:** Choose Life (healing) or Peace (protection) — using Devotion (one tradition; 3 spells per rank)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 4 + 2 = 6
 
-**Starting Spells (2 from two traditions at rank 0-1):**
-- **Rank 0:** Dazzling Light (Light), Sense Spirits (any)
-- **Rank 1:** Blessing of Light (Light), Radiant Weapon (Light)
+**Starting Spells (choose one tradition and take 3 spells at rank 0-1):**
+
+- **Life:**
+  - Rank 0: Restore Life, Life Shield
+  - Rank 1: Healing Touch
+- **Peace:**
+  - Rank 0: Aura of Sanctuary, Calming Influence
+  - Rank 1: Blessing of Peace
 
 *At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
 ### Playstyle & Advancement
 
-The Cleric is perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Intervention helps ensure your critical spells succeed. Use Defensive Strike to stay alive and Exhilarating Strike to keep allies in the fight.
+The Priest is perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Intervention helps ensure your critical spells succeed. Use Defensive Strike to stay alive and Exhilarating Strike to keep allies in the fight.
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Fighting for better combat effectiveness and more Combat Arts, add Influence for religious authority, and consider Armor of the Faithful for unarmored defense builds.
 
@@ -286,21 +291,23 @@ The Cleric is perfect for players who want to support allies with healing and pr
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Arcane Conduit (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
-- Smith's Tools toolkit (50 coins, included in standard gear)
+- Smith's Tools toolkit (included in standard gear)
 - Acid Vial x2 (60 coins, 2 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 15
+- **Remaining Coins:** 65
 
 ### Spells
 
 **Discipline:** Evocation (direct damage)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Starting Spells (2 rank 0 from Evocation):**
-- **Rank 0:** Flickering Flame, Frost Snap
+**Starting Spells:**
 
-*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1. Add two rank 0-1 spells like Chromatic Orb and Elemental Ward.*
+- **Rank 0:** Flickering Flame, Frost Snap
+- **Rank 1:** Chromatic Orb, Elemental Ward
+
+*At rank 1, you know 4 total spells total.*
 
 ### Playstyle & Advancement
 
@@ -344,22 +351,27 @@ The Sorcerer is perfect for players who want to deal massive magical damage and 
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Arcane Conduit (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
-- Disguise Kit toolkit (50 coins, included in standard gear)
+- Disguise Kit toolkit (included in standard gear)
 - Paralyzing Poison (weak) x2 (60 coins, 2 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 15
+- **Remaining Coins:** 65
 
 ### Spells
 
 **Discipline:** Telepathy (mind control) or Necromancy (life drain)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Starting Spells (2 rank 0 from chosen discipline):**
-- **Telepathy:** Horrific Vision, Mental Grasp
-- **Necromancy:** Chill Touch, Dark Whispers
+**Starting Spells (choose one discipline and take 2 rank 0 + 2 rank 1):**
 
-*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1. Add two rank 0-1 spells like Mind Spike and Telepathic Bond (Telepathy) or Life Drain and Ray of Enfeeblement (Necromancy).*
+- **Telepathy:**
+  - Rank 0: Mental Link, Mind Blast
+  - Rank 1: Attack Thoughts, Subtle Suggestion
+- **Necromancy:**
+  - Rank 0: Drain Life, Enfeebling Grasp
+  - Rank 1: Ray of Lethargy, Grasp of Decay
+
+*At rank 1, you know 4 total spells within your chosen discipline.*
 
 ### Playstyle & Advancement
 
@@ -369,7 +381,7 @@ The Warlock is perfect for players who enjoy morally complex characters with man
 
 ---
 
-## Paladin
+## Champion
 
 **Role:** Tank / Support
 
@@ -409,27 +421,32 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Mason's Tools toolkit (25 coins, included in standard gear)
+- Mason's Tools toolkit (included in standard gear)
 - **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 25
 
 ### Spells
 
-**Tradition:** Light (truth/justice) or War (combat prowess) - using Balance (two traditions)
+**Tradition:** Choose Light (truth/justice) or War (combat prowess) — using Devotion (one tradition; 3 spells per rank)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 4 + 2 = 6
 
-**Starting Spells (2 from two traditions at rank 0-1):**
-- **Rank 0:** Dazzling Light (Light), Detect Lies (Light)
-- **Rank 1:** Radiant Burst (Light), Warrior's Resolve (War)
+**Starting Spells (choose one tradition and take 3 spells at rank 0-1):**
+
+- **Light:**
+  - Rank 0: Dazzling Light, Detect Lies
+  - Rank 1: Radiant Burst
+- **War:**
+  - Rank 0: Battle Surge, Mighty Strike
+  - Rank 1: War Cry
 
 *At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
 ### Playstyle & Advancement
 
-The Paladin is perfect for players who want to be a holy warrior combining divine magic with frontline tanking. Use Divine Strike to enhance melee attacks and spells to support allies. Heavy Armor Mastery will be crucial once you upgrade to scale or plate mail. Commanding Presence makes you a natural party leader. Use Defensive Strike to stay alive and Terrifying Strike to control enemies.
+The Champion is perfect for players who want to be a holy warrior combining divine magic with frontline tanking. Use Divine Strike to enhance melee attacks and spells to support allies. Heavy Armor Mastery will be crucial once you upgrade to scale or plate mail. Commanding Presence makes you a natural party leader. Use Defensive Strike to stay alive and Terrifying Strike to control enemies.
 
-**Advancement:** Save coins to upgrade to Scale Mail (250) or Plate Armor (500), increase Fighting and Mysticism to rank 2-3 for more Combat Arts and spells, raise Fortitude for survivability, consider Shield Mastery or more divine-focused talents.
+**Advancement:** Save coins to upgrade to Scale Mail (250) or Breastplate (750) and eventually Plate Harness (2,500), increase Fighting and Mysticism to rank 2-3 for more Combat Arts and spells, raise Fortitude for survivability, consider Shield Mastery or more divine-focused talents.
 
 ---
 
@@ -466,20 +483,20 @@ The Paladin is perfect for players who want to be a holy warrior combining divin
 
 - Shortsword (50 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Musical Instrument toolkit (75 coins, included in standard gear)
-- Fine Trinket x2 (150 coins, 0 load)
+- Musical Instrument toolkit (included in standard gear)
 - **Total Load:** 6 (equipment 1 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 225
 
 ### Spells
 
-**Tradition:** Twilight (illusion/dreams) or Peace (calming/travel) - using Balance (two traditions)
+**Tradition:** Twilight (illusion/dreams) and Peace (calming/travel) — using Balance (two traditions; freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**
+
 - **Rank 0:** Dark Sight (Twilight), Obscuring Veil (Twilight)
-- **Rank 1:** Shadow Veil (Twilight), Safe Haven (Peace)
+- **Rank 1:** Cloak of Night (Twilight), Blessing of Peace (Peace)
 
 *At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
@@ -525,20 +542,21 @@ The Bard is perfect for players who enjoy social interaction, support roles, and
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
-- Brewer's Tools toolkit (50 coins, included in standard gear)
+- Brewer's Tools toolkit (included in standard gear)
 - Healing Salve (simple) x2 (60 coins, 2 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 15
+- **Remaining Coins:** 65
 
 ### Spells
 
-**Tradition:** Nature (earth/animals/plants) or Tempest (storms/elements) - using Balance (two traditions)
+**Tradition:** Nature (earth/animals/plants) and Tempest (storms/elements) — using Balance (two traditions; freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**
-- **Rank 0:** Animal Messenger (Nature), Verdant Growth (Nature)
-- **Rank 1:** Entangle (Nature), Call Lightning (Tempest)
+
+- **Rank 0:** Bestial Adaptation (Nature), Lashing Vine (Nature)
+- **Rank 1:** Mesh of Vines (Nature), Lightning Javelin (Tempest)
 
 *At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
@@ -583,20 +601,21 @@ The Druid is perfect for players who want to blend with nature, shapeshift, and 
 
 - Short Spear (75 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Weaver's Tools toolkit (50 coins, included in standard gear)
+- Weaver's Tools toolkit (included in standard gear)
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 60
+- **Remaining Coins:** 110
 
 ### Spells
 
-**Tradition:** Death (ancestors/curses) or Life (blessings/community) - using Balance (two traditions)
+**Tradition:** Death (ancestors/curses) and Life (blessings/community) — using Balance (two traditions; freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**
-- **Rank 0:** Chill Touch (Death), Speak with Dead (Death)
-- **Rank 1:** Inflict Wounds (Death), Healing Touch (Life)
+
+- **Rank 0:** Chill Touch (Death), Restore Life (Life)
+- **Rank 1:** Blood Shards (Death), Healing Touch (Life)
 
 *At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
@@ -648,10 +667,10 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Spear (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Navigator's Tools toolkit (25 coins, included in standard gear)
+- Navigator's Tools toolkit (included in standard gear)
 - **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 25
 
 ### Spells
 
@@ -659,10 +678,10 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (3 from one tradition at rank 0-1):**
-- **Rank 0:** Animal Friendship, Speak with Animals
-- **Rank 1:** Summon Beast
+- **Rank 0:** Bestial Adaptation, Rejuvenation
+- **Rank 1:** Wild Companion
 
-*At rank 1, you know 6 total spells: 3 starting + 3 from gaining rank 1. Add three more rank 0-1 Nature spells like Animal Messenger, Beast Sense, and Entangle.*
+*At rank 1, you know 6 total spells: 3 starting + 3 from gaining rank 1. Add three more rank 0-1 Nature spells like Beast Form, Rock Throw, and Purify Water.*
 
 ### Playstyle & Advancement
 
@@ -672,7 +691,7 @@ The Tamer is perfect for players who want to command multiple allies and control
 
 ---
 
-## Alchemist
+## Apothecary
 
 **Role:** Striker / Utility
 
@@ -713,19 +732,17 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 - Sling Bullets d8 (free, 1 load)
 - Throwing Knives (25 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
-- Brewer's Tools toolkit (50 coins, included in standard gear)
-- Acid Vial x3 (90 coins, 3 load)
-- **Total Load:** 12 (equipment 7 + standard gear 5)
+- Brewer's Tools toolkit (included in standard gear)
+- Acid Vial (30 coins, 1 load)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 85
-
-**Note:** Total load (15) significantly exceeds carry capacity (10) - you'll be heavily encumbered. Leave acid vials with the party or manage your load carefully. Consider dropping some items before combat.
+- **Remaining Coins:** 195
 
 ### Playstyle & Advancement
 
-The Alchemist is perfect for players who enjoy crafting, creative problem-solving, and versatile utility options. Create bombs, potions, and devices to solve problems creatively. Quick Construction lets you improvise tools during adventures. Focus on crafting alchemical items during downtime. Expert Slinger makes you effective at short range with thrown items and alchemical weapons. Use Volley to hit groups and Barrage for focused damage.
+The Apothecary is perfect for players who enjoy crafting, creative problem-solving, and versatile utility options. Create bombs, potions, and devices to solve problems creatively. Quick Construction lets you improvise tools during adventures. Focus on crafting alchemical items during downtime. Expert Slinger makes you effective at short range with thrown items and alchemical weapons. Use Volley to hit groups and Barrage for focused damage.
 
-**Note:** Total load (15) significantly exceeds carry capacity (10) - you'll be heavily encumbered. Leave acid vials with the party or manage your load carefully. Consider dropping some items before combat.
+ 
 
 **Advancement:** Increase Crafting to rank 2-3 for better items, raise Archery for improved delivery and more Combat Arts, add Lore for formula knowledge, and consider Efficient Worker or Artisan talents.
 
@@ -828,10 +845,9 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 - Leather Armor (50 coins, 1 load)
 - Climber's Kit toolkit (included in standard gear)
 - Healing Salve (simple) x2 (60 coins, 2 load)
-- Small Trinket x2 (50 coins, 0 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 90
+- **Remaining Coins:** 140
 
 ### Playstyle & Advancement
 
@@ -883,10 +899,9 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Leather Armor (50 coins, 1 load)
 - Disguise Kit toolkit (included in standard gear)
 - Weapon Poison (weak) x2 (100 coins, 2 load)
-- Small Trinket x3 (75 coins, 0 load)
 - **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 50
+- **Remaining Coins:** 125
 
 ### Playstyle & Advancement
 
@@ -937,11 +952,10 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - **Toolkit:** Weaver's Tools (included in standard gear)
 - Healing Salve (potent) (125 coins, 1 load)
 - Healing Salve (simple) x2 (60 coins, 2 load)
-- Small Trinket x2 (50 coins, 0 load)
 - Rope, extra (10 coins, 1 load)
 - **Total Load:** 10 (equipment 5 + standard gear 5)
-- **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 5
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
+- **Remaining Coins:** 55
 
 ### Playstyle & Advancement
 
@@ -990,23 +1004,27 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 - Longsword (100 coins, 1 load)
 - Spell Catalyst - Arcane Conduit (75 coins, 0 load)
-- Smith's Tools toolkit (50 coins, included in standard gear)
+- Smith's Tools toolkit (included in standard gear)
 - Acid Vial x3 (90 coins, 3 load)
-- Small Trinket x2 (35 coins, 0 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 0
+- **Remaining Coins:** 85
 
 ### Spells
 
 **Discipline:** Evocation (elemental) or Telekinetics (force)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Starting Spells (2 rank 0 from chosen discipline):**
-- **Evocation:** Flickering Flame, Frost Snap
-- **Telekinetics:** Force Push, Mage Hand
+**Starting Spells (choose one discipline and take 2 rank 0 + 2 rank 1):**
 
-*At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1. Add two rank 0-1 spells like Chromatic Orb and Flaming Weapon (Evocation) or Telekinetic Strike and Kinetic Barrier (Telekinetics).*
+- **Evocation:**
+  - Rank 0: Flickering Flame, Frost Snap
+  - Rank 1: Chromatic Orb, Flaming Weapon
+- **Telekinetics:**
+  - Rank 0: Kinetic Push, Weak Telekinesis
+  - Rank 1: Gravity Orb, Reflective Barrier
+
+*At rank 1, you know 4 total spells within your chosen discipline.*
 
 ### Playstyle & Advancement
 
@@ -1058,10 +1076,9 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 - Leather Armor (50 coins, 1 load)
 - Navigator's Tools toolkit (included in standard gear)
 - Healing Salve (weak) (15 coins, 1 load)
-- Small Trinket (25 coins, 0 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
-- **Remaining Coins:** 10
+- **Remaining Coins:** 35
 
 ### Playstyle & Advancement
 
@@ -1104,21 +1121,20 @@ The Warlord is perfect for players who want to lead the party tactically, enhanc
 
 - Quarterstaff (100 coins, 1 load)
 - Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Painter's Supplies toolkit (50 coins, included in standard gear)
+- Painter's Supplies toolkit (included in standard gear)
 - Healing Salve (simple) x3 (90 coins, 3 load)
-- Small Trinket (25 coins, 0 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 10
+- **Remaining Coins:** 85
 
 ### Spells
 
-**Tradition:** Twilight (dreams/fate) or Light (truth/revelation) - using Balance (two traditions)
+**Tradition:** Twilight (dreams/fate) and Light (truth/revelation) — using Balance (two traditions; freely choose spells from either)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
 
 **Starting Spells (2 from two traditions at rank 0-1):**
-- **Rank 0:** Dark Sight (Twilight), Sense Spirits (Light)
-- **Rank 1:** Shadow Veil (Twilight), Detect Lies (Light)
+- **Rank 0:** Dark Sight (Twilight), Detect Lies (Light)
+- **Rank 1:** Whisper of Dreams (Twilight), Blessing of Light (Light)
 
 *At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1*
 
@@ -1130,6 +1146,169 @@ The Oracle is perfect for players who enjoy support roles, being the party's gui
 
 ---
 
+## Gladiator
+
+**Role:** Striker / Controller
+
+**Overview:** An arena fighter who thrives on showmanship and crowd control, using spearwork, grappling, and takedowns to dominate foes.
+
+### Attributes
+
+| STR | AGI | SPI | MND |
+|-----|-----|-----|-----|
+| d8  | d6  | d6  | d4  |
+
+### Upbringing & Background
+
+- **Upbringing:** Militaristic (Fighting, Fortitude, Perception)
+- **Background:** Entertainer (Athletics, Influence, Insight, Perception)
+- **Starting Item:** Arena victor's token (0 load)
+
+### Skills
+
+**Rank 1 Skills:**
+- **Fighting** – *Polearm Mastery (Rank 1)* – Opportunity attacks when enemies approach
+- **Athletics** – *Grappler (Rank 1)* – Grapple on hit with unarmed/brawling weapons
+- **Influence** – *Performer (Rank 1)* – Excel at entertaining and swaying crowds
+
+**Rank 0 Skills:** Fortitude, Perception, Streetwise†, Stealth†
+
+*† Customized skills (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Felling Strike** – Trip enemies while attacking
+- **Terrifying Strike** – Frighten enemies with presence and bloodsport bravado
+
+### Equipment
+
+- Spear (100 coins, 1 load)
+- Javelins (50 coins, 1 load)
+- Leather Armor (50 coins, 1 load)
+- Disguise Kit toolkit (included in standard gear)
+- Healing Salve (weak) (15 coins, 1 load)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
+- **Carry Capacity:** 12 (1/2 STR 4 + 8)
+- **Remaining Coins:** 135
+
+### Playstyle & Advancement
+
+The Gladiator is perfect for players who want flashy, high‑impact melee with control elements. Use Grappler and Felling Strike to put enemies on the ground, punish approaches with Polearm Mastery, and pressure morale with Terrifying Strike. Work the battlefield and the crowd alike.
+
+**Advancement:** Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics for better control and mobility, add Fortitude for resilience, and consider Shield Mastery or additional performance/social talents.
+
+---
+
+## Duelist
+
+**Role:** Striker
+
+**Overview:** A swift, precise blade fighter who wins through footwork, feints, and pinpoint strikes.
+
+### Attributes
+
+| STR | AGI | SPI | MND |
+|-----|-----|-----|-----|
+| d6  | d8  | d6  | d4  |
+
+### Upbringing & Background
+
+- **Upbringing:** Militaristic (Fighting, Fortitude, Perception)
+- **Background:** Officer (Education, Fighting, Influence, Insight)
+- **Starting Item:** Gilded signet ring (0 load)
+
+### Skills
+
+**Rank 1 Skills:**
+- **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
+- **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
+- **Stealth** – *Light Footed (Rank 1)* – Reduce noise and move silently
+
+**Rank 0 Skills:** Influence, Perception, Streetwise†, Education†
+
+*† Customized skills (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
+- **Feint** – Gain +1 boon when not moving
+- **Precise Strike** – Ignore armor and add Agility to damage
+
+### Equipment
+
+- Shortsword (50 coins, 1 load)
+- Throwing Knives (25 coins, 1 load)
+- Leather Armor (50 coins, 1 load)
+- Disguise Kit toolkit (included in standard gear)
+- Healing Salve (weak) (15 coins, 1 load)
+- **Total Load:** 9 (equipment 4 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
+- **Remaining Coins:** 210
+
+### Playstyle & Advancement
+
+The Duelist is perfect for players who prefer agility and precision over brute force. Control distance with Fast Stride, use Feint to open defenses, and land Precise Strikes when it counts.
+
+**Advancement:** Increase Fighting and Athletics to rank 2-3, add Stealth or Influence depending on intrigue vs. street play, and consider Defensive Dueling or Riposte.
+
+---
+
+## Engineer
+
+**Role:** Support / Utility
+
+**Overview:** A siege and devices specialist who improvises tools, sets traps, and supports allies with clever engineering and thrown contraptions.
+
+### Attributes
+
+| STR | AGI | SPI | MND |
+|-----|-----|-----|-----|
+| d4  | d8  | d6  | d6  |
+
+### Upbringing & Background
+
+- **Upbringing:** Artisanal (Crafting, Insight, Perception)
+- **Background:** None listed - fully customized skills
+- **Starting Item:** Wax‑sealed blueprint tube (0 load)
+
+### Skills
+
+**Rank 1 Skills:**
+- **Crafting** – *Quick Construction (Rank 1)* – Improvise items during exploration
+- **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
+- **Archery** – *Expert Slinger (Rank 1)* – Re-roll Supply checks for thrown weapons, +Archery damage at close/short
+
+**Rank 0 Skills:** Lore†, Perception, Fortitude, Streetwise†
+
+*† Customized skills (not from upbringing/background suggestions)*
+
+### Combat Arts
+
+As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
+- **Aimed Shot** – Gain +1 boon when not moving
+- **Volley** – Hit multiple enemies with thrown weapons
+
+### Equipment
+
+- Sling (50 coins, 1 load)
+- Sling Bullets d8 (free, 1 load)
+- Throwing Knives (25 coins, 1 load)
+- Leather Armor (50 coins, 1 load)
+- Carpenter's Tools toolkit (included in standard gear)
+- Acid Vial (30 coins, 1 load)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
+- **Remaining Coins:** 195
+
+### Playstyle & Advancement
+
+The Engineer is perfect for players who enjoy battlefield problem‑solving and logistics. Use Quick Construction to bolster defenses, create tools, and set simple traps. Deliver devices at range with Expert Slinger and support allies by shaping the field.
+
+**Advancement:** Increase Crafting to rank 2-3 for stronger builds, add Education and Perception for planning and scouting, raise Archery or Fighting depending on preferred delivery method, and consider Efficient Worker or Artisan talents.
+
+---
+
 ## Quick Reference: Archetype Overview
 
 | Archetype | Role | Primary Skills | Best For |
@@ -1137,15 +1316,15 @@ The Oracle is perfect for players who enjoy support roles, being the party's gui
 | **Fighter** | Tank/Striker | Fighting, Athletics, Fortitude | Reliable frontline combat |
 | **Barbarian** | Striker/Tank | Fighting, Athletics, Fortitude | Massive damage, rage mechanics |
 | **Ranger** | Striker/Utility | Archery, Survival, Nature | Ranged combat, wilderness |
-| **Cleric** | Support/Tank | Mysticism, Fighting, Lore | Healing, divine magic, melee |
+| **Priest** | Support/Tank | Mysticism, Fighting, Lore | Healing, divine magic, melee |
 | **Sorcerer** | Striker | Arcana, Lore, Education | Devastating offensive magic |
 | **Warlock** | Striker/Controller | Arcana, Lore, Insight | Dark magic, mind control |
-| **Paladin** | Tank/Support | Fighting, Mysticism, Influence | Holy warrior, heavy armor |
+| **Champion** | Tank/Support | Fighting, Mysticism, Influence | Holy warrior, heavy armor |
 | **Bard** | Support/Controller | Mysticism, Influence, Education | Performance magic, social |
 | **Druid** | Support/Controller | Mysticism, Nature, Survival | Nature magic, shapeshifting |
 | **Shaman** | Support/Controller | Mysticism, Nature, Lore | Spirit communion, ancestors |
 | **Tamer** | Support/Controller | Fighting, Nature, Mysticism | Summoning, animal allies |
-| **Alchemist** | Striker/Utility | Archery, Crafting, Education | Bombs, potions, devices |
+| **Apothecary** | Striker/Utility | Archery, Crafting, Education | Bombs, potions, devices |
 | **Hoplite** | Tank/Controller | Fighting, Athletics, Influence | Formation fighting, spear |
 | **Slinger** | Striker | Archery, Athletics, Stealth | Mobile ranged skirmisher |
 | **Rogue** | Striker/Utility | Fighting, Stealth, Streetwise | Stealth, infiltration, skills |
@@ -1153,6 +1332,9 @@ The Oracle is perfect for players who enjoy support roles, being the party's gui
 | **Magus** | Striker/Hybrid | Arcana, Fighting, Education | Melee + magic hybrid |
 | **Warlord** | Support/Controller | Fighting, Influence, Education | Battlefield commander |
 | **Oracle** | Support/Utility | Mysticism, Lore, Insight | Prophecy, divination, fate |
+| **Gladiator** | Striker/Controller | Fighting, Athletics, Influence | Arena control, takedowns |
+| **Duelist** | Striker | Fighting, Athletics, Stealth | Agile precision melee |
+| **Engineer** | Support/Utility | Crafting, Education, Archery | Siege, traps, devices |
 
 ---
 
