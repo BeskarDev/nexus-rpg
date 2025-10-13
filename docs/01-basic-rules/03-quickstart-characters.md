@@ -81,7 +81,7 @@ Role: Striker / Utility
 - **Crafting** – *Quick Construction (Rank 1)* – Improvise items during exploration
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
 
-**Rank 0 Skills:** Lore†, Perception, Insight, Nature
+**Rank 0 Skills:** Lore †, Perception, Insight, Nature
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -138,7 +138,7 @@ Role: Support / Controller
 - **Influence** – *Performer (Rank 1)* – Excel at entertaining and swaying crowds
 - **Education** – *Eloquent Talker (Rank 1)* – Use Education instead of Influence in social situations
 
-**Rank 0 Skills:** Stealth, Insight, Perception, Lore†
+**Rank 0 Skills:** Stealth, Insight, Perception, Lore †
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -197,7 +197,7 @@ Role: Striker / Tank
 - **Athletics** – *Bulky (Rank 1)* – +2 HP and +2 carrying capacity
 - **Fortitude** – *Battle Rage (Rank 1)* – Enter rage for combat bonuses
 
-**Rank 0 Skills:** Survival, Perception, Nature, Stealth†
+**Rank 0 Skills:** Survival, Perception, Nature, Stealth †
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -253,7 +253,7 @@ Role: Tank / Support
 - **Mysticism** – *Divine Strike (Rank 1)* – Add Spirit to melee weapon damage once per turn
 - **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
 
-**Rank 0 Skills:** Fortitude, Insight, Lore, Perception†
+**Rank 0 Skills:** Fortitude, Insight, Lore, Perception †
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -324,7 +324,7 @@ Role: Striker
 - **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
 - **Stealth** – *Light Footed (Rank 1)* – Reduce noise and move silently
 
-**Rank 0 Skills:** Influence, Perception, Streetwise†, Education†
+**Rank 0 Skills:** Influence, Perception, Streetwise †, Education †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -380,7 +380,7 @@ Role: Support / Controller
 - **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion
 - **Survival** – *Forager (Rank 1)* – Excel at finding food and resources
 
-**Rank 0 Skills:** Lore, Insight, Perception†, Athletics†
+**Rank 0 Skills:** Lore, Insight, Perception †, Athletics †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -441,7 +441,7 @@ Role: Support / Utility
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
 - **Archery** – *Expert Slinger (Rank 1)* – Re-roll Supply checks for thrown weapons, +Archery damage at close/short
 
-**Rank 0 Skills:** Lore†, Perception, Fortitude, Streetwise†
+**Rank 0 Skills:** Lore †, Perception, Fortitude, Streetwise †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -498,7 +498,7 @@ Role: Tank / Striker
 - **Athletics** – *Stand Your Ground (Rank 1)* – Resist being knocked prone or pushed with Quick Action
 - **Fortitude** – *Second Wind (Rank 1)* – Regain HP with Quick Action once per scene
 
-**Rank 0 Skills:** Influence, Perception, Insight†, Archery
+**Rank 0 Skills:** Influence, Perception, Insight †, Archery
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -553,7 +553,7 @@ Role: Striker / Controller
 - **Athletics** – *Grappler (Rank 1)* – Grapple on hit with unarmed/brawling weapons
 - **Influence** – *Performer (Rank 1)* – Excel at entertaining and swaying crowds
 
-**Rank 0 Skills:** Fortitude, Perception, Streetwise†, Stealth†
+**Rank 0 Skills:** Fortitude, Perception, Streetwise †, Stealth †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -609,7 +609,7 @@ Role: Tank / Controller
 - **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
 - **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
 
-**Rank 0 Skills:** Fortitude, Perception, Insight†, Archery
+**Rank 0 Skills:** Fortitude, Perception, Insight †, Archery
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -665,7 +665,7 @@ Role: Striker / Hybrid
 - **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
 
-**Rank 0 Skills:** Lore, Perception†, Insight, Streetwise
+**Rank 0 Skills:** Lore, Perception †, Insight, Streetwise
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -736,7 +736,7 @@ Role: Striker / Controller
 - **Athletics** – *Grappler (Rank 1)* – Grapple on hit with unarmed/brawling weapons
 - **Fortitude** – *Body of Bronze (Rank 1)* – +2 HP, +1+Fortitude AV while unarmored
 
-**Rank 0 Skills:** Insight, Perception, Mysticism†, Education
+**Rank 0 Skills:** Insight, Perception, Mysticism †, Education
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -792,7 +792,7 @@ Role: Support / Utility
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with religious and mystical knowledge
 - **Insight** – *Read Intentions (Rank 1)* – Sense motives and emotions
 
-**Rank 0 Skills:** Education, Perception†, Influence, Stealth†
+**Rank 0 Skills:** Education, Perception †, Influence, Stealth †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -852,7 +852,7 @@ Role: Support / Tank
 - **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with religious knowledge
 
-**Rank 0 Skills:** Influence, Insight, Fortitude†, Education
+**Rank 0 Skills:** Influence, Insight, Fortitude †, Education
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -923,7 +923,7 @@ Role: Striker / Utility
 - **Survival** – *Tracker (Rank 1)* – Excel at tracking creatures
 - **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion
 
-**Rank 0 Skills:** Insight†, Perception, Stealth†, Fighting
+**Rank 0 Skills:** Insight †, Perception, Stealth †, Fighting
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -980,7 +980,7 @@ Role: Striker / Utility
 - **Stealth** – *Unseen (Rank 1)* – Excel at hiding and sneaking
 - **Streetwise** – *Urban Navigator (Rank 1)* – Know cities and find what you need
 
-**Rank 0 Skills:** Insight, Perception, Athletics†, Influence†
+**Rank 0 Skills:** Insight, Perception, Athletics †, Influence †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -1036,7 +1036,7 @@ Role: Support / Controller
 - **Nature** – *Herbalist (Rank 1)* – Create potent remedies
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with spiritual knowledge
 
-**Rank 0 Skills:** Insight, Survival, Perception†, Influence†
+**Rank 0 Skills:** Insight, Survival, Perception †, Influence †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -1096,7 +1096,7 @@ Role: Striker
 - **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
 - **Stealth** – *Light Footed (Rank 1)* – Reduce noise and move silently
 
-**Rank 0 Skills:** Survival, Perception, Insight†, Nature
+**Rank 0 Skills:** Survival, Perception, Insight †, Nature
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -1153,7 +1153,7 @@ Role: Striker
 - **Lore** – *Lorekeeper (Rank 1)* – Expertise with magical knowledge
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills with Mind
 
-**Rank 0 Skills:** Insight, Perception, Stealth†, Influence
+**Rank 0 Skills:** Insight, Perception, Stealth †, Influence
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
@@ -1214,7 +1214,7 @@ Role: Support / Controller
 - **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion (or multiple)
 - **Mysticism** – *Wild Shape (Rank 1)* – Transform into animal forms
 
-**Rank 0 Skills:** Lore†, Survival, Insight†, Perception
+**Rank 0 Skills:** Lore †, Survival, Insight †, Perception
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -1281,7 +1281,7 @@ Role: Striker / Controller
 - **Lore** – *Forbidden Knowledge (Rank 1)* – Gain insights into forbidden subjects
 - **Insight** – *Read Intentions (Rank 1)* – Sense motives and emotions
 
-**Rank 0 Skills:** Fortitude†, Influence, Stealth†, Perception†
+**Rank 0 Skills:** Fortitude †, Influence, Stealth †, Perception †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -1346,7 +1346,7 @@ Role: Support / Controller
 - **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
 - **Education** – *Commander (Rank 1)* – Grant allies movement or boons as Quick Action
 
-**Rank 0 Skills:** Fortitude, Insight, Perception, Athletics†
+**Rank 0 Skills:** Fortitude, Insight, Perception, Athletics †
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
