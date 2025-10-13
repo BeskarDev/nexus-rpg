@@ -61,7 +61,7 @@ Feel free to customize these examples to match your vision or use them as-is for
 
 Role: Striker / Utility
 
-**Overview:** A ranged specialist who uses bombs, potions, and alchemical devices to deal damage and solve problems.
+**Overview:** A precise poisoner–healer who uses a silent blowpipe, weapon poisons, and salves. Supports the party with field medicine and clever alchemical prep.
 
 **Attributes**
 
@@ -77,38 +77,38 @@ Role: Striker / Utility
 
 **Rank 1 Skills:**
 
-- **Archery** – *Expert Slinger (Rank 1)* – Re-roll Supply checks for thrown weapons, +Archery damage at close/short
-- **Crafting** – *Quick Construction (Rank 1)* – Improvise items during exploration
-- **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
+- **Archery** † – *Disciplined Archer (Rank 1)* – Re-roll one ranged attack per scene
+- **Crafting** – *Peak Performance (Rank 1)* – Pre‑buff one weapon or ammo: +1 weapon damage or +2 ammo damage until next rest
+- **Nature** – *Field Medic (Rank 1)* – Better stabilize/treat injuries, quick battlefield care
 
-**Rank 0 Skills:** Lore †, Perception, Insight, Nature
+**Rank 0 Skills:** Lore †, Perception, Insight, Education
 
 Note: † Customized skill (not from upbringing/background suggestions)
 
 **Combat Arts**
 
-As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended:
+As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. Recommended for a blowpipe user:
 
-- **Volley** – Hit multiple enemies with thrown weapons
-- **Barrage** – Make multiple attacks with thrown weapons
+- **Aimed Shot** – Gain +1 boon when you don’t move
+- **Precise Shot** – Ignore armor and add Agility to damage
 
 **Equipment**
 
-- Sling (50 coins, 1 load)
-- Sling Bullets d8 (free, 1 load)
-- Throwing Knives (25 coins, 1 load)
+- Blowpipe (25 coins, 1 load)
+- Blowdarts d8 (5 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
 - Brewer's Tools toolkit (included in standard gear)
-- Acid Vial (30 coins, 1 load)
+- Weapon Poison (weak) (50 coins, 1 load)
+- Healing Salve (simple) (30 coins, 1 load)
 - **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
-- **Remaining Coins:** 195
+- **Remaining Coins:** 190
 
 **Playstyle & Advancement**
 
-The Apothecary is perfect for players who enjoy crafting, creative problem-solving, and versatile utility options. Create bombs, potions, and devices to solve problems creatively. Quick Construction lets you improvise tools during adventures. Focus on crafting alchemical items during downtime. Expert Slinger makes you effective at short range with thrown items and alchemical weapons. Use Volley to hit groups and Barrage for focused damage.
+The Apothecary rewards patience, setup, and smart resource use. Open from stealth with the silent blowpipe; coat darts with Weapon Poison and use the blowpipe property to multiply the poison’s damage on strong/critical hits. Peak Performance lets you boost your darts (ammo) for +2 damage the whole day, turning small hits into meaningful chip. Field Medic makes you the team’s on‑site healer for stabilizing and treating injuries. Use Aimed Shot to land reliable first strikes and Precise Shot to punch through armor when needed.
 
-**Advancement:** Increase Crafting to rank 2-3 for better items, raise Archery for improved delivery and more Combat Arts, add Lore for formula knowledge, and consider Efficient Worker or Artisan talents.
+**Advancement:** Raise Archery 2–3 for more Combat Arts and consistency (Sharpshooter or Rapid Shot next). Push Nature 2–3 to deepen triage and wilderness sourcing, and Crafting 2–3 for stronger prep (Efficient Worker, Artisan, or Peak Performance 2). Add Lore for formula lore and Education for scholarly support. Consider Stealth later to exploit blowpipe ambushes with Assassination synergy.
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
@@ -134,8 +134,8 @@ Role: Support / Controller
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Spirit Walker (Rank 1)* – Communicate with spirits and sense otherworldly presence
-- **Influence** – *Performer (Rank 1)* – Excel at entertaining and swaying crowds
+- **Mysticism** – *Master of Principles (Rank 1)* – Once per scene re‑roll for rank 0 mystic spells; foundation for cantrip‑like performance magic
+- **Influence** – *Inspire Ally (Rank 1)* – Grant boons and bonus damage; classic bardic encouragement
 - **Education** – *Eloquent Talker (Rank 1)* – Use Education instead of Influence in social situations
 
 **Rank 0 Skills:** Stealth, Insight, Perception, Lore †
@@ -158,16 +158,16 @@ Note: † Customized skill (not from upbringing/background suggestions)
 
 **Starting Spells (2 from two traditions at rank 0-1):**
 
-- **Rank 0:** Dark Sight (Twilight), Obscuring Veil (Twilight)
+- **Rank 0:** Obscuring Veil (Twilight), Calming Influence (Peace)
 - **Rank 1:** Cloak of Night (Twilight), Blessing of Peace (Peace)
 
 Note: At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1
 
 **Playstyle & Advancement**
 
-The Bard is perfect for players who enjoy social interaction, support roles, and creative problem-solving through magic. Use magic woven through performance to inspire allies and confound enemies. Eloquent Talker makes you a social powerhouse. Spirit Walker adds mystical insight beyond typical performers. Combine illusions with charm to control the battlefield.
+The Bard shines in social scenes and soft control. Use performance‑flavored rank 0 spells with Master of Principles to land key effects reliably; Calming Influence and veils shape tempo before blades are drawn. Inspire Ally fuels allies’ key rolls (and damage), while Eloquent Talker keeps you dominant in parley. You can still carry a shortsword, but your magic and words are your real weapons.
 
-**Advancement:** Increase Mysticism and Influence to rank 2-3 for more spells and social power, add more social skills, learn versatile spells for different situations, and consider adding Stealth for infiltration.
+**Advancement:** Raise Mysticism 2–3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2–3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft.
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
@@ -279,16 +279,16 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 **Tradition:** Choose Light (truth/justice) or War (combat prowess) — using Devotion (one tradition; 3 spells per rank)
 **Focus Pool:** (Spirit-2) + (2×Mysticism) = 4 + 2 = 6
 
-**Starting Spells (choose one tradition and take 3 spells at rank 0-1):**
+**Starting Spells (choose one tradition and take 3 spells at rank 0 and 3 spells at rank 1):**
 
 - **Light:**
-  - Rank 0: Dazzling Light, Detect Lies
-  - Rank 1: Radiant Burst
+  - Rank 0: Dazzling Light, Detect Lies, Illuminated Sight
+  - Rank 1: Radiant Burst, Radiant Weapon, Protect from Influence
 - **War:**
-  - Rank 0: Battle Surge, Mighty Strike
-  - Rank 1: War Cry
+  - Rank 0: Battle Surge, Mighty Strike, Spectral Slash
+  - Rank 1: Heroic Weapon, War Cry, Curse of War
 
-Note: At rank 1, you know 6 total spells: 3 starting + 3 from gaining rank 1
+Note: At rank 1, you know 6 total spells (3 rank 0 + 3 rank 1) within your chosen tradition.
 
 **Playstyle & Advancement**
 
@@ -320,9 +320,9 @@ Role: Striker
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
-- **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
-- **Stealth** – *Light Footed (Rank 1)* – Reduce noise and move silently
+ **Fighting** – *Defensive Dueling (Rank 1)* – +1 Parry while wielding a single non‑heavy melee weapon and no shield
+ **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
+ **Stealth** – *Devious Tactics (Rank 1)* – Use Distract as a Quick Action; feint via misdirection
 
 **Rank 0 Skills:** Influence, Perception, Streetwise †, Education †
 
