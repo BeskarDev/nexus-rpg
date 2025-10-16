@@ -35,6 +35,7 @@ Feel free to customize these examples to match your vision or use them as-is for
 | [Apothecary](#apothecary) | Striker/Utility | Archery, Crafting, Education | Bombs, potions, devices |
 | [Bard](#bard) | Support/Controller | Mysticism, Influence, Education | Performance magic, social |
 | [Barbarian](#barbarian) | Striker/Tank | Fighting, Athletics, Fortitude | Massive damage, rage mechanics |
+| [Brawler](#brawler) | Striker/Controller | Fighting, Fortitude, Streetwise | Unarmed, grapples, dirty tricks |
 | [Champion](#champion) | Tank/Support | Fighting, Mysticism, Influence | Holy warrior, heavy armor |
 | [Duelist](#duelist) | Striker | Fighting, Athletics, Stealth | Agile precision melee |
 | [Druid](#druid) | Support/Controller | Mysticism, Nature, Survival | Nature magic, shapeshifting |
@@ -51,7 +52,9 @@ Feel free to customize these examples to match your vision or use them as-is for
 | [Shaman](#shaman) | Support/Controller | Mysticism, Nature, Lore | Spirit communion, ancestors |
 | [Slinger](#slinger) | Striker | Archery, Athletics, Stealth | Mobile ranged skirmisher |
 | [Sorcerer](#sorcerer) | Striker | Arcana, Lore, Education | Devastating offensive magic |
-| [Tamer](#tamer) | Support/Controller | Fighting, Nature, Mysticism | Summoning, animal allies |
+| [Summoner](#summoner) | Support/Controller | Arcana, Lore, Insight | Conjuration, minions, battlefield control |
+| [Swashbuckler](#swashbuckler) | Striker/Controller | Fighting, Stealth, Streetwise | Dirty tactics, dual‑wielding |
+| [Tamer](#tamer) | Support/Controller | Fighting, Nature, Athletics | Animal handler, battlefield control |
 | [Warlock](#warlock) | Striker/Controller | Arcana, Lore, Insight | Dark magic, mind control |
 | [Warlord](#warlord) | Support/Controller | Fighting, Influence, Education | Battlefield commander |
 
@@ -71,7 +74,7 @@ Role: Striker / Utility
 
 **Upbringing & Background**
 
-- **Upbringing:** Artisanal (Crafting, Insight, Perception)
+- **Upbringing:** Apprenticed (Crafting, Insight, Perception)
 - **Background:** Apothecary (Crafting, Education, Insight, Nature)
 - **Starting Item:** Rare herb bundle (0 load)
 
@@ -118,34 +121,12 @@ The Apothecary rewards patience, setup, and smart resource use. Open from stealt
 
 Role: Support / Controller
 
-**Overview:** A magical performer who uses music and stories to inspire allies and confound enemies with enchantments.
-
-**Attributes**
-
-| STR | AGI | SPI | MND |
-|-----|-----|-----|-----|
-| d4  | d6  | d8  | d6  |
-
-**Upbringing & Background**
-
-- **Upbringing:** Bardic (Influence, Insight, Stealth)
-- **Background:** Entertainer (Athletics, Influence, Insight, Perception)
-- **Starting Item:** Painted festival mask (0 load)
-
-**Rank 1 Skills:**
-
-- **Mysticism** – *Master of Principles (Rank 1)* – Once per scene re‑roll for rank 0 mystic spells; foundation for cantrip‑like performance magic
-- **Influence** – *Inspire Ally (Rank 1)* – Grant boons and bonus damage; classic bardic encouragement
-- **Education** – *Eloquent Talker (Rank 1)* – Use Education instead of Influence in social situations
-
-**Rank 0 Skills:** Stealth, Insight, Perception, Lore †
-
 Note: † Customized skill (not from upbringing/background suggestions)
 
 **Equipment**
 
 - Shortsword (50 coins, 1 load)
-- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
 - Musical Instrument toolkit (included in standard gear)
 - **Total Load:** 6 (equipment 1 + standard gear 5)
 - **Carry Capacity:** 10 (1/2 STR 2 + 8)
@@ -162,6 +143,16 @@ Note: † Customized skill (not from upbringing/background suggestions)
 - **Rank 1:** Cloak of Night (Twilight), Blessing of Peace (Peace)
 
 Note: At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1
+
+**Animal Companion**
+
+If you choose Animal Companion, use the companion base stat block with Tier equal to your Nature rank (see the Mounts & Companions rules). Then pick any one Animal trait to define your companion’s type.
+
+Suggested traits:
+
+- Bear — Tough frontline with knockdown/grapple options and an intimidating roar.
+- Bird — Fast flying scout with keen eyes and dive attack bursts.
+- Constrictor Snake — Grapple and restrain to lock down priority targets.
 
 **Playstyle & Advancement**
 
@@ -187,7 +178,7 @@ Role: Striker / Tank
 
 **Upbringing & Background**
 
-- **Upbringing:** Hunter-gatherer (Nature, Perception, Survival)
+- **Upbringing:** Agricultural (Crafting, Nature, Survival)
 - **Background:** Barbarian (Athletics, Fighting, Fortitude, Survival)
 - **Starting Item:** Ancestor's weapon hilt (0 load)
 
@@ -229,6 +220,61 @@ The Barbarian is perfect for players who want to deal massive damage and play ag
 
 ---
 
+## Brawler
+
+Role: Striker / Controller
+
+**Overview:** A street-tough close-quarters fighter who dominates the clinch with fists, improvised weapons, and dirty tricks.
+
+**Attributes**
+
+| STR | AGI | SPI | MND |
+|-----|-----|-----|-----|
+| d8  | d8  | d4  | d4  |
+
+**Upbringing & Background**
+
+- **Upbringing:** Slums (Fortitude, Stealth, Streetwise)
+- **Background:** Tavern Fighter (Athletics, Fighting, Fortitude, Insight)
+- **Starting Item:** Weighted wraps (0 load)
+
+**Rank 1 Skills:**
+
+- **Fighting** – *Pugilist (Rank 1)* – Unarmed and brawling control; treat fists and brawling weapons as reliable tools in a scrap
+- **Fortitude** – *Hard to Kill (Rank 1)* – Shrug off punishment and stay standing in ugly brawls
+- **Streetwise** – *Thug Tactics (Rank 1)* – Gain boons when ganging up or fighting dirty in tight quarters
+
+**Rank 0 Skills:** Influence, Perception, Stealth †, Insight †
+
+Note: † Customized skills (not from upbringing/background suggestions)
+
+**Combat Arts**
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended for brawling weapons:
+
+- **Disarm** – Knock weapons from enemy hands to tilt the exchange
+- **Snare** – Clinch and restrain with chain, whip, or grappling setups
+
+**Equipment**
+
+- Cestus x2 (100 coins, 2 load)
+- Leather Armor (50 coins, 1 load)
+- Healer’s Kit (50 coins, 1 load)
+- Paralyzing Poison (weak) (30 coins, 1 load)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
+- **Carry Capacity:** 12 (1/2 STR 4 + 8)
+- **Remaining Coins:** 220
+
+**Playstyle & Advancement**
+
+Close distance and take away your opponent’s best options. Use Fast Stride to enter clinch range, Disarm to strip weapons, and Snare to tie down priority targets while your allies dogpile. Pugilist keeps your hands and brawling tools effective even when you’re unarmed or improvised. Thug Tactics rewards advantage creation and teamwork in scrappy fights.
+
+**Advancement:** Raise Fighting 2–3 for more control arts (Supreme Disarm) and improved damage lines; add Fortitude for toughness and recovery, and consider Streetwise 2 for better gang-up play. A spiked chain or whip can extend your control footprint once your technique improves.
+
+[Back to Quick Reference](#quick-reference-archetype-overview)
+
+---
+
 ## Champion
 
 Role: Tank / Support
@@ -250,8 +296,8 @@ Role: Tank / Support
 **Rank 1 Skills:**
 
 - **Fighting** – *Heavy Armor Mastery (Rank 1)* – Ignore movement penalty from heavy armor
-- **Mysticism** – *Divine Strike (Rank 1)* – Add Spirit to melee weapon damage once per turn
-- **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
+- **Mysticism** – *Mystic Champion (Rank 1)* – Infuse a rank 0 mystic spell into a weapon attack
+- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
 
 **Rank 0 Skills:** Fortitude, Insight, Lore, Perception †
 
@@ -268,7 +314,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 - Longsword (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
-- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
 - Mason's Tools toolkit (included in standard gear)
 - **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 12 (1/2 STR 4 + 8)
@@ -292,7 +338,7 @@ Note: At rank 1, you know 6 total spells (3 rank 0 + 3 rank 1) within your chose
 
 **Playstyle & Advancement**
 
-The Champion is perfect for players who want to be a holy warrior combining divine magic with frontline tanking. Use Divine Strike to enhance melee attacks and spells to support allies. Heavy Armor Mastery will be crucial once you upgrade to scale or plate mail. Commanding Presence makes you a natural party leader. Use Defensive Strike to stay alive and Terrifying Strike to control enemies.
+The Champion is perfect for players who want to be a holy warrior combining divine magic with frontline tanking. Use Mystic Champion to infuse spells into melee attacks and support allies. Heavy Armor Mastery will be crucial once you upgrade to scale or plate mail. Leading Presence makes you a natural party leader. Use Defensive Strike to stay alive and Terrifying Strike to control enemies.
 
 **Advancement:** Save coins to upgrade to Scale Mail (250) or Breastplate (750) and eventually Plate Harness (2,500), increase Fighting and Mysticism to rank 2-3 for more Combat Arts and spells, raise Fortitude for survivability, consider Shield Mastery or more divine-focused talents.
 
@@ -377,7 +423,7 @@ Role: Support / Controller
 **Rank 1 Skills:**
 
 - **Mysticism** – *Wild Shape (Rank 1)* – Transform into animal forms
-- **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion
+- **Nature** – *Animal Companion (Rank 1)* – Control an animal companion (Tier ≤ Nature)
 - **Survival** – *Forager (Rank 1)* – Excel at finding food and resources
 
 **Rank 0 Skills:** Lore, Insight, Perception †, Athletics †
@@ -387,7 +433,7 @@ Note: † Customized skills (not from upbringing/background suggestions)
 **Equipment**
 
 - Quarterstaff (100 coins, 1 load)
-- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
 - Brewer's Tools toolkit (included in standard gear)
 - Healing Salve (simple) x2 (60 coins, 2 load)
@@ -409,7 +455,7 @@ Note: At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1
 
 **Playstyle & Advancement**
 
-The Druid is perfect for players who want to blend with nature, shapeshift, and command elemental forces. Wild Shape provides incredible versatility, while Beast Companion gives you a loyal ally. Use nature magic to control the battlefield and support allies. Forager makes wilderness travel easier for the whole party.
+The Druid is perfect for players who want to blend with nature, shapeshift, and command elemental forces. Wild Shape provides incredible versatility, while Animal Companion gives you a loyal ally. Use nature magic to control the battlefield and support allies. Forager makes wilderness travel easier for the whole party.
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells and Wild Shape options, raise Nature and Survival for wilderness mastery, add Lore for deeper nature knowledge, and consider more shapeshifting or elemental talents.
 
@@ -431,15 +477,15 @@ Role: Support / Utility
 
 **Upbringing & Background**
 
-- **Upbringing:** Artisanal (Crafting, Insight, Perception)
-- **Background:** None listed - fully customized skills
-- **Starting Item:** Wax‑sealed blueprint tube (0 load)
+- **Upbringing:** Apprenticed (Crafting, Insight, Perception)
+- **Background:** Artisan (Crafting, Education, Fortitude, Perception)
+- **Starting Item:** Clay tablet with master's seal (0 load)
 
 **Rank 1 Skills:**
 
 - **Crafting** – *Quick Construction (Rank 1)* – Improvise items during exploration
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
-- **Archery** – *Expert Slinger (Rank 1)* – Re-roll Supply checks for thrown weapons, +Archery damage at close/short
+- **Archery** – *Expert Slinger (Rank 1)* – Re-roll Supply checks for thrown weapons
 
 **Rank 0 Skills:** Lore †, Perception, Fortitude, Streetwise †
 
@@ -455,7 +501,7 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 **Equipment**
 
 - Sling (50 coins, 1 load)
-- Sling Bullets d8 (free, 1 load)
+- Throwing Stones (d6) (free, 1 load)
 - Throwing Knives (25 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
 - Carpenter's Tools toolkit (included in standard gear)
@@ -498,9 +544,9 @@ Role: Tank / Striker
 - **Athletics** – *Stand Your Ground (Rank 1)* – Resist being knocked prone or pushed with Quick Action
 - **Fortitude** – *Second Wind (Rank 1)* – Regain HP with Quick Action once per scene
 
-**Rank 0 Skills:** Influence, Perception, Insight †, Archery
+**Rank 0 Skills:** Influence †, Perception, Insight †, Archery
 
-Note: † Customized skill (not from upbringing/background suggestions)
+Note: † Customized skills (not from upbringing/background suggestions)
 
 **Combat Arts**
 
@@ -533,7 +579,7 @@ The Fighter is perfect for players who want straightforward, effective combat wi
 
 Role: Striker / Controller
 
-**Overview:** An arena fighter who thrives on showmanship and crowd control, using spearwork, grappling, and takedowns to dominate foes.
+**Overview:** An arena fighter who thrives on showmanship and crowd control, using sweeping greatsword strikes, grappling, and staged takedowns to dominate foes.
 
 **Attributes**
 
@@ -545,13 +591,13 @@ Role: Striker / Controller
 
 - **Upbringing:** Militaristic (Fighting, Fortitude, Perception)
 - **Background:** Entertainer (Athletics, Influence, Insight, Perception)
-- **Starting Item:** Arena victor's token (0 load)
+- **Starting Item:** Painted festival mask (0 load)
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Polearm Mastery (Rank 1)* – Opportunity attacks when enemies approach
+- **Fighting** – *Heavy Weapon Mastery (Rank 1)* – No bane on Brutal Strike with heavy weapons
 - **Athletics** – *Grappler (Rank 1)* – Grapple on hit with unarmed/brawling weapons
-- **Influence** – *Performer (Rank 1)* – Excel at entertaining and swaying crowds
+- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
 
 **Rank 0 Skills:** Fortitude, Perception, Streetwise †, Stealth †
 
@@ -561,13 +607,12 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Felling Strike** – Trip enemies while attacking
-- **Terrifying Strike** – Frighten enemies with presence and bloodsport bravado
+- **Brutal Strike** – Deal extra Strength damage with heavy weapons
+- **Cleave** – Hit multiple foes with a sweeping two‑handed strike
 
 **Equipment**
 
-- Spear (100 coins, 1 load)
-- Javelins (50 coins, 1 load)
+- Greatsword (150 coins, 2 load)
 - Leather Armor (50 coins, 1 load)
 - Disguise Kit toolkit (included in standard gear)
 - Healing Salve (weak) (15 coins, 1 load)
@@ -577,7 +622,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Playstyle & Advancement**
 
-The Gladiator is perfect for players who want flashy, high‑impact melee with control elements. Use Grappler and Felling Strike to put enemies on the ground, punish approaches with Polearm Mastery, and pressure morale with Terrifying Strike. Work the battlefield and the crowd alike.
+The Gladiator is perfect for players who want flashy, high‑impact melee with crowd‑pleasing finishers. Use Grappler for clinches and showy takedowns, then unleash Brutal Strike for big single‑target hits or Cleave to cut through multiple foes. Work the battlefield—and the audience—while rallying allies with Leading Presence.
 
 **Advancement:** Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics for better control and mobility, add Fortitude for resilience, and consider Shield Mastery or additional performance/social talents.
 
@@ -607,7 +652,7 @@ Role: Tank / Controller
 
 - **Fighting** – *Polearm Mastery (Rank 1)* – Opportunity attacks when enemies approach
 - **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
-- **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
+- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
 
 **Rank 0 Skills:** Fortitude, Perception, Insight †, Archery
 
@@ -633,7 +678,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Playstyle & Advancement**
 
-The Hoplite is perfect for players who enjoy tactical positioning, defensive play, and Bronze Age military aesthetics. Control space with reach weapons and hold formation with allies. Polearm Mastery punishes enemies who approach, while Fast Stride allows repositioning. Commanding Presence helps coordinate your unit. Use Charge for aggressive pushes and Defensive Strike to hold the line.
+The Hoplite is perfect for players who enjoy tactical positioning, defensive play, and Bronze Age military aesthetics. Control space with reach weapons and hold formation with allies. Polearm Mastery punishes enemies who approach, while Fast Stride allows repositioning. Leading Presence helps coordinate your unit. Use Charge for aggressive pushes and Defensive Strike to hold the line.
 
 **Advancement:** Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics and Influence for tactical command, add Fortitude for resilience, consider Shield Mastery or Protective Stance, and save for heavier armor (Scale Mail 250 coins).
 
@@ -663,7 +708,7 @@ Role: Striker / Hybrid
 
 - **Arcana** – *Battle Mage (Rank 1)* – Quick Action arcane barrier adds Arcana to Parry/Dodge
 - **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
-- **Education** – *General Education (Rank 1)* – No bane on untrained expert skills
+- **Education** – *General Education (Rank 1)* – No bane on untrained expert skills when using Mind
 
 **Rank 0 Skills:** Lore, Perception †, Insight, Streetwise
 
@@ -679,7 +724,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 **Equipment**
 
 - Longsword (100 coins, 1 load)
-- Spell Catalyst - Arcane Conduit (75 coins, 0 load)
+- Spell Catalyst (Arcane Conduit) (75 coins, 0 load)
 - Smith's Tools toolkit (included in standard gear)
 - Acid Vial x3 (90 coins, 3 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
@@ -691,13 +736,13 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 **Discipline:** Evocation (elemental) or Telekinetics (force)
 **Focus Pool:** (Mind-2) + (2×Arcana) = 6 + 2 = 8
 
-**Starting Spells (choose one discipline and take 2 rank 0 + 2 rank 1):**
+**Starting Spells (choose one discipline; take 2 rank 0 + 2 rank 1):**
 
 - **Evocation:**
   - Rank 0: Flickering Flame, Frost Snap
   - Rank 1: Chromatic Orb, Flaming Weapon
 - **Telekinetics:**
-  - Rank 0: Kinetic Push, Weak Telekinesis
+  - Rank 0: Kinetic Pull, Kinetic Push
   - Rank 1: Gravity Orb, Reflective Barrier
 
 Note: At rank 1, you know 4 total spells within your chosen discipline.
@@ -788,9 +833,9 @@ Role: Support / Utility
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Spirit Walker (Rank 1)* – Communicate with spirits and sense otherworldly presence
-- **Lore** – *Lorekeeper (Rank 1)* – Expertise with religious and mystical knowledge
-- **Insight** – *Read Intentions (Rank 1)* – Sense motives and emotions
+- **Mysticism** – *Divine Sense (Rank 1)* – Sense spirits/undead and hallowed or cursed auras
+- **Lore** – *Consult the Myths (Rank 1)* – Re‑roll Lore about supernatural topics once per scene
+- **Insight** – *Piercing Look (Rank 1)* – Re‑roll Insight to detect lies or motives once per scene
 
 **Rank 0 Skills:** Education, Perception †, Influence, Stealth †
 
@@ -799,7 +844,7 @@ Note: † Customized skills (not from upbringing/background suggestions)
 **Equipment**
 
 - Quarterstaff (100 coins, 1 load)
-- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
 - Painter's Supplies toolkit (included in standard gear)
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
@@ -820,7 +865,7 @@ Note: At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1
 
 **Playstyle & Advancement**
 
-The Oracle is perfect for players who enjoy support roles, being the party's guide, and themes of fate and prophecy. Use foresight and divination to guide allies and avoid danger. Read Intentions helps you understand others while your spells provide warnings and revelations. Spirit Walker adds mystical communication beyond normal perception. Combine illusions from Twilight with revelations from Light for versatile support.
+The Oracle is perfect for players who enjoy support roles, being the party's guide, and themes of fate and prophecy. Use foresight and divination to guide allies and avoid danger. Piercing Look helps you understand others while your spells provide warnings and revelations. Divine Sense adds mystical perception beyond the mortal veil. Combine illusions from Twilight with revelations from Light for versatile support.
 
 **Advancement:** Increase Mysticism and Lore to rank 2-3 for more powerful spells and deeper knowledge, raise Insight for better intuition, learn more divination and revelation spells, add Education for broader knowledge, and consider prophecy-themed talents.
 
@@ -848,9 +893,9 @@ Role: Support / Tank
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Divine Intervention (Rank 1)* – Channel divine power to reroll failed spell tests once per scene
+- **Mysticism** – *Divine Rites (Rank 1)* – Regain half your Focus during a short break, limited uses per day
 - **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
-- **Lore** – *Lorekeeper (Rank 1)* – Expertise with religious knowledge
+- **Lore** – *Consult the Myths (Rank 1)* – Re‑roll Lore about supernatural topics once per scene
 
 **Rank 0 Skills:** Influence, Insight, Fortitude †, Education
 
@@ -867,7 +912,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 - Mace (100 coins, 1 load)
 - Light Shield (150 coins, 1 load)
-- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
 - Cook's Utensils toolkit (included in standard gear)
 - **Total Load:** 7 (equipment 2 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
@@ -891,7 +936,7 @@ Note: At rank 1, you know 6 total spells: 3 starting + 3 from gaining rank 1
 
 **Playstyle & Advancement**
 
-The Priest is perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Intervention helps ensure your critical spells succeed. Use Defensive Strike to stay alive and Exhilarating Strike to keep allies in the fight.
+The Priest is perfect for players who want to support allies with healing and protection while remaining combat-effective. Balance divine magic with frontline fighting. Heal and protect allies while holding the line with shield and mace. Divine Rites helps you recover Focus between fights. Use Defensive Strike to stay alive and Exhilarating Strike to keep allies in the fight.
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Fighting for better combat effectiveness and more Combat Arts, add Influence for religious authority, and consider Armor of the Faithful for unarmored defense builds.
 
@@ -919,9 +964,9 @@ Role: Striker / Utility
 
 **Rank 1 Skills:**
 
-- **Archery** – *Sharpshooter (Rank 1)* – Ignore first bane from attacking beyond normal range
-- **Survival** – *Tracker (Rank 1)* – Excel at tracking creatures
-- **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion
+- **Archery** – *Sharpshooter (Rank 1)* – Ignore the first bane from attacking beyond normal range
+- **Survival** – *Relentless Tracker (Rank 1)* – Re‑roll Survival to follow/identify tracks once per scene
+- **Nature** – *Animal Companion (Rank 1)* – Control an animal companion (Tier ≤ Nature)
 
 **Rank 0 Skills:** Insight †, Perception, Stealth †, Fighting
 
@@ -948,7 +993,7 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 
 **Playstyle & Advancement**
 
-The Ranger is perfect for players who enjoy ranged combat, wilderness survival, and having an animal companion. Strike from distance with precision while your beast companion provides tactical support. Sharpshooter allows effective long-range attacks, and Survival expertise makes you invaluable during wilderness travel. Use Aimed Shot for reliable damage and Precise Shot when facing armored foes.
+The Ranger is perfect for players who enjoy ranged combat, wilderness survival, and having an animal companion. Strike from distance with precision while your animal companion provides tactical support. Sharpshooter allows effective long-range attacks, and Survival expertise makes you invaluable during wilderness travel. Use Aimed Shot for reliable damage and Precise Shot when facing armored foes.
 
 **Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Survival and Nature for wilderness mastery, add Perception for better awareness, and consider Disciplined Archer or Rapid Shot talents.
 
@@ -977,8 +1022,8 @@ Role: Striker / Utility
 **Rank 1 Skills:**
 
 - **Fighting** – *Blade Mastery (Rank 1)* – Switch between pierce/slash properties
-- **Stealth** – *Unseen (Rank 1)* – Excel at hiding and sneaking
-- **Streetwise** – *Urban Navigator (Rank 1)* – Know cities and find what you need
+- **Stealth** – *Assassination (Rank 1)* – On your first hit from stealth each scene, increase SL by 1 (max. critical)
+- **Streetwise** – *Jack of All Trades (Rank 1)* – Add Streetwise to any one roll once per scene
 
 **Rank 0 Skills:** Insight, Perception, Athletics †, Influence †
 
@@ -1004,7 +1049,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Playstyle & Advancement**
 
-The Rogue is perfect for players who enjoy stealth, infiltration, skill-based challenges, and being the party's scout. Rely on stealth, surprise, and precision strikes. Use Unseen to get into position, then strike from advantage. Urban Navigator makes you invaluable in cities. Blade Mastery gives you versatility in combat. Use Feint for reliable attacks and Evasive Strike to retreat safely.
+The Rogue is perfect for players who enjoy stealth, infiltration, skill-based challenges, and being the party's scout. Rely on stealth, surprise, and precision strikes. Use Assassination to open with a stronger first hit from stealth, then keep the pressure on. Jack of All Trades keeps you adaptable in and out of cities. Blade Mastery gives you versatility in combat. Use Feint for reliable attacks and Evasive Strike to retreat safely.
 
 **Advancement:** Increase Stealth and Fighting to rank 2-3 for more options and Combat Arts, add Insight for reading people, consider Defensive Dueling or Riposte, and learn social skills for infiltration.
 
@@ -1032,9 +1077,9 @@ Role: Support / Controller
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Spirit Walker (Rank 1)* – Communicate with spirits and sense otherworldly presence
-- **Nature** – *Herbalist (Rank 1)* – Create potent remedies
-- **Lore** – *Lorekeeper (Rank 1)* – Expertise with spiritual knowledge
+- **Mysticism** – *Divine Sense (Rank 1)* – Sense spirits/undead and hallowed or cursed auras
+- **Nature** – *Field Medic (Rank 1)* – Save the dying; treat wounds quickly during delves
+- **Lore** – *Consult the Myths (Rank 1)* – Re‑roll Lore about supernatural topics once per scene
 
 **Rank 0 Skills:** Insight, Survival, Perception †, Influence †
 
@@ -1043,7 +1088,7 @@ Note: † Customized skills (not from upbringing/background suggestions)
 **Equipment**
 
 - Short Spear (75 coins, 1 load)
-- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
+- Spell Catalyst (Mystic Talisman) (75 coins, 0 load)
 - Weaver's Tools toolkit (included in standard gear)
 - Healing Salve (simple) x3 (90 coins, 3 load)
 - **Total Load:** 9 (equipment 4 + standard gear 5)
@@ -1064,7 +1109,7 @@ Note: At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1
 
 **Playstyle & Advancement**
 
-The Shaman is perfect for players who enjoy spiritual themes, supporting through blessings, and connecting with ancestral powers. Bridge the physical and spirit worlds, calling on ancestors for aid. Use blessings to empower allies and curses to weaken enemies. Spirit Walker and Herbalist make you invaluable to your community.
+The Shaman is perfect for players who enjoy spiritual themes, supporting through blessings, and connecting with ancestral powers. Bridge the physical and spirit worlds, calling on ancestors for aid. Use blessings to empower allies and curses to weaken enemies. Divine Sense and Field Medic make you invaluable to your community.
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Lore for deeper spiritual knowledge, add Insight for reading people and spirits, and consider more spirit-themed talents.
 
@@ -1087,14 +1132,14 @@ Role: Striker
 **Upbringing & Background**
 
 - **Upbringing:** Nomadic (Archery, Nature, Survival)
-- **Background:** None listed - fully customized skills
-- **Starting Item:** None (consider taking a preserved beast claw or similar item worth 0 load)
+- **Background:** Hunter (Archery, Nature, Perception, Survival)
+- **Starting Item:** Prey bone whistle (0 load)
 
 **Rank 1 Skills:**
 
-- **Archery** – *Expert Slinger (Rank 1)* – Re-roll Supply checks, +Archery damage at close/short range
+- **Archery** – *Expert Slinger (Rank 1)* – Supply checks for thrown bundles: roll twice, take higher
 - **Athletics** – *Fast Stride (Rank 1)* – Use Dash as Quick Action
-- **Stealth** – *Light Footed (Rank 1)* – Reduce noise and move silently
+- **Stealth** – *Devious Tactics (Rank 1)* – Use Distract as a Quick Action; set up openings
 
 **Rank 0 Skills:** Survival, Perception, Insight †, Nature
 
@@ -1110,18 +1155,18 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 **Equipment**
 
 - Sling (50 coins, 1 load)
-- Sling Bullets d8 (free, 1 load)
+- Throwing Stones (d6) (5 coins, 1 load)
 - Javelins (50 coins, 1 load)
 - Leather Armor (50 coins, 1 load)
 - Climber's Kit toolkit (included in standard gear)
 - Healing Salve (simple) x2 (60 coins, 2 load)
 - **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 140
+- **Remaining Coins:** 135
 
 **Playstyle & Advancement**
 
-The Slinger is perfect for players who want a mobile, hit-and-run playstyle with simple but effective ranged combat. Harass enemies from short range then reposition with Fast Stride. Expert Slinger adds Archery to damage at close range, making you surprisingly deadly up close. Light Footed keeps you stealthy. Use Aimed Shot for reliable damage and Power Shot for finishing blows.
+The Slinger is perfect for players who want a mobile, hit-and-run playstyle with simple but effective ranged combat. Harass enemies from short range then reposition with Fast Stride. Expert Slinger makes your thrown bundles more reliable so your javelins keep flying. Devious Tactics lets you create distractions as a Quick Action to set up safe shots. Use Aimed Shot for reliable damage and Power Shot for finishing blows.
 
 **Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Athletics for mobility, add Survival for scouting, and consider Rapid Shot or more mobility talents.
 
@@ -1149,8 +1194,8 @@ Role: Striker
 
 **Rank 1 Skills:**
 
-- **Arcana** – *Mana Shield (Rank 1)* – Use Focus to reduce incoming damage
-- **Lore** – *Lorekeeper (Rank 1)* – Expertise with magical knowledge
+- **Arcana** – *Mana Shield (Rank 1)* – On casting an arcane spell, gain AV (2 + spell rank) briefly
+- **Lore** – *Magical Sense (Rank 1)* – Gain boons against magic; intuit resistances and weaknesses
 - **Education** – *General Education (Rank 1)* – No bane on untrained expert skills with Mind
 
 **Rank 0 Skills:** Insight, Perception, Stealth †, Influence
@@ -1160,7 +1205,7 @@ Note: † Customized skill (not from upbringing/background suggestions)
 **Equipment**
 
 - Quarterstaff (100 coins, 1 load)
-- Spell Catalyst - Arcane Conduit (75 coins, 0 load)
+- Spell Catalyst (Arcane Conduit) (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
 - Smith's Tools toolkit (included in standard gear)
 - Acid Vial x2 (60 coins, 2 load)
@@ -1190,31 +1235,31 @@ The Sorcerer is perfect for players who want to deal massive magical damage and 
 
 ---
 
-## Tamer
+## Swashbuckler
 
-Role: Support / Controller
+Role: Striker / Controller
 
-**Overview:** A summoner who fights indirectly through creature allies, using beasts and mystic summons for battlefield control.
+**Overview:** A street-born duelist who fights dirty with feints, distractions, and flashy blade work. Excels with light weapons, mobility, and crowd-savvy tricks.
 
 **Attributes**
 
 | STR | AGI | SPI | MND |
 |-----|-----|-----|-----|
-| d6  | d6  | d8  | d4  |
+| d6  | d8  | d6  | d4  |
 
 **Upbringing & Background**
 
-- **Upbringing:** Hunter-gatherer (Nature, Perception, Survival)
-- **Background:** None listed - fully customized skills
-- **Starting Item:** None (consider taking Preserved beast claw or similar item worth 0 load)
+- **Upbringing:** Criminal (Insight, Stealth, Streetwise)
+- **Background:** Thug (Athletics, Fighting, Fortitude, Streetwise)
+- **Starting Item:** Brass knuckle duster (0 load)
 
 **Rank 1 Skills:**
 
-- **Fighting** – *Polearm Mastery (Rank 1)* – Opportunity attacks when enemies approach
-- **Nature** – *Beast Companion (Rank 1)* – Gain an animal companion (or multiple)
-- **Mysticism** – *Wild Shape (Rank 1)* – Transform into animal forms
+- **Fighting** – *Dual Wielder (Rank 1)* – No banes when attacking with two light melee weapons
+- **Stealth** – *Devious Tactics (Rank 1)* – Use Distract as a Quick Action; set up openings
+- **Streetwise** – *Swashbuckler (Rank 1)* – +2 HP; on a hit with a light melee weapon, target can’t use Quick Actions against you this turn
 
-**Rank 0 Skills:** Lore †, Survival, Insight †, Perception
+**Rank 0 Skills:** Insight, Perception, Athletics †, Influence †
 
 Note: † Customized skills (not from upbringing/background suggestions)
 
@@ -1222,36 +1267,163 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended:
 
-- **Defensive Strike** – Gain Defend Action effects on hit
-- **Felling Strike** – Trip enemies while attacking
+- **Feint** – Gain +1 boon when not moving with non-heavy weapons
+- **Disarm** – Attempt to disarm immediately after this attack
 
 **Equipment**
 
-- Spear (100 coins, 1 load)
-- Light Shield (150 coins, 1 load)
-- Spell Catalyst - Mystic Talisman (75 coins, 0 load)
-- Navigator's Tools toolkit (included in standard gear)
-- **Total Load:** 7 (equipment 2 + standard gear 5)
+- Shortsword x2 (100 coins, 2 load)
+- Leather Armor (50 coins, 1 load)
+- Disguise Kit toolkit (included in standard gear)
+- Weapon Poison (weak) x2 (100 coins, 2 load)
+- **Total Load:** 10 (equipment 5 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
-- **Remaining Coins:** 25
-
-**Spells**
-
-**Tradition:** Nature (animals) — using Devotion (one tradition for 3 spells per rank)
-**Focus Pool:** (Spirit-2) + (2×Mysticism) = 6 + 2 = 8
-
-**Starting Spells (3 from one tradition at rank 0-1):**
-
-- **Rank 0:** Bestial Adaptation, Rejuvenation
-- **Rank 1:** Wild Companion
-
-Note: At rank 1, you know 6 total spells: 3 starting + 3 from gaining rank 1. Add three more rank 0-1 Nature spells like Beast Form, Rock Throw, and Purify Water.
+- **Remaining Coins:** 100
 
 **Playstyle & Advancement**
 
-The Tamer is perfect for players who want to command multiple allies and control the battlefield indirectly. Direct allies and summoned creatures while staying protected behind reach weapons. Your beast companion fights alongside you. Polearm Mastery keeps enemies at bay while Wild Shape gives you versatility. Use Defensive Strike for survivability and Felling Strike to control enemy movement.
+The Swashbuckler thrives on movement, misdirection, and momentum. Use Devious Tactics to set up openings, then strike with dual light blades; Dual Wielder removes the usual banes for two-weapon attacks. Swashbuckler shuts down enemy Quick Actions after you hit, letting you press the attack without fear of counters. Use Feint for reliable advantage and Disarm to punish weaponed foes. Coat blades with poison for nasty burst when needed.
 
-**Advancement:** Increase Nature and Mysticism to rank 2-3 for more powerful summons and spell options, improve beast companion through talents, add Lore for summoning knowledge, and learn more Combat Arts for tactical variety.
+**Advancement:** Raise Fighting to rank 2–3 for more Combat Arts (Supreme Feint, Quick Lunge, or Riposte). Boost Stealth for better scene control or pick Streetwise: Thug Tactics if you prefer gang-up brawling. Consider Defensive Dueling if you pivot to single-blade finesse. Add Fortitude for toughness and Influence for swagger-driven social play.
+
+[Back to Quick Reference](#quick-reference-archetype-overview)
+
+---
+
+## Summoner
+
+Role: Support / Controller
+
+**Overview:** An arcane conjurer who brings allies from beyond and shapes the field with glyphs and constructs.
+
+**Attributes**
+
+| STR | AGI | SPI | MND |
+|-----|-----|-----|-----|
+| d4  | d6  | d6  | d8  |
+
+**Upbringing & Background**
+
+- **Upbringing:** Scholar (Education, Insight, Lore)
+- **Background:** Renegade Mage (Arcana, Education, Fighting, Streetwise)
+- **Starting Item:** Carved summoning focus (0 load)
+
+**Rank 1 Skills:**
+
+- **Arcana** – *Master of Fundamentals (Rank 1)* – Re‑roll one arcane rank 0 spell per scene
+- **Lore** – *Magical Sense (Rank 1)* – Boons vs. magic; intuit resistances and weaknesses
+- **Insight** – *Piercing Look (Rank 1)* – Re‑roll Insight vs. lies/motives once per scene
+
+**Rank 0 Skills:** Education, Perception †, Influence †, Fighting
+
+Note: † Customized skills (not from upbringing/background suggestions)
+
+**Equipment**
+
+- Quarterstaff (100 coins, 1 load)
+- Spell Catalyst (Arcane Conduit) (75 coins, 0 load)
+- Smith's Tools toolkit (included in standard gear)
+- Healing Salve (simple) (30 coins, 1 load)
+- **Total Load:** 7 (equipment 2 + standard gear 5)
+- **Carry Capacity:** 10 (1/2 STR 2 + 8)
+- **Remaining Coins:** 145
+
+**Spells**
+
+Discipline: Conjuration (summoning/glyphs)
+Focus Pool: (Mind-2) + (2×Arcana) = 6 + 2 = 8
+
+Starting Spells (choose Conjuration; take 2 rank 0 + 2 rank 1):
+
+- Rank 0: Arcane Bolt, Arcane Glyph
+- Rank 1: Arcane Barrier, Conjure Familiar
+
+Note: At rank 1, you know 4 total Conjuration spells.
+
+**Familiar**
+
+If you prepare Conjure Familiar, build your familiar as a Tier 0 companion (see the Mounts & Companions rules). Then pick any one Animal trait to define your familiar’s form and role.
+
+Suggested traits:
+
+- Raven — Flying scout with great perception and mobility.
+- Cat — Stealthy skirmisher for cramped spaces.
+- Spider — Web control once per scene for restraint.
+
+**Playstyle & Advancement**
+
+The Summoner controls tempo with glyphs and durable constructs while adding bodies to the field. Use Arcane Glyph for traps and Arcane Barrier for cover and lanes. Master of Fundamentals keeps cantrips reliable. Conjure Familiar gives you a versatile scout and support ally early; later, Summon Aberration adds real battlefield presence.
+
+Advancement: Raise Arcana 2–3 for more spells and Focus; consider Inexhaustible Mind or Spellweaver. Add Lore for arcane theory and Insight for reading foes. After your familiar, look to Summon Aberration and utility control like Arcane Eye.
+
+[Back to Quick Reference](#quick-reference-archetype-overview)
+
+---
+
+## Tamer
+
+Role: Support / Controller
+
+**Overview:** A non‑magical animal handler who commands a loyal companion and controls space with a whip and clever tactics.
+
+**Attributes**
+
+| STR | AGI | SPI | MND |
+|-----|-----|-----|-----|
+| d6  | d8  | d4  | d4  |
+
+**Upbringing & Background**
+
+- **Upbringing:** Hunter-gatherer (Nature, Perception, Survival)
+- **Background:** Farmhand (Athletics, Crafting, Nature, Survival)
+- **Starting Item:** Clay harvest deity figurine (0 load)
+
+**Rank 1 Skills:**
+
+- **Fighting** – *Pugilist (Rank 1)* – Unarmed and brawling control pairs with whips and grapples
+- **Nature** – *Animal Companion (Rank 1)* – Control an animal companion (Tier ≤ Nature)
+- **Athletics** – *Fast Stride (Rank 1)* – Use Dash as a Quick Action for better kiting and positioning
+
+**Rank 0 Skills:** Survival, Perception, Insight †, Streetwise †
+
+Note: † Customized skills (not from upbringing/background suggestions)
+
+**Combat Arts**
+
+As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Recommended for a whip user (Brawl weapons):
+
+- **Disarm** – Attempt to disarm immediately after this attack
+- **Snare** – Grapple and restrain with your weapon on a hit
+
+**Equipment**
+
+- Whip (50 coins, 1 load)
+- Leather Armor (50 coins, 1 load)
+- Club (50 coins, 1 load)
+- Adventuring Gear toolkit (included in standard gear)
+- Rope (Hemp) (10 coins, 1 load)
+- Healer’s Kit (50 coins, 1 load)
+- Healing Salve (weak) (15 coins, 1 load)
+- Draft Horse (75 coins, 0 load)
+- **Total Load:** 11 (equipment 6 + standard gear 5)
+- **Carry Capacity:** 11 (1/2 STR 3 + 8)
+- **Remaining Coins:** 50
+
+**Animal Companion**
+
+Use the companion base stat block with Tier equal to your Nature rank (see the Mounts & Companions rules). Then pick any one Animal trait to define your companion’s type.
+
+Suggested traits:
+
+- Hound — Track scent, pack tactics; reliable grapples on a bite.
+- Cat — Stealthy scout with pounce and knockdown.
+- Boar — Durable frontline that can gore on a charge.
+
+**Playstyle & Advancement**
+
+The Tamer locks lanes and creates openings for their animal. Use Fast Stride to kite; Disarm to strip threats; Snare to pin priority targets so your companion can maul them. Pugilist improves your baseline brawl control with whips and grapples. Your companion is your second body—set up flanks and force bad choices.
+
+**Advancement:** Raise Nature 2–3 to deepen companion options; Fighting 2–3 for more Combat Arts (Supreme Disarm, Flurry). Add Athletics or Survival for mobility and fieldcraft. Consider Field Medic from Nature for downtime care.
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
@@ -1279,7 +1451,7 @@ Role: Striker / Controller
 
 - **Arcana** – *Master of Fundamentals (Rank 1)* – Re-roll rank 0 spell tests once per scene
 - **Lore** – *Forbidden Knowledge (Rank 1)* – Gain insights into forbidden subjects
-- **Insight** – *Read Intentions (Rank 1)* – Sense motives and emotions
+- **Insight** – *Piercing Look (Rank 1)* – Re‑roll Insight to detect lies or motives once per scene
 
 **Rank 0 Skills:** Fortitude †, Influence, Stealth †, Perception †
 
@@ -1288,7 +1460,7 @@ Note: † Customized skills (not from upbringing/background suggestions)
 **Equipment**
 
 - Quarterstaff (100 coins, 1 load)
-- Spell Catalyst - Arcane Conduit (75 coins, 0 load)
+- Spell Catalyst (Arcane Conduit) (75 coins, 0 load)
 - Leather Armor (50 coins, 1 load)
 - Disguise Kit toolkit (included in standard gear)
 - Paralyzing Poison (weak) x2 (60 coins, 2 load)
@@ -1314,7 +1486,7 @@ Note: At rank 1, you know 4 total spells within your chosen discipline.
 
 **Playstyle & Advancement**
 
-The Warlock is perfect for players who enjoy morally complex characters with manipulative magic and dark themes. Wield eldritch powers through a dark pact. Use mind control, curses, and drain effects to control enemies. Read Intentions helps you understand and manipulate others. Master of Fundamentals ensures your rank 0 spells remain reliable.
+The Warlock is perfect for players who enjoy morally complex characters with manipulative magic and dark themes. Wield eldritch powers through a dark pact. Use mind control, curses, and drain effects to control enemies. Piercing Look helps you understand and manipulate others. Master of Fundamentals ensures your rank 0 spells remain reliable.
 
 **Advancement:** Increase Arcana to rank 2-3 for more powerful spells and additional spells known, raise Lore for deeper occult knowledge, add Fortitude for resilience against backlash, and consider Spellweaver for Metamagic Arts.
 
@@ -1343,7 +1515,7 @@ Role: Support / Controller
 **Rank 1 Skills:**
 
 - **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
-- **Influence** – *Commanding Presence (Rank 1)* – Lead and inspire allies
+- **Influence** – *Leading Presence (Rank 1)* – Allies near you gain boons to Initiative and vs fear
 - **Education** – *Commander (Rank 1)* – Grant allies movement or boons as Quick Action
 
 **Rank 0 Skills:** Fortitude, Insight, Perception, Athletics †
@@ -1370,7 +1542,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Playstyle & Advancement**
 
-The Warlord is perfect for players who want to lead the party tactically, enhancing allies rather than focusing on personal combat. Command the battlefield through tactical positioning and support. Commander lets you reposition allies or grant them advantages. Commanding Presence makes you a natural leader. Shield Mastery protects you while you direct the battle. Use Exhilarating Strike to heal allies and Defensive Strike to stay alive while commanding.
+The Warlord is perfect for players who want to lead the party tactically, enhancing allies rather than focusing on personal combat. Command the battlefield through tactical positioning and support. Commander lets you reposition allies or grant them advantages. Leading Presence makes you a natural leader. Shield Mastery protects you while you direct the battle. Use Exhilarating Strike to heal allies and Defensive Strike to stay alive while commanding.
 
 **Advancement:** Increase Fighting and Influence to rank 2-3 for more Combat Arts and leadership abilities, raise Education for tactical options, add Fortitude for survivability, and consider more command-focused talents.
 

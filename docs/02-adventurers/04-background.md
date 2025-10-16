@@ -43,7 +43,7 @@ Name | Description | Suggested Skills | Starting Item
 **Mercenary** | A character who hires themselves out as a soldier for hire and will work for whoever pays the most. | Fighting, Fortitude, Influence, Streetwise | Blood-oath papyrus
 **Merchant** | A character who travels between settlements transporting and exchanging goods, navigating both physical routes and social customs. | Influence, Insight, Stealth, Streetwise | Rare foreign spice
 **Monk** | A character who follows a monastic lifestyle and is skilled in combat and spiritual practices. | Education, Fighting, Fortitude, Mysticism | Lacquered prayer beads
-**Officer** | A character who has served in a military or law enforcement organization and has experience giving orders and managing troops. They may have risen through the ranks or been commissioned as a leader. | Education, Fighting, Influence, Insight | Ingraved command baton
+**Officer** | A character who has served in a military or law enforcement organization and has experience giving orders and managing troops. They may have risen through the ranks or been commissioned as a leader. | Education, Fighting, Influence, Insight | Engraved command baton
 **Pact-Bound** | A character who has entered into a forbidden agreement with an otherworldly entity, gaining arcane knowledge and power in exchange for service or sacrifice, often at great personal cost. | Arcana, Influence, Insight, Lore | Mark of the pact
 **Philosopher** | A character who studies the nature of existence and reality. | Education, Influence, Insight, Lore | Inscribed ivory thought-piece
 **Pirate** | A character who makes a living through robbery and plunder on the high seas. | Athletics, Fighting, Perception, Streetwise | Foreign coin necklace
