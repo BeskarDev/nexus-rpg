@@ -117,9 +117,56 @@ class KeywordScanner:
         md_files = []
         for root, dirs, files in os.walk(self.docs_path):
             for file in files:
-                if file.endswith('.md'):
+                if file.endswith('.md') or file.endswith('.mdx'):
                     md_files.append(Path(root) / file)
         return md_files
+
+    def _resolve_target_files(self, patterns: List[str]) -> List[Path]:
+        """Resolve a list of file paths or glob patterns (relative to project root) into markdown files"""
+        resolved: List[Path] = []
+
+        def add_if_md(p: Path):
+            if p.is_file() and p.suffix in ['.md', '.mdx']:
+                resolved.append(p)
+
+        for pattern in patterns:
+            # Normalize path relative to project root
+            abs_pattern = (self.project_root / pattern).as_posix()
+
+            # If it's an existing directory path, include all markdown files under it
+            p = Path(abs_pattern)
+            if p.exists() and p.is_dir():
+                for root, _, files in os.walk(p):
+                    for f in files:
+                        if f.endswith('.md') or f.endswith('.mdx'):
+                            resolved.append(Path(root) / f)
+                continue
+
+            # If it's an exact existing file path
+            if p.exists() and p.is_file():
+                add_if_md(p)
+                continue
+
+            # Treat as a glob pattern
+            for match in self.project_root.glob(pattern):
+                if match.is_dir():
+                    for root, _, files in os.walk(match):
+                        for f in files:
+                            if f.endswith('.md') or f.endswith('.mdx'):
+                                resolved.append(Path(root) / f)
+                else:
+                    add_if_md(match)
+
+        # Deduplicate and ensure paths are unique
+        unique = []
+        seen = set()
+        for p in resolved:
+            key = p.resolve()
+            if key not in seen:
+                seen.add(key)
+                unique.append(p)
+
+        return unique
     
     def _extract_sections(self, content: str) -> Dict[int, str]:
         """Extract section headers and their line numbers"""
@@ -219,6 +266,15 @@ class KeywordScanner:
             all_findings.extend(findings)
             
         return all_findings
+
+    def scan_files(self, md_files: List[Path], target_keywords: Set[str]) -> List[Dict]:
+        """Scan only the provided markdown files for keyword occurrences"""
+        all_findings: List[Dict] = []
+        print(f"Scanning {len(md_files)} markdown files for {len(target_keywords)} keywords...")
+        for file_path in md_files:
+            findings = self.scan_file(file_path, target_keywords)
+            all_findings.extend(findings)
+        return all_findings
     
     def format_findings(self, findings: List[Dict]) -> str:
         """Format findings for display"""
@@ -304,6 +360,12 @@ Examples:
         help='Path to project root directory (default: current directory)'
     )
     
+    parser.add_argument(
+        '-f', '--files',
+        nargs='+',
+        help='Specific files or glob patterns to scan (relative to project root). If omitted, scans all docs/**/*.md'
+    )
+    
     args = parser.parse_args()
     
     # Initialize scanner
@@ -329,7 +391,15 @@ Examples:
         return 1
     
     # Scan for occurrences
-    findings = scanner.scan_all_files(target_keywords)
+    # Determine target files
+    if args.files:
+        target_files = scanner._resolve_target_files(args.files)
+        if not target_files:
+            print("Error: No matching files for provided --files patterns.")
+            return 1
+        findings = scanner.scan_files(target_files, target_keywords)
+    else:
+        findings = scanner.scan_all_files(target_keywords)
     
     # Output results
     if args.json:

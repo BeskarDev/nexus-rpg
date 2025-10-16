@@ -234,4 +234,105 @@
     "matchIndex": [0,1],
     "comment": "Exclude 'light' in sleep descriptions where it's illumination, not weapon property"
   }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "poison",
+    "matchIndex": [0,1],
+    "comment": "Exclude 'poison' when used in item names like 'Weapon Poison (weak)' and 'Paralyzing Poison' in Quickstart equipment"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "medium",
+    "matchIndex": 0,
+    "comment": "Exclude 'medium' in 'spirit medium' where it's a noun, not a duration/range reference"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "short",
+    "matchIndex": 3,
+    "comment": "Exclude 'short' in 'Short Spear' item name where it's not a range reference"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "light",
+    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
+    "comment": "Exclude 'light' occurrences on Quickstart page where it's part of item names (Light Shield), talent names (Light Footed), or tradition/spell names—avoid mapping to weapon property"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "heavy",
+    "matchIndex": [1,2,3,4,5,6,8,9,10,11],
+    "comment": "Exclude 'heavy' when it's part of talent names like 'Heavy Weapon Mastery' or 'Heavy Armor Mastery' in Quickstart; allow property uses elsewhere"
+  }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "section": "Quick Reference: Archetype Overview",
+    "keyword": "Nature",
+    "matchIndex": [1],
+    "comment": "Exclude only the 'Nature' in 'Nature magic' (Quick Reference best-for column for Druid); keep 'Nature' in Primary Skills linked"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "section": "Quick Reference: Archetype Overview",
+    "keyword": "Stealth",
+    "matchIndex": 2,
+    "comment": "Exclude 'Stealth' in 'Stealth, infiltration, skills' (Quick Reference best-for column for Rogue); keep Stealth in Primary Skills linked"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "section": "Quick Reference: Archetype Overview",
+    "keyword": "Spirit",
+    "matchIndex": 0,
+    "comment": "Exclude 'Spirit' in 'Spirit communion, ancestors' (Quick Reference best-for column) where it's descriptive, not the Spirit attribute"
+  }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "section": "Quick Reference: Archetype Overview",
+    "keyword": "agile",
+    "matchIndex": [0,1],
+    "comment": "Exclude 'agile' in best-for phrases like 'Agile precision melee' (Quick Reference best-for column) where it's descriptive, not the weapon property"
+  }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "radiant",
+    "matchIndex": 0,
+    "comment": "Exclude 'radiant' in the spell name 'Radiant Burst' (Champion section spell list)"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "frost",
+    "matchIndex": [0,1],
+    "comment": "Exclude 'frost' in the spell name 'Frost Snap' (Magus and Sorcerer sections spell lists)"
+  },
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "Spirit",
+    "matchIndex": [1,7,12],
+    "comment": "Exclude 'Spirit' when part of the talent name 'Spirit Walker' (Bard, Oracle, Shaman sections)"
+  }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "Shield",
+    "matchIndex": [1,2,3,5,6,7,8,10,11,12,14,15,16,17,19,21],
+    "comment": "Exclude 'Shield' when it appears in talent/spell names (Shield Mastery, Mana Shield, Life Shield) or narrative text; keep equipment entries like 'Light Shield' linked"
+  }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "lightning",
+    "matchIndex": 0,
+    "comment": "Exclude 'lightning' used in the spell name 'Lightning Javelin' (Druid section spell list)"
+  }
+  ,
+  {
+    "file": "docs/01-basic-rules/03-quickstart-characters.md",
+    "keyword": "Education",
+    "matchIndex": [8,14,19,29],
+    "comment": "Exclude the 'Education' word when it's part of the talent name 'General Education' (Apothecary, Engineer, Magus, Sorcerer sections); keep the leading skill header '**Education**' linked"
+  }
 ]
