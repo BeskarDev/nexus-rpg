@@ -1,0 +1,872 @@
+[
+	{
+		"name": "Apothecary",
+		"role": "Striker / Utility",
+		"description": "A precise poisoner-healer who uses a silent blowpipe, weapon poisons, and salves. Supports the party with field medicine and clever alchemical prep.",
+		"bestFor": "Bombs, potions, devices",
+		"primarySkills": [
+			"Archery",
+			"Crafting",
+			"Education"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 6
+		},
+		"suggestedSkills": "Archery, Crafting, Nature, Lore, Perception, Insight, Education",
+		"recommendedTalents": [
+			"Disciplined Archer",
+			"Peak Performance",
+			"Field Medic"
+		],
+		"startingEquipment": [
+			"Blowpipe",
+			"Leather Armor",
+			"Weapon Poison (weak)",
+			"Healing Salve (simple)"
+		],
+		"upbringing": "Apprenticed",
+		"background": "Apothecary"
+	},
+	{
+		"name": "Bard",
+		"role": "Support / Controller",
+		"description": "A social performer who channels magic through music and story, inspiring allies and shaping encounters with illusions and charm effects.",
+		"bestFor": "Performance magic, social",
+		"primarySkills": [
+			"Mysticism",
+			"Influence",
+			"Education"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 8,
+			"MND": 6
+		},
+		"suggestedSkills": "Mysticism, Influence, Education, Survival, Perception, Nature, Stealth",
+		"recommendedTalents": [
+			"Master of Principles",
+			"Inspire Ally",
+			"Eloquent Talker"
+		],
+		"startingEquipment": [
+			"Shortsword",
+			"Spell Catalyst (Mystic Talisman)",
+			"Musical Instrument toolkit"
+		],
+		"upbringing": "Agricultural",
+		"background": "Bard",
+		"spellData": {
+			"magicSkill": "Mysticism",
+			"specialization": "Twilight, Peace",
+			"traditions": ["Twilight", "Peace"],
+			"startingSpells": [
+				{"name": "Obscuring Veil", "rank": 0},
+				{"name": "Calming Influence", "rank": 0},
+				{"name": "Cloak of Night", "rank": 1},
+				{"name": "Blessing of Peace", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Barbarian",
+		"role": "Striker / Tank",
+		"description": "A devastating melee combatant who channels primal fury into brutal attacks, trading defense for raw power.",
+		"bestFor": "Massive damage, rage mechanics",
+		"primarySkills": [
+			"Fighting",
+			"Athletics",
+			"Fortitude"
+		],
+		"attributes": {
+			"STR": 8,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Athletics, Fortitude, Survival, Perception, Nature, Stealth",
+		"recommendedTalents": [
+			"Heavy Weapon Mastery",
+			"Bulky",
+			"Battle Rage"
+		],
+		"startingEquipment": [
+			"Greataxe",
+			"Leather Armor",
+			"Javelins",
+			"Healing Salve (weak)"
+		],
+		"upbringing": "Agricultural",
+		"background": "Barbarian"
+	},
+	{
+		"name": "Brawler",
+		"role": "Striker / Controller",
+		"description": "A street-tough close-quarters fighter who dominates the clinch with fists, improvised weapons, and dirty tricks.",
+		"bestFor": "Unarmed, grapples, dirty tricks",
+		"primarySkills": [
+			"Fighting",
+			"Fortitude",
+			"Streetwise"
+		],
+		"attributes": {
+			"STR": 8,
+			"AGI": 8,
+			"SPI": 4,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Fortitude, Streetwise, Influence, Perception, Stealth, Insight",
+		"recommendedTalents": [
+			"Pugilist",
+			"Hard to Kill",
+			"Thug Tactics"
+		],
+		"startingEquipment": [
+			"Cestus x2",
+			"Leather Armor",
+			"Healer's Kit",
+			"Paralyzing Poison (weak)"
+		],
+		"upbringing": "Slums",
+		"background": "Tavern Fighter"
+	},
+	{
+		"name": "Champion",
+		"role": "Tank / Support",
+		"description": "A holy warrior combining divine magic with frontline combat, protected by heavy armor and faith.",
+		"bestFor": "Holy warrior, heavy armor",
+		"primarySkills": [
+			"Fighting",
+			"Mysticism",
+			"Influence"
+		],
+		"attributes": {
+			"STR": 8,
+			"AGI": 4,
+			"SPI": 6,
+			"MND": 6
+		},
+		"suggestedSkills": "Fighting, Mysticism, Influence, Fortitude, Insight, Lore, Perception",
+		"recommendedTalents": [
+			"Heavy Armor Mastery",
+			"Mystic Champion",
+			"Leading Presence"
+		],
+		"startingEquipment": [
+			"Longsword",
+			"Light Shield",
+			"Spell Catalyst (Mystic Talisman)"
+		],
+		"upbringing": "Monastic",
+		"background": "Sacred Warrior",
+		"spellData": {
+			"magicSkill": "Mysticism",
+			"specialization": "Light",
+			"traditions": ["Light"],
+			"startingSpells": [
+				{"name": "Dazzling Light", "rank": 0},
+				{"name": "Detect Lies", "rank": 0},
+				{"name": "Illuminated Sight", "rank": 0},
+				{"name": "Radiant Burst", "rank": 1},
+				{"name": "Radiant Weapon", "rank": 1},
+				{"name": "Protect from Influence", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Duelist",
+		"role": "Striker",
+		"description": "A swift, precise blade fighter who wins through footwork, feints, and pinpoint strikes.",
+		"bestFor": "Agile precision melee",
+		"primarySkills": [
+			"Fighting",
+			"Athletics",
+			"Stealth"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Athletics, Stealth, Influence, Perception, Streetwise, Education",
+		"recommendedTalents": [
+			"Defensive Dueling",
+			"Fast Stride",
+			"Devious Tactics"
+		],
+		"startingEquipment": [
+			"Shortsword",
+			"Throwing Knives",
+			"Leather Armor",
+			"Healing Salve (weak)"
+		],
+		"upbringing": "Militaristic",
+		"background": "Officer"
+	},
+	{
+		"name": "Druid",
+		"role": "Support / Controller",
+		"description": "A nature spellcaster who shapeshifts and commands elemental forces through communion with the natural world.",
+		"bestFor": "Nature magic, shapeshifting",
+		"primarySkills": [
+			"Mysticism",
+			"Nature",
+			"Survival"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 6,
+			"SPI": 8,
+			"MND": 4
+		},
+		"suggestedSkills": "Mysticism, Nature, Survival, Lore, Insight, Perception, Athletics",
+		"recommendedTalents": [
+			"Wild Shape",
+			"Animal Companion",
+			"Forager"
+		],
+		"startingEquipment": [
+			"Quarterstaff",
+			"Spell Catalyst (Mystic Talisman)",
+			"Leather Armor",
+			"Healing Salve (simple) x2"
+		],
+		"upbringing": "Shamanistic",
+		"background": "Druid",
+		"spellData": {
+			"magicSkill": "Mysticism",
+			"specialization": "Nature, Tempest",
+			"traditions": ["Nature", "Tempest"],
+			"startingSpells": [
+				{"name": "Bestial Adaptation", "rank": 0},
+				{"name": "Lashing Vine", "rank": 0},
+				{"name": "Mesh of Vines", "rank": 1},
+				{"name": "Lightning Javelin", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Engineer",
+		"role": "Support / Utility",
+		"description": "A siege and devices specialist who improvises tools, sets traps, and supports allies with clever engineering and thrown contraptions.",
+		"bestFor": "Siege, traps, devices",
+		"primarySkills": [
+			"Crafting",
+			"Education",
+			"Archery"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 6
+		},
+		"suggestedSkills": "Crafting, Education, Archery, Lore, Perception, Fortitude, Streetwise",
+		"recommendedTalents": [
+			"Quick Construction",
+			"General Education",
+			"Expert Slinger"
+		],
+		"startingEquipment": [
+			"Sling",
+			"Throwing Knives",
+			"Leather Armor",
+			"Acid Vial"
+		],
+		"upbringing": "Apprenticed",
+		"background": "Artisan"
+	},
+	{
+		"name": "Fighter",
+		"role": "Tank / Striker",
+		"description": "A reliable frontline combatant using shield and blade to protect allies while dishing out tactical damage.",
+		"bestFor": "Reliable frontline combat",
+		"primarySkills": [
+			"Fighting",
+			"Athletics",
+			"Fortitude"
+		],
+		"attributes": {
+			"STR": 8,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Athletics, Fortitude, Influence, Perception, Insight, Archery",
+		"recommendedTalents": [
+			"Shield Mastery",
+			"Stand Your Ground",
+			"Second Wind"
+		],
+		"startingEquipment": [
+			"Longsword",
+			"Light Shield",
+			"Leather Armor"
+		],
+		"upbringing": "Militaristic",
+		"background": "Soldier"
+	},
+	{
+		"name": "Gladiator",
+		"role": "Striker / Controller",
+		"description": "An arena fighter who thrives on showmanship and crowd control, using sweeping greatsword strikes, grappling, and staged takedowns to dominate foes.",
+		"bestFor": "Arena control, takedowns",
+		"primarySkills": [
+			"Fighting",
+			"Athletics",
+			"Influence"
+		],
+		"attributes": {
+			"STR": 8,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Athletics, Influence, Fortitude, Perception, Streetwise, Stealth",
+		"recommendedTalents": [
+			"Heavy Weapon Mastery",
+			"Grappler",
+			"Leading Presence"
+		],
+		"startingEquipment": [
+			"Greatsword",
+			"Leather Armor",
+			"Healing Salve (weak)"
+		],
+		"upbringing": "Militaristic",
+		"background": "Entertainer"
+	},
+	{
+		"name": "Hoplite",
+		"role": "Tank / Controller",
+		"description": "A formation fighter with spear and shield, representing the Bronze Age soldier's tactical prowess.",
+		"bestFor": "Formation fighting, spear",
+		"primarySkills": [
+			"Fighting",
+			"Athletics",
+			"Influence"
+		],
+		"attributes": {
+			"STR": 8,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Athletics, Influence, Fortitude, Perception, Insight, Archery",
+		"recommendedTalents": [
+			"Polearm Mastery",
+			"Fast Stride",
+			"Leading Presence"
+		],
+		"startingEquipment": [
+			"Spear",
+			"Light Shield",
+			"Leather Armor",
+			"Javelins"
+		],
+		"upbringing": "Militaristic",
+		"background": "Soldier"
+	},
+	{
+		"name": "Magus",
+		"role": "Striker / Hybrid",
+		"description": "A melee fighter who infuses weapons with arcane magic, blending swordplay and spellcasting.",
+		"bestFor": "Melee + magic hybrid",
+		"primarySkills": [
+			"Arcana",
+			"Fighting",
+			"Education"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 6,
+			"SPI": 4,
+			"MND": 8
+		},
+		"suggestedSkills": "Arcana, Fighting, Education, Lore, Perception, Insight, Streetwise",
+		"recommendedTalents": [
+			"Battle Mage",
+			"Blade Mastery",
+			"General Education"
+		],
+		"startingEquipment": [
+			"Longsword",
+			"Spell Catalyst (Arcane Conduit)",
+			"Acid Vial x3"
+		],
+		"upbringing": "Scholar",
+		"background": "Renegade Mage",
+		"spellData": {
+			"magicSkill": "Arcana",
+			"specialization": "Evocation",
+			"disciplines": ["Evocation"],
+			"startingSpells": [
+				{"name": "Flickering Flame", "rank": 0},
+				{"name": "Frost Snap", "rank": 0},
+				{"name": "Chromatic Orb", "rank": 1},
+				{"name": "Flaming Weapon", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Monk",
+		"role": "Striker / Controller",
+		"description": "An unarmed combat specialist with superhuman toughness and grappling techniques.",
+		"bestFor": "Unarmed combat, grappling",
+		"primarySkills": [
+			"Fighting",
+			"Athletics",
+			"Fortitude"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Athletics, Fortitude, Insight, Perception, Mysticism, Education",
+		"recommendedTalents": [
+			"Pugilist",
+			"Grappler",
+			"Body of Bronze"
+		],
+		"startingEquipment": [
+			"Quarterstaff",
+			"Healing Salve (potent)",
+			"Healing Salve (simple) x2",
+			"Rope"
+		],
+		"upbringing": "Monastic",
+		"background": "Monk"
+	},
+	{
+		"name": "Oracle",
+		"role": "Support / Utility",
+		"description": "A divine prophet who uses foresight and omens to guide allies and reveal hidden truths.",
+		"bestFor": "Prophecy, divination, fate",
+		"primarySkills": [
+			"Mysticism",
+			"Lore",
+			"Insight"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 8,
+			"MND": 6
+		},
+		"suggestedSkills": "Mysticism, Lore, Insight, Education, Perception, Influence, Stealth",
+		"recommendedTalents": [
+			"Divine Sense",
+			"Consult the Myths",
+			"Piercing Look"
+		],
+		"startingEquipment": [
+			"Quarterstaff",
+			"Spell Catalyst (Mystic Talisman)",
+			"Healing Salve (simple) x3"
+		],
+		"upbringing": "Monastic",
+		"background": "Philosopher",
+		"spellData": {
+			"magicSkill": "Mysticism",
+			"specialization": "Twilight, Light",
+			"traditions": ["Twilight", "Light"],
+			"startingSpells": [
+				{"name": "Dark Sight", "rank": 0},
+				{"name": "Detect Lies", "rank": 0},
+				{"name": "Whisper of Dreams", "rank": 1},
+				{"name": "Blessing of Light", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Priest",
+		"role": "Support / Tank",
+		"description": "A divine spellcaster who heals and protects allies while holding the frontline with mace and shield.",
+		"bestFor": "Healing, divine magic, melee",
+		"primarySkills": [
+			"Mysticism",
+			"Fighting",
+			"Lore"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 4,
+			"SPI": 8,
+			"MND": 6
+		},
+		"suggestedSkills": "Mysticism, Fighting, Lore, Influence, Insight, Fortitude, Education",
+		"recommendedTalents": [
+			"Divine Rites",
+			"Shield Mastery",
+			"Consult the Myths"
+		],
+		"startingEquipment": [
+			"Mace",
+			"Light Shield",
+			"Spell Catalyst (Mystic Talisman)"
+		],
+		"upbringing": "Monastic",
+		"background": "Priest",
+		"spellData": {
+			"magicSkill": "Mysticism",
+			"specialization": "Life",
+			"traditions": ["Life"],
+			"startingSpells": [
+				{"name": "Restore Life", "rank": 0},
+				{"name": "Life Shield", "rank": 0},
+				{"name": "Healing Touch", "rank": 1},
+				{"name": "Restore Life", "rank": 1},
+				{"name": "Life Shield", "rank": 1},
+				{"name": "Healing Touch", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Ranger",
+		"role": "Striker / Utility",
+		"description": "A ranged hunter with wilderness expertise who strikes from distance with precision while tracking prey.",
+		"bestFor": "Ranged combat, wilderness",
+		"primarySkills": [
+			"Archery",
+			"Survival",
+			"Nature"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Archery, Survival, Nature, Insight, Perception, Stealth, Fighting",
+		"recommendedTalents": [
+			"Sharpshooter",
+			"Relentless Tracker",
+			"Animal Companion"
+		],
+		"startingEquipment": [
+			"Longbow",
+			"Arrows d8",
+			"Shortsword",
+			"Leather Armor",
+			"Healing Salve (weak)"
+		],
+		"upbringing": "Nomadic",
+		"background": "Ranger"
+	},
+	{
+		"name": "Rogue",
+		"role": "Striker / Utility",
+		"description": "A sneaky infiltrator who uses tricks, stealth, and precision strikes to eliminate targets.",
+		"bestFor": "Stealth, infiltration, skills",
+		"primarySkills": [
+			"Fighting",
+			"Stealth",
+			"Streetwise"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Stealth, Streetwise, Insight, Perception, Athletics, Influence",
+		"recommendedTalents": [
+			"Blade Mastery",
+			"Assassination",
+			"Jack of All Trades"
+		],
+		"startingEquipment": [
+			"Shortsword",
+			"Throwing Knives",
+			"Leather Armor",
+			"Weapon Poison (weak) x2"
+		],
+		"upbringing": "Criminal",
+		"background": "Spy"
+	},
+	{
+		"name": "Shaman",
+		"role": "Support / Controller",
+		"description": "A spirit medium who communes with ancestors to bless allies and curse enemies through spiritual power.",
+		"bestFor": "Spirit communion, ancestors",
+		"primarySkills": [
+			"Mysticism",
+			"Nature",
+			"Lore"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 8,
+			"MND": 6
+		},
+		"suggestedSkills": "Mysticism, Nature, Lore, Insight, Survival, Perception, Influence",
+		"recommendedTalents": [
+			"Divine Sense",
+			"Field Medic",
+			"Consult the Myths"
+		],
+		"startingEquipment": [
+			"Short Spear",
+			"Spell Catalyst (Mystic Talisman)",
+			"Healing Salve (simple) x3"
+		],
+		"upbringing": "Shamanistic",
+		"background": "Shaman",
+		"spellData": {
+			"magicSkill": "Mysticism",
+			"specialization": "Death, Life",
+			"traditions": ["Death", "Life"],
+			"startingSpells": [
+				{"name": "Chill Touch", "rank": 0},
+				{"name": "Restore Life", "rank": 0},
+				{"name": "Blood Shards", "rank": 1},
+				{"name": "Healing Touch", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Slinger",
+		"role": "Striker",
+		"description": "A mobile short-range skirmisher who uses slings and thrown weapons for hit-and-run tactics.",
+		"bestFor": "Mobile ranged skirmisher",
+		"primarySkills": [
+			"Archery",
+			"Athletics",
+			"Stealth"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Archery, Athletics, Stealth, Survival, Perception, Insight, Nature",
+		"recommendedTalents": [
+			"Expert Slinger",
+			"Fast Stride",
+			"Devious Tactics"
+		],
+		"startingEquipment": [
+			"Sling",
+			"Throwing Stones (d6)",
+			"Javelins",
+			"Leather Armor",
+			"Healing Salve (simple) x2"
+		],
+		"upbringing": "Nomadic",
+		"background": "Hunter"
+	},
+	{
+		"name": "Sorcerer",
+		"role": "Striker",
+		"description": "A glass cannon spellcaster who deals massive magical damage through raw arcane power.",
+		"bestFor": "Devastating offensive magic",
+		"primarySkills": [
+			"Arcana",
+			"Lore",
+			"Education"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 8
+		},
+		"suggestedSkills": "Arcana, Lore, Education, Insight, Perception, Stealth, Influence",
+		"recommendedTalents": [
+			"Mana Shield",
+			"Magical Sense",
+			"General Education"
+		],
+		"startingEquipment": [
+			"Quarterstaff",
+			"Spell Catalyst (Arcane Conduit)",
+			"Leather Armor",
+			"Acid Vial x2"
+		],
+		"upbringing": "Cult",
+		"background": "Sorcerer",
+		"spellData": {
+			"magicSkill": "Arcana",
+			"specialization": "Evocation",
+			"disciplines": ["Evocation"],
+			"startingSpells": [
+				{"name": "Flickering Flame", "rank": 0},
+				{"name": "Frost Snap", "rank": 0},
+				{"name": "Chromatic Orb", "rank": 1},
+				{"name": "Elemental Ward", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Swashbuckler",
+		"role": "Striker / Controller",
+		"description": "A street-born duelist who fights dirty with feints, distractions, and flashy blade work. Excels with light weapons, mobility, and crowd-savvy tricks.",
+		"bestFor": "Dirty tactics, dual-wielding",
+		"primarySkills": [
+			"Fighting",
+			"Stealth",
+			"Streetwise"
+		],
+		"attributes": {
+			"STR": 6,
+			"AGI": 8,
+			"SPI": 6,
+			"MND": 4
+		},
+		"suggestedSkills": "Fighting, Stealth, Streetwise, Insight, Perception, Athletics, Influence",
+		"recommendedTalents": [
+			"Dual Wielder",
+			"Devious Tactics",
+			"Swashbuckler"
+		],
+		"startingEquipment": [
+			"Shortsword x2",
+			"Leather Armor",
+			"Weapon Poison (weak) x2"
+		],
+		"upbringing": "Criminal",
+		"background": "Thug"
+	},
+	{
+		"name": "Summoner",
+		"role": "Support / Controller",
+		"description": "An arcane conjurer who brings allies from beyond and shapes the field with glyphs and constructs.",
+		"bestFor": "Conjuration, minions, battlefield control",
+		"primarySkills": [
+			"Arcana",
+			"Lore",
+			"Insight"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 8
+		},
+		"suggestedSkills": "Arcana, Lore, Insight",
+		"recommendedTalents": [
+			"Master of Fundamentals",
+			"Magical Sense",
+			"Piercing Look"
+		],
+		"startingEquipment": [
+			"Quarterstaff",
+			"Spell Catalyst (Arcane Conduit)",
+			"Healing Salve (simple)"
+		],
+		"upbringing": "Scholar",
+		"background": "Renegade Mage",
+		"spellData": {
+			"magicSkill": "Arcana",
+			"specialization": "Conjuration",
+			"disciplines": ["Conjuration"],
+			"startingSpells": [
+				{"name": "Arcane Bolt", "rank": 0},
+				{"name": "Arcane Glyph", "rank": 0},
+				{"name": "Arcane Barrier", "rank": 1},
+				{"name": "Conjure Familiar", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Tamer",
+		"role": "Support / Controller",
+		"description": "A non-magical animal handler who commands a loyal companion and controls space with a whip and clever tactics.",
+\t\t\"bestFor\": \"Animal handler, battlefield control\",\n\t\t\"primarySkills\": [\n\t\t\t\"Tamer\",\n\t\t\t\"Nature\",\n\t\t\t\"Athletics\"\n\t\t],\n\t\t\"attributes\": {\n\t\t\t\"STR\": 6,\n\t\t\t\"AGI\": 8,\n\t\t\t\"SPI\": 4,\n\t\t\t\"MND\": 4\n\t\t},\n\t\t\"suggestedSkills\": \"Fighting, Nature, Athletics, Survival, Perception, Insight, Streetwise\",\n\t\t\"recommendedTalents\": [
+			"Pugilist",
+			"Animal Companion",
+			"Fast Stride"
+		],
+		"startingEquipment": [
+			"Whip",
+			"Leather Armor",
+			"Club",
+			"Rope (Hemp)",
+			"Healer's Kit",
+			"Draft Horse"
+		],
+		"upbringing": "Hunter-gatherer",
+		"background": "Farmhand"
+	},
+	{
+		"name": "Warlock",
+		"role": "Striker / Controller",
+		"description": "An eldritch spellcaster who wields dark pact magic to curse enemies and drain their life force.",
+		"bestFor": "Dark magic, mind control",
+		"primarySkills": [
+			"Arcana",
+			"Lore",
+			"Insight"
+		],
+		"attributes": {
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 8
+		},
+		"suggestedSkills": "Arcana, Lore, Insight",
+		"recommendedTalents": [
+			"Master of Fundamentals",
+			"Forbidden Knowledge",
+			"Piercing Look"
+		],
+		"startingEquipment": [
+			"Quarterstaff",
+			"Spell Catalyst (Arcane Conduit)",
+			"Leather Armor",
+			"Paralyzing Poison (weak) x2"
+		],
+		"upbringing": "Cult",
+		"background": "Pact-Bound",
+		"spellData": {
+			"magicSkill": "Arcana",
+			"specialization": "Telepathy",
+			"disciplines": ["Telepathy"],
+			"startingSpells": [
+				{"name": "Mental Link", "rank": 0},
+				{"name": "Mind Blast", "rank": 0},
+				{"name": "Attack Thoughts", "rank": 1},
+				{"name": "Subtle Suggestion", "rank": 1}
+			]
+		}
+	},
+	{
+		"name": "Warlord",
+		"role": "Support / Controller",
+		"description": "A battlefield leader who commands allies and coordinates tactics through military expertise.",
+		"bestFor": "Battlefield commander",
+		"primarySkills": [
+			"Fighting",
+			"Influence",
+			"Education"
+		],
+		"attributes": {
+			"STR": 8,
+			"AGI": 4,
+			"SPI": 6,
+			"MND": 6
+		},
+		"suggestedSkills": "Fighting, Influence, Education, Fortitude, Insight, Perception, Athletics",
+		"recommendedTalents": [
+			"Shield Mastery",
+			"Leading Presence",
+			"Commander"
+		],
+		"startingEquipment": [
+			"Longsword",
+			"Light Shield",
+			"Leather Armor",
+			"Healing Salve (weak)"
+		],
+		"upbringing": "Militaristic",
+		"background": "Officer"
+	}
+]

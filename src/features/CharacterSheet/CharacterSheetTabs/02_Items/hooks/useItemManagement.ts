@@ -13,6 +13,7 @@ import {
 	calculateLocationLoad,
 } from '../utils/itemUtils'
 import { logger } from '../../../utils'
+import { calculateFolkAvBonus } from '../../../utils/calculateFolkAvBonus'
 
 export const useItemManagement = (activeCharacter: CharacterDocument) => {
 	const dispatch = useAppDispatch()
@@ -31,16 +32,25 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 		[weapons, items],
 	)
 
-	// Auto-update AV values when armor, helmet, or shield items change
+	// Auto-update AV values when armor, helmet, or shield items change, or when folk abilities change
 	useEffect(() => {
 		const { armorAV, helmetAV, shieldAV } = extractArmorValues(itemsByLocation)
+		
+		// Calculate folk AV bonus (Stoneskin, Thick Scales)
+		// Thick Scales gives +3 AV if no armor, or +1 if wearing armor
+		const hasArmorEquipped = armorAV > 0
+		const folkAvBonus = calculateFolkAvBonus(
+			activeCharacter.skills.abilities,
+			hasArmorEquipped
+		)
 
 		// Update AV values if they changed
 		const currentAV = activeCharacter.statistics.av
 		if (
 			currentAV.armor !== armorAV ||
 			currentAV.helmet !== helmetAV ||
-			currentAV.shield !== shieldAV
+			currentAV.shield !== shieldAV ||
+			currentAV.other !== folkAvBonus
 		) {
 			dispatch(
 				characterSheetActions.updateCharacter({
@@ -49,12 +59,13 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 							armor: armorAV ?? currentAV.armor,
 							helmet: helmetAV ?? currentAV.helmet,
 							shield: shieldAV ?? currentAV.shield,
+							other: folkAvBonus,
 						},
 					},
 				}),
 			)
 		}
-	}, [itemsByLocation])
+	}, [itemsByLocation, activeCharacter.skills.abilities])
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))

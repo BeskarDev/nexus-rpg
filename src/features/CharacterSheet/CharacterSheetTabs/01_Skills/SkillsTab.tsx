@@ -20,7 +20,7 @@ import {
 	Tooltip,
 	Typography,
 } from '@mui/material'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { CharacterDocument } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
@@ -39,6 +39,7 @@ import {
 	DEFAULT_LANGUAGE,
 } from '../../../../constants/languages'
 import { calculateSkillRank } from '../../utils'
+import { calculateTalentHpBonus } from '../../utils/calculateTalentHpBonus'
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -78,6 +79,29 @@ export const SkillsTab: React.FC = () => {
 		() => skills.map((skill) => skill.name),
 		[skills],
 	)
+
+	// Auto-calculate HP modifier from talents
+	useEffect(() => {
+		const mysticismSkill = skills.find((s) => s.name === 'Mysticism')
+		const mysticismRank = mysticismSkill?.rank || 0
+		
+		const calculatedHpBonus = calculateTalentHpBonus(
+			activeCharacter.skills.abilities,
+			mysticismRank
+		)
+		
+		const currentModifier = activeCharacter.statistics.health.maxHpModifier || 0
+		
+		if (calculatedHpBonus !== currentModifier) {
+			updateCharacter({
+				statistics: {
+					health: {
+						maxHpModifier: calculatedHpBonus
+					}
+				}
+			})
+		}
+	}, [activeCharacter.skills.abilities, skills])
 
 	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {

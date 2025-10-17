@@ -52,7 +52,9 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 								<Typography variant="subtitle2" sx={{ mt: 2, mb: 1 }}>
 									{playerName}
 								</Typography>
-								{playerCharacters.map((char) => (
+								{playerCharacters
+									.sort((a, b) => buildCharacterName(a).localeCompare(buildCharacterName(b))) // Sort characters alphabetically by name
+									.map((char) => (
 									<ListItem
 										key={char.docId}
 										secondaryAction={
