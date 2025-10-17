@@ -375,18 +375,29 @@ export const createInitialCharacter = (
 		})
 	}
 	
-	// Add talents from archetype (if provided)
-	if (archetype?.recommendedTalents && Array.isArray(archetype.recommendedTalents)) {
+	// Add recommended talents from archetype as a grouped suggestion ability
+	if (archetype?.recommendedTalents && Array.isArray(archetype.recommendedTalents) && archetype.recommendedTalents.length > 0) {
+		// Build a single ability that lists recommended talent names and short descriptions
+		const talentEntries: string[] = []
 		archetype.recommendedTalents.forEach(talentName => {
 			const talent = findTalent(talentName)
 			if (talent) {
-				abilities.push({
-					id: uuidv4(),
-					title: talent.name,
-					description: sanitizeAbilityDescription(talent.description),
-					tag: 'Talent' as const,
-				})
+				// Include the talent name (title-cased) and first sentence of its description for readability
+				const desc = sanitizeAbilityDescription(talent.description || '')
+				const firstLine = desc.split('\n')[0] || ''
+				const title = capitalizeStartingItem(talent.name)
+				talentEntries.push(`- ${title}: ${firstLine}`)
+			} else {
+				// If the talent isn't found in the DB, still include the name (title-cased)
+				talentEntries.push(`- ${capitalizeStartingItem(talentName)}`)
 			}
+		})
+
+		abilities.push({
+			id: uuidv4(),
+			title: 'Recommended Talents',
+			description: talentEntries.join('\n'),
+			tag: 'Suggested' as const,
 		})
 	}
 
