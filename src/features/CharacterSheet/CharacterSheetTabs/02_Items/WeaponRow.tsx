@@ -170,6 +170,16 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 						label="Load"
 						sx={{ maxWidth: '4rem', flexGrow: 0 }}
 					/>
+					<AttributeField
+						type="number"
+						size="small"
+						value={initialWeapon.amount || 1}
+						onChange={(event) =>
+							updateWeapon({ amount: Number(event.target.value) })
+						}
+						label="Amount"
+						sx={{ maxWidth: '4rem', flexGrow: 0 }}
+					/>
 					{/* Quality field for all weapons */}
 					<AttributeField
 						select

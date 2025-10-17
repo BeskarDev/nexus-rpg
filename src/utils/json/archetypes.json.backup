@@ -62,27 +62,12 @@
 		"spellData": {
 			"magicSkill": "Mysticism",
 			"specialization": "Twilight, Peace",
-			"traditions": [
-				"Twilight",
-				"Peace"
-			],
+			"traditions": ["Twilight", "Peace"],
 			"startingSpells": [
-				{
-					"name": "Obscuring Veil",
-					"rank": 0
-				},
-				{
-					"name": "Calming Influence",
-					"rank": 0
-				},
-				{
-					"name": "Cloak of Night",
-					"rank": 1
-				},
-				{
-					"name": "Blessing of Peace",
-					"rank": 1
-				}
+				{"name": "Obscuring Veil", "rank": 0},
+				{"name": "Calming Influence", "rank": 0},
+				{"name": "Cloak of Night", "rank": 1},
+				{"name": "Blessing of Peace", "rank": 1}
 			]
 		}
 	},
@@ -129,8 +114,8 @@
 		],
 		"attributes": {
 			"STR": 8,
-			"AGI": 6,
-			"SPI": 6,
+			"AGI": 8,
+			"SPI": 4,
 			"MND": 4
 		},
 		"suggestedSkills": "Fighting, Fortitude, Streetwise, Influence, Perception, Stealth, Insight",
@@ -180,34 +165,14 @@
 		"spellData": {
 			"magicSkill": "Mysticism",
 			"specialization": "Light",
-			"traditions": [
-				"Light"
-			],
+			"traditions": ["Light"],
 			"startingSpells": [
-				{
-					"name": "Dazzling Light",
-					"rank": 0
-				},
-				{
-					"name": "Detect Lies",
-					"rank": 0
-				},
-				{
-					"name": "Illuminated Sight",
-					"rank": 0
-				},
-				{
-					"name": "Radiant Burst",
-					"rank": 1
-				},
-				{
-					"name": "Radiant Weapon",
-					"rank": 1
-				},
-				{
-					"name": "Protect from Influence",
-					"rank": 1
-				}
+				{"name": "Dazzling Light", "rank": 0},
+				{"name": "Detect Lies", "rank": 0},
+				{"name": "Illuminated Sight", "rank": 0},
+				{"name": "Radiant Burst", "rank": 1},
+				{"name": "Radiant Weapon", "rank": 1},
+				{"name": "Protect from Influence", "rank": 1}
 			]
 		}
 	},
@@ -260,9 +225,9 @@
 		},
 		"suggestedSkills": "Mysticism, Nature, Survival, Lore, Insight, Perception, Athletics",
 		"recommendedTalents": [
-			"Shape Changer",
+			"Wild Shape",
 			"Animal Companion",
-			"Wilderness Expert"
+			"Forager"
 		],
 		"startingEquipment": [
 			"Quarterstaff",
@@ -275,34 +240,14 @@
 		"spellData": {
 			"magicSkill": "Mysticism",
 			"specialization": "Nature, Tempest",
-			"traditions": [
-				"Nature",
-				"Tempest"
-			],
+			"traditions": ["Nature", "Tempest"],
 			"startingSpells": [
-				{
-					"name": "Bestial Adaptation",
-					"rank": 0
-				},
-				{
-					"name": "Lashing Vine",
-					"rank": 0
-				},
-				{
-					"name": "Mesh of Vines",
-					"rank": 1
-				},
-				{
-					"name": "Lightning Javelin",
-					"rank": 1
-				}
+				{"name": "Bestial Adaptation", "rank": 0},
+				{"name": "Lashing Vine", "rank": 0},
+				{"name": "Mesh of Vines", "rank": 1},
+				{"name": "Lightning Javelin", "rank": 1}
 			]
-		},
-		"recommendedCompanions": [
-			"Bear",
-			"Bird",
-			"Constrictor Snake"
-		]
+		}
 	},
 	{
 		"name": "Engineer",
@@ -354,7 +299,7 @@
 		"suggestedSkills": "Fighting, Athletics, Fortitude, Influence, Perception, Insight, Archery",
 		"recommendedTalents": [
 			"Shield Mastery",
-			"Stand your Ground",
+			"Stand Your Ground",
 			"Second Wind"
 		],
 		"startingEquipment": [
@@ -458,26 +403,12 @@
 		"spellData": {
 			"magicSkill": "Arcana",
 			"specialization": "Evocation",
-			"disciplines": [
-				"Evocation"
-			],
+			"disciplines": ["Evocation"],
 			"startingSpells": [
-				{
-					"name": "Flickering Flame",
-					"rank": 0
-				},
-				{
-					"name": "Frost Snap",
-					"rank": 0
-				},
-				{
-					"name": "Chromatic Orb",
-					"rank": 1
-				},
-				{
-					"name": "Flaming Weapon",
-					"rank": 1
-				}
+				{"name": "Flickering Flame", "rank": 0},
+				{"name": "Frost Snap", "rank": 0},
+				{"name": "Chromatic Orb", "rank": 1},
+				{"name": "Flaming Weapon", "rank": 1}
 			]
 		}
 	},
@@ -544,27 +475,12 @@
 		"spellData": {
 			"magicSkill": "Mysticism",
 			"specialization": "Twilight, Light",
-			"traditions": [
-				"Twilight",
-				"Light"
-			],
+			"traditions": ["Twilight", "Light"],
 			"startingSpells": [
-				{
-					"name": "Dark Sight",
-					"rank": 0
-				},
-				{
-					"name": "Detect Lies",
-					"rank": 0
-				},
-				{
-					"name": "Whisper of Dreams",
-					"rank": 1
-				},
-				{
-					"name": "Blessing of Light",
-					"rank": 1
-				}
+				{"name": "Dark Sight", "rank": 0},
+				{"name": "Detect Lies", "rank": 0},
+				{"name": "Whisper of Dreams", "rank": 1},
+				{"name": "Blessing of Light", "rank": 1}
 			]
 		}
 	},
@@ -600,34 +516,14 @@
 		"spellData": {
 			"magicSkill": "Mysticism",
 			"specialization": "Life",
-			"traditions": [
-				"Life"
-			],
+			"traditions": ["Life"],
 			"startingSpells": [
-				{
-					"name": "Restore Life",
-					"rank": 0
-				},
-				{
-					"name": "Life Shield",
-					"rank": 0
-				},
-				{
-					"name": "Healing Touch",
-					"rank": 1
-				},
-				{
-					"name": "Restore Life",
-					"rank": 1
-				},
-				{
-					"name": "Life Shield",
-					"rank": 1
-				},
-				{
-					"name": "Healing Touch",
-					"rank": 1
-				}
+				{"name": "Restore Life", "rank": 0},
+				{"name": "Life Shield", "rank": 0},
+				{"name": "Healing Touch", "rank": 1},
+				{"name": "Restore Life", "rank": 1},
+				{"name": "Life Shield", "rank": 1},
+				{"name": "Healing Touch", "rank": 1}
 			]
 		}
 	},
@@ -661,12 +557,7 @@
 			"Healing Salve (weak)"
 		],
 		"upbringing": "Nomadic",
-		"background": "Ranger",
-		"recommendedCompanions": [
-			"Dog",
-			"Bird",
-			"Bear"
-		]
+		"background": "Ranger"
 	},
 	{
 		"name": "Rogue",
@@ -731,27 +622,12 @@
 		"spellData": {
 			"magicSkill": "Mysticism",
 			"specialization": "Death, Life",
-			"traditions": [
-				"Death",
-				"Life"
-			],
+			"traditions": ["Death", "Life"],
 			"startingSpells": [
-				{
-					"name": "Chill Touch",
-					"rank": 0
-				},
-				{
-					"name": "Restore Life",
-					"rank": 0
-				},
-				{
-					"name": "Blood Shards",
-					"rank": 1
-				},
-				{
-					"name": "Healing Touch",
-					"rank": 1
-				}
+				{"name": "Chill Touch", "rank": 0},
+				{"name": "Restore Life", "rank": 0},
+				{"name": "Blood Shards", "rank": 1},
+				{"name": "Healing Touch", "rank": 1}
 			]
 		}
 	},
@@ -820,26 +696,12 @@
 		"spellData": {
 			"magicSkill": "Arcana",
 			"specialization": "Evocation",
-			"disciplines": [
-				"Evocation"
-			],
+			"disciplines": ["Evocation"],
 			"startingSpells": [
-				{
-					"name": "Flickering Flame",
-					"rank": 0
-				},
-				{
-					"name": "Frost Snap",
-					"rank": 0
-				},
-				{
-					"name": "Chromatic Orb",
-					"rank": 1
-				},
-				{
-					"name": "Elemental Ward",
-					"rank": 1
-				}
+				{"name": "Flickering Flame", "rank": 0},
+				{"name": "Frost Snap", "rank": 0},
+				{"name": "Chromatic Orb", "rank": 1},
+				{"name": "Elemental Ward", "rank": 1}
 			]
 		}
 	},
@@ -905,26 +767,12 @@
 		"spellData": {
 			"magicSkill": "Arcana",
 			"specialization": "Conjuration",
-			"disciplines": [
-				"Conjuration"
-			],
+			"disciplines": ["Conjuration"],
 			"startingSpells": [
-				{
-					"name": "Arcane Bolt",
-					"rank": 0
-				},
-				{
-					"name": "Arcane Glyph",
-					"rank": 0
-				},
-				{
-					"name": "Arcane Barrier",
-					"rank": 1
-				},
-				{
-					"name": "Conjure Familiar",
-					"rank": 1
-				}
+				{"name": "Arcane Bolt", "rank": 0},
+				{"name": "Arcane Glyph", "rank": 0},
+				{"name": "Arcane Barrier", "rank": 1},
+				{"name": "Conjure Familiar", "rank": 1}
 			]
 		}
 	},
@@ -932,20 +780,7 @@
 		"name": "Tamer",
 		"role": "Support / Controller",
 		"description": "A non-magical animal handler who commands a loyal companion and controls space with a whip and clever tactics.",
-		"bestFor": "Animal handler, battlefield control",
-		"primarySkills": [
-			"Fighting",
-			"Nature",
-			"Athletics"
-		],
-		"attributes": {
-			"STR": 6,
-			"AGI": 8,
-			"SPI": 4,
-			"MND": 4
-		},
-		"suggestedSkills": "Fighting, Nature, Athletics, Survival, Perception, Insight, Streetwise",
-		"recommendedTalents": [
+\t\t\"bestFor\": \"Animal handler, battlefield control\",\n\t\t\"primarySkills\": [\n\t\t\t\"Tamer\",\n\t\t\t\"Nature\",\n\t\t\t\"Athletics\"\n\t\t],\n\t\t\"attributes\": {\n\t\t\t\"STR\": 6,\n\t\t\t\"AGI\": 8,\n\t\t\t\"SPI\": 4,\n\t\t\t\"MND\": 4\n\t\t},\n\t\t\"suggestedSkills\": \"Fighting, Nature, Athletics, Survival, Perception, Insight, Streetwise\",\n\t\t\"recommendedTalents\": [
 			"Pugilist",
 			"Animal Companion",
 			"Fast Stride"
@@ -959,33 +794,28 @@
 			"Draft Horse"
 		],
 		"upbringing": "Hunter-gatherer",
-		"background": "Farmhand",
-		"recommendedCompanions": [
-			"Dog",
-			"Cat",
-			"Boar"
-		]
+		"background": "Farmhand"
 	},
 	{
 		"name": "Warlock",
 		"role": "Striker / Controller",
 		"description": "An eldritch spellcaster who wields dark pact magic to curse enemies and drain their life force.",
-		"bestFor": "Animal handler, battlefield control",
+		"bestFor": "Dark magic, mind control",
 		"primarySkills": [
-			"Fighting",
-			"Nature",
-			"Athletics"
+			"Arcana",
+			"Lore",
+			"Insight"
 		],
 		"attributes": {
-			"STR": 6,
-			"AGI": 8,
-			"SPI": 4,
-			"MND": 4
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 8
 		},
-		"suggestedSkills": "Fighting, Nature, Athletics, Survival, Perception, Insight, Streetwise",
+		"suggestedSkills": "Arcana, Lore, Insight",
 		"recommendedTalents": [
 			"Master of Fundamentals",
-			"Arcane Spell Knowledge",
+			"Forbidden Knowledge",
 			"Piercing Look"
 		],
 		"startingEquipment": [
@@ -999,26 +829,12 @@
 		"spellData": {
 			"magicSkill": "Arcana",
 			"specialization": "Telepathy",
-			"disciplines": [
-				"Telepathy"
-			],
+			"disciplines": ["Telepathy"],
 			"startingSpells": [
-				{
-					"name": "Mental Link",
-					"rank": 0
-				},
-				{
-					"name": "Mind Blast",
-					"rank": 0
-				},
-				{
-					"name": "Attack Thoughts",
-					"rank": 1
-				},
-				{
-					"name": "Subtle Suggestion",
-					"rank": 1
-				}
+				{"name": "Mental Link", "rank": 0},
+				{"name": "Mind Blast", "rank": 0},
+				{"name": "Attack Thoughts", "rank": 1},
+				{"name": "Subtle Suggestion", "rank": 1}
 			]
 		}
 	},

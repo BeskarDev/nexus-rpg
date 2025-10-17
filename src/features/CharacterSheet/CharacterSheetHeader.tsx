@@ -25,6 +25,8 @@ import {
 	Typography,
 	Alert,
 	Divider,
+	Tab,
+	Tabs,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
@@ -49,6 +51,8 @@ import {
 	BackgroundData,
 	ArchetypeData
 } from './components'
+import upbringingData from '../../utils/json/upbringings.json'
+import backgroundData from '../../utils/json/backgrounds.json'
 
 const MAX_NAME_LENGTH = 1_000
 
@@ -75,6 +79,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const [importedCharacter, setImportedCharacter] =
 		React.useState<Character | null>(null)
 	const [importError, setImportError] = React.useState<string | null>(null)
+	const [activeTab, setActiveTab] = React.useState(0)
 
 	// Character creation selection states
 	const [selectedFolk, setSelectedFolk] = React.useState<FolkData | null>(null)
@@ -96,6 +101,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		setOpen(false)
 		setName('')
 		setIncludeStartingGear(true)
+		setActiveTab(0)
 		setImportedCharacter(null)
 		setImportError(null)
 		// Reset selection states
@@ -184,8 +190,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				}
 			} else {
 				// Create new character from scratch
+				// Tab 0 (Quick Start) always includes starting gear
+				const shouldIncludeGear = activeTab === 0 ? true : includeStartingGear
+				
 				const options: CharacterCreationOptions = {
-					includeStartingGear,
+					includeStartingGear: shouldIncludeGear,
 					folk: selectedFolk || undefined,
 					upbringing: selectedUpbringing || undefined,
 					background: selectedBackground || undefined,
@@ -194,7 +203,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				characterData = createInitialCharacter(name, playerName, options)
 			}
 
-			await addDoc(collectionRef, characterData)
+			const docRef = await addDoc(collectionRef, characterData)
 			setName('')
 			setIncludeStartingGear(true)
 			setImportedCharacter(null)
@@ -204,8 +213,12 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 			setSelectedUpbringing(null)
 			setSelectedBackground(null)
 			setSelectedArchetype(null)
+			setActiveTab(0)
 			setOpen(false)
-			window.location.href = window.location.href.split('?')[0]
+			
+			// Redirect to the newly created character
+			const characterId = `${userUid}-${docRef.id}`
+			window.location.href = `${window.location.href.split('?')[0]}?id=${characterId}`
 		} catch (error) {
 			logger.error('Error creating document', error)
 			setImportError('Error creating character. Please try again.')
@@ -331,7 +344,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				open={open}
 				onClose={handleAbort}
 				fullWidth
-				maxWidth="xs"
+				maxWidth="sm"
 				aria-labelledby="alert-dialog-title"
 				aria-describedby="alert-dialog-description"
 			>
@@ -340,7 +353,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					sx={{
 						borderBottom: 1,
 						borderColor: 'divider',
-						mb: 2,
+						pb: 1,
 						display: 'flex',
 						alignItems: 'center',
 						gap: 1,
@@ -349,199 +362,58 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					<Star />
 					{'New Character'}
 				</DialogTitle>
-				<DialogContent>
-					<DialogContentText id="alert-dialog-description" sx={{ mb: 2 }}>
-						{importedCharacter
-							? `Import and customize "${importedCharacter.personal.name}"`
-							: "What's your characters name?"}
-					</DialogContentText>
+				
+				{!importedCharacter && (
+					<Tabs
+						value={activeTab}
+						onChange={(_, newValue) => setActiveTab(newValue)}
+						sx={{ 
+							borderBottom: 1, 
+							borderColor: 'divider',
+							px: 3,
+						}}
+					>
+						<Tab label="Quick Start" sx={{ textTransform: 'none' }} />
+						<Tab label="Custom" sx={{ textTransform: 'none' }} />
+						<Tab label="Blank" sx={{ textTransform: 'none' }} />
+						<Tab label="Import" sx={{ textTransform: 'none' }} />
+					</Tabs>
+				)}
 
-					{!importedCharacter && (
-						<>
-							<Box sx={{ mb: 2 }}>
-								<Button
-									variant="outlined"
-									component="label"
-									startIcon={<Upload />}
-									fullWidth
-									sx={{ mb: 1 }}
-								>
-									Upload Character JSON
-									<input
-										type="file"
-										accept=".json"
-										hidden
-										onChange={handleFileUpload}
-									/>
-								</Button>
-								<Typography variant="caption" color="text.secondary">
-									Import a previously exported Nexus RPG character
-								</Typography>
-							</Box>
-
-							<Divider sx={{ my: 2 }}>
-								<Typography variant="caption" color="text.secondary">
-									OR
-								</Typography>
-							</Divider>
-						</>
-					)}
-
+				<DialogContent sx={{ pt: 3 }}>
 					{importError && (
 						<Alert severity="error" sx={{ mb: 2 }}>
 							{importError}
 						</Alert>
 					)}
 
-					<TextField
-						required
-						fullWidth
-						type="text"
-						label="character name"
-						placeholder={
-							importedCharacter
-								? 'Modify character name'
-								: "type your character's name"
-						}
-						value={name}
-						onChange={(e) => {
-							if (e.target.value.length <= MAX_NAME_LENGTH) {
-								setName(e.target.value)
-							}
-						}}
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') {
-								e.preventDefault()
-								handleConfirm()
-							}
-						}}
-						InputLabelProps={{ shrink: true }}
-					/>
-
-					{!importedCharacter && (
+					{importedCharacter ? (
 						<>
-							<Typography variant="body2" sx={{ mt: 2, mb: 2, fontWeight: 'medium' }}>
-								Optional Character Details
-							</Typography>
-							
-							<Box sx={{ display: 'grid', gap: 2, mb: 2 }}>
-								{/* Archetype Selection */}
-								<Box>
-									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
-										Archetype (Recommended Starting Point)
-									</Typography>
-									<Button
-										variant="outlined"
-										size="small"
-										onClick={() => setArchetypeDialogOpen(true)}
-										fullWidth
-										sx={{ 
-											justifyContent: 'flex-start',
-											textTransform: 'none',
-											color: selectedArchetype ? 'text.primary' : 'text.secondary',
-											fontWeight: selectedArchetype ? 'medium' : 'normal',
-											borderColor: selectedArchetype ? 'primary.main' : undefined,
-											borderWidth: selectedArchetype ? 2 : 1,
-										}}
-									>
-										{selectedArchetype ? `${selectedArchetype.name} (${selectedArchetype.role})` : 'Select Archetype'}
-									</Button>
-									{selectedArchetype && (
-										<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
-											{selectedArchetype.description}
-										</Typography>
-									)}
-								</Box>
-								
-								{/* Folk Selection */}
-								<Box>
-									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
-										Folk
-									</Typography>
-									<Button
-										variant="outlined"
-										size="small"
-										onClick={() => setFolkDialogOpen(true)}
-										fullWidth
-										sx={{ 
-											justifyContent: 'flex-start',
-											textTransform: 'none',
-											color: selectedFolk ? 'text.primary' : 'text.secondary',
-											fontWeight: selectedFolk ? 'medium' : 'normal'
-										}}
-									>
-										{selectedFolk ? selectedFolk.name : 'Select Folk'}
-									</Button>
-								</Box>
-								
-								{/* Upbringing Selection */}
-								<Box>
-									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
-										Upbringing
-									</Typography>
-									<Button
-										variant="outlined"
-										size="small"
-										onClick={() => setUpbringingDialogOpen(true)}
-										fullWidth
-										sx={{ 
-											justifyContent: 'flex-start',
-											textTransform: 'none',
-											color: selectedUpbringing ? 'text.primary' : 'text.secondary',
-											fontWeight: selectedUpbringing ? 'medium' : 'normal'
-										}}
-									>
-										{selectedUpbringing ? selectedUpbringing.name : 'Select Upbringing'}
-									</Button>
-								</Box>
-								
-								{/* Background Selection */}
-								<Box>
-									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
-										Background
-									</Typography>
-									<Button
-										variant="outlined"
-										size="small"
-										onClick={() => setBackgroundDialogOpen(true)}
-										fullWidth
-										sx={{ 
-											justifyContent: 'flex-start',
-											textTransform: 'none',
-											color: selectedBackground ? 'text.primary' : 'text.secondary',
-											fontWeight: selectedBackground ? 'medium' : 'normal'
-										}}
-									>
-										{selectedBackground ? selectedBackground.name : 'Select Background'}
-									</Button>
-								</Box>
-							</Box>
-
-							{(selectedArchetype || selectedFolk || selectedUpbringing || selectedBackground) && (
-								<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
-									{selectedArchetype && 'Archetype provides recommended attributes, skills, and equipment. '}
-									Selected details will auto-fill abilities, languages, and starting items.
-								</Typography>
-							)}
-						</>
-					)}
-
-					{!importedCharacter && (
-						<FormControlLabel
-							control={
-								<Checkbox
-									checked={includeStartingGear}
-									onChange={(e) => setIncludeStartingGear(e.target.checked)}
-								/>
-							}
-							label="Include starting gear from character creation"
-							sx={{ mt: 1 }}
-						/>
-					)}
-
-					{importedCharacter && (
-						<>
-							<Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+							<DialogContentText sx={{ mb: 2 }}>
+								Import and customize "{importedCharacter.personal.name}"
+							</DialogContentText>
+							<TextField
+								required
+								fullWidth
+								type="text"
+								label="Character Name"
+								placeholder="Modify character name"
+								value={name}
+								onChange={(e) => {
+									if (e.target.value.length <= MAX_NAME_LENGTH) {
+										setName(e.target.value)
+									}
+								}}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter') {
+										e.preventDefault()
+										handleConfirm()
+									}
+								}}
+								InputLabelProps={{ shrink: true }}
+								sx={{ mb: 2 }}
+							/>
+							<Typography variant="body2" color="text.secondary">
 								✓ Character data loaded successfully
 							</Typography>
 							<Box sx={{ mt: 1 }}>
@@ -552,19 +424,284 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 										setImportedCharacter(null)
 										setName('')
 										setImportError(null)
+										setActiveTab(0)
 									}}
 								>
 									Start over with new character
 								</Button>
 							</Box>
 						</>
+					) : (
+						<>
+							{/* Tab 0: Quick Start (Archetype + Folk) */}
+							{activeTab === 0 && (
+								<Box>
+									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+										Choose an archetype for a ready-to-play character with pre-selected attributes, skills, and equipment.
+									</Typography>
+
+									<TextField
+										required
+										fullWidth
+										type="text"
+										label="Character Name"
+										placeholder="Enter your character's name"
+										value={name}
+										onChange={(e) => {
+											if (e.target.value.length <= MAX_NAME_LENGTH) {
+												setName(e.target.value)
+											}
+										}}
+										onKeyDown={(e) => {
+											if (e.key === 'Enter') {
+												e.preventDefault()
+												handleConfirm()
+											}
+										}}
+										InputLabelProps={{ shrink: true }}
+										sx={{ mb: 3 }}
+									/>
+
+									<Box sx={{ display: 'grid', gap: 2 }}>
+										{/* Archetype Selection */}
+										<Box>
+											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+												Archetype *
+											</Typography>
+											<Button
+												variant="outlined"
+												onClick={() => setArchetypeDialogOpen(true)}
+												fullWidth
+												sx={{ 
+													justifyContent: 'flex-start',
+													textTransform: 'none',
+													py: 1.5,
+													color: selectedArchetype ? 'text.primary' : 'text.secondary',
+													fontWeight: selectedArchetype ? 'medium' : 'normal',
+													borderColor: selectedArchetype ? 'primary.main' : undefined,
+													borderWidth: selectedArchetype ? 2 : 1,
+												}}
+											>
+												{selectedArchetype ? `${selectedArchetype.name} (${selectedArchetype.role})` : 'Select Archetype'}
+											</Button>
+											{selectedArchetype && (
+												<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
+													{selectedArchetype.description}
+												</Typography>
+											)}
+										</Box>
+										
+										{/* Folk Selection */}
+										<Box>
+											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+												Folk *
+											</Typography>
+											<Button
+												variant="outlined"
+												onClick={() => setFolkDialogOpen(true)}
+												fullWidth
+												sx={{ 
+													justifyContent: 'flex-start',
+													textTransform: 'none',
+													py: 1.5,
+													color: selectedFolk ? 'text.primary' : 'text.secondary',
+													fontWeight: selectedFolk ? 'medium' : 'normal',
+													borderColor: selectedFolk ? 'primary.main' : undefined,
+													borderWidth: selectedFolk ? 2 : 1,
+												}}
+											>
+												{selectedFolk ? selectedFolk.name : 'Select Folk'}
+											</Button>
+										</Box>
+									</Box>
+								</Box>
+							)}
+
+							{/* Tab 1: Custom (Upbringing + Background + Folk) */}
+							{activeTab === 1 && (
+								<Box>
+									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+										Build your character from scratch by choosing upbringing, background, and folk.
+									</Typography>
+
+									<TextField
+										required
+										fullWidth
+										type="text"
+										label="Character Name"
+										placeholder="Enter your character's name"
+										value={name}
+										onChange={(e) => {
+											if (e.target.value.length <= MAX_NAME_LENGTH) {
+												setName(e.target.value)
+											}
+										}}
+										onKeyDown={(e) => {
+											if (e.key === 'Enter') {
+												e.preventDefault()
+												handleConfirm()
+											}
+										}}
+										InputLabelProps={{ shrink: true }}
+										sx={{ mb: 3 }}
+									/>
+
+									<Box sx={{ display: 'grid', gap: 2, mb: 3 }}>
+										{/* Folk Selection */}
+										<Box>
+											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+												Folk (Optional)
+											</Typography>
+											<Button
+												variant="outlined"
+												onClick={() => setFolkDialogOpen(true)}
+												fullWidth
+												sx={{ 
+													justifyContent: 'flex-start',
+													textTransform: 'none',
+													py: 1.5,
+													color: selectedFolk ? 'text.primary' : 'text.secondary',
+													fontWeight: selectedFolk ? 'medium' : 'normal'
+												}}
+											>
+												{selectedFolk ? selectedFolk.name : 'Select Folk'}
+											</Button>
+										</Box>
+										
+										{/* Upbringing Selection */}
+										<Box>
+											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+												Upbringing (Optional)
+											</Typography>
+											<Button
+												variant="outlined"
+												onClick={() => setUpbringingDialogOpen(true)}
+												fullWidth
+												sx={{ 
+													justifyContent: 'flex-start',
+													textTransform: 'none',
+													py: 1.5,
+													color: selectedUpbringing ? 'text.primary' : 'text.secondary',
+													fontWeight: selectedUpbringing ? 'medium' : 'normal'
+												}}
+											>
+												{selectedUpbringing ? selectedUpbringing.name : 'Select Upbringing'}
+											</Button>
+										</Box>
+										
+										{/* Background Selection */}
+										<Box>
+											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+												Background (Optional)
+											</Typography>
+											<Button
+												variant="outlined"
+												onClick={() => setBackgroundDialogOpen(true)}
+												fullWidth
+												sx={{ 
+													justifyContent: 'flex-start',
+													textTransform: 'none',
+													py: 1.5,
+													color: selectedBackground ? 'text.primary' : 'text.secondary',
+													fontWeight: selectedBackground ? 'medium' : 'normal'
+												}}
+											>
+												{selectedBackground ? selectedBackground.name : 'Select Background'}
+											</Button>
+										</Box>
+									</Box>
+
+									<FormControlLabel
+										control={
+											<Checkbox
+												checked={includeStartingGear}
+												onChange={(e) => setIncludeStartingGear(e.target.checked)}
+											/>
+										}
+										label="Include starting gear"
+									/>
+								</Box>
+							)}
+
+							{/* Tab 2: Blank */}
+							{activeTab === 2 && (
+								<Box>
+									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+										Start with a completely blank character sheet.
+									</Typography>
+
+									<TextField
+										required
+										fullWidth
+										type="text"
+										label="Character Name"
+										placeholder="Enter your character's name"
+										value={name}
+										onChange={(e) => {
+											if (e.target.value.length <= MAX_NAME_LENGTH) {
+												setName(e.target.value)
+											}
+										}}
+										onKeyDown={(e) => {
+											if (e.key === 'Enter') {
+												e.preventDefault()
+												handleConfirm()
+											}
+										}}
+										InputLabelProps={{ shrink: true }}
+										sx={{ mb: 3 }}
+									/>
+
+									<FormControlLabel
+										control={
+											<Checkbox
+												checked={includeStartingGear}
+												onChange={(e) => setIncludeStartingGear(e.target.checked)}
+											/>
+										}
+										label="Include starting gear"
+									/>
+								</Box>
+							)}
+
+							{/* Tab 3: Import */}
+							{activeTab === 3 && (
+								<Box>
+									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+										Import a previously exported character from a JSON file.
+									</Typography>
+
+									<Button
+										variant="outlined"
+										component="label"
+										startIcon={<Upload />}
+										fullWidth
+										sx={{ py: 2 }}
+									>
+										Upload Character JSON
+										<input
+											type="file"
+											accept=".json"
+											hidden
+											onChange={handleFileUpload}
+										/>
+									</Button>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+										Select a valid Nexus RPG character JSON file
+									</Typography>
+								</Box>
+							)}
+						</>
 					)}
 				</DialogContent>
-				<DialogActions sx={{ p: 2 }}>
+				<DialogActions sx={{ p: 2, pt: 1 }}>
 					<Button onClick={handleAbort}>Cancel</Button>
 					<Button
 						variant="contained"
-						disabled={!name}
+						disabled={
+							!name || 
+							(activeTab === 0 && (!selectedArchetype || !selectedFolk))
+						}
 						onClick={handleConfirm}
 						autoFocus
 					>
@@ -579,6 +716,19 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				onClose={() => setArchetypeDialogOpen(false)}
 				onSelectArchetype={(archetype) => {
 					setSelectedArchetype(archetype)
+					// Auto-set upbringing and background based on archetype
+					if (archetype.upbringing) {
+						const upbringing = (upbringingData as UpbringingData[]).find(u => u.name === archetype.upbringing)
+						if (upbringing) {
+							setSelectedUpbringing(upbringing)
+						}
+					}
+					if (archetype.background) {
+						const background = (backgroundData as BackgroundData[]).find(b => b.name === archetype.background)
+						if (background) {
+							setSelectedBackground(background)
+						}
+					}
 					setArchetypeDialogOpen(false)
 				}}
 				selectedArchetype={selectedArchetype?.name}

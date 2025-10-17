@@ -147,7 +147,7 @@
     "abilities": [
       {
         "name": "Giant's Blood",
-        "description": "+2 HP. You also gain the following effects:"
+        "description": "+2 HP. You also gain the following effects:\n\n- Add +2 to your carrying capacity.\n- Decrease the Strength requirement for heavy weapons you wield by -1d (min. d4)."
       },
       {
         "name": "Stoic Mind",
@@ -353,7 +353,7 @@
     "abilities": [
       {
         "name": "Giant's Blood",
-        "description": "+2 HP. You also gain the following effects:"
+        "description": "+2 HP. You also gain the following effects:\n\n- Add +2 to your carrying capacity.\n- Decrease the Strength requirement for heavy weapons you wield by -1d (min. d4)."
       },
       {
         "name": "Horns",

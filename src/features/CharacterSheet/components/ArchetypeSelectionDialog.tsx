@@ -24,7 +24,20 @@ export type ArchetypeData = {
 	}
 	suggestedSkills: string
 	recommendedTalents: string[]
+	recommendedCompanions?: string[]
 	startingEquipment: string[]
+	upbringing: string
+	background: string
+	spellData?: {
+		magicSkill: string
+		specialization: string
+		traditions?: string[]
+		disciplines?: string[]
+		startingSpells: Array<{
+			name: string
+			rank: number
+		}>
+	}
 }
 
 export const ArchetypeSelectionDialog: React.FC<ArchetypeSelectionDialogProps> = ({

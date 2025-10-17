@@ -145,21 +145,25 @@ export const PersonalTab: React.FC = () => {
 			const oldFolk = (folkData as FolkData[]).find(f => f.name === activeCharacter.personal.folk)
 			if (oldFolk) {
 				// Remove old folk abilities
-				oldFolk.abilities.forEach(ability => {
-					const existingAbility = activeCharacter.skills.abilities.find(a => 
-						a.title === ability.name && a.tag === 'Folk'
-					)
-					if (existingAbility) {
-						dispatch(characterSheetActions.deleteAbility(existingAbility))
-					}
-				})
+				if (oldFolk.abilities && Array.isArray(oldFolk.abilities)) {
+					oldFolk.abilities.forEach(ability => {
+						const existingAbility = activeCharacter.skills.abilities.find(a => 
+							a.title === ability.name && a.tag === 'Folk'
+						)
+						if (existingAbility) {
+							dispatch(characterSheetActions.deleteAbility(existingAbility))
+						}
+					})
+				}
 
 				// Remove old folk languages (but keep Tradespeak)
-				oldFolk.languages.forEach(language => {
-					if (language !== 'Tradespeak') {
-						dispatch(characterSheetActions.removeLanguage(language))
-					}
-				})
+				if (oldFolk.languages && Array.isArray(oldFolk.languages)) {
+					oldFolk.languages.forEach(language => {
+						if (language !== 'Tradespeak') {
+							dispatch(characterSheetActions.removeLanguage(language))
+						}
+					})
+				}
 			}
 		}
 
@@ -168,21 +172,25 @@ export const PersonalTab: React.FC = () => {
 		updateCharacter({ personal: { folk: folk.name } })
 
 		// Add new folk abilities
-		const newAbilities = folk.abilities.map(ability => ({
-			id: crypto.randomUUID(),
-			title: ability.name,
-			description: ability.description,
-			tag: 'Folk' as const,
-		}))
+		if (folk.abilities && Array.isArray(folk.abilities)) {
+			const newAbilities = folk.abilities.map(ability => ({
+				id: crypto.randomUUID(),
+				title: ability.name,
+				description: ability.description,
+				tag: 'Folk' as const,
+			}))
 
-		if (newAbilities.length > 0) {
-			dispatch(characterSheetActions.importAbilities(newAbilities))
+			if (newAbilities.length > 0) {
+				dispatch(characterSheetActions.importAbilities(newAbilities))
+			}
 		}
 
 		// Add new folk languages
-		folk.languages.forEach(language => {
-			dispatch(characterSheetActions.addLanguage(language))
-		})
+		if (folk.languages && Array.isArray(folk.languages)) {
+			folk.languages.forEach(language => {
+				dispatch(characterSheetActions.addLanguage(language))
+			})
+		}
 	}
 
 	const applyUpbringingChange = (upbringing: UpbringingData) => {

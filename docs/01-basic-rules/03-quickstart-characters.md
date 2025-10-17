@@ -230,7 +230,7 @@ Role: Striker / Controller
 
 | STR | AGI | SPI | MND |
 |-----|-----|-----|-----|
-| d8  | d8  | d4  | d4  |
+| d8  | d6  | d6  | d4  |
 
 **Upbringing & Background**
 
@@ -422,9 +422,9 @@ Role: Support / Controller
 
 **Rank 1 Skills:**
 
-- **Mysticism** – *Wild Shape (Rank 1)* – Transform into animal forms
+- **Mysticism** – *Shape Changer (Rank 1)* – Transform into animal forms
 - **Nature** – *Animal Companion (Rank 1)* – Control an animal companion (Tier ≤ Nature)
-- **Survival** – *Forager (Rank 1)* – Excel at finding food and resources
+- **Survival** – *Wilderness Expert (Rank 1)* – Excel at finding food and resources
 
 **Rank 0 Skills:** Lore, Insight, Perception †, Athletics †
 
@@ -453,11 +453,21 @@ Note: † Customized skills (not from upbringing/background suggestions)
 
 Note: At rank 1, you know 4 total spells: 2 starting + 2 from gaining rank 1
 
+**Animal Companion**
+
+Use the companion base stat block with Tier equal to your Nature rank (see the Mounts & Companions rules). Then pick any one Animal trait to define your companion's type.
+
+Suggested traits:
+
+- Bear — Tough frontline with knockdown/grapple options and an intimidating roar.
+- Bird — Fast flying scout with keen eyes and dive attack bursts.
+- Constrictor Snake — Grapple and restrain to lock down priority targets.
+
 **Playstyle & Advancement**
 
-The Druid is perfect for players who want to blend with nature, shapeshift, and command elemental forces. Wild Shape provides incredible versatility, while Animal Companion gives you a loyal ally. Use nature magic to control the battlefield and support allies. Forager makes wilderness travel easier for the whole party.
+The Druid is perfect for players who want to blend with nature, shapeshift, and command elemental forces. Shape Changer provides incredible versatility, while Animal Companion gives you a loyal ally. Use nature magic to control the battlefield and support allies. Wilderness Expert makes wilderness travel easier for the whole party.
 
-**Advancement:** Increase Mysticism to rank 2-3 for more powerful spells and Wild Shape options, raise Nature and Survival for wilderness mastery, add Lore for deeper nature knowledge, and consider more shapeshifting or elemental talents.
+**Advancement:** Increase Mysticism to rank 2-3 for more powerful spells and Shape Changer options, raise Nature and Survival for wilderness mastery, add Lore for deeper nature knowledge, and consider more shapeshifting or elemental talents.
 
 [Back to Quick Reference](#quick-reference-archetype-overview)
 
@@ -541,7 +551,7 @@ Role: Tank / Striker
 **Rank 1 Skills:**
 
 - **Fighting** – *Shield Mastery (Rank 1)* – Reduce enemy attack Success Level with Quick Action
-- **Athletics** – *Stand Your Ground (Rank 1)* – Resist being knocked prone or pushed with Quick Action
+- **Athletics** – *Stand your Ground (Rank 1)* – Resist being knocked prone or pushed with Quick Action
 - **Fortitude** – *Second Wind (Rank 1)* – Regain HP with Quick Action once per scene
 
 **Rank 0 Skills:** Influence †, Perception, Insight †, Archery
@@ -567,7 +577,7 @@ As a Fighting rank 1 character, you know **2 Combat Arts** for melee weapons. Re
 
 **Playstyle & Advancement**
 
-The Fighter is perfect for players who want straightforward, effective combat with tactical depth. Use your shield to protect allies and your versatile longsword to adapt to situations. Stand Your Ground keeps you in position while Second Wind provides survivability when needed. Combat Arts like Defensive Strike and Charge give you tactical options for different situations.
+The Fighter is perfect for players who want straightforward, effective combat with tactical depth. Use your shield to protect allies and your versatile longsword to adapt to situations. Stand your Ground keeps you in position while Second Wind provides survivability when needed. Combat Arts like Defensive Strike and Charge give you tactical options for different situations.
 
 **Advancement:** Increase Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Influence for battlefield command, consider Heavy Armor Mastery or more shield-focused talents.
 
@@ -990,6 +1000,16 @@ As an Archery rank 1 character, you know **2 Combat Arts** for ranged weapons. R
 - **Total Load:** 11 (equipment 6 + standard gear 5)
 - **Carry Capacity:** 11 (1/2 STR 3 + 8)
 - **Remaining Coins:** 85
+
+**Animal Companion**
+
+Use the companion base stat block with Tier equal to your Nature rank (see the Mounts & Companions rules). Then pick any one Animal trait to define your companion's type.
+
+Suggested traits:
+
+- Dog — Loyal tracker with pack tactics and reliable grapples.
+- Bird — Fast flying scout with keen eyes and dive attack bursts.
+- Bear — Tough frontline with knockdown/grapple options and an intimidating roar.
 
 **Playstyle & Advancement**
 
@@ -1415,7 +1435,7 @@ Use the companion base stat block with Tier equal to your Nature rank (see the M
 
 Suggested traits:
 
-- Hound — Track scent, pack tactics; reliable grapples on a bite.
+- Dog — Loyal tracker with pack tactics and reliable grapples.
 - Cat — Stealthy scout with pounce and knockdown.
 - Boar — Durable frontline that can gore on a charge.
 
@@ -1450,7 +1470,7 @@ Role: Striker / Controller
 **Rank 1 Skills:**
 
 - **Arcana** – *Master of Fundamentals (Rank 1)* – Re-roll rank 0 spell tests once per scene
-- **Lore** – *Forbidden Knowledge (Rank 1)* – Gain insights into forbidden subjects
+- **Lore** – *Arcane Spell Knowledge (Rank 1)* – Know +1 additional Arcana spell per rank
 - **Insight** – *Piercing Look (Rank 1)* – Re‑roll Insight to detect lies or motives once per scene
 
 **Rank 0 Skills:** Fortitude †, Influence, Stealth †, Perception †
