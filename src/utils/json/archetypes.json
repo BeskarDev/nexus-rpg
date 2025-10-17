@@ -889,7 +889,7 @@
 			"SPI": 6,
 			"MND": 8
 		},
-		"suggestedSkills": "Arcana, Lore, Insight",
+		"suggestedSkills": "Arcana, Lore, Insight, Education, Perception, Influence, Mysticism",
 		"recommendedTalents": [
 			"Master of Fundamentals",
 			"Magical Sense",
@@ -902,6 +902,12 @@
 		],
 		"upbringing": "Scholar",
 		"background": "Renegade Mage",
+		"recommendedFamiliars": [
+			"Bat",
+			"Cat",
+			"Rat",
+			"Spider"
+		],
 		"spellData": {
 			"magicSkill": "Arcana",
 			"specialization": "Conjuration",

@@ -90,13 +90,13 @@ describe('Archetype Selection', () => {
 			archetype: fighterArchetype,
 		})
 
-		const talentAbility = character.skills.abilities.find((a) =>
-			a.title.includes('Recommended Talents')
-		)
-		expect(talentAbility).toBeDefined()
-		expect(talentAbility?.description).toContain('Shield Mastery')
-		expect(talentAbility?.description).toContain('Stand Your Ground')
-		expect(talentAbility?.description).toContain('Second Wind')
+		// Check that talents are added individually with 'Talent' tag
+		const talentAbilities = character.skills.abilities.filter((a) => a.tag === 'Talent')
+		const talentNames = talentAbilities.map(a => a.title)
+		
+		expect(talentNames).toContain('Shield Mastery')
+		expect(talentNames).toContain('Stand your Ground')
+		expect(talentNames).toContain('Second Wind')
 	})
 
 	it('should calculate correct initial HP based on archetype strength', () => {
@@ -108,8 +108,8 @@ describe('Archetype Selection', () => {
 			archetype: barbarianArchetype,
 		})
 
-		// HP should be 12 (base) + 8 (STR) = 20
-		expect(character.statistics.health.current).toBe(20)
+		// HP should be 12 (base) + 8 (STR) + 2 (Bulky talent rank 1) = 22
+		expect(character.statistics.health.current).toBe(22)
 	})
 
 	it('should use default attributes when no archetype selected', () => {
@@ -171,5 +171,51 @@ describe('Archetype Selection', () => {
 		keyArchetypes.forEach((name) => {
 			expect(archetypeNames).toContain(name)
 		})
+	})
+
+	it('should create familiar for Summoner with Conjure Familiar spell', () => {
+		const summonerArchetype: ArchetypeData = archetypesJson.find(
+			(a) => a.name === 'Summoner'
+		) as ArchetypeData
+
+		const character = createInitialCharacter('Test Summoner', 'Test Player', {
+			archetype: summonerArchetype,
+			selectedFamiliar: 'Bat',
+		})
+
+		// Should have Conjure Familiar spell
+		const hasConjureFamiliar = character.spells.spells.some(
+			spell => spell.name === 'Conjure Familiar'
+		)
+		expect(hasConjureFamiliar).toBe(true)
+
+		// Should have a familiar companion
+		expect(character.companions.length).toBeGreaterThan(0)
+		const familiar = character.companions[0]
+		expect(familiar.name).toBe('Bat')
+		expect(familiar.markdown).toBeDefined()
+		expect(familiar.markdown.length).toBeGreaterThan(0)
+		expect(familiar.currentHP).toBeGreaterThan(0)
+		expect(familiar.maxHP).toBeGreaterThan(0)
+	})
+
+	it('should not create familiar when none is selected', () => {
+		const summonerArchetype: ArchetypeData = archetypesJson.find(
+			(a) => a.name === 'Summoner'
+		) as ArchetypeData
+
+		const character = createInitialCharacter('Test Summoner', 'Test Player', {
+			archetype: summonerArchetype,
+			// No selectedFamiliar provided
+		})
+
+		// Should have Conjure Familiar spell
+		const hasConjureFamiliar = character.spells.spells.some(
+			spell => spell.name === 'Conjure Familiar'
+		)
+		expect(hasConjureFamiliar).toBe(true)
+
+		// Should NOT have a companion because no familiar was selected
+		expect(character.companions.length).toBe(0)
 	})
 })

@@ -341,6 +341,8 @@ export type CharacterCreationOptions = {
 	upbringing?: UpbringingData
 	background?: BackgroundData
 	archetype?: ArchetypeData
+	selectedCompanion?: string
+	selectedFamiliar?: string
 }
 
 export const createInitialCharacter = (
@@ -348,7 +350,7 @@ export const createInitialCharacter = (
 	playerName: string,
 	options: CharacterCreationOptions = {},
 ): Character => {
-	const { includeStartingGear = false, folk, upbringing, background, archetype } = options
+	const { includeStartingGear = false, folk, upbringing, background, archetype, selectedCompanion, selectedFamiliar } = options
 
 	// Collect languages from folk and base languages
 	const languages = ['Tradespeak']
@@ -375,29 +377,18 @@ export const createInitialCharacter = (
 		})
 	}
 	
-	// Add recommended talents from archetype as a grouped suggestion ability
-	if (archetype?.recommendedTalents && Array.isArray(archetype.recommendedTalents) && archetype.recommendedTalents.length > 0) {
-		// Build a single ability that lists recommended talent names and short descriptions
-		const talentEntries: string[] = []
+	// Add talents from archetype (if provided)
+	if (archetype?.recommendedTalents && Array.isArray(archetype.recommendedTalents)) {
 		archetype.recommendedTalents.forEach(talentName => {
 			const talent = findTalent(talentName)
 			if (talent) {
-				// Include the talent name (title-cased) and first sentence of its description for readability
-				const desc = sanitizeAbilityDescription(talent.description || '')
-				const firstLine = desc.split('\n')[0] || ''
-				const title = capitalizeStartingItem(talent.name)
-				talentEntries.push(`- ${title}: ${firstLine}`)
-			} else {
-				// If the talent isn't found in the DB, still include the name (title-cased)
-				talentEntries.push(`- ${capitalizeStartingItem(talentName)}`)
+				abilities.push({
+					id: uuidv4(),
+					title: talent.name,
+					description: sanitizeAbilityDescription(talent.description),
+					tag: 'Talent' as const,
+				})
 			}
-		})
-
-		abilities.push({
-			id: uuidv4(),
-			title: 'Recommended Talents',
-			description: talentEntries.join('\n'),
-			tag: 'Suggested' as const,
 		})
 	}
 
@@ -781,12 +772,11 @@ export const createInitialCharacter = (
 		companions: [],
 	}
 
-	// Add companion if archetype has Animal Companion talent and recommended companions
+	// Add companion if archetype has Animal Companion talent and a companion is selected
 	if (archetype?.recommendedTalents?.includes('Animal Companion') && 
-	    archetype?.recommendedCompanions && 
-	    archetype.recommendedCompanions.length > 0) {
+	    selectedCompanion) {
 		
-		const companionTraitName = archetype.recommendedCompanions[0] // Use first recommended companion
+		const companionTraitName = selectedCompanion
 		const companionTrait = (companionTraitsData as CompanionTrait[]).find(
 			trait => trait.name === companionTraitName
 		)
@@ -820,6 +810,54 @@ export const createInitialCharacter = (
 				id: uuidv4(),
 				name: companionTraitName,
 				markdown: companionMarkdown,
+				currentHP: calculatedStats.hp,
+				maxHP: calculatedStats.hp,
+				wounded: false
+			})
+		}
+	}
+
+	// Add familiar if archetype has Conjure Familiar spell and a familiar is selected
+	const hasConjureFamiliar = baseCharacter.spells.spells.some(
+		spell => spell.name === 'Conjure Familiar'
+	)
+	
+	if (hasConjureFamiliar && selectedFamiliar) {
+		
+		const familiarTraitName = selectedFamiliar
+		const familiarTrait = (companionTraitsData as CompanionTrait[]).find(
+			trait => trait.name === familiarTraitName
+		)
+		
+		if (familiarTrait) {
+			// Familiars are tier 0 (Arcana rank 0 at character creation)
+			const familiarTier = 0
+			
+			// Familiars are always Tiny size
+			const familiarSize = 'Tiny'
+			
+			// Calculate stats for the familiar
+			const calculatedStats = calculateStats(
+				familiarTier,
+				familiarSize,
+				familiarTrait
+			)
+			
+			const familiarStats: CompanionStats = {
+				tier: familiarTier,
+				size: familiarSize,
+				trait: familiarTrait,
+				calculatedStats
+			}
+			
+			// Generate markdown for the familiar
+			const familiarMarkdown = generateMarkdown(familiarStats)
+			
+			// Add to companions array
+			baseCharacter.companions.push({
+				id: uuidv4(),
+				name: familiarTraitName,
+				markdown: familiarMarkdown,
 				currentHP: calculatedStats.hp,
 				maxHP: calculatedStats.hp,
 				wounded: false

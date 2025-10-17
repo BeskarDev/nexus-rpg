@@ -27,6 +27,10 @@ import {
 	Divider,
 	Tab,
 	Tabs,
+	Select,
+	MenuItem,
+	InputLabel,
+	FormControl,
 } from '@mui/material'
 import { db } from '@site/src/config/firebase'
 import { useAuth } from '@site/src/hooks/firebaseAuthContext'
@@ -86,6 +90,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const [selectedUpbringing, setSelectedUpbringing] = React.useState<UpbringingData | null>(null)
 	const [selectedBackground, setSelectedBackground] = React.useState<BackgroundData | null>(null)
 	const [selectedArchetype, setSelectedArchetype] = React.useState<ArchetypeData | null>(null)
+	const [selectedCompanion, setSelectedCompanion] = React.useState<string | null>(null)
+	const [selectedFamiliar, setSelectedFamiliar] = React.useState<string | null>(null)
 	
 	// Dialog states
 	const [folkDialogOpen, setFolkDialogOpen] = React.useState(false)
@@ -199,6 +205,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					upbringing: selectedUpbringing || undefined,
 					background: selectedBackground || undefined,
 					archetype: selectedArchetype || undefined,
+					selectedCompanion: selectedCompanion || undefined,
+					selectedFamiliar: selectedFamiliar || undefined,
 				}
 				characterData = createInitialCharacter(name, playerName, options)
 			}
@@ -213,6 +221,8 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 			setSelectedUpbringing(null)
 			setSelectedBackground(null)
 			setSelectedArchetype(null)
+			setSelectedCompanion(null)
+			setSelectedFamiliar(null)
 			setActiveTab(0)
 			setOpen(false)
 			
@@ -489,6 +499,66 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 													{selectedArchetype.description}
 												</Typography>
 											)}
+
+											{/* Companion Selection (if archetype has Animal Companion talent) */}
+											{selectedArchetype?.recommendedTalents?.includes('Animal Companion') && 
+											 selectedArchetype?.recommendedCompanions &&
+											 selectedArchetype.recommendedCompanions.length > 0 && (
+												<Box sx={{ mt: 2 }}>
+													<FormControl fullWidth>
+														<InputLabel id="companion-select-label">Animal Companion (Optional)</InputLabel>
+														<Select
+															labelId="companion-select-label"
+															value={selectedCompanion || ''}
+															onChange={(e) => setSelectedCompanion(e.target.value || null)}
+															label="Animal Companion (Optional)"
+														>
+															<MenuItem value="">
+																<em>None</em>
+															</MenuItem>
+															{selectedArchetype.recommendedCompanions.map((companion) => (
+																<MenuItem key={companion} value={companion}>
+																	{companion}
+																</MenuItem>
+															))}
+														</Select>
+													</FormControl>
+													<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
+														Your archetype grants you an animal companion to aid you in your adventures.
+													</Typography>
+												</Box>
+											)}
+
+											{/* Familiar Selection (if archetype has Conjure Familiar spell) */}
+											{selectedArchetype?.spellData?.startingSpells?.some(
+												spell => spell.name === 'Conjure Familiar'
+											) && 
+											 selectedArchetype?.recommendedFamiliars &&
+											 selectedArchetype.recommendedFamiliars.length > 0 && (
+												<Box sx={{ mt: 2 }}>
+													<FormControl fullWidth>
+														<InputLabel id="familiar-select-label">Familiar (Optional)</InputLabel>
+														<Select
+															labelId="familiar-select-label"
+															value={selectedFamiliar || ''}
+															onChange={(e) => setSelectedFamiliar(e.target.value || null)}
+															label="Familiar (Optional)"
+														>
+															<MenuItem value="">
+																<em>None</em>
+															</MenuItem>
+															{selectedArchetype.recommendedFamiliars.map((familiar) => (
+																<MenuItem key={familiar} value={familiar}>
+																	{familiar}
+																</MenuItem>
+															))}
+														</Select>
+													</FormControl>
+													<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
+														Choose a tiny creature to serve as your magical familiar and companion.
+													</Typography>
+												</Box>
+											)}
 										</Box>
 										
 										{/* Folk Selection */}
@@ -716,6 +786,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				onClose={() => setArchetypeDialogOpen(false)}
 				onSelectArchetype={(archetype) => {
 					setSelectedArchetype(archetype)
+					// Reset companion and familiar selections when archetype changes
+					setSelectedCompanion(null)
+					setSelectedFamiliar(null)
 					// Auto-set upbringing and background based on archetype
 					if (archetype.upbringing) {
 						const upbringing = (upbringingData as UpbringingData[]).find(u => u.name === archetype.upbringing)

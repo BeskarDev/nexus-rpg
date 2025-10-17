@@ -25,6 +25,7 @@ export type ArchetypeData = {
 	suggestedSkills: string
 	recommendedTalents: string[]
 	recommendedCompanions?: string[]
+	recommendedFamiliars?: string[]
 	startingEquipment: string[]
 	upbringing: string
 	background: string
