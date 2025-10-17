@@ -1,5 +1,5 @@
 import { Character } from '../../../types/Character'
-import type { FolkData, UpbringingData, BackgroundData } from '../components'
+import type { FolkData, UpbringingData, BackgroundData, ArchetypeData } from '../components'
 import { v4 as uuidv4 } from 'uuid'
 
 /**
@@ -47,6 +47,7 @@ export type CharacterCreationOptions = {
 	folk?: FolkData
 	upbringing?: UpbringingData
 	background?: BackgroundData
+	archetype?: ArchetypeData
 }
 
 export const createInitialCharacter = (
@@ -54,7 +55,7 @@ export const createInitialCharacter = (
 	playerName: string,
 	options: CharacterCreationOptions = {},
 ): Character => {
-	const { includeStartingGear = false, folk, upbringing, background } = options
+	const { includeStartingGear = false, folk, upbringing, background, archetype } = options
 
 	// Collect languages from folk and base languages
 	const languages = ['Tradespeak']
@@ -66,7 +67,7 @@ export const createInitialCharacter = (
 		})
 	}
 
-	// Collect abilities from folk
+	// Collect abilities from folk and archetype
 	const abilities = []
 	if (folk?.abilities) {
 		folk.abilities.forEach(ability => {
@@ -78,9 +79,21 @@ export const createInitialCharacter = (
 			})
 		})
 	}
+	if (archetype?.recommendedTalents) {
+		// Add archetype talent recommendations as notes
+		abilities.push({
+			id: uuidv4(),
+			title: `${archetype.name} Recommended Talents`,
+			description: `Consider these talents for your ${archetype.name} build: ${archetype.recommendedTalents.join(', ')}`,
+			tag: 'Note' as const,
+		})
+	}
 
-	// Collect skills from upbringing and background
+	// Collect skills from archetype, upbringing and background
 	const skillNames = []
+	if (archetype?.suggestedSkills) {
+		skillNames.push(...parseSuggestedSkills(archetype.suggestedSkills))
+	}
 	if (upbringing?.['suggested skills']) {
 		skillNames.push(...parseSuggestedSkills(upbringing['suggested skills']))
 	}
@@ -123,6 +136,15 @@ export const createInitialCharacter = (
 			})
 		}
 	}
+	// Determine attribute values (must be valid die values: 4, 6, 8, 10, or 12)
+	const strengthValue = (archetype?.attributes.STR || 6) as 4 | 6 | 8 | 10 | 12
+	const agilityValue = (archetype?.attributes.AGI || 6) as 4 | 6 | 8 | 10 | 12
+	const spiritValue = (archetype?.attributes.SPI || 6) as 4 | 6 | 8 | 10 | 12
+	const mindValue = (archetype?.attributes.MND || 6) as 4 | 6 | 8 | 10 | 12
+	
+	// Calculate initial HP (12 base + strength value)
+	const initialHp = 12 + strengthValue
+
 	const baseCharacter: Character = {
 		personal: {
 			name,
@@ -133,17 +155,17 @@ export const createInitialCharacter = (
 			height: '',
 			weight: '',
 			age: '',
-			description: '',
+			description: archetype ? `${archetype.name} (${archetype.role})` : '',
 			motivation: '',
 			allies: [],
 			contacts: [],
 			rivals: [],
 			npcRelationships: [],
-			notes: '',
+			notes: archetype ? `Archetype: ${archetype.name}\nBest for: ${archetype.bestFor}\n\n${archetype.description}` : '',
 		},
 		statistics: {
 			health: {
-				current: 18, // Default for d6 strength at level 1 (12 + 6)
+				current: initialHp,
 				temp: 0,
 				maxHpModifier: 0,
 			},
@@ -154,19 +176,19 @@ export const createInitialCharacter = (
 				other: 0,
 			},
 			strength: {
-				value: 6,
+				value: strengthValue,
 				wounded: false,
 			},
 			agility: {
-				value: 6,
+				value: agilityValue,
 				wounded: false,
 			},
 			spirit: {
-				value: 6,
+				value: spiritValue,
 				wounded: false,
 			},
 			mind: {
-				value: 6,
+				value: mindValue,
 				wounded: false,
 			},
 			parry: 0,

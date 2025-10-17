@@ -43,9 +43,11 @@ import {
 	FolkSelectionDialog, 
 	UpbringingSelectionDialog, 
 	BackgroundSelectionDialog,
+	ArchetypeSelectionDialog,
 	FolkData,
 	UpbringingData,
-	BackgroundData
+	BackgroundData,
+	ArchetypeData
 } from './components'
 
 const MAX_NAME_LENGTH = 1_000
@@ -78,11 +80,13 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 	const [selectedFolk, setSelectedFolk] = React.useState<FolkData | null>(null)
 	const [selectedUpbringing, setSelectedUpbringing] = React.useState<UpbringingData | null>(null)
 	const [selectedBackground, setSelectedBackground] = React.useState<BackgroundData | null>(null)
+	const [selectedArchetype, setSelectedArchetype] = React.useState<ArchetypeData | null>(null)
 	
 	// Dialog states
 	const [folkDialogOpen, setFolkDialogOpen] = React.useState(false)
 	const [upbringingDialogOpen, setUpbringingDialogOpen] = React.useState(false)
 	const [backgroundDialogOpen, setBackgroundDialogOpen] = React.useState(false)
+	const [archetypeDialogOpen, setArchetypeDialogOpen] = React.useState(false)
 
 	const handleOpen = () => {
 		setOpen(true)
@@ -98,10 +102,12 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 		setSelectedFolk(null)
 		setSelectedUpbringing(null)
 		setSelectedBackground(null)
+		setSelectedArchetype(null)
 		// Close all dialogs
 		setFolkDialogOpen(false)
 		setUpbringingDialogOpen(false)
 		setBackgroundDialogOpen(false)
+		setArchetypeDialogOpen(false)
 	}
 
 	const handleConfirm = async () => {
@@ -183,6 +189,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					folk: selectedFolk || undefined,
 					upbringing: selectedUpbringing || undefined,
 					background: selectedBackground || undefined,
+					archetype: selectedArchetype || undefined,
 				}
 				characterData = createInitialCharacter(name, playerName, options)
 			}
@@ -196,6 +203,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 			setSelectedFolk(null)
 			setSelectedUpbringing(null)
 			setSelectedBackground(null)
+			setSelectedArchetype(null)
 			setOpen(false)
 			window.location.href = window.location.href.split('?')[0]
 		} catch (error) {
@@ -417,6 +425,34 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							</Typography>
 							
 							<Box sx={{ display: 'grid', gap: 2, mb: 2 }}>
+								{/* Archetype Selection */}
+								<Box>
+									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
+										Archetype (Recommended Starting Point)
+									</Typography>
+									<Button
+										variant="outlined"
+										size="small"
+										onClick={() => setArchetypeDialogOpen(true)}
+										fullWidth
+										sx={{ 
+											justifyContent: 'flex-start',
+											textTransform: 'none',
+											color: selectedArchetype ? 'text.primary' : 'text.secondary',
+											fontWeight: selectedArchetype ? 'medium' : 'normal',
+											borderColor: selectedArchetype ? 'primary.main' : undefined,
+											borderWidth: selectedArchetype ? 2 : 1,
+										}}
+									>
+										{selectedArchetype ? `${selectedArchetype.name} (${selectedArchetype.role})` : 'Select Archetype'}
+									</Button>
+									{selectedArchetype && (
+										<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
+											{selectedArchetype.description}
+										</Typography>
+									)}
+								</Box>
+								
 								{/* Folk Selection */}
 								<Box>
 									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
@@ -481,8 +517,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 								</Box>
 							</Box>
 
-							{(selectedFolk || selectedUpbringing || selectedBackground) && (
+							{(selectedArchetype || selectedFolk || selectedUpbringing || selectedBackground) && (
 								<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 1 }}>
+									{selectedArchetype && 'Archetype provides recommended attributes, skills, and equipment. '}
 									Selected details will auto-fill abilities, languages, and starting items.
 								</Typography>
 							)}
@@ -537,6 +574,16 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 			</Dialog>
 
 			{/* Selection Dialogs */}
+			<ArchetypeSelectionDialog
+				open={archetypeDialogOpen}
+				onClose={() => setArchetypeDialogOpen(false)}
+				onSelectArchetype={(archetype) => {
+					setSelectedArchetype(archetype)
+					setArchetypeDialogOpen(false)
+				}}
+				selectedArchetype={selectedArchetype?.name}
+			/>
+
 			<FolkSelectionDialog
 				open={folkDialogOpen}
 				onClose={() => setFolkDialogOpen(false)}
