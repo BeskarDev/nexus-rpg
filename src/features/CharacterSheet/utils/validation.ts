@@ -114,6 +114,79 @@ export const createHpFieldSchema = (maxHp: number) => {
 }
 
 /**
+ * Calculate max XP per skill based on character level (from spent XP)
+ * 
+ * @param spentXp - Total XP already spent on skills
+ * @returns Maximum XP that can be spent on any single skill
+ */
+export const calculateMaxXpPerSkill = (spentXp: number): number => {
+	switch (true) {
+		case spentXp < 10:
+			return 2  // Level 1
+		case spentXp < 16:
+			return 4  // Level 2
+		case spentXp < 24:
+			return 6  // Level 3
+		case spentXp < 32:
+			return 10 // Level 4
+		case spentXp < 42:
+			return 12 // Level 5
+		case spentXp < 52:
+			return 16 // Level 6
+		case spentXp < 64:
+			return 18 // Level 7
+		case spentXp < 76:
+			return 22 // Level 8
+		case spentXp < 90:
+			return 24 // Level 9
+		default:
+			return 28 // Level 10
+	}
+}
+
+/**
+ * Create Skill XP validation schema with dynamic max based on spent XP
+ * 
+ * @param totalSpentXp - Total XP already spent across all skills
+ * @param currentSkillXp - Current XP value of the skill being validated
+ * @returns Yup schema with dynamic max validation
+ */
+export const createSkillXpSchema = (totalSpentXp: number, currentSkillXp: number = 0) => {
+	// To properly validate, we need to check what the character level would be
+	// if this skill had the new XP value. We calculate spent XP excluding the 
+	// current skill's XP, which gives us the "base" spent XP from all other skills.
+	const spentXpExcludingCurrentSkill = Math.max(0, totalSpentXp - currentSkillXp)
+	
+	// The max XP per skill is determined by the character level, which is based on
+	// total spent XP. When validating a new value, we need to consider that the
+	// total spent XP will increase as we add more to this skill.
+	// We use a test function to dynamically calculate based on the proposed value.
+	
+	return yup
+		.number()
+		.min(0, 'XP cannot be negative')
+		.required('XP is required')
+		.typeError('Must be a valid number')
+		.test('max-xp-for-level', function(value) {
+			if (value === undefined || value === null) return true
+			
+			// Calculate what the total spent XP would be with this new value
+			const projectedSpentXp = spentXpExcludingCurrentSkill + value
+			
+			// Calculate the max XP per skill based on that projected total
+			const maxXpPerSkill = calculateMaxXpPerSkill(projectedSpentXp)
+			
+			if (value > maxXpPerSkill) {
+				return this.createError({
+					message: `Cannot exceed ${maxXpPerSkill} XP per skill at current level (${projectedSpentXp} total spent XP)`
+				})
+			}
+			
+			return true
+		})
+}
+
+/**
  * Infer TypeScript types from schemas
  */
 export type PersonalTabFormData = yup.InferType<typeof personalTabSchema>

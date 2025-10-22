@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { getTextFieldProps, getNumberFieldProps, getSelectProps, personalTabSchema, hpFieldSchema, createHpFieldSchema } from '../validation'
+import { getTextFieldProps, getNumberFieldProps, getSelectProps, personalTabSchema, hpFieldSchema, createHpFieldSchema, calculateMaxXpPerSkill, createSkillXpSchema } from '../validation'
 import { FieldError } from 'react-hook-form'
 
 describe('validation utilities', () => {
@@ -79,6 +79,87 @@ describe('validation utilities', () => {
 			
 			// Invalid - exceeds max
 			await expect(schema.validateAt('currentHp', { currentHp: 30 })).rejects.toThrow('Cannot exceed max HP (28)')
+		})
+	})
+
+	describe('calculateMaxXpPerSkill', () => {
+		it('should return correct max XP for Level 1', () => {
+			expect(calculateMaxXpPerSkill(0)).toBe(2)
+			expect(calculateMaxXpPerSkill(9)).toBe(2)
+		})
+
+		it('should return correct max XP for Level 2', () => {
+			expect(calculateMaxXpPerSkill(10)).toBe(4)
+			expect(calculateMaxXpPerSkill(15)).toBe(4)
+		})
+
+		it('should return correct max XP for Level 3', () => {
+			expect(calculateMaxXpPerSkill(16)).toBe(6)
+			expect(calculateMaxXpPerSkill(23)).toBe(6)
+		})
+
+		it('should return correct max XP for Level 6', () => {
+			expect(calculateMaxXpPerSkill(42)).toBe(16)
+			expect(calculateMaxXpPerSkill(51)).toBe(16)
+		})
+
+		it('should return correct max XP for Level 10', () => {
+			expect(calculateMaxXpPerSkill(90)).toBe(28)
+			expect(calculateMaxXpPerSkill(100)).toBe(28)
+		})
+	})
+
+	describe('createSkillXpSchema', () => {
+		it('should validate skill XP within allowed range for Level 1', async () => {
+			// Level 1: max 2 XP per skill
+			// Starting with 0 spent XP, adding 2 XP keeps us at level 1 (< 10 spent)
+			const schema1 = createSkillXpSchema(0, 0)
+			await expect(schema1.validateSync(2)).toBe(2)
+			// Adding 3 XP would give us 3 spent total, still level 1, but exceeds the max of 2
+			await expect(() => schema1.validateSync(3)).toThrow(/Cannot exceed 2 XP per skill/)
+		})
+
+		it('should validate skill XP for Level 3', async () => {
+			// Starting with 16 spent XP (Level 3), max 6 XP per skill
+			// Adding 6 XP to a new skill: 16 + 6 = 22 spent (still Level 3)
+			const schema = createSkillXpSchema(16, 0)
+			await expect(schema.validateSync(6)).toBe(6)
+			// Adding 7 XP: 16 + 7 = 23 spent (still Level 3, but exceeds max of 6)
+			await expect(() => schema.validateSync(7)).toThrow(/Cannot exceed 6 XP per skill/)
+		})
+
+		it('should not allow negative XP', async () => {
+			const schema = createSkillXpSchema(20, 0)
+			await expect(() => schema.validateSync(-1)).toThrow('XP cannot be negative')
+		})
+
+		it('should require a valid number', async () => {
+			const schema = createSkillXpSchema(20, 0)
+			await expect(() => schema.validateSync('abc' as any)).toThrow('Must be a valid number')
+		})
+
+		it('should account for current skill XP when calculating max', async () => {
+			// Character has 20 spent XP total, with 4 XP in this skill
+			// Other skills: 20 - 4 = 16 spent (Level 3)
+			// If we increase this skill to 6: 16 + 6 = 22 spent (Level 3, max 6)
+			const schema = createSkillXpSchema(20, 4)
+			await expect(schema.validateSync(6)).toBe(6)
+			// If we try to increase to 10: 16 + 10 = 26 spent (Level 4, max 10), should be OK
+			await expect(schema.validateSync(10)).toBe(10)
+			// If we try to increase to 11: 16 + 11 = 27 spent (Level 4, but exceeds max of 10)
+			await expect(() => schema.validateSync(11)).toThrow(/Cannot exceed 10 XP per skill/)
+		})
+
+		it('should handle progression through levels correctly', async () => {
+			// Start with 42 spent XP (Level 6, max 16 XP per skill)
+			// Skill currently has 12 XP, so other skills: 42 - 12 = 30
+			const schema = createSkillXpSchema(42, 12)
+			
+			// Try to set to 16: 30 + 16 = 46 spent (Level 6, max 16) - OK
+			await expect(schema.validateSync(16)).toBe(16)
+			
+			// Try to set to 17: 30 + 17 = 47 spent (Level 6, but exceeds max of 16)
+			await expect(() => schema.validateSync(17)).toThrow(/Cannot exceed 16 XP per skill/)
 		})
 	})
 
