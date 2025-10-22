@@ -1,100 +1,123 @@
 /**
- * Validation utilities for character sheet form inputs using react-hook-form.
+ * Validation utilities for character sheet form inputs using react-hook-form and Yup.
  * 
  * These utilities provide helper functions to integrate react-hook-form validation
  * with Material-UI components (TextField, Select, etc.) without introducing wrapper components.
  */
 
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form'
+import * as yup from 'yup'
 
 /**
- * Common validation rules for character sheet fields
+ * Personal Tab Validation Schema
+ * 
+ * Validates all fields in the Personal tab including:
+ * - Character name, folk, upbringing, background, motivation
+ * - Physical attributes (height, weight, age)
+ * - Description and notes
  */
-export const validationRules = {
-	/** Required field validation */
-	required: {
-		value: true,
-		message: 'This field is required',
-	},
+export const personalTabSchema = yup.object({
+	name: yup
+		.string()
+		.required('Name is required')
+		.min(1, 'Name must be at least 1 character')
+		.max(50, 'Name must not exceed 50 characters'),
 	
-	/** Name field validation (1-50 characters) */
-	name: {
-		required: 'Name is required',
-		minLength: {
-			value: 1,
-			message: 'Name must be at least 1 character',
-		},
-		maxLength: {
-			value: 50,
-			message: 'Name must not exceed 50 characters',
-		},
-	},
+	folk: yup
+		.string()
+		.max(100, 'Must not exceed 100 characters'),
 	
-	/** Short text field validation (max 100 characters) */
-	shortText: {
-		maxLength: {
-			value: 100,
-			message: 'Must not exceed 100 characters',
-		},
-	},
+	upbringing: yup
+		.string()
+		.max(100, 'Must not exceed 100 characters'),
 	
-	/** Positive integer validation */
-	positiveInteger: {
-		min: {
-			value: 0,
-			message: 'Must be 0 or greater',
-		},
-		validate: (value: any) => {
-			if (value === '' || value === null || value === undefined) return true
-			const num = Number(value)
-			return Number.isInteger(num) || 'Must be a whole number'
-		},
-	},
+	background: yup
+		.string()
+		.max(100, 'Must not exceed 100 characters'),
 	
-	/** HP field validation */
-	hp: {
-		min: {
-			value: 0,
-			message: 'HP cannot be negative',
-		},
-		validate: (value: any) => {
-			const num = Number(value)
-			return !isNaN(num) || 'Must be a valid number'
-		},
-	},
+	motivation: yup
+		.string()
+		.max(100, 'Must not exceed 100 characters'),
 	
-	/** Age validation (0-500 years, allowing ancient characters) */
-	age: {
-		maxLength: {
-			value: 20,
-			message: 'Age text is too long',
-		},
-	},
+	height: yup
+		.string()
+		.max(30, 'Must not exceed 30 characters'),
 	
-	/** Height/Weight validation (free text for flexibility) */
-	physicalMeasurement: {
-		maxLength: {
-			value: 30,
-			message: 'Must not exceed 30 characters',
-		},
-	},
+	weight: yup
+		.string()
+		.max(30, 'Must not exceed 30 characters'),
 	
-	/** Description field validation */
-	description: {
-		maxLength: {
-			value: 1000,
-			message: 'Description must not exceed 1000 characters',
-		},
-	},
+	age: yup
+		.string()
+		.max(20, 'Age text is too long'),
 	
-	/** Notes field validation */
-	notes: {
-		maxLength: {
-			value: 5000,
-			message: 'Notes must not exceed 5000 characters',
-		},
-	},
+	description: yup
+		.string()
+		.max(1000, 'Description must not exceed 1000 characters'),
+	
+	notes: yup
+		.string()
+		.max(5000, 'Notes must not exceed 5000 characters'),
+})
+
+/**
+ * HP Field Validation Schema
+ * 
+ * Validates HP-related fields in the Statistics tab.
+ * Note: Max HP validation is dynamic and should be added at runtime.
+ */
+export const hpFieldSchema = yup.object({
+	currentHp: yup
+		.number()
+		.min(0, 'HP cannot be negative')
+		.required('Current HP is required')
+		.typeError('Must be a valid number'),
+	
+	tempHp: yup
+		.number()
+		.min(0, 'Temp HP cannot be negative')
+		.required('Temp HP is required')
+		.typeError('Must be a valid number'),
+	
+	maxHpModifier: yup
+		.number()
+		.required('Max HP Modifier is required')
+		.typeError('Must be a valid number'),
+})
+
+/**
+ * Create HP field schema with dynamic max HP validation
+ * 
+ * @param maxHp - The maximum HP value for validation
+ * @returns Yup schema with dynamic max validation
+ */
+export const createHpFieldSchema = (maxHp: number) => {
+	return yup.object({
+		currentHp: yup
+			.number()
+			.min(0, 'HP cannot be negative')
+			.max(maxHp, `Cannot exceed max HP (${maxHp})`)
+			.required('Current HP is required')
+			.typeError('Must be a valid number'),
+		
+		tempHp: yup
+			.number()
+			.min(0, 'Temp HP cannot be negative')
+			.required('Temp HP is required')
+			.typeError('Must be a valid number'),
+		
+		maxHpModifier: yup
+			.number()
+			.required('Max HP Modifier is required')
+			.typeError('Must be a valid number'),
+	})
 }
+
+/**
+ * Infer TypeScript types from schemas
+ */
+export type PersonalTabFormData = yup.InferType<typeof personalTabSchema>
+export type HpFieldFormData = yup.InferType<typeof hpFieldSchema>
 
 /**
  * Get validation props for a Material-UI TextField component.

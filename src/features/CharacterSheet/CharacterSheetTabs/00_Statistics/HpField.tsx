@@ -1,5 +1,6 @@
 import { useMemo, useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Remove, Add } from '@mui/icons-material'
@@ -22,7 +23,7 @@ import {
 	calculateBaseHpFromStrength,
 } from '../../utils/calculateHp'
 import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
-import { getNumberFieldProps, validationRules } from '../../utils/validation'
+import { getNumberFieldProps, createHpFieldSchema } from '../../utils/validation'
 
 export const HpField = () => {
 	const dispatch = useAppDispatch()
@@ -40,8 +41,20 @@ export const HpField = () => {
 	const characterLevel = calculateCharacterLevel(totalXp)
 	const baseHp = calculateBaseHpFromStrength(strength.value)
 	
-	// Initialize react-hook-form for HP fields
+	// Calculate max HP using the new formula
+	const maxHp = useMemo(() => {
+		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0)
+	}, [strength.value, totalXp, health.maxHpModifier])
+
+	// Calculate effective max HP (minus fatigue penalty)
+	const fatigueHpPenalty = (fatigue?.current || 0) * 2
+	const effectiveMaxHp = maxHp - fatigueHpPenalty
+	
+	// Initialize react-hook-form with Yup schema validation
+	const hpSchema = useMemo(() => createHpFieldSchema(effectiveMaxHp), [effectiveMaxHp])
+	
 	const { control, formState: { errors }, reset, watch } = useForm({
+		resolver: yupResolver(hpSchema),
 		defaultValues: {
 			currentHp: health.current,
 			tempHp: health.temp || 0,
@@ -60,15 +73,6 @@ export const HpField = () => {
 			maxHpModifier: health.maxHpModifier || 0,
 		})
 	}, [activeCharacter.id, health.current, health.temp, health.maxHpModifier, reset])
-
-	// Calculate max HP using the new formula
-	const maxHp = useMemo(() => {
-		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0)
-	}, [strength.value, totalXp, health.maxHpModifier])
-
-	// Calculate effective max HP (minus fatigue penalty)
-	const fatigueHpPenalty = (fatigue?.current || 0) * 2
-	const effectiveMaxHp = maxHp - fatigueHpPenalty
 
 	// Calculate HP bar color and progress with static bar sizing
 	const totalDisplayHp = effectiveMaxHp + (health.temp || 0)
@@ -348,13 +352,6 @@ export const HpField = () => {
 				<Controller
 					name="currentHp"
 					control={control}
-					rules={{
-						...validationRules.hp,
-						max: {
-							value: effectiveMaxHp,
-							message: `Cannot exceed max HP (${effectiveMaxHp})`,
-						},
-					}}
 					render={({ field, fieldState }) => (
 						<TextField
 							{...field}
@@ -401,7 +398,6 @@ export const HpField = () => {
 					<Controller
 						name="tempHp"
 						control={control}
-						rules={validationRules.hp}
 						render={({ field, fieldState }) => (
 							<TextField
 								{...field}
@@ -435,12 +431,6 @@ export const HpField = () => {
 					<Controller
 						name="maxHpModifier"
 						control={control}
-						rules={{
-							validate: (value: any) => {
-								const num = Number(value)
-								return !isNaN(num) || 'Must be a valid number'
-							},
-						}}
 						render={({ field, fieldState }) => (
 							<TextField
 								{...field}

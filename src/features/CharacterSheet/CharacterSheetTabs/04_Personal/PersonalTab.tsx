@@ -13,6 +13,7 @@ import {
 import { Edit } from '@mui/icons-material'
 import React, { useMemo, useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { CharacterDocument } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -30,7 +31,7 @@ import {
 	UpbringingData,
 	BackgroundData
 } from '../../components'
-import { getTextFieldProps, validationRules } from '../../utils/validation'
+import { getTextFieldProps, personalTabSchema } from '../../utils/validation'
 
 /**
  * Parses a comma-separated string of suggested skills and returns an array of skill names
@@ -71,19 +72,20 @@ export const PersonalTab: React.FC = () => {
 		[activeCharacter.personal],
 	)
 	
-	// Initialize react-hook-form with character data
+	// Initialize react-hook-form with Yup schema validation
 	const { register, formState: { errors }, reset, watch } = useForm({
+		resolver: yupResolver(personalTabSchema),
 		defaultValues: {
-			name: activeCharacter.personal.name,
-			folk: activeCharacter.personal.folk,
-			upbringing: activeCharacter.personal.upbringing,
-			background: activeCharacter.personal.background,
-			motivation: activeCharacter.personal.motivation,
-			height: activeCharacter.personal.height,
-			weight: activeCharacter.personal.weight,
-			age: activeCharacter.personal.age,
-			description: activeCharacter.personal.description,
-			notes: activeCharacter.personal.notes,
+			name: activeCharacter.personal.name || '',
+			folk: activeCharacter.personal.folk || '',
+			upbringing: activeCharacter.personal.upbringing || '',
+			background: activeCharacter.personal.background || '',
+			motivation: activeCharacter.personal.motivation || '',
+			height: activeCharacter.personal.height || '',
+			weight: activeCharacter.personal.weight || '',
+			age: activeCharacter.personal.age || '',
+			description: activeCharacter.personal.description || '',
+			notes: activeCharacter.personal.notes || '',
 		},
 		mode: 'onBlur', // Validate on blur to match existing behavior
 	})
@@ -94,16 +96,16 @@ export const PersonalTab: React.FC = () => {
 	// Update form when character changes externally (e.g., loading different character)
 	useEffect(() => {
 		reset({
-			name: activeCharacter.personal.name,
-			folk: activeCharacter.personal.folk,
-			upbringing: activeCharacter.personal.upbringing,
-			background: activeCharacter.personal.background,
-			motivation: activeCharacter.personal.motivation,
-			height: activeCharacter.personal.height,
-			weight: activeCharacter.personal.weight,
-			age: activeCharacter.personal.age,
-			description: activeCharacter.personal.description,
-			notes: activeCharacter.personal.notes,
+			name: activeCharacter.personal.name || '',
+			folk: activeCharacter.personal.folk || '',
+			upbringing: activeCharacter.personal.upbringing || '',
+			background: activeCharacter.personal.background || '',
+			motivation: activeCharacter.personal.motivation || '',
+			height: activeCharacter.personal.height || '',
+			weight: activeCharacter.personal.weight || '',
+			age: activeCharacter.personal.age || '',
+			description: activeCharacter.personal.description || '',
+			notes: activeCharacter.personal.notes || '',
 		})
 	}, [activeCharacter.id, reset])
 	
@@ -418,7 +420,7 @@ export const PersonalTab: React.FC = () => {
 					>
 						<TextField
 							{...getTextFieldProps(
-								register('name', validationRules.name),
+								register('name'),
 								errors.name
 							)}
 							variant="standard"
@@ -434,7 +436,7 @@ export const PersonalTab: React.FC = () => {
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
 							<TextField
 								{...getTextFieldProps(
-									register('folk', validationRules.shortText),
+									register('folk'),
 									errors.folk
 								)}
 								variant="standard"
@@ -459,7 +461,7 @@ export const PersonalTab: React.FC = () => {
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
 							<TextField
 								{...getTextFieldProps(
-									register('upbringing', validationRules.shortText),
+									register('upbringing'),
 									errors.upbringing
 								)}
 								variant="standard"
@@ -484,7 +486,7 @@ export const PersonalTab: React.FC = () => {
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
 							<TextField
 								{...getTextFieldProps(
-									register('background', validationRules.shortText),
+									register('background'),
 									errors.background
 								)}
 								variant="standard"
@@ -506,7 +508,7 @@ export const PersonalTab: React.FC = () => {
 						</Box>
 						<TextField
 							{...getTextFieldProps(
-								register('motivation', validationRules.shortText),
+								register('motivation'),
 								errors.motivation
 							)}
 							variant="standard"
@@ -522,7 +524,7 @@ export const PersonalTab: React.FC = () => {
 
 						<TextField
 							{...getTextFieldProps(
-								register('height', validationRules.physicalMeasurement),
+								register('height'),
 								errors.height
 							)}
 							variant="standard"
@@ -535,7 +537,7 @@ export const PersonalTab: React.FC = () => {
 						/>
 						<TextField
 							{...getTextFieldProps(
-								register('weight', validationRules.physicalMeasurement),
+								register('weight'),
 								errors.weight
 							)}
 							variant="standard"
@@ -548,7 +550,7 @@ export const PersonalTab: React.FC = () => {
 						/>
 						<TextField
 							{...getTextFieldProps(
-								register('age', validationRules.age),
+								register('age'),
 								errors.age
 							)}
 							variant="standard"
@@ -561,7 +563,7 @@ export const PersonalTab: React.FC = () => {
 						/>
 						<TextField
 							{...getTextFieldProps(
-								register('description', validationRules.description),
+								register('description'),
 								errors.description
 							)}
 							variant="standard"
@@ -607,7 +609,7 @@ export const PersonalTab: React.FC = () => {
 				<SectionHeader>Personal Notes</SectionHeader>
 				<TextField
 					{...getTextFieldProps(
-						register('notes', validationRules.notes),
+						register('notes'),
 						errors.notes
 					)}
 					variant="standard"

@@ -27,6 +27,7 @@
 		"@easyops-cn/docusaurus-search-local": "^0.44.5",
 		"@emotion/react": "^11.11.1",
 		"@emotion/styled": "^11.11.0",
+		"@hookform/resolvers": "^5.2.2",
 		"@mdx-js/react": "^3.0.0",
 		"@mui/icons-material": "^5.15.20",
 		"@mui/lab": "^5.0.0-alpha.170",
@@ -53,7 +54,8 @@
 		"remark": "^15.0.1",
 		"remark-gfm": "^4.0.1",
 		"remark-html": "^16.0.1",
-		"uuid": "^11.1.0"
+		"uuid": "^11.1.0",
+		"yup": "^1.7.1"
 	},
 	"devDependencies": {
 		"@docusaurus/module-type-aliases": "^3.8.1",

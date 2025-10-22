@@ -1,23 +1,24 @@
-# Character Sheet Validation with react-hook-form
+# Character Sheet Validation with react-hook-form and Yup
 
 This document explains the validation approach used in the character sheet tool.
 
 ## Overview
 
-The character sheet uses [react-hook-form](https://react-hook-form.com/) for form validation. This provides:
+The character sheet uses [react-hook-form](https://react-hook-form.com/) with [Yup](https://github.com/jquense/yup) schemas for form validation. This provides:
 
 - **Type-safe validation** - Full TypeScript support with proper type inference
+- **Schema-based validation** - Centralized validation logic using Yup schemas
 - **Performance** - Minimal re-renders by using uncontrolled components where possible
 - **User-friendly feedback** - Immediate validation feedback with clear error messages
 - **No wrapper components** - Direct integration with Material-UI components
 
 ## Architecture
 
-### Helper Functions (`validation.ts`)
+### Validation System (`validation.ts`)
 
 The validation system consists of three main parts:
 
-1. **Validation Rules** - Reusable validation rule objects
+1. **Yup Schemas** - Declarative validation schemas for each tab/form
 2. **Helper Functions** - Functions that merge react-hook-form registration with MUI props
 3. **Type-safe Exports** - All utilities are fully typed for TypeScript support
 
@@ -32,15 +33,17 @@ The validation system consists of three main parts:
 
 ### Example 1: Basic Text Field (PersonalTab)
 
-For simple text fields with basic validation:
+For simple text fields with Yup schema validation:
 
 ```tsx
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { TextField } from '@mui/material'
-import { getTextFieldProps, validationRules } from '../../utils/validation'
+import { getTextFieldProps, personalTabSchema } from '../../utils/validation'
 
 function MyComponent() {
   const { register, formState: { errors } } = useForm({
+    resolver: yupResolver(personalTabSchema),
     defaultValues: { name: '' },
     mode: 'onBlur', // Validate when user leaves field
   })
@@ -48,7 +51,7 @@ function MyComponent() {
   return (
     <TextField
       {...getTextFieldProps(
-        register('name', validationRules.name),
+        register('name'),
         errors.name
       )}
       variant="standard"
@@ -63,38 +66,38 @@ function MyComponent() {
 ```
 
 **Key Points:**
+- `yupResolver` connects Yup schema to react-hook-form
 - `getTextFieldProps` merges registration with error display
-- `validationRules.name` provides pre-defined validation
+- Validation rules are defined in the `personalTabSchema`
 - Manual `onBlur` handler syncs with Redux state
 
 ### Example 2: Number Field with Controller (HpField)
 
-For complex number fields with dynamic validation:
+For complex number fields with dynamic validation using Yup:
 
 ```tsx
 import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { TextField } from '@mui/material'
-import { validationRules } from '../../utils/validation'
+import { createHpFieldSchema } from '../../utils/validation'
+import { useMemo } from 'react'
 
 function MyComponent() {
+  const maxHp = 100 // Dynamic max value
+  
+  // Create schema with dynamic max HP validation
+  const hpSchema = useMemo(() => createHpFieldSchema(maxHp), [maxHp])
+  
   const { control } = useForm({
-    defaultValues: { hp: 0 },
+    resolver: yupResolver(hpSchema),
+    defaultValues: { currentHp: 0, tempHp: 0, maxHpModifier: 0 },
     mode: 'onChange', // Validate immediately for instant feedback
   })
-  
-  const maxHp = 100 // Dynamic max value
 
   return (
     <Controller
-      name="hp"
+      name="currentHp"
       control={control}
-      rules={{
-        ...validationRules.hp,
-        max: {
-          value: maxHp,
-          message: `Cannot exceed max HP (${maxHp})`,
-        },
-      }}
       render={({ field, fieldState }) => (
         <TextField
           {...field}
@@ -115,45 +118,73 @@ function MyComponent() {
 ```
 
 **Key Points:**
-- `Controller` provides more control over the field behavior
-- Dynamic validation rules can be added (like `max`)
-- `fieldState.error` provides error information directly
+- `createHpFieldSchema(maxHp)` creates a schema with dynamic max validation
+- `useMemo` ensures schema is only recreated when maxHp changes
+- `Controller` provides full control over field behavior
+- Validation rules are centralized in the schema
 
-## Available Validation Rules
+## Available Validation Schemas
 
-### Pre-defined Rules
+### Pre-defined Schemas
 
-All rules are exported from `validation.ts`:
+All schemas are exported from `validation.ts`:
 
-| Rule | Description | Constraints |
-|------|-------------|-------------|
-| `validationRules.required` | Field must have a value | - |
-| `validationRules.name` | Character name validation | 1-50 characters, required |
-| `validationRules.shortText` | Short text fields | Max 100 characters |
-| `validationRules.positiveInteger` | Positive whole numbers | Min 0, must be integer |
-| `validationRules.hp` | Hit point values | Min 0, must be number |
-| `validationRules.age` | Age field | Max 20 characters |
-| `validationRules.physicalMeasurement` | Height/weight | Max 30 characters |
-| `validationRules.description` | Description field | Max 1000 characters |
-| `validationRules.notes` | Notes field | Max 5000 characters |
+#### `personalTabSchema`
 
-### Custom Validation
+Validates all fields in the Personal tab:
 
-You can create custom validation rules inline:
+| Field | Validation Rules |
+|-------|------------------|
+| `name` | Required, 1-50 characters |
+| `folk` | Max 100 characters |
+| `upbringing` | Max 100 characters |
+| `background` | Max 100 characters |
+| `motivation` | Max 100 characters |
+| `height` | Max 30 characters |
+| `weight` | Max 30 characters |
+| `age` | Max 20 characters |
+| `description` | Max 1000 characters |
+| `notes` | Max 5000 characters |
+
+#### `hpFieldSchema`
+
+Validates HP-related fields:
+
+| Field | Validation Rules |
+|-------|------------------|
+| `currentHp` | Required, min 0, must be number |
+| `tempHp` | Required, min 0, must be number |
+| `maxHpModifier` | Required, must be number |
+
+#### `createHpFieldSchema(maxHp: number)`
+
+Creates a dynamic HP schema with max HP validation:
 
 ```tsx
-<Controller
-  name="myField"
-  control={control}
-  rules={{
-    validate: (value) => {
-      if (value < 0) return 'Must be positive'
-      if (value > 100) return 'Must be 100 or less'
-      return true
-    }
-  }}
-  render={...}
-/>
+const hpSchema = createHpFieldSchema(28)
+// currentHp will be validated to not exceed 28
+```
+
+### Creating Custom Schemas
+
+You can create custom Yup schemas for new tabs:
+
+```tsx
+import * as yup from 'yup'
+
+export const myCustomSchema = yup.object({
+  myField: yup
+    .string()
+    .required('This field is required')
+    .max(50, 'Must not exceed 50 characters'),
+  
+  myNumber: yup
+    .number()
+    .min(0, 'Must be positive')
+    .max(100, 'Must be 100 or less')
+    .required('Required')
+    .typeError('Must be a valid number'),
+})
 ```
 
 ## Helper Functions
@@ -209,7 +240,13 @@ react-hook-form supports different validation modes:
 
 Set mode in `useForm`:
 ```tsx
-const { register } = useForm({ mode: 'onBlur' })
+import { yupResolver } from '@hookform/resolvers/yup'
+import { personalTabSchema } from '../../utils/validation'
+
+const { register } = useForm({ 
+  resolver: yupResolver(personalTabSchema),
+  mode: 'onBlur' 
+})
 ```
 
 ## Form State Management
@@ -278,8 +315,16 @@ npm test -- character-sheet-functional.test.tsx
 ### Pattern 1: Basic String Field
 
 ```tsx
+// In component setup
+const { register, formState: { errors } } = useForm({
+  resolver: yupResolver(personalTabSchema),
+  defaultValues: { fieldName: '' },
+  mode: 'onBlur',
+})
+
+// In render
 <TextField
-  {...getTextFieldProps(register('fieldName', validationRules.shortText), errors.fieldName)}
+  {...getTextFieldProps(register('fieldName'), errors.fieldName)}
   variant="standard"
   onBlur={(e) => {
     register('fieldName').onBlur(e)
@@ -292,13 +337,26 @@ npm test -- character-sheet-functional.test.tsx
 ### Pattern 2: Number Field with Dynamic Max
 
 ```tsx
+// Create dynamic schema
+const dynamicMax = 100
+const mySchema = useMemo(() => yup.object({
+  value: yup.number()
+    .min(0, 'Must be positive')
+    .max(dynamicMax, `Max is ${dynamicMax}`)
+    .required()
+    .typeError('Must be a valid number'),
+}), [dynamicMax])
+
+// Use in component
+const { control } = useForm({
+  resolver: yupResolver(mySchema),
+  defaultValues: { value: 0 },
+  mode: 'onChange',
+})
+
 <Controller
   name="value"
   control={control}
-  rules={{
-    ...validationRules.positiveInteger,
-    max: { value: dynamicMax, message: `Max is ${dynamicMax}` },
-  }}
   render={({ field, fieldState }) => (
     <TextField
       {...field}
@@ -317,8 +375,14 @@ npm test -- character-sheet-functional.test.tsx
 ### Pattern 3: Multiline Text
 
 ```tsx
+// Schema includes notes field with max length
+const { register, formState: { errors } } = useForm({
+  resolver: yupResolver(personalTabSchema),
+  mode: 'onBlur',
+})
+
 <TextField
-  {...getTextFieldProps(register('notes', validationRules.notes), errors.notes)}
+  {...getTextFieldProps(register('notes'), errors.notes)}
   variant="standard"
   multiline
   minRows={3}
