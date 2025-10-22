@@ -1,5 +1,6 @@
 import { Box, Tooltip } from '@mui/material'
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
 import { AttributeField } from '../../CharacterSheet'
 
@@ -15,6 +16,7 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { calculateMaxHp } from '../../utils/calculateHp'
+import { getTextFieldProps, validationRules } from '../../utils'
 import { AttributeColumn } from './AttributeColumn'
 import { AvField } from './AvField'
 import { ParryField } from './ParryField'
@@ -40,6 +42,23 @@ export const StatisticsTab: React.FC = () => {
 		resolve,
 		statusEffects,
 	} = activeCharacter.statistics
+
+	// Initialize react-hook-form for validation
+	const {
+		register,
+		formState: { errors },
+		setValue,
+	} = useForm({
+		mode: 'onBlur',
+		defaultValues: {
+			resolve: resolve,
+		},
+	})
+
+	// Update form values when character data changes
+	React.useEffect(() => {
+		setValue('resolve', resolve)
+	}, [resolve, setValue])
 
 	React.useEffect(() => {
 		if (
@@ -115,14 +134,22 @@ export const StatisticsTab: React.FC = () => {
 			>
 				<RoundTextField
 					type="number"
+					{...getTextFieldProps(
+						register('resolve', {
+							...validationRules.numberRange(0, 3, 'Resolve'),
+							onChange: (event) => {
+								const value = Number(event.target.value)
+								if (value >= 0 && value <= 3) {
+									updateCharacter({
+										statistics: { resolve: value },
+									})
+								}
+							},
+						}),
+						errors.resolve,
+					)}
 					value={resolve}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { resolve: Number(event.target.value) },
-						})
-					}
 					label="Resolve"
-					helperText="max. 3"
 					sx={{
 						mt: 0,
 					}}

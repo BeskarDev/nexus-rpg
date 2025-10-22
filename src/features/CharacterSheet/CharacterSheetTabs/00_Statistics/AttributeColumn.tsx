@@ -13,7 +13,9 @@ import {
 	attributeTypeArray,
 } from '@site/src/types/Character'
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import { AttributeField } from '../../CharacterSheet'
+import { getSelectProps, validationRules } from '../../utils'
 
 export type AttributeColumnProps = {
 	attribute: Attribute
@@ -45,6 +47,23 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 	updateAttribute,
 	totalWounds,
 }) => {
+	// Initialize react-hook-form for validation
+	const {
+		register,
+		formState: { errors },
+		setValue,
+	} = useForm({
+		mode: 'onChange',
+		defaultValues: {
+			attributeValue: attribute.value,
+		},
+	})
+
+	// Update form values when attribute changes
+	React.useEffect(() => {
+		setValue('attributeValue', attribute.value)
+	}, [attribute.value, setValue])
+
 	const handleWoundChange = () => {
 		if (!attribute.wounded) {
 			// Adding a wound
@@ -67,12 +86,18 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 		>
 			<AttributeField
 				select
+				{...getSelectProps(
+					register('attributeValue', {
+						...validationRules.required(label),
+						onChange: (event) => {
+							updateAttribute({
+								value: Number(event.target.value) as AttributeType,
+							})
+						},
+					}),
+					errors.attributeValue,
+				)}
 				value={attribute.value}
-				onChange={(event) =>
-					updateAttribute({
-						value: Number(event.target.value) as AttributeType,
-					})
-				}
 				label={label}
 				InputProps={{
 					startAdornment: (

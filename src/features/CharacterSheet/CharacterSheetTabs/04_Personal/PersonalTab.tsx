@@ -11,6 +11,7 @@ import {
 } from '@mui/material'
 import { Edit } from '@mui/icons-material'
 import React, { useMemo, useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { CharacterDocument } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -18,6 +19,7 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useNpcRelationshipCrud } from '../../hooks'
+import { getTextFieldProps, validationRules } from '../../utils'
 import { PersonalField, NpcRelationshipsSection } from '../../components'
 import { ProfilePictureUpload } from './ProfilePictureUpload'
 import { 
@@ -68,6 +70,37 @@ export const PersonalTab: React.FC = () => {
 		[activeCharacter.personal],
 	)
 	const [personal, setPersonal] = useState(activeCharacter.personal)
+
+	// Initialize react-hook-form for validation
+	const {
+		register,
+		formState: { errors },
+		setValue,
+	} = useForm({
+		mode: 'onBlur',
+		defaultValues: {
+			name: personal.name,
+			folk: personal.folk,
+			upbringing: personal.upbringing,
+			background: personal.background,
+			motivation: personal.motivation,
+			height: personal.height,
+			weight: personal.weight,
+			age: personal.age,
+		},
+	})
+
+	// Update form values when character data changes
+	React.useEffect(() => {
+		setValue('name', personal.name)
+		setValue('folk', personal.folk)
+		setValue('upbringing', personal.upbringing)
+		setValue('background', personal.background)
+		setValue('motivation', personal.motivation)
+		setValue('height', personal.height)
+		setValue('weight', personal.weight)
+		setValue('age', personal.age)
+	}, [personal, setValue])
 
 	// Dialog states for changing Folk, Upbringing, and Background
 	const [folkDialogOpen, setFolkDialogOpen] = useState(false)
@@ -371,6 +404,18 @@ export const PersonalTab: React.FC = () => {
 						}}
 					>
 						<PersonalField
+							{...getTextFieldProps(
+								register('name', {
+									...validationRules.combine(
+										validationRules.required('Name'),
+										validationRules.stringLength(1, 100, 'Name'),
+									),
+									onChange: (event) => {
+										setPersonal((p) => ({ ...p, name: event.target.value }))
+									},
+								}),
+								errors.name,
+							)}
 							value={personal.name}
 							onValueChange={(value) =>
 								setPersonal((p) => ({ ...p, name: value }))
@@ -385,6 +430,15 @@ export const PersonalTab: React.FC = () => {
 						{/* Folk Selection */}
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
 							<PersonalField
+								{...getTextFieldProps(
+									register('folk', {
+										...validationRules.stringLength(undefined, 50, 'Folk'),
+										onChange: (event) => {
+											setPersonal((p) => ({ ...p, folk: event.target.value }))
+										},
+									}),
+									errors.folk,
+								)}
 								value={personal.folk}
 								onValueChange={(value) =>
 									setPersonal((p) => ({ ...p, folk: value }))
@@ -408,6 +462,15 @@ export const PersonalTab: React.FC = () => {
 						{/* Upbringing Selection */}
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
 							<PersonalField
+								{...getTextFieldProps(
+									register('upbringing', {
+										...validationRules.stringLength(undefined, 50, 'Upbringing'),
+										onChange: (event) => {
+											setPersonal((p) => ({ ...p, upbringing: event.target.value }))
+										},
+									}),
+									errors.upbringing,
+								)}
 								value={personal.upbringing}
 								onValueChange={(value) =>
 									setPersonal((p) => ({ ...p, upbringing: value }))
