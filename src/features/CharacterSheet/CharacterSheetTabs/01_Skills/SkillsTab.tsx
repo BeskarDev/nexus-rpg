@@ -21,7 +21,7 @@ import {
 	Typography,
 } from '@mui/material'
 import React, { useEffect, useMemo, useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller, UseFormReturn } from 'react-hook-form'
 import { CharacterDocument } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
@@ -44,6 +44,11 @@ import { calculateTalentHpBonus } from '../../utils/calculateTalentHpBonus'
 import { createSkillXpSchema, calculateMaxXpPerSkill } from '../../utils/validation'
 import { Skill } from '../../../../types/Character'
 
+// Type for the skills form data (dynamic based on number of skills)
+type SkillsFormData = {
+	[key: string]: number // Key is skill name, value is XP
+}
+
 /**
  * Individual skill row with XP validation
  */
@@ -53,14 +58,9 @@ const SkillXpRow: React.FC<{
 	spendXP: number
 	updateSkill: (skillName: string, update: { xp?: number; rank?: number }) => void
 	handleSkillDeletion: (skillName: string) => void
-}> = ({ skill, skillRank, spendXP, updateSkill, handleSkillDeletion }) => {
-	// Initialize react-hook-form with dynamic validation
-	const { control, formState: { errors } } = useForm({
-		defaultValues: {
-			xp: skill.xp,
-		},
-		mode: 'onChange', // Validate on change for immediate feedback
-	})
+	skillsForm: UseFormReturn<SkillsFormData>
+}> = ({ skill, skillRank, spendXP, updateSkill, handleSkillDeletion, skillsForm }) => {
+	const { control, formState: { errors }, trigger } = skillsForm
 
 	return (
 		<Box
@@ -103,12 +103,17 @@ const SkillXpRow: React.FC<{
 				/>
 			</Box>
 			<Controller
-				name="xp"
+				name={skill.name}
 				control={control}
 				rules={{
 					validate: (value) => {
 						try {
-							createSkillXpSchema(spendXP, skill.xp).validateSync(value)
+							// Calculate current total spent XP from all skills in the form
+							const formValues = skillsForm.getValues()
+							const currentTotalSpentXp = Object.values(formValues).reduce((sum, xp) => sum + (xp || 0), 0)
+							
+							// Validate this skill's XP against the current total
+							createSkillXpSchema(currentTotalSpentXp, skill.xp).validateSync(value)
 							return true
 						} catch (err: any) {
 							return err.message
@@ -120,10 +125,12 @@ const SkillXpRow: React.FC<{
 						{...field}
 						size="small"
 						type="number"
-						onChange={(e) => {
+						onChange={async (e) => {
 							const newValue = Number(e.target.value)
 							field.onChange(newValue)
 							updateSkill(skill.name, { xp: newValue })
+							// Trigger validation on all skills to revalidate with new total
+							await trigger()
 						}}
 						error={!!fieldState.error}
 						helperText={fieldState.error?.message || ''}
@@ -180,6 +187,26 @@ export const SkillsTab: React.FC = () => {
 
 	// State for skill deletion confirmation
 	const [skillToDelete, setSkillToDelete] = useState<string | null>(null)
+
+	// Create a single form for all skills
+	// This allows all skills to revalidate when any skill's XP changes
+	const skillsFormData = useMemo(() => {
+		const data: SkillsFormData = {}
+		skills.forEach(skill => {
+			data[skill.name] = skill.xp
+		})
+		return data
+	}, [skills])
+
+	const skillsForm = useForm<SkillsFormData>({
+		defaultValues: skillsFormData,
+		mode: 'onChange', // Validate on change for immediate feedback
+	})
+
+	// Reset form when skills change (e.g., skill added/removed or character switched)
+	useEffect(() => {
+		skillsForm.reset(skillsFormData)
+	}, [skillsFormData, skillsForm])
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -464,6 +491,7 @@ export const SkillsTab: React.FC = () => {
 									spendXP={spendXP}
 									updateSkill={updateSkill}
 									handleSkillDeletion={handleSkillDeletion}
+									skillsForm={skillsForm}
 								/>
 							)
 						})}

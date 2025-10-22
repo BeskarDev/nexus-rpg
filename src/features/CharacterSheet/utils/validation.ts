@@ -114,6 +114,37 @@ export const createHpFieldSchema = (maxHp: number) => {
 }
 
 /**
+ * Calculate character level based on total spent XP
+ * 
+ * @param spentXp - Total XP spent on skills
+ * @returns Character level (1-10)
+ */
+export const getCharacterLevel = (spentXp: number): number => {
+	switch (true) {
+		case spentXp < 10:
+			return 1
+		case spentXp < 16:
+			return 2
+		case spentXp < 24:
+			return 3
+		case spentXp < 32:
+			return 4
+		case spentXp < 42:
+			return 5
+		case spentXp < 52:
+			return 6
+		case spentXp < 64:
+			return 7
+		case spentXp < 76:
+			return 8
+		case spentXp < 90:
+			return 9
+		default:
+			return 10
+	}
+}
+
+/**
  * Calculate max XP per skill based on character level (from spent XP)
  * 
  * @param spentXp - Total XP already spent on skills
@@ -177,8 +208,10 @@ export const createSkillXpSchema = (totalSpentXp: number, currentSkillXp: number
 			const maxXpPerSkill = calculateMaxXpPerSkill(projectedSpentXp)
 			
 			if (value > maxXpPerSkill) {
+				// Calculate character level for display
+				const level = getCharacterLevel(projectedSpentXp)
 				return this.createError({
-					message: `Cannot exceed ${maxXpPerSkill} XP per skill at current level (${projectedSpentXp} total spent XP)`
+					message: `Max ${maxXpPerSkill} (Lvl ${level})`
 				})
 			}
 			

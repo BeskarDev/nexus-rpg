@@ -116,7 +116,7 @@ describe('validation utilities', () => {
 			const schema1 = createSkillXpSchema(0, 0)
 			await expect(schema1.validateSync(2)).toBe(2)
 			// Adding 3 XP would give us 3 spent total, still level 1, but exceeds the max of 2
-			await expect(() => schema1.validateSync(3)).toThrow(/Cannot exceed 2 XP per skill/)
+			await expect(() => schema1.validateSync(3)).toThrow(/Max 2 \(Lvl 1\)/)
 		})
 
 		it('should validate skill XP for Level 3', async () => {
@@ -125,7 +125,7 @@ describe('validation utilities', () => {
 			const schema = createSkillXpSchema(16, 0)
 			await expect(schema.validateSync(6)).toBe(6)
 			// Adding 7 XP: 16 + 7 = 23 spent (still Level 3, but exceeds max of 6)
-			await expect(() => schema.validateSync(7)).toThrow(/Cannot exceed 6 XP per skill/)
+			await expect(() => schema.validateSync(7)).toThrow(/Max 6 \(Lvl 3\)/)
 		})
 
 		it('should not allow negative XP', async () => {
@@ -147,7 +147,7 @@ describe('validation utilities', () => {
 			// If we try to increase to 10: 16 + 10 = 26 spent (Level 4, max 10), should be OK
 			await expect(schema.validateSync(10)).toBe(10)
 			// If we try to increase to 11: 16 + 11 = 27 spent (Level 4, but exceeds max of 10)
-			await expect(() => schema.validateSync(11)).toThrow(/Cannot exceed 10 XP per skill/)
+			await expect(() => schema.validateSync(11)).toThrow(/Max 10 \(Lvl 4\)/)
 		})
 
 		it('should handle progression through levels correctly', async () => {
@@ -159,7 +159,7 @@ describe('validation utilities', () => {
 			await expect(schema.validateSync(16)).toBe(16)
 			
 			// Try to set to 17: 30 + 17 = 47 spent (Level 6, but exceeds max of 16)
-			await expect(() => schema.validateSync(17)).toThrow(/Cannot exceed 16 XP per skill/)
+			await expect(() => schema.validateSync(17)).toThrow(/Max 16 \(Lvl 6\)/)
 		})
 	})
 
