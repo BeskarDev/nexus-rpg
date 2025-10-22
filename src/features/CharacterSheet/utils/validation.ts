@@ -208,10 +208,8 @@ export const createSkillXpSchema = (totalSpentXp: number, currentSkillXp: number
 			const maxXpPerSkill = calculateMaxXpPerSkill(projectedSpentXp)
 			
 			if (value > maxXpPerSkill) {
-				// Calculate character level for display
-				const level = getCharacterLevel(projectedSpentXp)
 				return this.createError({
-					message: `Max ${maxXpPerSkill} (Lvl ${level})`
+					message: `max ${maxXpPerSkill}`
 				})
 			}
 			
