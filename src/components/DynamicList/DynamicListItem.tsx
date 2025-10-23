@@ -1,7 +1,7 @@
 import { DragHandle } from '@mui/icons-material'
 import { ListItem, ListItemIcon, ListItemProps } from '@mui/material'
 import React from 'react'
-import { Draggable } from 'react-beautiful-dnd'
+import { Draggable } from '@hello-pangea/dnd'
 
 export type DynamicListItemProps = {
 	id: string

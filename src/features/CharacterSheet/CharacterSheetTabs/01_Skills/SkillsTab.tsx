@@ -134,6 +134,9 @@ const SkillXpRow: React.FC<{
 						}}
 						error={!!fieldState.error}
 						helperText={fieldState.error?.message || ''}
+						FormHelperTextProps={{
+							sx: { display: 'none' }
+						}}
 						label="XP"
 						sx={{
 							width: '60px',
@@ -200,13 +203,21 @@ export const SkillsTab: React.FC = () => {
 
 	const skillsForm = useForm<SkillsFormData>({
 		defaultValues: skillsFormData,
-		mode: 'onChange', // Validate on change for immediate feedback
+		mode: 'all', // Validate on all events including mount
 	})
 
 	// Reset form when skills change (e.g., skill added/removed or character switched)
 	useEffect(() => {
 		skillsForm.reset(skillsFormData)
-	}, [skillsFormData, skillsForm])
+	}, [skillsFormData])
+
+	// Trigger validation on mount and when skillsFormData changes
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			skillsForm.trigger()
+		}, 0)
+		return () => clearTimeout(timeoutId)
+	}, [skillsFormData])
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))

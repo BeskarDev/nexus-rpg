@@ -1,7 +1,7 @@
 import { Add, HelpOutline, Info, Build } from '@mui/icons-material'
 import { Box, Button, Typography, Tooltip, IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
 import React, { useState, useMemo } from 'react'
-import { DropResult } from 'react-beautiful-dnd'
+import { DropResult } from '@hello-pangea/dnd'
 import { SectionHeader } from '../../CharacterSheet'
 import { Companion } from '../../../../types/Character'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -157,27 +157,27 @@ export const CompanionsTab: React.FC = () => {
 					>
 						<HelpOutline fontSize="small" />
 					</Tooltip>
-				</Box>
-				<Box sx={{ display: 'flex', gap: 1 }}>
-					<Tooltip title="Use the Companion Builder to create stat blocks">
-            <CompanionBuilder
-              showImportButton={true}
-              onImportCompanion={handleImportFromBuilder}
-            />
-					</Tooltip>
-					<Tooltip title="Add a new companion to your character sheet">
-						<Button
-							variant="contained"
-							startIcon={<Add />}
-							onClick={handleAddCompanion}
-						>
-							Add Companion
-						</Button>
-					</Tooltip>
-				</Box>
 			</Box>
-
-			{companions.length > 0 && (
+			<Box sx={{ display: 'flex', gap: 1 }}>
+				<Tooltip title="Use the Companion Builder to create stat blocks">
+					<span>
+						<CompanionBuilder
+							showImportButton={true}
+							onImportCompanion={handleImportFromBuilder}
+						/>
+					</span>
+				</Tooltip>
+				<Tooltip title="Add a new companion to your character sheet">
+					<Button
+						variant="contained"
+						startIcon={<Add />}
+						onClick={handleAddCompanion}
+					>
+						Add Companion
+					</Button>
+				</Tooltip>
+			</Box>
+		</Box>			{companions.length > 0 && (
 				<DynamicList droppableId="companions" onDragEnd={onCompanionReorder}>
 					{companions.map((companion, index) => (
 						<DynamicListItem key={companion.id} id={companion.id} index={index}>

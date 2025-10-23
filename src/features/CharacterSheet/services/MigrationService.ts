@@ -110,6 +110,13 @@ export class MigrationService {
 		for (const characterId of characterIds) {
 			try {
 				const [collectionId, docId] = characterId.split('-')
+				
+				// Validate that we have both parts
+				if (!collectionId || !docId) {
+					logger.warn(`Invalid character ID format: ${characterId}`)
+					continue
+				}
+				
 				const charDoc = await getDoc(doc(db, collectionId, docId))
 
 				if (charDoc.exists() && charDoc.data().partyId) {
@@ -134,6 +141,13 @@ export class MigrationService {
 	} | null> {
 		try {
 			const [collectionId, docId] = characterId.split('-')
+			
+			// Validate that we have both parts
+			if (!collectionId || !docId) {
+				logger.warn(`Invalid character ID format: ${characterId}`)
+				return null
+			}
+			
 			const charDoc = await getDoc(doc(db, collectionId, docId))
 
 			if (charDoc.exists()) {

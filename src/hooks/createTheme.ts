@@ -20,7 +20,7 @@ export const theme = createTheme({
 				input: {
 					'&.Mui-disabled': {
 						color: 'var(--mui-palette-text-primary)',
-						['-webkit-text-fill-color']: 'var(--mui-palette-text-primary)',
+						WebkitTextFillColor: 'var(--mui-palette-text-primary)',
 					},
 				},
 			},
@@ -58,7 +58,7 @@ export const theme = createTheme({
 				input: {
 					'&.Mui-disabled': {
 						color: 'var(--mui-palette-text-primary)',
-						['-webkit-text-fill-color']: 'var(--mui-palette-text-primary)',
+						WebkitTextFillColor: 'var(--mui-palette-text-primary)',
 					},
 				},
 			},

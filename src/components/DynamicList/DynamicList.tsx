@@ -4,12 +4,12 @@ import {
 	DragDropContext,
 	Droppable,
 	OnDragEndResponder,
-} from 'react-beautiful-dnd'
+} from '@hello-pangea/dnd'
 
 export type DynamicListProps = {
 	droppableId: string
 	onDragEnd: OnDragEndResponder
-} & ListProps
+} & Omit<ListProps, 'onDragEnd'>
 
 export const DynamicList: React.FC<DynamicListProps> = React.memo(
 	({ droppableId, onDragEnd, children, ...props }) => {

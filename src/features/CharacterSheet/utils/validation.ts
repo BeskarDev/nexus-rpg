@@ -209,7 +209,7 @@ export const createSkillXpSchema = (totalSpentXp: number, currentSkillXp: number
 			
 			if (value > maxXpPerSkill) {
 				return this.createError({
-					message: `max ${maxXpPerSkill}`
+					message: ' '
 				})
 			}
 			

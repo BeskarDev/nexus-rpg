@@ -68,7 +68,7 @@ export const LocationLoadDisplay: React.FC<LocationLoadDisplayProps> = ({
 					'& .MuiOutlinedInput-root': {
 						'& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled': {
 							color: (theme) => getLoadColor(theme),
-							['-webkit-text-fill-color']: (theme) => getLoadColor(theme),
+							WebkitTextFillColor: (theme) => getLoadColor(theme),
 						},
 						'& .MuiOutlinedInput-notchedOutline': {
 							borderColor: (theme) => getLoadColor(theme),
