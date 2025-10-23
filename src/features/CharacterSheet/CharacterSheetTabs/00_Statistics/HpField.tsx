@@ -1,4 +1,6 @@
 import { useMemo, useState, useEffect } from 'react'
+import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Remove, Add } from '@mui/icons-material'
@@ -9,6 +11,7 @@ import {
 	Typography,
 	Button,
 	LinearProgress,
+	TextField,
 } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -20,6 +23,7 @@ import {
 	calculateBaseHpFromStrength,
 } from '../../utils/calculateHp'
 import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
+import { getNumberFieldProps, createHpFieldSchema } from '../../utils/validation'
 
 export const HpField = () => {
 	const dispatch = useAppDispatch()
@@ -36,7 +40,7 @@ export const HpField = () => {
 	const totalXp = activeCharacter.skills.xp.total
 	const characterLevel = calculateCharacterLevel(totalXp)
 	const baseHp = calculateBaseHpFromStrength(strength.value)
-
+	
 	// Calculate max HP using the new formula
 	const maxHp = useMemo(() => {
 		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0)
@@ -45,6 +49,30 @@ export const HpField = () => {
 	// Calculate effective max HP (minus fatigue penalty)
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
 	const effectiveMaxHp = maxHp - fatigueHpPenalty
+	
+	// Initialize react-hook-form with Yup schema validation
+	const hpSchema = useMemo(() => createHpFieldSchema(effectiveMaxHp), [effectiveMaxHp])
+	
+	const { control, formState: { errors }, reset, watch } = useForm({
+		resolver: yupResolver(hpSchema),
+		defaultValues: {
+			currentHp: health.current,
+			tempHp: health.temp || 0,
+			maxHpModifier: health.maxHpModifier || 0,
+		},
+		mode: 'onChange', // Validate on change for immediate feedback
+	})
+	
+	const formValues = watch()
+	
+	// Update form when character changes externally
+	useEffect(() => {
+		reset({
+			currentHp: health.current,
+			tempHp: health.temp || 0,
+			maxHpModifier: health.maxHpModifier || 0,
+		})
+	}, [activeCharacter.id, health.current, health.temp, health.maxHpModifier, reset])
 
 	// Calculate HP bar color and progress with static bar sizing
 	const totalDisplayHp = effectiveMaxHp + (health.temp || 0)
@@ -321,25 +349,38 @@ export const HpField = () => {
 				</Typography>
 
 				{/* Current HP - First and larger with 2px borders */}
-				<AttributeField
-					type="number"
-					value={health.current}
-					onChange={(event) => {
-						const newCurrent = Number(event.target.value)
-						const clampedCurrent = Math.min(newCurrent, effectiveMaxHp)
-						updateCharacter({
-							statistics: { health: { current: clampedCurrent } },
-						})
-					}}
-					label="Current HP"
-					sx={{
-						mb: 1.5,
-						'& .MuiOutlinedInput-root': {
-							'& .MuiOutlinedInput-notchedOutline': {
-								borderWidth: '2px',
-							},
-						},
-					}}
+				<Controller
+					name="currentHp"
+					control={control}
+					render={({ field, fieldState }) => (
+						<TextField
+							{...field}
+							type="number"
+							onChange={(e) => {
+								const value = Number(e.target.value)
+								field.onChange(value)
+								const clampedCurrent = Math.min(value, effectiveMaxHp)
+								updateCharacter({
+									statistics: { health: { current: clampedCurrent } },
+								})
+							}}
+							error={!!fieldState.error}
+							helperText={fieldState.error?.message || ''}
+							label="Current HP"
+							sx={{
+								mb: 1.5,
+								maxWidth: '5rem',
+								'& .MuiOutlinedInput-root': {
+									'& .MuiOutlinedInput-notchedOutline': {
+										borderWidth: '2px',
+									},
+								},
+								'& input': {
+									textAlign: 'center',
+								},
+							}}
+						/>
+					)}
 				/>
 
 				{/* Max HP (disabled, calculated) */}
@@ -354,37 +395,68 @@ export const HpField = () => {
 
 				{/* Temp HP and Max HP Modifier in their own row */}
 				<Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
-					<AttributeField
-						type="number"
-						size="small"
-						value={health.temp}
-						onChange={(event) => {
-							const newTempHp = Number(event.target.value)
-							updateCharacter({
-								statistics: { health: { temp: newTempHp } },
-							})
-							// Trigger temp HP animation when changed
-							if (newTempHp !== health.temp) {
-								setAnimationState('tempHp')
-							}
-						}}
-						label="Temp HP"
-						sx={{ flex: 1 }}
+					<Controller
+						name="tempHp"
+						control={control}
+						render={({ field, fieldState }) => (
+							<TextField
+								{...field}
+								type="number"
+								size="small"
+								onChange={(e) => {
+									const value = Number(e.target.value)
+									field.onChange(value)
+									updateCharacter({
+										statistics: { health: { temp: value } },
+									})
+									// Trigger temp HP animation when changed
+									if (value !== health.temp) {
+										setAnimationState('tempHp')
+									}
+								}}
+								error={!!fieldState.error}
+								helperText={fieldState.error?.message || ''}
+								label="Temp HP"
+								sx={{ 
+									flex: 1,
+									maxWidth: '5rem',
+									'& input': {
+										textAlign: 'center',
+									},
+								}}
+							/>
+						)}
 					/>
 
-					<AttributeField
-						type="number"
-						size="small"
-						value={health.maxHpModifier || 0}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: {
-									health: { maxHpModifier: Number(event.target.value) },
-								},
-							})
-						}
-						label="Max HP Modifier"
-						sx={{ flex: 1 }}
+					<Controller
+						name="maxHpModifier"
+						control={control}
+						render={({ field, fieldState }) => (
+							<TextField
+								{...field}
+								type="number"
+								size="small"
+								onChange={(e) => {
+									const value = Number(e.target.value)
+									field.onChange(value)
+									updateCharacter({
+										statistics: {
+											health: { maxHpModifier: value },
+										},
+									})
+								}}
+								error={!!fieldState.error}
+								helperText={fieldState.error?.message || ''}
+								label="Max HP Modifier"
+								sx={{ 
+									flex: 1,
+									maxWidth: '5rem',
+									'& input': {
+										textAlign: 'center',
+									},
+								}}
+							/>
+						)}
 					/>
 				</Box>
 

@@ -78,7 +78,7 @@ export const ItemsHeader: React.FC<ItemsHeaderProps> = ({
 					'& .MuiOutlinedInput-root': {
 						'& .MuiInputBase-input.MuiOutlinedInput-input.Mui-disabled': {
 							color: getLoadColor(currentLoad, carryCapacity, maxCapacity),
-							['-webkit-text-fill-color']: getLoadColor(
+							WebkitTextFillColor: getLoadColor(
 								currentLoad,
 								carryCapacity,
 								maxCapacity,

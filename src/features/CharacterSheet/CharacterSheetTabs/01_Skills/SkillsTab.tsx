@@ -21,6 +21,7 @@ import {
 	Typography,
 } from '@mui/material'
 import React, { useEffect, useMemo, useState } from 'react'
+import { useForm, Controller, UseFormReturn } from 'react-hook-form'
 import { CharacterDocument } from '../../../../types/Character'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
@@ -40,6 +41,137 @@ import {
 } from '../../../../constants/languages'
 import { calculateSkillRank } from '../../utils'
 import { calculateTalentHpBonus } from '../../utils/calculateTalentHpBonus'
+import { createSkillXpSchema, calculateMaxXpPerSkill } from '../../utils/validation'
+import { Skill } from '../../../../types/Character'
+
+// Type for the skills form data (dynamic based on number of skills)
+type SkillsFormData = {
+	[key: string]: number // Key is skill name, value is XP
+}
+
+/**
+ * Individual skill row with XP validation
+ */
+const SkillXpRow: React.FC<{
+	skill: Skill
+	skillRank: number
+	spendXP: number
+	updateSkill: (skillName: string, update: { xp?: number; rank?: number }) => void
+	handleSkillDeletion: (skillName: string) => void
+	skillsForm: UseFormReturn<SkillsFormData>
+}> = ({ skill, skillRank, spendXP, updateSkill, handleSkillDeletion, skillsForm }) => {
+	const { control, formState: { errors }, trigger } = skillsForm
+
+	return (
+		<Box
+			sx={{
+				display: 'flex',
+				alignItems: 'center',
+				gap: 1,
+				width: '100%',
+			}}
+		>
+			<Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
+				<Chip
+					label={
+						<Box sx={{ display: 'flex', alignItems: 'center' }}>
+							<Box
+								sx={{
+									width: 8,
+									height: 8,
+									borderRadius: '50%',
+									backgroundColor: getSkillChipColor(skill.name),
+									flexShrink: 0,
+									marginRight: '8px',
+								}}
+							/>
+							{`${skill.name} (Rank ${skillRank})`}
+						</Box>
+					}
+					variant="outlined"
+					sx={{
+						flex: 1,
+						justifyContent: 'flex-start',
+						'& .MuiChip-label': {
+							fontWeight: 500,
+							paddingLeft: '12px',
+							paddingRight: '12px',
+							width: '100%',
+							justifyContent: 'flex-start',
+						},
+					}}
+				/>
+			</Box>
+			<Controller
+				name={skill.name}
+				control={control}
+				rules={{
+					validate: (value) => {
+						try {
+							// Calculate current total spent XP from all skills in the form
+							const formValues = skillsForm.getValues()
+							const currentTotalSpentXp = Object.values(formValues).reduce((sum, xp) => sum + (xp || 0), 0)
+							
+							// Validate this skill's XP against the current total
+							createSkillXpSchema(currentTotalSpentXp, skill.xp).validateSync(value)
+							return true
+						} catch (err: any) {
+							return err.message
+						}
+					}
+				}}
+				render={({ field, fieldState }) => (
+					<AttributeField
+						{...field}
+						size="small"
+						type="number"
+						onChange={async (e) => {
+							const newValue = Number(e.target.value)
+							field.onChange(newValue)
+							updateSkill(skill.name, { xp: newValue })
+							// Trigger validation on all skills to revalidate with new total
+							await trigger()
+						}}
+						error={!!fieldState.error}
+						helperText={fieldState.error?.message || ''}
+						FormHelperTextProps={{
+							sx: { display: 'none' }
+						}}
+						label="XP"
+						sx={{
+							width: '60px',
+							flexShrink: 0,
+							'& .MuiInputBase-input': {
+								padding: '4px 6px',
+								fontSize: '0.75rem',
+								textAlign: 'center',
+							},
+							'& .MuiInputLabel-root': {
+								fontSize: '0.7rem',
+							},
+						}}
+					/>
+				)}
+			/>
+			<Box sx={{ flexShrink: 0 }}>
+				<Tooltip title="Delete Skill">
+					<IconButton
+						size="small"
+						onClick={() => handleSkillDeletion(skill.name)}
+						sx={{
+							color: 'text.secondary',
+							'&:hover': {
+								color: 'error.main',
+							},
+						}}
+					>
+						<Delete fontSize="small" />
+					</IconButton>
+				</Tooltip>
+			</Box>
+		</Box>
+	)
+}
 
 export const SkillsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -58,6 +190,34 @@ export const SkillsTab: React.FC = () => {
 
 	// State for skill deletion confirmation
 	const [skillToDelete, setSkillToDelete] = useState<string | null>(null)
+
+	// Create a single form for all skills
+	// This allows all skills to revalidate when any skill's XP changes
+	const skillsFormData = useMemo(() => {
+		const data: SkillsFormData = {}
+		skills.forEach(skill => {
+			data[skill.name] = skill.xp
+		})
+		return data
+	}, [skills])
+
+	const skillsForm = useForm<SkillsFormData>({
+		defaultValues: skillsFormData,
+		mode: 'all', // Validate on all events including mount
+	})
+
+	// Reset form when skills change (e.g., skill added/removed or character switched)
+	useEffect(() => {
+		skillsForm.reset(skillsFormData)
+	}, [skillsFormData])
+
+	// Trigger validation on mount and when skillsFormData changes
+	useEffect(() => {
+		const timeoutId = setTimeout(() => {
+			skillsForm.trigger()
+		}, 0)
+		return () => clearTimeout(timeoutId)
+	}, [skillsFormData])
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
@@ -335,84 +495,15 @@ export const SkillsTab: React.FC = () => {
 							const skillRank = calculateSkillRank(skill.xp)
 
 							return (
-								<Box
+								<SkillXpRow
 									key={skill.id}
-									sx={{
-										display: 'flex',
-										alignItems: 'center',
-										gap: 1,
-										width: '100%',
-									}}
-								>
-									<Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
-										<Chip
-											label={
-												<Box sx={{ display: 'flex', alignItems: 'center' }}>
-													<Box
-														sx={{
-															width: 8,
-															height: 8,
-															borderRadius: '50%',
-															backgroundColor: getSkillChipColor(skill.name),
-															flexShrink: 0,
-															marginRight: '8px',
-														}}
-													/>
-													{`${skill.name} (Rank ${skillRank})`}
-												</Box>
-											}
-											variant="outlined"
-											sx={{
-												flex: 1,
-												justifyContent: 'flex-start',
-												'& .MuiChip-label': {
-													fontWeight: 500,
-													paddingLeft: '12px',
-													paddingRight: '12px',
-													width: '100%',
-													justifyContent: 'flex-start',
-												},
-											}}
-										/>
-									</Box>
-									<AttributeField
-										size="small"
-										type="number"
-										value={skill.xp}
-										onChange={(e) =>
-											updateSkill(skill.name, { xp: Number(e.target.value) })
-										}
-										label="XP"
-										sx={{
-											width: '60px',
-											flexShrink: 0,
-											'& .MuiInputBase-input': {
-												padding: '4px 6px',
-												fontSize: '0.75rem',
-												textAlign: 'center',
-											},
-											'& .MuiInputLabel-root': {
-												fontSize: '0.7rem',
-											},
-										}}
-									/>
-									<Box sx={{ flexShrink: 0 }}>
-										<Tooltip title="Delete Skill">
-											<IconButton
-												size="small"
-												onClick={() => handleSkillDeletion(skill.name)}
-												sx={{
-													color: 'text.secondary',
-													'&:hover': {
-														color: 'error.main',
-													},
-												}}
-											>
-												<Delete fontSize="small" />
-											</IconButton>
-										</Tooltip>
-									</Box>
-								</Box>
+									skill={skill}
+									skillRank={skillRank}
+									spendXP={spendXP}
+									updateSkill={updateSkill}
+									handleSkillDeletion={handleSkillDeletion}
+									skillsForm={skillsForm}
+								/>
 							)
 						})}
 				</Box>

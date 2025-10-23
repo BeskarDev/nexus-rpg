@@ -8,7 +8,7 @@ import {
 	Tooltip,
 } from '@mui/material'
 import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
-import { DropResult } from 'react-beautiful-dnd'
+import { DropResult } from '@hello-pangea/dnd'
 import { DynamicList } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { SectionHeader } from '../../../CharacterSheet'

@@ -13,7 +13,7 @@ import {
 	Checkbox,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
-import { DropResult } from 'react-beautiful-dnd'
+import { DropResult } from '@hello-pangea/dnd'
 import { Ability } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { ABILITY_TAGS, AbilityTag } from '../../../../types/AbilityTag'

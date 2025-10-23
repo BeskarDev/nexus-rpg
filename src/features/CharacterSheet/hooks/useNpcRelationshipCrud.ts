@@ -1,4 +1,4 @@
-import { DropResult } from 'react-beautiful-dnd'
+import { DropResult } from '@hello-pangea/dnd'
 import { NpcRelationship } from '../../../types/Character'
 import { characterSheetActions } from '../characterSheetReducer'
 import { useAppDispatch } from './useAppDispatch'

@@ -444,7 +444,7 @@ export const SharedNotes: React.FC = () => {
 							maxWidth: '100%',
 							'& textarea.Mui-disabled': {
 								color: 'inherit',
-								['-webkit-text-fill-color']: 'inherit',
+								WebkitTextFillColor: 'inherit',
 							},
 						}}
 						fullWidth

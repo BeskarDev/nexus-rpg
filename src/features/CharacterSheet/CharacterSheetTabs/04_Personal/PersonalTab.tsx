@@ -8,9 +8,12 @@ import {
 	DialogTitle,
 	Chip,
 	IconButton,
+	TextField,
 } from '@mui/material'
 import { Edit } from '@mui/icons-material'
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { CharacterDocument } from '../../../../types/Character'
 import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -28,6 +31,7 @@ import {
 	UpbringingData,
 	BackgroundData
 } from '../../components'
+import { getTextFieldProps, personalTabSchema } from '../../utils/validation'
 
 /**
  * Parses a comma-separated string of suggested skills and returns an array of skill names
@@ -67,6 +71,44 @@ export const PersonalTab: React.FC = () => {
 		() => activeCharacter.personal,
 		[activeCharacter.personal],
 	)
+	
+	// Initialize react-hook-form with Yup schema validation
+	const { register, formState: { errors }, reset, watch } = useForm({
+		resolver: yupResolver(personalTabSchema),
+		defaultValues: {
+			name: activeCharacter.personal.name || '',
+			folk: activeCharacter.personal.folk || '',
+			upbringing: activeCharacter.personal.upbringing || '',
+			background: activeCharacter.personal.background || '',
+			motivation: activeCharacter.personal.motivation || '',
+			height: activeCharacter.personal.height || '',
+			weight: activeCharacter.personal.weight || '',
+			age: activeCharacter.personal.age || '',
+			description: activeCharacter.personal.description || '',
+			notes: activeCharacter.personal.notes || '',
+		},
+		mode: 'onBlur', // Validate on blur to match existing behavior
+	})
+	
+	// Watch form values for local state updates
+	const formValues = watch()
+	
+	// Update form when character changes externally (e.g., loading different character)
+	useEffect(() => {
+		reset({
+			name: activeCharacter.personal.name || '',
+			folk: activeCharacter.personal.folk || '',
+			upbringing: activeCharacter.personal.upbringing || '',
+			background: activeCharacter.personal.background || '',
+			motivation: activeCharacter.personal.motivation || '',
+			height: activeCharacter.personal.height || '',
+			weight: activeCharacter.personal.weight || '',
+			age: activeCharacter.personal.age || '',
+			description: activeCharacter.personal.description || '',
+			notes: activeCharacter.personal.notes || '',
+		})
+	}, [activeCharacter.id, reset])
+	
 	const [personal, setPersonal] = useState(activeCharacter.personal)
 
 	// Dialog states for changing Folk, Upbringing, and Background
@@ -124,18 +166,21 @@ export const PersonalTab: React.FC = () => {
 		// Only update the name field
 		setPersonal((p) => ({ ...p, folk: folk.name }))
 		updateCharacter({ personal: { folk: folk.name } })
+		reset({ ...formValues, folk: folk.name })
 	}
 
 	const applyUpbringingNameOnly = (upbringing: UpbringingData) => {
 		// Only update the name field
 		setPersonal((p) => ({ ...p, upbringing: upbringing.name }))
 		updateCharacter({ personal: { upbringing: upbringing.name } })
+		reset({ ...formValues, upbringing: upbringing.name })
 	}
 
 	const applyBackgroundNameOnly = (background: BackgroundData) => {
 		// Only update the name field
 		setPersonal((p) => ({ ...p, background: background.name }))
 		updateCharacter({ personal: { background: background.name } })
+		reset({ ...formValues, background: background.name })
 	}
 
 	// Apply changes functions - full replacement (with auto-fill)
@@ -170,6 +215,7 @@ export const PersonalTab: React.FC = () => {
 		// Update personal info
 		setPersonal((p) => ({ ...p, folk: folk.name }))
 		updateCharacter({ personal: { folk: folk.name } })
+		reset({ ...formValues, folk: folk.name })
 
 		// Add new folk abilities
 		if (folk.abilities && Array.isArray(folk.abilities)) {
@@ -212,6 +258,7 @@ export const PersonalTab: React.FC = () => {
 
 		setPersonal((p) => ({ ...p, upbringing: upbringing.name }))
 		updateCharacter({ personal: { upbringing: upbringing.name } })
+		reset({ ...formValues, upbringing: upbringing.name })
 
 		// Add new upbringing suggested skills with conflict resolution
 		if (upbringing['suggested skills']) {
@@ -266,6 +313,7 @@ export const PersonalTab: React.FC = () => {
 
 		setPersonal((p) => ({ ...p, background: background.name }))
 		updateCharacter({ personal: { background: background.name } })
+		reset({ ...formValues, background: background.name })
 
 		// Add new background suggested skills with conflict resolution
 		if (background['suggested skills']) {
@@ -370,28 +418,32 @@ export const PersonalTab: React.FC = () => {
 							gap: 1,
 						}}
 					>
-						<PersonalField
-							value={personal.name}
-							onValueChange={(value) =>
-								setPersonal((p) => ({ ...p, name: value }))
-							}
-							onBlur={() =>
-								updateCharacter({ personal: { name: personal.name } })
-							}
+						<TextField
+							{...getTextFieldProps(
+								register('name'),
+								errors.name
+							)}
+							variant="standard"
+							onBlur={(e) => {
+								register('name').onBlur(e)
+								updateCharacter({ personal: { name: formValues.name } })
+							}}
 							label="Name"
 							sx={{ maxWidth: '15rem' }}
 						/>
 						
 						{/* Folk Selection */}
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
-							<PersonalField
-								value={personal.folk}
-								onValueChange={(value) =>
-									setPersonal((p) => ({ ...p, folk: value }))
-								}
-								onBlur={() =>
-									updateCharacter({ personal: { folk: personal.folk } })
-								}
+							<TextField
+								{...getTextFieldProps(
+									register('folk'),
+									errors.folk
+								)}
+								variant="standard"
+								onBlur={(e) => {
+									register('folk').onBlur(e)
+									updateCharacter({ personal: { folk: formValues.folk } })
+								}}
 								label="Folk"
 								sx={{ maxWidth: '10rem' }}
 							/>
@@ -407,14 +459,16 @@ export const PersonalTab: React.FC = () => {
 
 						{/* Upbringing Selection */}
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
-							<PersonalField
-								value={personal.upbringing}
-								onValueChange={(value) =>
-									setPersonal((p) => ({ ...p, upbringing: value }))
-								}
-								onBlur={() =>
-									updateCharacter({ personal: { upbringing: personal.upbringing } })
-								}
+							<TextField
+								{...getTextFieldProps(
+									register('upbringing'),
+									errors.upbringing
+								)}
+								variant="standard"
+								onBlur={(e) => {
+									register('upbringing').onBlur(e)
+									updateCharacter({ personal: { upbringing: formValues.upbringing } })
+								}}
 								label="Upbringing"
 								sx={{ maxWidth: '10rem' }}
 							/>
@@ -430,14 +484,16 @@ export const PersonalTab: React.FC = () => {
 
 						{/* Background Selection */}
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
-							<PersonalField
-								value={personal.background}
-								onValueChange={(value) =>
-									setPersonal((p) => ({ ...p, background: value }))
-								}
-								onBlur={() =>
-									updateCharacter({ personal: { background: personal.background } })
-								}
+							<TextField
+								{...getTextFieldProps(
+									register('background'),
+									errors.background
+								)}
+								variant="standard"
+								onBlur={(e) => {
+									register('background').onBlur(e)
+									updateCharacter({ personal: { background: formValues.background } })
+								}}
 								label="Background"
 								sx={{ maxWidth: '10rem' }}
 							/>
@@ -450,68 +506,74 @@ export const PersonalTab: React.FC = () => {
 								<Edit fontSize="small" />
 							</IconButton>
 						</Box>
-						<PersonalField
-							value={personal.motivation}
-							onValueChange={(value) =>
-								setPersonal((p) => ({ ...p, motivation: value }))
-							}
-							onBlur={() =>
-								updateCharacter({
-									personal: { motivation: personal.motivation },
-								})
-							}
+						<TextField
+							{...getTextFieldProps(
+								register('motivation'),
+								errors.motivation
+							)}
+							variant="standard"
+							onBlur={(e) => {
+								register('motivation').onBlur(e)
+								updateCharacter({ personal: { motivation: formValues.motivation } })
+							}}
 							label="Motivation"
 							sx={{ maxWidth: '10rem' }}
 						/>
 
 						<Box sx={{ width: '100%', flexGrow: 1 }} />
 
-						<PersonalField
-							value={personal.height}
-							onValueChange={(value) =>
-								setPersonal((p) => ({ ...p, height: value }))
-							}
-							onBlur={() =>
-								updateCharacter({ personal: { height: personal.height } })
-							}
+						<TextField
+							{...getTextFieldProps(
+								register('height'),
+								errors.height
+							)}
+							variant="standard"
+							onBlur={(e) => {
+								register('height').onBlur(e)
+								updateCharacter({ personal: { height: formValues.height } })
+							}}
 							label="Height"
 							sx={{ maxWidth: '6rem' }}
 						/>
-						<PersonalField
-							value={personal.weight}
-							onValueChange={(value) =>
-								setPersonal((p) => ({ ...p, weight: value }))
-							}
-							onBlur={() =>
-								updateCharacter({ personal: { weight: personal.weight } })
-							}
+						<TextField
+							{...getTextFieldProps(
+								register('weight'),
+								errors.weight
+							)}
+							variant="standard"
+							onBlur={(e) => {
+								register('weight').onBlur(e)
+								updateCharacter({ personal: { weight: formValues.weight } })
+							}}
 							label="Weight"
 							sx={{ maxWidth: '6rem' }}
 						/>
-						<PersonalField
-							value={personal.age}
-							onValueChange={(value) =>
-								setPersonal((p) => ({ ...p, age: value }))
-							}
-							onBlur={() =>
-								updateCharacter({ personal: { age: personal.age } })
-							}
+						<TextField
+							{...getTextFieldProps(
+								register('age'),
+								errors.age
+							)}
+							variant="standard"
+							onBlur={(e) => {
+								register('age').onBlur(e)
+								updateCharacter({ personal: { age: formValues.age } })
+							}}
 							label="Age"
 							sx={{ maxWidth: '6rem' }}
 						/>
-						<PersonalField
+						<TextField
+							{...getTextFieldProps(
+								register('description'),
+								errors.description
+							)}
+							variant="standard"
 							multiline
 							minRows={1}
 							maxRows={5}
-							value={personal.description}
-							onValueChange={(value) =>
-								setPersonal((p) => ({ ...p, description: value }))
-							}
-							onBlur={() =>
-								updateCharacter({
-									personal: { description: personal.description },
-								})
-							}
+							onBlur={(e) => {
+								register('description').onBlur(e)
+								updateCharacter({ personal: { description: formValues.description } })
+							}}
 							label="Description"
 							sx={{ maxWidth: '20rem' }}
 						/>
@@ -545,17 +607,19 @@ export const PersonalTab: React.FC = () => {
 
 			<Box sx={{ minWidth: '100%', mt: 1 }}>
 				<SectionHeader>Personal Notes</SectionHeader>
-				<PersonalField
+				<TextField
+					{...getTextFieldProps(
+						register('notes'),
+						errors.notes
+					)}
+					variant="standard"
 					multiline
 					minRows={1}
 					maxRows={20}
-					value={personal.notes}
-					onValueChange={(value) =>
-						setPersonal((p) => ({ ...p, notes: value }))
-					}
-					onBlur={() =>
-						updateCharacter({ personal: { notes: personal.notes } })
-					}
+					onBlur={(e) => {
+						register('notes').onBlur(e)
+						updateCharacter({ personal: { notes: formValues.notes } })
+					}}
 					sx={{ maxWidth: '100%' }}
 				/>
 			</Box>

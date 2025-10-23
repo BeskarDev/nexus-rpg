@@ -1,5 +1,5 @@
 import { useMemo, useEffect } from 'react'
-import { DropResult } from 'react-beautiful-dnd'
+import { DropResult } from '@hello-pangea/dnd'
 import { CharacterDocument, Item, Weapon } from '../../../../../types/Character'
 import { ItemLocation } from '../../../../../types/ItemLocation'
 import { DeepPartial } from '../../../CharacterSheetContainer'
@@ -72,14 +72,17 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 	}
 
 	const currentLoad: number = useMemo(() => {
-		const newCurrentLoad = calculateCurrentLoad(itemsByLocation)
-		if (newCurrentLoad !== encumbrance.currentLoad) {
+		return calculateCurrentLoad(itemsByLocation)
+	}, [itemsByLocation])
+
+	// Update currentLoad in store when it changes
+	useEffect(() => {
+		if (currentLoad !== encumbrance.currentLoad) {
 			updateCharacter({
-				items: { encumbrance: { currentLoad: newCurrentLoad } },
+				items: { encumbrance: { currentLoad: currentLoad } },
 			})
 		}
-		return newCurrentLoad
-	}, [itemsByLocation, encumbrance.currentLoad])
+	}, [currentLoad, encumbrance.currentLoad])
 
 	const carryCapacity = useMemo(() => {
 		logger.debug('Calculating carry capacity:', {
