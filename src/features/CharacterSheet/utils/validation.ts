@@ -209,7 +209,7 @@ export const createSkillXpSchema = (totalSpentXp: number, currentSkillXp: number
 			
 			if (value > maxXpPerSkill) {
 				return this.createError({
-					message: ' '
+					message: `Cannot exceed max ${maxXpPerSkill} XP for your current level`
 				})
 			}
 			
