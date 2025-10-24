@@ -2,6 +2,7 @@
 sidebar_position: 12
 ---
 
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import { CreatureBuilderWrapper } from '@site/src/components/CreatureBuilderWrapper';
 
 # 🐉 Creature Builder
@@ -16,7 +17,9 @@ The Creature Builder Tool helps you create balanced, modular creatures and enemi
 
 ## Quick Start
 
-<CreatureBuilderWrapper />
+<BrowserOnly fallback={<div>Loading...</div>}>
+  {() => <CreatureBuilderWrapper />}
+</BrowserOnly>
 
 ## How to Use
 

@@ -541,7 +541,6 @@ export const CreatureAdvancedSettings: React.FC = () => {
 											}
 										}
 									}}
-									title={currentArmorType === 'heavy' ? 'Heavy Armor' : 'Light Armor'}
 									sx={{
 										mt: 0.5,
 										border: 1,

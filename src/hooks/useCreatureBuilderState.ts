@@ -107,6 +107,7 @@ export const useCreatureBuilderState = () => {
 		state.name,
 		state.customHP,
 		state.customAV,
+		state.customArmorType,
 		state.customStr,
 		state.customAgi,
 		state.customSpi,
