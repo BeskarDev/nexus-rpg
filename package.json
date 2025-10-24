@@ -19,7 +19,8 @@
 		"firebase:deploy": "firebase deploy",
 		"test": "vitest run",
 		"test:ui": "vitest --ui",
-		"test:coverage": "vitest run --coverage"
+		"test:coverage": "vitest run --coverage",
+		"creature:build": "tsx src/utils/creatureBuilderCLI.ts"
 	},
 	"dependencies": {
 		"@docusaurus/core": "^3.8.1",

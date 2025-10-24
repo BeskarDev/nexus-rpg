@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Tiny",
+    "modifier": -2,
+    "avModifier": -1,
+    "parryModifier": -2,
+    "dodgeModifier": 2,
+    "description": "house cat"
+  },
+  {
+    "name": "Small",
+    "modifier": -1,
+    "avModifier": -1,
+    "parryModifier": -1,
+    "dodgeModifier": 1,
+    "description": "domesticated dog"
+  },
+  {
+    "name": "Medium",
+    "modifier": 0,
+    "avModifier": 0,
+    "parryModifier": 0,
+    "dodgeModifier": 0,
+    "description": "wolf"
+  },
+  {
+    "name": "Large",
+    "modifier": 1,
+    "avModifier": 1,
+    "parryModifier": 1,
+    "dodgeModifier": -1,
+    "description": "horse"
+  },
+  {
+    "name": "Huge",
+    "modifier": 2,
+    "avModifier": 1,
+    "parryModifier": 2,
+    "dodgeModifier": -2,
+    "description": "mountain giant"
+  },
+  {
+    "name": "Gargantuan",
+    "modifier": 3,
+    "avModifier": 1,
+    "parryModifier": 2,
+    "dodgeModifier": -2,
+    "description": "fully-grown dragon"
+  },
+  {
+    "name": "Colossal",
+    "modifier": 4,
+    "avModifier": 1,
+    "parryModifier": 2,
+    "dodgeModifier": -2,
+    "description": "dragon turtle"
+  }
+]

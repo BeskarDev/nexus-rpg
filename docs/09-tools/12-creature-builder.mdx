@@ -1,0 +1,173 @@
+---
+sidebar_position: 12
+---
+
+import BrowserOnly from '@docusaurus/BrowserOnly';
+import { CreatureBuilderWrapper } from '@site/src/components/CreatureBuilderWrapper';
+
+# 🐉 Creature Builder
+
+The Creature Builder Tool helps you create balanced, modular creatures and enemies for Nexus RPG. This tool streamlines the creature creation process by:
+
+- Combining base stats per Tier (0-10)
+- Allowing selection of archetype (Ambusher, Artillery, Bruiser, etc.) which modifies stats
+- Supporting creature categories (Basic, Elite, Lord) with automatic life pool formatting
+- Providing tier validation to ensure balanced creatures
+- Generating markdown output compatible with the Creature Cards tool
+
+## Quick Start
+
+<BrowserOnly fallback={<div>Loading...</div>}>
+  {() => <CreatureBuilderWrapper />}
+</BrowserOnly>
+
+## How to Use
+
+### 1. Select Basic Parameters
+
+- **Creature Name**: Give your creature a descriptive name
+- **Tier**: Choose from 0 (Harmless) to 10 (Godlike) - determines base power level
+- **Category**: 
+  - **Basic** - Standard creatures with 1 wound (e.g., "40 HP")
+  - **Elite** - Stronger creatures with 2 life pools (e.g., "2×40 HP")
+  - **Lord** - Boss creatures with 3 life pools (e.g., "3×40 HP")
+- **Size**: From Tiny to Colossal - affects defenses and armor
+- **Type**: Animal, Beast, Construct, Dragon, Elemental, Fey, Fiend, Giant, Humanoid, Monstrosity, Ooze, Plant, or Undead
+
+### 2. Choose an Archetype
+
+Each archetype modifies the creature's stats to fit a specific combat role:
+
+- **Standard** - Baseline generalist with no special modifiers
+- **Ambusher** - High dodge, fast movement, strikes from surprise
+- **Artillery** - Long-range damage dealer, fragile defenses
+- **Bruiser** - High HP and parry, frontline damage dealer
+- **Defender** - Maximum HP, heavy armor, protects allies
+- **Horde** - Low stats, meant for large groups
+- **Controller** - High resist, battlefield manipulation
+- **Ranged** - Balanced ranged attacker
+- **Skirmisher** - High dodge and movement, hit-and-run tactics
+- **Support** - High resist, buffs and heals allies
+
+### 3. Review Generated Stats
+
+The tool automatically calculates:
+
+- **HP** - With proper Elite/Lord formatting (e.g., "2×40")
+- **AV** - Armor value based on tier, archetype, and size
+- **Attributes** - STR, AGI, SPI, MND set to tier-appropriate dice
+- **Defenses** - Parry, Dodge, and Resist adjusted for archetype and size
+
+### 4. Tier Validation
+
+The tool validates your creature's stats and displays warnings if:
+- HP is outside the expected range for the tier (±2 tiers)
+- AV is too high or too low for the tier
+- Average defense values don't match the expected tier range
+
+Warnings help ensure your creature is appropriately balanced for its intended challenge level.
+
+### 5. Export
+
+Switch to the **Markdown** tab to copy the creature's stat block. This output is compatible with the Creature Cards tool for printing physical creature cards.
+
+## Design Guidelines
+
+### Tier System
+
+| Tier | Name | HP | Defense | Max Attribute | Purpose |
+|------|------|----|---------|--------------|--------------------|
+| 0 | Harmless | 5 | 6 | d6 | Trivial encounters |
+| 1 | Capable | 10 | 7 | d6 | Level 1 challenge |
+| 2 | Dangerous | 20 | 8 | d8 | Level 2 challenge |
+| 3 | Ferocious | 30 | 9 | d8 | Level 3 challenge |
+| 4 | Monstrous | 40 | 10 | d10 | Level 4 challenge |
+| 5 | Primeval | 50 | 11 | d10 | Level 5 challenge |
+| 6 | Ancient | 60 | 12 | d12 | Level 6 challenge |
+| 7 | Legendary | 70 | 13 | d12 | Level 7 challenge |
+| 8 | Mythic | 80 | 14 | d12+1 | Level 8 challenge |
+| 9 | Divine | 90 | 15 | d12+1 | Level 9 challenge |
+| 10 | Godlike | 100 | 16 | d12+2 | Level 10 challenge |
+
+A single creature of any Tier should provide a decent challenge for one adventurer of the same level.
+
+### Creature Categories
+
+**Basic Creatures:**
+- 1 wound, die immediately from injury
+- Must roll Morale in tough situations
+- Can form troops
+- HP format: Single number (e.g., "40")
+
+**Elite Creatures:**
+- 2 wounds, regain full HP when first wound is taken
+- Start with 1 Resolve
+- Get +1 boon on Morale rolls
+- HP format: "2×[base]" (e.g., "2×40")
+- Should have Elite Trigger ability when first life pool depletes
+
+**Lord Creatures:**
+- 3 wounds, regain full HP when any wound is taken
+- Start with 3 Resolve
+- Get second round per turn at half Initiative
+- Don't roll Morale
+- Recover from conditions when wounded
+- HP format: "3×[base]" (e.g., "3×40")
+- Should have Lord Trigger abilities when life pools deplete
+
+### Size Modifiers
+
+Size affects AV and defenses:
+- **Tiny/Small**: Lower AV, higher Dodge, lower Parry
+- **Medium**: Baseline (no modifiers)
+- **Large/Huge**: Higher AV, higher Parry, lower Dodge
+- **Gargantuan/Colossal**: Special combat rules (see Creature Rules)
+
+## Tips for Creating Creatures
+
+1. **Start with Tier** - Match the tier to your party's level for balanced encounters
+2. **Choose Appropriate Archetype** - Think about the creature's combat role
+3. **Use Category Wisely** - Basic for minions, Elite for champions, Lord for bosses
+4. **Validate Your Stats** - Pay attention to tier validation warnings
+5. **Add Flavor** - Use the markdown output as a base, then add custom attacks and abilities
+6. **Test in Play** - The tool provides a baseline; adjust based on actual gameplay
+
+## Example Creatures
+
+Here are some examples to get you started:
+
+### Tier 2 Goblin Ambusher (Basic)
+- **Archetype**: Ambusher
+- **Size**: Small
+- **Type**: Humanoid
+- **HP**: 20
+- **Attacks**: Rusty Dagger (agile, light) - 5/7/9 damage
+- **Abilities**: Sneak Attack - Deal +1d6 damage when attacking from stealth
+
+### Tier 4 Stone Golem Defender (Elite)
+- **Archetype**: Defender
+- **Size**: Large
+- **Type**: Construct
+- **HP**: 2×60 (Defender +2 tier HP modifier)
+- **Immunities**: poisoned, charmed, frightened
+- **Attacks**: Crushing Fist (crush) - 6/8/10 damage
+- **Abilities**: Elite Trigger - When first life pool depletes, gain +2 AV for remainder of combat
+
+### Tier 5 Ancient Dragon (Lord)
+- **Archetype**: Bruiser
+- **Size**: Huge
+- **Type**: Dragon
+- **HP**: 3×60 (Bruiser +1 tier HP modifier)
+- **Resistances**: fire
+- **Attacks**: 
+  - Claws (reach, crush) - 8/12/16 damage
+  - Fire Breath (blast, line) - 10/15/20 fire damage
+- **Abilities**:
+  - Lord Trigger - When any life pool depletes, all attributes increase by one die size
+  - Frightful Presence - All creatures within Long range must make Spirit + Fortitude vs TN 11 or become frightened
+
+## Related Tools
+
+- **Creature Cards** - Print physical cards from your creature markdown
+- **Random Creature** - Generate random creature encounters
+- **Creature Rules** - Full rules for creature creation and combat

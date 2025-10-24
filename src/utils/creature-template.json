@@ -1,0 +1,51 @@
+{
+  "__comment__": "Creature Builder CLI - Input Template",
+  "__usage__": "npm run creature:build < creature.json",
+  "__docs__": "See JSDoc in src/utils/creatureBuilderCLI.ts for full documentation",
+  
+  "tier": 2,
+  "category": "Basic",
+  "size": "Medium",
+  "archetype": "Standard",
+  "type": "Beast",
+  "name": "Example Creature",
+  
+  "customHP": null,
+  "customAV": null,
+  "customArmorType": null,
+  "customStr": null,
+  "customAgi": null,
+  "customSpi": null,
+  "customMnd": null,
+  "customParry": null,
+  "customDodge": null,
+  "customResist": null,
+  
+  "skills": [
+    {"name": "Perception", "rank": 3}
+  ],
+  "immunities": [],
+  "resistances": [],
+  "weaknesses": [],
+  
+  "attacks": [
+    {
+      "name": "Bite",
+      "properties": ["pierce"],
+      "damageType": "physical",
+      "weaponDamage": 0,
+      "baseAttribute": "STR",
+      "damage": "",
+      "description": ""
+    }
+  ],
+  
+  "abilities": [
+    {
+      "name": "Keen Senses",
+      "description": "Has advantage on Perception checks",
+      "actionType": "Passive",
+      "properties": ""
+    }
+  ]
+}
