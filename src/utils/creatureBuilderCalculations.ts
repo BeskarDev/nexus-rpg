@@ -1,6 +1,7 @@
 import creatureTiers from './json/creature-tiers.json'
 import creatureArchetypes from './json/creature-archetypes.json'
 import creatureSizes from './json/creature-sizes.json'
+import { modifyDie } from './companionCalculations'
 import {
 	CreatureTier,
 	CreatureArchetype,
@@ -98,6 +99,7 @@ export function calculateAV(
 	archetype: string,
 	size: string,
 	customAV?: number | null,
+	customArmorType?: 'light' | 'heavy' | null,
 ): string {
 	if (customAV !== null && customAV !== undefined) {
 		return `${customAV}`
@@ -109,7 +111,9 @@ export function calculateAV(
 	const archetypeData = getArchetypeData(archetype)
 	const sizeData = getSizeData(size)
 
-	const isHeavyArmor = archetypeData?.armorType === 'heavy'
+	// Use custom armor type if provided, otherwise use archetype default
+	const armorType = customArmorType ?? archetypeData?.armorType ?? 'light'
+	const isHeavyArmor = armorType === 'heavy'
 	const baseAV = isHeavyArmor ? tierData.avHeavy : tierData.avLight
 	const sizeModifier = sizeData?.avModifier || 0
 
@@ -165,6 +169,80 @@ export function getMaxAttribute(tier: number): string {
 }
 
 /**
+ * Calculate attribute spread based on archetype and type
+ * Returns attribute values with archetype-specific modifiers applied
+ * Special logic: Animal type reduces MND to d4-2, d4-1, or d4 based on archetype modifier
+ */
+export function calculateAttributes(
+	tier: number,
+	archetype: string,
+	type?: string,
+	customStr?: string | null,
+	customAgi?: string | null,
+	customSpi?: string | null,
+	customMnd?: string | null,
+): {
+	str: string
+	agi: string
+	spi: string
+	mnd: string
+} {
+	// If all custom values are provided, use them
+	if (customStr && customAgi && customSpi && customMnd) {
+		return {
+			str: customStr,
+			agi: customAgi,
+			spi: customSpi,
+			mnd: customMnd,
+		}
+	}
+
+	const archetypeData = getArchetypeData(archetype)
+	
+	// Default to Standard archetype if not found
+	const modifiers = archetypeData?.attributeModifiers || {
+		str: 0,
+		agi: 0,
+		spi: 0,
+		mnd: 0,
+	}
+
+	// Get base attribute for tier
+	const baseAttribute = getMaxAttribute(tier)
+
+	// Calculate MND with special type-based logic
+	let mndValue: string
+	if (type?.toLowerCase() === 'animal' && !customMnd) {
+		// Animal type: MND has slow progression based on tier
+		// Base MND depends on archetype modifier, then tier adds progression
+		const mndModifier = modifiers.mnd
+		let baseMnd: string
+		
+		// Determine base MND from archetype modifier
+		if (mndModifier <= -2) {
+			baseMnd = 'd4-2'
+		} else if (mndModifier === -1) {
+			baseMnd = 'd4-1'
+		} else {
+			baseMnd = 'd4'
+		}
+		
+		// Add slow tier-based progression: +1 die step per 3 tiers
+		const tierBonus = Math.floor(tier / 3)
+		mndValue = modifyDie(baseMnd, tierBonus.toString())
+	} else {
+		mndValue = customMnd || modifyDie(baseAttribute, modifiers.mnd.toString())
+	}
+
+	return {
+		str: customStr || modifyDie(baseAttribute, modifiers.str.toString()),
+		agi: customAgi || modifyDie(baseAttribute, modifiers.agi.toString()),
+		spi: customSpi || modifyDie(baseAttribute, modifiers.spi.toString()),
+		mnd: mndValue,
+	}
+}
+
+/**
  * Get weapon damage for a tier with archetype modifier
  */
 export function getWeaponDamage(tier: number, archetype: string): number {
@@ -214,6 +292,7 @@ export function validateTier(
 	parry: number,
 	dodge: number,
 	resist: number,
+	armorType?: 'light' | 'heavy',
 ): {
 	valid: boolean
 	warnings: string[]
@@ -237,13 +316,14 @@ export function validateTier(
 		)
 	}
 
-	// Check AV range
-	const minAV = getTierData(minTier)?.avLight || 0
-	const maxAV = getTierData(maxTier)?.avHeavy || 20
+	// Check AV range based on armor type
+	const isHeavy = armorType === 'heavy'
+	const minAV = isHeavy ? (getTierData(minTier)?.avHeavy || 1) : (getTierData(minTier)?.avLight || 0)
+	const maxAV = isHeavy ? (getTierData(maxTier)?.avHeavy || 20) : (getTierData(maxTier)?.avLight || 10)
 
 	if (av < minAV || av > maxAV) {
 		warnings.push(
-			`AV (${av}) is outside expected range (${minAV}-${maxAV}) for Tier ${tier}`,
+			`AV (${av}) is outside expected range (${minAV}-${maxAV}) for Tier ${tier} with ${isHeavy ? 'heavy' : 'light'} armor`,
 		)
 	}
 
@@ -272,7 +352,12 @@ export function buildCreature(state: CreatureBuilderState): BuiltCreature | null
 	if (state.tier === null) return null
 
 	const hp = calculateHP(state.tier, state.archetype, state.category, state.customHP)
-	const av = calculateAV(state.tier, state.archetype, state.size, state.customAV)
+	const av = calculateAV(state.tier, state.archetype, state.size, state.customAV, state.customArmorType)
+	
+	// Determine final armor type
+	const archetypeData = getArchetypeData(state.archetype)
+	const armorType = state.customArmorType ?? archetypeData?.armorType ?? 'light'
+	
 	const parry = calculateDefense(
 		state.tier,
 		state.archetype,
@@ -295,7 +380,18 @@ export function buildCreature(state: CreatureBuilderState): BuiltCreature | null
 		state.customResist,
 	)
 
-	const maxAttr = getMaxAttribute(state.tier)
+	const attributes = calculateAttributes(
+		state.tier,
+		state.archetype,
+		state.type,
+		state.customStr,
+		state.customAgi,
+		state.customSpi,
+		state.customMnd,
+	)
+
+	// Format skills as strings with ranks
+	const formattedSkills = state.skills.map(skill => `${skill.name} (${skill.rank})`)
 
 	return {
 		name: state.name || 'Unnamed Creature',
@@ -306,14 +402,15 @@ export function buildCreature(state: CreatureBuilderState): BuiltCreature | null
 		archetype: state.archetype,
 		hp: hp.display,
 		av,
-		str: state.customStr || maxAttr,
-		agi: state.customAgi || maxAttr,
-		spi: state.customSpi || maxAttr,
-		mnd: state.customMnd || maxAttr,
+		armorType,
+		str: attributes.str,
+		agi: attributes.agi,
+		spi: attributes.spi,
+		mnd: attributes.mnd,
 		parry,
 		dodge,
 		resist,
-		skills: state.skills,
+		skills: formattedSkills,
 		immunities: state.immunities,
 		resistances: state.resistances,
 		weaknesses: state.weaknesses,

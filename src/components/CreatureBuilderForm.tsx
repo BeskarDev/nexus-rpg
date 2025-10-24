@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import {
 	FormControl,
 	InputLabel,
@@ -11,7 +12,13 @@ import {
 	Box,
 	Typography,
 	Chip,
+	Paper,
 } from '@mui/material'
+import {
+	Refresh as RefreshIcon,
+	Warning as WarningIcon,
+	Tune as TuneIcon,
+} from '@mui/icons-material'
 import {
 	TIER_NAMES,
 	getAvailableSizes,
@@ -20,117 +27,198 @@ import {
 } from '../utils/creatureBuilderCalculations'
 import creatureTypes from '../utils/json/creature-types.json'
 import { CreatureCategory } from '../types/CreatureBuilder'
+import { creatureBuilderActions } from '../features/CreatureBuilder/creatureBuilderReducer'
+import { useCreatureBuilderState } from '../hooks/useCreatureBuilderState'
 
 interface CreatureBuilderFormProps {
-	tier: number | null
-	category: CreatureCategory
-	size: string
-	type: string
-	archetype: string
-	name: string
-	onTierChange: (tier: number) => void
-	onCategoryChange: (category: CreatureCategory) => void
-	onSizeChange: (size: string) => void
-	onTypeChange: (type: string) => void
-	onArchetypeChange: (archetype: string) => void
-	onNameChange: (name: string) => void
 	onReset: () => void
 	showResetButton: boolean
-	// Stats for validation
-	hp?: number
-	av?: number
-	parry?: number
-	dodge?: number
-	resist?: number
+	showAdvanced: boolean
+	onToggleAdvanced: () => void
+}
+
+// Color coding for categories
+const getCategoryColor = (category: CreatureCategory): string => {
+	const colors = {
+		Basic: '#3FA769',
+		Elite: '#B28A3F',
+		Lord: '#A14646',
+	}
+	return colors[category]
+}
+
+// Color coding for types
+const getTypeColor = (type: string): string => {
+	const colors: Record<string, string> = {
+		Animal: '#48A06C',
+		Beast: '#A86B35',
+		Construct: '#9A9A9A',
+		Dragon: '#A14646',
+		Elemental: '#4B91C0',
+		Fey: '#914C70',
+		Fiend: '#8E3F66',
+		Giant: '#B1642F',
+		Humanoid: '#3C6FA8',
+		Monstrosity: '#9C5635',
+		Ooze: '#3E9B4E',
+		Plant: '#3FA769',
+		Undead: '#777777',
+	}
+	return colors[type] || '#3C6FA8'
+}
+
+// Color coding for archetypes
+const getArchetypeColor = (archetype: string): string => {
+	const colors: Record<string, string> = {
+		Standard: '#9A9A9A',        // Neutral grey
+		Ambusher: '#374151',        // Dark charcoal (stealth)
+		Artillery: '#0369a1',       // Vibrant sky blue (long range)
+		Bruiser: '#dc2626',         // Vibrant red (aggressive brawler)
+		Defender: '#92400e',        // Deep brown (tank/shield)
+		Horde: '#ca8a04',           // Golden yellow (many units)
+		Controller: '#7c3aed',      // Vibrant purple (magic/manipulation)
+		Ranged: '#15803d',          // Forest green (archer/shooter)
+		Skirmisher: '#059669',      // Emerald green (fast/mobile)
+		Support: '#ec4899',         // Vibrant pink (healer/buffer)
+	}
+	return colors[archetype] || '#9A9A9A'
 }
 
 export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
-	tier,
-	category,
-	size,
-	type,
-	archetype,
-	name,
-	onTierChange,
-	onCategoryChange,
-	onSizeChange,
-	onTypeChange,
-	onArchetypeChange,
-	onNameChange,
 	onReset,
 	showResetButton,
-	hp,
-	av,
-	parry,
-	dodge,
-	resist,
+	showAdvanced,
+	onToggleAdvanced,
 }) => {
+	const dispatch = useDispatch()
+	const { state, builtCreature } = useCreatureBuilderState()
+	
+	const { tier, category, size, type, archetype, name } = state
+	const hp = builtCreature?.baseHp
+	const av = builtCreature ? parseInt(builtCreature.av) : undefined
+	const parry = builtCreature?.parry
+	const dodge = builtCreature?.dodge
+	const resist = builtCreature?.resist
+	
 	const types = creatureTypes as string[]
 
-	// Validate tier if all stats are available
 	const validation =
 		tier !== null && hp && av && parry && dodge && resist
-			? validateTier(tier, hp, av, parry, dodge, resist)
+			? validateTier(tier, hp, av, parry, dodge, resist, builtCreature?.armorType)
 			: null
 
 	return (
-		<>
-			<Grid container columnSpacing={3} rowSpacing={2}>
-				{/* Row 1: Name and Tier */}
-				<Grid item xs={12} md={6}>
-					<TextField
-						fullWidth
-						label="Creature Name"
-						value={name}
-						onChange={(e) => onNameChange(e.target.value)}
-						placeholder="Enter creature name"
-					/>
-				</Grid>
-				<Grid item xs={12} md={6}>
-					<FormControl fullWidth>
+		<Paper sx={{ p: 2 }}>
+			<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+			<Typography variant="h6" sx={{ fontSize: '1.1rem', fontWeight: 600 }}>
+				Core Stats
+			</Typography>
+			<Box sx={{ display: 'flex', gap: 1 }}>
+				{showResetButton && (
+					<Button 
+						size="small" 
+						startIcon={<RefreshIcon />} 
+						onClick={onReset}
+						sx={{ minWidth: 'auto' }}
+					>
+						Reset
+					</Button>
+				)}
+				{showResetButton && (
+					<Button 
+						size="small" 
+						startIcon={<TuneIcon />} 
+						onClick={onToggleAdvanced}
+						variant={showAdvanced ? 'contained' : 'outlined'}
+						sx={{ minWidth: 'auto' }}
+					>
+						Advanced
+					</Button>
+				)}
+			</Box>
+		</Box>			<Grid container spacing={1.5}>
+				{/* Name - Full Width */}
+			<Grid item xs={12}>
+				<TextField
+					fullWidth
+					label="Name"
+					value={name}
+					onChange={(e) => dispatch(creatureBuilderActions.setName(e.target.value))}
+					placeholder="Creature name"
+					size="small"
+				/>
+			</Grid>				{/* Tier and Category */}
+				<Grid item xs={6}>
+					<FormControl fullWidth size="small">
 						<InputLabel>Tier</InputLabel>
 						<Select
 							value={tier ?? ''}
 							label="Tier"
 							onChange={(e: SelectChangeEvent<number>) => {
 								const newTier = e.target.value as number
-								onTierChange(newTier)
+								dispatch(creatureBuilderActions.setTier(newTier))
 							}}
 						>
-							{Object.entries(TIER_NAMES).map(([tierNum, tierName]) => (
-								<MenuItem key={tierNum} value={parseInt(tierNum)}>
-									{tierNum} - {tierName}
+							{Array.from({ length: 11 }, (_, i) => i).map((tierNum) => (
+								<MenuItem key={tierNum} value={tierNum}>
+									Tier {tierNum}
 								</MenuItem>
 							))}
 						</Select>
 					</FormControl>
 				</Grid>
 
-				{/* Row 2: Category, Size, Type */}
-				<Grid item xs={12} md={4}>
-					<FormControl fullWidth>
+				<Grid item xs={6}>
+					<FormControl fullWidth size="small">
 						<InputLabel>Category</InputLabel>
 						<Select
 							value={category}
 							label="Category"
 							onChange={(e: SelectChangeEvent<CreatureCategory>) => {
-								onCategoryChange(e.target.value as CreatureCategory)
+								dispatch(creatureBuilderActions.setCategory(e.target.value as CreatureCategory))
 							}}
+							renderValue={(value) => (
+								<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+									<Box
+										sx={{
+											width: 12,
+											height: 12,
+											borderRadius: '50%',
+											bgcolor: getCategoryColor(value),
+										}}
+									/>
+									{value}
+								</Box>
+							)}
 						>
-							<MenuItem value="Basic">Basic</MenuItem>
-							<MenuItem value="Elite">Elite</MenuItem>
-							<MenuItem value="Lord">Lord</MenuItem>
+							{(['Basic', 'Elite', 'Lord'] as CreatureCategory[]).map((cat) => (
+								<MenuItem key={cat} value={cat}>
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<Box
+											sx={{
+												width: 12,
+												height: 12,
+												borderRadius: '50%',
+												bgcolor: getCategoryColor(cat),
+											}}
+										/>
+										{cat}
+									</Box>
+								</MenuItem>
+							))}
 						</Select>
 					</FormControl>
 				</Grid>
-				<Grid item xs={12} md={4}>
-					<FormControl fullWidth>
+
+				{/* Size and Type */}
+				<Grid item xs={6}>
+					<FormControl fullWidth size="small">
 						<InputLabel>Size</InputLabel>
 						<Select
 							value={size}
 							label="Size"
 							onChange={(e: SelectChangeEvent<string>) => {
-								onSizeChange(e.target.value)
+								dispatch(creatureBuilderActions.setSize(e.target.value))
 							}}
 						>
 							{getAvailableSizes().map((s) => (
@@ -141,40 +229,87 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 						</Select>
 					</FormControl>
 				</Grid>
-				<Grid item xs={12} md={4}>
-					<FormControl fullWidth>
+
+				<Grid item xs={6}>
+					<FormControl fullWidth size="small">
 						<InputLabel>Type</InputLabel>
 						<Select
 							value={type}
 							label="Type"
 							onChange={(e: SelectChangeEvent<string>) => {
-								onTypeChange(e.target.value)
+								dispatch(creatureBuilderActions.setType(e.target.value))
 							}}
+							renderValue={(value) => (
+								<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+									<Box
+										sx={{
+											width: 12,
+											height: 12,
+											borderRadius: '50%',
+											bgcolor: getTypeColor(value),
+										}}
+									/>
+									{value}
+								</Box>
+							)}
 						>
 							{types.map((t) => (
 								<MenuItem key={t} value={t}>
-									{t}
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<Box
+											sx={{
+												width: 12,
+												height: 12,
+												borderRadius: '50%',
+												bgcolor: getTypeColor(t),
+											}}
+										/>
+										{t}
+									</Box>
 								</MenuItem>
 							))}
 						</Select>
 					</FormControl>
 				</Grid>
 
-				{/* Row 3: Archetype */}
+				{/* Archetype - Full Width */}
 				<Grid item xs={12}>
-					<FormControl fullWidth>
+					<FormControl fullWidth size="small">
 						<InputLabel>Archetype</InputLabel>
 						<Select
 							value={archetype}
 							label="Archetype"
 							onChange={(e: SelectChangeEvent<string>) => {
-								onArchetypeChange(e.target.value)
+								dispatch(creatureBuilderActions.setArchetype(e.target.value))
 							}}
 							disabled={tier === null}
+							renderValue={(value) => (
+								<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+									<Box
+										sx={{
+											width: 12,
+											height: 12,
+											borderRadius: '50%',
+											bgcolor: getArchetypeColor(value),
+										}}
+									/>
+									{value}
+								</Box>
+							)}
 						>
 							{getAvailableArchetypes().map((a) => (
 								<MenuItem key={a} value={a}>
-									{a}
+									<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+										<Box
+											sx={{
+												width: 12,
+												height: 12,
+												borderRadius: '50%',
+												bgcolor: getArchetypeColor(a),
+											}}
+										/>
+										{a}
+									</Box>
 								</MenuItem>
 							))}
 						</Select>
@@ -184,29 +319,30 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 
 			{/* Validation warnings */}
 			{validation && validation.warnings.length > 0 && (
-				<Box sx={{ mt: 2 }}>
-					<Typography variant="body2" color="warning.main" sx={{ mb: 1 }}>
-						⚠️ Tier Validation Warnings:
-					</Typography>
-					{validation.warnings.map((warning, idx) => (
-						<Chip
-							key={idx}
-							label={warning}
-							color="warning"
-							size="small"
-							sx={{ mr: 1, mb: 1 }}
-						/>
-					))}
+				<Box sx={{ mt: 2, p: 1.5, bgcolor: 'warning.light', borderRadius: 1 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 1 }}>
+						<WarningIcon sx={{ fontSize: 18, color: 'warning.dark' }} />
+						<Typography variant="caption" sx={{ fontWeight: 600, color: 'warning.dark' }}>
+							Tier Validation
+						</Typography>
+					</Box>
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+						{validation.warnings.map((warning, idx) => (
+							<Chip
+								key={idx}
+								label={warning}
+								size="small"
+								sx={{ 
+									height: 20, 
+									fontSize: '0.7rem',
+									bgcolor: 'warning.main',
+									color: 'warning.contrastText',
+								}}
+							/>
+						))}
+					</Box>
 				</Box>
 			)}
-
-			{showResetButton && (
-				<Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
-					<Button variant="outlined" onClick={onReset}>
-						Reset Builder
-					</Button>
-				</Box>
-			)}
-		</>
+		</Paper>
 	)
 }

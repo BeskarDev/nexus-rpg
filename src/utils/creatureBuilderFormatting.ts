@@ -10,13 +10,16 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
 	lines.push(`### **${creature.name}** (${creature.size} ${creature.type})`)
 	lines.push('')
 	lines.push(`**Tier:** ${creature.tier} (${creature.category})`)
+	lines.push(`**Armor:** ${creature.armorType === 'heavy' ? 'Heavy' : 'Light'}`)
 	lines.push('')
 
 	// Stats table
+	const armorCategory = creature.armorType === 'heavy' ? 'heavy' : 'light'
+	const avDisplay = `${creature.av} (${armorCategory})`
 	lines.push('| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |')
 	lines.push('|----|----|----|----|----|-----|-------|-------|--------|')
 	lines.push(
-		`| ${creature.hp} | ${creature.av} | ${creature.str} | ${creature.agi} | ${creature.spi} | ${creature.mnd} | ${creature.parry} | ${creature.dodge} | ${creature.resist} |`,
+		`| ${creature.hp} | ${avDisplay} | ${creature.str} | ${creature.agi} | ${creature.spi} | ${creature.mnd} | ${creature.parry} | ${creature.dodge} | ${creature.resist} |`,
 	)
 	lines.push('')
 
@@ -51,8 +54,9 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
 		creature.attacks.forEach((attack) => {
 			const props =
 				attack.properties.length > 0 ? `(*${attack.properties.join(', ')}*)` : ''
+			const damageType = attack.damageType && attack.damageType !== 'physical' ? `${attack.damageType} ` : ''
 			const desc = attack.description ? ` ${attack.description}` : ''
-			lines.push(`- **${attack.name}** ${props}. ${attack.damage} damage.${desc}`)
+			lines.push(`- **${attack.name}** ${props}. ${attack.damage} ${damageType}damage.${desc}`)
 		})
 		lines.push('')
 	}
@@ -62,8 +66,9 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
 		lines.push('**Abilities:**')
 		lines.push('')
 		creature.abilities.forEach((ability) => {
-			const recharge = ability.recharge ? ` (${ability.recharge})` : ''
-			lines.push(`- **${ability.name}${recharge}.** ${ability.description}`)
+			const actionType = ability.actionType ? ` (${ability.actionType}` : ''
+			const properties = ability.properties ? `, ${ability.properties})` : (actionType ? ')' : '')
+			lines.push(`- **${ability.name}${actionType}${properties}.** ${ability.description}`)
 		})
 		lines.push('')
 	}

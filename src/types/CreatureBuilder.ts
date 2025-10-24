@@ -22,6 +22,13 @@ export interface CreatureArchetype {
 	resistModifier: number
 	damageModifier: number
 	movementModifier: number
+	attributePriority: ('str' | 'agi' | 'spi' | 'mnd')[]
+	attributeModifiers: {
+		str: number
+		agi: number
+		spi: number
+		mnd: number
+	}
 }
 
 export interface CreatureSize {
@@ -44,6 +51,7 @@ export interface BuiltCreature {
 	archetype: string
 	hp: string // Can be "40" or "2×40" for Elite/Lord
 	av: string
+	armorType: 'light' | 'heavy'
 	str: string
 	agi: string
 	spi: string
@@ -66,13 +74,22 @@ export interface CreatureAttack {
 	name: string
 	properties: string[]
 	damage: string
+	weaponDamage?: number
+	damageType?: string
+	baseAttribute?: string
 	description?: string
 }
 
 export interface CreatureAbility {
 	name: string
 	description: string
-	recharge?: string
+	actionType?: string
+	properties?: string
+}
+
+export interface CreatureSkill {
+	name: string
+	rank: number
 }
 
 export interface CreatureBuilderState {
@@ -85,6 +102,7 @@ export interface CreatureBuilderState {
 	// Custom adjustments
 	customHP: number | null
 	customAV: number | null
+	customArmorType: 'light' | 'heavy' | null
 	customStr: string | null
 	customAgi: string | null
 	customSpi: string | null
@@ -93,7 +111,7 @@ export interface CreatureBuilderState {
 	customDodge: number | null
 	customResist: number | null
 	// Additional features
-	skills: string[]
+	skills: CreatureSkill[]
 	immunities: string[]
 	resistances: string[]
 	weaknesses: string[]

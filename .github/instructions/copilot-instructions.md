@@ -108,3 +108,9 @@ CharacterDocument {
 - **Redux DevTools**: Monitor state changes and action dispatching
 - **Character Migration**: Console logs show migration processes
 - **Auto-save**: Watch for `unsavedChanges` flag and timeout behavior
+
+## Important Guidelines
+- **DO NOT** create standalone markdown documentation files (e.g., FEATURE_NAME.md, SUMMARY.md) in the project root or elsewhere to document implemented features or changes
+- **DO NOT** leave temporary test scripts (e.g., test-*.js, debug-*.js) in the repository after completing work - use them during development but always clean them up
+- Document changes only through code comments, commit messages, or when explicitly requested by the user
+- Keep the repository clean of temporary documentation artifacts and test files

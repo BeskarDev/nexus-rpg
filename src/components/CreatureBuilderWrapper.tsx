@@ -1,18 +1,19 @@
+import {
+	Experimental_CssVarsProvider,
+	experimental_extendTheme,
+} from '@mui/material'
+import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
+import { theme } from '@site/src/hooks/createTheme'
 import React from 'react'
-import { Box } from '@mui/material'
-import BrowserOnly from '@docusaurus/BrowserOnly'
+import { CreatureBuilderContainer } from './CreatureBuilderContainer'
 
 export const CreatureBuilderWrapper: React.FC = () => {
+	const customTheme = experimental_extendTheme(theme)
+
 	return (
-		<BrowserOnly fallback={<div>Loading...</div>}>
-			{() => {
-				const { CreatureBuilder } = require('./CreatureBuilder')
-				return (
-					<Box sx={{ my: 3 }}>
-						<CreatureBuilder />
-					</Box>
-				)
-			}}
-		</BrowserOnly>
+		<Experimental_CssVarsProvider theme={customTheme}>
+			<ThemeSwitcher />
+			<CreatureBuilderContainer />
+		</Experimental_CssVarsProvider>
 	)
 }

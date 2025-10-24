@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import {
 	Box,
 	Button,
@@ -10,8 +11,11 @@ import {
 	Tabs,
 	Tab,
 	Typography,
+	Grid,
 } from '@mui/material'
-import { useCreatureBuilder } from '../hooks/useCreatureBuilder'
+import { creatureBuilderActions } from '../features/CreatureBuilder/creatureBuilderReducer'
+import { useCreatureBuilderState } from '../hooks/useCreatureBuilderState'
+import { useDeviceSize } from '../features/CharacterSheet/utils/useDeviceSize'
 import { CreatureBuilderForm } from './CreatureBuilderForm'
 import { CreatureBuilderStatBlock } from './CreatureBuilderStatBlock'
 import { CreatureBuilderOutputPanel } from './CreatureBuilderOutputPanel'
@@ -19,37 +23,19 @@ import { CreatureAdvancedSettings } from './CreatureAdvancedSettings'
 import { TabPanel } from './TabPanel'
 
 export const CreatureBuilder: React.FC = () => {
+	const { isMobile } = useDeviceSize()
 	const [open, setOpen] = useState(false)
 	const [activeTab, setActiveTab] = useState(0)
-
-	const {
-		state,
-		builtCreature,
-		handleTierChange,
-		handleCategoryChange,
-		handleSizeChange,
-		handleTypeChange,
-		handleArchetypeChange,
-		handleNameChange,
-		handleCustomHP,
-		handleCustomAV,
-		handleCustomAttribute,
-		handleCustomDefense,
-		handleSkillsChange,
-		handleImmunitiesChange,
-		handleResistancesChange,
-		handleWeaknessesChange,
-		handleAttacksChange,
-		handleAbilitiesChange,
-		resetBuilder,
-	} = useCreatureBuilder()
+	const [showAdvanced, setShowAdvanced] = useState(!isMobile)
+	const dispatch = useDispatch()
+	const { state, builtCreature } = useCreatureBuilderState()
 
 	const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
 		setActiveTab(newValue)
 	}
 
 	const handleResetAndTab = () => {
-		resetBuilder()
+		dispatch(creatureBuilderActions.resetBuilder())
 		setActiveTab(0)
 	}
 
@@ -64,103 +50,78 @@ export const CreatureBuilder: React.FC = () => {
 				Build Creature
 			</Button>
 
-			<Dialog open={open} onClose={() => setOpen(false)} maxWidth="lg" fullWidth>
-				<DialogTitle>Creature Builder</DialogTitle>
-				<DialogContent>
-					<Box sx={{ mt: 2 }}>
-						<CreatureBuilderForm
-							tier={state.tier}
-							category={state.category}
-							size={state.size}
-							type={state.type}
-							archetype={state.archetype}
-							name={state.name}
-							onTierChange={handleTierChange}
-							onCategoryChange={handleCategoryChange}
-							onSizeChange={handleSizeChange}
-							onTypeChange={handleTypeChange}
-							onArchetypeChange={handleArchetypeChange}
-							onNameChange={handleNameChange}
-							onReset={handleResetAndTab}
-							showResetButton={!!builtCreature}
-							hp={builtCreature?.baseHp}
-							av={parseInt(builtCreature?.av || '0')}
-							parry={builtCreature?.parry}
-							dodge={builtCreature?.dodge}
-							resist={builtCreature?.resist}
-						/>
+			<Dialog 
+				open={open} 
+				onClose={() => setOpen(false)} 
+				maxWidth="xl" 
+				fullWidth
+				PaperProps={{
+					sx: {
+						height: '90vh',
+						display: 'flex',
+						flexDirection: 'column',
+					}
+				}}
+			>
+			<DialogTitle sx={{ pb: 1, borderBottom: 1, borderColor: 'divider' }}>
+				Creature Builder
+			</DialogTitle>
+			<DialogContent sx={{ p: 2, overflow: { xs: 'auto', md: 'hidden' }, flex: 1, display: 'flex', flexDirection: 'column' }}>
+				<Grid container spacing={2} sx={{ height: '100%', flex: 1, overflow: { xs: 'visible', md: 'hidden' } }}>
+				{/* Left Panel: Form and Settings */}
+				<Grid item xs={12} md={5} sx={{ display: 'flex', flexDirection: 'column', gap: 2, overflow: { xs: 'visible', md: 'auto' }, pr: { xs: 0, md: 1 }, maxHeight: { xs: 'none', md: '100%' } }}>
+				<CreatureBuilderForm
+					onReset={handleResetAndTab}
+					showResetButton={!!builtCreature}
+					showAdvanced={showAdvanced}
+					onToggleAdvanced={() => setShowAdvanced(!showAdvanced)}
+				/>
 
-						{builtCreature && (
-							<>
-								<CreatureAdvancedSettings
-									customHP={state.customHP}
-									customAV={state.customAV}
-									customStr={state.customStr}
-									customAgi={state.customAgi}
-									customSpi={state.customSpi}
-									customMnd={state.customMnd}
-									customParry={state.customParry}
-									customDodge={state.customDodge}
-									customResist={state.customResist}
-									skills={state.skills}
-									immunities={state.immunities}
-									resistances={state.resistances}
-									weaknesses={state.weaknesses}
-									attacks={state.attacks}
-									abilities={state.abilities}
-									onCustomHPChange={handleCustomHP}
-									onCustomAVChange={handleCustomAV}
-									onCustomAttributeChange={handleCustomAttribute}
-									onCustomDefenseChange={handleCustomDefense}
-									onSkillsChange={handleSkillsChange}
-									onImmunitiesChange={handleImmunitiesChange}
-									onResistancesChange={handleResistancesChange}
-									onWeaknessesChange={handleWeaknessesChange}
-									onAttacksChange={handleAttacksChange}
-									onAbilitiesChange={handleAbilitiesChange}
-									baseHP={builtCreature.baseHp}
-									baseAV={builtCreature.av}
-									baseStr={builtCreature.str}
-									baseAgi={builtCreature.agi}
-									baseSpi={builtCreature.spi}
-									baseMnd={builtCreature.mnd}
-									baseParry={builtCreature.parry}
-									baseDodge={builtCreature.dodge}
-									baseResist={builtCreature.resist}
-								/>
-
-								<Paper sx={{ mt: 3, p: { xs: 1, sm: 2 } }}>
+				{builtCreature && showAdvanced && (
+					<CreatureAdvancedSettings />
+				)}
+			</Grid>
+					{/* Right Panel: Preview */}
+					<Grid item xs={12} md={7} sx={{ display: 'flex', flexDirection: 'column', height: { xs: 'auto', md: '100%' }, minHeight: { xs: '400px', md: 0 } }}>
+							{builtCreature ? (
+								<Paper sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 									<Tabs
 										value={activeTab}
 										onChange={handleTabChange}
 										aria-label="creature preview tabs"
+										sx={{ 
+											borderBottom: 1, 
+											borderColor: 'divider',
+											minHeight: 40,
+											'& .MuiTab-root': { minHeight: 40, py: 1 }
+										}}
 									>
 										<Tab label="Preview" />
 										<Tab label="Markdown" />
 									</Tabs>
 
-									<TabPanel value={activeTab} index={0}>
-										<CreatureBuilderStatBlock creature={builtCreature} />
-									</TabPanel>
+									<Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>
+										<TabPanel value={activeTab} index={0}>
+											<CreatureBuilderStatBlock creature={builtCreature} />
+										</TabPanel>
 
-									<TabPanel value={activeTab} index={1}>
-										<CreatureBuilderOutputPanel creature={builtCreature} />
-									</TabPanel>
+										<TabPanel value={activeTab} index={1}>
+											<CreatureBuilderOutputPanel creature={builtCreature} />
+										</TabPanel>
+									</Box>
 								</Paper>
-							</>
-						)}
-
-						{!builtCreature && (
-							<Box sx={{ mt: 3, p: 2, textAlign: 'center' }}>
-								<Typography variant="body1" color="text.secondary">
-									Select a tier to start building your creature
-								</Typography>
-							</Box>
-						)}
-					</Box>
+							) : (
+								<Paper sx={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', p: 4 }}>
+									<Typography variant="h6" color="text.secondary">
+										Select tier to build creature
+									</Typography>
+								</Paper>
+							)}
+						</Grid>
+					</Grid>
 				</DialogContent>
-				<DialogActions>
-					<Button onClick={() => setOpen(false)}>Close</Button>
+				<DialogActions sx={{ px: 3, py: 1.5, borderTop: 1, borderColor: 'divider' }}>
+					<Button onClick={() => setOpen(false)} variant="outlined">Close</Button>
 				</DialogActions>
 			</Dialog>
 		</>
