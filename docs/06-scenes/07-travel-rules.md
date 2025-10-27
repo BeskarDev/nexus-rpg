@@ -10,15 +10,17 @@ When adventurers journey across wilderness, they face environmental challenges, 
 
 ## When to Use Travel Rules
 
-Use the full travel system for:
-- Multi-day journeys through wilderness, desert, mountains, or dangerous terrain
-- When resources and time matter to the story
-- When the journey itself should be an adventure
+Use these travel rules for **journeys between two known points or regions** that take place over multiple days. The party must be able to track a course and navigate to their destination (by memory, maps, or a guide).
 
-Skip or simplify when:
-- The journey is short (less than a day) or through safe, civilized areas
-- Travel is not narratively important
-- Time pressure requires fast-forwarding to the next scene
+**Use for:**
+- Multi-day journeys to known destinations (cities, landmarks, regions)
+- Traveling along established routes or through mapped terrain
+- Returning to civilization from adventure sites (when not skipped for narrative reasons)
+
+**Do not use for:**
+- Exploring unknown/unmapped areas (use hex exploration instead - future rules)
+- Short journeys (less than a day)
+- When skipping for narrative convenience (the "boring" trip back)
 
 ## Route Planning
 
