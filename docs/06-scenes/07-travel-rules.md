@@ -28,7 +28,11 @@ Before departure, establish the journey parameters:
 
 1. **Define route**: Origin, destination, and path through terrain types
 2. **Estimate journey length**: Count expected paces based on distance and terrain (GM determines)
-3. **Plan resources**: Rations needed = Party Size × Days × Climate Multiplier (1× normal, 2× desert heat, 1.5× cold)
+3. **Plan rations**: Each pack of rations has 3 uses. Plan for Supply Checks each day (roughly 1 use per 2 days on average with d6 supply die)
+   - **Normal conditions**: 1 ration pack per person per 6 days (average)
+   - **Extreme heat (desert)**: Double Supply Checks, plan 1 pack per 3 days
+   - **Extreme cold**: +1 bane on checks, plan 1 pack per 4-5 days
+   - **Safety margin**: Add 1-2 extra packs for emergencies
 4. **Identify waypoints**: Settlements, landmarks, or known camps for resupply
 
 **Journey Length Examples:**
@@ -101,7 +105,10 @@ Mark off progress boxes as you accumulate paces (typically 4 paces = 1 box).
 Consult terrain-specific encounter tables for results.
 
 ### 4. Evening Phase
-- **Consume resources**: 1 ration per person (2× in desert heat, 1.5× in cold)
+- **Consume rations**: Each party member rolls a **Supply Check** for their rations (roll supply die: 1-3 = spend 1 use, 4+ = no change)
+  - In extreme heat (desert): Roll Supply Check twice (increased water needs)
+  - In extreme cold: +1 bane on Supply Check (increased caloric needs)
+  - **Optional**: Spend additional uses to recover fatigue (1 use = recover 1 fatigue, once per day)
 - **Make camp**: Scout's shelter quality affects rest
 - **Resolve conditions**: Weather, injuries, ongoing effects
 
@@ -153,8 +160,8 @@ Weather creates additional pressure through conditions and resource drain.
 **Seasonal Modifiers**: Add to weather roll based on season and climate (see Environment Stat Blocks).
 
 **Temperature Effects**:
-- **Extreme Heat**: Double water consumption, Spirit + Fortitude TN 10 daily or gain 1 fatigue
-- **Extreme Cold**: 1.5× ration consumption, need winter gear or -2 banes on all rolls, Spirit + Fortitude TN 10 daily or gain 1 fatigue
+- **Extreme Heat**: Roll Supply Check twice per day (increased water needs), Spirit + Fortitude TN 10 daily or gain 1 fatigue
+- **Extreme Cold**: +1 bane on Supply Checks (increased caloric needs), need winter gear or -2 banes on all rolls, Spirit + Fortitude TN 10 daily or gain 1 fatigue
 
 **Exposure Condition**: Failed weather saves or inadequate shelter grants exposure levels. Each level: -1 bane all rolls. At 3+ exposure: take 1 wound per day. Remove by reaching shelter and recovering.
 
@@ -183,7 +190,7 @@ When you accumulate enough paces to reach a waypoint box, resolve its effects:
 
 **Conditions**: Fatigue from exhaustion or failed rest, wounds from environmental hazards, exposure from weather, poisoned/diseased from encounters.
 
-**Resources**: Rations (1/day/person baseline), water (critical in deserts), camping equipment, weather gear, healing supplies.
+**Resources**: Rations (each pack has 3 uses, roll Supply Check daily), camping equipment, weather gear, healing supplies.
 
 **Combat**: Encounters can lead to combat scenes using standard rules. Surprise determined by Scout results.
 
@@ -196,7 +203,10 @@ When you accumulate enough paces to reach a waypoint box, resolve its effects:
 4. Mark off progress boxes as paces accumulate (typically 4 paces = 1 box)
 5. Scout rolls vs TN 8 → modify encounter die
 6. Roll encounter die → consult terrain table
-7. Consume resources (1 ration/person, adjust for climate)
+7. Each party member rolls Supply Check for rations (1-3 = spend 1 use, 4+ = no change)
+   - Extreme heat: Roll Supply Check twice
+   - Extreme cold: +1 bane on Supply Check
+   - Optional: Spend extra use to recover 1 fatigue
 8. Rest (with/without shelter affects fatigue)
 
 **Navigation Results:**
@@ -215,6 +225,12 @@ When you accumulate enough paces to reach a waypoint box, resolve its effects:
 - Normal (plains): No penalty
 - Moderate (forest, hills, desert, tundra): -1 pace
 - Difficult (mountains, swamp, jungle, haunted): -2 paces
+
+**Rations Supply Check:**
+- Roll your ration's supply die (d4/d6/d8)
+- 1-3: Spend 1 use (out of 3)
+- 4+: No change
+- Optional: Spend extra use to recover 1 fatigue (once per day)
 
 **Encounter Die Steps:** d4 → d6 → d8 → d10 → d12
 
