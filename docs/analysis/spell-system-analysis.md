@@ -1087,25 +1087,27 @@ These spells have names and basic frameworks but need full implementation:
 
 ### Priority 2: Add Rank 5 Capstone Spells (14 spells)
 
+**IMPORTANT**: Rank 5 spells should be scaled to D&D Level 7 equivalent (powerful but mortal-scale), NOT Level 9 (world-shattering). See `spell-rank-power-analysis.md` for detailed power level guidelines.
+
 Each discipline/tradition should have 1-2 legendary rank 5 spells:
 
-**Arcane Capstones**:
-- **Evocation**: Meteor Swarm (massive AoE fire/blast), Prismatic Wall (multi-layered defense)
-- **Illusion**: Weird (group phantasmal killer), Permanent Illusion
-- **Conjuration**: Gate (planar travel), Wish (limited reality alteration)
-- **Telepathy**: Mass Mind Control (dominate multiple), Psychic Scream (massive psychic AoE)
-- **Telekinetics**: Telekinetic Storm (ultimate force control), Gravity Mastery (reverse/nullify/crush)
-- **Necromancy**: Lichdom Transformation (become undead), Army of the Dead (mass animate)
+**Arcane Capstones** (revised for appropriate power):
+- **Evocation**: Delayed Meteor (delayed AoE explosion), Prismatic Barrier (defensive sphere with multiple resistances)
+- **Illusion**: Perfect Disguise (flawless transformation), Mass Phantasmal Force (affect 6 creatures)
+- **Conjuration**: Planar Gateway (portal to known location), Enhanced Summoning (tier 4 creature)
+- **Telepathy**: Mental Fortress (group immunity to mental effects), Psychic Maelstrom (devastating cone)
+- **Telekinetics**: Gravity Reversal (reverse gravity in area), Kinetic Barrier (absorbs 40 damage)
+- **Necromancy**: Army of Shadows (animate 4-6 tier 2 undead temporarily), Death's Master (temporary undead transformation)
 
-**Mystic Capstones**:
-- **Light**: Solar Ray (ultimate radiant beam), Revelation (reveal all truths in area)
-- **Twilight**: Eternal Night (massive darkness), Dream Avatar (become dream entity)
-- **Life**: True Resurrection (restore the dead), Fountain of Life (zone of immortality)
-- **Death**: Black Plague (spread unstoppable disease), Final Judgment (mark for death)
-- **Nature**: Earthquake/Tsunami (already planned), Shape Wilderness (alter terrain permanently)
-- **Tempest**: Perfect Storm (control all weather), Elemental Apotheosis (become elemental)
-- **Peace**: Perfect Sanctuary (impenetrable refuge), Universal Peace (end all violence in area)
-- **War**: Champion's Ascension (ultimate warrior form), Army of Heroes (empower entire force)
+**Mystic Capstones** (revised for appropriate power):
+- **Light**: Radiant Convergence (powerful beam attack), Beacon of Truth (zone of truth revelation)
+- **Twilight**: Dream Realm (shared dream space), Shadow Apotheosis (shadow creature transformation)
+- **Life**: Mass Restoration (group healing + wound recovery), Vitality Field (continuous healing zone)
+- **Death**: Plague Wind (virulent disease attack), Death's Grasp (powerful single-target curse)
+- **Nature**: Primal Awakening (tier 4 construct), Nature's Wrath (devastating cone attack)
+- **Tempest**: Storm Lord (elemental transformation), Tempest's Fury (sustained storm zone)
+- **Peace**: Sanctuary Sphere (peace zone), Harmonic Bond (link 6 allies for shared benefits)
+- **War**: Warlord's Presence (warrior avatar), Battlefield Commander (tactical coordination)
 
 ### Priority 3: Fill Classic Spell Gaps (30 spells)
 

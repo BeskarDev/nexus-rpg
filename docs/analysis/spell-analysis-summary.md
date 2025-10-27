@@ -41,21 +41,25 @@
 - Control Weather, Tree Stride, Sandstorm, Control Winds, Earthquake, Lightning Storm
 
 ### 2. Add Rank 5 Capstone Spells (14)
-Each discipline/tradition needs 1-2 legendary rank 5 spells:
-- **Evocation**: Meteor Swarm, Prismatic Wall
-- **Illusion**: Weird, Permanent Illusion
-- **Conjuration**: Gate, Wish
-- **Telepathy**: Mass Mind Control, Psychic Scream
-- **Telekinetics**: Telekinetic Storm, Gravity Mastery
-- **Necromancy**: Lichdom Transformation, Army of the Dead
-- **Light**: Solar Ray, Revelation
-- **Twilight**: Eternal Night, Dream Avatar
-- **Life**: True Resurrection, Fountain of Life
-- **Death**: Black Plague, Final Judgment
-- **Nature**: Shape Wilderness (+ complete existing)
-- **Tempest**: Perfect Storm, Elemental Apotheosis
-- **Peace**: Perfect Sanctuary, Universal Peace
-- **War**: Avatar of War, Champion's Ascension
+**Power Level Target**: D&D Level 7 equivalent (powerful but mortal-scale), NOT Level 9 (world-shattering)
+
+Each discipline/tradition needs 1-2 legendary rank 5 spells (revised for appropriate power):
+- **Evocation**: Delayed Meteor, Prismatic Barrier
+- **Illusion**: Perfect Disguise, Mass Phantasmal Force
+- **Conjuration**: Planar Gateway, Enhanced Summoning
+- **Telepathy**: Mental Fortress, Psychic Maelstrom
+- **Telekinetics**: Gravity Reversal, Kinetic Barrier
+- **Necromancy**: Army of Shadows, Death's Master
+- **Light**: Radiant Convergence, Beacon of Truth
+- **Twilight**: Dream Realm, Shadow Apotheosis
+- **Life**: Mass Restoration, Vitality Field
+- **Death**: Plague Wind, Death's Grasp
+- **Nature**: Primal Awakening, Nature's Wrath
+- **Tempest**: Storm Lord, Tempest's Fury
+- **Peace**: Sanctuary Sphere, Harmonic Bond
+- **War**: Warlord's Presence, Battlefield Commander
+
+See `spell-rank-power-analysis.md` for detailed power scaling guidelines.
 
 ### 3. Fill Classic Spell Gaps (30)
 Missing player-expected spells:
