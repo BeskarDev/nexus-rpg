@@ -1,107 +1,107 @@
 [
-	{
-		"name": "Agricultural",
-		"description": "Raised on a farm or in a rural area, with a focus on farming and manual labor.",
-		"suggested skills": "Crafting, Nature, Survival"
-	},
-	{
-		"name": "Artisanal",
-		"description": "Raised as a member of a crafting or trade organization, with a focus on a specific trade.",
-		"suggested skills": "Crafting, Insight, Perception"
-	},
-	{
-		"name": "Bardic",
-		"description": "Raised among storytellers, musicians, and keepers of oral tradition who preserve the myths and legends of the land.",
-		"suggested skills": "Influence, Insight, Stealth"
-	},
-	{
-		"name": "Clan member",
-		"description": "Raised in a close-knit family or community with a strong sense of shared identity and loyalty.",
-		"suggested skills": "Influence, Insight, Survival"
-	},
-	{
-		"name": "Criminal",
-		"description": "Raised in an environment of crime and lawlessness, with a focus on deceit and survival.",
-		"suggested skills": "Insight, Stealth, Streetwise"
-	},
-	{
-		"name": "Cult",
-		"description": "Raised among secretive practitioners of arcane arts, taught that forbidden knowledge is power while learning to conceal your true nature from the outside world.",
-		"suggested skills": "Arcana, Influence, Lore"
-	},
-	{
-		"name": "Cursed",
-		"description": "Born with visible marks of arcane power, raised in fear and isolation, learning to control dangerous abilities while hiding from those who would destroy you.",
-		"suggested skills": "Arcana, Influence, Survival"
-	},
-	{
-		"name": "Hunter-gatherer",
-		"description": "Raised in a nomadic or semi-nomadic community that relies on hunting and gathering for survival.",
-		"suggested skills": "Nature, Perception, Survival"
-	},
-	{
-		"name": "Isolated",
-		"description": "Raised in a remote location, with little contact with other people.",
-		"suggested skills": "Fortitude, Nature, Survival"
-	},
-	{
-		"name": "Mercantile",
-		"description": "Raised in a family or community engaged in trade and commerce.",
-		"suggested skills": "Influence, Insight, Perception"
-	},
-	{
-		"name": "Militaristic",
-		"description": "Raised in a military environment, with a focus on discipline, strategy, and combat.",
-		"suggested skills": "Fighting, Fortitude, Perception"
-	},
-	{
-		"name": "Monastic",
-		"description": "Raised in sacred precincts serving divine powers, learning rituals, prophecies, and the mysteries that lie beyond mortal understanding.",
-		"suggested skills": "Insight, Lore, Mysticism"
-	},
-	{
-		"name": "Noble",
-		"description": "Born into a wealthy and influential family, with a focus on luxury and social status.",
-		"suggested skills": "Education, Influence, Perception"
-	},
-	{
-		"name": "Nomadic",
-		"description": "Raised in a traveling community, with a focus on adapting to new environments and survival skills.",
-		"suggested skills": "Archery, Nature, Survival"
-	},
-	{
-		"name": "Orphan",
-		"description": "Raised in an orphanage, with a focus on self-reliance and survival.",
-		"suggested skills": "Fortitude, Stealth, Streetwise"
-	},
-	{
-		"name": "Peasant",
-		"description": "Raised as a low-status farmer or laborer, with a focus on hard work and survival.",
-		"suggested skills": "Crafting, Fortitude, Survival"
-	},
-	{
-		"name": "Scholar",
-		"description": "Raised in a scholarly environment, with a focus on education, history, and ancient texts.",
-		"suggested skills": "Education, Insight, Lore"
-	},
-	{
-		"name": "Seafaring",
-		"description": "Raised in a family or community that makes a living from the sea, with a focus on sailing, fishing, and navigation.",
-		"suggested skills": "Athletics, Influence, Survival"
-	},
-	{
-		"name": "Servitude",
-		"description": "Raised as a servant in a household or estate, with a focus on obedience, loyalty, and performing menial tasks.",
-		"suggested skills": "Fortitude, Insight, Streetwise"
-	},
-	{
-		"name": "Shamanistic",
-		"description": "Raised in a community that follows shamanistic spiritual practices and beliefs.",
-		"suggested skills": "Insight, Mysticism, Nature"
-	},
-	{
-		"name": "Slums",
-		"description": "Raised in a poverty-stricken, urban environment, with a focus on survival and making a living in harsh conditions.",
-		"suggested skills": "Fortitude, Stealth, Streetwise"
-	}
+    {
+        "name": "Agricultural",
+        "description": "Raised on a farm or in a rural area, with a focus on farming and manual labor.",
+        "suggested skills": "Crafting, Nature, Survival"
+    },
+    {
+        "name": "Artisanal",
+        "description": "Raised as a member of a crafting or trade organization, with a focus on a specific trade.",
+        "suggested skills": "Crafting, Insight, Perception"
+    },
+    {
+        "name": "Bardic",
+        "description": "Raised among storytellers, musicians, and keepers of oral tradition who preserve the myths and legends of the land.",
+        "suggested skills": "Influence, Insight, Stealth"
+    },
+    {
+        "name": "Clan member",
+        "description": "Raised in a close-knit family or community with a strong sense of shared identity and loyalty.",
+        "suggested skills": "Influence, Insight, Survival"
+    },
+    {
+        "name": "Criminal",
+        "description": "Raised in an environment of crime and lawlessness, with a focus on deceit and survival.",
+        "suggested skills": "Insight, Stealth, Streetwise"
+    },
+    {
+        "name": "Cult",
+        "description": "Raised among secretive practitioners of arcane arts, taught that forbidden knowledge is power while learning to conceal your true nature from the outside world.",
+        "suggested skills": "Arcana, Influence, Lore"
+    },
+    {
+        "name": "Cursed",
+        "description": "Born with visible marks of arcane power, raised in fear and isolation, learning to control dangerous abilities while hiding from those who would destroy you.",
+        "suggested skills": "Arcana, Influence, Survival"
+    },
+    {
+        "name": "Hunter-gatherer",
+        "description": "Raised in a nomadic or semi-nomadic community that relies on hunting and gathering for survival.",
+        "suggested skills": "Nature, Perception, Survival"
+    },
+    {
+        "name": "Isolated",
+        "description": "Raised in a remote location, with little contact with other people.",
+        "suggested skills": "Fortitude, Nature, Survival"
+    },
+    {
+        "name": "Mercantile",
+        "description": "Raised in a family or community engaged in trade and commerce.",
+        "suggested skills": "Influence, Insight, Perception"
+    },
+    {
+        "name": "Militaristic",
+        "description": "Raised in a military environment, with a focus on discipline, strategy, and combat.",
+        "suggested skills": "Fighting, Fortitude, Perception"
+    },
+    {
+        "name": "Monastic",
+        "description": "Raised in sacred precincts serving divine powers, learning rituals, prophecies, and the mysteries that lie beyond mortal understanding.",
+        "suggested skills": "Insight, Lore, Mysticism"
+    },
+    {
+        "name": "Noble",
+        "description": "Born into a wealthy and influential family, with a focus on luxury and social status.",
+        "suggested skills": "Education, Influence, Perception"
+    },
+    {
+        "name": "Nomadic",
+        "description": "Raised in a traveling community, with a focus on adapting to new environments and survival skills.",
+        "suggested skills": "Archery, Nature, Survival"
+    },
+    {
+        "name": "Orphan",
+        "description": "Raised in an orphanage, with a focus on self-reliance and survival.",
+        "suggested skills": "Fortitude, Stealth, Streetwise"
+    },
+    {
+        "name": "Peasant",
+        "description": "Raised as a low-status farmer or laborer, with a focus on hard work and survival.",
+        "suggested skills": "Crafting, Fortitude, Survival"
+    },
+    {
+        "name": "Scholar",
+        "description": "Raised in a scholarly environment, with a focus on education, history, and ancient texts.",
+        "suggested skills": "Education, Insight, Lore"
+    },
+    {
+        "name": "Seafaring",
+        "description": "Raised in a family or community that makes a living from the sea, with a focus on sailing, fishing, and navigation.",
+        "suggested skills": "Athletics, Influence, Survival"
+    },
+    {
+        "name": "Servitude",
+        "description": "Raised as a servant in a household or estate, with a focus on obedience, loyalty, and performing menial tasks.",
+        "suggested skills": "Fortitude, Insight, Streetwise"
+    },
+    {
+        "name": "Shamanistic",
+        "description": "Raised in a community that follows shamanistic spiritual practices and beliefs.",
+        "suggested skills": "Insight, Mysticism, Nature"
+    },
+    {
+        "name": "Slums",
+        "description": "Raised in a poverty-stricken, urban environment, with a focus on survival and making a living in harsh conditions.",
+        "suggested skills": "Fortitude, Stealth, Streetwise"
+    }
 ]

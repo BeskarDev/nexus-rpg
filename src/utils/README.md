@@ -23,7 +23,7 @@ The `markdown-to-csv.py` script can export all markdown table files to CSV forma
 
 ### Process all markdown files in the directory:
 ```bash
-python markdown-to-csv.py src/utils/markdown/ src/utils/csv/ --all-files
+python markdown-to-csv.py markdown/ csv/ --all-files
 ```
 
 ### Process a single file:

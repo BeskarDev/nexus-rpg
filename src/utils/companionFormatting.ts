@@ -41,6 +41,8 @@ export const generateMarkdown = (companion: CompanionStats): string => {
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ${calculatedStats.hp} | ${calculatedStats.av} | ${calculatedStats.attributes.str} | ${calculatedStats.attributes.agi} | ${calculatedStats.attributes.spi} | ${calculatedStats.attributes.mnd} | ${calculatedStats.defenses.parry} | ${calculatedStats.defenses.dodge} | ${calculatedStats.defenses.resist} |
 
+**Diet:** ${trait.diet}
+
 **Skills:** ${calculatedStats.skills}
 
 **Movement:** ${calculatedStats.movement}
@@ -69,6 +71,7 @@ export const generateJSON = (companion: CompanionStats): string => {
 			attributes: companion.calculatedStats.attributes,
 			defenses: companion.calculatedStats.defenses,
 			skills: companion.calculatedStats.skills,
+			diet: companion.trait.diet,
 			movement: companion.calculatedStats.movement,
 			immunities: companion.calculatedStats.immunities,
 			resistances: companion.calculatedStats.resistances,

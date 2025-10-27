@@ -12,6 +12,7 @@ export interface CompanionTrait {
 	dodge: string
 	resist: string
 	skills: string
+	diet: string
 	immunities: string
 	resistances: string
 	weaknesses: string
