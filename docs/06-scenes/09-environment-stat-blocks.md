@@ -9,7 +9,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Stat Block Format:**
 - **Traits**: Special environmental properties
 - **Navigation TN**: Target number for Navigator progress rolls
-- **Pace**: Leagues per day (slow/normal/fast)
+- **Terrain Modifier**: Paces penalty per day
 - **Encounter Die**: Base die size for daily encounters
 - **Resource Pressure**: How environment strains supplies
 - **Hazards**: Specific dangers
@@ -23,10 +23,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Safe, Fast Travel, Well-Marked
 **Navigation TN:** 6 (Easy)
-**Pace:** 
-- Slow: 8 leagues/day
-- Normal: 10 leagues/day
-- Fast: 12 leagues/day
+**Terrain Modifier:** +1 pace (easier travel on roads)
 
 **Encounter Die:** d8 (Rare encounters, mostly travelers)
 **Resource Pressure:** Low - Settlements and waystations along route
@@ -46,10 +43,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Open, Visible From Afar, Few Natural Shelters
 **Navigation TN:** 6 (Easy - can see destination from miles away)
-**Pace:**
-- Slow: 7 leagues/day
-- Normal: 9 leagues/day
-- Fast: 11 leagues/day
+**Terrain Modifier:** No penalty (baseline terrain)
 
 **Encounter Die:** d8 (Occasional - visible from distance allows avoidance)
 **Resource Pressure:** Moderate - Water sources scattered, game available
@@ -69,10 +63,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Obscured Vision, Abundant Resources, Easy to Get Lost
 **Navigation TN:** 8 (Moderate - winding paths, thick undergrowth)
-**Pace:**
-- Slow: 5 leagues/day
-- Normal: 6 leagues/day
-- Fast: 7 leagues/day
+**Terrain Modifier:** -1 pace (moderate terrain)
 
 **Encounter Die:** d6 (Common - many creatures, hidden dangers)
 **Resource Pressure:** Low - Abundant foraging, hunting, water
@@ -93,10 +84,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Moderate Elevation, Rocky, Vantage Points
 **Navigation TN:** 8 (Moderate - ups and downs obscure true distance)
-**Pace:**
-- Slow: 5 leagues/day
-- Normal: 6 leagues/day
-- Fast: 7 leagues/day
+**Terrain Modifier:** -1 pace (moderate terrain)
 
 **Encounter Die:** d6 (Common - caves and crags hide creatures)
 **Resource Pressure:** Moderate - Water in valleys, game on slopes
@@ -116,11 +104,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Extreme Elevation, Thin Air, Deadly Falls, Avalanche Risk
 **Navigation TN:** 12 (Difficult - complex paths, altitude effects)
-**Pace:**
-- Slow: 3 leagues/day
-- Normal: 4 leagues/day
-- Fast: 5 leagues/day
-- **Maximum 2 progress boxes per day** regardless of success level
+**Terrain Modifier:** -2 paces (difficult terrain)
 
 **Encounter Die:** d6 (Common - caves and peaks hide dangers)
 **Resource Pressure:** High - Little food/water, cold, equipment strain
@@ -142,10 +126,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Waterless, Extreme Heat, Shifting Sands, Disorienting
 **Navigation TN:** 10 (Challenging - no fixed landmarks, mirages)
-**Pace:**
-- Slow: 6 leagues/day
-- Normal: 7 leagues/day
-- Fast: 8 leagues/day
+**Terrain Modifier:** -1 pace (heat slows travel)
 
 **Encounter Die:** d6 (Common - desperate creatures, hidden dangers)
 **Resource Pressure:** Extreme - **Double water consumption**, no foraging
@@ -167,10 +148,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Rocky, Broken Terrain, Little Water, Exposed
 **Navigation TN:** 10 (Challenging - maze-like rock formations)
-**Pace:**
-- Slow: 5 leagues/day
-- Normal: 6 leagues/day
-- Fast: 7 leagues/day
+**Terrain Modifier:** -1 pace (difficult footing)
 
 **Encounter Die:** d6 (Common - caves and canyons hide threats)
 **Resource Pressure:** High - Water scarce, little game, no foraging
@@ -191,10 +169,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Wet, Diseased, Easy to Get Lost, Slow Movement
 **Navigation TN:** 10 (Challenging - no clear paths, landmarks obscured)
-**Pace:**
-- Slow: 4 leagues/day
-- Normal: 5 leagues/day
-- Fast: 6 leagues/day
+**Terrain Modifier:** -2 paces (difficult terrain)
 
 **Encounter Die:** d4 (Very common - dangers hidden everywhere)
 **Resource Pressure:** Moderate - Water abundant but unsafe, fish available
@@ -216,10 +191,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Extremely Dense, Humid, Abundant Life, Dangerous Flora/Fauna
 **Navigation TN:** 10 (Challenging - thick canopy, limited visibility)
-**Pace:**
-- Slow: 4 leagues/day
-- Normal: 5 leagues/day
-- Fast: 6 leagues/day
+**Terrain Modifier:** -2 paces (difficult terrain)
 
 **Encounter Die:** d6 (Common - predators and dangers everywhere)
 **Resource Pressure:** Low - Abundant food and water, but dangerous to gather
@@ -241,10 +213,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Frozen, Exposed, Waterless (frozen), Sparse Resources
 **Navigation TN:** 8 (Moderate - flat but featureless)
-**Pace:**
-- Slow: 5 leagues/day
-- Normal: 6 leagues/day
-- Fast: 7 leagues/day
+**Terrain Modifier:** -1 pace (cold slows travel)
 
 **Encounter Die:** d8 (Rare - few creatures survive here)
 **Resource Pressure:** Extreme - No foraging, little game, all water frozen
@@ -266,11 +235,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Supernatural, Unnatural, Fear-Inducing, Reality-Warping
 **Navigation TN:** 12 (Difficult - terrain shifts, landmarks unreliable)
-**Pace:**
-- Slow: 4 leagues/day
-- Normal: 5 leagues/day
-- Fast: 6 leagues/day
-- **Maximum 2 progress boxes per day**
+**Terrain Modifier:** -2 paces (unnatural obstacles)
 
 **Encounter Die:** d4 (Very common - constant supernatural activity)
 **Resource Pressure:** Extreme - Water/food tainted, game fled or corrupted

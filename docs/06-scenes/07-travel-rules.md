@@ -27,25 +27,18 @@ Use these travel rules for **journeys between two known points or regions** that
 Before departure, establish the journey parameters:
 
 1. **Define route**: Origin, destination, and path through terrain types
-2. **Calculate distance**: Use map scale to determine leagues/miles
-3. **Estimate time**: Divide distance by terrain pace rate (see Environment Stat Blocks)
-4. **Plan resources**: Rations needed = Party Size × Days × Climate Multiplier (1× normal, 2× desert heat, 1.5× cold)
-5. **Identify waypoints**: Settlements, landmarks, or known camps for resupply
+2. **Estimate journey length**: Count expected paces based on distance and terrain (GM determines)
+3. **Plan resources**: Rations needed = Party Size × Days × Climate Multiplier (1× normal, 2× desert heat, 1.5× cold)
+4. **Identify waypoints**: Settlements, landmarks, or known camps for resupply
 
-**Pace & Travel Rates** (leagues per day):
-
-| Terrain | Slow | Normal | Fast |
-|---------|------|--------|------|
-| Road/Trail | 8 | 10 | 12 |
-| Plains | 7 | 9 | 11 |
-| Forest/Hills | 5 | 6 | 7 |
-| Mountains | 3 | 4 | 5 |
-| Desert | 6 | 7 | 8 |
-| Swamp | 4 | 5 | 6 |
+**Journey Length Examples:**
+- Short journey (2-3 days): 8-12 paces
+- Medium journey (5-7 days): 20-28 paces
+- Long journey (10-14 days): 40-56 paces
 
 ## The Progress Track
 
-The journey is represented as a series of **progress boxes** - typically 1 box per expected day of travel.
+The journey is represented as a series of **progress boxes** - each box typically represents 4 paces (one day in normal terrain).
 
 ```
 Origin ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ Destination
@@ -56,22 +49,36 @@ Mark waypoints on the track (⛺ camps, 🏘️ settlements, ⚠️ danger zones
 ## Daily Travel Procedure
 
 ### 1. Morning Phase
-- Choose **pace**: Slow (+1 boon travel rolls, -1 progress), Normal (balanced), or Fast (-1 bane travel rolls, +1 progress)
+- Choose **pace**: Slow (+1 boon travel rolls), Normal (balanced), or Fast (-1 bane travel rolls)
 - Assign **travel roles**: Navigator (mandatory), Scout (mandatory), and optional roles
 
 ### 2. Midday Phase - Progress Roll
 
 **Navigator** rolls **Spirit + Nature** or **Mind + Education** vs. **Terrain TN** (see Environment Stat Blocks).
 
-**Results:**
-- **Blunder**: Mark 0 boxes, get lost (+1 bane next roll), complication
-- **Failure**: Mark 0 boxes, choose: slowed or complication
-- **Weak**: Mark 1 box
-- **Strong**: Mark 2 boxes, choose: on track (+1 boon next roll), discovery, or well-rested
-- **Critical**: Mark 3 boxes, choose two bonuses
+**Base Paces Cleared:**
+- **Blunder**: 0 paces, get lost (+1 bane next roll), complication
+- **Failure**: 2 paces, choose: slowed or complication
+- **Weak Success**: 4 paces
+- **Strong Success**: 4 paces, choose: on track (+1 boon next roll), discovery, or well-rested
+- **Critical Success**: 6 paces, choose two bonuses
 
-**Pace adjusts boxes marked**: Slow -1 (min 0), Fast +1
-**Terrain limits**: Difficult terrain max 2 boxes/day, extreme terrain max 1 box/day
+**Terrain Modifiers** (see Environment Stat Blocks for details):
+- **Easy terrain** (roads, plains): No penalty
+- **Moderate terrain** (forest, hills): -1 pace
+- **Difficult terrain** (mountains, swamp): -2 paces
+- **Extreme conditions**: -3 paces
+
+**Pace Modifiers:**
+- **Slow pace**: -1 pace (minimum 0)
+- **Normal pace**: No modifier
+- **Fast pace**: +1 pace
+
+**Mount/Vehicle Bonuses:**
+- **Riding horses**: +1 pace (not in difficult terrain)
+- **Draft animals with wagon**: -1 pace but carry more supplies
+
+Mark off progress boxes as you accumulate paces (typically 4 paces = 1 box).
 
 ### 3. Afternoon Phase - Encounters
 
@@ -153,7 +160,7 @@ Weather creates additional pressure through conditions and resource drain.
 
 ## Waypoints
 
-When progress track reaches a waypoint, resolve its effects:
+When you accumulate enough paces to reach a waypoint box, resolve its effects:
 
 - **Settlement (🏘️)**: Resupply, safe rest, gather information
 - **Landmark (🗿)**: Navigation aid (+1 boon next roll), morale boost (recover 1 fatigue)
@@ -162,11 +169,11 @@ When progress track reaches a waypoint, resolve its effects:
 
 ## Special Situations
 
-**Getting Lost**: When Navigator blunders, mark 0 boxes and erase 1 already marked (backtracking). Next roll has +1 bane. Continue until weak+ success.
+**Getting Lost**: When Navigator blunders, clear 0 paces and lose 4 paces already marked (backtracking). Next roll has +1 bane. Continue until weak+ success.
 
-**Forced Detour**: Add 1d4 boxes to track (minor) or 1d6+2 boxes (major) when route is blocked.
+**Forced Detour**: Add 1d6 paces (minor) or 2d6 paces (major) when route is blocked.
 
-**Shortcuts**: Remove 1d3 boxes (minor) or 1d4+1 boxes (major) when discovering faster routes through strong+ Navigator success with "discovery" or NPC guidance.
+**Shortcuts**: Remove 1d4 paces (minor) or 1d6+2 paces (major) when discovering faster routes through strong+ Navigator success with "discovery" or NPC guidance.
 
 **Impossible Progress**: Severe weather, party exhaustion, or impassable terrain may prevent all progress for a day (still consume resources).
 
@@ -184,16 +191,30 @@ When progress track reaches a waypoint, resolve its effects:
 
 **Each Travel Day:**
 1. Choose pace (slow/normal/fast)
-2. Navigator rolls vs Terrain TN → mark progress boxes
-3. Scout rolls vs TN 8 → modify encounter die
-4. Roll encounter die → consult terrain table
-5. Consume resources (1 ration/person, adjust for climate)
-6. Rest (with/without shelter affects fatigue)
+2. Navigator rolls vs Terrain TN → clear paces (0/2/4/4/6)
+3. Apply terrain modifier and pace modifier
+4. Mark off progress boxes as paces accumulate (typically 4 paces = 1 box)
+5. Scout rolls vs TN 8 → modify encounter die
+6. Roll encounter die → consult terrain table
+7. Consume resources (1 ration/person, adjust for climate)
+8. Rest (with/without shelter affects fatigue)
+
+**Navigation Results:**
+- Blunder: 0 paces, get lost
+- Failure: 2 paces
+- Weak/Strong Success: 4 paces
+- Critical Success: 6 paces
 
 **Pace Effects:**
-- Slow: +1 boon travel rolls, -1 progress box
+- Slow: +1 boon navigation, -1 pace
 - Normal: No modifiers
-- Fast: -1 bane travel rolls, +1 progress box
+- Fast: -1 bane navigation, +1 pace
+
+**Terrain Penalties:**
+- Easy (roads): +1 pace
+- Normal (plains): No penalty
+- Moderate (forest, hills, desert, tundra): -1 pace
+- Difficult (mountains, swamp, jungle, haunted): -2 paces
 
 **Encounter Die Steps:** d4 → d6 → d8 → d10 → d12
 
