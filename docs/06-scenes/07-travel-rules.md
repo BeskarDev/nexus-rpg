@@ -52,49 +52,52 @@ Mark waypoints on the track (⛺ camps, 🏘️ settlements, ⚠️ danger zones
 
 ## Daily Travel Procedure
 
-### 1. Morning Phase
-- Decide if attempting **forced march** (extra paces but causes fatigue)
-- Assign **travel roles**: Navigator (mandatory), Scout (mandatory), and optional roles
+At the **end of each travel day**, resolve the following procedure:
 
-### 2. Midday Phase - Progress Roll
+### 1. Determine Forced March (Optional)
+Decide if the party attempts a **forced march** for this day:
+- Gain +2 paces
+- Each party member gains 1 fatigue
+- Cannot be done on consecutive days without additional fatigue
 
-**Navigator** rolls **Spirit + Nature** or **Mind + Education** vs. **Terrain TN** (see Environment Stat Blocks).
+### 2. All Travel Roles Roll
 
-**Base Paces Cleared:**
-- **Blunder**: 0 paces, get lost (+1 bane next roll), complication
-- **Failure**: 2 paces, choose: slowed or complication
+**Navigator (mandatory)** rolls **Spirit + Nature** or **Mind + Education** vs. **Terrain TN** (see Environment Stat Blocks):
+- **Blunder**: 0 paces, get lost (+1 bane next roll)
+- **Failure**: 2 paces
 - **Weak Success**: 4 paces
 - **Strong Success**: 4 paces, choose: on track (+1 boon next roll), discovery, or well-rested
 - **Critical Success**: 6 paces, choose two bonuses
 
-**Terrain Modifiers** (see Environment Stat Blocks for details):
-- **Easy terrain** (roads, plains): No penalty
-- **Moderate terrain** (forest, hills): -1 pace
-- **Difficult terrain** (mountains, swamp): -2 paces
-- **Extreme conditions**: -3 paces
-
-**Forced March:**
-- Gain +2 paces this day
-- Each party member gains 1 fatigue at end of day
-- Cannot be done on consecutive days without additional fatigue
-
-**Mount/Vehicle Bonuses:**
-- **Riding horses**: +1 pace (not in difficult terrain)
-- **Draft animals with wagon**: -1 pace but carry more supplies
-
-Mark off progress boxes as you accumulate paces (typically 4 paces = 1 box).
-
-### 3. Afternoon Phase - Encounters
-
-**Scout** rolls **Spirit + Perception** vs. **TN 8**.
-
-**Results determine encounter die size:**
+**Scout (mandatory)** rolls **Spirit + Perception** vs. **TN 8** to modify encounter frequency:
 - **Blunder/Failure**: Increase encounter die by 1 step (max d12)
 - **Weak**: Choose: find shelter, avoid danger (-1 die step, min d4), or make discovery
 - **Strong**: Choose two
 - **Critical**: Choose all three, or skip encounter roll
 
-**Roll encounter die** (base size from terrain, see Environment Stat Blocks):
+**Optional roles** (Lookout, Quartermaster, Forager, Hunter, Fisher) roll as needed.
+
+### 3. Calculate Progress
+
+**Total paces cleared** = Base paces (from Navigator) + Terrain modifier + Mount bonus + Forced march bonus
+
+**Terrain Modifiers** (see Environment Stat Blocks):
+- **Easy terrain** (roads): +1 pace
+- **Normal terrain** (plains): No penalty
+- **Moderate terrain** (forest, hills, desert): -1 pace
+- **Difficult terrain** (mountains, swamp, jungle): -2 paces
+
+**Mount/Vehicle Bonuses:**
+- **Riding horses**: +1 pace (not in difficult terrain)
+- **Draft animals with wagon**: -1 pace (carry more supplies)
+
+**Forced march**: +2 paces (if used)
+
+Mark off progress boxes as you accumulate paces (typically 4 paces = 1 box).
+
+### 4. Resolve Encounter
+
+**Roll encounter die** (base size from terrain, modified by Scout):
 - **1**: Fortuitous (helpful)
 - **2-3**: Neutral (interesting)
 - **4-6**: Challenging (potentially harmful)
@@ -102,20 +105,20 @@ Mark off progress boxes as you accumulate paces (typically 4 paces = 1 box).
 - **10-11**: Dire (very dangerous)
 - **12**: Catastrophic (extreme danger)
 
-Consult terrain-specific encounter tables for results.
+Consult terrain-specific encounter tables and resolve the encounter. This may include combat, skill challenges, discoveries, or hazards.
 
-### 4. Evening Phase
-- **Consume rations**: Each party member rolls a **Supply Check** for their rations (roll supply die: 1-3 = spend 1 use, 4+ = no change)
-  - In extreme heat (desert): Roll Supply Check twice (increased water needs)
-  - In extreme cold: +1 bane on Supply Check (increased caloric needs)
-  - **Optional**: Spend additional uses to recover fatigue (1 use = recover 1 fatigue, once per day)
-- **Make camp**: Scout's shelter quality affects rest
-- **Resolve conditions**: Weather, injuries, ongoing effects
+### 5. Make Camp and Rest
 
-### 5. Night Phase
-- **Rest**: If adequate shelter, no fatigue roll needed
+**Supply Check**: Each party member rolls a **Supply Check** for their rations (roll supply die: 1-3 = spend 1 use, 4+ = no change)
+- In extreme heat (desert): Roll Supply Check **twice** (increased water needs)
+- In extreme cold: +1 bane on Supply Check (increased caloric needs)
+- **Optional**: Spend additional uses to recover fatigue (1 use = recover 1 fatigue, once per day)
+
+**Shelter**: Based on Scout's success, the party has shelter or not.
+- **With shelter**: Auto-succeed on rest, no fatigue gained
 - **Without shelter**: Roll **Strength + Fortitude** vs. **TN 8** or gain 1 fatigue
-- **Keep watch**: Perception checks to avoid night encounters
+
+**Night watch**: Assign watches. Perception checks if night encounters occur.
 
 ## Travel Roles
 
@@ -196,18 +199,21 @@ When you accumulate enough paces to reach a waypoint box, resolve its effects:
 
 ## Quick Reference
 
-**Each Travel Day:**
+**Each Travel Day (End of Day Procedure):**
 1. Decide if forced march (optional: +2 paces, gain 1 fatigue)
-2. Navigator rolls vs Terrain TN → clear paces (0/2/4/4/6)
-3. Apply terrain modifier, mount bonus, and forced march bonus
-4. Mark off progress boxes as paces accumulate (typically 4 paces = 1 box)
-5. Scout rolls vs TN 8 → modify encounter die
-6. Roll encounter die → consult terrain table
-7. Each party member rolls Supply Check for rations (1-3 = spend 1 use, 4+ = no change)
-   - Extreme heat: Roll Supply Check twice
-   - Extreme cold: +1 bane on Supply Check
-   - Optional: Spend extra use to recover 1 fatigue
-8. Rest (with/without shelter affects fatigue)
+2. All roles roll:
+   - Navigator rolls vs Terrain TN → clear paces (0/2/4/4/6)
+   - Scout rolls vs TN 8 → modify encounter die
+   - Optional roles (Forager, Hunter, etc.) roll
+3. Calculate total paces: Base + terrain modifier + mount + forced march
+4. Mark off progress boxes (typically 4 paces = 1 box)
+5. Roll encounter die → consult terrain table → resolve encounter
+6. Make camp:
+   - Each party member rolls Supply Check for rations (1-3 = spend 1 use, 4+ = no change)
+     - Extreme heat: Roll Supply Check twice
+     - Extreme cold: +1 bane on Supply Check
+     - Optional: Spend extra use to recover 1 fatigue
+   - Rest with/without shelter (affects fatigue)
 
 **Navigation Results:**
 - Blunder: 0 paces, get lost
