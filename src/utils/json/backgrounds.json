@@ -1,284 +1,284 @@
 [
-	{
-		"name": "Apothecary",
-		"description": "A character who is trained in the art of creating and administering medicinal remedies, poisons, and potions.",
-		"suggested skills": "Crafting, Education, Insight, Nature",
-		"starting item": "Rare herb bundle"
-	},
-	{
-		"name": "Artisan",
-		"description": "A character who crafts functional and beautiful items using techniques passed down through generations, creating pieces that honor both practical needs and artistic expression.",
-		"suggested skills": "Crafting, Education, Fortitude, Perception",
-		"starting item": "Clay tablet with master's seal"
-	},
-	{
-		"name": "Artist",
-		"description": "A character who is skilled in creating and appreciating works of art, music, or performance.",
-		"suggested skills": "Crafting, Education, Influence, Perception",
-		"starting item": "Rare pigment pouch"
-	},
-	{
-		"name": "Bandit",
-		"description": "A character who has made a living through robbery and theft, often working alone or as part of a group.",
-		"suggested skills": "Athletics, Fighting, Stealth, Survival",
-		"starting item": "Wooden clan mask"
-	},
-	{
-		"name": "Barbarian",
-		"description": "A character who hails from tribal or nomadic societies outside of civilization's reach, relying on primal instinct and raw strength rather than formal training.",
-		"suggested skills": "Athletics, Fighting, Fortitude, Survival",
-		"starting item": "Ancestor's weapon hilt"
-	},
-	{
-		"name": "Bard",
-		"description": "A character who uses music and performance to tell stories and entertain, even channeling spiritual energy through song and dance.",
-		"suggested skills": "Education, Influence, Lore, Mysticism",
-		"starting item": "Voice-changing throat pendant"
-	},
-	{
-		"name": "Bounty Hunter",
-		"description": "A character who makes a living by tracking down and capturing wanted individuals and turning them over to the authorities for a reward.",
-		"suggested skills": "Athletics, Fighting, Perception, Stealth",
-		"starting item": "Bounty claim seal"
-	},
-	{
-		"name": "Cartographer",
-		"description": "A character who creates maps and is knowledgeable about geography.",
-		"suggested skills": "Education, Insight, Lore, Nature",
-		"starting item": "Bronze astrolabe fragment"
-	},
-	{
-		"name": "Criminal",
-		"description": "A character who has a background in illegal activities and survives through deception and stealth.",
-		"suggested skills": "Athletics, Insight, Stealth, Streetwise",
-		"starting item": "Marked bone dice"
-	},
-	{
-		"name": "Cult Initiate",
-		"description": "A character who belongs to a secretive order that performs forbidden rituals to channel arcane energies, often operating in remote locations or underground sanctuaries.",
-		"suggested skills": "Arcana, Influence, Insight, Lore",
-		"starting item": "Ritual bronze dagger"
-	},
-	{
-		"name": "Druid",
-		"description": "A character who has a deep connection to nature and is capable of harnessing its power.",
-		"suggested skills": "Insight, Lore, Mysticism, Nature",
-		"starting item": "Living seed necklace"
-	},
-	{
-		"name": "Embalmer",
-		"description": "A character who is trained in the arts of preparing bodies for the afterlife through specialized preservation techniques.",
-		"suggested skills": "Crafting, Education, Lore, Nature",
-		"starting item": "Decorated canopic jar"
-	},
-	{
-		"name": "Entertainer",
-		"description": "A character who makes a living through performance, often as a musician, actor, or acrobat.",
-		"suggested skills": "Athletics, Influence, Insight, Perception",
-		"starting item": "Painted festival mask"
-	},
-	{
-		"name": "Farmhand",
-		"description": "A character who has worked on a farm, and has experience with manual labor, animal husbandry, and crop cultivation.",
-		"suggested skills": "Athletics, Crafting, Nature, Survival",
-		"starting item": "Clay harvest deity figurine"
-	},
-	{
-		"name": "Gladiator",
-		"description": "A character who has trained and fought in the arena for entertainment and sport. They may have been forced into this life or chose it as a means of survival or fame.",
-		"suggested skills": "Athletics, Fighting, Fortitude, Perception",
-		"starting item": "Bronze victory laurel pin"
-	},
-	{
-		"name": "Guard",
-		"description": "A character who has worked as a security guard or in a similar role, protecting people, places, or things.",
-		"suggested skills": "Fighting, Insight, Perception, Streetwise",
-		"starting item": "Seal of Authority"
-	},
-	{
-		"name": "Guardian",
-		"description": "A character trained to protect sacred or valuable sites from trespassers, with knowledge of defensive tactics and sometimes ancient traditions.",
-		"suggested skills": "Fighting, Insight, Lore, Perception",
-		"starting item": "Temple key fragment"
-	},
-	{
-		"name": "Healer",
-		"description": "A character who has knowledge of medicine and the ability to cure ailments.",
-		"suggested skills": "Education, Insight, Nature, Perception",
-		"starting item": "Grateful patient\u2019s memorabilia"
-	},
-	{
-		"name": "Hunter",
-		"description": "A character who makes a living through hunting and tracking game.",
-		"suggested skills": "Archery, Nature, Perception, Survival",
-		"starting item": "Prey bone whistle"
-	},
-	{
-		"name": "Innkeeper",
-		"description": "A character who runs a place of lodging, serving food and drink to travelers and guests.",
-		"suggested skills": "Education, Influence, Insight, Perception",
-		"starting item": "Hospitality clay cup"
-	},
-	{
-		"name": "Investigator",
-		"description": "A character who uses logic and deduction to solve problems.",
-		"suggested skills": "Education, Insight, Perception, Stealth",
-		"starting item": "Milky magnifying lens"
-	},
-	{
-		"name": "Magus",
-		"description": "A character who possesses arcane powers strictly supervised by a religious order dedicated to the detection and eradication of arcane cults and other supernatural threats.",
-		"suggested skills": "Arcana, Education, Influence, Insight",
-		"starting item": "Order's medallion"
-	},
-	{
-		"name": "Mercenary",
-		"description": "A character who hires themselves out as a soldier for hire and will work for whoever pays the most.",
-		"suggested skills": "Fighting, Fortitude, Influence, Streetwise",
-		"starting item": "Blood-oath papyrus"
-	},
-	{
-		"name": "Merchant",
-		"description": "A character who travels between settlements transporting and exchanging goods, navigating both physical routes and social customs.",
-		"suggested skills": "Influence, Insight, Stealth, Streetwise",
-		"starting item": "Rare foreign spice"
-	},
-	{
-		"name": "Monk",
-		"description": "A character who follows a monastic lifestyle and is skilled in combat and spiritual practices.",
-		"suggested skills": "Education, Fighting, Fortitude, Mysticism",
-		"starting item": "Lacquered prayer beads"
-	},
-	{
-		"name": "Officer",
-		"description": "A character who has served in a military or law enforcement organization and has experience giving orders and managing troops. They may have risen through the ranks or been commissioned as a leader.",
-		"suggested skills": "Education, Fighting, Influence, Insight",
-		"starting item": "Ingraved command baton"
-	},
-	{
-		"name": "Pact-Bound",
-		"description": "A character who has entered into a forbidden agreement with an otherworldly entity, gaining arcane knowledge and power in exchange for service or sacrifice, often at great personal cost.",
-		"suggested skills": "Arcana, Influence, Insight, Lore",
-		"starting item": "Mark of the pact"
-	},
-	{
-		"name": "Philosopher",
-		"description": "A character who studies the nature of existence and reality.",
-		"suggested skills": "Education, Influence, Insight, Lore",
-		"starting item": "Inscribed ivory thought-piece"
-	},
-	{
-		"name": "Pirate",
-		"description": "A character who makes a living through robbery and plunder on the high seas.",
-		"suggested skills": "Athletics, Fighting, Perception, Streetwise",
-		"starting item": "Foreign coin necklace"
-	},
-	{
-		"name": "Politician",
-		"description": "A character who is skilled in navigating the complex world of political intrigue and manipulation.",
-		"suggested skills": "Education, Influence, Insight, Stealth",
-		"starting item": "Noble's letter of favor"
-	},
-	{
-		"name": "Priest",
-		"description": "A character who is devoted to a religious faith and has knowledge of its beliefs and practices.",
-		"suggested skills": "Education, Influence, Insight, Mysticism",
-		"starting item": "Holy symbol"
-	},
-	{
-		"name": "Ranger",
-		"description": "A character who is skilled in survival and tracking in the wilderness.",
-		"suggested skills": "Archery, Fighting, Perception, Survival",
-		"starting item": "Preserved beast claw"
-	},
-	{
-		"name": "Renegade Mage",
-		"description": "A character who combines martial training with forbidden arcane knowledge, often a deserter from state-controlled magic orders or a self-taught practitioner on the run.",
-		"suggested skills": "Arcana, Education, Fighting, Streetwise",
-		"starting item": "Wooden face mask"
-	},
-	{
-		"name": "Sacred Warrior",
-		"description": "A character who has pledged their blade and life to a deity, serving as the martial arm of their faith and drawing strength from divine favor in battle.",
-		"suggested skills": "Fighting, Fortitude, Influence, Mysticism",
-		"starting item": "Godbound brass gauntlet"
-	},
-	{
-		"name": "Sailor",
-		"description": "A character who has experience with seafaring, navigation, and life at sea, including knowledge of ships and the ability to handle them.",
-		"suggested skills": "Athletics, Influence, Perception, Survival",
-		"starting item": "Fish hook set"
-	},
-	{
-		"name": "Scholar",
-		"description": "A character who has dedicated their life to the pursuit of knowledge and academic study.",
-		"suggested skills": "Education, Insight, Lore, Nature",
-		"starting item": "Reusable wax tablet and stylus"
-	},
-	{
-		"name": "Scribe",
-		"description": "A character who is skilled in writing and copying texts.",
-		"suggested skills": "Crafting, Education, Influence, Insight",
-		"starting item": "Carved bone stylus and ink"
-	},
-	{
-		"name": "Seer",
-		"description": "A character who possesses supernatural abilities to see and perceive things beyond the realm of ordinary perception.",
-		"suggested skills": "Insight, Lore, Mysticism, Perception",
-		"starting item": "Obsidian scrying shard"
-	},
-	{
-		"name": "Servant",
-		"description": "A character who has worked as a servant or in a similar role, serving a master or mistress.",
-		"suggested skills": "Education, Influence, Insight, Streetwise",
-		"starting item": "Master's house emblem"
-	},
-	{
-		"name": "Shaman",
-		"description": "A character who is a spiritual leader communicating with the spirit world and the ancestors to provide guidance and healing to their community.",
-		"suggested skills": "Insight, Mysticism, Nature, Survival",
-		"starting item": "Ancestor bone fetish"
-	},
-	{
-		"name": "Soldier",
-		"description": "A character who is trained in combat and serves in a military organization.",
-		"suggested skills": "Archery, Fighting, Fortitude, Perception",
-		"starting item": "Bronze battalion insignia"
-	},
-	{
-		"name": "Sorcerer",
-		"description": "A character who has a natural talent for magic and has honed their abilities through years of study and practice.",
-		"suggested skills": "Arcana, Education, Insight, Lore",
-		"starting item": "Glowing crystal fragment"
-	},
-	{
-		"name": "Spy",
-		"description": "A character who gathers information through stealth and deceit.",
-		"suggested skills": "Insight, Perception, Stealth, Streetwise",
-		"starting item": "Cipher wheel"
-	},
-	{
-		"name": "Tavern Fighter",
-		"description": "A character who has made a living through brawling and fighting in taverns or other similar establishments.",
-		"suggested skills": "Athletics, Fighting, Fortitude, Insight",
-		"starting item": "Weighted wraps"
-	},
-	{
-		"name": "Thug",
-		"description": "A character who has a history of using violence and intimidation to achieve their goals. They may have been part of a criminal organization or worked as hired muscle.",
-		"suggested skills": "Athletics, Fighting, Fortitude, Streetwise",
-		"starting item": "Brass knuckle duster"
-	},
-	{
-		"name": "Wilderness Guide",
-		"description": "A character who leads travelers through dangerous terrains, whether desert wastes, dense jungles, or treacherous mountains, knowing where to find resources and avoid hazards.",
-		"suggested skills": "Influence, Nature, Perception, Survival",
-		"starting item": "Shell compass"
-	},
-	{
-		"name": "Witch",
-		"description": "A character who has knowledge of magic and the supernatural and has honed their abilities through personal experience, intuition, and natural talent. They may have learned their abilities through a family tradition, communing with spirits and nature, or through experimentation and self-discovery.",
-		"suggested skills": "Insight, Lore, Mysticism, Nature",
-		"starting item": "Ritual bone carving knife"
-	}
+    {
+        "name": "Apothecary",
+        "description": "A character who is trained in the art of creating and administering medicinal remedies, poisons, and potions.",
+        "suggested skills": "Crafting, Education, Insight, Nature",
+        "starting item": "Rare herb bundle"
+    },
+    {
+        "name": "Artisan",
+        "description": "A character who crafts functional and beautiful items using techniques passed down through generations, creating pieces that honor both practical needs and artistic expression.",
+        "suggested skills": "Crafting, Education, Fortitude, Perception",
+        "starting item": "Clay tablet with master's seal"
+    },
+    {
+        "name": "Artist",
+        "description": "A character who is skilled in creating and appreciating works of art, music, or performance.",
+        "suggested skills": "Crafting, Education, Influence, Perception",
+        "starting item": "Rare pigment pouch"
+    },
+    {
+        "name": "Bandit",
+        "description": "A character who has made a living through robbery and theft, often working alone or as part of a group.",
+        "suggested skills": "Athletics, Fighting, Stealth, Survival",
+        "starting item": "Wooden clan mask"
+    },
+    {
+        "name": "Barbarian",
+        "description": "A character who hails from tribal or nomadic societies outside of civilization's reach, relying on primal instinct and raw strength rather than formal training.",
+        "suggested skills": "Athletics, Fighting, Fortitude, Survival",
+        "starting item": "Ancestor's weapon hilt"
+    },
+    {
+        "name": "Bard",
+        "description": "A character who uses music and performance to tell stories and entertain, even channeling spiritual energy through song and dance.",
+        "suggested skills": "Education, Influence, Lore, Mysticism",
+        "starting item": "Voice-changing throat pendant"
+    },
+    {
+        "name": "Bounty Hunter",
+        "description": "A character who makes a living by tracking down and capturing wanted individuals and turning them over to the authorities for a reward.",
+        "suggested skills": "Athletics, Fighting, Perception, Stealth",
+        "starting item": "Bounty claim seal"
+    },
+    {
+        "name": "Cartographer",
+        "description": "A character who creates maps and is knowledgeable about geography.",
+        "suggested skills": "Education, Insight, Lore, Nature",
+        "starting item": "Bronze astrolabe fragment"
+    },
+    {
+        "name": "Criminal",
+        "description": "A character who has a background in illegal activities and survives through deception and stealth.",
+        "suggested skills": "Athletics, Insight, Stealth, Streetwise",
+        "starting item": "Marked bone dice"
+    },
+    {
+        "name": "Cult Initiate",
+        "description": "A character who belongs to a secretive order that performs forbidden rituals to channel arcane energies, often operating in remote locations or underground sanctuaries.",
+        "suggested skills": "Arcana, Influence, Insight, Lore",
+        "starting item": "Ritual bronze dagger"
+    },
+    {
+        "name": "Druid",
+        "description": "A character who has a deep connection to nature and is capable of harnessing its power.",
+        "suggested skills": "Insight, Lore, Mysticism, Nature",
+        "starting item": "Living seed necklace"
+    },
+    {
+        "name": "Embalmer",
+        "description": "A character who is trained in the arts of preparing bodies for the afterlife through specialized preservation techniques.",
+        "suggested skills": "Crafting, Education, Lore, Nature",
+        "starting item": "Decorated canopic jar"
+    },
+    {
+        "name": "Entertainer",
+        "description": "A character who makes a living through performance, often as a musician, actor, or acrobat.",
+        "suggested skills": "Athletics, Influence, Insight, Perception",
+        "starting item": "Painted festival mask"
+    },
+    {
+        "name": "Farmhand",
+        "description": "A character who has worked on a farm, and has experience with manual labor, animal husbandry, and crop cultivation.",
+        "suggested skills": "Athletics, Crafting, Nature, Survival",
+        "starting item": "Clay harvest deity figurine"
+    },
+    {
+        "name": "Gladiator",
+        "description": "A character who has trained and fought in the arena for entertainment and sport. They may have been forced into this life or chose it as a means of survival or fame.",
+        "suggested skills": "Athletics, Fighting, Fortitude, Perception",
+        "starting item": "Bronze victory laurel pin"
+    },
+    {
+        "name": "Guard",
+        "description": "A character who has worked as a security guard or in a similar role, protecting people, places, or things.",
+        "suggested skills": "Fighting, Insight, Perception, Streetwise",
+        "starting item": "Seal of Authority"
+    },
+    {
+        "name": "Guardian",
+        "description": "A character trained to protect sacred or valuable sites from trespassers, with knowledge of defensive tactics and sometimes ancient traditions.",
+        "suggested skills": "Fighting, Insight, Lore, Perception",
+        "starting item": "Temple key fragment"
+    },
+    {
+        "name": "Healer",
+        "description": "A character who has knowledge of medicine and the ability to cure ailments.",
+        "suggested skills": "Education, Insight, Nature, Perception",
+        "starting item": "Grateful patient\u2019s memorabilia"
+    },
+    {
+        "name": "Hunter",
+        "description": "A character who makes a living through hunting and tracking game.",
+        "suggested skills": "Archery, Nature, Perception, Survival",
+        "starting item": "Prey bone whistle"
+    },
+    {
+        "name": "Innkeeper",
+        "description": "A character who runs a place of lodging, serving food and drink to travelers and guests.",
+        "suggested skills": "Education, Influence, Insight, Perception",
+        "starting item": "Hospitality clay cup"
+    },
+    {
+        "name": "Investigator",
+        "description": "A character who uses logic and deduction to solve problems.",
+        "suggested skills": "Education, Insight, Perception, Stealth",
+        "starting item": "Milky magnifying lens"
+    },
+    {
+        "name": "Magus",
+        "description": "A character who possesses arcane powers strictly supervised by a religious order dedicated to the detection and eradication of arcane cults and other supernatural threats.",
+        "suggested skills": "Arcana, Education, Influence, Insight",
+        "starting item": "Order's medallion"
+    },
+    {
+        "name": "Mercenary",
+        "description": "A character who hires themselves out as a soldier for hire and will work for whoever pays the most.",
+        "suggested skills": "Fighting, Fortitude, Influence, Streetwise",
+        "starting item": "Blood-oath papyrus"
+    },
+    {
+        "name": "Merchant",
+        "description": "A character who travels between settlements transporting and exchanging goods, navigating both physical routes and social customs.",
+        "suggested skills": "Influence, Insight, Stealth, Streetwise",
+        "starting item": "Rare foreign spice"
+    },
+    {
+        "name": "Monk",
+        "description": "A character who follows a monastic lifestyle and is skilled in combat and spiritual practices.",
+        "suggested skills": "Education, Fighting, Fortitude, Mysticism",
+        "starting item": "Lacquered prayer beads"
+    },
+    {
+        "name": "Officer",
+        "description": "A character who has served in a military or law enforcement organization and has experience giving orders and managing troops. They may have risen through the ranks or been commissioned as a leader.",
+        "suggested skills": "Education, Fighting, Influence, Insight",
+        "starting item": "Ingraved command baton"
+    },
+    {
+        "name": "Pact-Bound",
+        "description": "A character who has entered into a forbidden agreement with an otherworldly entity, gaining arcane knowledge and power in exchange for service or sacrifice, often at great personal cost.",
+        "suggested skills": "Arcana, Influence, Insight, Lore",
+        "starting item": "Mark of the pact"
+    },
+    {
+        "name": "Philosopher",
+        "description": "A character who studies the nature of existence and reality.",
+        "suggested skills": "Education, Influence, Insight, Lore",
+        "starting item": "Inscribed ivory thought-piece"
+    },
+    {
+        "name": "Pirate",
+        "description": "A character who makes a living through robbery and plunder on the high seas.",
+        "suggested skills": "Athletics, Fighting, Perception, Streetwise",
+        "starting item": "Foreign coin necklace"
+    },
+    {
+        "name": "Politician",
+        "description": "A character who is skilled in navigating the complex world of political intrigue and manipulation.",
+        "suggested skills": "Education, Influence, Insight, Stealth",
+        "starting item": "Noble's letter of favor"
+    },
+    {
+        "name": "Priest",
+        "description": "A character who is devoted to a religious faith and has knowledge of its beliefs and practices.",
+        "suggested skills": "Education, Influence, Insight, Mysticism",
+        "starting item": "Holy symbol"
+    },
+    {
+        "name": "Ranger",
+        "description": "A character who is skilled in survival and tracking in the wilderness.",
+        "suggested skills": "Archery, Fighting, Perception, Survival",
+        "starting item": "Preserved beast claw"
+    },
+    {
+        "name": "Renegade Mage",
+        "description": "A character who combines martial training with forbidden arcane knowledge, often a deserter from state-controlled magic orders or a self-taught practitioner on the run.",
+        "suggested skills": "Arcana, Education, Fighting, Streetwise",
+        "starting item": "Wooden face mask"
+    },
+    {
+        "name": "Sacred Warrior",
+        "description": "A character who has pledged their blade and life to a deity, serving as the martial arm of their faith and drawing strength from divine favor in battle.",
+        "suggested skills": "Fighting, Fortitude, Influence, Mysticism",
+        "starting item": "Godbound brass gauntlet"
+    },
+    {
+        "name": "Sailor",
+        "description": "A character who has experience with seafaring, navigation, and life at sea, including knowledge of ships and the ability to handle them.",
+        "suggested skills": "Athletics, Influence, Perception, Survival",
+        "starting item": "Fish hook set"
+    },
+    {
+        "name": "Scholar",
+        "description": "A character who has dedicated their life to the pursuit of knowledge and academic study.",
+        "suggested skills": "Education, Insight, Lore, Nature",
+        "starting item": "Reusable wax tablet and stylus"
+    },
+    {
+        "name": "Scribe",
+        "description": "A character who is skilled in writing and copying texts.",
+        "suggested skills": "Crafting, Education, Influence, Insight",
+        "starting item": "Carved bone stylus and ink"
+    },
+    {
+        "name": "Seer",
+        "description": "A character who possesses supernatural abilities to see and perceive things beyond the realm of ordinary perception.",
+        "suggested skills": "Insight, Lore, Mysticism, Perception",
+        "starting item": "Obsidian scrying shard"
+    },
+    {
+        "name": "Servant",
+        "description": "A character who has worked as a servant or in a similar role, serving a master or mistress.",
+        "suggested skills": "Education, Influence, Insight, Streetwise",
+        "starting item": "Master's house emblem"
+    },
+    {
+        "name": "Shaman",
+        "description": "A character who is a spiritual leader communicating with the spirit world and the ancestors to provide guidance and healing to their community.",
+        "suggested skills": "Insight, Mysticism, Nature, Survival",
+        "starting item": "Ancestor bone fetish"
+    },
+    {
+        "name": "Soldier",
+        "description": "A character who is trained in combat and serves in a military organization.",
+        "suggested skills": "Archery, Fighting, Fortitude, Perception",
+        "starting item": "Bronze battalion insignia"
+    },
+    {
+        "name": "Sorcerer",
+        "description": "A character who has a natural talent for magic and has honed their abilities through years of study and practice.",
+        "suggested skills": "Arcana, Education, Insight, Lore",
+        "starting item": "Glowing crystal fragment"
+    },
+    {
+        "name": "Spy",
+        "description": "A character who gathers information through stealth and deceit.",
+        "suggested skills": "Insight, Perception, Stealth, Streetwise",
+        "starting item": "Cipher wheel"
+    },
+    {
+        "name": "Tavern Fighter",
+        "description": "A character who has made a living through brawling and fighting in taverns or other similar establishments.",
+        "suggested skills": "Athletics, Fighting, Fortitude, Insight",
+        "starting item": "Weighted wraps"
+    },
+    {
+        "name": "Thug",
+        "description": "A character who has a history of using violence and intimidation to achieve their goals. They may have been part of a criminal organization or worked as hired muscle.",
+        "suggested skills": "Athletics, Fighting, Fortitude, Streetwise",
+        "starting item": "Brass knuckle duster"
+    },
+    {
+        "name": "Wilderness Guide",
+        "description": "A character who leads travelers through dangerous terrains, whether desert wastes, dense jungles, or treacherous mountains, knowing where to find resources and avoid hazards.",
+        "suggested skills": "Influence, Nature, Perception, Survival",
+        "starting item": "Shell compass"
+    },
+    {
+        "name": "Witch",
+        "description": "A character who has knowledge of magic and the supernatural and has honed their abilities through personal experience, intuition, and natural talent. They may have learned their abilities through a family tradition, communing with spirits and nature, or through experimentation and self-discovery.",
+        "suggested skills": "Insight, Lore, Mysticism, Nature",
+        "starting item": "Ritual bone carving knife"
+    }
 ]

@@ -19,27 +19,6 @@ Name | Quality | Load | Cost | Description
 **War Horse**  | 3  | - | 750  | A large, aggressive horse trained for battle. Can carry a rider plus up to 15 load. Trained to fight alongside its rider and strike enemies with hooves.
 
 
-## Mount Equipment
-
-Name | Quality | Load | Cost | Description
---- | --- | --- | --- | ---
-**Riding Pad**  | 1  | 1 | 15  | Simple blanket or hide providing minimal comfort. Can hold up to 2 load in small attached pouches. No bonus to riding rolls.
-**Bit and Bridle**  | 1  | 0 | 10  | Basic riding gear required for most mounts. Included with all saddles; this is for purchasing separately.
-**Blinders**  | 1  | 0 | 15  | Leather eye guards that limit peripheral vision. Grants +1 boon on Spirit + Nature rolls to calm a frightened mount. Imposes +1 bane on the mount's Perception rolls.
-**Feed Bag (d4)**  | 1  | 1 | 15  | Contains enough feed for one mount for one day. Has a d4 Supply die. At the end of each day, make a Supply check to see if the feed is depleted.
-**Portable Trough**  | 1  | 2 | 25  | Collapsible leather or canvas trough for watering multiple mounts. Essential in arid regions where water sources are rare.
-**Pack Saddle**  | 1  | 2 | 30  | Designed for cargo rather than riding. Cannot be ridden while equipped. Increases mount's carrying capacity by +5 load.
-**Saddlebags (pair)**  | 2  | 1 | 30  | Can be attached to any saddle. Provides additional 5 load capacity. Does not grant any riding bonuses.
-**Standard Saddle**  | 2  | 3 | 50  | Provides comfortable seating for one rider. Includes saddlebags that can hold up to 5 load without counting against rider's carrying capacity. Grants +1 boon on Agility + Nature rolls to maintain control during difficult maneuvers.
-**Grooming Kit**  | 2  | 1 | 50  | Contains brushes, picks, and basic veterinary supplies. Spend 1 use during a rest to tend to a mount, granting it +1 boon on its next Fortitude roll. Has 3 uses like other toolkits.
-**Leather Barding**  | 2  | 8 | 150  | Provides +2 AV to the mount. Does not reduce mount's Movement.
-**War Saddle**  | 3  | 5 | 150  | Reinforced saddle designed for combat. Includes reinforced saddlebags that can hold up to 8 load. Grants +1 boon on Agility + Nature rolls to maintain control during combat. Provides +1 bonus to the rider's Parry defense while mounted.
-**Exotic Saddle**  | 3  | 4 | 125  | Custom-fitted saddle designed for non-standard mounts (flying creatures, companions with unusual anatomy, giant insects, etc.). Includes specialized harnesses and straps that adapt to the mount's body shape. Can hold up to 6 load in integrated pouches. Grants +1 boon on Agility + Nature rolls to maintain control during difficult maneuvers. Required for safely riding creatures not built for standard saddles.
-**Scale Barding**  | 3  | 12 | 500  | Provides +4 AV to the mount. Reduces mount's Movement by 1 (minimum 1 Movement per turn).
-**Ceremonial Barding**  | 3  | 6 | 750  | Ornate armor designed for parades and displays. Provides +2 AV to the mount. Grants +1 boon on Influence rolls when displaying wealth or status. Does not reduce mount's Movement.
-**Steel Barding**  | 4  | 16 | 1,500  | Provides +6 AV to the mount. Reduces mount's Movement by 1 (minimum 1 Movement per turn). Durability: d8 (same as heavy armor).
-
-
 ## Alchemy
 
 Name | Quality | Load | Cost | Description

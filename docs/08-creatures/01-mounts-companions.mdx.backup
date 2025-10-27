@@ -8,10 +8,6 @@ import { CompanionBuilderWrapper } from '@site/src/components/CompanionBuilderWr
 
 ![banner-img](/img/banner/mounts-companions-banner.png)
 
-Mounts and companions can greatly enhance your adventuring capabilities, providing transportation, combat support, and specialized abilities. While mounts serve primarily as transportation, companions are loyal allies who fight alongside you. Both require care and attention to maintain their effectiveness.
-
-> The feeding and care rules below apply to both mounts and companions. For brevity, the text refers to "mounts" but the same rules govern all animal companions.
-
 ## Feeding & Care
 
 Each mount or companion that requires food must be fed once per day during a night's rest. You have several options:
@@ -20,41 +16,30 @@ Each mount or companion that requires food must be fed once per day during a nig
 - **Foraging:** Forage for appropriate food during travel.
 - **Natural Grazing/Hunting:** Rest at a location with access to natural grazing (herbivores) or huntable prey (carnivores).
 
-Mounts and companions suffer Fatigue and become deprived the same way adventurers do from lack of food and water. 
+Mounts and companions suffer Fatigue and become deprived the same way adventurers do from lack of food and water. Some companions (such as undead or elementals) may not require food at all—check their specific traits.
 
-**Special Companions:** Some companions don't require food or water at all. Undead companions have no need for sustenance, elementals draw energy from their native planes, and certain aberrations may have unusual metabolisms. Always check a companion's Diet trait—if it lists "None," the creature requires no feeding.
-
-## Mount Equipment
+## Saddles & Equipment
 
 ### Saddles
 
 Saddles function similarly to backpacks for adventurers. If a mount has a saddle, it takes up 0 load on the mount and provides additional carrying capacity.
 
-| Quality | Saddle Type | Load (if additional) | Cost | Description |
-| --- | --- | --- | --- | --- |
-| 1 | **Riding Pad** | 1 | 15 coins | Simple blanket or hide providing minimal comfort. Can hold up to 2 load in small attached pouches. |
-| 1 | **Pack Saddle** | 0 (first saddle) | 30 coins | Designed for cargo rather than riding. Cannot be ridden while equipped. Adds +5 to the mount's carry capacity limits. |
-| 2 | **Standard Saddle** | 0 (first saddle) | 50 coins | Provides comfortable seating for one rider. Includes saddlebags that can hold up to 5 load. Grants +1 boon on Agility + Nature rolls to maintain control during difficult maneuvers. |
-| 3 | **Exotic Saddle** | 0 (first saddle) | 125 coins | Custom-fitted for non-standard mounts (flying creatures, unusual anatomy, etc.). Required for safely riding such creatures. Adds +4 to the mount's carry capacity limits. |
-| 3 | **War Saddle** | 0 (first saddle) | 150 coins | Reinforced saddle for combat. Includes reinforced saddlebags that can hold up to 8 load. Grants +1 boon on Agility + Nature rolls to maintain control during combat. Provides +1 to the rider's Parry defense while mounted. |
+| Saddle Type | Quality | Load (if additional) | Cost | Description |
+|------------|---------|---------------------|------|-------------|
+| **Riding Saddle** | 1 | 0 (first saddle) | 25 coins | Basic saddle for riding. Adds +2 to the mount's carry capacity limits. |
+| **Pack Saddle** | 1 | 0 (first saddle) | 30 coins | Designed for cargo rather than riding. Cannot be ridden while equipped. Adds +5 to the mount's carry capacity limits. |
+| **War Saddle** | 2 | 0 (first saddle) | 100 coins | Reinforced saddle for combat. Adds +2 to the mount's carry capacity limits and grants +1 boon on Agility + Nature rolls to maintain control during combat. |
+| **Exotic Saddle** | 3 | 0 (first saddle) | 125 coins | Custom-fitted for non-standard mounts (flying creatures, unusual anatomy, etc.). Required for safely riding such creatures. Adds +4 to the mount's carry capacity limits. |
 
 ### Barding (Mount Armor)
 
 Barding protects mounts in combat but adds significant weight.
 
-| Quality | Barding Type | Load | Cost | AV Bonus | Special |
-| --- | --- | --- | --- | --- | --- |
-| 2 | **Leather Barding** | 8 | 150 coins | +2 AV | No Movement penalty |
-| 3 | **Scale Barding** | 12 | 500 coins | +4 AV | -1 Movement (min. 1/turn) |
-| 4 | **Bronze Barding** | 16 | 1,500 coins | +6 AV | -1 Movement (min. 1/turn), Durability d8 |
-
-### Other Mount Gear
-
-| Quality | Item | Load | Cost | Description |
-| --- | --- | --- | --- | --- |
-| 1 | **Bit and Bridle** | 0 | 10 coins | Basic riding gear required for most mounts. Included with all saddles. |
-| 1 | **Feed Bag (d4)** | 1 | 15 coins | Contains enough feed for one mount for one day. Has a d4 Supply die. |
-| 2 | **Grooming Kit** | 1 | 50 coins | Contains brushes, picks, and basic veterinary supplies. Spend 1 use during a rest to tend to a mount, granting it +1 boon on its next Fortitude roll. Has 3 uses. |
+| Barding Type | Quality | Load | Cost | AV Bonus | Special |
+|-------------|---------|------|------|----------|---------|
+| **Leather Barding** | 2 | 8 | 150 coins | +2 AV | No Movement penalty |
+| **Scale Barding** | 3 | 12 | 500 coins | +4 AV | -1 Movement (min. 1/turn) |
+| **Steel Barding** | 4 | 16 | 1,500 coins | +6 AV | -1 Movement (min. 1/turn), Durability d8 |
 
 ## Mounts
 
@@ -74,55 +59,299 @@ You also have to roll Spirit + Nature in situations that scare or confuse your m
 
 Different types of mounts offer varying capabilities, from carrying capacity to speed and special abilities. The following represents common mount options available in most civilized regions.
 
-> Mounts in Combat: Mounts are not trained for battle by default. When combat begins or they take damage, they will either attempt to flee or act on instinct (attacking threats). The War Horse is an exception, being bred and trained specifically for warfare.
-> 
+| Mount Type | Tier | Size | Diet | Base Load | Movement | Special Traits | Cost |
+|------------|------|------|------|-----------|----------|----------------|------|
+| **Donkey** | 1 | Medium | Herbivore | 15 | 1/turn (1x travel) | Stubborn but hardy; +1 boon on Fortitude rolls | 50 |
+| **Pony** | 1 | Medium | Herbivore | 12 | 1/turn (1.5x travel) | Small but reliable | 100 |
+| **Mule** | 2 | Medium | Herbivore | 20 | 1/turn (1x travel) | Beast of Burden | 75 |
+| **Riding Horse** | 2 | Large | Herbivore | 15 | 2/turn (2x travel) | Fast Movement | 250 |
+| **Draft Horse** | 2 | Large | Herbivore | 25 | 1/turn (1x travel) | Beast of Burden | 75 |
+| **Camel** | 2 | Large | Herbivore | 20 | 1/turn (1.5x travel) | Desert adapted; requires half water in arid climates | 250 |
+| **Ox** | 2 | Large | Herbivore | 30 | 1/turn (0.5x travel) | Beast of Burden; best for wagons | 100 |
+| **War Horse** | 3 | Large | Herbivore | 20 | 2/turn (2x travel) | Combat trained | 750 |
+| **Giant Lizard** | 3 | Large | Carnivore | 18 | 1/turn (1x travel) | Can climb walls; amphibious | 500 |
+| **Elephant** | 5 | Huge | Herbivore | 40 | 2/turn (1x travel) | Massive capacity; intimidating | 3,000 |
 
-| Tier | Mount Type | Size | Diet | Carry Capacity | Movement | Trait | Cost |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | **Donkey** | Medium | Herbivore | 17 | 1/turn (1x travel) | Donkey | 50 coins |
-| 1 | **Pony** | Medium | Herbivore | 12 | 1/turn (1.5x travel) | Horse | 100 coins |
-| 2 | **Mule** | Medium | Herbivore | 22 | 1/turn (1x travel) | Donkey | 75 coins |
-| 2 | **Riding Horse** | Large | Herbivore | 17 | 2/turn (2x travel) | Horse | 250 coins |
-| 2 | **Draft Horse** | Large | Herbivore | 27 | 1/turn (1x travel) | Horse | 75 coins |
-| 2 | **Camel** | Large | Herbivore | 22 | 1/turn (1.5x travel) | Camel | 250 coins |
-| 2 | **Ox** | Large | Herbivore | 32 | 1/turn (0.5x travel) | Ox | 100 coins |
-| 3 | **War Horse** | Large | Herbivore | 22 | 2/turn (2x travel) | Horse | 750 coins |
-| 3 | **Giant Lizard** | Large | Carnivore | 18 | 1/turn (1x travel) | Lizard | 500 coins |
-| 5 | **Elephant** | Huge | Herbivore | 42 | 2/turn (1x travel) | Elephant | 3,000 coins |
+**Notes:**
+- Base Load is how much the mount can carry before becoming encumbered, following the same rules as adventurers.
+- Mounts with **Beast of Burden** add +2 to their encumbrance and over-encumbrance limits.
+- Mounts with **Fast Movement** have increased travel speed and extra Movement in combat.
+- A rider's personal load does not count against the mount's carrying capacity.
+- Their full statistics can be found in the Companion Traits section if they can also serve as companions.
+
+## Mount Equipment
+
+Mounts can be outfitted with various types of equipment to improve their utility and protection. Each piece of equipment takes up load on the mount and may provide specific benefits.
+
+### Saddles
+
+Saddles make riding more comfortable and secure, and provide attachment points for carrying gear.
+
+**Standard Saddle** (Quality 2, 3 load, 50 coins)
+- Provides comfortable seating for one rider
+- Includes saddlebags that can hold up to 5 load without counting against rider's carrying capacity
+- Grants +1 boon on Agility + Nature rolls to maintain control during difficult maneuvers
+
+**War Saddle** (Quality 3, 5 load, 150 coins)
+- Reinforced saddle designed for combat
+- Includes reinforced saddlebags that can hold up to 8 load
+- Grants +1 boon on Agility + Nature rolls to maintain control during combat
+- Provides +1 bonus to the rider's Parry defense while mounted (better bracing)
+
+**Exotic Saddle** (Quality 3, 4 load, 125 coins)
+- Custom-fitted saddle designed for non-standard mounts (flying creatures, companions with unusual anatomy, giant insects, etc.)
+- Includes specialized harnesses and straps that adapt to the mount's body shape
+- Can hold up to 6 load in integrated pouches
+- Grants +1 boon on Agility + Nature rolls to maintain control during difficult maneuvers
+- Required for safely riding creatures not built for standard saddles
+
+**Riding Pad** (Quality 1, 1 load, 15 coins)
+- Simple blanket or hide providing minimal comfort
+- Can hold up to 2 load in small attached pouches
+- No bonus to riding rolls
+
+### Barding (Mount Armor)
+
+Barding protects mounts in combat but adds significant weight and may reduce mobility.
+
+**Leather Barding** (Quality 2, 8 load, 150 coins)
+- Provides +2 AV to the mount
+- Does not reduce mount's Movement
+
+**Scale Barding** (Quality 3, 12 load, 500 coins)
+- Provides +4 AV to the mount  
+- Reduces mount's Movement by 1 (minimum 1 Movement per turn)
+
+**Steel Barding** (Quality 4, 16 load, 1,500 coins)
+- Provides +6 AV to the mount
+- Reduces mount's Movement by 1 (minimum 1 Movement per turn)
+- Durability: d8 (same as heavy armor)
+
+**Ceremonial Barding** (Quality 3, 6 load, 750 coins)
+- Ornate armor designed for parades and displays
+- Provides +2 AV to the mount
+- Grants +1 boon on Influence rolls when displaying wealth or status
+- Does not reduce mount's Movement
+
+### Feed and Supplies
+
+**Feed Bag** (Quality 1, 1 load per unit, 15 coins)
+- Contains enough feed for one mount for one day
+- Has a d4 Supply die
+- At the end of each day, make a Supply check to see if the feed is depleted
+
+**Portable Trough** (Quality 1, 2 load, 25 coins)
+- Collapsible leather or canvas trough for watering multiple mounts
+- Essential in arid regions where water sources are rare
+
+**Grooming Kit** (Quality 2, 1 load, 50 coins)
+- Contains brushes, picks, and basic veterinary supplies
+- Spend 1 use during a rest to tend to a mount, granting it +1 boon on its next Fortitude roll
+- Has 3 uses like other toolkits
+
+### Other Mount Gear
+
+**Pack Saddle** (Quality 1, 2 load, 30 coins)
+- Designed for cargo rather than riding
+- Cannot be ridden while equipped
+- Increases mount's carrying capacity by +5 load
+
+**Saddlebags (pair)** (Quality 2, 1 load, 30 coins)
+- Can be attached to any saddle
+- Provides additional 5 load capacity
+- Does not grant any riding bonuses
+
+**Bit and Bridle** (Quality 1, 0 load, 10 coins)
+- Basic riding gear required for most mounts
+- Included with all saddles; this is for purchasing separately
+
+**Blinders** (Quality 1, 0 load, 15 coins)
+- Leather eye guards that limit peripheral vision
+- Grants +1 boon on Spirit + Nature rolls to calm a frightened mount
+- Imposes +1 bane on the mount's Perception rolls
+
+## Mount Options
+
+Different types of mounts offer varying capabilities, from carrying capacity to speed and special abilities. The following represents common mount options available in most civilized regions. Their statistics can be found in the Companion Traits section below if they can also serve as companions.
+
+### Common Mounts
+
+| Mount Type | Tier | Size | Base Carrying Capacity | Movement | Special Traits | Typical Cost |
+|------------|------|------|------------------------|----------|----------------|--------------|
+| **Donkey** | 1 | Medium | 15 load | 1/turn (1x travel) | Stubborn but hardy; +1 boon on Fortitude rolls | 50 coins |
+| **Mule** | 2 | Medium | 20 load | 1/turn (1x travel) | Sturdy; can carry heavy loads without encumbrance | 75 coins |
+| **Riding Horse** | 2 | Large | 15 load + rider | 2/turn (2x travel) | Fast movement; suitable for riding | 250 coins |
+| **Draft Horse** | 2 | Large | 25 load | 1/turn (1x travel) | Strong; +2 to carrying capacity limits | 75 coins |
+| **War Horse** | 3 | Large | 20 load + rider | 2/turn (2x travel) | Trained for combat; can attack in battle | 750 coins |
+| **Camel** | 2 | Large | 20 load + rider | 1/turn (1.5x travel) | Desert adapted; requires half water in arid climates | 250 coins |
+| **Pony** | 1 | Medium | 12 load + rider | 1/turn (1.5x travel) | Small but reliable; suitable for smaller riders | 100 coins |
+| **Giant Lizard** | 3 | Large | 18 load + rider | 1/turn (1x travel) | Can climb walls; amphibious | 500 coins |
+| **Elephant** | 5 | Huge | 40 load + up to 3 riders | 2/turn (1x travel) | Massive carrying capacity; intimidating | 3,000 coins |
+| **Ox** | 2 | Large | 30 load | 1/turn (0.5x travel) | Slow but incredibly strong; best for wagons | 100 coins |
+
+**Notes on Carrying Capacity:**
+- Carrying capacity includes the weight of any saddle, barding, or equipment on the mount
+- Mounts become encumbered following the same rules as adventurers when exceeding their carrying capacity
+- The "Beast of Burden" ability (found on horses, mules, etc.) adds +2 to the mount's encumbrance and over-encumbrance limits
+- A rider's personal load does not count against carrying capacity unless the mount is also carrying significant cargo
+
+### Mount Special Abilities
+
+Many mounts have special abilities detailed in their creature entries. Here are common abilities:
+
+**Fast Movement** - Mount has +1 Movement per turn and can travel at increased speed (typically 2x normal travel speed)
+
+**Beast of Burden** - Add +2 to the mount's encumbrance and over-encumbrance limits, allowing it to carry more before becoming slowed
+
+**Powerful Build** - Similar to Beast of Burden; some creatures have inherent strength for carrying loads
+
+**Amphibious/Aquatic** - Mount can swim effectively or hold breath for extended periods
+
+**Climbing** - Mount can scale walls or difficult terrain (like giant lizards)
+
+**Desert Adapted** - Mount requires less water in arid environments (like camels)
+
+**Combat Training** - Mount can act as a companion in combat, making attacks and using abilities
+
+## Mount Equipment
+
+Mounts can be outfitted with various types of equipment to improve their utility and protection. Each piece of equipment takes up load on the mount and may provide specific benefits.
+
+### Saddles
+
+Saddles make riding more comfortable and secure, and provide attachment points for carrying gear.
+
+**Standard Saddle** (Quality 2, 3 load, 50 coins)
+- Provides comfortable seating for one rider
+- Includes saddlebags that can hold up to 5 load without counting against rider's carrying capacity
+- Grants +1 boon on Agility + Nature rolls to maintain control during difficult maneuvers
+
+**War Saddle** (Quality 3, 5 load, 150 coins)
+- Reinforced saddle designed for combat
+- Includes reinforced saddlebags that can hold up to 8 load
+- Grants +1 boon on Agility + Nature rolls to maintain control during combat
+- Provides +1 bonus to the rider's Parry defense while mounted (better bracing)
+
+**Exotic Saddle** (Quality 3, 4 load, 125 coins)
+- Custom-fitted saddle designed for non-standard mounts (flying creatures, companions with unusual anatomy, giant insects, etc.)
+- Includes specialized harnesses and straps that adapt to the mount's body shape
+- Can hold up to 6 load in integrated pouches
+- Grants +1 boon on Agility + Nature rolls to maintain control during difficult maneuvers
+- Required for safely riding creatures not built for standard saddles
+
+**Riding Pad** (Quality 1, 1 load, 15 coins)
+- Simple blanket or hide providing minimal comfort
+- Can hold up to 2 load in small attached pouches
+- No bonus to riding rolls
+
+### Barding (Mount Armor)
+
+Barding protects mounts in combat but adds significant weight and may reduce mobility.
+
+**Leather Barding** (Quality 2, 8 load, 150 coins)
+- Provides +2 AV to the mount
+- Does not reduce mount's Movement
+
+**Scale Barding** (Quality 3, 12 load, 500 coins)
+- Provides +4 AV to the mount  
+- Reduces mount's Movement by 1 (minimum 1 Movement per turn)
+
+**Steel Barding** (Quality 4, 16 load, 1,500 coins)
+- Provides +6 AV to the mount
+- Reduces mount's Movement by 1 (minimum 1 Movement per turn)
+- Durability: d8 (same as heavy armor)
+
+**Ceremonial Barding** (Quality 3, 6 load, 750 coins)
+- Ornate armor designed for parades and displays
+- Provides +2 AV to the mount
+- Grants +1 boon on Influence rolls when displaying wealth or status
+- Does not reduce mount's Movement
+
+### Feed and Supplies
+
+**Feed Bag** (Quality 1, 1 load per unit, 15 coins)
+- Contains enough feed for one mount for one day
+- Has a d4 Supply die
+- At the end of each day, make a Supply check to see if the feed is depleted
+
+**Portable Trough** (Quality 1, 2 load, 25 coins)
+- Collapsible leather or canvas trough for watering multiple mounts
+- Essential in arid regions where water sources are rare
+
+**Grooming Kit** (Quality 2, 1 load, 50 coins)
+- Contains brushes, picks, and basic veterinary supplies
+- Spend 1 use during a rest to tend to a mount, granting it +1 boon on its next Fortitude roll
+- Has 3 uses like other toolkits
+
+### Other Mount Gear
+
+**Pack Saddle** (Quality 1, 2 load, 30 coins)
+- Designed for cargo rather than riding
+- Cannot be ridden while equipped
+- Increases mount's carrying capacity by +5 load
+
+**Saddlebags (pair)** (Quality 2, 1 load, 30 coins)
+- Can be attached to any saddle
+- Provides additional 5 load capacity
+- Does not grant any riding bonuses
+
+**Bit and Bridle** (Quality 1, 0 load, 10 coins)
+- Basic riding gear required for most mounts
+- Included with all saddles; this is for purchasing separately
+
+**Blinders** (Quality 1, 0 load, 15 coins)
+- Leather eye guards that limit peripheral vision
+- Grants +1 boon on Spirit + Nature rolls to calm a frightened mount
+- Imposes +1 bane on the mount's Perception rolls
+
+## Mount Options
+
+Different types of mounts offer varying capabilities, from carrying capacity to speed and special abilities. The following represents common mount options available in most civilized regions. Their statistics can be found in the Companion Traits section below if they can also serve as companions.
+
+### Common Mounts
+
+| Mount Type | Tier | Size | Base Carrying Capacity | Movement | Special Traits | Typical Cost |
+|------------|------|------|------------------------|----------|----------------|--------------|
+| **Donkey** | 1 | Medium | 15 load | 1/turn (1x travel) | Stubborn but hardy; +1 boon on Fortitude rolls | 50 coins |
+| **Mule** | 2 | Medium | 20 load | 1/turn (1x travel) | Sturdy; can carry heavy loads without encumbrance | 75 coins |
+| **Riding Horse** | 2 | Large | 15 load + rider | 2/turn (2x travel) | Fast movement; suitable for riding | 250 coins |
+| **Draft Horse** | 2 | Large | 25 load | 1/turn (1x travel) | Strong; +2 to carrying capacity limits | 75 coins |
+| **War Horse** | 3 | Large | 20 load + rider | 2/turn (2x travel) | Trained for combat; can attack in battle | 750 coins |
+| **Camel** | 2 | Large | 20 load + rider | 1/turn (1.5x travel) | Desert adapted; requires half water in arid climates | 250 coins |
+| **Pony** | 1 | Medium | 12 load + rider | 1/turn (1.5x travel) | Small but reliable; suitable for smaller riders | 100 coins |
+| **Giant Lizard** | 3 | Large | 18 load + rider | 1/turn (1x travel) | Can climb walls; amphibious | 500 coins |
+| **Elephant** | 5 | Huge | 40 load + up to 3 riders | 2/turn (1x travel) | Massive carrying capacity; intimidating | 3,000 coins |
+| **Ox** | 2 | Large | 30 load | 1/turn (0.5x travel) | Slow but incredibly strong; best for wagons | 100 coins |
+
+**Notes on Carrying Capacity:**
+- Carrying capacity includes the weight of any saddle, barding, or equipment on the mount
+- Mounts become encumbered following the same rules as adventurers when exceeding their carrying capacity
+- The "Beast of Burden" ability (found on horses, mules, etc.) adds +2 to the mount's encumbrance and over-encumbrance limits
+- A rider's personal load does not count against carrying capacity unless the mount is also carrying significant cargo
+
+### Mount Special Abilities
+
+Many mounts have special abilities detailed in their creature entries. Here are common abilities:
+
+**Fast Movement** - Mount has +1 Movement per turn and can travel at increased speed (typically 2x normal travel speed)
+
+**Beast of Burden** - Add +2 to the mount's encumbrance and over-encumbrance limits, allowing it to carry more before becoming slowed
+
+**Powerful Build** - Similar to Beast of Burden; some creatures have inherent strength for carrying loads
+
+**Amphibious/Aquatic** - Mount can swim effectively or hold breath for extended periods
+
+**Climbing** - Mount can scale walls or difficult terrain (like giant lizards)
+
+**Desert Adapted** - Mount requires less water in arid environments (like camels)
+
+**Combat Training** - Mount can act as a companion in combat, making attacks and using abilities
 
 ## Companions
 
 Companions are powerful NPCs that accompany you on your adventures. You can obtain access to various NPC companions - bestial, humanoid, or other.
 
-For example, adventurers wanting an Animal Companion will have to take the Survival Talent with the same name.
-
-### Obtaining a Companion
-
-To have a companion accompany you, you first need the ability to command and bond with one. This typically comes from:
-
-- **Talents and Features:** Certain talents (like Animal Companion) or class features grant you the ability to bond with and command a companion.
-- **Spells:** Some spells can summon temporary companions for limited durations.
-
-Once you have the ability to bond with a companion (through a talent, feature, or similar), you can obtain one through the following methods:
-
-- **Purchase:** Buy a trained companion from specialized trainers or merchants. See the table below for costs by tier.
-- **Taming:** Attempt to tame a wild creature yourself. This requires successful Spirit + Nature rolls over time (typically a medium to long duration depending on the creature's tier and temperament). The GM determines the difficulty and duration required.
-- **Other Methods:** Your GM may allow other methods based on your story, such as rescuing a creature, earning one as a reward, or forming a bond through roleplay.
-
-> Having the ability to bond with a companion (from a talent or feature) and actually obtaining a specific companion are two separate steps. You need both the mechanical ability and an in-world method of acquisition.
-
-#### Trained Companion Costs
-
-If you want to purchase a companion at character creation or during the game, use the following costs based on the companion's tier:
-
-| Tier | Cost |
-|------|------|
-| 0 (Harmless) | 25 coins |
-| 1 (Capable) | 75 coins |
-| 2 (Dangerous) | 250 coins |
-| 3 (Ferocious) | 750 coins |
-| 4 (Monstrous) | 2,500 coins |
-| 5 (Primeval) | 7,500 coins |
+For example, adventurers wanting an Animal Companion will have to take the Survival Talent with the same name. 
 
 ### Companions during combat
 
@@ -291,24 +520,6 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Relentless. </strong>When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day.
 
 
-#### **Camel**
-
-| HP | AV | Attributes | Defenses |
-| --- | --- | --- | --- |
-| +10 | - | - | - |
-
-**Skills:** Athletics, Fighting (-1), Fortitude, Survival
-
-**Attacks:**
-- <strong>Bite</strong> (<em>crush</em>). Deals normal weapon damage.
-- <strong>Kick</strong> (<em>crush</em>). This creature can only use this attack if it skips all Movement this turn (before and after the attack). Deals +1 weapon damage.
-
-**Abilities:**
-- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Desert Adapted.</strong> This creature can ignore the penalty to Supply checks for extremely hot environments.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
-
-
 #### **Cat**
 
 | HP | AV | Attributes | Defenses |
@@ -395,42 +606,6 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Track Scent. </strong>This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain).
 
 
-#### **Donkey**
-
-| HP | AV | Attributes | Defenses |
-| --- | --- | --- | --- |
-| +10 | - | - | - |
-
-**Skills:** Athletics, Fighting (-1), Fortitude, Survival
-
-**Attacks:**
-- <strong>Bite</strong> (<em>crush</em>). Deals normal weapon damage.
-- <strong>Kick</strong> (<em>crush</em>). This creature can only use this attack if it skips all Movement this turn (before and after the attack). Deals +1 weapon damage.
-
-**Abilities:**
-- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Sure-Footed. </strong>This creature gains +1 boon on rolls to avoid being knocked prone or pushed. It also ignores difficult terrain from rocky or mountainous areas.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
-
-
-#### **Elephant**
-
-| HP | AV | Attributes | Defenses |
-| --- | --- | --- | --- |
-| +10 | +1 (light) | - | - |
-
-**Skills:** Athletics, Fighting (-1), Fortitude, Survival
-
-**Attacks:**
-- <strong>Stomp</strong> (<em>crush</em>). This creature can only use this attack if it skips all Movement this turn (before and after the attack). Deals +1 weapon damage. On a strong or critical hit, the target is knocked prone.
-- <strong>Tusk</strong> (<em>crush</em>). On a strong or critical hit, the target is either knocked prone or pushed close (your choice).
-
-**Abilities:**
-- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
-- <strong>Trample. </strong>When this creature moves through the space of a creature at least one Size smaller, it can make a Stomp attack against that creature as a Quick Action.
-
-
 #### **Frog**
 
 | HP | AV | Attributes | Defenses |
@@ -499,23 +674,6 @@ Each companion will have one of the following traits, representing the type of c
 **Abilities:**
 - <strong>Amphibious.</strong> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
-
-
-#### **Ox**
-
-| HP | AV | Attributes | Defenses |
-| --- | --- | --- | --- |
-| +10 | - | - | - |
-
-**Skills:** Fighting (-1), Fortitude, Survival
-
-**Attacks:**
-- <strong>Tusks</strong> (<em>crush</em>). Deals normal weapon damage. On a strong or critical hit, the target is either knocked prone or pushed close (your choice).
-
-**Abilities:**
-- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
-- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
-- <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
 
 
 #### **Poisonous Snake**
@@ -690,7 +848,7 @@ Each companion will have one of the following traits, representing the type of c
 
 **Attacks:**
 - <strong>Slam</strong> (<em>crush</em>). On a strong or critical hit, the target falls prone.
-- <strong>Whelm </strong>(<em>crush</em>)<strong>.</strong> This melee attack can only target creatures of the same or smaller Size than this creature. If targeting smaller creatures in melee range, you can target multiple, where two creatures of a particular Size count as one creature of one Size larger (for example, two small goblins count as one medium creature). The combined Size of all target’s can’t exceed this creature’s Size.<br/>Deals -1 weapon damage (min. 1). On a hit, each target is grappled, restrained, and suffocating until this creature uses another Action than Whelm on a following turn or is moved out of melee range. On a failure, the target is pushed close.
+- <strong>Whelm </strong>(<em>crush</em>)<strong>.</strong> This melee attack can only target creatures of the same or smaller Size than this creature. If targeting smaller creatures in melee range, you can target multiple, where two creatures of a particular Size count as one creature of one Size larger (for example, two small goblins count as one medium creature). The combined Size of all target’s can’t exceed this creature’s Size.<br/>Deals -1 weapon damage (min. 1). On a hit, each target is grappled, restrained, and suffocating until this creature uses another Action than Whelm on a following turn or is moved out of melee range. On a failure, the target is pushed close.<br/>
 
 **Abilities:**
 - <strong>Aquatic (fast).</strong> This creature is immune to drowning and can swim with normal Movement. Also, this creature can swim with +2 Movement per turn.
@@ -784,7 +942,7 @@ Each companion will have one of the following traits, representing the type of c
 
 **Attacks:**
 - <strong>Bite</strong> (<em>crush</em>). Deals -1 weapon damage (min. 1).
-- <strong>Eye Rays.</strong> This creature can shoot two randomly chosen arcane eye rays (roll 1d4 per eye ray). Choose one or two targets within medium range before rolling the eye rays effects. Roll Agility + Arcana once per eye ray and apply the effects:<br/><strong>1. Dazing Ray.</strong> Compare the result vs. Resist. On a success, the target is charmed and distracted for a short duration by this creature.<br/><strong>2. Fear Ray. </strong>Compare the result vs. Resist. On a success, the target is briefly frightened.<br/><strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.<br/><strong>4. Telekinetic Ray. </strong>Compare the result vs. Parry. On a success, the target is pushed a short distance away from this creature. If the target is of smaller Size than this creature, this creature can move the target freely in any direction for a short distance instead.
+- <strong>Eye Rays.</strong> This creature can shoot two randomly chosen arcane eye rays (roll 1d4 per eye ray). Choose one or two targets within medium range before rolling the eye rays effects. Roll Agility + Arcana once per eye ray and apply the effects:<br/><br/><strong>1. Dazing Ray.</strong> Compare the result vs. Resist. On a success, the target is charmed and distracted for a short duration by this creature.<br/><strong>2. Fear Ray. </strong>Compare the result vs. Resist. On a success, the target is briefly frightened.<br/><strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.<br/><strong>4. Telekinetic Ray. </strong>Compare the result vs. Parry. On a success, the target is pushed a short distance away from this creature. If the target is of smaller Size than this creature, this creature can move the target freely in any direction for a short distance instead.
 
 **Abilities:**
 - <strong>Darkvision (medium/long). </strong>This creature can see at medium range in absolute darkness as in bright light and up to a long distance as in dim light.

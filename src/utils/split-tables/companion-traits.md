@@ -121,6 +121,24 @@
 - <strong>Relentless. </strong>When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day.
 
 
+#### **Camel**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +10 | - | - | - |
+
+**Skills:** Athletics, Fighting (-1), Fortitude, Survival
+
+**Attacks:**
+- <strong>Bite</strong> (<em>crush</em>). Deals normal weapon damage.
+- <strong>Kick</strong> (<em>crush</em>). This creature can only use this attack if it skips all Movement this turn (before and after the attack). Deals +1 weapon damage.
+
+**Abilities:**
+- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
+- <strong>Desert Adapted.</strong> This creature can ignore the penalty to Supply checks for extremely hot environments.
+- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+
+
 #### **Cat**
 
 | HP | AV | Attributes | Defenses |
@@ -207,6 +225,42 @@
 - <strong>Track Scent. </strong>This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain).
 
 
+#### **Donkey**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +10 | - | - | - |
+
+**Skills:** Athletics, Fighting (-1), Fortitude, Survival
+
+**Attacks:**
+- <strong>Bite</strong> (<em>crush</em>). Deals normal weapon damage.
+- <strong>Kick</strong> (<em>crush</em>). This creature can only use this attack if it skips all Movement this turn (before and after the attack). Deals +1 weapon damage.
+
+**Abilities:**
+- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
+- <strong>Sure-Footed. </strong>This creature gains +1 boon on rolls to avoid being knocked prone or pushed. It also ignores difficult terrain from rocky or mountainous areas.
+- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+
+
+#### **Elephant**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +10 | +1 (light) | - | - |
+
+**Skills:** Athletics, Fighting (-1), Fortitude, Survival
+
+**Attacks:**
+- <strong>Stomp</strong> (<em>crush</em>). This creature can only use this attack if it skips all Movement this turn (before and after the attack). Deals +1 weapon damage. On a strong or critical hit, the target is knocked prone.
+- <strong>Tusk</strong> (<em>crush</em>). On a strong or critical hit, the target is either knocked prone or pushed close (your choice).
+
+**Abilities:**
+- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
+- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+- <strong>Trample. </strong>When this creature moves through the space of a creature at least one Size smaller, it can make a Stomp attack against that creature as a Quick Action.
+
+
 #### **Frog**
 
 | HP | AV | Attributes | Defenses |
@@ -275,6 +329,23 @@
 **Abilities:**
 - <strong>Amphibious.</strong> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
+
+
+#### **Ox**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +10 | - | - | - |
+
+**Skills:** Fighting (-1), Fortitude, Survival
+
+**Attacks:**
+- <strong>Tusks</strong> (<em>crush</em>). Deals normal weapon damage. On a strong or critical hit, the target is either knocked prone or pushed close (your choice).
+
+**Abilities:**
+- <strong>Beast of Burden.</strong> This creature can be of large Size even for a Tier that normally doesn’t allow that Size.
+- <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
+- <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
 
 
 #### **Poisonous Snake**
@@ -449,7 +520,7 @@
 
 **Attacks:**
 - <strong>Slam</strong> (<em>crush</em>). On a strong or critical hit, the target falls prone.
-- <strong>Whelm </strong>(<em>crush</em>)<strong>.</strong> This melee attack can only target creatures of the same or smaller Size than this creature. If targeting smaller creatures in melee range, you can target multiple, where two creatures of a particular Size count as one creature of one Size larger (for example, two small goblins count as one medium creature). The combined Size of all target’s can’t exceed this creature’s Size.<br/>Deals -1 weapon damage (min. 1). On a hit, each target is grappled, restrained, and suffocating until this creature uses another Action than Whelm on a following turn or is moved out of melee range. On a failure, the target is pushed close.<br/>
+- <strong>Whelm </strong>(<em>crush</em>)<strong>.</strong> This melee attack can only target creatures of the same or smaller Size than this creature. If targeting smaller creatures in melee range, you can target multiple, where two creatures of a particular Size count as one creature of one Size larger (for example, two small goblins count as one medium creature). The combined Size of all target’s can’t exceed this creature’s Size.<br/>Deals -1 weapon damage (min. 1). On a hit, each target is grappled, restrained, and suffocating until this creature uses another Action than Whelm on a following turn or is moved out of melee range. On a failure, the target is pushed close.
 
 **Abilities:**
 - <strong>Aquatic (fast).</strong> This creature is immune to drowning and can swim with normal Movement. Also, this creature can swim with +2 Movement per turn.
@@ -543,7 +614,7 @@
 
 **Attacks:**
 - <strong>Bite</strong> (<em>crush</em>). Deals -1 weapon damage (min. 1).
-- <strong>Eye Rays.</strong> This creature can shoot two randomly chosen arcane eye rays (roll 1d4 per eye ray). Choose one or two targets within medium range before rolling the eye rays effects. Roll Agility + Arcana once per eye ray and apply the effects:<br/><br/><strong>1. Dazing Ray.</strong> Compare the result vs. Resist. On a success, the target is charmed and distracted for a short duration by this creature.<br/><strong>2. Fear Ray. </strong>Compare the result vs. Resist. On a success, the target is briefly frightened.<br/><strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.<br/><strong>4. Telekinetic Ray. </strong>Compare the result vs. Parry. On a success, the target is pushed a short distance away from this creature. If the target is of smaller Size than this creature, this creature can move the target freely in any direction for a short distance instead.
+- <strong>Eye Rays.</strong> This creature can shoot two randomly chosen arcane eye rays (roll 1d4 per eye ray). Choose one or two targets within medium range before rolling the eye rays effects. Roll Agility + Arcana once per eye ray and apply the effects:<br/><strong>1. Dazing Ray.</strong> Compare the result vs. Resist. On a success, the target is charmed and distracted for a short duration by this creature.<br/><strong>2. Fear Ray. </strong>Compare the result vs. Resist. On a success, the target is briefly frightened.<br/><strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.<br/><strong>4. Telekinetic Ray. </strong>Compare the result vs. Parry. On a success, the target is pushed a short distance away from this creature. If the target is of smaller Size than this creature, this creature can move the target freely in any direction for a short distance instead.
 
 **Abilities:**
 - <strong>Darkvision (medium/long). </strong>This creature can see at medium range in absolute darkness as in bright light and up to a long distance as in dim light.
