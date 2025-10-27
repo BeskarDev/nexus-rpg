@@ -49,7 +49,7 @@ Mark waypoints on the track (⛺ camps, 🏘️ settlements, ⚠️ danger zones
 ## Daily Travel Procedure
 
 ### 1. Morning Phase
-- Choose **pace**: Slow (+1 boon travel rolls), Normal (balanced), or Fast (-1 bane travel rolls)
+- Decide if attempting **forced march** (extra paces but causes fatigue)
 - Assign **travel roles**: Navigator (mandatory), Scout (mandatory), and optional roles
 
 ### 2. Midday Phase - Progress Roll
@@ -69,10 +69,10 @@ Mark waypoints on the track (⛺ camps, 🏘️ settlements, ⚠️ danger zones
 - **Difficult terrain** (mountains, swamp): -2 paces
 - **Extreme conditions**: -3 paces
 
-**Pace Modifiers:**
-- **Slow pace**: -1 pace (minimum 0)
-- **Normal pace**: No modifier
-- **Fast pace**: +1 pace
+**Forced March:**
+- Gain +2 paces this day
+- Each party member gains 1 fatigue at end of day
+- Cannot be done on consecutive days without additional fatigue
 
 **Mount/Vehicle Bonuses:**
 - **Riding horses**: +1 pace (not in difficult terrain)
@@ -190,9 +190,9 @@ When you accumulate enough paces to reach a waypoint box, resolve its effects:
 ## Quick Reference
 
 **Each Travel Day:**
-1. Choose pace (slow/normal/fast)
+1. Decide if forced march (optional: +2 paces, gain 1 fatigue)
 2. Navigator rolls vs Terrain TN → clear paces (0/2/4/4/6)
-3. Apply terrain modifier and pace modifier
+3. Apply terrain modifier, mount bonus, and forced march bonus
 4. Mark off progress boxes as paces accumulate (typically 4 paces = 1 box)
 5. Scout rolls vs TN 8 → modify encounter die
 6. Roll encounter die → consult terrain table
@@ -205,10 +205,10 @@ When you accumulate enough paces to reach a waypoint box, resolve its effects:
 - Weak/Strong Success: 4 paces
 - Critical Success: 6 paces
 
-**Pace Effects:**
-- Slow: +1 boon navigation, -1 pace
-- Normal: No modifiers
-- Fast: -1 bane navigation, +1 pace
+**Modifiers:**
+- Forced March: +2 paces (gain 1 fatigue at end of day)
+- Mount (horse): +1 pace (not in difficult terrain)
+- Mount (wagon): -1 pace (carry more supplies)
 
 **Terrain Penalties:**
 - Easy (roads): +1 pace
