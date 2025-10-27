@@ -1,79 +1,23 @@
 ---
-sidebar_position: 10
+sidebar_position: 8
 ---
 
 # ⚔️ Travel Encounters
 
-Each day of travel brings the possibility of encounters - both dangerous and beneficial. The encounter system adds variety, tension, and unpredictability to journeys while giving players meaningful ways to influence the odds through their travel roles and choices.
+Roll on terrain-specific encounter tables based on the encounter die result. The Scout's roll modifies the die size.
 
-## Daily Encounter Roll
+## Encounter Die Results
 
-During the **Afternoon Phase** of each travel day, roll for a random encounter:
+| Roll | Type | Severity |
+|------|------|----------|
+| 1 | Fortuitous | Helpful or lucky |
+| 2-3 | Neutral | Interesting but harmless |
+| 4-6 | Challenging | Potentially harmful |
+| 7-9 | Perilous | Dangerous |
+| 10-11 | Dire | Very dangerous |
+| 12 | Catastrophic | Extreme danger |
 
-### The Encounter Die
-
-The size of the encounter die depends on the **terrain type** and is modified by the **Scout's roll**:
-
-**Base Encounter Die by Terrain:**
-
-| Terrain Type | Base Die | Encounter Frequency |
-|--------------|----------|---------------------|
-| Road/Trail | d8 | Rare - mostly travelers and patrols |
-| Plains/Grassland | d8 | Occasional - visible from afar |
-| Forest/Jungle | d6 | Common - many creatures and dangers |
-| Hills/Mountains | d6 | Common - difficult terrain harbors threats |
-| Desert/Badlands | d6 | Common - harsh environment, desperate creatures |
-| Swamp/Marsh | d4 | Very common - hidden dangers everywhere |
-| Tundra/Ice | d8 | Rare - few creatures survive here |
-| Haunted/Cursed | d4 | Very common - supernatural activity |
-
-**Scout Modifies the Die:**
-
-The Scout role (Spirit + Perception roll) can increase or decrease the encounter die size:
-
-**Scout Roll Outcomes:**
-
-**Blunder** (6+ below TN 8)
-- **Surprised:** Party is unaware when an encounter starts, suffers -1 bane on Initiative
-- **Unwanted Attention:** Increase encounter die by one step (max d12)
-
-**Failure** (-1 to -5 below TN 8)
-- **Unwanted Attention:** Increase encounter die by one step (max d12)
-
-**Weak Success** (0-2 above TN 8)
-- Choose one:
-  - **Find Shelter:** Scout finds good campsite (no bad night, +1 boon on rest)
-  - **Avoid Danger:** Decrease encounter die by one step (min d4)
-  - **Make Discovery:** Find something useful (+1 boon for Forager/Hunter/Fisher)
-
-**Strong Success** (3-5 above TN 8)
-- Choose two from weak success options
-
-**Critical Success** (6+ above TN 8)
-- Choose all three from weak success options
-
-**Die Step Progression:** d4 → d6 → d8 → d10 → d12
-
-### Rolling the Encounter Die
-
-After modifying the encounter die based on Scout results, roll it:
-
-**Encounter Die Results:**
-
-| Result | Type | Description |
-|--------|------|-------------|
-| 1 | Fortuitous | Something helpful or lucky |
-| 2-3 | Neutral | Interesting but not threatening |
-| 4-6 | Challenging | Potentially harmful or dubious |
-| 7-9 | Perilous | Dangerous or aggressive |
-| 10-11 | Dire | Very dangerous or terrifying |
-| 12 | Catastrophic | Extremely dangerous or terrible misfortune |
-
-**Note:** With a d4 or d6, you can't roll higher results - dangerous terrain has more frequent but less extreme encounters.
-
-## Terrain-Specific Encounter Tables
-
-When you roll the encounter die, consult the appropriate terrain table. The GM can roll randomly or choose an encounter that fits the current narrative.
+## Encounter Tables
 
 ### Forest Encounter Table
 
@@ -267,160 +211,3 @@ When you roll the encounter die, consult the appropriate terrain table. The GM c
 3. Necromantic corruption spreads (become undead or flee)
 4. Portal to shadow realm opens (Tier 7-8 horror invasion)
 
-## Encounter Resolution
-
-When an encounter is rolled, the GM has several options:
-
-### 1. Describe and Move On (Neutral results)
-
-For neutral results, the GM simply describes the encounter and any minor consequences:
-
-> "You pass an abandoned camp. The fire pit is cold, but you find 3 rations in good condition."
-
-No rolls required unless the party wants to investigate further.
-
-### 2. Skill Challenge (Challenging results)
-
-For challenging results, offer the party a skill check to overcome the obstacle:
-
-> "A flash flood blocks your path. Roll Strength + Athletics TN 10 to ford it, or Mind + Education TN 12 to find a safe crossing."
-
-Success means minimal consequences. Failure means damage, lost progress, or other penalties.
-
-### 3. Combat Encounter (Perilous, Dire, Catastrophic)
-
-For dangerous results, initiate a combat scene:
-
-- Determine surprise based on Scout's roll (blundered Scout = party surprised)
-- Set up encounter distance (close, short, medium based on terrain)
-- Run combat normally
-- Aftermath: check for wounds, lost supplies, time lost
-
-### 4. Roleplay Encounter (Any result with NPCs)
-
-When the encounter involves NPCs, allow the party to choose their approach:
-
-- Negotiate (Influence, Insight)
-- Avoid (Stealth, deception)
-- Intimidate (Influence, display of power)
-- Fight (if negotiation fails)
-
-### 5. Story Event (GM's Choice)
-
-The GM can always replace a random encounter with a planned story event:
-
-> "Instead of rolling the encounter die, you see smoke rising from the village you were meant to resupply at. It's under attack!"
-
-## Player Choices Affecting Encounters
-
-Players can influence encounters through multiple means:
-
-### Travel Role Performance
-
-**Scout's Critical Success:**
-- Can skip the encounter roll entirely (choose "avoid encounter" bonus)
-
-**Lookout Role:**
-- Maintains vigilance during travel
-- Roll Spirit + Perception each day
-- Success: Spot encounters from afar, can prepare or avoid
-- Failure: Encounter happens as normal
-- This role is optional but valuable in dangerous terrain
-
-### Pace Choice
-
-**Slow Pace:**
-- Scout gets +1 boon (better at avoiding danger)
-- Less likely to blunder into encounters
-
-**Fast Pace:**
-- Scout gets -1 bane (less vigilant, more likely to trigger encounters)
-- May rush into danger
-
-### Equipment and Preparation
-
-**Camouflage Gear:** +1 boon to avoid detection encounters
-**Watchdog or Animal Companion:** +1 boon to detect night encounters
-**Maps and Local Knowledge:** GM may reduce encounter severity or allow avoidance
-**Magic Items:** Various effects depending on item
-
-## Special Encounter Situations
-
-### Night Encounters
-
-Some encounters happen during the **Night Phase** (while party rests):
-
-**Watch Rotation:**
-- Each watch (usually 4 hours) requires a Perception check
-- Success: Detect approaching danger, wake party with preparation time
-- Failure: Danger arrives undetected, party surprised
-
-**Night Encounter Table (Optional):**
-Roll on terrain encounter table with +2 to result (night makes things worse).
-
-### Weather-Triggered Encounters
-
-Some encounter results trigger weather events instead of creatures:
-
-**Sandstorm (Desert):** 
-- Encounter result 7-9 can mean sudden sandstorm
-- 0 progress for the day
-- Shelter check (Spirit + Survival TN 12) or take damage
-
-**Blizzard (Mountains/Tundra):**
-- Encounter result 10-11 can mean severe blizzard
-- 0 progress for 1d3 days
-- Cold damage each day without shelter
-
-**Flash Flood (Forest/Swamp):**
-- Encounter result 7-9 can mean sudden flood
-- Agility + Athletics TN 12 or swept away
-
-See **Weather & Climate** for detailed weather rules.
-
-### Multiple Encounters Per Day
-
-In very dangerous terrain (swamp, haunted lands):
-
-- Roll encounter die twice: once at midday, once at evening
-- OR: Use smaller encounter die (d4) and roll more frequently
-
-### Escalating Encounters
-
-If the party lingers in dangerous terrain:
-
-- Each day, increase encounter severity by +1
-- Day 1: Roll normally
-- Day 2: +1 to encounter result
-- Day 3: +2 to encounter result
-- This represents area becoming aware of party presence
-
-## GM Guidance: Designing Custom Encounters
-
-**Creating Terrain Encounter Tables:**
-
-1. **Identify terrain theme** - What makes this environment unique?
-2. **List 6 fortuitous possibilities** - Helpful NPCs, discoveries, bonuses
-3. **List 6 neutral possibilities** - Interesting sights, minor findings, lore
-4. **List 6 challenging possibilities** - Obstacles, minor threats, delays
-5. **List 6 perilous possibilities** - Combat encounters, major hazards, dangers
-6. **List 2-4 dire possibilities** - Elite encounters, extreme hazards
-7. **List 1-2 catastrophic possibilities** - Lord encounters, region-defining threats
-
-**Balancing Encounter Frequency:**
-
-- **Safe areas:** d10-d12 encounter die (rare encounters, mostly neutral/fortuitous)
-- **Standard wilderness:** d6-d8 encounter die (balanced)
-- **Dangerous wilds:** d4-d6 encounter die (frequent, often threatening)
-- **Death zones:** d4 encounter die + roll twice daily (constant danger)
-
-**Tying Encounters to Story:**
-
-- Seed 1-2 story-relevant encounters per journey
-- Use fortuitous results to introduce helpful NPCs
-- Use dire results for recurring villains or plot developments
-- Make catastrophic results into major story beats
-
----
-
-**Next:** Continue to **Weather & Climate** to add environmental conditions to your journeys.

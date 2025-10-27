@@ -77,16 +77,12 @@ Travel scenes are counted in days. One travel turn usually covers about one or m
 
 > **Comprehensive Travel System**
 > 
-> For multi-day journeys through wilderness, use the complete **Travel System** which includes:
-> - **[Travel Overview](07-travel-overview.md)** - Core principles and system introduction
-> - **[Route Planning](08-route-planning.md)** - Planning procedures and resource calculation
-> - **[Progress Track](09-progress-track.md)** - Daily advancement mechanics
-> - **[Travel Encounters](10-travel-encounters.md)** - Terrain-specific encounter tables
-> - **[Weather & Climate](11-weather-climate.md)** - Weather effects and environmental conditions
-> - **[Environment Stat Blocks](12-environment-stat-blocks.md)** - Terrain challenge ratings
-> - **[Travel Examples](13-travel-examples.md)** - Worked journey examples
+> For multi-day wilderness journeys, see:
+> - **[Travel Rules](07-travel-rules.md)** - Complete travel system with progress track, encounters, and weather
+> - **[Travel Encounters](08-travel-encounters.md)** - Terrain-specific encounter tables
+> - **[Environment Stat Blocks](09-environment-stat-blocks.md)** - Terrain types with mechanical properties
 > 
-> The rules below provide a simplified version for quick reference or short journeys.
+> The simplified rules below work for quick trips or when you want minimal complexity.
 
 ### Travel Activities
 
@@ -185,13 +181,13 @@ While traveling with fishing tools and fitting lakes or rivers on your way, roll
 
 > **Travel Roles in the Comprehensive System**
 > 
-> When using the full **[Travel System](07-travel-overview.md)**, these travel roles integrate with:
+> When using the full **[Travel Rules](07-travel-rules.md)**, these travel roles integrate with:
 > - **Navigator**: Makes daily progress rolls to advance on the progress track
 > - **Scout**: Modifies encounter die and finds shelter
 > - **Forager/Hunter/Fisher**: Reduce resource consumption as described above
 > - **Additional Roles**: Lookout (maintains vigilance) and Quartermaster (manages supplies)
 > 
-> See **[Progress Track](09-progress-track.md)** for how Navigator rolls determine daily advancement.
+> See **[Travel Rules](07-travel-rules.md)** for the complete system.
 
 ### Ending Travel
 

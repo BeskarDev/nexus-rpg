@@ -1,26 +1,21 @@
 ---
-sidebar_position: 12
+sidebar_position: 9
 ---
 
 # 🏔️ Environment Stat Blocks
 
-Environments in Nexus RPG have mechanical identities similar to creatures, with defined challenges, hazards, and tactical considerations. Each environment presents unique obstacles that test different party capabilities and require specific preparation.
+Each terrain type has mechanical properties that affect travel difficulty, pace, encounters, and hazards.
 
-## Understanding Environment Stat Blocks
+**Stat Block Format:**
+- **Traits**: Special environmental properties
+- **Navigation TN**: Target number for Navigator progress rolls
+- **Pace**: Leagues per day (slow/normal/fast)
+- **Encounter Die**: Base die size for daily encounters
+- **Resource Pressure**: How environment strains supplies
+- **Hazards**: Specific dangers
+- **Climate**: Weather patterns
 
-Each environment stat block includes:
-
-**Name** - The environment type
-**Traits** - Special properties defining the environment's nature
-**Navigation TN** - Target number for Navigator progress rolls
-**Pace Modifiers** - How terrain affects travel speed and progress
-**Encounter Die** - Base die size for daily encounters
-**Resource Pressure** - How the environment strains party resources
-**Hazards** - Specific environmental dangers
-**Climate** - Typical weather and temperature conditions
-**Clocks & Threats** - Escalating dangers if the party lingers too long
-
-## Core Environment Stat Blocks
+---
 
 ### Road or Trail
 
@@ -42,11 +37,6 @@ Each environment stat block includes:
 - Toll collectors (legitimate or criminal)
 - Blocked roads (fallen trees, wash-outs)
 - Territorial disputes or patrols
-
-**Clocks & Threats:**
-- None - Roads are generally stable
-
-**GM Notes:** Roads are the safest, fastest travel. Use them for low-tension journeys or as relief between dangerous segments. Encounters should be social (merchants, pilgrims, patrols) more often than combat.
 
 ---
 
@@ -70,15 +60,6 @@ Each environment stat block includes:
 - Sudden storms with no shelter
 - Large predators (lions, wild horses, dire wolves)
 - Hostile nomad tribes
-
-**Clocks & Threats:**
-- "Wildfire Clock" (4 segments): If fire starts (encounter or accident), spreads quickly
-  - Segment 1: Small fire, easily avoided
-  - Segment 2: Growing fire, 1d6 damage if caught in smoke
-  - Segment 3: Wildfire, flee or take 2d6 fire damage
-  - Segment 4: Inferno, entire region burning (turn back or die)
-
-**GM Notes:** Plains offer fast travel but exposure. Lack of cover makes stealth impossible but also means threats are visible. Weather can turn deadly without shelter.
 
 ---
 
@@ -104,15 +85,6 @@ Each environment stat block includes:
 - Disorienting fog
 - Bandit ambushes
 
-**Clocks & Threats:**
-- "Tracked by Predators" (6 segments): Pack of wolves or other predators
-  - Segment 1-2: Distant howls, tracks
-  - Segment 3-4: Close encounters, glimpses
-  - Segment 5: Pack surrounds camp at night
-  - Segment 6: Full ambush (Tier 3-4 encounter)
-
-**GM Notes:** Forests provide abundant resources but obscured visibility makes navigation hard. Excellent for Hunter/Forager roles. Rich in discovery opportunities (ruins, hermits, sacred groves).
-
 ---
 
 ### Hills & Foothills
@@ -135,15 +107,6 @@ Each environment stat block includes:
 - Cave systems (can get lost)
 - Mountain predators (big cats, raptors)
 - Hostile hill tribes
-
-**Clocks & Threats:**
-- "Storm Brewing" (4 segments): Weather worsens
-  - Segment 1: Dark clouds gather
-  - Segment 2: Strong winds, light rain
-  - Segment 3: Thunderstorm (shelter required)
-  - Segment 4: Severe storm, flash floods possible
-
-**GM Notes:** Hills are transition zones between lowlands and mountains. Good for creating varied encounters (caves, vantage points for spotting, ambush sites). Weather can change quickly.
 
 ---
 
@@ -171,21 +134,6 @@ Each environment stat block includes:
 - Ice bridges and crevasses
 - Mountain predators (eagles, yetis, ice elementals)
 
-**Clocks & Threats:**
-- "Pass Closing" (Winter, 6 segments): Blizzard approaching
-  - Segment 1-2: First snow, cold increases
-  - Segment 3-4: Heavy snow, avalanche risk
-  - Segment 5: Blizzard begins, 0 progress days
-  - Segment 6: Pass completely blocked (turn back or trapped)
-  
-- "Avalanche Risk" (After heavy snow, 4 segments):
-  - Segment 1: Unstable snow, minor slides
-  - Segment 2: Medium slides, detours required
-  - Segment 3: Major avalanche risk
-  - Segment 4: Massive avalanche (survival challenge)
-
-**GM Notes:** Mountains are deadly and should feel it. Require proper preparation (gear, timing, guides). Best for epic journeys or climactic moments. Consider making mountain crossings entire story arcs.
-
 ---
 
 ### Desert (Sandy)
@@ -211,19 +159,6 @@ Each environment stat block includes:
 - Dehydration (deadly if water runs out)
 - Bandits and raiders at oases
 
-**Clocks & Threats:**
-- "Water Depletion" (Ongoing): Track water carefully
-  - Running low: Ration water (automatic fatigue each day)
-  - Out of water: Take 1 wound per day, die in 3 days
-  
-- "Sandstorm Incoming" (4 segments):
-  - Segment 1: Dust on horizon
-  - Segment 2: Strong winds, sand in air
-  - Segment 3: Sandstorm arrives (0 progress, find shelter)
-  - Segment 4: Massive storm (multiple days, survival challenge)
-
-**GM Notes:** Deserts test resource management above all. Water is life. Make oases critical waypoints. Sandstorms should be terrifying. Night travel is cooler but navigation is harder. Emphasize the harsh beauty and deadly indifference of the desert.
-
 ---
 
 ### Badlands & Rocky Wastes
@@ -247,14 +182,6 @@ Each environment stat block includes:
 - Venomous creatures (scorpions, snakes, spiders)
 - Getting lost in maze-like formations
 - Outlaws and exiles hiding in badlands
-
-**Clocks & Threats:**
-- "Flash Flood" (After rain, 3 segments):
-  - Segment 1: Distant thunder, water rising
-  - Segment 2: Canyon flooding, must climb to high ground
-  - Segment 3: Wall of water (escape or drown)
-
-**GM Notes:** Badlands combine desert harshness with mountain difficulty. Good for creating tense navigation challenges and outlaw hideout encounters. Flash floods are sudden and deadly.
 
 ---
 
@@ -281,21 +208,6 @@ Each environment stat block includes:
 - Will-o'-wisps lead astray
 - Hostile swamp dwellers (lizardfolk, hags)
 
-**Clocks & Threats:**
-- "Disease Outbreak" (6 segments): Swamp fever spreads
-  - Segment 1-2: Someone shows symptoms
-  - Segment 3-4: Multiple party members sick
-  - Segment 5: Severe illness, wounds from fever
-  - Segment 6: Death without treatment
-  
-- "Lost in Bog" (4 segments): Navigation failures accumulate
-  - Segment 1: Disoriented
-  - Segment 2: Going in circles
-  - Segment 3: Completely lost (erase progress)
-  - Segment 4: Trapped, must be rescued or find way out
-
-**GM Notes:** Swamps are oppressively dangerous. Everything is wet, diseased, and hostile. Great for horror elements. Disease should be a constant threat. Make dry ground and clean water precious.
-
 ---
 
 ### Jungle
@@ -321,17 +233,6 @@ Each environment stat block includes:
 - Thick undergrowth (must cut through, exhausting)
 - Hostile tribes
 
-**Clocks & Threats:**
-- "Monsoon Season" (6 segments): Weather worsens
-  - Segment 1-2: Frequent rain
-  - Segment 3-4: Heavy rain daily
-  - Segment 5: Constant deluge, rivers flood
-  - Segment 6: Impassable, must wait out season
-  
-- "Jungle Fever" (Similar to swamp disease clock)
-
-**GM Notes:** Jungles are claustrophobic and teeming with threats. Visibility is limited. Every plant could be poisonous. Emphasize the oppressive heat and humidity. Ruins hidden in jungle are excellent discoveries.
-
 ---
 
 ### Tundra & Ice Fields
@@ -356,21 +257,6 @@ Each environment stat block includes:
 - Polar predators (wolves, bears, yetis)
 - Exposure and hypothermia
 - Whiteout conditions (navigation impossible)
-
-**Clocks & Threats:**
-- "Freezing to Death" (4 segments): Without fire/shelter
-  - Segment 1: Shivering, -1 bane on rolls
-  - Segment 2: Hypothermia, 1 fatigue
-  - Segment 3: Severe hypothermia, 1 wound
-  - Segment 4: Death from cold
-  
-- "Blizzard" (6 segments):
-  - Segment 1-2: Snow begins
-  - Segment 3-4: Heavy snow, visibility reduced
-  - Segment 5: Blizzard, 0 progress
-  - Segment 6: Whiteout, deadly if exposed
-
-**GM Notes:** Tundra is brutally cold and empty. Survival is the primary challenge. Firewood is precious. Make shelter critical. Few encounters, but deadly when they occur.
 
 ---
 
@@ -398,60 +284,5 @@ Each environment stat block includes:
 - Corrupted water/food (poisoned or worse)
 - Spirits and phantoms
 
-**Clocks & Threats:**
-- "Corruption Spreads" (6 segments): Party exposed to curse
-  - Segment 1: Unsettling visions
-  - Segment 2: Nightmares, poor rest
-  - Segment 3: Physical symptoms (hair falling out, etc.)
-  - Segment 4: Cursed condition
-  - Segment 5: Severe curse, permanent effects
-  - Segment 6: Transformation or death
-  
-- "The Dead Rise" (4 segments): Undead gather
-  - Segment 1: Distant groans, shambling figures
-  - Segment 2: Encounters increase
-  - Segment 3: Undead horde forms (Tier 5-6)
-  - Segment 4: Massive undead army (Tier 7-8 or retreat)
-
-**GM Notes:** Haunted lands should be oppressive and draining. Everything feels wrong. Use psychological horror alongside physical threats. Make players want to leave as quickly as possible. Excellent for story climaxes.
-
-## Using Environment Stat Blocks
-
-### Combining Environments
-
-Long journeys often cross multiple terrain types:
-
-**Transition Zones:**
-- Forest → Hills → Mountains (gradual difficulty increase)
-- Plains → Badlands → Desert (resource pressure increases)
-- Swamp → Jungle → Swamp (claustrophobic throughout)
-
-**Mixed Terrain Days:**
-Some days might cross terrain boundaries:
-- Use the harder terrain's TN
-- Average the pace rates
-- Roll on both encounter tables (or choose appropriate)
-
-### Environment as Character
-
-Treat each environment as an active participant in the story:
-
-**The Desert wants:** To drain your water and leave you sun-bleached bones
-**The Mountain wants:** To bury you in snow and ice
-**The Swamp wants:** To infect you and trap you in its embrace
-**The Jungle wants:** To consume you with its teeming life
-
-Make environments feel alive and hostile (or benevolent for rare fortuitous environments).
-
-### Seasonal Variations
-
-Modify environment stats by season:
-
-**Forest in Spring:** Lower TN (8→6), more foraging (+1 boon)
-**Desert in Summer:** Higher heat pressure (3× water), more severe storms
-**Mountains in Winter:** Much higher TN (12→14), passes may be impassable
-**Plains in Autumn:** Harvest season, easier resupply at settlements
-
 ---
 
-**Next:** Continue to **Travel Examples** to see these environments in practice with full journey walkthroughs.
