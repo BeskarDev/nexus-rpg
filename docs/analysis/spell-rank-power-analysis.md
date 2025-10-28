@@ -328,12 +328,14 @@ This document analyzes the appropriate power level for each spell rank in Nexus 
 ### Damage Progression
 | Rank | Single Target | AoE (multi-target) | Notes |
 |------|---------------|-------------------|-------|
-| 0 | +2/+4/+6 | +2/+4/+6 (small) | Cantrip level |
+| 0 | +2/+4/+6 | +0/+2/+4 (small) | Cantrip level; AoE reduced for unlimited casting |
 | 1 | +4/+8/+12 | +2/+4/+6 (cone/line) | Basic combat; AoE one rank lower |
 | 2 | +6/+12/+18 | +4/+8/+12 (area) | Fireball equivalent; AoE one rank lower |
 | 3 | +8/+16/+24 | +6/+12/+18 (area) | Powerful; AoE one rank lower |
 | 4 | N/A | N/A | Focus on buffs/control |
 | 5 | +10/+20/+30 | +8/+16/+24 (area) | Peak power, not world-ending; AoE one rank lower |
+
+**Scaling Variations**: See spell-rank-guidelines.md for when to deviate from standard scaling based on area size, secondary effects, and other factors.
 
 ### Spell Characteristics by Rank
 | Rank | Focus | TN | Duration | Scope | Power Level |

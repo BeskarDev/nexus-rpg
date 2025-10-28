@@ -4,7 +4,7 @@
 
 | Rank | Focus Cost | Target Number | Damage (Single) | Damage (AoE) | Max Range | Typical Duration | Area Size | Notes |
 |------|------------|---------------|-----------------|--------------|-----------|------------------|-----------|-------|
-| 0 | 0 | Easy (6) | +2/+4/+6 | +2/+4/+6 | Medium | Briefly-Short | Melee-Close | Cantrips, at-will |
+| 0 | 0 | Easy (6) | +2/+4/+6 | +0/+2/+4 | Medium | Briefly-Short | Melee-Close | Cantrips, at-will |
 | 1 | 2 | Medium (8) | +4/+8/+12 | +2/+4/+6 | Medium | Short-Medium | Close-Short | Basic spells |
 | 2 | 4 | Hard (10) | +6/+12/+18 | +4/+8/+12 | Medium-Long | Short-Medium | Short-Medium | Fireball tier |
 | 3 | 6 | Very Hard (12) | +8/+16/+24 | +6/+12/+18 | Long | Short-Medium | Medium-Long | High power |
@@ -39,9 +39,13 @@
 - Critical Success: +6 damage
 
 **Multi-Target/AoE**:
-- Same as single target: +2/+4/+6
+- Weak Success: +0 damage per target
+- Strong Success: +2 damage per target
+- Critical Success: +4 damage per target
 - Area: Typically melee or close range
 - Targets: 1-3 creatures maximum
+
+**Note**: Rank 0 AoE damage is intentionally lower to balance unlimited casting. Some rank 0 spells (like Horrific Vision, Mind Blast) use +0/+2/+4 for psychic damage that ignores AV.
 
 #### Typical Effects
 - **Damage**: 2-6 damage plus spell power
@@ -481,6 +485,119 @@ Rank 4 spells rarely deal direct damage. Instead they:
 - Always costly (high Focus, Fatigue, other drawbacks)
 - Target tier limits still apply
 - Cannot create permanent changes to reality
+
+---
+
+## Damage Scaling Variations
+
+### Standard Scaling Rules
+
+**Base Formula**:
+- **Single-Target**: Standard progression by rank (Rank 0: +2/+4/+6, Rank 1: +4/+8/+12, etc.)
+- **AoE**: One rank lower damage (balances multi-target advantage)
+- **Rank 0 AoE**: Special case at +0/+2/+4 (balances unlimited casting)
+
+### When to Deviate from Standard Scaling
+
+The standard scaling assumes **typical area sizes and target counts** for each rank. Deviation is appropriate when spell design creates significant trade-offs.
+
+#### Smaller Area = Higher Damage
+
+**Guideline**: Spells with unusually small AoE for their rank can use damage closer to single-target values.
+
+**Examples from Current System**:
+- **Flame Burst** (Rank 1): Cone at Close range uses +2/+4/+6 (standard AoE)
+- **Frost Wave** (Rank 2): Cone at Short range uses +4/+8/+12 (standard AoE)
+- Both use standard scaling because cone size matches rank expectation
+
+**When to Apply**:
+- **Melee-range AoE** at Rank 2+: May use up to standard rank damage (not one rank lower)
+- **Close-range AoE** at Rank 3+: May use up to one-half rank higher than standard
+- **Example**: Rank 3 spell with melee AoE could use +8/+16/+24 instead of +6/+12/+18
+
+**Balancing Factors**:
+- Smaller area = fewer targets hit
+- Risk of being in close combat
+- Tactical positioning required
+
+#### Larger Area = Lower Damage
+
+**Guideline**: Spells with unusually large AoE for their rank should use damage from further ranks lower.
+
+**Examples from Current System**:
+- **Fireball** (Rank 2): Close area (standard) uses +4/+8/+12 (one rank lower)
+- **Shroud of Fear** (Rank 2): Close area uses +3/+6/+9 (between ranks 0-1, lower than standard)
+
+**When to Apply**:
+- **Medium+ area** at Rank 2: May use damage two ranks lower (Rank 0 values: +2/+4/+6)
+- **Long+ area** at Rank 3: May use damage two ranks lower (Rank 1 values: +4/+8/+12)
+- **Example**: Rank 3 spell with medium/long area might use +4/+8/+12 instead of +6/+12/+18
+
+**Balancing Factors**:
+- Larger area = more targets hit
+- Easier to affect entire encounters
+- Less tactical positioning required
+
+#### Secondary Effects = Lower Damage
+
+**Guideline**: Spells that combine damage with strong secondary effects should reduce damage accordingly.
+
+**Examples from Current System**:
+- **Shroud of Fear** (Rank 2): +3/+6/+9 damage + fear + area denial (below standard +4/+8/+12)
+- **Solar Flare** (Rank 3): +6/+12/+18 damage AoE + healing allies + remove conditions (standard AoE)
+- **Static Spark** (Rank 0): +2/+4/+6 to primary + +0/+2/+4 to secondary (chain damage reduced)
+
+**When to Apply**:
+- **Strong control effects**: Reduce damage by 1-2 steps (e.g., +4/+8/+12 → +3/+6/+9 or +2/+4/+6)
+- **Lasting conditions**: Reduce damage if condition lasts beyond briefly
+- **Hybrid damage/healing**: Each effect uses reduced values
+- **Chain effects**: Secondary targets take reduced damage
+
+**Balancing Factors**:
+- Multiple benefits from one spell
+- Conditions can be more impactful than raw damage
+- Action economy (two effects for one action)
+
+#### Minimal/No Damage = Maximum Utility
+
+**Guideline**: Spells that deal reduced or no damage should provide exceptional utility or control.
+
+**Examples from Current System**:
+- **Horrific Vision** (Rank 0): +0/+2/+4 psychic (below standard) but causes fear
+- **Mind Blast** (Rank 0): +0/+2/+4 psychic (below standard) but daze effect
+- **Kinetic Pull** (Rank 0): +2/+4/+6 (standard) but also pulls/knockdown
+
+**When to Apply**:
+- **Rank 0 with strong effects**: Use +0/+2/+4 if effect is powerful (fear, stun, etc.)
+- **Control-primary spells**: Damage can be minimal or absent if control is significant
+- **Utility-primary spells**: May deal no damage at all
+
+**Balancing Factors**:
+- Some effects are more valuable than damage
+- Versatility and utility matter
+- No-damage spells free up balance budget for powerful effects
+
+### Damage Deviation Quick Reference
+
+| Scenario | Damage Adjustment | Example |
+|----------|------------------|---------|
+| **Standard AoE** | One rank lower | Rank 2 AoE: +4/+8/+12 |
+| **Rank 0 AoE** | Special: +0/+2/+4 | Cantrip AoE balance |
+| **Melee AoE (Rank 2+)** | Up to standard rank | Rank 2 melee AoE: +6/+12/+18 |
+| **Large area (Rank 2+)** | Two ranks lower | Rank 2 medium area: +2/+4/+6 |
+| **Strong secondary effect** | -1 to -2 steps | +4/+8/+12 → +3/+6/+9 |
+| **Chain/split damage** | Secondary reduced | Primary +2/+4/+6, secondary +0/+2/+4 |
+| **Control-primary (Rank 0)** | +0/+2/+4 | Strong control with minimal damage |
+
+### Design Philosophy
+
+**Balance Principle**: Total spell power should remain consistent within rank. Trade-offs ensure fairness:
+- **More damage** = Smaller area, fewer targets, simpler effects
+- **More area** = Less damage per target
+- **More utility** = Less damage overall
+- **More effects** = Each effect is weaker
+
+**Playtesting Guideline**: If a spell feels significantly stronger or weaker than others of its rank, check whether deviations are justified by clear trade-offs.
 
 ---
 
