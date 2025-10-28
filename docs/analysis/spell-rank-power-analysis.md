@@ -260,7 +260,7 @@ This document analyzes the appropriate power level for each spell rank in Nexus 
 - Rank 5, Focus 10, Legendary (16), Long range, vs. Dodge, cone
 - Devastating natural assault
 - Thorns, vines, stones
-- Deals +10/+20/+30 damage
+- Deals +8/+16/+24 damage (AoE cone)
 - Creates difficult terrain
 - Grapples and restrains
 
@@ -329,11 +329,11 @@ This document analyzes the appropriate power level for each spell rank in Nexus 
 | Rank | Single Target | AoE (multi-target) | Notes |
 |------|---------------|-------------------|-------|
 | 0 | +2/+4/+6 | +2/+4/+6 (small) | Cantrip level |
-| 1 | +4/+8/+12 | +2/+4/+6 (cone/line) | Basic combat |
-| 2 | +6/+12/+18 | +6/+12/+18 (area) | Fireball equivalent |
-| 3 | +8/+16/+24 | +8/+16/+24 (area) | Powerful |
+| 1 | +4/+8/+12 | +2/+4/+6 (cone/line) | Basic combat; AoE one rank lower |
+| 2 | +6/+12/+18 | +4/+8/+12 (area) | Fireball equivalent; AoE one rank lower |
+| 3 | +8/+16/+24 | +6/+12/+18 (area) | Powerful; AoE one rank lower |
 | 4 | N/A | N/A | Focus on buffs/control |
-| 5 | +10/+20/+30 | +10/+20/+30 (area) | Peak power, not world-ending |
+| 5 | +10/+20/+30 | +8/+16/+24 (area) | Peak power, not world-ending; AoE one rank lower |
 
 ### Spell Characteristics by Rank
 | Rank | Focus | TN | Duration | Scope | Power Level |
