@@ -6,10 +6,10 @@
 |------|------------|---------------|-----------------|--------------|-----------|------------------|-----------|-------|
 | 0 | 0 | Easy (6) | +2/+4/+6 | +2/+4/+6 | Medium | Briefly-Short | Melee-Close | Cantrips, at-will |
 | 1 | 2 | Medium (8) | +4/+8/+12 | +2/+4/+6 | Medium | Short-Medium | Close-Short | Basic spells |
-| 2 | 4 | Hard (10) | +4/+8/+12 | +4/+8/+12 | Medium-Long | Short-Medium | Short-Medium | Fireball tier |
-| 3 | 6 | Very Hard (12) | +6/+12/+18 | +6/+12/+18 | Long | Short-Medium | Medium-Long | High power |
+| 2 | 4 | Hard (10) | +6/+12/+18 | +6/+12/+18 | Medium-Long | Short-Medium | Short-Medium | Fireball tier |
+| 3 | 6 | Very Hard (12) | +8/+16/+24 | +8/+16/+24 | Long | Short-Medium | Medium-Long | High power |
 | 4 | 8 | Extreme (14) | Variable | Variable | Long-Extreme | Short-Medium | Large | Transformations |
-| 5 | 10 | Legendary (16) | +8/+16/+24 | +8/+16/+24 | Extreme | Short-Medium | Large-Extreme | Peak mortal |
+| 5 | 10 | Legendary (16) | +10/+20/+30 | +10/+20/+30 | Extreme | Short-Medium | Large-Extreme | Peak mortal |
 
 ## Detailed Rank Guidelines
 
@@ -161,14 +161,14 @@
 
 #### Damage Scaling
 **Single Target**:
-- Weak Success: +4 damage
-- Strong Success: +8 damage
-- Critical Success: +12 damage
+- Weak Success: +6 damage
+- Strong Success: +12 damage
+- Critical Success: +18 damage
 
 **Multi-Target/AoE**:
-- Weak Success: +4 damage per target
-- Strong Success: +8 damage per target
-- Critical Success: +12 damage per target
+- Weak Success: +6 damage per target
+- Strong Success: +12 damage per target
+- Critical Success: +18 damage per target
 
 #### Area of Effect
 - **Cone**: Short to medium range
@@ -177,8 +177,8 @@
 - **Targets**: 4-10+ creatures
 
 #### Typical Effects
-- **Damage**: 4-12 plus spell power (single and AoE)
-- **Healing**: 4-12 HP (single or AoE)
+- **Damage**: 6-18 plus spell power (single and AoE)
+- **Healing**: 6-18 HP (single or AoE)
 - **Buffs**: +2-3 to rolls, multiple resistances, temp HP (10-20)
 - **Debuffs**: Short to medium duration conditions
 - **Control**: Strong grapple/restraint, summon tier 2 creatures, teleportation
@@ -186,22 +186,24 @@
 
 #### Heightening
 Many rank 2 spells can be heightened to rank 3 for enhanced effects:
-- Increased damage (+6/+12/+18)
+- Increased damage (+8/+16/+24)
 - Larger area
 - Additional targets
 - Longer duration
 
 #### Examples from System
-- **Fireball** (Evocation): +4/+8/+12 fire damage in close area, Medium range
-- **Lightning Strike** (Evocation): +4/+8/+12 lightning in line
+- **Fireball** (Evocation): +6/+12/+18 fire damage in close area, Medium range (should be updated)
+- **Lightning Strike** (Evocation): +6/+12/+18 lightning in line (should be updated)
 - **Arcane Barrier** (Conjuration): Create force wall with 20 HP, 4 AV
 - **Invisibility** (Illusion): Become invisible for short duration
-- **Healing Burst** (Life): +3/+6/+9 HP to all allies in cone
+- **Healing Burst** (Life): +6/+12/+18 HP to all allies in cone (should be updated)
 - **Summon Aberration** (Conjuration): Summon tier 2 creature
 
+**Note**: Current system spells use +4/+8/+12 for rank 2, which should be updated to +6/+12/+18 for consistent progression.
+
 #### Design Constraints
-- Maximum damage: +12 base (before spell power)
-- Heightened maximum: +18 base
+- Maximum damage: +18 base (before spell power)
+- Heightened maximum: +24 base (rank 3)
 - Duration: Maximum medium (1 hour)
 - Area: Maximum short radius
 - Cannot create tier 3+ creatures (base)
@@ -229,13 +231,13 @@ Many rank 2 spells can be heightened to rank 3 for enhanced effects:
 
 #### Damage Scaling
 **Single Target & AoE**:
-- Weak Success: +6 damage
-- Strong Success: +12 damage
-- Critical Success: +18 damage
+- Weak Success: +8 damage
+- Strong Success: +16 damage
+- Critical Success: +24 damage
 
 **Hybrid Effects** (Damage + Healing):
-- Damage: +6/+12/+18 to enemies
-- Healing: +3/+6/+9 to allies (half damage value)
+- Damage: +8/+16/+24 to enemies
+- Healing: +4/+8/+12 to allies (half damage value)
 
 #### Area of Effect
 - **Cone**: Medium to long range
@@ -244,8 +246,8 @@ Many rank 2 spells can be heightened to rank 3 for enhanced effects:
 - **Targets**: 6-15+ creatures
 
 #### Typical Effects
-- **Damage**: 6-18 plus spell power (consistent for single and AoE)
-- **Healing**: 6-18 HP (single or group)
+- **Damage**: 8-24 plus spell power (consistent for single and AoE)
+- **Healing**: 8-24 HP (single or group)
 - **Buffs**: Powerful transformations, multiple effects, significant bonuses
 - **Debuffs**: Paralysis, petrification, long-lasting conditions
 - **Control**: Summon tier 3 creatures, major terrain alteration, mass effects
@@ -258,16 +260,18 @@ Many rank 2 spells can be heightened to rank 3 for enhanced effects:
 - Some last entire encounters
 
 #### Examples from System
-- **Black Flame Bolt** (Evocation): +6/+12/+18 fire, ignores resistance, Long range
-- **Arcane Blast** (Conjuration): +6/+12/+18 blast with push, Long range
-- **Solar Flare** (Light): +6/+12/+18 radiant AoE + heal allies +3/+6/+9 + remove conditions
+- **Black Flame Bolt** (Evocation): +8/+16/+24 fire, ignores resistance, Long range (should be updated)
+- **Arcane Blast** (Conjuration): +8/+16/+24 blast with push, Long range (should be updated)
+- **Solar Flare** (Light): +8/+16/+24 radiant AoE + heal allies +4/+8/+12 + remove conditions (should be updated)
 - **Blessing of Dawn** (Light): Regen 4 HP/turn, immunity to fear/charm, see through illusions, re-roll tests
 - **Phantasmal Killer** (Illusion): Repeated psychic damage + fear, concentrated terror
 - **Dimension Door** (Conjuration): Teleport to long range location
 - **Petrification** (Nature): Turn creature to stone (tier limited)
 
+**Note**: Current system spells use +6/+12/+18 for rank 3, which should be updated to +8/+16/+24 for consistent progression.
+
 #### Design Constraints
-- Maximum damage: +18 base (before spell power)
+- Maximum damage: +24 base (before spell power)
 - Duration: Maximum medium (1 hour), some short for powerful effects
 - Area: Maximum long radius
 - Can create/summon tier 3 creatures
@@ -371,11 +375,11 @@ Rank 4 spells rarely deal direct damage. Instead they:
 
 #### Damage Scaling
 **Direct Damage Spells**:
-- Weak Success: +8 damage
-- Strong Success: +16 damage
-- Critical Success: +24 damage
+- Weak Success: +10 damage
+- Strong Success: +20 damage
+- Critical Success: +30 damage
 
-**Note**: This is approximately 133% of rank 3 damage, not double. Maintains bounded power.
+**Note**: This is approximately 125% of rank 3 damage (after correction), maintaining bounded power progression.
 
 #### Area of Effect
 - **Large Areas**: Medium to long radius
@@ -386,7 +390,7 @@ Rank 4 spells rarely deal direct damage. Instead they:
 #### Typical Effects
 
 **Offensive Spells**:
-- Damage: +8/+16/+24 plus spell power
+- Damage: +10/+20/+30 plus spell power
 - Area: Large (medium to long radius)
 - Additional effects: Conditions, terrain changes
 - Escapable: Always allow saves or countermeasures
@@ -433,7 +437,7 @@ Rank 4 spells rarely deal direct damage. Instead they:
 8. **Counterable**: Can be disrupted, dispelled, or resisted
 
 #### Example Concepts (from power analysis)
-- **Delayed Meteor** (Evocation): +8/+16/+24 fire in medium AoE, delayed detonation, Long range
+- **Delayed Meteor** (Evocation): +10/+20/+30 fire in medium AoE, delayed detonation, Long range
 - **Mass Restoration** (Life): Heal +10/+20/+30 HP, remove all conditions, heal 1 Wound from each ally
 - **Storm Lord** (Tempest): Flight, add Mysticism to storm damage, immunity to weather, +4 retaliation, short duration, 2 Fatigue
 - **Army of Shadows** (Necromancy): Animate 4-6 tier 2 undead, short duration (not permanent)
@@ -451,7 +455,7 @@ Rank 4 spells rarely deal direct damage. Instead they:
 ❌ Permanent summons or creations
 
 #### Design Constraints
-- Maximum damage: +24 base (before spell power)
+- Maximum damage: +30 base (before spell power)
 - Duration: Maximum medium (1 hour)
 - Area: Maximum extreme range or long radius
 - Temp HP maximum: 30-40
