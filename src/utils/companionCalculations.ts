@@ -324,13 +324,14 @@ const parseMultiOptionAttack = (
 			// Also handle standalone "Deals ... damage." in case it wasn't caught above
 			processedOption = processedOption.replace(/Deals [^.]*?damage\./i, '').trim()
 			
-			// Construct damage text and insert after the option name
+			// Construct damage text (without bold formatting)
 			const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage}${damageType} damage (${baseDamage} base + ${modifiedWeaponDamage} weapon).`
 			
-			// Insert after the option header (e.g., "3. Frost Ray.")
+			// Insert after the option header, handling <strong> tags correctly
+			// Pattern: <strong>3. Frost Ray. </strong> -> <strong>3. Frost Ray.</strong> damageText
 			processedOption = processedOption.replace(
-				/(\d+\.\s+\w+\s+Ray\.)\s*/,
-				`$1 ${damageText} `
+				/(<strong>\d+\.\s+\w+\s+Ray\.)\s*<\/strong>\s*/i,
+				`$1</strong> ${damageText} `
 			)
 			
 			return processTierCalculations(processedOption, tier)
