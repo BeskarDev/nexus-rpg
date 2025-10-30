@@ -2,6 +2,8 @@ import { Add, HelpOutline, Info, Build } from '@mui/icons-material'
 import { Box, Button, Typography, Tooltip, IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material'
 import React, { useState, useMemo } from 'react'
 import { DropResult } from '@hello-pangea/dnd'
+import { Provider } from 'react-redux'
+import { setupCompanionBuilderStore } from '@site/src/features/CompanionBuilder/store'
 import { SectionHeader } from '../../CharacterSheet'
 import { Companion } from '../../../../types/Character'
 import { useAppSelector } from '../../hooks/useAppSelector'
@@ -12,6 +14,8 @@ import { DeleteCompanionDialog } from './components/DeleteCompanionDialog'
 import { useCompanionActions } from './hooks/useCompanionActions'
 import { useAccordionState } from './hooks/useAccordionState'
 import { CompanionBuilder } from '@site/src/components/CompanionBuilder'
+
+const companionBuilderStore = setupCompanionBuilderStore()
 
 export const CompanionsTab: React.FC = () => {
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
@@ -161,10 +165,12 @@ export const CompanionsTab: React.FC = () => {
 			<Box sx={{ display: 'flex', gap: 1 }}>
 				<Tooltip title="Use the Companion Builder to create stat blocks">
 					<span>
-						<CompanionBuilder
-							showImportButton={true}
-							onImportCompanion={handleImportFromBuilder}
-						/>
+						<Provider store={companionBuilderStore}>
+							<CompanionBuilder
+								showImportButton={true}
+								onImportCompanion={handleImportFromBuilder}
+							/>
+						</Provider>
 					</span>
 				</Tooltip>
 				<Tooltip title="Add a new companion to your character sheet">
