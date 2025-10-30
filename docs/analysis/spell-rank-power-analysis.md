@@ -27,11 +27,11 @@ Nexus RPG spell ranks map to D&D spell levels to ensure appropriate power scalin
 | 1 | 2 | 8 | +4/+8/+12 | +2/+4/+6 | +2 per rank |
 | 2 | 4 | 10 | +6/+12/+18 | +4/+8/+12 | +2 per rank |
 | 3 | 6 | 12 | +8/+16/+24 | +6/+12/+18 | +2 per rank |
-| 4 | 8 | 14 | Variable | Variable | Transformations |
-| 5 | 10 | 16 | +10/+20/+30 | +8/+16/+24 | +2 per rank |
+| 4 | 8 | 14 | +10/+20/+30 | +8/+16/+24 | +2 per rank |
+| 5 | 10 | 16 | +12/+24/+36 | +10/+20/+30 | +2 per rank |
 
 **Rules**:
-- Single-target: Consistent +2 weak damage per rank (2→4→6→8→10)
+- Single-target: Consistent +2 weak damage per rank (2→4→6→8→10→12)
 - AoE: One rank lower (balances multi-target advantage)
 - Rank 0 AoE: Special case +0/+2/+4 (balances unlimited casting)
 
@@ -118,7 +118,7 @@ See `spell-rank-guidelines.md` for deviation scenarios (area size, secondary eff
 ### Arcane Disciplines
 
 **Evocation**
-- **Delayed Meteor**: +8/+16/+24 fire AoE, delayed detonation, can be disrupted, creates burning terrain
+- **Delayed Meteor**: +10/+20/+30 fire AoE, delayed detonation, can be disrupted, creates burning terrain
 - **Prismatic Barrier**: Defensive sphere, multiple resistances, reflects damage, medium duration, can be overwhelmed
 
 **Illusion**
@@ -131,7 +131,7 @@ See `spell-rank-guidelines.md` for deviation scenarios (area size, secondary eff
 
 **Telepathy**
 - **Mental Fortress**: Grant 6 allies immunity to charm/fear/psychic, shared thoughts, short duration, concentration
-- **Psychic Maelstrom**: +8/+16/+24 psychic cone, confusion/stun, save to reduce
+- **Psychic Maelstrom**: +10/+20/+30 psychic cone, confusion/stun, save to reduce
 
 **Telekinetics**
 - **Gravity Reversal**: Reverse gravity in medium area, creatures fall upward, short duration
@@ -144,7 +144,7 @@ See `spell-rank-guidelines.md` for deviation scenarios (area size, secondary eff
 ### Mystic Traditions
 
 **Light**
-- **Radiant Convergence**: +8/+16/+24 radiant line, extra vs undead, dispels darkness, reveals truth, blinds briefly
+- **Radiant Convergence**: +10/+20/+30 radiant line, extra vs undead, dispels darkness, reveals truth, blinds briefly
 - **Beacon of Truth**: Zone of truth in close area, no lies, illusions fail, hidden revealed, medium duration
 
 **Twilight**
@@ -152,16 +152,16 @@ See `spell-rank-guidelines.md` for deviation scenarios (area size, secondary eff
 - **Shadow Apotheosis**: Become shadow creature, invisible in dim light, phase through objects, shadow attacks boosted, resistances, short duration, 2 fatigue after
 
 **Life**
-- **Mass Restoration**: Heal all allies in close area +10/+20/+30 HP, remove conditions, heal 1 wound each, once per day per target
+- **Mass Restoration**: Heal all allies in close area +12/+24/+36 HP, remove conditions, heal 1 wound each, once per day per target
 - **Vitality Field**: Healing zone, +6 HP per turn, grant temp HP, remove conditions, medium duration
 
 **Death**
-- **Plague Wind**: +6/+12/+18 poison/necrotic cone, inflicts poisoned, spreads nearby (not exponential), curable
+- **Plague Wind**: +10/+20/+30 poison/necrotic cone, inflicts poisoned, spreads nearby (not exponential), curable
 - **Death's Grasp**: Death curse single target, ongoing necrotic, prevents healing, weakens with saves, breakable
 
 **Nature**
 - **Primal Awakening**: Animate tier 4 plant/earth construct, follows commands, limited terrain reshaping, short duration
-- **Nature's Wrath**: +8/+16/+24 damage cone (thorns/vines/stones), difficult terrain, grapples/restrains
+- **Nature's Wrath**: +10/+20/+30 damage cone (thorns/vines/stones), difficult terrain, grapples/restrains
 
 **Tempest**
 - **Storm Lord**: Transform into storm elemental, flight, enhanced lightning/wind, immunity to weather, add Mysticism to damage, short duration, 2 fatigue after

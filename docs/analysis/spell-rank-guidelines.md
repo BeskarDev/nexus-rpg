@@ -8,11 +8,11 @@
 | **1** | 2 | 8 | +4/+8/+12 | +2/+4/+6 | Medium | Short-Medium | Close-Short | Basic combat/utility |
 | **2** | 4 | 10 | +6/+12/+18 | +4/+8/+12 | Medium-Long | Short-Medium | Short-Medium | Fireball tier, concentration starts |
 | **3** | 6 | 12 | +8/+16/+24 | +6/+12/+18 | Long | Short-Medium | Medium-Long | High power, encounter-defining |
-| **4** | 8 | 14 | Variable | Variable | Long-Extreme | Short-Medium | Large | Transformations, buffs, control |
-| **5** | 10 | 16 | +10/+20/+30 | +8/+16/+24 | Extreme | Short-Medium | Large-Extreme | Peak mortal, bounded power |
+| **4** | 8 | 14 | +10/+20/+30 | +8/+16/+24 | Long-Extreme | Short-Medium | Large | Very high power, transformations |
+| **5** | 10 | 16 | +12/+24/+36 | +10/+20/+30 | Extreme | Short-Medium | Large-Extreme | Peak mortal, bounded power |
 
 **Damage Scaling Rules**:
-- **Single-Target**: +2 per rank progression (2→4→6→8→10 weak damage)
+- **Single-Target**: Consistent +2 per rank progression (2→4→6→8→10→12 weak damage)
 - **AoE Standard**: One rank lower damage (balances multi-target)
 - **Rank 0 AoE**: Special case +0/+2/+4 (balances unlimited casting)
 
@@ -168,14 +168,13 @@
 ### Rank 4 (Transformation Spells)
 **Core Identity**: Major transformations, powerful buffs/control
 
-**Damage Philosophy**: Most Rank 4 spells don't deal direct damage. Focus is on:
-- Polymorphing (alter form/abilities)
-- Major buffs (+4 to attributes, flight, resistances)
-- Powerful control (walls, zones, domination)
-- Utility (teleportation, planar effects, scrying)
+**Damage Philosophy**: Rank 4 continues the damage progression while adding complexity:
+- Direct damage follows standard scaling: +10/+20/+30 (single), +8/+16/+24 (AoE)
+- Many spells focus on transformations, buffs, and control instead
+- Powerful utility effects (teleportation, planar effects, scrying)
 
 **Capabilities**:
-- Damage: Variable (when applicable)
+- Damage: +10/+20/+30 (single), +8/+16/+24 (AoE) when applicable
 - Range: Long-Extreme
 - Duration: Short-Medium (concentration common)
 - Area: Large (affects multiple areas or whole encounters)
@@ -203,7 +202,7 @@
 **Core Identity**: Legendary mastery, NOT world-shattering
 
 **Capabilities**:
-- Damage: +10/+20/+30 single, +8/+16/+24 AoE
+- Damage: +12/+24/+36 single, +10/+20/+30 AoE
 - Range: Extreme
 - Duration: Short-Medium (max, never permanent)
 - Area: Large-Extreme (multiple areas, whole battlefields)
@@ -212,15 +211,15 @@
 **Power Level**: D&D Level 7 equivalent (Delayed Blast Fireball, Plane Shift), NOT Level 9 (Wish, Meteor Swarm)
 
 **Typical Effects**:
-- Maximum single-target damage (10-30)
-- Large area damage (8-24 per target)
+- Maximum single-target damage (12-36)
+- Large area damage (10-30 per target)
 - Mass buffs/healing (affect squads/parties)
 - Major control (reshape battlefield, dominate groups)
 - Legendary utility (long-range teleport, major divination)
 
 **Example Concepts**:
-- *Delayed Meteor* (Evocation): +8/+16/+24 AoE, massive blast
-- *Mass Restoration* (Life): +10/+20/+30 healing or +8/+16/+24 to group
+- *Delayed Meteor* (Evocation): +10/+20/+30 AoE, massive blast
+- *Mass Restoration* (Life): +12/+24/+36 healing or +10/+20/+30 to group
 - *Storm Lord* (Tempest): Control weather in large area, summon storm
 - *Warlord's Presence* (War): Buff entire squad, battlefield command
 

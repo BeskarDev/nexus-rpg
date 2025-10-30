@@ -19,8 +19,8 @@
 | 1 | 2 | 8 | +4/+8/+12 | +2/+4/+6 | Medium | Short-Medium | Close-Short | Basic (≈D&D 1-2) |
 | 2 | 4 | 10 | +6/+12/+18 | +4/+8/+12 | Medium-Long | Short-Medium | Short-Medium | Moderate (≈D&D 3-4) |
 | 3 | 6 | 12 | +8/+16/+24 | +6/+12/+18 | Long | Short-Medium | Medium-Long | High (≈D&D 5) |
-| 4 | 8 | 14 | Variable | Variable | Long-Extreme | Short-Medium | Large | Very high (≈D&D 6) |
-| 5 | 10 | 16 | +10/+20/+30 | +8/+16/+24 | Extreme | Short-Medium | Large-Extreme | Peak mortal (≈D&D 7) |
+| 4 | 8 | 14 | +10/+20/+30 | +8/+16/+24 | Long-Extreme | Short-Medium | Large | Very high (≈D&D 6) |
+| 5 | 10 | 16 | +12/+24/+36 | +10/+20/+30 | Extreme | Short-Medium | Large-Extreme | Peak mortal (≈D&D 7) |
 
 **Damage Formula**: Spell Power + spell bonus
 **Success Levels**: Weak (0-2 over TN), Strong (3-5), Critical (6+)
