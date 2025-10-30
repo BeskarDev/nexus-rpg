@@ -18,16 +18,16 @@ When you blunder a **rank 1 or higher** arcane spell, roll 1d100 and apply the r
 
 | d100 | Effect |
 |------|--------|
-| 1 | **Chromatic Explosion.** All creatures in a close/close/short/short/medium radius take 4/6/8/10/12 damage (roll 1d4: 1=fire, 2=frost, 3=lightning, 4=acid). |
-| 2 | **Elemental Affinity.** Roll 1d4: 1=fire, 2=frost, 3=lightning, 4=acid. Gain resistance to that element but weakness to its opposite (fire↔frost, lightning↔acid) for short/short/medium/medium/long duration. |
-| 3 | **Temperature Shift.** All creatures in close/short/short/medium/medium area take 2/3/4/5/6 lasting damage each turn (roll 1d2: 1=burning, 2=slowed condition) for short/short/medium/medium/long duration. |
-| 4 | **Static Field.** All creatures in close/close/short/short/medium radius take 3/5/7/9/11 lightning damage. Creatures in melee of each other take +2 damage. |
+| 1 | **Chromatic Explosion.** Caster erupts with elemental energy. All creatures in a close/close/short/short/medium radius take 4/6/8/10/12 damage (roll 1d4: 1=fire, 2=frost, 3=lightning, 4=acid). |
+| 2 | **Elemental Affinity.** Caster's body attunes to an element. Roll 1d4: 1=fire, 2=frost, 3=lightning, 4=acid. Gain resistance to that element but weakness to its opposite (fire↔frost, lightning↔acid) for short/short/medium/medium/long duration. |
+| 3 | **Temperature Shift.** Area undergoes extreme temperature change. All creatures in close/short/short/medium/medium area take 2/3/4/5/6 lasting damage each turn. Roll 1d2: 1=extreme heat (burning), 2=extreme cold (slowed condition). Lasts short/short/medium/medium/long duration. |
+| 4 | **Static Field.** Arcs of lightning dance between all creatures. All creatures in close/close/short/short/medium radius take 3/5/7/9/11 lightning damage. Creatures in melee of each other take +2 damage (chain lightning). |
 | 5 | **Frost Nova.** All creatures in close/close/short/short/medium radius take 4/6/8/10/12 frost damage and are briefly slowed. |
 | 6 | **Flame Vortex.** A swirling fire column appears at a random point in medium range (GM chooses). Creatures entering or starting turn in close/close/short/short/medium radius take 2/3/4/5/6 fire damage per turn until end of scene. |
 | 7 | **Acid Rain.** Choose a random area in medium range (GM chooses or roll 1d8 for direction). Creatures in close/close/short/short/medium area take 4/6/8/10/12 acid damage (ignores half AV). |
-| 8 | **Lightning Rod.** Caster briefly stunned. Next lightning damage targeting anyone in short range redirects to caster (damage doubled) for brief/brief/short/short/medium duration. |
+| 8 | **Lightning Rod.** Caster becomes magnet for electrical energy. Caster briefly stunned. Next lightning damage targeting anyone in short range redirects to caster (damage doubled) for brief/brief/short/short/medium duration. |
 | 9 | **Elemental Weapon Infusion.** All held weapons in close/short/short/medium/medium radius gain +2/+3/+4/+5/+6 damage (roll element per weapon: 1d4 fire/frost/lightning/acid) for short/short/medium/medium/long duration. |
-| 10 | **Pyroclasm.** Caster's area becomes hazardous. Creatures entering or starting turn take 3/4/5/6/7 fire damage per turn for short/short/medium/medium/long duration. |
+| 10 | **Pyroclasm.** Ground beneath caster cracks and releases gouts of flame. Caster's area becomes hazardous. Creatures entering or starting turn take 3/4/5/6/7 fire damage per turn for short/short/medium/medium/long duration. |
 | 11 | **Gravity Reversal.** All creatures in close/short/short/medium/medium radius float upward a very long distance and hover. At end of brief/short/short/medium/medium duration, they fall. |
 | 12 | **Repulsion Wave.** All creatures in close/close/short/short/medium radius pushed close/close/short/short/medium distance from caster. |
 | 13 | **Attraction Field.** Choose random point in medium range (GM chooses or roll 1d8 for direction). All creatures in close/short/short/medium/medium radius pulled close/close/short/short/medium distance toward it. |
@@ -35,8 +35,8 @@ When you blunder a **rank 1 or higher** arcane spell, roll 1d100 and apply the r
 | 15 | **Levitation Lock.** All creatures in close/close/short/short/medium radius float close above ground. Movement becomes 0 unless flying, for brief/short/short/medium/medium duration. |
 | 16 | **Crushing Pressure.** All creatures in close/close/short/short/medium radius take 4/6/8/10/12 blast damage (ignoring AV) and briefly stunned. |
 | 17 | **Whirlwind.** All creatures in close/close/short/short/medium radius roll STR + Athletics vs. TN 8/9/10/11/12. On fail, pushed close/short/short/medium/medium in random direction (roll 1d8). |
-| 18 | **Momentum Theft.** All other creatures in close/close/short/short/medium radius have Movement reduced to 0. Caster gains +1/+1/+2/+2/+3 Movement for brief/brief/short/short/medium duration. |
-| 19 | **Zero Gravity Zone.** Caster's area in close/close/short/short/medium radius becomes zero gravity. Creatures can fly/float but attacks suffer +1 bane for brief/short/short/medium/medium duration. |
+| 18 | **Momentum Theft.** Caster steals kinetic energy from nearby creatures. All other creatures in close/close/short/short/medium radius have Movement reduced to 0. Caster gains +1/+1/+2/+2/+3 Movement for brief/brief/short/short/medium duration. |
+| 19 | **Zero Gravity Zone.** Gravity ceases in caster's area. Close/close/short/short/medium radius becomes zero gravity. Creatures can fly/float but attacks suffer +1 bane (disorientation) for brief/short/short/medium/medium duration. |
 | 20 | **Telekinetic Slam.** All creatures in close/short/short/medium/medium radius take 4/6/8/10/12 blast damage and fall prone. |
 | 21 | **Random Teleport.** Caster teleports to random location within short/medium/medium/long/very long distance (GM determines unoccupied space). |
 | 22 | **Position Swap.** Caster swaps places with random creature in close/short/medium/medium/long range (roll randomly if multiple valid targets). |
@@ -59,19 +59,19 @@ When you blunder a **rank 1 or higher** arcane spell, roll 1d100 and apply the r
 | 39 | **Spectral Form.** Caster becomes translucent, moves through objects (not creatures). Resistance to physical, weakness to radiant/force for brief/short/short/medium/medium duration. |
 | 40 | **Limb Multiplication.** Caster grows 1/1/2/2/3 extra arms. Can wield extra weapons/items. +1/+1/+2/+2/+3 boons on grapple for short/short/medium/medium/long duration. |
 | 41 | **Mind Swap.** Caster and random creature in close/short/short/medium/medium range (roll if multiple) swap bodies. Each controls other's body but retains own mind. Mental attributes stay with mind, physical with body for brief/brief/short/short/medium duration. |
-| 42 | **Shared Senses.** All creatures in close/close/short/short/medium radius share senses. All suffer +1 bane on all rolls for brief/short/short/medium/medium duration. |
+| 42 | **Shared Senses.** All creatures in close/close/short/short/medium radius telepathically share senses (see/hear what others see/hear). Overwhelming input causes all creatures in area to suffer +1 bane on all rolls for brief/short/short/medium/medium duration. |
 | 43 | **Mass Confusion.** All creatures in close/close/short/short/medium radius (including caster) become confused for brief/brief/short/short/medium duration. |
-| 44 | **Phantom Army.** Each creature in close/short/short/medium/medium radius creates 1/1/2/2/3 illusory duplicates. All attacks suffer +1/+1/+2/+2/+2 banes for brief/short/short/medium/medium duration. |
+| 44 | **Phantom Army.** Illusory magic creates 1/1/2/2/3 duplicate images of each creature in close/short/short/medium/medium radius. All attacks in the area suffer +1/+1/+2/+2/+2 banes (hard to distinguish real targets from illusions) for brief/short/short/medium/medium duration. |
 | 45 | **Telepathic Broadcast.** All creatures in close/short/medium/medium/long range hear caster's surface thoughts. Caster has disadvantage on social rolls for short/short/medium/medium/long duration. |
-| 46 | **Sensory Chaos.** All creatures in close/close/short/short/medium radius experience hallucinations. All suffer +1/+1/+2/+2/+2 bane on Perception for brief/short/short/medium/medium duration. |
+| 46 | **Sensory Chaos.** Magic distorts senses in close/close/short/short/medium radius. All creatures in area experience hallucinations (colors swap, sounds mislead, smells overwhelm). All affected creatures suffer +1/+1/+2/+2/+2 bane on Perception for brief/short/short/medium/medium duration. |
 | 47 | **Fear Aura.** All creatures in close/close/short/short/medium radius (except caster) become frightened of caster for brief/brief/short/short/medium duration. |
 | 48 | **Charm Wave.** All creatures in close/short/short/medium/medium radius that can see caster become charmed for brief/brief/short/short/medium duration. |
-| 49 | **Mirror Dimension.** All creatures in close/short/short/medium/medium radius see false reality. All physical rolls suffer +1/+1/+2/+2/+2 bane for brief/short/short/medium/medium duration. |
+| 49 | **Mirror Dimension.** Illusory mirror-world overlaps reality in close/short/short/medium/medium radius. All creatures in area see false reflections (movement in wrong directions, false obstacles). All affected creatures suffer +1/+1/+2/+2/+2 bane on physical rolls for brief/short/short/medium/medium duration. |
 | 50 | **Psychic Scream.** All creatures in close/close/short/short/medium radius take 4/6/8/10/12 psychic damage (ignoring AV) and briefly dazed. |
 | 51 | **Random Summon.** Summon random creature at random close location (GM chooses). Roll 1d6 for tier: 1-2=tier 0, 3-4=tier 1, 5=tier 2, 6=tier 0/0/1/1/2. Could be hostile, neutral, or friendly (GM choice). Lasts until end of scene or dismissed. |
 | 52 | **Weapon Rain.** Weapons rain in close/short/short/medium/medium radius. All creatures take 4/6/8/10/12 physical damage. Ground littered with weapons. |
-| 53 | **Object Conjuration.** Random mundane objects fill close/close/short/short/medium radius. Area becomes difficult terrain for short/medium/medium/long/long duration. |
-| 54 | **Swarm Summon.** Harmless swarm (insects/bats/rats) appears in close/short/short/medium/medium radius. All suffer +1/+1/+2/+2/+2 bane on all rolls for short/short/medium/medium/long duration. |
+| 53 | **Object Conjuration.** Random mundane objects (chairs, barrels, ropes, etc.) materialize and clutter close/close/short/short/medium radius. Area becomes difficult terrain (must navigate around objects) for short/medium/medium/long/long duration. |
+| 54 | **Swarm Summon.** A swarm of distracting creatures (insects/bats/rats) fills close/short/short/medium/medium radius. While harmless, they buzz, flutter, and crawl on everyone. All creatures in area suffer +1/+1/+2/+2/+2 bane on all rolls (distraction) for short/short/medium/medium/long duration. |
 | 55 | **Duplicate Self.** Create duplicate with half HP and attributes (round down). Acts independently (GM controls), lasts short/short/medium/medium/long duration or until destroyed. |
 | 56 | **Elemental Spawn.** Summon tier 0/1/1/2/2 elemental (roll 1d4: fire/water/air/earth). Hostile to all, attacks nearest. Lasts short/medium/medium/long/long duration or until destroyed. |
 | 57 | **Wall of Matter.** Wall appears in close range. Roll 1d4: 1=stone (HP 20), 2=ice (HP 15), 3=thorns (HP 10, damages melee for 3), 4=force (HP 30). HP ×1/×1.5/×2/×2.5/×3, height close/close/short/short/medium, length short/short/medium/medium/long. Lasts medium/medium/long/long/long duration. |
@@ -80,10 +80,10 @@ When you blunder a **rank 1 or higher** arcane spell, roll 1d100 and apply the r
 | 60 | **Trap Conjuration.** 1/2/2/3/3 magical traps appear in close/short/medium/medium/long radius (GM places at strategic locations). Creatures entering roll AGI + Athletics vs. TN 8/9/10/11/12 or take 4/6/8/10/12 damage. Lasts medium/medium/long/long/long duration. |
 | 61 | **Earthquake.** All creatures in close/short/short/medium/medium radius roll STR + Athletics vs. TN 8/9/10/11/12 or fall prone. Area becomes difficult terrain for short/short/medium/medium/long duration. |
 | 62 | **Fog Bank.** All areas in close/short/medium/medium/long radius become heavily obscured (total darkness for vision) for short/short/medium/medium/long duration. |
-| 63 | **Windstorm.** All in close/short/short/medium/medium radius have Movement -1 (min 0). Ranged attacks suffer +1/+2/+2/+2/+2 banes for short/short/medium/medium/long duration. |
+| 63 | **Windstorm.** Powerful winds buffet close/short/short/medium/medium radius. All creatures in area have Movement -1 (min 0) and ranged attacks suffer +1/+2/+2/+2/+2 banes (wind deflection) for short/short/medium/medium/long duration. |
 | 64 | **Thunderstorm.** Random creatures in short/short/medium/medium/long radius struck by lightning each turn (roll 1d6 per creature: 1-2=struck). Deal 4/6/8/10/12 lightning damage for short/medium/medium/long/long duration. |
 | 65 | **Blizzard.** All areas in short/medium/medium/long/long radius become difficult terrain. Creatures take 2/3/4/5/6 frost damage per turn. Visibility reduced to close for short/short/medium/medium/long duration. |
-| 66 | **Mudslide.** All areas in close/short/short/medium/medium radius become difficult terrain. Creatures need +1 Movement to move and suffer +1 bane on AGI rolls for short/medium/medium/long/long duration. |
+| 66 | **Mudslide.** Ground turns to thick mud in close/short/short/medium/medium radius. All areas become difficult terrain. Creatures in area need +1 Movement to move (slowed by clinging mud) and suffer +1 bane on AGI rolls for short/medium/medium/long/long duration. |
 | 67 | **Light Show.** Brilliant lights illuminate close/short/medium/medium/long radius as bright daylight. Creatures with darkvision/light sensitivity briefly blinded each turn for short/short/medium/medium/long duration. |
 | 68 | **Darkness Wave.** All light in close/short/medium/medium/long radius extinguished. Total darkness (even darkvision can't see). Only magical light pierces for short/short/medium/medium/long duration. |
 | 69 | **Plant Growth.** All areas in close/short/short/medium/medium radius overgrown. Difficult terrain. Creatures can choose to be restrained (grants +2 Defense vs. ranged) for medium/medium/long/long/long duration. |
