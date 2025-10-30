@@ -1,27 +1,96 @@
 # Spell Rank Power Level Analysis
 
-## Overview
+## Power Level Equivalence
 
-This document analyzes the appropriate power level for each spell rank in Nexus RPG, with particular focus on ensuring rank 5 spells are appropriately scaled rather than "world-shattering" like D&D level 9 spells.
+Nexus RPG spell ranks map to D&D spell levels to ensure appropriate power scaling:
 
-## D&D Power Level Equivalence
+| Nexus Rank | D&D Level | Power Tier | Examples |
+|------------|-----------|------------|----------|
+| 0 | 0 | At-will cantrips | Prestidigitation, Light |
+| 1 | 1-2 | Basic magic | Magic Missile, Cure Wounds |
+| 2 | 3-4 | Moderate power | Fireball, Lightning Bolt |
+| 3 | 5 | High power | Cone of Cold, Cloudkill |
+| 4 | 6 | Very high power | Disintegrate, Chain Lightning |
+| 5 | **7** | Peak mortal power | Delayed Blast Fireball, Plane Shift |
 
-### Target Scaling
-- **Nexus Rank 0-1** ≈ D&D Levels 0-2 (Cantrips and low-level utility)
-- **Nexus Rank 2-3** ≈ D&D Levels 3-5 (Fireball, Lightning Bolt territory)
-- **Nexus Rank 4** ≈ D&D Level 6 (Powerful but bounded effects)
-- **Nexus Rank 5** ≈ D&D Level 7 (Impressive but mortal-scale)
+**Critical**: Rank 5 = D&D Level 7, NOT Level 9. Impressive but mortal-scale, not world-shattering.
 
-### D&D Level 7 Examples (Target for Rank 5)
-- **Delayed Blast Fireball** - More powerful version of Fireball, not reality-warping
-- **Plane Shift** - Planar travel, but requires knowing destination
-- **Reverse Gravity** - Impressive environmental control, limited area
-- **Finger of Death** - Powerful single-target damage, not instant kill
-- **Etherealness** - Unique tactical advantage, temporary
-- **Forcecage** - Powerful battlefield control, but escapable
-- **Regenerate** - Restore lost limbs, not resurrection
+---
 
-**NOT D&D Level 9 Examples** (Too powerful):
+## Damage Progression
+
+### Standard Scaling
+
+| Rank | Focus | TN | Single Target | AoE | Progression |
+|------|-------|-----|---------------|-----|-------------|
+| 0 | 0 | 6 | +2/+4/+6 | +0/+2/+4 | Cantrip (AoE reduced) |
+| 1 | 2 | 8 | +4/+8/+12 | +2/+4/+6 | +2 per rank |
+| 2 | 4 | 10 | +6/+12/+18 | +4/+8/+12 | +2 per rank |
+| 3 | 6 | 12 | +8/+16/+24 | +6/+12/+18 | +2 per rank |
+| 4 | 8 | 14 | Variable | Variable | Transformations |
+| 5 | 10 | 16 | +10/+20/+30 | +8/+16/+24 | +2 per rank |
+
+**Rules**:
+- Single-target: Consistent +2 weak damage per rank (2→4→6→8→10)
+- AoE: One rank lower (balances multi-target advantage)
+- Rank 0 AoE: Special case +0/+2/+4 (balances unlimited casting)
+
+See `spell-rank-guidelines.md` for deviation scenarios (area size, secondary effects, etc.).
+
+---
+
+## Current Rank Analysis
+
+### Rank 3 Characteristics
+**Examples**: Black Flame Bolt (+6/+12/+18), Solar Flare (damage + healing), Vitality Surge (radiant cone + heal)
+
+**Power Level**:
+- Strong single-target or AoE damage
+- Battlefield-shaping effects
+- Hybrid damage + utility combinations
+- Short duration powerful buffs
+
+### Rank 4 Characteristics
+**Examples**: Arcane Empowerment (damage boost + cost reduction), Embrace of Night (invisibility + phase + cost reduction), Avatar of Storms (flight + temp HP + resistances)
+
+**Power Level**:
+- Transformation/empowerment effects
+- Sustained tactical advantages
+- Large-scale environmental control
+- Still bounded by short duration and concentration
+- Include drawbacks (fatigue, etc.)
+
+### Rank 5 Target Power
+
+**Guidelines**:
+1. **Damage**: +8 to +10 base (not higher than +12)
+2. **Area**: Large zones but not "entire battlefield"
+3. **Duration**: Medium maximum (not permanent)
+4. **Effects**: Powerful but escapable/counterable
+5. **Transformations**: Enhanced rank 4, not immortality
+6. **Control**: Significant battlefield impact, not total domination
+7. **No Instant Wins**: No auto-kills or permanent solutions
+8. **Concentration**: Most require concentration (can be broken)
+
+**Power Comparison**:
+- Rank 5 should be ~150% as powerful as Rank 4 (not 300%)
+- Significant but not game-breaking
+- Example: Rank 4 Avatar of Storms → Rank 5 Storm Lord adds +2 lightning aura, immunity to weather, enhanced flight
+
+---
+
+## D&D Level 7 Targets (Appropriate)
+
+**Good Models**:
+- Delayed Blast Fireball - More powerful Fireball, not reality-warping
+- Plane Shift - Planar travel, requires known destination
+- Reverse Gravity - Impressive environmental control, limited area
+- Finger of Death - Powerful single-target, not instant kill
+- Etherealness - Unique tactical advantage, temporary
+- Forcecage - Powerful battlefield control, but escapable
+- Regenerate - Restore lost limbs, not resurrection
+
+**Avoid D&D Level 9** (Too Powerful):
 - ❌ Wish - Reality alteration
 - ❌ True Resurrection - Bring back long-dead
 - ❌ Meteor Swarm - City-destroying power
@@ -29,348 +98,94 @@ This document analyzes the appropriate power level for each spell rank in Nexus 
 - ❌ Imprisonment - Permanent banishment
 - ❌ True Polymorph - Permanent transformation
 
-## Current Rank Progression Analysis
+---
 
-### Rank 3 Spells (Focus 6, TN 12)
-**Damage Scaling**: +6/+12/+18
-**Examples**:
-- Black Flame Bolt (Evocation): +6/+12/+18 fire + ignores resistance
-- Arcane Blast (Conjuration): +6/+12/+18 blast + push
-- Solar Flare (Light): +6/+12/+18 radiant AoE + heal allies +3/+6/+9
-- Vitality Surge (Life): +6/+12/+18 radiant cone + heal allies +3/+6/+9
+## Rank 5 Design Principles
 
-**Characteristics**:
-- Strong single-target or AoE damage
-- Battlefield-shaping effects
-- Hybrid damage + utility
-- Short duration powerful buffs (Blessing of Dawn)
+1. **Impressive but Bounded**: Powerful within mortal limits, no reality warping
+2. **Escapable**: Saving throws, spell resistance, countermeasures available
+3. **Temporary**: Short to medium duration (not permanent)
+4. **Costly**: Focus 10, often with fatigue or drawbacks
+5. **Difficult**: Legendary TN (16) makes casting challenging
+6. **Mortal Scale**: Affects battlefield/encounter, not armies or cities
+7. **No Instant Wins**: No auto-kills, permanent effects, or "I win" buttons
+8. **Concentration**: Most powerful effects require concentration (can be broken)
 
-### Rank 4 Spells (Focus 8, TN 14)
-**Examples**:
-- Arcane Empowerment: Add Arcana to spell damage, -2 Focus cost, resistance to 8 damage types
-- Embrace of Night: Invisibility in darkness + phase through walls + -2 Focus cost
-- Avatar of Storms: Flight + 10 temp HP + resistances + add Mysticism to damage
-- Control Water: Massive environmental manipulation over long distances
+---
 
-**Characteristics**:
-- Transformation/empowerment effects
-- Cost reduction + damage boost
-- Large-scale environmental control
-- Sustained tactical advantages
-- Still bounded by "short duration" for most effects
-- Still require concentration
-- Have drawbacks (fatigue, etc.)
-
-### Appropriate Rank 5 Power Level
-
-**Focus Cost**: 10 (following progression)
-**Target Number**: Legendary (16)
-**Duration**: Short to Medium (not permanent)
-**Scope**: Impressive but mortal-scale
-
-**Power Guidelines**:
-1. **Damage**: +8 to +10 base (not higher than +12/+24/+36)
-2. **Area**: Large zones but not "entire battlefield"
-3. **Duration**: Medium duration maximum (not permanent)
-4. **Effects**: Powerful but escapable/counterable
-5. **Transformations**: Enhanced versions of rank 4, not immortality
-6. **Control**: Significant battlefield impact, not total domination
-7. **No Instant Wins**: No "I win" buttons or permanent solutions
-
-## Revised Rank 5 Spell Recommendations
+## Recommended Rank 5 Spells
 
 ### Arcane Disciplines
 
-#### Evocation
-**Delayed Meteor** (not Meteor Swarm)
-- Rank 5, Focus 10, Legendary (16), Long range
-- Place a delayed explosion that detonates after 1 round
-- Deals +8/+16/+24 fire damage in medium AoE
-- Can be disrupted by counterspell or dispel
-- Creates burning terrain afterward
+**Evocation**
+- **Delayed Meteor**: +8/+16/+24 fire AoE, delayed detonation, can be disrupted, creates burning terrain
+- **Prismatic Barrier**: Defensive sphere, multiple resistances, reflects damage, medium duration, can be overwhelmed
 
-**Prismatic Barrier** (not Prismatic Wall)
-- Rank 5, Focus 10, Legendary (16), Short range, concentrate
-- Create a shimmering defensive sphere around allies in close area
-- Grants resistance to multiple damage types
-- Reflects some damage back
-- Lasts medium duration
-- Can be overwhelmed with sustained attacks
+**Illusion**
+- **Perfect Disguise**: Perfect humanoid mimicry with voice/mannerisms, medium duration, physical inspection reveals truth
+- **Mass Phantasmal Force**: Complex illusion affecting up to 6 creatures, psychic damage, can be seen through
 
-#### Illusion
-**Perfect Disguise**
-- Rank 5, Focus 10, Legendary (16), Self, concentrate
-- Become any humanoid form with perfect physical mimicry
-- Voice, mannerisms, even magical aura
-- Lasts medium duration
-- Physical interaction still reveals truth on close inspection
+**Conjuration**
+- **Planar Gateway**: Portal to known same-plane location, medium duration, requires prior visit, unstable
+- **Enhanced Summoning**: Summon tier 4 creature or multiple lesser, better control, short duration
 
-**Mass Phantasmal Force**
-- Rank 5, Focus 10, Legendary (16), Long range, vs. Resist
-- Create complex illusion affecting up to 6 creatures
-- Each sees different personalized illusion
-- Deals psychic damage and conditions
-- Can be seen through with Spirit + Perception
+**Telepathy**
+- **Mental Fortress**: Grant 6 allies immunity to charm/fear/psychic, shared thoughts, short duration, concentration
+- **Psychic Maelstrom**: +8/+16/+24 psychic cone, confusion/stun, save to reduce
 
-#### Conjuration
-**Planar Gateway** (not Gate)
-- Rank 5, Focus 10, Legendary (16), Long range, concentrate
-- Open portal to another known location on same plane
-- Portal lasts medium duration
-- Requires having been to destination before
-- Can transport willing creatures
-- Unstable - can close unexpectedly
+**Telekinetics**
+- **Gravity Reversal**: Reverse gravity in medium area, creatures fall upward, short duration
+- **Kinetic Barrier**: Telekinetic shield, redirect attacks, add Arcana to defense, absorbs 40 damage, medium duration
 
-**Enhanced Summoning**
-- Rank 5, Focus 10, Legendary (16), Long range, concentrate
-- Summon powerful creature (tier 4 companion)
-- Better control than lower ranks
-- Can summon multiple lesser creatures instead
-- Lasts short duration
-
-#### Telepathy
-**Mental Fortress**
-- Rank 5, Focus 10, Legendary (16), Medium range, concentrate
-- Grant up to 6 allies immunity to charm, fear, psychic damage
-- Share surface thoughts among group
-- Lasts short duration
-- Requires concentration
-
-**Psychic Maelstrom**
-- Rank 5, Focus 10, Legendary (16), Medium range, vs. Resist, cone
-- Devastating psychic assault in cone
-- Deals +8/+16/+24 psychic damage (ignoring AV)
-- Inflicts confusion and stun
-- Targets can save to reduce effects
-
-#### Telekinetics
-**Gravity Reversal**
-- Rank 5, Focus 10, Legendary (16), Medium range, concentrate
-- Reverse gravity in medium area
-- Creatures fall upward (take damage when spell ends)
-- Lasts short duration
-- Affected area, not entire encounter
-
-**Kinetic Barrier**
-- Rank 5, Focus 10, Legendary (16), Self, concentrate
-- Create powerful telekinetic shield
-- Redirects projectiles and melee attacks
-- Add Arcana to defense
-- Absorbs up to 40 damage before breaking
-- Lasts medium duration
-
-#### Necromancy
-**Army of Shadows** (not Army of the Dead)
-- Rank 5, Focus 10, Legendary (16), Long range, concentrate
-- Animate 4-6 corpses as tier 2 undead
-- They act independently but follow commands
-- Lasts short duration (not permanent)
-- Requires fresh corpses nearby
-
-**Death's Master** (not Lichdom)
-- Rank 5, Focus 10, Legendary (16), Self, concentrate, enchant (body)
-- Temporary undead transformation
-- Gain undead immunities and resistances
-- Necrotic aura damages nearby enemies
-- Drain life to heal self
-- Add Arcana to necrotic damage
-- Lasts short duration
-- Suffer 2 Fatigue when ends
+**Necromancy**
+- **Army of Shadows**: Animate 4-6 tier 2 undead, independent but commanded, short duration, requires fresh corpses
+- **Death's Master**: Temporary undead transformation, immunities/resistances, necrotic aura, drain life, add Arcana to damage, short duration, 2 fatigue after
 
 ### Mystic Traditions
 
-#### Light
-**Radiant Convergence** (not Solar Ray)
-- Rank 5, Focus 10, Legendary (16), Long range
-- Channel focused beam of sunlight
-- Deals +8/+16/+24 radiant damage in line
-- Additional damage to undead
-- Dispels darkness and reveals truth in area
-- Blinds targets briefly
+**Light**
+- **Radiant Convergence**: +8/+16/+24 radiant line, extra vs undead, dispels darkness, reveals truth, blinds briefly
+- **Beacon of Truth**: Zone of truth in close area, no lies, illusions fail, hidden revealed, medium duration
 
-**Beacon of Truth**
-- Rank 5, Focus 10, Legendary (16), Medium range, concentrate
-- Create zone of absolute truth in close area
-- Creatures cannot lie
-- Illusions and disguises fail
-- Hidden creatures revealed
-- Lasts medium duration
+**Twilight**
+- **Dream Realm**: Pull targets into shared dream, control environment, time distortion, psychic effects, escapable
+- **Shadow Apotheosis**: Become shadow creature, invisible in dim light, phase through objects, shadow attacks boosted, resistances, short duration, 2 fatigue after
 
-#### Twilight
-**Dream Realm**
-- Rank 5, Focus 10, Legendary (16), Medium range, concentrate
-- Pull targets into shared dream space
-- Control dream environment
-- Time passes differently (short duration feels longer)
-- Psychic damage and effects
-- Creatures can escape with strong will
+**Life**
+- **Mass Restoration**: Heal all allies in close area +10/+20/+30 HP, remove conditions, heal 1 wound each, once per day per target
+- **Vitality Field**: Healing zone, +6 HP per turn, grant temp HP, remove conditions, medium duration
 
-**Shadow Apotheosis** (not Eternal Night)
-- Rank 5, Focus 10, Legendary (16), Self, concentrate, enchant (body)
-- Become creature of shadow
-- Invisible in dim light/darkness
-- Phase through objects
-- Shadow attacks deal bonus damage
-- Resistances and immunities
-- Lasts short duration
-- Costs 2 Fatigue when ends
+**Death**
+- **Plague Wind**: +6/+12/+18 poison/necrotic cone, inflicts poisoned, spreads nearby (not exponential), curable
+- **Death's Grasp**: Death curse single target, ongoing necrotic, prevents healing, weakens with saves, breakable
 
-#### Life
-**Mass Restoration**
-- Rank 5, Focus 10, Legendary (16), Medium range
-- Heal all allies in close area for +10/+20/+30 HP
-- Remove all conditions
-- Heal 1 Wound from each
-- Can use once per day per target
+**Nature**
+- **Primal Awakening**: Animate tier 4 plant/earth construct, follows commands, limited terrain reshaping, short duration
+- **Nature's Wrath**: +8/+16/+24 damage cone (thorns/vines/stones), difficult terrain, grapples/restrains
 
-**Vitality Field**
-- Rank 5, Focus 10, Legendary (16), Close range, concentrate
-- Create zone that heals allies
-- Restore +6 HP at start of each turn
-- Grant temporary HP
-- Remove conditions
-- Lasts medium duration
+**Tempest**
+- **Storm Lord**: Transform into storm elemental, flight, enhanced lightning/wind, immunity to weather, add Mysticism to damage, short duration, 2 fatigue after
+- **Tempest's Fury**: Massive storm in medium area, repeated lightning/wind attacks, difficult terrain, obscures vision, medium duration
 
-#### Death
-**Plague Wind**
-- Rank 5, Focus 10, Legendary (16), Long range, vs. Resist, cone
-- Release virulent disease wind
-- Deals +6/+12/+18 poison/necrotic damage
-- Inflicts poisoned condition
-- Spreads to nearby creatures (not exponential)
-- Can be cured with magic
+**Peace**
+- **Sanctuary Sphere**: Zone of peace in medium area, violence extremely difficult (not impossible), heals over time, resistances, medium duration, breakable
+- **Harmonic Bond**: Link 6 allies, share damage/healing/buffs/resistances, coordinate attacks for bonuses, short duration
 
-**Death's Grasp**
-- Rank 5, Focus 10, Legendary (16), Medium range, vs. Resist
-- Powerful death curse on single target
-- Deals ongoing necrotic damage
-- Prevents healing
-- Weakens with each save attempt
-- Can be broken with powerful magic
+**War**
+- **Warlord's Presence**: Legendary warrior avatar, enhanced combat, add Mysticism to weapon damage, extra attacks, inspire allies, frighten enemies, short duration, 2 fatigue after
+- **Battlefield Commander**: Command battlefield, move allies tactically (no opportunity attacks), grant temp HP/bonuses, coordinate strikes, medium duration
 
-#### Nature
-**Primal Awakening**
-- Rank 5, Focus 10, Legendary (16), Long range, concentrate
-- Animate massive plant/earth construct (tier 4 companion)
-- Follows commands
-- Reshapes limited terrain
-- Lasts short duration
+---
 
-**Nature's Wrath**
-- Rank 5, Focus 10, Legendary (16), Long range, vs. Dodge, cone
-- Devastating natural assault
-- Thorns, vines, stones
-- Deals +8/+16/+24 damage (AoE cone)
-- Creates difficult terrain
-- Grapples and restrains
+## Spell Characteristics Summary
 
-#### Tempest
-**Storm Lord** (not Perfect Storm)
-- Rank 5, Focus 10, Legendary (16), Self, concentrate, enchant (body)
-- Transform into storm elemental
-- Flight and enhanced movement
-- Lightning and wind attacks boosted
-- Immunity to weather effects
-- Add Mysticism to storm damage
-- Lasts short duration
-- Costs 2 Fatigue when ends
+| Rank | Focus | TN | Duration | Scope | Power Philosophy |
+|------|-------|-----|----------|-------|------------------|
+| 0 | 0 | Easy (6) | Briefly-Short | Personal/Single | Minor utility, at-will |
+| 1 | 2 | Medium (8) | Short-Medium | Close area | Useful combat/utility |
+| 2 | 4 | Hard (10) | Short-Medium | Short area | Battlefield impact (Fireball-tier) |
+| 3 | 6 | Very Hard (12) | Short-Medium | Medium area | Major combat/utility impact |
+| 4 | 8 | Extreme (14) | Short-Medium | Large area/self | Transformations, major effects |
+| 5 | 10 | Legendary (16) | Short-Medium | Large area | **Peak mortal power** |
 
-**Tempest's Fury**
-- Rank 5, Focus 10, Legendary (16), Long range, concentrate
-- Create massive storm in medium area
-- Lightning, wind, rain
-- Repeated attacks each round
-- Difficult terrain
-- Obscures vision
-- Lasts medium duration
-
-#### Peace
-**Sanctuary Sphere**
-- Rank 5, Focus 10, Legendary (16), Close range, concentrate
-- Create zone of absolute peace in medium area
-- Violence extremely difficult (not impossible)
-- Heals over time
-- Grants resistances
-- Lasts medium duration
-- Can be broken by sustained violence
-
-**Harmonic Bond**
-- Rank 5, Focus 10, Legendary (16), Medium range, concentrate
-- Link up to 6 allies
-- Share damage among them
-- Share healing
-- Share buffs and resistances
-- Coordinate attacks for bonuses
-- Lasts short duration
-
-#### War
-**Warlord's Presence**
-- Rank 5, Focus 10, Legendary (16), Self, concentrate, enchant (body)
-- Become legendary warrior avatar
-- Enhanced combat abilities
-- Add Mysticism to all weapon damage
-- Extra attacks
-- Inspire allies (grant bonuses)
-- Frighten enemies
-- Lasts short duration
-- Costs 2 Fatigue when ends
-
-**Battlefield Commander**
-- Rank 5, Focus 10, Legendary (16), Long range, concentrate
-- Command the battlefield
-- Move allies tactically (no opportunity attacks)
-- Grant temporary HP and bonuses
-- Coordinate strikes for extra damage
-- Lasts medium duration
-
-## Power Scaling Summary
-
-### Damage Progression
-| Rank | Single Target | AoE (multi-target) | Notes |
-|------|---------------|-------------------|-------|
-| 0 | +2/+4/+6 | +0/+2/+4 (small) | Cantrip level; AoE reduced for unlimited casting |
-| 1 | +4/+8/+12 | +2/+4/+6 (cone/line) | Basic combat; AoE one rank lower |
-| 2 | +6/+12/+18 | +4/+8/+12 (area) | Fireball equivalent; AoE one rank lower |
-| 3 | +8/+16/+24 | +6/+12/+18 (area) | Powerful; AoE one rank lower |
-| 4 | N/A | N/A | Focus on buffs/control |
-| 5 | +10/+20/+30 | +8/+16/+24 (area) | Peak power, not world-ending; AoE one rank lower |
-
-**Scaling Variations**: See spell-rank-guidelines.md for when to deviate from standard scaling based on area size, secondary effects, and other factors.
-
-### Spell Characteristics by Rank
-| Rank | Focus | TN | Duration | Scope | Power Level |
-|------|-------|-----|----------|-------|-------------|
-| 0 | 0 | Easy (6) | Briefly-Short | Personal/Single | Minor utility |
-| 1 | 2 | Medium (8) | Short-Medium | Close area | Useful combat |
-| 2 | 4 | Hard (10) | Short-Medium | Short area | Battlefield impact |
-| 3 | 6 | Very Hard (12) | Short-Medium | Medium area | Major impact |
-| 4 | 8 | Extreme (14) | Short-Medium | Large area/self | Transformation |
-| 5 | 10 | Legendary (16) | Short-Medium | Large area | Peak mortal power |
-
-### Key Principles for Rank 5
-1. **Impressive but Bounded**: Effects should be powerful but not permanent or unbeatable
-2. **Escapable**: Enemies should have saving throws, spell resistance, or countermeasures
-3. **Temporary**: Maximum medium duration, most effects short duration
-4. **Costly**: High Focus cost (10), often with Fatigue or other drawbacks
-5. **Difficult**: Legendary TN (16) makes them challenging to cast
-6. **Mortal Scale**: Affects battlefield/encounter, not entire armies or cities
-7. **No Instant Wins**: No auto-kills, permanent transformations, or reality warping
-8. **Concentration**: Most powerful effects require concentration (can be broken)
-
-## Comparison to Current Rank 4
-
-Rank 5 should be **~150% as powerful** as Rank 4, not 300%:
-- Rank 4: Focus 8, TN 14, short duration transformations with drawbacks
-- Rank 5: Focus 10, TN 16, slightly better transformations or more powerful direct effects
-
-**Example Comparison**:
-- **Rank 4** Avatar of Storms: +2 lightning to attackers, add Mysticism to damage
-- **Rank 5** Storm Lord: +4 lightning to attackers, add Mysticism to damage, immunity to weather, flight enhancement
-
-This is significant but not game-breaking.
-
-## Conclusion
-
-Rank 5 spells should represent the **pinnacle of mortal magical achievement**, not godlike power. They are impressive, difficult to cast, and powerful enough to turn the tide of major battles - but they don't reshape reality, grant immortality, or provide permanent solutions.
-
-The revised recommendations above aim for the D&D Level 7 equivalent: powerful, memorable, tactically significant, but still within the bounds of mortal magic in a Bronze Age sword & sorcery setting.
+**Key**: Rank 5 represents the pinnacle of mortal magical achievement in a Bronze Age sword & sorcery setting, NOT godlike power. Spells are impressive, difficult to cast, and tactically significant without reshaping reality, granting immortality, or providing permanent solutions.
