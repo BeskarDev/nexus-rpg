@@ -264,91 +264,29 @@ const parseMultiOptionAttack = (
 ): string => {
 	let processedText = attackText
 	
-	// Split by numbered options (e.g., "1. Dazing Ray", "2. Fear Ray", etc.)
-	// We'll process each option separately to handle damage calculations correctly
-	const optionPattern = /(\d+\.\s+\w+\s+Ray\..*?)(?=\d+\.\s+\w+\s+Ray\.|$)/gis
-	const options = attackText.match(optionPattern)
+	// Calculate damage values for options that deal damage
+	const weaponDamageBase = baseAttackDamage.normal - baseAttackDamage.weak
+	const baseDamage = baseAttackDamage.weak - weaponDamageBase
 	
-	if (!options) {
-		// If we can't parse options, fall back to tier calculations only
-		return processTierCalculations(attackText, tier)
+	// Process Frost Ray option (Deals +1 weapon damage as frost damage)
+	if (processedText.includes('Frost Ray')) {
+		const weaponDamage = Math.max(1, weaponDamageBase + 1)
+		const weakDamage = Math.max(1, baseDamage + weaponDamage)
+		const strongDamage = Math.max(1, baseDamage + 2 * weaponDamage)
+		const criticalDamage = Math.max(1, baseDamage + 3 * weaponDamage)
+		const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage} frost damage (${baseDamage} base + ${weaponDamage} weapon).`
+		
+		// Replace the Frost Ray option's damage sentence
+		processedText = processedText.replace(
+			/(<strong>3\.\s+Frost Ray\.)<\/strong>\s*Treat the roll as a range attack vs\. Dodge\. Deals \+1 weapon damage as frost damage\./i,
+			`$1</strong> ${damageText}`
+		)
 	}
 	
-	// Get the preamble (everything before the first numbered option)
-	const firstOptionIndex = attackText.search(/\d+\.\s+\w+\s+Ray\./)
-	const preamble = firstOptionIndex >= 0 ? attackText.substring(0, firstOptionIndex) : ''
+	// Process tier calculations for any remaining tier-based formulas
+	processedText = processTierCalculations(processedText, tier)
 	
-	// Process each option
-	const processedOptions = options.map(option => {
-		// Check if this specific option deals damage
-		const dealsDamage = /Deals|Treat the roll as a range attack/i.test(option)
-		
-		if (dealsDamage) {
-			// Parse damage for this specific option
-			let weaponDamageModifier = 0
-			
-			if (option.includes('Deals normal weapon damage')) {
-				weaponDamageModifier = 0
-			} else if (option.includes('Deals -1 weapon damage') || option.includes('with -1 weapon damage')) {
-				weaponDamageModifier = -1
-			} else if (option.includes('Deals +1 weapon damage') || option.includes('with +1 weapon damage')) {
-				weaponDamageModifier = 1
-			}
-			
-			// Calculate damage values
-			const weaponDamage = baseAttackDamage.normal - baseAttackDamage.weak
-			const baseDamage = baseAttackDamage.weak - weaponDamage
-			const modifiedWeaponDamage = Math.max(1, weaponDamage + weaponDamageModifier)
-			
-			const weakDamage = Math.max(1, baseDamage + modifiedWeaponDamage)
-			const strongDamage = Math.max(1, baseDamage + 2 * modifiedWeaponDamage)
-			const criticalDamage = Math.max(1, baseDamage + 3 * modifiedWeaponDamage)
-			
-			// Extract damage type
-			let damageType = ''
-			const damageTypeMatch = option.match(/as (\w+) damage/i)
-			if (damageTypeMatch) {
-				damageType = ` ${damageTypeMatch[1].toLowerCase()}`
-			}
-			
-			// Remove the damage-related sentences more comprehensively
-			// This handles both "Deals ..." and "Treat the roll as a range attack..."
-			let processedOption = option
-			
-			// Remove "Treat the roll as a range attack vs. Dodge. Deals ... damage." pattern
-			processedOption = processedOption.replace(
-				/Treat the roll as a range attack vs\. Dodge\.\s*Deals[^.]*?damage\./i,
-				''
-			).trim()
-			
-			// Also handle standalone "Deals ... damage." in case it wasn't caught above
-			processedOption = processedOption.replace(/Deals [^.]*?damage\./i, '').trim()
-			
-			// Construct damage text (without bold formatting)
-			const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage}${damageType} damage (${baseDamage} base + ${modifiedWeaponDamage} weapon).`
-			
-			// Insert after the option header, handling <strong> tags correctly
-			// Pattern: <strong>3. Frost Ray. </strong> -> <strong>3. Frost Ray.</strong> damageText
-			processedOption = processedOption.replace(
-				/(<strong>\d+\.\s+\w+\s+Ray\.)\s*<\/strong>\s*/i,
-				`$1</strong> ${damageText} `
-			)
-			
-			return processTierCalculations(processedOption, tier)
-		}
-		
-		// For non-damage options, just process tier calculations
-		return processTierCalculations(option, tier)
-	})
-	
-	// Reconstruct the attack text
-	processedText = preamble + processedOptions.join('')
-	
-	// Clean up
-	processedText = processedText.replace(/\.\s*\./g, '.')
-	processedText = processedText.replace(/\s+/g, ' ')
-	
-	return processedText.trim()
+	return processedText
 }
 
 export const parseAttackDamage = (
