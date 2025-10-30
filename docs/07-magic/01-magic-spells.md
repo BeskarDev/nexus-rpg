@@ -121,7 +121,7 @@ When attempting to cast a spell at an object or location, which normally is targ
 
 **Blunder.** The spell fails. Spend the spell’s Focus Cost. Also resolve one of these effects based on the nature of the spell:
 
-- **Arcane Spell.** Roll 1d100 on the [Wild Magic Table](./06-wild-magic-table.md). The effect's intensity scales with the blundered spell's rank.
+- **Arcane Spell.** Roll 1d100 on the [Wild Magic Table](./06-wild-magic-table.mdx). The effect's intensity scales with the blundered spell's rank.
 - **Mystic Spell.** You lose access to the spell until you undergo penance to your divine patron or re-align yourself with your spiritual source of power during the next night's rest. After the completed rest, you regain access to the spell.
 
 **Failure.** The spell fails but you don‘t have to spend its Focus Cost.

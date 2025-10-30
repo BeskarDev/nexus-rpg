@@ -3,7 +3,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 describe('Wild Magic Table', () => {
-  const wildMagicTablePath = path.join(__dirname, '../../docs/07-magic/06-wild-magic-table.md')
+  const wildMagicTablePath = path.join(__dirname, '../../docs/07-magic/06-wild-magic-table.mdx')
   const content = fs.readFileSync(wildMagicTablePath, 'utf-8')
 
   describe('Structure Validation', () => {
