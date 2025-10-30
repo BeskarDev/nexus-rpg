@@ -133,6 +133,129 @@ export const parseAV = (avValue: string): { value: number; type: string } => {
 	return { value: 0, type: 'light' }
 }
 
+/**
+ * Process tier-based calculations in text, converting patterns like:
+ * - "inflicts burning (equal to 2 x Tier)" → "inflicts burning (4)" (for tier 2)
+ * - "suffers bleeding (2 x Tier)" → "suffers bleeding (4)" (for tier 2)
+ * - "suffers it's Tier x 2 fire damage" → "suffers 4 fire damage" (for tier 2)
+ * - "Tier x 2" → "4" (for tier 2)
+ * - "2 x Tier" → "4" (for tier 2)
+ */
+export const processTierCalculations = (text: string, tier: number): string => {
+	if (!text) return text
+
+	let processedText = text
+
+	// Pattern 1: "inflicts/suffers [word] (equal to X x Tier)" → "inflicts/suffers [word] (calculated value)"
+	// This handles cases like "inflicts burning (equal to 2 x Tier)" → "inflicts burning (4)"
+	processedText = processedText.replace(
+		/(inflicts|suffers)\s+(\w+)\s+\(equal to\s+(\d+)\s*x\s*Tier\)/gi,
+		(match, verb, word, multiplier) => {
+			return `${verb} ${word} (${parseInt(multiplier) * tier})`
+		},
+	)
+	processedText = processedText.replace(
+		/(inflicts|suffers)\s+(\w+)\s+\(equal to\s+Tier\s*x\s*(\d+)\)/gi,
+		(match, verb, word, multiplier) => {
+			return `${verb} ${word} (${tier * parseInt(multiplier)})`
+		},
+	)
+
+	// Pattern 2: "inflicts/suffers [word] (X x Tier)" → "inflicts/suffers [word] (calculated value)"
+	// This handles cases without "equal to", like "suffers bleeding (2 x Tier)" → "suffers bleeding (4)"
+	processedText = processedText.replace(
+		/(inflicts|suffers)\s+(\w+)\s+\((\d+)\s*x\s*Tier\)/gi,
+		(match, verb, word, multiplier) => {
+			return `${verb} ${word} (${parseInt(multiplier) * tier})`
+		},
+	)
+	processedText = processedText.replace(
+		/(inflicts|suffers)\s+(\w+)\s+\(Tier\s*x\s*(\d+)\)/gi,
+		(match, verb, word, multiplier) => {
+			return `${verb} ${word} (${tier * parseInt(multiplier)})`
+		},
+	)
+
+	// Pattern 2b: "takes [lasting] [damage-type] damage (X x Tier)" → "takes [lasting] [damage-type] damage (calculated value)"
+	// This handles cases like "takes lasting poison damage (2 x Tier)" → "takes lasting poison damage (4)"
+	processedText = processedText.replace(
+		/takes\s+(lasting\s+)?(\w+)\s+damage\s+\((\d+)\s*x\s*Tier\)/gi,
+		(match, lasting, damageType, multiplier) => {
+			return `takes ${lasting || ''}${damageType} damage (${parseInt(multiplier) * tier})`
+		},
+	)
+	processedText = processedText.replace(
+		/takes\s+(lasting\s+)?(\w+)\s+damage\s+\(Tier\s*x\s*(\d+)\)/gi,
+		(match, lasting, damageType, multiplier) => {
+			return `takes ${lasting || ''}${damageType} damage (${tier * parseInt(multiplier)})`
+		},
+	)
+
+	// Pattern 3: "(equal to X x Tier)" or "(equal to Tier x X)" → just the number in parentheses (fallback)
+	processedText = processedText.replace(
+		/\(equal to\s+(\d+)\s*x\s*Tier\)/gi,
+		(match, multiplier) => {
+			return `(${parseInt(multiplier) * tier})`
+		},
+	)
+	processedText = processedText.replace(
+		/\(equal to\s+Tier\s*x\s*(\d+)\)/gi,
+		(match, multiplier) => {
+			return `(${tier * parseInt(multiplier)})`
+		},
+	)
+
+	// Pattern 4: "equal to X x Tier" or "equal to Tier x X" (without parentheses) → just the number
+	processedText = processedText.replace(
+		/equal to\s+(\d+)\s*x\s*Tier/gi,
+		(match, multiplier) => {
+			return String(parseInt(multiplier) * tier)
+		},
+	)
+	processedText = processedText.replace(
+		/equal to\s+Tier\s*x\s*(\d+)/gi,
+		(match, multiplier) => {
+			return String(tier * parseInt(multiplier))
+		},
+	)
+
+	// Pattern 5: "suffers it's Tier x X [damage-type] damage" → "suffers [calculated] [damage-type] damage"
+	// This handles cases like "suffers it's Tier x 2 fire damage" → "suffers 4 fire damage"
+	processedText = processedText.replace(
+		/suffers\s+it's\s+Tier\s*x\s*(\d+)\s+([\w\s]+)\s+damage/gi,
+		(match, multiplier, damageType) => {
+			return `suffers ${tier * parseInt(multiplier)} ${damageType.trim()} damage`
+		},
+	)
+
+	// Pattern 6: "it's Tier x X" → just the number (fallback)
+	processedText = processedText.replace(
+		/it's\s+Tier\s*x\s*(\d+)/gi,
+		(match, multiplier) => {
+			return String(tier * parseInt(multiplier))
+		},
+	)
+
+	// Pattern 7: "Tier x X" (standalone, not part of "it's Tier")
+	processedText = processedText.replace(
+		/\bTier\s*x\s*(\d+)\b/gi,
+		(match, multiplier) => {
+			return String(tier * parseInt(multiplier))
+		},
+	)
+
+	// Pattern 8: "X x Tier" (reverse order)
+	// This handles cases like "2 x Tier" → "4"
+	processedText = processedText.replace(
+		/(\d+)\s*x\s*Tier\b/gi,
+		(match, multiplier) => {
+			return String(parseInt(multiplier) * tier)
+		},
+	)
+
+	return processedText
+}
+
 export const parseAttackDamage = (
 	attackText: string,
 	baseAttackDamage: { weak: number; normal: number; strong: number },
@@ -238,13 +361,8 @@ export const parseAttackDamage = (
 		}
 	}
 
-	// Evaluate "x Tier" expressions
-	processedText = processedText.replace(
-		/(\d+)\s*x\s*Tier/gi,
-		(match, multiplier) => {
-			return String(parseInt(multiplier) * tier)
-		},
-	)
+	// Process tier-based calculations
+	processedText = processTierCalculations(processedText, tier)
 
 	// Clean up extra periods and spaces
 	processedText = processedText.replace(/\.\s*\./g, '.')
@@ -342,6 +460,8 @@ export const calculateStats = (
 			trait['ability 1'],
 			trait['ability 2'],
 			trait['ability 3'],
-		].filter((ability) => ability && ability !== '-'),
+		]
+			.filter((ability) => ability && ability !== '-')
+			.map((ability) => processTierCalculations(ability, tier)),
 	}
 }
