@@ -277,8 +277,9 @@ const parseMultiOptionAttack = (
 		const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage} frost damage (${baseDamage} base + ${weaponDamage} weapon).`
 		
 		// Replace the Frost Ray option's damage sentence
+		// Pattern matches: <strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.
 		processedText = processedText.replace(
-			/(<strong>3\.\s+Frost Ray\.)<\/strong>\s*Treat the roll as a range attack vs\. Dodge\. Deals \+1 weapon damage as frost damage\./i,
+			/(<strong>3\.\s+Frost Ray\.\s*)<\/strong>\s*Treat the roll as a range attack vs\. Dodge\.\s*Deals \+1 weapon damage as frost damage\./i,
 			`$1</strong> ${damageText}`
 		)
 	}
