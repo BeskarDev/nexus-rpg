@@ -256,6 +256,100 @@ export const processTierCalculations = (text: string, tier: number): string => {
 	return processedText
 }
 
+// Helper function to parse multi-option attacks like Eye Rays
+const parseMultiOptionAttack = (
+	attackText: string,
+	baseAttackDamage: { weak: number; normal: number; strong: number },
+	tier: number,
+): string => {
+	let processedText = attackText
+	
+	// Split by numbered options (e.g., "1. Dazing Ray", "2. Fear Ray", etc.)
+	// We'll process each option separately to handle damage calculations correctly
+	const optionPattern = /(\d+\.\s+\w+\s+Ray\..*?)(?=\d+\.\s+\w+\s+Ray\.|$)/gis
+	const options = attackText.match(optionPattern)
+	
+	if (!options) {
+		// If we can't parse options, fall back to tier calculations only
+		return processTierCalculations(attackText, tier)
+	}
+	
+	// Get the preamble (everything before the first numbered option)
+	const firstOptionIndex = attackText.search(/\d+\.\s+\w+\s+Ray\./)
+	const preamble = firstOptionIndex >= 0 ? attackText.substring(0, firstOptionIndex) : ''
+	
+	// Process each option
+	const processedOptions = options.map(option => {
+		// Check if this specific option deals damage
+		const dealsDamage = /Deals|Treat the roll as a range attack/i.test(option)
+		
+		if (dealsDamage) {
+			// Parse damage for this specific option
+			let weaponDamageModifier = 0
+			
+			if (option.includes('Deals normal weapon damage')) {
+				weaponDamageModifier = 0
+			} else if (option.includes('Deals -1 weapon damage') || option.includes('with -1 weapon damage')) {
+				weaponDamageModifier = -1
+			} else if (option.includes('Deals +1 weapon damage') || option.includes('with +1 weapon damage')) {
+				weaponDamageModifier = 1
+			}
+			
+			// Calculate damage values
+			const weaponDamage = baseAttackDamage.normal - baseAttackDamage.weak
+			const baseDamage = baseAttackDamage.weak - weaponDamage
+			const modifiedWeaponDamage = Math.max(1, weaponDamage + weaponDamageModifier)
+			
+			const weakDamage = Math.max(1, baseDamage + modifiedWeaponDamage)
+			const strongDamage = Math.max(1, baseDamage + 2 * modifiedWeaponDamage)
+			const criticalDamage = Math.max(1, baseDamage + 3 * modifiedWeaponDamage)
+			
+			// Extract damage type
+			let damageType = ''
+			const damageTypeMatch = option.match(/as (\w+) damage/i)
+			if (damageTypeMatch) {
+				damageType = ` ${damageTypeMatch[1].toLowerCase()}`
+			}
+			
+			// Remove the damage-related sentences more comprehensively
+			// This handles both "Deals ..." and "Treat the roll as a range attack..."
+			let processedOption = option
+			
+			// Remove "Treat the roll as a range attack vs. Dodge. Deals ... damage." pattern
+			processedOption = processedOption.replace(
+				/Treat the roll as a range attack vs\. Dodge\.\s*Deals[^.]*?damage\./i,
+				''
+			).trim()
+			
+			// Also handle standalone "Deals ... damage." in case it wasn't caught above
+			processedOption = processedOption.replace(/Deals [^.]*?damage\./i, '').trim()
+			
+			// Construct damage text and insert after the option name
+			const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage}${damageType} damage (${baseDamage} base + ${modifiedWeaponDamage} weapon).`
+			
+			// Insert after the option header (e.g., "3. Frost Ray.")
+			processedOption = processedOption.replace(
+				/(\d+\.\s+\w+\s+Ray\.)\s*/,
+				`$1 ${damageText} `
+			)
+			
+			return processTierCalculations(processedOption, tier)
+		}
+		
+		// For non-damage options, just process tier calculations
+		return processTierCalculations(option, tier)
+	})
+	
+	// Reconstruct the attack text
+	processedText = preamble + processedOptions.join('')
+	
+	// Clean up
+	processedText = processedText.replace(/\.\s*\./g, '.')
+	processedText = processedText.replace(/\s+/g, ' ')
+	
+	return processedText.trim()
+}
+
 export const parseAttackDamage = (
 	attackText: string,
 	baseAttackDamage: { weak: number; normal: number; strong: number },
@@ -263,15 +357,23 @@ export const parseAttackDamage = (
 ): string => {
 	if (!attackText || attackText === '-') return ''
 
+	// Check if this is a multi-option attack (like Eye Rays)
+	// These have numbered sub-options and should process each option separately
+	const hasNumberedOptions = /\d+\.\s+\w+\s+Ray\./i.test(attackText)
+	
+	if (hasNumberedOptions) {
+		return parseMultiOptionAttack(attackText, baseAttackDamage, tier)
+	}
+
 	// Parse damage modifiers
 	let weaponDamageModifier = 0 // 0 = normal, -1 = reduced, +1 = increased
 	let useDamageCalculation = true
 
 	if (attackText.includes('Deals normal weapon damage')) {
 		weaponDamageModifier = 0
-	} else if (attackText.includes('Deals -1 weapon damage')) {
+	} else if (attackText.includes('Deals -1 weapon damage') || attackText.includes('with -1 weapon damage')) {
 		weaponDamageModifier = -1
-	} else if (attackText.includes('Deals +1 weapon damage')) {
+	} else if (attackText.includes('Deals +1 weapon damage') || attackText.includes('with +1 weapon damage')) {
 		weaponDamageModifier = 1
 	} else if (attackText.includes('Deals no damage')) {
 		useDamageCalculation = false
@@ -298,8 +400,10 @@ export const parseAttackDamage = (
 		let damageType = ''
 		let additionalInfo = ''
 		
-		// Look for damage type like "as blast damage"
-		const damageTypeMatch = processedText.match(/as (\w+) damage/i)
+		// Look for damage type in various patterns:
+		// 1. "as [type] damage"
+		// 2. "Deals [type] damage"
+		const damageTypeMatch = processedText.match(/(?:as|Deals)\s+(\w+)\s+damage/i)
 		if (damageTypeMatch) {
 			damageType = ` ${damageTypeMatch[1].toLowerCase()}`
 		}
