@@ -430,7 +430,7 @@ A field appears that bounces spells back.
 
 **74. Wild Zone**
 An area becomes a zone of wild magic.
-- **Effect**: Any spell cast within radius requires an additional 1d100 wild magic roll immediately after casting (even on success).
+- **Effect**: Any spell cast within radius requires an additional 1d100 wild magic roll immediately after casting (even on success). Wild magic effects triggered by Wild Zone cannot themselves trigger additional wild magic table rolls (to prevent infinite cascading).
 - **By Rank**: Radius close/close/short/short/medium/medium, Duration short/medium/medium/long/long/long.
 
 **75. Spell Theft**
@@ -564,7 +564,7 @@ Cause and effect become disconnected.
 
 **100. Reality Ripple**
 The fabric of reality distorts dramatically.
-- **Effect**: Roll on this table three times, ignoring results of 100. Apply all three results simultaneously. If this would cause contradictory effects, the most recent takes precedence.
+- **Effect**: Roll on this table three times, ignoring results of 100. Apply all three results simultaneously. If this would cause contradictory effects, the most recent takes precedence. Wild magic effects triggered by Reality Ripple cannot themselves trigger additional wild magic table rolls (to prevent infinite recursion).
 - **By Rank**: Effects scale based on the blundered spell's rank.
 
 ## Talent Interaction Rules

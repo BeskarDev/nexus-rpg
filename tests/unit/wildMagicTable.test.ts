@@ -118,11 +118,19 @@ describe('Wild Magic Table', () => {
     })
 
     it('should have effect descriptions', () => {
-      expect(exampleEntry).toContain('- **Effect**:')
+      if (exampleEntry) {
+        expect(exampleEntry).toContain('- **Effect**:')
+      } else {
+        throw new Error('Could not extract example entry from table')
+      }
     })
 
     it('should have rank scaling', () => {
-      expect(exampleEntry).toContain('- **By Rank**:')
+      if (exampleEntry) {
+        expect(exampleEntry).toContain('- **By Rank**:')
+      } else {
+        throw new Error('Could not extract example entry from table')
+      }
     })
 
     it('should reference spell ranks 0-5 in scaling', () => {
