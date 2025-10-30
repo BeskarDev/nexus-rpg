@@ -19,186 +19,47 @@ describe('Wild Magic Table', () => {
       expect(content).toContain('# 🎲 Wild Magic Table')
     })
 
-    it('should contain overview section', () => {
-      expect(content).toContain('## Overview')
-      expect(content).toContain('When you blunder an arcane spell roll')
-      expect(content).toContain('roll 1d100')
-    })
-
-    it('should contain resolution procedure', () => {
-      expect(content).toContain('### Resolution')
-      expect(content).toContain('Roll 1d100')
-      expect(content).toContain('Determine Effect Intensity')
-      expect(content).toContain('Apply the Effect')
+    it('should specify rank 1 or higher requirement', () => {
+      expect(content).toContain('rank 1 or higher')
     })
 
     it('should contain targeting rules', () => {
-      expect(content).toContain('### Targeting Rules')
-      expect(content).toContain('Nearest by Distance')
-      expect(content).toContain('Default to Caster')
+      expect(content).toContain('**Targeting:**')
+      expect(content).toContain('nearest')
     })
 
-    it('should contain intensity scaling table', () => {
-      expect(content).toContain('### Intensity Scaling by Spell Rank')
-      expect(content).toContain('| **Rank** | **Intensity**')
-      expect(content).toContain('| 0 | Light')
-      expect(content).toContain('| 5 | Extreme')
+    it('should contain scaling explanation', () => {
+      expect(content).toContain('**Scaling:**')
+      expect(content).toContain('1/2/3/4/5')
     })
   })
 
   describe('Table Entries', () => {
-    it('should have entries for 1-10 (Elemental Chaos)', () => {
-      expect(content).toContain('### 1-10: Elemental Chaos')
-      expect(content).toContain('**1. Chromatic Explosion')
-      expect(content).toContain('**10. Pyroclasm')
-    })
-
-    it('should have entries for 11-20 (Force and Motion)', () => {
-      expect(content).toContain('### 11-20: Force and Motion')
-      expect(content).toContain('**11. Gravity Reversal')
-      expect(content).toContain('**20. Telekinetic Slam')
-    })
-
-    it('should have entries for 21-30 (Teleportation)', () => {
-      expect(content).toContain('### 21-30: Teleportation and Displacement')
-      expect(content).toContain('**21. Random Teleport')
-      expect(content).toContain('**30. Dimensional Door')
-    })
-
-    it('should have entries for 31-40 (Transformation)', () => {
-      expect(content).toContain('### 31-40: Transformation and Polymorphing')
-      expect(content).toContain('**31. Random Polymorph')
-      expect(content).toContain('**40. Limb Multiplication')
-    })
-
-    it('should have entries for 41-50 (Mental)', () => {
-      expect(content).toContain('### 41-50: Mental and Illusion Effects')
-      expect(content).toContain('**41. Mind Swap')
-      expect(content).toContain('**50. Psychic Scream')
-    })
-
-    it('should have entries for 51-60 (Summoning)', () => {
-      expect(content).toContain('### 51-60: Summoning and Conjuration')
-      expect(content).toContain('**51. Random Summon')
-      expect(content).toContain('**60. Trap Conjuration')
-    })
-
-    it('should have entries for 61-70 (Environmental)', () => {
-      expect(content).toContain('### 61-70: Environmental and Weather Effects')
-      expect(content).toContain('**61. Earthquake')
-      expect(content).toContain('**70. Lava Pool')
-    })
-
-    it('should have entries for 71-80 (Magical Disruption)', () => {
-      expect(content).toContain('### 71-80: Magical Disruption and Alteration')
-      expect(content).toContain('**71. Antimagic Pulse')
-      expect(content).toContain('**80. Spell Echo')
-    })
-
-    it('should have entries for 81-90 (Healing)', () => {
-      expect(content).toContain('### 81-90: Healing and Vitality Effects')
-      expect(content).toContain('**81. Healing Burst')
-      expect(content).toContain('**90. Revitalize')
-    })
-
-    it('should have entries for 91-100 (Time)', () => {
-      expect(content).toContain('### 91-100: Time and Reality Warping')
-      expect(content).toContain('**91. Time Hiccup')
-      expect(content).toContain('**100. Reality Ripple')
-    })
-  })
-
-  describe('Entry Format', () => {
-    const exampleEntry = content.match(/\*\*1\. Chromatic Explosion\*\*[\s\S]*?(?=\*\*2\.)/)?.[0]
-
-    it('should have numbered entries with names', () => {
-      expect(content).toMatch(/\*\*1\. Chromatic Explosion\*\*/)
-      expect(content).toMatch(/\*\*50\. Psychic Scream\*\*/)
-      expect(content).toMatch(/\*\*100\. Reality Ripple\*\*/)
-    })
-
-    it('should have effect descriptions', () => {
-      if (exampleEntry) {
-        expect(exampleEntry).toContain('- **Effect**:')
-      } else {
-        throw new Error('Could not extract example entry from table')
+    it('should have all 100 numbered entries', () => {
+      const entryPattern = /^\d+\.\s+\*\*/gm
+      const matches = content.match(entryPattern)
+      
+      expect(matches).not.toBeNull()
+      if (matches) {
+        expect(matches.length).toBe(100)
       }
     })
 
-    it('should have rank scaling', () => {
-      if (exampleEntry) {
-        expect(exampleEntry).toContain('- **By Rank**:')
-      } else {
-        throw new Error('Could not extract example entry from table')
-      }
+    it('should have entries in correct format', () => {
+      // Check a few sample entries
+      expect(content).toMatch(/1\.\s+\*\*Chromatic Explosion\.\*\*/)
+      expect(content).toMatch(/50\.\s+\*\*Psychic Scream\.\*\*/)
+      expect(content).toMatch(/100\.\s+\*\*Reality Ripple\.\*\*/)
     })
 
-    it('should reference spell ranks 0-5 in scaling', () => {
-      // Check that rank scaling includes values for all 6 ranks (0-5)
-      const rankScalingPattern = /By Rank.*?\d+\/\d+\/\d+\/\d+\/\d+\/\d+/s
-      expect(content).toMatch(rankScalingPattern)
-    })
-  })
-
-  describe('Talent Interaction Rules', () => {
-    it('should contain talent interaction section', () => {
-      expect(content).toContain('## Talent Interaction Rules')
-      expect(content).toContain('### Default: No Direct Influence')
+    it('should have inline scaling in entries', () => {
+      // Check that entries have rank-based scaling inline
+      expect(content).toMatch(/4\/6\/8\/10\/12/)
+      expect(content).toMatch(/close\/short\/short\/medium\/medium/)
+      expect(content).toMatch(/brief\/short\/short\/medium\/medium/)
     })
 
-    it('should contain optional influence guidelines', () => {
-      expect(content).toContain('### Optional: Limited Influence')
-      expect(content).toContain('rare, costly, and bounded')
-    })
-
-    it('should provide example talents', () => {
-      expect(content).toContain('**Wild Luck**')
-      expect(content).toContain('**Chaos Channeling**')
-    })
-  })
-
-  describe('Deliberate Triggers', () => {
-    it('should contain deliberate triggers section', () => {
-      expect(content).toContain('## Deliberate Triggers and Random Downside Hooks')
-    })
-
-    it('should contain trigger patterns', () => {
-      expect(content).toContain('### Trigger Patterns')
-      expect(content).toContain('**Overchannel**')
-      expect(content).toContain('**Unstable Focus**')
-    })
-
-    it('should contain implementation guidelines', () => {
-      expect(content).toContain('### Implementation Guidelines')
-      expect(content).toContain('opt-in')
-    })
-
-    it('should contain example optional talents', () => {
-      expect(content).toContain('### Example Optional Talents')
-      expect(content).toContain('Wild Surge')
-    })
-  })
-
-  describe('Template and Extension', () => {
-    it('should contain template section', () => {
-      expect(content).toContain('## Template for New Entries')
-      expect(content).toContain('[Number]. [Effect Name]')
-    })
-
-    it('should contain extension guidelines', () => {
-      expect(content).toContain('### Extending the Table')
-      expect(content).toContain('GMs can create custom entries')
-    })
-
-    it('should provide template example', () => {
-      expect(content).toContain('**Example**:')
-      expect(content).toContain('Gravity Storm')
-    })
-  })
-
-  describe('Content Coverage', () => {
-    it('should reference various conditions from the game', () => {
-      // Check for mentions of game conditions
+    it('should reference various conditions', () => {
       expect(content).toMatch(/stunned|slowed|frightened|charmed|confused/i)
     })
 
@@ -207,89 +68,49 @@ describe('Wild Magic Table', () => {
     })
 
     it('should reference distance categories', () => {
-      expect(content).toMatch(/close|short|medium|long|very long|extreme/i)
+      expect(content).toMatch(/close|short|medium|long/i)
     })
 
     it('should reference duration categories', () => {
-      expect(content).toMatch(/briefly|short|medium|long/i)
+      expect(content).toMatch(/brief|short|medium|long/i)
     })
   })
 
-  describe('Balance and Design', () => {
-    it('should emphasize temporary effects', () => {
-      expect(content).toContain('temporary')
-      expect(content).toContain('Duration')
-      expect(content).toMatch(/Non-Permanence|temporary|always temporary/i)
-    })
-
-    it('should have diverse target types', () => {
-      expect(content).toContain('caster')
-      expect(content).toMatch(/ally|allies/i)
-      expect(content).toMatch(/enemy|enemies/i)
-      expect(content).toMatch(/area|radius/i)
-    })
-
-    it('should scale with spell rank', () => {
-      expect(content).toMatch(/rank 0|rank 1|rank 2|rank 3|rank 4|rank 5/i)
-      expect(content).toContain('spell rank')
-      expect(content).toContain('blundered spell')
-    })
-  })
-
-  describe('Integration with Core Rules', () => {
-    it('should reference the spell blunder mechanic', () => {
-      expect(content).toContain('blunder')
-      expect(content).toContain('1d100')
-    })
-
-    it('should mention Focus Cost', () => {
-      expect(content).toContain('Focus Cost')
-    })
-
-    it('should integrate with existing spell system', () => {
-      expect(content).toMatch(/arcane|spell|cast/i)
-    })
-  })
-
-  describe('Complete Table Coverage', () => {
-    it('should have exactly 100 numbered entries', () => {
-      // Count all numbered entries from **1. to **100.
-      const entryPattern = /\*\*(\d+)\.\s+[A-Z]/g
-      const matches = content.match(entryPattern)
-      
-      expect(matches).not.toBeNull()
-      if (matches) {
-        const numbers = matches.map(m => {
-          const num = m.match(/\d+/)
-          return num ? parseInt(num[0]) : 0
-        })
-        
-        // Check we have 100 entries
-        expect(numbers.length).toBe(100)
-        
-        // Check they're numbered 1-100
-        expect(Math.min(...numbers)).toBe(1)
-        expect(Math.max(...numbers)).toBe(100)
-        
-        // Check all numbers are present
-        for (let i = 1; i <= 100; i++) {
-          expect(numbers).toContain(i)
-        }
+  describe('Completeness', () => {
+    it('should have exactly 100 numbered entries from 1-100', () => {
+      for (let i = 1; i <= 100; i++) {
+        const pattern = new RegExp(`^${i}\\.\\s+\\*\\*`, 'm')
+        expect(content).toMatch(pattern)
       }
     })
 
-    it('should organize entries in groups of 10', () => {
-      // Verify the category headers
-      expect(content).toMatch(/### 1-10:/)
-      expect(content).toMatch(/### 11-20:/)
-      expect(content).toMatch(/### 21-30:/)
-      expect(content).toMatch(/### 31-40:/)
-      expect(content).toMatch(/### 41-50:/)
-      expect(content).toMatch(/### 51-60:/)
-      expect(content).toMatch(/### 61-70:/)
-      expect(content).toMatch(/### 71-80:/)
-      expect(content).toMatch(/### 81-90:/)
-      expect(content).toMatch(/### 91-100:/)
+    it('should be concise (under 20k characters)', () => {
+      // Verify the file is much shorter than the original verbose version
+      expect(content.length).toBeLessThan(20000)
+    })
+  })
+
+  describe('Anti-recursion safeguards', () => {
+    it('should prevent cascading in Wild Zone', () => {
+      expect(content).toMatch(/74\.\s+\*\*Wild Zone\.\*\*.*doesn't cascade/s)
+    })
+
+    it('should prevent cascading in Reality Ripple', () => {
+      expect(content).toMatch(/100\.\s+\*\*Reality Ripple\.\*\*.*don't trigger further cascades/s)
+    })
+  })
+
+  describe('Consistency', () => {
+    it('should have consistent entry format', () => {
+      // All entries should follow pattern: "N. **Name.** Description..."
+      const entries = content.match(/^\d+\.\s+\*\*[^*]+\.\*\*/gm)
+      expect(entries).not.toBeNull()
+      if (entries) {
+        // Each entry should end with period before closing **
+        entries.forEach(entry => {
+          expect(entry).toMatch(/\.\*\*$/)
+        })
+      }
     })
   })
 })
