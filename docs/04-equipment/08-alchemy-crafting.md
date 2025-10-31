@@ -22,7 +22,7 @@ Each ingredient has a **tag** (effect type) and **potency** (Quality tier).
 | Quality | Ingredient Cost | Example Sources |
 | --- | --- | --- |
 | **Q1** | 1-5 coins | Common herbs, ash, basic minerals |
-| **Q2** | 5-25 coins | Medicinal plants, iron filings, charcoal, animal parts |
+| **Q2** | 5-25 coins | Medicinal plants, copper dust, charcoal, animal parts |
 | **Q3** | 40-100 coins | Rare flowers, monster blood, elemental salts |
 | **Q4** | 200-400 coins | Dragon bile, troll blood, giant organs |
 | **Q5** | 800-1,500 coins | Phoenix ash, unicorn horn, celestial minerals |
@@ -116,7 +116,7 @@ Temporarily enhance or reduce attributes:
 Transform or modify the drinker:
 - **Shape Change:** Animal forms, monstrous features
 - **Size Change:** Enlarge (Large size) or reduce (Small size)
-- **Material Change:** Stone skin (+2 AV), iron bones (immune bleeding)
+- **Material Change:** Stone skin (+2 AV), bronze bones (immune bleeding)
 - **Recovery:** Cure disease, remove curse, restore vitality
 
 ## Poisons
