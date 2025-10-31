@@ -36,9 +36,12 @@ describe('Wild Magic Table', () => {
 
   describe('Table Entries', () => {
     it('should have all 100 numbered entries in table format', () => {
+      // Extract only the main d100 table section (before Optional: Permanent Mutations)
+      const mainTableSection = content.split('## Optional: Permanent Mutations')[0]
+      
       // Count table rows starting with | number |
       const entryPattern = /^\|\s*\d+\s*\|/gm
-      const matches = content.match(entryPattern)
+      const matches = mainTableSection.match(entryPattern)
       
       expect(matches).not.toBeNull()
       if (matches) {
@@ -86,15 +89,16 @@ describe('Wild Magic Table', () => {
 
   describe('Completeness', () => {
     it('should have exactly 100 numbered entries from 1-100', () => {
+      const mainTableSection = content.split('## Optional: Permanent Mutations')[0]
       for (let i = 1; i <= 100; i++) {
         const pattern = new RegExp(`^\\|\\s*${i}\\s*\\|`, 'm')
-        expect(content).toMatch(pattern)
+        expect(mainTableSection).toMatch(pattern)
       }
     })
 
-    it('should be reasonably concise', () => {
-      // Table format might be slightly longer but still reasonable
-      expect(content.length).toBeLessThan(25000)
+    it('should be reasonably sized with optional mutations', () => {
+      // Allow for larger file with mutation section (~28-30k characters)
+      expect(content.length).toBeLessThan(35000)
     })
   })
 
@@ -119,6 +123,57 @@ describe('Wild Magic Table', () => {
 
     it('should provide guidance for random teleportation', () => {
       expect(content).toMatch(/unoccupied/i)
+    })
+  })
+
+  describe('Optional Mutations Section', () => {
+    it('should have an optional mutations section', () => {
+      expect(content).toContain('## Optional: Permanent Mutations')
+    })
+
+    it('should explain exposure tracking', () => {
+      expect(content).toMatch(/Track.*Exposure/i)
+      expect(content).toMatch(/Thresholds:/i)
+    })
+
+    it('should describe four mutation stages', () => {
+      expect(content).toContain('Stage 1')
+      expect(content).toContain('Stage 2')
+      expect(content).toContain('Stage 3')
+      expect(content).toContain('Stage 4')
+      expect(content).toMatch(/Subtle.*cosmetic/i)
+      expect(content).toMatch(/mechanical effect/i)
+    })
+
+    it('should have a d12 mutation table', () => {
+      expect(content).toContain('Mutation Table (d12)')
+      expect(content).toMatch(/\|\s*d12\s*\|/)
+    })
+
+    it('should have exactly 12 mutations', () => {
+      const mutationsSection = content.split('## Optional: Permanent Mutations')[1]
+      if (mutationsSection) {
+        for (let i = 1; i <= 12; i++) {
+          const pattern = new RegExp(`^\\|\\s*${i}\\s*\\|`, 'm')
+          expect(mutationsSection).toMatch(pattern)
+        }
+      }
+    })
+
+    it('should have mutations with trade-offs', () => {
+      expect(content).toMatch(/\*\*Flaw:\*\*/i)
+      expect(content).toMatch(/\*\*Trait:\*\*/i)
+    })
+
+    it('should reference body parts in mutations', () => {
+      expect(content).toMatch(/Eyes|Blood|Limbs|Skin|Features|Scars|Form|Hands|Feet|Extremities|Aura|Tether/i)
+    })
+
+    it('should include GM guidance for mutations', () => {
+      expect(content).toContain('GM Guidance')
+      expect(content).toMatch(/Pacing:/i)
+      expect(content).toMatch(/Player Choice:/i)
+      expect(content).toMatch(/Removal:/i)
     })
   })
 })
