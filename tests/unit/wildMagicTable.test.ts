@@ -131,9 +131,10 @@ describe('Wild Magic Table', () => {
       expect(content).toContain('## Optional: Permanent Mutations')
     })
 
-    it('should explain exposure tracking', () => {
-      expect(content).toMatch(/Track.*Exposure/i)
-      expect(content).toMatch(/Thresholds:/i)
+    it('should explain the simplified mutation system', () => {
+      expect(content).toMatch(/each time.*triggers.*wild magic/i)
+      expect(content).toMatch(/roll 1d12/i)
+      expect(content).toMatch(/advance.*mutation.*one stage/i)
     })
 
     it('should describe four mutation stages', () => {
@@ -142,7 +143,15 @@ describe('Wild Magic Table', () => {
       expect(content).toContain('Stage 3')
       expect(content).toContain('Stage 4')
       expect(content).toMatch(/Subtle.*cosmetic/i)
-      expect(content).toMatch(/mechanical effect/i)
+      expect(content).toMatch(/trade-off/i)
+    })
+
+    it('should have Stage 3 with minor trade-offs', () => {
+      expect(content).toMatch(/Stage 3.*minor trade-off/i)
+    })
+
+    it('should have Stage 4 with full trade-offs', () => {
+      expect(content).toMatch(/Stage 4.*Full trade-off/i)
     })
 
     it('should have a d12 mutation table', () => {
@@ -160,9 +169,18 @@ describe('Wild Magic Table', () => {
       }
     })
 
-    it('should have mutations with trade-offs', () => {
-      expect(content).toMatch(/\*\*Flaw:\*\*/i)
-      expect(content).toMatch(/\*\*Trait:\*\*/i)
+    it('should have mutations with both Stage 3 and Stage 4 trade-offs', () => {
+      const mutationsSection = content.split('## Optional: Permanent Mutations')[1]
+      if (mutationsSection) {
+        // Count Flaw/Trait pairs in the mutations table
+        // Each mutation should have them in Stage 3 and Stage 4 columns
+        const flaws = (mutationsSection.match(/\*\*Flaw:\*\*/g) || []).length
+        const traits = (mutationsSection.match(/\*\*Trait:\*\*/g) || []).length
+        
+        // Should have 12 mutations × 2 stages (3 & 4) = 24 of each
+        expect(flaws).toBeGreaterThanOrEqual(20) // Some flexibility
+        expect(traits).toBeGreaterThanOrEqual(20)
+      }
     })
 
     it('should reference body parts in mutations', () => {
@@ -171,7 +189,7 @@ describe('Wild Magic Table', () => {
 
     it('should include GM guidance for mutations', () => {
       expect(content).toContain('GM Guidance')
-      expect(content).toMatch(/Pacing:/i)
+      expect(content).toMatch(/Frequency:/i)
       expect(content).toMatch(/Player Choice:/i)
       expect(content).toMatch(/Removal:/i)
     })
