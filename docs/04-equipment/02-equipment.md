@@ -21,7 +21,7 @@ Name | Quality | Load | Cost | Description
 
 ## Alchemy
 
-> **Note:** These are standard alchemical items available for purchase. For rules on crafting custom potions, poisons, and alchemical items using ingredients, see **[Alchemy & Potion Crafting](./08-alchemy-crafting.md)**. For a complete conversion guide and ingredient-based recipes for these items, see **[Recipe Examples & Conversions](./10-recipe-examples.md)**.
+> **Note:** These are standard alchemical items available for purchase. For rules on crafting custom potions, poisons, and alchemical items using ingredients, see **[Alchemy & Potion Crafting](./08-alchemy-crafting.md)**.
 
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
