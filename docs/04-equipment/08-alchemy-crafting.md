@@ -63,12 +63,12 @@ Use standard **Craft an Item** downtime rules with these specifics:
 
 | d6 | Result |
 | --- | --- |
-| 1 | Toxic fumes - all nearby save Spirit + Fortitude TN 8 or **poisoned** (short) |
-| 2 | Explosion - 2d6 blast damage, workspace unusable 1d4 days |
-| 3 | Cursed result - appears normal, unpredictable effects |
-| 4 | Half ingredients destroyed |
-| 5 | Takes double time and cost |
-| 6 | Alchemical burn - 1d6 acid/fire damage, save STR + Fort (hard) or Wound |
+| 1 | Toxic fumes - you suffer 1 Fatigue that can't be removed until next full rest |
+| 2 | Explosion - 2d6 blast damage, workspace unusable 1d4 days, lose half ingredients |
+| 3 | Cursed result - item appears normal but has unpredictable harmful effects |
+| 4 | Contamination - all ingredients destroyed, must reacquire |
+| 5 | Setback - takes double time (additional week) and double material cost |
+| 6 | Severe burn - suffer 1 Wound, must recover before continuing any crafting |
 
 ## Alchemical Effect Types
 
