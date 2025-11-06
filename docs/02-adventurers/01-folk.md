@@ -27,7 +27,7 @@ When creating your adventurer, you may use the following tables to determine you
 | Orc | 12 + 2d6 | 170 + 2d10 | 60 + 2d8 x 2 |
 | Goblin | 10 + 2d4 | 90 + 2d4 | 15 + 2d4 |
 | Human | 14 + 2d6 | 160 + 2d8 | 50 + 2d6 x 2 |
-| Lionfolk | 14 + 2d6 | 180 + 2d10 | 60 + 2d8 x 2 |
+| Catfolk | 14 + 2d6 | 180 + 2d10 | 60 + 2d8 x 2 |
 | Lizardfolk | 10 + 2d4 | 170 + 2d8 | 60 + 2d8 x 2 |
 | Minotaur | 25 + 2d8 | 190 + 2d10 | 70 + 2d10 x 3 |
 
@@ -44,7 +44,7 @@ When creating your adventurer, you may use the following tables to determine you
 | Orc | 14 | 30 | 45 | 60+ |
 | Goblin | 12 | 25 | 35 | 50+ |
 | Human | 16 | 35 | 55 | 70+ |
-| Lionfolk | 16 | 40 | 60 | 80+ |
+| Catfolk | 16 | 40 | 60 | 80+ |
 | Lizardfolk | 12 | 25 | 35 | 50+ |
 | Minotaur | 30 | 60 | 90 | 120+ |
 
@@ -275,9 +275,9 @@ A proud and regal race, with a deep connection to the natural world and a revere
 - **Jakharii (Savannah-Lionfolk)**: Tribal hunters who form tight-knit prides and control vast territories
 - **Saghal (Jungle-Pantherfolk)**: Stealthy predators who blend into their surroundings with remarkable ease
 
-**Size.** Lionfolk are medium sized, growing up to 1.90 to 2.00 meters tall on average.
+**Size.** Catfolk are medium sized, growing up to 1.90 to 2.00 meters tall on average.
 
-**Age.** Lionfolk reach adulthood at 20 and are considered of old age at 65 years. They can live up to 90 years on average.
+**Age.** Catfolk reach adulthood at 20 and are considered of old age at 65 years. They can live up to 90 years on average.
 
 **Night Vision.** You can see one range category further from sources of bright and dim light.
 
