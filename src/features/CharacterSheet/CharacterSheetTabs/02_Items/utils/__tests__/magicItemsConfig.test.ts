@@ -32,10 +32,10 @@ describe('Magic Item Configuration', () => {
       })
     })
 
-    it('should return empty array for invalid combinations', () => {
+    it('should return materials for wearables at Q3 (base materials available at all tiers)', () => {
       const materials = getAvailableMaterials('wearable', 3)
-      // Most materials don't apply to wearables at Q3
-      expect(materials.length).toBe(0)
+      // Base materials are available at all quality tiers now
+      expect(materials.length).toBeGreaterThan(0)
     })
   })
 
@@ -83,29 +83,30 @@ describe('Magic Item Configuration', () => {
 
   describe('calculateMagicItemCost', () => {
     const shortsword = baseItems['one-handed-weapon'].find(item => item.name === 'Shortsword')!
+    const ironMaterial = specialMaterials.find(m => m.id === 'iron')!
 
     it('should calculate cost with material only', () => {
-      const cost = calculateMagicItemCost(shortsword, 4, true, false)
-      // Base cost (50) + Q4 one-handed weapon cost (1000)
+      const cost = calculateMagicItemCost(shortsword, 4, ironMaterial, false)
+      // Base cost (50) + Q4 material extra cost (500, which is 50% of 1000)
+      expect(cost).toBe(550)
+    })
+
+    it('should calculate cost with enchantment only (auto-selects base material)', () => {
+      const cost = calculateMagicItemCost(shortsword, 4, undefined, true)
+      // Base cost (50) + Q4 enchantment cost (1000)
       expect(cost).toBe(1050)
     })
 
-    it('should calculate cost with enchantment only', () => {
-      const cost = calculateMagicItemCost(shortsword, 4, false, true)
-      // Base cost (50) + Q4 one-handed weapon cost (1000)
-      expect(cost).toBe(1050)
-    })
-
-    it('should calculate cost with both material and enchantment', () => {
-      const cost = calculateMagicItemCost(shortsword, 4, true, true)
-      // Base cost (50) + 2 * Q4 one-handed weapon cost (2000)
-      expect(cost).toBe(2050)
+    it('should calculate cost with both special material and enchantment', () => {
+      const cost = calculateMagicItemCost(shortsword, 4, ironMaterial, true)
+      // Base cost (50) + Q4 material extra (500) + Q4 enchantment (1000)
+      expect(cost).toBe(1550)
     })
 
     it('should calculate higher quality costs correctly', () => {
-      const cost = calculateMagicItemCost(shortsword, 6, true, true)
-      // Base cost (50) + 2 * Q6 one-handed weapon cost (20000)
-      expect(cost).toBe(20050)
+      const cost = calculateMagicItemCost(shortsword, 6, ironMaterial, true)
+      // Base cost (50) + Q6 material extra (5000, 50% of 10000) + Q6 enchantment (10000)
+      expect(cost).toBe(15050)
     })
   })
 
@@ -164,14 +165,14 @@ describe('Magic Item Configuration', () => {
     const mithril = specialMaterials.find(m => m.id === 'mithril')!
     const flaming = enchantments.find(e => e.id === 'flaming')!
 
-    it('should generate name with material only', () => {
-      const name = generateItemName(shortsword, mithril)
-      expect(name).toBe('Mithril Shortsword')
+    it('should generate name with material only and bonus', () => {
+      const name = generateItemName(shortsword, mithril, undefined, 5)
+      expect(name).toBe('Mithril Shortsword +2') // Q5 gives +2 bonus
     })
 
-    it('should generate name with prefix enchantment only', () => {
-      const name = generateItemName(shortsword, undefined, flaming)
-      expect(name).toBe('Flaming Shortsword')
+    it('should generate name with prefix enchantment only and bonus', () => {
+      const name = generateItemName(shortsword, undefined, flaming, 4)
+      expect(name).toBe('Flaming Shortsword +1') // Q4 gives +1 bonus
     })
 
     it('should generate name with suffix enchantment only', () => {
@@ -181,9 +182,9 @@ describe('Magic Item Configuration', () => {
       expect(name).toBe('Amulet of Ogre Strength')
     })
 
-    it('should generate name with material and prefix enchantment', () => {
-      const name = generateItemName(shortsword, mithril, flaming)
-      expect(name).toBe('Flaming Mithril Shortsword')
+    it('should generate name with material and prefix enchantment and bonus', () => {
+      const name = generateItemName(shortsword, mithril, flaming, 5)
+      expect(name).toBe('Flaming Mithril Shortsword +2') // Q5 gives +2 bonus
     })
 
     it('should generate name with material and suffix enchantment', () => {
