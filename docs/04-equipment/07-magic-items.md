@@ -6,31 +6,22 @@ sidebar_position: 7
 
 ![banner-img](/img/banner/weapon-armor-materials-banner.png)
 
-Magic items are higher Quality versions of normal weapons, armor, or other equipment. These items come with higher bonuses than their mundane counterparts but also with a much higher price and skill required to craft them.
+Magic items are higher Quality versions of normal equipment. They provide greater bonuses but cost significantly more.
 
 ## How to Build a Magic Item
 
-Creating a magic item follows three steps:
+**Formula: Total Cost = Base Item + Material Extra + Enchantment**
 
-1. **Choose a Base Item**: Select the type of item (weapon, armor, wearable, etc.) and its Quality (Q1-Q8)
-2. **Select a Material**: All items must use a material:
-   - **Base Materials** (Q1-Q8): Provide flavor at no extra cost
-   - **Special Materials** (Q3-Q8): Provide mechanical bonuses and add ~50% of enchantment cost
-3. **Add an Enchantment** (Optional, Q3+): Powerful magical abilities
+1. **Choose Base Item**: Select item type and Quality (Q1-Q8)
+2. **Select Material**: 
+   - **Base Materials** (Q1-Q8): Flavor only, 0 extra cost
+   - **Special Materials** (Q3-Q8): Mechanical bonuses, extra cost (see table)
+3. **Add Enchantment** (Optional, Q3+): Magical abilities (see table)
 
-### Cost Calculation
-
-**Total Cost = Base Item + Material Extra + Enchantment**
-
-- **Base Item**: Cost of the mundane version
-- **Material Extra**: 0 coins for base materials, see table below for special materials
-- **Enchantment**: See table below (optional, Q3+)
-
-> **Examples:**
-> - Q4 bronze shortsword + flaming = 50 + 0 + 1,000 = **1,050 coins**
-> - Q5 mithril breastplate + enchantment = 750 + 5,000 + 10,000 = **15,750 coins**
-> - Q6 adamantite longsword + sacred = 100 + 5,000 + 10,000 = **25,100 coins**
-> 
+**Examples:**
+- Q4 bronze shortsword + flaming = 50 + 0 + 1,000 = 1,050 coins
+- Q5 mithril breastplate + enchantment = 750 + 5,000 + 10,000 = 15,750 coins
+- Q6 adamantite longsword + sacred = 100 + 5,000 + 10,000 = 25,100 coins 
 
 ## Cost Tables
 
@@ -59,21 +50,14 @@ Creating a magic item follows three steps:
 
 ### Wearable Equipment Base Costs
 
-When creating magic wearable items for different equipment slots, use these minimum base costs before applying the magic item price modifiers above:
+Minimum base costs for magic wearables by equipment slot:
 
-| Equipment Slot | Min. Base Cost |
-| --- | --- |
-| **Head** (helmet, headband, mask) | 50 coins |
-| **Neck** (amulet, brooch, scarf) | 50 coins |
-| **Back** (cape, cloak, mantle) | 100 coins |
-| **Body** (robe, tunic) | 100 coins |
-| **Hands** (bracers, bracelets, gloves) | 50 coins |
-| **Rings** | 50 coins |
-| **Waist** (belt, sash, girdle) | 50 coins |
-| **Feet** (boots, sandals, shoes) | 100 coins |
+| Slot | Base Cost | Example |
+| --- | --- | --- |
+| **Head, Neck, Hands, Rings, Waist** | 50 coins | Amulet, headband, gloves |
+| **Back, Body, Feet** | 100 coins | Cloak, robe, boots |
 
-> For example, a Quality 4 **amulet of protection** would cost 800 coins total (50 base cost + 750 wearable magic item modifier). A Quality 5 **cloak of strength** would cost 2,600 coins (100 base cost + 2,500 wearable magic item modifier).
-> 
+*Example: Q4 amulet of protection = 50 + 0 + 750 = 800 coins* 
 
 ## Magic Item Effects
 
@@ -149,9 +133,7 @@ Below are the cost of spell scrolls for each spell rank. Spell scrolls have 0 lo
 | 7 (Superior) | 4 | 5,000 coins | 4 weeks |
 | 8 (Supreme) | 5 | 15,000 coins | 8 weeks |
 
-**Random Spell Scrolls**
-
-When rolling randomly for treasure or otherwise acquiring a spell scroll of unknown origin, you can use the tables below to determine what kind of spell the scroll contains.
+**Random Scrolls**: Roll to determine scroll type and spell discipline/tradition:
 
 | d6 | Scroll Type |
 | --- | --- |
@@ -207,8 +189,8 @@ Rare or magical materials that provide mechanical advantages and add **extra cos
 
 #### **Base Materials - Primitive (Q1)**
 
-> Items from primitive materials represent the crude makeshift weapons and tools used by primitive tribes without higher knowledge or better materials available. Primitive items can only be made from Quality 2 base items with an original cost of 100 coins or less.
-> 
+*Crude makeshift items for tribes without better materials. Can only upgrade Q2 items costing ≤100 coins.*
+
 
 | d8 | Material | Properties |
 | --- | --- | --- |
@@ -223,9 +205,7 @@ Rare or magical materials that provide mechanical advantages and add **extra cos
 
 #### **Base Materials - Mundane (Q2-Q8)**
 
-These are the standard materials used for most quality items. **No extra cost.** Available at all quality tiers from Q2 to Q8.
-
-At higher quality tiers, these materials represent superior craftsmanship, purer sources, and better construction techniques without providing mechanical advantages beyond the item's quality tier bonuses.
+*Standard materials, no extra cost. Higher quality = better craftsmanship, purer materials.*
 
 | d8 | Material | Properties |
 | --- | --- | --- |
@@ -238,11 +218,11 @@ At higher quality tiers, these materials represent superior craftsmanship, purer
 | 7 | **Antler** | *Hard and naturally curved. Effective for piercing weapons or rugged tools.* **No mechanical effect.** |
 | 8 | **Obsidian** | *Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.*<br/><br/>**-** The item gains the fragile property.<br/>- Weapon/Ammo: +1 weapon damage (enhancement bonus). |
 
-> **Example**: A Q5 bronze longsword represents a masterfully crafted weapon made from exceptionally pure bronze, carefully forged and balanced. It gains the Q5 quality bonuses (+2 weapon damage, +1d durability) but has no additional cost beyond the base longsword price.
+*Example: Q5 bronze longsword = masterfully crafted, exceptionally pure. Gains Q5 bonuses (+2 damage, +1d durability) but no extra cost.*
 
 #### **Special Materials - Exotic (Q3-4)**
 
-These rare materials provide mechanical advantages. **Extra cost applies** (see Special Material Extra Cost table).
+*Rare materials with mechanical bonuses. Extra cost applies.*
 
 | d10 | Material | Properties |
 | --- | --- | --- |
@@ -259,7 +239,7 @@ These rare materials provide mechanical advantages. **Extra cost applies** (see 
 
 #### **Special Materials - Greater (Q5-6)**
 
-These epic materials provide significant magical power. **Extra cost applies** (see Special Material Extra Cost table).
+*Epic materials with significant power. Extra cost applies.*
 
 | d10 | Material | Properties |
 | --- | --- | --- |
@@ -276,7 +256,7 @@ These epic materials provide significant magical power. **Extra cost applies** (
 
 #### **Special Materials - Legendary (Q7-8)**
 
-These cosmic or divine materials are very rare or one-of-a-kind. **Extra cost applies** (see Special Material Extra Cost table).
+*Cosmic/divine materials, very rare. Extra cost applies.*
 
 | d10 | Material | Properties |
 | --- | --- | --- |
