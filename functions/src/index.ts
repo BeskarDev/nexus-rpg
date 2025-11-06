@@ -4,6 +4,9 @@ import * as admin from 'firebase-admin'
 // Initialize Firebase Admin SDK
 admin.initializeApp()
 
+// Configure region for all functions (Frankfurt, Germany)
+const region = 'europe-west3'
+
 /**
  * Cloud Function to invite a user by creating a Firebase Auth account
  * and sending a password reset email.
@@ -11,9 +14,10 @@ admin.initializeApp()
  * This function can only be called by authenticated admin users.
  * 
  * @param email - The email address of the user to invite
+ * @param displayName - The display name for the user
  * @returns Object with success status and message
  */
-export const inviteUser = functions.https.onCall(async (data, context) => {
+export const inviteUser = functions.region(region).https.onCall(async (data, context) => {
 	// Verify the user is authenticated
 	if (!context.auth) {
 		throw new functions.https.HttpsError(
@@ -31,7 +35,7 @@ export const inviteUser = functions.https.onCall(async (data, context) => {
 		)
 	}
 
-	const { email } = data
+	const { email, displayName } = data
 
 	// Validate email
 	if (!email || typeof email !== 'string' || !email.includes('@')) {
@@ -41,16 +45,36 @@ export const inviteUser = functions.https.onCall(async (data, context) => {
 		)
 	}
 
+	// Validate displayName if provided (optional) - only check type if it exists
+	if (displayName && typeof displayName !== 'string') {
+		throw new functions.https.HttpsError(
+			'invalid-argument',
+			'Display name must be a string if provided.'
+		)
+	}
+
+	// Use displayName if provided and not empty, otherwise extract from email
+	const finalDisplayName = (displayName && typeof displayName === 'string' && displayName.trim().length > 0)
+		? displayName.trim() 
+		: email.split('@')[0]
+
 	try {
 		// Check if user already exists
 		let user
 		try {
 			user = await admin.auth().getUserByEmail(email)
-			// User exists, just send a password reset email
-			await admin.auth().generatePasswordResetLink(email)
+			// User exists, send password reset email using Firebase's built-in system
+			// Firebase will automatically send the email using the configured template
+			const actionCodeSettings = {
+				url: 'https://nexus-rpg-d04d1.web.app', // Your app URL
+				handleCodeInApp: false,
+			}
+			const resetLink = await admin.auth().generatePasswordResetLink(email, actionCodeSettings)
+			
 			return {
 				success: true,
-				message: `User ${email} already exists. Password reset email sent.`,
+				message: `Password reset email sent to ${email}.`,
+				resetLink: resetLink, // Include as backup
 				userId: user.uid,
 				existingUser: true,
 			}
@@ -60,26 +84,28 @@ export const inviteUser = functions.https.onCall(async (data, context) => {
 				// Generate a random temporary password
 				const tempPassword = generateTempPassword()
 				
-				// Extract a default name from email (before @ symbol)
-				const defaultName = email.split('@')[0]
-				
 				// Create the user with email and temporary password
+				// Set emailVerified to true since this is an admin-invited user
 				user = await admin.auth().createUser({
 					email: email,
 					password: tempPassword,
-					emailVerified: false,
-					displayName: defaultName,
+					emailVerified: true, // Auto-verify admin-invited users
+					displayName: finalDisplayName,
 				})
 
-				// Send password reset email so user can set their own password
-				await admin.auth().generatePasswordResetLink(email)
+				// Generate and send password reset email using Firebase's built-in system
+				const actionCodeSettings = {
+					url: 'https://nexus-rpg-d04d1.web.app', // Your app URL
+					handleCodeInApp: false,
+				}
+				const resetLink = await admin.auth().generatePasswordResetLink(email, actionCodeSettings)
 
 				// Create user document in Firestore at {userId}/player-info
 				// This structure is used by the character sheet tool
 				const userDoc = admin.firestore().doc(`${user.uid}/player-info`)
 				await userDoc.set({
 					email: email,
-					name: defaultName, // Character sheet reads this field
+					name: finalDisplayName, // Character sheet reads this field
 					allowedCollections: [],
 					createdAt: admin.firestore.FieldValue.serverTimestamp(),
 					invitedBy: context.auth.uid,
@@ -87,7 +113,8 @@ export const inviteUser = functions.https.onCall(async (data, context) => {
 
 				return {
 					success: true,
-					message: `User ${email} invited successfully. Password reset email sent.`,
+					message: `User ${email} invited successfully.`,
+					resetLink: resetLink, // Include the reset link in the response
 					userId: user.uid,
 					existingUser: false,
 				}
@@ -113,7 +140,7 @@ export const inviteUser = functions.https.onCall(async (data, context) => {
  * @param email - The email address of the user
  * @returns Object with success status and message
  */
-export const triggerPasswordReset = functions.https.onCall(async (data, context) => {
+export const triggerPasswordReset = functions.region(region).https.onCall(async (data, context) => {
 	// Verify the user is authenticated
 	if (!context.auth) {
 		throw new functions.https.HttpsError(
@@ -171,13 +198,172 @@ export const triggerPasswordReset = functions.https.onCall(async (data, context)
 })
 
 /**
+ * Cloud Function to verify a user's email manually.
+ * 
+ * This function can only be called by authenticated admin users.
+ * 
+ * @param email - The email address of the user to verify
+ * @returns Object with success status and message
+ */
+export const verifyUserEmail = functions.region(region).https.onCall(async (data, context) => {
+	// Verify the user is authenticated
+	if (!context.auth) {
+		throw new functions.https.HttpsError(
+			'unauthenticated',
+			'User must be authenticated to verify emails.'
+		)
+	}
+
+	// Verify the user is an admin
+	const isAdmin = await checkIsAdmin(context.auth.uid)
+	if (!isAdmin) {
+		throw new functions.https.HttpsError(
+			'permission-denied',
+			'User must be an admin to verify emails.'
+		)
+	}
+
+	const { email } = data
+
+	// Validate email
+	if (!email || typeof email !== 'string' || !email.includes('@')) {
+		throw new functions.https.HttpsError(
+			'invalid-argument',
+			'A valid email address is required.'
+		)
+	}
+
+	try {
+		// Verify user exists
+		const user = await admin.auth().getUserByEmail(email)
+
+		// Update user to mark email as verified
+		await admin.auth().updateUser(user.uid, {
+			emailVerified: true
+		})
+
+		return {
+			success: true,
+			message: `Email ${email} has been verified.`,
+			userId: user.uid,
+		}
+	} catch (error: any) {
+		console.error('Error verifying email:', error)
+		
+		if (error.code === 'auth/user-not-found') {
+			throw new functions.https.HttpsError(
+				'not-found',
+				`No user found with email: ${email}`
+			)
+		}
+		
+		throw new functions.https.HttpsError(
+			'internal',
+			`Failed to verify email: ${error.message}`
+		)
+	}
+})
+
+/**
+ * Cloud Function to delete a user.
+ * 
+ * This function can only be called by authenticated admin users.
+ * 
+ * @param email - The email address of the user to delete
+ * @returns Object with success status and message
+ */
+export const deleteUser = functions.region(region).https.onCall(async (data, context) => {
+	// Verify the user is authenticated
+	if (!context.auth) {
+		throw new functions.https.HttpsError(
+			'unauthenticated',
+			'User must be authenticated to delete users.'
+		)
+	}
+
+	// Verify the user is an admin
+	const isAdmin = await checkIsAdmin(context.auth.uid)
+	if (!isAdmin) {
+		throw new functions.https.HttpsError(
+			'permission-denied',
+			'User must be an admin to delete users.'
+		)
+	}
+
+	const { email } = data
+
+	// Validate email
+	if (!email || typeof email !== 'string' || !email.includes('@')) {
+		throw new functions.https.HttpsError(
+			'invalid-argument',
+			'A valid email address is required.'
+		)
+	}
+
+	// Prevent admin from deleting themselves
+	const currentUserEmail = (await admin.auth().getUser(context.auth.uid)).email
+	if (email === currentUserEmail) {
+		throw new functions.https.HttpsError(
+			'invalid-argument',
+			'You cannot delete your own account.'
+		)
+	}
+
+	try {
+		// Get user by email
+		const user = await admin.auth().getUserByEmail(email)
+
+		// Delete user from Firebase Auth
+		await admin.auth().deleteUser(user.uid)
+
+		// Delete user's Firestore data
+		// Delete the entire user collection
+		const userCollectionRef = admin.firestore().collection(user.uid)
+		const snapshot = await userCollectionRef.get()
+		
+		const batch = admin.firestore().batch()
+		snapshot.docs.forEach(doc => {
+			batch.delete(doc.ref)
+		})
+		await batch.commit()
+
+		// Delete admin document if exists
+		const adminDocRef = admin.firestore().collection('admins').doc(user.uid)
+		const adminDoc = await adminDocRef.get()
+		if (adminDoc.exists) {
+			await adminDocRef.delete()
+		}
+
+		return {
+			success: true,
+			message: `User ${email} has been deleted.`,
+			userId: user.uid,
+		}
+	} catch (error: any) {
+		console.error('Error deleting user:', error)
+		
+		if (error.code === 'auth/user-not-found') {
+			throw new functions.https.HttpsError(
+				'not-found',
+				`No user found with email: ${email}`
+			)
+		}
+		
+		throw new functions.https.HttpsError(
+			'internal',
+			`Failed to delete user: ${error.message}`
+		)
+	}
+})
+
+/**
  * Cloud Function to list all users (admin only)
  * 
  * @param maxResults - Maximum number of results to return (default 100, max 1000)
  * @param pageToken - Token for pagination
  * @returns Object with users array and next page token
  */
-export const listUsers = functions.https.onCall(async (data, context) => {
+export const listUsers = functions.region(region).https.onCall(async (data, context) => {
 	// Verify the user is authenticated
 	if (!context.auth) {
 		throw new functions.https.HttpsError(
@@ -201,21 +387,44 @@ export const listUsers = functions.https.onCall(async (data, context) => {
 	try {
 		const listUsersResult = await admin.auth().listUsers(maxResults, pageToken)
 
-		const users = listUsersResult.users.map(user => ({
-			uid: user.uid,
-			email: user.email,
-			displayName: user.displayName,
-			emailVerified: user.emailVerified,
-			disabled: user.disabled,
-			metadata: {
-				creationTime: user.metadata.creationTime,
-				lastSignInTime: user.metadata.lastSignInTime,
-			},
-		}))
+		// Fetch player info from Firestore for each user
+		const usersWithPlayerInfo = await Promise.all(
+			listUsersResult.users.map(async (user) => {
+				let playerName = user.displayName
+
+				// Try to get player name from Firestore
+				try {
+					const playerInfoDoc = await admin.firestore()
+						.collection(user.uid)
+						.doc('player-info')
+						.get()
+					
+					if (playerInfoDoc.exists) {
+						const playerData = playerInfoDoc.data()
+						playerName = playerData?.name || user.displayName
+					}
+				} catch (error) {
+					// If Firestore fetch fails, fall back to Auth displayName
+					console.warn(`Could not fetch player info for ${user.uid}:`, error)
+				}
+
+				return {
+					uid: user.uid,
+					email: user.email,
+					displayName: playerName,
+					emailVerified: user.emailVerified,
+					disabled: user.disabled,
+					metadata: {
+						creationTime: user.metadata.creationTime,
+						lastSignInTime: user.metadata.lastSignInTime,
+					},
+				}
+			})
+		)
 
 		return {
 			success: true,
-			users: users,
+			users: usersWithPlayerInfo,
 			pageToken: listUsersResult.pageToken,
 		}
 	} catch (error: any) {

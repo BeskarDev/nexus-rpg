@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '@theme/Layout'
-import { Box, Container, Typography, Alert, CircularProgress } from '@mui/material'
+import { Box, Container, Typography, Alert, CircularProgress, Experimental_CssVarsProvider, experimental_extendTheme } from '@mui/material'
 import { UserManagementPanel } from '@site/src/components/UserManagementPanel'
-import { useAuth } from '@site/src/hooks/firebaseAuthContext'
+import { useAuth, AuthProvider } from '@site/src/hooks/firebaseAuthContext'
 import { useHistory } from '@docusaurus/router'
+import { theme } from '@site/src/hooks/createTheme'
 
 /**
  * Admin Panel Page
@@ -14,7 +15,7 @@ import { useHistory } from '@docusaurus/router'
  * - Non-admin users will see an access denied message
  * - Not linked in navigation - only accessible by direct URL
  */
-export default function AdminPanel() {
+function AdminPanelContent() {
 	const { userLoggedIn, isAdmin, currentUser } = useAuth()
 	const [isVerifying, setIsVerifying] = useState(true)
 	const history = useHistory()
@@ -96,5 +97,17 @@ export default function AdminPanel() {
 				<UserManagementPanel />
 			</Container>
 		</Layout>
+	)
+}
+
+export default function AdminPanel() {
+	const customTheme = experimental_extendTheme(theme)
+	
+	return (
+		<AuthProvider>
+			<Experimental_CssVarsProvider theme={customTheme}>
+				<AdminPanelContent />
+			</Experimental_CssVarsProvider>
+		</AuthProvider>
 	)
 }

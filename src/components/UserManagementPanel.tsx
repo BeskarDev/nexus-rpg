@@ -21,11 +21,14 @@ import {
 	DialogContent,
 	DialogActions,
 	Chip,
+	Tooltip,
 } from '@mui/material'
 import {
 	PersonAdd as PersonAddIcon,
 	LockReset as LockResetIcon,
 	Refresh as RefreshIcon,
+	VerifiedUser as VerifiedUserIcon,
+	Delete as DeleteIcon,
 } from '@mui/icons-material'
 import { getFunctions, httpsCallable } from 'firebase/functions'
 import { app } from '../config/firebase'
@@ -45,8 +48,9 @@ interface User {
 interface InviteUserDialogProps {
 	open: boolean
 	onClose: () => void
-	onInvite: (email: string) => void
+	onInvite: (email: string, displayName: string) => void
 	loading: boolean
+	onSuccess?: () => void
 }
 
 const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
@@ -54,27 +58,40 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
 	onClose,
 	onInvite,
 	loading,
+	onSuccess,
 }) => {
 	const [email, setEmail] = useState('')
+	const [displayName, setDisplayName] = useState('')
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 		if (email.trim()) {
-			onInvite(email.trim())
+			onInvite(email.trim(), displayName.trim())
 		}
 	}
 
 	const handleClose = () => {
-		setEmail('')
-		onClose()
+		if (!loading) {
+			setEmail('')
+			setDisplayName('')
+			onClose()
+		}
 	}
+
+	// Clear form when successfully invited
+	React.useEffect(() => {
+		if (onSuccess) {
+			setEmail('')
+			setDisplayName('')
+		}
+	}, [onSuccess])
 
 	return (
 		<Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
 			<form onSubmit={handleSubmit}>
 				<DialogTitle>Invite New User</DialogTitle>
 				<DialogContent>
-					<Box sx={{ pt: 2 }}>
+					<Box sx={{ pt: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
 						<TextField
 							autoFocus
 							fullWidth
@@ -86,7 +103,17 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
 							disabled={loading}
 							placeholder="user@example.com"
 						/>
-						<Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+						<TextField
+							fullWidth
+							label="Player Name (Optional)"
+							type="text"
+							value={displayName}
+							onChange={(e) => setDisplayName(e.target.value)}
+							disabled={loading}
+							placeholder="John Doe"
+							helperText="If not provided, the user will be prompted to set their name on first login"
+						/>
+						<Typography variant="body2" color="text.secondary">
 							The user will receive an email with instructions to set their
 							password and complete their account setup.
 						</Typography>
@@ -156,17 +183,136 @@ const PasswordResetDialog: React.FC<PasswordResetDialogProps> = ({
 	)
 }
 
+interface VerifyEmailDialogProps {
+	open: boolean
+	onClose: () => void
+	onVerify: () => void
+	loading: boolean
+	userEmail: string
+}
+
+const VerifyEmailDialog: React.FC<VerifyEmailDialogProps> = ({
+	open,
+	onClose,
+	onVerify,
+	loading,
+	userEmail,
+}) => {
+	return (
+		<Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+			<DialogTitle>Verify User Email</DialogTitle>
+			<DialogContent>
+				<Typography variant="body1" gutterBottom>
+					Manually verify the email for:
+				</Typography>
+				<Typography variant="body1" sx={{ fontWeight: 'bold', mb: 2 }}>
+					{userEmail}
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					This will mark the user's email as verified without requiring them to click a verification link.
+				</Typography>
+			</DialogContent>
+			<DialogActions>
+				<Button onClick={onClose} disabled={loading}>
+					Cancel
+				</Button>
+				<Button
+					onClick={onVerify}
+					variant="contained"
+					color="success"
+					disabled={loading}
+					startIcon={loading ? <CircularProgress size={20} /> : <VerifiedUserIcon />}
+				>
+					Verify Email
+				</Button>
+			</DialogActions>
+		</Dialog>
+	)
+}
+
+interface DeleteUserDialogProps {
+	open: boolean
+	onClose: () => void
+	onDelete: () => void
+	loading: boolean
+	userEmail: string
+}
+
+const DeleteUserDialog: React.FC<DeleteUserDialogProps> = ({
+	open,
+	onClose,
+	onDelete,
+	loading,
+	userEmail,
+}) => {
+	return (
+		<Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+			<DialogTitle>Delete User</DialogTitle>
+			<DialogContent>
+				<Alert severity="warning" sx={{ mb: 2 }}>
+					<strong>Warning:</strong> This action cannot be undone!
+				</Alert>
+				<Typography variant="body1" gutterBottom>
+					Are you sure you want to permanently delete this user?
+				</Typography>
+				<Typography variant="body1" sx={{ fontWeight: 'bold', mb: 2 }}>
+					{userEmail}
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					This will delete:
+				</Typography>
+				<ul>
+					<li>
+						<Typography variant="body2" color="text.secondary">
+							The user's authentication account
+						</Typography>
+					</li>
+					<li>
+						<Typography variant="body2" color="text.secondary">
+							All associated Firestore data (characters, settings, etc.)
+						</Typography>
+					</li>
+					<li>
+						<Typography variant="body2" color="text.secondary">
+							Admin privileges (if any)
+						</Typography>
+					</li>
+				</ul>
+			</DialogContent>
+			<DialogActions>
+				<Button onClick={onClose} disabled={loading}>
+					Cancel
+				</Button>
+				<Button
+					onClick={onDelete}
+					variant="contained"
+					color="error"
+					disabled={loading}
+					startIcon={loading ? <CircularProgress size={20} /> : <DeleteIcon />}
+				>
+					Delete User
+				</Button>
+			</DialogActions>
+		</Dialog>
+	)
+}
+
 export const UserManagementPanel: React.FC = () => {
 	const [users, setUsers] = useState<User[]>([])
 	const [loading, setLoading] = useState(false)
 	const [inviteDialogOpen, setInviteDialogOpen] = useState(false)
 	const [resetDialogOpen, setResetDialogOpen] = useState(false)
+	const [verifyDialogOpen, setVerifyDialogOpen] = useState(false)
+	const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
 	const [selectedUser, setSelectedUser] = useState<User | null>(null)
 	const [error, setError] = useState<string | null>(null)
 	const [success, setSuccess] = useState<string | null>(null)
+	const [resetLink, setResetLink] = useState<string | null>(null)
 	const [searchTerm, setSearchTerm] = useState('')
+	const [inviteSuccess, setInviteSuccess] = useState(false)
 
-	const functions = getFunctions(app)
+	// Configure functions to use Europe region (Frankfurt, Germany)
+	const functions = getFunctions(app, 'europe-west3')
 
 	const loadUsers = async () => {
 		setLoading(true)
@@ -192,16 +338,22 @@ export const UserManagementPanel: React.FC = () => {
 		loadUsers()
 	}, [])
 
-	const handleInviteUser = async (email: string) => {
+	const handleInviteUser = async (email: string, displayName: string) => {
 		setLoading(true)
 		setError(null)
 		setSuccess(null)
+		setResetLink(null)
+		setInviteSuccess(false)
 		try {
 			const inviteUserFunction = httpsCallable(functions, 'inviteUser')
-			const result = await inviteUserFunction({ email })
+			const result = await inviteUserFunction({ email, displayName })
 			const data = result.data as any
 			if (data.success) {
 				setSuccess(data.message)
+				if (data.resetLink) {
+					setResetLink(data.resetLink)
+				}
+				setInviteSuccess(true)
 				setInviteDialogOpen(false)
 				loadUsers() // Refresh user list
 			} else {
@@ -243,6 +395,64 @@ export const UserManagementPanel: React.FC = () => {
 		}
 	}
 
+	const handleVerifyEmail = async () => {
+		if (!selectedUser?.email) return
+
+		setLoading(true)
+		setError(null)
+		setSuccess(null)
+		try {
+			const verifyEmailFunction = httpsCallable(
+				functions,
+				'verifyUserEmail'
+			)
+			const result = await verifyEmailFunction({ email: selectedUser.email })
+			const data = result.data as any
+
+			if (data.success) {
+				setSuccess(data.message)
+				setVerifyDialogOpen(false)
+				setSelectedUser(null)
+				// Reload users to show updated status
+				await loadUsers()
+			}
+		} catch (err: any) {
+			console.error('Error verifying email:', err)
+			setError(err.message || 'Failed to verify email')
+		} finally {
+			setLoading(false)
+		}
+	}
+
+	const handleDeleteUser = async () => {
+		if (!selectedUser?.email) return
+
+		setLoading(true)
+		setError(null)
+		setSuccess(null)
+		try {
+			const deleteUserFunction = httpsCallable(
+				functions,
+				'deleteUser'
+			)
+			const result = await deleteUserFunction({ email: selectedUser.email })
+			const data = result.data as any
+
+			if (data.success) {
+				setSuccess(data.message)
+				setDeleteDialogOpen(false)
+				setSelectedUser(null)
+				// Reload users to show updated list
+				await loadUsers()
+			}
+		} catch (err: any) {
+			console.error('Error deleting user:', err)
+			setError(err.message || 'Failed to delete user')
+		} finally {
+			setLoading(false)
+		}
+	}
+
 	const filteredUsers = users.filter(
 		(user) =>
 			user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -270,6 +480,7 @@ export const UserManagementPanel: React.FC = () => {
 								startIcon={<RefreshIcon />}
 								onClick={loadUsers}
 								disabled={loading}
+								title="Refresh user list"
 							>
 								Refresh
 							</Button>
@@ -278,6 +489,7 @@ export const UserManagementPanel: React.FC = () => {
 								startIcon={<PersonAddIcon />}
 								onClick={() => setInviteDialogOpen(true)}
 								disabled={loading}
+								title="Invite a new user"
 							>
 								Invite User
 							</Button>
@@ -294,9 +506,33 @@ export const UserManagementPanel: React.FC = () => {
 						<Alert
 							severity="success"
 							sx={{ mb: 2 }}
-							onClose={() => setSuccess(null)}
+							onClose={() => {
+								setSuccess(null)
+								setResetLink(null)
+							}}
 						>
-							{success}
+							<Box>
+								<Typography>{success}</Typography>
+								{resetLink && (
+									<Box sx={{ mt: 2 }}>
+										<Typography variant="body2" sx={{ mb: 1 }}>
+											<strong>Password Reset Link:</strong>
+										</Typography>
+										<TextField
+											fullWidth
+											value={resetLink}
+											size="small"
+											InputProps={{
+												readOnly: true,
+											}}
+											sx={{ fontFamily: 'monospace', fontSize: '0.85rem' }}
+										/>
+										<Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
+											Copy this link and send it to the user via email or another secure channel.
+										</Typography>
+									</Box>
+								)}
+							</Box>
 						</Alert>
 					)}
 
@@ -370,16 +606,44 @@ export const UserManagementPanel: React.FC = () => {
 														: 'Never'}
 												</TableCell>
 												<TableCell align="right">
-													<IconButton
-														size="small"
-														onClick={() => {
-															setSelectedUser(user)
-															setResetDialogOpen(true)
-														}}
-														title="Trigger password reset"
-													>
-														<LockResetIcon />
-													</IconButton>
+													<Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'flex-end' }}>
+														{!user.emailVerified && (
+															<Tooltip title="Manually verify this user's email">
+																<IconButton
+																	size="small"
+																	onClick={() => {
+																		setSelectedUser(user)
+																		setVerifyDialogOpen(true)
+																	}}
+																>
+																	<VerifiedUserIcon />
+																</IconButton>
+															</Tooltip>
+														)}
+														<Tooltip title="Send password reset email to this user">
+															<IconButton
+																size="small"
+																onClick={() => {
+																	setSelectedUser(user)
+																	setResetDialogOpen(true)
+																}}
+															>
+																<LockResetIcon />
+															</IconButton>
+														</Tooltip>
+														<Tooltip title="Delete this user permanently">
+															<IconButton
+																size="small"
+																color="error"
+																onClick={() => {
+																	setSelectedUser(user)
+																	setDeleteDialogOpen(true)
+																}}
+															>
+																<DeleteIcon />
+															</IconButton>
+														</Tooltip>
+													</Box>
 												</TableCell>
 											</TableRow>
 										))
@@ -396,6 +660,7 @@ export const UserManagementPanel: React.FC = () => {
 				onClose={() => setInviteDialogOpen(false)}
 				onInvite={handleInviteUser}
 				loading={loading}
+				onSuccess={inviteSuccess ? () => setInviteSuccess(false) : undefined}
 			/>
 
 			<PasswordResetDialog
@@ -405,6 +670,28 @@ export const UserManagementPanel: React.FC = () => {
 					setSelectedUser(null)
 				}}
 				onReset={handleTriggerPasswordReset}
+				loading={loading}
+				userEmail={selectedUser?.email || ''}
+			/>
+
+			<VerifyEmailDialog
+				open={verifyDialogOpen}
+				onClose={() => {
+					setVerifyDialogOpen(false)
+					setSelectedUser(null)
+				}}
+				onVerify={handleVerifyEmail}
+				loading={loading}
+				userEmail={selectedUser?.email || ''}
+			/>
+
+			<DeleteUserDialog
+				open={deleteDialogOpen}
+				onClose={() => {
+					setDeleteDialogOpen(false)
+					setSelectedUser(null)
+				}}
+				onDelete={handleDeleteUser}
 				loading={loading}
 				userEmail={selectedUser?.email || ''}
 			/>
