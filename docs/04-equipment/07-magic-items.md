@@ -6,14 +6,33 @@ sidebar_position: 7
 
 ![banner-img](/img/banner/weapon-armor-materials-banner.png)
 
-Magic items are higher Quality versions of normal weapons, armor, or other equipment. These items come with higher bonuses than their mundane counterparts but also with a much higher price and skill required to craft them. Magic items are crafted from various materials and may have enchantments applied to them.
+Magic items are higher Quality versions of normal weapons, armor, or other equipment. These items come with higher bonuses than their mundane counterparts but also with a much higher price and skill required to craft them.
 
-**All magic items must be made from a material**, which determines the item's construction, durability, and appearance. Materials are divided into two categories:
+## How to Build a Magic Item
 
-- **Base Materials (Q1-Q2)**: Common materials like bronze, hardwood, and leather. These provide no mechanical advantage but offer different flavors and construction details at no extra cost.
-- **Special Materials (Q3-Q8)**: Rare materials like mithril, dragon scales, or adamantite. These provide mechanical advantages and add extra cost to the item.
+Creating a magic item follows a simple process:
 
-**Enchantments are optional** magical properties that can be added to any item of Quality 3 or higher. Enchantments provide powerful abilities and effects.
+1. **Choose a Base Item**: Select the type of item (weapon, armor, wearable, etc.) and its mundane Quality (Q1-Q8)
+2. **Select a Material**: All items must use a material. Choose from:
+   - **Base Materials**: Available at all quality tiers (Q1-Q8), these provide flavor and construction variety at **no extra cost**
+   - **Special Materials**: Available at Q3-Q8, these provide mechanical advantages and add **extra cost** (~50% of enchantment cost)
+3. **Add an Enchantment (Optional)**: Items of Quality 3+ can have enchantments added for powerful abilities
+
+**Total Cost = Base Item Cost + Material Extra Cost + Enchantment Cost**
+
+> **Example**: To create a Quality 5 mithril longsword with a flaming enchantment:
+> - Base longsword cost: 100 coins
+> - Mithril material extra cost (Q5 special material): +1,500 coins
+> - Flaming enchantment cost (Q5): +3,000 coins
+> - **Total: 4,600 coins**
+
+### Material Categories
+
+**Base Materials** are available at every quality tier (Q1-Q8). These common materials like bronze, hardwood, and leather provide no mechanical advantage but offer different flavors and construction details at **no extra cost**. They represent standard craftsmanship appropriate to the item's quality.
+
+**Special Materials** are available starting at Quality 3 (Q3-Q8). These rare materials like mithril, dragon scales, or adamantite provide mechanical advantages and add extra cost to the item (approximately half the cost of an equivalent enchantment).
+
+**Enchantments** are optional magical properties that can be added to any item of Quality 3 or higher, providing powerful abilities and effects.
 
 ## Calculating Magic Item Costs
 
@@ -47,11 +66,11 @@ These costs apply when adding an enchantment to an item. Enchantments are option
 
 ## Special Material Extra Cost per Quality Tier
 
-Special materials (Q3-Q8) add extra cost to an item. This cost is approximately half that of an equivalent enchantment, making special materials a more affordable way to enhance items. Base materials (Q1-Q2) have 0 extra cost.
+Special materials (Q3-Q8) add extra cost to an item. This cost is approximately half that of an equivalent enchantment, making special materials a more affordable way to enhance items. **Base materials (available at all quality tiers Q1-Q8) have 0 extra cost.**
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
-| **1-2** (Base Material) | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins |
+| **1-8** (Base Material) | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins |
 | **3** (Masterwork) | +25 coins | +150 coins | +250 coins | +250 coins | +500 coins | +125 coins |
 | **4** (Lesser Magic) | +75 coins | +500 coins | +750 coins | +750 coins | +1,500 coins | +375 coins |
 | **5** (Potent Magic) | +250 coins | +1,500 coins | +2,500 coins | +2,500 coins | +5,000 coins | +1,250 coins |
@@ -188,9 +207,14 @@ Every magic item must be crafted from a material, and may optionally have an enc
 
 All items are made from materials, which determine construction, durability, and appearance. Materials fall into two categories:
 
-### Base Materials (Q1-Q2)
+### Base Materials (Q1-Q8)
 
-Common materials that provide no mechanical advantage but offer flavor and construction variety at **no extra cost**. These are the default materials for most items and represent standard craftsmanship.
+Common materials that provide no mechanical advantage but offer flavor and construction variety at **no extra cost**. These are available at **every quality tier** and represent standard craftsmanship appropriate to the item's quality level.
+
+- **Primitive Materials (Q1)**: Crude materials like bone, stone, and fresh wood used by primitive tribes
+- **Mundane Materials (Q2-Q8)**: Standard materials like bronze, hardwood, leather, brass, and horn used for quality craftsmanship
+
+Base materials of higher quality represent better craftsmanship, purer materials, and superior construction techniques, but provide no mechanical advantages beyond what the quality tier itself offers.
 
 ### Special Materials (Q3-Q8)
 
@@ -218,9 +242,11 @@ Rare or magical materials that provide mechanical advantages and add **extra cos
 | 7 | **Reed** | *Hollow and very light. Used for simple shafts or padding, but offers no real durability.*<br/><br/>1/2 item cost. The item gains the fragile property. |
 | 8 | **Shell** | *Hard outer layer from aquatic creatures. Smooth and rigid, but fragile under pressure.*<br/><br/>1/2 item cost. The item gains the fragile property. |
 
-#### **Base Materials - Mundane (Q2)**
+#### **Base Materials - Mundane (Q2-Q8)**
 
-These are the standard materials used for most quality items. **No extra cost.**
+These are the standard materials used for most quality items. **No extra cost.** Available at all quality tiers from Q2 to Q8.
+
+At higher quality tiers, these materials represent superior craftsmanship, purer sources, and better construction techniques without providing mechanical advantages beyond the item's quality tier bonuses.
 
 | d8 | Material | Properties |
 | --- | --- | --- |
@@ -232,6 +258,8 @@ These are the standard materials used for most quality items. **No extra cost.**
 | 6 | **Hide** | *Thick, untreated skin. Tougher than leather, but less flexible.* **No mechanical effect.** |
 | 7 | **Antler** | *Hard and naturally curved. Effective for piercing weapons or rugged tools.* **No mechanical effect.** |
 | 8 | **Obsidian** | *Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.*<br/><br/>**-** The item gains the fragile property.<br/>- Weapon/Ammo: +1 weapon damage (enhancement bonus). |
+
+> **Example**: A Q5 bronze longsword represents a masterfully crafted weapon made from exceptionally pure bronze, carefully forged and balanced. It gains the Q5 quality bonuses (+2 weapon damage, +1d durability) but has no additional cost beyond the base longsword price.
 
 #### **Special Materials - Exotic (Q3-4)**
 
