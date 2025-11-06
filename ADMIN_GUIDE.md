@@ -4,6 +4,15 @@
 
 This document describes the admin user management system for Nexus RPG, which allows administrators to invite users and manage password resets through a secure interface.
 
+## ⚠️ Firebase Plan Requirement
+
+**This feature requires Firebase Blaze (pay-as-you-go) plan** because it uses Cloud Functions.
+
+- **Spark (free) tier:** Does NOT support Cloud Functions - manual user creation only
+- **Blaze plan:** Supports Cloud Functions with generous free tier (2M invocations/month free)
+
+See `SETUP_FIRST_ADMIN.md` for Spark tier alternatives and manual user management.
+
 ## Features
 
 ### 1. User Invitation Flow

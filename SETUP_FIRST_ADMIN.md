@@ -2,11 +2,28 @@
 
 This guide walks you through setting up the first admin user for the Nexus RPG admin panel.
 
+## ⚠️ Important: Firebase Plan Requirements
+
+**Cloud Functions Requirement:**
+- The user invitation and password reset features require **Firebase Cloud Functions**
+- Cloud Functions are **only available on the Blaze (pay-as-you-go) plan**
+- The Spark (free) tier does NOT support Cloud Functions
+
+**Good news:** The Blaze plan has generous free tier limits that cover typical usage:
+- 2 million function invocations/month free
+- 400,000 GB-seconds compute time free
+- 200,000 CPU-seconds free
+- You only pay for usage beyond these limits
+
+**Alternative for Spark tier users:**
+If you want to stay on the Spark tier, you'll need to manually create users in the Firebase Console without the invitation features.
+
 ## Prerequisites
 
 - Firebase project set up and deployed
+- **Firebase project on Blaze (pay-as-you-go) plan** (required for Cloud Functions)
 - Firebase CLI installed (`npm install -g firebase-tools`)
-- Firebase Functions deployed
+- Firebase Functions deployed (`firebase deploy --only functions`)
 - A user account created in Firebase Authentication
 
 ## Method 1: Using Firebase Console (Recommended for First Admin)
@@ -42,14 +59,13 @@ This is the easiest method and doesn't require any code.
      - Value: Click "Set to current timestamp"
    - Click "Save"
 
-5. **Set Custom Claim (Optional but Recommended)**
-   - Open Cloud Shell in Firebase Console (icon at top right)
-   - Run:
-   ```javascript
-   const admin = require('firebase-admin');
-   admin.initializeApp();
-   admin.auth().setCustomUserClaims('USER_UID_HERE', { admin: true });
-   ```
+5. **Set Custom Claim (Optional - Requires Blaze Plan)**
+   - **Note:** Cloud Shell is only available on the Blaze plan
+   - If on Spark tier, skip this step - the Firestore document is sufficient
+   - If on Blaze tier:
+     - Open Cloud Shell in Firebase Console (icon at top right)
+     - Or use Method 2 below for local script setup
+   - Custom claims provide faster auth checks but are not required
 
 6. **Verify Admin Access**
    - Log out and log back in (to refresh the token)
@@ -109,30 +125,37 @@ setupAdmin('admin@example.com');
 node setup-admin.js
 ```
 
-## Method 3: Using Cloud Functions After First Admin
+## Alternative: Spark Tier (Free Plan) Without Cloud Functions
 
-Once you have at least one admin user, you can use the `setAdminRole` Cloud Function:
+If you want to stay on the Spark tier and not use Cloud Functions, you can still use the character sheet features but will need to manually manage users:
 
-### Steps:
+### Manual User Setup (Spark Tier)
 
-1. **Log in as an existing admin**
+1. **Create users manually in Firebase Console:**
+   - Go to Authentication > Users
+   - Click "Add user"
+   - Enter email and password
+   - Note the user's UID
 
-2. **Call the Cloud Function from browser console**
+2. **Create user document in Firestore:**
+   - Go to Firestore Database
+   - Create document at `{userId}/player-info`:
+     - `email`: user's email
+     - `name`: user's display name
+     - `allowedCollections`: [] (empty array)
 
-Open your browser console on the admin page and run:
+3. **Grant admin access (if needed):**
+   - Create document at `admins/{userId}`:
+     - `email`: user's email
+     - `grantedAt`: current timestamp
 
-```javascript
-const functions = getFunctions();
-const setAdminRole = httpsCallable(functions, 'setAdminRole');
-
-setAdminRole({ targetEmail: 'newadmin@example.com' })
-  .then(result => console.log('Success:', result.data))
-  .catch(error => console.error('Error:', error));
-```
-
-3. **Or create a UI component to make this easier**
-
-You could add a button in the admin panel that calls this function.
+**Limitations of Spark Tier:**
+- ❌ No automated user invitation emails
+- ❌ No admin-triggered password resets
+- ❌ No user list management UI
+- ✅ Character sheet features still work
+- ✅ Manual user creation via Console works
+- ✅ Admin access control via Firestore works
 
 ## Verification
 

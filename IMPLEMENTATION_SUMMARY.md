@@ -3,6 +3,23 @@
 ## Overview
 This implementation adds a complete admin user management system to Nexus RPG, allowing administrators to invite users and manage password resets through a secure, Firebase-backed interface.
 
+## ⚠️ Important: Firebase Blaze Plan Required
+
+**This feature requires the Firebase Blaze (pay-as-you-go) plan** because it uses Cloud Functions.
+
+**Why Blaze Plan?**
+- Cloud Functions are not available on the Spark (free) tier
+- Generous free tier: 2 million invocations/month, 400,000 GB-seconds compute time
+- Typical usage will likely stay within free limits
+
+**Spark Tier Alternative:**
+If you need to stay on the Spark tier, you can:
+- Manually create users in Firebase Console
+- Set up admin access via Firestore documents
+- Use character sheet features (no invitation flow)
+
+See `SETUP_FIRST_ADMIN.md` for detailed Spark tier setup instructions.
+
 ## What Was Implemented
 
 ### 1. Backend: Firebase Cloud Functions (`/functions/src/index.ts`)
