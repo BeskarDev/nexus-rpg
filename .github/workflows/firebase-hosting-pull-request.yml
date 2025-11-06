@@ -61,7 +61,7 @@ jobs:
       - name: Build functions
         run: cd functions && yarn build
 
-      - name: Deploy to Firebase Preview (Hosting, Functions, Firestore)
+      - name: Deploy Hosting to Firebase Preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
           channelId: preview
           projectId: nexus-rpg-d04d1
           
-      - name: Deploy Functions to Preview
+      - name: Note about Functions and Firestore
         run: |
           # Note: Functions can't be deployed to preview channels, so we skip this in PR previews
           # Firestore rules also apply globally and can't be preview-scoped
