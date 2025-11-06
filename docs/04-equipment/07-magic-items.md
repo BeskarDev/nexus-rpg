@@ -6,17 +6,35 @@ sidebar_position: 7
 
 ![banner-img](/img/banner/weapon-armor-materials-banner.png)
 
-Magic items are higher Quality versions of normal weapons, armor, or other equipment. These items come with higher bonuses than their mundane counterparts but also with a much higher price and skill required to craft them. Typically, high quality magical materials are required to craft magic items.
+Magic items are higher Quality versions of normal weapons, armor, or other equipment. These items come with higher bonuses than their mundane counterparts but also with a much higher price and skill required to craft them. Magic items are crafted from various materials and may have enchantments applied to them.
 
-Magic items increase the numerical bonuses of their base item type and also come with a variety of enchantments and special materials. Most magic items will either be made from a special material or have an enchantment. Some especially rare ones will have both.
+**All magic items must be made from a material**, which determines the item's construction, durability, and appearance. Materials are divided into two categories:
 
-To calculate the prices of magic items, apply the following price modifier depending on the Quality of the magic item and the item’s type. These prices assume either a magic item made from a special material or with an enchantment. For items with both a special material and an enchantment on top, apply the magic item price modifier twice instead.
+- **Base Materials (Q1-Q2)**: Common materials like bronze, hardwood, and leather. These provide no mechanical advantage but offer different flavors and construction details at no extra cost.
+- **Special Materials (Q3-Q8)**: Rare materials like mithril, dragon scales, or adamantite. These provide mechanical advantages and add extra cost to the item.
 
-> For example, a mundane shortsword is Quality 2 and costs 50 coins. A Quality 3 masterwork shortsword +1 would instead cost 350 coins (50 + 300), because the shortsword is a one-handed weapon. A Quality 5 magic shortsword +2 would cost 3,050 coins instead (50 + 3,000). A Quality 5 magic breastplate +2 would cost 10,750 coins (750 + 10,000) because it is heavy armor.
-A Quality 6 magic longsword made from a special material and with an enchantment costs 20,100 coins (100 + 2 x 10,000).
+**Enchantments are optional** magical properties that can be added to any item of Quality 3 or higher. Enchantments provide powerful abilities and effects.
+
+## Calculating Magic Item Costs
+
+The total cost of a magic item is calculated as follows:
+
+**Total Cost = Base Item Cost + Material Extra Cost + Enchantment Cost**
+
+- **Base Item Cost**: The cost of the mundane version of the item
+- **Material Extra Cost**: Additional cost for special materials (0 for base materials)
+- **Enchantment Cost**: Cost of the enchantment, if any (see tables below)
+
+> **Example 1**: A Quality 4 bronze shortsword with a flaming enchantment costs 1,050 coins (50 base + 0 material + 1,000 enchantment).
+> 
+> **Example 2**: A Quality 5 mithril breastplate with an enchantment costs 11,250 coins (750 base + 500 material extra cost + 10,000 enchantment cost). 
+> 
+> **Example 3**: A Quality 6 adamantite longsword with a sacred enchantment costs 25,100 coins (100 base + 5,000 material + 10,000 enchantment).
 > 
 
-## Magic Item Cost per Quality Tier
+## Enchantment Cost per Quality Tier
+
+These costs apply when adding an enchantment to an item. Enchantments are optional.
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -26,6 +44,20 @@ A Quality 6 magic longsword made from a special material and with an enchantment
 | **6** (Greater Magic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins | +7,500 coins |
 | **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins | +25,000 coins |
 | **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +75,000 coins |
+
+## Special Material Extra Cost per Quality Tier
+
+Special materials (Q3-Q8) add extra cost to an item. This cost is approximately half that of an equivalent enchantment, making special materials a more affordable way to enhance items. Base materials (Q1-Q2) have 0 extra cost.
+
+| Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
+| --- | --- | --- | --- | --- | --- | --- |
+| **1-2** (Base Material) | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins |
+| **3** (Masterwork) | +25 coins | +150 coins | +250 coins | +250 coins | +500 coins | +125 coins |
+| **4** (Lesser Magic) | +75 coins | +500 coins | +750 coins | +750 coins | +1,500 coins | +375 coins |
+| **5** (Potent Magic) | +250 coins | +1,500 coins | +2,500 coins | +2,500 coins | +5,000 coins | +1,250 coins |
+| **6** (Greater Magic) | +750 coins | +5,000 coins | +7,500 coins | +7,500 coins | +15,000 coins | +3,750 coins |
+| **7** (Superior Magic) | +2,500 coins | +15,000 coins | +25,000 coins | +25,000 coins | +50,000 coins | +12,500 coins |
+| **8** (Supreme Magic) | +7,500 coins | +50,000 coins | +75,000 coins | +75,000 coins | +150,000 coins | +37,500 coins |
 
 ### Wearable Equipment Base Costs
 
@@ -148,23 +180,29 @@ When rolling randomly for treasure or otherwise acquiring a spell scroll of unkn
 | 7 | Peace |
 | 8 | War |
 
-# Special Materials & Enchantments
+# Materials & Enchantments
 
-Each magic item either is made from a special material, has an enchantment, or both.
+Every magic item must be crafted from a material, and may optionally have an enchantment applied to it.
 
-## Special Materials
+## Materials
 
-There exist a variety of enchanted, magical, or naturally powerful materials, such as enchanted bronze, mithril, or the scales of a dragon. These materials bring their own innate effects and count as one of the possible enchantments of an item.
+All items are made from materials, which determine construction, durability, and appearance. Materials fall into two categories:
 
-| Quality Tier | Description |
-| --- | --- |
-| **Primitive (Q1)** | Natural, unrefined, fragile materials. Used by tribal or early cultures. |
-| **Mundane (Q2)** | Common crafted materials of organized societies. |
-| **Exotic (Q3-4)** | Unusual, magical, or monster-based materials. Rare, often region-specific. |
-| **Greater (Q5-6)** | Epic materials with significant magical power. |
-| **Legendary (Q7-8)** | Cosmic or divine materials. Very rare or one-of-a-kind. |
+### Base Materials (Q1-Q2)
 
-#### **Primitive Materials (Q1)**
+Common materials that provide no mechanical advantage but offer flavor and construction variety at **no extra cost**. These are the default materials for most items and represent standard craftsmanship.
+
+### Special Materials (Q3-Q8)
+
+Rare or magical materials that provide mechanical advantages and add **extra cost** to the item (approximately half the cost of an equivalent enchantment). These materials are categorized by rarity:
+
+| Quality Tier | Description | Extra Cost |
+| --- | --- | --- |
+| **Exotic (Q3-4)** | Unusual, magical, or monster-based materials. Rare, often region-specific. | See Special Material Extra Cost table |
+| **Greater (Q5-6)** | Epic materials with significant magical power. | See Special Material Extra Cost table |
+| **Legendary (Q7-8)** | Cosmic or divine materials. Very rare or one-of-a-kind. | See Special Material Extra Cost table |
+
+#### **Base Materials - Primitive (Q1)**
 
 > Items from primitive materials represent the crude makeshift weapons and tools used by primitive tribes without higher knowledge or better materials available. Primitive items can only be made from Quality 2 base items with an original cost of 100 coins or less.
 > 
@@ -180,20 +218,24 @@ There exist a variety of enchanted, magical, or naturally powerful materials, su
 | 7 | **Reed** | *Hollow and very light. Used for simple shafts or padding, but offers no real durability.*<br/><br/>1/2 item cost. The item gains the fragile property. |
 | 8 | **Shell** | *Hard outer layer from aquatic creatures. Smooth and rigid, but fragile under pressure.*<br/><br/>1/2 item cost. The item gains the fragile property. |
 
-#### **Mundane Materials (Q2)**
+#### **Base Materials - Mundane (Q2)**
+
+These are the standard materials used for most quality items. **No extra cost.**
 
 | d8 | Material | Properties |
 | --- | --- | --- |
-| 1 | **Brass** | *Yellow-gold alloy. Decorative and corrosion-resistant, but not ideal for combat use.* |
-| 2 | **Bronze** | *Standard metal for tools and weapons. Balanced in strength, weight, and workability.* |
-| 3 | **Hardwood** | *Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.* |
-| 4 | **Leather** | *Treated animal skin. Flexible, provides basic protection; common for light armor.* |
-| 5 | **Horn** | *Solid, curved keratin. Used for weapon hilts, tips, and decorative armor parts.* |
-| 6 | **Hide** | *Thick, untreated skin. Tougher than leather, but less flexible.* |
-| 7 | **Antler** | *Hard and naturally curved. Effective for piercing weapons or rugged tools.* |
+| 1 | **Brass** | *Yellow-gold alloy. Decorative and corrosion-resistant, but not ideal for combat use.* **No mechanical effect.** |
+| 2 | **Bronze** | *Standard metal for tools and weapons. Balanced in strength, weight, and workability.* **No mechanical effect.** |
+| 3 | **Hardwood** | *Dense, seasoned wood. Durable and shock-absorbent; used for bows, clubs, and shields.* **No mechanical effect.** |
+| 4 | **Leather** | *Treated animal skin. Flexible, provides basic protection; common for light armor.* **No mechanical effect.** |
+| 5 | **Horn** | *Solid, curved keratin. Used for weapon hilts, tips, and decorative armor parts.* **No mechanical effect.** |
+| 6 | **Hide** | *Thick, untreated skin. Tougher than leather, but less flexible.* **No mechanical effect.** |
+| 7 | **Antler** | *Hard and naturally curved. Effective for piercing weapons or rugged tools.* **No mechanical effect.** |
 | 8 | **Obsidian** | *Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.*<br/><br/>**-** The item gains the fragile property.<br/>- Weapon/Ammo: +1 weapon damage (enhancement bonus). |
 
-#### **Exotic Materials (Q3-4)**
+#### **Special Materials - Exotic (Q3-4)**
+
+These rare materials provide mechanical advantages. **Extra cost applies** (see Special Material Extra Cost table).
 
 | d10 | Material | Properties |
 | --- | --- | --- |
@@ -208,7 +250,9 @@ There exist a variety of enchanted, magical, or naturally powerful materials, su
 | 9 | **Darkwood** | *Dark wood with a mix of red and basalt layers that is much lighter than normal wood and resistant like metal. Often used for wooden weapons or shields. Has no effect on weapons only partially made of wood.*<br/><br/>- Weapon/Shield/Ammo: -1 load (min. 0). |
 | 10 | **Wyrmhide** | *Thick hide from lesser draconic creatures. Offers slight protection against elemental damage.*<br/><br/>- Armor/Shield: Once per scene, gain resistance against any single damage source dealing acid, fire, frost, lightning, or poison damage. |
 
-#### **Greater Materials (Q5-6)**
+#### **Special Materials - Greater (Q5-6)**
+
+These epic materials provide significant magical power. **Extra cost applies** (see Special Material Extra Cost table).
 
 | d10 | Material | Properties |
 | --- | --- | --- |
@@ -223,7 +267,9 @@ There exist a variety of enchanted, magical, or naturally powerful materials, su
 | 9 | **Lunarite** | *Deep blue crystal found in underworld caverns. Absorbs magical energy. Used in armor to resist spells or in restraints to suppress magic.* |
 | 10 | **Adamantite** | *Extremely hard and dense metal. Almost impossible to break or bend.* |
 
-#### **Legendary Materials (Q7-8)**
+#### **Special Materials - Legendary (Q7-8)**
+
+These cosmic or divine materials are very rare or one-of-a-kind. **Extra cost applies** (see Special Material Extra Cost table).
 
 | d10 | Material | Properties |
 | --- | --- | --- |
@@ -240,11 +286,11 @@ There exist a variety of enchanted, magical, or naturally powerful materials, su
 
 ## Enchantments
 
-Enchanted items include weapons, armor, and other mostly wearable equipment with magical properties and can have a variety of effects depending on their type and potency. Which enchantment an item has is denoted by it’s name. Roll on the table below to determine which type of enchantments the item has. Then roll on the corresponding tables for weapons, armor, etc.
+Enchantments are optional magical properties that can be added to items of Quality 3 or higher. Each enchantment adds its full cost to the item (see Enchantment Cost table). Enchanted items gain powerful abilities and effects depending on their type and potency.
 
 #### **Enchanting items**
 
-Any non-enchanted item with Quality 3 or higher can be enchanted. This requires a craftsperson with the ability to create enchanted items, a magical ritual during downtime, and adequately potent magical ingredients. The enchantments cost depends on it’s Quality the same way as the magic item cost above, where ingredients worth at least half that cost need to be provided.
+Any non-enchanted item with Quality 3 or higher can be enchanted. This requires a craftsperson with the ability to create enchanted items, a magical ritual during downtime, and adequately potent magical ingredients. The enchantment's cost depends on its Quality (see Enchantment Cost table), where ingredients worth at least half that cost need to be provided.
 
 Removing an existing enchantment from an item is no easy feat and often results in destroying the item with it.
 
