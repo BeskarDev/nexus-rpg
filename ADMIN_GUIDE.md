@@ -81,12 +81,6 @@ Located in `/functions/src/index.ts`:
 - Returns user metadata
 - Admin-only operation
 
-#### `setAdminRole(targetEmail)`
-- Grants admin privileges to a user
-- Sets custom claim on Firebase Auth token
-- Creates admin document in Firestore
-- Admin-only operation (admins can create other admins)
-
 ### Frontend: React Components
 
 #### UserManagementPanel (`/src/components/UserManagementPanel.tsx`)
@@ -183,13 +177,23 @@ Use the search box to filter users by:
 
 ### Granting Admin Privileges
 
-Currently requires using the `setAdminRole` Cloud Function:
+Granting admin privileges must be done through Firebase Console or CLI (see SETUP_FIRST_ADMIN.md for detailed instructions):
 
+**Via Firebase Console:**
+1. Navigate to Authentication > Users
+2. Find the user to promote
+3. Set custom claim: `{"admin": true}`
+4. Create Firestore document at `admins/{userId}` with their email
+
+**Via Firebase CLI:**
 ```javascript
-// From your app, call the function
-const functions = getFunctions(app)
-const setAdminRoleFunction = httpsCallable(functions, 'setAdminRole')
-const result = await setAdminRoleFunction({ targetEmail: 'newadmin@example.com' })
+// Using Firebase Admin SDK
+const admin = require('firebase-admin');
+await admin.auth().setCustomUserClaims(userId, { admin: true });
+await admin.firestore().doc(`admins/${userId}`).set({
+  email: userEmail,
+  grantedAt: admin.firestore.FieldValue.serverTimestamp()
+});
 ```
 
 ## Error Handling
@@ -336,18 +340,6 @@ interface ListUsersOutput {
     }
   }>
   pageToken?: string
-}
-```
-
-#### setAdminRole
-```typescript
-interface SetAdminRoleInput {
-  targetEmail: string
-}
-
-interface SetAdminRoleOutput {
-  success: boolean
-  message: string
 }
 ```
 

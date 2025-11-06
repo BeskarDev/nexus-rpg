@@ -60,20 +60,26 @@ export const inviteUser = functions.https.onCall(async (data, context) => {
 				// Generate a random temporary password
 				const tempPassword = generateTempPassword()
 				
+				// Extract a default name from email (before @ symbol)
+				const defaultName = email.split('@')[0]
+				
 				// Create the user with email and temporary password
 				user = await admin.auth().createUser({
 					email: email,
 					password: tempPassword,
 					emailVerified: false,
+					displayName: defaultName,
 				})
 
 				// Send password reset email so user can set their own password
 				await admin.auth().generatePasswordResetLink(email)
 
-				// Create user document in Firestore if needed
+				// Create user document in Firestore at {userId}/player-info
+				// This structure is used by the character sheet tool
 				const userDoc = admin.firestore().doc(`${user.uid}/player-info`)
 				await userDoc.set({
 					email: email,
+					name: defaultName, // Character sheet reads this field
 					allowedCollections: [],
 					createdAt: admin.firestore.FieldValue.serverTimestamp(),
 					invitedBy: context.auth.uid,
@@ -260,63 +266,3 @@ function generateTempPassword(): string {
 	}
 	return password
 }
-
-/**
- * Cloud Function to set a user as admin (callable by existing admins only)
- * 
- * @param targetEmail - Email of the user to make admin
- * @returns Success status
- */
-export const setAdminRole = functions.https.onCall(async (data, context) => {
-	// Verify the user is authenticated
-	if (!context.auth) {
-		throw new functions.https.HttpsError(
-			'unauthenticated',
-			'User must be authenticated.'
-		)
-	}
-
-	// Verify the user is an admin
-	const isAdmin = await checkIsAdmin(context.auth.uid)
-	if (!isAdmin) {
-		throw new functions.https.HttpsError(
-			'permission-denied',
-			'User must be an admin to set admin roles.'
-		)
-	}
-
-	const { targetEmail } = data
-
-	if (!targetEmail || typeof targetEmail !== 'string') {
-		throw new functions.https.HttpsError(
-			'invalid-argument',
-			'Target email is required.'
-		)
-	}
-
-	try {
-		// Get the target user
-		const user = await admin.auth().getUserByEmail(targetEmail)
-
-		// Set custom claim
-		await admin.auth().setCustomUserClaims(user.uid, { admin: true })
-
-		// Also create a document in admins collection
-		await admin.firestore().doc(`admins/${user.uid}`).set({
-			email: targetEmail,
-			grantedBy: context.auth.uid,
-			grantedAt: admin.firestore.FieldValue.serverTimestamp(),
-		})
-
-		return {
-			success: true,
-			message: `Admin role granted to ${targetEmail}`,
-		}
-	} catch (error: any) {
-		console.error('Error setting admin role:', error)
-		throw new functions.https.HttpsError(
-			'internal',
-			`Failed to set admin role: ${error.message}`
-		)
-	}
-})

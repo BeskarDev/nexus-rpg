@@ -7,7 +7,7 @@ This implementation adds a complete admin user management system to Nexus RPG, a
 
 ### 1. Backend: Firebase Cloud Functions (`/functions/src/index.ts`)
 
-Four secure Cloud Functions were implemented:
+Three secure Cloud Functions were implemented:
 
 #### `inviteUser(email)`
 ```typescript
@@ -46,19 +46,6 @@ Four secure Cloud Functions were implemented:
 **Features:**
 - Returns user metadata (email, verified status, last sign-in)
 - Supports pagination (up to 1000 results per page)
-- Admin-only operation
-
-#### `setAdminRole(targetEmail)`
-```typescript
-// Grants admin privileges to a user
-// Sets custom claim and Firestore document
-// Returns: { success, message }
-```
-
-**Features:**
-- Sets Firebase custom claim `admin: true`
-- Creates document in `admins` collection
-- Tracks who granted the privilege
 - Admin-only operation
 
 ### 2. Frontend: React Components
