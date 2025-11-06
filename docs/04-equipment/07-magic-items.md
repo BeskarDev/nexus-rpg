@@ -10,50 +10,31 @@ Magic items are higher Quality versions of normal weapons, armor, or other equip
 
 ## How to Build a Magic Item
 
-Creating a magic item follows a simple process:
+Creating a magic item follows three steps:
 
-1. **Choose a Base Item**: Select the type of item (weapon, armor, wearable, etc.) and its mundane Quality (Q1-Q8)
-2. **Select a Material**: All items must use a material. Choose from:
-   - **Base Materials**: Available at all quality tiers (Q1-Q8), these provide flavor and construction variety at **no extra cost**
-   - **Special Materials**: Available at Q3-Q8, these provide mechanical advantages and add **extra cost** (~50% of enchantment cost)
-3. **Add an Enchantment (Optional)**: Items of Quality 3+ can have enchantments added for powerful abilities
+1. **Choose a Base Item**: Select the type of item (weapon, armor, wearable, etc.) and its Quality (Q1-Q8)
+2. **Select a Material**: All items must use a material:
+   - **Base Materials** (Q1-Q8): Provide flavor at no extra cost
+   - **Special Materials** (Q3-Q8): Provide mechanical bonuses and add ~50% of enchantment cost
+3. **Add an Enchantment** (Optional, Q3+): Powerful magical abilities
 
-**Total Cost = Base Item Cost + Material Extra Cost + Enchantment Cost**
+### Cost Calculation
 
-> **Example**: To create a Quality 5 mithril longsword with a flaming enchantment:
-> - Base longsword cost: 100 coins
-> - Mithril material extra cost (Q5 special material): +1,500 coins
-> - Flaming enchantment cost (Q5): +3,000 coins
-> - **Total: 4,600 coins**
+**Total Cost = Base Item + Material Extra + Enchantment**
 
-### Material Categories
+- **Base Item**: Cost of the mundane version
+- **Material Extra**: 0 coins for base materials, see table below for special materials
+- **Enchantment**: See table below (optional, Q3+)
 
-**Base Materials** are available at every quality tier (Q1-Q8). These common materials like bronze, hardwood, and leather provide no mechanical advantage but offer different flavors and construction details at **no extra cost**. They represent standard craftsmanship appropriate to the item's quality.
-
-**Special Materials** are available starting at Quality 3 (Q3-Q8). These rare materials like mithril, dragon scales, or adamantite provide mechanical advantages and add extra cost to the item (approximately half the cost of an equivalent enchantment).
-
-**Enchantments** are optional magical properties that can be added to any item of Quality 3 or higher, providing powerful abilities and effects.
-
-## Calculating Magic Item Costs
-
-The total cost of a magic item is calculated as follows:
-
-**Total Cost = Base Item Cost + Material Extra Cost + Enchantment Cost**
-
-- **Base Item Cost**: The cost of the mundane version of the item
-- **Material Extra Cost**: Additional cost for special materials (0 for base materials)
-- **Enchantment Cost**: Cost of the enchantment, if any (see tables below)
-
-> **Example 1**: A Quality 4 bronze shortsword with a flaming enchantment costs 1,050 coins (50 base + 0 material + 1,000 enchantment).
-> 
-> **Example 2**: A Quality 5 mithril breastplate with an enchantment costs 11,250 coins (750 base + 500 material extra cost + 10,000 enchantment cost). 
-> 
-> **Example 3**: A Quality 6 adamantite longsword with a sacred enchantment costs 25,100 coins (100 base + 5,000 material + 10,000 enchantment).
+> **Examples:**
+> - Q4 bronze shortsword + flaming = 50 + 0 + 1,000 = **1,050 coins**
+> - Q5 mithril breastplate + enchantment = 750 + 5,000 + 10,000 = **15,750 coins**
+> - Q6 adamantite longsword + sacred = 100 + 5,000 + 10,000 = **25,100 coins**
 > 
 
-## Enchantment Cost per Quality Tier
+## Cost Tables
 
-These costs apply when adding an enchantment to an item. Enchantments are optional.
+### Enchantment Cost
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -64,9 +45,7 @@ These costs apply when adding an enchantment to an item. Enchantments are option
 | **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins | +25,000 coins |
 | **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +75,000 coins |
 
-## Special Material Extra Cost per Quality Tier
-
-Special materials (Q3-Q8) add extra cost to an item. This cost is approximately half that of an equivalent enchantment, making special materials a more affordable way to enhance items. **Base materials (available at all quality tiers Q1-Q8) have 0 extra cost.**
+### Special Material Extra Cost
 
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
