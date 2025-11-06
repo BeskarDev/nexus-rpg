@@ -576,7 +576,8 @@ export function getSpellDamageBonus(quality: QualityTier): number {
 export function generateItemName(
   baseItem: BaseItem,
   material?: SpecialMaterial,
-  enchantment?: Enchantment
+  enchantment?: Enchantment,
+  quality?: QualityTier
 ): string {
   let name = baseItem.name
   
@@ -593,6 +594,26 @@ export function generateItemName(
       name = `${enchantment.name} ${baseItem.name}`
     } else {
       name = `${baseItem.name} ${enchantment.name}`
+    }
+  }
+  
+  // Add bonus suffix for items with quality bonuses but no enchantment
+  if (!enchantment && quality) {
+    let bonus = 0
+    
+    // Calculate bonus based on item category
+    if (baseItem.category === 'one-handed-weapon' || baseItem.category === 'two-handed-weapon') {
+      bonus = getWeaponDamageBonus(baseItem.quality, quality)
+    } else if (baseItem.category === 'ammo') {
+      bonus = getAmmoDamageBonus(baseItem.quality, quality)
+    } else if (baseItem.category === 'light-armor' || baseItem.category === 'heavy-armor' || 
+               baseItem.category === 'shield' || baseItem.category === 'helmet') {
+      bonus = getArmorAVBonus(quality)
+    }
+    
+    // Append bonus to name if there is one
+    if (bonus > 0) {
+      name = `${name} +${bonus}`
     }
   }
   

@@ -157,13 +157,18 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 
   const finalItemName = useMemo(() => {
     if (!selectedBaseItem) return ''
-    const baseName = generateItemName(selectedBaseItem, selectedMaterial || undefined, selectedEnchantment || undefined)
+    const baseName = generateItemName(
+      selectedBaseItem, 
+      selectedMaterial || undefined, 
+      selectedEnchantment || undefined,
+      selectedQuality || undefined
+    )
     // For baseline magic ammo (no materials or enchantments), add "Magic" prefix
     if (selectedCategory === 'ammo' && !selectedMaterial && !selectedEnchantment) {
       return `Magic ${baseName}`
     }
     return baseName
-  }, [selectedBaseItem, selectedMaterial, selectedEnchantment, selectedCategory])
+  }, [selectedBaseItem, selectedMaterial, selectedEnchantment, selectedCategory, selectedQuality])
 
   const finalItemDescription = useMemo(() => {
     if (!selectedBaseItem || !selectedQuality) return ''
