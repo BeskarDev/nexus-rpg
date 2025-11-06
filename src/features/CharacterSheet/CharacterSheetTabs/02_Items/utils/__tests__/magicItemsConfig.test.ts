@@ -187,6 +187,24 @@ describe('Magic Item Configuration', () => {
       expect(name).toBe('Flaming Mithril Shortsword +2') // Q5 gives +2 bonus
     })
 
+    it('should generate name for Q4 ammo with correct bonus', () => {
+      const arrows = baseItems['ammo'].find(item => item.name === 'Arrows')!
+      const name = generateItemName(arrows, undefined, undefined, 4)
+      expect(name).toBe('Arrows +2') // Q4 ammo gets +2 bonus (Q3=+1, Q4=+2, Q5=+3, etc.)
+    })
+
+    it('should generate name for Q3 ammo with correct bonus', () => {
+      const arrows = baseItems['ammo'].find(item => item.name === 'Arrows')!
+      const name = generateItemName(arrows, undefined, undefined, 3)
+      expect(name).toBe('Arrows +1') // Q3 ammo gets +1 bonus
+    })
+
+    it('should generate name for Q8 ammo with maximum bonus', () => {
+      const arrows = baseItems['ammo'].find(item => item.name === 'Arrows')!
+      const name = generateItemName(arrows, undefined, undefined, 8)
+      expect(name).toBe('Arrows +6') // Q8 ammo gets +6 bonus
+    })
+
     it('should generate name with material and suffix enchantment', () => {
       const amulet = baseItems['wearable'].find(item => item.name === 'Amulet')!
       const ofOgreStrength = enchantments.find(e => e.name === 'of Ogre Strength')!
