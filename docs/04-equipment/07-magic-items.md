@@ -6,7 +6,7 @@ sidebar_position: 7
 
 ![banner-img](/img/banner/weapon-armor-materials-banner.png)
 
-Magic items are higher Quality versions of normal equipment. They provide greater bonuses but cost significantly more.
+Magic items are higher Quality versions of normal equipment that enhance your character's combat prowess, spellcasting power, and survivability. From flaming swords that ignite with fire to armor that deflects spells, from boots that enhance reflexes to amulets that store magical energy—magic items are key to facing deadlier foes and surviving legendary adventures.
 
 ## How to Build a Magic Item
 
@@ -52,10 +52,16 @@ Magic items are higher Quality versions of normal equipment. They provide greate
 
 Minimum base costs for magic wearables by equipment slot:
 
-| Slot | Base Cost | Example |
-| --- | --- | --- |
-| **Head, Neck, Hands, Rings, Waist** | 50 coins | Amulet, headband, gloves |
-| **Back, Body, Feet** | 100 coins | Cloak, robe, boots |
+| Slot | Base Cost |
+| --- | --- |
+| **Head** | 50 coins |
+| **Neck** | 50 coins |
+| **Hands** | 50 coins |
+| **Rings** | 50 coins |
+| **Waist** | 50 coins |
+| **Back** | 100 coins |
+| **Body** | 100 coins |
+| **Feet** | 100 coins |
 
 *Example: Q4 amulet of protection = 50 + 0 + 750 = 800 coins* 
 
