@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '22'
 
 jobs:
   build_and_preview:
@@ -30,8 +30,8 @@ jobs:
           echo "Yarn version: $(yarn --version)"
           echo "NPM version: $(npm --version)"
           # Ensure we're using the correct Node.js version
-          if ! node --version | grep -q "v20"; then
-            echo "ERROR: Expected Node.js v20.x.x but got $(node --version)"
+          if ! node --version | grep -q "v22"; then
+            echo "ERROR: Expected Node.js v22.x.x but got $(node --version)"
             exit 1
           fi
 
@@ -41,12 +41,16 @@ jobs:
           path: |
             ~/.cache/yarn
             node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+            functions/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock', 'functions/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile --prefer-offline
+
+      - name: Install functions dependencies
+        run: cd functions && yarn install --frozen-lockfile --prefer-offline
 
       - name: Run tests with coverage
         run: yarn test:coverage
@@ -54,10 +58,20 @@ jobs:
       - name: Build application
         run: yarn build
 
-      - name: Deploy to Firebase Preview
+      - name: Build functions
+        run: cd functions && yarn build
+
+      - name: Deploy to Firebase Preview (Hosting, Functions, Firestore)
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXUS_RPG_D04D1 }}
           channelId: preview
           projectId: nexus-rpg-d04d1
+          
+      - name: Deploy Functions to Preview
+        run: |
+          # Note: Functions can't be deployed to preview channels, so we skip this in PR previews
+          # Firestore rules also apply globally and can't be preview-scoped
+          echo "Functions and Firestore rules deployment skipped for PR preview"
+          echo "These will be deployed when merged to main"

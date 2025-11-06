@@ -1,6 +1,7 @@
 import { ListAlt } from '@mui/icons-material'
 import {
 	Avatar,
+	Box,
 	Link,
 	List,
 	ListItem,
@@ -28,6 +29,30 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 
 	const buildCharacterName = (char: CharacterDocument) =>
 		`${char.personal.name} (${char.personal.folk} ${char.personal.background}, Level ${calculateCharacterLevel(char.skills.xp.spend)})`
+
+	// Show empty state if no characters
+	if (characters.length === 0) {
+		return (
+			<Box
+				sx={{
+					textAlign: 'center',
+					py: 6,
+					px: 2,
+				}}
+			>
+				<Typography variant="h6" gutterBottom>
+					No Characters Yet
+				</Typography>
+				<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+					Get started by creating your first character!
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Click the <strong>"New Character"</strong> button above to choose between
+					creating a quickstart character or building one from scratch.
+				</Typography>
+			</Box>
+		)
+	}
 
 	return (
 		<List>
