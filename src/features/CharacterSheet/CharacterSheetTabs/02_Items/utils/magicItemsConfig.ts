@@ -597,8 +597,8 @@ export function generateItemName(
     }
   }
   
-  // Add bonus suffix for items with quality bonuses but no enchantment
-  if (!enchantment && quality) {
+  // Add bonus suffix for items with quality bonuses
+  if (quality) {
     let bonus = 0
     
     // Calculate bonus based on item category
