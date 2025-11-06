@@ -56,9 +56,6 @@ jobs:
       - name: Build application
         run: yarn build
 
-      - name: Build functions
-        run: cd functions && yarn build
-
       - name: Deploy Hosting to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -70,13 +67,6 @@ jobs:
       - name: Setup Firebase Service Account
         run: |
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXUS_RPG_D04D1 }}' > $HOME/gcloud-key.json
-          
-      - name: Deploy Functions and Firestore Rules
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.workspace }}/gcloud-key.json
-        run: |
-          cp $HOME/gcloud-key.json ${{ github.workspace }}/gcloud-key.json
-          yarn firebase deploy --only functions,firestore:rules,firestore:indexes --project nexus-rpg-d04d1 --non-interactive
           
       - name: Cleanup Service Account
         if: always()

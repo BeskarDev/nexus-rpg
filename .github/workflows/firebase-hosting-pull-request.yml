@@ -58,9 +58,6 @@ jobs:
       - name: Build application
         run: yarn build
 
-      - name: Build functions
-        run: cd functions && yarn build
-
       - name: Deploy Hosting to Firebase Preview
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -69,9 +66,3 @@ jobs:
           channelId: preview
           projectId: nexus-rpg-d04d1
           
-      - name: Note about Functions and Firestore
-        run: |
-          # Note: Functions can't be deployed to preview channels, so we skip this in PR previews
-          # Firestore rules also apply globally and can't be preview-scoped
-          echo "Functions and Firestore rules deployment skipped for PR preview"
-          echo "These will be deployed when merged to main"
