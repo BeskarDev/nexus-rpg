@@ -179,7 +179,7 @@ describe('UserManagementPanel', () => {
 
 		await waitFor(() => {
 			const lockResetIcons = screen.getAllByRole('button', {
-				name: /trigger password reset/i,
+				name: /send password reset email to this user/i,
 			})
 			expect(lockResetIcons.length).toBe(2) // Two users
 		})
@@ -260,7 +260,7 @@ describe('PasswordResetDialog', () => {
 
 		// Click the first password reset icon
 		const resetIcons = screen.getAllByRole('button', {
-			name: /trigger password reset/i,
+			name: /send password reset email to this user/i,
 		})
 		await user.click(resetIcons[0])
 
@@ -282,7 +282,7 @@ describe('PasswordResetDialog', () => {
 		})
 
 		const resetIcons = screen.getAllByRole('button', {
-			name: /trigger password reset/i,
+			name: /send password reset email to this user/i,
 		})
 		await user.click(resetIcons[0])
 
