@@ -15,6 +15,12 @@ This guide walks you through setting up the first admin user for the Nexus RPG a
 - 200,000 CPU-seconds free
 - You only pay for usage beyond these limits
 
+**Budget Control:** See **[FIREBASE_BUDGET_SETUP.md](./FIREBASE_BUDGET_SETUP.md)** for detailed instructions on:
+- Setting up tight budget alerts
+- Configuring spending limits under $1/month
+- Monitoring usage and preventing unexpected charges
+- Emergency procedures if budget exceeded
+
 **Alternative for Spark tier users:**
 If you want to stay on the Spark tier, you'll need to manually create users in the Firebase Console without the invitation features.
 
