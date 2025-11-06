@@ -26,6 +26,22 @@ Creating a magic item follows a simple process:
 > - Flaming enchantment cost (Q5): +3,000 coins
 > - **Total: 4,600 coins**
 
+### Special Case: Morphing Enchantment
+
+The **morphing** enchantment combines two weapon forms into one item. Calculate the cost as follows:
+
+**Morphing Total Cost = (Base Item 1 + Material Extra 1) + (Base Item 2 + Material Extra 2) + Enchantment Cost (once)**
+
+The morphing enchantment cost is paid only once, but both base items and their material costs are combined. During crafting, the second weapon must be at least masterwork quality (Q3) and is destroyed in the enchanting process.
+
+> **Example**: A Q4 morphing shortsword/longbow made from bronze:
+> - Shortsword base: 50 coins
+> - Bronze material extra (Q4): 0 coins
+> - Longbow base: 100 coins  
+> - Bronze material extra (Q4): 0 coins
+> - Morphing enchantment (Q4): +1,000 coins
+> - **Total: 1,150 coins**
+
 ### Material Categories
 
 **Base Materials** are available at every quality tier (Q1-Q8). These common materials like bronze, hardwood, and leather provide no mechanical advantage but offer different flavors and construction details at **no extra cost**. They represent standard craftsmanship appropriate to the item's quality.
