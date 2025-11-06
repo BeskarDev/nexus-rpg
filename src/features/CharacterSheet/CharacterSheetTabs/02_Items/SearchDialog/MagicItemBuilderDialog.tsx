@@ -53,6 +53,8 @@ import {
   getAvailableMaterials,
   getAvailableEnchantments,
   calculateMagicItemCost,
+  getMaterialExtraCost,
+  getEnchantmentCost,
   getWeaponDamageBonus,
   getAmmoDamageBonus,
   getArmorAVBonus,
@@ -76,8 +78,8 @@ export type MagicItemBuilderDialogProps = {
 const steps = [
   'Select Base Item',
   'Choose Quality',
-  'Special Material',
-  'Enchantment',
+  'Select Material',
+  'Enchantment (Optional)',
   'Review & Create',
 ]
 
@@ -110,7 +112,18 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
     }
   }, [selectedCategory])
 
-
+  // Auto-select default base material (bronze) when quality is selected
+  useEffect(() => {
+    if (selectedCategory && selectedQuality && !selectedMaterial) {
+      const materials = getAvailableMaterials(selectedCategory, selectedQuality)
+      // Find a base material (bronze preferred, or any base material)
+      const baseMaterial = materials.find(m => m.materialType === 'base' && m.name === 'Bronze') 
+                        || materials.find(m => m.materialType === 'base')
+      if (baseMaterial) {
+        setSelectedMaterial(baseMaterial)
+      }
+    }
+  }, [selectedCategory, selectedQuality])
 
   const availableMaterials = useMemo(() => {
     if (!selectedCategory || !selectedQuality) return []
@@ -127,10 +140,20 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
     return calculateMagicItemCost(
       selectedBaseItem,
       selectedQuality,
-      !!selectedMaterial,
+      selectedMaterial,
       !!selectedEnchantment
     )
   }, [selectedBaseItem, selectedQuality, selectedMaterial, selectedEnchantment])
+
+  const materialExtraCost = useMemo(() => {
+    if (!selectedBaseItem || !selectedQuality || !selectedMaterial) return 0
+    return getMaterialExtraCost(selectedMaterial, selectedQuality, selectedBaseItem.category)
+  }, [selectedBaseItem, selectedQuality, selectedMaterial])
+
+  const enchantmentCost = useMemo(() => {
+    if (!selectedBaseItem || !selectedQuality || !selectedEnchantment) return 0
+    return getEnchantmentCost(selectedQuality, selectedBaseItem.category)
+  }, [selectedBaseItem, selectedQuality, selectedEnchantment])
 
   const finalItemName = useMemo(() => {
     if (!selectedBaseItem) return ''
@@ -222,13 +245,9 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
     switch (step) {
       case 0: return !!selectedBaseItem
       case 1: return !!selectedQuality
-      case 2: return true // Materials are optional
+      case 2: return !!selectedMaterial // Materials are now mandatory
       case 3: return true // Enchantments are optional
-      case 4: 
-        // Ammo can be baseline magic ammo without materials or enchantments
-        if (selectedCategory === 'ammo') return true
-        // Other items must have at least one special feature
-        return !!(selectedMaterial || selectedEnchantment)
+      case 4: return !!selectedMaterial // Must have a material selected
       default: return false
     }
   }
@@ -562,21 +581,15 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
         return (
           <Box>
             <Typography variant="h6" gutterBottom>
-              Select Special Material (Optional)
+              Select Material (Required)
             </Typography>
             <Typography variant="body1" color="text.secondary" paragraph>
-              Special materials provide unique properties and abilities. You can skip this step if you only want an enchantment.
+              All items must be made from a material. Base materials (like Bronze) provide flavor at no extra cost. 
+              Special materials provide unique properties for additional cost (approximately 50% of enchantment cost).
             </Typography>
-            
-            {selectedMaterial && (
-              <Button
-                variant="outlined"
-                onClick={() => setSelectedMaterial(null)}
-                sx={{ mb: 2 }}
-              >
-                Clear Selection
-              </Button>
-            )}
+            <Typography variant="body2" color="text.secondary" paragraph>
+              <strong>Currently selected:</strong> {selectedMaterial ? `${selectedMaterial.name} (${selectedMaterial.materialType === 'base' ? 'Base - No Extra Cost' : 'Special'})` : 'None'}
+            </Typography>
 
             {availableMaterials.length > 0 ? (
               <TableContainer component={Paper}>
@@ -585,41 +598,44 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
                     <TableRow>
                       <TableCell></TableCell>
                       <TableCell>Material</TableCell>
-                      <TableCell>Available Qualities</TableCell>
+                      <TableCell>Type</TableCell>
+                      <TableCell align="right">Extra Cost</TableCell>
                       <TableCell>Properties</TableCell>
                       <TableCell>Description</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {availableMaterials.map((material) => (
-                      <TableRow
-                        key={material.id}
-                        hover
-                        selected={selectedMaterial?.id === material.id}
-                        sx={{ cursor: 'pointer' }}
-                        onClick={() => setSelectedMaterial(material)}
-                      >
-                        <TableCell padding="checkbox">
-                          <Radio checked={selectedMaterial?.id === material.id} />
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="subtitle2">{material.name}</Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
-                            {material.qualityTiers.map((tier) => (
-                              <Chip
-                                key={tier}
-                                label={`Q${tier}`}
-                                size="small"
-                                color={tier === selectedQuality ? 'primary' : 'default'}
-                              />
-                            ))}
-                          </Box>
-                        </TableCell>
-                        <TableCell>
-                          <Typography variant="body2" color="primary" sx={{ fontWeight: 'medium' }}>
-                            {material.properties}
+                    {availableMaterials.map((material) => {
+                      const extraCost = selectedQuality ? getMaterialExtraCost(material, selectedQuality, selectedCategory) : 0
+                      return (
+                        <TableRow
+                          key={material.id}
+                          hover
+                          selected={selectedMaterial?.id === material.id}
+                          sx={{ cursor: 'pointer' }}
+                          onClick={() => setSelectedMaterial(material)}
+                        >
+                          <TableCell padding="checkbox">
+                            <Radio checked={selectedMaterial?.id === material.id} />
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="subtitle2">{material.name}</Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Chip
+                              label={material.materialType === 'base' ? 'Base' : 'Special'}
+                              size="small"
+                              color={material.materialType === 'base' ? 'default' : 'secondary'}
+                            />
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography variant="body2" sx={{ fontWeight: extraCost > 0 ? 'bold' : 'normal' }}>
+                              {extraCost > 0 ? `+${extraCost} coins` : '0 coins'}
+                            </Typography>
+                          </TableCell>
+                          <TableCell>
+                            <Typography variant="body2" color={material.properties ? "primary" : "text.secondary"} sx={{ fontWeight: material.properties ? 'medium' : 'normal' }}>
+                            {material.properties || 'No mechanical effect'}
                           </Typography>
                         </TableCell>
                         <TableCell>
@@ -628,13 +644,13 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
                           </Typography>
                         </TableCell>
                       </TableRow>
-                    ))}
+                    )})}
                   </TableBody>
                 </Table>
               </TableContainer>
             ) : (
-              <Alert severity="info">
-                No special materials are available for this item category and quality tier.
+              <Alert severity="warning">
+                No materials are available for this item category and quality tier. This should not happen.
               </Alert>
             )}
           </Box>
@@ -731,9 +747,9 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
               Review & Create Magic Item
             </Typography>
 
-            {!selectedMaterial && !selectedEnchantment && selectedCategory !== 'ammo' && (
-              <Alert severity="warning" sx={{ mb: 2 }}>
-                You must select at least one special material or enchantment to create a magic item.
+            {!selectedMaterial && (
+              <Alert severity="error" sx={{ mb: 2 }}>
+                You must select a material to create a magic item.
               </Alert>
             )}
 
@@ -746,12 +762,47 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
                   {qualityTierLabels[selectedQuality as QualityTier]}
                 </Typography>
                 
-                <Grid container spacing={2} sx={{ mb: 2 }}>
-                  <Grid item xs={6}>
-                    <Typography variant="body2" color="text.secondary">
-                      Cost: <strong>{finalCost} coins</strong>
-                    </Typography>
+                {/* Cost Breakdown */}
+                <Box sx={{ mb: 2, p: 2, bgcolor: 'background.default', borderRadius: 1 }}>
+                  <Typography variant="subtitle2" gutterBottom>
+                    Cost Breakdown
+                  </Typography>
+                  <Grid container spacing={1}>
+                    <Grid item xs={8}>
+                      <Typography variant="body2">Base Item Cost:</Typography>
+                    </Grid>
+                    <Grid item xs={4} textAlign="right">
+                      <Typography variant="body2">{selectedBaseItem?.cost || 0} coins</Typography>
+                    </Grid>
+                    <Grid item xs={8}>
+                      <Typography variant="body2">Material Extra Cost:</Typography>
+                    </Grid>
+                    <Grid item xs={4} textAlign="right">
+                      <Typography variant="body2" sx={{ fontWeight: materialExtraCost > 0 ? 'bold' : 'normal' }}>
+                        {materialExtraCost > 0 ? '+' : ''}{materialExtraCost} coins
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={8}>
+                      <Typography variant="body2">Enchantment Cost:</Typography>
+                    </Grid>
+                    <Grid item xs={4} textAlign="right">
+                      <Typography variant="body2" sx={{ fontWeight: enchantmentCost > 0 ? 'bold' : 'normal' }}>
+                        {enchantmentCost > 0 ? '+' : ''}{enchantmentCost} coins
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Divider sx={{ my: 0.5 }} />
+                    </Grid>
+                    <Grid item xs={8}>
+                      <Typography variant="subtitle2">Total Cost:</Typography>
+                    </Grid>
+                    <Grid item xs={4} textAlign="right">
+                      <Typography variant="subtitle2" color="primary">{finalCost} coins</Typography>
+                    </Grid>
                   </Grid>
+                </Box>
+                
+                <Grid container spacing={2} sx={{ mb: 2 }}>
                   <Grid item xs={6}>
                     <Typography variant="body2" color="text.secondary">
                       Load: <strong>{selectedBaseItem ? calculateFinalLoad(selectedBaseItem.load, calculatePropertyModifications(selectedCategory, selectedMaterial, selectedEnchantment)) : 0}</strong>
@@ -766,7 +817,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
                       </Typography>
                     </Grid>
                   )}
-                  <Grid item xs={6}>
+                  <Grid item xs={12}>
                     <Typography variant="body2" color="text.secondary">
                       Properties: <strong>{enhanceProperties(selectedBaseItem?.properties || '', selectedQuality as QualityTier, selectedCategory.includes('weapon') || selectedCategory === 'shield')}</strong>
                     </Typography>
@@ -897,7 +948,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
             <Button
               variant="contained"
               onClick={handleCreateItem}
-              disabled={selectedCategory === 'ammo' ? false : (!selectedMaterial && !selectedEnchantment)}
+              disabled={!selectedMaterial}
               startIcon={<Add />}
               sx={{ minWidth: '120px' }}
             >

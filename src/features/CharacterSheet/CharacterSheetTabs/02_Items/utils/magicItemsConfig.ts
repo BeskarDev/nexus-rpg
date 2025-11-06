@@ -32,6 +32,7 @@ export type SpecialMaterial = {
   qualityTiers: QualityTier[]
   properties: string
   applicableCategories: ItemCategory[]
+  materialType: 'base' | 'special'
 }
 
 export type Enchantment = {
@@ -69,29 +70,29 @@ export const qualityTierLabels: Record<QualityTier, string> = {
   8: 'Q8 (Supreme Magic)',
 }
 
-// Magic item cost modifiers per quality and category
-export const magicItemCosts: Record<QualityTier, Record<ItemCategory, number>> = {
+// Enchantment cost modifiers per quality and category
+export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>> = {
   1: {
-    'one-handed-weapon': 25,
-    'two-handed-weapon': 50,
-    'spell-catalyst': 25,
-    'light-armor': 50,
-    'heavy-armor': 100,
-    'shield': 50,
-    'helmet': 50,
-    'wearable': 25,
-    'ammo': 5,
+    'one-handed-weapon': 0,
+    'two-handed-weapon': 0,
+    'spell-catalyst': 0,
+    'light-armor': 0,
+    'heavy-armor': 0,
+    'shield': 0,
+    'helmet': 0,
+    'wearable': 0,
+    'ammo': 0,
   },
   2: {
-    'one-handed-weapon': 100,
-    'two-handed-weapon': 150,
-    'spell-catalyst': 100,
-    'light-armor': 150,
-    'heavy-armor': 300,
-    'shield': 150,
-    'helmet': 150,
-    'wearable': 75,
-    'ammo': 15,
+    'one-handed-weapon': 0,
+    'two-handed-weapon': 0,
+    'spell-catalyst': 0,
+    'light-armor': 0,
+    'heavy-armor': 0,
+    'shield': 0,
+    'helmet': 0,
+    'wearable': 0,
+    'ammo': 0,
   },
   3: {
     'one-handed-weapon': 300,
@@ -160,6 +161,104 @@ export const magicItemCosts: Record<QualityTier, Record<ItemCategory, number>> =
     'ammo': 15000,
   },
 }
+
+// Special material extra cost modifiers per quality and category
+// Base materials (Q1-Q2) have 0 extra cost
+// Special materials (Q3-Q8) have approximately 50% of enchantment cost
+export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, number>> = {
+  1: {
+    'one-handed-weapon': 0,
+    'two-handed-weapon': 0,
+    'spell-catalyst': 0,
+    'light-armor': 0,
+    'heavy-armor': 0,
+    'shield': 0,
+    'helmet': 0,
+    'wearable': 0,
+    'ammo': 0,
+  },
+  2: {
+    'one-handed-weapon': 0,
+    'two-handed-weapon': 0,
+    'spell-catalyst': 0,
+    'light-armor': 0,
+    'heavy-armor': 0,
+    'shield': 0,
+    'helmet': 0,
+    'wearable': 0,
+    'ammo': 0,
+  },
+  3: {
+    'one-handed-weapon': 150,
+    'two-handed-weapon': 250,
+    'spell-catalyst': 150,
+    'light-armor': 250,
+    'heavy-armor': 500,
+    'shield': 250,
+    'helmet': 250,
+    'wearable': 125,
+    'ammo': 25,
+  },
+  4: {
+    'one-handed-weapon': 500,
+    'two-handed-weapon': 750,
+    'spell-catalyst': 500,
+    'light-armor': 750,
+    'heavy-armor': 1500,
+    'shield': 750,
+    'helmet': 750,
+    'wearable': 375,
+    'ammo': 75,
+  },
+  5: {
+    'one-handed-weapon': 1500,
+    'two-handed-weapon': 2500,
+    'spell-catalyst': 1500,
+    'light-armor': 2500,
+    'heavy-armor': 5000,
+    'shield': 2500,
+    'helmet': 2500,
+    'wearable': 1250,
+    'ammo': 250,
+  },
+  6: {
+    'one-handed-weapon': 5000,
+    'two-handed-weapon': 7500,
+    'spell-catalyst': 5000,
+    'light-armor': 7500,
+    'heavy-armor': 15000,
+    'shield': 7500,
+    'helmet': 7500,
+    'wearable': 3750,
+    'ammo': 750,
+  },
+  7: {
+    'one-handed-weapon': 15000,
+    'two-handed-weapon': 25000,
+    'spell-catalyst': 15000,
+    'light-armor': 25000,
+    'heavy-armor': 50000,
+    'shield': 25000,
+    'helmet': 25000,
+    'wearable': 12500,
+    'ammo': 2500,
+  },
+  8: {
+    'one-handed-weapon': 50000,
+    'two-handed-weapon': 75000,
+    'spell-catalyst': 50000,
+    'light-armor': 75000,
+    'heavy-armor': 150000,
+    'shield': 75000,
+    'helmet': 75000,
+    'wearable': 37500,
+    'ammo': 7500,
+  },
+}
+
+// Legacy: Magic item cost modifiers (kept for backward compatibility)
+// This represents the old system where materials OR enchantments cost the same
+export const magicItemCosts: Record<QualityTier, Record<ItemCategory, number>> = enchantmentCosts
 
 // Load and transform base items from JSON data sources
 const transformWeaponData = (weapons: any[], category: ItemCategory) => {
@@ -300,16 +399,42 @@ export function getAvailableEnchantments(category: ItemCategory, quality: Qualit
 export function calculateMagicItemCost(
   baseItem: BaseItem, 
   quality: QualityTier, 
-  hasMaterial: boolean, 
+  material: SpecialMaterial | null, 
   hasEnchantment: boolean
 ): number {
   const baseCost = baseItem.cost
-  const magicCost = magicItemCosts[quality][baseItem.category]
   
-  // Apply magic cost once for material OR enchantment, twice for both
-  const multiplier = (hasMaterial && hasEnchantment) ? 2 : 1
+  // Calculate material extra cost (0 for base materials, cost from table for special materials)
+  let materialExtraCost = 0
+  if (material && material.materialType === 'special') {
+    materialExtraCost = specialMaterialCosts[quality][baseItem.category]
+  }
   
-  return baseCost + (magicCost * multiplier)
+  // Calculate enchantment cost
+  const enchantmentCost = hasEnchantment ? enchantmentCosts[quality][baseItem.category] : 0
+  
+  // Total Cost = Base + Material Extra Cost + Enchantment Cost
+  return baseCost + materialExtraCost + enchantmentCost
+}
+
+// Helper function to get material extra cost for display
+export function getMaterialExtraCost(
+  material: SpecialMaterial | null,
+  quality: QualityTier,
+  category: ItemCategory
+): number {
+  if (!material || material.materialType === 'base') {
+    return 0
+  }
+  return specialMaterialCosts[quality][category]
+}
+
+// Helper function to get enchantment cost for display
+export function getEnchantmentCost(
+  quality: QualityTier,
+  category: ItemCategory
+): number {
+  return enchantmentCosts[quality][category]
 }
 
 export function getWeaponDamageBonus(baseQuality: number, targetQuality: QualityTier): number {
