@@ -25,6 +25,8 @@ vi.mock('@site/src/hooks/firebaseAuthContext', () => ({
     currentUser: { uid: 'test-user' },
     isAdmin: false,
     setIsAdmin: vi.fn(),
+    viewAsAdmin: true,
+    setViewAsAdmin: vi.fn(),
   }),
 }))
 

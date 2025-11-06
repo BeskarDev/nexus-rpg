@@ -14,12 +14,15 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Alert,
+	Switch,
+	FormControlLabel,
 } from '@mui/material'
 import {
 	Person as PersonIcon,
 	Edit as EditIcon,
 	Logout as LogoutIcon,
 	AdminPanelSettings as AdminIcon,
+	Visibility as VisibilityIcon,
 } from '@mui/icons-material'
 import { signOut } from '../config/auth'
 import { useAuth } from '../hooks/firebaseAuthContext'
@@ -112,7 +115,7 @@ const EditNameDialog: React.FC<EditNameDialogProps> = ({
 }
 
 export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
-	const { userLoggedIn, currentUser, isAdmin } = useAuth()
+	const { userLoggedIn, currentUser, isAdmin, viewAsAdmin, setViewAsAdmin } = useAuth()
 	const [playerName, setPlayerName] = useState<string>('')
 	const [loading, setLoading] = useState(true)
 	const [editDialogOpen, setEditDialogOpen] = useState(false)
@@ -243,15 +246,38 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 				</MenuItem>
 
 				{isAdmin && (
-					<MenuItem
-						onClick={handleAdminClick}
-						sx={{ borderRadius: 1 }}
-					>
-						<ListItemIcon>
-							<AdminIcon fontSize="small" />
-						</ListItemIcon>
-						<ListItemText primary="Admin Panel" />
-					</MenuItem>
+					<>
+						<MenuItem
+							onClick={handleAdminClick}
+							sx={{ borderRadius: 1 }}
+						>
+							<ListItemIcon>
+								<AdminIcon fontSize="small" />
+							</ListItemIcon>
+							<ListItemText primary="Admin Panel" />
+						</MenuItem>
+						
+						<MenuItem sx={{ borderRadius: 1, cursor: 'default' }} disableRipple>
+							<ListItemIcon>
+								<VisibilityIcon fontSize="small" />
+							</ListItemIcon>
+							<FormControlLabel
+								control={
+									<Switch
+										checked={viewAsAdmin}
+										onChange={(e) => setViewAsAdmin(e.target.checked)}
+										size="small"
+									/>
+								}
+								label={
+									<Typography variant="body2">
+										View as Admin
+									</Typography>
+								}
+								sx={{ margin: 0 }}
+							/>
+						</MenuItem>
+					</>
 				)}
 
 				<Divider sx={{ my: 1 }} />
