@@ -66,7 +66,6 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXUS_RPG_D04D1 }}
           channelId: live
           projectId: nexus-rpg-d04d1
-          target: production
       
       - name: Deploy Functions and Firestore Rules
         run: |
