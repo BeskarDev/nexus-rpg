@@ -26,22 +26,6 @@ Creating a magic item follows a simple process:
 > - Flaming enchantment cost (Q5): +3,000 coins
 > - **Total: 4,600 coins**
 
-### Special Case: Morphing Enchantment
-
-The **morphing** enchantment combines two weapon forms into one item. Calculate the cost as follows:
-
-**Morphing Total Cost = (Base Item 1 + Material Extra 1) + (Base Item 2 + Material Extra 2) + Enchantment Cost (once)**
-
-The morphing enchantment cost is paid only once, but both base items and their material costs are combined. During crafting, the second weapon must be at least masterwork quality (Q3) and is destroyed in the enchanting process.
-
-> **Example**: A Q4 morphing shortsword/longbow made from bronze:
-> - Shortsword base: 50 coins
-> - Bronze material extra (Q4): 0 coins
-> - Longbow base: 100 coins  
-> - Bronze material extra (Q4): 0 coins
-> - Morphing enchantment (Q4): +1,000 coins
-> - **Total: 1,150 coins**
-
 ### Material Categories
 
 **Base Materials** are available at every quality tier (Q1-Q8). These common materials like bronze, hardwood, and leather provide no mechanical advantage but offer different flavors and construction details at **no extra cost**. They represent standard craftsmanship appropriate to the item's quality.
@@ -381,7 +365,7 @@ In each enchantment description, you will find in which Qualities they are avail
 | 3 | **defiled (Q4/Q5/Q6).** This weapon is tainted with dark energy, causing nearby plants to slowly wither and exuding a faint aura of malevolence. You can use your Quick Action on your turn to amplify this corruption for a short duration.<br/>While amplified, the weapon turns bright light to dim light in close range and deals 2/4/6 necrotic damage (ignoring AV) on a hit. |
 | 4 | **flaming (Q4/Q5/Q6).** While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration.<br/>While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignoring AV) on a hit. |
 | 5 | **infused (Q4/Q5/Q6).** While holding this weapon, you can use your Quick Action on your turn to regain 4/6/8 Focus. You can use this ability once per day. |
-| 6 | **morphing (Q4).** Choose any second type of weapon. When applying this enchantment during crafting, you must use and destroy that weapon (at least masterwork quality) as part of the enchanting process.<br/>This weapon combines both weapon forms into one, stretching or contracting it's parts upon activation to assume a different shape. If you speak the command word as a Quick Action, the weapon transforms from one of it's forms into the other one. The weapon retains all mundane and magical properties of the original weapons when their respective shape is used. |
+| 6 | **morphing (Q4).** Choose any second type of weapon. When applying this enchantment during crafting, you must use and destroy that weapon (at least masterwork quality) as part of the enchanting process.<br/>This weapon combines both weapon forms into one, stretching or contracting it's parts upon activation to assume a different shape. If you speak the command word as a Quick Action, the weapon transforms from one of it's forms into the other one. The weapon retains all mundane and magical properties of the original weapons when their respective shape is used.<br/>**Cost:** Add both base item costs and material extra costs together, but pay the enchantment cost only once. Example: Q4 bronze shortsword/longbow = 50 + 0 + 100 + 0 + 1,000 = 1,150 coins. |
 | 7 | **poisoner's (Q4/Q6).** When applying any type of poison to this weapon, add +2/+4 to any poison damage it deals (for weapon poisons) or increase the difficulty to end the poisons effect by one/two step(s) (for paralyzing poisons). |
 | 8 | **returning (Q4).** After using a short break to attune yourself to it, the weapon becomes magically linked to your person. It gains the thrown (short/medium) property. While the weapon is in long range of you and you can see it, you can use a Quick Action to command it to return to you. If the weapon's path is unobstructed, it quickly flies back into your hand (you must have a free hand to do this). |
 | 9 | **sacred (Q4/Q5/Q6).** This weapon is blessed with divine power, emanating a gentle warmth and providing comfort to the faithful. You can use your Quick Action on your turn to channel greater divine energy through it for a short duration.<br/>While channeling, the weapon radiates bright light in melee range, dim light in close range, and deals 2/4/6 radiant damage (ignoring AV) on a hit. |
