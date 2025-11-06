@@ -100,18 +100,18 @@ Masterwork armor, shields, and helmets increase their defensive capabilities wit
 
 ### Magic Ammo
 
-Ranged attacks with magic ammo deal extra damage on a hit. This damage bonus does not count towards weapon damage but gives a flat damage bonus depending on it‘s Quality.
+Ranged attacks with magic ammo deal extra damage on a hit. This damage bonus does not count towards weapon damage but gives a flat damage bonus depending on it's Quality. Magic ammo names include the bonus suffix (e.g., "Arrows +2" for Q4).
 
 Magic ammo comes as units of supply, the same way mundane ammo does. The exception are enchanted pieces of ammo, which are further described below.
 
-| Quality | Damage Bonus |
-| --- | --- |
-| 3 | +1 |
-| 4 | +2 |
-| 5 | +3 |
-| 6 | +4 |
-| 7 | +5 |
-| 8 | +6 |
+| Quality | Damage Bonus | Example |
+| --- | --- | --- |
+| 3 | +1 | Arrows +1 |
+| 4 | +2 | Arrows +2 |
+| 5 | +3 | Arrows +3 |
+| 6 | +4 | Arrows +4 |
+| 7 | +5 | Arrows +5 |
+| 8 | +6 | Arrows +6 |
 
 #### **Enchanted Ammo**
 
