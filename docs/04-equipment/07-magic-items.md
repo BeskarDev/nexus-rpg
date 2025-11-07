@@ -294,7 +294,7 @@ Enchantments are optional magical properties for items of Q4+. Each enchantment 
 
 ### Enchanting items
 
-Any non-enchanted item of Quality 3 or higher can be enchanted. Crafting an enchantment requires:
+Any non-enchanted item of Quality 3 or higher can be enchanted. Magic items can only hold one enchantment, unless they are exceptionally powerful items found during adventures. Crafting an enchantment requires:
 
 - an enchanter capable of creating magical items,
 - the appropriate ritual during downtime, and

@@ -1,6 +1,14 @@
 /**
- * Configuration data for the Magic Item Builder
- * Based on the magic items documentation
+ * Magic Item Builder Configuration v2
+ * Based on the updated magic items documentation (2024)
+ * 
+ * Key changes:
+ * - Magic Item Base Cost separate from enchantments
+ * - Special Material Extra Cost introduced (approximately 50% of enchantment cost)
+ * - Materials are mandatory (base materials cost 0 extra)
+ * - Wearables skip Magic Item Base Cost
+ * - Enchantments start at Q4+
+ * - Wearable enchantments aligned with one-handed weapon costs
  */
 
 import weaponsData from '../../../../../utils/json/weapons.json'
@@ -12,7 +20,7 @@ import spellCatalystsData from '../../../../../utils/json/magic-item-spell-catal
 import helmetsData from '../../../../../utils/json/magic-item-helmets.json'
 import wearablesData from '../../../../../utils/json/magic-item-wearables.json'
 
-export type QualityTier = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+export type QualityTier = 3 | 4 | 5 | 6 | 7 | 8
 
 export type ItemCategory = 
   | 'one-handed-weapon'
@@ -29,7 +37,7 @@ export type SpecialMaterial = {
   id: string
   name: string
   description: string
-  qualityTiers: QualityTier[]
+  qualityTiers: number[]
   properties: string
   applicableCategories: ItemCategory[]
   materialType: 'base' | 'special'
@@ -39,10 +47,10 @@ export type Enchantment = {
   id: string
   name: string
   description: string
-  qualityTiers: QualityTier[]
+  qualityTiers: number[]
   type: 'prefix' | 'suffix'
   applicableCategories: ItemCategory[]
-  scaling?: boolean // Whether effect scales with quality tier
+  scaling?: boolean
 }
 
 export type BaseItem = {
@@ -58,10 +66,8 @@ export type BaseItem = {
   baseAV?: number
 }
 
-// Quality tier labels
+// Quality tier labels for magic items (Q3-Q8)
 export const qualityTierLabels: Record<QualityTier, string> = {
-  1: 'Q1 (Poor)',
-  2: 'Q2 (Common)',
   3: 'Q3 (Masterwork)',
   4: 'Q4 (Lesser Magic)',
   5: 'Q5 (Potent Magic)',
@@ -70,31 +76,14 @@ export const qualityTierLabels: Record<QualityTier, string> = {
   8: 'Q8 (Supreme Magic)',
 }
 
-// Enchantment cost modifiers per quality and category
-export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>> = {
-  1: {
-    'one-handed-weapon': 0,
-    'two-handed-weapon': 0,
-    'spell-catalyst': 0,
-    'light-armor': 0,
-    'heavy-armor': 0,
-    'shield': 0,
-    'helmet': 0,
-    'wearable': 0,
-    'ammo': 0,
-  },
-  2: {
-    'one-handed-weapon': 0,
-    'two-handed-weapon': 0,
-    'spell-catalyst': 0,
-    'light-armor': 0,
-    'heavy-armor': 0,
-    'shield': 0,
-    'helmet': 0,
-    'wearable': 0,
-    'ammo': 0,
-  },
+/**
+ * Magic Item Base Cost Table
+ * This is the base cost for magic items (Q3+) BEFORE materials and enchantments.
+ * Wearables skip this cost entirely as they only gain value from enchantments.
+ */
+export const magicItemBaseCosts: Record<QualityTier, Record<ItemCategory, number>> = {
   3: {
+    'ammo': 50,
     'one-handed-weapon': 300,
     'two-handed-weapon': 500,
     'spell-catalyst': 300,
@@ -102,10 +91,10 @@ export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>>
     'heavy-armor': 1000,
     'shield': 500,
     'helmet': 500,
-    'wearable': 250,
-    'ammo': 50,
+    'wearable': 0, // Wearables skip magic item base cost
   },
   4: {
+    'ammo': 150,
     'one-handed-weapon': 1000,
     'two-handed-weapon': 1500,
     'spell-catalyst': 1000,
@@ -113,10 +102,10 @@ export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>>
     'heavy-armor': 3000,
     'shield': 1500,
     'helmet': 1500,
-    'wearable': 750,
-    'ammo': 150,
+    'wearable': 0,
   },
   5: {
+    'ammo': 500,
     'one-handed-weapon': 3000,
     'two-handed-weapon': 5000,
     'spell-catalyst': 3000,
@@ -124,10 +113,10 @@ export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>>
     'heavy-armor': 10000,
     'shield': 5000,
     'helmet': 5000,
-    'wearable': 2500,
-    'ammo': 500,
+    'wearable': 0,
   },
   6: {
+    'ammo': 1500,
     'one-handed-weapon': 10000,
     'two-handed-weapon': 15000,
     'spell-catalyst': 10000,
@@ -135,10 +124,10 @@ export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>>
     'heavy-armor': 30000,
     'shield': 15000,
     'helmet': 15000,
-    'wearable': 7500,
-    'ammo': 1500,
+    'wearable': 0,
   },
   7: {
+    'ammo': 5000,
     'one-handed-weapon': 30000,
     'two-handed-weapon': 50000,
     'spell-catalyst': 30000,
@@ -146,10 +135,10 @@ export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>>
     'heavy-armor': 100000,
     'shield': 50000,
     'helmet': 50000,
-    'wearable': 25000,
-    'ammo': 5000,
+    'wearable': 0,
   },
   8: {
+    'ammo': 15000,
     'one-handed-weapon': 100000,
     'two-handed-weapon': 150000,
     'spell-catalyst': 100000,
@@ -157,38 +146,20 @@ export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>>
     'heavy-armor': 300000,
     'shield': 150000,
     'helmet': 150000,
-    'wearable': 75000,
-    'ammo': 15000,
+    'wearable': 0,
   },
 }
 
-// Special material extra cost modifiers per quality and category
-// Base materials (Q1-Q2) have 0 extra cost
-// Special materials (Q3-Q8) have approximately 50% of enchantment cost
-export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, number>> = {
-  1: {
-    'one-handed-weapon': 0,
-    'two-handed-weapon': 0,
-    'spell-catalyst': 0,
-    'light-armor': 0,
-    'heavy-armor': 0,
-    'shield': 0,
-    'helmet': 0,
-    'wearable': 0,
-    'ammo': 0,
-  },
-  2: {
-    'one-handed-weapon': 0,
-    'two-handed-weapon': 0,
-    'spell-catalyst': 0,
-    'light-armor': 0,
-    'heavy-armor': 0,
-    'shield': 0,
-    'helmet': 0,
-    'wearable': 0,
-    'ammo': 0,
-  },
+/**
+ * Special Material Extra Cost Table
+ * Cost to upgrade to a named special material (Mithril, Dragon Scales, etc.)
+ * Base materials (Bronze, Leather, etc.) cost 0 extra.
+ * Special materials cost approximately 50% of enchantment cost.
+ * Wearables use one-handed weapon values as per documentation.
+ */
+export const specialMaterialExtraCosts: Record<QualityTier, Record<ItemCategory, number>> = {
   3: {
+    'ammo': 25,
     'one-handed-weapon': 150,
     'two-handed-weapon': 250,
     'spell-catalyst': 150,
@@ -196,10 +167,10 @@ export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, numb
     'heavy-armor': 500,
     'shield': 250,
     'helmet': 250,
-    'wearable': 125,
-    'ammo': 25,
+    'wearable': 150, // Aligned with one-handed weapons
   },
   4: {
+    'ammo': 75,
     'one-handed-weapon': 500,
     'two-handed-weapon': 750,
     'spell-catalyst': 500,
@@ -207,10 +178,10 @@ export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, numb
     'heavy-armor': 1500,
     'shield': 750,
     'helmet': 750,
-    'wearable': 375,
-    'ammo': 75,
+    'wearable': 500,
   },
   5: {
+    'ammo': 250,
     'one-handed-weapon': 1500,
     'two-handed-weapon': 2500,
     'spell-catalyst': 1500,
@@ -218,10 +189,10 @@ export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, numb
     'heavy-armor': 5000,
     'shield': 2500,
     'helmet': 2500,
-    'wearable': 1250,
-    'ammo': 250,
+    'wearable': 1500,
   },
   6: {
+    'ammo': 750,
     'one-handed-weapon': 5000,
     'two-handed-weapon': 7500,
     'spell-catalyst': 5000,
@@ -229,10 +200,10 @@ export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, numb
     'heavy-armor': 15000,
     'shield': 7500,
     'helmet': 7500,
-    'wearable': 3750,
-    'ammo': 750,
+    'wearable': 5000,
   },
   7: {
+    'ammo': 2500,
     'one-handed-weapon': 15000,
     'two-handed-weapon': 25000,
     'spell-catalyst': 15000,
@@ -240,10 +211,10 @@ export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, numb
     'heavy-armor': 50000,
     'shield': 25000,
     'helmet': 25000,
-    'wearable': 12500,
-    'ammo': 2500,
+    'wearable': 15000,
   },
   8: {
+    'ammo': 7500,
     'one-handed-weapon': 50000,
     'two-handed-weapon': 75000,
     'spell-catalyst': 50000,
@@ -251,17 +222,86 @@ export const specialMaterialCosts: Record<QualityTier, Record<ItemCategory, numb
     'heavy-armor': 150000,
     'shield': 75000,
     'helmet': 75000,
-    'wearable': 37500,
-    'ammo': 7500,
+    'wearable': 50000,
   },
 }
 
-// Legacy: Magic item cost modifiers (kept for backward compatibility)
-// This represents the old system where materials OR enchantments cost the same
-export const magicItemCosts: Record<QualityTier, Record<ItemCategory, number>> = enchantmentCosts
+/**
+ * Enchantment Cost Table
+ * Cost to add an enchantment to a magic item.
+ * Wearables use one-handed weapon values as per documentation.
+ */
+export const enchantmentCosts: Record<QualityTier, Record<ItemCategory, number>> = {
+  3: {
+    'ammo': 50,
+    'one-handed-weapon': 300,
+    'two-handed-weapon': 500,
+    'spell-catalyst': 300,
+    'light-armor': 500,
+    'heavy-armor': 1000,
+    'shield': 500,
+    'helmet': 500,
+    'wearable': 300, // Aligned with one-handed weapons
+  },
+  4: {
+    'ammo': 150,
+    'one-handed-weapon': 1000,
+    'two-handed-weapon': 1500,
+    'spell-catalyst': 1000,
+    'light-armor': 1500,
+    'heavy-armor': 3000,
+    'shield': 1500,
+    'helmet': 1500,
+    'wearable': 1000,
+  },
+  5: {
+    'ammo': 500,
+    'one-handed-weapon': 3000,
+    'two-handed-weapon': 5000,
+    'spell-catalyst': 3000,
+    'light-armor': 5000,
+    'heavy-armor': 10000,
+    'shield': 5000,
+    'helmet': 5000,
+    'wearable': 3000,
+  },
+  6: {
+    'ammo': 1500,
+    'one-handed-weapon': 10000,
+    'two-handed-weapon': 15000,
+    'spell-catalyst': 10000,
+    'light-armor': 15000,
+    'heavy-armor': 30000,
+    'shield': 15000,
+    'helmet': 15000,
+    'wearable': 10000,
+  },
+  7: {
+    'ammo': 5000,
+    'one-handed-weapon': 30000,
+    'two-handed-weapon': 50000,
+    'spell-catalyst': 30000,
+    'light-armor': 50000,
+    'heavy-armor': 100000,
+    'shield': 50000,
+    'helmet': 50000,
+    'wearable': 30000,
+  },
+  8: {
+    'ammo': 15000,
+    'one-handed-weapon': 100000,
+    'two-handed-weapon': 150000,
+    'spell-catalyst': 100000,
+    'light-armor': 150000,
+    'heavy-armor': 300000,
+    'shield': 150000,
+    'helmet': 150000,
+    'wearable': 100000,
+  },
+}
 
-// Load and transform base items from JSON data sources
-const transformWeaponData = (weapons: any[], category: ItemCategory) => {
+// Transform JSON data into BaseItem format
+const transformWeaponData = (weapons: any[], category: ItemCategory): BaseItem[] => {
   return weapons
     .filter(weapon => {
       if (category === 'one-handed-weapon') {
@@ -278,7 +318,6 @@ const transformWeaponData = (weapons: any[], category: ItemCategory) => {
       return false
     })
     .map(weapon => {
-      // Extract AV from properties for shields
       let baseAV = 0
       if (category === 'shield' && weapon.properties) {
         const avMatch = weapon.properties.match(/AV \+(\d+)/)
@@ -300,7 +339,7 @@ const transformWeaponData = (weapons: any[], category: ItemCategory) => {
     })
 }
 
-const transformArmorData = (armor: any[], category: ItemCategory) => {
+const transformArmorData = (armor: any[], category: ItemCategory): BaseItem[] => {
   return armor
     .filter(item => {
       if (category === 'light-armor') return item.type === 'Light Armor'
@@ -327,7 +366,7 @@ const transformArmorData = (armor: any[], category: ItemCategory) => {
     })
 }
 
-const transformEquipmentData = (equipment: any[], category: string) => {
+const transformEquipmentData = (equipment: any[]): BaseItem[] => {
   const ammoItems = equipment.filter(item => 
     item.name === 'Arrows (d6)' ||
     item.name === 'Bolts (d6)' ||  
@@ -335,7 +374,7 @@ const transformEquipmentData = (equipment: any[], category: string) => {
     item.name === 'Blowdarts (d8)' ||
     item.name === 'Throwing Darts (d6)'
   ).map(item => ({
-    name: item.name.replace(/\s\(d[0-9]+\)/, ''), // Remove the supply die notation
+    name: item.name.replace(/\s\(d[0-9]+\)/, ''),
     category: 'ammo' as ItemCategory,
     cost: parseInt(item.cost),
     properties: item.properties || 'supply',
@@ -354,17 +393,20 @@ export const baseItems: Record<ItemCategory, BaseItem[]> = {
   'spell-catalyst': spellCatalystsData as BaseItem[],
   'light-armor': transformArmorData(armorData as any[], 'light-armor'),
   'heavy-armor': transformArmorData(armorData as any[], 'heavy-armor'),
-  'shield': transformWeaponData(weaponsData as any[], 'shield'), // Shields are in weapons.json with AV extracted
+  'shield': transformWeaponData(weaponsData as any[], 'shield'),
   'helmet': helmetsData as BaseItem[],
   'wearable': wearablesData as BaseItem[],
-  'ammo': transformEquipmentData(equipmentData as any[], 'ammo'),
+  'ammo': transformEquipmentData(equipmentData as any[]),
 }
 
 // Load special materials and enchantments from JSON
 export const specialMaterials: SpecialMaterial[] = specialMaterialsData as SpecialMaterial[]
 export const enchantments: Enchantment[] = enchantmentsData as Enchantment[]
 
-// Helper functions
+/**
+ * Get available materials for a given category and quality.
+ * Returns both base materials (Bronze, Leather, etc.) and special materials.
+ */
 export function getAvailableMaterials(category: ItemCategory, quality: QualityTier): SpecialMaterial[] {
   return specialMaterials.filter(
     material => 
@@ -373,6 +415,10 @@ export function getAvailableMaterials(category: ItemCategory, quality: QualityTi
   )
 }
 
+/**
+ * Get available enchantments for a given category and quality.
+ * Suffix enchantments (wearable) can be applied to any non-ammo item type.
+ */
 export function getAvailableEnchantments(category: ItemCategory, quality: QualityTier): Enchantment[] {
   return enchantments.filter(enchantment => {
     // Check if quality tier is available
@@ -386,8 +432,6 @@ export function getAvailableEnchantments(category: ItemCategory, quality: Qualit
     }
     
     // Suffix enchantments (wearable) can be applied to any item type except ammo
-    // as per documentation: "When choosing a [suffix] enchantment for any non-wearable type of item, roll on the table for wearable enchantments."
-    // Ammo is excluded as it's not permanent equipment
     if (enchantment.type === 'suffix' && enchantment.applicableCategories.includes('wearable') && category !== 'ammo') {
       return true
     }
@@ -396,29 +440,45 @@ export function getAvailableEnchantments(category: ItemCategory, quality: Qualit
   })
 }
 
+/**
+ * Calculate total cost of a magic item.
+ * Formula: Base Item + Magic Item Base Cost + Special Material Extra Cost + Enchantment Cost
+ * Note: Wearables skip the Magic Item Base Cost
+ */
 export function calculateMagicItemCost(
   baseItem: BaseItem, 
   quality: QualityTier, 
   material: SpecialMaterial | null, 
-  hasEnchantment: boolean
+  enchantment: Enchantment | null
 ): number {
   const baseCost = baseItem.cost
   
-  // Calculate material extra cost (0 for base materials, cost from table for special materials)
+  // Magic Item Base Cost (wearables skip this)
+  const magicBaseCost = magicItemBaseCosts[quality][baseItem.category]
+  
+  // Special Material Extra Cost (0 for base materials, cost from table for special materials)
   let materialExtraCost = 0
   if (material && material.materialType === 'special') {
-    materialExtraCost = specialMaterialCosts[quality][baseItem.category]
+    materialExtraCost = specialMaterialExtraCosts[quality][baseItem.category]
   }
   
-  // Calculate enchantment cost
-  const enchantmentCost = hasEnchantment ? enchantmentCosts[quality][baseItem.category] : 0
+  // Enchantment Cost
+  const enchantmentCost = enchantment ? enchantmentCosts[quality][baseItem.category] : 0
   
-  // Total Cost = Base + Material Extra Cost + Enchantment Cost
-  return baseCost + materialExtraCost + enchantmentCost
+  return baseCost + magicBaseCost + materialExtraCost + enchantmentCost
 }
 
-// Helper function to get material extra cost for display
-export function getMaterialExtraCost(
+/**
+ * Get the magic item base cost for display purposes
+ */
+export function getMagicItemBaseCost(quality: QualityTier, category: ItemCategory): number {
+  return magicItemBaseCosts[quality][category]
+}
+
+/**
+ * Get the special material extra cost for display purposes
+ */
+export function getSpecialMaterialExtraCost(
   material: SpecialMaterial | null,
   quality: QualityTier,
   category: ItemCategory
@@ -426,10 +486,12 @@ export function getMaterialExtraCost(
   if (!material || material.materialType === 'base') {
     return 0
   }
-  return specialMaterialCosts[quality][category]
+  return specialMaterialExtraCosts[quality][category]
 }
 
-// Helper function to get enchantment cost for display
+/**
+ * Get the enchantment cost for display purposes
+ */
 export function getEnchantmentCost(
   quality: QualityTier,
   category: ItemCategory
@@ -437,33 +499,44 @@ export function getEnchantmentCost(
   return enchantmentCosts[quality][category]
 }
 
+/**
+ * Calculate weapon damage bonus based on quality.
+ * Q3/Q4 = +1, Q5 = +2, Q6 = +3, Q7 = +4, Q8 = +5
+ * Exception: Q3 weapons that are already Q3 base get no bonus
+ */
 export function getWeaponDamageBonus(baseQuality: number, targetQuality: QualityTier): number {
-  // Weapon damage scaling: Q3/Q4 = +1, Q5 = +2, Q6 = +3, ...; Q3 only if not already Q3 base
   if (baseQuality >= 3 && targetQuality === 3) {
-    return 0;
+    return 0
   }
   if (targetQuality === 3 || targetQuality === 4) {
-    return 1;
+    return 1
   }
-  if (targetQuality >= 5) {
-    return targetQuality - 4 + 1;
-  }
-  return 0;
+  return targetQuality - 3
 }
 
+/**
+ * Calculate spell damage bonus for spell catalysts.
+ * Q3 = +1, Q4 = +1, Q5 = +2, Q6 = +3, Q7 = +4, Q8 = +5
+ */
+export function getSpellDamageBonus(quality: QualityTier): number {
+  if (quality === 3 || quality === 4) return 1
+  return quality - 3
+}
+
+/**
+ * Calculate ammo damage bonus.
+ * Q3 = +1, Q4 = +2, Q5 = +3, Q6 = +4, Q7 = +5, Q8 = +6
+ */
 export function getAmmoDamageBonus(baseQuality: number, targetQuality: QualityTier): number {
-  // Ammo damage scaling: Q1=0, Q2=0, Q3=+1, Q4=+2, Q5=+3, Q6=+4, Q7=+5, Q8=+6
-  if (targetQuality >= 3 && targetQuality <= 8) {
-    return targetQuality - 2;
-  }
-  return 0;
+  return targetQuality - 2
 }
 
+/**
+ * Calculate armor AV bonus.
+ * Armor gains AV bonus starting at Q4: Q4 = +1, Q5 = +2, ..., Q8 = +5
+ */
 export function getArmorAVBonus(targetQuality: QualityTier): number {
-  // Armor gains AV bonus starting at Q4
   const bonuses: Record<QualityTier, number> = {
-    1: 0,
-    2: 0,
     3: 0,
     4: 1,
     5: 2,
@@ -474,10 +547,13 @@ export function getArmorAVBonus(targetQuality: QualityTier): number {
   return bonuses[targetQuality]
 }
 
+/**
+ * Get total AV for armor/shield/helmet including quality bonus
+ */
 export function getTotalAV(baseItem: BaseItem, quality: QualityTier): number {
   let baseAV = baseItem.baseAV || 0
   
-  // For items without baseAV field, try to extract AV from properties string
+  // Try to extract AV from properties string if not in baseAV field
   if (!baseItem.baseAV && baseItem.properties) {
     const avMatch = baseItem.properties.match(/AV \+(\d+)/)
     if (avMatch) {
@@ -486,68 +562,56 @@ export function getTotalAV(baseItem: BaseItem, quality: QualityTier): number {
   }
   
   const magicBonus = getArmorAVBonus(quality)
-  
-  // For shields (including bucklers), always apply magic AV bonus even if base AV is 0
-  if (baseItem.category === 'shield' || baseItem.name.toLowerCase().includes('buckler')) {
-    return baseAV + magicBonus
-  }
-  
   return baseAV + magicBonus
 }
 
+/**
+ * Calculate durability die for an item based on base properties and quality.
+ * Quality bonuses: Q4/Q5 = +1d, Q6/Q7 = +2d, Q8 = +3d
+ */
 export function getDurabilityDie(baseItem: BaseItem, quality: QualityTier): string {
-  // Determine base durability for the item type
+  // Determine base durability
   const getBaseDurability = (item: BaseItem): string => {
     const properties = item.properties?.toLowerCase() || ''
     const name = item.name?.toLowerCase() || ''
     const allText = `${properties} ${name}`
 
-    // d4 for fragile materials
     if (allText.includes('glass') || allText.includes('ceramic') || allText.includes('cloth') || allText.includes('fragile')) {
       return 'd4'
     }
 
-    // For weapons and shields
     if (item.category.includes('weapon') || item.category === 'shield') {
-      if (properties.includes('heavy') || properties.includes('two-handed') || allText.includes('heavy') || allText.includes('two-handed')) {
-        return 'd8' // Heavy/two-handed weapons
+      if (properties.includes('heavy') || properties.includes('two-handed')) {
+        return 'd8'
       }
-      return 'd6' // Light/normal weapons
+      return 'd6'
     }
 
-    // For armor
     if (item.category.includes('armor')) {
       if (item.category === 'heavy-armor' || allText.includes('heavy')) {
-        return 'd8' // Heavy armor
+        return 'd8'
       }
-      return 'd6' // Light armor
+      return 'd6'
     }
 
-    // For other items (spell catalysts, wearables, etc.)
     if (allText.includes('metal') || allText.includes('stone')) {
       return 'd8'
     }
     
-    return 'd6' // Default
+    return 'd6'
   }
 
   const baseDurability = getBaseDurability(baseItem)
-  
-  // Apply quality bonuses (die step increases)
-  // Die progression: d4 → d6 → d8 → d10 → d12 → d12+1 → d12+2 → etc.
   const dieSteps = ['d4', 'd6', 'd8', 'd10', 'd12']
   const baseIndex = dieSteps.indexOf(baseDurability)
   
-  // Magic item durability bonuses from documentation
   const bonusSteps: Record<QualityTier, number> = {
-    1: 0, // No bonus for Q1
-    2: 0, // No bonus for Q2
-    3: 0, // No bonus for Q3
-    4: 1, // +1d
-    5: 1, // +1d
-    6: 2, // +2d  
-    7: 2, // +2d
-    8: 3, // +3d
+    3: 0,
+    4: 1,
+    5: 1,
+    6: 2,
+    7: 2,
+    8: 3,
   }
   
   const finalIndex = baseIndex + bonusSteps[quality]
@@ -555,32 +619,24 @@ export function getDurabilityDie(baseItem: BaseItem, quality: QualityTier): stri
   if (finalIndex < dieSteps.length) {
     return dieSteps[finalIndex]
   } else {
-    // Beyond d12, add bonuses: d12+1, d12+2, etc.
     const overflow = finalIndex - (dieSteps.length - 1)
     return `d12+${overflow}`
   }
 }
 
-export function getSpellDamageBonus(quality: QualityTier): number {
-  // Spell catalysts get spell damage bonuses
-  if (quality === 1 || quality === 2) {
-    return 0  // No bonus for Q1-Q2
-  } else if (quality === 3 || quality === 4) {
-    return 1
-  } else if (quality >= 5) {
-    return quality - 4 + 1
-  }
-  return 0
-}
-
+/**
+ * Generate item name with material, enchantment, and bonus suffix.
+ * Format: [prefix] [material] [base item] [+X] [suffix]
+ */
 export function generateItemName(
   baseItem: BaseItem,
-  material?: SpecialMaterial,
-  enchantment?: Enchantment,
-  quality?: QualityTier
+  material: SpecialMaterial | null,
+  enchantment: Enchantment | null,
+  quality: QualityTier
 ): string {
   let name = baseItem.name
   
+  // Add material and enchantment
   if (material && enchantment) {
     if (enchantment.type === 'prefix') {
       name = `${enchantment.name} ${material.name} ${baseItem.name}`
@@ -598,21 +654,23 @@ export function generateItemName(
   }
   
   // Add bonus suffix for items with quality bonuses
-  if (quality) {
-    let bonus = 0
-    
-    // Calculate bonus based on item category
-    if (baseItem.category === 'one-handed-weapon' || baseItem.category === 'two-handed-weapon') {
-      bonus = getWeaponDamageBonus(baseItem.quality, quality)
-    } else if (baseItem.category === 'ammo') {
-      bonus = getAmmoDamageBonus(baseItem.quality, quality)
-    } else if (baseItem.category === 'light-armor' || baseItem.category === 'heavy-armor' || 
-               baseItem.category === 'shield' || baseItem.category === 'helmet') {
-      bonus = getArmorAVBonus(quality)
-    }
-    
-    // Append bonus to name if there is one
-    if (bonus > 0) {
+  let bonus = 0
+  
+  if (baseItem.category === 'one-handed-weapon' || baseItem.category === 'two-handed-weapon') {
+    bonus = getWeaponDamageBonus(baseItem.quality, quality)
+  } else if (baseItem.category === 'ammo') {
+    bonus = getAmmoDamageBonus(baseItem.quality, quality)
+  } else if (baseItem.category === 'light-armor' || baseItem.category === 'heavy-armor' || 
+             baseItem.category === 'shield' || baseItem.category === 'helmet') {
+    bonus = getArmorAVBonus(quality)
+  }
+  
+  if (bonus > 0) {
+    // For suffix enchantments, bonus comes after the suffix
+    if (enchantment && enchantment.type === 'suffix') {
+      name = `${name} +${bonus}`
+    } else {
+      // For prefix enchantments or no enchantment, bonus comes at the end
       name = `${name} +${bonus}`
     }
   }
@@ -620,13 +678,18 @@ export function generateItemName(
   return name
 }
 
+/**
+ * Generate item description including enchantment and material effects
+ */
 export function generateItemDescription(
   baseItem: BaseItem,
   quality: QualityTier,
-  material?: SpecialMaterial,
-  enchantment?: Enchantment
+  material: SpecialMaterial | null,
+  enchantment: Enchantment | null
 ): string {
-  // For items with enchantments, start directly with enchantment name and description
+  let description = ''
+  
+  // Start with enchantment if present
   if (enchantment) {
     const scaledDescription = enchantment.scaling 
       ? enchantment.description.replace(/(\d+)\/(\d+)\/(\d+)/g, (match, q4, q5, q6) => {
@@ -640,59 +703,53 @@ export function generateItemDescription(
         })
       : enchantment.description
     
-    // For suffix enchantments, include the item name before the enchantment
-    let enchantmentTitle = enchantment.name
-    if (enchantment.type === 'suffix') {
-      enchantmentTitle = `${baseItem.name} ${enchantment.name}`
+    description = scaledDescription
+    
+    if (material && material.materialType === 'special') {
+      description += `\n\n${material.name}. ${material.description}`
+      if (material.properties) {
+        description += ` ${material.properties}`
+      }
     }
-    
-    let description = `${enchantmentTitle}. ${scaledDescription}`
-    
-    // Add material information if present - use concise format
-    if (material) {
-      description += `\n\n${material.name}. ${material.description}\n${material.properties}`
+  } else if (material) {
+    // No enchantment, describe material
+    description = `${material.description}`
+    if (material.properties && material.materialType === 'special') {
+      description += `\n\n${material.properties}`
     }
-    
-    return description
-  }
-  
-  // For items without enchantments, provide basic description
-  let description = baseItem.description || `Magic ${baseItem.name.toLowerCase()}.`
-  
-  if (material) {
-    description += `\n\n${material.name}. ${material.description}\n${material.properties}`
+  } else {
+    // No enchantment or special material
+    description = baseItem.description || `Quality ${quality} ${baseItem.name.toLowerCase()}.`
   }
   
   return description
 }
 
-// Property modification helper functions
+/**
+ * Property modifications from materials and enchantments
+ */
 export interface PropertyModifications {
   loadReduction: number
   rigidReduction: number
-  heavyReduction: number
   removeNoisy: boolean
 }
 
 export function calculatePropertyModifications(
   category: ItemCategory,
-  material?: SpecialMaterial,
-  enchantment?: Enchantment
+  material: SpecialMaterial | null,
+  enchantment: Enchantment | null
 ): PropertyModifications {
   const modifications: PropertyModifications = {
     loadReduction: 0,
     rigidReduction: 0,
-    heavyReduction: 0,
     removeNoisy: false
   }
 
-  // Apply material property modifications
   if (material?.properties) {
     modifications.loadReduction += extractLoadReduction(material.properties, category)
     modifications.rigidReduction += extractRigidReduction(material.properties)
   }
 
-  // Apply enchantment property modifications
   if (enchantment?.description) {
     modifications.rigidReduction += extractRigidReduction(enchantment.description)
     modifications.removeNoisy = extractNoisyRemoval(enchantment.description)
@@ -702,10 +759,8 @@ export function calculatePropertyModifications(
 }
 
 function extractLoadReduction(text: string, category: ItemCategory): number {
-  // Look for patterns like "Armor/Shield: -1 load", "Light Armor: -1 load", etc.
   const patterns = [
     /(?:Armor\/Shield|Light Armor|Heavy Armor|Weapon\/Armor\/Shield|Weapon\/Shield\/Ammo|Any):\s*-(\d+)\s+load/gi,
-    /Weapon\/Shield\/Ammo:\s*-(\d+)\s+load/gi,
   ]
 
   for (const pattern of patterns) {
@@ -714,7 +769,6 @@ function extractLoadReduction(text: string, category: ItemCategory): number {
       const prefix = match[0].toLowerCase()
       const reduction = parseInt(match[1])
       
-      // Check if this load reduction applies to the current category
       if (prefix.includes('any') ||
           (prefix.includes('armor') && (category.includes('armor') || category === 'helmet')) ||
           (prefix.includes('shield') && category === 'shield') ||
@@ -731,7 +785,6 @@ function extractLoadReduction(text: string, category: ItemCategory): number {
 }
 
 function extractRigidReduction(text: string): number {
-  // Look for patterns like "reduce its rigid property by 1/2", "Reduce the item's rigid property by 1"
   const rigidPatterns = [
     /reduce\s+(?:its?|the\s+item'?s?)\s+rigid\s+property\s+by\s+(\d+)(?:\/(\d+))?/gi,
   ]
@@ -739,7 +792,6 @@ function extractRigidReduction(text: string): number {
   for (const pattern of rigidPatterns) {
     const match = pattern.exec(text)
     if (match) {
-      // For scaling enchantments, we'd need quality info, but for now return the first value
       return parseInt(match[1])
     }
   }
@@ -748,10 +800,7 @@ function extractRigidReduction(text: string): number {
 }
 
 function extractNoisyRemoval(text: string): boolean {
-  // The "Silent" enchantment text mentions options but doesn't automatically remove noisy
-  // For the magic item builder, we should interpret this as user choice during item creation
-  // For now, return false since the actual effect depends on item properties and user choice
-  return false
+  return text.toLowerCase().includes('remove') && text.toLowerCase().includes('noisy')
 }
 
 export function calculateFinalLoad(
@@ -767,7 +816,6 @@ export function modifyPropertiesString(
 ): string {
   let modifiedProperties = properties
 
-  // Handle rigid reduction
   if (modifications.rigidReduction > 0) {
     modifiedProperties = modifiedProperties.replace(/rigid\s+(\d+)/gi, (match, value) => {
       const currentRigid = parseInt(value)
@@ -776,31 +824,11 @@ export function modifyPropertiesString(
     })
   }
 
-  // Handle heavy reduction (die size reduction)
-  if (modifications.heavyReduction > 0) {
-    modifiedProperties = modifiedProperties.replace(/heavy\s*\(d(\d+)\)/gi, (match, dieSize) => {
-      const currentDie = parseInt(dieSize)
-      let newDie = currentDie
-      
-      // Reduce die size by the specified amount
-      for (let i = 0; i < modifications.heavyReduction; i++) {
-        if (newDie === 10) newDie = 8
-        else if (newDie === 8) newDie = 6
-        else if (newDie === 6) newDie = 4
-        else break // Can't reduce below d4
-      }
-      
-      return newDie !== currentDie ? `heavy (d${newDie})` : match
-    })
-  }
-
-  // Handle noisy removal - split into array, remove, and rejoin
   if (modifications.removeNoisy) {
     const properties = modifiedProperties.split(/\s*,\s*/).filter(p => p.trim() && !p.match(/^noisy$/i))
     modifiedProperties = properties.join(', ')
   }
 
-  // Clean up extra commas and spaces
   modifiedProperties = modifiedProperties
     .replace(/,\s*,/g, ',')
     .replace(/^,\s*/, '')
