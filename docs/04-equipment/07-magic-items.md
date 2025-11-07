@@ -8,68 +8,98 @@ sidebar_position: 7
 
 Magic items are higher Quality versions of normal equipment that enhance your character's combat prowess, spellcasting power, and survivability. From flaming swords that ignite with fire to armor that deflects spells, from boots that enhance reflexes to amulets that store magical energy—magic items are key to facing deadlier foes and surviving legendary adventures.
 
+## Acquiring Magic Items
+
+Adventurers typically acquire magic items by **finding them in treasure hoards** (ancient tombs, dragon lairs, ruins), **looting defeated enemies**, or **receiving them as quest rewards**. In large cities, you may **purchase** magic items from specialty merchants or auction houses, though availability depends on the settlement's size and importance. Alternatively, you can **commission** an enchanter or runesmith to craft custom items, or **create them yourself** with the appropriate Crafting talents and magical skills (Arcana or Mysticism).
+
+> **Materials matter.** Magic items require special materials (mithril, dragon scales, adamantite) and magical ingredients (creature parts, rare herbs, elemental essences). These can be harvested from defeated monsters, discovered in magical locations, or purchased from specialized traders. The right materials enable specific enchantments—a phoenix feather might grant fire resistance, while a monster's heart could power a life-draining weapon.
+
 ## How to Build a Magic Item
 
-**Formula: Total Cost = Base Item + Material Extra + Enchantment**
+**Formula: Total Cost = Base Item + Magic Item Base Cost + Special Material (optional) + Enchantment (optional)**
 
-1. **Choose Base Item**: Select item type and Quality (Q1-Q8)
-2. **Select Material**: 
-   - **Base Materials** (Q1-Q8): Flavor only, 0 extra cost
-   - **Special Materials** (Q3-Q8): Mechanical bonuses, extra cost (see table)
-3. **Add Enchantment** (Optional, Q3+): Magical abilities (see table)
+> Note: Wearable items skip the Magic Item Base Cost—they only gain value from enchantments.
+
+1. **Choose Base Item**: Select the item type (weapon, armor, wearable, etc.)
+2. **Choose Quality Tier** (Q3-Q8): Select the magic item's quality tier and add the corresponding magic item base cost
+   - Magic items start at Quality 3 (Masterwork) and require magical materials
+   - Wearables skip this cost as they provide no inherent magical benefits
+3. **Special Material** (Optional): Upgrade to a specific named material (Chitin, Mithril, Dragon Scales, etc.) for unique properties
+4. **Add Enchantment** (Optional): Add magical abilities (see enchantment table)
 
 **Examples:**
-- Q4 bronze shortsword + flaming = 50 + 0 + 1,000 = 1,050 coins
-- Q5 mithril breastplate + enchantment = 750 + 5,000 + 10,000 = 15,750 coins
-- Q6 adamantite longsword + sacred = 100 + 5,000 + 10,000 = 25,100 coins 
+
+- Q4 magic longsword +1 = 50 + 1,000 = 1,050 coins
+- Q5 mithril breastplate +2 = 750 + 10,000 + 5,000 = 15,750 coins
+- Q6 flaming adamantite longsword +3 = 100 + 10,000 + 5,000 + 10,000 = 25,100 coins
+- Q4 amulet of protection = 50 + 1,000 = 1,050 coins (wearables skip magic item base cost)
 
 ## Cost Tables
 
-### Enchantment Cost
+### Base Item Cost
 
-| Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
-| --- | --- | --- | --- | --- | --- | --- |
-| **3** (Masterwork) | +50 coins | +300 coins | +500 coins | +500 coins | +1,000 coins | +250 coins |
-| **4** (Lesser Magic) | +150 coins | +1,000 coins | +1,500 coins | +1,500 coins | +3,000 coins | +750 coins |
-| **5** (Potent Magic) | +500 coins | +3,000 coins | +5,000 coins | +5,000 coins | +10,000 coins | +2,500 coins |
-| **6** (Greater Magic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins | +7,500 coins |
-| **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins | +25,000 coins |
-| **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +75,000 coins |
+Select any type of valid item (ammo / consumable, weapon, armor, or spell catalyst) as the base item and use their mundane cost.
+
+For wearable items, use the applicable base cost for by equipment slot from this table:
+
+| Equipment Slot | Min. Base Cost |
+| --- | --- |
+| **Head** (helmet, headband, mask) | 50 coins |
+| **Neck** (amulet, brooch, scarf) | 50 coins |
+| **Back** (cape, cloak, mantle) | 100 coins |
+| **Body** (robe, tunic) | 100 coins |
+| **Hands** (bracers, bracelets, gloves) | 50 coins |
+| **Rings** | 50 coins |
+| **Waist** (belt, sash, girdle) | 50 coins |
+| **Feet** (boots, sandals, shoes) | 100 coins |
+
+> Example: Q4 amulet of protection = 50 + 1,000 = 1,050 coins (wearables skip magic item base cost)
+
+### Magic Item Base Cost
+
+Base cost for crafting magic items by quality tier. All magic items are Quality 3 or higher and require exotic or magical materials. **Wearable items skip this cost** as they only gain value from their enchantments.
+
+| Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor |
+| --- | --- | --- | --- | --- | --- |
+| **3** (Masterwork) | +50 coins | +300 coins | +500 coins | +500 coins | +1,000 coins |
+| **4** (Lesser Magic) | +150 coins | +1,000 coins | +1,500 coins | +1,500 coins | +3,000 coins |
+| **5** (Potent Magic) | +500 coins | +3,000 coins | +5,000 coins | +5,000 coins | +10,000 coins |
+| **6** (Greater Magic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins |
+| **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins |
+| **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins |
 
 ### Special Material Extra Cost
 
+Optional upgrade to use a specific named magical material (Chitin, Mithril, Dragon Scales, etc.) for unique properties. Wearables can use special materials even though they skip the magic item base cost. To see what these special materials cost themselves, reference the table down in the appendix.
+
 | Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
 | --- | --- | --- | --- | --- | --- | --- |
-| **1-8** (Base Material) | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins | 0 coins |
-| **3** (Masterwork) | +25 coins | +150 coins | +250 coins | +250 coins | +500 coins | +125 coins |
-| **4** (Lesser Magic) | +75 coins | +500 coins | +750 coins | +750 coins | +1,500 coins | +375 coins |
-| **5** (Potent Magic) | +250 coins | +1,500 coins | +2,500 coins | +2,500 coins | +5,000 coins | +1,250 coins |
-| **6** (Greater Magic) | +750 coins | +5,000 coins | +7,500 coins | +7,500 coins | +15,000 coins | +3,750 coins |
-| **7** (Superior Magic) | +2,500 coins | +15,000 coins | +25,000 coins | +25,000 coins | +50,000 coins | +12,500 coins |
-| **8** (Supreme Magic) | +7,500 coins | +50,000 coins | +75,000 coins | +75,000 coins | +150,000 coins | +37,500 coins |
+| **3** (Masterwork) | +25 coins | +150 coins | +250 coins | +250 coins | +500 coins | +150 coins |
+| **4** (Lesser Magic) | +75 coins | +500 coins | +750 coins | +750 coins | +1,500 coins | +500 coins |
+| **5** (Potent Magic) | +250 coins | +1,500 coins | +2,500 coins | +2,500 coins | +5,000 coins | +1,500 coins |
+| **6** (Greater Magic) | +750 coins | +5,000 coins | +7,500 coins | +7,500 coins | +15,000 coins | +5,000 coins |
+| **7** (Superior Magic) | +2,500 coins | +15,000 coins | +25,000 coins | +25,000 coins | +50,000 coins | +15,000 coins |
+| **8** (Supreme Magic) | +7,500 coins | +50,000 coins | +75,000 coins | +75,000 coins | +150,000 coins | +50,000 coins |
 
-### Wearable Equipment Base Costs
+### Enchantment Cost
 
-Minimum base costs for magic wearables by equipment slot:
+Optional enchantments for a magic item which provide powerful effects or passive enhancements. Each magic item can only hold up to one enchantment. Wearable enchantments cost the same as one-handed weapons since wearables don't have inherent magical benefits.
 
-| Slot | Base Cost |
-| --- | --- |
-| **Head** | 50 coins |
-| **Neck** | 50 coins |
-| **Hands** | 50 coins |
-| **Rings** | 50 coins |
-| **Waist** | 50 coins |
-| **Back** | 100 coins |
-| **Body** | 100 coins |
-| **Feet** | 100 coins |
-
-*Example: Q4 amulet of protection = 50 + 0 + 750 = 800 coins* 
+| Quality | Ammo / Consumables | One-handed Weapon / Spell Catalyst | Two-handed or Heavy Weapon | Light Armor / Shield / Helmet | Heavy Armor | Wearable |
+| --- | --- | --- | --- | --- | --- | --- |
+| **3** (Masterwork) | +50 coins | +300 coins | +500 coins | +500 coins | +1,000 coins | +300 coins |
+| **4** (Lesser Magic) | +150 coins | +1,000 coins | +1,500 coins | +1,500 coins | +3,000 coins | +1,000 coins |
+| **5** (Potent Magic) | +500 coins | +3,000 coins | +5,000 coins | +5,000 coins | +10,000 coins | +3,000 coins |
+| **6** (Greater Magic) | +1,500 coins | +10,000 coins | +15,000 coins | +15,000 coins | +30,000 coins | +10,000 coins |
+| **7** (Superior Magic) | +5,000 coins | +30,000 coins | +50,000 coins | +50,000 coins | +100,000 coins | +30,000 coins |
+| **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +100,000 coins |
+| **8** (Supreme Magic) | +15,000 coins | +100,000 coins | +150,000 coins | +150,000 coins | +300,000 coins | +75,000 coins |
 
 ## Magic Item Effects
 
 ### Magic Weapons and Spell Catalysts
 
-Masterwork weapons and spell catalysts increase their weapon or spell damage by +1 for each step above their original Quality respectively and increases their innate Durability. The following table describes the exact bonuses masterwork or magic weapons and spell catalysts gain.
+Magic weapons and spell catalysts increase their weapon or spell damage by +1 for each step above their original Quality respectively and increases their innate Durability. The following table describes the exact bonuses magic weapons and spell catalysts gain. Quality 3 is a special case, where the items count as non-magical masterworks but follow the same principle.
 
 | Quality | Weapon/Spell Damage | Durability |
 | --- | --- | --- |
@@ -80,15 +110,15 @@ Masterwork weapons and spell catalysts increase their weapon or spell damage by 
 | 7 | +4 | +2d |
 | 8 | +5 | +3d |
 
-> * Weapons which are already Quality 3 in their mundane form can also be made as masterwork versions for the extra cost but only to gain access to a masterwork property. Such weapons **don’t** get an increase to their weapon damage as their base form is already of the same Quality.
-> 
+> Weapons which are already Quality 3 in their mundane form can also be made as masterwork versions for the extra cost but only to gain access to a masterwork property. Such weapons **don’t** get an increase to their weapon damage as their base form is already of the same Quality.
+>
 
 ### Magic Armor, Shields, and Helmets
 
-Masterwork armor, shields, and helmets increase their defensive capabilities with increased Quality. These higher Quality pieces are only available at minimum Quality 4 in contrast to weapons, which are already available from Quality 3.
+Masterwork armor, shields, and helmets increase their defensive capabilities with increased Quality. These higher Quality pieces are only available at minimum Quality 4 in contrast to weapons.
 
-> Shields are treated as both weapons and armor for the benefits of masterwork items. This means that a Quality 4 light shield will both increase it’s weapon damage from 2 to 3 and it’s AV bonus from 1 to 2. Bucklers also gain the masterwork’s AV bonus, although they don’t grant one in their mundane form.
-> 
+> Shields are treated as both weapons and armor for the benefits of masterwork items. This means that a Quality 4 light shield will both increase it’s weapon damage from 2 to 3 and it’s AV bonus from 1 to 2. Bucklers also gain the magic item AV bonus, although they don’t grant one in their mundane form.
+>
 
 | Quality | AV Bonus | Durability |
 | --- | --- | --- |
@@ -100,71 +130,58 @@ Masterwork armor, shields, and helmets increase their defensive capabilities wit
 
 ### Magic Ammo
 
-Ranged attacks with magic ammo deal extra damage on a hit. This damage bonus does not count towards weapon damage but gives a flat damage bonus depending on it's Quality. Magic ammo names include the bonus suffix (e.g., "Arrows +2" for Q4).
+Ranged attacks with magic ammo deal extra damage on a hit. This bonus does not count towards weapon damage but gives a flat damage bonus depending on it's Quality. Magic ammo names include the bonus suffix (e.g., "Arrows +2" for Q4).
 
 Magic ammo comes as units of supply, the same way mundane ammo does. The exception are enchanted pieces of ammo, which are further described below.
 
-| Quality | Damage Bonus | Example |
-| --- | --- | --- |
-| 3 | +1 | Arrows +1 |
-| 4 | +2 | Arrows +2 |
-| 5 | +3 | Arrows +3 |
-| 6 | +4 | Arrows +4 |
-| 7 | +5 | Arrows +5 |
-| 8 | +6 | Arrows +6 |
+| Quality | Damage Bonus |
+| --- | --- |
+| 3 | +1 |
+| 4 | +2 |
+| 5 | +3 |
+| 6 | +4 |
+| 7 | +5 |
+| 8 | +6 |
 
-#### **Enchanted Ammo**
+#### Enchanted Ammo
 
 In contrast to weapons and armor, magic ammo normally doesn‘t have an enchantment. You can still buy or craft enchanted pieces of ammo, but they come in individual pieces per use. So one item slot for enchanted ammo with up to three uses represents up to three physical pieces of that ammo. Usually, once such a piece of ammo has successfully hit it‘s target or otherwise activated it‘s enchantment, it is destroyed and you have to spend 1 use for it.
 
-One item slot with up to three pieces of enchanted ammo costs the same amount of coins as one normal stack of magic ammo of the same Quality. So for example, 3 pieces of Q4 exploding arrows cost 165 coins (15 + 150). In the same way, one stack of normal Q4 magic arrows also costs 165 coins but comes with three full uses as supply instead.
-
-Enchanted ammo still gains the same damage bonus for it‘s Quality as regular magic ammo.
+> One item slot with up to three pieces of enchanted ammo costs the same amount of coins as one normal stack of magic ammo of the same Quality. So for example, 3 pieces of Q4 exploding arrows +1 cost 315 coins (15 + 150 + 150). In the same way, one stack of normal Q4 magic arrows costs 165 coins but comes with three full uses as supply instead.
+>
+> Enchanted ammo still gains the same damage bonus for it‘s Quality as regular magic ammo.
 
 ### Spell Scrolls
 
-Spell scrolls contain sacred words or ancient arcane symbols written with magical ink. These magical inscriptions contain single uses of specific spells, which any intelligent creature can read aloud to invoke the spell’s effect, after which the scroll turns to dust.
+Spell scrolls contain sacred words or ancient arcane symbols written with magical ink. These magical inscriptions contain single uses of specific spells, which any intelligent creature can read aloud to invoke the spell's effect, after which the scroll turns to dust.
 
-Reciting the inscription always requires an Action. If you have learned Arcana or Mysticism for arcane or mystic spell scrolls respectively, you can cast the spell normally without paying it’s Focus cost (you can’t use any Metamagic Arts with it).
-If you haven’t, roll a Mind/Spirit + Lore check for arcane or mystic spell scrolls respectively to cast the spell. If you haven’t learned Lore either, you suffer +1 bane on this roll.
+**Casting for Spellcasters:** Reciting the inscription always requires an Action. If you have learned Arcana or Mysticism for arcane or mystic spell scrolls respectively, you can cast the spell normally without paying its Focus cost (you can't use any Metamagic Arts with it).
 
-Below are the cost of spell scrolls for each spell rank. Spell scrolls have 0 load. When creating a spell scroll yourself, you must have learned the talent “Spell Scribe”, be able to cast the chosen spell, and pay half the scroll’s cost during the given amount of downtime.
+**Casting for Non-Spellcasters:** If you haven't learned the appropriate magical skill, the scroll itself empowers you with the knowledge to cast it. Use the attribute dice and skill bonus provided by the scroll's Quality tier when making any tests required to cast the spell.
 
-| Quality | Spell Rank | Cost | Crafting Time |
-| --- | --- | --- | --- |
-| 3 (Faint) | 0 | 50 coins | 1 hour |
-| 4 (Lesser) | 1 | 150 coins | 1 day |
-| 5 (Potent) | 2 | 500 coins | 1 week |
-| 6 (Greater) | 3 | 1,500 coins | 2 weeks |
-| 7 (Superior) | 4 | 5,000 coins | 4 weeks |
-| 8 (Supreme) | 5 | 15,000 coins | 8 weeks |
+**Crafting Spell Scrolls:** When creating a spell scroll yourself, you must have learned the talent "Spell Scribe", be able to cast the chosen spell, and pay half the scroll's cost during the given amount of downtime. Spell scrolls have 0 load.
+
+| Quality | Spell Rank | Attribute Die | Skill Bonus | Cost | Crafting Time |
+| --- | --- | --- | --- | --- | --- |
+| 3 (Faint) | 0 | d6 | +1 | 50 coins | 1 hour |
+| 4 (Lesser) | 1 | d8 | +1 | 150 coins | 1 day |
+| 5 (Potent) | 2 | d10 | +2 | 500 coins | 1 week |
+| 6 (Greater) | 3 | d10 | +3 | 1,500 coins | 2 weeks |
+| 7 (Superior) | 4 | d12 | +4 | 5,000 coins | 4 weeks |
+| 8 (Supreme) | 5 | d12 | +5 | 15,000 coins | 8 weeks |
 
 **Random Scrolls**: Roll to determine scroll type and spell discipline/tradition:
 
-| d6 | Scroll Type |
-| --- | --- |
-| 1-3 | arcane spell |
-| 4-6 | mystic spell |
-
-| d6 | Arcane Spell Discipline |
-| --- | --- |
-| 1 | Evocation |
-| 2 | Illusion |
-| 3 | Conjuration |
-| 4 | Telepathy |
-| 5 | Telekinetics |
-| 6 | Necromancy |
-
-| d8 | Mystic Spell Tradition |
-| --- | --- |
-| 1 | Light |
-| 2 | Twilight |
-| 3 | Life |
-| 4 | Death |
-| 5 | Nature |
-| 6 | Tempest |
-| 7 | Peace |
-| 8 | War |
+| d6 | Scroll Type | | d6 | Arcane Spell Discipline | | d8 | Mystic Spell Tradition |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1-3 | arcane spell | | 1 | Evocation | | 1 | Light |
+| 4-6 | mystic spell | | 2 | Illusion | | 2 | Twilight |
+|  |  | | 3 | Conjuration | | 3 | Life |
+|  |  | | 4 | Telepathy | | 4 | Death |
+|  |  | | 5 | Telekinetics | | 5 | Nature |
+|  |  | | 6 | Necromancy | | 6 | Tempest |
+|  |  |  |  | | | 7 | Peace |
+|  |  |  |  | | | 8 | War |
 
 # Materials & Enchantments
 
@@ -172,46 +189,42 @@ Every magic item must be crafted from a material, and may optionally have an enc
 
 ## Materials
 
-All items are made from materials, which determine construction, durability, and appearance. Materials fall into two categories:
+All items are crafted from materials that determine their construction, durability, and appearance.
 
-### Base Materials (Q1-Q8)
+### Material Categories
 
-Common materials that provide no mechanical advantage but offer flavor and construction variety at **no extra cost**. These are available at **every quality tier** and represent standard craftsmanship appropriate to the item's quality level.
+**Primitive Materials (Q1).** Primitive materials are cheap, makeshift alternatives. Items made from Q1 materials are functional but fragile and more likely to break. They exist to represent low-tech or improvised equipment and are typically limited to low-cost items.
 
-- **Primitive Materials (Q1)**: Crude materials like bone, stone, and fresh wood used by primitive tribes
-- **Mundane Materials (Q2-Q8)**: Standard materials like bronze, hardwood, leather, brass, and horn used for quality craftsmanship
+**Mundane Materials (Q2).** Q2 is the default material tier for mundane items. These are the everyday, well-made materials (bronze, leather, hardwood) used across settlements.
 
-Base materials of higher quality represent better craftsmanship, purer materials, and superior construction techniques, but provide no mechanical advantages beyond what the quality tier itself offers.
+**Magical Materials (Q3+).** Required for all magic items. These are mundane materials magically infused during forging, or natural materials from spiritually-charged locations (ancient groves, meteor impacts, mana-rich veins). They provide the foundation for magic items but grant no further mechanical properties on their own.
 
-### Special Materials (Q3-Q8)
+**Special Materials (Optional).** Specific named materials like Mithril, Adamantite, or Dragon Scales. These provide unique mechanical benefits beyond standard quality bonuses.
 
-Rare or magical materials that provide mechanical advantages and add **extra cost** to the item (approximately half the cost of an equivalent enchantment). These materials are categorized by rarity:
+> **Example Comparison**
+>
+> - **Q5 bronze longsword**: Masterfully crafted bronze. Gains +2 damage and +1d durability. No extra cost.
+> - **Q5 magic longsword +2**: Requires magical materials. Costs 50 (base) + 3,000 (magic item base cost) = 3,050 coins.
+> - **Q5 adamantite longsword +2**: Uses special material. Costs 50 (base) + 3,000 (magic base) + 1,500 (special material) = 4,550 coins.
 
-| Quality Tier | Description | Extra Cost |
-| --- | --- | --- |
-| **Exotic (Q3-4)** | Unusual, magical, or monster-based materials. Rare, often region-specific. | See Special Material Extra Cost table |
-| **Greater (Q5-6)** | Epic materials with significant magical power. | See Special Material Extra Cost table |
-| **Legendary (Q7-8)** | Cosmic or divine materials. Very rare or one-of-a-kind. | See Special Material Extra Cost table |
+### Materials - Primitive (Q1)
 
-#### **Base Materials - Primitive (Q1)**
-
-*Crude makeshift items for tribes without better materials. Can only upgrade Q2 items costing ≤100 coins.*
-
+Crude makeshift items for tribes without better materials.
 
 | d8 | Material | Properties |
 | --- | --- | --- |
-| 1 | **Bone** | *Sourced from beasts or humanoids. Lightweight but brittle; breaks under strong impacts.*<br/><br/>1/2 item cost. The item gains the fragile property. |
-| 2 | **Copper** | *Soft reddish metal. Easy to shape, but poor durability for weapons or armor.* <br/><br/>1/2 item cost. The item gains the fragile property. |
-| 3 | **Fresh Wood** | *Cut from living trees without drying or treatment. Warps easily and lacks strength.*<br/><br/>1/2 item cost. The item gains the fragile property. |
-| 4 | **Stone** | *Rough, heavy, and crude. Can be shaped into tools or weapons, but prone to chipping.*<br/><br/>1/2 item cost. The item gains the fragile property. |
-| 5 | **Flint** | *Sharp when fractured. Good for cutting edges but extremely brittle.*<br/><br/>1/2 item cost. The item gains the fragile property. |
-| 6 | **Bark** | *Flexible but weak. Used for basic armor or bindings, mostly ceremonial or temporary.*<br/><br/>1/2 item cost. The item gains the fragile property. |
-| 7 | **Reed** | *Hollow and very light. Used for simple shafts or padding, but offers no real durability.*<br/><br/>1/2 item cost. The item gains the fragile property. |
-| 8 | **Shell** | *Hard outer layer from aquatic creatures. Smooth and rigid, but fragile under pressure.*<br/><br/>1/2 item cost. The item gains the fragile property. |
+| 1 | **Bone** | *Sourced from beasts or humanoids. Lightweight but brittle; breaks under strong impacts.*<br/><br/>The item gains the fragile property. |
+| 2 | **Copper** | *Soft reddish metal. Easy to shape, but poor durability for weapons or armor.*<br/><br/>The item gains the fragile property. |
+| 3 | **Fresh Wood** | *Cut from living trees without drying or treatment. Warps easily and lacks strength.*<br/><br/>The item gains the fragile property. |
+| 4 | **Stone** | *Rough, heavy, and crude. Can be shaped into tools or weapons, but prone to chipping.*<br/><br/>The item gains the fragile property. |
+| 5 | **Flint** | *Sharp when fractured. Good for cutting edges but extremely brittle.*<br/><br/>The item gains the fragile property. |
+| 6 | **Bark** | *Flexible but weak. Used for basic armor or bindings, mostly ceremonial or temporary.*<br/><br/>The item gains the fragile property. |
+| 7 | **Reed** | *Hollow and very light. Used for simple shafts or padding, but offers no real durability.*<br/><br/>The item gains the fragile property. |
+| 8 | **Shell** | *Hard outer layer from aquatic creatures. Smooth and rigid, but fragile under pressure.*<br/><br/>The item gains the fragile property. |
 
-#### **Base Materials - Mundane (Q2-Q8)**
+### Materials - Mundane (Q2-Q8)
 
-*Standard materials, no extra cost. Higher quality = better craftsmanship, purer materials.*
+Standard materials available at all quality tiers.
 
 | d8 | Material | Properties |
 | --- | --- | --- |
@@ -222,30 +235,28 @@ Rare or magical materials that provide mechanical advantages and add **extra cos
 | 5 | **Horn** | *Solid, curved keratin. Used for weapon hilts, tips, and decorative armor parts.* **No mechanical effect.** |
 | 6 | **Hide** | *Thick, untreated skin. Tougher than leather, but less flexible.* **No mechanical effect.** |
 | 7 | **Antler** | *Hard and naturally curved. Effective for piercing weapons or rugged tools.* **No mechanical effect.** |
-| 8 | **Obsidian** | *Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.*<br/><br/>**-** The item gains the fragile property.<br/>- Weapon/Ammo: +1 weapon damage (enhancement bonus). |
+| 8 | **Obsidian** | *Volcanic mineral which can be crafted into very sharp razor blades, though extremely brittle and easily breaking.*<br/><br/>The item gains the fragile property. Weapon/Ammo: +1 weapon damage (enhancement bonus). |
 
-*Example: Q5 bronze longsword = masterfully crafted, exceptionally pure. Gains Q5 bonuses (+2 damage, +1d durability) but no extra cost.*
+### Materials - Exotic (Q3-Q4)
 
-#### **Special Materials - Exotic (Q3-4)**
-
-*Rare materials with mechanical bonuses. Extra cost applies.*
+Unusual, monster-based, or mildly magical materials. Quite rare and often region-specific.
 
 | d10 | Material | Properties |
 | --- | --- | --- |
-| 1 | **Chitin** | *Harvested from insectoid or crustacean monsters. Lighter than metal, but still strong and durable. Used as organic armor plating.*<br/><br/>- Armor/Shield: -1 load (min. 0). |
-| 2 | **Iron** | *Relatively common metal, but culturally taboo in some regions. Said to repel spirits and weaken magic. Also known as "Cursestone" due to its effects on the supernatural.*<br/><br/>- Weapon: +1 boon on attacks against spirit creatures.<br/>- Armor/Shield: +1 bane on Mysticism rolls to cast spells. |
-| 3 | **Monster Bone** | *Comes from large or magical creatures. Denser and stronger than normal bone, with durability close to metals.*<br/><br/>- Weapon/Armor/Shield: -1 load (min. 0). |
-| 4 | **Monster Scales** | *Sourced from scaled beasts. Natural armor with good physical resistance.*<br/><br/>- Armor/Shield: Once per scene, gain resistance to a single attack’s physical damage. |
-| 5 | **Giant Spider Silk** | *Collected from giant spiders bred for strength. Threads are extremely strong and light. Can be woven into flexible armor or restraint gear.*<br/><br/>- Light Armor: -1 load (min. 0). |
-| 6 | **Silverroot** | *Root of the sacred Silverleaf Oak, threaded with silvery veins. The sap is poisonous to the cursed creatures of the night. Can be imbued into weapons with effects against those creatures.*<br/><br/>- Weapon/Ammo: +1 boon on attacks against lycanthropes and undead creatures. |
-| 7 | **Runebark** | *Tree bark with natural ancient patterns. Slightly magical and resists some spell effects.*<br/><br/>- Armor/Shield: Once per scene, gain resistance to a single spell’s damage. |
-| 8 | **Dwarf-Steel** | *Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret; known for durability and excellent heat resistance.*<br/><br/>- Any: Once per day, you can re-roll a Durability check for this item.<br/>- Heavy Armor: You don’t suffer a penalty for wearing heavy armor in extreme climates. |
-| 9 | **Darkwood** | *Dark wood with a mix of red and basalt layers that is much lighter than normal wood and resistant like metal. Often used for wooden weapons or shields. Has no effect on weapons only partially made of wood.*<br/><br/>- Weapon/Shield/Ammo: -1 load (min. 0). |
-| 10 | **Wyrmhide** | *Thick hide from lesser draconic creatures. Offers slight protection against elemental damage.*<br/><br/>- Armor/Shield: Once per scene, gain resistance against any single damage source dealing acid, fire, frost, lightning, or poison damage. |
+| 1 | **Chitin** | *Harvested from insectoid or crustacean monsters. Lighter than metal, but still strong and durable. Used as organic armor plating.*<br/><br/>Armor/Shield: -1 load (min. 0). |
+| 2 | **Iron** | *Relatively common metal, but culturally taboo in some regions. Said to repel spirits and weaken magic. Also known as "Cursestone" due to its effects on the supernatural.*<br/><br/>Weapon: +1 boon on attacks against spirit creatures.<br/>Armor/Shield: +1 bane on Mysticism rolls to cast spells. |
+| 3 | **Monster Bone** | *Comes from large or magical creatures. Denser and stronger than normal bone, with durability close to metals.*<br/><br/>Weapon/Armor/Shield: -1 load (min. 0). |
+| 4 | **Monster Scales** | *Sourced from scaled beasts. Natural armor with good physical resistance.*<br/><br/>Armor/Shield: Once per scene, gain resistance to a single attack's physical damage. |
+| 5 | **Giant Spider Silk** | *Collected from giant spiders bred for strength. Threads are extremely strong and light. Can be woven into flexible armor or restraint gear.*<br/><br/>Light Armor: -1 load (min. 0). |
+| 6 | **Silverroot** | *Root of the sacred Silverleaf Oak, threaded with silvery veins. The sap is poisonous to the cursed creatures of the night. Can be imbued into weapons with effects against those creatures.*<br/><br/>Weapon/Ammo: +1 boon on attacks against lycanthropes and undead creatures. |
+| 7 | **Runebark** | *Tree bark with natural ancient patterns. Slightly magical and resists some spell effects.*<br/><br/>Armor/Shield: Once per scene, gain resistance to a single spell's damage. |
+| 8 | **Dwarf-Steel** | *Silver-colored alloy that radiates slight warmth. Imported from dwarven desert strongholds. Formula is a guarded secret; known for durability and excellent heat resistance.*<br/><br/>Any: Once per day, you can re-roll a Durability check for this item.<br/>Heavy Armor: You don't suffer a penalty for wearing heavy armor in extreme climates. |
+| 9 | **Darkwood** | *Dark wood with a mix of red and basalt layers that is much lighter than normal wood and resistant like metal. Often used for wooden weapons or shields. Has no effect on weapons only partially made of wood.*<br/><br/>Weapon/Shield/Ammo: -1 load (min. 0). |
+| 10 | **Wyrmhide** | *Thick hide from lesser draconic creatures. Offers slight protection against elemental damage.*<br/><br/>Armor/Shield: Once per scene, gain resistance against any single damage source dealing acid, fire, frost, lightning, or poison damage. |
 
-#### **Special Materials - Greater (Q5-6)**
+### Materials - Greater (Q5-Q6)
 
-*Epic materials with significant power. Extra cost applies.*
+Epic materials with potent magical properties. Rare and sought-after, these are used to craft powerful weapons and armor that offer substantial advantages.
 
 | d10 | Material | Properties |
 | --- | --- | --- |
@@ -255,14 +266,14 @@ Rare or magical materials that provide mechanical advantages and add **extra cos
 | 4 | **Dragon Scales** | *Large scales from dragons. Extremely durable and elementally attuned.* |
 | 5 | **Deep Iron** | *Heavy ore from deep underground. Strong against both physical and magical attacks.* |
 | 6 | **Phantom-Silk** | *Made from spectral spider silk. Very light, hard to detect, and partially intangible.* |
-| 7 | **Mithril** | *Lightweight, silvery metal. High durability with very low weight; ideal for fast fighters.*<br/><br/>- Armor/Shield: -1 load (min. 0). Reduce the item’s rigid property by 1 (min. 0). |
+| 7 | **Mithril** | *Lightweight, silvery metal. High durability with very low weight; ideal for fast fighters.*<br/><br/>Armor/Shield: -1 load (min. 0). Reduce the item's rigid property by 1 (min. 0). |
 | 8 | **Solarite** | *Red-gold crystal found on celestial mountain peaks. Mixed with bronze in a ritual to create a glowing, heat-reactive alloy. Generates intense heat when moved quickly.* |
 | 9 | **Lunarite** | *Deep blue crystal found in underworld caverns. Absorbs magical energy. Used in armor to resist spells or in restraints to suppress magic.* |
 | 10 | **Adamantite** | *Extremely hard and dense metal. Almost impossible to break or bend.* |
 
-#### **Special Materials - Legendary (Q7-8)**
+### Materials - Legendary (Q7-Q8)
 
-*Cosmic/divine materials, very rare. Extra cost applies.*
+Cosmic, divine, or artifact-tier materials. Extremely rare and often unique, these are reserved for legendary artifacts and items of world-shaping power.
 
 | d10 | Material | Properties |
 | --- | --- | --- |
@@ -279,36 +290,34 @@ Rare or magical materials that provide mechanical advantages and add **extra cos
 
 ## Enchantments
 
-Enchantments are optional magical properties that can be added to items of Quality 3 or higher. Each enchantment adds its full cost to the item (see Enchantment Cost table). Enchanted items gain powerful abilities and effects depending on their type and potency.
+Enchantments are optional magical properties for items of Q4+. Each enchantment adds its full cost to the item (see Enchantment Cost table).
 
-#### **Enchanting items**
+### Enchanting items
 
-Any non-enchanted item with Quality 3 or higher can be enchanted. This requires a craftsperson with the ability to create enchanted items, a magical ritual during downtime, and adequately potent magical ingredients. The enchantment's cost depends on its Quality (see Enchantment Cost table), where ingredients worth at least half that cost need to be provided.
+Any non-enchanted item of Quality 3 or higher can be enchanted. Crafting an enchantment requires:
 
-Removing an existing enchantment from an item is no easy feat and often results in destroying the item with it.
+- an enchanter capable of creating magical items,
+- the appropriate ritual during downtime, and
+- magical ingredients worth at least half the enchantment's cost.
 
-#### **Stacking enchantments**
+Removing an enchantment is difficult and often destroys the item.
 
-You might come into possession of multiple magic items which provide the same type of benefit with their enchantments. In this case, you can only ever benefit from one source of any kind of enchantment that would affect the same statistics. If you wear or wield multiple items which grant the same kind of enchantment, only the highest benefit applies. This restriction applies for both increases to your statistics, as well as for triggered abilities. An exception are active abilities, which require you to use an Action, Quick Action, or other time interval to activate the item’s effect. Any lasting effect still can be only applied once on a target.
+> **Stacking**
+>
+> If multiple equipped items provide the same enchantment effect, only the highest effect applies. This covers passive and stat effects; active abilities that require an Action or Quick Action are not blocked by this rule. Example: boots of reflexes +1 and cloak of reflexes +2 both grant Dodge — only the +2 applies.
 
-> For example, you wear both a pair of “boots of reflexes +1” and a “cloak of reflexes +2”. Both items would grant you a bonus to your Dodge statistic (+1 and +2 respectively). But because they provide the same kind of enchantment, you can only benefit from one of their effects. In this case, only the effect of the “cloak of reflexes +2” would grant it’s bonus.
+> **Prefix vs. Suffix**
+>
+> Enchantment effects come in two forms, as a prefix or a suffix to the base items name.
+>
+> - Prefix enchantments grant active or triggered abilities (common on weapons, catalysts, armor, and shields).
+> - Suffix enchantments grant passive bonuses (wearables always use suffixes). Enchanted ammo uses prefix enchantments. If a suffix is needed for a non-wearable item, roll on the wearable table.
 > 
+> If a randomly rolled enchantment is not compatible with an item, re-roll.
 
-#### **Determining Enchantments**
-
-In general, [prefix] enchantments apply active or triggered abilities to the item, while [suffix] enchantments add passive bonuses or increases to the wearer’s statistics.
-
-Most weapons, spell catalysts, armor, and shields will have [prefix] enchantments and have their own specific tables for those enchantments. Enchanted ammo always has a [prefix] enchantment. Wearable items on the other hand will **always** have a [suffix] enchantment. When choosing a [suffix] enchantment for any non-wearable type of item, roll on the table for wearable enchantments.
-
-> For example, an enchanted item with the name “[prefix] [item]” could be a “flaming greatsword” or a “stalward scale mail”, whereas an item with the name “[item] [suffix]” could be an “amulet of willpower” or a “spear of the guardian”.
-If an item also is made from a special material, it could be named something like “flaming dragon bone longsword” or “adamantite breastplate of fortitude”.
-> 
-
-When randomly determining a magic item’s enchantment and you get a result not available for the item, re-roll until you get a compatible result.
-
-#### **Enchantments per Quality**
-
-In each enchantment description, you will find in which Qualities they are available. The list of Qualities in the enchantments name also correlates to any scaling numbers in the effect. So for example, the enchantment “[item] of Protection” is available for Quality 4 or higher. At Quality 4, the item provides +1 AV. The Quality 5 version would grant +2 AV, the Quality 6 version +3 AV, and so on. Some enchantments can also have multiple variables scaling with their Quality or skip some available levels of Quality for powerful effects.
+> **Scaling by Quality**
+>
+> Each enchantment lists the Qualities where it appears; numeric variables scale with Quality. For example, "of Protection" at Q4 = +1 AV, Q5 = +2 AV, Q6 = +3 AV. Note that some enchantments are not available for all tiers of Quality.
 
 ### Ammo Enchantments
 
@@ -354,7 +363,7 @@ In each enchantment description, you will find in which Qualities they are avail
 | d6 | [prefix] Enchantment |
 | --- | --- |
 | 1 | **anchoring (Q4/Q5/Q6).** While wearing this item, when you would be pushed or knocked prone, you can ignore these effects. If it was a creature in melee range that attempted to push or knock you prone, they also take 2/4/6 damage (ignoring AV). You can use this ability once/twice/thrice per day. |
-| 2 | **blurring (Q4/Q5/Q6).** While wearing this item, you can use a Quick Action on your turn to activate the effects of the *Mirror Image* ****spell on yourself. The duplicates have 8/9/10 Defense.<br/>You can use this ability once/twice/thrice per day. |
+| 2 | **blurring (Q4/Q5/Q6).** While wearing this item, you can use a Quick Action on your turn to activate the effects of the *Mirror Image* spell on yourself. The duplicates have 8/9/10 Defense.<br/>You can use this ability once/twice/thrice per day. |
 | 3 | **temperate (Q4).** This item provides magical protection from extreme cold or extreme heat (choose one). You don’t have to roll a test during travel or exploration to resist the chosen form of extreme climate. |
 | 4 | **stalwart (Q4).** While wearing this item, whenever an effect would inflict the charmed, confused, dazed, frightened, paralyzed, staggered, or stunned condition on you, you can choose to not suffer that condition (you can use this after rolling a test against the effect). You can use this ability once per day. |
 | 5 | **tough (Q4/Q5/Q6).** Once per turn, while wearing this item, when you suffer damage, you can choose to gain resistance against that damage. You can use this ability once/twice/thrice per day. |
@@ -384,3 +393,61 @@ In each enchantment description, you will find in which Qualities they are avail
 | 18 | **of Divine Guidance (Q4/Q5/Q6).** During the creation of this item, choose any mystic rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls). |
 | 19 | **of Immunity (Q4).** During the creation of this item, choose one condition from (1) blinded,  (2) charmed, (3) confused, (4) dazed, (5) deafened, (6) frightened, (7) paralyzed, (8) poisoned, (9) silenced, (10) slowed, (11) staggered or (12) stunned. When finding this item, roll 1d12 to determine the condition.<br/>While wearing this item, you are immune against the chosen condition. |
 | 20 | **of Resistance (Q4).** During the creation of this item, choose one damage type from (1) acid, (2) blast, (3) fire, (4) frost, (5) lightning, (6) necrotic, (7) psychic, (8) poison, or (9) radiant. When finding this item, roll 1d10 (re-rolling a result of 10) to determine the condition.<br/>While wearing this item, you are resistant against the chosen damage type. |
+
+## Appendix
+
+### Special Material Trade Values
+
+Special materials are valuable trade goods that can be bought, sold, or harvested from creatures. Their value is based on quality tier, with prices listed per load.
+
+#### Cost per Load
+
+| Quality | Cost per Load |
+| --- | --- |
+| **Q3** | 450 coins |
+| **Q4** | 1,500 coins |
+| **Q5** | 4,500 coins |
+| **Q6** | 15,000 coins |
+| **Q7** | 45,000 coins |
+| **Q8** | 150,000 coins |
+
+#### Material Required by Item Type
+
+Different item types require different amounts of material to craft:
+
+- **One-handed weapons/spell catalysts**: 1 load
+- **Two-handed/heavy weapons**: 2 loads
+- **Light armor/shields/helmets**: 2 loads
+- **Heavy armor**: 4 loads
+- **Wearables**: 0.5 loads
+- **Ammo/consumables**: 0.25 loads
+
+**Total material cost** = Cost per load × loads required
+
+> Example: Q6 dragon scales cost 15,000 coins per load. Heavy armor requires 4 loads, so crafting Q6 dragon scale heavy armor requires 60,000 coins worth of materials (4 × 15,000). A one-handed weapon needs only 1 load = 15,000 coins of material.
+
+**Harvesting:** Use the creature harvesting rules to determine what materials can be obtained from defeated monsters. The quality tier of harvested materials typically matches the creature's challenge level.
+
+### Enchantment Components by Effect Type
+
+Enchantments require magical components worth at least half the enchantment cost. These ingredients provide thematic flavor and can be harvested from creatures or found in magical locations.
+
+| Effect Type | Example Components | Typical Sources |
+| --- | --- | --- |
+| **Fire/Heat** | Phoenix ash, molten core essence, fire elemental heart, volcanic glass powder, eternal flame oil | Fire creatures, volcanic regions, elemental planes |
+| **Frost/Cold** | Frozen tears, winter's breath essence, ice elemental heart, permafrost dust, glacial water | Cold creatures, frozen peaks, winter realms |
+| **Lightning/Thunder** | Bottled lightning, storm essence, thunder stone powder, static crystal, ionized air | Storm creatures, mountain peaks, elemental planes |
+| **Acid/Poison** | Concentrated venom, corrosive bile, toxic spore dust, caustic slime, alchemical reagent | Poisonous creatures, swamps, alchemical sources |
+| **Necrotic/Undeath** | Soul fragment, death essence, grave dust, shadow ichor, cursed blood | Undead creatures, graveyards, cursed sites |
+| **Radiant/Holy** | Divine light vial, sanctified water, holy oils, blessed incense, celestial tears | Celestial beings, holy sites, temples |
+| **Psychic/Mental** | Extracted thoughts, crystallized dreams, mental residue, consciousness essence, memory fragment | Aberrations, dream realms, psionic locations |
+| **Force/Protection** | Crystallized magic, ward essence, binding runes, arcane focus powder, barrier fragment | Arcane constructs, magical barriers, wizard towers |
+| **Life/Healing** | Distilled vitality, rejuvenation elixir, sacred sap, life essence, regeneration paste | Nature spirits, sacred groves, healing springs |
+| **Enhancement (Attack)** | Battle fury oil, strength infusion, sharpening solution, warrior's resolve, power concentrate | Elite warriors, giants, combat rituals |
+| **Enhancement (Defense)** | Hardening paste, resilience oil, fortification powder, endurance tonic, protective coating | Armored creatures, defensive magic, earth sources |
+| **Movement/Speed** | Acceleration oil, wind essence vial, swiftness elixir, momentum dust, temporal catalyst | Fast creatures, air elementals, time magic |
+| **Stealth/Invisibility** | Shadow extract, ethereal mist, obscuring essence, darkness concentrate, veiling powder | Shadow creatures, ethereal planes, darkness magic |
+| **Elemental Resistance** | Elemental ward oil, resistance tonic, insulation paste, harmony essence, adaptation serum | Elemental sources, convergence points, alchemical labs |
+| **Magic/Spellcasting** | Distilled mana, arcane concentrate, spell residue, ley line essence, mystic catalyst | Spellcasters, ley line nexuses, magical fonts |
+
+> Note: Higher quality enchantments require more potent or pure versions of these components. A Q8 flaming weapon might need pure phoenix ash from an ancient phoenix, while a Q4 version could use diluted fire elemental essence or volcanic glass powder.
