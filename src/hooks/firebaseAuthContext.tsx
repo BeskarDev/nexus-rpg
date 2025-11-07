@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { User, onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../config/firebase'
+import { auth, db } from '../config/firebase'
+import { doc, getDoc } from 'firebase/firestore'
 
 const AuthContext = createContext<{
 	userLoggedIn: boolean
@@ -9,6 +10,8 @@ const AuthContext = createContext<{
 	setCurrentUser: (user: User) => void
 	isAdmin: boolean
 	setIsAdmin: (isAdmin: boolean) => void
+	viewAsAdmin: boolean
+	setViewAsAdmin: (viewAsAdmin: boolean) => void
 }>({
 	userLoggedIn: false,
 	isEmailUser: false,
@@ -16,6 +19,8 @@ const AuthContext = createContext<{
 	setCurrentUser: () => {},
 	isAdmin: false,
 	setIsAdmin: () => {},
+	viewAsAdmin: true,
+	setViewAsAdmin: () => {},
 })
 
 export function useAuth() {
@@ -27,6 +32,7 @@ export function AuthProvider({ children }) {
 	const [userLoggedIn, setUserLoggedIn] = useState(false)
 	const [isEmailUser, setIsEmailUser] = useState(false)
 	const [isAdmin, setIsAdmin] = useState(false)
+	const [viewAsAdmin, setViewAsAdmin] = useState(true)
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
@@ -48,12 +54,42 @@ export function AuthProvider({ children }) {
 			setIsEmailUser(isEmail)
 
 			setUserLoggedIn(true)
+
+			// Check admin status from custom claims and Firestore
+			await checkAdminStatus(user)
 		} else {
 			setCurrentUser(null)
 			setUserLoggedIn(false)
+			setIsAdmin(false)
 		}
 
 		setLoading(false)
+	}
+
+	async function checkAdminStatus(user: User) {
+		try {
+			// First check custom claims (requires token refresh)
+			const idTokenResult = await user.getIdTokenResult()
+			
+			if (idTokenResult.claims.admin === true) {
+				setIsAdmin(true)
+				return
+			}
+
+			// Fall back to checking Firestore
+			const adminDoc = await getDoc(doc(db, 'admins', user.uid))
+			
+			if (adminDoc.exists()) {
+				setIsAdmin(true)
+				// Force token refresh to update custom claims
+				await user.getIdToken(true)
+			} else {
+				setIsAdmin(false)
+			}
+		} catch (error) {
+			console.error('Error checking admin status:', error)
+			setIsAdmin(false)
+		}
 	}
 
 	const value = {
@@ -63,6 +99,8 @@ export function AuthProvider({ children }) {
 		setCurrentUser,
 		isAdmin,
 		setIsAdmin,
+		viewAsAdmin,
+		setViewAsAdmin,
 	}
 
 	return (

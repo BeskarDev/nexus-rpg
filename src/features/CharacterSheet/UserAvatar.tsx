@@ -1,8 +1,11 @@
 import { Avatar, AvatarProps, Menu } from '@mui/material'
 import { LoginComponent } from '@site/src/components/LoginComponent'
+import { UserMenu } from '@site/src/components/UserMenu'
+import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import React from 'react'
 
 export const UserAvatar: React.FC<AvatarProps> = (props) => {
+	const { userLoggedIn } = useAuth()
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
 	const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -36,9 +39,13 @@ export const UserAvatar: React.FC<AvatarProps> = (props) => {
 						event.stopPropagation()
 					}
 				}}
-				MenuListProps={{ sx: { p: 2 } }}
+				MenuListProps={{ sx: { p: userLoggedIn ? 0 : 2 } }}
 			>
-				<LoginComponent />
+				{userLoggedIn ? (
+					<UserMenu onClose={handleClose} />
+				) : (
+					<LoginComponent />
+				)}
 			</Menu>
 		</>
 	)
