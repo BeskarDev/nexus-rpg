@@ -101,13 +101,13 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(nextButton)
 
     // Step 2: Choose quality
-    expect(screen.getByText('Choose Quality Tier')).toBeInTheDocument()
+    expect(screen.getByText('Choose Quality (Q3-Q8)')).toBeInTheDocument()
     await user.click(screen.getByText('Q4 (Lesser Magic)'))
     
     await user.click(screen.getByRole('button', { name: /next/i }))
 
     // Step 3: Material (required - should auto-select a base material)
-    expect(screen.getByText('Select Material')).toBeInTheDocument()
+    expect(screen.getAllByText('Select Material (Required)')[0]).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: /next/i }))
 
     // Step 4: Enchantment (optional)
@@ -174,12 +174,12 @@ describe('MagicItemBuilderDialog', () => {
     expect(mockOnCreateItem).toHaveBeenCalledWith(
       expect.objectContaining({
         name: expect.stringMatching(/Flaming.*Shortsword \+1$/), // Base material + Flaming + Shortsword + +1
-        cost: 1050, // 50 base + 0 material (auto-selected Bronze base) + 1000 enchantment
+        cost: 2050, // 50 base + 1000 magic base + 0 material (Bronze base) + 1000 enchantment
         damage: expect.objectContaining({
           weapon: 3, // 2 base + 1 quality bonus (Q2->Q4 = +1)
           type: 'physical',
         }),
-        description: expect.stringContaining('Flaming.'), // New description format
+        description: expect.stringContaining('While holding this weapon'), // New description format
         location: 'carried',
       })
     )
@@ -211,9 +211,9 @@ describe('MagicItemBuilderDialog', () => {
     expect(mockOnCreateItem).toHaveBeenCalledWith(
       expect.objectContaining({
         name: expect.stringMatching(/Amulet of Ogre Strength$/), // Now includes base material prefix
-        cost: 800, // 50 base + 0 material (auto-selected Brass base) + 750 enchantment
+        cost: 1050, // 50 base + 0 magic base (wearables skip) + 0 material (Brass base) + 1000 enchantment (wearables use one-handed weapon cost)
         location: 'carried',
-        description: expect.stringContaining('Amulet of Ogre Strength.'),
+        description: expect.stringContaining('While wearing this item'),
       })
     )
   })
@@ -239,15 +239,15 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(screen.getByText('Flaming'))
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    // New cost model: 50 base + 500 material (50% of 1000) + 1000 enchantment = 1550
-    expect(screen.getByText('1550 coins')).toBeInTheDocument()
+    // New cost model: 50 base + 1000 magic base + 500 material extra + 1000 enchantment = 2550
+    expect(screen.getByText('2,550 coins')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: /create item/i }))
 
     expect(mockOnCreateItem).toHaveBeenCalledWith(
       expect.objectContaining({
         name: 'Flaming Iron Shortsword +1', // Now includes +1 bonus
-        cost: 1550,
+        cost: 2550,
       })
     )
   })
@@ -279,7 +279,7 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(screen.getByText('Shortsword'))
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    expect(screen.getByText('Choose Quality Tier')).toBeInTheDocument()
+    expect(screen.getByText('Choose Quality (Q3-Q8)')).toBeInTheDocument()
 
     // Navigate back
     await user.click(screen.getByRole('button', { name: /back/i }))
