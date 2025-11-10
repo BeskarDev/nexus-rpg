@@ -9,7 +9,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
     include: ['**/*.{test,spec}.{js,ts,jsx,tsx}'],
-    exclude: ['node_modules/**', 'dist/**', 'build/**', '.docusaurus/**'],
+    exclude: ['node_modules/**', 'dist/**', 'build/**', '.docusaurus/**', 'functions/**'],
     css: false,
     testTimeout: 15000, // Increase timeout to 15 seconds
     hookTimeout: 15000, // Increase hook timeout
@@ -22,6 +22,7 @@ export default defineConfig({
         'build/**',
         '.docusaurus/**',
         'coverage/**',
+        'functions/**',
         '**/*.config.*',
         '**/*.d.ts',
         'src/test-setup.ts',
