@@ -2,8 +2,6 @@
 sidebar_position: 7
 ---
 
-import { WildMagicRollerWrapper } from '@site/src/components/WildMagicRollerWrapper';
-
 # 🎲 Mystic Penance Table
 
 ![banner-img](/img/banner/magic-banner.png)
@@ -21,7 +19,7 @@ When you blunder a **rank 1 or higher** mystic spell, roll 1d6 on the Mystic Pen
 - See the Penance Options section below for details on what each type of penance requires and how long it takes.
 - After completing the penance, describe how your connection is restored—a prayer answered, spirits returning, or energies settling back into harmony.
 
-## Table (d6)
+## Mystic Penance Table (d6)
 
 | d6 | Result | Effect | Penance Required |
 |----|--------|--------|------------------|
@@ -32,7 +30,9 @@ When you blunder a **rank 1 or higher** mystic spell, roll 1d6 on the Mystic Pen
 | 5 | **Reproach.** Your power source rebukes you. The weight of your failure is made clear. | You cannot cast the miscast spell again until you complete a moderate penance. | **Prayer.** |
 | 6 | **Severance.** The connection breaks. Your power source turns away, demanding proof of your worthiness. | You cannot cast the miscast spell again until you complete a severe penance. | **Ritual.** |
 
-## Penance options
+---
+
+## Penance Options
 
 When a blunder requires penance, you must perform the specified act to restore your connection and regain access to the miscast spell. The type and scale of penance reflects the severity of the disconnection.
 
@@ -45,6 +45,7 @@ When a blunder requires penance, you must perform the specified act to restore y
 **How it works:** You present your offering with intent and respect. Narrate what you offer, where, and how you present it.
 
 **Examples by tradition:**
+
 - **Divine:** Light incense at a shrine, offer a prayer with a symbolic coin or flower.
 - **Spiritual:** Leave a gift at a spirit stone, pour water or wine on ancestral ground.
 - **Primordial:** Return a token to the element (cast herbs into fire, drop stones in water, bury offerings in earth).
@@ -58,6 +59,7 @@ When a blunder requires penance, you must perform the specified act to restore y
 **How it works:** You must spend time in devoted focus, reaching out to your patron or the forces you channel. Describe what you pray for, sing, or meditate upon. At the end, the connection is renewed.
 
 **Examples by tradition:**
+
 - **Divine:** Pray fervently to your god, confess your failure, and seek forgiveness through hymns or vigil.
 - **Spiritual:** Chant to the spirits, drum or dance in their honor, or enter a meditative trance to hear their guidance.
 - **Primordial:** Commune with the raw forces through sustained exposure—sit in the rain, meditate by a flame, breathe in the wind.
@@ -71,6 +73,7 @@ When a blunder requires penance, you must perform the specified act to restore y
 **How it works:** You must dedicate substantial time and effort to restore the bond. Describe what form your ritual takes. Whether it involves traveling to a sacred site, performing a multi-step ceremony, or completing a meaningful act of service.
 
 **Examples by tradition:**
+
 - **Divine:** Fast and pray for a full day, complete a sacred vow or observance, or make restitution through devoted service.
 - **Spiritual:** Travel to an ancestral site to pay respects, restore or tend a sacred place, or undergo a vision quest or spirit journey.
 - **Primordial:** Seek out and commune with a place of primal power, undergo a trial by exposure to your element, or perform an act that restores natural balance.

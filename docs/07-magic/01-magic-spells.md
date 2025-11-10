@@ -121,8 +121,8 @@ When attempting to cast a spell at an object or location, which normally is targ
 
 **Blunder.** The spell fails. Spend the spell’s Focus Cost. For spell rank 1 or higher, also resolve one of these effects based on the nature of the spell:
 
-- **Arcane Spell.** Roll 1d100 on the [Wild Surge Table](./06-wild-surge-table.mdx). The effect's intensity scales with the blundered spell's rank.
-- **Mystic Spell.** Roll 1d6 on the [Mystic Penance Table](./07-mystic-penance-table.mdx) to determine your patron's reaction. The table determines whether the patron shows mercy, scolds you, withdraws favour, or demands penance (which may include losing access to the miscast spell until you perform the required penance). Some results grant a deferred boon after you complete the penance.
+- **Arcane Spell.** Roll 1d100 on the [Wild Surge Table](./06-wild-surge-table.mdx).
+- **Mystic Spell.** Roll 1d6 on the [Mystic Penance Table](./07-mystic-penance-table.mdx).
 
 **Failure.** The spell fails but you don‘t have to spend its Focus Cost.
 
