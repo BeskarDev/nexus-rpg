@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import * as fs from 'fs'
 import * as path from 'path'
 
-describe('Wild Magic Table', () => {
-  const wildMagicTablePath = path.join(__dirname, '../../docs/07-magic/06-wild-magic-table.mdx')
+describe('Wild Surge Table', () => {
+  const wildMagicTablePath = path.join(__dirname, '../../docs/07-magic/06-wild-surge-table.mdx')
   const content = fs.readFileSync(wildMagicTablePath, 'utf-8')
 
   describe('Structure Validation', () => {
@@ -16,7 +16,7 @@ describe('Wild Magic Table', () => {
     })
 
     it('should have main title', () => {
-      expect(content).toContain('# 🎲 Wild Magic Table')
+      expect(content).toContain('# 🎲 Wild Surge Table')
     })
 
     it('should specify rank 1 or higher requirement', () => {
@@ -132,7 +132,7 @@ describe('Wild Magic Table', () => {
     })
 
     it('should explain the simplified mutation system', () => {
-      expect(content).toMatch(/each time.*triggers.*wild magic/i)
+  expect(content).toMatch(/each time.*triggers.*wild surge/i)
       expect(content).toMatch(/roll 1d12/i)
       expect(content).toMatch(/advance.*mutation.*one stage/i)
     })

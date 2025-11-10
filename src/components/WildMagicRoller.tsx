@@ -459,7 +459,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 74,
 		name: 'Wild Zone',
 		description:
-			'Spells cast in {radius} radius trigger additional wild magic roll (but that roll doesn\'t cascade) for {duration} duration.',
+			'Spells cast in {radius} radius trigger additional wild surge roll (but that roll doesn\'t cascade) for {duration} duration.',
 	},
 	{
 		roll: 75,
@@ -706,7 +706,7 @@ export const WildMagicRoller: React.FC = () => {
 						</FormControl>
 
 						<Button variant="contained" color="primary" onClick={handleRoll}>
-							🎲 Roll Wild Magic (d100)
+							🎲 Roll Wild Surge (d100)
 						</Button>
 					</Box>
 
