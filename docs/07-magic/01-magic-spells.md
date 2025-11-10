@@ -119,10 +119,10 @@ You cast a spell by rolling either Mind + Arcana for arcane spells, or Spirit + 
 When attempting to cast a spell at an object or location, which normally is targeted against a creature’s Defense, use the appropriate Difficulty for the spell’s rank instead (medium for rank 1, hard for rank 2, and so on).
 > 
 
-**Blunder.** The spell fails. Spend the spell’s Focus Cost. Also resolve one of these effects based on the nature of the spell:
+**Blunder.** The spell fails. Spend the spell’s Focus Cost. For spell rank 1 or higher, also resolve one of these effects based on the nature of the spell:
 
-- **Arcane Spell.** Roll once on the arcane mishap table below.
-- **Mystic Spell.** You lose access to the spell until you undergo penance to your divine patron or re-align yourself with your spiritual source of power during the next night's rest. After the completed rest, you regain access to the spell.
+- **Arcane Spell.** Roll 1d100 on the [Wild Surge Table](./06-wild-surge-table.mdx).
+- **Mystic Spell.** Roll 1d6 on the [Mystic Penance Table](./07-mystic-penance-table.md).
 
 **Failure.** The spell fails but you don‘t have to spend its Focus Cost.
 
@@ -132,12 +132,6 @@ When attempting to cast a spell at an object or location, which normally is targ
 | --- | --- | --- | --- | --- | --- | --- |
 | Focus Cost | 0 Focus | 2 Focus | 4 Focus | 6 Focus | 8 Focus | 10 Focus |
 
-**Arcane Mishap Table**
-
-| d100 | Todo |
-| --- | --- |
-|  |  |
-|  |  |
 
 ### Spell Power
 

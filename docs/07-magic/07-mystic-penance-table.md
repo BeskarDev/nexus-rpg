@@ -1,0 +1,81 @@
+---
+sidebar_position: 7
+---
+
+# 🎲 Mystic Penance Table
+
+![banner-img](/img/banner/magic-banner.png)
+
+When you blunder a **rank 1 or higher** mystic spell, roll 1d6 on the Mystic Penance Table. The result represents how your connection to your power source—whether god, spirit, or primordial force—responds to your failure.
+
+**Duration:** Penance effects last until the required penance is completed. The spell that triggered the blunder cannot be cast again until penance is resolved.
+
+**Sources of Power:** Results are written to apply equally to divine patrons (gods and goddesses), spiritual forces (ancestral spirits, nature spirits), and primordial energies (raw elemental or primal magic).
+
+## How to adjudicate
+
+- Roll the d6 and apply the immediate mechanical effect.
+- For results 4-6, you cannot cast the miscast spell again until you complete the required penance. You know which spell was affected and what must be done.
+- See the Penance Options section below for details on what each type of penance requires and how long it takes.
+- After completing the penance, describe how your connection is restored—a prayer answered, spirits returning, or energies settling back into harmony.
+
+## Mystic Penance Table (d6)
+
+| d6 | Result | Effect | Penance Required |
+|----|--------|--------|------------------|
+| 1 | **Revelation.** Your misstep reveals deeper insight. The failure becomes teaching. | Gain +1 boon on your next spell casting roll. | None. |
+| 2 | **Doubt.** Uncertainty clouds your connection. Your confidence wavers. | Suffer +1 bane on your next spell casting roll. | None. |
+| 3 | **Dissonance.** Your bond feels strained. Magic eludes you momentarily. | You cannot cast spells during your next turn. | None. |
+| 4 | **Withdrawal.** Your source of power pulls away. The miscast spell fades from reach. | You cannot cast the miscast spell again until you complete a small penance. | **Offering.** |
+| 5 | **Reproach.** Your power source rebukes you. The weight of your failure is made clear. | You cannot cast the miscast spell again until you complete a moderate penance. | **Prayer.** |
+| 6 | **Severance.** The connection breaks. Your power source turns away, demanding proof of your worthiness. | You cannot cast the miscast spell again until you complete a severe penance. | **Ritual.** |
+
+---
+
+## Penance Options
+
+When a blunder requires penance, you must perform the specified act to restore your connection and regain access to the miscast spell. The type and scale of penance reflects the severity of the disconnection.
+
+### Offering
+
+**What it is:** A symbolic gift placed where your power is honored. E.g. incense at an altar, a token at a shrine, flowers at a sacred grove, or a libation poured for the spirits.
+
+**Time required:** Short duration (about one minute). Can be performed during a short break or one delving turn.
+
+**How it works:** You present your offering with intent and respect. Narrate what you offer, where, and how you present it.
+
+**Examples by tradition:**
+
+- **Divine:** Light incense at a shrine, offer a prayer with a symbolic coin or flower.
+- **Spiritual:** Leave a gift at a spirit stone, pour water or wine on ancestral ground.
+- **Primordial:** Return a token to the element (cast herbs into fire, drop stones in water, bury offerings in earth).
+
+### Prayer
+
+**What it is:** Focused, intense communion with your power source—sustained prayer, meditation, song, or invocation. More demanding than a simple offering, this requires uninterrupted devotion.
+
+**Time required:** Medium duration (about one hour). Can be performed as part of a night's rest or as one exploration activity.
+
+**How it works:** You must spend time in devoted focus, reaching out to your patron or the forces you channel. Describe what you pray for, sing, or meditate upon. At the end, the connection is renewed.
+
+**Examples by tradition:**
+
+- **Divine:** Pray fervently to your god, confess your failure, and seek forgiveness through hymns or vigil.
+- **Spiritual:** Chant to the spirits, drum or dance in their honor, or enter a meditative trance to hear their guidance.
+- **Primordial:** Commune with the raw forces through sustained exposure—sit in the rain, meditate by a flame, breathe in the wind.
+
+### Ritual
+
+**What it is:** A significant act of devotion or restitution (a formal ceremony, a sacred journey, or a deed that proves your commitment). This is the most demanding penance.
+
+**Time required:** Long duration (one full day or more). Can be performed instead of a night's rest (counts as a bad night instead) or as one travel activity.
+
+**How it works:** You must dedicate substantial time and effort to restore the bond. Describe what form your ritual takes. Whether it involves traveling to a sacred site, performing a multi-step ceremony, or completing a meaningful act of service.
+
+**Examples by tradition:**
+
+- **Divine:** Fast and pray for a full day, complete a sacred vow or observance, or make restitution through devoted service.
+- **Spiritual:** Travel to an ancestral site to pay respects, restore or tend a sacred place, or undergo a vision quest or spirit journey.
+- **Primordial:** Seek out and commune with a place of primal power, undergo a trial by exposure to your element, or perform an act that restores natural balance.
+
+---
