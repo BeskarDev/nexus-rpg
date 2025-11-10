@@ -1,333 +1,303 @@
-# AI Agent Instruction Prompt for Nexus RPG Spell Creation
+# Spell Creation Instructions for Nexus RPG
 
-## Overview
+## Quick Reference
 
-You are an AI agent specialized in creating **spells** for Nexus RPG, a sword and sorcery tabletop RPG. This document provides comprehensive guidelines for designing balanced, thematic, and mechanically sound spells that integrate seamlessly with the existing magic system.
+### Magic Schools
 
-## Core Magic System Understanding
+| School | Philosophy | Casting | Spell Power | Focus | Catalyst |
+|--------|------------|---------|-------------|-------|----------|
+| **Arcana** | Transgressive mental power | Mind + Arcana | ½ Mind | (Mind-2) + 2×Arcana | Arcane conduit |
+| **Mysticism** | Reverent spiritual channeling | Spirit + Mysticism | ½ Spirit | (Spirit-2) + 2×Mysticism | Mystic talisman |
 
-### Two Schools of Magic
+**Failure Consequences**: Arcana = mishap table, Mysticism = lose access until penance
 
-**Arcana (Mind-based Magic)**
-- **Philosophy**: Raw mental power creating effects from nothing
-- **Casting Attribute**: Mind + Arcana
-- **Spell Power**: 1/2 Mind attribute
-- **Focus Calculation**: (Mind - 2) + (2 × Arcana rank)
-- **Catalyst Requirement**: Arcane conduit (wand, staff, orb, etc.)
-- **Cultural Context**: Once heretical, now accepted as useful for warfare and court
-- **Failure Consequence**: Roll on arcane mishap table
+### Spell Rank Statistics
 
-**Mysticism (Spirit-based Magic)**
-- **Philosophy**: Channeling and manipulating world energy through Words of Power
-- **Casting Attribute**: Spirit + Mysticism
-- **Spell Power**: 1/2 Spirit attribute
-- **Focus Calculation**: (Spirit - 2) + (2 × Mysticism rank)
-- **Catalyst Requirement**: Mystic talisman (holy symbol, spirit fetish, etc.)
-- **Cultural Context**: Community-accepted, from village shamans to high priests
-- **Failure Consequence**: Lose access to spell until penance/re-alignment
+| Rank | Focus | TN | Single | AoE | Range | Duration | Area | Power Level |
+|------|-------|-----|--------|-----|-------|----------|------|-------------|
+| 0 | 0 | 6 | +2/+4/+6 | +0/+2/+4 | Medium | Brief-Short | Melee-Close | Cantrips (≈D&D 0) |
+| 1 | 2 | 8 | +4/+8/+12 | +2/+4/+6 | Medium | Short-Medium | Close-Short | Basic (≈D&D 1-2) |
+| 2 | 4 | 10 | +6/+12/+18 | +4/+8/+12 | Medium-Long | Short-Medium | Short-Medium | Moderate (≈D&D 3-4) |
+| 3 | 6 | 12 | +8/+16/+24 | +6/+12/+18 | Long | Short-Medium | Medium-Long | High (≈D&D 5) |
+| 4 | 8 | 14 | +10/+20/+30 | +8/+16/+24 | Long-Extreme | Short-Medium | Large | Very high (≈D&D 6) |
+| 5 | 10 | 16 | +12/+24/+36 | +10/+20/+30 | Extreme | Short-Medium | Large-Extreme | Peak mortal (≈D&D 7) |
 
-### Arcane Disciplines (6 Total)
+**Damage Formula**: Spell Power + spell bonus
+**Success Levels**: Weak (0-2 over TN), Strong (3-5), Critical (6+)
 
-1. **Evocation** (*fire, frost, lightning*) - Direct elemental manipulation
-2. **Illusion** (*trickery, misdirection, obfuscation*) - False sensory information
-3. **Conjuration** (*objects, creatures, teleportation*) - Creating or summoning matter/beings
-4. **Telepathy** (*influence, communication, insight*) - Mind-to-mind connection and control
-5. **Telekinetics** (*move, repel, levitate*) - Force and motion without touch
-6. **Necromancy** (*decay, undeath, siphoning*) - Death, negative energy, life force
+---
 
-### Mystic Traditions (8 Total, in Opposing Pairs)
+## Arcane Disciplines
 
-1. **Light** (*sun, illumination, truth*) vs **Twilight** (*moon, dreams, secrets*)
-2. **Life** (*vitality, blessings, community*) vs **Death** (*plagues, curses, fear*)
-3. **Nature** (*earth, animals, plants*) vs **Tempest** (*storms, earthquakes, lightning*)
-4. **Peace** (*calmness, protection, selflessness, travel, law*) vs **War** (*fury, violence, pride*)
+### Evocation (*fire, frost, lightning, acid, blast*)
+- **Identity**: Transgressive elemental manipulation
+- **Excels**: Offense | **Decent**: Control, Defense | **Weak**: Healing, Support, Utility
+- **Damage Types**: Fire, Frost, Lightning, Acid, Blast
+- **Typical Effects**: Direct damage, elemental walls/barriers, burning/chilling/shocking, explosions
+- **Conditions**: Burning (fire), slowed (frost), stunned (lightning), corroding (acid), knocked prone (blast)
 
-Each tradition has specific tenets that mystics must follow, violation of which causes loss of spellcasting ability.
+### Illusion (*trickery, misdirection, obfuscation, hallucinations, distortion*)
+- **Identity**: Selfish deception and false reality
+- **Excels**: Utility | **Decent**: Control, Support | **Weak**: Offense, Healing, Defense
+- **Damage Types**: Psychic, Blast, Frost
+- **Typical Effects**: Invisibility, disguises, false terrain, phantom creatures, mental confusion
+- **Conditions**: Frightened, confused, charmed (via false perception), blinded
 
-## Spell Structure & Mechanics
+### Conjuration (*objects, creatures, teleportation, binding, force*)
+- **Identity**: Unnatural creation and forced summoning
+- **Excels**: Utility | **Decent**: Offense, Support | **Weak**: Healing, Defense, Control
+- **Damage Types**: Physical, Blast, Acid
+- **Typical Effects**: Summon creatures/objects, teleportation, extradimensional storage, binding
+- **Conditions**: Grappled (binding), trapped (force walls), summoned creatures apply their own
 
-### Spell Rank System
+### Telepathy (*influence, communication, insight, domination, memory*)
+- **Identity**: Exploitative mind control and violation
+- **Excels**: Control | **Decent**: Utility, Support | **Weak**: Offense, Healing, Defense
+- **Damage Types**: Psychic, Radiant, Necrotic
+- **Typical Effects**: Mind reading, mental commands, charm, memory alteration, telepathic bonds
+- **Conditions**: Charmed, frightened, confused, dominated, dazed
 
-| Rank | Focus Cost | Target Difficulty (Static TN) | Power Level |
-|------|------------|--------------------------------|-------------|
-| 0    | 0          | Easy (6)                       | Cantrip-level utility |
-| 1    | 2          | Medium (8)                     | Basic combat/utility |
-| 2    | 4          | Hard (10)                      | Moderate power |
-| 3    | 6          | Very Hard (12)                 | High power |
-| 4    | 8          | Extreme (14)                   | Very high power |
-| 5    | 10         | Legendary (16)                 | Maximum power |
+### Telekinetics (*move, repel, levitate, crush, gravity*)
+- **Identity**: Transgressive force without physical contact
+- **Excels**: Utility | **Decent**: Offense, Defense | **Weak**: Healing, Support, Control
+- **Damage Types**: Physical, Blast, Lightning
+- **Typical Effects**: Move objects, force barriers, levitation, crushing, gravity manipulation
+- **Conditions**: Prone (knocked down), restrained (held), pushed/pulled
 
-### Success Level Effects
+### Necromancy (*decay, undeath, siphoning, defilement, puppetry*)
+- **Identity**: Selfish manipulation of death and life force
+- **Excels**: Control | **Decent**: Offense, Utility | **Weak**: Healing, Support, Defense
+- **Damage Types**: Necrotic, Poison, Physical
+- **Typical Effects**: Life drain, animate undead, decay, speak with dead, corpse manipulation
+- **Conditions**: Weakened, diseased, poisoned, bleeding, life-drained
 
-All spells must define effects for each Success Level:
-- **Weak Success** (0-2 above TN): Base effect
-- **Strong Success** (3-5 above TN): Enhanced effect (typically 2x power)
-- **Critical Success** (6+ above TN): Maximum effect (typically 3x power)
+---
 
-### Damage/Healing Scaling
+## Mystic Traditions
 
-**Spell Damage Formula**: Spell Power + spell bonus
-- Rank 0: +2/+4/+6 typical progression
-- Rank 1: +4/+8/+12 typical progression
-- Higher ranks: Scale appropriately
+### Light (*sun, illumination, truth, clarity, judgement*)
+- **Identity**: Reverent revelation and purification
+- **Excels**: Support | **Decent**: Offense, Healing | **Weak**: Utility, Defense, Control
+- **Damage Types**: Radiant, Fire, Blast
+- **Typical Effects**: Reveal lies/invisibility, anti-undead, illumination, purification, guidance
+- **Conditions**: Blinded (radiance), burning (holy fire), revealed (remove invisibility)
 
-**Absolute Values**: When written as "X damage" (no +), don't add Spell Power.
+### Twilight (*moon, dreams, secrets, fate, illusion*)
+- **Identity**: Respectful balance and mystery
+- **Excels**: Utility | **Decent**: Control, Support | **Weak**: Offense, Defense, Healing
+- **Damage Types**: Psychic, Frost
+- **Typical Effects**: Sleep, prophetic dreams, shadow manipulation, transformation, fate reading
+- **Conditions**: Unconscious (sleep), frightened, confused (nightmares), chilled
 
-### Core Spell Properties
+### Life (*vitality, blessings, community, hope, fertility*)
+- **Identity**: Communal growth and restoration
+- **Excels**: Healing | **Decent**: Support, Utility | **Weak**: Offense, Defense, Control
+- **Damage Types**: Radiant, Psychic (overload)
+- **Typical Effects**: Healing, cure diseases, blessings, growth, strengthen bonds
+- **Conditions**: Blessed (positive), energized, fertile, growing
 
-| Property | Usage Guidelines |
-|----------|------------------|
-| **blast (cone/line)** | Area effects with directional limitations |
-| **concentrate** | Ongoing effects requiring mental focus |
-| **enchant (X)** | Temporary enhancement of person/equipment |
-| **illusory** | Can be detected with Spirit + Perception vs Resist |
-| **material (X)** | Requires component, not consumed |
-| **material cost (X)** | Requires component, consumed on cast |
-| **quick** | Can be cast as Quick Action |
-| **ritual (X)** | Takes extended time to cast |
-| **singular** | Only one instance can exist at a time |
+### Death (*plagues, curses, fear, decay, ancestry*)
+- **Identity**: Natural ending and ancestral respect
+- **Excels**: Control | **Decent**: Offense, Utility | **Weak**: Healing, Support, Defense
+- **Damage Types**: Necrotic, Poison, Acid
+- **Typical Effects**: Disease, curses, wither, speak with ancestors, fear, decay
+- **Conditions**: Diseased, cursed, frightened, withered, poisoned
 
-## Design Philosophy & Themes
+### Nature (*earth, water, animals, plants*)
+- **Identity**: Harmonious adaptation with natural world
+- **Excels**: Utility | **Decent**: Healing, Support | **Weak**: Offense, Defense, Control
+- **Damage Types**: Physical, Poison, Acid
+- **Typical Effects**: Animal communication, plant control, weather, environmental hazards, healing herbs
+- **Conditions**: Poisoned (toxins), entangled (plants), difficult terrain (mud/vines)
 
-### Arcane Spell Themes
+### Tempest (*hurricanes, earthquakes, thunderstorms, sandstorms, floods*)
+- **Identity**: Respectful wielding of destructive natural forces
+- **Excels**: Offense | **Decent**: Control, Utility | **Weak**: Healing, Support, Defense
+- **Damage Types**: Lightning, Frost, Blast
+- **Typical Effects**: Storm summoning, lightning strikes, earthquakes, floods, wind control
+- **Conditions**: Stunned (lightning), knocked prone (wind/quake), slowed (ice/water)
 
-**Evocation**
-- Direct, aggressive, elemental
-- High damage potential but straightforward
-- Fire (burning, ignition), Frost (slowing, chilling), Lightning (chaining, stunning)
-- Examples: Projectiles, walls of elements, protective auras
+### Peace (*calmness, protection, selflessness, travel, law*)
+- **Identity**: Communal safety and lawful order
+- **Excels**: Defense | **Decent**: Support, Healing | **Weak**: Offense, Control, Utility
+- **Damage Types**: Physical (deterrent), Blast (concussive), Psychic (calming)
+- **Typical Effects**: Sanctuary, calm emotions, protective barriers, safe travel, lawful bonds
+- **Conditions**: Calmed, protected (sanctuary), oath-bound, peaceful sleep
 
-**Illusion**
-- Deception, misdirection, concealment
-- Lower direct damage, high utility
-- False images, invisibility, phantom sounds, mental confusion
-- Examples: Disguises, false terrain, phantom creatures
+### War (*fury, pride, blood, justice, triumph*)
+- **Identity**: Honorable combat prowess and righteous victory
+- **Excels**: Offense | **Decent**: Control, Support | **Weak**: Healing, Defense, Utility
+- **Damage Types**: Physical (weapons), Fire (battle rage), Blast (explosive)
+- **Typical Effects**: Weapon blessing, combat fury, tactical advantage, battle cries, blood magic
+- **Conditions**: Emboldened, enraged, bleeding (honorable wounds), inspired
 
-**Conjuration**
-- Creation, summoning, teleportation
-- Tactical positioning and resource generation
-- Temporary objects, summoned creatures, instant transportation
-- Examples: Weapons from nothing, calling creatures, dimension doors
+---
 
-**Telepathy**
-- Mind control, communication, mental attacks
-- Social and information-gathering focus
-- Reading thoughts, influencing actions, mental communication
-- Examples: Charm effects, telepathic bonds, mental domination
+## Spell Properties
 
-**Telekinetics**
-- Force and motion manipulation
-- Battlefield control and manipulation
-- Moving objects, creating barriers, applying force at distance
-- Examples: Force bolts, invisible hands, barriers of pure force
+| Property | Effect | Usage Notes |
+|----------|--------|-------------|
+| **blast (cone/line)** | Directional area effect | Half AV ignored (concussive force) |
+| **concentrate** | Requires ongoing focus | Broken by damage/action |
+| **enchant (X)** | Temporary enhancement | Duration specified |
+| **illusory** | False sensory information | Spirit + Perception vs Resist to detect |
+| **material (X)** | Requires component | Not consumed |
+| **material cost (X)** | Component consumed | Cannot be reused |
+| **quick** | Cast as Quick Action | Reaction spells |
+| **ritual (X)** | Extended casting time | Usually minutes/hours |
+| **singular** | Only one instance active | Recasting ends previous |
 
-**Necromancy**
-- Death, decay, negative energy
-- Life force manipulation, undead creation
-- Draining vitality, communicating with dead, animating corpses
-- Examples: Life drain, speak with dead, animate skeleton
+---
 
-### Mystic Spell Themes
+## Damage Scaling Guidelines
 
-**Light Tradition**
-- Truth, revelation, illumination, healing
-- Anti-undead, revealing hidden things, providing guidance
-- Examples: Detect lies, healing wounds, banishing shadows
+### Standard Scaling
+- **Single-target**: +2 weak damage per rank (2→4→6→8→10)
+- **AoE**: One rank lower than single-target
+- **Rank 0 AoE**: Special case +0/+2/+4 (unlimited casting balance)
 
-**Twilight Tradition**
-- Secrets, dreams, balance, transformation
-- Sleep effects, prophecy, changing forms
-- Examples: Prophetic dreams, shape-changing, sleep spells
+### Deviation Scenarios
 
-**Life Tradition**
-- Growth, healing, community, vitality
-- Healing, plant growth, blessing allies
-- Examples: Cure diseases, accelerate growth, strengthen bonds
+| Scenario | Adjustment | Rationale | Example |
+|----------|------------|-----------|---------|
+| **Smaller area** | Up to standard rank | Fewer targets, higher risk | Rank 2 melee AoE: +6/+12/+18 |
+| **Larger area** | Two ranks lower | More targets, easier | Rank 2 medium area: +2/+4/+6 |
+| **Strong secondary** | -1 to -2 steps | Trade damage for utility | +4/+8/+12 → +3/+6/+9 |
+| **Control-primary** | Minimal damage | Powerful effect justifies | Rank 0 fear: +0/+2/+4 |
+| **Chain/split** | Secondary reduced | Divide power | Primary +2/+4/+6, chain +0/+2/+4 |
 
-**Death Tradition**
-- Endings, decay, fear, necessary destruction
-- Withering, curse effects, confronting mortality
-- Examples: Cause disease, induce fear, wither plants
+**Balance Principle**: Total spell power stays consistent within rank through trade-offs.
 
-**Nature Tradition**
-- Harmony, adaptation, wild creatures, elements
-- Animal communication, weather effects, plant control
-- Examples: Speak with animals, control weather, entangle
+---
 
-**Tempest Tradition**
-- Change, upheaval, storms, earthquakes
-- Destructive natural forces, breaking stagnation
-- Examples: Lightning strikes, earthquakes, hurricanes
+## Power Level Constraints
 
-**Peace Tradition**
-- Calm, protection, resolution, travel
-- Defensive effects, calming emotions, safe passage
-- Examples: Sanctuary spells, calm emotions, swift travel
+### Rank 5 Limits (Peak Mortal Power)
+1. **Damage**: Max +10 weak, +20 strong, +30 critical (single-target)
+2. **Area**: Large zones, not "entire battlefield"
+3. **Duration**: Medium maximum (not permanent)
+4. **Effects**: Powerful but escapable/counterable
+5. **No Instant Wins**: No auto-kills or permanent solutions
+6. **Concentration**: Most require it (can be broken)
+7. **Bounded Power**: Impressive but mortal-scale, not reality-warping
 
-**War Tradition**
-- Strength, combat prowess, honorable conflict
-- Combat enhancement, weapon blessing, tactical advantage
-- Examples: Weapon blessing, combat fury, tactical insight
+**Good D&D Level 7 Models**: Delayed Blast Fireball, Plane Shift, Finger of Death, Reverse Gravity, Forcecage, Etherealness, Regenerate
 
-## Spell Creation Guidelines
+**Avoid D&D Level 9 Power**: Wish, True Resurrection, Meteor Swarm, Time Stop, Imprisonment
 
-### Balance Considerations
+---
 
-**Power Level Scaling**
-- Rank 0: Utility focus, minimal combat impact
-- Rank 1-2: Solid combat/utility options
-- Rank 3-4: Major battlefield presence
-- Rank 5: Campaign-defining effects
+## Spell Creation Checklist
 
-**Focus Cost vs. Effect**
-- Each rank should feel meaningfully more powerful
-- Higher ranks should be situationally powerful, not always better
-- Consider opportunity cost of Focus expenditure
+### Theme & Identity
+- [ ] Fits tradition/discipline aspects (check magic system instructions)
+- [ ] Aligns with Excels/Decent roles (avoid Weak roles)
+- [ ] Uses appropriate damage types
+- [ ] Arcane feels transgressive/selfish, Mystic feels reverent/communal
+- [ ] Includes 1-3 aspects in flavor
 
-**Range Limitations**
-- Touch: Most powerful effects, highest risk
-- Melee/Close: Strong effects, some risk
-- Short/Medium: Standard range, balanced power
-- Long+: Reduced power for safety
-
-### Thematic Integration
-
-**Cultural Resonance**
-- Arcane spells reflect academic/mental mastery
-- Mystic spells reflect spiritual/natural connection
-- Consider which cultures would develop specific spells
-- Include flavor text that evokes ancient civilizations
-
-**Mechanical-Thematic Coherence**
-- Spell mechanics should reinforce thematic elements
-- Fire spells cause burning, frost slows, lightning chains
-- Light reveals truth, shadows conceal, nature adapts
-
-### Writing Standards
-
-**Effect Description Structure**
-1. **Flavor Description**: What the caster does/sees
-2. **Success Level Effects**: Mechanical outcomes by SL
-3. **Additional Uses**: Non-combat applications
-4. **Special Interactions**: How it works with other systems
-
-**Language Conventions**
-- Use **bold** for conditions, mechanical terms
-- Use *italics* for tradition/discipline names, flavor elements
-- Be specific about targeting: "vs. Dodge", "vs. Resist", "Medium (8)"
-- Always specify duration: briefly, short, medium, long
-
-### Heightening Guidelines
-
-**When to Include Heightening**
-- Spells that scale well with additional power
-- Usually damage-dealing or numeric bonus spells
-- Provide meaningful scaling without overshadowing higher-rank spells
-
-**Heightening Progression**
-- Should feel like casting a more powerful version
-- Typically 150% damage/effect per rank increase
-- May add additional targets or effects
-
-## Common Spell Templates
-
-### Damage Spell Template
-```
-**Effect**
-[Flavor description of casting]
-**Weak.** Deal +X [damage type] damage [+ condition if appropriate]
-**Strong.** Deal +Y [damage type] damage [+ enhanced condition]
-**Critical.** Deal +Z [damage type] damage [+ maximum condition]
-[Additional utility applications]
-```
-
-### Utility Spell Template
-```
-**Effect**
-[Flavor description and basic function]
-**Weak.** [Base effect with duration/scope]
-**Strong.** [Enhanced effect or additional benefit]
-**Critical.** [Maximum effect or additional features]
-[Special applications or interactions]
-```
-
-### Buff/Debuff Template
-```
-**Effect**
-[Flavor description of enchantment/curse]
-**Weak.** Target gains/suffers [effect] for [duration]
-**Strong.** [Enhanced effect or additional targets]
-**Critical.** [Maximum effect or extended duration]
-[Ongoing interaction rules if needed]
-```
-
-## Quality Assurance Checklist
-
-### Mechanical Validation
-- [ ] Spell rank appropriate for power level
-- [ ] Focus cost matches rank
-- [ ] Success levels provide meaningful scaling
+### Mechanics
+- [ ] Rank appropriate for power level
+- [ ] Damage follows scaling guidelines (or has justified deviation)
+- [ ] Success levels provide meaningful scaling (Weak/Strong/Critical)
 - [ ] Range appropriate for effect power
+- [ ] Duration specified clearly (briefly/short/medium/long)
 - [ ] Properties correctly applied
-- [ ] Heightening (if applicable) provides good scaling
+- [ ] Spell Power formula clear (+ bonus or absolute value)
 
-### Thematic Validation
-- [ ] Fits chosen discipline/tradition theme
-- [ ] Reflects appropriate cultural context
-- [ ] Flavor text enhances rather than obscures mechanics
-- [ ] Cultural sensitivity maintained for inspiration sources
-
-### Balance Validation
-- [ ] Power level appropriate for rank and cost
+### Balance
 - [ ] Not strictly superior to existing spells
 - [ ] Provides interesting tactical choices
-- [ ] Edge cases considered and addressed
+- [ ] Edge cases considered
+- [ ] Rank 5 respects power ceiling (D&D 7, not 9)
+- [ ] Deviations from standard scaling justified by trade-offs
 
-### Integration Validation
-- [ ] Works with existing spell properties
-- [ ] Interacts properly with conditions and other systems
-- [ ] Respects established magical limitations
-- [ ] Follows established terminology exactly
+### Writing Quality
+- [ ] Flavor description evocative
+- [ ] Mechanical terms in **bold**
+- [ ] Tradition/discipline names in *italics*
+- [ ] Targeting clear ("vs. Dodge", "vs. Resist")
+- [ ] Effects unambiguous
 
-## Example Analysis
+---
 
-### Well-Designed Spell: Chromatic Orb (Rank 1 Evocation)
-**Strengths:**
-- Clear elemental choice creates tactical decisions
-- Damage scales appropriately with SL
-- Each element provides unique secondary effect
-- Heightening provides meaningful scaling
-- Fits evocation theme perfectly
+## Spell Writing Template
 
-**Design Lessons:**
-- Player choice (damage type) adds tactical depth
-- Secondary effects reinforce elemental themes
-- Simple base concept with meaningful variations
+```markdown
+### Spell Name (*tradition/discipline*, Rank X)
+**Properties:** [quick, concentrate, enchant (duration), etc.]
 
-### Design Pitfalls to Avoid
+**Effect**
+[Evocative flavor description of casting and visual effect]
+**Weak.** [Base mechanical effect with numbers and durations]
+**Strong.** [Enhanced effect, typically 2× power]
+**Critical.** [Maximum effect, typically 3× power]
 
-**Power Creep**
-- Don't make new spells strictly better than existing ones
-- Consider opportunity cost and niche protection
+[Optional heightening rules if spell scales well]
+[Optional additional utility applications]
+```
 
-**Complexity Overflow**
-- Avoid spells requiring extensive subsystems
-- Keep effects understandable at first reading
+**Example**:
+```markdown
+### Chromatic Orb (*evocation*, Rank 1)
+**Effect**
+You conjure a crackling sphere of elemental energy and hurl it at your foe. Choose fire, frost, or lightning when casting.
+**Weak.** Deal +4 damage of chosen type.
+**Strong.** Deal +8 damage. Fire: target is burning. Frost: target is slowed. Lightning: arcs to one adjacent enemy for +2 damage.
+**Critical.** Deal +12 damage. Apply appropriate condition for short duration.
 
-**Theme Drift**
-- Ensure spells fit their assigned discipline/tradition
-- Don't blur thematic boundaries without good reason
+**Heighten.** For each additional rank of Focus spent, damage increases by +4/+8/+12 (weak/strong/critical).
+```
 
-**Balance Blindness**
-- Consider spell in context of full caster capabilities
-- Test edge cases and combination effects
+---
+
+## Common Design Patterns
+
+### Damage Spells
+- Single-target: Standard damage progression by rank
+- AoE: One rank lower, specify area (cone/line/burst)
+- Hybrid: Reduced damage + condition/utility effect
+- Consider damage type implications (burning, slowed, stunned, etc.)
+
+### Control Spells
+- Target Resist TN (6 + rank)
+- Duration appropriate to rank (briefly → medium max)
+- Condition from appropriate list for tradition/discipline
+- Strong/Critical increase duration or targets
+
+### Utility Spells
+- Non-combat applications emphasized
+- Exploration, travel, communication, knowledge
+- Scale by scope (targets, area, duration, information detail)
+- Rank 0 = limited/simple, Rank 5 = extensive/complex
+
+### Buff/Debuff Spells
+- Numeric bonuses modest (+1 to +3 typical)
+- Duration limits power (briefly for strong effects, longer for weaker)
+- enchant property for temporary enhancements
+- Clear end conditions (concentration, time, dispel)
+
+---
+
+## Design Pitfalls to Avoid
+
+❌ **Power Creep**: Making spells strictly better than existing options
+❌ **Complexity Overflow**: Requiring extensive subsystems or edge-case tracking
+❌ **Theme Drift**: Creating effects outside tradition/discipline identity
+❌ **Balance Blindness**: Ignoring spell interaction with other abilities
+❌ **Vague Wording**: Ambiguous targeting, duration, or mechanical effects
+❌ **Weak Role Violation**: Creating spells in categories the tradition/discipline should avoid
+
+---
 
 ## Final Reminders
 
-1. **Start with Theme**: What story does this spell tell?
-2. **Validate Mechanics**: Does it work cleanly with existing systems?
-3. **Check Balance**: Is it appropriately powerful for its cost?
-4. **Test Integration**: How does it interact with other abilities?
-5. **Refine Language**: Is it clear, concise, and evocative?
+**Design Order**:
+1. Choose tradition/discipline and check aspects/roles
+2. Determine appropriate rank for desired power level
+3. Select damage types and conditions from allowed list
+4. Write evocative flavor tied to aspects
+5. Assign mechanical values using scaling guidelines
+6. Validate against checklist
 
-Remember: Nexus RPG prioritizes **meaningful tactical choices** within a **coherent thematic framework**. Every spell should serve the game's core identity as an accessible yet strategic sword-and-sorcery experience rooted in ancient world inspiration.
+**Core Philosophy**: Spells should provide meaningful tactical choices within a coherent thematic framework, respecting the bounded power ceiling and the distinction between transgressive Arcana and reverent Mysticism.
