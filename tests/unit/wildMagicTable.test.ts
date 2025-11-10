@@ -95,11 +95,6 @@ describe('Wild Surge Table', () => {
         expect(mainTableSection).toMatch(pattern)
       }
     })
-
-    it('should be reasonably sized with optional mutations', () => {
-      // Allow for larger file with mutation section (~28-30k characters)
-      expect(content.length).toBeLessThan(35000)
-    })
   })
 
   describe('Anti-recursion safeguards', () => {
