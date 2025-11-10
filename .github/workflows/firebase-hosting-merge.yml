@@ -8,7 +8,7 @@ on:
       - main
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '22'
 
 jobs:
   build_and_deploy:
@@ -28,8 +28,8 @@ jobs:
           echo "Yarn version: $(yarn --version)"
           echo "NPM version: $(npm --version)"
           # Ensure we're using the correct Node.js version
-          if ! node --version | grep -q "v20"; then
-            echo "ERROR: Expected Node.js v20.x.x but got $(node --version)"
+          if ! node --version | grep -q "v22"; then
+            echo "ERROR: Expected Node.js v22.x.x but got $(node --version)"
             exit 1
           fi
 
@@ -39,12 +39,16 @@ jobs:
           path: |
             ~/.cache/yarn
             node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+            functions/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock', 'functions/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile --prefer-offline
+
+      - name: Install functions dependencies
+        run: cd functions && yarn install --frozen-lockfile --prefer-offline
 
       - name: Run tests with coverage
         run: yarn test:coverage
@@ -52,10 +56,20 @@ jobs:
       - name: Build application
         run: yarn build
 
-      - name: Deploy to Firebase
+      - name: Deploy Hosting to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXUS_RPG_D04D1 }}
           channelId: live
           projectId: nexus-rpg-d04d1
+      
+      - name: Setup Firebase Service Account
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXUS_RPG_D04D1 }}' > $HOME/gcloud-key.json
+          
+      - name: Cleanup Service Account
+        if: always()
+        run: |
+          rm -f $HOME/gcloud-key.json
+          rm -f ${{ github.workspace }}/gcloud-key.json

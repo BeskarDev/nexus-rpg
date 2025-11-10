@@ -4,7 +4,7 @@ import { useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import React, { useEffect } from 'react'
 import { Character, CharacterDocument } from '../../types/Character'
-import { CharacterList } from './CharacterList'
+import { CharacterList, CharacterListSkeleton } from './CharacterList'
 import { CharacterSheet } from './CharacterSheet'
 import { CharacterSheetHeader } from './CharacterSheetHeader'
 import { characterSheetActions } from './characterSheetReducer'
@@ -22,11 +22,13 @@ export type DeepPartial<T> = {
 }
 
 export const CharacterSheetContainer: React.FC = () => {
-	const { userLoggedIn, currentUser, isAdmin, setIsAdmin } = useAuth()
+	const { userLoggedIn, currentUser, isAdmin, setIsAdmin, viewAsAdmin } = useAuth()
 	const { activeCharacter, autosave, saveTimeout, unsavedChanges } =
 		useAppSelector((state) => state.characterSheet)
 	const dispatch = useAppDispatch()
 	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])
+	const [allCharacters, setAllCharacters] = React.useState<CharacterDocument[]>([])
+	const [loadingCharacters, setLoadingCharacters] = React.useState(true)
 
 	const queryString = window.location.search
 	const urlParams = new URLSearchParams(queryString)
@@ -63,28 +65,50 @@ export const CharacterSheetContainer: React.FC = () => {
 		}
 	}, [userLoggedIn, currentUser, activeCharacterId])
 
+	// Filter characters based on viewAsAdmin toggle
+	useEffect(() => {
+		if (!isAdmin || !currentUser) return
+		
+		if (viewAsAdmin) {
+			// Show all characters (admin view)
+			setCharacters(allCharacters)
+		} else {
+			// Show only user's own characters (non-admin view)
+			const userChars = allCharacters.filter(char => char.collectionId === currentUser.uid)
+			setCharacters(userChars)
+		}
+	}, [viewAsAdmin, isAdmin, currentUser, allCharacters])
+
 	const getDocuments = async () => {
+		setLoadingCharacters(true)
 		try {
 			const userUid = currentUser?.uid || 'dev-user'
 
 			// Get user's collection
 			const userChars = await firebaseService.getCollection(userUid)
-			setCharacters(userChars)
-
+			
 			// Check for admin permissions and load additional collections
 			const userInfo = await firebaseService.getUserInfo(userUid)
 			setIsAdmin(Boolean(userInfo.allowedCollections.length))
 
 			// Load additional collections if user has admin access
 			if (userInfo.allowedCollections.length > 0) {
+				const allChars = [...userChars]
 				for (const adminCollectionId of userInfo.allowedCollections) {
 					const adminChars =
 						await firebaseService.getCollection(adminCollectionId)
-					setCharacters((chars) => [...chars, ...adminChars])
+					allChars.push(...adminChars)
 				}
+				setAllCharacters(allChars)
+				setCharacters(allChars)
+			} else {
+				setAllCharacters(userChars)
+				setCharacters(userChars)
 			}
 		} catch (error) {
 			logger.error('Error fetching documents', error)
+		} finally {
+			setLoadingCharacters(false)
 		}
 	}
 
@@ -212,10 +236,14 @@ export const CharacterSheetContainer: React.FC = () => {
 			)}
 			{(userLoggedIn || process.env.NODE_ENV === 'development') &&
 				!activeCharacterId && (
-					<CharacterList
-						characters={characters}
-						handleDeleteCharacter={handleDeleteCharacter}
-					/>
+					loadingCharacters ? (
+						<CharacterListSkeleton adminView={isAdmin && viewAsAdmin} />
+					) : (
+						<CharacterList
+							characters={characters}
+							handleDeleteCharacter={handleDeleteCharacter}
+						/>
+					)
 				)}
 			{(userLoggedIn || process.env.NODE_ENV === 'development') &&
 				activeCharacterId &&

@@ -3,6 +3,7 @@ sidebar_position: 1
 ---
 
 import { CompanionBuilderWrapper } from '@site/src/components/CompanionBuilderWrapper';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
 # 🐎 Mounts & Companions
 
@@ -141,7 +142,9 @@ Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fo
 
 ### Companion Statistics
 
-<CompanionBuilderWrapper />
+<BrowserOnly fallback={<div>Loading Companion Builder...</div>}>
+  {() => <CompanionBuilderWrapper />}
+</BrowserOnly>
 
 | Tier | 0 (Harmless) | 1 (Capable) | 2 (Dangerous) | 3 (Ferocious) | 4 (Monstrous) | 5 (Primeval) |
 | --- | --- | --- | --- | --- | --- | --- |
