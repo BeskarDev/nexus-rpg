@@ -101,13 +101,13 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(nextButton)
 
     // Step 2: Choose quality
-    expect(screen.getByText('Choose Quality Tier')).toBeInTheDocument()
+    expect(screen.getByText('Choose Quality (Q3-Q8)')).toBeInTheDocument()
     await user.click(screen.getByText('Q4 (Lesser Magic)'))
     
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    // Step 3: Special Material (optional)
-    expect(screen.getByText('Select Special Material (Optional)')).toBeInTheDocument()
+    // Step 3: Material (required - should auto-select a base material)
+    expect(screen.getAllByText('Select Material (Required)')[0]).toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: /next/i }))
 
     // Step 4: Enchantment (optional)
@@ -120,14 +120,14 @@ describe('MagicItemBuilderDialog', () => {
 
     // Step 5: Review & Create
     expect(screen.getByText('Review & Create Magic Item')).toBeInTheDocument()
-    expect(screen.getByText('Flaming Shortsword')).toBeInTheDocument()
+    expect(screen.getByText(/Shortsword \+1/)).toBeInTheDocument() // Material prefix + Flaming + Shortsword + +1
   })
 
-  it('should require at least material or enchantment to create item', async () => {
+  it('should allow creating item with just base material and no enchantment', async () => {
     const user = userEvent.setup()
     renderDialog()
 
-    // Navigate to final step without selecting material or enchantment
+    // Navigate to final step with base material auto-selected, no enchantment
     // Step 1: Select base item
     await user.click(screen.getByRole('combobox', { name: /category/i }))
     await user.click(screen.getByText('One-Handed Weapons'))
@@ -138,15 +138,14 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(screen.getByText('Q4 (Lesser Magic)'))
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    // Step 3: Skip material
+    // Step 3: Accept auto-selected base material (Bronze)
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    // Step 4: Skip enchantment
+    // Step 4: Skip enchantment (optional)
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    // Should show warning and disable create button
-    expect(screen.getByText(/must select at least one special material or enchantment/)).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /create item/i })).toBeDisabled()
+    // Should allow creating item with base material only
+    expect(screen.getByRole('button', { name: /create item/i })).toBeEnabled()
   })
 
   it('should create a weapon with correct properties', async () => {
@@ -174,13 +173,13 @@ describe('MagicItemBuilderDialog', () => {
 
     expect(mockOnCreateItem).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'Flaming Shortsword',
-        cost: 1050, // 50 base + 1000 Q4 enhancement
+        name: expect.stringMatching(/Flaming.*Shortsword \+1$/), // Base material + Flaming + Shortsword + +1
+        cost: 2050, // 50 base + 1000 magic base + 0 material (Bronze base) + 1000 enchantment
         damage: expect.objectContaining({
           weapon: 3, // 2 base + 1 quality bonus (Q2->Q4 = +1)
           type: 'physical',
         }),
-        description: expect.stringContaining('Flaming.'), // New description format
+        description: expect.stringContaining('While holding this weapon'), // New description format
         location: 'carried',
       })
     )
@@ -211,15 +210,15 @@ describe('MagicItemBuilderDialog', () => {
 
     expect(mockOnCreateItem).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'Amulet of Ogre Strength',
-        cost: 800,
+        name: expect.stringMatching(/Amulet of Ogre Strength$/), // Now includes base material prefix
+        cost: 1050, // 50 base + 0 magic base (wearables skip) + 0 material (Brass base) + 1000 enchantment (wearables use one-handed weapon cost)
         location: 'carried',
-        description: expect.stringContaining('Amulet of Ogre Strength.'),
+        description: expect.stringContaining('While wearing this item'),
       })
     )
   })
 
-  it('should calculate double cost for both material and enchantment', async () => {
+  it('should calculate correct cost for special material and enchantment', async () => {
     const user = userEvent.setup()
     renderDialog()
 
@@ -232,7 +231,7 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(screen.getByText('Q4 (Lesser Magic)'))
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    // Select iron material (available for weapons at Q4)
+    // Select iron material (available for weapons at Q4 as special material)
     await user.click(screen.getByText('Iron'))
     await user.click(screen.getByRole('button', { name: /next/i }))
 
@@ -240,15 +239,15 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(screen.getByText('Flaming'))
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    // Should show double cost: 50 + 2 * 1000 = 2050
-    expect(screen.getByText('2050 coins')).toBeInTheDocument() // 50 + 2 * 1000
+    // New cost model: 50 base + 1000 magic base + 500 material extra + 1000 enchantment = 2550
+    expect(screen.getByText('2,550 coins')).toBeInTheDocument()
 
     await user.click(screen.getByRole('button', { name: /create item/i }))
 
     expect(mockOnCreateItem).toHaveBeenCalledWith(
       expect.objectContaining({
-        name: 'Flaming Iron Shortsword',
-        cost: 2050,
+        name: 'Flaming Iron Shortsword +1', // Now includes +1 bonus
+        cost: 2550,
       })
     )
   })
@@ -280,7 +279,7 @@ describe('MagicItemBuilderDialog', () => {
     await user.click(screen.getByText('Shortsword'))
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    expect(screen.getByText('Choose Quality Tier')).toBeInTheDocument()
+    expect(screen.getByText('Choose Quality (Q3-Q8)')).toBeInTheDocument()
 
     // Navigate back
     await user.click(screen.getByRole('button', { name: /back/i }))
