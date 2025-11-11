@@ -75,7 +75,8 @@ export function useCreatureBuilder() {
 		attr: 'str' | 'agi' | 'spi' | 'mnd',
 		value: string | null,
 	) => {
-		const key = `custom${attr.charAt(0).toUpperCase() + attr.slice(1)}` as keyof CreatureBuilderState
+		const key =
+			`custom${attr.charAt(0).toUpperCase() + attr.slice(1)}` as keyof CreatureBuilderState
 		setState((prev) => ({ ...prev, [key]: value }))
 	}
 
@@ -83,7 +84,8 @@ export function useCreatureBuilder() {
 		defense: 'parry' | 'dodge' | 'resist',
 		value: number | null,
 	) => {
-		const key = `custom${defense.charAt(0).toUpperCase() + defense.slice(1)}` as keyof CreatureBuilderState
+		const key =
+			`custom${defense.charAt(0).toUpperCase() + defense.slice(1)}` as keyof CreatureBuilderState
 		setState((prev) => ({ ...prev, [key]: value }))
 	}
 

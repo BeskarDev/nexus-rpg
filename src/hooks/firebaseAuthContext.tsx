@@ -70,7 +70,7 @@ export function AuthProvider({ children }) {
 		try {
 			// First check custom claims (requires token refresh)
 			const idTokenResult = await user.getIdTokenResult()
-			
+
 			if (idTokenResult.claims.admin === true) {
 				setIsAdmin(true)
 				return
@@ -78,7 +78,7 @@ export function AuthProvider({ children }) {
 
 			// Fall back to checking Firestore
 			const adminDoc = await getDoc(doc(db, 'admins', user.uid))
-			
+
 			if (adminDoc.exists()) {
 				setIsAdmin(true)
 				// Force token refresh to update custom claims

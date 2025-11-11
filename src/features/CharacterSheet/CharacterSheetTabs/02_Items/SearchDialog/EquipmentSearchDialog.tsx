@@ -3,7 +3,11 @@ import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import equipmentData from '../../../../../utils/json/equipment.json'
 import armorData from '../../../../../utils/json/armor.json'
-import { Item, CharacterDocument, ContainerType } from '../../../../../types/Character'
+import {
+	Item,
+	CharacterDocument,
+	ContainerType,
+} from '../../../../../types/Character'
 import { QualityTier } from '../utils/magicItemsConfig'
 
 // Function to get color for equipment categories
@@ -121,9 +125,11 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 		if (targetLocation === 'worn') {
 			// For Equipment section, only show equippable items (armor and certain equipment categories)
 			const equippableCategories = ['Clothes', 'Container', 'Toolkit', 'Gear']
-			return allItems.filter(item => 
-				item.type === 'armor' || 
-				(item.type === 'equipment' && equippableCategories.includes(item.category))
+			return allItems.filter(
+				(item) =>
+					item.type === 'armor' ||
+					(item.type === 'equipment' &&
+						equippableCategories.includes(item.category)),
 			)
 		}
 
@@ -225,16 +231,22 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 				id: crypto.randomUUID(),
 				name: item.name,
 				description: item.description,
-				properties: item.properties ? item.properties.split(',').map(p => p.trim()) : [],
+				properties: item.properties
+					? item.properties.split(',').map((p) => p.trim())
+					: [],
 				cost: parseInt(item.cost) || 0,
 				weight: item.load === '-' ? 0 : parseInt(item.load) || 0,
-				container: (targetLocation === 'worn' ? 'worn' : 'backpack') as ContainerType,
+				container: (targetLocation === 'worn'
+					? 'worn'
+					: 'backpack') as ContainerType,
 				amount: 1,
 				quality: parseInt(item.quality) as QualityTier,
 				// Add slot assignment for armor pieces when worn
-				...(targetLocation === 'worn' && item.type === 'armor' ? {
-					slot: getEquipmentSlot(item)
-				} : {})
+				...(targetLocation === 'worn' && item.type === 'armor'
+					? {
+							slot: getEquipmentSlot(item),
+						}
+					: {}),
 			}))
 
 		onImportEquipment(equipmentToImport)

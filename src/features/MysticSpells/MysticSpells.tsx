@@ -1,6 +1,8 @@
 import {
 	Button,
 	Checkbox,
+	CssBaseline,
+	Divider,
 	Experimental_CssVarsProvider,
 	experimental_extendTheme,
 	FormControl,
@@ -14,15 +16,18 @@ import {
 	TextField,
 	ThemeProvider,
 	Typography,
+	useTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { MysticSpell } from '@site/src/types/MysticSpell'
-import { Character } from '@site/src/types/Character'
+import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import mysticSpellData from '../../utils/json/mystic-spells.json'
 import './mysticSpellsStyles.css'
 import { MysticSpellCard } from './MysticSpellCard'
+import { CharacterSelector } from '../PrintingTools'
+import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -37,11 +42,14 @@ const MenuProps = {
 
 export const MysticSpells: React.FC = () => {
 	const customTheme = experimental_extendTheme()
+	const muiTheme = useTheme()
 	const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<
 		string[]
 	>([])
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
+	const [selectedCharacter, setSelectedCharacter] =
+		React.useState<CharacterDocument | null>(null)
 
 	const handleChange = (
 		event: SelectChangeEvent<typeof selectedMysticSpells>,
@@ -53,6 +61,19 @@ export const MysticSpells: React.FC = () => {
 			// On autofill we get a stringified value.
 			typeof value === 'string' ? value.split(',') : value,
 		)
+	}
+
+	const handleCharacterSelect = (character: CharacterDocument | null) => {
+		setSelectedCharacter(character)
+		if (character) {
+			const characterSpellNames =
+				character.spells?.spells?.map((spell) => spell.name) || []
+			setSelectedMysticSpells((prev) => {
+				const existingSpells = new Set(prev)
+				characterSpellNames.forEach((name) => existingSpells.add(name))
+				return Array.from(existingSpells)
+			})
+		}
 	}
 
 	const handleCharacterUpload = (jsonString: string) => {
@@ -89,7 +110,7 @@ export const MysticSpells: React.FC = () => {
 	const deselectAll = () => setSelectedMysticSpells([])
 
 	return (
-		<Experimental_CssVarsProvider theme={customTheme}>
+		<>
 			<style type="text/css" media="print">
 				{
 					'\
@@ -104,11 +125,30 @@ export const MysticSpells: React.FC = () => {
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor: 'white',
+					backgroundColor:
+						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
 					borderRadius: '8px',
 				}}
 			>
-				<Stack flexDirection="row" gap={1} alignItems="center">
+				<Typography variant="h6" component="h2">
+					Mystic Spell Card Printing
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Select a character from your account or manually choose mystic spells
+					to print. Cards will be formatted for easy printing and cutting.
+				</Typography>
+
+				<Divider sx={{ my: 1 }} />
+
+				<CharacterSelector
+					onCharacterSelect={handleCharacterSelect}
+					label="Load Character's Mystic Spells"
+					helperText="Selecting a character will automatically add their mystic spells to the print list below."
+				/>
+
+				<Divider sx={{ my: 1 }} />
+
+				<Stack flexDirection="row" gap={1} alignItems="center" flexWrap="wrap">
 					<Button variant="contained" size="large" onClick={handlePrint}>
 						PRINT
 					</Button>
@@ -121,7 +161,10 @@ export const MysticSpells: React.FC = () => {
 							input={<OutlinedInput label="Mystic Spells" />}
 							renderValue={(selected) => selected.join(', ')}
 							MenuProps={MenuProps}
-							sx={{ backgroundColor: 'white' }}
+							sx={{
+								backgroundColor:
+									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+							}}
 						>
 							{mysticSpells.map(({ name }) => (
 								<MenuItem key={name} value={name}>
@@ -138,18 +181,22 @@ export const MysticSpells: React.FC = () => {
 						Deselect all
 					</Button>
 				</Stack>
+
+				<Divider sx={{ my: 1 }} />
+
 				<TextField
 					multiline
 					minRows={3}
 					maxRows={5}
 					fullWidth
-					label="Import Character as JSON (automatically adds character's spells)"
+					label="Alternative: Import Character as JSON"
 					value={characterJsonString}
 					onChange={(event) => handleCharacterUpload(event.target.value)}
 					placeholder="Paste character JSON here to automatically select their spells..."
+					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
 				/>
 			</Stack>
-			<Typography variant="subtitle1">
+			<Typography variant="subtitle1" sx={{ mb: 2 }}>
 				{filteredMysticSpells.length} Mystic Spells will be printed:
 			</Typography>
 			<div className="mystic-spell--container" ref={componentRef}>
@@ -165,6 +212,6 @@ export const MysticSpells: React.FC = () => {
 					</Typography>
 				)}
 			</div>
-		</Experimental_CssVarsProvider>
+		</>
 	)
 }

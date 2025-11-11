@@ -101,8 +101,12 @@ export const CharacterSheet: React.FC = () => {
 					>
 						<Box sx={{ mt: 1, maxWidth: '25rem' }}>
 							{(() => {
-								const StatisticsTabComponent = mobileTabsConfig.find(tab => tab.label === 'Statistics')?.component
-								return StatisticsTabComponent ? <StatisticsTabComponent /> : null
+								const StatisticsTabComponent = mobileTabsConfig.find(
+									(tab) => tab.label === 'Statistics',
+								)?.component
+								return StatisticsTabComponent ? (
+									<StatisticsTabComponent />
+								) : null
 							})()}
 						</Box>
 						<Box

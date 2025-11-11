@@ -19,13 +19,9 @@ export type NpcRelationshipsSectionProps = {
 /**
  * Component for managing NPC relationships using the new unified structure
  */
-export const NpcRelationshipsSection: React.FC<NpcRelationshipsSectionProps> = ({
-	npcRelationships,
-	onAdd,
-	onUpdate,
-	onDelete,
-	onReorder,
-}) => {
+export const NpcRelationshipsSection: React.FC<
+	NpcRelationshipsSectionProps
+> = ({ npcRelationships, onAdd, onUpdate, onDelete, onReorder }) => {
 	// Ensure we have a valid array to work with
 	const validNpcRelationships = npcRelationships || []
 

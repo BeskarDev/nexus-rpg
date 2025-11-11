@@ -214,11 +214,9 @@ describe('InviteUserDialog', () => {
 		// Success message should appear
 		await waitFor(
 			() => {
-				expect(
-					screen.getByText(/invited successfully/i)
-				).toBeInTheDocument()
+				expect(screen.getByText(/invited successfully/i)).toBeInTheDocument()
 			},
-			{ timeout: 3000 }
+			{ timeout: 3000 },
 		)
 	})
 
@@ -268,7 +266,7 @@ describe('PasswordResetDialog', () => {
 			expect(screen.getByText('Trigger Password Reset')).toBeInTheDocument()
 			// Email appears in both table and dialog, so we check for the dialog text
 			expect(
-				screen.getByText(/send a password reset email to:/i)
+				screen.getByText(/send a password reset email to:/i),
 			).toBeInTheDocument()
 		})
 	})
@@ -288,7 +286,7 @@ describe('PasswordResetDialog', () => {
 
 		await waitFor(() => {
 			expect(
-				screen.getByText(/send a password reset email to:/i)
+				screen.getByText(/send a password reset email to:/i),
 			).toBeInTheDocument()
 		})
 	})

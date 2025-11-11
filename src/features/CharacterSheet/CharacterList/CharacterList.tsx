@@ -1,4 +1,10 @@
-import { ListAlt, ChevronLeft, ChevronRight, Expand, ExpandMore } from '@mui/icons-material'
+import {
+	ListAlt,
+	ChevronLeft,
+	ChevronRight,
+	Expand,
+	ExpandMore,
+} from '@mui/icons-material'
 import {
 	Avatar,
 	Box,
@@ -28,19 +34,23 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 	handleDeleteCharacter,
 }) => {
 	const { isAdmin, currentUser, viewAsAdmin } = useAuth()
-	
+
 	// Track which player sections are expanded (for admin view)
 	// Default: expand admin's own characters, collapse others
 	const [expandedPlayers, setExpandedPlayers] = useState<Set<string>>(new Set())
 
 	// Initialize expanded players when characters are loaded
 	useEffect(() => {
-		if (!isAdmin || !viewAsAdmin || !currentUser || characters.length === 0) return
-		
+		if (!isAdmin || !viewAsAdmin || !currentUser || characters.length === 0)
+			return
+
 		// Find the admin's player name from their characters
-		const adminChars = characters.filter(char => char.collectionId === currentUser.uid)
+		const adminChars = characters.filter(
+			(char) => char.collectionId === currentUser.uid,
+		)
 		if (adminChars.length > 0) {
-			const adminPlayerName = adminChars[0]?.personal.playerName || currentUser.uid
+			const adminPlayerName =
+				adminChars[0]?.personal.playerName || currentUser.uid
 			setExpandedPlayers(new Set([adminPlayerName]))
 		}
 	}, [characters.length, isAdmin, viewAsAdmin, currentUser])
@@ -49,7 +59,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 		`${char.personal.name} (${char.personal.folk} ${char.personal.background}, Level ${calculateCharacterLevel(char.skills.xp.spend)})`
 
 	const togglePlayerExpanded = (playerName: string) => {
-		setExpandedPlayers(prev => {
+		setExpandedPlayers((prev) => {
 			const newSet = new Set(prev)
 			if (newSet.has(playerName)) {
 				newSet.delete(playerName)
@@ -77,8 +87,8 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 					Get started by creating your first character!
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					Click the <strong>"New Character"</strong> button above to choose between
-					creating a quickstart character or building one from scratch.
+					Click the <strong>"New Character"</strong> button above to choose
+					between creating a quickstart character or building one from scratch.
 				</Typography>
 			</Box>
 		)
@@ -106,11 +116,11 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 							const isExpanded = expandedPlayers.has(playerName)
 							return (
 								<React.Fragment key={playerName}>
-									<Box 
-										sx={{ 
-											display: 'flex', 
-											alignItems: 'center', 
-											mt: 2, 
+									<Box
+										sx={{
+											display: 'flex',
+											alignItems: 'center',
+											mt: 2,
 											mb: 1,
 											cursor: 'pointer',
 											'&:hover': {
@@ -122,10 +132,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 										}}
 										onClick={() => togglePlayerExpanded(playerName)}
 									>
-										<IconButton 
-											size="small"
-											sx={{ mr: 0.5 }}
-										>
+										<IconButton size="small" sx={{ mr: 0.5 }}>
 											{isExpanded ? <ExpandMore /> : <ChevronRight />}
 										</IconButton>
 										<Typography variant="subtitle2">
@@ -134,7 +141,11 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 									</Box>
 									<Collapse in={isExpanded} timeout="auto" unmountOnExit>
 										{playerCharacters
-											.sort((a, b) => buildCharacterName(a).localeCompare(buildCharacterName(b))) // Sort characters alphabetically by name
+											.sort((a, b) =>
+												buildCharacterName(a).localeCompare(
+													buildCharacterName(b),
+												),
+											) // Sort characters alphabetically by name
 											.map((char) => (
 												<ListItem
 													key={char.docId}

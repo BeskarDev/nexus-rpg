@@ -10,7 +10,8 @@ vi.mock('../../../../utils/json/folk.json', () => ({
 			name: 'Dwarf',
 			category: 'Old Folk',
 			quote: 'The stone remembers what flesh forgets.',
-			description: 'Carved of the stone itself, dwarves maintain a deep connection to the earth.',
+			description:
+				'Carved of the stone itself, dwarves maintain a deep connection to the earth.',
 			abilities: [
 				{ name: 'Dwarven Sight', description: 'You can see in darkness' },
 				{ name: 'Stoneskin', description: 'You gain +1 AV' },
@@ -26,13 +27,16 @@ vi.mock('../../../../utils/json/folk.json', () => ({
 			description: 'Living in spiritual symbiosis with nature.',
 			abilities: [
 				{ name: 'Night Vision', description: 'Enhanced sight in low light' },
-				{ name: 'Fleet-Footed', description: 'Gain +1 Movement once per combat' },
+				{
+					name: 'Fleet-Footed',
+					description: 'Gain +1 Movement once per combat',
+				},
 			],
 			languages: ['Elvish'],
 			known_cultures: [],
 			far_away_cultures: [],
 		},
-	]
+	],
 }))
 
 describe('FolkSelectionDialog', () => {
@@ -50,11 +54,15 @@ describe('FolkSelectionDialog', () => {
 				open={true}
 				onClose={mockOnClose}
 				onSelectFolk={mockOnSelectFolk}
-			/>
+			/>,
 		)
 
 		// Check for the dialog by looking for unique elements that should be present
-		expect(screen.getByPlaceholderText('Search by name, category, or description...')).toBeDefined()
+		expect(
+			screen.getByPlaceholderText(
+				'Search by name, category, or description...',
+			),
+		).toBeDefined()
 		expect(screen.getByText('2 items found')).toBeDefined()
 	})
 
@@ -64,10 +72,14 @@ describe('FolkSelectionDialog', () => {
 				open={false}
 				onClose={mockOnClose}
 				onSelectFolk={mockOnSelectFolk}
-			/>
+			/>,
 		)
 
-		expect(screen.queryByPlaceholderText('Search by name, category, or description...')).toBeNull()
+		expect(
+			screen.queryByPlaceholderText(
+				'Search by name, category, or description...',
+			),
+		).toBeNull()
 	})
 
 	it('displays folk data correctly', async () => {
@@ -76,7 +88,7 @@ describe('FolkSelectionDialog', () => {
 				open={true}
 				onClose={mockOnClose}
 				onSelectFolk={mockOnSelectFolk}
-			/>
+			/>,
 		)
 
 		await waitFor(() => {
@@ -92,7 +104,7 @@ describe('FolkSelectionDialog', () => {
 				open={true}
 				onClose={mockOnClose}
 				onSelectFolk={mockOnSelectFolk}
-			/>
+			/>,
 		)
 
 		const searchInput = screen.getByPlaceholderText(/search/i)
@@ -110,7 +122,7 @@ describe('FolkSelectionDialog', () => {
 				open={true}
 				onClose={mockOnClose}
 				onSelectFolk={mockOnSelectFolk}
-			/>
+			/>,
 		)
 
 		// Find and click the radio button for Dwarf
@@ -130,7 +142,7 @@ describe('FolkSelectionDialog', () => {
 				expect.objectContaining({
 					name: 'Dwarf',
 					category: 'Old Folk',
-				})
+				}),
 			)
 		})
 	})
@@ -141,7 +153,7 @@ describe('FolkSelectionDialog', () => {
 				open={true}
 				onClose={mockOnClose}
 				onSelectFolk={mockOnSelectFolk}
-			/>
+			/>,
 		)
 
 		const closeButton = screen.getByRole('button', { name: /cancel/i })

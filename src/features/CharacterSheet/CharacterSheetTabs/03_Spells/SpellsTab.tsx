@@ -36,11 +36,11 @@ export const SpellsTab: React.FC = () => {
 	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
 
 	// Get Quick Ref selections
-	const quickRefSelections = activeCharacter.skills.quickRefSelections || { 
-		abilities: [], 
-		weapons: [], 
-		items: [], 
-		spells: [] 
+	const quickRefSelections = activeCharacter.skills.quickRefSelections || {
+		abilities: [],
+		weapons: [],
+		items: [],
+		spells: [],
 	}
 
 	// Quick Ref handler for spells
@@ -187,35 +187,36 @@ export const SpellsTab: React.FC = () => {
 				<Accordion defaultExpanded>
 					<AccordionSummary expandIcon={<ExpandMore />}>
 						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-				<SectionHeader>Spells</SectionHeader>
-				<IconButton
-					onClick={(event) => {
-						addNewSpell()
-						event.stopPropagation()
-					}}
-					sx={{ mb: 0.75 }}
-				>
-					<AddCircle />
-				</IconButton>
-				<Tooltip
-					title={`Search ${magicType === 'Arcana' ? 'Arcane' : magicType === 'Mysticism' ? 'Mystic' : ''} Spells from database`}
-				>
-					<span>
-						<IconButton
-							size="small"
-							onClick={(event) => {
-								setIsSpellsDialogOpen(true)
-								event.stopPropagation()
-							}}
-							sx={{ ml: -1, mb: 0.75 }}
-							disabled={!magicType}
-						>
-							<Search />
-						</IconButton>
-					</span>
-				</Tooltip>
-			</Box>
-		</AccordionSummary>					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '60vh' }}>
+							<SectionHeader>Spells</SectionHeader>
+							<IconButton
+								onClick={(event) => {
+									addNewSpell()
+									event.stopPropagation()
+								}}
+								sx={{ mb: 0.75 }}
+							>
+								<AddCircle />
+							</IconButton>
+							<Tooltip
+								title={`Search ${magicType === 'Arcana' ? 'Arcane' : magicType === 'Mysticism' ? 'Mystic' : ''} Spells from database`}
+							>
+								<span>
+									<IconButton
+										size="small"
+										onClick={(event) => {
+											setIsSpellsDialogOpen(true)
+											event.stopPropagation()
+										}}
+										sx={{ ml: -1, mb: 0.75 }}
+										disabled={!magicType}
+									>
+										<Search />
+									</IconButton>
+								</span>
+							</Tooltip>
+						</Box>
+					</AccordionSummary>{' '}
+					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '60vh' }}>
 						<DynamicList droppableId="spells" onDragEnd={onSpellReorder}>
 							{spells.map((s, index) => (
 								<DynamicListItem

@@ -9,8 +9,7 @@ Welcome to the GM Tools section — a collection of printable references and Ran
 ## 📄 Printable References
 
 - [Combat Arts](./printing/combat-arts)
-- [Mystic Spells](./printing/mystic-spells)
-- [Arcane Spells](./printing/arcane-spells)
+- [Spells](./printing/spells)
 - [Character Sheet](./printing/print-character-sheet)
 - [Creature Cards](./printing/creature-cards)
 

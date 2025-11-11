@@ -198,7 +198,7 @@ export function calculateAttributes(
 	}
 
 	const archetypeData = getArchetypeData(archetype)
-	
+
 	// Default to Standard archetype if not found
 	const modifiers = archetypeData?.attributeModifiers || {
 		str: 0,
@@ -217,7 +217,7 @@ export function calculateAttributes(
 		// Base MND depends on archetype modifier, then tier adds progression
 		const mndModifier = modifiers.mnd
 		let baseMnd: string
-		
+
 		// Determine base MND from archetype modifier
 		if (mndModifier <= -2) {
 			baseMnd = 'd4-2'
@@ -226,7 +226,7 @@ export function calculateAttributes(
 		} else {
 			baseMnd = 'd4'
 		}
-		
+
 		// Add slow tier-based progression: +1 die step per 3 tiers
 		const tierBonus = Math.floor(tier / 3)
 		mndValue = modifyDie(baseMnd, tierBonus.toString())
@@ -270,9 +270,10 @@ export function getAbilityDifficulty(tier: number): number {
 /**
  * Get skill ranks for a tier
  */
-export function getSkillRanks(
-	tier: number,
-): { primary: number; secondary: number } {
+export function getSkillRanks(tier: number): {
+	primary: number
+	secondary: number
+} {
 	const tierData = getTierData(tier)
 	if (!tierData) return { primary: 0, secondary: 1 }
 
@@ -318,8 +319,12 @@ export function validateTier(
 
 	// Check AV range based on armor type
 	const isHeavy = armorType === 'heavy'
-	const minAV = isHeavy ? (getTierData(minTier)?.avHeavy || 1) : (getTierData(minTier)?.avLight || 0)
-	const maxAV = isHeavy ? (getTierData(maxTier)?.avHeavy || 20) : (getTierData(maxTier)?.avLight || 10)
+	const minAV = isHeavy
+		? getTierData(minTier)?.avHeavy || 1
+		: getTierData(minTier)?.avLight || 0
+	const maxAV = isHeavy
+		? getTierData(maxTier)?.avHeavy || 20
+		: getTierData(maxTier)?.avLight || 10
 
 	if (av < minAV || av > maxAV) {
 		warnings.push(
@@ -348,16 +353,29 @@ export function validateTier(
 /**
  * Build a complete creature from builder state
  */
-export function buildCreature(state: CreatureBuilderState): BuiltCreature | null {
+export function buildCreature(
+	state: CreatureBuilderState,
+): BuiltCreature | null {
 	if (state.tier === null) return null
 
-	const hp = calculateHP(state.tier, state.archetype, state.category, state.customHP)
-	const av = calculateAV(state.tier, state.archetype, state.size, state.customAV, state.customArmorType)
-	
+	const hp = calculateHP(
+		state.tier,
+		state.archetype,
+		state.category,
+		state.customHP,
+	)
+	const av = calculateAV(
+		state.tier,
+		state.archetype,
+		state.size,
+		state.customAV,
+		state.customArmorType,
+	)
+
 	// Determine final armor type
 	const archetypeData = getArchetypeData(state.archetype)
 	const armorType = state.customArmorType ?? archetypeData?.armorType ?? 'light'
-	
+
 	const parry = calculateDefense(
 		state.tier,
 		state.archetype,
@@ -391,7 +409,9 @@ export function buildCreature(state: CreatureBuilderState): BuiltCreature | null
 	)
 
 	// Format skills as strings with ranks
-	const formattedSkills = state.skills.map(skill => `${skill.name} (${skill.rank})`)
+	const formattedSkills = state.skills.map(
+		(skill) => `${skill.name} (${skill.rank})`,
+	)
 
 	return {
 		name: state.name || 'Unnamed Creature',

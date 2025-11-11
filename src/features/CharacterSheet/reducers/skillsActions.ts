@@ -29,7 +29,10 @@ export const skillsActions = {
 		}
 	},
 
-	addSkill: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	addSkill: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		const skillName = action.payload
 		state.unsavedChanges = true
 		state.activeCharacter.skills.skills.push({
@@ -40,14 +43,20 @@ export const skillsActions = {
 		})
 	},
 
-	removeSkill: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	removeSkill: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		const skillName = action.payload
 		state.unsavedChanges = true
 		state.activeCharacter.skills.skills =
 			state.activeCharacter.skills.skills.filter((s) => s.name !== skillName)
 	},
 
-	addProfession: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	addProfession: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		const professionName = action.payload
 		state.unsavedChanges = true
 		if (!state.activeCharacter.skills.professions.includes(professionName)) {
@@ -55,7 +64,10 @@ export const skillsActions = {
 		}
 	},
 
-	removeProfession: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	removeProfession: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		const professionName = action.payload
 		state.unsavedChanges = true
 		state.activeCharacter.skills.professions =
@@ -64,7 +76,10 @@ export const skillsActions = {
 			)
 	},
 
-	addLanguage: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	addLanguage: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		const languageName = action.payload
 		state.unsavedChanges = true
 		if (!state.activeCharacter.skills.languages.includes(languageName)) {
@@ -72,19 +87,23 @@ export const skillsActions = {
 		}
 	},
 
-	removeLanguage: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	removeLanguage: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		const languageName = action.payload
 		state.unsavedChanges = true
 		// Prevent removal of Tradespeak (default language)
 		if (languageName !== 'Tradespeak') {
 			state.activeCharacter.skills.languages =
-				state.activeCharacter.skills.languages.filter(
-					(l) => l !== languageName,
-				)
+				state.activeCharacter.skills.languages.filter((l) => l !== languageName)
 		}
 	},
 
-	deleteSkill: (state: CharacterSheetReducerState, action: PayloadAction<Skill>) => {
+	deleteSkill: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Skill>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.skills.skills =
 			state.activeCharacter.skills.skills.filter(
@@ -105,7 +124,10 @@ export const skillsActions = {
 		)
 	},
 
-	addNewAbility: (state: CharacterSheetReducerState, action?: PayloadAction<{ tag?: AbilityTag }>) => {
+	addNewAbility: (
+		state: CharacterSheetReducerState,
+		action?: PayloadAction<{ tag?: AbilityTag }>,
+	) => {
 		state.unsavedChanges = true
 		const tag = action?.payload?.tag || 'Other'
 		state.activeCharacter.skills.abilities.splice(0, 0, {
@@ -117,7 +139,10 @@ export const skillsActions = {
 		})
 	},
 
-	importAbilities: (state: CharacterSheetReducerState, action: PayloadAction<Partial<Ability>[]>) => {
+	importAbilities: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Partial<Ability>[]>,
+	) => {
 		state.unsavedChanges = true
 		const newAbilities = action.payload.map((ability) => ({
 			id: crypto.randomUUID(),
@@ -143,7 +168,10 @@ export const skillsActions = {
 		}
 	},
 
-	deleteAbility: (state: CharacterSheetReducerState, action: PayloadAction<Ability>) => {
+	deleteAbility: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Ability>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.skills.abilities =
 			state.activeCharacter.skills.abilities.filter(
@@ -171,8 +199,7 @@ export const skillsActions = {
 		const category = action.payload
 		state.unsavedChanges = true
 		const currentVisibility =
-			state.activeCharacter.skills.abilityCategoryVisibility?.[category] ??
-			true
+			state.activeCharacter.skills.abilityCategoryVisibility?.[category] ?? true
 		if (!state.activeCharacter.skills.abilityCategoryVisibility) {
 			state.activeCharacter.skills.abilityCategoryVisibility = {
 				'Combat Art': true,

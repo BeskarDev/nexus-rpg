@@ -114,20 +114,27 @@ export const extractArmorValues = (itemsByLocation: OrganizedItems) => {
 	equippedGear.forEach((item) => {
 		if (item.properties && !('damage' in item)) {
 			// Handle properties as array (for Items) - join to string for matching
-			const propertiesString = Array.isArray(item.properties) 
-				? item.properties.join(', ') 
+			const propertiesString = Array.isArray(item.properties)
+				? item.properties.join(', ')
 				: item.properties
-			
+
 			// Look for both "AV +X" and "+X AV" patterns
 			const avMatch = propertiesString.match(/(?:AV\s*\+(\d+)|\+(\d+)\s*AV)/i)
 			if (avMatch) {
 				const av = parseInt(avMatch[1] || avMatch[2])
-				
+
 				// Determine if it's body armor or helmet based on name/properties
 				const itemName = item.name.toLowerCase()
-				const isHelmet = itemName.includes('helmet') || itemName.includes('cap') || itemName.includes('hood')
-				const isBodyArmor = itemName.includes('armor') || itemName.includes('mail') || itemName.includes('leather') || itemName.includes('plate')
-				
+				const isHelmet =
+					itemName.includes('helmet') ||
+					itemName.includes('cap') ||
+					itemName.includes('hood')
+				const isBodyArmor =
+					itemName.includes('armor') ||
+					itemName.includes('mail') ||
+					itemName.includes('leather') ||
+					itemName.includes('plate')
+
 				if (isHelmet) {
 					helmetAV = av
 				} else if (isBodyArmor) {

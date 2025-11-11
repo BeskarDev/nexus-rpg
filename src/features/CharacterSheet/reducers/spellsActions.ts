@@ -42,10 +42,15 @@ export const spellsActions = {
 		}
 	},
 
-	deleteSpell: (state: CharacterSheetReducerState, action: PayloadAction<Spell>) => {
+	deleteSpell: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Spell>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.spells.spells =
-			state.activeCharacter.spells.spells.filter((s) => s.id !== action.payload.id)
+			state.activeCharacter.spells.spells.filter(
+				(s) => s.id !== action.payload.id,
+			)
 	},
 
 	reorderSpell: (
@@ -61,7 +66,10 @@ export const spellsActions = {
 		)
 	},
 
-	importSpells: (state: CharacterSheetReducerState, action: PayloadAction<Partial<Spell>[]>) => {
+	importSpells: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Partial<Spell>[]>,
+	) => {
 		state.unsavedChanges = true
 		const newSpells = action.payload.map((spell) => ({
 			id: crypto.randomUUID(),

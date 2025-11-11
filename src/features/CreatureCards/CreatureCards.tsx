@@ -1,6 +1,8 @@
 import {
 	Button,
 	Checkbox,
+	CssBaseline,
+	Divider,
 	Experimental_CssVarsProvider,
 	experimental_extendTheme,
 	FormControl,
@@ -13,14 +15,19 @@ import {
 	Stack,
 	TextField,
 	Typography,
+	useTheme,
 } from '@mui/material'
+import { theme } from '@site/src/hooks/createTheme'
 import { Creature, Attack, Ability } from '@site/src/types/Creature'
+import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef, useState } from 'react'
 import { useReactToPrint } from 'react-to-print'
 import './creatureCardsStyles.css'
 import { CreatureCompactCard } from './CreatureCompactCard'
 import { CreatureDetailCard } from './CreatureDetailCard'
 import { parseCreatureMarkdown } from './parseCreatureMarkdown'
+import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
+import { CharacterSelector } from '../PrintingTools'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -203,14 +210,85 @@ const splitAttacks = (attacks: Attack[]): Attack[][] => {
 }
 
 export const CreatureCards: React.FC = () => {
-	const customTheme = experimental_extendTheme()
+	const muiTheme = useTheme()
 	const [markdownInput, setMarkdownInput] = useState<string>('')
 	const [creatures, setCreatures] = useState<Creature[]>([])
 	const [selectedCreatures, setSelectedCreatures] = useState<string[]>([])
 	const [error, setError] = useState<string>('')
+	const [characterJsonString, setCharacterJsonString] =
+		React.useState<string>('')
+	const [selectedCharacter, setSelectedCharacter] =
+		React.useState<CharacterDocument | null>(null)
 
 	const handleMarkdownChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setMarkdownInput(event.target.value)
+	}
+
+	const handleCharacterSelect = (character: CharacterDocument | null) => {
+		setSelectedCharacter(character)
+		if (character && character.companions && character.companions.length > 0) {
+			// Companions have markdown field - parse that directly
+			const companionMarkdown = character.companions
+				.map((companion) => companion.markdown)
+				.filter((md) => md && md.trim())
+				.join('\n\n')
+
+			if (companionMarkdown) {
+				try {
+					const parsedCreatures = parseCreatureMarkdown(companionMarkdown)
+					setCreatures((prev) => {
+						const existingNames = new Set(prev.map((c) => c.name))
+						const newCreatures = parsedCreatures.filter(
+							(c) => !existingNames.has(c.name),
+						)
+						return [...prev, ...newCreatures]
+					})
+					setSelectedCreatures((prev) => {
+						const existingNames = new Set(prev)
+						parsedCreatures.forEach((c) => existingNames.add(c.name))
+						return Array.from(existingNames)
+					})
+					setError('')
+				} catch (err) {
+					console.error('Failed to parse companion:', err)
+					setError('Failed to parse companion data. Please check the format.')
+				}
+			}
+		}
+	}
+
+	const handleCharacterUpload = (jsonString: string) => {
+		setCharacterJsonString(jsonString)
+		try {
+			if (jsonString.trim()) {
+				const character: Character = JSON.parse(jsonString)
+				if (character.companions && character.companions.length > 0) {
+					const companionMarkdown = character.companions
+						.map((companion) => companion.markdown)
+						.filter((md) => md && md.trim())
+						.join('\n\n')
+
+					if (companionMarkdown) {
+						const parsedCreatures = parseCreatureMarkdown(companionMarkdown)
+						setCreatures((prev) => {
+							const existingNames = new Set(prev.map((c) => c.name))
+							const newCreatures = parsedCreatures.filter(
+								(c) => !existingNames.has(c.name),
+							)
+							return [...prev, ...newCreatures]
+						})
+						setSelectedCreatures((prev) => {
+							const existingNames = new Set(prev)
+							parsedCreatures.forEach((c) => existingNames.add(c.name))
+							return Array.from(existingNames)
+						})
+					}
+				}
+			}
+		} catch (error) {
+			console.error('Failed to parse character JSON:', error)
+			setError('Failed to parse character data. Please check the JSON format.')
+		}
 	}
 
 	const handleParseMarkdown = () => {
@@ -367,7 +445,7 @@ export const CreatureCards: React.FC = () => {
 	}, [filteredCreatures])
 
 	return (
-		<Experimental_CssVarsProvider theme={customTheme}>
+		<>
 			<style type="text/css" media="print">
 				{
 					'\
@@ -375,17 +453,35 @@ export const CreatureCards: React.FC = () => {
       '
 				}
 			</style>
-
 			<Stack
 				gap={2}
 				sx={{
 					mb: 2,
 					py: 2,
 					px: 3,
-					backgroundColor: 'white',
+					backgroundColor:
+						muiTheme.palette.mode === 'dark' ? '#1e1e1e' : 'white',
 					borderRadius: '8px',
 				}}
 			>
+				<Typography variant="h6" component="h2">
+					Creature Card Printing
+				</Typography>
+				<Typography variant="body2" color="text.secondary">
+					Select a character to load their companions, upload a markdown file, or
+					manually paste creature stat blocks to print cards.
+				</Typography>
+
+				<Divider sx={{ my: 1 }} />
+
+				<CharacterSelector
+					onCharacterSelect={handleCharacterSelect}
+					label="Load Character's Companions"
+					helperText="Selecting a character will automatically add their companions to the print list below."
+				/>
+
+				<Divider sx={{ my: 1 }} />
+
 				{/* File Upload */}
 				<Stack flexDirection="row" gap={2} alignItems="center">
 					<input
@@ -417,7 +513,10 @@ export const CreatureCards: React.FC = () => {
 					value={markdownInput}
 					onChange={handleMarkdownChange}
 					placeholder="Paste your creature markdown here or upload a file..."
-					sx={{ backgroundColor: 'white' }}
+					sx={{
+						backgroundColor:
+							muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+					}}
 				/>
 
 				{error && (
@@ -425,6 +524,20 @@ export const CreatureCards: React.FC = () => {
 						{error}
 					</Typography>
 				)}
+
+				<Divider sx={{ my: 1 }} />
+
+				<TextField
+					multiline
+					minRows={3}
+					maxRows={5}
+					fullWidth
+					label="Alternative: Import Character as JSON"
+					value={characterJsonString}
+					onChange={(event) => handleCharacterUpload(event.target.value)}
+					placeholder="Paste character JSON here to automatically load their companions..."
+					helperText="You can also paste a character's exported JSON data here as an alternative to selecting a character above."
+				/>
 
 				{/* Creature Selection */}
 				{creatures.length > 0 && (
@@ -441,7 +554,10 @@ export const CreatureCards: React.FC = () => {
 								input={<OutlinedInput label="Creatures" />}
 								renderValue={(selected) => selected.join(', ')}
 								MenuProps={MenuProps}
-								sx={{ backgroundColor: 'white' }}
+								sx={{
+									backgroundColor:
+										muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+								}}
 							>
 								{creatures.map(({ name }) => (
 									<MenuItem key={name} value={name}>
@@ -502,6 +618,6 @@ export const CreatureCards: React.FC = () => {
 					</Typography>
 				)}
 			</div>
-		</Experimental_CssVarsProvider>
+		</>
 	)
 }

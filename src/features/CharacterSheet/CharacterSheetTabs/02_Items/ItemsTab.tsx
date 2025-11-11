@@ -5,7 +5,11 @@ import { Item, Weapon } from '../../../../types/Character'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { characterSheetActions } from '../../characterSheetReducer'
-import { WeaponSearchDialog, EquipmentSearchDialog, MagicItemBuilderDialog } from './SearchDialog'
+import {
+	WeaponSearchDialog,
+	EquipmentSearchDialog,
+	MagicItemBuilderDialog,
+} from './SearchDialog'
 import { ItemsHeader, ItemsSettingsMenu, InventorySection } from './components'
 import { useItemManagement } from './hooks'
 
@@ -14,17 +18,19 @@ export const ItemsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const [weaponSearchOpen, setWeaponSearchOpen] = useState(false)
 	const [equipmentSearchOpen, setEquipmentSearchOpen] = useState(false)
-	const [equipmentSearchLocation, setEquipmentSearchLocation] = useState<'worn' | 'carried' | 'mount' | 'storage'>('carried')
+	const [equipmentSearchLocation, setEquipmentSearchLocation] = useState<
+		'worn' | 'carried' | 'mount' | 'storage'
+	>('carried')
 	const [magicItemBuilderOpen, setMagicItemBuilderOpen] = useState(false)
 	const [settingsMenuAnchor, setSettingsMenuAnchor] =
 		useState<null | HTMLElement>(null)
 
 	// Get Quick Ref selections
-	const quickRefSelections = activeCharacter.skills.quickRefSelections || { 
-		abilities: [], 
-		weapons: [], 
-		items: [], 
-		spells: [] 
+	const quickRefSelections = activeCharacter.skills.quickRefSelections || {
+		abilities: [],
+		weapons: [],
+		items: [],
+		spells: [],
 	}
 
 	// Quick Ref handlers
@@ -46,7 +52,9 @@ export const ItemsTab: React.FC = () => {
 		}
 	}
 
-	const handleOpenEquipmentSearch = (location: 'worn' | 'carried' | 'mount' | 'storage') => {
+	const handleOpenEquipmentSearch = (
+		location: 'worn' | 'carried' | 'mount' | 'storage',
+	) => {
 		setEquipmentSearchLocation(location)
 		setEquipmentSearchOpen(true)
 	}

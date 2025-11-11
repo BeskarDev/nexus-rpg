@@ -6,7 +6,8 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		name: 'Dwarf',
 		category: 'Old Folk',
 		quote: 'The stone remembers what flesh forgets.',
-		description: 'Carved of the stone itself, dwarves maintain a deep connection to the earth.',
+		description:
+			'Carved of the stone itself, dwarves maintain a deep connection to the earth.',
 		abilities: [
 			{ name: 'Dwarven Sight', description: 'You can see in darkness' },
 			{ name: 'Stoneskin', description: 'You gain +1 AV' },
@@ -26,7 +27,7 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		name: 'Artisan',
 		description: 'A character who crafts functional and beautiful items.',
 		'suggested skills': 'Crafting, Education, Fortitude, Perception',
-		'starting item': 'Clay tablet with master\'s seal',
+		'starting item': "Clay tablet with master's seal",
 	}
 
 	it('creates character with basic info only', () => {
@@ -71,10 +72,10 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		})
 
 		expect(character.personal.background).toBe('Artisan')
-		
+
 		// Check if background starting item was added
-		const backgroundItem = character.items.items.find(item => 
-			item.name === 'Clay Tablet With Master\'s Seal'
+		const backgroundItem = character.items.items.find(
+			(item) => item.name === "Clay Tablet With Master's Seal",
 		)
 		expect(backgroundItem).toBeDefined()
 		expect(backgroundItem?.location).toBe('worn')
@@ -91,29 +92,33 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		expect(character.personal.folk).toBe('Dwarf')
 		expect(character.personal.upbringing).toBe('Artisanal')
 		expect(character.personal.background).toBe('Artisan')
-		
+
 		// Check folk abilities
 		expect(character.skills.abilities).toHaveLength(2)
-		expect(character.skills.abilities.every(a => a.tag === 'Folk')).toBe(true)
-		
+		expect(character.skills.abilities.every((a) => a.tag === 'Folk')).toBe(true)
+
 		// Check folk languages
 		expect(character.skills.languages).toContain('Dwarven')
 		expect(character.skills.languages).toContain('Tradespeak')
-		
+
 		// Check suggested skills from upbringing and background are added
-		const skillNames = character.skills.skills.map(s => s.name)
+		const skillNames = character.skills.skills.map((s) => s.name)
 		expect(skillNames).toContain('Crafting') // From both upbringing and background
 		expect(skillNames).toContain('Insight') // From upbringing
 		expect(skillNames).toContain('Perception') // From both upbringing and background
 		expect(skillNames).toContain('Education') // From background
 		expect(skillNames).toContain('Fortitude') // From background
 		// Should not have duplicates even though Crafting and Perception appear in both
-		expect(character.skills.skills.filter(s => s.name === 'Crafting')).toHaveLength(1)
-		expect(character.skills.skills.filter(s => s.name === 'Perception')).toHaveLength(1)
-		
+		expect(
+			character.skills.skills.filter((s) => s.name === 'Crafting'),
+		).toHaveLength(1)
+		expect(
+			character.skills.skills.filter((s) => s.name === 'Perception'),
+		).toHaveLength(1)
+
 		// Check background starting item
-		const backgroundItem = character.items.items.find(item => 
-			item.name === 'Clay Tablet With Master\'s Seal'
+		const backgroundItem = character.items.items.find(
+			(item) => item.name === "Clay Tablet With Master's Seal",
 		)
 		expect(backgroundItem).toBeDefined()
 	})
@@ -144,8 +149,8 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 
 		expect(character.personal.background).toBe('Artisan')
 		// Should not add any extra items beyond the standard starting gear
-		const backgroundItem = character.items.items.find(item => 
-			item.name === 'Clay Tablet With Master\'s Seal'
+		const backgroundItem = character.items.items.find(
+			(item) => item.name === "Clay Tablet With Master's Seal",
 		)
 		expect(backgroundItem).toBeUndefined()
 	})
@@ -161,7 +166,9 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 		})
 
 		// Should not duplicate Tradespeak
-		const tradespeakCount = character.skills.languages.filter(lang => lang === 'Tradespeak').length
+		const tradespeakCount = character.skills.languages.filter(
+			(lang) => lang === 'Tradespeak',
+		).length
 		expect(tradespeakCount).toBe(1)
 		expect(character.skills.languages).toContain('Dwarven')
 	})

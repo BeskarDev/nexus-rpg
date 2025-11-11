@@ -234,9 +234,9 @@ describe('creatureBuilderCalculations', () => {
 		it('should have one max attribute and rest lower for Standard archetype', () => {
 			const attrs = calculateAttributes(4, 'Standard')
 			expect(attrs.str).toBe('d10') // Base d10 + 0 modifier
-			expect(attrs.agi).toBe('d8')  // Base d10 - 1 = d8
-			expect(attrs.spi).toBe('d8')  // Base d10 - 1 = d8
-			expect(attrs.mnd).toBe('d6')  // Base d10 - 2 = d6
+			expect(attrs.agi).toBe('d8') // Base d10 - 1 = d8
+			expect(attrs.spi).toBe('d8') // Base d10 - 1 = d8
+			expect(attrs.mnd).toBe('d6') // Base d10 - 2 = d6
 		})
 
 		it('should apply attribute modifiers for Ambusher archetype', () => {
@@ -263,65 +263,81 @@ describe('creatureBuilderCalculations', () => {
 			expect(attrs.mnd).toBe('d8') // Base d10 - 1 = d8
 		})
 
-	it('should use custom attributes when provided', () => {
-		const attrs = calculateAttributes(4, 'Standard', undefined, 'd12', 'd6', 'd8', 'd4')
-		expect(attrs.str).toBe('d12')
-		expect(attrs.agi).toBe('d6')
-		expect(attrs.spi).toBe('d8')
-		expect(attrs.mnd).toBe('d4')
-	})
+		it('should use custom attributes when provided', () => {
+			const attrs = calculateAttributes(
+				4,
+				'Standard',
+				undefined,
+				'd12',
+				'd6',
+				'd8',
+				'd4',
+			)
+			expect(attrs.str).toBe('d12')
+			expect(attrs.agi).toBe('d6')
+			expect(attrs.spi).toBe('d8')
+			expect(attrs.mnd).toBe('d4')
+		})
 
-	it('should clamp dice to valid range', () => {
-		const attrs = calculateAttributes(0, 'Artillery')
-		// Artillery has str: -2, base d6 - 2 steps = d4-1
-		expect(attrs.str).toBe('d4-1')
-	})
+		it('should clamp dice to valid range', () => {
+			const attrs = calculateAttributes(0, 'Artillery')
+			// Artillery has str: -2, base d6 - 2 steps = d4-1
+			expect(attrs.str).toBe('d4-1')
+		})
 
-	it('should support very low attributes with dice modifiers', () => {
-		const attrs = calculateAttributes(1, 'Ambusher')
-		// Tier 1 base is d6: AGI d6+0, STR d6-2=d4-1, SPI d6-1=d4, MND d6-1=d4
-		expect(attrs.agi).toBe('d6')  // Base d6 + 0
-		expect(attrs.str).toBe('d4-1') // Base d6 - 2 = d4-1
-		expect(attrs.spi).toBe('d4') // Base d6 - 1 = d4
-		expect(attrs.mnd).toBe('d4') // Base d6 - 1 = d4
-	})
+		it('should support very low attributes with dice modifiers', () => {
+			const attrs = calculateAttributes(1, 'Ambusher')
+			// Tier 1 base is d6: AGI d6+0, STR d6-2=d4-1, SPI d6-1=d4, MND d6-1=d4
+			expect(attrs.agi).toBe('d6') // Base d6 + 0
+			expect(attrs.str).toBe('d4-1') // Base d6 - 2 = d4-1
+			expect(attrs.spi).toBe('d4') // Base d6 - 1 = d4
+			expect(attrs.mnd).toBe('d4') // Base d6 - 1 = d4
+		})
 
-	it('should apply Animal type MND reduction based on archetype modifier', () => {
-		// Standard archetype has mnd: -2, tier 5
-		const attrs1 = calculateAttributes(5, 'Standard', 'Animal')
-		expect(attrs1.mnd).toBe('d4-1') // Base d4-2 + floor(5/3)=1 tier bonus = d4-1
-		expect(attrs1.str).toBe('d10') // Tier 5 base d10 + 0 = d10
-		
-		// Ambusher archetype has mnd: -1, tier 5
-		const attrs2 = calculateAttributes(5, 'Ambusher', 'Animal')
-		expect(attrs2.mnd).toBe('d4') // Base d4-1 + floor(5/3)=1 tier bonus = d4
-		
-		// Bruiser archetype has mnd: -1, tier 0 (no tier bonus)
-		const attrs3 = calculateAttributes(0, 'Bruiser', 'Animal')
-		expect(attrs3.mnd).toBe('d4-1') // Base d4-1 + floor(0/3)=0 tier bonus = d4-1
-	})
+		it('should apply Animal type MND reduction based on archetype modifier', () => {
+			// Standard archetype has mnd: -2, tier 5
+			const attrs1 = calculateAttributes(5, 'Standard', 'Animal')
+			expect(attrs1.mnd).toBe('d4-1') // Base d4-2 + floor(5/3)=1 tier bonus = d4-1
+			expect(attrs1.str).toBe('d10') // Tier 5 base d10 + 0 = d10
 
-	it('should progress Animal MND slowly with tier', () => {
-		// Standard archetype (mnd: -2) at different tiers
-		expect(calculateAttributes(0, 'Standard', 'Animal').mnd).toBe('d4-2') // tier 0: base d4-2 + 0
-		expect(calculateAttributes(2, 'Standard', 'Animal').mnd).toBe('d4-2') // tier 2: base d4-2 + 0
-		expect(calculateAttributes(3, 'Standard', 'Animal').mnd).toBe('d4-1') // tier 3: base d4-2 + 1
-		expect(calculateAttributes(6, 'Standard', 'Animal').mnd).toBe('d4') // tier 6: base d4-2 + 2
-		expect(calculateAttributes(9, 'Standard', 'Animal').mnd).toBe('d6') // tier 9: base d4-2 + 3
-		
-		// Ambusher archetype (mnd: -1) shows progression
-		expect(calculateAttributes(6, 'Ambusher', 'Animal').mnd).toBe('d6') // tier 6: base d4-1 + 2
-		expect(calculateAttributes(9, 'Ambusher', 'Animal').mnd).toBe('d8') // tier 9: base d4-1 + 3
-	})
+			// Ambusher archetype has mnd: -1, tier 5
+			const attrs2 = calculateAttributes(5, 'Ambusher', 'Animal')
+			expect(attrs2.mnd).toBe('d4') // Base d4-1 + floor(5/3)=1 tier bonus = d4
 
-	it('should respect custom MND even for Animal type', () => {
-		const attrs = calculateAttributes(5, 'Standard', 'Animal', null, null, null, 'd10')
-		expect(attrs.mnd).toBe('d10') // Custom value takes precedence
-	})
+			// Bruiser archetype has mnd: -1, tier 0 (no tier bonus)
+			const attrs3 = calculateAttributes(0, 'Bruiser', 'Animal')
+			expect(attrs3.mnd).toBe('d4-1') // Base d4-1 + floor(0/3)=0 tier bonus = d4-1
+		})
 
-	it('should not affect MND for non-Animal types', () => {
-		const attrs = calculateAttributes(5, 'Standard', 'Humanoid')
-		expect(attrs.mnd).toBe('d6') // Normal calculation: d10 - 2 steps = d6
+		it('should progress Animal MND slowly with tier', () => {
+			// Standard archetype (mnd: -2) at different tiers
+			expect(calculateAttributes(0, 'Standard', 'Animal').mnd).toBe('d4-2') // tier 0: base d4-2 + 0
+			expect(calculateAttributes(2, 'Standard', 'Animal').mnd).toBe('d4-2') // tier 2: base d4-2 + 0
+			expect(calculateAttributes(3, 'Standard', 'Animal').mnd).toBe('d4-1') // tier 3: base d4-2 + 1
+			expect(calculateAttributes(6, 'Standard', 'Animal').mnd).toBe('d4') // tier 6: base d4-2 + 2
+			expect(calculateAttributes(9, 'Standard', 'Animal').mnd).toBe('d6') // tier 9: base d4-2 + 3
+
+			// Ambusher archetype (mnd: -1) shows progression
+			expect(calculateAttributes(6, 'Ambusher', 'Animal').mnd).toBe('d6') // tier 6: base d4-1 + 2
+			expect(calculateAttributes(9, 'Ambusher', 'Animal').mnd).toBe('d8') // tier 9: base d4-1 + 3
+		})
+
+		it('should respect custom MND even for Animal type', () => {
+			const attrs = calculateAttributes(
+				5,
+				'Standard',
+				'Animal',
+				null,
+				null,
+				null,
+				'd10',
+			)
+			expect(attrs.mnd).toBe('d10') // Custom value takes precedence
+		})
+
+		it('should not affect MND for non-Animal types', () => {
+			const attrs = calculateAttributes(5, 'Standard', 'Humanoid')
+			expect(attrs.mnd).toBe('d6') // Normal calculation: d10 - 2 steps = d6
+		})
 	})
-})
 })

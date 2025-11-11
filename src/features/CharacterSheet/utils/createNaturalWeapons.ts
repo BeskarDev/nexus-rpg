@@ -9,25 +9,28 @@ const NATURAL_WEAPON_ABILITIES = {
 		name: 'Claws',
 		damage: 2,
 		properties: 'light, slash',
-		description: 'Your natural claws. Can be used as a brawling weapon instead of unarmed attacks. (Catfolk)',
+		description:
+			'Your natural claws. Can be used as a brawling weapon instead of unarmed attacks. (Catfolk)',
 	},
 	'Reptile Jaws': {
 		name: 'Bite',
 		damage: 3,
 		properties: 'crush',
-		description: 'Your reptilian bite. Can be used as a brawling weapon instead of unarmed attacks. (Lizardfolk)',
+		description:
+			'Your reptilian bite. Can be used as a brawling weapon instead of unarmed attacks. (Lizardfolk)',
 	},
-	'Horns': {
+	Horns: {
 		name: 'Horns',
 		damage: 3,
 		properties: 'crush',
-		description: 'Your natural horns. Can be used as a brawling weapon instead of unarmed attacks. (Minotaur)',
+		description:
+			'Your natural horns. Can be used as a brawling weapon instead of unarmed attacks. (Minotaur)',
 	},
 } as const
 
 /**
  * Creates natural weapon objects from folk abilities that grant them
- * 
+ *
  * @param abilities - Array of character abilities (including folk abilities)
  * @returns Array of weapon objects for natural weapons
  */
@@ -42,7 +45,10 @@ export const createNaturalWeapons = (abilities: Ability[]): Weapon[] => {
 
 		// Check if this ability grants a natural weapon
 		if (abilityName in NATURAL_WEAPON_ABILITIES) {
-			const weaponDef = NATURAL_WEAPON_ABILITIES[abilityName as keyof typeof NATURAL_WEAPON_ABILITIES]
+			const weaponDef =
+				NATURAL_WEAPON_ABILITIES[
+					abilityName as keyof typeof NATURAL_WEAPON_ABILITIES
+				]
 
 			naturalWeapons.push({
 				id: uuidv4(),
@@ -75,7 +81,7 @@ export const createNaturalWeapons = (abilities: Ability[]): Weapon[] => {
 
 /**
  * Checks if a folk ability grants a natural weapon
- * 
+ *
  * @param abilityName - Name of the ability to check
  * @returns True if the ability grants a natural weapon
  */

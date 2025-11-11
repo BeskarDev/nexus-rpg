@@ -1,7 +1,10 @@
 import { TextField, TextFieldProps } from '@mui/material'
 import React from 'react'
 
-export type PersonalFieldProps = Omit<TextFieldProps, 'onChange' | 'onBlur' | 'value'> & {
+export type PersonalFieldProps = Omit<
+	TextFieldProps,
+	'onChange' | 'onBlur' | 'value'
+> & {
 	value: string
 	onValueChange: (value: string) => void
 	onBlur?: () => void

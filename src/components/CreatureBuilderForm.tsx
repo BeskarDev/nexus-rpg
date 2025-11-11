@@ -70,16 +70,16 @@ const getTypeColor = (type: string): string => {
 // Color coding for archetypes
 const getArchetypeColor = (archetype: string): string => {
 	const colors: Record<string, string> = {
-		Standard: '#9A9A9A',        // Neutral grey
-		Ambusher: '#374151',        // Dark charcoal (stealth)
-		Artillery: '#0369a1',       // Vibrant sky blue (long range)
-		Bruiser: '#dc2626',         // Vibrant red (aggressive brawler)
-		Defender: '#92400e',        // Deep brown (tank/shield)
-		Horde: '#ca8a04',           // Golden yellow (many units)
-		Controller: '#7c3aed',      // Vibrant purple (magic/manipulation)
-		Ranged: '#15803d',          // Forest green (archer/shooter)
-		Skirmisher: '#059669',      // Emerald green (fast/mobile)
-		Support: '#ec4899',         // Vibrant pink (healer/buffer)
+		Standard: '#9A9A9A', // Neutral grey
+		Ambusher: '#374151', // Dark charcoal (stealth)
+		Artillery: '#0369a1', // Vibrant sky blue (long range)
+		Bruiser: '#dc2626', // Vibrant red (aggressive brawler)
+		Defender: '#92400e', // Deep brown (tank/shield)
+		Horde: '#ca8a04', // Golden yellow (many units)
+		Controller: '#7c3aed', // Vibrant purple (magic/manipulation)
+		Ranged: '#15803d', // Forest green (archer/shooter)
+		Skirmisher: '#059669', // Emerald green (fast/mobile)
+		Support: '#ec4899', // Vibrant pink (healer/buffer)
 	}
 	return colors[archetype] || '#9A9A9A'
 }
@@ -92,62 +92,81 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 }) => {
 	const dispatch = useDispatch()
 	const { state, builtCreature } = useCreatureBuilderState()
-	
+
 	const { tier, category, size, type, archetype, name } = state
 	const hp = builtCreature?.baseHp
 	const av = builtCreature ? parseInt(builtCreature.av) : undefined
 	const parry = builtCreature?.parry
 	const dodge = builtCreature?.dodge
 	const resist = builtCreature?.resist
-	
+
 	const types = creatureTypes as string[]
 
 	const validation =
 		tier !== null && hp && av && parry && dodge && resist
-			? validateTier(tier, hp, av, parry, dodge, resist, builtCreature?.armorType)
+			? validateTier(
+					tier,
+					hp,
+					av,
+					parry,
+					dodge,
+					resist,
+					builtCreature?.armorType,
+				)
 			: null
 
 	return (
 		<Paper sx={{ p: 2 }}>
-			<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-			<Typography variant="h6" sx={{ fontSize: '1.1rem', fontWeight: 600 }}>
-				Core Stats
-			</Typography>
-			<Box sx={{ display: 'flex', gap: 1 }}>
-				{showResetButton && (
-					<Button 
-						size="small" 
-						startIcon={<RefreshIcon />} 
-						onClick={onReset}
-						sx={{ minWidth: 'auto' }}
-					>
-						Reset
-					</Button>
-				)}
-				{showResetButton && (
-					<Button 
-						size="small" 
-						startIcon={<TuneIcon />} 
-						onClick={onToggleAdvanced}
-						variant={showAdvanced ? 'contained' : 'outlined'}
-						sx={{ minWidth: 'auto' }}
-					>
-						Advanced
-					</Button>
-				)}
-			</Box>
-		</Box>			<Grid container spacing={1.5}>
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+					mb: 2,
+				}}
+			>
+				<Typography variant="h6" sx={{ fontSize: '1.1rem', fontWeight: 600 }}>
+					Core Stats
+				</Typography>
+				<Box sx={{ display: 'flex', gap: 1 }}>
+					{showResetButton && (
+						<Button
+							size="small"
+							startIcon={<RefreshIcon />}
+							onClick={onReset}
+							sx={{ minWidth: 'auto' }}
+						>
+							Reset
+						</Button>
+					)}
+					{showResetButton && (
+						<Button
+							size="small"
+							startIcon={<TuneIcon />}
+							onClick={onToggleAdvanced}
+							variant={showAdvanced ? 'contained' : 'outlined'}
+							sx={{ minWidth: 'auto' }}
+						>
+							Advanced
+						</Button>
+					)}
+				</Box>
+			</Box>{' '}
+			<Grid container spacing={1.5}>
 				{/* Name - Full Width */}
-			<Grid item xs={12}>
-				<TextField
-					fullWidth
-					label="Name"
-					value={name}
-					onChange={(e) => dispatch(creatureBuilderActions.setName(e.target.value))}
-					placeholder="Creature name"
-					size="small"
-				/>
-			</Grid>				{/* Tier and Category */}
+				<Grid item xs={12}>
+					<TextField
+						fullWidth
+						label="Name"
+						value={name}
+						onChange={(e) =>
+							dispatch(creatureBuilderActions.setName(e.target.value))
+						}
+						placeholder="Creature name"
+						size="small"
+					/>
+				</Grid>{' '}
+				{/* Tier and Category */}
 				<Grid item xs={6}>
 					<FormControl fullWidth size="small">
 						<InputLabel>Tier</InputLabel>
@@ -167,7 +186,6 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 						</Select>
 					</FormControl>
 				</Grid>
-
 				<Grid item xs={6}>
 					<FormControl fullWidth size="small">
 						<InputLabel>Category</InputLabel>
@@ -175,7 +193,11 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 							value={category}
 							label="Category"
 							onChange={(e: SelectChangeEvent<CreatureCategory>) => {
-								dispatch(creatureBuilderActions.setCategory(e.target.value as CreatureCategory))
+								dispatch(
+									creatureBuilderActions.setCategory(
+										e.target.value as CreatureCategory,
+									),
+								)
 							}}
 							renderValue={(value) => (
 								<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
@@ -209,7 +231,6 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 						</Select>
 					</FormControl>
 				</Grid>
-
 				{/* Size and Type */}
 				<Grid item xs={6}>
 					<FormControl fullWidth size="small">
@@ -229,7 +250,6 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 						</Select>
 					</FormControl>
 				</Grid>
-
 				<Grid item xs={6}>
 					<FormControl fullWidth size="small">
 						<InputLabel>Type</InputLabel>
@@ -271,7 +291,6 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 						</Select>
 					</FormControl>
 				</Grid>
-
 				{/* Archetype - Full Width */}
 				<Grid item xs={12}>
 					<FormControl fullWidth size="small">
@@ -316,13 +335,15 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 					</FormControl>
 				</Grid>
 			</Grid>
-
 			{/* Validation warnings */}
 			{validation && validation.warnings.length > 0 && (
 				<Box sx={{ mt: 2, p: 1.5, bgcolor: 'warning.light', borderRadius: 1 }}>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 1 }}>
 						<WarningIcon sx={{ fontSize: 18, color: 'warning.dark' }} />
-						<Typography variant="caption" sx={{ fontWeight: 600, color: 'warning.dark' }}>
+						<Typography
+							variant="caption"
+							sx={{ fontWeight: 600, color: 'warning.dark' }}
+						>
 							Tier Validation
 						</Typography>
 					</Box>
@@ -332,8 +353,8 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 								key={idx}
 								label={warning}
 								size="small"
-								sx={{ 
-									height: 20, 
+								sx={{
+									height: 20,
 									fontSize: '0.7rem',
 									bgcolor: 'warning.main',
 									color: 'warning.contrastText',

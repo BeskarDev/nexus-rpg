@@ -38,7 +38,10 @@ export const desktopTabsConfig: TabInfo[] = [
 /**
  * Get the appropriate tab component for the given tab index and device type
  */
-export function getTabComponent(activeTab: number, isMobile: boolean): React.ComponentType | null {
+export function getTabComponent(
+	activeTab: number,
+	isMobile: boolean,
+): React.ComponentType | null {
 	const config = isMobile ? mobileTabsConfig : desktopTabsConfig
 	return config[activeTab]?.component || null
 }
@@ -48,5 +51,5 @@ export function getTabComponent(activeTab: number, isMobile: boolean): React.Com
  */
 export function getTabLabels(isMobile: boolean): string[] {
 	const config = isMobile ? mobileTabsConfig : desktopTabsConfig
-	return config.map(tab => tab.label)
+	return config.map((tab) => tab.label)
 }

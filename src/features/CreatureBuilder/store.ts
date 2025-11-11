@@ -15,4 +15,6 @@ export const setupCreatureBuilderStore = () =>
 	})
 
 export type CreatureBuilderRootState = ReturnType<typeof rootReducer>
-export type CreatureBuilderAppStore = ReturnType<typeof setupCreatureBuilderStore>
+export type CreatureBuilderAppStore = ReturnType<
+	typeof setupCreatureBuilderStore
+>

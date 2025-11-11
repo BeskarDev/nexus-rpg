@@ -76,7 +76,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 10,
 		name: 'Pyroclasm',
 		description:
-			'Ground beneath caster cracks and releases gouts of flame. Caster\'s area becomes hazardous. Creatures entering or starting turn take {damage} fire damage per turn for {duration} duration.',
+			"Ground beneath caster cracks and releases gouts of flame. Caster's area becomes hazardous. Creatures entering or starting turn take {damage} fire damage per turn for {duration} duration.",
 	},
 	{
 		roll: 11,
@@ -100,7 +100,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 14,
 		name: 'Kinetic Burst',
 		description:
-			'Raw kinetic force blasts outward from the caster\'s body. All creatures in melee of caster take {damage} blast damage and pushed close distance.',
+			"Raw kinetic force blasts outward from the caster's body. All creatures in melee of caster take {damage} blast damage and pushed close distance.",
 	},
 	{
 		roll: 15,
@@ -130,7 +130,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 19,
 		name: 'Zero Gravity Zone',
 		description:
-			'Gravity ceases in caster\'s area. {radius} radius becomes zero gravity. Creatures can fly/float but attacks suffer +1 bane (disorientation) for {duration} duration.',
+			"Gravity ceases in caster's area. {radius} radius becomes zero gravity. Creatures can fly/float but attacks suffer +1 bane (disorientation) for {duration} duration.",
 	},
 	{
 		roll: 20,
@@ -195,7 +195,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 30,
 		name: 'Dimensional Door',
 		description:
-			'Portal appears at caster\'s location and another in {distance} range (GM chooses destination). Creatures can move through as if adjacent for {duration} duration.',
+			"Portal appears at caster's location and another in {distance} range (GM chooses destination). Creatures can move through as if adjacent for {duration} duration.",
 	},
 	{
 		roll: 31,
@@ -225,7 +225,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 35,
 		name: 'Gaseous Form',
 		description:
-			'Caster becomes mist. Immune to physical damage, can\'t attack or cast. Can move through small openings. Double damage from fire/lightning for {duration} duration.',
+			"Caster becomes mist. Immune to physical damage, can't attack or cast. Can move through small openings. Double damage from fire/lightning for {duration} duration.",
 	},
 	{
 		roll: 36,
@@ -261,7 +261,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 41,
 		name: 'Mind Swap',
 		description:
-			'Caster and random creature in {radius} range (roll if multiple) swap bodies. Each controls other\'s body but retains own mind. Mental attributes stay with mind, physical with body for {duration} duration.',
+			"Caster and random creature in {radius} range (roll if multiple) swap bodies. Each controls other's body but retains own mind. Mental attributes stay with mind, physical with body for {duration} duration.",
 	},
 	{
 		roll: 42,
@@ -285,7 +285,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 45,
 		name: 'Telepathic Broadcast',
 		description:
-			'All creatures in {distance} range hear caster\'s surface thoughts. Caster has disadvantage on social rolls for {duration} duration.',
+			"All creatures in {distance} range hear caster's surface thoughts. Caster has disadvantage on social rolls for {duration} duration.",
 	},
 	{
 		roll: 46,
@@ -315,7 +315,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 50,
 		name: 'Psychic Scream',
 		description:
-			'A mental shriek radiates from the caster\'s mind. All creatures in {radius} radius take {damage} psychic damage (ignoring AV) and briefly dazed.',
+			"A mental shriek radiates from the caster's mind. All creatures in {radius} radius take {damage} psychic damage (ignoring AV) and briefly dazed.",
 	},
 	{
 		roll: 51,
@@ -423,7 +423,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 68,
 		name: 'Darkness Wave',
 		description:
-			'All light is snuffed out as absolute darkness spreads. All light in {distance} radius extinguished. Total darkness (even darkvision can\'t see). Only magical light pierces for {duration} duration.',
+			"All light is snuffed out as absolute darkness spreads. All light in {distance} radius extinguished. Total darkness (even darkvision can't see). Only magical light pierces for {duration} duration.",
 	},
 	{
 		roll: 69,
@@ -459,7 +459,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 74,
 		name: 'Wild Zone',
 		description:
-			'Spells cast in {radius} radius trigger additional wild surge roll (but that roll doesn\'t cascade) for {duration} duration.',
+			"Spells cast in {radius} radius trigger additional wild surge roll (but that roll doesn't cascade) for {duration} duration.",
 	},
 	{
 		roll: 75,
@@ -477,7 +477,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 77,
 		name: 'Dispel Cascade',
 		description:
-			'A wave of unraveling magic sweeps through the area. All active spell effects in {distance} radius end immediately (doesn\'t affect permanent items).',
+			"A wave of unraveling magic sweeps through the area. All active spell effects in {distance} radius end immediately (doesn't affect permanent items).",
 	},
 	{
 		roll: 78,
@@ -537,7 +537,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 87,
 		name: 'Condition Transfer',
 		description:
-			'All caster\'s conditions removed. Choose: caster cured, or all creatures in {radius} radius gain those conditions.',
+			"All caster's conditions removed. Choose: caster cured, or all creatures in {radius} radius gain those conditions.",
 	},
 	{
 		roll: 88,
@@ -597,13 +597,13 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 97,
 		name: 'Age Freeze',
 		description:
-			'Caster doesn\'t age or need food/water/rest. Immune to bleeding, poison, disease. Can\'t regain HP naturally for {duration} duration.',
+			"Caster doesn't age or need food/water/rest. Immune to bleeding, poison, disease. Can't regain HP naturally for {duration} duration.",
 	},
 	{
 		roll: 98,
 		name: 'Temporal Displacement',
 		description:
-			'Attacks against caster suffer {bane} banes. Caster\'s attacks gain {boon} boons for {duration} duration.',
+			"Attacks against caster suffer {bane} banes. Caster's attacks gain {boon} boons for {duration} duration.",
 	},
 	{
 		roll: 99,
@@ -615,7 +615,7 @@ const wildMagicData: WildMagicEffect[] = [
 		roll: 100,
 		name: 'Reality Ripple',
 		description:
-			'Roll on this table three times (ignore 100s). Apply all simultaneously. Most recent takes precedence if contradictory. These rolls don\'t trigger further cascades.',
+			"Roll on this table three times (ignore 100s). Apply all simultaneously. Most recent takes precedence if contradictory. These rolls don't trigger further cascades.",
 	},
 ]
 
@@ -678,7 +678,8 @@ export const WildMagicRoller: React.FC = () => {
 
 	const handleRoll = () => {
 		const roll = Math.floor(Math.random() * 100) + 1
-		const effect = wildMagicData.find((e) => e.roll === roll) || wildMagicData[0]
+		const effect =
+			wildMagicData.find((e) => e.roll === roll) || wildMagicData[0]
 		setResult(effect)
 		setScaledDescription(applyRankScaling(effect.description, rank))
 	}

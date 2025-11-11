@@ -263,11 +263,11 @@ const parseMultiOptionAttack = (
 	tier: number,
 ): string => {
 	let processedText = attackText
-	
+
 	// Calculate damage values for options that deal damage
 	const weaponDamageBase = baseAttackDamage.normal - baseAttackDamage.weak
 	const baseDamage = baseAttackDamage.weak - weaponDamageBase
-	
+
 	// Process Frost Ray option (Deals +1 weapon damage as frost damage)
 	if (processedText.includes('Frost Ray')) {
 		const weaponDamage = Math.max(1, weaponDamageBase + 1)
@@ -275,18 +275,18 @@ const parseMultiOptionAttack = (
 		const strongDamage = Math.max(1, baseDamage + 2 * weaponDamage)
 		const criticalDamage = Math.max(1, baseDamage + 3 * weaponDamage)
 		const damageText = `Treat the roll as a range attack vs. Dodge. ${weakDamage}/${strongDamage}/${criticalDamage} frost damage (${baseDamage} base + ${weaponDamage} weapon).`
-		
+
 		// Replace the Frost Ray option's damage sentence
 		// Pattern matches: <strong>3. Frost Ray. </strong>Treat the roll as a range attack vs. Dodge. Deals +1 weapon damage as frost damage.
 		processedText = processedText.replace(
 			/(<strong>3\.\s+Frost Ray\.\s*)<\/strong>\s*Treat the roll as a range attack vs\. Dodge\.\s*Deals \+1 weapon damage as frost damage\./i,
-			`$1</strong> ${damageText}`
+			`$1</strong> ${damageText}`,
 		)
 	}
-	
+
 	// Process tier calculations for any remaining tier-based formulas
 	processedText = processTierCalculations(processedText, tier)
-	
+
 	return processedText
 }
 
@@ -300,7 +300,7 @@ export const parseAttackDamage = (
 	// Check if this is a multi-option attack (like Eye Rays)
 	// These have numbered sub-options and should process each option separately
 	const hasNumberedOptions = /\d+\.\s+\w+\s+Ray\./i.test(attackText)
-	
+
 	if (hasNumberedOptions) {
 		return parseMultiOptionAttack(attackText, baseAttackDamage, tier)
 	}
@@ -311,9 +311,15 @@ export const parseAttackDamage = (
 
 	if (attackText.includes('Deals normal weapon damage')) {
 		weaponDamageModifier = 0
-	} else if (attackText.includes('Deals -1 weapon damage') || attackText.includes('with -1 weapon damage')) {
+	} else if (
+		attackText.includes('Deals -1 weapon damage') ||
+		attackText.includes('with -1 weapon damage')
+	) {
 		weaponDamageModifier = -1
-	} else if (attackText.includes('Deals +1 weapon damage') || attackText.includes('with +1 weapon damage')) {
+	} else if (
+		attackText.includes('Deals +1 weapon damage') ||
+		attackText.includes('with +1 weapon damage')
+	) {
 		weaponDamageModifier = 1
 	} else if (attackText.includes('Deals no damage')) {
 		useDamageCalculation = false
@@ -339,15 +345,17 @@ export const parseAttackDamage = (
 		// Extract damage type and additional info from the original text
 		let damageType = ''
 		let additionalInfo = ''
-		
+
 		// Look for damage type in various patterns:
 		// 1. "as [type] damage"
 		// 2. "Deals [type] damage"
-		const damageTypeMatch = processedText.match(/(?:as|Deals)\s+(\w+)\s+damage/i)
+		const damageTypeMatch = processedText.match(
+			/(?:as|Deals)\s+(\w+)\s+damage/i,
+		)
 		if (damageTypeMatch) {
 			damageType = ` ${damageTypeMatch[1].toLowerCase()}`
 		}
-		
+
 		// Look for additional damage modifiers like "(ignoring 1/2 AV)"
 		const additionalInfoMatch = processedText.match(/\(ignoring [^)]+\)/i)
 		if (additionalInfoMatch) {
@@ -497,14 +505,8 @@ export const calculateStats = (
 		weaknesses: trait.weaknesses,
 		attacks: [trait['attack 1'], trait['attack 2']]
 			.filter((attack) => attack && attack !== '-')
-			.map((attack) =>
-				parseAttackDamage(attack, baseStats.attackDamage, tier),
-			),
-		abilities: [
-			trait['ability 1'],
-			trait['ability 2'],
-			trait['ability 3'],
-		]
+			.map((attack) => parseAttackDamage(attack, baseStats.attackDamage, tier)),
+		abilities: [trait['ability 1'], trait['ability 2'], trait['ability 3']]
 			.filter((ability) => ability && ability !== '-')
 			.map((ability) => processTierCalculations(ability, tier)),
 	}

@@ -14,7 +14,7 @@ const autoKeywordPlugin = (options) => {
 	return (tree, file) => {
 		// Track keyword match counts for blacklist checking
 		const keywordMatchCounts = new Map<string, number>()
-		
+
 		// Extract file path for blacklist context
 		const filePath = file?.path || file?.history?.[0] || ''
 		visit(
@@ -90,19 +90,23 @@ const autoKeywordPlugin = (options) => {
 					if (match) {
 						// Get current match count for this keyword
 						const currentCount = keywordMatchCounts.get(match) || 0
-						
+
 						// Create blacklist context
 						const blacklistContext: BlacklistContext = {
 							filePath,
-							pluginType: 'auto-keyword'
+							pluginType: 'auto-keyword',
 						}
-						
+
 						// Check if this match should be blacklisted
-						const shouldExclude = isBlacklisted(match, blacklistContext, currentCount)
-						
+						const shouldExclude = isBlacklisted(
+							match,
+							blacklistContext,
+							currentCount,
+						)
+
 						// Increment match count
 						keywordMatchCounts.set(match, currentCount + 1)
-						
+
 						if (!shouldExclude) {
 							hasKeyword = true
 							processedWords.push({

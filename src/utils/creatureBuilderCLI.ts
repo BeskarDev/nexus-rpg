@@ -2,31 +2,31 @@
 
 /**
  * Creature Builder CLI
- * 
+ *
  * A command-line interface for creating creatures in the Nexus RPG system.
  * Accepts JSON input via stdin or file, making it ideal for LLM agents and automation.
- * 
+ *
  * @module creatureBuilderCLI
- * 
+ *
  * @description
  * This CLI creates balanced creatures from JSON configuration. It validates input,
  * calculates stats using the same rules as the web UI, and outputs markdown.
- * 
+ *
  * @usage
  * ```bash
  * # From JSON file
  * npm run creature:build < creature.json
- * 
+ *
  * # From stdin
  * echo '{"tier": 2, "category": "Basic", ...}' | npm run creature:build
- * 
+ *
  * # Direct execution
  * npx tsx src/utils/creatureBuilderCLI.ts < creature.json
- * 
+ *
  * # Save to file
  * npm run creature:build < input.json > output.md
  * ```
- * 
+ *
  * @input-format
  * JSON object with the following structure:
  * ```json
@@ -37,7 +37,7 @@
  *   "archetype": "Standard|Brute|Nimble|Mystic|...",  // Required: Combat style
  *   "type": "string",                // Required: Creature type (e.g., "Dragon", "Undead")
  *   "name": "string",                // Required: Creature name
- *   
+ *
  *   // Optional custom stat overrides
  *   "customHP": number,
  *   "customAV": number,
@@ -49,7 +49,7 @@
  *   "customParry": number,
  *   "customDodge": number,
  *   "customResist": number,
- *   
+ *
  *   // Optional features
  *   "skills": [
  *     {"name": "string", "rank": number}
@@ -57,7 +57,7 @@
  *   "immunities": ["string"],
  *   "resistances": ["string"],
  *   "weaknesses": ["string"],
- *   
+ *
  *   // Attacks
  *   "attacks": [
  *     {
@@ -70,7 +70,7 @@
  *       "description": "string"       // Optional mechanical description
  *     }
  *   ],
- *   
+ *
  *   // Abilities
  *   "abilities": [
  *     {
@@ -82,7 +82,7 @@
  *   ]
  * }
  * ```
- * 
+ *
  * @example
  * Example JSON for a Dark Elf Assassin:
  * ```json
@@ -127,12 +127,12 @@
  *   ]
  * }
  * ```
- * 
+ *
  * @output
  * Outputs creature stat block in markdown format to stdout.
  * Errors are written to stderr.
  * Exit code 0 on success, 1 on error.
- * 
+ *
  * @llm-usage
  * LLM agents should:
  * 1. Generate valid JSON matching the schema above
@@ -140,7 +140,7 @@
  * 3. Pipe JSON to this CLI via stdin
  * 4. Capture stdout for the markdown creature
  * 5. Check exit code for success/failure
- * 
+ *
  * @features
  * - JSON input for easy automation
  * - Same calculation engine as web UI
@@ -148,13 +148,13 @@
  * - Markdown output compatible with documentation
  * - Error messages to stderr for debugging
  * - No interactive prompts - single execution
- * 
+ *
  * @technical
  * - Reads JSON from stdin
  * - Uses creatureBuilderCalculations.ts for stat calculation
  * - Uses generateCreatureMarkdown for output formatting
  * - Type-safe with TypeScript interfaces
- * 
+ *
  * @see {@link creatureBuilderCalculations} for stat calculation logic
  * @see {@link creatureBuilderFormatting} for markdown generation
  * @see {@link CreatureBuilder} for type definitions
@@ -174,7 +174,12 @@ import {
 	formatDamageString,
 	TIER_NAMES,
 } from './creatureBuilderCalculations'
-import { BuiltCreature, CreatureCategory, CreatureAttack, CreatureAbility } from '../types/CreatureBuilder'
+import {
+	BuiltCreature,
+	CreatureCategory,
+	CreatureAttack,
+	CreatureAbility,
+} from '../types/CreatureBuilder'
 
 /**
  * Input JSON schema for creature creation
@@ -240,7 +245,10 @@ function validateInput(input: any): string[] {
 	}
 
 	// Optional custom armor type
-	if (input.customArmorType && !['light', 'heavy'].includes(input.customArmorType)) {
+	if (
+		input.customArmorType &&
+		!['light', 'heavy'].includes(input.customArmorType)
+	) {
 		errors.push('customArmorType must be "light" or "heavy"')
 	}
 
@@ -260,7 +268,7 @@ function buildCreature(input: CreatureInput): BuiltCreature {
 		input.customStr ?? null,
 		input.customAgi ?? null,
 		input.customSpi ?? null,
-		input.customMnd ?? null
+		input.customMnd ?? null,
 	)
 
 	const parry = calculateDefense(
@@ -268,47 +276,49 @@ function buildCreature(input: CreatureInput): BuiltCreature {
 		input.archetype,
 		input.size,
 		'parry',
-		input.customParry ?? null
+		input.customParry ?? null,
 	)
 	const dodge = calculateDefense(
 		input.tier,
 		input.archetype,
 		input.size,
 		'dodge',
-		input.customDodge ?? null
+		input.customDodge ?? null,
 	)
 	const resist = calculateDefense(
 		input.tier,
 		input.archetype,
 		input.size,
 		'resist',
-		input.customResist ?? null
+		input.customResist ?? null,
 	)
 
 	const baseHp = calculateHP(
 		input.tier,
 		input.archetype,
 		input.category,
-		input.customHP ?? null
+		input.customHP ?? null,
 	)
 	const av = calculateAV(
 		input.tier,
 		input.archetype,
 		input.size,
 		input.customAV ?? null,
-		input.customArmorType ?? null
+		input.customArmorType ?? null,
 	)
 
 	const archetypeData = getArchetypeData(input.archetype)
 	const armorType = input.customArmorType ?? archetypeData?.armorType ?? 'light'
 
-	const formattedSkills = (input.skills || []).map(skill => `${skill.name} (${skill.rank})`)
+	const formattedSkills = (input.skills || []).map(
+		(skill) => `${skill.name} (${skill.rank})`,
+	)
 
 	// Calculate damage strings for attacks
 	const tierWeaponDamage = getWeaponDamage(input.tier, input.archetype)
-	const formattedAttacks = (input.attacks || []).map(attack => {
+	const formattedAttacks = (input.attacks || []).map((attack) => {
 		let damageString = ''
-		
+
 		if (attack.damage && attack.damage.trim()) {
 			// Custom damage formula provided
 			damageString = attack.damage
@@ -320,7 +330,7 @@ function buildCreature(input: CreatureInput): BuiltCreature {
 			else if (attr === 'AGI') attributeDie = attributes.agi
 			else if (attr === 'SPI') attributeDie = attributes.spi
 			else if (attr === 'MND') attributeDie = attributes.mnd
-			
+
 			if (attributeDie) {
 				const baseDamage = calculateBaseDamage(attributeDie)
 				const totalWeaponDamage = tierWeaponDamage + (attack.weaponDamage || 0)
@@ -334,7 +344,7 @@ function buildCreature(input: CreatureInput): BuiltCreature {
 
 		return {
 			...attack,
-			damage: damageString
+			damage: damageString,
 		}
 	})
 
@@ -374,16 +384,16 @@ async function readStdin(): Promise<string> {
 	return new Promise((resolve, reject) => {
 		let data = ''
 		process.stdin.setEncoding('utf8')
-		
-		process.stdin.on('data', chunk => {
+
+		process.stdin.on('data', (chunk) => {
 			data += chunk
 		})
-		
+
 		process.stdin.on('end', () => {
 			resolve(data)
 		})
-		
-		process.stdin.on('error', err => {
+
+		process.stdin.on('error', (err) => {
 			reject(err)
 		})
 	})
@@ -397,7 +407,7 @@ async function main() {
 	try {
 		// Read JSON from stdin
 		const inputStr = await readStdin()
-		
+
 		if (!inputStr.trim()) {
 			console.error('Error: No input provided')
 			console.error('Usage: npm run creature:build < creature.json')
@@ -419,8 +429,10 @@ async function main() {
 		const errors = validateInput(input)
 		if (errors.length > 0) {
 			console.error('Validation errors:')
-			errors.forEach(err => console.error(`  - ${err}`))
-			console.error('\nSee JSDoc in creatureBuilderCLI.ts for valid input schema')
+			errors.forEach((err) => console.error(`  - ${err}`))
+			console.error(
+				'\nSee JSDoc in creatureBuilderCLI.ts for valid input schema',
+			)
 			process.exit(1)
 		}
 
@@ -433,7 +445,10 @@ async function main() {
 
 		process.exit(0)
 	} catch (error) {
-		console.error('Error:', error instanceof Error ? error.message : String(error))
+		console.error(
+			'Error:',
+			error instanceof Error ? error.message : String(error),
+		)
 		process.exit(1)
 	}
 }

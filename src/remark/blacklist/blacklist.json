@@ -1,344 +1,375 @@
 [
-  {
-    "file": "docs/06-scenes/06-harvesting-creature-parts.md",
-    "section": "🔪 Harvesting Creature Parts",
-    "keyword": "Tool",
-    "matchIndex": 0,
-    "comment": "Exclude first occurrence of 'Tool' in the category description where it's used as a category name, not as a link to equipment"
-  },
-  {
-    "file": "docs/07-magic/03-metamagic-arts.md",
-    "section": "Metamagic Arts",
-    "keyword": "fire",
-    "comment": "Exclude 'fire' in damage type list where it's part of natural language description"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "Mind",
-    "comment": "Exclude 'Mind' in 'Stoic Mind' ability name where it's part of ability name, not attribute reference"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "Nature",
-    "comment": "Exclude 'Nature' in 'Aquatic Nature' ability name where it's part of ability name, not skill reference"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "Fire",
-    "comment": "Exclude 'Fire' in 'Fire Body' ability name where it's part of ability name, not damage type reference"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "Poison",
-    "comment": "Exclude 'Poison' in ability names like 'Poisoned Dagger', 'Poison Mist', etc. where it's part of ability name, not damage type reference"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "Necrotic",
-    "comment": "Exclude 'Necrotic' in ability names like 'Necrotic Touch', 'Necrotic Bolt', 'Necrotic Aura' where it's part of ability name, not damage type reference"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "Shield",
-    "comment": "Exclude 'Shield' in creature attack names like 'Light Shield', 'Heavy Shield', 'Shield Bash', 'Shield Wall' where it's part of attack name, not weapon category reference"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "HP",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'HP' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "AV",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'AV' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "STR",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'STR' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "AGI",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'AGI' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "SPI",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'SPI' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "MND",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'MND' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "Parry",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'Parry' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "Dodge",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'Dodge' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/08-creatures/03-creatures.md",
-    "keyword": "Resist",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],
-    "comment": "Exclude ALL 'Resist' occurrences in creature stat block table headers"
-  },
-  {
-    "file": "docs/01-basic-rules/02-how-to-roll.md",
-    "keyword": "TN",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10],
-    "comment": "Exclude all 'TN' occurrences in how-to-roll table headers"
-  },
-  {
-    "file": "docs/01-basic-rules/02-how-to-roll.md",
-    "keyword": "Success Level",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10],
-    "comment": "Exclude all 'Success Level' occurrences in how-to-roll table headers"
-  },
-  {
-    "file": "docs/01-basic-rules/02-how-to-roll.md",
-    "keyword": "SL",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10],
-    "comment": "Exclude all 'SL' occurrences in how-to-roll table headers"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "burning",
-    "matchIndex": 0,
-    "comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
-  },
-  {
-    "file": "docs/01-basic-rules/02-character-creation.md",
-    "keyword": "burning",
-    "matchIndex": 0,
-    "comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
-  },
-  {
-    "file": "docs/01-basic-rules/02-character-creation.md",
-    "keyword": "long",
-    "matchIndex": 0,
-    "comment": "Exclude 'long' in 'long enough' introduction flavor text where it's not duration reference"
-  },
-  {
-    "file": "docs/07-magic/04-mystic-spells.md",
-    "keyword": "light",
-    "matchIndex": [0,1,2,3,4,5],
-    "comment": "Exclude 'light' in spell flavor descriptions like 'shimmer of light', 'power of light', 'burning light' where it's descriptive, not mechanical effect"
-  },
-  {
-    "file": "docs/01-basic-rules/01-how-to-roll.md",
-    "keyword": "scorching",
-    "matchIndex": 0,
-    "comment": "Exclude 'scorching' in 'scorching desert journey' example flavor text where it's descriptive, not damage type reference"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "quick",
-    "matchIndex": 0,
-    "comment": "Exclude 'quick' in 'quick wits' goblin description where it's descriptive, not action type reference"
-  },
-  {
-    "file": "docs/04-equipment/01-items.md",
-    "keyword": "quick",
-    "matchIndex": [0,1],
-    "comment": "Exclude 'quick' in 'quick access' equipment descriptions where it's descriptive, not action type reference"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "frost",
-    "matchIndex": 0,
-    "comment": "Exclude 'frost' in 'Frost-resistant nomads' flavor description where it's descriptive, not damage type reference"
-  },
-  {
-    "file": "docs/01-basic-rules/02-character-creation.md",
-    "keyword": "Nature",
-    "matchIndex": 0,
-    "comment": "Exclude 'Nature' in 'nimble nature' flavor description where it's descriptive, not skill reference"
-  },
-  {
-    "file": "docs/02-adventurers/05-npc-relations.md",
-    "keyword": "close",
-    "matchIndex": 1,
-    "comment": "Exclude 'close' in 'close friend' description where it's descriptive relationship, not distance reference"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "medium",
-    "matchIndex": [0,2,3,4,5,6,7,8],
-    "comment": "Exclude 'medium' in 'medium sized' folk descriptions where it's creature size, not duration reference"
-  },
-  {
-    "file": "docs/01-basic-rules/01-how-to-roll.md",
-    "keyword": "heavy",
-    "matchIndex": 0,
-    "comment": "Exclude 'heavy' in 'heavy sack' skill test example where it's descriptive weight, not armor property"
-  },
-  {
-    "file": "docs/01-basic-rules/02-character-creation.md",
-    "keyword": "light",
-    "matchIndex": [0,1],
-    "comment": "Exclude 'light' in torch descriptions 'bright light' and 'dim light' where it's illumination, not weapon property"
-  },
-  {
-    "file": "docs/01-basic-rules/02-character-creation.md",
-    "keyword": "reach",
-    "matchIndex": 0,
-    "comment": "Exclude 'reach' in 'reach that limit' where it's achieving a goal, not weapon property"
-  },
-  {
-    "file": "docs/01-basic-rules/03-character-progression.md",
-    "keyword": "reach",
-    "matchIndex": 0,
-    "comment": "Exclude 'reach' in 'reach the next threshold' where it's achieving a goal, not weapon property"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "light",
-    "matchIndex": [0,1,2,3,4,5],
-    "comment": "Exclude 'light' in folk descriptions like 'bright light', 'dim light', 'light activity' where it's illumination/intensity, not weapon property"
-  },
-  {
-    "file": "docs/02-adventurers/01-folk.md",
-    "keyword": "reach",
-    "matchIndex": [0,1,2,3,4,5],
-    "comment": "Exclude 'reach' in folk age descriptions 'reach adulthood' where it's achieving age, not weapon property"
-  },
-  {
-    "file": "docs/02-adventurers/05-npc-relations.md",
-    "keyword": "heavy",
-    "matchIndex": 0,
-    "comment": "Exclude 'heavy' in 'heavy taxes' where it's describing severity, not armor property"
-  },
-  {
-    "file": "docs/06-scenes/03-resting.md",
-    "keyword": "heavy",
-    "matchIndex": 0,
-    "comment": "Exclude 'heavy' in 'heavy interruption' where it's describing severity, not armor property"
-  },
-  {
-    "file": "docs/06-scenes/03-resting.md",
-    "keyword": "light",
-    "matchIndex": [0,1],
-    "comment": "Exclude 'light' in sleep descriptions where it's illumination, not weapon property"
-  }
-  ,
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "poison",
-    "matchIndex": [0,1],
-    "comment": "Exclude 'poison' when used in item names like 'Weapon Poison (weak)' and 'Paralyzing Poison' in Quickstart equipment"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "medium",
-    "matchIndex": 0,
-    "comment": "Exclude 'medium' in 'spirit medium' where it's a noun, not a duration/range reference"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "short",
-    "matchIndex": 3,
-    "comment": "Exclude 'short' in 'Short Spear' item name where it's not a range reference"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "light",
-    "matchIndex": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],
-    "comment": "Exclude 'light' occurrences on Quickstart page where it's part of item names (Light Shield), talent names (Light Footed), or tradition/spell names—avoid mapping to weapon property"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "heavy",
-    "matchIndex": [1,2,3,4,5,6,8,9,10,11],
-    "comment": "Exclude 'heavy' when it's part of talent names like 'Heavy Weapon Mastery' or 'Heavy Armor Mastery' in Quickstart; allow property uses elsewhere"
-  }
-  ,
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "section": "Quick Reference: Archetype Overview",
-    "keyword": "Nature",
-    "matchIndex": [1],
-    "comment": "Exclude only the 'Nature' in 'Nature magic' (Quick Reference best-for column for Druid); keep 'Nature' in Primary Skills linked"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "section": "Quick Reference: Archetype Overview",
-    "keyword": "Stealth",
-    "matchIndex": 2,
-    "comment": "Exclude 'Stealth' in 'Stealth, infiltration, skills' (Quick Reference best-for column for Rogue); keep Stealth in Primary Skills linked"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "section": "Quick Reference: Archetype Overview",
-    "keyword": "Spirit",
-    "matchIndex": 0,
-    "comment": "Exclude 'Spirit' in 'Spirit communion, ancestors' (Quick Reference best-for column) where it's descriptive, not the Spirit attribute"
-  }
-  ,
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "section": "Quick Reference: Archetype Overview",
-    "keyword": "agile",
-    "matchIndex": [0,1],
-    "comment": "Exclude 'agile' in best-for phrases like 'Agile precision melee' (Quick Reference best-for column) where it's descriptive, not the weapon property"
-  }
-  ,
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "radiant",
-    "matchIndex": 0,
-    "comment": "Exclude 'radiant' in the spell name 'Radiant Burst' (Champion section spell list)"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "frost",
-    "matchIndex": [0,1],
-    "comment": "Exclude 'frost' in the spell name 'Frost Snap' (Magus and Sorcerer sections spell lists)"
-  },
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "Spirit",
-    "matchIndex": [1,7,12],
-    "comment": "Exclude 'Spirit' when part of the talent name 'Spirit Walker' (Bard, Oracle, Shaman sections)"
-  }
-  ,
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "Shield",
-    "matchIndex": [1,2,3,5,6,7,8,10,11,12,14,15,16,17,19,21],
-    "comment": "Exclude 'Shield' when it appears in talent/spell names (Shield Mastery, Mana Shield, Life Shield) or narrative text; keep equipment entries like 'Light Shield' linked"
-  }
-  ,
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "lightning",
-    "matchIndex": 0,
-    "comment": "Exclude 'lightning' used in the spell name 'Lightning Javelin' (Druid section spell list)"
-  }
-  ,
-  {
-    "file": "docs/01-basic-rules/03-quickstart-characters.md",
-    "keyword": "Education",
-    "matchIndex": [8,14,19,29],
-    "comment": "Exclude the 'Education' word when it's part of the talent name 'General Education' (Apothecary, Engineer, Magus, Sorcerer sections); keep the leading skill header '**Education**' linked"
-  },
-  {
-    "file": "docs/04-equipment/07-magic-items.md",
-    "keyword": "fire",
-    "matchIndex": [0,1],
-    "comment": "Exclude 'fire' occurrences in docs/04-equipment/07-magic-items.md"
-  }
+	{
+		"file": "docs/06-scenes/06-harvesting-creature-parts.md",
+		"section": "🔪 Harvesting Creature Parts",
+		"keyword": "Tool",
+		"matchIndex": 0,
+		"comment": "Exclude first occurrence of 'Tool' in the category description where it's used as a category name, not as a link to equipment"
+	},
+	{
+		"file": "docs/07-magic/03-metamagic-arts.md",
+		"section": "Metamagic Arts",
+		"keyword": "fire",
+		"comment": "Exclude 'fire' in damage type list where it's part of natural language description"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "Mind",
+		"comment": "Exclude 'Mind' in 'Stoic Mind' ability name where it's part of ability name, not attribute reference"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "Nature",
+		"comment": "Exclude 'Nature' in 'Aquatic Nature' ability name where it's part of ability name, not skill reference"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "Fire",
+		"comment": "Exclude 'Fire' in 'Fire Body' ability name where it's part of ability name, not damage type reference"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "Poison",
+		"comment": "Exclude 'Poison' in ability names like 'Poisoned Dagger', 'Poison Mist', etc. where it's part of ability name, not damage type reference"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "Necrotic",
+		"comment": "Exclude 'Necrotic' in ability names like 'Necrotic Touch', 'Necrotic Bolt', 'Necrotic Aura' where it's part of ability name, not damage type reference"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "Shield",
+		"comment": "Exclude 'Shield' in creature attack names like 'Light Shield', 'Heavy Shield', 'Shield Bash', 'Shield Wall' where it's part of attack name, not weapon category reference"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "HP",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'HP' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "AV",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'AV' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "STR",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'STR' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "AGI",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'AGI' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "SPI",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'SPI' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "MND",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'MND' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "Parry",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'Parry' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "Dodge",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'Dodge' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/08-creatures/03-creatures.md",
+		"keyword": "Resist",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+			21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38,
+			39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+		],
+		"comment": "Exclude ALL 'Resist' occurrences in creature stat block table headers"
+	},
+	{
+		"file": "docs/01-basic-rules/02-how-to-roll.md",
+		"keyword": "TN",
+		"matchIndex": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+		"comment": "Exclude all 'TN' occurrences in how-to-roll table headers"
+	},
+	{
+		"file": "docs/01-basic-rules/02-how-to-roll.md",
+		"keyword": "Success Level",
+		"matchIndex": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+		"comment": "Exclude all 'Success Level' occurrences in how-to-roll table headers"
+	},
+	{
+		"file": "docs/01-basic-rules/02-how-to-roll.md",
+		"keyword": "SL",
+		"matchIndex": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+		"comment": "Exclude all 'SL' occurrences in how-to-roll table headers"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "burning",
+		"matchIndex": 0,
+		"comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
+	},
+	{
+		"file": "docs/01-basic-rules/02-character-creation.md",
+		"keyword": "burning",
+		"matchIndex": 0,
+		"comment": "Exclude 'burning' in 'burning sands' introduction flavor text where it's descriptive, not damage type reference"
+	},
+	{
+		"file": "docs/01-basic-rules/02-character-creation.md",
+		"keyword": "long",
+		"matchIndex": 0,
+		"comment": "Exclude 'long' in 'long enough' introduction flavor text where it's not duration reference"
+	},
+	{
+		"file": "docs/07-magic/04-mystic-spells.md",
+		"keyword": "light",
+		"matchIndex": [0, 1, 2, 3, 4, 5],
+		"comment": "Exclude 'light' in spell flavor descriptions like 'shimmer of light', 'power of light', 'burning light' where it's descriptive, not mechanical effect"
+	},
+	{
+		"file": "docs/01-basic-rules/01-how-to-roll.md",
+		"keyword": "scorching",
+		"matchIndex": 0,
+		"comment": "Exclude 'scorching' in 'scorching desert journey' example flavor text where it's descriptive, not damage type reference"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "quick",
+		"matchIndex": 0,
+		"comment": "Exclude 'quick' in 'quick wits' goblin description where it's descriptive, not action type reference"
+	},
+	{
+		"file": "docs/04-equipment/01-items.md",
+		"keyword": "quick",
+		"matchIndex": [0, 1],
+		"comment": "Exclude 'quick' in 'quick access' equipment descriptions where it's descriptive, not action type reference"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "frost",
+		"matchIndex": 0,
+		"comment": "Exclude 'frost' in 'Frost-resistant nomads' flavor description where it's descriptive, not damage type reference"
+	},
+	{
+		"file": "docs/01-basic-rules/02-character-creation.md",
+		"keyword": "Nature",
+		"matchIndex": 0,
+		"comment": "Exclude 'Nature' in 'nimble nature' flavor description where it's descriptive, not skill reference"
+	},
+	{
+		"file": "docs/02-adventurers/05-npc-relations.md",
+		"keyword": "close",
+		"matchIndex": 1,
+		"comment": "Exclude 'close' in 'close friend' description where it's descriptive relationship, not distance reference"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "medium",
+		"matchIndex": [0, 2, 3, 4, 5, 6, 7, 8],
+		"comment": "Exclude 'medium' in 'medium sized' folk descriptions where it's creature size, not duration reference"
+	},
+	{
+		"file": "docs/01-basic-rules/01-how-to-roll.md",
+		"keyword": "heavy",
+		"matchIndex": 0,
+		"comment": "Exclude 'heavy' in 'heavy sack' skill test example where it's descriptive weight, not armor property"
+	},
+	{
+		"file": "docs/01-basic-rules/02-character-creation.md",
+		"keyword": "light",
+		"matchIndex": [0, 1],
+		"comment": "Exclude 'light' in torch descriptions 'bright light' and 'dim light' where it's illumination, not weapon property"
+	},
+	{
+		"file": "docs/01-basic-rules/02-character-creation.md",
+		"keyword": "reach",
+		"matchIndex": 0,
+		"comment": "Exclude 'reach' in 'reach that limit' where it's achieving a goal, not weapon property"
+	},
+	{
+		"file": "docs/01-basic-rules/03-character-progression.md",
+		"keyword": "reach",
+		"matchIndex": 0,
+		"comment": "Exclude 'reach' in 'reach the next threshold' where it's achieving a goal, not weapon property"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "light",
+		"matchIndex": [0, 1, 2, 3, 4, 5],
+		"comment": "Exclude 'light' in folk descriptions like 'bright light', 'dim light', 'light activity' where it's illumination/intensity, not weapon property"
+	},
+	{
+		"file": "docs/02-adventurers/01-folk.md",
+		"keyword": "reach",
+		"matchIndex": [0, 1, 2, 3, 4, 5],
+		"comment": "Exclude 'reach' in folk age descriptions 'reach adulthood' where it's achieving age, not weapon property"
+	},
+	{
+		"file": "docs/02-adventurers/05-npc-relations.md",
+		"keyword": "heavy",
+		"matchIndex": 0,
+		"comment": "Exclude 'heavy' in 'heavy taxes' where it's describing severity, not armor property"
+	},
+	{
+		"file": "docs/06-scenes/03-resting.md",
+		"keyword": "heavy",
+		"matchIndex": 0,
+		"comment": "Exclude 'heavy' in 'heavy interruption' where it's describing severity, not armor property"
+	},
+	{
+		"file": "docs/06-scenes/03-resting.md",
+		"keyword": "light",
+		"matchIndex": [0, 1],
+		"comment": "Exclude 'light' in sleep descriptions where it's illumination, not weapon property"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "poison",
+		"matchIndex": [0, 1],
+		"comment": "Exclude 'poison' when used in item names like 'Weapon Poison (weak)' and 'Paralyzing Poison' in Quickstart equipment"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "medium",
+		"matchIndex": 0,
+		"comment": "Exclude 'medium' in 'spirit medium' where it's a noun, not a duration/range reference"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "short",
+		"matchIndex": 3,
+		"comment": "Exclude 'short' in 'Short Spear' item name where it's not a range reference"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "light",
+		"matchIndex": [
+			0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+		],
+		"comment": "Exclude 'light' occurrences on Quickstart page where it's part of item names (Light Shield), talent names (Light Footed), or tradition/spell names—avoid mapping to weapon property"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "heavy",
+		"matchIndex": [1, 2, 3, 4, 5, 6, 8, 9, 10, 11],
+		"comment": "Exclude 'heavy' when it's part of talent names like 'Heavy Weapon Mastery' or 'Heavy Armor Mastery' in Quickstart; allow property uses elsewhere"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"section": "Quick Reference: Archetype Overview",
+		"keyword": "Nature",
+		"matchIndex": [1],
+		"comment": "Exclude only the 'Nature' in 'Nature magic' (Quick Reference best-for column for Druid); keep 'Nature' in Primary Skills linked"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"section": "Quick Reference: Archetype Overview",
+		"keyword": "Stealth",
+		"matchIndex": 2,
+		"comment": "Exclude 'Stealth' in 'Stealth, infiltration, skills' (Quick Reference best-for column for Rogue); keep Stealth in Primary Skills linked"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"section": "Quick Reference: Archetype Overview",
+		"keyword": "Spirit",
+		"matchIndex": 0,
+		"comment": "Exclude 'Spirit' in 'Spirit communion, ancestors' (Quick Reference best-for column) where it's descriptive, not the Spirit attribute"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"section": "Quick Reference: Archetype Overview",
+		"keyword": "agile",
+		"matchIndex": [0, 1],
+		"comment": "Exclude 'agile' in best-for phrases like 'Agile precision melee' (Quick Reference best-for column) where it's descriptive, not the weapon property"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "radiant",
+		"matchIndex": 0,
+		"comment": "Exclude 'radiant' in the spell name 'Radiant Burst' (Champion section spell list)"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "frost",
+		"matchIndex": [0, 1],
+		"comment": "Exclude 'frost' in the spell name 'Frost Snap' (Magus and Sorcerer sections spell lists)"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "Spirit",
+		"matchIndex": [1, 7, 12],
+		"comment": "Exclude 'Spirit' when part of the talent name 'Spirit Walker' (Bard, Oracle, Shaman sections)"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "Shield",
+		"matchIndex": [1, 2, 3, 5, 6, 7, 8, 10, 11, 12, 14, 15, 16, 17, 19, 21],
+		"comment": "Exclude 'Shield' when it appears in talent/spell names (Shield Mastery, Mana Shield, Life Shield) or narrative text; keep equipment entries like 'Light Shield' linked"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "lightning",
+		"matchIndex": 0,
+		"comment": "Exclude 'lightning' used in the spell name 'Lightning Javelin' (Druid section spell list)"
+	},
+	{
+		"file": "docs/01-basic-rules/03-quickstart-characters.md",
+		"keyword": "Education",
+		"matchIndex": [8, 14, 19, 29],
+		"comment": "Exclude the 'Education' word when it's part of the talent name 'General Education' (Apothecary, Engineer, Magus, Sorcerer sections); keep the leading skill header '**Education**' linked"
+	},
+	{
+		"file": "docs/04-equipment/07-magic-items.md",
+		"keyword": "fire",
+		"matchIndex": [0, 1],
+		"comment": "Exclude 'fire' occurrences in docs/04-equipment/07-magic-items.md"
+	}
 ]

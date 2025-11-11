@@ -53,10 +53,17 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
 		lines.push('')
 		creature.attacks.forEach((attack) => {
 			const props =
-				attack.properties.length > 0 ? `(*${attack.properties.join(', ')}*)` : ''
-			const damageType = attack.damageType && attack.damageType !== 'physical' ? `${attack.damageType} ` : ''
+				attack.properties.length > 0
+					? `(*${attack.properties.join(', ')}*)`
+					: ''
+			const damageType =
+				attack.damageType && attack.damageType !== 'physical'
+					? `${attack.damageType} `
+					: ''
 			const desc = attack.description ? ` ${attack.description}` : ''
-			lines.push(`- **${attack.name}** ${props}. ${attack.damage} ${damageType}damage.${desc}`)
+			lines.push(
+				`- **${attack.name}** ${props}. ${attack.damage} ${damageType}damage.${desc}`,
+			)
 		})
 		lines.push('')
 	}
@@ -67,8 +74,14 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
 		lines.push('')
 		creature.abilities.forEach((ability) => {
 			const actionType = ability.actionType ? ` (${ability.actionType}` : ''
-			const properties = ability.properties ? `, ${ability.properties})` : (actionType ? ')' : '')
-			lines.push(`- **${ability.name}${actionType}${properties}.** ${ability.description}`)
+			const properties = ability.properties
+				? `, ${ability.properties})`
+				: actionType
+					? ')'
+					: ''
+			lines.push(
+				`- **${ability.name}${actionType}${properties}.** ${ability.description}`,
+			)
 		})
 		lines.push('')
 	}
@@ -80,13 +93,17 @@ export function generateCreatureMarkdown(creature: BuiltCreature): string {
  * Parse creature markdown back into a BuiltCreature object
  * This is useful for editing existing creatures
  */
-export function parseCreatureMarkdown(markdown: string): Partial<BuiltCreature> | null {
+export function parseCreatureMarkdown(
+	markdown: string,
+): Partial<BuiltCreature> | null {
 	try {
-		const lines = markdown.split('\n').map(l => l.trim())
+		const lines = markdown.split('\n').map((l) => l.trim())
 		const result: Partial<BuiltCreature> = {}
 
 		// Parse header
-		const headerMatch = lines[0]?.match(/###\s+\*\*(.+?)\*\*\s+\((\w+)\s+(.+?)\)/)
+		const headerMatch = lines[0]?.match(
+			/###\s+\*\*(.+?)\*\*\s+\((\w+)\s+(.+?)\)/,
+		)
 		if (headerMatch) {
 			result.name = headerMatch[1]
 			result.size = headerMatch[2]
@@ -94,18 +111,25 @@ export function parseCreatureMarkdown(markdown: string): Partial<BuiltCreature> 
 		}
 
 		// Parse tier and category
-		const tierMatch = lines.find(l => l.startsWith('**Tier:**'))?.match(/\*\*Tier:\*\*\s+(\d+)\s+\((\w+)\)/)
+		const tierMatch = lines
+			.find((l) => l.startsWith('**Tier:**'))
+			?.match(/\*\*Tier:\*\*\s+(\d+)\s+\((\w+)\)/)
 		if (tierMatch) {
 			result.tier = parseInt(tierMatch[1])
 			result.category = tierMatch[2] as any
 		}
 
 		// Parse stats table
-		const statsLine = lines.find(l => l.startsWith('|') && l.includes('HP') && !l.includes('---'))
+		const statsLine = lines.find(
+			(l) => l.startsWith('|') && l.includes('HP') && !l.includes('---'),
+		)
 		if (statsLine) {
 			const nextLine = lines[lines.indexOf(statsLine) + 2]
 			if (nextLine) {
-				const parts = nextLine.split('|').map(p => p.trim()).filter(p => p)
+				const parts = nextLine
+					.split('|')
+					.map((p) => p.trim())
+					.filter((p) => p)
 				if (parts.length >= 9) {
 					result.hp = parts[0]
 					result.av = parts[1]
@@ -121,27 +145,35 @@ export function parseCreatureMarkdown(markdown: string): Partial<BuiltCreature> 
 		}
 
 		// Parse skills
-		const skillsMatch = lines.find(l => l.startsWith('**Skills:**'))?.match(/\*\*Skills:\*\*\s+(.+)/)
+		const skillsMatch = lines
+			.find((l) => l.startsWith('**Skills:**'))
+			?.match(/\*\*Skills:\*\*\s+(.+)/)
 		if (skillsMatch) {
-			result.skills = skillsMatch[1].split(',').map(s => s.trim())
+			result.skills = skillsMatch[1].split(',').map((s) => s.trim())
 		}
 
 		// Parse immunities
-		const immunitiesMatch = lines.find(l => l.startsWith('**Immunities:**'))?.match(/\*\*Immunities:\*\*\s+(.+)/)
+		const immunitiesMatch = lines
+			.find((l) => l.startsWith('**Immunities:**'))
+			?.match(/\*\*Immunities:\*\*\s+(.+)/)
 		if (immunitiesMatch) {
-			result.immunities = immunitiesMatch[1].split(',').map(s => s.trim())
+			result.immunities = immunitiesMatch[1].split(',').map((s) => s.trim())
 		}
 
 		// Parse resistances
-		const resistancesMatch = lines.find(l => l.startsWith('**Resistances:**'))?.match(/\*\*Resistances:\*\*\s+(.+)/)
+		const resistancesMatch = lines
+			.find((l) => l.startsWith('**Resistances:**'))
+			?.match(/\*\*Resistances:\*\*\s+(.+)/)
 		if (resistancesMatch) {
-			result.resistances = resistancesMatch[1].split(',').map(s => s.trim())
+			result.resistances = resistancesMatch[1].split(',').map((s) => s.trim())
 		}
 
 		// Parse weaknesses
-		const weaknessesMatch = lines.find(l => l.startsWith('**Weaknesses:**'))?.match(/\*\*Weaknesses:\*\*\s+(.+)/)
+		const weaknessesMatch = lines
+			.find((l) => l.startsWith('**Weaknesses:**'))
+			?.match(/\*\*Weaknesses:\*\*\s+(.+)/)
 		if (weaknessesMatch) {
-			result.weaknesses = weaknessesMatch[1].split(',').map(s => s.trim())
+			result.weaknesses = weaknessesMatch[1].split(',').map((s) => s.trim())
 		}
 
 		return result

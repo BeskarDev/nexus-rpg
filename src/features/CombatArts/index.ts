@@ -1,1 +1,1 @@
-export { CombatArts } from './CombatArts'
+export { CombatArtsWrapper as CombatArts } from './CombatArtsWrapper'

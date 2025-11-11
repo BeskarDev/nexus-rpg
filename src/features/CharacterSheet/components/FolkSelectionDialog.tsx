@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Typography, Chip, Box } from '@mui/material'
-import { SingleSelectionDialog, SingleSelectionDialogColumn } from './SingleSelectionDialog'
+import {
+	SingleSelectionDialog,
+	SingleSelectionDialogColumn,
+} from './SingleSelectionDialog'
 import folkData from '../../../utils/json/folk.json'
 
 export type FolkSelectionDialogProps = {
@@ -28,7 +31,7 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 	selectedFolk,
 }) => {
 	const [selectedFolkKey, setSelectedFolkKey] = useState<string | null>(
-		selectedFolk || null
+		selectedFolk || null,
 	)
 
 	const columns: SingleSelectionDialogColumn<FolkData>[] = [
@@ -65,7 +68,7 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 							overflow: 'hidden',
 							fontStyle: 'italic',
 							color: 'text.secondary',
-							mb: 0.5
+							mb: 0.5,
 						}}
 					>
 						"{folk.quote}"
@@ -98,7 +101,7 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 							sx={{
 								display: 'block',
 								fontWeight: 'medium',
-								mb: 0.25
+								mb: 0.25,
 							}}
 						>
 							{ability.name}
@@ -124,10 +127,10 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 							label={language}
 							size="small"
 							variant="outlined"
-							sx={{ 
-								fontSize: '0.7rem', 
+							sx={{
+								fontSize: '0.7rem',
 								mb: 0.25,
-								mr: 0.25
+								mr: 0.25,
 							}}
 						/>
 					))}
@@ -138,7 +141,9 @@ export const FolkSelectionDialog: React.FC<FolkSelectionDialogProps> = ({
 
 	const handleConfirm = () => {
 		if (selectedFolkKey) {
-			const folk = (folkData as FolkData[]).find(f => f.name === selectedFolkKey)
+			const folk = (folkData as FolkData[]).find(
+				(f) => f.name === selectedFolkKey,
+			)
 			if (folk) {
 				onSelectFolk(folk)
 			}

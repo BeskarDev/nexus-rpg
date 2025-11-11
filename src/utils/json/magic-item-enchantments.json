@@ -1,452 +1,452 @@
 [
-  {
-    "id": "burning",
-    "name": "Burning",
-    "description": "This projectile ignites itself when fired. On a hit, inflict burning (4/6/8) to the target.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["ammo"],
-    "scaling": true
-  },
-  {
-    "id": "draining",
-    "name": "Draining",
-    "description": "On a hit, the target is briefly stunned. You can only use this effect once per scene against any individual target.",
-    "qualityTiers": [5],
-    "type": "prefix",
-    "applicableCategories": ["ammo"],
-    "scaling": false
-  },
-  {
-    "id": "ensnaring",
-    "name": "Ensnaring",
-    "description": "On hit, magical vines erupt from the projectile to entangle the target. A large or smaller target is grappled by the vines. The target's rolls to escape the grapple are made vs. medium/hard/very hard Difficulty (8/10/12).",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["ammo"],
-    "scaling": true
-  },
-  {
-    "id": "shattering",
-    "name": "Shattering",
-    "description": "On a hit, the projectile explodes into a loud bang, dealing 4/6/8 blast damage (ignoring AV) to the target and each other creature within melee range of them. On a strong or critical hit, the target is also knocked prone.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["ammo"],
-    "scaling": true
-  },
-  {
-    "id": "seeking",
-    "name": "Seeking",
-    "description": "This shot curves unnaturally toward its mark. Ignore any penalties from range or cover and gain +1 boon on this attack. At Q6, you can also target creatures behind full cover, as long as there is a possible flight path for the projectile and you are aware of their location.",
-    "qualityTiers": [4, 6],
-    "type": "prefix",
-    "applicableCategories": ["ammo"],
-    "scaling": false
-  },
-  {
-    "id": "wounding",
-    "name": "Wounding",
-    "description": "On a hit, inflict bleeding (4/6/8) on the target. You can only use this effect once per scene against any individual target.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["ammo"],
-    "scaling": true
-  },
-  {
-    "id": "bloody",
-    "name": "Bloody",
-    "description": "On a strong or critical hit with this weapon, inflict bleeding (2/4/6) on the target. If your hit would inflict bleeding already, increase the amount by +2/+4/+6 instead.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "booming",
-    "name": "Booming",
-    "description": "On a hit with this weapon, you can choose to deal blast damage instead. On a strong or critical hit, the target is also pushed a close/short/medium distance. You can use this ability once/twice/thrice per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "defiled",
-    "name": "Defiled",
-    "description": "This weapon is tainted with dark energy, causing nearby plants to slowly wither and exuding a faint aura of malevolence. You can use your Quick Action on your turn to amplify this corruption for a short duration. While amplified, the weapon turns bright light to dim light in close range and deals 2/4/6 necrotic damage (ignoring AV) on a hit.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "flaming",
-    "name": "Flaming",
-    "description": "While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration. While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignoring AV) on a hit.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "infused",
-    "name": "Infused",
-    "description": "While holding this weapon, you can use your Quick Action on your turn to regain 4/6/8 Focus. You can use this ability once per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "morphing",
-    "name": "Morphing",
-    "description": "Choose any second type of weapon. When applying this enchantment during crafting, you must use and destroy that weapon (at least masterwork quality) as part of the enchanting process. This weapon combines both weapon forms into one, stretching or contracting its parts upon activation to assume a different shape. If you speak the command word as a Quick Action, the weapon transforms from one of its forms into the other one. The weapon retains all mundane and magical properties of the original weapons when their respective shape is used.",
-    "qualityTiers": [4],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": false
-  },
-  {
-    "id": "poisoners",
-    "name": "Poisoner's",
-    "description": "When applying any type of poison to this weapon, add +2/+4 to any poison damage it deals (for weapon poisons) or increase the difficulty to end the poisons effect by one/two step(s) (for paralyzing poisons).",
-    "qualityTiers": [4, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "returning",
-    "name": "Returning",
-    "description": "After using a short break to attune yourself to it, the weapon becomes magically linked to your person. It gains the thrown (short/medium) property. While the weapon is in long range of you and you can see it, you can use a Quick Action to command it to return to you. If the weapon's path is unobstructed, it quickly flies back into your hand (you must have a free hand to do this).",
-    "qualityTiers": [4],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": false
-  },
-  {
-    "id": "sacred",
-    "name": "Sacred",
-    "description": "This weapon is blessed with divine power, emanating a gentle warmth and providing comfort to the faithful. You can use your Quick Action on your turn to channel greater divine energy through it for a short duration. While channeling, the weapon radiates bright light in melee range, dim light in close range, and deals 2/4/6 radiant damage (ignoring AV) on a hit.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "sentinel",
-    "name": "Sentinel",
-    "description": "During this weapon's creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon glows dimly whenever a creature of the chosen type is within long distance of you. At Q5, you also gain +1 boon on all rolls made targeting one of these creatures, including tracking, understanding, or attacking.",
-    "qualityTiers": [4, 5],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": false
-  },
-  {
-    "id": "slaying",
-    "name": "Slaying",
-    "description": "During this weapon's creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon deals +2/+4/+6 damage on a hit against the chosen type of creature.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "sundering",
-    "name": "Sundering",
-    "description": "On a hit, you can choose to ignore 1/2 AV. You can use this ability once/twice/thrice per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
-    "scaling": true
-  },
-  {
-    "id": "storing",
-    "name": "Storing",
-    "description": "Once per day, you can choose any rank 1/2/3 spell you know. This item stores the chosen spell within it. You can cast the spell once per day from this item without spending Focus.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["spell-catalyst"],
-    "scaling": true
-  },
-  {
-    "id": "deflecting",
-    "name": "Deflecting",
-    "description": "While wielding this item, it cloaks you in a magical aura and gains +1 Parry as a property.",
-    "qualityTiers": [4, 5, 6, 7, 8],
-    "type": "prefix",
-    "applicableCategories": ["spell-catalyst"],
-    "scaling": false
-  },
-  {
-    "id": "glowing",
-    "name": "Glowing",
-    "description": "This item can emit light with short range by speaking its command word (no Action required). Speaking the command word again extinguishes the light. When using the item for light and you would have to roll a Supply Check for light, instead roll a Durability Check for this item. If you fail, the item isn't damaged, but it can't emit light until the next day.",
-    "qualityTiers": [4],
-    "type": "prefix",
-    "applicableCategories": ["spell-catalyst"],
-    "scaling": false
-  },
-  {
-    "id": "stabilizing",
-    "name": "Stabilizing",
-    "description": "Once per turn, if you fail to cast a spell, you can re-roll the test. You can use this ability once/twice/thrice per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["spell-catalyst"],
-    "scaling": true
-  },
-  {
-    "id": "volatile",
-    "name": "Volatile",
-    "description": "Once per turn, when dealing damage with a spell, you can choose to add +2/+4/+6 damage to it. If you do, roll a Durability check for this item.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["spell-catalyst"],
-    "scaling": true
-  },
-  {
-    "id": "catalyst-infused",
-    "name": "Infused",
-    "description": "While holding this item, you can use your Quick Action during your turn to regain up to 4/6/8 Focus. You can use this ability once per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["spell-catalyst"],
-    "scaling": true
-  },
-  {
-    "id": "anchoring",
-    "name": "Anchoring",
-    "description": "While wearing this item, when you would be pushed or knocked prone, you can ignore these effects. If it was a creature in melee range that attempted to push or knock you prone, they also take 2/4/6 damage (ignoring AV). You can use this ability once/twice/thrice per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["light-armor", "heavy-armor", "shield"],
-    "scaling": true
-  },
-  {
-    "id": "blurring",
-    "name": "Blurring",
-    "description": "While wearing this item, you can use a Quick Action on your turn to activate the effects of the Mirror Image spell on yourself. The duplicates have 8/9/10 Defense. You can use this ability once/twice/thrice per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["light-armor", "heavy-armor", "shield"],
-    "scaling": true
-  },
-  {
-    "id": "temperate",
-    "name": "Temperate",
-    "description": "This item provides magical protection from extreme cold or extreme heat (choose one). You don't have to roll a test during travel or exploration to resist the chosen form of extreme climate.",
-    "qualityTiers": [4],
-    "type": "prefix",
-    "applicableCategories": ["light-armor", "heavy-armor"],
-    "scaling": false
-  },
-  {
-    "id": "stalwart",
-    "name": "Stalwart",
-    "description": "While wearing this item, whenever an effect would inflict the charmed, confused, dazed, frightened, paralyzed, staggered, or stunned condition on you, you can choose to not suffer that condition (you can use this after rolling a test against the effect). You can use this ability once per day.",
-    "qualityTiers": [4],
-    "type": "prefix",
-    "applicableCategories": ["light-armor", "heavy-armor", "shield"],
-    "scaling": false
-  },
-  {
-    "id": "tough",
-    "name": "Tough",
-    "description": "Once per turn, while wearing this item, when you suffer damage, you can choose to gain resistance against that damage. You can use this ability once/twice/thrice per day.",
-    "qualityTiers": [4, 5, 6],
-    "type": "prefix",
-    "applicableCategories": ["light-armor", "heavy-armor", "shield"],
-    "scaling": true
-  },
-  {
-    "id": "silent",
-    "name": "Silent",
-    "description": "While wearing this item, either reduce its rigid property by 1/2 (min. 0), remove its noisy property, or gain +1 boon on Stealth rolls to move silently or surprise your enemies. You must choose the applicable effect in the given order, depending on the properties of the item.",
-    "qualityTiers": [4, 6],
-    "type": "prefix",
-    "applicableCategories": ["light-armor", "heavy-armor"],
-    "scaling": true
-  },
-  {
-    "id": "of-protection",
-    "name": "of Protection",
-    "description": "While wearing this item and not wearing armor, you gain +1/+2/+3 AV (enhancement bonus).",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-willpower",
-    "name": "of Willpower",
-    "description": "While wearing the item, you gain +1/+2/+3 Resist (max. 10/12/14).",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-guarding",
-    "name": "of Guarding",
-    "description": "While wearing the item, you gain +1/+2/+3 Parry (max. 10/12/14).",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-reflexes",
-    "name": "of Reflexes",
-    "description": "While wearing the item, you gain +1/+2/+3 Dodge (max. 10/12/14).",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-shielding",
-    "name": "of Shielding",
-    "description": "While wearing this item, whenever you take non-physical damage, the item absorbs that damage instead. Once the item has absorbed a total of 10/15/20 damage, it can't absorb any more damage. The item regains its ability after a night's rest.",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-might",
-    "name": "of Might",
-    "description": "While wearing this item, increase your Strength by one/two step(s) (up to d8/d10).",
-    "qualityTiers": [4, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-swiftness",
-    "name": "of Swiftness",
-    "description": "While wearing this item, increase your Agility by one/two step(s) (up to d8/d10).",
-    "qualityTiers": [4, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-wisdom",
-    "name": "of Wisdom",
-    "description": "While wearing this item, increase your Spirit by one/two step(s) (up to d8/d10).",
-    "qualityTiers": [4, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-intellect",
-    "name": "of Intellect",
-    "description": "While wearing this item, increase your Mind by one/two step(s) (up to d8/d10).",
-    "qualityTiers": [4, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-ogre-strength",
-    "name": "of Ogre Strength",
-    "description": "While wearing this item, increase the weapon damage of your unarmed attacks by 1/2/3.",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-fast-stride",
-    "name": "of Fast Stride",
-    "description": "While wearing this item, you gain +1/+2 Movement per turn.",
-    "qualityTiers": [4, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-pure-thought",
-    "name": "of Pure Thought",
-    "description": "While wearing this item, you gain the following effects: You are unaffected by effects which attempt to reveal your thoughts, charm you, or magically put you to sleep. You gain resistance against psychic damage.",
-    "qualityTiers": [4],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": false
-  },
-  {
-    "id": "of-fortitude",
-    "name": "of Fortitude",
-    "description": "While wearing this item, it grants +2/+4/+6 HP.",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-the-guardian",
-    "name": "of the Guardian",
-    "description": "This item grants the wielder +1/+2 boon(s) on Initiative rolls.",
-    "qualityTiers": [4, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-attunement",
-    "name": "of Attunement",
-    "description": "While wearing this item, it grants +2/+4/+6 max. Focus.",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-comprehension",
-    "name": "of Comprehension",
-    "description": "While wearing this item, you can understand and speak (but not write) a specific language. The language is chosen during creation of the item and the creator must also be able to speak that language.",
-    "qualityTiers": [4],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": false
-  },
-  {
-    "id": "of-arcane-knowledge",
-    "name": "of Arcane Knowledge",
-    "description": "During the creation of this item, choose any arcane rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls).",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-divine-guidance",
-    "name": "of Divine Guidance",
-    "description": "During the creation of this item, choose any mystic rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls).",
-    "qualityTiers": [4, 5, 6],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": true
-  },
-  {
-    "id": "of-immunity",
-    "name": "of Immunity",
-    "description": "During the creation of this item, choose one condition from (1) blinded, (2) charmed, (3) confused, (4) dazed, (5) deafened, (6) frightened, (7) paralyzed, (8) poisoned, (9) silenced, (10) slowed, (11) staggered or (12) stunned. When finding this item, roll 1d12 to determine the condition. While wearing this item, you are immune against the chosen condition.",
-    "qualityTiers": [4],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": false
-  },
-  {
-    "id": "of-resistance",
-    "name": "of Resistance",
-    "description": "During the creation of this item, choose one damage type from (1) acid, (2) blast, (3) fire, (4) frost, (5) lightning, (6) necrotic, (7) psychic, (8) poison, or (9) radiant. When finding this item, roll 1d10 (re-rolling a result of 10) to determine the condition. While wearing this item, you are resistant against the chosen damage type.",
-    "qualityTiers": [4],
-    "type": "suffix",
-    "applicableCategories": ["wearable"],
-    "scaling": false
-  }
+	{
+		"id": "burning",
+		"name": "Burning",
+		"description": "This projectile ignites itself when fired. On a hit, inflict burning (4/6/8) to the target.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["ammo"],
+		"scaling": true
+	},
+	{
+		"id": "draining",
+		"name": "Draining",
+		"description": "On a hit, the target is briefly stunned. You can only use this effect once per scene against any individual target.",
+		"qualityTiers": [5],
+		"type": "prefix",
+		"applicableCategories": ["ammo"],
+		"scaling": false
+	},
+	{
+		"id": "ensnaring",
+		"name": "Ensnaring",
+		"description": "On hit, magical vines erupt from the projectile to entangle the target. A large or smaller target is grappled by the vines. The target's rolls to escape the grapple are made vs. medium/hard/very hard Difficulty (8/10/12).",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["ammo"],
+		"scaling": true
+	},
+	{
+		"id": "shattering",
+		"name": "Shattering",
+		"description": "On a hit, the projectile explodes into a loud bang, dealing 4/6/8 blast damage (ignoring AV) to the target and each other creature within melee range of them. On a strong or critical hit, the target is also knocked prone.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["ammo"],
+		"scaling": true
+	},
+	{
+		"id": "seeking",
+		"name": "Seeking",
+		"description": "This shot curves unnaturally toward its mark. Ignore any penalties from range or cover and gain +1 boon on this attack. At Q6, you can also target creatures behind full cover, as long as there is a possible flight path for the projectile and you are aware of their location.",
+		"qualityTiers": [4, 6],
+		"type": "prefix",
+		"applicableCategories": ["ammo"],
+		"scaling": false
+	},
+	{
+		"id": "wounding",
+		"name": "Wounding",
+		"description": "On a hit, inflict bleeding (4/6/8) on the target. You can only use this effect once per scene against any individual target.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["ammo"],
+		"scaling": true
+	},
+	{
+		"id": "bloody",
+		"name": "Bloody",
+		"description": "On a strong or critical hit with this weapon, inflict bleeding (2/4/6) on the target. If your hit would inflict bleeding already, increase the amount by +2/+4/+6 instead.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "booming",
+		"name": "Booming",
+		"description": "On a hit with this weapon, you can choose to deal blast damage instead. On a strong or critical hit, the target is also pushed a close/short/medium distance. You can use this ability once/twice/thrice per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "defiled",
+		"name": "Defiled",
+		"description": "This weapon is tainted with dark energy, causing nearby plants to slowly wither and exuding a faint aura of malevolence. You can use your Quick Action on your turn to amplify this corruption for a short duration. While amplified, the weapon turns bright light to dim light in close range and deals 2/4/6 necrotic damage (ignoring AV) on a hit.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "flaming",
+		"name": "Flaming",
+		"description": "While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration. While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignoring AV) on a hit.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "infused",
+		"name": "Infused",
+		"description": "While holding this weapon, you can use your Quick Action on your turn to regain 4/6/8 Focus. You can use this ability once per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "morphing",
+		"name": "Morphing",
+		"description": "Choose any second type of weapon. When applying this enchantment during crafting, you must use and destroy that weapon (at least masterwork quality) as part of the enchanting process. This weapon combines both weapon forms into one, stretching or contracting its parts upon activation to assume a different shape. If you speak the command word as a Quick Action, the weapon transforms from one of its forms into the other one. The weapon retains all mundane and magical properties of the original weapons when their respective shape is used.",
+		"qualityTiers": [4],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": false
+	},
+	{
+		"id": "poisoners",
+		"name": "Poisoner's",
+		"description": "When applying any type of poison to this weapon, add +2/+4 to any poison damage it deals (for weapon poisons) or increase the difficulty to end the poisons effect by one/two step(s) (for paralyzing poisons).",
+		"qualityTiers": [4, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "returning",
+		"name": "Returning",
+		"description": "After using a short break to attune yourself to it, the weapon becomes magically linked to your person. It gains the thrown (short/medium) property. While the weapon is in long range of you and you can see it, you can use a Quick Action to command it to return to you. If the weapon's path is unobstructed, it quickly flies back into your hand (you must have a free hand to do this).",
+		"qualityTiers": [4],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": false
+	},
+	{
+		"id": "sacred",
+		"name": "Sacred",
+		"description": "This weapon is blessed with divine power, emanating a gentle warmth and providing comfort to the faithful. You can use your Quick Action on your turn to channel greater divine energy through it for a short duration. While channeling, the weapon radiates bright light in melee range, dim light in close range, and deals 2/4/6 radiant damage (ignoring AV) on a hit.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "sentinel",
+		"name": "Sentinel",
+		"description": "During this weapon's creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon glows dimly whenever a creature of the chosen type is within long distance of you. At Q5, you also gain +1 boon on all rolls made targeting one of these creatures, including tracking, understanding, or attacking.",
+		"qualityTiers": [4, 5],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": false
+	},
+	{
+		"id": "slaying",
+		"name": "Slaying",
+		"description": "During this weapon's creation, choose one type of creature (any folk, a type of animal, undead, giant, etc.). This weapon deals +2/+4/+6 damage on a hit against the chosen type of creature.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "sundering",
+		"name": "Sundering",
+		"description": "On a hit, you can choose to ignore 1/2 AV. You can use this ability once/twice/thrice per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
+		"scaling": true
+	},
+	{
+		"id": "storing",
+		"name": "Storing",
+		"description": "Once per day, you can choose any rank 1/2/3 spell you know. This item stores the chosen spell within it. You can cast the spell once per day from this item without spending Focus.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["spell-catalyst"],
+		"scaling": true
+	},
+	{
+		"id": "deflecting",
+		"name": "Deflecting",
+		"description": "While wielding this item, it cloaks you in a magical aura and gains +1 Parry as a property.",
+		"qualityTiers": [4, 5, 6, 7, 8],
+		"type": "prefix",
+		"applicableCategories": ["spell-catalyst"],
+		"scaling": false
+	},
+	{
+		"id": "glowing",
+		"name": "Glowing",
+		"description": "This item can emit light with short range by speaking its command word (no Action required). Speaking the command word again extinguishes the light. When using the item for light and you would have to roll a Supply Check for light, instead roll a Durability Check for this item. If you fail, the item isn't damaged, but it can't emit light until the next day.",
+		"qualityTiers": [4],
+		"type": "prefix",
+		"applicableCategories": ["spell-catalyst"],
+		"scaling": false
+	},
+	{
+		"id": "stabilizing",
+		"name": "Stabilizing",
+		"description": "Once per turn, if you fail to cast a spell, you can re-roll the test. You can use this ability once/twice/thrice per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["spell-catalyst"],
+		"scaling": true
+	},
+	{
+		"id": "volatile",
+		"name": "Volatile",
+		"description": "Once per turn, when dealing damage with a spell, you can choose to add +2/+4/+6 damage to it. If you do, roll a Durability check for this item.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["spell-catalyst"],
+		"scaling": true
+	},
+	{
+		"id": "catalyst-infused",
+		"name": "Infused",
+		"description": "While holding this item, you can use your Quick Action during your turn to regain up to 4/6/8 Focus. You can use this ability once per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["spell-catalyst"],
+		"scaling": true
+	},
+	{
+		"id": "anchoring",
+		"name": "Anchoring",
+		"description": "While wearing this item, when you would be pushed or knocked prone, you can ignore these effects. If it was a creature in melee range that attempted to push or knock you prone, they also take 2/4/6 damage (ignoring AV). You can use this ability once/twice/thrice per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["light-armor", "heavy-armor", "shield"],
+		"scaling": true
+	},
+	{
+		"id": "blurring",
+		"name": "Blurring",
+		"description": "While wearing this item, you can use a Quick Action on your turn to activate the effects of the Mirror Image spell on yourself. The duplicates have 8/9/10 Defense. You can use this ability once/twice/thrice per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["light-armor", "heavy-armor", "shield"],
+		"scaling": true
+	},
+	{
+		"id": "temperate",
+		"name": "Temperate",
+		"description": "This item provides magical protection from extreme cold or extreme heat (choose one). You don't have to roll a test during travel or exploration to resist the chosen form of extreme climate.",
+		"qualityTiers": [4],
+		"type": "prefix",
+		"applicableCategories": ["light-armor", "heavy-armor"],
+		"scaling": false
+	},
+	{
+		"id": "stalwart",
+		"name": "Stalwart",
+		"description": "While wearing this item, whenever an effect would inflict the charmed, confused, dazed, frightened, paralyzed, staggered, or stunned condition on you, you can choose to not suffer that condition (you can use this after rolling a test against the effect). You can use this ability once per day.",
+		"qualityTiers": [4],
+		"type": "prefix",
+		"applicableCategories": ["light-armor", "heavy-armor", "shield"],
+		"scaling": false
+	},
+	{
+		"id": "tough",
+		"name": "Tough",
+		"description": "Once per turn, while wearing this item, when you suffer damage, you can choose to gain resistance against that damage. You can use this ability once/twice/thrice per day.",
+		"qualityTiers": [4, 5, 6],
+		"type": "prefix",
+		"applicableCategories": ["light-armor", "heavy-armor", "shield"],
+		"scaling": true
+	},
+	{
+		"id": "silent",
+		"name": "Silent",
+		"description": "While wearing this item, either reduce its rigid property by 1/2 (min. 0), remove its noisy property, or gain +1 boon on Stealth rolls to move silently or surprise your enemies. You must choose the applicable effect in the given order, depending on the properties of the item.",
+		"qualityTiers": [4, 6],
+		"type": "prefix",
+		"applicableCategories": ["light-armor", "heavy-armor"],
+		"scaling": true
+	},
+	{
+		"id": "of-protection",
+		"name": "of Protection",
+		"description": "While wearing this item and not wearing armor, you gain +1/+2/+3 AV (enhancement bonus).",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-willpower",
+		"name": "of Willpower",
+		"description": "While wearing the item, you gain +1/+2/+3 Resist (max. 10/12/14).",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-guarding",
+		"name": "of Guarding",
+		"description": "While wearing the item, you gain +1/+2/+3 Parry (max. 10/12/14).",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-reflexes",
+		"name": "of Reflexes",
+		"description": "While wearing the item, you gain +1/+2/+3 Dodge (max. 10/12/14).",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-shielding",
+		"name": "of Shielding",
+		"description": "While wearing this item, whenever you take non-physical damage, the item absorbs that damage instead. Once the item has absorbed a total of 10/15/20 damage, it can't absorb any more damage. The item regains its ability after a night's rest.",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-might",
+		"name": "of Might",
+		"description": "While wearing this item, increase your Strength by one/two step(s) (up to d8/d10).",
+		"qualityTiers": [4, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-swiftness",
+		"name": "of Swiftness",
+		"description": "While wearing this item, increase your Agility by one/two step(s) (up to d8/d10).",
+		"qualityTiers": [4, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-wisdom",
+		"name": "of Wisdom",
+		"description": "While wearing this item, increase your Spirit by one/two step(s) (up to d8/d10).",
+		"qualityTiers": [4, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-intellect",
+		"name": "of Intellect",
+		"description": "While wearing this item, increase your Mind by one/two step(s) (up to d8/d10).",
+		"qualityTiers": [4, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-ogre-strength",
+		"name": "of Ogre Strength",
+		"description": "While wearing this item, increase the weapon damage of your unarmed attacks by 1/2/3.",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-fast-stride",
+		"name": "of Fast Stride",
+		"description": "While wearing this item, you gain +1/+2 Movement per turn.",
+		"qualityTiers": [4, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-pure-thought",
+		"name": "of Pure Thought",
+		"description": "While wearing this item, you gain the following effects: You are unaffected by effects which attempt to reveal your thoughts, charm you, or magically put you to sleep. You gain resistance against psychic damage.",
+		"qualityTiers": [4],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": false
+	},
+	{
+		"id": "of-fortitude",
+		"name": "of Fortitude",
+		"description": "While wearing this item, it grants +2/+4/+6 HP.",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-the-guardian",
+		"name": "of the Guardian",
+		"description": "This item grants the wielder +1/+2 boon(s) on Initiative rolls.",
+		"qualityTiers": [4, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-attunement",
+		"name": "of Attunement",
+		"description": "While wearing this item, it grants +2/+4/+6 max. Focus.",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-comprehension",
+		"name": "of Comprehension",
+		"description": "While wearing this item, you can understand and speak (but not write) a specific language. The language is chosen during creation of the item and the creator must also be able to speak that language.",
+		"qualityTiers": [4],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": false
+	},
+	{
+		"id": "of-arcane-knowledge",
+		"name": "of Arcane Knowledge",
+		"description": "During the creation of this item, choose any arcane rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls).",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-divine-guidance",
+		"name": "of Divine Guidance",
+		"description": "During the creation of this item, choose any mystic rank 1/2/3 spell you know. When finding this item, you can use the spell scroll tables to determine the type of spell. This item stores the chosen spell within it. You can cast the spell once per day from this item (use the same rules as for spell scrolls).",
+		"qualityTiers": [4, 5, 6],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": true
+	},
+	{
+		"id": "of-immunity",
+		"name": "of Immunity",
+		"description": "During the creation of this item, choose one condition from (1) blinded, (2) charmed, (3) confused, (4) dazed, (5) deafened, (6) frightened, (7) paralyzed, (8) poisoned, (9) silenced, (10) slowed, (11) staggered or (12) stunned. When finding this item, roll 1d12 to determine the condition. While wearing this item, you are immune against the chosen condition.",
+		"qualityTiers": [4],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": false
+	},
+	{
+		"id": "of-resistance",
+		"name": "of Resistance",
+		"description": "During the creation of this item, choose one damage type from (1) acid, (2) blast, (3) fire, (4) frost, (5) lightning, (6) necrotic, (7) psychic, (8) poison, or (9) radiant. When finding this item, roll 1d10 (re-rolling a result of 10) to determine the condition. While wearing this item, you are resistant against the chosen damage type.",
+		"qualityTiers": [4],
+		"type": "suffix",
+		"applicableCategories": ["wearable"],
+		"scaling": false
+	}
 ]

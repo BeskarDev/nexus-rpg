@@ -1,5 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { CreatureAttack, CreatureAbility, CreatureCategory, CreatureSkill } from '../../types/CreatureBuilder'
+import {
+	CreatureAttack,
+	CreatureAbility,
+	CreatureCategory,
+	CreatureSkill,
+} from '../../types/CreatureBuilder'
 
 export type CreatureBuilderState = {
 	// Basic creature properties
@@ -87,12 +92,18 @@ export const {
 		setCustomAV: (state, action: PayloadAction<number | null>) => {
 			state.customAV = action.payload
 		},
-		setCustomArmorType: (state, action: PayloadAction<'light' | 'heavy' | null>) => {
+		setCustomArmorType: (
+			state,
+			action: PayloadAction<'light' | 'heavy' | null>,
+		) => {
 			state.customArmorType = action.payload
 		},
 		setCustomAttribute: (
 			state,
-			action: PayloadAction<{ attr: 'str' | 'agi' | 'spi' | 'mnd'; value: string | null }>
+			action: PayloadAction<{
+				attr: 'str' | 'agi' | 'spi' | 'mnd'
+				value: string | null
+			}>,
 		) => {
 			const { attr, value } = action.payload
 			switch (attr) {
@@ -112,7 +123,10 @@ export const {
 		},
 		setCustomDefense: (
 			state,
-			action: PayloadAction<{ defense: 'parry' | 'dodge' | 'resist'; value: number | null }>
+			action: PayloadAction<{
+				defense: 'parry' | 'dodge' | 'resist'
+				value: number | null
+			}>,
 		) => {
 			const { defense, value } = action.payload
 			switch (defense) {

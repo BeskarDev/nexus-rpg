@@ -15,18 +15,39 @@ function Card({ label, href }) {
 }
 
 export default function Home() {
+	   // Calculate number of years since 1.1.2020, rounded up
+	   function getProjectYears() {
+			   const startDate = new Date(2020, 0, 1) // Jan 1, 2020
+			   const now = new Date()
+			   const diffMs = now - startDate
+			   const diffYears = diffMs / (1000 * 60 * 60 * 24 * 365.2425)
+			   return Math.ceil(diffYears)
+	   }
 	const { siteConfig } = useDocusaurusContext()
 	const [items, setItems] = React.useState([])
 
-	React.useEffect(() => {
-		const navbarItems = Array.from(
-			document.querySelectorAll('.navbar__item.navbar__link'),
-		)
-			.map((element) => ({ label: element.textContent, href: element.href }))
-			.filter((element) => element.label !== 'GitHub')
-
-		setItems(navbarItems)
-	}, [])
+       React.useEffect(() => {
+	       const navbarElements = Array.from(
+		       document.querySelectorAll('.navbar__item.navbar__link'),
+	       )
+		       // Filter out GitHub link by its className
+		       .filter((element) => !element.classList.contains('navbar-github-link'))
+		       .map((element) => {
+			       let label = element.textContent
+			       const href = element.href
+			       // If the label is empty or only emoji, set it based on href
+			       const isIconOnly = !label || /^[^\w]*$/.test(label.trim())
+			       if (isIconOnly) {
+				       if (/\/docs\/(gm-tools|10-gm-tools)\//.test(href) || /\/docs\/gm-tools(\/|$)/.test(href)) {
+					       label = '⚙️ GM Tools'
+				       } else if (/\/docs\/(character-sheet|11-character-sheet)\//.test(href) || /\/docs\/character-sheet(\/|$)/.test(href)) {
+					       label = '📜 Character Sheet'
+				       }
+			       }
+			       return { label, href }
+		       })
+	       setItems(navbarElements)
+       }, [])
 
 	return (
 		<Layout
@@ -79,8 +100,8 @@ export default function Home() {
 						subject to change!
 					</p>
 					<p>
-						Nexus RPG is a single-person passion project and has been in
-						developement for the last 5 years. As only a close group of friends
+							Nexus RPG is a single-person passion project and has been in
+							developement for the last {getProjectYears()} years. As only a close group of friends
 						has yet played this game regurily, not every rule or character
 						option has had the chance to be thorouly playtested.
 					</p>

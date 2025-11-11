@@ -20,13 +20,13 @@ describe('Archetype Selection', () => {
 			expect(archetype).toHaveProperty('suggestedSkills')
 			expect(archetype).toHaveProperty('recommendedTalents')
 			expect(archetype).toHaveProperty('startingEquipment')
-			
+
 			// Validate attributes
 			expect(archetype.attributes).toHaveProperty('STR')
 			expect(archetype.attributes).toHaveProperty('AGI')
 			expect(archetype.attributes).toHaveProperty('SPI')
 			expect(archetype.attributes).toHaveProperty('MND')
-			
+
 			// Validate attribute values are valid die sizes
 			const validDieSizes = [4, 6, 8, 10, 12]
 			expect(validDieSizes).toContain(archetype.attributes.STR)
@@ -38,7 +38,7 @@ describe('Archetype Selection', () => {
 
 	it('should create character with archetype attributes', () => {
 		const barbarianArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Barbarian'
+			(a) => a.name === 'Barbarian',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Barbarian', 'Test Player', {
@@ -53,7 +53,7 @@ describe('Archetype Selection', () => {
 
 	it('should create character with archetype skills', () => {
 		const rangerArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Ranger'
+			(a) => a.name === 'Ranger',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Ranger', 'Test Player', {
@@ -68,7 +68,7 @@ describe('Archetype Selection', () => {
 
 	it('should add archetype information to character notes', () => {
 		const sorcererArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Sorcerer'
+			(a) => a.name === 'Sorcerer',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Sorcerer', 'Test Player', {
@@ -83,7 +83,7 @@ describe('Archetype Selection', () => {
 
 	it('should add recommended talents to abilities', () => {
 		const fighterArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Fighter'
+			(a) => a.name === 'Fighter',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Fighter', 'Test Player', {
@@ -91,9 +91,11 @@ describe('Archetype Selection', () => {
 		})
 
 		// Check that talents are added individually with 'Talent' tag
-		const talentAbilities = character.skills.abilities.filter((a) => a.tag === 'Talent')
-		const talentNames = talentAbilities.map(a => a.title)
-		
+		const talentAbilities = character.skills.abilities.filter(
+			(a) => a.tag === 'Talent',
+		)
+		const talentNames = talentAbilities.map((a) => a.title)
+
 		expect(talentNames).toContain('Shield Mastery')
 		expect(talentNames).toContain('Stand your Ground')
 		expect(talentNames).toContain('Second Wind')
@@ -101,7 +103,7 @@ describe('Archetype Selection', () => {
 
 	it('should calculate correct initial HP based on archetype strength', () => {
 		const barbarianArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Barbarian'
+			(a) => a.name === 'Barbarian',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Barbarian', 'Test Player', {
@@ -113,7 +115,11 @@ describe('Archetype Selection', () => {
 	})
 
 	it('should use default attributes when no archetype selected', () => {
-		const character = createInitialCharacter('Test Character', 'Test Player', {})
+		const character = createInitialCharacter(
+			'Test Character',
+			'Test Player',
+			{},
+		)
 
 		expect(character.statistics.strength.value).toBe(6)
 		expect(character.statistics.agility.value).toBe(6)
@@ -124,7 +130,7 @@ describe('Archetype Selection', () => {
 
 	it('should combine archetype skills with upbringing and background skills', () => {
 		const rogueArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Rogue'
+			(a) => a.name === 'Rogue',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Rogue', 'Test Player', {
@@ -137,23 +143,23 @@ describe('Archetype Selection', () => {
 		})
 
 		const skillNames = character.skills.skills.map((s) => s.name)
-		
+
 		// Should have archetype skills
 		expect(skillNames).toContain('Fighting')
 		expect(skillNames).toContain('Stealth')
 		expect(skillNames).toContain('Streetwise')
-		
+
 		// Should have upbringing skills (no duplicates)
 		expect(skillNames).toContain('Insight')
-		
+
 		// Should not have duplicates
-		const stealthCount = skillNames.filter(s => s === 'Stealth').length
+		const stealthCount = skillNames.filter((s) => s === 'Stealth').length
 		expect(stealthCount).toBe(1)
 	})
 
 	it('should have all major archetypes represented', () => {
 		const archetypeNames = archetypesJson.map((a) => a.name)
-		
+
 		// Check for key archetypes mentioned in the documentation
 		const keyArchetypes = [
 			'Barbarian',
@@ -167,7 +173,7 @@ describe('Archetype Selection', () => {
 			'Champion',
 			'Warlock',
 		]
-		
+
 		keyArchetypes.forEach((name) => {
 			expect(archetypeNames).toContain(name)
 		})
@@ -175,7 +181,7 @@ describe('Archetype Selection', () => {
 
 	it('should create familiar for Summoner with Conjure Familiar spell', () => {
 		const summonerArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Summoner'
+			(a) => a.name === 'Summoner',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Summoner', 'Test Player', {
@@ -185,7 +191,7 @@ describe('Archetype Selection', () => {
 
 		// Should have Conjure Familiar spell
 		const hasConjureFamiliar = character.spells.spells.some(
-			spell => spell.name === 'Conjure Familiar'
+			(spell) => spell.name === 'Conjure Familiar',
 		)
 		expect(hasConjureFamiliar).toBe(true)
 
@@ -201,7 +207,7 @@ describe('Archetype Selection', () => {
 
 	it('should not create familiar when none is selected', () => {
 		const summonerArchetype: ArchetypeData = archetypesJson.find(
-			(a) => a.name === 'Summoner'
+			(a) => a.name === 'Summoner',
 		) as ArchetypeData
 
 		const character = createInitialCharacter('Test Summoner', 'Test Player', {
@@ -211,7 +217,7 @@ describe('Archetype Selection', () => {
 
 		// Should have Conjure Familiar spell
 		const hasConjureFamiliar = character.spells.spells.some(
-			spell => spell.name === 'Conjure Familiar'
+			(spell) => spell.name === 'Conjure Familiar',
 		)
 		expect(hasConjureFamiliar).toBe(true)
 

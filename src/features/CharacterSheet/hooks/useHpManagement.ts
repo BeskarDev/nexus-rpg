@@ -34,7 +34,8 @@ export const useHpManagement = ({
 
 	// Calculate HP bar metrics
 	const totalDisplayHp = effectiveMaxHp + (health.temp || 0)
-	const hpPercentage = effectiveMaxHp > 0 ? (health.current / effectiveMaxHp) * 100 : 0
+	const hpPercentage =
+		effectiveMaxHp > 0 ? (health.current / effectiveMaxHp) * 100 : 0
 
 	const getHpColor = () => {
 		if (hpPercentage >= 50) return 'success'
@@ -43,8 +44,10 @@ export const useHpManagement = ({
 	}
 
 	// Calculate proportional widths for static bar length (120px total)
-	const mainHpBarWidth = totalDisplayHp > 0 ? (effectiveMaxHp / totalDisplayHp) * 120 : 120
-	const tempHpBarWidth = totalDisplayHp > 0 ? ((health.temp || 0) / totalDisplayHp) * 120 : 0
+	const mainHpBarWidth =
+		totalDisplayHp > 0 ? (effectiveMaxHp / totalDisplayHp) * 120 : 120
+	const tempHpBarWidth =
+		totalDisplayHp > 0 ? ((health.temp || 0) / totalDisplayHp) * 120 : 0
 
 	// Animation effect cleanup
 	useEffect(() => {
@@ -60,7 +63,7 @@ export const useHpManagement = ({
 	const dealDamage = (amount: number) => {
 		const currentHp = health.current
 		const tempHp = health.temp || 0
-		
+
 		let remainingDamage = amount
 		let newTempHp = tempHp
 		let newCurrentHp = currentHp
@@ -91,7 +94,7 @@ export const useHpManagement = ({
 
 	const healDamage = (amount: number) => {
 		const newCurrentHp = Math.min(effectiveMaxHp, health.current + amount)
-		
+
 		updateCharacter({
 			statistics: {
 				health: {
@@ -105,7 +108,7 @@ export const useHpManagement = ({
 
 	const addTempHp = (amount: number) => {
 		const newTempHp = Math.max(0, (health.temp || 0) + amount)
-		
+
 		updateCharacter({
 			statistics: {
 				health: {
@@ -119,7 +122,7 @@ export const useHpManagement = ({
 
 	const setCurrentHp = (amount: number) => {
 		const newCurrentHp = Math.max(0, Math.min(effectiveMaxHp, amount))
-		
+
 		updateCharacter({
 			statistics: {
 				health: {

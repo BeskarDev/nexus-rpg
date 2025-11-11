@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-	Box,
-	Typography,
-	Paper,
-	Grid,
-} from '@mui/material'
+import { Box, Typography, Paper, Grid } from '@mui/material'
 import { CompanionStats } from '../types/companion'
 import { TIER_NAMES } from '../utils/companionCalculations'
 

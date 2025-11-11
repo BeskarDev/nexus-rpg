@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Typography, Chip, Box } from '@mui/material'
-import { SingleSelectionDialog, SingleSelectionDialogColumn } from './SingleSelectionDialog'
+import {
+	SingleSelectionDialog,
+	SingleSelectionDialogColumn,
+} from './SingleSelectionDialog'
 import archetypeData from '../../../utils/json/archetypes.json'
 
 export type ArchetypeSelectionDialogProps = {
@@ -41,15 +44,12 @@ export type ArchetypeData = {
 	}
 }
 
-export const ArchetypeSelectionDialog: React.FC<ArchetypeSelectionDialogProps> = ({
-	open,
-	onClose,
-	onSelectArchetype,
-	selectedArchetype,
-}) => {
-	const [selectedArchetypeKey, setSelectedArchetypeKey] = useState<string | null>(
-		selectedArchetype || null
-	)
+export const ArchetypeSelectionDialog: React.FC<
+	ArchetypeSelectionDialogProps
+> = ({ open, onClose, onSelectArchetype, selectedArchetype }) => {
+	const [selectedArchetypeKey, setSelectedArchetypeKey] = useState<
+		string | null
+	>(selectedArchetype || null)
 
 	const columns: SingleSelectionDialogColumn<ArchetypeData>[] = [
 		{
@@ -140,7 +140,7 @@ export const ArchetypeSelectionDialog: React.FC<ArchetypeSelectionDialogProps> =
 			onConfirm={() => {
 				if (selectedArchetypeKey) {
 					const archetype = archetypeData.find(
-						(a) => a.name === selectedArchetypeKey
+						(a) => a.name === selectedArchetypeKey,
 					)
 					if (archetype) {
 						onSelectArchetype(archetype as ArchetypeData)

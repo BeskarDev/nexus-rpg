@@ -1,8 +1,4 @@
-import {
-	Add,
-	HelpOutline,
-	Delete,
-} from '@mui/icons-material'
+import { Add, HelpOutline, Delete } from '@mui/icons-material'
 import {
 	Box,
 	Button,
@@ -41,7 +37,10 @@ import {
 } from '../../../../constants/languages'
 import { calculateSkillRank } from '../../utils'
 import { calculateTalentHpBonus } from '../../utils/calculateTalentHpBonus'
-import { createSkillXpSchema, calculateMaxXpPerSkill } from '../../utils/validation'
+import {
+	createSkillXpSchema,
+	calculateMaxXpPerSkill,
+} from '../../utils/validation'
 import { Skill } from '../../../../types/Character'
 
 // Type for the skills form data (dynamic based on number of skills)
@@ -56,11 +55,25 @@ const SkillXpRow: React.FC<{
 	skill: Skill
 	skillRank: number
 	spendXP: number
-	updateSkill: (skillName: string, update: { xp?: number; rank?: number }) => void
+	updateSkill: (
+		skillName: string,
+		update: { xp?: number; rank?: number },
+	) => void
 	handleSkillDeletion: (skillName: string) => void
 	skillsForm: UseFormReturn<SkillsFormData>
-}> = ({ skill, skillRank, spendXP, updateSkill, handleSkillDeletion, skillsForm }) => {
-	const { control, formState: { errors }, trigger } = skillsForm
+}> = ({
+	skill,
+	skillRank,
+	spendXP,
+	updateSkill,
+	handleSkillDeletion,
+	skillsForm,
+}) => {
+	const {
+		control,
+		formState: { errors },
+		trigger,
+	} = skillsForm
 
 	return (
 		<Box
@@ -110,15 +123,20 @@ const SkillXpRow: React.FC<{
 						try {
 							// Calculate current total spent XP from all skills in the form
 							const formValues = skillsForm.getValues()
-							const currentTotalSpentXp = Object.values(formValues).reduce((sum, xp) => sum + (xp || 0), 0)
-							
+							const currentTotalSpentXp = Object.values(formValues).reduce(
+								(sum, xp) => sum + (xp || 0),
+								0,
+							)
+
 							// Validate this skill's XP against the current total
-							createSkillXpSchema(currentTotalSpentXp, skill.xp).validateSync(value)
+							createSkillXpSchema(currentTotalSpentXp, skill.xp).validateSync(
+								value,
+							)
 							return true
 						} catch (err: any) {
 							return err.message
 						}
-					}
+					},
 				}}
 				render={({ field, fieldState }) => (
 					<AttributeField
@@ -135,7 +153,7 @@ const SkillXpRow: React.FC<{
 						error={!!fieldState.error}
 						helperText={fieldState.error?.message || ''}
 						FormHelperTextProps={{
-							sx: { display: 'none' }
+							sx: { display: 'none' },
 						}}
 						label="XP"
 						sx={{
@@ -195,7 +213,7 @@ export const SkillsTab: React.FC = () => {
 	// This allows all skills to revalidate when any skill's XP changes
 	const skillsFormData = useMemo(() => {
 		const data: SkillsFormData = {}
-		skills.forEach(skill => {
+		skills.forEach((skill) => {
 			data[skill.name] = skill.xp
 		})
 		return data
@@ -244,21 +262,21 @@ export const SkillsTab: React.FC = () => {
 	useEffect(() => {
 		const mysticismSkill = skills.find((s) => s.name === 'Mysticism')
 		const mysticismRank = mysticismSkill?.rank || 0
-		
+
 		const calculatedHpBonus = calculateTalentHpBonus(
 			activeCharacter.skills.abilities,
-			mysticismRank
+			mysticismRank,
 		)
-		
+
 		const currentModifier = activeCharacter.statistics.health.maxHpModifier || 0
-		
+
 		if (calculatedHpBonus !== currentModifier) {
 			updateCharacter({
 				statistics: {
 					health: {
-						maxHpModifier: calculatedHpBonus
-					}
-				}
+						maxHpModifier: calculatedHpBonus,
+					},
+				},
 			})
 		}
 	}, [activeCharacter.skills.abilities, skills])
