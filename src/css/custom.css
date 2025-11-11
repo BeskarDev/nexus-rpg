@@ -778,3 +778,21 @@ a.chip:hover {
   background-color: #ea580c; /* Orange */
   color: white;
 }
+
+/* Hide left sidebar on desktop for Character Sheet page */
+@media (min-width: 997px) {
+  /* Target the sidebar when the character-sheet-page class exists in the article */
+  div:has(.character-sheet-page) aside.theme-doc-sidebar-container {
+    display: none !important;
+  }
+  
+  /* Expand the main content area when sidebar is hidden */
+  div:has(.character-sheet-page) .container {
+    max-width: 100% !important;
+  }
+  
+  div:has(.character-sheet-page) .col {
+    max-width: 100% !important;
+    flex-basis: 100% !important;
+  }
+}
