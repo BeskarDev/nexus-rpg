@@ -140,14 +140,21 @@ const config = {
 					},
 					{
 						type: 'docSidebar',
+						sidebarId: 'gmToolsSidebar',
+						position: 'right',
+						label: '⚙️',
+					},
+					{
+						type: 'docSidebar',
 						sidebarId: 'characterSheetSidebar',
 						position: 'right',
-						label: '⚙️ Tools',
+						label: '📜',
 					},
 					{
 						href: 'https://github.com/BeskarDev/nexus-rpg',
-						label: 'GitHub',
 						position: 'right',
+						className: 'navbar-github-link',
+						'aria-label': 'GitHub',
 					},
 				],
 			},
