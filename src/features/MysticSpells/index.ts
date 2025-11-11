@@ -1,1 +1,1 @@
-export { MysticSpells } from './MysticSpells'
+export { MysticSpellsWrapper as MysticSpells } from './MysticSpellsWrapper'

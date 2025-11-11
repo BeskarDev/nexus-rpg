@@ -1,6 +1,7 @@
 import {
 	Button,
 	Checkbox,
+	CssBaseline,
 	Divider,
 	Experimental_CssVarsProvider,
 	experimental_extendTheme,
@@ -26,6 +27,7 @@ import arcaneSpellData from '../../utils/json/arcane-spells.json'
 import './arcaneSpellsStyles.css'
 import { ArcaneSpellCard } from './ArcaneSpellCard'
 import { CharacterSelector } from '../PrintingTools'
+import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -39,7 +41,7 @@ const MenuProps = {
 }
 
 export const ArcaneSpells: React.FC = () => {
-	const customTheme = experimental_extendTheme()
+	const customTheme = experimental_extendTheme(theme)
 	const muiTheme = useTheme()
 	const [selectedArcaneSpells, setSelectedArcaneSpells] = React.useState<
 		string[]
@@ -108,7 +110,7 @@ export const ArcaneSpells: React.FC = () => {
 	const deselectAll = () => setSelectedArcaneSpells([])
 
 	return (
-		<Experimental_CssVarsProvider theme={customTheme}>
+		<>
 			<style type="text/css" media="print">
 				{
 					'\
@@ -210,6 +212,6 @@ export const ArcaneSpells: React.FC = () => {
 					</Typography>
 				)}
 			</div>
-		</Experimental_CssVarsProvider>
+		</>
 	)
 }

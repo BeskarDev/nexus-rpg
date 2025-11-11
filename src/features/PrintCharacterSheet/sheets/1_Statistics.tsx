@@ -249,7 +249,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 								InputProps={{
 									endAdornment: (
 										<InputAdornment position="end" sx={{ mt: '2px' }}>
-											/ {char.statistics.fatigue.max}
+											<Typography variant="body2" sx={{ lineHeight: 1.5 }}>/ 6</Typography>
 										</InputAdornment>
 									),
 								}}

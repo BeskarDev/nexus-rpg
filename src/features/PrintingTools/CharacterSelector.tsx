@@ -12,7 +12,7 @@ import {
 	Typography,
 	useTheme,
 } from '@mui/material'
-import { useAuth } from '@site/src/hooks/firebaseAuthContext'
+import { AuthProvider, useAuth } from '@site/src/hooks/firebaseAuthContext'
 import { firebaseService } from '@site/src/dev/firebaseService'
 import { CharacterDocument } from '@site/src/types/Character'
 
@@ -165,6 +165,13 @@ export const CharacterSelector: React.FC<CharacterSelectorProps> = ({
 					value={selectedId}
 					label={label}
 					onChange={handleChange}
+					MenuProps={{
+						PaperProps: {
+							style: {
+								maxHeight: 48 * 6 + 8, // 6 items + padding
+							},
+						},
+					}}
 					sx={{
 						backgroundColor:
 							theme.palette.mode === 'dark' ? '#1e1e1e' : 'white',

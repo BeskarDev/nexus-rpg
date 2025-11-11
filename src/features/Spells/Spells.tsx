@@ -1,10 +1,7 @@
 import {
 	Button,
 	Checkbox,
-	CssBaseline,
 	Divider,
-	Experimental_CssVarsProvider,
-	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -14,20 +11,19 @@ import {
 	SelectChangeEvent,
 	Stack,
 	TextField,
-	ThemeProvider,
 	Typography,
 	useTheme,
 } from '@mui/material'
-import { theme } from '@site/src/hooks/createTheme'
+import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { MysticSpell } from '@site/src/types/MysticSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
+import arcaneSpellData from '../../utils/json/arcane-spells.json'
 import mysticSpellData from '../../utils/json/mystic-spells.json'
-import './mysticSpellsStyles.css'
-import { MysticSpellCard } from './MysticSpellCard'
+import './spellsStyles.css'
+import { SpellCard } from './SpellCard'
 import { CharacterSelector } from '../PrintingTools'
-import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -40,27 +36,58 @@ const MenuProps = {
 	},
 }
 
-export const MysticSpells: React.FC = () => {
-	const customTheme = experimental_extendTheme()
+type SpellType = 'all' | 'arcane' | 'mystic'
+
+type UnifiedSpell = {
+	name: string
+	type: 'arcane' | 'mystic'
+	category: string // discipline or tradition
+} & (ArcaneSpell | MysticSpell)
+
+export const Spells: React.FC = () => {
 	const muiTheme = useTheme()
-	const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<
-		string[]
-	>([])
+	const [selectedSpells, setSelectedSpells] = React.useState<string[]>([])
+	const [spellTypeFilter, setSpellTypeFilter] = React.useState<SpellType>('all')
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
 
-	const handleChange = (
-		event: SelectChangeEvent<typeof selectedMysticSpells>,
-	) => {
+	// Combine both spell lists with type information
+	const allSpells: UnifiedSpell[] = useMemo(() => {
+		const arcane: UnifiedSpell[] = (arcaneSpellData as ArcaneSpell[]).map(
+			(spell) => ({
+				...spell,
+				type: 'arcane' as const,
+				category: spell.discipline,
+			}),
+		)
+		const mystic: UnifiedSpell[] = (mysticSpellData as MysticSpell[]).map(
+			(spell) => ({
+				...spell,
+				type: 'mystic' as const,
+				category: spell.tradition,
+			}),
+		)
+		return [...arcane, ...mystic].sort((a, b) => a.name.localeCompare(b.name))
+	}, [])
+
+	const availableSpells = useMemo(() => {
+		if (spellTypeFilter === 'all') return allSpells
+		return allSpells.filter((spell) => spell.type === spellTypeFilter)
+	}, [allSpells, spellTypeFilter])
+
+	const handleChange = (event: SelectChangeEvent<typeof selectedSpells>) => {
 		const {
 			target: { value },
 		} = event
-		setSelectedMysticSpells(
-			// On autofill we get a stringified value.
-			typeof value === 'string' ? value.split(',') : value,
-		)
+		setSelectedSpells(typeof value === 'string' ? value.split(',') : value)
+	}
+
+	const handleSpellTypeFilterChange = (
+		event: SelectChangeEvent<SpellType>,
+	) => {
+		setSpellTypeFilter(event.target.value as SpellType)
 	}
 
 	const handleCharacterSelect = (character: CharacterDocument | null) => {
@@ -68,7 +95,7 @@ export const MysticSpells: React.FC = () => {
 		if (character) {
 			const characterSpellNames =
 				character.spells?.spells?.map((spell) => spell.name) || []
-			setSelectedMysticSpells((prev) => {
+			setSelectedSpells((prev) => {
 				const existingSpells = new Set(prev)
 				characterSpellNames.forEach((name) => existingSpells.add(name))
 				return Array.from(existingSpells)
@@ -83,7 +110,7 @@ export const MysticSpells: React.FC = () => {
 				const character: Character = JSON.parse(jsonString)
 				const characterSpellNames =
 					character.spells?.spells?.map((spell) => spell.name) || []
-				setSelectedMysticSpells((prev) => {
+				setSelectedSpells((prev) => {
 					const existingSpells = new Set(prev)
 					characterSpellNames.forEach((name) => existingSpells.add(name))
 					return Array.from(existingSpells)
@@ -98,16 +125,15 @@ export const MysticSpells: React.FC = () => {
 	const handlePrint = useReactToPrint({
 		content: () => componentRef.current,
 	})
-	const mysticSpells: MysticSpell[] = mysticSpellData
 
-	const filteredMysticSpells = useMemo(
-		() => mysticSpells.filter((ca) => selectedMysticSpells.includes(ca.name)),
-		[mysticSpells, selectedMysticSpells],
+	const filteredSpells = useMemo(
+		() => availableSpells.filter((spell) => selectedSpells.includes(spell.name)),
+		[availableSpells, selectedSpells],
 	)
 
 	const selectAll = () =>
-		setSelectedMysticSpells(mysticSpells.map((ca) => ca.name))
-	const deselectAll = () => setSelectedMysticSpells([])
+		setSelectedSpells(availableSpells.map((spell) => spell.name))
+	const deselectAll = () => setSelectedSpells([])
 
 	return (
 		<>
@@ -131,19 +157,19 @@ export const MysticSpells: React.FC = () => {
 				}}
 			>
 				<Typography variant="h6" component="h2">
-					Mystic Spell Card Printing
+					Spell Card Printing
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					Select a character from your account or manually choose mystic spells
-					to print. Cards will be formatted for easy printing and cutting.
+					Select a character from your account or manually choose spells to
+					print. Cards will be formatted for easy printing and cutting.
 				</Typography>
 
 				<Divider sx={{ my: 1 }} />
 
 				<CharacterSelector
 					onCharacterSelect={handleCharacterSelect}
-					label="Load Character's Mystic Spells"
-					helperText="Selecting a character will automatically add their mystic spells to the print list below."
+					label="Load Character's Spells"
+					helperText="Selecting a character will automatically add their spells to the print list below."
 				/>
 
 				<Divider sx={{ my: 1 }} />
@@ -152,13 +178,29 @@ export const MysticSpells: React.FC = () => {
 					<Button variant="contained" size="large" onClick={handlePrint}>
 						PRINT
 					</Button>
+					<FormControl sx={{ m: 1, width: 150 }}>
+						<InputLabel>Spell Type</InputLabel>
+						<Select
+							value={spellTypeFilter}
+							onChange={handleSpellTypeFilterChange}
+							input={<OutlinedInput label="Spell Type" />}
+							sx={{
+								backgroundColor:
+									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
+							}}
+						>
+							<MenuItem value="all">All Spells</MenuItem>
+							<MenuItem value="arcane">Arcane Only</MenuItem>
+							<MenuItem value="mystic">Mystic Only</MenuItem>
+						</Select>
+					</FormControl>
 					<FormControl sx={{ m: 1, width: 300 }}>
-						<InputLabel>Mystic Spells</InputLabel>
+						<InputLabel>Spells</InputLabel>
 						<Select
 							multiple
-							value={selectedMysticSpells}
+							value={selectedSpells}
 							onChange={handleChange}
-							input={<OutlinedInput label="Mystic Spells" />}
+							input={<OutlinedInput label="Spells" />}
 							renderValue={(selected) => selected.join(', ')}
 							MenuProps={MenuProps}
 							sx={{
@@ -166,10 +208,13 @@ export const MysticSpells: React.FC = () => {
 									muiTheme.palette.mode === 'dark' ? '#2a2a2a' : 'white',
 							}}
 						>
-							{mysticSpells.map(({ name }) => (
+							{availableSpells.map(({ name, type }) => (
 								<MenuItem key={name} value={name}>
-									<Checkbox checked={selectedMysticSpells.indexOf(name) > -1} />
-									<ListItemText primary={name} />
+									<Checkbox checked={selectedSpells.indexOf(name) > -1} />
+									<ListItemText
+										primary={name}
+										secondary={type === 'arcane' ? 'Arcane' : 'Mystic'}
+									/>
 								</MenuItem>
 							))}
 						</Select>
@@ -197,18 +242,19 @@ export const MysticSpells: React.FC = () => {
 				/>
 			</Stack>
 			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredMysticSpells.length} Mystic Spells will be printed:
+				{filteredSpells.length} Spell{filteredSpells.length !== 1 ? 's' : ''}{' '}
+				will be printed:
 			</Typography>
-			<div className="mystic-spell--container" ref={componentRef}>
-				{filteredMysticSpells.map((mysticSpell, index) => (
+			<div className="spell--container" ref={componentRef}>
+				{filteredSpells.map((spell, index) => (
 					<>
-						<MysticSpellCard key={mysticSpell.name} {...mysticSpell} />
+						<SpellCard key={spell.name} {...spell} />
 						{Boolean(index % 9 === 8) && <div className="page-break" />}
 					</>
 				))}
-				{!filteredMysticSpells.length && (
+				{!filteredSpells.length && (
 					<Typography variant="body2">
-						Select some Mystic Spells above to include them for printing.
+						Select some spells above to include them for printing.
 					</Typography>
 				)}
 			</div>

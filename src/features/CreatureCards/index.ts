@@ -1,1 +1,1 @@
-export { CreatureCards } from './CreatureCards'
+export { CreatureCardsWrapper as CreatureCards } from './CreatureCardsWrapper'

@@ -1,6 +1,7 @@
 import {
 	Button,
 	Checkbox,
+	CssBaseline,
 	Divider,
 	Experimental_CssVarsProvider,
 	experimental_extendTheme,
@@ -26,6 +27,7 @@ import combatArtsData from '../../utils/json/combat-arts.json'
 import { CombatArtCard } from './CombatArtCard'
 import './combatArtStyles.css'
 import { CharacterSelector } from '../PrintingTools'
+import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -39,7 +41,6 @@ const MenuProps = {
 }
 
 export const CombatArts: React.FC = () => {
-	const customTheme = experimental_extendTheme()
 	const muiTheme = useTheme()
 	const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>(
 		[],
@@ -66,9 +67,13 @@ export const CombatArts: React.FC = () => {
 		if (character) {
 			const characterAbilityNames =
 				character.skills?.abilities?.map((ability) => ability.title) || []
+			// Filter to only include abilities that exist in the combat arts data
+			const validCombatArts = characterAbilityNames.filter((name) =>
+				combatArts.some((ca) => ca.name === name)
+			)
 			setSelectedCombatArts((prev) => {
 				const existingArts = new Set(prev)
-				characterAbilityNames.forEach((name) => existingArts.add(name))
+				validCombatArts.forEach((name) => existingArts.add(name))
 				return Array.from(existingArts)
 			})
 		}
@@ -81,9 +86,13 @@ export const CombatArts: React.FC = () => {
 				const character: Character = JSON.parse(jsonString)
 				const characterAbilityNames =
 					character.skills?.abilities?.map((ability) => ability.title) || []
+				// Filter to only include abilities that exist in the combat arts data
+				const validCombatArts = characterAbilityNames.filter((name) =>
+					combatArts.some((ca) => ca.name === name)
+				)
 				setSelectedCombatArts((prev) => {
 					const existingArts = new Set(prev)
-					characterAbilityNames.forEach((name) => existingArts.add(name))
+					validCombatArts.forEach((name) => existingArts.add(name))
 					return Array.from(existingArts)
 				})
 			}
@@ -107,7 +116,7 @@ export const CombatArts: React.FC = () => {
 	const deselectAll = () => setSelectedCombatArts([])
 
 	return (
-		<Experimental_CssVarsProvider theme={customTheme}>
+		<>
 			<style type="text/css" media="print">
 				{
 					'\
@@ -209,6 +218,6 @@ export const CombatArts: React.FC = () => {
 					</Typography>
 				)}
 			</div>
-		</Experimental_CssVarsProvider>
+		</>
 	)
 }

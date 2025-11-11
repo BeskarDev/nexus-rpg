@@ -1,1 +1,1 @@
-export { ArcaneSpells } from './ArcaneSpells'
+export { ArcaneSpellsWrapper as ArcaneSpells } from './ArcaneSpellsWrapper'
