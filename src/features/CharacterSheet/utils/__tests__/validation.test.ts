@@ -1,84 +1,135 @@
 import { describe, it, expect } from 'vitest'
-import { getTextFieldProps, getNumberFieldProps, getSelectProps, personalTabSchema, hpFieldSchema, createHpFieldSchema, calculateMaxXpPerSkill, createSkillXpSchema } from '../validation'
+import {
+	getTextFieldProps,
+	getNumberFieldProps,
+	getSelectProps,
+	personalTabSchema,
+	hpFieldSchema,
+	createHpFieldSchema,
+	calculateMaxXpPerSkill,
+	createSkillXpSchema,
+} from '../validation'
 import { FieldError } from 'react-hook-form'
 
 describe('validation utilities', () => {
 	describe('personalTabSchema', () => {
 		it('should validate name field correctly', async () => {
 			// Valid name
-			await expect(personalTabSchema.validateAt('name', { name: 'John' })).resolves.toBe('John')
-			
+			await expect(
+				personalTabSchema.validateAt('name', { name: 'John' }),
+			).resolves.toBe('John')
+
 			// Invalid - required
-			await expect(personalTabSchema.validateAt('name', { name: '' })).rejects.toThrow('Name is required')
-			
+			await expect(
+				personalTabSchema.validateAt('name', { name: '' }),
+			).rejects.toThrow('Name is required')
+
 			// Invalid - too long
-			await expect(personalTabSchema.validateAt('name', { name: 'a'.repeat(51) })).rejects.toThrow('Name must not exceed 50 characters')
+			await expect(
+				personalTabSchema.validateAt('name', { name: 'a'.repeat(51) }),
+			).rejects.toThrow('Name must not exceed 50 characters')
 		})
 
 		it('should validate folk field correctly', async () => {
 			// Valid folk
-			await expect(personalTabSchema.validateAt('folk', { folk: 'Akashic' })).resolves.toBe('Akashic')
-			
+			await expect(
+				personalTabSchema.validateAt('folk', { folk: 'Akashic' }),
+			).resolves.toBe('Akashic')
+
 			// Invalid - too long
-			await expect(personalTabSchema.validateAt('folk', { folk: 'a'.repeat(101) })).rejects.toThrow('Must not exceed 100 characters')
+			await expect(
+				personalTabSchema.validateAt('folk', { folk: 'a'.repeat(101) }),
+			).rejects.toThrow('Must not exceed 100 characters')
 		})
 
 		it('should validate physical measurements correctly', async () => {
 			// Valid height
-			await expect(personalTabSchema.validateAt('height', { height: '6 feet' })).resolves.toBe('6 feet')
-			
+			await expect(
+				personalTabSchema.validateAt('height', { height: '6 feet' }),
+			).resolves.toBe('6 feet')
+
 			// Invalid - too long
-			await expect(personalTabSchema.validateAt('height', { height: 'a'.repeat(31) })).rejects.toThrow('Must not exceed 30 characters')
+			await expect(
+				personalTabSchema.validateAt('height', { height: 'a'.repeat(31) }),
+			).rejects.toThrow('Must not exceed 30 characters')
 		})
 
 		it('should validate description field correctly', async () => {
 			// Valid description
-			await expect(personalTabSchema.validateAt('description', { description: 'A brave warrior' })).resolves.toBe('A brave warrior')
-			
+			await expect(
+				personalTabSchema.validateAt('description', {
+					description: 'A brave warrior',
+				}),
+			).resolves.toBe('A brave warrior')
+
 			// Invalid - too long
-			await expect(personalTabSchema.validateAt('description', { description: 'a'.repeat(1001) })).rejects.toThrow('Description must not exceed 1000 characters')
+			await expect(
+				personalTabSchema.validateAt('description', {
+					description: 'a'.repeat(1001),
+				}),
+			).rejects.toThrow('Description must not exceed 1000 characters')
 		})
 	})
 
 	describe('hpFieldSchema', () => {
 		it('should validate currentHp correctly', async () => {
 			// Valid HP
-			await expect(hpFieldSchema.validateAt('currentHp', { currentHp: 25 })).resolves.toBe(25)
-			
+			await expect(
+				hpFieldSchema.validateAt('currentHp', { currentHp: 25 }),
+			).resolves.toBe(25)
+
 			// Invalid - negative
-			await expect(hpFieldSchema.validateAt('currentHp', { currentHp: -5 })).rejects.toThrow('HP cannot be negative')
-			
+			await expect(
+				hpFieldSchema.validateAt('currentHp', { currentHp: -5 }),
+			).rejects.toThrow('HP cannot be negative')
+
 			// Invalid - not a number
-			await expect(hpFieldSchema.validateAt('currentHp', { currentHp: 'abc' })).rejects.toThrow('Must be a valid number')
+			await expect(
+				hpFieldSchema.validateAt('currentHp', { currentHp: 'abc' }),
+			).rejects.toThrow('Must be a valid number')
 		})
 
 		it('should validate tempHp correctly', async () => {
 			// Valid temp HP
-			await expect(hpFieldSchema.validateAt('tempHp', { tempHp: 10 })).resolves.toBe(10)
-			
+			await expect(
+				hpFieldSchema.validateAt('tempHp', { tempHp: 10 }),
+			).resolves.toBe(10)
+
 			// Invalid - negative
-			await expect(hpFieldSchema.validateAt('tempHp', { tempHp: -1 })).rejects.toThrow('Temp HP cannot be negative')
+			await expect(
+				hpFieldSchema.validateAt('tempHp', { tempHp: -1 }),
+			).rejects.toThrow('Temp HP cannot be negative')
 		})
 
 		it('should validate maxHpModifier correctly', async () => {
 			// Valid modifier
-			await expect(hpFieldSchema.validateAt('maxHpModifier', { maxHpModifier: 5 })).resolves.toBe(5)
-			await expect(hpFieldSchema.validateAt('maxHpModifier', { maxHpModifier: -3 })).resolves.toBe(-3)
-			
+			await expect(
+				hpFieldSchema.validateAt('maxHpModifier', { maxHpModifier: 5 }),
+			).resolves.toBe(5)
+			await expect(
+				hpFieldSchema.validateAt('maxHpModifier', { maxHpModifier: -3 }),
+			).resolves.toBe(-3)
+
 			// Invalid - not a number
-			await expect(hpFieldSchema.validateAt('maxHpModifier', { maxHpModifier: 'invalid' })).rejects.toThrow('Must be a valid number')
+			await expect(
+				hpFieldSchema.validateAt('maxHpModifier', { maxHpModifier: 'invalid' }),
+			).rejects.toThrow('Must be a valid number')
 		})
 	})
 
 	describe('createHpFieldSchema', () => {
 		it('should create schema with dynamic max HP validation', async () => {
 			const schema = createHpFieldSchema(28)
-			
+
 			// Valid - within max
-			await expect(schema.validateAt('currentHp', { currentHp: 25 })).resolves.toBe(25)
-			
+			await expect(
+				schema.validateAt('currentHp', { currentHp: 25 }),
+			).resolves.toBe(25)
+
 			// Invalid - exceeds max
-			await expect(schema.validateAt('currentHp', { currentHp: 30 })).rejects.toThrow('Cannot exceed max HP (28)')
+			await expect(
+				schema.validateAt('currentHp', { currentHp: 30 }),
+			).rejects.toThrow('Cannot exceed max HP (28)')
 		})
 	})
 
@@ -130,12 +181,16 @@ describe('validation utilities', () => {
 
 		it('should not allow negative XP', async () => {
 			const schema = createSkillXpSchema(20, 0)
-			await expect(() => schema.validateSync(-1)).toThrow('XP cannot be negative')
+			await expect(() => schema.validateSync(-1)).toThrow(
+				'XP cannot be negative',
+			)
 		})
 
 		it('should require a valid number', async () => {
 			const schema = createSkillXpSchema(20, 0)
-			await expect(() => schema.validateSync('abc' as any)).toThrow('Must be a valid number')
+			await expect(() => schema.validateSync('abc' as any)).toThrow(
+				'Must be a valid number',
+			)
 		})
 
 		it('should account for current skill XP when calculating max', async () => {
@@ -154,10 +209,10 @@ describe('validation utilities', () => {
 			// Start with 42 spent XP (Level 6, max 16 XP per skill)
 			// Skill currently has 12 XP, so other skills: 42 - 12 = 30
 			const schema = createSkillXpSchema(42, 12)
-			
+
 			// Try to set to 16: 30 + 16 = 46 spent (Level 6, max 16) - OK
 			await expect(schema.validateSync(16)).toBe(16)
-			
+
 			// Try to set to 17: 30 + 17 = 47 spent (Level 6, but exceeds max of 16)
 			await expect(() => schema.validateSync(17)).toThrow(/max 16/)
 		})

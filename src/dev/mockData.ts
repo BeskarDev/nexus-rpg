@@ -53,21 +53,24 @@ export const createMockCharacter = (): CharacterDocument => {
 					name: 'Master Theron',
 					role: 'Scholar',
 					disposition: 2,
-					description: 'Former mentor at the Academy of Sciences. A wise and patient teacher who helped shape my understanding of ancient languages and arcane theory.',
+					description:
+						'Former mentor at the Academy of Sciences. A wise and patient teacher who helped shape my understanding of ancient languages and arcane theory.',
 				},
 				{
 					id: generateId(),
 					name: 'Lyra Nightwhisper',
 					role: 'Scoundrel',
 					disposition: 0,
-					description: "Information broker in the city's merchant quarter. Reliable for trade secrets and rumors, but demands fair payment for her services.",
+					description:
+						"Information broker in the city's merchant quarter. Reliable for trade secrets and rumors, but demands fair payment for her services.",
 				},
 				{
 					id: generateId(),
 					name: 'Vex Shadowmere',
 					role: 'Scholar',
 					disposition: -2,
-					description: 'Competing scholar who uses questionable methods. We clash over proper research ethics and she has sabotaged my work in the past.',
+					description:
+						'Competing scholar who uses questionable methods. We clash over proper research ethics and she has sabotaged my work in the past.',
 				},
 			],
 			notes:
@@ -408,7 +411,8 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 					name: 'Grim Stonebeard',
 					role: 'Artisan',
 					disposition: 1,
-					description: 'Fellow blacksmith and friendly rival. We often share techniques and compete in friendly crafting contests.',
+					description:
+						'Fellow blacksmith and friendly rival. We often share techniques and compete in friendly crafting contests.',
 				},
 			],
 			notes:

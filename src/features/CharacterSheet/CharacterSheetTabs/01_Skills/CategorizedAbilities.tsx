@@ -31,14 +31,11 @@ import { QuickRefSection } from './QuickRefSection'
 export const CategorizedAbilities: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
-	const { 
-		abilities, 
+	const {
+		abilities,
 		abilityCategoryVisibility,
-		quickRefSelections = { abilities: [], weapons: [], items: [] }
-	} = useMemo(
-		() => activeCharacter.skills,
-		[activeCharacter.skills],
-	)
+		quickRefSelections = { abilities: [], weapons: [], items: [] },
+	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
 
 	const [settingsMenuAnchor, setSettingsMenuAnchor] =
 		useState<null | HTMLElement>(null)
@@ -134,10 +131,17 @@ export const CategorizedAbilities: React.FC = () => {
 		}
 
 	return (
-		<Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '25rem' }}>
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				width: '100%',
+				maxWidth: '25rem',
+			}}
+		>
 			{/* Quick Ref Section */}
 			<QuickRefSection />
-			
+
 			{/* Header with category settings menu */}
 			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
 				<SectionHeader sx={{ mb: 0 }}>Abilities</SectionHeader>
@@ -263,7 +267,9 @@ export const CategorizedAbilities: React.FC = () => {
 											}
 											deleteAbility={() => deleteAbility(ability)}
 											abilityId={ability.id}
-											isInQuickRef={quickRefSelections.abilities.includes(ability.id)}
+											isInQuickRef={quickRefSelections.abilities.includes(
+												ability.id,
+											)}
 											onToggleQuickRef={toggleQuickRef}
 										/>
 									</DynamicListItem>

@@ -13,7 +13,12 @@ import {
 } from '@mui/material'
 import React, { useState } from 'react'
 
-import { Delete, ExpandMore, BookmarkBorder, Bookmark } from '@mui/icons-material'
+import {
+	Delete,
+	ExpandMore,
+	BookmarkBorder,
+	Bookmark,
+} from '@mui/icons-material'
 import {
 	ContainerType,
 	containerTypeArray,
@@ -124,11 +129,13 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 					<AttributeField
 						size="small"
 						variant="standard"
-						value={(initialItem as any).load || (initialItem as any).weight || 0}
+						value={
+							(initialItem as any).load || (initialItem as any).weight || 0
+						}
 						onChange={(event) =>
-							updateItem({ 
+							updateItem({
 								load: Number(event.target.value),
-								weight: Number(event.target.value)
+								weight: Number(event.target.value),
 							} as any)
 						}
 						label="Load"
@@ -198,20 +205,21 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						value={initialItem.quality || ''}
 						onChange={(event) => {
 							const value = event.target.value
-							const newQuality = value === '' ? undefined : Number(value) as QualityTier
+							const newQuality =
+								value === '' ? undefined : (Number(value) as QualityTier)
 							updateItem({ quality: newQuality })
 						}}
 						label="Quality"
 						sx={{ maxWidth: '3rem' }}
 					>
-						<MenuItem value="">
-							-
-						</MenuItem>
-						{(Object.keys(qualityTierLabels) as unknown as QualityTier[]).map((quality) => (
-							<MenuItem key={quality} value={quality}>
-								Q{quality}
-							</MenuItem>
-						))}
+						<MenuItem value="">-</MenuItem>
+						{(Object.keys(qualityTierLabels) as unknown as QualityTier[]).map(
+							(quality) => (
+								<MenuItem key={quality} value={quality}>
+									Q{quality}
+								</MenuItem>
+							),
+						)}
 					</AttributeField>
 					<AttributeField
 						select
@@ -299,12 +307,16 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 						))}
 					</AttributeField>
 					{onToggleQuickRef && (
-						<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+						<Tooltip
+							title={
+								isInQuickRef ? 'Remove from Quick Ref' : 'Add to Quick Ref'
+							}
+						>
 							<IconButton
 								size="small"
 								onClick={() => onToggleQuickRef(initialItem.id)}
-								sx={{ 
-									color: isInQuickRef ? 'primary.main' : 'action.disabled'
+								sx={{
+									color: isInQuickRef ? 'primary.main' : 'action.disabled',
 								}}
 							>
 								{isInQuickRef ? <Bookmark /> : <BookmarkBorder />}

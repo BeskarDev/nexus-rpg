@@ -34,7 +34,7 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 		<>
 			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
 				<SectionHeader sx={{ mb: 0 }}>Items & Equipment</SectionHeader>
-        
+
 				<Tooltip title="toggle inventory categories">
 					<IconButton
 						size="small"
@@ -47,7 +47,7 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 						<Build fontSize="inherit" />
 					</IconButton>
 				</Tooltip>
-				
+
 				{onOpenMagicItemBuilder && (
 					<Tooltip title="Create custom magic item">
 						<Button
@@ -65,7 +65,6 @@ export const ItemsSettingsMenu: React.FC<ItemsSettingsMenuProps> = ({
 						</Button>
 					</Tooltip>
 				)}
-				
 
 				<Menu
 					anchorEl={settingsMenuAnchor}

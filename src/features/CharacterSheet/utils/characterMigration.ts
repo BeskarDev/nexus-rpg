@@ -7,7 +7,9 @@ import { calculateSkillRank } from './skillUtils'
  * This handles legacy character documents that may be missing required fields
  * or have outdated data structures.
  */
-export function migrateCharacterData(character: CharacterDocument): CharacterDocument {
+export function migrateCharacterData(
+	character: CharacterDocument,
+): CharacterDocument {
 	// Migrate older characters that don't have companions array
 	if (!character.companions) {
 		character.companions = []
@@ -107,7 +109,11 @@ export function migrateCharacterData(character: CharacterDocument): CharacterDoc
 		character.items.items = character.items.items.map((item) => {
 			// Convert old ring slot formats to new 'ring' slot
 			const itemSlot = item.slot as string // Cast to handle legacy values
-			if (itemSlot === 'ring (1)' || itemSlot === 'ring (2)' || itemSlot === 'ring (3)') {
+			if (
+				itemSlot === 'ring (1)' ||
+				itemSlot === 'ring (2)' ||
+				itemSlot === 'ring (3)'
+			) {
 				return {
 					...item,
 					slot: 'ring' as any, // Cast to avoid type issues during migration
@@ -154,8 +160,12 @@ export function migrateCharacterData(character: CharacterDocument): CharacterDoc
 			// Helper function to extract name from relationship description
 			const extractName = (description: string): string => {
 				// Try to find a name at the beginning (capitalized word)
-				const match = description.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*?)(?:\s*[-:,]|$)/)
-				return match ? match[1].trim() : description.split(' ')[0] || description
+				const match = description.match(
+					/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*?)(?:\s*[-:,]|$)/,
+				)
+				return match
+					? match[1].trim()
+					: description.split(' ')[0] || description
 			}
 
 			// Convert allies (disposition +1)

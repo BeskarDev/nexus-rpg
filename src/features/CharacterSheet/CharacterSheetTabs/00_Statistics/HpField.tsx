@@ -23,7 +23,10 @@ import {
 	calculateBaseHpFromStrength,
 } from '../../utils/calculateHp'
 import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
-import { getNumberFieldProps, createHpFieldSchema } from '../../utils/validation'
+import {
+	getNumberFieldProps,
+	createHpFieldSchema,
+} from '../../utils/validation'
 
 export const HpField = () => {
 	const dispatch = useAppDispatch()
@@ -40,7 +43,7 @@ export const HpField = () => {
 	const totalXp = activeCharacter.skills.xp.total
 	const characterLevel = calculateCharacterLevel(totalXp)
 	const baseHp = calculateBaseHpFromStrength(strength.value)
-	
+
 	// Calculate max HP using the new formula
 	const maxHp = useMemo(() => {
 		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0)
@@ -49,11 +52,19 @@ export const HpField = () => {
 	// Calculate effective max HP (minus fatigue penalty)
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
 	const effectiveMaxHp = maxHp - fatigueHpPenalty
-	
+
 	// Initialize react-hook-form with Yup schema validation
-	const hpSchema = useMemo(() => createHpFieldSchema(effectiveMaxHp), [effectiveMaxHp])
-	
-	const { control, formState: { errors }, reset, watch } = useForm({
+	const hpSchema = useMemo(
+		() => createHpFieldSchema(effectiveMaxHp),
+		[effectiveMaxHp],
+	)
+
+	const {
+		control,
+		formState: { errors },
+		reset,
+		watch,
+	} = useForm({
 		resolver: yupResolver(hpSchema),
 		defaultValues: {
 			currentHp: health.current,
@@ -62,9 +73,9 @@ export const HpField = () => {
 		},
 		mode: 'onChange', // Validate on change for immediate feedback
 	})
-	
+
 	const formValues = watch()
-	
+
 	// Update form when character changes externally
 	useEffect(() => {
 		reset({
@@ -72,7 +83,13 @@ export const HpField = () => {
 			tempHp: health.temp || 0,
 			maxHpModifier: health.maxHpModifier || 0,
 		})
-	}, [activeCharacter.id, health.current, health.temp, health.maxHpModifier, reset])
+	}, [
+		activeCharacter.id,
+		health.current,
+		health.temp,
+		health.maxHpModifier,
+		reset,
+	])
 
 	// Calculate HP bar color and progress with static bar sizing
 	const totalDisplayHp = effectiveMaxHp + (health.temp || 0)
@@ -417,7 +434,7 @@ export const HpField = () => {
 								error={!!fieldState.error}
 								helperText={fieldState.error?.message || ''}
 								label="Temp HP"
-								sx={{ 
+								sx={{
 									flex: 1,
 									maxWidth: '5rem',
 									'& input': {
@@ -448,7 +465,7 @@ export const HpField = () => {
 								error={!!fieldState.error}
 								helperText={fieldState.error?.message || ''}
 								label="Max HP Modifier"
-								sx={{ 
+								sx={{
 									flex: 1,
 									maxWidth: '5rem',
 									'& input': {

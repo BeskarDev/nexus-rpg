@@ -3,7 +3,10 @@ import { CharacterSheetReducerState } from '../characterSheetReducer'
 import { StatusEffect, StatusEffectType } from '@site/src/types/Character'
 
 export const statusEffectsActions = {
-	addStatusEffect: (state: CharacterSheetReducerState, action: PayloadAction<StatusEffectType>) => {
+	addStatusEffect: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<StatusEffectType>,
+	) => {
 		state.unsavedChanges = true
 		const statusEffectType = action.payload
 		// Check if status effect already exists
@@ -63,7 +66,10 @@ export const statusEffectsActions = {
 		}
 	},
 
-	toggleStatusEffect: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	toggleStatusEffect: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		state.unsavedChanges = true
 		const id = action.payload
 		const index = state.activeCharacter.statistics.statusEffects.findIndex(
@@ -75,7 +81,10 @@ export const statusEffectsActions = {
 		}
 	},
 
-	removeStatusEffect: (state: CharacterSheetReducerState, action: PayloadAction<string>) => {
+	removeStatusEffect: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<string>,
+	) => {
 		state.unsavedChanges = true
 		const id = action.payload
 		state.activeCharacter.statistics.statusEffects =

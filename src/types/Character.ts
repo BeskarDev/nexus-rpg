@@ -54,7 +54,7 @@ export type NpcRelationship = {
 
 export const npcRoleArray = [
 	'Adventurer',
-	'Artisan', 
+	'Artisan',
 	'Authority',
 	'Scholar',
 	'Scoundrel',
@@ -208,7 +208,7 @@ export type Ability = {
 
 export type QuickRefSelections = {
 	abilities: string[] // Array of ability IDs
-	weapons: string[] // Array of weapon IDs  
+	weapons: string[] // Array of weapon IDs
 	items: string[] // Array of item IDs
 	spells: string[] // Array of spell IDs
 	order?: Record<string, number> // Custom ordering for selected items
@@ -275,14 +275,14 @@ export const damageTypeArray = [
 export type DamageType = (typeof damageTypeArray)[number]
 
 export type Equipment = {
-  id: string
-  name: string
-  tags?: string[]
-  properties?: string[]
-  special?: string
-  weight?: number
-  cost?: number
-  quality?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+	id: string
+	name: string
+	tags?: string[]
+	properties?: string[]
+	special?: string
+	weight?: number
+	cost?: number
+	quality?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 }
 
 export const equipmentSlotTypeArray = [

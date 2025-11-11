@@ -4,13 +4,13 @@ import { Ability } from '../../../types/Character'
  * Folk abilities that grant AV bonuses
  */
 const AV_GRANTING_FOLK_ABILITIES = {
-	'Stoneskin': 1, // Dwarf - +1 AV
+	Stoneskin: 1, // Dwarf - +1 AV
 	'Thick Scales': 3, // Lizardfolk - +3 AV (or +1 if wearing armor)
 } as const
 
 /**
  * Calculates the total AV modifier from folk abilities
- * 
+ *
  * @param abilities - Array of character abilities (including folk abilities)
  * @param hasArmorEquipped - Whether the character has armor equipped (for Thick Scales calculation)
  * @returns Total AV modifier from folk abilities
@@ -41,7 +41,7 @@ export const calculateFolkAvBonus = (
 
 /**
  * Checks if a folk ability grants AV bonuses
- * 
+ *
  * @param abilityName - Name of the ability to check
  * @returns True if the ability grants AV bonuses
  */

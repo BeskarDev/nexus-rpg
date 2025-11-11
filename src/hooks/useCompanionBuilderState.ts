@@ -6,7 +6,7 @@ import { CompanionStats } from '../types/companion'
 
 export const useCompanionBuilderState = () => {
 	const state = useSelector(
-		(state: CompanionBuilderRootState) => state.companionBuilder
+		(state: CompanionBuilderRootState) => state.companionBuilder,
 	)
 
 	const builtCompanion: CompanionStats | null = useMemo(() => {
@@ -15,7 +15,7 @@ export const useCompanionBuilderState = () => {
 		}
 
 		const calculatedStats = calculateStats(state.tier, state.size, state.trait)
-		
+
 		return {
 			tier: state.tier,
 			size: state.size,

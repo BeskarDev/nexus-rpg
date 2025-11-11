@@ -24,7 +24,11 @@ import {
 } from '@mui/icons-material'
 import { Ability } from '@site/src/types/Character'
 import { AbilityTag } from '@site/src/types/AbilityTag'
-import { ActionType, ACTION_TYPES, getActionTypeIcon } from '@site/src/types/ActionType'
+import {
+	ActionType,
+	ACTION_TYPES,
+	getActionTypeIcon,
+} from '@site/src/types/ActionType'
 
 export type AbilityRowProps = {
 	title: string
@@ -205,16 +209,24 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 
 						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
 							{onToggleQuickRef && (
-								<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+								<Tooltip
+									title={
+										isInQuickRef ? 'Remove from Quick Ref' : 'Add to Quick Ref'
+									}
+								>
 									<IconButton
 										size="small"
 										onClick={() => onToggleQuickRef(abilityId)}
-										sx={{ 
+										sx={{
 											p: 0.5,
-											color: isInQuickRef ? 'primary.main' : 'action.disabled'
+											color: isInQuickRef ? 'primary.main' : 'action.disabled',
 										}}
 									>
-										{isInQuickRef ? <Bookmark fontSize="small" /> : <BookmarkBorder fontSize="small" />}
+										{isInQuickRef ? (
+											<Bookmark fontSize="small" />
+										) : (
+											<BookmarkBorder fontSize="small" />
+										)}
 									</IconButton>
 								</Tooltip>
 							)}

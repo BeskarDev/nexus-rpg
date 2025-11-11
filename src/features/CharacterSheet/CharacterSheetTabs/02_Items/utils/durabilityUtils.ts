@@ -9,12 +9,15 @@ import { DurabilityDie, Item, Weapon } from '../../../../../types/Character'
  */
 export function getDurabilityForItem(item: Item | Weapon): DurabilityDie {
 	// Handle both string (Weapon) and string[] (Equipment/Item) properties
-	const properties = Array.isArray(item.properties) 
-		? item.properties.join(' ').toLowerCase() 
-		: (item.properties?.toLowerCase() || '')
+	const properties = Array.isArray(item.properties)
+		? item.properties.join(' ').toLowerCase()
+		: item.properties?.toLowerCase() || ''
 	const name = item.name?.toLowerCase() || ''
 	// Only Weapon has description, Equipment has special field instead
-	const description = ('description' in item ? item.description?.toLowerCase() : item.special?.toLowerCase()) || ''
+	const description =
+		('description' in item
+			? item.description?.toLowerCase()
+			: item.special?.toLowerCase()) || ''
 
 	const allText = `${properties} ${name} ${description}`
 

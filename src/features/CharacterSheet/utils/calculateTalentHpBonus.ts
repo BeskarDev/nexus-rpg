@@ -23,12 +23,12 @@ const PACT_OF_DIVINITY_TALENT = 'Pact of Divinity'
  * Folk abilities that grant HP bonuses
  */
 const HP_GRANTING_FOLK_ABILITIES = [
-	'Giant\'s Blood', // +2 HP (Hune, Minotaur)
+	"Giant's Blood", // +2 HP (Hune, Minotaur)
 ] as const
 
 /**
  * Calculates the total HP modifier from talents and folk abilities that grant HP bonuses
- * 
+ *
  * @param abilities - Array of character abilities (including talents and folk abilities)
  * @param mysticismRank - Optional Mysticism skill rank for Pact of Divinity calculation
  * @returns Total HP modifier from all HP-granting talents and folk abilities
@@ -76,7 +76,7 @@ export const calculateTalentHpBonus = (
 
 /**
  * Checks if a talent grants HP bonuses
- * 
+ *
  * @param talentName - Name of the talent to check
  * @returns True if the talent grants HP bonuses
  */

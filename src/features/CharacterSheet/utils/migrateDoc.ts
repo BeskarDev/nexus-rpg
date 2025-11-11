@@ -64,7 +64,7 @@ export const migrateDoc = async (
 			contacts: [],
 			rivals: [],
 			npcRelationships: [],
-			notes: ''
+			notes: '',
 		}
 	}
 
@@ -74,7 +74,7 @@ export const migrateDoc = async (
 		collectionId,
 		...(updatedDoc as Character),
 	}
-	
+
 	return migratedDoc
 }
 
@@ -445,7 +445,7 @@ const migratePersonal = async (data: any): Promise<Personal> => {
 // Helper function to try to extract a name from the description
 const extractNameFromDescription = (description: string): string => {
 	if (!description) return ''
-	
+
 	// Try to extract name from common patterns like "Name - description" or "Name: description"
 	const nameMatch = description.match(/^([^-:,]+)[-:,]/)
 	if (nameMatch) {

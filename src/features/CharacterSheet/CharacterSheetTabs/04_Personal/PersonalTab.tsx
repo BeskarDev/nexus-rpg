@@ -23,26 +23,28 @@ import { useAppSelector } from '../../hooks/useAppSelector'
 import { useNpcRelationshipCrud } from '../../hooks'
 import { PersonalField, NpcRelationshipsSection } from '../../components'
 import { ProfilePictureUpload } from './ProfilePictureUpload'
-import { 
-	FolkSelectionDialog, 
-	UpbringingSelectionDialog, 
+import {
+	FolkSelectionDialog,
+	UpbringingSelectionDialog,
 	BackgroundSelectionDialog,
 	FolkData,
 	UpbringingData,
-	BackgroundData
+	BackgroundData,
 } from '../../components'
 import { getTextFieldProps, personalTabSchema } from '../../utils/validation'
 
 /**
  * Parses a comma-separated string of suggested skills and returns an array of skill names
  */
-const parseSuggestedSkills = (suggestedSkills: string | undefined): string[] => {
+const parseSuggestedSkills = (
+	suggestedSkills: string | undefined,
+): string[] => {
 	if (!suggestedSkills) return []
-	
+
 	return suggestedSkills
 		.split(',')
-		.map(skill => skill.trim())
-		.filter(skill => skill.length > 0)
+		.map((skill) => skill.trim())
+		.filter((skill) => skill.length > 0)
 }
 
 /**
@@ -51,13 +53,13 @@ const parseSuggestedSkills = (suggestedSkills: string | undefined): string[] => 
  */
 const resolveSkillConflicts = (skills: string[]): string[] => {
 	const skillSet = new Set(skills)
-	
+
 	// Handle Arcana/Mysticism mutual exclusivity
 	if (skillSet.has('Arcana') && skillSet.has('Mysticism')) {
 		// If both are present, keep Arcana and remove Mysticism
 		skillSet.delete('Mysticism')
 	}
-	
+
 	return Array.from(skillSet)
 }
 import folkData from '../../../../utils/json/folk.json'
@@ -71,9 +73,14 @@ export const PersonalTab: React.FC = () => {
 		() => activeCharacter.personal,
 		[activeCharacter.personal],
 	)
-	
+
 	// Initialize react-hook-form with Yup schema validation
-	const { register, formState: { errors }, reset, watch } = useForm({
+	const {
+		register,
+		formState: { errors },
+		reset,
+		watch,
+	} = useForm({
 		resolver: yupResolver(personalTabSchema),
 		defaultValues: {
 			name: activeCharacter.personal.name || '',
@@ -89,10 +96,10 @@ export const PersonalTab: React.FC = () => {
 		},
 		mode: 'onBlur', // Validate on blur to match existing behavior
 	})
-	
+
 	// Watch form values for local state updates
 	const formValues = watch()
-	
+
 	// Update form when character changes externally (e.g., loading different character)
 	useEffect(() => {
 		reset({
@@ -108,14 +115,14 @@ export const PersonalTab: React.FC = () => {
 			notes: activeCharacter.personal.notes || '',
 		})
 	}, [activeCharacter.id, reset])
-	
+
 	const [personal, setPersonal] = useState(activeCharacter.personal)
 
 	// Dialog states for changing Folk, Upbringing, and Background
 	const [folkDialogOpen, setFolkDialogOpen] = useState(false)
 	const [upbringingDialogOpen, setUpbringingDialogOpen] = useState(false)
 	const [backgroundDialogOpen, setBackgroundDialogOpen] = useState(false)
-	
+
 	// Warning dialog state
 	const [changeWarningOpen, setChangeWarningOpen] = useState(false)
 	const [pendingChange, setPendingChange] = useState<{
@@ -132,7 +139,10 @@ export const PersonalTab: React.FC = () => {
 
 	// Handle selection changes with warning
 	const handleFolkSelection = (folk: FolkData) => {
-		if (activeCharacter.personal.folk && activeCharacter.personal.folk !== folk.name) {
+		if (
+			activeCharacter.personal.folk &&
+			activeCharacter.personal.folk !== folk.name
+		) {
 			setPendingChange({ type: 'folk', data: folk })
 			setChangeWarningOpen(true)
 		} else {
@@ -142,7 +152,10 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const handleUpbringingSelection = (upbringing: UpbringingData) => {
-		if (activeCharacter.personal.upbringing && activeCharacter.personal.upbringing !== upbringing.name) {
+		if (
+			activeCharacter.personal.upbringing &&
+			activeCharacter.personal.upbringing !== upbringing.name
+		) {
 			setPendingChange({ type: 'upbringing', data: upbringing })
 			setChangeWarningOpen(true)
 		} else {
@@ -152,7 +165,10 @@ export const PersonalTab: React.FC = () => {
 	}
 
 	const handleBackgroundSelection = (background: BackgroundData) => {
-		if (activeCharacter.personal.background && activeCharacter.personal.background !== background.name) {
+		if (
+			activeCharacter.personal.background &&
+			activeCharacter.personal.background !== background.name
+		) {
 			setPendingChange({ type: 'background', data: background })
 			setChangeWarningOpen(true)
 		} else {
@@ -187,13 +203,15 @@ export const PersonalTab: React.FC = () => {
 	const applyFolkChange = (folk: FolkData) => {
 		// Remove old folk content if there was a previous folk selected
 		if (activeCharacter.personal.folk) {
-			const oldFolk = (folkData as FolkData[]).find(f => f.name === activeCharacter.personal.folk)
+			const oldFolk = (folkData as FolkData[]).find(
+				(f) => f.name === activeCharacter.personal.folk,
+			)
 			if (oldFolk) {
 				// Remove old folk abilities
 				if (oldFolk.abilities && Array.isArray(oldFolk.abilities)) {
-					oldFolk.abilities.forEach(ability => {
-						const existingAbility = activeCharacter.skills.abilities.find(a => 
-							a.title === ability.name && a.tag === 'Folk'
+					oldFolk.abilities.forEach((ability) => {
+						const existingAbility = activeCharacter.skills.abilities.find(
+							(a) => a.title === ability.name && a.tag === 'Folk',
 						)
 						if (existingAbility) {
 							dispatch(characterSheetActions.deleteAbility(existingAbility))
@@ -203,7 +221,7 @@ export const PersonalTab: React.FC = () => {
 
 				// Remove old folk languages (but keep Tradespeak)
 				if (oldFolk.languages && Array.isArray(oldFolk.languages)) {
-					oldFolk.languages.forEach(language => {
+					oldFolk.languages.forEach((language) => {
 						if (language !== 'Tradespeak') {
 							dispatch(characterSheetActions.removeLanguage(language))
 						}
@@ -219,7 +237,7 @@ export const PersonalTab: React.FC = () => {
 
 		// Add new folk abilities
 		if (folk.abilities && Array.isArray(folk.abilities)) {
-			const newAbilities = folk.abilities.map(ability => ({
+			const newAbilities = folk.abilities.map((ability) => ({
 				id: crypto.randomUUID(),
 				title: ability.name,
 				description: ability.description,
@@ -233,7 +251,7 @@ export const PersonalTab: React.FC = () => {
 
 		// Add new folk languages
 		if (folk.languages && Array.isArray(folk.languages)) {
-			folk.languages.forEach(language => {
+			folk.languages.forEach((language) => {
 				dispatch(characterSheetActions.addLanguage(language))
 			})
 		}
@@ -242,13 +260,19 @@ export const PersonalTab: React.FC = () => {
 	const applyUpbringingChange = (upbringing: UpbringingData) => {
 		// Remove old upbringing skills if there was a previous upbringing selected
 		if (activeCharacter.personal.upbringing) {
-			const oldUpbringing = (upbringingData as UpbringingData[]).find(u => u.name === activeCharacter.personal.upbringing)
+			const oldUpbringing = (upbringingData as UpbringingData[]).find(
+				(u) => u.name === activeCharacter.personal.upbringing,
+			)
 			if (oldUpbringing && oldUpbringing['suggested skills']) {
-				const oldSkills = parseSuggestedSkills(oldUpbringing['suggested skills'])
+				const oldSkills = parseSuggestedSkills(
+					oldUpbringing['suggested skills'],
+				)
 
 				// Only remove skills that actually exist in the character's skill list
-				const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
-				oldSkills.forEach(skillName => {
+				const existingSkillNames = activeCharacter.skills.skills.map(
+					(s) => s.name,
+				)
+				oldSkills.forEach((skillName) => {
 					if (existingSkillNames.includes(skillName)) {
 						dispatch(characterSheetActions.removeSkill(skillName))
 					}
@@ -262,26 +286,39 @@ export const PersonalTab: React.FC = () => {
 
 		// Add new upbringing suggested skills with conflict resolution
 		if (upbringing['suggested skills']) {
-			const suggestedSkills = parseSuggestedSkills(upbringing['suggested skills'])
+			const suggestedSkills = parseSuggestedSkills(
+				upbringing['suggested skills'],
+			)
 
 			// Get current character skills to check for conflicts and duplicates
-			const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
-			
+			const existingSkillNames = activeCharacter.skills.skills.map(
+				(s) => s.name,
+			)
+
 			// Filter out skills that already exist
-			const newSkills = suggestedSkills.filter(skillName => !existingSkillNames.includes(skillName))
-			
+			const newSkills = suggestedSkills.filter(
+				(skillName) => !existingSkillNames.includes(skillName),
+			)
+
 			// Apply conflict resolution
-			const resolvedSkills = resolveSkillConflicts([...existingSkillNames, ...newSkills])
-			
+			const resolvedSkills = resolveSkillConflicts([
+				...existingSkillNames,
+				...newSkills,
+			])
+
 			// Find which skills need to be removed due to conflicts
-			const skillsToRemove = existingSkillNames.filter(skillName => !resolvedSkills.includes(skillName))
-			skillsToRemove.forEach(skillName => {
+			const skillsToRemove = existingSkillNames.filter(
+				(skillName) => !resolvedSkills.includes(skillName),
+			)
+			skillsToRemove.forEach((skillName) => {
 				dispatch(characterSheetActions.removeSkill(skillName))
 			})
-			
+
 			// Add the new skills that survived conflict resolution
-			const finalNewSkills = resolvedSkills.filter(skillName => !existingSkillNames.includes(skillName))
-			finalNewSkills.forEach(skillName => {
+			const finalNewSkills = resolvedSkills.filter(
+				(skillName) => !existingSkillNames.includes(skillName),
+			)
+			finalNewSkills.forEach((skillName) => {
 				dispatch(characterSheetActions.addSkill(skillName))
 			})
 		}
@@ -290,15 +327,21 @@ export const PersonalTab: React.FC = () => {
 	const applyBackgroundChange = (background: BackgroundData) => {
 		// Remove old background content if there was a previous background selected
 		if (activeCharacter.personal.background) {
-			const oldBackground = (backgroundData as BackgroundData[]).find(b => b.name === activeCharacter.personal.background)
+			const oldBackground = (backgroundData as BackgroundData[]).find(
+				(b) => b.name === activeCharacter.personal.background,
+			)
 			if (oldBackground) {
 				// Remove old background skills
 				if (oldBackground['suggested skills']) {
-					const oldSkills = parseSuggestedSkills(oldBackground['suggested skills'])
+					const oldSkills = parseSuggestedSkills(
+						oldBackground['suggested skills'],
+					)
 
 					// Only remove skills that actually exist in the character's skill list
-					const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
-					oldSkills.forEach(skillName => {
+					const existingSkillNames = activeCharacter.skills.skills.map(
+						(s) => s.name,
+					)
+					oldSkills.forEach((skillName) => {
 						if (existingSkillNames.includes(skillName)) {
 							dispatch(characterSheetActions.removeSkill(skillName))
 						}
@@ -317,26 +360,39 @@ export const PersonalTab: React.FC = () => {
 
 		// Add new background suggested skills with conflict resolution
 		if (background['suggested skills']) {
-			const suggestedSkills = parseSuggestedSkills(background['suggested skills'])
+			const suggestedSkills = parseSuggestedSkills(
+				background['suggested skills'],
+			)
 
 			// Get current character skills to check for conflicts and duplicates
-			const existingSkillNames = activeCharacter.skills.skills.map(s => s.name)
-			
+			const existingSkillNames = activeCharacter.skills.skills.map(
+				(s) => s.name,
+			)
+
 			// Filter out skills that already exist
-			const newSkills = suggestedSkills.filter(skillName => !existingSkillNames.includes(skillName))
-			
+			const newSkills = suggestedSkills.filter(
+				(skillName) => !existingSkillNames.includes(skillName),
+			)
+
 			// Apply conflict resolution
-			const resolvedSkills = resolveSkillConflicts([...existingSkillNames, ...newSkills])
-			
+			const resolvedSkills = resolveSkillConflicts([
+				...existingSkillNames,
+				...newSkills,
+			])
+
 			// Find which skills need to be removed due to conflicts
-			const skillsToRemove = existingSkillNames.filter(skillName => !resolvedSkills.includes(skillName))
-			skillsToRemove.forEach(skillName => {
+			const skillsToRemove = existingSkillNames.filter(
+				(skillName) => !resolvedSkills.includes(skillName),
+			)
+			skillsToRemove.forEach((skillName) => {
 				dispatch(characterSheetActions.removeSkill(skillName))
 			})
-			
+
 			// Add the new skills that survived conflict resolution
-			const finalNewSkills = resolvedSkills.filter(skillName => !existingSkillNames.includes(skillName))
-			finalNewSkills.forEach(skillName => {
+			const finalNewSkills = resolvedSkills.filter(
+				(skillName) => !existingSkillNames.includes(skillName),
+			)
+			finalNewSkills.forEach((skillName) => {
 				dispatch(characterSheetActions.addSkill(skillName))
 			})
 		}
@@ -419,10 +475,7 @@ export const PersonalTab: React.FC = () => {
 						}}
 					>
 						<TextField
-							{...getTextFieldProps(
-								register('name'),
-								errors.name
-							)}
+							{...getTextFieldProps(register('name'), errors.name)}
 							variant="standard"
 							onBlur={(e) => {
 								register('name').onBlur(e)
@@ -431,14 +484,11 @@ export const PersonalTab: React.FC = () => {
 							label="Name"
 							sx={{ maxWidth: '15rem' }}
 						/>
-						
+
 						{/* Folk Selection */}
 						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
 							<TextField
-								{...getTextFieldProps(
-									register('folk'),
-									errors.folk
-								)}
+								{...getTextFieldProps(register('folk'), errors.folk)}
 								variant="standard"
 								onBlur={(e) => {
 									register('folk').onBlur(e)
@@ -462,12 +512,14 @@ export const PersonalTab: React.FC = () => {
 							<TextField
 								{...getTextFieldProps(
 									register('upbringing'),
-									errors.upbringing
+									errors.upbringing,
 								)}
 								variant="standard"
 								onBlur={(e) => {
 									register('upbringing').onBlur(e)
-									updateCharacter({ personal: { upbringing: formValues.upbringing } })
+									updateCharacter({
+										personal: { upbringing: formValues.upbringing },
+									})
 								}}
 								label="Upbringing"
 								sx={{ maxWidth: '10rem' }}
@@ -487,12 +539,14 @@ export const PersonalTab: React.FC = () => {
 							<TextField
 								{...getTextFieldProps(
 									register('background'),
-									errors.background
+									errors.background,
 								)}
 								variant="standard"
 								onBlur={(e) => {
 									register('background').onBlur(e)
-									updateCharacter({ personal: { background: formValues.background } })
+									updateCharacter({
+										personal: { background: formValues.background },
+									})
 								}}
 								label="Background"
 								sx={{ maxWidth: '10rem' }}
@@ -507,14 +561,13 @@ export const PersonalTab: React.FC = () => {
 							</IconButton>
 						</Box>
 						<TextField
-							{...getTextFieldProps(
-								register('motivation'),
-								errors.motivation
-							)}
+							{...getTextFieldProps(register('motivation'), errors.motivation)}
 							variant="standard"
 							onBlur={(e) => {
 								register('motivation').onBlur(e)
-								updateCharacter({ personal: { motivation: formValues.motivation } })
+								updateCharacter({
+									personal: { motivation: formValues.motivation },
+								})
 							}}
 							label="Motivation"
 							sx={{ maxWidth: '10rem' }}
@@ -523,10 +576,7 @@ export const PersonalTab: React.FC = () => {
 						<Box sx={{ width: '100%', flexGrow: 1 }} />
 
 						<TextField
-							{...getTextFieldProps(
-								register('height'),
-								errors.height
-							)}
+							{...getTextFieldProps(register('height'), errors.height)}
 							variant="standard"
 							onBlur={(e) => {
 								register('height').onBlur(e)
@@ -536,10 +586,7 @@ export const PersonalTab: React.FC = () => {
 							sx={{ maxWidth: '6rem' }}
 						/>
 						<TextField
-							{...getTextFieldProps(
-								register('weight'),
-								errors.weight
-							)}
+							{...getTextFieldProps(register('weight'), errors.weight)}
 							variant="standard"
 							onBlur={(e) => {
 								register('weight').onBlur(e)
@@ -549,10 +596,7 @@ export const PersonalTab: React.FC = () => {
 							sx={{ maxWidth: '6rem' }}
 						/>
 						<TextField
-							{...getTextFieldProps(
-								register('age'),
-								errors.age
-							)}
+							{...getTextFieldProps(register('age'), errors.age)}
 							variant="standard"
 							onBlur={(e) => {
 								register('age').onBlur(e)
@@ -564,7 +608,7 @@ export const PersonalTab: React.FC = () => {
 						<TextField
 							{...getTextFieldProps(
 								register('description'),
-								errors.description
+								errors.description,
 							)}
 							variant="standard"
 							multiline
@@ -572,7 +616,9 @@ export const PersonalTab: React.FC = () => {
 							maxRows={5}
 							onBlur={(e) => {
 								register('description').onBlur(e)
-								updateCharacter({ personal: { description: formValues.description } })
+								updateCharacter({
+									personal: { description: formValues.description },
+								})
 							}}
 							label="Description"
 							sx={{ maxWidth: '20rem' }}
@@ -608,10 +654,7 @@ export const PersonalTab: React.FC = () => {
 			<Box sx={{ minWidth: '100%', mt: 1 }}>
 				<SectionHeader>Personal Notes</SectionHeader>
 				<TextField
-					{...getTextFieldProps(
-						register('notes'),
-						errors.notes
-					)}
+					{...getTextFieldProps(register('notes'), errors.notes)}
 					variant="standard"
 					multiline
 					minRows={1}
@@ -653,25 +696,19 @@ export const PersonalTab: React.FC = () => {
 				maxWidth="sm"
 				fullWidth
 			>
-				<DialogTitle>
-					Change {pendingChange?.type}?
-				</DialogTitle>
+				<DialogTitle>Change {pendingChange?.type}?</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						You already have a {pendingChange?.type} selected. How would you like to handle this change?
+						You already have a {pendingChange?.type} selected. How would you
+						like to handle this change?
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleCancelChange}>
-						Cancel
-					</Button>
-					<Button 
-						onClick={() => handleConfirmChange(false)}
-						variant="outlined"
-					>
+					<Button onClick={handleCancelChange}>Cancel</Button>
+					<Button onClick={() => handleConfirmChange(false)} variant="outlined">
 						Change Name Only
 					</Button>
-					<Button 
+					<Button
 						onClick={() => handleConfirmChange(true)}
 						variant="contained"
 						color="primary"

@@ -35,13 +35,13 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 	// Auto-update AV values when armor, helmet, or shield items change, or when folk abilities change
 	useEffect(() => {
 		const { armorAV, helmetAV, shieldAV } = extractArmorValues(itemsByLocation)
-		
+
 		// Calculate folk AV bonus (Stoneskin, Thick Scales)
 		// Thick Scales gives +3 AV if no armor, or +1 if wearing armor
 		const hasArmorEquipped = armorAV > 0
 		const folkAvBonus = calculateFolkAvBonus(
 			activeCharacter.skills.abilities,
-			hasArmorEquipped
+			hasArmorEquipped,
 		)
 
 		// Update AV values if they changed
@@ -112,13 +112,26 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 		dispatch(characterSheetActions.importItems(equipment))
 	}
 
-	const importEquipmentToLocation = (equipment: Partial<Item>[], location: ItemLocation) => {
+	const importEquipmentToLocation = (
+		equipment: Partial<Item>[],
+		location: ItemLocation,
+	) => {
 		if (location === 'worn') {
 			// Use slot conflict resolution for worn items
-			dispatch(characterSheetActions.importItemsWithSlotConflictResolution({ items: equipment, location }))
+			dispatch(
+				characterSheetActions.importItemsWithSlotConflictResolution({
+					items: equipment,
+					location,
+				}),
+			)
 		} else {
 			// Use normal import for other locations
-			dispatch(characterSheetActions.importItemsToLocation({ items: equipment, location }))
+			dispatch(
+				characterSheetActions.importItemsToLocation({
+					items: equipment,
+					location,
+				}),
+			)
 		}
 	}
 

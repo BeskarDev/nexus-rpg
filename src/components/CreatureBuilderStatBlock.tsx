@@ -50,9 +50,10 @@ export const CreatureBuilderStatBlock: React.FC<
 							<td style={{ padding: '8px', textAlign: 'center' }}>
 								{creature.hp}
 							</td>
-					<td style={{ padding: '8px', textAlign: 'center' }}>
-						{creature.av} ({creature.armorType === 'heavy' ? 'heavy' : 'light'})
-					</td>
+							<td style={{ padding: '8px', textAlign: 'center' }}>
+								{creature.av} (
+								{creature.armorType === 'heavy' ? 'heavy' : 'light'})
+							</td>
 							<td style={{ padding: '8px', textAlign: 'center' }}>
 								{creature.str}
 							</td>
@@ -124,7 +125,11 @@ export const CreatureBuilderStatBlock: React.FC<
 									{attack.properties.length > 0 && (
 										<em>({attack.properties.join(', ')})</em>
 									)}
-									. {attack.damage} {attack.damageType && attack.damageType !== 'physical' ? `${attack.damageType} ` : ''}damage.
+									. {attack.damage}{' '}
+									{attack.damageType && attack.damageType !== 'physical'
+										? `${attack.damageType} `
+										: ''}
+									damage.
 									{attack.description && ` ${attack.description}`}
 								</Typography>
 							</li>
@@ -146,9 +151,11 @@ export const CreatureBuilderStatBlock: React.FC<
 								<Typography variant="body2" component="span">
 									<strong>{ability.name}</strong>
 									{ability.actionType && ` (${ability.actionType}`}
-									{ability.properties && (ability.actionType ? `, ${ability.properties})` : ` (${ability.properties})`)}
-									{ability.actionType && !ability.properties && ')'}
-									.{' '}
+									{ability.properties &&
+										(ability.actionType
+											? `, ${ability.properties})`
+											: ` (${ability.properties})`)}
+									{ability.actionType && !ability.properties && ')'}.{' '}
 									{ability.description}
 								</Typography>
 							</li>

@@ -30,7 +30,10 @@ export const itemsActions = {
 		})
 	},
 
-	importWeapons: (state: CharacterSheetReducerState, action: PayloadAction<Partial<Weapon>[]>) => {
+	importWeapons: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Partial<Weapon>[]>,
+	) => {
 		state.unsavedChanges = true
 		const newWeapons = action.payload.map((weapon) => ({
 			id: crypto.randomUUID(),
@@ -56,7 +59,10 @@ export const itemsActions = {
 		state.activeCharacter.items.weapons.unshift(...newWeapons)
 	},
 
-	importItems: (state: CharacterSheetReducerState, action: PayloadAction<Partial<Item>[]>) => {
+	importItems: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Partial<Item>[]>,
+	) => {
 		state.unsavedChanges = true
 		const newItems = action.payload.map((item) => ({
 			id: crypto.randomUUID(),
@@ -95,10 +101,15 @@ export const itemsActions = {
 		}
 	},
 
-	deleteWeapon: (state: CharacterSheetReducerState, action: PayloadAction<Weapon>) => {
+	deleteWeapon: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Weapon>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.items.weapons =
-			state.activeCharacter.items.weapons.filter((w) => w.id !== action.payload.id)
+			state.activeCharacter.items.weapons.filter(
+				(w) => w.id !== action.payload.id,
+			)
 	},
 
 	reorderWeapon: (
@@ -132,7 +143,10 @@ export const itemsActions = {
 		})
 	},
 
-	addNewItemToLocation: (state: CharacterSheetReducerState, action: PayloadAction<ItemLocation>) => {
+	addNewItemToLocation: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<ItemLocation>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.items.items.splice(0, 0, {
 			id: crypto.randomUUID(),
@@ -150,7 +164,10 @@ export const itemsActions = {
 		})
 	},
 
-	addNewWeaponToLocation: (state: CharacterSheetReducerState, action: PayloadAction<ItemLocation>) => {
+	addNewWeaponToLocation: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<ItemLocation>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.items.weapons.splice(0, 0, {
 			id: crypto.randomUUID(),
@@ -187,10 +204,15 @@ export const itemsActions = {
 		}
 	},
 
-	deleteItem: (state: CharacterSheetReducerState, action: PayloadAction<Item>) => {
+	deleteItem: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Item>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.items.items =
-			state.activeCharacter.items.items.filter((i) => i.id !== action.payload.id)
+			state.activeCharacter.items.items.filter(
+				(i) => i.id !== action.payload.id,
+			)
 	},
 
 	reorderItem: (

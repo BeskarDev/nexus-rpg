@@ -41,19 +41,22 @@ import { Character } from '@site/src/types/Character'
 import { useAppSelector } from './hooks/useAppSelector'
 import { UserAvatar } from './UserAvatar'
 import { calculateCharacterLevel } from './utils/calculateCharacterLevel'
-import { createInitialCharacter, CharacterCreationOptions } from './utils/createInitialCharacter'
+import {
+	createInitialCharacter,
+	CharacterCreationOptions,
+} from './utils/createInitialCharacter'
 import { downloadFile } from './utils/donwloadFile'
 import { downloadAllCharacters } from './utils/downloadAllCharacters'
 import { logger } from './utils'
-import { 
-	FolkSelectionDialog, 
-	UpbringingSelectionDialog, 
+import {
+	FolkSelectionDialog,
+	UpbringingSelectionDialog,
 	BackgroundSelectionDialog,
 	ArchetypeSelectionDialog,
 	FolkData,
 	UpbringingData,
 	BackgroundData,
-	ArchetypeData
+	ArchetypeData,
 } from './components'
 import upbringingData from '../../utils/json/upbringings.json'
 import backgroundData from '../../utils/json/backgrounds.json'
@@ -87,12 +90,19 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 
 	// Character creation selection states
 	const [selectedFolk, setSelectedFolk] = React.useState<FolkData | null>(null)
-	const [selectedUpbringing, setSelectedUpbringing] = React.useState<UpbringingData | null>(null)
-	const [selectedBackground, setSelectedBackground] = React.useState<BackgroundData | null>(null)
-	const [selectedArchetype, setSelectedArchetype] = React.useState<ArchetypeData | null>(null)
-	const [selectedCompanion, setSelectedCompanion] = React.useState<string | null>(null)
-	const [selectedFamiliar, setSelectedFamiliar] = React.useState<string | null>(null)
-	
+	const [selectedUpbringing, setSelectedUpbringing] =
+		React.useState<UpbringingData | null>(null)
+	const [selectedBackground, setSelectedBackground] =
+		React.useState<BackgroundData | null>(null)
+	const [selectedArchetype, setSelectedArchetype] =
+		React.useState<ArchetypeData | null>(null)
+	const [selectedCompanion, setSelectedCompanion] = React.useState<
+		string | null
+	>(null)
+	const [selectedFamiliar, setSelectedFamiliar] = React.useState<string | null>(
+		null,
+	)
+
 	// Dialog states
 	const [folkDialogOpen, setFolkDialogOpen] = React.useState(false)
 	const [upbringingDialogOpen, setUpbringingDialogOpen] = React.useState(false)
@@ -198,7 +208,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 				// Create new character from scratch
 				// Tab 0 (Quick Start) always includes starting gear
 				const shouldIncludeGear = activeTab === 0 ? true : includeStartingGear
-				
+
 				const options: CharacterCreationOptions = {
 					includeStartingGear: shouldIncludeGear,
 					folk: selectedFolk || undefined,
@@ -225,7 +235,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 			setSelectedFamiliar(null)
 			setActiveTab(0)
 			setOpen(false)
-			
+
 			// Redirect to the newly created character
 			const characterId = `${userUid}-${docRef.id}`
 			window.location.href = `${window.location.href.split('?')[0]}?id=${characterId}`
@@ -372,13 +382,13 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					<Star />
 					{'New Character'}
 				</DialogTitle>
-				
+
 				{!importedCharacter && (
 					<Tabs
 						value={activeTab}
 						onChange={(_, newValue) => setActiveTab(newValue)}
-						sx={{ 
-							borderBottom: 1, 
+						sx={{
+							borderBottom: 1,
 							borderColor: 'divider',
 							px: 3,
 						}}
@@ -446,8 +456,13 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							{/* Tab 0: Quick Start (Archetype + Folk) */}
 							{activeTab === 0 && (
 								<Box>
-									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-										Choose an archetype for a ready-to-play character with pre-selected attributes, skills, and equipment.
+									<Typography
+										variant="body2"
+										color="text.secondary"
+										sx={{ mb: 3 }}
+									>
+										Choose an archetype for a ready-to-play character with
+										pre-selected attributes, skills, and equipment.
 									</Typography>
 
 									<TextField
@@ -475,108 +490,152 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 									<Box sx={{ display: 'grid', gap: 2 }}>
 										{/* Archetype Selection */}
 										<Box>
-											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+											<Typography
+												variant="subtitle2"
+												sx={{ mb: 1, fontWeight: 'medium' }}
+											>
 												Archetype *
 											</Typography>
 											<Button
 												variant="outlined"
 												onClick={() => setArchetypeDialogOpen(true)}
 												fullWidth
-												sx={{ 
+												sx={{
 													justifyContent: 'flex-start',
 													textTransform: 'none',
 													py: 1.5,
-													color: selectedArchetype ? 'text.primary' : 'text.secondary',
+													color: selectedArchetype
+														? 'text.primary'
+														: 'text.secondary',
 													fontWeight: selectedArchetype ? 'medium' : 'normal',
-													borderColor: selectedArchetype ? 'primary.main' : undefined,
+													borderColor: selectedArchetype
+														? 'primary.main'
+														: undefined,
 													borderWidth: selectedArchetype ? 2 : 1,
 												}}
 											>
-												{selectedArchetype ? `${selectedArchetype.name} (${selectedArchetype.role})` : 'Select Archetype'}
+												{selectedArchetype
+													? `${selectedArchetype.name} (${selectedArchetype.role})`
+													: 'Select Archetype'}
 											</Button>
 											{selectedArchetype && (
-												<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
+												<Typography
+													variant="caption"
+													color="text.secondary"
+													sx={{ display: 'block', mt: 0.5 }}
+												>
 													{selectedArchetype.description}
 												</Typography>
 											)}
 
 											{/* Companion Selection (if archetype has Animal Companion talent) */}
-											{selectedArchetype?.recommendedTalents?.includes('Animal Companion') && 
-											 selectedArchetype?.recommendedCompanions &&
-											 selectedArchetype.recommendedCompanions.length > 0 && (
-												<Box sx={{ mt: 2 }}>
-													<FormControl fullWidth>
-														<InputLabel id="companion-select-label">Animal Companion (Optional)</InputLabel>
-														<Select
-															labelId="companion-select-label"
-															value={selectedCompanion || ''}
-															onChange={(e) => setSelectedCompanion(e.target.value || null)}
-															label="Animal Companion (Optional)"
-														>
-															<MenuItem value="">
-																<em>None</em>
-															</MenuItem>
-															{selectedArchetype.recommendedCompanions.map((companion) => (
-																<MenuItem key={companion} value={companion}>
-																	{companion}
+											{selectedArchetype?.recommendedTalents?.includes(
+												'Animal Companion',
+											) &&
+												selectedArchetype?.recommendedCompanions &&
+												selectedArchetype.recommendedCompanions.length > 0 && (
+													<Box sx={{ mt: 2 }}>
+														<FormControl fullWidth>
+															<InputLabel id="companion-select-label">
+																Animal Companion (Optional)
+															</InputLabel>
+															<Select
+																labelId="companion-select-label"
+																value={selectedCompanion || ''}
+																onChange={(e) =>
+																	setSelectedCompanion(e.target.value || null)
+																}
+																label="Animal Companion (Optional)"
+															>
+																<MenuItem value="">
+																	<em>None</em>
 																</MenuItem>
-															))}
-														</Select>
-													</FormControl>
-													<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
-														Your archetype grants you an animal companion to aid you in your adventures.
-													</Typography>
-												</Box>
-											)}
+																{selectedArchetype.recommendedCompanions.map(
+																	(companion) => (
+																		<MenuItem key={companion} value={companion}>
+																			{companion}
+																		</MenuItem>
+																	),
+																)}
+															</Select>
+														</FormControl>
+														<Typography
+															variant="caption"
+															color="text.secondary"
+															sx={{ display: 'block', mt: 0.5 }}
+														>
+															Your archetype grants you an animal companion to
+															aid you in your adventures.
+														</Typography>
+													</Box>
+												)}
 
 											{/* Familiar Selection (if archetype has Conjure Familiar spell) */}
 											{selectedArchetype?.spellData?.startingSpells?.some(
-												spell => spell.name === 'Conjure Familiar'
-											) && 
-											 selectedArchetype?.recommendedFamiliars &&
-											 selectedArchetype.recommendedFamiliars.length > 0 && (
-												<Box sx={{ mt: 2 }}>
-													<FormControl fullWidth>
-														<InputLabel id="familiar-select-label">Familiar (Optional)</InputLabel>
-														<Select
-															labelId="familiar-select-label"
-															value={selectedFamiliar || ''}
-															onChange={(e) => setSelectedFamiliar(e.target.value || null)}
-															label="Familiar (Optional)"
-														>
-															<MenuItem value="">
-																<em>None</em>
-															</MenuItem>
-															{selectedArchetype.recommendedFamiliars.map((familiar) => (
-																<MenuItem key={familiar} value={familiar}>
-																	{familiar}
+												(spell) => spell.name === 'Conjure Familiar',
+											) &&
+												selectedArchetype?.recommendedFamiliars &&
+												selectedArchetype.recommendedFamiliars.length > 0 && (
+													<Box sx={{ mt: 2 }}>
+														<FormControl fullWidth>
+															<InputLabel id="familiar-select-label">
+																Familiar (Optional)
+															</InputLabel>
+															<Select
+																labelId="familiar-select-label"
+																value={selectedFamiliar || ''}
+																onChange={(e) =>
+																	setSelectedFamiliar(e.target.value || null)
+																}
+																label="Familiar (Optional)"
+															>
+																<MenuItem value="">
+																	<em>None</em>
 																</MenuItem>
-															))}
-														</Select>
-													</FormControl>
-													<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5 }}>
-														Choose a tiny creature to serve as your magical familiar and companion.
-													</Typography>
-												</Box>
-											)}
+																{selectedArchetype.recommendedFamiliars.map(
+																	(familiar) => (
+																		<MenuItem key={familiar} value={familiar}>
+																			{familiar}
+																		</MenuItem>
+																	),
+																)}
+															</Select>
+														</FormControl>
+														<Typography
+															variant="caption"
+															color="text.secondary"
+															sx={{ display: 'block', mt: 0.5 }}
+														>
+															Choose a tiny creature to serve as your magical
+															familiar and companion.
+														</Typography>
+													</Box>
+												)}
 										</Box>
-										
+
 										{/* Folk Selection */}
 										<Box>
-											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+											<Typography
+												variant="subtitle2"
+												sx={{ mb: 1, fontWeight: 'medium' }}
+											>
 												Folk *
 											</Typography>
 											<Button
 												variant="outlined"
 												onClick={() => setFolkDialogOpen(true)}
 												fullWidth
-												sx={{ 
+												sx={{
 													justifyContent: 'flex-start',
 													textTransform: 'none',
 													py: 1.5,
-													color: selectedFolk ? 'text.primary' : 'text.secondary',
+													color: selectedFolk
+														? 'text.primary'
+														: 'text.secondary',
 													fontWeight: selectedFolk ? 'medium' : 'normal',
-													borderColor: selectedFolk ? 'primary.main' : undefined,
+													borderColor: selectedFolk
+														? 'primary.main'
+														: undefined,
 													borderWidth: selectedFolk ? 2 : 1,
 												}}
 											>
@@ -590,8 +649,13 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							{/* Tab 1: Custom (Upbringing + Background + Folk) */}
 							{activeTab === 1 && (
 								<Box>
-									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-										Build your character from scratch by choosing upbringing, background, and folk.
+									<Typography
+										variant="body2"
+										color="text.secondary"
+										sx={{ mb: 3 }}
+									>
+										Build your character from scratch by choosing upbringing,
+										background, and folk.
 									</Typography>
 
 									<TextField
@@ -619,64 +683,83 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 									<Box sx={{ display: 'grid', gap: 2, mb: 3 }}>
 										{/* Folk Selection */}
 										<Box>
-											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+											<Typography
+												variant="subtitle2"
+												sx={{ mb: 1, fontWeight: 'medium' }}
+											>
 												Folk (Optional)
 											</Typography>
 											<Button
 												variant="outlined"
 												onClick={() => setFolkDialogOpen(true)}
 												fullWidth
-												sx={{ 
+												sx={{
 													justifyContent: 'flex-start',
 													textTransform: 'none',
 													py: 1.5,
-													color: selectedFolk ? 'text.primary' : 'text.secondary',
-													fontWeight: selectedFolk ? 'medium' : 'normal'
+													color: selectedFolk
+														? 'text.primary'
+														: 'text.secondary',
+													fontWeight: selectedFolk ? 'medium' : 'normal',
 												}}
 											>
 												{selectedFolk ? selectedFolk.name : 'Select Folk'}
 											</Button>
 										</Box>
-										
+
 										{/* Upbringing Selection */}
 										<Box>
-											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+											<Typography
+												variant="subtitle2"
+												sx={{ mb: 1, fontWeight: 'medium' }}
+											>
 												Upbringing (Optional)
 											</Typography>
 											<Button
 												variant="outlined"
 												onClick={() => setUpbringingDialogOpen(true)}
 												fullWidth
-												sx={{ 
+												sx={{
 													justifyContent: 'flex-start',
 													textTransform: 'none',
 													py: 1.5,
-													color: selectedUpbringing ? 'text.primary' : 'text.secondary',
-													fontWeight: selectedUpbringing ? 'medium' : 'normal'
+													color: selectedUpbringing
+														? 'text.primary'
+														: 'text.secondary',
+													fontWeight: selectedUpbringing ? 'medium' : 'normal',
 												}}
 											>
-												{selectedUpbringing ? selectedUpbringing.name : 'Select Upbringing'}
+												{selectedUpbringing
+													? selectedUpbringing.name
+													: 'Select Upbringing'}
 											</Button>
 										</Box>
-										
+
 										{/* Background Selection */}
 										<Box>
-											<Typography variant="subtitle2" sx={{ mb: 1, fontWeight: 'medium' }}>
+											<Typography
+												variant="subtitle2"
+												sx={{ mb: 1, fontWeight: 'medium' }}
+											>
 												Background (Optional)
 											</Typography>
 											<Button
 												variant="outlined"
 												onClick={() => setBackgroundDialogOpen(true)}
 												fullWidth
-												sx={{ 
+												sx={{
 													justifyContent: 'flex-start',
 													textTransform: 'none',
 													py: 1.5,
-													color: selectedBackground ? 'text.primary' : 'text.secondary',
-													fontWeight: selectedBackground ? 'medium' : 'normal'
+													color: selectedBackground
+														? 'text.primary'
+														: 'text.secondary',
+													fontWeight: selectedBackground ? 'medium' : 'normal',
 												}}
 											>
-												{selectedBackground ? selectedBackground.name : 'Select Background'}
+												{selectedBackground
+													? selectedBackground.name
+													: 'Select Background'}
 											</Button>
 										</Box>
 									</Box>
@@ -685,7 +768,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 										control={
 											<Checkbox
 												checked={includeStartingGear}
-												onChange={(e) => setIncludeStartingGear(e.target.checked)}
+												onChange={(e) =>
+													setIncludeStartingGear(e.target.checked)
+												}
 											/>
 										}
 										label="Include starting gear"
@@ -696,7 +781,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							{/* Tab 2: Blank */}
 							{activeTab === 2 && (
 								<Box>
-									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+									<Typography
+										variant="body2"
+										color="text.secondary"
+										sx={{ mb: 3 }}
+									>
 										Start with a completely blank character sheet.
 									</Typography>
 
@@ -726,7 +815,9 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 										control={
 											<Checkbox
 												checked={includeStartingGear}
-												onChange={(e) => setIncludeStartingGear(e.target.checked)}
+												onChange={(e) =>
+													setIncludeStartingGear(e.target.checked)
+												}
 											/>
 										}
 										label="Include starting gear"
@@ -737,7 +828,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 							{/* Tab 3: Import */}
 							{activeTab === 3 && (
 								<Box>
-									<Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+									<Typography
+										variant="body2"
+										color="text.secondary"
+										sx={{ mb: 3 }}
+									>
 										Import a previously exported character from a JSON file.
 									</Typography>
 
@@ -756,7 +851,11 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 											onChange={handleFileUpload}
 										/>
 									</Button>
-									<Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 1 }}>
+									<Typography
+										variant="caption"
+										color="text.secondary"
+										sx={{ display: 'block', mt: 1 }}
+									>
 										Select a valid Nexus RPG character JSON file
 									</Typography>
 								</Box>
@@ -769,7 +868,7 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					<Button
 						variant="contained"
 						disabled={
-							!name || 
+							!name ||
 							(activeTab === 0 && (!selectedArchetype || !selectedFolk))
 						}
 						onClick={handleConfirm}
@@ -791,13 +890,17 @@ export const CharacterSheetHeader: React.FC<CharacterSheetHeaderProps> = ({
 					setSelectedFamiliar(null)
 					// Auto-set upbringing and background based on archetype
 					if (archetype.upbringing) {
-						const upbringing = (upbringingData as UpbringingData[]).find(u => u.name === archetype.upbringing)
+						const upbringing = (upbringingData as UpbringingData[]).find(
+							(u) => u.name === archetype.upbringing,
+						)
 						if (upbringing) {
 							setSelectedUpbringing(upbringing)
 						}
 					}
 					if (archetype.background) {
-						const background = (backgroundData as BackgroundData[]).find(b => b.name === archetype.background)
+						const background = (backgroundData as BackgroundData[]).find(
+							(b) => b.name === archetype.background,
+						)
 						if (background) {
 							setSelectedBackground(background)
 						}

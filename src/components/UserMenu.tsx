@@ -92,7 +92,9 @@ const EditNameDialog: React.FC<EditNameDialogProps> = ({
 							disabled={loading}
 							placeholder="John Doe"
 							error={!!error}
-							helperText={error || 'This name will be visible to the game master'}
+							helperText={
+								error || 'This name will be visible to the game master'
+							}
 						/>
 					</Box>
 				</DialogContent>
@@ -115,7 +117,8 @@ const EditNameDialog: React.FC<EditNameDialogProps> = ({
 }
 
 export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
-	const { userLoggedIn, currentUser, isAdmin, viewAsAdmin, setViewAsAdmin } = useAuth()
+	const { userLoggedIn, currentUser, isAdmin, viewAsAdmin, setViewAsAdmin } =
+		useAuth()
 	const [playerName, setPlayerName] = useState<string>('')
 	const [loading, setLoading] = useState(true)
 	const [editDialogOpen, setEditDialogOpen] = useState(false)
@@ -132,7 +135,9 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
 		setLoading(true)
 		try {
-			const userInfoDoc = await getDoc(doc(db, `${currentUser.uid}/player-info`))
+			const userInfoDoc = await getDoc(
+				doc(db, `${currentUser.uid}/player-info`),
+			)
 			if (userInfoDoc.exists()) {
 				const data = userInfoDoc.data()
 				setPlayerName(data.name || '')
@@ -155,7 +160,7 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 					name: name,
 					email: currentUser.email,
 				},
-				{ merge: true }
+				{ merge: true },
 			)
 			setPlayerName(name)
 			setUpdateSuccess(true)
@@ -197,7 +202,7 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 				<Typography variant="body2" sx={{ fontWeight: 'bold', mb: 1 }}>
 					{currentUser.email}
 				</Typography>
-				
+
 				{loading ? (
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}>
 						<CircularProgress size={16} />
@@ -247,16 +252,13 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 
 				{isAdmin && (
 					<>
-						<MenuItem
-							onClick={handleAdminClick}
-							sx={{ borderRadius: 1 }}
-						>
+						<MenuItem onClick={handleAdminClick} sx={{ borderRadius: 1 }}>
 							<ListItemIcon>
 								<AdminIcon fontSize="small" />
 							</ListItemIcon>
 							<ListItemText primary="Admin Panel" />
 						</MenuItem>
-						
+
 						<MenuItem sx={{ borderRadius: 1, cursor: 'default' }} disableRipple>
 							<ListItemIcon>
 								<VisibilityIcon fontSize="small" />
@@ -269,11 +271,7 @@ export const UserMenu: React.FC<{ onClose?: () => void }> = ({ onClose }) => {
 										size="small"
 									/>
 								}
-								label={
-									<Typography variant="body2">
-										View as Admin
-									</Typography>
-								}
+								label={<Typography variant="body2">View as Admin</Typography>}
 								sx={{ margin: 0 }}
 							/>
 						</MenuItem>

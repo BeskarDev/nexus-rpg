@@ -12,7 +12,9 @@ import {
 import { BuiltCreature } from '../types/CreatureBuilder'
 
 export const useCreatureBuilderState = () => {
-	const state = useSelector((state: CreatureBuilderRootState) => state.creatureBuilder)
+	const state = useSelector(
+		(state: CreatureBuilderRootState) => state.creatureBuilder,
+	)
 
 	const builtCreature: BuiltCreature | null = useMemo(() => {
 		if (state.tier === null || state.tier === undefined) {
@@ -27,7 +29,7 @@ export const useCreatureBuilderState = () => {
 			state.customStr,
 			state.customAgi,
 			state.customSpi,
-			state.customMnd
+			state.customMnd,
 		)
 
 		// Calculate defenses
@@ -36,21 +38,21 @@ export const useCreatureBuilderState = () => {
 			state.archetype,
 			state.size,
 			'parry',
-			state.customParry
+			state.customParry,
 		)
 		const dodge = calculateDefense(
 			state.tier,
 			state.archetype,
 			state.size,
 			'dodge',
-			state.customDodge
+			state.customDodge,
 		)
 		const resist = calculateDefense(
 			state.tier,
 			state.archetype,
 			state.size,
 			'resist',
-			state.customResist
+			state.customResist,
 		)
 
 		// Calculate HP and AV
@@ -58,19 +60,28 @@ export const useCreatureBuilderState = () => {
 			state.tier,
 			state.archetype,
 			state.category,
-			state.customHP
+			state.customHP,
 		)
-		const av = calculateAV(state.tier, state.archetype, state.size, state.customAV, state.customArmorType)
-		
+		const av = calculateAV(
+			state.tier,
+			state.archetype,
+			state.size,
+			state.customAV,
+			state.customArmorType,
+		)
+
 		// Determine final armor type
 		const archetypeData = getArchetypeData(state.archetype)
-		const armorType = state.customArmorType ?? archetypeData?.armorType ?? 'light'
+		const armorType =
+			state.customArmorType ?? archetypeData?.armorType ?? 'light'
 
 		// Get weapon damage
 		const weaponDamage = getWeaponDamage(state.tier, state.archetype)
 
 		// Format skills as strings with ranks
-		const formattedSkills = state.skills.map(skill => `${skill.name} (${skill.rank})`)
+		const formattedSkills = state.skills.map(
+			(skill) => `${skill.name} (${skill.rank})`,
+		)
 
 		return {
 			name: state.name || `Tier ${state.tier} ${state.category} ${state.type}`,

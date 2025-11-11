@@ -9,6 +9,10 @@ export const setupCompanionBuilderStore = () => {
 	})
 }
 
-export type CompanionBuilderStore = ReturnType<typeof setupCompanionBuilderStore>
-export type CompanionBuilderRootState = ReturnType<CompanionBuilderStore['getState']>
+export type CompanionBuilderStore = ReturnType<
+	typeof setupCompanionBuilderStore
+>
+export type CompanionBuilderRootState = ReturnType<
+	CompanionBuilderStore['getState']
+>
 export type CompanionBuilderDispatch = CompanionBuilderStore['dispatch']

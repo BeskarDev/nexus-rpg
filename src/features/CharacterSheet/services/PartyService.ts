@@ -114,10 +114,7 @@ export class PartyService {
 					})
 				}
 			} catch (error) {
-				logger.warn(
-					`Failed to fetch character data for ${characterId}:`,
-					error,
-				)
+				logger.warn(`Failed to fetch character data for ${characterId}:`, error)
 			}
 		}
 

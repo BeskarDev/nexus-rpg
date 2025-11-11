@@ -127,7 +127,9 @@ const InviteUserDialog: React.FC<InviteUserDialogProps> = ({
 						type="submit"
 						variant="contained"
 						disabled={loading || !email.trim()}
-						startIcon={loading ? <CircularProgress size={20} /> : <PersonAddIcon />}
+						startIcon={
+							loading ? <CircularProgress size={20} /> : <PersonAddIcon />
+						}
 					>
 						Send Invitation
 					</Button>
@@ -174,7 +176,9 @@ const PasswordResetDialog: React.FC<PasswordResetDialogProps> = ({
 					onClick={onReset}
 					variant="contained"
 					disabled={loading}
-					startIcon={loading ? <CircularProgress size={20} /> : <LockResetIcon />}
+					startIcon={
+						loading ? <CircularProgress size={20} /> : <LockResetIcon />
+					}
 				>
 					Send Reset Email
 				</Button>
@@ -209,7 +213,8 @@ const VerifyEmailDialog: React.FC<VerifyEmailDialogProps> = ({
 					{userEmail}
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					This will mark the user's email as verified without requiring them to click a verification link.
+					This will mark the user's email as verified without requiring them to
+					click a verification link.
 				</Typography>
 			</DialogContent>
 			<DialogActions>
@@ -221,7 +226,9 @@ const VerifyEmailDialog: React.FC<VerifyEmailDialogProps> = ({
 					variant="contained"
 					color="success"
 					disabled={loading}
-					startIcon={loading ? <CircularProgress size={20} /> : <VerifiedUserIcon />}
+					startIcon={
+						loading ? <CircularProgress size={20} /> : <VerifiedUserIcon />
+					}
 				>
 					Verify Email
 				</Button>
@@ -328,7 +335,10 @@ export const UserManagementPanel: React.FC = () => {
 			}
 		} catch (err: any) {
 			console.error('Error loading users:', err)
-			setError(err.message || 'Failed to load users. Make sure you have admin permissions.')
+			setError(
+				err.message ||
+					'Failed to load users. Make sure you have admin permissions.',
+			)
 		} finally {
 			setLoading(false)
 		}
@@ -376,9 +386,11 @@ export const UserManagementPanel: React.FC = () => {
 		try {
 			const triggerPasswordResetFunction = httpsCallable(
 				functions,
-				'triggerPasswordReset'
+				'triggerPasswordReset',
 			)
-			const result = await triggerPasswordResetFunction({ email: selectedUser.email })
+			const result = await triggerPasswordResetFunction({
+				email: selectedUser.email,
+			})
 			const data = result.data as any
 			if (data.success) {
 				setSuccess(data.message)
@@ -402,10 +414,7 @@ export const UserManagementPanel: React.FC = () => {
 		setError(null)
 		setSuccess(null)
 		try {
-			const verifyEmailFunction = httpsCallable(
-				functions,
-				'verifyUserEmail'
-			)
+			const verifyEmailFunction = httpsCallable(functions, 'verifyUserEmail')
 			const result = await verifyEmailFunction({ email: selectedUser.email })
 			const data = result.data as any
 
@@ -431,10 +440,7 @@ export const UserManagementPanel: React.FC = () => {
 		setError(null)
 		setSuccess(null)
 		try {
-			const deleteUserFunction = httpsCallable(
-				functions,
-				'deleteUser'
-			)
+			const deleteUserFunction = httpsCallable(functions, 'deleteUser')
 			const result = await deleteUserFunction({ email: selectedUser.email })
 			const data = result.data as any
 
@@ -456,7 +462,7 @@ export const UserManagementPanel: React.FC = () => {
 	const filteredUsers = users.filter(
 		(user) =>
 			user.email?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-			user.displayName?.toLowerCase().includes(searchTerm.toLowerCase())
+			user.displayName?.toLowerCase().includes(searchTerm.toLowerCase()),
 	)
 
 	return (
@@ -497,7 +503,11 @@ export const UserManagementPanel: React.FC = () => {
 					</Box>
 
 					{error && (
-						<Alert severity="error" sx={{ mb: 2 }} onClose={() => setError(null)}>
+						<Alert
+							severity="error"
+							sx={{ mb: 2 }}
+							onClose={() => setError(null)}
+						>
 							{error}
 						</Alert>
 					)}
@@ -527,8 +537,13 @@ export const UserManagementPanel: React.FC = () => {
 											}}
 											sx={{ fontFamily: 'monospace', fontSize: '0.85rem' }}
 										/>
-										<Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
-											Copy this link and send it to the user via email or another secure channel.
+										<Typography
+											variant="caption"
+											color="text.secondary"
+											sx={{ mt: 1, display: 'block' }}
+										>
+											Copy this link and send it to the user via email or
+											another secure channel.
 										</Typography>
 									</Box>
 								)}
@@ -594,19 +609,29 @@ export const UserManagementPanel: React.FC = () => {
 															/>
 														)}
 														{user.disabled && (
-															<Chip label="Disabled" color="error" size="small" />
+															<Chip
+																label="Disabled"
+																color="error"
+																size="small"
+															/>
 														)}
 													</Box>
 												</TableCell>
 												<TableCell>
 													{user.metadata.lastSignInTime
 														? new Date(
-																user.metadata.lastSignInTime
-														  ).toLocaleDateString()
+																user.metadata.lastSignInTime,
+															).toLocaleDateString()
 														: 'Never'}
 												</TableCell>
 												<TableCell align="right">
-													<Box sx={{ display: 'flex', gap: 0.5, justifyContent: 'flex-end' }}>
+													<Box
+														sx={{
+															display: 'flex',
+															gap: 0.5,
+															justifyContent: 'flex-end',
+														}}
+													>
 														{!user.emailVerified && (
 															<Tooltip title="Manually verify this user's email">
 																<IconButton

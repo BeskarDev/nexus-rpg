@@ -16,8 +16,6 @@
 	"functions": {
 		"source": "functions",
 		"runtime": "nodejs22",
-		"predeploy": [
-			"yarn --cwd \"$RESOURCE_DIR\" run build"
-		]
+		"predeploy": ["yarn --cwd \"$RESOURCE_DIR\" run build"]
 	}
 }

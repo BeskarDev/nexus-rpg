@@ -6,7 +6,5 @@
 		"allowSyntheticDefaultImports": true,
 		"types": ["node", "@playwright/test"]
 	},
-	"include": [
-		"**/*.ts"
-	]
+	"include": ["**/*.ts"]
 }

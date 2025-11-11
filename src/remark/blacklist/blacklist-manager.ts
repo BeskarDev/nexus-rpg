@@ -57,7 +57,10 @@ class BlacklistManager {
 				delete require.cache[this.blacklistPath]
 				this.blacklist = require('./blacklist.json')
 			} catch (error) {
-				console.warn('Failed to load blacklist.json, using empty blacklist:', error)
+				console.warn(
+					'Failed to load blacklist.json, using empty blacklist:',
+					error,
+				)
 				this.blacklist = []
 			}
 		}
@@ -77,14 +80,14 @@ class BlacklistManager {
 	private normalizePath(path: string): string {
 		// Normalize slashes and remove leading slashes
 		let normalized = path.replace(/\\/g, '/').replace(/^\/+/, '')
-		
-		// If it's an absolute path starting with a drive/home directory, 
+
+		// If it's an absolute path starting with a drive/home directory,
 		// extract just the docs/ part
 		const docsMatch = normalized.match(/.*\/docs\/(.+)$/)
 		if (docsMatch) {
 			normalized = 'docs/' + docsMatch[1]
 		}
-		
+
 		return normalized
 	}
 
@@ -104,11 +107,11 @@ class BlacklistManager {
 			// Check if file matches (support both exact match and contains)
 			const entryFile = this.normalizePath(entry.file)
 			const fileMatches =
-				normalizedFilePath && entryFile && (
-					normalizedFilePath.includes(entryFile) ||
+				normalizedFilePath &&
+				entryFile &&
+				(normalizedFilePath.includes(entryFile) ||
 					entryFile.includes(normalizedFilePath) ||
-					normalizedFilePath.endsWith(entryFile)
-				)
+					normalizedFilePath.endsWith(entryFile))
 
 			// Check if keyword matches (case-insensitive)
 			const keywordMatches =
@@ -126,9 +129,20 @@ class BlacklistManager {
 		})
 
 		// Debug logging for specific keywords
-		if (['STR', 'AGI', 'SPI', 'MND'].includes(keyword) && normalizedFilePath.includes('creatures.md')) {
-			console.log(`[blacklist] Checking ${keyword} index ${matchIndex} for ${context.pluginType} in ${normalizedFilePath}`)
-			console.log(`[blacklist] Found ${relevantEntries.length} relevant entries:`, relevantEntries.map(e => ({ keyword: e.keyword, matchIndex: e.matchIndex })))
+		if (
+			['STR', 'AGI', 'SPI', 'MND'].includes(keyword) &&
+			normalizedFilePath.includes('creatures.md')
+		) {
+			console.log(
+				`[blacklist] Checking ${keyword} index ${matchIndex} for ${context.pluginType} in ${normalizedFilePath}`,
+			)
+			console.log(
+				`[blacklist] Found ${relevantEntries.length} relevant entries:`,
+				relevantEntries.map((e) => ({
+					keyword: e.keyword,
+					matchIndex: e.matchIndex,
+				})),
+			)
 		}
 
 		// Check if any relevant entry should exclude this match
@@ -146,8 +160,13 @@ class BlacklistManager {
 		})
 
 		// Debug logging for result
-		if (['STR', 'AGI', 'SPI', 'MND'].includes(keyword) && normalizedFilePath.includes('creatures.md')) {
-			console.log(`[blacklist] ${keyword} index ${matchIndex}: result = ${result}`)
+		if (
+			['STR', 'AGI', 'SPI', 'MND'].includes(keyword) &&
+			normalizedFilePath.includes('creatures.md')
+		) {
+			console.log(
+				`[blacklist] ${keyword} index ${matchIndex}: result = ${result}`,
+			)
 		}
 
 		return result

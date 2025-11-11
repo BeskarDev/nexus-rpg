@@ -14,7 +14,12 @@ import {
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
-import { Delete, ExpandMore, BookmarkBorder, Bookmark } from '@mui/icons-material'
+import {
+	Delete,
+	ExpandMore,
+	BookmarkBorder,
+	Bookmark,
+} from '@mui/icons-material'
 import {
 	RangeType,
 	rangeTypeArray,
@@ -285,13 +290,17 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						))}
 					</AttributeField>
 					{onToggleQuickRef && (
-						<Tooltip title={isInQuickRef ? "Remove from Quick Ref" : "Add to Quick Ref"}>
+						<Tooltip
+							title={
+								isInQuickRef ? 'Remove from Quick Ref' : 'Add to Quick Ref'
+							}
+						>
 							<IconButton
 								size="small"
 								onClick={() => onToggleQuickRef(initialSpell.id)}
-								sx={{ 
+								sx={{
 									my: 'auto',
-									color: isInQuickRef ? 'primary.main' : 'action.disabled'
+									color: isInQuickRef ? 'primary.main' : 'action.disabled',
 								}}
 							>
 								{isInQuickRef ? <Bookmark /> : <BookmarkBorder />}

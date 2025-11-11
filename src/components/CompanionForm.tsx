@@ -112,11 +112,13 @@ export const CompanionForm: React.FC<CompanionFormProps> = ({
 			</Grid>
 
 			{(showResetButton || showImportButton) && (
-				<Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, mb: 2 }}>
+				<Box
+					sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1, mb: 2 }}
+				>
 					{showImportButton && onImportCompanion && (
-						<Button 
-							variant="contained" 
-							size="small" 
+						<Button
+							variant="contained"
+							size="small"
 							onClick={onImportCompanion}
 							color="primary"
 						>

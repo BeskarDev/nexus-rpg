@@ -41,11 +41,7 @@ export const UserAvatar: React.FC<AvatarProps> = (props) => {
 				}}
 				MenuListProps={{ sx: { p: userLoggedIn ? 0 : 2 } }}
 			>
-				{userLoggedIn ? (
-					<UserMenu onClose={handleClose} />
-				) : (
-					<LoginComponent />
-				)}
+				{userLoggedIn ? <UserMenu onClose={handleClose} /> : <LoginComponent />}
 			</Menu>
 		</>
 	)

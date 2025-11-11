@@ -22,12 +22,15 @@ export type DeepPartial<T> = {
 }
 
 export const CharacterSheetContainer: React.FC = () => {
-	const { userLoggedIn, currentUser, isAdmin, setIsAdmin, viewAsAdmin } = useAuth()
+	const { userLoggedIn, currentUser, isAdmin, setIsAdmin, viewAsAdmin } =
+		useAuth()
 	const { activeCharacter, autosave, saveTimeout, unsavedChanges } =
 		useAppSelector((state) => state.characterSheet)
 	const dispatch = useAppDispatch()
 	const [characters, setCharacters] = React.useState<CharacterDocument[]>([])
-	const [allCharacters, setAllCharacters] = React.useState<CharacterDocument[]>([])
+	const [allCharacters, setAllCharacters] = React.useState<CharacterDocument[]>(
+		[],
+	)
 	const [loadingCharacters, setLoadingCharacters] = React.useState(true)
 
 	const queryString = window.location.search
@@ -68,13 +71,15 @@ export const CharacterSheetContainer: React.FC = () => {
 	// Filter characters based on viewAsAdmin toggle
 	useEffect(() => {
 		if (!isAdmin || !currentUser) return
-		
+
 		if (viewAsAdmin) {
 			// Show all characters (admin view)
 			setCharacters(allCharacters)
 		} else {
 			// Show only user's own characters (non-admin view)
-			const userChars = allCharacters.filter(char => char.collectionId === currentUser.uid)
+			const userChars = allCharacters.filter(
+				(char) => char.collectionId === currentUser.uid,
+			)
 			setCharacters(userChars)
 		}
 	}, [viewAsAdmin, isAdmin, currentUser, allCharacters])
@@ -86,7 +91,7 @@ export const CharacterSheetContainer: React.FC = () => {
 
 			// Get user's collection
 			const userChars = await firebaseService.getCollection(userUid)
-			
+
 			// Check for admin permissions and load additional collections
 			const userInfo = await firebaseService.getUserInfo(userUid)
 			setIsAdmin(Boolean(userInfo.allowedCollections.length))
@@ -235,16 +240,15 @@ export const CharacterSheetContainer: React.FC = () => {
 				</Box>
 			)}
 			{(userLoggedIn || process.env.NODE_ENV === 'development') &&
-				!activeCharacterId && (
-					loadingCharacters ? (
-						<CharacterListSkeleton adminView={isAdmin && viewAsAdmin} />
-					) : (
-						<CharacterList
-							characters={characters}
-							handleDeleteCharacter={handleDeleteCharacter}
-						/>
-					)
-				)}
+				!activeCharacterId &&
+				(loadingCharacters ? (
+					<CharacterListSkeleton adminView={isAdmin && viewAsAdmin} />
+				) : (
+					<CharacterList
+						characters={characters}
+						handleDeleteCharacter={handleDeleteCharacter}
+					/>
+				))}
 			{(userLoggedIn || process.env.NODE_ENV === 'development') &&
 				activeCharacterId &&
 				activeCharacter && <CharacterSheet />}

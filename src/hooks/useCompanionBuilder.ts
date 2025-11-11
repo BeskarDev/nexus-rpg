@@ -1,16 +1,23 @@
 import { useState, useEffect } from 'react'
 import { CompanionTrait, CompanionStats } from '../types/companion'
-import { calculateStats, getAvailableSizes } from '../utils/companionCalculations'
+import {
+	calculateStats,
+	getAvailableSizes,
+} from '../utils/companionCalculations'
 
 export const useCompanionBuilder = () => {
 	const [selectedTier, setSelectedTier] = useState<number>(0)
 	const [selectedSize, setSelectedSize] = useState<string>('')
-	const [selectedTrait, setSelectedTrait] = useState<CompanionTrait | null>(null)
-	const [builtCompanion, setBuiltCompanion] = useState<CompanionStats | null>(null)
+	const [selectedTrait, setSelectedTrait] = useState<CompanionTrait | null>(
+		null,
+	)
+	const [builtCompanion, setBuiltCompanion] = useState<CompanionStats | null>(
+		null,
+	)
 
 	const handleTierChange = (newTier: number) => {
 		setSelectedTier(newTier)
-		
+
 		// Only reset size if it's not available in the new tier
 		const availableSizes = getAvailableSizes(newTier)
 		if (selectedSize && !availableSizes.includes(selectedSize)) {

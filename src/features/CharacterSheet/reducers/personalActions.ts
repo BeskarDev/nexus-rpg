@@ -33,7 +33,10 @@ export const personalActions = {
 		}
 	},
 
-	deleteCompanion: (state: CharacterSheetReducerState, action: PayloadAction<Companion>) => {
+	deleteCompanion: (
+		state: CharacterSheetReducerState,
+		action: PayloadAction<Companion>,
+	) => {
 		state.unsavedChanges = true
 		state.activeCharacter.companions = state.activeCharacter.companions.filter(
 			(c) => c.id !== action.payload.id,

@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-	Box,
-	Button,
-	Typography,
-	Paper,
-} from '@mui/material'
+import { Box, Button, Typography, Paper } from '@mui/material'
 import { CompanionStats } from '../types/companion'
 import { generateMarkdown, generateJSON } from '../utils/companionFormatting'
 
@@ -21,9 +16,10 @@ export const CompanionOutputPanel: React.FC<CompanionOutputPanelProps> = ({
 	showImportButton = false,
 	onImportCompanion,
 }) => {
-	const content = outputType === 'markdown' 
-		? generateMarkdown(companion)
-		: generateJSON(companion)
+	const content =
+		outputType === 'markdown'
+			? generateMarkdown(companion)
+			: generateJSON(companion)
 
 	const copyToClipboard = () => {
 		navigator.clipboard.writeText(content)
@@ -54,22 +50,21 @@ export const CompanionOutputPanel: React.FC<CompanionOutputPanelProps> = ({
 					<Button size="small" onClick={copyToClipboard}>
 						Copy to Clipboard
 					</Button>
-					{showImportButton && onImportCompanion && outputType === 'markdown' && (
-						<Button
-							size="small"
-							variant="contained"
-							color="primary"
-							onClick={handleImport}
-						>
-							Import to Character
-						</Button>
-					)}
+					{showImportButton &&
+						onImportCompanion &&
+						outputType === 'markdown' && (
+							<Button
+								size="small"
+								variant="contained"
+								color="primary"
+								onClick={handleImport}
+							>
+								Import to Character
+							</Button>
+						)}
 				</Box>
 			</Box>
-			<Paper
-				variant="outlined"
-				sx={{ p: 2, backgroundColor: 'action.hover' }}
-			>
+			<Paper variant="outlined" sx={{ p: 2, backgroundColor: 'action.hover' }}>
 				<pre
 					style={{
 						whiteSpace: 'pre-wrap',

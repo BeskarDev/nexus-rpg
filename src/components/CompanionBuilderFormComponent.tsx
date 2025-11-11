@@ -12,9 +12,7 @@ import {
 	Typography,
 	Paper,
 } from '@mui/material'
-import {
-	Refresh as RefreshIcon,
-} from '@mui/icons-material'
+import { Refresh as RefreshIcon } from '@mui/icons-material'
 import { CompanionTrait } from '../types/companion'
 import { getAvailableSizes, TIER_NAMES } from '../utils/companionCalculations'
 import companionTraits from '../utils/json/companion-traits.json'
@@ -43,7 +41,9 @@ const getTypeColor = (type: string): string => {
 	return colors[type] || '#3C6FA8'
 }
 
-export const CompanionBuilderFormComponent: React.FC<CompanionBuilderFormProps> = ({
+export const CompanionBuilderFormComponent: React.FC<
+	CompanionBuilderFormProps
+> = ({
 	onReset,
 	showResetButton,
 	showImportButton = false,
@@ -51,20 +51,27 @@ export const CompanionBuilderFormComponent: React.FC<CompanionBuilderFormProps> 
 }) => {
 	const dispatch = useDispatch()
 	const { state } = useCompanionBuilderState()
-	
+
 	const { tier, size, trait } = state
 	const types = companionTraits as CompanionTrait[]
 
 	return (
 		<Paper sx={{ p: 2 }}>
-			<Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+					mb: 2,
+				}}
+			>
 				<Typography variant="h6" sx={{ fontSize: '1.1rem', fontWeight: 600 }}>
 					Core Stats
 				</Typography>
 				<Box sx={{ display: 'flex', gap: 1 }}>
 					{showImportButton && onImportCompanion && (
-						<Button 
-							size="small" 
+						<Button
+							size="small"
 							onClick={onImportCompanion}
 							variant="contained"
 							color="primary"
@@ -74,9 +81,9 @@ export const CompanionBuilderFormComponent: React.FC<CompanionBuilderFormProps> 
 						</Button>
 					)}
 					{showResetButton && (
-						<Button 
-							size="small" 
-							startIcon={<RefreshIcon />} 
+						<Button
+							size="small"
+							startIcon={<RefreshIcon />}
 							onClick={onReset}
 							sx={{ minWidth: 'auto' }}
 						>
@@ -85,7 +92,7 @@ export const CompanionBuilderFormComponent: React.FC<CompanionBuilderFormProps> 
 					)}
 				</Box>
 			</Box>
-			
+
 			<Grid container spacing={1.5}>
 				{/* Tier and Size */}
 				<Grid item xs={6}>
@@ -97,7 +104,7 @@ export const CompanionBuilderFormComponent: React.FC<CompanionBuilderFormProps> 
 							onChange={(e: SelectChangeEvent<number>) => {
 								const newTier = e.target.value as number
 								dispatch(companionBuilderActions.setTier(newTier))
-								
+
 								// Reset size if not available in new tier
 								const availableSizes = getAvailableSizes(newTier)
 								if (size && !availableSizes.includes(size)) {
@@ -145,11 +152,13 @@ export const CompanionBuilderFormComponent: React.FC<CompanionBuilderFormProps> 
 								const selectedTrait = types.find(
 									(t) => t.name === e.target.value,
 								)
-								dispatch(companionBuilderActions.setTrait(selectedTrait || null))
+								dispatch(
+									companionBuilderActions.setTrait(selectedTrait || null),
+								)
 							}}
 							renderValue={(value) => {
 								if (!value) return ''
-								const selectedTrait = types.find(t => t.name === value)
+								const selectedTrait = types.find((t) => t.name === value)
 								return (
 									<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
 										<Box
