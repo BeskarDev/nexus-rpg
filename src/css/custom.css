@@ -783,16 +783,66 @@ a.chip:hover {
 @media (min-width: 997px) {
   /* Target the sidebar when the character-sheet-page class exists in the article */
   div:has(.character-sheet-page) aside.theme-doc-sidebar-container {
-    display: none !important;
+    display: none !important; /* sidebar hiding still uses !important because theme CSS sets widths */
   }
-  
-  /* Expand the main content area when sidebar is hidden */
+
+  /* Keep legacy container/col fallbacks for any layouts that rely on them */
   div:has(.character-sheet-page) .container {
     max-width: 100% !important;
   }
-  
+
   div:has(.character-sheet-page) .col {
     max-width: 100% !important;
     flex-basis: 100% !important;
   }
+
+  /* Prefer a more-specific override for the generated doc main container to
+     expand it to full width without using !important. By increasing selector
+     specificity and placing this in `src/css/custom.css` (loaded after theme
+     CSS), this will override the rule in the bundled styles. */
+  div:has(.character-sheet-page) main.docMainContainer_TBSr {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* Navbar GitHub icon: replace the text label with a small SVG icon.
+   Uses the local file `/img/github.svg` placed in /static/img so it is served
+   at /img/github.svg. We style the navbar link using its className set in
+   `docusaurus.config.js` (navbar-github-link). Keep the link accessible
+   by using an `aria-label` in the config. */
+.navbar__item.navbar-github-link {
+  /* match spacing for other navbar icons */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+  line-height: 2rem;
+}
+
+.navbar__item.navbar-github-link::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  /* Use the SVG as a mask so the icon inherits `currentColor` and is
+     always visible in both light/dark themes. */
+  background-color: currentColor;
+  -webkit-mask: url('/img/github.svg') no-repeat center / contain;
+  mask: url('/img/github.svg') no-repeat center / contain;
+  vertical-align: middle;
+  /* Nudge to better align with other icons (tweak if needed) */
+  margin-top: -1px;
+}
+
+/* Visually hide the textual label but keep it available to screen readers */
+.navbar__item.navbar-github-link .menu__link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
