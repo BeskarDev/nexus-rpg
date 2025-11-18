@@ -7,20 +7,12 @@ export type MagicItemCategory =
 export type MagicItem = {
 	name: string
 	category: MagicItemCategory
-	quality: string
+	quality: number
 	type: string
 	material?: string
-	cost: string
-	load: string
+	cost: number
+	load: number
 	properties?: string
-	weaponDamage?: string
-	durability?: string
-	equipmentSlot?: string
-	uses?: string
-	craftingTime?: string
-	spellEffect?: string
+	uses?: number
 	description: string
-	enchantment?: string
-	effect?: string
-	note?: string
 }
