@@ -16,94 +16,98 @@ Magic items should be uploaded as JSON objects with the following structure:
 
 ```json
 {
-  "name": "Item Name",
-  "category": "Weapon|Wearable|Consumable|Spell Scroll",
-  "quality": "Quality description",
-  "type": "Item type",
-  "material": "Material (optional)",
-  "cost": "Cost in coins",
-  "load": "Load value",
-  "description": "Item description",
-  
-  // Optional fields depending on category
-  "properties": "Weapon properties (for weapons)",
-  "weaponDamage": "Damage bonus (for weapons)",
-  "durability": "Durability dice (for weapons)",
-  "equipmentSlot": "Slot (for wearables)",
-  "uses": "Number of uses (for consumables)",
-  "craftingTime": "Time to craft (for scrolls)",
-  "spellEffect": "Spell details (for scrolls)",
-  "enchantment": "Enchantment description",
-  "effect": "Mechanical effect",
-  "note": "Additional notes"
+	"name": "Item Name",
+	"category": "Weapon|Wearable|Consumable|Spell Scroll",
+	"quality": "Quality description",
+	"type": "Item type",
+	"material": "Material (optional)",
+	"cost": "Cost in coins",
+	"load": "Load value",
+	"description": "Item description",
+
+	// Optional fields depending on category
+	"properties": "Weapon properties (for weapons)",
+	"weaponDamage": "Damage bonus (for weapons)",
+	"durability": "Durability dice (for weapons)",
+	"equipmentSlot": "Slot (for wearables)",
+	"uses": "Number of uses (for consumables)",
+	"craftingTime": "Time to craft (for scrolls)",
+	"spellEffect": "Spell details (for scrolls)",
+	"enchantment": "Enchantment description",
+	"effect": "Mechanical effect",
+	"note": "Additional notes"
 }
 ```
 
 ### Examples
 
 **Weapon:**
+
 ```json
 {
-  "name": "Shadowblade of the Silent Healer",
-  "category": "Weapon",
-  "quality": "4 (Lesser Magic)",
-  "type": "Dagger",
-  "material": "Obsidian Crystal",
-  "cost": "1,350 coins",
-  "load": "1",
-  "properties": "agile, light, pierce",
-  "weaponDamage": "+1",
-  "durability": "+1d",
-  "description": "This slender blade of obsidian-like crystal absorbs light and radiates shadow.",
-  "enchantment": "Shadow Healing (Once per scene): While hidden, heal one creature within short range for 12 HP."
+	"name": "Shadowblade of the Silent Healer",
+	"category": "Weapon",
+	"quality": "4 (Lesser Magic)",
+	"type": "Dagger",
+	"material": "Obsidian Crystal",
+	"cost": "1,350 coins",
+	"load": "1",
+	"properties": "agile, light, pierce",
+	"weaponDamage": "+1",
+	"durability": "+1d",
+	"description": "This slender blade of obsidian-like crystal absorbs light and radiates shadow.",
+	"enchantment": "Shadow Healing (Once per scene): While hidden, heal one creature within short range for 12 HP."
 }
 ```
 
 **Wearable:**
+
 ```json
 {
-  "name": "Ring of Forgetting",
-  "category": "Wearable",
-  "quality": "6 (Greater Magic)",
-  "type": "Ring",
-  "material": "Dull Silver",
-  "cost": "10,050 coins",
-  "load": "0",
-  "equipmentSlot": "Ring",
-  "description": "A dull silver ring that seems to devour memories.",
-  "enchantment": "Veil of Oblivion (Passive): Creatures forget your presence after 1 minute.",
-  "note": "Requires careful play to maintain the memory-erasing effect."
+	"name": "Ring of Forgetting",
+	"category": "Wearable",
+	"quality": "6 (Greater Magic)",
+	"type": "Ring",
+	"material": "Dull Silver",
+	"cost": "10,050 coins",
+	"load": "0",
+	"equipmentSlot": "Ring",
+	"description": "A dull silver ring that seems to devour memories.",
+	"enchantment": "Veil of Oblivion (Passive): Creatures forget your presence after 1 minute.",
+	"note": "Requires careful play to maintain the memory-erasing effect."
 }
 ```
 
 **Consumable:**
+
 ```json
 {
-  "name": "Potion of Dampened Heat",
-  "category": "Consumable",
-  "quality": "3 (Masterwork)",
-  "type": "Potion",
-  "cost": "200 coins",
-  "load": "1",
-  "uses": "1 (single use)",
-  "description": "A pale red brew that tingles like desert air on the tongue.",
-  "effect": "Gain fire resistance and +2 boons against inhaled poisons for 1 hour."
+	"name": "Potion of Dampened Heat",
+	"category": "Consumable",
+	"quality": "3 (Masterwork)",
+	"type": "Potion",
+	"cost": "200 coins",
+	"load": "1",
+	"uses": "1 (single use)",
+	"description": "A pale red brew that tingles like desert air on the tongue.",
+	"effect": "Gain fire resistance and +2 boons against inhaled poisons for 1 hour."
 }
 ```
 
 **Spell Scroll:**
+
 ```json
 {
-  "name": "Scroll of Protection from Evil",
-  "category": "Spell Scroll",
-  "quality": "5 (Potent Magic)",
-  "type": "Mystic, Rank 2",
-  "cost": "500 coins",
-  "load": "0",
-  "craftingTime": "1 week",
-  "spellEffect": "Roll Spirit + Mysticism (d10 + 2 if you lack Mysticism skill).",
-  "description": "This scroll contains the mystic spell Ward Against Evil.",
-  "effect": "Target gains immunity to charm/fear, resistance to necrotic/psychic damage for 10 minutes."
+	"name": "Scroll of Protection from Evil",
+	"category": "Spell Scroll",
+	"quality": "5 (Potent Magic)",
+	"type": "Mystic, Rank 2",
+	"cost": "500 coins",
+	"load": "0",
+	"craftingTime": "1 week",
+	"spellEffect": "Roll Spirit + Mysticism (d10 + 2 if you lack Mysticism skill).",
+	"description": "This scroll contains the mystic spell Ward Against Evil.",
+	"effect": "Target gains immunity to charm/fear, resistance to necrotic/psychic damage for 10 minutes."
 }
 ```
 

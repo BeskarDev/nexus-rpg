@@ -35,8 +35,9 @@ export const MagicItems: React.FC = () => {
 	const muiTheme = useTheme()
 	const [magicItems, setMagicItems] = React.useState<MagicItem[]>([])
 	const [selectedItems, setSelectedItems] = React.useState<string[]>([])
-	const [categoryFilter, setCategoryFilter] =
-		React.useState<MagicItemCategory | 'all'>('all')
+	const [categoryFilter, setCategoryFilter] = React.useState<
+		MagicItemCategory | 'all'
+	>('all')
 	const [jsonString, setJsonString] = React.useState<string>('')
 	const [parseError, setParseError] = React.useState<string>('')
 
@@ -61,7 +62,7 @@ export const MagicItems: React.FC = () => {
 				const parsed = JSON.parse(jsonStr)
 				// Handle both single item and array of items
 				const items: MagicItem[] = Array.isArray(parsed) ? parsed : [parsed]
-				
+
 				// Validate that items have required fields
 				const validItems = items.filter(
 					(item) => item.name && item.category && item.description,
@@ -162,7 +163,7 @@ export const MagicItems: React.FC = () => {
 					label="Upload Magic Items as JSON"
 					value={jsonString}
 					onChange={(event) => handleJsonUpload(event.target.value)}
-					placeholder='Paste JSON here (single item or array)...'
+					placeholder="Paste JSON here (single item or array)..."
 					helperText={
 						parseError ||
 						'Upload one or more magic items in JSON format. See documentation for format details.'

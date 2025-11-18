@@ -38,9 +38,7 @@ describe('MagicItems Tool - Basic Tests', () => {
 		it('should render the JSON import field', async () => {
 			render(<MagicItems />)
 
-			const importField = screen.getByPlaceholderText(
-				/paste json here/i,
-			)
+			const importField = screen.getByPlaceholderText(/paste json here/i)
 			expect(importField).toBeInTheDocument()
 		})
 
@@ -83,7 +81,7 @@ describe('MagicItems Tool - Basic Tests', () => {
 			render(<MagicItems />)
 
 			const printButton = screen.getByText('PRINT')
-			
+
 			// Button should be disabled initially
 			expect(printButton).toBeDisabled()
 		})
@@ -109,7 +107,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 			await userEvent.paste(testJson)
 
 			// Should show success message
-			expect(screen.getByText(/successfully loaded 1 magic item/i)).toBeInTheDocument()
+			expect(
+				screen.getByText(/successfully loaded 1 magic item/i),
+			).toBeInTheDocument()
 		})
 
 		it('should handle valid array JSON input', async () => {
@@ -142,7 +142,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 			await userEvent.paste(testJson)
 
 			// Should show success message with count
-			expect(screen.getByText(/successfully loaded 2 magic items/i)).toBeInTheDocument()
+			expect(
+				screen.getByText(/successfully loaded 2 magic items/i),
+			).toBeInTheDocument()
 		})
 
 		it('should handle invalid JSON input gracefully', async () => {
@@ -309,7 +311,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 			await userEvent.paste(JSON.stringify(items))
 
 			// Should load all categories successfully
-			expect(screen.getByText(/successfully loaded 4 magic items/i)).toBeInTheDocument()
+			expect(
+				screen.getByText(/successfully loaded 4 magic items/i),
+			).toBeInTheDocument()
 		})
 
 		it('should handle optional fields correctly', async () => {
@@ -337,7 +341,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 			await userEvent.click(textarea)
 			await userEvent.paste(JSON.stringify(itemWithOptionalFields))
 
-			expect(screen.getByText(/successfully loaded 1 magic item/i)).toBeInTheDocument()
+			expect(
+				screen.getByText(/successfully loaded 1 magic item/i),
+			).toBeInTheDocument()
 		})
 	})
 
@@ -389,7 +395,9 @@ describe('MagicItems Tool - Basic Tests', () => {
 			await userEvent.paste(JSON.stringify(manyItems))
 
 			// Should handle large datasets
-			expect(screen.getByText(/successfully loaded 50 magic items/i)).toBeInTheDocument()
+			expect(
+				screen.getByText(/successfully loaded 50 magic items/i),
+			).toBeInTheDocument()
 		})
 	})
 })
