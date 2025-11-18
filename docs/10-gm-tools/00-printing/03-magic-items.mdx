@@ -1,0 +1,51 @@
+---
+sidebar_position: 3
+title: 🎴 Magic Items
+description: Print magic item cards for tabletop play
+---
+
+import { MagicItems } from '@site/src/features/MagicItems'
+
+# 🎴 Magic Items
+
+<MagicItems />
+
+## Supported Format
+
+Magic items should be uploaded as JSON objects with the following structure:
+
+```json
+{
+	"name": "Item Name",
+	"category": "Weapon|Armor|Wearable|Consumable|Spell Scroll",
+	"quality": 4,
+	"type": "Item type (include bonuses like 'dagger +1') or equipment slot (like head, neck, etc.)",
+	"material": "Material (optional, should match table entry from magic item rules)",
+	"cost": 1350,
+	"load": 1,
+	"description": "Complete item description including all effects, enchantments, and notes",
+
+	// Optional fields depending on category
+	"properties": "item properties (such as properties for weapons)",
+	"uses": 1,
+}
+```
+
+## Batch Printing
+
+To print multiple items at once, upload them as a JSON array:
+
+```json
+[
+  {
+    "name": "First Item",
+    "category": "Weapon",
+    ...
+  },
+  {
+    "name": "Second Item",
+    "category": "Wearable",
+    ...
+  }
+]
+```
