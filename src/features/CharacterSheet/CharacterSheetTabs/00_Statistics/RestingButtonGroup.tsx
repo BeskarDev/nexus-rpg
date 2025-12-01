@@ -114,11 +114,12 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	const [dialogType, setDialogType] = useState<RestingType>('shortBreak')
 	const { isMobile } = useDeviceSize()
 
-	// Calculate current max HP using the new formula
+	// Calculate current max HP using the new formula (includes talent bonus)
 	const currentMaxHp = calculateMaxHp(
 		character.statistics.strength.value,
 		character.skills.xp.total,
 		character.statistics.health.maxHpModifier || 0,
+		character.statistics.health.talentHpBonus || 0,
 	)
 
 	const handleOpen = (type: RestingType) => {
@@ -136,7 +137,7 @@ export const RestingButtonGroup: React.FC<RestingButtonGroupProps> = ({
 	}
 
 	const removeFatigue = (amount: number) => {
-		const { current, temp, maxHpModifier, ...wounds } =
+		const { current, temp, maxHpModifier, talentHpBonus, ...wounds } =
 			character.statistics.health
 		let i = amount
 		Object.keys(wounds)

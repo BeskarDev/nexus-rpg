@@ -258,7 +258,7 @@ export const SkillsTab: React.FC = () => {
 		[skills],
 	)
 
-	// Auto-calculate HP modifier from talents
+	// Auto-calculate HP bonus from talents (stored separately from user's maxHpModifier)
 	useEffect(() => {
 		const mysticismSkill = skills.find((s) => s.name === 'Mysticism')
 		const mysticismRank = mysticismSkill?.rank || 0
@@ -268,13 +268,13 @@ export const SkillsTab: React.FC = () => {
 			mysticismRank,
 		)
 
-		const currentModifier = activeCharacter.statistics.health.maxHpModifier || 0
+		const currentTalentBonus = activeCharacter.statistics.health.talentHpBonus || 0
 
-		if (calculatedHpBonus !== currentModifier) {
+		if (calculatedHpBonus !== currentTalentBonus) {
 			updateCharacter({
 				statistics: {
 					health: {
-						maxHpModifier: calculatedHpBonus,
+						talentHpBonus: calculatedHpBonus,
 					},
 				},
 			})

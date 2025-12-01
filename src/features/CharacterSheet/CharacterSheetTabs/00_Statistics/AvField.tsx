@@ -18,8 +18,8 @@ export const AvField = () => {
 	)
 
 	const totalAV: number = useMemo(
-		() => av.armor + av.helmet + av.shield + av.other,
-		[av.armor + av.helmet + av.shield + av.other],
+		() => av.armor + av.helmet + av.shield + (av.folkBonus || 0) + av.other,
+		[av.armor, av.helmet, av.shield, av.folkBonus, av.other],
 	)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
@@ -105,6 +105,16 @@ export const AvField = () => {
 					}
 					label="Shield"
 				/>
+				{(av.folkBonus || 0) > 0 && (
+					<AttributeField
+						disabled
+						type="number"
+						size="small"
+						value={av.folkBonus || 0}
+						label="Folk Bonus"
+						helperText="From folk abilities"
+					/>
+				)}
 				<AttributeField
 					type="number"
 					size="small"

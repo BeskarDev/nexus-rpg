@@ -157,7 +157,7 @@ const migrateStatistics = (data: any): Statistics => {
 		const xpTotal = data.skills?.xp?.total || 0
 		const strength = migratedData.strength?.value || 4
 
-		const newAutoMaxHp = calculateMaxHp(strength, xpTotal, 0)
+		const newAutoMaxHp = calculateMaxHp(strength, xpTotal, 0, 0)
 		const maxHpModifier = oldMaxHp - newAutoMaxHp
 
 		// Migrate health structure
@@ -165,6 +165,7 @@ const migrateStatistics = (data: any): Statistics => {
 			current: migratedData.health.current || newAutoMaxHp,
 			temp: migratedData.health.temp || 0,
 			maxHpModifier: maxHpModifier > 0 ? maxHpModifier : 0, // Only positive modifiers
+			talentHpBonus: 0, // Will be calculated by the effect on first load
 		}
 	}
 
@@ -174,7 +175,18 @@ const migrateStatistics = (data: any): Statistics => {
 			current: migratedData.health?.current || 18, // Default for d6 STR at level 1
 			temp: migratedData.health?.temp || 0,
 			maxHpModifier: 0,
+			talentHpBonus: 0,
 		}
+	}
+
+	// Ensure talentHpBonus field exists for existing characters (will be calculated on first load)
+	if (migratedData.health && !('talentHpBonus' in migratedData.health)) {
+		migratedData.health.talentHpBonus = 0
+	}
+
+	// Ensure folkBonus field exists for existing characters (will be calculated on first load)
+	if (migratedData.av && !('folkBonus' in migratedData.av)) {
+		migratedData.av.folkBonus = 0
 	}
 
 	return {

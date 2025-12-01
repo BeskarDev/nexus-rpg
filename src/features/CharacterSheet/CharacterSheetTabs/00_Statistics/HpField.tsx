@@ -43,11 +43,12 @@ export const HpField = () => {
 	const totalXp = activeCharacter.skills.xp.total
 	const characterLevel = calculateCharacterLevel(totalXp)
 	const baseHp = calculateBaseHpFromStrength(strength.value)
+	const talentHpBonus = health.talentHpBonus || 0
 
-	// Calculate max HP using the new formula
+	// Calculate max HP using the new formula (includes both user modifier and talent bonus)
 	const maxHp = useMemo(() => {
-		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0)
-	}, [strength.value, totalXp, health.maxHpModifier])
+		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0, talentHpBonus)
+	}, [strength.value, totalXp, health.maxHpModifier, talentHpBonus])
 
 	// Calculate effective max HP (minus fatigue penalty)
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
@@ -361,8 +362,10 @@ export const HpField = () => {
 			>
 				<SectionHeader>HP Configuration</SectionHeader>
 				<Typography variant="subtitle2" sx={{ mb: 2 }}>
-					Max HP: {baseHp} + {(characterLevel - 1) * 2} +{' '}
-					{health.maxHpModifier || 0} = {maxHp}
+					Max HP: {baseHp} + {(characterLevel - 1) * 2}
+					{talentHpBonus > 0 && ` + ${talentHpBonus}`}
+					{(health.maxHpModifier || 0) !== 0 && ` + ${health.maxHpModifier || 0}`}
+					{' = '}{maxHp}
 				</Typography>
 
 				{/* Current HP - First and larger with 2px borders */}
@@ -409,6 +412,19 @@ export const HpField = () => {
 					label="Max HP (Calculated)"
 					sx={{ mb: 1.5 }}
 				/>
+
+				{/* Talent HP Bonus (if any) and Temp HP / Max HP Modifier */}
+				{talentHpBonus > 0 && (
+					<AttributeField
+						disabled
+						type="number"
+						size="small"
+						value={talentHpBonus}
+						label="Talent Bonus"
+						helperText="From talents"
+						sx={{ mb: 1.5 }}
+					/>
+				)}
 
 				{/* Temp HP and Max HP Modifier in their own row */}
 				<Box sx={{ display: 'flex', gap: 1, mb: 2 }}>

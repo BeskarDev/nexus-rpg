@@ -74,8 +74,9 @@ export const StatisticsTab: React.FC = () => {
 			strength.value,
 			activeCharacter.skills.xp.total,
 			health.maxHpModifier || 0,
+			health.talentHpBonus || 0,
 		)
-	}, [strength.value, activeCharacter.skills.xp.total, health.maxHpModifier])
+	}, [strength.value, activeCharacter.skills.xp.total, health.maxHpModifier, health.talentHpBonus])
 
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
 	const effectiveMaxHP = maxHP - fatigueHpPenalty

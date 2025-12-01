@@ -44,13 +44,13 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 			hasArmorEquipped,
 		)
 
-		// Update AV values if they changed
+		// Update AV values if they changed (folkBonus is stored separately, other remains user-editable)
 		const currentAV = activeCharacter.statistics.av
 		if (
 			currentAV.armor !== armorAV ||
 			currentAV.helmet !== helmetAV ||
 			currentAV.shield !== shieldAV ||
-			currentAV.other !== folkAvBonus
+			currentAV.folkBonus !== folkAvBonus
 		) {
 			dispatch(
 				characterSheetActions.updateCharacter({
@@ -59,7 +59,7 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 							armor: armorAV ?? currentAV.armor,
 							helmet: helmetAV ?? currentAV.helmet,
 							shield: shieldAV ?? currentAV.shield,
-							other: folkAvBonus,
+							folkBonus: folkAvBonus,
 						},
 					},
 				}),
