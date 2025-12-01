@@ -64,6 +64,7 @@ export type BaseItem = {
 	slot?: string
 	description?: string
 	baseAV?: number
+	weaponCategory?: string // Weapon category (Axe, Blade, Bow, etc.)
 }
 
 // Quality tier labels for magic items (Q3-Q8)
@@ -354,6 +355,7 @@ const transformWeaponData = (
 				load: parseInt(weapon.load),
 				quality: parseInt(weapon.quality),
 				baseAV: category === 'shield' ? baseAV : undefined,
+				weaponCategory: weapon.type, // Include weapon category from JSON
 			}
 		})
 }
@@ -385,6 +387,7 @@ const transformArmorData = (
 				quality: parseInt(item.quality),
 				slot: category === 'helmet' ? 'head' : 'body',
 				baseAV,
+				weaponCategory: category === 'shield' ? 'Shield' : undefined,
 			}
 		})
 }

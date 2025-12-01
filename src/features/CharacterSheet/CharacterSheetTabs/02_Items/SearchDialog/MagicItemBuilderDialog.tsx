@@ -38,10 +38,11 @@ import {
 import {
 	ArrowBack,
 	ArrowForward,
-	Add,
 	Cancel,
 	Refresh,
+	Add,
 } from '@mui/icons-material'
+import { MagicItemBuilderOutput } from './MagicItemBuilderOutput'
 
 import type {
 	CharacterDocument,
@@ -76,11 +77,34 @@ import {
 	modifyPropertiesString,
 } from '../utils/magicItemsConfig'
 
+// Color mapping for weapon categories - each category gets a unique color
+const weaponCategoryColorMap: Record<
+	string,
+	'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
+> = {
+	Axe: 'error',
+	Blade: 'primary',
+	Bow: 'success',
+	Brawling: 'warning',
+	Crossbow: 'info',
+	Mace: 'secondary',
+	Polearm: 'error',
+	Shield: 'info',
+	Thrown: 'success',
+}
+
+const getWeaponCategoryColor = (
+	category: string,
+): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
+	return weaponCategoryColorMap[category] || 'default' as any
+}
+
 export type MagicItemBuilderDialogProps = {
 	open: boolean
 	onClose: () => void
-	onCreateItem: (item: Partial<Item> | Partial<Weapon>) => void
-	character: CharacterDocument
+	onCreateItem?: (item: Partial<Item> | Partial<Weapon>) => void
+	character?: CharacterDocument
+	onItemCreated?: (item: Partial<Item> | Partial<Weapon>, itemName: string) => void
 }
 
 const steps = [
@@ -96,6 +120,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 	onClose,
 	onCreateItem,
 	character,
+	onItemCreated,
 }) => {
 	const [activeStep, setActiveStep] = useState(0)
 	const [selectedCategory, setSelectedCategory] = useState<ItemCategory | ''>(
@@ -113,6 +138,9 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		'carried',
 	)
 	const [showConfirmClose, setShowConfirmClose] = useState(false)
+	const [createdItem, setCreatedItem] = useState<(Partial<Weapon> | Partial<Item>) & { slot?: string } | null>(null)
+	const [createdItemName, setCreatedItemName] = useState('')
+	const [copiedToClipboard, setCopiedToClipboard] = useState(false)
 
 	const availableQualities: QualityTier[] = [3, 4, 5, 6, 7, 8]
 
@@ -346,6 +374,8 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 			durability: getDurabilityDie(selectedBaseItem, selectedQuality) as any,
 		}
 
+		let itemToCreate: Partial<Weapon> | Partial<Item> | null = null
+
 		if (isWeapon) {
 			const baseDamage = Number(selectedBaseItem.damage) || 0
 			const damageBonus = getWeaponDamageBonus(
@@ -353,7 +383,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 				selectedQuality,
 			)
 
-			const weapon: Partial<Weapon> = {
+			itemToCreate = {
 				...baseProps,
 				damage: {
 					base: '',
@@ -370,13 +400,12 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 					isWeapon,
 				),
 				quality: selectedQuality,
-			}
-			onCreateItem(weapon)
+			} as Partial<Weapon>
 		} else if (selectedCategory === 'spell-catalyst') {
 			const baseDamage = Number(selectedBaseItem.damage) || 0
 			const spellDamageBonus = getSpellDamageBonus(selectedQuality)
 
-			const weapon: Partial<Weapon> = {
+			itemToCreate = {
 				...baseProps,
 				damage: {
 					base: '',
@@ -393,15 +422,14 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 					false,
 				),
 				quality: selectedQuality,
-			}
-			onCreateItem(weapon)
+			} as Partial<Weapon>
 		} else {
 			const enhancedProps = enhanceProperties(
 				selectedBaseItem.properties,
 				selectedQuality,
 				isWeapon,
 			)
-			const item: Partial<Item> & { slot?: EquipmentSlotType } = {
+			itemToCreate = {
 				...baseProps,
 				properties: enhancedProps ? enhancedProps.split(', ') : [],
 				container:
@@ -414,12 +442,22 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 						: '',
 				amount: 1,
 				quality: selectedQuality,
-			}
-			onCreateItem(item as Partial<Item>)
+			} as Partial<Item>
 		}
 
-		handleReset()
-		onClose()
+		// Store the created item and show output
+		setCreatedItem(itemToCreate)
+		setCreatedItemName(finalItemName)
+
+		// If there's a character, also add to inventory
+		if (character && onCreateItem && itemToCreate) {
+			onCreateItem(itemToCreate)
+		}
+
+		// Call the onItemCreated callback for standalone mode
+		if (onItemCreated && itemToCreate) {
+			onItemCreated(itemToCreate, finalItemName)
+		}
 	}
 
 	const enhanceProperties = (
@@ -530,6 +568,12 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 										<TableRow>
 											<TableCell padding="checkbox"></TableCell>
 											<TableCell>Name</TableCell>
+											<TableCell align="center">Quality</TableCell>
+											{(selectedCategory === 'one-handed-weapon' ||
+												selectedCategory === 'two-handed-weapon' ||
+												selectedCategory === 'shield') && (
+												<TableCell align="center">Weapon Category</TableCell>
+											)}
 											<TableCell align="center">Cost</TableCell>
 											<TableCell align="center">Load</TableCell>
 											{(selectedCategory === 'one-handed-weapon' ||
@@ -581,6 +625,25 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 														{item.name}
 													</Typography>
 												</TableCell>
+												<TableCell align="center">
+													<Chip
+														label={`Q${item.quality}`}
+														size="small"
+														color="default"
+														variant="outlined"
+													/>
+												</TableCell>
+												{(selectedCategory === 'one-handed-weapon' ||
+													selectedCategory === 'two-handed-weapon' ||
+													selectedCategory === 'shield') && (
+													<TableCell align="center">
+														<Chip
+															label={item.weaponCategory || '—'}
+															size="small"
+															color={item.weaponCategory ? getWeaponCategoryColor(item.weaponCategory) : 'default'}
+														/>
+													</TableCell>
+												)}
 												<TableCell align="center">
 													<Typography variant="body2">
 														{formatCost(item.cost)}
@@ -715,6 +778,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 															}
 															size="small"
 															color="primary"
+															variant="outlined"
 														/>
 													</TableCell>
 												)}
@@ -724,6 +788,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 															label={`+${getSpellDamageBonus(quality)}`}
 															size="small"
 															color="primary"
+															variant="outlined"
 														/>
 													</TableCell>
 												)}
@@ -733,6 +798,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 															label={`+${getAmmoDamageBonus(selectedBaseItem.quality, quality)}`}
 															size="small"
 															color="primary"
+															variant="outlined"
 														/>
 													</TableCell>
 												)}
@@ -745,6 +811,7 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 															label={`+${getArmorAVBonus(quality)} AV`}
 															size="small"
 															color="primary"
+															variant="outlined"
 														/>
 													</TableCell>
 												)}
@@ -1207,28 +1274,30 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 									sx={{ mb: 2 }}
 								/>
 
-								<Grid container spacing={2} alignItems="center">
-									<Grid item xs={12} sm={6}>
-										<FormControl fullWidth>
-											<InputLabel id="location-label">
-												Add to Location
-											</InputLabel>
-											<Select
-												labelId="location-label"
-												value={targetLocation}
-												label="Add to Location"
-												onChange={(e) =>
-													setTargetLocation(
-														e.target.value as 'worn' | 'carried',
-													)
-												}
-											>
-												<MenuItem value="worn">Equipment (Worn)</MenuItem>
-												<MenuItem value="carried">Inventory (Carried)</MenuItem>
-											</Select>
-										</FormControl>
+								{character && (
+									<Grid container spacing={2} alignItems="center">
+										<Grid item xs={12} sm={6}>
+											<FormControl fullWidth>
+												<InputLabel id="location-label">
+													Add to Location
+												</InputLabel>
+												<Select
+													labelId="location-label"
+													value={targetLocation}
+													label="Add to Location"
+													onChange={(e) =>
+														setTargetLocation(
+															e.target.value as 'worn' | 'carried',
+														)
+													}
+												>
+													<MenuItem value="worn">Equipment (Worn)</MenuItem>
+													<MenuItem value="carried">Inventory (Carried)</MenuItem>
+												</Select>
+											</FormControl>
+										</Grid>
 									</Grid>
-								</Grid>
+								)}
 							</CardContent>
 						</Card>
 					</Box>
@@ -1239,45 +1308,110 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		}
 	}
 
+	const handleCopyToClipboard = () => {
+		if (!createdItem || !createdItemName) return
+
+		const item = createdItem as any
+		const isWeapon = 'damage' in item && item.damage
+
+		let category = 'Wearable'
+		if (isWeapon) {
+			category = 'Weapon'
+		}
+
+		const markdownObj: any = {
+			name: createdItemName,
+			category: category,
+			quality: item.quality || 3,
+			type: isWeapon
+				? item.properties?.split?.(', ')?.[0] || 'weapon'
+				: item.slot || 'wearable',
+			cost: item.cost || 0,
+			load: item.load || 0,
+			description: item.description || '',
+		}
+
+		if (item.properties) {
+			markdownObj.properties = Array.isArray(item.properties)
+				? item.properties.join(', ')
+				: item.properties
+		}
+
+		if (item.uses !== undefined) {
+			markdownObj.uses = item.uses
+		}
+
+		const jsonString = JSON.stringify(markdownObj, null, 2)
+		navigator.clipboard.writeText(jsonString).then(() => {
+			setCopiedToClipboard(true)
+			setTimeout(() => setCopiedToClipboard(false), 2000)
+		})
+	}
+
+	const handleResetForNewItem = () => {
+		setCreatedItem(null)
+		setCreatedItemName('')
+		setActiveStep(0)
+		setSelectedCategory('')
+		setSelectedBaseItem(null)
+		setSelectedQuality('')
+		setSelectedMaterial(null)
+		setSelectedEnchantment(null)
+		setTargetLocation('carried')
+	}
+
 	return (
 		<>
 			<Dialog open={open} onClose={handleClose} maxWidth="lg" fullWidth>
 				<DialogTitle>Magic Item Builder</DialogTitle>
 				<DialogContent>
-					<Stepper activeStep={activeStep} sx={{ mb: 3 }}>
-						{steps.map((label, index) => {
-							const canNavigateToStep = (targetStep: number): boolean => {
-								if (targetStep === 0) return true
-								for (let i = 0; i < targetStep; i++) {
-									if (!canProceedFromStep(i)) return false
-								}
-								return true
-							}
+					{!createdItem ? (
+						<>
+							<Stepper activeStep={activeStep} sx={{ mb: 3 }}>
+								{steps.map((label, index) => {
+									const canNavigateToStep = (targetStep: number): boolean => {
+										if (targetStep === 0) return true
+										for (let i = 0; i < targetStep; i++) {
+											if (!canProceedFromStep(i)) return false
+										}
+										return true
+									}
 
-							const isNavigable = canNavigateToStep(index)
+									const isNavigable = canNavigateToStep(index)
 
-							return (
-								<Step key={label}>
-									<StepLabel
-										sx={{
-											cursor: isNavigable ? 'pointer' : 'default',
-											'&:hover': {
-												opacity: isNavigable ? 0.8 : 1,
-											},
-											'& .MuiStepLabel-label': {
-												fontWeight: isNavigable ? 'bold' : 'normal',
-											},
-										}}
-										onClick={() => isNavigable && handleStepClick(index)}
-									>
-										{label}
-									</StepLabel>
-								</Step>
-							)
-						})}
-					</Stepper>
+									return (
+										<Step key={label}>
+											<StepLabel
+												sx={{
+													cursor: isNavigable ? 'pointer' : 'default',
+													'&:hover': {
+														opacity: isNavigable ? 0.8 : 1,
+													},
+													'& .MuiStepLabel-label': {
+														fontWeight: isNavigable ? 'bold' : 'normal',
+													},
+												}}
+												onClick={() => isNavigable && handleStepClick(index)}
+											>
+												{label}
+											</StepLabel>
+										</Step>
+									)
+								})}
+							</Stepper>
 
-					{renderStepContent(activeStep)}
+							{renderStepContent(activeStep)}
+						</>
+					) : (
+					<MagicItemBuilderOutput
+						createdItem={createdItem}
+						createdItemName={createdItemName}
+						copiedToClipboard={copiedToClipboard}
+						onCopyToClipboard={handleCopyToClipboard}
+						onBuildAnother={handleResetForNewItem}
+						onClose={handleClose}
+					/>
+					)}
 				</DialogContent>
 				<DialogActions
 					sx={{
@@ -1287,56 +1421,78 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 						p: 2,
 					}}
 				>
-					<Box sx={{ display: 'flex', gap: 1 }}>
-						<Button
-							onClick={handleClose}
-							color="error"
-							variant="outlined"
-							startIcon={<Cancel />}
-						>
-							Cancel
-						</Button>
-						<Button
-							onClick={handleReset}
-							disabled={activeStep === 0}
-							color="warning"
-							variant="outlined"
-							startIcon={<Refresh />}
-						>
-							Reset
-						</Button>
-					</Box>
-					<Box sx={{ display: 'flex', gap: 1 }}>
-						<Button
-							onClick={handleBack}
-							disabled={activeStep === 0}
-							variant="contained"
-							color="inherit"
-							startIcon={<ArrowBack />}
-						>
-							Back
-						</Button>
-						{activeStep < steps.length - 1 ? (
+					{!createdItem ? (
+						<>
+							<Box sx={{ display: 'flex', gap: 1 }}>
+								<Button
+									onClick={handleClose}
+									color="error"
+									variant="outlined"
+									startIcon={<Cancel />}
+								>
+									Cancel
+								</Button>
+								<Button
+									onClick={handleReset}
+									disabled={activeStep === 0}
+									color="warning"
+									variant="outlined"
+									startIcon={<Refresh />}
+								>
+									Reset
+								</Button>
+							</Box>
+							<Box sx={{ display: 'flex', gap: 1 }}>
+								<Button
+									onClick={handleBack}
+									disabled={activeStep === 0}
+									variant="contained"
+									color="inherit"
+									startIcon={<ArrowBack />}
+								>
+									Back
+								</Button>
+								{activeStep < steps.length - 1 ? (
+									<Button
+										variant="contained"
+										onClick={handleNext}
+										disabled={!canProceedFromStep(activeStep)}
+										endIcon={<ArrowForward />}
+									>
+										Next
+									</Button>
+								) : (
+									<Button
+										variant="contained"
+										onClick={handleCreateItem}
+										disabled={!selectedMaterial}
+										startIcon={<Add />}
+										sx={{ minWidth: '120px' }}
+									>
+										Create Item
+									</Button>
+								)}
+							</Box>
+						</>
+					) : (
+						<Box sx={{ display: 'flex', gap: 1, ml: 'auto' }}>
 							<Button
+								onClick={handleResetForNewItem}
 								variant="contained"
-								onClick={handleNext}
-								disabled={!canProceedFromStep(activeStep)}
-								endIcon={<ArrowForward />}
-							>
-								Next
-							</Button>
-						) : (
-							<Button
-								variant="contained"
-								onClick={handleCreateItem}
-								disabled={!selectedMaterial}
+								color="primary"
 								startIcon={<Add />}
-								sx={{ minWidth: '120px' }}
 							>
-								Create Item
+								Build Another Item
 							</Button>
-						)}
-					</Box>
+							<Button
+								onClick={handleClose}
+								variant="outlined"
+								color="inherit"
+							>
+								Close
+							</Button>
+						</Box>
+					)}
 				</DialogActions>
 			</Dialog>
 
