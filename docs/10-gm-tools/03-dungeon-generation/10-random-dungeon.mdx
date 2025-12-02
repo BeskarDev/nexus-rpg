@@ -1,0 +1,265 @@
+---
+sidebar_position: 10
+---
+
+import RollableTable from '@site/src/components/RollableTable'
+import CycleTypeRoller from '@site/src/components/CycleTypeRoller'
+
+# 🏰 Random Dungeon Generation
+
+This guide explains how to generate random dungeons using the **Cyclic Dungeon Generation** method, adapted for the Nexus RPG system.
+
+:::info Credits
+This method is based on *Cyclic Dungeon Generation v1.0* by **Sersa Victory**, which adapts the level creation algorithm from Joris Dormans's 2017 roguelite *Unexplored*. 
+
+- [Sersa Victory on Itch.io](https://sersavictory.itch.io/victory-basic)
+- [Dungeon Generation in Unexplored (BorisTheBrave.com)](https://www.boristhebrave.com/2021/04/10/dungeon-generation-in-unexplored)
+:::
+
+## What Is Cyclic Dungeon Generation?
+
+Cyclic dungeon generation creates dungeons composed of **cycles**—circular loops of linked rooms designed to create a specific gameplay flow. By nesting multiple cycles (such as "lock-and-key" or "hidden shortcut"), dungeons feel intentionally designed rather than randomly scattered.
+
+> "Instead of just wandering at random, you quickly find that the path forward is blocked, forcing you to solve puzzles, find items and keys, and defeat enemies to continue. There's a huge variety of structure, all randomly generated, but nearly every level is a tightly packed, interesting space."  
+> — *BorisTheBrave.com*
+
+### Materials Needed
+
+- Pencil and eraser
+- Blank and graph paper
+- Polyhedral dice
+- Tables for features, monsters, traps, and treasure (see below and other GM Tools)
+
+---
+
+## Dungeon Configuration
+
+Use this interactive tool to configure your dungeon and roll for cycle types:
+
+<CycleTypeRoller />
+
+---
+
+## What Is a Cycle?
+
+A **cycle** is a roughly circular loop of linked dungeon chambers that creates a certain gameplay flow (e.g., "lock-and-key"). By nesting cycles, you build a flowchart for an engaging non-linear dungeon.
+
+Each cycle includes:
+
+- **Start:** Beginning chamber (dungeon entrance or first room of a cluster)
+- **Goal:** End chamber (reward, obstacle, exit, boss, or treasure)
+- **Arcs:** Two paths from start to goal, representing routes through the dungeon
+- **Insertion Points (♦):** Where sub-cycles can be inserted
+
+---
+
+## The Twelve Cycle Types
+
+Each cycle type creates a distinct gameplay experience. Roll d12 or choose the one that fits your dungeon's theme.
+
+<RollableTable>
+| d12 | Cycle Type | Description |
+|-----|------------|-------------|
+| 1 | Two Alternative Paths | Two long paths lead to the same goal, each with different themes (e.g., monsters vs. traps). Both are equally challenging. |
+| 2 | Two Keys | Two long paths lead to a locked goal room; each path contains a key that must be combined to open the lock. |
+| 3 | Hidden Shortcut | A hidden passage shortcuts the main route. Players who explore carefully can bypass challenges. |
+| 4 | Dangerous Route | A short, risky route exists alongside a longer, safer path. Risk-takers may take heavy damage or gain rewards. |
+| 5 | Foreshadowing Loop | From the start, players can see or sense the goal but can't reach it directly. A long loop eventually leads there. |
+| 6 | Lock-and-Key Cycle | A locked barrier blocks the goal. The key is found via a looping path that returns near the start. |
+| 7 | Blocked Retreat | After crossing a threshold (pit, one-way door, collapse), players cannot return. They must complete the loop to escape. |
+| 8 | Monster Patrol | A powerful monster patrols a circular route. Players must time their movement or find a way to defeat it. |
+| 9 | Altered Return | The return path becomes more dangerous—new traps spring, monsters awaken, or the environment changes. |
+| 10 | False Goal | A decoy goal is presented first. The true goal is hidden and requires additional exploration or clues. |
+| 11 | Simple Lock-and-Key | A short path leads to a key, and a short path leads to the locked goal. The simplest cycle type. |
+| 12 | Gambit | Near the goal, an optional side path leads to extra treasure behind a dangerous obstacle. High risk, high reward. |
+</RollableTable>
+
+---
+
+## Locks and Keys
+
+Many cycles require locks and keys. Roll on this table to determine the type:
+
+<RollableTable>
+| d6 | Lock and Key Type | Hard/Soft | Description |
+|----|-------------------|-----------|-------------|
+| 1 | Door lock and key | Hard | A physical door with a matching key hidden elsewhere. |
+| 2 | Mechanism/NPC and key item | Hard | A lever, puzzle, or NPC that requires a specific item to activate. |
+| 3 | Magical or environmental barrier | Hard | A force field, elemental wall, or enchanted obstruction requiring a magical counter. |
+| 4 | Powerful monster and method to defeat/evade | Soft | A creature blocking the way that can be fought, bypassed, or distracted. |
+| 5 | Deadly trap and method to disable/evade | Soft | A hazardous trap that can be disarmed, avoided, or survived. |
+| 6 | Hazard and method to neutralize/evade | Soft | An environmental danger (poison gas, flooding) that can be countered or escaped. |
+</RollableTable>
+
+**Hard locks** require a specific key or solution—there's no alternative.  
+**Soft locks** can be overcome through multiple approaches (combat, stealth, negotiation, etc.).
+
+---
+
+## Dungeon Scope Guidelines
+
+### Tiny (Single Challenge)
+- **1 cycle**
+- A quick encounter or puzzle room
+- Great for side content or a single scene
+- 2-4 rooms
+
+### Small (2-4 hours / One-Shot)
+- **2-3 cycles**
+- A compact dungeon for a single session
+- Straightforward progression with a few interesting choices
+- 6-12 rooms
+
+### Medium (Few Sessions)
+- **4-6 cycles**
+- A multi-session dungeon with branching paths
+- Multiple objectives and exploration opportunities
+- 15-25 rooms
+
+### Large (5-10 Sessions)
+- **7-10 cycles**
+- A significant dungeon complex with multiple wings
+- Includes factions, sub-goals, and varied environments
+- 30-50 rooms
+
+### Huge (Mega-Dungeon / Campaign)
+- **10+ cycles, multiple levels**
+- An entire campaign location
+- Multiple themes, factions, and long-term mysteries
+- 50+ rooms across multiple levels
+
+---
+
+## Dungeon Rank Guidelines
+
+Match the dungeon's difficulty to your party's level:
+
+| Dungeon Rank | Creature Tiers | Trap TN | Treasure Quality | Notes |
+|--------------|----------------|---------|------------------|-------|
+| 1-2 | Tier 0-2 | TN 6-8 | Q1-Q2 | Straightforward challenges, forgiving traps |
+| 3-4 | Tier 2-4 | TN 8-10 | Q2-Q4 | Tactical complexity, moderate danger |
+| 5-6 | Tier 4-6 | TN 10-12 | Q4-Q6 | Elite enemies, multi-phase encounters |
+| 7-8 | Tier 6-8 | TN 12-14 | Q5-Q7 | Powerful magic, legendary foes |
+| 9-10 | Tier 8-10 | TN 14-16 | Q6-Q8 | Pinnacle of mortal challenge |
+
+---
+
+## Dungeon Dressing
+
+Roll or choose a theme and details for your dungeon:
+
+### Dungeon Identity
+
+<RollableTable>
+| d12 | Dungeon Type | Origin | Condition |
+|-----|--------------|--------|-----------|
+| 1 | Tomb | Ancient civilization | Sealed and pristine |
+| 2 | Temple | Forgotten cult | Partially collapsed |
+| 3 | Crypt | Noble family | Actively maintained |
+| 4 | Mine | Dwarven expedition | Flooded sections |
+| 5 | Stronghold | Warlord's fortress | Overgrown with life |
+| 6 | Lair | Monster's den | Scorched by fire |
+| 7 | Laboratory | Mad wizard | Warped by magic |
+| 8 | Prison | Tyrant's oubliette | Haunted by spirits |
+| 9 | Vault | Merchant guild | Trapped and locked |
+| 10 | Cavern | Natural formation | Inhabited by beasts |
+| 11 | Sewer | City infrastructure | Polluted and toxic |
+| 12 | Shrine | Nature spirits | Frozen in time |
+</RollableTable>
+
+### Environmental Features
+
+<RollableTable>
+| d12 | Feature | Sensory Detail | Hazard Potential |
+|-----|---------|----------------|------------------|
+| 1 | Fungal growth | Phosphorescent glow | Spore clouds |
+| 2 | Water features | Echoing drips | Flooding |
+| 3 | Ancient machinery | Grinding gears | Crushing |
+| 4 | Crystal formations | Prismatic light | Magical instability |
+| 5 | Root systems | Earthy smell | Entanglement |
+| 6 | Bone decorations | Clicking sounds | Undead activation |
+| 7 | Magical residue | Tingling sensation | Wild magic |
+| 8 | Volcanic vents | Sulfurous odor | Heat and gas |
+| 9 | Spider webs | Soft rustling | Web traps |
+| 10 | Frozen surfaces | Bitter cold | Slippery terrain |
+| 11 | Runic inscriptions | Humming energy | Triggered wards |
+| 12 | Bloodstains | Metallic tang | Evidence of danger |
+</RollableTable>
+
+---
+
+## Factions
+
+Roll to determine if factions inhabit your dungeon:
+
+<RollableTable>
+| d8 | Faction Type | Motivation | Disposition |
+|----|--------------|------------|-------------|
+| 1 | Undead horde | Guard treasures | Hostile |
+| 2 | Cultist cell | Complete ritual | Secretive |
+| 3 | Monster tribe | Territorial defense | Wary |
+| 4 | Bandit gang | Loot and plunder | Opportunistic |
+| 5 | Scholarly expedition | Research artifacts | Neutral |
+| 6 | Imprisoned beings | Seek freedom | Desperate |
+| 7 | Nature guardians | Protect sacred site | Defensive |
+| 8 | Rival adventurers | Claim treasure | Competitive |
+</RollableTable>
+
+---
+
+## Related Tables
+
+For additional dungeon content, see the other GM Tools:
+
+- **[Random Treasure](../random-tables/random-treasure)** — Generate loot and rewards
+- **[Random Creature](../random-tables/random-creature)** — Populate your dungeon with monsters
+- **[Random Challenge](../random-tables/random-challenge)** — Add puzzles, traps, and combat scenes
+
+---
+
+## Step-by-Step Generation Process
+
+1. **Choose Dungeon Rank** — Match to your party's level
+2. **Choose Dungeon Scope** — How long should exploration take?
+3. **Roll Starting Cycle** — Use the cycle type roller above
+4. **Add Sub-Cycles** — Nest additional cycles at insertion points
+5. **Determine Locks and Keys** — What blocks progress? What opens the way?
+6. **Populate Rooms** — Use the dressing tables and creature tables
+7. **Place Treasure** — Distribute rewards using the treasure tables
+8. **Draw the Map** — Translate your flowchart into a physical layout
+
+### Tips for Nesting Cycles
+
+- Start with your **main cycle** (the overall dungeon structure)
+- Add **sub-cycles** at insertion points to create complexity
+- Each wing or level can be its own cycle
+- More cycles = more exploration time
+- Balance cycle complexity with session length
+
+---
+
+## Example: Quick One-Shot Dungeon
+
+**Rank 3 | Small Scope | 2 cycles**
+
+1. **Main Cycle: Lock-and-Key (rolled 6)**
+   - Entrance leads to locked door
+   - Loop through side passages to find key
+   - Return to unlock and reach goal
+
+2. **Sub-Cycle: Gambit (rolled 12)**
+   - Near the goal, optional dangerous path
+   - Extra treasure behind monster guardian
+
+3. **Lock Type: Magical barrier (rolled 3)**
+   - Enchanted door requires dispelling or key crystal
+
+4. **Dressing: Temple + Runic inscriptions**
+   - Ancient cult temple with glowing wards
+   - Wards trigger if disturbed incorrectly
+
+5. **Faction: Cultist cell (rolled 2)**
+   - Small group performing ritual in inner chamber
+   - May negotiate or fight depending on approach
+
+This creates a roughly 8-room dungeon playable in one session!
