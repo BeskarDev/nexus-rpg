@@ -37,6 +37,7 @@ import {
 } from '../../../../constants/languages'
 import { calculateSkillRank } from '../../utils'
 import { calculateTalentHpBonus } from '../../utils/calculateTalentHpBonus'
+import { calculateFolkAvBonus } from '../../utils/calculateFolkAvBonus'
 import {
 	createSkillXpSchema,
 	calculateMaxXpPerSkill,
@@ -258,28 +259,46 @@ export const SkillsTab: React.FC = () => {
 		[skills],
 	)
 
-	// Auto-calculate HP bonus from talents (stored separately from user's maxHpModifier)
+	// Auto-calculate HP and AV bonuses from talents/folk abilities (stored separately from user's maxHpModifier and av.other)
 	useEffect(() => {
 		const mysticismSkill = skills.find((s) => s.name === 'Mysticism')
 		const mysticismRank = mysticismSkill?.rank || 0
 
+		// Calculate HP bonus from talents
 		const calculatedHpBonus = calculateTalentHpBonus(
 			activeCharacter.skills.abilities,
 			mysticismRank,
 		)
 
-		const currentTalentBonus = activeCharacter.statistics.health.talentHpBonus || 0
+		const currentAutoHpBonus = activeCharacter.statistics.health.auto || 0
 
-		if (calculatedHpBonus !== currentTalentBonus) {
+		// Calculate AV bonus from folk abilities
+		// Check if armor is equipped based on current AV values
+		const hasArmorEquipped = activeCharacter.statistics.av.armor > 0
+		const calculatedAvBonus = calculateFolkAvBonus(
+			activeCharacter.skills.abilities,
+			hasArmorEquipped,
+		)
+
+		const currentAutoAvBonus = activeCharacter.statistics.av.auto || 0
+
+		// Update if either value changed
+		if (
+			calculatedHpBonus !== currentAutoHpBonus ||
+			calculatedAvBonus !== currentAutoAvBonus
+		) {
 			updateCharacter({
 				statistics: {
 					health: {
-						talentHpBonus: calculatedHpBonus,
+						auto: calculatedHpBonus,
+					},
+					av: {
+						auto: calculatedAvBonus,
 					},
 				},
 			})
 		}
-	}, [activeCharacter.skills.abilities, skills])
+	}, [activeCharacter.skills.abilities, activeCharacter.statistics.av.armor, skills])
 
 	// Get available skills (not yet selected)
 	const availableSkills = useMemo(() => {

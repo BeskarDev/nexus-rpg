@@ -28,17 +28,17 @@ export const calculateBaseHpFromStrength = (
  * @param strength - The character's strength attribute die
  * @param totalXp - Total XP for calculating level bonus
  * @param maxHpModifier - User-defined modifier (custom override)
- * @param talentHpBonus - Auto-calculated bonus from talents (optional, defaults to 0)
+ * @param auto - Auto-calculated bonus from talents and other sources (optional, defaults to 0)
  */
 export const calculateMaxHp = (
 	strength: AttributeType,
 	totalXp: number,
 	maxHpModifier: number = 0,
-	talentHpBonus: number = 0,
+	auto: number = 0,
 ): number => {
 	const level = calculateCharacterLevel(totalXp)
 	const baseHp = calculateBaseHpFromStrength(strength)
 	const levelBonus = (level - 1) * 2 // Level 1 = no bonus, Level 2 = +2, etc.
 
-	return baseHp + levelBonus + maxHpModifier + talentHpBonus
+	return baseHp + levelBonus + maxHpModifier + auto
 }

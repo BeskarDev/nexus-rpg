@@ -32,7 +32,8 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 		[weapons, items],
 	)
 
-	// Auto-update AV values when armor, helmet, or shield items change, or when folk abilities change
+	// Auto-update AV values when armor, helmet, or shield items change
+	// Folk AV bonus is calculated in SkillsTab when abilities change
 	useEffect(() => {
 		const { armorAV, helmetAV, shieldAV } = extractArmorValues(itemsByLocation)
 
@@ -44,13 +45,13 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 			hasArmorEquipped,
 		)
 
-		// Update AV values if they changed (folkBonus is stored separately, other remains user-editable)
+		// Update AV values if they changed (auto is stored separately, other remains user-editable)
 		const currentAV = activeCharacter.statistics.av
 		if (
 			currentAV.armor !== armorAV ||
 			currentAV.helmet !== helmetAV ||
 			currentAV.shield !== shieldAV ||
-			currentAV.folkBonus !== folkAvBonus
+			currentAV.auto !== folkAvBonus
 		) {
 			dispatch(
 				characterSheetActions.updateCharacter({
@@ -59,7 +60,7 @@ export const useItemManagement = (activeCharacter: CharacterDocument) => {
 							armor: armorAV ?? currentAV.armor,
 							helmet: helmetAV ?? currentAV.helmet,
 							shield: shieldAV ?? currentAV.shield,
-							folkBonus: folkAvBonus,
+							auto: folkAvBonus,
 						},
 					},
 				}),

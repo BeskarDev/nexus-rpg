@@ -59,7 +59,7 @@ describe('Stat Bonuses Separation', () => {
 				{
 					id: '1',
 					title: 'Bulky',
-					description: 'You are particularly sturdy.',
+					description: '(Rank 1) Gain +2 HP. Add +2 to your carrying capacity.',
 					tag: 'Talent' as const,
 					rank: 1,
 				},
@@ -71,7 +71,8 @@ describe('Stat Bonuses Separation', () => {
 				{
 					id: '1',
 					title: 'Bulky',
-					description: 'You are particularly sturdy.',
+					description:
+						'(Rank 1) Gain +2 HP. Add +2 to your carrying capacity.\n\n(Rank 2) Gain +2 HP. Add +3 to your carrying capacity instead.',
 					tag: 'Talent' as const,
 					rank: 2,
 				},
@@ -89,6 +90,68 @@ describe('Stat Bonuses Separation', () => {
 				},
 			]
 			expect(calculateTalentHpBonus(abilitiesWithoutHpTalent, 0)).toBe(0)
+		})
+
+		it('should parse HP bonus from rank descriptions flexibly', () => {
+			// Test with the example from the user (Bulky rank 3)
+			const bulkyRank3 = [
+				{
+					id: '1',
+					title: 'Bulky',
+					description:
+						'(Rank 1) Gain +2 HP. Add +2 to your carrying capacity.\n\n' +
+						'(Rank 2) Gain +2 HP. You gain the following abilities:\n' +
+						'- Add +3 to your carrying capacity instead.\n' +
+						'- When you are moving through difficult terrain or otherwise are required to spend extra Movement, you can use your Quick Action to move without spending extra Movement for the rest of your turn.\n\n' +
+						'(Rank 3) Gain +2 HP. You gain the following abilities:\n' +
+						'- Add +4 to your carrying capacity instead.\n' +
+						'- While grappling, being grappled, or restrained, you count as a creature one Size larger than normal.',
+					tag: 'Talent' as const,
+					rank: 3,
+				},
+			]
+			expect(calculateTalentHpBonus(bulkyRank3, 0)).toBe(6) // +2 HP per rank = 6 total
+
+			// Test with rank 2 of the same talent
+			const bulkyRank2 = [
+				{
+					id: '1',
+					title: 'Bulky',
+					description:
+						'(Rank 1) Gain +2 HP. Add +2 to your carrying capacity.\n\n' +
+						'(Rank 2) Gain +2 HP. You gain the following abilities:\n' +
+						'- Add +3 to your carrying capacity instead.',
+					tag: 'Talent' as const,
+					rank: 2,
+				},
+			]
+			expect(calculateTalentHpBonus(bulkyRank2, 0)).toBe(4) // +2 HP for rank 1 and 2 = 4 total
+
+			// Test with different HP bonus amounts (if ever needed)
+			const variableHpBonus = [
+				{
+					id: '1',
+					title: 'Test Talent',
+					description:
+						'(Rank 1) Gain +3 HP. Some ability.\n\n(Rank 2) Gain +4 HP. Better ability.',
+					tag: 'Talent' as const,
+					rank: 2,
+				},
+			]
+			expect(calculateTalentHpBonus(variableHpBonus, 0)).toBe(7) // +3 + +4 = 7
+
+			// Test with talent that has HP bonus in only some ranks
+			const partialHpBonus = [
+				{
+					id: '1',
+					title: 'Partial HP',
+					description:
+						'(Rank 1) Gain +2 HP. Some ability.\n\n(Rank 2) You gain better abilities but no HP.',
+					tag: 'Talent' as const,
+					rank: 2,
+				},
+			]
+			expect(calculateTalentHpBonus(partialHpBonus, 0)).toBe(2) // Only rank 1 has HP bonus
 		})
 	})
 
