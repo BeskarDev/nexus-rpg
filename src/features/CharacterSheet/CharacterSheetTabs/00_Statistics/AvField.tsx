@@ -18,8 +18,8 @@ export const AvField = () => {
 	)
 
 	const totalAV: number = useMemo(
-		() => av.armor + av.helmet + av.shield + av.other,
-		[av.armor + av.helmet + av.shield + av.other],
+		() => av.armor + av.helmet + av.shield + (av.auto || 0) + av.other,
+		[av.armor, av.helmet, av.shield, av.auto, av.other],
 	)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
@@ -66,56 +66,66 @@ export const AvField = () => {
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}
-				MenuListProps={{ sx: { p: 2, maxWidth: '17rem' } }}
+				MenuListProps={{ sx: { p: 2, maxWidth: '17.5rem' } }}
 			>
 				<SectionHeader>AV Calculator</SectionHeader>
 				<Typography variant="subtitle2">
 					Set the individual sources of AV.
 				</Typography>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.armor}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { armor: Number(event.target.value) } },
-						})
-					}
-					label="Armor"
-				/>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.helmet}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { helmet: Number(event.target.value) } },
-						})
-					}
-					label="Helmet"
-				/>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.shield}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { shield: Number(event.target.value) } },
-						})
-					}
-					label="Shield"
-				/>
-				<AttributeField
-					type="number"
-					size="small"
-					value={av.other}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { av: { other: Number(event.target.value) } },
-						})
-					}
-					label="Other"
-				/>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+          <AttributeField
+            type="number"
+            size="small"
+            value={av.armor}
+            onChange={(event) =>
+              updateCharacter({
+                statistics: { av: { armor: Number(event.target.value) } },
+              })
+            }
+            label="Armor"
+          />
+          <AttributeField
+            type="number"
+            size="small"
+            value={av.helmet}
+            onChange={(event) =>
+              updateCharacter({
+                statistics: { av: { helmet: Number(event.target.value) } },
+              })
+            }
+            label="Helmet"
+          />
+          <AttributeField
+            type="number"
+            size="small"
+            value={av.shield}
+            onChange={(event) =>
+              updateCharacter({
+                statistics: { av: { shield: Number(event.target.value) } },
+              })
+            }
+            label="Shield"
+          />
+          <AttributeField
+            type="number"
+            size="small"
+            value={av.other}
+            onChange={(event) =>
+              updateCharacter({
+                statistics: { av: { other: Number(event.target.value) } },
+              })
+            }
+            label="Other"
+          />
+          <AttributeField
+            disabled
+            type="number"
+            size="small"
+            value={av.auto || 0}
+            label="Auto"
+            sx={{ width: '4rem' }}
+          />
+        </Box>
 			</Menu>
 		</>
 	)

@@ -86,6 +86,7 @@ export type Statistics = {
 		current: number
 		temp: number
 		maxHpModifier: number
+		auto?: number // Auto-calculated from talents and other sources
 	}
 	fatigue: {
 		current: number
@@ -96,6 +97,7 @@ export type Statistics = {
 		helmet: number
 		shield: number
 		other: number
+		auto?: number // Auto-calculated from folk abilities and other sources
 	}
 	strength: Attribute
 	agility: Attribute

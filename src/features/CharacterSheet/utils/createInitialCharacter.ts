@@ -594,10 +594,13 @@ export const createInitialCharacter = (
 	// Calculate initial HP (12 base + strength value)
 	const initialHp = 12 + strengthValue
 
-	// Calculate HP modifier from talents
+	// Calculate HP bonus from talents (stored separately from user's maxHpModifier)
 	const mysticismSkill = skills.find((s) => s.name === 'Mysticism')
 	const mysticismRank = mysticismSkill ? mysticismSkill.rank : 0
-	const initialHpModifier = calculateTalentHpBonus(abilities, mysticismRank)
+	const autoHpBonus = calculateTalentHpBonus(abilities, mysticismRank)
+
+	// Calculate AV bonus from folk abilities (stored separately from user's other values)
+	const autoAvBonus = calculateFolkAvBonus(abilities, false) // No armor equipped at character creation
 
 	// Calculate defenses based on attributes and skills
 	const fightingSkill = skills.find((s) => s.name === 'Fighting')
@@ -629,15 +632,17 @@ export const createInitialCharacter = (
 		},
 		statistics: {
 			health: {
-				current: initialHp + initialHpModifier,
+				current: initialHp + autoHpBonus,
 				temp: 0,
-				maxHpModifier: initialHpModifier,
+				maxHpModifier: 0, // User-editable override (starts at 0)
+				auto: autoHpBonus, // Auto-calculated from talents,
 			},
 			av: {
 				armor: 0,
 				helmet: 0,
 				shield: 0,
 				other: 0,
+				auto: autoAvBonus, // Auto-calculated from folk abilities
 			},
 			strength: {
 				value: strengthValue,
@@ -956,7 +961,8 @@ export const createInitialCharacter = (
 		baseCharacter.statistics.av.armor = armorAV
 		baseCharacter.statistics.av.helmet = helmetAV
 		baseCharacter.statistics.av.shield = shieldAV
-		baseCharacter.statistics.av.other = folkAvBonus
+		baseCharacter.statistics.av.auto = folkAvBonus // Auto-calculated from folk abilities
+		// baseCharacter.statistics.av.other remains 0 for user customization
 
 		// Add shield parry bonus to base parry value
 		if (shieldParryBonus > 0) {

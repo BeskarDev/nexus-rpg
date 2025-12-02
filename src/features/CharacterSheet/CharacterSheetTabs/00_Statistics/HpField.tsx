@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { getHpBarColor } from '@site/src/utils/getHpBarColor'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Remove, Add } from '@mui/icons-material'
 import {
@@ -43,11 +44,12 @@ export const HpField = () => {
 	const totalXp = activeCharacter.skills.xp.total
 	const characterLevel = calculateCharacterLevel(totalXp)
 	const baseHp = calculateBaseHpFromStrength(strength.value)
+	const autoHpBonus = useMemo(() => health.auto || 0, [health.auto])
 
-	// Calculate max HP using the new formula
+	// Calculate max HP using the new formula (includes both user modifier and auto bonus)
 	const maxHp = useMemo(() => {
-		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0)
-	}, [strength.value, totalXp, health.maxHpModifier])
+		return calculateMaxHp(strength.value, totalXp, health.maxHpModifier || 0, autoHpBonus)
+	}, [strength.value, totalXp, health.maxHpModifier, autoHpBonus])
 
 	// Calculate effective max HP (minus fatigue penalty)
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
@@ -95,9 +97,10 @@ export const HpField = () => {
 	const totalDisplayHp = effectiveMaxHp + (health.temp || 0)
 	const hpPercentage =
 		effectiveMaxHp > 0 ? (health.current / effectiveMaxHp) * 100 : 0
-	const getHpColor = () => {
+	const hpColor = getHpBarColor(health.current, effectiveMaxHp)
+	const getHpColorVariant = () => {
 		if (hpPercentage >= 50) return 'success'
-		if (hpPercentage >= 20) return 'warning'
+		if (hpPercentage >= 25) return 'warning'
 		return 'error'
 	}
 
@@ -285,12 +288,12 @@ export const HpField = () => {
 							mb: 0.5,
 						}}
 					>
-						{/* Main HP Bar - proportional width within 120px total */}
-						<LinearProgress
-							variant="determinate"
-							value={Math.min(100, hpPercentage)}
-							color={getHpColor()}
-							sx={{
+					{/* Main HP Bar - proportional width within 120px total */}
+					<LinearProgress
+						variant="determinate"
+						value={Math.min(100, hpPercentage)}
+						color={getHpColorVariant()}
+						sx={{
 								width: `${mainHpBarWidth}px`,
 								height: '6px',
 								borderRadius: health.temp > 0 ? '3px 0 0 3px' : '3px',
@@ -344,8 +347,6 @@ export const HpField = () => {
 							/>
 						)}
 					</Box>
-
-					{/* Current HP Input (simplified for surface) - REMOVED per feedback */}
 				</Box>
 
 				<IconButton size="small" onClick={handleClick} sx={{ ml: 0.5 }}>
@@ -357,61 +358,162 @@ export const HpField = () => {
 				anchorEl={anchorEl}
 				open={open}
 				onClose={handleClose}
-				MenuListProps={{ sx: { p: 2, maxWidth: '20rem' } }}
+				MenuListProps={{ sx: { p: 2, maxWidth: '25rem' } }}
 			>
-				<SectionHeader>HP Configuration</SectionHeader>
-				<Typography variant="subtitle2" sx={{ mb: 2 }}>
-					Max HP: {baseHp} + {(characterLevel - 1) * 2} +{' '}
-					{health.maxHpModifier || 0} = {maxHp}
-				</Typography>
+				<SectionHeader sx={{ mb: 2 }}>HP Configuration</SectionHeader>
 
-				{/* Current HP - First and larger with 2px borders */}
-				<Controller
-					name="currentHp"
-					control={control}
-					render={({ field, fieldState }) => (
-						<TextField
-							{...field}
-							type="number"
-							onChange={(e) => {
-								const value = Number(e.target.value)
-								field.onChange(value)
-								const clampedCurrent = Math.min(value, effectiveMaxHp)
-								updateCharacter({
-									statistics: { health: { current: clampedCurrent } },
-								})
-							}}
-							error={!!fieldState.error}
-							helperText={fieldState.error?.message || ''}
-							label="Current HP"
+				{/* Visual HP Bar with editable current HP */}
+				<Box sx={{ mb: 3 }}>
+					{/* HP Bar Container */}
+					<Box
+						sx={{
+							position: 'relative',
+							display: 'flex',
+							height: '44px',
+							mb: 1,
+							borderRadius: '8px',
+							overflow: 'hidden',
+							border: '2px solid',
+							borderColor: 'divider',
+						}}
+					>
+						{/* Main HP Bar - flex grow to fill available space */}
+						<LinearProgress
+							variant="determinate"
+							value={Math.min((health.current / effectiveMaxHp) * 100, 100)}
+							color={getHpColorVariant()}
 							sx={{
-								mb: 1.5,
-								maxWidth: '5rem',
-								'& .MuiOutlinedInput-root': {
-									'& .MuiOutlinedInput-notchedOutline': {
-										borderWidth: '2px',
-									},
-								},
-								'& input': {
-									textAlign: 'center',
+								flex: 1,
+								height: '100%',
+								transition: 'all 0.3s ease',
+								backgroundColor: 'rgba(0, 0, 0, 0.2)',
+								'& .MuiLinearProgress-bar': {
+									boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3)',
 								},
 							}}
 						/>
-					)}
-				/>
 
-				{/* Max HP (disabled, calculated) */}
-				<AttributeField
-					type="number"
-					size="small"
-					value={maxHp}
-					disabled
-					label="Max HP (Calculated)"
-					sx={{ mb: 1.5 }}
-				/>
+						{/* Temp HP Extension - fixed width to the right */}
+						{health.temp > 0 && (
+							<Box
+								sx={{
+									width: '60px',
+									backgroundColor: 'rgba(33, 150, 243, 1)',
+									borderLeft: '2px solid rgba(33, 150, 243, 0.9)',
+									boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.2)',
+									transition: 'all 0.3s ease',
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+								}}
+							>
+								<Typography
+									variant="body1"
+									sx={{
+										color: '#fff',
+										fontWeight: 'bold',
+										textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
+									}}
+								>
+									+{health.temp}
+								</Typography>
+							</Box>
+						)}
 
-				{/* Temp HP and Max HP Modifier in their own row */}
-				<Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+						{/* Editable HP Text Overlay - positioned absolutely over the bars */}
+						<Box
+							sx={{
+								position: 'absolute',
+								top: '50%',
+								left: '50%',
+								transform: 'translate(-50%, -50%)',
+								display: 'flex',
+								alignItems: 'baseline',
+								gap: 0.5,
+								zIndex: 2,
+							}}
+						>
+							<Controller
+								name="currentHp"
+								control={control}
+								render={({ field, fieldState }) => (
+									<TextField
+										{...field}
+										type="number"
+										size="small"
+										inputProps={{
+											max: effectiveMaxHp,
+											min: 0,
+										}}
+										onChange={(e) => {
+											const value = Number(e.target.value)
+											const clampedCurrent = Math.max(0, Math.min(value, effectiveMaxHp))
+											field.onChange(clampedCurrent)
+											updateCharacter({
+												statistics: { health: { current: clampedCurrent } },
+											})
+										}}
+										error={!!fieldState.error}
+										sx={{
+											width: '55px',
+                      mt: '6px',
+											'& .MuiOutlinedInput-root': {
+												backgroundColor: 'rgba(0, 0, 0, 0.6)',
+												fontWeight: 'bold',
+												color: 'white',
+												'& fieldset': {
+													borderColor: 'rgba(255, 255, 255, 0.3)',
+													borderWidth: '2px',
+												},
+												'&:hover fieldset': {
+													borderColor: 'rgba(255, 255, 255, 0.5)',
+												},
+												'&.Mui-focused fieldset': {
+													borderColor: 'primary.main',
+												},
+											},
+											'& input': {
+												textAlign: 'center',
+												padding: '4px 6px',
+												fontSize: '0.875rem',
+												color: 'white',
+											},
+										}}
+									/>
+								)}
+							/>
+							<Typography
+								variant="body1"
+								sx={{
+									color: 'white',
+									fontWeight: 'bold',
+									textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
+								}}
+							>
+								/ {effectiveMaxHp}
+							</Typography>
+						</Box>
+					</Box>
+
+					{/* Formula Display */}
+					<Typography
+						variant="caption"
+						sx={{
+							display: 'block',
+							textAlign: 'center',
+							color: 'text.secondary',
+							fontSize: '0.75rem',
+						}}
+					>
+						Max HP: {baseHp} + {(characterLevel - 1) * 2}
+						{autoHpBonus > 0 && ` + ${autoHpBonus} (auto)`}
+						{(health.maxHpModifier || 0) !== 0 && ` + ${health.maxHpModifier || 0}`}
+						{fatigueHpPenalty > 0 && ` - ${fatigueHpPenalty} (fatigue)`} = {effectiveMaxHp}
+					</Typography>
+				</Box>
+
+				{/* Modifiers Grid */}
+				<Box sx={{ display: 'flex', flexDirection: 'row', gap: 1 }}>
 					<Controller
 						name="tempHp"
 						control={control}
@@ -426,7 +528,6 @@ export const HpField = () => {
 									updateCharacter({
 										statistics: { health: { temp: value } },
 									})
-									// Trigger temp HP animation when changed
 									if (value !== health.temp) {
 										setAnimationState('tempHp')
 									}
@@ -435,11 +536,10 @@ export const HpField = () => {
 								helperText={fieldState.error?.message || ''}
 								label="Temp HP"
 								sx={{
-									flex: 1,
-									maxWidth: '5rem',
 									'& input': {
 										textAlign: 'center',
 									},
+                  width: '5rem',
 								}}
 							/>
 						)}
@@ -464,17 +564,27 @@ export const HpField = () => {
 								}}
 								error={!!fieldState.error}
 								helperText={fieldState.error?.message || ''}
-								label="Max HP Modifier"
+								label="Mod"
 								sx={{
-									flex: 1,
-									maxWidth: '5rem',
 									'& input': {
 										textAlign: 'center',
 									},
+                  width: '5rem',
 								}}
 							/>
 						)}
 					/>
+
+					{autoHpBonus > 0 && (
+						<AttributeField
+							disabled
+							type="number"
+							size="small"
+							value={autoHpBonus}
+							label="Auto"
+              sx={{ width: '4rem' }}
+						/>
+					)}
 				</Box>
 
 				{/* Damage/Healing Controls - TextField between buttons */}

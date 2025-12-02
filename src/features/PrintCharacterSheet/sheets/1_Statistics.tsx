@@ -32,16 +32,17 @@ const AttributeField = styled(RoundTextField)({
 	},
 })
 
-export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
-	// Calculate max HP using the new formula
-	const maxHp = calculateMaxHp(
-		char.statistics.strength.value,
-		char.skills.xp.total,
-		char.statistics.health.maxHpModifier || 0,
-	)
+	export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
+		// Calculate max HP using the new formula
+		const maxHp = calculateMaxHp(
+			char.statistics.strength.value,
+			char.skills.xp.total,
+			char.statistics.health.maxHpModifier || 0,
+			char.statistics.health.auto || 0,
+		)
 
-	// Group abilities by tag/category
-	const groupedAbilities = char.skills.abilities.reduce(
+		// Group abilities by tag/category
+		const groupedAbilities = char.skills.abilities.reduce(
 		(groups, ability) => {
 			const tag = ability.tag || 'Other'
 			if (!groups[tag]) {
@@ -231,6 +232,7 @@ export const StatisticsSheet: React.FC<{ char: Character }> = ({ char }) => {
 								char.statistics.av.armor +
 								char.statistics.av.helmet +
 								char.statistics.av.shield +
+								(char.statistics.av.auto || 0) +
 								char.statistics.av.other
 							}
 							label="AV"
