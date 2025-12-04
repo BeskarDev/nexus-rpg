@@ -53,7 +53,8 @@ vi.mock('firebase/functions', () => ({
 				return {
 					data: {
 						success: true,
-						message: `Password reset email sent to ${data.email}.`,
+						message: `Password reset link generated for ${data.email}.`,
+						resetLink: 'https://example.com/reset-password?code=abc123',
 						userId: 'user1',
 					},
 				}
@@ -179,7 +180,7 @@ describe('UserManagementPanel', () => {
 
 		await waitFor(() => {
 			const lockResetIcons = screen.getAllByRole('button', {
-				name: /send password reset email to this user/i,
+				name: /generate password reset link for this user/i,
 			})
 			expect(lockResetIcons.length).toBe(2) // Two users
 		})
@@ -258,15 +259,15 @@ describe('PasswordResetDialog', () => {
 
 		// Click the first password reset icon
 		const resetIcons = screen.getAllByRole('button', {
-			name: /send password reset email to this user/i,
+			name: /generate password reset link for this user/i,
 		})
 		await user.click(resetIcons[0])
 
 		await waitFor(() => {
-			expect(screen.getByText('Trigger Password Reset')).toBeInTheDocument()
+			expect(screen.getByText('Generate Password Reset Link')).toBeInTheDocument()
 			// Email appears in both table and dialog, so we check for the dialog text
 			expect(
-				screen.getByText(/send a password reset email to:/i),
+				screen.getByText(/generate a password reset link for:/i),
 			).toBeInTheDocument()
 		})
 	})
@@ -280,13 +281,15 @@ describe('PasswordResetDialog', () => {
 		})
 
 		const resetIcons = screen.getAllByRole('button', {
-			name: /send password reset email to this user/i,
+			name: /generate password reset link for this user/i,
 		})
 		await user.click(resetIcons[0])
 
 		await waitFor(() => {
 			expect(
-				screen.getByText(/send a password reset email to:/i),
+				screen.getByText(
+					/a password reset link will be generated that you can send to the user manually/i,
+				),
 			).toBeInTheDocument()
 		})
 	})

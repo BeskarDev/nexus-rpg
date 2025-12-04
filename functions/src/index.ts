@@ -186,12 +186,19 @@ export const triggerPasswordReset = functions
 			// Verify user exists
 			const user = await admin.auth().getUserByEmail(email)
 
-			// Generate and send password reset email
-			await admin.auth().generatePasswordResetLink(email)
+			// Generate password reset link
+			const actionCodeSettings = {
+				url: 'https://nexus-rpg-d04d1.web.app', // Your app URL
+				handleCodeInApp: false,
+			}
+			const resetLink = await admin
+				.auth()
+				.generatePasswordResetLink(email, actionCodeSettings)
 
 			return {
 				success: true,
-				message: `Password reset email sent to ${email}.`,
+				message: `Password reset link generated for ${email}.`,
+				resetLink: resetLink,
 				userId: user.uid,
 			}
 		} catch (error: any) {

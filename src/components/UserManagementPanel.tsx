@@ -156,16 +156,16 @@ const PasswordResetDialog: React.FC<PasswordResetDialogProps> = ({
 }) => {
 	return (
 		<Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-			<DialogTitle>Trigger Password Reset</DialogTitle>
+			<DialogTitle>Generate Password Reset Link</DialogTitle>
 			<DialogContent>
 				<Typography variant="body1" gutterBottom>
-					Send a password reset email to:
+					Generate a password reset link for:
 				</Typography>
 				<Typography variant="body1" sx={{ fontWeight: 'bold', mb: 2 }}>
 					{userEmail}
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					The user will receive an email with a link to reset their password.
+					A password reset link will be generated that you can send to the user manually.
 				</Typography>
 			</DialogContent>
 			<DialogActions>
@@ -180,7 +180,7 @@ const PasswordResetDialog: React.FC<PasswordResetDialogProps> = ({
 						loading ? <CircularProgress size={20} /> : <LockResetIcon />
 					}
 				>
-					Send Reset Email
+					Generate Link
 				</Button>
 			</DialogActions>
 		</Dialog>
@@ -383,6 +383,7 @@ export const UserManagementPanel: React.FC = () => {
 		setLoading(true)
 		setError(null)
 		setSuccess(null)
+		setResetLink(null)
 		try {
 			const triggerPasswordResetFunction = httpsCallable(
 				functions,
@@ -394,6 +395,9 @@ export const UserManagementPanel: React.FC = () => {
 			const data = result.data as any
 			if (data.success) {
 				setSuccess(data.message)
+				if (data.resetLink) {
+					setResetLink(data.resetLink)
+				}
 				setResetDialogOpen(false)
 				setSelectedUser(null)
 			} else {
@@ -644,18 +648,18 @@ export const UserManagementPanel: React.FC = () => {
 																	<VerifiedUserIcon />
 																</IconButton>
 															</Tooltip>
-														)}
-														<Tooltip title="Send password reset email to this user">
-															<IconButton
-																size="small"
-																onClick={() => {
-																	setSelectedUser(user)
-																	setResetDialogOpen(true)
-																}}
-															>
-																<LockResetIcon />
-															</IconButton>
-														</Tooltip>
+													)}
+													<Tooltip title="Generate password reset link for this user">
+														<IconButton
+															size="small"
+															onClick={() => {
+																setSelectedUser(user)
+																setResetDialogOpen(true)
+															}}
+														>
+															<LockResetIcon />
+														</IconButton>
+													</Tooltip>
 														<Tooltip title="Delete this user permanently">
 															<IconButton
 																size="small"
