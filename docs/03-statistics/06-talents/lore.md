@@ -2,7 +2,7 @@
 sidebar_position: 10
 ---
 
-# Lore Talents
+# Lore
 
 Name | Description
 --- | ---

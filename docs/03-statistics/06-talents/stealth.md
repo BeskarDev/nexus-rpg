@@ -2,7 +2,7 @@
 sidebar_position: 14
 ---
 
-# Stealth Talents
+# Stealth
 
 Name | Description
 --- | ---

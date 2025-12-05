@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Education Talents
+# Education
 
 Name | Description
 --- | ---

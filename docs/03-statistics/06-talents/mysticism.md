@@ -2,7 +2,7 @@
 sidebar_position: 11
 ---
 
-# Mysticism Talents
+# Mysticism
 
 Name | Description
 --- | ---

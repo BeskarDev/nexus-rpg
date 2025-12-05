@@ -2,7 +2,7 @@
 sidebar_position: 16
 ---
 
-# Survival Talents
+# Survival
 
 Name | Description
 --- | ---

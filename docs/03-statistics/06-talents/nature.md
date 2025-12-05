@@ -2,7 +2,7 @@
 sidebar_position: 12
 ---
 
-# Nature Talents
+# Nature
 
 Name | Description
 --- | ---

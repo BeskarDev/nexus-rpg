@@ -2,7 +2,7 @@
 sidebar_position: 9
 ---
 
-# Insight Talents
+# Insight
 
 Name | Description
 --- | ---

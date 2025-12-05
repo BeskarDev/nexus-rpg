@@ -2,7 +2,7 @@
 sidebar_position: 15
 ---
 
-# Streetwise Talents
+# Streetwise
 
 Name | Description
 --- | ---

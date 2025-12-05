@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# Fortitude Talents
+# Fortitude
 
 Name | Description
 --- | ---

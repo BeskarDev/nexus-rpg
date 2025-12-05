@@ -2,7 +2,7 @@
 sidebar_position: 13
 ---
 
-# Perception Talents
+# Perception
 
 Name | Description
 --- | ---

@@ -1,26 +1,8 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 ---
 
-# 🔶 Combat Arts
-
-![banner-img](/img/banner/combat-arts-banner.png)
-
-## Learning Combat Arts
-
-An adventurer can learn many different Combat Arts throughout their career. When you first learn either the Fighting or Archery skill, you can choose one Combat Art for melee or ranged weapons respectively. Once you gain a rank in either skill, you can choose another appropriate Combat Art. You can learn additional Combat Arts through talents.
-
-### Learning Supreme Combat Arts
-
-Supreme Combat Arts represent the ultimate abilities any warrior can achieve, demonstrating their mastery over their combat abilities. They transcend mere physical ability and tap into the very power of a warrior‘s soul, which is only possible for true masters of combat.
-
-Obtaining the ability to use Supreme Combat Arts is possible via the talents Art of Fighting for melee weapons and Art of Archery for ranged weapons at rank 4 or higher respectively. Some Supreme Combat Arts require you to already have learned their basic form and replace those abilities. Any other abilities referencing the basic version of a Combat Art are also usable with their supreme form.
-
-## Using Combat Arts
-
-You can use an appropriate Combat Art as part of an attack on your turn. You must declare you are using a Combat Art before rolling for the attack. On a hit, the attack deals its normal damage in addition to the Combat Art’s effects. You can only use one Combat Art per turn and each individual Combat Art can only be used once per combat.
-
-## List of Combat Arts
+# Basic Combat Arts
 
 ### Basic 
 Name | Weapons | Effect
@@ -54,22 +36,3 @@ Name | Weapons | Effect
 **Splinter**  | Axe, Mace  | This melee attack deals no damage to the target. Instead, choose one item the target holds that your weapon would be capable of damaging (wood or leather for axes, stone or metal for maces).<br/><strong>Weak.</strong> The target rolls a Durability check for the item. On a failure, the item gets damaged.<br/><strong>Strong.</strong> The target rolls the check for the item twice and must use the worst result. On a failure, the item gets damaged. If both dice would fail, the item is destroyed instead.<br/><strong>Critical.</strong> The target rolls a Durability check for the item twice and must use the worst result. On a success, the item still gets damaged. On a failure, the item is destroyed instead.
 **Terrifying Strike**  | Axe, Blade, Mace, Polearm  | This melee attack also counts as a Demoralize Action.<br/><strong>Weak.</strong> The target is briefly frightened of you.<br/><strong>Strong.</strong> The target is frightened of you for a short duration. They can roll Spirit + Fortitude at the end of each of their turns to end the effect early.<br/><strong>Critical.</strong> Same as a strong success, but the target’s roll is hard.
 **Volley**  | Bow, Crossbow, Thrown  | Your attack with a non-heavy ranged weapon hits up to 2 additional creatures in your weapon's reach. On a hit, subtract your weapon damage once from the total damage you deal against each target.
-
-
-### Supreme 
-Name | Weapons | Effect
---- | --- | ---
-**Dashing Strike**  | Axe, Blade, Brawl, Mace  | You can’t use this Combat Art while wearing heavy armor.<br/>Choose any point within short range you can move to. You can target up to three creatures along a line up to that point for this attack.<br/>You move at supernatural speed from your current position to your chosen point (this Movement doesn‘t provoke Opportunity Attacks), making an attack against each target along the way. Roll your attack once against all targets. On a hit, subtract your weapon damage once from the total damage you deal against each target.<br/>
-**Death from Above**  | Polearm  | You leap into the air with your polearm ready to strike toward your enemy. Choose the location of a creature within short range that you can see. You leap to that point (this doesn't provoke Opportunity Attacks), landing with tremendous force. The attack is considered to be from close range. On a hit, add your weapon damage an additional time to the total damage and the target is knocked prone if it isn’t of larger Size than you. After the attack, you can step to a location close to your target without provoking Opportunity Attacks.
-**Devastating Piercer**  | Crossbow  | Your crossbow bolt absorbs your soul's power, allowing it to pierce through multiple creatures in a single shot. Choose any number of creatures in a straight line up to your weapon's normal range. Compare the attack roll against each target in sequence from nearest to furthest.<br/>Against the first target the bolt hits, add your weapon damage an additional time to the total damage. You can hit up to five targets in a row, decreasing the damage each time another target is hit once by your weapon damage (the first takes +1 x weapon damage, the second +0 x weapon damage, the third -1 x weapon damage, the fourth -2 x weapon damage, and the fifth -3 x weapon damage).<br/>If you miss a target, the bolt continues unaffected to the next target in line. Missed targets don't count toward the damage reduction.<br/>
-**Earth-shattering Strike**  | Mace  | You break the very ground around you with superhuman strength. Instead of attacking a creature, roll vs. Dodge of every creature within your close range. On a hit, subtract your weapon damage once from the total damage you deal against each target.<br/>If the ground below you is no more durable then stone, it also cracks. On a stone or earth ground, the affected area now is difficult terrain. On wood or other less stable ground, such as a building‘s floor, the ground is instead totally destroyed. If the destroyed ground was elevated over an open space, you and all creatures in range fall through the destroyed floor.<br/>
-**Hundred Palm Strike**  | Brawl  | Your fists move at impossible speeds, delivering countless blows in the blink of an eye.<br/><strong>Weak.</strong> Treat this attack as two separate hits that are weak hits.<br/><strong>Strong.</strong> Treat this attack as three separate hits that are weak hits.<br/><strong>Critical.</strong> Treat this attack as four separate hits that are weak hits.
-**Perfect Shot**  | Bow  | You take a moment to perfectly aim your shot, reaching a state of absolute focus. You ignore all penalties that would inflict banes on your attack (for example from range or cover). On a hit, ignore the AV of the target and they are briefly stunned.
-**Phantom Cut**  | Blade  | Your blade swings with your soul’s power, projecting a arc or beam of pure force against a creature.<br/>You can target any creature within close range for this attack. On a hit, add your weapon damage an additional time to the total damage and the target is briefly staggered.<br/>
-**Projectile Storm**  | Thrown  | You channel your energy into your throwing technique, creating a whirlwind of deadly projectiles. Using supernatural speed, you throw multiple weapons simultaneously in a devastating pattern. Choose a point within your weapon’s range. Roll your attack vs. Dodge for all creatures within close range of the target location. On a hit, subtract your weapon damage once from the total damage you deal against each target.
-**Rip and Tear**  | Axe  | You strike with immense force, ripping though your target.<br/>On a hit, apply one of the following effects based on what the target is wearing.<br/><br/><strong>No Armor.</strong> Add your weapon damage an additional time to the total damage and the target is briefly staggered.<br/><br/><strong>Armor or Shield.</strong> This only works against an undamaged item. Otherwise apply the effect against no armor above. Either the target’s armor or shield (your choice) is automatically damaged. In case of natural armor, this halves their total AV instead. The target is also briefly  staggered.
-**Shield Avalanche**  | Shield  | You channel tremendous force into your shield and slam it forward with devastating effect. This attack targets all creatures in a cone close to you. On a hit, subtract your weapon damage once from the total damage you deal against each target and each target is pushed close and knocked prone if it isn’t of larger Size than you. Also, you briefly gain +2 AV.
-**Supreme Barrage**  | Bow, Thrown  | You can only learn this Combat Art if you already know Barrage. This Combat Art replaces Barrage.<br/>You can roll two additional attacks with a non-heavy ranged weapon. You suffer +1 bane and +2 banes on the first and second additional attack respectively.<br/>
-**Supreme Cleave**  | Axe, Blade, Mace, Polearm  | You can only learn this Combat Art if you already know Cleave. This Combat Art replaces Cleave.<br/>Your attack with a two-handed melee weapon hits up to 4 additional creatures in your weapon's reach or one distance further (melee to close, close to short). On a hit, subtract your weapon damage once from the total damage you deal against each target.<br/>
-**Supreme Disarm**  | Axe, Blade, Brawl, Mace, Polearm  | You can only learn this Combat Art if you already know Disarm. This Combat Art replaces Disarm.<br/>After this attack, use the Disarm action against the same target with +2 boons. On a success, you can either throw the disarmed item up to short range or immediately grab it yourself if you have a free hand. Also, the target is briefly dazed by your maneuver.<br/>
-**Supreme Feint**  | Blade, Brawl, Polearm  | You can only learn this Combat Art if you already know Feint. This Combat Art replaces Feint.<br/>You execute a masterful feint that completely throws off your opponent's defenses. If you don't move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon. On a hit, you also deal +4 damage and the target is marked (4).<br/>

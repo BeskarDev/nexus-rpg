@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Influence Talents
+# Influence
 
 Name | Description
 --- | ---
