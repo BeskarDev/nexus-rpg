@@ -1,6 +1,29 @@
 # Converting huge markdown tables into multiple smaller ones
 
-How To:
+## Quick Start (Recommended)
+
+The **master script** automates the entire workflow from HTML input to updated documentation:
+
+```bash
+# Update mystic spells
+python update-docs.py mystic-spells input/mystic-spells.html
+
+# Update arcane spells
+python update-docs.py arcane-spells input/arcane-spells.html
+
+# Update talents
+python update-docs.py talents input/talents.html
+```
+
+This single command will:
+1. Convert HTML to markdown
+2. Transform and split the tables appropriately
+3. **Automatically update all corresponding pages in docs/**
+4. Preserve existing frontmatter and structure
+
+## Manual Workflow (Advanced)
+
+If you need more control, follow these steps:
 
 - go to table in notion and export as HTML
 - rename resulting `.html` file to fitting name
@@ -11,7 +34,7 @@ How To:
   - talents, items, weapons, armor: `python split-table.py <file-path> <split-column-name>`
   - arcane spells: `python transform-arcane-spell-table.py`
   - mystic spells: `python transform-mystic-spell-table.py`
-- At the end, paste the contents into the corresponding docs page.
+- **Manually** paste the contents into the corresponding docs page.
 
 > If you want to also update the json files that the `tools` section relies on, execute `python markdown-to-json.py` at the end.
 
