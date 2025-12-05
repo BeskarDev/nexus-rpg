@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Mounts
@@ -23,7 +23,7 @@ You also have to roll Spirit + Nature in situations that scare or confuse your m
 Different types of mounts offer varying capabilities, from carrying capacity to speed and special abilities. The following represents common mount options available in most civilized regions.
 
 > Mounts in Combat: Mounts are not trained for battle by default. When combat begins or they take damage, they will either attempt to flee or act on instinct (attacking threats). The War Horse is an exception, being bred and trained specifically for warfare.
-> 
+>
 
 | Tier | Mount Type | Size | Diet | Carry Capacity | Movement | Trait | Cost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -37,4 +37,3 @@ Different types of mounts offer varying capabilities, from carrying capacity to 
 | 3 | **War Horse** | Large | Herbivore | 20 | 2/turn (2x travel) | Horse | 750 coins |
 | 3 | **Giant Lizard** | Large | Carnivore | 20 | 1/turn (1x travel) | Lizard | 500 coins |
 | 5 | **Elephant** | Huge | Herbivore | 50 | 2/turn (1x travel) | Elephant | 3,000 coins |
-

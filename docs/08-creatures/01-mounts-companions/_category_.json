@@ -1,8 +1,6 @@
 {
   "label": "🐎 Mounts & Companions",
   "position": 1,
-  "link": {
-    "type": "doc",
-    "id": "creatures/mounts-companions/overview"
-  }
+  "collapsible": true,
+  "collapsed": true
 }
