@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react'
 
 interface RollableTableProps {
 	children: React.ReactNode
+	singleRoll?: boolean // If true, roll once and apply to all columns; if false, roll each column independently
 }
 
 interface TableRow {
@@ -14,7 +15,7 @@ interface RollResults {
 	[header: string]: { value: string; roll: number }
 }
 
-const RollableTable: React.FC<RollableTableProps> = ({ children }) => {
+const RollableTable: React.FC<RollableTableProps> = ({ children, singleRoll = false }) => {
 	const [results, setResults] = useState<RollResults>({})
 
 	const { dieSize, headers, rows } = useMemo(() => {
@@ -29,6 +30,7 @@ const RollableTable: React.FC<RollableTableProps> = ({ children }) => {
 			const child = node.props.children
 			if (typeof child === 'string') return child
 			if (Array.isArray(child)) return child.map(getText).join('')
+			if (React.isValidElement(child)) return getText(child)
 			return typeof child === 'string' ? child : ''
 		}
 
@@ -95,9 +97,11 @@ const RollableTable: React.FC<RollableTableProps> = ({ children }) => {
 			if (from === null || to === null) return
 
 			const values: Record<string, string> = {}
-			headers.forEach((h, i) => {
-				values[h] = getText(tds[i + 1]).trim()
-			})
+			for (let i = 0; i < headers.length; i++) {
+				const header = headers[i]
+				const cellIndex = i + 1
+				values[header] = cellIndex < tds.length ? getText(tds[cellIndex]).trim() : '—'
+			}
 
 			rows.push({ range: [from, to], values })
 		})
@@ -109,14 +113,27 @@ const RollableTable: React.FC<RollableTableProps> = ({ children }) => {
 		if (dieSize <= 0 || rows.length === 0) return
 		const next: RollResults = {}
 
-		headers.forEach((header) => {
+		if (singleRoll) {
+			// Roll once for all columns
 			const roll = Math.floor(Math.random() * dieSize) + 1
 			const found = rows.find(
 				({ range }) => roll >= range[0] && roll <= range[1],
 			)
-			const value = found?.values[header] ?? '—'
-			next[header] = { roll, value }
-		})
+			headers.forEach((header) => {
+				const value = found?.values[header] ?? '—'
+				next[header] = { roll, value }
+			})
+		} else {
+			// Roll each column independently (original behavior)
+			headers.forEach((header) => {
+				const roll = Math.floor(Math.random() * dieSize) + 1
+				const found = rows.find(
+					({ range }) => roll >= range[0] && roll <= range[1],
+				)
+				const value = found?.values[header] ?? '—'
+				next[header] = { roll, value }
+			})
+		}
 
 		setResults(next)
 	}

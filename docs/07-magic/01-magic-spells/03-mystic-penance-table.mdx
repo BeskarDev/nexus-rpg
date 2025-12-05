@@ -1,8 +1,10 @@
 ---
-sidebar_position: 7
+sidebar_position: 3
 ---
 
-# 🎲 Mystic Penance Table
+import RollableTable from '@site/src/components/RollableTable';
+
+# 🎲 Mystic Penance
 
 ![banner-img](/img/banner/magic-banner.png)
 
@@ -21,6 +23,7 @@ When you blunder a **rank 1 or higher** mystic spell, roll 1d6 on the Mystic Pen
 
 ## Mystic Penance Table (d6)
 
+<RollableTable singleRoll>
 | d6 | Result | Effect | Penance Required |
 |----|--------|--------|------------------|
 | 1 | **Revelation.** Your misstep reveals deeper insight. The failure becomes teaching. | Gain +1 boon on your next spell casting roll. | None. |
@@ -29,6 +32,7 @@ When you blunder a **rank 1 or higher** mystic spell, roll 1d6 on the Mystic Pen
 | 4 | **Withdrawal.** Your source of power pulls away. The miscast spell fades from reach. | You cannot cast the miscast spell again until you complete a small penance. | **Offering.** |
 | 5 | **Reproach.** Your power source rebukes you. The weight of your failure is made clear. | You cannot cast the miscast spell again until you complete a moderate penance. | **Prayer.** |
 | 6 | **Severance.** The connection breaks. Your power source turns away, demanding proof of your worthiness. | You cannot cast the miscast spell again until you complete a severe penance. | **Ritual.** |
+</RollableTable>
 
 ---
 
