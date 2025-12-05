@@ -1,0 +1,85 @@
+---
+sidebar_position: 3
+---
+
+import { CompanionBuilderWrapper } from '@site/src/components/CompanionBuilderWrapper';
+import BrowserOnly from '@docusaurus/BrowserOnly';
+
+# Companions
+
+## Companions
+
+Companions are powerful NPCs that accompany you on your adventures. You can obtain access to various NPC companions - bestial, humanoid, or other.
+
+For example, adventurers wanting an Animal Companion will have to take the Survival Talent with the same name.
+
+### Obtaining a Companion
+
+To have a companion accompany you, you first need the ability to command and bond with one. This typically comes from:
+
+- **Talents and Features:** Certain talents (like Animal Companion) or class features grant you the ability to bond with and command a companion.
+- **Spells:** Some spells can summon temporary companions for limited durations.
+
+Once you have the ability to bond with a companion (through a talent, feature, or similar), you can obtain one through the following methods:
+
+- **Purchase:** Buy a trained companion from specialized trainers or merchants. See the table below for costs by tier.
+- **Taming:** Attempt to tame a wild creature yourself. This requires successful Spirit + Nature rolls over time (typically a medium to long duration depending on the creature's tier and temperament). The GM determines the difficulty and duration required.
+- **Other Methods:** Your GM may allow other methods based on your story, such as rescuing a creature, earning one as a reward, or forming a bond through roleplay.
+
+> Having the ability to bond with a companion (from a talent or feature) and actually obtaining a specific companion are two separate steps. You need both the mechanical ability and an in-world method of acquisition.
+
+#### Trained Companion Costs
+
+If you want to purchase a companion at character creation or during the game, use the following costs based on the companion's tier:
+
+| Tier | Cost |
+|------|------|
+| 0 (Harmless) | 25 coins |
+| 1 (Capable) | 75 coins |
+| 2 (Dangerous) | 250 coins |
+| 3 (Ferocious) | 750 coins |
+| 4 (Monstrous) | 2,500 coins |
+| 5 (Primeval) | 7,500 coins |
+
+### Companions during combat
+
+Every companion is assigned to one specific adventurer, who guides and leads them. The companion takes their turn during combat either directly before or after their assigned adventurer (your choice).
+
+**Health**
+
+The companion has two Health Marks. When they are reduced to 0 HP, they start suffering Wounds or Fatigue the same way as an adventurer. The only difference is, that when they have taken two Wounds, they are instantly dead. If they suffered one Wound and one Fatigue, they instead start dying the same as adventurers.
+
+**Morale**
+
+Companions aren't as battle-hardened as adventurers and need to roll Spirit + Fortitude to hold their morale in tough situations. The following situations require your companion to roll for morale during combat:
+
+- The companion is engaged with an enemy 2 or more tiers above them.
+- The companion takes a Wound or Fatigue.
+- You fall unconscious, start dying, or are dead.
+- The number of enemies the companion is engaged with is two times or more than the number of allies (also counting the companion itself).
+
+### Companion Statistics
+
+<BrowserOnly fallback={<div>Loading Companion Builder...</div>}>
+  {() => <CompanionBuilderWrapper />}
+</BrowserOnly>
+
+| Tier | 0 (Harmless) | 1 (Capable) | 2 (Dangerous) | 3 (Ferocious) | 4 (Monstrous) | 5 (Primeval) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Max. Size | Tiny | Small | Medium | Large | Large | Huge |
+| HP | 5 | 10 | 20 | 30 | 40 | 50 |
+| AV | 1 (natural light) | 2 (natural light) | 3 (natural light) | 4 (natural light) | 5 (natural light) | 6 (natural light) |
+| STR / AGI / SPI / MND | d4 / d6 / d4 / d4-2 | d6 / d6 / d6 / d4-2 | d8 / d8 / d6 / d4-1 | d10 / d10 / d8 / d4-1 | d12 / d10 / d8 / d4 | d12+1 / d12 / d8 / d6 |
+| Parry / Dodge / Resist | 7 / 7 / 7 | 8 / 8 / 8 | 9 / 9 / 9 | 10 / 10 / 10 | 11 / 11 / 11 | 12 / 12 / 12 |
+| Skill Rank | 0 | 1 | 2 | 3 | 4 | 5 |
+| Attack (claw/bite/etc.) | 3/4/5 damage<br/>(2 base + 1 weapon) | 5/7/9 damage<br/>(3 base + 2 weapon) | 7/10/13 damage<br/>(4 base + 3 weapon) | 9/13/17 damage<br/>(5 base + 4 weapon) | 11/16/21 damage<br/>(6 base + 5 weapon) | 13/19/25 damage<br/>(7 base + 6 weapon) |
+
+### Companion Size Modifier
+
+| Tiny | Small | Medium | Large | Huge |
+| --- | --- | --- | --- | --- |
+| -2 Parry, +2 Dodge | -1 Parry, +1 Dodge | - | +1 Parry / -1 Dodge | +2 Parry / -2 Dodge |
+| 1 Movement/turn | 1 Movement/turn | 1 Movement/turn | 2 Movement/turn | 3 Movement/turn |
+
+Each companion also gains additional attacks, abilities, or other modifiers based on its animal type.
+
