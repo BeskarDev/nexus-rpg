@@ -4,7 +4,6 @@ sidebar_position: 8
 
 # War
 
-
 ### Battle Surge
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

@@ -4,7 +4,6 @@ sidebar_position: 2
 
 # Twilight
 
-
 ### Dark Sight
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -203,4 +202,4 @@ sidebar_position: 2
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Medium | concentrate,  enchant (body)
 
-**Effect** <br/> You merge temporarily with the essence of twilight, gaining supernatural abilities in the balance between light and dark. On a success, you gain the following effects:<br/>- You become invisible while in dim light or darkness<br/>- You gain resistance to psychic and frost damage<br/>- You can pass through solid objects as if they were difficult terrain while invisible<br/>- Your twilight mysticism spells cost 2 less Focus (minimum 0)<br/>This transformation lasts for a short duration.<br/> 
+**Effect** <br/> You merge temporarily with the essence of twilight, gaining supernatural abilities in the balance between light and dark. On a success, you gain the following effects:<br/>- You become invisible while in dim light or darkness<br/>- You gain resistance to psychic and frost damage<br/>- You can pass through solid objects as if they were difficult terrain while invisible<br/>- Your twilight mysticism spells cost 2 less Focus (minimum 0)<br/>This transformation lasts for a short duration.<br/>

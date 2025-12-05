@@ -4,7 +4,6 @@ sidebar_position: 6
 
 # Tempest
 
-
 ### Gust
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -339,4 +338,4 @@ sidebar_position: 6
 ---|---|---|---|---
  4 | 8 |  |  | -
 
-**Effect** <br/> <em>repeated lightning bolts hitting multiple targets</em> 
+**Effect** <br/> <em>repeated lightning bolts hitting multiple targets</em>

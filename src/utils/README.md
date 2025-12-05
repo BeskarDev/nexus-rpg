@@ -2,24 +2,25 @@
 
 ## Quick Start (Recommended)
 
-The **master script** automates the entire workflow from HTML input to updated documentation:
+The **master script** `convert-tables.sh` automates the entire workflow from HTML input to updated documentation:
 
 ```bash
-# Update mystic spells
-python update-docs.py mystic-spells input/mystic-spells.html
-
-# Update arcane spells
-python update-docs.py arcane-spells input/arcane-spells.html
-
-# Update talents
-python update-docs.py talents input/talents.html
+# 1. Place your HTML export in input/ directory
+# 2. Run the master script
+./convert-tables.sh
 ```
 
 This single command will:
 1. Convert HTML to markdown
 2. Transform and split the tables appropriately
 3. **Automatically update all corresponding pages in docs/**
-4. Preserve existing frontmatter and structure
+4. Update JSON files for tools
+5. Convert to CSV for Notion import
+
+**What it updates:**
+- `docs/07-magic/04-mystic-spells/` - All mystic spell tradition pages
+- `docs/07-magic/02-arcane-spells/` - All arcane spell discipline pages
+- `docs/03-statistics/06-talents/` - All skill talent pages
 
 ## Manual Workflow (Advanced)
 

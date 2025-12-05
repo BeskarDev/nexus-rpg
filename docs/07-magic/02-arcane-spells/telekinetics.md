@@ -4,7 +4,6 @@ sidebar_position: 5
 
 # Telekinetics
 
-
 ### Kinetic Pull
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -115,4 +114,4 @@ sidebar_position: 5
 ---|---|---|---|---
  4 | 8 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> <em>you know what it does… but it can also create a field of no gravity, making everyone float!</em> 
+**Effect** <br/> <em>you know what it does… but it can also create a field of no gravity, making everyone float!</em>

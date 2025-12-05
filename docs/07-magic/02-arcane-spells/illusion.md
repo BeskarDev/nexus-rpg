@@ -4,7 +4,6 @@ sidebar_position: 2
 
 # Illusion
 
-
 ### Horrific Vision
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -175,4 +174,4 @@ sidebar_position: 2
 ---|---|---|---|---
  3 | 6 | Very Hard (12) |  | -
 
-**Effect** <br/> <em>Change the appearance of a group of creatures with illusions.</em> 
+**Effect** <br/> <em>Change the appearance of a group of creatures with illusions.</em>

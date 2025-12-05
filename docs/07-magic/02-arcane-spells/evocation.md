@@ -4,7 +4,6 @@ sidebar_position: 1
 
 # Evocation
 
-
 ### Flickering Flame
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -163,4 +162,4 @@ sidebar_position: 1
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Long | -
 
-**Effect** <br/> You conjure an unnatural black flame which relentlessly consumes everything it touches.<br/><strong>Weak.</strong> Deal +6 fire damage and the target suffers burning (2).<br/><strong>Strong. </strong>Deal +12 fire damage and the target suffers burning (4).<br/><strong>Critical. </strong>Deal +18 fire damage and the target suffers burning (6).<br/>The black fire ignores fire resistance and reduces immunity against fire damage to a resistance against it. Burning from black fire can‘t be put out by mundane means and only does, once the caster of it is unconscious or dead. Alternately it can be put out by magic that removes a magical effect to be stopped.<br/> 
+**Effect** <br/> You conjure an unnatural black flame which relentlessly consumes everything it touches.<br/><strong>Weak.</strong> Deal +6 fire damage and the target suffers burning (2).<br/><strong>Strong. </strong>Deal +12 fire damage and the target suffers burning (4).<br/><strong>Critical. </strong>Deal +18 fire damage and the target suffers burning (6).<br/>The black fire ignores fire resistance and reduces immunity against fire damage to a resistance against it. Burning from black fire can‘t be put out by mundane means and only does, once the caster of it is unconscious or dead. Alternately it can be put out by magic that removes a magical effect to be stopped.<br/>

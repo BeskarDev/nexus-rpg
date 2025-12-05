@@ -4,7 +4,6 @@ sidebar_position: 4
 
 # Telepathy
 
-
 ### Detect Magic
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -123,4 +122,4 @@ sidebar_position: 4
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Self | ritual (minutes)
 
-**Effect** <br/> You sever your astral body from your physical self being able to move freely around with it. You can even pass over to other spheres of existence. Lasts for a medium duration.  
+**Effect** <br/> You sever your astral body from your physical self being able to move freely around with it. You can even pass over to other spheres of existence. Lasts for a medium duration.

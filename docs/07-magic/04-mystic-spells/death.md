@@ -4,7 +4,6 @@ sidebar_position: 4
 
 # Death
 
-
 ### Chill Touch
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -147,4 +146,4 @@ sidebar_position: 4
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | -
 
-**Effect** <br/> You channel the essence of natural toxins into an area, creating a blooming field of highly poisonous flowers, which then erupt into a cloud of death. Choose a close area within range. Target all living creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 poison damage and is briefly poisoned.<br/><strong>Strong.</strong> Each target takes +8 poison damage and is poisoned for a short duration.<br/><strong>Critical.</strong> Each target takes +12 poison damage, is briefly confused, and is poisoned for a short duration.<br/>They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/> 
+**Effect** <br/> You channel the essence of natural toxins into an area, creating a blooming field of highly poisonous flowers, which then erupt into a cloud of death. Choose a close area within range. Target all living creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 poison damage and is briefly poisoned.<br/><strong>Strong.</strong> Each target takes +8 poison damage and is poisoned for a short duration.<br/><strong>Critical.</strong> Each target takes +12 poison damage, is briefly confused, and is poisoned for a short duration.<br/>They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>

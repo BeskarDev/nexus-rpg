@@ -4,7 +4,6 @@ sidebar_position: 6
 
 # Necromancy
 
-
 ### Drain Life
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -283,4 +282,4 @@ sidebar_position: 6
 ---|---|---|---|---
  4 | 8 | vs. Dodge | Long | -
 
-**Effect** <br/> <em>bzzzz…</em> 
+**Effect** <br/> <em>bzzzz…</em>

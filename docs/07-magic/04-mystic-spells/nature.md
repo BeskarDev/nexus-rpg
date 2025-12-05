@@ -4,7 +4,6 @@ sidebar_position: 5
 
 # Nature
 
-
 ### Acid Splash
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -335,4 +334,4 @@ sidebar_position: 5
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Extreme | -
 
-**Effect** <br/> TODO: Step into one tree and emerge from another within range 
+**Effect** <br/> TODO: Step into one tree and emerge from another within range

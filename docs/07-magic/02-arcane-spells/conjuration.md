@@ -4,7 +4,6 @@ sidebar_position: 3
 
 # Conjuration
 
-
 ### Arcane Bolt
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -231,4 +230,4 @@ sidebar_position: 3
 ---|---|---|---|---
  4 | 8 | Extreme (14) |  | -
 
-**Effect** <br/> <em>Inscribe an arcane circle on the ground and connect two of these to teleport between them.</em> 
+**Effect** <br/> <em>Inscribe an arcane circle on the ground and connect two of these to teleport between them.</em>
