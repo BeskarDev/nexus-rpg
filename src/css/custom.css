@@ -846,3 +846,35 @@ a.chip:hover {
   white-space: nowrap;
   border: 0;
 }
+
+/* Hide labels for icon-only navbar items on desktop */
+.navbar-icon-with-label {
+  margin-inline: 0.5rem;
+  padding-left: 0;
+  width: 20px;
+  white-space: nowrap;
+}
+
+/* Add bottom border to active navbar items */
+.navbar__link--active {
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 2px;
+}
+
+.navbar__link:hover {
+  border-bottom: 2px solid rgba(46, 133, 85, 0.5);
+  padding-bottom: 2px;
+}
+
+/* Show labels on mobile sidebar */
+@media (max-width: 996px) {
+  .navbar-icon-with-label {
+    width: auto;
+    white-space: normal;
+  }
+
+  .navbar__link--active,
+  .navbar__link:hover {
+    border-bottom: none;
+  }
+}
