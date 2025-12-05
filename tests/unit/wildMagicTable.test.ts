@@ -5,7 +5,7 @@ import * as path from 'path'
 describe('Wild Surge Table', () => {
 	const wildMagicTablePath = path.join(
 		__dirname,
-		'../../docs/07-magic/06-wild-surge-table.mdx',
+		'../../docs/07-magic/01-magic-spells/02-wild-surge-table.mdx',
 	)
 	const content = fs.readFileSync(wildMagicTablePath, 'utf-8')
 
@@ -14,8 +14,8 @@ describe('Wild Surge Table', () => {
 			expect(fs.existsSync(wildMagicTablePath)).toBe(true)
 		})
 
-		it('should contain frontmatter with sidebar_position', () => {
-			expect(content).toMatch(/---\s*sidebar_position:\s*6\s*---/)
+	it('should contain frontmatter with sidebar_position', () => {
+		expect(content).toMatch(/---\s*sidebar_position:\s*2\s*---/)
 		})
 
 		it('should have main title', () => {

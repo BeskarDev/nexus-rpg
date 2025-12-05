@@ -26,4 +26,13 @@ for file in markdown/*.md; do
     fi
 done
 
-printf "\nAll done!"
+sleep 1
+
+printf "\nUpdating documentation pages...\n"
+python update-docs-from-split-tables.py
+
+printf "\nAll done!\n"
+printf "\nNext steps:\n"
+printf "  1. Review the updated pages in docs/\n"
+printf "  2. Run 'npm run build' to verify the build succeeds\n"
+printf "  3. Commit the changes\n"
