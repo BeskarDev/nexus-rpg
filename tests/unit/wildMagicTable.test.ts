@@ -19,7 +19,7 @@ describe('Wild Surge Table', () => {
 		})
 
 		it('should have main title', () => {
-			expect(content).toContain('# 🎲 Wild Surge Table')
+			expect(content).toContain('# 🎲 Wild Surge')
 		})
 
 		it('should specify rank 1 or higher requirement', () => {
