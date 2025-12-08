@@ -1,16 +1,10 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
-# Companion Traits
+## Animal
 
-## Companion Traits
-
-Each companion will have one of the following traits, representing the type of creature they are. These traits will alter the normal companion statistics and give the companion new abilities specific to their creature type.
-
-### Animal
-
-#### **Ape**
+### **Ape**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -27,7 +21,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Tool Usage.</strong> This creature can use simple tools and weapons (only Quality 1) after being trained with them for at least a medium duration.
 
 
-#### **Badger**
+### **Badger**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -45,7 +39,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
 
 
-#### **Bat**
+### **Bat**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -62,7 +56,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Flying (Wings). </strong>This creature can fly with +1 Movement per turn. If on the ground, it can’t use more than 1 Movement per turn.
 
 
-#### **Bear**
+### **Bear**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -79,7 +73,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
 
 
-#### **Beetle**
+### **Beetle**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -96,7 +90,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Wall Climb. </strong>This creature can climb on any vertical surface without rolling.
 
 
-#### **Bird**
+### **Bird**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -114,7 +108,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Keen Eyes.</strong> This creature gains +1 boon on Perception rolls based on sight.
 
 
-#### **Boar**
+### **Boar**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -131,7 +125,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Relentless. </strong>When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day.
 
 
-#### **Camel**
+### **Camel**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -149,7 +143,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
 
 
-#### **Cat**
+### **Cat**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -167,7 +161,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Pounce.</strong> If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack. Also on a strong or critical hit against a creature of equal or smaller Size, the target is knocked prone.
 
 
-#### **Constrictor Snake**
+### **Constrictor Snake**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -184,7 +178,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Deep Breath.</strong> This creature can hold their breath underwater for a short duration and can swim with normal Movement.
 
 
-#### **Crab**
+### **Crab**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -201,7 +195,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Slow Movement. </strong>This creature can’t spend more than 1 Movement per turn.
 
 
-#### **Crocodile**
+### **Crocodile**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -218,7 +212,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Amphibious.</strong> This creature can hold their breath underwater for a medium duration and can swim with normal Movement.
 
 
-#### **Dog**
+### **Dog**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -235,7 +229,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Track Scent. </strong>This creature can track a scent trail for up to a day after it was made, unless some foreign force influenced the scent (for example, a heavy rain).
 
 
-#### **Donkey**
+### **Donkey**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -253,7 +247,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
 
 
-#### **Elephant**
+### **Elephant**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -271,7 +265,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Trample. </strong>When this creature moves through the space of a creature at least one Size smaller, it can make a Stomp attack against that creature as a Quick Action.
 
 
-#### **Frog**
+### **Frog**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -289,7 +283,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Swallow.</strong> This creature can only swallow one smaller creature at a time. When doing so, the target is no longer grappled. Instead, the target becomes blinded and restrained. It also takes lasting acid damage equal to normal weapon damage. When this creature takes a Wound or dies, it releases the swallowed creature and they are spit out prone in melee range.
 
 
-#### **Hippopotamus**
+### **Hippopotamus**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -306,7 +300,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Relentless. </strong>When this creature would suffer a Wound, it can choose to ignore it. This creature can use this ability once per day.
 
 
-#### **Horse**
+### **Horse**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -324,7 +318,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
 
 
-#### **Lizard**
+### **Lizard**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -341,7 +335,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Natural Climber.</strong> This creature can climb without treating it as difficult terrain.
 
 
-#### **Ox**
+### **Ox**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -358,7 +352,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Gore Attack. </strong>After moving at least a short distance in a straight line, this creature gains +1 boon on it’s next attack during the same turn. On a hit, increase the SL by one step (max. critical hit).
 
 
-#### **Poisonous Snake**
+### **Poisonous Snake**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -374,7 +368,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Deep Breath.</strong> This creature can hold their breath underwater for a short duration and can swim with normal Movement.
 
 
-#### **Rat**
+### **Rat**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -391,7 +385,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Pack Tactics.</strong> This creature gains +1 boon on attacks against any enemy in melee range if this creature has more allies in melee range than enemies.
 
 
-#### **Spider**
+### **Spider**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -408,7 +402,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Web Walker.</strong> This creature can move on webs normally. It also knows the exact location of any creature touching it’s web while standing on it.
 
 
-#### **Stag**
+### **Stag**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -426,7 +420,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Powerful Build. </strong>Add +2 to this creature’s encumbrance and over-encumbrance limits.
 
 
-#### **Turtle**
+### **Turtle**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -442,10 +436,9 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Shell Defense.</strong> As a Quick Action, this creature can withdraw into its shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until it uses another Quick Action to emerge.
 - <strong>Slow Movement (Land).</strong> This creature can’t use more than 1 Movement per turn while on land.
 
+## Elemental
 
-### Elemental
-
-#### **Air Elemental**
+### **Air Elemental**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -468,7 +461,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Flying (hover). </strong>This creature can fly freely by hovering in the air with +1 Movement per turn.
 
 
-#### **Earth Elemental**
+### **Earth Elemental**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -491,7 +484,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Tremorsense. </strong>This creature can perceive the location of moving creatures and objects on connected surfaces with it’s own in medium range.
 
 
-#### **Fire Elemental**
+### **Fire Elemental**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -514,7 +507,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Flying (hover). </strong>This creature can fly freely by hovering in the air with +1 Movement per turn.
 
 
-#### **Water Elemental**
+### **Water Elemental**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -536,10 +529,9 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Aquatic (fast).</strong> This creature is immune to drowning and can swim with normal Movement. Also, this creature can swim with +2 Movement per turn.
 - <strong>Water Form.</strong> This creature can move through any space as narrow as one centimetre. If this creature suffers frost damage, it is briefly slowed.
 
+## Undead
 
-### Undead
-
-#### **Skeleton**
+### **Skeleton**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -561,7 +553,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
 
 
-#### **Zombie**
+### **Zombie**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -583,10 +575,9 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
 - <strong>Rotting Slowness.</strong> This creature can only move or take an Action per turn, not both. This creature can't use Quick Actions.
 
+## Aberration
 
-### Aberration
-
-#### **Chuul**
+### **Chuul**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -610,7 +601,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Night Vision.</strong> This creature can see one range category further from sources of bright and dim light.
 
 
-#### **Floating Eye**
+### **Floating Eye**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -631,7 +622,7 @@ Each companion will have one of the following traits, representing the type of c
 - <strong>Flying (hover). </strong>This creature can fly freely by hovering in the air.
 
 
-#### **Grell**
+### **Grell**
 
 | HP | AV | Attributes | Defenses |
 | --- | --- | --- | --- |
@@ -648,4 +639,3 @@ Each companion will have one of the following traits, representing the type of c
 **Abilities:**
 - <strong>Blindsight (medium).</strong> This creature can perceive it‘s surroundings at medium range without relying on sight.
 - <strong>Flying (hover).</strong> This creature can fly freely by hovering in the air.
-

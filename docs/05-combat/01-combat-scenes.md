@@ -57,7 +57,7 @@ The following actions are available to all combatants.
 | Help | Help an ally with a roll. Target an ally you are in melee range of. Announce for what Action you want to help your ally on their next turn. They gain +1 boon on that roll on their next turn. |
 | Retreat | Enemies can‘t use Opportunity Attacks against you this turn, while you spend Movement. |
 | Use Skill | There are different Actions you can take by rolling for a skill. See the list below for more details, or use an Improvised Action for any situation not covered by the existing Use Skill Actions. |
-| Improvised | If you want to do anything plausible, but not covered by the rules or your adventurer sheet, you can still attempt it! Explain your intended results to the GM and they might let you roll for it. If it is not within your skill set, you might suffer +1 bane on the roll. You can for example attempt to trip an opponent, when you don't have the Trip Combat Art learned. The GM might rule that you gain the effects of the Trip Combat Art, but the attack deals no damage.  |
+| Improvised | If you want to do anything plausible, but not covered by the rules or your adventurer sheet, you can still attempt it! Explain your intended results to the GM and they might let you roll for it. If it is not within your skill set, you might suffer +1 bane on the roll. You can for example attempt to trip an opponent, when you don't have the Trip Combat Art learned. The GM might rule that you gain the effects of the Trip Combat Art, but the attack deals no damage. |
 
 ## **Use Skills in Combat**
 
@@ -75,8 +75,7 @@ Use a variety of skills during combat to help you and your allies or hinder your
 
 ## Quick Actions
 
-Quick Actions are small actions that take no more than a few seconds. They can also be quick reactive abilities outside of your turn during combat. Quick Actions always have triggers for when they can be used. You can use one Quick Action on your turn or between your turns. You regain access to your Quick Action at the end of each of your turns.
-You can also always substitute an ability using a Quick Action on your turn by using your Action instead.
+Quick Actions are small actions that take no more than a few seconds. They can also be quick reactive abilities outside of your turn during combat. Quick Actions always have triggers for when they can be used. You can use one Quick Action on your turn or between your turns. You regain access to your Quick Action at the end of each of your turns.<br/>You can also always substitute an ability using a Quick Action on your turn by using your Action instead.
 
 | Quick Action | Trigger | Effect |
 | --- | --- | --- |
@@ -84,10 +83,6 @@ You can also always substitute an ability using a Quick Action on your turn by u
 | Guard | While wearing a shield, you are targeted by a ranged attack or area effect. | Until your next turn, you can defend with your Parry instead of your Dodge. |
 | Opportunity Attack | An enemy in your melee reach attempts to move out of melee (unless they are moved involuntarily by another source). | Roll an attack against the enemy with a melee weapon you wield. You can’t use any abilities or Combat Arts on this attack.<br/>Instead of an attack, you can also attempt to grapple the enemy if they are in melee range. |
 | Protect Ally | When an ally close to you is attacked. | You quickly step into the way and take the hit instead. As part of this Quick Action, you move into melee range of your targeted ally. The enemy then rolls against your Defense. If they hit, you take the damage instead of your ally. |
-| Delay Action | You can use your Quick Action on your turn to delay your Action until some condition is met. | You can use that delayed Action once the condition is met before your next turn.  |
+| Delay Action | You can use your Quick Action on your turn to delay your Action until some condition is met. | You can use that delayed Action once the condition is met before your next turn. |
 
-# Combat Quick Sheet
-
-You can print out this sheet to to quickly reference the key rules for combat at the table.
-
-![](./img/combat-quick-references.png)
+X

@@ -1,0 +1,132 @@
+{
+  "mappings": {
+    "pages": {
+      "Attributes": {
+        "target": "docs/03-statistics/01-attributes.md",
+        "title": "💪 Attributes",
+        "banner": "/img/banner/attributes-banner.png"
+      },
+      "Character Creation": {
+        "target": "docs/01-basic-rules/02-character-creation.md",
+        "title": "📋 Character Creation",
+        "banner": "/img/banner/character-creation-banner.png"
+      },
+      "Character Progression": {
+        "target": "docs/01-basic-rules/04-character-progression.md",
+        "title": "⭐ Character Progression",
+        "banner": "/img/banner/character-progression-banner.png"
+      },
+      "General Rulings": {
+        "target": "docs/01-basic-rules/05-general-rulings.md",
+        "title": "ℹ️ General Rulings",
+        "banner": "/img/banner/rulings-banner.png"
+      },
+      "Attacking": {
+        "target": "docs/05-combat/02-attacking.md",
+        "title": "🤺 Attacking",
+        "banner": "/img/banner/attacking-banner.png"
+      },
+      "Combat Scenes": {
+        "target": "docs/05-combat/01-combat-scenes.md",
+        "title": "💥 Combat Scenes",
+        "banner": "/img/banner/combat-scenes-banner.png"
+      },
+      "Distances & Movement": {
+        "target": "docs/05-combat/03-distances-movement.md",
+        "title": "📏 Distances & Movement",
+        "banner": "/img/banner/distances-movement-banner.png"
+      },
+      "Defenses": {
+        "target": "docs/03-statistics/03-defenses.md",
+        "title": "🛡 Defenses",
+        "banner": "/img/banner/defenses-banner.png"
+      },
+      "Items": {
+        "target": "docs/04-equipment/01-items.md",
+        "title": "🎒 Items",
+        "banner": "/img/banner/equipment-banner.png"
+      },
+      "Weapon & Armor Properties": {
+        "target": "docs/04-equipment/05-armor-weapon-properties.md",
+        "title": "#️⃣ Weapon & Armor Properties",
+        "banner": "/img/banner/weapon-armor-properties-banner.png"
+      },
+      "Exotic Weapons": {
+        "target": "docs/04-equipment/06-exotic-weapons.md",
+        "title": "⚒️ Exotic Weapons",
+        "banner": "/img/banner/masterwork-exotic-weapons-banner.png"
+      },
+      "Mounts & Companions": {
+        "target": "docs/08-creatures/01-mounts-companions.mdx",
+        "title": "🐎 Mounts & Companions",
+        "banner": "/img/banner/mounts-companions-banner.png)",
+        "preserve_sections": [
+          {
+            "marker": "### Companion Statistics",
+            "component": "<BrowserOnly fallback={<div>Loading Companion Builder...</div>}>\n  {() => <CompanionBuilderWrapper />}\n</BrowserOnly>"
+          }
+        ],
+        "extract_sections": [
+          {
+            "start_marker": "### Common Mounts",
+            "end_marker": "## Companions",
+            "target": "docs/08-creatures/01-mounts-companions/mounts.md",
+            "title": "🐴 Common Mounts",
+            "sidebar_position": 1,
+            "replacement": "For the full list of available mounts, see the [Mounts](./01-mounts-companions/mounts) page."
+          }
+        ],
+        "replace_sections": [
+          {
+            "start_marker": "## Companion Traits",
+            "end_marker": "<br/><br/>More Ideas",
+            "replacement": "For detailed companion traits, see the [Companion Traits](./01-mounts-companions/traits) page."
+          }
+        ]
+      },
+      "Creature Rules": {
+        "target": "docs/08-creatures/02-creature-rules.md",
+        "title": "📜 Creature Rules",
+        "banner": "/img/banner/creature-rules-banner.png"
+      },
+      "Crafting Professions": {
+        "target": "docs/06-scenes/05-crafting-professions.md",
+        "title": "🔨 Crafting Professions",
+        "banner": "/img/banner/crafting-banner.png"
+      },
+      "Effect Durations": {
+        "target": "docs/06-scenes/02-effect-durations.md",
+        "title": "⚡ Effect Durations",
+        "banner": "/img/banner/effect-duration-banner.png"
+      }
+    },
+    "databases": {
+      "Creatures": {
+        "target_dir": "docs/08-creatures/03-creatures",
+        "type": "creatures",
+        "split_by": "Tier",
+        "sections": ["tier-0", "tier-1", "tier-2", "tier-3", "tier-4", "tier-5"]
+      },
+      "Equipment": {
+        "target_dir": "docs/04-equipment/02-equipment",
+        "type": "equipment",
+        "split_by": "Category",
+        "sections": ["animals", "alchemy", "clothes", "containers", "gear", "supply", "toolkits", "trade-goods", "transportation"]
+      }
+    }
+  },
+  "databases_via_pipeline": [
+    "Combat Arts",
+    "Talents", 
+    "Arcane Spells",
+    "Mystic Spells",
+    "Companion Traits"
+  ],
+  "ignore_patterns": [
+    "*(OLD)*",
+    "*Playtest*",
+    "*Test*",
+    "*Images*",
+    "*Changelog*"
+  ]
+}

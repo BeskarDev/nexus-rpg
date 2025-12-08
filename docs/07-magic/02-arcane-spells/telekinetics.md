@@ -10,7 +10,7 @@ sidebar_position: 5
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Short | -
 
-**Effect** <br/> You telekinetically hold onto a target object or creature of medium or smaller size within range and violently pull them towards you.<br/>When targeting an object held by a creature, you suffer +1 bane on the roll.<br/><strong>Weak.</strong> Pull the target up to a close distance towards you.<br/><strong>Strong.</strong> Pull the target up to a close distance towards you and they fall prone.<br/><strong>Critical.</strong> Pull the target up to a short distance towards you and they fall prone.<br/>This Movement is treated the same as pushing in regards to Opportunity Attacks, larger creatures, and other effects.<br/> 
+**Effect** <br/> You telekinetically hold onto a target object or creature of medium or smaller size within range and violently pull them towards you.<br/>When targeting an object held by a creature, you suffer +1 bane on the roll.<br/><strong>Weak.</strong> Pull the target up to a close distance towards you.<br/><strong>Strong.</strong> Pull the target up to a close distance towards you and they fall prone.<br/><strong>Critical.</strong> Pull the target up to a short distance towards you and they fall prone.<br/>This Movement is treated the same as pushing in regards to Opportunity Attacks, larger creatures, and other effects. 
 
 ### Kinetic Push
 
@@ -34,7 +34,7 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Medium | concentrate
 
-**Effect** <br/> You create a tiny orb of pure force at the target location, pulling everything around it towards it. This spell targets every medium or smaller sized creature in close range of the orb.<br/><strong>Weak.</strong> Each target is briefly slowed.<br/><strong>Strong.</strong> Each target is briefly grappled by the orb.<br/><strong>Critical.</strong> Each target is briefly grappled and restrained by orb.<br/>The close area around the orb is considered difficult terrain. When any medium or smaller sized creature first enters the orb‘s range or starts it‘s turn there, they have to roll Strength + Athletics. On a failure, they are briefly grappled and restrained by the orb.<br/>The orb lasts for a short duration.<br/> 
+**Effect** <br/> You create a tiny orb of pure force at the target location, pulling everything around it towards it. This spell targets every medium or smaller sized creature in close range of the orb.<br/><strong>Weak.</strong> Each target is briefly slowed.<br/><strong>Strong.</strong> Each target is briefly grappled by the orb.<br/><strong>Critical.</strong> Each target is briefly grappled and restrained by orb.<br/>The close area around the orb is considered difficult terrain. When any medium or smaller sized creature first enters the orb‘s range or starts it‘s turn there, they have to roll Strength + Athletics. On a failure, they are briefly grappled and restrained by the orb.<br/>The orb lasts for a short duration. 
 
 ### Reflective Barrier
 
@@ -42,7 +42,7 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | concentrate
 
-**Effect** <br/> You create a nearly invisible energy barrier around you, held up by your mental power.<br/>On a success, the barrier grants you +4 AV (armor bonus) and lasts for a short duration.<br/>While the barrier is active, when you are attacked by a ranged attack and they miss you, you can use a Quick Action to reflect their attack back on them. Roll Mind + Arcana vs. their Dodge. On a hit, resolve the attack’s normal effects.<br/> 
+**Effect** <br/> You create a nearly invisible energy barrier around you, held up by your mental power.<br/>On a success, the barrier grants you +4 AV (armor bonus) and lasts for a short duration.<br/>While the barrier is active, when you are attacked by a ranged attack and they miss you, you can use a Quick Action to reflect their attack back on them. Roll Mind + Arcana vs. their Dodge. On a hit, resolve the attack’s normal effects. 
 
 ### Shockwave
 
@@ -74,7 +74,7 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You push yourself against the pull of the earth, letting you hover visibly above the ground.<br/>On a success, you start levitating. While levitating, you gain the following effects:<br/>- You gain +1 boon on Agility + Stealth rolls to move silently.<br/>- You can’t move more than a short distance per turn.<br/>- You ignore the effects of difficult terrain from the ground below you.<br/>- You don‘t trigger any mechanisms in the ground, such as pressure plates.<br/>- When you would fall, you instead softly glide a short distance per round lower.<br/>The levitation lasts for a medium duration. If the spell ends while you still fall, you fall the remaining distance as normal.<br/> 
+**Effect** <br/> You push yourself against the pull of the earth, letting you hover visibly above the ground.<br/>On a success, you start levitating. While levitating, you gain the following effects:<br/>- You gain +1 boon on Agility + Stealth rolls to move silently.<br/>- You can’t move more than a short distance per turn.<br/>- You ignore the effects of difficult terrain from the ground below you.<br/>- You don‘t trigger any mechanisms in the ground, such as pressure plates.<br/>- When you would fall, you instead softly glide a short distance per round lower.<br/>The levitation lasts for a medium duration. If the spell ends while you still fall, you fall the remaining distance as normal. 
 
 ### Orbiting Shards
 
@@ -90,7 +90,7 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> You pressure a creature in kinetic force from all sides, making them unable to move. You suffer +1 bane on the roll for every size category the target is larger than you.<br/>On a success, the target is stunned while you concentrate on this spell. If the target takes damage while stunned by this spell, you automatically lose concentration for it and the effect ends.<br/>You can use your Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, continue the spell’s effect. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it for free.<br/> 
+**Effect** <br/> You pressure a creature in kinetic force from all sides, making them unable to move. You suffer +1 bane on the roll for every size category the target is larger than you.<br/>On a success, the target is stunned while you concentrate on this spell. If the target takes damage while stunned by this spell, you automatically lose concentration for it and the effect ends.<br/>You can use your Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, continue the spell’s effect. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it for free. 
 
 ### Strong Telekinesis
 

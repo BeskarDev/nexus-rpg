@@ -33,8 +33,7 @@ To attack with a melee weapon or spell you have to be in melee range of your tar
 
 ### Unarmed Attacks
 
-When you have nothing to defend yourself with, you can still throw a punch!
-Unarmed attacks are made with Strength + Fighting and have 1 weapon damage (but no further weapon properties). Unarmed attacks don’t count as wielding a weapon in regards to Combat Arts or other abilities, unless you use your natural weapons or have the Pugilist talent.
+When you have nothing to defend yourself with, you can still throw a punch!<br/>Unarmed attacks are made with Strength + Fighting and have 1 weapon damage (but no further weapon properties). Unarmed attacks don’t count as wielding a weapon in regards to Combat Arts or other abilities, unless you use your natural weapons or have the Pugilist talent.
 
 ### Non-lethal Attacks
 
@@ -51,6 +50,8 @@ When attacking with a ranged weapon or spell at any range further than medium or
 ### Cover
 
 If the target is only partially visible, add +1 bane to your ranged attack against them.
+
+This applies when a creature can hide behind some object or other creature covering half or more of their body. For example, a 1 meter high stone wall or large tree will provide cover. Cover is also applied to a creature which stands in a narrow passage or archway and has another creature of the same or larger Size in front of them. Smaller creatures in front don’t count as cover for bigger creatures.
 
 ### Shooting into or out of Melee
 
@@ -81,7 +82,6 @@ When some effect inflicts some amount of lasting damage on you, you first take n
 There exist multiple damage types which describe the various ways of inflicting harm. If some effect adds damage of a specific type to an attack, all of the attack‘s damage is treated as that damage type.
 
 > If an attack, spell, or effect mentions no specific damage type, the damage is always assumed to be physical.
-> 
 
 | Damage Type | Description |
 | --- | --- |
@@ -146,7 +146,9 @@ Refer to the table below to see what the statistics of any given object are.
 | Object Type | Defense | AV | HP |
 | --- | --- | --- | --- |
 | rope | 12 | 0 | 5 |
-| ceramic vase or pot | 10 | 2 (Light) | 5 |
-| wooden door or chest | 8 | 5 (Light) | 10 |
-| metal door or chest | 8 | 10 (Heavy) | 20 |
-| stone wall | 8 | 20 (Heavy) | 40 |
+| ceramic vase or pot | 10 | 2 (light) | 5 |
+| wooden door or chest | 8 | 5 (light) | 10 |
+| metal door or chest | 8 | 10 (heavy) | 20 |
+| stone wall | 8 | 20 (heavy) | 40 |
+
+X

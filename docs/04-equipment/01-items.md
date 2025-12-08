@@ -47,7 +47,6 @@ Carts, wagons, and chariots are included in this category. Similarly to containe
 Equipment are the types of items that you carry on your person. You can only ever wear one piece of equipment per slot (except rings) and benefit from their effects.
 
 **Equipment Slots**
-
 - Head (*helmet, headband, mask*)
 - Neck (*amulet, brooch, scarf*)
 - Back (*cape, cloak, mantle*)
@@ -79,7 +78,6 @@ Each item has a Quality rating between 1 (primitive) and 8 (mythical) associated
 Adventurers amass wealth in the abstracted currency of “coins” over their adventures (sometimes abbreviated as “c”). This abstracted currency is assumed to represent the local currency of the region the adventurers are located in, for example “1 coin” or “1c” might be equal in value to “1 silver piece”.
 
 > Generally, items can be sold for half their value. The exception are designated trade goods or gems, which can be sold for their full value.
-> 
 
 Here are some examples for how much different items or services are worth:
 
@@ -116,9 +114,10 @@ Carrying around items takes up an abstracted form of encumbrance called “load�
 An adventurer’s max. amount of load they can carry without being encumbered is equal to 1/2 Strength + 8. This number is called your “carrying capacity”. You can never physically carry more than 2 x your carrying capacity.
 
 > While encumbered, you suffer the following effects:
-> 
 > - You suffer +1 bane on Strength/Agility rolls for any kind of movement (climbing, swimming, jumping, …)
+>
 > - You can’t take the Dash Action or the Evade Quick Action
+>
 > - Whenever you suffer Fatigue during travel, you suffer +1 Fatigue
 
 | Strength | Carrying Capacity |
@@ -134,14 +133,12 @@ An adventurer’s max. amount of load they can carry without being encumbered is
 You are able to carry items in your hands, in a container on your body, or within some kind of external storage (e.g. pack animal, wagon, base camp).
 
 > You can designate up to 4 items on your person as “quick access”, meaning you have them readily available from your belt or or other visible container on your person.
-> 
 
 Depending on where you have stored any given item, you might have quick access to it or might require more time and effort to retrieve it:
 
 - **Quick Access.** At the start of your turn, you can retrieve or switch any of these items freely, as long as you have at least one hand free.
 - **Carried Container.** Spend an Action to retrieve any one item from your backpack or any other storage container you are in touching range of (e.g. saddle bags of a pack animal).
-- **Storage.** This item is located at some stationary place of your choosing (e.g. a house or storage facility) and not on your person during the adventure.
-
+- **Storage. **This item is located at some stationary place of your choosing (e.g. a house or storage facility) and not on your person during the adventure.
 **Storage Options**
 
 You can buy different storage options for your amassed treasure and equipment you collected during your adventures. You can find available options in the Equipment section under Transportation or Housing.
@@ -157,7 +154,6 @@ There are different ways of how uses are spend:
 - If you produce a specific tool from a toolkit, spend 1 use
 
 > You can repair or refill one use of an item by spending 1/10th of the item’s original cost (rounded up).
-> 
 
 ### Durability
 
@@ -166,8 +162,7 @@ During different points of any adventure, you will have to make Durability check
 Once you spend the last use of any item for Durability, the item becomes damaged (the effects are described under the Weapon & Armor Properties section). If you would ever have to spend 1 use for a damaged item, it becomes broken and can’t be used anymore.
 
 > To repair a broken item during downtime costs 1/2 the item’s original cost (rounded up). You still have to spend further coins to repair the item’s uses.
-In the case of a magic item, further efforts might be required to restore it’s magical properties.
-> 
+> In the case of a magic item, further efforts might be required to restore it’s magical properties.
 
 | Durability Die | Item Type Examples |
 | --- | --- |
