@@ -4,9 +4,9 @@ import {
 	SearchDialog,
 	SearchDialogColumn,
 } from '../02_Items/SearchDialog/GenericSearchDialog'
-import combatArtsData from '../../../../utils/json/combat-arts.json'
+import combatArtsData from '../../../../utils/data/json/combat-arts.json'
 import { CharacterDocument, Ability } from '../../../../types/Character'
-import { sanitizeHtml } from '../../../../utils/htmlSanitizer'
+import { sanitizeHtml } from '../../../../utils/typescript/htmlSanitizer'
 
 // Function to get color for combat art categories
 const getCategoryColor = (

@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 // Mock the JSON data first
-vi.mock('@site/src/utils/json/arcane-spells.json', () => ({
+vi.mock('@site/src/utils/data/json/arcane-spells.json', () => ({
 	default: [
 		{
 			name: 'Magic Missile',

@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
-import { getHpBarColor } from '@site/src/utils/getHpBarColor'
+import { getHpBarColor } from '@site/src/utils/typescript/getHpBarColor'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Remove, Add } from '@mui/icons-material'
 import {

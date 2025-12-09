@@ -11,14 +11,14 @@
  * - Wearable enchantments aligned with one-handed weapon costs
  */
 
-import weaponsData from '../../../../../utils/json/weapons.json'
-import armorData from '../../../../../utils/json/armor.json'
-import equipmentData from '../../../../../utils/json/equipment.json'
-import specialMaterialsData from '../../../../../utils/json/magic-item-materials.json'
-import enchantmentsData from '../../../../../utils/json/magic-item-enchantments.json'
-import spellCatalystsData from '../../../../../utils/json/magic-item-spell-catalysts.json'
-import helmetsData from '../../../../../utils/json/magic-item-helmets.json'
-import wearablesData from '../../../../../utils/json/magic-item-wearables.json'
+import weaponsData from '../../../../../utils/data/json/weapons.json'
+import armorData from '../../../../../utils/data/json/armor.json'
+import equipmentData from '../../../../../utils/data/json/equipment.json'
+import specialMaterialsData from '../../../../../utils/data/json/magic-item-materials.json'
+import enchantmentsData from '../../../../../utils/data/json/magic-item-enchantments.json'
+import spellCatalystsData from '../../../../../utils/data/json/magic-item-spell-catalysts.json'
+import helmetsData from '../../../../../utils/data/json/magic-item-helmets.json'
+import wearablesData from '../../../../../utils/data/json/magic-item-wearables.json'
 
 export type QualityTier = 3 | 4 | 5 | 6 | 7 | 8
 

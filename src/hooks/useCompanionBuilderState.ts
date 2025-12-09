@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { CompanionBuilderRootState } from '../features/CompanionBuilder/store'
-import { calculateStats } from '../utils/companionCalculations'
+import { calculateStats } from '../utils/typescript/companion/companionCalculations'
 import { CompanionStats } from '../types/companion'
 
 export const useCompanionBuilderState = () => {

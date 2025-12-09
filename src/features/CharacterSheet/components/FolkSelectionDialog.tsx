@@ -4,7 +4,7 @@ import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
 } from './SingleSelectionDialog'
-import folkData from '../../../utils/json/folk.json'
+import folkData from '../../../utils/data/json/folk.json'
 
 export type FolkSelectionDialogProps = {
 	open: boolean

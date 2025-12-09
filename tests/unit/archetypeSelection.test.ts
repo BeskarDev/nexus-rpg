@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { createInitialCharacter } from '@site/src/features/CharacterSheet/utils/createInitialCharacter'
 import type { ArchetypeData } from '@site/src/features/CharacterSheet/components'
-import archetypesJson from '@site/src/utils/json/archetypes.json'
+import archetypesJson from '@site/src/utils/data/json/archetypes.json';
 
 describe('Archetype Selection', () => {
 	it('should load all 25 archetypes from JSON', () => {

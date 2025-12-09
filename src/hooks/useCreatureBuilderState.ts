@@ -8,7 +8,7 @@ import {
 	calculateAttributes,
 	getWeaponDamage,
 	getArchetypeData,
-} from '../utils/creatureBuilderCalculations'
+} from '../utils/typescript/creature/creatureBuilderCalculations'
 import { BuiltCreature } from '../types/CreatureBuilder'
 
 export const useCreatureBuilderState = () => {

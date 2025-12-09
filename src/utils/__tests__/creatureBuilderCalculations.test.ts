@@ -12,7 +12,7 @@ import {
 	calculateBaseDamage,
 	formatDamageString,
 	calculateAttributes,
-} from '../creatureBuilderCalculations'
+} from '../typescript/creature/creatureBuilderCalculations'
 
 describe('creatureBuilderCalculations', () => {
 	describe('getTierData', () => {

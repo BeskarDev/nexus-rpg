@@ -236,7 +236,7 @@ export const testResponsiveRendering = async (
  * Helper to mock JSON data imports
  */
 export const mockJsonImports = () => {
-	vi.mock('@site/src/utils/json/arcane-spells.json', () => ({
+	vi.mock('@site/src/utils/data/json/arcane-spells.json', () => ({
 		default: [
 			{
 				name: 'Test Arcane Spell',
@@ -252,7 +252,7 @@ export const mockJsonImports = () => {
 		],
 	}))
 
-	vi.mock('@site/src/utils/json/mystic-spells.json', () => ({
+	vi.mock('@site/src/utils/data/json/mystic-spells.json', () => ({
 		default: [
 			{
 				name: 'Test Mystic Spell',
@@ -268,7 +268,7 @@ export const mockJsonImports = () => {
 		],
 	}))
 
-	vi.mock('@site/src/utils/json/combat-arts.json', () => ({
+	vi.mock('@site/src/utils/data/json/combat-arts.json', () => ({
 		default: [
 			{
 				name: 'Test Combat Art',

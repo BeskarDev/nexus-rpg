@@ -23,7 +23,7 @@ import { MysticSpell } from '@site/src/types/MysticSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import mysticSpellData from '../../utils/json/mystic-spells.json'
+import mysticSpellData from '../../utils/data/json/mystic-spells.json';
 import './mysticSpellsStyles.css'
 import { MysticSpellCard } from './MysticSpellCard'
 import { CharacterSelector } from '../PrintingTools'

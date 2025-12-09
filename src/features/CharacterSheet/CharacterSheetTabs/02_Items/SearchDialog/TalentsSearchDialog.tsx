@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
-import talentsData from '../../../../../utils/json/talents.json'
+import talentsData from '../../../../../utils/data/json/talents.json'
 import { CharacterDocument } from '../../../../../types/Character'
-import { sanitizeHtml } from '../../../../../utils/htmlSanitizer'
+import { sanitizeHtml } from '../../../../../utils/typescript/htmlSanitizer'
 
 // 16 Skills, 6 MUI colors: primary, secondary, error, warning, info, success
 // Ziel: Keine Farbe direkt nacheinander im Alphabet wiederholen

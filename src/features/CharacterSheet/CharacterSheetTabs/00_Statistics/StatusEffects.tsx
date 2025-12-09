@@ -28,8 +28,8 @@ import {
 } from '@site/src/types/Character'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-import conditionsData from '@site/src/utils/json/conditions.json'
-import { sanitizeHtml } from '@site/src/utils/htmlSanitizer'
+import conditionsData from '@site/src/utils/data/json/conditions.json'
+import { sanitizeHtml } from '@site/src/utils/typescript/htmlSanitizer'
 import { statusEffectIcons, durationOptions } from '../../constants'
 
 interface StatusEffectsProps {

@@ -4,7 +4,7 @@ import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
 } from './SingleSelectionDialog'
-import backgroundsData from '../../../utils/json/backgrounds.json'
+import backgroundsData from '../../../utils/data/json/backgrounds.json'
 import { getSkillChipColor } from '../../../constants/skills'
 
 export type BackgroundSelectionDialogProps = {

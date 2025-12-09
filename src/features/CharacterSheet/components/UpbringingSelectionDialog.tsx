@@ -4,7 +4,7 @@ import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
 } from './SingleSelectionDialog'
-import upbringingsData from '../../../utils/json/upbringings.json'
+import upbringingsData from '../../../utils/data/json/upbringings.json'
 import { getSkillChipColor } from '../../../constants/skills'
 
 export type UpbringingSelectionDialogProps = {

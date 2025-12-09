@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react'
 import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
-import equipmentData from '../../../../../utils/json/equipment.json'
-import armorData from '../../../../../utils/json/armor.json'
+import equipmentData from '../../../../../utils/data/json/equipment.json'
+import armorData from '../../../../../utils/data/json/armor.json'
 import {
 	Item,
 	CharacterDocument,

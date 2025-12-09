@@ -6,7 +6,7 @@ import {
 	CreatureAttack,
 	CreatureAbility,
 } from '../types/CreatureBuilder'
-import { buildCreature } from '../utils/creatureBuilderCalculations'
+import { buildCreature } from '../utils/typescript/creature/creatureBuilderCalculations'
 
 export function useCreatureBuilder() {
 	const [state, setState] = useState<CreatureBuilderState>({

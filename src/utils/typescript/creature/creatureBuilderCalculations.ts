@@ -1,7 +1,7 @@
-import creatureTiers from './json/creature-tiers.json'
-import creatureArchetypes from './json/creature-archetypes.json'
-import creatureSizes from './json/creature-sizes.json'
-import { modifyDie } from './companionCalculations'
+import creatureTiers from '../../data/json/creature-tiers.json'
+import creatureArchetypes from '../../data/json/creature-archetypes.json'
+import creatureSizes from '../../data/json/creature-sizes.json'
+import { modifyDie } from '../companion/companionCalculations'
 import {
 	CreatureTier,
 	CreatureArchetype,

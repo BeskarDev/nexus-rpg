@@ -4,7 +4,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { FolkSelectionDialog } from '../FolkSelectionDialog'
 
 // Mock the folk data
-vi.mock('../../../../utils/json/folk.json', () => ({
+vi.mock('../../../../utils/data/json/folk.json', () => ({
 	default: [
 		{
 			name: 'Dwarf',
