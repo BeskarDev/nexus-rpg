@@ -29,7 +29,19 @@
       "Folk": {
         "target": "docs/02-adventurers/01-folk.md",
         "title": "🧝‍♀️ Folk",
-        "banner": "/img/banner/folk-banner.png"
+        "banner": "/img/banner/folk-banner.png",
+        "inject_images": {
+          "Dwarf": "./img/dwarf.jpeg",
+          "Elf": "./img/elf.jpeg",
+          "Gnome": "./img/gnome.png",
+          "Hune": "./img/hune.jpeg",
+          "Orc": "./img/orc.jpeg",
+          "Goblin": "./img/goblin.jpeg",
+          "Human": "./img/human.jpeg",
+          "Catfolk": "./img/lionfolk.jpeg",
+          "Lizardfolk": "./img/lizardfolk.jpeg",
+          "Minotaur": "./img/minotaur.jpeg"
+        }
       },
       "Languages": {
         "target": "docs/02-adventurers/02-languages.md",
@@ -228,27 +240,19 @@
         "target": "docs/06-scenes/02-effect-durations.md",
         "title": "⚡ Effect Durations",
         "banner": "/img/banner/effect-duration-banner.png"
-      }
-    },
-    "databases": {
+      },
       "Weapons": {
-        "target_dir": "docs/04-equipment/03-weapons",
-        "type": "weapons",
-        "use_html": true,
-        "split_by": "Type",
-        "overview_target": "docs/04-equipment/03-weapons.md",
+        "target": "docs/04-equipment/03-weapons.md",
         "title": "🗡️ Weapons",
         "banner": "/img/banner/weapons-banner.png"
       },
       "Armor": {
-        "target_dir": "docs/04-equipment/04-armor",
-        "type": "armor",
-        "use_html": true,
-        "split_by": "Type",
-        "overview_target": "docs/04-equipment/04-armor.md",
+        "target": "docs/04-equipment/04-armor.md",
         "title": "🛡️ Armor",
         "banner": "/img/banner/armor-banner.png"
-      },
+      }
+    },
+    "databases": {
       "Creatures": {
         "target_dir": "docs/08-creatures/03-creatures",
         "type": "creatures",

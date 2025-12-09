@@ -152,6 +152,11 @@ class NotionImporter:
                 title = mapping.get('title', '')
                 markdown = convert_html_to_markdown(html_file, title)
                 
+                # Inject images if configured
+                inject_images = mapping.get('inject_images')
+                if inject_images:
+                    markdown = self._inject_images_after_sections(markdown, inject_images)
+                
                 # Get target file path
                 target_path = self.project_root / mapping['target']
                 
@@ -490,12 +495,25 @@ sidebar_position: {idx + 2}
         target_dir = self.project_root / mapping['target_dir']
         target_dir.mkdir(parents=True, exist_ok=True)
         
+        # Remove split column from headers for output
+        output_headers = [h for i, h in enumerate(headers) if i != split_col_idx]
+        
         for idx, (category, rows) in enumerate(sorted(rows_by_category.items())):
-            # Create a new table for this category
+            # Create a new table for this category, removing the split column
+            # Build header row without split column
+            header_row = "".join(f"<th>{h}</th>" for i, h in enumerate(headers) if i != split_col_idx)
+            
+            # Build body rows without split column
+            body_rows = []
+            for row in rows:
+                cells = row.find_all(['td', 'th'])
+                row_html = "<tr>" + "".join(str(cell) for i, cell in enumerate(cells) if i != split_col_idx) + "</tr>"
+                body_rows.append(row_html)
+            
             table_html = f'''<table>
-<thead><tr>{"".join(f"<th>{h}</th>" for h in headers)}</tr></thead>
+<thead><tr>{header_row}</tr></thead>
 <tbody>
-{"".join(str(row) for row in rows)}
+{"".join(body_rows)}
 </tbody>
 </table>'''
             
@@ -542,48 +560,44 @@ sidebar_position: {idx + 1}
         html_file = html_files[0]
         
         try:
-            # Convert HTML to Markdown (excluding table)
+            # Read and parse HTML
             from bs4 import BeautifulSoup
+            from notion_html_converter import NotionHtmlConverter
             
             with open(html_file, 'r', encoding='utf-8') as f:
                 html_content = f.read()
             
             soup = BeautifulSoup(html_content, 'html.parser')
             
-            # Remove table from content
-            table = soup.find('table')
-            if table:
+            # Find and remove ALL tables (usually property table + data table)
+            tables = soup.find_all('table')
+            for table in tables:
                 table.decompose()
             
-            # Convert remaining content
-            from notion_html_converter import convert_html_to_markdown
-            markdown = convert_html_to_markdown(html_file)
+            # Now convert the modified soup to markdown
+            converter = NotionHtmlConverter()
             
-            # Remove any table markdown that might remain
-            lines = markdown.split('\n')
-            filtered_lines = []
-            in_table = False
+            # Find the main content area
+            content_area = soup.find('article') or soup.find('body')
+            if content_area:
+                markdown = converter._convert_element(content_area)
+                markdown = converter._clean_markdown(markdown)
+            else:
+                markdown = ""
             
-            for line in lines:
-                if line.strip().startswith('|'):
-                    in_table = True
-                    continue
-                elif in_table and not line.strip():
-                    in_table = False
-                    continue
-                elif not in_table:
-                    filtered_lines.append(line)
-            
-            markdown = '\n'.join(filtered_lines).strip()
-            
-            # Add links to categories
+            # Add section for browsing categories
             category_links = []
             for category in sorted(categories):
                 filename = category.lower().replace(' ', '-').replace('/', '-')
-                category_links.append(f"- [{category}](./{filename})")
+                # Format: ### [Category](./filename) with proper capitalization
+                category_name = category.title()
+                category_links.append(f"### [{category_name}](./{filename})")
             
             if category_links:
-                markdown += "\n\n## Categories\n\n" + '\n'.join(category_links)
+                # Use appropriate section title based on database type
+                db_type = mapping.get('type', 'items')
+                section_title = f"Browse {mapping.get('title', db_type.title()).replace('🗡️ ', '').replace('🛡️ ', '').replace('💰 ', '').replace('🐻 ', '')}"
+                markdown += f"\n\n## {section_title}\n\n" + '\n\n'.join(category_links)
             
             # Save overview page
             target_path = self.project_root / overview_target
@@ -694,6 +708,71 @@ sidebar_position: {position}
             error_msg = f"Failed to process database {csv_file.name}: {e}"
             self.stats['errors'].append(error_msg)
             print(f"  ✗ Error: {error_msg}")
+    
+    def _inject_images_after_sections(self, markdown: str, image_config: dict) -> str:
+        """Inject images after blockquotes in specified sections.
+        
+        Args:
+            markdown: The markdown content
+            image_config: Dict mapping section names to image paths
+                         e.g., {"Dwarf": "./img/dwarf.jpeg", "Elf": "./img/elf.jpeg"}
+        
+        Returns:
+            Modified markdown with images injected
+        """
+        lines = markdown.split('\n')
+        result_lines = []
+        i = 0
+        
+        while i < len(lines):
+            line = lines[i]
+            result_lines.append(line)
+            
+            # Check if this is a section heading that needs an image
+            if line.startswith('### '):
+                section_name = line.replace('### ', '').strip()
+                
+                if section_name in image_config:
+                    # Look ahead for the blockquote
+                    j = i + 1
+                    blockquote_end = None
+                    
+                    # Skip empty lines after heading
+                    while j < len(lines) and not lines[j].strip():
+                        result_lines.append(lines[j])
+                        j += 1
+                    
+                    # Find the end of the blockquote
+                    in_blockquote = False
+                    while j < len(lines):
+                        if lines[j].strip().startswith('>'):
+                            in_blockquote = True
+                            result_lines.append(lines[j])
+                            j += 1
+                        elif in_blockquote and not lines[j].strip():
+                            # Empty line after blockquote - this is where we inject
+                            blockquote_end = j
+                            break
+                        elif in_blockquote:
+                            # Non-empty, non-blockquote line - blockquote ended
+                            blockquote_end = j - 1
+                            break
+                        else:
+                            # Not in blockquote yet, keep looking
+                            result_lines.append(lines[j])
+                            j += 1
+                    
+                    # Inject image after blockquote
+                    if blockquote_end is not None:
+                        image_path = image_config[section_name]
+                        result_lines.append('')  # Blank line before image
+                        result_lines.append(f'![folk-img]({image_path})')
+                        result_lines.append('')  # Blank line after image
+                        i = j - 1  # Continue from where we left off
+            
+            i += 1
+        
+        return '\n'.join(result_lines)
     
     def _should_ignore(self, filename: str, ignore_patterns: List[str]) -> bool:
         """Check if filename matches any ignore pattern."""

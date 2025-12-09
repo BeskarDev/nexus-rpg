@@ -174,7 +174,7 @@ class NotionHtmlConverter:
         elif tag == 'p':
             content = self._convert_children(element)
             if content.strip():
-                # Add extra newline to ensure blank line after paragraph
+                # Double newline after paragraphs for proper markdown block spacing
                 result.append(f"\n{content}\n\n")
         elif tag == 'strong' or tag == 'b':
             content = self._convert_children(element)
@@ -298,8 +298,7 @@ class NotionHtmlConverter:
                 # Regular blockquote without br elements
                 lines = content.strip().split('\n')
                 quoted = '\n'.join(f"> {line}" if line.strip() else '>' for line in lines)
-                # Add extra newline to ensure blank line after blockquote
-                result.append(f"\n{quoted}\n\n")
+                result.append(f"\n{quoted}\n")
         elif tag == 'a':
             text = self._get_text_content(element)
             href = element.get('href', '')
@@ -328,9 +327,17 @@ class NotionHtmlConverter:
                     filename = filename_match.group(1)
                     # Remove hashcode pattern (e.g., dwarf-9690b5da2510981f81d96d0dd19dd88e.jpeg -> dwarf.jpeg)
                     clean_filename = re.sub(r'-[0-9a-f]{32}', '', filename)
-                    # Use local path structure
-                    src = f"/img/banner/{clean_filename}"
-                    result.append(f"\n![{alt or 'image'}]({src})\n")
+                    
+                    # Determine path based on alt text
+                    # Banner images use absolute path, inline content images use relative path
+                    if alt in ['banner-img', 'banner', '']:
+                        # Banner image at top of page
+                        src = f"/img/banner/{clean_filename}"
+                    else:
+                        # Inline content image (folk-img, creature-img, etc.) - use relative path
+                        src = f"./img/{clean_filename}"
+                    
+                    result.append(f"\n![{alt}]({src})\n")
                 else:
                     # Fallback: use original if pattern not matched, but add warning comment
                     result.append(f"\n<!-- TODO: Fix image path -->\n![{alt or 'image'}]({src})\n")
@@ -456,11 +463,43 @@ class NotionHtmlConverter:
         # Convert them to proper XHTML format with closing slash
         markdown = markdown.replace('<br>', '<br/>')
         
-        # Remove excessive blank lines
-        markdown = re.sub(r'\n{4,}', '\n\n\n', markdown)
+        # Remove excessive blank lines (max one blank line = two newlines)
+        markdown = re.sub(r'\n{3,}', '\n\n', markdown)
         
-        # Fix spacing around headers
-        markdown = re.sub(r'\n{3,}(#{1,6} )', r'\n\n\1', markdown)
+        # Ensure blank line before bold text that starts a line (acts as section label)
+        # Pattern: **Text:** or **Text.**
+        lines = markdown.split('\n')
+        result = []
+        for i, line in enumerate(lines):
+            # Check if this line is bold text at start of line with : or . at end
+            stripped = line.strip()
+            if stripped.startswith('**') and ((':' in stripped and stripped.endswith(':')) or ('.' in stripped and stripped.endswith('.'))):
+                # Check previous line
+                if i > 0 and result:
+                    prev = result[-1]
+                    # Add blank line before if previous line wasn't blank and wasn't a heading
+                    if prev.strip() and not prev.strip().startswith('#'):
+                        result.append('')
+            result.append(line)
+        
+        markdown = '\n'.join(result)
+        
+        # Ensure blank lines after lists when followed by non-list content
+        lines = markdown.split('\n')
+        result = []
+        for i, line in enumerate(lines):
+            result.append(line)
+            
+            # If this line is a list item
+            if re.match(r'^\s*[-*]\s+|^\s*\d+\.\s+', line):
+                # Check if next line exists and is not a list item and not blank
+                if i + 1 < len(lines):
+                    next_line = lines[i + 1]
+                    # If next line is not blank and not a list item, add blank line
+                    if next_line.strip() and not re.match(r'^\s*[-*]\s+|^\s*\d+\.\s+', next_line):
+                        result.append('')
+        
+        markdown = '\n'.join(result)
         
         # Handle Notion's quirk: consecutive single list items separated by blank lines
         # Collapse blank lines between list items of the same list type
@@ -473,7 +512,7 @@ class NotionHtmlConverter:
             
             # Check if current line is a list item
             current = lines[i].lstrip()
-            is_list_item = re.match(r'^[-*]|\d+\.', current)
+            is_list_item = re.match(r'^[-*]\s+|\d+\.\s+', current)  # Fixed regex: require whitespace after marker
             
             if is_list_item and i + 2 < len(lines):
                 # Check if next non-empty line is also a list item
@@ -481,7 +520,7 @@ class NotionHtmlConverter:
                 next_next_line = lines[i + 2].lstrip() if i + 2 < len(lines) else ''
                 
                 # If current line is a list item, next line is blank, and line after is also a list item
-                if next_line == '' and re.match(r'^[-*]|\d+\.', next_next_line):
+                if next_line == '' and re.match(r'^[-*]\s+|\d+\.\s+', next_next_line):  # Fixed regex
                     # Skip the blank line
                     i += 2
                     continue

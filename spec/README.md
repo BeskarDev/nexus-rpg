@@ -2,67 +2,55 @@
 
 This directory contains the specification and supporting documents for the Notion import automation feature.
 
-## ⚠️ CRITICAL - READ FIRST
+## 🚨 CRITICAL - READ FIRST
 
-**[issue-160-critical-bugs.md](./issue-160-critical-bugs.md)** - 16 critical bugs discovered during testing
-- Detailed analysis with code examples for each bug
-- Root cause analysis
-- Recommended fix order
-- Testing requirements
+**[issue-160-outstanding-bugs.md](./issue-160-outstanding-bugs.md)** - 1 critical bug blocking completion
+- Pages with inline databases losing all descriptive content
+- Detailed root cause analysis with before/after examples
+- Solution requirements for merge strategy
+- Testing checklist
 
-## Main Specification
-- **[issue-160-notion-import-feature-spec.md](./issue-160-notion-import-feature-spec.md)** - Main feature specification (217 lines)
-  - Executive summary and problem statement
+## Main Documents
+
+- **[issue-160-notion-import-feature-spec.md](./issue-160-notion-import-feature-spec.md)** - Main feature specification
+  - Executive summary and current status
+  - Recent fixes (Folk images, blank line spacing)
   - Architecture overview
-  - Current status and test results summary
-  - Acceptance criteria and roadmap
-  - Usage instructions
-  - Links to detailed documents
+  - Usage instructions and configuration
+  - Roadmap and next steps
 
-## Supporting Documents
-- **[issue-160-implementation-details.md](./issue-160-implementation-details.md)** (183 lines)
+- **[issue-160-implementation-details.md](./issue-160-implementation-details.md)** - Technical documentation
   - Detailed architecture and component descriptions
   - Configuration schema documentation
-  - File processing flow diagrams
-  - Known bugs and limitations
-  - Development history and lessons learned
+  - File processing flow
+  - Development notes
 
-- **[issue-160-test-results.md](./issue-160-test-results.md)** (106 lines)
-  - Complete test import results (Dec 9, 2025)
-  - List of successfully imported files (38 files)
-  - Summary bugs discovered
-  - Missing page mappings with solutions
-  - Validation checklist
+## Current Status (2025-12-09)
 
-## Archive
-- **[issue-160-notion-import-feature-spec-OLD.md](./issue-160-notion-import-feature-spec-OLD.md)** (811 lines)
-  - Original verbose specification
-  - Kept for historical reference
-  - Contains expanded details now split into separate documents
+✅ **Working Features:**
+- Core HTML to Markdown conversion
+- Database processing from HTML parent files
+- Folk inline image injection via config
+- Smart blank line spacing
+- 73+ pages successfully mapped
 
-## Document Organization
+🚨 **Blocking Issue:**
+- Pages with inline databases (upbringing, background, talents overview) lose descriptive content when database import overwrites them
+- Files temporarily restored from main branch
+- Requires merge strategy implementation
 
-The documentation has been split into focused documents:
+## Next Steps
 
-1. **Main Spec** - High-level overview and quick reference
-2. **Critical Bugs** ⚠️ - MUST READ - 16 bugs with analysis
-3. **Implementation Details** - Technical documentation for developers
-4. **Test Results** - Validation and findings
+1. Implement merge strategy to preserve page content when adding database tables
+2. Re-run import and validate affected files
+3. Final testing and deployment
 5. **Archive** - Historical reference
 
 Total active documentation: ~500 lines + 400 lines of critical bugs (down from 811 in single file)
 
----
+## Next Steps
 
-## Summary of Current Issues
-
-**Status**: Feature complete but blocked by 16 critical bugs
-
-**Blocking Issues**:
-- HTML converter issues: Images, blank lines
-- Database import strategy: Using CSV instead of HTML
-- Overview pages: Overwritten by tables instead of preserved
-- Table splitting: Not implemented for databases
-
-**For details**: See [`issue-160-critical-bugs.md`](./issue-160-critical-bugs.md)
+1. Implement merge strategy to preserve page content when adding database tables
+2. Re-run import and validate affected files
+3. Final testing and deployment
 
