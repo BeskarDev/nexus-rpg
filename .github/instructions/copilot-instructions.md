@@ -1,116 +1,123 @@
 # Copilot Instructions for Nexus RPG
 
+## 🚨 MANDATORY WORKFLOW
+
+**Before starting ANY work:**
+1. **Check `/spec/` folder first** - Read relevant feature spec completely
+2. **Investigate current state** - Verify what's implemented vs documented
+3. **Make changes** - Follow spec architecture and patterns
+4. **Update the spec** - Mark progress, document findings (MANDATORY)
+5. **Report results** - Summarize work, blockers, next steps
+
+**📖 Full workflow details**: [`/spec/README.md`](../../spec/README.md)
+
+---
+
 ## Project Overview
-**Nexus RPG** is a sword & sorcery tabletop RPG built as a Docusaurus documentation site with an interactive character sheet application. The project combines static markdown documentation with a complex React/Redux character management system using Firebase for persistence.
 
-## Core Architecture
+**Nexus RPG** is a sword & sorcery tabletop RPG built as a Docusaurus documentation site with an interactive character sheet application.
 
-### Documentation (Docusaurus)
-- **Base**: Docusaurus 3.7+ with TypeScript configuration
-- **Structure**: `/docs/` contains game rules organized by sidebar categories (basic-rules, adventurers, statistics, equipment, combat, scenes, magic, creatures, tools)
-- **Custom Components**: MDX files extensively use custom React components like `<RollableTable>`, `<CompanionBuilderWrapper>`, etc.
-- **Build Commands**: `yarn start` (dev), `yarn build` (production), `yarn deploy` (Firebase)
+## Architecture
 
-### Character Sheet Application
-- **State Management**: Redux Toolkit with persistent Firebase storage
-- **Location**: All character sheet code in `/src/features/CharacterSheet/`
-- **Entry Point**: `CharacterSheetWrapper.tsx` → `CharacterSheetContainer.tsx` → `CharacterSheet.tsx`
-- **Data Flow**: URL params (`?id=collectionId-characterId`) → Firebase document → Redux store → UI components
+**Tech Stack**: Docusaurus 3.7+, React 18, Redux Toolkit, Material-UI 5, Firebase 10+, TypeScript
 
-### Firebase Integration
-- **Config**: `/src/config/firebase.ts` with environment variables
-- **Auth**: `/src/hooks/firebaseAuthContext.tsx` for user management
-- **Storage**: User collections store character documents, shared notes in separate collection
-- **Migration**: `/src/features/CharacterSheet/utils/migrateDoc.ts` handles data structure updates
+**Structure**:
+- `/docs/` - Game rules as markdown (Docusaurus)
+- `/src/features/CharacterSheet/` - Character management app (React/Redux)
+- `/src/utils/` - Content processing scripts (Python)
+- `/src/components/` - Reusable React components
 
-## Key Development Patterns
+**Key Patterns**:
+- Redux: `characterSheetActions.verbNoun` pattern
+- Firebase: User UID as collection name
+- Components: Feature-based organization
+- MDX: Custom components like `<RollableTable>`
 
-### Character Data Structure
-```typescript
-// Main character document structure
-CharacterDocument {
-  docId: string
-  docRef: DocumentReference
-  personal: { name, folk, upbringing, background, allies[], contacts[], rivals[] }
-  skills: { xp, skills[], abilities[], abilityCategoryVisibility }
-  statistics: { attributes, health, statusEffects[] }
-  items: { weapons[], items[], coins, encumbrance }
-  spells: { focus, spells[] }
-  companions: Companion[]
-}
+**📖 Full architecture details**: See inline code documentation and `/src/README.md`
+
+---
+
+## Development Quick Reference
+
+### Commands
+```bash
+yarn start          # Dev server
+yarn build          # Production build
+yarn deploy         # Deploy to Firebase
 ```
 
-### Redux Actions Pattern
-- **Naming**: `characterSheetActions.updateCharacter(update)` for deep partial updates
-- **CRUD Operations**: Each data type has add/update/delete/reorder actions
-- **Auto-save**: Changes trigger `unsavedChanges` flag → timeout → Firebase sync
-- **Optimistic Updates**: UI updates immediately, Firebase syncs in background
-
-### Component Architecture
-- **Tab Structure**: `CharacterSheetTabs/` with numbered directories (00_Statistics, 01_Skills, etc.)
-- **Reusable Components**: `AttributeField`, `SectionHeader`, `DynamicList` for drag-and-drop lists
-- **Form Pattern**: Local state for inputs, `onBlur` triggers Redux updates
-
-### Material-UI Integration
-- **Theme**: Custom theme in `/src/hooks/createTheme.ts` with dark/light mode
-- **Styling**: `sx` prop for component styling, responsive breakpoints
-- **Components**: Extensive use of MUI components (TextField, IconButton, Accordion, etc.)
-
-## Development Workflows
-
 ### Content Updates
-1. **Game Rules**: Edit markdown files in `/docs/`, automatic rebuild
-2. **Tables from Notion**: 
-   - Export as HTML → `/src/utils/input/`
-   - Run `python html-to-md.py` → `python split-table.py` 
-   - Copy results to appropriate docs pages
-3. **JSON Data**: Run `python markdown-to-json.py` to update tool references
+1. **Notion → Docs**: See `/src/utils/scripts/notion-import/README.md`
+2. **Markdown → JSON**: Run scripts in `/src/utils/scripts/converters/`
 
-### Character Sheet Development
-1. **New Features**: Add reducer actions, update TypeScript types, create UI components
-2. **Data Migration**: Update `migrateDoc.ts` when changing character structure
-3. **Testing**: Use `?id=userId-characterId` URL pattern for testing specific characters
+### Character Sheet
+- **Entry**: `CharacterSheetWrapper.tsx` → `CharacterSheetContainer.tsx`
+- **URL Pattern**: `?id=userId-characterId`
+- **Migration**: Update `/src/features/CharacterSheet/utils/migrateDoc.ts`
 
-### Firebase Deployment
-- **Commands**: `yarn build && yarn firebase:deploy`
-- **Environment**: Requires `.env` with Firebase config variables
-- **Permissions**: Admin users can access multiple character collections
+**📖 Full development guides**: See component-level README files
 
-## Project-Specific Conventions
+---
 
-### File Organization
-- **Components**: Feature-based folders under `/src/features/`
-- **Types**: Centralized in `/src/types/Character.ts` with comprehensive interfaces
-- **Utils**: Helper functions in `/src/utils/` including table conversion scripts
+## Critical Guidelines
 
-### Naming Patterns
-- **Reducers**: `characterSheetActions.verbNoun` (e.g., `updateAlly`, `addNewSpell`)
-- **Components**: PascalCase with descriptive names (`StatusEffects`, `RestingButtonGroup`)
-- **Props**: `ComponentNameProps` interface for each component
+### Workflow (MANDATORY)
+1. **Always check** `/spec/` folder before starting work
+2. **Always update** spec files after completing tasks
+3. **Never** create standalone summary/feature docs in project root
+4. **Never** commit temporary test scripts
 
-### State Management
-- **Immutable Updates**: Using Immer through Redux Toolkit
-- **Deep Merging**: `mergeDeep` utility for nested updates
-- **UUID Generation**: `crypto.randomUUID()` for all new entities
+**📖 Complete workflow**: [`/spec/README.md`](../../spec/README.md)
 
-### Firebase Patterns
-- **Document Structure**: User UID as collection name, character documents as docs
-- **Shared Data**: Separate `shared-notes` collection with `allowedCharacters` array
-- **Error Handling**: Try-catch with user-friendly error states
+### Spec Management
+- **Format**: `issue-XXX-feature-name-spec.md`
+- **Status**: Use ✅ ⚠️ ❌ emojis
+- **Updates**: Dated sections with findings
+- **Template**: See `issue-160-notion-import-feature-spec.md`
 
-## Critical Dependencies
-- **Core**: React 18, Redux Toolkit, Material-UI 5, Firebase 10+
-- **Docusaurus**: Custom remark plugins, MDX components, search integration
-- **Build**: Babel, TypeScript, custom Python scripts for content processing
+**📖 Spec guidelines**: [`/spec/README.md`](../../spec/README.md)
 
-## Common Debugging Areas
-- **Firebase Permissions**: Check user authentication and collection access
-- **Redux DevTools**: Monitor state changes and action dispatching
-- **Character Migration**: Console logs show migration processes
-- **Auto-save**: Watch for `unsavedChanges` flag and timeout behavior
+### Code Conventions
+- **Components**: PascalCase, feature-based folders
+- **Types**: Centralized in `/src/types/`
+- **State**: Immutable updates via Immer
+- **IDs**: `crypto.randomUUID()` for all entities
 
-## Important Guidelines
-- **DO NOT** create standalone markdown documentation files (e.g., FEATURE_NAME.md, SUMMARY.md) in the project root or elsewhere to document implemented features or changes
-- **DO NOT** leave temporary test scripts (e.g., test-*.js, debug-*.js) in the repository after completing work - use them during development but always clean them up
-- Document changes only through code comments, commit messages, or when explicitly requested by the user
-- Keep the repository clean of temporary documentation artifacts and test files
+**📖 Game system rules**: See `.github/instructions/*.instructions.md` files
+
+---
+
+## Quick Reference
+
+### Where to Find Information
+
+| Topic | Location |
+|-------|----------|
+| **Mandatory workflow** | [`/spec/README.md`](../../spec/README.md) |
+| **Feature specs** | `/spec/issue-XXX-*.md` |
+| **Architecture details** | [`.github/instructions/ARCHITECTURE.md`](./ARCHITECTURE.md) |
+| **Notion import** | `/src/utils/scripts/notion-import/README.md` |
+| **Game rules (spells, talents, etc.)** | `.github/instructions/*.instructions.md` |
+| **Component docs** | Inline in component files |
+| **TypeScript types** | `/src/types/Character.ts` |
+| **Redux actions** | `/src/features/CharacterSheet/store/` |
+
+### First Steps for New Tasks
+
+1. Check if issue has a spec: `ls /workspaces/nexus-rpg/spec/issue-{number}*`
+2. If spec exists: Read it completely
+3. If not: Create one (use `issue-160-notion-import-feature-spec.md` as template)
+4. Make changes following spec guidance
+5. Update spec with results
+
+### Common Tasks
+
+**Adding a new page mapping** → See `/spec/issue-160-notion-import-feature-spec.md`  
+**Character sheet feature** → See [ARCHITECTURE.md](./ARCHITECTURE.md) Redux section  
+**Content conversion** → See `/src/utils/scripts/*/README.md`  
+**Deploying** → `yarn build && yarn deploy`
+
+---
+
+**Remember**: Always check `/spec/` first, always update it last. No exceptions.
+

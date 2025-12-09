@@ -233,63 +233,446 @@ class NotionImporter:
             print(f"  ✗ Error: {error_msg}")
     
     def _process_databases(self, export_dir: Path):
-        """Process Notion database exports (CSV files)."""
+        """Process Notion database exports (HTML or CSV files)."""
         db_mappings = self.config['mappings']['databases']
         
         for db_prefix, mapping in db_mappings.items():
-            # Find matching CSV file by prefix (handles dynamic hashcodes)
-            csv_files = list(export_dir.rglob(f"*{db_prefix}*.csv"))
+            use_html = mapping.get('use_html', False)
             
-            if not csv_files:
-                print(f"  ⚠ Database not found: {db_prefix}")
+            if use_html:
+                # Process database from HTML file
+                self._process_database_from_html(export_dir, db_prefix, mapping)
+            else:
+                # Process database from CSV file (legacy)
+                self._process_database_from_csv(export_dir, db_prefix, mapping)
+    
+    def _process_database_from_html(self, export_dir: Path, db_prefix: str, mapping: dict):
+        """Process database from HTML file with embedded table."""
+        try:
+            from bs4 import BeautifulSoup
+            
+            # Find the HTML file for this database
+            # Pattern: {db_prefix} {hashcode}.html in the export root
+            html_files = list(export_dir.glob(f"{db_prefix} *.html"))
+            if not html_files:
+                print(f"  ⚠ No HTML file found for {db_prefix}")
+                return
+            
+            html_file = html_files[0]
+            print(f"  📄 Processing {html_file.name}")
+            
+            with open(html_file, 'r', encoding='utf-8') as f:
+                html_content = f.read()
+            
+            soup = BeautifulSoup(html_content, 'html.parser')
+            
+            # Check if we should split by headings
+            if mapping.get('split_by_heading'):
+                self._split_content_by_headings(soup, mapping, html_file)
+                return
+            
+            # Find all tables - skip the first one (properties table)
+            tables = soup.find_all('table')
+            if len(tables) < 2:
+                print(f"  ⚠ No database table found in {html_file.name} (only found {len(tables)} table(s))")
+                return
+            
+            # Use the second table (index 1) which contains the database data
+            table = tables[1]
+            
+            # Check if we should extract just the table to a page
+            if mapping.get('extract_table'):
+                target_path = self.project_root / mapping['target']
+                self._extract_table_to_page(table, target_path, mapping)
+                print(f"  ✓ Updated: {mapping['target']}")
+                self.stats['databases_updated'] += 1
+                return
+            
+            # Check if we need to split the table
+            split_by = mapping.get('split_by')
+            overview_target = mapping.get('overview_target')
+            
+            if split_by:
+                # Split table by column
+                self._split_table_by_column(table, split_by, mapping, export_dir, db_prefix)
+            else:
+                # Single table page
+                target_path = self.project_root / mapping['target']
+                self._extract_table_to_page(table, target_path, mapping)
+                print(f"  ✓ Updated: {mapping['target']}")
+            
+            self.stats['databases_updated'] += 1
+            
+        except Exception as e:
+            error_msg = f"Failed to process HTML database {html_file.name}: {e}"
+            self.stats['errors'].append(error_msg)
+            print(f"  ✗ Error: {error_msg}")
+    
+    def _extract_table_to_page(self, table, target_path: Path, mapping: dict):
+        """Extract table from HTML and save to markdown page."""
+        from notion_html_converter import NotionHtmlConverter
+        
+        converter = NotionHtmlConverter()
+        table_md = converter._convert_table(table)
+        
+        # Read existing frontmatter to preserve it if it exists
+        existing_structure = self._read_existing_structure(target_path)
+        
+        # Build content with proper structure
+        parts = []
+        
+        # Add frontmatter
+        if existing_structure['frontmatter']:
+            parts.append(existing_structure['frontmatter'])
+        else:
+            parts.append('---\nsidebar_position: 1\n---')
+        
+        parts.append('')
+        
+        # Add title
+        title = mapping.get('title', mapping.get('type', 'Table').title())
+        parts.append(f"# {title}")
+        parts.append('')
+        
+        # Add banner if provided
+        banner = mapping.get('banner')
+        if banner:
+            parts.append(f"![banner-img]({banner})")
+            parts.append('')
+        
+        # Add table
+        parts.append(table_md)
+        
+        content = '\n'.join(parts) + '\n'
+        
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(target_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+    
+    def _split_content_by_headings(self, soup, mapping: dict, html_file: Path):
+        """Split HTML content by H2/H3 headings into separate files."""
+        from notion_html_converter import convert_html_to_markdown
+        
+        # Convert full HTML to markdown first
+        markdown = convert_html_to_markdown(html_file)
+        
+        # Split by H2 or H3 headings
+        lines = markdown.split('\n')
+        sections = {}
+        current_section = None
+        current_lines = []
+        
+        for line in lines:
+            # Check if line is a heading (H2 or H3)
+            if line.strip().startswith('## ') or line.strip().startswith('### '):
+                # Save previous section if exists
+                if current_section:
+                    sections[current_section] = '\n'.join(current_lines).strip()
+                
+                # Start new section
+                current_section = line.strip().replace('## ', '').replace('### ', '').strip()
+                current_lines = [line]
+            elif current_section:
+                current_lines.append(line)
+        
+        # Save last section
+        if current_section:
+            sections[current_section] = '\n'.join(current_lines).strip()
+        
+        # Write overview page
+        overview_target = mapping.get('overview_target')
+        if overview_target:
+            overview_path = self.project_root / overview_target
+            
+            # Create overview with links to sections
+            section_links = []
+            for idx, section_name in enumerate(sorted(sections.keys())):
+                filename = section_name.lower().replace(' ', '-').replace('/', '-')
+                section_links.append(f"- [{section_name}](./{filename})")
+            
+            overview_content = f'''---
+sidebar_position: 1
+---
+
+# Downtime Activities
+
+Choose from the following downtime activities:
+
+{'\n'.join(section_links)}
+'''
+            
+            overview_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(overview_path, 'w', encoding='utf-8') as f:
+                f.write(overview_content)
+            
+            print(f"  ✓ Updated overview: {overview_target}")
+            self.stats['pages_updated'] += 1
+        
+        # Write individual section pages
+        target_dir = self.project_root / mapping['target_dir']
+        target_dir.mkdir(parents=True, exist_ok=True)
+        
+        for idx, (section_name, content) in enumerate(sorted(sections.items())):
+            filename = f"{section_name.lower().replace(' ', '-').replace('/', '-')}.md"
+            target_file = target_dir / filename
+            
+            # Create page with frontmatter
+            page_content = f'''---
+sidebar_position: {idx + 2}
+---
+
+{content}
+'''
+            
+            with open(target_file, 'w', encoding='utf-8') as f:
+                f.write(page_content)
+            
+            print(f"  ✓ Updated: {target_file.relative_to(self.project_root)}")
+            self.stats['sections_updated'] += 1
+        
+        self.stats['databases_updated'] += 1
+    
+    def _split_table_by_column(self, table, split_by: str, mapping: dict, export_dir: Path, db_prefix: str):
+        """Split table by a column value into separate files."""
+        from bs4 import BeautifulSoup
+        from notion_html_converter import NotionHtmlConverter
+        
+        converter = NotionHtmlConverter()
+        
+        # Parse table structure
+        headers = []
+        header_row = table.find('thead')
+        if header_row:
+            header_row = header_row.find('tr')
+            for th in header_row.find_all(['th', 'td']):
+                headers.append(th.get_text().strip())
+        else:
+            # First row as header
+            first_row = table.find('tr')
+            if first_row:
+                for th in first_row.find_all(['th', 'td']):
+                    headers.append(th.get_text().strip())
+        
+        # Find split column index
+        split_col_idx = None
+        for idx, header in enumerate(headers):
+            if split_by.lower() in header.lower():
+                split_col_idx = idx
+                break
+        
+        if split_col_idx is None:
+            print(f"  ⚠ Split column '{split_by}' not found in table")
+            return
+        
+        # Group rows by split column value
+        tbody = table.find('tbody')
+        rows_by_category = {}
+        
+        for tr in tbody.find_all('tr'):
+            cells = tr.find_all(['td', 'th'])
+            if len(cells) <= split_col_idx:
                 continue
             
-            csv_file = csv_files[0]
+            category = cells[split_col_idx].get_text().strip()
+            if not category:
+                continue
             
-            try:
-                # Process overview HTML page if specified
-                overview_page = mapping.get('overview_page')
-                if overview_page:
-                    self._process_overview_page(export_dir, db_prefix, overview_page)
+            if category not in rows_by_category:
+                rows_by_category[category] = []
+            rows_by_category[category].append(tr)
+        
+        # Create overview page if specified
+        overview_target = mapping.get('overview_target')
+        if overview_target:
+            self._create_database_overview(export_dir, db_prefix, overview_target, rows_by_category.keys(), mapping)
+        
+        # Write each category to a separate file
+        target_dir = self.project_root / mapping['target_dir']
+        target_dir.mkdir(parents=True, exist_ok=True)
+        
+        for idx, (category, rows) in enumerate(sorted(rows_by_category.items())):
+            # Create a new table for this category
+            table_html = f'''<table>
+<thead><tr>{"".join(f"<th>{h}</th>" for h in headers)}</tr></thead>
+<tbody>
+{"".join(str(row) for row in rows)}
+</tbody>
+</table>'''
+            
+            category_soup = BeautifulSoup(table_html, 'html.parser')
+            category_table = category_soup.find('table')
+            
+            # Convert to markdown
+            table_md = converter._convert_table(category_table)
+            
+            # Determine filename
+            filename = f"{category.lower().replace(' ', '-').replace('/', '-')}.md"
+            target_file = target_dir / filename
+            
+            # Read existing frontmatter
+            frontmatter = self._read_frontmatter(target_file)
+            
+            if frontmatter:
+                content = f"{frontmatter}\n## {category}\n\n{table_md}\n"
+            else:
+                content = f'''---
+sidebar_position: {idx + 1}
+---
+
+## {category}
+
+{table_md}
+'''
+            
+            with open(target_file, 'w', encoding='utf-8') as f:
+                f.write(content)
+            
+            print(f"  ✓ Updated: {target_file.relative_to(self.project_root)}")
+            self.stats['sections_updated'] += 1
+    
+    def _create_database_overview(self, export_dir: Path, db_prefix: str, overview_target: str, categories, mapping: dict):
+        """Create overview page for split database."""
+        html_files = list(export_dir.glob(f"{db_prefix}*.html"))
+        ignore_patterns = self.config.get('ignore_patterns', [])
+        html_files = [f for f in html_files if not self._should_ignore(f.name, ignore_patterns)]
+        
+        if not html_files:
+            return
+        
+        html_file = html_files[0]
+        
+        try:
+            # Convert HTML to Markdown (excluding table)
+            from bs4 import BeautifulSoup
+            
+            with open(html_file, 'r', encoding='utf-8') as f:
+                html_content = f.read()
+            
+            soup = BeautifulSoup(html_content, 'html.parser')
+            
+            # Remove table from content
+            table = soup.find('table')
+            if table:
+                table.decompose()
+            
+            # Convert remaining content
+            from notion_html_converter import convert_html_to_markdown
+            markdown = convert_html_to_markdown(html_file)
+            
+            # Remove any table markdown that might remain
+            lines = markdown.split('\n')
+            filtered_lines = []
+            in_table = False
+            
+            for line in lines:
+                if line.strip().startswith('|'):
+                    in_table = True
+                    continue
+                elif in_table and not line.strip():
+                    in_table = False
+                    continue
+                elif not in_table:
+                    filtered_lines.append(line)
+            
+            markdown = '\n'.join(filtered_lines).strip()
+            
+            # Add links to categories
+            category_links = []
+            for category in sorted(categories):
+                filename = category.lower().replace(' ', '-').replace('/', '-')
+                category_links.append(f"- [{category}](./{filename})")
+            
+            if category_links:
+                markdown += "\n\n## Categories\n\n" + '\n'.join(category_links)
+            
+            # Save overview page
+            target_path = self.project_root / overview_target
+            
+            # Read existing structure
+            existing_structure = self._read_existing_structure(target_path)
+            
+            # Get title and banner from mapping
+            title = mapping.get('title', existing_structure.get('title', '').replace('# ', ''))
+            banner = mapping.get('banner')
+            
+            # Create full content
+            final_content = self._create_page_content(
+                markdown,
+                title,
+                existing_structure,
+                banner
+            )
+            
+            target_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(target_path, 'w', encoding='utf-8') as f:
+                f.write(final_content)
+            
+            print(f"  ✓ Updated overview: {overview_target}")
+            self.stats['pages_updated'] += 1
+            
+        except Exception as e:
+            error_msg = f"Failed to create overview for {db_prefix}: {e}"
+            self.stats['errors'].append(error_msg)
+            print(f"  ✗ Error: {error_msg}")
+    
+    def _process_database_from_csv(self, export_dir: Path, db_prefix: str, mapping: dict):
+        """Process database from CSV file."""
+        # Notion exports database tables as CSV files in subdirectories:
+        # {export_dir}/{db_prefix}/{db_prefix} {hashcode}.csv
+        # Use rglob to search recursively
+        csv_files = list(export_dir.rglob(f"*{db_prefix}*.csv"))
+        
+        if not csv_files:
+            print(f"  ⚠ Database CSV not found: {db_prefix}")
+            return
+        
+        csv_file = csv_files[0]
+        print(f"  → Found CSV: {csv_file.relative_to(export_dir)}")
+        
+        try:
+            # Process overview HTML page if specified
+            overview_page = mapping.get('overview_page')
+            if overview_page:
+                self._process_overview_page(export_dir, db_prefix, overview_page)
+            
+            # Convert database to markdown sections
+            db_type = mapping['type']
+            sections = mapping.get('sections', [])
+            split_by = mapping.get('split_by')  # Get split_by parameter
+            
+            section_contents = convert_database(csv_file, db_type, sections, split_by)
+            
+            # Write each section to its target file
+            target_dir = self.project_root / mapping['target_dir']
+            target_dir.mkdir(parents=True, exist_ok=True)
+            
+            for section_name, markdown_content in section_contents.items():
+                if not markdown_content.strip():
+                    continue
                 
-                # Convert database to markdown sections
-                db_type = mapping['type']
-                sections = mapping.get('sections', [])
-                split_by = mapping.get('split_by')  # Get split_by parameter
+                # Determine filename
+                if section_name == 'all':
+                    filename = f"{db_type}.md"
+                else:
+                    filename = f"{section_name.lower().replace(' ', '-')}.md"
                 
-                section_contents = convert_database(csv_file, db_type, sections, split_by)
+                target_file = target_dir / filename
                 
-                # Write each section to its target file
-                target_dir = self.project_root / mapping['target_dir']
-                target_dir.mkdir(parents=True, exist_ok=True)
+                # Read existing frontmatter
+                frontmatter = self._read_frontmatter(target_file)
                 
-                for section_name, markdown_content in section_contents.items():
-                    if not markdown_content.strip():
-                        continue
-                    
-                    # Determine filename
-                    if section_name == 'all':
-                        filename = f"{db_type}.md"
+                # Create full content
+                if frontmatter:
+                    # Preserve existing frontmatter and add section title
+                    content = f"{frontmatter}\n# {section_name.title()}\n\n{markdown_content}"
+                else:
+                    # Create new frontmatter
+                    if sections and section_name in sections:
+                        position = sections.index(section_name) + 1
                     else:
-                        filename = f"{section_name.lower().replace(' ', '-')}.md"
+                        position = 1
                     
-                    target_file = target_dir / filename
-                    
-                    # Read existing frontmatter
-                    frontmatter = self._read_frontmatter(target_file)
-                    
-                    # Create full content
-                    if frontmatter:
-                        # Preserve existing frontmatter and add section title
-                        content = f"{frontmatter}\n# {section_name.title()}\n\n{markdown_content}"
-                    else:
-                        # Create new frontmatter
-                        if sections and section_name in sections:
-                            position = sections.index(section_name) + 1
-                        else:
-                            position = 1
-                        
-                        content = f"""---
+                    content = f"""---
 sidebar_position: {position}
 ---
 
@@ -297,20 +680,20 @@ sidebar_position: {position}
 
 {markdown_content}
 """
-                    
-                    # Write to file
-                    with open(target_file, 'w', encoding='utf-8') as f:
-                        f.write(content)
-                    
-                    print(f"  ✓ Updated: {target_file.relative_to(self.project_root)}")
-                    self.stats['sections_updated'] += 1
                 
-                self.stats['databases_updated'] += 1
+                # Write to file
+                with open(target_file, 'w', encoding='utf-8') as f:
+                    f.write(content)
                 
-            except Exception as e:
-                error_msg = f"Failed to process database {csv_file.name}: {e}"
-                self.stats['errors'].append(error_msg)
-                print(f"  ✗ Error: {error_msg}")
+                print(f"  ✓ Updated: {target_file.relative_to(self.project_root)}")
+                self.stats['sections_updated'] += 1
+            
+            self.stats['databases_updated'] += 1
+            
+        except Exception as e:
+            error_msg = f"Failed to process database {csv_file.name}: {e}"
+            self.stats['errors'].append(error_msg)
+            print(f"  ✗ Error: {error_msg}")
     
     def _should_ignore(self, filename: str, ignore_patterns: List[str]) -> bool:
         """Check if filename matches any ignore pattern."""

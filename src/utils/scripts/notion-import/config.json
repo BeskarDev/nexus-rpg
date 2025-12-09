@@ -1,6 +1,11 @@
 {
   "mappings": {
     "pages": {
+      "How To Roll": {
+        "target": "docs/01-basic-rules/01-how-to-roll.md",
+        "title": "🎲 How To Roll",
+        "banner": "/img/banner/how-to-roll-banner.png"
+      },
       "Attributes": {
         "target": "docs/03-statistics/01-attributes.md",
         "title": "💪 Attributes",
@@ -21,6 +26,51 @@
         "title": "ℹ️ General Rulings",
         "banner": "/img/banner/rulings-banner.png"
       },
+      "Folk": {
+        "target": "docs/02-adventurers/01-folk.md",
+        "title": "🧝‍♀️ Folk",
+        "banner": "/img/banner/folk-banner.png"
+      },
+      "Languages": {
+        "target": "docs/02-adventurers/02-languages.md",
+        "title": "💬 Languages",
+        "banner": "/img/banner/languages-banner.png"
+      },
+      "Upbringing": {
+        "target": "docs/02-adventurers/03-upbringing.md",
+        "title": "🏡 Upbringing",
+        "banner": "/img/banner/upbringing-banner.png"
+      },
+      "Background": {
+        "target": "docs/02-adventurers/04-background.md",
+        "title": "📜 Background",
+        "banner": "/img/banner/background-banner.png"
+      },
+      "NPC Relations": {
+        "target": "docs/02-adventurers/05-npc-relations.md",
+        "title": "👥 NPC Relations",
+        "banner": "/img/banner/npc-relations-banner.png"
+      },
+      "Hit Points, Exhaustion, and Wounds": {
+        "target": "docs/03-statistics/02-hit-points-wounds.md",
+        "title": "❤️ Hit Points, Fatigue, and Wounds",
+        "banner": "/img/banner/hp-wounds-banner.png"
+      },
+      "Resolve": {
+        "target": "docs/03-statistics/04-resolve.md",
+        "title": "✨ Resolve",
+        "banner": "/img/banner/resolve-banner.png"
+      },
+      "Skills": {
+        "target": "docs/03-statistics/05-skills.md",
+        "title": "🤸‍♂️ Skills",
+        "banner": "/img/banner/skills-banner.png"
+      },
+      "Talents": {
+        "target": "docs/03-statistics/06-talents/00-overview.md",
+        "title": "🎯 Talents",
+        "banner": "/img/banner/talents-banner.png"
+      },
       "Attacking": {
         "target": "docs/05-combat/02-attacking.md",
         "title": "🤺 Attacking",
@@ -35,6 +85,11 @@
         "target": "docs/05-combat/03-distances-movement.md",
         "title": "📏 Distances & Movement",
         "banner": "/img/banner/distances-movement-banner.png"
+      },
+      "Combat Arts": {
+        "target": "docs/05-combat/05-combat-arts/00-overview.md",
+        "title": "🔶 Combat Arts",
+        "banner": "/img/banner/combat-arts-banner.png"
       },
       "Defenses": {
         "target": "docs/03-statistics/03-defenses.md",
@@ -55,6 +110,32 @@
         "target": "docs/04-equipment/06-exotic-weapons.md",
         "title": "⚒️ Exotic Weapons",
         "banner": "/img/banner/masterwork-exotic-weapons-banner.png"
+      },
+      "Magic Items": {
+        "target": "docs/04-equipment/07-magic-items/00-overview.md",
+        "title": "💎 Magic Items",
+        "banner": "/img/banner/weapon-armor-materials-banner.png"
+      },
+      "Magic Item Cost Tables": {
+        "target": "docs/04-equipment/07-magic-items/cost-tables.md",
+        "title": "Cost Tables"
+      },
+      "Magic Item Effects": {
+        "target": "docs/04-equipment/07-magic-items/effects.md",
+        "title": "Magic Item Effects"
+      },
+      "Special Materials": {
+        "target": "docs/04-equipment/07-magic-items/materials.md",
+        "title": "Special Materials"
+      },
+      "Enchantments": {
+        "target": "docs/04-equipment/07-magic-items/enchantments.md",
+        "title": "Enchantments"
+      },
+      "Equipment": {
+        "target": "docs/04-equipment/02-equipment/00-overview.md",
+        "title": "💰 Equipment",
+        "banner": "/img/banner/items-banner.png"
       },
       "Mounts & Companions": {
         "target": "docs/08-creatures/01-mounts-companions.mdx",
@@ -89,10 +170,59 @@
         "title": "📜 Creature Rules",
         "banner": "/img/banner/creature-rules-banner.png"
       },
+      "Creatures": {
+        "target": "docs/08-creatures/03-creatures/00-overview.md",
+        "title": "🐻 Creatures",
+        "banner": "/img/banner/creatures-banner.png"
+      },
+      "Mount Equipment": {
+        "target": "docs/08-creatures/01-mounts-companions/equipment.md",
+        "title": "Mount Equipment"
+      },
       "Crafting Professions": {
         "target": "docs/06-scenes/05-crafting-professions.md",
         "title": "🔨 Crafting Professions",
         "banner": "/img/banner/crafting-banner.png"
+      },
+      "Scenes & Time": {
+        "target": "docs/06-scenes/01-scenes-time-intervals.md",
+        "title": "🎭 Scenes & Time",
+        "banner": "/img/banner/scenes-banner.png"
+      },
+      "Resting": {
+        "target": "docs/06-scenes/03-resting.md",
+        "title": "🏕️ Resting",
+        "banner": "/img/banner/resting-banner.png"
+      },
+      "Downtime": {
+        "target": "docs/06-scenes/04-downtime/00-overview.md",
+        "title": "🏠 Downtime",
+        "banner": "/img/banner/crafting-banner.png"
+      },
+      "Harvesting Creature Parts": {
+        "target": "docs/06-scenes/06-harvesting-creature-parts.md",
+        "title": "🔪 Harvesting Creature Parts",
+        "banner": "/img/banner/crafting-banner.png"
+      },
+      "Magic & Spells": {
+        "target": "docs/07-magic/01-magic-spells/index.md",
+        "title": "🔮 Magic & Spells",
+        "banner": "/img/banner/magic-banner.png"
+      },
+      "Arcane Spells": {
+        "target": "docs/07-magic/02-arcane-spells/00-overview.md",
+        "title": "🔆 Arcane Spells",
+        "banner": "/img/banner/arcane-spells-banner.png"
+      },
+      "Metamagic Arts": {
+        "target": "docs/07-magic/03-metamagic-arts.md",
+        "title": "🧠 Metamagic Arts",
+        "banner": "/img/banner/metamagic-arts-banner.png"
+      },
+      "Mystic Spells": {
+        "target": "docs/07-magic/04-mystic-spells/00-overview.md",
+        "title": "🧿 Mystic Spells",
+        "banner": "/img/banner/mystic-spells-banner.png"
       },
       "Effect Durations": {
         "target": "docs/06-scenes/02-effect-durations.md",
@@ -101,17 +231,72 @@
       }
     },
     "databases": {
+      "Weapons": {
+        "target_dir": "docs/04-equipment/03-weapons",
+        "type": "weapons",
+        "use_html": true,
+        "split_by": "Type",
+        "overview_target": "docs/04-equipment/03-weapons.md",
+        "title": "🗡️ Weapons",
+        "banner": "/img/banner/weapons-banner.png"
+      },
+      "Armor": {
+        "target_dir": "docs/04-equipment/04-armor",
+        "type": "armor",
+        "use_html": true,
+        "split_by": "Type",
+        "overview_target": "docs/04-equipment/04-armor.md",
+        "title": "🛡️ Armor",
+        "banner": "/img/banner/armor-banner.png"
+      },
       "Creatures": {
         "target_dir": "docs/08-creatures/03-creatures",
         "type": "creatures",
+        "use_html": true,
         "split_by": "Tier",
+        "overview_target": "docs/08-creatures/03-creatures/00-overview.md",
         "sections": ["tier-0", "tier-1", "tier-2", "tier-3", "tier-4", "tier-5"]
       },
       "Equipment": {
         "target_dir": "docs/04-equipment/02-equipment",
         "type": "equipment",
+        "use_html": true,
         "split_by": "Category",
+        "overview_target": "docs/04-equipment/02-equipment/00-overview.md",
         "sections": ["animals", "alchemy", "clothes", "containers", "gear", "supply", "toolkits", "trade-goods", "transportation"]
+      },
+      "Upbringing": {
+        "target": "docs/02-adventurers/03-upbringing.md",
+        "type": "upbringing",
+        "use_html": true
+      },
+      "Background": {
+        "target": "docs/02-adventurers/04-background.md",
+        "type": "background",
+        "use_html": true
+      },
+      "Conditions": {
+        "target": "docs/05-combat/04-conditions.md",
+        "type": "conditions",
+        "use_html": true,
+        "extract_table": true,
+        "title": "🌡️ Conditions",
+        "banner": "/img/banner/conditions-banner.png"
+      },
+      "Spell Properties": {
+        "target": "docs/07-magic/05-spell-properties.md",
+        "type": "spell-properties",
+        "use_html": true,
+        "extract_table": true,
+        "title": "📖 Spell Properties",
+        "banner": "/img/banner/spell-properties-banner.png"
+      },
+      "Downtime Activities": {
+        "target_dir": "docs/06-scenes/04-downtime",
+        "type": "downtime-activities",
+        "use_html": true,
+        "split_by_heading": true,
+        "overview_target": "docs/06-scenes/04-downtime/00-overview.md"
       }
     }
   },

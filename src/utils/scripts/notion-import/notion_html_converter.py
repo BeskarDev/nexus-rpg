@@ -174,7 +174,8 @@ class NotionHtmlConverter:
         elif tag == 'p':
             content = self._convert_children(element)
             if content.strip():
-                result.append(f"\n{content}\n")
+                # Add extra newline to ensure blank line after paragraph
+                result.append(f"\n{content}\n\n")
         elif tag == 'strong' or tag == 'b':
             content = self._convert_children(element)
             result.append(f"**{content}**")
@@ -297,19 +298,45 @@ class NotionHtmlConverter:
                 # Regular blockquote without br elements
                 lines = content.strip().split('\n')
                 quoted = '\n'.join(f"> {line}" if line.strip() else '>' for line in lines)
-                result.append(f"\n{quoted}\n")
+                # Add extra newline to ensure blank line after blockquote
+                result.append(f"\n{quoted}\n\n")
         elif tag == 'a':
             text = self._get_text_content(element)
             href = element.get('href', '')
-            # Clean up Notion internal links
+            # Clean up Notion internal links - convert to relative paths or preserve external
             if href.startswith('http'):
-                result.append(f"[{text}]({href})")
+                # Check if this is a Notion internal link that should be converted
+                if 'notion.so' in href or 'nexus-rpg' in href:
+                    # For now, keep the text but don't create broken links
+                    # TODO: Implement proper internal link mapping
+                    result.append(text)
+                else:
+                    # External link, preserve as-is
+                    result.append(f"[{text}]({href})")
             else:
                 result.append(text)
         elif tag == 'img':
             alt = element.get('alt', '')
             src = element.get('src', '')
-            result.append(f"\n![{alt}]({src})\n")
+            # Check if src is a local path or needs conversion
+            if src.startswith('http'):
+                # Extract filename from URL and convert to local path
+                # Notion often uses pattern like: .../filename-hashcode.ext
+                import re
+                filename_match = re.search(r'/([^/]+\.(jpg|jpeg|png|gif|webp))$', src, re.IGNORECASE)
+                if filename_match:
+                    filename = filename_match.group(1)
+                    # Remove hashcode pattern (e.g., dwarf-9690b5da2510981f81d96d0dd19dd88e.jpeg -> dwarf.jpeg)
+                    clean_filename = re.sub(r'-[0-9a-f]{32}', '', filename)
+                    # Use local path structure
+                    src = f"/img/banner/{clean_filename}"
+                    result.append(f"\n![{alt or 'image'}]({src})\n")
+                else:
+                    # Fallback: use original if pattern not matched, but add warning comment
+                    result.append(f"\n<!-- TODO: Fix image path -->\n![{alt or 'image'}]({src})\n")
+            else:
+                # Already a local path, preserve as-is
+                result.append(f"\n![{alt or 'image'}]({src})\n")
         elif tag == 'table':
             # Convert table to markdown
             table_md = self._convert_table(element)
@@ -392,7 +419,14 @@ class NotionHtmlConverter:
             for tr in tbody_rows:
                 cells = []
                 for idx, cell in enumerate(tr.find_all(['th', 'td'])):
-                    cell_content = self._get_text_content(cell).strip()
+                    # Check if cell has multiple span elements (Notion multi-select)
+                    spans = cell.find_all('span', class_='selected-value')
+                    if len(spans) > 1:
+                        # Multiple values - join with commas
+                        cell_content = ', '.join(span.get_text().strip() for span in spans)
+                    else:
+                        # Single value or plain text
+                        cell_content = self._get_text_content(cell).strip()
                     # Replace newlines with <br/>
                     cell_content = cell_content.replace('\n', '<br/>')
                     cells.append(cell_content)

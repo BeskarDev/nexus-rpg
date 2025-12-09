@@ -4,7 +4,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
 
 echo ""
 echo "=================================================================="
@@ -15,15 +15,14 @@ echo ""
 # Test 1: Check all required files exist
 echo "→ Test 1: Checking required files..."
 required_files=(
-    "src/utils/notion-import/import_notion.py"
-    "src/utils/notion-import/notion_html_converter.py"
-    "src/utils/notion-import/notion_database_converter.py"
-    "src/utils/notion-import/config.json"
-    "src/utils/notion-import/run-import.sh"
-    "src/utils/notion-import/verify-import.py"
-    "src/utils/notion-import/requirements.txt"
-    "src/utils/notion-import/README.md"
-    "NOTION_IMPORT.md"
+    "src/utils/scripts/notion-import/import_notion.py"
+    "src/utils/scripts/notion-import/notion_html_converter.py"
+    "src/utils/scripts/notion-import/notion_database_converter.py"
+    "src/utils/scripts/notion-import/config.json"
+    "src/utils/scripts/notion-import/import-from-notion.sh"
+    "src/utils/scripts/notion-import/verify-import.py"
+    "src/utils/scripts/notion-import/requirements.txt"
+    "src/utils/scripts/notion-import/README.md"
 )
 
 all_exist=true

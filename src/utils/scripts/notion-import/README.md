@@ -26,8 +26,8 @@ This tool automates the process of updating game docs from Notion exports. It ha
 ### 2. Run Import Script
 
 ```bash
-cd src/utils/notion-import
-./import-from-notion.sh ~/Downloads/notion-export.zip
+cd src/utils/scripts/notion-import
+./import-from-notion.sh ../../input/<file-name>.zip
 ```
 
 That's it! The script will automatically:
