@@ -16,13 +16,14 @@ class NotionHtmlConverter:
         self.in_list = False
         self.list_level = 0
         
-    def convert_file(self, html_file: Path, title: str = None) -> str:
+    def convert_file(self, html_file: Path, title: str = None, strip_tables: bool = False) -> str:
         """
         Convert a Notion HTML file to markdown.
         
         Args:
             html_file: Path to the HTML file
             title: Optional title override
+            strip_tables: If True, removes all table elements before conversion
             
         Returns:
             Markdown content as string
@@ -42,6 +43,11 @@ class NotionHtmlConverter:
         content_area = soup.find('article') or soup.find('body')
         if not content_area:
             return ""
+        
+        # Strip tables if requested (for overview pages that will have tables added separately)
+        if strip_tables:
+            for table in content_area.find_all('table'):
+                table.decompose()
         
         # Preprocess: merge consecutive single-item lists (Notion quirk)
         self._merge_consecutive_lists(content_area)
@@ -543,19 +549,20 @@ class NotionHtmlConverter:
         return markdown
 
 
-def convert_html_to_markdown(html_file: Path, title: str = None) -> str:
+def convert_html_to_markdown(html_file: Path, title: str = None, strip_tables: bool = False) -> str:
     """
     Convert a Notion HTML file to markdown.
     
     Args:
         html_file: Path to HTML file
         title: Optional title for the page
+        strip_tables: If True, removes all table elements before conversion
         
     Returns:
         Markdown content as string
     """
     converter = NotionHtmlConverter()
-    return converter.convert_file(html_file, title)
+    return converter.convert_file(html_file, title, strip_tables)
 
 
 if __name__ == '__main__':

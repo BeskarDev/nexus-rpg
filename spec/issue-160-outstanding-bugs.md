@@ -1,24 +1,39 @@
-# Outstanding Critical Bugs for Issue #160
+# Outstanding Bugs for Issue #160
 
-**Last Updated**: 2025-12-09  
-**Status**: 🚨 2 Critical Bugs Blocking Completion  
-**Temporary Fix Applied**: ✅ Affected files restored from main branch
+**Last Updated**: 2025-12-10  
+**Status**: ⚠️ CRITICAL BUGS FIXED - NEW FORMATTING ISSUES DISCOVERED  
+**Solution Implemented**: Merge strategy for inline databases + table stripping for pipeline pages
 
 ---
 
 ## Summary
 
-The import script successfully processes most files but has a critical bug where pages containing both descriptive content AND inline database tables lose all their descriptive content. The affected files have been temporarily restored from the main branch to their correct state.
+✅ **CRITICAL BUG RESOLVED** - Inline database content loss fixed
+⚠️ **NEW ISSUES DISCOVERED** - 6 additional formatting issues found during real ZIP test
 
-**Next Steps:**
-1. Implement merge strategy for pages with inline databases (Issue #1)
-2. Verify database processing order doesn't cause overwrites (Issue #2)
-3. Re-run import script and verify all files retain their content
-4. Complete testing checklist at end of document
+### Fixed Issues:
+1. **Page Tracking**: All files processed by the page importer are tracked
+2. **Merge Strategy**: When a database targets an already-processed page, content is merged instead of overwritten
+3. **Table Stripping**: Pages in `databases_via_pipeline` have tables stripped during page conversion (tables are added back by the pipeline to separate files)
+
+**Testing Completed:**
+- ✅ Import ran successfully with real Notion export
+- ✅ Upbringing.md preserves banner, description, and table
+- ✅ Background.md preserves banner, description, benefits section, and table
+- ✅ Talents overview.md correctly has NO table (will be populated with guide content in Notion later)
+- ✅ All 40 pages updated, 6 databases processed, 17 sections split
+
+### Newly Discovered Issues (Documented Below):
+1. ⚠️ Weapons page uses single large table instead of split-by-type structure
+2. ⚠️ Armor page uses single large table instead of split-by-type structure
+3. ⚠️ Equipment overview missing banner and descriptive content
+4. ⚠️ Magic Items overview has all content inline instead of split structure with subpages
+5. ⚠️ Conditions page missing descriptive paragraph before table
+6. ⚠️ Downtime overview missing descriptive content and has activities as H2 sections instead of separate subpage
 
 ---
 
-## Issue #1: Pages with Inline Databases Losing All Content 🚨 **P0 - BLOCKING**
+## Issue #1: Pages with Inline Databases Losing All Content ✅ **FIXED**
 
 ### Problem Description
 
@@ -46,10 +61,11 @@ When a Notion page contains BOTH descriptive content AND an inline database tabl
    - ❌ Currently has: Full 130-row talents table
    - ✅ Expected: Overview content only (table should be in skill-specific subpages)
 
-### Root Cause Analysis
+### Root Cause Analysis ✅ RESOLVED
 
-**Configuration Conflict**:
-- These pages are defined in BOTH `pages` and `databases` sections of `config.json`
+**Configuration Conflict** (RESOLVED):
+- These pages were defined in BOTH `pages` and `databases` sections of `config.json`
+- Pages were processed first (creating complete content), then databases overwrote them
 - Example for Upbringing:
   ```json
   // In pages section:
@@ -172,9 +188,9 @@ Two different patterns are needed:
 - Separate subpages: Tables split by skill/school/category
 - Overview page should NEVER be overwritten with table
 
-### Solution Requirements
+### Solution Implemented ✅
 
-The import system needs to support merging page content with database content:
+The import system now supports merging page content with database content:
 
 1. **Detect Content Conflicts**: 
    - Check if page and database target the same file
@@ -219,21 +235,21 @@ The import system needs to support merging page content with database content:
 
 ---
 
-## Issue #2: Database Processing Order and Overwrites 🚨 **P1 - RELATED**
+## Issue #2: Database Processing Order and Overwrites ✅ **FIXED**
 
-### Problem Description
+### Problem Description (RESOLVED)
 
-The current pipeline processes pages first, then databases. When both target the same file, the database overwrites the page without merging.
+The pipeline was processing pages first, then databases. When both targeted the same file, the database overwrote the page without merging.
 
-### Current Flow
+### Previous Flow
 ```
 1. _process_pages() → Creates/updates files
-2. _process_databases() → Overwrites some of the same files
+2. _process_databases() → Overwrites some of the same files ❌
 ```
 
-### Solution Needed
+### Solution Implemented ✅
 
-Implement one of these strategies:
+Implemented **Option A: Smart Merging** with the following features:
 
 **Option A: Smart Merging**
 - Before writing database output, check if file exists
@@ -285,10 +301,448 @@ Once fixed, verify:
 
 ## Priority and Impact
 
-**Priority**: P0 - BLOCKING RELEASE  
-**Impact**: HIGH - Data loss, missing content, broken user experience  
-**Affected Users**: All documentation users looking for talents, upbringings, or backgrounds  
-**Workaround**: None - content is completely missing
+**Priority**: P1 - COMPLETE BEFORE MERGE  
+**Impact**: CRITICAL ISSUES FIXED - Remaining issues are formatting/structure  
+**Affected Users**: All documentation users  
+**Workaround**: Main branch still has correct formatting
+
+---
+
+## NEW FORMATTING ISSUES (Discovered 2025-12-10)
+
+These issues were discovered after successfully fixing the critical merge bug and testing with the real Notion ZIP export.
+
+---
+
+### Issue #2: Weapons Page Single Large Table ⚠️ NEW
+
+**File**: `docs/04-equipment/03-weapons.md`
+
+**Problem**: Import creates a single large table with all weapons mixed together using a "Type" column.
+
+**Current State** (After Import):
+```markdown
+# ⚔️ Weapons
+
+![banner-img](/img/banner/weapons-banner.png)
+
+| Quality | Type | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | Axe | Hatchet | 2d6 | thrown | 1 | 10 coins |
+| 1 | Blade | Dagger | 1d6+1 | finesse, thrown | 0 | 5 coins |
+| 1 | Bow | Shortbow | 2d6 | ammunition (short reload), two-handed | 1 | 10 coins |
+... (all weapons in one table)
+```
+
+**Expected State** (From main branch):
+```markdown
+# ⚔️ Weapons
+
+![banner-img](/img/banner/weapons-banner.png)
+
+List of all available weapons in the game.
+
+## Weapons
+
+### Axe
+
+| Name | Quality | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| Hatchet | 1 | 2d6 | thrown | 1 | 10 coins |
+| Handaxe | 1 | 2d6+1 | thrown | 1 | 10 coins |
+...
+
+### Blade
+
+| Name | Quality | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| Dagger | 1 | 1d6+1 | finesse, thrown | 0 | 5 coins |
+...
+
+### Bow
+
+| Name | Quality | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| Shortbow | 1 | 2d6 | ammunition (short reload), two-handed | 1 | 10 coins |
+...
+```
+
+**Key Differences**:
+- Expected: Split into H3 sections by weapon type (Axe, Blade, Bow, etc.)
+- Expected: No "Type" column (implicit from section heading)
+- Expected: "Name" column first
+- Current: Single table with Type column, Quality column first
+
+**Root Cause**:
+- Split-table script exists (`src/utils/split-weapons-by-category.py`) but not integrated
+- Database import produces single table from Notion database
+- Post-processing step needed to split tables by category
+
+---
+
+### Issue #3: Armor Page Single Large Table ⚠️ NEW
+
+**File**: `docs/04-equipment/04-armor.md`
+
+**Problem**: Import creates a single large table with all armor mixed together using a "Type" column.
+
+**Current State** (After Import):
+```markdown
+# 🛡️ Armor
+
+![banner-img](/img/banner/armor-banner.png)
+
+| Quality | Type | Name | AV | Properties | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Helmet | Leather Hood | +1 | — | 20 coins |
+| 1 | Light Armor | Leather Armor | +2 | flexible | 30 coins |
+| 1 | Heavy Armor | Chain Shirt | +4 | — | 100 coins |
+... (all armor in one table)
+```
+
+**Expected State** (From main branch):
+```markdown
+# 🛡️ Armor
+
+![banner-img](/img/banner/armor-banner.png)
+
+List of all available armor pieces in the game.
+
+## Armor
+
+### Light Armor
+
+| Name | Quality | AV | Properties | Cost |
+| --- | --- | --- | --- | --- |
+| Leather Armor | 1 | +2 | flexible | 30 coins |
+| Gambeson | 1 | +2 | — | 30 coins |
+...
+
+### Heavy Armor
+
+| Name | Quality | AV | Properties | Cost |
+| --- | --- | --- | --- | --- |
+| Chain Shirt | 1 | +4 | — | 100 coins |
+...
+
+### Helmet
+
+| Name | Quality | AV | Properties | Cost |
+| --- | --- | --- | --- | --- |
+| Leather Hood | 1 | +1 | — | 20 coins |
+...
+```
+
+**Key Differences**:
+- Expected: Split into H3 sections by armor type (Light Armor, Heavy Armor, Helmet)
+- Expected: No "Type" column (implicit from section heading)
+- Expected: "Name" column first
+- Current: Single table with Type column, Quality column first
+
+**Root Cause**:
+- Split-table script exists (`src/utils/split-armor-by-category.py`) but not integrated
+- Same issue as weapons - split tables generated separately but not integrated into main import flow
+
+---
+
+### Issue #4: Equipment Overview Missing Content ⚠️ NEW
+
+**File**: `docs/04-equipment/00-overview.md`
+
+**Problem**: Import creates bare overview with just navigation links, missing banner and descriptive content.
+
+**Current State** (After Import):
+```markdown
+---
+sidebar_position: 0
+---
+
+# 🎒 Equipment
+
+- [Items](./01-items.md)
+- [Equipment](./02-equipment/00-overview.md)
+- [Weapons](./03-weapons.md)
+- [Armor](./04-armor.md)
+- [Armor & Weapon Properties](./05-armor-weapon-properties.md)
+- [Exotic Weapons](./06-exotic-weapons.md)
+- [Magic Items](./07-magic-items/00-overview.md)
+```
+
+**Expected State** (From main branch):
+```markdown
+---
+sidebar_position: 0
+---
+
+# 🎒 Equipment
+
+![banner-img](/img/banner/items-banner.png)
+
+Your character can carry and use various equipment to help them on their adventures. This includes mundane items like rope and torches, as well as weapons, armor, and magical artifacts.
+
+Browse the various categories of equipment:
+
+## [Items](./01-items.md)
+
+General adventuring gear and tools.
+
+## [Equipment](./02-equipment/00-overview.md)
+
+Specialized equipment and tools for various situations.
+
+## [Weapons](./03-weapons.md)
+
+Browse all available weapons in the game.
+
+## [Armor](./04-armor.md)
+
+Browse all available armor pieces in the game.
+
+## [Armor & Weapon Properties](./05-armor-weapon-properties.md)
+
+Learn about the various properties that weapons and armor can have.
+
+## [Exotic Weapons](./06-exotic-weapons.md)
+
+Unique and unusual weapons for characters with special training.
+
+## [Magic Items](./07-magic-items/00-overview.md)
+
+Enchanted items and magical artifacts.
+```
+
+**Key Differences**:
+- Expected: Banner image
+- Expected: Introduction paragraph explaining equipment system
+- Expected: H2 section headings with descriptive text for each category
+- Current: Bare bullet list with links only
+
+**Root Cause**:
+- Overview pages likely use Notion's "Link to page" blocks which convert to simple bullet lists
+- Need to preserve/add descriptive content either in Notion or during conversion
+
+---
+
+### Issue #5: Magic Items Overview Not Split ⚠️ NEW
+
+**File**: `docs/04-equipment/07-magic-items/00-overview.md`
+
+**Problem**: Import creates 453-line monolithic file with all magic item tables inline instead of split structure with subpages.
+
+**Current State** (After Import):
+- 453 lines total
+- Contains all tables inline:
+  - Cost tables (by item type)
+  - Effects tables
+  - Materials tables
+  - Enchantments tables
+- All in single file
+
+**Expected State** (From main branch):
+```markdown
+---
+sidebar_position: 0
+---
+
+# ✨ Magic Items
+
+![banner-img](/img/banner/magic-items-banner.png)
+
+Magic items are rare and powerful artifacts that can grant special abilities to their wielder.
+
+## Browse Magic Items
+
+- [Cost Tables](./cost-tables.md) - Pricing by item type and quality
+- [Effects](./effects.md) - Available magical effects
+- [Materials](./materials.md) - Special crafting materials
+- [Enchantments](./enchantments.md) - Enchantment properties
+```
+
+**Subpage Structure**:
+- `cost-tables.md` - Cost tables only
+- `effects.md` - Effects tables only
+- `materials.md` - Materials tables only
+- `enchantments.md` - Enchantments tables only
+
+**Key Differences**:
+- Expected: Overview page with browse links + 4 separate subpages
+- Current: All content in single 453-line file
+- Directory listing shows subpages exist but overview doesn't link to them properly
+
+**Root Cause**:
+- Notion structure may have all tables in one page
+- Need splitting logic similar to weapons/armor but for magic items
+- May need separate databases in Notion or post-processing split
+
+---
+
+### Issue #6: Conditions Missing Descriptive Text ⚠️ NEW
+
+**File**: `docs/05-combat/04-conditions.md`
+
+**Problem**: Import creates page with banner and table but missing introductory paragraph.
+
+**Current State** (After Import):
+```markdown
+---
+sidebar_position: 4
+---
+
+# 🌡️ Conditions
+
+![banner-img](/img/banner/conditions-banner.png)
+
+| Name | Description |
+| --- | --- |
+| bleeding (X) | When you take any amount of damage, also take X damage (ignoring AV)...
+```
+
+**Expected State** (From main branch):
+```markdown
+---
+sidebar_position: 4
+---
+
+# 🌡️ Conditions
+
+![banner-img](/img/banner/conditions-banner.png)
+
+You can suffer various conditions during the game. Each condition inflicts different effects on you. When you suffer a condition, the source also states how long it holds effect. When you suffer the same condition multiple times, you only are affected by it once. In the case of conditions with different potencies, such as bleeding, you only suffer the most potent version of the condition.
+
+| Name | Description |
+| --- | --- |
+| bleeding (X) | You take X lasting damage. At the end of your turns, roll Strength + Fortitude...
+```
+
+**Key Differences**:
+- Expected: Introductory paragraph explaining condition mechanics
+- Current: Banner directly followed by table (missing intro)
+
+**Root Cause**:
+- Notion page may be missing this descriptive text block
+- Or conversion is stripping it incorrectly
+- Similar to Equipment overview - descriptive content not preserved
+
+---
+
+### Issue #7: Downtime Overview Structure Wrong ⚠️ NEW
+
+**File**: `docs/06-scenes/04-downtime/00-overview.md`
+
+**Problem**: Import creates overview with activity details as H2 sections inline instead of having brief overview with link to activities subpage.
+
+**Current State** (After Import):
+- 329 lines total
+- Contains lifestyle tables inline
+- Contains H2 sections for activities (## Lifestyle, ## Structure of a Downtime Activity, etc.)
+- Activities detailed directly in overview
+
+**Expected State** (From main branch):
+```markdown
+---
+sidebar_position: 0
+---
+
+# 🏠 Downtime
+
+![banner-img](/img/banner/crafting-banner.png)
+
+Whenever adventurers return from their perilous quests, they find solace in the familiar comforts of civilization. This downtime offers a chance to rest, replenish your supplies, and let you prepare for the challenges that lie ahead.
+
+Downtime is measured in weeks, where each adventurer can choose to partake in a variety of downtime activities. You choose one downtime activity per week.
+
+When you take at least a week of downtime, it is assumed that you have time and opportunity to do the following things:
+
+- You are able to spend any XP you gained during the last adventure on your skills...
+- You can buy and sell any items with a Quality equal or lower than the settlement's advancement level...
+- You automatically heal one Wound per week of downtime...
+
+## Settlements
+
+Each type of civilized settlement falls into one of the following categories...
+
+1. **Hamlet** (small primitive settlement...)
+2. **Village** (decently sized settlement...)
+3. **Town** (the core settlement...)
+4. **City** (the dominant settlement...)
+
+## Available Activities
+
+Browse the full list of downtime activities:
+
+### [Downtime Activities](./activities)
+All available downtime activities including:
+- **Work Activities**: Manual Labour, Work a Crafting Profession
+- **Learning**: Learn a Profession, Learn a Skill, Research
+- **Social**: Carouse, Haggle
+- **Recovery**: Recover, Provide Offering
+- **Crafting**: Craft an Item
+
+Each activity includes its requirements, expenses, and success outcomes.
+```
+
+**Key Differences**:
+- Expected: Overview with settlements section + link to activities subpage
+- Expected: Activities details in separate subpage (activities/00-overview.md or similar)
+- Current: All activity details inline as H2 sections
+- Current: 329 lines vs expected ~60 lines for overview
+
+**Root Cause**:
+- Notion page structure may have all activities inline
+- Need to split activities to separate subpage
+- Similar to magic items - content should be split across files
+
+---
+
+## Analysis Summary
+
+### Patterns Identified
+
+1. **Split Table Issues** (Weapons, Armor):
+   - Split-table scripts exist but aren't integrated into main import flow
+   - Database import creates single tables with "Type" columns
+   - Need to run split scripts as post-processing step
+
+2. **Missing Descriptive Content** (Equipment Overview, Conditions):
+   - Overview pages missing introduction paragraphs and descriptions
+   - May need to add content in Notion or preserve during conversion
+   - Similar to Talents overview pattern (guide content separate from database)
+
+3. **Structure Splitting Needed** (Magic Items, Downtime):
+   - Pages have all content inline when it should be split across subpages
+   - Need splitting logic to create proper file hierarchy
+   - May need separate Notion structure or post-processing
+
+### Implementation Priority
+
+**High Priority** (P1):
+1. Weapons split table integration
+2. Armor split table integration
+
+**Medium Priority** (P2):
+3. Equipment overview descriptive content
+4. Conditions descriptive paragraph
+
+**Lower Priority** (P3):
+5. Magic Items structure splitting
+6. Downtime activities structure splitting
+
+### Recommended Approach
+
+1. **For Split Tables** (Weapons/Armor):
+   - Integrate existing split scripts into import pipeline
+   - Run as post-processing step after database import
+   - Configuration flag to enable split-table processing
+
+2. **For Missing Content** (Equipment/Conditions):
+   - Option A: Add descriptive content to Notion pages
+   - Option B: Preserve existing content during merge (like Upbringing/Background)
+   - Option C: Template-based content injection
+
+3. **For Structure Splits** (Magic Items/Downtime):
+   - Add splitting logic to database converter
+   - Create subpage files with appropriate content sections
+   - Update overview to link to subpages
 
 ---
 

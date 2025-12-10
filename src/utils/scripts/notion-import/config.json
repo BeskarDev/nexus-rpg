@@ -55,12 +55,12 @@
       },
       "Background": {
         "target": "docs/02-adventurers/04-background.md",
-        "title": "📜 Background",
+        "title": "🖼 Background",
         "banner": "/img/banner/background-banner.png"
       },
       "NPC Relations": {
         "target": "docs/02-adventurers/05-npc-relations.md",
-        "title": "👥 NPC Relations",
+        "title": "👥 NPCs and Relationships",
         "banner": "/img/banner/npc-relations-banner.png"
       },
       "Hit Points, Exhaustion, and Wounds": {

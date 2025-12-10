@@ -41,6 +41,9 @@ class NotionImporter:
             'errors': []
         }
         
+        # Track which files were processed as pages (to enable merge strategy for databases)
+        self.processed_page_files = set()
+        
         # Project root is 4 levels up from src/utils/scripts/notion-import
         self.project_root = config_path.parent.parent.parent.parent.parent
         
@@ -148,9 +151,14 @@ class NotionImporter:
                 continue
             
             try:
+                # Check if this page will be processed by the database pipeline
+                # If so, we should strip tables from the overview page
+                databases_via_pipeline = self.config.get('databases_via_pipeline', [])
+                strip_tables = page_prefix in databases_via_pipeline
+                
                 # Convert HTML to Markdown
                 title = mapping.get('title', '')
-                markdown = convert_html_to_markdown(html_file, title)
+                markdown = convert_html_to_markdown(html_file, title, strip_tables=strip_tables)
                 
                 # Inject images if configured
                 inject_images = mapping.get('inject_images')
@@ -186,6 +194,9 @@ class NotionImporter:
                 target_path.parent.mkdir(parents=True, exist_ok=True)
                 with open(target_path, 'w', encoding='utf-8') as f:
                     f.write(content)
+                
+                # Track this file as processed by page importer
+                self.processed_page_files.add(str(target_path.relative_to(self.project_root)))
                 
                 print(f"  ✓ Updated: {mapping['target']}")
                 self.stats['pages_updated'] += 1
@@ -314,41 +325,134 @@ class NotionImporter:
             print(f"  ✗ Error: {error_msg}")
     
     def _extract_table_to_page(self, table, target_path: Path, mapping: dict):
-        """Extract table from HTML and save to markdown page."""
+        """Extract table from HTML and save to markdown page, merging with existing page content if needed."""
         from notion_html_converter import NotionHtmlConverter
         
         converter = NotionHtmlConverter()
         table_md = converter._convert_table(table)
         
-        # Read existing frontmatter to preserve it if it exists
-        existing_structure = self._read_existing_structure(target_path)
+        # Check if this file was already processed as a page (merge strategy needed)
+        target_relative = str(target_path.relative_to(self.project_root))
+        should_merge = target_relative in self.processed_page_files
         
-        # Build content with proper structure
-        parts = []
+        if should_merge:
+            # MERGE STRATEGY: Preserve existing page content and append/replace table
+            print(f"    ℹ Merging table with existing page content in {target_relative}")
+            
+            if not target_path.exists():
+                print(f"    ⚠ Warning: File marked as processed but doesn't exist, creating new")
+                should_merge = False
         
-        # Add frontmatter
-        if existing_structure['frontmatter']:
-            parts.append(existing_structure['frontmatter'])
+        if should_merge:
+            # Read existing file
+            with open(target_path, 'r', encoding='utf-8') as f:
+                existing_content = f.read()
+            
+            # Parse existing content
+            lines = existing_content.split('\n')
+            
+            # Find where to insert/replace the table
+            # Strategy: Look for an existing table section or add after description
+            table_start_idx = None
+            table_end_idx = None
+            section_heading_idx = None
+            
+            # First, look for a section heading that introduces the table
+            for i, line in enumerate(lines):
+                stripped = line.strip()
+                if stripped.startswith('###') and ('list' in stripped.lower() or 'table' in stripped.lower()):
+                    section_heading_idx = i
+                    # Check if there's a table after this heading
+                    for j in range(i+1, min(i+5, len(lines))):  # Look ahead a few lines
+                        if '|' in lines[j] and j+1 < len(lines) and '---' in lines[j+1]:
+                            table_start_idx = j
+                            # Find end of table
+                            for k in range(j+1, len(lines)):
+                                if lines[k].strip() and '|' not in lines[k]:
+                                    table_end_idx = k
+                                    break
+                            if table_end_idx is None:
+                                table_end_idx = len(lines)
+                            break
+                    break
+            
+            # If no section heading found, look for standalone table
+            if table_start_idx is None:
+                for i, line in enumerate(lines):
+                    # Check for existing table (markdown table header or divider)
+                    if '|' in line and i+1 < len(lines) and '---' in lines[i+1]:
+                        table_start_idx = i
+                        # Find end of table
+                        for j in range(i+1, len(lines)):
+                            if lines[j].strip() and '|' not in lines[j]:
+                                table_end_idx = j
+                                break
+                        if table_end_idx is None:
+                            table_end_idx = len(lines)
+                        break
+            
+            if table_start_idx is not None:
+                # Replace existing table, preserving section heading if present
+                if section_heading_idx is not None and section_heading_idx < table_start_idx:
+                    # Keep everything up to and including the section heading, add blank line, new table, then rest
+                    new_lines = lines[:section_heading_idx+1] + [''] + [table_md] + lines[table_end_idx:]
+                else:
+                    # Just replace the table
+                    new_lines = lines[:table_start_idx] + [table_md] + lines[table_end_idx:]
+                content = '\n'.join(new_lines)
+            else:
+                # Append table at the end (after description content)
+                # Find insertion point after any introductory content
+                insert_idx = len(lines)
+                
+                # If there's a section heading but no table was found after it, insert after the heading
+                if section_heading_idx is not None:
+                    insert_idx = section_heading_idx + 1
+                    # Skip any blank lines
+                    while insert_idx < len(lines) and not lines[insert_idx].strip():
+                        insert_idx += 1
+                
+                # If no specific section found, append at end with proper spacing
+                if insert_idx == len(lines):
+                    # Remove trailing blank lines
+                    while lines and not lines[-1].strip():
+                        lines.pop()
+                    new_lines = lines + ['', table_md, '']
+                else:
+                    new_lines = lines[:insert_idx] + [table_md] + lines[insert_idx:]
+                
+                content = '\n'.join(new_lines)
         else:
-            parts.append('---\nsidebar_position: 1\n---')
-        
-        parts.append('')
-        
-        # Add title
-        title = mapping.get('title', mapping.get('type', 'Table').title())
-        parts.append(f"# {title}")
-        parts.append('')
-        
-        # Add banner if provided
-        banner = mapping.get('banner')
-        if banner:
-            parts.append(f"![banner-img]({banner})")
+            # OVERWRITE STRATEGY: Create fresh page with table
+            # Read existing frontmatter to preserve it if it exists
+            existing_structure = self._read_existing_structure(target_path)
+            
+            # Build content with proper structure
+            parts = []
+            
+            # Add frontmatter
+            if existing_structure['frontmatter']:
+                parts.append(existing_structure['frontmatter'])
+            else:
+                parts.append('---\nsidebar_position: 1\n---')
+            
             parts.append('')
-        
-        # Add table
-        parts.append(table_md)
-        
-        content = '\n'.join(parts) + '\n'
+            
+            # Add title
+            title = mapping.get('title', mapping.get('type', 'Table').title())
+            parts.append(f"# {title}")
+            parts.append('')
+            
+            # Add banner if provided
+            banner = mapping.get('banner')
+            if banner:
+                parts.append(f"![banner-img]({banner})")
+                parts.append('')
+            
+            # Add table
+            parts.append(table_md)
+            
+            content = '\n'.join(parts) + '\n'
         
         target_path.parent.mkdir(parents=True, exist_ok=True)
         with open(target_path, 'w', encoding='utf-8') as f:
