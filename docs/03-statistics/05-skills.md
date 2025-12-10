@@ -7,7 +7,6 @@ sidebar_position: 5
 ![banner-img](/img/banner/skills-banner.png)
 
 > "The difference between a mere survivor and a true legend isn't found in their weapons or birthrights, but in the skills they've honed through blood, sweat, and stubborn persistence."
-> 
 
 ## Skills Overview
 
@@ -39,7 +38,6 @@ As adventurers journey through the world, they gain experience points (XP) which
 The GM may require that adventurers seek out specific training, mentors, or sacred sites to advance certain Skills beyond rank 3.
 
 > **Important:** No Skill can be advanced beyond rank 5, which represents the pinnacle of mortal achievement.
-> 
 
 When spending XP to advance a Skill, you pay only the difference between your current rank and the next rank. For example, advancing from rank 2 to rank 3 costs 6 XP (12 - 6 = 6).
 
@@ -68,7 +66,6 @@ Specialized skills that require dedicated training or innate talent. These inclu
 The skill of mobility, grace, and control of one's physical form. It represents a character's ability to perform physical activities such as running, jumping, and climbing with ease and control.
 
 > Training methods: Sprint training, climbing practice, swimming in rough waters, gymnastics, practicing parkour or freerunning, weightlifting, practicing balance on a slackline, or martial arts conditioning.
-> 
 
 **Roll with this skill when...**
 
@@ -80,7 +77,6 @@ The skill of mobility, grace, and control of one's physical form. It represents 
 The skill of mental and physical endurance, focus, and resilience. It represents a character's ability to resist mental and physical stress and remain focused in difficult situations.
 
 > Training methods: Meditation, exposure to harsh elements, fasting, endurance training, resisting pain, practicing self-discipline, facing fears and phobias, practicing holding one's breath, or taking ice baths.
-> 
 
 **Roll with this skill when...**
 
@@ -92,7 +88,6 @@ The skill of mental and physical endurance, focus, and resilience. It represents
 The skill of communication, negotiation, and leadership. It represents a character's ability to persuade, charm, and intimidate others, as well as to inspire and lead.
 
 > Training methods: Public speaking, diplomatic training, storytelling, debate practice, leadership exercises, studying body language and nonverbal communication, practicing empathy and active listening, or studying political theory or philosophy.
-> 
 
 **Roll with this skill when...**
 
@@ -106,7 +101,6 @@ The skill of communication, negotiation, and leadership. It represents a charact
 The skill of empathy, intuition, and reading people and situations. It represents a character's ability to sense when something is not as it seems, to make accurate appraisals, and to sense the truth in a situation.
 
 > Training methods: Careful observation of others, studying behavioral patterns, meditation on empathy, interpreting dreams and omens, studying psychology or body language, practicing mindfulness meditation, learning to read microexpressions or subtle cues.
-> 
 
 **Roll with this skill when...**
 
@@ -118,7 +112,6 @@ The skill of empathy, intuition, and reading people and situations. It represent
 The skill of awareness, attention to detail, and spotting danger. It represents a character's ability to see hidden details, weak spots, and potential threats.
 
 > Training methods: Sensory awareness exercises, pattern recognition practice, tracking, blindfolded movement exercises, practicing observation and memorization, learning to read microexpressions or subtle cues, practicing active listening, or learning to interpret sensory information in new ways.
-> 
 
 **Roll with this skill when...**
 
@@ -130,7 +123,6 @@ The skill of awareness, attention to detail, and spotting danger. It represents 
 The skill of cunning, deception, and moving unseen. It represents a character's ability to act in a sly or sneaky manner, to bluff or lie convincingly, and to perform sleight-of-hand tricks.
 
 > Training methods: Silent movement practice, disguise training, sleight of hand exercises, misdirection techniques, pickpocketing, learning to disguise oneself with makeup or clothing, practicing lying convincingly, or learning to mimic others' accents or mannerisms.
-> 
 
 **Roll with this skill when...**
 
@@ -145,7 +137,6 @@ The skill of cunning, deception, and moving unseen. It represents a character's 
 The skill of manipulating arcane energies and casting spells. It represents a character's ability to use arcane magic to cast spells and manipulate the world around them.
 
 > Training methods: Spell practice, studying ancient grimoires, meditating on magical symbols, tracing ley lines, crafting focus objects, spellcasting with a mentor, experimenting with different magical correspondences or symbols, practicing divination or scrying, or participating in rituals with other practitioners.
-> 
 
 **Roll with this skill when...**
 
@@ -156,7 +147,6 @@ The skill of manipulating arcane energies and casting spells. It represents a ch
 The skill of using ranged weapons effectively. It represents a character's ability to use ranged weapons, such as bows, crossbows, and thrown weapons to attack from a distance.
 
 > Training methods: Target practice, quick-drawing exercises, shooting while moving, crafting arrows, studying wind patterns, practicing shooting from different angles or positions, learning to make or repair arrows, studying the physics of projectile motion, or participating in archery competitions.
-> 
 
 **Roll with this skill when...**
 
@@ -167,7 +157,6 @@ The skill of using ranged weapons effectively. It represents a character's abili
 The skill of creating and modifying objects through various methods such as alchemy, smithing, cloth weaving, leatherworking, woodworking, and jewelry making.
 
 > Training methods: Apprenticeship under a master, practicing with tools and materials, studying ancient techniques, experimenting with new designs, learning new techniques from a master craftsman, experimenting with new materials, studying historical examples of crafts, or seeking out rare materials to work with.
-> 
 
 **Roll with this skill when...**
 
@@ -181,7 +170,6 @@ The skill of creating and modifying objects through various methods such as alch
 The skill of knowledge and academic learning, including history, etiquette, and the arts of war. It represents a character's ability to recall information and make informed decisions.
 
 > Training methods: Studying ancient texts, attending lessons from scholars, documenting observations, debating with learned individuals, attending lectures or seminars, studying under a mentor or tutor, practicing debate or public speaking, or traveling to historical sites and museums to learn about history.
-> 
 
 **Roll with this skill when...**
 
@@ -193,7 +181,6 @@ The skill of knowledge and academic learning, including history, etiquette, and 
 The skill of melee combat with weapons or bare hands. It represents a character's ability to use melee weapons and unarmed combat to attack and defend in close combat.
 
 > Training methods: Weapon drills, sparring matches, studying anatomy, practicing defensive maneuvers, conditioning exercises, practicing different martial arts styles, learning to use different weapons, studying human anatomy or pressure points, or participating in combat sports competitions.
-> 
 
 **Roll with this skill when...**
 
@@ -204,7 +191,6 @@ The skill of melee combat with weapons or bare hands. It represents a character'
 The skill of mythology, theology, and magical knowledge. It represents a character's ability to recall and understand information about the arcane and supernatural.
 
 > Training methods: Studying sacred texts, communing with spirits, interpreting symbols and omens, researching ancient magic, studying mythology or theology, seeking out and studying artifacts or relics, practicing rituals or spells, seeking out and talking to experts in a particular field, or experimenting with magic or alchemy.
-> 
 
 **Roll with this skill when...**
 
@@ -216,7 +202,6 @@ The skill of mythology, theology, and magical knowledge. It represents a charact
 The skill of channeling divine or spiritual energies. It represents a character's ability to use spiritual magic to connect with the supernatural and to cast spells that draw upon divine or mystical energies.
 
 > Training methods: Prayer, communion with spirits or gods, ritual practice, studying sacred geometry, practicing healing techniques, meditation, studying ancient mystical texts or philosophies, seeking out and learning from spiritual masters, experimenting with different forms of energy work or healing, or practicing different forms of divination or prophecy.
-> 
 
 **Roll with this skill when...**
 
@@ -227,7 +212,6 @@ The skill of channeling divine or spiritual energies. It represents a character'
 The skill of knowledge of plants, animals, and healing. It represents a character's ability to understand and interact with the natural world and to use this knowledge to heal.
 
 > Training methods: Wilderness survival, herb gathering, animal handling, practicing first aid, studying ecological relationships, foraging, learning to identify and use medicinal plants, or studying animal behavior or ecology.
-> 
 
 **Roll with this skill when...**
 
@@ -241,7 +225,6 @@ The skill of knowledge of plants, animals, and healing. It represents a characte
 The skill of urban survival, connections, and "street smarts." It represents a character's ability to navigate and survive in urban environments, to find people, and to haggle effectively.
 
 > Training methods: Building networks of contacts, practicing haggling, learning local customs, mapping urban environments, learning to pick locks or pickpocket, practicing self-defense, practicing blending in with crowds, or networking with other people in the area.
-> 
 
 **Roll with this skill when…**
 
@@ -255,7 +238,6 @@ The skill of urban survival, connections, and "street smarts." It represents a c
 The skill of wilderness survival, navigation, hunting, and foraging. It represents a character's ability to survive in the wilderness, to find food and water, and to track and hunt game.
 
 > Training methods: Wilderness expeditions, hunting practice, shelter building, star navigation, tracking exercises, learning to start fires without matches, studying animal behavior or ecology, practicing wilderness first aid, learning to identify and use edible plants, or practicing hunting and trapping.
-> 
 
 **Roll with this skill when...**
 

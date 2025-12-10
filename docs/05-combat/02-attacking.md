@@ -146,9 +146,7 @@ Refer to the table below to see what the statistics of any given object are.
 | Object Type | Defense | AV | HP |
 | --- | --- | --- | --- |
 | rope | 12 | 0 | 5 |
-| ceramic vase or pot | 10 | 2 (light) | 5 |
-| wooden door or chest | 8 | 5 (light) | 10 |
-| metal door or chest | 8 | 10 (heavy) | 20 |
-| stone wall | 8 | 20 (heavy) | 40 |
-
-X
+| ceramic vase or pot | 10 | 2 (Light) | 5 |
+| wooden door or chest | 8 | 5 (Light) | 10 |
+| metal door or chest | 8 | 10 (Heavy) | 20 |
+| stone wall | 8 | 20 (Heavy) | 40 |

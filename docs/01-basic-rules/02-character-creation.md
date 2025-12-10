@@ -102,6 +102,7 @@ Of these seven skills:
 As you adventure, you'll earn XP to improve these skills and unlock additional talents. Note, that your Character Level restricts the maximum amount of XP you can invest in each individual skill. This means, once you reach that limit for any skill, additional XP available must be spend for any other skills you haven’t improved to your current limit.
 
 **Special Skills:**
+
 - If you select **Archery** or **Fighting**, you learn Combat Arts for weapons associated with that skill. You can learn one Combat Art for rank 0 or two Combat Arts for rank 1 in these skills. See the Combat Arts section for details.
 - If you select **Arcana** or **Mysticism**, you learn spells associated with that skill. See the Magic section for details.
 - If you select **Crafting**, you learn one crafting profession. See the Crafting Professions section for details.
@@ -113,6 +114,7 @@ As you adventure, you'll earn XP to improve these skills and unlock additional t
 Every adventurer begins with the following standard equipment:
 
 **Starting Items:**
+
 - A backpack (0 load for your first one, normally 1 load, worth 15 coins)
 - Two pouches (can hold up to 1 load each, 0 load, worth 5 coins each)
 - Traveler's Clothes (0 load when worn, normally 1 load, worth 25 coins)

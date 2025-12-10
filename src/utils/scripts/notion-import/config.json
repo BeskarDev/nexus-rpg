@@ -1,4 +1,8 @@
 {
+  "link_mappings": {
+    "06-wild-surge-table.mdx": "./02-wild-surge-table.mdx",
+    "07-mystic-penance-table.mdx": "./03-mystic-penance-table.mdx"
+  },
   "mappings": {
     "pages": {
       "How To Roll": {
@@ -81,7 +85,8 @@
       "Talents": {
         "target": "docs/03-statistics/06-talents/00-overview.md",
         "title": "🎯 Talents",
-        "banner": "/img/banner/talents-banner.png"
+        "banner": "/img/banner/talents-banner.png",
+        "preserve_existing": true
       },
       "Attacking": {
         "target": "docs/05-combat/02-attacking.md",
@@ -101,7 +106,8 @@
       "Combat Arts": {
         "target": "docs/05-combat/05-combat-arts/00-overview.md",
         "title": "🔶 Combat Arts",
-        "banner": "/img/banner/combat-arts-banner.png"
+        "banner": "/img/banner/combat-arts-banner.png",
+        "preserve_existing": true
       },
       "Defenses": {
         "target": "docs/03-statistics/03-defenses.md",
@@ -126,7 +132,8 @@
       "Magic Items": {
         "target": "docs/04-equipment/07-magic-items/00-overview.md",
         "title": "💎 Magic Items",
-        "banner": "/img/banner/weapon-armor-materials-banner.png"
+        "banner": "/img/banner/weapon-armor-materials-banner.png",
+        "preserve_existing": true
       },
       "Magic Item Cost Tables": {
         "target": "docs/04-equipment/07-magic-items/cost-tables.md",
@@ -162,17 +169,26 @@
         "extract_sections": [
           {
             "start_marker": "### Common Mounts",
-            "end_marker": "## Companions",
+            "end_marker": "## Mount Equipment",
             "target": "docs/08-creatures/01-mounts-companions/mounts.md",
             "title": "🐴 Common Mounts",
             "sidebar_position": 1,
             "replacement": "For the full list of available mounts, see the [Mounts](./01-mounts-companions/mounts) page."
-          }
-        ],
-        "replace_sections": [
+          },
+          {
+            "start_marker": "## Mount Equipment",
+            "end_marker": "## Companions",
+            "target": "docs/08-creatures/01-mounts-companions/equipment.md",
+            "title": "💼 Mount Equipment",
+            "sidebar_position": 2,
+            "replacement": "For the different kinds of mount equipment available, see the [Mount Equipment](./01-mounts-companions/equipment) page."
+          },
           {
             "start_marker": "## Companion Traits",
-            "end_marker": "<br/><br/>More Ideas",
+            "end_marker": null,
+            "target": "docs/08-creatures/01-mounts-companions/traits.md",
+            "title": "🐾 Companion Traits",
+            "sidebar_position": 3,
             "replacement": "For detailed companion traits, see the [Companion Traits](./01-mounts-companions/traits) page."
           }
         ]
@@ -185,11 +201,8 @@
       "Creatures": {
         "target": "docs/08-creatures/03-creatures/00-overview.md",
         "title": "🐻 Creatures",
-        "banner": "/img/banner/creatures-banner.png"
-      },
-      "Mount Equipment": {
-        "target": "docs/08-creatures/01-mounts-companions/equipment.md",
-        "title": "Mount Equipment"
+        "banner": "/img/banner/creatures-banner.png",
+        "preserve_existing": true
       },
       "Crafting Professions": {
         "target": "docs/06-scenes/05-crafting-professions.md",
@@ -209,7 +222,8 @@
       "Downtime": {
         "target": "docs/06-scenes/04-downtime/00-overview.md",
         "title": "🏠 Downtime",
-        "banner": "/img/banner/crafting-banner.png"
+        "banner": "/img/banner/crafting-banner.png",
+        "preserve_existing": true
       },
       "Harvesting Creature Parts": {
         "target": "docs/06-scenes/06-harvesting-creature-parts.md",
@@ -224,7 +238,8 @@
       "Arcane Spells": {
         "target": "docs/07-magic/02-arcane-spells/00-overview.md",
         "title": "🔆 Arcane Spells",
-        "banner": "/img/banner/arcane-spells-banner.png"
+        "banner": "/img/banner/arcane-spells-banner.png",
+        "preserve_existing": true
       },
       "Metamagic Arts": {
         "target": "docs/07-magic/03-metamagic-arts.md",
@@ -234,7 +249,32 @@
       "Mystic Spells": {
         "target": "docs/07-magic/04-mystic-spells/00-overview.md",
         "title": "🧿 Mystic Spells",
-        "banner": "/img/banner/mystic-spells-banner.png"
+        "banner": "/img/banner/mystic-spells-banner.png",
+        "preserve_existing": true
+      },
+      "Wild Surge": {
+        "target": "docs/07-magic/01-magic-spells/02-wild-surge-table.mdx",
+        "title": "🎲 Wild Surge",
+        "banner": "/img/banner/magic-banner.png",
+        "wrap_tables_in_component": {
+          "component": "RollableTable",
+          "props": "singleRoll"
+        },
+        "preserve_sections": [
+          {
+            "marker": "## How to adjudicate",
+            "component": "<WildMagicRollerWrapper />"
+          }
+        ]
+      },
+      "Mystic Penance": {
+        "target": "docs/07-magic/01-magic-spells/03-mystic-penance-table.mdx",
+        "title": "🎲 Mystic Penance",
+        "banner": "/img/banner/magic-banner.png",
+        "wrap_tables_in_component": {
+          "component": "RollableTable",
+          "props": "singleRoll"
+        }
       },
       "Effect Durations": {
         "target": "docs/06-scenes/02-effect-durations.md",
@@ -258,7 +298,6 @@
         "type": "creatures",
         "use_html": true,
         "split_by": "Tier",
-        "overview_target": "docs/08-creatures/03-creatures/00-overview.md",
         "sections": ["tier-0", "tier-1", "tier-2", "tier-3", "tier-4", "tier-5"]
       },
       "Equipment": {
@@ -266,7 +305,6 @@
         "type": "equipment",
         "use_html": true,
         "split_by": "Category",
-        "overview_target": "docs/04-equipment/02-equipment/00-overview.md",
         "sections": ["animals", "alchemy", "clothes", "containers", "gear", "supply", "toolkits", "trade-goods", "transportation"]
       },
       "Upbringing": {

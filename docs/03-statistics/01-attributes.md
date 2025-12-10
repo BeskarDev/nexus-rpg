@@ -66,6 +66,7 @@ Curses, blessings, potions, and magical effects may temporarily alter an adventu
 > Important: Temporary changes to attributes do not affect derived statistics like Health Points or Focus. Only the dice rolled for attribute tests and base damage calculations are affected.
 
 **Die Size Limits**
+
 - An attribute reduced below d4 becomes d4-1
 - An attribute improved beyond d12 becomes d12+1
 - Additional changes beyond these extremes increase or decrease the modifier accordingly

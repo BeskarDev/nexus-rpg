@@ -7,7 +7,6 @@ sidebar_position: 2
 ![banner-img](/img/banner/languages-banner.png)
 
 > "Words are the rivers that connect our minds, yet each tongue flows differently through the lands. Learn them well, for to speak in another's language is to glimpse the world through their eyes."
-> 
 
 You can learn to speak, write, and read various languages throughout the known world—from the common tongues used in bustling trade cities to ancient and forgotten scripts found in crumbling ruins beneath the sands.
 
@@ -38,7 +37,6 @@ Common languages are those spoken by larger cultures throughout the realms. All 
 | Tradespeak | merchants, travelers, humans |
 
 > Example: Nagkhan the Sorcerer has a Mind attribute of d8, allowing them to learn one additional language beyond their native languages. They choose to learn Dark Tongue to study forbidden texts of arcane secrets.
-> 
 
 ## Ancient Languages
 

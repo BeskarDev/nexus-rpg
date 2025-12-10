@@ -17,27 +17,26 @@ When you blunder a **rank 1 or higher** arcane spell, roll 1d100 and apply the r
 
 **Random Locations:** When an effect teleports creatures to "random locations," the GM chooses valid unoccupied spaces within the specified range, distributing them evenly around the area or rolling randomly for each creature's direction and distance.
 
-## Quick Roller
+## How to adjudicate
 
 <WildMagicRollerWrapper />
 
-## How to adjudicate
 
 - The player rolls the d100, but the GM reads the result and describes how it manifests. The roll determines the effect; the GM decides the concrete placement, timing, and any narrative detail necessary to resolve it fairly.
 - Targeting: by default use the table's targeting guidance (nearest valid target by distance; if tied, random). If the effect covers an area, the GM chooses the centre point (or roll randomly). The GM may use one of these deterministic or random methods when multiple valid targets exist:
-	- Nearest: choose the nearest valid target by distance from the caster. If multiple are tied, roll 1dX among tied targets.
-	- Initiative index: select the Nth creature in initiative order (roll 1dN). This tends to bias toward currently active combatants.
-	- Random distribution: roll 1d8 for direction and 1d4 for distance to place affected points (useful for scatter/teleport effects).
-	- Spread evenly: when the effect teleports or scatters multiple creatures, distribute them evenly around a chosen point or roll randomly per creature if the table says so.
+  - Nearest: choose the nearest valid target by distance from the caster. If multiple are tied, roll 1dX among tied targets.
+  - Initiative index: select the Nth creature in initiative order (roll 1dN). This tends to bias toward currently active combatants.
+  - Random distribution: roll 1d8 for direction and 1d4 for distance to place affected points (useful for scatter/teleport effects).
+  - Spread evenly: when the effect teleports or scatters multiple creatures, distribute them evenly around a chosen point or roll randomly per creature if the table says so.
 - Tie-breakers: always break ties randomly (roll among tied candidates) unless the GM decides otherwise for narrative reasons.
 - Cascading: some entries intentionally spawn additional table rolls (for example, Wild Zone and Reality Ripple). Those specific entries explicitly say they "don't cascade" — treat them as single additional rolls only. Never allow infinite recursion; if multiple roll-triggers would cascade, resolve only one extra roll unless the table explicitly permits otherwise.
 - GM improvisation: if a result calls for a "random location" or ambiguous surreal consequence, favor descriptive weirdness over strict mechanics; use short adjudication rolls (1d4/1d6) to decide direction, distance, or which micro-anomaly occurs.
 
 ## Table (d100)
 
-<RollableTable>
+<RollableTable singleRoll>
 | d100 | Effect |
-|------|--------|
+| --- | --- |
 | 1 | **Chromatic Explosion.** Caster erupts with elemental energy. All creatures in a close/close/short/short/medium radius take 8/12/16/20/24 damage (roll 1d4: 1=fire, 2=frost, 3=lightning, 4=acid). Caster's skin briefly glows with the energy's color. |
 | 2 | **Elemental Affinity.** Caster's body painfully attunes to an element. Roll 1d4: 1=fire, 2=frost, 3=lightning, 4=acid. Gain resistance to that element but weakness to its opposite (fire↔frost, lightning↔acid) for short/short/medium/medium/long duration. Caster's eyes glow and flicker with elemental energy. |
 | 3 | **Temperature Shift.** Area undergoes extreme temperature change. All creatures in close/short/short/medium/medium area take 4/6/8/10/12 lasting damage each turn. Roll 1d2: 1=extreme heat (burning 2/4/6/8/10), 2=extreme cold (slowed condition). Lasts short/short/medium/medium/long duration. |
@@ -138,6 +137,7 @@ When you blunder a **rank 1 or higher** arcane spell, roll 1d100 and apply the r
 | 98 | **Temporal Displacement.** Attacks against caster suffer +1/+1/+2/+2/+2 banes (partially out of sync with time). Caster's attacks gain +1/+1/+2/+2/+2 boons for brief/short/short/medium/medium duration. Caster appears slightly transparent and delayed. |
 | 99 | **Causal Break.** Caster can have effects before causes (take action after seeing result, attack before moving to range, declare defense after damage roll, etc.). GM determines reasonable limits. Lasts brief/brief/short/short/medium duration. Others perceive caster moving backward and forward simultaneously. |
 | 100 | **Reality Ripple.** Roll on this table three times (ignore further 100s). Apply all simultaneously. Most recent takes precedence if contradictory. These rolls don't trigger further cascades. Reality cracks audibly. |
+
 </RollableTable>
 
 ## Optional: Permanent Mutations
@@ -155,9 +155,9 @@ Each mutation progresses through four stages with repeated exposure:
 
 ### Mutation Table (d12)
 
-<RollableTable>
+<RollableTable singleRoll>
 | d12 | Mutation | Stage 1 | Stage 2 | Stage 3 | Stage 4 |
-|-----|----------|---------|---------|---------|---------|
+| --- | --- | --- | --- | --- | --- |
 | 1 | **Crystalline Eyes** | Pupils develop faint geometric patterns | Eyes become faceted like gemstones, glinting in light | Eyes glow softly in darkness. **Flaw:** Suffer +1 bane on Perception in bright light. **Trait:** Gain +1 boon on Perception rolls to detect invisible/hidden creatures. | **Flaw:** Suffer +2 banes on Perception in bright light (overwhelming refraction). **Trait:** See invisible/hidden creatures within short range; gain +2 boons on Perception vs. illusions. |
 | 2 | **Elemental Blood** | Veins shimmer with faint color (roll 1d4: fire=red, frost=blue, lightning=yellow, acid=green) | Veins glow visibly beneath skin, pulsing with elemental energy | Blood hisses/steams when exposed. **Flaw:** Suffer +1 bane on Fortitude rolls (volatile energy disrupts concentration). **Trait:** Resistance to corresponding element. | **Flaw:** Weakness to opposite element (fire↔frost, lightning↔acid); take double damage from that element. **Trait:** Immunity to corresponding element; unarmed strikes deal +2 elemental damage of that type. |
 | 3 | **Gravity-Touched Limbs** | One hand floats slightly when relaxed | Both hands and forearms float naturally at rest | Arms float constantly. **Flaw:** Suffer +1 bane on Athletics rolls involving climbing or grip strength. **Trait:** Can levitate small objects (close range) as Quick Action. | **Flaw:** Suffer +2 banes on Athletics checks involving grip, climbing, or carrying heavy loads (reduced leverage). **Trait:** Permanent levitation 1-2 feet off ground; immune to falling damage from any height. |
@@ -170,6 +170,7 @@ Each mutation progresses through four stages with repeated exposure:
 | 10 | **Frostbound Extremities** | Fingertips always feel cold to touch | Fingers and toes covered in permanent frost/ice | Frost spreads to hands and feet constantly. **Flaw:** Delicate manual tasks are harder; suffer +1 bane on rolls requiring fine dexterity. **Trait:** Ignore difficult terrain from ice/snow; resistance to frost damage. | **Flaw:** Suffer +2 banes on rolls requiring fine dexterity (frozen digits); weakness to fire (take double damage). **Trait:** Immune to frost damage; your space and adjacent areas freeze over, creating difficult terrain for others; can walk on water (freezes beneath your feet). |
 | 11 | **Entropic Aura** | Small objects near you occasionally rust or decay faster | Nonliving matter within arm's reach shows accelerated aging | Visible decay aura surrounds you. **Flaw:** Food spoils in hours; must eat fresh or preserved food. **Trait:** Reduce any touched object's Durability die by one size as Action. | **Flaw:** Food spoils in minutes; can't carry alchemical items or potions (they degrade immediately). **Trait:** Touch attack (Spirit + Arcana vs Dodge) deals 8/10/12/14/16 acid damage ignoring AV (scales with highest spell rank); nonmagical objects touched crumble after 1 minute. |
 | 12 | **Astral Tether** | Faint translucent thread trails from chest, visible only in dim light | Glowing silver cord extends from body, clearly visible | Cord pulses with life energy. **Flaw:** Enemies gain +1 boon to hit you (cord makes your center mass obvious). **Trait:** When reduced to 0 HP, roll Spirit + Fortitude vs TN 10 to remain conscious until end of turn. | **Flaw:** Enemies gain +2 boons to hit you (cord highlights vital connection point). **Trait:** When reduced to 0 HP, remain conscious and acting until end of scene (then fall unconscious normally); gain +2 boons on Spirit + Fortitude rolls vs. death. |
+
 </RollableTable>
 
 ### GM Guidance

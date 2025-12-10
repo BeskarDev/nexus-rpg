@@ -7,7 +7,6 @@ sidebar_position: 2
 ![banner-img](/img/banner/hp-wounds-banner.png)
 
 > "The difference between a seasoned adventurer and a corpse often comes down to knowing when another's blade has cut too deep. I've seen warriors continue fighting with three arrows in their chest, only to collapse when the battle fervor fades. The body can endure much, but wisdom lies in recognizing its limits."
-> 
 
 ## Hit Points (HP)
 
@@ -32,7 +31,6 @@ When gaining temporary HP from multiple sources, only the highest value applies.
 Where HP represents your short-term condition and stamina, Fatigue covers your long-term endurance and physical energy. Each character can take up to 6 points of Fatigue. Each point of Fatigue reduces your max. HP by 2. You suffer points of Fatigue from special abilities, the strains of a long journey, or other environmental effects.
 
 > Suffering a reduction of your max. HP doesn’t reduce your current HP if they were already below the new amount of max. HP.
-> 
 
 | Fatigue Points | 1 | 2 | 3 | 4 | 5 | 6 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -45,10 +43,7 @@ You naturally recover 2 points of Fatigue after a night’s rest or all of your 
 ## Wounds
 
 > "In the grand markets of Sikatha, duels rarely end in death. A skilled combatant knows when to yield, and the victors understand that a living rival returned to their clan for ransom brings more wealth than a corpse. Even the fiercest warriors of the northern steppes follow this wisdom—only beasts and the truly desperate fight to the last breath."
-> 
-> 
 > — *Sansar the Thief, explaining customs to foreign merchants*
-> 
 
 While HP measures short-term endurance, Wounds reflect lasting damage to your body. An adventurer can sustain up to three Wounds before facing death.
 
@@ -77,9 +72,8 @@ Additionally, when taking damage:
 - If damage equals or exceeds twice your maximum HP → suffer +2 additional Wounds
 
 > Note: Attacks dealing multiple instances of damage from a single roll still inflict only one Wound. Additional Wounds occur only when damage thresholds are surpassed.
-> 
 
-***Example:*** *Nagkhan the Sorcerer (22 max HP) is struck by a temple guardian's blade while at 0 HP. The attack deals 25 damage—more than Nagkhan's maximum HP—resulting in two Wounds total: one for being hit at 0 HP, and one for exceeding their maximum HP threshold.*
+> Example: Nagkhan the Sorcerer (22 max HP) is struck by a temple guardian's blade while at 0 HP. The attack deals 25 damage—more than Nagkhan's maximum HP—resulting in two Wounds total: one for being hit at 0 HP, and one for exceeding their maximum HP threshold.
 
 ### Treating Wounds
 
@@ -90,7 +84,6 @@ During a night's rest, you may attempt to treat your Wounds. Roll Spirit/Mind + 
 To permanently remove a treated Wound, succeed on a hard Strength + Fortitude roll during a night's rest or during downtime.
 
 > Example: After a fierce battle in an ancient tomb, Sephi the Seer has suffered two Wounds. During a night's rest, they make a successful Spirit + Nature roll with their healer's kit to treat one Wound. They circle one of the | marks on their character sheet to show the treated Wound, but still suffer the penalty from their untreated Wound.
-> 
 
 ### Dying
 
@@ -101,6 +94,5 @@ Allies may attempt to save you on their turns. With appropriate medical supplies
 Any successful stabilization roll immediately stops you from dying, though you remain unconscious with your current Wounds. A critical success also restores 1 HP, bringing you back to consciousness.
 
 > Example: Arzhag the Warrior is struck down in battle against a temple guardian, suffering their third Wound. They begin dying and roll a 3 on their d4. On Arzhag's next turn, this count reduces to 2. Sansar rushes to their side and makes a Spirit + Nature roll with their healer's kit vs. hard Difficulty (TN 10). Despite the difficulty, Sansar succeeds! Arzhag is stabilized—no longer dying but still unconscious with three Wounds. Had Sansar achieved a critical success, Arzhag would have regained 1 HP and consciousness.
-> 
 
 Regaining HP while dying has no effect on your dying condition—proper medical attention is required.

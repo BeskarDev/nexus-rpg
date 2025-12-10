@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# 💼 Background
+# 🖼 Background
 
 ![banner-img](/img/banner/background-banner.png)
 
@@ -14,54 +14,52 @@ Also think about what your adventurer’s motivation for adventuring could be, d
 
 Up to once per scene, you can add +1 boon on any roll if your background would provide you with an advantage in the situation. Work with the GM which situations are appropriate for this.
 
-### List of backgrounds
-
-Name | Description | Suggested Skills | Starting Item
---- | --- | --- | ---
-**Apothecary** | A character who is trained in the art of creating and administering medicinal remedies, poisons, and potions. | Crafting, Education, Insight, Nature | Rare herb bundle
-**Artisan** | A character who crafts functional and beautiful items using techniques passed down through generations, creating pieces that honor both practical needs and artistic expression. | Crafting, Education, Fortitude, Perception | Clay tablet with master's seal
-**Artist** | A character who is skilled in creating and appreciating works of art, music, or performance. | Crafting, Education, Influence, Perception | Rare pigment pouch
-**Bandit** | A character who has made a living through robbery and theft, often working alone or as part of a group. | Athletics, Fighting, Stealth, Survival | Wooden clan mask
-**Barbarian** | A character who hails from tribal or nomadic societies outside of civilization's reach, relying on primal instinct and raw strength rather than formal training. | Athletics, Fighting, Fortitude, Survival | Ancestor's weapon hilt
-**Bard** | A character who uses music and performance to tell stories and entertain, even channeling spiritual energy through song and dance. | Education, Influence, Lore, Mysticism | Voice-changing throat pendant
-**Bounty Hunter** | A character who makes a living by tracking down and capturing wanted individuals and turning them over to the authorities for a reward. | Athletics, Fighting, Perception, Stealth | Bounty claim seal
-**Cartographer** | A character who creates maps and is knowledgeable about geography. | Education, Insight, Lore, Nature | Bronze astrolabe fragment
-**Criminal** | A character who has a background in illegal activities and survives through deception and stealth. | Athletics, Insight, Stealth, Streetwise | Marked bone dice
-**Cult Initiate** | A character who belongs to a secretive order that performs forbidden rituals to channel arcane energies, often operating in remote locations or underground sanctuaries. | Arcana, Influence, Insight, Lore | Ritual bronze dagger
-**Druid** | A character who has a deep connection to nature and is capable of harnessing its power. | Insight, Lore, Mysticism, Nature | Living seed necklace
-**Embalmer** | A character who is trained in the arts of preparing bodies for the afterlife through specialized preservation techniques. | Crafting, Education, Lore, Nature | Decorated canopic jar
-**Entertainer** | A character who makes a living through performance, often as a musician, actor, or acrobat. | Athletics, Influence, Insight, Perception | Painted festival mask
-**Farmhand** | A character who has worked on a farm, and has experience with manual labor, animal husbandry, and crop cultivation. | Athletics, Crafting, Nature, Survival | Clay harvest deity figurine
-**Gladiator** | A character who has trained and fought in the arena for entertainment and sport. They may have been forced into this life or chose it as a means of survival or fame. | Athletics, Fighting, Fortitude, Perception | Bronze victory laurel pin
-**Guard** | A character who has worked as a security guard or in a similar role, protecting people, places, or things. | Fighting, Insight, Perception, Streetwise | Seal of Authority
-**Guardian** | A character trained to protect sacred or valuable sites from trespassers, with knowledge of defensive tactics and sometimes ancient traditions. | Fighting, Insight, Lore, Perception | Temple key fragment
-**Healer** | A character who has knowledge of medicine and the ability to cure ailments. | Education, Insight, Nature, Perception | Grateful patient’s memorabilia
-**Hunter** | A character who makes a living through hunting and tracking game. | Archery, Nature, Perception, Survival | Prey bone whistle
-**Innkeeper** | A character who runs a place of lodging, serving food and drink to travelers and guests. | Education, Influence, Insight, Perception | Hospitality clay cup
-**Investigator** | A character who uses logic and deduction to solve problems. | Education, Insight, Perception, Stealth | Milky magnifying lens
-**Magus** | A character who possesses arcane powers strictly supervised by a religious order dedicated to the detection and eradication of arcane cults and other supernatural threats. | Arcana, Education, Influence, Insight | Order's medallion
-**Mercenary** | A character who hires themselves out as a soldier for hire and will work for whoever pays the most. | Fighting, Fortitude, Influence, Streetwise | Blood-oath papyrus
-**Merchant** | A character who travels between settlements transporting and exchanging goods, navigating both physical routes and social customs. | Influence, Insight, Stealth, Streetwise | Rare foreign spice
-**Monk** | A character who follows a monastic lifestyle and is skilled in combat and spiritual practices. | Education, Fighting, Fortitude, Mysticism | Lacquered prayer beads
-**Officer** | A character who has served in a military or law enforcement organization and has experience giving orders and managing troops. They may have risen through the ranks or been commissioned as a leader. | Education, Fighting, Influence, Insight | Engraved command baton
-**Pact-Bound** | A character who has entered into a forbidden agreement with an otherworldly entity, gaining arcane knowledge and power in exchange for service or sacrifice, often at great personal cost. | Arcana, Influence, Insight, Lore | Mark of the pact
-**Philosopher** | A character who studies the nature of existence and reality. | Education, Influence, Insight, Lore | Inscribed ivory thought-piece
-**Pirate** | A character who makes a living through robbery and plunder on the high seas. | Athletics, Fighting, Perception, Streetwise | Foreign coin necklace
-**Politician** | A character who is skilled in navigating the complex world of political intrigue and manipulation. | Education, Influence, Insight, Stealth | Noble's letter of favor
-**Priest** | A character who is devoted to a religious faith and has knowledge of its beliefs and practices. | Education, Influence, Insight, Mysticism | Holy symbol
-**Ranger** | A character who is skilled in survival and tracking in the wilderness. | Archery, Fighting, Perception, Survival | Preserved beast claw
-**Renegade Mage** | A character who combines martial training with forbidden arcane knowledge, often a deserter from state-controlled magic orders or a self-taught practitioner on the run. | Arcana, Education, Fighting, Streetwise | Wooden face mask
-**Sacred Warrior** | A character who has pledged their blade and life to a deity, serving as the martial arm of their faith and drawing strength from divine favor in battle. | Fighting, Fortitude, Influence, Mysticism | Godbound brass gauntlet
-**Sailor** | A character who has experience with seafaring, navigation, and life at sea, including knowledge of ships and the ability to handle them. | Athletics, Influence, Perception, Survival | Fish hook set
-**Scholar** | A character who has dedicated their life to the pursuit of knowledge and academic study. | Education, Insight, Lore, Nature | Reusable wax tablet and stylus
-**Scribe** | A character who is skilled in writing and copying texts. | Crafting, Education, Influence, Insight | Carved bone stylus and ink
-**Seer** | A character who possesses supernatural abilities to see and perceive things beyond the realm of ordinary perception. | Insight, Lore, Mysticism, Perception | Obsidian scrying shard
-**Servant** | A character who has worked as a servant or in a similar role, serving a master or mistress. | Education, Influence, Insight, Streetwise | Master's house emblem
-**Shaman** | A character who is a spiritual leader communicating with the spirit world and the ancestors to provide guidance and healing to their community.  | Insight, Mysticism, Nature, Survival | Ancestor bone fetish
-**Soldier** | A character who is trained in combat and serves in a military organization. | Archery, Fighting, Fortitude, Perception | Bronze battalion insignia
-**Sorcerer** | A character who has a natural talent for magic and has honed their abilities through years of study and practice. | Arcana, Education, Insight, Lore | Glowing crystal fragment
-**Spy** | A character who gathers information through stealth and deceit. | Insight, Perception, Stealth, Streetwise | Cipher wheel
-**Tavern Fighter** | A character who has made a living through brawling and fighting in taverns or other similar establishments. | Athletics, Fighting, Fortitude, Insight | Weighted wraps
-**Thug** | A character who has a history of using violence and intimidation to achieve their goals. They may have been part of a criminal organization or worked as hired muscle. | Athletics, Fighting, Fortitude, Streetwise | Brass knuckle duster
-**Wilderness Guide** | A character who leads travelers through dangerous terrains, whether desert wastes, dense jungles, or treacherous mountains, knowing where to find resources and avoid hazards. | Influence, Nature, Perception, Survival | Shell compass
-**Witch** | A character who has knowledge of magic and the supernatural and has honed their abilities through personal experience, intuition, and natural talent. They may have learned their abilities through a family tradition, communing with spirits and nature, or through experimentation and self-discovery. | Insight, Lore, Mysticism, Nature | Ritual bone carving knife
+| Name | Description | Suggested Skills | Starting Item |
+| --- | --- | --- | --- |
+| Apothecary | A character who is trained in the art of creating and administering medicinal remedies, poisons, and potions. | Crafting, Education, Insight, Nature | Rare herb bundle |
+| Artisan | A character who crafts functional and beautiful items using techniques passed down through generations, creating pieces that honor both practical needs and artistic expression. | Crafting, Education, Fortitude, Perception | Clay tablet with master's seal |
+| Artist | A character who is skilled in creating and appreciating works of art, music, or performance. | Crafting, Education, Influence, Perception | Rare pigment pouch |
+| Bandit | A character who has made a living through robbery and theft, often working alone or as part of a group. | Athletics, Fighting, Stealth, Survival | Wooden clan mask |
+| Barbarian | A character who hails from tribal or nomadic societies outside of civilization's reach, relying on primal instinct and raw strength rather than formal training. | Athletics, Fighting, Fortitude, Survival | Ancestor's weapon hilt |
+| Bard | A character who uses music and performance to tell stories and entertain, even channeling spiritual energy through song and dance. | Education, Influence, Lore, Mysticism | Voice-changing throat pendant |
+| Bounty Hunter | A character who makes a living by tracking down and capturing wanted individuals and turning them over to the authorities for a reward. | Athletics, Fighting, Perception, Stealth | Bounty claim seal |
+| Cartographer | A character who creates maps and is knowledgeable about geography. | Education, Insight, Lore, Nature | Bronze astrolabe fragment |
+| Criminal | A character who has a background in illegal activities and survives through deception and stealth. | Athletics, Insight, Stealth, Streetwise | Marked bone dice |
+| Cult Initiate | A character who belongs to a secretive order that performs forbidden rituals to channel arcane energies, often operating in remote locations or underground sanctuaries. | Arcana, Influence, Insight, Lore | Ritual bronze dagger |
+| Druid | A character who has a deep connection to nature and is capable of harnessing its power. | Insight, Lore, Mysticism, Nature | Living seed necklace |
+| Embalmer | A character who is trained in the arts of preparing bodies for the afterlife through specialized preservation techniques. | Crafting, Education, Lore, Nature | Decorated canopic jar |
+| Entertainer | A character who makes a living through performance, often as a musician, actor, or acrobat. | Athletics, Influence, Insight, Perception | Painted festival mask |
+| Farmhand | A character who has worked on a farm, and has experience with manual labor, animal husbandry, and crop cultivation. | Athletics, Crafting, Nature, Survival | Clay harvest deity figurine |
+| Gladiator | A character who has trained and fought in the arena for entertainment and sport. They may have been forced into this life or chose it as a means of survival or fame. | Athletics, Fighting, Fortitude, Perception | Bronze victory laurel pin |
+| Guard | A character who has worked as a security guard or in a similar role, protecting people, places, or things. | Fighting, Insight, Perception, Streetwise | Seal of Authority |
+| Guardian | A character trained to protect sacred or valuable sites from trespassers, with knowledge of defensive tactics and sometimes ancient traditions. | Fighting, Insight, Lore, Perception | Temple key fragment |
+| Healer | A character who has knowledge of medicine and the ability to cure ailments. | Education, Insight, Nature, Perception | Grateful patient’s memorabilia |
+| Hunter | A character who makes a living through hunting and tracking game. | Archery, Nature, Perception, Survival | Prey bone whistle |
+| Innkeeper | A character who runs a place of lodging, serving food and drink to travelers and guests. | Education, Influence, Insight, Perception | Hospitality clay cup |
+| Investigator | A character who uses logic and deduction to solve problems. | Education, Insight, Perception, Stealth | Milky magnifying lens |
+| Magus | A character who possesses arcane powers strictly supervised by a religious order dedicated to the detection and eradication of arcane cults and other supernatural threats. | Arcana, Education, Influence, Insight | Order's medallion |
+| Mercenary | A character who hires themselves out as a soldier for hire and will work for whoever pays the most. | Fighting, Fortitude, Influence, Streetwise | Blood-oath papyrus |
+| Merchant | A character who travels between settlements transporting and exchanging goods, navigating both physical routes and social customs. | Influence, Insight, Stealth, Streetwise | Rare foreign spice |
+| Monk | A character who follows a monastic lifestyle and is skilled in combat and spiritual practices. | Education, Fighting, Fortitude, Mysticism | Lacquered prayer beads |
+| Officer | A character who has served in a military or law enforcement organization and has experience giving orders and managing troops. They may have risen through the ranks or been commissioned as a leader. | Education, Fighting, Influence, Insight | Ingraved command baton |
+| Pact-Bound | A character who has entered into a forbidden agreement with an otherworldly entity, gaining arcane knowledge and power in exchange for service or sacrifice, often at great personal cost. | Arcana, Influence, Insight, Lore | Mark of the pact |
+| Philosopher | A character who studies the nature of existence and reality. | Education, Influence, Insight, Lore | Inscribed ivory thought-piece |
+| Pirate | A character who makes a living through robbery and plunder on the high seas. | Athletics, Fighting, Perception, Streetwise | Foreign coin necklace |
+| Politician | A character who is skilled in navigating the complex world of political intrigue and manipulation. | Education, Influence, Insight, Stealth | Noble's letter of favor |
+| Priest | A character who is devoted to a religious faith and has knowledge of its beliefs and practices. | Education, Influence, Insight, Mysticism | Holy symbol |
+| Ranger | A character who is skilled in survival and tracking in the wilderness. | Archery, Fighting, Perception, Survival | Preserved beast claw |
+| Renegade Mage | A character who combines martial training with forbidden arcane knowledge, often a deserter from state-controlled magic orders or a self-taught practitioner on the run. | Arcana, Education, Fighting, Streetwise | Wooden face mask |
+| Sacred Warrior | A character who has pledged their blade and life to a deity, serving as the martial arm of their faith and drawing strength from divine favor in battle. | Fighting, Fortitude, Influence, Mysticism | Godbound brass gauntlet |
+| Sailor | A character who has experience with seafaring, navigation, and life at sea, including knowledge of ships and the ability to handle them. | Athletics, Influence, Perception, Survival | Fish hook set |
+| Scholar | A character who has dedicated their life to the pursuit of knowledge and academic study. | Education, Insight, Lore, Nature | Reusable wax tablet and stylus |
+| Scribe | A character who is skilled in writing and copying texts. | Crafting, Education, Influence, Insight | Carved bone stylus and ink |
+| Seer | A character who possesses supernatural abilities to see and perceive things beyond the realm of ordinary perception. | Insight, Lore, Mysticism, Perception | Obsidian scrying shard |
+| Servant | A character who has worked as a servant or in a similar role, serving a master or mistress. | Education, Influence, Insight, Streetwise | Master's house emblem |
+| Shaman | A character who is a spiritual leader communicating with the spirit world and the ancestors to provide guidance and healing to their community. | Insight, Mysticism, Nature, Survival | Ancestor bone fetish |
+| Soldier | A character who is trained in combat and serves in a military organization. | Archery, Fighting, Fortitude, Perception | Bronze battalion insignia |
+| Sorcerer | A character who has a natural talent for magic and has honed their abilities through years of study and practice. | Arcana, Education, Insight, Lore | Glowing crystal fragment |
+| Spy | A character who gathers information through stealth and deceit. | Insight, Perception, Stealth, Streetwise | Cipher wheel |
+| Tavern Fighter | A character who has made a living through brawling and fighting in taverns or other similar establishments. | Athletics, Fighting, Fortitude, Insight | Weighted wraps |
+| Thug | A character who has a history of using violence and intimidation to achieve their goals. They may have been part of a criminal organization or worked as hired muscle. | Athletics, Fighting, Fortitude, Streetwise | Brass knuckle duster |
+| Wilderness Guide | A character who leads travelers through dangerous terrains, whether desert wastes, dense jungles, or treacherous mountains, knowing where to find resources and avoid hazards. | Influence, Nature, Perception, Survival | Shell compass |
+| Witch | A character who has knowledge of magic and the supernatural and has honed their abilities through personal experience, intuition, and natural talent. They may have learned their abilities through a family tradition, communing with spirits and nature, or through experimentation and self-discovery. | Insight, Lore, Mysticism, Nature | Ritual bone carving knife |

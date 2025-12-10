@@ -312,9 +312,16 @@ class NotionHtmlConverter:
             if href.startswith('http'):
                 # Check if this is a Notion internal link that should be converted
                 if 'notion.so' in href or 'nexus-rpg' in href:
-                    # For now, keep the text but don't create broken links
-                    # TODO: Implement proper internal link mapping
-                    result.append(text)
+                    # Preserve the link so it can be replaced by link_mappings later
+                    # Extract the filename from the URL (e.g., "06-wild-surge-table.mdx")
+                    import re
+                    match = re.search(r'/([^/]+\.(md|mdx))$', href)
+                    if match:
+                        filename = match.group(1)
+                        result.append(f"[{text}]({filename})")
+                    else:
+                        # If no filename pattern found, just keep the text
+                        result.append(text)
                 else:
                     # External link, preserve as-is
                     result.append(f"[{text}]({href})")

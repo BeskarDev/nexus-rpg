@@ -47,6 +47,7 @@ Carts, wagons, and chariots are included in this category. Similarly to containe
 Equipment are the types of items that you carry on your person. You can only ever wear one piece of equipment per slot (except rings) and benefit from their effects.
 
 **Equipment Slots**
+
 - Head (*helmet, headband, mask*)
 - Neck (*amulet, brooch, scarf*)
 - Back (*cape, cloak, mantle*)
@@ -138,7 +139,8 @@ Depending on where you have stored any given item, you might have quick access t
 
 - **Quick Access.** At the start of your turn, you can retrieve or switch any of these items freely, as long as you have at least one hand free.
 - **Carried Container.** Spend an Action to retrieve any one item from your backpack or any other storage container you are in touching range of (e.g. saddle bags of a pack animal).
-- **Storage. **This item is located at some stationary place of your choosing (e.g. a house or storage facility) and not on your person during the adventure.
+- **Storage.** This item is located at some stationary place of your choosing (e.g. a house or storage facility) and not on your person during the adventure.
+
 **Storage Options**
 
 You can buy different storage options for your amassed treasure and equipment you collected during your adventures. You can find available options in the Equipment section under Transportation or Housing.

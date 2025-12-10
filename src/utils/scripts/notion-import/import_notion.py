@@ -97,6 +97,11 @@ class NotionImporter:
             self._process_databases(export_dir)
             print()
         
+        # Run post-processing fixes
+        print(f"→ Running post-processing fixes...")
+        self._run_post_processing()
+        print()
+        
         # Print summary
         self._print_summary()
         
@@ -144,6 +149,14 @@ class NotionImporter:
             
             html_file = html_files[0]
             
+            # Check if we should preserve existing content
+            if mapping.get('preserve_existing', False):
+                target_path = self.project_root / mapping['target']
+                if target_path.exists():
+                    print(f"  ⊙ Preserving existing: {mapping['target']}")
+                    self.stats['pages_skipped'] += 1
+                    continue
+            
             # Check ignore patterns
             if self._should_ignore(html_file.name, ignore_patterns):
                 print(f"  ⊘ Skipping (ignored): {html_file.name}")
@@ -156,9 +169,18 @@ class NotionImporter:
                 databases_via_pipeline = self.config.get('databases_via_pipeline', [])
                 strip_tables = page_prefix in databases_via_pipeline
                 
+                # Also check if page config explicitly requests table stripping
+                if mapping.get('strip_tables', False):
+                    strip_tables = True
+                
                 # Convert HTML to Markdown
                 title = mapping.get('title', '')
                 markdown = convert_html_to_markdown(html_file, title, strip_tables=strip_tables)
+                
+                # Replace Notion links with relative links
+                link_mappings = self.config.get('link_mappings', {})
+                if link_mappings:
+                    markdown = self._replace_notion_links(markdown, link_mappings)
                 
                 # Inject images if configured
                 inject_images = mapping.get('inject_images')
@@ -180,6 +202,11 @@ class NotionImporter:
                 replace_sections = mapping.get('replace_sections', [])
                 if replace_sections:
                     markdown = self._replace_sections_with_links(markdown, replace_sections)
+                
+                # Wrap tables in React component if configured
+                wrap_tables = mapping.get('wrap_tables_in_component')
+                if wrap_tables:
+                    markdown = self._wrap_tables_in_component(markdown, wrap_tables)
                 
                 # Create full content preserving Docusaurus structure
                 content = self._create_page_content(
@@ -1007,20 +1034,21 @@ sidebar_position: {position}
         markdown_lines = markdown.strip().split('\n')
         start_idx = 0
         
-        # Skip duplicate title (only H1) and banner from Notion conversion
+        # Skip duplicate title (only H1), horizontal rules, and banner from Notion conversion
         skip_next_empty = False
         title_skipped = False
         for idx, line in enumerate(markdown_lines):
             stripped = line.strip()
-            # Skip only the first H1 that is a duplicate of the title and banner images
-            if not title_skipped and (re.match(r'^#\s', stripped) or stripped.startswith('![')):
+            # Skip horizontal rules, first H1 that is a duplicate of the title, and banner images
+            if stripped == '---' or stripped.startswith('![') or (not title_skipped and re.match(r'^#\s', stripped)):
                 skip_next_empty = True
                 if re.match(r'^#\s', stripped):
                     title_skipped = True
                 continue
-            # Skip empty lines immediately after title/banner
+            # Skip empty lines immediately after title/banner/hr
             if skip_next_empty and not stripped:
                 skip_next_empty = False
+                continue
                 continue
             # Found actual content
             if stripped:
@@ -1060,6 +1088,70 @@ sidebar_position: {position}
                     result_lines.append('')
                     break
             
+            i += 1
+        
+        return '\n'.join(result_lines)
+    
+    def _replace_notion_links(self, markdown: str, link_mappings: Dict[str, str]) -> str:
+        """Replace Notion-style links with relative markdown links.
+        
+        Args:
+            markdown: The markdown content
+            link_mappings: Dict mapping from Notion filenames to relative paths
+        """
+        import re
+        
+        for notion_filename, relative_path in link_mappings.items():
+            # Match links like [text](https://www.notion.so/filename) or just filename references
+            # Pattern: [text](any_url_containing_filename)
+            pattern = rf'\[([^\]]+)\]\([^)]*{re.escape(notion_filename)}[^)]*\)'
+            replacement = rf'[\1]({relative_path})'
+            markdown = re.sub(pattern, replacement, markdown)
+        
+        return markdown
+    
+    def _wrap_tables_in_component(self, markdown: str, component_config) -> str:
+        """Wrap markdown tables in a React component.
+        
+        Args:
+            markdown: The markdown content
+            component_config: Either a string (component name) or dict with 'component' and optional 'props'
+        """
+        # Handle both string and dict config
+        if isinstance(component_config, str):
+            component_name = component_config
+            props = ''
+        else:
+            component_name = component_config.get('component', '')
+            props_value = component_config.get('props', '')
+            props = f' {props_value}' if props_value else ''
+        
+        lines = markdown.split('\n')
+        result_lines = []
+        i = 0
+        
+        while i < len(lines):
+            line = lines[i]
+            
+            # Check if this line starts a table (has pipes and next line is separator)
+            if '|' in line and i + 1 < len(lines) and '---' in lines[i + 1]:
+                # Found start of table, add opening tag with props
+                result_lines.append(f'<{component_name}{props}>')
+                
+                # Add table lines until we find the end
+                while i < len(lines) and ('|' in lines[i] or lines[i].strip() == ''):
+                    result_lines.append(lines[i])
+                    i += 1
+                    # Check if next line doesn't have a pipe (end of table)
+                    if i < len(lines) and '|' not in lines[i] and lines[i].strip() != '':
+                        break
+                
+                # Add closing tag
+                result_lines.append(f'</{component_name}>')
+                result_lines.append('')
+                continue
+            
+            result_lines.append(line)
             i += 1
         
         return '\n'.join(result_lines)
@@ -1118,7 +1210,7 @@ sidebar_position: {sidebar_position}
             
             # Replace the section with a reference link
             # Keep the start marker (heading) and replace everything else with the link
-            lines[start_idx] = f"{start_marker}\n\n{replacement}"
+            lines[start_idx] = f"{start_marker}\n\n{replacement}\n"
             # Remove the extracted content lines
             del lines[start_idx + 1:end_idx]
         
@@ -1285,6 +1377,38 @@ sidebar_position: {sidebar_position}
             print(f"  ✗ Error: {error_msg}")
             print()
             return False
+    
+    def _run_post_processing(self):
+        """Run post-processing fixes for formatting issues."""
+        try:
+            from post_process_formatting import (
+                split_weapons_table,
+                split_armor_table,
+                add_conditions_intro
+            )
+            
+            docs_dir = self.project_root / 'docs'
+            
+            # Fix weapons table
+            weapons_file = docs_dir / '04-equipment' / '03-weapons.md'
+            if weapons_file.exists():
+                split_weapons_table(weapons_file)
+            
+            # Fix armor table
+            armor_file = docs_dir / '04-equipment' / '04-armor.md'
+            if armor_file.exists():
+                split_armor_table(armor_file)
+            
+            # Fix conditions intro
+            conditions_file = docs_dir / '05-combat' / '04-conditions.md'
+            if conditions_file.exists():
+                add_conditions_intro(conditions_file)
+            
+            print("  ✓ Post-processing completed")
+            
+        except Exception as e:
+            error_msg = f"Post-processing warning: {e}"
+            print(f"  ⚠ {error_msg}")
     
     def _print_summary(self):
         """Print import summary."""

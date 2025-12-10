@@ -16,9 +16,9 @@ Process:
 
 - Roll Crafting/Survival + Agility vs. 6 + the creature’s level
 - On a success, you can harvest an amount of food from the creature, depending on it’s Size. Choose between Trophy, Tool, or Gear (you can’t choose the same option twice):
-    - **Weak.** One of the above.
-    - **Strong.** Two of the above.
-    - **Critical.** All three options.
+  - **Weak.** One of the above.
+  - **Strong.** Two of the above.
+  - **Critical.** All three options.
 - You harvest raw food from the creature that can be used the same day instead of a ration. You gain more units from a larger creature (1 daily amount from a small creature, doubling for each Size larger → 2 or medium, 4 for large, 8 for huge, …). A skilled cook can also turn this food into travel rations.
 - After that, the creature can’t be harvested again
 

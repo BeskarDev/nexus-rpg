@@ -6,8 +6,6 @@ sidebar_position: 3
 
 ![banner-img](/img/banner/metamagic-arts-banner.png)
 
-# Metamagic Arts
-
 You can use a Metamagic Art you know by increasing the Focus cost as part of casting a spell. Your spell has it’s normal effect in addition to the Metamagic Arts effects. You can only use one Metamagic Art per casting of a spell.
 
 | Name | Effect |
