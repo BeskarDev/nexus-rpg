@@ -40,12 +40,19 @@ const MenuProps = {
 	},
 }
 
+type SpellSelection = {
+	name: string
+	characterName?: string
+}
+
 export const MysticSpells: React.FC = () => {
 	const customTheme = experimental_extendTheme()
 	const muiTheme = useTheme()
 	const [selectedMysticSpells, setSelectedMysticSpells] = React.useState<
 		string[]
 	>([])
+	const [selectedMysticSpellsList, setSelectedMysticSpellsList] =
+		React.useState<SpellSelection[]>([])
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
@@ -57,17 +64,38 @@ export const MysticSpells: React.FC = () => {
 		const {
 			target: { value },
 		} = event
-		setSelectedMysticSpells(
-			// On autofill we get a stringified value.
-			typeof value === 'string' ? value.split(',') : value,
-		)
+		const spells = typeof value === 'string' ? value.split(',') : value
+		setSelectedMysticSpells(spells)
+		// Update the list to match manual selections (no character attribution)
+		setSelectedMysticSpellsList((prev) => {
+			// Keep character-attributed selections
+			const characterSelections = prev.filter((s) => s.characterName)
+			// Add manual selections without duplicates in the manual category
+			const manualSelections = spells
+				.filter(
+					(name) => !prev.some((s) => s.name === name && !s.characterName),
+				)
+				.map((name) => ({ name }))
+			// Remove manual selections that are no longer in the selected list
+			const filteredManual = prev
+				.filter((s) => !s.characterName)
+				.filter((s) => spells.includes(s.name))
+			return [...characterSelections, ...filteredManual, ...manualSelections]
+		})
 	}
 
 	const handleCharacterSelect = (character: CharacterDocument | null) => {
 		setSelectedCharacter(character)
 		if (character) {
+			const characterName = character.personal.name
 			const characterSpellNames =
 				character.spells?.spells?.map((spell) => spell.name) || []
+			// Add character's spells to the list with character attribution
+			setSelectedMysticSpellsList((prev) => [
+				...prev,
+				...characterSpellNames.map((name) => ({ name, characterName })),
+			])
+			// Also update the selected spells for the dropdown
 			setSelectedMysticSpells((prev) => {
 				const existingSpells = new Set(prev)
 				characterSpellNames.forEach((name) => existingSpells.add(name))
@@ -81,8 +109,15 @@ export const MysticSpells: React.FC = () => {
 		try {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
+				const characterName = character.personal?.name || 'Uploaded Character'
 				const characterSpellNames =
 					character.spells?.spells?.map((spell) => spell.name) || []
+				// Add character's spells to the list with character attribution
+				setSelectedMysticSpellsList((prev) => [
+					...prev,
+					...characterSpellNames.map((name) => ({ name, characterName })),
+				])
+				// Also update the selected spells for the dropdown
 				setSelectedMysticSpells((prev) => {
 					const existingSpells = new Set(prev)
 					characterSpellNames.forEach((name) => existingSpells.add(name))
@@ -100,14 +135,31 @@ export const MysticSpells: React.FC = () => {
 	})
 	const mysticSpells: MysticSpell[] = mysticSpellData
 
-	const filteredMysticSpells = useMemo(
-		() => mysticSpells.filter((ca) => selectedMysticSpells.includes(ca.name)),
-		[mysticSpells, selectedMysticSpells],
-	)
+	const filteredMysticSpells = useMemo(() => {
+		return selectedMysticSpellsList
+			.map((selection) => {
+				const spell = mysticSpells.find((s) => s.name === selection.name)
+				if (!spell) return null
+				return { ...spell, characterName: selection.characterName }
+			})
+			.filter((s) => s !== null) as Array<
+			MysticSpell & { characterName?: string }
+		>
+	}, [mysticSpells, selectedMysticSpellsList])
 
-	const selectAll = () =>
+	const selectAll = () => {
 		setSelectedMysticSpells(mysticSpells.map((ca) => ca.name))
-	const deselectAll = () => setSelectedMysticSpells([])
+		// Add all spells as manual selections (no character attribution)
+		setSelectedMysticSpellsList((prev) => {
+			const characterSelections = prev.filter((s) => s.characterName)
+			const allSpells = mysticSpells.map((spell) => ({ name: spell.name }))
+			return [...characterSelections, ...allSpells]
+		})
+	}
+	const deselectAll = () => {
+		setSelectedMysticSpells([])
+		setSelectedMysticSpellsList([])
+	}
 
 	return (
 		<>
@@ -197,12 +249,30 @@ export const MysticSpells: React.FC = () => {
 				/>
 			</Stack>
 			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredMysticSpells.length} Mystic Spells will be printed:
+				{filteredMysticSpells.length} Mystic Spell
+				{filteredMysticSpells.length !== 1 ? 's' : ''} will be printed
+				{selectedMysticSpellsList.some((s) => s.characterName) && (
+					<>
+						{' '}
+						(including duplicates for specific characters - hover over cards to
+						see which character they belong to)
+					</>
+				)}
+				:
 			</Typography>
 			<div className="mystic-spell--container" ref={componentRef}>
 				{filteredMysticSpells.map((mysticSpell, index) => (
 					<>
-						<MysticSpellCard key={mysticSpell.name} {...mysticSpell} />
+						<div
+							key={`${mysticSpell.name}-${index}`}
+							title={
+								mysticSpell.characterName
+									? `For character: ${mysticSpell.characterName}`
+									: undefined
+							}
+						>
+							<MysticSpellCard {...mysticSpell} />
+						</div>
 						{Boolean(index % 9 === 8) && <div className="page-break" />}
 					</>
 				))}

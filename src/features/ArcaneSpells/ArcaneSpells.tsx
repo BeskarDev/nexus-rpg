@@ -40,12 +40,19 @@ const MenuProps = {
 	},
 }
 
+type SpellSelection = {
+	name: string
+	characterName?: string
+}
+
 export const ArcaneSpells: React.FC = () => {
 	const customTheme = experimental_extendTheme(theme)
 	const muiTheme = useTheme()
 	const [selectedArcaneSpells, setSelectedArcaneSpells] = React.useState<
 		string[]
 	>([])
+	const [selectedArcaneSpellsList, setSelectedArcaneSpellsList] =
+		React.useState<SpellSelection[]>([])
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
@@ -57,17 +64,38 @@ export const ArcaneSpells: React.FC = () => {
 		const {
 			target: { value },
 		} = event
-		setSelectedArcaneSpells(
-			// On autofill we get a stringified value.
-			typeof value === 'string' ? value.split(',') : value,
-		)
+		const spells = typeof value === 'string' ? value.split(',') : value
+		setSelectedArcaneSpells(spells)
+		// Update the list to match manual selections (no character attribution)
+		setSelectedArcaneSpellsList((prev) => {
+			// Keep character-attributed selections
+			const characterSelections = prev.filter((s) => s.characterName)
+			// Add manual selections without duplicates in the manual category
+			const manualSelections = spells
+				.filter(
+					(name) => !prev.some((s) => s.name === name && !s.characterName),
+				)
+				.map((name) => ({ name }))
+			// Remove manual selections that are no longer in the selected list
+			const filteredManual = prev
+				.filter((s) => !s.characterName)
+				.filter((s) => spells.includes(s.name))
+			return [...characterSelections, ...filteredManual, ...manualSelections]
+		})
 	}
 
 	const handleCharacterSelect = (character: CharacterDocument | null) => {
 		setSelectedCharacter(character)
 		if (character) {
+			const characterName = character.personal.name
 			const characterSpellNames =
 				character.spells?.spells?.map((spell) => spell.name) || []
+			// Add character's spells to the list with character attribution
+			setSelectedArcaneSpellsList((prev) => [
+				...prev,
+				...characterSpellNames.map((name) => ({ name, characterName })),
+			])
+			// Also update the selected spells for the dropdown
 			setSelectedArcaneSpells((prev) => {
 				const existingSpells = new Set(prev)
 				characterSpellNames.forEach((name) => existingSpells.add(name))
@@ -81,8 +109,15 @@ export const ArcaneSpells: React.FC = () => {
 		try {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
+				const characterName = character.personal?.name || 'Uploaded Character'
 				const characterSpellNames =
 					character.spells?.spells?.map((spell) => spell.name) || []
+				// Add character's spells to the list with character attribution
+				setSelectedArcaneSpellsList((prev) => [
+					...prev,
+					...characterSpellNames.map((name) => ({ name, characterName })),
+				])
+				// Also update the selected spells for the dropdown
 				setSelectedArcaneSpells((prev) => {
 					const existingSpells = new Set(prev)
 					characterSpellNames.forEach((name) => existingSpells.add(name))
@@ -100,14 +135,31 @@ export const ArcaneSpells: React.FC = () => {
 	})
 	const arcaneSpells: ArcaneSpell[] = arcaneSpellData
 
-	const filteredArcaneSpells = useMemo(
-		() => arcaneSpells.filter((ca) => selectedArcaneSpells.includes(ca.name)),
-		[arcaneSpells, selectedArcaneSpells],
-	)
+	const filteredArcaneSpells = useMemo(() => {
+		return selectedArcaneSpellsList
+			.map((selection) => {
+				const spell = arcaneSpells.find((s) => s.name === selection.name)
+				if (!spell) return null
+				return { ...spell, characterName: selection.characterName }
+			})
+			.filter((s) => s !== null) as Array<
+			ArcaneSpell & { characterName?: string }
+		>
+	}, [arcaneSpells, selectedArcaneSpellsList])
 
-	const selectAll = () =>
+	const selectAll = () => {
 		setSelectedArcaneSpells(arcaneSpells.map((ca) => ca.name))
-	const deselectAll = () => setSelectedArcaneSpells([])
+		// Add all spells as manual selections (no character attribution)
+		setSelectedArcaneSpellsList((prev) => {
+			const characterSelections = prev.filter((s) => s.characterName)
+			const allSpells = arcaneSpells.map((spell) => ({ name: spell.name }))
+			return [...characterSelections, ...allSpells]
+		})
+	}
+	const deselectAll = () => {
+		setSelectedArcaneSpells([])
+		setSelectedArcaneSpellsList([])
+	}
 
 	return (
 		<>
@@ -197,12 +249,30 @@ export const ArcaneSpells: React.FC = () => {
 				/>
 			</Stack>
 			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredArcaneSpells.length} Arcane Spells will be printed:
+				{filteredArcaneSpells.length} Arcane Spell
+				{filteredArcaneSpells.length !== 1 ? 's' : ''} will be printed
+				{selectedArcaneSpellsList.some((s) => s.characterName) && (
+					<>
+						{' '}
+						(including duplicates for specific characters - hover over cards to
+						see which character they belong to)
+					</>
+				)}
+				:
 			</Typography>
 			<div className="arcane-spell--container" ref={componentRef}>
 				{filteredArcaneSpells.map((arcaneSpell, index) => (
 					<>
-						<ArcaneSpellCard key={arcaneSpell.name} {...arcaneSpell} />
+						<div
+							key={`${arcaneSpell.name}-${index}`}
+							title={
+								arcaneSpell.characterName
+									? `For character: ${arcaneSpell.characterName}`
+									: undefined
+							}
+						>
+							<ArcaneSpellCard {...arcaneSpell} />
+						</div>
 						{Boolean(index % 9 === 8) && <div className="page-break" />}
 					</>
 				))}
