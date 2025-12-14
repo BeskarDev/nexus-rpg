@@ -264,7 +264,7 @@ export const ArcaneSpells: React.FC = () => {
 				{filteredArcaneSpells.map((arcaneSpell, index) => (
 					<>
 						<div
-							key={`${arcaneSpell.name}-${index}`}
+							key={`${arcaneSpell.name}-${arcaneSpell.characterName || 'manual'}-${index}`}
 							title={
 								arcaneSpell.characterName
 									? `For character: ${arcaneSpell.characterName}`

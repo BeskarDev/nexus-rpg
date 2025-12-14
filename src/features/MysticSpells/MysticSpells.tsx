@@ -264,7 +264,7 @@ export const MysticSpells: React.FC = () => {
 				{filteredMysticSpells.map((mysticSpell, index) => (
 					<>
 						<div
-							key={`${mysticSpell.name}-${index}`}
+							key={`${mysticSpell.name}-${mysticSpell.characterName || 'manual'}-${index}`}
 							title={
 								mysticSpell.characterName
 									? `For character: ${mysticSpell.characterName}`

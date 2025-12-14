@@ -273,7 +273,7 @@ export const CombatArts: React.FC = () => {
 				{filteredCombatArts.map((combatArt, index) => (
 					<>
 						<div
-							key={`${combatArt.name}-${index}`}
+							key={`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`}
 							title={
 								combatArt.characterName
 									? `For character: ${combatArt.characterName}`

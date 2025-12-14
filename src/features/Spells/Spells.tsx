@@ -313,7 +313,7 @@ export const Spells: React.FC = () => {
 				{filteredSpells.map((spell, index) => (
 					<>
 						<div
-							key={`${spell.name}-${index}`}
+							key={`${spell.name}-${spell.characterName || 'manual'}-${index}`}
 							title={
 								spell.characterName
 									? `For character: ${spell.characterName}`
