@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: "🐾 Companion Traits"
+title: "Companion Traits"
 ---
 
 ## Animal

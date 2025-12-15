@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: "💼 Mount Equipment"
+title: "Mount Equipment"
 ---
 
 ## Mount Equipment

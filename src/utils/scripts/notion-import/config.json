@@ -204,7 +204,7 @@
             "start_marker": "### Common Mounts",
             "end_marker": "## Mount Equipment",
             "target": "docs/08-creatures/01-mounts-companions/mounts.md",
-            "title": "🐴 Common Mounts",
+            "title": "Mounts",
             "sidebar_position": 1,
             "replacement": "For the full list of available mounts, see the [Mounts](./mounts.md) page."
           },
@@ -212,7 +212,7 @@
             "start_marker": "## Mount Equipment",
             "end_marker": "## Companions",
             "target": "docs/08-creatures/01-mounts-companions/equipment.md",
-            "title": "💼 Mount Equipment",
+            "title": "Mount Equipment",
             "sidebar_position": 2,
             "replacement": "For the different kinds of mount equipment available, see the [Mount Equipment](./equipment.md) page."
           },
@@ -220,7 +220,7 @@
             "start_marker": "## Companion Traits",
             "end_marker": null,
             "target": "docs/08-creatures/01-mounts-companions/traits.md",
-            "title": "🐾 Companion Traits",
+            "title": "Companion Traits",
             "sidebar_position": 3,
             "replacement": "For detailed companion traits, see the [Companion Traits](./traits.md) page."
           }
