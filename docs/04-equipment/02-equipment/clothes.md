@@ -2,6 +2,8 @@
 sidebar_position: 3
 ---
 
+# Clothes
+
 ## Clothes
 
 | Quality | Name | Load | Cost | Description |

@@ -2,6 +2,8 @@
 sidebar_position: 1
 ---
 
+# Animals
+
 ## Animals
 
 | Quality | Name | Load | Cost | Description |

@@ -2,6 +2,8 @@
 sidebar_position: 6
 ---
 
+# Supply
+
 ## Supply
 
 | Quality | Name | Load | Cost | Description |

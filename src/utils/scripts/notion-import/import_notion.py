@@ -296,7 +296,16 @@ class NotionImporter:
             
             # Find the HTML file for this database
             # Pattern: {db_prefix} {hashcode}.html in the export root
-            html_files = list(export_dir.glob(f"{db_prefix} *.html"))
+            # Need to match exactly to avoid partial matches like "Equipment" matching "Equipment & Something"
+            html_files = []
+            for file in export_dir.glob("*.html"):
+                # Extract the base name without the hash
+                # Format: "Name hashcode.html" -> split by last space and take everything except hash
+                name_parts = file.stem.rsplit(' ', 1)
+                if len(name_parts) == 2 and name_parts[0] == db_prefix:
+                    html_files.append(file)
+                    break
+            
             if not html_files:
                 print(f"  ⚠ No HTML file found for {db_prefix}")
                 return
@@ -644,7 +653,18 @@ sidebar_position: {idx + 2}
         # Remove split column from headers for output
         output_headers = [h for i, h in enumerate(headers) if i != split_col_idx]
         
-        for idx, (category, rows) in enumerate(sorted(rows_by_category.items())):
+        # Get configured sections for proper ordering
+        sections = mapping.get('sections', [])
+        
+        # Sort categories by configured order, then alphabetically
+        def get_sort_key(item):
+            category = item[0]
+            if sections and category in sections:
+                return (0, sections.index(category))
+            else:
+                return (1, category)
+        
+        for idx, (category, rows) in enumerate(sorted(rows_by_category.items(), key=get_sort_key)):
             # Create a new table for this category, removing the split column
             # Build header row without split column
             header_row = "".join(f"<th>{h}</th>" for i, h in enumerate(headers) if i != split_col_idx)
@@ -686,14 +706,34 @@ sidebar_position: {idx + 2}
             # Format category title for display (capitalize each word)
             category_title = category.replace('-', ' ').title()
             
-            if frontmatter:
-                content = f"{frontmatter}\n## {category_title}\n\n{table_md}\n"
-            else:
-                content = f'''---
+            # Equipment tables should have both H1 and H2 headers (matching main branch format)
+            # Creatures and other databases just use H1
+            db_type = mapping.get('type', '')
+            if db_type == 'equipment':
+                # Equipment format: H1 for page title, H2 for section header
+                if frontmatter:
+                    content = f"{frontmatter}\n# {category_title}\n\n## {category_title}\n\n{table_md}\n"
+                else:
+                    content = f'''---
 sidebar_position: {position}
 ---
 
+# {category_title}
+
 ## {category_title}
+
+{table_md}
+'''
+            else:
+                # Other databases: just H1 for page title
+                if frontmatter:
+                    content = f"{frontmatter}\n# {category_title}\n\n{table_md}\n"
+                else:
+                    content = f'''---
+sidebar_position: {position}
+---
+
+# {category_title}
 
 {table_md}
 '''

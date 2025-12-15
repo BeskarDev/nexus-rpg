@@ -2,6 +2,8 @@
 sidebar_position: 5
 ---
 
+# Gear
+
 ## Gear
 
 | Quality | Name | Load | Cost | Description |

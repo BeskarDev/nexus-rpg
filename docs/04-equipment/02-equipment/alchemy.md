@@ -2,6 +2,8 @@
 sidebar_position: 2
 ---
 
+# Alchemy
+
 ## Alchemy
 
 | Quality | Name | Load | Cost | Description |

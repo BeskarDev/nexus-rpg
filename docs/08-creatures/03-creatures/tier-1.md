@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-## Tier 1
+# Tier 1
 
 | Type | Category | Size | Name | HP | AV (Types) | STR / AGI / SPI / MND | Parry / Dodge / Resist | Skills | Weaknesses | Resistances | Actions | Abilities | Immunities | Quick Actions |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
