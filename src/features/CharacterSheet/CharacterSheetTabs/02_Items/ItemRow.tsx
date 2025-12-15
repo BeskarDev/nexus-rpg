@@ -27,6 +27,7 @@ import {
 	EquipmentSlotType,
 	equipmentSlotTypeArray,
 	Item,
+	Character,
 } from '../../../../types/Character'
 import { ItemLocation, ITEM_LOCATIONS } from '../../../../types/ItemLocation'
 import { AttributeField } from '../../CharacterSheet'
@@ -34,6 +35,7 @@ import { QualityTier, qualityTierLabels } from './utils/magicItemsConfig'
 
 export type ItemRowProps = {
 	item: Item
+	character?: Character
 	updateItem: (update: Partial<Item>) => void
 	deleteItem: () => void
 	isInQuickRef?: boolean
@@ -92,9 +94,9 @@ export const ItemRow: React.FC<ItemRowProps> = ({
 					<TextField
 						size="small"
 						variant="standard"
-						value={item.properties}
-						onChange={(event) =>
-							setItem((w) => ({ ...w, properties: event.target.value }))
+					value={item.properties?.join(', ') || ''}
+					onChange={(event) =>
+						setItem((w) => ({ ...w, properties: event.target.value.split(',').map(p => p.trim()).filter(p => p) }))
 						}
 						onBlur={() => updateItem({ properties: item.properties })}
 						label="Properties"

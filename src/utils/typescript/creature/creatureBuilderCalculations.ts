@@ -9,7 +9,7 @@ import {
 	CreatureCategory,
 	BuiltCreature,
 	CreatureBuilderState,
-} from 'src/types/CreatureBuilder'
+} from '../../../types/CreatureBuilder'
 
 const tiers = creatureTiers as CreatureTier[]
 const archetypes = creatureArchetypes as CreatureArchetype[]

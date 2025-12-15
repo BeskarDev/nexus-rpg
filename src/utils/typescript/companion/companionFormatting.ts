@@ -1,4 +1,4 @@
-import { CompanionStats } from '../../types/companion'
+import { CompanionStats } from '../../../types/companion'
 import { TIER_NAMES } from './companionCalculations'
 
 export const convertHtmlToMarkdown = (text: string): string => {

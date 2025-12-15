@@ -114,7 +114,7 @@ export const PersonalTab: React.FC = () => {
 			description: activeCharacter.personal.description || '',
 			notes: activeCharacter.personal.notes || '',
 		})
-	}, [activeCharacter.id, reset])
+	}, [activeCharacter.docId, reset])
 
 	const [personal, setPersonal] = useState(activeCharacter.personal)
 

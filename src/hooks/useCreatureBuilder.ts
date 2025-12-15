@@ -5,6 +5,7 @@ import {
 	BuiltCreature,
 	CreatureAttack,
 	CreatureAbility,
+	CreatureSkill,
 } from '../types/CreatureBuilder'
 import { buildCreature } from '../utils/typescript/creature/creatureBuilderCalculations'
 
@@ -18,6 +19,7 @@ export function useCreatureBuilder() {
 		name: '',
 		customHP: null,
 		customAV: null,
+		customArmorType: null,
 		customStr: null,
 		customAgi: null,
 		customSpi: null,
@@ -90,7 +92,7 @@ export function useCreatureBuilder() {
 	}
 
 	// Array handlers
-	const handleSkillsChange = (skills: string[]) => {
+	const handleSkillsChange = (skills: CreatureSkill[]) => {
 		setState((prev) => ({ ...prev, skills }))
 	}
 
@@ -124,6 +126,7 @@ export function useCreatureBuilder() {
 			name: '',
 			customHP: null,
 			customAV: null,
+			customArmorType: null,
 			customStr: null,
 			customAgi: null,
 			customSpi: null,

@@ -2,7 +2,9 @@
 	"extends": "@docusaurus/tsconfig",
 	"compilerOptions": {
 		"jsx": "react-jsx",
-		"baseUrl": "."
+		"baseUrl": ".",
+		"skipLibCheck": true,
+		"resolveJsonModule": true
 	},
 	"exclude": [
 		"**/*.test.ts",
@@ -11,6 +13,7 @@
 		"**/*.spec.tsx",
 		"**/__tests__/**/*",
 		"tests/**/*",
-		"functions/**/*"
+		"functions/**/*",
+		"src/utils/typescript/**"
 	]
 }

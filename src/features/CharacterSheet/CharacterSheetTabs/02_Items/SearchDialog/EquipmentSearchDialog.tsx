@@ -7,6 +7,7 @@ import {
 	Item,
 	CharacterDocument,
 	ContainerType,
+	EquipmentSlotType,
 } from '../../../../../types/Character'
 import { QualityTier } from '../utils/magicItemsConfig'
 
@@ -198,7 +199,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 		},
 	]
 
-	const getEquipmentSlot = (item: CombinedItemData): string => {
+	const getEquipmentSlot = (item: CombinedItemData): EquipmentSlotType | '' => {
 		if (item.type !== 'armor') return ''
 
 		const category = item.category.toLowerCase()

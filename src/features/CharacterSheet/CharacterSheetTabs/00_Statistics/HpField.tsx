@@ -86,7 +86,7 @@ export const HpField = () => {
 			maxHpModifier: health.maxHpModifier || 0,
 		})
 	}, [
-		activeCharacter.id,
+		activeCharacter.docId,
 		health.current,
 		health.temp,
 		health.maxHpModifier,

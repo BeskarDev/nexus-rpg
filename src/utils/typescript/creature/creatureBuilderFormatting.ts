@@ -1,4 +1,4 @@
-import { BuiltCreature } from '../../types/CreatureBuilder'
+import { BuiltCreature } from '../../../types/CreatureBuilder'
 
 /**
  * Generate markdown output for a creature

@@ -53,7 +53,7 @@ type QuickRefItem = {
 	sourceCategory?: string // for abilities: 'Talent', 'Folk', etc.
 	actionType?: ActionType
 	rank?: number
-	properties?: string // for items/weapons/spells
+	properties?: string[] // for items/weapons/spells
 	damage?: string // for weapons/spells that deal damage
 }
 
@@ -189,18 +189,20 @@ export const QuickRefSection: React.FC = () => {
 
 		if ('properties' in item && item.properties) {
 			// For spells and items, check properties for action type indicators
-			const props = item.properties.toLowerCase()
+			const propsStr = Array.isArray(item.properties)
+				? item.properties.join(' ').toLowerCase()
+				: String(item.properties || '').toLowerCase()
 			if (
-				props.includes('quick action') ||
-				props.includes('reaction') ||
-				props.includes('quick')
+				propsStr.includes('quick action') ||
+				propsStr.includes('reaction') ||
+				propsStr.includes('quick')
 			) {
 				return 'Quick Action'
 			}
-			if (props.includes('triggered') || props.includes('trigger')) {
+			if (propsStr.includes('triggered') || propsStr.includes('trigger')) {
 				return 'Triggered'
 			}
-			if (props.includes('free') || props.includes('passive')) {
+			if (propsStr.includes('free') || propsStr.includes('passive')) {
 				return 'Free'
 			}
 		}
@@ -269,7 +271,7 @@ export const QuickRefSection: React.FC = () => {
 					source: 'weapon' as const,
 					sourceCategory: 'Weapon',
 					actionType: determineActionType(weapon),
-					properties: weapon.properties || undefined,
+					properties: weapon.properties ? (Array.isArray(weapon.properties) ? weapon.properties : [weapon.properties]) : undefined,
 					damage: damageStr,
 				}
 			}),
@@ -280,7 +282,7 @@ export const QuickRefSection: React.FC = () => {
 				source: 'item' as const,
 				sourceCategory: 'Item',
 				actionType: determineActionType(item),
-				properties: item.properties || undefined,
+				properties: item.properties ? (Array.isArray(item.properties) ? item.properties : [item.properties]) : undefined,
 			})),
 			...selectedSpells.map((spell) => {
 				const damageStr =
@@ -295,7 +297,7 @@ export const QuickRefSection: React.FC = () => {
 					sourceCategory: 'Spell',
 					actionType: determineActionType(spell),
 					rank: spell.rank,
-					properties: spell.properties || undefined,
+					properties: spell.properties ? (Array.isArray(spell.properties) ? spell.properties : [spell.properties]) : undefined,
 					damage: damageStr,
 				}
 			}),

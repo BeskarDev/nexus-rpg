@@ -179,7 +179,7 @@ import {
 	CreatureCategory,
 	CreatureAttack,
 	CreatureAbility,
-} from '../../types/CreatureBuilder'
+} from '../../../types/CreatureBuilder'
 
 /**
  * Input JSON schema for creature creation
