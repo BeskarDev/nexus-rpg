@@ -44,9 +44,17 @@ type UnifiedSpell = {
 	category: string // discipline or tradition
 } & (ArcaneSpell | MysticSpell)
 
+type SpellSelection = {
+	name: string
+	characterName?: string
+}
+
 export const Spells: React.FC = () => {
 	const muiTheme = useTheme()
 	const [selectedSpells, setSelectedSpells] = React.useState<string[]>([])
+	const [selectedSpellsList, setSelectedSpellsList] = React.useState<
+		SpellSelection[]
+	>([])
 	const [spellTypeFilter, setSpellTypeFilter] = React.useState<SpellType>('all')
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
@@ -81,7 +89,24 @@ export const Spells: React.FC = () => {
 		const {
 			target: { value },
 		} = event
-		setSelectedSpells(typeof value === 'string' ? value.split(',') : value)
+		const spells = typeof value === 'string' ? value.split(',') : value
+		setSelectedSpells(spells)
+		// Update the list to match manual selections (no character attribution)
+		setSelectedSpellsList((prev) => {
+			// Keep character-attributed selections
+			const characterSelections = prev.filter((s) => s.characterName)
+			// Add manual selections without duplicates in the manual category
+			const manualSelections = spells
+				.filter(
+					(name) => !prev.some((s) => s.name === name && !s.characterName),
+				)
+				.map((name) => ({ name }))
+			// Remove manual selections that are no longer in the selected list
+			const filteredManual = prev
+				.filter((s) => !s.characterName)
+				.filter((s) => spells.includes(s.name))
+			return [...characterSelections, ...filteredManual, ...manualSelections]
+		})
 	}
 
 	const handleSpellTypeFilterChange = (
@@ -93,8 +118,15 @@ export const Spells: React.FC = () => {
 	const handleCharacterSelect = (character: CharacterDocument | null) => {
 		setSelectedCharacter(character)
 		if (character) {
+			const characterName = character.personal.name
 			const characterSpellNames =
 				character.spells?.spells?.map((spell) => spell.name) || []
+			// Add character's spells to the list with character attribution
+			setSelectedSpellsList((prev) => [
+				...prev,
+				...characterSpellNames.map((name) => ({ name, characterName })),
+			])
+			// Also update the selected spells for the dropdown
 			setSelectedSpells((prev) => {
 				const existingSpells = new Set(prev)
 				characterSpellNames.forEach((name) => existingSpells.add(name))
@@ -108,8 +140,15 @@ export const Spells: React.FC = () => {
 		try {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
+				const characterName = character.personal?.name || 'Uploaded Character'
 				const characterSpellNames =
 					character.spells?.spells?.map((spell) => spell.name) || []
+				// Add character's spells to the list with character attribution
+				setSelectedSpellsList((prev) => [
+					...prev,
+					...characterSpellNames.map((name) => ({ name, characterName })),
+				])
+				// Also update the selected spells for the dropdown
 				setSelectedSpells((prev) => {
 					const existingSpells = new Set(prev)
 					characterSpellNames.forEach((name) => existingSpells.add(name))
@@ -126,14 +165,31 @@ export const Spells: React.FC = () => {
 		content: () => componentRef.current,
 	})
 
-	const filteredSpells = useMemo(
-		() => availableSpells.filter((spell) => selectedSpells.includes(spell.name)),
-		[availableSpells, selectedSpells],
-	)
+	const filteredSpells = useMemo(() => {
+		return selectedSpellsList
+			.map((selection) => {
+				const spell = availableSpells.find((s) => s.name === selection.name)
+				if (!spell) return null
+				return { ...spell, characterName: selection.characterName }
+			})
+			.filter((s) => s !== null) as Array<
+			UnifiedSpell & { characterName?: string }
+		>
+	}, [availableSpells, selectedSpellsList])
 
-	const selectAll = () =>
+	const selectAll = () => {
 		setSelectedSpells(availableSpells.map((spell) => spell.name))
-	const deselectAll = () => setSelectedSpells([])
+		// Add all spells as manual selections (no character attribution)
+		setSelectedSpellsList((prev) => {
+			const characterSelections = prev.filter((s) => s.characterName)
+			const allSpells = availableSpells.map((spell) => ({ name: spell.name }))
+			return [...characterSelections, ...allSpells]
+		})
+	}
+	const deselectAll = () => {
+		setSelectedSpells([])
+		setSelectedSpellsList([])
+	}
 
 	return (
 		<>
@@ -243,12 +299,29 @@ export const Spells: React.FC = () => {
 			</Stack>
 			<Typography variant="subtitle1" sx={{ mb: 2 }}>
 				{filteredSpells.length} Spell{filteredSpells.length !== 1 ? 's' : ''}{' '}
-				will be printed:
+				will be printed
+				{selectedSpellsList.some((s) => s.characterName) && (
+					<>
+						{' '}
+						(including duplicates for specific characters - hover over cards to
+						see which character they belong to)
+					</>
+				)}
+				:
 			</Typography>
 			<div className="spell--container" ref={componentRef}>
 				{filteredSpells.map((spell, index) => (
 					<>
-						<SpellCard key={spell.name} {...spell} />
+						<div
+							key={`${spell.name}-${spell.characterName || 'manual'}-${index}`}
+							title={
+								spell.characterName
+									? `For character: ${spell.characterName}`
+									: undefined
+							}
+						>
+							<SpellCard {...spell} />
+						</div>
 						{Boolean(index % 9 === 8) && <div className="page-break" />}
 					</>
 				))}

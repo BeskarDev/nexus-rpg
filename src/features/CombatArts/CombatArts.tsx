@@ -40,11 +40,19 @@ const MenuProps = {
 	},
 }
 
+type CombatArtSelection = {
+	name: string
+	characterName?: string
+}
+
 export const CombatArts: React.FC = () => {
 	const muiTheme = useTheme()
 	const [selectedCombatArts, setSelectedCombatArts] = React.useState<string[]>(
 		[],
 	)
+	const [selectedCombatArtsList, setSelectedCombatArtsList] = React.useState<
+		CombatArtSelection[]
+	>([])
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
 	const [selectedCharacter, setSelectedCharacter] =
@@ -56,21 +64,43 @@ export const CombatArts: React.FC = () => {
 		const {
 			target: { value },
 		} = event
-		setSelectedCombatArts(
-			// On autofill we get a stringified value.
-			typeof value === 'string' ? value.split(',') : value,
-		)
+		const arts = typeof value === 'string' ? value.split(',') : value
+		setSelectedCombatArts(arts)
+		// Update the list to match manual selections (no character attribution)
+		setSelectedCombatArtsList((prev) => {
+			// Keep character-attributed selections
+			const characterSelections = prev.filter((s) => s.characterName)
+			// Add manual selections without duplicates in the manual category
+			const manualSelections = arts
+				.filter(
+					(name) =>
+						!prev.some((s) => s.name === name && !s.characterName),
+				)
+				.map((name) => ({ name }))
+			// Remove manual selections that are no longer in the selected list
+			const filteredManual = prev
+				.filter((s) => !s.characterName)
+				.filter((s) => arts.includes(s.name))
+			return [...characterSelections, ...filteredManual, ...manualSelections]
+		})
 	}
 
 	const handleCharacterSelect = (character: CharacterDocument | null) => {
 		setSelectedCharacter(character)
 		if (character) {
+			const characterName = character.personal.name
 			const characterAbilityNames =
 				character.skills?.abilities?.map((ability) => ability.title) || []
 			// Filter to only include abilities that exist in the combat arts data
 			const validCombatArts = characterAbilityNames.filter((name) =>
 				combatArts.some((ca) => ca.name === name)
 			)
+			// Add character's combat arts to the list with character attribution
+			setSelectedCombatArtsList((prev) => [
+				...prev,
+				...validCombatArts.map((name) => ({ name, characterName })),
+			])
+			// Also update the selected arts for the dropdown
 			setSelectedCombatArts((prev) => {
 				const existingArts = new Set(prev)
 				validCombatArts.forEach((name) => existingArts.add(name))
@@ -84,12 +114,19 @@ export const CombatArts: React.FC = () => {
 		try {
 			if (jsonString.trim()) {
 				const character: Character = JSON.parse(jsonString)
+				const characterName = character.personal?.name || 'Uploaded Character'
 				const characterAbilityNames =
 					character.skills?.abilities?.map((ability) => ability.title) || []
 				// Filter to only include abilities that exist in the combat arts data
 				const validCombatArts = characterAbilityNames.filter((name) =>
 					combatArts.some((ca) => ca.name === name)
 				)
+				// Add character's combat arts to the list with character attribution
+				setSelectedCombatArtsList((prev) => [
+					...prev,
+					...validCombatArts.map((name) => ({ name, characterName })),
+				])
+				// Also update the selected arts for the dropdown
 				setSelectedCombatArts((prev) => {
 					const existingArts = new Set(prev)
 					validCombatArts.forEach((name) => existingArts.add(name))
@@ -107,13 +144,31 @@ export const CombatArts: React.FC = () => {
 	})
 	const combatArts: CombatArt[] = combatArtsData
 
-	const filteredCombatArts = useMemo(
-		() => combatArts.filter((ca) => selectedCombatArts.includes(ca.name)),
-		[combatArts, selectedCombatArts],
-	)
+	const filteredCombatArts = useMemo(() => {
+		return selectedCombatArtsList
+			.map((selection) => {
+				const combatArt = combatArts.find((ca) => ca.name === selection.name)
+				if (!combatArt) return null
+				return { ...combatArt, characterName: selection.characterName }
+			})
+			.filter((ca) => ca !== null) as Array<
+			CombatArt & { characterName?: string }
+		>
+	}, [combatArts, selectedCombatArtsList])
 
-	const selectAll = () => setSelectedCombatArts(combatArts.map((ca) => ca.name))
-	const deselectAll = () => setSelectedCombatArts([])
+	const selectAll = () => {
+		setSelectedCombatArts(combatArts.map((ca) => ca.name))
+		// Add all combat arts as manual selections (no character attribution)
+		setSelectedCombatArtsList((prev) => {
+			const characterSelections = prev.filter((s) => s.characterName)
+			const allArts = combatArts.map((ca) => ({ name: ca.name }))
+			return [...characterSelections, ...allArts]
+		})
+	}
+	const deselectAll = () => {
+		setSelectedCombatArts([])
+		setSelectedCombatArtsList([])
+	}
 
 	return (
 		<>
@@ -203,12 +258,30 @@ export const CombatArts: React.FC = () => {
 				/>
 			</Stack>
 			<Typography variant="subtitle1" sx={{ mb: 2 }}>
-				{filteredCombatArts.length} Combat Arts will be printed:
+				{filteredCombatArts.length} Combat Art
+				{filteredCombatArts.length !== 1 ? 's' : ''} will be printed
+				{selectedCombatArtsList.some((s) => s.characterName) && (
+					<>
+						{' '}
+						(including duplicates for specific characters - hover over cards to
+						see which character they belong to)
+					</>
+				)}
+				:
 			</Typography>
 			<div className="combat-art--container" ref={componentRef}>
 				{filteredCombatArts.map((combatArt, index) => (
 					<>
-						<CombatArtCard key={combatArt.name} {...combatArt} />
+						<div
+							key={`${combatArt.name}-${combatArt.characterName || 'manual'}-${index}`}
+							title={
+								combatArt.characterName
+									? `For character: ${combatArt.characterName}`
+									: undefined
+							}
+						>
+							<CombatArtCard {...combatArt} />
+						</div>
 						{Boolean(index % 9 === 8) && <div className="page-break" />}
 					</>
 				))}
