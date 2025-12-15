@@ -62,7 +62,7 @@
         "title": "🖼 Background",
         "banner": "/img/banner/background-banner.png"
       },
-      "NPC Relations": {
+      "NPCs and Relationships": {
         "target": "docs/02-adventurers/05-npc-relations.md",
         "title": "👥 NPCs and Relationships",
         "banner": "/img/banner/npc-relations-banner.png"
@@ -150,11 +150,6 @@
       "Enchantments": {
         "target": "docs/04-equipment/07-magic-items/enchantments.md",
         "title": "Enchantments"
-      },
-      "Equipment": {
-        "target": "docs/04-equipment/02-equipment/00-overview.md",
-        "title": "💰 Equipment",
-        "banner": "/img/banner/items-banner.png"
       },
       "Mounts & Companions": {
         "target": "docs/08-creatures/01-mounts-companions.mdx",

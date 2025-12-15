@@ -7,7 +7,6 @@ sidebar_position: 5
 ![banner-img](/img/banner/npc-relations-banner.png)
 
 > "In the weaving of destinies, the threads we form with others determine the pattern of our fate. A single ally in the shifting sands can mean the difference between perishing beneath the merciless sun or finding the hidden oasis."
-> 
 
 During your adventures across the lands of Atakhet and beyond you will encounter numerous inhabitants who breathe life into this world. To track meaningful relationships with Non-Player Characters (NPCs), use the following guidelines.
 
@@ -95,10 +94,7 @@ The GM determines initial reactions based on context or may roll randomly using 
 When making social interaction tests with NPCs, apply their disposition modifier to the Difficulty of your test. Adjust the Difficulty a number of steps equal to the NPCs disposition level (positive dispositions reduce the Difficulty, negative dispositions increase it).
 
 > Example: Sephi the Seer needs information about ancient temple ruins from a local scholar. The scholar is friendly toward Sephi due to their shared respect for knowledge. Normally, extracting this specific information would be a medium Difficulty Influence test (TN 8), but the scholar's friendly disposition reduces the Difficulty by one step to easy (TN 6). Sephi rolls their Mind (d8) + Influence (d6), needing only a 6 to succeed.
-> 
-> 
 > Later, Sephi approaches a hostile temple guardian to gain entry to a restricted archive. The base difficulty would be Medium (TN 8), but the guardian's hostile disposition increases it by two steps to Very Hard (TN 12). Even with Sephi's Mind (d8) + Influence (d6), this will be a challenging test.
-> 
 
 Remember that even the most favorable NPCs will not endlessly provide assistance without reciprocation. Relationships require maintenance—favors must be returned, respect must be shown, and cultural protocols must be observed. Repeatedly exploiting an NPC's goodwill can turn even an intimate ally into a suspicious acquaintance or worse.
 
