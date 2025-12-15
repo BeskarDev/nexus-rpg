@@ -46,7 +46,7 @@ const autoKeywordPlugin = (options) => {
 
 				// Split text into words and punctuation while preserving spaces and special characters
 				const wordsWithSpaces = node.value.split(
-					/(\s+|[.,!?;:"'(){}\[\]/\\+*])/,
+					/(\s+|[.,!?;:"'(){}[\]/\\+*])/,
 				)
 				let hasKeyword = false
 				const processedWords: any[] = []
@@ -55,7 +55,7 @@ const autoKeywordPlugin = (options) => {
 				while (i < wordsWithSpaces.length) {
 					const current = wordsWithSpaces[i]
 
-					if (i % 2 === 1 || /^[.,!?;:"'(){}\[\]/\\+*-]$/.test(current)) {
+					if (i % 2 === 1 || /^[.,!?;:"'(){}[\]/\\+*-]$/.test(current)) {
 						// If it's a space or punctuation, add it directly
 						processedWords.push({
 							type: 'text',
@@ -76,7 +76,7 @@ const autoKeywordPlugin = (options) => {
 							.filter(
 								(_, idx) =>
 									idx % 2 === 0 ||
-									/^[.,!?;:"'(){}\[\]/\\+*]$/.test(wordsWithSpaces[idx]),
+								/^[.,!?;:"'(){}[\]/\\+*]$/.test(wordsWithSpaces[idx]),
 							)
 							.join(' ')
 

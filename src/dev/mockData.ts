@@ -275,7 +275,7 @@ export const createMockCharacter = (): CharacterDocument => {
 				{
 					id: generateId(),
 					name: 'Alchemy Kit',
-					properties: 'crafting tools',
+					properties: ['crafting tools'],
 					description:
 						'A collection of vials, burners, and reagents for alchemical work.',
 					slot: '',
@@ -580,7 +580,7 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 				{
 					id: generateId(),
 					name: 'Scale Mail',
-					properties: 'heavy armor, +4 AV',
+					properties: ['heavy armor', '+4 AV'],
 					description:
 						'Well-maintained scale armor that provides excellent protection.',
 					slot: 'body',
@@ -595,7 +595,7 @@ export const createSecondMockCharacter = (): CharacterDocument => {
 				{
 					id: generateId(),
 					name: 'Steel Shield',
-					properties: 'shield, +2 AV',
+					properties: ['shield', '+2 AV'],
 					description: 'A round steel shield with the symbol of her clan.',
 					slot: '',
 					cost: 40,

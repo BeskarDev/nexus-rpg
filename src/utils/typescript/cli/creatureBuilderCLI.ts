@@ -160,7 +160,7 @@
  * @see {@link CreatureBuilder} for type definitions
  */
 
-import { generateCreatureMarkdown } from './creatureBuilderFormatting'
+import { generateCreatureMarkdown } from '../creature/creatureBuilderFormatting'
 import {
 	calculateHP,
 	calculateAV,
@@ -173,13 +173,13 @@ import {
 	calculateBaseDamage,
 	formatDamageString,
 	TIER_NAMES,
-} from './creatureBuilderCalculations'
+} from '../creature/creatureBuilderCalculations'
 import {
 	BuiltCreature,
 	CreatureCategory,
 	CreatureAttack,
 	CreatureAbility,
-} from '../types/CreatureBuilder'
+} from '../../types/CreatureBuilder'
 
 /**
  * Input JSON schema for creature creation

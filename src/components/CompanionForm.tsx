@@ -10,7 +10,7 @@ import {
 	Box,
 } from '@mui/material'
 import { CompanionTrait } from '../types/companion'
-import { getAvailableSizes, TIER_NAMES } from '../utils/companionCalculations'
+import { getAvailableSizes, TIER_NAMES } from '../utils/typescript/companion/companionCalculations'
 import companionTraits from '../utils/data/json/companion-traits.json'
 
 interface CompanionFormProps {

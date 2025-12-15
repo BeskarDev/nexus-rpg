@@ -1,4 +1,4 @@
-import { Character, Item } from '../types/Character'
+import { Character, Item } from '../../types/Character'
 
 /**
  * Maximum number of rings a character can wear

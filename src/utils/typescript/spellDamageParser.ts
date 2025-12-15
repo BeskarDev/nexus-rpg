@@ -1,4 +1,4 @@
-import { DamageType } from '../types/Character'
+import { DamageType } from '../../types/Character'
 
 export type ParsedDamage = {
 	base: 'SPI' | 'MND' | ''

@@ -1,4 +1,4 @@
-import { CompanionTrait } from '../types/companion'
+import { CompanionTrait } from '../../types/companion'
 
 // Base companion statistics by tier
 export const BASE_STATS: Record<number, any> = {
