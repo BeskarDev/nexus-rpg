@@ -29,20 +29,35 @@ except ImportError:
 class NotionDatabaseConverter:
     """Convert Notion database exports to markdown files."""
     
-    def __init__(self):
+    def __init__(self, category_mappings: Dict[str, Dict[str, str]] = None):
         # Default section column names (can be overridden by split_by parameter)
         self.section_column_names = {
             'arcane-spells': 'Discipline',
             'mystic-spells': 'Tradition',
             'talents': 'Skill Requirement',
             'combat-arts': 'Category',
-            'creatures': 'Tier'
+            'creatures': 'Tier',
+            'equipment': 'Category'
         }
+        # Category mappings for normalizing category names
+        self.category_mappings = category_mappings or {}
+    
+    def _normalize_category(self, category: str, db_name: str) -> str:
+        """Normalize category name using configured mappings."""
+        db_mappings = self.category_mappings.get(db_name, {})
+        
+        # Check if there's a direct mapping
+        if str(category) in db_mappings:
+            return db_mappings[str(category)]
+        
+        # Fallback: convert to lowercase with hyphens
+        return str(category).lower().replace(' ', '-').replace('/', '-')
     
     def convert_csv_to_markdown(
         self,
         csv_file: Path,
         db_type: str,
+        db_name: str = None,
         sections: List[str] = None,
         split_by: str = None
     ) -> Dict[str, str]:
@@ -52,6 +67,7 @@ class NotionDatabaseConverter:
         Args:
             csv_file: Path to CSV file
             db_type: Type of database (arcane-spells, mystic-spells, talents, etc.)
+            db_name: Name of the database for category mapping (e.g., "Equipment", "Creatures")
             sections: Expected sections/categories
             split_by: Column name to split by (overrides default)
             
@@ -72,27 +88,24 @@ class NotionDatabaseConverter:
         # Group by section
         result = {}
         
-        # For creatures, map Tier numbers to tier-N format
-        if db_type == 'creatures' and section_column == 'Tier':
-            for tier_num in sorted(df[section_column].unique()):
-                section_df = df[df[section_column] == tier_num].copy()
-                if not section_df.empty:
-                    markdown = self._dataframe_to_markdown(section_df, db_type)
-                    result[f'tier-{int(tier_num)}'] = markdown
-        # For combat-arts, map Category to lowercase
-        elif db_type == 'combat-arts' and section_column == 'Category':
-            for category in df[section_column].unique():
-                section_df = df[df[section_column] == category].copy()
-                if not section_df.empty:
-                    markdown = self._dataframe_to_markdown(section_df, db_type)
-                    result[category.lower()] = markdown
-        # Default: use sections as-is
-        else:
-            for section in sections or df[section_column].unique():
-                section_df = df[df[section_column] == section].copy()
-                if not section_df.empty:
-                    markdown = self._dataframe_to_markdown(section_df, db_type)
-                    result[section] = markdown
+        # Use database name for category normalization, fallback to db_type
+        db_name_for_mapping = db_name or db_type
+        
+        # Group rows by normalized category
+        for raw_category in df[section_column].unique():
+            # Normalize the category name
+            normalized_category = self._normalize_category(raw_category, db_name_for_mapping)
+            
+            # Get all rows matching this raw category
+            section_df = df[df[section_column] == raw_category].copy()
+            if not section_df.empty:
+                markdown = self._dataframe_to_markdown(section_df, db_type)
+                
+                # If this normalized category already exists, merge the content
+                if normalized_category in result:
+                    result[normalized_category] += f"\n\n{markdown}"
+                else:
+                    result[normalized_category] = markdown
         
         return result
     
@@ -315,7 +328,9 @@ def convert_database(
     csv_file: Path,
     db_type: str,
     sections: List[str] = None,
-    split_by: str = None
+    split_by: str = None,
+    db_name: str = None,
+    category_mappings: Dict[str, Dict[str, str]] = None
 ) -> Dict[str, str]:
     """
     Convert a Notion database CSV export to markdown.
@@ -325,12 +340,14 @@ def convert_database(
         db_type: Database type
         sections: Expected sections
         split_by: Column name to split by (overrides default)
+        db_name: Name of the database for category mapping
+        category_mappings: Category mappings for normalization
         
     Returns:
         Dictionary mapping section names to markdown content
     """
-    converter = NotionDatabaseConverter()
-    return converter.convert_csv_to_markdown(csv_file, db_type, sections, split_by)
+    converter = NotionDatabaseConverter(category_mappings)
+    return converter.convert_csv_to_markdown(csv_file, db_type, db_name, sections, split_by)
 
 
 if __name__ == '__main__':

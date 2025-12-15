@@ -2,8 +2,8 @@
 sidebar_position: 6
 ---
 
-# Tier-5
+## Tier 5
 
-Name | AV (Types) | Abilities | Actions | Category | HP | Immunities | Parry / Dodge / Resist | Quick Actions | Resistances | STR / AGI / SPI / MND | Size | Skills | Tier | Type | Weaknesses
---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-Old Fire Dragon |  |  |  | Elite |  |  |  |  |  |  | Gargantuan (+3) |  | 5 | Dragon | 
+| Type | Category | Size | Name | HP | AV (Types) | STR / AGI / SPI / MND | Parry / Dodge / Resist | Skills | Weaknesses | Resistances | Actions | Abilities | Immunities | Quick Actions |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Dragon | Elite | Gargantuan (+3) | Old Fire Dragon |  |  |  |  |  |  |  |  |  |  |  |

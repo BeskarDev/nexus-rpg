@@ -568,6 +568,18 @@ sidebar_position: {idx + 2}
         
         self.stats['databases_updated'] += 1
     
+    def _normalize_category(self, category: str, db_prefix: str) -> str:
+        """Normalize category name using configured mappings."""
+        category_mappings = self.config.get('category_mappings', {})
+        db_mappings = category_mappings.get(db_prefix, {})
+        
+        # Check if there's a direct mapping
+        if category in db_mappings:
+            return db_mappings[category]
+        
+        # Fallback: convert to lowercase with hyphens
+        return category.lower().replace(' ', '-').replace('/', '-')
+    
     def _split_table_by_column(self, table, split_by: str, mapping: dict, export_dir: Path, db_prefix: str):
         """Split table by a column value into separate files."""
         from bs4 import BeautifulSoup
@@ -609,9 +621,12 @@ sidebar_position: {idx + 2}
             if len(cells) <= split_col_idx:
                 continue
             
-            category = cells[split_col_idx].get_text().strip()
-            if not category:
+            raw_category = cells[split_col_idx].get_text().strip()
+            if not raw_category:
                 continue
+            
+            # Normalize the category name
+            category = self._normalize_category(raw_category, db_prefix)
             
             if category not in rows_by_category:
                 rows_by_category[category] = []
@@ -654,21 +669,31 @@ sidebar_position: {idx + 2}
             # Convert to markdown
             table_md = converter._convert_table(category_table)
             
-            # Determine filename
-            filename = f"{category.lower().replace(' ', '-').replace('/', '-')}.md"
+            # Use normalized category name for filename (already normalized during grouping)
+            filename = f"{category}.md"
             target_file = target_dir / filename
+            
+            # Get the configured sections for sidebar position
+            sections = mapping.get('sections', [])
+            if sections and category in sections:
+                position = sections.index(category) + 1
+            else:
+                position = idx + 1
             
             # Read existing frontmatter
             frontmatter = self._read_frontmatter(target_file)
             
+            # Format category title for display (capitalize each word)
+            category_title = category.replace('-', ' ').title()
+            
             if frontmatter:
-                content = f"{frontmatter}\n## {category}\n\n{table_md}\n"
+                content = f"{frontmatter}\n## {category_title}\n\n{table_md}\n"
             else:
                 content = f'''---
-sidebar_position: {idx + 1}
+sidebar_position: {position}
 ---
 
-## {category}
+## {category_title}
 
 {table_md}
 '''
@@ -784,8 +809,16 @@ sidebar_position: {idx + 1}
             db_type = mapping['type']
             sections = mapping.get('sections', [])
             split_by = mapping.get('split_by')  # Get split_by parameter
+            category_mappings = self.config.get('category_mappings', {})
             
-            section_contents = convert_database(csv_file, db_type, sections, split_by)
+            section_contents = convert_database(
+                csv_file, 
+                db_type, 
+                sections, 
+                split_by,
+                db_prefix,  # Pass db_prefix as db_name for category mapping
+                category_mappings
+            )
             
             # Write each section to its target file
             target_dir = self.project_root / mapping['target_dir']
@@ -795,13 +828,16 @@ sidebar_position: {idx + 1}
                 if not markdown_content.strip():
                     continue
                 
-                # Determine filename
+                # Determine filename - section_name is already normalized
                 if section_name == 'all':
                     filename = f"{db_type}.md"
                 else:
-                    filename = f"{section_name.lower().replace(' ', '-')}.md"
+                    filename = f"{section_name}.md"
                 
                 target_file = target_dir / filename
+                
+                # Format section title for display (capitalize each word)
+                section_title = section_name.replace('-', ' ').title()
                 
                 # Read existing frontmatter
                 frontmatter = self._read_frontmatter(target_file)
@@ -809,7 +845,7 @@ sidebar_position: {idx + 1}
                 # Create full content
                 if frontmatter:
                     # Preserve existing frontmatter and add section title
-                    content = f"{frontmatter}\n# {section_name.title()}\n\n{markdown_content}"
+                    content = f"{frontmatter}\n# {section_title}\n\n{markdown_content}"
                 else:
                     # Create new frontmatter
                     if sections and section_name in sections:
@@ -821,7 +857,7 @@ sidebar_position: {idx + 1}
 sidebar_position: {position}
 ---
 
-# {section_name.title()}
+# {section_title}
 
 {markdown_content}
 """

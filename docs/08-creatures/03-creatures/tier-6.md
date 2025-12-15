@@ -2,8 +2,8 @@
 sidebar_position: 1
 ---
 
-# Tier-6
+## Tier 6
 
-Name | AV (Types) | Abilities | Actions | Category | HP | Immunities | Parry / Dodge / Resist | Quick Actions | Resistances | STR / AGI / SPI / MND | Size | Skills | Tier | Type | Weaknesses
---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---
-Ancient Fire Dragon |  |  |  | Elite |  |  |  |  |  |  | Colossal (+4) |  | 6 | Dragon | 
+| Type | Category | Size | Name | HP | AV (Types) | STR / AGI / SPI / MND | Parry / Dodge / Resist | Skills | Weaknesses | Resistances | Actions | Abilities | Immunities | Quick Actions |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Dragon | Elite | Colossal (+4) | Ancient Fire Dragon |  |  |  |  |  |  |  |  |  |  |  |

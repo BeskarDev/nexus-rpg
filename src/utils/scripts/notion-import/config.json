@@ -3,6 +3,40 @@
     "06-wild-surge-table.mdx": "./02-wild-surge-table.mdx",
     "07-mystic-penance-table.mdx": "./03-mystic-penance-table.mdx"
   },
+  "category_mappings": {
+    "Equipment": {
+      "Animal": "animals",
+      "Animals": "animals",
+      "Alchemy": "alchemy",
+      "Clothes": "clothes",
+      "Clothing": "clothes",
+      "Container": "containers",
+      "Containers": "containers",
+      "Gear": "gear",
+      "Supply": "supply",
+      "Supplies": "supply",
+      "Toolkit": "toolkits",
+      "Toolkits": "toolkits",
+      "Tool": "toolkits",
+      "Tools": "toolkits",
+      "Trade Good": "trade-goods",
+      "Trade Goods": "trade-goods",
+      "Trade-Good": "trade-goods",
+      "Trade-Goods": "trade-goods",
+      "Transportation": "transportation",
+      "Transport": "transportation"
+    },
+    "Creatures": {
+      "0": "tier-0",
+      "1": "tier-1",
+      "2": "tier-2",
+      "3": "tier-3",
+      "4": "tier-4",
+      "5": "tier-5",
+      "6": "tier-6"
+    },
+    "Mounts & Companions": {}
+  },
   "mappings": {
     "pages": {
       "How To Roll": {
@@ -293,7 +327,7 @@
         "type": "creatures",
         "use_html": true,
         "split_by": "Tier",
-        "sections": ["tier-0", "tier-1", "tier-2", "tier-3", "tier-4", "tier-5"]
+        "sections": ["tier-0", "tier-1", "tier-2", "tier-3", "tier-4", "tier-5", "tier-6"]
       },
       "Equipment": {
         "target_dir": "docs/04-equipment/02-equipment",
