@@ -28,8 +28,8 @@ describe('Wild Surge Table', () => {
 
 		it('should be formatted as a markdown table', () => {
 			expect(content).toMatch(/\|\s*d100\s*\|\s*Effect\s*\|/)
-			expect(content).toMatch(/\|---+\|---+\|/)
-		})
+		expect(content).toMatch(/\|\s*---+\s*\|\s*---+\s*\|/)
+	})
 
 		it('should contain random location clarification', () => {
 			expect(content).toContain('Random Locations:')
