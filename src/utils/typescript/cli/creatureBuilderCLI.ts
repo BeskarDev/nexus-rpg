@@ -441,7 +441,7 @@ async function main() {
 
 		// Output markdown
 		const markdown = generateCreatureMarkdown(creature)
-		console.log(markdown)
+		console.warn(markdown)
 
 		process.exit(0)
 	} catch (error) {

@@ -6,7 +6,6 @@ import {
 	ListItemAvatar,
 	ListItemText,
 	Skeleton,
-	Typography,
 } from '@mui/material'
 
 interface CharacterListSkeletonProps {

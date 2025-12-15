@@ -58,7 +58,7 @@ export const Spells: React.FC = () => {
 	const [spellTypeFilter, setSpellTypeFilter] = React.useState<SpellType>('all')
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
-	const [selectedCharacter, setSelectedCharacter] =
+	const [_selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
 
 	// Combine both spell lists with type information

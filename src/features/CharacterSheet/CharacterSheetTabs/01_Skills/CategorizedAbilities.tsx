@@ -5,7 +5,6 @@ import {
 	AccordionSummary,
 	Box,
 	IconButton,
-	Typography,
 	Tooltip,
 	Menu,
 	MenuItem,

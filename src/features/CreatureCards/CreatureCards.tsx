@@ -1,10 +1,7 @@
 import {
 	Button,
 	Checkbox,
-	CssBaseline,
 	Divider,
-	Experimental_CssVarsProvider,
-	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -297,7 +294,7 @@ export const CreatureCards: React.FC = () => {
 			setCreatures(parsedCreatures)
 			setSelectedCreatures(parsedCreatures.map((c) => c.name))
 			setError('')
-			console.log('Successfully parsed creatures:', parsedCreatures)
+			console.warn('Successfully parsed creatures:', parsedCreatures)
 		} catch (err) {
 			const errorMessage = `Failed to parse markdown: ${err.message}`
 			setError(errorMessage)

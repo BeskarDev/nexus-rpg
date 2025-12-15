@@ -1,10 +1,7 @@
 import {
 	Button,
 	Checkbox,
-	CssBaseline,
 	Divider,
-	Experimental_CssVarsProvider,
-	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -17,6 +14,7 @@ import {
 	ThemeProvider,
 	Typography,
 	useTheme,
+	experimental_extendTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { MysticSpell } from '@site/src/types/MysticSpell'

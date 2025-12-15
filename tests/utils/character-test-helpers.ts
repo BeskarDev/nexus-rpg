@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { configureStore } from '@reduxjs/toolkit'
 import { expect, vi } from 'vitest'
 import {

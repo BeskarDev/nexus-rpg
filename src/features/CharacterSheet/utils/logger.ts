@@ -6,7 +6,7 @@ class Logger {
 
 	debug(message: string, data?: any) {
 		if (this.enabled) {
-			console.log(`[CharacterSheet] ${message}`, data || '')
+			console.warn(`[CharacterSheet] ${message}`, data || '')
 		}
 	}
 

@@ -39,7 +39,7 @@ class FirebaseService {
 	async getCollection(collectionId: string): Promise<CharacterDocument[]> {
 		// In development, return mock data for any collection
 		if (this.isDevelopment()) {
-			console.log('🔧 Development mode: Using mock character data')
+			console.warn('🔧 Development mode: Using mock character data')
 			return this.getMockCollectionDocs()
 		}
 
@@ -71,7 +71,7 @@ class FirebaseService {
 			const mockChars = this.getMockCollectionDocs()
 			const mockChar = mockChars.find((char) => char.docId === docId)
 			if (mockChar) {
-				console.log(
+				console.warn(
 					'🔧 Development mode: Using mock character:',
 					mockChar.personal.name,
 				)
@@ -96,7 +96,7 @@ class FirebaseService {
 	async updateDocument(character: CharacterDocument): Promise<void> {
 		// In development, just log the update
 		if (this.isDevelopment()) {
-			console.log(
+			console.warn(
 				'🔧 Development mode: Mock save for character:',
 				character.personal.name,
 			)
@@ -111,7 +111,7 @@ class FirebaseService {
 	async deleteDocument(character: CharacterDocument): Promise<void> {
 		// In development, just log the deletion
 		if (this.isDevelopment()) {
-			console.log(
+			console.warn(
 				'🔧 Development mode: Mock delete for character:',
 				character.personal.name,
 			)
@@ -126,7 +126,7 @@ class FirebaseService {
 		// In development, return empty allowedCollections to avoid duplicates
 		// since getCollection() already returns mock data for any collection
 		if (this.isDevelopment()) {
-			console.log('🔧 Development mode: Mock admin permissions granted')
+			console.warn('🔧 Development mode: Mock admin permissions granted')
 			return { allowedCollections: [] } // Return empty to avoid duplicate mock characters
 		}
 
