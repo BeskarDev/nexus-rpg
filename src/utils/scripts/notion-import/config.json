@@ -186,9 +186,9 @@
         "title": "Enchantments"
       },
       "Mounts & Companions": {
-        "target": "docs/08-creatures/01-mounts-companions.mdx",
+        "target": "docs/08-creatures/01-mounts-companions/index.mdx",
         "title": "🐎 Mounts & Companions",
-        "banner": "/img/banner/mounts-companions-banner.png)",
+        "banner": "/img/banner/mounts-companions-banner.png",
         "preserve_sections": [
           {
             "marker": "### Companion Statistics",
