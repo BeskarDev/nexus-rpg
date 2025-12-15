@@ -14,8 +14,8 @@ describe('Wild Surge Table', () => {
 			expect(fs.existsSync(wildMagicTablePath)).toBe(true)
 		})
 
-	it('should contain frontmatter with sidebar_position', () => {
-		expect(content).toMatch(/---\s*sidebar_position:\s*2\s*---/)
+		it('should contain frontmatter with sidebar_position', () => {
+			expect(content).toMatch(/---\s*sidebar_position:\s*2\s*---/)
 		})
 
 		it('should have main title', () => {
@@ -28,8 +28,8 @@ describe('Wild Surge Table', () => {
 
 		it('should be formatted as a markdown table', () => {
 			expect(content).toMatch(/\|\s*d100\s*\|\s*Effect\s*\|/)
-		expect(content).toMatch(/\|\s*---+\s*\|\s*---+\s*\|/)
-	})
+			expect(content).toMatch(/\|\s*---+\s*\|\s*---+\s*\|/)
+		})
 
 		it('should contain random location clarification', () => {
 			expect(content).toContain('Random Locations:')
