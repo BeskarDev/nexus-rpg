@@ -1,5 +1,6 @@
 ---
 sidebar_position: 1
+title: "🐴 Common Mounts"
 ---
 
 ### Common Mounts

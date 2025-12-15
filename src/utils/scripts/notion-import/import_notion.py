@@ -703,6 +703,16 @@ sidebar_position: {idx + 2}
             # Read existing frontmatter
             frontmatter = self._read_frontmatter(target_file)
             
+            # Update sidebar_position in existing frontmatter if it exists
+            if frontmatter:
+                import re
+                # Replace the sidebar_position value
+                frontmatter = re.sub(
+                    r'sidebar_position:\s*\d+',
+                    f'sidebar_position: {position}',
+                    frontmatter
+                )
+            
             # Format category title for display (capitalize each word)
             category_title = category.replace('-', ' ').title()
             
@@ -1271,12 +1281,12 @@ sidebar_position: {position}
             target_path.parent.mkdir(parents=True, exist_ok=True)
             
             # Create frontmatter and content for extracted file
-            extracted_content = f"""---
-sidebar_position: {sidebar_position}
----
-
-{section_content}
-"""
+            frontmatter = f"---\nsidebar_position: {sidebar_position}"
+            if title:
+                frontmatter += f'\ntitle: "{title}"'
+            frontmatter += "\n---\n\n"
+            
+            extracted_content = frontmatter + section_content
             
             with open(target_path, 'w', encoding='utf-8') as f:
                 f.write(extracted_content)
