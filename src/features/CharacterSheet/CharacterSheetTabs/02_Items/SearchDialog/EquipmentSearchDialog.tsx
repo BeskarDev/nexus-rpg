@@ -1,12 +1,13 @@
 import React, { useState, useMemo } from 'react'
 import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
-import equipmentData from '../../../../../utils/json/equipment.json'
-import armorData from '../../../../../utils/json/armor.json'
+import equipmentData from '../../../../../utils/data/json/equipment.json'
+import armorData from '../../../../../utils/data/json/armor.json'
 import {
 	Item,
 	CharacterDocument,
 	ContainerType,
+	EquipmentSlotType,
 } from '../../../../../types/Character'
 import { QualityTier } from '../utils/magicItemsConfig'
 
@@ -198,7 +199,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 		},
 	]
 
-	const getEquipmentSlot = (item: CombinedItemData): string => {
+	const getEquipmentSlot = (item: CombinedItemData): EquipmentSlotType | '' => {
 		if (item.type !== 'armor') return ''
 
 		const category = item.category.toLowerCase()

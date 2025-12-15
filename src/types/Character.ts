@@ -246,6 +246,7 @@ export type Weapon = {
 	uses: number // 0-3, when 3 the item is damaged
 	durability: DurabilityDie
 	quality?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
+	amount?: number // Optional quantity for ammo tracking
 }
 
 export type Damage = {
@@ -309,6 +310,10 @@ export type Item = Equipment & {
 	storageInfo?: string
 	uses: number // 0-3, when 3 the item is damaged
 	durability: DurabilityDie
+	// Optional properties for legacy/future features
+	slot?: EquipmentSlotType
+	load?: number
+	description?: string
 }
 
 export const containerTypeArray = ['', 'worn', 'quick', 'backpack'] as const

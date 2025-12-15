@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box, TextField, Button, Typography } from '@mui/material'
 import { ContentCopy, Check } from '@mui/icons-material'
 import { BuiltCreature } from '../types/CreatureBuilder'
-import { generateCreatureMarkdown } from '../utils/creatureBuilderFormatting'
+import { generateCreatureMarkdown } from '../utils/typescript/creature/creatureBuilderFormatting'
 
 interface CreatureBuilderOutputPanelProps {
 	creature: BuiltCreature

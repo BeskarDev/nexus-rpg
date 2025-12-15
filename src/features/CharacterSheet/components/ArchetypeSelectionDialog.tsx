@@ -4,7 +4,7 @@ import {
 	SingleSelectionDialog,
 	SingleSelectionDialogColumn,
 } from './SingleSelectionDialog'
-import archetypeData from '../../../utils/json/archetypes.json'
+import archetypeData from '../../../utils/data/json/archetypes.json'
 
 export type ArchetypeSelectionDialogProps = {
 	open: boolean

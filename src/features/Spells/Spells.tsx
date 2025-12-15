@@ -19,8 +19,8 @@ import { MysticSpell } from '@site/src/types/MysticSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import arcaneSpellData from '../../utils/json/arcane-spells.json'
-import mysticSpellData from '../../utils/json/mystic-spells.json'
+import arcaneSpellData from '../../utils/data/json/arcane-spells.json'
+import mysticSpellData from '../../utils/data/json/mystic-spells.json'
 import './spellsStyles.css'
 import { SpellCard } from './SpellCard'
 import { CharacterSelector } from '../PrintingTools'
@@ -58,7 +58,7 @@ export const Spells: React.FC = () => {
 	const [spellTypeFilter, setSpellTypeFilter] = React.useState<SpellType>('all')
 	const [characterJsonString, setCharacterJsonString] =
 		React.useState<string>('')
-	const [selectedCharacter, setSelectedCharacter] =
+	const [_selectedCharacter, setSelectedCharacter] =
 		React.useState<CharacterDocument | null>(null)
 
 	// Combine both spell lists with type information

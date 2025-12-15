@@ -24,8 +24,8 @@ import {
 	getAvailableSizes,
 	getAvailableArchetypes,
 	validateTier,
-} from '../utils/creatureBuilderCalculations'
-import creatureTypes from '../utils/json/creature-types.json'
+} from '../utils/typescript/creature/creatureBuilderCalculations'
+import creatureTypes from '../utils/data/json/creature-types.json'
 import { CreatureCategory } from '../types/CreatureBuilder'
 import { creatureBuilderActions } from '../features/CreatureBuilder/creatureBuilderReducer'
 import { useCreatureBuilderState } from '../hooks/useCreatureBuilderState'

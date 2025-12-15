@@ -21,7 +21,7 @@ import { CompanionBuilderFormComponent } from './CompanionBuilderFormComponent'
 import { CompanionStatBlock } from './CompanionStatBlock'
 import { CompanionOutputPanel } from './CompanionOutputPanel'
 import { TabPanel } from './TabPanel'
-import { generateMarkdown } from '../utils/companionFormatting'
+import { generateMarkdown } from '../utils/typescript/companion/companionFormatting'
 
 export const CompanionBuilder: React.FC<CompanionBuilderProps> = ({
 	showImportButton = false,

@@ -64,17 +64,31 @@ Builds the website and deploys it to Firebase Hosting.
 
 ## 📝 Content Management
 
+### Notion Import Automation
+
+**Automatically update docs from Notion exports!** This repository includes a complete automation system for importing Notion HTML exports directly into the documentation.
+
+**Quick Start**:
+
+```bash
+cd src/utils/notion-import
+./run-import.sh ../input/notion-export.zip
+```
+
+**Full Documentation**: [`NOTION_IMPORT.md`](NOTION_IMPORT.md) | [`src/utils/notion-import/README.md`](src/utils/notion-import/README.md)
+
 ### Plugin Blacklist System
 
 This project includes automatic keyword and chip conversion plugins that enhance the documentation by converting specific terms to links or styled elements. However, sometimes these conversions are unwanted in certain contexts.
 
-The blacklist system allows you to prevent automatic conversions for specific terms in particular locations. 
+The blacklist system allows you to prevent automatic conversions for specific terms in particular locations.
 
 **Blacklist Configuration**: [`src/remark/blacklist/blacklist.json`](src/remark/blacklist/blacklist.json)
 
 **Full Documentation**: [`src/remark/blacklist/README.md`](src/remark/blacklist/README.md)
 
 **Quick Example**:
+
 ```json
 [
   {

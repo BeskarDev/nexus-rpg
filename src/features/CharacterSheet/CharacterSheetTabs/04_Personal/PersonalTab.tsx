@@ -62,9 +62,9 @@ const resolveSkillConflicts = (skills: string[]): string[] => {
 
 	return Array.from(skillSet)
 }
-import folkData from '../../../../utils/json/folk.json'
-import upbringingData from '../../../../utils/json/upbringings.json'
-import backgroundData from '../../../../utils/json/backgrounds.json'
+import folkData from '../../../../utils/data/json/folk.json'
+import upbringingData from '../../../../utils/data/json/upbringings.json'
+import backgroundData from '../../../../utils/data/json/backgrounds.json'
 
 export const PersonalTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -114,7 +114,7 @@ export const PersonalTab: React.FC = () => {
 			description: activeCharacter.personal.description || '',
 			notes: activeCharacter.personal.notes || '',
 		})
-	}, [activeCharacter.id, reset])
+	}, [activeCharacter.docId, reset])
 
 	const [personal, setPersonal] = useState(activeCharacter.personal)
 

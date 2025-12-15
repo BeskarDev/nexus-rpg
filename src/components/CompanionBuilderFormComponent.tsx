@@ -14,8 +14,8 @@ import {
 } from '@mui/material'
 import { Refresh as RefreshIcon } from '@mui/icons-material'
 import { CompanionTrait } from '../types/companion'
-import { getAvailableSizes, TIER_NAMES } from '../utils/companionCalculations'
-import companionTraits from '../utils/json/companion-traits.json'
+import { getAvailableSizes, TIER_NAMES } from '../utils/typescript/companion/companionCalculations'
+import companionTraits from '../utils/data/json/companion-traits.json'
 import { companionBuilderActions } from '../features/CompanionBuilder/companionBuilderReducer'
 import { useCompanionBuilderState } from '../hooks/useCompanionBuilderState'
 

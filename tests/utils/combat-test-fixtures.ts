@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { CombatArt } from '@site/src/types/CombatArt'
 import { Creature, Attack, Ability } from '@site/src/types/Creature'
 import { Character } from '@site/src/types/Character'

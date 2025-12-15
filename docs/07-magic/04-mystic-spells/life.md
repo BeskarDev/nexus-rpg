@@ -10,7 +10,7 @@ sidebar_position: 3
 ---|---|---|---|---
  0 | 0 | Medium (8) | Medium | singular
 
-**Effect** <br/> On a success, the target is surrounded by a near invisible shield of life force. The shield grants 5 temporary HP and lasts until reduced to 0, or expires after a short duration.<br/>Any single creature can only benefit from this spell once per scene.<br/> 
+**Effect** <br/> On a success, the target is surrounded by a near invisible shield of life force. The shield grants 5 temporary HP and lasts until reduced to 0, or expires after a short duration.<br/>Any single creature can only benefit from this spell once per scene. 
 
 ### Restore Life
 
@@ -34,7 +34,7 @@ sidebar_position: 3
 ---|---|---|---|---
  1 | 2 | Medium (8) | Touch | singular
 
-**Effect** <br/> You bless a creature with the magical power of life, bolstering their vitality.<br/>On a success, the creature gains the following effects:<br/>- You gain 5 temporary HP. They replenish after a short break.<br/>- You gain +1 boon on Fortitude rolls.<br/>This spell lasts for a long duration.<br/> 
+**Effect** <br/> You bless a creature with the magical power of life, bolstering their vitality.<br/>On a success, the creature gains the following effects:<br/>- You gain 5 temporary HP. They replenish after a short break.<br/>- You gain +1 boon on Fortitude rolls.<br/>This spell lasts for a long duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You gain 10 temporary HP instead.<br/><strong>(Rank 3)</strong> You gain 20 temporary HP instead.
 
@@ -46,7 +46,7 @@ sidebar_position: 3
 ---|---|---|---|---
  1 | 2 | Medium (8) | Touch | -
 
-**Effect** <br/> You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. Any single creature can only benefit from the effect of this spell once per day. 
+**Effect** <br/> You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. Any single creature can only benefit from the effect of this spell once per day. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> When using your Action, restore +6/12/16 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.
 
@@ -82,7 +82,7 @@ sidebar_position: 3
 ---|---|---|---|---
  1 | 2 | Medium (8) | Touch | enchant (weapon),  singular
 
-**Effect** <br/> Imbue a weapon with the power of vitality. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, any strong or critical hit with the weapon restores 4 HP to the wielder. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration.<br/> 
+**Effect** <br/> Imbue a weapon with the power of vitality. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, any strong or critical hit with the weapon restores 4 HP to the wielder. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> On a strong or critical hit, restore 6 HP instead.<br/><strong>(Rank 3)</strong> On a strong or critical hit, restore 8 HP instead.
 
@@ -94,7 +94,7 @@ sidebar_position: 3
 ---|---|---|---|---
  2 | 4 | Hard (10) | Short | enchant (body)
 
-**Effect** <br/> Bolster your allies’ toughness with a blessing.<br/>On a success, choose up to four creatures in range. They each gain 10 temporary HP for a long duration.<br/> 
+**Effect** <br/> Bolster your allies’ toughness with a blessing.<br/>On a success, choose up to four creatures in range. They each gain 10 temporary HP for a long duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Each target gains 20 temporary HP instead.
 
@@ -112,13 +112,25 @@ sidebar_position: 3
 
 >
 
+### Detect Life
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | concentrate
+
+**Effect** <br/> <em>You detect all living beings around you</em> 
+
+> **Heightened** <br/> <em>Increased range or details</em>
+
+>
+
 ### Hallow Ground
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  2 | 4 | Hard (10) | Close | concentrate
 
-**Effect** <br/> You hallow the ground around you, healing all allies standing on it.<br/>On a success, each ally in range of the hallow ground restores +2 HP when you cast the spell and at the start of each of their turns.<br/>The hallow ground remains stationary at the position where you cast it for a short duration.<br/> 
+**Effect** <br/> You hallow the ground around you, healing all allies standing on it.<br/>On a success, each ally in range of the hallow ground restores +2 HP when you cast the spell and at the start of each of their turns.<br/>The hallow ground remains stationary at the position where you cast it for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4 HP instead.
 
@@ -142,7 +154,7 @@ sidebar_position: 3
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone’s life force and instantly heal one of their Wounds and regain +8 HP. Any single creature can only benefit from this effect of this spell once per day.<br/>The zone lasts for a medium duration.<br/> 
+**Effect** <br/> You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone’s life force and instantly heal one of their Wounds and regain +8 HP. Any single creature can only benefit from this effect of this spell once per day.<br/>The zone lasts for a medium duration. 
 
 ### Vitality Surge
 

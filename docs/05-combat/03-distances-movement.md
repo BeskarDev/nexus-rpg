@@ -21,11 +21,17 @@ Various effects and abilities list the following distances to describe their ran
 | Extreme | barely perceivable if at all | 81-160 meters | 241-480 feet | 9-16 areas |
 | Out of Range | too far away to perceive or interact with | - | - | - |
 
+> **Playing on a grid
+> **When playing on a grid for combat or dungeon delving, you can assume each standard square to be 2x2 meters or 5x5 feet (this is a very abstract simplification). So each adjacent square would be considered melee range, every square two squares away to be close range, and so on. When unsure, count the number of squares between two points, multiply by 2 meters or 5 feet and compare the result to the range bands for each distance detailed above.
+
 ## Movement
 
 Movement describes your ability to move between or within areas in combat. Normally, 1 Movement lets you move to one area within short distance.
 
 Some areas have the property “difficult terrain” and require 2 Movement to be entered and 1 Movement to move close. This Movement can happen over multiple combat turns, as long as no Movement is spent for any other purpose in between.
+
+> **Playing on a grid
+> **When measuring how far a creature can move during a turn, think of 1 Movement as moving up to 10 meters or 30 feet. With the conversion of 2x2 meters or 5x5 feet per square described above, this would mean 1 Movement equals 5 squares for meters or 6 squares for feet measurements.
 
 ### Moving into melee range
 
@@ -59,7 +65,7 @@ You can move loose objects in your surroundings depending on your Strength and t
 
 When trying to move a heavy object in a hurry, roll a Strength + Athletics test against a reasonable difficulty. While having one Delving turn or more for your attempt, you don’t need to roll.
 
-### Crawling, Crouching, Climbing, and Swimming
+### Crawling, Crouching, Climbing, and Swimming 
 
 With these variants of Movement, you move as if in difficult terrain (2 Movement instead of 1 for a short distance). You might also be required to succeed on a Strength/Agility + Athletics roll to be able to move at all, as when climbing along a crumbling wall or swimming in rushing waters. Failing such a roll means you are stuck.
 
@@ -78,7 +84,6 @@ If you are climbing and are pushed or knocked prone, you also lose control of yo
 Areas are an abstraction of connected spaces during combat. When using a battle map for combat, define enclosed areas for small, connected spaces. One area can be a connected space of up to 6 by 6 meters (or 20 by 20 feet). Creatures within the same area are close to each other, while those one area apart are within short distance of each other, and so on.
 
 > For visualisation, you can use index cards for individual areas. Write down a distinct name for each card and note its area properties. Place your cards next to each other to show how they are connected. You can use any gaming tokens for active combatants and place them onto the cards. Group up tokens that are in a melee.
-> 
 
 ### Area Properties
 

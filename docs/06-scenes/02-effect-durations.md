@@ -21,3 +21,7 @@ This effect on you lasts for one hour or one exploration turn.
 ## Long
 
 This effect on you lasts until the end of a night’s rest or for one travel turn.
+
+## Very Long
+
+This effect on you lasts for one downtime turn.

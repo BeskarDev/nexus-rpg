@@ -1,10 +1,7 @@
 import {
 	Button,
 	Checkbox,
-	CssBaseline,
 	Divider,
-	Experimental_CssVarsProvider,
-	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -14,20 +11,19 @@ import {
 	SelectChangeEvent,
 	Stack,
 	TextField,
-	ThemeProvider,
 	Typography,
 	useTheme,
+	experimental_extendTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { ArcaneSpell } from '@site/src/types/ArcaneSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import arcaneSpellData from '../../utils/json/arcane-spells.json'
+import arcaneSpellData from '../../utils/data/json/arcane-spells.json';
 import './arcaneSpellsStyles.css'
 import { ArcaneSpellCard } from './ArcaneSpellCard'
 import { CharacterSelector } from '../PrintingTools'
-import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8

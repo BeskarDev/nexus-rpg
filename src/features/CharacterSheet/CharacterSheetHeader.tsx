@@ -58,8 +58,8 @@ import {
 	BackgroundData,
 	ArchetypeData,
 } from './components'
-import upbringingData from '../../utils/json/upbringings.json'
-import backgroundData from '../../utils/json/backgrounds.json'
+import upbringingData from '../../utils/data/json/upbringings.json'
+import backgroundData from '../../utils/data/json/backgrounds.json'
 
 const MAX_NAME_LENGTH = 1_000
 

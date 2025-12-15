@@ -15,7 +15,6 @@ When you first learn the Crafting skill, choose one profession from the table be
 You can learn further professions during downtime the same way as additional skills.
 
 > Each profession lists it‘s usual skill test which you use to roll for that profession. However, in some situations you may roll the test with a different Attribute and/or skill, given the situation. For instance, whenever you want to recall knowledge about your profession, roll Mind + Crafting.
-> 
 
 ## Professions during Adventures
 

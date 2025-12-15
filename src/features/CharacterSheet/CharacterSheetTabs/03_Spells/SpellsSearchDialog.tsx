@@ -4,11 +4,11 @@ import {
 	SearchDialog,
 	SearchDialogColumn,
 } from '../02_Items/SearchDialog/GenericSearchDialog'
-import arcaneSpellsData from '../../../../utils/json/arcane-spells.json'
-import mysticSpellsData from '../../../../utils/json/mystic-spells.json'
+import arcaneSpellsData from '../../../../utils/data/json/arcane-spells.json'
+import mysticSpellsData from '../../../../utils/data/json/mystic-spells.json'
 import { CharacterDocument } from '../../../../types/Character'
-import { sanitizeHtml } from '../../../../utils/htmlSanitizer'
-import { parseDamageFromEffect } from '../../../../utils/spellDamageParser'
+import { sanitizeHtml } from '../../../../utils/typescript/htmlSanitizer'
+import { parseDamageFromEffect } from '../../../../utils/typescript/spellDamageParser'
 import { targetTypeArray, rangeTypeArray } from '../../../../types/Character'
 
 // Color mapping for disciplines/traditions

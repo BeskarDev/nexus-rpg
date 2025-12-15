@@ -7,7 +7,6 @@ sidebar_position: 1
 ![banner-img](/img/banner/attributes-banner.png)
 
 > "The four vessels of power granted to mortals—strength of body, quickness of movement, depth of spirit, and sharpness of mind—these define our path through the world and our legacy within it."
-> 
 
 ## The Four Attributes
 
@@ -56,7 +55,6 @@ d4 → d6 → d8 → d10 → d12
 See the Character Progression section for details on when and how attributes may be improved.
 
 > Example: After completing a dangerous quest, Sansar the Thief advances from level 3 to level 4. They choose to improve their Agility from d8 to d10, reflecting the incredible reflexes developed while dodging numerous traps and other dangers.
-> 
 
 ### Temporary Attribute Changes
 
@@ -66,7 +64,6 @@ Curses, blessings, potions, and magical effects may temporarily alter an adventu
 - **Attribute Penalties**: Decrease the die size by the specified number of steps.
 
 > Important: Temporary changes to attributes do not affect derived statistics like Health Points or Focus. Only the dice rolled for attribute tests and base damage calculations are affected.
-> 
 
 **Die Size Limits**
 
@@ -75,4 +72,3 @@ Curses, blessings, potions, and magical effects may temporarily alter an adventu
 - Additional changes beyond these extremes increase or decrease the modifier accordingly
 
 > Example: Nagkhan the Sorcerer drinks a Potion of Might +2, increasing their Strength by two steps from d6 to d10 for a medium duration. When rolling with Strength to lift a fallen pillar, they roll a d10 rather than a d6, but their maximum Health Points remain unchanged.
->

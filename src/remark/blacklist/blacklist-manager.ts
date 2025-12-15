@@ -133,10 +133,10 @@ class BlacklistManager {
 			['STR', 'AGI', 'SPI', 'MND'].includes(keyword) &&
 			normalizedFilePath.includes('creatures.md')
 		) {
-			console.log(
+			console.warn(
 				`[blacklist] Checking ${keyword} index ${matchIndex} for ${context.pluginType} in ${normalizedFilePath}`,
 			)
-			console.log(
+			console.warn(
 				`[blacklist] Found ${relevantEntries.length} relevant entries:`,
 				relevantEntries.map((e) => ({
 					keyword: e.keyword,
@@ -164,7 +164,7 @@ class BlacklistManager {
 			['STR', 'AGI', 'SPI', 'MND'].includes(keyword) &&
 			normalizedFilePath.includes('creatures.md')
 		) {
-			console.log(
+			console.warn(
 				`[blacklist] ${keyword} index ${matchIndex}: result = ${result}`,
 			)
 		}

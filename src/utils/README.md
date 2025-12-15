@@ -1,73 +1,140 @@
-# Converting huge markdown tables into multiple smaller ones
+# Nexus RPG Utilities
 
-## Quick Start (Recommended)
+Tools and utilities for managing Nexus RPG content, data conversion, and documentation updates.
 
-The **master script** `convert-tables.sh` automates the entire workflow from HTML input to updated documentation:
+## Directory Structure
 
-```bash
-# 1. Place your HTML export in input/ directory
-# 2. Run the master script
-./convert-tables.sh
+```
+src/utils/
+├── scripts/              # All Python scripts
+│   ├── notion-import/   # ⭐ Main import system
+│   ├── converters/      # Format conversion tools
+│   ├── transformers/    # Table transformation scripts
+│   ├── extractors/      # Data extraction utilities
+│   └── maintenance/     # Maintenance & analysis tools
+├── typescript/          # TypeScript utilities for frontend
+├── data/               # Working directory (generated files)
+│   ├── input/         # Source HTML/ZIP files
+│   ├── markdown/      # Converted markdown
+│   ├── split-tables/  # Transformed tables
+│   ├── csv/          # CSV exports
+│   └── json/         # JSON data for app
+├── __tests__/          # Tests
+└── creature-template.json
 ```
 
-This single command will:
-1. Convert HTML to markdown
-2. Transform and split the tables appropriately
-3. **Automatically update all corresponding pages in docs/**
-4. Update JSON files for tools
-5. Convert to CSV for Notion import
+See [scripts/README.md](./scripts/README.md) for detailed script documentation.
 
-**What it updates:**
-- `docs/07-magic/04-mystic-spells/` - All mystic spell tradition pages
-- `docs/07-magic/02-arcane-spells/` - All arcane spell discipline pages
-- `docs/03-statistics/06-talents/` - All skill talent pages
+## Quick Start
 
-## Manual Workflow (Advanced)
+### Primary Workflow: Notion Import
 
-If you need more control, follow these steps:
+The **all-in-one Notion import system** handles the complete pipeline from Notion export to updated documentation:
 
-- go to table in notion and export as HTML
-- rename resulting `.html` file to fitting name
-- paste file to `src/utils/input`
-- execute `python html-to-md.py <file-path>` and set your relative file-path accordingly
-- the result will be written into `src/utils/markdown`
-- in some cases, you are done now. Some other tables require additional transformations:
-  - talents, items, weapons, armor: `python split-table.py <file-path> <split-column-name>`
-  - arcane spells: `python transform-arcane-spell-table.py`
-  - mystic spells: `python transform-mystic-spell-table.py`
-- **Manually** paste the contents into the corresponding docs page.
-
-> If you want to also update the json files that the `tools` section relies on, execute `python markdown-to-json.py` at the end.
-
-# Converting markdown tables to CSV for Notion import
-
-The `markdown-to-csv.py` script can export all markdown table files to CSV format with HTML preservation for Notion's "merge with CSV" feature.
-
-## Usage
-
-### Process all markdown files in the directory:
 ```bash
-python markdown-to-csv.py markdown/ csv/ --all-files
+# Export from Notion (HTML format with subpages)
+# Then run:
+cd src/utils/scripts/notion-import
+python3 import_notion.py ~/Downloads/notion-export.zip
 ```
 
-### Process a single file:
+This automatically:
+1. ✅ Extracts and converts Notion HTML pages to markdown
+2. ✅ Processes database tables through transformation pipeline
+3. ✅ Updates all corresponding documentation pages
+4. ✅ Preserves custom React components
+5. ✅ Manages section extraction and replacement
+
+**Configuration:** `scripts/notion-import/config.json`
+
+See detailed documentation: [scripts/notion-import/README.md](./scripts/notion-import/README.md)
+
+## Common Tasks
+
+### Export Tables to CSV for Notion
+
 ```bash
-python markdown-to-csv.py src/utils/markdown/talents.md src/utils/csv/talents.csv
+# Single file
+cd scripts/converters
+python3 markdown-to-csv.py ../../data/markdown/talents.md ../../data/csv/talents.csv
+
+# All files in directory
+python3 markdown-to-csv.py ../../data/markdown/ ../../data/csv/ --all-files
 ```
 
-## Features
+### Scan for Keywords
 
-- **HTML Preservation**: Converts markdown formatting to HTML tags (`<strong>`, `<em>`, `<br/>`) that Notion recognizes
-- **Generic Table Support**: Automatically detects and processes any markdown table format
-- **Batch Processing**: Can process all `.md` files in a directory at once
-- **Notion Compatibility**: Output format is optimized for Notion's "merge with CSV" import feature
+```bash
+cd scripts/maintenance
+python3 scan_keywords.py           # Scan all keywords
+python3 scan_keywords.py -k fire   # Scan specific keywords
+```
 
-## Output
+### Extract Data to JSON
 
-The script preserves formatting such as:
-- **Bold text** → `<strong>Bold text</strong>`
-- *Italic text* → `<em>Italic text</em>`
-- Line breaks → `<br/>`
-- Existing HTML tags are preserved
+```bash
+cd scripts/extractors
+python3 extract-folk-from-markdown.py
+```
 
-This ensures that when imported into Notion via CSV merge, all formatting (bold text, line breaks, etc.) is maintained correctly.
+## Development
+
+### TypeScript Utilities
+
+Frontend utilities are in `typescript/`. Import them in React components:
+
+```typescript
+import { calculateCompanionHP } from '@site/src/utils/typescript/companion/companionCalculations';
+```
+
+### Testing
+
+Run tests from project root:
+```bash
+npm test src/utils/__tests__/
+```
+
+## Configuration Files
+
+- `scripts/notion-import/config.json` - Main import mappings and settings
+- `creature-template.json` - Creature builder templates
+
+## Data Flow
+
+```
+Notion Export (ZIP)
+     ↓
+scripts/notion-import/import_notion.py
+     ↓
+data/input/*.html → data/markdown/*.md → data/split-tables/*.md
+     ↓
+docs/**/*.md (updated)
+     ↓
+data/json/*.json (for app)
+```
+
+## Troubleshooting
+
+### Import Issues
+
+1. **Encoding errors:** The converter automatically falls back to latin-1
+2. **Wrong table:** Converter prioritizes `collection-content` tables
+3. **Missing content:** Check `scripts/notion-import/config.json` mappings
+4. **Transform errors:** Ensure input files exist in `data/markdown/`
+
+### Path Issues
+
+All scripts now use relative paths from their location. Run them from anywhere, or from the recommended location:
+
+```bash
+cd src/utils/scripts/notion-import
+python3 import_notion.py <zip>
+```
+
+## Contributing
+
+When adding new scripts:
+1. Place in appropriate subdirectory (`scripts/converters/`, etc.)
+2. Use relative paths with `../../data/` prefix
+3. Update the relevant README
+4. Add tests in `__tests__/`

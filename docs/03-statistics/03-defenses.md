@@ -7,7 +7,6 @@ sidebar_position: 3
 ![banner-img](/img/banner/defenses-banner.png)
 
 > "Know your shields well, adventurer: quick feet to evade, strong arms to deflect, and an unwavering mind to withstand what cannot be avoided."
-> 
 
 When you are being attacked, the Target Number (TN) is always one of your three Defenses.
 
@@ -20,7 +19,6 @@ When you are being attacked, the Target Number (TN) is always one of your three 
 | Resist | Mental attacks, environmental hazards | 5 + ½ Spirit or Mind |
 
 > Example: Sansar the Thief has an Agility attribute of d10, giving them a Dodge value of 10 (5 + 5). Once they reach level 3, their Defenses are increased by 1, giving them 11 Dodge. Likewise, increasing their Agility to d12 would also increase their Dodge by 1 more.
-> 
 
 ## Modifications and Limits
 

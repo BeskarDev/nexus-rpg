@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Typography, Paper } from '@mui/material'
 import { CompanionStats } from '../types/companion'
-import { generateMarkdown, generateJSON } from '../utils/companionFormatting'
+import { generateMarkdown, generateJSON } from '../utils/typescript/companion/companionFormatting'
 
 interface CompanionOutputPanelProps {
 	companion: CompanionStats

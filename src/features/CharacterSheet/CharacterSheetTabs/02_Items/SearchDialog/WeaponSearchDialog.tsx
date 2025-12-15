@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Typography, Chip } from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
-import weaponsData from '../../../../../utils/json/weapons.json'
+import weaponsData from '../../../../../utils/data/json/weapons.json'
 import {
 	Weapon,
 	CharacterDocument,

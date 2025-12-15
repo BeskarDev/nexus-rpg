@@ -44,7 +44,7 @@ import {
 	calculateBaseDamage,
 	formatDamageString,
 	getWeaponDamage,
-} from '../utils/creatureBuilderCalculations'
+} from '../utils/typescript/creature/creatureBuilderCalculations'
 import {
 	ActionType,
 	ACTION_TYPES,

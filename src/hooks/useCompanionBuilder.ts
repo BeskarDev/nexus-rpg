@@ -3,7 +3,7 @@ import { CompanionTrait, CompanionStats } from '../types/companion'
 import {
 	calculateStats,
 	getAvailableSizes,
-} from '../utils/companionCalculations'
+} from '../utils/typescript/companion/companionCalculations'
 
 export const useCompanionBuilder = () => {
 	const [selectedTier, setSelectedTier] = useState<number>(0)

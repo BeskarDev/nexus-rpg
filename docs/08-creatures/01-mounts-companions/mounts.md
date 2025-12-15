@@ -1,29 +1,13 @@
 ---
 sidebar_position: 1
+title: "Mounts"
 ---
-
-# Mounts
-
-## Mounts
-
-You can ride a creature that is suitable as a mount and one or more Sizes above you. A flying mount has to be at least two Sizes above you. While mounted, you can move with your mount's Movement during your turn. You also travel faster (1.5x travel speed) and Fortitude rolls during travel only affect your mount and not you.
-
-When you need to attempt difficult riding maneuvers, roll Agility + Nature to guide your mount.
-
-Your mount is no active combatant during combat unless it is also a companion (see below). Creatures that are smaller than your mount suffer +1 bane on attacks against you, while mounted.
-
-You also have to roll Spirit + Nature in situations that scare or confuse your mount. The difficulty of this roll depends on the intensity of the situation. Failing the roll inflicts the confused condition on your mount. After failing, you can re-attempt your roll at the start of your turns. The following situations force you to make this roll:
-
-- Your mount takes damage.
-- A loud noise erupts.
-- Your mount is close to an undead or otherwise supernatural creature.
 
 ### Common Mounts
 
 Different types of mounts offer varying capabilities, from carrying capacity to speed and special abilities. The following represents common mount options available in most civilized regions.
 
 > Mounts in Combat: Mounts are not trained for battle by default. When combat begins or they take damage, they will either attempt to flee or act on instinct (attacking threats). The War Horse is an exception, being bred and trained specifically for warfare.
->
 
 | Tier | Mount Type | Size | Diet | Carry Capacity | Movement | Trait | Cost |
 | --- | --- | --- | --- | --- | --- | --- | --- |

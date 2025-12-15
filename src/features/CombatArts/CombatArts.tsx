@@ -1,10 +1,7 @@
 import {
 	Button,
 	Checkbox,
-	CssBaseline,
 	Divider,
-	Experimental_CssVarsProvider,
-	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -23,7 +20,7 @@ import { CombatArt } from '@site/src/types/CombatArt'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import combatArtsData from '../../utils/json/combat-arts.json'
+import combatArtsData from '../../utils/data/json/combat-arts.json';
 import { CombatArtCard } from './CombatArtCard'
 import './combatArtStyles.css'
 import { CharacterSelector } from '../PrintingTools'

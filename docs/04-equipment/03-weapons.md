@@ -6,90 +6,81 @@ sidebar_position: 3
 
 ![banner-img](/img/banner/weapons-banner.png)
 
-## Weapons
 
 ### Axe
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Throwing Axe**  | 2  | 2  | bundle (d4), light, slash, thrown (short/medium)  | 1  | 25
-**Hatchet**  | 2  | 2  | agile, light, slash  | 1  | 50
-**Battleaxe**  | 2  | 3  | slash, versatile (+1)  | 1  | 100
-**Greataxe**  | 2  | 4  | heavy (d8), slash, two-handed  | 2  | 150
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Throwing Axe | 2 | bundle (d4), light, slash, thrown (short/medium) | 1 | 25 |
+| 2 | Hatchet | 2 | agile, light, slash | 1 | 50 |
+| 2 | Battleaxe | 3 | slash, versatile (+1) | 1 | 100 |
+| 2 | Greataxe | 4 | heavy (d8), slash, two-handed | 2 | 150 |
 ### Blade
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Throwing Knife**  | 2  | 2  | bundle (d4), light, pierce, thrown (short/medium)  | 1  | 25
-**Scimitar**  | 2  | 2  | agile, light, slash  | 1  | 50
-**Shortsword**  | 2  | 2  | agile, light, pierce  | 1  | 50
-**Broadsword**  | 2  | 3  | slash, versatile (+1)  | 1  | 100
-**Longsword**  | 2  | 3  | pierce, versatile (+1)  | 1  | 100
-**Twinblade**  | 2  | 2  | agile, double-sided, pierce, two-handed  | 2  | 150
-**Crescent Greatsword**  | 2  | 4  | heavy (d8), slash, two-handed  | 2  | 150
-**Greatsword**  | 2  | 4  | heavy (d8), pierce, two-handed  | 2  | 150
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Throwing Knife | 2 | bundle (d4), light, pierce, thrown (short/medium) | 1 | 25 |
+| 2 | Scimitar | 2 | agile, light, slash | 1 | 50 |
+| 2 | Shortsword | 2 | agile, light, pierce | 1 | 50 |
+| 2 | Broadsword | 3 | slash, versatile (+1) | 1 | 100 |
+| 2 | Longsword | 3 | pierce, versatile (+1) | 1 | 100 |
+| 2 | Twinblade | 2 | agile, double-sided, pierce, two-handed | 2 | 150 |
+| 2 | Crescent Greatsword | 4 | heavy (d8), slash, two-handed | 2 | 150 |
+| 2 | Greatsword | 4 | heavy (d8), pierce, two-handed | 2 | 150 |
 ### Bow
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Shortbow**  | 2  | 3  | ammo, range (short/long), two-handed  | 1  | 75
-**Longbow**  | 2  | 4  | ammo, heavy (d6), range (medium/very long), two-handed  | 2  | 150
-**Warbow**  | 3  | 5  | ammo, heavy (d8), range (long/extreme), two-handed  | 2  | 500
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Shortbow | 3 | ammo, range (short/long), two-handed | 1 | 75 |
+| 2 | Longbow | 4 | ammo, heavy (d6), range (medium/very long), two-handed | 2 | 150 |
+| 3 | Warbow | 5 | ammo, heavy (d8), range (long/extreme), two-handed | 2 | 500 |
 ### Brawling
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Whip**  | 2  | 2  | agile, entangle (medium), light, reach, slash  | 1  | 50
-**Claw**  | 2  | 2  | agile, light, slash  | 1  | 50
-**Cestus**  | 2  | 2  | agile, crush, light  | 1  | 50
-**Spiked Chain**  | 2  | 2  | double-sided, reach, switch (crush / slash), two-handed  | 2  | 150
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Whip | 2 | agile, entangle (medium), light, reach, slash | 1 | 50 |
+| 2 | Claw | 2 | agile, light, slash | 1 | 50 |
+| 2 | Cestus | 2 | agile, crush, light | 1 | 50 |
+| 2 | Spiked Chain | 2 | double-sided, reach, switch (crush / slash), two-handed | 2 | 150 |
 ### Crossbow
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Light Crossbow**  | 3  | 4  | ammo, range (medium/very long), reload, two-handed  | 2  | 250
-**Heavy Crossbow**  | 3  | 6  | ammo, heavy (d8), range (long/extreme), reload, two-handed  | 3  | 750
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 3 | Light Crossbow | 4 | ammo, range (medium/very long), reload, two-handed | 2 | 250 |
+| 3 | Heavy Crossbow | 6 | ammo, heavy (d8), range (long/extreme), reload, two-handed | 3 | 750 |
 ### Mace
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Throwing Club**  | 2  | 2  | bundle (d4), crush, light, thrown (short/medium)  | 1  | 25
-**Club**  | 2  | 2  | agile, crush, light  | 1  | 50
-**Mace**  | 2  | 3  | crush, versatile (+1)  | 1  | 100
-**Maul**  | 2  | 4  | crush, heavy (d8), two-handed  | 2  | 150
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Throwing Club | 2 | bundle (d4), crush, light, thrown (short/medium) | 1 | 25 |
+| 2 | Club | 2 | agile, crush, light | 1 | 50 |
+| 2 | Mace | 3 | crush, versatile (+1) | 1 | 100 |
+| 2 | Maul | 4 | crush, heavy (d8), two-handed | 2 | 150 |
 ### Polearm
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Javelin**  | 2  | 2  | bundle (d4), light, pierce, thrown (short/long)  | 1  | 50
-**Short Spear**  | 2  | 2  | light, pierce, thrown (short/medium), versatile (+1)  | 1  | 75
-**Quarterstaff**  | 2  | 3  | crush, reach, versatile (+1)  | 1  | 100
-**Spear**  | 2  | 3  | pierce, reach, versatile (+1)  | 1  | 100
-**Glaive**  | 2  | 4  | reach, slash, two-handed  | 2  | 150
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Javelin | 2 | bundle (d4), light, pierce, thrown (short/long) | 1 | 50 |
+| 2 | Short Spear | 2 | light, pierce, thrown (short/medium), versatile (+1) | 1 | 75 |
+| 2 | Quarterstaff | 3 | crush, reach, versatile (+1) | 1 | 100 |
+| 2 | Spear | 3 | pierce, reach, versatile (+1) | 1 | 100 |
+| 2 | Glaive | 4 | reach, slash, two-handed | 2 | 150 |
 ### Shield
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Light Shield**  | 2  | 2  | AV +1, crush, parry +1, rigid 1  | 1  | 150
-**Buckler**  | 2  | 2  | crush, light, parry +1  | 1  | 150
-**Heavy Shield**  | 3  | 3  | AV +2, crush, heavy (d8), parry +1, rigid 2  | 2  | 500
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Light Shield | 2 | AV +1, crush, parry +1, rigid 1 | 1 | 150 |
+| 2 | Buckler | 2 | crush, light, parry +1 | 1 | 150 |
+| 3 | Heavy Shield | 3 | AV +2, crush, heavy (d8), parry +1, rigid 2 | 2 | 500 |
 ### Thrown
 
-Name | Quality | Damage | Properties | Load | Cost
---- | --- | --- | --- | --- | ---
-**Blowpipe**  | 2  | 1  | ammo, blowpipe, pierce, range (short/long)  | 1  | 25
-**Bola**  | 2  | 2  | bundle (d4), entangle (large), heavy (d6), thrown (close/short)  | 1  | 25
-**Spear Thrower**  | 2  | 3  | ammo, pierce, thrown (short/long), two-handed  | 1  | 50
-**Sling**  | 2  | 3  | ammo, crush, thrown (short/long), two-handed  | 1  | 50
-
+| Quality | Name | Damage | Properties | Load | Cost |
+| --- | --- | --- | --- | --- | --- |
+| 2 | Blowpipe | 1 | ammo, blowpipe, pierce, range (short/long) | 1 | 25 |
+| 2 | Bola | 2 | bundle (d4), entangle (large), heavy (d6), thrown (close/short) | 1 | 25 |
+| 2 | Spear Thrower | 3 | ammo, pierce, thrown (short/long), two-handed | 1 | 50 |
+| 2 | Sling | 3 | ammo, crush, thrown (short/long), two-handed | 1 | 50 |
+<br/><br/>
 ## Primitive Weapons
 
 Though most weapons are listed as Quality 2 items, more primitive cultures will also have variants of these weapons that would fit into Quality 1 instead. Any Quality 2 weapon with a cost of 100 coins or lower can also be crafted as a primitive version of it.
@@ -100,59 +91,34 @@ Primitive weapons cost 1/2 the normal amount and have the fragile property (see 
 
 Depending on the culture your adventurer is a part of or that has created a specific weapon, you can choose a different appearance for specific weapon types without changing their game mechanics:
 
-### Axe Types
+### Axe Types
 
-**Throwing Axe:** Handaxe
-**Hatchet:** Broadaxe, Cleaver, War Sickle
-**Battleaxe:** Crescent Axe
-**Greataxe:** Elipson Axe, War Scythe
+**Throwing Axe:** Handaxe<br/>**Hatchet:** Broadaxe, Cleaver, War Sickle<br/>**Battleaxe:** Crescent Axe<br/>**Greataxe:** Elipson Axe, War Scythe
 
-### Blade Types
+### Blade Types
 
-**Throwing Knife:** Dart, Throwing Star, Chakram
-**Scimitar:** Khopesh, Kukri, Kopis, Machete, Macuahuitl, Shotel
-**Shortsword:** Dagger, Gladius, Kris, Xiphos, Duan Jian, Wakizashi
-**Broadsword:** Katana, Dao, Yatagan
-**Longsword:** Bastard Sword, Rapier, Jian
-**Crescent Greatsword:** Rhomphaia, Odachi, Miaodao
-**Greatsword:** Claymore, Gim
-**Twinblade:** War Chakram
+**Throwing Knife:** Dart, Throwing Star, Chakram<br/>**Scimitar:** Khopesh, Kukri, Kopis, Machete, Macuahuitl, Shotel<br/>**Shortsword:** Dagger, Gladius, Kris, Xiphos, Duan Jian, Wakizashi<br/>**Broadsword:** Katana, Dao, Yatagan<br/>**Longsword:** Bastard Sword, Rapier, Jian<br/>**Crescent Greatsword:** Rhomphaia, Odachi, Miaodao<br/>**Greatsword:** Claymore, Gim<br/>**Twinblade: **War Chakram
 
-### Bow Types
+### Bow Types
 
-**Shortbow:** Hunting Bow
-**Longbow:** Composite Bow
-**Warbow:** Greatbow
+**Shortbow:** Hunting Bow<br/>**Longbow:** Composite Bow<br/>**Warbow:** Greatbow
 
-### Brawling Types
+### Brawling Types
 
-**Whip:** Urumi
-**Claw:** Arm Blade, Katar
-**Cestus:** Spiked Gauntlet, Push Dagger
-**Spiked Chain:** Kusarigama
+**Whip:** Urumi<br/>**Claw:** Arm Blade, Katar<br/>**Cestus:** Spiked Gauntlet, Push Dagger<br/>**Spiked Chain:** Kusarigama
 
-### Crossbow Types
+### Crossbow Types
 
-**Light Crossbow:** Gastraphetes
-**Heavy Crossbow:** Hand Ballista
+**Light Crossbow:** Gastraphetes<br/>**Heavy Crossbow:** Hand Ballista
 
-### Mace Types
+### Mace Types
 
-**Club:** Tonfa, Nunchaku, War Scepter
-**Throwing Club:** Light Hammer
-**Mace:** War Club, Flail, Morningstar, Warhammer, Warpick
-**Maul:** Greatclub, Kanabo, Polehammer
+**Club:** Tonfa, Nunchaku, War Scepter<br/>**Throwing Club:** Light Hammer<br/>**Mace:** War Club, Flail, Morningstar, Warhammer, Warpick<br/>**Maul:** Greatclub, Kanabo, Polehammer
 
-### Polearm Types
+### Polearm Types
 
-**Javelin:** Harpoon
-**Short Spear:** Trident
-**Quarterstaff:** Scepter
-**Glaive:** Halberd, Poleaxe, Dagger-Axe, Swordstaff, Podao, Naginata
-**Spear:** Winged Spear
+**Javelin:** Harpoon<br/>**Short Spear:** Trident<br/>**Quarterstaff:** Scepter<br/>**Glaive:** Halberd, Poleaxe, Dagger-Axe, Swordstaff, Podao, Naginata<br/>**Spear:** Winged Spear
 
-### Thrown Types
+### Thrown Types
 
-**Sling:** Slingshot
-**Bola:** Net
-**Spear Thrower:** Kestros
+**Sling:** Slingshot<br/>**Bola:** Net<br/>**Spear Thrower:** Kestros

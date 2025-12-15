@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Typography, Paper, Grid } from '@mui/material'
 import { CompanionStats } from '../types/companion'
-import { TIER_NAMES } from '../utils/companionCalculations'
+import { TIER_NAMES } from '../utils/typescript/companion/companionCalculations'
 
 interface CompanionStatBlockProps {
 	companion: CompanionStats

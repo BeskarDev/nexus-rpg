@@ -1,10 +1,7 @@
 import {
 	Button,
 	Checkbox,
-	CssBaseline,
 	Divider,
-	Experimental_CssVarsProvider,
-	experimental_extendTheme,
 	FormControl,
 	InputLabel,
 	ListItemText,
@@ -17,13 +14,14 @@ import {
 	ThemeProvider,
 	Typography,
 	useTheme,
+	experimental_extendTheme,
 } from '@mui/material'
 import { theme } from '@site/src/hooks/createTheme'
 import { MysticSpell } from '@site/src/types/MysticSpell'
 import { Character, CharacterDocument } from '@site/src/types/Character'
 import React, { useMemo, useRef } from 'react'
 import { useReactToPrint } from 'react-to-print'
-import mysticSpellData from '../../utils/json/mystic-spells.json'
+import mysticSpellData from '../../utils/data/json/mystic-spells.json';
 import './mysticSpellsStyles.css'
 import { MysticSpellCard } from './MysticSpellCard'
 import { CharacterSelector } from '../PrintingTools'

@@ -50,6 +50,12 @@ jobs:
       - name: Install functions dependencies
         run: cd functions && yarn install --frozen-lockfile --prefer-offline
 
+      - name: Run linting
+        run: yarn lint
+
+      - name: Check TypeScript
+        run: yarn tsc:check
+
       - name: Run tests with coverage
         run: yarn test:coverage
 

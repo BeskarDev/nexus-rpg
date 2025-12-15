@@ -7,7 +7,6 @@ import {
 	ListItemAvatar,
 	ListItemText,
 	Tooltip,
-	Typography,
 } from '@mui/material'
 import { ExitToApp, PersonRemove, Delete } from '@mui/icons-material'
 import { PartyMember } from '@site/src/types/Party'

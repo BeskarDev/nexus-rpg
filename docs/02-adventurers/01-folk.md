@@ -5,10 +5,8 @@ sidebar_position: 1
 # 🧝‍♀️ Folk
 
 ![banner-img](/img/banner/folk-banner.png)
-# Folk
 
 > "From the mountain jungles, through the savage savannah plains, across the burning sands of Atakhet, to the vast mangrove delta where water meets sea — each folk has found their place. The gods created us different not to divide, but to ensure we might survive in all the realms of creation."
-> 
 
 The world is home to diverse folk, each with their own unique traits, cultures, and histories. During adventurer creation, you will choose one of these folk for your character, defining not only their physical characteristics but their cultural heritage as well.
 
@@ -59,9 +57,9 @@ The Old Folk consist of those peoples whose cultural history spans hundreds or t
 ### Dwarf
 
 > "The stone remembers what flesh forgets. From the mountain quarries to the desert monuments, our crafts endure when empires crumble to dust."
-> 
 
 ![folk-img](./img/dwarf.jpeg)
+
 
 Carved of the stone itself, dwarves maintain a deep connection to the earth. They are masters of mining and metalworking, renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination reflects their unbreakable bond with the earth. In Atakhet, dwarven stoneworkers are highly prized for their ability to craft monuments that withstand the harsh desert conditions.
 
@@ -88,9 +86,9 @@ Carved of the stone itself, dwarves maintain a deep connection to the earth. The
 ### Elf
 
 > "We do not conquer the land—we commune with it. From the sacred river's source in the distant mountains to its delta where it meets the sea, each drop of water, each grain of sand carries a spirit you cannot hear."
-> 
 
 ![folk-img](./img/elf.jpeg)
+
 
 Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.
 
@@ -118,9 +116,9 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 ### Gnome
 
 > "Your thoughts shine like torches in the night. From the river's source to its mangrove delta, secrets flow like water. From us? How amusing."
-> 
 
 ![folk-img](./img/gnome.png)
+
 
 Natural psychics with the ability to read other people's intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company. In Atakhet, gnomes often serve as diplomatic intermediaries, using their empathic abilities to foster understanding between different folk.
 
@@ -146,9 +144,9 @@ Natural psychics with the ability to read other people's intentions and surface 
 ### Hune
 
 > "We have watched civilizations rise and fall like the river delta's tides. From mountain peaks to swampland depths, patience is our greatest strength."
-> 
 
 ![folk-img](./img/hune.jpeg)
+
 
 A race of towering beings with incredible strength and endurance. They are often nomadic and reclusive but possess a deep wisdom and knowledge of the world. In the deserts of Atakhet, Hunes are often sought out as caravan guards or builders for grand monuments, their strength and endurance invaluable in the harsh climate.
 
@@ -176,9 +174,9 @@ A race of towering beings with incredible strength and endurance. They are often
 ### Orc
 
 > "Our ancestors' deeds do not define us, but their strength flows in our veins like the great river through the desert. We build terraces on the mountain slopes where they once only destroyed."
-> 
 
 ![folk-img](./img/orc.jpeg)
+
 
 Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.
 
@@ -202,7 +200,6 @@ Coming from once violent and brutal cultures, the orcs have a reputation for sav
 ## The New Folk
 
 > "The ancient empires call us savages, yet we thrive where they fear to tread—from the jungle's edge to the swamp delta. Perhaps it is not age that grants wisdom, but adaptation."
-> 
 
 The New Folk are cultures relatively new in the realms. Their more recent ancestors might have lived in barbaric tribes or other societies not capable of speech, craftsmanship, or art. Within Atakhet, the New Folk often occupy the fringes of society, either because they are viewed with suspicion or because they prefer to maintain their independence from the established hierarchies.
 
@@ -211,9 +208,9 @@ The Old Folk most often hold superstitions against them, as many view them as no
 ### Goblin
 
 > "Underestimated is exactly where I prefer to be. Whether in the crowded bazaars or the dense mangrove swamps of the delta, by the time they realize their mistake, their coin purse is already in my hand."
-> 
 
 ![folk-img](./img/goblin.jpeg)
+
 
 A cunning and resourceful race of small build, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset. In the deserts of Atakhet, goblins often serve as scouts or messengers, their small size and quick wits allowing them to navigate both the physical and social landscapes with surprising effectiveness.
 
@@ -239,9 +236,9 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 ### Human
 
 > "They fear what flows in our veins, yet seek to harness it like the waters of the great river. We walk a dangerous path between power and persecution, from the savannah's edge to the temple steps."
-> 
 
 ![folk-img](./img/human.jpeg)
+
 
 The newest folk among all the New Folk, humans possess a natural arcane ability that makes many other folks scared of them. Others try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges. In Atakhet, humans often serve as advisors or arcane specialists, their natural magical talents both valued and closely monitored.
 
@@ -264,9 +261,9 @@ The newest folk among all the New Folk, humans possess a natural arcane ability 
 ### Catfolk
 
 > "We hunt not just with claws and teeth, but with patience and respect. The savannah's beasts and the jungle's shadows have taught us when to strike and when to wait."
-> 
 
 ![folk-img](./img/lionfolk.jpeg)
+
 
 A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with. In the realm of Atakhet, lionfolk often serve as desert guides or warriors, their natural hunting instincts and keen senses invaluable in the harsh environment.
 
@@ -288,9 +285,9 @@ A proud and regal race, with a deep connection to the natural world and a revere
 ### Lizardfolk
 
 > "We remember when the desert was an ocean. Our blood is cold, but our memories are long, flowing from the mountain jungles to the vast delta swamps where we make our homes."
-> 
 
 ![folk-img](./img/lizardfolk.jpeg)
+
 
 A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment. In Atakhet, lizardfolk are often found near the life-giving oases and rivers, serving as guardians of these precious water sources.
 
@@ -312,9 +309,9 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 ### Minotaur
 
 > "Our horns may be fearsome, but our hearts honor the ancient ways. We guard the sacred mountain passes and river crossings that others have forgotten, from savannah to delta."
-> 
 
 ![folk-img](./img/minotaur.jpeg)
+
 
 A horned, furry species known for their immense strength and unwavering determination. They are fiercely protective of their clan and territories, often seen as guardians of sacred places. Their physical prowess is matched by their sense of honor, making them formidable allies and respected adversaries. In Atakhet, minotaurs often serve as temple guardians or caravan protectors, their imposing presence deterring all but the most determined threats.
 
@@ -340,3 +337,7 @@ A horned, furry species known for their immense strength and unwavering determin
 **Horns.** You can use your horns (3 weapon damage, crush) as a brawling weapon instead of unarmed attacks.
 
 **Goring Charge.** After you spend 1 or more Movement towards a creature and hit them with an attack using your horns, add your weapon damage an additional time to the total damage.
+
+### Dogfolk
+
+### Satyr

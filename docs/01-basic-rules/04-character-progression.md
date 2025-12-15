@@ -7,7 +7,6 @@ sidebar_position: 4
 ![banner-img](/img/banner/character-progression-banner.png)
 
 > "Each challenge we face carves new wisdom into our being. Through trial and sacrifice, the worthy rise from dust to stand among legends. This is the way of all who would walk the path of the gods."
-> 
 
 ## Experience Points (XP)
 
@@ -25,7 +24,6 @@ You can earn **2 XP** instead of 1 when you achieve significant milestones durin
 - Completing an important task for a patron or deity
 
 > Example: During an expedition into the Howling Tombs, Arzhag the Warrior leads their companions in defeating a vengeful desert wraith guarding an ancient vault dedicated to Nakesh. The GM awards 2 XP instead of 1 for this significant achievement.
-> 
 
 ## Spending XP on Skills
 
@@ -38,7 +36,6 @@ During downtime periods, you can invest your earned XP into skills. The total am
 - You can also learn entirely new skills, which start at 0 XP for a cost of coins and time
 
 > Example: At Character Level 3, Sansar the Thief can spend up to 6 XP in any single skill. After returning to the city of Khatep-Run with 8 XP available, they spend a week actively training in the thieves' quarter and invest 4 XP into their Stealth skill, bringing it from 2 XP to 6 XP. This also allows them to pick any two new talents of rank 1 or 2 for the Stealth skill.
-> 
 
 ### Skill Ranks
 
@@ -54,7 +51,6 @@ As you invest XP in a skill, it increases in rank at specific thresholds:
 | 5 | Grandmaster | 24 |
 
 > Example: Nagkhan the Sorcerer has 6 XP in their Arcana skill. This puts them at rank 2 (Adept). They'll need to invest 6 more XP to reach the next threshold of 12 XP for rank 3 (Expert).
-> 
 
 ## Character Level
 
@@ -82,7 +78,6 @@ Your Character Level advances automatically when your total spent XP reaches spe
 | **10** (Legendary) | 90 | 28 XP (Rank 5) | +2 HP, +1d on one Attribute (max. d12) |
 
 > Example: Sephi the Seer has spent 18 XP across various skills including Mysticism, Insight, and Lore. This puts them at Character Level 3 (Proven), which means they can now invest up to 6 XP in any single skill. Since beginning their journey, they've gained +4 HP, increased their Spirit attribute from d6 to d8, and received +1 to all Defense values.
-> 
 
 ## Talent Points (TP)
 
@@ -92,8 +87,7 @@ Talent Points represent your adventurer's specialized abilities within each skil
 
 - You earn 1 TP for every 2 XP invested in a skill
 - You can spend 1 TP to:
-    - Learn a new talent for that skill at rank 1
-    - Increase the rank of an existing talent (maximum rank equals your current rank in that skill)
+  - Learn a new talent for that skill at rank 1
+  - Increase the rank of an existing talent (maximum rank equals your current rank in that skill)
 
 > Example: Arzhag the Warrior has invested 6 XP in their Fighting skill (increasing the skill to rank 2), which gives them 3 TP to spend. After consulting with a battle-priest of Arasha, they use these points to learn "Disciplined Fighter" at rank 1, and "Axe Mastery" at rank 1 and 2, using all 3 TP.
->
