@@ -189,6 +189,10 @@
         "target": "docs/08-creatures/01-mounts-companions/index.mdx",
         "title": "🐎 Mounts & Companions",
         "banner": "/img/banner/mounts-companions-banner.png",
+        "imports": [
+          "import { CompanionBuilderWrapper } from '@site/src/components/CompanionBuilderWrapper';",
+          "import BrowserOnly from '@docusaurus/BrowserOnly';"
+        ],
         "preserve_sections": [
           {
             "marker": "### Companion Statistics",
@@ -202,7 +206,7 @@
             "target": "docs/08-creatures/01-mounts-companions/mounts.md",
             "title": "🐴 Common Mounts",
             "sidebar_position": 1,
-            "replacement": "For the full list of available mounts, see the [Mounts](./01-mounts-companions/mounts.md) page."
+            "replacement": "For the full list of available mounts, see the [Mounts](./mounts.md) page."
           },
           {
             "start_marker": "## Mount Equipment",
@@ -210,7 +214,7 @@
             "target": "docs/08-creatures/01-mounts-companions/equipment.md",
             "title": "💼 Mount Equipment",
             "sidebar_position": 2,
-            "replacement": "For the different kinds of mount equipment available, see the [Mount Equipment](./01-mounts-companions/equipment.md) page."
+            "replacement": "For the different kinds of mount equipment available, see the [Mount Equipment](./equipment.md) page."
           },
           {
             "start_marker": "## Companion Traits",
@@ -218,7 +222,7 @@
             "target": "docs/08-creatures/01-mounts-companions/traits.md",
             "title": "🐾 Companion Traits",
             "sidebar_position": 3,
-            "replacement": "For detailed companion traits, see the [Companion Traits](./01-mounts-companions/traits.md) page."
+            "replacement": "For detailed companion traits, see the [Companion Traits](./traits.md) page."
           }
         ]
       },

@@ -193,6 +193,14 @@ class NotionImporter:
                 # Read existing file to preserve structure
                 existing_content = self._read_existing_structure(target_path)
                 
+                # Merge configured imports with existing imports
+                configured_imports = mapping.get('imports', [])
+                if configured_imports:
+                    # Add configured imports if not already present
+                    for imp in configured_imports:
+                        if imp not in existing_content['imports']:
+                            existing_content['imports'].append(imp)
+                
                 # Extract sections to separate files if configured
                 extract_sections = mapping.get('extract_sections', [])
                 if extract_sections:
