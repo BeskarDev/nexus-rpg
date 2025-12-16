@@ -193,8 +193,15 @@ if __name__ == "__main__":
               # Get filename without extension
               filename, extension = os.path.splitext(filename)
 
-              # Create output directory if it doesn't exist
-              output_dir = os.path.join(os.getcwd(), "data", "markdown")
+              # Determine output directory based on current working directory
+              current_dir = os.getcwd()
+              if os.path.basename(current_dir) == 'utils':
+                  # Running from utils/ directory
+                  output_dir = os.path.join(current_dir, "data", "markdown")
+              else:
+                  # Running from any other directory - assume data/markdown is relative
+                  output_dir = os.path.join(current_dir, "data", "markdown")
+              
               if not os.path.exists(output_dir):
                   os.makedirs(output_dir)
 

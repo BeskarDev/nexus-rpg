@@ -43,8 +43,19 @@ def markdown_to_json(file_path):
   
   # Create output filename 
   filename = os.path.basename(filepath)
-  # Create output directory path
-  json_dir = os.path.join(os.path.dirname(os.getcwd()), "utils/json")
+  
+  # Determine the JSON output directory (support both running from data/ and utils/)
+  current_dir = os.getcwd()
+  if os.path.basename(current_dir) == 'data':
+    # Running from data/ directory - JSON goes in data/json/
+    json_dir = os.path.join(current_dir, "json")
+  elif os.path.basename(current_dir) == 'utils':
+    # Running from utils/ directory - JSON goes in data/json/
+    json_dir = os.path.join(current_dir, "data", "json")
+  else:
+    # Fallback: assume json directory is at current_dir/json
+    json_dir = os.path.join(current_dir, "json")
+  
   os.makedirs(json_dir, exist_ok=True)  # Create directory if it doesn't exist
   output_path = os.path.join(json_dir, os.path.splitext(filename)[0] + ".json")
   
@@ -58,11 +69,25 @@ def markdown_to_json(file_path):
 # Get current working directory
 current_dir = os.getcwd()
 
-# Get all markdown files in directory (relative to current directory)
-output_dir = os.path.join(current_dir, "markdown")
-for filename in os.listdir(output_dir):
-  if filename.endswith(".md"):
-    filepath = os.path.join(output_dir, filename)
-    markdown_to_json(filepath)
+# Determine the markdown directory (support both running from data/ and utils/)
+if os.path.basename(current_dir) == 'data':
+    # Running from data/ directory - markdown is in the same directory
+    markdown_dir = os.path.join(current_dir, "markdown")
+elif os.path.basename(current_dir) == 'utils':
+    # Running from utils/ directory - markdown is in data/markdown/
+    markdown_dir = os.path.join(current_dir, "data", "markdown")
+else:
+    # Fallback: assume markdown is at current_dir/markdown
+    markdown_dir = os.path.join(current_dir, "markdown")
+
+# Verify the markdown directory exists
+if not os.path.exists(markdown_dir):
+    print(f"Error: Markdown directory not found at {markdown_dir}")
+    exit(1)
+
+for filename in os.listdir(markdown_dir):
+    if filename.endswith(".md"):
+        filepath = os.path.join(markdown_dir, filename)
+        markdown_to_json(filepath)
 
 print("Converted markdown tables to JSON files successfully!")

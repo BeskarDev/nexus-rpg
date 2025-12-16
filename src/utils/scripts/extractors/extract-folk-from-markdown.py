@@ -156,11 +156,14 @@ def extract_languages(content, description):
     return languages
 
 def main():
-    # Get current working directory
-    current_dir = os.getcwd()
+    # Determine the project root by working backwards from script location
+    # script is at: project_root/src/utils/scripts/extractors/extract-folk-from-markdown.py
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # Go up 4 levels: extractors -> scripts -> utils -> src -> project_root
+    project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(script_dir))))
     
     # Path to the folk markdown file
-    markdown_file = os.path.join(current_dir, "docs", "02-adventurers", "01-folk.md")
+    markdown_file = os.path.join(project_root, "docs", "02-adventurers", "01-folk.md")
     
     if not os.path.exists(markdown_file):
         print(f"Error: File not found: {markdown_file}")
@@ -169,8 +172,9 @@ def main():
     # Extract folk data
     folk_data = extract_folk_data(markdown_file)
     
-    # Create output directory
-    output_dir = os.path.join(current_dir, "src", "utils", "json")
+    # Create output directory in src/utils/data/json/
+    utils_dir = os.path.join(project_root, "src", "utils")
+    output_dir = os.path.join(utils_dir, "data", "json")
     os.makedirs(output_dir, exist_ok=True)
     
     # Output path
