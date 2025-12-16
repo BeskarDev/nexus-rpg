@@ -28,31 +28,31 @@ Feel free to customize these examples to match your vision or use them as-is for
 
 | Archetype | Role | Primary Skills | Best For |
 |-----------|------|----------------|----------|
-| [Apothecary](/docs/01-basic-rules/03-quickstart-characters/apothecary) | Striker/Utility | Archery, Crafting, Education | Bombs, potions, devices |
-| [Bard](/docs/01-basic-rules/03-quickstart-characters/bard) | Support/Controller | Mysticism, Influence, Education | Performance magic, social |
-| [Barbarian](/docs/01-basic-rules/03-quickstart-characters/barbarian) | Striker/Tank | Fighting, Athletics, Fortitude | Massive damage, rage mechanics |
-| [Brawler](/docs/01-basic-rules/03-quickstart-characters/brawler) | Striker/Controller | Fighting, Fortitude, Streetwise | Unarmed, grapples, dirty tricks |
-| [Champion](/docs/01-basic-rules/03-quickstart-characters/champion) | Tank/Support | Fighting, Mysticism, Influence | Holy warrior, heavy armor |
-| [Duelist](/docs/01-basic-rules/03-quickstart-characters/duelist) | Striker | Fighting, Athletics, Stealth | Agile precision melee |
-| [Druid](/docs/01-basic-rules/03-quickstart-characters/druid) | Support/Controller | Mysticism, Nature, Survival | Nature magic, shapeshifting |
-| [Engineer](/docs/01-basic-rules/03-quickstart-characters/engineer) | Support/Utility | Archery, Crafting, Education | Siege, traps, devices |
-| [Fighter](/docs/01-basic-rules/03-quickstart-characters/fighter) | Tank/Striker | Fighting, Athletics, Fortitude | Reliable frontline combat |
-| [Gladiator](/docs/01-basic-rules/03-quickstart-characters/gladiator) | Striker/Controller | Fighting, Athletics, Influence | Arena control, takedowns |
-| [Hoplite](/docs/01-basic-rules/03-quickstart-characters/hoplite) | Tank/Controller | Fighting, Athletics, Influence | Formation fighting, spear |
-| [Magus](/docs/01-basic-rules/03-quickstart-characters/magus) | Striker/Hybrid | Arcana, Fighting, Education | Melee + magic hybrid |
-| [Monk](/docs/01-basic-rules/03-quickstart-characters/monk) | Striker/Controller | Fighting, Athletics, Fortitude | Unarmed combat, grappling |
-| [Oracle](/docs/01-basic-rules/03-quickstart-characters/oracle) | Support/Utility | Mysticism, Lore, Insight | Prophecy, divination, fate |
-| [Priest](/docs/01-basic-rules/03-quickstart-characters/priest) | Support/Tank | Mysticism, Fighting, Lore | Healing, divine magic, melee |
-| [Ranger](/docs/01-basic-rules/03-quickstart-characters/ranger) | Striker/Utility | Archery, Survival, Nature | Ranged combat, wilderness |
-| [Rogue](/docs/01-basic-rules/03-quickstart-characters/rogue) | Striker/Utility | Fighting, Stealth, Streetwise | Stealth, infiltration, skills |
-| [Shaman](/docs/01-basic-rules/03-quickstart-characters/shaman) | Support/Controller | Mysticism, Nature, Lore | Spirit communion, ancestors |
-| [Slinger](/docs/01-basic-rules/03-quickstart-characters/slinger) | Striker | Archery, Athletics, Stealth | Mobile ranged skirmisher |
-| [Sorcerer](/docs/01-basic-rules/03-quickstart-characters/sorcerer) | Striker | Arcana, Lore, Education | Devastating offensive magic |
-| [Summoner](/docs/01-basic-rules/03-quickstart-characters/summoner) | Support/Controller | Arcana, Lore, Insight | Conjuration, minions, battlefield control |
-| [Swashbuckler](/docs/01-basic-rules/03-quickstart-characters/swashbuckler) | Striker/Controller | Fighting, Stealth, Streetwise | Dirty tactics, dual‑wielding |
-| [Tamer](/docs/01-basic-rules/03-quickstart-characters/tamer) | Support/Controller | Fighting, Nature, Athletics | Animal handler, battlefield control |
-| [Warlock](/docs/01-basic-rules/03-quickstart-characters/warlock) | Striker/Controller | Arcana, Lore, Insight | Dark magic, mind control |
-| [Warlord](/docs/01-basic-rules/03-quickstart-characters/warlord) | Support/Controller | Fighting, Influence, Education | Battlefield commander |
+| [Apothecary](/docs/basic-rules/quickstart-characters/apothecary) | Striker/Utility | Archery, Crafting, Education | Bombs, potions, devices |
+| [Bard](/docs/basic-rules/quickstart-characters/bard) | Support/Controller | Mysticism, Influence, Education | Performance magic, social |
+| [Barbarian](/docs/basic-rules/quickstart-characters/barbarian) | Striker/Tank | Fighting, Athletics, Fortitude | Massive damage, rage mechanics |
+| [Brawler](/docs/basic-rules/quickstart-characters/brawler) | Striker/Controller | Fighting, Fortitude, Streetwise | Unarmed, grapples, dirty tricks |
+| [Champion](/docs/basic-rules/quickstart-characters/champion) | Tank/Support | Fighting, Mysticism, Influence | Holy warrior, heavy armor |
+| [Duelist](/docs/basic-rules/quickstart-characters/duelist) | Striker | Fighting, Athletics, Stealth | Agile precision melee |
+| [Druid](/docs/basic-rules/quickstart-characters/druid) | Support/Controller | Mysticism, Nature, Survival | Nature magic, shapeshifting |
+| [Engineer](/docs/basic-rules/quickstart-characters/engineer) | Support/Utility | Archery, Crafting, Education | Siege, traps, devices |
+| [Fighter](/docs/basic-rules/quickstart-characters/fighter) | Tank/Striker | Fighting, Athletics, Fortitude | Reliable frontline combat |
+| [Gladiator](/docs/basic-rules/quickstart-characters/gladiator) | Striker/Controller | Fighting, Athletics, Influence | Arena control, takedowns |
+| [Hoplite](/docs/basic-rules/quickstart-characters/hoplite) | Tank/Controller | Fighting, Athletics, Influence | Formation fighting, spear |
+| [Magus](/docs/basic-rules/quickstart-characters/magus) | Striker/Hybrid | Arcana, Fighting, Education | Melee + magic hybrid |
+| [Monk](/docs/basic-rules/quickstart-characters/monk) | Striker/Controller | Fighting, Athletics, Fortitude | Unarmed combat, grappling |
+| [Oracle](/docs/basic-rules/quickstart-characters/oracle) | Support/Utility | Mysticism, Lore, Insight | Prophecy, divination, fate |
+| [Priest](/docs/basic-rules/quickstart-characters/priest) | Support/Tank | Mysticism, Fighting, Lore | Healing, divine magic, melee |
+| [Ranger](/docs/basic-rules/quickstart-characters/ranger) | Striker/Utility | Archery, Survival, Nature | Ranged combat, wilderness |
+| [Rogue](/docs/basic-rules/quickstart-characters/rogue) | Striker/Utility | Fighting, Stealth, Streetwise | Stealth, infiltration, skills |
+| [Shaman](/docs/basic-rules/quickstart-characters/shaman) | Support/Controller | Mysticism, Nature, Lore | Spirit communion, ancestors |
+| [Slinger](/docs/basic-rules/quickstart-characters/slinger) | Striker | Archery, Athletics, Stealth | Mobile ranged skirmisher |
+| [Sorcerer](/docs/basic-rules/quickstart-characters/sorcerer) | Striker | Arcana, Lore, Education | Devastating offensive magic |
+| [Summoner](/docs/basic-rules/quickstart-characters/summoner) | Support/Controller | Arcana, Lore, Insight | Conjuration, minions, battlefield control |
+| [Swashbuckler](/docs/basic-rules/quickstart-characters/swashbuckler) | Striker/Controller | Fighting, Stealth, Streetwise | Dirty tactics, dual‑wielding |
+| [Tamer](/docs/basic-rules/quickstart-characters/tamer) | Support/Controller | Fighting, Nature, Athletics | Animal handler, battlefield control |
+| [Warlock](/docs/basic-rules/quickstart-characters/warlock) | Striker/Controller | Arcana, Lore, Insight | Dark magic, mind control |
+| [Warlord](/docs/basic-rules/quickstart-characters/warlord) | Support/Controller | Fighting, Influence, Education | Battlefield commander |
 
 ---
 
