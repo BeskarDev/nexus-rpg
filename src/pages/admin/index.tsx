@@ -37,64 +37,46 @@ function AdminPanelContent() {
 		return () => clearTimeout(timer)
 	}, [])
 
-	// Show loading state while verifying authentication
+	// Render content based on authentication state
+	let content: React.ReactNode
+
 	if (isVerifying) {
-		return (
-			<Layout title="Admin Panel" description="Admin panel for user management">
-				<Container maxWidth="lg" sx={{ py: 4 }}>
-					<Box
-						sx={{
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							minHeight: '50vh',
-						}}
-					>
-						<CircularProgress />
-					</Box>
-				</Container>
-			</Layout>
+		content = (
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+					minHeight: '50vh',
+				}}
+			>
+				<CircularProgress />
+			</Box>
 		)
-	}
-
-	// Redirect or show error if not logged in
-	if (!userLoggedIn || !currentUser) {
-		return (
-			<Layout title="Admin Panel" description="Admin panel for user management">
-				<Container maxWidth="lg" sx={{ py: 4 }}>
-					<Alert severity="warning">
-						You must be logged in to access the admin panel.
-						<Typography variant="body2" sx={{ mt: 1 }}>
-							Please log in and try again. If you believe you should have
-							access, contact your administrator.
-						</Typography>
-					</Alert>
-				</Container>
-			</Layout>
+	} else if (!userLoggedIn || !currentUser) {
+		content = (
+			<Alert severity="warning">
+				You must be logged in to access the admin panel.
+				<Typography variant="body2" sx={{ mt: 1 }}>
+					Please log in and try again. If you believe you should have
+					access, contact your administrator.
+				</Typography>
+			</Alert>
 		)
-	}
-
-	// Show error if user is logged in but not an admin
-	if (!isAdmin) {
-		return (
-			<Layout title="Admin Panel" description="Admin panel for user management">
-				<Container maxWidth="lg" sx={{ py: 4 }}>
-					<Alert severity="error">
-						Access Denied: You do not have permission to access the admin panel.
-						<Typography variant="body2" sx={{ mt: 1 }}>
-							This page is restricted to administrators only. If you believe you
-							should have access, please contact your system administrator.
-						</Typography>
-					</Alert>
-				</Container>
-			</Layout>
+	} else if (!isAdmin) {
+		content = (
+			<Alert severity="error">
+				Access Denied: You do not have permission to access the admin panel.
+				<Typography variant="body2" sx={{ mt: 1 }}>
+					This page is restricted to administrators only. If you believe you
+					should have access, please contact your system administrator.
+				</Typography>
+			</Alert>
 		)
-	}
-
-	// Only render admin panel for verified admin users
-	return (
-		<Layout title="Admin Panel" description="Admin panel for user management">
-			<Container maxWidth="lg" sx={{ py: 4 }}>
+	} else {
+		// Only render admin panel for verified admin users
+		content = (
+			<>
 				<Alert severity="info" sx={{ mb: 3 }}>
 					<Typography variant="body2">
 						<strong>Security Notice:</strong> You are accessing the admin panel.
@@ -112,6 +94,14 @@ function AdminPanelContent() {
 				</Box>
 
 				<UserManagementPanel />
+			</>
+		)
+	}
+
+	return (
+		<Layout title="Admin Panel" description="Admin panel for user management">
+			<Container maxWidth="lg" sx={{ py: 4 }}>
+				{content}
 			</Container>
 		</Layout>
 	)
