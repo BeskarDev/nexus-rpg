@@ -57,6 +57,6 @@ The Engineer is perfect for players who enjoy battlefield problem‑solving and 
 
 **Advancement:** Increase Crafting to rank 2-3 for stronger builds, add Education and Perception for planning and scouting, raise Archery or Fighting depending on preferred delivery method, and consider Efficient Worker or Artisan talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

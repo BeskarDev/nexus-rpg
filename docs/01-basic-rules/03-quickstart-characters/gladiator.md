@@ -55,6 +55,6 @@ The Gladiator is perfect for players who want flashy, high‑impact melee with c
 
 **Advancement:** Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics for better control and mobility, add Fortitude for resilience, and consider Shield Mastery or additional performance/social talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

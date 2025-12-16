@@ -56,6 +56,6 @@ The Duelist is perfect for players who prefer agility and precision over brute f
 
 **Advancement:** Increase Fighting and Athletics to rank 2-3, add Stealth or Influence depending on intrigue vs. street play, and consider Defensive Dueling or Riposte.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

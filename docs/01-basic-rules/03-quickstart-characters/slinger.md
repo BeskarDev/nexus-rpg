@@ -57,6 +57,6 @@ The Slinger is perfect for players who want a mobile, hit-and-run playstyle with
 
 **Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Athletics for mobility, add Survival for scouting, and consider Rapid Shot or more mobility talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

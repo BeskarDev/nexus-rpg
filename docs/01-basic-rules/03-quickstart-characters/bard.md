@@ -47,6 +47,6 @@ The Bard shines in social scenes and soft control. Use performance‑flavored ra
 
 **Advancement:** Raise Mysticism 2–3 to expand spells and reliability (Communal Practices next if you want multi‑target flexibility). Boost Influence 2–3 for stronger team support (Leading Presence is a great pick). Add Education/Lore for cultural/magical knowledge, and optionally Stealth for infiltration and stagecraft.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

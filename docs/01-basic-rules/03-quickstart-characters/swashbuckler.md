@@ -55,6 +55,6 @@ The Swashbuckler thrives on movement, misdirection, and momentum. Use Devious Ta
 
 **Advancement:** Raise Fighting to rank 2–3 for more Combat Arts (Supreme Feint, Quick Lunge, or Riposte). Boost Stealth for better scene control or pick Streetwise: Thug Tactics if you prefer gang-up brawling. Consider Defensive Dueling if you pivot to single-blade finesse. Add Fortitude for toughness and Influence for swagger-driven social play.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

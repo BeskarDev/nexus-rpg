@@ -70,6 +70,6 @@ The Summoner controls tempo with glyphs and durable constructs while adding bodi
 
 Advancement: Raise Arcana 2–3 for more spells and Focus; consider Inexhaustible Mind or Spellweaver. Add Lore for arcane theory and Insight for reading foes. After your familiar, look to Summon Aberration and utility control like Arcane Eye.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

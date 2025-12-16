@@ -71,6 +71,6 @@ The Champion is perfect for players who want to be a holy warrior combining divi
 
 **Advancement:** Save coins to upgrade to Scale Mail (250) or Breastplate (750) and eventually Plate Harness (2,500), increase Fighting and Mysticism to rank 2-3 for more Combat Arts and spells, raise Fortitude for survivability, consider Shield Mastery or more divine-focused talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

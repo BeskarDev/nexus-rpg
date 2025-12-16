@@ -57,6 +57,6 @@ The Apothecary rewards patience, setup, and smart resource use. Open from stealt
 
 **Advancement:** Raise Archery 2–3 for more Combat Arts and consistency (Sharpshooter or Rapid Shot next). Push Nature 2–3 to deepen triage and wilderness sourcing, and Crafting 2–3 for stronger prep (Efficient Worker, Artisan, or Peak Performance 2). Add Lore for formula lore and Education for scholarly support. Consider Stealth later to exploit blowpipe ambushes with Assassination synergy.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

@@ -55,6 +55,6 @@ The Fighter is perfect for players who want straightforward, effective combat wi
 
 **Advancement:** Increase Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Influence for battlefield command, consider Heavy Armor Mastery or more shield-focused talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

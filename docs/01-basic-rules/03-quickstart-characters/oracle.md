@@ -60,6 +60,6 @@ The Oracle is perfect for players who enjoy support roles, being the party's gui
 
 **Advancement:** Increase Mysticism and Lore to rank 2-3 for more powerful spells and deeper knowledge, raise Insight for better intuition, learn more divination and revelation spells, add Education for broader knowledge, and consider prophecy-themed talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

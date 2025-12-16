@@ -56,6 +56,6 @@ The Monk is perfect for players who want to fight without weapons or armor, usin
 
 **Advancement:** Increase Fighting and Athletics to rank 2-3 for more Combat Arts and grappling options, raise Fortitude for more toughness, add Insight for reading opponents, and consider Martial Artist or more unarmed talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

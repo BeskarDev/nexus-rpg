@@ -56,6 +56,6 @@ The Warlord is perfect for players who want to lead the party tactically, enhanc
 
 **Advancement:** Increase Fighting and Influence to rank 2-3 for more Combat Arts and leadership abilities, raise Education for tactical options, add Fortitude for survivability, and consider more command-focused talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
  
 ---

@@ -56,6 +56,6 @@ The Rogue is perfect for players who enjoy stealth, infiltration, skill-based ch
 
 **Advancement:** Increase Stealth and Fighting to rank 2-3 for more options and Combat Arts, add Insight for reading people, consider Defensive Dueling or Riposte, and learn social skills for infiltration.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

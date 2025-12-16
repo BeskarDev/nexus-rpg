@@ -71,6 +71,6 @@ The Magus is perfect for players who want to combine melee combat with spellcast
 
 **Advancement:** Increase Arcana and Fighting equally to rank 2-3 for more spells and Combat Arts, take Spellblade talent at higher ranks, add Lore for magical knowledge, and consider Battle Mage rank 2 for casting with Mind.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

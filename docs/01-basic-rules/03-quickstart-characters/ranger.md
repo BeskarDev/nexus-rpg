@@ -67,6 +67,6 @@ The Ranger is perfect for players who enjoy ranged combat, wilderness survival, 
 
 **Advancement:** Increase Archery to rank 2-3 for more Combat Arts and damage, raise Survival and Nature for wilderness mastery, add Perception for better awareness, and consider Disciplined Archer or Rapid Shot talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

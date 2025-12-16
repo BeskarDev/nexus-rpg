@@ -61,6 +61,6 @@ The Sorcerer is perfect for players who want to deal massive magical damage and 
 
 **Advancement:** Increase Arcana to rank 2-3 for more powerful spells and additional spells known, add Insight for better awareness, consider Spellweaver or Inexhaustible Mind talents, and learn spell combinations that work together.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

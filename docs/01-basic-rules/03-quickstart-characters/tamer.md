@@ -69,6 +69,6 @@ The Tamer locks lanes and creates openings for their animal. Use Fast Stride to 
 
 **Advancement:** Raise Nature 2–3 to deepen companion options; Fighting 2–3 for more Combat Arts (Supreme Disarm, Flurry). Add Athletics or Survival for mobility and fieldcraft. Consider Field Medic from Nature for downtime care.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

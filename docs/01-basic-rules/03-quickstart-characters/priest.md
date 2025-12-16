@@ -71,6 +71,6 @@ The Priest is perfect for players who want to support allies with healing and pr
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Fighting for better combat effectiveness and more Combat Arts, add Influence for religious authority, and consider Armor of the Faithful for unarmored defense builds.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

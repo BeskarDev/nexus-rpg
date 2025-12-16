@@ -55,6 +55,6 @@ Close distance and take away your opponent’s best options. Use Fast Stride to 
 
 **Advancement:** Raise Fighting 2–3 for more control arts (Supreme Disarm) and improved damage lines; add Fortitude for toughness and recovery, and consider Streetwise 2 for better gang-up play. A spiked chain or whip can extend your control footprint once your technique improves.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

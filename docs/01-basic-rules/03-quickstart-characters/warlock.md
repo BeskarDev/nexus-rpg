@@ -65,6 +65,6 @@ The Warlock is perfect for players who enjoy morally complex characters with man
 
 **Advancement:** Increase Arcana to rank 2-3 for more powerful spells and additional spells known, raise Lore for deeper occult knowledge, add Fortitude for resilience against backlash, and consider Spellweaver for Metamagic Arts.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

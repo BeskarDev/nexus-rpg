@@ -71,6 +71,6 @@ The Druid is perfect for players who want to blend with nature, shapeshift, and 
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells and Shape Changer options, raise Nature and Survival for wilderness mastery, add Lore for deeper nature knowledge, and consider more shapeshifting or elemental talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

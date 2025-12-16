@@ -56,6 +56,6 @@ The Barbarian is perfect for players who want to deal massive damage and play ag
 
 **Advancement:** Increase Battle Rage ranks for greater power, raise Fighting and Fortitude to rank 2-3 for more Combat Arts and resilience, add Survival for wilderness expertise, and consider Hard to Kill for survivability.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

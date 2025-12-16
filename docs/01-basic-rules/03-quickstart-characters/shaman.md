@@ -60,6 +60,6 @@ The Shaman is perfect for players who enjoy spiritual themes, supporting through
 
 **Advancement:** Increase Mysticism to rank 2-3 for more powerful spells, raise Lore for deeper spiritual knowledge, add Insight for reading people and spirits, and consider more spirit-themed talents.
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---

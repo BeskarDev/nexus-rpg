@@ -56,6 +56,6 @@ The Hoplite is perfect for players who enjoy tactical positioning, defensive pla
 
 **Advancement:** Increase Fighting to rank 2-3 for more Combat Arts, raise Athletics and Influence for tactical command, add Fortitude for resilience, consider Shield Mastery or Protective Stance, and save for heavier armor (Scale Mail 250 coins).
 
-[Back to Quick Reference](./overview#quick-reference-archetype-overview)
+[Back to Quick Reference](/docs/basic-rules/quickstart-characters/overview#quick-reference-archetype-overview)
 
 ---
