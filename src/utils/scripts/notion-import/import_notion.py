@@ -1393,7 +1393,7 @@ sidebar_position: {position}
             # Run html-to-md.py on input directory
             print(f"  → Converting HTML to markdown...")
             result = subprocess.run(
-                ['python3', 'scripts/converters/html-to-md.py', 'data/input'],
+                ['python3', 'scripts/converters/html-to-md.py', 'input'],
                 capture_output=True,
                 text=True,
                 cwd=utils_dir
@@ -1446,6 +1446,44 @@ sidebar_position: {position}
                 self.stats['errors'].append(error_msg)
                 print(f"  ✗ {error_msg}")
                 return False
+            
+            # Run markdown-to-json.py to convert tables to JSON format
+            print(f"  → Converting tables to JSON...")
+            data_dir = utils_dir / 'data'
+            result = subprocess.run(
+                ['python3', '../scripts/converters/markdown-to-json.py'],
+                capture_output=True,
+                text=True,
+                cwd=data_dir
+            )
+            if result.returncode != 0:
+                error_msg = f"markdown-to-json.py failed: {result.stderr}"
+                self.stats['errors'].append(error_msg)
+                print(f"  ✗ {error_msg}")
+                return False
+            
+            # Run markdown-to-csv.py for mystic spells
+            print(f"  → Converting markdown to CSV...")
+            markdown_dir = utils_dir / 'data' / 'markdown'
+            csv_dir = utils_dir / 'data' / 'csv'
+            csv_dir.mkdir(parents=True, exist_ok=True)
+            
+            mystic_spells_md = markdown_dir / 'mystic-spells.md'
+            if mystic_spells_md.exists():
+                result = subprocess.run(
+                    ['python3', 'scripts/converters/markdown-to-csv.py', 
+                     str(mystic_spells_md), 
+                     str(csv_dir / 'mystic-spells.csv'),
+                     '--type', 'mystic-spells'],
+                    capture_output=True,
+                    text=True,
+                    cwd=utils_dir
+                )
+                if result.returncode != 0:
+                    error_msg = f"markdown-to-csv.py failed: {result.stderr}"
+                    self.stats['errors'].append(error_msg)
+                    print(f"  ✗ {error_msg}")
+                    return False
             
             # Run update-docs-from-split-tables.py
             print(f"  → Updating documentation...")

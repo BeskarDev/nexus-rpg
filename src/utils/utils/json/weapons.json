@@ -1,0 +1,335 @@
+[
+    {
+        "name": "Throwing Axe",
+        "quality": "2",
+        "type": "Axe",
+        "damage": "2",
+        "properties": "bundle (d4), light, slash, thrown (short/medium)",
+        "load": "1",
+        "cost": "25"
+    },
+    {
+        "name": "Hatchet",
+        "quality": "2",
+        "type": "Axe",
+        "damage": "2",
+        "properties": "agile, light, slash",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Battleaxe",
+        "quality": "2",
+        "type": "Axe",
+        "damage": "3",
+        "properties": "slash, versatile (+1)",
+        "load": "1",
+        "cost": "100"
+    },
+    {
+        "name": "Greataxe",
+        "quality": "2",
+        "type": "Axe",
+        "damage": "4",
+        "properties": "heavy (d8), slash, two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Throwing Knife",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "2",
+        "properties": "bundle (d4), light, pierce, thrown (short/medium)",
+        "load": "1",
+        "cost": "25"
+    },
+    {
+        "name": "Scimitar",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "2",
+        "properties": "agile, light, slash",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Shortsword",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "2",
+        "properties": "agile, light, pierce",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Broadsword",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "3",
+        "properties": "slash, versatile (+1)",
+        "load": "1",
+        "cost": "100"
+    },
+    {
+        "name": "Longsword",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "3",
+        "properties": "pierce, versatile (+1)",
+        "load": "1",
+        "cost": "100"
+    },
+    {
+        "name": "Twinblade",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "2",
+        "properties": "agile, double-sided, pierce, two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Crescent Greatsword",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "4",
+        "properties": "heavy (d8), slash, two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Greatsword",
+        "quality": "2",
+        "type": "Blade",
+        "damage": "4",
+        "properties": "heavy (d8), pierce, two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Shortbow",
+        "quality": "2",
+        "type": "Bow",
+        "damage": "3",
+        "properties": "ammo, range (short/long), two-handed",
+        "load": "1",
+        "cost": "75"
+    },
+    {
+        "name": "Longbow",
+        "quality": "2",
+        "type": "Bow",
+        "damage": "4",
+        "properties": "ammo, heavy (d6), range (medium/very long), two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Warbow",
+        "quality": "3",
+        "type": "Bow",
+        "damage": "5",
+        "properties": "ammo, heavy (d8), range (long/extreme), two-handed",
+        "load": "2",
+        "cost": "500"
+    },
+    {
+        "name": "Whip",
+        "quality": "2",
+        "type": "Brawling",
+        "damage": "2",
+        "properties": "agile, entangle (medium), light, reach, slash",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Claw",
+        "quality": "2",
+        "type": "Brawling",
+        "damage": "2",
+        "properties": "agile, light, slash",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Cestus",
+        "quality": "2",
+        "type": "Brawling",
+        "damage": "2",
+        "properties": "agile, crush, light",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Spiked Chain",
+        "quality": "2",
+        "type": "Brawling",
+        "damage": "2",
+        "properties": "double-sided, reach, switch (crush / slash), two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Light Crossbow",
+        "quality": "3",
+        "type": "Crossbow",
+        "damage": "4",
+        "properties": "ammo, range (medium/very long), reload, two-handed",
+        "load": "2",
+        "cost": "250"
+    },
+    {
+        "name": "Heavy Crossbow",
+        "quality": "3",
+        "type": "Crossbow",
+        "damage": "6",
+        "properties": "ammo, heavy (d8), range (long/extreme), reload, two-handed",
+        "load": "3",
+        "cost": "750"
+    },
+    {
+        "name": "Throwing Club",
+        "quality": "2",
+        "type": "Mace",
+        "damage": "2",
+        "properties": "bundle (d4), crush, light, thrown (short/medium)",
+        "load": "1",
+        "cost": "25"
+    },
+    {
+        "name": "Club",
+        "quality": "2",
+        "type": "Mace",
+        "damage": "2",
+        "properties": "agile, crush, light",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Mace",
+        "quality": "2",
+        "type": "Mace",
+        "damage": "3",
+        "properties": "crush, versatile (+1)",
+        "load": "1",
+        "cost": "100"
+    },
+    {
+        "name": "Maul",
+        "quality": "2",
+        "type": "Mace",
+        "damage": "4",
+        "properties": "crush, heavy (d8), two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Javelin",
+        "quality": "2",
+        "type": "Polearm",
+        "damage": "2",
+        "properties": "bundle (d4), light, pierce, thrown (short/long)",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Short Spear",
+        "quality": "2",
+        "type": "Polearm",
+        "damage": "2",
+        "properties": "light, pierce, thrown (short/medium), versatile (+1)",
+        "load": "1",
+        "cost": "75"
+    },
+    {
+        "name": "Quarterstaff",
+        "quality": "2",
+        "type": "Polearm",
+        "damage": "3",
+        "properties": "crush, reach, versatile (+1)",
+        "load": "1",
+        "cost": "100"
+    },
+    {
+        "name": "Spear",
+        "quality": "2",
+        "type": "Polearm",
+        "damage": "3",
+        "properties": "pierce, reach, versatile (+1)",
+        "load": "1",
+        "cost": "100"
+    },
+    {
+        "name": "Glaive",
+        "quality": "2",
+        "type": "Polearm",
+        "damage": "4",
+        "properties": "reach, slash, two-handed",
+        "load": "2",
+        "cost": "150"
+    },
+    {
+        "name": "Light Shield",
+        "quality": "2",
+        "type": "Shield",
+        "damage": "2",
+        "properties": "AV +1, crush, parry +1, rigid 1",
+        "load": "1",
+        "cost": "150"
+    },
+    {
+        "name": "Buckler",
+        "quality": "2",
+        "type": "Shield",
+        "damage": "2",
+        "properties": "crush, light, parry +1",
+        "load": "1",
+        "cost": "150"
+    },
+    {
+        "name": "Heavy Shield",
+        "quality": "3",
+        "type": "Shield",
+        "damage": "3",
+        "properties": "AV +2, crush, heavy (d8), parry +1, rigid 2",
+        "load": "2",
+        "cost": "500"
+    },
+    {
+        "name": "Blowpipe",
+        "quality": "2",
+        "type": "Thrown",
+        "damage": "1",
+        "properties": "ammo, blowpipe, pierce, range (short/long)",
+        "load": "1",
+        "cost": "25"
+    },
+    {
+        "name": "Bola",
+        "quality": "2",
+        "type": "Thrown",
+        "damage": "2",
+        "properties": "bundle (d4), entangle (large), heavy (d6), thrown (close/short)",
+        "load": "1",
+        "cost": "25"
+    },
+    {
+        "name": "Spear Thrower",
+        "quality": "2",
+        "type": "Thrown",
+        "damage": "3",
+        "properties": "ammo, pierce, thrown (short/long), two-handed",
+        "load": "1",
+        "cost": "50"
+    },
+    {
+        "name": "Sling",
+        "quality": "2",
+        "type": "Thrown",
+        "damage": "3",
+        "properties": "ammo, crush, thrown (short/long), two-handed",
+        "load": "1",
+        "cost": "50"
+    }
+]
