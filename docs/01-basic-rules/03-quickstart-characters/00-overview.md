@@ -35,7 +35,7 @@ Feel free to customize these examples to match your vision or use them as-is for
 | [Champion](./champion) | Tank/Support | Fighting, Mysticism, Influence | Holy warrior, heavy armor |
 | [Duelist](./duelist) | Striker | Fighting, Athletics, Stealth | Agile precision melee |
 | [Druid](./druid) | Support/Controller | Mysticism, Nature, Survival | Nature magic, shapeshifting |
-| [Engineer](./engineer) | Support/Utility | Crafting, Education, Archery | Siege, traps, devices |
+| [Engineer](./engineer) | Support/Utility | Archery, Crafting, Education | Siege, traps, devices |
 | [Fighter](./fighter) | Tank/Striker | Fighting, Athletics, Fortitude | Reliable frontline combat |
 | [Gladiator](./gladiator) | Striker/Controller | Fighting, Athletics, Influence | Arena control, takedowns |
 | [Hoplite](./hoplite) | Tank/Controller | Fighting, Athletics, Influence | Formation fighting, spear |
