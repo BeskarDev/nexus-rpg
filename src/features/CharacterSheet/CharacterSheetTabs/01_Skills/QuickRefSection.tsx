@@ -535,16 +535,16 @@ export const QuickRefSection: React.FC = () => {
 												sx={{ flexGrow: 1 }}
 											>
 												{item.name}
-												{item.rank && item.rank >= 1 && item.rank <= 5 && (
-													<Typography
-														component="span"
-														sx={{
-															color: 'text.secondary',
-															fontSize: '1.15em',
-															ml: 1,
-														}}
-													>
-														{['①', '②', '③', '④', '⑤'][item.rank - 1]}
+											{item.rank !== undefined && item.rank !== null && item.rank >= 0 && item.rank <= 5 && (
+												<Typography
+													component="span"
+													sx={{
+														color: 'text.secondary',
+														fontSize: '1.15em',
+														ml: 1,
+													}}
+												>
+													{['⓪', '①', '②', '③', '④', '⑤'][item.rank]}
 													</Typography>
 												)}
 											</Typography>
