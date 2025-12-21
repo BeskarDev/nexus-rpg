@@ -3,7 +3,7 @@ import {
 	ExpandMore,
 	Build,
 	Search,
-	InfoOutlined,
+	WarningAmberOutlined,
 } from '@mui/icons-material'
 import {
 	Accordion,
@@ -186,20 +186,6 @@ export const CategorizedAbilities: React.FC = () => {
 			{/* Header with category settings menu */}
 			<Box sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
 				<SectionHeader sx={{ mb: 0 }}>Abilities</SectionHeader>
-				{showTalentNotice && (
-					<Tooltip title="Talent points overview">
-						<IconButton
-							size="small"
-							onClick={() => setIsTalentInfoDialogOpen(true)}
-							sx={{
-								border: '1px solid',
-								borderColor: 'divider',
-							}}
-						>
-							<InfoOutlined fontSize="inherit" />
-						</IconButton>
-					</Tooltip>
-				)}
 				<Tooltip title="toggle ability categories">
 					<IconButton
 						size="small"
@@ -260,7 +246,7 @@ export const CategorizedAbilities: React.FC = () => {
 									<Tooltip title="Talent points overview">
 										<IconButton
 											size="small"
-											color="info"
+											color="warning"
 											onClick={(event) => {
 												event.stopPropagation()
 												setIsTalentInfoDialogOpen(true)
@@ -270,7 +256,7 @@ export const CategorizedAbilities: React.FC = () => {
 												borderColor: 'divider',
 											}}
 										>
-											<InfoOutlined fontSize="inherit" />
+											<WarningAmberOutlined fontSize="inherit" />
 										</IconButton>
 									</Tooltip>
 								)}
@@ -393,20 +379,25 @@ export const CategorizedAbilities: React.FC = () => {
 					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 						{openTalentSummaries.map((summary) => {
 							const open = Math.max(summary.available - summary.spent, 0)
-							const text = `${summary.spent}/${summary.available} TP used${
-								open > 0 ? ` (${open} open)` : ''
-							}${summary.overspent > 0 ? ` (+${summary.overspent} over)` : ''}`
+							const text = `${summary.spent}/${summary.available} TP used`
 							return (
-								<Chip
+								<Box
 									key={`tp-${summary.skill}`}
-									label={`${summary.skill}: ${text}`}
-									variant="outlined"
-									sx={{
-										borderColor: getSkillChipColor(summary.skill),
-										color: getSkillChipColor(summary.skill),
-										justifyContent: 'flex-start',
-									}}
-								/>
+									sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}
+								>
+									<Box
+										component="span"
+										sx={{
+											width: 10,
+											height: 10,
+											borderRadius: '50%',
+											bgcolor: getSkillChipColor(summary.skill),
+										}}
+									/>
+									<Typography variant="body2">
+										{summary.skill}: {text}
+									</Typography>
+								</Box>
 							)
 						})}
 						{unassignedSpent > 0 && (

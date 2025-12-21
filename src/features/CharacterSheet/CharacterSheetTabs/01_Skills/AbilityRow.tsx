@@ -31,6 +31,7 @@ import {
 	getActionTypeIcon,
 } from '@site/src/types/ActionType'
 import { OFFICIAL_SKILLS, getSkillChipColor } from '@site/src/constants/skills'
+import { getSkillAbbreviation } from '@site/src/constants/skillAbbreviations'
 
 export type AbilityRowProps = {
 	title: string
@@ -138,16 +139,18 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						}}
 					/>
 					{tag === 'Talent' && skill && (
-						<Chip
-							size="small"
-							label={skill}
-							variant="outlined"
-							sx={{
-								borderColor: getSkillChipColor(skill),
-								color: getSkillChipColor(skill),
-								fontWeight: 600,
-							}}
-						/>
+						<Tooltip title={skill}>
+							<Chip
+								size="small"
+								label={getSkillAbbreviation(skill) || skill}
+								variant="outlined"
+								sx={{
+									borderColor: getSkillChipColor(skill),
+									color: getSkillChipColor(skill),
+									fontWeight: 600,
+								}}
+							/>
+						</Tooltip>
 					)}
 				</Box>
 			</AccordionSummary>
