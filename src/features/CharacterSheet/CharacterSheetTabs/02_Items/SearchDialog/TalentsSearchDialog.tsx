@@ -52,8 +52,9 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 						variant="outlined"
 						sx={{
 							fontSize: '0.75rem',
-							backgroundColor: getSkillChipColor(normalized),
-							color: 'white',
+							borderColor: getSkillChipColor(normalized),
+							color: getSkillChipColor(normalized),
+							fontWeight: 600,
 						}}
 					/>
 				)
@@ -90,7 +91,9 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 				description: sanitizeHtml(talent.description),
 				tag: 'Talent' as const,
 				rank: 1, // Default to rank 1
-				skill: normalizeSkillName(talent['skill requirement']) || undefined,
+				skill:
+					normalizeSkillName(talent['skill requirement']) ||
+					talent['skill requirement'],
 			}))
 
 		onImportTalents(talentsToImport)

@@ -90,7 +90,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		<Accordion
 			expanded={expanded}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '35rem', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: '32rem', mt: 0 }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMore onClick={() => setExpanded(!expanded)} />}
@@ -116,7 +116,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						value={title}
 						onChange={(event) => setTitle(event.target.value)}
 						onBlur={() => updateAbility({ title })}
-						sx={{ maxWidth: '25rem' }}
+						sx={{ maxWidth: '18rem' }}
 						InputProps={{
 							startAdornment: (
 								<Box
@@ -141,9 +141,10 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						<Chip
 							size="small"
 							label={skill}
+							variant="outlined"
 							sx={{
-								bgcolor: getSkillChipColor(skill),
-								color: 'white',
+								borderColor: getSkillChipColor(skill),
+								color: getSkillChipColor(skill),
 								fontWeight: 600,
 							}}
 						/>
@@ -161,7 +162,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
 						onBlur={() => updateAbility({ description })}
-						sx={{ mt: 0, maxWidth: '25rem' }}
+						sx={{ mt: 0, maxWidth: '22rem' }}
 					/>
 
 					{/* Action Type Dropdown and Action Buttons in same row */}
@@ -248,9 +249,10 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 														<Chip
 															size="small"
 															label={value}
+															variant="outlined"
 															sx={{
-																bgcolor: getSkillChipColor(value as string),
-																color: 'white',
+																borderColor: getSkillChipColor(value as string),
+																color: getSkillChipColor(value as string),
 																fontWeight: 600,
 															}}
 														/>

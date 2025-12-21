@@ -438,7 +438,9 @@ export const createInitialCharacter = (
 					title: talent.name,
 					description: sanitizeAbilityDescription(talent.description),
 					tag: 'Talent' as const,
-					skill: normalizeSkillName(talent['skill requirement']) || undefined,
+					skill:
+						normalizeSkillName(talent['skill requirement']) ||
+						talent['skill requirement'],
 				})
 			}
 		})

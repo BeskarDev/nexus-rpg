@@ -11,7 +11,9 @@ import {
 	Button,
 	Checkbox,
 	ListItemText,
+	InputAdornment,
 } from '@mui/material'
+import { AttachMoney, ArrowDownward, ArrowUpward } from '@mui/icons-material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import weaponsData from '../../../../../utils/data/json/weapons.json'
 import {
@@ -108,7 +110,10 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				const cost = Number.isNaN(parsedCost) ? null : parsedCost
 				const min = costMin === '' ? Number.NEGATIVE_INFINITY : Number(costMin)
 				const max = costMax === '' ? Number.POSITIVE_INFINITY : Number(costMax)
-				const matchesCost = cost === null || (cost >= min && cost <= max)
+				const matchesCost =
+					cost === null
+						? costMin === '' && costMax === ''
+						: cost >= min && cost <= max
 
 				return matchesQuality && matchesType && matchesCost
 			}),
@@ -327,18 +332,44 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 					</FormControl>
 
 					<TextField
-						label="Min Cost"
+						label="Min"
 						size="small"
 						type="number"
 						value={costMin}
 						onChange={(event) => setCostMin(event.target.value)}
+						sx={{ width: '7rem' }}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<AttachMoney fontSize="small" />
+								</InputAdornment>
+							),
+							endAdornment: (
+								<InputAdornment position="end">
+									<ArrowDownward fontSize="small" />
+								</InputAdornment>
+							),
+						}}
 					/>
 					<TextField
-						label="Max Cost"
+						label="Max"
 						size="small"
 						type="number"
 						value={costMax}
 						onChange={(event) => setCostMax(event.target.value)}
+						sx={{ width: '7rem' }}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<AttachMoney fontSize="small" />
+								</InputAdornment>
+							),
+							endAdornment: (
+								<InputAdornment position="end">
+									<ArrowUpward fontSize="small" />
+								</InputAdornment>
+							),
+						}}
 					/>
 
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
