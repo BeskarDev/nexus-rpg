@@ -4,36 +4,10 @@ import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import talentsData from '../../../../../utils/data/json/talents.json'
 import { CharacterDocument } from '../../../../../types/Character'
 import { sanitizeHtml } from '../../../../../utils/typescript/htmlSanitizer'
-
-// 16 Skills, 6 MUI colors: primary, secondary, error, warning, info, success
-// Ziel: Keine Farbe direkt nacheinander im Alphabet wiederholen
-const skillColorMap: Record<
-	string,
-	'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
-> = {
-	Athletics: 'primary',
-	Fortitude: 'secondary',
-	Influence: 'error',
-	Insight: 'warning',
-	Perception: 'info',
-	Stealth: 'success',
-	Arcana: 'secondary',
-	Archery: 'error',
-	Crafting: 'warning',
-	Education: 'info',
-	Fighting: 'success',
-	Lore: 'primary',
-	Mysticism: 'error',
-	Nature: 'warning',
-	Streetwise: 'info',
-	Survival: 'success',
-}
-
-const getSkillColor = (
-	skill: string,
-): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
-	return skillColorMap[skill] || 'secondary'
-}
+import {
+	getSkillChipColor,
+	normalizeSkillName,
+} from '../../../../../constants/skills'
 
 export type TalentsSearchDialogProps = {
 	open: boolean
@@ -69,15 +43,21 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 		{
 			key: 'skill requirement',
 			label: 'Skill',
-			render: (value) => (
-				<Chip
-					label={value}
-					size="small"
-					variant="outlined"
-					color={getSkillColor(value)}
-					sx={{ fontSize: '0.75rem' }}
-				/>
-			),
+			render: (value) => {
+				const normalized = normalizeSkillName(value) || value
+				return (
+					<Chip
+						label={normalized}
+						size="small"
+						variant="outlined"
+						sx={{
+							fontSize: '0.75rem',
+							backgroundColor: getSkillChipColor(normalized),
+							color: 'white',
+						}}
+					/>
+				)
+			},
 		},
 		{
 			key: 'description',
@@ -110,6 +90,7 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 				description: sanitizeHtml(talent.description),
 				tag: 'Talent' as const,
 				rank: 1, // Default to rank 1
+				skill: normalizeSkillName(talent['skill requirement']) || undefined,
 			}))
 
 		onImportTalents(talentsToImport)

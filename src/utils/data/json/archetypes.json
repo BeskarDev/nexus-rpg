@@ -17,6 +17,7 @@
 			"Peak Performance",
 			"Field Medic"
 		],
+		"recommendedCombatArts": ["Aimed Shot", "Precise Shot"],
 		"startingEquipment": [
 			"Blowpipe",
 			"Leather Armor",
@@ -89,6 +90,7 @@
 		},
 		"suggestedSkills": "Fighting, Athletics, Fortitude, Survival, Perception, Nature, Stealth",
 		"recommendedTalents": ["Heavy Weapon Mastery", "Bulky", "Battle Rage"],
+		"recommendedCombatArts": ["Brutal Strike", "Cleave"],
 		"startingEquipment": [
 			"Greataxe",
 			"Leather Armor",
@@ -112,6 +114,7 @@
 		},
 		"suggestedSkills": "Fighting, Fortitude, Streetwise, Influence, Perception, Stealth, Insight",
 		"recommendedTalents": ["Pugilist", "Hard to Kill", "Thug Tactics"],
+		"recommendedCombatArts": ["Disarm", "Snare"],
 		"startingEquipment": [
 			"Cestus x2",
 			"Leather Armor",
@@ -139,6 +142,7 @@
 			"Mystic Champion",
 			"Leading Presence"
 		],
+		"recommendedCombatArts": ["Defensive Strike", "Terrifying Strike"],
 		"startingEquipment": [
 			"Longsword",
 			"Light Shield",
@@ -148,32 +152,68 @@
 		"background": "Sacred Warrior",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Light",
-			"traditions": ["Light"],
+			"specialization": "Light, War",
+			"traditions": ["Light", "War"],
 			"startingSpells": [
 				{
 					"name": "Dazzling Light",
-					"rank": 0
+					"rank": 0,
+					"tradition": "Light"
 				},
 				{
 					"name": "Detect Lies",
-					"rank": 0
+					"rank": 0,
+					"tradition": "Light"
 				},
 				{
 					"name": "Illuminated Sight",
-					"rank": 0
+					"rank": 0,
+					"tradition": "Light"
 				},
 				{
 					"name": "Radiant Burst",
-					"rank": 1
+					"rank": 1,
+					"tradition": "Light"
 				},
 				{
 					"name": "Radiant Weapon",
-					"rank": 1
+					"rank": 1,
+					"tradition": "Light"
 				},
 				{
 					"name": "Protect from Influence",
-					"rank": 1
+					"rank": 1,
+					"tradition": "Light"
+				},
+				{
+					"name": "Battle Surge",
+					"rank": 0,
+					"tradition": "War"
+				},
+				{
+					"name": "Mighty Strike",
+					"rank": 0,
+					"tradition": "War"
+				},
+				{
+					"name": "Spectral Slash",
+					"rank": 0,
+					"tradition": "War"
+				},
+				{
+					"name": "Heroic Weapon",
+					"rank": 1,
+					"tradition": "War"
+				},
+				{
+					"name": "War Cry",
+					"rank": 1,
+					"tradition": "War"
+				},
+				{
+					"name": "Curse of War",
+					"rank": 1,
+					"tradition": "War"
 				}
 			]
 		}
@@ -196,6 +236,7 @@
 			"Fast Stride",
 			"Devious Tactics"
 		],
+		"recommendedCombatArts": ["Feint", "Precise Strike"],
 		"startingEquipment": [
 			"Shortsword",
 			"Throwing Knives",
@@ -301,6 +342,7 @@
 			"Stand your Ground",
 			"Second Wind"
 		],
+		"recommendedCombatArts": ["Defensive Strike", "Charge"],
 		"startingEquipment": ["Longsword", "Light Shield", "Leather Armor"],
 		"upbringing": "Militaristic",
 		"background": "Soldier"
@@ -323,6 +365,7 @@
 			"Grappler",
 			"Leading Presence"
 		],
+		"recommendedCombatArts": ["Brutal Strike", "Cleave"],
 		"startingEquipment": [
 			"Greatsword",
 			"Leather Armor",
@@ -349,6 +392,7 @@
 			"Fast Stride",
 			"Leading Presence"
 		],
+		"recommendedCombatArts": ["Charge", "Defensive Strike"],
 		"startingEquipment": ["Spear", "Light Shield", "Leather Armor", "Javelins"],
 		"upbringing": "Militaristic",
 		"background": "Soldier"
@@ -367,33 +411,60 @@
 		},
 		"suggestedSkills": "Arcana, Fighting, Education, Lore, Perception, Insight, Streetwise",
 		"recommendedTalents": ["Battle Mage", "Blade Mastery", "General Education"],
+		"recommendedCombatArts": ["Feint", "Precise Strike"],
 		"startingEquipment": [
 			"Longsword",
 			"Spell Catalyst (Arcane Conduit)",
+			"Smith's Tools toolkit",
+			"Wooden Face Mask",
 			"Acid Vial x3"
 		],
 		"upbringing": "Scholar",
 		"background": "Renegade Mage",
 		"spellData": {
 			"magicSkill": "Arcana",
-			"specialization": "Evocation",
-			"disciplines": ["Evocation"],
+			"specialization": "Evocation, Telekinetics",
+			"disciplines": ["Evocation", "Telekinetics"],
 			"startingSpells": [
 				{
 					"name": "Flickering Flame",
-					"rank": 0
+					"rank": 0,
+					"discipline": "Evocation"
 				},
 				{
 					"name": "Frost Snap",
-					"rank": 0
+					"rank": 0,
+					"discipline": "Evocation"
 				},
 				{
 					"name": "Chromatic Orb",
-					"rank": 1
+					"rank": 1,
+					"discipline": "Evocation"
 				},
 				{
 					"name": "Flaming Weapon",
-					"rank": 1
+					"rank": 1,
+					"discipline": "Evocation"
+				},
+				{
+					"name": "Kinetic Pull",
+					"rank": 0,
+					"discipline": "Telekinetics"
+				},
+				{
+					"name": "Kinetic Push",
+					"rank": 0,
+					"discipline": "Telekinetics"
+				},
+				{
+					"name": "Gravity Orb",
+					"rank": 1,
+					"discipline": "Telekinetics"
+				},
+				{
+					"name": "Reflective Barrier",
+					"rank": 1,
+					"discipline": "Telekinetics"
 				}
 			]
 		}
@@ -439,6 +510,7 @@
 			"Consult the Myths",
 			"Piercing Look"
 		],
+		"recommendedCombatArts": ["Defensive Strike", "Exhilarating Strike"],
 		"startingEquipment": [
 			"Quarterstaff",
 			"Spell Catalyst (Mystic Talisman)",
@@ -488,6 +560,7 @@
 			"Shield Mastery",
 			"Consult the Myths"
 		],
+		"recommendedCombatArts": ["Defensive Strike", "Exhilarating Strike"],
 		"startingEquipment": [
 			"Mace",
 			"Light Shield",
@@ -497,32 +570,38 @@
 		"background": "Priest",
 		"spellData": {
 			"magicSkill": "Mysticism",
-			"specialization": "Life",
-			"traditions": ["Life"],
+			"specialization": "Life, Peace",
+			"traditions": ["Life", "Peace"],
 			"startingSpells": [
 				{
 					"name": "Restore Life",
-					"rank": 0
+					"rank": 0,
+					"tradition": "Life"
 				},
 				{
 					"name": "Life Shield",
-					"rank": 0
+					"rank": 0,
+					"tradition": "Life"
 				},
 				{
 					"name": "Healing Touch",
-					"rank": 1
+					"rank": 1,
+					"tradition": "Life"
 				},
 				{
-					"name": "Restore Life",
-					"rank": 1
+					"name": "Aura of Sanctuary",
+					"rank": 0,
+					"tradition": "Peace"
 				},
 				{
-					"name": "Life Shield",
-					"rank": 1
+					"name": "Calming Influence",
+					"rank": 0,
+					"tradition": "Peace"
 				},
 				{
-					"name": "Healing Touch",
-					"rank": 1
+					"name": "Blessing of Peace",
+					"rank": 1,
+					"tradition": "Peace"
 				}
 			]
 		}
@@ -545,6 +624,7 @@
 			"Relentless Tracker",
 			"Animal Companion"
 		],
+		"recommendedCombatArts": ["Aimed Shot", "Precise Shot"],
 		"startingEquipment": [
 			"Longbow",
 			"Arrows d8",
@@ -574,6 +654,7 @@
 			"Assassination",
 			"Jack of All Trades"
 		],
+		"recommendedCombatArts": ["Feint", "Evasive Strike"],
 		"startingEquipment": [
 			"Shortsword",
 			"Throwing Knives",
@@ -597,6 +678,7 @@
 		},
 		"suggestedSkills": "Mysticism, Nature, Lore, Insight, Survival, Perception, Influence",
 		"recommendedTalents": ["Divine Sense", "Field Medic", "Consult the Myths"],
+		"recommendedCombatArts": ["Defensive Strike", "Terrifying Strike"],
 		"startingEquipment": [
 			"Short Spear",
 			"Spell Catalyst (Mystic Talisman)",
@@ -642,6 +724,7 @@
 		},
 		"suggestedSkills": "Archery, Athletics, Stealth, Survival, Perception, Insight, Nature",
 		"recommendedTalents": ["Expert Slinger", "Fast Stride", "Devious Tactics"],
+		"recommendedCombatArts": ["Aimed Shot", "Power Shot"],
 		"startingEquipment": [
 			"Sling",
 			"Throwing Stones (d6)",
@@ -666,6 +749,7 @@
 		},
 		"suggestedSkills": "Arcana, Lore, Education, Insight, Perception, Stealth, Influence",
 		"recommendedTalents": ["Mana Shield", "Magical Sense", "General Education"],
+		"recommendedCombatArts": ["Defensive Strike", "Charge"],
 		"startingEquipment": [
 			"Quarterstaff",
 			"Spell Catalyst (Arcane Conduit)",
@@ -712,6 +796,7 @@
 		},
 		"suggestedSkills": "Fighting, Stealth, Streetwise, Insight, Perception, Athletics, Influence",
 		"recommendedTalents": ["Dual Wielder", "Devious Tactics", "Swashbuckler"],
+		"recommendedCombatArts": ["Feint", "Disarm"],
 		"startingEquipment": [
 			"Shortsword x2",
 			"Leather Armor",
@@ -753,22 +838,22 @@
 			"startingSpells": [
 				{
 					"name": "Arcane Bolt",
-					"rank": 0
-				},
-				{
-					"name": "Arcane Glyph",
-					"rank": 0
-				},
-				{
-					"name": "Arcane Barrier",
-					"rank": 1
-				},
-				{
-					"name": "Conjure Familiar",
-					"rank": 1
-				}
-			]
+			"rank": 0
+		},
+		{
+			"name": "Arcane Glyph",
+			"rank": 0
+		},
+		{
+			"name": "Arcane Barrier",
+			"rank": 1
+		},
+		{
+			"name": "Conjure Familiar",
+			"rank": 1
 		}
+	]
+}
 	},
 	{
 		"name": "Tamer",
@@ -784,6 +869,7 @@
 		},
 		"suggestedSkills": "Fighting, Nature, Athletics, Survival, Perception, Insight, Streetwise",
 		"recommendedTalents": ["Pugilist", "Animal Companion", "Fast Stride"],
+		"recommendedCombatArts": ["Disarm", "Snare"],
 		"startingEquipment": [
 			"Whip",
 			"Leather Armor",
@@ -800,15 +886,15 @@
 		"name": "Warlock",
 		"role": "Striker / Controller",
 		"description": "An eldritch spellcaster who wields dark pact magic to curse enemies and drain their life force.",
-		"bestFor": "Animal handler, battlefield control",
-		"primarySkills": ["Fighting", "Nature", "Athletics"],
+		"bestFor": "Dark magic, mind control",
+		"primarySkills": ["Arcana", "Lore", "Insight"],
 		"attributes": {
-			"STR": 6,
-			"AGI": 8,
-			"SPI": 4,
-			"MND": 4
+			"STR": 4,
+			"AGI": 6,
+			"SPI": 6,
+			"MND": 8
 		},
-		"suggestedSkills": "Fighting, Nature, Athletics, Survival, Perception, Insight, Streetwise",
+		"suggestedSkills": "Arcana, Lore, Insight, Influence, Perception, Stealth, Fortitude",
 		"recommendedTalents": [
 			"Master of Fundamentals",
 			"Arcane Spell Knowledge",
@@ -818,30 +904,55 @@
 			"Quarterstaff",
 			"Spell Catalyst (Arcane Conduit)",
 			"Leather Armor",
+			"Disguise Kit toolkit",
 			"Paralyzing Poison (weak) x2"
 		],
 		"upbringing": "Cult",
 		"background": "Pact-Bound",
 		"spellData": {
 			"magicSkill": "Arcana",
-			"specialization": "Telepathy",
-			"disciplines": ["Telepathy"],
+			"specialization": "Telepathy, Necromancy",
+			"disciplines": ["Telepathy", "Necromancy"],
 			"startingSpells": [
 				{
 					"name": "Mental Link",
-					"rank": 0
+					"rank": 0,
+					"discipline": "Telepathy"
 				},
 				{
 					"name": "Mind Blast",
-					"rank": 0
+					"rank": 0,
+					"discipline": "Telepathy"
 				},
 				{
 					"name": "Attack Thoughts",
-					"rank": 1
+					"rank": 1,
+					"discipline": "Telepathy"
 				},
 				{
 					"name": "Subtle Suggestion",
-					"rank": 1
+					"rank": 1,
+					"discipline": "Telepathy"
+				},
+				{
+					"name": "Drain Life",
+					"rank": 0,
+					"discipline": "Necromancy"
+				},
+				{
+					"name": "Enfeebling Grasp",
+					"rank": 0,
+					"discipline": "Necromancy"
+				},
+				{
+					"name": "Ray of Lethargy",
+					"rank": 1,
+					"discipline": "Necromancy"
+				},
+				{
+					"name": "Grasp of Decay",
+					"rank": 1,
+					"discipline": "Necromancy"
 				}
 			]
 		}
@@ -860,6 +971,7 @@
 		},
 		"suggestedSkills": "Fighting, Influence, Education, Fortitude, Insight, Perception, Athletics",
 		"recommendedTalents": ["Shield Mastery", "Leading Presence", "Commander"],
+		"recommendedCombatArts": ["Exhilarating Strike", "Defensive Strike"],
 		"startingEquipment": [
 			"Longsword",
 			"Light Shield",

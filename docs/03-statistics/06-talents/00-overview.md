@@ -10,10 +10,10 @@ Talents are special abilities that enhance your character's capabilities in spec
 
 ## How Talents Work
 
-- **Learning Talents**: When you reach certain ranks in a skill (typically ranks 1, 2, 3, and sometimes 4), you can learn talents associated with that skill.
-- **Rank Requirements**: Each talent has rank requirements. You must have the appropriate skill rank to learn that talent.
-- **Stacking Ranks**: Many talents have multiple ranks (Rank 1, Rank 2, Rank 3). You typically must learn the lower ranks before learning higher ranks of the same talent.
-- **Specialization**: Talents allow you to specialize your character within a skill, creating unique playstyles and strategies.
+- **Earning Talent Points**: Every **2 XP** you spend in a skill grants **1 talent point** for talents tied to that skill. Your **character level** limits how much XP you can put into any single skill.
+- **Spending Talent Points**: Each talent rank costs **1 talent point**. Higher ranks of the same talent must be purchased in order (Rank 1 → Rank 2 → Rank 3).
+- **Eligibility**: You can only buy a talent if you meet its **skill rank requirement** and you have enough talent points **from that same skill**.
+- **Specialization**: Talents deepen your focus within a skill—pick the talents that match your playstyle and party needs.
 
 ## Talent Categories by Skill
 

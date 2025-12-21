@@ -22,6 +22,7 @@ import {
 	extractShieldParryBonus,
 	organizeItemsByLocation,
 } from '../CharacterSheetTabs/02_Items/utils/itemUtils'
+import { normalizeSkillName } from '../../../constants/skills'
 import { calculateTalentHpBonus } from './calculateTalentHpBonus'
 import { calculateFolkAvBonus } from './calculateFolkAvBonus'
 import { createNaturalWeapons } from './createNaturalWeapons'
@@ -158,6 +159,16 @@ const findCombatArtsForSkill = (skillName: string, count: number = 2) => {
 
 	// Return the first 'count' combat arts
 	return matchingArts.slice(0, count)
+}
+
+/**
+ * Finds a combat art by exact name (case-insensitive)
+ */
+const findCombatArtByName = (combatArtName: string) => {
+	const normalized = combatArtName.toLowerCase().trim()
+	return combatArtsData.find(
+		(art) => art.name.toLowerCase().trim() === normalized,
+	)
 }
 
 /**
@@ -370,6 +381,7 @@ export type CharacterCreationOptions = {
 	archetype?: ArchetypeData
 	selectedCompanion?: string
 	selectedFamiliar?: string
+	selectedSpellPath?: string
 }
 
 export const createInitialCharacter = (
@@ -385,6 +397,7 @@ export const createInitialCharacter = (
 		archetype,
 		selectedCompanion,
 		selectedFamiliar,
+		selectedSpellPath,
 	} = options
 
 	// Collect languages from folk and base languages
@@ -425,6 +438,7 @@ export const createInitialCharacter = (
 					title: talent.name,
 					description: sanitizeAbilityDescription(talent.description),
 					tag: 'Talent' as const,
+					skill: normalizeSkillName(talent['skill requirement']) || undefined,
 				})
 			}
 		})
@@ -499,10 +513,51 @@ export const createInitialCharacter = (
 	// Calculate total XP spent (3 skills at rank 1 = 6 XP)
 	const totalXp = uniqueRank1Skills.length * 2
 
+	// Determine spell path (discipline/tradition) selection
+	const spellData = archetype?.spellData
+	const availableSpellPaths =
+		(spellData?.traditions && spellData.traditions.length
+			? spellData.traditions
+			: spellData?.disciplines && spellData.disciplines.length
+				? spellData.disciplines
+				: []) || []
+
+	const chosenSpellPath =
+		availableSpellPaths.find((path) => path === selectedSpellPath) ||
+		availableSpellPaths[0] ||
+		''
+
+	const filteredStartingSpells =
+		spellData?.startingSpells?.filter((spell) => {
+			const spellPath = spell.tradition || spell.discipline
+			if (!chosenSpellPath || !availableSpellPaths.length) return true
+			if (spellPath) return spellPath === chosenSpellPath
+			return true
+		}) || []
+
+	const dedupedStartingSpells = filteredStartingSpells.reduce(
+		(acc, spell) => {
+			const key = `${spell.name}-${spell.rank}`
+			if (!acc.some((existing) => `${existing.name}-${existing.rank}` === key)) {
+				acc.push(spell)
+			}
+			return acc
+		},
+		[] as NonNullable<typeof spellData>['startingSpells'] | [],
+	)
+
 	// Add combat arts for Fighting or Archery rank 1 skills
 	uniqueRank1Skills.forEach((skillName) => {
 		if (skillName === 'Fighting' || skillName === 'Archery') {
-			const combatArts = findCombatArtsForSkill(skillName, 2)
+			const combatArts =
+				archetype?.recommendedCombatArts && archetype.recommendedCombatArts.length
+					? archetype.recommendedCombatArts
+							.map((artName) => findCombatArtByName(artName))
+							.filter(
+								(art): art is NonNullable<typeof art> => art != null,
+							)
+							.slice(0, 2)
+					: findCombatArtsForSkill(skillName, 2)
 			combatArts.forEach((art) => {
 				abilities.push({
 					id: uuidv4(),
@@ -812,35 +867,49 @@ export const createInitialCharacter = (
 				: [],
 		},
 		spells: {
-			magicSkill: uniqueRank1Skills.includes('Arcana')
-				? 'Arcana'
-				: uniqueRank1Skills.includes('Mysticism')
-					? 'Mysticism'
-					: '',
-			specialization: archetype?.spellData?.specialization || '',
+			magicSkill:
+				spellData?.magicSkill ||
+				(uniqueRank1Skills.includes('Arcana')
+					? 'Arcana'
+					: uniqueRank1Skills.includes('Mysticism')
+						? 'Mysticism'
+						: ''),
+			specialization:
+				chosenSpellPath || spellData?.specialization || spellData?.magicSkill || '',
 			focus: {
 				total:
+					spellData ||
 					uniqueRank1Skills.includes('Arcana') ||
 					uniqueRank1Skills.includes('Mysticism')
 						? spiritValue - 2 + 2 // (Spirit - 2) + (2 × Magic Skill Rank 1) = Spirit - 2 + 2
 						: 0,
 				current:
+					spellData ||
 					uniqueRank1Skills.includes('Arcana') ||
 					uniqueRank1Skills.includes('Mysticism')
 						? spiritValue - 2 + 2
 						: 0,
 			},
 			spellCatalystDamage: 0,
-			spells: archetype?.spellData?.startingSpells
-				? archetype.spellData.startingSpells
-						.map((spellInfo) => {
-							const magicSkill = archetype.spellData!.magicSkill
-							return createSpellFromData(spellInfo.name, magicSkill)
-						})
-						.filter(
-							(spell): spell is NonNullable<typeof spell> => spell !== null,
+			spells:
+				spellData && spellData.startingSpells
+					? (dedupedStartingSpells.length
+							? dedupedStartingSpells
+							: spellData.startingSpells
 						)
-				: [],
+							.map((spellInfo) => {
+								const magicSkill =
+									spellData?.magicSkill ||
+									(uniqueRank1Skills.includes('Arcana')
+										? 'Arcana'
+										: 'Mysticism')
+								return createSpellFromData(spellInfo.name, magicSkill)
+							})
+							.filter(
+								(spell): spell is NonNullable<typeof spell> =>
+									spell !== null,
+							)
+					: [],
 		},
 		companions: [],
 	}

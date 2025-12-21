@@ -1,5 +1,17 @@
 import React, { useState, useMemo } from 'react'
-import { Typography, Chip } from '@mui/material'
+import {
+	Typography,
+	Chip,
+	Box,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+	TextField,
+	Button,
+	Checkbox,
+	ListItemText,
+} from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import equipmentData from '../../../../../utils/data/json/equipment.json'
 import armorData from '../../../../../utils/data/json/armor.json'
@@ -90,6 +102,10 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 	const [selectedEquipment, setSelectedEquipment] = useState<Set<string>>(
 		new Set(),
 	)
+	const [qualityFilter, setQualityFilter] = useState<string[]>([])
+	const [categoryFilter, setCategoryFilter] = useState<string[]>([])
+	const [costMin, setCostMin] = useState('')
+	const [costMax, setCostMax] = useState('')
 
 	// Combine equipment and armor data into unified structure
 	const combinedData = useMemo(() => {
@@ -137,6 +153,45 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 		// For other locations, show all items
 		return allItems
 	}, [targetLocation])
+
+	const qualityOptions = useMemo(
+		() =>
+			Array.from(new Set(combinedData.map((item) => item.quality))).filter(
+				Boolean,
+			),
+		[combinedData],
+	)
+
+	const categoryOptions = useMemo(
+		() => Array.from(new Set(combinedData.map((item) => item.category))),
+		[combinedData],
+	)
+
+	const filteredData = useMemo(
+		() =>
+			combinedData.filter((item) => {
+				const matchesQuality =
+					!qualityFilter.length || qualityFilter.includes(item.quality)
+				const matchesCategory =
+					!categoryFilter.length || categoryFilter.includes(item.category)
+
+				const parsedCost = Number.parseInt(item.cost, 10)
+				const cost = Number.isNaN(parsedCost) ? null : parsedCost
+				const min = costMin === '' ? Number.NEGATIVE_INFINITY : Number(costMin)
+				const max = costMax === '' ? Number.POSITIVE_INFINITY : Number(costMax)
+				const matchesCost = cost === null || (cost >= min && cost <= max)
+
+				return matchesQuality && matchesCategory && matchesCost
+			}),
+		[combinedData, qualityFilter, categoryFilter, costMin, costMax],
+	)
+
+	const resetFilters = () => {
+		setQualityFilter([])
+		setCategoryFilter([])
+		setCostMin('')
+		setCostMax('')
+	}
 
 	const columns: SearchDialogColumn<CombinedItemData>[] = [
 		{
@@ -258,7 +313,7 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 			open={open}
 			onClose={onClose}
 			title="Search Equipment & Items"
-			data={combinedData}
+			data={filteredData}
 			columns={columns}
 			searchFields={['name', 'category', 'description', 'properties']}
 			selectedItems={selectedEquipment}
@@ -267,6 +322,88 @@ export const EquipmentSearchDialog: React.FC<EquipmentSearchDialogProps> = ({
 			getItemKey={(item) => item.name}
 			importButtonText="Import"
 			searchPlaceholder="Search by name, category, description, or properties..."
+			filters={
+				<>
+					<FormControl size="small" sx={{ minWidth: '10rem' }}>
+						<InputLabel id="equipment-quality-filter-label">Quality</InputLabel>
+						<Select
+							multiple
+							labelId="equipment-quality-filter-label"
+							value={qualityFilter}
+							label="Quality"
+							onChange={(event) =>
+								setQualityFilter(event.target.value as string[])
+							}
+							renderValue={(selected) =>
+								selected.length ? selected.join(', ') : 'All qualities'
+							}
+						>
+							{qualityOptions.map((quality) => (
+								<MenuItem key={quality} value={quality}>
+									<Checkbox checked={qualityFilter.indexOf(quality) > -1} />
+									<ListItemText primary={quality} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+
+					<FormControl size="small" sx={{ minWidth: '12rem' }}>
+						<InputLabel id="equipment-category-filter-label">
+							Item Type
+						</InputLabel>
+						<Select
+							multiple
+							labelId="equipment-category-filter-label"
+							value={categoryFilter}
+							label="Item Type"
+							onChange={(event) =>
+								setCategoryFilter(event.target.value as string[])
+							}
+							renderValue={(selected) =>
+								selected.length ? selected.join(', ') : 'All types'
+							}
+						>
+							{categoryOptions.map((category) => (
+								<MenuItem key={category} value={category}>
+									<Checkbox checked={categoryFilter.indexOf(category) > -1} />
+									<ListItemText primary={category} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+
+					<TextField
+						label="Min Cost"
+						size="small"
+						type="number"
+						value={costMin}
+						onChange={(event) => setCostMin(event.target.value)}
+					/>
+					<TextField
+						label="Max Cost"
+						size="small"
+						type="number"
+						value={costMax}
+						onChange={(event) => setCostMax(event.target.value)}
+					/>
+
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+						<Button
+							variant="text"
+							size="small"
+							onClick={resetFilters}
+							disabled={
+								!qualityFilter.length &&
+								!categoryFilter.length &&
+								!costMin &&
+								!costMax
+							}
+						>
+							Clear filters
+						</Button>
+					</Box>
+				</>
+			}
 		/>
 	)
 }

@@ -148,6 +148,16 @@ As you journey through the lands of Atakhet and beyond, your adventurer will gro
 
 Remember that the journey of an adventurer is never complete—there are always new horizons to explore and challenges to overcome.
 
+## Level 1 → Early Progression (Quick Example)
+
+- Session rewards: typically **1 XP each session**; milestone sessions may grant **2 XP**
+- Spending XP: after a session or downtime, allocate XP to skills (respect your level’s max XP per skill)
+- Level gating: total XP spent determines your **character level**; level sets the max XP you can invest in any single skill
+- Example: After 4 sessions, you earned **4 XP**
+  - Spend **2 XP** to raise **Athletics** to rank 1 → you gain **1 talent point** for Athletics
+  - Spend **2 XP** to raise **Stealth** to rank 1 → another **1 talent point** for Stealth
+  - Total spent = **6 XP**, still **level 1** (max **2 XP per skill**). Next session’s XP will push you toward **level 2** (max **4 XP per skill**) and open more advancement options.
+
 ## Character Sheet
 
 Use this sheet to record your adventurer's statistics, equipment, and connections within the game world.

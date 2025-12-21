@@ -4,12 +4,15 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	Box,
+	Chip,
 	IconButton,
 	Tooltip,
 	Menu,
 	MenuItem,
 	FormControlLabel,
 	Checkbox,
+	Alert,
+	Typography,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import { DropResult } from '@hello-pangea/dnd'
@@ -26,12 +29,18 @@ import { CombatArtsSearchDialog } from './CombatArtsSearchDialog'
 import { TalentsSearchDialog } from '../02_Items/SearchDialog/TalentsSearchDialog'
 import { AbilityRow } from './AbilityRow'
 import { QuickRefSection } from './QuickRefSection'
+import { getTalentPointSummaries } from '../../utils/calculateTalentPoints'
+import { getSkillChipColor } from '../../../../constants/skills'
+import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
+import { calculateMaxXpPerSkill } from '../../utils/validation'
 
 export const CategorizedAbilities: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const {
 		abilities,
+		skills: trainedSkills = [],
+		xp,
 		abilityCategoryVisibility,
 		quickRefSelections = { abilities: [], weapons: [], items: [] },
 	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
@@ -40,6 +49,30 @@ export const CategorizedAbilities: React.FC = () => {
 		useState<null | HTMLElement>(null)
 	const [isCombatArtsDialogOpen, setIsCombatArtsDialogOpen] = useState(false)
 	const [isTalentsDialogOpen, setIsTalentsDialogOpen] = useState(false)
+
+	const totalSpentXp =
+		xp?.spend ??
+		trainedSkills.reduce((sum, skill) => sum + (skill.xp || 0), 0)
+	const characterLevel = calculateCharacterLevel(totalSpentXp)
+	const maxXpPerSkill = calculateMaxXpPerSkill(totalSpentXp)
+
+	const { summaries: talentSummaries, unassignedSpent } = useMemo(
+		() => getTalentPointSummaries(trainedSkills, abilities),
+		[trainedSkills, abilities],
+	)
+	const missingTalentSummaries = talentSummaries.filter(
+		(summary) => summary.missing > 0,
+	)
+	const overspentTalentSummaries = talentSummaries.filter(
+		(summary) => summary.overspent > 0,
+	)
+	const showTalentNotice =
+		missingTalentSummaries.length > 0 ||
+		unassignedSpent > 0 ||
+		overspentTalentSummaries.length > 0
+	const exampleSummary =
+		missingTalentSummaries[0] ||
+		talentSummaries.find((summary) => summary.available > 0)
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
@@ -186,6 +219,57 @@ export const CategorizedAbilities: React.FC = () => {
 					})}
 				</Menu>
 			</Box>
+
+			{showTalentNotice && (
+				<Alert
+					severity={overspentTalentSummaries.length ? 'warning' : 'info'}
+					sx={{ mb: 2 }}
+				>
+					<Typography variant="body2" sx={{ mb: 1 }}>
+						Each 2 XP in a skill grants 1 talent point for that skill&apos;s
+						talents. Level {characterLevel} (max {maxXpPerSkill} XP per skill).
+					</Typography>
+
+					<Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 1 }}>
+						{missingTalentSummaries.map((summary) => (
+							<Chip
+								key={`missing-${summary.skill}`}
+								label={`${summary.skill}: ${summary.available} pts · ${summary.spent} used · ${summary.missing} open`}
+								sx={{
+									bgcolor: getSkillChipColor(summary.skill),
+									color: 'white',
+								}}
+							/>
+						))}
+						{overspentTalentSummaries.map((summary) => (
+							<Chip
+								key={`overspent-${summary.skill}`}
+								label={`${summary.skill}: overspent by ${summary.overspent}`}
+								color="warning"
+								variant="outlined"
+							/>
+						))}
+						{unassignedSpent > 0 && (
+							<Chip
+								label={`Assign skills to ${unassignedSpent} talent point${
+									unassignedSpent > 1 ? 's' : ''
+								}`}
+								color="info"
+								variant="outlined"
+							/>
+						)}
+					</Box>
+
+					{exampleSummary && (
+						<Typography variant="caption" sx={{ display: 'block' }}>
+							Spending {exampleSummary.xp} XP in {exampleSummary.skill} gives{' '}
+							{exampleSummary.available} talent point
+							{exampleSummary.available === 1 ? '' : 's'} for talents tied to
+							that skill.
+						</Typography>
+					)}
+				</Alert>
+			)}
 
 			{ABILITY_TAGS.map((tag) => {
 				const tagAbilities = abilitiesByTag[tag]

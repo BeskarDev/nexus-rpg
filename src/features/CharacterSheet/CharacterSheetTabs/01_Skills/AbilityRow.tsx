@@ -12,6 +12,7 @@ import {
 	FormControl,
 	InputLabel,
 	FormControlLabel,
+	Chip,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -29,6 +30,7 @@ import {
 	ACTION_TYPES,
 	getActionTypeIcon,
 } from '@site/src/types/ActionType'
+import { OFFICIAL_SKILLS, getSkillChipColor } from '@site/src/constants/skills'
 
 export type AbilityRowProps = {
 	title: string
@@ -36,6 +38,7 @@ export type AbilityRowProps = {
 	tag?: AbilityTag
 	actionType?: ActionType
 	rank?: number
+	skill?: string
 	availableTags: AbilityTag[]
 	updateAbility: (update: Partial<Ability>) => void
 	moveToCategory: (newTag: AbilityTag) => void
@@ -51,6 +54,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	tag,
 	actionType: initialActionType,
 	rank: initialRank,
+	skill: initialSkill,
 	availableTags,
 	updateAbility,
 	moveToCategory,
@@ -65,6 +69,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		initialActionType || 'Other',
 	)
 	const [rank, setRank] = useState<number>(initialRank || 1)
+	const [skill, setSkill] = useState<string | undefined>(initialSkill)
 	const [expanded, setExpanded] = useState(false)
 	const [moveMenuAnchor, setMoveMenuAnchor] = useState<null | HTMLElement>(null)
 
@@ -132,6 +137,17 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 								) : undefined,
 						}}
 					/>
+					{tag === 'Talent' && skill && (
+						<Chip
+							size="small"
+							label={skill}
+							sx={{
+								bgcolor: getSkillChipColor(skill),
+								color: 'white',
+								fontWeight: 600,
+							}}
+						/>
+					)}
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -185,25 +201,76 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 
 							{/* Rank Selection for Talents */}
 							{tag === 'Talent' && (
-								<FormControl size="small" sx={{ width: '4rem' }}>
-									<InputLabel id="rank-label">Rank</InputLabel>
-									<Select
-										labelId="rank-label"
-										value={rank}
-										label="Rank"
-										onChange={(event) => {
-											const newRank = Number(event.target.value)
-											setRank(newRank)
-											updateAbility({ rank: newRank })
-										}}
-									>
-										<MenuItem value={1}>1</MenuItem>
-										<MenuItem value={2}>2</MenuItem>
-										<MenuItem value={3}>3</MenuItem>
-										<MenuItem value={4}>4</MenuItem>
-										<MenuItem value={5}>5</MenuItem>
-									</Select>
-								</FormControl>
+								<>
+									<FormControl size="small" sx={{ width: '4rem' }}>
+										<InputLabel id="rank-label">Rank</InputLabel>
+										<Select
+											labelId="rank-label"
+											value={rank}
+											label="Rank"
+											onChange={(event) => {
+												const newRank = Number(event.target.value)
+												setRank(newRank)
+												updateAbility({ rank: newRank })
+											}}
+										>
+											<MenuItem value={1}>1</MenuItem>
+											<MenuItem value={2}>2</MenuItem>
+											<MenuItem value={3}>3</MenuItem>
+											<MenuItem value={4}>4</MenuItem>
+											<MenuItem value={5}>5</MenuItem>
+										</Select>
+									</FormControl>
+
+									<FormControl size="small" sx={{ minWidth: '10rem' }}>
+										<InputLabel id={`skill-label-${abilityId}`}>
+											Skill
+										</InputLabel>
+										<Select
+											labelId={`skill-label-${abilityId}`}
+											value={skill || ''}
+											label="Skill"
+											onChange={(event) => {
+												const newSkill =
+													(event.target.value as string) || undefined
+												setSkill(newSkill)
+												updateAbility({ skill: newSkill || undefined })
+											}}
+											renderValue={(value) =>
+												value ? (
+													<Box
+														sx={{
+															display: 'flex',
+															alignItems: 'center',
+															gap: 0.5,
+														}}
+													>
+														<Chip
+															size="small"
+															label={value}
+															sx={{
+																bgcolor: getSkillChipColor(value as string),
+																color: 'white',
+																fontWeight: 600,
+															}}
+														/>
+													</Box>
+												) : (
+													<em>Unassigned</em>
+												)
+											}
+										>
+											<MenuItem value="">
+												<em>Unassigned</em>
+											</MenuItem>
+											{OFFICIAL_SKILLS.map((skillName) => (
+												<MenuItem key={skillName} value={skillName}>
+													{skillName}
+												</MenuItem>
+											))}
+										</Select>
+									</FormControl>
+								</>
 							)}
 						</Box>
 
