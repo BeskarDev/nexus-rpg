@@ -1,33 +1,10 @@
-import {
-	Avatar,
-	Box,
-	Checkbox,
-	FormControlLabel,
-	IconButton,
-	MenuItem,
-	TextField,
-	Tooltip,
-} from '@mui/material'
 import React, { useMemo, useState } from 'react'
-
-import {
-	Delete,
-	BookmarkBorder,
-	Bookmark,
-} from '@mui/icons-material'
-import {
-	RangeType,
-	rangeTypeArray,
-	Spell,
-	TargetType,
-	targetTypeArray,
-} from '../../../../types/Character'
-import { AttributeField } from '../../CharacterSheet'
-import { DamageFields } from '../DamageFields'
+import { RangeType, Spell, TargetType } from '../../../../types/Character'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { UnifiedListItem } from '@site/src/components/DynamicList'
+import { SpellSummary, SpellDetails } from './components'
 
 export type SpellRowProps = {
 	spell: Spell
@@ -70,235 +47,42 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 		)
 	}
 
-	const summaryContent = (
-		<Box
-			sx={{
-				display: 'flex',
-				alignItems: 'baseline',
-				flexWrap: 'wrap',
-				columnGap: 0.5,
-			}}
-		>
-			<Avatar
-				onClick={castSpell}
-				sx={{
-					bgcolor: (theme) => 'transparent',
-					border: (theme) => `2px solid ${theme.palette.text.primary}`,
-					color: (theme) => theme.palette.text.primary,
-					height: 32,
-					width: 32,
-					fontSize: 14,
-					fontWeight: 'bold',
-					cursor: 'pointer',
-					transition: 'opacity 200ms ease-in-out',
-					'&:hover': {
-						opacity: 0.7,
-					},
-					maxWidth: '4rem',
-					flexGrow: 0,
-					animation: 'focusShine 5s ease-in-out infinite',
-					'@keyframes focusShine': {
-						'0%, 90%, 100%': {
-							boxShadow: 'none',
-							transform: 'scale(1)',
-						},
-						'95%': {
-							boxShadow: '0 0 8px 2px rgba(33, 150, 243, 0.6)',
-							transform: 'scale(1.05)',
-						},
-					},
-				}}
-			>
-				{spellCost}
-			</Avatar>
-			<AttributeField
-				size="small"
-				variant="standard"
-				value={initialSpell.rank}
-				onChange={(event) =>
-					updateSpell({ rank: Number(event.target.value) })
-				}
-				label="Rank"
-				sx={{
-					maxWidth: '1.5rem',
-					flexGrow: 0,
-					'& .MuiOutlinedInput-root': {
-						'& .MuiOutlinedInput-notchedOutline': {
-							borderWidth: '2px',
-						},
-					},
-				}}
-			/>
-			<TextField
-				size="small"
-				variant="standard"
-				value={spell.name}
-				onChange={(event) =>
-					setSpell((s) => ({ ...s, name: event.target.value }))
-				}
-				onBlur={() => updateSpell({ name: spell.name })}
-				label="Name"
-				sx={{ maxWidth: '9rem', flexGrow: 1 }}
-			/>
-
-			<AttributeField
-				disabled
-				size="small"
-				variant="standard"
-				value={initialSpell.target}
-				label="Target"
-				sx={{ maxWidth: '3rem', flexGrow: 0 }}
-			/>
-			<AttributeField
-				disabled
-				size="small"
-				variant="standard"
-				value={initialSpell.range}
-				label="Range"
-				sx={{ maxWidth: '4rem', flexGrow: 0 }}
-			/>
-			{initialSpell.dealsDamage ? (
-				<DamageFields
-					type="spell"
-					damage={initialSpell.damage}
-					updateDamage={(update) =>
+	return (
+		<UnifiedListItem
+			summaryContent={
+				<SpellSummary
+					spell={{ ...spell, rank: initialSpell.rank, target: initialSpell.target, range: initialSpell.range, dealsDamage: initialSpell.dealsDamage, damage: initialSpell.damage }}
+					spellCost={spellCost}
+					onCast={castSpell}
+					onRankChange={(rank) => updateSpell({ rank })}
+					onNameChange={(name) => setSpell((s) => ({ ...s, name }))}
+					onNameBlur={() => updateSpell({ name: spell.name })}
+					onPropertiesChange={(properties) =>
+						setSpell((s) => ({ ...s, properties }))
+					}
+					onPropertiesBlur={() => updateSpell({ properties: spell.properties })}
+					onDamageUpdate={(update) =>
 						updateSpell({ damage: { ...initialSpell.damage, ...update } })
 					}
 				/>
-			) : (
-				<TextField
-					size="small"
-					variant="standard"
-					value={spell.properties}
-					onChange={(event) =>
-						setSpell((s) => ({ ...s, properties: event.target.value }))
+			}
+			detailsContent={
+				<SpellDetails
+					spell={{ ...spell, target: initialSpell.target, range: initialSpell.range, dealsDamage: initialSpell.dealsDamage, id: initialSpell.id }}
+					onPropertiesChange={(properties) =>
+						setSpell((s) => ({ ...s, properties }))
 					}
-					onBlur={() => updateSpell({ properties: spell.properties })}
-					label="Properties"
-					sx={{ maxWidth: '10rem' }}
+					onPropertiesBlur={() => updateSpell({ properties: spell.properties })}
+					onEffectChange={(effect) => setSpell((s) => ({ ...s, effect }))}
+					onEffectBlur={() => updateSpell({ effect: spell.effect })}
+					onDealsDamageChange={(dealsDamage) => updateSpell({ dealsDamage })}
+					onTargetChange={(target) => updateSpell({ target: target as TargetType })}
+					onRangeChange={(range) => updateSpell({ range: range as RangeType })}
+					onDelete={deleteSpell}
+					isInQuickRef={isInQuickRef}
+					onToggleQuickRef={onToggleQuickRef}
 				/>
-			)}
-		</Box>
-	)
-
-	const detailsContent = (
-		<Box
-			sx={{
-				display: 'flex',
-				alignItems: 'baseline',
-				flexWrap: 'wrap',
-				columnGap: 1,
-			}}
-		>
-			{initialSpell.dealsDamage && (
-				<TextField
-					size="small"
-					variant="standard"
-					value={spell.properties}
-					fullWidth
-					onChange={(event) =>
-						setSpell((s) => ({ ...s, properties: event.target.value }))
-					}
-					onBlur={() => updateSpell({ properties: spell.properties })}
-					label="Properties"
-				/>
-			)}
-			<TextField
-				size="small"
-				multiline
-				minRows={1}
-				maxRows={10}
-				value={spell.effect}
-				onChange={(event) =>
-					setSpell((s) => ({ ...s, effect: event.target.value }))
-				}
-				onBlur={() => updateSpell({ effect: spell.effect })}
-				label="Effect"
-				sx={{ maxWidth: '40rem' }}
-			/>
-			<Box sx={{ width: '100%', flexGrow: 1 }} />
-			<FormControlLabel
-				control={
-					<Checkbox
-						checked={initialSpell.dealsDamage}
-						onChange={() =>
-							updateSpell({ dealsDamage: !initialSpell.dealsDamage })
-						}
-					/>
-				}
-				label="show damage"
-				sx={{
-					'& .MuiFormControlLabel-label': {
-						fontSize: '10px',
-					},
-				}}
-			/>
-			<AttributeField
-				select
-				size="small"
-				value={initialSpell.target}
-				onChange={(event) =>
-					updateSpell({ target: event.target.value as TargetType })
-				}
-				label="Target"
-				sx={{ maxWidth: '6rem', flexGrow: 0 }}
-			>
-				{targetTypeArray.map((target) => (
-					<MenuItem key={target} value={target}>
-						{target}
-					</MenuItem>
-				))}
-			</AttributeField>
-			<AttributeField
-				select
-				size="small"
-				value={initialSpell.range}
-				onChange={(event) =>
-					updateSpell({ range: event.target.value as RangeType })
-				}
-				label="Range"
-				sx={{ maxWidth: '7rem', flexGrow: 0 }}
-			>
-				{rangeTypeArray.map((range) => (
-					<MenuItem key={range} value={range}>
-						{range}
-					</MenuItem>
-				))}
-			</AttributeField>
-			{onToggleQuickRef && (
-				<Tooltip
-					title={
-						isInQuickRef ? 'Remove from Quick Ref' : 'Add to Quick Ref'
-					}
-				>
-					<IconButton
-						size="small"
-						onClick={() => onToggleQuickRef(initialSpell.id)}
-						sx={{
-							my: 'auto',
-							color: isInQuickRef ? 'primary.main' : 'action.disabled',
-						}}
-					>
-						{isInQuickRef ? <Bookmark /> : <BookmarkBorder />}
-					</IconButton>
-				</Tooltip>
-			)}
-			<IconButton
-				size="small"
-				edge="end"
-				aria-label="delete"
-				onClick={deleteSpell}
-				sx={{ my: 'auto' }}
-			>
-				<Delete />
-			</IconButton>
-		</Box>
-	)
-
-	return (
-		<UnifiedListItem
-			summaryContent={summaryContent}
-			detailsContent={detailsContent}
+			}
 		/>
 	)
 }
