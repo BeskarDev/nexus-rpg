@@ -1,12 +1,11 @@
 import React, { useState } from 'react'
 import {
-DurabilityDie,
-EquipmentSlotType,
-Item,
-Character,
+	DurabilityDie,
+	EquipmentSlotType,
+	Item,
+	Character,
 } from '../../../../types/Character'
 import { ItemLocation } from '../../../../types/ItemLocation'
-import { QualityTier } from './utils/magicItemsConfig'
 import { UnifiedListItem } from '@site/src/components/DynamicList'
 import { ItemSummary, ItemDetails } from './components'
 
@@ -29,11 +28,11 @@ onToggleQuickRef,
 const [item, setItem] = useState<Item>(initialItem)
 
 const handleLocationChange = (newLocation: ItemLocation) => {
-updateItem({ location: newLocation })
-// Clear slot if not worn
-if (newLocation !== 'worn' && initialItem.slot) {
-updateItem({ slot: '' as EquipmentSlotType })
-}
+	updateItem({ location: newLocation })
+	// Clear slot if not worn
+	if (newLocation !== 'worn' && initialItem.slot) {
+		updateItem({ slot: undefined })
+	}
 }
 
 return (

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { DurabilityDie, Weapon } from '../../../../types/Character'
 import { ItemLocation } from '../../../../types/ItemLocation'
-import { QualityTier } from './utils/magicItemsConfig'
 import { UnifiedListItem } from '@site/src/components/DynamicList'
 import { WeaponSummary, WeaponDetails } from './components'
 
