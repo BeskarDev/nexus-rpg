@@ -182,7 +182,6 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 							id={item.id}
 							index={index}
 							showDragHandle={reorderMode}
-							showDivider={true}
 							sx={{ alignItems: 'baseline' }}
 						>
 							{'damage' in item ? (

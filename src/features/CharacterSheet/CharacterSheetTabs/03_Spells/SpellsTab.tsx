@@ -242,7 +242,6 @@ export const SpellsTab: React.FC = () => {
 									id={s.id}
 									index={index}
 									showDragHandle={reorderMode}
-									showDivider={true}
 									sx={{ alignItems: 'baseline' }}
 								>
 									<SpellRow

@@ -48,7 +48,6 @@ export const NpcRelationshipsSection: React.FC<
 						id={npc.id}
 						index={index}
 						dragDisabled={false}
-						showDivider={true}
 						sx={{ pr: 0, mb: 0.5 }}
 					>
 						<NpcRow

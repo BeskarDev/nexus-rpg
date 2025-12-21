@@ -1,7 +1,4 @@
 import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
 	Box,
 	IconButton,
 	TextField,
@@ -11,14 +8,12 @@ import {
 	Select,
 	FormControl,
 	InputLabel,
-	FormControlLabel,
 	Chip,
 } from '@mui/material'
 import React, { useState } from 'react'
 
 import {
 	Delete,
-	ExpandMore,
 	DriveFileMove,
 	BookmarkBorder,
 	Bookmark,
@@ -32,6 +27,7 @@ import {
 } from '@site/src/types/ActionType'
 import { OFFICIAL_SKILLS, getSkillChipColor } from '@site/src/constants/skills'
 import { getSkillAbbreviation } from '@site/src/constants/skillAbbreviations'
+import { UnifiedListItem } from '@site/src/components/DynamicList'
 
 export type AbilityRowProps = {
 	title: string
@@ -71,7 +67,6 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	)
 	const [rank, setRank] = useState<number>(initialRank || 1)
 	const [skill, setSkill] = useState<string | undefined>(initialSkill)
-	const [expanded, setExpanded] = useState(false)
 	const [moveMenuAnchor, setMoveMenuAnchor] = useState<null | HTMLElement>(null)
 
 	const handleMoveMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -87,247 +82,230 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		handleMoveMenuClose()
 	}
 
-	return (
-		<Accordion
-			expanded={expanded}
-			onChange={(_, isExpanded) => setExpanded(isExpanded)}
-			disableGutters
-			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-lg)', mt: 0 }}
+	const summaryContent = (
+		<Box
+			sx={{
+				display: 'flex',
+				gap: 1,
+				alignItems: 'center',
+				flexGrow: 1,
+			}}
 		>
-			<AccordionSummary
-				expandIcon={<ExpandMore />}
+			<TextField
+				fullWidth
+				variant="standard"
+				value={title}
+				onChange={(event) => setTitle(event.target.value)}
+				onBlur={() => updateAbility({ title })}
+				sx={{ maxWidth: '12.5rem' }}
+				InputProps={{
+					startAdornment: (
+						<Box
+							component="span"
+							sx={{ display: 'flex', alignItems: 'center', mr: 1 }}
+						>
+							{getActionTypeIcon(actionType)}
+						</Box>
+					),
+					endAdornment:
+						tag === 'Talent' && rank >= 1 && rank <= 5 ? (
+							<Box
+								component="span"
+								sx={{ color: 'text.secondary', mx: 1, fontSize: '1.15em' }}
+							>
+								{['①', '②', '③', '④', '⑤'][rank - 1]}
+							</Box>
+						) : undefined,
+				}}
+			/>
+			{tag === 'Talent' && skill && (
+				<Tooltip title={skill}>
+					<Chip
+						size="small"
+						label={getSkillAbbreviation(skill) || skill}
+						variant="outlined"
+						sx={{
+							borderColor: getSkillChipColor(skill),
+							color: getSkillChipColor(skill),
+							fontWeight: 600,
+						}}
+					/>
+				</Tooltip>
+			)}
+		</Box>
+	)
+
+	const detailsContent = (
+		<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
+			<TextField
+				label="Description"
+				size="small"
+				multiline
+				minRows={1}
+				maxRows={10}
+				value={description}
+				onChange={(event) => setDescription(event.target.value)}
+				onBlur={() => updateAbility({ description })}
+				sx={{ mt: 0, width: '100%' }}
+			/>
+
+			{/* Action Type Dropdown and Action Buttons in same row */}
+			<Box
 				sx={{
+					display: 'flex',
 					gap: 1,
-					pt: 0,
-					pl: 0,
-					flexDirection: 'row',
 					alignItems: 'center',
+					flexWrap: 'wrap',
+					justifyContent: 'space-between',
 				}}
 			>
-				<Box
-					sx={{
-						display: 'flex',
-						gap: 1,
-						alignItems: 'center',
-						flexGrow: 1,
-					}}
-				>
-					<TextField
-						fullWidth
-						variant="standard"
-						value={title}
-						onChange={(event) => setTitle(event.target.value)}
-						onBlur={() => updateAbility({ title })}
-						sx={{ maxWidth: '12.5rem' }}
-						InputProps={{
-							startAdornment: (
-								<Box
-									component="span"
-									sx={{ display: 'flex', alignItems: 'center', mr: 1 }}
-								>
-									{getActionTypeIcon(actionType)}
-								</Box>
-							),
-							endAdornment:
-								tag === 'Talent' && rank >= 1 && rank <= 5 ? (
+				<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
+					<FormControl size="small" sx={{ width: '9.5rem' }}>
+						<InputLabel id="action-type-label">Action Type</InputLabel>
+						<Select
+							labelId="action-type-label"
+							value={actionType}
+							label="Action Type"
+							onChange={(event) => {
+								const newActionType = event.target.value as ActionType
+								setActionType(newActionType)
+								updateAbility({ actionType: newActionType })
+							}}
+						>
+							{ACTION_TYPES.map((type) => (
+								<MenuItem key={type} value={type}>
 									<Box
-										component="span"
-										sx={{ color: 'text.secondary', mx: 1, fontSize: '1.15em' }}
+										sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
 									>
-										{['①', '②', '③', '④', '⑤'][rank - 1]}
+										{getActionTypeIcon(type)}
+										{type}
 									</Box>
-								) : undefined,
-						}}
-					/>
-					{tag === 'Talent' && skill && (
-						<Tooltip title={skill}>
-							<Chip
-								size="small"
-								label={getSkillAbbreviation(skill) || skill}
-								variant="outlined"
-								sx={{
-									borderColor: getSkillChipColor(skill),
-									color: getSkillChipColor(skill),
-									fontWeight: 600,
-								}}
-							/>
-						</Tooltip>
-					)}
-				</Box>
-			</AccordionSummary>
-			<AccordionDetails>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
-					<TextField
-						label="Description"
-						size="small"
-						multiline
-						minRows={1}
-						maxRows={10}
-						value={description}
-						onChange={(event) => setDescription(event.target.value)}
-						onBlur={() => updateAbility({ description })}
-						sx={{ mt: 0, width: '100%' }}
-					/>
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
 
-					{/* Action Type Dropdown and Action Buttons in same row */}
-					<Box
-						sx={{
-							display: 'flex',
-							gap: 1,
-							alignItems: 'center',
-							flexWrap: 'wrap',
-							justifyContent: 'space-between',
-						}}
-					>
-						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
-							<FormControl size="small" sx={{ width: '9.5rem' }}>
-								<InputLabel id="action-type-label">Action Type</InputLabel>
+					{/* Rank Selection for Talents */}
+					{tag === 'Talent' && (
+						<>
+							<FormControl size="small" sx={{ width: '4rem' }}>
+								<InputLabel id="rank-label">Rank</InputLabel>
 								<Select
-									labelId="action-type-label"
-									value={actionType}
-									label="Action Type"
+									labelId="rank-label"
+									value={rank}
+									label="Rank"
 									onChange={(event) => {
-										const newActionType = event.target.value as ActionType
-										setActionType(newActionType)
-										updateAbility({ actionType: newActionType })
+										const newRank = Number(event.target.value)
+										setRank(newRank)
+										updateAbility({ rank: newRank })
 									}}
 								>
-									{ACTION_TYPES.map((type) => (
-										<MenuItem key={type} value={type}>
+									<MenuItem value={1}>1</MenuItem>
+									<MenuItem value={2}>2</MenuItem>
+									<MenuItem value={3}>3</MenuItem>
+									<MenuItem value={4}>4</MenuItem>
+									<MenuItem value={5}>5</MenuItem>
+								</Select>
+							</FormControl>
+
+							<FormControl size="small" sx={{ minWidth: '10rem' }}>
+								<InputLabel id={`skill-label-${abilityId}`}>
+									Skill
+								</InputLabel>
+								<Select
+									labelId={`skill-label-${abilityId}`}
+									value={skill || ''}
+									label="Skill"
+									onChange={(event) => {
+										const newSkill =
+											(event.target.value as string) || undefined
+										setSkill(newSkill)
+										updateAbility({ skill: newSkill || undefined })
+									}}
+									renderValue={(value) =>
+										value ? (
 											<Box
-												sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+												sx={{
+													display: 'flex',
+													alignItems: 'center',
+													gap: 0.5,
+												}}
 											>
-												{getActionTypeIcon(type)}
-												{type}
+												<Chip
+													size="small"
+													label={value}
+													variant="outlined"
+													sx={{
+														borderColor: getSkillChipColor(value as string),
+														color: getSkillChipColor(value as string),
+														fontWeight: 600,
+													}}
+												/>
 											</Box>
+										) : (
+											<em>Unassigned</em>
+										)
+									}
+								>
+									<MenuItem value="">
+										<em>Unassigned</em>
+									</MenuItem>
+									{OFFICIAL_SKILLS.map((skillName) => (
+										<MenuItem key={skillName} value={skillName}>
+											{skillName}
 										</MenuItem>
 									))}
 								</Select>
 							</FormControl>
-
-							{/* Rank Selection for Talents */}
-							{tag === 'Talent' && (
-								<>
-									<FormControl size="small" sx={{ width: '4rem' }}>
-										<InputLabel id="rank-label">Rank</InputLabel>
-										<Select
-											labelId="rank-label"
-											value={rank}
-											label="Rank"
-											onChange={(event) => {
-												const newRank = Number(event.target.value)
-												setRank(newRank)
-												updateAbility({ rank: newRank })
-											}}
-										>
-											<MenuItem value={1}>1</MenuItem>
-											<MenuItem value={2}>2</MenuItem>
-											<MenuItem value={3}>3</MenuItem>
-											<MenuItem value={4}>4</MenuItem>
-											<MenuItem value={5}>5</MenuItem>
-										</Select>
-									</FormControl>
-
-									<FormControl size="small" sx={{ minWidth: '10rem' }}>
-										<InputLabel id={`skill-label-${abilityId}`}>
-											Skill
-										</InputLabel>
-										<Select
-											labelId={`skill-label-${abilityId}`}
-											value={skill || ''}
-											label="Skill"
-											onChange={(event) => {
-												const newSkill =
-													(event.target.value as string) || undefined
-												setSkill(newSkill)
-												updateAbility({ skill: newSkill || undefined })
-											}}
-											renderValue={(value) =>
-												value ? (
-													<Box
-														sx={{
-															display: 'flex',
-															alignItems: 'center',
-															gap: 0.5,
-														}}
-													>
-														<Chip
-															size="small"
-															label={value}
-															variant="outlined"
-															sx={{
-																borderColor: getSkillChipColor(value as string),
-																color: getSkillChipColor(value as string),
-																fontWeight: 600,
-															}}
-														/>
-													</Box>
-												) : (
-													<em>Unassigned</em>
-												)
-											}
-										>
-											<MenuItem value="">
-												<em>Unassigned</em>
-											</MenuItem>
-											{OFFICIAL_SKILLS.map((skillName) => (
-												<MenuItem key={skillName} value={skillName}>
-													{skillName}
-												</MenuItem>
-											))}
-										</Select>
-									</FormControl>
-								</>
-							)}
-						</Box>
-
-						<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
-							{onToggleQuickRef && (
-								<Tooltip
-									title={
-										isInQuickRef ? 'Remove from Quick Ref' : 'Add to Quick Ref'
-									}
-								>
-									<IconButton
-										size="small"
-										onClick={() => onToggleQuickRef(abilityId)}
-										sx={{
-											p: 0.5,
-											color: isInQuickRef ? 'primary.main' : 'action.disabled',
-										}}
-									>
-										{isInQuickRef ? (
-											<Bookmark fontSize="small" />
-										) : (
-											<BookmarkBorder fontSize="small" />
-										)}
-									</IconButton>
-								</Tooltip>
-							)}
-							<Tooltip title="Move to another category">
-								<IconButton
-									size="small"
-									aria-label="move category"
-									onClick={handleMoveMenuOpen}
-									sx={{ p: 0.5 }}
-								>
-									<DriveFileMove />
-								</IconButton>
-							</Tooltip>
-							<Tooltip title="Delete this ability">
-								<IconButton
-									size="small"
-									aria-label="delete"
-									onClick={deleteAbility}
-									sx={{ p: 0.5 }}
-								>
-									<Delete />
-								</IconButton>
-							</Tooltip>
-						</Box>
-					</Box>
+						</>
+					)}
 				</Box>
-			</AccordionDetails>
+
+				<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'center' }}>
+					{onToggleQuickRef && (
+						<Tooltip
+							title={
+								isInQuickRef ? 'Remove from Quick Ref' : 'Add to Quick Ref'
+							}
+						>
+							<IconButton
+								size="small"
+								onClick={() => onToggleQuickRef(abilityId)}
+								sx={{
+									p: 0.5,
+									color: isInQuickRef ? 'primary.main' : 'action.disabled',
+								}}
+							>
+								{isInQuickRef ? (
+									<Bookmark fontSize="small" />
+								) : (
+									<BookmarkBorder fontSize="small" />
+								)}
+							</IconButton>
+						</Tooltip>
+					)}
+					<Tooltip title="Move to another category">
+						<IconButton
+							size="small"
+							aria-label="move category"
+							onClick={handleMoveMenuOpen}
+							sx={{ p: 0.5 }}
+						>
+							<DriveFileMove />
+						</IconButton>
+					</Tooltip>
+					<Tooltip title="Delete this ability">
+						<IconButton
+							size="small"
+							aria-label="delete"
+							onClick={deleteAbility}
+							sx={{ p: 0.5 }}
+						>
+							<Delete />
+						</IconButton>
+					</Tooltip>
+				</Box>
+			</Box>
 
 			{/* Move Category Menu */}
 			<Menu
@@ -349,6 +327,18 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						</MenuItem>
 					))}
 			</Menu>
-		</Accordion>
+		</Box>
+	)
+
+	return (
+		<UnifiedListItem
+			summaryContent={summaryContent}
+			detailsContent={detailsContent}
+			reverseIcon={false}
+			summarySx={{
+				pl: 0,
+				alignItems: 'center',
+			}}
+		/>
 	)
 }

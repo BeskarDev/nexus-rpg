@@ -1,7 +1,5 @@
-import { Box, Tooltip } from '@mui/material'
+import { Box } from '@mui/material'
 import React from 'react'
-
-import { AttributeField } from '../../CharacterSheet'
 
 import {
 	BubbleChart,
@@ -100,11 +98,11 @@ export const StatisticsTab: React.FC = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				gap: 2,
+				gap: 1.5,
 				width: '100%',
 			}}
 		>
-			{/* Top row - Resolve, Fatigue, Resting */}
+			{/* Top row - Resolve and Resting */}
 			<Box
 				sx={{
 					display: 'flex',
@@ -138,12 +136,13 @@ export const StatisticsTab: React.FC = () => {
 			{/* Status Effects */}
 			<StatusEffects statusEffects={statusEffects} />
 
-			{/* Attributes - Game UI Style Grid */}
+			{/* Attributes - Compact single row */}
 			<Box
 				sx={{
 					display: 'flex',
-					gap: 1,
-					flexWrap: 'wrap',
+					gap: 0.5,
+					flexWrap: 'nowrap',
+					maxWidth: '17rem',
 				}}
 			>
 				<AttributeColumn
@@ -197,17 +196,17 @@ export const StatisticsTab: React.FC = () => {
 				sx={{
 					display: 'flex',
 					flexWrap: 'wrap',
-					gap: 1,
+					gap: 0.5,
 					alignItems: 'flex-start',
 				}}
 			>
 				<AvField />
 
-				{/* HP section - using new HpField component */}
+				{/* HP section */}
 				<HpField />
 
 				{/* Fatigue Tracker */}
-				<Box sx={{ ml: 1, mt: '-2px', maxWidth: '5rem' }}>
+				<Box sx={{ maxWidth: '5rem' }}>
 					<FatigueTracker
 						current={fatigue?.current || 0}
 						max={fatigue?.max || 6}
@@ -219,12 +218,10 @@ export const StatisticsTab: React.FC = () => {
 					/>
 				</Box>
 
-				<Box sx={{ display: 'flex', flexDirection: 'row', gap: 0.5 }}>
-					{/* Defenses */}
-					<ParryField />
-					<DodgeField />
-					<ResistField />
-				</Box>
+				{/* Defenses */}
+				<ParryField />
+				<DodgeField />
+				<ResistField />
 			</Box>
 		</Box>
 	)

@@ -2,7 +2,6 @@ import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
 import {
 	Box,
 	Checkbox,
-	InputAdornment,
 	MenuItem,
 	Tooltip,
 	Typography,
@@ -39,19 +38,19 @@ const getWoundTooltip = (label: string) => {
 	}
 }
 
-// Get attribute abbreviation
-const getAttributeAbbreviation = (label: string) => {
+// Get attribute abbreviation and color
+const getAttributeInfo = (label: string) => {
 	switch (label) {
 		case 'Strength':
-			return 'STR'
+			return { abbr: 'STR', color: '#e57373' } // red
 		case 'Agility':
-			return 'AGI'
+			return { abbr: 'AGI', color: '#81c784' } // green
 		case 'Spirit':
-			return 'SPI'
+			return { abbr: 'SPI', color: '#64b5f6' } // blue
 		case 'Mind':
-			return 'MND'
+			return { abbr: 'MND', color: '#ba68c8' } // purple
 		default:
-			return label.substring(0, 3).toUpperCase()
+			return { abbr: label.substring(0, 3).toUpperCase(), color: '#9e9e9e' }
 	}
 }
 
@@ -73,111 +72,101 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 		}
 	}
 
+	const { abbr, color } = getAttributeInfo(label)
+
 	return (
 		<Box
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
 				alignItems: 'center',
-				width: '6rem',
-				borderRadius: 2,
-				border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.3)}`,
-				bgcolor: (theme) => alpha(theme.palette.background.paper, 0.5),
-				p: 0.75,
-				transition: 'border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+				minWidth: '3.5rem',
+				maxWidth: '4rem',
+				flex: '1 1 auto',
+				borderRadius: 1,
+				border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+				bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+				p: 0.25,
+				transition: 'border-color 0.2s ease-in-out',
 				'&:hover': {
-					borderColor: (theme) => alpha(theme.palette.primary.main, 0.5),
-					boxShadow: (theme) => `0 0 8px ${alpha(theme.palette.primary.main, 0.15)}`,
+					borderColor: alpha(color, 0.6),
 				},
 			}}
 		>
-			{/* Attribute Label with Icon */}
+			{/* Attribute Label with Icon - Compact */}
 			<Box
 				sx={{
 					display: 'flex',
 					alignItems: 'center',
-					gap: 0.5,
-					mb: 0.5,
+					gap: 0.25,
 				}}
 			>
-				<Box sx={{ fontSize: '0.875rem', color: 'text.secondary' }}>
+				<Box sx={{ fontSize: '0.6rem', color: color, display: 'flex' }}>
 					{icon}
 				</Box>
 				<Typography
 					variant="caption"
 					sx={{
-						fontWeight: 600,
-						color: 'text.secondary',
+						fontWeight: 700,
+						fontSize: '0.55rem',
+						color: color,
 						textTransform: 'uppercase',
 						letterSpacing: '0.5px',
 					}}
 				>
-					{getAttributeAbbreviation(label)}
+					{abbr}
 				</Typography>
 			</Box>
 
-			{/* Die Value Display - Game UI Style */}
-			<Box
+			{/* Die Value Display - Compact */}
+			<AttributeField
+				select
+				value={attribute.value}
+				onChange={(event) =>
+					updateAttribute({
+						value: Number(event.target.value) as AttributeType,
+					})
+				}
+				variant="standard"
+				InputProps={{
+					disableUnderline: true,
+					sx: {
+						fontWeight: 'bold',
+						fontSize: '0.85rem',
+						textAlign: 'center',
+						'& .MuiSelect-select': {
+							py: 0,
+							pr: '14px',
+							textAlign: 'center',
+						},
+					},
+				}}
 				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-					width: '100%',
+					maxWidth: '3rem',
+					'& .MuiInput-root': {
+						justifyContent: 'center',
+					},
 				}}
 			>
-				<AttributeField
-					select
-					value={attribute.value}
-					onChange={(event) =>
-						updateAttribute({
-							value: Number(event.target.value) as AttributeType,
-						})
-					}
-					variant="standard"
-					InputProps={{
-						disableUnderline: true,
-						sx: {
-							fontWeight: 'bold',
-							fontSize: '1.25rem',
-							textAlign: 'center',
-							'& .MuiSelect-select': {
-								py: 0.25,
-								pr: '20px',
-								textAlign: 'center',
-							},
-						},
-					}}
-					sx={{
-						maxWidth: '4.5rem',
-						'& .MuiInput-root': {
-							justifyContent: 'center',
-						},
-					}}
-				>
-					{attributeTypeArray.map((at) => (
-						<MenuItem key={at} value={at}>
-							d{at}
-						</MenuItem>
-					))}
-				</AttributeField>
-			</Box>
+				{attributeTypeArray.map((at) => (
+					<MenuItem key={at} value={at} sx={{ fontSize: '0.75rem' }}>
+						d{at}
+					</MenuItem>
+				))}
+			</AttributeField>
 
-			{/* Wound Checkbox */}
-			<Box
-				sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 0.5 }}
-			>
-				<Tooltip title={getWoundTooltip(label)} placement="bottom">
-					<Checkbox
-						size="small"
-						icon={<HeartBrokenOutlined sx={{ fontSize: '1rem' }} />}
-						checkedIcon={<HeartBroken color="error" sx={{ fontSize: '1rem' }} />}
-						checked={attribute.wounded}
-						disabled={!attribute.wounded && totalWounds >= 3}
-						onChange={handleWoundChange}
-						sx={{ p: 0.25 }}
-					/>
-				</Tooltip>
-			</Box>
+			{/* Wound Checkbox - Compact */}
+			<Tooltip title={getWoundTooltip(label)} placement="bottom">
+				<Checkbox
+					size="small"
+					icon={<HeartBrokenOutlined sx={{ fontSize: '0.75rem' }} />}
+					checkedIcon={<HeartBroken color="error" sx={{ fontSize: '0.75rem' }} />}
+					checked={attribute.wounded}
+					disabled={!attribute.wounded && totalWounds >= 3}
+					onChange={handleWoundChange}
+					sx={{ p: 0, mt: -0.25 }}
+				/>
+			</Tooltip>
 		</Box>
 	)
 }

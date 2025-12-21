@@ -1,7 +1,7 @@
 # Character Sheet UX Design Specification
 
 ## Document Information
-- **Status**: In Implementation (Phases 1, 3, 4 Complete)
+- **Status**: Complete (All Phases Implemented)
 - **Created**: December 21, 2024
 - **Last Updated**: December 21, 2024
 - **Purpose**: Define comprehensive UX design, unified component patterns, and migration plan for the Character Sheet overhaul
@@ -11,11 +11,22 @@
 | Phase | Status | Notes |
 |-------|--------|-------|
 | Phase 1: Foundation | ✅ Complete | CSS variables, layout constraints |
-| Phase 2: Component Migration | ⏳ Future Work | UnifiedListItem component (deferred) |
+| Phase 2: Component Migration | ✅ Complete | UnifiedListItem component, all row components migrated |
 | Phase 3: Layout Integration | ✅ Complete | Centered layout, removed scrollbars, reorder mode, full-width tabs |
 | Phase 4: Polish & QA | ✅ Complete | Visual improvements, list dividers, game-UI attribute cards |
 
 ### Recent Changes (December 21, 2024)
+
+**Phase 2 Implementation:**
+- Created `UnifiedListItem` component in `src/components/DynamicList/UnifiedListItem.tsx`
+- Migrated `WeaponRow`, `ItemRow`, `SpellRow`, `AbilityRow` to use `UnifiedListItem`
+- All row components now share consistent Accordion styling and behavior
+- Dividers only appear in expanded details (not in collapsed view)
+
+**Phase 4 Polish:**
+- Made attribute cards more compact (3.5-4rem width vs 4.5-5rem)
+- Reduced font sizes for denser display (die values: 0.85rem, labels: 0.55rem)
+- All four attribute cards now fit in a single row (17rem max-width vs 22rem)
 
 **Phase 1 & 3 Implementation:**
 - Added CSS custom properties for layout constraints (`--cs-max-width-sm/md/lg/xl/page`)

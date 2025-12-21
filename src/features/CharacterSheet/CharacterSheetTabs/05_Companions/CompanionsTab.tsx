@@ -197,7 +197,7 @@ export const CompanionsTab: React.FC = () => {
 			{companions.length > 0 && (
 				<DynamicList droppableId="companions" onDragEnd={onCompanionReorder}>
 					{companions.map((companion, index) => (
-						<DynamicListItem key={companion.id} id={companion.id} index={index} showDivider={true}>
+						<DynamicListItem key={companion.id} id={companion.id} index={index}>
 							<CompanionAccordion
 								companion={companion}
 								isExpanded={expandedAccordions.has(companion.id)}

@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings } from '@mui/icons-material'
-import { Box, IconButton, Menu, Typography } from '@mui/material'
+import { Settings, Psychology } from '@mui/icons-material'
+import { Box, IconButton, Menu, Tooltip, Typography, alpha } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -81,36 +81,63 @@ export const ResistField = () => {
 		})
 	}
 
+	const displayValue = resistDetails ? totalResist : resist
+
 	return (
 		<>
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					columnGap: 0.5,
-				}}
-			>
-				<AttributeField
-					disabled
-					value={resistDetails ? totalResist : resist}
-					label="Resist"
+			<Tooltip title="Click gear to configure Resist sources">
+				<Box
 					sx={{
-						mr: 1,
-						'& .MuiOutlinedInput-root': {
-							'& .MuiOutlinedInput-notchedOutline': {
-								borderWidth: '2px',
-							},
-						},
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						minWidth: '3rem',
+						borderRadius: 1,
+						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+						p: 0.5,
+						position: 'relative',
 					}}
-				/>
-				<IconButton
-					size="small"
-					onClick={resistDetails ? handleClick : initializeDetails}
-					sx={{ ml: -1.5 }}
 				>
-					<Settings fontSize="small" />
-				</IconButton>
-			</Box>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+						<Psychology sx={{ fontSize: '0.75rem', color: '#ba68c8' }} />
+						<Typography
+							variant="caption"
+							sx={{
+								fontWeight: 700,
+								fontSize: '0.6rem',
+								color: '#ba68c8',
+								textTransform: 'uppercase',
+							}}
+						>
+							RES
+						</Typography>
+					</Box>
+					<Typography
+						sx={{
+							fontWeight: 'bold',
+							fontSize: '1rem',
+							lineHeight: 1.2,
+						}}
+					>
+						{displayValue}
+					</Typography>
+					<IconButton
+						size="small"
+						onClick={resistDetails ? handleClick : initializeDetails}
+						sx={{
+							position: 'absolute',
+							top: 0,
+							right: 0,
+							p: 0.25,
+							opacity: 0.6,
+							'&:hover': { opacity: 1 },
+						}}
+					>
+						<Settings sx={{ fontSize: '0.75rem' }} />
+					</IconButton>
+				</Box>
+			</Tooltip>
 			{resistDetails && (
 				<Menu
 					anchorEl={anchorEl}

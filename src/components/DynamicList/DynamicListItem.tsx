@@ -1,5 +1,5 @@
 import { DragHandle } from '@mui/icons-material'
-import { Box, Divider, ListItem, ListItemIcon, ListItemProps } from '@mui/material'
+import { Box, ListItem, ListItemIcon, ListItemProps } from '@mui/material'
 import React from 'react'
 import { Draggable } from '@hello-pangea/dnd'
 
@@ -8,7 +8,6 @@ export type DynamicListItemProps = {
 	index: number
 	dragDisabled?: boolean
 	showDragHandle?: boolean
-	showDivider?: boolean
 } & ListItemProps
 
 export const DynamicListItem: React.FC<DynamicListItemProps> = ({
@@ -16,7 +15,6 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 	index,
 	dragDisabled,
 	showDragHandle = false,
-	showDivider = false,
 	children,
 	...props
 }) => {
@@ -49,15 +47,6 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 						</ListItemIcon>
 						{children}
 					</ListItem>
-					{showDivider && (
-						<Divider
-							sx={{
-								mt: 0.5,
-								mb: 0.5,
-								opacity: 0.5,
-							}}
-						/>
-					)}
 				</Box>
 			)}
 		</Draggable>
