@@ -79,7 +79,7 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	return (
 		<Accordion
 			expanded={expanded}
-			onChange={() => setExpanded(!expanded)}
+			onChange={(_, isExpanded) => setExpanded(isExpanded)}
 			disableGutters
 			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-lg)', mt: 0 }}
 		>

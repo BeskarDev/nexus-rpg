@@ -98,7 +98,7 @@ export const CharacterSheet: React.FC = () => {
 						mb: 2,
 						display: 'flex',
 						flexWrap: 'wrap',
-						gap: 'var(--cs-panel-gap)',
+						gap: 3, // theme.spacing(3) = 24px, equivalent to --cs-panel-gap
 						justifyContent: 'flex-start',
 						backgroundColor: 'var(--ifm-background-color)',
 					}}

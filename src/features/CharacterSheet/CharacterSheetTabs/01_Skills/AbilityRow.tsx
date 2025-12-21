@@ -90,7 +90,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	return (
 		<Accordion
 			expanded={expanded}
-			onChange={() => setExpanded(!expanded)}
+			onChange={(_, isExpanded) => setExpanded(isExpanded)}
 			disableGutters
 			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-sm)', mt: 0 }}
 		>

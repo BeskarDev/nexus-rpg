@@ -27,19 +27,21 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 					{...props}
 					sx={{ p: 0, ...props.sx }}
 				>
-					{!dragDisabled && (
-						<ListItemIcon
-							{...provided.dragHandleProps}
-							sx={{
-								minWidth: '32px',
-								visibility: showDragHandle ? 'visible' : 'hidden',
-								width: showDragHandle ? 'auto' : 0,
-								mr: showDragHandle ? 0 : -1,
-							}}
-						>
-							<DragHandle />
-						</ListItemIcon>
-					)}
+					{/* 
+					 * Always render the drag handle element but hide it visually when not needed.
+					 * @hello-pangea/dnd requires the dragHandleProps element to exist even when hidden.
+					 */}
+					<ListItemIcon
+						{...provided.dragHandleProps}
+						sx={{
+							minWidth: showDragHandle ? '32px' : 0,
+							opacity: showDragHandle ? 1 : 0,
+							width: showDragHandle ? 'auto' : 0,
+							overflow: 'hidden',
+						}}
+					>
+						<DragHandle />
+					</ListItemIcon>
 					{children}
 				</ListItem>
 			)}
