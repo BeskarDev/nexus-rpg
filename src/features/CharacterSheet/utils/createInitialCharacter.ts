@@ -527,15 +527,23 @@ export const createInitialCharacter = (
 		availableSpellPaths[0] ||
 		''
 
-	const filteredStartingSpells =
-		spellData?.startingSpells?.filter((spell) => {
-			const spellPath = spell.tradition || spell.discipline
-			if (!chosenSpellPath || !availableSpellPaths.length) return true
-			if (spellPath) return spellPath === chosenSpellPath
-			return true
-		}) || []
+	type ArchetypeSpellInfo = {
+		name: string
+		rank: number
+		tradition?: string
+		discipline?: string
+	}
+	const startingSpells: ArchetypeSpellInfo[] =
+		spellData?.startingSpells ?? []
 
-	const dedupedStartingSpells = filteredStartingSpells.reduce(
+	const filteredStartingSpells = startingSpells.filter((spell) => {
+		const spellPath = spell.tradition || spell.discipline
+		if (!chosenSpellPath || !availableSpellPaths.length) return true
+		if (spellPath) return spellPath === chosenSpellPath
+		return true
+	})
+
+	const dedupedStartingSpells = filteredStartingSpells.reduce<ArchetypeSpellInfo[]>(
 		(acc, spell) => {
 			const key = `${spell.name}-${spell.rank}`
 			if (!acc.some((existing) => `${existing.name}-${existing.rank}` === key)) {
@@ -543,7 +551,7 @@ export const createInitialCharacter = (
 			}
 			return acc
 		},
-		[] as NonNullable<typeof spellData>['startingSpells'] | [],
+		[],
 	)
 
 	// Add combat arts for Fighting or Archery rank 1 skills
@@ -892,11 +900,8 @@ export const createInitialCharacter = (
 			},
 			spellCatalystDamage: 0,
 			spells:
-				spellData && spellData.startingSpells
-					? (dedupedStartingSpells.length
-							? dedupedStartingSpells
-							: spellData.startingSpells
-						)
+				spellData && startingSpells.length
+					? (dedupedStartingSpells.length ? dedupedStartingSpells : startingSpells)
 							.map((spellInfo) => {
 								const magicSkill =
 									spellData?.magicSkill ||
