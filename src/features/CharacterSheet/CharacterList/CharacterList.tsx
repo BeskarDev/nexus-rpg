@@ -154,6 +154,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 															handleDeleteCharacter={() =>
 																handleDeleteCharacter(char)
 															}
+															characterName={char.personal.name}
 														/>
 													}
 												>

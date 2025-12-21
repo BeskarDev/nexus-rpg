@@ -14,6 +14,7 @@ import {
 	InputAdornment,
 } from '@mui/material'
 import { AttachMoney, ArrowDownward, ArrowUpward } from '@mui/icons-material'
+import { parseCostValue } from './costUtils'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import weaponsData from '../../../../../utils/data/json/weapons.json'
 import {
@@ -106,8 +107,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				const matchesType =
 					!typeFilter.length || typeFilter.includes(weapon.type)
 
-				const parsedCost = Number.parseInt(weapon.cost, 10)
-				const cost = Number.isNaN(parsedCost) ? null : parsedCost
+				const cost = parseCostValue(weapon.cost)
 				const min = costMin === '' ? Number.NEGATIVE_INFINITY : Number(costMin)
 				const max = costMax === '' ? Number.POSITIVE_INFINITY : Number(costMax)
 				const matchesCost =
@@ -263,7 +263,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				},
 				properties: weapon.properties,
 				description: `${weapon.type} weapon (Quality ${weapon.quality})`,
-				cost: parseInt(weapon.cost) || 0,
+				cost: parseCostValue(weapon.cost) || 0,
 				load: parseInt(weapon.load) || 0,
 				quality: parseInt(weapon.quality) as QualityTier,
 			}))
@@ -286,7 +286,14 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			importButtonText="Import"
 			searchPlaceholder="Search by name, type, or properties..."
 			filters={
-				<>
+				<Box
+					sx={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						gap: 1,
+						alignItems: 'center',
+					}}
+				>
 					<FormControl size="small" sx={{ minWidth: '10rem' }}>
 						<InputLabel id="weapon-quality-filter-label">Quality</InputLabel>
 						<Select
@@ -383,11 +390,11 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 								!costMin &&
 								!costMax
 							}
-						>
+							>
 							Clear filters
 						</Button>
 					</Box>
-				</>
+				</Box>
 			}
 		/>
 	)

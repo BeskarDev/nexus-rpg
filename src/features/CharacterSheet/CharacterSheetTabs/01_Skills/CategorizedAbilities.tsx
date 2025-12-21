@@ -78,7 +78,10 @@ export const CategorizedAbilities: React.FC = () => {
 	const overspentTalentSummaries = talentSummaries.filter(
 		(summary) => summary.overspent > 0,
 	)
-	const showTalentNotice = talentSummaries.length > 0
+	const openTalentSummaries = talentSummaries.filter(
+		(summary) => summary.available > summary.spent,
+	)
+	const showTalentNotice = openTalentSummaries.length > 0
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
@@ -253,6 +256,24 @@ export const CategorizedAbilities: React.FC = () => {
 						<AccordionSummary expandIcon={<ExpandMore />}>
 							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 								<SectionHeader sx={{ mb: 0 }}>{tag}</SectionHeader>
+								{tag === 'Talent' && openTalentSummaries.length > 0 && (
+									<Tooltip title="Talent points overview">
+										<IconButton
+											size="small"
+											color="info"
+											onClick={(event) => {
+												event.stopPropagation()
+												setIsTalentInfoDialogOpen(true)
+											}}
+											sx={{
+												border: '1px solid',
+												borderColor: 'divider',
+											}}
+										>
+											<InfoOutlined fontSize="inherit" />
+										</IconButton>
+									</Tooltip>
+								)}
 								<IconButton
 									onClick={(event) => {
 										addNewAbility(tag)
@@ -310,6 +331,7 @@ export const CategorizedAbilities: React.FC = () => {
 											tag={ability.tag}
 											actionType={ability.actionType}
 											rank={ability.rank}
+											skill={ability.skill}
 											availableTags={[...ABILITY_TAGS]}
 											updateAbility={(update) =>
 												updateAbility(update, ability.id)
@@ -369,7 +391,7 @@ export const CategorizedAbilities: React.FC = () => {
 						talents. Level {characterLevel} (max {maxXpPerSkill} XP per skill).
 					</DialogContentText>
 					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-						{talentSummaries.map((summary) => {
+						{openTalentSummaries.map((summary) => {
 							const open = Math.max(summary.available - summary.spent, 0)
 							const text = `${summary.spent}/${summary.available} TP used${
 								open > 0 ? ` (${open} open)` : ''

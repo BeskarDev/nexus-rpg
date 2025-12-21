@@ -90,7 +90,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		<Accordion
 			expanded={expanded}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '32rem', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: '24rem', mt: 0 }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMore onClick={() => setExpanded(!expanded)} />}
@@ -116,7 +116,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						value={title}
 						onChange={(event) => setTitle(event.target.value)}
 						onBlur={() => updateAbility({ title })}
-						sx={{ maxWidth: '18rem' }}
+						sx={{ maxWidth: '12.5rem' }}
 						InputProps={{
 							startAdornment: (
 								<Box
@@ -162,7 +162,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
 						onBlur={() => updateAbility({ description })}
-						sx={{ mt: 0, maxWidth: '22rem' }}
+						sx={{ mt: 0, maxWidth: '20rem' }}
 					/>
 
 					{/* Action Type Dropdown and Action Buttons in same row */}
