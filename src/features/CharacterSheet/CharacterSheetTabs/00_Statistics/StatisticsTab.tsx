@@ -101,7 +101,7 @@ export const StatisticsTab: React.FC = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				gap: 2,
-				maxWidth: '100%',
+				width: '100%',
 			}}
 		>
 			{/* Top row - Resolve, Fatigue, Resting */}
@@ -138,71 +138,58 @@ export const StatisticsTab: React.FC = () => {
 			{/* Status Effects */}
 			<StatusEffects statusEffects={statusEffects} />
 
-			{/* Main stats row */}
+			{/* Attributes - Game UI Style Grid */}
 			<Box
 				sx={{
 					display: 'flex',
-					flexWrap: 'wrap',
 					gap: 1,
-					alignItems: 'flex-start',
+					flexWrap: 'wrap',
 				}}
 			>
-				{/* Attributes */}
-				<Box
-					sx={{
-						display: 'flex',
-						gap: 0.5,
-						overflowX: 'auto',
-						minWidth: 0,
-						flexShrink: 0,
-						height: '6.5rem',
-					}}
-				>
-					<AttributeColumn
-						attribute={strength}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { strength: { ...strength, ...update } },
-							})
-						}
-						label="Strength"
-						icon={<PanTool fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-					<AttributeColumn
-						attribute={agility}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { agility: { ...agility, ...update } },
-							})
-						}
-						label="Agility"
-						icon={<DirectionsRun fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-					<AttributeColumn
-						attribute={spirit}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { spirit: { ...spirit, ...update } },
-							})
-						}
-						label="Spirit"
-						icon={<Visibility fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-					<AttributeColumn
-						attribute={mind}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { mind: { ...mind, ...update } },
-							})
-						}
-						label="Mind"
-						icon={<BubbleChart fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-				</Box>
+				<AttributeColumn
+					attribute={strength}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { strength: { ...strength, ...update } },
+						})
+					}
+					label="Strength"
+					icon={<PanTool fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
+				<AttributeColumn
+					attribute={agility}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { agility: { ...agility, ...update } },
+						})
+					}
+					label="Agility"
+					icon={<DirectionsRun fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
+				<AttributeColumn
+					attribute={spirit}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { spirit: { ...spirit, ...update } },
+						})
+					}
+					label="Spirit"
+					icon={<Visibility fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
+				<AttributeColumn
+					attribute={mind}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { mind: { ...mind, ...update } },
+						})
+					}
+					label="Mind"
+					icon={<BubbleChart fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
 			</Box>
 
 			{/* Health, AV and Defenses row */}

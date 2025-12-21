@@ -153,7 +153,7 @@ export const CompanionsTab: React.FC = () => {
 	}
 
 	return (
-		<Box sx={{ maxWidth: 'var(--cs-max-width-lg)' }}>
+		<Box sx={{ width: '100%' }}>
 			<Box
 				sx={{
 					display: 'flex',
@@ -197,7 +197,7 @@ export const CompanionsTab: React.FC = () => {
 			{companions.length > 0 && (
 				<DynamicList droppableId="companions" onDragEnd={onCompanionReorder}>
 					{companions.map((companion, index) => (
-						<DynamicListItem key={companion.id} id={companion.id} index={index}>
+						<DynamicListItem key={companion.id} id={companion.id} index={index} showDivider={true}>
 							<CompanionAccordion
 								companion={companion}
 								isExpanded={expandedAccordions.has(companion.id)}

@@ -339,6 +339,7 @@ export const CategorizedAbilities: React.FC = () => {
 										id={ability.id}
 										index={index}
 										showDragHandle={reorderMode[tag]}
+										showDivider={true}
 										sx={{ alignItems: 'center' }}
 									>
 										<AbilityRow

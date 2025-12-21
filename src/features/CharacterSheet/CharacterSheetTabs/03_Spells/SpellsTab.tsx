@@ -111,7 +111,7 @@ export const SpellsTab: React.FC = () => {
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-				maxWidth: 'var(--cs-max-width-lg)',
+				width: '100%',
 			}}
 		>
 			<Box sx={{ mb: 2 }}>
@@ -242,6 +242,7 @@ export const SpellsTab: React.FC = () => {
 									id={s.id}
 									index={index}
 									showDragHandle={reorderMode}
+									showDivider={true}
 									sx={{ alignItems: 'baseline' }}
 								>
 									<SpellRow

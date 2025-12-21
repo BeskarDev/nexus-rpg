@@ -6,6 +6,7 @@ import {
 	MenuItem,
 	Tooltip,
 	Typography,
+	alpha,
 } from '@mui/material'
 import {
 	Attribute,
@@ -38,6 +39,22 @@ const getWoundTooltip = (label: string) => {
 	}
 }
 
+// Get attribute abbreviation
+const getAttributeAbbreviation = (label: string) => {
+	switch (label) {
+		case 'Strength':
+			return 'STR'
+		case 'Agility':
+			return 'AGI'
+		case 'Spirit':
+			return 'SPI'
+		case 'Mind':
+			return 'MND'
+		default:
+			return label.substring(0, 3).toUpperCase()
+	}
+}
+
 export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 	attribute,
 	label,
@@ -63,65 +80,103 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 				flexDirection: 'column',
 				alignItems: 'center',
 				width: '6rem',
+				borderRadius: 2,
+				border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.3)}`,
+				bgcolor: (theme) => alpha(theme.palette.background.paper, 0.5),
+				p: 0.75,
+				transition: 'border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+				'&:hover': {
+					borderColor: (theme) => alpha(theme.palette.primary.main, 0.5),
+					boxShadow: (theme) => `0 0 8px ${alpha(theme.palette.primary.main, 0.15)}`,
+				},
 			}}
 		>
-			<AttributeField
-				select
-				value={attribute.value}
-				onChange={(event) =>
-					updateAttribute({
-						value: Number(event.target.value) as AttributeType,
-					})
-				}
-				label={label}
-				InputProps={{
-					startAdornment: (
-						<InputAdornment
-							position="start"
-							sx={{ pr: 0.5, fontSize: '0.75rem' }}
-						>
-							{icon}
-						</InputAdornment>
-					),
-					sx: {
-						px: 1,
-						fontWeight: 'bold',
-					},
-				}}
+			{/* Attribute Label with Icon */}
+			<Box
 				sx={{
-					maxWidth: '6rem',
+					display: 'flex',
+					alignItems: 'center',
+					gap: 0.5,
+					mb: 0.5,
 				}}
 			>
-				{attributeTypeArray.map((at) => (
-					<MenuItem key={at} value={at}>
-						d{at}
-					</MenuItem>
-				))}
-			</AttributeField>
+				<Box sx={{ fontSize: '0.875rem', color: 'text.secondary' }}>
+					{icon}
+				</Box>
+				<Typography
+					variant="caption"
+					sx={{
+						fontWeight: 600,
+						color: 'text.secondary',
+						textTransform: 'uppercase',
+						letterSpacing: '0.5px',
+					}}
+				>
+					{getAttributeAbbreviation(label)}
+				</Typography>
+			</Box>
 
+			{/* Die Value Display - Game UI Style */}
 			<Box
-				sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+				sx={{
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					width: '100%',
+				}}
+			>
+				<AttributeField
+					select
+					value={attribute.value}
+					onChange={(event) =>
+						updateAttribute({
+							value: Number(event.target.value) as AttributeType,
+						})
+					}
+					variant="standard"
+					InputProps={{
+						disableUnderline: true,
+						sx: {
+							fontWeight: 'bold',
+							fontSize: '1.25rem',
+							textAlign: 'center',
+							'& .MuiSelect-select': {
+								py: 0.25,
+								pr: '20px',
+								textAlign: 'center',
+							},
+						},
+					}}
+					sx={{
+						maxWidth: '4.5rem',
+						'& .MuiInput-root': {
+							justifyContent: 'center',
+						},
+					}}
+				>
+					{attributeTypeArray.map((at) => (
+						<MenuItem key={at} value={at}>
+							d{at}
+						</MenuItem>
+					))}
+				</AttributeField>
+			</Box>
+
+			{/* Wound Checkbox */}
+			<Box
+				sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 0.5 }}
 			>
 				<Tooltip title={getWoundTooltip(label)} placement="bottom">
 					<Checkbox
 						size="small"
-						icon={<HeartBrokenOutlined />}
-						checkedIcon={<HeartBroken color="error" />}
+						icon={<HeartBrokenOutlined sx={{ fontSize: '1rem' }} />}
+						checkedIcon={<HeartBroken color="error" sx={{ fontSize: '1rem' }} />}
 						checked={attribute.wounded}
 						disabled={!attribute.wounded && totalWounds >= 3}
 						onChange={handleWoundChange}
 						sx={{ p: 0.25 }}
 					/>
 				</Tooltip>
-				{attribute.wounded && (
-					<Typography
-						variant="caption"
-						color="error"
-						sx={{ textAlign: 'center', lineHeight: 1 }}
-					>
-						+1 bane
-					</Typography>
-				)}
 			</Box>
 		</Box>
 	)
