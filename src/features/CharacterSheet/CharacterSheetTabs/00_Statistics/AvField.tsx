@@ -44,7 +44,8 @@ export const AvField = () => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						minWidth: '3rem',
+						minWidth: '3.5rem',
+						maxWidth: '4.5rem',
 						borderRadius: 1,
 						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
 						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
@@ -53,12 +54,12 @@ export const AvField = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Shield sx={{ fontSize: '0.75rem', color: '#78909c' }} />
+						<Shield sx={{ fontSize: '0.7rem', color: '#78909c' }} />
 						<Typography
 							variant="caption"
 							sx={{
 								fontWeight: 700,
-								fontSize: '0.6rem',
+								fontSize: '0.55rem',
 								color: '#78909c',
 								textTransform: 'uppercase',
 							}}
@@ -69,8 +70,9 @@ export const AvField = () => {
 					<Typography
 						sx={{
 							fontWeight: 'bold',
-							fontSize: '1rem',
+							fontSize: '0.95rem',
 							lineHeight: 1.2,
+							textAlign: 'center',
 						}}
 					>
 						{totalAV}
@@ -87,7 +89,7 @@ export const AvField = () => {
 							'&:hover': { opacity: 1 },
 						}}
 					>
-						<Settings sx={{ fontSize: '0.75rem' }} />
+						<Settings sx={{ fontSize: '0.65rem' }} />
 					</IconButton>
 				</Box>
 			</Tooltip>

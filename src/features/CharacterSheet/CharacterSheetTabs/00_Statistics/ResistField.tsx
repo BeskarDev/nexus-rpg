@@ -91,7 +91,8 @@ export const ResistField = () => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						minWidth: '3rem',
+						minWidth: '3.5rem',
+						maxWidth: '4.5rem',
 						borderRadius: 1,
 						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
 						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
@@ -100,12 +101,12 @@ export const ResistField = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Psychology sx={{ fontSize: '0.75rem', color: '#ba68c8' }} />
+						<Psychology sx={{ fontSize: '0.7rem', color: '#ba68c8' }} />
 						<Typography
 							variant="caption"
 							sx={{
 								fontWeight: 700,
-								fontSize: '0.6rem',
+								fontSize: '0.55rem',
 								color: '#ba68c8',
 								textTransform: 'uppercase',
 							}}
@@ -116,8 +117,9 @@ export const ResistField = () => {
 					<Typography
 						sx={{
 							fontWeight: 'bold',
-							fontSize: '1rem',
+							fontSize: '0.95rem',
 							lineHeight: 1.2,
+							textAlign: 'center',
 						}}
 					>
 						{displayValue}
@@ -134,7 +136,7 @@ export const ResistField = () => {
 							'&:hover': { opacity: 1 },
 						}}
 					>
-						<Settings sx={{ fontSize: '0.75rem' }} />
+						<Settings sx={{ fontSize: '0.65rem' }} />
 					</IconButton>
 				</Box>
 			</Tooltip>

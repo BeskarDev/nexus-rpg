@@ -112,7 +112,8 @@ export const ParryField = () => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						minWidth: '3rem',
+						minWidth: '3.5rem',
+						maxWidth: '4.5rem',
 						borderRadius: 1,
 						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
 						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
@@ -121,12 +122,12 @@ export const ParryField = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Security sx={{ fontSize: '0.75rem', color: '#e57373' }} />
+						<Security sx={{ fontSize: '0.7rem', color: '#e57373' }} />
 						<Typography
 							variant="caption"
 							sx={{
 								fontWeight: 700,
-								fontSize: '0.6rem',
+								fontSize: '0.55rem',
 								color: '#e57373',
 								textTransform: 'uppercase',
 							}}
@@ -137,8 +138,9 @@ export const ParryField = () => {
 					<Typography
 						sx={{
 							fontWeight: 'bold',
-							fontSize: '1rem',
+							fontSize: '0.95rem',
 							lineHeight: 1.2,
+							textAlign: 'center',
 						}}
 					>
 						{displayValue}
@@ -155,7 +157,7 @@ export const ParryField = () => {
 							'&:hover': { opacity: 1 },
 						}}
 					>
-						<Settings sx={{ fontSize: '0.75rem' }} />
+						<Settings sx={{ fontSize: '0.65rem' }} />
 					</IconButton>
 				</Box>
 			</Tooltip>

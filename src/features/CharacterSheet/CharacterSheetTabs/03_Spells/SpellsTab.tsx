@@ -6,19 +6,17 @@ import {
 	IconButton,
 	TextField,
 	Tooltip,
-	Select,
-	MenuItem,
-	FormControl,
-	InputLabel,
+	Typography,
+	alpha,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
-import { AddCircle, ExpandMore, HelpOutline, Search, SwapVert } from '@mui/icons-material'
+import { AddCircle, ExpandMore, Search, SwapVert, AutoFixHigh, Star, FlashOn } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from '@hello-pangea/dnd'
 import { CharacterDocument, Spell } from '../../../../types/Character'
-import { AttributeField, SectionHeader } from '../../CharacterSheet'
+import { SectionHeader } from '../../CharacterSheet'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
@@ -114,76 +112,167 @@ export const SpellsTab: React.FC = () => {
 				width: '100%',
 			}}
 		>
-			<Box sx={{ mb: 2 }}>
+			<Box sx={{ mb: 2, width: '100%' }}>
+				{/* Magic Info Cards Row */}
 				<Box
 					sx={{
-						mx: 'auto',
-						display: 'flex',
-						alignItems: 'center',
-						gap: 1,
-					}}
-				>
-					<FormControl variant="standard" sx={{ minWidth: '8rem' }}>
-						<InputLabel>Magic Skill</InputLabel>
-						<Select
-							value={magicSkill}
-							onChange={(event) =>
-								updateCharacter({
-									spells: { magicSkill: event.target.value },
-								})
-							}
-							label="Magic Skill"
-							disabled={true}
-						>
-							<MenuItem value="">None</MenuItem>
-							<MenuItem value="Arcana">Arcana</MenuItem>
-							<MenuItem value="Mysticism">Mysticism</MenuItem>
-						</Select>
-					</FormControl>
-					<TextField
-						variant="standard"
-						value={specialization}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { specialization: event.target.value },
-							})
-						}
-						label="Specialization"
-						sx={{ mr: 1 }}
-					/>
-				</Box>
-				<Box
-					sx={{
-						mt: 1,
-						mx: 'auto',
 						display: 'flex',
 						alignItems: 'flex-start',
 						flexWrap: 'wrap',
-						gap: 2,
+						gap: 0.75,
+						mb: 1,
 					}}
 				>
-					<AttributeField
-						size="small"
-						type="number"
-						value={spellCatalystDamage}
-						onChange={(event) =>
-							updateCharacter({
-								spells: { spellCatalystDamage: Number(event.target.value) },
-							})
-						}
-						label="Spell Catalyst"
-						helperText=" "
+					{/* Magic Skill Card */}
+					<Box
 						sx={{
-							maxWidth: '5.5rem',
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							minWidth: '5rem',
+							borderRadius: 1,
+							border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+							bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+							p: 0.5,
 						}}
-					/>
+					>
+						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+							<AutoFixHigh sx={{ fontSize: '0.7rem', color: '#ba68c8' }} />
+							<Typography
+								variant="caption"
+								sx={{
+									fontWeight: 700,
+									fontSize: '0.55rem',
+									color: '#ba68c8',
+									textTransform: 'uppercase',
+								}}
+							>
+								Magic
+							</Typography>
+						</Box>
+						<Typography
+							sx={{
+								fontWeight: 'bold',
+								fontSize: '0.85rem',
+								lineHeight: 1.2,
+								textAlign: 'center',
+							}}
+						>
+							{magicSkill || '—'}
+						</Typography>
+					</Box>
+
+					{/* Specialization Card */}
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							minWidth: '5rem',
+							borderRadius: 1,
+							border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+							bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+							p: 0.5,
+							position: 'relative',
+						}}
+					>
+						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+							<Star sx={{ fontSize: '0.7rem', color: '#ffb74d' }} />
+							<Typography
+								variant="caption"
+								sx={{
+									fontWeight: 700,
+									fontSize: '0.55rem',
+									color: '#ffb74d',
+									textTransform: 'uppercase',
+								}}
+							>
+								Spec.
+							</Typography>
+						</Box>
+						<TextField
+							variant="standard"
+							size="small"
+							value={specialization}
+							onChange={(event) =>
+								updateCharacter({
+									spells: { specialization: event.target.value },
+								})
+							}
+							InputProps={{
+								disableUnderline: true,
+								sx: {
+									fontWeight: 'bold',
+									fontSize: '0.85rem',
+									textAlign: 'center',
+									'& input': {
+										textAlign: 'center',
+										p: 0,
+									},
+								},
+							}}
+							sx={{ maxWidth: '5rem' }}
+						/>
+					</Box>
+
+					{/* Spell Catalyst Card */}
 					<Tooltip title="bonus damage per SL from your Spell Catalyst">
-						<HelpOutline fontSize="small" sx={{ mt: 1, mb: 0.75 }} />
+						<Box
+							sx={{
+								display: 'flex',
+								flexDirection: 'column',
+								alignItems: 'center',
+								minWidth: '4rem',
+								borderRadius: 1,
+								border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+								bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+								p: 0.5,
+							}}
+						>
+							<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+								<FlashOn sx={{ fontSize: '0.7rem', color: '#64b5f6' }} />
+								<Typography
+									variant="caption"
+									sx={{
+										fontWeight: 700,
+										fontSize: '0.55rem',
+										color: '#64b5f6',
+										textTransform: 'uppercase',
+									}}
+								>
+									Catalyst
+								</Typography>
+							</Box>
+							<TextField
+								variant="standard"
+								size="small"
+								type="number"
+								value={spellCatalystDamage}
+								onChange={(event) =>
+									updateCharacter({
+										spells: { spellCatalystDamage: Number(event.target.value) },
+									})
+								}
+								InputProps={{
+									disableUnderline: true,
+									sx: {
+										fontWeight: 'bold',
+										fontSize: '0.95rem',
+										textAlign: 'center',
+										'& input': {
+											textAlign: 'center',
+											p: 0,
+										},
+									},
+								}}
+								sx={{ maxWidth: '2.5rem' }}
+							/>
+						</Box>
 					</Tooltip>
+
+					{/* Focus Field */}
 					<FocusField />
 				</Box>
-
-				<Box sx={{ width: '100%', flexGrow: 1 }} />
 
 				<Accordion defaultExpanded>
 					<AccordionSummary expandIcon={<ExpandMore />}>

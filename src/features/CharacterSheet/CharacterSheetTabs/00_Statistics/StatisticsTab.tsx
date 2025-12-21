@@ -140,9 +140,9 @@ export const StatisticsTab: React.FC = () => {
 			<Box
 				sx={{
 					display: 'flex',
-					gap: 0.5,
+					gap: 0.75,
 					flexWrap: 'nowrap',
-					maxWidth: '17rem',
+					maxWidth: '19rem',
 				}}
 			>
 				<AttributeColumn
@@ -191,34 +191,37 @@ export const StatisticsTab: React.FC = () => {
 				/>
 			</Box>
 
-			{/* Health, AV and Defenses row */}
+			{/* HP, AV, and Fatigue row */}
 			<Box
 				sx={{
 					display: 'flex',
 					flexWrap: 'wrap',
-					gap: 0.5,
+					gap: 0.75,
 					alignItems: 'flex-start',
 				}}
 			>
 				<AvField />
-
-				{/* HP section */}
 				<HpField />
+				<FatigueTracker
+					current={fatigue?.current || 0}
+					max={fatigue?.max || 6}
+					onFatigueChange={(newFatigue) =>
+						updateCharacter({
+							statistics: { fatigue: newFatigue },
+						})
+					}
+				/>
+			</Box>
 
-				{/* Fatigue Tracker */}
-				<Box sx={{ maxWidth: '5rem' }}>
-					<FatigueTracker
-						current={fatigue?.current || 0}
-						max={fatigue?.max || 6}
-						onFatigueChange={(newFatigue) =>
-							updateCharacter({
-								statistics: { fatigue: newFatigue },
-							})
-						}
-					/>
-				</Box>
-
-				{/* Defenses */}
+			{/* Defenses row - Parry, Dodge, Resist */}
+			<Box
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					gap: 0.75,
+					alignItems: 'flex-start',
+				}}
+			>
 				<ParryField />
 				<DodgeField />
 				<ResistField />
