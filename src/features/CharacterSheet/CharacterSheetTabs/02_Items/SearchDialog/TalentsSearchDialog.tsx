@@ -1,5 +1,15 @@
-import React, { useState } from 'react'
-import { Typography, Chip } from '@mui/material'
+import React, { useMemo, useState } from 'react'
+import {
+	Typography,
+	Chip,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+	Checkbox,
+	ListItemText,
+	Box,
+} from '@mui/material'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import talentsData from '../../../../../utils/data/json/talents.json'
 import { CharacterDocument } from '../../../../../types/Character'
@@ -29,6 +39,34 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 	character,
 }) => {
 	const [selectedTalents, setSelectedTalents] = useState<Set<string>>(new Set())
+	const [skillFilter, setSkillFilter] = useState<string[]>([])
+
+	const skillOptions = useMemo(
+		() =>
+			Array.from(
+				new Set(
+					(talentsData as TalentData[]).map(
+						(talent) =>
+							normalizeSkillName(talent['skill requirement']) ||
+							talent['skill requirement'],
+					),
+				),
+			).sort(),
+		[],
+	)
+
+	const filteredTalents = useMemo(
+		() =>
+			(talentsData as TalentData[]).filter((talent) => {
+				const normalized =
+					normalizeSkillName(talent['skill requirement']) ||
+					talent['skill requirement']
+				return (
+					!skillFilter.length || skillFilter.some((skill) => skill === normalized)
+				)
+			}),
+		[skillFilter],
+	)
 
 	const columns: SearchDialogColumn<TalentData>[] = [
 		{
@@ -104,7 +142,7 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 			open={open}
 			onClose={onClose}
 			title="Search Talents"
-			data={talentsData as TalentData[]}
+			data={filteredTalents}
 			columns={columns}
 			searchFields={['name', 'skill requirement', 'description']}
 			selectedItems={selectedTalents}
@@ -113,6 +151,37 @@ export const TalentsSearchDialog: React.FC<TalentsSearchDialogProps> = ({
 			getItemKey={(talent) => talent.name}
 			importButtonText="Import"
 			searchPlaceholder="Search by name, skill requirement, or description..."
+			filters={
+				<Box
+					sx={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						gap: 1,
+						alignItems: 'center',
+					}}
+				>
+					<FormControl size="small" sx={{ minWidth: '12rem' }}>
+						<InputLabel id="talent-skill-filter-label">Skill</InputLabel>
+						<Select
+							multiple
+							labelId="talent-skill-filter-label"
+							value={skillFilter}
+							label="Skill"
+							onChange={(event) => setSkillFilter(event.target.value as string[])}
+							renderValue={(selected) =>
+								selected.length ? selected.join(', ') : 'All skills'
+							}
+						>
+							{skillOptions.map((skill) => (
+								<MenuItem key={skill} value={skill}>
+									<Checkbox checked={skillFilter.indexOf(skill) > -1} />
+									<ListItemText primary={skill} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+				</Box>
+			}
 		/>
 	)
 }
