@@ -92,7 +92,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 			expanded={expanded}
 			onChange={(_, isExpanded) => setExpanded(isExpanded)}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-sm)', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-lg)', mt: 0 }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMore />}
@@ -156,7 +156,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
-				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+				<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, width: '100%' }}>
 					<TextField
 						label="Description"
 						size="small"
@@ -166,7 +166,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
 						onBlur={() => updateAbility({ description })}
-						sx={{ mt: 0, maxWidth: '20rem' }}
+						sx={{ mt: 0, width: '100%' }}
 					/>
 
 					{/* Action Type Dropdown and Action Buttons in same row */}
@@ -175,10 +175,11 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 							display: 'flex',
 							gap: 1,
 							alignItems: 'center',
+							flexWrap: 'wrap',
 							justifyContent: 'space-between',
 						}}
 					>
-						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
 							<FormControl size="small" sx={{ width: '9.5rem' }}>
 								<InputLabel id="action-type-label">Action Type</InputLabel>
 								<Select

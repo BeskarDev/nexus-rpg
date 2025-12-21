@@ -1,10 +1,33 @@
 # Character Sheet UX Design Specification
 
 ## Document Information
-- **Status**: In Implementation
+- **Status**: In Implementation (Phase 1 & 3 Complete)
 - **Created**: December 21, 2024
 - **Last Updated**: December 21, 2024
 - **Purpose**: Define comprehensive UX design, unified component patterns, and migration plan for the Character Sheet overhaul
+
+### Implementation Progress
+
+| Phase | Status | Notes |
+|-------|--------|-------|
+| Phase 1: Foundation | ✅ Complete | CSS variables, layout constraints |
+| Phase 2: Component Migration | ⏳ Pending | UnifiedListItem component |
+| Phase 3: Layout Integration | ✅ Complete | Centered layout, removed scrollbars, reorder mode |
+| Phase 4: Polish & QA | ⏳ Pending | Accessibility audit, documentation |
+
+### Recent Changes (December 21, 2024)
+
+**Phase 1 & 3 Implementation:**
+- Added CSS custom properties for layout constraints (`--cs-max-width-sm/md/lg/xl/page`)
+- Changed main container `justifyContent` from `flex-start` to `center` for proper centering
+- Updated CategorizedAbilities max-width from `--cs-max-width-sm` to `--cs-max-width-lg`
+- Updated SpellsTab max-width from `--cs-max-width-md` to `--cs-max-width-lg`
+- Updated AbilityRow max-width from `--cs-max-width-sm` to `--cs-max-width-lg`
+- Added reorder mode toggle button (SwapVert icon) to all list headers
+- Updated DynamicListItem to support `showDragHandle` prop (hidden by default)
+- Fixed AbilityRow detail section to use `flexWrap: 'wrap'` for proper content wrapping
+- Removed internal scrollbars from AccordionDetails components
+- All row components now expand on row click + icon click
 
 ### Docusaurus Context
 The Character Sheet is a single page/view within the Docusaurus app. All Character Sheet components live within the container with CSS class `character-sheet-page`. Layout changes must work within the existing Docusaurus theme and may be affected by outer container styles. Where possible, use MUI theme and `sx` prop for styling; resort to plain CSS only when necessary.

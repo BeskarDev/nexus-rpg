@@ -4,6 +4,7 @@ import {
 	Build,
 	Search,
 	WarningAmberOutlined,
+	SwapVert,
 } from '@mui/icons-material'
 import {
 	Accordion,
@@ -61,6 +62,19 @@ export const CategorizedAbilities: React.FC = () => {
 	const [isCombatArtsDialogOpen, setIsCombatArtsDialogOpen] = useState(false)
 	const [isTalentsDialogOpen, setIsTalentsDialogOpen] = useState(false)
 	const [isTalentInfoDialogOpen, setIsTalentInfoDialogOpen] = useState(false)
+	const [reorderMode, setReorderMode] = useState<Record<AbilityTag, boolean>>({
+		'Combat Art': false,
+		Talent: false,
+		Folk: false,
+		Other: false,
+	})
+
+	const toggleReorderMode = (tag: AbilityTag) => {
+		setReorderMode((prev) => ({
+			...prev,
+			[tag]: !prev[tag],
+		}))
+	}
 
 	const totalSpentXp =
 		xp?.spend ??
@@ -177,7 +191,7 @@ export const CategorizedAbilities: React.FC = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				width: '100%',
-				maxWidth: 'var(--cs-max-width-sm)',
+				maxWidth: 'var(--cs-max-width-lg)',
 			}}
 		>
 			{/* Quick Ref Section */}
@@ -260,6 +274,22 @@ export const CategorizedAbilities: React.FC = () => {
 										</IconButton>
 									</Tooltip>
 								)}
+								<Tooltip title={reorderMode[tag] ? 'Exit reorder mode' : 'Reorder abilities'}>
+									<IconButton
+										size="small"
+										onClick={(event) => {
+											event.stopPropagation()
+											toggleReorderMode(tag)
+										}}
+										sx={{
+											border: '1px solid',
+											borderColor: reorderMode[tag] ? 'primary.main' : 'divider',
+											color: reorderMode[tag] ? 'primary.main' : 'inherit',
+										}}
+									>
+										<SwapVert fontSize="inherit" />
+									</IconButton>
+								</Tooltip>
 								<IconButton
 									onClick={(event) => {
 										addNewAbility(tag)
@@ -308,6 +338,7 @@ export const CategorizedAbilities: React.FC = () => {
 										key={ability.id}
 										id={ability.id}
 										index={index}
+										showDragHandle={reorderMode[tag]}
 										sx={{ alignItems: 'center' }}
 									>
 										<AbilityRow

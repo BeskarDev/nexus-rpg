@@ -13,7 +13,7 @@ import {
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 
-import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline, Search, SwapVert } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from '@hello-pangea/dnd'
@@ -34,6 +34,7 @@ export const SpellsTab: React.FC = () => {
 		useMemo(() => activeCharacter.spells, [activeCharacter.spells])
 
 	const [isSpellsDialogOpen, setIsSpellsDialogOpen] = useState(false)
+	const [reorderMode, setReorderMode] = useState(false)
 
 	// Get Quick Ref selections
 	const quickRefSelections = activeCharacter.skills.quickRefSelections || {
@@ -110,7 +111,7 @@ export const SpellsTab: React.FC = () => {
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-				maxWidth: 'var(--cs-max-width-md)',
+				maxWidth: 'var(--cs-max-width-lg)',
 			}}
 		>
 			<Box sx={{ mb: 2 }}>
@@ -188,6 +189,23 @@ export const SpellsTab: React.FC = () => {
 					<AccordionSummary expandIcon={<ExpandMore />}>
 						<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 							<SectionHeader>Spells</SectionHeader>
+							<Tooltip title={reorderMode ? 'Exit reorder mode' : 'Reorder spells'}>
+								<IconButton
+									size="small"
+									onClick={(event) => {
+										event.stopPropagation()
+										setReorderMode(!reorderMode)
+									}}
+									sx={{
+										mb: 0.75,
+										border: '1px solid',
+										borderColor: reorderMode ? 'primary.main' : 'divider',
+										color: reorderMode ? 'primary.main' : 'inherit',
+									}}
+								>
+									<SwapVert fontSize="inherit" />
+								</IconButton>
+							</Tooltip>
 							<IconButton
 								onClick={(event) => {
 									addNewSpell()
@@ -223,6 +241,7 @@ export const SpellsTab: React.FC = () => {
 									key={s.id}
 									id={s.id}
 									index={index}
+									showDragHandle={reorderMode}
 									sx={{ alignItems: 'baseline' }}
 								>
 									<SpellRow

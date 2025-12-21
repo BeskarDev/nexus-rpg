@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
 	Accordion,
 	AccordionDetails,
@@ -7,7 +7,7 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material'
-import { AddCircle, ExpandMore, HelpOutline, Search } from '@mui/icons-material'
+import { AddCircle, ExpandMore, HelpOutline, Search, SwapVert } from '@mui/icons-material'
 import { DropResult } from '@hello-pangea/dnd'
 import { DynamicList } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
@@ -83,6 +83,8 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 	onToggleWeaponQuickRef,
 	onToggleItemQuickRef,
 }) => {
+	const [reorderMode, setReorderMode] = useState(false)
+
 	const filteredItems = showWeaponsOnly
 		? items.filter((item) => 'damage' in item)
 		: showItemsOnly
@@ -105,6 +107,23 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 							<HelpOutline fontSize="small" sx={{ mb: 0.75 }} />
 						</Tooltip>
 					)}
+					<Tooltip title={reorderMode ? 'Exit reorder mode' : 'Reorder items'}>
+						<IconButton
+							size="small"
+							onClick={(event) => {
+								event.stopPropagation()
+								setReorderMode(!reorderMode)
+							}}
+							sx={{
+								mb: 0.75,
+								border: '1px solid',
+								borderColor: reorderMode ? 'primary.main' : 'divider',
+								color: reorderMode ? 'primary.main' : 'inherit',
+							}}
+						>
+							<SwapVert fontSize="inherit" />
+						</IconButton>
+					</Tooltip>
 					{onAddNewWeapon && (
 						<IconButton
 							size="small"
@@ -162,6 +181,7 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 							key={item.id}
 							id={item.id}
 							index={index}
+							showDragHandle={reorderMode}
 							sx={{ alignItems: 'baseline' }}
 						>
 							{'damage' in item ? (

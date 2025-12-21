@@ -99,7 +99,7 @@ export const CharacterSheet: React.FC = () => {
 						display: 'flex',
 						flexWrap: 'wrap',
 						gap: 3, // theme.spacing(3) = 24px, equivalent to --cs-panel-gap
-						justifyContent: 'flex-start',
+						justifyContent: 'center',
 						backgroundColor: 'var(--ifm-background-color)',
 					}}
 				>
