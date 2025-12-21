@@ -2,7 +2,8 @@
 
 ## Document Information
 - **Status**: Draft - Pending Review and Approval
-- **Created**: December 2024
+- **Created**: December 21, 2024
+- **Last Updated**: December 21, 2024
 - **Purpose**: Define comprehensive UX design, unified component patterns, and migration plan for the Character Sheet overhaul
 
 ---
@@ -966,12 +967,21 @@ For each migration:
 
 ### 10.6 Risk Mitigation
 
-| Risk | Mitigation |
-|------|------------|
-| Breaking existing functionality | Feature flag for gradual rollout |
-| Performance regression | Benchmark before/after each phase |
-| Complex merge conflicts | Small, focused PRs per phase |
-| Scope creep | Strict adherence to spec, change requests deferred |
+| Risk | Mitigation | Rollback Trigger |
+|------|------------|------------------|
+| Breaking existing functionality | Feature flag for gradual rollout | Any critical bug in production affecting >5% of users |
+| Performance regression | Benchmark before/after each phase | Render time increase >20% or bundle size increase >15% |
+| Complex merge conflicts | Small, focused PRs per phase | Unable to resolve conflicts within 2 business days |
+| Scope creep | Strict adherence to spec, change requests deferred | Timeline extends beyond 150% of estimated duration |
+
+**Success Criteria per Phase:**
+
+| Phase | Success Criteria | Failure Threshold |
+|-------|------------------|-------------------|
+| Phase 1 | All unit tests pass, CSS variables working | Any test failure, variable conflicts |
+| Phase 2 | All migrated components functionally identical to originals | Any regression in existing functionality |
+| Phase 3 | Zero internal scrollbars, proper responsive behavior | Any layout break at target breakpoints |
+| Phase 4 | WCAG AA compliance, no visual regressions | Accessibility violations, customer complaints |
 
 ### 10.7 Rollback Plan
 
@@ -1038,9 +1048,11 @@ Each phase can be independently reverted:
 | Empty list | Show empty state message |
 | Single item | Render properly, drag disabled |
 | 100+ items | Smooth scroll, no lag |
-| Long text in fields | Truncate with ellipsis or wrap |
+| Long text in name/title fields | Truncate with ellipsis after field width (text-overflow: ellipsis) |
+| Long text in description fields | Wrap to multiple lines, max 5 lines collapsed, expandable to full content |
+| Maximum character limits | Name: 100 chars, Description: 2000 chars, Properties: 500 chars |
 | Special characters | Render correctly, no XSS |
-| Missing optional fields | Show placeholder or hide |
+| Missing optional fields | Show placeholder text in italic or hide field entirely based on type |
 
 ### 11.5 Accessibility Tests
 
