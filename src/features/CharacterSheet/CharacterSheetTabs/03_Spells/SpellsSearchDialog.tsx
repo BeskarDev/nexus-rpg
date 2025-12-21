@@ -1,5 +1,16 @@
-import React, { useState } from 'react'
-import { Typography, Chip } from '@mui/material'
+import React, { useMemo, useState } from 'react'
+import {
+	Typography,
+	Chip,
+	Box,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+	Checkbox,
+	ListItemText,
+	Button,
+} from '@mui/material'
 import {
 	SearchDialog,
 	SearchDialogColumn,
@@ -70,11 +81,52 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 	magicType,
 }) => {
 	const [selectedSpells, setSelectedSpells] = useState<Set<string>>(new Set())
+	const [rankFilter, setRankFilter] = useState<string[]>([])
+	const [typeFilter, setTypeFilter] = useState<string[]>([])
 
 	const spellsData =
 		magicType === 'Arcana' ? arcaneSpellsData : mysticSpellsData
 	const typeFieldKey = magicType === 'Arcana' ? 'discipline' : 'tradition'
 	const typeLabel = magicType === 'Arcana' ? 'Discipline' : 'Tradition'
+
+	const rankOptions = useMemo(
+		() =>
+			Array.from(
+				new Set((spellsData as SpellData[]).map((spell) => spell.rank)),
+			).sort((a, b) => Number(a) - Number(b)),
+		[spellsData],
+	)
+
+	const typeOptions = useMemo(
+		() =>
+			Array.from(
+				new Set(
+					(spellsData as SpellData[]).map(
+						(spell) => spell[typeFieldKey as keyof SpellData] as string,
+					),
+				),
+			).filter(Boolean),
+		[spellsData, typeFieldKey],
+	)
+
+	const filteredSpells = useMemo(
+		() =>
+			(spellsData as SpellData[]).filter((spell) => {
+				const rankMatch =
+					!rankFilter.length ||
+					rankFilter.includes(String(spell.rank))
+				const typeValue =
+					(spell[typeFieldKey as keyof SpellData] as string) || ''
+				const typeMatch = !typeFilter.length || typeFilter.includes(typeValue)
+				return rankMatch && typeMatch
+			}),
+		[spellsData, rankFilter, typeFilter, typeFieldKey],
+	)
+
+	const clearFilters = () => {
+		setRankFilter([])
+		setTypeFilter([])
+	}
 
 	const columns: SearchDialogColumn<SpellData>[] = [
 		{
@@ -228,7 +280,7 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 			open={open}
 			onClose={onClose}
 			title={`Search ${magicType === 'Arcana' ? 'Arcane' : 'Mystic'} Spells`}
-			data={spellsData as SpellData[]}
+			data={filteredSpells as SpellData[]}
 			columns={columns}
 			searchFields={searchFields}
 			selectedItems={selectedSpells}
@@ -237,6 +289,66 @@ export const SpellsSearchDialog: React.FC<SpellsSearchDialogProps> = ({
 			getItemKey={(spell) => spell.name}
 			importButtonText="Import"
 			searchPlaceholder={`Search by name, ${typeLabel.toLowerCase()}, rank, or effect...`}
+			filters={
+				<>
+					<FormControl size="small" sx={{ minWidth: '10rem' }}>
+						<InputLabel id="rank-filter-label">Rank</InputLabel>
+						<Select
+							multiple
+							labelId="rank-filter-label"
+							value={rankFilter}
+							label="Rank"
+							onChange={(event) =>
+								setRankFilter(event.target.value as string[])
+							}
+							renderValue={(selected) =>
+								selected.length ? selected.join(', ') : 'All ranks'
+							}
+						>
+							{rankOptions.map((rank) => (
+								<MenuItem key={rank} value={String(rank)}>
+									<Checkbox checked={rankFilter.indexOf(String(rank)) > -1} />
+									<ListItemText primary={`Rank ${rank}`} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+
+					<FormControl size="small" sx={{ minWidth: '12rem' }}>
+						<InputLabel id="type-filter-label">{typeLabel}</InputLabel>
+						<Select
+							multiple
+							labelId="type-filter-label"
+							value={typeFilter}
+							label={typeLabel}
+							onChange={(event) =>
+								setTypeFilter(event.target.value as string[])
+							}
+							renderValue={(selected) =>
+								selected.length ? selected.join(', ') : `All ${typeLabel}s`
+							}
+						>
+							{typeOptions.map((type) => (
+								<MenuItem key={type} value={type}>
+									<Checkbox checked={typeFilter.indexOf(type) > -1} />
+									<ListItemText primary={type} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+						<Button
+							variant="text"
+							size="small"
+							onClick={clearFilters}
+							disabled={!rankFilter.length && !typeFilter.length}
+						>
+							Clear filters
+						</Button>
+					</Box>
+				</>
+			}
 		/>
 	)
 }

@@ -1,15 +1,29 @@
-import { AddCircle, ExpandMore, Build, Search } from '@mui/icons-material'
+import {
+	AddCircle,
+	ExpandMore,
+	Build,
+	Search,
+	WarningAmberOutlined,
+} from '@mui/icons-material'
 import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
 	Box,
+	Chip,
 	IconButton,
 	Tooltip,
 	Menu,
 	MenuItem,
 	FormControlLabel,
 	Checkbox,
+	Typography,
+	Dialog,
+	DialogTitle,
+	DialogContent,
+	DialogContentText,
+	DialogActions,
+	Button,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
 import { DropResult } from '@hello-pangea/dnd'
@@ -26,12 +40,18 @@ import { CombatArtsSearchDialog } from './CombatArtsSearchDialog'
 import { TalentsSearchDialog } from '../02_Items/SearchDialog/TalentsSearchDialog'
 import { AbilityRow } from './AbilityRow'
 import { QuickRefSection } from './QuickRefSection'
+import { getTalentPointSummaries } from '../../utils/calculateTalentPoints'
+import { getSkillChipColor } from '../../../../constants/skills'
+import { calculateCharacterLevel } from '../../utils/calculateCharacterLevel'
+import { calculateMaxXpPerSkill } from '../../utils/validation'
 
 export const CategorizedAbilities: React.FC = () => {
 	const dispatch = useAppDispatch()
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const {
 		abilities,
+		skills: trainedSkills = [],
+		xp,
 		abilityCategoryVisibility,
 		quickRefSelections = { abilities: [], weapons: [], items: [] },
 	} = useMemo(() => activeCharacter.skills, [activeCharacter.skills])
@@ -40,6 +60,28 @@ export const CategorizedAbilities: React.FC = () => {
 		useState<null | HTMLElement>(null)
 	const [isCombatArtsDialogOpen, setIsCombatArtsDialogOpen] = useState(false)
 	const [isTalentsDialogOpen, setIsTalentsDialogOpen] = useState(false)
+	const [isTalentInfoDialogOpen, setIsTalentInfoDialogOpen] = useState(false)
+
+	const totalSpentXp =
+		xp?.spend ??
+		trainedSkills.reduce((sum, skill) => sum + (skill.xp || 0), 0)
+	const characterLevel = calculateCharacterLevel(totalSpentXp)
+	const maxXpPerSkill = calculateMaxXpPerSkill(totalSpentXp)
+
+	const { summaries: talentSummaries, unassignedSpent } = useMemo(
+		() => getTalentPointSummaries(trainedSkills, abilities),
+		[trainedSkills, abilities],
+	)
+	const missingTalentSummaries = talentSummaries.filter(
+		(summary) => summary.missing > 0,
+	)
+	const overspentTalentSummaries = talentSummaries.filter(
+		(summary) => summary.overspent > 0,
+	)
+	const openTalentSummaries = talentSummaries.filter(
+		(summary) => summary.available > summary.spent,
+	)
+	const showTalentNotice = openTalentSummaries.length > 0
 
 	const abilitiesByTag = useMemo(() => {
 		const grouped: Record<AbilityTag, Ability[]> = {
@@ -200,6 +242,24 @@ export const CategorizedAbilities: React.FC = () => {
 						<AccordionSummary expandIcon={<ExpandMore />}>
 							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 								<SectionHeader sx={{ mb: 0 }}>{tag}</SectionHeader>
+								{tag === 'Talent' && openTalentSummaries.length > 0 && (
+									<Tooltip title="Talent points overview">
+										<IconButton
+											size="small"
+											color="warning"
+											onClick={(event) => {
+												event.stopPropagation()
+												setIsTalentInfoDialogOpen(true)
+											}}
+											sx={{
+												border: '1px solid',
+												borderColor: 'divider',
+											}}
+										>
+											<WarningAmberOutlined fontSize="inherit" />
+										</IconButton>
+									</Tooltip>
+								)}
 								<IconButton
 									onClick={(event) => {
 										addNewAbility(tag)
@@ -257,6 +317,7 @@ export const CategorizedAbilities: React.FC = () => {
 											tag={ability.tag}
 											actionType={ability.actionType}
 											rank={ability.rank}
+											skill={ability.skill}
 											availableTags={[...ABILITY_TAGS]}
 											updateAbility={(update) =>
 												updateAbility(update, ability.id)
@@ -302,6 +363,55 @@ export const CategorizedAbilities: React.FC = () => {
 					setIsTalentsDialogOpen(false)
 				}}
 			/>
+
+			<Dialog
+				open={showTalentNotice && isTalentInfoDialogOpen}
+				onClose={() => setIsTalentInfoDialogOpen(false)}
+				maxWidth="xs"
+				fullWidth
+			>
+				<DialogTitle>Talent points</DialogTitle>
+				<DialogContent>
+					<DialogContentText sx={{ mb: 1 }}>
+						Every 2 XP spent in a skill grants 1 talent point for that skill&apos;s
+						talents. Level {characterLevel} (max {maxXpPerSkill} XP per skill).
+					</DialogContentText>
+					<Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+						{openTalentSummaries.map((summary) => {
+							const open = Math.max(summary.available - summary.spent, 0)
+							const text = `${summary.spent}/${summary.available} TP used`
+							return (
+								<Box
+									key={`tp-${summary.skill}`}
+									sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}
+								>
+									<Box
+										component="span"
+										sx={{
+											width: 10,
+											height: 10,
+											borderRadius: '50%',
+											bgcolor: getSkillChipColor(summary.skill),
+										}}
+									/>
+									<Typography variant="body2">
+										{summary.skill}: {text}
+									</Typography>
+								</Box>
+							)
+						})}
+						{unassignedSpent > 0 && (
+							<Typography variant="body2">
+								Assign skills to {unassignedSpent} untagged talent point
+								{unassignedSpent > 1 ? 's' : ''}.
+							</Typography>
+						)}
+					</Box>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={() => setIsTalentInfoDialogOpen(false)}>Close</Button>
+				</DialogActions>
+			</Dialog>
 		</Box>
 	)
 }

@@ -12,6 +12,7 @@ import {
 	FormControl,
 	InputLabel,
 	FormControlLabel,
+	Chip,
 } from '@mui/material'
 import React, { useState } from 'react'
 
@@ -29,6 +30,8 @@ import {
 	ACTION_TYPES,
 	getActionTypeIcon,
 } from '@site/src/types/ActionType'
+import { OFFICIAL_SKILLS, getSkillChipColor } from '@site/src/constants/skills'
+import { getSkillAbbreviation } from '@site/src/constants/skillAbbreviations'
 
 export type AbilityRowProps = {
 	title: string
@@ -36,6 +39,7 @@ export type AbilityRowProps = {
 	tag?: AbilityTag
 	actionType?: ActionType
 	rank?: number
+	skill?: string
 	availableTags: AbilityTag[]
 	updateAbility: (update: Partial<Ability>) => void
 	moveToCategory: (newTag: AbilityTag) => void
@@ -51,6 +55,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	tag,
 	actionType: initialActionType,
 	rank: initialRank,
+	skill: initialSkill,
 	availableTags,
 	updateAbility,
 	moveToCategory,
@@ -65,6 +70,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		initialActionType || 'Other',
 	)
 	const [rank, setRank] = useState<number>(initialRank || 1)
+	const [skill, setSkill] = useState<string | undefined>(initialSkill)
 	const [expanded, setExpanded] = useState(false)
 	const [moveMenuAnchor, setMoveMenuAnchor] = useState<null | HTMLElement>(null)
 
@@ -85,7 +91,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 		<Accordion
 			expanded={expanded}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '35rem', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: '24rem', mt: 0 }}
 		>
 			<AccordionSummary
 				expandIcon={<ExpandMore onClick={() => setExpanded(!expanded)} />}
@@ -111,7 +117,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						value={title}
 						onChange={(event) => setTitle(event.target.value)}
 						onBlur={() => updateAbility({ title })}
-						sx={{ maxWidth: '25rem' }}
+						sx={{ maxWidth: '12.5rem' }}
 						InputProps={{
 							startAdornment: (
 								<Box
@@ -132,6 +138,20 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 								) : undefined,
 						}}
 					/>
+					{tag === 'Talent' && skill && (
+						<Tooltip title={skill}>
+							<Chip
+								size="small"
+								label={getSkillAbbreviation(skill) || skill}
+								variant="outlined"
+								sx={{
+									borderColor: getSkillChipColor(skill),
+									color: getSkillChipColor(skill),
+									fontWeight: 600,
+								}}
+							/>
+						</Tooltip>
+					)}
 				</Box>
 			</AccordionSummary>
 			<AccordionDetails>
@@ -145,7 +165,7 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 						value={description}
 						onChange={(event) => setDescription(event.target.value)}
 						onBlur={() => updateAbility({ description })}
-						sx={{ mt: 0, maxWidth: '25rem' }}
+						sx={{ mt: 0, maxWidth: '20rem' }}
 					/>
 
 					{/* Action Type Dropdown and Action Buttons in same row */}
@@ -185,25 +205,77 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 
 							{/* Rank Selection for Talents */}
 							{tag === 'Talent' && (
-								<FormControl size="small" sx={{ width: '4rem' }}>
-									<InputLabel id="rank-label">Rank</InputLabel>
-									<Select
-										labelId="rank-label"
-										value={rank}
-										label="Rank"
-										onChange={(event) => {
-											const newRank = Number(event.target.value)
-											setRank(newRank)
-											updateAbility({ rank: newRank })
-										}}
-									>
-										<MenuItem value={1}>1</MenuItem>
-										<MenuItem value={2}>2</MenuItem>
-										<MenuItem value={3}>3</MenuItem>
-										<MenuItem value={4}>4</MenuItem>
-										<MenuItem value={5}>5</MenuItem>
-									</Select>
-								</FormControl>
+								<>
+									<FormControl size="small" sx={{ width: '4rem' }}>
+										<InputLabel id="rank-label">Rank</InputLabel>
+										<Select
+											labelId="rank-label"
+											value={rank}
+											label="Rank"
+											onChange={(event) => {
+												const newRank = Number(event.target.value)
+												setRank(newRank)
+												updateAbility({ rank: newRank })
+											}}
+										>
+											<MenuItem value={1}>1</MenuItem>
+											<MenuItem value={2}>2</MenuItem>
+											<MenuItem value={3}>3</MenuItem>
+											<MenuItem value={4}>4</MenuItem>
+											<MenuItem value={5}>5</MenuItem>
+										</Select>
+									</FormControl>
+
+									<FormControl size="small" sx={{ minWidth: '10rem' }}>
+										<InputLabel id={`skill-label-${abilityId}`}>
+											Skill
+										</InputLabel>
+										<Select
+											labelId={`skill-label-${abilityId}`}
+											value={skill || ''}
+											label="Skill"
+											onChange={(event) => {
+												const newSkill =
+													(event.target.value as string) || undefined
+												setSkill(newSkill)
+												updateAbility({ skill: newSkill || undefined })
+											}}
+											renderValue={(value) =>
+												value ? (
+													<Box
+														sx={{
+															display: 'flex',
+															alignItems: 'center',
+															gap: 0.5,
+														}}
+													>
+														<Chip
+															size="small"
+															label={value}
+															variant="outlined"
+															sx={{
+																borderColor: getSkillChipColor(value as string),
+																color: getSkillChipColor(value as string),
+																fontWeight: 600,
+															}}
+														/>
+													</Box>
+												) : (
+													<em>Unassigned</em>
+												)
+											}
+										>
+											<MenuItem value="">
+												<em>Unassigned</em>
+											</MenuItem>
+											{OFFICIAL_SKILLS.map((skillName) => (
+												<MenuItem key={skillName} value={skillName}>
+													{skillName}
+												</MenuItem>
+											))}
+										</Select>
+									</FormControl>
+								</>
 							)}
 						</Box>
 

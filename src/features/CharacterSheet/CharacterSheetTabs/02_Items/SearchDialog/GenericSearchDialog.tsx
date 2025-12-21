@@ -16,6 +16,7 @@ import {
 	Paper,
 	TableSortLabel,
 	InputAdornment,
+	Box,
 } from '@mui/material'
 import React, { useState, useMemo, ReactNode } from 'react'
 import { Search } from '@mui/icons-material'
@@ -42,6 +43,7 @@ export type SearchDialogProps<T> = {
 	getItemKey: (item: T) => string
 	importButtonText?: string
 	searchPlaceholder?: string
+	filters?: ReactNode
 }
 
 export function SearchDialog<T>({
@@ -57,6 +59,7 @@ export function SearchDialog<T>({
 	getItemKey,
 	importButtonText = 'Import',
 	searchPlaceholder = 'Search...',
+	filters,
 }: SearchDialogProps<T>) {
 	const [searchQuery, setSearchQuery] = useState('')
 	const [sortBy, setSortBy] = useState<keyof T | null>(null)
@@ -164,6 +167,19 @@ export function SearchDialog<T>({
 						),
 					}}
 				/>
+
+				{filters && (
+					<Box
+						sx={{
+							display: 'flex',
+							flexWrap: 'wrap',
+							gap: 1,
+							mb: 1,
+						}}
+					>
+						{filters}
+					</Box>
+				)}
 
 				<Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
 					{filteredData.length} item{filteredData.length !== 1 ? 's' : ''} found

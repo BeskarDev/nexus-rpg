@@ -114,18 +114,26 @@ export const CharacterSheet: React.FC = () => {
 								maxWidth: { md: '25rem', lg: '35rem', xl: '60rem' },
 							}}
 						>
-							<Tabs
-								value={activeTab}
-								onChange={handleTabChange}
-								variant="scrollable"
-								scrollButtons={false}
-								allowScrollButtonsMobile
-								sx={{ mb: 2 }}
+							<Box
+								sx={{
+									overflowX: 'auto',
+									WebkitOverflowScrolling: 'touch',
+									mb: 2,
+								}}
 							>
-								{desktopTabsConfig.map((tab) => (
-									<Tab key={tab.id} id={tab.id} label={tab.label} />
-								))}
-							</Tabs>
+								<Tabs
+									value={activeTab}
+									onChange={handleTabChange}
+									variant="scrollable"
+									scrollButtons={false}
+									allowScrollButtonsMobile
+									sx={{ minWidth: 'max-content' }}
+								>
+									{desktopTabsConfig.map((tab) => (
+										<Tab key={tab.id} id={tab.id} label={tab.label} />
+									))}
+								</Tabs>
+							</Box>
 							{(() => {
 								const TabComponent = getTabComponent(activeTab, false)
 								return TabComponent ? <TabComponent /> : null

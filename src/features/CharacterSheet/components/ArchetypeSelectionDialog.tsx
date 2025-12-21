@@ -27,6 +27,7 @@ export type ArchetypeData = {
 	}
 	suggestedSkills: string
 	recommendedTalents: string[]
+	recommendedCombatArts?: string[]
 	recommendedCompanions?: string[]
 	recommendedFamiliars?: string[]
 	startingEquipment: string[]
@@ -40,6 +41,8 @@ export type ArchetypeData = {
 		startingSpells: Array<{
 			name: string
 			rank: number
+			tradition?: string
+			discipline?: string
 		}>
 	}
 }

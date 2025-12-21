@@ -24,6 +24,14 @@
         "description": "A dog or other similar-sized animal that underwent basic training to fight and protect its owner. Can be trained as a tame animal companion, provided you have the Survival talent with the same name."
     },
     {
+        "name": "Wooden Face Mask",
+        "quality": "1",
+        "category": "Apparel",
+        "load": "0",
+        "cost": "0",
+        "description": "A simple carved mask worn for anonymity or ritual focus. Counts as worn apparel."
+    },
+    {
         "name": "Camel",
         "quality": "2",
         "category": "Animals",

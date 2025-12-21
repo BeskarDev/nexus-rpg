@@ -1,5 +1,20 @@
-import React, { useState } from 'react'
-import { Typography, Chip } from '@mui/material'
+import React, { useMemo, useState } from 'react'
+import {
+	Typography,
+	Chip,
+	Box,
+	FormControl,
+	InputLabel,
+	Select,
+	MenuItem,
+	TextField,
+	Button,
+	Checkbox,
+	ListItemText,
+	InputAdornment,
+} from '@mui/material'
+import { AttachMoney, ArrowDownward, ArrowUpward } from '@mui/icons-material'
+import { parseCostValue } from './costUtils'
 import { SearchDialog, SearchDialogColumn } from './GenericSearchDialog'
 import weaponsData from '../../../../../utils/data/json/weapons.json'
 import {
@@ -62,6 +77,55 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 	character,
 }) => {
 	const [selectedWeapons, setSelectedWeapons] = useState<Set<string>>(new Set())
+	const [qualityFilter, setQualityFilter] = useState<string[]>([])
+	const [typeFilter, setTypeFilter] = useState<string[]>([])
+	const [costMin, setCostMin] = useState('')
+	const [costMax, setCostMax] = useState('')
+
+	const qualityOptions = useMemo(
+		() =>
+			Array.from(
+				new Set((weaponsData as WeaponData[]).map((weapon) => weapon.quality)),
+			),
+		[],
+	)
+
+	const typeOptions = useMemo(
+		() =>
+			Array.from(
+				new Set((weaponsData as WeaponData[]).map((weapon) => weapon.type)),
+			),
+		[],
+	)
+
+	const filteredWeapons = useMemo(
+		() =>
+			(weaponsData as WeaponData[]).filter((weapon) => {
+				const matchesQuality =
+					!qualityFilter.length || qualityFilter.includes(weapon.quality)
+
+				const matchesType =
+					!typeFilter.length || typeFilter.includes(weapon.type)
+
+				const cost = parseCostValue(weapon.cost)
+				const min = costMin === '' ? Number.NEGATIVE_INFINITY : Number(costMin)
+				const max = costMax === '' ? Number.POSITIVE_INFINITY : Number(costMax)
+				const matchesCost =
+					cost === null
+						? costMin === '' && costMax === ''
+						: cost >= min && cost <= max
+
+				return matchesQuality && matchesType && matchesCost
+			}),
+		[weaponsData, qualityFilter, typeFilter, costMin, costMax],
+	)
+
+	const resetFilters = () => {
+		setQualityFilter([])
+		setTypeFilter([])
+		setCostMin('')
+		setCostMax('')
+	}
 
 	// Helper function to determine the base damage type for a weapon
 	const getBaseDamageType = (weapon: WeaponData): BaseDamageType => {
@@ -199,7 +263,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 				},
 				properties: weapon.properties,
 				description: `${weapon.type} weapon (Quality ${weapon.quality})`,
-				cost: parseInt(weapon.cost) || 0,
+				cost: parseCostValue(weapon.cost) || 0,
 				load: parseInt(weapon.load) || 0,
 				quality: parseInt(weapon.quality) as QualityTier,
 			}))
@@ -212,7 +276,7 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			open={open}
 			onClose={onClose}
 			title="Search Weapons"
-			data={weaponsData as WeaponData[]}
+			data={filteredWeapons as WeaponData[]}
 			columns={columns}
 			searchFields={['name', 'type', 'properties']}
 			selectedItems={selectedWeapons}
@@ -221,6 +285,117 @@ export const WeaponSearchDialog: React.FC<WeaponSearchDialogProps> = ({
 			getItemKey={(weapon) => weapon.name}
 			importButtonText="Import"
 			searchPlaceholder="Search by name, type, or properties..."
+			filters={
+				<Box
+					sx={{
+						display: 'flex',
+						flexWrap: 'wrap',
+						gap: 1,
+						alignItems: 'center',
+					}}
+				>
+					<FormControl size="small" sx={{ minWidth: '10rem' }}>
+						<InputLabel id="weapon-quality-filter-label">Quality</InputLabel>
+						<Select
+							multiple
+							labelId="weapon-quality-filter-label"
+							value={qualityFilter}
+							label="Quality"
+							onChange={(event) =>
+								setQualityFilter(event.target.value as string[])
+							}
+							renderValue={(selected) =>
+								selected.length ? selected.join(', ') : 'All qualities'
+							}
+						>
+							{qualityOptions.map((quality) => (
+								<MenuItem key={quality} value={quality}>
+									<Checkbox checked={qualityFilter.indexOf(quality) > -1} />
+									<ListItemText primary={quality} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+
+					<FormControl size="small" sx={{ minWidth: '10rem' }}>
+						<InputLabel id="weapon-type-filter-label">Weapon Type</InputLabel>
+						<Select
+							multiple
+							labelId="weapon-type-filter-label"
+							value={typeFilter}
+							label="Weapon Type"
+							onChange={(event) => setTypeFilter(event.target.value as string[])}
+							renderValue={(selected) =>
+								selected.length ? selected.join(', ') : 'All types'
+							}
+						>
+							{typeOptions.map((type) => (
+								<MenuItem key={type} value={type}>
+									<Checkbox checked={typeFilter.indexOf(type) > -1} />
+									<ListItemText primary={type} />
+								</MenuItem>
+							))}
+						</Select>
+					</FormControl>
+
+					<TextField
+						label="Min"
+						size="small"
+						type="number"
+						value={costMin}
+						onChange={(event) => setCostMin(event.target.value)}
+						sx={{ width: '7rem' }}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<AttachMoney fontSize="small" />
+								</InputAdornment>
+							),
+							endAdornment: (
+								<InputAdornment position="end">
+									<ArrowDownward fontSize="small" />
+								</InputAdornment>
+							),
+						}}
+					/>
+					<TextField
+						label="Max"
+						size="small"
+						type="number"
+						value={costMax}
+						onChange={(event) => setCostMax(event.target.value)}
+						sx={{ width: '7rem' }}
+						InputProps={{
+							startAdornment: (
+								<InputAdornment position="start">
+									<AttachMoney fontSize="small" />
+								</InputAdornment>
+							),
+							endAdornment: (
+								<InputAdornment position="end">
+									<ArrowUpward fontSize="small" />
+								</InputAdornment>
+							),
+						}}
+					/>
+
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+						<Button
+							variant="text"
+							size="small"
+							onClick={resetFilters}
+							disabled={
+								!qualityFilter.length &&
+								!typeFilter.length &&
+								!costMin &&
+								!costMax
+							}
+							>
+							Clear filters
+						</Button>
+					</Box>
+				</Box>
+			}
 		/>
 	)
 }

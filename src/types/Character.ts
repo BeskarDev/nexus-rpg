@@ -206,6 +206,7 @@ export type Ability = {
 	tag: AbilityTag
 	actionType?: ActionType
 	rank?: number // For talents: 1, 2, or 3
+	skill?: string // Optional owning skill (used for talents)
 }
 
 export type QuickRefSelections = {

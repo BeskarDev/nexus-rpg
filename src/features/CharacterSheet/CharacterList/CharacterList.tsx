@@ -154,6 +154,7 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 															handleDeleteCharacter={() =>
 																handleDeleteCharacter(char)
 															}
+															characterName={char.personal.name}
 														/>
 													}
 												>
@@ -184,9 +185,10 @@ export const CharacterList: React.FC<CharacterListProps> = ({
 						<ListItem
 							key={char.docId}
 							secondaryAction={
-								<DeleteButton
-									handleDeleteCharacter={() => handleDeleteCharacter(char)}
-								/>
+							<DeleteButton
+								handleDeleteCharacter={() => handleDeleteCharacter(char)}
+								characterName={char.personal.name}
+							/>
 							}
 						>
 							<Link

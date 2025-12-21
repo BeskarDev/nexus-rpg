@@ -12,10 +12,12 @@ import React from 'react'
 
 export type DeleteButtonProps = {
 	handleDeleteCharacter: () => void
+	characterName?: string
 }
 
 export const DeleteButton: React.FC<DeleteButtonProps> = ({
 	handleDeleteCharacter,
+	characterName,
 }) => {
 	const [open, setOpen] = React.useState(false)
 
@@ -59,7 +61,9 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 				</DialogTitle>
 				<DialogContent>
 					<DialogContentText id="alert-dialog-description">
-						Are you sure you want to delete that character?
+						{characterName
+							? `Are you sure you want to delete "${characterName}"?`
+							: 'Are you sure you want to delete that character?'}
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions sx={{ p: 2 }}>
