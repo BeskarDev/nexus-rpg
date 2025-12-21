@@ -110,7 +110,7 @@ export const SpellsTab: React.FC = () => {
 				display: 'flex',
 				columnGap: { md: 4, sm: 2, xs: 1 },
 				flexWrap: 'wrap',
-				maxWidth: '38rem',
+				maxWidth: 'var(--cs-max-width-md)',
 			}}
 		>
 			<Box sx={{ mb: 2 }}>
@@ -216,7 +216,7 @@ export const SpellsTab: React.FC = () => {
 							</Tooltip>
 						</Box>
 					</AccordionSummary>{' '}
-					<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '60vh' }}>
+					<AccordionDetails>
 						<DynamicList droppableId="spells" onDragEnd={onSpellReorder}>
 							{spells.map((s, index) => (
 								<DynamicListItem

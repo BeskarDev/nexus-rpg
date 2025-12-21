@@ -437,7 +437,7 @@ export const SkillsTab: React.FC = () => {
 				flexWrap: 'wrap',
 			}}
 		>
-			<Box sx={{ mb: 2, maxWidth: '25rem' }}>
+			<Box sx={{ mb: 2, maxWidth: 'var(--cs-max-width-sm)' }}>
 				{/* XP Section */}
 				<Box sx={{ mx: 'auto', display: 'flex' }}>
 					<AttributeField

@@ -7,17 +7,19 @@ export type DynamicListItemProps = {
 	id: string
 	index: number
 	dragDisabled?: boolean
+	showDragHandle?: boolean
 } & ListItemProps
 
 export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 	id,
 	index,
 	dragDisabled,
+	showDragHandle = false,
 	children,
 	...props
 }) => {
 	return (
-		<Draggable draggableId={id} index={index}>
+		<Draggable draggableId={id} index={index} isDragDisabled={dragDisabled}>
 			{(provided) => (
 				<ListItem
 					ref={provided.innerRef}
@@ -25,7 +27,7 @@ export const DynamicListItem: React.FC<DynamicListItemProps> = ({
 					{...props}
 					sx={{ p: 0, ...props.sx }}
 				>
-					{!dragDisabled && (
+					{showDragHandle && !dragDisabled && (
 						<ListItemIcon
 							{...provided.dragHandleProps}
 							sx={{ minWidth: '32px' }}

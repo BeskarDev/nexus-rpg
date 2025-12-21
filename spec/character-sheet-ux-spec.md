@@ -1,10 +1,13 @@
 # Character Sheet UX Design Specification
 
 ## Document Information
-- **Status**: Draft - Pending Review and Approval
+- **Status**: In Implementation
 - **Created**: December 21, 2024
 - **Last Updated**: December 21, 2024
 - **Purpose**: Define comprehensive UX design, unified component patterns, and migration plan for the Character Sheet overhaul
+
+### Docusaurus Context
+The Character Sheet is a single page/view within the Docusaurus app. All Character Sheet components live within the container with CSS class `character-sheet-page`. Layout changes must work within the existing Docusaurus theme and may be affected by outer container styles. Where possible, use MUI theme and `sx` prop for styling; resort to plain CSS only when necessary.
 
 ---
 
@@ -91,7 +94,7 @@ Mobile View (≤768px):
 #### Layout Issues
 1. **Inconsistent max-width values**: Each component defines its own max-width (24rem, 47rem, 65rem), causing visual inconsistency
 2. **Hard-coded scroll containers**: `overflowY: 'auto'` with `maxHeight: '30rem'` creates internal scrollbars
-3. **No global max-width constraint**: Content can stretch indefinitely on wide screens
+3. **No global max-width constraint**: Content can stretch indefinitely on wide screens—on ultra-wide screens the layout should center with empty space on sides
 
 #### Component Issues
 1. **Duplicate accordion implementations**: Each row type reimplements the expand/collapse pattern
@@ -100,9 +103,9 @@ Mobile View (≤768px):
 4. **Varying delete UX**: Some have confirmation dialogs, others delete immediately
 
 #### Interaction Issues
-1. **Drag handle inconsistency**: Some lists show drag handles always, others conditionally
+1. **Drag handle inconsistency**: Drag handles should only be visible during an active reorder mode (toggled via header button)
 2. **Quick Ref bookmark placement**: Sometimes in summary, sometimes in details
-3. **Expand trigger inconsistency**: Some expand on icon click only, others on row click
+3. **Expand trigger preference**: Row click + icon click should both trigger expand (preferred behavior)
 
 ---
 
@@ -128,9 +131,17 @@ Mobile View (≤768px):
 
 ## 4. Layout System Design
 
-### 4.1 CSS Custom Properties
+### 4.1 Styling Approach
 
-Add to `src/css/custom.css`:
+**Primary**: Use MUI's `sx` prop and theme system for styling. Access theme tokens via `theme.spacing()`, `theme.palette`, etc.
+
+**Secondary**: Use CSS custom properties only for layout tokens that need to be shared across non-MUI contexts (e.g., Docusaurus containers).
+
+**Last Resort**: Plain CSS in `custom.css` only when theme/sx cannot achieve the result.
+
+### 4.2 CSS Custom Properties
+
+Add to `src/css/custom.css` (layout tokens only):
 
 ```css
 :root {
@@ -139,30 +150,22 @@ Add to `src/css/custom.css`:
   --cs-max-width-md: 38rem;      /* Spells tab */
   --cs-max-width-lg: 47rem;      /* Items, Personal, Companions */
   --cs-max-width-xl: 65rem;      /* Full-width content */
+  --cs-max-width-page: 100rem;   /* Global max-width for entire sheet on ultra-wide screens */
   
   /* Panel Layout */
   --cs-panel-gap: 1.5rem;        /* Gap between panels */
   --cs-section-gap: 1rem;        /* Gap between sections within panels */
-  
-  /* List Item Spacing */
-  --cs-list-item-gap: 0.5rem;    /* Gap between list items */
-  --cs-list-padding: 0.75rem;    /* Internal padding in list items */
-  
-  /* Responsive breakpoints (aligned with MUI) */
-  --cs-breakpoint-mobile: 768px;
-  --cs-breakpoint-tablet: 992px;
-  --cs-breakpoint-desktop: 1200px;
 }
 ```
 
-### 4.2 Main Container Layout
+### 4.3 Main Container Layout
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
 │                    CharacterSheet Container                       │
-│  max-width: var(--cs-max-width-xl) + var(--cs-max-width-sm)      │
+│  max-width: var(--cs-max-width-page)  /* 100rem for ultra-wide */│
 │  margin: 0 auto                                                   │
-│  padding: var(--cs-section-gap)                                   │
+│  padding: theme.spacing(2)                                        │
 ├─────────────────────────┬────────────────────────────────────────┤
 │                         │                                        │
 │   Statistics Panel      │           Tab Content Panel            │
@@ -186,7 +189,7 @@ Add to `src/css/custom.css`:
 └─────────────────────────┴────────────────────────────────────────┘
 ```
 
-### 4.3 Responsive Behavior
+### 4.4 Responsive Behavior
 
 ```
 Desktop (>992px):
@@ -759,14 +762,19 @@ Leverage existing CSS variables from `custom.css`:
 | Keyboard Enter/Space on row | Toggle this item |
 | Escape while expanded | Collapse this item |
 
+**Note**: Both row click and icon click should expand the item for consistency.
+
 ### 9.2 Drag and Drop
 
 | Trigger | Action |
 |---------|--------|
+| Toggle reorder mode (button in list header) | Show/hide drag handles |
 | Drag handle mousedown | Start drag |
 | Drop on valid target | Reorder and persist |
 | Drop outside list | Cancel drag |
 | Keyboard ↑/↓ while dragging | Move item |
+
+**Note**: Drag handles are hidden by default and only shown when reorder mode is active to save space.
 
 ### 9.3 Editing
 

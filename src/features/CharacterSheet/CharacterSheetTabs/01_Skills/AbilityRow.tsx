@@ -90,11 +90,12 @@ export const AbilityRow: React.FC<AbilityRowProps> = ({
 	return (
 		<Accordion
 			expanded={expanded}
+			onChange={() => setExpanded(!expanded)}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '24rem', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-sm)', mt: 0 }}
 		>
 			<AccordionSummary
-				expandIcon={<ExpandMore onClick={() => setExpanded(!expanded)} />}
+				expandIcon={<ExpandMore />}
 				sx={{
 					gap: 1,
 					pt: 0,

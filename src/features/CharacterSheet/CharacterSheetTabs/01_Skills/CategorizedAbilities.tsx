@@ -177,7 +177,7 @@ export const CategorizedAbilities: React.FC = () => {
 				display: 'flex',
 				flexDirection: 'column',
 				width: '100%',
-				maxWidth: '25rem',
+				maxWidth: 'var(--cs-max-width-sm)',
 			}}
 		>
 			{/* Quick Ref Section */}
@@ -298,7 +298,7 @@ export const CategorizedAbilities: React.FC = () => {
 								)}
 							</Box>
 						</AccordionSummary>
-						<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
+						<AccordionDetails>
 							<DynamicList
 								droppableId={`abilities-${tag}`}
 								onDragEnd={onAbilityReorder(tag)}

@@ -51,11 +51,12 @@ export const WeaponRow: React.FC<WeaponRowProps> = ({
 	return (
 		<Accordion
 			expanded={expanded}
+			onChange={() => setExpanded(!expanded)}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '47rem', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-lg)', mt: 0 }}
 		>
 			<AccordionSummary
-				expandIcon={<ExpandMore onClick={() => setExpanded(!expanded)} />}
+				expandIcon={<ExpandMore />}
 				sx={{
 					gap: 1,
 					pt: 0,

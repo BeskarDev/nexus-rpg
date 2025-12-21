@@ -21,6 +21,15 @@
 	--ifm-heading-font-family: 'Exo 2', sans-serif;
 	--ifm-paragraph-margin-bottom: 1rem;
 	--ifm-leading: 1rem;
+
+	/* Character Sheet Layout System */
+	--cs-max-width-sm: 25rem;      /* Statistics panel, Skills lists */
+	--cs-max-width-md: 38rem;      /* Spells tab */
+	--cs-max-width-lg: 47rem;      /* Items, Personal, Companions */
+	--cs-max-width-xl: 65rem;      /* Full-width content */
+	--cs-max-width-page: 100rem;   /* Global max-width for entire sheet on ultra-wide screens */
+	--cs-panel-gap: 1.5rem;        /* Gap between panels */
+	--cs-section-gap: 1rem;        /* Gap between sections within panels */
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */

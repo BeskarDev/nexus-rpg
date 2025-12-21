@@ -145,7 +145,7 @@ export const InventorySection: React.FC<InventorySectionProps> = ({
 					)}
 				</Box>
 			</AccordionSummary>
-			<AccordionDetails sx={{ overflowY: 'auto', maxHeight: '30rem' }}>
+			<AccordionDetails>
 				{showLoadDisplay && onLocationNameChange && onMaxLoadChange && (
 					<LocationLoadDisplay
 						location={location}

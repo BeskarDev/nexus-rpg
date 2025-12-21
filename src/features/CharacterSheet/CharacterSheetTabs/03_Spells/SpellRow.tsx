@@ -79,11 +79,12 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 	return (
 		<Accordion
 			expanded={expanded}
+			onChange={() => setExpanded(!expanded)}
 			disableGutters
-			sx={{ flexGrow: 1, maxWidth: '47rem', mt: 0 }}
+			sx={{ flexGrow: 1, maxWidth: 'var(--cs-max-width-lg)', mt: 0 }}
 		>
 			<AccordionSummary
-				expandIcon={<ExpandMore onClick={() => setExpanded(!expanded)} />}
+				expandIcon={<ExpandMore />}
 				sx={{
 					gap: 1,
 					pt: 0,
@@ -100,7 +101,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						alignItems: 'baseline',
 						flexWrap: 'wrap',
 						columnGap: 0.5,
-						maxWidth: '47rem',
 					}}
 				>
 					<Avatar
@@ -211,7 +211,6 @@ export const SpellRow: React.FC<SpellRowProps> = ({
 						alignItems: 'baseline',
 						flexWrap: 'wrap',
 						columnGap: 1,
-						maxWidth: '47rem',
 					}}
 				>
 					{initialSpell.dealsDamage && (

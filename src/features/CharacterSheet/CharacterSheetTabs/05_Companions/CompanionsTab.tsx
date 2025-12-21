@@ -153,7 +153,7 @@ export const CompanionsTab: React.FC = () => {
 	}
 
 	return (
-		<Box sx={{ maxWidth: '47rem' }}>
+		<Box sx={{ maxWidth: 'var(--cs-max-width-lg)' }}>
 			<Box
 				sx={{
 					display: 'flex',

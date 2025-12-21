@@ -460,7 +460,7 @@ export const PersonalTab: React.FC = () => {
 				display: 'flex',
 				columnGap: 3,
 				flexWrap: 'wrap',
-				maxWidth: { lg: 'unset', xl: '47rem' },
+				maxWidth: { lg: 'unset', xl: 'var(--cs-max-width-lg)' },
 			}}
 		>
 			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>

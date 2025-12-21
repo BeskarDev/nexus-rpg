@@ -101,7 +101,7 @@ export const ItemsTab: React.FC = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				maxWidth: '65rem',
+				maxWidth: 'var(--cs-max-width-xl)',
 			}}
 		>
 			{/* Header with coins and load info */}
