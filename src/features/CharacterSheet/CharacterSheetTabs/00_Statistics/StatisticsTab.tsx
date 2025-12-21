@@ -1,7 +1,5 @@
-import { Box, Tooltip } from '@mui/material'
+import { Box } from '@mui/material'
 import React from 'react'
-
-import { AttributeField } from '../../CharacterSheet'
 
 import {
 	BubbleChart,
@@ -100,11 +98,11 @@ export const StatisticsTab: React.FC = () => {
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				gap: 2,
-				maxWidth: '100%',
+				gap: 1.5,
+				width: '100%',
 			}}
 		>
-			{/* Top row - Resolve, Fatigue, Resting */}
+			{/* Top row - Resolve and Resting */}
 			<Box
 				sx={{
 					display: 'flex',
@@ -138,106 +136,95 @@ export const StatisticsTab: React.FC = () => {
 			{/* Status Effects */}
 			<StatusEffects statusEffects={statusEffects} />
 
-			{/* Main stats row */}
+			{/* Attributes - Compact single row */}
 			<Box
 				sx={{
 					display: 'flex',
-					flexWrap: 'wrap',
-					gap: 1,
-					alignItems: 'flex-start',
+					gap: 0.75,
+					flexWrap: 'nowrap',
+					maxWidth: '19rem',
 				}}
 			>
-				{/* Attributes */}
-				<Box
-					sx={{
-						display: 'flex',
-						gap: 0.5,
-						overflowX: 'auto',
-						minWidth: 0,
-						flexShrink: 0,
-						height: '6.5rem',
-					}}
-				>
-					<AttributeColumn
-						attribute={strength}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { strength: { ...strength, ...update } },
-							})
-						}
-						label="Strength"
-						icon={<PanTool fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-					<AttributeColumn
-						attribute={agility}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { agility: { ...agility, ...update } },
-							})
-						}
-						label="Agility"
-						icon={<DirectionsRun fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-					<AttributeColumn
-						attribute={spirit}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { spirit: { ...spirit, ...update } },
-							})
-						}
-						label="Spirit"
-						icon={<Visibility fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-					<AttributeColumn
-						attribute={mind}
-						updateAttribute={(update) =>
-							updateCharacter({
-								statistics: { mind: { ...mind, ...update } },
-							})
-						}
-						label="Mind"
-						icon={<BubbleChart fontSize="inherit" />}
-						totalWounds={totalWounds}
-					/>
-				</Box>
+				<AttributeColumn
+					attribute={strength}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { strength: { ...strength, ...update } },
+						})
+					}
+					label="Strength"
+					icon={<PanTool fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
+				<AttributeColumn
+					attribute={agility}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { agility: { ...agility, ...update } },
+						})
+					}
+					label="Agility"
+					icon={<DirectionsRun fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
+				<AttributeColumn
+					attribute={spirit}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { spirit: { ...spirit, ...update } },
+						})
+					}
+					label="Spirit"
+					icon={<Visibility fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
+				<AttributeColumn
+					attribute={mind}
+					updateAttribute={(update) =>
+						updateCharacter({
+							statistics: { mind: { ...mind, ...update } },
+						})
+					}
+					label="Mind"
+					icon={<BubbleChart fontSize="inherit" />}
+					totalWounds={totalWounds}
+				/>
 			</Box>
 
-			{/* Health, AV and Defenses row */}
+			{/* HP, AV, and Fatigue row */}
 			<Box
 				sx={{
 					display: 'flex',
 					flexWrap: 'wrap',
-					gap: 1,
+					gap: 0.75,
 					alignItems: 'flex-start',
 				}}
 			>
 				<AvField />
-
-				{/* HP section - using new HpField component */}
 				<HpField />
+				<FatigueTracker
+					current={fatigue?.current || 0}
+					max={fatigue?.max || 6}
+					onFatigueChange={(newFatigue) =>
+						updateCharacter({
+							statistics: { fatigue: newFatigue },
+						})
+					}
+				/>
+			</Box>
 
-				{/* Fatigue Tracker */}
-				<Box sx={{ ml: 1, mt: '-2px', maxWidth: '5rem' }}>
-					<FatigueTracker
-						current={fatigue?.current || 0}
-						max={fatigue?.max || 6}
-						onFatigueChange={(newFatigue) =>
-							updateCharacter({
-								statistics: { fatigue: newFatigue },
-							})
-						}
-					/>
-				</Box>
-
-				<Box sx={{ display: 'flex', flexDirection: 'row', gap: 0.5 }}>
-					{/* Defenses */}
-					<ParryField />
-					<DodgeField />
-					<ResistField />
-				</Box>
+			{/* Defenses row - Parry, Dodge, Resist */}
+			<Box
+				sx={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					gap: 0.75,
+					alignItems: 'flex-start',
+				}}
+			>
+				<ParryField />
+				<DodgeField />
+				<ResistField />
 			</Box>
 		</Box>
 	)

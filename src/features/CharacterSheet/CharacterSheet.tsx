@@ -55,7 +55,12 @@ export const CharacterSheet: React.FC = () => {
 	}
 
 	return (
-		<>
+		<Box
+			sx={{
+				maxWidth: 'var(--cs-max-width-page)',
+				mx: 'auto',
+			}}
+		>
 			{isMobile && (
 				<>
 					<Box
@@ -88,60 +93,60 @@ export const CharacterSheet: React.FC = () => {
 				</>
 			)}
 			{!isMobile && (
-				<>
+				<Box
+					sx={{
+						mb: 2,
+						display: 'flex',
+						flexWrap: 'wrap',
+						gap: 3, // theme.spacing(3) = 24px, equivalent to --cs-panel-gap
+						justifyContent: 'center',
+						backgroundColor: 'var(--ifm-background-color)',
+					}}
+				>
+					<Box sx={{ mt: 1, maxWidth: 'var(--cs-max-width-sm)' }}>
+						{(() => {
+							const StatisticsTabComponent = mobileTabsConfig.find(
+								(tab) => tab.label === 'Statistics',
+							)?.component
+							return StatisticsTabComponent ? (
+								<StatisticsTabComponent />
+							) : null
+						})()}
+					</Box>
 					<Box
 						sx={{
-							mb: 2,
-							display: 'flex',
-							flexWrap: 'wrap',
-							gap: 6,
-							justifyContent: 'left',
-							backgroundColor: 'var(--ifm-background-color)',
+							flex: 1,
+							minWidth: 0,
+							maxWidth: { md: 'var(--cs-max-width-sm)', lg: 'var(--cs-max-width-md)', xl: 'var(--cs-max-width-xl)' },
 						}}
 					>
-						<Box sx={{ mt: 1, maxWidth: '25rem' }}>
-							{(() => {
-								const StatisticsTabComponent = mobileTabsConfig.find(
-									(tab) => tab.label === 'Statistics',
-								)?.component
-								return StatisticsTabComponent ? (
-									<StatisticsTabComponent />
-								) : null
-							})()}
-						</Box>
 						<Box
 							sx={{
-								maxWidth: { md: '25rem', lg: '35rem', xl: '60rem' },
+								overflowX: 'auto',
+								WebkitOverflowScrolling: 'touch',
+								mb: 2,
 							}}
 						>
-							<Box
-								sx={{
-									overflowX: 'auto',
-									WebkitOverflowScrolling: 'touch',
-									mb: 2,
-								}}
+							<Tabs
+								value={activeTab}
+								onChange={handleTabChange}
+								variant="scrollable"
+								scrollButtons={false}
+								allowScrollButtonsMobile
+								sx={{ minWidth: 'max-content' }}
 							>
-								<Tabs
-									value={activeTab}
-									onChange={handleTabChange}
-									variant="scrollable"
-									scrollButtons={false}
-									allowScrollButtonsMobile
-									sx={{ minWidth: 'max-content' }}
-								>
-									{desktopTabsConfig.map((tab) => (
-										<Tab key={tab.id} id={tab.id} label={tab.label} />
-									))}
-								</Tabs>
-							</Box>
-							{(() => {
-								const TabComponent = getTabComponent(activeTab, false)
-								return TabComponent ? <TabComponent /> : null
-							})()}
+								{desktopTabsConfig.map((tab) => (
+									<Tab key={tab.id} id={tab.id} label={tab.label} />
+								))}
+							</Tabs>
 						</Box>
+						{(() => {
+							const TabComponent = getTabComponent(activeTab, false)
+							return TabComponent ? <TabComponent /> : null
+						})()}
 					</Box>
-				</>
+				</Box>
 			)}
-		</>
+		</Box>
 	)
 }

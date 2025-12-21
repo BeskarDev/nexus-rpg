@@ -1,5 +1,5 @@
 import { WaterDrop, WaterDropOutlined } from '@mui/icons-material'
-import { Box, Checkbox, Typography } from '@mui/material'
+import { Box, Checkbox, Typography, alpha } from '@mui/material'
 import React from 'react'
 
 export type FatigueProps = {
@@ -25,24 +25,38 @@ export const FatigueTracker: React.FC<FatigueProps> = ({
 			sx={{
 				display: 'flex',
 				flexDirection: 'column',
-				flexWrap: 'wrap',
-				gap: 0.5,
+				alignItems: 'center',
+				borderRadius: 1,
+				border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+				bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+				p: 0.5,
+				minWidth: '5rem',
 			}}
 		>
-			<Typography
-				variant="caption"
-				sx={{ fontWeight: 'bold', color: 'text.disabled' }}
-			>
-				Fatigue
-			</Typography>
+			{/* Header */}
+			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+				<WaterDrop sx={{ fontSize: '0.7rem', color: '#ffb74d' }} />
+				<Typography
+					variant="caption"
+					sx={{
+						fontWeight: 700,
+						fontSize: '0.55rem',
+						color: '#ffb74d',
+						textTransform: 'uppercase',
+					}}
+				>
+					Fatigue
+				</Typography>
+			</Box>
 
+			{/* Fatigue checkboxes */}
 			<Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
 				{Array.from({ length: max }).map((_, index) => (
 					<Checkbox
 						key={index}
 						size="small"
-						icon={<WaterDropOutlined />}
-						checkedIcon={<WaterDrop color="warning" />}
+						icon={<WaterDropOutlined sx={{ fontSize: '0.85rem' }} />}
+						checkedIcon={<WaterDrop color="warning" sx={{ fontSize: '0.85rem' }} />}
 						checked={index < current}
 						onChange={() => handleFatigueChange(index)}
 						sx={{ p: 0.25 }}
@@ -50,9 +64,14 @@ export const FatigueTracker: React.FC<FatigueProps> = ({
 				))}
 			</Box>
 
+			{/* HP penalty display */}
 			{fatigueHpPenalty > 0 && (
-				<Typography variant="caption" color="warning.main">
-					-{fatigueHpPenalty} max HP
+				<Typography
+					variant="caption"
+					color="warning.main"
+					sx={{ fontSize: '0.6rem', mt: -0.25 }}
+				>
+					-{fatigueHpPenalty} HP
 				</Typography>
 			)}
 		</Box>

@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react'
 import { AttributeField } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Remove, Add } from '@mui/icons-material'
+import { Settings, Remove, Add, AutoFixHigh } from '@mui/icons-material'
 import {
 	Box,
 	IconButton,
@@ -9,6 +9,7 @@ import {
 	Typography,
 	Button,
 	LinearProgress,
+	alpha,
 } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -50,6 +51,9 @@ export const FocusField = () => {
 		if (focusPercentage >= 20) return 'warning'
 		return 'error'
 	}
+	
+	// Get the actual color value for the focus display
+	const focusColor = focusPercentage >= 50 ? '#2196f3' : focusPercentage >= 20 ? '#ff9800' : '#f44336'
 
 	// Animation effect cleanup
 	useEffect(() => {
@@ -129,115 +133,102 @@ export const FocusField = () => {
 	}, [focus.current])
 
 	return (
-		<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-			<Button
-				variant="text"
-				color="inherit"
-				size="small"
-				sx={{
-					px: 1,
-					py: 0.5,
-					minWidth: 'auto',
-					justifyContent: 'flex-start',
-					textTransform: 'none',
-					fontSize: '1rem',
-					fontWeight: 'bold',
-				}}
-			>
-				<Box
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				alignItems: 'center',
+				minWidth: '7rem',
+				borderRadius: 1,
+				border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+				bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+				p: 0.5,
+				position: 'relative',
+			}}
+		>
+			{/* Focus Header */}
+			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+				<AutoFixHigh sx={{ fontSize: '0.7rem', color: '#2196f3' }} />
+				<Typography
+					variant="caption"
 					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'flex-start',
+						fontWeight: 700,
+						fontSize: '0.55rem',
+						color: '#2196f3',
+						textTransform: 'uppercase',
 					}}
 				>
-					<Typography
-						variant="body2"
-						sx={{
-							fontWeight: 'bold',
-							lineHeight: 1.2,
-							color: 'inherit',
-						}}
-					>
-						<span
-							style={{
-								color:
-									getFocusColor() === 'info'
-										? '#2196f3'
-										: getFocusColor() === 'warning'
-											? '#ff9800'
-											: '#f44336',
-								transition: 'all 0.3s ease-in-out',
-								...(animationState === 'damage' && {
-									animation: 'flashRed 0.5s ease-in-out',
-								}),
-								...(animationState === 'healing' && {
-									animation: 'flashBlue 0.5s ease-in-out',
-								}),
-							}}
-						>
-							{focus.current}
-						</span>
-						/
-						<span
-							style={{
-								color: '#2196f3',
-								transition: 'all 0.3s ease-in-out',
-							}}
-						>
-							{maxFocus}
-						</span>
-						{' Focus'}
-					</Typography>
+					Focus
+				</Typography>
+			</Box>
 
-					{/* Focus Bar Container for static-length bar */}
-					<Box
-						sx={{
-							position: 'relative',
-							width: '120px',
-							height: '6px',
-							mb: 0.5,
-						}}
-					>
-						{/* Main Focus Bar */}
-						<LinearProgress
-							variant="determinate"
-							value={Math.min(100, focusPercentage)}
-							color={getFocusColor()}
-							sx={{
-								width: '120px',
-								height: '6px',
-								borderRadius: '3px',
-								position: 'absolute',
-								top: 0,
-								left: 0,
-								transition: 'all 0.3s ease-in-out',
-								...(animationState === 'damage' && {
-									animation: 'flashRed 0.5s ease-in-out',
-								}),
-								...(animationState === 'healing' && {
-									animation: 'flashBlue 0.5s ease-in-out',
-								}),
-								'@keyframes flashRed': {
-									'0%, 100%': { filter: 'brightness(1)' },
-									'50%': {
-										filter: 'brightness(1.5) sepia(1) hue-rotate(330deg)',
-									},
-								},
-								'@keyframes flashBlue': {
-									'0%, 100%': { filter: 'brightness(1)' },
-									'50%': {
-										filter: 'brightness(1.5) sepia(1) hue-rotate(200deg)',
-									},
-								},
-							}}
-						/>
-					</Box>
-				</Box>
-			</Button>
+			{/* Focus Display */}
+			<Typography
+				sx={{
+					fontWeight: 'bold',
+					fontSize: '0.95rem',
+					lineHeight: 1.2,
+					textAlign: 'center',
+					transition: 'all 0.3s ease-in-out',
+					...(animationState === 'damage' && {
+						animation: 'shake 0.5s ease-in-out',
+						color: '#f44336',
+					}),
+					...(animationState === 'healing' && {
+						animation: 'pulse 0.5s ease-in-out',
+						color: '#4caf50',
+					}),
+					'@keyframes shake': {
+						'0%, 100%': { transform: 'translateX(0)' },
+						'25%': { transform: 'translateX(-2px)' },
+						'75%': { transform: 'translateX(2px)' },
+					},
+					'@keyframes pulse': {
+						'0%, 100%': { transform: 'scale(1)' },
+						'50%': { transform: 'scale(1.1)' },
+					},
+				}}
+			>
+				<span style={{ color: focusColor }}>{focus.current}</span>/{maxFocus}
+			</Typography>
 
-			<IconButton size="small" onClick={handleClick} sx={{ mt: -0.5 }}>
-				<Settings fontSize="small" />
+			{/* Focus Bar */}
+			<Box
+				sx={{
+					position: 'relative',
+					width: '100%',
+					maxWidth: '5.5rem',
+					height: '4px',
+					mt: 0.25,
+				}}
+			>
+				<LinearProgress
+					variant="determinate"
+					value={Math.min(100, focusPercentage)}
+					color={getFocusColor()}
+					sx={{
+						width: '100%',
+						height: '4px',
+						borderRadius: '2px',
+						transition: 'all 0.3s ease-in-out',
+					}}
+				/>
+			</Box>
+
+			{/* Config button */}
+			<IconButton
+				size="small"
+				onClick={handleClick}
+				sx={{
+					position: 'absolute',
+					top: 0,
+					right: 0,
+					p: 0.25,
+					opacity: 0.6,
+					'&:hover': { opacity: 1 },
+				}}
+			>
+				<Settings sx={{ fontSize: '0.65rem' }} />
 			</IconButton>
 
 			{/* Configuration Menu */}

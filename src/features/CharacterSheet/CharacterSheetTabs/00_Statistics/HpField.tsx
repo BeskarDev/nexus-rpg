@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { getHpBarColor } from '@site/src/utils/typescript/getHpBarColor'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings, Remove, Add } from '@mui/icons-material'
+import { Settings, Remove, Add, Favorite } from '@mui/icons-material'
 import {
 	Box,
 	IconButton,
@@ -13,6 +13,7 @@ import {
 	Button,
 	LinearProgress,
 	TextField,
+	alpha,
 } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
@@ -210,147 +211,120 @@ export const HpField = () => {
 			<Box
 				sx={{
 					display: 'flex',
+					flexDirection: 'column',
 					alignItems: 'center',
-					columnGap: 0.5,
+					borderRadius: 1,
+					border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+					bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+					p: 0.5,
+					position: 'relative',
+					minWidth: '7rem',
 				}}
 			>
-				<Box
+				{/* HP Header */}
+				<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+					<Favorite sx={{ fontSize: '0.7rem', color: hpColor }} />
+					<Typography
+						variant="caption"
+						sx={{
+							fontWeight: 700,
+							fontSize: '0.55rem',
+							color: hpColor,
+							textTransform: 'uppercase',
+						}}
+					>
+						HP
+					</Typography>
+				</Box>
+
+				{/* HP Display */}
+				<Typography
 					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
+						fontWeight: 'bold',
+						fontSize: '0.95rem',
+						lineHeight: 1.2,
+						textAlign: 'center',
+						transition: 'all 0.3s ease-in-out',
+						...(animationState === 'damage' && {
+							animation: 'shake 0.5s ease-in-out',
+							color: '#f44336',
+						}),
+						...(animationState === 'healing' && {
+							animation: 'pulse 0.5s ease-in-out',
+							color: '#4caf50',
+						}),
+						'@keyframes shake': {
+							'0%, 100%': { transform: 'translateX(0)' },
+							'25%': { transform: 'translateX(-2px)' },
+							'75%': { transform: 'translateX(2px)' },
+						},
+						'@keyframes pulse': {
+							'0%, 100%': { transform: 'scale(1)' },
+							'50%': { transform: 'scale(1.1)' },
+						},
 					}}
 				>
-					{/* HP Display */}
-					<Typography
-						variant="body2"
-						sx={{
-							fontWeight: 'bold',
-							mb: 0.5,
-							transition: 'all 0.3s ease-in-out',
-							...(animationState === 'damage' && {
-								animation: 'shake 0.5s ease-in-out',
-								color: '#f44336',
-							}),
-							...(animationState === 'healing' && {
-								animation: 'pulse 0.5s ease-in-out',
-								color: '#4caf50',
-							}),
-							'@keyframes shake': {
-								'0%, 100%': { transform: 'translateX(0)' },
-								'25%': { transform: 'translateX(-2px)' },
-								'75%': { transform: 'translateX(2px)' },
-							},
-							'@keyframes pulse': {
-								'0%, 100%': { transform: 'scale(1)' },
-								'50%': { transform: 'scale(1.1)' },
-							},
-							'@keyframes glow': {
-								'0%, 100%': { filter: 'brightness(1)' },
-								'50%': {
-									filter: 'brightness(1.5) drop-shadow(0 0 2px #2196f3)',
-								},
-							},
-						}}
-					>
-						{health.current}/
-						<span
-							style={{
-								color: fatigueHpPenalty > 0 ? '#ff9800' : 'inherit', // warning color if fatigue present
-							}}
-						>
-							{effectiveMaxHp}
+					{health.current}/{effectiveMaxHp}
+					{health.temp > 0 && (
+						<span style={{ color: '#2196f3', fontSize: '0.8rem' }}>
+							{' '}+{health.temp}
 						</span>
-						{fatigueHpPenalty > 0 && ` (${maxHp})`}
-						{health.temp > 0 && (
-							<span
-								style={{
-									color: '#2196f3',
-									transition: 'all 0.3s ease-in-out',
-									...(animationState === 'tempHp' && {
-										animation: 'glow 0.5s ease-in-out',
-									}),
-								}}
-							>
-								{' '}
-								+{health.temp}
-							</span>
-						)}
-						{' HP'}
-					</Typography>
+					)}
+				</Typography>
 
-					{/* HP Bar Container for static-length bar with proportional sections */}
-					<Box
-						sx={{
-							position: 'relative',
-							width: '120px',
-							height: '6px',
-							mb: 0.5,
-						}}
-					>
-					{/* Main HP Bar - proportional width within 120px total */}
+				{/* HP Bar */}
+				<Box
+					sx={{
+						position: 'relative',
+						width: '100%',
+						maxWidth: '5.5rem',
+						height: '4px',
+						mt: 0.25,
+					}}
+				>
 					<LinearProgress
 						variant="determinate"
 						value={Math.min(100, hpPercentage)}
 						color={getHpColorVariant()}
 						sx={{
-								width: `${mainHpBarWidth}px`,
-								height: '6px',
-								borderRadius: health.temp > 0 ? '3px 0 0 3px' : '3px',
+							width: `${(mainHpBarWidth / 120) * 100}%`,
+							height: '4px',
+							borderRadius: health.temp > 0 ? '2px 0 0 2px' : '2px',
+							position: 'absolute',
+							top: 0,
+							left: 0,
+							transition: 'all 0.3s ease-in-out',
+						}}
+					/>
+					{health.temp > 0 && (
+						<Box
+							sx={{
 								position: 'absolute',
 								top: 0,
-								left: 0,
-								transition: 'all 0.3s ease-in-out',
-								...(animationState === 'damage' && {
-									animation: 'flashRed 0.5s ease-in-out',
-								}),
-								...(animationState === 'healing' && {
-									animation: 'flashGreen 0.5s ease-in-out',
-								}),
-								'@keyframes flashRed': {
-									'0%, 100%': { filter: 'brightness(1)' },
-									'50%': {
-										filter: 'brightness(1.5) sepia(1) hue-rotate(330deg)',
-									},
-								},
-								'@keyframes flashGreen': {
-									'0%, 100%': { filter: 'brightness(1)' },
-									'50%': {
-										filter: 'brightness(1.5) sepia(1) hue-rotate(90deg)',
-									},
-								},
+								left: `${(mainHpBarWidth / 120) * 100}%`,
+								width: `${(tempHpBarWidth / 120) * 100}%`,
+								height: '4px',
+								backgroundColor: '#2196f3',
+								borderRadius: '0 2px 2px 0',
 							}}
 						/>
-
-						{/* Temp HP Section - proportional width within 120px total */}
-						{health.temp > 0 && (
-							<Box
-								sx={{
-									position: 'absolute',
-									top: 0,
-									left: `${mainHpBarWidth}px`,
-									width: `${tempHpBarWidth}px`,
-									height: '6px',
-									backgroundColor: '#2196f3', // info blue color
-									borderRadius: '0 3px 3px 0',
-									transition: 'all 0.3s ease-in-out',
-									...(animationState === 'tempHp' && {
-										animation: 'glowBlue 0.5s ease-in-out',
-									}),
-									'@keyframes glowBlue': {
-										'0%, 100%': { filter: 'brightness(1)' },
-										'50%': {
-											filter: 'brightness(1.8) drop-shadow(0 0 4px #2196f3)',
-										},
-									},
-								}}
-							/>
-						)}
-					</Box>
+					)}
 				</Box>
 
-				<IconButton size="small" onClick={handleClick} sx={{ ml: 0.5 }}>
-					<Settings fontSize="small" />
+				{/* Config button */}
+				<IconButton
+					size="small"
+					onClick={handleClick}
+					sx={{
+						position: 'absolute',
+						top: 0,
+						right: 0,
+						p: 0.25,
+						opacity: 0.6,
+						'&:hover': { opacity: 1 },
+					}}
+				>
+					<Settings sx={{ fontSize: '0.65rem' }} />
 				</IconButton>
 			</Box>
 

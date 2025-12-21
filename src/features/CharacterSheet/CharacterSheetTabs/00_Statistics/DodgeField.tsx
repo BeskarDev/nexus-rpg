@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { Settings } from '@mui/icons-material'
-import { Box, IconButton, Menu, Typography } from '@mui/material'
+import { Settings, Speed } from '@mui/icons-material'
+import { Box, IconButton, Menu, Tooltip, Typography, alpha } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -81,36 +81,65 @@ export const DodgeField = () => {
 		})
 	}
 
+	const displayValue = dodgeDetails ? totalDodge : dodge
+
 	return (
 		<>
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					columnGap: 0.5,
-				}}
-			>
-				<AttributeField
-					disabled
-					value={dodgeDetails ? totalDodge : dodge}
-					label="Dodge"
+			<Tooltip title="Click gear to configure Dodge sources">
+				<Box
 					sx={{
-						mr: 1,
-						'& .MuiOutlinedInput-root': {
-							'& .MuiOutlinedInput-notchedOutline': {
-								borderWidth: '2px',
-							},
-						},
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						minWidth: '3.5rem',
+						maxWidth: '4.5rem',
+						borderRadius: 1,
+						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
+						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
+						p: 0.5,
+						position: 'relative',
 					}}
-				/>
-				<IconButton
-					size="small"
-					onClick={dodgeDetails ? handleClick : initializeDetails}
-					sx={{ ml: -1.5 }}
 				>
-					<Settings fontSize="small" />
-				</IconButton>
-			</Box>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+						<Speed sx={{ fontSize: '0.7rem', color: '#81c784' }} />
+						<Typography
+							variant="caption"
+							sx={{
+								fontWeight: 700,
+								fontSize: '0.55rem',
+								color: '#81c784',
+								textTransform: 'uppercase',
+							}}
+						>
+							DOD
+						</Typography>
+					</Box>
+					<Typography
+						sx={{
+							fontWeight: 'bold',
+							fontSize: '0.95rem',
+							lineHeight: 1.2,
+							textAlign: 'center',
+						}}
+					>
+						{displayValue}
+					</Typography>
+					<IconButton
+						size="small"
+						onClick={dodgeDetails ? handleClick : initializeDetails}
+						sx={{
+							position: 'absolute',
+							top: 0,
+							right: 0,
+							p: 0.25,
+							opacity: 0.6,
+							'&:hover': { opacity: 1 },
+						}}
+					>
+						<Settings sx={{ fontSize: '0.65rem' }} />
+					</IconButton>
+				</Box>
+			</Tooltip>
 			{dodgeDetails && (
 				<Menu
 					anchorEl={anchorEl}
