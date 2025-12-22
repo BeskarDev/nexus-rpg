@@ -1,10 +1,11 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import { vi } from 'vitest'
 import { NameCard } from '../NameCard'
 
 describe('NameCard', () => {
 it('renders with name value', () => {
-const mockOnChange = jest.fn()
-const mockOnBlur = jest.fn()
+const mockOnChange = vi.fn()
+const mockOnBlur = vi.fn()
 
 render(
 <NameCard
@@ -19,8 +20,8 @@ expect(input).toBeInTheDocument()
 })
 
 it('calls onChange when value changes', () => {
-const mockOnChange = jest.fn()
-const mockOnBlur = jest.fn()
+const mockOnChange = vi.fn()
+const mockOnBlur = vi.fn()
 
 render(
 <NameCard
@@ -37,8 +38,8 @@ expect(mockOnChange).toHaveBeenCalledWith('New Name')
 })
 
 it('calls onBlur when focus is lost', () => {
-const mockOnChange = jest.fn()
-const mockOnBlur = jest.fn()
+const mockOnChange = vi.fn()
+const mockOnBlur = vi.fn()
 
 render(
 <NameCard

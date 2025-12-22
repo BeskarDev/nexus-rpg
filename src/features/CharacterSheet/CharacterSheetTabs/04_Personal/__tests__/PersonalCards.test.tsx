@@ -1,11 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+import { vi } from 'vitest'
 import { HeightCard, WeightCard, AgeCard, DescriptionCard } from '../PersonalCards'
 
 describe('PersonalCards', () => {
 describe('HeightCard', () => {
 it('renders and is editable', () => {
-const mockOnChange = jest.fn()
-const mockOnBlur = jest.fn()
+const mockOnChange = vi.fn()
+const mockOnBlur = vi.fn()
 
 render(
 <HeightCard
@@ -25,8 +26,8 @@ expect(mockOnChange).toHaveBeenCalledWith("6'2")
 
 describe('WeightCard', () => {
 it('renders and is editable', () => {
-const mockOnChange = jest.fn()
-const mockOnBlur = jest.fn()
+const mockOnChange = vi.fn()
+const mockOnBlur = vi.fn()
 
 render(
 <WeightCard
@@ -46,8 +47,8 @@ expect(mockOnChange).toHaveBeenCalledWith("200 lbs")
 
 describe('AgeCard', () => {
 it('renders and is editable', () => {
-const mockOnChange = jest.fn()
-const mockOnBlur = jest.fn()
+const mockOnChange = vi.fn()
+const mockOnBlur = vi.fn()
 
 render(
 <AgeCard
@@ -67,8 +68,8 @@ expect(mockOnChange).toHaveBeenCalledWith("30")
 
 describe('DescriptionCard', () => {
 it('renders as multiline and is editable', () => {
-const mockOnChange = jest.fn()
-const mockOnBlur = jest.fn()
+const mockOnChange = vi.fn()
+const mockOnBlur = vi.fn()
 
 render(
 <DescriptionCard
