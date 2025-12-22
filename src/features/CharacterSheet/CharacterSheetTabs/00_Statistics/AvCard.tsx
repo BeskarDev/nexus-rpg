@@ -43,7 +43,7 @@ export const AvCard = () => {
 			header={<CardHeader icon={<Shield />} label="AV" color={UI_COLORS.greyBlue} />}
 			showConfigButton
 			onConfigClick={handleClick}
-			tooltip="Click gear to configure AV sources"
+			tooltip="Armor Value: Damage reduction from armor, helmet, and shield"
 			minWidth="4rem"
 			maxWidth="5rem"
 			configMenu={

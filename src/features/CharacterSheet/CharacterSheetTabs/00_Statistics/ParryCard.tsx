@@ -111,7 +111,7 @@ export const ParryCard = () => {
 			header={<CardHeader icon={<Security />} label="Parry" color={ATTRIBUTE_COLORS.strength} />}
 			showConfigButton
 			onConfigClick={parryDetails ? handleClick : initializeDetails}
-			tooltip="Click gear to configure Parry sources"
+			tooltip="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"
 			minWidth="5rem"
 			sx={{ height: '3.25rem' }}
 			configMenu={

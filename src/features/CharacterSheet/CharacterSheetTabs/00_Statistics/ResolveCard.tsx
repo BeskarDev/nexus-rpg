@@ -25,7 +25,7 @@ export const ResolveCard = () => {
 			header={<CardHeader icon={<Token />} label="Resolve" color={UI_COLORS.resolve} />}
 			minWidth="4.5rem"
 			maxWidth="5rem"
-			tooltip="Your reserve of determination (max 3)"
+			tooltip="Resolve: Resource for rerolls and special actions (max 3)"
 		>
 			<TextField
 				type="number"

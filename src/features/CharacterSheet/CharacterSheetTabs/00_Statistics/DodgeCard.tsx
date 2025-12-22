@@ -90,7 +90,7 @@ export const DodgeCard = () => {
 			header={<CardHeader icon={<Speed />} label="Dodge" color={ATTRIBUTE_COLORS.agility} />}
 			showConfigButton
 			onConfigClick={dodgeDetails ? handleClick : initializeDetails}
-			tooltip="Click gear to configure Dodge sources"
+			tooltip="Dodge: Defense against ranged attacks (7 + Athletics + level bonus)"
 			minWidth="5rem"
 			sx={{ height: '3.25rem' }}
 			configMenu={

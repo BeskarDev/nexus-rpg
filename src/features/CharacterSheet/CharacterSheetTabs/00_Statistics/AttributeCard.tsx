@@ -33,6 +33,21 @@ const getWoundTooltip = (label: string) => {
 	}
 }
 
+const getAttributeDescription = (label: string) => {
+	switch (label) {
+		case 'Strength':
+			return 'Strength: Physical power, melee damage, carrying capacity'
+		case 'Agility':
+			return 'Agility: Speed, reflexes, ranged accuracy, dodging'
+		case 'Spirit':
+			return 'Spirit: Willpower, perception, mystic magic, initiative'
+		case 'Mind':
+			return 'Mind: Intelligence, knowledge, arcane magic, tactics'
+		default:
+			return label
+	}
+}
+
 // Get attribute abbreviation
 export const getAttributeAbbr = (label: string) => {
 	switch (label) {
@@ -75,6 +90,7 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 		<CharacterSheetCard
 			minWidth="4rem"
 			maxWidth="5rem"
+			tooltip={getAttributeDescription(label)}
 			sx={{
 				flex: '1 1 auto',
 				transition: 'border-color 0.2s ease-in-out',

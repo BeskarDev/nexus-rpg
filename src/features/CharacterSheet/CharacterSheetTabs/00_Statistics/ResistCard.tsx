@@ -92,7 +92,7 @@ export const ResistCard = () => {
 			}
 			showConfigButton
 			onConfigClick={resistDetails ? handleClick : initializeDetails}
-			tooltip="Click gear to configure Resist sources"
+			tooltip="Resist: Defense against mental and magical effects (7 + Fortitude + level bonus)"
 			minWidth="5rem"
 			sx={{ height: '3.25rem' }}
 			configMenu={

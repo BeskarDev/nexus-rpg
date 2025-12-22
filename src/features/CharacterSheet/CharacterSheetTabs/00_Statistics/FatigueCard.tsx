@@ -28,6 +28,7 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 				<CardHeader icon={<WaterDrop />} label="Fatigue" color={UI_COLORS.amber} />
 			}
 			minWidth="5rem"
+			tooltip="Fatigue: Each level reduces max HP by 2 (at 6, you fall unconscious)"
 			footer={
 				<Typography
 					variant="caption"

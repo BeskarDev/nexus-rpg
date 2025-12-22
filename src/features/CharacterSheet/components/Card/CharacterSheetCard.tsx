@@ -41,7 +41,9 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 			{header && header}
 
 			{/* Main Content */}
-			{children}
+			<Box sx={{ ...(footer ? {} : { pb: 0.5 }) }}>
+				{children}
+			</Box>
 
 			{/* Footer */}
 			{footer && footer}
