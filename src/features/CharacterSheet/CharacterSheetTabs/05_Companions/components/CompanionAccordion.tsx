@@ -47,7 +47,7 @@ export const CompanionAccordion: React.FC<CompanionAccordionProps> = ({
 			onChange={() => onToggle(companion.id)}
 			sx={{ minWidth: '30rem' }}
 		>
-			<AccordionSummary expandIcon={<ExpandMore />}>
+			<AccordionSummary expandIcon={<ExpandMore />} sx={{ pb: 1 }}>
 				<CompanionHeaderControls
 					companion={companion}
 					editingId={editingId}
@@ -66,7 +66,7 @@ export const CompanionAccordion: React.FC<CompanionAccordionProps> = ({
 					onDeleteClick={onDeleteClick}
 				/>
 			</AccordionSummary>
-			<AccordionDetails>
+			<AccordionDetails sx={{ pt: 0 }}>
 				<CompanionContent
 					editingId={editingId}
 					companionId={companion.id}

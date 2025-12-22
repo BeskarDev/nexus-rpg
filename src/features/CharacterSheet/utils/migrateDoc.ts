@@ -17,6 +17,8 @@ import {
 import { ABILITY_TAGS } from '../../../types/AbilityTag'
 import { normalizeSkillName } from '../../../constants/skills'
 import { db } from '@site/src/config/firebase'
+import { calculateMaxHp } from './calculateHp'
+import { calculateCharacterLevel } from './calculateCharacterLevel'
 
 export const migrateDoc = async (
 	collectionId: string,
@@ -148,9 +150,8 @@ const migrateStatistics = (data: any): Statistics => {
 		const oldMaxHp = migratedData.health.total || 0
 
 		// Calculate what the new auto max HP should be
-		// We need to import the calculation functions here
-		const { calculateMaxHp } = require('./calculateHp')
-		const { calculateCharacterLevel } = require('./calculateCharacterLevel')
+		// Use calculation functions from local utils
+		// calculateMaxHp and calculateCharacterLevel imported at module top
 
 		// We need XP total to calculate level, so we'll need to handle this case where we might not have it
 		// For migration, we'll assume level 1 if we can't determine the level

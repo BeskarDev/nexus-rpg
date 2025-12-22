@@ -10,8 +10,9 @@ import {
 	alpha,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
+import { UI_COLORS } from '../../../../utils/colors'
 
-import { AddCircle, ExpandMore, Search, SwapVert, AutoFixHigh, Star, FlashOn } from '@mui/icons-material'
+import { AddCircle, ExpandMore, Search, SwapVert } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
 import { DynamicListItem } from '@site/src/components/DynamicList/DynamicListItem'
 import { DropResult } from '@hello-pangea/dnd'
@@ -21,9 +22,12 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
-import { FocusField } from '../00_Statistics/FocusField'
 import { SpellRow } from './SpellRow'
 import { SpellsSearchDialog } from './SpellsSearchDialog'
+import { MagicSkillCard } from './MagicSkillCard'
+import { SpecializationCard } from './SpecializationCard'
+import { CatalystCard } from './CatalystCard'
+import { FocusCard } from './FocusCard'
 
 export const SpellsTab: React.FC = () => {
 	const dispatch = useAppDispatch()
@@ -117,161 +121,22 @@ export const SpellsTab: React.FC = () => {
 				<Box
 					sx={{
 						display: 'flex',
-						alignItems: 'flex-start',
+						alignItems: 'stretch',
 						flexWrap: 'wrap',
 						gap: 0.75,
 						mb: 1,
 					}}
 				>
-					{/* Magic Skill Card */}
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-							minWidth: '5rem',
-							borderRadius: 1,
-							border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
-							bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
-							p: 0.5,
-						}}
-					>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-							<AutoFixHigh sx={{ fontSize: '0.7rem', color: '#ba68c8' }} />
-							<Typography
-								variant="caption"
-								sx={{
-									fontWeight: 700,
-									fontSize: '0.55rem',
-									color: '#ba68c8',
-									textTransform: 'uppercase',
-								}}
-							>
-								Magic
-							</Typography>
-						</Box>
-						<Typography
-							sx={{
-								fontWeight: 'bold',
-								fontSize: '0.85rem',
-								lineHeight: 1.2,
-								textAlign: 'center',
-							}}
-						>
-							{magicSkill || '—'}
-						</Typography>
-					</Box>
-
-					{/* Specialization Card */}
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-							minWidth: '5rem',
-							borderRadius: 1,
-							border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
-							bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
-							p: 0.5,
-							position: 'relative',
-						}}
-					>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-							<Star sx={{ fontSize: '0.7rem', color: '#ffb74d' }} />
-							<Typography
-								variant="caption"
-								sx={{
-									fontWeight: 700,
-									fontSize: '0.55rem',
-									color: '#ffb74d',
-									textTransform: 'uppercase',
-								}}
-							>
-								Spec.
-							</Typography>
-						</Box>
-						<TextField
-							variant="standard"
-							size="small"
-							value={specialization}
-							onChange={(event) =>
-								updateCharacter({
-									spells: { specialization: event.target.value },
-								})
-							}
-							InputProps={{
-								disableUnderline: true,
-								sx: {
-									fontWeight: 'bold',
-									fontSize: '0.85rem',
-									textAlign: 'center',
-									'& input': {
-										textAlign: 'center',
-										p: 0,
-									},
-								},
-							}}
-							sx={{ maxWidth: '5rem' }}
-						/>
-					</Box>
-
-					{/* Spell Catalyst Card */}
-					<Tooltip title="bonus damage per SL from your Spell Catalyst">
-						<Box
-							sx={{
-								display: 'flex',
-								flexDirection: 'column',
-								alignItems: 'center',
-								minWidth: '4rem',
-								borderRadius: 1,
-								border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
-								bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
-								p: 0.5,
-							}}
-						>
-							<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-								<FlashOn sx={{ fontSize: '0.7rem', color: '#64b5f6' }} />
-								<Typography
-									variant="caption"
-									sx={{
-										fontWeight: 700,
-										fontSize: '0.55rem',
-										color: '#64b5f6',
-										textTransform: 'uppercase',
-									}}
-								>
-									Catalyst
-								</Typography>
-							</Box>
-							<TextField
-								variant="standard"
-								size="small"
-								type="number"
-								value={spellCatalystDamage}
-								onChange={(event) =>
-									updateCharacter({
-										spells: { spellCatalystDamage: Number(event.target.value) },
-									})
-								}
-								InputProps={{
-									disableUnderline: true,
-									sx: {
-										fontWeight: 'bold',
-										fontSize: '0.95rem',
-										textAlign: 'center',
-										'& input': {
-											textAlign: 'center',
-											p: 0,
-										},
-									},
-								}}
-								sx={{ maxWidth: '2.5rem' }}
-							/>
-						</Box>
-					</Tooltip>
-
-					{/* Focus Field */}
-					<FocusField />
+					<MagicSkillCard magicSkill={magicSkill} />
+					<SpecializationCard 
+						specialization={specialization}
+						updateCharacter={updateCharacter}
+					/>
+					<CatalystCard
+						spellCatalystDamage={spellCatalystDamage}
+						updateCharacter={updateCharacter}
+					/>
+					<FocusCard />
 				</Box>
 
 				<Accordion defaultExpanded>

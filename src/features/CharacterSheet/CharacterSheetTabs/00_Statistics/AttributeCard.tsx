@@ -1,12 +1,5 @@
 import { HeartBroken, HeartBrokenOutlined } from '@mui/icons-material'
-import {
-	Box,
-	Checkbox,
-	MenuItem,
-	Tooltip,
-	Typography,
-	alpha,
-} from '@mui/material'
+import { Box, Checkbox, MenuItem, Tooltip } from '@mui/material'
 import {
 	Attribute,
 	AttributeType,
@@ -14,13 +7,15 @@ import {
 } from '@site/src/types/Character'
 import React from 'react'
 import { AttributeField } from '../../CharacterSheet'
+import { CharacterSheetCard, CardHeader } from '../../components'
 
-export type AttributeColumnProps = {
+export type AttributeCardProps = {
 	attribute: Attribute
 	label: string
 	icon: React.ReactNode
 	updateAttribute: (update: Partial<Attribute>) => void
 	totalWounds: number
+	color: string
 }
 
 const getWoundTooltip = (label: string) => {
@@ -38,28 +33,44 @@ const getWoundTooltip = (label: string) => {
 	}
 }
 
-// Get attribute abbreviation and color
-export const getAttributeInfo = (label: string) => {
+const getAttributeDescription = (label: string) => {
 	switch (label) {
 		case 'Strength':
-			return { abbr: 'STR', color: '#e57373' } // red
+			return 'Strength: Physical power, melee damage, carrying capacity'
 		case 'Agility':
-			return { abbr: 'AGI', color: '#81c784' } // green
+			return 'Agility: Speed, reflexes, ranged accuracy, dodging'
 		case 'Spirit':
-			return { abbr: 'SPI', color: '#64b5f6' } // blue
+			return 'Spirit: Willpower, perception, mystic magic, initiative'
 		case 'Mind':
-			return { abbr: 'MND', color: '#ba68c8' } // purple
+			return 'Mind: Intelligence, knowledge, arcane magic, tactics'
 		default:
-			return { abbr: label.substring(0, 3).toUpperCase(), color: '#9e9e9e' }
+			return label
 	}
 }
 
-export const AttributeColumn: React.FC<AttributeColumnProps> = ({
+// Get attribute abbreviation
+export const getAttributeAbbr = (label: string) => {
+	switch (label) {
+		case 'Strength':
+			return 'STR'
+		case 'Agility':
+			return 'AGI'
+		case 'Spirit':
+			return 'SPI'
+		case 'Mind':
+			return 'MND'
+		default:
+			return label.substring(0, 3).toUpperCase()
+	}
+}
+
+export const AttributeCard: React.FC<AttributeCardProps> = ({
 	attribute,
 	label,
 	icon,
 	updateAttribute,
 	totalWounds,
+	color,
 }) => {
 	const handleWoundChange = () => {
 		if (!attribute.wounded) {
@@ -72,55 +83,39 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 		}
 	}
 
-	const { abbr, color } = getAttributeInfo(label)
+	const abbr = getAttributeAbbr(label)
 	const isWounded = attribute.wounded
 
 	return (
-		<Box
+		<CharacterSheetCard
+			minWidth="4rem"
+			maxWidth="5rem"
+			tooltip={getAttributeDescription(label)}
 			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'center',
-				minWidth: '4rem',
-				maxWidth: '5rem',
 				flex: '1 1 auto',
-				borderRadius: 1,
-				border: (theme) =>
-					`1px solid ${isWounded ? theme.palette.error.main : alpha(theme.palette.divider, 0.2)}`,
-				bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
-				p: 0.5,
 				transition: 'border-color 0.2s ease-in-out',
 				'&:hover': {
-					borderColor: isWounded ? undefined : alpha(color, 0.6),
+					borderColor: isWounded ? undefined : color,
 				},
 			}}
+			borderColor={isWounded ? 'error.main' : undefined}
+			header={<CardHeader icon={icon} label={abbr} color={color} />}
+			footer={
+				<Tooltip title={getWoundTooltip(label)} placement="bottom">
+					<Checkbox
+						size="small"
+						icon={<HeartBrokenOutlined sx={{ fontSize: '0.8rem' }} />}
+						checkedIcon={
+							<HeartBroken color="error" sx={{ fontSize: '0.8rem' }} />
+						}
+						checked={attribute.wounded}
+						disabled={!attribute.wounded && totalWounds >= 3}
+						onChange={handleWoundChange}
+						sx={{ p: 0, mt: 0 }}
+					/>
+				</Tooltip>
+			}
 		>
-			{/* Attribute Label with Icon - Compact */}
-			<Box
-				sx={{
-					display: 'flex',
-					alignItems: 'center',
-					gap: 0.25,
-				}}
-			>
-				<Box sx={{ fontSize: '0.7rem', color: color, display: 'flex' }}>
-					{icon}
-				</Box>
-				<Typography
-					variant="caption"
-					sx={{
-						fontWeight: 700,
-						fontSize: '0.65rem',
-						color: color,
-						textTransform: 'uppercase',
-						letterSpacing: '0.5px',
-					}}
-				>
-					{abbr}
-				</Typography>
-			</Box>
-
-			{/* Die Value Display - Centered */}
 			<AttributeField
 				select
 				value={attribute.value}
@@ -133,8 +128,8 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 				InputProps={{
 					disableUnderline: true,
 					sx: {
-            ml: 1.5,
-            mr: -1.5,
+						ml: 1.5,
+						mr: -1.5,
 						fontWeight: 'bold',
 						fontSize: '0.95rem',
 						textAlign: 'center',
@@ -159,19 +154,6 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 					</MenuItem>
 				))}
 			</AttributeField>
-
-			{/* Wound Checkbox - Compact */}
-			<Tooltip title={getWoundTooltip(label)} placement="bottom">
-				<Checkbox
-					size="small"
-					icon={<HeartBrokenOutlined sx={{ fontSize: '0.8rem' }} />}
-					checkedIcon={<HeartBroken color="error" sx={{ fontSize: '0.8rem' }} />}
-					checked={attribute.wounded}
-					disabled={!attribute.wounded && totalWounds >= 3}
-					onChange={handleWoundChange}
-					sx={{ p: 0, mt: 0 }}
-				/>
-			</Tooltip>
-		</Box>
+		</CharacterSheetCard>
 	)
 }

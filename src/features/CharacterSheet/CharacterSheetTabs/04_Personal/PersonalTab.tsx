@@ -62,6 +62,12 @@ const resolveSkillConflicts = (skills: string[]): string[] => {
 
 	return Array.from(skillSet)
 }
+import { NameCard } from './NameCard'
+import { FolkCard } from './FolkCard'
+import { UpbringingCard } from './UpbringingCard'
+import { BackgroundCard } from './BackgroundCard'
+import { MotivationCard } from './MotivationCard'
+import { HeightCard, WeightCard, AgeCard, DescriptionCard } from './PersonalCards'
 import folkData from '../../../../utils/data/json/folk.json'
 import upbringingData from '../../../../utils/data/json/upbringings.json'
 import backgroundData from '../../../../utils/data/json/backgrounds.json'
@@ -80,6 +86,8 @@ export const PersonalTab: React.FC = () => {
 		formState: { errors },
 		reset,
 		watch,
+		setValue,
+		trigger,
 	} = useForm({
 		resolver: yupResolver(personalTabSchema),
 		defaultValues: {
@@ -463,165 +471,132 @@ export const PersonalTab: React.FC = () => {
 				width: '100%',
 			}}
 		>
-			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>
+			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2, flexWrap: 'wrap' }}>
 				<Box sx={{ flexGrow: 1 }}>
 					<SectionHeader sx={{ mb: 2 }}>Your Character</SectionHeader>
 					<Box
 						sx={{
 							display: 'flex',
-							alignItems: 'center',
+							alignItems: 'stretch',
 							flexWrap: 'wrap',
-							gap: 1,
+							gap: 0.75,
+							'@media (max-width: 768px)': {
+								flexDirection: 'column',
+								alignItems: 'stretch',
+							},
 						}}
 					>
-						<TextField
-							{...getTextFieldProps(register('name'), errors.name)}
-							variant="standard"
-							onBlur={(e) => {
-								register('name').onBlur(e)
-								updateCharacter({ personal: { name: formValues.name } })
-							}}
-							label="Name"
-							sx={{ maxWidth: '15rem' }}
+						<NameCard
+							name={formValues.name}
+							onChange={(value) => {
+							setValue('name', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('name')
+							updateCharacter({ personal: { name: formValues.name } })
+						}}
+							error={errors.name?.message}
 						/>
 
-						{/* Folk Selection */}
-						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
-							<TextField
-								{...getTextFieldProps(register('folk'), errors.folk)}
-								variant="standard"
-								onBlur={(e) => {
-									register('folk').onBlur(e)
-									updateCharacter({ personal: { folk: formValues.folk } })
-								}}
-								label="Folk"
-								sx={{ maxWidth: '10rem' }}
-							/>
-							<IconButton
-								size="small"
-								onClick={() => setFolkDialogOpen(true)}
-								sx={{ mb: 0.25 }}
-								title="Select from list"
-							>
-								<Edit fontSize="small" />
-							</IconButton>
-						</Box>
-
-						{/* Upbringing Selection */}
-						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
-							<TextField
-								{...getTextFieldProps(
-									register('upbringing'),
-									errors.upbringing,
-								)}
-								variant="standard"
-								onBlur={(e) => {
-									register('upbringing').onBlur(e)
-									updateCharacter({
-										personal: { upbringing: formValues.upbringing },
-									})
-								}}
-								label="Upbringing"
-								sx={{ maxWidth: '10rem' }}
-							/>
-							<IconButton
-								size="small"
-								onClick={() => setUpbringingDialogOpen(true)}
-								sx={{ mb: 0.25 }}
-								title="Select from list"
-							>
-								<Edit fontSize="small" />
-							</IconButton>
-						</Box>
-
-						{/* Background Selection */}
-						<Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 0.5 }}>
-							<TextField
-								{...getTextFieldProps(
-									register('background'),
-									errors.background,
-								)}
-								variant="standard"
-								onBlur={(e) => {
-									register('background').onBlur(e)
-									updateCharacter({
-										personal: { background: formValues.background },
-									})
-								}}
-								label="Background"
-								sx={{ maxWidth: '10rem' }}
-							/>
-							<IconButton
-								size="small"
-								onClick={() => setBackgroundDialogOpen(true)}
-								sx={{ mb: 0.25 }}
-								title="Select from list"
-							>
-								<Edit fontSize="small" />
-							</IconButton>
-						</Box>
-						<TextField
-							{...getTextFieldProps(register('motivation'), errors.motivation)}
-							variant="standard"
-							onBlur={(e) => {
-								register('motivation').onBlur(e)
-								updateCharacter({
-									personal: { motivation: formValues.motivation },
-								})
-							}}
-							label="Motivation"
-							sx={{ maxWidth: '10rem' }}
+						<FolkCard
+							folk={formValues.folk}
+							onChange={(value) => {
+							setValue('folk', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('folk')
+							updateCharacter({ personal: { folk: formValues.folk } })
+						}}
+							onEditClick={() => setFolkDialogOpen(true)}
+							error={errors.folk?.message}
 						/>
 
-						<Box sx={{ width: '100%', flexGrow: 1 }} />
+						<UpbringingCard
+							upbringing={formValues.upbringing}
+							onChange={(value) => {
+							setValue('upbringing', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('upbringing')
+							updateCharacter({ personal: { upbringing: formValues.upbringing } })
+						}}
+							onEditClick={() => setUpbringingDialogOpen(true)}
+							error={errors.upbringing?.message}
+						/>
 
-						<TextField
-							{...getTextFieldProps(register('height'), errors.height)}
-							variant="standard"
-							onBlur={(e) => {
-								register('height').onBlur(e)
-								updateCharacter({ personal: { height: formValues.height } })
-							}}
-							label="Height"
-							sx={{ maxWidth: '6rem' }}
+						<BackgroundCard
+							background={formValues.background}
+							onChange={(value) => {
+							setValue('background', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('background')
+							updateCharacter({ personal: { background: formValues.background } })
+						}}
+							onEditClick={() => setBackgroundDialogOpen(true)}
+							error={errors.background?.message}
 						/>
-						<TextField
-							{...getTextFieldProps(register('weight'), errors.weight)}
-							variant="standard"
-							onBlur={(e) => {
-								register('weight').onBlur(e)
-								updateCharacter({ personal: { weight: formValues.weight } })
-							}}
-							label="Weight"
-							sx={{ maxWidth: '6rem' }}
+
+						<MotivationCard
+							motivation={formValues.motivation}
+							onChange={(value) => {
+							setValue('motivation', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('motivation')
+							updateCharacter({ personal: { motivation: formValues.motivation } })
+						}}
+							error={errors.motivation?.message}
 						/>
-						<TextField
-							{...getTextFieldProps(register('age'), errors.age)}
-							variant="standard"
-							onBlur={(e) => {
-								register('age').onBlur(e)
-								updateCharacter({ personal: { age: formValues.age } })
-							}}
-							label="Age"
-							sx={{ maxWidth: '6rem' }}
+
+						<HeightCard
+							value={formValues.height}
+							onChange={(value) => {
+							setValue('height', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('height')
+							updateCharacter({ personal: { height: formValues.height } })
+						}}
+							error={errors.height?.message}
 						/>
-						<TextField
-							{...getTextFieldProps(
-								register('description'),
-								errors.description,
-							)}
-							variant="standard"
-							multiline
-							minRows={1}
-							maxRows={5}
-							onBlur={(e) => {
-								register('description').onBlur(e)
-								updateCharacter({
-									personal: { description: formValues.description },
-								})
-							}}
-							label="Description"
-							sx={{ maxWidth: '20rem' }}
+
+						<WeightCard
+							value={formValues.weight}
+							onChange={(value) => {
+							setValue('weight', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('weight')
+							updateCharacter({ personal: { weight: formValues.weight } })
+						}}
+							error={errors.weight?.message}
+						/>
+
+						<AgeCard
+							value={formValues.age}
+							onChange={(value) => {
+							setValue('age', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('age')
+							updateCharacter({ personal: { age: formValues.age } })
+						}}
+							error={errors.age?.message}
+						/>
+
+						<Box sx={{ width: '100%' }} />
+
+						<DescriptionCard
+							value={formValues.description}
+							onChange={(value) => {
+							setValue('description', value, { shouldDirty: true })
+						}}
+							onBlur={async () => {
+							await trigger('description')
+							updateCharacter({ personal: { description: formValues.description } })
+						}}
+							error={errors.description?.message}
 						/>
 					</Box>
 				</Box>

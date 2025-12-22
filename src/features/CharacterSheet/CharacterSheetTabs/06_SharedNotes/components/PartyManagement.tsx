@@ -16,10 +16,11 @@ import {
 	IconButton,
 	Tooltip,
 } from '@mui/material'
-import { Add, ContentCopy, Edit, Save, Cancel } from '@mui/icons-material'
+import { Add, ContentCopy } from '@mui/icons-material'
 import { PartyInfo } from '@site/src/types/Party'
 import { logger } from '../../../utils'
 import { PartyMemberItem } from './PartyMemberItem'
+import { PartyNameCard } from '../PartyNameCard'
 
 export interface PartyManagementProps {
 	characterId: string
@@ -46,8 +47,6 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 }) => {
 	const [partyName, setPartyName] = useState('')
 	const [newMemberCharacterId, setNewMemberCharacterId] = useState('')
-	const [isEditingName, setIsEditingName] = useState(false)
-	const [editedPartyName, setEditedPartyName] = useState('')
 	const [confirmDialog, setConfirmDialog] = useState<{
 		open: boolean
 		title: string
@@ -109,19 +108,9 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 		}
 	}
 
-	const handleEditPartyName = () => {
-		if (partyInfo) {
-			setEditedPartyName(partyInfo.party.name)
-			setIsEditingName(true)
-		}
-	}
-
-	const handleSavePartyName = async () => {
-		if (!editedPartyName.trim()) return
-
+	const handleUpdatePartyName = async (newName: string) => {
 		try {
-			await onUpdatePartyName(editedPartyName.trim())
-			setIsEditingName(false)
+			await onUpdatePartyName(newName)
 			setSnackbar({
 				open: true,
 				message: 'Party name updated successfully!',
@@ -133,12 +122,8 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				message: 'Failed to update party name',
 				severity: 'error',
 			})
+			throw error // Re-throw so PartyNameCard knows it failed
 		}
-	}
-
-	const handleCancelEdit = () => {
-		setIsEditingName(false)
-		setEditedPartyName('')
 	}
 
 	const handleCopyCharacterId = () => {
@@ -247,54 +232,13 @@ export const PartyManagement: React.FC<PartyManagementProps> = ({
 				</Paper>
 			) : (
 				<Paper sx={{ p: 2 }}>
-					{/* Party Name with Edit Functionality */}
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-						{isEditingName ? (
-							<>
-								<TextField
-									value={editedPartyName}
-									onChange={(e) => setEditedPartyName(e.target.value)}
-									size="small"
-									fullWidth
-									disabled={loading}
-									autoFocus
-								/>
-								<Tooltip title="Save">
-									<IconButton
-										onClick={handleSavePartyName}
-										disabled={!editedPartyName.trim() || loading}
-										color="primary"
-										size="small"
-									>
-										<Save />
-									</IconButton>
-								</Tooltip>
-								<Tooltip title="Cancel">
-									<IconButton
-										onClick={handleCancelEdit}
-										disabled={loading}
-										size="small"
-									>
-										<Cancel />
-									</IconButton>
-								</Tooltip>
-							</>
-						) : (
-							<>
-								<Typography variant="h6" sx={{ flexGrow: 1 }}>
-									{partyInfo.party.name}
-								</Typography>
-								<Tooltip title="Edit party name">
-									<IconButton
-										onClick={handleEditPartyName}
-										disabled={loading}
-										size="small"
-									>
-										<Edit />
-									</IconButton>
-								</Tooltip>
-							</>
-						)}
+					{/* Party Name Card */}
+					<Box sx={{ mb: 2 }}>
+						<PartyNameCard
+							partyName={partyInfo.party.name}
+							onSave={handleUpdatePartyName}
+							loading={loading}
+						/>
 					</Box>
 
 					{/* Add Member Section */}

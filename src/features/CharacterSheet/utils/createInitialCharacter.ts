@@ -728,7 +728,7 @@ export const createInitialCharacter = (
 			parry: parryValue,
 			dodge: dodgeValue,
 			resist: resistValue,
-			resolve: 0,
+			resolve: 1,
 			fatigue: {
 				current: 0,
 				max: 0,

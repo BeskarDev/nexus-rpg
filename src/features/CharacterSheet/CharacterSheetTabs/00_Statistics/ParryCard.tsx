@@ -2,14 +2,7 @@ import { useMemo } from 'react'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Security } from '@mui/icons-material'
-import {
-	Box,
-	IconButton,
-	Menu,
-	Tooltip,
-	Typography,
-	alpha,
-} from '@mui/material'
+import { Menu, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -22,8 +15,10 @@ import {
 } from '../../utils/calculateDefenses'
 import { extractShieldParryBonus } from '../02_Items/utils/itemUtils'
 import { organizeItemsByLocation } from '../02_Items/utils/itemUtils'
+import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
-export const ParryField = () => {
+export const ParryCard = () => {
 	const dispatch = useAppDispatch()
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
@@ -112,127 +107,81 @@ export const ParryField = () => {
 	const displayValue = parryDetails ? totalParry : parry
 
 	return (
-		<>
-			<Tooltip title="Click gear to configure Parry sources">
-				<Box
-					sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'center',
-						width: '5rem',
-            height: '3.25rem',
-						borderRadius: 1,
-						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
-						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
-						p: 0.5,
-						position: 'relative',
-					}}
-				>
-					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Security sx={{ fontSize: '0.7rem', color: '#e57373' }} />
-						<Typography
-							variant="caption"
-							sx={{
-								fontWeight: 700,
-								fontSize: '0.65rem',
-								color: '#e57373',
-								textTransform: 'uppercase',
-							}}
-						>
-							PARRY
+		<CharacterSheetCard
+			header={<CardHeader icon={<Security />} label="Parry" color={ATTRIBUTE_COLORS.strength} />}
+			showConfigButton
+			onConfigClick={parryDetails ? handleClick : initializeDetails}
+			tooltip="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"
+			minWidth="5rem"
+			configMenu={
+				parryDetails && (
+					<Menu
+						anchorEl={anchorEl}
+						open={open}
+						onClose={handleClose}
+						MenuListProps={{ sx: { p: 2, maxWidth: '17rem' } }}
+					>
+						<SectionHeader>Parry Calculator</SectionHeader>
+						<Typography variant="subtitle2">
+							Set the individual sources of Parry defense.
 						</Typography>
-					</Box>
-					<Typography
-						sx={{
-							fontWeight: 'bold',
-							fontSize: '0.95rem',
-							lineHeight: 1.2,
-							textAlign: 'center',
-						}}
-					>
-						{displayValue}
-					</Typography>
-					<IconButton
-						size="small"
-						onClick={parryDetails ? handleClick : initializeDetails}
-						sx={{
-							position: 'absolute',
-							top: 0,
-							right: 0,
-							p: 0.25,
-							opacity: 0.6,
-							'&:hover': { opacity: 1 },
-						}}
-					>
-						<Settings sx={{ fontSize: '0.65rem' }} />
-					</IconButton>
-				</Box>
-			</Tooltip>
-			{parryDetails && (
-				<Menu
-					anchorEl={anchorEl}
-					open={open}
-					onClose={handleClose}
-					MenuListProps={{ sx: { p: 2, maxWidth: '17rem' } }}
-				>
-					<SectionHeader>Parry Calculator</SectionHeader>
-					<Typography variant="subtitle2">
-						Set the individual sources of Parry defense.
-					</Typography>
-					<AttributeField
-						disabled
-						type="number"
-						size="small"
-						value={autoBase}
-						label="Base"
-						helperText="7 + Fighting"
-					/>
-					<AttributeField
-						disabled
-						type="number"
-						size="small"
-						value={autoLevelBonus}
-						label="Level Bonus"
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={details.shieldBonus}
-						onChange={(event) => {
-							const newShieldBonus = Number(event.target.value)
-							updateCharacter({
-								statistics: {
-									parryDetails: { shieldBonus: newShieldBonus },
-									parry:
-										autoBase + autoLevelBonus + newShieldBonus + details.other,
-								},
-							})
-						}}
-						label="Shield Bonus"
-						helperText={
-							autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined
-						}
-					/>
-					<AttributeField
-						type="number"
-						size="small"
-						value={details.other}
-						onChange={(event) =>
-							updateCharacter({
-								statistics: {
-									parryDetails: { other: Number(event.target.value) },
-									parry:
-										autoBase +
-										autoLevelBonus +
-										autoShieldBonus +
-										Number(event.target.value),
-								},
-							})
-						}
-						label="Other"
-					/>
-				</Menu>
-			)}
-		</>
+						<AttributeField
+							disabled
+							type="number"
+							size="small"
+							value={autoBase}
+							label="Base"
+							helperText="7 + Fighting"
+						/>
+						<AttributeField
+							disabled
+							type="number"
+							size="small"
+							value={autoLevelBonus}
+							label="Level Bonus"
+						/>
+						<AttributeField
+							type="number"
+							size="small"
+							value={details.shieldBonus}
+							onChange={(event) => {
+								const newShieldBonus = Number(event.target.value)
+								updateCharacter({
+									statistics: {
+										parryDetails: { shieldBonus: newShieldBonus },
+										parry:
+											autoBase + autoLevelBonus + newShieldBonus + details.other,
+									},
+								})
+							}}
+							label="Shield Bonus"
+							helperText={
+								autoShieldBonus > 0 ? `Auto: ${autoShieldBonus}` : undefined
+							}
+						/>
+						<AttributeField
+							type="number"
+							size="small"
+							value={details.other}
+							onChange={(event) =>
+								updateCharacter({
+									statistics: {
+										parryDetails: { other: Number(event.target.value) },
+										parry:
+											autoBase +
+											autoLevelBonus +
+											autoShieldBonus +
+											Number(event.target.value),
+									},
+								})
+							}
+							label="Other"
+						/>
+					</Menu>
+				)
+			}
+		>
+			<CardContent value={displayValue} />
+		</CharacterSheetCard>
 	)
 }

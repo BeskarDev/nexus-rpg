@@ -9,6 +9,11 @@ export { StatCard } from './StatCard'
 export { QuickRefButton } from './QuickRefButton'
 export { DeleteButton } from './DeleteButton'
 export { UsesDisplay } from './UsesDisplay'
+export {
+	CharacterSheetCard,
+	CardHeader,
+	CardContent,
+} from './Card'
 
 export type { FolkData } from './FolkSelectionDialog'
 export type { UpbringingData } from './UpbringingSelectionDialog'
@@ -18,3 +23,8 @@ export type { StatCardProps } from './StatCard'
 export type { QuickRefButtonProps } from './QuickRefButton'
 export type { DeleteButtonProps } from './DeleteButton'
 export type { UsesDisplayProps } from './UsesDisplay'
+export type {
+	CharacterSheetCardProps,
+	CardHeaderProps,
+	CardContentProps,
+} from './Card'

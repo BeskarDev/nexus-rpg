@@ -15,6 +15,7 @@ import {
 	TextField,
 	alpha,
 } from '@mui/material'
+import { UI_COLORS } from '../../../../utils/colors'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -29,8 +30,9 @@ import {
 	getNumberFieldProps,
 	createHpFieldSchema,
 } from '../../utils/validation'
+import { CharacterSheetCard, CardHeader } from '../../components'
 
-export const HpField = () => {
+export const HpCard = () => {
 	const dispatch = useAppDispatch()
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 	const [damageHealAmount, setDamageHealAmount] = useState<number>(0)
@@ -207,72 +209,13 @@ export const HpField = () => {
 	}
 
 	return (
-		<>
-			<Box
-				sx={{
-					display: 'flex',
-					flexDirection: 'column',
-					alignItems: 'center',
-					borderRadius: 1,
-					border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
-					bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
-					p: 0.5,
-					position: 'relative',
-					minWidth: '7rem',
-				}}
-			>
-				{/* HP Header */}
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-					<Favorite sx={{ fontSize: '0.7rem', color: hpColor }} />
-					<Typography
-						variant="caption"
-						sx={{
-							fontWeight: 700,
-							fontSize: '0.65rem',
-							color: hpColor,
-							textTransform: 'uppercase',
-						}}
-					>
-						HP
-					</Typography>
-				</Box>
-
-				{/* HP Display */}
-				<Typography
-					sx={{
-						fontWeight: 'bold',
-						fontSize: '0.95rem',
-						lineHeight: 1.2,
-						textAlign: 'center',
-						transition: 'all 0.3s ease-in-out',
-						...(animationState === 'damage' && {
-							animation: 'shake 0.5s ease-in-out',
-							color: '#f44336',
-						}),
-						...(animationState === 'healing' && {
-							animation: 'pulse 0.5s ease-in-out',
-							color: '#4caf50',
-						}),
-						'@keyframes shake': {
-							'0%, 100%': { transform: 'translateX(0)' },
-							'25%': { transform: 'translateX(-2px)' },
-							'75%': { transform: 'translateX(2px)' },
-						},
-						'@keyframes pulse': {
-							'0%, 100%': { transform: 'scale(1)' },
-							'50%': { transform: 'scale(1.1)' },
-						},
-					}}
-				>
-					{health.current}/{effectiveMaxHp}
-					{health.temp > 0 && (
-						<span style={{ color: '#2196f3', fontSize: '0.8rem' }}>
-							{' '}+{health.temp}
-						</span>
-					)}
-				</Typography>
-
-				{/* HP Bar */}
+		<CharacterSheetCard
+			header={<CardHeader icon={<Favorite />} label="HP" color={hpColor} />}
+			showConfigButton
+			onConfigClick={handleClick}
+			tooltip="Hit Points: Your health and ability to withstand damage"
+			minWidth="7rem"
+			footer={
 				<Box
 					sx={{
 						position: 'relative',
@@ -304,37 +247,21 @@ export const HpField = () => {
 								left: `${(mainHpBarWidth / 120) * 100}%`,
 								width: `${(tempHpBarWidth / 120) * 100}%`,
 								height: '4px',
-								backgroundColor: '#2196f3',
+								backgroundColor: UI_COLORS.info,
 								borderRadius: '0 2px 2px 0',
 							}}
 						/>
 					)}
 				</Box>
-
-				{/* Config button */}
-				<IconButton
-					size="small"
-					onClick={handleClick}
-					sx={{
-						position: 'absolute',
-						top: 0,
-						right: 0,
-						p: 0.25,
-						opacity: 0.6,
-						'&:hover': { opacity: 1 },
-					}}
+			}
+			configMenu={
+				<Menu
+					anchorEl={anchorEl}
+					open={open}
+					onClose={handleClose}
+					MenuListProps={{ sx: { p: 2, maxWidth: '25rem' } }}
 				>
-					<Settings sx={{ fontSize: '0.65rem' }} />
-				</IconButton>
-			</Box>
-
-			<Menu
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				MenuListProps={{ sx: { p: 2, maxWidth: '25rem' } }}
-			>
-				<SectionHeader sx={{ mb: 2 }}>HP Configuration</SectionHeader>
+					<SectionHeader sx={{ mb: 2 }}>HP Configuration</SectionHeader>
 
 				{/* Visual HP Bar with editable current HP */}
 				<Box sx={{ mb: 3 }}>
@@ -609,6 +536,41 @@ export const HpField = () => {
 					</Typography>
 				)}
 			</Menu>
-		</>
+			}
+		>
+			<Typography
+				sx={{
+					fontWeight: 'bold',
+					fontSize: '0.95rem',
+					lineHeight: 1.2,
+					textAlign: 'center',
+					transition: 'all 0.3s ease-in-out',
+					...(animationState === 'damage' && {
+						animation: 'shake 0.5s ease-in-out',
+						color: UI_COLORS.danger,
+					}),
+					...(animationState === 'healing' && {
+						animation: 'pulse 0.5s ease-in-out',
+						color: UI_COLORS.success,
+					}),
+					'@keyframes shake': {
+						'0%, 100%': { transform: 'translateX(0)' },
+						'25%': { transform: 'translateX(-2px)' },
+						'75%': { transform: 'translateX(2px)' },
+					},
+					'@keyframes pulse': {
+						'0%, 100%': { transform: 'scale(1)' },
+						'50%': { transform: 'scale(1.1)' },
+					},
+				}}
+			>
+				{health.current}/{effectiveMaxHp}
+				{health.temp > 0 && (
+					<span style={{ color: UI_COLORS.info, fontSize: '0.8rem' }}>
+						{' '}+{health.temp}
+					</span>
+				)}
+			</Typography>
+		</CharacterSheetCard>
 	)
 }

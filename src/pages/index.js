@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import WarningAmberIcon from '@mui/icons-material/WarningAmber'
+import homeBanner from '@site/static/img/banner/home-banner.png'
 
 import styles from './index.module.css'
 
@@ -57,7 +58,7 @@ export default function Home() {
 			<header
 				className={clsx(styles.heroBanner)}
 				style={{
-					background: `no-repeat center/cover url(${require('@site/static/img/banner/home-banner.png').default})`,
+					background: `no-repeat center/cover url(${homeBanner})`,
 				}}
 			>
 				<div className={clsx(styles.heroContainer)}>
