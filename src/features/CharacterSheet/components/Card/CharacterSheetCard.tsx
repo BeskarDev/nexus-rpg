@@ -96,12 +96,16 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 	)
 
 	// Wrap in tooltip if provided and menu is not open
-	// Always wrap to preserve DOM structure for anchor element
+	// Always render a single child into Tooltip (required by MUI).
+	// Render the config menu outside the Tooltip so the Tooltip receives
+	// only one child element.
 	return (
-		<Tooltip title={tooltip || ''} disableHoverListener={!tooltip || isMenuOpen}>
-			{cardContent}
+		<>
+			<Tooltip title={tooltip || ''} disableHoverListener={!tooltip || isMenuOpen}>
+				{cardContent}
+			</Tooltip>
 			{/* Config Menu (rendered outside tooltip but near card) */}
 			{configMenuWithClose}
-		</Tooltip>
+		</>
 	)
 }
