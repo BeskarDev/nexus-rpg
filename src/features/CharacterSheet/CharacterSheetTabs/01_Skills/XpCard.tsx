@@ -41,6 +41,7 @@ export const XpCard: React.FC<XpCardProps> = ({ total, spent }) => {
 				tooltip="Experience Points: Total earned and spent on skills and abilities"
 				showConfigButton
 				onConfigClick={handleClick}
+				sx={{ alignSelf: 'flex-start' }}
 				configMenu={
 					<Menu
 						anchorEl={anchorEl}
@@ -65,7 +66,7 @@ export const XpCard: React.FC<XpCardProps> = ({ total, spent }) => {
 					</Menu>
 				}
 			>
-				<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'baseline', justifyContent: 'center' }}>
+				<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'baseline' }}>
 					<Typography
 						sx={{
 							fontWeight: 'bold',

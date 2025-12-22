@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField } from '@mui/material'
+import { Typography } from '@mui/material'
 import { Star } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
@@ -21,29 +21,15 @@ export const SpecializationCard: React.FC<SpecializationCardProps> = ({
 			tooltip="Your magical specialization or tradition"
 			minWidth="12rem"
 		>
-			<TextField
-				variant="standard"
-				size="small"
-				value={specialization}
-				onChange={(event) =>
-					updateCharacter({
-						spells: { specialization: event.target.value },
-					})
-				}
-				InputProps={{
-					disableUnderline: true,
-					sx: {
-						fontWeight: 'bold',
-						fontSize: '0.85rem',
-						textAlign: 'center',
-						'& input': {
-							textAlign: 'center',
-							p: 0,
-						},
-					},
+			<Typography
+				sx={{
+					fontWeight: 'bold',
+					fontSize: '0.95rem',
+					lineHeight: 1.2,
 				}}
-				sx={{ width: '100%' }}
-			/>
+			>
+				{specialization || '—'}
+			</Typography>
 		</CharacterSheetCard>
 	)
 }

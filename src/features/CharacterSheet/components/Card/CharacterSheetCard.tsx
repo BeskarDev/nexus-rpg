@@ -17,6 +17,23 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 	borderColor,
 	'data-testid': testId,
 }) => {
+	const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+
+	const handleConfigClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		setIsMenuOpen(true)
+		onConfigClick?.(event)
+	}
+
+	// Clone configMenu to add onClose handler
+	const configMenuWithClose = configMenu
+		? React.cloneElement(configMenu as React.ReactElement, {
+				onClose: (e: any) => {
+					setIsMenuOpen(false)
+					;(configMenu as any).props?.onClose?.(e)
+				},
+		  })
+		: null
+
 	const cardContent = (
 		<Box
 			data-testid={testId}
@@ -41,7 +58,15 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 			{header && header}
 
 			{/* Main Content */}
-			<Box sx={{ ...(footer ? {} : { pb: 0.5 }) }}>
+			<Box
+				sx={{
+					...(footer ? {} : { pb: 0.5 }),
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+					width: '100%',
+				}}
+			>
 				{children}
 			</Box>
 
@@ -52,7 +77,7 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 			{showConfigButton && onConfigClick && (
 				<IconButton
 					size="small"
-					onClick={onConfigClick}
+					onClick={handleConfigClick}
 					sx={{
 						position: 'absolute',
 						top: 0,
@@ -68,12 +93,12 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 			)}
 
 			{/* Config Menu (rendered as sibling) */}
-			{configMenu}
+			{configMenuWithClose}
 		</Box>
 	)
 
-	// Wrap in tooltip if provided
-	if (tooltip) {
+	// Wrap in tooltip if provided and menu is not open
+	if (tooltip && !isMenuOpen) {
 		return <Tooltip title={tooltip}>{cardContent}</Tooltip>
 	}
 

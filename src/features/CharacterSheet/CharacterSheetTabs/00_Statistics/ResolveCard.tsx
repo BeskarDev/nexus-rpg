@@ -15,9 +15,19 @@ export const ResolveCard = () => {
 	const { resolve } = useAppSelector(
 		(state) => state.characterSheet.activeCharacter.statistics,
 	)
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+	const open = Boolean(anchorEl)
 
 	const updateCharacter = (update: DeepPartial<CharacterDocument>) => {
 		dispatch(characterSheetActions.updateCharacter(update))
+	}
+
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		setAnchorEl(event.currentTarget)
+	}
+
+	const handleClose = () => {
+		setAnchorEl(null)
 	}
 
 	return (
@@ -26,31 +36,42 @@ export const ResolveCard = () => {
 			minWidth="4.5rem"
 			maxWidth="5rem"
 			tooltip="Resolve: Resource for rerolls and special actions (max 3)"
+			showConfigButton
+			onConfigClick={handleClick}
+			configMenu={
+				<Menu
+					anchorEl={anchorEl}
+					open={open}
+					onClose={handleClose}
+					MenuListProps={{ sx: { p: 2, maxWidth: '12rem' } }}
+				>
+					<SectionHeader>Edit Resolve</SectionHeader>
+					<TextField
+						type="number"
+						size="small"
+						value={resolve}
+						onChange={(event) =>
+							updateCharacter({
+								statistics: { resolve: Number(event.target.value) },
+							})
+						}
+						inputProps={{ min: 0, max: 3 }}
+						label="Resolve"
+						fullWidth
+						sx={{ mt: 1 }}
+					/>
+				</Menu>
+			}
 		>
-			<TextField
-				type="number"
-				value={resolve}
-				onChange={(event) =>
-					updateCharacter({
-						statistics: { resolve: Number(event.target.value) },
-					})
-				}
-				variant="standard"
-				InputProps={{
-					disableUnderline: true,
-					inputProps: { min: 0, max: 3 },
-					sx: {
-						fontWeight: 'bold',
-						fontSize: '0.95rem',
-						textAlign: 'center',
-						'& input': {
-							textAlign: 'center',
-							p: 0,
-						},
-					},
+			<Typography
+				sx={{
+					fontWeight: 'bold',
+					fontSize: '0.95rem',
+					lineHeight: 1.2,
 				}}
-				sx={{ maxWidth: '3rem' }}
-			/>
+			>
+				{resolve}
+			</Typography>
 		</CharacterSheetCard>
 	)
 }

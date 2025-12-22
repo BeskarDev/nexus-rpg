@@ -102,6 +102,7 @@ export const LoadCard: React.FC<LoadCardProps> = ({
 					fontSize: '0.95rem',
 					lineHeight: 1.2,
 					textAlign: 'center',
+					color: 'text.primary',
 				}}
 			>
 				{currentLoad}/{carryCapacity}

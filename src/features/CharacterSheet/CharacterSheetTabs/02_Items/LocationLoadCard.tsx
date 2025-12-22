@@ -39,21 +39,23 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<FitnessCenter />} label="Load" color={loadColor} />}
-			minWidth="6rem"
-			maxWidth="8rem"
+			minWidth="5.5rem"
+			maxWidth="7rem"
 			tooltip="Load capacity for this location"
 			borderColor={currentLoad >= maxLoad && maxLoad > 0 ? loadColor : undefined}
 		>
-			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'baseline', justifyContent: 'center' }}>
+			<Box sx={{ display: 'flex', gap: 0.5, alignItems: 'baseline' }}>
 				<Typography
 					sx={{
 						fontWeight: 'bold',
-						fontSize: '0.85rem',
+						fontSize: '0.95rem',
+						lineHeight: 1.2,
+						color: 'text.primary',
 					}}
 				>
 					{currentLoad}
 				</Typography>
-				<Typography sx={{ fontSize: '0.7rem', color: 'text.secondary' }}>
+				<Typography sx={{ fontSize: '0.75rem', color: 'text.secondary' }}>
 					/
 				</Typography>
 				<TextField
@@ -68,11 +70,13 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 						inputProps: { min: 0 },
 						sx: {
 							fontWeight: 'bold',
-							fontSize: '0.85rem',
+							fontSize: '0.95rem',
+							color: 'text.primary',
 							'& input': {
 								textAlign: 'center',
 								p: 0,
 								width: '2.5rem',
+								color: 'text.primary',
 							},
 						},
 					}}

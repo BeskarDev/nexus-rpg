@@ -30,8 +30,8 @@ export const LocationNameCard: React.FC<LocationNameCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={icon} label={label} color={UI_COLORS.greyBlue} />}
-			minWidth="8rem"
-			maxWidth="10rem"
+			minWidth="6rem"
+			maxWidth="8rem"
 			tooltip={`${label} name`}
 		>
 			<TextField
@@ -47,7 +47,7 @@ export const LocationNameCard: React.FC<LocationNameCardProps> = ({
 						fontSize: '0.85rem',
 						'& input': {
 							textAlign: 'center',
-							p: 0.5,
+							p: 0,
 						},
 					},
 				}}

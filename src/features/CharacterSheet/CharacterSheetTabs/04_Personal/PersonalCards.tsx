@@ -36,28 +36,22 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 			minWidth={minWidth}
 			maxWidth={maxWidth}
 		>
-			<TextField
-				variant="standard"
-				size="small"
-				value={value}
-				onChange={(e) => onChange(e.target.value)}
-				onBlur={onBlur}
-				error={!!error}
-				multiline={multiline}
-				minRows={multiline ? 2 : 1}
-				maxRows={multiline ? 5 : 1}
-				InputProps={{
-					disableUnderline: true,
-					sx: {
+			<Typography
+				sx={{
+					fontWeight: 'bold',
+					fontSize: '0.95rem',
+					lineHeight: 1.2,
+					...(multiline && {
+						textAlign: 'left',
 						fontSize: '0.85rem',
-						'& input, & textarea': {
-							textAlign: multiline ? 'left' : 'center',
-							p: 0.5,
-						},
-					},
+						maxHeight: '4rem',
+						overflow: 'auto',
+						px: 0.5,
+					}),
 				}}
-				sx={{ width: '100%' }}
-			/>
+			>
+				{value || '—'}
+			</Typography>
 		</CharacterSheetCard>
 	)
 }
@@ -69,8 +63,8 @@ export const HeightCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon' | '
 		label="Height"
 		icon={<Height />}
 		tooltip="Character's height"
-		minWidth="5rem"
-		maxWidth="7rem"
+		minWidth="4.5rem"
+		maxWidth="6rem"
 	/>
 )
 
@@ -80,8 +74,8 @@ export const WeightCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon' | '
 		label="Weight"
 		icon={<Scale />}
 		tooltip="Character's weight"
-		minWidth="5rem"
-		maxWidth="7rem"
+		minWidth="4.5rem"
+		maxWidth="6rem"
 	/>
 )
 
@@ -91,8 +85,8 @@ export const AgeCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon' | 'too
 		label="Age"
 		icon={<Cake />}
 		tooltip="Character's age"
-		minWidth="5rem"
-		maxWidth="7rem"
+		minWidth="4.5rem"
+		maxWidth="6rem"
 	/>
 )
 
@@ -102,8 +96,8 @@ export const DescriptionCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon
 		label="Description"
 		icon={<Description />}
 		tooltip="Character's physical description"
-		minWidth="12rem"
-		maxWidth="20rem"
+		minWidth="15rem"
+		maxWidth="25rem"
 		multiline
 	/>
 )

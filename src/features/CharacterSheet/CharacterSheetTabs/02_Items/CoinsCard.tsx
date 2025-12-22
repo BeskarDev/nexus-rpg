@@ -1,10 +1,11 @@
-import React from 'react'
-import { TextField } from '@mui/material'
+import React, { useState } from 'react'
+import { TextField, Menu, Typography } from '@mui/material'
 import { Paid } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
 import { CharacterDocument } from '../../../../types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
+import { SectionHeader } from '../../CharacterSheet'
 
 export type CoinsCardProps = {
 	coins: number
@@ -12,34 +13,56 @@ export type CoinsCardProps = {
 }
 
 export const CoinsCard: React.FC<CoinsCardProps> = ({ coins, updateCharacter }) => {
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+	const open = Boolean(anchorEl)
+
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+		setAnchorEl(event.currentTarget)
+	}
+
+	const handleClose = () => {
+		setAnchorEl(null)
+	}
+
 	return (
 		<CharacterSheetCard
 			header={<CardHeader icon={<Paid />} label="Coins" color={UI_COLORS.amber} />}
 			tooltip="Coins: Your current wealth"
 			minWidth="8rem"
+			showConfigButton
+			onConfigClick={handleClick}
+			configMenu={
+				<Menu
+					anchorEl={anchorEl}
+					open={open}
+					onClose={handleClose}
+					MenuListProps={{ sx: { p: 2, maxWidth: '12rem' } }}
+				>
+					<SectionHeader>Edit Coins</SectionHeader>
+					<TextField
+						type="number"
+						size="small"
+						value={coins}
+						onChange={(event) =>
+							updateCharacter({ items: { coins: Number(event.target.value) } })
+						}
+						inputProps={{ min: 0 }}
+						label="Coins"
+						fullWidth
+						sx={{ mt: 1 }}
+					/>
+				</Menu>
+			}
 		>
-			<TextField
-				type="number"
-				variant="standard"
-				size="small"
-				value={coins}
-				onChange={(event) =>
-					updateCharacter({ items: { coins: Number(event.target.value) } })
-				}
-				InputProps={{
-					disableUnderline: true,
-					inputProps: { min: 0 },
-					sx: {
-						fontWeight: 'bold',
-						fontSize: '0.95rem',
-						textAlign: 'center',
-						'& input': {
-							textAlign: 'center',
-							p: 0,
-						},
-					},
+			<Typography
+				sx={{
+					fontWeight: 'bold',
+					fontSize: '0.95rem',
+					lineHeight: 1.2,
 				}}
-			/>
+			>
+				{coins}
+			</Typography>
 		</CharacterSheetCard>
 	)
 }
