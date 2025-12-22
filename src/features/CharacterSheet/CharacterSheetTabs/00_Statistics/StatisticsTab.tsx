@@ -13,15 +13,15 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { calculateMaxHp } from '../../utils/calculateHp'
-import { AttributeColumn } from './AttributeColumn'
-import { AvField } from './AvField'
-import { ParryField } from './ParryField'
-import { DodgeField } from './DodgeField'
-import { ResistField } from './ResistField'
+import { AttributeCard } from './AttributeCard'
+import { AvCard } from './AvCard'
+import { ParryCard } from './ParryCard'
+import { DodgeCard } from './DodgeCard'
+import { ResistCard } from './ResistCard'
 import { HpField } from './HpField'
-import { FatigueTracker } from './FatigueTracker'
+import { FatigueCard } from './FatigueCard'
 import { RestingButtonGroup } from './RestingButtonGroup'
-import { RoundTextField } from './RoundTextField'
+import { ResolveCard } from './ResolveCard'
 import { StatusEffects } from './StatusEffects'
 
 export const StatisticsTab: React.FC = () => {
@@ -117,20 +117,7 @@ export const StatisticsTab: React.FC = () => {
 					justifyContent: 'space-between',
 				}}
 			>
-				<RoundTextField
-					type="number"
-					value={resolve}
-					onChange={(event) =>
-						updateCharacter({
-							statistics: { resolve: Number(event.target.value) },
-						})
-					}
-					label="Resolve"
-					helperText="max. 3"
-					sx={{
-						mt: 0,
-					}}
-				/>
+				<ResolveCard />
 
 				<RestingButtonGroup
 					character={activeCharacter}
@@ -150,7 +137,7 @@ export const StatisticsTab: React.FC = () => {
 					justifyContent: 'center',
 				}}
 			>
-				<AttributeColumn
+				<AttributeCard
 					attribute={strength}
 					updateAttribute={(update) =>
 						updateCharacter({
@@ -161,7 +148,7 @@ export const StatisticsTab: React.FC = () => {
 					icon={<PanTool fontSize="inherit" />}
 					totalWounds={totalWounds}
 				/>
-				<AttributeColumn
+				<AttributeCard
 					attribute={agility}
 					updateAttribute={(update) =>
 						updateCharacter({
@@ -169,10 +156,11 @@ export const StatisticsTab: React.FC = () => {
 						})
 					}
 					label="Agility"
+					color="#81c784"
 					icon={<DirectionsRun fontSize="inherit" />}
 					totalWounds={totalWounds}
 				/>
-				<AttributeColumn
+				<AttributeCard
 					attribute={spirit}
 					updateAttribute={(update) =>
 						updateCharacter({
@@ -183,7 +171,7 @@ export const StatisticsTab: React.FC = () => {
 					icon={<Visibility fontSize="inherit" />}
 					totalWounds={totalWounds}
 				/>
-				<AttributeColumn
+				<AttributeCard
 					attribute={mind}
 					updateAttribute={(update) =>
 						updateCharacter({
@@ -206,9 +194,9 @@ export const StatisticsTab: React.FC = () => {
 					justifyContent: 'center',
 				}}
 			>
-				<AvField />
+				<AvCard />
 				<HpField />
-				<FatigueTracker
+				<FatigueCard
 					current={fatigue?.current || 0}
 					max={fatigue?.max || 6}
 					onFatigueChange={(newFatigue) =>
@@ -230,9 +218,9 @@ export const StatisticsTab: React.FC = () => {
           width: '100%',
 				}}
 			>
-				<ParryField />
-				<DodgeField />
-				<ResistField />
+				<ParryCard />
+				<DodgeCard />
+				<ResistCard />
 			</Box>
 		</Box>
 	)
