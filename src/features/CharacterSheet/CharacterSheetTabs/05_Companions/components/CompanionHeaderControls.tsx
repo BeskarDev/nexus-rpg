@@ -2,6 +2,7 @@ import { TextField, Typography, Box } from '@mui/material'
 import React from 'react'
 import { Companion } from '../../../../../types/Character'
 import { CompanionWoundCheckbox } from './CompanionWoundCheckbox'
+import { CompanionHPCard } from '../CompanionHPCard'
 
 interface CompanionHeaderControlsProps {
 	companion: Companion
@@ -50,34 +51,13 @@ export const CompanionHeaderControls: React.FC<
 				</Typography>
 			)}
 
-			{/* HP Fields */}
-			<Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-				<TextField
-					label="Current HP"
-					type="number"
-					size="small"
-					value={companion.currentHP || 0}
-					onChange={(e) => {
-						e.stopPropagation()
-						onCurrentHPChange(companion.id, e.target.value)
-					}}
-					onClick={(e) => e.stopPropagation()}
-					sx={{ width: 80 }}
-				/>
-				<Typography>/</Typography>
-				<TextField
-					label="Max HP"
-					type="number"
-					size="small"
-					value={companion.maxHP || 0}
-					onChange={(e) => {
-						e.stopPropagation()
-						onMaxHPChange(companion.id, e.target.value)
-					}}
-					onClick={(e) => e.stopPropagation()}
-					sx={{ width: 80 }}
-				/>
-			</Box>
+			{/* HP Card */}
+			<CompanionHPCard
+				currentHP={companion.currentHP || 0}
+				maxHP={companion.maxHP || 0}
+				onCurrentHPChange={(value) => onCurrentHPChange(companion.id, value)}
+				onMaxHPChange={(value) => onMaxHPChange(companion.id, value)}
+			/>
 
 			{/* Wound Checkbox */}
 			<CompanionWoundCheckbox
