@@ -25,6 +25,7 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { CategorizedAbilities } from './CategorizedAbilities'
+import { XpCard } from './XpCard'
 import {
 	OFFICIAL_SKILLS,
 	OFFICIAL_PROFESSIONS,
@@ -440,33 +441,8 @@ export const SkillsTab: React.FC = () => {
 			{/* Left Column: XP, Skills, Professions, Languages */}
 			<Box sx={{ mb: 2 }}>
 				{/* XP Section */}
-				<Box sx={{ mx: 'auto', display: 'flex' }}>
-					<AttributeField
-						size="small"
-						type="number"
-						value={xp.total}
-						onChange={(event) =>
-							updateCharacter({
-								skills: { xp: { total: Number(event.target.value) } },
-							})
-						}
-						label="Total XP"
-						helperText=""
-						sx={{ maxWidth: '7rem' }}
-						inputProps={{
-							sx: {
-								textAlign: 'right',
-							},
-						}}
-					/>
-					<AttributeField
-						size="small"
-						disabled
-						value={spendXP}
-						label="Spend XP"
-						helperText=""
-						sx={{ maxWidth: '7rem' }}
-					/>
+				<Box sx={{ mx: 'auto', display: 'flex', justifyContent: 'center', mb: 2 }}>
+					<XpCard total={xp.total} spent={spendXP} />
 				</Box>
 
 				{/* Skills Section */}
