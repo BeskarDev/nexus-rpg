@@ -1,6 +1,8 @@
 import React from 'react'
+import { Box } from '@mui/material'
 import { ItemLocation } from '../../../../../types/ItemLocation'
-import { LocationHeaderCard } from '../LocationHeaderCard'
+import { LocationNameCard } from '../LocationNameCard'
+import { LocationLoadCard } from '../LocationLoadCard'
 
 interface LocationLoadDisplayProps {
 	location: ItemLocation
@@ -20,13 +22,17 @@ export const LocationLoadDisplay: React.FC<LocationLoadDisplayProps> = ({
 	onMaxLoadChange,
 }) => {
 	return (
-		<LocationHeaderCard
-			location={location}
-			name={name}
-			currentLoad={currentLoad}
-			maxLoad={maxLoad}
-			onNameChange={onNameChange}
-			onMaxLoadChange={onMaxLoadChange}
-		/>
+		<Box sx={{ display: 'flex', gap: 0.75, flexWrap: 'wrap' }}>
+			<LocationNameCard
+				location={location}
+				name={name}
+				onNameChange={onNameChange}
+			/>
+			<LocationLoadCard
+				currentLoad={currentLoad}
+				maxLoad={maxLoad}
+				onMaxLoadChange={onMaxLoadChange}
+			/>
+		</Box>
 	)
 }

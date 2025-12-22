@@ -121,7 +121,7 @@ export const SpellsTab: React.FC = () => {
 				<Box
 					sx={{
 						display: 'flex',
-						alignItems: 'flex-start',
+						alignItems: 'stretch',
 						flexWrap: 'wrap',
 						gap: 0.75,
 						mb: 1,

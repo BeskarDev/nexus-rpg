@@ -141,7 +141,7 @@ export const FocusCard = () => {
 				tooltip="Magical energy pool for casting spells"
 				showConfigButton
 				onConfigClick={handleClick}
-				minWidth="7rem"
+				minWidth="8rem"
 				sx={getAnimationStyle()}
 				footer={
 					<Box sx={{ width: '100%', mt: 0.5 }}>
@@ -159,7 +159,7 @@ export const FocusCard = () => {
 					</Box>
 				}
 			>
-				<Box sx={{ position: 'relative' }}>
+				<Box sx={{ position: 'relative', px: 1 }}>
 					<Typography
 						sx={{
 							fontWeight: 'bold',

@@ -30,7 +30,7 @@ export const ItemsHeader: React.FC<ItemsHeaderProps> = ({
 		<Box
 			sx={{
 				display: 'flex',
-				alignItems: 'flex-start',
+				alignItems: 'stretch',
 				flexWrap: 'wrap',
 				mb: 2,
 				gap: 0.75,

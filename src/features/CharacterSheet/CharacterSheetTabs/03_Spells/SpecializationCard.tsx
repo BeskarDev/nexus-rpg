@@ -17,9 +17,9 @@ export const SpecializationCard: React.FC<SpecializationCardProps> = ({
 }) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Star />} label="Spec." color={UI_COLORS.amber} />}
+			header={<CardHeader icon={<Star />} label="Specializations" color={UI_COLORS.amber} />}
 			tooltip="Your magical specialization or tradition"
-			minWidth="5rem"
+			minWidth="12rem"
 		>
 			<TextField
 				variant="standard"
@@ -42,7 +42,7 @@ export const SpecializationCard: React.FC<SpecializationCardProps> = ({
 						},
 					},
 				}}
-				sx={{ maxWidth: '5rem' }}
+				sx={{ width: '100%' }}
 			/>
 		</CharacterSheetCard>
 	)
