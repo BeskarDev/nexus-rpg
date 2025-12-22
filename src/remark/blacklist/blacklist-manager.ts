@@ -44,9 +44,10 @@ export interface BlacklistResult {
 /**
  * Loads and caches the blacklist configuration
  */
+import blacklistJSON from './blacklist.json'
+
 class BlacklistManager {
 	private blacklist: BlacklistEntry[] | null = null
-	private blacklistPath = require.resolve('./blacklist.json')
 
 	/**
 	 * Loads the blacklist from the JSON file
@@ -54,8 +55,7 @@ class BlacklistManager {
 	private loadBlacklist(): BlacklistEntry[] {
 		if (this.blacklist === null) {
 			try {
-				delete require.cache[this.blacklistPath]
-				this.blacklist = require('./blacklist.json')
+				this.blacklist = Array.isArray(blacklistJSON) ? (blacklistJSON as BlacklistEntry[]) : []
 			} catch (error) {
 				console.warn(
 					'Failed to load blacklist.json, using empty blacklist:',

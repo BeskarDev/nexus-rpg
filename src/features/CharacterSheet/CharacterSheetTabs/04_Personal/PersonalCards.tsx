@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField } from '@mui/material'
+import { TextField, Typography } from '@mui/material'
 import { Height, Scale, Cake, Description } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'

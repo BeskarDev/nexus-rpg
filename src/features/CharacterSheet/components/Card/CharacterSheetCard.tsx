@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React from 'react'
 import { Box, IconButton, Tooltip, alpha } from '@mui/material'
 import { Settings } from '@mui/icons-material'
