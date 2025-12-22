@@ -92,16 +92,16 @@ export const CharacterSheetCard: React.FC<CharacterSheetCardProps> = ({
 					<Settings sx={{ fontSize: '0.65rem' }} />
 				</IconButton>
 			)}
-
-			{/* Config Menu (rendered as sibling) */}
-			{configMenuWithClose}
 		</Box>
 	)
 
 	// Wrap in tooltip if provided and menu is not open
-	if (tooltip && !isMenuOpen) {
-		return <Tooltip title={tooltip}>{cardContent}</Tooltip>
-	}
-
-	return cardContent
+	// Always wrap to preserve DOM structure for anchor element
+	return (
+		<Tooltip title={tooltip || ''} disableHoverListener={!tooltip || isMenuOpen}>
+			{cardContent}
+			{/* Config Menu (rendered outside tooltip but near card) */}
+			{configMenuWithClose}
+		</Tooltip>
+	)
 }

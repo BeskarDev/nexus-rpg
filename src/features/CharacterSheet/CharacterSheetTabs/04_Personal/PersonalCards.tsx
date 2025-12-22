@@ -1,5 +1,5 @@
 import React from 'react'
-import { TextField, Typography } from '@mui/material'
+import { TextField } from '@mui/material'
 import { Height, Scale, Cake, Description } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader } from '../../components'
 import { UI_COLORS } from '../../../../utils/colors'
@@ -36,22 +36,31 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 			minWidth={minWidth}
 			maxWidth={maxWidth}
 		>
-			<Typography
+			<TextField
+				value={value}
+				onChange={(e) => onChange(e.target.value)}
+				onBlur={onBlur}
+				error={!!error}
+				placeholder={`Enter ${label.toLowerCase()}...`}
+				multiline={multiline}
+				minRows={multiline ? 2 : undefined}
+				maxRows={multiline ? 4 : undefined}
+				variant="standard"
 				sx={{
-					fontWeight: 'bold',
-					fontSize: '0.95rem',
-					lineHeight: 1.2,
-					...(multiline && {
-						textAlign: 'left',
-						fontSize: '0.85rem',
-						maxHeight: '4rem',
-						overflow: 'auto',
-						px: 0.5,
-					}),
+					'& .MuiInput-root': {
+						fontSize: multiline ? '0.85rem' : '0.95rem',
+						fontWeight: 'bold',
+						'&:before, &:after': { display: 'none' },
+					},
+					'& input, & textarea': {
+						textAlign: multiline ? 'left' : 'center',
+						padding: multiline ? '0.25rem' : 0,
+						height: 'auto',
+						lineHeight: 1.2,
+					},
+					width: '100%',
 				}}
-			>
-				{value || '—'}
-			</Typography>
+			/>
 		</CharacterSheetCard>
 	)
 }
