@@ -103,7 +103,7 @@ export const CharacterSheet: React.FC = () => {
 						backgroundColor: 'var(--ifm-background-color)',
 					}}
 				>
-					<Box sx={{ mt: 1, maxWidth: 'var(--cs-max-width-sm)' }}>
+					<Box sx={{ mt: 1, maxWidth: 'var(--cs-max-width-md)' }}>
 						{(() => {
 							const StatisticsTabComponent = mobileTabsConfig.find(
 								(tab) => tab.label === 'Statistics',
