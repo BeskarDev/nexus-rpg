@@ -7,9 +7,11 @@ permissions:
   checks: write
   contents: read
   pull-requests: write
+  deployments: write
 
 env:
   NODE_VERSION: '22'
+  FIREBASE_PROJECT_ID: nexus-rpg-d04d1
 
 jobs:
   build_and_preview:
@@ -71,4 +73,41 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXUS_RPG_D04D1 }}
           channelId: preview
           projectId: nexus-rpg-d04d1
-          
+      
+      - name: Get Firebase preview URL
+        id: get_preview
+        env:
+          FIREBASE_SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEXUS_RPG_D04D1 }}
+          FIREBASE_PROJECT_ID: ${{ env.FIREBASE_PROJECT_ID }}
+        run: |
+          echo "$FIREBASE_SA" > sa.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$PWD/sa.json
+          npx --yes firebase-tools hosting:channel:describe preview --project "$FIREBASE_PROJECT_ID" --json > channel.json
+          node -e "const c=require('./channel.json'); if(!c.url){console.error('no url in channel.json',c); process.exit(1);} console.log(c.url);" > preview_url.txt
+          PREVIEW_URL=$(cat preview_url.txt)
+          echo "preview_url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub deployment record
+        uses: actions/github-script@v6
+        env:
+          PREVIEW_URL: ${{ steps.get_preview.outputs.preview_url }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const ref = context.payload.pull_request?.head?.sha || context.sha;
+            const { data: deployment } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: ref,
+              required_contexts: [],
+              environment: 'preview',
+              transient_environment: true,
+              description: 'Firebase preview channel deployment'
+            });
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.id,
+              state: 'success',
+              environment_url: process.env.PREVIEW_URL
+            });
