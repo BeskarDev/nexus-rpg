@@ -39,7 +39,7 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 				</Typography>
 			}
 		>
-			<Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+			<Box sx={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', mt: 1 }}>
 				{Array.from({ length: max }).map((_, index) => (
 					<Checkbox
 						key={index}

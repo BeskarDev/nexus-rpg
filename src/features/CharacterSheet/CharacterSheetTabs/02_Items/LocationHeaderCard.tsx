@@ -64,7 +64,7 @@ export const LocationHeaderCard: React.FC<LocationHeaderCardProps> = ({
 					value={localName}
 					onChange={(event) => setLocalName(event.target.value)}
 					onBlur={() => onNameChange(localName)}
-					placeholder={location === 'mount' ? 'Mount name' : 'Storage name'}
+					placeholder={location === 'mount' ? 'Mount name' : 'Storage location'}
 					InputProps={{
 						disableUnderline: true,
 						sx: {

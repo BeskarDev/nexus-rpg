@@ -29,19 +29,14 @@ export const MotivationCard: React.FC<MotivationCardProps> = ({
 				onChange={(e) => onChange(e.target.value)}
 				onBlur={onBlur}
 				error={!!error}
-				placeholder="Enter motivation..."
+				placeholder="your motivation"
 				variant="standard"
 				sx={{
 					'& .MuiInput-root': {
-						fontSize: '0.95rem',
-						fontWeight: 'bold',
 						'&:before, &:after': { display: 'none' },
 					},
 					'& input': {
 						textAlign: 'center',
-						padding: 0,
-						height: 'auto',
-						lineHeight: 1.2,
 					},
 					width: '100%',
 				}}

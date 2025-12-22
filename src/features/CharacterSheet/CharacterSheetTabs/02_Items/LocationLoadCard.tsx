@@ -51,11 +51,12 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 						fontSize: '0.95rem',
 						lineHeight: 1.2,
 						color: 'text.primary',
+            ml: 2,
 					}}
 				>
 					{currentLoad}
 				</Typography>
-				<Typography sx={{ fontSize: '0.75rem', color: 'text.secondary' }}>
+				<Typography sx={{ fontSize: '1rem', color: 'text.secondary', ml: 1 }}>
 					/
 				</Typography>
 				<TextField
@@ -75,7 +76,7 @@ export const LocationLoadCard: React.FC<LocationLoadCardProps> = ({
 							'& input': {
 								textAlign: 'center',
 								p: 0,
-								width: '2.5rem',
+								width: '2rem',
 								color: 'text.primary',
 							},
 						},

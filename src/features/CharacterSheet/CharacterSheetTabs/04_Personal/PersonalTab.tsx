@@ -533,8 +533,6 @@ export const PersonalTab: React.FC = () => {
 							error={errors.motivation?.message}
 						/>
 
-						<Box sx={{ width: '100%' }} />
-
 						<HeightCard
 							value={formValues.height}
 							onChange={(value) => register('height').onChange({ target: { value } })}
@@ -564,6 +562,8 @@ export const PersonalTab: React.FC = () => {
 							}}
 							error={errors.age?.message}
 						/>
+
+						<Box sx={{ width: '100%' }} />
 
 						<DescriptionCard
 							value={formValues.description}

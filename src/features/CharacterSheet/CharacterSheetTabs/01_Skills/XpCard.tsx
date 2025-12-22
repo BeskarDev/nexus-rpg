@@ -38,7 +38,7 @@ export const XpCard: React.FC<XpCardProps> = ({ total, spent }) => {
 			<CharacterSheetCard
 				header={<CardHeader icon={<Stars />} label="Experience" color={UI_COLORS.amber} />}
 				minWidth="8rem"
-				tooltip="Experience Points: Total earned and spent on skills and abilities"
+				tooltip="Your spend and total XP."
 				showConfigButton
 				onConfigClick={handleClick}
 				sx={{ alignSelf: 'flex-start' }}

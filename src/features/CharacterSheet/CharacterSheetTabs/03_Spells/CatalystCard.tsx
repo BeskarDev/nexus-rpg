@@ -19,7 +19,7 @@ export const CatalystCard: React.FC<CatalystCardProps> = ({
 		<CharacterSheetCard
 			header={<CardHeader icon={<FlashOn />} label="Catalyst" color={UI_COLORS.lightBlue} />}
 			tooltip="Bonus damage per success level from your Spell Catalyst"
-			minWidth="4.5rem"
+			maxWidth="4.5rem"
 		>
 			<TextField
 				type="number"

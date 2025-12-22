@@ -441,7 +441,7 @@ export const SkillsTab: React.FC = () => {
 			{/* Left Column: XP, Skills, Professions, Languages */}
 			<Box sx={{ mb: 2 }}>
 				{/* XP Section */}
-				<Box sx={{ mx: 'auto', display: 'flex', justifyContent: 'center', mb: 2 }}>
+				<Box sx={{ mx: 'auto', display: 'flex', justifyContent: 'flex-start', mb: 2 }}>
 					<XpCard total={xp.total} spent={spendXP} />
 				</Box>
 

@@ -56,7 +56,7 @@ export const CompanionHPCard: React.FC<CompanionHPCardProps> = ({
 			showConfigButton
 			onConfigClick={handleClick}
 			footer={
-				<Box sx={{ width: '100%', mt: 0.5 }}>
+				<Box sx={{ width: '100%', mt: 0.5, px: 1 }}>
 					<LinearProgress
 						variant="determinate"
 						value={hpPercentage}

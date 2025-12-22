@@ -113,7 +113,6 @@ export const ParryCard = () => {
 			onConfigClick={parryDetails ? handleClick : initializeDetails}
 			tooltip="Parry: Defense against melee attacks (7 + Fighting + level bonus + shield)"
 			minWidth="5rem"
-			sx={{ height: '3.25rem' }}
 			configMenu={
 				parryDetails && (
 					<Menu

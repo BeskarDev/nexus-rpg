@@ -11,10 +11,17 @@ interface NameCardProps {
 	error?: string
 }
 
-export const NameCard: React.FC<NameCardProps> = ({ name, onChange, onBlur, error }) => {
+export const NameCard: React.FC<NameCardProps> = ({
+	name,
+	onChange,
+	onBlur,
+	error,
+}) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Person />} label="Name" color={UI_COLORS.greyBlue} />}
+			header={
+				<CardHeader icon={<Person />} label="Name" color={UI_COLORS.greyBlue} />
+			}
 			tooltip="Character name"
 			minWidth="10rem"
 			maxWidth="15rem"
@@ -24,21 +31,15 @@ export const NameCard: React.FC<NameCardProps> = ({ name, onChange, onBlur, erro
 				onChange={(e) => onChange(e.target.value)}
 				onBlur={onBlur}
 				error={!!error}
-				placeholder="Enter name..."
+				placeholder="your name"
 				variant="standard"
 				sx={{
 					'& .MuiInput-root': {
-						fontSize: '0.95rem',
-						fontWeight: 'bold',
 						'&:before, &:after': { display: 'none' },
 					},
 					'& input': {
 						textAlign: 'center',
-						padding: 0,
-						height: 'auto',
-						lineHeight: 1.2,
 					},
-					width: '100%',
 				}}
 			/>
 		</CharacterSheetCard>

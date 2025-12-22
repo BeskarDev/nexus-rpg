@@ -33,7 +33,7 @@ export const CompanionContent: React.FC<CompanionContentProps> = ({
 	}
 
 	return (
-		<Box sx={{ '& .markdown-content': { fontSize: '0.875rem' } }}>
+		<Box sx={{ '& .markdown-content': { fontSize: '0.875rem' }, '& h4': { mt: 0 } }}>
 			<ReactMarkdown remarkPlugins={[remarkGfm]}>
 				{markdown || 'No description available.'}
 			</ReactMarkdown>

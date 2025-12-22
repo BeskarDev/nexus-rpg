@@ -14,7 +14,7 @@ export const CardContent: React.FC<CardContentProps> = ({
 			sx={{
 				fontWeight: 'bold',
 				fontSize: '0.95rem',
-				lineHeight: 1.2,
+				lineHeight: 2,
 				textAlign: 'center',
 				mt: 0.25,
 				...(color && { color }),

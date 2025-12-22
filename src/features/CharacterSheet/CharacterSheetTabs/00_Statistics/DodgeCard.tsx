@@ -92,7 +92,6 @@ export const DodgeCard = () => {
 			onConfigClick={dodgeDetails ? handleClick : initializeDetails}
 			tooltip="Dodge: Defense against ranged attacks (7 + Athletics + level bonus)"
 			minWidth="5rem"
-			sx={{ height: '3.25rem' }}
 			configMenu={
 				dodgeDetails && (
 					<Menu

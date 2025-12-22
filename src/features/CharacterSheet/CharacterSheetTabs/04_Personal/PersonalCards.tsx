@@ -31,7 +31,9 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 }) => {
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={icon} label={label} color={UI_COLORS.greyBlue} />}
+			header={
+				<CardHeader icon={icon} label={label} color={UI_COLORS.greyBlue} />
+			}
 			tooltip={tooltip}
 			minWidth={minWidth}
 			maxWidth={maxWidth}
@@ -41,24 +43,19 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 				onChange={(e) => onChange(e.target.value)}
 				onBlur={onBlur}
 				error={!!error}
-				placeholder={`Enter ${label.toLowerCase()}...`}
+				placeholder={`your ${label.toLowerCase()}`}
 				multiline={multiline}
 				minRows={multiline ? 2 : undefined}
 				maxRows={multiline ? 4 : undefined}
 				variant="standard"
 				sx={{
 					'& .MuiInput-root': {
-						fontSize: multiline ? '0.85rem' : '0.95rem',
-						fontWeight: 'bold',
 						'&:before, &:after': { display: 'none' },
 					},
 					'& input, & textarea': {
 						textAlign: multiline ? 'left' : 'center',
-						padding: multiline ? '0.25rem' : 0,
-						height: 'auto',
-						lineHeight: 1.2,
+            mx: 1,
 					},
-					width: '100%',
 				}}
 			/>
 		</CharacterSheetCard>
@@ -66,47 +63,51 @@ export const SimpleTextCard: React.FC<SimpleTextCardProps> = ({
 }
 
 // Convenience exports for common use cases
-export const HeightCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>> = (props) => (
+export const HeightCard: React.FC<
+	Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>
+> = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Height"
 		icon={<Height />}
 		tooltip="Character's height"
-		minWidth="4.5rem"
-		maxWidth="6rem"
 	/>
 )
 
-export const WeightCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>> = (props) => (
+export const WeightCard: React.FC<
+	Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>
+> = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Weight"
 		icon={<Scale />}
 		tooltip="Character's weight"
-		minWidth="4.5rem"
-		maxWidth="6rem"
 	/>
 )
 
-export const AgeCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>> = (props) => (
+export const AgeCard: React.FC<
+	Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip'>
+> = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Age"
 		icon={<Cake />}
 		tooltip="Character's age"
-		minWidth="4.5rem"
-		maxWidth="6rem"
 	/>
 )
 
-export const DescriptionCard: React.FC<Omit<SimpleTextCardProps, 'label' | 'icon' | 'tooltip' | 'multiline' | 'minWidth' | 'maxWidth'>> = (props) => (
+export const DescriptionCard: React.FC<
+	Omit<
+		SimpleTextCardProps,
+		'label' | 'icon' | 'tooltip' | 'multiline' | 'minWidth' | 'maxWidth'
+	>
+> = (props) => (
 	<SimpleTextCard
 		{...props}
 		label="Description"
 		icon={<Description />}
 		tooltip="Character's physical description"
-		minWidth="15rem"
-		maxWidth="25rem"
+		minWidth="19.5rem"
 		multiline
 	/>
 )
