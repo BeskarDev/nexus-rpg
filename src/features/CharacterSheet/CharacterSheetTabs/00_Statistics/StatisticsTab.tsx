@@ -19,7 +19,7 @@ import { AvCard } from './AvCard'
 import { ParryCard } from './ParryCard'
 import { DodgeCard } from './DodgeCard'
 import { ResistCard } from './ResistCard'
-import { HpField } from './HpField'
+import { HpCard } from './HpCard'
 import { FatigueCard } from './FatigueCard'
 import { RestingButtonGroup } from './RestingButtonGroup'
 import { ResolveCard } from './ResolveCard'
@@ -199,7 +199,7 @@ export const StatisticsTab: React.FC = () => {
 				}}
 			>
 				<AvCard />
-				<HpField />
+				<HpCard />
 				<FatigueCard
 					current={fatigue?.current || 0}
 					max={fatigue?.max || 6}
