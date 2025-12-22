@@ -469,7 +469,7 @@ export const PersonalTab: React.FC = () => {
 				width: '100%',
 			}}
 		>
-			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2 }}>
+			<Box sx={{ display: 'flex', gap: 3, alignItems: 'flex-start', mb: 2, flexWrap: 'wrap' }}>
 				<Box sx={{ flexGrow: 1 }}>
 					<SectionHeader sx={{ mb: 2 }}>Your Character</SectionHeader>
 					<Box
@@ -478,13 +478,21 @@ export const PersonalTab: React.FC = () => {
 							alignItems: 'stretch',
 							flexWrap: 'wrap',
 							gap: 0.75,
+							'@media (max-width: 768px)': {
+								flexDirection: 'column',
+								alignItems: 'stretch',
+							},
 						}}
 					>
 						<NameCard
 							name={formValues.name}
-							onChange={(value) => register('name').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('name').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('name').onBlur({ target: { value: formValues.name } })
+								const syntheticEvent = { target: { value: formValues.name } }
+								register('name').onBlur(syntheticEvent)
 								updateCharacter({ personal: { name: formValues.name } })
 							}}
 							error={errors.name?.message}
@@ -492,9 +500,13 @@ export const PersonalTab: React.FC = () => {
 
 						<FolkCard
 							folk={formValues.folk}
-							onChange={(value) => register('folk').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('folk').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('folk').onBlur({ target: { value: formValues.folk } })
+								const syntheticEvent = { target: { value: formValues.folk } }
+								register('folk').onBlur(syntheticEvent)
 								updateCharacter({ personal: { folk: formValues.folk } })
 							}}
 							onEditClick={() => setFolkDialogOpen(true)}
@@ -503,9 +515,13 @@ export const PersonalTab: React.FC = () => {
 
 						<UpbringingCard
 							upbringing={formValues.upbringing}
-							onChange={(value) => register('upbringing').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('upbringing').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('upbringing').onBlur({ target: { value: formValues.upbringing } })
+								const syntheticEvent = { target: { value: formValues.upbringing } }
+								register('upbringing').onBlur(syntheticEvent)
 								updateCharacter({ personal: { upbringing: formValues.upbringing } })
 							}}
 							onEditClick={() => setUpbringingDialogOpen(true)}
@@ -514,9 +530,13 @@ export const PersonalTab: React.FC = () => {
 
 						<BackgroundCard
 							background={formValues.background}
-							onChange={(value) => register('background').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('background').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('background').onBlur({ target: { value: formValues.background } })
+								const syntheticEvent = { target: { value: formValues.background } }
+								register('background').onBlur(syntheticEvent)
 								updateCharacter({ personal: { background: formValues.background } })
 							}}
 							onEditClick={() => setBackgroundDialogOpen(true)}
@@ -525,9 +545,13 @@ export const PersonalTab: React.FC = () => {
 
 						<MotivationCard
 							motivation={formValues.motivation}
-							onChange={(value) => register('motivation').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('motivation').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('motivation').onBlur({ target: { value: formValues.motivation } })
+								const syntheticEvent = { target: { value: formValues.motivation } }
+								register('motivation').onBlur(syntheticEvent)
 								updateCharacter({ personal: { motivation: formValues.motivation } })
 							}}
 							error={errors.motivation?.message}
@@ -535,9 +559,13 @@ export const PersonalTab: React.FC = () => {
 
 						<HeightCard
 							value={formValues.height}
-							onChange={(value) => register('height').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('height').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('height').onBlur({ target: { value: formValues.height } })
+								const syntheticEvent = { target: { value: formValues.height } }
+								register('height').onBlur(syntheticEvent)
 								updateCharacter({ personal: { height: formValues.height } })
 							}}
 							error={errors.height?.message}
@@ -545,9 +573,13 @@ export const PersonalTab: React.FC = () => {
 
 						<WeightCard
 							value={formValues.weight}
-							onChange={(value) => register('weight').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('weight').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('weight').onBlur({ target: { value: formValues.weight } })
+								const syntheticEvent = { target: { value: formValues.weight } }
+								register('weight').onBlur(syntheticEvent)
 								updateCharacter({ personal: { weight: formValues.weight } })
 							}}
 							error={errors.weight?.message}
@@ -555,9 +587,13 @@ export const PersonalTab: React.FC = () => {
 
 						<AgeCard
 							value={formValues.age}
-							onChange={(value) => register('age').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('age').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('age').onBlur({ target: { value: formValues.age } })
+								const syntheticEvent = { target: { value: formValues.age } }
+								register('age').onBlur(syntheticEvent)
 								updateCharacter({ personal: { age: formValues.age } })
 							}}
 							error={errors.age?.message}
@@ -567,9 +603,13 @@ export const PersonalTab: React.FC = () => {
 
 						<DescriptionCard
 							value={formValues.description}
-							onChange={(value) => register('description').onChange({ target: { value } })}
+							onChange={(value) => {
+								const syntheticEvent = { target: { value } }
+								register('description').onChange(syntheticEvent)
+							}}
 							onBlur={() => {
-								register('description').onBlur({ target: { value: formValues.description } })
+								const syntheticEvent = { target: { value: formValues.description } }
+								register('description').onBlur(syntheticEvent)
 								updateCharacter({ personal: { description: formValues.description } })
 							}}
 							error={errors.description?.message}
