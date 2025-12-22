@@ -9,6 +9,7 @@ import {
 	Menu,
 	TextField,
 } from '@mui/material'
+import { UI_COLORS } from '../../../../../utils/colors'
 import {
 	HelpOutline,
 	Paid,
@@ -34,11 +35,11 @@ const getLoadColor = (
 	maxCapacity: number,
 ) => {
 	if (currentLoad >= maxCapacity) {
-		return '#f44336' // error red
+		return UI_COLORS.danger
 	} else if (currentLoad >= carryCapacity) {
-		return '#ff9800' // warning orange
+		return UI_COLORS.warning
 	}
-	return '#78909c' // default gray-blue
+	return UI_COLORS.greyBlue
 }
 
 export const ItemsHeader: React.FC<ItemsHeaderProps> = ({
@@ -77,20 +78,20 @@ export const ItemsHeader: React.FC<ItemsHeaderProps> = ({
 					position: 'relative',
 				}}
 			>
-				<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-					<Paid sx={{ fontSize: '0.7rem', color: '#ffd54f' }} />
-					<Typography
-						variant="caption"
-						sx={{
-							fontWeight: 700,
-							fontSize: '0.55rem',
-							color: '#ffd54f',
-							textTransform: 'uppercase',
-						}}
-					>
-						Coins
-					</Typography>
-				</Box>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+						<Paid sx={{ fontSize: '0.7rem', color: UI_COLORS.amber }} />
+						<Typography
+							variant="caption"
+							sx={{
+								fontWeight: 700,
+								fontSize: '0.55rem',
+								color: UI_COLORS.amber,
+								textTransform: 'uppercase',
+							}}
+						>
+							Coins
+						</Typography>
+					</Box>
 				<Typography
 					sx={{
 						fontWeight: 'bold',

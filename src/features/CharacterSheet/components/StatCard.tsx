@@ -8,6 +8,7 @@ import {
 } from '@mui/material'
 import { Settings } from '@mui/icons-material'
 import React, { useState, ReactNode } from 'react'
+import { UI_COLORS } from '../../../utils/colors'
 
 export type StatCardProps = {
 	/** Icon component to display */
@@ -50,7 +51,7 @@ export const StatCard: React.FC<StatCardProps> = ({
 	icon,
 	label,
 	value,
-	color = '#78909c', // default gray-blue
+	color = UI_COLORS.greyBlue, // default gray-blue
 	tooltip,
 	showConfig = false,
 	onConfigClick,

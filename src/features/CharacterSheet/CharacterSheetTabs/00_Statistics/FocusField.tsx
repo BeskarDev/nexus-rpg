@@ -11,6 +11,7 @@ import {
 	LinearProgress,
 	alpha,
 } from '@mui/material'
+import { UI_COLORS } from '../../../../utils/colors'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -53,7 +54,7 @@ export const FocusField = () => {
 	}
 	
 	// Get the actual color value for the focus display
-	const focusColor = focusPercentage >= 50 ? '#2196f3' : focusPercentage >= 20 ? '#ff9800' : '#f44336'
+	const focusColor = focusPercentage >= 50 ? UI_COLORS.info : focusPercentage >= 20 ? UI_COLORS.warning : UI_COLORS.danger
 
 	// Animation effect cleanup
 	useEffect(() => {
@@ -147,14 +148,14 @@ export const FocusField = () => {
 			}}
 		>
 			{/* Focus Header */}
-			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-				<AutoFixHigh sx={{ fontSize: '0.7rem', color: '#2196f3' }} />
+				<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+				<AutoFixHigh sx={{ fontSize: '0.7rem', color: UI_COLORS.info }} />
 				<Typography
 					variant="caption"
 					sx={{
 						fontWeight: 700,
 						fontSize: '0.65rem',
-						color: '#2196f3',
+						color: UI_COLORS.info,
 						textTransform: 'uppercase',
 					}}
 				>
@@ -172,11 +173,11 @@ export const FocusField = () => {
 					transition: 'all 0.3s ease-in-out',
 					...(animationState === 'damage' && {
 						animation: 'shake 0.5s ease-in-out',
-						color: '#f44336',
+						color: UI_COLORS.danger,
 					}),
 					...(animationState === 'healing' && {
 						animation: 'pulse 0.5s ease-in-out',
-						color: '#4caf50',
+						color: UI_COLORS.success,
 					}),
 					'@keyframes shake': {
 						'0%, 100%': { transform: 'translateX(0)' },

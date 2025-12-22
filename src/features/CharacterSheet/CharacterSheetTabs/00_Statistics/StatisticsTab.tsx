@@ -7,6 +7,7 @@ import {
 	PanTool,
 	Visibility,
 } from '@mui/icons-material'
+import ATTRIBUTE_COLORS from '../../../../utils/colors'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
@@ -146,6 +147,7 @@ export const StatisticsTab: React.FC = () => {
 					}
 					label="Strength"
 					icon={<PanTool fontSize="inherit" />}
+					color={ATTRIBUTE_COLORS.strength}
 					totalWounds={totalWounds}
 				/>
 				<AttributeCard
@@ -156,7 +158,7 @@ export const StatisticsTab: React.FC = () => {
 						})
 					}
 					label="Agility"
-					color="#81c784"
+					color={ATTRIBUTE_COLORS.agility}
 					icon={<DirectionsRun fontSize="inherit" />}
 					totalWounds={totalWounds}
 				/>
@@ -169,6 +171,7 @@ export const StatisticsTab: React.FC = () => {
 					}
 					label="Spirit"
 					icon={<Visibility fontSize="inherit" />}
+					color={ATTRIBUTE_COLORS.spirit}
 					totalWounds={totalWounds}
 				/>
 				<AttributeCard
@@ -180,6 +183,7 @@ export const StatisticsTab: React.FC = () => {
 					}
 					label="Mind"
 					icon={<BubbleChart fontSize="inherit" />}
+					color={ATTRIBUTE_COLORS.mind}
 					totalWounds={totalWounds}
 				/>
 			</Box>

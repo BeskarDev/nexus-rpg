@@ -13,6 +13,7 @@ import {
 	calculateDefenseLevelBonus,
 	migrateCharacterDefenses,
 } from '../../utils/calculateDefenses'
+import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const DodgeField = () => {
 	const dispatch = useAppDispatch()
@@ -101,13 +102,13 @@ export const DodgeField = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Speed sx={{ fontSize: '0.7rem', color: '#81c784' }} />
+						<Speed sx={{ fontSize: '0.7rem', color: ATTRIBUTE_COLORS.agility }} />
 						<Typography
 							variant="caption"
 							sx={{
 								fontWeight: 700,
 								fontSize: '0.65rem',
-								color: '#81c784',
+								color: ATTRIBUTE_COLORS.agility,
 								textTransform: 'uppercase',
 							}}
 						>

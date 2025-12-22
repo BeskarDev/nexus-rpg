@@ -14,6 +14,7 @@ import {
 } from '@site/src/types/Character'
 import React from 'react'
 import { AttributeField } from '../../CharacterSheet'
+import { ATTRIBUTE_COLORS, UI_COLORS } from '../../../../utils/colors'
 
 export type AttributeColumnProps = {
 	attribute: Attribute
@@ -42,15 +43,15 @@ const getWoundTooltip = (label: string) => {
 export const getAttributeInfo = (label: string) => {
 	switch (label) {
 		case 'Strength':
-			return { abbr: 'STR', color: '#e57373' } // red
+			return { abbr: 'STR', color: ATTRIBUTE_COLORS.strength }
 		case 'Agility':
-			return { abbr: 'AGI', color: '#81c784' } // green
+			return { abbr: 'AGI', color: ATTRIBUTE_COLORS.agility }
 		case 'Spirit':
-			return { abbr: 'SPI', color: '#64b5f6' } // blue
+			return { abbr: 'SPI', color: ATTRIBUTE_COLORS.spirit }
 		case 'Mind':
-			return { abbr: 'MND', color: '#ba68c8' } // purple
+			return { abbr: 'MND', color: ATTRIBUTE_COLORS.mind }
 		default:
-			return { abbr: label.substring(0, 3).toUpperCase(), color: '#9e9e9e' }
+			return { abbr: label.substring(0, 3).toUpperCase(), color: UI_COLORS.grey }
 	}
 }
 

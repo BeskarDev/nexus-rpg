@@ -13,6 +13,7 @@ import {
 	calculateDefenseLevelBonus,
 	migrateCharacterDefenses,
 } from '../../utils/calculateDefenses'
+import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
 
 export const DodgeCard = () => {
@@ -86,7 +87,7 @@ export const DodgeCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Speed />} label="Dodge" color="#81c784" />}
+			header={<CardHeader icon={<Speed />} label="Dodge" color={ATTRIBUTE_COLORS.agility} />}
 			showConfigButton
 			onConfigClick={dodgeDetails ? handleClick : initializeDetails}
 			tooltip="Click gear to configure Dodge sources"

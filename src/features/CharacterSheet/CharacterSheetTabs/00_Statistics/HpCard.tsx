@@ -15,6 +15,7 @@ import {
 	TextField,
 	alpha,
 } from '@mui/material'
+import { UI_COLORS } from '../../../../utils/colors'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -247,11 +248,11 @@ export const HpField = () => {
 						transition: 'all 0.3s ease-in-out',
 						...(animationState === 'damage' && {
 							animation: 'shake 0.5s ease-in-out',
-							color: '#f44336',
+							color: UI_COLORS.danger,
 						}),
 						...(animationState === 'healing' && {
 							animation: 'pulse 0.5s ease-in-out',
-							color: '#4caf50',
+							color: UI_COLORS.success,
 						}),
 						'@keyframes shake': {
 							'0%, 100%': { transform: 'translateX(0)' },
@@ -266,7 +267,7 @@ export const HpField = () => {
 				>
 					{health.current}/{effectiveMaxHp}
 					{health.temp > 0 && (
-						<span style={{ color: '#2196f3', fontSize: '0.8rem' }}>
+						<span style={{ color: UI_COLORS.info, fontSize: '0.8rem' }}>
 							{' '}+{health.temp}
 						</span>
 					)}
@@ -296,7 +297,7 @@ export const HpField = () => {
 							transition: 'all 0.3s ease-in-out',
 						}}
 					/>
-					{health.temp > 0 && (
+						{health.temp > 0 && (
 						<Box
 							sx={{
 								position: 'absolute',
@@ -304,7 +305,7 @@ export const HpField = () => {
 								left: `${(mainHpBarWidth / 120) * 100}%`,
 								width: `${(tempHpBarWidth / 120) * 100}%`,
 								height: '4px',
-								backgroundColor: '#2196f3',
+								backgroundColor: UI_COLORS.info,
 								borderRadius: '0 2px 2px 0',
 							}}
 						/>

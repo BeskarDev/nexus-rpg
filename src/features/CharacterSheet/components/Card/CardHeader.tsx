@@ -1,11 +1,12 @@
 import React from 'react'
 import { Box, Typography } from '@mui/material'
 import { CardHeaderProps } from './types'
+import { UI_COLORS } from '../../../../utils/colors'
 
 export const CardHeader: React.FC<CardHeaderProps> = ({
 	icon,
 	label,
-	color = '#9e9e9e',
+	color = UI_COLORS.grey,
 	sx,
 	'data-testid': testId,
 }) => {

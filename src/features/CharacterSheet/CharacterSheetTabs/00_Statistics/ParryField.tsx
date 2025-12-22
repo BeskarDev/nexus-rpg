@@ -10,6 +10,7 @@ import {
 	Typography,
 	alpha,
 } from '@mui/material'
+import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -129,13 +130,13 @@ export const ParryField = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Security sx={{ fontSize: '0.7rem', color: '#e57373' }} />
+						<Security sx={{ fontSize: '0.7rem', color: ATTRIBUTE_COLORS.strength }} />
 						<Typography
 							variant="caption"
 							sx={{
 								fontWeight: 700,
 								fontSize: '0.65rem',
-								color: '#e57373',
+								color: ATTRIBUTE_COLORS.strength,
 								textTransform: 'uppercase',
 							}}
 						>

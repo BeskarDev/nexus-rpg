@@ -16,6 +16,7 @@ import {
 import { extractShieldParryBonus } from '../02_Items/utils/itemUtils'
 import { organizeItemsByLocation } from '../02_Items/utils/itemUtils'
 import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const ParryCard = () => {
 	const dispatch = useAppDispatch()
@@ -107,7 +108,7 @@ export const ParryCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Security />} label="Parry" color="#e57373" />}
+			header={<CardHeader icon={<Security />} label="Parry" color={ATTRIBUTE_COLORS.strength} />}
 			showConfigButton
 			onConfigClick={parryDetails ? handleClick : initializeDetails}
 			tooltip="Click gear to configure Parry sources"

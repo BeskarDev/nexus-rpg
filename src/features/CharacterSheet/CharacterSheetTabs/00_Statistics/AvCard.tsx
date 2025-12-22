@@ -9,6 +9,7 @@ import { DeepPartial } from '../../CharacterSheetContainer'
 import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { UI_COLORS } from '../../../../utils/colors'
 
 export const AvCard = () => {
 	const dispatch = useAppDispatch()
@@ -39,7 +40,7 @@ export const AvCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Shield />} label="AV" color="#78909c" />}
+			header={<CardHeader icon={<Shield />} label="AV" color={UI_COLORS.greyBlue} />}
 			showConfigButton
 			onConfigClick={handleClick}
 			tooltip="Click gear to configure AV sources"

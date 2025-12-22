@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Menu, TextField } from '@mui/material'
 import { Token } from '@mui/icons-material'
 import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { UI_COLORS } from '../../../../utils/colors'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
@@ -21,7 +22,7 @@ export const ResolveCard = () => {
 
 	return (
 		<CharacterSheetCard
-			header={<CardHeader icon={<Token />} label="Resolve" color="#9575cd" />}
+			header={<CardHeader icon={<Token />} label="Resolve" color={UI_COLORS.resolve} />}
 			minWidth="4.5rem"
 			maxWidth="5rem"
 			tooltip="Your reserve of determination (max 3)"

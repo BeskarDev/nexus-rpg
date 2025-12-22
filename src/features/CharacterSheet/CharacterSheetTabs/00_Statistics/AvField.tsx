@@ -3,6 +3,7 @@ import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Shield } from '@mui/icons-material'
 import { Box, IconButton, Menu, Tooltip, Typography, alpha } from '@mui/material'
+import { UI_COLORS } from '../../../../utils/colors'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -54,13 +55,13 @@ export const AvField = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Shield sx={{ fontSize: '0.7rem', color: '#78909c' }} />
+						<Shield sx={{ fontSize: '0.7rem', color: UI_COLORS.greyBlue }} />
 						<Typography
 							variant="caption"
 							sx={{
 								fontWeight: 700,
 								fontSize: '0.65rem',
-								color: '#78909c',
+								color: UI_COLORS.greyBlue,
 								textTransform: 'uppercase',
 							}}
 						>

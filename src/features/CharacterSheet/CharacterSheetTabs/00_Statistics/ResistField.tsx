@@ -13,6 +13,7 @@ import {
 	calculateDefenseLevelBonus,
 	migrateCharacterDefenses,
 } from '../../utils/calculateDefenses'
+import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const ResistField = () => {
 	const dispatch = useAppDispatch()
@@ -101,13 +102,13 @@ export const ResistField = () => {
 					}}
 				>
 					<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-						<Psychology sx={{ fontSize: '0.7rem', color: '#ba68c8' }} />
+						<Psychology sx={{ fontSize: '0.7rem', color: ATTRIBUTE_COLORS.mind }} />
 						<Typography
 							variant="caption"
 							sx={{
 								fontWeight: 700,
 								fontSize: '0.65rem',
-								color: '#ba68c8',
+								color: ATTRIBUTE_COLORS.mind,
 								textTransform: 'uppercase',
 							}}
 						>

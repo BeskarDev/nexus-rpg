@@ -82,7 +82,7 @@ export const AttributeCard: React.FC<AttributeCardProps> = ({
 					borderColor: isWounded ? undefined : color,
 				},
 			}}
-			borderColor={isWounded ? '#d32f2f' : undefined}
+			borderColor={isWounded ? 'error.main' : undefined}
 			header={<CardHeader icon={icon} label={abbr} color={color} />}
 			footer={
 				<Tooltip title={getWoundTooltip(label)} placement="bottom">

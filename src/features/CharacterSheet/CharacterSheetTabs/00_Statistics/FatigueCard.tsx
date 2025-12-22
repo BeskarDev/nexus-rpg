@@ -2,6 +2,7 @@ import { WaterDrop, WaterDropOutlined } from '@mui/icons-material'
 import { Box, Checkbox, Typography } from '@mui/material'
 import React from 'react'
 import { CharacterSheetCard, CardHeader } from '../../components'
+import { UI_COLORS } from '../../../../utils/colors'
 
 export type FatigueCardProps = {
 	current: number
@@ -24,7 +25,7 @@ export const FatigueCard: React.FC<FatigueCardProps> = ({
 	return (
 		<CharacterSheetCard
 			header={
-				<CardHeader icon={<WaterDrop />} label="Fatigue" color="#ffb74d" />
+				<CardHeader icon={<WaterDrop />} label="Fatigue" color={UI_COLORS.amber} />
 			}
 			minWidth="5rem"
 			footer={

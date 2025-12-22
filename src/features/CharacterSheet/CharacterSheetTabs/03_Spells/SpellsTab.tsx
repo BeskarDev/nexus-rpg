@@ -10,6 +10,7 @@ import {
 	alpha,
 } from '@mui/material'
 import React, { useMemo, useState } from 'react'
+import { UI_COLORS } from '../../../../utils/colors'
 
 import { AddCircle, ExpandMore, Search, SwapVert, AutoFixHigh, Star, FlashOn } from '@mui/icons-material'
 import { DynamicList, reorder } from '@site/src/components/DynamicList'
@@ -137,13 +138,13 @@ export const SpellsTab: React.FC = () => {
 						}}
 					>
 						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-							<AutoFixHigh sx={{ fontSize: '0.7rem', color: '#ba68c8' }} />
+							<AutoFixHigh sx={{ fontSize: '0.7rem', color: UI_COLORS.purple }} />
 							<Typography
 								variant="caption"
 								sx={{
 									fontWeight: 700,
 									fontSize: '0.55rem',
-									color: '#ba68c8',
+									color: UI_COLORS.purple,
 									textTransform: 'uppercase',
 								}}
 							>
@@ -176,20 +177,20 @@ export const SpellsTab: React.FC = () => {
 							position: 'relative',
 						}}
 					>
-						<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-							<Star sx={{ fontSize: '0.7rem', color: '#ffb74d' }} />
-							<Typography
-								variant="caption"
-								sx={{
-									fontWeight: 700,
-									fontSize: '0.55rem',
-									color: '#ffb74d',
-									textTransform: 'uppercase',
-								}}
-							>
-								Spec.
-							</Typography>
-						</Box>
+							<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+								<Star sx={{ fontSize: '0.7rem', color: UI_COLORS.amber }} />
+								<Typography
+									variant="caption"
+									sx={{
+										fontWeight: 700,
+										fontSize: '0.55rem',
+										color: UI_COLORS.amber,
+										textTransform: 'uppercase',
+									}}
+								>
+									Spec.
+								</Typography>
+							</Box>
 						<TextField
 							variant="standard"
 							size="small"
@@ -229,14 +230,14 @@ export const SpellsTab: React.FC = () => {
 								p: 0.5,
 							}}
 						>
-							<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-								<FlashOn sx={{ fontSize: '0.7rem', color: '#64b5f6' }} />
+								<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
+								<FlashOn sx={{ fontSize: '0.7rem', color: UI_COLORS.lightBlue }} />
 								<Typography
 									variant="caption"
 									sx={{
 										fontWeight: 700,
 										fontSize: '0.55rem',
-										color: '#64b5f6',
+										color: UI_COLORS.lightBlue,
 										textTransform: 'uppercase',
 									}}
 								>

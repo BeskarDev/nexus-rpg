@@ -14,6 +14,7 @@ import {
 	migrateCharacterDefenses,
 } from '../../utils/calculateDefenses'
 import { CharacterSheetCard, CardHeader, CardContent } from '../../components'
+import { ATTRIBUTE_COLORS } from '../../../../utils/colors'
 
 export const ResistCard = () => {
 	const dispatch = useAppDispatch()
@@ -87,7 +88,7 @@ export const ResistCard = () => {
 	return (
 		<CharacterSheetCard
 			header={
-				<CardHeader icon={<Psychology />} label="Resist" color="#64b5f6" />
+				<CardHeader icon={<Psychology />} label="Resist" color={ATTRIBUTE_COLORS.mind} />
 			}
 			showConfigButton
 			onConfigClick={resistDetails ? handleClick : initializeDetails}

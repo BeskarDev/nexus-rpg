@@ -1,5 +1,6 @@
 import { WaterDrop, WaterDropOutlined } from '@mui/icons-material'
 import { Box, Checkbox, Typography, alpha } from '@mui/material'
+import { UI_COLORS } from '../../../../utils/colors'
 import React from 'react'
 
 export type FatigueProps = {
@@ -35,13 +36,13 @@ export const FatigueTracker: React.FC<FatigueProps> = ({
 		>
 			{/* Header */}
 			<Box sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}>
-				<WaterDrop sx={{ fontSize: '0.7rem', color: '#ffb74d' }} />
+				<WaterDrop sx={{ fontSize: '0.7rem', color: UI_COLORS.amber }} />
 				<Typography
 					variant="caption"
 					sx={{
 						fontWeight: 700,
 						fontSize: '0.65rem',
-						color: '#ffb74d',
+						color: UI_COLORS.amber,
 						textTransform: 'uppercase',
 					}}
 				>
