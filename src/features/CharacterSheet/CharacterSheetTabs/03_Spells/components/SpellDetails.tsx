@@ -6,9 +6,18 @@ import {
 	TextField,
 } from '@mui/material'
 import React from 'react'
-import { RangeType, rangeTypeArray, Spell, TargetType, targetTypeArray } from '@site/src/types/Character'
+import {
+	RangeType,
+	rangeTypeArray,
+	Spell,
+	TargetType,
+	targetTypeArray,
+} from '@site/src/types/Character'
 import { AttributeField } from '@site/src/features/CharacterSheet/CharacterSheet'
-import { QuickRefButton, DeleteButton } from '@site/src/features/CharacterSheet/components'
+import {
+	QuickRefButton,
+	DeleteButton,
+} from '@site/src/features/CharacterSheet/components'
 
 export type SpellDetailsProps = {
 	spell: Spell
@@ -47,6 +56,7 @@ export const SpellDetails: React.FC<SpellDetailsProps> = ({
 				alignItems: 'baseline',
 				flexWrap: 'wrap',
 				columnGap: 1,
+				width: '100%',
 			}}
 		>
 			{spell.dealsDamage && (

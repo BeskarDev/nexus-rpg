@@ -34,6 +34,7 @@ export const AbilitySummary: React.FC<AbilitySummaryProps> = ({
 				gap: 1,
 				alignItems: 'center',
 				flexGrow: 1,
+				width: '100%',
 			}}
 		>
 			<TextField
@@ -42,7 +43,7 @@ export const AbilitySummary: React.FC<AbilitySummaryProps> = ({
 				value={title}
 				onChange={(event) => onTitleChange(event.target.value)}
 				onBlur={onTitleBlur}
-				sx={{ maxWidth: '12.5rem' }}
+				sx={{ maxWidth: '15rem' }}
 				InputProps={{
 					startAdornment: (
 						<Box

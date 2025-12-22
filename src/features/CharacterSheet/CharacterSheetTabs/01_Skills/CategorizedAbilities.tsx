@@ -257,7 +257,7 @@ export const CategorizedAbilities: React.FC = () => {
 							<Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
 								<SectionHeader sx={{ mb: 0 }}>{tag}</SectionHeader>
 								{tag === 'Talent' && openTalentSummaries.length > 0 && (
-									<Tooltip title="Talent points overview">
+									<Tooltip title="Spend your talent points!">
 										<IconButton
 											size="small"
 											color="warning"

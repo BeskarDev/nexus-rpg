@@ -82,7 +82,7 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 				flexDirection: 'column',
 				alignItems: 'center',
 				minWidth: '4rem',
-				maxWidth: '4.5rem',
+				maxWidth: '5rem',
 				flex: '1 1 auto',
 				borderRadius: 1,
 				border: (theme) =>
@@ -110,7 +110,7 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 					variant="caption"
 					sx={{
 						fontWeight: 700,
-						fontSize: '0.6rem',
+						fontSize: '0.65rem',
 						color: color,
 						textTransform: 'uppercase',
 						letterSpacing: '0.5px',
@@ -133,6 +133,8 @@ export const AttributeColumn: React.FC<AttributeColumnProps> = ({
 				InputProps={{
 					disableUnderline: true,
 					sx: {
+            ml: 1.5,
+            mr: -1.5,
 						fontWeight: 'bold',
 						fontSize: '0.95rem',
 						textAlign: 'center',

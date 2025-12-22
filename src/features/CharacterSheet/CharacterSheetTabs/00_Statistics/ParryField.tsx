@@ -2,7 +2,14 @@ import { useMemo } from 'react'
 import { AttributeField, SectionHeader } from '../../CharacterSheet'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { Settings, Security } from '@mui/icons-material'
-import { Box, IconButton, Menu, Tooltip, Typography, alpha } from '@mui/material'
+import {
+	Box,
+	IconButton,
+	Menu,
+	Tooltip,
+	Typography,
+	alpha,
+} from '@mui/material'
 import React from 'react'
 import { CharacterDocument } from '@site/src/types/Character'
 import { DeepPartial } from '../../CharacterSheetContainer'
@@ -112,8 +119,8 @@ export const ParryField = () => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						minWidth: '3.5rem',
-						maxWidth: '4.5rem',
+						width: '5rem',
+            height: '3.25rem',
 						borderRadius: 1,
 						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
 						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
@@ -127,12 +134,12 @@ export const ParryField = () => {
 							variant="caption"
 							sx={{
 								fontWeight: 700,
-								fontSize: '0.55rem',
+								fontSize: '0.65rem',
 								color: '#e57373',
 								textTransform: 'uppercase',
 							}}
 						>
-							PAR
+							PARRY
 						</Typography>
 					</Box>
 					<Typography

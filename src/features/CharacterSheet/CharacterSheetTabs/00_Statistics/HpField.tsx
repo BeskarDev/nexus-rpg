@@ -228,7 +228,7 @@ export const HpField = () => {
 						variant="caption"
 						sx={{
 							fontWeight: 700,
-							fontSize: '0.55rem',
+							fontSize: '0.65rem',
 							color: hpColor,
 							textTransform: 'uppercase',
 						}}

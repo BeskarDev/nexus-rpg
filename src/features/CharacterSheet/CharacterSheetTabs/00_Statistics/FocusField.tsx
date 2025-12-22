@@ -153,7 +153,7 @@ export const FocusField = () => {
 					variant="caption"
 					sx={{
 						fontWeight: 700,
-						fontSize: '0.55rem',
+						fontSize: '0.65rem',
 						color: '#2196f3',
 						textTransform: 'uppercase',
 					}}

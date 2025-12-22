@@ -44,8 +44,8 @@ export const AvField = () => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						minWidth: '3.5rem',
-						maxWidth: '4.5rem',
+						minWidth: '4rem',
+						maxWidth: '5rem',
 						borderRadius: 1,
 						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
 						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
@@ -59,7 +59,7 @@ export const AvField = () => {
 							variant="caption"
 							sx={{
 								fontWeight: 700,
-								fontSize: '0.55rem',
+								fontSize: '0.65rem',
 								color: '#78909c',
 								textTransform: 'uppercase',
 							}}
@@ -73,6 +73,7 @@ export const AvField = () => {
 							fontSize: '0.95rem',
 							lineHeight: 1.2,
 							textAlign: 'center',
+              mt: 0.25,
 						}}
 					>
 						{totalAV}

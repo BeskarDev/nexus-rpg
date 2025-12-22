@@ -74,7 +74,12 @@ export const StatisticsTab: React.FC = () => {
 			health.maxHpModifier || 0,
 			health.auto || 0,
 		)
-	}, [strength.value, activeCharacter.skills.xp.total, health.maxHpModifier, health.auto])
+	}, [
+		strength.value,
+		activeCharacter.skills.xp.total,
+		health.maxHpModifier,
+		health.auto,
+	])
 
 	const fatigueHpPenalty = (fatigue?.current || 0) * 2
 	const effectiveMaxHP = maxHP - fatigueHpPenalty
@@ -142,7 +147,7 @@ export const StatisticsTab: React.FC = () => {
 					display: 'flex',
 					gap: 0.75,
 					flexWrap: 'nowrap',
-					maxWidth: '19rem',
+					justifyContent: 'center',
 				}}
 			>
 				<AttributeColumn
@@ -197,7 +202,8 @@ export const StatisticsTab: React.FC = () => {
 					display: 'flex',
 					flexWrap: 'wrap',
 					gap: 0.75,
-					alignItems: 'flex-start',
+					alignItems: 'stretch',
+					justifyContent: 'center',
 				}}
 			>
 				<AvField />
@@ -219,7 +225,9 @@ export const StatisticsTab: React.FC = () => {
 					display: 'flex',
 					flexWrap: 'wrap',
 					gap: 0.75,
-					alignItems: 'flex-start',
+					alignItems: 'stretch',
+					justifyContent: 'center',
+          width: '100%',
 				}}
 			>
 				<ParryField />

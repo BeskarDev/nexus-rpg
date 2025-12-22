@@ -37,6 +37,7 @@ export const SpellSummary: React.FC<SpellSummaryProps> = ({
 				alignItems: 'baseline',
 				flexWrap: 'wrap',
 				columnGap: 0.5,
+				width: '100%',
 			}}
 		>
 			<Avatar

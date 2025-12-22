@@ -432,12 +432,13 @@ export const SkillsTab: React.FC = () => {
 	return (
 		<Box
 			sx={{
-				display: 'flex',
-				columnGap: { md: 4, sm: 2, xs: 1 },
-				flexWrap: 'wrap',
+				display: 'grid',
+				gridTemplateColumns: { lg: '1fr 2fr', md: '1fr', sm: '1fr', xs: '1fr' },
+				gap: { lg: 4, md: 2, sm: 2, xs: 1 },
 			}}
 		>
-			<Box sx={{ mb: 2, maxWidth: 'var(--cs-max-width-sm)' }}>
+			{/* Left Column: XP, Skills, Professions, Languages */}
+			<Box sx={{ mb: 2 }}>
 				{/* XP Section */}
 				<Box sx={{ mx: 'auto', display: 'flex' }}>
 					<AttributeField
@@ -669,8 +670,13 @@ export const SkillsTab: React.FC = () => {
 					</Box>
 				</Box>
 			</Box>
+			{/* End Left Column */}
 
-			<CategorizedAbilities />
+			{/* Right Column: CategorizedAbilities */}
+			<Box>
+				<CategorizedAbilities />
+			</Box>
+			{/* End Right Column */}
 
 			{/* Skill Deletion Confirmation Dialog */}
 			<Dialog

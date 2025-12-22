@@ -41,7 +41,7 @@ export const ItemSummary: React.FC<ItemSummaryProps> = ({
 			<TextField
 				size="small"
 				variant="standard"
-				value={item.properties?.join(', ') || ''}
+			value={Array.isArray(item.properties) ? item.properties.join(', ') : ''}
 				onChange={(event) =>
 					onPropertiesChange(
 						event.target.value

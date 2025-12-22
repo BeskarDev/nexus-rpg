@@ -40,7 +40,7 @@ export const FatigueTracker: React.FC<FatigueProps> = ({
 					variant="caption"
 					sx={{
 						fontWeight: 700,
-						fontSize: '0.55rem',
+						fontSize: '0.65rem',
 						color: '#ffb74d',
 						textTransform: 'uppercase',
 					}}
@@ -56,7 +56,9 @@ export const FatigueTracker: React.FC<FatigueProps> = ({
 						key={index}
 						size="small"
 						icon={<WaterDropOutlined sx={{ fontSize: '0.85rem' }} />}
-						checkedIcon={<WaterDrop color="warning" sx={{ fontSize: '0.85rem' }} />}
+						checkedIcon={
+							<WaterDrop color="warning" sx={{ fontSize: '0.85rem' }} />
+						}
 						checked={index < current}
 						onChange={() => handleFatigueChange(index)}
 						sx={{ p: 0.25 }}
@@ -65,15 +67,13 @@ export const FatigueTracker: React.FC<FatigueProps> = ({
 			</Box>
 
 			{/* HP penalty display */}
-			{fatigueHpPenalty > 0 && (
-				<Typography
-					variant="caption"
-					color="warning.main"
-					sx={{ fontSize: '0.6rem', mt: -0.25 }}
-				>
-					-{fatigueHpPenalty} HP
-				</Typography>
-			)}
+			<Typography
+				variant="caption"
+				color="warning.main"
+				sx={{ fontSize: '0.6rem' }}
+			>
+				{fatigueHpPenalty > 0 ? `-${fatigueHpPenalty} HP` : '\u00A0'}
+			</Typography>
 		</Box>
 	)
 }

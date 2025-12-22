@@ -91,8 +91,8 @@ export const DodgeField = () => {
 						display: 'flex',
 						flexDirection: 'column',
 						alignItems: 'center',
-						minWidth: '3.5rem',
-						maxWidth: '4.5rem',
+						width: '5rem',
+            height: '3.25rem',
 						borderRadius: 1,
 						border: (theme) => `1px solid ${alpha(theme.palette.divider, 0.2)}`,
 						bgcolor: (theme) => alpha(theme.palette.background.paper, 0.3),
@@ -106,12 +106,12 @@ export const DodgeField = () => {
 							variant="caption"
 							sx={{
 								fontWeight: 700,
-								fontSize: '0.55rem',
+								fontSize: '0.65rem',
 								color: '#81c784',
 								textTransform: 'uppercase',
 							}}
 						>
-							DOD
+							DODGE
 						</Typography>
 					</Box>
 					<Typography
