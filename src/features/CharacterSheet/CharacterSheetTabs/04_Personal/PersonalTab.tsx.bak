@@ -489,24 +489,28 @@ export const PersonalTab: React.FC = () => {
 						<NameCard
 							name={formValues.name}
 							onChange={(value) => {
-							setValue('name', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('name')
-							updateCharacter({ personal: { name: formValues.name } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('name').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.name } }
+								register('name').onBlur(syntheticEvent)
+								updateCharacter({ personal: { name: formValues.name } })
+							}}
 							error={errors.name?.message}
 						/>
 
 						<FolkCard
 							folk={formValues.folk}
 							onChange={(value) => {
-							setValue('folk', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('folk')
-							updateCharacter({ personal: { folk: formValues.folk } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('folk').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.folk } }
+								register('folk').onBlur(syntheticEvent)
+								updateCharacter({ personal: { folk: formValues.folk } })
+							}}
 							onEditClick={() => setFolkDialogOpen(true)}
 							error={errors.folk?.message}
 						/>
@@ -514,12 +518,14 @@ export const PersonalTab: React.FC = () => {
 						<UpbringingCard
 							upbringing={formValues.upbringing}
 							onChange={(value) => {
-							setValue('upbringing', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('upbringing')
-							updateCharacter({ personal: { upbringing: formValues.upbringing } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('upbringing').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.upbringing } }
+								register('upbringing').onBlur(syntheticEvent)
+								updateCharacter({ personal: { upbringing: formValues.upbringing } })
+							}}
 							onEditClick={() => setUpbringingDialogOpen(true)}
 							error={errors.upbringing?.message}
 						/>
@@ -527,12 +533,14 @@ export const PersonalTab: React.FC = () => {
 						<BackgroundCard
 							background={formValues.background}
 							onChange={(value) => {
-							setValue('background', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('background')
-							updateCharacter({ personal: { background: formValues.background } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('background').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.background } }
+								register('background').onBlur(syntheticEvent)
+								updateCharacter({ personal: { background: formValues.background } })
+							}}
 							onEditClick={() => setBackgroundDialogOpen(true)}
 							error={errors.background?.message}
 						/>
@@ -540,48 +548,56 @@ export const PersonalTab: React.FC = () => {
 						<MotivationCard
 							motivation={formValues.motivation}
 							onChange={(value) => {
-							setValue('motivation', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('motivation')
-							updateCharacter({ personal: { motivation: formValues.motivation } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('motivation').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.motivation } }
+								register('motivation').onBlur(syntheticEvent)
+								updateCharacter({ personal: { motivation: formValues.motivation } })
+							}}
 							error={errors.motivation?.message}
 						/>
 
 						<HeightCard
 							value={formValues.height}
 							onChange={(value) => {
-							setValue('height', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('height')
-							updateCharacter({ personal: { height: formValues.height } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('height').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.height } }
+								register('height').onBlur(syntheticEvent)
+								updateCharacter({ personal: { height: formValues.height } })
+							}}
 							error={errors.height?.message}
 						/>
 
 						<WeightCard
 							value={formValues.weight}
 							onChange={(value) => {
-							setValue('weight', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('weight')
-							updateCharacter({ personal: { weight: formValues.weight } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('weight').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.weight } }
+								register('weight').onBlur(syntheticEvent)
+								updateCharacter({ personal: { weight: formValues.weight } })
+							}}
 							error={errors.weight?.message}
 						/>
 
 						<AgeCard
 							value={formValues.age}
 							onChange={(value) => {
-							setValue('age', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('age')
-							updateCharacter({ personal: { age: formValues.age } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('age').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.age } }
+								register('age').onBlur(syntheticEvent)
+								updateCharacter({ personal: { age: formValues.age } })
+							}}
 							error={errors.age?.message}
 						/>
 
@@ -590,12 +606,14 @@ export const PersonalTab: React.FC = () => {
 						<DescriptionCard
 							value={formValues.description}
 							onChange={(value) => {
-							setValue('description', value, { shouldDirty: true })
-						}}
-							onBlur={async () => {
-							await trigger('description')
-							updateCharacter({ personal: { description: formValues.description } })
-						}}
+								const syntheticEvent = { target: { value } }
+								register('description').onChange(syntheticEvent)
+							}}
+							onBlur={() => {
+								const syntheticEvent = { target: { value: formValues.description } }
+								register('description').onBlur(syntheticEvent)
+								updateCharacter({ personal: { description: formValues.description } })
+							}}
 							error={errors.description?.message}
 						/>
 					</Box>
