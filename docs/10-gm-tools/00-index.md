@@ -25,4 +25,8 @@ Welcome to the GM Tools section — a collection of printable references and Ran
 
 - [Creature Builder](./builder-tools/creature-builder)
 
+## 🏰 Dungeon Generation
+
+- [Random Dungeon Generation](./dungeon-generation/random-dungeon) — Generate non-linear dungeons using the Cyclic method
+
 Use the links above to jump straight to the tool you need. If you'd like a different summary or extra quick-reference content here (examples, printable quick tables, or shortcuts), tell me what to add and I can expand this page.
