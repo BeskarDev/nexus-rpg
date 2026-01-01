@@ -10,43 +10,73 @@ For how to create your own creatures, see [Creature Rules](../02-creature-rules.
 
 ## Creature Tiers
 
-Creatures are organized by tier, representing their power level and appropriate challenge for adventurers:
+Creatures are organized by tier (0-10), representing their power level and appropriate challenge for adventurers. Each tier corresponds to a character level, making encounter balance straightforward.
 
 ### [Tier 0](./tier-0)
-**Challenge Level**: Novice adventurers (Level 0-1)  
-**Examples**: Common animals, weak undead, minor pests
+**Challenge Level**: Novice adventurers (Level 0)  
+**Examples**: Small animals, vermin, harmless wildlife
 
-Tier 0 creatures represent the weakest opponents - common animals, small vermin, and basic threats. They're suitable challenges for beginning adventurers or can be used in swarms for higher-level parties.
+Tier 0 creatures represent the weakest opponents - small animals, vermin, and basic threats. They're suitable challenges for completely inexperienced adventurers or can be used in large numbers for higher-level parties.
 
 ### [Tier 1](./tier-1)
-**Challenge Level**: Beginning adventurers (Level 1-2)  
-**Examples**: Zombies, wolves, goblins, small elementals
+**Challenge Level**: Beginning adventurers (Level 1)  
+**Examples**: Wolves, giant rats, basic skeletons, goblins
 
-Tier 1 creatures provide a meaningful challenge to starting adventurers. They include weak undead, common predators, lesser humanoids, and minor magical beings.
+Tier 1 creatures provide a meaningful challenge to starting adventurers. They include common predators, basic undead, and lesser humanoid warriors.
 
 ### [Tier 2](./tier-2)
-**Challenge Level**: Experienced adventurers (Level 2-4)  
-**Examples**: Ghouls, bears, ogres, medium elementals
+**Challenge Level**: Novice adventurers (Level 2)  
+**Examples**: Zombies, small elementals, orcs, wild boars
 
-Tier 2 creatures are dangerous opponents for early adventurers. They include more powerful undead, large predators, brutish humanoids, and competent spellcasters.
+Tier 2 creatures are slightly more dangerous, including stronger undead, minor magical beings, and organized humanoid fighters.
 
 ### [Tier 3](./tier-3)
-**Challenge Level**: Veteran adventurers (Level 4-6)  
-**Examples**: Mummies, trolls, elite warriors, powerful elementals
+**Challenge Level**: Trained adventurers (Level 3)  
+**Examples**: Ghouls, dire wolves, ogres, veterans
 
-Tier 3 creatures pose serious threats even to experienced parties. They include ancient undead, monstrous creatures, elite combatants, and dangerous magical beings.
+Tier 3 creatures represent meaningful threats. They include more powerful undead, large predators, and experienced combatants.
 
 ### [Tier 4](./tier-4)
-**Challenge Level**: Expert adventurers (Level 6-8)  
-**Examples**: Vampires, giants, master warriors, greater daimons
+**Challenge Level**: Experienced adventurers (Level 4)  
+**Examples**: Large elementals, trolls, gladiators, wyverns
 
-Tier 4 creatures are fearsome opponents requiring tactical coordination to defeat. They include powerful undead lords, massive creatures, legendary warriors, and major supernatural entities.
+Tier 4 creatures are formidable opponents requiring tactical thinking. They include dangerous beasts, regenerating giants, and elite fighters.
 
 ### [Tier 5](./tier-5)
-**Challenge Level**: Legendary adventurers (Level 8-10)  
-**Examples**: Ancient liches, dragons, demigods, primordial beings
+**Challenge Level**: Skilled adventurers (Level 5)  
+**Examples**: Mummies, manticores, sorcerers, young dragons
 
-Tier 5 creatures represent the pinnacle of mortal-scale threats. They include the most powerful undead, legendary beasts, epic heroes turned villains, and near-divine entities.
+Tier 5 creatures pose serious threats. They include ancient undead, powerful monstrosities, and dangerous spellcasters.
+
+### [Tier 6](./tier-6)
+**Challenge Level**: Veteran adventurers (Level 6)  
+**Examples**: Vampires, chimeras, warlords, adult dragons
+
+Tier 6 creatures are fearsome opponents. They include powerful undead lords, legendary beasts, and military commanders.
+
+### [Tier 7](./tier-7)
+**Challenge Level**: Expert adventurers (Level 7)  
+**Examples**: Giants, hydras, archmages, greater daimons
+
+Tier 7 creatures require coordinated party tactics to defeat. They include massive giants, multi-headed monsters, and master spellcasters.
+
+### [Tier 8](./tier-8)
+**Challenge Level**: Master adventurers (Level 8)  
+**Examples**: Liches, elder dragons, demon lords, titan spawn
+
+Tier 8 creatures are among the most dangerous beings. They include undying sorcerer-kings, ancient dragons, and demonic nobility.
+
+### [Tier 9](./tier-9)
+**Challenge Level**: Legendary adventurers (Level 9)  
+**Examples**: Ancient wyrms, primordial spirits, archliches
+
+Tier 9 creatures represent near-mythical threats. They include the oldest dragons, elemental lords, and transcendent undead.
+
+### [Tier 10](./tier-10)
+**Challenge Level**: Epic adventurers (Level 10)  
+**Examples**: Tarrasque, primordial titans, ancient wyrm dragons, godlike entities
+
+Tier 10 creatures are the pinnacle of mortal-scale threats - legendary beings that reshape the world around them. Encounters with these creatures are campaign-defining events.
 
 ## Using Creatures
 
