@@ -64,7 +64,7 @@ Tier 6 creatures are fearsome opponents. They include powerful undead lords, leg
 **Attacks:**
 
 - **Unarmed Strike**. 12/21/30 damage.
-- **Bite** (*only on grappled, incapacitated, restrained, or willing targets*). 14/25/36 necrotic damage. The target's maximum HP is reduced by the damage dealt, and this creature regains HP equal to that amount.
+- **Bite** (*only on grappled, incapacitated, restrained, or willing targets*). 14/25/36 necrotic damage. The target's maximum HP is reduced by the damage dealt until they finish a long rest, and this creature regains HP equal to that amount.
 
 **Abilities:**
 

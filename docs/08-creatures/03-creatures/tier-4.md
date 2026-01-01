@@ -73,7 +73,7 @@ Tier 4 creatures are formidable opponents requiring tactical thinking. They incl
 **Attacks:**
 
 - **2 x Claw** (*light, slash*). 9/14/19 damage.
-- **Bite** (*crush, reach*). 11/18/25 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that bite can't be used to attack any other target.
+- **Bite** (*crush, reach*). 11/18/25 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. This creature cannot use its Bite attack against other targets while grappling a creature.
 - **Tail** (*crush, reach*). 9/14/19 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.
 - **Dragon's Breath** (*recharge (d4)*). Roll Strength + Fortitude vs. Dodge. Target all creatures in melee range, or in one area within short range. On a success, each target suffers 12 fire damage. On a strong or critical success, each target also suffers burning (4).
 

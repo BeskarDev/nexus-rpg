@@ -30,7 +30,7 @@ Tier 9 creatures represent near-mythical threats. They include the oldest dragon
 
 **Abilities:**
 
-- **Flying (Passive).** This creature can fly with 3 Movement per turn.
+- **Flying (Passive).** This creature can fly with 3 Movement per turn. If on the ground, it can only spend 2 Movement during its turn in total.
 - **Legendary Resistance (Passive, 3/day).** If this creature fails a save, it can choose to succeed instead.
 - **Magic Resistance (Passive).** This creature has +1 boon on saves against spells and other magical effects.
 - **Frightful Presence (Action).** Each creature of this creature's choice within extreme range must roll Spirit + Fortitude vs. TN 15 or become frightened for a short duration. A creature can repeat the save at the end of each of its turns.

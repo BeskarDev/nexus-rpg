@@ -89,7 +89,7 @@ Tier 3 creatures represent meaningful threats. They include more powerful undead
 
 **Attacks:**
 
-- **2 x Claw** (*crush, light*). 7/11/15 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. While grappled, that claw can't be used to attack any other target.
+- **2 x Claw** (*crush, light*). 7/11/15 damage. On a strong or critical hit and if the target is smaller than this creature, the target is grappled and restrained. This creature cannot use a claw to attack other targets while grappling a creature with it.
 - **Sting** (*pierce, reach*). 9/14/19 poison damage. On a strong or critical hit, the target is also poisoned for a short duration. They can roll Strength + Fortitude vs. TN 9 at the end of their turns to end the effect early.
 
 **Abilities:**
