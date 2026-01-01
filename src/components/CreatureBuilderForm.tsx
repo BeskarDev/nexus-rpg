@@ -50,19 +50,17 @@ const getCategoryColor = (category: CreatureCategory): string => {
 // Color coding for types
 const getTypeColor = (type: string): string => {
 	const colors: Record<string, string> = {
-		Animal: '#48A06C',
-		Beast: '#A86B35',
-		Construct: '#9A9A9A',
-		Dragon: '#A14646',
-		Elemental: '#4B91C0',
-		Fey: '#914C70',
-		Fiend: '#8E3F66',
-		Giant: '#B1642F',
-		Humanoid: '#3C6FA8',
-		Monstrosity: '#9C5635',
-		Ooze: '#3E9B4E',
-		Plant: '#3FA769',
-		Undead: '#777777',
+		Aberration: '#6B21A8', // Deep purple (alien/eldritch)
+		Automaton: '#9A9A9A', // Grey (constructs/machines)
+		Beast: '#A86B35', // Brown (animals)
+		Draconic: '#A14646', // Deep red (dragons/power)
+		Giant: '#B1642F', // Orange-brown (mythic giants)
+		Humanoid: '#3C6FA8', // Blue (civilized peoples)
+		Monstrosity: '#9C5635', // Dark brown (magical beasts)
+		Ooze: '#3E9B4E', // Green (slimes)
+		Plant: '#3FA769', // Forest green (vegetation)
+		Spirit: '#4B91C0', // Sky blue (extraplanar)
+		Undead: '#777777', // Dark grey (death)
 	}
 	return colors[type] || '#3C6FA8'
 }

@@ -1,15 +1,13 @@
 [
-	"Animal",
+	"Aberration",
+	"Automaton",
 	"Beast",
-	"Construct",
-	"Dragon",
-	"Elemental",
-	"Fey",
-	"Fiend",
+	"Draconic",
 	"Giant",
 	"Humanoid",
 	"Monstrosity",
 	"Ooze",
 	"Plant",
+	"Spirit",
 	"Undead"
 ]
