@@ -4,27 +4,385 @@ sidebar_position: 2
 
 # Tier 1
 
-| Type | Category | Size | Name | HP | AV (Types) | STR / AGI / SPI / MND | Parry / Dodge / Resist | Skills | Weaknesses | Resistances | Actions | Abilities | Immunities | Quick Actions |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Beast | Basic | Medium (-) | Black Bear | 20 | 2 (natural light) | d10 / d6 / d4 / d4-2 | 9 / 7 / 6 | Fighting 0, Fortitude 1, Perception 1, Survival 1 |  |  | **Bite** (*crush*). 8 damage (5 base + 3 weapon). On a strong or critical hit against a creature of equal or smaller size, the target drops prone.<br/>**Claw** (*slash*). 7 damage (5 base + 2 weapon). On a strong or critical hit, the target suffers bleeding (2). | **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br/>**Natural Climber.** This creature can climb without treating it as difficult terrain. |  |  |
-| Beast | Basic | Medium (-) | Boar | 20 | 2 (natural light) | d8 / d6 / d4 / d4-2 | 9 / 8 / 7 | Fighting 0, Fortitude 1, Survival 1 |  |  | **Tusks** (*crush*). 6 damage (4 base + 2 weapon). On a strong or critical hit against a creature of equal or smaller size, the target falls prone. | **Charge.** If this creature spend Movement towards it’s target during the turn it attacks, it gains +1 boon on the attack and deals +2 damage.<br/>**Relentless. **The first time this creature would suffer an Injury, they can ignore it. |  |  |
-| Beast | Basic | Small (-1) | Snapping Turtle | 10 | 4 (natural heavy) | d8 / d4 / d4 / d4-1 | 7 / 7 / 8 | Fighting 0, Fortitude 1, Survival 1 |  |  | **Bite** (*crush*). 8 damage (5 base + 3 weapon). On a strong or critical hit against a creature of equal or smaller size, the target is grappled. | **Amphibious.** This creature can breath both in air and water.<br/>**Slow. **This creature has to spend +1 Movement to move a short distance and 1 Movement to move close, unless it moves in water. |  | **Shell Defense.** On their turn, this creature can retract into it‘s shell. This doubles their AV, but they can‘t take any other Actions or Movement. They can reemerge on another one of their turns by using another Quick Action. |
-| Beast | Basic | Medium (-) | Swarm of Snakes | 10 | 0 | d4 / d6 / d4 / d4-2 | 8 / 9 / 7 | Fighting 1 |  | any damage targeting a single creature | **Poison Bite **(*agile*)**.** 7 poison damage (3 base + 4 weapon) or 5 poison damage (3 base + 2 weapon) if this swarm has already lost half it’s max. HP. On a strong or critical hit, the target is also poisoned for a short duration. | **Swarm. **This swarm consists of many individual creatures that act in unison. The swarm is immune against any conditions inflicted from effects that target a single creature. |  |  |
-| Beast | Basic | Medium (-) | Wolf | 10 | 1 (natural light) | d8 / d6 / d6 / d4-1 | 8 / 9 / 7 | Fighting 0, Fortitude 1, Perception 1, Survival 1 |  |  | **Bite**. 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target. | **Keen Scent.** This creature gains +1 boon on Perception rolls based on smell.<br/>**Wolf Pack.** While in a troop or in melee range of allies, this creature‘s attacks gain +1 boon. |  |  |
-| Spirit | Basic | Small (-1) | Small Earth Elemental | 10 | 4 (natural heavy) | d8 / d4 / d6 / d4 | 9 / 8 / 8 | Fighting 0, Fortitude 1 | blast damage | physical damage expect from crush weapons | **Smash **(*crush*)**.** 7 damage (4 base + 3 weapon). On a strong or critical hit, the target falls prone. | **Earth Dive.** This creature can move through natural stone and earth as through water. Moving this way doesn‘t count as difficult terrain and there are no traces left of it‘s path.<br/>**Tremor Sense.** This creature can feel the vibrations in the ground in a short distance around it. It is never considered blinded against any creature moving on the ground in this area. | poison damage, bleeding, dazed, poisoned, stunned, unconscious |  |
-| Spirit | Basic | Small (-1) | Small Fire Elemental | 10 | 0 | d8 / d8 / d6 / d4 | 9 / 9 / 7 | Fighting 0, Fortitude 1, Perception 1 | frost damage, damage from water | physical damage | **Burning Lash.** 6 fire damage (4 base + 2 weapon). On a strong or critical hit, inflicts burning (2) for a short duration. | **Ethereal Form.** This creature is immune against bleeding, poison damage, being poisoned, being grappled, restrained, stunned or falling unconscious.<br/>**Flame Body.** This creature is immune against fire damage, burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 2 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so. |  |  |
-| Humanoid | Basic | Small (-1) | Goblin | 10 | 2 (light) | d4 / d8 / d4 / d6 | 8 / 10 / 7 | Archery 0, Athletics 0, Cunning 1, Fighting 1, Perception 0 |  |  | **Dagger** (********************************************agile, light, pierce********************************************). 6 damage (4 base + 2 weapon).<br/>**Slingshot** (*ammo, crush, thrown (medium), two-handed*). 6 damage (4 base + 2 weapon). | **Night Vision. **This creature can see one range category further from sources of bright and dim light.<br/>**Quick Escape.** When this creature was missed by a melee attack, it can move close. |  |  |
-| Humanoid | Master | Small (-1) | Goblin Boss | 3x10 | 3 (light) | d4/d8/d4/d6 | 8 / 10 / 7 | Archery 0, Athletics 0, Cunning 1, Fighting 1, Perception 0 |  |  | **Fast Strikes.** This creature can attack twice per turn.<br/>**Scimitar** (*agile, light, slash*). 6 damage (4 base + 2 weapon).<br/>********Whip******** (*agile, entangle, light, reach, slash*). 6 damage (4 base + 2 weapon).<br/>**Dart** (*agile, bundle, light, pierce, thrown (short)*). 6 damage (4 base + 2 weapon). | **Night Vision. **This creature can see one range category further from sources of bright and dim light.<br/>**Rally Goblin. **On this creature‘s turn, it can target one goblin visible in medium range. That goblin immediately makes an attack against one target of this creature‘s choice. The goblin gain +1 boon on the attack. This ability can be used once per turn.<br/>**Quick Escape.** When this creature was missed by a melee attack, it can move close.<br/>**Sacrifice Goblin (Quick Action). **When this creature would be hit by an attack, it can redirect the attack to target one goblin close to them.<br/>**Goblin Reinforcements (Master Ability).** This ability automatically activates once this creature has taken half their max. Wounds (rounded up). Once activated, this creature summons 1d4+2 goblins, which appear at any location in short range of this creature. |  |  |
-| Humanoid | Basic | Small (-1) | Kobold | 10 | 1 (natural light) | d4 / d8 / d4 / d4 | 8 / 10 / 7 | Archery 1, Crafting (woodworking) 0, Cunning 1, Fighting 1, Nature 0 |  |  | **Cleaver** (********************************************agile, light, slash********************************************). 6 damage (4 base + 2 weapon).<br/>**Sling** (*ammo, crush, thrown (medium), two-handed*). 6 damage (4 base + 2 weapon). | **Night Vision. **This creature can see one range category further from sources of bright and dim light.<br/>**Wolf Pack.** While in a troop or in melee range of allies, this creature‘s attacks gain +1 boon on melee attack. |  |  |
-| Humanoid | Basic | Medium (-) | Lizardfolk (Hunter) | 10 | 3 (natural light) | d6 / d8 / d6 / d4 | 8 / 9 / 7 | Archery 0, Athletics 1, Fighting 0, Fortitude 1, Perception 1, Survival 1 |  |  | **Bite **(*crush*). 6 damage (3 base + 3 weapon).**<br/>Club **(**agile, crush, light**). 6 damage (4 base + 2 weapon).<br/>**************Javelin************** (*bundle, light, thrown (medium)*). 6 damage (4 base + 2 weapon).<br/>**Net** (*bundle, entangle, heavy (d6), thrown (short)*). 6 damage (4 base + 2 weapon). | **Aquatic Nature.** This creature can hold their breath for 4 + 1/2 Strength minutes and can swim without any penalty to their Movement. |  |  |
-| Humanoid | Basic | Medium (-) | Lizardfolk (Raider) | 20 | 3 (natural light) | d8 / d6 / d6 / d4 | 9 / 8 / 7 | Athletics 1, Fighting 0, Fortitude 1, Perception 1, Survival 1 |  |  | **Bite **(*crush*). 7 damage (4 base + 3 weapon).**<br/>War Club **(*crush, versatile (+1)*). 7 damage (4 base + 3 weapon). | **Aquatic Nature.** This creature can hold their breath for 4 + 1/2 Strength minutes and can swim without any penalty to their Movement. |  |  |
-| Humanoid | Basic | Medium (-) | Lizardfolk (Tamer) | 10 | 3 (natural light) | d8 / d6 / d6 / d4 | 7 / 9 / 8 | Fighting 0, Fortitude 1, Nature 1, Perception 1, Survival 1 |  |  | **Bite **(*crush*). 7 damage (4 base + 3 weapon).**<br/>Whip **(*agile, entangle, light, reach, slash*). 6 damage (4 base + 2 weapon). | **Aquatic Nature.** This creature can hold their breath for 4 + 1/2 Strength minutes and can swim without any penalty to their Movement.<br/>**Beast Tamer.** This creature can control one large sized animal, two medium sized ones, or three small sized ones at a time. The creature(s) act under this creature‘s control as long as they can see and hear them. |  | **Command Beast.** A creature under this creature‘s control that can see and hear them can re-roll one test. |
-| Humanoid | Basic | Medium (-) | Nakesh Cultist (Acolyte) | 10 | 2 (natural light) | d6 / d6 / d6 / d8 | 7 / 8 / 9 | Arcana 1, Cunning 1, Influence 1, Lore 1, Perception 1 |  | poison damage | **Dagger** (********************************************agile, light, pierce********************************************). 6 damage (4 base + 2 weapon).<br/>**Poison Mist** (*target: vs. Dodge, range: short*). Roll Mind + Arcana. Deals 4 + 2 poison damage per SL. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early. | **Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br/>- Attack Thoughts<br/>- Control Beast (only snakes)<br/>- Subtle Suggestion<br/>**Snake Mutation. **This creature is immune against being poisoned. |  |  |
-| Humanoid | Basic | Medium (-) | Nakesh Cultist (Assassin) | 10 | 2 (natural light) | d8 / d8 / d6 / d6 | 8 / 9 / 7 | Arcana 1, Archery 1, Cunning 1, Fighting 1, Influence 1, Lore 1, Perception 1 |  | poison damage | **Dagger** (********************************************agile, light, pierce********************************************). 6 damage (4 base + 2 weapon).<br/>**Shortbow** (*ammo, range (medium), two-handed*). 6 damage (4 base + 2 weapon). | **Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br/>- Control Beast (only snakes)<br/>- Venomous Weapon<br/>**Shapeshifting. **Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.<br/>**Snake Mutation. **This creature is immune against being poisoned. |  |  |
-| Humanoid | Basic | Medium (-) | Nakesh Cultist (Warrior) | 20 | 2 (natural light) | d8 / d8 / d6 / d6 | 9 / 8 / 7 | Cunning 1, Fighting 1, Perception 1 |  | poison damage | **Fan Axe** (*heavy (d8), slash, two-handed*). 8 damage (4 base + 4 weapon). On a strong hit, the target also suffers bleeding (2). On a critical hit, the target also suffers bleeding (4). | **Innate Spellcasting.** This creature can cast the following spells rolling Mind + Arcana once per scene each:<br/>- Control Beast (only snakes)<br/>- War Cry<br/>**Snake Mutation. **This creature is immune against being poisoned. |  |  |
-| Humanoid | Basic | Medium (-) | Orc Warrior | 20 | 2 (light) | d8 / d6 / d6 / d4 | 9 / 8 / 7 | Athletics 1, Fighting 1, Fortitude 1 |  |  | **Battleaxe **(****************slash, versatile (+1)****************). 7 damage (4 base + 3 weapon). | **Orcish Fury.** When this creature hits with a melee weapon and rolls a critical success, add it‘s weapon damage an additional time to the total damage. |  |  |
-| Humanoid | Basic | Medium (-) | Soldier | 10 | 3 (light) | d8 / d6 / d6 / d6 | 9 / 8 / 7 | Archery 1, Fighting 1, Perception 1 |  |  | **Spear** (*************************pierce, reach, two-handed*************************). 7 damage (4 base + 3 weapon).<br/>**Shortsword** (*agile, light, pierce*). 6 damage (4 base + 2 weapon).<br/>**Shortbow** (**********************ammo, range (medium), two-handed**********************). 6 damage (4 base + 2 weapon). |  |  |  |
-| Monstrosity | Basic | Small (-1) | Rust Scarab | 10 | 4 (natural heavy) | d6 / d6 / d6 / d4-1 | 9 / 9 / 7 | Fighting 0, Fortitude 1, Perception 1, Survival 1 |  |  | **Corroding Bite.** 5 damage (3 base + 2 weapon). On a hit, the target has to roll a Durability check for one metal item they are holding or wearing (their choice). | **Metal Scent. **This creature can instinctively scent the location of any metal in short distance. It can’t be surprised by any creature wearing metal armor, or wielding a metal weapon.<br/>**Night Vision. **This creature can see one range category further from sources of bright and dim light. |  |  |
-| Undead | Basic | Medium (-) | Plague Zombie | 20 | 2 (natural light) | d8 / d4 / d4 / d4-1 | 7 / 6 / 8 | Endurance 1, Fighting 0 | slash weapons, radiant damage | pierce weapons, necrotic damage, poison damage | **Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br/>**Rotten Bite** (*only if grappling*)**.** 8 poison damage (4 base + 4 weapon).<br/>**Spew Plague** (*thrown (short)*). 8 poison damage (4 base + 4 weapon). | **Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br/>**Rotting Slowness. **This creature can only move or take an Action per turn, not both. This creature can‘t use Quick Actions. |  |  |
-| Undead | Basic | Medium (-) | Skeleton | 10 | 4 (natural heavy) | d6 / d6 / d4 / d4-1 | 8 / 9 / 7 | Fighting 1, Perception 1 | crush weapons, radiant damage | pierce weapons, necrotic damage | **Claw.** 5 damage (3 base + 2 weapon).<br/>**Longsword** (*pierce, versatile (+1)*). 6 damage (3 base + 3 weapon). | **Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br/>**Unholy Reanimation.** This creature can’t take Wounds, but is instead destroyed once reduce to 0 HP. When this creature is destroyed, it is reanimated at the end of it‘s next turn with 1 HP, unless it was destroyed by a crush weapon or radiant damage. It also doesn‘t regenerate if it‘s remains were smashed with a melee weapon while at 0 HP before it‘s next turn. |  |  |
-| Undead | Basic | Medium (-) | Zombie | 20 | 2 (natural light) | d8 / d4 / d4 / d4-1 | 7 / 6 / 8 | Endurance 1, Fighting 0 | slash weapons, radiant damage | pierce weapons, necrotic damage | **Claw.** 6 damage (4 base + 2 weapon). On a hit, attempts to grapple the target.<br/>**Rotten Bite** (*only if grappling*)**.** 8 poison damage (4 base + 4 weapon). | **Undead Nature.** This creature is immune against bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.<br/>**Rotting Slowness. **This creature can only move or take an Action per turn, not both. This creature can‘t use Quick Actions. |  |  |
+Tier 1 creatures provide a meaningful challenge to starting adventurers. They include common predators, basic undead, and lesser humanoid warriors.
+
+---
+
+### **Wolf** (Medium Beast)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1 (natural light) | d6 | d6 | d6 | d4-1 | 7 | 8 | 7 |
+
+**Skills:** Fighting (1), Fortitude (1), Perception (1), Survival (1)
+
+**Attacks:**
+
+- **Bite**. 6/9/12 damage. On a hit, attempts to grapple the target.
+
+**Abilities:**
+
+- **Keen Scent (Passive).** This creature gains +1 boon on Perception rolls based on smell.
+- **Pack Tactics (Passive).** While in a troop or in melee range of allies, this creature's attacks gain +1 boon.
+
+---
+
+### **Boar** (Medium Beast)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1 (natural light) | d6 | d6 | d4 | d4-2 | 8 | 7 | 7 |
+
+**Skills:** Fighting (1), Fortitude (1), Survival (1)
+
+**Attacks:**
+
+- **Tusks** (*crush*). 6/9/12 damage. On a strong or critical hit against a creature of equal or smaller size, the target falls prone.
+
+**Abilities:**
+
+- **Charge (Passive).** If this creature spends Movement towards its target during the turn it attacks, it gains +1 boon on the attack and deals +2 damage.
+- **Relentless (Passive).** The first time this creature would suffer an Injury, it can ignore it.
+
+---
+
+### **Swarm of Snakes** (Medium Beast)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0 (light) | d4 | d6 | d4 | d4-2 | 7 | 8 | 7 |
+
+**Skills:** Fighting (1)
+
+**Resistances:** physical damage (from single-target attacks)
+
+**Attacks:**
+
+- **Poison Bite** (*agile*). 6/9/12 poison damage, or 5/7/9 if this swarm has already lost half its max HP. On a strong or critical hit, the target is also poisoned for a short duration.
+
+**Abilities:**
+
+- **Swarm (Passive).** This swarm consists of many individual creatures that act in unison. The swarm is resistant to any damage from effects that target a single creature and immune to conditions from such effects.
+
+---
+
+### **Skeleton** (Medium Undead)
+
+**Tier:** 1 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2 (natural heavy) | d6 | d6 | d4 | d4-1 | 7 | 8 | 7 |
+
+**Skills:** Fighting (1), Perception (1)
+
+**Weaknesses:** crush weapons, radiant damage
+
+**Resistances:** pierce weapons, necrotic damage
+
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+
+**Attacks:**
+
+- **Claw**. 5/7/9 damage.
+- **Longsword** (*pierce, versatile +1*). 6/9/12 damage.
+
+**Abilities:**
+
+- **Undead Nature (Passive).** This creature is immune to bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.
+- **Unholy Reanimation (Passive).** This creature can't take Wounds, but is instead destroyed once reduced to 0 HP. When this creature is destroyed, it is reanimated at the end of its next turn with 1 HP, unless it was destroyed by a crush weapon or radiant damage. It also doesn't regenerate if its remains were smashed with a melee weapon while at 0 HP before its next turn.
+
+---
+
+### **Goblin** (Small Humanoid)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1 (light) | d4 | d6 | d4 | d6 | 6 | 8 | 7 |
+
+**Skills:** Archery (1), Athletics (1), Fighting (1), Perception (1), Stealth (1)
+
+**Attacks:**
+
+- **Dagger** (*agile, light, pierce*). 5/7/9 damage.
+- **Slingshot** (*ammo, crush, thrown (medium), two-handed*). 5/7/9 damage.
+
+**Abilities:**
+
+- **Night Vision (Passive).** This creature can see one range category further from sources of bright and dim light.
+- **Quick Escape (Passive).** When this creature was missed by a melee attack, it can move close.
+
+---
+
+### **Kobold** (Small Humanoid)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1 (natural light) | d4 | d6 | d4 | d4 | 6 | 8 | 7 |
+
+**Skills:** Archery (1), Crafting (1), Fighting (1), Nature (1), Stealth (1)
+
+**Attacks:**
+
+- **Cleaver** (*agile, light, slash*). 5/7/9 damage.
+- **Sling** (*ammo, crush, thrown (medium), two-handed*). 5/7/9 damage.
+
+**Abilities:**
+
+- **Night Vision (Passive).** This creature can see one range category further from sources of bright and dim light.
+- **Pack Tactics (Passive).** While in a troop or in melee range of allies, this creature's attacks gain +1 boon.
+
+---
+
+### **Small Earth Elemental** (Small Spirit)
+
+**Tier:** 1 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2 (natural heavy) | d6 | d4 | d6 | d4 | 8 | 6 | 7 |
+
+**Skills:** Fighting (1), Fortitude (1)
+
+**Weaknesses:** blast damage
+
+**Resistances:** physical damage (except from crush weapons)
+
+**Immunities:** poison damage, bleeding, dazed, poisoned, stunned, unconscious
+
+**Attacks:**
+
+- **Smash** (*crush*). 6/9/12 damage. On a strong or critical hit, the target falls prone.
+
+**Abilities:**
+
+- **Earth Dive (Passive).** This creature can move through natural stone and earth as through water. Moving this way doesn't count as difficult terrain and there are no traces left of its path.
+- **Tremor Sense (Passive).** This creature can feel the vibrations in the ground in a short distance around it. It is never considered blinded against any creature moving on the ground in this area.
+
+---
+
+### **Small Fire Elemental** (Small Spirit)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 0 (light) | d6 | d6 | d6 | d4 | 7 | 8 | 7 |
+
+**Skills:** Fighting (1), Fortitude (1), Perception (1)
+
+**Weaknesses:** frost damage, damage from water
+
+**Resistances:** physical damage
+
+**Immunities:** fire damage, burning, bleeding, poisoned, grappled, restrained, stunned, unconscious
+
+**Attacks:**
+
+- **Burning Lash**. 5/7/9 fire damage. On a strong or critical hit, inflicts burning (2) for a short duration.
+
+**Abilities:**
+
+- **Ethereal Form (Passive).** This creature is immune to bleeding, poison damage, being poisoned, being grappled, restrained, stunned, or falling unconscious.
+- **Flame Body (Passive).** This creature is immune to fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 2 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+
+---
+
+### **Rust Scarab** (Small Monstrosity)
+
+**Tier:** 1 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2 (natural heavy) | d6 | d6 | d6 | d4-1 | 7 | 7 | 7 |
+
+**Skills:** Fighting (1), Fortitude (1), Perception (1), Survival (1)
+
+**Attacks:**
+
+- **Corroding Bite**. 5/7/9 damage. On a hit, the target has to roll a Durability check for one metal item they are holding or wearing (their choice).
+
+**Abilities:**
+
+- **Metal Scent (Passive).** This creature can instinctively scent the location of any metal in short distance. It can't be surprised by any creature wearing metal armor, or wielding a metal weapon.
+- **Night Vision (Passive).** This creature can see one range category further from sources of bright and dim light.
+
+---
+
+### **Snapping Turtle** (Small Beast)
+
+**Tier:** 1 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2 (natural heavy) | d6 | d4 | d4 | d4-1 | 7 | 6 | 7 |
+
+**Skills:** Fighting (1), Fortitude (1), Survival (1)
+
+**Attacks:**
+
+- **Bite** (*crush*). 6/9/12 damage. On a strong or critical hit against a creature of equal or smaller size, the target is grappled.
+
+**Abilities:**
+
+- **Amphibious (Passive).** This creature can breathe both in air and water.
+- **Slow (Passive).** This creature has to spend +1 Movement to move a short distance and 1 Movement to move close, unless it moves in water.
+
+**Quick Actions:**
+
+- **Shell Defense.** On their turn, this creature can retract into its shell. This doubles their AV, but they can't take any other Actions or Movement. They can reemerge on another one of their turns by using another Quick Action.
+
+---
+
+### **Black Bear** (Medium Beast)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 15 | 1 (natural light) | d8 | d6 | d4 | d4-2 | 8 | 7 | 7 |
+
+**Skills:** Fighting (1), Fortitude (1), Perception (1), Survival (1)
+
+**Attacks:**
+
+- **Bite** (*crush*). 7/11/15 damage. On a strong or critical hit against a creature of equal or smaller size, the target drops prone.
+- **Claw** (*slash*). 6/9/12 damage. On a strong or critical hit, the target suffers bleeding (2).
+
+**Abilities:**
+
+- **Keen Scent (Passive).** This creature gains +1 boon on Perception rolls based on smell.
+- **Natural Climber (Passive).** This creature can climb without treating it as difficult terrain.
+
+---
+
+### **Soldier** (Medium Humanoid)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 2 (light) | d6 | d6 | d6 | d6 | 7 | 7 | 7 |
+
+**Skills:** Archery (1), Fighting (1), Perception (1)
+
+**Attacks:**
+
+- **Spear** (*pierce, reach, two-handed*). 6/9/12 damage.
+- **Shortsword** (*agile, light, pierce*). 5/7/9 damage.
+- **Shortbow** (*ammo, range (medium), two-handed*). 5/7/9 damage.
+
+**Abilities:**
+
+- **Formation Fighting (Passive).** While adjacent to an ally, this creature gains +1 Parry.
+
+---
+
+### **Bandit** (Medium Humanoid)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1 (light) | d6 | d6 | d4 | d4 | 7 | 7 | 7 |
+
+**Skills:** Fighting (1), Perception (1), Stealth (1), Streetwise (1)
+
+**Attacks:**
+
+- **Club** (*crush*). 5/7/9 damage.
+- **Dagger** (*agile, light, pierce, thrown (short)*). 5/7/9 damage.
+
+**Abilities:**
+
+- **Ambush (Passive).** This creature deals +3 damage against surprised targets.
+- **Flee (Passive).** When this creature fails a Morale check, it can immediately move a short distance away from enemies.
+
+---
+
+### **Cultist** (Medium Humanoid)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1 (light) | d4 | d6 | d6 | d6 | 7 | 7 | 7 |
+
+**Skills:** Fighting (1), Influence (1), Lore (1), Mysticism (1)
+
+**Attacks:**
+
+- **Ritual Dagger** (*agile, light, pierce*). 5/7/9 damage.
+
+**Abilities:**
+
+- **Dark Devotion (Passive).** This creature gains +1 boon on saves against being charmed or frightened.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Dark Bolt*, *Minor Curse*.
+
+---
+
+### **Giant Spider** (Medium Beast)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 10 | 1 (natural light) | d6 | d6 | d4 | d4-1 | 7 | 8 | 7 |
+
+**Skills:** Fighting (1), Perception (1), Stealth (1), Survival (1)
+
+**Attacks:**
+
+- **Bite** (*pierce*). 5/7/9 poison damage. On a strong or critical hit, the target is poisoned for a short duration.
+- **Web** (*range (short), entangle*). On a hit, the target is restrained until they escape (Strength + Athletics vs. TN 7).
+
+**Abilities:**
+
+- **Spider Climb (Passive).** This creature can climb on any surface, including ceilings, without treating it as difficult terrain.
+- **Web Sense (Passive).** While in contact with a web, this creature knows the exact location of any other creature in contact with the same web.
+
+---
+
+### **Stirge** (Tiny Beast)
+
+**Tier:** 1 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 5 | 0 (light) | d4 | d6 | d4 | d4-2 | 5 | 9 | 7 |
+
+**Skills:** Fighting (1), Perception (1), Stealth (1)
+
+**Attacks:**
+
+- **Blood Drain** (*pierce*). 4/6/8 damage. On a hit, this creature attaches to the target. While attached, it doesn't attack but instead deals 4 damage at the start of each of the target's turns. The target or an ally can use an Action to detach this creature.
+
+**Abilities:**
+
+- **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
