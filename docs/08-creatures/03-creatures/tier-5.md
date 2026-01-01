@@ -4,11 +4,11 @@ sidebar_position: 6
 
 # Tier 5
 
-Tier 5 creatures pose serious threats. They include ancient undead, powerful monstrosities, and dangerous spellcasters.
+Tier 5 creatures pose serious threats. They include powerful monstrosities, dangerous spellcasters, and formidable spirits.
 
 ---
 
-### **Adult Fire Dragon** (Huge Draconic)
+### **Young Fire Dragon** (Large Draconic)
 
 **Tier:** 5 (Elite)
 **Armor:** Heavy
@@ -31,7 +31,7 @@ Tier 5 creatures pose serious threats. They include ancient undead, powerful mon
 **Abilities:**
 
 - **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
-- **Legendary Resistance (Passive, 2/day).** If this creature fails a save, it can choose to succeed instead.
+- **Legendary Resistance (Passive, 1/day).** If this creature fails a save, it can choose to succeed instead.
 - **Fiery Wrath (Elite Trigger).** When this creature loses its first life pool, it immediately regains its Dragon's Breath and uses it.
 - **Frightful Presence (Action).** Each creature of this creature's choice within medium range must roll Spirit + Fortitude vs. TN 11 or become frightened for a short duration. A creature can repeat the save at the end of each of its turns.
 
@@ -69,6 +69,10 @@ Tier 5 creatures pose serious threats. They include ancient undead, powerful mon
 - **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Animate Dead*, *Blindness*, *Command*, *Curse*, *Dispel Magic*, *Harm*.
 - **Rejuvenation (Passive).** A destroyed mummy lord gains a new body in 24 hours if its heart is intact, regaining all its HP. The new body appears within short range of the heart.
 - **Desert's Fury (Lord Trigger).** When this creature loses a life pool, it causes a sandstorm to erupt around it. All creatures within short range must roll Agility + Athletics vs. TN 11 or take 10 damage and be blinded until the end of their next turn.
+
+**Quick Actions:**
+
+- **Command Undead.** One undead creature within short range can immediately make an attack or move.
 
 ---
 
@@ -127,6 +131,10 @@ Tier 5 creatures pose serious threats. They include ancient undead, powerful mon
 - **Children of the Night (Action, 1/day).** This creature magically calls 2d4 swarms of bats or rats, or 1d6 wolves. The called creatures arrive in 1d4 rounds.
 - **Blood Frenzy (Elite Trigger).** When this creature loses its first life pool, its eyes turn red and it can immediately make a Bite attack against a creature within melee range. For the rest of the scene, its attacks deal an extra 4 necrotic damage.
 
+**Quick Actions:**
+
+- **Misty Escape.** When reduced to 0 HP, this creature can transform into mist and move up to medium range to escape destruction.
+
 ---
 
 ### **Chimera** (Large Monstrosity)
@@ -150,7 +158,7 @@ Tier 5 creatures pose serious threats. They include ancient undead, powerful mon
 **Abilities:**
 
 - **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
-- **Three Heads (Passive).** This creature can use a bonus action to make a bite attack.
+- **Three Heads (Passive).** This creature can use a Quick Action to make a bite attack.
 
 ---
 
@@ -207,3 +215,90 @@ Tier 5 creatures pose serious threats. They include ancient undead, powerful mon
 
 - **Earth Glide (Passive).** This creature can burrow through nonmagical, unworked earth and stone. While doing so, it doesn't disturb the material it moves through.
 - **Siege Monster (Passive).** This creature deals double damage to objects and structures.
+
+**Quick Actions:**
+
+- **Earth Tremor.** All creatures within melee range must roll Agility + Athletics vs. TN 11 or fall prone.
+
+---
+
+### **Griffon** (Large Monstrosity)
+
+**Tier:** 5 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 50 | 6 (natural light) | d10 | d10 | d8 | d4 | 11 | 11 | 11 |
+
+**Skills:** Athletics (3), Fighting (3), Perception (3)
+
+**Attacks:**
+
+- **Beak** (*pierce*). 11/19/27 damage.
+- **Claws** (*slash*). 10/17/24 damage. On a strong or critical hit, the target suffers bleeding (4).
+
+**Abilities:**
+
+- **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Keen Sight (Passive).** This creature gains +1 boon on Perception rolls that rely on sight.
+- **Pounce (Passive).** If this creature moves at least close toward a target and then hits with a claw attack, the target must roll Strength + Athletics vs. TN 11 or fall prone. If prone, this creature can make a beak attack as a Quick Action.
+
+---
+
+### **Naga** (Large Monstrosity)
+
+**Tier:** 5 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 50 | 10 (natural heavy) | d10 | d10 | d10 | d10 | 11 | 11 | 11 |
+
+**Skills:** Arcana (3), Fighting (3), Insight (3), Lore (3), Perception (3)
+
+**Immunities:** poison damage, poisoned, charmed
+
+**Attacks:**
+
+- **Bite** (*pierce*). 11/19/27 poison damage. On a strong or critical hit, the target is poisoned for a short duration.
+- **Constrict** (*crush*). 10/17/24 damage. On a hit, the target is grappled and restrained.
+
+**Abilities:**
+
+- **Rejuvenation (Passive).** If it dies, this creature returns to life in 1d6 days and regains all its HP. Only a wish spell can prevent this trait from functioning.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Charm Person*, *Dominate Person*, *Hold Person*, *Lightning Bolt*, *Shield*.
+
+**Quick Actions:**
+
+- **Hypnotic Gaze.** One creature within short range must roll Spirit + Insight vs. TN 11 or be charmed until the end of its next turn.
+
+---
+
+### **Fenris Wolf** (Huge Beast)
+
+**Tier:** 5 (Elite)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 2x50 | 6 (natural light) | d12 | d10 | d8 | d4 | 12 | 11 | 11 |
+
+**Skills:** Athletics (3), Fighting (3), Fortitude (3), Perception (3), Survival (3)
+
+**Immunities:** cold damage, frightened
+
+**Attacks:**
+
+- **Bite** (*crush*). 13/23/33 damage. On a strong or critical hit, the target is grappled and knocked prone.
+- **Claw** (*slash*). 11/19/27 damage.
+
+**Abilities:**
+
+- **Keen Scent (Passive).** This creature gains +2 boons on Perception rolls based on smell.
+- **Winter's Bite (Passive).** This creature's bite attacks deal an additional 4 cold damage (included in damage).
+- **Howl of the North (Elite Trigger).** When this creature loses its first life pool, it lets out a chilling howl. All creatures within medium range must roll Spirit + Fortitude vs. TN 11 or be frightened until the end of their next turn. Wolves and similar canines within long range are summoned and arrive in 1d4 rounds.
+
+**Quick Actions:**
+
+- **Pack Leader.** One wolf or similar canine within short range can immediately make an attack.

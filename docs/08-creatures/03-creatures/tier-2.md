@@ -161,85 +161,108 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 
 ---
 
-### **Nakesh Cultist Acolyte** (Medium Humanoid)
+### **Dark Cultist Acolyte** (Medium Humanoid)
 
 **Tier:** 2 (Basic)
 **Armor:** Light
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 20 | 2 (natural light) | d6 | d6 | d6 | d8 | 8 | 8 | 9 |
+| 20 | 2 (light) | d6 | d6 | d6 | d8 | 8 | 8 | 9 |
 
 **Skills:** Arcana (2), Influence (2), Lore (2), Perception (2)
 
-**Resistances:** poison damage
-
-**Immunities:** poisoned
-
 **Attacks:**
 
-- **Dagger** (*agile, light, pierce*). 6/10/14 damage.
-- **Poison Mist** (*target: vs. Dodge, range: short*). Roll Mind + Arcana. 6/10/14 poison damage. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
+- **Ritual Dagger** (*agile, light, pierce*). 6/10/14 damage.
+- **Dark Bolt** (*range (medium)*). Roll Mind + Arcana. 6/10/14 necrotic damage. On a strong or critical hit, the target suffers +1 bane on their next roll.
 
 **Abilities:**
 
-- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Attack Thoughts*, *Control Beast* (only snakes), *Subtle Suggestion*.
-- **Snake Mutation (Passive).** This creature is immune to being poisoned.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Attack Thoughts*, *Subtle Suggestion*.
+- **Dark Devotion (Passive).** This creature gains +1 boon on saves against being charmed or frightened.
 
 ---
 
-### **Nakesh Cultist Assassin** (Medium Humanoid)
+### **Dark Cultist Assassin** (Medium Humanoid)
 
 **Tier:** 2 (Basic)
 **Armor:** Light
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 20 | 2 (natural light) | d8 | d8 | d6 | d6 | 8 | 9 | 8 |
+| 20 | 2 (light) | d8 | d8 | d6 | d6 | 8 | 9 | 8 |
 
-**Skills:** Arcana (2), Archery (2), Fighting (2), Influence (2), Lore (2), Perception (2), Stealth (2)
-
-**Resistances:** poison damage
-
-**Immunities:** poisoned
+**Skills:** Archery (2), Fighting (2), Perception (2), Stealth (2)
 
 **Attacks:**
 
-- **Dagger** (*agile, light, pierce*). 6/10/14 damage.
+- **Poisoned Dagger** (*agile, light, pierce*). 6/10/14 damage. On a strong or critical hit, the target is briefly poisoned.
 - **Shortbow** (*ammo, range (medium), two-handed*). 6/10/14 damage.
 
 **Abilities:**
 
-- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Control Beast* (only snakes), *Venomous Weapon*.
-- **Shapeshifting (Action).** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
-- **Snake Mutation (Passive).** This creature is immune to being poisoned.
 - **Sneak Attack (Passive).** This creature deals +4 damage against surprised targets or targets that are engaged with an ally.
+- **Evasion (Passive).** When this creature would take damage from an area attack, it can roll Agility + Athletics. On a success, it takes half damage. On a strong or critical success, it takes no damage.
+
+**Quick Actions:**
+
+- **Vanish.** If this creature is in dim light or darkness, it can use a Quick Action to become hidden until the end of its next turn or until it attacks.
 
 ---
 
-### **Nakesh Cultist Warrior** (Medium Humanoid)
+### **Draugr** (Medium Undead)
+
+**Tier:** 2 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 20 | 4 (natural heavy) | d8 | d4 | d6 | d4 | 9 | 7 | 8 |
+
+**Skills:** Fighting (2), Fortitude (2), Perception (1)
+
+**Weaknesses:** fire damage, radiant damage
+
+**Resistances:** necrotic damage, frost damage
+
+**Immunities:** bleeding, charmed, frightened, poisoned, unconscious
+
+**Attacks:**
+
+- **Rusted Axe** (*slash*). 8/12/16 damage. On a strong or critical hit, the target suffers bleeding (2).
+- **Chilling Grasp** (*target: vs. Resist*). 6/10/14 frost damage. On a strong or critical hit, the target is slowed until the end of their next turn.
+
+**Abilities:**
+
+- **Undead Nature (Passive).** This creature is immune to bleeding, being charmed, frightened, poisoned, or falling unconscious.
+- **Grave Chill (Passive).** Any creature that starts its turn within melee range of this creature takes 2 frost damage.
+
+---
+
+### **Scarab Swarm** (Medium Beast)
 
 **Tier:** 2 (Basic)
 **Armor:** Light
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 20 | 2 (natural light) | d8 | d8 | d6 | d6 | 9 | 8 | 8 |
+| 20 | 2 (natural light) | d4 | d8 | d4 | d4-2 | 7 | 9 | 8 |
 
-**Skills:** Fighting (2), Perception (2)
+**Skills:** Fighting (1), Perception (2), Stealth (2)
 
-**Resistances:** poison damage
+**Resistances:** physical damage (from single-target attacks)
 
-**Immunities:** poisoned
+**Immunities:** conditions from single-target effects
 
 **Attacks:**
 
-- **Fan Axe** (*heavy (d8), slash, two-handed*). 8/14/20 damage. On a strong hit, the target also suffers bleeding (2). On a critical hit, the target also suffers bleeding (4).
+- **Devouring Bites**. 6/10/14 damage. On a strong or critical hit, the target's AV is reduced by 1 until they spend a Quick Action to brush off the scarabs.
 
 **Abilities:**
 
-- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Control Beast* (only snakes), *War Cry*.
-- **Snake Mutation (Passive).** This creature is immune to being poisoned.
+- **Swarm (Passive).** This swarm consists of many individual creatures that act in unison. The swarm is resistant to any damage from effects that target a single creature and immune to conditions from such effects.
+- **Flesh Eaters (Passive).** This swarm deals +2 damage against creatures with no armor or natural armor.
 
 ---
 

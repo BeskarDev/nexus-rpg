@@ -199,58 +199,89 @@ Tier 3 creatures represent meaningful threats. They include more powerful undead
 
 ---
 
-### **Nakesh Cultist Fanatic** (Medium Humanoid)
+### **Dark Cultist Fanatic** (Medium Humanoid)
 
 **Tier:** 3 (Basic)
 **Armor:** Light
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 30 | 4 (natural light) | d8 | d10 | d8 | d6 | 9 | 10 | 9 |
+| 30 | 4 (light) | d8 | d10 | d8 | d6 | 9 | 10 | 9 |
 
 **Skills:** Fighting (2), Influence (2), Perception (2), Stealth (2)
-
-**Resistances:** poison damage
-
-**Immunities:** poisoned
 
 **Attacks:**
 
 - **Fast Strikes.** This creature can attack twice per turn.
-- **Khopesh** (*agile, light, slash*). 7/11/15 damage.
+- **Sacrificial Blade** (*agile, light, slash*). 7/11/15 damage. On a critical hit, this creature regains 5 HP.
 - **Poisoned Darts** (*agile, bundle, light, pierce, thrown (short)*). 7/11/15 poison damage. On a strong or critical hit, the target is also briefly poisoned.
 
 **Abilities:**
 
-- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Control Beast* (only snakes), *Subtle Suggestion*, *Venomous Weapon*.
-- **Shapeshifting (Action).** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
+- **Dark Devotion (Passive).** This creature gains +1 boon on saves against being charmed or frightened.
+- **Zealous Fury (Passive).** When this creature is reduced below half HP, its melee attacks deal +2 damage.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Dark Bolt*, *Subtle Suggestion*, *Shield of Faith*.
+
+**Quick Actions:**
+
+- **Fanatical Focus.** This creature can use a Quick Action to gain +1 boon on its next attack roll this turn.
 
 ---
 
-### **Nakesh Cultist Sorcerer** (Medium Humanoid)
+### **Dark Cultist Sorcerer** (Medium Humanoid)
 
 **Tier:** 3 (Basic)
 **Armor:** Light
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 30 | 3 (natural light) | d6 | d8 | d6 | d10 | 8 | 9 | 10 |
+| 30 | 3 (light) | d6 | d8 | d6 | d10 | 8 | 9 | 10 |
 
 **Skills:** Arcana (2), Influence (2), Fighting (2), Lore (2), Perception (2)
 
-**Resistances:** poison damage
-
-**Immunities:** poisoned
-
 **Attacks:**
 
-- **Scepter** (*crush, reach, versatile +1*). 8/13/18 damage.
-- **Poison Mist** (*target: vs. Dodge, range: short*). Roll Mind + Arcana. 8/13/18 poison damage. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. TN 9 at the end of their turns to end the effect early.
+- **Staff** (*crush, reach, versatile +1*). 8/13/18 damage.
+- **Necrotic Bolt** (*range (medium)*). Roll Mind + Arcana. 8/13/18 necrotic damage. On a strong or critical hit, the target's maximum HP is reduced by 4 until they finish a short rest.
 
 **Abilities:**
 
-- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Attack Thoughts*, *Control Beast* (only snakes), *Subtle Suggestion*, *Forced Suggestion*, *Cloud of Sickness*, *Nullify Spell*.
-- **Shapeshifting (Action).** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Attack Thoughts*, *Subtle Suggestion*, *Cloud of Sickness*, *Nullify Spell*, *Fear*.
+- **Dark Sacrifice (Passive).** When this creature casts a spell, it can choose to take 4 damage to gain +1 boon on the casting roll.
+
+**Quick Actions:**
+
+- **Protective Ward.** This creature gains +2 Dodge until the start of its next turn.
+
+---
+
+### **Empusa** (Medium Monstrosity)
+
+**Tier:** 3 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 3 (natural light) | d8 | d10 | d8 | d8 | 9 | 10 | 9 |
+
+**Skills:** Fighting (2), Influence (2), Insight (2), Perception (2), Stealth (2)
+
+**Resistances:** fire damage
+
+**Attacks:**
+
+- **Claws** (*agile, slash*). 7/11/15 damage.
+- **Life Drain** (*target: vs. Resist*). 8/13/18 necrotic damage. This creature regains HP equal to half the damage dealt.
+
+**Abilities:**
+
+- **Shapeshifter (Passive).** This creature can use an Action to assume the appearance of a Medium humanoid it has seen, or return to its true form. Its statistics are the same in each form.
+- **Alluring Presence (Passive).** This creature gains +1 boon on Influence rolls against humanoids.
+- **Fire Walk (Passive).** This creature takes no damage from fire and can walk on flames or molten surfaces without harm.
+
+**Quick Actions:**
+
+- **Beguiling Gaze.** One humanoid within short range must roll Spirit + Fortitude vs. TN 9 or be charmed until the end of this creature's next turn.
 
 ---
 

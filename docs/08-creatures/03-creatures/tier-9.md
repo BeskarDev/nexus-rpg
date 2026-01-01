@@ -8,7 +8,7 @@ Tier 9 creatures represent near-mythical threats. They include the oldest dragon
 
 ---
 
-### **Ancient Wyrm Dragon** (Colossal Draconic)
+### **Primordial Wyrm** (Colossal Draconic)
 
 **Tier:** 9 (Lord)
 **Armor:** Heavy
@@ -141,3 +141,75 @@ Tier 9 creatures represent near-mythical threats. They include the oldest dragon
 - **Siege Monster (Passive).** This creature deals double damage to objects and structures.
 - **Legendary Resistance (Passive, 2/day).** If this creature fails a save, it can choose to succeed instead.
 - **Primordial Surge (Elite Trigger).** When this creature loses its first life pool, its size increases to Colossal and it gains +2 to all attack rolls and damage for the rest of the scene.
+
+**Quick Actions:**
+
+- **Earth Tremor.** All creatures within close range must roll Agility + Athletics vs. TN 15 or fall prone.
+
+---
+
+### **Jotun Allfather** (Colossal Giant)
+
+**Tier:** 9 (Lord)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 3x90 | 18 (natural heavy) | d12+2 | d6 | d12 | d10 | 17 | 12 | 15 |
+
+**Skills:** Athletics (5), Fighting (5), Fortitude (5), Insight (5), Lore (5), Perception (5)
+
+**Immunities:** cold damage, frightened
+
+**Resistances:** fire, lightning damage
+
+**Attacks:**
+
+- **Primordial Greataxe** (*heavy (d12), slash, two-handed*). 20/37/54 damage plus 10 cold damage.
+- **Ice Boulder** (*range (extreme), crush*). 18/33/48 cold damage. On a hit, the area becomes frozen difficult terrain.
+
+**Abilities:**
+
+- **Primordial Cold (Passive).** At the start of this creature's turn, each creature within melee range takes 8 cold damage.
+- **Legendary Resistance (Passive, 3/day).** If this creature fails a save, it can choose to succeed instead.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells once per scene each: *Control Weather*, *Cone of Cold*, *Ice Storm*, *Wall of Ice*.
+- **Winter's End (Lord Trigger).** When this creature loses a life pool, a blizzard erupts around it. All areas within long range become frozen difficult terrain and heavily obscured. Any creature that starts its turn in the area takes 8 cold damage and must roll Strength + Fortitude vs. TN 15 or be slowed until the end of its turn.
+
+**Quick Actions:**
+
+- **Stomp.** All creatures within close range must roll Agility + Athletics vs. TN 15 or take 12 damage and fall prone.
+- **Ice Breath.** All creatures in a short cone must roll Agility + Athletics vs. TN 15 or take 14 cold damage and be slowed until the end of their next turn.
+
+---
+
+### **Apophis Serpent** (Colossal Monstrosity)
+
+**Tier:** 9 (Lord)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 3x90 | 18 (natural heavy) | d12+2 | d8 | d10 | d8 | 17 | 12 | 15 |
+
+**Skills:** Athletics (5), Fighting (5), Fortitude (5), Perception (5), Stealth (5)
+
+**Immunities:** poison damage, poisoned, frightened
+
+**Resistances:** necrotic damage
+
+**Attacks:**
+
+- **Bite** (*crush, reach*). 19/35/51 damage plus 8 poison damage. On a strong or critical hit, the target is swallowed if it is Huge or smaller. A swallowed creature is blinded and restrained, and takes 15 acid damage at the start of each of this creature's turns.
+- **Constrict** (*crush*). 18/33/48 damage. On a hit, a creature up to Gargantuan size is grappled and restrained.
+- **Tail** (*reach*). 17/31/45 damage. On a strong or critical hit, the target is knocked prone.
+
+**Abilities:**
+
+- **Darkness Incarnate (Passive).** This creature is wreathed in supernatural darkness. All light sources within medium range are suppressed, and attacks made against this creature from more than close range have +1 bane.
+- **Legendary Resistance (Passive, 3/day).** If this creature fails a save, it can choose to succeed instead.
+- **Swallow the Sun (Lord Trigger).** When this creature loses a life pool, it can swallow one source of light (magical or mundane) within medium range. All creatures within long range must roll Spirit + Fortitude vs. TN 15 or be blinded for a short duration. The area remains in supernatural darkness for the rest of the scene.
+
+**Quick Actions:**
+
+- **Tail Sweep.** All creatures within close range must roll Agility + Athletics vs. TN 15 or take 12 damage and be pushed close.
+- **Venomous Spit.** One creature within medium range must roll Agility + Athletics vs. TN 15 or take 10 poison damage and be poisoned until the end of their next turn.

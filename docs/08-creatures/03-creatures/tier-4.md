@@ -55,9 +55,45 @@ Tier 4 creatures are formidable opponents requiring tactical thinking. They incl
 
 - **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
 
+**Quick Actions:**
+
+- **Dive Attack.** If this creature is flying and dives at least close toward a target, its next attack this turn deals +4 damage.
+
 ---
 
-### **Young Fire Dragon** (Large Draconic)
+### **Greater Mummy** (Large Undead)
+
+**Tier:** 4 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 8 (natural heavy) | d10 | d8 | d6 | d8 | 11 | 10 | 10 |
+
+**Skills:** Arcana (2), Fighting (2), Fortitude (2), Insight (2), Perception (2)
+
+**Weaknesses:** fire damage, radiant damage
+
+**Resistances:** necrotic damage
+
+**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+
+**Attacks:**
+
+- **Fast Strikes.** This creature can attack or cast spells twice per turn.
+- **Khopesh** (*heavy (d10), slash*). 10/16/22 damage.
+- **Wrapping Strike** (*crush*). 9/14/19 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.
+- **Drain Life** (*target: vs. Resist, range: short*). Roll Mind + Arcana. 8/12/16 necrotic damage. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.
+
+**Abilities:**
+
+- **Undead Nature (Passive).** This creature is immune to bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Death Bolt*, *Grasp of Decay*, *Curse*.
+- **Dreadful Glare (Action).** This creature targets one creature within short range. If the target can see this creature, it must roll Spirit + Fortitude vs. TN 10 or be frightened until the end of this creature's next turn.
+
+---
+
+### **Juvenile Fire Dragon** (Large Draconic)
 
 **Tier:** 4 (Elite)
 **Armor:** Heavy
@@ -82,66 +118,68 @@ Tier 4 creatures are formidable opponents requiring tactical thinking. They incl
 - **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
 - **Fiery Wrath (Elite Trigger).** When this creature loses its first life pool, it immediately regains its Dragon's Breath and uses it.
 
+**Quick Actions:**
+
+- **Wing Buffet.** Each creature within melee range must roll Agility + Athletics vs. TN 10 or be pushed close.
+
 ---
 
-### **Nakesh Cult Leader** (Medium Humanoid)
+### **Cult High Priest** (Medium Humanoid)
 
 **Tier:** 4 (Lord)
 **Armor:** Light
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 3x40 | 4 (natural light) | d8 | d8 | d6 | d10 | 10 | 10 | 11 |
+| 3x40 | 4 (light) | d8 | d8 | d10 | d10 | 10 | 10 | 11 |
 
-**Skills:** Arcana (3), Influence (3), Fighting (2), Lore (3), Perception (3)
-
-**Resistances:** poison damage
-
-**Immunities:** poisoned
+**Skills:** Arcana (3), Influence (3), Fighting (2), Lore (3), Mysticism (3), Perception (3)
 
 **Attacks:**
 
-- **Serpent Scepter** (*crush, reach, versatile +1*). Roll attacks with Mind + Arcana. 9/14/19 force damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed a short distance away instead.
-- **Poison Mist** (*target: vs. Dodge, range: short*). Roll Mind + Arcana. 9/14/19 poison damage. On a strong hit, the target is briefly poisoned. On a critical hit, the target is poisoned for a short duration instead. They can roll Strength + Fortitude vs. TN 10 at the end of their turns to end the effect early.
+- **Sacrificial Scepter** (*crush, reach, versatile +1*). Roll attacks with Spirit + Mysticism. 9/14/19 necrotic damage. On a strong or critical hit, this creature regains 5 HP.
+- **Unholy Blast** (*range (medium)*). Roll Mind + Arcana. 9/14/19 necrotic damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed a short distance away instead.
 
 **Abilities:**
 
-- **Blindsight (Close) (Passive).** This creature can perceive its surroundings at close range without relying on sight.
-- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Attack Thoughts*, *Control Beast* (only snakes), *Subtle Suggestion*, *Forced Suggestion*, *Cloud of Sickness*, *Nullify Spell*.
-- **Shapeshifting (Action).** Using an Action, this creature can assume the form of any other humanoid creature of the same size. If this creature falls unconscious or is killed, they revert to their own form.
-- **Serpentine Retreat (Lord Trigger).** When this creature loses a life pool, it bursts into a cluster of snakes, dealing 8 poison damage to all creatures in melee range of it and it can move up to a long distance. Other creatures can't use Quick Actions or other abilities in response to this ability. After moving, this creature can cast its spells again as if it were a new scene.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana or Spirit + Mysticism once per scene each: *Attack Thoughts*, *Subtle Suggestion*, *Forced Suggestion*, *Cloud of Sickness*, *Animate Dead*, *Curse*.
+- **Dark Ward (Passive).** This creature has +1 boon on saves against spells and magical effects.
+- **Unholy Resilience (Lord Trigger).** When this creature loses a life pool, it releases a wave of dark energy. All creatures within short range must roll Spirit + Fortitude vs. TN 10 or take 8 necrotic damage and be frightened until the end of their next turn. This creature can then immediately cast one of its spells.
+
+**Quick Actions:**
+
+- **Command the Faithful.** One cultist ally within short range can immediately make an attack or move close.
+- **Protective Darkness.** This creature surrounds itself with shadow, gaining +2 Dodge until the start of its next turn.
 
 ---
 
-### **Naga Mummy** (Large Undead)
+### **Centaur War Chief** (Large Monstrosity)
 
-**Tier:** 4 (Basic)
+**Tier:** 4 (Elite)
 **Armor:** Heavy
 
 | HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
 |----|----|----|----|----|-----|-------|-------|--------|
-| 40 | 8 (natural heavy) | d10 | d8 | d6 | d8 | 11 | 10 | 10 |
+| 2x40 | 8 (natural heavy) | d10 | d10 | d8 | d8 | 11 | 10 | 10 |
 
-**Skills:** Arcana (2), Fighting (2), Fortitude (2), Insight (2), Perception (2)
-
-**Weaknesses:** radiant damage
-
-**Resistances:** necrotic damage
-
-**Immunities:** bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
+**Skills:** Archery (3), Athletics (3), Fighting (3), Fortitude (3), Influence (3), Perception (3), Survival (3)
 
 **Attacks:**
 
-- **Fast Strikes.** This creature can attack or cast spells twice per turn.
-- **Fan Glaive** (*heavy (d10), reach, slash, two-handed*). 10/16/22 damage.
-- **Tail** (*crush*). 9/14/19 damage. On a strong hit, the target is pushed close. On a critical hit, the target is pushed close and falls prone.
-- **Drain Life** (*target: vs. Resist, range: short*). Roll Mind + Arcana. 8/12/16 necrotic damage. On a strong hit, this creature regains 4 HP. On a critical hit, this creature regains 6 HP instead.
+- **Fast Strikes.** This creature can attack twice per turn.
+- **Lance** (*pierce, reach*). 10/16/22 damage. If this creature moves at least close toward a target before attacking, deals +4 damage.
+- **Longbow** (*ammo, heavy (d6), range (long), two-handed*). 10/16/22 damage.
+- **Hooves** (*crush*). 9/14/19 damage.
 
 **Abilities:**
 
-- **Blindsight (Close) (Passive).** This creature can perceive its surroundings at close range without relying on sight.
-- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Spirit + Mysticism once per scene each: *Control Beast* (only snakes), *Death Bolt*, *Grasp of Decay*, *Subtle Suggestion*.
-- **Undead Nature (Passive).** This creature is immune to bleeding, being charmed, confused, deafened, frightened, poisoned, or falling unconscious.
+- **Charge (Passive).** If this creature moves at least close toward a target before attacking with its lance, the target must roll Strength + Athletics vs. TN 10 or be knocked prone.
+- **Mounted Warfare (Passive).** This creature can use its Movement to pass through the spaces of Medium or smaller creatures.
+- **Rally the Herd (Elite Trigger).** When this creature loses its first life pool, all centaur allies within medium range can immediately move close and make an attack.
+
+**Quick Actions:**
+
+- **Trample.** When moving through a creature's space, this creature can force them to roll Agility + Athletics vs. TN 10 or take 6 damage and fall prone.
 
 ---
 
