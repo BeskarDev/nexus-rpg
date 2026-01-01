@@ -381,3 +381,158 @@ Tier 3 creatures represent meaningful threats. They include more powerful undead
 - **Charge (Passive).** If this creature moves at least close toward a target and then hits it with a gore attack on the same turn, the target takes an extra 5 damage.
 - **Labyrinthine Recall (Passive).** This creature can perfectly recall any path it has traveled.
 - **Reckless (Passive).** At the start of its turn, this creature can choose to gain +1 boon on all melee weapon attack rolls during that turn, but attack rolls against it have +1 boon until the start of its next turn.
+
+---
+
+### **Harpy** (Medium Monstrosity)
+
+**Tier:** 3 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 3 (natural light) | d6 | d10 | d8 | d6 | 8 | 10 | 9 |
+
+**Skills:** Fighting (2), Perception (2), Stealth (2)
+
+**Attacks:**
+
+- **Claws** (*agile*). 7/11/15 damage.
+- **Club** (*crush*). 7/11/15 damage.
+
+**Abilities:**
+
+- **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Luring Song (Action).** This creature sings a magical melody. Every humanoid within medium range that can hear the song must roll Spirit + Fortitude vs. TN 9 or be charmed until the song ends. While charmed, the target is incapacitated and must move toward this creature by the most direct route. This creature must take a Quick Action on subsequent turns to continue singing. The effect ends if the target takes any damage.
+
+---
+
+### **Manticore** (Large Monstrosity)
+
+**Tier:** 3 (Elite)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 2x30 | 6 (natural heavy) | d10 | d8 | d6 | d6 | 10 | 9 | 9 |
+
+**Skills:** Fighting (2), Perception (2), Survival (2)
+
+**Attacks:**
+
+- **Bite** (*crush*). 9/14/19 damage.
+- **Claw** (*slash*). 8/12/16 damage.
+- **Tail Spike** (*pierce, thrown (medium)*). 8/12/16 damage. This creature has 24 tail spikes and regrows 1d6 spent spikes each day.
+
+**Abilities:**
+
+- **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Tail Spike Volley (Action, recharge (d6)).** This creature flings three tail spikes. Each can target the same creature or different creatures within medium range. Make a separate attack roll for each.
+- **Savage Fury (Elite Trigger).** When this creature loses its first life pool, it becomes enraged. For the rest of the scene, it can make two claw attacks as a single Action.
+
+**Quick Actions:**
+
+- **Tail Swipe.** One creature within melee range must roll Agility + Athletics vs. TN 9 or take 5 damage.
+
+---
+
+### **Centaur** (Large Monstrosity)
+
+**Tier:** 3 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 4 (natural light) | d10 | d8 | d6 | d6 | 10 | 9 | 9 |
+
+**Skills:** Archery (2), Athletics (2), Fighting (2), Perception (2), Survival (2)
+
+**Attacks:**
+
+- **Pike** (*pierce, reach, two-handed*). 9/14/19 damage.
+- **Hooves** (*crush*). 8/12/16 damage.
+- **Longbow** (*ammo, heavy (d6), range (long), two-handed*). 8/12/16 damage.
+
+**Abilities:**
+
+- **Charge (Passive).** If this creature moves at least close toward a target and then hits with a melee weapon attack on the same turn, the target takes an extra 4 damage.
+
+---
+
+### **Hell Hound** (Medium Monstrosity)
+
+**Tier:** 3 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 4 (natural light) | d10 | d8 | d6 | d4 | 10 | 9 | 9 |
+
+**Skills:** Fighting (2), Perception (2), Stealth (2), Survival (2)
+
+**Immunities:** fire damage
+
+**Attacks:**
+
+- **Bite** (*crush*). 9/14/19 fire damage.
+- **Fire Breath** (*recharge (d6)*). Roll Strength + Fortitude vs. Dodge. Target all creatures in a short cone. On a success, each target suffers 10 fire damage.
+
+**Abilities:**
+
+- **Keen Scent (Passive).** This creature gains +1 boon on Perception rolls based on smell.
+- **Pack Tactics (Passive).** While in a troop or in melee range of allies, this creature's attacks gain +1 boon.
+
+---
+
+### **Anubite Warrior** (Medium Spirit)
+
+**Tier:** 3 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 6 (natural heavy) | d8 | d8 | d8 | d6 | 9 | 9 | 9 |
+
+**Skills:** Fighting (2), Fortitude (2), Perception (2)
+
+**Immunities:** necrotic damage, charmed, frightened
+
+**Attacks:**
+
+- **Khopesh** (*slash*). 8/12/16 damage.
+- **Javelin** (*bundle, light, thrown (medium)*). 7/11/15 damage.
+
+**Abilities:**
+
+- **Guardian of the Dead (Passive).** This creature gains +1 boon on attacks against undead creatures.
+- **Keen Scent (Passive).** This creature gains +1 boon on Perception rolls based on smell.
+- **Judgment of the Dead (Passive).** When this creature reduces a target to 0 HP, the target's soul is judged. If the target was undead, it is permanently destroyed and cannot be raised.
+
+---
+
+### **Sphinx Cub** (Medium Monstrosity)
+
+**Tier:** 3 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 6 (natural heavy) | d8 | d8 | d8 | d8 | 9 | 9 | 9 |
+
+**Skills:** Arcana (2), Education (2), Fighting (2), Insight (2), Lore (2), Perception (2)
+
+**Resistances:** psychic damage
+
+**Attacks:**
+
+- **Claw** (*slash*). 8/12/16 damage.
+- **Bite** (*crush*). 9/14/19 damage.
+
+**Abilities:**
+
+- **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Riddle (Action, 1/day).** This creature poses a riddle to one creature within short range. The target must roll Mind + Education vs. TN 9. On a failure, the target is confused until the end of its next turn.
+
+**Quick Actions:**
+
+- **Minor Roar.** One creature within close range must roll Spirit + Fortitude vs. TN 9 or be frightened until the end of its next turn.

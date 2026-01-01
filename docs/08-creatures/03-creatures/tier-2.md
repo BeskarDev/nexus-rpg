@@ -475,3 +475,106 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 
 - **Martial Advantage (Passive).** Once per turn, this creature can deal an extra 4 damage to a creature it hits with a weapon attack if that creature is within melee range of an ally.
 - **Formation Fighting (Passive).** While adjacent to an ally, this creature gains +1 Parry.
+
+---
+
+### **Gray Ooze** (Medium Ooze)
+
+**Tier:** 2 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 20 | 2 (natural light) | d8 | d4 | d4 | d4-2 | 8 | 6 | 8 |
+
+**Skills:** Fighting (1), Stealth (2)
+
+**Resistances:** acid, cold, fire damage
+
+**Immunities:** lightning damage, blinded, charmed, deafened, frightened, poisoned, prone, unconscious
+
+**Attacks:**
+
+- **Pseudopod**. 6/10/14 acid damage. In addition, nonmagical armor worn by the target is partly dissolved. The armor takes a permanent and cumulative −1 penalty to AV. If the penalty reduces its AV to 0, the armor is destroyed.
+
+**Abilities:**
+
+- **Amorphous (Passive).** This creature can move through a space as narrow as a crack without squeezing.
+- **Corrode Metal (Passive).** Any nonmagical metal weapon that hits this creature corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls.
+- **False Appearance (Passive).** While this creature remains motionless, it is indistinguishable from an oily pool or wet rock.
+
+---
+
+### **Vine Blight** (Medium Plant)
+
+**Tier:** 2 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 20 | 3 (natural light) | d10 | d4 | d6 | d4-1 | 9 | 6 | 8 |
+
+**Skills:** Fighting (2), Fortitude (2), Stealth (2)
+
+**Immunities:** blinded, deafened
+
+**Attacks:**
+
+- **Constrict** (*crush*). 7/11/15 damage. On a hit, the target is grappled. Until this grapple ends, the target is restrained, and this creature can't constrict another target.
+- **Entangling Vines** (*range (short)*). The area within close range of a point this creature can see becomes difficult terrain for a short duration. Each creature in the area when the effect begins must roll Strength + Athletics vs. TN 8 or be restrained by the vines until they escape.
+
+**Abilities:**
+
+- **False Appearance (Passive).** While this creature remains motionless, it is indistinguishable from a tangle of vines.
+- **Regeneration (Passive).** This creature regains 5 HP at the start of its turn if it is in bright sunlight and has at least 1 HP.
+
+---
+
+### **Twig Blight** (Small Plant)
+
+**Tier:** 2 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 15 | 2 (natural light) | d6 | d8 | d4 | d4-1 | 7 | 9 | 8 |
+
+**Skills:** Fighting (1), Stealth (2)
+
+**Weaknesses:** fire damage
+
+**Immunities:** blinded, deafened
+
+**Attacks:**
+
+- **Claw** (*agile*). 5/7/9 damage.
+
+**Abilities:**
+
+- **False Appearance (Passive).** While this creature remains motionless, it is indistinguishable from a dead shrub.
+- **Pack Tactics (Passive).** While in a troop or in melee range of allies, this creature's attacks gain +1 boon.
+
+---
+
+### **Myconid Sprout** (Small Plant)
+
+**Tier:** 2 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 15 | 2 (natural light) | d6 | d6 | d8 | d6 | 7 | 8 | 8 |
+
+**Skills:** Nature (2), Perception (2)
+
+**Immunities:** blinded, deafened
+
+**Attacks:**
+
+- **Fist** (*crush*). 5/7/9 damage.
+
+**Abilities:**
+
+- **Distress Spores (Passive).** When this creature takes damage, all other myconids within medium range can sense its pain.
+- **Rapport Spores (Action).** This creature releases a cloud of spores. All creatures within close range that aren't undead, constructs, or elementals can communicate telepathically with each other for a short duration.
+- **Sun Sickness (Passive).** While in sunlight, this creature has +1 bane on all rolls.

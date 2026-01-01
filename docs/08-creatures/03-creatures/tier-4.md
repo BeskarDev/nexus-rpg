@@ -354,3 +354,123 @@ Tier 4 creatures are formidable opponents requiring tactical thinking. They incl
 **Abilities:**
 
 - **Petrifying Gaze (Action).** When a creature that can see this creature's eyes starts its turn within short range of this creature, this creature can force it to roll Spirit + Fortitude vs. TN 10. On a failure, the creature is restrained as it begins to turn to stone. The restrained creature must repeat the save at the end of its next turn, becoming petrified on a failure or ending the effect on a success. Unless surprised, a creature can avert its eyes at the start of its turn to avoid making this save, but attacks against this creature have +1 bane until its next turn.
+
+---
+
+### **Shambling Mound** (Large Plant)
+
+**Tier:** 4 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 8 (natural heavy) | d10 | d6 | d8 | d4-1 | 11 | 8 | 10 |
+
+**Skills:** Fighting (3), Fortitude (3), Stealth (3)
+
+**Resistances:** cold, fire damage
+
+**Immunities:** lightning damage, blinded, deafened, frightened, unconscious
+
+**Attacks:**
+
+- **Slam** (*crush*). 9/14/19 damage.
+- **Engulf** (*only on grappled targets*). The target is engulfed and blinded, restrained, and unable to breathe. At the start of each of this creature's turns, the engulfed target takes 9 damage.
+
+**Abilities:**
+
+- **Lightning Absorption (Passive).** Whenever this creature would take lightning damage, it instead regains HP equal to the damage dealt.
+- **Engulf (Action).** This creature attempts to engulf a creature it has grappled. The target must roll Strength + Athletics vs. TN 10 or be engulfed.
+
+**Quick Actions:**
+
+- **Grasping Vines.** This creature makes a grapple attempt against one creature within melee range.
+
+---
+
+### **Black Pudding** (Large Ooze)
+
+**Tier:** 4 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 4 (natural light) | d10 | d4 | d4 | d4-2 | 10 | 7 | 10 |
+
+**Skills:** Fighting (2)
+
+**Immunities:** acid, cold, lightning damage, blinded, charmed, deafened, frightened, poisoned, prone, unconscious
+
+**Attacks:**
+
+- **Pseudopod**. 8/12/16 acid damage plus 6 acid damage. In addition, nonmagical armor worn by the target is partly dissolved. The armor takes a permanent and cumulative −2 penalty to AV. If the penalty reduces its AV to 0, the armor is destroyed.
+
+**Abilities:**
+
+- **Amorphous (Passive).** This creature can move through a space as narrow as a crack without squeezing.
+- **Corrosive Form (Passive).** A creature that touches this creature or hits it with a melee attack while within melee range takes 6 acid damage. Any nonmagical weapon made of metal or wood that hits this creature corrodes. After dealing damage, the weapon takes a permanent and cumulative −1 penalty to damage rolls.
+- **Spider Climb (Passive).** This creature can climb difficult surfaces, including upside down on ceilings, without needing to make an ability check.
+- **Split (Passive).** When this creature that is Medium or larger is subjected to lightning or slashing damage, it splits into two new oozes if it has at least 10 HP. Each new ooze has HP equal to half the original ooze's HP.
+
+---
+
+### **Myconid Sovereign** (Large Plant)
+
+**Tier:** 4 (Elite)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 2x40 | 5 (natural light) | d8 | d6 | d10 | d10 | 10 | 8 | 11 |
+
+**Skills:** Insight (3), Nature (3), Perception (3)
+
+**Immunities:** blinded, deafened
+
+**Attacks:**
+
+- **Fist** (*crush*). 8/12/16 damage.
+
+**Abilities:**
+
+- **Distress Spores (Passive).** When this creature takes damage, all other myconids within long range can sense its pain.
+- **Sun Sickness (Passive).** While in sunlight, this creature has +1 bane on all rolls.
+- **Animating Spores (Action, 3/day).** This creature targets a dead humanoid or beast of Small or Medium size within close range. The target is brought back as a spore servant under this creature's control for 1 day.
+- **Hallucination Spores (Action, recharge (d6)).** This creature releases spores in a close range cloud. Each creature in the area must roll Spirit + Fortitude vs. TN 10 or be poisoned for a short duration. While poisoned, the target is incapacitated and suffers hallucinations.
+- **Pacifying Spores (Action).** This creature releases spores in a close range cloud. Each creature in the area must roll Spirit + Fortitude vs. TN 10 or be stunned until the end of their next turn.
+- **Sovereign's Call (Elite Trigger).** When this creature loses its first life pool, it releases a cloud of spores summoning 1d4+2 myconid sprouts that appear within short range.
+
+**Quick Actions:**
+
+- **Rapport Spores.** This creature releases a cloud of spores. All creatures within close range that aren't undead, constructs, or elementals can communicate telepathically with each other for a short duration.
+
+---
+
+### **Treant Sapling** (Large Plant)
+
+**Tier:** 4 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 8 (natural heavy) | d10 | d6 | d10 | d8 | 11 | 8 | 10 |
+
+**Skills:** Fighting (2), Nature (3), Perception (3)
+
+**Weaknesses:** fire damage
+
+**Resistances:** physical damage (from non-magical weapons)
+
+**Attacks:**
+
+- **Slam** (*crush, reach*). 9/14/19 damage.
+- **Rock** (*range (long), crush*). 8/12/16 damage.
+
+**Abilities:**
+
+- **False Appearance (Passive).** While this creature remains motionless, it is indistinguishable from a normal tree.
+- **Animate Trees (Action, 1/day).** This creature magically animates 1d4 trees within short range. The trees have the same statistics as Twig Blights but are Large and deal 8/12/16 damage.
+
+**Quick Actions:**
+
+- **Root Grasp.** One creature within melee range must roll Strength + Athletics vs. TN 10 or be grappled as roots erupt from the ground.
