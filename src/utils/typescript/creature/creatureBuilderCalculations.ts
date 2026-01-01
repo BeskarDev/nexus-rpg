@@ -419,6 +419,7 @@ export function buildCreature(
 		category: state.category,
 		size: state.size,
 		type: state.type,
+		subtype: state.subtype,
 		archetype: state.archetype,
 		hp: hp.display,
 		av,

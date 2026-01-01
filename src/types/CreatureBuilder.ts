@@ -98,6 +98,7 @@ export interface CreatureBuilderState {
 	category: CreatureCategory
 	size: string
 	type: string
+	subtype: string
 	archetype: string
 	name: string
 	// Custom adjustments
