@@ -3,7 +3,9 @@ sidebar_position: 3
 title: "Companion Traits"
 ---
 
-## Animal
+## Beast
+
+Natural animals that can serve as companions or mounts.
 
 ### **Ape**
 
@@ -437,7 +439,9 @@ title: "Companion Traits"
 - <strong>Shell Defense.</strong> As a Quick Action, this creature can withdraw into its shell, gaining the effects of the Guard Quick Action and +2 AV but becoming unable to move or attack until it uses another Quick Action to emerge.
 - <strong>Slow Movement (Land).</strong> This creature can’t use more than 1 Movement per turn while on land.
 
-## Elemental
+## Spirit (Primordial)
+
+Primordial spirits embodying the fundamental forces of nature - air, earth, fire, and water.
 
 ### **Air Elemental**
 

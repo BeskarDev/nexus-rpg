@@ -23,8 +23,8 @@ You are an AI agent tasked with creating balanced, thematic creatures for the Ne
 
 #### Common Immunity Sets
 - **Undead**: bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-- **Constructs**: bleeding, charmed, confused, frightened, poisoned, unconscious  
-- **Elementals**: Varies by type (fire elementals immune to fire, etc.)
+- **Automatons**: bleeding, charmed, confused, frightened, poisoned, unconscious  
+- **Spirits (Primordial)**: Varies by type (fire spirits immune to fire, etc.)
 - **Plants**: deafened, blinded (for some)
 
 #### Resistance/Weakness Guidelines
@@ -36,8 +36,8 @@ You are an AI agent tasked with creating balanced, thematic creatures for the Ne
 
 #### Common Immunity Sets
 - **Undead**: bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-- **Constructs**: bleeding, charmed, confused, frightened, poisoned, unconscious  
-- **Elementals**: Varies by type (fire elementals immune to fire, etc.)
+- **Automatons**: bleeding, charmed, confused, frightened, poisoned, unconscious  
+- **Spirits (Primordial)**: Varies by type (fire spirits immune to fire, etc.)
 - **Plants**: deafened, blinded (for some)
 
 #### Resistance/Weakness Guidelines
@@ -185,6 +185,23 @@ Required when any life pool is depleted. Design 1-2 triggers:
 2. **Choose appropriate Tier** based on intended challenge level
 3. **Select creature category** (Basic, Elite, or Lord)
 4. **Determine size** (Tiny to Colossal) - affects stats and combat positioning
+5. **Assign creature type** from the official list below
+
+#### Official Creature Types
+
+| Type | Description | Common Subtypes |
+|------|-------------|-----------------|
+| **Aberration** | Eldritch horrors from outside reality with alien physiologies | — |
+| **Automaton** | Artificial beings animated by magic or divine power | Golem, Animated Object, Magical Construct |
+| **Beast** | Natural animals and fauna lacking inherent magic | Mammal, Reptile, Bird, Fish, Insect, Hybrid |
+| **Draconic** | Winged serpents with elemental attunement and breath weapons | Chromatic, Metallic, Elemental, Wyvern |
+| **Giant** | Mythical beings of immense size with supernatural properties | Stone Giant, Cyclops, Troll, Ogre |
+| **Humanoid** | Sentient anthropomorphic peoples | Human, Goblinoid, Orc, Elf |
+| **Monstrosity** | Magical beasts with supernatural abilities | Chimera, Hydra, Griffin, Magical Beast |
+| **Ooze** | Amorphous creatures, typically mindless and corrosive | — |
+| **Plant** | Animate vegetation and fungal creatures | Treant, Myconid, Vine Creature |
+| **Spirit** | Extraplanar beings manifesting cosmic forces | Celestial, Primordial, Infernal |
+| **Undead** | Beings that died and returned through necromancy | Physical, Ethereal |
 
 ### Step 2: Calculate Base Statistics
 
@@ -364,8 +381,8 @@ Create additional abilities based on creature category:
 
 #### Common Immunity Sets
 - **Undead**: bleeding, charmed, confused, deafened, frightened, poisoned, unconscious
-- **Constructs**: bleeding, charmed, confused, frightened, poisoned, unconscious  
-- **Elementals**: Varies by type (fire elementals immune to fire, etc.)
+- **Automatons**: bleeding, charmed, confused, frightened, poisoned, unconscious  
+- **Spirits (Primordial)**: Varies by type (fire spirits immune to fire, etc.)
 - **Plants**: deafened, blinded (for some)
 
 #### Resistance/Weakness Guidelines

@@ -17,6 +17,34 @@ Creatures act in the same basic ways, as adventurers do. But some details differ
 
 ## Creature Types
 
+Creatures are categorized by their fundamental nature, defining mechanical interactions with spells, abilities, and effects.
+
+### Primary Types
+
+| Type | Description | Common Subtypes |
+|------|-------------|-----------------|
+| **Aberration** | Eldritch horrors from outside reality with alien physiologies and reality-warping abilities. | — |
+| **Automaton** | Artificial beings animated by magic or divine power. | Golem, Animated Object, Magical Construct |
+| **Beast** | Natural animals and fauna lacking inherent magic. Includes hybrid-animals as natural ecology. | Mammal, Reptile, Bird, Fish, Insect, Hybrid |
+| **Draconic** | Winged serpents and lizards with elemental attunement, breath weapons, and supernatural might. | Chromatic, Metallic, Elemental, Wyvern |
+| **Giant** | Mythical beings of immense size with supernatural properties beyond mere scale. | Stone Giant, Cyclops, Troll, Ogre |
+| **Humanoid** | Sentient anthropomorphic peoples with language, culture, and reasoning. | Human, Goblinoid, Orc, Elf, Dwarf |
+| **Monstrosity** | Magical beasts with supernatural abilities or origins that defy natural biology. | Chimera, Hydra, Griffin, Magical Beast |
+| **Ooze** | Amorphous creatures with fluid or gelatinous bodies, typically mindless and corrosive. | — |
+| **Plant** | Animate vegetation and fungal creatures, both mobile and rooted. | Treant, Myconid, Vine Creature |
+| **Spirit** | Extraplanar beings manifesting primal forces, divine will, or cosmic principles. | Celestial, Primordial, Infernal, Sylvan, Chthonic, Astral |
+| **Undead** | Beings that died and returned through necromancy or curses. Physical or Ethereal forms. | Physical, Ethereal |
+
+### Special Designations
+
+**Shapechanger**: Property (not a type) for creatures that can alter their physical form, affecting certain spell interactions.
+
+**Swarms**: A Creature Archetype (see below), not a type—describes combat function, not fundamental nature.
+
+### Using Types
+
+Types determine spell targeting (e.g., *Control Beast*), equipment bonuses (e.g., silverroot vs. undead), ability interactions (e.g., favored enemy), and immunity patterns. Always assign at least one primary type when creating creatures.
+
 ## Creature Categories
 
 Creatures can come in different categories representing their importance and power level.

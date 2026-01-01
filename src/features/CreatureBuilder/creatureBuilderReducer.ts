@@ -12,6 +12,7 @@ export type CreatureBuilderState = {
 	category: CreatureCategory
 	size: string
 	type: string
+	subtype: string
 	archetype: string
 	name: string
 
@@ -41,6 +42,7 @@ const initialState: CreatureBuilderState = {
 	category: 'Basic',
 	size: 'Medium',
 	type: 'Humanoid',
+	subtype: '',
 	archetype: 'Standard',
 	name: '',
 	customHP: null,
@@ -79,6 +81,11 @@ export const {
 		},
 		setType: (state, action: PayloadAction<string>) => {
 			state.type = action.payload
+			// Reset subtype when type changes
+			state.subtype = ''
+		},
+		setSubtype: (state, action: PayloadAction<string>) => {
+			state.subtype = action.payload
 		},
 		setArchetype: (state, action: PayloadAction<string>) => {
 			state.archetype = action.payload
