@@ -17,6 +17,71 @@ Creatures act in the same basic ways, as adventurers do. But some details differ
 
 ## Creature Types
 
+Creatures in Nexus RPG are categorized by their fundamental nature and origin. These types help define mechanical interactions with spells, abilities, and effects while maintaining the game's ancient-world aesthetic.
+
+### Primary Types
+
+**Humanoid**  
+Sentient, broadly anthropomorphic beings including humans, elves, goblins, orcs, and other intelligent peoples. Humanoids possess language, culture, and the capacity for complex reasoning.
+
+*Subtypes*: Human, Goblinoid, Orc, Elf, Giant
+
+> **Note on Giants:** Giants are sentient humanoids distinguished by their immense size and strength, but they remain fundamentally people rather than beasts or monsters.
+
+**Beast**  
+Natural animals and fauna that are part of the world's ecology. Beasts lack inherent magical or supernatural powers, though they may exhibit extraordinary physical abilities. This includes common animals as well as creative hybrid-animals (such as horse-headed bulls or pig-dogs) that exist as natural parts of the ecosystem.
+
+*Subtypes*: Mammal, Reptile, Bird, Fish, Insect, Hybrid
+
+**Monstrosity**  
+Magical beasts and supernatural creatures that cross the boundary into the unnatural. Monstrosities possess inherent magical abilities, supernatural origins, or defy natural biology in fundamental ways. This includes creatures like chimeras, hydras, griffins, and other legendary beasts.
+
+*Subtypes*: Chimera, Magical Beast, Hybrid Monstrosity
+
+**Spirit**  
+Extraplanar and ethereal beings originating from planes beyond the material world. Spirits exist as manifestations of primal forces, divine will, or cosmic principles. Their true nature and home planes are kept intentionally vague, separated only into broad philosophical categories.
+
+*Subtypes*: Celestial, Primordial, Infernal
+
+**Automaton**  
+Artificial creatures animated through magic, divine power, or arcane craft. This includes golems, animated objects, magical constructs, and other beings created rather than born. The term "Automaton" fits the ancient-world aesthetic better than more modern terminology.
+
+*Subtypes*: Golem, Animated Object, Magical Construct
+
+**Undead**  
+Reanimated corpses or spirits of the deceased. Unlike Spirits, Undead were once living beings in the material world and have returned through necromantic magic, curses, or inability to pass on. They are distinguished from true spirits by their material origin.
+
+*Subtypes*: 
+- **Physical** - Corporeal undead such as zombies, skeletons, mummies, and vampires
+- **Ethereal** - Incorporeal undead such as ghosts, wraiths, specters, and shadows
+
+**Aberration**  
+Eldritch horrors and unnatural creatures from dimensions unknown or outside normal reality. Aberrations defy the natural order and cosmic laws, often possessing alien physiologies, impossible geometries, or reality-warping abilities. They represent the unknowable and the ancient secrets best left buried.
+
+*Examples*: Beholders, mind flayers, aboleths, gibbering mouthers
+
+### Special Designations
+
+Some creatures may have additional designations that cross type boundaries:
+
+**Shapechanger**  
+A flexible designation applied to creatures (primarily Humanoids) capable of altering their physical form. This is not a primary type but an additional property that affects how certain spells and abilities interact with the creature.
+
+### Creature Archetypes
+
+Note that some designations like **Swarms** are treated as **Creature Archetypes** (see the Creature Archetypes section) rather than types. Archetypes describe how a creature functions in combat, while types describe what a creature fundamentally is.
+
+### Using Creature Types
+
+Creature types serve several important functions:
+
+- **Spell Targeting**: Many spells specify particular creature types they affect (e.g., "Control Beast", "Detect Undead", "Circle of Death affects undead")
+- **Equipment Bonuses**: Certain materials and enchantments grant advantages against specific types (e.g., silverroot vs. undead, iron vs. spirits)
+- **Ability Interactions**: Character talents and creature abilities may reference types (e.g., "favored enemy", "animal companion")
+- **Immunity Patterns**: Creature types often share common immunities (e.g., most Undead are immune to poison and bleeding)
+
+When creating or using creatures, always assign at least one primary type and optionally one or more subtypes to ensure clear mechanical interactions.
+
 ## Creature Categories
 
 Creatures can come in different categories representing their importance and power level.

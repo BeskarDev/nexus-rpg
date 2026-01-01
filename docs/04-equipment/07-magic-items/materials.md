@@ -61,7 +61,7 @@ Unusual, monster-based, or mildly magical materials. Quite rare and often region
 | d10 | Material | Properties |
 | --- | --- | --- |
 | 1 | **Chitin** | *Harvested from insectoid or crustacean monsters. Lighter than metal, but still strong and durable. Used as organic armor plating.*<br/><br/>Armor/Shield: -1 load (min. 0). |
-| 2 | **Iron** | *Relatively common metal, but culturally taboo in some regions. Said to repel spirits and weaken magic. Also known as "Cursestone" due to its effects on the supernatural.*<br/><br/>Weapon: +1 boon on attacks against spirit creatures.<br/>Armor/Shield: +1 bane on Mysticism rolls to cast spells. |
+| 2 | **Iron** | *Relatively common metal, but culturally taboo in some regions. Said to repel spirits and weaken magic. Also known as "Cursestone" due to its effects on the supernatural.*<br/><br/>Weapon: +1 boon on attacks against Spirit creatures.<br/>Armor/Shield: +1 bane on Mysticism rolls to cast spells. |
 | 3 | **Monster Bone** | *Comes from large or magical creatures. Denser and stronger than normal bone, with durability close to metals.*<br/><br/>Weapon/Armor/Shield: -1 load (min. 0). |
 | 4 | **Monster Scales** | *Sourced from scaled beasts. Natural armor with good physical resistance.*<br/><br/>Armor/Shield: Once per scene, gain resistance to a single attack's physical damage. |
 | 5 | **Giant Spider Silk** | *Collected from giant spiders bred for strength. Threads are extremely strong and light. Can be woven into flexible armor or restraint gear.*<br/><br/>Light Armor: -1 load (min. 0). |
