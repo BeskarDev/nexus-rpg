@@ -6,8 +6,11 @@ import { BuiltCreature } from '../../../types/CreatureBuilder'
 export function generateCreatureMarkdown(creature: BuiltCreature): string {
 	const lines: string[] = []
 
-	// Header
-	lines.push(`### **${creature.name}** (${creature.size} ${creature.type})`)
+	// Header - include subtype if present
+	const typeDisplay = creature.subtype 
+		? `${creature.type} (${creature.subtype})`
+		: creature.type
+	lines.push(`### **${creature.name}** (${creature.size} ${typeDisplay})`)
 	lines.push('')
 	lines.push(`**Tier:** ${creature.tier} (${creature.category})`)
 	lines.push(`**Armor:** ${creature.armorType === 'heavy' ? 'Heavy' : 'Light'}`)

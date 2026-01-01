@@ -28,11 +28,11 @@ Creatures are categorized by their fundamental nature, defining mechanical inter
 | **Beast** | Natural animals and fauna lacking inherent magic. Includes hybrid-animals as natural ecology. | Mammal, Reptile, Bird, Fish, Insect, Hybrid |
 | **Draconic** | Winged serpents and lizards with elemental attunement, breath weapons, and supernatural might. | Chromatic, Metallic, Elemental, Wyvern |
 | **Giant** | Mythical beings of immense size with supernatural properties beyond mere scale. | Stone Giant, Cyclops, Troll, Ogre |
-| **Humanoid** | Sentient anthropomorphic peoples with language, culture, and reasoning. | Human, Goblinoid, Orc, Elf |
+| **Humanoid** | Sentient anthropomorphic peoples with language, culture, and reasoning. | Human, Goblinoid, Orc, Elf, Dwarf |
 | **Monstrosity** | Magical beasts with supernatural abilities or origins that defy natural biology. | Chimera, Hydra, Griffin, Magical Beast |
 | **Ooze** | Amorphous creatures with fluid or gelatinous bodies, typically mindless and corrosive. | — |
 | **Plant** | Animate vegetation and fungal creatures, both mobile and rooted. | Treant, Myconid, Vine Creature |
-| **Spirit** | Extraplanar beings manifesting primal forces, divine will, or cosmic principles. | Celestial, Primordial, Infernal |
+| **Spirit** | Extraplanar beings manifesting primal forces, divine will, or cosmic principles. | Celestial, Primordial, Infernal, Sylvan, Chthonic, Astral |
 | **Undead** | Beings that died and returned through necromancy or curses. Physical or Ethereal forms. | Physical, Ethereal |
 
 ### Special Designations

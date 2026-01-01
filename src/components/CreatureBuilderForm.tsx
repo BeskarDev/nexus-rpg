@@ -26,6 +26,7 @@ import {
 	validateTier,
 } from '../utils/typescript/creature/creatureBuilderCalculations'
 import creatureTypes from '../utils/data/json/creature-types.json'
+import creatureSubtypes from '../utils/data/json/creature-subtypes.json'
 import { CreatureCategory } from '../types/CreatureBuilder'
 import { creatureBuilderActions } from '../features/CreatureBuilder/creatureBuilderReducer'
 import { useCreatureBuilderState } from '../hooks/useCreatureBuilderState'
@@ -91,7 +92,7 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 	const dispatch = useDispatch()
 	const { state, builtCreature } = useCreatureBuilderState()
 
-	const { tier, category, size, type, archetype, name } = state
+	const { tier, category, size, type, subtype, archetype, name } = state
 	const hp = builtCreature?.baseHp
 	const av = builtCreature ? parseInt(builtCreature.av) : undefined
 	const parry = builtCreature?.parry
@@ -99,6 +100,8 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 	const resist = builtCreature?.resist
 
 	const types = creatureTypes as string[]
+	const subtypesMap = creatureSubtypes as Record<string, string[]>
+	const availableSubtypes = type ? subtypesMap[type] || [] : []
 
 	const validation =
 		tier !== null && hp && av && parry && dodge && resist
@@ -289,6 +292,45 @@ export const CreatureBuilderForm: React.FC<CreatureBuilderFormProps> = ({
 						</Select>
 					</FormControl>
 				</Grid>
+				{/* Subtype - Full Width (if applicable) */}
+				{availableSubtypes.length > 0 && (
+					<Grid item xs={12}>
+						<FormControl fullWidth size="small">
+							<InputLabel>Subtype (Optional)</InputLabel>
+							<Select
+								value={subtype}
+								label="Subtype (Optional)"
+								onChange={(e: SelectChangeEvent<string>) => {
+									dispatch(creatureBuilderActions.setSubtype(e.target.value))
+								}}
+							>
+								<MenuItem value="">
+									<em>None / Custom</em>
+								</MenuItem>
+								{availableSubtypes.map((st) => (
+									<MenuItem key={st} value={st}>
+										{st}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
+					</Grid>
+				)}
+				{/* Custom Subtype (if no preset selected) */}
+				{type && availableSubtypes.length > 0 && !availableSubtypes.includes(subtype) && (
+					<Grid item xs={12}>
+						<TextField
+							fullWidth
+							label="Custom Subtype"
+							value={subtype}
+							onChange={(e) =>
+								dispatch(creatureBuilderActions.setSubtype(e.target.value))
+							}
+							placeholder="Enter custom subtype"
+							size="small"
+						/>
+					</Grid>
+				)}
 				{/* Archetype - Full Width */}
 				<Grid item xs={12}>
 					<FormControl fullWidth size="small">

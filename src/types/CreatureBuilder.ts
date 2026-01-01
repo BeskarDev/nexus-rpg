@@ -48,6 +48,7 @@ export interface BuiltCreature {
 	category: CreatureCategory
 	size: string
 	type: string
+	subtype: string
 	archetype: string
 	hp: string // Can be "40" or "2×40" for Elite/Lord
 	av: string
