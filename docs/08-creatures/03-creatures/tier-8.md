@@ -136,7 +136,7 @@ Tier 8 creatures are among the most dangerous beings. They include ancient drago
 - **Fear Aura (Passive).** Any creature hostile to this creature that starts its turn within short range must roll Spirit + Fortitude vs. TN 14 or be frightened until the start of its next turn.
 - **Magic Resistance (Passive).** This creature has +1 boon on saves against spells and other magical effects.
 - **Innate Spellcasting (Passive).** This creature can cast the following spells once per scene each: *Detect Magic*, *Fireball*, *Hold Monster*, *Wall of Fire*.
-- **Infernal Reinforcements (Elite Trigger).** When this creature loses its first life pool, it summons 1d4 lesser fiends which appear within short range.
+- **Infernal Reinforcements (Elite Trigger).** When this creature loses its first life pool, it summons 1d4 Hell Hounds which appear within short range and act on this creature's initiative.
 
 **Quick Actions:**
 

@@ -104,7 +104,7 @@ Tier 7 creatures require coordinated party tactics to defeat. They include massi
 
 **Quick Actions:**
 
-- **Command Lesser Fiend.** One infernal creature of tier 4 or lower within short range can immediately make an attack or move.
+- **Command Hell Hound.** One Hell Hound or other fiendish creature of tier 4 or lower within short range can immediately make an attack or move.
 - **Flame Shield.** This creature surrounds itself with flames. Until the start of its next turn, any creature that hits it with a melee attack takes 6 fire damage.
 
 ---
