@@ -578,3 +578,27 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 - **Distress Spores (Passive).** When this creature takes damage, all other myconids within medium range can sense its pain.
 - **Rapport Spores (Action).** This creature releases a cloud of spores. All creatures within close range that aren't undead, constructs, or elementals can communicate telepathically with each other for a short duration.
 - **Sun Sickness (Passive).** While in sunlight, this creature has +1 bane on all rolls.
+
+---
+
+### **Nothic** (Medium Aberration)
+
+**Tier:** 2 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 20 | 3 (natural light) | d8 | d8 | d6 | d8 | 8 | 8 | 8 |
+
+**Skills:** Arcana (1), Insight (2), Perception (2), Stealth (2)
+
+**Attacks:**
+
+- **Claw** (*agile*). 6/10/14 damage.
+- **Rotting Gaze** (*range (short)*). 8/14/20 necrotic damage.
+
+**Abilities:**
+
+- **Keen Sight (Passive).** This creature gains +1 boon on Perception rolls that rely on sight.
+- **Weird Insight (Action).** This creature targets one creature within short range. The target must roll Spirit + Insight vs. TN 8 or this creature magically learns one fact or secret about the target.
+- **Night Vision (Passive).** This creature can see one range category further from sources of bright and dim light.

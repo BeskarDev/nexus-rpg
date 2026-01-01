@@ -302,3 +302,69 @@ Tier 5 creatures pose serious threats. They include powerful monstrosities, dang
 **Quick Actions:**
 
 - **Pack Leader.** One wolf or similar canine within short range can immediately make an attack.
+
+---
+
+### **Mind Flayer** (Medium Aberration)
+
+**Tier:** 5 (Elite)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 2x50 | 6 (natural light) | d8 | d10 | d10 | d12 | 10 | 11 | 12 |
+
+**Skills:** Arcana (3), Insight (3), Perception (3), Stealth (3)
+
+**Resistances:** psychic damage
+
+**Immunities:** charmed
+
+**Attacks:**
+
+- **Tentacles**. 9/15/21 psychic damage. On a hit, the target is grappled. If the target is Medium or smaller and grappled by the tentacles at the start of this creature's turn, this creature automatically extracts and devours the target's brain, killing them instantly.
+- **Mind Blast** (*short cone, recharge (d6)*). Roll Mind + Arcana vs. Resist. On a hit, each target takes 14 psychic damage and is stunned until the end of their next turn.
+
+**Abilities:**
+
+- **Magic Resistance (Passive).** This creature has +1 boon on saves against spells and other magical effects.
+- **Innate Spellcasting (Passive).** This creature can cast the following spells rolling Mind + Arcana once per scene each: *Detect Thoughts*, *Dominate Person*, *Levitate*, *Plane Shift* (self only).
+- **Telepathy (Passive).** This creature can communicate telepathically with any creature within medium range that can understand a language.
+- **Psychic Shatter (Elite Trigger).** When this creature loses its first life pool, it releases a massive psychic wave. All creatures within short range must roll Spirit + Fortitude vs. TN 11 or take 10 psychic damage and be confused until the end of their next turn.
+
+**Quick Actions:**
+
+- **Extract Brain.** This creature attempts to extract the brain of a creature it has grappled. The target must roll Spirit + Fortitude vs. TN 11 or take 15 psychic damage.
+
+---
+
+### **Beholder Spawn** (Large Aberration)
+
+**Tier:** 5 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 50 | 6 (natural light) | d6 | d8 | d10 | d10 | 10 | 11 | 11 |
+
+**Skills:** Arcana (3), Perception (3)
+
+**Attacks:**
+
+- **Bite** (*crush*). 10/17/24 damage.
+- **Eye Rays (Action).** This creature shoots two random eye rays (roll d6 twice, rerolling duplicates), choosing one or two targets it can see within medium range:
+  1. **Charm Ray.** Target must roll Spirit + Fortitude vs. TN 11 or be charmed for a short duration.
+  2. **Paralyzing Ray.** Target must roll Spirit + Fortitude vs. TN 11 or be paralyzed until the end of their next turn.
+  3. **Fear Ray.** Target must roll Spirit + Fortitude vs. TN 11 or be frightened for a short duration.
+  4. **Slowing Ray.** Target must roll Spirit + Fortitude vs. TN 11 or be slowed for a short duration.
+  5. **Enervation Ray.** Target must roll Spirit + Fortitude vs. TN 11 or take 10 necrotic damage.
+  6. **Telekinetic Ray.** Target must roll Strength + Athletics vs. TN 11 or be pushed a short distance.
+
+**Abilities:**
+
+- **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Antimagic Cone (Passive).** This creature's central eye creates an area of antimagic in a short cone. At the start of each of its turns, this creature decides which way the cone faces. Magic functions normally outside this cone.
+
+**Quick Actions:**
+
+- **Eye Ray.** This creature shoots one random eye ray at a target within medium range.

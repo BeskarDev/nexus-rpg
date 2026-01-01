@@ -474,3 +474,61 @@ Tier 4 creatures are formidable opponents requiring tactical thinking. They incl
 **Quick Actions:**
 
 - **Root Grasp.** One creature within melee range must roll Strength + Athletics vs. TN 10 or be grappled as roots erupt from the ground.
+
+---
+
+### **Gibbering Mouther** (Medium Aberration)
+
+**Tier:** 4 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 4 (natural light) | d8 | d6 | d6 | d4-1 | 10 | 8 | 10 |
+
+**Skills:** Fighting (2), Perception (2)
+
+**Immunities:** prone
+
+**Attacks:**
+
+- **Bite**. 9/14/19 damage. On a hit, roll d6. On a 1, the target loses 1d4 from a random attribute until they finish a long rest.
+
+**Abilities:**
+
+- **Aberrant Ground (Passive).** The ground within close range of this creature is difficult terrain. Each creature that starts its turn in that area must roll Strength + Athletics vs. TN 10 or have its speed reduced to 0 until the start of its next turn.
+- **Gibbering (Passive).** This creature babbles constantly. Each creature that starts its turn within close range and can hear the gibbering must roll Spirit + Fortitude vs. TN 10. On a failure, the creature can't take Quick Actions and must use all its movement to move in a random direction.
+- **Amorphous (Passive).** This creature can move through a space as narrow as a crack without squeezing.
+
+**Quick Actions:**
+
+- **Blinding Spittle.** This creature spits at one creature within short range. The target must roll Agility + Athletics vs. TN 10 or be blinded until the end of its next turn.
+
+---
+
+### **Chuul** (Large Aberration)
+
+**Tier:** 4 (Basic)
+**Armor:** Heavy
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 40 | 8 (natural heavy) | d10 | d8 | d6 | d4 | 11 | 9 | 10 |
+
+**Skills:** Fighting (3), Perception (3), Stealth (2)
+
+**Immunities:** poison damage, poisoned
+
+**Attacks:**
+
+- **Pincer** (*reach*). 9/14/19 damage. On a hit, the target is grappled. This creature has two pincers, each of which can grapple one target.
+- **Tentacles** (*only on grappled targets*). The target must roll Spirit + Fortitude vs. TN 10 or be poisoned for a short duration. Until this poison ends, the target is paralyzed.
+
+**Abilities:**
+
+- **Amphibious (Passive).** This creature can breathe air and water.
+- **Sense Magic (Passive).** This creature senses magic within short range at will.
+
+**Quick Actions:**
+
+- **Crush.** This creature deals 6 damage to one creature it has grappled.

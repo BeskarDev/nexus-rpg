@@ -536,3 +536,55 @@ Tier 3 creatures represent meaningful threats. They include more powerful undead
 **Quick Actions:**
 
 - **Minor Roar.** One creature within close range must roll Spirit + Fortitude vs. TN 9 or be frightened until the end of its next turn.
+
+---
+
+### **Otyugh** (Large Aberration)
+
+**Tier:** 3 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 4 (natural light) | d10 | d6 | d6 | d4 | 10 | 8 | 9 |
+
+**Skills:** Fighting (2), Fortitude (2), Perception (2)
+
+**Attacks:**
+
+- **Bite** (*crush*). 9/14/19 damage. On a strong or critical hit, the target must roll Strength + Fortitude vs. TN 9 or be diseased.
+- **Tentacle** (*reach*). 8/12/16 damage. On a hit, the target is grappled. This creature has two tentacles.
+
+**Abilities:**
+
+- **Limited Telepathy (Passive).** This creature can magically transmit simple messages and images to any creature within short range that can understand a language.
+- **Garbage Dweller (Passive).** This creature gains +2 boons on Stealth checks in refuse or garbage.
+
+**Quick Actions:**
+
+- **Tentacle Slam.** This creature slams a creature it has grappled against the ground or another creature. The grappled creature and any creature it's slammed against must roll Strength + Athletics vs. TN 9 or take 6 damage.
+
+---
+
+### **Grell** (Medium Aberration)
+
+**Tier:** 3 (Basic)
+**Armor:** Light
+
+| HP | AV | STR | AGI | SPI | MND | Parry | Dodge | Resist |
+|----|----|----|----|----|-----|-------|-------|--------|
+| 30 | 4 (natural light) | d8 | d8 | d8 | d8 | 9 | 9 | 9 |
+
+**Skills:** Fighting (2), Perception (2), Stealth (2)
+
+**Immunities:** lightning damage, blinded
+
+**Attacks:**
+
+- **Tentacles** (*reach*). 8/12/16 damage. On a strong or critical hit, the target is grappled and must roll Spirit + Fortitude vs. TN 9 or be poisoned for a short duration. While poisoned, the target is also paralyzed.
+- **Beak** (*pierce, only on grappled targets*). 10/16/22 damage.
+
+**Abilities:**
+
+- **Flying (Passive).** This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total.
+- **Blindsight (Close) (Passive).** This creature can perceive its surroundings at close range without relying on sight.
