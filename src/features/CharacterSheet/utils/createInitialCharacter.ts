@@ -899,6 +899,7 @@ export const createInitialCharacter = (
 					uniqueRank1Skills.includes('Mysticism')
 						? spiritValue - 2 + 2
 						: 0,
+				auto: 0,
 			},
 			spellCatalystDamage: 0,
 			spells:

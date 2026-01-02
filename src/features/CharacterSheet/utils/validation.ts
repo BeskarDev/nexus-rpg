@@ -98,6 +98,28 @@ export const createHpFieldSchema = (maxHp: number) => {
 }
 
 /**
+ * Create Focus field schema with dynamic max Focus validation
+ *
+ * @param maxFocus - The maximum Focus value for validation
+ * @returns Yup schema with dynamic max validation
+ */
+export const createFocusFieldSchema = (maxFocus: number) => {
+	return yup.object({
+		currentFocus: yup
+			.number()
+			.min(0, 'Focus cannot be negative')
+			.max(maxFocus, `Cannot exceed max Focus (${maxFocus})`)
+			.required('Current Focus is required')
+			.typeError('Must be a valid number'),
+
+		maxFocusModifier: yup
+			.number()
+			.required('Max Focus Modifier is required')
+			.typeError('Must be a valid number'),
+	})
+}
+
+/**
  * Calculate character level based on total spent XP
  *
  * @param spentXp - Total XP spent on skills

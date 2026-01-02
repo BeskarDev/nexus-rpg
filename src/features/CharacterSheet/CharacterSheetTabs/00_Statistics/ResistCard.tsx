@@ -92,7 +92,7 @@ export const ResistCard = () => {
 			}
 			showConfigButton
 			onConfigClick={resistDetails ? handleClick : initializeDetails}
-			tooltip="Resist: Defense against mental and magical effects (7 + Fortitude + level bonus)"
+			tooltip="Resist: Defense against mental and magical effects (5 + 1/2 Spirit/Mind + level bonus)"
 			minWidth="5rem"
 			configMenu={
 				resistDetails && (
@@ -112,7 +112,7 @@ export const ResistCard = () => {
 							size="small"
 							value={autoBase}
 							label="Base"
-							helperText="7 + Fortitude"
+							helperText="5 + 1/2 Spirit/Mind"
 						/>
 						<AttributeField
 							disabled

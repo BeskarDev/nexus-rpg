@@ -1,4 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react'
+import { useForm, Controller } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Settings, Remove, Add, AutoFixHigh } from '@mui/icons-material'
 import {
 	Box,
@@ -7,6 +9,7 @@ import {
 	Typography,
 	Button,
 	LinearProgress,
+	TextField,
 	alpha,
 } from '@mui/material'
 import { UI_COLORS } from '../../../../utils/colors'
@@ -16,12 +19,14 @@ import { characterSheetActions } from '../../characterSheetReducer'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
 import { useAppSelector } from '../../hooks/useAppSelector'
 import { calculateMaxFocus } from '../../utils/calculateFocus'
+import { createFocusFieldSchema } from '../../utils/validation'
 import { CharacterSheetCard, CardHeader } from '../../components'
+import { AttributeField, SectionHeader } from '../../CharacterSheet'
 
 export const FocusCard = () => {
 	const dispatch = useAppDispatch()
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-	const [damageHealAmount, setDamageHealAmount] = useState<number>(0)
+	const [spendRestoreAmount, setSpendRestoreAmount] = useState<number>(0)
 	const [animationState, setAnimationState] = useState<
 		'none' | 'damage' | 'healing'
 	>('none')
@@ -29,12 +34,14 @@ export const FocusCard = () => {
 
 	const { activeCharacter } = useAppSelector((state) => state.characterSheet)
 	const { focus, focusDetails } = activeCharacter.spells
+	const autoFocusBonus = useMemo(() => focus?.auto ?? 0, [focus?.auto])
 
-	// Calculate max Focus using the new formula
+	// Calculate max Focus using the new formula (includes both user modifier and auto bonus)
 	const maxFocus = useMemo(() => {
 		return calculateMaxFocus(
 			activeCharacter,
 			focusDetails?.maxFocusModifier || 0,
+			autoFocusBonus,
 		)
 	}, [
 		activeCharacter.statistics.mind.value,
@@ -42,9 +49,45 @@ export const FocusCard = () => {
 		activeCharacter.spells.magicSkill,
 		activeCharacter.skills.skills,
 		focusDetails?.maxFocusModifier,
+		autoFocusBonus,
 	])
 
-	// Calculate Focus bar color and progress with static bar sizing
+	// Initialize react-hook-form with Yup schema validation
+	const focusSchema = useMemo(
+		() => createFocusFieldSchema(maxFocus),
+		[maxFocus],
+	)
+
+	const {
+		control,
+		formState: { errors },
+		reset,
+		watch,
+	} = useForm({
+		resolver: yupResolver(focusSchema),
+		defaultValues: {
+			currentFocus: focus.current,
+			maxFocusModifier: focusDetails?.maxFocusModifier || 0,
+		},
+		mode: 'onChange', // Validate on change for immediate feedback
+	})
+
+	const formValues = watch()
+
+	// Update form when character changes externally
+	useEffect(() => {
+		reset({
+			currentFocus: focus.current,
+			maxFocusModifier: focusDetails?.maxFocusModifier || 0,
+		})
+	}, [
+		activeCharacter.docId,
+		focus.current,
+		focusDetails?.maxFocusModifier,
+		reset,
+	])
+
+	// Calculate Focus bar color and progress
 	const focusPercentage = maxFocus > 0 ? (focus.current / maxFocus) * 100 : 0
 	const getFocusColor = () => {
 		if (focusPercentage >= 50) return 'info' // Blue color
@@ -77,190 +120,294 @@ export const FocusCard = () => {
 
 	const handleClose = () => {
 		setAnchorEl(null)
-		setDamageHealAmount(0)
+		setSpendRestoreAmount(0)
 	}
 
-	const handleSpendFocus = (amount: number) => {
-		const newValue = Math.max(0, Math.min(focus.current - amount, maxFocus))
-		updateCharacter({ spells: { focus: { current: newValue } } })
-		
-		if (amount > 0) {
+	const applySpendOrRestore = (isSpend: boolean) => {
+		if (spendRestoreAmount <= 0) return
+
+		let newCurrentFocus = focus.current
+
+		if (isSpend) {
+			// Spending Focus
+			newCurrentFocus = Math.max(0, focus.current - spendRestoreAmount)
 			setAnimationState('damage')
-			setDamageHealAmount(amount)
-		}
-		handleClose()
-	}
-
-	const handleRestoreFocus = (amount: number) => {
-		const newValue = Math.max(0, Math.min(focus.current + amount, maxFocus))
-		updateCharacter({ spells: { focus: { current: newValue } } })
-		
-		if (amount > 0) {
+		} else {
+			// Restoring Focus
+			newCurrentFocus = Math.min(maxFocus, focus.current + spendRestoreAmount)
 			setAnimationState('healing')
-			setDamageHealAmount(amount)
 		}
-		handleClose()
-	}
 
-	const handleSetFocus = (value: number) => {
-		const newValue = Math.max(0, Math.min(value, maxFocus))
-		updateCharacter({ spells: { focus: { current: newValue } } })
-		handleClose()
-	}
+		updateCharacter({
+			spells: { focus: { current: newCurrentFocus } },
+		})
 
-	// Calculate animation keyframes
-	const getAnimationStyle = () => {
-		if (animationState === 'damage') {
-			return {
-				animation: 'shake 0.4s cubic-bezier(.36,.07,.19,.97) both',
-				'@keyframes shake': {
-					'10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
-					'20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
-					'30%, 50%, 70%': { transform: 'translate3d(-3px, 0, 0)' },
-					'40%, 60%': { transform: 'translate3d(3px, 0, 0)' },
-				},
-			}
-		}
-		if (animationState === 'healing') {
-			return {
-				animation: 'pulse 0.6s ease-in-out',
-				'@keyframes pulse': {
-					'0%': { transform: 'scale(1)' },
-					'50%': { transform: 'scale(1.05)' },
-					'100%': { transform: 'scale(1)' },
-				},
-			}
-		}
-		return {}
+		setSpendRestoreAmount(0)
 	}
 
 	return (
-		<>
-			<CharacterSheetCard
-				header={<CardHeader icon={<AutoFixHigh />} label="Focus" color={UI_COLORS.purple} />}
-				tooltip="Magical energy pool for casting spells"
-				showConfigButton
-				onConfigClick={handleClick}
-				minWidth="8rem"
-				sx={getAnimationStyle()}
-				footer={
-					<Box sx={{ width: '100%', mt: 0.5, px: 1 }}>
-						<LinearProgress
-							variant="determinate"
-							value={focusPercentage}
-							color={getFocusColor()}
-							sx={{
-								height: 4,
-								borderRadius: 1,
-								backgroundColor: (theme) =>
-									alpha(theme.palette.divider, 0.2),
-							}}
-						/>
-					</Box>
-				}
-			>
-				<Box sx={{ position: 'relative', px: 1 }}>
-					<Typography
+		<CharacterSheetCard
+			header={<CardHeader icon={<AutoFixHigh />} label="Focus" color={UI_COLORS.purple} />}
+			tooltip="Magical energy pool for casting spells"
+			showConfigButton
+			onConfigClick={handleClick}
+			minWidth="8rem"
+			footer={
+				<Box sx={{ width: '100%', mt: 0.5, px: 1 }}>
+					<LinearProgress
+						variant="determinate"
+						value={focusPercentage}
+						color={getFocusColor()}
 						sx={{
-							fontWeight: 'bold',
-							fontSize: '1.1rem',
-							lineHeight: 1.2,
-							textAlign: 'center',
-							color: focusColor,
+							height: 4,
+							borderRadius: 1,
+							backgroundColor: (theme) =>
+								alpha(theme.palette.divider, 0.2),
 						}}
-					>
-						{focus.current}/{maxFocus}
-					</Typography>
-					{animationState !== 'none' && (
-						<Typography
+					/>
+				</Box>
+			}
+			configMenu={
+				<Menu
+					anchorEl={anchorEl}
+					open={open}
+					onClose={handleClose}
+					MenuListProps={{ sx: { p: 2, maxWidth: '25rem' } }}
+				>
+					<SectionHeader sx={{ mb: 2 }}>Focus Configuration</SectionHeader>
+
+					{/* Visual Focus Bar with editable current Focus */}
+					<Box sx={{ mb: 3 }}>
+						{/* Focus Bar Container */}
+						<Box
 							sx={{
-								position: 'absolute',
-								top: -10,
-								left: '50%',
-								transform: 'translateX(-50%)',
-								fontSize: '0.75rem',
-								fontWeight: 'bold',
-								color: animationState === 'damage' ? UI_COLORS.danger : UI_COLORS.success,
-								animation: 'floatUp 0.6s ease-out',
-								'@keyframes floatUp': {
-									'0%': { opacity: 1, transform: 'translate(-50%, 0)' },
-									'100%': { opacity: 0, transform: 'translate(-50%, -20px)' },
-								},
+								position: 'relative',
+								display: 'flex',
+								height: '44px',
+								mb: 1,
+								borderRadius: '8px',
+								overflow: 'hidden',
+								border: '2px solid',
+								borderColor: 'divider',
 							}}
 						>
-							{animationState === 'damage' ? `-${damageHealAmount}` : `+${damageHealAmount}`}
-						</Typography>
-					)}
-				</Box>
-			</CharacterSheetCard>
+							{/* Main Focus Bar */}
+							<LinearProgress
+								variant="determinate"
+								value={Math.min((focus.current / maxFocus) * 100, 100)}
+								color={getFocusColor()}
+								sx={{
+									flex: 1,
+									height: '100%',
+									transition: 'all 0.3s ease',
+									backgroundColor: 'rgba(0, 0, 0, 0.2)',
+									'& .MuiLinearProgress-bar': {
+										boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.3)',
+									},
+								}}
+							/>
 
-			<Menu
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'right',
-				}}
-				transformOrigin={{
-					vertical: 'top',
-					horizontal: 'right',
-				}}
-			>
-				<Box sx={{ p: 2, minWidth: 200 }}>
-					<Typography variant="subtitle2" gutterBottom>
-						Quick Actions
+							{/* Editable Focus Text Overlay */}
+							<Box
+								sx={{
+									position: 'absolute',
+									top: '50%',
+									left: '50%',
+									transform: 'translate(-50%, -50%)',
+									display: 'flex',
+									alignItems: 'baseline',
+									gap: 0.5,
+									zIndex: 2,
+								}}
+							>
+								<Controller
+									name="currentFocus"
+									control={control}
+									render={({ field, fieldState }) => (
+										<TextField
+											{...field}
+											type="number"
+											size="small"
+											inputProps={{
+												max: maxFocus,
+												min: 0,
+											}}
+											onChange={(e) => {
+												const value = Number(e.target.value)
+												const clampedCurrent = Math.max(0, Math.min(value, maxFocus))
+												field.onChange(clampedCurrent)
+												updateCharacter({
+													spells: { focus: { current: clampedCurrent } },
+												})
+											}}
+											error={!!fieldState.error}
+											sx={{
+												width: '55px',
+												mt: '6px',
+												'& .MuiOutlinedInput-root': {
+													backgroundColor: 'rgba(0, 0, 0, 0.6)',
+													fontWeight: 'bold',
+													color: 'white',
+													'& fieldset': {
+														borderColor: 'rgba(255, 255, 255, 0.3)',
+														borderWidth: '2px',
+													},
+													'&:hover fieldset': {
+														borderColor: 'rgba(255, 255, 255, 0.5)',
+													},
+													'&.Mui-focused fieldset': {
+														borderColor: 'primary.main',
+													},
+												},
+												'& input': {
+													textAlign: 'center',
+													padding: '4px 6px',
+													fontSize: '0.875rem',
+													color: 'white',
+												},
+											}}
+										/>
+									)}
+								/>
+								<Typography
+									variant="body1"
+									sx={{
+										color: 'white',
+										fontWeight: 'bold',
+										textShadow: '0 1px 2px rgba(0, 0, 0, 0.8)',
+									}}
+								>
+									/ {maxFocus}
+								</Typography>
+							</Box>
+						</Box>
+
+						{/* Formula Display */}
+						<Typography
+							variant="caption"
+							sx={{
+								display: 'block',
+								textAlign: 'center',
+								color: 'text.secondary',
+								fontSize: '0.75rem',
+							}}
+						>
+							Max Focus: Base calculation
+							{autoFocusBonus > 0 && ` + ${autoFocusBonus} (auto)`}
+							{(focusDetails?.maxFocusModifier || 0) !== 0 && ` + ${focusDetails?.maxFocusModifier || 0} (mod)`} = {maxFocus}
+						</Typography>
+					</Box>
+
+					{/* Modifiers */}
+					<Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, mb: 2 }}>
+						<Controller
+							name="maxFocusModifier"
+							control={control}
+							render={({ field, fieldState }) => (
+								<TextField
+									{...field}
+									type="number"
+									size="small"
+									onChange={(e) => {
+										const value = Number(e.target.value)
+										field.onChange(value)
+										updateCharacter({
+											spells: {
+												focusDetails: { maxFocusModifier: value },
+											},
+										})
+									}}
+									error={!!fieldState.error}
+									helperText={fieldState.error?.message || ''}
+									label="Bonus"
+									sx={{
+										'& input': {
+											textAlign: 'center',
+										},
+										width: '5rem',
+									}}
+								/>
+							)}
+						/>
+
+						{autoFocusBonus > 0 && (
+							<AttributeField
+								disabled
+								type="number"
+								size="small"
+								value={autoFocusBonus}
+								label="Auto"
+								sx={{ width: '4rem' }}
+							/>
+						)}
+					</Box>
+
+					{/* Spend/Restore Controls */}
+					<Typography variant="subtitle2" sx={{ mb: 1 }}>
+						Spend / Restore
 					</Typography>
-					<Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
+					<Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
 						<Button
 							variant="outlined"
+							color="error"
 							size="small"
-							onClick={() => handleSpendFocus(1)}
-							disabled={focus.current === 0}
-							fullWidth
+							onClick={() => applySpendOrRestore(true)}
+							startIcon={<Remove />}
+							disabled={spendRestoreAmount <= 0}
 						>
-							-1
+							Spend
 						</Button>
+						<AttributeField
+							type="number"
+							size="small"
+							value={spendRestoreAmount}
+							onChange={(event) =>
+								setSpendRestoreAmount(Number(event.target.value))
+							}
+							label="Amount"
+							sx={{ flexGrow: 1 }}
+						/>
 						<Button
 							variant="outlined"
+							color="success"
 							size="small"
-							onClick={() => handleSpendFocus(2)}
-							disabled={focus.current < 2}
-							fullWidth
+							onClick={() => applySpendOrRestore(false)}
+							startIcon={<Add />}
+							disabled={spendRestoreAmount <= 0}
 						>
-							-2
-						</Button>
-						<Button
-							variant="outlined"
-							size="small"
-							onClick={() => handleRestoreFocus(1)}
-							disabled={focus.current >= maxFocus}
-							fullWidth
-						>
-							+1
+							Restore
 						</Button>
 					</Box>
-					<Button
-						variant="contained"
-						size="small"
-						onClick={() => handleSetFocus(maxFocus)}
-						disabled={focus.current === maxFocus}
-						fullWidth
-						sx={{ mb: 1 }}
-					>
-						Full Restore
-					</Button>
-					<Button
-						variant="outlined"
-						size="small"
-						onClick={() => handleSetFocus(0)}
-						disabled={focus.current === 0}
-						fullWidth
-					>
-						Set to 0
-					</Button>
-				</Box>
-			</Menu>
-		</>
+				</Menu>
+			}
+		>
+			<Typography
+				sx={{
+					fontWeight: 'bold',
+					fontSize: '1.1rem',
+					lineHeight: 1.2,
+					textAlign: 'center',
+					color: focusColor,
+					transition: 'all 0.3s ease-in-out',
+					...(animationState === 'damage' && {
+						animation: 'shake 0.5s ease-in-out',
+					}),
+					...(animationState === 'healing' && {
+						animation: 'pulse 0.5s ease-in-out',
+					}),
+					'@keyframes shake': {
+						'0%, 100%': { transform: 'translateX(0)' },
+						'25%': { transform: 'translateX(-2px)' },
+						'75%': { transform: 'translateX(2px)' },
+					},
+					'@keyframes pulse': {
+						'0%, 100%': { transform: 'scale(1)' },
+						'50%': { transform: 'scale(1.1)' },
+					},
+				}}
+			>
+				{focus.current}/{maxFocus}
+			</Typography>
+		</CharacterSheetCard>
 	)
 }

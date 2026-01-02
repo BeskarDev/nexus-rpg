@@ -339,6 +339,7 @@ export type Spells = {
 	focus: {
 		total: number
 		current: number
+		auto?: number // Auto-calculated from talents and other sources
 	}
 	focusDetails?: {
 		maxFocusModifier: number

@@ -2,11 +2,12 @@ import { CharacterDocument } from '@site/src/types/Character'
 
 /**
  * Calculate the base max Focus based on attributes and magic skill
- * Formula: (Mind/Spirit - 2) + (2 × Arcana/Mysticism rank)
+ * Formula: (Mind/Spirit - 2) + (2 × Arcana/Mysticism rank) + modifier + auto
  */
 export const calculateMaxFocus = (
 	character: CharacterDocument,
 	modifier: number = 0,
+	autoBonus: number = 0,
 ): number => {
 	const { magicSkill } = character.spells
 	const { skills } = character.skills
@@ -30,10 +31,10 @@ export const calculateMaxFocus = (
 		baseAttribute = spirit.value
 	}
 
-	// Calculate base Focus: (Attribute - 2) + (2 × Skill Rank)
+	// Calculate base Focus: (Attribute - 2) + (2 × Skill Rank) + modifier + autoBonus
 	const baseFocus = Math.max(0, baseAttribute - 2 + 2 * skillRank)
 
-	return baseFocus + modifier
+	return baseFocus + modifier + autoBonus
 }
 
 /**

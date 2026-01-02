@@ -37,6 +37,7 @@ import {
 } from '../../../../constants/languages'
 import { calculateSkillRank } from '../../utils'
 import { calculateTalentHpBonus } from '../../utils/calculateTalentHpBonus'
+import { calculateTalentFocusBonus } from '../../utils/calculateTalentFocusBonus'
 import { calculateFolkAvBonus } from '../../utils/calculateFolkAvBonus'
 import {
 	createSkillXpSchema,
@@ -259,7 +260,7 @@ export const SkillsTab: React.FC = () => {
 		[skills],
 	)
 
-	// Auto-calculate HP and AV bonuses from talents/folk abilities (stored separately from user's maxHpModifier and av.other)
+	// Auto-calculate HP, AV, and Focus bonuses from talents/folk abilities (stored separately from user modifiers)
 	useEffect(() => {
 		const mysticismSkill = skills.find((s) => s.name === 'Mysticism')
 		const mysticismRank = mysticismSkill?.rank || 0
@@ -282,10 +283,18 @@ export const SkillsTab: React.FC = () => {
 
 		const currentAutoAvBonus = activeCharacter.statistics.av.auto || 0
 
-		// Update if either value changed
+		// Calculate Focus bonus from talents
+		const calculatedFocusBonus = calculateTalentFocusBonus(
+			activeCharacter.skills.abilities,
+		)
+
+		const currentAutoFocusBonus = activeCharacter.spells?.focus?.auto ?? 0
+
+		// Update if any value changed
 		if (
 			calculatedHpBonus !== currentAutoHpBonus ||
-			calculatedAvBonus !== currentAutoAvBonus
+			calculatedAvBonus !== currentAutoAvBonus ||
+			calculatedFocusBonus !== currentAutoFocusBonus
 		) {
 			updateCharacter({
 				statistics: {
@@ -294,6 +303,11 @@ export const SkillsTab: React.FC = () => {
 					},
 					av: {
 						auto: calculatedAvBonus,
+					},
+				},
+				spells: {
+					focus: {
+						auto: calculatedFocusBonus,
 					},
 				},
 			})
