@@ -170,7 +170,7 @@ describe('UserManagementPanel', () => {
 		await waitFor(() => {
 			// user1 has lastSignInTime, user2 doesn't
 			// Check for date pattern (various locales: MM/DD/YYYY, DD.MM.YYYY, DD-MM-YYYY, etc.)
-			const datePattern = /\d{1,2}[\/\.\-]\d{1,2}[\/\.\-]\d{2,4}/
+			const datePattern = /\d{1,2}[/.-]\d{1,2}[/.-]\d{2,4}/
 			const dates = screen.getAllByText(datePattern)
 			expect(dates.length).toBeGreaterThan(0)
 			expect(screen.getByText('Never')).toBeInTheDocument()
