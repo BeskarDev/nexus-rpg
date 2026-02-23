@@ -894,3 +894,457 @@ All talents reviewed and tagged by skill. Each talent is tagged at its broadest 
 5. **Quick-action economy is heavily used in talents.** 36 talents include quick-action abilities, making this the most common active timing after passive. This reflects the system's emphasis on tactical decisions during combat turns.
 
 6. **Several talents and folk abilities are incomplete.** The following are marked as stubs or placeholders: Performer, Presence of Conquest, Foresight, Supernatural Mobility, Herbalist, Master Artisan, Adrenaline Rush, and the Dogfolk/Satyr folk. Their tags are provisional.
+
+---
+
+## Appendix E: Spell Audit
+
+All spells reviewed and tagged by discipline/tradition. Only the base rank is tagged; heightened versions may add conditions or effects beyond what is listed.
+
+### Arcane Disciplines
+
+#### Evocation
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Flickering Flame** | 0 | `offense`, `utility` | `action` | `fire` | `burning` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Frost Snap** | 0 | `offense`, `utility` | `action` | `frost` | `slowed`, `dazed` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Static Spark** | 0 | `offense` | `action` | `lightning` | — | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Chromatic Orb** | 1 | `offense`, `control` | `action` | `acid`, `fire`, `frost`, `lightning`, `poison` | `burning`, `slowed`, `staggered`, `poisoned` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Elemental Ward** | 1 | `defense` | `quick-action` | — | — | `self` | `self-target` | `resistance` | `quick` | `briefly` |
+| **Flame Burst** | 1 | `offense` | `action` | `fire` | `burning` | `close` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Flaming Weapon** | 1 | `support`, `offense` | `action` | `fire` | — | `self` | `self-target` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Frozen Weapon** | 1 | `support`, `control` | `action` | `frost` | `slowed` | `self` | `self-target` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Ice Shards** | 1 | `offense` | `action` | `frost` | — | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Lightning Arc** | 1 | `offense` | `action` | `lightning` | — | `medium` | `multi-target`, `enemy` | `damage` | — | `instant` |
+| **Lightning Weapon** | 1 | `support`, `control` | `action` | `lightning` | `staggered` | `self` | `self-target` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Scorching Ray** | 1 | `offense` | `action` | `fire` | — | `medium` | `multi-target`, `enemy` | `damage` | — | `instant` |
+| **Fireball** | 2 | `offense` | `action` | `fire` | `burning` | `long` | `area`, `enemy` | `damage` | — | `instant` |
+| **Frost Wave** | 2 | `offense`, `control` | `action` | `frost` | `slowed` | `short` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Ice Lance** | 2 | `offense` | `action` | `frost` | — | `medium` | `single-target`, `enemy` | `damage`, `creation` | — | `short` |
+| **Lightning Strike** | 2 | `offense`, `control` | `action` | `lightning` | `staggered` | `medium` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Prismatic Missile** | 2 | `offense` | `action` | `fire`, `frost`, `lightning`, `acid` | — | `long` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Black Flame Bolt** | 3 | `offense`, `control` | `action` | `fire` | `burning` | `long` | `single-target`, `enemy` | `damage` | — | `short` |
+
+#### Illusion
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Horrific Vision** | 0 | `offense`, `control` | `action` | `psychic` | `frightened` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Maddening Whispers** | 0 | `control` | `action` | `psychic` | — | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Minor Illusion** | 0 | `utility` | `action` | — | — | `medium` | `area` | `creation` | `concentrate`, `illusory` | `short` |
+| **Color Spray** | 1 | `control` | `action` | — | `blinded`, `dazed`, `stunned` | `close` | `area`, `enemy` | `debuff` | `blast` | `briefly` |
+| **Disguise Form** | 1 | `utility` | `action` | — | — | `self` | `self-target` | `transformation` | `concentrate`, `illusory` | `medium` |
+| **False Enemy** | 1 | `offense`, `control` | `action` | `psychic` | — | `medium` | `single-target`, `enemy` | `damage`, `debuff` | `concentrate`, `illusory` | `briefly` |
+| **Illusory Trap** | 1 | `control` | `action` | `psychic` | `grappled`, `restrained` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | `illusory` | `short` |
+| **Mirror Image** | 1 | `defense` | `quick-action` | — | — | `self` | `self-target` | `protection` | `concentrate`, `illusory`, `quick` | `short` |
+| **Hallucinated Swarm** | 2 | `offense`, `control` | `action` | `psychic` | `confused` | `short` | `area`, `enemy` | `damage`, `debuff` | `blast` | `instant` |
+| **Illusionary Terrain** | 2 | `utility` | `action` | — | — | `medium` | `area` | `creation` | `concentrate`, `illusory` | `medium` |
+| **Invisibility** | 2 | `utility`, `defense` | `quick-action` | — | `hidden` | `self` | `self-target` | `transformation` | `concentrate`, `illusory`, `quick` | `short` |
+| **Major Illusion** | 2 | `utility` | `action` | — | — | `medium` | `area` | `creation` | `concentrate`, `illusory` | `short` |
+| **Misdirection** | 2 | `defense`, `support` | `quick-action` | — | — | `medium` | `ally` | `protection` | `quick` | `instant` |
+| **Trap Room** | 2 | `control` | `action` | `psychic` | `grappled`, `restrained` | `medium` | `area`, `enemy` | `damage`, `debuff` | `illusory` | `short` |
+| **Waking Dream** | 2 | `control` | `action` | — | `unconscious` | `medium` | `single-target`, `enemy` | `debuff` | `concentrate`, `illusory` | `short` |
+| **Mislead** | 3 | `utility`, `defense` | `action` | — | `hidden` | `self` | `self-target` | `transformation`, `creation` | `concentrate`, `illusory` | `short` |
+| **Phantasmal Killer** | 3 | `offense`, `control` | `action` | `psychic` | `frightened` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | `concentrate`, `illusory` | `short` |
+| **Seeming** | 3 | `utility` | `action` | — | — | — | `multi-target` | `transformation` | — | — |
+
+#### Conjuration
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Arcane Bolt** | 0 | `offense` | `action` | `blast` | `dazed` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Arcane Glyph** | 0 | `utility`, `offense` | `ritual` | `blast` | — | `touch` | `area` | `creation` | `ritual`, `singular` | `long` |
+| **Extraplanar Pocket** | 0 | `utility` | `quick-action` | — | — | `touch` | `self-target` | `creation` | `quick` | `permanent` |
+| **Alarm** | 1 | `utility` | `ritual` | — | — | `short` | `area` | `information` | `ritual`, `singular` | `long` |
+| **Arcane Barrier** | 1 | `defense` | `action` | — | — | `short` | `area` | `creation`, `protection` | `singular` | `short` |
+| **Arcane Missiles** | 1 | `offense` | `action` | `blast` | — | `medium` | `multi-target`, `enemy` | `damage` | — | `instant` |
+| **Conjure Familiar** | 1 | `utility`, `support` | `ritual` | — | — | `touch` | `self-target` | `summoning` | `ritual`, `singular` | `permanent` |
+| **Hail of Blades** | 1 | `offense` | `action` | `physical` | — | `medium` | `multi-target`, `enemy` | `damage` | — | `instant` |
+| **Infuse Item** | 1 | `support` | `action` | — | — | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `long` |
+| **Arcane Barrage** | 2 | `offense` | `action` | `blast` | — | `medium` | `multi-target`, `enemy` | `damage` | — | `instant` |
+| **Arcane Circle** | 2 | `support` | `quick-action` | — | — | `melee` | `area` | `enhancement` | `quick`, `singular` | `medium` |
+| **Arcane Eye** | 2 | `utility` | `action` | — | — | `short` | `area` | `information` | `concentrate` | `medium` |
+| **Eldritch Tendrils** | 2 | `control`, `offense` | `action` | `acid` | `grappled`, `restrained` | `medium` | `area`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Phase Step** | 2 | `utility` | `quick-action` | — | — | `medium` | `self-target` | `movement` | `quick` | `instant` |
+| **Summon Aberration** | 2 | `support`, `control` | `action` | — | — | `long` | `area` | `summoning` | `concentrate` | `short` |
+| **Arcane Blast** | 3 | `offense` | `action` | `blast` | `pushed` | `long` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Astral Gate** | 3 | `control` | `action` | `blast` | `prone`, `restrained` | `long` | `area`, `enemy` | `debuff` | `concentrate` | `short` |
+| **Burst of Tendrils** | 3 | `offense`, `control` | `action` | `physical` | `bleeding` | `medium` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Dimension Door** | 3 | `utility` | `action` | — | — | `long` | `self-target` | `movement` | — | `instant` |
+| **Wall of Force** | 3 | `control`, `defense` | `action` | — | `pushed` | `long` | `area` | `creation`, `protection` | `concentrate` | `medium` |
+| **Arcane Empowerment** | 4 | `offense`, `defense` | `action` | — | `paralyzed` | `self` | `self-target` | `enhancement`, `resistance` | `concentrate`, `enchant` | `short` |
+| **Astral Body** | 4 | `utility` | `action` | — | — | `self` | `self-target` | `transformation` | `concentrate` | `medium` |
+| **Force Cage** | 4 | `control` | `action` | — | `restrained` | `long` | `single-target`, `enemy` | `debuff` | `concentrate` | `medium` |
+| **Teleportation Circle** | 4 | `utility` | `action` | — | — | — | `area` | `creation`, `movement` | — | `permanent` |
+
+#### Telepathy
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Detect Magic** | 0 | `utility` | `action` | — | — | `short` | `area` | `information` | — | `briefly` |
+| **Mental Link** | 0 | `utility`, `control` | `quick-action` | — | — | `medium` | `single-target` | `information` | `quick` | `instant` |
+| **Mind Blast** | 0 | `offense`, `control` | `action` | `psychic` | `dazed` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Attack Thoughts** | 1 | `offense`, `control` | `action` | `psychic` | `confused` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Control Beast** | 1 | `control` | `action` | — | `stunned` | `close` | `single-target`, `enemy` | `debuff` | `concentrate` | `briefly` |
+| **Foresight** | 1 | `defense`, `offense` | `quick-action` | — | — | `self` | `self-target` | `buff` | `quick` | `briefly` |
+| **Psychometry** | 1 | `utility` | `ritual` | — | — | `touch` | `area` | `information` | `ritual` | `instant` |
+| **Subtle Suggestion** | 1 | `control` | `action` | — | — | `medium` | `single-target`, `enemy` | `debuff` | — | `briefly` |
+| **True Strike** | 1 | `offense`, `support` | `quick-action` | — | — | `short` | `enemy` | `buff` | `quick` | `briefly` |
+| **Counterspell** | 2 | `control`, `defense` | `quick-action` | `psychic` | — | `short` | `single-target`, `enemy` | `debuff` | `quick` | `instant` |
+| **Forced Suggestion** | 2 | `control` | `action` | — | `charmed` | `short` | `single-target`, `enemy` | `debuff` | — | `short` |
+| **Psychic Wave** | 2 | `offense`, `control` | `action` | `psychic` | `dazed` | `short` | `area`, `enemy` | `damage`, `debuff` | `blast` | `instant` |
+| **Wave of Madness** | 2 | `control` | `action` | `psychic` | `confused` | `short` | `area`, `enemy` | `debuff` | `blast`, `illusory` | — |
+| **Invade Dreams** | 3 | `control`, `utility` | `ritual` | `psychic` | — | `touch` | `single-target`, `enemy` | `debuff`, `information` | `ritual` | — |
+| **Astral Body** | 4 | `utility` | `ritual` | — | — | `self` | `self-target` | `transformation` | `ritual` | `medium` |
+
+#### Telekinetics
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Kinetic Pull** | 0 | `control` | `action` | — | `prone` | `short` | `single-target`, `enemy` | `movement`, `debuff` | — | `instant` |
+| **Kinetic Push** | 0 | `offense`, `control` | `action` | `blast` | `pushed` | `short` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Weak Telekinesis** | 0 | `utility` | `action` | `physical` | — | `short` | `area` | `movement` | — | `instant` |
+| **Gravity Orb** | 1 | `control` | `action` | — | `slowed`, `grappled`, `restrained` | `medium` | `area`, `enemy` | `debuff` | `concentrate` | `short` |
+| **Reflective Barrier** | 1 | `defense` | `action` | — | — | `self` | `self-target` | `protection` | `concentrate` | `short` |
+| **Shockwave** | 1 | `offense`, `control` | `action` | `blast` | `pushed`, `prone` | `close` | `area`, `enemy` | `damage` | — | `instant` |
+| **Telekinetic Crush** | 1 | `offense` | `action` | `physical` | — | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Telekinetic Volley** | 1 | `offense`, `utility` | `action` | `physical` | — | `short` | `multi-target`, `enemy` | `damage`, `movement` | — | `instant` |
+| **Levitation** | 2 | `utility` | `action` | — | — | `medium` | `self-target` | `movement` | `concentrate` | `medium` |
+| **Orbiting Shards** | 2 | `defense`, `offense` | `action` | `physical` | — | `self` | `self-target` | `protection`, `damage` | `concentrate` | `short` |
+| **Stasis** | 2 | `control` | `action` | — | `stunned` | `medium` | `single-target`, `enemy` | `debuff` | `concentrate` | `short` |
+| **Strong Telekinesis** | 2 | `utility`, `offense` | `action` | `physical` | — | `medium` | `area` | `movement` | — | `instant` |
+| **Distortion Field** | 3 | `control`, `defense` | `action` | `physical` | — | `medium` | `area` | `protection`, `debuff` | `concentrate` | `short` |
+| **Invert Gravity** | 4 | `control` | `action` | — | `prone` | `medium` | `area`, `enemy` | `debuff`, `movement` | `concentrate` | `short` |
+
+#### Necromancy
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Drain Life** | 0 | `offense`, `healing` | `action` | `necrotic` | — | `medium` | `single-target`, `enemy` | `damage`, `healing` | — | `instant` |
+| **Enfeebling Grasp** | 0 | `offense`, `control` | `action` | `necrotic` | — | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Life Echo** | 0 | `utility` | `action` | — | — | `touch` | `area` | `information` | — | `instant` |
+| **Necromantic Sight** | 0 | `utility` | `quick-action` | — | — | `self` | `self-target` | `information` | `quick` | `briefly` |
+| **Soul Drain** | 0 | `offense`, `control` | `action` | `necrotic` | — | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Animate Corpse** | 1 | `control`, `support` | `ritual` | — | — | `touch` | `area` | `summoning` | `concentrate`, `ritual` | `long` |
+| **Bone Armor** | 1 | `defense` | `action` | — | — | `self` | `self-target` | `protection` | `singular` | `long` |
+| **Control Undead** | 1 | `control` | `action` | — | `stunned` | `short` | `single-target`, `enemy` | `debuff` | `concentrate` | `briefly` |
+| **Death Bolt** | 1 | `offense` | `action` | `necrotic` | — | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Death Ward** | 1 | `defense` | `quick-action` | — | — | `short` | `ally` | `protection` | `quick` | `instant` |
+| **Grasp of Decay** | 1 | `offense`, `control` | `action` | `necrotic` | — | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `short` |
+| **Necrotic Shield** | 1 | `defense`, `offense` | `action` | `necrotic` | — | `self` | `self-target` | `protection` | — | `short` |
+| **Ray of Lethargy** | 1 | `offense`, `control` | `action` | `necrotic` | `slowed`, `staggered` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `short` |
+| **Animate Horde** | 2 | `control`, `support` | `ritual` | — | — | `close` | `area` | `summoning` | `concentrate`, `ritual` | `long` |
+| **Bone Shatter** | 2 | `offense`, `control` | `action` | `necrotic` | `staggered`, `stunned`, `paralyzed` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `briefly` |
+| **Corpse Explosion** | 2 | `offense` | `action` | `necrotic` | `prone` | `medium` | `area`, `enemy` | `damage` | — | `instant` |
+| **Death Mark** | 2 | `control`, `offense` | `action` | `necrotic` | `marked` | `medium` | `single-target`, `enemy` | `debuff` | `singular` | `short` |
+| **Inflict Curse** | 2 | `control` | `action` | — | — | `short` | `single-target`, `enemy` | `debuff` | `singular` | `long` |
+| **Shroud of Blight** | 2 | `control`, `offense` | `action` | `necrotic` | `frightened` | `medium` | `area`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Soul Veil** | 2 | `utility`, `defense` | `action` | — | — | `self` | `self-target` | `buff` | `concentrate` | `short` |
+| **Curse of Mortality** | 3 | `control` | `action` | — | — | `short` | `single-target`, `enemy` | `debuff` | `concentrate` | `short` |
+| **Negative Energy Flood** | 3 | `offense`, `control` | `action` | `necrotic` | `stunned` | `medium` | `area`, `enemy` | `damage`, `debuff` | `blast` | `instant` |
+| **Reaper's Harvest** | 3 | `control`, `utility` | `action` | — | — | `medium` | `area` | `debuff` | `concentrate` | `short` |
+| **Soul Prison** | 3 | `control` | `action` | — | `stunned`, `paralyzed`, `unconscious` | `short` | `single-target`, `enemy` | `debuff` | `concentrate` | `medium` |
+| **Spectral Army** | 3 | `support`, `control` | `action` | `necrotic` | — | `short` | `area` | `summoning` | `concentrate` | `short` |
+| **Wither** | 3 | `offense`, `control` | `action` | `necrotic` | `stunned` | `long` | `single-target`, `enemy` | `damage`, `debuff` | — | `short` |
+| **Death's Embrace** | 4 | `offense`, `defense`, `utility` | `action` | `necrotic` | `frightened`, `paralyzed` | `self` | `self-target` | `transformation`, `enhancement` | `concentrate`, `enchant` | `short` |
+| **Finger of Death** | 4 | `offense` | `action` | `necrotic` | — | `long` | `single-target`, `enemy` | `damage` | — | `instant` |
+
+---
+
+### Mystic Traditions
+
+#### Death
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Chill Touch** | 0 | `offense`, `control` | `action` | `frost` | — | `melee` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Decay** | 0 | `utility` | `action` | — | — | `short` | `area` | `debuff` | — | `instant` |
+| **Enfeebling Touch** | 0 | `offense`, `control` | `action` | `necrotic` | — | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Glimpse of Mortality** | 0 | `control` | `action` | `psychic` | `frightened` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Spared from Death** | 0 | `healing`, `support` | `action` | — | — | `short` | `ally` | `healing` | — | `instant` |
+| **Blood Shards** | 1 | `offense`, `healing` | `action` | `necrotic` | — | `medium` | `single-target`, `enemy` | `damage`, `healing` | — | `instant` |
+| **Curse of Death** | 1 | `control` | `action` | — | — | `short` | `single-target`, `enemy` | `debuff` | `singular` | `long` |
+| **Early Grave** | 1 | `offense`, `control` | `action` | `necrotic` | `grappled`, `restrained` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `briefly` |
+| **Necrotic Weapon** | 1 | `support` | `action` | `necrotic` | — | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Rotting Grasp** | 1 | `offense`, `control` | `action` | `necrotic` | `poisoned`, `staggered` | `melee` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Shivering Ray** | 1 | `offense`, `control` | `action` | `frost` | `slowed`, `dazed` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Circle of Death** | 2 | `control`, `offense` | `action` | `necrotic` | — | `medium` | `area`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Cloud of Sickness** | 2 | `offense`, `control` | `action` | `necrotic` | `poisoned` | `medium` | `area`, `enemy` | `damage`, `debuff` | — | `short` |
+| **Death's Door** | 3 | `control`, `offense` | `action` | `psychic` | `stunned`, `paralyzed` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `short` |
+| **Grave's Bloom** | 3 | `offense`, `control` | `action` | `poison` | `poisoned`, `confused` | `medium` | `area`, `enemy` | `damage`, `debuff` | — | `instant` |
+
+#### Life
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Life Shield** | 0 | `defense`, `support` | `action` | — | — | `medium` | `ally` | `protection` | `singular` | `short` |
+| **Restore Life** | 0 | `healing`, `offense` | `action` | `radiant` | — | `short` | `ally` | `healing`, `damage` | — | `instant` |
+| **Verdant Blast** | 0 | `offense`, `support` | `action` | `radiant` | — | `medium` | `single-target`, `enemy` | `damage`, `healing` | — | `instant` |
+| **Blessing of Life** | 1 | `support`, `defense` | `action` | — | — | `touch` | `ally` | `buff` | `singular` | `long` |
+| **Healing Touch** | 1 | `healing` | `action` | — | — | `touch` | `ally` | `healing` | — | `instant` |
+| **Overflow of Life** | 1 | `healing`, `offense` | `action` | `radiant` | — | `medium` | `ally` | `healing`, `damage` | — | `instant` |
+| **Rapid Vitality** | 1 | `healing` | `quick-action` | — | — | `medium` | `ally` | `healing` | `quick` | `instant` |
+| **Vitalizing Weapon** | 1 | `support` | `action` | — | — | `touch` | `ally` | `enhancement`, `healing` | `enchant`, `singular` | `medium` |
+| **Aid** | 2 | `support`, `defense` | `action` | — | — | `short` | `ally` | `buff` | `enchant` | `long` |
+| **Cleanse** | 2 | `support`, `healing` | `quick-action` | — | — | `medium` | `ally` | `healing` | `quick`, `singular` | `instant` |
+| **Detect Life** | 2 | `utility` | `action` | — | — | `self` | `self-target` | `information` | `concentrate` | `medium` |
+| **Hallow Ground** | 2 | `healing`, `support` | `action` | — | — | `close` | `ally` | `healing` | `concentrate` | `short` |
+| **Healing Burst** | 2 | `healing`, `support` | `action` | — | — | `short` | `ally` | `healing` | `blast` | `instant` |
+| **Abundance of Life** | 3 | `healing`, `support` | `action` | — | — | `long` | `ally` | `healing` | `concentrate` | `medium` |
+| **Vitality Surge** | 3 | `healing`, `offense` | `action` | `radiant` | `dazed`, `stunned` | `medium` | `area` | `healing`, `damage` | `blast` | `instant` |
+
+#### Light
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Dazzling Light** | 0 | `offense`, `utility` | `action` | `radiant` | `blinded`, `dazed` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Detect Lies** | 0 | `utility`, `support` | `quick-action` | — | — | `close` | `single-target` | `information` | `quick` | `short` |
+| **Illuminated Sight** | 0 | `utility` | `action` | — | — | `self` | `self-target` | `buff`, `enhancement` | `enchant` | `medium` |
+| **Revealing Burst** | 0 | `utility`, `control` | `action` | — | — | `short` | `area` | `information`, `debuff` | — | `short` |
+| **Blessing of Light** | 1 | `support` | `action` | — | — | `touch` | `ally` | `buff`, `enhancement` | `enchant`, `singular` | `long` |
+| **Locate Trinket** | 1 | `utility` | `action` | — | — | `touch` | `area` | `information` | `singular` | `long` |
+| **Protect from Influence** | 1 | `support`, `defense` | `quick-action` | — | — | `medium` | `ally` | `protection`, `resistance` | `quick`, `singular` | `short` |
+| **Radiant Burst** | 1 | `offense` | `action` | `radiant` | `blinded`, `dazed` | `medium` | `area`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Radiant Weapon** | 1 | `support` | `action` | `radiant` | — | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Sense Spirits** | 1 | `utility` | `action` | — | — | — | `area` | `information` | — | — |
+| **Sun Sphere** | 1 | `offense`, `control` | `action` | `fire` | — | `medium` | `area`, `enemy` | `damage` | `concentrate` | `short` |
+| **True Strike** | 1 | `offense`, `support` | `quick-action` | — | — | `short` | `enemy` | `buff` | `quick` | `briefly` |
+| **Break Curse** | 2 | `support`, `healing` | `ritual` | — | — | `touch` | `ally` | `healing` | `ritual` | `instant` |
+| **Destroy Undeath** | 2 | `offense`, `control` | `action` | `radiant` | `frightened` | `short` | `area`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Sunbeam** | 2 | `offense`, `control`, `utility` | `action` | `radiant` | — | `medium` | `area`, `enemy` | `damage`, `information` | `concentrate` | `short` |
+| **Blessing of Dawn** | 3 | `support` | `action` | — | — | `short` | `ally` | `enhancement`, `buff` | `enchant`, `singular` | `short` |
+| **Purifying Light** | 3 | `offense`, `control` | `action` | `radiant` | `blinded`, `stunned` | `medium` | `area`, `enemy` | `damage`, `debuff` | `blast` | `instant` |
+| **Solar Flare** | 3 | `offense`, `healing`, `support` | `action` | `radiant` | — | `long` | `area` | `damage`, `healing` | — | `instant` |
+
+#### Nature
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Acid Splash** | 0 | `offense` | `action` | `acid` | — | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Bestial Adaptation** | 0 | `utility`, `defense` | `quick-action` | — | — | `self` | `self-target` | `transformation`, `buff` | `concentrate`, `enchant`, `quick` | `short` |
+| **Lashing Vine** | 0 | `offense`, `control` | `action` | `physical` | `grappled`, `restrained` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Poison Mist** | 0 | `offense`, `control` | `action` | `poison` | `poisoned` | `short` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Rejuvenation** | 0 | `healing` | `action` | — | — | `short` | `ally` | `healing` | `singular` | `short` |
+| **Shillelagh** | 0 | `offense` | `action` | `physical` | — | `self` | `self-target` | `enhancement` | — | `instant` |
+| **Beast Form** | 1 | `utility`, `offense` | `action` | `physical` | — | `self` | `self-target` | `transformation` | `enchant` | `medium` |
+| **Blessing of Nature** | 1 | `support`, `utility` | `action` | — | — | `touch` | `ally` | `buff` | `singular` | `long` |
+| **Mesh of Vines** | 1 | `control` | `action` | `physical` | `grappled`, `restrained` | `medium` | `area`, `enemy` | `debuff` | `singular` | `short` |
+| **Purify Water** | 1 | `utility`, `healing` | `action` | — | — | `short` | `area` | `creation` | — | `short` |
+| **Rock Throw** | 1 | `offense`, `control` | `action` | `physical` | `pushed`, `prone` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Sticks to Snakes** | 1 | `support`, `control` | `action` | `physical` | — | `close` | `area` | `summoning` | `concentrate`, `material` | `medium` |
+| **Venomous Weapon** | 1 | `support` | `action` | `poison` | `poisoned` | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Wild Companion** | 1 | `support` | `ritual` | — | — | `touch` | `self-target` | `summoning` | `ritual` | `permanent` |
+| **Heat Metal** | 2 | `control`, `offense` | `action` | `fire` | — | `short` | `single-target`, `enemy` | `debuff`, `damage` | `concentrate` | `short` |
+| **Law of the Strongest** | 2 | `support` | `action` | — | — | `medium` | `ally` | `enhancement`, `transformation` | `enchant`, `singular` | `short` |
+| **Living Plants** | 2 | `control`, `utility` | `action` | `physical` | `grappled`, `restrained` | `medium` | `area`, `enemy` | `debuff`, `creation` | `concentrate` | `medium` |
+| **Melt Ground** | 2 | `control` | `action` | — | — | `medium` | `area` | `debuff` | `concentrate` | `medium` |
+| **Nature's Passage** | 2 | `utility` | `action` | — | — | `self` | `self-target` | `movement`, `buff` | `concentrate` | `long` |
+| **Rock Skin** | 2 | `defense` | `action` | — | — | `medium` | `ally` | `protection` | `enchant`, `singular` | `short` |
+| **Speak with Animals and Plants** | 2 | `utility` | `action` | — | — | `close` | `area` | `information` | — | `medium` |
+| **Sudden Growth** | 2 | `utility`, `control` | `action` | — | — | `medium` | `area` | `creation` | — | `short` |
+| **Thorn Barrage** | 2 | `offense`, `control` | `action` | `physical` | `bleeding` | `medium` | `area`, `enemy` | `damage`, `debuff` | `blast` | `instant` |
+| **Toxic Mist** | 2 | `offense`, `control` | `action` | `poison` | `poisoned` | `short` | `area`, `enemy` | `damage`, `debuff` | `blast` | `short` |
+| **Water Prison** | 2 | `control` | `action` | — | `grappled`, `restrained` | `short` | `single-target`, `enemy` | `debuff` | `concentrate` | `short` |
+| **Animal Messenger** | 3 | `utility` | `action` | — | — | `touch` | `area` | `information` | `singular` | `long` |
+| **Fungal Growth** | 3 | `control` | `action` | — | `confused` | `medium` | `area`, `enemy` | `debuff` | `singular` | `medium` |
+| **Impalement** | 3 | `offense`, `control` | `action` | `physical` | `pushed` | `long` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Insect Swarm** | 3 | `control`, `offense` | `action` | `physical` | — | `long` | `area`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Life from Stone** | 3 | `support`, `control` | `action` | `physical` | `prone` | `long` | `area` | `summoning` | `concentrate` | `short` |
+| **Nature's Judgment** | 3 | `control` | `action` | — | `marked` | `medium` | `single-target`, `enemy` | `debuff` | `concentrate` | `medium` |
+| **Petrification** | 3 | `control` | `action` | — | `stunned`, `paralyzed`, `unconscious` | `short` | `single-target`, `enemy` | `debuff` | `concentrate` | `medium` |
+| **Stone Pillar** | 3 | `control`, `utility` | `action` | `physical` | — | `short` | `area` | `creation` | `singular` | `short` |
+| **Control Weather** | 4 | `utility`, `control` | `action` | — | — | `extreme` | `area` | `debuff` | `concentrate` | `medium` |
+| **Tree Stride** | 4 | `utility` | `action` | — | — | `extreme` | `self-target` | `movement` | — | `instant` |
+
+#### Peace
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Aura of Sanctuary** | 0 | `defense`, `support` | `quick-action` | — | — | `medium` | `ally` | `protection` | `quick`, `singular` | `short` |
+| **Calming Influence** | 0 | `control` | `action` | — | `charmed` | `short` | `single-target`, `enemy` | `debuff` | — | `short` |
+| **Tranquil Mind** | 0 | `healing`, `control` | `action` | `psychic` | `dazed` | `short` | `ally` | `healing`, `damage` | — | `instant` |
+| **Blessing of Peace** | 1 | `support` | `action` | — | — | `touch` | `ally` | `buff` | `singular` | `long` |
+| **Harmonic Link** | 1 | `support`, `defense` | `action` | — | — | `medium` | `ally` | `protection` | `concentrate` | `medium` |
+| **Pacifying Weapon** | 1 | `support`, `defense` | `action` | — | `dazed` | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Share Harm** | 1 | `defense` | `quick-action` | — | — | `medium` | `enemy` | `damage` | `quick` | `instant` |
+| **Dome of Sanctuary** | 2 | `defense`, `control` | `action` | `psychic` | `prone` | `medium` | `area` | `protection`, `damage` | `concentrate` | `short` |
+| **Slow** | 2 | `control` | `action` | — | `stunned` | `long` | `area`, `enemy` | `debuff` | `concentrate` | `short` |
+| **Spell-breaking Wave** | 2 | `control`, `support` | `action` | — | — | `medium` | `enemy` | `debuff` | — | `instant` |
+| **Anti-Magic Field** | 3 | `control` | `action` | — | — | `medium` | `area` | `immunity` | `concentrate` | `short` |
+| **Martyrdom's Blessing** | 3 | `support`, `defense` | `action` | — | — | `short` | `ally` | `protection`, `buff` | `singular` | `short` |
+| **Pacifying Presence** | 3 | `control` | `action` | `psychic` | — | `long` | `multi-target`, `enemy` | `debuff` | `concentrate` | `short` |
+
+#### Tempest
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Gust** | 0 | `offense`, `control`, `utility` | `action` | `blast` | `pushed` | `short` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Static Shock** | 0 | `offense` | `action` | `lightning` | — | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Wind Slash** | 0 | `offense` | `action` | `blast` | — | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Bursting Crackle** | 1 | `offense`, `control` | `action` | `blast` | `dazed`, `deafened` | `medium` | `area`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Curse of Tempest** | 1 | `control` | `action` | — | — | `short` | `single-target`, `enemy` | `debuff` | `singular` | `long` |
+| **Earthen Tremor** | 1 | `offense`, `control` | `action` | `physical` | `staggered` | `short` | `area`, `enemy` | `damage`, `debuff` | `blast` | `instant` |
+| **Electrified Weapon** | 1 | `support` | `action` | `lightning` | `staggered` | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Lightning Javelin** | 1 | `offense`, `control` | `action` | `lightning` | `staggered` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Storm Coat** | 1 | `defense`, `support` | `action` | `lightning` | — | `short` | `ally` | `resistance`, `enhancement` | `enchant`, `singular` | `long` |
+| **Storm Shield** | 1 | `defense`, `control` | `quick-action` | `blast` | — | `self` | `self-target` | `protection` | `quick` | `briefly` |
+| **Volcanic Bolt** | 1 | `offense`, `control` | `action` | `fire` | `burning` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Wind Hose** | 1 | `offense`, `control` | `action` | `blast` | `grappled`, `restrained` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Conjure Elemental** | 2 | `support`, `control` | `action` | — | — | `long` | `area` | `summoning` | `concentrate` | `short` |
+| **Lightning Bolt** | 2 | `offense`, `control` | `action` | `lightning` | `staggered` | `medium` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Lightning Step** | 2 | `utility`, `offense` | `quick-action` | `blast` | — | `medium` | `self-target` | `movement`, `damage` | `quick` | `instant` |
+| **Magma Burst** | 2 | `offense`, `control` | `action` | `fire` | `burning` | `medium` | `area`, `enemy` | `damage` | — | `instant` |
+| **Pyroclasm** | 2 | `offense`, `control` | `action` | `fire` | `prone` | `short` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Storm Cloud** | 2 | `offense` | `action` | `lightning` | — | `medium` | `multi-target`, `enemy` | `damage` | `concentrate` | `short` |
+| **Thunder Clap** | 2 | `offense`, `control` | `action` | `blast` | `prone`, `deafened` | `short` | `area`, `enemy` | `damage` | — | `instant` |
+| **Torrent** | 2 | `offense`, `control` | `action` | `physical` | `pushed`, `prone` | `medium` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Wind Ward** | 2 | `defense`, `control` | `action` | — | `deafened` | `self` | `self-target` | `protection` | `concentrate`, `enchant` | `medium` |
+| **Chain Lightning** | 3 | `offense` | `action` | `lightning` | `staggered` | `medium` | `multi-target`, `enemy` | `damage` | — | `instant` |
+| **Cone of Cold** | 3 | `offense`, `control` | `action` | `frost` | `slowed` | `medium` | `area`, `enemy` | `damage` | `blast` | `instant` |
+| **Cyclone** | 3 | `offense`, `control` | `action` | `blast` | `prone`, `pushed` | `long` | `area`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Lightning Volley** | 3 | `offense` | `action` | `lightning` | — | `long` | `multi-target`, `enemy` | `damage` | — | `instant` |
+| **Sandstorm** | 3 | `control`, `offense` | `action` | `physical` | `blinded` | — | `area`, `enemy` | `damage`, `debuff` | — | — |
+| **Shattering Orb** | 3 | `offense`, `control` | `action` | `blast` | `prone`, `deafened` | `long` | `area`, `enemy` | `damage` | — | `instant` |
+| **Wind Wall** | 3 | `control`, `defense` | `action` | `blast` | `pushed` | `long` | `area` | `protection`, `debuff` | `concentrate` | `short` |
+| **Avatar of Storms** | 4 | `offense`, `defense` | `action` | `lightning` | — | `self` | `self-target` | `transformation`, `enhancement` | `concentrate`, `enchant` | `short` |
+| **Control Water** | 4 | `control`, `offense` | `action` | `physical` | `staggered` | `extreme` | `area` | `debuff` | `concentrate` | `medium` |
+| **Control Winds** | 4 | `utility`, `control` | `action` | — | — | `extreme` | `area` | `debuff` | `concentrate` | `medium` |
+| **Earthquake** | 4 | `control`, `offense` | `action` | `physical` | `prone` | — | `area`, `enemy` | `debuff` | — | — |
+| **Lightning Storm** | 4 | `offense` | `action` | `lightning` | — | — | `area`, `enemy` | `damage` | — | — |
+
+#### Twilight
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Dark Sight** | 0 | `utility` | `action` | — | — | `self` | `self-target` | `buff`, `enhancement` | `enchant` | `medium` |
+| **Night's Grasp** | 0 | `offense`, `control` | `action` | `frost` | `slowed`, `grappled` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Obscuring Veil** | 0 | `utility` | `action` | — | — | `self` | `self-target` | `transformation`, `buff` | `enchant` | `medium` |
+| **Shadow Veil** | 0 | `utility`, `control` | `action` | — | `blinded` | `medium` | `area` | `creation` | — | `short` |
+| **Whispers of Doubt** | 0 | `control`, `offense` | `action` | `psychic` | `confused` | `medium` | `single-target`, `enemy` | `damage`, `debuff` | — | `instant` |
+| **Cloak of Night** | 1 | `defense`, `utility` | `action` | — | — | `medium` | `ally` | `protection`, `buff` | `singular` | `medium` |
+| **Curse of Twilight** | 1 | `control` | `action` | — | — | `short` | `single-target`, `enemy` | `debuff` | `singular` | `long` |
+| **Haunting Shadows** | 1 | `control`, `offense` | `action` | `psychic` | — | `medium` | `single-target`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Lunar Weapon** | 1 | `support` | `action` | `frost` | `slowed` | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Moon Sphere** | 1 | `offense`, `control` | `action` | `frost` | — | `medium` | `area`, `enemy` | `damage` | `concentrate` | `short` |
+| **Shadow Meld** | 1 | `utility`, `defense` | `action` | — | `hidden` | `self` | `self-target` | `transformation` | `concentrate` | `short` |
+| **Whisper of Dreams** | 1 | `control` | `action` | — | `unconscious` | `short` | `single-target`, `enemy` | `debuff` | — | `medium` |
+| **Aura of Fear** | 2 | `control`, `offense` | `action` | `psychic` | `frightened` | `self` | `area`, `enemy` | `debuff`, `damage` | `concentrate` | `short` |
+| **Everlasting Night** | 2 | `utility`, `control` | `action` | — | `blinded` | `medium` | `area` | `creation` | `concentrate` | `medium` |
+| **Moonbeam** | 2 | `offense`, `control` | `action` | `frost` | `blinded` | `medium` | `area`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Shadow Step** | 2 | `utility` | `action` | — | — | `medium` | `self-target` | `movement` | — | `instant` |
+| **Silent Night** | 2 | `utility`, `control` | `action` | — | `deafened` | `medium` | `area` | `creation`, `debuff` | — | `short` |
+| **Terrors of the Dark** | 2 | `control`, `offense` | `action` | `psychic` | `frightened`, `stunned` | `medium` | `area`, `enemy` | `damage`, `debuff` | — | `short` |
+| **Twilight Bind** | 2 | `control` | `action` | — | `charmed` | `medium` | `single-target`, `enemy` | `debuff` | `concentrate` | `short` |
+| **Nightmare Realm** | 3 | `control`, `offense` | `action` | `psychic` | `stunned`, `staggered` | `medium` | `area`, `enemy` | `damage`, `debuff` | `concentrate` | `short` |
+| **Shadow Clone** | 3 | `utility`, `defense` | `action` | — | — | `medium` | `self-target` | `creation`, `movement` | `concentrate` | `medium` |
+| **Embrace of Night** | 4 | `utility`, `defense` | `action` | — | — | `medium` | `self-target` | `transformation`, `enhancement` | `concentrate`, `enchant` | `short` |
+
+#### War
+
+| Spell | Rank | Role | Action Economy | Damage Type | Condition | Range | Target | Effect Type | Spell Property | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Battle Surge** | 0 | `support` | `quick-action` | — | — | `medium` | `ally` | `buff` | `quick`, `singular` | `briefly` |
+| **Mighty Strike** | 0 | `offense` | `action` | `physical` | — | `self` | `self-target` | `enhancement` | — | `instant` |
+| **Spectral Slash** | 0 | `offense`, `control` | `action` | `physical` | `bleeding` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **Curse of War** | 1 | `control` | `action` | — | `frightened` | `short` | `single-target`, `enemy` | `debuff` | `singular` | `long` |
+| **Heroic Weapon** | 1 | `support` | `action` | `physical` | `frightened` | `touch` | `ally` | `enhancement` | `enchant`, `singular` | `medium` |
+| **Tear Wound** | 1 | `offense`, `control` | `action` | `physical` | `bleeding` | `medium` | `single-target`, `enemy` | `damage` | — | `instant` |
+| **War Cry** | 1 | `control`, `support` | `quick-action` | — | `frightened` | `short` | `area`, `enemy` | `debuff` | `quick` | `briefly` |
+| **Weapon Spirit** | 1 | `offense`, `support` | `action` | `physical` | — | `medium` | `enemy` | `summoning`, `damage` | `concentrate` | `short` |
+| **Ancestral Warriors** | 2 | `offense`, `control` | `action` | `physical` | — | `self` | `area`, `enemy` | `damage`, `summoning` | `concentrate` | `short` |
+| **Blood Sacrifice** | 2 | `offense`, `support` | `quick-action` | — | — | `self` | `self-target` | `buff` | `quick` | `briefly` |
+| **Haste** | 2 | `support`, `offense` | `action` | — | `paralyzed` | `short` | `ally` | `enhancement`, `buff` | `concentrate`, `enchant` | `short` |
+
+---
+
+## Appendix F: Spell Audit Summary Statistics
+
+### Spells by Role
+
+Primary role is the first tag listed for each spell.
+
+| Role | Count | % |
+| --- | --- | --- |
+| `offense` | 96 | 34% |
+| `control` | 75 | 27% |
+| `utility` | 52 | 19% |
+| `support` | 20 | 7% |
+| `healing` | 18 | 6% |
+| `defense` | 18 | 6% |
+
+**Total: 279 spells**
+
+### Spells by Damage Type
+
+Counts spells that deal a given damage type (a spell may appear in multiple rows if it deals multiple types).
+
+| Damage Type | Count |
+| --- | --- |
+| `physical` | 42 |
+| `necrotic` | 40 |
+| `psychic` | 37 |
+| `radiant` | 16 |
+| `fire` | 30 |
+| `lightning` | 31 |
+| `frost` | 25 |
+| `blast` | 36 |
+| `poison` | 11 |
+| `acid` | 6 |
+
+### Most Referenced Conditions (Spells)
+
+| Condition | Count |
+| --- | --- |
+| `stunned` | 23 |
+| `slowed` | 16 |
+| `poisoned` | 15 |
+| `frightened` | 15 |
+| `prone` | 15 |
+| `dazed` | 15 |
+| `staggered` | 13 |
+| `grappled` | 12 |
+| `blinded` | 12 |
+| `restrained` | 12 |
+| `paralyzed` | 10 |
+| `burning` | 9 |
+| `bleeding` | 7 |
+| `confused` | 7 |
+| `deafened` | 7 |
+| `pushed` | 7 |
+| `unconscious` | 6 |
+| `hidden` | 4 |
+| `charmed` | 4 |
+| `marked` | 3 |
+
+### Spells by Range
+
+| Range | Count | % |
+| --- | --- | --- |
+| `medium` | 130 | 47% |
+| `short` | 46 | 16% |
+| `self` | 38 | 14% |
+| `long` | 26 | 9% |
+| `touch` | 16 | 6% |
+| `close` | 9 | 3% |
+| `extreme` | 5 | 2% |
+| `melee` | 4 | 1% |
+| — (unknown/stub) | 5 | 2% |
+
+### Key Observations
+
+1. **Offense and control dominate spell design.** Over 60% of spells are primarily offensive or controlling. This reflects the transgressive nature of arcane magic and the martial/death aspects of several mystic traditions. Healing spells are rare outside the Life tradition.
+
+2. **Medium range is overwhelmingly dominant.** Nearly half of all spells target at medium range. Self-targeting spells (14%) are the second-largest group, concentrated in buff and transformation spells. Very few spells operate at melee or touch range, making those traditions (Death, War, melee conjuration) feel distinctly close-quarters.
+
+3. **Stunned is the most common condition.** It appears in 23 spells across disciplines including telekinetics, necromancy, tempest, and twilight. This reflects the system's emphasis on lockdown as a primary control vector. Slowed, frightened, prone, dazed, and poisoned each appear in 15–16 spells, forming the core condition vocabulary.
+
+4. **Physical and necrotic are the most common damage types among spells.** Physical dominates nature and war traditions (which use weapons or conjured forces), while necrotic defines necromancy and the Death tradition. Fire, lightning, and blast form a second tier, driven by evocation and tempest.
+
+5. **Concentrate is the most important spell property.** Concentration spells pervade every tradition and discipline at rank 2+, making concentration management a central tactical consideration. Enchant spells (weapon and body) are the second-most common, providing a persistent enhancement economy across all traditions.
+
+6. **Several spells are stubs or placeholders.** Prismatic Missile, Orbiting Shards, Wave of Madness, Invade Dreams, Seeming, Astral Body (conjuration), Force Cage, Teleportation Circle, Detect Life, Distortion Field, Invert Gravity, Sandstorm, Stone Pillar, Control Weather, Earthquake, Lightning Storm, Control Winds, and Silent Night have minimal or placeholder text. Their tags are provisional and based on inferred intent.
+
+7. **The Life tradition is unique in its healing focus.** It is the only tradition where healing is the primary role for the majority of spells. All other traditions treat healing as an incidental or absent role, consistent with the design philosophy that healing magic is concentrated in one path.
+
+8. **Ritual spells are rare but span multiple categories.** Ritual casting appears in conjuration (Arcane Glyph, Alarm, Conjure Familiar), necromancy (Animate Corpse, Animate Horde), telepathy (Psychometry, Invade Dreams, Astral Body), light (Break Curse), and nature (Wild Companion). Rituals are used exclusively for summoning, information, or permanent effects — never for direct damage.
