@@ -2,6 +2,7 @@ import {
 	Experimental_CssVarsProvider,
 	experimental_extendTheme,
 } from '@mui/material'
+import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 import { theme } from '@site/src/hooks/createTheme'
 import React from 'react'
 import { AutoRoller } from './AutoRoller'
@@ -12,6 +13,7 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 
 	return (
 		<Experimental_CssVarsProvider theme={customTheme}>
+			<ThemeSwitcher />
 			<AutoRoller
 				title="Treasure Generator"
 				groups={treasureGroups}

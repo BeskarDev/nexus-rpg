@@ -234,8 +234,12 @@ describe('AutoRoller Groups', () => {
 		})
 	})
 
-	it('should have 14 spell groups (6 arcane + 8 mystic)', () => {
-		expect(spellGroups).toHaveLength(14)
+	it('should have 16 spell groups (1 any + 6 arcane + 1 any + 8 mystic)', () => {
+		expect(spellGroups).toHaveLength(16)
+		expect(spellGroups[0].id).toBe('arcane-any')
+		expect(spellGroups[0].label).toBe('Arcane: Any')
+		const mysticAny = spellGroups.find((g) => g.id === 'mystic-any')
+		expect(mysticAny).toBeDefined()
 	})
 
 	it('should have 13 creature groups (random + 12 types)', () => {
@@ -279,45 +283,70 @@ describe('AutoRoller Generators', () => {
 				expect(result.length).toBeGreaterThan(0)
 			})
 		})
+
+		it('should capitalize personal and family names', () => {
+			for (let i = 0; i < 10; i++) {
+				const result = generateName('Dwarf-Ghahar')
+				const [personal, family] = result.split(' ')
+				expect(personal[0]).toBe(personal[0].toUpperCase())
+				expect(family[0]).toBe(family[0].toUpperCase())
+			}
+		})
 	})
 
 	describe('generateSpell', () => {
-		it('should generate a spell with name and effect', () => {
+		it('should generate a spell with name and labeled effect', () => {
 			const result = generateSpell('arcane-Evocation')
 			expect(result).toBeTruthy()
 			expect(result).toContain('—')
+			expect(result).toContain('effect:')
+			expect(result).toContain('duration:')
+			expect(result).toContain('range:')
 		})
 
 		it('should return unknown for invalid school', () => {
 			expect(generateSpell('arcane-Invalid')).toBe('Unknown school')
 		})
 
-		it('should work for all schools', () => {
+		it('should work for all schools including any', () => {
 			spellGroups.forEach((g) => {
 				const result = generateSpell(g.id)
 				expect(result).not.toBe('Unknown school')
 				expect(result.length).toBeGreaterThan(0)
 			})
 		})
+
+		it('should generate results with arcane-any and mystic-any', () => {
+			for (let i = 0; i < 5; i++) {
+				const arcane = generateSpell('arcane-any')
+				expect(arcane).toContain('effect:')
+				const mystic = generateSpell('mystic-any')
+				expect(mystic).toContain('effect:')
+			}
+		})
+
+		it('should output lowercase text', () => {
+			const result = generateSpell('arcane-Evocation')
+			// The part before — should be all lowercase
+			const spellName = result.split('—')[0].trim()
+			expect(spellName).toBe(spellName.toLowerCase())
+		})
 	})
 
 	describe('generateCreature', () => {
-		it('should generate a creature description', () => {
+		it('should generate a creature description with labeled fields', () => {
 			const result = generateCreature('Beast')
 			expect(result).toBeTruthy()
-			expect(result).toContain('Beast:')
+			expect(result).toContain('beast:')
+			expect(result).toContain('behavior:')
+			expect(result).toContain('attack:')
+			expect(result).toContain('defense:')
 		})
 
 		it('should work with random type', () => {
 			const result = generateCreature('random')
 			expect(result).toBeTruthy()
 			expect(result.length).toBeGreaterThan(0)
-		})
-
-		it('should include attack and defense info', () => {
-			const result = generateCreature('Beast')
-			expect(result).toContain('Attack:')
-			expect(result).toContain('Defense:')
 		})
 
 		it('should work for all creature types', () => {
@@ -329,22 +358,25 @@ describe('AutoRoller Generators', () => {
 	})
 
 	describe('generateChallenge', () => {
-		it('should generate puzzle descriptions', () => {
+		it('should generate puzzle descriptions with labeled fields', () => {
 			const result = generateChallenge('puzzles')
 			expect(result).toBeTruthy()
 			expect(result).toContain('—')
+			expect(result).toContain('interaction:')
 		})
 
-		it('should generate trap descriptions', () => {
+		it('should generate trap descriptions with labeled fields', () => {
 			const result = generateChallenge('traps')
 			expect(result).toBeTruthy()
 			expect(result).toContain('—')
+			expect(result).toContain('warning:')
 		})
 
-		it('should generate combat scene descriptions', () => {
+		it('should generate combat scene descriptions with labeled fields', () => {
 			const result = generateChallenge('combat')
 			expect(result).toBeTruthy()
 			expect(result).toContain('—')
+			expect(result).toContain('objective:')
 		})
 
 		it('should return unknown for invalid type', () => {
@@ -361,29 +393,45 @@ describe('AutoRoller Generators', () => {
 			expect(result.length).toBeGreaterThan(0)
 		})
 
-		it('should generate valuable treasure', () => {
+		it('should generate valuable treasure in lowercase', () => {
 			const result = generateTreasure('valuable')
-			expect(result).toContain('Valuable')
+			expect(result).toContain('valuable')
 		})
 
-		it('should generate utility treasure', () => {
+		it('should generate utility treasure in lowercase', () => {
 			const result = generateTreasure('utility')
-			expect(result).toContain('Utility')
+			expect(result).toContain('utility')
 		})
 
-		it('should generate wearable treasure', () => {
-			const result = generateTreasure('wearable')
-			expect(result).toContain('Wearable')
+		it('should generate wearable treasure with individually rolled fields', () => {
+			// Run multiple times to verify fields can differ
+			const results: string[] = []
+			for (let i = 0; i < 20; i++) {
+				results.push(generateTreasure('wearable'))
+			}
+			// All should contain labeled fields
+			results.forEach((r) => {
+				expect(r).toContain('wearable')
+				expect(r).toContain('ornament:')
+				expect(r).toContain('style:')
+				expect(r).toContain('material:')
+			})
 		})
 
-		it('should generate armor treasure', () => {
+		it('should generate armor treasure with individually rolled fields', () => {
 			const result = generateTreasure('armor')
-			expect(result).toContain('Armor')
+			expect(result).toContain('armor')
+			expect(result).toContain('material:')
+			expect(result).toContain('form:')
+			expect(result).toContain('detail:')
 		})
 
-		it('should generate weapon treasure', () => {
+		it('should generate weapon treasure with individually rolled fields', () => {
 			const result = generateTreasure('weapon')
-			expect(result).toContain('Weapon')
+			expect(result).toContain('weapon')
+			expect(result).toContain('material:')
+			expect(result).toContain('form:')
+			expect(result).toContain('detail:')
 		})
 
 		it('should return unknown for invalid category', () => {

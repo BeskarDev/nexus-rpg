@@ -14,6 +14,17 @@ function rollDie(n: number): number {
 	return Math.floor(Math.random() * n) + 1
 }
 
+// Utility: lowercase a string
+function lc(s: string): string {
+	return s.toLowerCase()
+}
+
+// Utility: capitalize first letter of a string
+function capitalize(s: string): string {
+	if (!s) return s
+	return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
 // ===== NAMES =====
 
 export const nameGroups = nameData.cultures.map((c) => ({
@@ -30,12 +41,13 @@ function applyNamingPattern(
 		suffix: string
 	},
 ): string {
-	return pattern
+	const raw = pattern
 		.replace('[Prefix]', parts.prefix.replace(/-$/, ''))
 		.replace('[Syllable 2]', parts.syllable2.replace(/^-/, '').replace(/-$/, ''))
 		.replace('[Syllable 3]', parts.syllable3.replace(/^-/, '').replace(/-$/, ''))
 		.replace('[Suffix]', parts.suffix.replace(/^-/, ''))
 		.replace(/\s*\+\s*/g, '')
+	return capitalize(raw.toLowerCase())
 }
 
 function applyFamilyPattern(
@@ -47,12 +59,13 @@ function applyFamilyPattern(
 		noun2: string
 	},
 ): string {
-	return pattern
+	const raw = pattern
 		.replace('[Adjective 1]', parts.adjective1)
 		.replace('[Adjective 2]', parts.adjective2)
 		.replace('[Noun 1]', parts.noun1)
 		.replace('[Noun 2]', parts.noun2)
 		.replace(/\s*\+\s*/g, '')
+	return capitalize(raw.toLowerCase())
 }
 
 export function generateName(groupId: string): string {
@@ -77,10 +90,12 @@ export function generateName(groupId: string): string {
 // ===== SPELLS =====
 
 export const spellGroups = [
+	{ id: 'arcane-any', label: 'Arcane: Any' },
 	...spellData.arcaneSchools.map((s) => ({
 		id: `arcane-${s.name}`,
 		label: `Arcane: ${s.name}`,
 	})),
+	{ id: 'mystic-any', label: 'Mystic: Any' },
 	...spellData.mysticTraditions.map((s) => ({
 		id: `mystic-${s.name}`,
 		label: `Mystic: ${s.name}`,
@@ -89,10 +104,20 @@ export const spellGroups = [
 
 export function generateSpell(groupId: string): string {
 	const [type, schoolName] = groupId.split('-')
-	const school =
-		type === 'arcane'
-			? spellData.arcaneSchools.find((s) => s.name === schoolName)
-			: spellData.mysticTraditions.find((s) => s.name === schoolName)
+
+	let school
+	if (schoolName === 'any') {
+		const list =
+			type === 'arcane'
+				? spellData.arcaneSchools
+				: spellData.mysticTraditions
+		school = pick(list)
+	} else {
+		school =
+			type === 'arcane'
+				? spellData.arcaneSchools.find((s) => s.name === schoolName)
+				: spellData.mysticTraditions.find((s) => s.name === schoolName)
+	}
 
 	if (!school) return 'Unknown school'
 
@@ -103,7 +128,7 @@ export function generateSpell(groupId: string): string {
 
 	// Roll naming pattern
 	const pattern = pick(spellData.namingPatterns)
-	let name = pattern
+	const name = pattern
 		.replace('[Form]', formEntry.form)
 		.replace('[Adjective]', adjEntry.adjective)
 		.replace('[Noun]', nounEntry.noun)
@@ -111,7 +136,7 @@ export function generateSpell(groupId: string): string {
 	// Roll effect
 	const effect = pick(spellData.effects)
 
-	return `${name} — ${effect.effect} / ${effect.target} / ${effect.duration} / ${effect.range}`
+	return `${lc(name)} — effect: ${lc(effect.effect)} ${lc(effect.target)} (duration: ${lc(effect.duration)}, range: ${lc(effect.range)})`
 }
 
 // ===== CREATURES =====
@@ -128,7 +153,7 @@ export function generateCreature(groupId: string): string {
 	const details = creatureData.typeDetails[typeName] as
 		| { shape: string; headAttribute: string; bodyAttribute: string; adaption: string }[]
 		| undefined
-	if (!details) return `${typeName} (no details available)`
+	if (!details) return `${lc(typeName)} (no details available)`
 
 	const detail = pick(details)
 	const personality = pick(creatureData.personality)
@@ -137,17 +162,12 @@ export function generateCreature(groupId: string): string {
 	const defense = pick(creatureData.specialDefense)
 	const ability = pick(creatureData.specialAbilities)
 
-	const parts = [`${typeName}: ${detail.shape}`]
-	if (detail.headAttribute) parts.push(detail.headAttribute)
-	parts.push(detail.bodyAttribute)
-	parts.push(detail.adaption)
-	parts.push(`| ${personality.behavior}`)
-	parts.push(`| Attack: ${attack.bodyPart} (${attack.attackMode})`)
-	parts.push(`| Special: ${special.deliveryMethod} ${special.attackType}`)
-	parts.push(`| Defense: ${defense.defenseMethod} (${defense.defenseType})`)
-	parts.push(`| Ability: ${ability.trigger} → ${ability.action} ${ability.subject}`)
+	const appearance = [lc(detail.shape)]
+	if (detail.headAttribute) appearance.push(lc(detail.headAttribute))
+	appearance.push(lc(detail.bodyAttribute))
+	appearance.push(lc(detail.adaption))
 
-	return parts.join(', ')
+	return `${lc(typeName)}: ${appearance.join(', ')} — behavior: ${lc(personality.behavior)}, attack: ${lc(attack.bodyPart)} (${lc(attack.attackMode)}), special: ${lc(special.deliveryMethod)} ${lc(special.attackType)}, defense: ${lc(defense.defenseMethod)} (${lc(defense.defenseType)}), ability: ${lc(ability.trigger)} → ${lc(ability.action)} ${lc(ability.subject)}`
 }
 
 // ===== CHALLENGES =====
@@ -161,15 +181,15 @@ export const challengeGroups = [
 export function generateChallenge(groupId: string): string {
 	if (groupId === 'puzzles') {
 		const p = pick(challengeData.puzzles)
-		return `${p.puzzleType}: ${p.coreElement} — ${p.interaction} / ${p.presentation} / ${p.feedback} / ${p.hints}`
+		return `${lc(p.puzzleType)}: ${lc(p.coreElement)} — interaction: ${lc(p.interaction)}, presentation: ${lc(p.presentation)}, feedback: ${lc(p.feedback)}, hints: ${lc(p.hints)}`
 	}
 	if (groupId === 'traps') {
 		const t = pick(challengeData.traps)
-		return `${t.hazardType}: ${t.presentation} — ${t.warning} / ${t.avoidance}`
+		return `${lc(t.hazardType)}: ${lc(t.presentation)} — warning: ${lc(t.warning)}, avoidance: ${lc(t.avoidance)}`
 	}
 	if (groupId === 'combat') {
 		const c = pick(challengeData.combatScenes)
-		return `${c.sceneType}: ${c.terrain} — ${c.objective} / ${c.twist}`
+		return `${lc(c.sceneType)}: ${lc(c.terrain)} — objective: ${lc(c.objective)}, twist: ${lc(c.twist)}`
 	}
 	return 'Unknown challenge type'
 }
@@ -200,10 +220,11 @@ function generateValuable(): string {
 		| { form: string; detail: string }[]
 		| undefined
 	if (details && details.length > 0) {
-		const d = pick(details)
-		return `Valuable — ${type}: ${d.form}, ${d.detail}`
+		const formEntry = pick(details)
+		const detailEntry = pick(details)
+		return `valuable — ${lc(type)}: ${lc(formEntry.form)}, ${lc(detailEntry.detail)}`
 	}
-	return `Valuable — ${type}`
+	return `valuable — ${lc(type)}`
 }
 
 function generateUtility(): string {
@@ -211,15 +232,17 @@ function generateUtility(): string {
 	const type = entry.type
 	const details = treasureData.utilityDetails[type] as string[] | undefined
 	if (details && details.length > 0) {
-		return `Utility — ${type}: ${pick(details)}`
+		return `utility — ${lc(type)}: ${lc(pick(details))}`
 	}
-	return `Utility — ${type}`
+	return `utility — ${lc(type)}`
 }
 
 function generateWearable(): string {
 	const slot = pick(treasureData.wearableSlots)
-	const desc = pick(treasureData.wearableDescription)
-	return `Wearable — ${slot}: ${desc.ornament}, ${desc.style}, ${desc.material}`
+	const ornamentEntry = pick(treasureData.wearableDescription)
+	const styleEntry = pick(treasureData.wearableDescription)
+	const materialEntry = pick(treasureData.wearableDescription)
+	return `wearable — ${lc(slot)}: ornament: ${lc(ornamentEntry.ornament)}, style: ${lc(styleEntry.style)}, material: ${lc(materialEntry.material)}`
 }
 
 function generateArmor(): string {
@@ -228,10 +251,12 @@ function generateArmor(): string {
 		| { material: string; form: string; detail: string }[]
 		| undefined
 	if (details && details.length > 0) {
-		const d = pick(details)
-		return `Armor — ${type}: ${d.material}, ${d.form}, ${d.detail}`
+		const materialEntry = pick(details)
+		const formEntry = pick(details)
+		const detailEntry = pick(details)
+		return `armor — ${lc(type)}: material: ${lc(materialEntry.material)}, form: ${lc(formEntry.form)}, detail: ${lc(detailEntry.detail)}`
 	}
-	return `Armor — ${type}`
+	return `armor — ${lc(type)}`
 }
 
 function generateWeapon(): string {
@@ -240,10 +265,12 @@ function generateWeapon(): string {
 		| { material: string; form: string; detail: string }[]
 		| undefined
 	if (details && details.length > 0) {
-		const d = pick(details)
-		return `Weapon — ${type}: ${d.material}, ${d.form}, ${d.detail}`
+		const materialEntry = pick(details)
+		const formEntry = pick(details)
+		const detailEntry = pick(details)
+		return `weapon — ${lc(type)}: material: ${lc(materialEntry.material)}, form: ${lc(formEntry.form)}, detail: ${lc(detailEntry.detail)}`
 	}
-	return `Weapon — ${type}`
+	return `weapon — ${lc(type)}`
 }
 
 export function generateTreasure(groupId: string): string {

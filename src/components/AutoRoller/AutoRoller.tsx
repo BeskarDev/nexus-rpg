@@ -7,10 +7,11 @@ import {
 	InputLabel,
 	MenuItem,
 	Select,
-	TextField,
 	Typography,
 } from '@mui/material'
 import React, { useState } from 'react'
+
+const COUNT_OPTIONS = [1, 2, 3, 5, 10]
 
 interface AutoRollerGroup {
 	id: string
@@ -81,18 +82,25 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 							</Select>
 						</FormControl>
 
-						<TextField
-							label="Count"
-							type="number"
-							size="small"
-							value={count}
-							onChange={(e) => {
-								const v = parseInt(e.target.value, 10)
-								if (v >= 1 && v <= 20) setCount(v)
-							}}
-							inputProps={{ min: 1, max: 20 }}
-							sx={{ width: 80 }}
-						/>
+						<FormControl sx={{ minWidth: 80 }} size="small">
+							<InputLabel id="auto-roller-count-label">
+								Count
+							</InputLabel>
+							<Select
+								labelId="auto-roller-count-label"
+								value={count}
+								label="Count"
+								onChange={(e) =>
+									setCount(Number(e.target.value))
+								}
+							>
+								{COUNT_OPTIONS.map((n) => (
+									<MenuItem key={n} value={n}>
+										{n}
+									</MenuItem>
+								))}
+							</Select>
+						</FormControl>
 
 						<Button
 							variant="contained"
