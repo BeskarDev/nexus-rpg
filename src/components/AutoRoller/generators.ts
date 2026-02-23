@@ -250,7 +250,7 @@ export function generateChallenge(groupId: string): string {
 		const presentation = pickField(challengeData.puzzles, 'presentation')
 		const feedback = pickField(challengeData.puzzles, 'feedback')
 		const hints = pickField(challengeData.puzzles, 'hints')
-		return `a ${lc(puzzleType)} puzzle featuring ${lc(coreElement)}, interacted with by ${lc(interaction)}. presented as ${lc(presentation)} with ${lc(feedback)} as feedback. hints: ${lc(hints)}.`
+		return `${lc(puzzleType)} puzzle featuring ${lc(coreElement)}, interacted with by ${lc(interaction)}. presented as ${lc(presentation)} with ${lc(feedback)} as feedback. hints: ${lc(hints)}.`
 	}
 	if (groupId === 'traps') {
 		// Roll each column independently
@@ -258,7 +258,7 @@ export function generateChallenge(groupId: string): string {
 		const presentation = pickField(challengeData.traps, 'presentation')
 		const warning = pickField(challengeData.traps, 'warning')
 		const avoidance = pickField(challengeData.traps, 'avoidance')
-		return `a ${lc(hazardType)} trap disguised as ${lc(presentation)}. warning sign: ${lc(warning)}. avoided by: ${lc(avoidance)}.`
+		return `${lc(hazardType)} trap disguised as ${lc(presentation)}. warning sign: ${lc(warning)}. avoided by: ${lc(avoidance)}.`
 	}
 	if (groupId === 'combat') {
 		// Roll each column independently
@@ -266,7 +266,7 @@ export function generateChallenge(groupId: string): string {
 		const terrain = pickField(challengeData.combatScenes, 'terrain')
 		const objective = pickField(challengeData.combatScenes, 'objective')
 		const twist = pickField(challengeData.combatScenes, 'twist')
-		return `a ${lc(sceneType)} encounter in ${lc(terrain)}. objective: ${lc(objective)}. twist: ${lc(twist)}.`
+		return `${lc(sceneType)} encounter in ${lc(terrain)}. objective: ${lc(objective)}. twist: ${lc(twist)}.`
 	}
 	return 'Unknown challenge type'
 }
@@ -299,9 +299,9 @@ function generateValuable(): string {
 	if (details && details.length > 0) {
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `a ${lc(type)} in the form of ${lc(form)} with ${lc(detail)}.`
+		return `${lc(type)} in the form of ${lc(form)} with ${lc(detail)}.`
 	}
-	return `a ${lc(type)}.`
+	return `${lc(type)}.`
 }
 
 function generateUtility(): string {
@@ -309,9 +309,9 @@ function generateUtility(): string {
 	const type = entry.type
 	const details = treasureData.utilityDetails[type] as string[] | undefined
 	if (details && details.length > 0) {
-		return `a ${lc(type)} — ${lc(pick(details))}.`
+		return `${lc(type)} — ${lc(pick(details))}.`
 	}
-	return `a ${lc(type)}.`
+	return `${lc(type)}.`
 }
 
 function generateWearable(): string {
@@ -321,7 +321,7 @@ function generateWearable(): string {
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
 	const style = pickField(treasureData.wearableDescription, 'style')
 	const material = pickField(treasureData.wearableDescription, 'material')
-	return `a ${lc(style)} ${lc(material)} ${lc(itemType)} (${lc(slot)}) with ${lc(ornament)} ornament.`
+	return `${lc(style)} ${lc(material)} ${lc(itemType)} (${lc(slot)}) with ${lc(ornament)} ornament.`
 }
 
 function generateArmor(): string {
@@ -333,9 +333,9 @@ function generateArmor(): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `a ${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
+		return `${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
 	}
-	return `a ${lc(type)}.`
+	return `${lc(type)}.`
 }
 
 function generateWeapon(): string {
@@ -347,9 +347,9 @@ function generateWeapon(): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `a ${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
+		return `${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
 	}
-	return `a ${lc(type)}.`
+	return `${lc(type)}.`
 }
 
 export function generateTreasure(groupId: string): string {
