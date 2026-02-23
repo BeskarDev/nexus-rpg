@@ -10,7 +10,7 @@ permissions:
   deployments: write
 
 env:
-  NODE_VERSION: '22'
+  NODE_VERSION: '24'
   FIREBASE_PROJECT_ID: nexus-rpg-d04d1
 
 jobs:
@@ -32,8 +32,8 @@ jobs:
           echo "Yarn version: $(yarn --version)"
           echo "NPM version: $(npm --version)"
           # Ensure we're using the correct Node.js version
-          if ! node --version | grep -q "v22"; then
-            echo "ERROR: Expected Node.js v22.x.x but got $(node --version)"
+          if ! node --version | grep -q "v24"; then
+            echo "ERROR: Expected Node.js v24.x.x but got $(node --version)"
             exit 1
           fi
 
