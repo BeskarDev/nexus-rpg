@@ -48,21 +48,38 @@ describe('AutoRoller Data Integrity', () => {
 			expect(folks).toContain('Minotaur')
 		})
 
-		it('should have 20 personal name entries per culture', () => {
+		it('should have 50 personal name entries per culture', () => {
 			nameData.cultures.forEach((culture) => {
-				expect(culture.personalNames).toHaveLength(20)
+				expect(culture.personalNames).toHaveLength(50)
 			})
 		})
 
-		it('should have 20 family name entries per culture', () => {
+		it('should have 50 family name entries per culture', () => {
 			nameData.cultures.forEach((culture) => {
-				expect(culture.familyNames).toHaveLength(20)
+				expect(culture.familyNames).toHaveLength(50)
 			})
 		})
 
-		it('should have 20 German family name entries per culture', () => {
+		it('should have 50 German family name entries per culture', () => {
 			nameData.cultures.forEach((culture) => {
-				expect(culture.familyNamesDE).toHaveLength(20)
+				expect(culture.familyNamesDE).toHaveLength(50)
+			})
+		})
+
+		it('should have 50 in-world family name entries per culture', () => {
+			nameData.cultures.forEach((culture) => {
+				expect(culture.familyNamesInWorld).toHaveLength(50)
+			})
+		})
+
+		it('should have valid in-world family name fields', () => {
+			nameData.cultures.forEach((culture) => {
+				culture.familyNamesInWorld.forEach((name) => {
+					expect(name.adjective1).toBeTruthy()
+					expect(name.adjective2).toBeTruthy()
+					expect(name.noun1).toBeTruthy()
+					expect(name.noun2).toBeTruthy()
+				})
 			})
 		})
 
@@ -400,24 +417,38 @@ describe('AutoRoller Generators', () => {
 			}
 		})
 
+		it('should always include in-world name with meaning in parentheses', () => {
+			for (let i = 0; i < 10; i++) {
+				const result = generateName('Dwarf-Ghahar')
+				// Result format: "PersonalName InWorldFamily (Meaning)"
+				expect(result).toMatch(/\(.+\)$/)
+			}
+		})
+
 		it('should generate German family names when useGerman is true', () => {
 			for (let i = 0; i < 10; i++) {
 				const result = generateName('Dwarf-Ghahar', true)
 				expect(result).toBeTruthy()
-				expect(result.split(' ').length).toBeGreaterThanOrEqual(2)
+				// Format: "PersonalName InWorldFamily (Meaning)"
+				expect(result).toMatch(/\(.+\)$/)
 			}
 		})
 
-		it('should produce different results between English and German', () => {
-			const enResults = new Set<string>()
-			const deResults = new Set<string>()
+		it('should produce different meanings between English and German', () => {
+			const enMeanings = new Set<string>()
+			const deMeanings = new Set<string>()
 			for (let i = 0; i < 50; i++) {
-				enResults.add(generateName('Dwarf-Ghahar', false).split(' ')[1])
-				deResults.add(generateName('Dwarf-Ghahar', true).split(' ')[1])
+				const enResult = generateName('Dwarf-Ghahar', false)
+				const deResult = generateName('Dwarf-Ghahar', true)
+				// Extract meaning from parentheses
+				const enMatch = enResult.match(/\((.+)\)$/)
+				const deMatch = deResult.match(/\((.+)\)$/)
+				if (enMatch) enMeanings.add(enMatch[1])
+				if (deMatch) deMeanings.add(deMatch[1])
 			}
-			// The sets should differ since German words are different
-			const enArray = [...enResults]
-			const deArray = [...deResults]
+			// The sets should differ since German words are different from English
+			const enArray = [...enMeanings]
+			const deArray = [...deMeanings]
 			const overlap = enArray.filter((n) => deArray.includes(n))
 			expect(overlap.length).toBeLessThan(enArray.length)
 		})
