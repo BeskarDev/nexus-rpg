@@ -92,19 +92,21 @@ Mark waypoints on the track (⛺ camps, 🏘️ settlements, ⚠️ danger zones
 
 ## Journey Timer & Event Pacing
 
-The **Dice Timer** mechanic (see [Scene & Time Scale Procedures](scene-timescale-procedures.md)) provides a unified pacing tool for all modes of play. For travel, the timer creates a visible countdown that builds tension as the party progresses along the route, generating varied events at a pace calibrated to terrain danger.
+The **Dice Timer** mechanic (see [Scene & Time Scale Procedures](scene-timescale-procedures.md)) provides a unified pacing tool for all modes of play. For travel, the timer creates a **visible countdown** that builds tension as the party moves through the world. Both the GM and players can see it ticking down, creating a shared sense of mounting danger and real decisions about when to push, rest, or detour.
 
 ### How It Works
 
 At the start of each journey leg (or when terrain type changes), the GM sets a **Journey Timer** based on the terrain:
 
-| Terrain Risk | Journey Timer | Event Frequency |
-|--------------|---------------|-----------------|
-| Safe (roads, plains, tundra) | d8 (start at 8) | Every ~8 days |
-| Moderate (forest, hills, desert, badlands) | d6 (start at 6) | Every ~6 days |
-| Dangerous (mountains, swamp, jungle, haunted) | d4 (start at 4) | Every ~4 days |
+| Terrain Risk | Journey Timer | Unmodified Event Frequency |
+|--------------|---------------|----------------------------|
+| Safe (roads, plains, tundra) | 4 | Every ~4 days |
+| Moderate (forest, hills, desert, badlands) | 3 | Every ~3 days |
+| Dangerous (mountains, swamp, jungle, haunted) | 2 | Every ~2 days |
 
-Each travel day **ticks the timer down by 1**, regardless of how many paces the party clears. When the timer reaches 0, roll the **Travel Event Die** (d6) to determine what happens, then reset the timer to its starting value.
+Each travel day, the timer **ticks down by 1** as a baseline. However, both the Navigator and Scout rolls modify the timer — good rolls delay events, bad rolls accelerate them (see Daily Travel Procedure below). When the timer reaches 0, roll the **Travel Event Die** to determine what happens, then reset the timer to its starting value.
+
+The timer cannot go below 0 (excess ticks are lost) and cannot exceed double its starting value (e.g., max 8 for a timer-4 terrain).
 
 ### Travel Event Die (d6)
 
@@ -112,14 +114,14 @@ When the journey timer reaches 0, roll d6:
 
 | d6 | Category | Effect |
 |----|----------|--------|
-| 1 | **Threat** | An encounter or direct danger. Roll the terrain's encounter die for severity, then consult the terrain encounter tables. |
-| 2 | **Wear & Tear** | Long days on the road strain gear. Each adventurer chooses one item: worn armor, weapons, or tools require a Durability check, or a pack item loses 1 use. |
-| 3 | **Provisions Dwindle** | Food runs low, water sources dry up, or stored rations go bad. Roll a Supply check for provisions. |
-| 4 | **Route Shift** | Conditions change along the route. Roll d3: [1] Weather turns harsh (next day's travel suffers +1 bane). [2] A road or bridge is damaged or blocked (detour adds 1d4 paces). [3] Terrain becomes more difficult than expected (–1 pace next day). |
-| 5 | **Traces** | Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead or off the beaten path. |
-| 6 | **Ambient** | A striking sunset, a cool breeze, or a peaceful night. Atmosphere and flavor, but nothing of note occurs. |
+| 1 | **Encounter** | A hostile or tense meeting. Roll the terrain's encounter die for severity, then consult the terrain encounter tables. |
+| 2 | **Hazard** | An environmental danger — natural disaster, treacherous terrain, poisonous conditions. Roll on the terrain's hazard list or improvise from the terrain's hazard entries. |
+| 3 | **Wear & Tear** | Long days on the road strain gear. Each adventurer chooses one item: worn armor, weapons, or tools require a Durability check, or a pack item loses 1 use. |
+| 4 | **Route Shift** | Conditions change along the route. Roll d3: [1] Weather turns harsh (next day's travel suffers +1 bane). [2] Path is blocked (detour adds 1d4 paces). [3] Terrain worsens (–1 pace next day). |
+| 5 | **Traces** | Useful information — tracks, old markers, distant smoke, rumors from a passing traveler. Foreshadows what lies ahead or reveals a potential shortcut/danger. |
+| 6 | **Boon** | A stroke of luck — a hidden spring, an abandoned cache, a scenic overlook that lifts spirits. One party member removes 1 fatigue, or the party gains a minor advantage. |
 
-When a **Threat** (1) is rolled, use the terrain's **Encounter Die** to determine severity:
+When an **Encounter** (1) is rolled, use the terrain's **Encounter Die** to determine severity:
 
 | Roll | Type | Severity |
 |------|------|----------|
@@ -132,24 +134,27 @@ When a **Threat** (1) is rolled, use the terrain's **Encounter Die** to determin
 
 Then consult the terrain-specific encounter tables for the actual encounter.
 
-### Why This Works with Paces
+### How Paces and Timer Interact
 
-The timer and paces create a natural tension between **progress and exposure**:
+The timer and paces create a natural tension between **progress** and **exposure**. They reinforce each other through three channels:
 
-- **Hard terrain costs more time.** Fewer paces per day means more days in transit, which means more timer ticks and more events. A 40-pace journey through mountains (2 paces/day) takes ~20 days and fires ~5 events. The same distance on roads (5 paces/day) takes ~8 days and fires only ~1 event.
-- **Delays are dangerous.** Getting lost (0 paces), bad weather, and failed navigation still tick the timer. Wasted days increase exposure without bringing the party closer to safety.
-- **Forced marches reduce exposure.** Pushing for extra paces finishes the journey faster, meaning fewer timer ticks. The cost (fatigue) is the price of reduced risk.
-- **The timer is visible.** Both GM and players track the countdown, creating shared awareness of mounting danger and informed decisions about when to push, rest, or detour.
+**1. Hard terrain compounds danger.** Difficult terrain slows you down (fewer paces/day) AND has a shorter timer. A 40-pace mountain journey at ~2 paces/day takes ~20 days with a timer of 2, generating ~10 events. The same 40 paces on roads at ~5 paces/day takes ~8 days with a timer of 4, generating ~2 events. Mountains are five times more eventful.
 
-### Timer Manipulation
+**2. Good rolls help on both axes.** A Navigator's strong success clears good distance AND delays the timer. A Scout's strong success adjusts the timer AND finds shelter. Bad rolls do the opposite — the party falls behind on progress while the timer accelerates toward the next event. This means skilled parties feel noticeably safer, while struggling parties face compounding problems.
 
-The Scout role and other factors can speed up, slow down, or reset the journey timer:
+**3. Decisions create real trade-offs.** Forced marches clear extra paces (arriving sooner = fewer total events) but cost fatigue. Resting a day to recover burns a timer tick without progress. Taking a detour adds paces AND more timer ticks. Every choice has a visible cost on one or both tracks.
 
-| Source | Effect |
-|--------|--------|
-| Scout strong success | +1 to timer (delay next event) |
-| Scout critical success | +2 to timer, or skip the next event entirely when it fires |
-| Scout failure | –1 from timer (accelerate next event) |
+### Timer Manipulation Summary
+
+Both Navigator and Scout results affect the timer, alongside waypoints and GM discretion:
+
+| Source | Timer Effect |
+|--------|-------------|
+| Navigator strong/critical success | +1 to timer (efficient travel delays events) |
+| Navigator blunder | –1 from timer (getting lost attracts trouble) |
+| Scout strong success | +1 to timer (vigilance keeps danger at bay) |
+| Scout critical success | +2 to timer, or cancel the next event when it fires |
+| Scout failure | –1 from timer (danger approaches unnoticed) |
 | Scout blunder | –2 from timer or trigger an immediate event |
 | Reaching a settlement (🏘️) | Reset timer to starting value |
 | Reaching a landmark (🗿) | +1 to timer |
@@ -157,23 +162,21 @@ The Scout role and other factors can speed up, slow down, or reset the journey t
 | Loud or reckless action | –1 from timer (GM discretion) |
 | Clever precaution | +1 to timer (GM discretion) |
 
-> **Variant — Random Start:** Instead of starting the timer at its maximum value, the GM can roll the terrain die to set a random starting value. This adds unpredictability — events may fire sooner or later than expected.
+> **Variant — Random Start:** Instead of starting at the fixed value, the GM rolls a die matching the timer size (d4, d3, or d2) to set a random starting value. This adds unpredictability — the first event may fire sooner or later than expected.
 
-### Example: Forest Journey with Timer
+### Example: Swamp Journey with Timer
 
-The party must cross a forest (Journey Timer d6, Encounter Die d6) over a 24-pace route. Forest terrain modifier (–1 pace) means ~3 paces/day with a weak success.
+The party must cross a swamp (Journey Timer 2, Encounter Die d4) over a 16-pace route. Swamp terrain modifier (–2 paces) means ~2 paces/day with a weak success.
 
-- **Day 1.** Timer: 6 → 5. Navigator rolls weak success (4 – 1 = 3 paces). Scout rolls strong success: +1 timer (5 → 6), finds shelter. Progress: 3/24.
-- **Day 2.** Timer: 6 → 5. Navigator rolls strong success (4 – 1 = 3 paces, chooses +1 boon next roll). Scout rolls failure: –1 timer (5 → 4). Progress: 6/24.
-- **Day 3.** Timer: 4 → 3. Navigator rolls critical success (6 – 1 = 5 paces). Scout rolls weak success: finds shelter. Progress: 11/24.
-- **Day 4.** Timer: 3 → 2. Navigator rolls weak success (3 paces). Scout rolls strong success: +1 timer (2 → 3), finds shelter. Progress: 14/24.
-- **Day 5.** Timer: 3 → 2. Navigator rolls failure (2 – 1 = 1 pace). Scout rolls failure: –1 timer (2 → 1). Progress: 15/24.
-- **Day 6.** Timer: 1 → 0. **Event fires!** Roll d6: result 4 (Route Shift). Roll d3: result 2 — a trail is blocked by a fallen tree, detour adds 1d4 paces (rolls 3). Journey is now 27 paces. Timer resets to 6. Progress: 15/27.
-- **Days 7–11.** The party continues, clearing ~3 paces/day.
-- **Day 12.** Timer: 0. **Event fires again!** Roll d6: result 1 (Threat). Roll encounter die d6: result 5 (Challenging). Consult forest encounter table — bandits demand a toll. Timer resets to 6. Progress: 24/27.
-- **Day 13.** The party clears the remaining paces and arrives.
+- **Day 1.** Timer: 2. Tick –1 → 1. Navigator rolls weak success (4 – 2 = 2 paces). Scout rolls strong success: +1 timer (1 → 2), finds shelter. Progress: 2/16.
+- **Day 2.** Timer: 2. Tick –1 → 1. Navigator rolls strong success (4 – 2 = 2 paces, +1 timer → 2). Scout rolls weak success: finds shelter. Progress: 4/16.
+- **Day 3.** Timer: 2. Tick –1 → 1. Navigator rolls failure (2 – 2 = 0 paces). Scout rolls failure: –1 timer (1 → 0). **Event fires!** Roll d6: result 2 (Hazard) — poisonous gas pocket, Spirit + Fortitude TN 12 or poisoned. Timer resets to 2. Progress: 4/16.
+- **Day 4.** Timer: 2. Tick –1 → 1. Navigator rolls weak success (2 paces). Scout rolls strong success: +1 timer (1 → 2), finds shelter. Progress: 6/16.
+- **Day 5.** Timer: 2. Tick –1 → 1. Navigator rolls weak success (2 paces). Scout rolls failure: –1 timer (1 → 0). **Event fires!** Roll d6: result 1 (Encounter). Roll encounter die d4: result 3 (Challenging). Consult swamp table — aggressive crocodiles. Timer resets to 2. Progress: 8/16.
+- **Day 6.** Timer: 2. Tick –1 → 1. Party decides on forced march (+2 paces, gain 1 fatigue). Navigator rolls strong success (4 – 2 + 2 = 4 paces, +1 timer → 2). Scout rolls weak success: finds shelter. Progress: 12/16.
+- **Day 7.** Timer: 2. Tick –1 → 1. Forced march again (+2 paces, more fatigue). Navigator rolls weak success (4 paces). Scout rolls strong success: +1 timer (1 → 2), finds shelter. Progress: 16/16. **Arrived!**
 
-The timer fired twice over 13 days, generating one environmental complication and one combat encounter — a natural, varied rhythm without rolling for encounters every single day.
+Over 7 days, the timer fired twice (day 3 and day 5), generating a hazard and a combat encounter. The party's decision to force march on days 6–7 reduced their total exposure by arriving 1–2 days earlier — but at the cost of fatigue. Notice how bad Navigator/Scout rolls on day 3 caused BOTH zero progress AND an immediate event — a compounding failure that felt dangerous.
 
 ---
 
@@ -188,13 +191,15 @@ Declare if the party attempts a forced march (+2 paces, everyone gains 1 fatigue
 
 **Navigator (mandatory)** — Spirit + Nature or Mind + Education vs. Terrain TN:
 - Clears paces based on result (see table above)
+- Strong/Critical success: +1 to journey timer (efficient pathfinding delays events)
+- Blunder: –1 from journey timer (getting lost attracts trouble)
 
 **Scout (mandatory)** — Spirit + Perception vs. TN 8:
 - Blunder: –2 from journey timer or trigger an immediate event
-- Failure: –1 from journey timer (accelerates next event)
+- Failure: –1 from journey timer (danger approaches unnoticed)
 - Weak Success: Choose one — find shelter, +1 to journey timer, or make a discovery
 - Strong Success: Choose two
-- Critical Success: Choose all three, or skip the next event entirely when the timer fires
+- Critical Success: Choose all three, or cancel the next event when the timer fires
 
 **Optional roles:** Lookout, Quartermaster, Forager, Hunter, Fisher roll as needed.
 
@@ -208,10 +213,10 @@ Mark off progress boxes as paces accumulate (4 paces = 1 box).
 
 ### 4. Tick Timer & Resolve Events
 
-Tick the **journey timer** down by 1. If the timer reaches 0:
+Tick the **journey timer** down by 1 (baseline daily tick). Then apply any timer modifications from Navigator and Scout results (see step 2). If the timer reaches 0 at any point:
 
 1. Roll the **Travel Event Die** (d6) — consult the Travel Event Die table (see Journey Timer & Event Pacing above).
-2. If the result is a **Threat** (1), roll the terrain's **encounter die** for severity, then consult the terrain encounter tables.
+2. If the result is an **Encounter** (1), roll the terrain's **encounter die** for severity, then consult the terrain encounter tables.
 3. Reset the timer to its starting value.
 
 If the timer has not reached 0, no event occurs this day.
@@ -234,16 +239,16 @@ If the timer has not reached 0, no event occurs this day.
 ## Travel Roles
 
 ### Navigator (Mandatory)
-Roll **Spirit + Nature** or **Mind + Education** for progress.
-- Strong+ success: Choose bonuses (on track, discovery, well-rested)
+Roll **Spirit + Nature** or **Mind + Education** for progress and efficiency.
+- Strong+ success: Choose bonuses (on track, discovery, well-rested) AND +1 to journey timer
 - Failure: Complications or slower progress
-- Blunder: Get lost
+- Blunder: Get lost AND –1 from journey timer
 
 ### Scout (Mandatory)
-Roll **Spirit + Perception** to manipulate the journey timer and find shelter.
-- Critical success: +2 to journey timer, or skip the next event entirely when it fires
+Roll **Spirit + Perception** to manage danger and find shelter.
+- Critical success: Choose all (shelter, +1 timer, discovery), or cancel the next event when it fires
 - Strong+ success: Find shelter, +1 to timer, make discovery (choose two)
-- Failure: –1 from journey timer (accelerates next event)
+- Failure: –1 from journey timer (danger approaches unnoticed)
 - Blunder: –2 from journey timer or trigger an immediate event
 
 ### Optional Roles
@@ -337,7 +342,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 6 (Easy)  
 **Terrain Modifier:** +1 pace  
 **Encounter Die:** d8  
-**Journey Timer:** d8  
+**Journey Timer:** 4  
 **Resource Pressure:** Low — settlements and waystations along route  
 **Climate:** Varies by region  
 
@@ -357,7 +362,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 6 (Easy)  
 **Terrain Modifier:** No penalty (baseline terrain)  
 **Encounter Die:** d8  
-**Journey Timer:** d8  
+**Journey Timer:** 4  
 **Resource Pressure:** Moderate — water sources scattered, game available  
 **Climate:** Variable — hot summers, cold winters, frequent wind  
 
@@ -377,7 +382,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 8 (Moderate)  
 **Terrain Modifier:** –1 pace  
 **Encounter Die:** d6  
-**Journey Timer:** d6  
+**Journey Timer:** 3  
 **Resource Pressure:** Low — abundant foraging, hunting, water  
 **Climate:** Temperate — cooler under canopy, frequent rain  
 
@@ -398,7 +403,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 8 (Moderate)  
 **Terrain Modifier:** –1 pace  
 **Encounter Die:** d6  
-**Journey Timer:** d6  
+**Journey Timer:** 3  
 **Resource Pressure:** Moderate — water in valleys, game on slopes  
 **Climate:** Variable — cooler than lowlands, sudden weather changes  
 
@@ -418,7 +423,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 12 (Difficult)  
 **Terrain Modifier:** –2 paces  
 **Encounter Die:** d6  
-**Journey Timer:** d6  
+**Journey Timer:** 2  
 **Resource Pressure:** High — little food/water, cold, equipment strain  
 **Climate:** Extreme Cold — winter makes passes impassable  
 
@@ -440,7 +445,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 10 (Challenging)  
 **Terrain Modifier:** –1 pace  
 **Encounter Die:** d6  
-**Journey Timer:** d6  
+**Journey Timer:** 3  
 **Resource Pressure:** Extreme — **double water consumption**, no foraging  
 **Climate:** Extreme Heat by day, cold at night  
 
@@ -462,7 +467,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 10 (Challenging)  
 **Terrain Modifier:** –1 pace  
 **Encounter Die:** d6  
-**Journey Timer:** d6  
+**Journey Timer:** 3  
 **Resource Pressure:** High — water scarce, little game, no foraging  
 **Climate:** Hot days, cold nights, sudden storms  
 
@@ -483,7 +488,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 10 (Challenging)  
 **Terrain Modifier:** –2 paces  
 **Encounter Die:** d4  
-**Journey Timer:** d4  
+**Journey Timer:** 2  
 **Resource Pressure:** Moderate — water abundant but unsafe, fish available  
 **Climate:** Humid, wet, constant rain or mist  
 
@@ -505,7 +510,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 10 (Challenging)  
 **Terrain Modifier:** –2 paces  
 **Encounter Die:** d6  
-**Journey Timer:** d6  
+**Journey Timer:** 2  
 **Resource Pressure:** Low — abundant food and water, but dangerous to gather  
 **Climate:** Hot, Humid, Frequent Rain (monsoon season makes travel nearly impossible)  
 
@@ -527,7 +532,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 8 (Moderate)  
 **Terrain Modifier:** –1 pace  
 **Encounter Die:** d8  
-**Journey Timer:** d8  
+**Journey Timer:** 4  
 **Resource Pressure:** Extreme — no foraging, little game, all water frozen  
 **Climate:** Extreme Cold — deadly without proper gear  
 
@@ -549,7 +554,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Navigation TN:** 12 (Difficult)  
 **Terrain Modifier:** –2 paces  
 **Encounter Die:** d4  
-**Journey Timer:** d4  
+**Journey Timer:** 2  
 **Resource Pressure:** Extreme — water/food tainted, game fled or corrupted  
 **Climate:** Unnatural — cold despite season, perpetual twilight, etc.  
 
@@ -772,7 +777,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 2. All roles roll (Navigator vs Terrain TN; Scout vs TN 8; optional roles)
 3. Calculate total paces: Base + terrain modifier + mount + forced march
 4. Mark off progress boxes (4 paces = 1 box)
-5. Tick journey timer (–1). If timer reaches 0: roll Event Die (d6) → resolve → reset timer
+5. Tick journey timer (–1 baseline, then apply Navigator/Scout modifiers). If timer reaches 0: roll Event Die (d6) → resolve → reset timer
 6. Make camp: Supply Checks, shelter (affects fatigue), night watches
 
 **Navigation Results:**
@@ -806,8 +811,10 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 | Terrain Risk | Timer |
 |--------------|-------|
-| Safe (roads, plains, tundra) | d8 (start at 8) |
-| Moderate (forest, hills, desert, badlands) | d6 (start at 6) |
-| Dangerous (mountains, swamp, jungle, haunted) | d4 (start at 4) |
+| Safe (roads, plains, tundra) | 4 |
+| Moderate (forest, hills, desert, badlands) | 3 |
+| Dangerous (mountains, swamp, jungle, haunted) | 2 |
 
-**Travel Event Die (d6):** 1 = Threat, 2 = Wear & Tear, 3 = Provisions, 4 = Route Shift, 5 = Traces, 6 = Ambient
+**Travel Event Die (d6):** 1 = Encounter, 2 = Hazard, 3 = Wear & Tear, 4 = Route Shift, 5 = Traces, 6 = Boon
+
+**Timer Modifiers:** Navigator strong/critical = +1 | Navigator blunder = –1 | Scout strong = +1 | Scout critical = +2 or cancel event | Scout failure = –1 | Scout blunder = –2 or immediate event
