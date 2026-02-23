@@ -21,7 +21,7 @@ on:
     types: [copilot-agent-setup]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '24'
 
 jobs:
   copilot-setup-steps:
@@ -48,8 +48,8 @@ jobs:
           echo "Yarn version: $(yarn --version)"
           echo "NPM version: $(npm --version)"
           # Ensure we're using the correct Node.js version
-          if ! node --version | grep -q "v20"; then
-            echo "ERROR: Expected Node.js v20.x.x but got $(node --version)"
+          if ! node --version | grep -q "v24"; then
+            echo "ERROR: Expected Node.js v24.x.x but got $(node --version)"
             exit 1
           fi
 
