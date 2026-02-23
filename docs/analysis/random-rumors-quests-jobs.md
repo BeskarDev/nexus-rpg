@@ -1,6 +1,6 @@
 # Random Rumors, Quest Hooks & Jobs — Game Design Analysis
 
-This document presents a modular design for generating random **rumors**, **quest hooks**, and **adventuring jobs** for Game Masters. It extends the existing random table toolset with level-scaling content appropriate to the Nexus RPG setting.
+A modular, seed-based system for generating random **rumors**, **quest hooks**, and **adventuring jobs**. The GM rolls a handful of dice, reads off the fragments, and assembles them into a sentence seed that can be fleshed out with campaign-specific details.
 
 > **Status:** Design analysis — not yet incorporated into official rules.
 
@@ -8,273 +8,449 @@ This document presents a modular design for generating random **rumors**, **ques
 
 ## Design Goals
 
-- Provide GMs with a quick, flavorful way to populate tavern gossip, quest boards, and NPC job offers.
-- Scale challenge and reward to match party level, reusing the existing treasure-quality tier progression.
-- Keep each table self-contained and easy to extend with new entries.
-- Blend mechanical guidance (patron type, task difficulty, reward range) with evocative Bronze Age sword-and-sorcery flavor.
-- Support multiple discovery contexts: overhearing rumors at a caravansary, scanning a city-state notice board, or receiving a direct commission from a patron.
+- **Roll-and-read:** The GM grabs a set of dice, rolls them all at once, and reads the result directly from the tables — no sequential lookups.
+- **Sentence seeds:** Each category has a template sentence with blanks. The dice fill those blanks with generic, portable fragments.
+- **Setting-agnostic fragments:** Table entries name *types* (a beast, a ruin, a merchant), never specific names. The GM adds local flavour (the specific monster, NPC, or landmark from their campaign).
+- **Level-scaled rewards:** Coin and treasure values scale with party level using the same quality-tier brackets as the existing treasure tables.
+- **Easy to extend:** Adding new entries means adding rows to a d12 table. No formulas or cross-references change.
 
 ---
 
-## Core Concepts
+## How It Works
 
-### Three Content Categories
+### 1. Pick a Category
 
-| Category | What It Represents | Typical Source | Detail Level |
-|----------|-------------------|----------------|--------------|
-| **Rumor** | Unverified hearsay the party may choose to investigate | Tavern patrons, marketplace gossip, travellers | Vague — location and hint only |
-| **Quest Hook** | A clear call to adventure with a known objective | Notice boards, town criers, temple postings | Moderate — objective, location, and implied danger |
-| **Job** | A direct commission from a named patron with negotiated terms | NPC employers, guild contacts, noble courts | Detailed — patron, task, deadline, and explicit reward |
+Choose one or roll d6:
 
-Each category answers a different question at the table:
+| d6 | Category |
+|----|----------|
+| 1–2 | Rumor |
+| 3–4 | Quest Hook |
+| 5–6 | Job |
 
-- **Rumor:** *"What have you heard?"* — seeds for player-driven exploration.
-- **Quest Hook:** *"What needs doing?"* — structured adventure prompts with clear goals.
-- **Job:** *"Who's hiring?"* — patron-driven tasks with concrete stakes and pay.
+### 2. Grab the Dice & Roll
 
-### Discovery Context
+Each category tells you which dice to roll — always in one throw. Each die maps to one column in the tables below.
 
-Before rolling, the GM chooses (or rolls d6 for) a **discovery context** that frames the fiction:
+### 3. Read the Sentence Seed
 
-| d6 | Context | Description |
-|----|---------|-------------|
-| 1 | Tavern talk | Overheard while carousing among locals or travellers |
-| 2 | Notice board | Posted publicly in a settlement square or guild hall |
-| 3 | Street gossip | Picked up in the bazaar, docks, or city gates |
-| 4 | Patron summons | An NPC seeks the party out directly |
-| 5 | Traveller's tale | Shared by a caravan guard, pilgrim, or wandering merchant |
-| 6 | Temple or shrine | Whispered by a priest, written on votive tablets, or divined through rites |
+Plug the rolled fragments into the category's template sentence. The result is a ready-to-use seed the GM can paraphrase aloud or write on a notice board.
 
-The context colours the delivery but does not change the mechanical content of the result.
+### 4. Add Campaign Detail
+
+Replace generic fragments with specific names, creatures, and locations from the GM's setting. Adjust scope and reward to the party's level using the tier bracket table.
 
 ---
 
-## Level-Scaling Logic
+## Level Scaling
 
-Challenge and reward scale with party level using the same quality-tier brackets as the existing treasure tables. This keeps the system consistent and avoids introducing a separate power curve.
+Challenge and reward scale with party level using the same quality-tier brackets as the existing treasure tables.
 
-### Tier Brackets
+| Party Level | Scope | Coin Reward | Treasure Quality | Travel Time |
+|-------------|-------|-------------|------------------|-------------|
+| 1–2 | Local (village, neighbourhood) | 25–250 | Q1–Q3 | Hours |
+| 3–4 | Regional (district, trade route) | 100–750 | Q2–Q4 | Days |
+| 5–6 | Provincial (city-state, province) | 250–2,500 | Q3–Q5 | A week |
+| 7–8 | National (kingdom, major faction) | 750–7,500 | Q4–Q6 | Weeks |
+| 9–10 | Legendary (world-shaping, mythic) | 2,500–25,000 | Q5–Q7 | A season |
 
-| Party Level | Tier Label | Challenge Scope | Reward Range (coins) | Treasure Quality |
-|-------------|-----------|-----------------|----------------------|------------------|
-| 1–2 | Local | Neighbourhood or village threats | 25–250 | Q1–Q3 |
-| 3–4 | Regional | Threats to a district or trade route | 100–750 | Q2–Q4 |
-| 5–6 | Provincial | Dangers affecting a city-state or province | 250–2,500 | Q3–Q5 |
-| 7–8 | National | Crises spanning kingdoms or major factions | 750–7,500 | Q4–Q6 |
-| 9–10 | Legendary | World-shaping events or mythic adversaries | 2,500–25,000 | Q5–Q7 |
-
-**How to use the brackets:**
-
-1. Identify the party's current level range.
-2. Roll on the appropriate category table (Rumor, Quest Hook, or Job).
-3. Apply the tier bracket to set enemy strength, travel distance, and reward value.
-4. Adjust flavour to match the scope — a Level 1 bandit camp becomes a Level 9 warlord's citadel.
-
-### Scaling Principles
-
-- **Enemies** should be creatures or NPCs whose tier matches the party level (see Creature Statistics in the creature-building rules).
-- **Travel distance** grows with tier: local (hours), regional (days), provincial (a week), national (weeks), legendary (a season-long expedition).
-- **Reward coins** sit within the bracket range; use the existing treasure tables for item rewards.
-- **Complications** increase at higher tiers: more factions, tighter deadlines, moral dilemmas.
+The GM picks the row matching the party's level and uses it to set enemy tier, travel distance, and reward value. A "beast" in a Local rumor is a lone predator; in a Legendary rumor it is a mythic creature of terrible power.
 
 ---
 
-## Table Structure
+## Rumors
 
-Each table uses a **d12 roll** to select the core entry, then the GM applies the tier bracket for scaling. Tables can be extended simply by adding new rows — no formula changes are needed.
+Rumors are vague hearsay — unverified, possibly exaggerated, and open to interpretation. They seed player-driven exploration.
 
-### Anatomy of an Entry
+### Sentence Seed
 
-Every entry includes the following fields:
+> *"[Source] says that [subject] [has been seen / has appeared / is happening] [near location]. They say it's because of [cause]."*
 
-| Field | Purpose |
-|-------|---------|
-| **Hook** | One-line evocative description the GM can read or paraphrase aloud |
-| **Task** | What the party is expected to do (investigate, retrieve, escort, eliminate, etc.) |
-| **Location** | Type of site the adventure leads to (ruin, wilderness, settlement, underground, etc.) |
-| **Complication** | A twist, hazard, or moral wrinkle that makes the task interesting |
-| **Reward Type** | Coins, items, favours, information, or reputation — guides the GM's payout |
+**Roll 4d12** — one each for **Source**, **Subject**, **Location**, and **Cause**.
 
----
+### Rumor Tables
 
-## Rumor Table
+#### Source (d12) — *Who is spreading the rumor?*
 
-Rumors are vague and unverified. They reward investigation and may turn out to be exaggerated, partially true, or outright false. The GM decides reliability when the rumor is rolled or discovered.
+| d12 | Source |
+|-----|--------|
+| 1 | A travelling merchant |
+| 2 | A shepherd from the outskirts |
+| 3 | A drunk sailor at the docks |
+| 4 | Beggars in the lower quarter |
+| 5 | A caravan guard passing through |
+| 6 | An old scribe at the archive |
+| 7 | Fishermen on the river |
+| 8 | Refugees from a nearby village |
+| 9 | A temple acolyte |
+| 10 | Children playing near the walls |
+| 11 | A retired soldier |
+| 12 | A foreign pilgrim |
 
-| d12 | Hook | Task | Location | Complication | Reward Type |
-|-----|------|------|----------|--------------|-------------|
-| 1 | "Shepherds near the salt flats say their flocks vanish at dusk — only bones remain by morning." | Investigate disappearances and eliminate the predator | Wilderness (salt flats, scrubland) | The predator is a sacred beast protected by a local cult | Coins + patron gratitude |
-| 2 | "A merchant claims he saw lights moving inside the sealed tomb on the hill, though it's been bricked up for generations." | Explore the tomb and discover the source of the lights | Underground (sealed tomb) | The lights are cast by grave robbers who will fight to protect their find | Treasure from the tomb |
-| 3 | "The well water in the lower quarter has turned bitter. Healers blame the new tannery, but beggars whisper of something deeper." | Investigate the contamination and resolve the cause | Settlement (urban lower quarter, tunnels beneath) | The true cause is a necromantic ritual polluting the aquifer | Favour from the district elders |
-| 4 | "A foreign sailor babbles about a reef of black coral that sings when the tide retreats — and about the ship that wrecked trying to reach it." | Locate the reef and salvage the wreck | Coastal (reef and shipwreck) | The coral attracts dangerous sea creatures at low tide | Salvaged cargo and trade goods |
-| 5 | "Caravan drivers refuse the northern pass since last moon. They say the stones there move on their own." | Scout the pass and determine whether it's safe | Wilderness (mountain pass) | An earth spirit has awakened and is reshaping the terrain | Information (mapped safe route) + reputation |
-| 6 | "An old scribe at the archive insists a missing clay tablet records the location of a pre-cataclysm armoury, buried beneath the canal district." | Research the tablet's last known location and recover it | Settlement (archive, canal tunnels) | A rival scholar is also hunting the tablet and has hired thugs | Information (armoury location) |
-| 7 | "Fishermen pulled a bronze idol from the river — then threw it back when their nets began to bleed." | Retrieve the idol and determine its origin | Waterway (river, possibly a submerged shrine) | The idol is cursed; possessing it draws hostile spirits | Idol (valuable artefact) or patron bounty |
-| 8 | "A child in the refugee camp keeps drawing the same symbol — a spiral with teeth. The camp healers are frightened." | Investigate the child's visions and their source | Settlement (refugee camp, nearby ruin) | The visions are real prophecy pointing to an imminent threat | Reputation + favour from the healers |
-| 9 | "The old watchtower garrison fled in the night. Their commander's seal was found snapped in half on the threshold." | Investigate the abandoned watchtower | Ruin (abandoned watchtower) | Desertion was caused by an infiltrator using enchantment magic | Coins (military bounty) |
-| 10 | "Traders from the south say a new warlord is raising an army in the badlands, paying in ancient gold coins nobody can identify." | Gather intelligence on the warlord's strength and backers | Wilderness (badlands encampment) | The gold coins are looted from a sealed vault — the warlord's true goal | Information + coins |
-| 11 | "The beekeeper on the ridge says her hives have gone silent, and the flowers around them wilt overnight." | Investigate the cause of the blight | Wilderness (ridge, meadow, nearby cave) | A toxic fungal growth from underground is spreading to the surface | Coins + harvested alchemical reagents |
-| 12 | "A prisoner in the city gaol claims to know the entrance to the lost aqueduct vaults — and will trade the secret for freedom." | Negotiate with the prisoner and explore the vaults | Underground (aqueduct vaults beneath the city) | The prisoner is a con artist — but the vaults are real and occupied | Treasure from the vaults |
+#### Subject (d12) — *What was seen or heard?*
 
-> **Reliability:** When generating a rumor, the GM may privately roll d6. On a 1–2 the rumor is mostly false or exaggerated, on a 3–5 it is partially true, and on a 6 it is completely accurate. This roll is hidden from the players.
+| d12 | Subject |
+|-----|---------|
+| 1 | Strange lights |
+| 2 | Unusual sounds at night |
+| 3 | Animals behaving strangely |
+| 4 | People going missing |
+| 5 | Tainted water or blighted crops |
+| 6 | An ancient marker or idol uncovered |
+| 7 | Armed strangers gathering |
+| 8 | A sealed place found broken open |
+| 9 | Goods or livestock vanishing |
+| 10 | A strange illness spreading |
+| 11 | Unnatural weather or tremors |
+| 12 | Apparitions or phantoms |
 
----
+#### Location (d12) — *Where?*
 
-## Quest Hook Table
+| d12 | Location |
+|-----|----------|
+| 1 | The old ruins on the hill |
+| 2 | A cave system near the ridge |
+| 3 | The marshes beyond the fields |
+| 4 | An abandoned watchtower |
+| 5 | The lower quarter's tunnels |
+| 6 | A dried riverbed or gorge |
+| 7 | The trade road heading north |
+| 8 | A sealed tomb or barrow |
+| 9 | The coastal cliffs |
+| 10 | A sacred grove or shrine |
+| 11 | The outskirts of a neighbouring village |
+| 12 | The flooded docks or old canals |
 
-Quest hooks are confirmed problems with clear objectives. They are publicly known and typically time-sensitive.
+#### Cause (d12) — *What's the suspected explanation?*
 
-| d12 | Hook | Task | Location | Complication | Reward Type |
-|-----|------|------|----------|--------------|-------------|
-| 1 | A bounty notice names a bandit leader whose raids threaten the grain caravans before harvest season. | Track and capture or kill the bandit leader | Wilderness (bandit camp along a trade road) | The bandit leader is a former soldier with trained fighters and a fortified camp | Coins (bounty) + seized goods |
-| 2 | A temple announces that a sacred relic was stolen during a festival. The high priest offers a public reward for its return. | Recover the stolen relic and return it to the temple | Settlement (thieves' quarter) then underground (fence's hideout) | The thief stole the relic to settle a debt with a dangerous crime lord | Coins + temple blessing (favour) |
-| 3 | A village elder posts a plea: a creature from the marshes has been dragging livestock into the fog, and the hunters sent after it have not returned. | Venture into the marshes, find the hunters, and slay or drive off the creature | Wilderness (marshland) | The missing hunters are alive but trapped; a rescue must happen before the confrontation | Coins + village supplies |
-| 4 | The governor's office seeks escorts for a diplomatic envoy travelling to a rival city-state. The route passes through contested territory. | Escort the envoy safely to the destination | Overland (contested borderlands) | A faction within the destination city wants the envoy to fail and has arranged ambushes | Coins + political favour |
-| 5 | A mining guild reports that excavation broke through into a natural cavern system. Strange sounds echo from below, and miners refuse to return. | Explore the cavern system and neutralize any threat | Underground (mine and natural caverns) | The caverns contain an ancient automaton guardian still following its last orders | Coins + first claim on mineral finds |
-| 6 | Wanted: someone to investigate why supply shipments along the coastal road have been arriving empty — crates intact but contents gone. | Investigate the disappearances along the coastal road | Overland (coastal road, waystation) | The thefts are carried out by a shapeshifter replacing drivers mid-journey | Coins (merchant guild reward) |
-| 7 | A noble house offers a reward for the retrieval of an heirloom sword lost when the family's ancestral estate was overrun by squatters a decade ago. | Enter the ruined estate and recover the sword | Ruin (overgrown manor estate) | The squatters are desperate refugees, and the "heirloom" may be a weapon with a dark history | Item (the sword, if returned) or coins (if kept) |
-| 8 | A herbalist needs a rare root that only grows in a valley two days' travel from the city. The valley is known to be territorial beast country. | Travel to the valley, harvest the root, and return safely | Wilderness (remote valley) | The beasts are a mated pair; killing one enrages the other, but harvesting requires entering their territory | Coins + alchemical supplies |
-| 9 | A flood has exposed a staircase descending into the riverbank. A crowd has gathered but nobody dares go inside. The magistrate wants answers before treasure hunters arrive. | Explore the newly revealed structure before it is looted | Underground (exposed riverbank structure) | The structure is a pre-cataclysm prison, and some of its wards are still active | Coins (magistrate's fee) + salvaged treasure |
-| 10 | A pilgrimage caravan is forming and needs armed protection. The route crosses a desert stretch plagued by sand raiders. | Guard the caravan through hostile territory | Overland (desert route) | A spy among the pilgrims is feeding information to the raiders about the caravan's defences | Coins + reputation with the faith |
-| 11 | Strange illness spreads through a district near the old canal. The city council offers payment for anyone who can trace and stop the source. | Investigate the illness and eliminate its cause | Settlement (canal district, old sewer system) | The source is a ruptured alchemical cache left by a defunct guild; cleaning it is hazardous | Coins + council favour |
-| 12 | A group of astronomers claims that a fallen star landed in the foothills three nights ago. They need an escort to the impact site before rival factions reach it first. | Escort the astronomers and secure the impact site | Wilderness (foothills, crater) | A rival expedition is already en route, and the "star" is a meteorite with unusual magical properties | Coins + share of findings (rare material) |
+| d12 | Cause |
+|-----|-------|
+| 1 | A beast that's grown bold or territorial |
+| 2 | Grave robbers or tomb breakers |
+| 3 | A curse or lingering enchantment |
+| 4 | A cult performing secret rites |
+| 5 | Bandits using it as a hideout |
+| 6 | A restless spirit or undead presence |
+| 7 | Smugglers moving contraband |
+| 8 | An old ward or seal breaking down |
+| 9 | A feud between local factions |
+| 10 | Poisonous growth from underground |
+| 11 | A newly arrived outsider stirring trouble |
+| 12 | Something unearthed that should have stayed buried |
 
----
+> **Reliability (optional, hidden d6):** On a 1–2 the rumor is mostly false or exaggerated, on 3–5 it is partially true, on 6 it is completely accurate.
 
-## Job Table
+### Rumor Example
 
-Jobs are formal commissions from a specific patron. They carry negotiated terms, clear expectations, and defined payment. The patron's identity and motivation add narrative depth.
-
-| d12 | Patron | Hook | Task | Location | Complication | Reward |
-|-----|--------|------|------|----------|--------------|--------|
-| 1 | A wealthy merchant with a grudge | "Someone sabotaged my warehouse. I want the culprit found and my goods recovered — quietly." | Investigate the sabotage, identify the culprit, and recover stolen goods | Settlement (warehouse district, rival's holdings) | The saboteur is a family member of the merchant acting out of revenge for a past betrayal | Coins (generous) + a trade favour |
-| 2 | A retired military officer | "My old company buried a cache before the last war ended. I'll pay for muscle to dig it up before the land is sold." | Travel to the cache site and excavate it | Wilderness (old battlefield, now farmland) | The cache is on a farmer's land; the farmer won't cooperate, and local militia may intervene | Coins + share of cache (weapons or gear) |
-| 3 | A temple priest in disgrace | "I was expelled for heresy, but the truth I uncovered is real. Bring me proof from the shrine they sealed and I'll make it worth your while." | Enter a sealed shrine and recover documentary evidence | Underground (sealed temple archives) | The current priesthood considers entry sacrilege and will send agents to stop the party | Coins + rare scholarly information |
-| 4 | A guild alchemist | "I need venom sacs from pit asps — fresh, not dried. The nest is in the gorge east of the quarry." | Harvest venom sacs from living pit asps | Wilderness (rocky gorge) | The asps are more numerous than reported, and the gorge is unstable after recent rains | Coins + alchemical potions |
-| 5 | A city magistrate (anonymous) | "There's a smuggling ring operating through the canal locks. I can't use official guards — too many are compromised. Shut it down." | Infiltrate and dismantle a smuggling operation | Settlement (canal docks, underground tunnels) | The smugglers are moving something far more dangerous than contraband — illegal enchanted weapons | Coins (substantial) + legal immunity for the job |
-| 6 | A tribal elder from the steppe | "A bone-reader from our clan went into the burial hills to commune with the ancestors and has not returned in seven days." | Find the missing bone-reader in the burial hills | Wilderness (burial hills, barrow complex) | The bone-reader is alive but has been possessed by an ancestral spirit that refuses to release its host | Coins + tribal hospitality (safe haven, supplies) |
-| 7 | A foreign diplomat | "My courier was ambushed and a sealed diplomatic pouch was taken. I need it retrieved before its contents are read — or copied." | Track the ambushers and recover the diplomatic pouch | Overland (ambush site along a trade road, bandit hideout) | The pouch contains intelligence that could start a war; another faction also wants it | Coins (premium) + political favour |
-| 8 | A dockmaster | "Something large is living in the flooded lower docks. It's damaging hulls and scaring off trade ships. I need it gone." | Eliminate or drive off the creature in the flooded docks | Settlement (waterfront, flooded dock tunnels) | The creature is protecting a clutch of eggs; destroying them may anger a druid or nature cult | Coins + dockmaster's connections (information network) |
-| 9 | A noble's steward | "My lord's heir has eloped with an unsuitable partner. Retrieve the heir — alive, unharmed, and discreetly." | Locate and retrieve a runaway noble heir | Overland (road to a neighbouring city, roadside inns) | The heir does not want to return and has hired bodyguards; the "unsuitable partner" is genuinely in love | Coins + noble house favour |
-| 10 | A prison warden | "Three dangerous inmates escaped through a collapsed wall during the storm. Bring them back, dead or alive." | Track and recapture three escaped prisoners | Wilderness and settlement (mixed terrain, urban hideouts) | One of the prisoners is innocent and will offer proof if given a chance to speak | Coins (per prisoner) + warden's favour |
-| 11 | A master smith | "I've been offered a commission to forge a blade from star-metal, but my last shipment was seized at the border. Get it released — or acquire more." | Recover seized material or find an alternative source | Settlement (border checkpoint) or wilderness (meteorite site) | The material was seized because it's classified as a strategic resource by the local authority | Coins + a masterwork item crafted as thanks |
-| 12 | A caravan boss | "I'm moving a high-value cargo through the dust flats next week. I don't trust my regular guards for this one. Interested?" | Guard a high-value cargo shipment through dangerous territory | Overland (dust flats, known raider territory) | The cargo is a live captive creature intended for an arena — it may break free | Coins (negotiable, half up front) + caravan contacts |
-
----
-
-## Combining the Tables
-
-For a richer session-prep experience, the GM can combine all three tables in a single scene. For example, during a night at a caravansary:
-
-1. **Roll once on the Rumor table** — gives the party a vague lead they can pursue later.
-2. **Check the notice board (Quest Hook table)** — provides a structured objective with a public reward.
-3. **An NPC approaches (Job table)** — offers a direct, personal commission.
-
-This gives the party three potential adventures to choose from, each with a different level of information and commitment.
-
-### Mixing Categories at Different Tiers
-
-The GM may roll different categories at different tier brackets to create variety. A Level 5 party might receive:
-
-- A **Local rumor** (Tier 1–2) that seems trivial but leads to a larger discovery.
-- A **Provincial quest hook** (Tier 5–6) matching their current power level.
-- A **Regional job** (Tier 3–4) that feels manageable but pays below their usual rate — perhaps with a moral incentive.
+> **Rolls:** Source 7, Subject 9, Location 3, Cause 1.
+>
+> **Seed:** *"Fishermen on the river say that livestock have been vanishing near the marshes beyond the fields. They say it's because of a beast that's grown bold."*
+>
+> **GM adds detail (Level 3 party, Regional scope):** The marshes are a day's travel south. The beast is a large marsh predator (Tier 3 creature). Villagers will pay 150 coins and supply rations for anyone who deals with it.
 
 ---
 
-## Reward Guidance
+## Quest Hooks
 
-### Coin Rewards by Tier
+Quest hooks are confirmed problems posted publicly. They have a clear objective, a known location, and an implied danger.
 
-Use the tier bracket table above to set the base coin reward. The following modifiers adjust the payout:
+### Sentence Seed
 
-| Modifier | Adjustment | Example |
-|----------|------------|---------|
-| Time pressure | +25% coins | "Must be done before the new moon" |
-| Moral complexity | +0 coins, +reputation or favour | "The target is sympathetic" |
-| High danger | +50% coins | "Nobody else has survived this" |
-| Patron is wealthy | +25% coins | Noble house, major guild |
-| Patron is desperate | +50% coins, risk of non-payment | "I'll pay anything — but I may not survive to pay" |
-| Discreet work | +25% coins | "No one can know I hired you" |
+> *"Wanted: [task] the [subject] at [location]. Warning: [complication]. Reward: [reward]."*
 
-### Non-Coin Rewards
+**Roll 5d12** — one each for **Task**, **Subject**, **Location**, **Complication**, and **Reward**.
 
-Not every task pays in coins. Alternative rewards keep the economy varied:
+### Quest Hook Tables
 
-- **Favours:** Future assistance from the patron (information, access, political cover).
-- **Reputation:** Standing with a faction, guild, or settlement — unlocks better opportunities later.
-- **Items:** Equipment, alchemical supplies, rare materials, or magic items (use the treasure-quality table to set value).
-- **Information:** Maps, intelligence, lore, or contacts that open new adventures.
-- **Safe haven:** A place to rest, resupply, or hide without cost.
+#### Task (d12) — *What needs doing?*
+
+| d12 | Task |
+|-----|------|
+| 1 | Track and eliminate |
+| 2 | Investigate and report on |
+| 3 | Recover or retrieve |
+| 4 | Escort safely past |
+| 5 | Explore and map |
+| 6 | Defend or protect from |
+| 7 | Capture alive |
+| 8 | Deliver supplies through |
+| 9 | Clear out or secure |
+| 10 | Negotiate with or appease |
+| 11 | Rescue survivors from |
+| 12 | Scout ahead and assess |
+
+#### Subject (d12) — *What or who is involved?*
+
+| d12 | Subject |
+|-----|---------|
+| 1 | A dangerous beast or pack |
+| 2 | A bandit gang or raiders |
+| 3 | A stolen relic or heirloom |
+| 4 | A missing person or group |
+| 5 | A cursed site or artefact |
+| 6 | A rival expedition or faction |
+| 7 | An infestation or blight |
+| 8 | An undead threat |
+| 9 | Illegal goods or contraband |
+| 10 | A collapsed or flooded passage |
+| 11 | A rogue automaton or construct |
+| 12 | A territorial spirit or entity |
+
+#### Location (d12) — *Where?*
+
+| d12 | Location |
+|-----|----------|
+| 1 | A remote valley |
+| 2 | A mountain pass or gorge |
+| 3 | The marshlands or fens |
+| 4 | An overgrown estate or ruin |
+| 5 | A mine or excavation site |
+| 6 | A contested borderland |
+| 7 | The old sewer or canal system |
+| 8 | A stretch of coastal road |
+| 9 | A newly exposed underground structure |
+| 10 | A desert crossing or dust flat |
+| 11 | A riverbank or waterway |
+| 12 | A hilltop shrine or monument |
+
+#### Complication (d12) — *What makes this harder than expected?*
+
+| d12 | Complication |
+|-----|--------------|
+| 1 | A second group is also hunting the objective |
+| 2 | The target is more numerous or powerful than reported |
+| 3 | The terrain is unstable or hazardous |
+| 4 | A traitor or spy is feeding information to the opposition |
+| 5 | The objective is morally grey — the "enemy" may be sympathetic |
+| 6 | Ancient wards or traps are still active |
+| 7 | A deadline creates time pressure |
+| 8 | Local authorities are uncooperative or hostile |
+| 9 | The weather or season makes conditions brutal |
+| 10 | Completing the task will anger a powerful faction |
+| 11 | Innocent bystanders are caught in the middle |
+| 12 | The problem is a symptom of something much larger |
+
+#### Reward (d12) — *What's on offer?*
+
+| d12 | Reward |
+|-----|--------|
+| 1 | Coins (standard bounty) |
+| 2 | Coins plus recovered goods |
+| 3 | A share of whatever is found |
+| 4 | Supplies, materials, or alchemical goods |
+| 5 | A favour from a local authority |
+| 6 | Reputation with a guild or faction |
+| 7 | Political favour or legal immunity |
+| 8 | A piece of equipment or a crafted item |
+| 9 | Access to restricted information or records |
+| 10 | Safe haven or ongoing hospitality |
+| 11 | A claim on future trade or resources |
+| 12 | A masterwork or rare-material item |
+
+### Quest Hook Example
+
+> **Rolls:** Task 1, Subject 1, Location 3, Complication 5, Reward 1.
+>
+> **Seed:** *"Wanted: track and eliminate a dangerous beast at the marshlands. Warning: the enemy may be sympathetic. Reward: coins (standard bounty)."*
+>
+> **GM adds detail (Level 5 party, Provincial scope):** The beast is a large territorial predator that's been preying on livestock — but it's protecting its young. The bounty is 500 coins, posted by the regional governor. Killing the young would be easy but may anger a local druidic circle. Relocating the creature is harder but earns their favour.
+
+---
+
+## Jobs
+
+Jobs are direct commissions from a patron. They include a named employer, a specific task, and negotiated pay.
+
+### Sentence Seed
+
+> *"I, [patron], want you to [task] the [subject] at [location], but [complication]. On success, I offer [reward]."*
+
+**Roll 6d12** — one each for **Patron**, **Task**, **Subject**, **Location**, **Complication**, and **Reward**.
+
+### Job Tables
+
+#### Patron (d12) — *Who's hiring?*
+
+| d12 | Patron |
+|-----|--------|
+| 1 | A wealthy merchant |
+| 2 | A retired military officer |
+| 3 | A disgraced priest or scholar |
+| 4 | A guild master (alchemist, smith, etc.) |
+| 5 | A city magistrate acting unofficially |
+| 6 | A tribal elder or clan chief |
+| 7 | A foreign diplomat or envoy |
+| 8 | A harbour master or dock official |
+| 9 | A noble's steward or servant |
+| 10 | A prison warden or watch captain |
+| 11 | A master artisan with a special commission |
+| 12 | A caravan boss or trade captain |
+
+#### Task (d12) — *What does the patron need done?*
+
+| d12 | Task |
+|-----|------|
+| 1 | Investigate and find the culprit behind |
+| 2 | Travel to and recover |
+| 3 | Infiltrate and dismantle |
+| 4 | Harvest or collect |
+| 5 | Escort or guard |
+| 6 | Find and bring back |
+| 7 | Track and recapture |
+| 8 | Deliver discreetly |
+| 9 | Eliminate or drive off |
+| 10 | Protect from sabotage |
+| 11 | Acquire before a rival does |
+| 12 | Gain entry to and secure |
+
+#### Subject (d12) — *What's the focus of the job?*
+
+| d12 | Subject |
+|-----|---------|
+| 1 | A stolen shipment or goods |
+| 2 | A buried cache or hidden stash |
+| 3 | Sealed documents or records |
+| 4 | Rare ingredients or materials |
+| 5 | A smuggling operation |
+| 6 | A missing person (ally, kin, agent) |
+| 7 | A diplomatic parcel or message |
+| 8 | A creature lairing in the area |
+| 9 | A runaway or fugitive |
+| 10 | Escaped prisoners |
+| 11 | A seized or confiscated resource |
+| 12 | A high-value cargo |
+
+#### Location (d12) — *Where does the job take place?*
+
+| d12 | Location |
+|-----|----------|
+| 1 | The warehouse district or merchant quarter |
+| 2 | An old battlefield or contested ground |
+| 3 | Sealed chambers beneath a temple or shrine |
+| 4 | A rocky gorge or quarry |
+| 5 | The canal docks or waterfront tunnels |
+| 6 | Burial hills or a barrow complex |
+| 7 | A trade road or border crossing |
+| 8 | The flooded lower docks |
+| 9 | The road to a neighbouring settlement |
+| 10 | Mixed terrain (wilderness and urban) |
+| 11 | A border checkpoint or customs post |
+| 12 | Overland through hostile territory |
+
+#### Complication (d12) — *What's the catch?*
+
+| d12 | Complication |
+|-----|--------------|
+| 1 | The real culprit is someone the patron trusts |
+| 2 | The site is on someone else's land; they won't cooperate |
+| 3 | A powerful institution opposes the task |
+| 4 | The situation is more dangerous than the patron admits |
+| 5 | Completing the job may have far-reaching consequences |
+| 6 | The target is alive and resists — with reason |
+| 7 | A rival faction is also pursuing the objective |
+| 8 | The patron is hiding their true motive |
+| 9 | The subject doesn't want to be found and has protection |
+| 10 | One part of the job conflicts with the party's morals |
+| 11 | The material or object is legally restricted |
+| 12 | The cargo or asset is dangerous in itself |
+
+#### Reward (d12) — *What does the patron offer?*
+
+| d12 | Reward |
+|-----|--------|
+| 1 | Generous coin payment |
+| 2 | Coins plus a share of the recovered goods |
+| 3 | Coins plus rare scholarly or magical information |
+| 4 | Coins plus alchemical potions or supplies |
+| 5 | Substantial coins plus legal cover |
+| 6 | Coins plus safe haven and ongoing hospitality |
+| 7 | Premium coins plus political favour |
+| 8 | Coins plus useful contacts or an information network |
+| 9 | Coins plus a favour from a noble house |
+| 10 | Coins paid per objective completed |
+| 11 | Coins plus a masterwork item crafted as thanks |
+| 12 | Negotiable coins (half up front) plus trade connections |
+
+### Job Example
+
+> **Rolls:** Patron 4, Task 4, Subject 4, Location 4, Complication 4, Reward 4.
+>
+> **Seed:** *"I, a guild master, want you to harvest rare ingredients at a rocky gorge, but the situation is more dangerous than I admit. On success, I offer coins plus alchemical supplies."*
+>
+> **GM adds detail (Level 3 party, Regional scope):** A guild alchemist needs fresh venom sacs from pit asps. The gorge is a day's ride east, but the nest is larger than she claims. She offers 200 coins and a batch of healing salves. The gorge is unstable after recent rains — the terrain itself is a hazard.
+
+---
+
+## Generating Multiple Leads at Once
+
+During a scene — an evening at a caravansary, a visit to the town square, or a meeting with a contact — the GM can generate several leads at once to give the party choices.
+
+**Quick method:** Roll for one rumor, one quest hook, and one job. This provides three leads with different levels of detail and commitment. The party picks what interests them.
+
+The GM may also roll different categories at different tier brackets for variety:
+
+- A **Local rumor** that seems minor but hints at something larger.
+- A **Provincial quest hook** matching the party's power level.
+- A **Regional job** that pays less but appeals to the party's morals.
+
+---
+
+## Reward Modifiers
+
+After generating the base seed, the GM sets the coin reward using the tier bracket table and may adjust it:
+
+| Modifier | Adjustment |
+|----------|------------|
+| Time pressure | +25% |
+| High danger | +50% |
+| Wealthy patron | +25% |
+| Desperate patron | +50%, risk of non-payment |
+| Discreet work | +25% |
+| Moral complexity | +0 coins, add reputation or favour |
+
+Non-coin rewards include **favours** (future assistance), **reputation** (faction standing), **items** (use the treasure-quality table), **information** (maps, lore, contacts), and **safe haven** (rest and resupply at no cost).
 
 ---
 
 ## Expanding the Tables
 
-### Adding New Entries
+Each table uses d12. To add entries:
 
-Each table uses a d12, but there is no mechanical dependency on exactly 12 entries. To add entries:
-
-1. Write a new row following the field structure (Hook, Task, Location, Complication, Reward Type).
+1. Write a new row using the same generic, setting-agnostic style.
 2. Append it to the table.
-3. If the table exceeds 12 entries, switch to a d20 and fill the remaining slots, or organise entries into themed sub-tables (e.g., "Urban Rumors" vs. "Wilderness Rumors").
+3. If a table exceeds 12 entries, switch to d20 and fill the remaining slots.
 
-### Creating Themed Sub-Tables
+Contributors can also create **themed sub-tables** scoped to an environment (desert, coastal, subterranean), faction (temple, guild, criminal underworld), or tone (lighthearted, grim, morally grey). A sub-table replaces one column at the GM's discretion.
 
-For variety, GMs or contributors can create sub-tables scoped to a specific setting element:
+### Entry Guidelines
 
-- **By environment:** Desert, coastal, mountain, urban, subterranean.
-- **By faction:** Temple jobs, guild contracts, military commissions, criminal underworld.
-- **By tone:** Lighthearted errands, grim investigations, morally grey dilemmas.
-
-A themed sub-table uses the same field structure and can be swapped in for the base table at the GM's discretion.
-
-### Contribution Checklist
-
-When writing a new entry, verify:
-
-- [ ] The **hook** is evocative and can be paraphrased aloud in one or two sentences.
-- [ ] The **task** describes a concrete objective (not just "go somewhere").
-- [ ] The **location** names a type of site, not a specific named place (so it can be dropped into any campaign).
-- [ ] The **complication** adds a twist that creates a meaningful decision or tactical challenge.
-- [ ] The **reward type** matches the tier bracket and offers something the party values.
-- [ ] The entry avoids references to specific named NPCs, cities, or lore — keep it portable.
-- [ ] The tone fits the Bronze Age sword-and-sorcery setting (no firearms, modern idioms, or high-fantasy tropes).
+- Name *types*, not specific names (a merchant, a ruin — never "Khalid" or "the Tower of Ashur").
+- Keep fragments short — one phrase, not a full sentence.
+- Ensure each fragment makes sense combined with any fragment from the other columns.
+- Match the Bronze Age sword-and-sorcery tone (no firearms, modern idioms, or high-fantasy tropes).
 
 ---
 
 ## Quick Reference
 
-### Workflow for the GM
+### Dice Summary
 
-1. **Choose or roll discovery context** (d6).
-2. **Pick a category**: Rumor, Quest Hook, or Job (or roll d6: 1–2 Rumor, 3–4 Quest Hook, 5–6 Job).
-3. **Roll d12** on the chosen table.
-4. **Apply the tier bracket** matching the party's level for challenge scope and reward range.
-5. **Add flavour**: name NPCs, pick a specific location from your campaign map, and adjust the complication to fit current events.
-6. **Set the reward** using the coin range from the tier bracket, modified as needed.
+| Category | Dice | Columns |
+|----------|------|---------|
+| **Rumor** | 4d12 | Source, Subject, Location, Cause |
+| **Quest Hook** | 5d12 | Task, Subject, Location, Complication, Reward |
+| **Job** | 6d12 | Patron, Task, Subject, Location, Complication, Reward |
 
-### Summary Table
+### Sentence Seeds
 
-| Step | Action | Tool |
-|------|--------|------|
-| 1 | Frame the scene | Discovery Context (d6) |
-| 2 | Select category | GM choice or d6 |
-| 3 | Generate content | Category Table (d12) |
-| 4 | Scale to party | Tier Bracket table |
-| 5 | Personalise | GM narration |
-| 6 | Set reward | Reward Guidance + Treasure tables |
+- **Rumor:** *"[Source] says that [subject] [has been seen / is happening] [near location]. They say it's because of [cause]."*
+- **Quest Hook:** *"Wanted: [task] the [subject] at [location]. Warning: [complication]. Reward: [reward]."*
+- **Job:** *"I, [patron], want you to [task] the [subject] at [location], but [complication]. On success, I offer [reward]."*
 
----
+### Procedure
 
-## Play Example
-
-> **Setup:** The party (Level 4) arrives at a trade town after a long journey. During their evening at an inn, the GM uses the system to seed the next session.
->
-> **Rumor (d12 → 4):** A sailor mentions a reef of black coral that sings at low tide, and a shipwreck nearby. The GM applies Tier 3–4 (Regional): the reef is a two-day sail from port, and the wreck may hold 100–750 coins in salvage. The complication — dangerous sea creatures at low tide — means combat against Tier 3–4 creatures.
->
-> **Quest Hook (d12 → 3):** A notice at the harbourmaster's office describes livestock disappearances in a marshy village upriver. Missing hunters add urgency. At Tier 3–4, the marsh creature is a serious threat, and the reward is 100–750 coins plus supplies from the grateful village.
->
-> **Job (d12 → 4):** A guild alchemist at the inn approaches the party directly. She needs fresh venom sacs from pit asps in a nearby gorge. At Tier 3–4, the asps are dangerous beasts, and she offers 200 coins plus a batch of alchemical potions — useful for the party's next adventure.
->
-> **Result:** The party now has three leads. They decide the alchemist's job is quick and profitable, plan to tackle the marsh creature quest next, and file the coral reef rumor away for a future sailing adventure.
+1. Pick or roll a category (d6).
+2. Roll the dice for that category (see table above) — all at once.
+3. Read the fragments from the tables and plug them into the sentence seed.
+4. Apply the tier bracket for the party's level to set scope, enemy strength, and reward.
+5. Replace generic types with campaign-specific names, creatures, and places.
