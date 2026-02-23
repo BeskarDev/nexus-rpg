@@ -23,9 +23,10 @@ interface AutoRollerGroup {
 interface AutoRollerProps {
 	title: string
 	groups: AutoRollerGroup[]
-	generateResult: (groupId: string, useGerman?: boolean) => string
+	generateResult: (groupId: string, useGerman?: boolean, useInWorld?: boolean) => string
 	defaultGroup?: string
 	showGermanToggle?: boolean
+	showInWorldToggle?: boolean
 }
 
 export const AutoRoller: React.FC<AutoRollerProps> = ({
@@ -34,6 +35,7 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 	generateResult,
 	defaultGroup,
 	showGermanToggle = false,
+	showInWorldToggle = false,
 }) => {
 	const [selectedGroup, setSelectedGroup] = useState<string>(
 		defaultGroup || groups[0]?.id || '',
@@ -41,11 +43,12 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 	const [count, setCount] = useState<number>(1)
 	const [results, setResults] = useState<string[]>([])
 	const [useGerman, setUseGerman] = useState<boolean>(false)
+	const [useInWorld, setUseInWorld] = useState<boolean>(false)
 
 	const handleRoll = () => {
 		const newResults: string[] = []
 		for (let i = 0; i < count; i++) {
-			newResults.push(generateResult(selectedGroup, useGerman))
+			newResults.push(generateResult(selectedGroup, useGerman, useInWorld))
 		}
 		setResults(newResults)
 	}
@@ -119,6 +122,21 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 									/>
 								}
 								label="German family names"
+							/>
+						)}
+
+						{showInWorldToggle && (
+							<FormControlLabel
+								control={
+									<Checkbox
+										checked={useInWorld}
+										onChange={(e) =>
+											setUseInWorld(e.target.checked)
+										}
+										size="small"
+									/>
+								}
+								label="In-world family names"
 							/>
 						)}
 

@@ -102,7 +102,7 @@ function applyFamilyPattern(
 	return capitalize(raw.toLowerCase())
 }
 
-export function generateName(groupId: string, useGerman = false): string {
+export function generateName(groupId: string, useGerman = false, useInWorld = false): string {
 	const culture = nameData.cultures.find(
 		(c) => `${c.folk}-${c.culture}` === groupId,
 	)
@@ -114,9 +114,11 @@ export function generateName(groupId: string, useGerman = false): string {
 
 	// Roll family name — each column independently
 	const familyPattern = pick(nameData.familyNamePatterns)
-	const familySource = useGerman && culture.familyNamesDE
-		? culture.familyNamesDE
-		: culture.familyNames
+	const familySource = useInWorld && culture.familyNamesInWorld
+		? culture.familyNamesInWorld
+		: useGerman && culture.familyNamesDE
+			? culture.familyNamesDE
+			: culture.familyNames
 	const familyName = applyFamilyPattern(familyPattern, familySource)
 
 	return `${personalName} ${familyName}`

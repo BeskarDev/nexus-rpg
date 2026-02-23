@@ -48,21 +48,38 @@ describe('AutoRoller Data Integrity', () => {
 			expect(folks).toContain('Minotaur')
 		})
 
-		it('should have 20 personal name entries per culture', () => {
+		it('should have 50 personal name entries per culture', () => {
 			nameData.cultures.forEach((culture) => {
-				expect(culture.personalNames).toHaveLength(20)
+				expect(culture.personalNames).toHaveLength(50)
 			})
 		})
 
-		it('should have 20 family name entries per culture', () => {
+		it('should have 50 family name entries per culture', () => {
 			nameData.cultures.forEach((culture) => {
-				expect(culture.familyNames).toHaveLength(20)
+				expect(culture.familyNames).toHaveLength(50)
 			})
 		})
 
-		it('should have 20 German family name entries per culture', () => {
+		it('should have 50 German family name entries per culture', () => {
 			nameData.cultures.forEach((culture) => {
-				expect(culture.familyNamesDE).toHaveLength(20)
+				expect(culture.familyNamesDE).toHaveLength(50)
+			})
+		})
+
+		it('should have 50 in-world family name entries per culture', () => {
+			nameData.cultures.forEach((culture) => {
+				expect(culture.familyNamesInWorld).toHaveLength(50)
+			})
+		})
+
+		it('should have valid in-world family name fields', () => {
+			nameData.cultures.forEach((culture) => {
+				culture.familyNamesInWorld.forEach((name) => {
+					expect(name.adjective1).toBeTruthy()
+					expect(name.adjective2).toBeTruthy()
+					expect(name.noun1).toBeTruthy()
+					expect(name.noun2).toBeTruthy()
+				})
 			})
 		})
 
@@ -403,6 +420,14 @@ describe('AutoRoller Generators', () => {
 		it('should generate German family names when useGerman is true', () => {
 			for (let i = 0; i < 10; i++) {
 				const result = generateName('Dwarf-Ghahar', true)
+				expect(result).toBeTruthy()
+				expect(result.split(' ').length).toBeGreaterThanOrEqual(2)
+			}
+		})
+
+		it('should generate in-world family names when useInWorld is true', () => {
+			for (let i = 0; i < 10; i++) {
+				const result = generateName('Dwarf-Ghahar', false, true)
 				expect(result).toBeTruthy()
 				expect(result.split(' ').length).toBeGreaterThanOrEqual(2)
 			}

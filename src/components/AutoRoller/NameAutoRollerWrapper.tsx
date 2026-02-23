@@ -19,6 +19,7 @@ export const NameAutoRollerWrapper: React.FC = () => {
 				groups={nameGroups}
 				generateResult={generateName}
 				showGermanToggle
+				showInWorldToggle
 			/>
 		</Experimental_CssVarsProvider>
 	)
