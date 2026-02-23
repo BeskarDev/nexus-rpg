@@ -75,15 +75,6 @@ Whenever you traverse large distances by sea or land. While exploration deals wi
 
 Travel scenes are counted in days. One travel turn usually covers about one or more days.
 
-> **Comprehensive Travel System**
-> 
-> For multi-day wilderness journeys, see:
-> - **[Travel Rules](07-travel-rules.md)** - Complete travel system with progress track, encounters, and weather
-> - **[Travel Encounters](08-travel-encounters.md)** - Terrain-specific encounter tables
-> - **[Environment Stat Blocks](09-environment-stat-blocks.md)** - Terrain types with mechanical properties
-> 
-> The simplified rules below work for quick trips or when you want minimal complexity.
-
 ### Travel Activities
 
 - Hike a day-long route
@@ -177,17 +168,6 @@ While traveling with fishing tools and fitting lakes or rivers on your way, roll
 **Critical.** Consume one less unit of provisions. Roll a Supply Check* instead of automatically consuming another one unit of provisions.
 
 * If you already only had to roll a Supply Check anyway, instead skip it and don‘t consume that unit.
-
-
-> **Travel Roles in the Comprehensive System**
-> 
-> When using the full **[Travel Rules](07-travel-rules.md)**, these travel roles integrate with:
-> - **Navigator**: Makes daily progress rolls to advance on the progress track
-> - **Scout**: Modifies encounter die and finds shelter
-> - **Forager/Hunter/Fisher**: Reduce resource consumption as described above
-> - **Additional Roles**: Lookout (maintains vigilance) and Quartermaster (manages supplies)
-> 
-> See **[Travel Rules](07-travel-rules.md)** for the complete system.
 
 ### Ending Travel
 
