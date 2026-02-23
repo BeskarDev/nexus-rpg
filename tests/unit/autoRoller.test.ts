@@ -4,17 +4,20 @@ import spellData from '../../src/components/AutoRoller/data/spellData.json'
 import creatureData from '../../src/components/AutoRoller/data/creatureData.json'
 import challengeData from '../../src/components/AutoRoller/data/challengeData.json'
 import treasureData from '../../src/components/AutoRoller/data/treasureData.json'
+import questData from '../../src/components/AutoRoller/data/questData.json'
 import {
 	generateName,
 	generateSpell,
 	generateCreature,
 	generateChallenge,
 	generateTreasure,
+	generateQuest,
 	nameGroups,
 	spellGroups,
 	creatureGroups,
 	challengeGroups,
 	treasureGroups,
+	questGroups,
 } from '../../src/components/AutoRoller/generators'
 
 describe('AutoRoller Data Integrity', () => {
@@ -248,6 +251,78 @@ describe('AutoRoller Data Integrity', () => {
 			expect(treasureData.weaponCatalyst).toHaveLength(12)
 		})
 	})
+
+	describe('Quest Data', () => {
+		it('should have 36 locations (d66 grid)', () => {
+			expect(questData.locations).toHaveLength(36)
+		})
+
+		it('should have 36 tasks', () => {
+			expect(questData.tasks).toHaveLength(36)
+		})
+
+		it('should have 36 subjects', () => {
+			expect(questData.subjects).toHaveLength(36)
+		})
+
+		it('should have 36 complications', () => {
+			expect(questData.complications).toHaveLength(36)
+		})
+
+		it('should have 36 rewards', () => {
+			expect(questData.rewards).toHaveLength(36)
+		})
+
+		it('should have 36 sources', () => {
+			expect(questData.sources).toHaveLength(36)
+		})
+
+		it('should have 36 rumor subjects', () => {
+			expect(questData.rumorSubjects).toHaveLength(36)
+		})
+
+		it('should have 36 causes', () => {
+			expect(questData.causes).toHaveLength(36)
+		})
+
+		it('should have 36 patrons', () => {
+			expect(questData.patrons).toHaveLength(36)
+		})
+
+		it('should have 5 level scaling entries', () => {
+			expect(questData.levelScaling).toHaveLength(5)
+		})
+
+		it('should have valid level scaling fields', () => {
+			questData.levelScaling.forEach((entry) => {
+				expect(entry.levels).toBeTruthy()
+				expect(entry.scope).toBeTruthy()
+				expect(entry.coinMin).toBeGreaterThan(0)
+				expect(entry.coinMax).toBeGreaterThan(entry.coinMin)
+				expect(entry.treasureQualities.length).toBeGreaterThan(0)
+				expect(entry.travelTime).toBeTruthy()
+			})
+		})
+
+		it('should have non-empty string entries in all tables', () => {
+			const tables = [
+				questData.locations,
+				questData.tasks,
+				questData.subjects,
+				questData.complications,
+				questData.rewards,
+				questData.sources,
+				questData.rumorSubjects,
+				questData.causes,
+				questData.patrons,
+			]
+			tables.forEach((table) => {
+				table.forEach((entry) => {
+					expect(entry.length).toBeGreaterThan(0)
+				})
+			})
+		})
+	})
 })
 
 describe('AutoRoller Groups', () => {
@@ -278,6 +353,13 @@ describe('AutoRoller Groups', () => {
 
 	it('should have 6 treasure groups', () => {
 		expect(treasureGroups).toHaveLength(6)
+	})
+
+	it('should have 3 quest groups (rumor, quest, job)', () => {
+		expect(questGroups).toHaveLength(3)
+		expect(questGroups[0].id).toBe('rumor')
+		expect(questGroups[1].id).toBe('quest')
+		expect(questGroups[2].id).toBe('job')
 	})
 })
 
@@ -542,6 +624,93 @@ describe('AutoRoller Generators', () => {
 				results.add(generateTreasure('weapon'))
 			}
 			expect(results.size).toBeGreaterThan(3)
+		})
+	})
+
+	describe('generateQuest', () => {
+		it('should generate a rumor with natural sentence format', () => {
+			const result = generateQuest('rumor', 3)
+			expect(result).toBeTruthy()
+			expect(result).toContain('says that')
+			expect(result).toContain('near')
+			expect(result).toContain("it's because of")
+		})
+
+		it('should generate a quest hook with reward details', () => {
+			const result = generateQuest('quest', 5)
+			expect(result).toBeTruthy()
+			expect(result).toContain('Wanted:')
+			expect(result).toContain('Warning:')
+			expect(result).toContain('Reward:')
+			expect(result).toContain('coins')
+		})
+
+		it('should generate a job with patron and reward details', () => {
+			const result = generateQuest('job', 7)
+			expect(result).toBeTruthy()
+			expect(result).toContain('wants you to')
+			expect(result).toContain('but')
+			expect(result).toContain('On success:')
+			expect(result).toContain('coins')
+		})
+
+		it('should return unknown for invalid category', () => {
+			expect(generateQuest('invalid', 1)).toBe('Unknown quest type')
+		})
+
+		it('should scale coin rewards with party level', () => {
+			const lowLevelCoins: number[] = []
+			const highLevelCoins: number[] = []
+			for (let i = 0; i < 50; i++) {
+				const lowResult = generateQuest('quest', 1)
+				const highResult = generateQuest('quest', 10)
+				const lowMatch = lowResult.match(/(\d+) coins/)
+				const highMatch = highResult.match(/(\d+) coins/)
+				if (lowMatch) lowLevelCoins.push(parseInt(lowMatch[1]))
+				if (highMatch) highLevelCoins.push(parseInt(highMatch[1]))
+			}
+			const avgLow = lowLevelCoins.reduce((a, b) => a + b, 0) / lowLevelCoins.length
+			const avgHigh = highLevelCoins.reduce((a, b) => a + b, 0) / highLevelCoins.length
+			expect(avgHigh).toBeGreaterThan(avgLow)
+		})
+
+		it('should include scope and treasure quality in quest/job results', () => {
+			const result = generateQuest('quest', 5)
+			expect(result).toMatch(/Q\d/)
+			expect(result).toContain('scope')
+		})
+
+		it('should capitalize first letter of rumor source', () => {
+			for (let i = 0; i < 10; i++) {
+				const result = generateQuest('rumor', 1)
+				expect(result[0]).toBe(result[0].toUpperCase())
+			}
+		})
+
+		it('should capitalize first letter of job patron', () => {
+			for (let i = 0; i < 10; i++) {
+				const result = generateQuest('job', 1)
+				expect(result[0]).toBe(result[0].toUpperCase())
+			}
+		})
+
+		it('should generate varied results across multiple rolls', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateQuest('rumor', 3))
+			}
+			expect(results.size).toBeGreaterThan(5)
+		})
+
+		it('should work for all party levels 1-10', () => {
+			for (let level = 1; level <= 10; level++) {
+				const rumor = generateQuest('rumor', level)
+				expect(rumor).toBeTruthy()
+				const quest = generateQuest('quest', level)
+				expect(quest).toContain('coins')
+				const job = generateQuest('job', level)
+				expect(job).toContain('coins')
+			}
 		})
 	})
 })
