@@ -43,25 +43,18 @@ When a PC or the GM undertakes a major activity governed by a timer, follow this
 
 ### The Event Die
 
-When a dice timer hits 0, roll the **Event Die** to determine what happens. The Event Die uses the same severity table already established in the travel system, scaled to the scene's context.
+When a dice timer hits 0, roll **1d6** on the scene's event table to determine what happens. Every time interval has its own generic event table, but all follow the same structure—a spectrum from immediate threat to ambient flavor:
 
-| Event Die Result | Event Type | General Examples |
+| d6 | Category | What It Means |
 | --- | --- | --- |
-| 1 (good) | Something lucky or helpful | Discover a shortcut, find unexpected aid |
-| 2–3 (neutral) | Nothing remarkable | Ambient atmosphere, minor flavor detail |
-| 4–6 (bad) | Something dubious or potentially harmful | Resource drain, minor hazard, unwanted attention |
-| 7–9 (perilous) | Something violent or aggressive | Wandering monsters, trap triggers, hostile NPCs |
-| 10–11 (dire) | Something very dangerous | Elite enemies, collapsing environment, ambush |
-| 12 (catastrophic) | Something terrifyingly bad | Boss encounter, total environmental collapse |
+| 1 | **Threat** | An encounter or direct danger. Roll on an encounter table or introduce a hostile force. |
+| 2 | **Wear** | Equipment or resources degrade. An item requires a Durability check or loses a use. |
+| 3 | **Resource Drain** | A key resource is consumed or tested. Roll a Supply check or spend a use of something. |
+| 4 | **Shift** | The environment or situation changes. Something mechanical shifts—terrain, conditions, NPC behavior. |
+| 5 | **Traces** | A clue or sign of what lies ahead. Foreshadowing, tracks, sounds, or useful information. |
+| 6 | **Ambient** | Atmosphere and flavor. Nothing mechanically significant happens. |
 
-**Event Die Size**: The base die size depends on the scene's danger level and can be modified by player actions:
-
-| Scene Danger | Base Event Die |
-| --- | --- |
-| Safe / Low risk | d8 (skews toward neutral) |
-| Moderate risk | d6 (standard) |
-| High risk | d4 (skews toward bad) |
-| Extreme danger | d4, roll twice take worse |
+Each time interval provides its own themed version of this table (see Procedures by Time Scale below). GMs are encouraged to customize these tables further for specific adventures or locations.
 
 **Resetting the Timer**: After an event fires, the GM resets the timer to its starting value (or a new value, if the situation has changed). The scene continues until its goal is achieved or made impossible.
 
@@ -131,7 +124,7 @@ Dice timers are not a passive countdown. Both the GM and players can influence t
 
 ## Procedures by Time Scale
 
-Each time interval uses the same core loop (tick → triggers → roll → results) but has its own flavor, typical actions, and event tables. Below are procedure templates for each scale.
+Each time interval uses the same core loop (tick → triggers → roll → results) and the same 1d6 event table structure. Below are generic event tables and procedure templates for each scale. GMs should customize these tables to fit specific adventures.
 
 ### Encounter Procedure (Seconds)
 
@@ -139,9 +132,18 @@ Encounters already have a well-defined turn structure in the combat rules. Dice 
 
 **When to use a timer**: Collapsing buildings, rising water, ritual countdowns, reinforcement arrivals.
 
-**Typical timer**: d4 or d6 (2–6 rounds before the event fires).
+**Typical timer**: d6 (6 rounds before the event fires). Use a lower starting value (3–4) for scenes already in progress or under extreme pressure.
 
-**Event examples**: Ceiling collapses (area damage), reinforcements arrive (add enemies), ritual completes (major effect), escape route closes.
+#### Encounter Event Table (d6)
+
+| d6 | Event |
+| --- | --- |
+| 1 | **Reinforcements!** More enemies arrive or an existing threat escalates. Roll on an encounter table or add 1d4 combatants to the opposing side. |
+| 2 | **Wear and Tear.** The chaos of battle damages something. Each combatant chooses one held or worn item: it requires a Durability check or loses 1 use. |
+| 3 | **Resource Strain.** A critical resource is consumed or threatened. A light source gutters, ammunition is scattered, or a consumable is knocked loose and must be recovered. |
+| 4 | **Battlefield Shift.** The environment changes. Roll d3: [1] Cover collapses or terrain becomes difficult. [2] A new hazard appears (fire, falling debris, flooding). [3] An exit or path opens or closes. |
+| 5 | **Opening.** A momentary advantage appears. A weak point in the enemy formation, an unguarded flank, or a piece of useful terrain becomes apparent. |
+| 6 | **Ambient.** Dust swirls, thunder rumbles, or the ground trembles. Atmosphere, but nothing mechanically significant. |
 
 ### Delving Procedure (Minutes)
 
@@ -163,7 +165,16 @@ Delving is where dice timers shine brightest. Dungeon exploration is a natural f
 - Glance into an adjacent room
 - Check for obvious exits
 
-**Event Die**: Roll when timer hits 0 using a dungeon-specific event table (see example below).
+#### Delving Event Table (d6)
+
+| d6 | Event |
+| --- | --- |
+| 1 | **Attack!** Roll on the encounter table to see which creatures attack and how. |
+| 2 | **Wear and Tear.** Each adventurer chooses one item they hold, carry, or wear: worn equipment or weapons require a Durability check, other items directly lose 1 use. |
+| 3 | **Light Fades.** Roll a Supply check to light a new torch or refill lantern oil. |
+| 4 | **Delve Shift.** The dungeon breathes. Roll on a delve shift table to see what changes and what the mechanical effect is (e.g., water rises, temperature drops, passages shift). |
+| 5 | **Traces.** You find signs of a nearby encounter or a clue about your surroundings. |
+| 6 | **Ambient.** Some ambient effect, but nothing else happens. |
 
 ### Exploration Procedure (Hours)
 
@@ -184,15 +195,45 @@ Exploration covers wilderness movement toward an unknown or partially known dest
 - Consult a map briefly
 - Note landmarks
 
-**Event Die**: Roll using a terrain-appropriate encounter table (forest, desert, swamp, etc.).
+#### Exploration Event Table (d6)
+
+| d6 | Event |
+| --- | --- |
+| 1 | **Encounter!** A creature or group crosses your path. Roll on a terrain-appropriate encounter table to determine what appears and its disposition. |
+| 2 | **Wear and Tear.** The terrain takes its toll. Each adventurer chooses one item: footwear, clothing, or a carried tool requires a Durability check, or a carried item loses 1 use. |
+| 3 | **Provisions Dwindle.** Rations spoil, waterskins leak, or foraging turns up nothing. Roll a Supply check for provisions or water. |
+| 4 | **Terrain Shift.** The environment changes around you. Roll d3: [1] Weather worsens (next check suffers +1 bane). [2] A path is blocked or flooded (detour required). [3] A natural hazard emerges (rockslide, sinkhole, flash flood). |
+| 5 | **Traces.** You discover tracks, markings, old campsites, or other signs that hint at what lies ahead or nearby. |
+| 6 | **Ambient.** Wind through the trees, birdsong, distant thunder. Atmosphere and scenery, but nothing significant occurs. |
 
 ### Travel Procedure (Days)
 
-Travel already has detailed procedures (Navigator, Scout, Forager, etc.). Dice timers integrate as an additional pacing layer over multi-day journeys.
+Travel covers multi-day journeys between known destinations. Each action represents roughly one day of marching.
 
-**Setup**: The existing travel system uses the Event Die at the end of each travel stretch. A dice timer can wrap around multi-day journeys: set a d6 timer for the journey, tick once per day of travel, and roll the Event Die when it expires (in addition to or instead of daily encounter rolls).
+**Setup**: GM sets a d6 timer for the journey or a significant leg of travel. Tick once per day of travel.
 
-**Integration note**: The travel system's Scout role already modifies the Event Die size. This is fully compatible—the Scout adjusts the die rolled when the timer fires.
+**Actions that tick**:
+- Hike a full day's route
+- Hunt or forage for the day
+- Navigate through challenging terrain
+- Rest and resupply at a waypoint
+
+**Free activities**:
+- Conversation while walking
+- Consult a map or notes
+- Brief rest stop
+- Adjust carried gear
+
+#### Travel Event Table (d6)
+
+| d6 | Event |
+| --- | --- |
+| 1 | **Encounter!** You cross paths with creatures, travelers, or a hostile force. Roll on a region-appropriate encounter table to determine what you meet. |
+| 2 | **Wear and Tear.** Long days on the road strain gear. Each adventurer chooses one item: worn armor, weapons, or tools require a Durability check, or a pack item loses 1 use. |
+| 3 | **Provisions Dwindle.** Food runs low, water sources dry up, or stored rations go bad. Roll a Supply check for provisions. |
+| 4 | **Route Shift.** Conditions change along the route. Roll d3: [1] Weather turns harsh (next day's travel suffers +1 bane). [2] A road or bridge is damaged or blocked (detour adds time). [3] Terrain becomes more difficult than expected (reduce progress). |
+| 5 | **Traces.** Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead or off the beaten path. |
+| 6 | **Ambient.** A striking sunset, a cool breeze, or a peaceful night. Atmosphere and flavor, but nothing of note occurs. |
 
 ### Downtime Procedure (Weeks)
 
@@ -200,7 +241,29 @@ Downtime timers are used for long-form activities where external pressure exists
 
 **Setup**: GM sets a d6 timer representing weeks. Each downtime action (crafting, researching, training, networking) ticks the timer.
 
-**Event Die**: When the timer fires, roll to see how the external situation has changed (rival progress, political shifts, resource availability).
+**Actions that tick**:
+- Craft an item or work a profession
+- Research a complex topic
+- Train a skill or practice a technique
+- Gather information or cultivate contacts
+- Recover from serious wounds
+
+**Free activities**:
+- Run a quick errand
+- Visit a shop or market
+- Have a meeting or social call
+- Write a letter or send a message
+
+#### Downtime Event Table (d6)
+
+| d6 | Event |
+| --- | --- |
+| 1 | **Trouble!** A rival acts, a threat materializes, or an obligation comes due. Roll on a settlement or faction event table to determine what demands your attention. |
+| 2 | **Wear and Tear.** Tools, workspace, or living conditions degrade. A crafting tool, workshop item, or piece of equipment requires a Durability check or loses 1 use. |
+| 3 | **Expenses.** Costs rise or income drops. Roll a Supply check for coin or materials, or pay an unexpected fee. |
+| 4 | **Situation Shift.** The political, social, or economic landscape changes. Roll d3: [1] A faction gains or loses power. [2] Prices or availability of goods shift. [3] A new law, rumor, or decree changes the status quo. |
+| 5 | **Traces.** You hear rumors, receive a lead, or notice a pattern that hints at coming events or hidden opportunities. |
+| 6 | **Ambient.** A festival, a quiet week, or pleasant weather. Life goes on, nothing of particular note occurs. |
 
 ---
 
@@ -218,20 +281,19 @@ GMs and players should feel free to create custom actions within the framework. 
 
 ## Example: Dungeon Delving with Dice Timers
 
-This example shows a complete dice timer setup for a dungeon crawl scenario.
+This example shows how to take the generic Delving Event Table and customize it for a specific dungeon. The GM keeps the same 1d6 structure but writes themed descriptions for each result.
 
 ### Setup
 
 - **Scene**: Delving into a waterlogged ruin beneath an ancient temple.
 - **Timer**: d6, starting at 6. Reduces by 1 for each major activity (move, search, short rest, etc.).
-- **Event Die**: d6 (moderate danger).
 
-### Dungeon Event Table (d6)
+### Customized Delving Event Table — Waterlogged Ruin (d6)
 
 | d6 | Event |
 | --- | --- |
 | 1 | **Attack!** Water Weird tendrils emerge from damp walls or animated vines lash out. Roll on the encounter table below. |
-| 2 | **Wear and Tear.** Moisture corrodes metal, stone dust abrades surfaces. Each adventurer chooses one item: worn equipment or weapons require a Durability check, other items lose 1 use. |
+| 2 | **Wear and Tear.** Moisture corrodes metal, stone dust abrades surfaces. Each adventurer chooses one item they hold, carry, or wear: worn equipment or weapons require a Durability check, other items directly lose 1 use. |
 | 3 | **Light Fades.** Torches sputter in the damp air. Roll a Supply check to light a new torch or refill lantern oil. |
 | 4 | **Delve Shift.** The dungeon breathes. Roll d3: [1] Water level rises 1 foot (difficult terrain in low areas, aquatic creatures become more active). [2] Temperature drops—cold wind from an unknown source (next check suffers +1 bane). [3] Pressure change—distant rumbling from deeper areas (wandering creatures drawn toward noise). |
 | 5 | **Traces.** Signs of passage: wet footprints leading deeper, fresh claw marks on the walls, or disturbed dust around a water basin. |
@@ -266,16 +328,13 @@ This example shows a complete dice timer setup for a dungeon crawl scenario.
 
 ## Integration with Existing Systems
 
-### Compatibility with Current Scenes & Time Intervals
+### Relationship to Scene & Time Intervals
 
-The dice timer system does **not replace** the existing time interval definitions (Encounter, Delving, Exploration, Travel, Downtime). Instead, it provides an optional pacing layer that sits on top of any time interval. GMs can use timers when they want structured tension and skip them when free-form narration is more appropriate.
+The dice timer system does **not replace** the existing time interval definitions (Encounter, Delving, Exploration, Travel, Downtime). Instead, it provides a **unified pacing mechanic** that sits on top of any time interval. GMs can use timers when they want structured tension and skip them when free-form narration is more appropriate.
 
-### Compatibility with the Travel System
+### This Is the Base Mechanic
 
-The travel system already uses an Event Die and role-based procedures (Navigator, Scout, Forager, etc.). Dice timers integrate naturally:
-
-- For **short journeys** (1–3 days): The existing daily procedure is sufficient. No timer needed.
-- For **long journeys** (4+ days): A d6 timer can wrap around the journey, with each day ticking the timer. When it fires, roll a major event in addition to daily encounters. This creates a "journey arc" with rising tension.
+Dice timers and 1d6 event tables are designed as the **foundational pacing layer** for all modes of play. Specialized systems—such as travel procedures with Navigator and Scout roles, or downtime crafting sequences—build on top of this base by adding their own roles, tables, and modifiers. The generic event tables provided here serve as starting points that any specialized system can extend or replace.
 
 ### Compatibility with the Challenge System (Issue #149)
 
@@ -290,7 +349,7 @@ Dice timers are drawn directly from the Challenge System concept. Challenges tha
 | **Dice Timer** | A countdown (default d6 starting at 6) that ticks down with each major action. |
 | **Action** | Any activity consuming a meaningful amount of time at the current scale. Ticks the timer by 1 (default). |
 | **Free Activity** | Any activity taking negligible time at the current scale. Does not tick the timer. |
-| **Event Die** | Rolled when the timer hits 0. Determines what happens (good → catastrophic). |
+| **Event Die** | 1d6 rolled when the timer hits 0. Each time interval has a generic event table (Threat → Wear → Resource → Shift → Traces → Ambient). |
 | **Timer Manipulation** | Players and GMs can speed up, slow down, or reset timers through actions and choices. |
 | **Custom Actions** | Any action that answers: Does it tick? What do you roll? What happens on success/failure? |
 | **Scalability** | The same loop works at every time interval: encounter, delving, exploration, travel, downtime. |
