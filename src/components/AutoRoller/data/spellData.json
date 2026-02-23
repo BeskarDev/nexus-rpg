@@ -1,0 +1,1556 @@
+{
+  "namingPatterns": [
+    "[Noun] [Form]",
+    "[Adjective] [Noun]",
+    "[Adjective] [Form]",
+    "[Form] of [Adjective] [Noun]"
+  ],
+  "arcaneSchools": [
+    {
+      "name": "Evocation",
+      "entries": [
+        {
+          "form": "Blast",
+          "adjective": "Blazing",
+          "noun": "Flame"
+        },
+        {
+          "form": "Bolt",
+          "adjective": "Burning",
+          "noun": "Frost"
+        },
+        {
+          "form": "Burst",
+          "adjective": "Crackling",
+          "noun": "Ice"
+        },
+        {
+          "form": "Cone",
+          "adjective": "Electrifying",
+          "noun": "Lightning"
+        },
+        {
+          "form": "Discharge",
+          "adjective": "Fiery",
+          "noun": "Spark"
+        },
+        {
+          "form": "Flare",
+          "adjective": "Freezing",
+          "noun": "Storm"
+        },
+        {
+          "form": "Flash",
+          "adjective": "Frigid",
+          "noun": "Thunder"
+        },
+        {
+          "form": "Gust",
+          "adjective": "Icy",
+          "noun": "Chill"
+        },
+        {
+          "form": "Incinerate",
+          "adjective": "Incandescent",
+          "noun": "Ember"
+        },
+        {
+          "form": "Jolt",
+          "adjective": "Raging",
+          "noun": "Fire"
+        },
+        {
+          "form": "Nova",
+          "adjective": "Scintillating",
+          "noun": "Freeze"
+        },
+        {
+          "form": "Pulse",
+          "adjective": "Scorching",
+          "noun": "Gale"
+        },
+        {
+          "form": "Ray",
+          "adjective": "Shivering",
+          "noun": "Heat"
+        },
+        {
+          "form": "Ring",
+          "adjective": "Sizzling",
+          "noun": "Jolt"
+        },
+        {
+          "form": "Shock",
+          "adjective": "Sparking",
+          "noun": "Plasma"
+        },
+        {
+          "form": "Squall",
+          "adjective": "Thundering",
+          "noun": "Scorch"
+        },
+        {
+          "form": "Storm",
+          "adjective": "Volatile",
+          "noun": "Shock"
+        },
+        {
+          "form": "Strike",
+          "adjective": "White-hot",
+          "noun": "Whisper"
+        },
+        {
+          "form": "Surge",
+          "adjective": "Wind-swept",
+          "noun": "Aura"
+        },
+        {
+          "form": "Torrent",
+          "adjective": "Zephyrous",
+          "noun": "Burst"
+        }
+      ]
+    },
+    {
+      "name": "Illusion",
+      "entries": [
+        {
+          "form": "Cloak",
+          "adjective": "Blurred",
+          "noun": "Trickery"
+        },
+        {
+          "form": "Cloud",
+          "adjective": "Confusing",
+          "noun": "Veil"
+        },
+        {
+          "form": "Distortion",
+          "adjective": "Deceptive",
+          "noun": "Shadow"
+        },
+        {
+          "form": "Echo",
+          "adjective": "Distorting",
+          "noun": "Mirage"
+        },
+        {
+          "form": "Falsehood",
+          "adjective": "Elusive",
+          "noun": "Whisper"
+        },
+        {
+          "form": "Figment",
+          "adjective": "Fading",
+          "noun": "Phantasm"
+        },
+        {
+          "form": "Glamour",
+          "adjective": "Fleeting",
+          "noun": "Obfuscation"
+        },
+        {
+          "form": "Glimmer",
+          "adjective": "Hazy",
+          "noun": "Guise"
+        },
+        {
+          "form": "Mask",
+          "adjective": "Hidden",
+          "noun": "Illusion"
+        },
+        {
+          "form": "Mirth",
+          "adjective": "Illusory",
+          "noun": "Riddle"
+        },
+        {
+          "form": "Mirage",
+          "adjective": "Misleading",
+          "noun": "Concealment"
+        },
+        {
+          "form": "Phantom",
+          "adjective": "Obscuring",
+          "noun": "Falsehood"
+        },
+        {
+          "form": "Reflection",
+          "adjective": "Phantom",
+          "noun": "Glimmer"
+        },
+        {
+          "form": "Secrecy",
+          "adjective": "Shifting",
+          "noun": "Mask"
+        },
+        {
+          "form": "Shadow",
+          "adjective": "Silent",
+          "noun": "Secret"
+        },
+        {
+          "form": "Shroud",
+          "adjective": "Subtle",
+          "noun": "Veil"
+        },
+        {
+          "form": "Veil",
+          "adjective": "Twisting",
+          "noun": "Enigma"
+        },
+        {
+          "form": "Whisper",
+          "adjective": "Unseen",
+          "noun": "Shade"
+        },
+        {
+          "form": "Wisp",
+          "adjective": "Vaporous",
+          "noun": "Disguise"
+        },
+        {
+          "form": "Weave",
+          "adjective": "Verdant",
+          "noun": "Glamour"
+        }
+      ]
+    },
+    {
+      "name": "Conjuration",
+      "entries": [
+        {
+          "form": "Anchor",
+          "adjective": "Bound",
+          "noun": "Passage"
+        },
+        {
+          "form": "Bridge",
+          "adjective": "Calling",
+          "noun": "Gate"
+        },
+        {
+          "form": "Chain",
+          "adjective": "Conjured",
+          "noun": "Portal"
+        },
+        {
+          "form": "Circle",
+          "adjective": "Created",
+          "noun": "Summons"
+        },
+        {
+          "form": "Construct",
+          "adjective": "Ethereal",
+          "noun": "Manifestation"
+        },
+        {
+          "form": "Creation",
+          "adjective": "Formed",
+          "noun": "Ward"
+        },
+        {
+          "form": "Gate",
+          "adjective": "Glimmering",
+          "noun": "Binding"
+        },
+        {
+          "form": "Link",
+          "adjective": "Guiding",
+          "noun": "Bond"
+        },
+        {
+          "form": "Locus",
+          "adjective": "Phantom",
+          "noun": "Construct"
+        },
+        {
+          "form": "Manifest",
+          "adjective": "Portable",
+          "noun": "Creation"
+        },
+        {
+          "form": "Nexus",
+          "adjective": "Runic",
+          "noun": "Anchor"
+        },
+        {
+          "form": "Object",
+          "adjective": "Spectral",
+          "noun": "Chain"
+        },
+        {
+          "form": "Portal",
+          "adjective": "Summoned",
+          "noun": "Creature"
+        },
+        {
+          "form": "Realm",
+          "adjective": "Teleporting",
+          "noun": "Object"
+        },
+        {
+          "form": "Rune",
+          "adjective": "Temporary",
+          "noun": "Realm"
+        },
+        {
+          "form": "Seal",
+          "adjective": "Transitory",
+          "noun": "Rune"
+        },
+        {
+          "form": "Summons",
+          "adjective": "Unseen",
+          "noun": "Seal"
+        },
+        {
+          "form": "Tether",
+          "adjective": "Void-born",
+          "noun": "Tether"
+        },
+        {
+          "form": "Vortex",
+          "adjective": "Woven",
+          "noun": "Vortex"
+        },
+        {
+          "form": "Whisper",
+          "adjective": "Whispering",
+          "noun": "Pathway"
+        }
+      ]
+    },
+    {
+      "name": "Telepathy",
+      "entries": [
+        {
+          "form": "Anthem",
+          "adjective": "Binding",
+          "noun": "Thought"
+        },
+        {
+          "form": "Aura",
+          "adjective": "Calming",
+          "noun": "Mind"
+        },
+        {
+          "form": "Call",
+          "adjective": "Compelling",
+          "noun": "Whisper"
+        },
+        {
+          "form": "Chord",
+          "adjective": "Deep",
+          "noun": "Insight"
+        },
+        {
+          "form": "Echo",
+          "adjective": "Empathic",
+          "noun": "Link"
+        },
+        {
+          "form": "Glimmer",
+          "adjective": "Guiding",
+          "noun": "Connection"
+        },
+        {
+          "form": "Impulse",
+          "adjective": "Influencing",
+          "noun": "Harmony"
+        },
+        {
+          "form": "Link",
+          "adjective": "Inner",
+          "noun": "Memory"
+        },
+        {
+          "form": "Meld",
+          "adjective": "Mental",
+          "noun": "Projection"
+        },
+        {
+          "form": "Mind",
+          "adjective": "Muting",
+          "noun": "Quiet"
+        },
+        {
+          "form": "Nexus",
+          "adjective": "Psychic",
+          "noun": "Echo"
+        },
+        {
+          "form": "Pulse",
+          "adjective": "Revealing",
+          "noun": "Impulse"
+        },
+        {
+          "form": "Quiet",
+          "adjective": "Soothing",
+          "noun": "Insight"
+        },
+        {
+          "form": "Resonance",
+          "adjective": "Speaking",
+          "noun": "Voice"
+        },
+        {
+          "form": "Song",
+          "adjective": "Telepathic",
+          "noun": "Weave"
+        },
+        {
+          "form": "Thought",
+          "adjective": "Tranquil",
+          "noun": "Whisper"
+        },
+        {
+          "form": "Voice",
+          "adjective": "Unseen",
+          "noun": "Chord"
+        },
+        {
+          "form": "Wave",
+          "adjective": "Unveiling",
+          "noun": "Aura"
+        },
+        {
+          "form": "Whisper",
+          "adjective": "Volatile",
+          "noun": "Presence"
+        },
+        {
+          "form": "Word",
+          "adjective": "Whispering",
+          "noun": "Resonance"
+        }
+      ]
+    },
+    {
+      "name": "Telekinetics",
+      "entries": [
+        {
+          "form": "Barrier",
+          "adjective": "Binding",
+          "noun": "Force"
+        },
+        {
+          "form": "Blast",
+          "adjective": "Crushing",
+          "noun": "Push"
+        },
+        {
+          "form": "Bound",
+          "adjective": "Deflecting",
+          "noun": "Pull"
+        },
+        {
+          "form": "Burst",
+          "adjective": "Expelling",
+          "noun": "Lift"
+        },
+        {
+          "form": "Containment",
+          "adjective": "Gripping",
+          "noun": "Momentum"
+        },
+        {
+          "form": "Crush",
+          "adjective": "Hindering",
+          "noun": "Pressure"
+        },
+        {
+          "form": "Disc",
+          "adjective": "Impelling",
+          "noun": "Repel"
+        },
+        {
+          "form": "Grip",
+          "adjective": "Kinetic",
+          "noun": "Shield"
+        },
+        {
+          "form": "Hurl",
+          "adjective": "Levitative",
+          "noun": "Shockwave"
+        },
+        {
+          "form": "Impact",
+          "adjective": "Moving",
+          "noun": "Barrier"
+        },
+        {
+          "form": "Imprison",
+          "adjective": "Powerful",
+          "noun": "Grip"
+        },
+        {
+          "form": "Push",
+          "adjective": "Projecting",
+          "noun": "Impulse"
+        },
+        {
+          "form": "Repel",
+          "adjective": "Propelling",
+          "noun": "Levitation"
+        },
+        {
+          "form": "Restrain",
+          "adjective": "Pushing",
+          "noun": "Shift"
+        },
+        {
+          "form": "Shield",
+          "adjective": "Repelling",
+          "noun": "Vortex"
+        },
+        {
+          "form": "Slam",
+          "adjective": "Restraining",
+          "noun": "Wave"
+        },
+        {
+          "form": "Sphere",
+          "adjective": "Shifting",
+          "noun": "Motion"
+        },
+        {
+          "form": "Surge",
+          "adjective": "Telekinetic",
+          "noun": "Gravity"
+        },
+        {
+          "form": "Vortex",
+          "adjective": "Unseen",
+          "noun": "Tremor"
+        },
+        {
+          "form": "Wave",
+          "adjective": "Violent",
+          "noun": "Field"
+        }
+      ]
+    },
+    {
+      "name": "Necromancy",
+      "entries": [
+        {
+          "form": "Blight",
+          "adjective": "Ashen",
+          "noun": "Decay"
+        },
+        {
+          "form": "Chill",
+          "adjective": "Blighted",
+          "noun": "Rot"
+        },
+        {
+          "form": "Cloud",
+          "adjective": "Corpse-like",
+          "noun": "Soul"
+        },
+        {
+          "form": "Curse",
+          "adjective": "Decaying",
+          "noun": "Siphon"
+        },
+        {
+          "form": "Drain",
+          "adjective": "Deathly",
+          "noun": "Undeath"
+        },
+        {
+          "form": "Feast",
+          "adjective": "Draining",
+          "noun": "Grave"
+        },
+        {
+          "form": "Grasp",
+          "adjective": "Festering",
+          "noun": "Chill"
+        },
+        {
+          "form": "Hunger",
+          "adjective": "Ghastly",
+          "noun": "Plague"
+        },
+        {
+          "form": "Mark",
+          "adjective": "Lingering",
+          "noun": "Pestilence"
+        },
+        {
+          "form": "Mist",
+          "adjective": "Morbid",
+          "noun": "Shadow"
+        },
+        {
+          "form": "Pall",
+          "adjective": "Necrotic",
+          "noun": "Spirit"
+        },
+        {
+          "form": "Plague",
+          "adjective": "Pale",
+          "noun": "Torment"
+        },
+        {
+          "form": "Rot",
+          "adjective": "Putrid",
+          "noun": "Void"
+        },
+        {
+          "form": "Shroud",
+          "adjective": "Siphoning",
+          "noun": "Whisper"
+        },
+        {
+          "form": "Silence",
+          "adjective": "Spectral",
+          "noun": "Dread"
+        },
+        {
+          "form": "Stain",
+          "adjective": "Undead",
+          "noun": "Wither"
+        },
+        {
+          "form": "Touch",
+          "adjective": "Unhallowed",
+          "noun": "Curse"
+        },
+        {
+          "form": "Void",
+          "adjective": "Vampiric",
+          "noun": "Grasp"
+        },
+        {
+          "form": "Wail",
+          "adjective": "Withering",
+          "noun": "Oblivion"
+        },
+        {
+          "form": "Whisper",
+          "adjective": "Wretched",
+          "noun": "Bane"
+        }
+      ]
+    }
+  ],
+  "mysticTraditions": [
+    {
+      "name": "Light",
+      "entries": [
+        {
+          "form": "Aura",
+          "adjective": "Blazing",
+          "noun": "Truth"
+        },
+        {
+          "form": "Beacon",
+          "adjective": "Brilliant",
+          "noun": "Radiance"
+        },
+        {
+          "form": "Beam",
+          "adjective": "Dazzling",
+          "noun": "Insight"
+        },
+        {
+          "form": "Circle",
+          "adjective": "Luminous",
+          "noun": "Clarity"
+        },
+        {
+          "form": "Cone",
+          "adjective": "Glimmering",
+          "noun": "Revelation"
+        },
+        {
+          "form": "Disk",
+          "adjective": "Illuminating",
+          "noun": "Dawn"
+        },
+        {
+          "form": "Field",
+          "adjective": "Pure",
+          "noun": "Glare"
+        },
+        {
+          "form": "Gaze",
+          "adjective": "Sacred",
+          "noun": "Embers"
+        },
+        {
+          "form": "Glyph",
+          "adjective": "Shining",
+          "noun": "Spark"
+        },
+        {
+          "form": "Halo",
+          "adjective": "Solar",
+          "noun": "Vision"
+        },
+        {
+          "form": "Lens",
+          "adjective": "Star-born",
+          "noun": "Flame"
+        },
+        {
+          "form": "Nexus",
+          "adjective": "Verdant",
+          "noun": "Gleam"
+        },
+        {
+          "form": "Pillar",
+          "adjective": "Warm",
+          "noun": "Glimmer"
+        },
+        {
+          "form": "Pulse",
+          "adjective": "White",
+          "noun": "Candle"
+        },
+        {
+          "form": "Ray",
+          "adjective": "Golden",
+          "noun": "Lamp"
+        },
+        {
+          "form": "Rune",
+          "adjective": "Holy",
+          "noun": "Orb"
+        },
+        {
+          "form": "Shard",
+          "adjective": "Incandescent",
+          "noun": "Torch"
+        },
+        {
+          "form": "Sphere",
+          "adjective": "Radiant",
+          "noun": "Shimmer"
+        },
+        {
+          "form": "Spark",
+          "adjective": "Revealing",
+          "noun": "Glimmer"
+        },
+        {
+          "form": "Torrent",
+          "adjective": "Truthful",
+          "noun": "Illumination"
+        }
+      ]
+    },
+    {
+      "name": "Twilight",
+      "entries": [
+        {
+          "form": "Whisper",
+          "adjective": "Abyssal",
+          "noun": "Secret"
+        },
+        {
+          "form": "Veil",
+          "adjective": "Crescent",
+          "noun": "Dream"
+        },
+        {
+          "form": "Cloud",
+          "adjective": "Deep",
+          "noun": "Whisper"
+        },
+        {
+          "form": "Mask",
+          "adjective": "Eclipsing",
+          "noun": "Shadow"
+        },
+        {
+          "form": "Mist",
+          "adjective": "Enshrouding",
+          "noun": "Slumber"
+        },
+        {
+          "form": "Orb",
+          "adjective": "Fading",
+          "noun": "Veil"
+        },
+        {
+          "form": "Portal",
+          "adjective": "Gloaming",
+          "noun": "Illusion"
+        },
+        {
+          "form": "Pool",
+          "adjective": "Hazy",
+          "noun": "Mirage"
+        },
+        {
+          "form": "Shroud",
+          "adjective": "Hidden",
+          "noun": "Mystery"
+        },
+        {
+          "form": "Silhouette",
+          "adjective": "Lunar",
+          "noun": "Twilight"
+        },
+        {
+          "form": "Slumber",
+          "adjective": "Murky",
+          "noun": "Night"
+        },
+        {
+          "form": "Sphere",
+          "adjective": "Obscuring",
+          "noun": "Phantom"
+        },
+        {
+          "form": "Shade",
+          "adjective": "Opaque",
+          "noun": "Quiet"
+        },
+        {
+          "form": "Song",
+          "adjective": "Shadowy",
+          "noun": "Silence"
+        },
+        {
+          "form": "Spiral",
+          "adjective": "Silent",
+          "noun": "Crypt"
+        },
+        {
+          "form": "Vortex",
+          "adjective": "Somber",
+          "noun": "Echo"
+        },
+        {
+          "form": "Weave",
+          "adjective": "Starless",
+          "noun": "Reverie"
+        },
+        {
+          "form": "Web",
+          "adjective": "Twilight",
+          "noun": "Enigma"
+        },
+        {
+          "form": "Wisp",
+          "adjective": "Unseen",
+          "noun": "Lore"
+        },
+        {
+          "form": "Rune",
+          "adjective": "Faltering",
+          "noun": "Insight"
+        }
+      ]
+    },
+    {
+      "name": "Life",
+      "entries": [
+        {
+          "form": "Bloom",
+          "adjective": "Abundant",
+          "noun": "Vitality"
+        },
+        {
+          "form": "Breath",
+          "adjective": "Blessed",
+          "noun": "Growth"
+        },
+        {
+          "form": "Branch",
+          "adjective": "Flourishing",
+          "noun": "Kinship"
+        },
+        {
+          "form": "Cascade",
+          "adjective": "Generous",
+          "noun": "Harvest"
+        },
+        {
+          "form": "Circle",
+          "adjective": "Growing",
+          "noun": "Hearth"
+        },
+        {
+          "form": "Embrace",
+          "adjective": "Healing",
+          "noun": "Life"
+        },
+        {
+          "form": "Field",
+          "adjective": "Joyful",
+          "noun": "Mend"
+        },
+        {
+          "form": "Flow",
+          "adjective": "Nurturing",
+          "noun": "Renewal"
+        },
+        {
+          "form": "Fountain",
+          "adjective": "Prosperous",
+          "noun": "Spirit"
+        },
+        {
+          "form": "Heart",
+          "adjective": "Pure",
+          "noun": "Strength"
+        },
+        {
+          "form": "Leaf",
+          "adjective": "Regenerating",
+          "noun": "Vigor"
+        },
+        {
+          "form": "Nexus",
+          "adjective": "Restoring",
+          "noun": "Blessing"
+        },
+        {
+          "form": "Root",
+          "adjective": "Sacred",
+          "noun": "Bond"
+        },
+        {
+          "form": "Seed",
+          "adjective": "Soothing",
+          "noun": "Community"
+        },
+        {
+          "form": "Sprout",
+          "adjective": "Thriving",
+          "noun": "Fertility"
+        },
+        {
+          "form": "Stream",
+          "adjective": "Vibrant",
+          "noun": "Harmony"
+        },
+        {
+          "form": "Tide",
+          "adjective": "Verdant",
+          "noun": "Nourishment"
+        },
+        {
+          "form": "Well",
+          "adjective": "Wholesome",
+          "noun": "Resilience"
+        },
+        {
+          "form": "Wreath",
+          "adjective": "Wild",
+          "noun": "Bloom"
+        },
+        {
+          "form": "Echo",
+          "adjective": "Harmonious",
+          "noun": "Essence"
+        }
+      ]
+    },
+    {
+      "name": "Death",
+      "entries": [
+        {
+          "form": "Blight",
+          "adjective": "Ashen",
+          "noun": "Rot"
+        },
+        {
+          "form": "Chill",
+          "adjective": "Blighted",
+          "noun": "Decay"
+        },
+        {
+          "form": "Cloud",
+          "adjective": "Corpse-like",
+          "noun": "Fear"
+        },
+        {
+          "form": "Curse",
+          "adjective": "Creeping",
+          "noun": "Blight"
+        },
+        {
+          "form": "Doom",
+          "adjective": "Dark",
+          "noun": "Pestilence"
+        },
+        {
+          "form": "Echo",
+          "adjective": "Decaying",
+          "noun": "Gloom"
+        },
+        {
+          "form": "Grasp",
+          "adjective": "Deathly",
+          "noun": "Grave"
+        },
+        {
+          "form": "Mark",
+          "adjective": "Dire",
+          "noun": "Horror"
+        },
+        {
+          "form": "Mist",
+          "adjective": "Dreadful",
+          "noun": "Malady"
+        },
+        {
+          "form": "Pall",
+          "adjective": "Festering",
+          "noun": "Oblivion"
+        },
+        {
+          "form": "Plague",
+          "adjective": "Ghastly",
+          "noun": "Ruin"
+        },
+        {
+          "form": "Prison",
+          "adjective": "Haunting",
+          "noun": "Sorrow"
+        },
+        {
+          "form": "Shroud",
+          "adjective": "Lingering",
+          "noun": "Stillness"
+        },
+        {
+          "form": "Silence",
+          "adjective": "Necrotic",
+          "noun": "Suffering"
+        },
+        {
+          "form": "Stain",
+          "adjective": "Pale",
+          "noun": "Torment"
+        },
+        {
+          "form": "Touch",
+          "adjective": "Petrifying",
+          "noun": "Plague"
+        },
+        {
+          "form": "Void",
+          "adjective": "Shadowy",
+          "noun": "Doom"
+        },
+        {
+          "form": "Wail",
+          "adjective": "Silent",
+          "noun": "Curse"
+        },
+        {
+          "form": "Web",
+          "adjective": "Withered",
+          "noun": "Hush"
+        },
+        {
+          "form": "Vortex",
+          "adjective": "Withering",
+          "noun": "Despair"
+        }
+      ]
+    },
+    {
+      "name": "Nature",
+      "entries": [
+        {
+          "form": "Bark",
+          "adjective": "Ancient",
+          "noun": "Earth"
+        },
+        {
+          "form": "Bloom",
+          "adjective": "Rooted",
+          "noun": "Grove"
+        },
+        {
+          "form": "Branch",
+          "adjective": "Feral",
+          "noun": "Stone"
+        },
+        {
+          "form": "Canopy",
+          "adjective": "Flourishing",
+          "noun": "Thorn"
+        },
+        {
+          "form": "Claw",
+          "adjective": "Growling",
+          "noun": "Root"
+        },
+        {
+          "form": "Coil",
+          "adjective": "Leafy",
+          "noun": "Bloom"
+        },
+        {
+          "form": "Forest",
+          "adjective": "Mossy",
+          "noun": "Scale"
+        },
+        {
+          "form": "Grove",
+          "adjective": "Primal",
+          "noun": "Hide"
+        },
+        {
+          "form": "Hide",
+          "adjective": "Scented",
+          "noun": "Petal"
+        },
+        {
+          "form": "Leaf",
+          "adjective": "Spiked",
+          "noun": "Vine"
+        },
+        {
+          "form": "Maw",
+          "adjective": "Stony",
+          "noun": "Fur"
+        },
+        {
+          "form": "Mound",
+          "adjective": "Tangled",
+          "noun": "Claw"
+        },
+        {
+          "form": "Nest",
+          "adjective": "Thorned",
+          "noun": "Maw"
+        },
+        {
+          "form": "Petal",
+          "adjective": "Verdant",
+          "noun": "Nest"
+        },
+        {
+          "form": "Root",
+          "adjective": "Wild",
+          "noun": "Grove"
+        },
+        {
+          "form": "Scale",
+          "adjective": "Wooden",
+          "noun": "Forest"
+        },
+        {
+          "form": "Shell",
+          "adjective": "Earthy",
+          "noun": "Seed"
+        },
+        {
+          "form": "Sprout",
+          "adjective": "Living",
+          "noun": "Ember"
+        },
+        {
+          "form": "Stone",
+          "adjective": "Burgeoning",
+          "noun": "Scent"
+        },
+        {
+          "form": "Vine",
+          "adjective": "Twisted",
+          "noun": "Growl"
+        }
+      ]
+    },
+    {
+      "name": "Tempest",
+      "entries": [
+        {
+          "form": "Bolt",
+          "adjective": "Blasting",
+          "noun": "Thunder"
+        },
+        {
+          "form": "Burst",
+          "adjective": "Crashing",
+          "noun": "Lightning"
+        },
+        {
+          "form": "Crack",
+          "adjective": "Deafening",
+          "noun": "Gale"
+        },
+        {
+          "form": "Crash",
+          "adjective": "Earth-shaking",
+          "noun": "Quake"
+        },
+        {
+          "form": "Fury",
+          "adjective": "Echoing",
+          "noun": "Storm"
+        },
+        {
+          "form": "Gust",
+          "adjective": "Electric",
+          "noun": "Tempest"
+        },
+        {
+          "form": "Jolt",
+          "adjective": "Howling",
+          "noun": "Whirlwind"
+        },
+        {
+          "form": "Quake",
+          "adjective": "Piercing",
+          "noun": "Downpour"
+        },
+        {
+          "form": "Roar",
+          "adjective": "Raging",
+          "noun": "Deluge"
+        },
+        {
+          "form": "Rumble",
+          "adjective": "Rumbling",
+          "noun": "Shock"
+        },
+        {
+          "form": "Shatter",
+          "adjective": "Shaking",
+          "noun": "Static"
+        },
+        {
+          "form": "Shock",
+          "adjective": "Shrieking",
+          "noun": "Tremor"
+        },
+        {
+          "form": "Squall",
+          "adjective": "Storm-born",
+          "noun": "Bolt"
+        },
+        {
+          "form": "Strike",
+          "adjective": "Thundering",
+          "noun": "Crash"
+        },
+        {
+          "form": "Surge",
+          "adjective": "Tumultuous",
+          "noun": "Fury"
+        },
+        {
+          "form": "Tremor",
+          "adjective": "Violent",
+          "noun": "Roar"
+        },
+        {
+          "form": "Vortex",
+          "adjective": "Volatile",
+          "noun": "Gust"
+        },
+        {
+          "form": "Wail",
+          "adjective": "Wild",
+          "noun": "Rain"
+        },
+        {
+          "form": "Wave",
+          "adjective": "Wind-swept",
+          "noun": "Squall"
+        },
+        {
+          "form": "Whisper",
+          "adjective": "Tempestuous",
+          "noun": "Dust"
+        }
+      ]
+    },
+    {
+      "name": "Peace",
+      "entries": [
+        {
+          "form": "Aegis",
+          "adjective": "Benevolent",
+          "noun": "Calm"
+        },
+        {
+          "form": "Anchor",
+          "adjective": "Blessed",
+          "noun": "Haven"
+        },
+        {
+          "form": "Barrier",
+          "adjective": "Gentle",
+          "noun": "Peace"
+        },
+        {
+          "form": "Balm",
+          "adjective": "Harmonious",
+          "noun": "Sanctuary"
+        },
+        {
+          "form": "Blessing",
+          "adjective": "Humble",
+          "noun": "Serenity"
+        },
+        {
+          "form": "Bond",
+          "adjective": "Inspiring",
+          "noun": "Quiet"
+        },
+        {
+          "form": "Calm",
+          "adjective": "Kindred",
+          "noun": "Respite"
+        },
+        {
+          "form": "Embrace",
+          "adjective": "Lulling",
+          "noun": "Shield"
+        },
+        {
+          "form": "Field",
+          "adjective": "Mending",
+          "noun": "Stillness"
+        },
+        {
+          "form": "Flow",
+          "adjective": "Peaceful",
+          "noun": "Tranquility"
+        },
+        {
+          "form": "Haven",
+          "adjective": "Protecting",
+          "noun": "Comfort"
+        },
+        {
+          "form": "Hush",
+          "adjective": "Pure",
+          "noun": "Embrace"
+        },
+        {
+          "form": "Quietus",
+          "adjective": "Quieting",
+          "noun": "Harmony"
+        },
+        {
+          "form": "Release",
+          "adjective": "Restful",
+          "noun": "Lullaby"
+        },
+        {
+          "form": "Repose",
+          "adjective": "Sheltering",
+          "noun": "Refuge"
+        },
+        {
+          "form": "Sanctuary",
+          "adjective": "Silent",
+          "noun": "Aegis"
+        },
+        {
+          "form": "Shield",
+          "adjective": "Soothing",
+          "noun": "Shelter"
+        },
+        {
+          "form": "Stillness",
+          "adjective": "Steadfast",
+          "noun": "Truce"
+        },
+        {
+          "form": "Veil",
+          "adjective": "Tranquil",
+          "noun": "Whisper"
+        },
+        {
+          "form": "Ward",
+          "adjective": "Unburdening",
+          "noun": "Quietude"
+        }
+      ]
+    },
+    {
+      "name": "War",
+      "entries": [
+        {
+          "form": "Blade",
+          "adjective": "Avenging",
+          "noun": "Fury"
+        },
+        {
+          "form": "Blast",
+          "adjective": "Belligerent",
+          "noun": "Rage"
+        },
+        {
+          "form": "Bolt",
+          "adjective": "Berserking",
+          "noun": "Carnage"
+        },
+        {
+          "form": "Brand",
+          "adjective": "Brutal",
+          "noun": "Conflict"
+        },
+        {
+          "form": "Charge",
+          "adjective": "Charging",
+          "noun": "Discord"
+        },
+        {
+          "form": "Cleave",
+          "adjective": "Crushing",
+          "noun": "Dominion"
+        },
+        {
+          "form": "Clash",
+          "adjective": "Destructive",
+          "noun": "Strife"
+        },
+        {
+          "form": "Doom",
+          "adjective": "Furious",
+          "noun": "Might"
+        },
+        {
+          "form": "Edge",
+          "adjective": "Impenetrable",
+          "noun": "Onslaught"
+        },
+        {
+          "form": "Fist",
+          "adjective": "Iron",
+          "noun": "Pride"
+        },
+        {
+          "form": "Fury",
+          "adjective": "Relentless",
+          "noun": "Ruin"
+        },
+        {
+          "form": "Hammer",
+          "adjective": "Rending",
+          "noun": "Slaughter"
+        },
+        {
+          "form": "Pierce",
+          "adjective": "Resolute",
+          "noun": "Spite"
+        },
+        {
+          "form": "Rage",
+          "adjective": "Savage",
+          "noun": "Valor"
+        },
+        {
+          "form": "Rend",
+          "adjective": "Shattering",
+          "noun": "Victory"
+        },
+        {
+          "form": "Roar",
+          "adjective": "Vicious",
+          "noun": "War"
+        },
+        {
+          "form": "Ruin",
+          "adjective": "Violent",
+          "noun": "Wrath"
+        },
+        {
+          "form": "Shout",
+          "adjective": "Warlike",
+          "noun": "Conquest"
+        },
+        {
+          "form": "Strike",
+          "adjective": "Unyielding",
+          "noun": "Havoc"
+        },
+        {
+          "form": "Sword",
+          "adjective": "Burning",
+          "noun": "Gore"
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "effect": "Damage",
+      "target": "Single Creature",
+      "duration": "Instant",
+      "range": "Touch"
+    },
+    {
+      "effect": "Heal",
+      "target": "Multiple Creatures",
+      "duration": "Brief",
+      "range": "Self"
+    },
+    {
+      "effect": "Control",
+      "target": "Self Only",
+      "duration": "Short",
+      "range": "Close"
+    },
+    {
+      "effect": "Enhance",
+      "target": "Single Ally",
+      "duration": "Medium",
+      "range": "Short"
+    },
+    {
+      "effect": "Weaken",
+      "target": "Multiple Allies",
+      "duration": "Long",
+      "range": "Medium"
+    },
+    {
+      "effect": "Create",
+      "target": "Hostile Creature",
+      "duration": "In Reaction",
+      "range": "Long"
+    },
+    {
+      "effect": "Destroy",
+      "target": "Area (Small)",
+      "duration": "Delayed",
+      "range": "Very Long"
+    },
+    {
+      "effect": "Transform",
+      "target": "Area (Large)",
+      "duration": "Permanent",
+      "range": "Extreme"
+    },
+    {
+      "effect": "Move",
+      "target": "Line",
+      "duration": "While Concentrating",
+      "range": "Known Places"
+    },
+    {
+      "effect": "Bind",
+      "target": "Cone",
+      "duration": "Until Triggered",
+      "range": "Sight"
+    },
+    {
+      "effect": "Reveal",
+      "target": "Object or Structure",
+      "duration": "Until Dispelled",
+      "range": "Regional"
+    },
+    {
+      "effect": "Conceal",
+      "target": "Environment",
+      "duration": "Until Healed",
+      "range": "Global"
+    }
+  ]
+}

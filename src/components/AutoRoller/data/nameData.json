@@ -1,0 +1,4462 @@
+{
+  "namingPatterns": [
+    "[Prefix] + [Suffix]",
+    "[Prefix] + [Syllable 2]",
+    "[Prefix] + [Syllable 3]",
+    "[Syllable 2] + [Suffix]",
+    "[Syllable 3] + [Suffix]",
+    "[Prefix] + [Syllable 2] + [Suffix]",
+    "[Prefix] + [Syllable 3] + [Suffix]",
+    "[Prefix] + [Syllable 2] + [Syllable 3] + [Suffix]"
+  ],
+  "familyNamePatterns": [
+    "[Adjective 1] + [Noun 1]",
+    "[Adjective 2] + [Noun 1]",
+    "[Adjective 1] + [Noun 2]",
+    "[Adjective 2] + [Noun 2]",
+    "[Noun 1] + [Noun 2]",
+    "[Noun 2] + [Noun 1]"
+  ],
+  "cultures": [
+    {
+      "folk": "Dwarf",
+      "culture": "Ghahar",
+      "personalNames": [
+        {
+          "prefix": "Shar-",
+          "syllable2": "-ru",
+          "syllable3": "-um",
+          "suffix": "-ti"
+        },
+        {
+          "prefix": "Bel-",
+          "syllable2": "-li",
+          "syllable3": "-ba",
+          "suffix": "-su"
+        },
+        {
+          "prefix": "Ina-",
+          "syllable2": "-shu",
+          "syllable3": "-ki",
+          "suffix": "-tum"
+        },
+        {
+          "prefix": "Sin-",
+          "syllable2": "-na",
+          "syllable3": "-tu",
+          "suffix": "-ri"
+        },
+        {
+          "prefix": "Anu-",
+          "syllable2": "-du",
+          "syllable3": "-gal",
+          "suffix": "-ilu"
+        },
+        {
+          "prefix": "Mar-",
+          "syllable2": "-kud",
+          "syllable3": "-an",
+          "suffix": "-et"
+        },
+        {
+          "prefix": "Ner-",
+          "syllable2": "-gal",
+          "syllable3": "-ir",
+          "suffix": "-rum"
+        },
+        {
+          "prefix": "Zi-",
+          "syllable2": "-ku",
+          "syllable3": "-ra",
+          "suffix": "-at"
+        },
+        {
+          "prefix": "Ad-",
+          "syllable2": "-hu",
+          "syllable3": "-sal",
+          "suffix": "-im"
+        },
+        {
+          "prefix": "Kish-",
+          "syllable2": "-nar",
+          "syllable3": "-pi",
+          "suffix": "-ia"
+        },
+        {
+          "prefix": "Duk-",
+          "syllable2": "-bi",
+          "syllable3": "-ish",
+          "suffix": "-na"
+        },
+        {
+          "prefix": "Gil-",
+          "syllable2": "-gam",
+          "syllable3": "-ma",
+          "suffix": "-esh"
+        },
+        {
+          "prefix": "Nim-",
+          "syllable2": "-rud",
+          "syllable3": "-zu",
+          "suffix": "-ana"
+        },
+        {
+          "prefix": "Sham-",
+          "syllable2": "-ash",
+          "syllable3": "-di",
+          "suffix": "-ya"
+        },
+        {
+          "prefix": "Ish-",
+          "syllable2": "-ra",
+          "syllable3": "-ka",
+          "suffix": "-lu"
+        },
+        {
+          "prefix": "Er-",
+          "syllable2": "-ti",
+          "syllable3": "-en",
+          "suffix": "-ash"
+        },
+        {
+          "prefix": "Nab-",
+          "syllable2": "-lil",
+          "syllable3": "-mu",
+          "suffix": "-sum"
+        },
+        {
+          "prefix": "Dum-",
+          "syllable2": "-mu",
+          "syllable3": "-zi",
+          "suffix": "-ut"
+        },
+        {
+          "prefix": "Ash-",
+          "syllable2": "-nap",
+          "syllable3": "-uk",
+          "suffix": "-dur"
+        },
+        {
+          "prefix": "Ur-",
+          "syllable2": "-mu",
+          "syllable3": "-tar",
+          "suffix": "-gid"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Deep",
+          "adjective2": "High",
+          "noun1": "Stone",
+          "noun2": "Gate"
+        },
+        {
+          "adjective1": "Ore",
+          "adjective2": "Clay",
+          "noun1": "Forge",
+          "noun2": "Hold"
+        },
+        {
+          "adjective1": "Strong",
+          "adjective2": "True",
+          "noun1": "Peak",
+          "noun2": "Wall"
+        },
+        {
+          "adjective1": "Grim",
+          "adjective2": "Vast",
+          "noun1": "Cavern",
+          "noun2": "Heart"
+        },
+        {
+          "adjective1": "Great",
+          "adjective2": "Proud",
+          "noun1": "Spire",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Earth",
+          "adjective2": "Gold",
+          "noun1": "Vein",
+          "noun2": "Guard"
+        },
+        {
+          "adjective1": "Dust",
+          "adjective2": "Rich",
+          "noun1": "Mine",
+          "noun2": "Keep"
+        },
+        {
+          "adjective1": "Dark",
+          "adjective2": "Cold",
+          "noun1": "Rune",
+          "noun2": "Blood"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Hard",
+          "noun1": "Shard",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Grey",
+          "adjective2": "Old",
+          "noun1": "Anvil",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Stern",
+          "adjective2": "Stout",
+          "noun1": "Hammer",
+          "noun2": "Root"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "Swift",
+          "noun1": "Coin",
+          "noun2": "Flow"
+        },
+        {
+          "adjective1": "Sun",
+          "adjective2": "Star",
+          "noun1": "Brick",
+          "noun2": "Crown"
+        },
+        {
+          "adjective1": "Wise",
+          "adjective2": "Lore",
+          "noun1": "Tome",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Guild",
+          "adjective2": "Craft",
+          "noun1": "Hearth",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Rift",
+          "adjective2": "Core",
+          "noun1": "Delve",
+          "noun2": "Deep"
+        },
+        {
+          "adjective1": "Gloom",
+          "adjective2": "Shadow",
+          "noun1": "Vault",
+          "noun2": "Echo"
+        },
+        {
+          "adjective1": "Grand",
+          "adjective2": "Regal",
+          "noun1": "Seal",
+          "noun2": "Throne"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Ridge",
+          "noun1": "Chasm",
+          "noun2": "Span"
+        },
+        {
+          "adjective1": "Onyx",
+          "adjective2": "Shale",
+          "noun1": "Gem",
+          "noun2": "Lock"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Tief",
+          "adjective2": "Hoch",
+          "noun1": "Stein",
+          "noun2": "Tor"
+        },
+        {
+          "adjective1": "Erz",
+          "adjective2": "Lehm",
+          "noun1": "Schmiede",
+          "noun2": "Feste"
+        },
+        {
+          "adjective1": "Stark",
+          "adjective2": "Treu",
+          "noun1": "Gipfel",
+          "noun2": "Mauer"
+        },
+        {
+          "adjective1": "Grimm",
+          "adjective2": "Weit",
+          "noun1": "Grotte",
+          "noun2": "Herz"
+        },
+        {
+          "adjective1": "Groß",
+          "adjective2": "Stolz",
+          "noun1": "Zinne",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Erd",
+          "adjective2": "Gold",
+          "noun1": "Ader",
+          "noun2": "Wacht"
+        },
+        {
+          "adjective1": "Staub",
+          "adjective2": "Reich",
+          "noun1": "Grube",
+          "noun2": "Burg"
+        },
+        {
+          "adjective1": "Dunkel",
+          "adjective2": "Kalt",
+          "noun1": "Rune",
+          "noun2": "Blut"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Hart",
+          "noun1": "Splitter",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Grau",
+          "adjective2": "Alt",
+          "noun1": "Amboss",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Streng",
+          "adjective2": "Stämmig",
+          "noun1": "Hammer",
+          "noun2": "Wurzel"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Flink",
+          "noun1": "Münze",
+          "noun2": "Fluss"
+        },
+        {
+          "adjective1": "Sonnen",
+          "adjective2": "Stern",
+          "noun1": "Ziegel",
+          "noun2": "Krone"
+        },
+        {
+          "adjective1": "Weis",
+          "adjective2": "Kund",
+          "noun1": "Buch",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Gilden",
+          "adjective2": "Werk",
+          "noun1": "Herd",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Kluft",
+          "adjective2": "Kern",
+          "noun1": "Schacht",
+          "noun2": "Tiefe"
+        },
+        {
+          "adjective1": "Düster",
+          "adjective2": "Schatten",
+          "noun1": "Gruft",
+          "noun2": "Hall"
+        },
+        {
+          "adjective1": "Prächtig",
+          "adjective2": "Edel",
+          "noun1": "Siegel",
+          "noun2": "Thron"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Grat",
+          "noun1": "Klamm",
+          "noun2": "Spanne"
+        },
+        {
+          "adjective1": "Onyx",
+          "adjective2": "Schiefer",
+          "noun1": "Juwel",
+          "noun2": "Schloss"
+        }
+      ]
+    },
+    {
+      "folk": "Dwarf",
+      "culture": "Mahruk",
+      "personalNames": [
+        {
+          "prefix": "Tyr-",
+          "syllable2": "-on",
+          "syllable3": "-ak",
+          "suffix": "-os"
+        },
+        {
+          "prefix": "Sid-",
+          "syllable2": "-nu",
+          "syllable3": "-bar",
+          "suffix": "-im"
+        },
+        {
+          "prefix": "Byb-",
+          "syllable2": "-los",
+          "syllable3": "-kal",
+          "suffix": "-on"
+        },
+        {
+          "prefix": "Qar-",
+          "syllable2": "-tag",
+          "syllable3": "-ash",
+          "suffix": "-an"
+        },
+        {
+          "prefix": "Mal-",
+          "syllable2": "-or",
+          "syllable3": "-am",
+          "suffix": "-bul"
+        },
+        {
+          "prefix": "Az-",
+          "syllable2": "-mar",
+          "syllable3": "-ath",
+          "suffix": "-el"
+        },
+        {
+          "prefix": "Han-",
+          "syllable2": "-ni",
+          "syllable3": "-bal",
+          "suffix": "-zar"
+        },
+        {
+          "prefix": "Baal-",
+          "syllable2": "-ath",
+          "syllable3": "-on",
+          "suffix": "-ud"
+        },
+        {
+          "prefix": "Esh-",
+          "syllable2": "-mun",
+          "syllable3": "-tor",
+          "suffix": "-ra"
+        },
+        {
+          "prefix": "Dag-",
+          "syllable2": "-il",
+          "syllable3": "-ku",
+          "suffix": "-sh"
+        },
+        {
+          "prefix": "Hir-",
+          "syllable2": "-ba",
+          "syllable3": "-la",
+          "suffix": "-am"
+        },
+        {
+          "prefix": "Zi-",
+          "syllable2": "-it",
+          "syllable3": "-ti",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Had-",
+          "syllable2": "-rim",
+          "syllable3": "-mon",
+          "suffix": "-as"
+        },
+        {
+          "prefix": "Resh-",
+          "syllable2": "-af",
+          "syllable3": "-ra",
+          "suffix": "-on"
+        },
+        {
+          "prefix": "Gad-",
+          "syllable2": "-ir",
+          "syllable3": "-ta",
+          "suffix": "-bul"
+        },
+        {
+          "prefix": "Shal-",
+          "syllable2": "-em",
+          "syllable3": "-ez",
+          "suffix": "-er"
+        },
+        {
+          "prefix": "Yaho-",
+          "syllable2": "-ram",
+          "syllable3": "-lik",
+          "suffix": "-at"
+        },
+        {
+          "prefix": "Uz-",
+          "syllable2": "-zat",
+          "syllable3": "-han",
+          "suffix": "-na"
+        },
+        {
+          "prefix": "Abi-",
+          "syllable2": "-al",
+          "syllable3": "-na",
+          "suffix": "-am"
+        },
+        {
+          "prefix": "Koth-",
+          "syllable2": "-ar",
+          "syllable3": "-shir",
+          "suffix": "-ra"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Sea",
+          "adjective2": "Deep",
+          "noun1": "Port",
+          "noun2": "Gold"
+        },
+        {
+          "adjective1": "Brine",
+          "adjective2": "Salt",
+          "noun1": "Wave",
+          "noun2": "Star"
+        },
+        {
+          "adjective1": "Trade",
+          "adjective2": "Rich",
+          "noun1": "Anchor",
+          "noun2": "Coin"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "Swift",
+          "noun1": "Sail",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Bright",
+          "adjective2": "Gleam",
+          "noun1": "Mast",
+          "noun2": "Tide"
+        },
+        {
+          "adjective1": "Stone",
+          "adjective2": "Ship",
+          "noun1": "Quay",
+          "noun2": "Line"
+        },
+        {
+          "adjective1": "Reef",
+          "adjective2": "Calm",
+          "noun1": "Shell",
+          "noun2": "Gate"
+        },
+        {
+          "adjective1": "True",
+          "adjective2": "Stout",
+          "noun1": "Keel",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Coral",
+          "adjective2": "Deep",
+          "noun1": "Spire",
+          "noun2": "Hold"
+        },
+        {
+          "adjective1": "Pearl",
+          "adjective2": "Shore",
+          "noun1": "Mark",
+          "noun2": "Guard"
+        },
+        {
+          "adjective1": "Guild",
+          "adjective2": "Craft",
+          "noun1": "Chart",
+          "noun2": "Flow"
+        },
+        {
+          "adjective1": "Amber",
+          "adjective2": "Gleam",
+          "noun1": "Jewel",
+          "noun2": "Vault"
+        },
+        {
+          "adjective1": "Sun",
+          "adjective2": "Warm",
+          "noun1": "Crest",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Wide",
+          "adjective2": "Far",
+          "noun1": "Isle",
+          "noun2": "Heart"
+        },
+        {
+          "adjective1": "Old",
+          "adjective2": "Wise",
+          "noun1": "Chart",
+          "noun2": "Lore"
+        },
+        {
+          "adjective1": "Dark",
+          "adjective2": "Deep",
+          "noun1": "Trench",
+          "noun2": "Root"
+        },
+        {
+          "adjective1": "Ore",
+          "adjective2": "Bronze",
+          "noun1": "Hull",
+          "noun2": "Wall"
+        },
+        {
+          "adjective1": "Grand",
+          "adjective2": "Regal",
+          "noun1": "Crown",
+          "noun2": "Throne"
+        },
+        {
+          "adjective1": "Bloom",
+          "adjective2": "Tide",
+          "noun1": "Reef",
+          "noun2": "Dream"
+        },
+        {
+          "adjective1": "Twin",
+          "adjective2": "Coast",
+          "noun1": "Point",
+          "noun2": "Bound"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "See",
+          "adjective2": "Tief",
+          "noun1": "Hafen",
+          "noun2": "Gold"
+        },
+        {
+          "adjective1": "Sole",
+          "adjective2": "Salz",
+          "noun1": "Welle",
+          "noun2": "Stern"
+        },
+        {
+          "adjective1": "Handels",
+          "adjective2": "Reich",
+          "noun1": "Anker",
+          "noun2": "Münze"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Flink",
+          "noun1": "Segel",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Glanz",
+          "adjective2": "Schimmer",
+          "noun1": "Mast",
+          "noun2": "Flut"
+        },
+        {
+          "adjective1": "Stein",
+          "adjective2": "Schiff",
+          "noun1": "Kai",
+          "noun2": "Linie"
+        },
+        {
+          "adjective1": "Riff",
+          "adjective2": "Still",
+          "noun1": "Muschel",
+          "noun2": "Tor"
+        },
+        {
+          "adjective1": "Treu",
+          "adjective2": "Stämmig",
+          "noun1": "Kiel",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Korallen",
+          "adjective2": "Tief",
+          "noun1": "Zinne",
+          "noun2": "Feste"
+        },
+        {
+          "adjective1": "Perlen",
+          "adjective2": "Küsten",
+          "noun1": "Mal",
+          "noun2": "Wacht"
+        },
+        {
+          "adjective1": "Gilden",
+          "adjective2": "Werk",
+          "noun1": "Karte",
+          "noun2": "Fluss"
+        },
+        {
+          "adjective1": "Bernstein",
+          "adjective2": "Schimmer",
+          "noun1": "Juwel",
+          "noun2": "Gruft"
+        },
+        {
+          "adjective1": "Sonnen",
+          "adjective2": "Warm",
+          "noun1": "Kamm",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Weit",
+          "adjective2": "Fern",
+          "noun1": "Eiland",
+          "noun2": "Herz"
+        },
+        {
+          "adjective1": "Alt",
+          "adjective2": "Weis",
+          "noun1": "Karte",
+          "noun2": "Kunde"
+        },
+        {
+          "adjective1": "Dunkel",
+          "adjective2": "Tief",
+          "noun1": "Graben",
+          "noun2": "Wurzel"
+        },
+        {
+          "adjective1": "Erz",
+          "adjective2": "Bronze",
+          "noun1": "Rumpf",
+          "noun2": "Mauer"
+        },
+        {
+          "adjective1": "Prächtig",
+          "adjective2": "Edel",
+          "noun1": "Krone",
+          "noun2": "Thron"
+        },
+        {
+          "adjective1": "Blüten",
+          "adjective2": "Flut",
+          "noun1": "Riff",
+          "noun2": "Traum"
+        },
+        {
+          "adjective1": "Zwillings",
+          "adjective2": "Küsten",
+          "noun1": "Spitze",
+          "noun2": "Bund"
+        }
+      ]
+    },
+    {
+      "folk": "Elf",
+      "culture": "Anutep",
+      "personalNames": [
+        {
+          "prefix": "Kha-",
+          "syllable2": "-men",
+          "syllable3": "-un",
+          "suffix": "-is"
+        },
+        {
+          "prefix": "Neph-",
+          "syllable2": "-ra",
+          "syllable3": "-ka",
+          "suffix": "-em"
+        },
+        {
+          "prefix": "Im-",
+          "syllable2": "-hot",
+          "syllable3": "-ep",
+          "suffix": "-et"
+        },
+        {
+          "prefix": "Seb-",
+          "syllable2": "-ut",
+          "syllable3": "-es",
+          "suffix": "-on"
+        },
+        {
+          "prefix": "Anu-",
+          "syllable2": "-ket",
+          "syllable3": "-an",
+          "suffix": "-a"
+        },
+        {
+          "prefix": "Thot-",
+          "syllable2": "-mes",
+          "syllable3": "-ar",
+          "suffix": "-ti"
+        },
+        {
+          "prefix": "Ser-",
+          "syllable2": "-nu",
+          "syllable3": "-ra",
+          "suffix": "-pu"
+        },
+        {
+          "prefix": "Bak-",
+          "syllable2": "-har",
+          "syllable3": "-in",
+          "suffix": "-tu"
+        },
+        {
+          "prefix": "Hes-",
+          "syllable2": "-mut",
+          "syllable3": "-tep",
+          "suffix": "-ir"
+        },
+        {
+          "prefix": "Zen-",
+          "syllable2": "-fu",
+          "syllable3": "-op",
+          "suffix": "-ma"
+        },
+        {
+          "prefix": "Qar-",
+          "syllable2": "-si",
+          "syllable3": "-et",
+          "suffix": "-ah"
+        },
+        {
+          "prefix": "Men-",
+          "syllable2": "-ti",
+          "syllable3": "-sa",
+          "suffix": "-ru"
+        },
+        {
+          "prefix": "Ura-",
+          "syllable2": "-net",
+          "syllable3": "-em",
+          "suffix": "-pa"
+        },
+        {
+          "prefix": "Res-",
+          "syllable2": "-het",
+          "syllable3": "-or",
+          "suffix": "-ne"
+        },
+        {
+          "prefix": "Sob-",
+          "syllable2": "-ek",
+          "syllable3": "-en",
+          "suffix": "-et"
+        },
+        {
+          "prefix": "Aya-",
+          "syllable2": "-sen",
+          "syllable3": "-ut",
+          "suffix": "-im"
+        },
+        {
+          "prefix": "Tar-",
+          "syllable2": "-min",
+          "syllable3": "-es",
+          "suffix": "-ba"
+        },
+        {
+          "prefix": "Wes-",
+          "syllable2": "-khem",
+          "syllable3": "-un",
+          "suffix": "-qa"
+        },
+        {
+          "prefix": "Djer-",
+          "syllable2": "-pat",
+          "syllable3": "-ka",
+          "suffix": "-fu"
+        },
+        {
+          "prefix": "Khep-",
+          "syllable2": "-ri",
+          "syllable3": "-ba",
+          "suffix": "-su"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Sol",
+          "adjective2": "Vivid",
+          "noun1": "Sun",
+          "noun2": "Ray"
+        },
+        {
+          "adjective1": "Aur",
+          "adjective2": "Shine",
+          "noun1": "Flame",
+          "noun2": "Spark"
+        },
+        {
+          "adjective1": "Bright",
+          "adjective2": "Glint",
+          "noun1": "Light",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Gleam",
+          "adjective2": "Blaze",
+          "noun1": "Star",
+          "noun2": "Sight"
+        },
+        {
+          "adjective1": "Warm",
+          "adjective2": "Inner",
+          "noun1": "Glow",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Risen",
+          "adjective2": "Azur",
+          "noun1": "Ember",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Sacred",
+          "adjective2": "Grand",
+          "noun1": "Dawn",
+          "noun2": "Dream"
+        },
+        {
+          "adjective1": "High",
+          "adjective2": "True",
+          "noun1": "Gleam",
+          "noun2": "Lore"
+        },
+        {
+          "adjective1": "Pure",
+          "adjective2": "Wise",
+          "noun1": "Bloom",
+          "noun2": "Kin"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "Swift",
+          "noun1": "Crown",
+          "noun2": "Blood"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Carve",
+          "noun1": "Hand",
+          "noun2": "Lord"
+        },
+        {
+          "adjective1": "Sunken",
+          "adjective2": "Coil",
+          "noun1": "Heart",
+          "noun2": "Queen"
+        },
+        {
+          "adjective1": "Arid",
+          "adjective2": "Polish",
+          "noun1": "Soul",
+          "noun2": "Heir"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Verdant",
+          "noun1": "Mind",
+          "noun2": "Child"
+        },
+        {
+          "adjective1": "Ancient",
+          "adjective2": "Fade",
+          "noun1": "Line",
+          "noun2": "Coil"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Woven",
+          "noun1": "House",
+          "noun2": "Dune"
+        },
+        {
+          "adjective1": "Amber",
+          "adjective2": "Lit",
+          "noun1": "Guard",
+          "noun2": "Stone"
+        },
+        {
+          "adjective1": "Deep",
+          "adjective2": "Silver",
+          "noun1": "Veil",
+          "noun2": "Gate"
+        },
+        {
+          "adjective1": "Calm",
+          "adjective2": "Bronze",
+          "noun1": "Crest",
+          "noun2": "Tomb"
+        },
+        {
+          "adjective1": "Twin",
+          "adjective2": "Onyx",
+          "noun1": "Stream",
+          "noun2": "Statu"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Sonnen",
+          "adjective2": "Leucht",
+          "noun1": "Sonne",
+          "noun2": "Strahl"
+        },
+        {
+          "adjective1": "Aur",
+          "adjective2": "Schein",
+          "noun1": "Flamme",
+          "noun2": "Funke"
+        },
+        {
+          "adjective1": "Hell",
+          "adjective2": "Glimm",
+          "noun1": "Licht",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Schimmer",
+          "adjective2": "Lodern",
+          "noun1": "Stern",
+          "noun2": "Sicht"
+        },
+        {
+          "adjective1": "Warm",
+          "adjective2": "Inner",
+          "noun1": "Glut",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Empor",
+          "adjective2": "Azur",
+          "noun1": "Glimm",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Heilig",
+          "adjective2": "Prächtig",
+          "noun1": "Morgen",
+          "noun2": "Traum"
+        },
+        {
+          "adjective1": "Hoch",
+          "adjective2": "Treu",
+          "noun1": "Schein",
+          "noun2": "Kunde"
+        },
+        {
+          "adjective1": "Rein",
+          "adjective2": "Weis",
+          "noun1": "Blüte",
+          "noun2": "Sipp"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Flink",
+          "noun1": "Krone",
+          "noun2": "Blut"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Schnitz",
+          "noun1": "Hand",
+          "noun2": "Fürst"
+        },
+        {
+          "adjective1": "Versunken",
+          "adjective2": "Gewunden",
+          "noun1": "Herz",
+          "noun2": "Fürstin"
+        },
+        {
+          "adjective1": "Dürr",
+          "adjective2": "Geschliffen",
+          "noun1": "Seele",
+          "noun2": "Erbe"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Grün",
+          "noun1": "Gemüt",
+          "noun2": "Kind"
+        },
+        {
+          "adjective1": "Uralten",
+          "adjective2": "Verblasst",
+          "noun1": "Linie",
+          "noun2": "Reif"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Gewebt",
+          "noun1": "Haus",
+          "noun2": "Düne"
+        },
+        {
+          "adjective1": "Bernstein",
+          "adjective2": "Licht",
+          "noun1": "Wacht",
+          "noun2": "Stein"
+        },
+        {
+          "adjective1": "Tief",
+          "adjective2": "Silber",
+          "noun1": "Schleier",
+          "noun2": "Tor"
+        },
+        {
+          "adjective1": "Sanft",
+          "adjective2": "Bronze",
+          "noun1": "Kamm",
+          "noun2": "Gruft"
+        },
+        {
+          "adjective1": "Zwillings",
+          "adjective2": "Onyx",
+          "noun1": "Strom",
+          "noun2": "Bild"
+        }
+      ]
+    },
+    {
+      "folk": "Gnome",
+      "culture": "Burrin",
+      "personalNames": [
+        {
+          "prefix": "Kish-",
+          "syllable2": "-nar",
+          "syllable3": "-ku",
+          "suffix": "-ti"
+        },
+        {
+          "prefix": "Zag-",
+          "syllable2": "-ri",
+          "syllable3": "-ba",
+          "suffix": "-ri"
+        },
+        {
+          "prefix": "Shur-",
+          "syllable2": "-ra",
+          "syllable3": "-ga",
+          "suffix": "-tu"
+        },
+        {
+          "prefix": "Nim-",
+          "syllable2": "-zu",
+          "syllable3": "-gal",
+          "suffix": "-ir"
+        },
+        {
+          "prefix": "Qar-",
+          "syllable2": "-khu",
+          "syllable3": "-ban",
+          "suffix": "-sh"
+        },
+        {
+          "prefix": "Ash-",
+          "syllable2": "-dak",
+          "syllable3": "-na",
+          "suffix": "-lu"
+        },
+        {
+          "prefix": "Dur-",
+          "syllable2": "-ril",
+          "syllable3": "-si",
+          "suffix": "-um"
+        },
+        {
+          "prefix": "Giz-",
+          "syllable2": "-mul",
+          "syllable3": "-ta",
+          "suffix": "-un"
+        },
+        {
+          "prefix": "Khab-",
+          "syllable2": "-bi",
+          "syllable3": "-el",
+          "suffix": "-a"
+        },
+        {
+          "prefix": "Zin-",
+          "syllable2": "-jar",
+          "syllable3": "-ri",
+          "suffix": "-an"
+        },
+        {
+          "prefix": "Mal-",
+          "syllable2": "-lu",
+          "syllable3": "-ru",
+          "suffix": "-zi"
+        },
+        {
+          "prefix": "Uz-",
+          "syllable2": "-bar",
+          "syllable3": "-ka",
+          "suffix": "-sh"
+        },
+        {
+          "prefix": "Tar-",
+          "syllable2": "-ma",
+          "syllable3": "-zu",
+          "suffix": "-di"
+        },
+        {
+          "prefix": "Bur-",
+          "syllable2": "-ghu",
+          "syllable3": "-la",
+          "suffix": "-am"
+        },
+        {
+          "prefix": "Kul-",
+          "syllable2": "-zi",
+          "syllable3": "-min",
+          "suffix": "-na"
+        },
+        {
+          "prefix": "Sar-",
+          "syllable2": "-dan",
+          "syllable3": "-ba",
+          "suffix": "-ya"
+        },
+        {
+          "prefix": "Hish-",
+          "syllable2": "-pu",
+          "syllable3": "-ra",
+          "suffix": "-m"
+        },
+        {
+          "prefix": "Daz-",
+          "syllable2": "-gul",
+          "syllable3": "-an",
+          "suffix": "-um"
+        },
+        {
+          "prefix": "Lum-",
+          "syllable2": "-bu",
+          "syllable3": "-ti",
+          "suffix": "-ra"
+        },
+        {
+          "prefix": "Ur-",
+          "syllable2": "-bi",
+          "syllable3": "-ya",
+          "suffix": "-ni"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Sand",
+          "adjective2": "Sun",
+          "noun1": "Dune",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Dust",
+          "adjective2": "Dry",
+          "noun1": "Wind",
+          "noun2": "Home"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Hard",
+          "noun1": "Den",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "Swift",
+          "noun1": "Claw",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Warm",
+          "adjective2": "Blaze",
+          "noun1": "Oasis",
+          "noun2": "Root"
+        },
+        {
+          "adjective1": "Stone",
+          "adjective2": "Light",
+          "noun1": "Ridge",
+          "noun2": "Trail"
+        },
+        {
+          "adjective1": "Gloom",
+          "adjective2": "Deep",
+          "noun1": "Burrow",
+          "noun2": "Vault"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Rich",
+          "noun1": "Gem",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Free",
+          "noun1": "Spirit",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "Star",
+          "adjective2": "Moon",
+          "noun1": "Night",
+          "noun2": "Eye"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Wise",
+          "noun1": "Lore",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Tribe",
+          "adjective2": "Kin",
+          "noun1": "Hearth",
+          "noun2": "Bond"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Shade",
+          "noun1": "Whis",
+          "noun2": "Song"
+        },
+        {
+          "adjective1": "True",
+          "adjective2": "Brave",
+          "noun1": "Heart",
+          "noun2": "Soul"
+        },
+        {
+          "adjective1": "Peak",
+          "adjective2": "High",
+          "noun1": "Crest",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Ore",
+          "adjective2": "Flint",
+          "noun1": "Coil",
+          "noun2": "Guard"
+        },
+        {
+          "adjective1": "Shade",
+          "adjective2": "Cool",
+          "noun1": "Spring",
+          "noun2": "Flow"
+        },
+        {
+          "adjective1": "Grand",
+          "adjective2": "Old",
+          "noun1": "Clan",
+          "noun2": "Lord"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Crack",
+          "noun1": "Rift",
+          "noun2": "Tear"
+        },
+        {
+          "adjective1": "Amber",
+          "adjective2": "Glint",
+          "noun1": "Spark",
+          "noun2": "Glow"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Sand",
+          "adjective2": "Sonnen",
+          "noun1": "Düne",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Staub",
+          "adjective2": "Dürr",
+          "noun1": "Wind",
+          "noun2": "Heim"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Hart",
+          "noun1": "Bau",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Flink",
+          "noun1": "Klaue",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Warm",
+          "adjective2": "Lodern",
+          "noun1": "Quell",
+          "noun2": "Wurzel"
+        },
+        {
+          "adjective1": "Stein",
+          "adjective2": "Licht",
+          "noun1": "Grat",
+          "noun2": "Spur"
+        },
+        {
+          "adjective1": "Düster",
+          "adjective2": "Tief",
+          "noun1": "Höhle",
+          "noun2": "Gruft"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Reich",
+          "noun1": "Juwel",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Frei",
+          "noun1": "Geist",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Stern",
+          "adjective2": "Mond",
+          "noun1": "Nacht",
+          "noun2": "Auge"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Weis",
+          "noun1": "Kunde",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Stammes",
+          "adjective2": "Sipp",
+          "noun1": "Herd",
+          "noun2": "Bund"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Schatten",
+          "noun1": "Flüster",
+          "noun2": "Sang"
+        },
+        {
+          "adjective1": "Treu",
+          "adjective2": "Kühn",
+          "noun1": "Herz",
+          "noun2": "Seele"
+        },
+        {
+          "adjective1": "Gipfel",
+          "adjective2": "Hoch",
+          "noun1": "Kamm",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Erz",
+          "adjective2": "Feuer",
+          "noun1": "Reif",
+          "noun2": "Wacht"
+        },
+        {
+          "adjective1": "Schatten",
+          "adjective2": "Kühl",
+          "noun1": "Born",
+          "noun2": "Fluss"
+        },
+        {
+          "adjective1": "Prächtig",
+          "adjective2": "Alt",
+          "noun1": "Sippe",
+          "noun2": "Fürst"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Riss",
+          "noun1": "Kluft",
+          "noun2": "Bruch"
+        },
+        {
+          "adjective1": "Bernstein",
+          "adjective2": "Glimm",
+          "noun1": "Funke",
+          "noun2": "Glut"
+        }
+      ]
+    },
+    {
+      "folk": "Hune",
+      "culture": "Hataar",
+      "personalNames": [
+        {
+          "prefix": "Hatt-",
+          "syllable2": "-us",
+          "syllable3": "-ili",
+          "suffix": "-ash"
+        },
+        {
+          "prefix": "Mur-",
+          "syllable2": "-sil",
+          "syllable3": "-li",
+          "suffix": "-ma"
+        },
+        {
+          "prefix": "Tud-",
+          "syllable2": "-kha",
+          "syllable3": "-li",
+          "suffix": "-ya"
+        },
+        {
+          "prefix": "Sup-",
+          "syllable2": "-lul",
+          "syllable3": "-ium",
+          "suffix": "-as"
+        },
+        {
+          "prefix": "Tele-",
+          "syllable2": "-pi",
+          "syllable3": "-nu",
+          "suffix": "-wa"
+        },
+        {
+          "prefix": "Piz-",
+          "syllable2": "-zi",
+          "syllable3": "-til",
+          "suffix": "-li"
+        },
+        {
+          "prefix": "Ar-",
+          "syllable2": "-wan",
+          "syllable3": "-da",
+          "suffix": "-zas"
+        },
+        {
+          "prefix": "Zi-",
+          "syllable2": "-nt",
+          "syllable3": "-as",
+          "suffix": "-ti"
+        },
+        {
+          "prefix": "Urhi-",
+          "syllable2": "-te",
+          "syllable3": "-shup",
+          "suffix": "-pa"
+        },
+        {
+          "prefix": "Ish-",
+          "syllable2": "-par",
+          "syllable3": "-na",
+          "suffix": "-za"
+        },
+        {
+          "prefix": "Hapa-",
+          "syllable2": "-zi",
+          "syllable3": "-yan",
+          "suffix": "-nas"
+        },
+        {
+          "prefix": "Kuwa-",
+          "syllable2": "-lan",
+          "syllable3": "-na",
+          "suffix": "-tu"
+        },
+        {
+          "prefix": "Laba-",
+          "syllable2": "-rna",
+          "syllable3": "-sha",
+          "suffix": "-za"
+        },
+        {
+          "prefix": "Mita-",
+          "syllable2": "-ka",
+          "syllable3": "-ziz",
+          "suffix": "-zas"
+        },
+        {
+          "prefix": "Nesu-",
+          "syllable2": "-wa",
+          "syllable3": "-li",
+          "suffix": "-tas"
+        },
+        {
+          "prefix": "Pala-",
+          "syllable2": "-wa",
+          "syllable3": "-sa",
+          "suffix": "-an"
+        },
+        {
+          "prefix": "Saha-",
+          "syllable2": "-ur",
+          "syllable3": "-na",
+          "suffix": "-mu"
+        },
+        {
+          "prefix": "Tatta-",
+          "syllable2": "-ni",
+          "syllable3": "-wi",
+          "suffix": "-tas"
+        },
+        {
+          "prefix": "Wal-",
+          "syllable2": "-zis",
+          "syllable3": "-si",
+          "suffix": "-li"
+        },
+        {
+          "prefix": "Yar-",
+          "syllable2": "-ka",
+          "syllable3": "-nan",
+          "suffix": "-nu"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "High",
+          "adjective2": "Stone",
+          "noun1": "Peak",
+          "noun2": "Gate"
+        },
+        {
+          "adjective1": "Ore",
+          "adjective2": "Strong",
+          "noun1": "Mount",
+          "noun2": "Wall"
+        },
+        {
+          "adjective1": "Great",
+          "adjective2": "Vast",
+          "noun1": "Earth",
+          "noun2": "Hold"
+        },
+        {
+          "adjective1": "Firm",
+          "adjective2": "True",
+          "noun1": "Heart",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Sky",
+          "adjective2": "Cloud",
+          "noun1": "Crest",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Deep",
+          "adjective2": "Old",
+          "noun1": "Root",
+          "noun2": "Lore"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Stout",
+          "noun1": "Axe",
+          "noun2": "Shield"
+        },
+        {
+          "adjective1": "Grey",
+          "adjective2": "Dark",
+          "noun1": "Spire",
+          "noun2": "Crown"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Free",
+          "noun1": "Spirit",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "Sun",
+          "adjective2": "Brave",
+          "noun1": "Forge",
+          "noun2": "Flame"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Wise",
+          "noun1": "Tome",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Clan",
+          "adjective2": "Kin",
+          "noun1": "Hearth",
+          "noun2": "Blood"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Grim",
+          "noun1": "Vale",
+          "noun2": "Echo"
+        },
+        {
+          "adjective1": "Earth",
+          "adjective2": "Stone",
+          "noun1": "Rift",
+          "noun2": "Tear"
+        },
+        {
+          "adjective1": "Flow",
+          "adjective2": "Pure",
+          "noun1": "Stream",
+          "noun2": "Spring"
+        },
+        {
+          "adjective1": "Guard",
+          "adjective2": "Watch",
+          "noun1": "Keep",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Grand",
+          "adjective2": "Regal",
+          "noun1": "Seat",
+          "noun2": "Throne"
+        },
+        {
+          "adjective1": "Bear",
+          "adjective2": "Might",
+          "noun1": "Helm",
+          "noun2": "Fist"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Ridge",
+          "noun1": "Brand",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Steel",
+          "adjective2": "Stone",
+          "noun1": "Anvil",
+          "noun2": "Hammer"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Hoch",
+          "adjective2": "Stein",
+          "noun1": "Gipfel",
+          "noun2": "Tor"
+        },
+        {
+          "adjective1": "Erz",
+          "adjective2": "Stark",
+          "noun1": "Berg",
+          "noun2": "Mauer"
+        },
+        {
+          "adjective1": "Groß",
+          "adjective2": "Weit",
+          "noun1": "Erde",
+          "noun2": "Feste"
+        },
+        {
+          "adjective1": "Fest",
+          "adjective2": "Treu",
+          "noun1": "Herz",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Himmels",
+          "adjective2": "Wolken",
+          "noun1": "Kamm",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Tief",
+          "adjective2": "Alt",
+          "noun1": "Wurzel",
+          "noun2": "Kunde"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Stämmig",
+          "noun1": "Axt",
+          "noun2": "Schild"
+        },
+        {
+          "adjective1": "Grau",
+          "adjective2": "Dunkel",
+          "noun1": "Zinne",
+          "noun2": "Krone"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Frei",
+          "noun1": "Geist",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Sonnen",
+          "adjective2": "Kühn",
+          "noun1": "Schmiede",
+          "noun2": "Flamme"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Weis",
+          "noun1": "Buch",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Sippen",
+          "adjective2": "Sipp",
+          "noun1": "Herd",
+          "noun2": "Blut"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Grimm",
+          "noun1": "Tal",
+          "noun2": "Hall"
+        },
+        {
+          "adjective1": "Erd",
+          "adjective2": "Stein",
+          "noun1": "Kluft",
+          "noun2": "Bruch"
+        },
+        {
+          "adjective1": "Fließ",
+          "adjective2": "Rein",
+          "noun1": "Strom",
+          "noun2": "Born"
+        },
+        {
+          "adjective1": "Wacht",
+          "adjective2": "Späh",
+          "noun1": "Burg",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Prächtig",
+          "adjective2": "Edel",
+          "noun1": "Sitz",
+          "noun2": "Thron"
+        },
+        {
+          "adjective1": "Bären",
+          "adjective2": "Macht",
+          "noun1": "Helm",
+          "noun2": "Faust"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Grat",
+          "noun1": "Brand",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Stahl",
+          "adjective2": "Stein",
+          "noun1": "Amboss",
+          "noun2": "Hammer"
+        }
+      ]
+    },
+    {
+      "folk": "Orc",
+      "culture": "Orgon",
+      "personalNames": [
+        {
+          "prefix": "Tho-",
+          "syllable2": "-ra",
+          "syllable3": "-ka",
+          "suffix": "-os"
+        },
+        {
+          "prefix": "Pylo-",
+          "syllable2": "-se",
+          "syllable3": "-te",
+          "suffix": "-eus"
+        },
+        {
+          "prefix": "Myke-",
+          "syllable2": "-no",
+          "syllable3": "-na",
+          "suffix": "-tos"
+        },
+        {
+          "prefix": "Kres-",
+          "syllable2": "-sa",
+          "syllable3": "-ru",
+          "suffix": "-ax"
+        },
+        {
+          "prefix": "Achi-",
+          "syllable2": "-le",
+          "syllable3": "-us",
+          "suffix": "-on"
+        },
+        {
+          "prefix": "Dana-",
+          "syllable2": "-me",
+          "syllable3": "-on",
+          "suffix": "-des"
+        },
+        {
+          "prefix": "Tir-",
+          "syllable2": "-tho",
+          "syllable3": "-pa",
+          "suffix": "-ros"
+        },
+        {
+          "prefix": "Her-",
+          "syllable2": "-ko",
+          "syllable3": "-da",
+          "suffix": "-men"
+        },
+        {
+          "prefix": "Oly-",
+          "syllable2": "-pos",
+          "syllable3": "-ta",
+          "suffix": "-ios"
+        },
+        {
+          "prefix": "Pel-",
+          "syllable2": "-ga",
+          "syllable3": "-lo",
+          "suffix": "-nos"
+        },
+        {
+          "prefix": "Rhod-",
+          "syllable2": "-si",
+          "syllable3": "-mu",
+          "suffix": "-na"
+        },
+        {
+          "prefix": "Am-",
+          "syllable2": "-ra",
+          "syllable3": "-ti",
+          "suffix": "-ros"
+        },
+        {
+          "prefix": "Glau-",
+          "syllable2": "-kon",
+          "syllable3": "-do",
+          "suffix": "-les"
+        },
+        {
+          "prefix": "Xan-",
+          "syllable2": "-ios",
+          "syllable3": "-pha",
+          "suffix": "-sus"
+        },
+        {
+          "prefix": "Lyka-",
+          "syllable2": "-on",
+          "syllable3": "-de",
+          "suffix": "-lus"
+        },
+        {
+          "prefix": "The-",
+          "syllable2": "-ti",
+          "syllable3": "-na",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Ar-",
+          "syllable2": "-si",
+          "syllable3": "-da",
+          "suffix": "-mos"
+        },
+        {
+          "prefix": "Dor-",
+          "syllable2": "-ke",
+          "syllable3": "-les",
+          "suffix": "-an"
+        },
+        {
+          "prefix": "Ideo-",
+          "syllable2": "-na",
+          "syllable3": "-rus",
+          "suffix": "-a"
+        },
+        {
+          "prefix": "Keph-",
+          "syllable2": "-lo",
+          "syllable3": "-tos",
+          "suffix": "-ia"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Ash",
+          "adjective2": "Cinder",
+          "noun1": "Peak",
+          "noun2": "Gate"
+        },
+        {
+          "adjective1": "Lava",
+          "adjective2": "Smoke",
+          "noun1": "Citadel",
+          "noun2": "Fire"
+        },
+        {
+          "adjective1": "Ore",
+          "adjective2": "Fury",
+          "noun1": "Gorge",
+          "noun2": "Roar"
+        },
+        {
+          "adjective1": "Grim",
+          "adjective2": "Blood",
+          "noun1": "Blade",
+          "noun2": "Wall"
+        },
+        {
+          "adjective1": "Stone",
+          "adjective2": "Sharp",
+          "noun1": "Vault",
+          "noun2": "Heart"
+        },
+        {
+          "adjective1": "Gore",
+          "adjective2": "Brave",
+          "noun1": "Shore",
+          "noun2": "Tide"
+        },
+        {
+          "adjective1": "Flame",
+          "adjective2": "Crag",
+          "noun1": "Helm",
+          "noun2": "Scar"
+        },
+        {
+          "adjective1": "Deep",
+          "adjective2": "Burn",
+          "noun1": "Spire",
+          "noun2": "Hold"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Shade",
+          "noun1": "Oath",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Stout",
+          "adjective2": "Vast",
+          "noun1": "Fist",
+          "noun2": "Might"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Old",
+          "noun1": "Maw",
+          "noun2": "Lord"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Stern",
+          "noun1": "Brand",
+          "noun2": "Throne"
+        },
+        {
+          "adjective1": "Tide",
+          "adjective2": "Swift",
+          "noun1": "Isle",
+          "noun2": "Blood"
+        },
+        {
+          "adjective1": "Dark",
+          "adjective2": "Fierce",
+          "noun1": "Stone",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Cold",
+          "adjective2": "Tidal",
+          "noun1": "Port",
+          "noun2": "Echo"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "War",
+          "noun1": "Guard",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Roar",
+          "adjective2": "Gloom",
+          "noun1": "Tooth",
+          "noun2": "Crest"
+        },
+        {
+          "adjective1": "Proud",
+          "adjective2": "Brutal",
+          "noun1": "Soul",
+          "noun2": "Home"
+        },
+        {
+          "adjective1": "High",
+          "adjective2": "Core",
+          "noun1": "Chasm",
+          "noun2": "War"
+        },
+        {
+          "adjective1": "Burst",
+          "adjective2": "Crown",
+          "noun1": "Kin",
+          "noun2": "Rune"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Asche",
+          "adjective2": "Glut",
+          "noun1": "Gipfel",
+          "noun2": "Tor"
+        },
+        {
+          "adjective1": "Lava",
+          "adjective2": "Rauch",
+          "noun1": "Zitadelle",
+          "noun2": "Feuer"
+        },
+        {
+          "adjective1": "Erz",
+          "adjective2": "Wut",
+          "noun1": "Schlucht",
+          "noun2": "Brüll"
+        },
+        {
+          "adjective1": "Grimm",
+          "adjective2": "Blut",
+          "noun1": "Klinge",
+          "noun2": "Mauer"
+        },
+        {
+          "adjective1": "Stein",
+          "adjective2": "Scharf",
+          "noun1": "Gruft",
+          "noun2": "Herz"
+        },
+        {
+          "adjective1": "Gier",
+          "adjective2": "Kühn",
+          "noun1": "Ufer",
+          "noun2": "Flut"
+        },
+        {
+          "adjective1": "Flammen",
+          "adjective2": "Fels",
+          "noun1": "Helm",
+          "noun2": "Narbe"
+        },
+        {
+          "adjective1": "Tief",
+          "adjective2": "Brand",
+          "noun1": "Zinne",
+          "noun2": "Feste"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Schatten",
+          "noun1": "Eid",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Stämmig",
+          "adjective2": "Weit",
+          "noun1": "Faust",
+          "noun2": "Macht"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Alt",
+          "noun1": "Schlund",
+          "noun2": "Fürst"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Streng",
+          "noun1": "Brand",
+          "noun2": "Thron"
+        },
+        {
+          "adjective1": "Flut",
+          "adjective2": "Flink",
+          "noun1": "Eiland",
+          "noun2": "Blut"
+        },
+        {
+          "adjective1": "Finster",
+          "adjective2": "Grimmig",
+          "noun1": "Stein",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Kalt",
+          "adjective2": "Gezeiten",
+          "noun1": "Hafen",
+          "noun2": "Hall"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Kriegs",
+          "noun1": "Wacht",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Donner",
+          "adjective2": "Düster",
+          "noun1": "Zahn",
+          "noun2": "Kamm"
+        },
+        {
+          "adjective1": "Stolz",
+          "adjective2": "Brutal",
+          "noun1": "Seele",
+          "noun2": "Heim"
+        },
+        {
+          "adjective1": "Hoch",
+          "adjective2": "Kern",
+          "noun1": "Klamm",
+          "noun2": "Krieg"
+        },
+        {
+          "adjective1": "Berst",
+          "adjective2": "Krone",
+          "noun1": "Sipp",
+          "noun2": "Rune"
+        }
+      ]
+    },
+    {
+      "folk": "Goblin",
+      "culture": "Snikrez",
+      "personalNames": [
+        {
+          "prefix": "Grub-",
+          "syllable2": "-lik",
+          "syllable3": "-sk",
+          "suffix": "-n"
+        },
+        {
+          "prefix": "Klarg-",
+          "syllable2": "-zig",
+          "syllable3": "-ga",
+          "suffix": "-uk"
+        },
+        {
+          "prefix": "Skit-",
+          "syllable2": "-z",
+          "syllable3": "-ch",
+          "suffix": "-ag"
+        },
+        {
+          "prefix": "Zog-",
+          "syllable2": "-ra",
+          "syllable3": "-m",
+          "suffix": "-gob"
+        },
+        {
+          "prefix": "Snar-",
+          "syllable2": "-bug",
+          "syllable3": "-iz",
+          "suffix": "-ut"
+        },
+        {
+          "prefix": "Grib-",
+          "syllable2": "-sh",
+          "syllable3": "-rok",
+          "suffix": "-sh"
+        },
+        {
+          "prefix": "Hiss-",
+          "syllable2": "-lag",
+          "syllable3": "-zob",
+          "suffix": "-t"
+        },
+        {
+          "prefix": "Chir-",
+          "syllable2": "-n",
+          "syllable3": "-gu",
+          "suffix": "-ik"
+        },
+        {
+          "prefix": "Blech-",
+          "syllable2": "-rit",
+          "syllable3": "-guz",
+          "suffix": "-a"
+        },
+        {
+          "prefix": "Mung-",
+          "syllable2": "-rek",
+          "syllable3": "-zi",
+          "suffix": "-it"
+        },
+        {
+          "prefix": "Grak-",
+          "syllable2": "-sn",
+          "syllable3": "-ik",
+          "suffix": "-osh"
+        },
+        {
+          "prefix": "Puk-",
+          "syllable2": "-lob",
+          "syllable3": "-ar",
+          "suffix": "-k"
+        },
+        {
+          "prefix": "Riz-",
+          "syllable2": "-tak",
+          "syllable3": "-la",
+          "suffix": "-git"
+        },
+        {
+          "prefix": "Splog-",
+          "syllable2": "-th",
+          "syllable3": "-uk",
+          "suffix": "-le"
+        },
+        {
+          "prefix": "Blub-",
+          "syllable2": "-gro",
+          "syllable3": "-shk",
+          "suffix": "-ul"
+        },
+        {
+          "prefix": "Frott-",
+          "syllable2": "-pit",
+          "syllable3": "-nak",
+          "suffix": "-z"
+        },
+        {
+          "prefix": "Gri-",
+          "syllable2": "-p",
+          "syllable3": "-zor",
+          "suffix": "-ik"
+        },
+        {
+          "prefix": "Rukt-",
+          "syllable2": "-ch",
+          "syllable3": "-gag",
+          "suffix": "-ob"
+        },
+        {
+          "prefix": "Slob-",
+          "syllable2": "-ber",
+          "syllable3": "-zik",
+          "suffix": "-oo"
+        },
+        {
+          "prefix": "Tusk-",
+          "syllable2": "-gash",
+          "syllable3": "-lok",
+          "suffix": "-t"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Vine",
+          "adjective2": "Keen",
+          "noun1": "Leaf",
+          "noun2": "Dash"
+        },
+        {
+          "adjective1": "Quick",
+          "adjective2": "Swift",
+          "noun1": "Grip",
+          "noun2": "Tail"
+        },
+        {
+          "adjective1": "Green",
+          "adjective2": "Damp",
+          "noun1": "Moss",
+          "noun2": "Root"
+        },
+        {
+          "adjective1": "Sly",
+          "adjective2": "Dark",
+          "noun1": "Fang",
+          "noun2": "Glint"
+        },
+        {
+          "adjective1": "Clan",
+          "adjective2": "Wild",
+          "noun1": "Brawl",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "Tree",
+          "adjective2": "High",
+          "noun1": "Branch",
+          "noun2": "Leap"
+        },
+        {
+          "adjective1": "Low",
+          "adjective2": "Deep",
+          "noun1": "Cave",
+          "noun2": "Den"
+        },
+        {
+          "adjective1": "Bone",
+          "adjective2": "Hide",
+          "noun1": "Tooth",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Mud",
+          "adjective2": "Wet",
+          "noun1": "Mire",
+          "noun2": "Flow"
+        },
+        {
+          "adjective1": "Growl",
+          "adjective2": "Sharp",
+          "noun1": "Thorn",
+          "noun2": "Sting"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Wise",
+          "noun1": "Lore",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Tribe",
+          "adjective2": "Kin",
+          "noun1": "Path",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Rust",
+          "adjective2": "Snap",
+          "noun1": "Snap",
+          "noun2": "Grin"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Gleam",
+          "noun1": "Shine",
+          "noun2": "Spark"
+        },
+        {
+          "adjective1": "Quick",
+          "adjective2": "Flick",
+          "noun1": "Quick",
+          "noun2": "Snip"
+        },
+        {
+          "adjective1": "Shadow",
+          "adjective2": "Dark",
+          "noun1": "Gloom",
+          "noun2": "Creep"
+        },
+        {
+          "adjective1": "Root",
+          "adjective2": "Bound",
+          "noun1": "Mesh",
+          "noun2": "Coil"
+        },
+        {
+          "adjective1": "Grand",
+          "adjective2": "Old",
+          "noun1": "Chief",
+          "noun2": "Lord"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Crack",
+          "noun1": "Claw",
+          "noun2": "Tear"
+        },
+        {
+          "adjective1": "Amber",
+          "adjective2": "Glint",
+          "noun1": "Eye",
+          "noun2": "Gaze"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Ranken",
+          "adjective2": "Scharf",
+          "noun1": "Blatt",
+          "noun2": "Flitz"
+        },
+        {
+          "adjective1": "Flink",
+          "adjective2": "Schnell",
+          "noun1": "Griff",
+          "noun2": "Schwanz"
+        },
+        {
+          "adjective1": "Grün",
+          "adjective2": "Feucht",
+          "noun1": "Moos",
+          "noun2": "Wurzel"
+        },
+        {
+          "adjective1": "Listig",
+          "adjective2": "Dunkel",
+          "noun1": "Hauer",
+          "noun2": "Glimm"
+        },
+        {
+          "adjective1": "Sippen",
+          "adjective2": "Wild",
+          "noun1": "Raufe",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Baum",
+          "adjective2": "Hoch",
+          "noun1": "Ast",
+          "noun2": "Sprung"
+        },
+        {
+          "adjective1": "Nieder",
+          "adjective2": "Tief",
+          "noun1": "Höhle",
+          "noun2": "Bau"
+        },
+        {
+          "adjective1": "Knochen",
+          "adjective2": "Fell",
+          "noun1": "Zahn",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Schlamm",
+          "adjective2": "Nass",
+          "noun1": "Sumpf",
+          "noun2": "Fluss"
+        },
+        {
+          "adjective1": "Knurr",
+          "adjective2": "Spitz",
+          "noun1": "Dorn",
+          "noun2": "Stich"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Weis",
+          "noun1": "Kunde",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Stammes",
+          "adjective2": "Sipp",
+          "noun1": "Pfad",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Rost",
+          "adjective2": "Schnapp",
+          "noun1": "Schnapp",
+          "noun2": "Grinse"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Schimmer",
+          "noun1": "Glanz",
+          "noun2": "Funke"
+        },
+        {
+          "adjective1": "Flink",
+          "adjective2": "Zuck",
+          "noun1": "Rasch",
+          "noun2": "Schnipp"
+        },
+        {
+          "adjective1": "Schatten",
+          "adjective2": "Finster",
+          "noun1": "Düster",
+          "noun2": "Schleich"
+        },
+        {
+          "adjective1": "Wurzel",
+          "adjective2": "Gebunden",
+          "noun1": "Geflecht",
+          "noun2": "Reif"
+        },
+        {
+          "adjective1": "Prächtig",
+          "adjective2": "Alt",
+          "noun1": "Häuptling",
+          "noun2": "Fürst"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Riss",
+          "noun1": "Klaue",
+          "noun2": "Bruch"
+        },
+        {
+          "adjective1": "Bernstein",
+          "adjective2": "Glimm",
+          "noun1": "Auge",
+          "noun2": "Blick"
+        }
+      ]
+    },
+    {
+      "folk": "Human",
+      "culture": "Khatok",
+      "personalNames": [
+        {
+          "prefix": "Kar-",
+          "syllable2": "-gu",
+          "syllable3": "-la",
+          "suffix": "-m"
+        },
+        {
+          "prefix": "Zho-",
+          "syllable2": "-ka",
+          "syllable3": "-r",
+          "suffix": "-na"
+        },
+        {
+          "prefix": "Taa-",
+          "syllable2": "-lok",
+          "syllable3": "-sha",
+          "suffix": "-k"
+        },
+        {
+          "prefix": "Hur-",
+          "syllable2": "-da",
+          "syllable3": "-gon",
+          "suffix": "-ba"
+        },
+        {
+          "prefix": "Gho-",
+          "syllable2": "-ra",
+          "syllable3": "-m",
+          "suffix": "-zi"
+        },
+        {
+          "prefix": "Bra-",
+          "syllable2": "-ta",
+          "syllable3": "-ko",
+          "suffix": "-l"
+        },
+        {
+          "prefix": "Nyah-",
+          "syllable2": "-lo",
+          "syllable3": "-n",
+          "suffix": "-ga"
+        },
+        {
+          "prefix": "Ko-",
+          "syllable2": "-bu",
+          "syllable3": "-rok",
+          "suffix": "-t"
+        },
+        {
+          "prefix": "Mar-",
+          "syllable2": "-an",
+          "syllable3": "-za",
+          "suffix": "-sh"
+        },
+        {
+          "prefix": "Rin-",
+          "syllable2": "-da",
+          "syllable3": "-bo",
+          "suffix": "-li"
+        },
+        {
+          "prefix": "Suk-",
+          "syllable2": "-we",
+          "syllable3": "-ya",
+          "suffix": "-j"
+        },
+        {
+          "prefix": "Dra-",
+          "syllable2": "-xar",
+          "syllable3": "-tu",
+          "suffix": "-o"
+        },
+        {
+          "prefix": "Vho-",
+          "syllable2": "-ra",
+          "syllable3": "-ga",
+          "suffix": "-n"
+        },
+        {
+          "prefix": "Chi-",
+          "syllable2": "-ka",
+          "syllable3": "-z",
+          "suffix": "-ar"
+        },
+        {
+          "prefix": "Len-",
+          "syllable2": "-gi",
+          "syllable3": "-do",
+          "suffix": "-ma"
+        },
+        {
+          "prefix": "Ogo-",
+          "syllable2": "-ro",
+          "syllable3": "-k",
+          "suffix": "-ha"
+        },
+        {
+          "prefix": "Twi-",
+          "syllable2": "-za",
+          "syllable3": "-v",
+          "suffix": "-u"
+        },
+        {
+          "prefix": "Kah-",
+          "syllable2": "-den",
+          "syllable3": "-g",
+          "suffix": "-eh"
+        },
+        {
+          "prefix": "Lum-",
+          "syllable2": "-ba",
+          "syllable3": "-shi",
+          "suffix": "-ra"
+        },
+        {
+          "prefix": "Hokh-",
+          "syllable2": "-on",
+          "syllable3": "-ak",
+          "suffix": "-os"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Sun",
+          "adjective2": "Warm",
+          "noun1": "Plain",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Dust",
+          "adjective2": "Dry",
+          "noun1": "River",
+          "noun2": "Flow"
+        },
+        {
+          "adjective1": "Lion",
+          "adjective2": "Keen",
+          "noun1": "Spear",
+          "noun2": "Roar"
+        },
+        {
+          "adjective1": "Swift",
+          "adjective2": "Wild",
+          "noun1": "Hunt",
+          "noun2": "Eye"
+        },
+        {
+          "adjective1": "Clan",
+          "adjective2": "True",
+          "noun1": "Heart",
+          "noun2": "Kin"
+        },
+        {
+          "adjective1": "Sky",
+          "adjective2": "Bright",
+          "noun1": "Star",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "Deep",
+          "adjective2": "Shade",
+          "noun1": "Well",
+          "noun2": "Spring"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Rich",
+          "noun1": "Mark",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Brave",
+          "adjective2": "Stout",
+          "noun1": "Shield",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Old",
+          "adjective2": "Wise",
+          "noun1": "Lore",
+          "noun2": "Root"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Grand",
+          "noun1": "Chief",
+          "noun2": "Lord"
+        },
+        {
+          "adjective1": "Bone",
+          "adjective2": "Flint",
+          "noun1": "Rock",
+          "noun2": "Stone"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Stalk",
+          "noun1": "Track",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Wide",
+          "adjective2": "Vast",
+          "noun1": "Land",
+          "noun2": "Horizon"
+        },
+        {
+          "adjective1": "Moon",
+          "adjective2": "Night",
+          "noun1": "Shadow",
+          "noun2": "Dream"
+        },
+        {
+          "adjective1": "Thorn",
+          "adjective2": "Bush",
+          "noun1": "Trail",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Burst",
+          "adjective2": "Swift",
+          "noun1": "Bolt",
+          "noun2": "Flash"
+        },
+        {
+          "adjective1": "Strong",
+          "adjective2": "Firm",
+          "noun1": "Hold",
+          "noun2": "Guard"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Ridge",
+          "noun1": "Crest",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Earth",
+          "adjective2": "Clay",
+          "noun1": "Bloom",
+          "noun2": "Life"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Sonnen",
+          "adjective2": "Warm",
+          "noun1": "Ebene",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Staub",
+          "adjective2": "Dürr",
+          "noun1": "Fluss",
+          "noun2": "Strom"
+        },
+        {
+          "adjective1": "Löwen",
+          "adjective2": "Scharf",
+          "noun1": "Speer",
+          "noun2": "Brüll"
+        },
+        {
+          "adjective1": "Flink",
+          "adjective2": "Wild",
+          "noun1": "Jagd",
+          "noun2": "Auge"
+        },
+        {
+          "adjective1": "Sippen",
+          "adjective2": "Treu",
+          "noun1": "Herz",
+          "noun2": "Sipp"
+        },
+        {
+          "adjective1": "Himmels",
+          "adjective2": "Hell",
+          "noun1": "Stern",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Tief",
+          "adjective2": "Schatten",
+          "noun1": "Brunnen",
+          "noun2": "Born"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Reich",
+          "noun1": "Mal",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Kühn",
+          "adjective2": "Stämmig",
+          "noun1": "Schild",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Alt",
+          "adjective2": "Weis",
+          "noun1": "Kunde",
+          "noun2": "Wurzel"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Prächtig",
+          "noun1": "Häuptling",
+          "noun2": "Fürst"
+        },
+        {
+          "adjective1": "Knochen",
+          "adjective2": "Feuer",
+          "noun1": "Fels",
+          "noun2": "Stein"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Pirsch",
+          "noun1": "Fährte",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Weit",
+          "adjective2": "Groß",
+          "noun1": "Land",
+          "noun2": "Weite"
+        },
+        {
+          "adjective1": "Mond",
+          "adjective2": "Nacht",
+          "noun1": "Schatten",
+          "noun2": "Traum"
+        },
+        {
+          "adjective1": "Dorn",
+          "adjective2": "Busch",
+          "noun1": "Spur",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Berst",
+          "adjective2": "Flink",
+          "noun1": "Blitz",
+          "noun2": "Schlag"
+        },
+        {
+          "adjective1": "Stark",
+          "adjective2": "Fest",
+          "noun1": "Feste",
+          "noun2": "Wacht"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Grat",
+          "noun1": "Kamm",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Erd",
+          "adjective2": "Lehm",
+          "noun1": "Blüte",
+          "noun2": "Leben"
+        }
+      ]
+    },
+    {
+      "folk": "Lionfolk",
+      "culture": "Jakhaari",
+      "personalNames": [
+        {
+          "prefix": "Sun-",
+          "syllable2": "-di",
+          "syllable3": "-ya",
+          "suffix": "-tou"
+        },
+        {
+          "prefix": "Gao-",
+          "syllable2": "-ma",
+          "syllable3": "-ni",
+          "suffix": "-ra"
+        },
+        {
+          "prefix": "Tem-",
+          "syllable2": "-uk",
+          "syllable3": "-tu",
+          "suffix": "-are"
+        },
+        {
+          "prefix": "Ask-",
+          "syllable2": "-ha",
+          "syllable3": "-mad",
+          "suffix": "-ou"
+        },
+        {
+          "prefix": "Za-",
+          "syllable2": "-ra",
+          "syllable3": "-fu",
+          "suffix": "-la"
+        },
+        {
+          "prefix": "Man-",
+          "syllable2": "-ka",
+          "syllable3": "-ba",
+          "suffix": "-ri"
+        },
+        {
+          "prefix": "Djin-",
+          "syllable2": "-ne",
+          "syllable3": "-re",
+          "suffix": "-mou"
+        },
+        {
+          "prefix": "Kali-",
+          "syllable2": "-ma",
+          "syllable3": "-wa",
+          "suffix": "-bi"
+        },
+        {
+          "prefix": "Fara-",
+          "syllable2": "-han",
+          "syllable3": "-di",
+          "suffix": "-na"
+        },
+        {
+          "prefix": "Son-",
+          "syllable2": "-ho",
+          "syllable3": "-ro",
+          "suffix": "-ba"
+        },
+        {
+          "prefix": "Malu-",
+          "syllable2": "-fa",
+          "syllable3": "-ke",
+          "suffix": "-ssa"
+        },
+        {
+          "prefix": "Keit-",
+          "syllable2": "-fou",
+          "syllable3": "-gon",
+          "suffix": "-go"
+        },
+        {
+          "prefix": "Nari-",
+          "syllable2": "-ya",
+          "syllable3": "-nda",
+          "suffix": "-ta"
+        },
+        {
+          "prefix": "Bala-",
+          "syllable2": "-fo",
+          "syllable3": "-lo",
+          "suffix": "-ma"
+        },
+        {
+          "prefix": "Kassa-",
+          "syllable2": "-mi",
+          "syllable3": "-ga",
+          "suffix": "-da"
+        },
+        {
+          "prefix": "Toure-",
+          "syllable2": "-ko",
+          "syllable3": "-na",
+          "suffix": "-fa"
+        },
+        {
+          "prefix": "Issu-",
+          "syllable2": "-fa",
+          "syllable3": "-ra",
+          "suffix": "-dou"
+        },
+        {
+          "prefix": "Ouma-",
+          "syllable2": "-rou",
+          "syllable3": "-ye",
+          "suffix": "-mi"
+        },
+        {
+          "prefix": "Djen-",
+          "syllable2": "-ne",
+          "syllable3": "-po",
+          "suffix": "-lo"
+        },
+        {
+          "prefix": "Bin-",
+          "syllable2": "-lay",
+          "syllable3": "-sa",
+          "suffix": "-tou"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Sun",
+          "adjective2": "Proud",
+          "noun1": "Roar",
+          "noun2": "Mane"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Swift",
+          "noun1": "Claw",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Brave",
+          "adjective2": "Fierce",
+          "noun1": "Pride",
+          "noun2": "Heart"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "Wild",
+          "noun1": "Hunt",
+          "noun2": "Blood"
+        },
+        {
+          "adjective1": "Sky",
+          "adjective2": "Vast",
+          "noun1": "Plain",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Stone",
+          "adjective2": "Strong",
+          "noun1": "Guard",
+          "noun2": "Wall"
+        },
+        {
+          "adjective1": "Dark",
+          "adjective2": "Deep",
+          "noun1": "Shadow",
+          "noun2": "Eye"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Wise",
+          "noun1": "Lore",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Ore",
+          "adjective2": "Stern",
+          "noun1": "Fang",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "True",
+          "adjective2": "Pure",
+          "noun1": "Spirit",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "Grand",
+          "adjective2": "Regal",
+          "noun1": "Crown",
+          "noun2": "Throne"
+        },
+        {
+          "adjective1": "Earth",
+          "adjective2": "Root",
+          "noun1": "Well",
+          "noun2": "Spring"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Stalk",
+          "noun1": "Track",
+          "noun2": "Echo"
+        },
+        {
+          "adjective1": "Bolt",
+          "adjective2": "Flash",
+          "noun1": "Burst",
+          "noun2": "Flame"
+        },
+        {
+          "adjective1": "Star",
+          "adjective2": "Moon",
+          "noun1": "Night",
+          "noun2": "Dream"
+        },
+        {
+          "adjective1": "Thorn",
+          "adjective2": "Bush",
+          "noun1": "Crest",
+          "noun2": "Ridge"
+        },
+        {
+          "adjective1": "Bloom",
+          "adjective2": "Life",
+          "noun1": "Flow",
+          "noun2": "Tide"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Brand",
+          "noun1": "Oath",
+          "noun2": "Bond"
+        },
+        {
+          "adjective1": "Peak",
+          "adjective2": "High",
+          "noun1": "Gate",
+          "noun2": "Hold"
+        },
+        {
+          "adjective1": "Apex",
+          "adjective2": "King",
+          "noun1": "Soul",
+          "noun2": "Kin"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Sonnen",
+          "adjective2": "Stolz",
+          "noun1": "Brüll",
+          "noun2": "Mähne"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Flink",
+          "noun1": "Klaue",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Kühn",
+          "adjective2": "Grimmig",
+          "noun1": "Stolz",
+          "noun2": "Herz"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Wild",
+          "noun1": "Jagd",
+          "noun2": "Blut"
+        },
+        {
+          "adjective1": "Himmels",
+          "adjective2": "Weit",
+          "noun1": "Ebene",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Stein",
+          "adjective2": "Stark",
+          "noun1": "Wacht",
+          "noun2": "Mauer"
+        },
+        {
+          "adjective1": "Dunkel",
+          "adjective2": "Tief",
+          "noun1": "Schatten",
+          "noun2": "Auge"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Weis",
+          "noun1": "Kunde",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Erz",
+          "adjective2": "Streng",
+          "noun1": "Hauer",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Treu",
+          "adjective2": "Rein",
+          "noun1": "Geist",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Prächtig",
+          "adjective2": "Edel",
+          "noun1": "Krone",
+          "noun2": "Thron"
+        },
+        {
+          "adjective1": "Erd",
+          "adjective2": "Wurzel",
+          "noun1": "Brunnen",
+          "noun2": "Born"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Pirsch",
+          "noun1": "Fährte",
+          "noun2": "Hall"
+        },
+        {
+          "adjective1": "Blitz",
+          "adjective2": "Schlag",
+          "noun1": "Berst",
+          "noun2": "Flamme"
+        },
+        {
+          "adjective1": "Stern",
+          "adjective2": "Mond",
+          "noun1": "Nacht",
+          "noun2": "Traum"
+        },
+        {
+          "adjective1": "Dorn",
+          "adjective2": "Busch",
+          "noun1": "Kamm",
+          "noun2": "Grat"
+        },
+        {
+          "adjective1": "Blüten",
+          "adjective2": "Lebens",
+          "noun1": "Strom",
+          "noun2": "Flut"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Brand",
+          "noun1": "Eid",
+          "noun2": "Bund"
+        },
+        {
+          "adjective1": "Gipfel",
+          "adjective2": "Hoch",
+          "noun1": "Tor",
+          "noun2": "Feste"
+        },
+        {
+          "adjective1": "Höchst",
+          "adjective2": "König",
+          "noun1": "Seele",
+          "noun2": "Sipp"
+        }
+      ]
+    },
+    {
+      "folk": "Lionfolk",
+      "culture": "Saghal",
+      "personalNames": [
+        {
+          "prefix": "Kith-",
+          "syllable2": "-ra",
+          "syllable3": "-li",
+          "suffix": "-yx"
+        },
+        {
+          "prefix": "Zyl-",
+          "syllable2": "-o",
+          "syllable3": "-ven",
+          "suffix": "-ar"
+        },
+        {
+          "prefix": "Ro'l-",
+          "syllable2": "-kan",
+          "syllable3": "-dax",
+          "suffix": "-lo"
+        },
+        {
+          "prefix": "Fey-",
+          "syllable2": "-gla",
+          "syllable3": "-mur",
+          "suffix": "-va"
+        },
+        {
+          "prefix": "Wis-",
+          "syllable2": "-trid",
+          "syllable3": "-nya",
+          "suffix": "-kso"
+        },
+        {
+          "prefix": "Jek-",
+          "syllable2": "-goth",
+          "syllable3": "-sarr",
+          "suffix": "-ra"
+        },
+        {
+          "prefix": "Nyx-",
+          "syllable2": "-la",
+          "syllable3": "-shai",
+          "suffix": "-o"
+        },
+        {
+          "prefix": "Thra-",
+          "syllable2": "-nax",
+          "syllable3": "-vin",
+          "suffix": "-t"
+        },
+        {
+          "prefix": "Luna-",
+          "syllable2": "-ra",
+          "syllable3": "-liz",
+          "suffix": "-a"
+        },
+        {
+          "prefix": "Em-",
+          "syllable2": "-yla",
+          "syllable3": "-ko",
+          "suffix": "-za"
+        },
+        {
+          "prefix": "Dusk-",
+          "syllable2": "-ryn",
+          "syllable3": "-tan",
+          "suffix": "-is"
+        },
+        {
+          "prefix": "Prow-",
+          "syllable2": "-ler",
+          "syllable3": "-eth",
+          "suffix": "-ir"
+        },
+        {
+          "prefix": "Suna-",
+          "syllable2": "-kri",
+          "syllable3": "-ril",
+          "suffix": "-yn"
+        },
+        {
+          "prefix": "Mis-",
+          "syllable2": "-yl",
+          "syllable3": "-lin",
+          "suffix": "-os"
+        },
+        {
+          "prefix": "Bra-",
+          "syllable2": "-mo",
+          "syllable3": "-shk",
+          "suffix": "-e"
+        },
+        {
+          "prefix": "Thra-",
+          "syllable2": "-leap",
+          "syllable3": "-an",
+          "suffix": "-a"
+        },
+        {
+          "prefix": "Ryn-",
+          "syllable2": "-lath",
+          "syllable3": "-dara",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Nyt-",
+          "syllable2": "-shey",
+          "syllable3": "-el",
+          "suffix": "-i"
+        },
+        {
+          "prefix": "Glim-",
+          "syllable2": "-toth",
+          "syllable3": "-ara",
+          "suffix": "-el"
+        },
+        {
+          "prefix": "Wyl-",
+          "syllable2": "-stryk",
+          "syllable3": "-ar",
+          "suffix": "-us"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Dark",
+          "adjective2": "Swift",
+          "noun1": "Shadow",
+          "noun2": "Claw"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "Wild",
+          "noun1": "Vine",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Deep",
+          "noun1": "Stalk",
+          "noun2": "Leap"
+        },
+        {
+          "adjective1": "Green",
+          "adjective2": "Shade",
+          "noun1": "Leaf",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Blood",
+          "adjective2": "Fury",
+          "noun1": "Fang",
+          "noun2": "Roar"
+        },
+        {
+          "adjective1": "Stone",
+          "adjective2": "Strong",
+          "noun1": "Hold",
+          "noun2": "Root"
+        },
+        {
+          "adjective1": "Ember",
+          "adjective2": "Glow",
+          "noun1": "Eye",
+          "noun2": "Spark"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Glint",
+          "noun1": "Stripe",
+          "noun2": "Pelt"
+        },
+        {
+          "adjective1": "Prime",
+          "adjective2": "Apex",
+          "noun1": "Heart",
+          "noun2": "Soul"
+        },
+        {
+          "adjective1": "Tree",
+          "adjective2": "High",
+          "noun1": "Branch",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Wise",
+          "noun1": "Lore",
+          "noun2": "Kin"
+        },
+        {
+          "adjective1": "Moon",
+          "adjective2": "Night",
+          "noun1": "Dream",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "Rust",
+          "adjective2": "Earth",
+          "noun1": "Den",
+          "noun2": "Lair"
+        },
+        {
+          "adjective1": "Mist",
+          "adjective2": "Damp",
+          "noun1": "Flow",
+          "noun2": "Spring"
+        },
+        {
+          "adjective1": "Brave",
+          "adjective2": "True",
+          "noun1": "Spirit",
+          "noun2": "Oath"
+        },
+        {
+          "adjective1": "Thorn",
+          "adjective2": "Bone",
+          "noun1": "Ridge",
+          "noun2": "Crest"
+        },
+        {
+          "adjective1": "Grand",
+          "adjective2": "Fierce",
+          "noun1": "Crown",
+          "noun2": "Lord"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Brand",
+          "noun1": "Print",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Cold",
+          "adjective2": "Deep",
+          "noun1": "Whisper",
+          "noun2": "Echo"
+        },
+        {
+          "adjective1": "Twin",
+          "adjective2": "Swift",
+          "noun1": "Hunt",
+          "noun2": "Path"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Finster",
+          "adjective2": "Flink",
+          "noun1": "Schatten",
+          "noun2": "Klaue"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Wild",
+          "noun1": "Ranke",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Tief",
+          "noun1": "Pirsch",
+          "noun2": "Sprung"
+        },
+        {
+          "adjective1": "Grün",
+          "adjective2": "Schatten",
+          "noun1": "Blatt",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Blut",
+          "adjective2": "Wut",
+          "noun1": "Hauer",
+          "noun2": "Brüll"
+        },
+        {
+          "adjective1": "Stein",
+          "adjective2": "Stark",
+          "noun1": "Feste",
+          "noun2": "Wurzel"
+        },
+        {
+          "adjective1": "Glut",
+          "adjective2": "Glimm",
+          "noun1": "Auge",
+          "noun2": "Funke"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Glanz",
+          "noun1": "Streif",
+          "noun2": "Fell"
+        },
+        {
+          "adjective1": "Erst",
+          "adjective2": "Höchst",
+          "noun1": "Herz",
+          "noun2": "Seele"
+        },
+        {
+          "adjective1": "Baum",
+          "adjective2": "Hoch",
+          "noun1": "Ast",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Weis",
+          "noun1": "Kunde",
+          "noun2": "Sipp"
+        },
+        {
+          "adjective1": "Mond",
+          "adjective2": "Nacht",
+          "noun1": "Traum",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Rost",
+          "adjective2": "Erd",
+          "noun1": "Bau",
+          "noun2": "Lager"
+        },
+        {
+          "adjective1": "Nebel",
+          "adjective2": "Feucht",
+          "noun1": "Strom",
+          "noun2": "Born"
+        },
+        {
+          "adjective1": "Kühn",
+          "adjective2": "Treu",
+          "noun1": "Geist",
+          "noun2": "Eid"
+        },
+        {
+          "adjective1": "Dorn",
+          "adjective2": "Knochen",
+          "noun1": "Grat",
+          "noun2": "Kamm"
+        },
+        {
+          "adjective1": "Prächtig",
+          "adjective2": "Grimmig",
+          "noun1": "Krone",
+          "noun2": "Fürst"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Brand",
+          "noun1": "Spur",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Kalt",
+          "adjective2": "Tief",
+          "noun1": "Flüster",
+          "noun2": "Hall"
+        },
+        {
+          "adjective1": "Zwillings",
+          "adjective2": "Flink",
+          "noun1": "Jagd",
+          "noun2": "Pfad"
+        }
+      ]
+    },
+    {
+      "folk": "Lizardfolk",
+      "culture": "Vaashk",
+      "personalNames": [
+        {
+          "prefix": "K'ra-",
+          "syllable2": "-ss",
+          "syllable3": "-ka",
+          "suffix": "-sh"
+        },
+        {
+          "prefix": "Ziss-",
+          "syllable2": "-g",
+          "syllable3": "-rok",
+          "suffix": "-'th"
+        },
+        {
+          "prefix": "Slik-",
+          "syllable2": "-th",
+          "syllable3": "-za",
+          "suffix": "-ol"
+        },
+        {
+          "prefix": "Grok-",
+          "syllable2": "-h",
+          "syllable3": "-ven",
+          "suffix": "-ik"
+        },
+        {
+          "prefix": "Vesh-",
+          "syllable2": "-ku",
+          "syllable3": "-rix",
+          "suffix": "-s"
+        },
+        {
+          "prefix": "Thra-",
+          "syllable2": "-gn",
+          "syllable3": "-ax",
+          "suffix": "-ka"
+        },
+        {
+          "prefix": "Hiss-",
+          "syllable2": "-la",
+          "syllable3": "-sk",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Jass-",
+          "syllable2": "-o",
+          "syllable3": "-gul",
+          "suffix": "-in"
+        },
+        {
+          "prefix": "Kro-",
+          "syllable2": "-ss",
+          "syllable3": "-ta",
+          "suffix": "-esh"
+        },
+        {
+          "prefix": "Slith-",
+          "syllable2": "-za",
+          "syllable3": "-dar",
+          "suffix": "-an"
+        },
+        {
+          "prefix": "Gor-",
+          "syllable2": "-tik",
+          "syllable3": "-ch",
+          "suffix": "-el"
+        },
+        {
+          "prefix": "Sh'k-",
+          "syllable2": "-ran",
+          "syllable3": "-gol",
+          "suffix": "-ok"
+        },
+        {
+          "prefix": "Vroo-",
+          "syllable2": "-m",
+          "syllable3": "-lak",
+          "suffix": "-t"
+        },
+        {
+          "prefix": "Xy-",
+          "syllable2": "-z",
+          "syllable3": "-nar",
+          "suffix": "-ix"
+        },
+        {
+          "prefix": "Glok-",
+          "syllable2": "-n",
+          "syllable3": "-sa",
+          "suffix": "-ar"
+        },
+        {
+          "prefix": "Razz-",
+          "syllable2": "-ix",
+          "syllable3": "-tor",
+          "suffix": "-ud"
+        },
+        {
+          "prefix": "Skil-",
+          "syllable2": "-ok",
+          "syllable3": "-zar",
+          "suffix": "-un"
+        },
+        {
+          "prefix": "Brr-",
+          "syllable2": "-ax",
+          "syllable3": "-ish",
+          "suffix": "-ag"
+        },
+        {
+          "prefix": "Chirr-",
+          "syllable2": "-k",
+          "syllable3": "-ga",
+          "suffix": "-al"
+        },
+        {
+          "prefix": "T'ss-",
+          "syllable2": "-ra",
+          "syllable3": "-m",
+          "suffix": "-osh"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Mud",
+          "adjective2": "Wet",
+          "noun1": "Mire",
+          "noun2": "Scale"
+        },
+        {
+          "adjective1": "Deep",
+          "adjective2": "Still",
+          "noun1": "Root",
+          "noun2": "Pool"
+        },
+        {
+          "adjective1": "Sly",
+          "adjective2": "Keen",
+          "noun1": "Tooth",
+          "noun2": "Eye"
+        },
+        {
+          "adjective1": "Green",
+          "adjective2": "Damp",
+          "noun1": "Vine",
+          "noun2": "Claw"
+        },
+        {
+          "adjective1": "Cold",
+          "adjective2": "Dark",
+          "noun1": "Swamp",
+          "noun2": "Way"
+        },
+        {
+          "adjective1": "Stone",
+          "adjective2": "Old",
+          "noun1": "Earth",
+          "noun2": "Heart"
+        },
+        {
+          "adjective1": "Wise",
+          "adjective2": "True",
+          "noun1": "Spirit",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "Strong",
+          "adjective2": "Brave",
+          "noun1": "Shield",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Bone",
+          "adjective2": "Flint",
+          "noun1": "Reed",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Still",
+          "noun1": "Ghost",
+          "noun2": "Echo"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Grand",
+          "noun1": "Clan",
+          "noun2": "Kin"
+        },
+        {
+          "adjective1": "Flow",
+          "adjective2": "Pure",
+          "noun1": "Stream",
+          "noun2": "Spring"
+        },
+        {
+          "adjective1": "Sunken",
+          "adjective2": "Hidden",
+          "noun1": "Nest",
+          "noun2": "Den"
+        },
+        {
+          "adjective1": "Blood",
+          "adjective2": "Fierce",
+          "noun1": "Maw",
+          "noun2": "Roar"
+        },
+        {
+          "adjective1": "Scale",
+          "adjective2": "Firm",
+          "noun1": "Crest",
+          "noun2": "Ridge"
+        },
+        {
+          "adjective1": "Coil",
+          "adjective2": "Bound",
+          "noun1": "Tail",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Shade",
+          "adjective2": "Cool",
+          "noun1": "Shadow",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Ancient",
+          "adjective2": "Dream",
+          "noun1": "Lore",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Vast",
+          "adjective2": "Lone",
+          "noun1": "Gully",
+          "noun2": "Trench"
+        },
+        {
+          "adjective1": "Amber",
+          "adjective2": "Glint",
+          "noun1": "Shard",
+          "noun2": "Gem"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Schlamm",
+          "adjective2": "Nass",
+          "noun1": "Moor",
+          "noun2": "Schuppe"
+        },
+        {
+          "adjective1": "Tief",
+          "adjective2": "Ruhig",
+          "noun1": "Wurzel",
+          "noun2": "Tümpel"
+        },
+        {
+          "adjective1": "Listig",
+          "adjective2": "Scharf",
+          "noun1": "Zahn",
+          "noun2": "Auge"
+        },
+        {
+          "adjective1": "Grün",
+          "adjective2": "Feucht",
+          "noun1": "Ranke",
+          "noun2": "Klaue"
+        },
+        {
+          "adjective1": "Kalt",
+          "adjective2": "Dunkel",
+          "noun1": "Sumpf",
+          "noun2": "Weg"
+        },
+        {
+          "adjective1": "Stein",
+          "adjective2": "Alt",
+          "noun1": "Erde",
+          "noun2": "Herz"
+        },
+        {
+          "adjective1": "Weis",
+          "adjective2": "Treu",
+          "noun1": "Geist",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Stark",
+          "adjective2": "Kühn",
+          "noun1": "Schild",
+          "noun2": "Hand"
+        },
+        {
+          "adjective1": "Knochen",
+          "adjective2": "Feuer",
+          "noun1": "Ried",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Ruhig",
+          "noun1": "Phantom",
+          "noun2": "Hall"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Prächtig",
+          "noun1": "Sippe",
+          "noun2": "Sipp"
+        },
+        {
+          "adjective1": "Fließ",
+          "adjective2": "Rein",
+          "noun1": "Strom",
+          "noun2": "Born"
+        },
+        {
+          "adjective1": "Versunken",
+          "adjective2": "Verborgen",
+          "noun1": "Nest",
+          "noun2": "Bau"
+        },
+        {
+          "adjective1": "Blut",
+          "adjective2": "Grimmig",
+          "noun1": "Schlund",
+          "noun2": "Brüll"
+        },
+        {
+          "adjective1": "Schuppen",
+          "adjective2": "Fest",
+          "noun1": "Kamm",
+          "noun2": "Grat"
+        },
+        {
+          "adjective1": "Gewunden",
+          "adjective2": "Gebunden",
+          "noun1": "Schwanz",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Schatten",
+          "adjective2": "Kühl",
+          "noun1": "Schatten",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Uralten",
+          "adjective2": "Traum",
+          "noun1": "Kunde",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Weit",
+          "adjective2": "Einsam",
+          "noun1": "Rinne",
+          "noun2": "Graben"
+        },
+        {
+          "adjective1": "Bernstein",
+          "adjective2": "Glimm",
+          "noun1": "Splitter",
+          "noun2": "Juwel"
+        }
+      ]
+    },
+    {
+      "folk": "Minotaur",
+      "culture": "Minokos",
+      "personalNames": [
+        {
+          "prefix": "Ta-",
+          "syllable2": "-khos",
+          "syllable3": "-nas",
+          "suffix": "-on"
+        },
+        {
+          "prefix": "Bryo-",
+          "syllable2": "-men",
+          "syllable3": "-tos",
+          "suffix": "-ax"
+        },
+        {
+          "prefix": "Kno-",
+          "syllable2": "-sor",
+          "syllable3": "-os",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Pala-",
+          "syllable2": "-ri",
+          "syllable3": "-ax",
+          "suffix": "-tus"
+        },
+        {
+          "prefix": "Aeth-",
+          "syllable2": "-on",
+          "syllable3": "-des",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Therr-",
+          "syllable2": "-a",
+          "syllable3": "-kos",
+          "suffix": "-os"
+        },
+        {
+          "prefix": "Kor-",
+          "syllable2": "-y",
+          "syllable3": "-don",
+          "suffix": "-os"
+        },
+        {
+          "prefix": "La-",
+          "syllable2": "-rin",
+          "syllable3": "-thos",
+          "suffix": "-an"
+        },
+        {
+          "prefix": "Ast-",
+          "syllable2": "-ion",
+          "syllable3": "-da",
+          "suffix": "-os"
+        },
+        {
+          "prefix": "Nos-",
+          "syllable2": "-ta",
+          "syllable3": "-ros",
+          "suffix": "-a"
+        },
+        {
+          "prefix": "Rha-",
+          "syllable2": "-man",
+          "syllable3": "-thys",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Dik-",
+          "syllable2": "-na",
+          "syllable3": "-eus",
+          "suffix": "-or"
+        },
+        {
+          "prefix": "Eu-",
+          "syllable2": "-alos",
+          "syllable3": "-tor",
+          "suffix": "-as"
+        },
+        {
+          "prefix": "Kre-",
+          "syllable2": "-e",
+          "syllable3": "-ios",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Phai-",
+          "syllable2": "-os",
+          "syllable3": "-tos",
+          "suffix": "-on"
+        },
+        {
+          "prefix": "Aeg-",
+          "syllable2": "-eus",
+          "syllable3": "-mon",
+          "suffix": "-os"
+        },
+        {
+          "prefix": "Xyl-",
+          "syllable2": "-k",
+          "syllable3": "-ar",
+          "suffix": "-us"
+        },
+        {
+          "prefix": "Gort-",
+          "syllable2": "-yn",
+          "syllable3": "-a",
+          "suffix": "-tos"
+        },
+        {
+          "prefix": "Ida-",
+          "syllable2": "-eus",
+          "syllable3": "-lon",
+          "suffix": "-on"
+        },
+        {
+          "prefix": "Ty-",
+          "syllable2": "-th",
+          "syllable3": "-os",
+          "suffix": "-es"
+        }
+      ],
+      "familyNames": [
+        {
+          "adjective1": "Horn",
+          "adjective2": "Stout",
+          "noun1": "Maze",
+          "noun2": "Wall"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Bright",
+          "noun1": "Palace",
+          "noun2": "Heart"
+        },
+        {
+          "adjective1": "Sun",
+          "adjective2": "Warm",
+          "noun1": "Fresco",
+          "noun2": "Gaze"
+        },
+        {
+          "adjective1": "Keen",
+          "adjective2": "Fierce",
+          "noun1": "Gate",
+          "noun2": "Guard"
+        },
+        {
+          "adjective1": "Earth",
+          "adjective2": "Strong",
+          "noun1": "Hill",
+          "noun2": "Root"
+        },
+        {
+          "adjective1": "Stone",
+          "adjective2": "Carve",
+          "noun1": "Tablet",
+          "noun2": "Sign"
+        },
+        {
+          "adjective1": "Deep",
+          "adjective2": "Vast",
+          "noun1": "Labyr",
+          "noun2": "Path"
+        },
+        {
+          "adjective1": "Proud",
+          "adjective2": "Grand",
+          "noun1": "Crown",
+          "noun2": "Throne"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Brave",
+          "noun1": "Spirit",
+          "noun2": "Call"
+        },
+        {
+          "adjective1": "True",
+          "adjective2": "Pure",
+          "noun1": "Bloom",
+          "noun2": "Kin"
+        },
+        {
+          "adjective1": "Elder",
+          "adjective2": "Wise",
+          "noun1": "Lore",
+          "noun2": "Tome"
+        },
+        {
+          "adjective1": "Clan",
+          "adjective2": "Blood",
+          "noun1": "Guild",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Silent",
+          "adjective2": "Shade",
+          "noun1": "Whis",
+          "noun2": "Echo"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Glint",
+          "noun1": "Axe",
+          "noun2": "Shield"
+        },
+        {
+          "adjective1": "Peak",
+          "adjective2": "High",
+          "noun1": "Crest",
+          "noun2": "Spire"
+        },
+        {
+          "adjective1": "Clay",
+          "adjective2": "Rich",
+          "noun1": "Vessel",
+          "noun2": "Flow"
+        },
+        {
+          "adjective1": "Burst",
+          "adjective2": "Swift",
+          "noun1": "Dash",
+          "noun2": "Charge"
+        },
+        {
+          "adjective1": "Calm",
+          "adjective2": "Wide",
+          "noun1": "Plain",
+          "noun2": "Spring"
+        },
+        {
+          "adjective1": "Scar",
+          "adjective2": "Ridge",
+          "noun1": "Brand",
+          "noun2": "Mark"
+        },
+        {
+          "adjective1": "Gem",
+          "adjective2": "Amber",
+          "noun1": "Coil",
+          "noun2": "Knot"
+        }
+      ],
+      "familyNamesDE": [
+        {
+          "adjective1": "Horn",
+          "adjective2": "Stämmig",
+          "noun1": "Irrgarten",
+          "noun2": "Mauer"
+        },
+        {
+          "adjective1": "Gold",
+          "adjective2": "Hell",
+          "noun1": "Palast",
+          "noun2": "Herz"
+        },
+        {
+          "adjective1": "Sonnen",
+          "adjective2": "Warm",
+          "noun1": "Fresko",
+          "noun2": "Blick"
+        },
+        {
+          "adjective1": "Scharf",
+          "adjective2": "Grimmig",
+          "noun1": "Tor",
+          "noun2": "Wacht"
+        },
+        {
+          "adjective1": "Erd",
+          "adjective2": "Stark",
+          "noun1": "Hügel",
+          "noun2": "Wurzel"
+        },
+        {
+          "adjective1": "Stein",
+          "adjective2": "Schnitz",
+          "noun1": "Tafel",
+          "noun2": "Zeichen"
+        },
+        {
+          "adjective1": "Tief",
+          "adjective2": "Weit",
+          "noun1": "Labyr",
+          "noun2": "Pfad"
+        },
+        {
+          "adjective1": "Stolz",
+          "adjective2": "Prächtig",
+          "noun1": "Krone",
+          "noun2": "Thron"
+        },
+        {
+          "adjective1": "Wild",
+          "adjective2": "Kühn",
+          "noun1": "Geist",
+          "noun2": "Ruf"
+        },
+        {
+          "adjective1": "Treu",
+          "adjective2": "Rein",
+          "noun1": "Blüte",
+          "noun2": "Sipp"
+        },
+        {
+          "adjective1": "Alten",
+          "adjective2": "Weis",
+          "noun1": "Kunde",
+          "noun2": "Buch"
+        },
+        {
+          "adjective1": "Sippen",
+          "adjective2": "Blut",
+          "noun1": "Gilde",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Still",
+          "adjective2": "Schatten",
+          "noun1": "Flüster",
+          "noun2": "Hall"
+        },
+        {
+          "adjective1": "Bronze",
+          "adjective2": "Glimm",
+          "noun1": "Axt",
+          "noun2": "Schild"
+        },
+        {
+          "adjective1": "Gipfel",
+          "adjective2": "Hoch",
+          "noun1": "Kamm",
+          "noun2": "Zinne"
+        },
+        {
+          "adjective1": "Lehm",
+          "adjective2": "Reich",
+          "noun1": "Gefäß",
+          "noun2": "Fluss"
+        },
+        {
+          "adjective1": "Berst",
+          "adjective2": "Flink",
+          "noun1": "Sturm",
+          "noun2": "Ansturm"
+        },
+        {
+          "adjective1": "Sanft",
+          "adjective2": "Breit",
+          "noun1": "Ebene",
+          "noun2": "Born"
+        },
+        {
+          "adjective1": "Narben",
+          "adjective2": "Grat",
+          "noun1": "Brand",
+          "noun2": "Mal"
+        },
+        {
+          "adjective1": "Juwel",
+          "adjective2": "Bernstein",
+          "noun1": "Reif",
+          "noun2": "Knoten"
+        }
+      ]
+    }
+  ]
+}
