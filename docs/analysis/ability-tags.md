@@ -455,3 +455,442 @@ Identifies spell-specific mechanical properties. Apply only to spells.
 | 13 | Spell Property | Spell-specific mechanics | 9 | Spells only |
 
 **Total unique tags: 129** across 13 groups.
+
+---
+
+## Appendix A: Folk Ability Audit
+
+All folk abilities reviewed and tagged. Abilities are grouped by folk.
+
+### Dwarf
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Dwarven Sight** | `utility` | `passive` | `information` | — | — | `self` | `self-target` | `permanent` |
+| **Stoneskin** | `defense` | `passive` | `protection`, `resistance` | `poisoned` | — | `self` | `self-target` | `permanent` |
+| **Squat Build** | `defense` | `passive` | `resistance` | `prone`, `pushed` | — | `self` | `self-target` | `permanent` |
+
+### Elf
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Night Vision** | `utility` | `passive` | `information` | — | — | `self` | `self-target` | `permanent` |
+| **Fleet-Footed** | `utility` | `free` | `movement` | — | — | `self` | `self-target` | `briefly` |
+| **Spiritual Symbiosis** | `utility` | `passive` | `buff` | — | — | `self` | `self-target` | `permanent` |
+
+### Gnome
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Natural Empath** | `utility` | `action` | `information` | — | `psychic` | `close` | `single-target` | `instant` |
+| **Scent of Illusions** | `defense` | `passive` | `resistance` | — | — | `self` | `self-target` | `permanent` |
+| **Small Stature** | `utility` | `passive` | `buff`, `debuff` | — | — | `self` | `self-target` | `permanent` |
+
+### Hune
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Giant's Blood** | `defense`, `utility` | `passive` | `buff` | — | — | `self` | `self-target` | `permanent` |
+| **Stoic Mind** | `defense` | `passive` | `protection`, `buff` | — | — | `self` | `self-target` | `permanent` |
+
+### Orc
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Orcish Fury** | `offense` | `passive` | `damage` | — | `physical` | `melee` | `single-target`, `enemy` | `instant` |
+| **Pride above Death** | `defense` | `reaction` | `immunity` | — | — | `self` | `self-target` | `instant` |
+
+### Goblin
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Night Vision** | `utility` | `passive` | `information` | — | — | `self` | `self-target` | `permanent` |
+| **Quick Escape** | `defense` | `reaction` | `movement` | — | — | `self` | `self-target` | `instant` |
+| **Small Stature** | `utility` | `passive` | `buff`, `debuff` | — | — | `self` | `self-target` | `permanent` |
+
+### Human
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Will of Perseverance** | `utility` | `free` | `buff` | — | — | `self` | `self-target` | `instant` |
+| **Arcane Awakening** | `utility` | `passive` | `buff` | — | — | `self` | `self-target` | `permanent` |
+
+### Catfolk
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Night Vision** | `utility` | `passive` | `information` | — | — | `self` | `self-target` | `permanent` |
+| **Intimidating Roar** | `control` | `action` | `debuff` | `frightened` | — | `short` | `area`, `enemy` | `short` |
+| **Sharp Claws** | `offense` | `passive` | `damage` | — | `physical` | `melee` | `single-target`, `enemy` | `permanent` |
+
+### Lizardfolk
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Thick Scales** | `defense` | `passive` | `protection` | — | — | `self` | `self-target` | `permanent` |
+| **Aquatic Nature** | `utility` | `passive` | `buff` | — | — | `self` | `self-target` | `permanent` |
+| **Reptile Jaws** | `offense` | `passive` | `damage` | — | `physical` | `melee` | `single-target`, `enemy` | `permanent` |
+
+### Minotaur
+
+| Ability | Role | Action Economy | Effect Type | Condition | Damage Type | Range | Target | Duration |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Giant's Blood** | `defense`, `utility` | `passive` | `buff` | — | — | `self` | `self-target` | `permanent` |
+| **Horns** | `offense` | `passive` | `damage` | — | `physical` | `melee` | `single-target`, `enemy` | `permanent` |
+| **Goring Charge** | `offense` | `action` | `damage`, `movement` | — | `physical` | `melee` | `single-target`, `enemy` | `instant` |
+
+---
+
+## Appendix B: Combat Art Audit
+
+All combat arts reviewed and tagged. Weapon categories listed correspond to the combat art's weapon requirements.
+
+### Basic Combat Arts
+
+| Combat Art | Role | Weapon Category | Effect Type | Condition | Notes |
+| --- | --- | --- | --- | --- | --- |
+| **Aimed Shot** | `offense` | `bow`, `crossbow`, `thrown` | `buff` | — | Self-buff: +1 boon if no movement |
+| **Barrage** | `offense` | `bow`, `thrown` | `damage` | — | Extra attack with bane |
+| **Brutal Strike** | `offense` | `axe`, `blade`, `mace`, `polearm` | `damage` | — | Strength scaling damage |
+| **Charge** | `offense`, `control` | `axe`, `blade`, `mace`, `polearm`, `shield` | `damage`, `movement` | `pushed`, `prone` | Free movement + shove |
+| **Choking Grip** | `offense`, `control` | `brawling`, `thrown` | `damage`, `debuff` | `grappled`, `restrained`, `dazed` | Grapple with extra effects |
+| **Cleave** | `offense` | `axe`, `blade`, `mace`, `polearm` | `damage` | — | Multi-target melee |
+| **Deep Cut** | `offense` | `axe`, `blade`, `brawling`, `polearm` | `damage`, `debuff` | `bleeding` | Slash weapons, bleeding |
+| **Defensive Strike** | `offense`, `defense` | `axe`, `blade`, `brawling`, `mace`, `polearm`, `shield` | `damage`, `buff` | — | Gain Defend on hit |
+| **Disabling Shot** | `offense`, `control` | `bow`, `crossbow`, `thrown` | `damage`, `debuff` | `dazed`, `stunned` | Crush/heavy ranged |
+| **Disarm** | `control` | `axe`, `blade`, `brawling`, `mace`, `polearm` | `debuff` | — | Disarm action on hit |
+| **Disarming Shot** | `control` | `bow`, `crossbow`, `thrown` | `debuff` | — | Ranged disarm |
+| **Divert Attention** | `control` | `axe`, `blade`, `brawling`, `mace`, `polearm` | `debuff` | `distracted` | Distract action on attack |
+| **Evasive Strike** | `offense`, `defense` | `axe`, `blade`, `brawling`, `polearm` | `damage`, `movement` | — | Gain Retreat on hit |
+| **Exhilarating Strike** | `offense`, `support` | `axe`, `blade`, `brawling`, `mace`, `polearm` | `damage`, `healing`, `buff` | — | Heal + buff allies on hit |
+| **Feint** | `offense` | `blade`, `brawling`, `polearm` | `buff` | — | +1 boon if no movement |
+| **Felling Strike** | `offense`, `control` | `axe`, `blade`, `brawling`, `mace`, `polearm`, `thrown` | `damage`, `debuff` | `prone`, `dazed` | Trip on hit |
+| **Flurry** | `offense` | `axe`, `blade`, `brawling`, `mace`, `polearm` | `damage` | — | Extra melee attack with bane |
+| **Head Smack** | `control` | `brawling`, `mace`, `shield` | `damage`, `debuff` | `confused` | Crush weapon, mental effect |
+| **Knockout** | `control` | `brawling`, `mace`, `shield` | `damage`, `debuff` | `dazed`, `stunned` | Crush weapon, knockout |
+| **Pinning Shot** | `control` | `bow`, `crossbow`, `thrown` | `debuff` | `restrained` | Immobilize target |
+| **Power Shot** | `offense` | `bow`, `crossbow`, `thrown` | `damage` | — | Strength scaling ranged damage |
+| **Precise Shot** | `offense` | `bow`, `crossbow`, `thrown` | `damage` | — | Ignore AV, Agility scaling |
+| **Precise Strike** | `offense` | `blade`, `brawling`, `polearm` | `damage` | — | Pierce, ignore AV |
+| **Quick Lunge** | `offense` | `blade`, `brawling`, `polearm` | `damage` | — | Targets Dodge, blocks Quick Action |
+| **Ram Down** | `offense`, `control` | `brawling`, `mace`, `shield` | `damage`, `debuff` | `pushed`, `prone`, `dazed` | Shove + knockdown |
+| **Snare** | `control` | `brawling`, `thrown` | `debuff` | `grappled`, `restrained`, `prone`, `dazed` | Grapple with restraint |
+| **Splinter** | `control` | `axe`, `mace` | `debuff` | — | Destroy equipment |
+| **Terrifying Strike** | `offense`, `control` | `axe`, `blade`, `mace`, `polearm` | `damage`, `debuff` | `frightened` | Demoralize on attack |
+| **Volley** | `offense` | `bow`, `crossbow`, `thrown` | `damage` | — | Multi-target ranged |
+
+### Supreme Combat Arts
+
+| Combat Art | Role | Weapon Category | Effect Type | Condition | Notes |
+| --- | --- | --- | --- | --- | --- |
+| **Dashing Strike** | `offense` | `axe`, `blade`, `brawling`, `mace` | `damage`, `movement` | — | Line attack with supernatural movement |
+| **Death from Above** | `offense` | `polearm` | `damage`, `movement` | `prone` | Leap attack, knockdown |
+| **Devastating Piercer** | `offense` | `crossbow` | `damage` | — | Line-piercing multi-target |
+| **Earth-shattering Strike** | `offense`, `control` | `mace` | `damage` | — | AoE ground destruction |
+| **Force Slash** | `offense` | `axe`, `blade`, `polearm` | `damage` | — | Ranged slash wave |
+| **Hundred Palm Strike** | `offense` | `brawling` | `damage` | — | Multi-hit unarmed combo |
+| **Perfect Shot** | `offense`, `control` | `bow` | `damage`, `debuff` | `stunned` | Ignore all penalties, stun |
+| **Phantom Cut** | `offense`, `control` | `blade` | `damage`, `debuff` | `staggered` | Ranged blade attack |
+| **Projectile Storm** | `offense` | `thrown` | `damage` | — | AoE thrown weapons |
+| **Rip and Tear** | `offense`, `control` | `axe` | `damage`, `debuff` | `staggered` | Armor destruction |
+| **Shield Avalanche** | `offense`, `control`, `defense` | `shield` | `damage`, `debuff`, `protection` | `pushed`, `prone` | AoE shield slam + AV gain |
+| **Supreme Barrage** | `offense` | `bow`, `thrown` | `damage` | — | Replaces Barrage, two extra attacks |
+| **Supreme Cleave** | `offense` | `axe`, `blade`, `mace`, `polearm` | `damage` | — | Replaces Cleave, expanded range |
+| **Supreme Disarm** | `control` | `axe`, `blade`, `brawling`, `mace`, `polearm` | `debuff` | `dazed` | Enhanced disarm |
+| **Supreme Feint** | `offense` | `blade`, `brawling`, `polearm` | `damage`, `debuff` | `marked` | Enhanced feint, bonus damage |
+
+---
+
+## Appendix C: Talent Audit
+
+All talents reviewed and tagged by skill. Each talent is tagged at its broadest scope across all ranks.
+
+### Fighting Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition | Weapon Category |
+| --- | --- | --- | --- | --- | --- |
+| **Art of Fighting** | `offense` | `passive` | `buff` | — | — |
+| **Axe Mastery** | `offense`, `control` | `quick-action` | `damage`, `debuff` | `bleeding` | `axe` |
+| **Blade Mastery** | `offense` | `free` | `damage`, `buff` | `marked` | `blade` |
+| **Defensive Dueling** | `defense` | `passive`, `quick-action` | `protection`, `debuff` | `marked` | `blade`, `brawling`, `polearm` |
+| **Disciplined Fighter** | `offense` | `free`, `quick-action` | `buff`, `damage` | — | — |
+| **Dual Wielder** | `offense`, `defense` | `passive` | `damage`, `protection` | — | — |
+| **Heavy Weapon Mastery** | `offense` | `passive` | `damage`, `buff` | — | `axe`, `mace`, `polearm` |
+| **Mace Mastery** | `offense` | `quick-action` | `damage`, `debuff` | `dazed` | `mace` |
+| **Martial Artist** | `offense`, `defense` | `passive`, `reaction` | `damage`, `buff` | — | `brawling` |
+| **Polearm Mastery** | `offense`, `defense` | `quick-action` | `damage`, `resistance` | `prone`, `pushed` | `polearm` |
+| **Protective Stance** | `defense`, `support` | `quick-action` | `protection`, `resistance` | — | `shield` |
+| **Pugilist** | `offense`, `defense` | `passive` | `damage`, `protection`, `healing` | `distracted` | `brawling` |
+| **Riposte** | `offense`, `control` | `reaction` | `damage`, `debuff` | `dazed` | — |
+| **Shield Mastery** | `defense` | `reaction` | `protection` | — | `shield` |
+
+### Archery Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition | Weapon Category |
+| --- | --- | --- | --- | --- | --- |
+| **Ammo Specialist** | `offense` | `passive` | `damage`, `buff` | — | `bow`, `crossbow` |
+| **Art of Archery** | `offense` | `passive` | `buff` | — | — |
+| **Crossbow Mastery** | `offense`, `control` | `quick-action` | `damage`, `debuff` | `stunned` | `crossbow` |
+| **Disciplined Archer** | `offense` | `free`, `quick-action` | `buff`, `damage` | — | — |
+| **Expert Slinger** | `offense` | `free` | `damage`, `movement` | — | `thrown` |
+| **Rapid Shot** | `offense` | `action` | `damage`, `debuff` | `marked` | `bow`, `crossbow`, `thrown` |
+| **Reflexive Shooter** | `offense`, `defense` | `reaction` | `damage`, `buff` | — | `bow`, `crossbow`, `thrown` |
+| **Sharpshooter** | `offense` | `passive` | `damage`, `buff`, `debuff` | `marked` | `bow`, `crossbow`, `thrown` |
+| **Strong Grip** | `offense` | `passive` | `damage`, `buff` | — | `bow`, `crossbow` |
+
+### Arcana Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Arcane Spell Knowledge** | `utility` | `passive` | `buff` | — |
+| **Battle Mage** | `offense`, `defense` | `quick-action` | `damage`, `protection` | — |
+| **Inexhaustible Mind** | `utility` | `downtime` | `buff` | — |
+| **Mana Shield** | `defense` | `passive` | `protection` | — |
+| **Master of Fundamentals** | `offense` | `free`, `reaction` | `damage`, `buff` | — |
+| **Spellblade** | `offense` | `action` | `damage` | — |
+| **Spellweaver** | `utility` | `passive` | `buff` | — |
+| **Wild Overload** | `offense`, `utility` | `free` | `buff`, `debuff` | — |
+
+### Mysticism Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Armor of the Faithful** | `defense` | `passive` | `protection`, `immunity` | `frightened`, `confused` |
+| **Communal Practices** | `support` | `free` | `buff` | — |
+| **Divine Favor** | `support` | `passive` | `buff` | — |
+| **Divine Rites** | `utility` | `downtime` | `buff` | — |
+| **Divine Sense** | `utility`, `defense` | `action` | `information`, `immunity` | `charmed`, `frightened`, `poisoned` |
+| **Elemental Adept** | `offense` | `free` | `damage`, `buff` | — |
+| **Master of Principles** | `offense` | `free`, `reaction` | `damage`, `buff` | — |
+| **Mystic Champion** | `offense` | `action` | `damage` | — |
+| **Mystical Spell Knowledge** | `utility` | `passive` | `buff` | — |
+| **Pact of Devotion** | `offense`, `defense`, `support`, `healing` | `passive`, `quick-action`, `action` | `damage`, `healing`, `buff`, `protection`, `resistance` | `stunned` |
+| **Shape Changer** | `offense`, `defense` | `passive` | `damage`, `protection`, `resistance`, `transformation` | — |
+
+### Athletics Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Athletic Movement** | `utility` | `free`, `quick-action` | `movement`, `buff` | — |
+| **Bulky** | `defense`, `utility` | `passive`, `quick-action` | `buff`, `movement` | — |
+| **Escape Artist** | `defense` | `quick-action` | `movement`, `resistance` | `grappled`, `prone`, `pushed` |
+| **Evasion** | `defense` | `quick-action` | `resistance`, `movement` | — |
+| **Fast Stride** | `offense`, `defense` | `quick-action` | `movement` | — |
+| **Grappler** | `control` | `action` | `debuff` | `grappled`, `restrained` |
+| **Light Armor Mastery** | `defense` | `reaction` | `protection`, `buff` | — |
+| **Stand your Ground** | `defense`, `control` | `quick-action` | `resistance`, `debuff` | `prone`, `pushed` |
+| **Supernatural Mobility** | `utility` | `passive` | `movement` | — |
+
+### Fortitude Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Adrenaline Rush** | `offense` | `passive` | `buff` | — |
+| **Battle Rage** | `offense`, `defense` | `free` | `buff`, `damage`, `resistance`, `protection` | — |
+| **Body of Bronze** | `defense` | `passive` | `protection`, `resistance`, `immunity` | `dazed`, `stunned` |
+| **Drunken Technique** | `defense`, `offense` | `passive`, `reaction` | `protection`, `debuff`, `buff` | `marked`, `poisoned` |
+| **Explorer's Tenacity** | `defense`, `utility` | `passive` | `buff`, `resistance` | — |
+| **Hard to Kill** | `defense` | `passive` | `resistance`, `healing` | — |
+| **Heavy Armor Mastery** | `defense` | `reaction` | `protection` | — |
+| **Juggernaut** | `offense`, `defense` | `passive` | `protection`, `damage` | — |
+| **Second Wind** | `healing` | `quick-action` | `healing` | — |
+| **Strong Mind** | `defense` | `free` | `resistance`, `immunity` | `frightened`, `charmed` |
+| **Tough Stomach** | `defense` | `quick-action` | `resistance` | `poisoned`, `frightened`, `dazed` |
+
+### Influence Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Born Haggler** | `utility` | `downtime` | `buff` | — |
+| **Fast Talking** | `support`, `utility` | `free` | `buff`, `debuff` | `dazed` |
+| **Inspire Ally** | `support` | `quick-action` | `buff`, `healing` | — |
+| **Insult to Injury** | `offense`, `control` | `quick-action` | `debuff`, `damage` | `distracted` |
+| **Leading Presence** | `support` | `passive` | `buff`, `damage` | `frightened` |
+| **Performer** | `support` | — | — | — |
+| **Presence of Conquest** | `control` | — | `debuff` | `stunned` |
+
+### Insight Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Empath** | `utility`, `control` | `quick-action` | `information`, `buff`, `debuff` | — |
+| **Foresight** | `defense`, `utility` | — | `information` | — |
+| **Intuitive Appraisal** | `utility`, `offense` | `quick-action` | `information`, `buff` | — |
+| **Piercing Look** | `offense`, `control` | `quick-action` | `buff`, `debuff` | — |
+| **Sense of Deduction** | `utility` | `free` | `information` | — |
+
+### Perception Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Blind Senses** | `defense`, `utility` | `action`, `passive` | `information`, `resistance` | `blinded` |
+| **Danger Sense** | `defense` | `passive` | `buff` | — |
+| **Dungeon Delver** | `utility` | `action` | `information`, `resistance` | — |
+| **Eagle Eye** | `utility`, `offense` | `quick-action` | `information`, `buff` | — |
+| **Identify Weakness** | `offense` | `quick-action` | `damage`, `information` | — |
+
+### Stealth Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Assassination** | `offense` | `passive` | `damage`, `buff` | — |
+| **Devious Tactics** | `control` | `quick-action` | `debuff` | `distracted`, `marked` |
+| **Hidden Strike** | `offense` | `quick-action` | `damage`, `debuff` | `stunned` |
+| **Leading the Way** | `support` | `passive` | `buff` | — |
+| **Roguish Wits** | `defense`, `utility` | `quick-action` | `buff`, `protection` | — |
+| **Sleight of Hand** | `utility` | `action` | `buff` | — |
+
+### Crafting Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Artisan** | `utility` | `downtime` | `buff` | — |
+| **Efficient Worker** | `utility` | `downtime` | `buff` | — |
+| **Maintenance** | `utility`, `support` | `downtime` | `buff` | — |
+| **Master Artisan** | `utility` | `downtime` | `buff` | — |
+| **Peak Performance** | `support` | `downtime` | `enhancement` | — |
+| **Quick Construction** | `utility` | `action` | `creation` | — |
+
+### Education Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Commander** | `support` | `quick-action` | `buff`, `damage`, `healing`, `movement` | — |
+| **Diplomat** | `utility`, `support` | `action` | `information`, `buff`, `debuff` | — |
+| **Eloquent Talker** | `support`, `control` | `free` | `buff`, `debuff` | `charmed` |
+| **General Education** | `utility` | `passive` | `buff` | — |
+| **Linguist** | `utility` | `passive` | `information` | — |
+| **Tactician** | `support` | `action` | `buff`, `damage`, `healing` | — |
+
+### Lore Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Channel Superstition** | `control` | `action` | `debuff` | `frightened` |
+| **Consult the Myths** | `utility`, `control` | `action` | `information`, `debuff` | `dazed` |
+| **Divine Scholar** | `utility` | `passive` | `buff` | — |
+| **Identify Artifact** | `utility` | `action` | `information` | — |
+| **Mage Hunter** | `offense`, `defense` | `reaction` | `debuff`, `protection` | — |
+| **Magical Sense** | `utility`, `defense` | `quick-action` | `information`, `protection` | — |
+
+### Nature Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Animal Companion** | `support`, `offense` | `passive` | `summoning`, `damage`, `buff` | — |
+| **Beast Lore** | `utility`, `control` | `action` | `information`, `debuff` | `charmed` |
+| **Expert Rider** | `utility`, `offense` | `passive` | `buff`, `damage` | — |
+| **Field Medic** | `healing` | `action` | `healing` | — |
+| **Herbalist** | `healing`, `utility` | — | `creation` | — |
+| **Knowledgeable Wanderer** | `utility` | `passive` | `buff` | — |
+| **Plant Lore** | `utility` | `free` | `information` | — |
+| **Poison Maker** | `offense`, `utility` | `action` | `creation` | `poisoned` |
+
+### Streetwise Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **I Know A Guy** | `utility` | `downtime` | `information` | — |
+| **Jack of All Trades** | `utility` | `free` | `buff` | — |
+| **Swashbuckler** | `offense`, `defense` | `passive` | `damage`, `buff`, `movement` | — |
+| **Thug Tactics** | `offense`, `support` | `passive` | `buff`, `debuff` | — |
+
+### Survival Talents
+
+| Talent | Role | Action Economy | Effect Type | Condition |
+| --- | --- | --- | --- | --- |
+| **Explorer of Nature** | `utility` | `free` | `buff` | — |
+| **Makeshift Artisan** | `utility`, `offense` | `action` | `creation`, `damage` | — |
+| **Monster Hunter** | `offense` | `quick-action` | `damage`, `information`, `debuff` | `stunned` |
+| **Relentless Tracker** | `utility` | `free` | `information` | — |
+| **Trap Maker** | `control`, `offense` | `action` | `damage`, `debuff`, `creation` | `prone`, `restrained` |
+| **Wilderness Expert** | `utility` | `downtime` | `creation`, `buff` | — |
+
+---
+
+## Appendix D: Audit Summary Statistics
+
+### Folk Abilities by Role
+
+| Role | Count | % |
+| --- | --- | --- |
+| `defense` | 12 | 43% |
+| `utility` | 12 | 43% |
+| `offense` | 5 | 18% |
+| `control` | 1 | 4% |
+| `support` | 0 | 0% |
+| `healing` | 0 | 0% |
+
+> Note: Abilities may have multiple roles. Percentages are relative to total abilities (28).
+
+### Folk Abilities by Action Economy
+
+| Action Economy | Count | % |
+| --- | --- | --- |
+| `passive` | 21 | 75% |
+| `free` | 2 | 7% |
+| `reaction` | 2 | 7% |
+| `action` | 2 | 7% |
+| `quick-action` | 0 | 0% |
+
+### Combat Arts by Role
+
+| Role | Count | % |
+| --- | --- | --- |
+| `offense` | 42 | 95% |
+| `control` | 23 | 52% |
+| `defense` | 4 | 9% |
+| `support` | 1 | 2% |
+
+### Most Referenced Conditions (Combat Arts)
+
+| Condition | Count |
+| --- | --- |
+| `prone` | 7 |
+| `dazed` | 7 |
+| `pushed` | 4 |
+| `stunned` | 4 |
+| `restrained` | 4 |
+| `staggered` | 3 |
+| `frightened` | 2 |
+| `bleeding` | 2 |
+| `marked` | 2 |
+| `grappled` | 2 |
+| `confused` | 1 |
+| `distracted` | 1 |
+
+### Talents by Primary Role
+
+| Role | Count |
+| --- | --- |
+| `offense` | 42 |
+| `defense` | 37 |
+| `utility` | 37 |
+| `support` | 16 |
+| `control` | 13 |
+| `healing` | 5 |
+
+### Talents by Action Economy
+
+| Action Economy | Count |
+| --- | --- |
+| `passive` | 41 |
+| `quick-action` | 36 |
+| `free` | 18 |
+| `action` | 16 |
+| `reaction` | 6 |
+| `downtime` | 10 |
+
+### Key Observations
+
+1. **Folk abilities are overwhelmingly passive.** 75% of folk abilities have no action cost. This is consistent with their design as innate, always-on traits.
+
+2. **Combat arts are almost universally offensive.** 95% of combat arts have an `offense` role, with `control` as the most common secondary role (52%). Very few serve `defense` or `support` — this is a deliberate design choice since combat arts are weapon techniques.
+
+3. **Talents are well-distributed across roles.** Offense, defense, and utility are roughly equal, with support and control as secondary. Healing talents are rare (only 5 across all skills), concentrated in Fortitude, Nature, and Mysticism.
+
+4. **Prone and dazed are the most common conditions in combat arts.** These conditions dominate because they represent the most common outcomes of weapon techniques — knockdowns and disorientation.
+
+5. **Quick-action economy is heavily used in talents.** 36 talents include quick-action abilities, making this the most common active timing after passive. This reflects the system's emphasis on tactical decisions during combat turns.
+
+6. **Several talents and folk abilities are incomplete.** The following are marked as stubs or placeholders: Performer, Presence of Conquest, Foresight, Supernatural Mobility, Herbalist, Master Artisan, Adrenaline Rush, and the Dogfolk/Satyr folk. Their tags are provisional.
