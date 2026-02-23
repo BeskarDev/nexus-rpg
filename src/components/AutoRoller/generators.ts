@@ -83,16 +83,13 @@ interface FamilyNameParts {
 	noun2: string
 }
 
-function applyFamilyPattern(
+function buildFamilyFromParts(
 	pattern: string,
-	names: FamilyNameParts[],
+	adjective1: string,
+	adjective2: string,
+	noun1: string,
+	noun2: string,
 ): string {
-	// Roll each column independently
-	const adjective1 = pickField(names, 'adjective1')
-	const adjective2 = pickField(names, 'adjective2')
-	const noun1 = pickField(names, 'noun1')
-	const noun2 = pickField(names, 'noun2')
-
 	const raw = pattern
 		.replace('[Adjective 1]', adjective1)
 		.replace('[Adjective 2]', adjective2)
@@ -102,7 +99,36 @@ function applyFamilyPattern(
 	return capitalize(raw.toLowerCase())
 }
 
-export function generateName(groupId: string, useGerman = false, useInWorld = false): string {
+function applyFamilyPatternDual(
+	pattern: string,
+	meaningNames: FamilyNameParts[],
+	inWorldNames: FamilyNameParts[],
+): { inWorld: string; meaning: string } {
+	// Roll each column independently, but use the same index for in-world and meaning
+	// so each in-world word has a matching translation
+	const adj1Idx = Math.floor(Math.random() * meaningNames.length)
+	const adj2Idx = Math.floor(Math.random() * meaningNames.length)
+	const noun1Idx = Math.floor(Math.random() * meaningNames.length)
+	const noun2Idx = Math.floor(Math.random() * meaningNames.length)
+
+	const meaning = buildFamilyFromParts(
+		pattern,
+		meaningNames[adj1Idx].adjective1,
+		meaningNames[adj2Idx].adjective2,
+		meaningNames[noun1Idx].noun1,
+		meaningNames[noun2Idx].noun2,
+	)
+	const inWorld = buildFamilyFromParts(
+		pattern,
+		inWorldNames[adj1Idx].adjective1,
+		inWorldNames[adj2Idx].adjective2,
+		inWorldNames[noun1Idx].noun1,
+		inWorldNames[noun2Idx].noun2,
+	)
+	return { inWorld, meaning }
+}
+
+export function generateName(groupId: string, useGerman = false): string {
 	const culture = nameData.cultures.find(
 		(c) => `${c.folk}-${c.culture}` === groupId,
 	)
@@ -112,16 +138,15 @@ export function generateName(groupId: string, useGerman = false, useInWorld = fa
 	const personalPattern = pick(nameData.namingPatterns)
 	const personalName = applyNamingPattern(personalPattern, culture.personalNames)
 
-	// Roll family name — each column independently
+	// Roll family name — always show in-world name with EN/DE meaning in parentheses
 	const familyPattern = pick(nameData.familyNamePatterns)
-	const familySource = useInWorld && culture.familyNamesInWorld
-		? culture.familyNamesInWorld
-		: useGerman && culture.familyNamesDE
-			? culture.familyNamesDE
-			: culture.familyNames
-	const familyName = applyFamilyPattern(familyPattern, familySource)
+	const meaningSource = useGerman && culture.familyNamesDE
+		? culture.familyNamesDE
+		: culture.familyNames
+	const inWorldSource = culture.familyNamesInWorld ?? culture.familyNames
+	const { inWorld, meaning } = applyFamilyPatternDual(familyPattern, meaningSource, inWorldSource)
 
-	return `${personalName} ${familyName}`
+	return `${personalName} ${inWorld} (${meaning})`
 }
 
 // ===== SPELLS =====

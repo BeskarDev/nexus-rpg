@@ -417,32 +417,38 @@ describe('AutoRoller Generators', () => {
 			}
 		})
 
+		it('should always include in-world name with meaning in parentheses', () => {
+			for (let i = 0; i < 10; i++) {
+				const result = generateName('Dwarf-Ghahar')
+				// Result format: "PersonalName InWorldFamily (Meaning)"
+				expect(result).toMatch(/\(.+\)$/)
+			}
+		})
+
 		it('should generate German family names when useGerman is true', () => {
 			for (let i = 0; i < 10; i++) {
 				const result = generateName('Dwarf-Ghahar', true)
 				expect(result).toBeTruthy()
-				expect(result.split(' ').length).toBeGreaterThanOrEqual(2)
+				// Format: "PersonalName InWorldFamily (Meaning)"
+				expect(result).toMatch(/\(.+\)$/)
 			}
 		})
 
-		it('should generate in-world family names when useInWorld is true', () => {
-			for (let i = 0; i < 10; i++) {
-				const result = generateName('Dwarf-Ghahar', false, true)
-				expect(result).toBeTruthy()
-				expect(result.split(' ').length).toBeGreaterThanOrEqual(2)
-			}
-		})
-
-		it('should produce different results between English and German', () => {
-			const enResults = new Set<string>()
-			const deResults = new Set<string>()
+		it('should produce different meanings between English and German', () => {
+			const enMeanings = new Set<string>()
+			const deMeanings = new Set<string>()
 			for (let i = 0; i < 50; i++) {
-				enResults.add(generateName('Dwarf-Ghahar', false).split(' ')[1])
-				deResults.add(generateName('Dwarf-Ghahar', true).split(' ')[1])
+				const enResult = generateName('Dwarf-Ghahar', false)
+				const deResult = generateName('Dwarf-Ghahar', true)
+				// Extract meaning from parentheses
+				const enMatch = enResult.match(/\((.+)\)$/)
+				const deMatch = deResult.match(/\((.+)\)$/)
+				if (enMatch) enMeanings.add(enMatch[1])
+				if (deMatch) deMeanings.add(deMatch[1])
 			}
-			// The sets should differ since German words are different
-			const enArray = [...enResults]
-			const deArray = [...deResults]
+			// The sets should differ since German words are different from English
+			const enArray = [...enMeanings]
+			const deArray = [...deMeanings]
 			const overlap = enArray.filter((n) => deArray.includes(n))
 			expect(overlap.length).toBeLessThan(enArray.length)
 		})
