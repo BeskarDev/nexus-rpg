@@ -4,6 +4,18 @@ import creatureData from './data/creatureData.json'
 import challengeData from './data/challengeData.json'
 import treasureData from './data/treasureData.json'
 
+// Type definitions for spell data
+interface SpellEntry {
+	form: string
+	adjective: string
+	noun: string
+}
+
+interface SpellSchool {
+	name: string
+	entries: SpellEntry[]
+}
+
 // Utility: pick random element from array
 function pick<T>(arr: T[]): T {
 	return arr[Math.floor(Math.random() * arr.length)]
@@ -105,18 +117,18 @@ export const spellGroups = [
 export function generateSpell(groupId: string): string {
 	const [type, schoolName] = groupId.split('-')
 
-	let school
+	let school: SpellSchool | undefined
 	if (schoolName === 'any') {
 		const list =
 			type === 'arcane'
 				? spellData.arcaneSchools
 				: spellData.mysticTraditions
-		school = pick(list)
+		school = pick(list) as SpellSchool
 	} else {
 		school =
 			type === 'arcane'
-				? spellData.arcaneSchools.find((s) => s.name === schoolName)
-				: spellData.mysticTraditions.find((s) => s.name === schoolName)
+				? (spellData.arcaneSchools.find((s) => s.name === schoolName) as SpellSchool | undefined)
+				: (spellData.mysticTraditions.find((s) => s.name === schoolName) as SpellSchool | undefined)
 	}
 
 	if (!school) return 'Unknown school'
