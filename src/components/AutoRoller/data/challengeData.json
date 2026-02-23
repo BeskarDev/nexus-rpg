@@ -1,0 +1,312 @@
+{
+  "puzzles": [
+    {
+      "puzzleType": "Logic",
+      "coreElement": "Numbered levers",
+      "interaction": "Pull/push",
+      "presentation": "Control panel",
+      "feedback": "Glyph glow",
+      "hints": "Symbols repeat"
+    },
+    {
+      "puzzleType": "Sequence",
+      "coreElement": "Colored runes",
+      "interaction": "Activate order",
+      "presentation": "Stone pillars",
+      "feedback": "Light cascade",
+      "hints": "Inscription pattern"
+    },
+    {
+      "puzzleType": "Wordplay",
+      "coreElement": "Ancient text",
+      "interaction": "Speak/inscribe",
+      "presentation": "Inscribed wall",
+      "feedback": "Echo resonance",
+      "hints": "Rhyme structure"
+    },
+    {
+      "puzzleType": "Spatial",
+      "coreElement": "Sliding tiles",
+      "interaction": "Move/rotate",
+      "presentation": "Floor mosaic",
+      "feedback": "Tile clicks",
+      "hints": "Arrow etchings"
+    },
+    {
+      "puzzleType": "Environmental",
+      "coreElement": "Pressure plates",
+      "interaction": "Step pattern",
+      "presentation": "Corridor floor",
+      "feedback": "Stone settles",
+      "hints": "Weight marks"
+    },
+    {
+      "puzzleType": "Lock/Key",
+      "coreElement": "Keyhole mechanism",
+      "interaction": "Insert/turn",
+      "presentation": "Ornate lock",
+      "feedback": "Tumblers click",
+      "hints": "Worn grooves"
+    },
+    {
+      "puzzleType": "Pattern Match",
+      "coreElement": "Gem arrangement",
+      "interaction": "Align/place",
+      "presentation": "Crystal pedestal",
+      "feedback": "Gems pulse",
+      "hints": "Color harmony"
+    },
+    {
+      "puzzleType": "Cipher",
+      "coreElement": "Encoded scroll",
+      "interaction": "Decode/translate",
+      "presentation": "Sealed parchment",
+      "feedback": "Script shimmer",
+      "hints": "Symbol key nearby"
+    },
+    {
+      "puzzleType": "Assembly",
+      "coreElement": "Artifact pieces",
+      "interaction": "Combine/fit",
+      "presentation": "Scattered fragments",
+      "feedback": "Pieces hum",
+      "hints": "Matching edges"
+    },
+    {
+      "puzzleType": "Observation",
+      "coreElement": "Hidden symbols",
+      "interaction": "Search/reveal",
+      "presentation": "Decorated chamber",
+      "feedback": "Shadows shift",
+      "hints": "Symmetry breaks"
+    },
+    {
+      "puzzleType": "Memory",
+      "coreElement": "Tonal sequence",
+      "interaction": "Recall/repeat",
+      "presentation": "Musical chimes",
+      "feedback": "Harmonic ring",
+      "hints": "Melody repeats"
+    },
+    {
+      "puzzleType": "Mechanical",
+      "coreElement": "Gears/switches",
+      "interaction": "Rotate/align",
+      "presentation": "Clockwork device",
+      "feedback": "Gears mesh",
+      "hints": "Alignment marks"
+    },
+    {
+      "puzzleType": "Light/Shadow",
+      "coreElement": "Lenses/prisms",
+      "interaction": "Reflect/direct",
+      "presentation": "Crystal array",
+      "feedback": "Beam focuses",
+      "hints": "Dust in light"
+    },
+    {
+      "puzzleType": "Balance",
+      "coreElement": "Weighted scales",
+      "interaction": "Place objects",
+      "presentation": "Twin pedestals",
+      "feedback": "Scale tips",
+      "hints": "Weight carvings"
+    },
+    {
+      "puzzleType": "Numeric",
+      "coreElement": "Calculation lock",
+      "interaction": "Enter code",
+      "presentation": "Rune dials",
+      "feedback": "Runes brighten",
+      "hints": "Tally scratches"
+    },
+    {
+      "puzzleType": "Riddle",
+      "coreElement": "Cryptic question",
+      "interaction": "Answer/solve",
+      "presentation": "Speaking statue",
+      "feedback": "Voice responds",
+      "hints": "Environmental clues"
+    },
+    {
+      "puzzleType": "Rhythm",
+      "coreElement": "Timed actions",
+      "interaction": "Match tempo",
+      "presentation": "Musical floor",
+      "feedback": "Tempo feedback",
+      "hints": "Beat markings"
+    },
+    {
+      "puzzleType": "Dilemma",
+      "coreElement": "Moral choice",
+      "interaction": "Offer/sacrifice",
+      "presentation": "Pillar altar",
+      "feedback": "Aura shifts",
+      "hints": "Pillar tales"
+    },
+    {
+      "puzzleType": "Spot-diff",
+      "coreElement": "Paired images",
+      "interaction": "Identify/point",
+      "presentation": "Twin murals",
+      "feedback": "Detail glows",
+      "hints": "Subtle shading"
+    },
+    {
+      "puzzleType": "Illusion",
+      "coreElement": "False paths",
+      "interaction": "Discern/touch",
+      "presentation": "Mirror chamber",
+      "feedback": "Reflection wavers",
+      "hints": "Truth marks"
+    }
+  ],
+  "traps": [
+    {
+      "hazardType": "Pitfall",
+      "presentation": "Floor grate",
+      "warning": "Draft",
+      "avoidance": "Jump over"
+    },
+    {
+      "hazardType": "Arrow volley",
+      "presentation": "Wall slits",
+      "warning": "Scratching wires",
+      "avoidance": "Dodge aside"
+    },
+    {
+      "hazardType": "Poison gas",
+      "presentation": "Sealed chamber",
+      "warning": "Musty smell",
+      "avoidance": "Hold breath"
+    },
+    {
+      "hazardType": "Collapsing roof",
+      "presentation": "Dripping ceiling",
+      "warning": "Creaking beams",
+      "avoidance": "Rush through"
+    },
+    {
+      "hazardType": "Tripwire",
+      "presentation": "Corridor beam",
+      "warning": "Faint click",
+      "avoidance": "Step aside"
+    },
+    {
+      "hazardType": "Swinging blade",
+      "presentation": "Door jamb",
+      "warning": "Rune glow",
+      "avoidance": "Cut wire"
+    },
+    {
+      "hazardType": "Sigil ward",
+      "presentation": "Floor mosaic",
+      "warning": "Hum",
+      "avoidance": "Silence rune"
+    },
+    {
+      "hazardType": "Flame jets",
+      "presentation": "Wall nozzles",
+      "warning": "Scorch mark",
+      "avoidance": "Use shield"
+    },
+    {
+      "hazardType": "Acid spray",
+      "presentation": "Ceiling vents",
+      "warning": "Dripping acid",
+      "avoidance": "Back away"
+    },
+    {
+      "hazardType": "Net snare",
+      "presentation": "Treasure chest",
+      "warning": "Glimmer",
+      "avoidance": "Pry lid"
+    },
+    {
+      "hazardType": "Electrified",
+      "presentation": "Stone floor",
+      "warning": "Buzzing wires",
+      "avoidance": "Insulate boots"
+    },
+    {
+      "hazardType": "Crushing walls",
+      "presentation": "Narrow passage",
+      "warning": "Dust falling",
+      "avoidance": "Brace shoulders"
+    }
+  ],
+  "combatScenes": [
+    {
+      "sceneType": "Ambush",
+      "terrain": "Dense cover",
+      "objective": "Secure flank",
+      "twist": "Reinforcements"
+    },
+    {
+      "sceneType": "Siege",
+      "terrain": "Fortified walls",
+      "objective": "Defend point",
+      "twist": "Timed trap"
+    },
+    {
+      "sceneType": "Duel",
+      "terrain": "Tight circle",
+      "objective": "Destroy object",
+      "twist": "Magic surge"
+    },
+    {
+      "sceneType": "Escort",
+      "terrain": "Linear path",
+      "objective": "Protect NPC",
+      "twist": "Darkness falls"
+    },
+    {
+      "sceneType": "Horde",
+      "terrain": "Wide choke",
+      "objective": "Delay enemy",
+      "twist": "Terrain shift"
+    },
+    {
+      "sceneType": "Stronghold",
+      "terrain": "Elevated ledge",
+      "objective": "Seize artifact",
+      "twist": "Collapsing"
+    },
+    {
+      "sceneType": "Skirmish",
+      "terrain": "Multi‑level",
+      "objective": "Capture banner",
+      "twist": "Ambush repeats"
+    },
+    {
+      "sceneType": "Gauntlet",
+      "terrain": "Obstacle course",
+      "objective": "Survive waves",
+      "twist": "Rising floor"
+    },
+    {
+      "sceneType": "Infiltration",
+      "terrain": "Shadowed zone",
+      "objective": "Steal intel",
+      "twist": "Alarm triggers"
+    },
+    {
+      "sceneType": "Rescue",
+      "terrain": "Confined vault",
+      "objective": "Free prisoners",
+      "twist": "Cursed foes"
+    },
+    {
+      "sceneType": "Assault",
+      "terrain": "Broken ground",
+      "objective": "Breach defenses",
+      "twist": "Flooding"
+    },
+    {
+      "sceneType": "Pursuit",
+      "terrain": "Moving terrain",
+      "objective": "Escape zone",
+      "twist": "Narrow span"
+    }
+  ]
+}

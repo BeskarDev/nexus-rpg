@@ -1,0 +1,2314 @@
+{
+  "types": [
+    "Beast",
+    "Magical Beast",
+    "Humanoid",
+    "Giant",
+    "Undead",
+    "Dragon",
+    "Elemental",
+    "Construct",
+    "Plant",
+    "Ooze",
+    "Aberration",
+    "Extraplanar"
+  ],
+  "typeDetails": {
+    "Beast": [
+      {
+        "shape": "Serpentine",
+        "headAttribute": "Enormous jaws",
+        "bodyAttribute": "Armored hide",
+        "adaption": "Night vision"
+      },
+      {
+        "shape": "Amphibian",
+        "headAttribute": "Compound eyes",
+        "bodyAttribute": "Camouflaged skin",
+        "adaption": "Fast sprinter"
+      },
+      {
+        "shape": "Insectoid",
+        "headAttribute": "Venomous fangs",
+        "bodyAttribute": "Thick fur",
+        "adaption": "Climber"
+      },
+      {
+        "shape": "Avian",
+        "headAttribute": "Flexible neck",
+        "bodyAttribute": "Barbed tail",
+        "adaption": "Swimmer"
+      },
+      {
+        "shape": "Aquatic",
+        "headAttribute": "Long tongue",
+        "bodyAttribute": "Gills",
+        "adaption": "Burrower"
+      },
+      {
+        "shape": "Burrowing",
+        "headAttribute": "Expanding throat",
+        "bodyAttribute": "Powerful forelimbs",
+        "adaption": "Pack hunter"
+      },
+      {
+        "shape": "Hooved",
+        "headAttribute": "Echolocation organs",
+        "bodyAttribute": "Muscular haunches",
+        "adaption": "Solitary predator"
+      },
+      {
+        "shape": "Reptilian",
+        "headAttribute": "Forked tongue",
+        "bodyAttribute": "Powerful limbs",
+        "adaption": "Scavenger"
+      },
+      {
+        "shape": "Beetle",
+        "headAttribute": "Double-pupiled eyes",
+        "bodyAttribute": "Ridged spine",
+        "adaption": "Poison-resistant"
+      },
+      {
+        "shape": "Crustacean",
+        "headAttribute": "Protruding tusks",
+        "bodyAttribute": "Chitinous shell",
+        "adaption": "Keen hearing"
+      },
+      {
+        "shape": "Ursine",
+        "headAttribute": "Powerful jaws",
+        "bodyAttribute": "Collapsible skeleton",
+        "adaption": "Tracker scent"
+      },
+      {
+        "shape": "Feline",
+        "headAttribute": "Sharp ears",
+        "bodyAttribute": "Flexible spine",
+        "adaption": "Silent movement"
+      },
+      {
+        "shape": "Canine",
+        "headAttribute": "Acute sense of smell",
+        "bodyAttribute": "Lean frame",
+        "adaption": "Sun basking"
+      },
+      {
+        "shape": "Simian",
+        "headAttribute": "Expressive face",
+        "bodyAttribute": "Retractable claws",
+        "adaption": "Cold-hardy"
+      },
+      {
+        "shape": "Rodent",
+        "headAttribute": "Whiskered snout",
+        "bodyAttribute": "Burrowing claws",
+        "adaption": "Territorial"
+      },
+      {
+        "shape": "Turtle",
+        "headAttribute": "Beak-like mouth",
+        "bodyAttribute": "Protective shell",
+        "adaption": "Long-lived"
+      },
+      {
+        "shape": "Bovine",
+        "headAttribute": "Large horns",
+        "bodyAttribute": "Webbed limbs",
+        "adaption": "Glider"
+      },
+      {
+        "shape": "Boar",
+        "headAttribute": "Tusked snout",
+        "bodyAttribute": "Extra joints",
+        "adaption": "Hibernator"
+      },
+      {
+        "shape": "Marsupial",
+        "headAttribute": "Pouched jaws",
+        "bodyAttribute": "Dense bones",
+        "adaption": "Nest builder"
+      },
+      {
+        "shape": "Camelid",
+        "headAttribute": "Long eyelashes",
+        "bodyAttribute": "Fat-storing hump",
+        "adaption": "Migratory"
+      }
+    ],
+    "Magical Beast": [
+      {
+        "shape": "Animalistic",
+        "headAttribute": "Eyeless head",
+        "bodyAttribute": "Shadowy pelt",
+        "adaption": "Fire breath"
+      },
+      {
+        "shape": "Winged",
+        "headAttribute": "Multiple eyes",
+        "bodyAttribute": "Too many legs",
+        "adaption": "Illusion aura"
+      },
+      {
+        "shape": "Hybrid",
+        "headAttribute": "Dual horns",
+        "bodyAttribute": "Shifting skin",
+        "adaption": "Vanishing into shadow"
+      },
+      {
+        "shape": "Biped",
+        "headAttribute": "Hollow eyes",
+        "bodyAttribute": "Cracking bones",
+        "adaption": "Telepathic scream"
+      },
+      {
+        "shape": "Levitating orb",
+        "headAttribute": "Floating eyes",
+        "bodyAttribute": "Mouth on stomach",
+        "adaption": "Spell mimicry"
+      },
+      {
+        "shape": "Amalgam form",
+        "headAttribute": "Fractured visage",
+        "bodyAttribute": "Bioluminescent veins",
+        "adaption": "Phase through matter"
+      },
+      {
+        "shape": "Tentacled",
+        "headAttribute": "Spherical mouth",
+        "bodyAttribute": "Transparent flesh",
+        "adaption": "Time dilation aura"
+      },
+      {
+        "shape": "Crystalline",
+        "headAttribute": "Prismatic facets",
+        "bodyAttribute": "Wings instead of arms",
+        "adaption": "Mana absorption"
+      },
+      {
+        "shape": "Armored",
+        "headAttribute": "Ironskin skull",
+        "bodyAttribute": "Gravity-defying bones",
+        "adaption": "Light distortion"
+      },
+      {
+        "shape": "Shadow-beast",
+        "headAttribute": "Spiraling antlers",
+        "bodyAttribute": "Smoky tendrils",
+        "adaption": "Magic nullification"
+      },
+      {
+        "shape": "Smoke-bodied",
+        "headAttribute": "Whispering visage",
+        "bodyAttribute": "Mirror scales",
+        "adaption": "Hex-blood touch"
+      },
+      {
+        "shape": "Feathered serpent",
+        "headAttribute": "Melting horns",
+        "bodyAttribute": "Feathered tail",
+        "adaption": "Enchanting song"
+      },
+      {
+        "shape": "Shell-enclosed",
+        "headAttribute": "Tongue of fire",
+        "bodyAttribute": "Flame-coated shell",
+        "adaption": "Etheric leap"
+      },
+      {
+        "shape": "Lycanthropic",
+        "headAttribute": "Wolfish maw",
+        "bodyAttribute": "Rootlike feet",
+        "adaption": "Mind control gaze"
+      },
+      {
+        "shape": "Polycephalic",
+        "headAttribute": "Jagged beaks",
+        "bodyAttribute": "Mouths over body",
+        "adaption": "Elemental affinity"
+      },
+      {
+        "shape": "Chimeric",
+        "headAttribute": "Fused faces",
+        "bodyAttribute": "Bleeding aura",
+        "adaption": "Curse-laden presence"
+      },
+      {
+        "shape": "Slime-bodied",
+        "headAttribute": "Featureless dome",
+        "bodyAttribute": "Glowing organs",
+        "adaption": "Warp reality briefly"
+      },
+      {
+        "shape": "Twisting form",
+        "headAttribute": "Mad grin",
+        "bodyAttribute": "Smoke-formed tail",
+        "adaption": "Immune to pain"
+      },
+      {
+        "shape": "Antlered predator",
+        "headAttribute": "Skeletal face",
+        "bodyAttribute": "Thorny pelt",
+        "adaption": "Fly by thought"
+      },
+      {
+        "shape": "Ethereal Mist",
+        "headAttribute": "Shifting eyes",
+        "bodyAttribute": "Swarm-body",
+        "adaption": "Control lesser creatures"
+      }
+    ],
+    "Undead": [
+      {
+        "shape": "Skeletal",
+        "headAttribute": "Hollow sockets",
+        "bodyAttribute": "Missing limbs",
+        "adaption": "Undying hunger"
+      },
+      {
+        "shape": "Mummified",
+        "headAttribute": "Wrapped jaw",
+        "bodyAttribute": "Rusted chains embedded",
+        "adaption": "Paralyzing touch"
+      },
+      {
+        "shape": "Shadowy humanoid",
+        "headAttribute": "Skull protrusions",
+        "bodyAttribute": "Emaciated",
+        "adaption": "Rot spread"
+      },
+      {
+        "shape": "Shadowy animal",
+        "headAttribute": "Smoky muzzle",
+        "bodyAttribute": "Jagged bone armor",
+        "adaption": "Blood siphon"
+      },
+      {
+        "shape": "Vampiric",
+        "headAttribute": "Dripping fangs",
+        "bodyAttribute": "Empty ribcage",
+        "adaption": "Scream of despair"
+      },
+      {
+        "shape": "Ghostly",
+        "headAttribute": "Glowing skull",
+        "bodyAttribute": "Extra arms",
+        "adaption": "Grave sense"
+      },
+      {
+        "shape": "Wight",
+        "headAttribute": "Mouth sewn shut",
+        "bodyAttribute": "Shambling",
+        "adaption": "Corpse mimicry"
+      },
+      {
+        "shape": "Ghoulish",
+        "headAttribute": "Hollow gaze",
+        "bodyAttribute": "Worm-filled flesh",
+        "adaption": "Bone weapon growth"
+      },
+      {
+        "shape": "Crawling mass",
+        "headAttribute": "Broken jaw",
+        "bodyAttribute": "Insect-ridden",
+        "adaption": "Carrion call"
+      },
+      {
+        "shape": "Lich",
+        "headAttribute": "Withered brow",
+        "bodyAttribute": "Long claws",
+        "adaption": "Poisoned breath"
+      },
+      {
+        "shape": "Half-formed corpse",
+        "headAttribute": "Bleeding eyes",
+        "bodyAttribute": "Glowing sockets",
+        "adaption": "Skin shedding"
+      },
+      {
+        "shape": "Skeletal animal",
+        "headAttribute": "Empty eye sockets",
+        "bodyAttribute": "Spiked spine",
+        "adaption": "Darkness affinity"
+      },
+      {
+        "shape": "Zombified",
+        "headAttribute": "Twisted grin",
+        "bodyAttribute": "Bloating",
+        "adaption": "Limb reattachment"
+      },
+      {
+        "shape": "Stitched-together",
+        "headAttribute": "Grinning skull",
+        "bodyAttribute": "Dust-leaking pores",
+        "adaption": "Fetid stench cloud"
+      },
+      {
+        "shape": "Corpse-pile",
+        "headAttribute": "Bulging eyes",
+        "bodyAttribute": "Necrotic aura",
+        "adaption": "Memory echo"
+      },
+      {
+        "shape": "Rot-dripping",
+        "headAttribute": "Blackened tongue",
+        "bodyAttribute": "Drowned",
+        "adaption": "Rise again once slain"
+      },
+      {
+        "shape": "Zombified animal",
+        "headAttribute": "Dripping eyes",
+        "bodyAttribute": "Missing body",
+        "adaption": "Shadow-blending"
+      },
+      {
+        "shape": "Wisp",
+        "headAttribute": "Lantern-eyed",
+        "bodyAttribute": "Ruptured organs",
+        "adaption": "Anti-light field"
+      },
+      {
+        "shape": "Hulking corpse",
+        "headAttribute": "Skull-faced",
+        "bodyAttribute": "Split skin",
+        "adaption": "Pain feast"
+      },
+      {
+        "shape": "Ashen revenant",
+        "headAttribute": "Charred skull",
+        "bodyAttribute": "Scorched fingers",
+        "adaption": "Death aura"
+      }
+    ],
+    "Giant": [
+      {
+        "shape": "Fomorian",
+        "headAttribute": "Twisted horn",
+        "bodyAttribute": "Multi-limbed",
+        "adaption": "Fire aura"
+      },
+      {
+        "shape": "Stone giant",
+        "headAttribute": "Granite brow",
+        "bodyAttribute": "Cracked skin",
+        "adaption": "Earthquake stomp"
+      },
+      {
+        "shape": "Horned",
+        "headAttribute": "Bull-like horns",
+        "bodyAttribute": "Thick hide",
+        "adaption": "Lava breath"
+      },
+      {
+        "shape": "Colossal",
+        "headAttribute": "Mountain-sized jaw",
+        "bodyAttribute": "Bone armor",
+        "adaption": "Frost shield"
+      },
+      {
+        "shape": "Ice giant",
+        "headAttribute": "Frost-covered beard",
+        "bodyAttribute": "Heavy limbs",
+        "adaption": "Lightning charge"
+      },
+      {
+        "shape": "Fire giant",
+        "headAttribute": "Veiny, embered skin",
+        "bodyAttribute": "Veiny skin",
+        "adaption": "Wind gust"
+      },
+      {
+        "shape": "Hill giant",
+        "headAttribute": "Fanged",
+        "bodyAttribute": "Rock-like fists",
+        "adaption": "Magma skin"
+      },
+      {
+        "shape": "Empyrian",
+        "headAttribute": "Jagged teeth",
+        "bodyAttribute": "Armored",
+        "adaption": "Storm call"
+      },
+      {
+        "shape": "Cloud Giant",
+        "headAttribute": "Wispy mane",
+        "bodyAttribute": "Scaled arms",
+        "adaption": "Ice shard barrage"
+      },
+      {
+        "shape": "Sea giant",
+        "headAttribute": "Multi-eyed",
+        "bodyAttribute": "Wood-like skin",
+        "adaption": "Thorn eruption"
+      },
+      {
+        "shape": "Ogre",
+        "headAttribute": "Thick skull",
+        "bodyAttribute": "Wide-footed",
+        "adaption": "Earth tremor"
+      },
+      {
+        "shape": "Ettin",
+        "headAttribute": "Dual brows",
+        "bodyAttribute": "Club-like hands",
+        "adaption": "Fireball throw"
+      },
+      {
+        "shape": "Troll",
+        "headAttribute": "Mossy growths",
+        "bodyAttribute": "Mossy patches",
+        "adaption": "Acid rain"
+      },
+      {
+        "shape": "Minotaur",
+        "headAttribute": "Two-headed",
+        "bodyAttribute": "Stone plates",
+        "adaption": "Gale force"
+      },
+      {
+        "shape": "Frostback",
+        "headAttribute": "Heavy jaws",
+        "bodyAttribute": "Long-armed",
+        "adaption": "Blizzard blast"
+      },
+      {
+        "shape": "Stormclaw",
+        "headAttribute": "Electrified mane",
+        "bodyAttribute": "Curved claws",
+        "adaption": "Electric surge"
+      },
+      {
+        "shape": "Volcan Behemoth",
+        "headAttribute": "Beast-headed",
+        "bodyAttribute": "Thick fur",
+        "adaption": "Volcanic heat"
+      },
+      {
+        "shape": "Duneclaw",
+        "headAttribute": "Sandy beard",
+        "bodyAttribute": "Bone spikes",
+        "adaption": "Sandstorm"
+      },
+      {
+        "shape": "Cyclops",
+        "headAttribute": "Single eye",
+        "bodyAttribute": "Winged",
+        "adaption": "Earth fissure"
+      },
+      {
+        "shape": "Crystal Titan",
+        "headAttribute": "Gemstone crown",
+        "bodyAttribute": "Crystalline growths",
+        "adaption": "Thunderclap"
+      }
+    ],
+    "Humanoid": [
+      {
+        "shape": "Elf",
+        "headAttribute": "Pointed ears",
+        "bodyAttribute": "Agile limbs",
+        "adaption": "Night vision"
+      },
+      {
+        "shape": "Dwarf",
+        "headAttribute": "Bushy beard",
+        "bodyAttribute": "Thick skin",
+        "adaption": "Keen senses"
+      },
+      {
+        "shape": "Gnome",
+        "headAttribute": "Short stature",
+        "bodyAttribute": "Hardened joints",
+        "adaption": "Endurance"
+      },
+      {
+        "shape": "Hune",
+        "headAttribute": "Aquatic goggles",
+        "bodyAttribute": "Webbed fingers",
+        "adaption": "Swimming ability"
+      },
+      {
+        "shape": "Orc",
+        "headAttribute": "Extra fingers",
+        "bodyAttribute": "Broad shoulders",
+        "adaption": "Climbing"
+      },
+      {
+        "shape": "Goblin",
+        "headAttribute": "Crooked snout",
+        "bodyAttribute": "Dense bones",
+        "adaption": "Burrowing"
+      },
+      {
+        "shape": "Human",
+        "headAttribute": "Bearded",
+        "bodyAttribute": "Retractable claws",
+        "adaption": "Stealth"
+      },
+      {
+        "shape": "Catfolk",
+        "headAttribute": "Long hair",
+        "bodyAttribute": "Nimble frame",
+        "adaption": "Cold resistance"
+      },
+      {
+        "shape": "Lizardfolk",
+        "headAttribute": "Scaled crest",
+        "bodyAttribute": "Hardened nails",
+        "adaption": "Camouflage"
+      },
+      {
+        "shape": "Minotaur",
+        "headAttribute": "Horned",
+        "bodyAttribute": "Toughened muscles",
+        "adaption": "Fast recovery"
+      },
+      {
+        "shape": "Jackalfolk",
+        "headAttribute": "Thick neck",
+        "bodyAttribute": "Lean limbs",
+        "adaption": "Enhanced hearing"
+      },
+      {
+        "shape": "Snakefolk",
+        "headAttribute": "Slitted eyes",
+        "bodyAttribute": "Lightweight feathers",
+        "adaption": "Gliding"
+      },
+      {
+        "shape": "Satyr",
+        "headAttribute": "Goat horns",
+        "bodyAttribute": "Smooth or rough scales",
+        "adaption": "Cold resistance"
+      },
+      {
+        "shape": "Gnoll",
+        "headAttribute": "Patchy fur",
+        "bodyAttribute": "Thick or patchy fur",
+        "adaption": "Heat retention"
+      },
+      {
+        "shape": "Changeling",
+        "headAttribute": "Wide-eyed",
+        "bodyAttribute": "Broad hands",
+        "adaption": "Heat tolerance"
+      },
+      {
+        "shape": "Seafolk",
+        "headAttribute": "Sharp teeth",
+        "bodyAttribute": "Long-limbed",
+        "adaption": "Poison resistance"
+      },
+      {
+        "shape": "Kobold",
+        "headAttribute": "Compound eyes",
+        "bodyAttribute": "Extra joints",
+        "adaption": "Jumping ability"
+      },
+      {
+        "shape": "Djinnborn",
+        "headAttribute": "Wild-haired",
+        "bodyAttribute": "Calloused feet",
+        "adaption": "Endurance in harsh terrain"
+      },
+      {
+        "shape": "Extraplanar",
+        "headAttribute": "Strong jaw",
+        "bodyAttribute": "Hunched",
+        "adaption": "Tracking"
+      },
+      {
+        "shape": "Fairy",
+        "headAttribute": "Masked",
+        "bodyAttribute": "Thick eyebrows",
+        "adaption": "Night stalking"
+      }
+    ],
+    "Dragon": [
+      {
+        "shape": "Serpentine",
+        "headAttribute": "Animal head",
+        "bodyAttribute": "Scaled, glossy skin",
+        "adaption": "Fire breath"
+      },
+      {
+        "shape": "Quadrupedal",
+        "headAttribute": "Reptilian jaws",
+        "bodyAttribute": "Thick armored plates",
+        "adaption": "Ice breath"
+      },
+      {
+        "shape": "Winged serpent",
+        "headAttribute": "Serpent fangs",
+        "bodyAttribute": "Sleek scales",
+        "adaption": "Lightning breath"
+      },
+      {
+        "shape": "Drake",
+        "headAttribute": "Horned snout",
+        "bodyAttribute": "Spiked tail",
+        "adaption": "Acid breath"
+      },
+      {
+        "shape": "Wyvern",
+        "headAttribute": "Reptilian gaze",
+        "bodyAttribute": "Floating wings",
+        "adaption": "Earthquake stomp"
+      },
+      {
+        "shape": "True dragon",
+        "headAttribute": "Multi-headed",
+        "bodyAttribute": "Feathered wings",
+        "adaption": "Wind gusts"
+      },
+      {
+        "shape": "Chimeric",
+        "headAttribute": "Glowing eyes",
+        "bodyAttribute": "Draconic pelt",
+        "adaption": "Poison mist"
+      },
+      {
+        "shape": "Cockatrice",
+        "headAttribute": "Fur mane",
+        "bodyAttribute": "Smooth scales",
+        "adaption": "Steam breath"
+      },
+      {
+        "shape": "Feathered drake",
+        "headAttribute": "Horned and crested",
+        "bodyAttribute": "Jagged scales",
+        "adaption": "Lava burst"
+      },
+      {
+        "shape": "Ground dragon",
+        "headAttribute": "Spiked frills",
+        "bodyAttribute": "Spiked tail",
+        "adaption": "Frost aura"
+      },
+      {
+        "shape": "Bipedal",
+        "headAttribute": "Elongated snout",
+        "bodyAttribute": "Metallic scales",
+        "adaption": "Thunderclap roar"
+      },
+      {
+        "shape": "Sea dragon",
+        "headAttribute": "Barnacle-encrusted snout",
+        "bodyAttribute": "Bioluminescent patches",
+        "adaption": "Acid spit"
+      },
+      {
+        "shape": "Wyrm",
+        "headAttribute": "Serpentine head",
+        "bodyAttribute": "Bone protrusions",
+        "adaption": "Sandstorm creation"
+      },
+      {
+        "shape": "Amphiptere",
+        "headAttribute": "Feathered crest",
+        "bodyAttribute": "Armored hide",
+        "adaption": "Lightning storm"
+      },
+      {
+        "shape": "Lindwurm",
+        "headAttribute": "Elongated crest",
+        "bodyAttribute": "Scaled wings",
+        "adaption": "Ice shards"
+      },
+      {
+        "shape": "Salamander",
+        "headAttribute": "Molten crest",
+        "bodyAttribute": "Long claws",
+        "adaption": "Magma flow"
+      },
+      {
+        "shape": "Hydra",
+        "headAttribute": "Regenerating jaws",
+        "bodyAttribute": "Barbed tail",
+        "adaption": "Earth tremor"
+      },
+      {
+        "shape": "Quetzalcoatl",
+        "headAttribute": "Feathered head",
+        "bodyAttribute": "Sleek metallic scales",
+        "adaption": "Wind slicing gusts"
+      },
+      {
+        "shape": "Dragon serpent",
+        "headAttribute": "Feathered crest",
+        "bodyAttribute": "Undulating body",
+        "adaption": "Blizzard creation"
+      },
+      {
+        "shape": "Magma Serpent",
+        "headAttribute": "Molten eyes",
+        "bodyAttribute": "Spiny ridges",
+        "adaption": "Volcanic eruption"
+      }
+    ],
+    "Elemental": [
+      {
+        "shape": "Amorphous",
+        "headAttribute": "Featureless visage",
+        "bodyAttribute": "Radiant core",
+        "adaption": "Fire manipulation"
+      },
+      {
+        "shape": "Humanoid",
+        "headAttribute": "Glowing eyes",
+        "bodyAttribute": "Air-wreathed tendrils",
+        "adaption": "Air control"
+      },
+      {
+        "shape": "Crystalline",
+        "headAttribute": "Prismatic crown",
+        "bodyAttribute": "Glass-like surface",
+        "adaption": "Earth tremors"
+      },
+      {
+        "shape": "Flickering wisp",
+        "headAttribute": "Flickering glow",
+        "bodyAttribute": "Ever-changing shape",
+        "adaption": "Heat aura"
+      },
+      {
+        "shape": "Vaporous mist",
+        "headAttribute": "Whispering vapors",
+        "bodyAttribute": "Insubstantial",
+        "adaption": "Water manipulation"
+      },
+      {
+        "shape": "Fiery imp",
+        "headAttribute": "Infernal grin",
+        "bodyAttribute": "Flickering flames",
+        "adaption": "Flame bursts"
+      },
+      {
+        "shape": "Molten ball",
+        "headAttribute": "Seething core",
+        "bodyAttribute": "Molten skin",
+        "adaption": "Lava flow"
+      },
+      {
+        "shape": "Dust cloud",
+        "headAttribute": "Swirling grit",
+        "bodyAttribute": "Gritty texture",
+        "adaption": "Sandstorms"
+      },
+      {
+        "shape": "Liquid metal",
+        "headAttribute": "Mercury visage",
+        "bodyAttribute": "Shimmering surface",
+        "adaption": "Metal bending"
+      },
+      {
+        "shape": "Spark elemental",
+        "headAttribute": "Arcing sparks",
+        "bodyAttribute": "Electric sparks",
+        "adaption": "Lightning bolts"
+      },
+      {
+        "shape": "Whirlwind form",
+        "headAttribute": "Gale eyes",
+        "bodyAttribute": "Invisible limbs",
+        "adaption": "Tornado gusts"
+      },
+      {
+        "shape": "Frost humanoid",
+        "headAttribute": "Ice-cold gaze",
+        "bodyAttribute": "Crystalline frost",
+        "adaption": "Ice shards"
+      },
+      {
+        "shape": "Water serpent",
+        "headAttribute": "Silvered snout",
+        "bodyAttribute": "Smooth flowing form",
+        "adaption": "Flood waves"
+      },
+      {
+        "shape": "Glowing orb",
+        "headAttribute": "Piercing light",
+        "bodyAttribute": "Pulsating light",
+        "adaption": "Energy blasts"
+      },
+      {
+        "shape": "Ice shard cluster",
+        "headAttribute": "Crystalline shard",
+        "bodyAttribute": "Razor sharp edges",
+        "adaption": "Freezing winds"
+      },
+      {
+        "shape": "Flame salamander",
+        "headAttribute": "Blazing crest",
+        "bodyAttribute": "Charred scales",
+        "adaption": "Fireballs"
+      },
+      {
+        "shape": "Sparkling sprite",
+        "headAttribute": "Glittering eyes",
+        "bodyAttribute": "Luminescent wings",
+        "adaption": "Light manipulation"
+      },
+      {
+        "shape": "Sand elemental",
+        "headAttribute": "Shifting dunes",
+        "bodyAttribute": "Grainy texture",
+        "adaption": "Blinding dust"
+      },
+      {
+        "shape": "Golem figure",
+        "headAttribute": "Stone helm",
+        "bodyAttribute": "Rock-hard skin",
+        "adaption": "Earthquakes"
+      },
+      {
+        "shape": "Djinn figure",
+        "headAttribute": "Ancient visage",
+        "bodyAttribute": "Ethereal robes",
+        "adaption": "Illusions"
+      }
+    ],
+    "Construct": [
+      {
+        "shape": "Humanoid",
+        "headAttribute": "",
+        "bodyAttribute": "Multi-limbed",
+        "adaption": "Earthquake stomp"
+      },
+      {
+        "shape": "Pillar",
+        "headAttribute": "",
+        "bodyAttribute": "Immobile",
+        "adaption": "Magnetic field"
+      },
+      {
+        "shape": "Chariot",
+        "headAttribute": "",
+        "bodyAttribute": "Wheeled",
+        "adaption": "Time manipulation"
+      },
+      {
+        "shape": "Aerial engine",
+        "headAttribute": "",
+        "bodyAttribute": "Winged",
+        "adaption": "Nature’s grasp"
+      },
+      {
+        "shape": "Iron Golem",
+        "headAttribute": "",
+        "bodyAttribute": "Metal",
+        "adaption": "Heat resistance"
+      },
+      {
+        "shape": "Obsidian construct",
+        "headAttribute": "",
+        "bodyAttribute": "Stone",
+        "adaption": "Light refraction"
+      },
+      {
+        "shape": "Clay sentinel",
+        "headAttribute": "",
+        "bodyAttribute": "Mud",
+        "adaption": "Lightning discharge"
+      },
+      {
+        "shape": "Statue",
+        "headAttribute": "",
+        "bodyAttribute": "Clay",
+        "adaption": "Earth tremors"
+      },
+      {
+        "shape": "Spinning blade",
+        "headAttribute": "",
+        "bodyAttribute": "Rotating",
+        "adaption": "Necrotic aura"
+      },
+      {
+        "shape": "Orb",
+        "headAttribute": "",
+        "bodyAttribute": "Metal jaw",
+        "adaption": "Shard burst"
+      },
+      {
+        "shape": "Wicker man",
+        "headAttribute": "",
+        "bodyAttribute": "Wooden",
+        "adaption": "Shadow cloak"
+      },
+      {
+        "shape": "Hydrahawk",
+        "headAttribute": "",
+        "bodyAttribute": "Multiple heads",
+        "adaption": "Electrical surge"
+      },
+      {
+        "shape": "Armory robot",
+        "headAttribute": "",
+        "bodyAttribute": "Weapon-mounted",
+        "adaption": "Fire resistance"
+      },
+      {
+        "shape": "Soul collector",
+        "headAttribute": "",
+        "bodyAttribute": "Ethereal core",
+        "adaption": "Life drain"
+      },
+      {
+        "shape": "Sanctified statue",
+        "headAttribute": "",
+        "bodyAttribute": "Blessed glyphs",
+        "adaption": "Holy light"
+      },
+      {
+        "shape": "Boulder behemoth",
+        "headAttribute": "",
+        "bodyAttribute": "Craggy exterior",
+        "adaption": "Rock slide"
+      },
+      {
+        "shape": "Animalistic",
+        "headAttribute": "",
+        "bodyAttribute": "Vocal resonance",
+        "adaption": "Sonic boom"
+      },
+      {
+        "shape": "Drone",
+        "headAttribute": "",
+        "bodyAttribute": "Corrosive nozzle",
+        "adaption": "Acid spray"
+      },
+      {
+        "shape": "Siege Weapon",
+        "headAttribute": "",
+        "bodyAttribute": "Heavy barrel",
+        "adaption": "Explosive bolts"
+      },
+      {
+        "shape": "Amalgam",
+        "headAttribute": "",
+        "bodyAttribute": "Rotating blades",
+        "adaption": "Cutting whirlwind"
+      }
+    ],
+    "Plant": [
+      {
+        "shape": "Vine-wrapped",
+        "headAttribute": "",
+        "bodyAttribute": "Thorny bark",
+        "adaption": "Poisonous sap"
+      },
+      {
+        "shape": "Tree-like",
+        "headAttribute": "",
+        "bodyAttribute": "Thick roots",
+        "adaption": "Earth control"
+      },
+      {
+        "shape": "Flower",
+        "headAttribute": "",
+        "bodyAttribute": "Fragrant petals",
+        "adaption": "Pollen cloud"
+      },
+      {
+        "shape": "Moss",
+        "headAttribute": "",
+        "bodyAttribute": "Spongy surface",
+        "adaption": "Moisture absorption"
+      },
+      {
+        "shape": "Spiked bush",
+        "headAttribute": "",
+        "bodyAttribute": "Needle-like leaves",
+        "adaption": "Acidic secretion"
+      },
+      {
+        "shape": "Mushroom",
+        "headAttribute": "",
+        "bodyAttribute": "Soft cap",
+        "adaption": "Spore release"
+      },
+      {
+        "shape": "Vine",
+        "headAttribute": "",
+        "bodyAttribute": "Flexible tendrils",
+        "adaption": "Entangling grasp"
+      },
+      {
+        "shape": "Leafy humanoid",
+        "headAttribute": "",
+        "bodyAttribute": "Camouflaged foliage",
+        "adaption": "Photosynthesis boost"
+      },
+      {
+        "shape": "Rooted beast",
+        "headAttribute": "",
+        "bodyAttribute": "Hardened bark armor",
+        "adaption": "Regeneration"
+      },
+      {
+        "shape": "Carnal blossoms",
+        "headAttribute": "",
+        "bodyAttribute": "Brightly colored flowers",
+        "adaption": "Hypnotic fragrance"
+      },
+      {
+        "shape": "Thorny stalk",
+        "headAttribute": "",
+        "bodyAttribute": "Barbed branches",
+        "adaption": "Defensive spikes"
+      },
+      {
+        "shape": "Carnivorous plant",
+        "headAttribute": "",
+        "bodyAttribute": "Large maw",
+        "adaption": "Acidic digestion"
+      },
+      {
+        "shape": "Grass",
+        "headAttribute": "",
+        "bodyAttribute": "Soft blades",
+        "adaption": "Wind manipulation"
+      },
+      {
+        "shape": "Roots",
+        "headAttribute": "",
+        "bodyAttribute": "Swollen base",
+        "adaption": "Energy storage"
+      },
+      {
+        "shape": "Reed",
+        "headAttribute": "",
+        "bodyAttribute": "Hollow stalk",
+        "adaption": "Water control"
+      },
+      {
+        "shape": "Leaf swarm",
+        "headAttribute": "",
+        "bodyAttribute": "Tiny fluttering leaves",
+        "adaption": "Blinding cloud"
+      },
+      {
+        "shape": "Seed pod",
+        "headAttribute": "",
+        "bodyAttribute": "Tough shell",
+        "adaption": "Explosive dispersal"
+      },
+      {
+        "shape": "Thorn jungle",
+        "headAttribute": "",
+        "bodyAttribute": "Tangled mass",
+        "adaption": "Entangling thorns"
+      },
+      {
+        "shape": "Luminescent bloom",
+        "headAttribute": "",
+        "bodyAttribute": "Glowing flowers",
+        "adaption": "Light emission"
+      },
+      {
+        "shape": "Venom vine",
+        "headAttribute": "",
+        "bodyAttribute": "Coiling fronds",
+        "adaption": "Poisonous touch"
+      }
+    ],
+    "Ooze": [
+      {
+        "shape": "Gelatinous blob",
+        "headAttribute": "",
+        "bodyAttribute": "Translucent flesh",
+        "adaption": "Acidic touch"
+      },
+      {
+        "shape": "Slithering mass",
+        "headAttribute": "",
+        "bodyAttribute": "Sticky surface",
+        "adaption": "Corrosive secretion"
+      },
+      {
+        "shape": "Pseudopod mound",
+        "headAttribute": "",
+        "bodyAttribute": "Multiple limbs",
+        "adaption": "Spell absorption"
+      },
+      {
+        "shape": "Shimmering pool",
+        "headAttribute": "",
+        "bodyAttribute": "Reflective surface",
+        "adaption": "Illusion creation"
+      },
+      {
+        "shape": "Bubbling slime",
+        "headAttribute": "",
+        "bodyAttribute": "Gas bubbles",
+        "adaption": "Teleportation burst"
+      },
+      {
+        "shape": "Colored glob",
+        "headAttribute": "",
+        "bodyAttribute": "Color shifting",
+        "adaption": "Magic nullification"
+      },
+      {
+        "shape": "Oozy tendrils",
+        "headAttribute": "",
+        "bodyAttribute": "Elastic limbs",
+        "adaption": "Levitation"
+      },
+      {
+        "shape": "Puddle",
+        "headAttribute": "",
+        "bodyAttribute": "Flowing edges",
+        "adaption": "Possession"
+      },
+      {
+        "shape": "Sticky mound",
+        "headAttribute": "",
+        "bodyAttribute": "Adhesive skin",
+        "adaption": "Healing properties"
+      },
+      {
+        "shape": "Mutating mass",
+        "headAttribute": "",
+        "bodyAttribute": "Constantly changing form",
+        "adaption": "Shape-shifting"
+      },
+      {
+        "shape": "Viscous blob",
+        "headAttribute": "",
+        "bodyAttribute": "Slow-moving",
+        "adaption": "Enchantment dispel"
+      },
+      {
+        "shape": "Ooze swarm",
+        "headAttribute": "",
+        "bodyAttribute": "Dividing parts",
+        "adaption": "Poison cloud"
+      },
+      {
+        "shape": "Acidic pool",
+        "headAttribute": "",
+        "bodyAttribute": "Bubbling surface",
+        "adaption": "Disintegration"
+      },
+      {
+        "shape": "Thick sludge",
+        "headAttribute": "",
+        "bodyAttribute": "Heavy mass",
+        "adaption": "Magical resistance"
+      },
+      {
+        "shape": "Fluorescent ooze",
+        "headAttribute": "",
+        "bodyAttribute": "Glowing spots",
+        "adaption": "Mana regeneration"
+      },
+      {
+        "shape": "Shifting puddle",
+        "headAttribute": "",
+        "bodyAttribute": "Formless edges",
+        "adaption": "Ethereal step"
+      },
+      {
+        "shape": "Glistening slime",
+        "headAttribute": "",
+        "bodyAttribute": "Slick and wet",
+        "adaption": "Magic disruption"
+      },
+      {
+        "shape": "Thick gel",
+        "headAttribute": "",
+        "bodyAttribute": "Gelatinous limbs",
+        "adaption": "Energy drain"
+      },
+      {
+        "shape": "Crystal ooze",
+        "headAttribute": "",
+        "bodyAttribute": "Sparkling inclusions",
+        "adaption": "Light manipulation"
+      },
+      {
+        "shape": "Dark slime",
+        "headAttribute": "",
+        "bodyAttribute": "Shadowy outline",
+        "adaption": "Fear aura"
+      }
+    ],
+    "Aberration": [
+      {
+        "shape": "Tentacled",
+        "headAttribute": "Multiple eyes",
+        "bodyAttribute": "Swarm-shaped",
+        "adaption": "Mind control"
+      },
+      {
+        "shape": "Insectoid",
+        "headAttribute": "Chitinous mandibles",
+        "bodyAttribute": "Chitinous plates",
+        "adaption": "Psychic scream"
+      },
+      {
+        "shape": "Multi-limbed",
+        "headAttribute": "Jagged horns",
+        "bodyAttribute": "Elongated fingers",
+        "adaption": "Reality warp"
+      },
+      {
+        "shape": "Amorphous",
+        "headAttribute": "Dripping maw",
+        "bodyAttribute": "Shifting form",
+        "adaption": "Telepathy"
+      },
+      {
+        "shape": "Nightmare",
+        "headAttribute": "Eyeless",
+        "bodyAttribute": "Smooth skin",
+        "adaption": "Aura of madness"
+      },
+      {
+        "shape": "Gaping maw",
+        "headAttribute": "Rows of teeth",
+        "bodyAttribute": "Bizarre limbs",
+        "adaption": "Paralysis touch"
+      },
+      {
+        "shape": "Dreadstalker",
+        "headAttribute": "Hollow gaze",
+        "bodyAttribute": "Barbed tail",
+        "adaption": "Possession"
+      },
+      {
+        "shape": "Prism horror",
+        "headAttribute": "Facet eyes",
+        "bodyAttribute": "Crystalline growths",
+        "adaption": "Hallucination cloud"
+      },
+      {
+        "shape": "Spidernoid",
+        "headAttribute": "Mandible mask",
+        "bodyAttribute": "Extra joints",
+        "adaption": "Time distortion"
+      },
+      {
+        "shape": "Blobby",
+        "headAttribute": "Multiple heads",
+        "bodyAttribute": "Flickering colors",
+        "adaption": "Dimensional rift"
+      },
+      {
+        "shape": "Floating Eye",
+        "headAttribute": "Tentacle beard",
+        "bodyAttribute": "Shadowy",
+        "adaption": "Gravity manipulation"
+      },
+      {
+        "shape": "Gazewraith",
+        "headAttribute": "Many-eyed",
+        "bodyAttribute": "Smoky form",
+        "adaption": "Invisibility"
+      },
+      {
+        "shape": "Spineshrieker",
+        "headAttribute": "Crested skull",
+        "bodyAttribute": "Jagged spines",
+        "adaption": "Mind reading"
+      },
+      {
+        "shape": "Twisted fiend",
+        "headAttribute": "Displaced mouth",
+        "bodyAttribute": "Confusing anatomy",
+        "adaption": "Confusion aura"
+      },
+      {
+        "shape": "Goo aberrant",
+        "headAttribute": "Oozing maw",
+        "bodyAttribute": "Elastic skin",
+        "adaption": "Phasing"
+      },
+      {
+        "shape": "Void harbinger",
+        "headAttribute": "Glowing eyes",
+        "bodyAttribute": "Winged",
+        "adaption": "Energy drain"
+      },
+      {
+        "shape": "Slime priest",
+        "headAttribute": "Tentacle-faced",
+        "bodyAttribute": "Slime-covered",
+        "adaption": "Poison cloud"
+      },
+      {
+        "shape": "Writhling",
+        "headAttribute": "Skull cluster",
+        "bodyAttribute": "Twisted limbs",
+        "adaption": "Fear aura"
+      },
+      {
+        "shape": "Ridge specter",
+        "headAttribute": "Hollow horns",
+        "bodyAttribute": "Bony ridges",
+        "adaption": "Curse infliction"
+      },
+      {
+        "shape": "Stitch horror",
+        "headAttribute": "Asymmetrical visage",
+        "bodyAttribute": "Patchwork flesh",
+        "adaption": "Warp reality"
+      }
+    ],
+    "Extraplanar": [
+      {
+        "shape": "Radiant",
+        "headAttribute": "Halo of light",
+        "bodyAttribute": "Glowing skin",
+        "adaption": "Holy aura"
+      },
+      {
+        "shape": "Shadowy",
+        "headAttribute": "Smoky visage",
+        "bodyAttribute": "Flickering limbs",
+        "adaption": "Invisibility"
+      },
+      {
+        "shape": "Silhouette",
+        "headAttribute": "Glowing eyes",
+        "bodyAttribute": "Shadowy silhouette",
+        "adaption": "Fire manipulation"
+      },
+      {
+        "shape": "Angelic",
+        "headAttribute": "Seraphic crown",
+        "bodyAttribute": "Feathery wings",
+        "adaption": "Flight"
+      },
+      {
+        "shape": "Fiery",
+        "headAttribute": "Burning mane",
+        "bodyAttribute": "Burning core",
+        "adaption": "Hellfire breath"
+      },
+      {
+        "shape": "Misty",
+        "headAttribute": "Wispy gaze",
+        "bodyAttribute": "Transparent skin",
+        "adaption": "Intangibility"
+      },
+      {
+        "shape": "Demonic",
+        "headAttribute": "Jagged horns",
+        "bodyAttribute": "Fiery aura",
+        "adaption": "Fear inducement"
+      },
+      {
+        "shape": "Fey",
+        "headAttribute": "Sparkling eyes",
+        "bodyAttribute": "Floral adornments",
+        "adaption": "Glamour illusion"
+      },
+      {
+        "shape": "Celestial",
+        "headAttribute": "Shining helm",
+        "bodyAttribute": "Shining armor",
+        "adaption": "Healing touch"
+      },
+      {
+        "shape": "Possessor shade",
+        "headAttribute": "Soul-sucking mouth",
+        "bodyAttribute": "Smoky tendrils",
+        "adaption": "Possession"
+      },
+      {
+        "shape": "Orb",
+        "headAttribute": "Glinting facets",
+        "bodyAttribute": "Radiant aura",
+        "adaption": "Light burst"
+      },
+      {
+        "shape": "Devilish",
+        "headAttribute": "Smoldering glare",
+        "bodyAttribute": "Shadowy cloak",
+        "adaption": "Teleportation"
+      },
+      {
+        "shape": "Impish",
+        "headAttribute": "Mischievous grin",
+        "bodyAttribute": "Barbed tail",
+        "adaption": "Curse infliction"
+      },
+      {
+        "shape": "Guardian spirit",
+        "headAttribute": "Halo of light",
+        "bodyAttribute": "Ethereal armor",
+        "adaption": "Protective shield"
+      },
+      {
+        "shape": "Fey trickster",
+        "headAttribute": "Shifting features",
+        "bodyAttribute": "Flickering form",
+        "adaption": "Confusion aura"
+      },
+      {
+        "shape": "Fiend",
+        "headAttribute": "Burning eyes",
+        "bodyAttribute": "Cloven hooves",
+        "adaption": "Summon lesser demons"
+      },
+      {
+        "shape": "Seraph",
+        "headAttribute": "Glorious visage",
+        "bodyAttribute": "Radiant wings",
+        "adaption": "Divine judgment"
+      },
+      {
+        "shape": "Death weaver",
+        "headAttribute": "Hollow eyes",
+        "bodyAttribute": "Ragged cloak",
+        "adaption": "Life drain"
+      },
+      {
+        "shape": "Elemental nexus",
+        "headAttribute": "Core eye",
+        "bodyAttribute": "Glowing elemental core",
+        "adaption": "Elemental control"
+      },
+      {
+        "shape": "Shadow overlord",
+        "headAttribute": "Eyes of void",
+        "bodyAttribute": "Cloaked in shadow",
+        "adaption": "Mind domination"
+      }
+    ]
+  },
+  "personality": [
+    {
+      "foodMethod": "Ambush predator",
+      "reproduction": "Egg layers",
+      "socialStructure": "Solitary",
+      "behavior": "Territorial"
+    },
+    {
+      "foodMethod": "Grazing herbivore",
+      "reproduction": "Live birth",
+      "socialStructure": "Monogamous pairs",
+      "behavior": "Migratory"
+    },
+    {
+      "foodMethod": "Scavenger",
+      "reproduction": "Budding/cloning",
+      "socialStructure": "Pack/herd",
+      "behavior": "Nocturnal"
+    },
+    {
+      "foodMethod": "Filter feeder",
+      "reproduction": "Spore dispersal",
+      "socialStructure": "Hive mind",
+      "behavior": "Diurnal"
+    },
+    {
+      "foodMethod": "Symbiotic partner",
+      "reproduction": "Sexual with ritual mating",
+      "socialStructure": "Clan/tribe",
+      "behavior": "Aggressive"
+    },
+    {
+      "foodMethod": "Parasite",
+      "reproduction": "Hermaphroditic",
+      "socialStructure": "Matriarchal",
+      "behavior": "Defensive"
+    },
+    {
+      "foodMethod": "Hunter-pack",
+      "reproduction": "Parthenogenesis",
+      "socialStructure": "Patriarchal",
+      "behavior": "Cunning"
+    },
+    {
+      "foodMethod": "Opportunistic omnivore",
+      "reproduction": "Nest guardians",
+      "socialStructure": "Caste system",
+      "behavior": "Curious"
+    },
+    {
+      "foodMethod": "Trap setter",
+      "reproduction": "External fertilization",
+      "socialStructure": "Loose alliances",
+      "behavior": "Protective of young"
+    },
+    {
+      "foodMethod": "Photosynthetic",
+      "reproduction": "Internal fertilization",
+      "socialStructure": "Nomadic groups",
+      "behavior": "Nomadic"
+    },
+    {
+      "foodMethod": "Saprophytic (decay)",
+      "reproduction": "Brood parasitism",
+      "socialStructure": "Symbiotic communities",
+      "behavior": "Ritualistic"
+    },
+    {
+      "foodMethod": "Cannibal",
+      "reproduction": "Swarm spawning",
+      "socialStructure": "Servitude (master-servant)",
+      "behavior": "Ambush predator"
+    }
+  ],
+  "physicalAttack": [
+    {
+      "bodyPart": "Claws",
+      "attackMode": "Slash"
+    },
+    {
+      "bodyPart": "Fangs",
+      "attackMode": "Bite"
+    },
+    {
+      "bodyPart": "Horns",
+      "attackMode": "Gore"
+    },
+    {
+      "bodyPart": "Tail",
+      "attackMode": "Whip"
+    },
+    {
+      "bodyPart": "Pincers",
+      "attackMode": "Crush"
+    },
+    {
+      "bodyPart": "Hooves",
+      "attackMode": "Stomp"
+    },
+    {
+      "bodyPart": "Forelimbs",
+      "attackMode": "Swipe"
+    },
+    {
+      "bodyPart": "Fists",
+      "attackMode": "Punch"
+    },
+    {
+      "bodyPart": "Tentacles",
+      "attackMode": "Grab"
+    },
+    {
+      "bodyPart": "Spikes",
+      "attackMode": "Impale"
+    },
+    {
+      "bodyPart": "Beak",
+      "attackMode": "Peck"
+    },
+    {
+      "bodyPart": "Mandibles",
+      "attackMode": "Clamp"
+    },
+    {
+      "bodyPart": "Wings",
+      "attackMode": "Buffeting"
+    },
+    {
+      "bodyPart": "Teeth",
+      "attackMode": "Tear"
+    },
+    {
+      "bodyPart": "Tail club",
+      "attackMode": "Bash"
+    },
+    {
+      "bodyPart": "Claws (rear limbs)",
+      "attackMode": "Kick"
+    },
+    {
+      "bodyPart": "Jaw",
+      "attackMode": "Crush"
+    },
+    {
+      "bodyPart": "Stinger",
+      "attackMode": "Strike"
+    },
+    {
+      "bodyPart": "Quills",
+      "attackMode": "Rake"
+    },
+    {
+      "bodyPart": "Antennae",
+      "attackMode": "Jab"
+    }
+  ],
+  "specialAttack": [
+    {
+      "deliveryMethod": "Breath",
+      "attackType": "Acid"
+    },
+    {
+      "deliveryMethod": "Gaze",
+      "attackType": "Fire"
+    },
+    {
+      "deliveryMethod": "Touch",
+      "attackType": "Cold"
+    },
+    {
+      "deliveryMethod": "Spray",
+      "attackType": "Lightning"
+    },
+    {
+      "deliveryMethod": "Pulse",
+      "attackType": "Necrotic"
+    },
+    {
+      "deliveryMethod": "Beam",
+      "attackType": "Radiant"
+    },
+    {
+      "deliveryMethod": "Screech",
+      "attackType": "Psychic"
+    },
+    {
+      "deliveryMethod": "Howl",
+      "attackType": "Thunder"
+    },
+    {
+      "deliveryMethod": "Spit",
+      "attackType": "Poison"
+    },
+    {
+      "deliveryMethod": "Cloud",
+      "attackType": "Sleep"
+    },
+    {
+      "deliveryMethod": "Trail",
+      "attackType": "Paralysis"
+    },
+    {
+      "deliveryMethod": "Glance",
+      "attackType": "Confusion"
+    },
+    {
+      "deliveryMethod": "Stare",
+      "attackType": "Fear"
+    },
+    {
+      "deliveryMethod": "Chant",
+      "attackType": "Charm"
+    },
+    {
+      "deliveryMethod": "Mark",
+      "attackType": "Curse"
+    },
+    {
+      "deliveryMethod": "Slam",
+      "attackType": "Force"
+    },
+    {
+      "deliveryMethod": "Explosion",
+      "attackType": "Disintegration"
+    },
+    {
+      "deliveryMethod": "Wave",
+      "attackType": "Blindness"
+    },
+    {
+      "deliveryMethod": "Ripple",
+      "attackType": "Slowness"
+    },
+    {
+      "deliveryMethod": "Whirl",
+      "attackType": "Banishing"
+    }
+  ],
+  "specialDefense": [
+    {
+      "defenseMethod": "Resistance",
+      "defenseType": "Harmful energy"
+    },
+    {
+      "defenseMethod": "Immunity",
+      "defenseType": "Fear"
+    },
+    {
+      "defenseMethod": "Absorption",
+      "defenseType": "Magical effects"
+    },
+    {
+      "defenseMethod": "Reflection",
+      "defenseType": "Psychic"
+    },
+    {
+      "defenseMethod": "Redirection",
+      "defenseType": "Ranged attacks"
+    },
+    {
+      "defenseMethod": "Regeneration",
+      "defenseType": "Physical damage"
+    },
+    {
+      "defenseMethod": "Dampening",
+      "defenseType": "Vibrations"
+    },
+    {
+      "defenseMethod": "Dissolution",
+      "defenseType": "Cloud"
+    },
+    {
+      "defenseMethod": "Delay",
+      "defenseType": "Darkness"
+    },
+    {
+      "defenseMethod": "Dispersal",
+      "defenseType": "Charm"
+    },
+    {
+      "defenseMethod": "Shroud",
+      "defenseType": "Detection"
+    },
+    {
+      "defenseMethod": "Veil",
+      "defenseType": "Divination"
+    },
+    {
+      "defenseMethod": "Anchoring",
+      "defenseType": "Teleportation"
+    },
+    {
+      "defenseMethod": "Grounding",
+      "defenseType": "Displacement"
+    },
+    {
+      "defenseMethod": "Negation",
+      "defenseType": "Spellcasting"
+    },
+    {
+      "defenseMethod": "Obscuration",
+      "defenseType": "Light"
+    },
+    {
+      "defenseMethod": "Phase Shift",
+      "defenseType": "Mundane attacks"
+    },
+    {
+      "defenseMethod": "Fortification",
+      "defenseType": "Sight"
+    },
+    {
+      "defenseMethod": "Null Field",
+      "defenseType": "Supernatural abilities"
+    },
+    {
+      "defenseMethod": "Shielding",
+      "defenseType": "Afflictions"
+    }
+  ],
+  "specialAbilities": [
+    {
+      "trigger": "On touch",
+      "action": "Move",
+      "subject": "Shadow"
+    },
+    {
+      "trigger": "On attack",
+      "action": "Transform",
+      "subject": "Light"
+    },
+    {
+      "trigger": "On being seen",
+      "action": "Sense",
+      "subject": "Emotion"
+    },
+    {
+      "trigger": "On command",
+      "action": "Communicate",
+      "subject": "Ice"
+    },
+    {
+      "trigger": "At rest",
+      "action": "Hide",
+      "subject": "Stone"
+    },
+    {
+      "trigger": "When alone",
+      "action": "Heal",
+      "subject": "Wind"
+    },
+    {
+      "trigger": "In darkness",
+      "action": "Shift",
+      "subject": "Location"
+    },
+    {
+      "trigger": "When threatened",
+      "action": "Float",
+      "subject": "Body"
+    },
+    {
+      "trigger": "On contact",
+      "action": "Reshape",
+      "subject": "Terrain"
+    },
+    {
+      "trigger": "When moving",
+      "action": "Reveal",
+      "subject": "Secrets"
+    },
+    {
+      "trigger": "When idle",
+      "action": "Illuminate",
+      "subject": "Aura"
+    },
+    {
+      "trigger": "When falling",
+      "action": "Leap",
+      "subject": "Distance"
+    },
+    {
+      "trigger": "When silent",
+      "action": "Phase",
+      "subject": "Walls"
+    },
+    {
+      "trigger": "On focus",
+      "action": "Heighten",
+      "subject": "Senses"
+    },
+    {
+      "trigger": "When injured",
+      "action": "Project",
+      "subject": "Image"
+    },
+    {
+      "trigger": "When near death",
+      "action": "Store",
+      "subject": "Memory"
+    },
+    {
+      "trigger": "On eye contact",
+      "action": "Influence",
+      "subject": "Mind"
+    },
+    {
+      "trigger": "When near allies",
+      "action": "Share",
+      "subject": "Thought"
+    },
+    {
+      "trigger": "On specific terrain",
+      "action": "Create",
+      "subject": "Illusion"
+    },
+    {
+      "trigger": "At dawn or dusk",
+      "action": "Split",
+      "subject": "Self"
+    }
+  ],
+  "harvesting": {
+    "food": [
+      {
+        "item": "Marrow",
+        "preparation": "Bone-seared",
+        "effect": "Strength enhancement"
+      },
+      {
+        "item": "Liver",
+        "preparation": "Herb-kissed roast",
+        "effect": "Vitality boost"
+      },
+      {
+        "item": "Heart",
+        "preparation": "Spiced braise",
+        "effect": "Courage boost"
+      },
+      {
+        "item": "Brain",
+        "preparation": "Honey-glazed",
+        "effect": "Mental clarity"
+      },
+      {
+        "item": "Tongue",
+        "preparation": "Salt-cider stew",
+        "effect": "Persuasive speech"
+      },
+      {
+        "item": "Eyes",
+        "preparation": "Vinegar-pickled",
+        "effect": "Sharp vision"
+      },
+      {
+        "item": "Tenderloin",
+        "preparation": "Flame-seared",
+        "effect": "Rapid healing"
+      },
+      {
+        "item": "Blood",
+        "preparation": "Berry-infused",
+        "effect": "Adrenal surge"
+      },
+      {
+        "item": "Ears",
+        "preparation": "Smoke-and-salt",
+        "effect": "Poison immunity"
+      },
+      {
+        "item": "Innards",
+        "preparation": "Citrus-curried",
+        "effect": "Toxin purge"
+      },
+      {
+        "item": "Meat",
+        "preparation": "Honey-smoked",
+        "effect": "Energy sustain"
+      },
+      {
+        "item": "Bone gelatin",
+        "preparation": "Spiced reduction",
+        "effect": "Flexible joints"
+      },
+      {
+        "item": "Fat",
+        "preparation": "Rendered crisp",
+        "effect": "Cold resistance"
+      },
+      {
+        "item": "Larynx",
+        "preparation": "Smoke and salt",
+        "effect": "Loud voice"
+      },
+      {
+        "item": "Kidney",
+        "preparation": "Salt cure",
+        "effect": "Thirst resistance"
+      },
+      {
+        "item": "Thymus",
+        "preparation": "Slow braise",
+        "effect": "Disease immunity"
+      },
+      {
+        "item": "Pancreas",
+        "preparation": "Spice roast",
+        "effect": "Sugar balance"
+      },
+      {
+        "item": "Skin",
+        "preparation": "Spiced crackle",
+        "effect": "Heat resistance"
+      },
+      {
+        "item": "Nerves",
+        "preparation": "Quick dry",
+        "effect": "Long satiety"
+      },
+      {
+        "item": "Spinal fluid",
+        "preparation": "Simmered broth",
+        "effect": "Steady nerves"
+      }
+    ],
+    "trophy": [
+      {
+        "item": "Skull",
+        "attribute": "Polished",
+        "effect": "Wise aura"
+      },
+      {
+        "item": "Antlers",
+        "attribute": "Gnarled",
+        "effect": "Hunting luck"
+      },
+      {
+        "item": "Horns",
+        "attribute": "Lustrous",
+        "effect": "Status symbol"
+      },
+      {
+        "item": "Tusks",
+        "attribute": "Curved",
+        "effect": "Intimidation"
+      },
+      {
+        "item": "Claws",
+        "attribute": "Sharp",
+        "effect": "Hunter’s pride"
+      },
+      {
+        "item": "Fangs",
+        "attribute": "Gleaming",
+        "effect": "Fearsome look"
+      },
+      {
+        "item": "Pelt",
+        "attribute": "Lush",
+        "effect": "Warm comfort"
+      },
+      {
+        "item": "Feathers",
+        "attribute": "Iridescent",
+        "effect": "Graceful charm"
+      },
+      {
+        "item": "Scales",
+        "attribute": "Shimmering",
+        "effect": "Defensive omen"
+      },
+      {
+        "item": "Tail",
+        "attribute": "Barbed",
+        "effect": "Agility emblem"
+      },
+      {
+        "item": "Mane",
+        "attribute": "Silky",
+        "effect": "Regal presence"
+      },
+      {
+        "item": "Beak",
+        "attribute": "Curved",
+        "effect": "Keen reminder"
+      },
+      {
+        "item": "Carapace",
+        "attribute": "Glossy",
+        "effect": "Resilient badge"
+      },
+      {
+        "item": "Wing membrane",
+        "attribute": "Translucent",
+        "effect": "Freedom symbol"
+      },
+      {
+        "item": "Spine ridge",
+        "attribute": "Jagged",
+        "effect": "Toughness mark"
+      },
+      {
+        "item": "Eye stalks",
+        "attribute": "Twisted",
+        "effect": "Perceptive sign"
+      },
+      {
+        "item": "Mandibles",
+        "attribute": "Strong",
+        "effect": "Dominance token"
+      },
+      {
+        "item": "Appendage",
+        "attribute": "Flexible",
+        "effect": "Adaptability sign"
+      },
+      {
+        "item": "Crest",
+        "attribute": "Ornate",
+        "effect": "Noble emblem"
+      },
+      {
+        "item": "Core",
+        "attribute": "Glowing",
+        "effect": "Mystic essence"
+      }
+    ],
+    "toolSubstance": [
+      {
+        "item": "Sinew",
+        "attribute": "Fibrous",
+        "effect": "Binding material"
+      },
+      {
+        "item": "Venom",
+        "attribute": "Toxic",
+        "effect": "Weapon poison"
+      },
+      {
+        "item": "Acid sac",
+        "attribute": "Corrosive",
+        "effect": "Dissolving liquid"
+      },
+      {
+        "item": "Adhesive gland",
+        "attribute": "Sticky",
+        "effect": "Bonding paste"
+      },
+      {
+        "item": "Oil",
+        "attribute": "Viscous",
+        "effect": "Lubricating fluid"
+      },
+      {
+        "item": "Ink",
+        "attribute": "Pigmented",
+        "effect": "Marking dye"
+      },
+      {
+        "item": "Wax",
+        "attribute": "Malleable",
+        "effect": "Sealing compound"
+      },
+      {
+        "item": "Resin",
+        "attribute": "Glossy",
+        "effect": "Protective coating"
+      },
+      {
+        "item": "Bile",
+        "attribute": "Bitter",
+        "effect": "Cleaning solvent"
+      },
+      {
+        "item": "Saliva",
+        "attribute": "Slimy",
+        "effect": "Softening fluid"
+      },
+      {
+        "item": "Musk",
+        "attribute": "Pungent",
+        "effect": "Animal lure"
+      },
+      {
+        "item": "Pheromones",
+        "attribute": "Aromatic",
+        "effect": "Attraction scent"
+      },
+      {
+        "item": "Blood",
+        "attribute": "Watery",
+        "effect": "Healing tonic"
+      },
+      {
+        "item": "Antibodies",
+        "attribute": "Reactive",
+        "effect": "Immunity booster"
+      },
+      {
+        "item": "Enzymes",
+        "attribute": "Catalytic",
+        "effect": "Digestion aid"
+      },
+      {
+        "item": "Hormones",
+        "attribute": "Potent",
+        "effect": "Enhancement serum"
+      },
+      {
+        "item": "Nerve poison",
+        "attribute": "Neurotoxic",
+        "effect": "Numbing toxin"
+      },
+      {
+        "item": "Digestive juice",
+        "attribute": "Acidic",
+        "effect": "Corrosive fluid"
+      },
+      {
+        "item": "Mucus",
+        "attribute": "Gelatinous",
+        "effect": "Barrier gel"
+      },
+      {
+        "item": "Fine dust",
+        "attribute": "Powdered",
+        "effect": "Ritual powder"
+      }
+    ],
+    "material": [
+      {
+        "item": "Hide",
+        "attribute": "Tough",
+        "property": "Armor crafting"
+      },
+      {
+        "item": "Bone",
+        "attribute": "Rigid",
+        "property": "Tool making"
+      },
+      {
+        "item": "Horn",
+        "attribute": "Resilient",
+        "property": "Spring mechanism"
+      },
+      {
+        "item": "Chitin",
+        "attribute": "Durable",
+        "property": "Shield construction"
+      },
+      {
+        "item": "Claw",
+        "attribute": "Curved",
+        "property": "Weapon crafting"
+      },
+      {
+        "item": "Ivory",
+        "attribute": "Smooth",
+        "property": "Ornament making"
+      },
+      {
+        "item": "Shell",
+        "attribute": "Hard",
+        "property": "Container making"
+      },
+      {
+        "item": "Coral",
+        "attribute": "Porous",
+        "property": "Building material"
+      },
+      {
+        "item": "Scales",
+        "attribute": "Shimmering",
+        "property": "Decorative"
+      },
+      {
+        "item": "Tendrils",
+        "attribute": "Flexible",
+        "property": "Basket weaving"
+      },
+      {
+        "item": "Crystal",
+        "attribute": "Lustrous",
+        "property": "Jewelry setting"
+      },
+      {
+        "item": "Fiber strands",
+        "attribute": "Silken",
+        "property": "Textile weaving"
+      },
+      {
+        "item": "Membrane",
+        "attribute": "Veined",
+        "property": "Parchment making"
+      },
+      {
+        "item": "Teeth",
+        "attribute": "Jagged",
+        "property": "Dentistry tools"
+      },
+      {
+        "item": "Down",
+        "attribute": "Soft",
+        "property": "Insulation"
+      },
+      {
+        "item": "Air sac",
+        "attribute": "Buoyant",
+        "property": "Light weight"
+      },
+      {
+        "item": "Ash",
+        "attribute": "Insulating",
+        "property": "Fire protection"
+      },
+      {
+        "item": "Core fragment",
+        "attribute": "Charged",
+        "property": "Elemental absorption"
+      },
+      {
+        "item": "Ectoplasm",
+        "attribute": "Ethereal",
+        "property": "Magic channeling"
+      },
+      {
+        "item": "Glow organ",
+        "attribute": "Luminous",
+        "property": "Illumination device"
+      }
+    ]
+  }
+}
