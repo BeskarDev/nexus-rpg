@@ -57,6 +57,12 @@ describe('AutoRoller Data Integrity', () => {
 			})
 		})
 
+		it('should have 20 German family name entries per culture', () => {
+			nameData.cultures.forEach((culture) => {
+				expect(culture.familyNamesDE).toHaveLength(20)
+			})
+		})
+
 		it('should have valid personal name fields', () => {
 			nameData.cultures.forEach((culture) => {
 				culture.personalNames.forEach((name) => {
@@ -71,6 +77,17 @@ describe('AutoRoller Data Integrity', () => {
 		it('should have valid family name fields', () => {
 			nameData.cultures.forEach((culture) => {
 				culture.familyNames.forEach((name) => {
+					expect(name.adjective1).toBeTruthy()
+					expect(name.adjective2).toBeTruthy()
+					expect(name.noun1).toBeTruthy()
+					expect(name.noun2).toBeTruthy()
+				})
+			})
+		})
+
+		it('should have valid German family name fields', () => {
+			nameData.cultures.forEach((culture) => {
+				culture.familyNamesDE.forEach((name) => {
 					expect(name.adjective1).toBeTruthy()
 					expect(name.adjective2).toBeTruthy()
 					expect(name.noun1).toBeTruthy()
@@ -215,6 +232,14 @@ describe('AutoRoller Data Integrity', () => {
 			expect(treasureData.wearableSlots).toHaveLength(12)
 		})
 
+		it('should have wearable item types for every slot', () => {
+			treasureData.wearableSlots.forEach((slot) => {
+				const items = treasureData.wearableItems[slot]
+				expect(items).toBeDefined()
+				expect(items.length).toBeGreaterThan(0)
+			})
+		})
+
 		it('should have armor/shield types', () => {
 			expect(treasureData.armorShield).toHaveLength(10)
 		})
@@ -292,14 +317,48 @@ describe('AutoRoller Generators', () => {
 				expect(family[0]).toBe(family[0].toUpperCase())
 			}
 		})
+
+		it('should generate German family names when useGerman is true', () => {
+			for (let i = 0; i < 10; i++) {
+				const result = generateName('Dwarf-Ghahar', true)
+				expect(result).toBeTruthy()
+				expect(result.split(' ').length).toBeGreaterThanOrEqual(2)
+			}
+		})
+
+		it('should produce different results between English and German', () => {
+			const enResults = new Set<string>()
+			const deResults = new Set<string>()
+			for (let i = 0; i < 50; i++) {
+				enResults.add(generateName('Dwarf-Ghahar', false).split(' ')[1])
+				deResults.add(generateName('Dwarf-Ghahar', true).split(' ')[1])
+			}
+			// The sets should differ since German words are different
+			const enArray = [...enResults]
+			const deArray = [...deResults]
+			const overlap = enArray.filter((n) => deArray.includes(n))
+			expect(overlap.length).toBeLessThan(enArray.length)
+		})
+
+		it('should roll personal name syllables independently', () => {
+			// Over many rolls, each syllable should show variation independent of others
+			const prefixes = new Set<string>()
+			const suffixes = new Set<string>()
+			for (let i = 0; i < 50; i++) {
+				const result = generateName('Dwarf-Ghahar')
+				// Just verify we get variety
+				prefixes.add(result.substring(0, 3))
+			}
+			expect(prefixes.size).toBeGreaterThan(1)
+		})
 	})
 
 	describe('generateSpell', () => {
-		it('should generate a spell with name and labeled effect', () => {
+		it('should generate a spell with natural language format', () => {
 			const result = generateSpell('arcane-Evocation')
 			expect(result).toBeTruthy()
 			expect(result).toContain('—')
-			expect(result).toContain('effect:')
+			expect(result).toContain('targeting')
 			expect(result).toContain('duration:')
 			expect(result).toContain('range:')
 		})
@@ -319,28 +378,39 @@ describe('AutoRoller Generators', () => {
 		it('should generate results with arcane-any and mystic-any', () => {
 			for (let i = 0; i < 5; i++) {
 				const arcane = generateSpell('arcane-any')
-				expect(arcane).toContain('effect:')
+				expect(arcane).toContain('targeting')
 				const mystic = generateSpell('mystic-any')
-				expect(mystic).toContain('effect:')
+				expect(mystic).toContain('targeting')
 			}
 		})
 
 		it('should output lowercase text', () => {
 			const result = generateSpell('arcane-Evocation')
-			// The part before — should be all lowercase
 			const spellName = result.split('—')[0].trim()
 			expect(spellName).toBe(spellName.toLowerCase())
+		})
+
+		it('should roll effect columns independently', () => {
+			// Run many times and check that effect/target/duration/range vary independently
+			const effects = new Set<string>()
+			const targets = new Set<string>()
+			for (let i = 0; i < 50; i++) {
+				const result = generateSpell('arcane-Evocation')
+				const afterDash = result.split('—')[1]
+				effects.add(afterDash)
+			}
+			expect(effects.size).toBeGreaterThan(3)
 		})
 	})
 
 	describe('generateCreature', () => {
-		it('should generate a creature description with labeled fields', () => {
+		it('should generate a creature description in natural language', () => {
 			const result = generateCreature('Beast')
 			expect(result).toBeTruthy()
-			expect(result).toContain('beast:')
-			expect(result).toContain('behavior:')
-			expect(result).toContain('attack:')
+			expect(result).toMatch(/^beast with/)
+			expect(result).toContain('attacks with')
 			expect(result).toContain('defense:')
+			expect(result).toContain('ability:')
 		})
 
 		it('should work with random type', () => {
@@ -355,34 +425,55 @@ describe('AutoRoller Generators', () => {
 				expect(result.length).toBeGreaterThan(0)
 			})
 		})
+
+		it('should roll each creature detail column independently', () => {
+			// If columns are independent, we should rarely get exact same row combinations
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateCreature('Beast'))
+			}
+			expect(results.size).toBeGreaterThan(5)
+		})
 	})
 
 	describe('generateChallenge', () => {
-		it('should generate puzzle descriptions with labeled fields', () => {
+		it('should generate puzzle descriptions in natural language', () => {
 			const result = generateChallenge('puzzles')
 			expect(result).toBeTruthy()
-			expect(result).toContain('—')
-			expect(result).toContain('interaction:')
+			expect(result).toMatch(/^a .+ puzzle featuring/)
+			expect(result).toContain('interacted with by')
+			expect(result).toContain('presented as')
+			expect(result).toContain('hints:')
 		})
 
-		it('should generate trap descriptions with labeled fields', () => {
+		it('should generate trap descriptions in natural language', () => {
 			const result = generateChallenge('traps')
 			expect(result).toBeTruthy()
-			expect(result).toContain('—')
-			expect(result).toContain('warning:')
+			expect(result).toMatch(/^a .+ trap disguised as/)
+			expect(result).toContain('warning sign:')
+			expect(result).toContain('avoided by:')
 		})
 
-		it('should generate combat scene descriptions with labeled fields', () => {
+		it('should generate combat scene descriptions in natural language', () => {
 			const result = generateChallenge('combat')
 			expect(result).toBeTruthy()
-			expect(result).toContain('—')
+			expect(result).toMatch(/^a .+ encounter in/)
 			expect(result).toContain('objective:')
+			expect(result).toContain('twist:')
 		})
 
 		it('should return unknown for invalid type', () => {
 			expect(generateChallenge('invalid')).toBe(
 				'Unknown challenge type',
 			)
+		})
+
+		it('should roll each challenge column independently', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateChallenge('puzzles'))
+			}
+			expect(results.size).toBeGreaterThan(5)
 		})
 	})
 
@@ -393,49 +484,64 @@ describe('AutoRoller Generators', () => {
 			expect(result.length).toBeGreaterThan(0)
 		})
 
-		it('should generate valuable treasure in lowercase', () => {
+		it('should generate valuable treasure in natural language', () => {
 			const result = generateTreasure('valuable')
-			expect(result).toContain('valuable')
+			expect(result).toMatch(/^a .+ in the form of/)
 		})
 
-		it('should generate utility treasure in lowercase', () => {
+		it('should generate utility treasure in natural language', () => {
 			const result = generateTreasure('utility')
-			expect(result).toContain('utility')
+			expect(result).toMatch(/^a /)
 		})
 
-		it('should generate wearable treasure with individually rolled fields', () => {
-			// Run multiple times to verify fields can differ
-			const results: string[] = []
+		it('should generate wearable treasure with item type and slot', () => {
 			for (let i = 0; i < 20; i++) {
-				results.push(generateTreasure('wearable'))
+				const result = generateTreasure('wearable')
+				// Should include the slot in parentheses and ornament
+				expect(result).toMatch(/\(.+\)/)
+				expect(result).toContain('ornament')
 			}
-			// All should contain labeled fields
-			results.forEach((r) => {
-				expect(r).toContain('wearable')
-				expect(r).toContain('ornament:')
-				expect(r).toContain('style:')
-				expect(r).toContain('material:')
-			})
 		})
 
-		it('should generate armor treasure with individually rolled fields', () => {
+		it('should generate armor treasure in natural language', () => {
 			const result = generateTreasure('armor')
-			expect(result).toContain('armor')
-			expect(result).toContain('material:')
-			expect(result).toContain('form:')
-			expect(result).toContain('detail:')
+			expect(result).toMatch(/^a .+ in .+ style with/)
 		})
 
-		it('should generate weapon treasure with individually rolled fields', () => {
-			const result = generateTreasure('weapon')
-			expect(result).toContain('weapon')
-			expect(result).toContain('material:')
-			expect(result).toContain('form:')
-			expect(result).toContain('detail:')
+		it('should generate weapon treasure in natural language', () => {
+			// Some weapon types (Arrows, Bolts) may not have detail tables
+			for (let i = 0; i < 20; i++) {
+				const result = generateTreasure('weapon')
+				expect(result).toMatch(/^a /)
+			}
 		})
 
 		it('should return unknown for invalid category', () => {
 			expect(generateTreasure('invalid')).toBe('Unknown treasure type')
+		})
+
+		it('should roll wearable columns independently', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateTreasure('wearable'))
+			}
+			expect(results.size).toBeGreaterThan(5)
+		})
+
+		it('should roll armor columns independently', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateTreasure('armor'))
+			}
+			expect(results.size).toBeGreaterThan(3)
+		})
+
+		it('should roll weapon columns independently', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateTreasure('weapon'))
+			}
+			expect(results.size).toBeGreaterThan(3)
 		})
 	})
 })

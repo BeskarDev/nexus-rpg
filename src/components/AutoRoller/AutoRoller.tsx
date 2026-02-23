@@ -3,7 +3,9 @@ import {
 	Button,
 	Card,
 	CardContent,
+	Checkbox,
 	FormControl,
+	FormControlLabel,
 	InputLabel,
 	MenuItem,
 	Select,
@@ -21,8 +23,9 @@ interface AutoRollerGroup {
 interface AutoRollerProps {
 	title: string
 	groups: AutoRollerGroup[]
-	generateResult: (groupId: string) => string
+	generateResult: (groupId: string, useGerman?: boolean) => string
 	defaultGroup?: string
+	showGermanToggle?: boolean
 }
 
 export const AutoRoller: React.FC<AutoRollerProps> = ({
@@ -30,17 +33,19 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 	groups,
 	generateResult,
 	defaultGroup,
+	showGermanToggle = false,
 }) => {
 	const [selectedGroup, setSelectedGroup] = useState<string>(
 		defaultGroup || groups[0]?.id || '',
 	)
 	const [count, setCount] = useState<number>(1)
 	const [results, setResults] = useState<string[]>([])
+	const [useGerman, setUseGerman] = useState<boolean>(false)
 
 	const handleRoll = () => {
 		const newResults: string[] = []
 		for (let i = 0; i < count; i++) {
-			newResults.push(generateResult(selectedGroup))
+			newResults.push(generateResult(selectedGroup, useGerman))
 		}
 		setResults(newResults)
 	}
@@ -101,6 +106,21 @@ export const AutoRoller: React.FC<AutoRollerProps> = ({
 								))}
 							</Select>
 						</FormControl>
+
+						{showGermanToggle && (
+							<FormControlLabel
+								control={
+									<Checkbox
+										checked={useGerman}
+										onChange={(e) =>
+											setUseGerman(e.target.checked)
+										}
+										size="small"
+									/>
+								}
+								label="German family names"
+							/>
+						)}
 
 						<Button
 							variant="contained"

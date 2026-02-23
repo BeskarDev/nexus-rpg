@@ -21,6 +21,11 @@ function pick<T>(arr: T[]): T {
 	return arr[Math.floor(Math.random() * arr.length)]
 }
 
+// Utility: pick a specific field independently from a random row
+function pickField<T, K extends keyof T>(arr: T[], field: K): T[K] {
+	return pick(arr)[field]
+}
+
 // Utility: roll a die (1 to n)
 function rollDie(n: number): number {
 	return Math.floor(Math.random() * n) + 1
@@ -44,57 +49,74 @@ export const nameGroups = nameData.cultures.map((c) => ({
 	label: `${c.folk} (${c.culture})`,
 }))
 
+interface NameParts {
+	prefix: string
+	syllable2: string
+	syllable3: string
+	suffix: string
+}
+
 function applyNamingPattern(
 	pattern: string,
-	parts: {
-		prefix: string
-		syllable2: string
-		syllable3: string
-		suffix: string
-	},
+	names: NameParts[],
 ): string {
+	// Roll each syllable column independently
+	const prefix = pickField(names, 'prefix').replace(/-$/, '')
+	const syllable2 = pickField(names, 'syllable2').replace(/^-/, '').replace(/-$/, '')
+	const syllable3 = pickField(names, 'syllable3').replace(/^-/, '').replace(/-$/, '')
+	const suffix = pickField(names, 'suffix').replace(/^-/, '')
+
 	const raw = pattern
-		.replace('[Prefix]', parts.prefix.replace(/-$/, ''))
-		.replace('[Syllable 2]', parts.syllable2.replace(/^-/, '').replace(/-$/, ''))
-		.replace('[Syllable 3]', parts.syllable3.replace(/^-/, '').replace(/-$/, ''))
-		.replace('[Suffix]', parts.suffix.replace(/^-/, ''))
+		.replace('[Prefix]', prefix)
+		.replace('[Syllable 2]', syllable2)
+		.replace('[Syllable 3]', syllable3)
+		.replace('[Suffix]', suffix)
 		.replace(/\s*\+\s*/g, '')
 	return capitalize(raw.toLowerCase())
+}
+
+interface FamilyNameParts {
+	adjective1: string
+	adjective2: string
+	noun1: string
+	noun2: string
 }
 
 function applyFamilyPattern(
 	pattern: string,
-	parts: {
-		adjective1: string
-		adjective2: string
-		noun1: string
-		noun2: string
-	},
+	names: FamilyNameParts[],
 ): string {
+	// Roll each column independently
+	const adjective1 = pickField(names, 'adjective1')
+	const adjective2 = pickField(names, 'adjective2')
+	const noun1 = pickField(names, 'noun1')
+	const noun2 = pickField(names, 'noun2')
+
 	const raw = pattern
-		.replace('[Adjective 1]', parts.adjective1)
-		.replace('[Adjective 2]', parts.adjective2)
-		.replace('[Noun 1]', parts.noun1)
-		.replace('[Noun 2]', parts.noun2)
+		.replace('[Adjective 1]', adjective1)
+		.replace('[Adjective 2]', adjective2)
+		.replace('[Noun 1]', noun1)
+		.replace('[Noun 2]', noun2)
 		.replace(/\s*\+\s*/g, '')
 	return capitalize(raw.toLowerCase())
 }
 
-export function generateName(groupId: string): string {
+export function generateName(groupId: string, useGerman = false): string {
 	const culture = nameData.cultures.find(
 		(c) => `${c.folk}-${c.culture}` === groupId,
 	)
 	if (!culture) return 'Unknown culture'
 
-	// Roll personal name
+	// Roll personal name — each syllable column independently
 	const personalPattern = pick(nameData.namingPatterns)
-	const personalParts = pick(culture.personalNames)
-	const personalName = applyNamingPattern(personalPattern, personalParts)
+	const personalName = applyNamingPattern(personalPattern, culture.personalNames)
 
-	// Roll family name
+	// Roll family name — each column independently
 	const familyPattern = pick(nameData.familyNamePatterns)
-	const familyParts = pick(culture.familyNames)
-	const familyName = applyFamilyPattern(familyPattern, familyParts)
+	const familySource = useGerman && culture.familyNamesDE
+		? culture.familyNamesDE
+		: culture.familyNames
+	const familyName = applyFamilyPattern(familyPattern, familySource)
 
 	return `${personalName} ${familyName}`
 }
@@ -134,21 +156,24 @@ export function generateSpell(groupId: string): string {
 	if (!school) return 'Unknown school'
 
 	// Roll spell components (each column independently)
-	const formEntry = pick(school.entries)
-	const adjEntry = pick(school.entries)
-	const nounEntry = pick(school.entries)
+	const form = pickField(school.entries, 'form')
+	const adjective = pickField(school.entries, 'adjective')
+	const noun = pickField(school.entries, 'noun')
 
 	// Roll naming pattern
 	const pattern = pick(spellData.namingPatterns)
 	const name = pattern
-		.replace('[Form]', formEntry.form)
-		.replace('[Adjective]', adjEntry.adjective)
-		.replace('[Noun]', nounEntry.noun)
+		.replace('[Form]', form)
+		.replace('[Adjective]', adjective)
+		.replace('[Noun]', noun)
 
-	// Roll effect
-	const effect = pick(spellData.effects)
+	// Roll effect columns independently
+	const effect = pickField(spellData.effects, 'effect')
+	const target = pickField(spellData.effects, 'target')
+	const duration = pickField(spellData.effects, 'duration')
+	const range = pickField(spellData.effects, 'range')
 
-	return `${lc(name)} — effect: ${lc(effect.effect)} ${lc(effect.target)} (duration: ${lc(effect.duration)}, range: ${lc(effect.range)})`
+	return `${lc(name)} — ${lc(effect)} targeting ${lc(target)} (duration: ${lc(duration)}, range: ${lc(range)})`
 }
 
 // ===== CREATURES =====
@@ -158,28 +183,54 @@ export const creatureGroups = [
 	...creatureData.types.map((t) => ({ id: t, label: t })),
 ]
 
+interface CreatureDetail {
+	shape: string
+	headAttribute: string
+	bodyAttribute: string
+	adaption: string
+}
+
 export function generateCreature(groupId: string): string {
 	const typeName =
 		groupId === 'random' ? pick(creatureData.types) : groupId
 
 	const details = creatureData.typeDetails[typeName] as
-		| { shape: string; headAttribute: string; bodyAttribute: string; adaption: string }[]
+		| CreatureDetail[]
 		| undefined
 	if (!details) return `${lc(typeName)} (no details available)`
 
-	const detail = pick(details)
-	const personality = pick(creatureData.personality)
-	const attack = pick(creatureData.physicalAttack)
-	const special = pick(creatureData.specialAttack)
-	const defense = pick(creatureData.specialDefense)
-	const ability = pick(creatureData.specialAbilities)
+	// Roll each column independently
+	const shape = pickField(details, 'shape')
+	const headAttribute = pickField(details, 'headAttribute')
+	const bodyAttribute = pickField(details, 'bodyAttribute')
+	const adaption = pickField(details, 'adaption')
 
-	const appearance = [lc(detail.shape)]
-	if (detail.headAttribute) appearance.push(lc(detail.headAttribute))
-	appearance.push(lc(detail.bodyAttribute))
-	appearance.push(lc(detail.adaption))
+	// Roll personality columns independently
+	const behavior = pickField(creatureData.personality, 'behavior')
 
-	return `${lc(typeName)}: ${appearance.join(', ')} — behavior: ${lc(personality.behavior)}, attack: ${lc(attack.bodyPart)} (${lc(attack.attackMode)}), special: ${lc(special.deliveryMethod)} ${lc(special.attackType)}, defense: ${lc(defense.defenseMethod)} (${lc(defense.defenseType)}), ability: ${lc(ability.trigger)} → ${lc(ability.action)} ${lc(ability.subject)}`
+	// Roll attack columns independently
+	const bodyPart = pickField(creatureData.physicalAttack, 'bodyPart')
+	const attackMode = pickField(creatureData.physicalAttack, 'attackMode')
+
+	// Roll special attack columns independently
+	const deliveryMethod = pickField(creatureData.specialAttack, 'deliveryMethod')
+	const attackType = pickField(creatureData.specialAttack, 'attackType')
+
+	// Roll defense columns independently
+	const defenseMethod = pickField(creatureData.specialDefense, 'defenseMethod')
+	const defenseType = pickField(creatureData.specialDefense, 'defenseType')
+
+	// Roll ability columns independently
+	const trigger = pickField(creatureData.specialAbilities, 'trigger')
+	const action = pickField(creatureData.specialAbilities, 'action')
+	const subject = pickField(creatureData.specialAbilities, 'subject')
+
+	const appearance = [lc(shape)]
+	if (headAttribute) appearance.push(lc(headAttribute))
+	appearance.push(lc(bodyAttribute))
+	appearance.push(lc(adaption))
+
+	return `${lc(typeName)} with ${appearance.join(', ')}. ${lc(behavior)}, attacks with ${lc(bodyPart)} (${lc(attackMode)}). special: ${lc(deliveryMethod)} ${lc(attackType)}. defense: ${lc(defenseMethod)} against ${lc(defenseType)}. ability: ${lc(trigger)} → ${lc(action)} ${lc(subject)}.`
 }
 
 // ===== CHALLENGES =====
@@ -192,16 +243,30 @@ export const challengeGroups = [
 
 export function generateChallenge(groupId: string): string {
 	if (groupId === 'puzzles') {
-		const p = pick(challengeData.puzzles)
-		return `${lc(p.puzzleType)}: ${lc(p.coreElement)} — interaction: ${lc(p.interaction)}, presentation: ${lc(p.presentation)}, feedback: ${lc(p.feedback)}, hints: ${lc(p.hints)}`
+		// Roll each column independently
+		const puzzleType = pickField(challengeData.puzzles, 'puzzleType')
+		const coreElement = pickField(challengeData.puzzles, 'coreElement')
+		const interaction = pickField(challengeData.puzzles, 'interaction')
+		const presentation = pickField(challengeData.puzzles, 'presentation')
+		const feedback = pickField(challengeData.puzzles, 'feedback')
+		const hints = pickField(challengeData.puzzles, 'hints')
+		return `a ${lc(puzzleType)} puzzle featuring ${lc(coreElement)}, interacted with by ${lc(interaction)}. presented as ${lc(presentation)} with ${lc(feedback)} as feedback. hints: ${lc(hints)}.`
 	}
 	if (groupId === 'traps') {
-		const t = pick(challengeData.traps)
-		return `${lc(t.hazardType)}: ${lc(t.presentation)} — warning: ${lc(t.warning)}, avoidance: ${lc(t.avoidance)}`
+		// Roll each column independently
+		const hazardType = pickField(challengeData.traps, 'hazardType')
+		const presentation = pickField(challengeData.traps, 'presentation')
+		const warning = pickField(challengeData.traps, 'warning')
+		const avoidance = pickField(challengeData.traps, 'avoidance')
+		return `a ${lc(hazardType)} trap disguised as ${lc(presentation)}. warning sign: ${lc(warning)}. avoided by: ${lc(avoidance)}.`
 	}
 	if (groupId === 'combat') {
-		const c = pick(challengeData.combatScenes)
-		return `${lc(c.sceneType)}: ${lc(c.terrain)} — objective: ${lc(c.objective)}, twist: ${lc(c.twist)}`
+		// Roll each column independently
+		const sceneType = pickField(challengeData.combatScenes, 'sceneType')
+		const terrain = pickField(challengeData.combatScenes, 'terrain')
+		const objective = pickField(challengeData.combatScenes, 'objective')
+		const twist = pickField(challengeData.combatScenes, 'twist')
+		return `a ${lc(sceneType)} encounter in ${lc(terrain)}. objective: ${lc(objective)}. twist: ${lc(twist)}.`
 	}
 	return 'Unknown challenge type'
 }
@@ -232,11 +297,11 @@ function generateValuable(): string {
 		| { form: string; detail: string }[]
 		| undefined
 	if (details && details.length > 0) {
-		const formEntry = pick(details)
-		const detailEntry = pick(details)
-		return `valuable — ${lc(type)}: ${lc(formEntry.form)}, ${lc(detailEntry.detail)}`
+		const form = pickField(details, 'form')
+		const detail = pickField(details, 'detail')
+		return `a ${lc(type)} in the form of ${lc(form)} with ${lc(detail)}.`
 	}
-	return `valuable — ${lc(type)}`
+	return `a ${lc(type)}.`
 }
 
 function generateUtility(): string {
@@ -244,17 +309,19 @@ function generateUtility(): string {
 	const type = entry.type
 	const details = treasureData.utilityDetails[type] as string[] | undefined
 	if (details && details.length > 0) {
-		return `utility — ${lc(type)}: ${lc(pick(details))}`
+		return `a ${lc(type)} — ${lc(pick(details))}.`
 	}
-	return `utility — ${lc(type)}`
+	return `a ${lc(type)}.`
 }
 
 function generateWearable(): string {
 	const slot = pick(treasureData.wearableSlots)
-	const ornamentEntry = pick(treasureData.wearableDescription)
-	const styleEntry = pick(treasureData.wearableDescription)
-	const materialEntry = pick(treasureData.wearableDescription)
-	return `wearable — ${lc(slot)}: ornament: ${lc(ornamentEntry.ornament)}, style: ${lc(styleEntry.style)}, material: ${lc(materialEntry.material)}`
+	const items = treasureData.wearableItems[slot] as string[] | undefined
+	const itemType = items && items.length > 0 ? pick(items) : slot
+	const ornament = pickField(treasureData.wearableDescription, 'ornament')
+	const style = pickField(treasureData.wearableDescription, 'style')
+	const material = pickField(treasureData.wearableDescription, 'material')
+	return `a ${lc(style)} ${lc(material)} ${lc(itemType)} (${lc(slot)}) with ${lc(ornament)} ornament.`
 }
 
 function generateArmor(): string {
@@ -263,12 +330,12 @@ function generateArmor(): string {
 		| { material: string; form: string; detail: string }[]
 		| undefined
 	if (details && details.length > 0) {
-		const materialEntry = pick(details)
-		const formEntry = pick(details)
-		const detailEntry = pick(details)
-		return `armor — ${lc(type)}: material: ${lc(materialEntry.material)}, form: ${lc(formEntry.form)}, detail: ${lc(detailEntry.detail)}`
+		const material = pickField(details, 'material')
+		const form = pickField(details, 'form')
+		const detail = pickField(details, 'detail')
+		return `a ${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
 	}
-	return `armor — ${lc(type)}`
+	return `a ${lc(type)}.`
 }
 
 function generateWeapon(): string {
@@ -277,12 +344,12 @@ function generateWeapon(): string {
 		| { material: string; form: string; detail: string }[]
 		| undefined
 	if (details && details.length > 0) {
-		const materialEntry = pick(details)
-		const formEntry = pick(details)
-		const detailEntry = pick(details)
-		return `weapon — ${lc(type)}: material: ${lc(materialEntry.material)}, form: ${lc(formEntry.form)}, detail: ${lc(detailEntry.detail)}`
+		const material = pickField(details, 'material')
+		const form = pickField(details, 'form')
+		const detail = pickField(details, 'detail')
+		return `a ${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
 	}
-	return `weapon — ${lc(type)}`
+	return `a ${lc(type)}.`
 }
 
 export function generateTreasure(groupId: string): string {
