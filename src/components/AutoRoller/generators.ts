@@ -3,6 +3,7 @@ import spellData from './data/spellData.json'
 import creatureData from './data/creatureData.json'
 import challengeData from './data/challengeData.json'
 import treasureData from './data/treasureData.json'
+import questData from './data/questData.json'
 
 // Type definitions for spell data
 interface SpellEntry {
@@ -368,5 +369,65 @@ export function generateTreasure(groupId: string): string {
 			return generateWeapon()
 		default:
 			return 'Unknown treasure type'
+	}
+}
+
+// ===== QUESTS / RUMORS / JOBS =====
+
+export const questGroups = [
+	{ id: 'rumor', label: 'Rumor' },
+	{ id: 'quest', label: 'Quest Hook' },
+	{ id: 'job', label: 'Job' },
+]
+
+function getLevelScaling(partyLevel: number) {
+	if (partyLevel <= 2) return questData.levelScaling[0]
+	if (partyLevel <= 4) return questData.levelScaling[1]
+	if (partyLevel <= 6) return questData.levelScaling[2]
+	if (partyLevel <= 8) return questData.levelScaling[3]
+	return questData.levelScaling[4]
+}
+
+function rollCoinReward(min: number, max: number): number {
+	return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+function generateRewardDetails(partyLevel: number): string {
+	const scaling = getLevelScaling(partyLevel)
+	const coins = rollCoinReward(scaling.coinMin, scaling.coinMax)
+	const quality = pick(scaling.treasureQualities)
+	return `${coins} coins (${quality} treasure, ${scaling.scope} scope)`
+}
+
+export function generateQuest(category: string, partyLevel: number): string {
+	switch (category) {
+		case 'rumor': {
+			const source = pick(questData.sources)
+			const subject = pick(questData.rumorSubjects)
+			const location = pick(questData.locations)
+			const cause = pick(questData.causes)
+			return `${capitalize(source)} says that ${subject} near ${location}. They say it's because of ${cause}.`
+		}
+		case 'quest': {
+			const task = pick(questData.tasks)
+			const subject = pick(questData.subjects)
+			const location = pick(questData.locations)
+			const complication = pick(questData.complications)
+			const reward = pick(questData.rewards)
+			const rewardDetails = generateRewardDetails(partyLevel)
+			return `Wanted: ${task} ${subject} at ${location}. Warning: ${complication}. Reward: ${reward} — ${rewardDetails}.`
+		}
+		case 'job': {
+			const patron = pick(questData.patrons)
+			const task = pick(questData.tasks)
+			const subject = pick(questData.subjects)
+			const location = pick(questData.locations)
+			const complication = pick(questData.complications)
+			const reward = pick(questData.rewards)
+			const rewardDetails = generateRewardDetails(partyLevel)
+			return `${capitalize(patron)} wants you to ${task} ${subject} at ${location}, but ${complication}. On success: ${reward} — ${rewardDetails}.`
+		}
+		default:
+			return 'Unknown quest type'
 	}
 }
