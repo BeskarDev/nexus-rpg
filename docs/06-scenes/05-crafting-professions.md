@@ -25,7 +25,7 @@ While professions are mainly useful during your downtime, you can also make use 
 
 | Profession | Skill Test | Description |
 | --- | --- | --- |
-| **Alchemist** | Mind + Crafting | crafting potions, salves, poisons, and other alchemical items. See **[Alchemy & Potion Crafting](../04-equipment/08-alchemy-crafting.md)** for detailed ingredient-based crafting rules. |
+| **Alchemist** | Mind + Crafting | crafting potions, salves, and other herbal remedies |
 | **Cloth Weaver** | Agility + Crafting | weaving clothes, cloth armor, and other cloth objects for decoration or function |
 | **Inscriber** | Spirit + Crafting | etching, carving, or painting mystical runes or glyphs onto materials to imbue them with magical effects |
 | **Jeweler** | Agility + Crafting | crafting valuable jewelry, polish gems, and create trinkets |

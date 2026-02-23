@@ -21,8 +21,6 @@ Name | Quality | Load | Cost | Description
 
 ## Alchemy
 
-> **Note:** These are standard alchemical items available for purchase. For rules on crafting custom potions, poisons, and alchemical items using ingredients, see **[Alchemy & Potion Crafting](./08-alchemy-crafting.md)**.
-
 Name | Quality | Load | Cost | Description
 --- | --- | --- | --- | ---
 **Healing Salve (weak)**  | 1  | 1  | 15  | Spend 1 use to apply this to a treated Wound of a target creature. The target creature gains +1 boon on their next roll to heal that Wound.<br/>Only one type of healing salve can be applied to any single creature at the same time. The salve lasts for a long duration.<br/>

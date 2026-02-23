@@ -1,12 +1,8 @@
+# Game Design Analysis: Alchemy & Potion Crafting System
+
+This document contains a proposed design for a modular alchemy and potion crafting system for Nexus RPG. It is intended as a design reference and has not yet been integrated into the official rules.
+
 ---
-sidebar_position: 8
----
-
-# 🧪 Alchemy & Potion Crafting
-
-![banner-img](/img/banner/crafting-banner.png)
-
-Craft potions, poisons, and alchemical items by combining ingredients. Use this system to create items from the Equipment list or design custom effects.
 
 ## Ingredients
 
@@ -34,6 +30,8 @@ Each ingredient has a **tag** (effect type) and **potency** (Quality tier).
 - **Creature Harvesting:** Tool harvest from defeated creatures = alchemical ingredients
 - **Purchase:** Available at settlements up to their rank (Hamlet Q1, Village Q2, Town Q3, City Q4)
 - **Quest Rewards:** Q5+ materials rarely sold, must be quested for
+
+---
 
 ## Crafting
 
@@ -70,6 +68,8 @@ Use standard **Craft an Item** downtime rules with these specifics:
 | 5 | Setback - takes double time (additional week) and double material cost |
 | 6 | Severe burn - suffer 1 Wound, must recover before continuing any crafting |
 
+---
+
 ## Alchemical Effect Types
 
 Alchemical items can produce various effects. Use these categories as guidelines:
@@ -101,7 +101,7 @@ Create temporary magical effects:
 
 Temporarily enhance or reduce attributes:
 - **Attribute Boost:** +1 die size to one attribute (max d10) for medium duration
-- **Skill Bonus:** +1 boon on specific skill for short duration  
+- **Skill Bonus:** +1 boon on specific skill for short duration
 - **Combat Enhancement:** +1 boon on attacks, +1 Movement, or +2 weapon damage
 - **Defense Boost:** +1-2 to Parry, Dodge, or Resist
 - **Penalty Effects:** -1 die size to attribute, +1 bane on rolls
@@ -118,6 +118,8 @@ Transform or modify the drinker:
 - **Size Change:** Enlarge (Large size) or reduce (Small size)
 - **Material Change:** Stone skin (+2 AV), bronze bones (immune bleeding)
 - **Recovery:** Cure disease, remove curse, restore vitality
+
+---
 
 ## Poisons
 
@@ -150,6 +152,8 @@ Poisons use Poison-tagged ingredients and specific delivery types.
 
 **Stacking:** Same poison doesn't stack. Different poisons track separately.
 
+---
+
 ## Gathering Ingredients
 
 Use as downtime activity (1 week). Roll Mind/Spirit + Nature or Agility/Spirit + Survival:
@@ -173,6 +177,8 @@ Use as downtime activity (1 week). Roll Mind/Spirit + Nature or Agility/Spirit +
 6. Rival claims this territory
 
 **Harvesting Creatures:** Use Harvesting Creature Parts rules. Tool results = alchemical ingredients at creature's tier Quality.
+
+---
 
 ## Example Creations
 
@@ -200,6 +206,8 @@ Use as downtime activity (1 week). Roll Mind/Spirit + Nature or Agility/Spirit +
 **Ingredients:** Elemental sulfur (Essence: fire, Q3, 50 coins) + Volatile spirits (Catalyst, Q3, 65 coins) + Pitch (Binder, Q2, 10 coins)  
 **Total Cost:** 62 coins materials  
 **Effect:** Throw (bundle d4, short range). +3 fire damage to all in melee of target
+
+---
 
 ## Legacy Item Conversion
 
