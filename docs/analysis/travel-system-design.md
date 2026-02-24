@@ -1,24 +1,37 @@
 # Travel System Design Analysis
 
-This document contains the proposed design for an overhauled travel system for Nexus RPG, built on the [Challenges System](challenges-system.md) and [Scene & Time Scale Procedures](scene-timescale-procedures.md). It is intended as a game design analysis and reference for future implementation.
+This document proposes the travel system for Nexus RPG. It uses **challenge dice** from the [Challenges System](challenges-system.md) to track journey progress and the **d6 event table** from the [Scene & Time Scale Procedures](scene-timescale-procedures.md) to generate daily events.
 
 ---
 
-## Design Goals
+## Procedure Overview
 
-- Make journeys more engaging, tense, and interactive.
-- Provide clear procedures for GMs and players.
-- Ensure the system interacts meaningfully with resource management.
-- Align travel with the **Challenge Dice** and **Dice Timer** frameworks for a unified resolution method.
-- Keep the system modular and compatible with other scene types (exploration, chases, downtime).
+Use these checklists at the table. Full rules for each step follow in later sections.
+
+### Journey Setup (GM, before play)
+
+1. **Define the route** — Origin, destination, terrain types along the way
+2. **Choose a challenge die** — d4 to d12 based on journey length (see Journey Length table); place it at its maximum value
+3. **Segment long journeys** — Split at checkpoints (settlements, landmarks, camps, danger zones); assign a separate challenge die per segment
+4. **Set hidden checkpoints** — Note any secret danger zones and their trigger values on the challenge die
+5. **Assign roles** — Navigator and Scout are mandatory; assign optional roles (Lookout, Quartermaster, Forager, Hunter, Fisher) to remaining party members
+
+### Daily Travel Procedure (each travel day)
+
+1. **Declare forced march** *(optional)* — +1 progress, every party member gains 1 fatigue
+2. **Roll all travel roles** — Navigator, Scout, and any optional roles roll simultaneously
+3. **Calculate progress** — Navigator result + terrain modifier + mount bonus + forced march (minimum 0); reduce challenge die by total
+4. **Check for arrival or hidden checkpoints** — If challenge die reaches 0, arrive; if it hits a hidden checkpoint value, resolve that event
+5. **Roll daily event** — GM rolls 1d6 on the Travel Event Table (modified by Scout result)
+6. **Make camp** — Supply Checks for rations, determine shelter (from Scout), night watches
 
 ---
 
-## Core Concepts
+## Journey Setup
 
 ### When to Use These Rules
 
-Use these travel rules for **journeys between two known points or regions** that take place over multiple days. The party must be able to track a course and navigate to their destination (by memory, maps, or a guide).
+Use these travel rules for **journeys between two known points or regions** that take place over multiple days.
 
 **Use for:**
 - Multi-day journeys to known destinations (cities, landmarks, regions)
@@ -28,53 +41,67 @@ Use these travel rules for **journeys between two known points or regions** that
 **Do not use for:**
 - Exploring unknown/unmapped areas (hex exploration is a separate system)
 - Short journeys (less than a day)
-- When skipping for narrative convenience (the "boring" trip back)
+- When skipping for narrative convenience
 
-### Journey Structure: Challenge Dice
+### Challenge Dice
 
-Instead of tracking abstract paces on a progress track, journeys use **challenge dice** from the [Challenges System](challenges-system.md). A challenge die (d4, d6, d8, or d10) represents the total progress required to complete a journey or journey segment. The die is placed on the table at its maximum value and reduced as the party makes progress each day.
+A journey's length is represented by a **challenge die** placed on the table at its maximum value. Each day the party makes progress, the die is reduced. When the die reaches **0**, the party arrives.
 
-- Each day of travel reduces the challenge die based on the Navigator's roll and modifiers.
-- When the challenge die reaches **0**, the party arrives at the destination (or the next checkpoint).
+With an average of 2 progress per day (a weak success on normal terrain), each die takes roughly **half its maximum value in days** to complete. Good rolls shorten the journey; bad terrain and failed rolls extend it.
 
-> **Example**: A medium journey through forest uses a d6 challenge die, starting at 6. On day one, the Navigator rolls a strong success—the die drops by 2 (from 6 to 4). On day two, a failure means no progress. On day three, a weak success reduces the die by 2 (to 2). Two more points of progress to go.
+| Die | Max | Avg. Days | Typical Range | Best For |
+|-----|-----|-----------|---------------|----------|
+| d4 | 4 | ~2 | 1–4 days | Short trip between nearby locations |
+| d6 | 6 | ~3 | 2–6 days | Standard journey (the default) |
+| d8 | 8 | ~4 | 3–8 days | Long journey across a region |
+| d10 | 10 | ~5 | 3–10 days | Major expedition across multiple terrains |
+| d12 | 12 | ~6 | 4–12 days | Epic overland crossing or legendary quest |
 
-**Journey Length Guidelines:**
+> **Design note**: d4 and d6 cover the vast majority of journeys. Use d8+ sparingly—only when the journey's narrative scope justifies many days of travel.
 
-| Die | Steps | Best For |
-|-----|-------|----------|
-| d4 | 4 | Short journey (2–3 days in good conditions) |
-| d6 | 6 | Standard journey (3–5 days, the default) |
-| d8 | 8 | Long journey (5–8 days, crossing a region) |
-| d10 | 10 | Epic journey (a week or more, crossing multiple terrains) |
-
-> **Design note**: d4 and d6 cover the vast majority of journeys. Use d8+ sparingly—only when the journey's scope justifies many days of travel. An overly long journey challenge risks becoming tedious rather than tense.
-
-### Checkpoints: Segmented Journeys
+### Checkpoints
 
 Long or complex journeys can be broken into **segments** separated by **checkpoints**. Each segment uses its own challenge die, with progress and consequences resolved at each checkpoint before the next segment begins.
 
 **Checkpoint types:**
 - **Settlement (🏘️):** Resupply, safe rest, gather information
 - **Landmark (🗿):** Navigation aid (+1 boon next Navigation roll), morale boost (remove 1 fatigue from one party member)
-- **Camp (⛺):** Good shelter (auto-succeed on shelter), water source, hunting ground (+1 boon on Forager/Hunter rolls)
-- **Danger Zone (⚠️):** Scripted encounter or environmental hazard (see Hidden Checkpoints below)
+- **Camp (⛺):** Good shelter (auto-succeed on shelter), water source (+1 boon on Forager/Hunter/Fisher rolls)
+- **Danger Zone (⚠️):** Scripted encounter or environmental hazard (see below)
 
 > **Example**: A journey from a coastal city to a mountain fortress might be split into two segments: coast-to-foothills (d6 challenge die) with a settlement checkpoint, then foothills-to-fortress (d4 challenge die) through difficult terrain.
 
 ### Hidden Checkpoints (Danger Zones)
 
-The GM may designate **hidden checkpoints** along a journey—danger zones, ambush points, or unintended waypoints that the party does not know about in advance. These are triggered when the challenge die is reduced to a specific value set by the GM.
+The GM may designate **hidden checkpoints**—danger zones, ambush points, or unintended waypoints that the party does not know about in advance. These are triggered when the challenge die is reduced to a specific value set by the GM.
 
-When the challenge die reaches the hidden checkpoint's trigger value, the GM immediately interrupts normal travel to resolve a special event or hazard before the journey continues.
+When the challenge die reaches the trigger value, the GM immediately interrupts normal travel to resolve a special event or hazard before the journey continues.
 
-> **Example**: On a d8 journey through the desert, the GM secretly notes a hidden checkpoint at value 4 (the halfway point). When the party reduces the challenge die to 4, they stumble into a sandstorm-blasted canyon—a scripted danger that must be dealt with before the journey can continue.
+> **Example**: On a d8 journey through the desert, the GM secretly notes a hidden checkpoint at value 4 (the halfway point). When the party reduces the challenge die to 4, they stumble into a sandstorm-blasted canyon that must be dealt with before travel can continue.
 
-### Daily Progress
+### Ration Planning
 
-Each day of travel, the party's progress is determined by the **Navigator's roll** and modified by terrain and mounts. Progress is measured as points of reduction on the challenge die.
+Each pack of rations has 3 uses. A Supply Check is rolled each day.
+- Normal conditions: ~1 pack per person per 6 days (d6 supply die average)
+- Extreme heat (desert): Double Supply Checks, ~1 pack per 3 days
+- Extreme cold: +1 bane on checks, ~1 pack per 4–5 days
+- Safety margin: Add 1–2 extra packs for emergencies
 
-**Navigation Roll Results (progress per day):**
+---
+
+## Travel Roles
+
+Each party member fills one role per travel day. Two mandatory roles must be assigned; remaining party members may take optional roles.
+
+**Multi-role rule:** A character filling more than one role suffers +1 bane per additional role on all role rolls that day.
+
+**Shared role rule:** If two or more characters share the same optional role, the primary roller gains +1 boon.
+
+### Navigator (Mandatory)
+
+**Roll:** Spirit + Nature or Mind + Education vs. **Terrain TN** (see Environment Stat Blocks)
+
+The Navigator determines how much progress the party makes each day.
 
 | Result | Progress | Additional Effect |
 |--------|----------|-------------------|
@@ -89,7 +116,121 @@ Each day of travel, the party's progress is determined by the **Navigator's roll
 - Make a discovery (find something useful or interesting)
 - Party is well-rested (one party member removes 1 fatigue)
 
-**Terrain Modifiers (progress per day):**
+### Scout (Mandatory)
+
+**Roll:** Spirit + Perception vs. **TN 8**
+
+The Scout surveys the surroundings, finds safe camps, and provides early warning of events ahead.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | No shelter found, +1 bane on daily event roll, party is surprised by any encounter |
+| Failure | No shelter found, +1 bane on daily event roll |
+| Weak Success | Choose one: find shelter, +1 boon on daily event roll, or make a discovery |
+| Strong Success | Choose two of the above |
+| Critical Success | Choose all three, **or** skip the daily event roll entirely |
+
+### Lookout (Optional)
+
+**Roll:** Spirit + Perception vs. **TN 8**
+
+The Lookout watches for threats during travel, providing early warning and reaction time.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | Distracted — the party is surprised by the next encounter (enemies gain a free round) |
+| Failure | No useful warning |
+| Weak Success | Spot approaching threats at long range — party can prepare or attempt to avoid |
+| Strong Success | Spot threats at extreme range — party can prepare, avoid, or set an ambush |
+| Critical Success | Spot all threats for the day — party cannot be surprised and gains +1 boon on initiative if combat occurs |
+
+### Quartermaster (Optional)
+
+**Roll:** Mind + Education vs. **TN 8**
+
+The Quartermaster manages supplies, ensures gear is maintained, and optimizes ration use.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | Supplies mismanaged — one random pack item loses 1 use or requires a Durability check |
+| Failure | No effect |
+| Weak Success | Efficient rationing — one party member skips their daily Supply Check for rations |
+| Strong Success | Efficient rationing — two party members skip their daily Supply Check for rations |
+| Critical Success | Efficient rationing — all party members skip their daily Supply Check; additionally, one worn item is maintained (skip its next Durability check) |
+
+### Forager (Optional)
+
+**Roll:** Mind + Nature vs. **TN 8** (modified by terrain; see Environment Stat Blocks for resource pressure)
+
+The Forager searches for edible plants, clean water, and useful materials along the route.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | Poisonous find — one party member must roll Spirit + Fortitude vs. TN 8 or gain the poisoned condition |
+| Failure | Nothing found |
+| Weak Success | Gather enough to feed 1 party member for the day (no Supply Check for them) |
+| Strong Success | Gather enough to feed 2 party members for the day |
+| Critical Success | Gather enough to feed the entire party for the day; additionally, find 1d4 useful herbs or materials |
+
+> **Terrain modifier:** In terrain with Low resource pressure, the Forager rolls with +1 boon. In terrain with High or Extreme resource pressure, the Forager rolls with +1 bane. Foraging is impossible in Extreme resource pressure terrain (desert, tundra) unless a specific water/food source is found.
+
+### Hunter (Optional)
+
+**Roll:** Spirit + Survival vs. **TN 10** (requires game in the region)
+
+The Hunter tracks and kills game to supplement or replace rations.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | Dangerous prey — attract a predator; GM rolls on the terrain encounter table |
+| Failure | No game found |
+| Weak Success | Small game — feed 2 party members for the day (no Supply Check for them) |
+| Strong Success | Good catch — feed 4 party members for the day |
+| Critical Success | Excellent catch — feed the entire party for the day; surplus can be preserved as 1 pack of rations (3 uses) |
+
+> **Availability:** Hunting is only possible in terrain where game exists. Check the Environment Stat Block for the terrain's resource pressure. Hunting is impossible in Extreme resource pressure terrain unless a specific game trail or hunting ground is found.
+
+### Fisher (Optional)
+
+**Roll:** Spirit + Survival vs. **TN 8** (requires a water source)
+
+The Fisher catches fish from rivers, lakes, or coastal waters.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | Dangerous water — fall in, attract a water predator, or lose equipment (1 item requires Durability check) |
+| Failure | No catch |
+| Weak Success | Small catch — feed 1 party member for the day (no Supply Check for them) |
+| Strong Success | Good catch — feed 2 party members for the day |
+| Critical Success | Excellent catch — feed 4 party members for the day; surplus can be preserved as 1 pack of rations (3 uses) |
+
+> **Availability:** Fishing is only possible near a water source. The GM determines availability based on the terrain and route.
+
+---
+
+## Daily Travel Procedure
+
+At the **end of each travel day**, resolve the following steps in order.
+
+### Step 1 — Declare Forced March (Optional)
+
+Before rolling, the party may declare a **forced march**:
+- Gain **+1 progress** for the day
+- Each party member gains **1 fatigue** at the end of the day
+- Cannot force march on consecutive days without gaining additional fatigue
+
+### Step 2 — Roll All Travel Roles
+
+All assigned roles roll simultaneously:
+- **Navigator** vs. Terrain TN → determines base progress
+- **Scout** vs. TN 8 → determines shelter and event modifiers
+- **Optional roles** vs. their respective TNs → determine supplemental effects
+
+### Step 3 — Calculate Progress
+
+**Total progress** = Navigator result + Terrain modifier + Mount bonus + Forced march bonus (minimum 0)
+
+**Terrain Modifiers:**
 
 | Terrain | Modifier |
 |---------|----------|
@@ -102,120 +243,41 @@ Each day of travel, the party's progress is determined by the **Navigator's roll
 - Riding horse: +1 progress (not in difficult terrain)
 - Draft animal with wagon: –1 progress (carries more supplies)
 
-### Forced March
+Reduce the challenge die by the total progress.
 
-The party may choose to push hard for extra distance. Before rolling:
-- Gain **+1 progress** for the day
-- Each party member gains **1 fatigue** at the end of the day
-- Cannot force march on consecutive days without gaining additional fatigue
+### Step 4 — Check Arrival and Hidden Checkpoints
 
-This keeps the pace choice simple and dramatic: conserve energy or push to arrive faster.
+- If the challenge die reaches **0**, the party arrives at the destination or the next checkpoint.
+- If the die hits a **hidden checkpoint** value set by the GM, resolve that event before continuing.
 
----
+### Step 5 — Roll the Daily Event
 
-## Daily Travel Procedure
-
-At the **end of each travel day**, resolve the following:
-
-### 1. Decide Forced March (Optional)
-Declare if the party attempts a forced march (+1 progress, everyone gains 1 fatigue).
-
-### 2. All Roles Roll
-
-**Navigator (mandatory)** — Spirit + Nature or Mind + Education vs. Terrain TN:
-- Determines progress based on result (see table above)
-
-**Scout (mandatory)** — Spirit + Perception vs. TN 8:
-- Blunder/Failure: +1 bane on the daily event roll
-- Weak Success: Choose one — find shelter, +1 boon on daily event roll, or make a discovery
-- Strong Success: Choose two
-- Critical Success: Choose all three, or skip the daily event roll entirely
-
-**Optional roles:** Lookout, Quartermaster, Forager, Hunter, Fisher roll as needed.
-
-*Multiple roles per person: +1 bane per additional role. Multiple people in same role: +1 boon to the roller.*
-
-### 3. Calculate Progress
-
-**Total progress** = Base progress (Navigator result) + Terrain modifier + Mount bonus + Forced march bonus (minimum 0)
-
-Reduce the journey's challenge die by the total progress. If the challenge die reaches 0, the party arrives at the destination or checkpoint.
-
-If a hidden checkpoint is triggered (challenge die reaches the GM's designated value), resolve that event before continuing.
-
-### 4. Roll the Daily Event
-
-At the end of each travel day, the GM rolls **1d6** on the **Travel Event Table** to determine what occurs. This replaces the encounter die system and follows the same structure used across all time scales in the [Scene & Time Scale Procedures](scene-timescale-procedures.md).
+The GM rolls **1d6** on the Travel Event Table. The Scout's result may add a boon, bane, or skip this roll entirely.
 
 #### Travel Event Table (d6)
 
 | d6 | Category | What Happens |
 |----|----------|--------------|
-| 1 | **Encounter** | You cross paths with creatures, travelers, or a hostile force. Roll on a region/terrain-appropriate encounter table to determine what you meet. |
+| 1 | **Encounter** | You cross paths with creatures, travelers, or a hostile force. Roll on a region/terrain-appropriate encounter table. |
 | 2 | **Wear and Tear** | Long days on the road strain gear. Each adventurer chooses one item: worn armor, weapons, or tools require a Durability check, or a pack item loses 1 use. |
 | 3 | **Provisions Dwindle** | Food runs low, water sources dry up, or stored rations go bad. Roll a Supply check for provisions. |
-| 4 | **Route Shift** | Conditions change along the route. Roll d3: [1] Weather turns harsh (next day's Navigation roll suffers +1 bane). [2] A road or bridge is damaged or blocked (challenge die increases by 1). [3] Terrain becomes more difficult than expected (–1 progress tomorrow). |
+| 4 | **Route Shift** | Conditions change along the route. Roll d3: [1] Weather turns harsh (+1 bane on next Navigation roll). [2] Road or bridge blocked (challenge die increases by 1). [3] Terrain harder than expected (–1 progress tomorrow). |
 | 5 | **Traces** | Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead or off the beaten path. |
 | 6 | **Ambient** | A striking sunset, a cool breeze, or a peaceful night. Atmosphere and flavor, but nothing of note occurs. |
 
-> **Design note**: The daily event roll happens once per day and is not tied to a timer countdown. The Scout's roll can modify the event outcome (boons/banes on the roll) or allow the party to skip it entirely on a critical success. For terrain-specific encounters (result of 1), consult the encounter tables in the Environment Stat Blocks section below.
-
-### 5. Make Camp and Rest
+### Step 6 — Make Camp and Rest
 
 **Supply Check:** Each party member rolls a Supply Check for their rations (roll supply die: 1–3 = spend 1 use, 4+ = no change).
 - In extreme heat (desert): Roll Supply Check **twice** (increased water needs)
 - In extreme cold: +1 bane on Supply Check (increased caloric needs)
-- **Optional:** Spend 1 additional use to recover 1 fatigue (once per day)
+- **Optional:** Spend 1 additional ration use to recover 1 fatigue (once per day)
+- Supply Checks may be skipped for party members fed by Forager, Hunter, or Fisher results, or by the Quartermaster's effect.
 
-**Shelter:** Based on Scout's success, the party has shelter or not.
+**Shelter:** Based on Scout's result, the party has shelter or not.
 - With shelter: Auto-succeed on rest, no fatigue gained
 - Without shelter: Roll Strength + Fortitude vs. TN 8 or gain 1 fatigue
 
 **Night watch:** Assign watches. Perception checks if night encounters occur.
-
----
-
-## Travel Roles
-
-### Navigator (Mandatory)
-Roll **Spirit + Nature** or **Mind + Education** for progress.
-- Strong+ success: Choose bonuses (on track, discovery, well-rested)
-- Failure: Complications or slower progress
-- Blunder: Get lost
-
-### Scout (Mandatory)
-Roll **Spirit + Perception** to modify encounters and find shelter.
-- Critical success: Can skip encounter roll entirely
-- Strong+ success: Find shelter, avoid danger, make discovery
-- Failure/Blunder: Increase encounter frequency, surprised in combat
-
-### Optional Roles
-
-**Lookout:** Roll Spirit + Perception during travel to spot encounters early, allowing preparation or avoidance.
-
-**Quartermaster:** Manages supplies, tracks rations, ensures efficient resource use.
-
-**Forager:** Roll Mind + Nature to gather food, reducing ration consumption.
-
-**Hunter:** Roll Spirit + Survival to hunt game (requires game in region), reducing ration consumption.
-
-**Fisher:** Roll Spirit + Survival near water to catch fish, reducing ration consumption.
-
----
-
-## Route Planning
-
-Before departure, establish the journey parameters:
-
-1. **Define route:** Origin, destination, and path through terrain types
-2. **Estimate journey length:** Choose an appropriate challenge die (d4–d10) for each segment based on terrain and distance (GM determines)
-3. **Identify checkpoints:** Divide long journeys into segments with checkpoints (settlements, landmarks, danger zones); assign a separate challenge die to each segment
-4. **Set hidden checkpoints:** Note any hidden danger zones and their trigger values on the challenge die
-5. **Plan rations:** Each pack of rations has 3 uses. Roll a Supply Check each day.
-   - Normal conditions: ~1 pack per person per 6 days (d6 supply die average)
-   - Extreme heat (desert): Double Supply Checks, ~1 pack per 3 days
-   - Extreme cold: +1 bane on checks, ~1 pack per 4–5 days
-   - Safety margin: Add 1–2 extra packs for emergencies
 
 ---
 
@@ -673,61 +735,3 @@ Each terrain type has mechanical properties that affect travel difficulty, daily
 2. Demon bound in swamp breaks free (Tier 8+ Lord encounter)
 3. Necromantic corruption spreads (become undead or flee)
 4. Portal to shadow realm opens (Tier 7–8 horror invasion)
-
----
-
-## Quick Reference
-
-**Each Travel Day (End of Day):**
-1. Decide if forced march (optional: +1 progress, gain 1 fatigue)
-2. All roles roll (Navigator vs Terrain TN; Scout vs TN 8; optional roles)
-3. Calculate total progress: Base (Navigator) + terrain modifier + mount + forced march (minimum 0)
-4. Reduce the journey's challenge die by total progress; if die reaches 0, arrive at destination/checkpoint
-5. Roll 1d6 on Travel Event Table → resolve
-6. Make camp: Supply Checks, shelter (affects fatigue), night watches
-
-**Navigation Results:**
-
-| Result | Progress |
-|--------|----------|
-| Blunder | 0 (get lost, challenge die +1) |
-| Failure | 1 |
-| Weak Success | 2 |
-| Strong Success | 2 + choose a bonus |
-| Critical Success | 3 + choose two bonuses |
-
-**Terrain Modifiers:**
-
-| Terrain | Modifier |
-|---------|----------|
-| Easy (roads) | +1 progress |
-| Normal (plains) | No modifier |
-| Moderate (forest, hills, desert, tundra) | –1 progress (minimum 0) |
-| Difficult (mountains, swamp, jungle, haunted) | –1 progress and +1 bane on Navigation (minimum 0) |
-
-**Journey Length (Challenge Die):**
-
-| Die | Best For |
-|-----|----------|
-| d4 | Short journey (2–3 days) |
-| d6 | Standard journey (3–5 days) |
-| d8 | Long journey (5–8 days) |
-| d10 | Epic journey (a week or more) |
-
-**Travel Event Table (d6):**
-
-| d6 | Event |
-|----|-------|
-| 1 | Encounter — roll on terrain encounter table |
-| 2 | Wear and Tear — Durability check or lose 1 use |
-| 3 | Provisions Dwindle — roll Supply check |
-| 4 | Route Shift — weather, blocked path, or harder terrain |
-| 5 | Traces — clues and signs of what lies ahead |
-| 6 | Ambient — flavor, nothing significant |
-
-**Supply Check (rations):**
-- Roll supply die (d4/d6/d8)
-- 1–3: Spend 1 use (out of 3 per pack)
-- 4+: No change
-- Optional: Spend extra use to recover 1 fatigue (once per day)
-- Extreme heat: Roll twice; extreme cold: +1 bane
