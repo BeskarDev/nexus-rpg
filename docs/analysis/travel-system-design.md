@@ -172,7 +172,7 @@ The Forager searches for edible plants, clean water, and useful materials along 
 | Strong Success | Gather enough to feed 2 party members for the day |
 | Critical Success | Gather enough to feed the entire party for the day; additionally, find 1d4 useful herbs or materials |
 
-> **Terrain modifier:** In terrain with Low resource pressure, the Forager rolls with +1 boon. In terrain with High or Extreme resource pressure, the Forager rolls with +1 bane. Foraging is impossible in Extreme resource pressure terrain (desert, tundra) unless a specific water/food source is found.
+> **Terrain modifier:** In terrain with Low resource pressure, the Forager rolls with +1 boon. In terrain with High or Extreme resource pressure, the Forager rolls with +1 bane. Foraging is impossible in Extreme resource pressure terrain (desert, tundra) unless a specific water/food source is found. See the **Resource Pressure** field in each Environment Stat Block below.
 
 ### Hunter (Optional)
 
