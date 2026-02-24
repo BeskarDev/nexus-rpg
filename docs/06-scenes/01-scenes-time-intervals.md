@@ -6,11 +6,13 @@ sidebar_position: 1
 
 ![banner-img](/img/banner/scenes-banner.png)
 
-When you play this game, you do so in separate scenes. Each scene operates at a specific time scale that matches the speed and scope of the current action. Understanding scenes and their time scales helps the GM pace the session and gives players a clear sense of how much time passes with each action they take.
+Every session unfolds through a series of **scenes** — distinct moments of tension, decision, and consequence. Each scene has a clear goal and some obstacle standing in the way, and it plays out at a **time scale** that reflects the pace of the action: a desperate battle plays out second by second, while an overland journey is measured in days.
+
+Time scales tell everyone at the table how much time each action takes, keeping the fiction grounded and the pacing sharp. The GM doesn't need to enforce scene boundaries rigidly — they are a tool for framing the story, not a strict procedural requirement.
 
 ## Scenes
 
-A scene is a formalized construct used to segment encounters and distinct parts of a gaming session. A scene has a clear goal or objective, some kind of obstacle or complication for reaching that goal, and takes place in distinct time intervals per action. GMs don't have to enforce distinct scenes explicitly during play; they are more of a tool for time management and pacing.
+A scene begins when the adventurers face a situation with a clear goal and ends once that goal is achieved, made impossible, or the group can step back and reassess. A battle, a tense negotiation, a dangerous descent through a ruin — each is its own scene with its own rhythm. Scenes don't have to be called out explicitly; they emerge naturally from play.
 
 > **How do I know when a scene begins or ends?**
 > A scene begins once the adventurers encounter a specific situation with a specific goal they want to achieve or avert. The scene ends once that goal is reached or is made impossible. In other words, once the adventurers have the option to take a break and re-evaluate their next steps, a previous scene has probably ended.

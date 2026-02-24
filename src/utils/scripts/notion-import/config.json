@@ -242,9 +242,9 @@
         "title": "🔨 Crafting Professions",
         "banner": "/img/banner/crafting-banner.png"
       },
-      "Scenes & Time": {
+      "Scenes & Time Scales": {
         "target": "docs/06-scenes/01-scenes-time-intervals.md",
-        "title": "🎭 Scenes & Time",
+        "title": "🎭 Scenes & Time Scales",
         "banner": "/img/banner/scenes-banner.png"
       },
       "Resting": {
