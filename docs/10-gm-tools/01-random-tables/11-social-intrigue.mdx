@@ -1,0 +1,118 @@
+---
+sidebar_position: 11
+---
+
+import RollableTable from '@site/src/components/RollableTable'
+
+# 🗣️ Social Intrigue
+
+Use these tables to quickly generate the key social parameters for an NPC involved in a Social Intrigue scene. Roll once on each table or pick results that fit the situation. See the [Social Intrigue rules](../../06-scenes/08-social-intrigue.md) for full details on how these parameters work in play.
+
+---
+
+## NPC Disposition (Starting Interest Modifier)
+
+Roll to determine the NPC's initial attitude toward the adventurers before the request is made. This gives an **Interest modifier** — combine it with the Request Alignment modifier below, then look up the result in the Interest table to find the effective TN modifier.
+
+<RollableTable singleRoll>
+| 2d6 | Disposition | Interest Modifier |
+| --- | --- | --- |
+| 2 | Hateful | Breakdown (immediate refusal) |
+| 3–4 | Hostile | −2 |
+| 5–6 | Suspicious | −1 |
+| 7–9 | Indifferent | +0 |
+| 10–11 | Friendly | +1 |
+| 12 | Intimate | +2 |
+</RollableTable>
+
+**Interest Levels** (sum of Disposition + Request Alignment modifiers):
+
+| Total Modifier | Interest | TN Modifier |
+| --- | --- | --- |
+| −1 or lower | Resistant | +2 (or Breakdown if below −1) |
+| 0 | Skeptical | +1 |
+| +1 | Open | +0 |
+| +2 | Receptive | −1 |
+| +3 or higher | Eager | −2 |
+
+---
+
+## Request Alignment
+
+Roll or choose how well the adventurers' request aligns with the NPC's interests. Apply this modifier to the starting Interest from Disposition above.
+
+<RollableTable singleRoll>
+| d6 | Request Alignment | Interest Modifier |
+| --- | --- | --- |
+| 1–2 | Opposed — directly against the NPC's goals or safety | −1 |
+| 3–4 | Neutral — neither harms nor benefits the NPC | +0 |
+| 5–6 | Aligned — directly serves the NPC's desires or values | +1 |
+</RollableTable>
+
+---
+
+## Patience
+
+Roll to determine how many exchanges the NPC will tolerate before making up their mind.
+
+<RollableTable singleRoll>
+| d6 | Patience | Die | Best For |
+| --- | --- | --- | --- |
+| 1–2 | Hurried | d4 | Busy merchant, nervous informant, impatient noble |
+| 3–4 | Measured | d6 | Typical NPC with competing interests |
+| 5–6 | Deliberate | d8 | Cautious official, slow-to-trust elder, careful conspirator |
+</RollableTable>
+
+---
+
+## NPC Motivations
+
+Roll twice to generate two distinct Motivations. Each can be appealed to once per challenge for +1 Interest.
+
+<RollableTable>
+| d20 | Motivation | Example Appeal |
+| --- | --- | --- |
+| 1 | *Desire: Profit* | Offer generous payment or a share of future earnings |
+| 2 | *Desire: Power* | Promise greater authority, access, or influence |
+| 3 | *Desire: Status* | Offer public recognition, a title, or an introduction to someone important |
+| 4 | *Desire: Knowledge* | Share rare information, secrets, or access to forbidden lore |
+| 5 | *Desire: Comfort* | Offer safety, luxury, or relief from hardship |
+| 6 | *Fear: Exposure* | Promise discretion and offer to bury evidence of past wrongdoing |
+| 7 | *Fear: Rivals* | Name a shared enemy and show how the request disadvantages them |
+| 8 | *Fear: Poverty* | Demonstrate that the request protects or improves their livelihood |
+| 9 | *Fear: Violence* | Show that cooperating is safer than refusing |
+| 10 | *Fear: Failure* | Frame the request as the safest path to avoiding disaster |
+| 11 | *Bond: Family* | Frame the request in terms of protecting or honoring their kin |
+| 12 | *Bond: Loyalty* | Invoke a shared mentor, faction, or past alliance |
+| 13 | *Bond: Home* | Connect the request to the safety or prosperity of their community |
+| 14 | *Bond: Old Debt* | Remind them of a past favor owed — tactfully |
+| 15 | *Value: Justice* | Demonstrate that the request serves fairness or punishes wrongdoing |
+| 16 | *Value: Honor* | Appeal to their reputation as someone who keeps their word |
+| 17 | *Value: Tradition* | Frame the request within cultural norms or ancient precedent |
+| 18 | *Value: Faith* | Invoke a shared deity, ritual, or spiritual obligation |
+| 19 | *Value: Craft Pride* | Acknowledge the difficulty of the task and their unique expertise |
+| 20 | *Value: Legacy* | Frame the request as part of a story worth telling about them |
+</RollableTable>
+
+---
+
+## NPC Pitfalls
+
+Roll once or twice to generate Pitfalls. Triggering a Pitfall reduces Interest by −1; if Interest drops below Resistant, the intrigue ends in a Breakdown.
+
+<RollableTable>
+| d12 | Pitfall | Trigger |
+| --- | --- | --- |
+| 1 | *Threat: Past crimes* | Implying you know something they want hidden — feels like blackmail |
+| 2 | *Threat: Rival leverage* | Mentioning their rivals in a way that sounds like a threat or deal |
+| 3 | *Insult: Underestimating them* | Suggesting the task is trivial, easy, or beneath their usual standard |
+| 4 | *Insult: Doubting their word* | Questioning their honesty or asking for excessive guarantees |
+| 5 | *Insult: Comparing unfavorably* | Naming someone else who could do the job better |
+| 6 | *Taboo: Forbidden topic* | Raising a subject they consider deeply private, sacred, or shameful |
+| 7 | *Taboo: Cultural violation* | Committing a gesture, phrase, or act that breaches local custom |
+| 8 | *Rival: Hated faction* | Invoking the name of a group they despise, even innocently |
+| 9 | *Rival: Personal enemy* | Associating the request with someone they have bad history with |
+| 10 | *Fear trigger: Exposure* | Describing the plan in a way that emphasizes their legal or social risk |
+| 11 | *Pride wound: Old failure* | Referencing a past mistake or defeat, however unintentionally |
+| 12 | *Loyalty conflict: Prior oath* | The request conflicts with a promise or obligation they've already made |
+</RollableTable>
