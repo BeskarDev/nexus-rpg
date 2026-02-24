@@ -2,200 +2,131 @@
 sidebar_position: 1
 ---
 
-# 🎭 Scenes & Time Intervals
+# 🎭 Scenes & Time Scales
 
 ![banner-img](/img/banner/scenes-banner.png)
 
-When you play this game, you do so in separate scenes which each fall into one of the following time intervals. Which time interval you are in with your scene depends on the speed and scope of your group's current storytelling.
+When you play this game, you do so in separate scenes. Each scene operates at a specific time scale that matches the speed and scope of the current action. Understanding scenes and their time scales helps the GM pace the session and gives players a clear sense of how much time passes with each action they take.
+
+## Scenes
+
+A scene is a formalized construct used to segment encounters and distinct parts of a gaming session. A scene has a clear goal or objective, some kind of obstacle or complication for reaching that goal, and takes place in distinct time intervals per action. GMs don't have to enforce distinct scenes explicitly during play; they are more of a tool for time management and pacing.
 
 > **How do I know when a scene begins or ends?**
-A scene begins once the adventurers encounter a specific situation with a specific goal they want to achieve or avert. The scene ends once that goal is reached or is made impossible. In other words, once the adventurers have the option to take a break and re-evaluate their next steps, a previous scene has probably ended.
-The most simple example are combat scenes, which begin once the combatants encounter each other and start fighting. The scene ends when the adventurers defeat their foes, have to flee, or are defeated.
-> 
+> A scene begins once the adventurers encounter a specific situation with a specific goal they want to achieve or avert. The scene ends once that goal is reached or is made impossible. In other words, once the adventurers have the option to take a break and re-evaluate their next steps, a previous scene has probably ended.
+> The most simple example are combat scenes, which begin once the combatants encounter each other and start fighting. The scene ends when the adventurers defeat their foes, have to flee, or are defeated.
 
-Each time interval has its own definition of a turn, which is a period a single action for the current time interval takes. Turns help to keep the story moving along and not dragging down. You can generally do things that take a lot less time than your current time interval turns without needing a whole turn to do them.
+## Time Scales
 
-Different abilities call for these time interval turns to determine the duration or execution time of an effect or ability.
+Each scene operates in exactly one of the following time scales. Each Action the adventurers perform during a scene takes the designated amount of time.
 
-During more stretched-out portions of play, you might skip turns to progress the story naturally. You might also want to end certain scenes early when their outcome is certain and just narrate the end of it shortly. For example when the winners of a combat are already determined, but some enemies remain. Instead of going through the motions, without any remaining danger of losing, that combat can just end and the adventurers decide what they do with those remaining enemies.
-
-## Encounter
-
-Any situation in which moment-to-moment actions matter and every few seconds can count. Can either be combats against enemies, or more indirect struggles, such as a chase or escape.
-
-Encounter scenes are counted in seconds. One encounter turn usually covers about 5-10 seconds.
-
-They are also generally more rigorous and less free-flowing than those of other time intervals. Therefore actions during combat are described in more detail in their own rules section.
-
-### Encounter Activities
-
-- Any combat action
-- Sprint a short distance
-- Throw over a pile of crates
-- Quickly look out for danger
-- Attack with a weapon
-- Jump over a narrow chasm
-- …
-
-## Delving
-
-The act of carefully traversing an unknown space, looking out for traps and hidden enemies. This can be in the corridors and rooms of a dungeon, or through other environments.
-
-Delving scenes are counted in minutes. One delving turn usually covers about 5-10 minutes.
-
-### Delving Activities
-
-- Take a short break
-- Move from one room to the next
-- Search a room
-- Pick the lock of a door or container
-- Disable a trap
-- Sneak around a group of hostile creatures
-- Have a short conversation
-- …
-
-## Exploration
-
-When you travel through an environment with an unknown or hidden destination you attempt to reach. For example, when tracking through a forest to reach an old watchtower, which has been abandoned for decades.
-
-Exploration scenes are counted in hours. One exploration turn usually covers about 2-4 hour.
-
-### Exploration Activities
-
-- Navigate through a local natural environment
-- Track down a creature
-- Build a quick construction
-- Decipher the meaning of hieroglyphics, runes, or other uncommon scripts
-- Set up camp and take a night’s rest (multiple exploration turns)
-- …
-
-## Travel
-
-Whenever you traverse large distances by sea or land. While exploration deals with finding an unknown location, travel generally deals with a known (and maybe even highly documented) destination. There might be developed roads with settlements along them to guide you, or you have to travel by stars through an immense desert. Also use the scope of travel turns for staying in one area for a longer time, doing some continuous activity.
-
-Travel scenes are counted in days. One travel turn usually covers about one or more days.
-
-### Travel Activities
-
-- Hike a day-long route
-- Hunt for game or forage in a local area
-- Gather supplies for the journey
-- Navigate through challenging terrain
-- Take a full rest
-- …
-
-First, determine your destination for travel. The time it takes to predictably reach that target determines the amount of resources required. A journey longer than two weeks can‘t be supplied by what you can carry anymore, you will need to find provisions in the wild, or carry transportation for large amounts of rations with you. A journey can also consist of different stretched of travel, if the circumstances or terrain changed drastically on the way. 
-
-| Time Traveled | A day | a few days | a week | two weeks |
-| --- | --- | --- | --- | --- |
-| Food Consumed | roll a Supply Check | 1 unit | 2 units | 4 units |
-| Water Consumed* | roll a Supply Check | 1 unit | 2 units | 4 units |
-
-* The provision consumption is doubled for very hot climates, because of the increases need for water.
-
-At the start of travel, you must determine who in your group takes on one of the following roles: Navigator (mandatory), Scout (mandatory), Forager (optional), Hunter (optional), or Fisher (optional). One adventurer can also take over multiple roles, but suffers +1 bane on their travel rolls for each roll they take beyond the first. In a similar manner, multiple members of the group can take over the same role (expect navigating). Only one of them rolls the test, but gains +1 boon for everyone else participating.
-
-### Navigator
-
-*Using their knowledge of geography, terrain, and weather patterns, the Navigator guides the party through treacherous landscapes and helps them avoid obstacles and hazards along the way.*
-
-This role is mandatory for travel. Roll Spirit + Nature.
-
-**Blunder.** Choose two from „off course“, „complications“, or „slowed down“.
-**Failure**. Choose one instead.
-**Weak.** Choose one from „fast pace“, „unexhausted“, or „well on track“.
-**Strong.** Choose two instead.
-**Critical.** Choose all three instead.
-
-#### Outcomes
-
-- „off course“: You are lost and need to retrace your steps. Your group suffers +1 bane on the next navigation roll.
-- „complications“: The GM determines a complication your group encounters, such as bad weather, dangerous terrain, or something else entirely.
-- „slowed down“: Reduce the distance traveled by one step, or increase the time taken for a set distance.
-- „fast pace“: Increase the distance traveled by one step, or reduce the time taken for a set distance.
-- „unexhaused“: Your group gains +1 boon on the Strength + Fortitude roll at the end of travel.
-- „well on track“: You have chosen your route well, making it easier to continue. Your group gains +1 boon on the next navigation roll.
-
-### Scout
-
-*Through stealth and reconnaissance, the Scout is able to move quickly and quietly through the wilds, alerting the party to any potential dangers ahead.*
-
-This role is mandatory for travel. Roll Spirit + Perception.
-
-**Blunder.** Choose both from „surprised“, „unwanted attention“.
-**Failure**. Choose one instead.
-**Weak.** Choose one from „find shelter“, „avoid danger“, and „make a discovery“.
-**Strong.** Choose two.
-**Critical.** Choose all three.
-
-#### Outcomes
-
-- „surprised“: When starting an encounter, the group is unaware of the danger and suffers +1 bane on their Initiative roll.
-- „unwanted attention“: Increase the Event Die by one step (max. d12).
-- „find shelter“: If you also carry a camping kit and have enough provisions, you avoid a bad night.
-- „avoid danger“: Decrease the Event Die by one step (min. d4).
-- „make a discovery“: You find something or someone useful. This might be a caravan of traders able to fill up your supplies, a secret cache of coins, or a good spot for one of your foragers, hunters, or fisher, granting them +1 boon on their roll.
-
-### Forager
-
-*Identifying and gathering edible plants and other resources, the Forager ensures the party always has enough food and supplies to keep going.*
-
-Roll Mind + Nature.
-
-**Weak.** Roll a Supply Check* instead of consuming one unit of provisions, materials, or medicinal herbs (your choice).
-**Strong.** Roll a Supply Check* instead of consuming both one unit of provisions. You also find one unit of materials, or medicinal herbs (your choice).
-**Critical.** Consume one less unit of provisions. You also find one unit of materials and medicinal herbs.
-
-### Hunter
-
-*Equipped with a sharp eye and a deadly aim, the Hunter tracks and takes down wild game to provide sustenance for the party.*
-
-While traveling in a region with game available, you can roll a Spirit + Survival test.
-
-**Blunder.** Increase the Event Die by one step (max. d12).
-**Weak.** Roll a Supply Check* instead of automatically consuming one unit of provisions.
-**Strong.** Consume one less unit of provisions.
-**Critical.** Consume two less units of provisions. If this leads to a surplus of provisions, instead gain the amount of provisions units not consumed.
-
-### Fisher
-
-*Whether wading in a stream or setting up traps along the shoreline, the Fisher provides the party with a reliable source of fresh fish to supplement their diet.*
-
-While traveling with fishing tools and fitting lakes or rivers on your way, roll Spirit + Survival.
-
-**Weak.** Roll a Supply Check* instead of automatically consuming one unit of provisions.
-**Strong.** Consume one less unit of provisions.
-**Critical.** Consume one less unit of provisions. Roll a Supply Check* instead of automatically consuming another one unit of provisions.
-
-* If you already only had to roll a Supply Check anyway, instead skip it and don‘t consume that unit.
-
-### Ending Travel
-
-First, the adventurers must roll the Event Die. The size of the die is based on the environment, that the adventurers moved through and the results of their rolls during travel. The result of the die determines the nature of a noteworthy event during the adventurers travels, or nothing happens at all. The GM will describe the event.
-
-| Event Die Result | Event Type | Examples |
+| **Time Scale** | **One Action** | **Examples of Actions** |
 | --- | --- | --- |
-| 1 (good) | Something lucky, pleasant, or helpful. | A lost treasure trove, or stumble upon a rare herb with medicinal properties. |
-| 2-3 (neutral) | Nothing interesting. | Seeing a beautiful sunset, or coming across a small village |
-| 4-6 (bad) | Something dubious, or potentially harmful. | Coming across a ruined village with signs of recent violence, or encounter a group of hostile bandits demanding a toll. |
-| 7-9 (perilous) | Something violent, aggressive, or hurtful. | Ambushed by a pack of hungry wolves, or fall into a hidden pit trap. |
-| 10-11 (dire) | Something very dangerous, or terrifying. | Find yourself lost in a treacherous maze, or encounter a wild evil spirit or undead creature. |
-| 12 (catastrophic) | Something unbelievably bad, evil, or a great misfortune. | A dragon flying overhead spots and chases you, or spotting a large hostile war band marching in your direction. |
+| Encounter | 5–10 seconds | Attack, cast a spell, dash, use an item |
+| Delving | 5–10 minutes | Search a room, pick a lock, disable a trap, move to the next room |
+| Exploration | 2–4 hours | Navigate a stretch of wilderness, track a creature, set up camp |
+| Travel | ~1 day | Hike a full day's route, forage/hunt for the day, rest and resupply |
+| Downtime | ~1 week | Craft an item, research a topic, train a skill, gather rumors |
 
-At the end of traveling, reduce your supplies according to the results of rolls made.
+### What Is Free
 
-Also everybody in the group needs to roll Strength + Fortitude for how much the journey wore you out. If the scout couldn’t find shelter, suffer +1 bane on the roll. On a failure, you suffer one Fatigue.
-## Downtime
+Activities that take **significantly less time** than the current time scale are free. They do not count as an Action.
 
-The most relaxed period where you hang around in some settlement, doing some kind of long-form activity.
+| **Time Scale** | **Free Activities** |
+| --- | --- |
+| Encounter | Speak a short sentence, drop an item, glance around |
+| Delving | Brief conversation, pull an item from a backpack, peek through a doorway |
+| Exploration | Short discussion, check a map, eat a quick meal |
+| Travel | Brief rest stop, conversation while walking, consult notes |
+| Downtime | Run an errand, visit a shop, have a meeting |
 
-Downtime scenes are counted in weeks. One downtime turn usually covers one week.
+> **Rule of Thumb**: If you would not narrate it as a separate scene beat or a player would not expect to "spend their turn" on it, it is free. Repeated "free" activities may still count as a full Action in the scene, depending on the GM's judgement.
 
-### Downtime Activities
+## Dice Timers
 
-- Craft an item
-- Research a complex topic
-- Recover from wounds
-- Train a skill
-- Gather information or rumors
-- …
+A **Dice Timer** is a countdown that measures how many major actions remain before an event occurs in the current scene. Use it to provide pacing and urgency to a scene. The dice timer should physically be visible by everyone and used as a shared token between the players and the GM.
+
+- **Starting Value**: The GM sets the timer at the beginning of a scene. Typically a d6 (d4 for urgent scenes), starting at 6.
+- **Tick Down**: Each major action by the whole group (one turn's worth of activity) reduces the timer by 1.
+- **Trigger**: When the timer reaches 0, either an event predetermined by the GM occurs or the **Event Die** is rolled.
+- **Visibility**: The timer is a shared resource. Both the GM and players know its current value.
+
+### The Action Loop
+
+When the group undertakes a major Action governed by a timer, follow this standardized order:
+
+1. **Tick**: Reduce the scene's dice timer by 1.
+2. **Roll/Act**: Make the relevant roll(s) or execute the Action (search, fight, disarm, negotiate, etc.).
+3. **Results**: Apply results and consequences of the Action. If the timer hits 0, resolve its trigger and reset it back to the starting value (or remove the dice timer if the urgency of the scene is over).
+
+> **Example wording at the table**: "I want to search the room for treasure. That ticks the timer down by 1 (from 4 to 3). Now I roll Spirit + Perception..."
+
+### The Event Die
+
+When a dice timer hits 0, roll **1d6** on the scene's event table to determine what happens. All time scales follow the same structure:
+
+| **d6** | **Category** | **What It Means** |
+| --- | --- | --- |
+| 1 | **Threat** | An encounter or direct danger. Roll on an encounter table or introduce a hostile force. |
+| 2 | **Wear and Tear** | Equipment or resources degrade. Each adventurer must choose one item they possess. Items that track Durability require a Durability check; other items lose 1 use. |
+| 3 | **Resource Drain** | A key resource is consumed or tested. Roll a Supply check or suffer 1 Fatigue. Ammo, light source, rations, extreme climate, or overexertion. |
+| 4 | **Shift** | The environment or situation changes, introducing some lasting effect. Terrain, weather, conditions, or NPC behavior. |
+| 5 | **Traces** | A clue or sign of what lies ahead. Foreshadowing, tracks, sounds, or useful information. |
+| 6 | **Ambient** | Atmosphere and flavor. Nothing significant happens. |
+
+> Each time scale provides its own themed example version of this table (see below). GMs are encouraged to customize these tables further for specific adventures or locations.
+
+**Example Encounter Event Table (d6)**
+
+| **d6** | **Event** |
+| --- | --- |
+| 1 | **Reinforcements!** More enemies arrive or an existing threat escalates. Roll on an encounter table or add 1d4 combatants to the opposing side. |
+| 2 | **Wear and Tear.** The chaos of battle damages something. Each combatant chooses one held or worn item: it requires a Durability check or loses 1 use. |
+| 3 | **Resource Strain.** A critical resource is consumed or threatened. A light source gutters, ammunition is scattered, or a consumable is knocked loose and must be recovered. |
+| 4 | **Battlefield Shift.** The environment changes. Roll d3: [1] Cover collapses or terrain becomes difficult. [2] A new hazard appears (fire, falling debris, flooding). [3] An exit or path opens or closes. |
+| 5 | **Opening.** A momentary advantage appears. A weak point in the enemy formation, an unguarded flank, or a piece of useful terrain becomes apparent. |
+| 6 | **Ambient.** Dust swirls, thunder rumbles, or the ground trembles. Atmosphere, but nothing mechanically significant. |
+
+**Example Delving Event Table (d6)**
+
+| **d6** | **Event** |
+| --- | --- |
+| 1 | **Attack!** Roll on the encounter table to see which creatures attack and how. |
+| 2 | **Wear and Tear.** Each adventurer chooses one item they hold, carry, or wear: worn equipment or weapons require a Durability check, other items directly lose 1 use. |
+| 3 | **Light Fades.** Roll a Supply check to light a new torch or refill lantern oil. |
+| 4 | **Delve Shift.** The dungeon breathes. Roll on a delve shift table to see what changes and what the mechanical effect is (e.g., water rises, temperature drops, passages shift). |
+| 5 | **Traces.** You find signs of a nearby encounter or a clue about your surroundings. |
+| 6 | **Ambient.** Some ambient effect, but nothing else happens. |
+
+**Example Exploration Event Table (d6)**
+
+| **d6** | **Event** |
+| --- | --- |
+| 1 | **Encounter!** A creature or group crosses your path. Roll on a terrain-appropriate encounter table to determine what appears and its disposition. |
+| 2 | **Wear and Tear.** The terrain takes its toll. Each adventurer chooses one item: footwear, clothing, or a carried tool requires a Durability check, or a carried item loses 1 use. |
+| 3 | **Provisions Dwindle.** Rations spoil, waterskins leak, or foraging turns up nothing. Roll a Supply check for provisions or water. |
+| 4 | **Terrain Shift.** The environment changes around you. Roll d3: [1] Weather worsens (next check suffers +1 bane). [2] A path is blocked or flooded (detour required). [3] A natural hazard emerges (rockslide, sinkhole, flash flood). |
+| 5 | **Traces.** You discover tracks, markings, old campsites, or other signs that hint at what lies ahead or nearby. |
+| 6 | **Ambient.** Wind through the trees, birdsong, distant thunder. Atmosphere and scenery, but nothing significant occurs. |
+
+**Example Travel Event Table (d6)**
+
+| **d6** | **Event** |
+| --- | --- |
+| 1 | **Encounter!** You cross paths with creatures, travelers, or a hostile force. Roll on a region-appropriate encounter table to determine what you meet. |
+| 2 | **Wear and Tear.** Long days on the road strain gear. Each adventurer chooses one item: worn armor, weapons, or tools require a Durability check, or a pack item loses 1 use. |
+| 3 | **Provisions Dwindle.** Food runs low, water sources dry up, or stored rations go bad. Roll a Supply check for provisions. |
+| 4 | **Route Shift.** Conditions change along the route. Roll d3: [1] Weather turns harsh (next day's travel suffers +1 bane). [2] A road or bridge is damaged or blocked (detour adds time). [3] Terrain becomes more difficult than expected (reduce progress). |
+| 5 | **Traces.** Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead or off the beaten path. |
+| 6 | **Ambient.** A striking sunset, a cool breeze, or a peaceful night. Atmosphere and flavor, but nothing of note occurs. |
+
+**Example Downtime Event Table (d6)**
+
+| **d6** | **Event** |
+| --- | --- |
+| 1 | **Trouble!** A rival acts, a threat materializes, or an obligation comes due. Roll on a settlement or faction event table to determine what demands your attention. |
+| 2 | **Wear and Tear.** Tools, workspace, or living conditions degrade. A crafting tool, workshop item, or piece of equipment requires a Durability check or loses 1 use. |
+| 3 | **Expenses.** Costs rise or income drops. Pay an unexpected fee or suffer 1 Fatigue (can only be removed after situation improves again). |
+| 4 | **Situation Shift.** The political, social, or economic landscape changes. Roll d3: [1] A faction gains or loses power. [2] Prices or availability of goods shift. [3] A new law, rumor, or decree changes the status quo. |
+| 5 | **Traces.** You hear rumors, receive a lead, or notice a pattern that hints at coming events or hidden opportunities. |
+| 6 | **Ambient.** A festival, a quiet week, or pleasant weather. Life goes on, nothing of particular note occurs. |
