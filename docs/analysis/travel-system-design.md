@@ -1,6 +1,6 @@
 # Travel System Design Analysis
 
-This document contains the proposed design for an overhauled travel system for Nexus RPG, inspired by The One Ring RPG (especially 2e). It is intended as a game design analysis and reference for future implementation.
+This document contains the proposed design for an overhauled travel system for Nexus RPG, built on the [Challenges System](challenges-system.md) and [Scene & Time Scale Procedures](scene-timescale-procedures.md). It is intended as a game design analysis and reference for future implementation.
 
 ---
 
@@ -9,8 +9,8 @@ This document contains the proposed design for an overhauled travel system for N
 - Make journeys more engaging, tense, and interactive.
 - Provide clear procedures for GMs and players.
 - Ensure the system interacts meaningfully with resource management.
-- Build on and streamline the current travel system.
-- Keep the system modular and easy to use at the table.
+- Align travel with the **Challenge Dice** and **Dice Timer** frameworks for a unified resolution method.
+- Keep the system modular and compatible with other scene types (exploration, chases, downtime).
 
 ---
 
@@ -30,63 +30,86 @@ Use these travel rules for **journeys between two known points or regions** that
 - Short journeys (less than a day)
 - When skipping for narrative convenience (the "boring" trip back)
 
-### Abstracted Distance: Paces
+### Journey Structure: Challenge Dice
 
-Rather than miles, leagues, or kilometers, distance is measured in abstract **paces**. One day of travel in normal terrain covers 4 paces under normal conditions.
+Instead of tracking abstract paces on a progress track, journeys use **challenge dice** from the [Challenges System](challenges-system.md). A challenge die (d4, d6, d8, or d10) represents the total progress required to complete a journey or journey segment. The die is placed on the table at its maximum value and reduced as the party makes progress each day.
 
-**Navigation Roll Results (paces cleared per day):**
+- Each day of travel reduces the challenge die based on the Navigator's roll and modifiers.
+- When the challenge die reaches **0**, the party arrives at the destination (or the next checkpoint).
 
-| Result | Paces Cleared | Additional Effect |
-|--------|---------------|-------------------|
-| Blunder | 0 | Get lost (+1 bane next roll) |
-| Failure | 2 | — |
-| Weak/Strong Success | 4 | — |
-| Strong Success | 4 | Choose one bonus (see below) |
-| Critical Success | 6 | Choose two bonuses |
+> **Example**: A medium journey through forest uses a d6 challenge die, starting at 6. On day one, the Navigator rolls a strong success—the die drops by 2 (from 6 to 4). On day two, a failure means no progress. On day three, a weak success reduces the die by 2 (to 2). Two more points of progress to go.
+
+**Journey Length Guidelines:**
+
+| Die | Steps | Best For |
+|-----|-------|----------|
+| d4 | 4 | Short journey (2–3 days in good conditions) |
+| d6 | 6 | Standard journey (3–5 days, the default) |
+| d8 | 8 | Long journey (5–8 days, crossing a region) |
+| d10 | 10 | Epic journey (a week or more, crossing multiple terrains) |
+
+> **Design note**: d4 and d6 cover the vast majority of journeys. Use d8+ sparingly—only when the journey's scope justifies many days of travel. An overly long journey challenge risks becoming tedious rather than tense.
+
+### Checkpoints: Segmented Journeys
+
+Long or complex journeys can be broken into **segments** separated by **checkpoints**. Each segment uses its own challenge die, with progress and consequences resolved at each checkpoint before the next segment begins.
+
+**Checkpoint types:**
+- **Settlement (🏘️):** Resupply, safe rest, gather information
+- **Landmark (🗿):** Navigation aid (+1 boon next Navigation roll), morale boost (remove 1 fatigue from one party member)
+- **Camp (⛺):** Good shelter (auto-succeed on shelter), water source, hunting ground (+1 boon on Forager/Hunter rolls)
+- **Danger Zone (⚠️):** Scripted encounter or environmental hazard (see Hidden Checkpoints below)
+
+> **Example**: A journey from a coastal city to a mountain fortress might be split into two segments: coast-to-foothills (d6 challenge die) with a settlement checkpoint, then foothills-to-fortress (d4 challenge die) through difficult terrain.
+
+### Hidden Checkpoints (Danger Zones)
+
+The GM may designate **hidden checkpoints** along a journey—danger zones, ambush points, or unintended waypoints that the party does not know about in advance. These are triggered when the challenge die is reduced to a specific value set by the GM.
+
+When the challenge die reaches the hidden checkpoint's trigger value, the GM immediately interrupts normal travel to resolve a special event or hazard before the journey continues.
+
+> **Example**: On a d8 journey through the desert, the GM secretly notes a hidden checkpoint at value 4 (the halfway point). When the party reduces the challenge die to 4, they stumble into a sandstorm-blasted canyon—a scripted danger that must be dealt with before the journey can continue.
+
+### Daily Progress
+
+Each day of travel, the party's progress is determined by the **Navigator's roll** and modified by terrain and mounts. Progress is measured as points of reduction on the challenge die.
+
+**Navigation Roll Results (progress per day):**
+
+| Result | Progress | Additional Effect |
+|--------|----------|-------------------|
+| Blunder | 0 | Get lost (+1 bane next roll, challenge die increases by 1) |
+| Failure | 1 | — |
+| Weak Success | 2 | — |
+| Strong Success | 2 | Choose one bonus (see below) |
+| Critical Success | 3 | Choose two bonuses |
 
 **Strong/Critical Success Bonuses:**
 - Stay on track (+1 boon on next Navigation roll)
 - Make a discovery (find something useful or interesting)
 - Party is well-rested (one party member removes 1 fatigue)
 
-**Terrain Modifiers (paces per day):**
+**Terrain Modifiers (progress per day):**
 
 | Terrain | Modifier |
 |---------|----------|
-| Easy (roads) | +1 pace |
+| Easy (roads) | +1 progress |
 | Normal (plains) | No modifier |
-| Moderate (forest, hills, desert, tundra) | -1 pace |
-| Difficult (mountains, swamp, jungle, haunted) | -2 paces |
+| Moderate (forest, hills, desert, tundra) | –1 progress (minimum 0) |
+| Difficult (mountains, swamp, jungle, haunted) | –1 progress and +1 bane on Navigation (minimum 0) |
 
 **Mount/Vehicle Bonuses:**
-- Riding horse: +1 pace (not in difficult terrain)
-- Draft animal with wagon: -1 pace (carries more supplies)
+- Riding horse: +1 progress (not in difficult terrain)
+- Draft animal with wagon: –1 progress (carries more supplies)
 
 ### Forced March
 
 The party may choose to push hard for extra distance. Before rolling:
-- Gain **+2 paces** for the day
+- Gain **+1 progress** for the day
 - Each party member gains **1 fatigue** at the end of the day
 - Cannot force march on consecutive days without gaining additional fatigue
 
 This keeps the pace choice simple and dramatic: conserve energy or push to arrive faster.
-
----
-
-## The Progress Track
-
-The journey is represented as a series of **progress boxes**. Each box typically represents 4 paces (one day in normal terrain).
-
-```
-Origin ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ ◯ Destination
-```
-
-Mark waypoints on the track (⛺ camps, 🏘️ settlements, ⚠️ danger zones).
-
-**Journey Length Examples:**
-- Short journey (2–3 days): 8–12 paces
-- Medium journey (5–7 days): 20–28 paces
-- Long journey (10–14 days): 40–56 paces
 
 ---
 
@@ -95,18 +118,18 @@ Mark waypoints on the track (⛺ camps, 🏘️ settlements, ⚠️ danger zones
 At the **end of each travel day**, resolve the following:
 
 ### 1. Decide Forced March (Optional)
-Declare if the party attempts a forced march (+2 paces, everyone gains 1 fatigue).
+Declare if the party attempts a forced march (+1 progress, everyone gains 1 fatigue).
 
 ### 2. All Roles Roll
 
 **Navigator (mandatory)** — Spirit + Nature or Mind + Education vs. Terrain TN:
-- Clears paces based on result (see table above)
+- Determines progress based on result (see table above)
 
 **Scout (mandatory)** — Spirit + Perception vs. TN 8:
-- Blunder/Failure: Increase encounter die by 1 step (max d12)
-- Weak Success: Choose one — find shelter, reduce encounter die by 1 step, or make a discovery
+- Blunder/Failure: +1 bane on the daily event roll
+- Weak Success: Choose one — find shelter, +1 boon on daily event roll, or make a discovery
 - Strong Success: Choose two
-- Critical Success: Choose all three, or skip encounter roll entirely
+- Critical Success: Choose all three, or skip the daily event roll entirely
 
 **Optional roles:** Lookout, Quartermaster, Forager, Hunter, Fisher roll as needed.
 
@@ -114,24 +137,28 @@ Declare if the party attempts a forced march (+2 paces, everyone gains 1 fatigue
 
 ### 3. Calculate Progress
 
-**Total paces** = Base paces (Navigator) + Terrain modifier + Mount bonus + Forced march bonus
+**Total progress** = Base progress (Navigator result) + Terrain modifier + Mount bonus + Forced march bonus (minimum 0)
 
-Mark off progress boxes as paces accumulate (4 paces = 1 box).
+Reduce the journey's challenge die by the total progress. If the challenge die reaches 0, the party arrives at the destination or checkpoint.
 
-### 4. Resolve Encounter
+If a hidden checkpoint is triggered (challenge die reaches the GM's designated value), resolve that event before continuing.
 
-Roll the encounter die (base size from terrain, modified by Scout result):
+### 4. Roll the Daily Event
 
-| Roll | Type | Severity |
-|------|------|----------|
-| 1 | Fortuitous | Helpful or lucky |
-| 2–3 | Neutral | Interesting but harmless |
-| 4–6 | Challenging | Potentially harmful |
-| 7–9 | Perilous | Dangerous |
-| 10–11 | Dire | Very dangerous |
-| 12 | Catastrophic | Extreme danger |
+At the end of each travel day, the GM rolls **1d6** on the **Travel Event Table** to determine what occurs. This replaces the encounter die system and follows the same structure used across all time scales in the [Scene & Time Scale Procedures](scene-timescale-procedures.md).
 
-Consult terrain-specific encounter tables (see below). This may include combat, skill challenges, discoveries, or hazards.
+#### Travel Event Table (d6)
+
+| d6 | Category | What Happens |
+|----|----------|--------------|
+| 1 | **Encounter** | You cross paths with creatures, travelers, or a hostile force. Roll on a region/terrain-appropriate encounter table to determine what you meet. |
+| 2 | **Wear and Tear** | Long days on the road strain gear. Each adventurer chooses one item: worn armor, weapons, or tools require a Durability check, or a pack item loses 1 use. |
+| 3 | **Provisions Dwindle** | Food runs low, water sources dry up, or stored rations go bad. Roll a Supply check for provisions. |
+| 4 | **Route Shift** | Conditions change along the route. Roll d3: [1] Weather turns harsh (next day's Navigation roll suffers +1 bane). [2] A road or bridge is damaged or blocked (challenge die increases by 1). [3] Terrain becomes more difficult than expected (–1 progress tomorrow). |
+| 5 | **Traces** | Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead or off the beaten path. |
+| 6 | **Ambient** | A striking sunset, a cool breeze, or a peaceful night. Atmosphere and flavor, but nothing of note occurs. |
+
+> **Design note**: The daily event roll happens once per day and is not tied to a timer countdown. The Scout's roll can modify the event outcome (boons/banes on the roll) or allow the party to skip it entirely on a critical success. For terrain-specific encounters (result of 1), consult the encounter tables in the Environment Stat Blocks section below.
 
 ### 5. Make Camp and Rest
 
@@ -181,34 +208,24 @@ Roll **Spirit + Perception** to modify encounters and find shelter.
 Before departure, establish the journey parameters:
 
 1. **Define route:** Origin, destination, and path through terrain types
-2. **Estimate journey length:** Count expected paces based on terrain (GM determines)
-3. **Plan rations:** Each pack of rations has 3 uses. Roll a Supply Check each day.
+2. **Estimate journey length:** Choose an appropriate challenge die (d4–d10) for each segment based on terrain and distance (GM determines)
+3. **Identify checkpoints:** Divide long journeys into segments with checkpoints (settlements, landmarks, danger zones); assign a separate challenge die to each segment
+4. **Set hidden checkpoints:** Note any hidden danger zones and their trigger values on the challenge die
+5. **Plan rations:** Each pack of rations has 3 uses. Roll a Supply Check each day.
    - Normal conditions: ~1 pack per person per 6 days (d6 supply die average)
    - Extreme heat (desert): Double Supply Checks, ~1 pack per 3 days
    - Extreme cold: +1 bane on checks, ~1 pack per 4–5 days
    - Safety margin: Add 1–2 extra packs for emergencies
-4. **Identify waypoints:** Settlements, landmarks, or known camps for resupply
-
----
-
-## Waypoints
-
-When the party reaches a waypoint box on the progress track:
-
-- **Settlement (🏘️):** Resupply, safe rest, gather information
-- **Landmark (🗿):** Navigation aid (+1 boon next roll), morale boost (remove 1 fatigue)
-- **Camp (⛺):** Good shelter (auto-succeed on shelter), water source, hunting ground (+1 boon)
-- **Danger (⚠️):** Scripted encounter or environmental hazard
 
 ---
 
 ## Special Situations
 
-**Getting Lost:** When Navigator blunders, clear 0 paces and lose 4 paces already marked (backtracking). Next roll has +1 bane. Continue until weak+ success.
+**Getting Lost:** When Navigator blunders, make 0 progress and the challenge die **increases by 1** (backtracking). Next roll has +1 bane. Continue until weak+ success.
 
-**Forced Detour:** Add 1d6 paces (minor) or 2d6 paces (major) when the route is blocked.
+**Forced Detour:** Increase the challenge die by 1 (minor) or 1d3 (major) when the route is blocked.
 
-**Shortcuts:** Remove 1d4 paces (minor) or 1d6+2 paces (major) when discovering faster routes.
+**Shortcuts:** Reduce the challenge die by 1 (minor) or 1d3 (major) when discovering faster routes.
 
 **Impossible Progress:** Severe weather, party exhaustion, or impassable terrain may prevent all progress for a day (resources still consumed).
 
@@ -241,7 +258,7 @@ Weather creates additional pressure through conditions and resource drain.
 
 ## Environment Stat Blocks
 
-Each terrain type has mechanical properties that affect travel difficulty, pace, encounters, and hazards.
+Each terrain type has mechanical properties that affect travel difficulty, daily progress, events, and hazards.
 
 ---
 
@@ -251,8 +268,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Safe, Fast Travel, Well-Marked  
 **Navigation TN:** 6 (Easy)  
-**Terrain Modifier:** +1 pace  
-**Encounter Die:** d8  
+**Terrain Modifier:** +1 progress  
 **Resource Pressure:** Low — settlements and waystations along route  
 **Climate:** Varies by region  
 
@@ -270,8 +286,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Open, Visible From Afar, Few Natural Shelters  
 **Navigation TN:** 6 (Easy)  
-**Terrain Modifier:** No penalty (baseline terrain)  
-**Encounter Die:** d8  
+**Terrain Modifier:** No modifier (baseline terrain)  
 **Resource Pressure:** Moderate — water sources scattered, game available  
 **Climate:** Variable — hot summers, cold winters, frequent wind  
 
@@ -289,8 +304,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Obscured Vision, Abundant Resources, Easy to Get Lost  
 **Navigation TN:** 8 (Moderate)  
-**Terrain Modifier:** –1 pace  
-**Encounter Die:** d6  
+**Terrain Modifier:** –1 progress (minimum 0)  
 **Resource Pressure:** Low — abundant foraging, hunting, water  
 **Climate:** Temperate — cooler under canopy, frequent rain  
 
@@ -309,8 +323,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Moderate Elevation, Rocky, Vantage Points  
 **Navigation TN:** 8 (Moderate)  
-**Terrain Modifier:** –1 pace  
-**Encounter Die:** d6  
+**Terrain Modifier:** –1 progress (minimum 0)  
 **Resource Pressure:** Moderate — water in valleys, game on slopes  
 **Climate:** Variable — cooler than lowlands, sudden weather changes  
 
@@ -328,8 +341,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Extreme Elevation, Thin Air, Deadly Falls, Avalanche Risk  
 **Navigation TN:** 12 (Difficult)  
-**Terrain Modifier:** –2 paces  
-**Encounter Die:** d6  
+**Terrain Modifier:** –1 progress and +1 bane on Navigation (minimum 0)  
 **Resource Pressure:** High — little food/water, cold, equipment strain  
 **Climate:** Extreme Cold — winter makes passes impassable  
 
@@ -349,8 +361,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Waterless, Extreme Heat, Shifting Sands, Disorienting  
 **Navigation TN:** 10 (Challenging)  
-**Terrain Modifier:** –1 pace  
-**Encounter Die:** d6  
+**Terrain Modifier:** –1 progress (minimum 0)  
 **Resource Pressure:** Extreme — **double water consumption**, no foraging  
 **Climate:** Extreme Heat by day, cold at night  
 
@@ -370,8 +381,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Rocky, Broken Terrain, Little Water, Exposed  
 **Navigation TN:** 10 (Challenging)  
-**Terrain Modifier:** –1 pace  
-**Encounter Die:** d6  
+**Terrain Modifier:** –1 progress (minimum 0)  
 **Resource Pressure:** High — water scarce, little game, no foraging  
 **Climate:** Hot days, cold nights, sudden storms  
 
@@ -390,8 +400,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Wet, Diseased, Easy to Get Lost, Slow Movement  
 **Navigation TN:** 10 (Challenging)  
-**Terrain Modifier:** –2 paces  
-**Encounter Die:** d4  
+**Terrain Modifier:** –1 progress and +1 bane on Navigation (minimum 0)  
 **Resource Pressure:** Moderate — water abundant but unsafe, fish available  
 **Climate:** Humid, wet, constant rain or mist  
 
@@ -411,8 +420,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Extremely Dense, Humid, Abundant Life, Dangerous Flora/Fauna  
 **Navigation TN:** 10 (Challenging)  
-**Terrain Modifier:** –2 paces  
-**Encounter Die:** d6  
+**Terrain Modifier:** –1 progress and +1 bane on Navigation (minimum 0)  
 **Resource Pressure:** Low — abundant food and water, but dangerous to gather  
 **Climate:** Hot, Humid, Frequent Rain (monsoon season makes travel nearly impossible)  
 
@@ -432,8 +440,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Frozen, Exposed, Waterless (frozen), Sparse Resources  
 **Navigation TN:** 8 (Moderate)  
-**Terrain Modifier:** –1 pace  
-**Encounter Die:** d8  
+**Terrain Modifier:** –1 progress (minimum 0)  
 **Resource Pressure:** Extreme — no foraging, little game, all water frozen  
 **Climate:** Extreme Cold — deadly without proper gear  
 
@@ -453,8 +460,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Traits:** Supernatural, Unnatural, Fear-Inducing, Reality-Warping  
 **Navigation TN:** 12 (Difficult)  
-**Terrain Modifier:** –2 paces  
-**Encounter Die:** d4  
+**Terrain Modifier:** –1 progress and +1 bane on Navigation (minimum 0)  
 **Resource Pressure:** Extreme — water/food tainted, game fled or corrupted  
 **Climate:** Unnatural — cold despite season, perpetual twilight, etc.  
 
@@ -475,7 +481,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Fortuitous (1)**
 1. Friendly hermit offers shelter and local knowledge
 2. Patch of valuable medicinal herbs (+1d4 herb units)
-3. Well-marked trail shortens journey (–1 progress box)
+3. Well-marked trail shortens journey (reduce challenge die by 1)
 4. Game trail leads to abundant hunting grounds (+1 boon Hunter/Forager)
 5. Sacred grove provides spiritual renewal (remove 1 fatigue from all)
 6. Helpful forest spirits guide the way (+1 boon next Navigation roll)
@@ -491,9 +497,9 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Challenging (4–6)**
 1. Overgrown path requires time to clear (+1 hour, Strength + Athletics TN 8 or –1 progress)
 2. Aggressive boar or bear defends territory (combat or intimidate to pass)
-3. Thorny brambles slow progress (everyone takes 1d4 damage, –1 progress box)
+3. Thorny brambles slow progress (everyone takes 1d4 damage, challenge die increases by 1)
 4. Disorienting fog (Navigator has –1 bane next roll)
-5. Flash flood blocks path (detour required, +1d3 progress boxes)
+5. Flash flood blocks path (detour required, challenge die increases by 1d3)
 6. Bandits demand toll (negotiate, fight, or pay 10% of valuables)
 
 **Perilous (7–9)**
@@ -507,7 +513,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Dire (10–11)**
 1. Ancient treant awakens, angry at intruders (Tier 5–6 Elite combat)
 2. Cursed grove causes hallucinations and fear (Spirit + Fortitude TN 12 or frightened)
-3. Massive wildfire blocks all routes (must backtrack, lose 1d4 progress boxes)
+3. Massive wildfire blocks all routes (must backtrack, challenge die increases by 1d4)
 4. Bandit warlord's raiding party (Tier 4–5 combat, 2d4 bandits + leader)
 5. Deadly disease from contaminated water (Spirit + Fortitude TN 14 or diseased)
 6. Supernatural predator stalks the party (Tier 6 Elite, guerrilla tactics)
@@ -524,7 +530,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Fortuitous (1)**
 1. Hidden oasis with abundant water and shade (refill all waterskins, remove 1 fatigue)
-2. Ancient waymarkers guide toward destination (+1 progress box)
+2. Ancient waymarkers guide toward destination (reduce challenge die by 1)
 3. Nomad caravan shares water and food (resupply 1d6 rations)
 4. Ruins provide excellent shelter from sun (party well-rested)
 5. Discover valuable trade goods in abandoned caravan (+50–200 coins value)
@@ -543,7 +549,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 2. Scorpions or vipers in camp (Agility + Perception TN 10 or 1d6 poison damage)
 3. Equipment malfunction from heat/sand (one random item needs repair)
 4. Disorienting shimmer affects navigation (Navigator –1 bane next roll)
-5. Rocky terrain slows progress (–1 progress box)
+5. Rocky terrain slows progress (challenge die increases by 1)
 6. Desperate outcasts demand water or supplies (negotiate or conflict)
 
 **Perilous (7–9)**
@@ -557,7 +563,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 **Dire (10–11)**
 1. Massive sandstorm lasts 1d3 days (0 progress, daily Spirit + Fortitude TN 14 or 1 wound)
 2. Legendary sand wyrm erupts from dunes (Tier 6–7 Elite combat)
-3. Lost in trackless wastes (erase 1d4 progress boxes, party disoriented)
+3. Lost in trackless wastes (challenge die increases by 1d4, party disoriented)
 4. Desert cult captures party for sacrifice (Tier 5–6 combat or roleplay escape)
 5. Supernatural heat wave causes hallucinations (Spirit + Fortitude TN 14 or confused)
 6. Poison all water sources (contaminated, need purification or alternate route)
@@ -573,12 +579,12 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 ### Mountain Encounter Table
 
 **Fortuitous (1)**
-1. Mountain guide offers to lead through pass (+2 progress boxes, avoid hazards)
+1. Mountain guide offers to lead through pass (reduce challenge die by 2, avoid hazards)
 2. Natural hot springs provide warmth and healing (remove all fatigue, heal 1d6 HP)
 3. Eagle guides to easier path (Navigator +1 boon next roll)
 4. Dwarven outpost offers shelter and trade (resupply, safe rest)
 5. Rare mountain herbs found (+1d4 valuable herb units)
-6. Shortcut through cave system (–1d3 progress boxes)
+6. Shortcut through cave system (reduce challenge die by 1d3)
 
 **Neutral (2–3)**
 1. Mountain goats pass by (can be hunted with difficulty)
@@ -592,7 +598,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 1. Loose scree makes climbing treacherous (Agility + Athletics TN 10 or 1d6 damage)
 2. Narrow ledge requires careful passage (Agility + Athletics TN 8 or fall risk)
 3. Altitude sickness affects party (Spirit + Fortitude TN 10 or –1 bane all rolls until lower altitude)
-4. Rockfall blocks path (detour required, +1d3 progress boxes, or clear with effort)
+4. Rockfall blocks path (detour required, challenge die increases by 1d3, or clear with effort)
 5. Mountain storm forces shelter (0 progress today, cold damage risk)
 6. Territorial mountain lions (Tier 2–3 combat or intimidation)
 
@@ -624,7 +630,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 
 **Fortuitous (1)**
 1. Raised dry ground provides safe camp and dry firewood (well-rested)
-2. Friendly swamp dweller guides to solid path (+1 progress box)
+2. Friendly swamp dweller guides to solid path (reduce challenge die by 1)
 3. Medicinal leeches or herbs (+1d4 healing items)
 4. Abundant fish in clear pool (Hunter/Fisher automatic success)
 5. Ancient boardwalk still functional (easier travel, +1 progress)
@@ -639,7 +645,7 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 6. Old trapper's cache with basic supplies (1d3 rations)
 
 **Challenging (4–6)**
-1. Deep mud slows progress (–1 progress box, exhausting)
+1. Deep mud slows progress (challenge die increases by 1, exhausting)
 2. Biting insects cause distraction (everyone –1 bane on rolls for 24 hours)
 3. Equipment gets waterlogged (one random item damaged)
 4. Leech swarm causes minor wounds (everyone takes 1d4 damage)
@@ -673,30 +679,51 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 ## Quick Reference
 
 **Each Travel Day (End of Day):**
-1. Decide if forced march (optional: +2 paces, gain 1 fatigue)
+1. Decide if forced march (optional: +1 progress, gain 1 fatigue)
 2. All roles roll (Navigator vs Terrain TN; Scout vs TN 8; optional roles)
-3. Calculate total paces: Base + terrain modifier + mount + forced march
-4. Mark off progress boxes (4 paces = 1 box)
-5. Roll encounter die → consult terrain table → resolve
+3. Calculate total progress: Base (Navigator) + terrain modifier + mount + forced march (minimum 0)
+4. Reduce the journey's challenge die by total progress; if die reaches 0, arrive at destination/checkpoint
+5. Roll 1d6 on Travel Event Table → resolve
 6. Make camp: Supply Checks, shelter (affects fatigue), night watches
 
 **Navigation Results:**
 
-| Result | Paces |
-|--------|-------|
-| Blunder | 0 (get lost) |
-| Failure | 2 |
-| Weak/Strong Success | 4 |
-| Critical Success | 6 |
+| Result | Progress |
+|--------|----------|
+| Blunder | 0 (get lost, challenge die +1) |
+| Failure | 1 |
+| Weak Success | 2 |
+| Strong Success | 2 + choose a bonus |
+| Critical Success | 3 + choose two bonuses |
 
 **Terrain Modifiers:**
 
 | Terrain | Modifier |
 |---------|----------|
-| Easy (roads) | +1 pace |
-| Normal (plains) | No penalty |
-| Moderate (forest, hills, desert, tundra) | –1 pace |
-| Difficult (mountains, swamp, jungle, haunted) | –2 paces |
+| Easy (roads) | +1 progress |
+| Normal (plains) | No modifier |
+| Moderate (forest, hills, desert, tundra) | –1 progress (minimum 0) |
+| Difficult (mountains, swamp, jungle, haunted) | –1 progress and +1 bane on Navigation (minimum 0) |
+
+**Journey Length (Challenge Die):**
+
+| Die | Best For |
+|-----|----------|
+| d4 | Short journey (2–3 days) |
+| d6 | Standard journey (3–5 days) |
+| d8 | Long journey (5–8 days) |
+| d10 | Epic journey (a week or more) |
+
+**Travel Event Table (d6):**
+
+| d6 | Event |
+|----|-------|
+| 1 | Encounter — roll on terrain encounter table |
+| 2 | Wear and Tear — Durability check or lose 1 use |
+| 3 | Provisions Dwindle — roll Supply check |
+| 4 | Route Shift — weather, blocked path, or harder terrain |
+| 5 | Traces — clues and signs of what lies ahead |
+| 6 | Ambient — flavor, nothing significant |
 
 **Supply Check (rations):**
 - Roll supply die (d4/d6/d8)
@@ -704,5 +731,3 @@ Each terrain type has mechanical properties that affect travel difficulty, pace,
 - 4+: No change
 - Optional: Spend extra use to recover 1 fatigue (once per day)
 - Extreme heat: Roll twice; extreme cold: +1 bane
-
-**Encounter Die Steps:** d4 → d6 → d8 → d10 → d12
