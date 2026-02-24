@@ -633,7 +633,7 @@ Each terrain type has mechanical properties that affect travel difficulty, daily
 2. Friendly swamp dweller guides to solid path (reduce challenge die by 1)
 3. Medicinal leeches or herbs (+1d4 healing items)
 4. Abundant fish in clear pool (Hunter/Fisher automatic success)
-5. Ancient boardwalk still functional (easier travel, +1 progress)
+5. Ancient boardwalk still functional (easier travel, reduce challenge die by 1)
 6. Will-o'-wisp leads to treasure cache (if followed with caution)
 
 **Neutral (2–3)**
