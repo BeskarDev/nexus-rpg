@@ -314,6 +314,11 @@
         "title": "⚡ Effect Durations",
         "banner": "/img/banner/effect-duration-banner.png"
       },
+      "Challenges": {
+        "target": "docs/06-scenes/07-challenges.md",
+        "title": "🎯 Challenges",
+        "banner": "/img/banner/scenes-banner.png"
+      },
       "Weapons": {
         "target": "docs/04-equipment/03-weapons.md",
         "title": "🗡️ Weapons",
