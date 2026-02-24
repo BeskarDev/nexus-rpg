@@ -39,23 +39,11 @@ Customize what happens on failures or blunders. Consequences can either occur di
 
 ### Running a Challenge
 
-**Turn Order**
+Challenges don't use strict Initiative like combat scenes. Adventurers take their turns in any order they choose; once everyone has acted, a new round begins.
 
-Challenges don't use strict Initiative like combat scenes. Instead:
+On their turn, each adventurer announces an intended action and works with the GM to choose an **Attribute + Skill** combination to roll for. The action can be an explicit ability from a talent or spell, or a purely narrative choice not directly covered by the rules. Each adventurer may use any individual skill only **once** during the entire challenge, encouraging creative problem-solving and varied approaches.
 
-- Each adventurer takes their turn in whatever order they like.
-- After all adventurers have taken their turn, the round ends and a new round begins.
-
-**Choosing a Skill**
-
-During each adventurer's turn, they announce their intended action to help resolve the challenge:
-
-- This can be an explicit ability provided by a talent, spell, or another game mechanic.
-- Or it can be a purely narrative choice that isn't directly covered by the game rules.
-
-In cooperation with the GM, they choose a specific **Attribute + Skill** combination to roll for. Each adventurer can use any individual skill only **once** during the entire challenge. This encourages creative problem-solving and varying approaches.
-
-The roll's result influences the challenge's progress, either moving it forward or adding consequences for failure.
+The roll's result either advances the challenge toward completion or triggers a consequence on failure.
 
 ## Challenge Dice
 
@@ -115,15 +103,11 @@ Stealth (cut through shadows), Influence (shout for help to block the path), Nat
 
 **Consequences**
 
-Each failure or blunder during a chase introduces an immediate setback or hazard. Roll or choose from the following examples:
-
-- **Wrong Turn.** The pursuer or quarry ducks down an unfamiliar alley. The die value does not decrease on the next successful roll as the group doubles back.
-- **Obstacle.** A cart overturns, a crowd surges, or debris litters the path. The affected adventurer suffers +1 bane on their next roll.
-- **Lost Sight.** You lose visual on the target for a moment — they may have slipped into a building or crowd. The next roll must be made to re-acquire the trail before progress can resume; on a failure it does not count toward the challenge die.
-- **Attracted Attention.** Your reckless sprint draws the eye of guards or bystanders. A patrol investigates; if the chase isn't resolved quickly, 1d4 guards will be waiting at the finish point.
-- **Fatigue.** The grueling pace pushes one character to their limit. They suffer 1 Exhaustion immediately.
-- **Environmental Hazard.** A low bridge, rooftop edge, or muddy slope catches someone off guard. The character must succeed on an Athletics check (TN 8) or take 1d6 damage from the fall or stumble.
-- **Blunder — Crash.** The character careens into a market stall, innocent bystander, or structural fixture. They are knocked **prone**, suffer 1d6 damage, and the die value does not decrease this turn.
+- **Wrong Turn.** The path doubles back. The die doesn't decrease on the next successful roll.
+- **Obstacle.** A cart, crowd, or debris blocks the way. +1 bane on the next roll.
+- **Attracted Attention.** The commotion draws a patrol. 1d4 guards are waiting at the finish point.
+- **Fatigue.** The brutal pace forces one character to suffer 1 Exhaustion immediately.
+- **Crash (Blunder).** The character careens into an obstacle, falls **prone**, and suffers 1d6 damage.
 
 ---
 
@@ -141,15 +125,11 @@ Streetwise (know the layout), Perception (spot weaknesses), Fighting (overpower 
 
 **Consequences**
 
-Failures during an escape raise the alarm, close off exits, or endanger the group. Roll or choose from the following examples:
-
-- **Alarm Triggered.** A stumble, a rattled chain, or a squeaking door puts the guards on high alert. The TN for all remaining rolls increases by 2 until the end of the challenge.
-- **Guards Close In.** Pursuit narrows. One exit or route is now cut off; describe which path is blocked.
-- **Lost Gear.** In the scramble, one adventurer drops or is forced to leave behind a piece of equipment (GM's choice or player's choice). It cannot be recovered until after the challenge.
-- **Triggered Trap.** A floor tile, tripwire, or pressure plate fires. The triggering character suffers the trap's effect immediately (typically 1d6 damage and/or a condition such as **restrained**).
-- **Blocked Exit.** The intended escape route is sealed — a door is locked, a tunnel has collapsed, or guards are stationed at the gate. The group must find an alternate path; the die value does not decrease this round while they reorient.
-- **Injury.** A misstep in the dark, a desperate drop from a ledge, or a guard's parting blow deals 1d6 damage to one adventurer.
-- **Blunder — Caught.** A character is seized by a guard, pinned under rubble, or cornered. They are captured or incapacitated and cannot contribute to the challenge until rescued by an ally (requiring one full success on a dedicated rescue roll).
+- **Alarm Triggered.** The guards go on high alert. TN increases by 2 for all remaining rolls.
+- **Exit Cut Off.** One route is blocked; the group must find another way.
+- **Lost Gear.** One piece of equipment is dropped and can't be recovered until after the challenge.
+- **Injury.** A misstep or guard's blow deals 1d6 damage to one adventurer.
+- **Caught (Blunder).** A character is seized or cornered and can't act until rescued by an ally.
 
 ---
 
@@ -167,15 +147,11 @@ Insight (predict behavior), Education (knowledge of species habits), Streetwise 
 
 **Consequences**
 
-Failures during tracking cause the trail to go cold, the quarry to gain distance, or the trackers to expose themselves. Roll or choose from the following examples:
-
-- **Lost Trail.** The tracks vanish — washed away by rain, obscured by heavy foot traffic, or deliberately concealed. The die value does not decrease on the next successful roll as time is spent re-acquiring the trail.
-- **Misleading Signs.** The quarry has laid a false trail. The group wastes time before realizing it; the die value does not decrease this round, and the GM may introduce a minor hazard at the dead end.
-- **Become Noticed.** The group has been spotted or heard while tracking. The quarry is now aware and becomes more cautious; the TN increases by 2 for all remaining rolls.
-- **Environmental Hazard.** A hidden marsh, unstable slope, or biting weather catches the group off guard. Each adventurer must succeed on a Fortitude check (TN 8) or suffer 1 Exhaustion.
-- **Target Gains Distance.** The quarry moves faster or more cleverly than anticipated. The die value increases by 1 (to a maximum of its starting value), representing lost ground.
-- **Delay.** A false lead, ambiguous marking, or difficult terrain forces a cautious approach. No progress is made this round; all rolls this round have no effect on the challenge die.
-- **Blunder — Ambush.** The quarry has circled back and is now hunting the hunters. The group walks into a prepared position of the quarry's choosing. Transition immediately into a combat scene or a new challenge.
+- **Lost Trail.** The tracks vanish. The die doesn't decrease on the next successful roll.
+- **Become Noticed.** The quarry is aware and grows cautious. TN increases by 2 for all remaining rolls.
+- **Target Gains Distance.** The die value increases by 1 (up to its starting value).
+- **Environmental Hazard.** Treacherous terrain: each adventurer makes a Fortitude check (TN 8) or suffers 1 Exhaustion.
+- **Ambush (Blunder).** The quarry has circled back. Transition immediately into a combat scene.
 
 ---
 
@@ -193,15 +169,11 @@ Stealth (plant evidence), Lore (invoke cultural precedent), Streetwise (leverage
 
 **Consequences**
 
-Failures in social intrigue damage reputations, raise suspicions, or cost the group valuable leverage. Roll or choose from the following examples:
-
-- **Wrong Approach.** The character says something offensive, tone-deaf, or culturally inappropriate. The target NPC or faction becomes unfriendly; future Influence rolls against them suffer +1 bane for the rest of the challenge.
-- **Inadvertent Revelation.** Under pressure, the character accidentally discloses something they shouldn't have — a secret plan, a contact's identity, or their true motive. The GM introduces a complication based on what was revealed.
-- **Allies Lose Trust.** A supporting NPC or faction withdraws their backing after a poor showing. One allied NPC reduces their disposition by one step and their assistance is no longer available for this challenge.
-- **Target Grows Suspicious.** The subject of the intrigue notices a contradiction, an inconsistency, or an overreach. The TN for all remaining rolls increases by 2.
-- **Rumor Spreads.** Word of the group's misstep circulates. By the end of the session, a damaging rumor about the adventurers reaches an NPC or faction of the GM's choice.
-- **Lost Leverage.** A piece of evidence, a bribe, or a promised favor is used up without producing the intended result. The group loses one resource or bargaining chip.
-- **Blunder — Public Embarrassment.** The character causes a scene or commits a serious social violation. The group is ejected from the gathering, audience, or negotiation and cannot resume the challenge until they repair their standing (a separate downtime or social challenge).
+- **Wrong Approach.** An offensive misstep turns the target hostile. +1 bane on all Influence rolls for the rest of the challenge.
+- **Inadvertent Revelation.** The character lets slip something they shouldn't. The GM introduces a complication.
+- **Target Grows Suspicious.** A contradiction is noticed. TN increases by 2 for all remaining rolls.
+- **Rumor Spreads.** A damaging rumor about the adventurers reaches a faction of the GM's choice.
+- **Ejected (Blunder).** The character commits a serious social violation and the group is removed from the gathering until they repair their standing.
 
 ---
 
@@ -219,12 +191,8 @@ Insight (connect disparate clues), Perception (notice overlooked details), Stree
 
 **Consequences**
 
-Failures during research waste time, corrupt evidence, or draw the attention of those who wish the knowledge to stay hidden. Roll or choose from the following examples:
-
-- **Misinterpreted Clue.** The character draws the wrong conclusion from the available evidence. The GM secretly notes the incorrect interpretation; the group may act on false information until they discover the error.
-- **False Lead.** An apparently promising thread turns out to be irrelevant or deliberately planted. The die value does not decrease this round as time is wasted chasing it down.
-- **Damaged Evidence.** In the course of investigation, a fragile document, specimen, or artifact is accidentally harmed or destroyed. One piece of potentially useful information is permanently lost.
-- **Attracted Unwanted Attention.** Asking the wrong questions or accessing restricted archives draws scrutiny. A faction or individual who wants this information suppressed sends someone to interfere; the GM introduces an NPC obstacle.
-- **Resource Depletion.** Magical reagents are consumed, candle oil runs out, funds are exhausted on bribes, or the mental strain of intense study accumulates. The character suffers 1 Exhaustion, or the group loses a consumable resource of the GM's choice.
-- **Dead End.** A key source — a sage, a library, a contact — is unavailable, destroyed, or refuses to cooperate. The group must find an alternative avenue; no progress is made this round.
-- **Blunder — Dangerous Knowledge.** The character stumbles upon something they were not meant to find — a forbidden ritual, a cursed inscription, or a trap set by the original author. The character suffers an immediate consequence (1d6 psychic damage, a short-duration curse, or a triggered hostile encounter) at the GM's discretion.
+- **False Lead.** Time is wasted on an irrelevant thread. The die doesn't decrease this round.
+- **Misinterpreted Clue.** The group acts on false information until the error is uncovered.
+- **Damaged Evidence.** A fragile document or artifact is destroyed. One piece of information is permanently lost.
+- **Attracted Attention.** Asking the wrong questions draws scrutiny. A hostile faction sends someone to interfere.
+- **Dangerous Knowledge (Blunder).** The character stumbles onto something forbidden — a cursed inscription or a trap left by the original author. They suffer 1d6 psychic damage or gain a short-duration curse.
