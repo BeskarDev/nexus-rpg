@@ -10,14 +10,14 @@ Use these tables to quickly generate the key social parameters for an NPC involv
 
 ---
 
-## NPC Disposition (Starting Interest Modifier)
+## NPC Disposition
 
-Roll to determine the NPC's initial attitude toward the adventurers before the request is made. This gives an **Interest modifier** — combine it with the Request Alignment modifier below, then look up the result in the Interest table to find the effective TN modifier.
+Roll to determine the NPC's initial attitude. This is their **disposition modifier** — the starting point for Interest before applying the Request Alignment modifier below. See [NPCs and Relationships](../../02-adventurers/05-npc-relations.md) for the full disposition rules.
 
 <RollableTable singleRoll>
-| 2d6 | Disposition | Interest Modifier |
+| 2d6 | Disposition | Modifier |
 | --- | --- | --- |
-| 2 | Hateful | Breakdown (immediate refusal) |
+| 2 | Hateful | −3 (automatic refusal, no challenge) |
 | 3–4 | Hostile | −2 |
 | 5–6 | Suspicious | −1 |
 | 7–9 | Indifferent | +0 |
@@ -25,24 +25,16 @@ Roll to determine the NPC's initial attitude toward the adventurers before the r
 | 12 | Intimate | +2 |
 </RollableTable>
 
-**Interest Levels** (sum of Disposition + Request Alignment modifiers):
-
-| Total Modifier | Interest | TN Modifier |
-| --- | --- | --- |
-| −1 or lower | Resistant | +2 (or Breakdown if below −1) |
-| 0 | Skeptical | +1 |
-| +1 | Open | +0 |
-| +2 | Receptive | −1 |
-| +3 or higher | Eager | −2 |
-
 ---
 
 ## Request Alignment
 
-Roll or choose how well the adventurers' request aligns with the NPC's interests. Apply this modifier to the starting Interest from Disposition above.
+Roll or choose how well the adventurers' request aligns with the NPC's goals. Add this modifier to the Disposition modifier to get the **starting Interest**.
+
+> If starting Interest is −2 or lower, the NPC refuses without a challenge.
 
 <RollableTable singleRoll>
-| d6 | Request Alignment | Interest Modifier |
+| d6 | Request Alignment | Modifier |
 | --- | --- | --- |
 | 1–2 | Opposed — directly against the NPC's goals or safety | −1 |
 | 3–4 | Neutral — neither harms nor benefits the NPC | +0 |
@@ -51,14 +43,14 @@ Roll or choose how well the adventurers' request aligns with the NPC's interests
 
 ---
 
-## Patience
+## Patience (Challenge Die)
 
-Roll to determine how many exchanges the NPC will tolerate before making up their mind.
+Roll to determine how long the NPC is willing to engage. This sets the challenge die — and it advances on **every roll** (success or failure), so a small die means a short, high-pressure conversation.
 
 <RollableTable singleRoll>
-| d6 | Patience | Die | Best For |
+| d6 | Temperament | Challenge Die | Best For |
 | --- | --- | --- | --- |
-| 1–2 | Hurried | d4 | Busy merchant, nervous informant, impatient noble |
+| 1–2 | Impatient | d4 | Busy merchant, nervous informant, impatient noble |
 | 3–4 | Measured | d6 | Typical NPC with competing interests |
 | 5–6 | Deliberate | d8 | Cautious official, slow-to-trust elder, careful conspirator |
 </RollableTable>
@@ -98,7 +90,7 @@ Roll twice to generate two distinct Motivations. Each can be appealed to once pe
 
 ## NPC Pitfalls
 
-Roll once or twice to generate Pitfalls. Triggering a Pitfall reduces Interest by −1; if Interest drops below Resistant, the intrigue ends in a Breakdown.
+Roll once or twice to generate Pitfalls. Triggering a Pitfall reduces Interest by −1; if Interest drops to −2 or lower, the intrigue ends in a Breakdown.
 
 <RollableTable>
 | d12 | Pitfall | Trigger |
@@ -116,3 +108,4 @@ Roll once or twice to generate Pitfalls. Triggering a Pitfall reduces Interest b
 | 11 | *Pride wound: Old failure* | Referencing a past mistake or defeat, however unintentionally |
 | 12 | *Loyalty conflict: Prior oath* | The request conflicts with a promise or obligation they've already made |
 </RollableTable>
+

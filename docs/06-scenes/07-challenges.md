@@ -163,8 +163,8 @@ Social Intrigue uses additional parameters — **Interest**, **Patience**, **Mot
 
 **Additional Parameters**
 
-- **Interest** (TN modifier): Derived from the NPC's disposition and how well the request aligns with their goals. Ranges from Eager (−2 TN) to Resistant (+2 TN). Changes when players appeal to Motivations (+1) or trigger Pitfalls (−1).
-- **Patience** (timer die): A d4–d8 representing how many exchanges the NPC will tolerate. Ticks down with every roll, regardless of success or failure.
+- **Interest** (TN modifier): NPC disposition modifier + request alignment modifier. Positive Interest reduces the TN; negative increases it. Changes when players appeal to Motivations (+1) or trigger Pitfalls (−1).
+- **Patience** (challenge die): A d4–d8 representing how long the NPC will engage. The die advances on **every roll** — success or failure — rather than only on successes. A small die means a short, decisive conversation.
 - **Motivations**: 2–3 GM-facing notes on what the NPC desires, fears, or values. Appealing to a Motivation raises Interest.
 - **Pitfalls**: 1–2 GM-facing notes on what offends or alarms the NPC. Triggering a Pitfall lowers Interest.
 

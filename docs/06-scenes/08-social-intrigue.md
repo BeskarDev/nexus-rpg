@@ -29,55 +29,38 @@ Do **not** use a Social Intrigue for:
 
 ## Interest
 
-**Interest** represents an NPC's willingness to engage and cooperate. It ranges from **Eager** to **Resistant** and directly modifies the effective TN of all social rolls in the challenge.
+**Interest** is a numeric modifier representing how willing the NPC is to cooperate. It is applied directly to the challenge TN — positive Interest makes rolls easier, negative Interest makes them harder.
 
-| Level | Interest | TN Modifier |
-| --- | --- | --- |
-| +3 | **Eager** | −2 |
-| +2 | **Receptive** | −1 |
-| +1 | **Open** | +0 |
-| 0 | **Skeptical** | +1 |
-| −1 | **Resistant** | +2 |
+**Setting Initial Interest:**
 
-### Setting Initial Interest
+Combine two modifiers:
 
-Derive the NPC's starting Interest from two factors:
+1. **Disposition** — use the NPC's current disposition value from the [NPCs and Relationships](../02-adventurers/05-npc-relations.md) table (Intimate +2, Friendly +1, Indifferent 0, Suspicious −1, Hostile −2, Hateful −3).
 
-1. **Disposition** — use the NPC's current disposition toward the adventurers (see [NPCs and Relationships](../02-adventurers/05-npc-relations.md)):
+2. **Request Alignment** — how well the request fits the NPC's own goals:
 
-| Disposition | Interest Modifier |
-| --- | --- |
-| Intimate (+2) | +2 |
-| Friendly (+1) | +1 |
-| Indifferent (0) | 0 |
-| Suspicious (−1) | −1 |
-| Hostile (−2) | −2 |
-| Hateful (−3) | Breakdown (refuse immediately) |
-
-2. **Request Alignment** — how well the request aligns with the NPC's own goals and interests:
-
-| Request | Interest Modifier |
+| Alignment | Modifier |
 | --- | --- |
 | Directly benefits the NPC | +1 |
 | Neutral to the NPC | 0 |
 | Opposed to the NPC's interests | −1 |
 
-Add both modifiers together, then look up the result in the Interest table above. Clamp the result between Resistant (−1) and Eager (+3). If the starting Interest would fall below Resistant, the NPC refuses without a challenge.
+**Starting Interest = Disposition modifier + Request Alignment modifier.** If the starting Interest is −2 or lower, the NPC refuses without a challenge.
 
-### Changing Interest
+**Applying Interest to TN:** Subtract the current Interest from the challenge TN (positive Interest reduces the TN; negative Interest increases it).
 
-Interest changes during the challenge when adventurers **appeal to Motivations** or **trigger Pitfalls**:
+> **Example:** Base TN 10 (Hard). Interest +2 → Effective TN 8. Interest −1 → Effective TN 11.
 
-- **Appealing to a Motivation**: +1 Interest (maximum Eager).
-- **Triggering a Pitfall**: −1 Interest. If Interest drops below Resistant, the social intrigue ends immediately in a **Breakdown** — the NPC refuses and may become hostile.
+**Changing Interest during the challenge:**
+
+- **Appealing to a Motivation**: +1 Interest (maximum +3).
+- **Triggering a Pitfall**: −1 Interest. If Interest drops to −2 or lower, the intrigue ends immediately in a **Breakdown** — the NPC refuses and may become hostile.
 
 ---
 
 ## Patience
 
-**Patience** is the timer die for a Social Intrigue — separate from the standard challenge die that tracks progress toward the goal. It represents how many exchanges the NPC will tolerate before making up their mind.
-
-Choose Patience based on the NPC's temperament and situation:
+**Patience** is the challenge die for a Social Intrigue. Choose its size based on how long the NPC is willing to engage:
 
 | Die | Exchanges | Best For |
 | --- | --- | --- |
@@ -85,9 +68,13 @@ Choose Patience based on the NPC's temperament and situation:
 | d6 | 6 | Typical negotiation with a willing NPC |
 | d8 | 8 | A deliberate NPC who prefers to take their time |
 
-Patience ticks down with **every roll** made during the challenge (successes and failures alike), while the challenge die ticks down only on successful rolls. Both dice are on the table simultaneously. When Patience reaches 0, the challenge ends and resolves based on current progress.
+**The key difference from standard challenges:** the challenge die advances by 1 on **every roll** — regardless of whether it was a success or failure. A critical success advances it by 2. This reflects the NPC's patience ticking down with each exchange; they will make up their mind when it runs out, no matter how the conversation went.
 
-> **Example**: A d6 challenge die (progress) and a d4 Patience die are placed on the table. Each success reduces the challenge die. Every roll — regardless of success or failure — reduces Patience. If the challenge die reaches 0 first, the party fully convinces the NPC. If Patience reaches 0 first, the outcome depends on how far the challenge die has progressed.
+Failures and blunders add consequences as normal — they do not slow the die down. Consequences shape the difficulty of later exchanges and the NPC's final state.
+
+When the die reaches 0, the NPC has heard enough. The outcome is determined by the **final Interest level** (see [Resolution](#resolution)).
+
+> **Example:** A d4 Patience die represents a four-exchange negotiation. Each roll — success or failure — reduces it by 1. A critical success reduces it by 2. The negotiation ends after at most 4 exchanges; the party must build Interest before time runs out.
 
 ---
 
@@ -123,36 +110,40 @@ Prepare 1–2 Pitfalls per NPC. Examples:
 
 ## Resolution
 
-Social Intrigue can end in three ways:
+When the challenge die reaches 0, the NPC makes their decision. The outcome is determined by the **final Interest level**:
 
-| Outcome | Condition |
+| Final Interest | Outcome |
 | --- | --- |
-| **Full success** | The challenge die reaches 0 before Patience expires. The NPC agrees fully. |
-| **Partial success** | Patience expires with the challenge die at or below half its starting value. The NPC agrees with conditions or reduced scope. |
-| **Failure** | Patience expires with the challenge die above half its starting value. The NPC refuses. |
-| **Breakdown** | Interest drops below Resistant at any point. Immediate refusal; the NPC may become hostile. |
+| +3 or higher | **Full success.** The NPC agrees fully and willingly. |
+| +1 to +2 | **Partial success.** The NPC agrees with conditions or reduced scope. |
+| 0 | **Failure.** The NPC declines — they weren't persuaded. |
+| −1 or lower | **Breakdown.** The NPC refuses and may become hostile. |
 
-> Patience is the **timer** (ticks down every roll); the challenge die tracks **progress** (ticks down only on successes). Both are on the table simultaneously.
+> If Interest drops to −2 or lower at **any point during the challenge**, the intrigue ends immediately in a Breakdown — don't wait for the die to run out.
 
 ---
 
 ## Example
 
-**Situation**: The party needs Kaleth, a busy merchant, to smuggle a sealed crate past harbor customs. Kaleth has a **Friendly** disposition (+1) toward the party, but the request **opposes his interests** (−1). Starting Interest: Friendly (+1) + Opposed (−1) = **Open (+1), TN modifier +0**. Base TN is Hard (10), so **Effective TN = 10**.
+**Situation**: The party needs Kaleth, a busy merchant, to smuggle a sealed crate past harbor customs. Kaleth has a **Friendly** disposition (+1) toward the party, but the request **opposes his interests** (−1).
 
-**Patience** (timer die): d4 (Kaleth is preparing his ship for departure).  
-**Challenge die** (progress): d4 (a short negotiation — four successful exchanges needed).
+**Starting Interest**: +1 (Friendly) + (−1) (Opposed) = **0**. Base TN is Hard (10). Effective TN = 10 − 0 = **10**.
 
-**Motivations**: *Desire: Profit* (generous payment), *Fear: Customs authority* (showing the risk can be neutralized).
+**Patience (challenge die)**: d4 — Kaleth is preparing his ship and has little time.
 
-**Pitfalls**: *Threat: Mentioning past smuggling* (feels like blackmail), *Insult: Suggesting the job is easy* (dismisses his expertise).
+**Motivations**: *Desire: Profit*, *Fear: Customs authority*.
 
-> Exchange 1: Theron appeals to *Desire: Profit* — Interest rises from Open (+1) to Receptive (+2), TN modifier drops to −1, Effective TN = 9. Rolls Strong Success. Challenge die: 4 → 3. Patience: 4 → 3.
+**Pitfalls**: *Threat: Mentioning past smuggling*, *Insult: Suggesting the job is easy*.
+
+> **Exchange 1** — Theron opens by offering double the standard rate, appealing to *Desire: Profit*. The GM confirms this addresses a Motivation: Interest rises from 0 to **+1**. Effective TN drops to **9**. Theron rolls Spirit + Influence vs TN 9: **Strong Success**. No consequence. Die: 4 → 3.
 >
-> Exchange 2: Mira uses Insight to investigate — Critical Success reveals both Pitfalls. Patience: 3 → 2. No challenge die progress (Investigate doesn't advance the challenge).
+> *"Double rate? That gets my attention. But what's in the crate?"*
 >
-> Exchange 3: Theron addresses *Fear: Customs authority* and avoids both Pitfalls — Interest rises to Eager (+3), TN modifier drops to −2, Effective TN = 8. Rolls Weak Success. Challenge die: 3 → 2. Patience: 2 → 1.
+> **Exchange 2** — Mira uses Insight to read Kaleth's body language before committing further. She rolls Spirit + Insight vs Kaleth's Resist: **Critical Success**. The GM reveals both Pitfalls. Die: 3 → 1 (critical success advances by 2).
 >
-> Exchange 4: Patience is at 1. Theron offers a concession — the party takes full legal responsibility. Rolls Weak Success. Challenge die: 2 → 1. Patience: 1 → 0.
+> *Mira notices Kaleth glance nervously at the harbor master's tower and stiffen when his past shipping work is mentioned.*
+>
+> **Exchange 3** — One exchange left. Theron, armed with Mira's intelligence, addresses *Fear: Customs authority* without mentioning past smuggling and acknowledges the difficulty of the job. Interest rises from +1 to **+2**. Effective TN drops to **8**. Theron rolls vs TN 8: **Weak Success**. No consequence. Die: 1 → 0.
 
-**Result**: Patience expired with the challenge die at 1. Half of 4 = 2; the challenge die value of 1 is at or below half. **Partial success** — Kaleth agrees but demands triple rate and a signed letter of accountability.
+**Resolution**: Final Interest = +2 → **Partial success** — Kaleth agrees, but he wants assurances: triple rate and the party takes full legal responsibility if anything goes wrong.
+
