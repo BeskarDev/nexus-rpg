@@ -159,12 +159,12 @@ Insight (predict behavior), Education (knowledge of species habits), Streetwise 
 
 Navigating a tense negotiation, swaying a court, uncovering a conspiracy, or manipulating a social situation over multiple exchanges.
 
-Social Intrigue uses additional parameters — **Interest**, **Patience**, **Motivations**, and **Pitfalls** — to give NPCs a visible stance and predictable behavior during the challenge. See [Social Intrigue](./08-social-intrigue.md) for the full rules.
+Social Intrigue uses additional parameters, **Interest**, **Patience**, **Motivations**, and **Pitfalls**, to give NPCs a visible stance and predictable behavior during the challenge. See [Social Intrigue](./08-social-intrigue.md) for the full rules.
 
 **Additional Parameters**
 
-- **Interest** (TN modifier): NPC disposition modifier + request alignment modifier. Positive Interest reduces the TN; negative increases it. Changes when players appeal to Motivations (+1) or trigger Pitfalls (−1).
-- **Patience** (challenge die): A d4–d8 representing how long the NPC will engage. The die advances on **every roll** — success or failure — rather than only on successes. A small die means a short, decisive conversation.
+- **Interest** (TN modifier): NPC disposition modifier + request alignment modifier. Positive Interest reduces the TN; negative Interest raises it. Changes when players appeal to Motivations (+1) or trigger Pitfalls (−1).
+- **Patience** (challenge die): A d4–d8 representing how long the NPC will engage. The die advances on every roll, success or failure, rather than only on successes. A small die means a short, decisive conversation.
 - **Motivations**: 2–3 GM-facing notes on what the NPC desires, fears, or values. Appealing to a Motivation raises Interest.
 - **Pitfalls**: 1–2 GM-facing notes on what offends or alarms the NPC. Triggering a Pitfall lowers Interest.
 
