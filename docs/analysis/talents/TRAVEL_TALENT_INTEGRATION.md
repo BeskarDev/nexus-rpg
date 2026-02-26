@@ -41,7 +41,7 @@ These talents already reference travel mechanics or provide effects during trave
 | Rank | Travel Interaction | Notes |
 |------|-------------------|-------|
 | 1 | Re-roll Survival or Nature in chosen environment during travel | Works well with Navigator (Spirit/Mind + Nature) and Hunter (Agility/Spirit + Survival) |
-| 2 | Navigator: reduce consequences by one. Scout: reduce Encounter Die by one step. Gathering: +1 unit of supply | **Strong travel talent.** Directly references navigator and scout roles. "Encounter Die" language may need updating — the travel system now uses a Travel Event Table (1d6), not an Encounter Die |
+| 2 | Navigator: reduce consequences by one. Scout: reduce Encounter Die by one step. Gathering: +1 unit of supply | **Strong travel talent.** Directly references navigator and scout roles. See section 5.1 for terminology update needed |
 | 3 | Marked as XXX (incomplete) | Opportunity to add a Rank 3 that further integrates with the travel system |
 
 **Clarification Needed:** Rank 2 references "reduce the Encounter Die by one step" — this should be updated to reference the current Travel Event Table or the Scout's "avoid danger" bonus, which allows the Scout to choose between two event rolls.
@@ -54,7 +54,7 @@ These talents already reference travel mechanics or provide effects during trave
 |------|-------------------|-------|
 | 1 | +2 HP. No +1 bane for taking multiple travel roles | **Strong travel talent.** Directly negates the multi-role penalty from the travel system |
 | 2 | +2 HP. +1 boon on navigation rolls. Blunders treated as failures | Directly improves the Navigator role. Eliminates the worst consequence (getting lost, challenge die increase) |
-| 3 | +2 HP. Successful travel rolls grant bonus progress (marked TODO) | Incomplete but clearly travel-focused. Should specify: "When you succeed on any of your travel role rolls, the Navigator also gains +1 progress for the day" |
+| 3 | +2 HP. Successful travel rolls grant bonus progress (marked TODO) | Incomplete but clearly travel-focused. See section 5.2 for recommended completion with once-per-day limitation |
 
 **Status:** Core travel talent. Rank 3 needs completion. Already well-integrated with Navigator, Scout, and multi-role mechanics.
 
@@ -115,16 +115,16 @@ These talents provide abilities that are useful during travel but do not directl
 
 ---
 
-### Talents with No Travel Interaction
+### Talents with Minimal Travel Interaction
 
-The following talent categories have no meaningful interaction with travel mechanics and are primarily combat-focused:
+The following talent categories have minimal meaningful interaction with travel mechanics and are primarily combat-focused. Some could benefit from future travel-adjacent utility additions.
 
-- **Fighting** talents (14 total): All combat-focused (weapon techniques, stances, combat arts)
+- **Fighting** talents (14 total): Combat-focused (weapon techniques, stances, combat arts)
 - **Archery** talents (9 total): Ranged combat techniques
 - **Arcana** talents (7 total): Spellcasting enhancements
 - **Mysticism** talents (11 total): Spiritual casting, healing, wards
-- **Lore** talents (6 total): Esoteric knowledge (some could support Quartermaster or discovery)
-- **Stealth** talents (6 total): Infiltration and concealment (could support Scout role)
+- **Lore** talents (6 total): Esoteric knowledge — could potentially support Quartermaster or discovery interactions in future
+- **Stealth** talents (6 total): Infiltration and concealment — could potentially support Scout role in future
 
 **Design Note:** While these skills don't need travel-specific talents, some could benefit from travel-adjacent utility. See new talent proposals below.
 
@@ -171,7 +171,7 @@ The following talent categories have no meaningful interaction with travel mecha
 
 ## 4. New Talent Proposals
 
-The following new talents are designed to fill the gaps identified above, with specific interactions with the [travel system](../../06-scenes/09-travel.md) mechanics. All talents follow the design guidelines from the [Talent System Design Guide](../../../) and the rank progression of Unlock (1) → Payoff (2) → Mastery (3).
+The following new talents are designed to fill the gaps identified above, with specific interactions with the [travel system](../../06-scenes/09-travel.md) mechanics. All talents follow the established design guidelines and the rank progression of Unlock (1) → Payoff (2) → Mastery (3).
 
 ---
 
@@ -190,13 +190,13 @@ When you fill the Navigator role during travel and succeed on your roll, you can
 
 **Rank 2 (Adept)**
 You gain the following abilities:
-- When you fill the Navigator role and your roll results in a consequence, you can choose to re-roll the test once per day. You must accept the new result.
+- When you fill the Navigator role and your result requires you to choose a consequence (on a Failure or Blunder), you can choose to re-roll the test once per day. You must accept the new result.
 - When the party reaches a Landmark checkpoint, the Navigator gains +1 boon on their next two Navigation rolls instead of one.
 
 **Rank 3 (Expert)**
 You gain the following abilities:
 - When you fill the Navigator role and achieve a Strong or Critical Success, you can choose the "fast pace" bonus without it counting toward your bonus choices.
-- Once per journey, when the party would be forced to make a detour (increasing the challenge die), you can roll Spirit + Survival vs. the travel difficulty. On a success, you find an alternative path and the challenge die is not increased.
+- Once per journey (from origin to final destination, including all segments), when the party would be forced to make a detour (increasing the challenge die), you can roll Spirit + Survival vs. the travel difficulty. On a success, you find an alternative path and the challenge die is not increased.
 
 **Design Notes:**
 - *Trigger:* Filling the Navigator role during travel; succeeding or failing on navigation rolls.
@@ -217,7 +217,7 @@ You gain the following abilities:
 **Rank 1 (Novice)**
 You gain the following abilities during travel:
 - When you would suffer Fatigue from a forced march, roll Strength + Athletics vs. the travel difficulty. On a success, you do not gain Fatigue.
-- When terrain causes -1 progress to the party's travel, you can spend your Quick Action during that day's travel to assist the Navigator. The Navigator gains +1 boon on their roll.
+- When the party is traveling through terrain that would cause -1 progress, you can spend your Quick Action during that day's travel to assist the Navigator before they roll. The Navigator gains +1 boon on their roll.
 
 **Rank 2 (Adept)**
 You gain the following abilities:
@@ -227,7 +227,7 @@ You gain the following abilities:
 **Rank 3 (Expert)**
 You gain the following abilities:
 - When the party performs a forced march, you can inspire the group through your endurance. Each party member who can see you gains +1 boon on any Strength + Fortitude roll to resist Fatigue during that day.
-- Once per journey, when the party would make no progress due to severe weather or getting lost, you can roll Strength + Athletics vs. the travel difficulty. On a success, the party makes 1 progress instead.
+- Once per journey (from origin to final destination), when the party would make no progress due to severe weather or getting lost, you can roll Strength + Athletics vs. the travel difficulty. On a success, the party makes 1 progress instead.
 
 **Design Notes:**
 - *Trigger:* Forced march, terrain penalties, Extreme Climate checkpoints, shelter rolls.
@@ -248,7 +248,7 @@ You gain the following abilities:
 **Rank 1 (Novice)**
 When you fill the Scout role during travel and succeed on your roll, you can choose one of the following additional effects:
 - The Navigator gains +1 boon on their next Navigation roll (you spotted a landmark or trail marker).
-- You learn the general category of the next day's Travel Event before it is rolled.
+- You learn the general category of the next day's Travel Event before it is rolled (e.g., Encounter, Wear and Tear, Weather Event, Traces, or Ambient).
 
 **Rank 2 (Adept)**
 You gain the following abilities:
@@ -258,7 +258,7 @@ You gain the following abilities:
 **Rank 3 (Expert)**
 You gain the following abilities:
 - When you fill the Scout role and achieve a Critical Success, you can choose to automatically succeed on finding shelter in addition to your three normal bonuses.
-- Once per journey, when the party encounters a Hidden Checkpoint (danger zone), you can declare that you spotted it in advance. The party is not surprised and each member gains +1 boon on their first roll during the checkpoint encounter.
+- Once per journey (from origin to final destination), when the party encounters a Hidden Checkpoint (danger zone), you can declare that you spotted it in advance. The party is not surprised and each member gains +1 boon on their first roll during the checkpoint encounter.
 
 **Design Notes:**
 - *Trigger:* Filling the Scout role during travel; succeeding on scouting rolls.
@@ -289,7 +289,7 @@ You gain the following abilities:
 **Rank 3 (Expert)**
 You gain the following abilities:
 - When you fill any travel role using Education, you gain +1 boon on the roll.
-- Once per journey, you can declare a rest day. The party makes no progress but each party member removes 2 Fatigue instead of the normal amount and does not need to make Supply Checks for the day. You can only use this ability at a Camp or Safepoint checkpoint.
+- Once per journey (from origin to final destination), you can declare a rest day. The party makes no progress but each party member removes 2 Fatigue (in addition to any other rest benefits) and does not need to make Supply Checks for the day. You can only use this ability at a Camp or Safepoint checkpoint.
 
 **Design Notes:**
 - *Trigger:* Filling the Quartermaster role, reaching checkpoints, Weather Events.
@@ -310,7 +310,7 @@ You gain the following abilities:
 **Rank 1 (Novice)**
 You gain the following abilities during travel along roads or through civilized lands:
 - When the party reaches a Safepoint checkpoint, you can roll Spirit + Streetwise vs. the travel difficulty. On a success, you find better prices for supplies (reduce costs by 25%) or learn the location of the next safe resting point along the route.
-- When the party encounters Travelers (Discovery Event), you gain +1 boon on any social rolls with them.
+- When the party encounters travelers during travel (from the Travelers result on the Discovery Event Table or other NPC encounters on the road), you gain +1 boon on any social rolls with them.
 
 **Rank 2 (Adept)**
 You gain the following abilities:
@@ -320,7 +320,7 @@ You gain the following abilities:
 **Rank 3 (Expert)**
 You gain the following abilities:
 - When traveling along a road, the Navigator gains +1 boon on their Navigation roll (your knowledge of trade routes and shortcuts helps guide the group).
-- Once per journey, when the party reaches a Safepoint, you can declare that you have a contact here. Roll Spirit + Streetwise vs. the travel difficulty. On a success, the contact provides useful aid: a free night's rest, a pack of rations, information about the route ahead, or passage through a blockade.
+- Once per journey (from origin to final destination), when the party reaches a Safepoint, you can declare that you have a contact here. Roll Spirit + Streetwise vs. the travel difficulty. On a success, the contact provides useful aid: a free night's rest, a pack of rations, information about the route ahead, or passage through a blockade.
 
 **Design Notes:**
 - *Trigger:* Travel along roads or near settlements; Safepoint checkpoints; Encounter events.
@@ -351,7 +351,7 @@ You gain the following abilities:
 **Rank 3 (Expert)**
 You gain the following abilities:
 - When you fill the Forager role and achieve a Strong or Critical Success, any food gathered does not spoil (you know preservation techniques using local plants and minerals).
-- Once per journey, during the Make Camp phase, you can prepare a restorative meal from gathered ingredients. Each party member who eats the meal removes 1 Fatigue in addition to any other rest benefits.
+- Once per journey (from origin to final destination), during the Make Camp phase, you can prepare a restorative meal from gathered ingredients. Each party member who eats the meal removes 1 Fatigue in addition to any other rest benefits.
 
 **Design Notes:**
 - *Trigger:* Filling the Forager role during travel; foraging success/failure.
@@ -369,9 +369,9 @@ These are recommendations for clarifying or updating existing talents to better 
 
 **Current (Rank 2):** "If you are the scout, reduce the Encounter Die by one step regardless of the outcome of your roll."
 
-**Recommended Update:** "If you fill the Scout role during travel and choose 'avoid danger,' the GM rolls three times on the Travel Event Table instead of two. You choose one result; the other two are discarded."
+**Recommended Update:** "If you fill the Scout role during travel, you gain +1 boon on your Scout roll when in one of your chosen environments."
 
-**Rationale:** The travel system no longer uses an "Encounter Die." The Scout's "avoid danger" bonus already allows choosing between two event rolls — this update extends that to three, which is mechanically equivalent to reducing the encounter likelihood.
+**Rationale:** The travel system no longer uses an "Encounter Die." Rather than duplicating the triple-roll mechanic proposed for Cartographer's Eye, the updated Explorer of Nature should provide a simpler, terrain-specific scouting bonus that stacks cleanly with the Cartographer's Eye talent for different-skill investment builds.
 
 ### 5.2 Knowledgeable Wanderer (Nature) — Rank 3 Completion
 
@@ -395,7 +395,7 @@ These are recommendations for clarifying or updating existing talents to better 
 
 **Recommended Rank 2:** "When following tracks during travel, you can determine the approximate number of creatures, their size, and how long ago the tracks were made. When the party encounters a Hidden Shortcut (Discovery Event), you gain +1 boon on any rolls to navigate the shortcut safely."
 
-**Recommended Rank 3:** "When you fill the Scout role during travel and choose 'make a discovery,' you can roll twice on the Discovery Event Table and choose either result. Once per journey, you can declare that you are tracking specific quarry. For the remainder of the journey, you learn whether the quarry passed through each terrain segment and how far ahead they are."
+**Recommended Rank 3:** "When you fill the Scout role during travel and choose 'make a discovery,' you can roll twice on the Discovery Event Table and choose either result. Once per journey (from origin to final destination), you can declare that you are tracking specific quarry. For the remainder of the journey, you learn whether the quarry passed through each terrain segment and how far ahead they are."
 
 **Rationale:** Extends tracking into the travel system's Discovery Events and provides a narrative/utility tool for journey-focused play.
 
