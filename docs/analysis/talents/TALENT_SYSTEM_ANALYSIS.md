@@ -86,6 +86,10 @@
 | Defensive - Avoidance | 5% | 15% | -10% | Limited dodge/evasion beyond Athletics |
 | Utility - Exploration | 8% | 15% | -7% | Weak exploration support |
 | Inter-Skill Synergies | 10% | 20% | -10% | Few talents reward multi-skill builds |
+| Challenge-interactive talents | 5 | 15+ | -10+ | Few talents interact with challenge mechanics |
+| Social Intrigue-interactive talents | 8 | 15+ | -7+ | Limited interaction with Interest/Patience mechanics |
+
+> **See also:** [Challenge & Social Intrigue Talent Integration](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md) for a dedicated analysis of talent interactions with the Challenge and Social Intrigue systems.
 
 ---
 
@@ -164,8 +168,10 @@
 1. Add 4-6 talents each to Insight, Streetwise, Influence, Perception
 2. Create talents for missing identity tags (Infiltration, Whip, Zone control)
 3. Add music/performance talents for Bard
+4. Complete incomplete talent ranks (Relentless Tracker, I Know A Guy, Roguish Wits, Sleight of Hand)
+5. Add challenge/social intrigue talents (Silver Tongue, Read the Room, Keen Observer, Streetwise Informant, Dogged Pursuit, Methodical Research) — see [Challenge & Social Intrigue Integration](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md)
 
-**Expected Outcome:** 20 new talents, eliminate completely missing tags
+**Expected Outcome:** 20+ new talents, eliminate completely missing tags, challenge/social intrigue support
 
 ### Medium-Term (3-6 months)
 
@@ -201,6 +207,9 @@
 | Defensive - Avoidance % | 5% | 15% | ❌ |
 | Exploration % | 8% | 15% | ⚠️ |
 | Inter-skill synergies % | 10% | 20% | ⚠️ |
+| Challenge-interactive talents | 5 | 15+ | ❌ |
+| Social Intrigue-interactive talents | 8 | 15+ | ❌ |
+| Incomplete talent ranks | 7+ | 0 | ❌ |
 
 ---
 
