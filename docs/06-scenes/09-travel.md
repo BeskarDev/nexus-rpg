@@ -378,9 +378,9 @@ These tables are for GM reference during play.
 | 1 | **Encounter** | Roll on a region-appropriate encounter table. |
 | 2 | **Wear and Tear** | Each adventurer chooses one item: make a Durability check if tracked, otherwise lose 1 use. |
 | 3 | **Rations Run Low** | Each party member rolls a Supply Check for their rations. |
-| 4 | **Route Shift** | Roll 1d6: (1–2) Navigator suffers +1 bane on next Navigation roll. (3–4) Challenge die +1. (5–6) –1 progress tomorrow. |
+| 4 | **Weather Event** | Adverse weather sets in (fog, wind, extreme heat or cold, storms, etc.): Navigator and Scout each suffer +1 bane on their rolls; each party member rolls Strength + Fortitude or Mind + Nature vs. the travel difficulty or suffers 1 Fatigue; each Supply Check for rations requires two uses. Each additional **Weather Event** result stacks: +1 further bane on Navigation and Scouting, and Fatigue TN increases by 1. Rolling **Ambient** resets all weather penalties. |
 | 5 | **Traces** | GM shares one detail about the route ahead: nearby hazard, resource, or travelers. |
-| 6 | **Ambient** | No mechanical effect. |
+| 6 | **Ambient** | No mechanical effect. Resets all active Weather Event penalties. |
 
 ### Discovery Event Table
 
