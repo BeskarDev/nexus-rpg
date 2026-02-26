@@ -225,7 +225,7 @@ The Scout ranges ahead of the group, gathering intelligence without committing t
 | Strong Success | Learn terrain, visible POIs, and the presence of any creatures or NPCs |
 | Critical Success | Full reconnaissance — learn all of the above plus the Discovery TN of any hidden features |
 
-> **Scouting does not tick the dice timer for the rest of the party**, but it consumes the Scout's action for that stretch. The Scout rejoins the party before the next action.
+> Scouting consumes the Scout's action for the current stretch. The dice timer still ticks once as normal for the stretch (time passes while the Scout is away and the party waits). However, scouting does not require a Pathfinder roll since the party itself is not moving.
 
 ---
 
@@ -292,8 +292,16 @@ When the dice timer reaches 0, the GM rolls 1d6:
 | 2 | **Wear and Tear** | The terrain punishes gear. Each adventurer chooses one item: footwear, clothing, a tool, or a weapon requires a Durability check, or a carried item loses 1 use. |
 | 3 | **Provisions Dwindle** | Rations spoil, waterskins leak, or the environment drains supplies faster than expected. Each party member rolls a Supply Check for rations or water. |
 | 4 | **Terrain Shift** | The environment changes. Roll d3: [1] Weather worsens — next action suffers +1 bane. [2] Path blocked — a natural obstacle requires an Athletics or Survival check to bypass or a detour to another hex/point. [3] Hazard — a natural danger emerges (rockslide, flash flood, sinkhole, animal stampede). Each party member rolls an appropriate save or suffers consequences. |
-| 5 | **Traces** | The party discovers signs of something nearby. Roll on the **Traces Sub-Table** below. Traces provide directional clues — the GM indicates which adjacent hex/point the trace points toward. |
+| 5 | **Traces** | The party discovers signs of something nearby. Roll on the **Traces Sub-Table** below. Traces provide directional clues — the GM indicates which adjacent hex/point the trace points toward (see Directing Traces below). |
 | 6 | **Ambient** | Atmosphere and scenery. Wind through the trees, distant mountains catching the light, a beautiful sunset. Nothing mechanically significant — a moment to breathe. |
+
+### Directing Traces
+
+When a Traces event fires, the GM must decide which direction the clue points. Use the following priority:
+
+1. **Pre-placed clue:** If the GM has assigned a specific Traces result to this hex/point (because it is adjacent to a hidden POI), use that clue as written.
+2. **Nearest POI:** If no pre-placed clue exists, point the trace toward the nearest undiscovered point of interest.
+3. **Random direction:** If no POIs are nearby or the GM prefers randomness, roll a die corresponding to the number of adjacent hexes/paths (d6 for hex crawl, or choose randomly among connected points in a point crawl) to determine the direction.
 
 ### Traces Sub-Table (d6)
 
@@ -391,7 +399,7 @@ When the party has a **specific exploration goal** — finding a lost ruin, trac
 
 ### Structure
 
-1. **Challenge die:** Represents how close the party is to finding their goal. Use d6 (nearby, with clues) or d8 (distant, few clues).
+1. **Challenge die:** Represents how close the party is to finding their goal. Use d6 when the goal is within a few hexes/points and the party has some clues or leads. Use d8 when the goal is farther away, clues are sparse, or the search area is large (8+ hexes/points to cover).
 2. **TN:** Use the Exploration Difficulty for the region.
 3. **Progress:** The challenge die is reduced by successful Search, Track, or Investigate actions — not by movement alone.
 4. **Timer (optional):** Use the exploration dice timer as a dual-purpose timer, or add a separate challenge timer (d6 or d8) for external pressure (a storm approaching, a rival expedition, supplies running out).
@@ -489,9 +497,9 @@ This example illustrates a full exploration session using the hex crawl procedur
 **Day 1**
 
 The party consists of four adventurers. They assign roles:
-- **Pathfinder:** Ranger (Spirit d10 + Nature 3)
-- **Lookout:** Rogue (Spirit d8 + Perception 3)
-- **Forager:** Druid (Spirit d10 + Nature 2)
+- **Pathfinder:** Ranger (Spirit d10, Nature rank 3)
+- **Lookout:** Rogue (Spirit d8, Perception rank 3)
+- **Forager:** Druid (Spirit d10, Nature rank 2)
 - **Scout:** Fighter (no scouting today — acts as general support)
 
 **Action 1 — Morning: Move to Hex 2 (forest)**
@@ -554,7 +562,7 @@ The party consists of four adventurers. They assign roles:
 >
 > **Scout** rolls Agility + Stealth vs. TN 10: result 14 (Critical Success). Full reconnaissance — the GM reveals: "Dense forest with a concealed camp. You count five people, lightly armed. Cooking fire, stolen trade goods stacked under canvas. Discovery TN 10 if you were searching blind, but you've found them."
 >
-> Timer: 6 → 5 (the Scout's action does not tick for the party, but the party waits, so the GM ticks once for the party's idle time).
+> Timer: 6 → 5. Although scouting itself does not tick the timer for the rest of the party, time still passes during this stretch — the party rests, forages, or keeps watch while the Scout is away. The timer ticks once as normal for the stretch.
 
 **Action 3 — Evening: The party decides what to do**
 
