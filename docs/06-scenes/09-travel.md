@@ -90,7 +90,7 @@ Assign your checkpoints to certain values along your challenge die when they wil
 | Landmark | Ancient monument, mountain pass, river crossing | Navigation aid. The Navigator gains +1 boon on their next Navigation roll. One party member may remove 1 Fatigue. |
 | Camp | Natural shelter, cave, oasis, clear stream | Good shelter for the night (auto-succeed on shelter). Forager, Hunter, and Fisher gain +1 boon on their rolls the following day. |
 | Blockade | Military blockade, monster nest, collapsed bridge | Blocks the intended route. May need convincing, bribing, fighting, or choosing to make a detour (increase the challenge die by 1). |
-| Extreme Climate | Extreme heat, extreme cold, magical storm | Environmental hazard requiring a Strength + Fortitude roll vs. the travel difficulty or suffer 1 Fatigue. May occur in addition to the normal daily procedure. In extreme heat, each party member must also roll an additional Supply Check for water. |
+| Extreme Climate | Extreme heat, extreme cold, magical storm | Environmental hazard requiring a Strength + Fortitude roll vs. the travel difficulty or suffer 1 Fatigue. May occur in addition to the normal daily procedure. In extreme heat, each party member must also roll an additional Supply Check for their rations (representing increased water consumption). |
 | Ambush | Bandits, hungry monsters, hostile patrol | The group is ambushed by a hostile group. The group rolls for "Getting Surprised". If the Scout chose "avoid danger" during their last Scout roll, everyone in the group gets +1 boon on this roll. |
 
 > Checkpoints should be used sparingly and feel more scripted or significant than random daily events. Environmental checkpoints like "Extreme Climate" may appear more often (once a day or so) to represent very hostile environments, while narrative checkpoints like "Blockade" or "Ambush" should mark turning points in the journey.
@@ -194,7 +194,7 @@ The GM can either choose or randomly determine the time of day when the event oc
 | 1d6 | Category | What Happens |
 | --- | --- | --- |
 | 1 | **Encounter** | You cross paths with creatures, travelers, or a hostile force. Roll on a region-appropriate encounter table. |
-| 2 | **Wear and Tear** | Long days on the road strain gear. Each adventurer chooses one item: worn armor, weapons, or tools require a Durability check, or a pack item loses 1 use. |
+| 2 | **Wear and Tear** | Long days on the road strain gear. Each adventurer chooses one item they possess. If it tracks Durability, make a Durability check. Otherwise, it loses 1 use. |
 | 3 | **Provisions Dwindle** | Food runs low, water sources dry up, or stored rations go bad. Each party member must roll a Supply Check for provisions. |
 | 4 | **Route Shift** | Conditions change along the route. Roll 1d6: (1-2) Weather turns harsh, the Navigator suffers +1 bane on the next Navigation roll. (3-4) Road or bridge blocked, the challenge die increases by 1. (5-6) Terrain harder than expected, the group suffers -1 progress tomorrow. |
 | 5 | **Traces** | Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead or off the beaten path. The GM provides a narrative clue or foreshadowing. |
@@ -253,7 +253,7 @@ The Navigator determines how much progress the party makes each day and how unsc
 
 **Consequences:**
 
-- Get lost (-1 progress or no progress at all on consecutive days being lost, +1 bane on next Navigation roll)
+- Get lost (-1 progress. If already lost from a previous day, make no progress instead. +1 bane on next Navigation roll)
 - Become exhausted (each party member suffers 1 Fatigue)
 
 ### Scout
@@ -299,7 +299,7 @@ The Quartermaster manages supplies, ensures gear is maintained, and optimizes ra
 
 - Proper maintenance (dismiss the next "Wear and Tear" or "Provisions Dwindle" result from the Travel Event Table)
 - Rationing (each party member can roll their next Supply Check for rations twice and choose either result)
-- Top shape (for a long duration, each party member can choose to re-roll any one roll or Durability check related to a piece of equipment they wield or wear)
+- Top shape (until the next rest, each party member can choose to re-roll any one roll or Durability check related to a piece of equipment they wield or wear)
 
 **Consequences:**
 
