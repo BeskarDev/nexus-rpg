@@ -76,3 +76,42 @@ These additions would raise travel talent coverage from 3% to ~10% across 7 skil
 See [TALENT_SYSTEM_ANALYSIS.md](./TALENT_SYSTEM_ANALYSIS.md) for detailed data, archetype breakdowns, and complete talent recommendations.
 
 See [TRAVEL_TALENT_INTEGRATION.md](./TRAVEL_TALENT_INTEGRATION.md) for the full travel talent integration analysis.
+
+## Challenge & Social Intrigue Integration
+
+> **Full Analysis:** [CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md)
+
+The [Challenge system](../../06-scenes/07-challenges.md) and [Social Intrigue system](../../06-scenes/08-social-intrigue.md) introduce structured mechanics for chases, research, tracking, negotiations, and other multi-step dramatic scenes. The talent integration analysis audits all 115 existing talents for compatibility with these systems and proposes new talents:
+
+### Key Findings
+
+- **5 talents** directly interact with challenge mechanics (re-rolls, skill substitution)
+- **8 talents** directly interact with Social Intrigue (social re-rolls, cultural knowledge, deception)
+- **7 incomplete talent ranks** represent prime opportunities for challenge/social integration
+- **No talents** interact with Interest, Patience, Motivations, or Pitfalls mechanics
+
+### Proposed New Talents
+
+| Proposed Talent | Skill | Challenge/Social Role |
+|----------------|-------|----------------------|
+| **Silver Tongue** | Influence | Social Intrigue — Interest/Patience manipulation |
+| **Read the Room** | Insight | Social Intrigue — Investigate enhancement, Pitfall warning |
+| **Keen Observer** | Perception | All challenges — awareness and critical payoff |
+| **Streetwise Informant** | Streetwise | Urban challenges — pre-scene intelligence |
+| **Dogged Pursuit** | Survival | Tracking/Chase — consequence mitigation |
+| **Methodical Research** | Education | Research — failure mitigation, team support |
+
+### Proposed Talent Completions
+
+| Talent | Skill | Completed Ranks |
+|--------|-------|-----------------|
+| **Relentless Tracker** | Survival | Ranks 2–3 (tracking info, trail recovery) |
+| **I Know A Guy** | Streetwise | Ranks 2–3 (intelligence, remote contacts) |
+| **Roguish Wits** | Stealth | Rank 3 (Patience manipulation in Social Intrigue) |
+| **Sleight of Hand** | Stealth | Rank 3 (evidence planting in Social Intrigue) |
+
+These additions would raise challenge-interactive talents from 5 to 14 and Social Intrigue-interactive talents from 8 to 15, across 9 skills (up from 4).
+
+---
+
+See [CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md) for the full audit, gap analysis, proposed talent text, and archetype support matrix.
