@@ -168,7 +168,7 @@ When a checkpoint is reached (previously recorded value on the challenge die), t
 
 The Scout rolls Spirit + Perception/Survival vs. the travel difficulty. Depending on the SL, they have the choice between different positive or negative outcomes for the day.
 
-If they choose "make a discovery", roll 1d6 on the Discovery Event Table below to determine the category, then roll 1d6 on that category's sub-table to determine the specific discovery.
+If they choose "make a discovery", roll 1d6 on the Discovery Event Table to determine the category, then roll 1d6 on that category's sub-table. Both tables are in the [Random Tables](#random-tables) section below.
 
 ### 6. Roll Daily Event
 
@@ -189,95 +189,7 @@ The GM can either choose or randomly determine the time of day when the event oc
 | 4 | Evening |
 | 5-6 | Night |
 
-**Travel Event Table**
-
-| 1d6 | Category | What Happens |
-| --- | --- | --- |
-| 1 | **Encounter** | You cross paths with creatures, travelers, or a hostile force. Roll on a region-appropriate encounter table. |
-| 2 | **Wear and Tear** | Long days on the road strain gear. Each adventurer chooses one item they possess. If it tracks Durability, make a Durability check. Otherwise, it loses 1 use. |
-| 3 | **Rations Run Low** | Food runs low, water sources dry up, or stored rations spoil. Each party member must roll a Supply Check for their rations. |
-| 4 | **Route Shift** | Conditions change along the route. Roll 1d6: (1-2) Weather turns harsh, the Navigator suffers +1 bane on the next Navigation roll. (3-4) Road or bridge blocked, the challenge die increases by 1. (5-6) Terrain harder than expected, the group suffers -1 progress tomorrow. |
-| 5 | **Traces** | Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead. The GM shares one useful detail about the route ahead — nearby water sources, potential dangers, or points of interest. |
-| 6 | **Ambient** | A striking sunset, a cool breeze, or a peaceful night. Atmosphere and flavor, but nothing of mechanical note occurs. |
-
-**Discovery Event Table**
-
-When a Scout makes a discovery, roll 1d6 on the table below, then roll on the corresponding sub-table to determine the specifics.
-
-| 1d6 | Discovery | Effect |
-| --- | --- | --- |
-| 1 | **Hidden Treasure** | Something valuable is spotted, but claiming it carries a risk or cost. Roll on the Hidden Treasure sub-table. |
-| 2 | **Awe-Inspiring Vista** | A breathtaking sight fills the party with renewed determination. Each party member regains 1 Resolve (up to their maximum). Roll on the Vista sub-table for the specific sight. |
-| 3 | **Hidden Shortcut** | A concealed path cuts through the terrain. The Navigator gains +1 boon on their next Navigation roll. Roll on the Shortcut sub-table for the specific path. |
-| 4 | **Suspicious Shelter** | A potentially useful shelter along the route with a small bonus. Roll on the Suspicious Shelter sub-table. |
-| 5 | **Warning Signs** | Evidence of what lies ahead. The GM pre-rolls the next day's Travel Event and reveals the result to the party. The group can choose to prepare for the event (each party member gains +1 boon on any rolls to deal with it) or take a detour to avoid it (the event does not occur, but the group suffers -1 progress as they reroute). Roll on the Warning Signs sub-table for the specific evidence. |
-| 6 | **Travelers** | The Scout spots other people in the area. Roll on the Travelers sub-table. |
-
-**Hidden Treasure (1d6)**
-
-| 1d6 | Situation |
-| --- | --- |
-| 1 | A creature guards a small cache of coins or valuables near its lair. The party must drive it off or sneak past to claim the treasure. |
-| 2 | An old merchant's wagon lies half-buried off the trail, still loaded with goods. Salvaging takes time — the group suffers -1 progress today if they stop to loot it. |
-| 3 | A locked and trapped chest sits inside a ruin. Opening it requires a successful Mind + Crafting roll vs. the travel difficulty. On a failure, it triggers a trap (2d6 damage to the opener). |
-| 4 | Valuable ore, gemstones, or rare herbs grow in a precarious spot — a cliff face, unstable ledge, or flooded hollow. An Agility + Athletics roll vs. the travel difficulty is needed to harvest safely. On a failure, the harvester suffers 1d6 damage. |
-| 5 | A dead adventurer's pack contains 1d4 simple rations (d4) and a small pouch of coins (2d6 x 10 coins), but the body shows signs of a nearby predator. Lingering to search risks an immediate encounter. |
-| 6 | A shrine holds an offering of valuables worth 3d6 x 10 coins. Taking them is easy, but may invoke the wrath of local believers or a minor curse (+1 bane on all Resist rolls until the next rest, GM's discretion). |
-
-**Awe-Inspiring Vista (1d6)**
-
-| 1d6 | Sight |
-| --- | --- |
-| 1 | A towering natural arch frames the setting sun over a vast canyon. |
-| 2 | An ancient colossus, half-buried, stands silent watch over a forgotten valley. |
-| 3 | A pristine mountain lake perfectly reflects the surrounding peaks. |
-| 4 | A grove of enormous ancient trees, their canopy glowing with bioluminescent moss. |
-| 5 | A thundering waterfall cascades into a crystal-clear basin, rainbows arcing through the mist. |
-| 6 | The fossilized remains of a titanic creature, its bones turned to stone and overgrown with wildflowers. |
-
-**Hidden Shortcut (1d6)**
-
-| 1d6 | Path |
-| --- | --- |
-| 1 | An animal trail winds through otherwise impassable undergrowth. |
-| 2 | A dried riverbed cuts a smooth path between steep cliffs. |
-| 3 | A forgotten stone road, overgrown but still solid underfoot. |
-| 4 | A natural cave tunnel passes straight through a hill or ridge. |
-| 5 | An ancient bridge, hidden by ivy and moss, still spans a gorge. |
-| 6 | A shepherd's path marked by barely visible cairns. |
-
-**Suspicious Shelter (1d6)**
-
-| 1d6 | Location |
-| --- | --- |
-| 1 | An old campsite with a fire pit and scattered supplies. Provides shelter tonight and the party finds 1d4 simple rations (d4). |
-| 2 | An abandoned hunter's hut, partially collapsed but serviceable. Provides shelter and contains a set of basic tools (d6 supply die). |
-| 3 | A mine entrance leads to a dry, sheltered cavern. Provides shelter and the party finds 1d4 units of primitive materials (d6). |
-| 4 | A roadside shrine to a forgotten god. Provides shelter. One party member who prays or meditates here regains 1 Resolve (up to their maximum). |
-| 5 | A merchant's waystation, long disused but still standing. Provides shelter and the party finds a small cache of forgotten trade goods worth 2d6 x 10 coins. |
-| 6 | A cave behind a waterfall. Provides shelter and access to fresh water — each party member can skip their daily Supply Check for rations today. |
-
-**Warning Signs (1d6)**
-
-| 1d6 | Evidence |
-| --- | --- |
-| 1 | Deep claw marks gouged into tree trunks or rocks, growing fresher along the trail. |
-| 2 | The remains of a recent camp, hastily abandoned — scattered gear, cold ashes, and drag marks. |
-| 3 | Stone cairns arranged in a warning pattern, recognized with a Mind + Education or Lore roll vs. the travel difficulty. |
-| 4 | Circling carrion birds in the distance marking something dead or dying ahead. |
-| 5 | A crude warning sign left by previous travelers, carved into wood or scratched into stone. |
-| 6 | Unusual silence — no birdsong, no insects, no animal movement in the area ahead. |
-
-**Travelers (1d6)**
-
-| 1d6 | Encounter |
-| --- | --- |
-| 1 | A traveling merchant with a small cart of wares. The party can buy or trade supplies at standard prices. |
-| 2 | A patrol of soldiers or local guards. They share information about the road ahead — the GM reveals one upcoming checkpoint or danger zone. |
-| 3 | A hermit or wandering sage with knowledge of the area. Offers useful local information in exchange for a meal or small favor. The Navigator gains +1 boon on their next Navigation roll. |
-| 4 | A group of fellow adventurers willing to share a camp for the night (auto-succeed on shelter) and exchange rumors about the region. |
-| 5 | Refugees or displaced travelers fleeing danger ahead. They warn of a specific threat — the GM reveals the next day's Travel Event result. |
-| 6 | A suspicious individual or small group. Their intentions are unclear — they might offer honest trade, beg for help, or be scouting for bandits. The GM decides based on the region. |
+See the [Travel Event Table](#travel-event-table) in the Random Tables section below.
 
 ### 7. Roll for Optional Roles
 
@@ -452,3 +364,99 @@ The Fisher catches fish or other seafood from rivers, lakes, or coastal waters.
 - Equipment malfunction (spend 1 use for your fishing gear)
 
 > An adventurer with the Wilderness Expert talent may turn the raw fish or seafood into actual non-perishable rations.
+
+---
+
+## Random Tables
+
+These tables are for GM reference during play.
+
+### Travel Event Table
+
+| 1d6 | Category | Effect |
+| --- | --- | --- |
+| 1 | **Encounter** | Roll on a region-appropriate encounter table. |
+| 2 | **Wear and Tear** | Each adventurer chooses one item: make a Durability check if tracked, otherwise lose 1 use. |
+| 3 | **Rations Run Low** | Each party member rolls a Supply Check for their rations. |
+| 4 | **Route Shift** | Roll 1d6: (1–2) Navigator suffers +1 bane on next Navigation roll. (3–4) Challenge die +1. (5–6) –1 progress tomorrow. |
+| 5 | **Traces** | GM shares one detail about the route ahead: nearby hazard, resource, or travelers. |
+| 6 | **Ambient** | No mechanical effect. |
+
+### Discovery Event Table
+
+Roll 1d6 for the category, then 1d6 on the matching sub-table.
+
+| 1d6 | Discovery | Effect |
+| --- | --- | --- |
+| 1 | **Hidden Treasure** | Valuables at a cost. Roll on sub-table. |
+| 2 | **Awe-Inspiring Vista** | Each party member regains 1 Resolve. Roll on sub-table for flavor. |
+| 3 | **Hidden Shortcut** | Navigator gains +1 boon on next Navigation roll. Roll on sub-table for flavor. |
+| 4 | **Suspicious Shelter** | Shelter for tonight + a small bonus. Roll on sub-table. |
+| 5 | **Warning Signs** | GM pre-rolls the next Travel Event and reveals the category. Party chooses: prepare (+1 boon on related rolls) or detour (skip the event, –1 progress). Roll on sub-table for flavor. |
+| 6 | **Travelers** | NPC encounter. Roll on sub-table. |
+
+#### Hidden Treasure
+
+| 1d6 | Situation |
+| --- | --- |
+| 1 | A creature guards a cache near its lair. Drive it off or sneak past to claim it. |
+| 2 | An abandoned merchant's wagon still loaded with goods. Looting it costs –1 progress today. |
+| 3 | A trapped chest in a ruin. Mind + Crafting vs. travel difficulty to open safely. Failure: 2d6 damage. |
+| 4 | Valuable ore or herbs in a precarious spot. Agility + Athletics vs. travel difficulty to harvest safely. Failure: 1d6 damage. |
+| 5 | A dead adventurer's pack: 1d4 simple rations (d4) and 2d6 × 10 coins. Fresh predator signs nearby — looting risks an encounter. |
+| 6 | A shrine offering worth 3d6 × 10 coins. Taking it may trigger local hostility or a curse (+1 bane on Resist until next rest). |
+
+#### Awe-Inspiring Vista
+
+| 1d6 | Sight |
+| --- | --- |
+| 1 | A natural arch frames the setting sun over a vast canyon. |
+| 2 | A half-buried ancient colossus watches over a forgotten valley. |
+| 3 | A mountain lake mirrors the surrounding peaks perfectly. |
+| 4 | Ancient trees with a glowing bioluminescent canopy. |
+| 5 | A waterfall cascading into a crystal-clear basin. |
+| 6 | A titanic fossilized creature, bones turned to stone and overgrown with wildflowers. |
+
+#### Hidden Shortcut
+
+| 1d6 | Path |
+| --- | --- |
+| 1 | An animal trail through otherwise impassable undergrowth. |
+| 2 | A dried riverbed between steep cliffs. |
+| 3 | A forgotten stone road, overgrown but solid. |
+| 4 | A cave tunnel through a hill or ridge. |
+| 5 | An ivy-covered ancient bridge spanning a gorge. |
+| 6 | A shepherd's path marked by faint cairns. |
+
+#### Suspicious Shelter
+
+| 1d6 | Location |
+| --- | --- |
+| 1 | Old campsite with fire pit. Shelter + 1d4 simple rations (d4). |
+| 2 | Abandoned hunter's hut. Shelter + basic tools (d6 supply die). |
+| 3 | Mine entrance cavern. Shelter + 1d4 units of primitive materials (d6). |
+| 4 | Roadside shrine. Shelter + one party member who prays regains 1 Resolve. |
+| 5 | Disused merchant waystation. Shelter + 2d6 × 10 coins in forgotten trade goods. |
+| 6 | Cave behind a waterfall. Shelter + each party member skips today's ration Supply Check. |
+
+#### Warning Signs
+
+| 1d6 | Evidence |
+| --- | --- |
+| 1 | Fresh claw marks on trees or rocks, growing larger along the trail. |
+| 2 | Abandoned camp — scattered gear, cold ashes, drag marks. |
+| 3 | Warning cairns. Recognized with Mind + Education or Lore vs. travel difficulty. |
+| 4 | Circling carrion birds ahead. |
+| 5 | A crude warning carved by previous travelers. |
+| 6 | Unnatural silence — no birds, insects, or animal movement. |
+
+#### Travelers
+
+| 1d6 | Encounter |
+| --- | --- |
+| 1 | Merchant. Can buy or trade supplies at standard prices. |
+| 2 | Soldiers or patrol. Reveal one upcoming checkpoint or danger zone. |
+| 3 | Hermit or sage. Navigator gains +1 boon on next Navigation roll; asks for a meal or small favor. |
+| 4 | Fellow adventurers. Auto-succeed on shelter tonight; exchange regional rumors. |
+| 5 | Refugees. Reveal the next Travel Event result. |
+| 6 | Suspicious individual or group. Intentions unclear — trade, help, or bandit scouts (GM's call). |
