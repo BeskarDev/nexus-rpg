@@ -501,7 +501,7 @@ Current Ranks 2–3 are marked XXX.
 
 | Rank | Proposed Effect |
 |------|-----------------|
-| 2 | When you succeed on a Survival roll to follow tracks, you also learn one additional detail about the quarry: approximate distance, number of creatures, speed of travel, or time since the tracks were made (GM's choice based on SL). |
+| 2 | When you succeed on a Survival roll to follow tracks, you also learn one additional detail about the quarry: approximate distance, number of creatures, speed of travel, or time since the tracks were made (GM's choice based on Success Level). |
 | 3 | When you roll Survival to follow tracks, you gain +1 boon on the roll. Once per scene, when you would lose the trail entirely during a Tracking challenge, you can spend a delving turn to re-examine the area and automatically find the trail again (the challenge die doesn't increase from this). |
 
 **Design Notes:** Rank 2 provides increasing information payoff that directly supports Tracking challenges — the more the tracker succeeds, the more they know. Rank 3 provides reliability (+1 boon) and a safety net against trail loss, which is a common Tracking challenge consequence.
@@ -514,8 +514,8 @@ Current Ranks 2–3 are marked XXX.
 
 | Rank | Proposed Effect |
 |------|-----------------|
-| 2 | When you use your I Know A Guy ability, you can also ask your contact for information about a specific person, faction, or topic. The GM provides information based on the contact's knowledge and the SL of your original roll (weak: rumor or partial info, strong: reliable info, critical: detailed insider knowledge). |
-| 3 | Once per adventure, you can declare that you have a contact in any settlement you haven't previously visited. Roll Spirit + Streetwise as normal for I Know A Guy, but the contact is less reliable (treat the SL as one step lower, minimum weak success). |
+| 2 | When you use your I Know A Guy ability, you can also ask your contact for information about a specific person, faction, or topic. The GM provides information based on the contact's knowledge and the Success Level of your original roll (weak: rumor or partial info, strong: reliable info, critical: detailed insider knowledge). |
+| 3 | Once per adventure, you can declare that you have a contact in any settlement you haven't previously visited. Roll Spirit + Streetwise as normal for I Know A Guy, but the contact is less reliable (treat the Success Level as one step lower, minimum weak success). |
 
 **Design Notes:** Rank 2 transforms I Know A Guy from a pure commerce talent into an intelligence-gathering tool, directly supporting Research challenges and Social Intrigue preparation. Rank 3 extends the network to new locations, supporting the social and exploration pillar of the game. Both ranks support the Rogue and Brawler archetypes.
 

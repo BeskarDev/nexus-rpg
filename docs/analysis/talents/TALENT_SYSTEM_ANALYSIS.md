@@ -86,8 +86,8 @@
 | Defensive - Avoidance | 5% | 15% | -10% | Limited dodge/evasion beyond Athletics |
 | Utility - Exploration | 8% | 15% | -7% | Weak exploration support |
 | Inter-Skill Synergies | 10% | 20% | -10% | Few talents reward multi-skill builds |
-| Challenge interaction | 5 | 15+ | -10+ | Few talents interact with challenge mechanics |
-| Social Intrigue interaction | 8 | 15+ | -7+ | No talents interact with Interest/Patience |
+| Challenge-interactive talents | 5 | 15+ | -10+ | Few talents interact with challenge mechanics |
+| Social Intrigue-interactive talents | 8 | 15+ | -7+ | Limited interaction with Interest/Patience mechanics |
 
 > **See also:** [Challenge & Social Intrigue Talent Integration](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md) for a dedicated analysis of talent interactions with the Challenge and Social Intrigue systems.
 
