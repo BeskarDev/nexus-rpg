@@ -54,6 +54,25 @@
 4. **Playtest** - Test for balance
 5. **Iterate** - Refine and implement
 
+## Travel System Integration
+
+> **Full Analysis:** [TRAVEL_TALENT_INTEGRATION.md](./TRAVEL_TALENT_INTEGRATION.md)
+
+The [travel system](../../06-scenes/09-travel.md) introduces mechanics for multi-day overland journeys with specific roles (Navigator, Scout, Quartermaster, Forager, Hunter, Fisher), challenge dice for progress, and daily events. The travel talent integration analysis reviews all existing talents for travel interactions and proposes 6 new travel-focused talents:
+
+| Proposed Talent | Skill | Travel Role |
+|----------------|-------|-------------|
+| **Pathfinder** | Survival | Navigator |
+| **Trailblazer** | Athletics | Fatigue/terrain mitigation |
+| **Cartographer's Eye** | Perception | Scout |
+| **Expedition Leader** | Education | Quartermaster |
+| **Road Warden** | Streetwise | Scout (roads) |
+| **Seasoned Forager** | Nature | Forager |
+
+These additions would raise travel talent coverage from 3% to ~10% across 7 skills (up from 3).
+
 ---
 
 See [TALENT_SYSTEM_ANALYSIS.md](./TALENT_SYSTEM_ANALYSIS.md) for detailed data, archetype breakdowns, and complete talent recommendations.
+
+See [TRAVEL_TALENT_INTEGRATION.md](./TRAVEL_TALENT_INTEGRATION.md) for the full travel talent integration analysis.
