@@ -168,7 +168,7 @@ When a checkpoint is reached (previously recorded value on the challenge die), t
 
 The Scout rolls Spirit + Perception/Survival vs. the travel difficulty. Depending on the SL, they have the choice between different positive or negative outcomes for the day.
 
-If they choose "make a discovery", roll on the Discovery Event Table below, then roll on the corresponding sub-table to determine the specifics.
+If they choose "make a discovery", roll 1d6 on the Discovery Event Table below to determine the category, then roll 1d6 on that category's sub-table to determine the specific discovery.
 
 ### 6. Roll Daily Event
 
@@ -197,7 +197,7 @@ The GM can either choose or randomly determine the time of day when the event oc
 | 2 | **Wear and Tear** | Long days on the road strain gear. Each adventurer chooses one item they possess. If it tracks Durability, make a Durability check. Otherwise, it loses 1 use. |
 | 3 | **Rations Run Low** | Food runs low, water sources dry up, or stored rations spoil. Each party member must roll a Supply Check for their rations. |
 | 4 | **Route Shift** | Conditions change along the route. Roll 1d6: (1-2) Weather turns harsh, the Navigator suffers +1 bane on the next Navigation roll. (3-4) Road or bridge blocked, the challenge die increases by 1. (5-6) Terrain harder than expected, the group suffers -1 progress tomorrow. |
-| 5 | **Traces** | Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead. The GM shares one useful detail about the route ahead — nearby water sources, potential dangers, or the presence of other travelers. |
+| 5 | **Traces** | Signs of other travelers, old markers, animal migrations, or distant smoke hint at what lies ahead. The GM shares one useful detail about the route ahead — nearby water sources, potential dangers, or points of interest. |
 | 6 | **Ambient** | A striking sunset, a cool breeze, or a peaceful night. Atmosphere and flavor, but nothing of mechanical note occurs. |
 
 **Discovery Event Table**
@@ -219,10 +219,10 @@ When a Scout makes a discovery, roll 1d6 on the table below, then roll on the co
 | --- | --- |
 | 1 | A creature guards a small cache of coins or valuables near its lair. The party must drive it off or sneak past to claim the treasure. |
 | 2 | An old merchant's wagon lies half-buried off the trail, still loaded with goods. Salvaging takes time — the group suffers -1 progress today if they stop to loot it. |
-| 3 | A locked and trapped chest sits inside a ruin. Opening it requires a Mind + Crafting roll vs. the travel difficulty or it triggers a trap (2d6 damage to the opener). |
+| 3 | A locked and trapped chest sits inside a ruin. Opening it requires a successful Mind + Crafting roll vs. the travel difficulty. On a failure, it triggers a trap (2d6 damage to the opener). |
 | 4 | Valuable ore, gemstones, or rare herbs grow in a precarious spot — a cliff face, unstable ledge, or flooded hollow. An Agility + Athletics roll vs. the travel difficulty is needed to harvest safely. On a failure, the harvester suffers 1d6 damage. |
-| 5 | A dead adventurer's pack contains useful supplies, but the body shows signs of a nearby predator. Lingering to search risks an encounter. |
-| 6 | A shrine holds an offering of valuables. Taking them is easy, but may invoke the wrath of local believers or a minor curse (GM's discretion). |
+| 5 | A dead adventurer's pack contains 1d4 simple rations (d4) and a small pouch of coins (2d6 x 10 coins), but the body shows signs of a nearby predator. Lingering to search risks an immediate encounter. |
+| 6 | A shrine holds an offering of valuables worth 3d6 x 10 coins. Taking them is easy, but may invoke the wrath of local believers or a minor curse (+1 bane on all Resist rolls until the next rest, GM's discretion). |
 
 **Awe-Inspiring Vista (1d6)**
 
@@ -263,7 +263,7 @@ When a Scout makes a discovery, roll 1d6 on the table below, then roll on the co
 | --- | --- |
 | 1 | Deep claw marks gouged into tree trunks or rocks, growing fresher along the trail. |
 | 2 | The remains of a recent camp, hastily abandoned — scattered gear, cold ashes, and drag marks. |
-| 3 | Stone cairns arranged in a warning pattern, recognized with a Mind + Education or Lore roll. |
+| 3 | Stone cairns arranged in a warning pattern, recognized with a Mind + Education or Lore roll vs. the travel difficulty. |
 | 4 | Circling carrion birds in the distance marking something dead or dying ahead. |
 | 5 | A crude warning sign left by previous travelers, carved into wood or scratched into stone. |
 | 6 | Unusual silence — no birdsong, no insects, no animal movement in the area ahead. |
