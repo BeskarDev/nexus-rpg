@@ -168,7 +168,7 @@ When a checkpoint is reached (previously recorded value on the challenge die), t
 
 The Scout rolls Spirit + Perception/Survival vs. the travel difficulty. Depending on the SL, they have the choice between different positive or negative outcomes for the day.
 
-If they choose "make a discovery", roll 1d6 on the Discovery Event Table to determine the category, then roll 1d6 on that category's sub-table. Both tables are in the [Random Tables](#random-tables) section below.
+If they choose "make a discovery", roll 1d6 on the Discovery Event Table to determine the category, then roll 1d6 on that category's sub-table. All tables are in the [Random Tables](#random-tables) section below.
 
 ### 6. Roll Daily Event
 
