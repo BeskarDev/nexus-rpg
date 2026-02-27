@@ -254,7 +254,7 @@ A resilient and adaptable people, humans possess a natural arcane ability that s
 
 | Culture | Region | Description |
 | --- | --- | --- |
-| Khatok (Savannah-Humans) | Savannah | Nomadic tribes who navigate the grasslands at the desert's edge, many of them were brought to Atakhep for manual labor |
+| Khatok (Savannah-Humans) | Savannah | Nomadic tribes who navigate the grasslands at the desert's edge, many of them were brought to Atakhet for manual labor |
 | Vornheimr (Snow-Humans) | Northern Lands | Hardy northerners who rarely venture into the southern deserts |
 
 **Size.** Humans are medium sized, growing to 1.60 to 1.80 meters tall on average.
