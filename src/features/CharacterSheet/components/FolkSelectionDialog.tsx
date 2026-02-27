@@ -18,8 +18,7 @@ export type FolkData = {
 	category: string
 	quote: string
 	description: string
-	known_cultures: Array<{ name: string; description: string }>
-	far_away_cultures: Array<{ name: string; description: string }>
+	cultures: Array<{ name: string; region: string; description: string }>
 	abilities: Array<{ name: string; description: string }>
 	languages: string[]
 }

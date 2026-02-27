@@ -50,11 +50,8 @@ def extract_folk_from_section(section_content, folk_category):
         description_match = re.search(r'!\[folk-img\].*?\n\n(.*?)(?=\*\*Known Cultures|\*\*Far Away Cultures|\*\*Size)', folk_content, re.DOTALL)
         description = description_match.group(1).strip() if description_match else ""
         
-        # Extract known cultures
-        known_cultures = extract_cultures(folk_content, "Known Cultures")
-        
-        # Extract far away cultures  
-        far_away_cultures = extract_cultures(folk_content, "Far Away Cultures")
+        # Extract cultures
+        cultures = extract_cultures(folk_content, "Known Cultures") + extract_cultures(folk_content, "Far Away Cultures")
         
         # Extract abilities (lines starting with ** that aren't Size, Age, Known Cultures, etc.)
         abilities = extract_abilities(folk_content)
@@ -67,8 +64,7 @@ def extract_folk_from_section(section_content, folk_category):
             "category": folk_category,
             "quote": quote,
             "description": description,
-            "known_cultures": known_cultures,
-            "far_away_cultures": far_away_cultures,
+            "cultures": cultures,
             "abilities": abilities,
             "languages": languages
         }

@@ -4,23 +4,25 @@
     "category": "Old Folk",
     "quote": "",
     "description": "Carved of the stone itself, dwarves maintain a deep connection to the earth. They are masters of mining and metalworking, renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination reflects their unbreakable bond with the earth. In Atakhet, dwarven stoneworkers are highly prized for their ability to craft monuments that withstand the harsh desert conditions.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Mahruk",
-        "description": "TODO (merchant dwarves from the northern islands)"
+        "name": "Mahruk (Gold-Dwarves)",
+        "region": "Northern Islands",
+        "description": "Merchant dwarves and seafarers from the northern islands"
       },
       {
-        "name": "Ghahar",
+        "name": "Ghahar (Fortress-Dwarves)",
+        "region": "Atakhet",
         "description": "Master architects who construct impregnable strongholds, often serving as royal engineers in Atakhet"
       },
       {
-        "name": "Urduk",
-        "description": "TODO (evil djinn-serving dwarves from the ashen badlands)"
-      }
-    ],
-    "far_away_cultures": [
+        "name": "Urduk (Grey-Dwarves)",
+        "region": "Ashen Badlands",
+        "description": "Djinn-serving dwarves from the ashen badlands"
+      },
       {
-        "name": "Dhurvar",
+        "name": "Dhurvar (Ice-Dwarves)",
+        "region": "Northern Mountains",
         "description": "Stoic mountain dwellers who carve their homes from snow-covered mountainsides"
       }
     ],
@@ -47,23 +49,25 @@
     "category": "Old Folk",
     "quote": "",
     "description": "Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Anutep",
+        "name": "Anutep (Sun-Elves)",
+        "region": "Atakhet",
         "description": "Dark-skinned desert dwellers who rule Atakhet as divine representatives, drawing power from the sun"
-      }
-    ],
-    "far_away_cultures": [
+      },
       {
-        "name": "Sylvar",
+        "name": "Sylvar (Forest-Elves)",
+        "region": "Distant Forests",
         "description": "Secretive woodland protectors who rarely venture beyond their forest borders"
       },
       {
-        "name": "Alfir",
+        "name": "Alfir (Shadow-Elves)",
+        "region": "Distant Realms",
         "description": "Nocturnal elves who dwell in twilight realms and ancient tombs"
       },
       {
-        "name": "Ho'shien",
+        "name": "Ho'shien (River-Elves)",
+        "region": "Great Rivers",
         "description": "Nomadic traders who follow the great rivers, serving as vital links between isolated communities"
       }
     ],
@@ -90,17 +94,18 @@
     "category": "Old Folk",
     "quote": "",
     "description": "Natural psychics with the ability to read other people's intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company. In Atakhet, gnomes often serve as diplomatic intermediaries, using their empathic abilities to foster understanding between different folk.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Auflin",
+        "name": "Auflin (Willow-Gnomes)",
+        "region": "Oases & Waterways",
         "description": "Gentle river-dwellers who establish communities near oases and waterways"
       },
       {
-        "name": "Burrin",
+        "name": "Burrin (Den-Gnomes)",
+        "region": "Underground",
         "description": "Industrious tunnel-builders who create elaborate underground communities"
       }
     ],
-    "far_away_cultures": [],
     "abilities": [
       {
         "name": "Natural Empath",
@@ -124,23 +129,25 @@
     "category": "Old Folk",
     "quote": "",
     "description": "A race of towering beings with incredible strength and endurance. They are often nomadic and reclusive but possess a deep wisdom and knowledge of the world. In the deserts of Atakhet, Hunes are often sought out as caravan guards or builders for grand monuments, their strength and endurance invaluable in the harsh climate.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Hataar",
+        "name": "Hataar (Mountain-Hunes)",
+        "region": "Mountains",
         "description": "Solitary herders and guardians of ancient mountain passes"
       },
       {
-        "name": "Empyros",
+        "name": "Empyros (Island-Hunes)",
+        "region": "Islands",
         "description": "Seafaring traders who connect distant shores through elaborate trade networks"
-      }
-    ],
-    "far_away_cultures": [
+      },
       {
-        "name": "Jotnir",
+        "name": "Jotnir (Ice-Hunes)",
+        "region": "Frozen North",
         "description": "Frost-resistant nomads who navigate the frozen north with ease"
       },
       {
-        "name": "Ta'uuri",
+        "name": "Ta'uuri (Island-Hunes)",
+        "region": "Coastal Islands",
         "description": "Coastal dwellers who build impressive stone harbors and lighthouses"
       }
     ],
@@ -163,20 +170,21 @@
     "category": "Old Folk",
     "quote": "",
     "description": "Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Orgon",
+        "name": "Orgon (Island-Orcs)",
+        "region": "Coastal Islands",
         "description": "Seafaring warriors and traders who establish coastal settlements"
       },
       {
-        "name": "Gataka",
+        "name": "Gataka (Jungle-Orcs)",
+        "region": "Jungles",
         "description": "Expert hunters and trackers who navigate dense forests with ease"
-      }
-    ],
-    "far_away_cultures": [
+      },
       {
-        "name": "Jinkai",
-        "description": "TODO (misty valley, culture of honor, metal-smithing)"
+        "name": "Jinkai (Mountain-Orcs)",
+        "region": "Misty Valleys",
+        "description": "Mountain-dwelling orcs from the misty valleys with a culture of honor and metal-smithing"
       }
     ],
     "abilities": [
@@ -198,17 +206,18 @@
     "category": "New Folk",
     "quote": "",
     "description": "A cunning and resourceful race of small build, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset. In the deserts of Atakhet, goblins often serve as scouts or messengers, their small size and quick wits allowing them to navigate both the physical and social landscapes with surprising effectiveness.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Sniknez",
+        "name": "Sniknez (Cave-Goblins)",
+        "region": "Caves & Tunnels",
         "description": "Subterranean dwellers who excel at finding hidden passages and resources"
       },
       {
-        "name": "Goki",
+        "name": "Goki (Jungle-Goblins)",
+        "region": "Jungles",
         "description": "Agile climbers who establish communities in cliffs and treetops"
       }
     ],
-    "far_away_cultures": [],
     "abilities": [
       {
         "name": "Night Vision",
@@ -232,15 +241,15 @@
     "category": "New Folk",
     "quote": "",
     "description": "The newest folk among all the New Folk, humans possess a natural arcane ability that makes many other folks scared of them. Others try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges. In Atakhet, humans often serve as advisors or arcane specialists, their natural magical talents both valued and closely monitored.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Khatok",
-        "description": "Nomadic tribes who navigate the grasslands at the desert's edge, many of them were brought to Atakhep for manual labor"
-      }
-    ],
-    "far_away_cultures": [
+        "name": "Khatok (Savannah-Humans)",
+        "region": "Savannah",
+        "description": "Nomadic tribes who navigate the grasslands at the desert's edge, many of them were brought to Atakhet for manual labor"
+      },
       {
-        "name": "Vornheimr",
+        "name": "Vornheimr (Snow-Humans)",
+        "region": "Northern Lands",
         "description": "Hardy northerners who rarely venture into the southern deserts"
       }
     ],
@@ -263,17 +272,18 @@
     "category": "New Folk",
     "quote": "",
     "description": "A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with. In the realm of Atakhet, lionfolk often serve as desert guides or warriors, their natural hunting instincts and keen senses invaluable in the harsh environment.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Jakharii",
+        "name": "Jakharii (Savannah-Lionfolk)",
+        "region": "Savannah",
         "description": "Tribal hunters who form tight-knit prides and control vast territories"
       },
       {
-        "name": "Saghal",
+        "name": "Saghal (Jungle-Pantherfolk)",
+        "region": "Jungles",
         "description": "Stealthy predators who blend into their surroundings with remarkable ease"
       }
     ],
-    "far_away_cultures": [],
     "abilities": [
       {
         "name": "Night Vision",
@@ -297,17 +307,18 @@
     "category": "New Folk",
     "quote": "",
     "description": "A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment. In Atakhet, lizardfolk are often found near the life-giving oases and rivers, serving as guardians of these precious water sources.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Vaashk",
+        "name": "Vaashk (Swamp-Lizardfolk)",
+        "region": "Wetlands & Deltas",
         "description": "Amphibious dwellers who establish communities in wetlands and river deltas"
       },
       {
-        "name": "Quexa-kul",
+        "name": "Quexa-kul (Jungle-Lizardfolk)",
+        "region": "Jungles",
         "description": "Colorful tribes who move with surprising stealth through dense vegetation"
       }
     ],
-    "far_away_cultures": [],
     "abilities": [
       {
         "name": "Thick Scales",
@@ -331,23 +342,25 @@
     "category": "New Folk",
     "quote": "",
     "description": "A horned, furry species known for their immense strength and unwavering determination. They are fiercely protective of their clan and territories, often seen as guardians of sacred places. Their physical prowess is matched by their sense of honor, making them formidable allies and respected adversaries. In Atakhet, minotaurs often serve as temple guardians or caravan protectors, their imposing presence deterring all but the most determined threats.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Minokos",
+        "name": "Minokos (Island-Minotaurs)",
+        "region": "Islands",
         "description": "Seafaring traders who navigate treacherous waters with confidence"
       },
       {
-        "name": "Enkeddu",
+        "name": "Enkeddu (Grassland-Minotaurs)",
+        "region": "Grasslands",
         "description": "Nomadic herders who follow seasonal migration patterns"
-      }
-    ],
-    "far_away_cultures": [
+      },
       {
-        "name": "Yettnar",
+        "name": "Yettnar (Mountain-Minotaurs)",
+        "region": "Mountains",
         "description": "Solitary mountain dwellers who guard ancient passes and shrines"
       },
       {
-        "name": "Khutu",
+        "name": "Khutu (Steppe-Minotaurs)",
+        "region": "Steppes",
         "description": "Swift runners who serve as messengers across vast plains"
       }
     ],
@@ -374,19 +387,15 @@
     "category": "New Folk",
     "quote": "",
     "description": "Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Anubar",
+        "name": "Anubar (Desert-Dogfolk)",
+        "region": "Atakhet Desert",
         "description": "Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet"
       },
       {
-        "name": "Warufi",
-        "description": "Wild-dog-featured nomads who run in tight-knit packs across the grasslands, serving as messengers and herders"
-      }
-    ],
-    "far_away_cultures": [
-      {
-        "name": "Fenrin",
+        "name": "Fenrin (Northern-Dogfolk)",
+        "region": "Northern Forests",
         "description": "Wolf-featured hunters who thrive in cold forests and mountainous terrain"
       }
     ],
@@ -413,19 +422,15 @@
     "category": "New Folk",
     "quote": "",
     "description": "Satyrs are a spirited and free-willed folk with the legs and horns of goats. Known for their love of music, revelry, and the natural world, satyrs are deeply connected to wild places and resist the constraints of civilization. Their innate resistance to magic and supernatural charm makes them remarkably difficult to manipulate, a trait that has served them well in a world full of sorcery. In Atakhet, satyrs are often found in the lush oases and mountain valleys that border the desert, serving as musicians, herbalists, and guides through the wilderness.",
-    "known_cultures": [
+    "cultures": [
       {
-        "name": "Aighar",
-        "description": "Wandering musicians and herbalists who travel between the desert oases, bringing news and entertainment"
+        "name": "Kitharo (Mountain-Satyrs)",
+        "region": "Highlands",
+        "description": "Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence"
       },
       {
-        "name": "Kitharo",
-        "description": "Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence"
-      }
-    ],
-    "far_away_cultures": [
-      {
-        "name": "Faundel",
+        "name": "Faundel (Forest-Satyrs)",
+        "region": "Distant Forests",
         "description": "Woodland dwellers who guard ancient groves and sacred springs"
       }
     ],
