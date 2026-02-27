@@ -362,6 +362,7 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 | Culture | Region | Description |
 | --- | --- | --- |
 | Anubar (Desert-Dogfolk) | Atakhet Desert | Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet |
+| Warufi (Plains-Dogfolk) | Grasslands | Wild-dog-featured nomads who run in tight-knit packs across the grasslands, serving as messengers and herders |
 | Fenrin (Northern-Dogfolk) | Northern Forests | Wolf-featured hunters who thrive in cold forests and mountainous terrain |
 
 **Size.** Dogfolk are medium sized, growing to 1.60 to 1.80 meters tall on average with a lean, athletic build.
@@ -387,6 +388,7 @@ Satyrs are a spirited and free-willed folk with the legs and horns of goats. Kno
 
 | Culture | Region | Description |
 | --- | --- | --- |
+| Aighar (Oasis-Satyrs) | Desert Oases | Wandering musicians and herbalists who travel between the desert oases, bringing news and entertainment |
 | Kitharo (Mountain-Satyrs) | Highlands | Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence |
 | Faundel (Forest-Satyrs) | Distant Forests | Woodland dwellers who guard ancient groves and sacred springs |
 

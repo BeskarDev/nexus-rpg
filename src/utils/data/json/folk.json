@@ -394,6 +394,11 @@
         "description": "Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet"
       },
       {
+        "name": "Warufi (Plains-Dogfolk)",
+        "region": "Grasslands",
+        "description": "Wild-dog-featured nomads who run in tight-knit packs across the grasslands, serving as messengers and herders"
+      },
+      {
         "name": "Fenrin (Northern-Dogfolk)",
         "region": "Northern Forests",
         "description": "Wolf-featured hunters who thrive in cold forests and mountainous terrain"
@@ -423,6 +428,11 @@
     "quote": "",
     "description": "Satyrs are a spirited and free-willed folk with the legs and horns of goats. Known for their love of music, revelry, and the natural world, satyrs are deeply connected to wild places and resist the constraints of civilization. Their innate resistance to magic and supernatural charm makes them remarkably difficult to manipulate, a trait that has served them well in a world full of sorcery. In Atakhet, satyrs are often found in the lush oases and mountain valleys that border the desert, serving as musicians, herbalists, and guides through the wilderness.",
     "cultures": [
+      {
+        "name": "Aighar (Oasis-Satyrs)",
+        "region": "Desert Oases",
+        "description": "Wandering musicians and herbalists who travel between the desert oases, bringing news and entertainment"
+      },
       {
         "name": "Kitharo (Mountain-Satyrs)",
         "region": "Highlands",
