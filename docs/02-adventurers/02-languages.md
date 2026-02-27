@@ -26,13 +26,12 @@ Common languages are those spoken by larger cultures throughout the realms. All 
 
 | Language | Example Speakers |
 | --- | --- |
-| Catspeech | catfolk |
+| Beastspeech | catfolk, dogfolk |
 | Dwarvish | dwarves |
 | Elvish | elves |
 | Giant | hunes, minotaurs, giants |
 | Gnomish | hnomes |
 | Goblin | goblinoids |
-| Lizardspeech | lizardfolk |
 | Orc | orcs |
 | Tradespeak | merchants, travelers, humans |
 
@@ -44,7 +43,8 @@ These languages are mainly spoken by ancient, immortal, or long forgotten beings
 
 | Language | Example Speakers |
 | --- | --- |
-| Draconic | dragons |
+| Draconic | dragons, lizardfolk |
 | Primordial | elementals |
 | Celestial | gods, extraplanar beings |
 | Dark Tongue | arcane cultists, elder horrors |
+| Sylvan | satyrs, nature spirits |

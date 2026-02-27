@@ -140,10 +140,12 @@ def extract_languages(content, description):
         "Orc": "Orcish",
         "Goblin": "Goblin",
         "Human": "Human Dialect",
-        "Catfolk": "Catfolk",
-        "Lionfolk": "Catfolk", 
-        "Lizardfolk": "Lizardfolk",
-        "Minotaur": "Giant"
+        "Catfolk": "Beastspeech",
+        "Lionfolk": "Beastspeech", 
+        "Lizardfolk": "Draconic",
+        "Minotaur": "Giant",
+        "Dogfolk": "Beastspeech",
+        "Satyr": "Sylvan"
     }
     
     # Try to match folk name to language
