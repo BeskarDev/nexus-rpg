@@ -25,7 +25,7 @@ The world is home to diverse folk, each with their own unique traits, cultures, 
 | Lizardfolk | Cold-blooded survivors; thick natural scales and amphibious endurance |
 | Minotaur | Horned guardians with formidable strength; devastating goring charge |
 | Dogfolk | Loyal pack hunters with keen senses; sharp noses and ears make them unrivaled trackers |
-| Satyr | Free-spirited revelers with innate magic resistance; sure-footed in wild terrain |
+| Satyr | Free-spirited revelers with innate tolerance to magic ; sure-footed in wild terrain |
 
 ## Character Creation: Physical Traits
 
@@ -366,9 +366,9 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 
 **Age.** Dogfolk reach adulthood at 14 and are considered of old age at 45 years. They can live up to 60 years on average.
 
-**Keen Senses.** You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location.
+**Keen Senses.** You have an extraordinary sense of smell and hearing. You gain +1 boon Perception rolls based on smell. You can detect the presence and general direction of creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location. Weather or other environmental factors may hinder this ability.
 
-**Pack Loyalty.** When an ally within close range is hit by an attack, you can use your Quick Action to move close towards them without provoking Opportunity Attacks. You can use this ability once between turns.
+**Pack Loyalty.** While you are close to an ally, you can choose to gain +1 boon on a melee attack and that ally also briefly gains +1 boon on their next melee attack against the same target. You can use this ability once per scene.
 
 **Bite.** You can use your bite (2 weapon damage, crush) as a brawling weapon instead of unarmed attacks.
 
@@ -391,8 +391,8 @@ Satyrs are a spirited and free-willed folk with the legs and horns of goats. Kno
 
 **Age.** Satyrs reach adulthood at 20 and are considered of old age at 70 years. They can live up to 90 years on average.
 
-**Wild Resilience.** Once per scene, when you take damage from a spell or are affected by a magical effect that applies a condition, you can choose to either halve the damage taken or immediately end one negative condition affecting you.
+**Wild Resilience.** When you take damage from a spell or are affected by a magical effect that applies a condition, you can choose to either gain resistance against the damage or negate the condition. You can use this ability once per scene.
 
-**Horns.** You can use your horns (2 weapon damage, crush) as brawling weapons instead of unarmed attacks.
+**Horns.** You can use your horns (2 weapon damage, crush) as a brawling weapon instead of unarmed attacks.
 
 **Woodland Stride.** You treat difficult terrain caused by natural vegetation as normal terrain. You also gain +1 boon on Agility + Athletics rolls to climb or traverse natural environments.
