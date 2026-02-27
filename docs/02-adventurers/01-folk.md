@@ -366,7 +366,7 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 
 **Age.** Dogfolk reach adulthood at 14 and are considered of old age at 45 years. They can live up to 60 years on average.
 
-**Keen Senses.** You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them.
+**Keen Senses.** You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location.
 
 **Pack Loyalty.** When an ally within close range is hit by an attack, you can use your Quick Action to move close towards them without provoking Opportunity Attacks. You can use this ability once between turns.
 

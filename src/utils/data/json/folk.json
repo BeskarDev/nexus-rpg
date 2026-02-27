@@ -393,7 +393,7 @@
     "abilities": [
       {
         "name": "Keen Senses",
-        "description": "You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them."
+        "description": "You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location."
       },
       {
         "name": "Pack Loyalty",
