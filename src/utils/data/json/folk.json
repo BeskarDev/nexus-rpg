@@ -373,10 +373,78 @@
     "name": "Dogfolk",
     "category": "New Folk",
     "quote": "",
-    "description": "",
-    "known_cultures": [],
-    "far_away_cultures": [],
-    "abilities": [],
-    "languages": []
+    "description": "Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.",
+    "known_cultures": [
+      {
+        "name": "Anubar",
+        "description": "Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet"
+      },
+      {
+        "name": "Warufi",
+        "description": "Wild-dog-featured nomads who run in tight-knit packs across the grasslands, serving as messengers and herders"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Fenrin",
+        "description": "Wolf-featured hunters who thrive in cold forests and mountainous terrain"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Keen Senses",
+        "description": "You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them."
+      },
+      {
+        "name": "Pack Loyalty",
+        "description": "When an ally within close range is hit by an attack, you can use your Quick Action to move close towards them without provoking Opportunity Attacks. You can use this ability once between turns."
+      },
+      {
+        "name": "Bite",
+        "description": "You can use your bite (2 weapon damage, crush) as a brawling weapon instead of unarmed attacks."
+      }
+    ],
+    "languages": [
+      "Dogspeech"
+    ]
+  },
+  {
+    "name": "Satyr",
+    "category": "New Folk",
+    "quote": "",
+    "description": "Satyrs are a spirited and free-willed folk with the legs and horns of goats. Known for their love of music, revelry, and the natural world, satyrs are deeply connected to wild places and resist the constraints of civilization. Their innate resistance to magic and supernatural charm makes them remarkably difficult to manipulate, a trait that has served them well in a world full of sorcery. In Atakhet, satyrs are often found in the lush oases and mountain valleys that border the desert, serving as musicians, herbalists, and guides through the wilderness.",
+    "known_cultures": [
+      {
+        "name": "Aighar",
+        "description": "Wandering musicians and herbalists who travel between the desert oases, bringing news and entertainment"
+      },
+      {
+        "name": "Kitharo",
+        "description": "Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence"
+      }
+    ],
+    "far_away_cultures": [
+      {
+        "name": "Faundel",
+        "description": "Woodland dwellers who guard ancient groves and sacred springs"
+      }
+    ],
+    "abilities": [
+      {
+        "name": "Magic Resistance",
+        "description": "You gain +1 boon on rolls to resist spells and other magical effects."
+      },
+      {
+        "name": "Horns",
+        "description": "You can use your horns (2 weapon damage, crush) as brawling weapons instead of unarmed attacks."
+      },
+      {
+        "name": "Woodland Stride",
+        "description": "You treat difficult terrain caused by natural vegetation as normal terrain. You also gain +1 boon on Agility + Athletics rolls to climb or traverse natural environments."
+      }
+    ],
+    "languages": [
+      "Sylvan"
+    ]
   }
 ]

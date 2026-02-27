@@ -24,8 +24,8 @@ The world is home to diverse folk, each with their own unique traits, cultures, 
 | Catfolk | Proud hunters with keen night vision; intimidating roar and sharp natural claws |
 | Lizardfolk | Cold-blooded survivors; thick natural scales and amphibious endurance |
 | Minotaur | Horned guardians with formidable strength; devastating goring charge |
-| Dogfolk | (Coming soon) |
-| Satyr | (Coming soon) |
+| Dogfolk | Loyal pack hunters with keen senses; sharp noses and ears make them unrivaled trackers |
+| Satyr | Free-spirited revelers with innate magic resistance; sure-footed in wild terrain |
 
 ## Character Creation: Physical Traits
 
@@ -43,6 +43,8 @@ When creating your adventurer, you may use the following tables to determine you
 | Catfolk | 14 + 2d6 | 180 + 2d10 | 60 + 2d8 x 2 |
 | Lizardfolk | 10 + 2d4 | 170 + 2d8 | 60 + 2d8 x 2 |
 | Minotaur | 25 + 2d8 | 190 + 2d10 | 70 + 2d10 x 3 |
+| Dogfolk | 14 + 2d6 | 160 + 2d8 | 50 + 2d6 x 2 |
+| Satyr | 16 + 2d8 | 160 + 2d8 | 50 + 2d6 x 2 |
 
 * for characters starting at higher levels, you can add an additional die for each level above one.
 
@@ -60,6 +62,8 @@ When creating your adventurer, you may use the following tables to determine you
 | Catfolk | 16 | 40 | 60 | 80+ |
 | Lizardfolk | 12 | 25 | 35 | 50+ |
 | Minotaur | 30 | 60 | 90 | 120+ |
+| Dogfolk | 14 | 30 | 45 | 60+ |
+| Satyr | 20 | 45 | 70 | 90+ |
 
 * These ages indicate physical adulthood. Being considered mentally adult differs from culture to culture.
 
@@ -345,4 +349,50 @@ A horned, furry species known for their immense strength and unwavering determin
 
 ### Dogfolk
 
+> "The pack endures where the lone hunter falters. Our noses read the wind like scholars read their scrolls—every scent a story, every trail a promise kept."
+
+Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.
+
+**Known Cultures:**
+
+- **Anubar (Desert-Dogfolk)**: Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet
+- **Warufi (Savannah-Dogfolk)**: Wild-dog-featured nomads who run in tight-knit packs across the grasslands, serving as messengers and herders
+
+**Far Away Cultures:**
+
+- **Fenrin (Northern-Dogfolk)**: Wolf-featured hunters who thrive in cold forests and mountainous terrain
+
+**Size.** Dogfolk are medium sized, growing to 1.60 to 1.80 meters tall on average with a lean, athletic build.
+
+**Age.** Dogfolk reach adulthood at 14 and are considered of old age at 45 years. They can live up to 60 years on average.
+
+**Keen Senses.** You have an extraordinary sense of smell and hearing. You gain +1 boon on Spirit + Perception rolls. You can detect the presence and general direction of living creatures within close range by scent alone, even if you can't see them.
+
+**Pack Loyalty.** When an ally within close range is hit by an attack, you can use your Quick Action to move close towards them without provoking Opportunity Attacks. You can use this ability once between turns.
+
+**Bite.** You can use your bite (2 weapon damage, crush) as a brawling weapon instead of unarmed attacks.
+
 ### Satyr
+
+> "Why do you build walls of stone when the forest offers shelter, the river offers song, and the wind offers freedom? Come, drink, and let the music carry your sorrows away."
+
+Satyrs are a spirited and free-willed folk with the legs and horns of goats. Known for their love of music, revelry, and the natural world, satyrs are deeply connected to wild places and resist the constraints of civilization. Their innate resistance to magic and supernatural charm makes them remarkably difficult to manipulate, a trait that has served them well in a world full of sorcery. In Atakhet, satyrs are often found in the lush oases and mountain valleys that border the desert, serving as musicians, herbalists, and guides through the wilderness.
+
+**Known Cultures:**
+
+- **Aighar (Oasis-Satyrs)**: Wandering musicians and herbalists who travel between the desert oases, bringing news and entertainment
+- **Kitharo (Mountain-Satyrs)**: Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence
+
+**Far Away Cultures:**
+
+- **Faundel (Forest-Satyrs)**: Woodland dwellers who guard ancient groves and sacred springs
+
+**Size.** Satyrs are medium sized, growing to 1.60 to 1.80 meters tall on average with a wiry build.
+
+**Age.** Satyrs reach adulthood at 20 and are considered of old age at 70 years. They can live up to 90 years on average.
+
+**Magic Resistance.** You gain +1 boon on rolls to resist spells and other magical effects.
+
+**Horns.** You can use your horns (2 weapon damage, crush) as brawling weapons instead of unarmed attacks.
+
+**Woodland Stride.** You treat difficult terrain caused by natural vegetation as normal terrain. You also gain +1 boon on Agility + Athletics rolls to climb or traverse natural environments.

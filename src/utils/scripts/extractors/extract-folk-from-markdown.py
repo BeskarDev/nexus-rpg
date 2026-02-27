@@ -143,7 +143,9 @@ def extract_languages(content, description):
         "Catfolk": "Catfolk",
         "Lionfolk": "Catfolk", 
         "Lizardfolk": "Lizardfolk",
-        "Minotaur": "Giant"
+        "Minotaur": "Giant",
+        "Dogfolk": "Dogspeech",
+        "Satyr": "Sylvan"
     }
     
     # Try to match folk name to language
