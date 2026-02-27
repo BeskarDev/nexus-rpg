@@ -56,14 +56,14 @@
     "description": "Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.",
     "cultures": [
       {
-        "name": "Anutep (Sun-Elves)",
-        "region": "Atakhet",
-        "description": "Ruling elven culture of Atakhet; governed by divine twin emperors, protectors of the sacred rivers"
-      },
-      {
         "name": "Ho'shien (River-Elves)",
         "region": "Eastern Mist Realms",
         "description": "Nomadic traders following the great rivers of the High East"
+      },
+      {
+        "name": "Anutep (Sun-Elves)",
+        "region": "Eternal Desert",
+        "description": "Ruling elven culture of Atakhet; governed by divine twin emperors, protectors of the sacred rivers"
       },
       {
         "name": "Imentep (Shadow-Elves)",
@@ -111,14 +111,14 @@
     "description": "Natural psychics with the ability to read other people's intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company. In Atakhet, gnomes often serve as diplomatic intermediaries, using their empathic abilities to foster understanding between different folk.",
     "cultures": [
       {
-        "name": "Burrin (Desert-Gnomes)",
-        "region": "Atakhet",
-        "description": "Nomadic gnomes of the Taharet Desert; the only culture permanently living there, gifted with psychic abilities"
-      },
-      {
         "name": "Shangri (Cloud-Gnomes)",
         "region": "Eastern Mist Realms",
         "description": "High-monastery dwellers seeking enlightenment; masters of meditation"
+      },
+      {
+        "name": "Burrin (Desert-Gnomes)",
+        "region": "Eternal Desert",
+        "description": "Nomadic gnomes of the Taharet Desert; the only culture permanently living there, gifted with psychic abilities"
       },
       {
         "name": "Auflin (Willow-Gnomes)",
@@ -202,14 +202,14 @@
     "description": "Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.",
     "cultures": [
       {
-        "name": "Orgon (Island-Orcs)",
-        "region": "Atakhet",
-        "description": "Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed"
-      },
-      {
         "name": "Gataka (Valley-Orcs)",
         "region": "Eastern Mist Realms",
         "description": "Warriors with strict honor culture; following rigid combat traditions"
+      },
+      {
+        "name": "Orgon (Island-Orcs)",
+        "region": "Eternal Desert",
+        "description": "Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed"
       },
       {
         "name": "Zakhar (Coastal-Orcs)",
@@ -289,7 +289,7 @@
     "cultures": [
       {
         "name": "Khatok (Savanna-Humans)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Nomadic human tribes of the grasslands; many were brought to labor in Atakhet"
       },
       {
@@ -298,14 +298,14 @@
         "description": "Arcane academics of the temple universities; keepers of forbidden knowledge"
       },
       {
+        "name": "Zaubererfürsten (Sorcerer-Princes)",
+        "region": "Eternal Desert",
+        "description": "Decentralized magocracy in the Kesheret desert; isolated citadel-states of arcane tyrants hoarding forbidden knowledge"
+      },
+      {
         "name": "Vornheimr (Snow-Humans)",
         "region": "Frozen North",
         "description": "Hardy northerners; adapted to life in extreme cold"
-      },
-      {
-        "name": "Zaubererfürsten (Sorcerer-Princes)",
-        "region": "Kesheret",
-        "description": "Decentralized magocracy in the Kesheret desert; isolated citadel-states of arcane tyrants hoarding forbidden knowledge"
       }
     ],
     "abilities": [
@@ -329,14 +329,14 @@
     "description": "A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with. In the realm of Atakhet, lionfolk often serve as desert guides or warriors, their natural hunting instincts and keen senses invaluable in the harsh environment.",
     "cultures": [
       {
-        "name": "Jakharii (Savanna-Lionfolk)",
-        "region": "Atakhet",
-        "description": "Proud lion-folk of the southern savannas; nominally sovereign city-state, effectively under Atakhet's control"
-      },
-      {
         "name": "Vyaghral (Tiger-Folk)",
         "region": "Eastern Mist Realms",
         "description": "Solitary jungle and mountain hunters; legendary for patience and deadly precision"
+      },
+      {
+        "name": "Jakharii (Savanna-Lionfolk)",
+        "region": "Eternal Desert",
+        "description": "Proud lion-folk of the southern savannas; nominally sovereign city-state, effectively under Atakhet's control"
       },
       {
         "name": "Tuvak (Sabertooth-Folk)",
@@ -375,7 +375,7 @@
     "cultures": [
       {
         "name": "Vaashk (Swamp-Lizardfolk)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Lizardfolk of the Satimaha Swamps; amphibious wetland dwellers with tribal traditions"
       },
       {
@@ -439,14 +439,14 @@
         "description": "Solitary guardians of ancient passes and shrines; legendarily silent and watchful"
       },
       {
+        "name": "Firbeol (Firbolg-Minotaurs)",
+        "region": "Frozen North",
+        "description": "Druidic forest minotaurs; guardian groves, ancient stone circles, and ancestor worship"
+      },
+      {
         "name": "Minokos (Island-Minotaurs)",
         "region": "Western Island Realms",
         "description": "Seafaring traders and respected pilots of dangerous waters"
-      },
-      {
-        "name": "Firbeol (Firbolg-Minotaurs)",
-        "region": "Woodlands (various)",
-        "description": "Druidic forest minotaurs; guardian groves, ancient stone circles, and ancestor worship"
       }
     ],
     "abilities": [
@@ -474,14 +474,14 @@
     "description": "Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.",
     "cultures": [
       {
+        "name": "Kerbei (Jackal-Folk)",
+        "region": "Eternal Desert",
+        "description": "Jackal-like dog-folk of the Great Desert; people of Baaphor; dwelling in hidden ruins, bound to a forgotten ancient duty"
+      },
+      {
         "name": "Lycanin (Wolf-Folk)",
         "region": "Frozen North",
         "description": "Pack warriors of the snowy forests with strict pack hierarchy"
-      },
-      {
-        "name": "Kerbei (Jackal-Folk)",
-        "region": "Kesheret",
-        "description": "Jackal-like dog-folk of the Great Desert; people of Baaphor; dwelling in hidden ruins, bound to a forgotten ancient duty"
       },
       {
         "name": "Coyotl (Coyote-Folk)",
