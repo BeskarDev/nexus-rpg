@@ -351,6 +351,9 @@ A horned, furry species known for their immense strength and unwavering determin
 
 > "The pack endures where the lone hunter falters. Our noses read the wind like scholars read their scrolls—every scent a story, every trail a promise kept."
 
+![folk-img](./img/dogfolk.png)
+
+
 Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.
 
 **Known Cultures:**
@@ -374,6 +377,9 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 ### Satyr
 
 > "Why do you build walls of stone when the forest offers shelter, the river offers song, and the wind offers freedom? Come, drink, and let the music carry your sorrows away."
+
+![folk-img](./img/satyr.png)
+
 
 Satyrs are a spirited and free-willed folk with the legs and horns of goats. Known for their love of music, revelry, and the natural world, satyrs are deeply connected to wild places and resist the constraints of civilization. Their innate resistance to magic and supernatural charm makes them remarkably difficult to manipulate, a trait that has served them well in a world full of sorcery. In Atakhet, satyrs are often found in the lush oases and mountain valleys that border the desert, serving as musicians, herbalists, and guides through the wilderness.
 
