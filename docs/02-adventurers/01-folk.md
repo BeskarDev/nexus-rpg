@@ -80,15 +80,14 @@ When creating your adventurer, you may use the following tables to determine you
 
 Carved of the stone itself, dwarves maintain a deep connection to the earth. They are masters of mining and metalworking, renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination reflects their unbreakable bond with the earth. In Atakhet, dwarven stoneworkers are highly prized for their ability to craft monuments that withstand the harsh desert conditions.
 
-**Known Cultures:**
+**Cultures**
 
-- **Mahruk (Gold-Dwarves)**: TODO (merchant dwarves from the northern islands)
-- **Ghahar (Fortress-Dwarves)**: Master architects who construct impregnable strongholds, often serving as royal engineers in Atakhet
-- **Urduk (Grey-Dwarves)**: TODO (evil djinn-serving dwarves from the ashen badlands)
-
-**Far Away Cultures:**
-
-- **Dhurvar (Ice-Dwarves)**: Stoic mountain dwellers who carve their homes from snow-covered mountainsides
+| Culture | Region | Description |
+| --- | --- | --- |
+| Mahruk (Gold-Dwarves) | Northern Islands | Merchant dwarves and seafarers from the northern islands |
+| Ghahar (Fortress-Dwarves) | Atakhet | Master architects who construct impregnable strongholds, often serving as royal engineers in Atakhet |
+| Urduk (Grey-Dwarves) | Ashen Badlands | Djinn-serving dwarves from the ashen badlands |
+| Dhurvar (Ice-Dwarves) | Northern Mountains | Stoic mountain dwellers who carve their homes from snow-covered mountainsides |
 
 **Size.** Dwarves are medium sized, growing to 1.20 to 1.30 meters tall on average with a squat build.
 
@@ -109,16 +108,14 @@ Carved of the stone itself, dwarves maintain a deep connection to the earth. The
 
 Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.
 
-**Known Cultures:**
+**Cultures**
 
-- **Anutep (Sun-Elves)**: Dark-skinned desert dwellers who rule Atakhet as divine representatives, drawing power from the sun
-- TODO (jungle-elves, reclusive, savage, mysterious)
-
-**Far Away Cultures:**
-
-- **Sylvar (Forest-Elves)**: Secretive woodland protectors who rarely venture beyond their forest borders
-- **Alfir (Shadow-Elves)**: Nocturnal elves who dwell in twilight realms and ancient tombs
-- **Ho'shien (River-Elves)**: Nomadic traders who follow the great rivers, serving as vital links between isolated communities
+| Culture | Region | Description |
+| --- | --- | --- |
+| Anutep (Sun-Elves) | Atakhet | Dark-skinned desert dwellers who rule Atakhet as divine representatives, drawing power from the sun |
+| Sylvar (Forest-Elves) | Distant Forests | Secretive woodland protectors who rarely venture beyond their forest borders |
+| Alfir (Shadow-Elves) | Distant Realms | Nocturnal elves who dwell in twilight realms and ancient tombs |
+| Ho'shien (River-Elves) | Great Rivers | Nomadic traders who follow the great rivers, serving as vital links between isolated communities |
 
 **Size.** Elves are medium sized, growing slightly taller than humans at 1.70 to 1.80 meters tall on average with a slender build.
 
@@ -139,10 +136,12 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 Natural psychics with the ability to read other people's intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company. In Atakhet, gnomes often serve as diplomatic intermediaries, using their empathic abilities to foster understanding between different folk.
 
-**Known Cultures:**
+**Cultures**
 
-- **Auflin (Willow-Gnomes)**: Gentle river-dwellers who establish communities near oases and waterways
-- **Burrin (Den-Gnomes)**: Industrious tunnel-builders who create elaborate underground communities
+| Culture | Region | Description |
+| --- | --- | --- |
+| Auflin (Willow-Gnomes) | Oases & Waterways | Gentle river-dwellers who establish communities near oases and waterways |
+| Burrin (Den-Gnomes) | Underground | Industrious tunnel-builders who create elaborate underground communities |
 
 **Size.** Gnomes are of small size, growing up to 0.90 to 1.00 meters tall on average with a stout build.
 
@@ -167,15 +166,14 @@ Natural psychics with the ability to read other people's intentions and surface 
 
 A race of towering beings with incredible strength and endurance. They are often nomadic and reclusive but possess a deep wisdom and knowledge of the world. In the deserts of Atakhet, Hunes are often sought out as caravan guards or builders for grand monuments, their strength and endurance invaluable in the harsh climate.
 
-**Known Cultures:**
+**Cultures**
 
-- **Hataar (Mountain-Hunes)**: Solitary herders and guardians of ancient mountain passes
-- **Empyros (Island-Hunes)**: Seafaring traders who connect distant shores through elaborate trade networks
-
-**Far Away Cultures:**
-
-- **Jotnir (Ice-Hunes)**: Frost-resistant nomads who navigate the frozen north with ease
-- **Ta'uuri (Island-Hunes)**: Coastal dwellers who build impressive stone harbors and lighthouses
+| Culture | Region | Description |
+| --- | --- | --- |
+| Hataar (Mountain-Hunes) | Mountains | Solitary herders and guardians of ancient mountain passes |
+| Empyros (Island-Hunes) | Islands | Seafaring traders who connect distant shores through elaborate trade networks |
+| Jotnir (Ice-Hunes) | Frozen North | Frost-resistant nomads who navigate the frozen north with ease |
+| Ta'uuri (Island-Hunes) | Coastal Islands | Coastal dwellers who build impressive stone harbors and lighthouses |
 
 **Size.** Hunes are medium sized, growing to 2.10 to 2.30 meters tall on average.
 
@@ -197,14 +195,13 @@ A race of towering beings with incredible strength and endurance. They are often
 
 Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, they are often judged by the deeds of their ancestors rather than their own merits. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.
 
-**Known Cultures:**
+**Cultures**
 
-- **Orgon (Island-Orcs)**: Seafaring warriors and traders who establish coastal settlements
-- **Gataka (Jungle-Orcs)**: Expert hunters and trackers who navigate dense forests with ease
-
-**Far Away Cultures:**
-
-- **Jinkai (Mountain-Orcs)**: TODO (misty valley, culture of honor, metal-smithing)
+| Culture | Region | Description |
+| --- | --- | --- |
+| Orgon (Island-Orcs) | Coastal Islands | Seafaring warriors and traders who establish coastal settlements |
+| Gataka (Jungle-Orcs) | Jungles | Expert hunters and trackers who navigate dense forests with ease |
+| Jinkai (Mountain-Orcs) | Misty Valleys | Mountain-dwelling orcs from the misty valleys with a culture of honor and metal-smithing |
 
 **Size.** Orcs are medium sized, growing to 1.80 to 1.90 meters tall on average.
 
@@ -223,10 +220,12 @@ Coming from once violent and brutal cultures, the orcs have a reputation for sav
 
 A cunning and resourceful race of small build, with a knack for trickery and deception. They are often viewed as untrustworthy and sneaky, but their ingenuity can be a valuable asset. In the deserts of Atakhet, goblins often serve as scouts or messengers, their small size and quick wits allowing them to navigate both the physical and social landscapes with surprising effectiveness.
 
-**Known Cultures:**
+**Cultures**
 
-- **Sniknez (Cave-Goblins)**: Subterranean dwellers who excel at finding hidden passages and resources
-- **Goki (Jungle-Goblins)**: Agile climbers who establish communities in cliffs and treetops
+| Culture | Region | Description |
+| --- | --- | --- |
+| Sniknez (Cave-Goblins) | Caves & Tunnels | Subterranean dwellers who excel at finding hidden passages and resources |
+| Goki (Jungle-Goblins) | Jungles | Agile climbers who establish communities in cliffs and treetops |
 
 **Size.** Goblins are of small size, growing up to 0.90 to 1.00 meters tall on average with a skinny build.
 
@@ -251,13 +250,12 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 
 A resilient and adaptable people, humans possess a natural arcane ability that sets them apart from other folk. Others sometimes try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that both values and fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges. In Atakhet, humans often serve as advisors or arcane specialists, their natural magical talents both valued and closely monitored.
 
-**Known Cultures:**
+**Cultures**
 
-- **Khatok (Savannah-Humans)**: Nomadic tribes who navigate the grasslands at the desert's edge, many of them were brought to Atakhep for manual labor
-
-**Far Away Cultures:**
-
-- **Vornheimr (Snow-Humans)**: Hardy northerners who rarely venture into the southern deserts
+| Culture | Region | Description |
+| --- | --- | --- |
+| Khatok (Savannah-Humans) | Savannah | Nomadic tribes who navigate the grasslands at the desert's edge, many of them were brought to Atakhep for manual labor |
+| Vornheimr (Snow-Humans) | Northern Lands | Hardy northerners who rarely venture into the southern deserts |
 
 **Size.** Humans are medium sized, growing to 1.60 to 1.80 meters tall on average.
 
@@ -276,10 +274,12 @@ A resilient and adaptable people, humans possess a natural arcane ability that s
 
 A proud and regal race, with a deep connection to the natural world and a reverence for the power of the hunt. They are often viewed as noble and honorable, but their fierce pride can make them difficult to work with. In the realm of Atakhet, lionfolk often serve as desert guides or warriors, their natural hunting instincts and keen senses invaluable in the harsh environment.
 
-**Known Cultures:**
+**Cultures**
 
-- **Jakharii (Savannah-Lionfolk)**: Tribal hunters who form tight-knit prides and control vast territories
-- **Saghal (Jungle-Pantherfolk)**: Stealthy predators who blend into their surroundings with remarkable ease
+| Culture | Region | Description |
+| --- | --- | --- |
+| Jakharii (Savannah-Lionfolk) | Savannah | Tribal hunters who form tight-knit prides and control vast territories |
+| Saghal (Jungle-Pantherfolk) | Jungles | Stealthy predators who blend into their surroundings with remarkable ease |
 
 **Size.** Catfolk are medium sized, growing up to 1.90 to 2.00 meters tall on average.
 
@@ -300,10 +300,12 @@ A proud and regal race, with a deep connection to the natural world and a revere
 
 A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment. In Atakhet, lizardfolk are often found near the life-giving oases and rivers, serving as guardians of these precious water sources.
 
-**Known Cultures:**
+**Cultures**
 
-- **Vaashk (Swamp-Lizardfolk)**: Amphibious dwellers who establish communities in wetlands and river deltas
-- **Quexa-kul (Jungle-Lizardfolk)**: Colorful tribes who move with surprising stealth through dense vegetation
+| Culture | Region | Description |
+| --- | --- | --- |
+| Vaashk (Swamp-Lizardfolk) | Wetlands & Deltas | Amphibious dwellers who establish communities in wetlands and river deltas |
+| Quexa-kul (Jungle-Lizardfolk) | Jungles | Colorful tribes who move with surprising stealth through dense vegetation |
 
 **Size.** Lizardfolk are medium sized, growing up to 1.80 to 1.90 meters tall on average.
 
@@ -324,15 +326,14 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 
 A horned, furry species known for their immense strength and unwavering determination. They are fiercely protective of their clan and territories, often seen as guardians of sacred places. Their physical prowess is matched by their sense of honor, making them formidable allies and respected adversaries. In Atakhet, minotaurs often serve as temple guardians or caravan protectors, their imposing presence deterring all but the most determined threats.
 
-**Known Cultures:**
+**Cultures**
 
-- **Minokos (Island-Minotaurs)**: Seafaring traders who navigate treacherous waters with confidence
-- **Enkeddu (Grassland-Minotaurs)**: Nomadic herders who follow seasonal migration patterns
-
-**Far Away Cultures:**
-
-- **Yettnar (Mountain-Minotaurs)**: Solitary mountain dwellers who guard ancient passes and shrines
-- **Khutu (Steppe-Minotaurs)**: Swift runners who serve as messengers across vast plains
+| Culture | Region | Description |
+| --- | --- | --- |
+| Minokos (Island-Minotaurs) | Islands | Seafaring traders who navigate treacherous waters with confidence |
+| Enkeddu (Grassland-Minotaurs) | Grasslands | Nomadic herders who follow seasonal migration patterns |
+| Yettnar (Mountain-Minotaurs) | Mountains | Solitary mountain dwellers who guard ancient passes and shrines |
+| Khutu (Steppe-Minotaurs) | Steppes | Swift runners who serve as messengers across vast plains |
 
 **Size.** Minotaurs are medium sized, growing up to 2.00 to 2.10 meters tall on average.
 
@@ -356,13 +357,12 @@ A horned, furry species known for their immense strength and unwavering determin
 
 Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.
 
-**Known Cultures:**
+**Cultures**
 
-- **Anubar (Desert-Dogfolk)**: Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet
-
-**Far Away Cultures:**
-
-- **Fenrin (Northern-Dogfolk)**: Wolf-featured hunters who thrive in cold forests and mountainous terrain
+| Culture | Region | Description |
+| --- | --- | --- |
+| Anubar (Desert-Dogfolk) | Atakhet Desert | Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet |
+| Fenrin (Northern-Dogfolk) | Northern Forests | Wolf-featured hunters who thrive in cold forests and mountainous terrain |
 
 **Size.** Dogfolk are medium sized, growing to 1.60 to 1.80 meters tall on average with a lean, athletic build.
 
@@ -383,13 +383,12 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 
 Satyrs are a spirited and free-willed folk with the legs and horns of goats. Known for their love of music, revelry, and the natural world, satyrs are deeply connected to wild places and resist the constraints of civilization. Their innate resistance to magic and supernatural charm makes them remarkably difficult to manipulate, a trait that has served them well in a world full of sorcery. In Atakhet, satyrs are often found in the lush oases and mountain valleys that border the desert, serving as musicians, herbalists, and guides through the wilderness.
 
-**Known Cultures:**
+**Cultures**
 
-- **Kitharo (Mountain-Satyrs)**: Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence
-
-**Far Away Cultures:**
-
-- **Faundel (Forest-Satyrs)**: Woodland dwellers who guard ancient groves and sacred springs
+| Culture | Region | Description |
+| --- | --- | --- |
+| Kitharo (Mountain-Satyrs) | Highlands | Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence |
+| Faundel (Forest-Satyrs) | Distant Forests | Woodland dwellers who guard ancient groves and sacred springs |
 
 **Size.** Satyrs are medium sized, growing to 1.60 to 1.80 meters tall on average with a wiry build.
 
