@@ -265,7 +265,6 @@ A resilient and adaptable people, humans possess a natural arcane ability that s
 | --- | --- | --- |
 | Khatok (Savanna-Humans) | Eternal Desert | Nomadic human tribes of the grasslands; many were brought to labor in Atakhet |
 | Sefkari (Scholar-Humans) | Eternal Desert | Arcane academics of the temple universities; keepers of forbidden knowledge |
-| Zaubererfürsten (Sorcerer-Princes) | Eternal Desert | Decentralized magocracy in the Kesheret desert; isolated citadel-states of arcane tyrants hoarding forbidden knowledge |
 | Vornheimr (Snow-Humans) | Frozen North | Hardy northerners; adapted to life in extreme cold |
 
 **Size.** Humans are medium sized, growing to 1.60 to 1.80 meters tall on average.
