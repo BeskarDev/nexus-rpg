@@ -356,7 +356,6 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 **Known Cultures:**
 
 - **Anubar (Desert-Dogfolk)**: Jackal-featured trackers who patrol the desert borders and serve as scouts for the great cities of Atakhet
-- **Warufi (Savannah-Dogfolk)**: Wild-dog-featured nomads who run in tight-knit packs across the grasslands, serving as messengers and herders
 
 **Far Away Cultures:**
 
@@ -380,7 +379,6 @@ Satyrs are a spirited and free-willed folk with the legs and horns of goats. Kno
 
 **Known Cultures:**
 
-- **Aighar (Oasis-Satyrs)**: Wandering musicians and herbalists who travel between the desert oases, bringing news and entertainment
 - **Kitharo (Mountain-Satyrs)**: Agile climbers who dwell in the rocky highlands, known for their wild dances and fierce independence
 
 **Far Away Cultures:**
