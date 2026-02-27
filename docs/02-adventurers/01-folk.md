@@ -10,7 +10,22 @@ sidebar_position: 1
 
 The world is home to diverse folk, each with their own unique traits, cultures, and histories. During adventurer creation, you will choose one of these folk for your character, defining not only their physical characteristics but their cultural heritage as well.
 
-Folk are broadly divided into two categories: the Old Folk, whose civilizations have endured for millennia, and the New Folk, whose societies have only recently emerged into the wider world. This distinction colors many interactions across the realms, particularly in ancient nations like Atakhet where lineage and history hold tremendous importance.
+## Summary
+
+| Folk | What Makes Them Special |
+| --- | --- |
+| Dwarf | Sturdy crafters with stone affinity; resilient against poison and hard to knock down |
+| Elf | Spiritually attuned to nature; fleet-footed and perceptive in dim light |
+| Gnome | Natural empaths with innate mind-sense; gifted at detecting illusions |
+| Hune | Towering and stoic; exceptional strength and iron-willed endurance |
+| Orc | Fierce melee warriors; pride above death and devastating critical strikes |
+| Goblin | Cunning tricksters; quick to escape and stealthy despite small stature |
+| Human | Boundlessly adaptable with innate arcane potential; persevering against all odds |
+| Catfolk | Proud hunters with keen night vision; intimidating roar and sharp natural claws |
+| Lizardfolk | Cold-blooded survivors; thick natural scales and amphibious endurance |
+| Minotaur | Horned guardians with formidable strength; devastating goring charge |
+| Dogfolk | (Coming soon) |
+| Satyr | (Coming soon) |
 
 ## Character Creation: Physical Traits
 
@@ -50,9 +65,7 @@ When creating your adventurer, you may use the following tables to determine you
 
 ** This roughly indicates the natural life span of each Folk. Depending on good health or the gods’ favour, mortals can surpass this point in age by some years or even decades.
 
-## The Old Folk
-
-The Old Folk consist of those peoples whose cultural history spans hundreds or thousands of years. All have experienced great achievements and wealth, but also tragedy and catastrophe. Within the desert realm of Atakhet, many Old Folk hold positions of power and influence, particularly the Ra'thep sun-elves who rule as divine representatives. These civilizations often navigate complex social hierarchies where their heritage grants an individual certain privileges but also burdens them with expectations of tradition and propriety.
+## Folk
 
 ### Dwarf
 
@@ -178,7 +191,7 @@ A race of towering beings with incredible strength and endurance. They are often
 ![folk-img](./img/orc.jpeg)
 
 
-Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.
+Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, they are often judged by the deeds of their ancestors rather than their own merits. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.
 
 **Known Cultures:**
 
@@ -196,14 +209,6 @@ Coming from once violent and brutal cultures, the orcs have a reputation for sav
 **Orcish Fury.** When you roll a critical success on an attack with a melee weapon, add your weapon damage an additional time to the total damage.
 
 **Pride above Death.** When you suffer one Injury, you can choose to ignore it. You can use this ability once per day.
-
-## The New Folk
-
-> "The ancient empires call us savages, yet we thrive where they fear to tread—from the jungle's edge to the swamp delta. Perhaps it is not age that grants wisdom, but adaptation."
-
-The New Folk are cultures relatively new in the realms. Their more recent ancestors might have lived in barbaric tribes or other societies not capable of speech, craftsmanship, or art. Within Atakhet, the New Folk often occupy the fringes of society, either because they are viewed with suspicion or because they prefer to maintain their independence from the established hierarchies.
-
-The Old Folk most often hold superstitions against them, as many view them as not worthy of civilized lands. This prejudice is particularly strong in ancient realms like Atakhet, where lineage and tradition are highly valued.
 
 ### Goblin
 
@@ -240,7 +245,7 @@ A cunning and resourceful race of small build, with a knack for trickery and dec
 ![folk-img](./img/human.jpeg)
 
 
-The newest folk among all the New Folk, humans possess a natural arcane ability that makes many other folks scared of them. Others try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges. In Atakhet, humans often serve as advisors or arcane specialists, their natural magical talents both valued and closely monitored.
+A resilient and adaptable people, humans possess a natural arcane ability that sets them apart from other folk. Others sometimes try to subjugate them to make use of their natural gifts as a weapon. As a result, humans are often caught between fear and exploitation, struggling to find their place in a world that both values and fears their power. But their incredible adaptability and boundless ambition have allowed them to thrive despite these challenges. In Atakhet, humans often serve as advisors or arcane specialists, their natural magical talents both valued and closely monitored.
 
 **Known Cultures:**
 
