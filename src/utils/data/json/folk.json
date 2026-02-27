@@ -6,9 +6,14 @@
     "description": "Carved of the stone itself, dwarves maintain a deep connection to the earth. They are masters of mining and metalworking, renowned for their craftsmanship and skill. They value honor and tradition, and their unyielding determination reflects their unbreakable bond with the earth. In Atakhet, dwarven stoneworkers are highly prized for their ability to craft monuments that withstand the harsh desert conditions.",
     "cultures": [
       {
-        "name": "Dharok (Hill-Dwarves)",
-        "region": "Southern Jungle",
-        "description": "Temple builders and stonemasons in volcanic caves of the Southern Jungle"
+        "name": "Ghahar (Fortress-Dwarves)",
+        "region": "Eternal Desert",
+        "description": "Proud conglomerate of autonomous dwarven fortresses in the canyonlands of Ghahul; leading architects, mathematicians, and astronomers of the known world"
+      },
+      {
+        "name": "Urduk (Ash-Dwarves)",
+        "region": "Eternal Desert",
+        "description": "Expansionist conqueror dwarves in the volcanic wasteland of Ur-Khurat; military dictatorship with slavery and elemental binding"
       },
       {
         "name": "Dhurvar (Ice-Dwarves)",
@@ -16,19 +21,14 @@
         "description": "Stoic mountain dwellers who carve their homes from snow-covered peaks"
       },
       {
-        "name": "Ghahar (Fortress-Dwarves)",
-        "region": "Eternal Desert",
-        "description": "Proud conglomerate of autonomous dwarven fortresses in the canyonlands of Ghahul; leading architects, mathematicians, and astronomers of the known world"
+        "name": "Dharok (Hill-Dwarves)",
+        "region": "Southern Jungle",
+        "description": "Temple builders and stonemasons in volcanic caves of the Southern Jungle"
       },
       {
         "name": "Mahruk (Sea-Dwarves)",
         "region": "Western Island Realms",
         "description": "Seafaring trade dwarves of the Kural Archipelago; plutocratic long-distance merchants forming the logistical backbone of the Volcanic Islands"
-      },
-      {
-        "name": "Urduk (Ash-Dwarves)",
-        "region": "Eternal Desert",
-        "description": "Expansionist conqueror dwarves in the volcanic wasteland of Ur-Khurat; military dictatorship with slavery and elemental binding"
       }
     ],
     "abilities": [
@@ -56,11 +56,6 @@
     "description": "Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.",
     "cultures": [
       {
-        "name": "Alfir (Dark-Elves)",
-        "region": "Frozen North",
-        "description": "Nocturnal elves in twilight realms; agents of dark gods and masters of shadow magic"
-      },
-      {
         "name": "Anutep (Sun-Elves)",
         "region": "Atakhet",
         "description": "Ruling elven culture of Atakhet; governed by divine twin emperors, protectors of the sacred rivers"
@@ -74,6 +69,11 @@
         "name": "Imentep (Shadow-Elves)",
         "region": "Eternal Desert",
         "description": "Nocturnal elves dwelling in the underrealms and ancient tombs of the desert; guardians of the dead; cursed descendants of the fallen Elven Pharakhet"
+      },
+      {
+        "name": "Alfir (Dark-Elves)",
+        "region": "Frozen North",
+        "description": "Nocturnal elves in twilight realms; agents of dark gods and masters of shadow magic"
       },
       {
         "name": "Sylvar (Wood-Elves)",
@@ -111,11 +111,6 @@
     "description": "Natural psychics with the ability to read other people's intentions and surface thoughts, the child-sized gnomes are an open and harmonious culture. However, this often makes them naive when faced with other folk who attempt to deceive them. Their playful nature is a welcome addition to any company. In Atakhet, gnomes often serve as diplomatic intermediaries, using their empathic abilities to foster understanding between different folk.",
     "cultures": [
       {
-        "name": "Auflin (Willow-Gnomes)",
-        "region": "Eternal Desert",
-        "description": "Gentle river-dwellers near oases; empathy-gifted traders and trackers"
-      },
-      {
         "name": "Burrin (Desert-Gnomes)",
         "region": "Atakhet",
         "description": "Nomadic gnomes of the Taharet Desert; the only culture permanently living there, gifted with psychic abilities"
@@ -124,6 +119,11 @@
         "name": "Shangri (Cloud-Gnomes)",
         "region": "Eastern Mist Realms",
         "description": "High-monastery dwellers seeking enlightenment; masters of meditation"
+      },
+      {
+        "name": "Auflin (Willow-Gnomes)",
+        "region": "Eternal Desert",
+        "description": "Gentle river-dwellers near oases; empathy-gifted traders and trackers"
       }
     ],
     "abilities": [
@@ -151,11 +151,6 @@
     "description": "A race of towering beings with incredible strength and endurance. They are often nomadic and reclusive but possess a deep wisdom and knowledge of the world. In the deserts of Atakhet, Hunes are often sought out as caravan guards or builders for grand monuments, their strength and endurance invaluable in the harsh climate.",
     "cultures": [
       {
-        "name": "Empyros (Island-Hune)",
-        "region": "Western Island Realms",
-        "description": "Seafaring traders with far-reaching trade networks"
-      },
-      {
         "name": "Gajahar (Elephant-Hune)",
         "region": "Eastern Mist Realms",
         "description": "Wise scholars and keepers of ancient knowledge; respected for their wisdom"
@@ -174,6 +169,11 @@
         "name": "Mammuthar (Mammoth-Hune)",
         "region": "Frozen North",
         "description": "Tundra wanderers with deep bonds to mammoths; legendary animal handlers"
+      },
+      {
+        "name": "Empyros (Island-Hune)",
+        "region": "Western Island Realms",
+        "description": "Seafaring traders with far-reaching trade networks"
       },
       {
         "name": "Ta'uuri (Island-Hune)",
@@ -202,9 +202,19 @@
     "description": "Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.",
     "cultures": [
       {
+        "name": "Orgon (Island-Orcs)",
+        "region": "Atakhet",
+        "description": "Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed"
+      },
+      {
         "name": "Gataka (Valley-Orcs)",
         "region": "Eastern Mist Realms",
         "description": "Warriors with strict honor culture; following rigid combat traditions"
+      },
+      {
+        "name": "Zakhar (Coastal-Orcs)",
+        "region": "Eternal Desert",
+        "description": "Seafaring raiders and pirates along the coasts of the Great Desert"
       },
       {
         "name": "Jinkai (Mountain-Orcs)",
@@ -212,19 +222,9 @@
         "description": "Honor-bound metalsmiths from misty valleys; known for their smithing and honor code"
       },
       {
-        "name": "Orgon (Island-Orcs)",
-        "region": "Atakhet",
-        "description": "Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed"
-      },
-      {
         "name": "Thuran (Jungle-Orcs)",
         "region": "Southern Jungle",
         "description": "Rice farmers and river warriors; adapted to life in the jungle"
-      },
-      {
-        "name": "Zakhar (Coastal-Orcs)",
-        "region": "Eternal Desert",
-        "description": "Seafaring raiders and pirates along the coasts of the Great Desert"
       }
     ],
     "abilities": [
@@ -334,9 +334,9 @@
         "description": "Proud lion-folk of the southern savannas; nominally sovereign city-state, effectively under Atakhet's control"
       },
       {
-        "name": "Saghal (Jungle-Pantherfolk)",
-        "region": "Southern Jungle",
-        "description": "Stealthy predators blending with their surroundings; controlling the mythwood trade"
+        "name": "Vyaghral (Tiger-Folk)",
+        "region": "Eastern Mist Realms",
+        "description": "Solitary jungle and mountain hunters; legendary for patience and deadly precision"
       },
       {
         "name": "Tuvak (Sabertooth-Folk)",
@@ -344,9 +344,9 @@
         "description": "Ice-age megafauna hunters; living in the coldest regions"
       },
       {
-        "name": "Vyaghral (Tiger-Folk)",
-        "region": "Eastern Mist Realms",
-        "description": "Solitary jungle and mountain hunters; legendary for patience and deadly precision"
+        "name": "Saghal (Jungle-Pantherfolk)",
+        "region": "Southern Jungle",
+        "description": "Stealthy predators blending with their surroundings; controlling the mythwood trade"
       }
     ],
     "abilities": [
@@ -374,6 +374,11 @@
     "description": "A cold-blooded and inscrutable species, with a deep connection to the swamps and marshes where they make their homes. They are often viewed as mysterious and dangerous but possess wisdom and cunning born of their harsh environment. In Atakhet, lizardfolk are often found near the life-giving oases and rivers, serving as guardians of these precious water sources.",
     "cultures": [
       {
+        "name": "Vaashk (Swamp-Lizardfolk)",
+        "region": "Atakhet",
+        "description": "Lizardfolk of the Satimaha Swamps; amphibious wetland dwellers with tribal traditions"
+      },
+      {
         "name": "Ceratos (Threehorns)",
         "region": "Southern Jungle",
         "description": "Armored jungle guardians; massively built and deadly in melee"
@@ -392,11 +397,6 @@
         "name": "Thalassi (Sea-Lizardfolk)",
         "region": "Western Island Realms",
         "description": "Marine fishers and pearl divers; masters of underwater hunting"
-      },
-      {
-        "name": "Vaashk (Swamp-Lizardfolk)",
-        "region": "Atakhet",
-        "description": "Lizardfolk of the Satimaha Swamps; amphibious wetland dwellers with tribal traditions"
       }
     ],
     "abilities": [
@@ -424,19 +424,19 @@
     "description": "A horned, furry species known for their immense strength and unwavering determination. They are fiercely protective of their clan and territories, often seen as guardians of sacred places. Their physical prowess is matched by their sense of honor, making them formidable allies and respected adversaries. In Atakhet, minotaurs often serve as temple guardians or caravan protectors, their imposing presence deterring all but the most determined threats.",
     "cultures": [
       {
+        "name": "Khutu (Steppe-Minotaurs)",
+        "region": "Eastern Mist Realms",
+        "description": "Swift messengers across vast plains; legendary for their endurance"
+      },
+      {
         "name": "Enkeddu (Grassland-Minotaurs)",
         "region": "Eternal Desert",
         "description": "Nomadic herders following seasonal migration routes"
       },
       {
-        "name": "Firbeol (Firbolg-Minotaurs)",
-        "region": "Woodlands (various)",
-        "description": "Druidic forest minotaurs; guardian groves, ancient stone circles, and ancestor worship"
-      },
-      {
-        "name": "Khutu (Steppe-Minotaurs)",
-        "region": "Eastern Mist Realms",
-        "description": "Swift messengers across vast plains; legendary for their endurance"
+        "name": "Yettnar (Mountain-Minotaurs)",
+        "region": "Frozen North",
+        "description": "Solitary guardians of ancient passes and shrines; legendarily silent and watchful"
       },
       {
         "name": "Minokos (Island-Minotaurs)",
@@ -444,9 +444,9 @@
         "description": "Seafaring traders and respected pilots of dangerous waters"
       },
       {
-        "name": "Yettnar (Mountain-Minotaurs)",
-        "region": "Frozen North",
-        "description": "Solitary guardians of ancient passes and shrines; legendarily silent and watchful"
+        "name": "Firbeol (Firbolg-Minotaurs)",
+        "region": "Woodlands (various)",
+        "description": "Druidic forest minotaurs; guardian groves, ancient stone circles, and ancestor worship"
       }
     ],
     "abilities": [
@@ -474,9 +474,9 @@
     "description": "Dogfolk are a canine folk with keen senses and an unshakable loyalty to their kin. Their sharp ears and powerful noses make them unparalleled trackers, while their pack instincts drive them to protect their companions at any cost. Though sometimes dismissed by other folk as overly trusting, their dedication and reliability have earned them a respected place in many communities. In Atakhet, dogfolk often serve as caravan scouts, border patrols, and desert trackers, their senses invaluable for navigating the treacherous sands and detecting hidden dangers.",
     "cultures": [
       {
-        "name": "Coyotl (Coyote-Folk)",
-        "region": "Southern Jungle",
-        "description": "Tricksters, survivalists, and scavengers; cunning and adaptable"
+        "name": "Lycanin (Wolf-Folk)",
+        "region": "Frozen North",
+        "description": "Pack warriors of the snowy forests with strict pack hierarchy"
       },
       {
         "name": "Kerbei (Jackal-Folk)",
@@ -484,14 +484,14 @@
         "description": "Jackal-like dog-folk of the Great Desert; people of Baaphor; dwelling in hidden ruins, bound to a forgotten ancient duty"
       },
       {
+        "name": "Coyotl (Coyote-Folk)",
+        "region": "Southern Jungle",
+        "description": "Tricksters, survivalists, and scavengers; cunning and adaptable"
+      },
+      {
         "name": "Kithar (Fox-Folk)",
         "region": "Western Island Realms",
         "description": "Shrewd traders and diplomats of the Island Realms; known for their negotiation skills"
-      },
-      {
-        "name": "Lycanin (Wolf-Folk)",
-        "region": "Frozen North",
-        "description": "Pack warriors of the snowy forests with strict pack hierarchy"
       }
     ],
     "abilities": [
