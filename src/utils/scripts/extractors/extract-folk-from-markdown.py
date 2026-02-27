@@ -47,14 +47,11 @@ def extract_folk_from_section(section_content, folk_category):
         quote = quote_match.group(1).strip() if quote_match else ""
         
         # Extract description paragraph
-        description_match = re.search(r'!\[folk-img\].*?\n\n(.*?)(?=\*\*Known Cultures|\*\*Far Away Cultures|\*\*Size)', folk_content, re.DOTALL)
+        description_match = re.search(r'!\[folk-img\].*?\n\n(.*?)(?=\*\*Cultures\*\*|\*\*Size)', folk_content, re.DOTALL)
         description = description_match.group(1).strip() if description_match else ""
         
-        # Extract known cultures
-        known_cultures = extract_cultures(folk_content, "Known Cultures")
-        
-        # Extract far away cultures  
-        far_away_cultures = extract_cultures(folk_content, "Far Away Cultures")
+        # Extract cultures from table
+        cultures = extract_cultures_from_table(folk_content)
         
         # Extract abilities (lines starting with ** that aren't Size, Age, Known Cultures, etc.)
         abilities = extract_abilities(folk_content)
@@ -67,8 +64,7 @@ def extract_folk_from_section(section_content, folk_category):
             "category": folk_category,
             "quote": quote,
             "description": description,
-            "known_cultures": known_cultures,
-            "far_away_cultures": far_away_cultures,
+            "cultures": cultures,
             "abilities": abilities,
             "languages": languages
         }
@@ -77,21 +73,23 @@ def extract_folk_from_section(section_content, folk_category):
     
     return folk_list
 
-def extract_cultures(content, culture_type):
-    """Extract culture information."""
+def extract_cultures_from_table(content):
+    """Extract culture information from markdown table format."""
     cultures = []
-    pattern = rf'\*\*{culture_type}:\*\*\s*\n\n((?:- \*\*.*?\n)*)'
-    match = re.search(pattern, content, re.DOTALL)
+    # Match the cultures table section
+    table_match = re.search(r'\*\*Cultures\*\*\s*\n\n\| Culture \| Region \| Description \|\n\| --- \| --- \| --- \|\n((?:\|[^\n]+\n)*)', content)
     
-    if match:
-        cultures_text = match.group(1)
-        # Extract culture entries (lines starting with -)
-        culture_matches = re.finditer(r'- \*\*([^*()]+)\s*\([^)]+\)\*\*:\s*([^\n]+)', cultures_text)
-        for culture_match in culture_matches:
-            culture_name = culture_match.group(1).strip()
-            culture_desc = culture_match.group(2).strip()
+    if table_match:
+        table_rows = table_match.group(1)
+        # Extract each row: | Culture | Region | Description |
+        row_matches = re.finditer(r'\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|', table_rows)
+        for row_match in row_matches:
+            culture_name = row_match.group(1).strip()
+            culture_region = row_match.group(2).strip()
+            culture_desc = row_match.group(3).strip()
             cultures.append({
                 "name": culture_name,
+                "region": culture_region,
                 "description": culture_desc
             })
     
@@ -112,8 +110,8 @@ def extract_abilities(content):
             ability_name = match.group(1).strip()
             ability_desc = match.group(2).strip()
             
-            # Skip if this looks like metadata (Size, Age, Known Cultures, etc.)
-            if ability_name in ['Size', 'Age', 'Known Cultures', 'Far Away Cultures']:
+            # Skip if this looks like metadata (Size, Age, Cultures, etc.)
+            if ability_name in ['Size', 'Age', 'Cultures']:
                 continue
             
             abilities.append({

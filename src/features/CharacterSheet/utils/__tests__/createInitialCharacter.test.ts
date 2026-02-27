@@ -13,8 +13,7 @@ describe('createInitialCharacter with Folk, Upbringing, and Background', () => {
 			{ name: 'Stoneskin', description: 'You gain +1 AV' },
 		],
 		languages: ['Dwarven'],
-		known_cultures: [],
-		far_away_cultures: [],
+		cultures: [],
 	}
 
 	const mockUpbringing: UpbringingData = {
