@@ -391,7 +391,7 @@ Satyrs are a spirited and free-willed folk with the legs and horns of goats. Kno
 
 **Age.** Satyrs reach adulthood at 20 and are considered of old age at 70 years. They can live up to 90 years on average.
 
-**Magic Resistance.** You gain +1 boon on rolls to resist spells and other magical effects.
+**Wild Resilience.** Once per scene, when you take damage from a spell or are affected by a magical effect that applies a condition, you can choose to either halve the damage taken or immediately end one negative condition affecting you.
 
 **Horns.** You can use your horns (2 weapon damage, crush) as brawling weapons instead of unarmed attacks.
 

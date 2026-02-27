@@ -289,7 +289,7 @@
       }
     ],
     "languages": [
-      "Catfolk"
+      "Beastspeech"
     ]
   },
   {
@@ -323,7 +323,7 @@
       }
     ],
     "languages": [
-      "Lizardfolk"
+      "Draconic"
     ]
   },
   {
@@ -405,7 +405,7 @@
       }
     ],
     "languages": [
-      "Dogspeech"
+      "Beastspeech"
     ]
   },
   {
@@ -431,8 +431,8 @@
     ],
     "abilities": [
       {
-        "name": "Magic Resistance",
-        "description": "You gain +1 boon on rolls to resist spells and other magical effects."
+        "name": "Wild Resilience",
+        "description": "Once per scene, when you take damage from a spell or are affected by a magical effect that applies a condition, you can choose to either halve the damage taken or immediately end one negative condition affecting you."
       },
       {
         "name": "Horns",

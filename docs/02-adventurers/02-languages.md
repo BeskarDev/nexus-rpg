@@ -26,16 +26,13 @@ Common languages are those spoken by larger cultures throughout the realms. All 
 
 | Language | Example Speakers |
 | --- | --- |
-| Catspeech | catfolk |
-| Dogspeech | dogfolk |
+| Beastspeech | catfolk, dogfolk |
 | Dwarvish | dwarves |
 | Elvish | elves |
 | Giant | hunes, minotaurs, giants |
 | Gnomish | hnomes |
 | Goblin | goblinoids |
-| Lizardspeech | lizardfolk |
 | Orc | orcs |
-| Sylvan | satyrs |
 | Tradespeak | merchants, travelers, humans |
 
 > Example: Nagkhan the Sorcerer has a Mind attribute of d8, allowing them to learn one additional language beyond their native languages. They choose to learn Dark Tongue to study forbidden texts of arcane secrets.
@@ -46,7 +43,8 @@ These languages are mainly spoken by ancient, immortal, or long forgotten beings
 
 | Language | Example Speakers |
 | --- | --- |
-| Draconic | dragons |
+| Draconic | dragons, lizardfolk |
 | Primordial | elementals |
 | Celestial | gods, extraplanar beings |
 | Dark Tongue | arcane cultists, elder horrors |
+| Sylvan | satyrs, nature spirits |
