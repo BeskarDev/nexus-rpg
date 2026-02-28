@@ -5,6 +5,7 @@ import challengeData from './data/challengeData.json'
 import treasureData from './data/treasureData.json'
 import questData from './data/questData.json'
 import npcData from './data/npcData.json'
+import settlementData from './data/settlementData.json'
 
 // Type definitions for spell data
 interface SpellEntry {
@@ -493,4 +494,91 @@ export function generateNpc(groupId: string): string {
 
 	// Full profile
 	return `A ${lc(disposition.disposition)} ${lc(occupation)} with ${lc(visual)} who ${lc(mannerism)}. Motivated by ${lc(motivation1.motivation)} and ${lc(motivation2.motivation)}. Pitfall: ${lc(pitfall.pitfall)} — triggered by ${lc(pitfall.trigger)}.`
+}
+
+// ===== SETTLEMENTS =====
+
+export const settlementGroups = [
+	{ id: 'full', label: 'Full Settlement' },
+	{ id: 'geography', label: 'Geography' },
+	{ id: 'resources', label: 'Resources' },
+	{ id: 'culture', label: 'Culture' },
+	{ id: 'government', label: 'Government' },
+	{ id: 'history', label: 'Historical Event' },
+	{ id: 'threats', label: 'Threats' },
+	{ id: 'defenses', label: 'Defenses' },
+	{ id: 'law', label: 'Law Enforcement' },
+	{ id: 'power', label: 'Power Players' },
+	{ id: 'landmarks', label: 'Landmarks' },
+	{ id: 'districts', label: 'Districts' },
+	{ id: 'streets', label: 'Streets' },
+]
+
+export function generateSettlement(groupId: string): string {
+	if (groupId === 'full') {
+		const geography = pick(settlementData.geography)
+		const resources = pick(settlementData.resources)
+		const culture = pick(settlementData.culture)
+		const government = pick(settlementData.government)
+		const history = pick(settlementData.historicalEvents)
+		const threat = pick(settlementData.threats)
+		const defense = pick(settlementData.defenses)
+		const law = pick(settlementData.lawEnforcement)
+		const power = pick(settlementData.powerPlayers)
+		const landmark = pick(settlementData.landmarks)
+		const district = pick(settlementData.districts)
+		const street = pick(settlementData.streets)
+
+		return `A settlement ${lc(geography)}. Its economy depends on ${lc(resources)}. The people practice ${lc(culture)}. Ruled by ${lc(government)}. In the past, ${lc(history)}. Threatened by ${lc(threat)}. Defended by ${lc(defense)}. Justice is handled by ${lc(law)}. The most influential figure is ${lc(power)}. Notable landmark: ${lc(landmark)}. Features ${lc(district)}. The streets are ${lc(street)}.`
+	}
+
+	switch (groupId) {
+		case 'geography':
+			return `The settlement sits ${lc(pick(settlementData.geography))}.`
+		case 'resources':
+			return `The local economy depends on ${lc(pick(settlementData.resources))}.`
+		case 'culture':
+			return `The people practice ${lc(pick(settlementData.culture))}.`
+		case 'government':
+			return `The settlement is ruled by ${lc(pick(settlementData.government))}.`
+		case 'history':
+			return `In the settlement's past, ${lc(pick(settlementData.historicalEvents))}.`
+		case 'threats':
+			return `The settlement is threatened by ${lc(pick(settlementData.threats))}.`
+		case 'defenses':
+			return `The settlement is defended by ${lc(pick(settlementData.defenses))}.`
+		case 'law':
+			return `Justice is handled by ${lc(pick(settlementData.lawEnforcement))}.`
+		case 'power':
+			return `The most influential figure is ${lc(pick(settlementData.powerPlayers))}.`
+		case 'landmarks':
+			return `A notable landmark: ${lc(pick(settlementData.landmarks))}.`
+		case 'districts':
+			return `The settlement features ${lc(pick(settlementData.districts))}.`
+		case 'streets':
+			return `The streets are ${lc(pick(settlementData.streets))}.`
+		default:
+			return 'Unknown settlement table'
+	}
+}
+
+// ===== BUILDINGS =====
+
+export const buildingGroups = [
+	{ id: 'harbor', label: 'Harbor & Waterfront' },
+	{ id: 'market', label: 'Market & Trade' },
+	{ id: 'temple', label: 'Temple & Sacred' },
+	{ id: 'artisan', label: 'Artisan & Craft' },
+	{ id: 'garrison', label: 'Military & Garrison' },
+	{ id: 'residential', label: 'Residential & Noble' },
+	{ id: 'slum', label: 'Slum & Outskirts' },
+	{ id: 'scholarly', label: 'Scholarly & Cultural' },
+	{ id: 'pleasure', label: 'Pleasure & Entertainment' },
+	{ id: 'foreign', label: 'Foreign Quarter' },
+]
+
+export function generateBuilding(groupId: string): string {
+	const buildings = (settlementData.buildings as Record<string, string[]>)[groupId]
+	if (!buildings) return 'Unknown district type'
+	return `Prominent building: ${lc(pick(buildings))}.`
 }
