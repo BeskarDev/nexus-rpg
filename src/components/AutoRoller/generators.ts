@@ -4,6 +4,7 @@ import creatureData from './data/creatureData.json'
 import challengeData from './data/challengeData.json'
 import treasureData from './data/treasureData.json'
 import questData from './data/questData.json'
+import npcData from './data/npcData.json'
 
 // Type definitions for spell data
 interface SpellEntry {
@@ -457,4 +458,39 @@ export function generateQuest(category: string, partyLevel: number): string {
 		default:
 			return 'Unknown quest type'
 	}
+}
+
+// ===== NPCs =====
+
+export const npcGroups = [
+	{ id: 'full', label: 'Full NPC Profile' },
+	{ id: 'social', label: 'Social Intrigue NPC' },
+	{ id: 'quick', label: 'Quick NPC' },
+]
+
+export function generateNpc(groupId: string): string {
+	const occupation = pick(npcData.occupations)
+	const visual = pick(npcData.visualDistinctiveness)
+	const mannerism = pick(npcData.mannerisms)
+
+	if (groupId === 'quick') {
+		return `A ${lc(occupation)} with ${lc(visual)} who ${lc(mannerism)}.`
+	}
+
+	const disposition = pick(npcData.dispositions)
+	const motivation1 = pick(npcData.motivations)
+	let motivation2 = pick(npcData.motivations)
+	while (motivation2.motivation === motivation1.motivation) {
+		motivation2 = pick(npcData.motivations)
+	}
+	const pitfall = pick(npcData.pitfalls)
+
+	if (groupId === 'social') {
+		const patience = pick(npcData.patience)
+		const alignment = pick(npcData.requestAlignments)
+		return `A ${lc(disposition.disposition)} ${lc(occupation)} (disposition ${disposition.modifier >= 0 ? '+' : ''}${disposition.modifier}). ${capitalize(patience.temperament)} patience (${patience.challengeDie}), request is ${lc(alignment.alignment)} (${alignment.modifier >= 0 ? '+' : ''}${alignment.modifier}). Motivated by ${lc(motivation1.motivation)} and ${lc(motivation2.motivation)}. Pitfall: ${lc(pitfall.pitfall)} — triggered by ${lc(pitfall.trigger)}. They have ${lc(visual)} and ${lc(mannerism)}.`
+	}
+
+	// Full profile
+	return `A ${lc(disposition.disposition)} ${lc(occupation)} with ${lc(visual)} who ${lc(mannerism)}. Motivated by ${lc(motivation1.motivation)} and ${lc(motivation2.motivation)}. Pitfall: ${lc(pitfall.pitfall)} — triggered by ${lc(pitfall.trigger)}.`
 }

@@ -5,6 +5,7 @@ import creatureData from '../../src/components/AutoRoller/data/creatureData.json
 import challengeData from '../../src/components/AutoRoller/data/challengeData.json'
 import treasureData from '../../src/components/AutoRoller/data/treasureData.json'
 import questData from '../../src/components/AutoRoller/data/questData.json'
+import npcData from '../../src/components/AutoRoller/data/npcData.json'
 import {
 	generateName,
 	generateSpell,
@@ -12,12 +13,14 @@ import {
 	generateChallenge,
 	generateTreasure,
 	generateQuest,
+	generateNpc,
 	nameGroups,
 	spellGroups,
 	creatureGroups,
 	challengeGroups,
 	treasureGroups,
 	questGroups,
+	npcGroups,
 } from '../../src/components/AutoRoller/generators'
 
 describe('AutoRoller Data Integrity', () => {
@@ -742,6 +745,106 @@ describe('AutoRoller Generators', () => {
 				const job = generateQuest('job', level)
 				expect(job).toContain('coins')
 			}
+		})
+	})
+
+	describe('NPC Data', () => {
+		it('should have 20 occupations', () => {
+			expect(npcData.occupations).toHaveLength(20)
+		})
+
+		it('should have 20 visual distinctiveness entries', () => {
+			expect(npcData.visualDistinctiveness).toHaveLength(20)
+		})
+
+		it('should have 20 mannerisms entries', () => {
+			expect(npcData.mannerisms).toHaveLength(20)
+		})
+
+		it('should have 20 motivations', () => {
+			expect(npcData.motivations).toHaveLength(20)
+		})
+
+		it('should have 20 pitfalls', () => {
+			expect(npcData.pitfalls).toHaveLength(20)
+		})
+
+		it('should have dispositions with modifier values', () => {
+			npcData.dispositions.forEach((d) => {
+				expect(d.disposition).toBeTruthy()
+				expect(typeof d.modifier).toBe('number')
+			})
+		})
+
+		it('should have motivations with appeal text', () => {
+			npcData.motivations.forEach((m) => {
+				expect(m.motivation).toBeTruthy()
+				expect(m.appeal).toBeTruthy()
+			})
+		})
+
+		it('should have pitfalls with trigger text', () => {
+			npcData.pitfalls.forEach((p) => {
+				expect(p.pitfall).toBeTruthy()
+				expect(p.trigger).toBeTruthy()
+			})
+		})
+	})
+
+	describe('npcGroups', () => {
+		it('should have 3 NPC groups', () => {
+			expect(npcGroups).toHaveLength(3)
+		})
+
+		it('should include full, social, and quick groups', () => {
+			const ids = npcGroups.map((g) => g.id)
+			expect(ids).toContain('full')
+			expect(ids).toContain('social')
+			expect(ids).toContain('quick')
+		})
+	})
+
+	describe('generateNpc', () => {
+		it('should generate a quick NPC with occupation, visual, and mannerism', () => {
+			const result = generateNpc('quick')
+			expect(result).toBeTruthy()
+			expect(result.startsWith('A ')).toBe(true)
+			expect(result.endsWith('.')).toBe(true)
+		})
+
+		it('should generate a full NPC profile with disposition, motivations, and pitfall', () => {
+			const result = generateNpc('full')
+			expect(result).toBeTruthy()
+			expect(result).toContain('Motivated by')
+			expect(result).toContain('Pitfall:')
+			expect(result).toContain('triggered by')
+		})
+
+		it('should generate a social intrigue NPC with patience and request alignment', () => {
+			const result = generateNpc('social')
+			expect(result).toBeTruthy()
+			expect(result).toContain('disposition')
+			expect(result).toContain('patience')
+			expect(result).toContain('Motivated by')
+			expect(result).toContain('Pitfall:')
+		})
+
+		it('should generate two distinct motivations', () => {
+			// Run multiple times to verify motivations are distinct
+			for (let i = 0; i < 20; i++) {
+				const result = generateNpc('full')
+				const motivMatch = result.match(/Motivated by (.+?) and (.+?)\. Pitfall/)
+				expect(motivMatch).not.toBeNull()
+				expect(motivMatch![1]).not.toBe(motivMatch![2])
+			}
+		})
+
+		it('should generate varied results across multiple rolls', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateNpc('full'))
+			}
+			expect(results.size).toBeGreaterThan(5)
 		})
 	})
 })
