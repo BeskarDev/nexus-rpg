@@ -3,10 +3,100 @@ sidebar_position: 11
 ---
 
 import RollableTable from '@site/src/components/RollableTable'
+import { NpcAutoRollerWrapper } from '@site/src/components/AutoRoller/NpcAutoRollerWrapper'
 
-# 🗣️ Social Intrigue
+# 🎭 NPCs
 
-Use these tables to quickly set up the social parameters for an NPC before or during a Social Intrigue scene. Roll once on each table or just pick what fits. See the [Social Intrigue rules](../../06-scenes/08-social-intrigue.md) for how these values work in play.
+<NpcAutoRollerWrapper />
+
+Use these tables to quickly build an NPC profile for any scene. Roll once on each table or just pick what fits. For Social Intrigue scenes specifically, see the [Social Intrigue rules](../../06-scenes/08-social-intrigue.md) for how Disposition, Motivations, and Pitfalls work in play.
+
+---
+
+## Occupation
+
+<RollableTable>
+| d20 | Occupation |
+| --- | --- |
+| 1 | Merchant or trader |
+| 2 | Soldier or guard |
+| 3 | Farmer or herder |
+| 4 | Artisan or craftsperson |
+| 5 | Priest or temple attendant |
+| 6 | Healer or herbalist |
+| 7 | Scribe or scholar |
+| 8 | Entertainer or storyteller |
+| 9 | Smith or metalworker |
+| 10 | Sailor or fisher |
+| 11 | Hunter or trapper |
+| 12 | Innkeeper or tavern owner |
+| 13 | Noble or official |
+| 14 | Courier or messenger |
+| 15 | Thief or smuggler |
+| 16 | Labourer or builder |
+| 17 | Caravan driver or guide |
+| 18 | Elder or village leader |
+| 19 | Mystic or fortune teller |
+| 20 | Mercenary or sell-sword |
+</RollableTable>
+
+---
+
+## Visual Distinctiveness
+
+<RollableTable>
+| d20 | Visual Trait |
+| --- | --- |
+| 1 | A prominent scar across one cheek |
+| 2 | Unusually tall and gaunt |
+| 3 | Short and stocky with powerful arms |
+| 4 | A missing finger or ear |
+| 5 | Striking, mismatched eyes |
+| 6 | An elaborate tattoo on their neck or hands |
+| 7 | Prematurely grey or white hair |
+| 8 | A noticeable limp |
+| 9 | Sun-darkened, weathered skin |
+| 10 | A shaved head with ritual markings |
+| 11 | An ornate piece of jewelry they never remove |
+| 12 | Calloused, ink-stained hands |
+| 13 | A crooked nose, clearly broken before |
+| 14 | A distinctive birthmark on their face |
+| 15 | Unusually bright or pale eyes |
+| 16 | Teeth capped or replaced with metal |
+| 17 | Burn marks along one arm |
+| 18 | A heavy, distinctive cloak or garment |
+| 19 | A foreign style of dress |
+| 20 | An ever-present tool or weapon on their belt |
+</RollableTable>
+
+---
+
+## Mannerisms & Voice
+
+<RollableTable>
+| d20 | Mannerism |
+| --- | --- |
+| 1 | Speaks in clipped, measured sentences |
+| 2 | Laughs too loudly at their own remarks |
+| 3 | Constantly fidgets with a ring or coin |
+| 4 | Avoids eye contact when lying |
+| 5 | Leans in uncomfortably close when talking |
+| 6 | Hums or whistles tunelessly when thinking |
+| 7 | Gestures broadly with their hands |
+| 8 | Pauses before answering, choosing words carefully |
+| 9 | Speaks in a rasping whisper |
+| 10 | Has a booming, commanding voice |
+| 11 | Taps the table or wall when impatient |
+| 12 | Repeats the last few words others say |
+| 13 | Peppers speech with foreign words or oaths |
+| 14 | Stares unblinkingly during conversation |
+| 15 | Clears their throat before every sentence |
+| 16 | Smiles warmly but never with their eyes |
+| 17 | Tilts their head when listening |
+| 18 | Drums their fingers in a nervous rhythm |
+| 19 | Speaks overly formally, even in casual settings |
+| 20 | Sniffs or tastes food and drink before accepting it |
+</RollableTable>
 
 ---
 
@@ -61,7 +151,7 @@ Roll to set how long the NPC is willing to engage. This is the challenge die, an
 
 Roll twice to generate two distinct Motivations. Each one can be appealed to once per challenge for +1 Interest.
 
-<RollableTable>
+<RollableTable singleRoll>
 | d20 | Motivation | Example Appeal |
 | --- | --- | --- |
 | 1 | *Desire: Profit* | Offer generous payment or a share of future earnings |
@@ -92,7 +182,7 @@ Roll twice to generate two distinct Motivations. Each one can be appealed to onc
 
 Roll once or twice to generate Pitfalls. Triggering one lowers Interest by −1. If Interest reaches −2 or lower, the intrigue ends in a Breakdown.
 
-<RollableTable>
+<RollableTable singleRoll>
 | d20 | Pitfall | Trigger |
 | --- | --- | --- |
 | 1 | *Threat: Past crimes* | Implying you know something they want hidden, even subtly. It reads as blackmail |
