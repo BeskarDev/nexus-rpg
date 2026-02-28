@@ -6,6 +6,7 @@ import challengeData from '../../src/components/AutoRoller/data/challengeData.js
 import treasureData from '../../src/components/AutoRoller/data/treasureData.json'
 import questData from '../../src/components/AutoRoller/data/questData.json'
 import npcData from '../../src/components/AutoRoller/data/npcData.json'
+import settlementData from '../../src/components/AutoRoller/data/settlementData.json'
 import {
 	generateName,
 	generateSpell,
@@ -14,6 +15,7 @@ import {
 	generateTreasure,
 	generateQuest,
 	generateNpc,
+	generateSettlement,
 	nameGroups,
 	spellGroups,
 	creatureGroups,
@@ -21,6 +23,7 @@ import {
 	treasureGroups,
 	questGroups,
 	npcGroups,
+	settlementGroups,
 } from '../../src/components/AutoRoller/generators'
 
 describe('AutoRoller Data Integrity', () => {
@@ -843,6 +846,144 @@ describe('AutoRoller Generators', () => {
 			const results = new Set<string>()
 			for (let i = 0; i < 30; i++) {
 				results.add(generateNpc('full'))
+			}
+			expect(results.size).toBeGreaterThan(5)
+		})
+	})
+
+	describe('Settlement Data', () => {
+		it('should have 20 geography entries', () => {
+			expect(settlementData.geography).toHaveLength(20)
+		})
+
+		it('should have 20 resources entries', () => {
+			expect(settlementData.resources).toHaveLength(20)
+		})
+
+		it('should have 20 culture entries', () => {
+			expect(settlementData.culture).toHaveLength(20)
+		})
+
+		it('should have 20 government entries', () => {
+			expect(settlementData.government).toHaveLength(20)
+		})
+
+		it('should have 20 historical events entries', () => {
+			expect(settlementData.historicalEvents).toHaveLength(20)
+		})
+
+		it('should have 20 threats entries', () => {
+			expect(settlementData.threats).toHaveLength(20)
+		})
+
+		it('should have 20 defenses entries', () => {
+			expect(settlementData.defenses).toHaveLength(20)
+		})
+
+		it('should have 20 law enforcement entries', () => {
+			expect(settlementData.lawEnforcement).toHaveLength(20)
+		})
+
+		it('should have 20 power players entries', () => {
+			expect(settlementData.powerPlayers).toHaveLength(20)
+		})
+
+		it('should have 20 landmarks entries', () => {
+			expect(settlementData.landmarks).toHaveLength(20)
+		})
+
+		it('should have 20 districts entries', () => {
+			expect(settlementData.districts).toHaveLength(20)
+		})
+
+		it('should have 20 streets entries', () => {
+			expect(settlementData.streets).toHaveLength(20)
+		})
+
+		it('should have non-empty string entries in all arrays', () => {
+			const arrays = [
+				settlementData.geography,
+				settlementData.resources,
+				settlementData.culture,
+				settlementData.government,
+				settlementData.historicalEvents,
+				settlementData.threats,
+				settlementData.defenses,
+				settlementData.lawEnforcement,
+				settlementData.powerPlayers,
+				settlementData.landmarks,
+				settlementData.districts,
+				settlementData.streets,
+			]
+			arrays.forEach((arr) => {
+				arr.forEach((entry) => {
+					expect(typeof entry).toBe('string')
+					expect(entry.length).toBeGreaterThan(0)
+				})
+			})
+		})
+	})
+
+	describe('settlementGroups', () => {
+		it('should have 13 settlement groups', () => {
+			expect(settlementGroups).toHaveLength(13)
+		})
+
+		it('should include full and all individual table groups', () => {
+			const ids = settlementGroups.map((g) => g.id)
+			expect(ids).toContain('full')
+			expect(ids).toContain('geography')
+			expect(ids).toContain('resources')
+			expect(ids).toContain('culture')
+			expect(ids).toContain('government')
+			expect(ids).toContain('history')
+			expect(ids).toContain('threats')
+			expect(ids).toContain('defenses')
+			expect(ids).toContain('law')
+			expect(ids).toContain('power')
+			expect(ids).toContain('landmarks')
+			expect(ids).toContain('districts')
+			expect(ids).toContain('streets')
+		})
+	})
+
+	describe('generateSettlement', () => {
+		it('should generate a full settlement with all categories', () => {
+			const result = generateSettlement('full')
+			expect(result).toBeTruthy()
+			expect(result).toContain('settlement')
+			expect(result).toContain('economy depends on')
+			expect(result).toContain('Ruled by')
+			expect(result).toContain('Threatened by')
+			expect(result).toContain('Defended by')
+			expect(result).toContain('Justice is handled by')
+			expect(result).toContain('influential figure')
+			expect(result).toContain('landmark')
+			expect(result).toContain('streets')
+		})
+
+		it('should generate individual table results', () => {
+			const tables = [
+				'geography', 'resources', 'culture', 'government',
+				'history', 'threats', 'defenses', 'law',
+				'power', 'landmarks', 'districts', 'streets',
+			]
+			tables.forEach((table) => {
+				const result = generateSettlement(table)
+				expect(result).toBeTruthy()
+				expect(result.endsWith('.')).toBe(true)
+			})
+		})
+
+		it('should return error for unknown group', () => {
+			const result = generateSettlement('unknown')
+			expect(result).toBe('Unknown settlement table')
+		})
+
+		it('should generate varied results across multiple rolls', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateSettlement('full'))
 			}
 			expect(results.size).toBeGreaterThan(5)
 		})
