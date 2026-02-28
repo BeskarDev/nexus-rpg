@@ -834,9 +834,8 @@ describe('AutoRoller Generators', () => {
 			for (let i = 0; i < 20; i++) {
 				const result = generateNpc('full')
 				const motivMatch = result.match(/Motivated by (.+?) and (.+?)\. Pitfall/)
-				if (motivMatch) {
-					expect(motivMatch[1]).not.toBe(motivMatch[2])
-				}
+				expect(motivMatch).not.toBeNull()
+				expect(motivMatch![1]).not.toBe(motivMatch![2])
 			}
 		})
 
