@@ -6,7 +6,12 @@ import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 import { theme } from '@site/src/hooks/createTheme'
 import React from 'react'
 import { AutoRoller } from './AutoRoller'
-import { generateSettlement, settlementGroups } from './generators'
+import {
+	generateSettlement,
+	settlementGroups,
+	generateBuilding,
+	buildingGroups,
+} from './generators'
 
 export const SettlementAutoRollerWrapper: React.FC = () => {
 	const customTheme = experimental_extendTheme(theme)
@@ -18,6 +23,11 @@ export const SettlementAutoRollerWrapper: React.FC = () => {
 				title="Settlement Generator"
 				groups={settlementGroups}
 				generateResult={generateSettlement}
+			/>
+			<AutoRoller
+				title="District Buildings Generator"
+				groups={buildingGroups}
+				generateResult={generateBuilding}
 			/>
 		</Experimental_CssVarsProvider>
 	)

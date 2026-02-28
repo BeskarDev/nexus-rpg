@@ -561,3 +561,24 @@ export function generateSettlement(groupId: string): string {
 			return 'Unknown settlement table'
 	}
 }
+
+// ===== BUILDINGS =====
+
+export const buildingGroups = [
+	{ id: 'harbor', label: 'Harbor & Waterfront' },
+	{ id: 'market', label: 'Market & Trade' },
+	{ id: 'temple', label: 'Temple & Sacred' },
+	{ id: 'artisan', label: 'Artisan & Craft' },
+	{ id: 'garrison', label: 'Military & Garrison' },
+	{ id: 'residential', label: 'Residential & Noble' },
+	{ id: 'slum', label: 'Slum & Outskirts' },
+	{ id: 'scholarly', label: 'Scholarly & Cultural' },
+	{ id: 'pleasure', label: 'Pleasure & Entertainment' },
+	{ id: 'foreign', label: 'Foreign Quarter' },
+]
+
+export function generateBuilding(groupId: string): string {
+	const buildings = (settlementData.buildings as Record<string, string[]>)[groupId]
+	if (!buildings) return 'Unknown district type'
+	return `Prominent building: ${lc(pick(buildings))}.`
+}

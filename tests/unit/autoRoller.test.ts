@@ -16,6 +16,7 @@ import {
 	generateQuest,
 	generateNpc,
 	generateSettlement,
+	generateBuilding,
 	nameGroups,
 	spellGroups,
 	creatureGroups,
@@ -24,6 +25,7 @@ import {
 	questGroups,
 	npcGroups,
 	settlementGroups,
+	buildingGroups,
 } from '../../src/components/AutoRoller/generators'
 
 describe('AutoRoller Data Integrity', () => {
@@ -984,6 +986,81 @@ describe('AutoRoller Generators', () => {
 			const results = new Set<string>()
 			for (let i = 0; i < 30; i++) {
 				results.add(generateSettlement('full'))
+			}
+			expect(results.size).toBeGreaterThan(5)
+		})
+	})
+
+	describe('Building Data', () => {
+		const districtTypes = [
+			'harbor', 'market', 'temple', 'artisan', 'garrison',
+			'residential', 'slum', 'scholarly', 'pleasure', 'foreign',
+		]
+
+		it('should have 10 district building types', () => {
+			expect(Object.keys(settlementData.buildings)).toHaveLength(10)
+		})
+
+		it('should have 20 building entries per district type', () => {
+			districtTypes.forEach((type) => {
+				expect((settlementData.buildings as Record<string, string[]>)[type]).toHaveLength(20)
+			})
+		})
+
+		it('should have non-empty string entries in all building arrays', () => {
+			districtTypes.forEach((type) => {
+				const arr = (settlementData.buildings as Record<string, string[]>)[type]
+				arr.forEach((entry) => {
+					expect(typeof entry).toBe('string')
+					expect(entry.length).toBeGreaterThan(0)
+				})
+			})
+		})
+	})
+
+	describe('buildingGroups', () => {
+		it('should have 10 building groups', () => {
+			expect(buildingGroups).toHaveLength(10)
+		})
+
+		it('should include all district type groups', () => {
+			const ids = buildingGroups.map((g) => g.id)
+			expect(ids).toContain('harbor')
+			expect(ids).toContain('market')
+			expect(ids).toContain('temple')
+			expect(ids).toContain('artisan')
+			expect(ids).toContain('garrison')
+			expect(ids).toContain('residential')
+			expect(ids).toContain('slum')
+			expect(ids).toContain('scholarly')
+			expect(ids).toContain('pleasure')
+			expect(ids).toContain('foreign')
+		})
+	})
+
+	describe('generateBuilding', () => {
+		it('should generate a building for each district type', () => {
+			const types = [
+				'harbor', 'market', 'temple', 'artisan', 'garrison',
+				'residential', 'slum', 'scholarly', 'pleasure', 'foreign',
+			]
+			types.forEach((type) => {
+				const result = generateBuilding(type)
+				expect(result).toBeTruthy()
+				expect(result.startsWith('Prominent building:')).toBe(true)
+				expect(result.endsWith('.')).toBe(true)
+			})
+		})
+
+		it('should return error for unknown district type', () => {
+			const result = generateBuilding('unknown')
+			expect(result).toBe('Unknown district type')
+		})
+
+		it('should generate varied results across multiple rolls', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateBuilding('harbor'))
 			}
 			expect(results.size).toBeGreaterThan(5)
 		})
