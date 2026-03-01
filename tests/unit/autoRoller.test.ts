@@ -736,6 +736,8 @@ describe('AutoRoller Generators', () => {
 			const result = generateTreasure('valuable')
 			expect(result).toMatch(/\.$/)
 			expect(result).not.toContain('in the form of')
+			// Should use em-dash to separate form from detail (not raw category prefix)
+			expect(result).toMatch(/ — /)
 		})
 
 		it('should generate utility treasure in natural language', () => {

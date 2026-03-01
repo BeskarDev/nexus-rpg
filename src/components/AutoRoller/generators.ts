@@ -607,7 +607,8 @@ function pickMagicUtilityItem(): string {
 	const type = entry.type
 	const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
 
-	// Types with sub-tables get a specific item — return just the item name, no category suffix
+	// Types with sub-tables get a specific item — return just the item name
+	// without the category suffix (e.g., 'Rope' instead of 'Rope (container)')
 	if (subtables && subtables[type]) {
 		return pick(subtables[type])
 	}
@@ -659,11 +660,11 @@ function generateValuable(quality?: number): string {
 		if (details && details.length > 0) {
 			const form = lc(pickField(details, 'form'))
 			const detail = lc(pickField(details, 'detail'))
-			const matStr = material ? `, ${lc(material)}` : ''
-			return `${form} — ${detail}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+			const matSuffix = material ? `, ${lc(material)}` : ''
+			return `${form} — ${detail}${matSuffix}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 		}
-		const matStr = material ? ` (${lc(material)})` : ''
-		return `${lc(type)}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		const matSuffix = material ? ` (${lc(material)})` : ''
+		return `${lc(type)}${matSuffix}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
 
 	if (details && details.length > 0) {
