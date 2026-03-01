@@ -362,6 +362,35 @@ export const treasureGroups = [
 	{ id: 'weapon', label: 'Weapon / Spell Catalyst' },
 ]
 
+const anyOption = { id: 'any', label: 'Any' }
+
+export const treasureSubGroups: Record<string, Array<{ id: string; label: string }>> = {
+	any: [],
+	valuable: [
+		anyOption,
+		...(treasureData.valuables as string[]).map((v) => ({ id: v, label: v })),
+	],
+	utility: [
+		anyOption,
+		...(treasureData.utility as { range: string; type: string }[]).map((u) => ({
+			id: u.type,
+			label: u.type,
+		})),
+	],
+	wearable: [
+		anyOption,
+		...(treasureData.wearableSlots as string[]).map((s) => ({ id: s, label: s })),
+	],
+	armor: [
+		anyOption,
+		...(treasureData.armorShield as string[]).map((a) => ({ id: a, label: a })),
+	],
+	weapon: [
+		anyOption,
+		...(treasureData.weaponCatalyst as string[]).map((w) => ({ id: w, label: w })),
+	],
+}
+
 // Minimum quality tier for each treasure category
 const categoryMinQuality: Record<string, number> = {
 	valuable: 1,
@@ -580,13 +609,21 @@ function generateMagicItemCurse(): string | null {
 }
 
 // Pick a magic utility item type for Q4+ (replaces mundane utility table)
-function pickMagicUtilityItem(): string {
+function pickMagicUtilityItem(forcedType?: string): string {
+	const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
+
+	if (forcedType) {
+		if (subtables && subtables[forcedType]) {
+			return pick(subtables[forcedType])
+		}
+		return forcedType
+	}
+
 	const types = treasureData.magicUtilityTypes as { range: string; type: string }[]
 	if (!types || types.length === 0) return 'Wand'
 
 	const entry = pick(types)
 	const type = entry.type
-	const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
 
 	// Types with sub-tables get a specific item — return just the item name
 	// without the category suffix (e.g., 'Rope' instead of 'Rope (container)')
@@ -599,8 +636,8 @@ function pickMagicUtilityItem(): string {
 }
 
 // Generate a magical utility item (for Q4+ quality)
-function generateMagicUtility(quality: number): string {
-	const itemType = pickMagicUtilityItem()
+function generateMagicUtility(quality: number, forcedType?: string): string {
+	const itemType = pickMagicUtilityItem(forcedType)
 	// Wand/Staff are spell catalysts — use spell-catalyst pricing; everything else is wearable
 	const costCategory: ItemCategory =
 		itemType === 'Wand' || itemType === 'Staff' ? 'spell-catalyst' : 'wearable'
@@ -637,8 +674,8 @@ function getWeaponItemCategory(weaponType: string, weaponName: string): ItemCate
 	return 'one-handed-weapon'
 }
 
-function generateValuable(quality?: number): string {
-	const type = pick(treasureData.valuables)
+function generateValuable(quality?: number, subCategory?: string): string {
+	const type = (subCategory && subCategory !== 'any') ? subCategory : pick(treasureData.valuables)
 	const details = treasureData.valuableDetails[type] as
 		| { form: string; detail: string }[]
 		| undefined
@@ -699,13 +736,24 @@ function formatUtilityDetail(type: string): string {
 	}
 }
 
-function generateUtility(quality?: number): string {
+// Mapping from mundane utility sub-categories to magic utility types (for Q4+)
+const utilityToMagicTypeMap: Record<string, string> = {
+	'Alchemical': 'Alchemical',
+	'Spell Scroll': 'Spell Scroll',
+}
+
+function generateUtility(quality?: number, subCategory?: string): string {
 	// Q4+ utility items use the Magical Utility Items table
 	if (quality && quality >= 4) {
-		return generateMagicUtility(quality)
+		const forcedMagicType = subCategory && subCategory !== 'any'
+			? utilityToMagicTypeMap[subCategory]
+			: undefined
+		return generateMagicUtility(quality, forcedMagicType)
 	}
 
-	const entry = pick(treasureData.utility)
+	const entry = (subCategory && subCategory !== 'any')
+		? { type: subCategory }
+		: pick(treasureData.utility)
 	const type = entry.type
 
 	if (quality) {
@@ -718,8 +766,10 @@ function generateUtility(quality?: number): string {
 	return `${formatUtilityDetail(type)}.`
 }
 
-function generateWearable(quality?: number): string {
-	const slot = pick(treasureData.wearableSlots)
+function generateWearable(quality?: number, subCategory?: string): string {
+	const slot = (subCategory && subCategory !== 'any')
+		? subCategory
+		: pick(treasureData.wearableSlots)
 	const items = treasureData.wearableItems[slot] as string[] | undefined
 	const itemType = items && items.length > 0 ? pick(items) : slot
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
@@ -749,11 +799,14 @@ function generateWearable(quality?: number): string {
 	return `${desc}.`
 }
 
-function generateArmor(quality?: number): string {
+function generateArmor(quality?: number, subCategory?: string): string {
 	let armorList = treasureData.armorShield as string[]
 
-	// Filter to items whose base quality ≤ selected quality
-	if (quality) {
+	if (subCategory && subCategory !== 'any') {
+		// Use the explicitly selected armor/shield type
+		armorList = [subCategory]
+	} else if (quality) {
+		// Filter to items whose base quality ≤ selected quality
 		const filtered = armorList.filter(name => {
 			const info = getArmorInfo(name)
 			return !info || info.quality <= quality
@@ -798,8 +851,10 @@ function generateArmor(quality?: number): string {
 	return `${detailStr}.`
 }
 
-function generateWeapon(quality?: number): string {
-	const type = pick(treasureData.weaponCatalyst)
+function generateWeapon(quality?: number, subCategory?: string): string {
+	const type = (subCategory && subCategory !== 'any')
+		? subCategory
+		: pick(treasureData.weaponCatalyst)
 	const details = treasureData.weaponDetails[type] as
 		| { material: string; form: string; detail: string }[]
 		| undefined
@@ -868,20 +923,20 @@ function generateWeapon(quality?: number): string {
 	return `${lc(type)}.`
 }
 
-export function generateTreasure(groupId: string, quality?: number): string {
+export function generateTreasure(groupId: string, quality?: number, subCategory?: string): string {
 	const category = groupId === 'any' ? rollTreasureType(quality) : groupId
 
 	switch (category) {
 		case 'valuable':
-			return generateValuable(quality)
+			return generateValuable(quality, subCategory)
 		case 'utility':
-			return generateUtility(quality)
+			return generateUtility(quality, subCategory)
 		case 'wearable':
-			return generateWearable(quality)
+			return generateWearable(quality, subCategory)
 		case 'armor':
-			return generateArmor(quality)
+			return generateArmor(quality, subCategory)
 		case 'weapon':
-			return generateWeapon(quality)
+			return generateWeapon(quality, subCategory)
 		default:
 			return 'Unknown treasure type'
 	}
