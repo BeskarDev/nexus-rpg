@@ -13,6 +13,7 @@ import {
 	generateCreature,
 	generateChallenge,
 	generateTreasure,
+	rollTreasureCost,
 	generateQuest,
 	generateNpc,
 	generateSettlement,
@@ -274,6 +275,43 @@ describe('AutoRoller Data Integrity', () => {
 
 		it('should have weapon/catalyst types', () => {
 			expect(treasureData.weaponCatalyst).toHaveLength(12)
+		})
+
+		it('should have 8 cost multipliers for Q1-Q8', () => {
+			expect(treasureData.costMultipliers).toHaveLength(8)
+			expect(treasureData.costMultipliers[0]).toBe(5)
+			expect(treasureData.costMultipliers[7]).toBe(15000)
+		})
+
+		it('should have 9 quality material categories', () => {
+			const categories = Object.keys(treasureData.qualityMaterials)
+			expect(categories).toHaveLength(9)
+			expect(categories).toContain('metalsAndMinerals')
+			expect(categories).toContain('gems')
+			expect(categories).toContain('woodAndPlants')
+			expect(categories).toContain('organics')
+			expect(categories).toContain('textiles')
+			expect(categories).toContain('ceramics')
+			expect(categories).toContain('spicesAndDyes')
+			expect(categories).toContain('grainAndBeverages')
+			expect(categories).toContain('oilAndPerfumes')
+		})
+
+		it('should have 12 entries per quality column in each material category', () => {
+			const materials = treasureData.qualityMaterials as Record<string, Record<string, string[]>>
+			for (const [category, tiers] of Object.entries(materials)) {
+				expect(tiers.low).toHaveLength(12)
+				expect(tiers.medium).toHaveLength(12)
+				expect(tiers.high).toHaveLength(12)
+				expect(tiers.supreme).toHaveLength(12)
+			}
+		})
+
+		it('should have a material map entry for every valuable type', () => {
+			const map = treasureData.valuableMaterialMap as Record<string, string>
+			treasureData.valuables.forEach((type) => {
+				expect(map[type]).toBeDefined()
+			})
 		})
 	})
 
@@ -663,6 +701,65 @@ describe('AutoRoller Generators', () => {
 				results.add(generateTreasure('weapon'))
 			}
 			expect(results.size).toBeGreaterThan(3)
+		})
+
+		it('should include quality and cost when quality is provided', () => {
+			for (let q = 1; q <= 8; q++) {
+				const result = generateTreasure('valuable', q)
+				expect(result).toContain(`Q${q}`)
+				expect(result).toContain('coins')
+			}
+		})
+
+		it('should include material for valuables when quality is provided', () => {
+			for (let i = 0; i < 20; i++) {
+				const result = generateTreasure('valuable', 3)
+				expect(result).toContain('Material:')
+				expect(result).toContain('Q3')
+			}
+		})
+
+		it('should produce different cost ranges for different quality tiers', () => {
+			const q1Costs: number[] = []
+			const q5Costs: number[] = []
+			for (let i = 0; i < 50; i++) {
+				q1Costs.push(rollTreasureCost(1))
+				q5Costs.push(rollTreasureCost(5))
+			}
+			const q1Avg = q1Costs.reduce((a, b) => a + b, 0) / q1Costs.length
+			const q5Avg = q5Costs.reduce((a, b) => a + b, 0) / q5Costs.length
+			// Q1 avg should be ~25, Q5 avg should be ~2500
+			expect(q1Avg).toBeLessThan(50)
+			expect(q5Avg).toBeGreaterThan(500)
+		})
+
+		it('should include quality and cost for non-valuable types when quality is provided', () => {
+			const categories = ['utility', 'wearable', 'armor', 'weapon']
+			for (const cat of categories) {
+				const result = generateTreasure(cat, 4)
+				expect(result).toContain('Q4')
+				expect(result).toContain('coins')
+			}
+		})
+
+		it('should not include quality info when quality is not provided', () => {
+			const result = generateTreasure('valuable')
+			expect(result).not.toContain('coins)')
+		})
+
+		it('rollTreasureCost should return values within expected range', () => {
+			// Q1: 2d4 × 5 = 10-40
+			for (let i = 0; i < 100; i++) {
+				const cost = rollTreasureCost(1)
+				expect(cost).toBeGreaterThanOrEqual(10)
+				expect(cost).toBeLessThanOrEqual(40)
+			}
+			// Q8: 2d4 × 15000 = 30000-120000
+			for (let i = 0; i < 100; i++) {
+				const cost = rollTreasureCost(8)
+				expect(cost).toBeGreaterThanOrEqual(30000)
+				expect(cost).toBeLessThanOrEqual(120000)
+			}
 		})
 	})
 

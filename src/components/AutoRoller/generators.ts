@@ -327,81 +327,149 @@ function rollTreasureType(): string {
 	return 'weapon'
 }
 
-function generateValuable(): string {
+// Roll 2d4 (result: 2-8)
+function roll2d4(): number {
+	return rollDie(4) + rollDie(4)
+}
+
+// Calculate random treasure cost based on quality tier (Q1-Q8)
+export function rollTreasureCost(quality: number): number {
+	const multipliers = treasureData.costMultipliers as number[]
+	const idx = Math.max(0, Math.min(quality - 1, multipliers.length - 1))
+	return roll2d4() * multipliers[idx]
+}
+
+// Map quality tier (1-8) to material column
+function getQualityColumn(quality: number): 'low' | 'medium' | 'high' | 'supreme' {
+	if (quality <= 2) return 'low'
+	if (quality <= 4) return 'medium'
+	if (quality <= 6) return 'high'
+	return 'supreme'
+}
+
+// Pick a quality-appropriate material for a valuable type
+function pickQualityMaterial(valuableType: string, quality: number): string | null {
+	const materialMap = treasureData.valuableMaterialMap as Record<string, string>
+	const tableKey = materialMap[valuableType]
+	if (!tableKey) return null
+
+	const materials = (treasureData.qualityMaterials as Record<string, Record<string, string[]>>)[tableKey]
+	if (!materials) return null
+
+	const column = getQualityColumn(quality)
+	const columnData = materials[column]
+	if (!columnData || columnData.length === 0) return null
+
+	return pick(columnData)
+}
+
+function generateValuable(quality?: number): string {
 	const type = pick(treasureData.valuables)
 	const details = treasureData.valuableDetails[type] as
 		| { form: string; detail: string }[]
 		| undefined
-	if (details && details.length > 0) {
-		const form = pickField(details, 'form')
-		const detail = pickField(details, 'detail')
-		return `${lc(type)} in the form of ${lc(form)} — ${lc(detail)}.`
+	const formDetail = details && details.length > 0
+		? ` in the form of ${lc(pickField(details, 'form'))} — ${lc(pickField(details, 'detail'))}`
+		: ''
+
+	if (quality) {
+		const material = pickQualityMaterial(type, quality)
+		const materialStr = material ? ` Material: ${lc(material)}.` : ''
+		const cost = rollTreasureCost(quality)
+		return `${lc(type)}${formDetail}.${materialStr} (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
-	return `${lc(type)}.`
+	return `${lc(type)}${formDetail}.`
 }
 
-function generateUtility(): string {
+function generateUtility(quality?: number): string {
 	const entry = pick(treasureData.utility)
 	const type = entry.type
 	const details = treasureData.utilityDetails[type] as string[] | undefined
-	if (details && details.length > 0) {
-		return `${lc(type)} — ${lc(pick(details))}.`
+	const desc = details && details.length > 0
+		? `${lc(type)} — ${lc(pick(details))}.`
+		: `${lc(type)}.`
+
+	if (quality) {
+		const cost = rollTreasureCost(quality)
+		return `${desc} (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
-	return `${lc(type)}.`
+	return desc
 }
 
-function generateWearable(): string {
+function generateWearable(quality?: number): string {
 	const slot = pick(treasureData.wearableSlots)
 	const items = treasureData.wearableItems[slot] as string[] | undefined
 	const itemType = items && items.length > 0 ? pick(items) : slot
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
 	const style = pickField(treasureData.wearableDescription, 'style')
 	const material = pickField(treasureData.wearableDescription, 'material')
-	return `${lc(style)} ${lc(material)} ${lc(itemType)} (${lc(slot)}) with ${lc(ornament)} ornament.`
+	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)} (${lc(slot)}) with ${lc(ornament)} ornament.`
+
+	if (quality) {
+		const cost = rollTreasureCost(quality)
+		return `${desc} (Q${quality}, ~${cost.toLocaleString()} coins)`
+	}
+	return desc
 }
 
-function generateArmor(): string {
+function generateArmor(quality?: number): string {
 	const type = pick(treasureData.armorShield)
 	const details = treasureData.armorDetails[type] as
 		| { material: string; form: string; detail: string }[]
 		| undefined
+	let desc: string
 	if (details && details.length > 0) {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+		desc = `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+	} else {
+		desc = `${lc(type)}.`
 	}
-	return `${lc(type)}.`
+
+	if (quality) {
+		const cost = rollTreasureCost(quality)
+		return `${desc} (Q${quality}, ~${cost.toLocaleString()} coins)`
+	}
+	return desc
 }
 
-function generateWeapon(): string {
+function generateWeapon(quality?: number): string {
 	const type = pick(treasureData.weaponCatalyst)
 	const details = treasureData.weaponDetails[type] as
 		| { material: string; form: string; detail: string }[]
 		| undefined
+	let desc: string
 	if (details && details.length > 0) {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+		desc = `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+	} else {
+		desc = `${lc(type)}.`
 	}
-	return `${lc(type)}.`
+
+	if (quality) {
+		const cost = rollTreasureCost(quality)
+		return `${desc} (Q${quality}, ~${cost.toLocaleString()} coins)`
+	}
+	return desc
 }
 
-export function generateTreasure(groupId: string): string {
+export function generateTreasure(groupId: string, quality?: number): string {
 	const category = groupId === 'any' ? rollTreasureType() : groupId
 
 	switch (category) {
 		case 'valuable':
-			return generateValuable()
+			return generateValuable(quality)
 		case 'utility':
-			return generateUtility()
+			return generateUtility(quality)
 		case 'wearable':
-			return generateWearable()
+			return generateWearable(quality)
 		case 'armor':
-			return generateArmor()
+			return generateArmor(quality)
 		case 'weapon':
-			return generateWeapon()
+			return generateWeapon(quality)
 		default:
 			return 'Unknown treasure type'
 	}
