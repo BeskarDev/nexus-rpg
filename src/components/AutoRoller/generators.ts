@@ -620,7 +620,10 @@ function pickMagicUtilityItem(): string {
 // Generate a magical utility item (for Q4+ quality)
 function generateMagicUtility(quality: number): string {
 	const itemType = pickMagicUtilityItem()
-	const cost = rollMagicItemCost(0, quality, 'wearable')
+	// Wand/Staff are spell catalysts — use spell-catalyst pricing; everything else is wearable
+	const costCategory: ItemCategory =
+		itemType === 'Wand' || itemType === 'Staff' ? 'spell-catalyst' : 'wearable'
+	const cost = rollMagicItemCost(0, quality, costCategory)
 	const magicName = generateMagicItemName('utility', itemType)
 	const effect = generateMagicItemEffect()
 	const curse = generateMagicItemCurse()
@@ -687,7 +690,7 @@ function formatUtilityDetail(type: string): string {
 		}
 		case 'Alchemical': {
 			const entry = pick(details as AlchemicalEntry[])
-			return `${lc(entry.effect)} ${lc(entry.form)}, ${lc(entry.delivery)}`
+			return `${lc(entry.effect)} ${lc(entry.form)} (${lc(entry.delivery)})`
 		}
 		case 'Tool': {
 			const entry = pick(details as ToolEntry[])
@@ -720,7 +723,13 @@ function generateUtility(quality?: number): string {
 	const type = entry.type
 
 	if (quality) {
-		// Try to find an actual equipment item for this utility type
+		// Alchemical and Supply always use their sub-table columns for natural descriptions
+		if (type === 'Alchemical' || type === 'Supply') {
+			const desc = formatUtilityDetail(type)
+			const cost = rollTreasureCost(quality)
+			return `${desc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		}
+		// Try to find an actual equipment item for this utility type (Gear, Tool)
 		const item = pickUtilityItem(type, quality)
 		if (item) {
 			// Mundane items have no craftsmanship bonus — show only base cost at exact quality

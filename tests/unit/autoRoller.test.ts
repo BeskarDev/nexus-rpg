@@ -275,7 +275,7 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have weapon/catalyst types', () => {
-			expect(treasureData.weaponCatalyst).toHaveLength(12)
+			expect(treasureData.weaponCatalyst).toHaveLength(10)
 		})
 
 		it('should have 8 cost multipliers for Q1-Q8', () => {
@@ -1040,29 +1040,15 @@ describe('AutoRoller Generators', () => {
 			}
 		})
 
-		it('should show ammo only at its exact quality tier with base cost only', () => {
-			// Arrows (d6) are Q1 at 15 coins — should only appear at Q1
-			// Arrows should NOT appear at Q3 (exact quality: arrows are Q1 only)
-			for (let i = 0; i < 50; i++) {
-				const result = generateTreasure('weapon', 3).toLowerCase()
-				// "arrows (d6)" is the specific item name; must not appear at Q3
-				expect(result).not.toContain('arrows (d6)')
-			}
-
-			// At Q1, arrows should appear with exactly their base cost (no bonus)
-			let foundArrowsAtQ1 = false
-			for (let i = 0; i < 100; i++) {
-				const result = generateTreasure('weapon', 1)
-				if (result.toLowerCase().includes('arrows (d6)')) {
-					foundArrowsAtQ1 = true
-					const match = result.match(/~([\d,]+) coins/)
-					if (match) {
-						const cost = parseInt(match[1].replace(/,/g, ''), 10)
-						expect(cost).toBe(15) // arrows base cost, no bonus added
-					}
-				}
-			}
-			expect(foundArrowsAtQ1).toBe(true)
+		it('should not include Arrows or Bolts in the weapon/catalyst table', () => {
+			// Arrows and Bolts are Supply items, not weapon/catalyst entries
+			expect(treasureData.weaponCatalyst).not.toContain('Arrows')
+			expect(treasureData.weaponCatalyst).not.toContain('Bolts')
+			// Supply sub-table should contain Arrows and Bolts
+			const supply = (treasureData.utilityDetails as Record<string, unknown[]>)['Supply']
+			const items = supply.map((e: unknown) => (e as { item: string }).item)
+			expect(items).toContain('Arrows')
+			expect(items).toContain('Bolts')
 		})
 
 		it('should generate magic utility items at Q4+ with ✦ marker', () => {
