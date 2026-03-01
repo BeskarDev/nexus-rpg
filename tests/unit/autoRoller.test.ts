@@ -896,6 +896,80 @@ describe('AutoRoller Generators', () => {
 			expect(map['Tool']).toBe('Toolkit')
 			expect(map['Supply']).toBe('Supply')
 		})
+
+		it('should show only base cost for utility items at their exact quality tier', () => {
+			// Q1 gear items exist (Rope, Shovel, Oil, Pickaxe, Portable Ram at 10-50 coins)
+			// No bonus should be added — max Q1 gear cost is 50 coins
+			const q1Costs: number[] = []
+			let foundQ1Item = false
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 1)
+				const match = result.match(/~([\d,]+) coins/)
+				if (match && /^[^,]+\. \(Q1,/.test(result)) {
+					// Item-lookup path at Q1 — verify cost is base cost only
+					q1Costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+					foundQ1Item = true
+				}
+			}
+			expect(foundQ1Item).toBe(true)
+			// Q1 gear/supply items cost 5–50 coins; no bonus should be added
+			const maxQ1 = Math.max(...q1Costs)
+			expect(maxQ1).toBeLessThanOrEqual(50)
+		})
+
+		it('should not apply craftsmanship bonus to utility items', () => {
+			// At Q3, equipment items (Luxury Rations=120, Advanced Materials=250, Rope Silk=125)
+			// have fixed costs. If bonus were added, max would be 250 + 2d4×10 = 250+80 = 330.
+			// We verify items only show their true base cost.
+			const q3MaxEquipCost = 250 // max Q3 supply/gear item cost
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 3)
+				const match = result.match(/~([\d,]+) coins/)
+				if (match && /^[^,]+\. \(Q3,/.test(result)) {
+					// Equipment item path (simple name, no leading comma): cost should equal base cost only
+					const cost = parseInt(match[1].replace(/,/g, ''), 10)
+					expect(cost).toBeLessThanOrEqual(q3MaxEquipCost)
+				}
+			}
+		})
+
+		it('should not show low-quality utility items at high quality tiers', () => {
+			// At Q6+, no utility equipment items exist (max is Q5 for Alchemy), so the
+			// item-lookup path should never trigger. All results should be description fallbacks.
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 6)
+				// Item-lookup path produces: "<name>. (Q6, ~cost)" with no leading comma
+				// Description fallback produces: "type, detail. (Q6, ~cost)" with a comma before (Q6
+				const isItemPath = /^[^,]+\. \(Q6,/.test(result)
+				// No utility equipment item has quality 6, so item path should never fire
+				expect(isItemPath).toBe(false)
+			}
+		})
+
+		it('should show ammo only at its exact quality tier with base cost only', () => {
+			// Arrows (d6) are Q1 at 15 coins — should only appear at Q1
+			// Arrows should NOT appear at Q3 (exact quality: arrows are Q1 only)
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('weapon', 3).toLowerCase()
+				// "arrows (d6)" is the specific item name; must not appear at Q3
+				expect(result).not.toContain('arrows (d6)')
+			}
+
+			// At Q1, arrows should appear with exactly their base cost (no bonus)
+			let foundArrowsAtQ1 = false
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('weapon', 1)
+				if (result.toLowerCase().includes('arrows (d6)')) {
+					foundArrowsAtQ1 = true
+					const match = result.match(/~([\d,]+) coins/)
+					if (match) {
+						const cost = parseInt(match[1].replace(/,/g, ''), 10)
+						expect(cost).toBe(15) // arrows base cost, no bonus added
+					}
+				}
+			}
+			expect(foundArrowsAtQ1).toBe(true)
+		})
 	})
 
 	describe('generateQuest', () => {

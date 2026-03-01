@@ -428,14 +428,14 @@ function pickQualityMaterial(valuableType: string, quality: number): string | nu
 }
 
 // Pick a specific weapon from game data matching the type and quality tier
-function pickWeaponItem(weaponType: string, quality: number): { name: string; cost: number } | null {
-	// Ammo types
+function pickWeaponItem(weaponType: string, quality: number): { name: string; cost: number; fixedCost?: boolean } | null {
+	// Ammo types — mundane items, exact quality match only, no craftsmanship bonus
 	if (weaponType === 'Arrows' || weaponType === 'Bolts') {
 		const prefix = weaponType === 'Arrows' ? 'Arrows' : 'Bolts'
-		const ammo = gameEquipment.filter(e => e.name.startsWith(prefix) && parseInt(e.quality, 10) <= quality)
+		const ammo = gameEquipment.filter(e => e.name.startsWith(prefix) && parseInt(e.quality, 10) === quality)
 		if (ammo.length > 0) {
 			const item = pick(ammo)
-			return { name: item.name, cost: parseCost(item.cost) }
+			return { name: item.name, cost: parseCost(item.cost), fixedCost: true }
 		}
 		return null
 	}
@@ -477,6 +477,7 @@ function getArmorInfo(armorName: string): { quality: number; cost: number } | nu
 }
 
 // Pick an actual utility item from equipment data for a utility type
+// Mundane items use exact quality match — they only appear at their correct tier with no craftsmanship bonus
 function pickUtilityItem(utilityType: string, quality: number): { name: string; cost: number } | null {
 	const categoryMap = treasureData.utilityEquipmentMap as Record<string, string> | undefined
 	if (!categoryMap) return null
@@ -485,7 +486,7 @@ function pickUtilityItem(utilityType: string, quality: number): { name: string; 
 	if (!equipCategory) return null
 
 	const matching = gameEquipment.filter(e =>
-		e.category === equipCategory && parseInt(e.quality, 10) <= quality
+		e.category === equipCategory && parseInt(e.quality, 10) === quality
 	)
 
 	if (matching.length === 0) return null
@@ -530,9 +531,8 @@ function generateUtility(quality?: number): string {
 		// Try to find an actual equipment item for this utility type
 		const item = pickUtilityItem(type, quality)
 		if (item) {
-			const bonus = rollTreasureBonus(quality)
-			const total = item.cost + bonus
-			return `${lc(item.name)}. (Q${quality}, ~${total.toLocaleString()} coins)`
+			// Mundane items have no craftsmanship bonus — show only base cost at exact quality
+			return `${lc(item.name)}. (Q${quality}, ~${item.cost.toLocaleString()} coins)`
 		}
 		// No base item (Spell Scroll, Knowledge) — use full multiplier
 		const desc = details && details.length > 0
@@ -612,6 +612,10 @@ function generateWeapon(quality?: number): string {
 		const weaponItem = pickWeaponItem(type, quality)
 
 		if (weaponItem) {
+			if (weaponItem.fixedCost) {
+				// Ammo — mundane, no craftsmanship bonus, show only base cost
+				return `${lc(weaponItem.name)}. (Q${quality}, ~${weaponItem.cost.toLocaleString()} coins)`
+			}
 			const bonus = rollTreasureBonus(quality)
 			const total = weaponItem.cost + bonus
 			if (details && details.length > 0) {
