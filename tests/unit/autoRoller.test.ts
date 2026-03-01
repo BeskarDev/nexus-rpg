@@ -1148,17 +1148,18 @@ describe('AutoRoller Generators', () => {
 			let foundCurse = false
 			for (let i = 0; i < 200; i++) {
 				const result = generateTreasure('utility', 6)
-				if (result.includes('[')) {
+				if (result.includes('cursed:')) {
 					foundCurse = true
 					break
 				}
 			}
-			// With 1/3 chance of being cursed, 200 tries should find at least one
+			// Curse status table has 4/12 cursed entries, 200 tries should find at least one
 			expect(foundCurse).toBe(true)
 		})
 
 		it('should include magic item effects in the output', () => {
-			const effectTypes = ['empowerment', 'restoration', 'manipulation', 'augmentation', 'suppression', 'generation', 'erasure', 'alteration', 'movement', 'sealing', 'revelation', 'concealment']
+			const effects = treasureData.magicItemEffects as { effectType: string }[]
+			const effectTypes = effects.map(e => e.effectType.toLowerCase())
 			let foundEffect = false
 			for (let i = 0; i < 50; i++) {
 				const result = generateTreasure('utility', 4).toLowerCase()
