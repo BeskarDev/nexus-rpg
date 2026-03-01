@@ -350,7 +350,13 @@ function getQualityColumn(quality: number): 'low' | 'medium' | 'high' | 'supreme
 // Pick a quality-appropriate material for a valuable type
 function pickQualityMaterial(valuableType: string, quality: number): string | null {
 	const materialMap = treasureData.valuableMaterialMap as Record<string, string>
-	const tableKey = materialMap[valuableType]
+	let tableKey = materialMap[valuableType]
+
+	// Raw Metal / Timber spans two material categories — pick one randomly
+	if (valuableType === 'Raw Metal / Timber') {
+		tableKey = Math.random() < 0.5 ? 'metalsAndMinerals' : 'woodAndPlants'
+	}
+
 	if (!tableKey) return null
 
 	const materials = (treasureData.qualityMaterials as Record<string, Record<string, string[]>>)[tableKey]

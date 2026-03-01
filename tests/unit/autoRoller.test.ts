@@ -728,9 +728,11 @@ describe('AutoRoller Generators', () => {
 			}
 			const q1Avg = q1Costs.reduce((a, b) => a + b, 0) / q1Costs.length
 			const q5Avg = q5Costs.reduce((a, b) => a + b, 0) / q5Costs.length
-			// Q1 avg should be ~25, Q5 avg should be ~2500
-			expect(q1Avg).toBeLessThan(50)
-			expect(q5Avg).toBeGreaterThan(500)
+			// Q1 avg should be ~25 (2d4 avg = 5, × 5 = 25), Q5 avg should be ~2500 (5 × 500)
+			expect(q1Avg).toBeGreaterThan(15)
+			expect(q1Avg).toBeLessThan(40)
+			expect(q5Avg).toBeGreaterThan(1500)
+			expect(q5Avg).toBeLessThan(3500)
 		})
 
 		it('should include quality and cost for non-valuable types when quality is provided', () => {
@@ -744,7 +746,7 @@ describe('AutoRoller Generators', () => {
 
 		it('should not include quality info when quality is not provided', () => {
 			const result = generateTreasure('valuable')
-			expect(result).not.toContain('coins)')
+			expect(result).not.toMatch(/\(Q\d/)
 		})
 
 		it('rollTreasureCost should return values within expected range', () => {
