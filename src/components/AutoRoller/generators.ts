@@ -609,7 +609,12 @@ function generateMagicUtility(quality: number): string {
 	const effect = generateMagicItemEffect()
 	const curse = generateMagicItemCurse()
 
-	let result = `✦ "${capitalize(magicName)}". Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+	// For types with a utility sub-table (Alchemical, Spell Scroll), include their
+	// physical description after an em-dash, using independently-rolled columns
+	const utilityDesc =
+		treasureData.utilityDetails[itemType] != null ? ` — ${formatUtilityDetail(itemType)}` : ''
+
+	let result = `✦ "${capitalize(magicName)}"${utilityDesc}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 	if (curse) result += ` [${curse}]`
 	return result
 }
@@ -666,28 +671,28 @@ function formatUtilityDetail(type: string): string {
 
 	switch (type) {
 		case 'Gear': {
-			const entry = pick(details as GearEntry[])
-			return `${lc(entry.item)} (${lc(entry.style)}, ${lc(entry.trait)})`
+			const d = details as GearEntry[]
+			return `${lc(pickField(d, 'item'))} (${lc(pickField(d, 'style'))}, ${lc(pickField(d, 'trait'))})`
 		}
 		case 'Alchemical': {
-			const entry = pick(details as AlchemicalEntry[])
-			return `${lc(entry.effect)} ${lc(entry.form)} (${lc(entry.delivery)})`
+			const d = details as AlchemicalEntry[]
+			return `${lc(pickField(d, 'effect'))} ${lc(pickField(d, 'form'))} (${lc(pickField(d, 'delivery'))})`
 		}
 		case 'Tool': {
-			const entry = pick(details as ToolEntry[])
-			return `${lc(entry.item)} (${lc(entry.style)}, ${lc(entry.trait)})`
+			const d = details as ToolEntry[]
+			return `${lc(pickField(d, 'item'))} (${lc(pickField(d, 'style'))}, ${lc(pickField(d, 'trait'))})`
 		}
 		case 'Supply': {
-			const entry = pick(details as SupplyEntry[])
-			return `${lc(entry.item)} (${lc(entry.style)}, ${lc(entry.trait)})`
+			const d = details as SupplyEntry[]
+			return `${lc(pickField(d, 'item'))} (${lc(pickField(d, 'style'))}, ${lc(pickField(d, 'trait'))})`
 		}
 		case 'Spell Scroll': {
-			const entry = pick(details as SpellScrollEntry[])
-			return `spell scroll with ${lc(entry.script)}, ${lc(entry.binding)}`
+			const d = details as SpellScrollEntry[]
+			return `spell scroll with ${lc(pickField(d, 'script'))}, ${lc(pickField(d, 'binding'))}`
 		}
 		case 'Knowledge': {
-			const entry = pick(details as KnowledgeEntry[])
-			return `${lc(entry.format)} on ${lc(entry.topic)} (${lc(entry.style)})`
+			const d = details as KnowledgeEntry[]
+			return `${lc(pickField(d, 'format'))} on ${lc(pickField(d, 'topic'))} (${lc(pickField(d, 'style'))})`
 		}
 		default:
 			return lc(type)

@@ -896,18 +896,18 @@ describe('AutoRoller Generators', () => {
 			expect(result).not.toContain('Base:')
 		})
 
-		it('should show cost for utility with equipment items when quality is provided', () => {
-			let foundEquipmentItem = false
+		it('should show cost for utility with sub-table descriptions when quality is provided', () => {
+			let foundFormattedItem = false
 			for (let i = 0; i < 30; i++) {
 				const result = generateTreasure('utility', 3)
 				expect(result).toContain('Q3')
 				expect(result).not.toContain('Base:')
-				// Equipment items produce simple names: "pickaxe. (Q3, ~X coins)"
-				// Non-equipment (Spell Scroll, Knowledge) produce: "spell scroll, detail. (Q3, ~X coins)"
-				if (/^[^,]+\. \(Q/.test(result)) foundEquipmentItem = true
+				// All utility types use sub-table columns (e.g., "rope (hemp, durable)" or
+				// "papyrus scroll on plants (field notes)") — never bare type names
+				if (result.includes('(') && result.includes(')')) foundFormattedItem = true
 			}
-			// At least some utility types (Gear, Alchemy, Tool, Supply) should have base items
-			expect(foundEquipmentItem).toBe(true)
+			// Every utility type should produce a formatted description with parentheses
+			expect(foundFormattedItem).toBe(true)
 		})
 
 		it('should filter armor by quality tier', () => {
@@ -1132,6 +1132,39 @@ describe('AutoRoller Generators', () => {
 				results.add(generateTreasure('utility', 5))
 			}
 			expect(results.size).toBeGreaterThan(10)
+		})
+
+		it('should include independent sub-table descriptions for Alchemical/Spell Scroll magic utility items', () => {
+			// Alchemical items at Q4+ should include a physical description from the sub-table
+			// e.g., ✦ "Crimson Vial" — healing vial (ingested). Effect: ...
+			let foundAlchemicalDesc = false
+			let foundScrollDesc = false
+			for (let i = 0; i < 200; i++) {
+				const result = generateTreasure('utility', 4)
+				// Alchemical Q4+ items should have an em-dash with the alchemical description
+				if (result.startsWith('✦') && result.includes(' — ') && result.includes('(') && !foundAlchemicalDesc) {
+					foundAlchemicalDesc = true
+				}
+				if (foundAlchemicalDesc && foundScrollDesc) break
+				if (result.startsWith('✦') && result.includes('spell scroll with')) {
+					foundScrollDesc = true
+				}
+				if (foundAlchemicalDesc && foundScrollDesc) break
+			}
+			// Over 200 rolls, we should see at least alchemical items with descriptions
+			expect(foundAlchemicalDesc).toBe(true)
+		})
+
+		it('should use independent column rolling for utility sub-tables', () => {
+			// Running many rolls should produce diverse combinations across columns
+			// (item/style/trait should vary independently — not always match same row)
+			const results = new Set<string>()
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 2)
+				results.add(result)
+			}
+			// 50 rolls should produce well more than 5 distinct results if columns roll independently
+			expect(results.size).toBeGreaterThan(5)
 		})
 
 		it('should sometimes include curse information for magic items', () => {
