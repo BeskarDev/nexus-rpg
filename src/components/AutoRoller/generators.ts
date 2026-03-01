@@ -495,6 +495,99 @@ function pickUtilityItem(utilityType: string, quality: number): { name: string; 
 	return { name: item.name, cost: parseCost(item.cost) }
 }
 
+// ===== MAGIC ITEM HELPERS (Q4+) =====
+
+// Magic item name tables
+interface MagicNameEntry {
+	adjective1: string
+	noun1: string
+	adjective2: string
+	noun2: string
+}
+
+// Generate a magic item name using naming patterns and category-specific name tables
+function generateMagicItemName(category: 'utility' | 'wearable' | 'armor' | 'weapon' | 'spellCatalyst', baseItem: string): string {
+	const patterns = treasureData.magicItemNamingPatterns as string[]
+	const nameTable = (treasureData.magicItemNames as Record<string, MagicNameEntry[]>)[category]
+	if (!patterns || !nameTable || nameTable.length === 0) return baseItem
+
+	const pattern = pick(patterns)
+	const adjective = pickField(nameTable, Math.random() < 0.5 ? 'adjective1' : 'adjective2')
+	const noun = pickField(nameTable, Math.random() < 0.5 ? 'noun1' : 'noun2')
+
+	return pattern
+		.replace('[Adjective]', adjective)
+		.replace('[Noun]', noun)
+		.replace('[Item]', baseItem)
+}
+
+// Generate a magic item effect description
+function generateMagicItemEffect(): string {
+	const effects = treasureData.magicItemEffects as { effectType: string; function: string; trigger: string; scope: string }[]
+	if (!effects || effects.length === 0) return ''
+
+	const effect = pick(effects)
+	return `${lc(effect.effectType)} (${lc(effect.trigger)}, ${lc(effect.scope)})`
+}
+
+// Generate a magic item curse check
+function generateMagicItemCurse(): string | null {
+	const statuses = treasureData.magicItemCurseStatus as { status: string; description: string }[]
+	if (!statuses || statuses.length === 0) return null
+
+	const status = pick(statuses)
+	if (status.status === 'Not Cursed') return null
+
+	if (status.status === 'Definitely Cursed' || status.status === 'Mildly Cursed' || status.status === 'Deceptively Cursed') {
+		const curseEffects = treasureData.magicItemCurseEffects as { curseType: string; effect: string; trigger: string }[]
+		const signs = treasureData.magicItemCurseSigns as string[]
+		if (curseEffects && curseEffects.length > 0 && signs && signs.length > 0) {
+			const curse = pick(curseEffects)
+			const sign = pick(signs)
+			return `${lc(status.status)}: ${lc(curse.curseType)} — ${lc(curse.effect)} (${lc(curse.trigger)}). sign: ${lc(sign)}`
+		}
+	}
+
+	return `${lc(status.status)}: ${lc(status.description)}`
+}
+
+// Pick a magic utility item type for Q4+ (replaces mundane utility table)
+function pickMagicUtilityItem(): string {
+	const types = treasureData.magicUtilityTypes as { range: string; type: string }[]
+	if (!types || types.length === 0) return 'Wand'
+
+	const entry = pick(types)
+	const type = entry.type
+	const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
+
+	// Types with sub-tables get a specific item
+	if (subtables && subtables[type]) {
+		return `${pick(subtables[type])} (${lc(type)})`
+	}
+
+	// Types without sub-tables (Alchemical, Spell Scroll, Wand, Staff) use their name directly
+	return type
+}
+
+// Generate a magical utility item (for Q4+ quality)
+function generateMagicUtility(quality: number): string {
+	const itemType = pickMagicUtilityItem()
+	const cost = rollTreasureCost(quality)
+	const magicName = generateMagicItemName('utility', itemType)
+	const effect = generateMagicItemEffect()
+	const curse = generateMagicItemCurse()
+
+	let result = `✦ ${lc(magicName)} — ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+	if (curse) result += ` [${curse}]`
+	return result
+}
+
+// Determine the name category for weapon/spell catalyst
+function getWeaponNameCategory(weaponType: string): 'weapon' | 'spellCatalyst' {
+	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') return 'spellCatalyst'
+	return 'weapon'
+}
+
 function generateValuable(quality?: number): string {
 	const type = pick(treasureData.valuables)
 	const details = treasureData.valuableDetails[type] as
@@ -523,6 +616,11 @@ function generateValuable(quality?: number): string {
 }
 
 function generateUtility(quality?: number): string {
+	// Q4+ utility items use the Magical Utility Items table
+	if (quality && quality >= 4) {
+		return generateMagicUtility(quality)
+	}
+
 	const entry = pick(treasureData.utility)
 	const type = entry.type
 	const details = treasureData.utilityDetails[type] as string[] | undefined
@@ -554,16 +652,27 @@ function generateWearable(quality?: number): string {
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
 	const style = pickField(treasureData.wearableDescription, 'style')
 	const material = pickField(treasureData.wearableDescription, 'material')
-	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)}, ${lc(ornament)} ornament (${lc(slot)}).`
+	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)}, ${lc(ornament)} ornament (${lc(slot)})`
 
 	if (quality) {
 		const baseCosts = treasureData.wearableBaseCosts as Record<string, number> | undefined
 		const baseCost = baseCosts?.[slot] ?? 50
 		const bonus = rollTreasureBonus(quality)
 		const total = baseCost + bonus
-		return `${desc} (Q${quality}, ~${total.toLocaleString()} coins)`
+
+		// Q4+ wearables gain magic item properties
+		if (quality >= 4) {
+			const magicName = generateMagicItemName('wearable', itemType)
+			const effect = generateMagicItemEffect()
+			const curse = generateMagicItemCurse()
+			let result = `✦ ${lc(magicName)}, ${lc(style)} ${lc(material)}, ${lc(ornament)} ornament (${lc(slot)}) — ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+			if (curse) result += ` [${curse}]`
+			return result
+		}
+
+		return `${desc}. (Q${quality}, ~${total.toLocaleString()} coins)`
 	}
-	return desc
+	return `${desc}.`
 }
 
 function generateArmor(quality?: number): string {
@@ -597,6 +706,17 @@ function generateArmor(quality?: number): string {
 		const baseCost = info?.cost ?? 0
 		const bonus = rollTreasureBonus(quality)
 		const total = baseCost + bonus
+
+		// Q4+ armor/shields gain magic item properties
+		if (quality >= 4) {
+			const magicName = generateMagicItemName('armor', type)
+			const effect = generateMagicItemEffect()
+			const curse = generateMagicItemCurse()
+			let result = `✦ ${lc(magicName)}, ${detailStr} — ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+			if (curse) result += ` [${curse}]`
+			return result
+		}
+
 		return `${lc(type)}, ${detailStr}. (Q${quality}, ~${total.toLocaleString()} coins)`
 	}
 	return `${detailStr}.`
@@ -610,6 +730,7 @@ function generateWeapon(quality?: number): string {
 
 	if (quality) {
 		const weaponItem = pickWeaponItem(type, quality)
+		const nameCategory = getWeaponNameCategory(type)
 
 		if (weaponItem) {
 			if (weaponItem.fixedCost) {
@@ -618,6 +739,23 @@ function generateWeapon(quality?: number): string {
 			}
 			const bonus = rollTreasureBonus(quality)
 			const total = weaponItem.cost + bonus
+
+			// Q4+ weapons gain magic item properties
+			if (quality >= 4) {
+				const magicName = generateMagicItemName(nameCategory, weaponItem.name)
+				const effect = generateMagicItemEffect()
+				const curse = generateMagicItemCurse()
+				let detailStr = ''
+				if (details && details.length > 0) {
+					const material = pickField(details, 'material')
+					const detail = pickField(details, 'detail')
+					detailStr = `, ${lc(material)}, ${lc(detail)}`
+				}
+				let result = `✦ ${lc(magicName)}${detailStr} — ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+				if (curse) result += ` [${curse}]`
+				return result
+			}
+
 			if (details && details.length > 0) {
 				const material = pickField(details, 'material')
 				const detail = pickField(details, 'detail')

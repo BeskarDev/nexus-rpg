@@ -314,6 +314,94 @@ describe('AutoRoller Data Integrity', () => {
 				expect(map[type]).toBeDefined()
 			})
 		})
+
+		it('should have magic utility types with 10 entries', () => {
+			const types = treasureData.magicUtilityTypes as { range: string; type: string }[]
+			expect(types).toBeDefined()
+			expect(types).toHaveLength(10)
+			const typeNames = types.map(t => t.type)
+			expect(typeNames).toContain('Alchemical')
+			expect(typeNames).toContain('Spell Scroll')
+			expect(typeNames).toContain('Ammo')
+			expect(typeNames).toContain('Wand')
+			expect(typeNames).toContain('Staff')
+			expect(typeNames).toContain('Everyday Object')
+			expect(typeNames).toContain('Container')
+			expect(typeNames).toContain('Instrument')
+			expect(typeNames).toContain('Body Part')
+			expect(typeNames).toContain('Natural')
+		})
+
+		it('should have magic utility subtables for non-trivial types', () => {
+			const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
+			expect(subtables).toBeDefined()
+			expect(subtables['Ammo'].length).toBe(6)
+			expect(subtables['Everyday Object'].length).toBeGreaterThanOrEqual(20)
+			expect(subtables['Container'].length).toBeGreaterThanOrEqual(12)
+			expect(subtables['Instrument'].length).toBeGreaterThanOrEqual(6)
+			expect(subtables['Body Part'].length).toBeGreaterThanOrEqual(12)
+			expect(subtables['Natural'].length).toBeGreaterThanOrEqual(8)
+		})
+
+		it('should have 4 magic item naming patterns', () => {
+			const patterns = treasureData.magicItemNamingPatterns as string[]
+			expect(patterns).toBeDefined()
+			expect(patterns).toHaveLength(4)
+			patterns.forEach(p => {
+				expect(p).toContain('[Item]')
+			})
+		})
+
+		it('should have magic item name tables for all categories', () => {
+			const names = treasureData.magicItemNames as Record<string, { adjective1: string; noun1: string; adjective2: string; noun2: string }[]>
+			expect(names).toBeDefined()
+			const categories = ['utility', 'wearable', 'armor', 'weapon', 'spellCatalyst']
+			categories.forEach(cat => {
+				expect(names[cat]).toBeDefined()
+				expect(names[cat]).toHaveLength(20)
+				names[cat].forEach(entry => {
+					expect(entry.adjective1).toBeTruthy()
+					expect(entry.noun1).toBeTruthy()
+					expect(entry.adjective2).toBeTruthy()
+					expect(entry.noun2).toBeTruthy()
+				})
+			})
+		})
+
+		it('should have 12 magic item effects', () => {
+			const effects = treasureData.magicItemEffects as { effectType: string; function: string; trigger: string; scope: string }[]
+			expect(effects).toBeDefined()
+			expect(effects).toHaveLength(12)
+			effects.forEach(e => {
+				expect(e.effectType).toBeTruthy()
+				expect(e.function).toBeTruthy()
+				expect(e.trigger).toBeTruthy()
+				expect(e.scope).toBeTruthy()
+			})
+		})
+
+		it('should have 12 magic item curse statuses', () => {
+			const statuses = treasureData.magicItemCurseStatus as { status: string; description: string }[]
+			expect(statuses).toBeDefined()
+			expect(statuses).toHaveLength(12)
+		})
+
+		it('should have 6 magic item curse signs', () => {
+			const signs = treasureData.magicItemCurseSigns as string[]
+			expect(signs).toBeDefined()
+			expect(signs).toHaveLength(6)
+		})
+
+		it('should have 12 magic item curse effects', () => {
+			const curses = treasureData.magicItemCurseEffects as { curseType: string; effect: string; trigger: string }[]
+			expect(curses).toBeDefined()
+			expect(curses).toHaveLength(12)
+			curses.forEach(c => {
+				expect(c.curseType).toBeTruthy()
+				expect(c.effect).toBeTruthy()
+				expect(c.trigger).toBeTruthy()
+			})
+		})
 	})
 
 	describe('Quest Data', () => {
@@ -969,6 +1057,124 @@ describe('AutoRoller Generators', () => {
 				}
 			}
 			expect(foundArrowsAtQ1).toBe(true)
+		})
+
+		it('should generate magic utility items at Q4+ with ✦ marker', () => {
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('utility', 4)
+				expect(result).toContain('✦')
+				expect(result).toContain('Q4')
+				expect(result).toContain('coins')
+				// Should include an effect description
+				expect(result).toContain('—')
+			}
+		})
+
+		it('should generate mundane utility items at Q1-Q3 without ✦ marker', () => {
+			for (let q = 1; q <= 3; q++) {
+				for (let i = 0; i < 10; i++) {
+					const result = generateTreasure('utility', q)
+					expect(result).not.toContain('✦')
+					expect(result).toContain(`Q${q}`)
+				}
+			}
+		})
+
+		it('should generate magic wearables at Q4+ with ✦ marker and effect', () => {
+			for (let i = 0; i < 20; i++) {
+				const result = generateTreasure('wearable', 5)
+				expect(result).toContain('✦')
+				expect(result).toContain('Q5')
+				expect(result).toContain('coins')
+				expect(result).toContain('—')
+			}
+		})
+
+		it('should generate mundane wearables at Q1-Q3 without ✦ marker', () => {
+			for (let q = 1; q <= 3; q++) {
+				const result = generateTreasure('wearable', q)
+				expect(result).not.toContain('✦')
+				expect(result).toContain('ornament')
+			}
+		})
+
+		it('should generate magic armor at Q4+ with ✦ marker and effect', () => {
+			for (let i = 0; i < 20; i++) {
+				const result = generateTreasure('armor', 4)
+				expect(result).toContain('✦')
+				expect(result).toContain('Q4')
+				expect(result).toContain('coins')
+				expect(result).toContain('—')
+			}
+		})
+
+		it('should generate mundane armor at Q1-Q3 without ✦ marker', () => {
+			for (let q = 1; q <= 3; q++) {
+				const result = generateTreasure('armor', q)
+				expect(result).not.toContain('✦')
+			}
+		})
+
+		it('should generate magic weapons at Q4+ with ✦ marker and effect', () => {
+			let foundMagicWeapon = false
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('weapon', 4)
+				if (result.includes('✦')) {
+					foundMagicWeapon = true
+					expect(result).toContain('Q4')
+					expect(result).toContain('coins')
+					expect(result).toContain('—')
+				}
+			}
+			expect(foundMagicWeapon).toBe(true)
+		})
+
+		it('should generate mundane weapons at Q1-Q3 without ✦ marker', () => {
+			for (let i = 0; i < 20; i++) {
+				const result = generateTreasure('weapon', 3)
+				expect(result).not.toContain('✦')
+			}
+		})
+
+		it('should produce diverse magic utility items at Q4+', () => {
+			const results = new Set<string>()
+			for (let i = 0; i < 30; i++) {
+				results.add(generateTreasure('utility', 5))
+			}
+			expect(results.size).toBeGreaterThan(10)
+		})
+
+		it('should sometimes include curse information for magic items', () => {
+			let foundCurse = false
+			for (let i = 0; i < 200; i++) {
+				const result = generateTreasure('utility', 6)
+				if (result.includes('[')) {
+					foundCurse = true
+					break
+				}
+			}
+			// With 1/3 chance of being cursed, 200 tries should find at least one
+			expect(foundCurse).toBe(true)
+		})
+
+		it('should include magic item effects in the output', () => {
+			const effectTypes = ['empowerment', 'restoration', 'manipulation', 'augmentation', 'suppression', 'generation', 'erasure', 'alteration', 'movement', 'sealing', 'revelation', 'concealment']
+			let foundEffect = false
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 4).toLowerCase()
+				if (effectTypes.some(e => result.includes(e))) {
+					foundEffect = true
+					break
+				}
+			}
+			expect(foundEffect).toBe(true)
+		})
+
+		it('should not generate magic items for valuables regardless of quality', () => {
+			for (let i = 0; i < 20; i++) {
+				const result = generateTreasure('valuable', 6)
+				expect(result).not.toContain('✦')
+			}
 		})
 	})
 
