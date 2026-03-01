@@ -626,7 +626,7 @@ describe('AutoRoller Generators', () => {
 
 		it('should generate armor treasure in natural language', () => {
 			const result = generateTreasure('armor')
-			expect(result).toMatch(/.+ in .+ style with/)
+			expect(result).toMatch(/.+ — .+\./)
 		})
 
 		it('should generate weapon treasure in natural language', () => {

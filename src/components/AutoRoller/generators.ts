@@ -335,7 +335,7 @@ function generateValuable(): string {
 	if (details && details.length > 0) {
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(type)} in the form of ${lc(form)} with ${lc(detail)}.`
+		return `${lc(type)} in the form of ${lc(form)} — ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
@@ -369,7 +369,7 @@ function generateArmor(): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
+		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
@@ -383,7 +383,7 @@ function generateWeapon(): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
+		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
