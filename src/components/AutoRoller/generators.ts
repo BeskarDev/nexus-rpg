@@ -635,6 +635,23 @@ function pickMagicUtilityItem(forcedType?: string): string {
 	return type
 }
 
+// Generate a magical knowledge item (for Q4+ quality with Knowledge sub-category)
+function generateMagicKnowledge(quality: number): string {
+	const d = treasureData.utilityDetails['Knowledge'] as KnowledgeEntry[]
+	const entry = pick(d)
+	const format = entry.format
+	const topic = entry.topic
+	const style = entry.style
+	const cost = rollMagicItemCost(0, quality, 'wearable')
+	const magicName = generateMagicItemName('utility', format)
+	const effect = generateMagicItemEffect()
+	const curse = generateMagicItemCurse()
+	const desc = ` — ${lc(format)} on ${lc(topic)} (${lc(style)})`
+	let result = `✦ "${capitalize(magicName)}"${desc}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+	if (curse) result += ` [${curse}]`
+	return result
+}
+
 // Generate a magical utility item (for Q4+ quality)
 function generateMagicUtility(quality: number, forcedType?: string): string {
 	const itemType = pickMagicUtilityItem(forcedType)
@@ -642,11 +659,28 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 	const costCategory: ItemCategory =
 		itemType === 'Wand' || itemType === 'Staff' ? 'spell-catalyst' : 'wearable'
 	const cost = rollMagicItemCost(0, quality, costCategory)
-	const magicName = generateMagicItemName('utility', itemType)
 	const effect = generateMagicItemEffect()
 	const curse = generateMagicItemCurse()
 
-	// For types with a utility sub-table (Alchemical, Spell Scroll), include their
+	// For Alchemical: use the specific form (e.g. "Vial", "Dropper") as the magic item name base
+	if (itemType === 'Alchemical') {
+		const d = treasureData.utilityDetails['Alchemical'] as AlchemicalEntry[]
+		if (d && d.length > 0) {
+			const entry = pick(d)
+			const form = entry.form
+			const effectName = entry.effect
+			const delivery = entry.delivery
+			const magicName = generateMagicItemName('utility', form)
+			const desc = ` — ${lc(effectName)} ${lc(form)} (${lc(delivery)})`
+			let result = `✦ "${capitalize(magicName)}"${desc}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+			if (curse) result += ` [${curse}]`
+			return result
+		}
+	}
+
+	const magicName = generateMagicItemName('utility', itemType)
+
+	// For types with a utility sub-table (Spell Scroll), include their
 	// physical description after an em-dash, using independently-rolled columns
 	const utilityDesc =
 		treasureData.utilityDetails[itemType] != null ? ` — ${formatUtilityDetail(itemType)}` : ''
@@ -745,6 +779,10 @@ const utilityToMagicTypeMap: Record<string, string> = {
 function generateUtility(quality?: number, subCategory?: string): string {
 	// Q4+ utility items use the Magical Utility Items table
 	if (quality && quality >= 4) {
+		// Knowledge items retain their category at higher quality
+		if (subCategory === 'Knowledge') {
+			return generateMagicKnowledge(quality)
+		}
 		const forcedMagicType = subCategory && subCategory !== 'any'
 			? utilityToMagicTypeMap[subCategory]
 			: undefined
@@ -819,11 +857,13 @@ function generateArmor(quality?: number, subCategory?: string): string {
 		| { material: string; form: string; detail: string }[]
 		| undefined
 	let detailStr: string
+	let armorFormName = type  // specific form used as base for magic item name
 	if (details && details.length > 0) {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
 		detailStr = `${lc(material)} ${lc(form)}, ${lc(detail)}`
+		armorFormName = form
 	} else {
 		detailStr = lc(type)
 	}
@@ -836,7 +876,7 @@ function generateArmor(quality?: number, subCategory?: string): string {
 		if (quality >= 4) {
 			const itemCat = getArmorItemCategory(type)
 			const total = rollMagicItemCost(baseCost, quality, itemCat)
-			const magicName = generateMagicItemName('armor', type)
+			const magicName = generateMagicItemName('armor', armorFormName)
 			const effect = generateMagicItemEffect()
 			const curse = generateMagicItemCurse()
 			let result = `✦ "${capitalize(magicName)}" — ${detailStr}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
