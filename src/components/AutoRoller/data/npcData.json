@@ -51,7 +51,7 @@
 		{ "motivation": "Value: Legacy", "appeal": "Frame the request as part of a story worth telling about them" }
 	],
 	"pitfalls": [
-		{ "pitfall": "Threat: Past crimes", "trigger": "Implying you know something they want hidden, even subtly" },
+		{ "pitfall": "Threat: Past crimes", "trigger": "Implying you know something they want hidden, even subtly. It reads as blackmail" },
 		{ "pitfall": "Threat: Rival leverage", "trigger": "Mentioning their rivals in a way that sounds like a deal or a warning" },
 		{ "pitfall": "Insult: Underestimating them", "trigger": "Suggesting the task is easy or beneath their usual standard" },
 		{ "pitfall": "Insult: Doubting their word", "trigger": "Questioning their honesty or asking for excessive proof" },
@@ -70,7 +70,7 @@
 		{ "pitfall": "Unwanted witness: Unexpected company", "trigger": "Bringing someone along the NPC didn't expect and doesn't trust" },
 		{ "pitfall": "Revealed alternatives: You tried someone else", "trigger": "Letting slip that you approached another party before coming to them" },
 		{ "pitfall": "Uncomfortable truth: Pointing out their weakness", "trigger": "Highlighting a vulnerability in a way that feels like gloating rather than honesty" },
-		{ "pitfall": "Social contract: Breaking an implicit rule", "trigger": "Violating an unspoken expectation of the setting" }
+		{ "pitfall": "Social contract: Breaking an implicit rule", "trigger": "Violating an unspoken expectation of the setting, such as speaking out of turn in a formal gathering" }
 	],
 	"visualDistinctiveness": [
 		"a prominent scar across one cheek",

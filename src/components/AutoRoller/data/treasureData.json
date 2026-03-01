@@ -1622,64 +1622,64 @@
 		],
 		"Bow": [
 			{
-				"material": "1",
-				"form": "Wood-carved",
-				"detail": "Shortbow"
+				"material": "Wood-carved",
+				"form": "Shortbow",
+				"detail": "Grip wrapped in tanned leather"
 			},
 			{
-				"material": "2",
-				"form": "Hardwood-carved",
-				"detail": "Recurve bow"
+				"material": "Hardwood-carved",
+				"form": "Recurve bow",
+				"detail": "Limbs etched with runes"
 			},
 			{
-				"material": "3",
-				"form": "Horn-backed",
-				"detail": "Longbow"
+				"material": "Horn-backed",
+				"form": "Longbow",
+				"detail": "Almost silent when drawn"
 			},
 			{
-				"material": "4",
-				"form": "Bone-backed",
-				"detail": "Composite bow"
+				"material": "Bone-backed",
+				"form": "Composite bow",
+				"detail": "Slight crescent to the limbs"
 			},
 			{
-				"material": "5",
-				"form": "Metal-tipped",
-				"detail": "Warbow"
+				"material": "Metal-tipped",
+				"form": "Warbow",
+				"detail": "Tension lines carved into limb"
 			},
 			{
-				"material": "6",
-				"form": "Reinforced wood-core",
-				"detail": "Greatbow"
+				"material": "Reinforced wood-core",
+				"form": "Greatbow",
+				"detail": "Painted motifs along shaft"
 			},
 			{
-				"material": "7",
-				"form": "Wicker-bound",
-				"detail": "Hunting bow"
+				"material": "Wicker-bound",
+				"form": "Hunting bow",
+				"detail": "Slim profile, snug grip"
 			},
 			{
-				"material": "8",
-				"form": "Chitin-backed",
-				"detail": "Reflex bow"
+				"material": "Chitin-backed",
+				"form": "Reflex bow",
+				"detail": "Organic texture, light reflex"
 			},
 			{
-				"material": "9",
-				"form": "Oak-carved",
-				"detail": "Horse bow"
+				"material": "Oak-carved",
+				"form": "Horse bow",
+				"detail": "Light scent of fresh resin"
 			},
 			{
-				"material": "10",
-				"form": "Shell-backed",
-				"detail": "Flatbow"
+				"material": "Shell-backed",
+				"form": "Flatbow",
+				"detail": "Limbs rattle slightly"
 			},
 			{
-				"material": "11",
-				"form": "Thread-woven",
-				"detail": "Siege bow"
+				"material": "Thread-woven",
+				"form": "Siege bow",
+				"detail": "Warm to the touch"
 			},
 			{
-				"material": "12",
-				"form": "Glassy stone-tipped",
-				"detail": "Yew longbow"
+				"material": "Glassy stone-tipped",
+				"form": "Yew longbow",
+				"detail": "Dark, reflective sheen"
 			}
 		],
 		"Brawling": [

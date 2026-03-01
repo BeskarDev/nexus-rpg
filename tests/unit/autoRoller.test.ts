@@ -562,7 +562,7 @@ describe('AutoRoller Generators', () => {
 			const result = generateChallenge('puzzles')
 			expect(result).toBeTruthy()
 			expect(result).toMatch(/.+ puzzle featuring/)
-			expect(result).toContain('interacted with by')
+			expect(result).toContain('solved by')
 			expect(result).toContain('presented as')
 			expect(result).toContain('hints:')
 		})
@@ -626,7 +626,7 @@ describe('AutoRoller Generators', () => {
 
 		it('should generate armor treasure in natural language', () => {
 			const result = generateTreasure('armor')
-			expect(result).toMatch(/.+ in .+ style with/)
+			expect(result).toMatch(/.+ — .+\./)
 		})
 
 		it('should generate weapon treasure in natural language', () => {
@@ -813,7 +813,7 @@ describe('AutoRoller Generators', () => {
 		it('should generate a quick NPC with occupation, visual, and mannerism', () => {
 			const result = generateNpc('quick')
 			expect(result).toBeTruthy()
-			expect(result.startsWith('A ')).toBe(true)
+			expect(result.startsWith('A ') || result.startsWith('An ')).toBe(true)
 			expect(result.endsWith('.')).toBe(true)
 		})
 

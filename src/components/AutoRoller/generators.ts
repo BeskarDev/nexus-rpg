@@ -45,6 +45,12 @@ function capitalize(s: string): string {
 	return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
+// Utility: return "A" or "An" based on the next word's initial letter.
+// Sufficient for NPC data (dispositions/occupations) which have no edge cases.
+function article(nextWord: string): string {
+	return /^[aeiou]/i.test(nextWord) ? 'An' : 'A'
+}
+
 // ===== NAMES =====
 
 export const nameGroups = nameData.cultures.map((c) => ({
@@ -260,7 +266,7 @@ export function generateCreature(groupId: string): string {
 	appearance.push(lc(bodyAttribute))
 	appearance.push(lc(adaption))
 
-	return `${lc(typeName)} with ${appearance.join(', ')}. ${lc(behavior)}, attacks with ${lc(bodyPart)} (${lc(attackMode)}). special: ${lc(deliveryMethod)} ${lc(attackType)}. defense: ${lc(defenseMethod)} against ${lc(defenseType)}. ability: ${lc(trigger)} → ${lc(action)} ${lc(subject)}.`
+	return `${lc(typeName)} with ${appearance.join(', ')}. ${lc(behavior)}, attacks with ${lc(bodyPart)} (${lc(attackMode)}). special: ${lc(attackType)} ${lc(deliveryMethod)}. defense: ${lc(defenseMethod)} against ${lc(defenseType)}. ability: ${lc(trigger)} → ${lc(action)} ${lc(subject)}.`
 }
 
 // ===== CHALLENGES =====
@@ -280,7 +286,7 @@ export function generateChallenge(groupId: string): string {
 		const presentation = pickField(challengeData.puzzles, 'presentation')
 		const feedback = pickField(challengeData.puzzles, 'feedback')
 		const hints = pickField(challengeData.puzzles, 'hints')
-		return `${lc(puzzleType)} puzzle featuring ${lc(coreElement)}, interacted with by ${lc(interaction)}. presented as ${lc(presentation)} with ${lc(feedback)} as feedback. hints: ${lc(hints)}.`
+		return `${lc(puzzleType)} puzzle featuring ${lc(coreElement)}, solved by ${lc(interaction)}. presented as ${lc(presentation)} with ${lc(feedback)} as feedback. hints: ${lc(hints)}.`
 	}
 	if (groupId === 'traps') {
 		// Roll each column independently
@@ -329,7 +335,7 @@ function generateValuable(): string {
 	if (details && details.length > 0) {
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(type)} in the form of ${lc(form)} with ${lc(detail)}.`
+		return `${lc(type)} in the form of ${lc(form)} — ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
@@ -363,7 +369,7 @@ function generateArmor(): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
+		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
@@ -377,7 +383,7 @@ function generateWeapon(): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(type)} in ${lc(form)} style with ${lc(detail)}.`
+		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
@@ -475,7 +481,7 @@ export function generateNpc(groupId: string): string {
 	const mannerism = pick(npcData.mannerisms)
 
 	if (groupId === 'quick') {
-		return `A ${lc(occupation)} with ${lc(visual)} who ${lc(mannerism)}.`
+		return `${article(occupation)} ${lc(occupation)} with ${lc(visual)} who ${lc(mannerism)}.`
 	}
 
 	const disposition = pick(npcData.dispositions)
@@ -489,11 +495,11 @@ export function generateNpc(groupId: string): string {
 	if (groupId === 'social') {
 		const patience = pick(npcData.patience)
 		const alignment = pick(npcData.requestAlignments)
-		return `A ${lc(disposition.disposition)} ${lc(occupation)} (disposition ${disposition.modifier >= 0 ? '+' : ''}${disposition.modifier}). ${capitalize(patience.temperament)} patience (${patience.challengeDie}), request is ${lc(alignment.alignment)} (${alignment.modifier >= 0 ? '+' : ''}${alignment.modifier}). Motivated by ${lc(motivation1.motivation)} and ${lc(motivation2.motivation)}. Pitfall: ${lc(pitfall.pitfall)} — triggered by ${lc(pitfall.trigger)}. They have ${lc(visual)} and ${lc(mannerism)}.`
+		return `${article(disposition.disposition)} ${lc(disposition.disposition)} ${lc(occupation)} (disposition ${disposition.modifier >= 0 ? '+' : ''}${disposition.modifier}). ${capitalize(patience.temperament)} patience (${patience.challengeDie}), request is ${lc(alignment.alignment)} (${alignment.modifier >= 0 ? '+' : ''}${alignment.modifier}). Motivated by ${lc(motivation1.motivation)} and ${lc(motivation2.motivation)}. Pitfall: ${lc(pitfall.pitfall)} — triggered by ${lc(pitfall.trigger)}. They have ${lc(visual)} and ${lc(mannerism)}.`
 	}
 
 	// Full profile
-	return `A ${lc(disposition.disposition)} ${lc(occupation)} with ${lc(visual)} who ${lc(mannerism)}. Motivated by ${lc(motivation1.motivation)} and ${lc(motivation2.motivation)}. Pitfall: ${lc(pitfall.pitfall)} — triggered by ${lc(pitfall.trigger)}.`
+	return `${article(disposition.disposition)} ${lc(disposition.disposition)} ${lc(occupation)} with ${lc(visual)} who ${lc(mannerism)}. Motivated by ${lc(motivation1.motivation)} and ${lc(motivation2.motivation)}. Pitfall: ${lc(pitfall.pitfall)} — triggered by ${lc(pitfall.trigger)}.`
 }
 
 // ===== SETTLEMENTS =====
