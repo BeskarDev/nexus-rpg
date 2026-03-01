@@ -538,7 +538,7 @@ function generateMagicItemEffect(): string {
 	return `${lc(effect.effectType)} (${lc(effect.trigger)}, ${lc(effect.scope)})`
 }
 
-// Generate a magic item curse check (d12: 1-3 cursed, 4 legacy, 5-10 clean, 11 false, 12 blessed)
+// Generate a magic item curse check — only actual curses (Definitely/Mildly/Deceptively) produce output
 function generateMagicItemCurse(): string | null {
 	const statuses = treasureData.magicItemCurseStatus as { status: string; description: string }[]
 	if (!statuses || statuses.length === 0) return null
