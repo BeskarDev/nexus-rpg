@@ -9,6 +9,12 @@ import settlementData from './data/settlementData.json'
 import weaponsGameData from '../../utils/data/json/weapons.json'
 import armorGameData from '../../utils/data/json/armor.json'
 import equipmentGameData from '../../utils/data/json/equipment.json'
+import {
+	magicItemBaseCosts,
+	enchantmentCosts,
+	type QualityTier,
+	type ItemCategory,
+} from '../../features/CharacterSheet/CharacterSheetTabs/02_Items/utils/magicItemsConfig'
 
 // Type definitions for spell data
 interface SpellEntry {
@@ -326,6 +332,7 @@ interface GameWeapon {
 	quality: string
 	type: string
 	cost: string
+	properties: string
 }
 
 interface GameArmor {
@@ -398,6 +405,18 @@ export function rollTreasureBonus(quality: number): number {
 	const multipliers = treasureData.treasureBonusMultipliers as number[]
 	const idx = Math.max(0, Math.min(quality - 1, multipliers.length - 1))
 	return roll2d4() * multipliers[idx]
+}
+
+// Calculate magic item cost using the Equipment chapter rules:
+// Base Item Cost + Magic Item Base Cost + Enchantment Cost (50% chance) + small random bonus
+export function rollMagicItemCost(baseCost: number, quality: number, category: ItemCategory): number {
+	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+	const magicBase = magicItemBaseCosts[tier][category]
+	// 50% chance the item also has an enchantment
+	const hasEnchantment = Math.random() < 0.5
+	const enchantCost = hasEnchantment ? enchantmentCosts[tier][category] : 0
+	const bonus = rollTreasureBonus(quality)
+	return baseCost + magicBase + enchantCost + bonus
 }
 
 // Parse cost string that may contain commas (e.g., "2,500")
@@ -484,6 +503,19 @@ function getArmorInfo(armorName: string): { quality: number; cost: number } | nu
 	return null
 }
 
+// Map an armor/shield name to its ItemCategory for cost calculation
+function getArmorItemCategory(armorName: string): ItemCategory {
+	const armor = gameArmor.find(a => a.name === armorName)
+	if (armor) {
+		if (armor.type === 'Helmet') return 'helmet'
+		if (armor.type === 'Heavy Armor') return 'heavy-armor'
+		return 'light-armor'
+	}
+	const shield = gameWeapons.find(w => w.name === armorName && w.type === 'Shield')
+	if (shield) return 'shield'
+	return 'light-armor'
+}
+
 // Pick an actual utility item from equipment data for a utility type
 // Mundane items use exact quality match — they only appear at their correct tier with no craftsmanship bonus
 function pickUtilityItem(utilityType: string, quality: number): { name: string; cost: number } | null {
@@ -538,7 +570,8 @@ function generateMagicItemEffect(): string {
 	return `${lc(effect.effectType)} (${lc(effect.trigger)}, ${lc(effect.scope)})`
 }
 
-// Generate a magic item curse check — only actual curses (Definitely/Mildly/Deceptively) produce output
+// Generate a magic item curse check
+// d12 1-3: actual curses with full details, d12 4/11/12: flavor text, d12 5-10: no output
 function generateMagicItemCurse(): string | null {
 	const statuses = treasureData.magicItemCurseStatus as { status: string; description: string }[]
 	if (!statuses || statuses.length === 0) return null
@@ -548,9 +581,9 @@ function generateMagicItemCurse(): string | null {
 	// d12 results 5-10: Not Cursed — no output
 	if (status.status === 'Not Cursed') return null
 
-	// d12 results 4, 11, 12: not actual curses — no curse effects/signs
+	// d12 results 4, 11, 12: flavor text only — no curse effects/signs
 	if (status.status === 'Cursed Legacy' || status.status === 'False Curse' || status.status === 'Blessed / Ward-Bound') {
-		return null
+		return `${lc(status.status)}: ${lc(status.description)}`
 	}
 
 	// d12 results 1-3: actual curses — roll on curse effects and signs tables
@@ -586,7 +619,7 @@ function pickMagicUtilityItem(): string {
 // Generate a magical utility item (for Q4+ quality)
 function generateMagicUtility(quality: number): string {
 	const itemType = pickMagicUtilityItem()
-	const cost = rollTreasureCost(quality)
+	const cost = rollMagicItemCost(0, quality, 'wearable')
 	const magicName = generateMagicItemName('utility', itemType)
 	const effect = generateMagicItemEffect()
 	const curse = generateMagicItemCurse()
@@ -600,6 +633,18 @@ function generateMagicUtility(quality: number): string {
 function getWeaponNameCategory(weaponType: string): 'weapon' | 'spellCatalyst' {
 	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') return 'spellCatalyst'
 	return 'weapon'
+}
+
+// Map a weapon type/name to its ItemCategory for cost calculation
+function getWeaponItemCategory(weaponType: string, weaponName: string): ItemCategory {
+	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') return 'spell-catalyst'
+	if (weaponType === 'Bow' || weaponType === 'Crossbow') return 'two-handed-weapon'
+	// Check weapon properties for two-handed/heavy
+	const weapon = gameWeapons.find(w => w.name === weaponName)
+	if (weapon && (weapon.properties.includes('two-handed') || weapon.properties.includes('heavy'))) {
+		return 'two-handed-weapon'
+	}
+	return 'one-handed-weapon'
 }
 
 function generateValuable(quality?: number): string {
@@ -701,11 +746,10 @@ function generateWearable(quality?: number): string {
 	if (quality) {
 		const baseCosts = treasureData.wearableBaseCosts as Record<string, number> | undefined
 		const baseCost = baseCosts?.[slot] ?? 50
-		const bonus = rollTreasureBonus(quality)
-		const total = baseCost + bonus
 
 		// Q4+ wearables gain magic item properties
 		if (quality >= 4) {
+			const total = rollMagicItemCost(baseCost, quality, 'wearable')
 			const magicName = generateMagicItemName('wearable', itemType)
 			const effect = generateMagicItemEffect()
 			const curse = generateMagicItemCurse()
@@ -714,6 +758,8 @@ function generateWearable(quality?: number): string {
 			return result
 		}
 
+		const bonus = rollTreasureBonus(quality)
+		const total = baseCost + bonus
 		return `${desc}. (Q${quality}, ~${total.toLocaleString()} coins)`
 	}
 	return `${desc}.`
@@ -748,11 +794,11 @@ function generateArmor(quality?: number): string {
 	if (quality) {
 		const info = getArmorInfo(type)
 		const baseCost = info?.cost ?? 0
-		const bonus = rollTreasureBonus(quality)
-		const total = baseCost + bonus
 
 		// Q4+ armor/shields gain magic item properties
 		if (quality >= 4) {
+			const itemCat = getArmorItemCategory(type)
+			const total = rollMagicItemCost(baseCost, quality, itemCat)
 			const magicName = generateMagicItemName('armor', type)
 			const effect = generateMagicItemEffect()
 			const curse = generateMagicItemCurse()
@@ -761,6 +807,8 @@ function generateArmor(quality?: number): string {
 			return result
 		}
 
+		const bonus = rollTreasureBonus(quality)
+		const total = baseCost + bonus
 		return `${lc(type)}, ${detailStr}. (Q${quality}, ~${total.toLocaleString()} coins)`
 	}
 	return `${detailStr}.`
@@ -781,11 +829,11 @@ function generateWeapon(quality?: number): string {
 				// Ammo — mundane, no craftsmanship bonus, show only base cost
 				return `${lc(weaponItem.name)}. (Q${quality}, ~${weaponItem.cost.toLocaleString()} coins)`
 			}
-			const bonus = rollTreasureBonus(quality)
-			const total = weaponItem.cost + bonus
 
 			// Q4+ weapons gain magic item properties
 			if (quality >= 4) {
+				const itemCat = getWeaponItemCategory(type, weaponItem.name)
+				const total = rollMagicItemCost(weaponItem.cost, quality, itemCat)
 				const magicName = generateMagicItemName(nameCategory, weaponItem.name)
 				const effect = generateMagicItemEffect()
 				const curse = generateMagicItemCurse()
@@ -802,6 +850,8 @@ function generateWeapon(quality?: number): string {
 				return result
 			}
 
+			const bonus = rollTreasureBonus(quality)
+			const total = weaponItem.cost + bonus
 			if (details && details.length > 0) {
 				const material = pickField(details, 'material')
 				const detail = pickField(details, 'detail')

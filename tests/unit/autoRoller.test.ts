@@ -1151,15 +1151,20 @@ describe('AutoRoller Generators', () => {
 
 		it('should sometimes include curse information for magic items', () => {
 			let foundCurse = false
+			let foundFlavorText = false
 			for (let i = 0; i < 200; i++) {
 				const result = generateTreasure('utility', 6)
-				if (result.includes('cursed:')) {
+				if (result.includes('cursed:') && result.includes('sign:')) {
 					foundCurse = true
-					break
 				}
+				if (result.includes('cursed legacy:') || result.includes('false curse:') || result.includes('blessed / ward-bound:')) {
+					foundFlavorText = true
+				}
+				if (foundCurse && foundFlavorText) break
 			}
-			// Curse status table has 3/12 cursed entries (d12: 1-3), 200 tries should find at least one
+			// Curse status table has 3/12 actual cursed entries (d12: 1-3) and 3/12 flavor entries (d12: 4, 11, 12)
 			expect(foundCurse).toBe(true)
+			expect(foundFlavorText).toBe(true)
 		})
 
 		it('should include magic item effects in the output', () => {
