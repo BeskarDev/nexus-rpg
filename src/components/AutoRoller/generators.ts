@@ -409,11 +409,11 @@ export function rollTreasureBonus(quality: number): number {
 
 // Calculate magic item cost using the Equipment chapter rules:
 // Base Item Cost + Magic Item Base Cost + Enchantment Cost (50% chance) + small random bonus
+const ENCHANTMENT_CHANCE = 0.5
 export function rollMagicItemCost(baseCost: number, quality: number, category: ItemCategory): number {
 	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
 	const magicBase = magicItemBaseCosts[tier][category]
-	// 50% chance the item also has an enchantment
-	const hasEnchantment = Math.random() < 0.5
+	const hasEnchantment = Math.random() < ENCHANTMENT_CHANCE
 	const enchantCost = hasEnchantment ? enchantmentCosts[tier][category] : 0
 	const bonus = rollTreasureBonus(quality)
 	return baseCost + magicBase + enchantCost + bonus
