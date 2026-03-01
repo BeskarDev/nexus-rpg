@@ -1027,16 +1027,12 @@ describe('AutoRoller Generators', () => {
 			expect(foundEquipItem).toBe(true)
 		})
 
-		it('should not show low-quality utility items at high quality tiers', () => {
-			// At Q6+, no utility equipment items exist (max is Q5 for Alchemy), so the
-			// item-lookup path should never trigger. All results should be description fallbacks.
-			for (let i = 0; i < 50; i++) {
+		it('should generate magic utility items at Q6 with ✦ marker (Q4+ always magical)', () => {
+			// Q4+ utility items always use the magic utility path — no equipment item lookup
+			for (let i = 0; i < 20; i++) {
 				const result = generateTreasure('utility', 6)
-				// Item-lookup path produces: "<name>. (Q6, ~cost)" with no leading comma
-				// Description fallback produces: "type, detail. (Q6, ~cost)" with a comma before (Q6
-				const isItemPath = /^[^,]+\. \(Q6,/.test(result)
-				// No utility equipment item has quality 6, so item path should never fire
-				expect(isItemPath).toBe(false)
+				expect(result).toContain('✦')
+				expect(result).toContain('Q6')
 			}
 		})
 

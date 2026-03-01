@@ -516,25 +516,6 @@ function getArmorItemCategory(armorName: string): ItemCategory {
 	return 'light-armor'
 }
 
-// Pick an actual utility item from equipment data for a utility type
-// Mundane items use exact quality match — they only appear at their correct tier with no craftsmanship bonus
-function pickUtilityItem(utilityType: string, quality: number): { name: string; cost: number } | null {
-	const categoryMap = treasureData.utilityEquipmentMap as Record<string, string> | undefined
-	if (!categoryMap) return null
-
-	const equipCategory = categoryMap[utilityType]
-	if (!equipCategory) return null
-
-	const matching = gameEquipment.filter(e =>
-		e.category === equipCategory && parseInt(e.quality, 10) === quality
-	)
-
-	if (matching.length === 0) return null
-
-	const item = pick(matching)
-	return { name: item.name, cost: parseCost(item.cost) }
-}
-
 // ===== MAGIC ITEM HELPERS (Q4+) =====
 
 // Magic item name tables
@@ -723,19 +704,7 @@ function generateUtility(quality?: number): string {
 	const type = entry.type
 
 	if (quality) {
-		// Alchemical and Supply always use their sub-table columns for natural descriptions
-		if (type === 'Alchemical' || type === 'Supply') {
-			const desc = formatUtilityDetail(type)
-			const cost = rollTreasureCost(quality)
-			return `${desc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
-		}
-		// Try to find an actual equipment item for this utility type (Gear, Tool)
-		const item = pickUtilityItem(type, quality)
-		if (item) {
-			// Mundane items have no craftsmanship bonus — show only base cost at exact quality
-			return `${lc(item.name)}. (Q${quality}, ~${item.cost.toLocaleString()} coins)`
-		}
-		// No base item (Spell Scroll, Knowledge) — use formatted detail description
+		// All utility types use their sub-table columns for natural-language descriptions
 		const desc = formatUtilityDetail(type)
 		const cost = rollTreasureCost(quality)
 		return `${desc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
