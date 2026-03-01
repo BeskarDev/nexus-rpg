@@ -646,7 +646,9 @@ describe('AutoRoller Generators', () => {
 
 		it('should generate valuable treasure in natural language', () => {
 			const result = generateTreasure('valuable')
-			expect(result).toMatch(/.+ in the form of/)
+			expect(result).toMatch(/\.$/)
+			expect(result).not.toContain(' — ')
+			expect(result).not.toContain('in the form of')
 		})
 
 		it('should generate utility treasure in natural language', () => {
@@ -665,7 +667,7 @@ describe('AutoRoller Generators', () => {
 
 		it('should generate armor treasure in natural language', () => {
 			const result = generateTreasure('armor')
-			expect(result).toMatch(/.+ — .+\./)
+			expect(result).toMatch(/.+, .+\./)
 		})
 
 		it('should generate weapon treasure in natural language', () => {
@@ -715,7 +717,8 @@ describe('AutoRoller Generators', () => {
 		it('should include material for valuables when quality is provided', () => {
 			for (let i = 0; i < 20; i++) {
 				const result = generateTreasure('valuable', 3)
-				expect(result).toContain('Material:')
+				// type, form, detail, material — at least 2 commas in description
+				expect(result.split(',').length).toBeGreaterThanOrEqual(3)
 				expect(result).toContain('Q3')
 			}
 		})
@@ -780,40 +783,43 @@ describe('AutoRoller Generators', () => {
 			}
 		})
 
-		it('should show base cost for weapons when quality is provided', () => {
+		it('should show cost for weapons when quality is provided', () => {
 			for (let i = 0; i < 30; i++) {
 				const result = generateTreasure('weapon', 3)
 				expect(result).toContain('Q3')
-				expect(result).toContain('Base:')
 				expect(result).toContain('coins')
+				expect(result).not.toContain('Base:')
 			}
 		})
 
-		it('should show base cost for armor when quality is provided', () => {
+		it('should show cost for armor when quality is provided', () => {
 			for (let i = 0; i < 30; i++) {
 				const result = generateTreasure('armor', 3)
 				expect(result).toContain('Q3')
-				expect(result).toContain('Base:')
 				expect(result).toContain('coins')
+				expect(result).not.toContain('Base:')
 			}
 		})
 
-		it('should show base cost for wearables when quality is provided', () => {
+		it('should show cost for wearables when quality is provided', () => {
 			const result = generateTreasure('wearable', 4)
 			expect(result).toContain('Q4')
-			expect(result).toContain('Base:')
 			expect(result).toContain('coins')
+			expect(result).not.toContain('Base:')
 		})
 
-		it('should show base cost for utility with equipment items when quality is provided', () => {
-			let foundBase = false
+		it('should show cost for utility with equipment items when quality is provided', () => {
+			let foundEquipmentItem = false
 			for (let i = 0; i < 30; i++) {
 				const result = generateTreasure('utility', 3)
 				expect(result).toContain('Q3')
-				if (result.includes('Base:')) foundBase = true
+				expect(result).not.toContain('Base:')
+				// Equipment items produce simple names: "pickaxe. (Q3, ~X coins)"
+				// Non-equipment (Spell Scroll, Knowledge) produce: "spell scroll, detail. (Q3, ~X coins)"
+				if (/^[^,]+\. \(Q/.test(result)) foundEquipmentItem = true
 			}
 			// At least some utility types (Gear, Alchemy, Tool, Supply) should have base items
-			expect(foundBase).toBe(true)
+			expect(foundEquipmentItem).toBe(true)
 		})
 
 		it('should filter armor by quality tier', () => {

@@ -499,22 +499,32 @@ function generateValuable(quality?: number): string {
 	const details = treasureData.valuableDetails[type] as
 		| { form: string; detail: string }[]
 		| undefined
-	const formDetail = details && details.length > 0
-		? ` in the form of ${lc(pickField(details, 'form'))} — ${lc(pickField(details, 'detail'))}`
-		: ''
 
 	if (quality) {
 		const material = pickQualityMaterial(type, quality)
-		const materialStr = material ? ` Material: ${lc(material)}.` : ''
 		const cost = rollTreasureCost(quality)
-		return `${lc(type)}${formDetail}.${materialStr} (Q${quality}, ~${cost.toLocaleString()} coins)`
+		if (details && details.length > 0) {
+			const form = lc(pickField(details, 'form'))
+			const detail = lc(pickField(details, 'detail'))
+			const matStr = material ? `, ${lc(material)}` : ''
+			return `${lc(type)}, ${form}, ${detail}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		}
+		const matStr = material ? `, ${lc(material)}` : ''
+		return `${lc(type)}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
-	return `${lc(type)}${formDetail}.`
+
+	if (details && details.length > 0) {
+		const form = lc(pickField(details, 'form'))
+		const detail = lc(pickField(details, 'detail'))
+		return `${lc(type)}, ${form}, ${detail}.`
+	}
+	return `${lc(type)}.`
 }
 
 function generateUtility(quality?: number): string {
 	const entry = pick(treasureData.utility)
 	const type = entry.type
+	const details = treasureData.utilityDetails[type] as string[] | undefined
 
 	if (quality) {
 		// Try to find an actual equipment item for this utility type
@@ -522,20 +532,18 @@ function generateUtility(quality?: number): string {
 		if (item) {
 			const bonus = rollTreasureBonus(quality)
 			const total = item.cost + bonus
-			return `${lc(type)}: ${lc(item.name)}. Base: ${item.cost} coins. (Q${quality}, ~${total.toLocaleString()} coins)`
+			return `${lc(item.name)}. (Q${quality}, ~${total.toLocaleString()} coins)`
 		}
 		// No base item (Spell Scroll, Knowledge) — use full multiplier
-		const details = treasureData.utilityDetails[type] as string[] | undefined
 		const desc = details && details.length > 0
-			? `${lc(type)} — ${lc(pick(details))}.`
+			? `${lc(type)}, ${lc(pick(details))}.`
 			: `${lc(type)}.`
 		const cost = rollTreasureCost(quality)
 		return `${desc} (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
 
-	const details = treasureData.utilityDetails[type] as string[] | undefined
 	return details && details.length > 0
-		? `${lc(type)} — ${lc(pick(details))}.`
+		? `${lc(type)}, ${lc(pick(details))}.`
 		: `${lc(type)}.`
 }
 
@@ -546,14 +554,14 @@ function generateWearable(quality?: number): string {
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
 	const style = pickField(treasureData.wearableDescription, 'style')
 	const material = pickField(treasureData.wearableDescription, 'material')
-	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)} (${lc(slot)}) with ${lc(ornament)} ornament.`
+	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)}, ${lc(ornament)} ornament (${lc(slot)}).`
 
 	if (quality) {
 		const baseCosts = treasureData.wearableBaseCosts as Record<string, number> | undefined
 		const baseCost = baseCosts?.[slot] ?? 50
 		const bonus = rollTreasureBonus(quality)
 		const total = baseCost + bonus
-		return `${desc} Base: ${baseCost} coins. (Q${quality}, ~${total.toLocaleString()} coins)`
+		return `${desc} (Q${quality}, ~${total.toLocaleString()} coins)`
 	}
 	return desc
 }
@@ -579,7 +587,7 @@ function generateArmor(quality?: number): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		detailStr = `${lc(material)} ${lc(form)} — ${lc(detail)}`
+		detailStr = `${lc(material)} ${lc(form)}, ${lc(detail)}`
 	} else {
 		detailStr = lc(type)
 	}
@@ -589,7 +597,7 @@ function generateArmor(quality?: number): string {
 		const baseCost = info?.cost ?? 0
 		const bonus = rollTreasureBonus(quality)
 		const total = baseCost + bonus
-		return `${lc(type)}: ${detailStr}. Base: ${baseCost} coins. (Q${quality}, ~${total.toLocaleString()} coins)`
+		return `${lc(type)}, ${detailStr}. (Q${quality}, ~${total.toLocaleString()} coins)`
 	}
 	return `${detailStr}.`
 }
@@ -606,13 +614,12 @@ function generateWeapon(quality?: number): string {
 		if (weaponItem) {
 			const bonus = rollTreasureBonus(quality)
 			const total = weaponItem.cost + bonus
-			// Use cosmetic material/detail for flavor, but the actual weapon name as identifier
 			if (details && details.length > 0) {
 				const material = pickField(details, 'material')
 				const detail = pickField(details, 'detail')
-				return `${lc(material)} ${lc(weaponItem.name)} — ${lc(detail)}. Base: ${weaponItem.cost} coins. (Q${quality}, ~${total.toLocaleString()} coins)`
+				return `${lc(material)} ${lc(weaponItem.name)}, ${lc(detail)}. (Q${quality}, ~${total.toLocaleString()} coins)`
 			}
-			return `${lc(weaponItem.name)}. Base: ${weaponItem.cost} coins. (Q${quality}, ~${total.toLocaleString()} coins)`
+			return `${lc(weaponItem.name)}. (Q${quality}, ~${total.toLocaleString()} coins)`
 		}
 
 		// No matching weapon at quality — fallback to description + full multiplier
@@ -621,7 +628,7 @@ function generateWeapon(quality?: number): string {
 			const material = pickField(details, 'material')
 			const form = pickField(details, 'form')
 			const detail = pickField(details, 'detail')
-			desc = `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+			desc = `${lc(material)} ${lc(form)}, ${lc(detail)}.`
 		} else {
 			desc = `${lc(type)}.`
 		}
@@ -634,7 +641,7 @@ function generateWeapon(quality?: number): string {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+		return `${lc(material)} ${lc(form)}, ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
