@@ -705,110 +705,474 @@
 	},
 	"utilityDetails": {
 		"Gear": [
-			"Rope (hemp), Hemp, Durable",
-			"Rope (silk), Silken, Flexible",
-			"Oil Flask, Clay, Slow-burn",
-			"Lantern, Bronze, Dim light",
-			"Camping Kit, Leather, Space-saving",
-			"Climber’s Kit, Silver, Secure grip",
-			"Dungeoneering Kit, Copper, Multiuse",
-			"Disguise Kit, Painted, Adaptive",
-			"Navigating Kit, Parchment, Reliable",
-			"Repair Kit, Gold, Versatile",
-			"Bundle of Scrolls, Canvas, Knowledgeable",
-			"Bundle of Maps, Waxed, Weatherproof"
+			{
+				"item": "Rope (hemp)",
+				"style": "Hemp",
+				"trait": "Durable"
+			},
+			{
+				"item": "Rope (silk)",
+				"style": "Silken",
+				"trait": "Flexible"
+			},
+			{
+				"item": "Oil Flask",
+				"style": "Clay",
+				"trait": "Slow-burn"
+			},
+			{
+				"item": "Lantern",
+				"style": "Bronze",
+				"trait": "Dim light"
+			},
+			{
+				"item": "Camping Kit",
+				"style": "Leather",
+				"trait": "Space-saving"
+			},
+			{
+				"item": "Climber\u2019s Kit",
+				"style": "Silver",
+				"trait": "Secure grip"
+			},
+			{
+				"item": "Dungeoneering Kit",
+				"style": "Copper",
+				"trait": "Multiuse"
+			},
+			{
+				"item": "Disguise Kit",
+				"style": "Painted",
+				"trait": "Adaptive"
+			},
+			{
+				"item": "Navigating Kit",
+				"style": "Parchment",
+				"trait": "Reliable"
+			},
+			{
+				"item": "Repair Kit",
+				"style": "Gold",
+				"trait": "Versatile"
+			},
+			{
+				"item": "Bundle of Scrolls",
+				"style": "Canvas",
+				"trait": "Knowledgeable"
+			},
+			{
+				"item": "Bundle of Maps",
+				"style": "Waxed",
+				"trait": "Weatherproof"
+			}
 		],
 		"Alchemical": [
-			"Healing, Vial, Ingested",
-			"Poison, Flask, Splashed",
-			"Smoke, Satchel, Ignited",
-			"Acidic, Jar, Thrown",
-			"Freezing, Pouch, Broken open",
-			"Concealing, Phial, Rubbed on skin",
-			"Explosive, Crystal tube, Crushed",
-			"Adhesive, Sealed gourd, Poured",
-			"Hallucinogenic, Dropper, Absorbed",
-			"Repellent, Sprinkler bulb, Scattered",
-			"Energizing, Packet, Dissolved",
-			"Transmutative, Glass orb, Shattered",
-			"Burning, Oil-soaked rag, Ignited",
-			"Blinding, Chalk powder, Scattered",
-			"Choking, Fumes in sealed jar, Broken open",
-			"Paralytic, Venom elixir, Splashed",
-			"Soothing, Emollient salve, Rubbed on skin",
-			"Petrifying, Crystal vial, Shattered",
-			"Signaling, Luminescent oil, Poured",
-			"Sleep-inducing, Herbal paste, Dissolved"
+			{
+				"effect": "Healing",
+				"form": "Vial",
+				"delivery": "Ingested"
+			},
+			{
+				"effect": "Poison",
+				"form": "Flask",
+				"delivery": "Splashed"
+			},
+			{
+				"effect": "Smoke",
+				"form": "Satchel",
+				"delivery": "Ignited"
+			},
+			{
+				"effect": "Acidic",
+				"form": "Jar",
+				"delivery": "Thrown"
+			},
+			{
+				"effect": "Freezing",
+				"form": "Pouch",
+				"delivery": "Broken open"
+			},
+			{
+				"effect": "Concealing",
+				"form": "Phial",
+				"delivery": "Rubbed on skin"
+			},
+			{
+				"effect": "Explosive",
+				"form": "Crystal tube",
+				"delivery": "Crushed"
+			},
+			{
+				"effect": "Adhesive",
+				"form": "Sealed gourd",
+				"delivery": "Poured"
+			},
+			{
+				"effect": "Hallucinogenic",
+				"form": "Dropper",
+				"delivery": "Absorbed"
+			},
+			{
+				"effect": "Repellent",
+				"form": "Sprinkler bulb",
+				"delivery": "Scattered"
+			},
+			{
+				"effect": "Energizing",
+				"form": "Packet",
+				"delivery": "Dissolved"
+			},
+			{
+				"effect": "Transmutative",
+				"form": "Glass orb",
+				"delivery": "Shattered"
+			},
+			{
+				"effect": "Burning",
+				"form": "Oil-soaked rag",
+				"delivery": "Ignited"
+			},
+			{
+				"effect": "Blinding",
+				"form": "Chalk powder",
+				"delivery": "Scattered"
+			},
+			{
+				"effect": "Choking",
+				"form": "Fumes in sealed jar",
+				"delivery": "Broken open"
+			},
+			{
+				"effect": "Paralytic",
+				"form": "Venom elixir",
+				"delivery": "Splashed"
+			},
+			{
+				"effect": "Soothing",
+				"form": "Emollient salve",
+				"delivery": "Rubbed on skin"
+			},
+			{
+				"effect": "Petrifying",
+				"form": "Crystal vial",
+				"delivery": "Shattered"
+			},
+			{
+				"effect": "Signaling",
+				"form": "Luminescent oil",
+				"delivery": "Poured"
+			},
+			{
+				"effect": "Sleep-inducing",
+				"form": "Herbal paste",
+				"delivery": "Dissolved"
+			}
 		],
 		"Tool": [
-			"Alchemist’s Tools, Bronze, Multipurpose",
-			"Clothweaver’s Tools, Bone, Precise",
-			"Jeweler’s Tools, Wooden, Fine-detail",
-			"Leatherworker’s Tools, Leather, Hardwearing",
-			"Mason’s Tools, Stone, Sturdy",
-			"Painter’s Tools, Pigment, Vibrant",
-			"Smith’s Tools, Iron, Heavy-duty",
-			"Thieves’ Tools, Hidden, Stealthy",
-			"Trapmaker’s Tools, Copper, Deceptive",
-			"Woodworker’s Tools, Obsidian, Smooth-cut",
-			"Brewing Kit, Clay, Aromatic",
-			"Cooking Kit, Dwarf-Steel, Reliable",
-			"Healer’s Kit, Herbal, Restorative",
-			"Boardgame, Chitin, Strategic",
-			"Set of Cards, Fur, Portable",
-			"Set of Dice, Scaled hide, Balanced",
-			"Woodwind Instrument, Reed, Melodic",
-			"Percussion Instrument, Hide, Rhythmic",
-			"Brass Instrument, Gold, Resounding",
-			"String Instrument, Silver, Harmonic"
+			{
+				"item": "Alchemist\u2019s Tools",
+				"style": "Bronze",
+				"trait": "Multipurpose"
+			},
+			{
+				"item": "Clothweaver\u2019s Tools",
+				"style": "Bone",
+				"trait": "Precise"
+			},
+			{
+				"item": "Jeweler\u2019s Tools",
+				"style": "Wooden",
+				"trait": "Fine-detail"
+			},
+			{
+				"item": "Leatherworker\u2019s Tools",
+				"style": "Leather",
+				"trait": "Hardwearing"
+			},
+			{
+				"item": "Mason\u2019s Tools",
+				"style": "Stone",
+				"trait": "Sturdy"
+			},
+			{
+				"item": "Painter\u2019s Tools",
+				"style": "Pigment",
+				"trait": "Vibrant"
+			},
+			{
+				"item": "Smith\u2019s Tools",
+				"style": "Iron",
+				"trait": "Heavy-duty"
+			},
+			{
+				"item": "Thieves\u2019 Tools",
+				"style": "Hidden",
+				"trait": "Stealthy"
+			},
+			{
+				"item": "Trapmaker\u2019s Tools",
+				"style": "Copper",
+				"trait": "Deceptive"
+			},
+			{
+				"item": "Woodworker\u2019s Tools",
+				"style": "Obsidian",
+				"trait": "Smooth-cut"
+			},
+			{
+				"item": "Brewing Kit",
+				"style": "Clay",
+				"trait": "Aromatic"
+			},
+			{
+				"item": "Cooking Kit",
+				"style": "Dwarf-Steel",
+				"trait": "Reliable"
+			},
+			{
+				"item": "Healer\u2019s Kit",
+				"style": "Herbal",
+				"trait": "Restorative"
+			},
+			{
+				"item": "Boardgame",
+				"style": "Chitin",
+				"trait": "Strategic"
+			},
+			{
+				"item": "Set of Cards",
+				"style": "Fur",
+				"trait": "Portable"
+			},
+			{
+				"item": "Set of Dice",
+				"style": "Scaled hide",
+				"trait": "Balanced"
+			},
+			{
+				"item": "Woodwind Instrument",
+				"style": "Reed",
+				"trait": "Melodic"
+			},
+			{
+				"item": "Percussion Instrument",
+				"style": "Hide",
+				"trait": "Rhythmic"
+			},
+			{
+				"item": "Brass Instrument",
+				"style": "Gold",
+				"trait": "Resounding"
+			},
+			{
+				"item": "String Instrument",
+				"style": "Silver",
+				"trait": "Harmonic"
+			}
 		],
 		"Supply": [
-			"Throwing Darts, Bone, Piercing",
-			"Blowdarts, Reed, Silent",
-			"Throwing Stones, Stone, Aerodynamic",
-			"Arrows, Feathered, Accurate",
-			"Bolts, Bronze, Impact",
-			"Slingstones, Clay, Easy aim",
-			"Torches, Resin, Bright",
-			"Rations (simple), Dried, Filling",
-			"Rations (balanced), Jerky, Energizing",
-			"Rations (luxury), Spiced, Deluxe"
+			{
+				"item": "Throwing Darts",
+				"style": "Bone",
+				"trait": "Piercing"
+			},
+			{
+				"item": "Blowdarts",
+				"style": "Reed",
+				"trait": "Silent"
+			},
+			{
+				"item": "Throwing Stones",
+				"style": "Stone",
+				"trait": "Aerodynamic"
+			},
+			{
+				"item": "Arrows",
+				"style": "Feathered",
+				"trait": "Accurate"
+			},
+			{
+				"item": "Bolts",
+				"style": "Bronze",
+				"trait": "Impact"
+			},
+			{
+				"item": "Slingstones",
+				"style": "Clay",
+				"trait": "Easy aim"
+			},
+			{
+				"item": "Torches",
+				"style": "Resin",
+				"trait": "Bright"
+			},
+			{
+				"item": "Rations (simple)",
+				"style": "Dried",
+				"trait": "Filling"
+			},
+			{
+				"item": "Rations (balanced)",
+				"style": "Jerky",
+				"trait": "Energizing"
+			},
+			{
+				"item": "Rations (luxury)",
+				"style": "Spiced",
+				"trait": "Deluxe"
+			}
 		],
 		"Spell Scroll": [
-			"Flowing runes, Twine-bound",
-			"Jagged runes, Iron-bound",
-			"Bold sigils, Wax-sealed",
-			"Dotted glyphs, Leather-bound",
-			"Glowing ink, Reed-bound",
-			"Faded script, Bone-pin",
-			"Curved script, Cord-tied",
-			"Fine glyphs, Wood-cased",
-			"Leaf glyphs, Bark-wrapped",
-			"Repetitive runes, Metal-cased",
-			"Concentric runes, Fiber-bound",
-			"Radiant etch, Copper-locked"
+			{
+				"script": "Flowing runes",
+				"binding": "Twine-bound"
+			},
+			{
+				"script": "Jagged runes",
+				"binding": "Iron-bound"
+			},
+			{
+				"script": "Bold sigils",
+				"binding": "Wax-sealed"
+			},
+			{
+				"script": "Dotted glyphs",
+				"binding": "Leather-bound"
+			},
+			{
+				"script": "Glowing ink",
+				"binding": "Reed-bound"
+			},
+			{
+				"script": "Faded script",
+				"binding": "Bone-pin"
+			},
+			{
+				"script": "Curved script",
+				"binding": "Cord-tied"
+			},
+			{
+				"script": "Fine glyphs",
+				"binding": "Wood-cased"
+			},
+			{
+				"script": "Leaf glyphs",
+				"binding": "Bark-wrapped"
+			},
+			{
+				"script": "Repetitive runes",
+				"binding": "Metal-cased"
+			},
+			{
+				"script": "Concentric runes",
+				"binding": "Fiber-bound"
+			},
+			{
+				"script": "Radiant etch",
+				"binding": "Copper-locked"
+			}
 		],
 		"Knowledge": [
-			"Plants, Field notes, Papyrus scroll",
-			"Animals, Sketched, Clay tablet",
-			"War Tactics, Strategic, Parchment",
-			"Noble Houses, Courtly, Silk scroll",
-			"Gods, Clerical, Stone tablet",
-			"Language, Translation, Reed scroll",
-			"Navigation, Charts, Wood tablet",
-			"Mythic Creatures, Illustrated, Pigskin book",
-			"Herbalism, Dried Plants, Leaf manuscript",
-			"Astronomy, Patterns, Waxed scroll",
-			"Mining, Routes, Clay relief",
-			"Metallurgy, Ingredients, Lead codex",
-			"Architecture, Measurements, Parchment",
-			"Medicine, Medical, Vellum codex",
-			"Philosophy, Discursive, Leaf book",
-			"Law, Bureaucratic, Bronze plaque",
-			"History, Chronicle, Papyrus roll",
-			"Mythology, Epic Story, Bark scroll",
-			"Engineering, Technical, Wax scroll",
-			"Weather Lore, Reports, Clay tablet"
+			{
+				"topic": "Plants",
+				"style": "Field notes",
+				"format": "Papyrus scroll"
+			},
+			{
+				"topic": "Animals",
+				"style": "Sketched",
+				"format": "Clay tablet"
+			},
+			{
+				"topic": "War Tactics",
+				"style": "Strategic",
+				"format": "Parchment"
+			},
+			{
+				"topic": "Noble Houses",
+				"style": "Courtly",
+				"format": "Silk scroll"
+			},
+			{
+				"topic": "Gods",
+				"style": "Clerical",
+				"format": "Stone tablet"
+			},
+			{
+				"topic": "Language",
+				"style": "Translation",
+				"format": "Reed scroll"
+			},
+			{
+				"topic": "Navigation",
+				"style": "Charts",
+				"format": "Wood tablet"
+			},
+			{
+				"topic": "Mythic Creatures",
+				"style": "Illustrated",
+				"format": "Pigskin book"
+			},
+			{
+				"topic": "Herbalism",
+				"style": "Dried Plants",
+				"format": "Leaf manuscript"
+			},
+			{
+				"topic": "Astronomy",
+				"style": "Patterns",
+				"format": "Waxed scroll"
+			},
+			{
+				"topic": "Mining",
+				"style": "Routes",
+				"format": "Clay relief"
+			},
+			{
+				"topic": "Metallurgy",
+				"style": "Ingredients",
+				"format": "Lead codex"
+			},
+			{
+				"topic": "Architecture",
+				"style": "Measurements",
+				"format": "Parchment"
+			},
+			{
+				"topic": "Medicine",
+				"style": "Medical",
+				"format": "Vellum codex"
+			},
+			{
+				"topic": "Philosophy",
+				"style": "Discursive",
+				"format": "Leaf book"
+			},
+			{
+				"topic": "Law",
+				"style": "Bureaucratic",
+				"format": "Bronze plaque"
+			},
+			{
+				"topic": "History",
+				"style": "Chronicle",
+				"format": "Papyrus roll"
+			},
+			{
+				"topic": "Mythology",
+				"style": "Epic Story",
+				"format": "Bark scroll"
+			},
+			{
+				"topic": "Engineering",
+				"style": "Technical",
+				"format": "Wax scroll"
+			},
+			{
+				"topic": "Weather Lore",
+				"style": "Reports",
+				"format": "Clay tablet"
+			}
 		]
 	},
 	"wearableDescription": [
@@ -1445,7 +1809,7 @@
 			},
 			{
 				"material": "Horn-ridge overlays",
-				"form": "Ō-yoroi harness",
+				"form": "\u014c-yoroi harness",
 				"detail": "Wide shoulder plates"
 			},
 			{
@@ -2215,61 +2579,538 @@
 			"Greaves"
 		]
 	},
-	"costMultipliers": [5, 15, 50, 150, 500, 1500, 5000, 15000],
+	"costMultipliers": [
+		5,
+		15,
+		50,
+		150,
+		500,
+		1500,
+		5000,
+		15000
+	],
 	"qualityMaterials": {
 		"metalsAndMinerals": {
-			"low": ["Copper", "Bone fragments", "Flint", "Stone chips", "Fresh wood", "Raw ore", "Shell fragments", "Bark strips", "Reed", "Clay nodules", "Coal", "Charcoal"],
-			"medium": ["Bronze", "Silver", "Iron (Cursestone)", "Brass", "Hardwood", "Tin", "Lead", "Pewter", "Zinc", "Antimony", "Nickel", "Mercury"],
-			"high": ["Meteorite", "Deep Iron", "Dwarf-Steel", "Gold", "Treantwood", "Platinum", "Electrum", "White gold", "Rose gold", "Sun-gold", "Moon-silver", "Star-touched bronze"],
-			"supreme": ["Mithril", "Adamantite", "Starmetal", "Aegium", "Orichalcum", "Eternite", "Titanium", "Celestial Feathers", "Elder Dragon Bone", "Elderwood", "Dreamweave", "Infernal Horn"]
+			"low": [
+				"Copper",
+				"Bone fragments",
+				"Flint",
+				"Stone chips",
+				"Fresh wood",
+				"Raw ore",
+				"Shell fragments",
+				"Bark strips",
+				"Reed",
+				"Clay nodules",
+				"Coal",
+				"Charcoal"
+			],
+			"medium": [
+				"Bronze",
+				"Silver",
+				"Iron (Cursestone)",
+				"Brass",
+				"Hardwood",
+				"Tin",
+				"Lead",
+				"Pewter",
+				"Zinc",
+				"Antimony",
+				"Nickel",
+				"Mercury"
+			],
+			"high": [
+				"Meteorite",
+				"Deep Iron",
+				"Dwarf-Steel",
+				"Gold",
+				"Treantwood",
+				"Platinum",
+				"Electrum",
+				"White gold",
+				"Rose gold",
+				"Sun-gold",
+				"Moon-silver",
+				"Star-touched bronze"
+			],
+			"supreme": [
+				"Mithril",
+				"Adamantite",
+				"Starmetal",
+				"Aegium",
+				"Orichalcum",
+				"Eternite",
+				"Titanium",
+				"Celestial Feathers",
+				"Elder Dragon Bone",
+				"Elderwood",
+				"Dreamweave",
+				"Infernal Horn"
+			]
 		},
 		"gems": {
-			"low": ["River stones", "Quartz", "Flint chips", "Glass beads", "Smooth pebbles", "Mica flakes", "Polished stones", "Jasper", "Rough crystal", "Chipped gems", "Cloudy quartz", "Fossil fragments"],
-			"medium": ["Obsidian", "Agate", "Garnet", "Amethyst", "Turquoise", "Moonstone", "Bloodstone", "Carnelian", "Onyx", "Labradorite", "Hematite", "Malachite"],
-			"high": ["Diamond", "Ruby", "Sapphire", "Emerald", "Topaz", "Aquamarine", "Opal", "Jade", "Peridot", "Beryl", "Citrine", "Alexandrite"],
-			"supreme": ["Elder dragon's eye", "Solarite crystal", "Lunarite crystal", "Star ruby", "Black diamond", "Star sapphire", "Clear diamond", "Primordial amber", "Phoenix tears", "Void crystal", "Leviathan pearl", "Heart of the mountain"]
+			"low": [
+				"River stones",
+				"Quartz",
+				"Flint chips",
+				"Glass beads",
+				"Smooth pebbles",
+				"Mica flakes",
+				"Polished stones",
+				"Jasper",
+				"Rough crystal",
+				"Chipped gems",
+				"Cloudy quartz",
+				"Fossil fragments"
+			],
+			"medium": [
+				"Obsidian",
+				"Agate",
+				"Garnet",
+				"Amethyst",
+				"Turquoise",
+				"Moonstone",
+				"Bloodstone",
+				"Carnelian",
+				"Onyx",
+				"Labradorite",
+				"Hematite",
+				"Malachite"
+			],
+			"high": [
+				"Diamond",
+				"Ruby",
+				"Sapphire",
+				"Emerald",
+				"Topaz",
+				"Aquamarine",
+				"Opal",
+				"Jade",
+				"Peridot",
+				"Beryl",
+				"Citrine",
+				"Alexandrite"
+			],
+			"supreme": [
+				"Elder dragon's eye",
+				"Solarite crystal",
+				"Lunarite crystal",
+				"Star ruby",
+				"Black diamond",
+				"Star sapphire",
+				"Clear diamond",
+				"Primordial amber",
+				"Phoenix tears",
+				"Void crystal",
+				"Leviathan pearl",
+				"Heart of the mountain"
+			]
 		},
 		"woodAndPlants": {
-			"low": ["Pine", "Birch", "Willow", "Poplar", "Elm", "Beech", "Hazel", "Fresh branches", "Green wood", "Bark strips", "Twigs", "Cedar shavings"],
-			"medium": ["Oak", "Maple", "Ash", "Hickory", "Cherry", "Walnut", "Mahogany", "Teak", "Yew", "Olive", "Chestnut", "Bamboo"],
-			"high": ["Darkwood", "Silverroot", "Runebark", "Ebony", "Cedar", "Ironwood", "Rosewood", "Sandalwood", "Silverwood", "Ghostwood", "Spirit pine", "Moon-touched willow"],
-			"supreme": ["Elder oak", "Treantwood", "Elderwood", "World-tree branch", "Yggdrasil bark", "Celestial pine", "Moonbeam willow", "Starlight cedar", "Timeless oak", "Living ironwood", "Druid's blessing", "Divine heartwood"]
+			"low": [
+				"Pine",
+				"Birch",
+				"Willow",
+				"Poplar",
+				"Elm",
+				"Beech",
+				"Hazel",
+				"Fresh branches",
+				"Green wood",
+				"Bark strips",
+				"Twigs",
+				"Cedar shavings"
+			],
+			"medium": [
+				"Oak",
+				"Maple",
+				"Ash",
+				"Hickory",
+				"Cherry",
+				"Walnut",
+				"Mahogany",
+				"Teak",
+				"Yew",
+				"Olive",
+				"Chestnut",
+				"Bamboo"
+			],
+			"high": [
+				"Darkwood",
+				"Silverroot",
+				"Runebark",
+				"Ebony",
+				"Cedar",
+				"Ironwood",
+				"Rosewood",
+				"Sandalwood",
+				"Silverwood",
+				"Ghostwood",
+				"Spirit pine",
+				"Moon-touched willow"
+			],
+			"supreme": [
+				"Elder oak",
+				"Treantwood",
+				"Elderwood",
+				"World-tree branch",
+				"Yggdrasil bark",
+				"Celestial pine",
+				"Moonbeam willow",
+				"Starlight cedar",
+				"Timeless oak",
+				"Living ironwood",
+				"Druid's blessing",
+				"Divine heartwood"
+			]
 		},
 		"organics": {
-			"low": ["Animal bone", "Hide scraps", "Fur scraps", "Lizard scales", "Antler shards", "Teeth", "Claws", "Shell fragments", "Fish scales", "Raw sinew", "Feathers", "Bone meal"],
-			"medium": ["Monster bone", "Chitin plates", "Monster scales", "Leather", "Horn", "Monster hide", "Owlbear pelt", "Dire wolf pelt", "Wyvern claw", "Kraken tentacle", "Manticore quills", "Bulette hide"],
-			"high": ["Dragon bone", "Dragon scales", "Wyrmhide", "Giant spider silk", "Basilisk hide", "Griffin feathers", "Roc talons", "Behemoth horn", "Unicorn horn", "Pegasus wing", "Gorgon scales", "Celestial feathers"],
-			"supreme": ["Elder dragon bone", "Elder dragon scales", "Titan-beast hide", "Phantom-silk", "Phoenix feathers", "Thunderbird plume", "Leviathan bone", "Sphinx fur", "Avatar essence", "World-serpent scale", "Primordial sinew", "God-beast remnant"]
+			"low": [
+				"Animal bone",
+				"Hide scraps",
+				"Fur scraps",
+				"Lizard scales",
+				"Antler shards",
+				"Teeth",
+				"Claws",
+				"Shell fragments",
+				"Fish scales",
+				"Raw sinew",
+				"Feathers",
+				"Bone meal"
+			],
+			"medium": [
+				"Monster bone",
+				"Chitin plates",
+				"Monster scales",
+				"Leather",
+				"Horn",
+				"Monster hide",
+				"Owlbear pelt",
+				"Dire wolf pelt",
+				"Wyvern claw",
+				"Kraken tentacle",
+				"Manticore quills",
+				"Bulette hide"
+			],
+			"high": [
+				"Dragon bone",
+				"Dragon scales",
+				"Wyrmhide",
+				"Giant spider silk",
+				"Basilisk hide",
+				"Griffin feathers",
+				"Roc talons",
+				"Behemoth horn",
+				"Unicorn horn",
+				"Pegasus wing",
+				"Gorgon scales",
+				"Celestial feathers"
+			],
+			"supreme": [
+				"Elder dragon bone",
+				"Elder dragon scales",
+				"Titan-beast hide",
+				"Phantom-silk",
+				"Phoenix feathers",
+				"Thunderbird plume",
+				"Leviathan bone",
+				"Sphinx fur",
+				"Avatar essence",
+				"World-serpent scale",
+				"Primordial sinew",
+				"God-beast remnant"
+			]
 		},
 		"textiles": {
-			"low": ["Rough wool", "Coarse linen", "Raw cotton", "Hemp fiber", "Goat hair", "Burlap", "Flax", "Animal fur", "Plant fiber", "Woven grass", "Tree bark", "Leather strips"],
-			"medium": ["Fine wool", "Quality linen", "Soft cotton", "Woven hemp", "Alpaca wool", "Cashmere", "Quality flax", "Llama wool", "Mohair", "Camel hair", "Yak wool", "Sheep wool"],
-			"high": ["Giant spider silk", "Silk", "Wyvern-hair", "Cloud-cotton", "Pegasus mane", "Unicorn tail", "Fey-silk", "Ethereal mooncloth", "Phoenix down", "Sprite silk", "Dream silk", "Shadowsilk"],
-			"supreme": ["Phantom-silk", "Dreamweave", "Starweave", "Moonthread", "Divine fiber", "Angel hair", "Godspun thread", "Fate's thread", "Eternity weave", "Temporal thread", "Reality thread", "Cosmic thread"]
+			"low": [
+				"Rough wool",
+				"Coarse linen",
+				"Raw cotton",
+				"Hemp fiber",
+				"Goat hair",
+				"Burlap",
+				"Flax",
+				"Animal fur",
+				"Plant fiber",
+				"Woven grass",
+				"Tree bark",
+				"Leather strips"
+			],
+			"medium": [
+				"Fine wool",
+				"Quality linen",
+				"Soft cotton",
+				"Woven hemp",
+				"Alpaca wool",
+				"Cashmere",
+				"Quality flax",
+				"Llama wool",
+				"Mohair",
+				"Camel hair",
+				"Yak wool",
+				"Sheep wool"
+			],
+			"high": [
+				"Giant spider silk",
+				"Silk",
+				"Wyvern-hair",
+				"Cloud-cotton",
+				"Pegasus mane",
+				"Unicorn tail",
+				"Fey-silk",
+				"Ethereal mooncloth",
+				"Phoenix down",
+				"Sprite silk",
+				"Dream silk",
+				"Shadowsilk"
+			],
+			"supreme": [
+				"Phantom-silk",
+				"Dreamweave",
+				"Starweave",
+				"Moonthread",
+				"Divine fiber",
+				"Angel hair",
+				"Godspun thread",
+				"Fate's thread",
+				"Eternity weave",
+				"Temporal thread",
+				"Reality thread",
+				"Cosmic thread"
+			]
 		},
 		"ceramics": {
-			"low": ["Clay pots", "Rough pottery", "Fired earth", "Crude vessels", "Common ceramic", "Stone crocks", "Simple tiles", "Basic pottery", "Mud bricks", "Kiln-fired clay", "Rough vessels", "Terracotta"],
-			"medium": ["Fine pottery", "Glazed ceramic", "Quality stoneware", "Decorated pottery", "Burnished ware", "Fine earthenware", "Painted ceramic", "Carved pottery", "Red-figure ware", "Black-figure ware", "Polished ceramic", "Slip-painted ware"],
-			"high": ["Porcelain", "Masterwork ceramic", "Crystal ceramic", "Windglass", "Moonstone ceramic", "Rune-etched pottery", "Spellbound clay", "Dragon-fired ware", "Enchanted pottery", "Mage-wrought ceramic", "Spirit-touched ware", "Elemental ceramic"],
-			"supreme": ["Celestial ceramic", "Divine porcelain", "Starforged clay", "Godcrafted vessel", "Eternal pottery", "Living ceramic", "Worldshaper's work", "Phoenix ceramic", "Primordial clay", "Titan's pottery", "Heaven's craft", "God's handiwork"]
+			"low": [
+				"Clay pots",
+				"Rough pottery",
+				"Fired earth",
+				"Crude vessels",
+				"Common ceramic",
+				"Stone crocks",
+				"Simple tiles",
+				"Basic pottery",
+				"Mud bricks",
+				"Kiln-fired clay",
+				"Rough vessels",
+				"Terracotta"
+			],
+			"medium": [
+				"Fine pottery",
+				"Glazed ceramic",
+				"Quality stoneware",
+				"Decorated pottery",
+				"Burnished ware",
+				"Fine earthenware",
+				"Painted ceramic",
+				"Carved pottery",
+				"Red-figure ware",
+				"Black-figure ware",
+				"Polished ceramic",
+				"Slip-painted ware"
+			],
+			"high": [
+				"Porcelain",
+				"Masterwork ceramic",
+				"Crystal ceramic",
+				"Windglass",
+				"Moonstone ceramic",
+				"Rune-etched pottery",
+				"Spellbound clay",
+				"Dragon-fired ware",
+				"Enchanted pottery",
+				"Mage-wrought ceramic",
+				"Spirit-touched ware",
+				"Elemental ceramic"
+			],
+			"supreme": [
+				"Celestial ceramic",
+				"Divine porcelain",
+				"Starforged clay",
+				"Godcrafted vessel",
+				"Eternal pottery",
+				"Living ceramic",
+				"Worldshaper's work",
+				"Phoenix ceramic",
+				"Primordial clay",
+				"Titan's pottery",
+				"Heaven's craft",
+				"God's handiwork"
+			]
 		},
 		"spicesAndDyes": {
-			"low": ["Common salt", "Wild herbs", "Clay pigments", "Bark dye", "Berry stains", "Ash powder", "Mud colors", "Plant juices", "Flower petals", "Root extracts", "Leaf dyes", "Rock dust"],
-			"medium": ["Sea salt", "Dried herbs", "Ochre dyes", "Madder root", "Woad", "Rock salt", "Turmeric", "Henna", "Cochineal", "Logwood", "Safflower", "Walnut hulls"],
-			"high": ["Saffron", "Cinnamon", "Indigo", "Cloves", "Cardamom", "Nutmeg", "Purple dye", "Giant honey", "Dreamspice", "Mermaid salt", "Ethereal mint", "Void pepper"],
-			"supreme": ["Phoenix spice", "Ambrosia powder", "Nectar of gods", "Starlight dye", "Celestial seasoning", "Fey essence", "Dragon's breath", "Elixir of life", "Angel's tears", "Divine flavor", "God's seasoning", "Immortal spice"]
+			"low": [
+				"Common salt",
+				"Wild herbs",
+				"Clay pigments",
+				"Bark dye",
+				"Berry stains",
+				"Ash powder",
+				"Mud colors",
+				"Plant juices",
+				"Flower petals",
+				"Root extracts",
+				"Leaf dyes",
+				"Rock dust"
+			],
+			"medium": [
+				"Sea salt",
+				"Dried herbs",
+				"Ochre dyes",
+				"Madder root",
+				"Woad",
+				"Rock salt",
+				"Turmeric",
+				"Henna",
+				"Cochineal",
+				"Logwood",
+				"Safflower",
+				"Walnut hulls"
+			],
+			"high": [
+				"Saffron",
+				"Cinnamon",
+				"Indigo",
+				"Cloves",
+				"Cardamom",
+				"Nutmeg",
+				"Purple dye",
+				"Giant honey",
+				"Dreamspice",
+				"Mermaid salt",
+				"Ethereal mint",
+				"Void pepper"
+			],
+			"supreme": [
+				"Phoenix spice",
+				"Ambrosia powder",
+				"Nectar of gods",
+				"Starlight dye",
+				"Celestial seasoning",
+				"Fey essence",
+				"Dragon's breath",
+				"Elixir of life",
+				"Angel's tears",
+				"Divine flavor",
+				"God's seasoning",
+				"Immortal spice"
+			]
 		},
 		"grainAndBeverages": {
-			"low": ["Common wheat", "Barley grains", "Wild rice", "Oat kernels", "Rye seeds", "Millet", "Sour ale", "Weak wine", "Watered mead", "Grain porridge", "Simple bread", "Field corn"],
-			"medium": ["Quality wheat", "Pearl barley", "White rice", "Steel-cut oats", "Whole rye", "Quinoa", "Brown ale", "Table wine", "Honey mead", "Fresh bread", "Wheat beer", "Barley wine"],
-			"high": ["Golden wheat", "Ancient barley", "Sacred rice", "Moon oats", "Storm rye", "Star quinoa", "Royal ale", "Vintage wine", "Dragon mead", "Elven bread", "Dwarven stout", "Nectar wine"],
-			"supreme": ["Celestial wine", "Ambrosia mead", "Fey nectar", "Divine sustenance", "Immortal grain", "God's harvest", "Eternal brew", "Heaven's vintage", "Titan's drink", "Angel's bread", "Phoenix ale", "Primordial wine"]
+			"low": [
+				"Common wheat",
+				"Barley grains",
+				"Wild rice",
+				"Oat kernels",
+				"Rye seeds",
+				"Millet",
+				"Sour ale",
+				"Weak wine",
+				"Watered mead",
+				"Grain porridge",
+				"Simple bread",
+				"Field corn"
+			],
+			"medium": [
+				"Quality wheat",
+				"Pearl barley",
+				"White rice",
+				"Steel-cut oats",
+				"Whole rye",
+				"Quinoa",
+				"Brown ale",
+				"Table wine",
+				"Honey mead",
+				"Fresh bread",
+				"Wheat beer",
+				"Barley wine"
+			],
+			"high": [
+				"Golden wheat",
+				"Ancient barley",
+				"Sacred rice",
+				"Moon oats",
+				"Storm rye",
+				"Star quinoa",
+				"Royal ale",
+				"Vintage wine",
+				"Dragon mead",
+				"Elven bread",
+				"Dwarven stout",
+				"Nectar wine"
+			],
+			"supreme": [
+				"Celestial wine",
+				"Ambrosia mead",
+				"Fey nectar",
+				"Divine sustenance",
+				"Immortal grain",
+				"God's harvest",
+				"Eternal brew",
+				"Heaven's vintage",
+				"Titan's drink",
+				"Angel's bread",
+				"Phoenix ale",
+				"Primordial wine"
+			]
 		},
 		"oilAndPerfumes": {
-			"low": ["Cooking fat", "Animal fat", "Nut oil", "Crude perfume", "Flower water", "Herb extract", "Lamp oil", "Pine resin", "Tree sap", "Fish oil", "Tallow", "Cooking grease"],
-			"medium": ["Olive oil", "Sesame oil", "Almond oil", "Rose water", "Lavender oil", "Rosemary oil", "Cedar oil", "Sandalwood oil", "Jasmine oil", "Myrrh", "Frankincense", "Amber oil"],
-			"high": ["Lotus oil", "Sacred oil", "Mermaid tears", "Fairy essence", "Starlight oil", "Dragon oil", "Elven perfume", "Dwarven spirits", "Moon oil", "Unicorn tears", "Spirit essence", "Void perfume"],
-			"supreme": ["Phoenix oil", "Divine essence", "Celestial perfume", "God's fragrance", "Immortal scent", "Angel's breath", "Eternal fragrance", "Phoenix essence", "Primordial perfume", "Heaven's scent", "Titan's perfume", "Divine oil"]
+			"low": [
+				"Cooking fat",
+				"Animal fat",
+				"Nut oil",
+				"Crude perfume",
+				"Flower water",
+				"Herb extract",
+				"Lamp oil",
+				"Pine resin",
+				"Tree sap",
+				"Fish oil",
+				"Tallow",
+				"Cooking grease"
+			],
+			"medium": [
+				"Olive oil",
+				"Sesame oil",
+				"Almond oil",
+				"Rose water",
+				"Lavender oil",
+				"Rosemary oil",
+				"Cedar oil",
+				"Sandalwood oil",
+				"Jasmine oil",
+				"Myrrh",
+				"Frankincense",
+				"Amber oil"
+			],
+			"high": [
+				"Lotus oil",
+				"Sacred oil",
+				"Mermaid tears",
+				"Fairy essence",
+				"Starlight oil",
+				"Dragon oil",
+				"Elven perfume",
+				"Dwarven spirits",
+				"Moon oil",
+				"Unicorn tears",
+				"Spirit essence",
+				"Void perfume"
+			],
+			"supreme": [
+				"Phoenix oil",
+				"Divine essence",
+				"Celestial perfume",
+				"God's fragrance",
+				"Immortal scent",
+				"Angel's breath",
+				"Eternal fragrance",
+				"Phoenix essence",
+				"Primordial perfume",
+				"Heaven's scent",
+				"Titan's perfume",
+				"Divine oil"
+			]
 		}
 	},
 	"valuableMaterialMap": {
@@ -2286,7 +3127,16 @@
 		"Raw Metal / Timber": "woodAndPlants",
 		"Gem": "gems"
 	},
-	"treasureBonusMultipliers": [1, 3, 10, 30, 100, 300, 1000, 3000],
+	"treasureBonusMultipliers": [
+		1,
+		3,
+		10,
+		30,
+		100,
+		300,
+		1000,
+		3000
+	],
 	"wearableBaseCosts": {
 		"Face": 50,
 		"Head": 50,
@@ -2308,24 +3158,182 @@
 		"Supply": "Supply"
 	},
 	"magicUtilityTypes": [
-		{ "range": "1-2", "type": "Alchemical" },
-		{ "range": "3-4", "type": "Spell Scroll" },
-		{ "range": "5", "type": "Ammo" },
-		{ "range": "6", "type": "Wand" },
-		{ "range": "7", "type": "Staff" },
-		{ "range": "8", "type": "Everyday Object" },
-		{ "range": "9", "type": "Container" },
-		{ "range": "10", "type": "Instrument" },
-		{ "range": "11", "type": "Body Part" },
-		{ "range": "12", "type": "Natural" }
+		{
+			"range": "1-2",
+			"type": "Alchemical"
+		},
+		{
+			"range": "3-4",
+			"type": "Spell Scroll"
+		},
+		{
+			"range": "5",
+			"type": "Ammo"
+		},
+		{
+			"range": "6",
+			"type": "Wand"
+		},
+		{
+			"range": "7",
+			"type": "Staff"
+		},
+		{
+			"range": "8",
+			"type": "Everyday Object"
+		},
+		{
+			"range": "9",
+			"type": "Container"
+		},
+		{
+			"range": "10",
+			"type": "Instrument"
+		},
+		{
+			"range": "11",
+			"type": "Body Part"
+		},
+		{
+			"range": "12",
+			"type": "Natural"
+		}
 	],
 	"magicUtilitySubtables": {
-		"Ammo": ["Arrow", "Bolt", "Dart", "Throwing Stone", "Bolt Case", "Quiver"],
-		"Everyday Object": ["Coin", "Bead", "Fork", "Key", "Keyrune", "Card deck", "Dice", "Pen", "Figurine", "Rod", "Compass", "Torch", "Chain", "Boat", "Chariot", "Oil lamp", "Tapestry", "Comb", "Garment", "Tool", "Cane", "Cube", "Orb", "Dodecahedron", "Carpet", "Rope", "Lantern", "Quill", "Wheel", "Fan", "Bridle", "Saddle", "Basket", "Paddle", "Yoke", "Stylus", "Mirror", "Brooch", "Seal", "Token"],
-		"Container": ["Bag", "Box", "Capsule", "Censer", "Pouch", "Brazier", "Vessel", "Cistern", "Chest", "Barrel", "Flask", "Basket", "Jug", "Bottle", "Gourd", "Bowl", "Vase", "Ashpan", "Vat", "Urn", "Casket", "Amphora", "Canteen", "Coop"],
-		"Instrument": ["Drums", "Triangle", "Chime", "Bell", "Lyre", "Lute", "Pipes", "Flute", "Whistle", "Horn", "Harp", "Psaltery"],
-		"Body Part": ["Eye", "Hand", "Finger", "Tongue", "Hoof", "Lucky foot", "Claw", "Skin", "Hair", "Fang", "Kidney", "Tendon", "Skull", "Bone", "Heart", "Core", "Essence", "Spine", "Talon", "Scale", "Blood", "Marrow", "Spleen", "Sinew"],
-		"Natural": ["Stone", "Crystal", "Dust", "Gem", "Shard", "Pearl", "Amber", "Wood", "Feather", "Bean", "Ash", "Resin", "Flake", "Dewdrop", "Fossil", "Bark"]
+		"Ammo": [
+			"Arrow",
+			"Bolt",
+			"Dart",
+			"Throwing Stone",
+			"Bolt Case",
+			"Quiver"
+		],
+		"Everyday Object": [
+			"Coin",
+			"Bead",
+			"Fork",
+			"Key",
+			"Keyrune",
+			"Card deck",
+			"Dice",
+			"Pen",
+			"Figurine",
+			"Rod",
+			"Compass",
+			"Torch",
+			"Chain",
+			"Boat",
+			"Chariot",
+			"Oil lamp",
+			"Tapestry",
+			"Comb",
+			"Garment",
+			"Tool",
+			"Cane",
+			"Cube",
+			"Orb",
+			"Dodecahedron",
+			"Carpet",
+			"Rope",
+			"Lantern",
+			"Quill",
+			"Wheel",
+			"Fan",
+			"Bridle",
+			"Saddle",
+			"Basket",
+			"Paddle",
+			"Yoke",
+			"Stylus",
+			"Mirror",
+			"Brooch",
+			"Seal",
+			"Token"
+		],
+		"Container": [
+			"Bag",
+			"Box",
+			"Capsule",
+			"Censer",
+			"Pouch",
+			"Brazier",
+			"Vessel",
+			"Cistern",
+			"Chest",
+			"Barrel",
+			"Flask",
+			"Basket",
+			"Jug",
+			"Bottle",
+			"Gourd",
+			"Bowl",
+			"Vase",
+			"Ashpan",
+			"Vat",
+			"Urn",
+			"Casket",
+			"Amphora",
+			"Canteen",
+			"Coop"
+		],
+		"Instrument": [
+			"Drums",
+			"Triangle",
+			"Chime",
+			"Bell",
+			"Lyre",
+			"Lute",
+			"Pipes",
+			"Flute",
+			"Whistle",
+			"Horn",
+			"Harp",
+			"Psaltery"
+		],
+		"Body Part": [
+			"Eye",
+			"Hand",
+			"Finger",
+			"Tongue",
+			"Hoof",
+			"Lucky foot",
+			"Claw",
+			"Skin",
+			"Hair",
+			"Fang",
+			"Kidney",
+			"Tendon",
+			"Skull",
+			"Bone",
+			"Heart",
+			"Core",
+			"Essence",
+			"Spine",
+			"Talon",
+			"Scale",
+			"Blood",
+			"Marrow",
+			"Spleen",
+			"Sinew"
+		],
+		"Natural": [
+			"Stone",
+			"Crystal",
+			"Dust",
+			"Gem",
+			"Shard",
+			"Pearl",
+			"Amber",
+			"Wood",
+			"Feather",
+			"Bean",
+			"Ash",
+			"Resin",
+			"Flake",
+			"Dewdrop",
+			"Fossil",
+			"Bark"
+		]
 	},
 	"magicItemNamingPatterns": [
 		"[Noun] [Item]",
@@ -2335,164 +3343,808 @@
 	],
 	"magicItemNames": {
 		"utility": [
-			{ "adjective1": "Whispering", "noun1": "Flame", "adjective2": "Verdant", "noun2": "Echo" },
-			{ "adjective1": "Gilded", "noun1": "Root", "adjective2": "Petrified", "noun2": "Bloom" },
-			{ "adjective1": "Chiming", "noun1": "Dream", "adjective2": "Forgotten", "noun2": "Path" },
-			{ "adjective1": "Glimmering", "noun1": "Thought", "adjective2": "Bottled", "noun2": "Light" },
-			{ "adjective1": "Alchemic", "noun1": "Dust", "adjective2": "Crystalline", "noun2": "Pulse" },
-			{ "adjective1": "Unmelting", "noun1": "Frost", "adjective2": "Shifting", "noun2": "Memory" },
-			{ "adjective1": "Hollow", "noun1": "Spirit", "adjective2": "Celestial", "noun2": "Thread" },
-			{ "adjective1": "Bottled", "noun1": "Thunder", "adjective2": "Flickering", "noun2": "Star" },
-			{ "adjective1": "Molten", "noun1": "Core", "adjective2": "Runed", "noun2": "Chant" },
-			{ "adjective1": "Whisperwoven", "noun1": "Mist", "adjective2": "Wandering", "noun2": "Glyph" },
-			{ "adjective1": "Cracked", "noun1": "Sigil", "adjective2": "Dusty", "noun2": "Whim" },
-			{ "adjective1": "Bejeweled", "noun1": "Secret", "adjective2": "Eldritch", "noun2": "Murmurs" },
-			{ "adjective1": "Feathered", "noun1": "Storm", "adjective2": "Looming", "noun2": "Horizon" },
-			{ "adjective1": "Singing", "noun1": "Vapor", "adjective2": "Entropic", "noun2": "Flame" },
-			{ "adjective1": "Verdant", "noun1": "Echo", "adjective2": "Lurking", "noun2": "Voice" },
-			{ "adjective1": "Bound", "noun1": "Shadow", "adjective2": "Murmuring", "noun2": "Omen" },
-			{ "adjective1": "Veiled", "noun1": "Step", "adjective2": "Tenebrous", "noun2": "Vision" },
-			{ "adjective1": "Shifting", "noun1": "Mirage", "adjective2": "Gloaming", "noun2": "Harmony" },
-			{ "adjective1": "Fractal", "noun1": "Echo", "adjective2": "Stolen", "noun2": "Moment" },
-			{ "adjective1": "Polished", "noun1": "Essence", "adjective2": "Sacred", "noun2": "Cycle" }
+			{
+				"adjective1": "Whispering",
+				"noun1": "Flame",
+				"adjective2": "Verdant",
+				"noun2": "Echo"
+			},
+			{
+				"adjective1": "Gilded",
+				"noun1": "Root",
+				"adjective2": "Petrified",
+				"noun2": "Bloom"
+			},
+			{
+				"adjective1": "Chiming",
+				"noun1": "Dream",
+				"adjective2": "Forgotten",
+				"noun2": "Path"
+			},
+			{
+				"adjective1": "Glimmering",
+				"noun1": "Thought",
+				"adjective2": "Bottled",
+				"noun2": "Light"
+			},
+			{
+				"adjective1": "Alchemic",
+				"noun1": "Dust",
+				"adjective2": "Crystalline",
+				"noun2": "Pulse"
+			},
+			{
+				"adjective1": "Unmelting",
+				"noun1": "Frost",
+				"adjective2": "Shifting",
+				"noun2": "Memory"
+			},
+			{
+				"adjective1": "Hollow",
+				"noun1": "Spirit",
+				"adjective2": "Celestial",
+				"noun2": "Thread"
+			},
+			{
+				"adjective1": "Bottled",
+				"noun1": "Thunder",
+				"adjective2": "Flickering",
+				"noun2": "Star"
+			},
+			{
+				"adjective1": "Molten",
+				"noun1": "Core",
+				"adjective2": "Runed",
+				"noun2": "Chant"
+			},
+			{
+				"adjective1": "Whisperwoven",
+				"noun1": "Mist",
+				"adjective2": "Wandering",
+				"noun2": "Glyph"
+			},
+			{
+				"adjective1": "Cracked",
+				"noun1": "Sigil",
+				"adjective2": "Dusty",
+				"noun2": "Whim"
+			},
+			{
+				"adjective1": "Bejeweled",
+				"noun1": "Secret",
+				"adjective2": "Eldritch",
+				"noun2": "Murmurs"
+			},
+			{
+				"adjective1": "Feathered",
+				"noun1": "Storm",
+				"adjective2": "Looming",
+				"noun2": "Horizon"
+			},
+			{
+				"adjective1": "Singing",
+				"noun1": "Vapor",
+				"adjective2": "Entropic",
+				"noun2": "Flame"
+			},
+			{
+				"adjective1": "Verdant",
+				"noun1": "Echo",
+				"adjective2": "Lurking",
+				"noun2": "Voice"
+			},
+			{
+				"adjective1": "Bound",
+				"noun1": "Shadow",
+				"adjective2": "Murmuring",
+				"noun2": "Omen"
+			},
+			{
+				"adjective1": "Veiled",
+				"noun1": "Step",
+				"adjective2": "Tenebrous",
+				"noun2": "Vision"
+			},
+			{
+				"adjective1": "Shifting",
+				"noun1": "Mirage",
+				"adjective2": "Gloaming",
+				"noun2": "Harmony"
+			},
+			{
+				"adjective1": "Fractal",
+				"noun1": "Echo",
+				"adjective2": "Stolen",
+				"noun2": "Moment"
+			},
+			{
+				"adjective1": "Polished",
+				"noun1": "Essence",
+				"adjective2": "Sacred",
+				"noun2": "Cycle"
+			}
 		],
 		"wearable": [
-			{ "adjective1": "Ember-wreathed", "noun1": "Name", "adjective2": "Ancestral", "noun2": "Memory" },
-			{ "adjective1": "Gilded", "noun1": "Lineage", "adjective2": "Twilight", "noun2": "Whispers" },
-			{ "adjective1": "Serpent-scaled", "noun1": "Blessing", "adjective2": "Sacred", "noun2": "Pulse" },
-			{ "adjective1": "Moon-bathed", "noun1": "Veil", "adjective2": "Ironbound", "noun2": "Silence" },
-			{ "adjective1": "Windborne", "noun1": "Gaze", "adjective2": "Shimmering", "noun2": "Promise" },
-			{ "adjective1": "Jeweled", "noun1": "Tongue", "adjective2": "Forgotten", "noun2": "Gift" },
-			{ "adjective1": "Runed", "noun1": "Blessing", "adjective2": "Obsidian", "noun2": "Curse" },
-			{ "adjective1": "Glowing", "noun1": "Name", "adjective2": "Blessed", "noun2": "Thread" },
-			{ "adjective1": "Chiseled", "noun1": "Pact", "adjective2": "Starlit", "noun2": "Wound" },
-			{ "adjective1": "Blessed", "noun1": "Memory", "adjective2": "Howling", "noun2": "Mark" },
-			{ "adjective1": "Marked", "noun1": "Truth", "adjective2": "Crimson", "noun2": "Silence" },
-			{ "adjective1": "Wyrm-bound", "noun1": "Song", "adjective2": "Pale", "noun2": "Riddle" },
-			{ "adjective1": "Spiritforged", "noun1": "Rite", "adjective2": "Glinting", "noun2": "Tether" },
-			{ "adjective1": "Singing", "noun1": "Oath", "adjective2": "Verdant", "noun2": "Rhythm" },
-			{ "adjective1": "Fractal", "noun1": "Bond", "adjective2": "Chanted", "noun2": "Secret" },
-			{ "adjective1": "Ancient", "noun1": "Covenant", "adjective2": "Dreaming", "noun2": "Lineage" },
-			{ "adjective1": "Piercing", "noun1": "Insight", "adjective2": "Ceremonial", "noun2": "Murmur" },
-			{ "adjective1": "Everchanging", "noun1": "Truth", "adjective2": "Bronze", "noun2": "Memory" },
-			{ "adjective1": "Silvered", "noun1": "Calling", "adjective2": "Ethereal", "noun2": "Sign" },
-			{ "adjective1": "Firekissed", "noun1": "Promise", "adjective2": "Duskwoven", "noun2": "Curse" }
+			{
+				"adjective1": "Ember-wreathed",
+				"noun1": "Name",
+				"adjective2": "Ancestral",
+				"noun2": "Memory"
+			},
+			{
+				"adjective1": "Gilded",
+				"noun1": "Lineage",
+				"adjective2": "Twilight",
+				"noun2": "Whispers"
+			},
+			{
+				"adjective1": "Serpent-scaled",
+				"noun1": "Blessing",
+				"adjective2": "Sacred",
+				"noun2": "Pulse"
+			},
+			{
+				"adjective1": "Moon-bathed",
+				"noun1": "Veil",
+				"adjective2": "Ironbound",
+				"noun2": "Silence"
+			},
+			{
+				"adjective1": "Windborne",
+				"noun1": "Gaze",
+				"adjective2": "Shimmering",
+				"noun2": "Promise"
+			},
+			{
+				"adjective1": "Jeweled",
+				"noun1": "Tongue",
+				"adjective2": "Forgotten",
+				"noun2": "Gift"
+			},
+			{
+				"adjective1": "Runed",
+				"noun1": "Blessing",
+				"adjective2": "Obsidian",
+				"noun2": "Curse"
+			},
+			{
+				"adjective1": "Glowing",
+				"noun1": "Name",
+				"adjective2": "Blessed",
+				"noun2": "Thread"
+			},
+			{
+				"adjective1": "Chiseled",
+				"noun1": "Pact",
+				"adjective2": "Starlit",
+				"noun2": "Wound"
+			},
+			{
+				"adjective1": "Blessed",
+				"noun1": "Memory",
+				"adjective2": "Howling",
+				"noun2": "Mark"
+			},
+			{
+				"adjective1": "Marked",
+				"noun1": "Truth",
+				"adjective2": "Crimson",
+				"noun2": "Silence"
+			},
+			{
+				"adjective1": "Wyrm-bound",
+				"noun1": "Song",
+				"adjective2": "Pale",
+				"noun2": "Riddle"
+			},
+			{
+				"adjective1": "Spiritforged",
+				"noun1": "Rite",
+				"adjective2": "Glinting",
+				"noun2": "Tether"
+			},
+			{
+				"adjective1": "Singing",
+				"noun1": "Oath",
+				"adjective2": "Verdant",
+				"noun2": "Rhythm"
+			},
+			{
+				"adjective1": "Fractal",
+				"noun1": "Bond",
+				"adjective2": "Chanted",
+				"noun2": "Secret"
+			},
+			{
+				"adjective1": "Ancient",
+				"noun1": "Covenant",
+				"adjective2": "Dreaming",
+				"noun2": "Lineage"
+			},
+			{
+				"adjective1": "Piercing",
+				"noun1": "Insight",
+				"adjective2": "Ceremonial",
+				"noun2": "Murmur"
+			},
+			{
+				"adjective1": "Everchanging",
+				"noun1": "Truth",
+				"adjective2": "Bronze",
+				"noun2": "Memory"
+			},
+			{
+				"adjective1": "Silvered",
+				"noun1": "Calling",
+				"adjective2": "Ethereal",
+				"noun2": "Sign"
+			},
+			{
+				"adjective1": "Firekissed",
+				"noun1": "Promise",
+				"adjective2": "Duskwoven",
+				"noun2": "Curse"
+			}
 		],
 		"armor": [
-			{ "adjective1": "Sunforged", "noun1": "Bastion", "adjective2": "Golden", "noun2": "Lineage" },
-			{ "adjective1": "Wyrmscale", "noun1": "Pledge", "adjective2": "Burning", "noun2": "Trial" },
-			{ "adjective1": "Chained", "noun1": "Secret", "adjective2": "Moonlit", "noun2": "Watch" },
-			{ "adjective1": "Silent", "noun1": "Vigil", "adjective2": "Oathbound", "noun2": "Flame" },
-			{ "adjective1": "Polished", "noun1": "Rite", "adjective2": "Cracked", "noun2": "Mantle" },
-			{ "adjective1": "Spirit-bound", "noun1": "Burden", "adjective2": "Barbed", "noun2": "Legacy" },
-			{ "adjective1": "Thunder-etched", "noun1": "Faith", "adjective2": "Anointed", "noun2": "Trial" },
-			{ "adjective1": "Bronzeclad", "noun1": "Truth", "adjective2": "Iron", "noun2": "Silence" },
-			{ "adjective1": "Bloodstained", "noun1": "Path", "adjective2": "Shattered", "noun2": "Dawn" },
-			{ "adjective1": "Cracked", "noun1": "Vow", "adjective2": "Glorious", "noun2": "Roar" },
-			{ "adjective1": "Oceanmarked", "noun1": "Calling", "adjective2": "Dread", "noun2": "Echo" },
-			{ "adjective1": "Vine-wrapped", "noun1": "Trial", "adjective2": "Starlit", "noun2": "Memory" },
-			{ "adjective1": "Weathered", "noun1": "Trust", "adjective2": "Painted", "noun2": "Omen" },
-			{ "adjective1": "Woven", "noun1": "Fate", "adjective2": "Ritual", "noun2": "Tide" },
-			{ "adjective1": "Dusken", "noun1": "Beacon", "adjective2": "Silent", "noun2": "Flame" },
-			{ "adjective1": "Ancestral", "noun1": "Rite", "adjective2": "Sanctified", "noun2": "Voice" },
-			{ "adjective1": "Tranquil", "noun1": "Truth", "adjective2": "Marked", "noun2": "Shell" },
-			{ "adjective1": "Bronze-wrought", "noun1": "Voice", "adjective2": "Verdant", "noun2": "Weight" },
-			{ "adjective1": "Chanted", "noun1": "Pact", "adjective2": "Stonebound", "noun2": "Memory" },
-			{ "adjective1": "Echoing", "noun1": "Burden", "adjective2": "Crimson", "noun2": "Horizon" }
+			{
+				"adjective1": "Sunforged",
+				"noun1": "Bastion",
+				"adjective2": "Golden",
+				"noun2": "Lineage"
+			},
+			{
+				"adjective1": "Wyrmscale",
+				"noun1": "Pledge",
+				"adjective2": "Burning",
+				"noun2": "Trial"
+			},
+			{
+				"adjective1": "Chained",
+				"noun1": "Secret",
+				"adjective2": "Moonlit",
+				"noun2": "Watch"
+			},
+			{
+				"adjective1": "Silent",
+				"noun1": "Vigil",
+				"adjective2": "Oathbound",
+				"noun2": "Flame"
+			},
+			{
+				"adjective1": "Polished",
+				"noun1": "Rite",
+				"adjective2": "Cracked",
+				"noun2": "Mantle"
+			},
+			{
+				"adjective1": "Spirit-bound",
+				"noun1": "Burden",
+				"adjective2": "Barbed",
+				"noun2": "Legacy"
+			},
+			{
+				"adjective1": "Thunder-etched",
+				"noun1": "Faith",
+				"adjective2": "Anointed",
+				"noun2": "Trial"
+			},
+			{
+				"adjective1": "Bronzeclad",
+				"noun1": "Truth",
+				"adjective2": "Iron",
+				"noun2": "Silence"
+			},
+			{
+				"adjective1": "Bloodstained",
+				"noun1": "Path",
+				"adjective2": "Shattered",
+				"noun2": "Dawn"
+			},
+			{
+				"adjective1": "Cracked",
+				"noun1": "Vow",
+				"adjective2": "Glorious",
+				"noun2": "Roar"
+			},
+			{
+				"adjective1": "Oceanmarked",
+				"noun1": "Calling",
+				"adjective2": "Dread",
+				"noun2": "Echo"
+			},
+			{
+				"adjective1": "Vine-wrapped",
+				"noun1": "Trial",
+				"adjective2": "Starlit",
+				"noun2": "Memory"
+			},
+			{
+				"adjective1": "Weathered",
+				"noun1": "Trust",
+				"adjective2": "Painted",
+				"noun2": "Omen"
+			},
+			{
+				"adjective1": "Woven",
+				"noun1": "Fate",
+				"adjective2": "Ritual",
+				"noun2": "Tide"
+			},
+			{
+				"adjective1": "Dusken",
+				"noun1": "Beacon",
+				"adjective2": "Silent",
+				"noun2": "Flame"
+			},
+			{
+				"adjective1": "Ancestral",
+				"noun1": "Rite",
+				"adjective2": "Sanctified",
+				"noun2": "Voice"
+			},
+			{
+				"adjective1": "Tranquil",
+				"noun1": "Truth",
+				"adjective2": "Marked",
+				"noun2": "Shell"
+			},
+			{
+				"adjective1": "Bronze-wrought",
+				"noun1": "Voice",
+				"adjective2": "Verdant",
+				"noun2": "Weight"
+			},
+			{
+				"adjective1": "Chanted",
+				"noun1": "Pact",
+				"adjective2": "Stonebound",
+				"noun2": "Memory"
+			},
+			{
+				"adjective1": "Echoing",
+				"noun1": "Burden",
+				"adjective2": "Crimson",
+				"noun2": "Horizon"
+			}
 		],
 		"weapon": [
-			{ "adjective1": "Flaming", "noun1": "Vow", "adjective2": "Serpent", "noun2": "Wrath" },
-			{ "adjective1": "Bonecarved", "noun1": "Curse", "adjective2": "Silent", "noun2": "Trial" },
-			{ "adjective1": "Twisting", "noun1": "Grudge", "adjective2": "Bloodsoaked", "noun2": "Dream" },
-			{ "adjective1": "Vengeful", "noun1": "Name", "adjective2": "Lightning", "noun2": "Hunger" },
-			{ "adjective1": "Gleaming", "noun1": "Cry", "adjective2": "Stormforged", "noun2": "Promise" },
-			{ "adjective1": "Poisoned", "noun1": "Fang", "adjective2": "Crimson", "noun2": "Prayer" },
-			{ "adjective1": "Earthshatter", "noun1": "Will", "adjective2": "Forged", "noun2": "Fury" },
-			{ "adjective1": "Smoke-wreathed", "noun1": "Song", "adjective2": "Warped", "noun2": "Truth" },
-			{ "adjective1": "War-marked", "noun1": "Voice", "adjective2": "Risen", "noun2": "Wound" },
-			{ "adjective1": "Singing", "noun1": "Flame", "adjective2": "Shard", "noun2": "Vengeance" },
-			{ "adjective1": "Rune-etched", "noun1": "Roar", "adjective2": "Bronze", "noun2": "Pact" },
-			{ "adjective1": "Starlit", "noun1": "Bond", "adjective2": "Wyrm", "noun2": "Curse" },
-			{ "adjective1": "Shadowed", "noun1": "Oath", "adjective2": "Holy", "noun2": "Mark" },
-			{ "adjective1": "Raven-feathered", "noun1": "Cry", "adjective2": "Withered", "noun2": "Curse" },
-			{ "adjective1": "Thunderstruck", "noun1": "Edge", "adjective2": "Eclipsed", "noun2": "Pulse" },
-			{ "adjective1": "Glinting", "noun1": "Strike", "adjective2": "Burning", "noun2": "Eye" },
-			{ "adjective1": "Fire-tempered", "noun1": "Step", "adjective2": "Sealed", "noun2": "Path" },
-			{ "adjective1": "Bloodforged", "noun1": "Thorn", "adjective2": "Serene", "noun2": "Memory" },
-			{ "adjective1": "Blackened", "noun1": "Breath", "adjective2": "Gilded", "noun2": "Shadow" },
-			{ "adjective1": "Whispercarved", "noun1": "Judgment", "adjective2": "Eternal", "noun2": "Flame" }
+			{
+				"adjective1": "Flaming",
+				"noun1": "Vow",
+				"adjective2": "Serpent",
+				"noun2": "Wrath"
+			},
+			{
+				"adjective1": "Bonecarved",
+				"noun1": "Curse",
+				"adjective2": "Silent",
+				"noun2": "Trial"
+			},
+			{
+				"adjective1": "Twisting",
+				"noun1": "Grudge",
+				"adjective2": "Bloodsoaked",
+				"noun2": "Dream"
+			},
+			{
+				"adjective1": "Vengeful",
+				"noun1": "Name",
+				"adjective2": "Lightning",
+				"noun2": "Hunger"
+			},
+			{
+				"adjective1": "Gleaming",
+				"noun1": "Cry",
+				"adjective2": "Stormforged",
+				"noun2": "Promise"
+			},
+			{
+				"adjective1": "Poisoned",
+				"noun1": "Fang",
+				"adjective2": "Crimson",
+				"noun2": "Prayer"
+			},
+			{
+				"adjective1": "Earthshatter",
+				"noun1": "Will",
+				"adjective2": "Forged",
+				"noun2": "Fury"
+			},
+			{
+				"adjective1": "Smoke-wreathed",
+				"noun1": "Song",
+				"adjective2": "Warped",
+				"noun2": "Truth"
+			},
+			{
+				"adjective1": "War-marked",
+				"noun1": "Voice",
+				"adjective2": "Risen",
+				"noun2": "Wound"
+			},
+			{
+				"adjective1": "Singing",
+				"noun1": "Flame",
+				"adjective2": "Shard",
+				"noun2": "Vengeance"
+			},
+			{
+				"adjective1": "Rune-etched",
+				"noun1": "Roar",
+				"adjective2": "Bronze",
+				"noun2": "Pact"
+			},
+			{
+				"adjective1": "Starlit",
+				"noun1": "Bond",
+				"adjective2": "Wyrm",
+				"noun2": "Curse"
+			},
+			{
+				"adjective1": "Shadowed",
+				"noun1": "Oath",
+				"adjective2": "Holy",
+				"noun2": "Mark"
+			},
+			{
+				"adjective1": "Raven-feathered",
+				"noun1": "Cry",
+				"adjective2": "Withered",
+				"noun2": "Curse"
+			},
+			{
+				"adjective1": "Thunderstruck",
+				"noun1": "Edge",
+				"adjective2": "Eclipsed",
+				"noun2": "Pulse"
+			},
+			{
+				"adjective1": "Glinting",
+				"noun1": "Strike",
+				"adjective2": "Burning",
+				"noun2": "Eye"
+			},
+			{
+				"adjective1": "Fire-tempered",
+				"noun1": "Step",
+				"adjective2": "Sealed",
+				"noun2": "Path"
+			},
+			{
+				"adjective1": "Bloodforged",
+				"noun1": "Thorn",
+				"adjective2": "Serene",
+				"noun2": "Memory"
+			},
+			{
+				"adjective1": "Blackened",
+				"noun1": "Breath",
+				"adjective2": "Gilded",
+				"noun2": "Shadow"
+			},
+			{
+				"adjective1": "Whispercarved",
+				"noun1": "Judgment",
+				"adjective2": "Eternal",
+				"noun2": "Flame"
+			}
 		],
 		"spellCatalyst": [
-			{ "adjective1": "Dreaming", "noun1": "Thread", "adjective2": "Starbound", "noun2": "Song" },
-			{ "adjective1": "Crystal-tipped", "noun1": "Pulse", "adjective2": "Verdant", "noun2": "Flame" },
-			{ "adjective1": "Emberlight", "noun1": "Whisper", "adjective2": "Echoing", "noun2": "Veil" },
-			{ "adjective1": "Glowing", "noun1": "Vision", "adjective2": "Hidden", "noun2": "Coil" },
-			{ "adjective1": "Whispershaped", "noun1": "Chant", "adjective2": "Luminous", "noun2": "Spark" },
-			{ "adjective1": "Fractured", "noun1": "Will", "adjective2": "Murmuring", "noun2": "Sigil" },
-			{ "adjective1": "Duskforged", "noun1": "Breath", "adjective2": "Ancient", "noun2": "Secret" },
-			{ "adjective1": "Sand-wrapped", "noun1": "Whim", "adjective2": "Thundering", "noun2": "Spiral" },
-			{ "adjective1": "Spiraling", "noun1": "Echo", "adjective2": "Chosen", "noun2": "Curse" },
-			{ "adjective1": "Pale", "noun1": "Glyph", "adjective2": "Singing", "noun2": "Name" },
-			{ "adjective1": "Hollow", "noun1": "Spark", "adjective2": "Etched", "noun2": "Vein" },
-			{ "adjective1": "Gilded", "noun1": "Fire", "adjective2": "Fated", "noun2": "Loop" },
-			{ "adjective1": "Braided", "noun1": "Verse", "adjective2": "Bronze", "noun2": "Ember" },
-			{ "adjective1": "Oathbound", "noun1": "Murmur", "adjective2": "Melting", "noun2": "Glimmer" },
-			{ "adjective1": "Whispering", "noun1": "Rift", "adjective2": "Soaring", "noun2": "Flame" },
-			{ "adjective1": "Firekissed", "noun1": "Veil", "adjective2": "Crystalline", "noun2": "Shiver" },
-			{ "adjective1": "Carved", "noun1": "Lull", "adjective2": "Divine", "noun2": "Fracture" },
-			{ "adjective1": "Polished", "noun1": "Drift", "adjective2": "Hollow", "noun2": "Promise" },
-			{ "adjective1": "Starlit", "noun1": "Tear", "adjective2": "Mystic", "noun2": "Lash" },
-			{ "adjective1": "Shadow-drawn", "noun1": "Breath", "adjective2": "Singing", "noun2": "Coil" }
+			{
+				"adjective1": "Dreaming",
+				"noun1": "Thread",
+				"adjective2": "Starbound",
+				"noun2": "Song"
+			},
+			{
+				"adjective1": "Crystal-tipped",
+				"noun1": "Pulse",
+				"adjective2": "Verdant",
+				"noun2": "Flame"
+			},
+			{
+				"adjective1": "Emberlight",
+				"noun1": "Whisper",
+				"adjective2": "Echoing",
+				"noun2": "Veil"
+			},
+			{
+				"adjective1": "Glowing",
+				"noun1": "Vision",
+				"adjective2": "Hidden",
+				"noun2": "Coil"
+			},
+			{
+				"adjective1": "Whispershaped",
+				"noun1": "Chant",
+				"adjective2": "Luminous",
+				"noun2": "Spark"
+			},
+			{
+				"adjective1": "Fractured",
+				"noun1": "Will",
+				"adjective2": "Murmuring",
+				"noun2": "Sigil"
+			},
+			{
+				"adjective1": "Duskforged",
+				"noun1": "Breath",
+				"adjective2": "Ancient",
+				"noun2": "Secret"
+			},
+			{
+				"adjective1": "Sand-wrapped",
+				"noun1": "Whim",
+				"adjective2": "Thundering",
+				"noun2": "Spiral"
+			},
+			{
+				"adjective1": "Spiraling",
+				"noun1": "Echo",
+				"adjective2": "Chosen",
+				"noun2": "Curse"
+			},
+			{
+				"adjective1": "Pale",
+				"noun1": "Glyph",
+				"adjective2": "Singing",
+				"noun2": "Name"
+			},
+			{
+				"adjective1": "Hollow",
+				"noun1": "Spark",
+				"adjective2": "Etched",
+				"noun2": "Vein"
+			},
+			{
+				"adjective1": "Gilded",
+				"noun1": "Fire",
+				"adjective2": "Fated",
+				"noun2": "Loop"
+			},
+			{
+				"adjective1": "Braided",
+				"noun1": "Verse",
+				"adjective2": "Bronze",
+				"noun2": "Ember"
+			},
+			{
+				"adjective1": "Oathbound",
+				"noun1": "Murmur",
+				"adjective2": "Melting",
+				"noun2": "Glimmer"
+			},
+			{
+				"adjective1": "Whispering",
+				"noun1": "Rift",
+				"adjective2": "Soaring",
+				"noun2": "Flame"
+			},
+			{
+				"adjective1": "Firekissed",
+				"noun1": "Veil",
+				"adjective2": "Crystalline",
+				"noun2": "Shiver"
+			},
+			{
+				"adjective1": "Carved",
+				"noun1": "Lull",
+				"adjective2": "Divine",
+				"noun2": "Fracture"
+			},
+			{
+				"adjective1": "Polished",
+				"noun1": "Drift",
+				"adjective2": "Hollow",
+				"noun2": "Promise"
+			},
+			{
+				"adjective1": "Starlit",
+				"noun1": "Tear",
+				"adjective2": "Mystic",
+				"noun2": "Lash"
+			},
+			{
+				"adjective1": "Shadow-drawn",
+				"noun1": "Breath",
+				"adjective2": "Singing",
+				"noun2": "Coil"
+			}
 		]
 	},
 	"magicItemEffects": [
-		{ "effectType": "Empowerment", "function": "Grants bonus or ability to enhance actions", "trigger": "Passive / Always On", "scope": "Wielder Only" },
-		{ "effectType": "Restoration", "function": "Heals, purifies, or restores something", "trigger": "Daily / Limited Uses", "scope": "Targeted Creature" },
-		{ "effectType": "Manipulation", "function": "Controls, compels, or redirects", "trigger": "Command Word / Gesture", "scope": "Nearby Creature" },
-		{ "effectType": "Augmentation", "function": "Boosts a skill, sense, or stat", "trigger": "When Used as Tool", "scope": "Self or Held Item" },
-		{ "effectType": "Suppression", "function": "Weakens, nullifies, or silences", "trigger": "While Active / Equipped", "scope": "Enemy Ability / Zone" },
-		{ "effectType": "Generation", "function": "Creates light, energy, or simple matter", "trigger": "Rechargeable / Hourly", "scope": "Area Around User" },
-		{ "effectType": "Erasure", "function": "Destroys or disables a thing", "trigger": "On Hit / Touch", "scope": "Object or Small Area" },
-		{ "effectType": "Alteration", "function": "Transforms materials, forms, or effects", "trigger": "Condition-Based", "scope": "Touched Creature/Item" },
-		{ "effectType": "Movement", "function": "Enables special travel or repositioning", "trigger": "Quick Action / Activation", "scope": "Wielder or Allies" },
-		{ "effectType": "Sealing", "function": "Binds, wards, or traps", "trigger": "Triggered Automatically", "scope": "Door, Portal, or Target" },
-		{ "effectType": "Revelation", "function": "Exposes truths, detects, or uncovers", "trigger": "At Will or Focused Gaze", "scope": "Hidden or Magical Thing" },
-		{ "effectType": "Concealment", "function": "Hides, muffles, or misdirects", "trigger": "While Hidden / Still", "scope": "Wielder or Location" }
+		{
+			"effectType": "Empowerment",
+			"function": "Grants bonus or ability to enhance actions",
+			"trigger": "Passive / Always On",
+			"scope": "Wielder Only"
+		},
+		{
+			"effectType": "Restoration",
+			"function": "Heals, purifies, or restores something",
+			"trigger": "Daily / Limited Uses",
+			"scope": "Targeted Creature"
+		},
+		{
+			"effectType": "Manipulation",
+			"function": "Controls, compels, or redirects",
+			"trigger": "Command Word / Gesture",
+			"scope": "Nearby Creature"
+		},
+		{
+			"effectType": "Augmentation",
+			"function": "Boosts a skill, sense, or stat",
+			"trigger": "When Used as Tool",
+			"scope": "Self or Held Item"
+		},
+		{
+			"effectType": "Suppression",
+			"function": "Weakens, nullifies, or silences",
+			"trigger": "While Active / Equipped",
+			"scope": "Enemy Ability / Zone"
+		},
+		{
+			"effectType": "Generation",
+			"function": "Creates light, energy, or simple matter",
+			"trigger": "Rechargeable / Hourly",
+			"scope": "Area Around User"
+		},
+		{
+			"effectType": "Erasure",
+			"function": "Destroys or disables a thing",
+			"trigger": "On Hit / Touch",
+			"scope": "Object or Small Area"
+		},
+		{
+			"effectType": "Alteration",
+			"function": "Transforms materials, forms, or effects",
+			"trigger": "Condition-Based",
+			"scope": "Touched Creature/Item"
+		},
+		{
+			"effectType": "Movement",
+			"function": "Enables special travel or repositioning",
+			"trigger": "Quick Action / Activation",
+			"scope": "Wielder or Allies"
+		},
+		{
+			"effectType": "Sealing",
+			"function": "Binds, wards, or traps",
+			"trigger": "Triggered Automatically",
+			"scope": "Door, Portal, or Target"
+		},
+		{
+			"effectType": "Revelation",
+			"function": "Exposes truths, detects, or uncovers",
+			"trigger": "At Will or Focused Gaze",
+			"scope": "Hidden or Magical Thing"
+		},
+		{
+			"effectType": "Concealment",
+			"function": "Hides, muffles, or misdirects",
+			"trigger": "While Hidden / Still",
+			"scope": "Wielder or Location"
+		}
 	],
 	"magicItemCurseStatus": [
-		{ "status": "Definitely Cursed", "description": "This item has a full-blown curse." },
-		{ "status": "Mildly Cursed", "description": "The item has a subtle drawback or minor inconvenience." },
-		{ "status": "Deceptively Cursed", "description": "Initially helpful, but the curse reveals itself under a condition." },
-		{ "status": "Cursed Legacy", "description": "Not currently cursed, but bears a cursed history or residue." },
-		{ "status": "Not Cursed", "description": "The item is entirely benign." },
-		{ "status": "Not Cursed", "description": "The item is entirely benign." },
-		{ "status": "Not Cursed", "description": "The item is entirely benign." },
-		{ "status": "Not Cursed", "description": "The item is entirely benign." },
-		{ "status": "Not Cursed", "description": "The item is entirely benign." },
-		{ "status": "Not Cursed", "description": "The item is entirely benign." },
-		{ "status": "False Curse", "description": "No curse exists, but it appears cursed." },
-		{ "status": "Blessed / Ward-Bound", "description": "The item is protected against curses." }
+		{
+			"status": "Definitely Cursed",
+			"description": "This item has a full-blown curse."
+		},
+		{
+			"status": "Mildly Cursed",
+			"description": "The item has a subtle drawback or minor inconvenience."
+		},
+		{
+			"status": "Deceptively Cursed",
+			"description": "Initially helpful, but the curse reveals itself under a condition."
+		},
+		{
+			"status": "Cursed Legacy",
+			"description": "Not currently cursed, but bears a cursed history or residue."
+		},
+		{
+			"status": "Not Cursed",
+			"description": "The item is entirely benign."
+		},
+		{
+			"status": "Not Cursed",
+			"description": "The item is entirely benign."
+		},
+		{
+			"status": "Not Cursed",
+			"description": "The item is entirely benign."
+		},
+		{
+			"status": "Not Cursed",
+			"description": "The item is entirely benign."
+		},
+		{
+			"status": "Not Cursed",
+			"description": "The item is entirely benign."
+		},
+		{
+			"status": "Not Cursed",
+			"description": "The item is entirely benign."
+		},
+		{
+			"status": "False Curse",
+			"description": "No curse exists, but it appears cursed."
+		},
+		{
+			"status": "Blessed / Ward-Bound",
+			"description": "The item is protected against curses."
+		}
 	],
 	"magicItemCurseSigns": [
-		"Unsettling sensation — a chill, nausea, or static prickle",
-		"Subtle resistance — feels heavier or vibrates faintly",
-		"Whispered echo — a faint voice no one else hears",
-		"Strange reaction — fire sputters, animals shy away, shadows bend",
-		"Unnatural aura — unstable, flickering magical signature",
-		"Disrupted sleep — vivid nightmares or restless sleep"
+		"Unsettling sensation \u2014 a chill, nausea, or static prickle",
+		"Subtle resistance \u2014 feels heavier or vibrates faintly",
+		"Whispered echo \u2014 a faint voice no one else hears",
+		"Strange reaction \u2014 fire sputters, animals shy away, shadows bend",
+		"Unnatural aura \u2014 unstable, flickering magical signature",
+		"Disrupted sleep \u2014 vivid nightmares or restless sleep"
 	],
 	"magicItemCurseEffects": [
-		{ "curseType": "Binding", "effect": "Cannot be removed without a specific ritual", "trigger": "Upon Equipping" },
-		{ "curseType": "Draining", "effect": "Saps strength, stamina, or magic slowly", "trigger": "Daily While Worn/Used" },
-		{ "curseType": "Misfortune", "effect": "Attracts accidents and bad luck", "trigger": "Randomly per rest" },
-		{ "curseType": "Madness", "effect": "Causes hallucinations, voices, or visions", "trigger": "Stress or Fear Triggered" },
-		{ "curseType": "Marking", "effect": "Emits a faint glow or scent visible to enemies", "trigger": "Constant While Carried" },
-		{ "curseType": "Betrayal", "effect": "Turns against the wielder in key moments", "trigger": "On Critical Failure / Crisis" },
-		{ "curseType": "Compulsion", "effect": "Urges the user to perform an act", "trigger": "When Idle or Resting" },
-		{ "curseType": "Wasting", "effect": "Slowly corrupts or decays physical form", "trigger": "Long-Term Exposure" },
-		{ "curseType": "Curse Echo", "effect": "Reflects negative effects on the user", "trigger": "When Used Against a Target" },
-		{ "curseType": "Hunger", "effect": "Consumes resources, blood, or energy", "trigger": "Must Feed Regularly" },
-		{ "curseType": "Enmity", "effect": "Provokes aggression from certain beings", "trigger": "Passive Aura" },
-		{ "curseType": "False Promise", "effect": "Functions as a boon, then fails at a key time", "trigger": "When Most Needed" }
+		{
+			"curseType": "Binding",
+			"effect": "Cannot be removed without a specific ritual",
+			"trigger": "Upon Equipping"
+		},
+		{
+			"curseType": "Draining",
+			"effect": "Saps strength, stamina, or magic slowly",
+			"trigger": "Daily While Worn/Used"
+		},
+		{
+			"curseType": "Misfortune",
+			"effect": "Attracts accidents and bad luck",
+			"trigger": "Randomly per rest"
+		},
+		{
+			"curseType": "Madness",
+			"effect": "Causes hallucinations, voices, or visions",
+			"trigger": "Stress or Fear Triggered"
+		},
+		{
+			"curseType": "Marking",
+			"effect": "Emits a faint glow or scent visible to enemies",
+			"trigger": "Constant While Carried"
+		},
+		{
+			"curseType": "Betrayal",
+			"effect": "Turns against the wielder in key moments",
+			"trigger": "On Critical Failure / Crisis"
+		},
+		{
+			"curseType": "Compulsion",
+			"effect": "Urges the user to perform an act",
+			"trigger": "When Idle or Resting"
+		},
+		{
+			"curseType": "Wasting",
+			"effect": "Slowly corrupts or decays physical form",
+			"trigger": "Long-Term Exposure"
+		},
+		{
+			"curseType": "Curse Echo",
+			"effect": "Reflects negative effects on the user",
+			"trigger": "When Used Against a Target"
+		},
+		{
+			"curseType": "Hunger",
+			"effect": "Consumes resources, blood, or energy",
+			"trigger": "Must Feed Regularly"
+		},
+		{
+			"curseType": "Enmity",
+			"effect": "Provokes aggression from certain beings",
+			"trigger": "Passive Aura"
+		},
+		{
+			"curseType": "False Promise",
+			"effect": "Functions as a boon, then fails at a key time",
+			"trigger": "When Most Needed"
+		}
 	]
 }
