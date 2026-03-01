@@ -735,7 +735,6 @@ describe('AutoRoller Generators', () => {
 		it('should generate valuable treasure in natural language', () => {
 			const result = generateTreasure('valuable')
 			expect(result).toMatch(/\.$/)
-			expect(result).not.toContain(' — ')
 			expect(result).not.toContain('in the form of')
 		})
 
@@ -747,9 +746,8 @@ describe('AutoRoller Generators', () => {
 		it('should generate wearable treasure with item type and slot', () => {
 			for (let i = 0; i < 20; i++) {
 				const result = generateTreasure('wearable')
-				// Should include the slot in parentheses and ornament
+				// Should include the slot in parentheses
 				expect(result).toMatch(/\(.+\)/)
-				expect(result).toContain('ornament')
 			}
 		})
 
@@ -914,10 +912,11 @@ describe('AutoRoller Generators', () => {
 			// At Q1, should only get Leather (the only Q1 armor)
 			for (let i = 0; i < 30; i++) {
 				const result = generateTreasure('armor', 1)
-				expect(result).toContain('leather')
 				// Should not get Plate Harness (Q4) or Breastplate (Q3) at Q1
 				expect(result.toLowerCase()).not.toContain('plate harness')
 				expect(result.toLowerCase()).not.toContain('breastplate')
+				// Leather form names are gambeson, jerkin, etc. — check structure
+				expect(result).toMatch(/.+, .+\./)
 			}
 		})
 
@@ -1099,7 +1098,9 @@ describe('AutoRoller Generators', () => {
 			for (let q = 1; q <= 3; q++) {
 				const result = generateTreasure('wearable', q)
 				expect(result).not.toContain('✦')
-				expect(result).toContain('ornament')
+				// Should include slot in parentheses and em-dash separator
+				expect(result).toMatch(/\(.+\)/)
+				expect(result).toContain(' — ')
 			}
 		})
 

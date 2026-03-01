@@ -607,9 +607,9 @@ function pickMagicUtilityItem(): string {
 	const type = entry.type
 	const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
 
-	// Types with sub-tables get a specific item
+	// Types with sub-tables get a specific item — return just the item name, no category suffix
 	if (subtables && subtables[type]) {
-		return `${pick(subtables[type])} (${lc(type)})`
+		return pick(subtables[type])
 	}
 
 	// Types without sub-tables (Alchemical, Spell Scroll, Wand, Staff) use their name directly
@@ -660,16 +660,16 @@ function generateValuable(quality?: number): string {
 			const form = lc(pickField(details, 'form'))
 			const detail = lc(pickField(details, 'detail'))
 			const matStr = material ? `, ${lc(material)}` : ''
-			return `${lc(type)}, ${form}, ${detail}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+			return `${form} — ${detail}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 		}
-		const matStr = material ? `, ${lc(material)}` : ''
+		const matStr = material ? ` (${lc(material)})` : ''
 		return `${lc(type)}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
 
 	if (details && details.length > 0) {
 		const form = lc(pickField(details, 'form'))
 		const detail = lc(pickField(details, 'detail'))
-		return `${lc(type)}, ${form}, ${detail}.`
+		return `${form} — ${detail}.`
 	}
 	return `${lc(type)}.`
 }
@@ -741,7 +741,7 @@ function generateWearable(quality?: number): string {
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
 	const style = pickField(treasureData.wearableDescription, 'style')
 	const material = pickField(treasureData.wearableDescription, 'material')
-	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)}, ${lc(ornament)} ornament (${lc(slot)})`
+	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)} — ${lc(ornament)} (${lc(slot)})`
 
 	if (quality) {
 		const baseCosts = treasureData.wearableBaseCosts as Record<string, number> | undefined
@@ -753,7 +753,7 @@ function generateWearable(quality?: number): string {
 			const magicName = generateMagicItemName('wearable', itemType)
 			const effect = generateMagicItemEffect()
 			const curse = generateMagicItemCurse()
-			let result = `✦ "${capitalize(magicName)}" — ${lc(style)} ${lc(material)} ${lc(itemType)}, ${lc(ornament)} ornament (${lc(slot)}). Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+			let result = `✦ "${capitalize(magicName)}" — ${lc(style)} ${lc(material)} ${lc(itemType)}, ${lc(ornament)} (${lc(slot)}). Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
 			if (curse) result += ` [${curse}]`
 			return result
 		}
@@ -802,14 +802,14 @@ function generateArmor(quality?: number): string {
 			const magicName = generateMagicItemName('armor', type)
 			const effect = generateMagicItemEffect()
 			const curse = generateMagicItemCurse()
-			let result = `✦ "${capitalize(magicName)}" — ${lc(type)}, ${detailStr}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+			let result = `✦ "${capitalize(magicName)}" — ${detailStr}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
 			if (curse) result += ` [${curse}]`
 			return result
 		}
 
 		const bonus = rollTreasureBonus(quality)
 		const total = baseCost + bonus
-		return `${lc(type)}, ${detailStr}. (Q${quality}, ~${total.toLocaleString()} coins)`
+		return `${detailStr}. (Q${quality}, ~${total.toLocaleString()} coins)`
 	}
 	return `${detailStr}.`
 }
