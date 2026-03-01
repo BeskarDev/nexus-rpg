@@ -2285,5 +2285,26 @@
 		"Beverage / Grain": "grainAndBeverages",
 		"Raw Metal / Timber": "woodAndPlants",
 		"Gem": "gems"
+	},
+	"treasureBonusMultipliers": [1, 3, 10, 30, 100, 300, 1000, 3000],
+	"wearableBaseCosts": {
+		"Face": 50,
+		"Head": 50,
+		"Neck": 50,
+		"Shoulder": 50,
+		"Back": 100,
+		"Full Body": 100,
+		"Upper Body": 100,
+		"Body Cover": 100,
+		"Hands/Fingers": 50,
+		"Wrists": 50,
+		"Waist": 50,
+		"Feet": 100
+	},
+	"utilityEquipmentMap": {
+		"Gear": "Gear",
+		"Alchemical": "Alchemy",
+		"Tool": "Toolkit",
+		"Supply": "Supply"
 	}
 }

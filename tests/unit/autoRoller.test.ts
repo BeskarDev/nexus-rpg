@@ -14,6 +14,7 @@ import {
 	generateChallenge,
 	generateTreasure,
 	rollTreasureCost,
+	rollTreasureBonus,
 	generateQuest,
 	generateNpc,
 	generateSettlement,
@@ -762,6 +763,132 @@ describe('AutoRoller Generators', () => {
 				expect(cost).toBeGreaterThanOrEqual(30000)
 				expect(cost).toBeLessThanOrEqual(120000)
 			}
+		})
+
+		it('rollTreasureBonus should return values within expected range', () => {
+			// Q1: 2d4 × 1 = 2-8
+			for (let i = 0; i < 100; i++) {
+				const bonus = rollTreasureBonus(1)
+				expect(bonus).toBeGreaterThanOrEqual(2)
+				expect(bonus).toBeLessThanOrEqual(8)
+			}
+			// Q5: 2d4 × 100 = 200-800
+			for (let i = 0; i < 100; i++) {
+				const bonus = rollTreasureBonus(5)
+				expect(bonus).toBeGreaterThanOrEqual(200)
+				expect(bonus).toBeLessThanOrEqual(800)
+			}
+		})
+
+		it('should show base cost for weapons when quality is provided', () => {
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('weapon', 3)
+				expect(result).toContain('Q3')
+				expect(result).toContain('Base:')
+				expect(result).toContain('coins')
+			}
+		})
+
+		it('should show base cost for armor when quality is provided', () => {
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('armor', 3)
+				expect(result).toContain('Q3')
+				expect(result).toContain('Base:')
+				expect(result).toContain('coins')
+			}
+		})
+
+		it('should show base cost for wearables when quality is provided', () => {
+			const result = generateTreasure('wearable', 4)
+			expect(result).toContain('Q4')
+			expect(result).toContain('Base:')
+			expect(result).toContain('coins')
+		})
+
+		it('should show base cost for utility with equipment items when quality is provided', () => {
+			let foundBase = false
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('utility', 3)
+				expect(result).toContain('Q3')
+				if (result.includes('Base:')) foundBase = true
+			}
+			// At least some utility types (Gear, Alchemy, Tool, Supply) should have base items
+			expect(foundBase).toBe(true)
+		})
+
+		it('should filter armor by quality tier', () => {
+			// At Q1, should only get Leather (the only Q1 armor)
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('armor', 1)
+				expect(result).toContain('leather')
+				// Should not get Plate Harness (Q4) or Breastplate (Q3) at Q1
+				expect(result.toLowerCase()).not.toContain('plate harness')
+				expect(result.toLowerCase()).not.toContain('breastplate')
+			}
+		})
+
+		it('should include actual weapon names from game data when quality is provided', () => {
+			const knownWeapons = [
+				'battleaxe', 'hatchet', 'greataxe', 'throwing axe',
+				'shortsword', 'longsword', 'broadsword', 'greatsword', 'scimitar',
+				'shortbow', 'longbow', 'mace', 'maul', 'club',
+				'spear', 'glaive', 'javelin', 'quarterstaff',
+				'sling', 'blowpipe', 'whip', 'cestus',
+				'arcane conduit', 'mystic talisman',
+			]
+			let foundKnown = false
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('weapon', 3).toLowerCase()
+				if (knownWeapons.some(w => result.includes(w))) {
+					foundKnown = true
+					break
+				}
+			}
+			expect(foundKnown).toBe(true)
+		})
+
+		it('should use valuables full multiplier (not bonus) for cost calculation', () => {
+			// Valuables use 2d4 × full multiplier, not base cost + bonus
+			const costs: number[] = []
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('valuable', 5)
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, '')))
+			}
+			expect(costs.length).toBeGreaterThan(0)
+			// Q5 valuables: 2d4 × 500 = 1000-4000
+			const avg = costs.reduce((a, b) => a + b, 0) / costs.length
+			expect(avg).toBeGreaterThan(1000)
+			expect(avg).toBeLessThan(4000)
+		})
+
+		it('should have treasureBonusMultipliers data', () => {
+			const multipliers = treasureData.treasureBonusMultipliers as number[]
+			expect(multipliers).toBeDefined()
+			expect(multipliers).toHaveLength(8)
+			// Should be ascending
+			for (let i = 1; i < multipliers.length; i++) {
+				expect(multipliers[i]).toBeGreaterThan(multipliers[i - 1])
+			}
+		})
+
+		it('should have wearableBaseCosts for all slots', () => {
+			const baseCosts = treasureData.wearableBaseCosts as Record<string, number>
+			const slots = treasureData.wearableSlots as string[]
+			expect(baseCosts).toBeDefined()
+			for (const slot of slots) {
+				expect(baseCosts[slot]).toBeDefined()
+				expect(baseCosts[slot]).toBeGreaterThan(0)
+			}
+		})
+
+		it('should have utilityEquipmentMap for mapped utility types', () => {
+			const map = treasureData.utilityEquipmentMap as Record<string, string>
+			expect(map).toBeDefined()
+			expect(map['Gear']).toBe('Gear')
+			expect(map['Alchemical']).toBe('Alchemy')
+			expect(map['Tool']).toBe('Toolkit')
+			expect(map['Supply']).toBe('Supply')
 		})
 	})
 
