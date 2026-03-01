@@ -365,9 +365,10 @@ function rollTreasureType(quality?: number): string {
 	else if (roll === 11) category = 'armor'
 	else category = 'weapon'
 
-	// Re-roll if quality is below the minimum for this category
+	// Re-roll if quality is below the minimum for this category (with safety limit)
 	if (quality && quality < (categoryMinQuality[category] ?? 1)) {
-		return rollTreasureType(quality)
+		// Fallback to 'valuable' (always valid at Q1+) to prevent infinite recursion
+		return 'valuable'
 	}
 	return category
 }
@@ -431,7 +432,7 @@ function pickWeaponItem(weaponType: string, quality: number): { name: string; co
 	// Ammo types
 	if (weaponType === 'Arrows' || weaponType === 'Bolts') {
 		const prefix = weaponType === 'Arrows' ? 'Arrows' : 'Bolts'
-		const ammo = gameEquipment.filter(e => e.name.startsWith(prefix) && parseInt(e.quality) <= quality)
+		const ammo = gameEquipment.filter(e => e.name.startsWith(prefix) && parseInt(e.quality, 10) <= quality)
 		if (ammo.length > 0) {
 			const item = pick(ammo)
 			return { name: item.name, cost: parseCost(item.cost) }
@@ -442,7 +443,7 @@ function pickWeaponItem(weaponType: string, quality: number): { name: string; co
 	// Spell catalysts
 	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') {
 		const catalyst = gameEquipment.find(e =>
-			e.name.includes(weaponType) && parseInt(e.quality) <= quality
+			e.name.includes(weaponType) && parseInt(e.quality, 10) <= quality
 		)
 		if (catalyst) {
 			return { name: weaponType, cost: parseCost(catalyst.cost) }
@@ -452,7 +453,7 @@ function pickWeaponItem(weaponType: string, quality: number): { name: string; co
 
 	// Regular weapons — filter by type and quality
 	const matching = gameWeapons.filter(w =>
-		w.type === weaponType && parseInt(w.quality) <= quality
+		w.type === weaponType && parseInt(w.quality, 10) <= quality
 	)
 
 	if (matching.length > 0) {
@@ -466,11 +467,11 @@ function pickWeaponItem(weaponType: string, quality: number): { name: string; co
 // Look up armor or shield base cost from game data
 function getArmorInfo(armorName: string): { quality: number; cost: number } | null {
 	const armor = gameArmor.find(a => a.name === armorName)
-	if (armor) return { quality: parseInt(armor.quality), cost: parseCost(armor.cost) }
+	if (armor) return { quality: parseInt(armor.quality, 10), cost: parseCost(armor.cost) }
 
 	// Shields are in weapons data
 	const shield = gameWeapons.find(w => w.name === armorName && w.type === 'Shield')
-	if (shield) return { quality: parseInt(shield.quality), cost: parseCost(shield.cost) }
+	if (shield) return { quality: parseInt(shield.quality, 10), cost: parseCost(shield.cost) }
 
 	return null
 }
@@ -484,7 +485,7 @@ function pickUtilityItem(utilityType: string, quality: number): { name: string; 
 	if (!equipCategory) return null
 
 	const matching = gameEquipment.filter(e =>
-		e.category === equipCategory && parseInt(e.quality) <= quality
+		e.category === equipCategory && parseInt(e.quality, 10) <= quality
 	)
 
 	if (matching.length === 0) return null
