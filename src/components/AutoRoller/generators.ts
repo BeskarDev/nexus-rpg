@@ -45,7 +45,8 @@ function capitalize(s: string): string {
 	return s.charAt(0).toUpperCase() + s.slice(1)
 }
 
-// Utility: return "a" or "an" based on the next word
+// Utility: return "A" or "An" based on the next word's initial letter.
+// Sufficient for NPC data (dispositions/occupations) which have no edge cases.
 function article(nextWord: string): string {
 	return /^[aeiou]/i.test(nextWord) ? 'An' : 'A'
 }
