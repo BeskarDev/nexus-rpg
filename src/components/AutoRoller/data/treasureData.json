@@ -2214,5 +2214,76 @@
 			"Moccasins",
 			"Greaves"
 		]
+	},
+	"costMultipliers": [5, 15, 50, 150, 500, 1500, 5000, 15000],
+	"qualityMaterials": {
+		"metalsAndMinerals": {
+			"low": ["Copper", "Bone fragments", "Flint", "Stone chips", "Fresh wood", "Raw ore", "Shell fragments", "Bark strips", "Reed", "Clay nodules", "Coal", "Charcoal"],
+			"medium": ["Bronze", "Silver", "Iron (Cursestone)", "Brass", "Hardwood", "Tin", "Lead", "Pewter", "Zinc", "Antimony", "Nickel", "Mercury"],
+			"high": ["Meteorite", "Deep Iron", "Dwarf-Steel", "Gold", "Treantwood", "Platinum", "Electrum", "White gold", "Rose gold", "Sun-gold", "Moon-silver", "Star-touched bronze"],
+			"supreme": ["Mithril", "Adamantite", "Starmetal", "Aegium", "Orichalcum", "Eternite", "Titanium", "Celestial Feathers", "Elder Dragon Bone", "Elderwood", "Dreamweave", "Infernal Horn"]
+		},
+		"gems": {
+			"low": ["River stones", "Quartz", "Flint chips", "Glass beads", "Smooth pebbles", "Mica flakes", "Polished stones", "Jasper", "Rough crystal", "Chipped gems", "Cloudy quartz", "Fossil fragments"],
+			"medium": ["Obsidian", "Agate", "Garnet", "Amethyst", "Turquoise", "Moonstone", "Bloodstone", "Carnelian", "Onyx", "Labradorite", "Hematite", "Malachite"],
+			"high": ["Diamond", "Ruby", "Sapphire", "Emerald", "Topaz", "Aquamarine", "Opal", "Jade", "Peridot", "Beryl", "Citrine", "Alexandrite"],
+			"supreme": ["Elder dragon's eye", "Solarite crystal", "Lunarite crystal", "Star ruby", "Black diamond", "Star sapphire", "Clear diamond", "Primordial amber", "Phoenix tears", "Void crystal", "Leviathan pearl", "Heart of the mountain"]
+		},
+		"woodAndPlants": {
+			"low": ["Pine", "Birch", "Willow", "Poplar", "Elm", "Beech", "Hazel", "Fresh branches", "Green wood", "Bark strips", "Twigs", "Cedar shavings"],
+			"medium": ["Oak", "Maple", "Ash", "Hickory", "Cherry", "Walnut", "Mahogany", "Teak", "Yew", "Olive", "Chestnut", "Bamboo"],
+			"high": ["Darkwood", "Silverroot", "Runebark", "Ebony", "Cedar", "Ironwood", "Rosewood", "Sandalwood", "Silverwood", "Ghostwood", "Spirit pine", "Moon-touched willow"],
+			"supreme": ["Elder oak", "Treantwood", "Elderwood", "World-tree branch", "Yggdrasil bark", "Celestial pine", "Moonbeam willow", "Starlight cedar", "Timeless oak", "Living ironwood", "Druid's blessing", "Divine heartwood"]
+		},
+		"organics": {
+			"low": ["Animal bone", "Hide scraps", "Fur scraps", "Lizard scales", "Antler shards", "Teeth", "Claws", "Shell fragments", "Fish scales", "Raw sinew", "Feathers", "Bone meal"],
+			"medium": ["Monster bone", "Chitin plates", "Monster scales", "Leather", "Horn", "Monster hide", "Owlbear pelt", "Dire wolf pelt", "Wyvern claw", "Kraken tentacle", "Manticore quills", "Bulette hide"],
+			"high": ["Dragon bone", "Dragon scales", "Wyrmhide", "Giant spider silk", "Basilisk hide", "Griffin feathers", "Roc talons", "Behemoth horn", "Unicorn horn", "Pegasus wing", "Gorgon scales", "Celestial feathers"],
+			"supreme": ["Elder dragon bone", "Elder dragon scales", "Titan-beast hide", "Phantom-silk", "Phoenix feathers", "Thunderbird plume", "Leviathan bone", "Sphinx fur", "Avatar essence", "World-serpent scale", "Primordial sinew", "God-beast remnant"]
+		},
+		"textiles": {
+			"low": ["Rough wool", "Coarse linen", "Raw cotton", "Hemp fiber", "Goat hair", "Burlap", "Flax", "Animal fur", "Plant fiber", "Woven grass", "Tree bark", "Leather strips"],
+			"medium": ["Fine wool", "Quality linen", "Soft cotton", "Woven hemp", "Alpaca wool", "Cashmere", "Quality flax", "Llama wool", "Mohair", "Camel hair", "Yak wool", "Sheep wool"],
+			"high": ["Giant spider silk", "Silk", "Wyvern-hair", "Cloud-cotton", "Pegasus mane", "Unicorn tail", "Fey-silk", "Ethereal mooncloth", "Phoenix down", "Sprite silk", "Dream silk", "Shadowsilk"],
+			"supreme": ["Phantom-silk", "Dreamweave", "Starweave", "Moonthread", "Divine fiber", "Angel hair", "Godspun thread", "Fate's thread", "Eternity weave", "Temporal thread", "Reality thread", "Cosmic thread"]
+		},
+		"ceramics": {
+			"low": ["Clay pots", "Rough pottery", "Fired earth", "Crude vessels", "Common ceramic", "Stone crocks", "Simple tiles", "Basic pottery", "Mud bricks", "Kiln-fired clay", "Rough vessels", "Terracotta"],
+			"medium": ["Fine pottery", "Glazed ceramic", "Quality stoneware", "Decorated pottery", "Burnished ware", "Fine earthenware", "Painted ceramic", "Carved pottery", "Red-figure ware", "Black-figure ware", "Polished ceramic", "Slip-painted ware"],
+			"high": ["Porcelain", "Masterwork ceramic", "Crystal ceramic", "Windglass", "Moonstone ceramic", "Rune-etched pottery", "Spellbound clay", "Dragon-fired ware", "Enchanted pottery", "Mage-wrought ceramic", "Spirit-touched ware", "Elemental ceramic"],
+			"supreme": ["Celestial ceramic", "Divine porcelain", "Starforged clay", "Godcrafted vessel", "Eternal pottery", "Living ceramic", "Worldshaper's work", "Phoenix ceramic", "Primordial clay", "Titan's pottery", "Heaven's craft", "God's handiwork"]
+		},
+		"spicesAndDyes": {
+			"low": ["Common salt", "Wild herbs", "Clay pigments", "Bark dye", "Berry stains", "Ash powder", "Mud colors", "Plant juices", "Flower petals", "Root extracts", "Leaf dyes", "Rock dust"],
+			"medium": ["Sea salt", "Dried herbs", "Ochre dyes", "Madder root", "Woad", "Rock salt", "Turmeric", "Henna", "Cochineal", "Logwood", "Safflower", "Walnut hulls"],
+			"high": ["Saffron", "Cinnamon", "Indigo", "Cloves", "Cardamom", "Nutmeg", "Purple dye", "Giant honey", "Dreamspice", "Mermaid salt", "Ethereal mint", "Void pepper"],
+			"supreme": ["Phoenix spice", "Ambrosia powder", "Nectar of gods", "Starlight dye", "Celestial seasoning", "Fey essence", "Dragon's breath", "Elixir of life", "Angel's tears", "Divine flavor", "God's seasoning", "Immortal spice"]
+		},
+		"grainAndBeverages": {
+			"low": ["Common wheat", "Barley grains", "Wild rice", "Oat kernels", "Rye seeds", "Millet", "Sour ale", "Weak wine", "Watered mead", "Grain porridge", "Simple bread", "Field corn"],
+			"medium": ["Quality wheat", "Pearl barley", "White rice", "Steel-cut oats", "Whole rye", "Quinoa", "Brown ale", "Table wine", "Honey mead", "Fresh bread", "Wheat beer", "Barley wine"],
+			"high": ["Golden wheat", "Ancient barley", "Sacred rice", "Moon oats", "Storm rye", "Star quinoa", "Royal ale", "Vintage wine", "Dragon mead", "Elven bread", "Dwarven stout", "Nectar wine"],
+			"supreme": ["Celestial wine", "Ambrosia mead", "Fey nectar", "Divine sustenance", "Immortal grain", "God's harvest", "Eternal brew", "Heaven's vintage", "Titan's drink", "Angel's bread", "Phoenix ale", "Primordial wine"]
+		},
+		"oilAndPerfumes": {
+			"low": ["Cooking fat", "Animal fat", "Nut oil", "Crude perfume", "Flower water", "Herb extract", "Lamp oil", "Pine resin", "Tree sap", "Fish oil", "Tallow", "Cooking grease"],
+			"medium": ["Olive oil", "Sesame oil", "Almond oil", "Rose water", "Lavender oil", "Rosemary oil", "Cedar oil", "Sandalwood oil", "Jasmine oil", "Myrrh", "Frankincense", "Amber oil"],
+			"high": ["Lotus oil", "Sacred oil", "Mermaid tears", "Fairy essence", "Starlight oil", "Dragon oil", "Elven perfume", "Dwarven spirits", "Moon oil", "Unicorn tears", "Spirit essence", "Void perfume"],
+			"supreme": ["Phoenix oil", "Divine essence", "Celestial perfume", "God's fragrance", "Immortal scent", "Angel's breath", "Eternal fragrance", "Phoenix essence", "Primordial perfume", "Heaven's scent", "Titan's perfume", "Divine oil"]
+		}
+	},
+	"valuableMaterialMap": {
+		"Coins / Currency": "metalsAndMinerals",
+		"Trinket / Charm": "metalsAndMinerals",
+		"Painting / Pottery": "ceramics",
+		"Statuette / Idol": "metalsAndMinerals",
+		"Fabrics / Papyrus": "textiles",
+		"Hide / Pelt": "organics",
+		"Salt / Spice / Dye": "spicesAndDyes",
+		"Oil / Perfume": "oilAndPerfumes",
+		"Bone / Scales": "organics",
+		"Beverage / Grain": "grainAndBeverages",
+		"Raw Metal / Timber": "woodAndPlants",
+		"Gem": "gems"
 	}
 }
