@@ -6,6 +6,9 @@ import treasureData from './data/treasureData.json'
 import questData from './data/questData.json'
 import npcData from './data/npcData.json'
 import settlementData from './data/settlementData.json'
+import weaponsGameData from '../../utils/data/json/weapons.json'
+import armorGameData from '../../utils/data/json/armor.json'
+import equipmentGameData from '../../utils/data/json/equipment.json'
 
 // Type definitions for spell data
 interface SpellEntry {
@@ -309,6 +312,32 @@ export function generateChallenge(groupId: string): string {
 
 // ===== TREASURE =====
 
+// Game data types
+interface GameWeapon {
+	name: string
+	quality: string
+	type: string
+	cost: string
+}
+
+interface GameArmor {
+	name: string
+	quality: string
+	type: string
+	cost: string
+}
+
+interface GameEquipment {
+	name: string
+	quality: string
+	category: string
+	cost: string
+}
+
+const gameWeapons = weaponsGameData as GameWeapon[]
+const gameArmor = armorGameData as GameArmor[]
+const gameEquipment = equipmentGameData as GameEquipment[]
+
 export const treasureGroups = [
 	{ id: 'any', label: 'Any Treasure' },
 	{ id: 'valuable', label: 'Valuable' },
@@ -318,90 +347,323 @@ export const treasureGroups = [
 	{ id: 'weapon', label: 'Weapon / Spell Catalyst' },
 ]
 
-function rollTreasureType(): string {
-	const roll = rollDie(12)
-	if (roll <= 6) return 'valuable'
-	if (roll <= 9) return 'utility'
-	if (roll === 10) return 'wearable'
-	if (roll === 11) return 'armor'
-	return 'weapon'
+// Minimum quality tier for each treasure category
+const categoryMinQuality: Record<string, number> = {
+	valuable: 1,
+	utility: 1,
+	wearable: 1,
+	armor: 1,
+	weapon: 2,
 }
 
-function generateValuable(): string {
+function rollTreasureType(quality?: number): string {
+	const roll = rollDie(12)
+	let category: string
+	if (roll <= 6) category = 'valuable'
+	else if (roll <= 9) category = 'utility'
+	else if (roll === 10) category = 'wearable'
+	else if (roll === 11) category = 'armor'
+	else category = 'weapon'
+
+	// Re-roll if quality is below the minimum for this category (with safety limit)
+	if (quality && quality < (categoryMinQuality[category] ?? 1)) {
+		// Fallback to 'valuable' (always valid at Q1+) to prevent infinite recursion
+		return 'valuable'
+	}
+	return category
+}
+
+// Roll 2d4 (result: 2-8)
+function roll2d4(): number {
+	return rollDie(4) + rollDie(4)
+}
+
+// Calculate random treasure cost based on quality tier using full multiplier (for valuables/non-base-items)
+export function rollTreasureCost(quality: number): number {
+	const multipliers = treasureData.costMultipliers as number[]
+	const idx = Math.max(0, Math.min(quality - 1, multipliers.length - 1))
+	return roll2d4() * multipliers[idx]
+}
+
+// Calculate a small random treasure bonus for items with known base costs
+export function rollTreasureBonus(quality: number): number {
+	const multipliers = treasureData.treasureBonusMultipliers as number[]
+	const idx = Math.max(0, Math.min(quality - 1, multipliers.length - 1))
+	return roll2d4() * multipliers[idx]
+}
+
+// Parse cost string that may contain commas (e.g., "2,500")
+function parseCost(cost: string): number {
+	return parseInt(cost.replace(/,/g, ''), 10) || 0
+}
+
+// Map quality tier (1-8) to material column
+function getQualityColumn(quality: number): 'low' | 'medium' | 'high' | 'supreme' {
+	if (quality <= 2) return 'low'
+	if (quality <= 4) return 'medium'
+	if (quality <= 6) return 'high'
+	return 'supreme'
+}
+
+// Pick a quality-appropriate material for a valuable type
+function pickQualityMaterial(valuableType: string, quality: number): string | null {
+	const materialMap = treasureData.valuableMaterialMap as Record<string, string>
+	let tableKey = materialMap[valuableType]
+
+	// Raw Metal / Timber spans two material categories — pick one randomly
+	if (valuableType === 'Raw Metal / Timber') {
+		tableKey = Math.random() < 0.5 ? 'metalsAndMinerals' : 'woodAndPlants'
+	}
+
+	if (!tableKey) return null
+
+	const materials = (treasureData.qualityMaterials as Record<string, Record<string, string[]>>)[tableKey]
+	if (!materials) return null
+
+	const column = getQualityColumn(quality)
+	const columnData = materials[column]
+	if (!columnData || columnData.length === 0) return null
+
+	return pick(columnData)
+}
+
+// Pick a specific weapon from game data matching the type and quality tier
+function pickWeaponItem(weaponType: string, quality: number): { name: string; cost: number; fixedCost?: boolean } | null {
+	// Ammo types — mundane items, exact quality match only, no craftsmanship bonus
+	if (weaponType === 'Arrows' || weaponType === 'Bolts') {
+		const prefix = weaponType === 'Arrows' ? 'Arrows' : 'Bolts'
+		const ammo = gameEquipment.filter(e => e.name.startsWith(prefix) && parseInt(e.quality, 10) === quality)
+		if (ammo.length > 0) {
+			const item = pick(ammo)
+			return { name: item.name, cost: parseCost(item.cost), fixedCost: true }
+		}
+		return null
+	}
+
+	// Spell catalysts
+	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') {
+		const catalyst = gameEquipment.find(e =>
+			e.name.includes(weaponType) && parseInt(e.quality, 10) <= quality
+		)
+		if (catalyst) {
+			return { name: weaponType, cost: parseCost(catalyst.cost) }
+		}
+		return { name: weaponType, cost: 75 }
+	}
+
+	// Regular weapons — filter by type and quality
+	const matching = gameWeapons.filter(w =>
+		w.type === weaponType && parseInt(w.quality, 10) <= quality
+	)
+
+	if (matching.length > 0) {
+		const weapon = pick(matching)
+		return { name: weapon.name, cost: parseCost(weapon.cost) }
+	}
+
+	return null
+}
+
+// Look up armor or shield base cost from game data
+function getArmorInfo(armorName: string): { quality: number; cost: number } | null {
+	const armor = gameArmor.find(a => a.name === armorName)
+	if (armor) return { quality: parseInt(armor.quality, 10), cost: parseCost(armor.cost) }
+
+	// Shields are in weapons data
+	const shield = gameWeapons.find(w => w.name === armorName && w.type === 'Shield')
+	if (shield) return { quality: parseInt(shield.quality, 10), cost: parseCost(shield.cost) }
+
+	return null
+}
+
+// Pick an actual utility item from equipment data for a utility type
+// Mundane items use exact quality match — they only appear at their correct tier with no craftsmanship bonus
+function pickUtilityItem(utilityType: string, quality: number): { name: string; cost: number } | null {
+	const categoryMap = treasureData.utilityEquipmentMap as Record<string, string> | undefined
+	if (!categoryMap) return null
+
+	const equipCategory = categoryMap[utilityType]
+	if (!equipCategory) return null
+
+	const matching = gameEquipment.filter(e =>
+		e.category === equipCategory && parseInt(e.quality, 10) === quality
+	)
+
+	if (matching.length === 0) return null
+
+	const item = pick(matching)
+	return { name: item.name, cost: parseCost(item.cost) }
+}
+
+function generateValuable(quality?: number): string {
 	const type = pick(treasureData.valuables)
 	const details = treasureData.valuableDetails[type] as
 		| { form: string; detail: string }[]
 		| undefined
+
+	if (quality) {
+		const material = pickQualityMaterial(type, quality)
+		const cost = rollTreasureCost(quality)
+		if (details && details.length > 0) {
+			const form = lc(pickField(details, 'form'))
+			const detail = lc(pickField(details, 'detail'))
+			const matStr = material ? `, ${lc(material)}` : ''
+			return `${lc(type)}, ${form}, ${detail}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		}
+		const matStr = material ? `, ${lc(material)}` : ''
+		return `${lc(type)}${matStr}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+	}
+
 	if (details && details.length > 0) {
-		const form = pickField(details, 'form')
-		const detail = pickField(details, 'detail')
-		return `${lc(type)} in the form of ${lc(form)} — ${lc(detail)}.`
+		const form = lc(pickField(details, 'form'))
+		const detail = lc(pickField(details, 'detail'))
+		return `${lc(type)}, ${form}, ${detail}.`
 	}
 	return `${lc(type)}.`
 }
 
-function generateUtility(): string {
+function generateUtility(quality?: number): string {
 	const entry = pick(treasureData.utility)
 	const type = entry.type
 	const details = treasureData.utilityDetails[type] as string[] | undefined
-	if (details && details.length > 0) {
-		return `${lc(type)} — ${lc(pick(details))}.`
+
+	if (quality) {
+		// Try to find an actual equipment item for this utility type
+		const item = pickUtilityItem(type, quality)
+		if (item) {
+			// Mundane items have no craftsmanship bonus — show only base cost at exact quality
+			return `${lc(item.name)}. (Q${quality}, ~${item.cost.toLocaleString()} coins)`
+		}
+		// No base item (Spell Scroll, Knowledge) — use full multiplier
+		const desc = details && details.length > 0
+			? `${lc(type)}, ${lc(pick(details))}.`
+			: `${lc(type)}.`
+		const cost = rollTreasureCost(quality)
+		return `${desc} (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
-	return `${lc(type)}.`
+
+	return details && details.length > 0
+		? `${lc(type)}, ${lc(pick(details))}.`
+		: `${lc(type)}.`
 }
 
-function generateWearable(): string {
+function generateWearable(quality?: number): string {
 	const slot = pick(treasureData.wearableSlots)
 	const items = treasureData.wearableItems[slot] as string[] | undefined
 	const itemType = items && items.length > 0 ? pick(items) : slot
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
 	const style = pickField(treasureData.wearableDescription, 'style')
 	const material = pickField(treasureData.wearableDescription, 'material')
-	return `${lc(style)} ${lc(material)} ${lc(itemType)} (${lc(slot)}) with ${lc(ornament)} ornament.`
+	const desc = `${lc(style)} ${lc(material)} ${lc(itemType)}, ${lc(ornament)} ornament (${lc(slot)}).`
+
+	if (quality) {
+		const baseCosts = treasureData.wearableBaseCosts as Record<string, number> | undefined
+		const baseCost = baseCosts?.[slot] ?? 50
+		const bonus = rollTreasureBonus(quality)
+		const total = baseCost + bonus
+		return `${desc} (Q${quality}, ~${total.toLocaleString()} coins)`
+	}
+	return desc
 }
 
-function generateArmor(): string {
-	const type = pick(treasureData.armorShield)
+function generateArmor(quality?: number): string {
+	let armorList = treasureData.armorShield as string[]
+
+	// Filter to items whose base quality ≤ selected quality
+	if (quality) {
+		const filtered = armorList.filter(name => {
+			const info = getArmorInfo(name)
+			return !info || info.quality <= quality
+		})
+		if (filtered.length > 0) armorList = filtered
+	}
+
+	const type = pick(armorList)
 	const details = treasureData.armorDetails[type] as
 		| { material: string; form: string; detail: string }[]
 		| undefined
+	let detailStr: string
 	if (details && details.length > 0) {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+		detailStr = `${lc(material)} ${lc(form)}, ${lc(detail)}`
+	} else {
+		detailStr = lc(type)
 	}
-	return `${lc(type)}.`
+
+	if (quality) {
+		const info = getArmorInfo(type)
+		const baseCost = info?.cost ?? 0
+		const bonus = rollTreasureBonus(quality)
+		const total = baseCost + bonus
+		return `${lc(type)}, ${detailStr}. (Q${quality}, ~${total.toLocaleString()} coins)`
+	}
+	return `${detailStr}.`
 }
 
-function generateWeapon(): string {
+function generateWeapon(quality?: number): string {
 	const type = pick(treasureData.weaponCatalyst)
 	const details = treasureData.weaponDetails[type] as
 		| { material: string; form: string; detail: string }[]
 		| undefined
+
+	if (quality) {
+		const weaponItem = pickWeaponItem(type, quality)
+
+		if (weaponItem) {
+			if (weaponItem.fixedCost) {
+				// Ammo — mundane, no craftsmanship bonus, show only base cost
+				return `${lc(weaponItem.name)}. (Q${quality}, ~${weaponItem.cost.toLocaleString()} coins)`
+			}
+			const bonus = rollTreasureBonus(quality)
+			const total = weaponItem.cost + bonus
+			if (details && details.length > 0) {
+				const material = pickField(details, 'material')
+				const detail = pickField(details, 'detail')
+				return `${lc(material)} ${lc(weaponItem.name)}, ${lc(detail)}. (Q${quality}, ~${total.toLocaleString()} coins)`
+			}
+			return `${lc(weaponItem.name)}. (Q${quality}, ~${total.toLocaleString()} coins)`
+		}
+
+		// No matching weapon at quality — fallback to description + full multiplier
+		let desc: string
+		if (details && details.length > 0) {
+			const material = pickField(details, 'material')
+			const form = pickField(details, 'form')
+			const detail = pickField(details, 'detail')
+			desc = `${lc(material)} ${lc(form)}, ${lc(detail)}.`
+		} else {
+			desc = `${lc(type)}.`
+		}
+		const cost = rollTreasureCost(quality)
+		return `${desc} (Q${quality}, ~${cost.toLocaleString()} coins)`
+	}
+
+	// Without quality — original behavior
 	if (details && details.length > 0) {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
-		return `${lc(material)} ${lc(form)} — ${lc(detail)}.`
+		return `${lc(material)} ${lc(form)}, ${lc(detail)}.`
 	}
 	return `${lc(type)}.`
 }
 
-export function generateTreasure(groupId: string): string {
-	const category = groupId === 'any' ? rollTreasureType() : groupId
+export function generateTreasure(groupId: string, quality?: number): string {
+	const category = groupId === 'any' ? rollTreasureType(quality) : groupId
 
 	switch (category) {
 		case 'valuable':
-			return generateValuable()
+			return generateValuable(quality)
 		case 'utility':
-			return generateUtility()
+			return generateUtility(quality)
 		case 'wearable':
-			return generateWearable()
+			return generateWearable(quality)
 		case 'armor':
-			return generateArmor()
+			return generateArmor(quality)
 		case 'weapon':
-			return generateWeapon()
+			return generateWeapon(quality)
 		default:
 			return 'Unknown treasure type'
 	}

@@ -13,6 +13,8 @@ import {
 	generateCreature,
 	generateChallenge,
 	generateTreasure,
+	rollTreasureCost,
+	rollTreasureBonus,
 	generateQuest,
 	generateNpc,
 	generateSettlement,
@@ -274,6 +276,43 @@ describe('AutoRoller Data Integrity', () => {
 
 		it('should have weapon/catalyst types', () => {
 			expect(treasureData.weaponCatalyst).toHaveLength(12)
+		})
+
+		it('should have 8 cost multipliers for Q1-Q8', () => {
+			expect(treasureData.costMultipliers).toHaveLength(8)
+			expect(treasureData.costMultipliers[0]).toBe(5)
+			expect(treasureData.costMultipliers[7]).toBe(15000)
+		})
+
+		it('should have 9 quality material categories', () => {
+			const categories = Object.keys(treasureData.qualityMaterials)
+			expect(categories).toHaveLength(9)
+			expect(categories).toContain('metalsAndMinerals')
+			expect(categories).toContain('gems')
+			expect(categories).toContain('woodAndPlants')
+			expect(categories).toContain('organics')
+			expect(categories).toContain('textiles')
+			expect(categories).toContain('ceramics')
+			expect(categories).toContain('spicesAndDyes')
+			expect(categories).toContain('grainAndBeverages')
+			expect(categories).toContain('oilAndPerfumes')
+		})
+
+		it('should have 12 entries per quality column in each material category', () => {
+			const materials = treasureData.qualityMaterials as Record<string, Record<string, string[]>>
+			for (const [category, tiers] of Object.entries(materials)) {
+				expect(tiers.low).toHaveLength(12)
+				expect(tiers.medium).toHaveLength(12)
+				expect(tiers.high).toHaveLength(12)
+				expect(tiers.supreme).toHaveLength(12)
+			}
+		})
+
+		it('should have a material map entry for every valuable type', () => {
+			const map = treasureData.valuableMaterialMap as Record<string, string>
+			treasureData.valuables.forEach((type) => {
+				expect(map[type]).toBeDefined()
+			})
 		})
 	})
 
@@ -607,7 +646,9 @@ describe('AutoRoller Generators', () => {
 
 		it('should generate valuable treasure in natural language', () => {
 			const result = generateTreasure('valuable')
-			expect(result).toMatch(/.+ in the form of/)
+			expect(result).toMatch(/\.$/)
+			expect(result).not.toContain(' — ')
+			expect(result).not.toContain('in the form of')
 		})
 
 		it('should generate utility treasure in natural language', () => {
@@ -626,7 +667,7 @@ describe('AutoRoller Generators', () => {
 
 		it('should generate armor treasure in natural language', () => {
 			const result = generateTreasure('armor')
-			expect(result).toMatch(/.+ — .+\./)
+			expect(result).toMatch(/.+, .+\./)
 		})
 
 		it('should generate weapon treasure in natural language', () => {
@@ -663,6 +704,271 @@ describe('AutoRoller Generators', () => {
 				results.add(generateTreasure('weapon'))
 			}
 			expect(results.size).toBeGreaterThan(3)
+		})
+
+		it('should include quality and cost when quality is provided', () => {
+			for (let q = 1; q <= 8; q++) {
+				const result = generateTreasure('valuable', q)
+				expect(result).toContain(`Q${q}`)
+				expect(result).toContain('coins')
+			}
+		})
+
+		it('should include material for valuables when quality is provided', () => {
+			for (let i = 0; i < 20; i++) {
+				const result = generateTreasure('valuable', 3)
+				// type, form, detail, material — at least 2 commas in description
+				expect(result.split(',').length).toBeGreaterThanOrEqual(3)
+				expect(result).toContain('Q3')
+			}
+		})
+
+		it('should produce different cost ranges for different quality tiers', () => {
+			const q1Costs: number[] = []
+			const q5Costs: number[] = []
+			for (let i = 0; i < 50; i++) {
+				q1Costs.push(rollTreasureCost(1))
+				q5Costs.push(rollTreasureCost(5))
+			}
+			const q1Avg = q1Costs.reduce((a, b) => a + b, 0) / q1Costs.length
+			const q5Avg = q5Costs.reduce((a, b) => a + b, 0) / q5Costs.length
+			// Q1 avg should be ~25 (2d4 avg = 5, × 5 = 25), Q5 avg should be ~2500 (5 × 500)
+			expect(q1Avg).toBeGreaterThan(15)
+			expect(q1Avg).toBeLessThan(40)
+			expect(q5Avg).toBeGreaterThan(1500)
+			expect(q5Avg).toBeLessThan(3500)
+		})
+
+		it('should include quality and cost for non-valuable types when quality is provided', () => {
+			const categories = ['utility', 'wearable', 'armor', 'weapon']
+			for (const cat of categories) {
+				const result = generateTreasure(cat, 4)
+				expect(result).toContain('Q4')
+				expect(result).toContain('coins')
+			}
+		})
+
+		it('should not include quality info when quality is not provided', () => {
+			const result = generateTreasure('valuable')
+			expect(result).not.toMatch(/\(Q\d/)
+		})
+
+		it('rollTreasureCost should return values within expected range', () => {
+			// Q1: 2d4 × 5 = 10-40
+			for (let i = 0; i < 100; i++) {
+				const cost = rollTreasureCost(1)
+				expect(cost).toBeGreaterThanOrEqual(10)
+				expect(cost).toBeLessThanOrEqual(40)
+			}
+			// Q8: 2d4 × 15000 = 30000-120000
+			for (let i = 0; i < 100; i++) {
+				const cost = rollTreasureCost(8)
+				expect(cost).toBeGreaterThanOrEqual(30000)
+				expect(cost).toBeLessThanOrEqual(120000)
+			}
+		})
+
+		it('rollTreasureBonus should return values within expected range', () => {
+			// Q1: 2d4 × 1 = 2-8
+			for (let i = 0; i < 100; i++) {
+				const bonus = rollTreasureBonus(1)
+				expect(bonus).toBeGreaterThanOrEqual(2)
+				expect(bonus).toBeLessThanOrEqual(8)
+			}
+			// Q5: 2d4 × 100 = 200-800
+			for (let i = 0; i < 100; i++) {
+				const bonus = rollTreasureBonus(5)
+				expect(bonus).toBeGreaterThanOrEqual(200)
+				expect(bonus).toBeLessThanOrEqual(800)
+			}
+		})
+
+		it('should show cost for weapons when quality is provided', () => {
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('weapon', 3)
+				expect(result).toContain('Q3')
+				expect(result).toContain('coins')
+				expect(result).not.toContain('Base:')
+			}
+		})
+
+		it('should show cost for armor when quality is provided', () => {
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('armor', 3)
+				expect(result).toContain('Q3')
+				expect(result).toContain('coins')
+				expect(result).not.toContain('Base:')
+			}
+		})
+
+		it('should show cost for wearables when quality is provided', () => {
+			const result = generateTreasure('wearable', 4)
+			expect(result).toContain('Q4')
+			expect(result).toContain('coins')
+			expect(result).not.toContain('Base:')
+		})
+
+		it('should show cost for utility with equipment items when quality is provided', () => {
+			let foundEquipmentItem = false
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('utility', 3)
+				expect(result).toContain('Q3')
+				expect(result).not.toContain('Base:')
+				// Equipment items produce simple names: "pickaxe. (Q3, ~X coins)"
+				// Non-equipment (Spell Scroll, Knowledge) produce: "spell scroll, detail. (Q3, ~X coins)"
+				if (/^[^,]+\. \(Q/.test(result)) foundEquipmentItem = true
+			}
+			// At least some utility types (Gear, Alchemy, Tool, Supply) should have base items
+			expect(foundEquipmentItem).toBe(true)
+		})
+
+		it('should filter armor by quality tier', () => {
+			// At Q1, should only get Leather (the only Q1 armor)
+			for (let i = 0; i < 30; i++) {
+				const result = generateTreasure('armor', 1)
+				expect(result).toContain('leather')
+				// Should not get Plate Harness (Q4) or Breastplate (Q3) at Q1
+				expect(result.toLowerCase()).not.toContain('plate harness')
+				expect(result.toLowerCase()).not.toContain('breastplate')
+			}
+		})
+
+		it('should include actual weapon names from game data when quality is provided', () => {
+			const knownWeapons = [
+				'battleaxe', 'hatchet', 'greataxe', 'throwing axe',
+				'shortsword', 'longsword', 'broadsword', 'greatsword', 'scimitar',
+				'shortbow', 'longbow', 'mace', 'maul', 'club',
+				'spear', 'glaive', 'javelin', 'quarterstaff',
+				'sling', 'blowpipe', 'whip', 'cestus',
+				'arcane conduit', 'mystic talisman',
+			]
+			let foundKnown = false
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('weapon', 3).toLowerCase()
+				if (knownWeapons.some(w => result.includes(w))) {
+					foundKnown = true
+					break
+				}
+			}
+			expect(foundKnown).toBe(true)
+		})
+
+		it('should use valuables full multiplier (not bonus) for cost calculation', () => {
+			// Valuables use 2d4 × full multiplier, not base cost + bonus
+			const costs: number[] = []
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('valuable', 5)
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, '')))
+			}
+			expect(costs.length).toBeGreaterThan(0)
+			// Q5 valuables: 2d4 × 500 = 1000-4000
+			const avg = costs.reduce((a, b) => a + b, 0) / costs.length
+			expect(avg).toBeGreaterThan(1000)
+			expect(avg).toBeLessThan(4000)
+		})
+
+		it('should have treasureBonusMultipliers data', () => {
+			const multipliers = treasureData.treasureBonusMultipliers as number[]
+			expect(multipliers).toBeDefined()
+			expect(multipliers).toHaveLength(8)
+			// Should be ascending
+			for (let i = 1; i < multipliers.length; i++) {
+				expect(multipliers[i]).toBeGreaterThan(multipliers[i - 1])
+			}
+		})
+
+		it('should have wearableBaseCosts for all slots', () => {
+			const baseCosts = treasureData.wearableBaseCosts as Record<string, number>
+			const slots = treasureData.wearableSlots as string[]
+			expect(baseCosts).toBeDefined()
+			for (const slot of slots) {
+				expect(baseCosts[slot]).toBeDefined()
+				expect(baseCosts[slot]).toBeGreaterThan(0)
+			}
+		})
+
+		it('should have utilityEquipmentMap for mapped utility types', () => {
+			const map = treasureData.utilityEquipmentMap as Record<string, string>
+			expect(map).toBeDefined()
+			expect(map['Gear']).toBe('Gear')
+			expect(map['Alchemical']).toBe('Alchemy')
+			expect(map['Tool']).toBe('Toolkit')
+			expect(map['Supply']).toBe('Supply')
+		})
+
+		it('should show only base cost for utility items at their exact quality tier', () => {
+			// Q1 gear items exist (Rope, Shovel, Oil, Pickaxe, Portable Ram at 10-50 coins)
+			// No bonus should be added — max Q1 gear cost is 50 coins
+			const q1Costs: number[] = []
+			let foundQ1Item = false
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 1)
+				const match = result.match(/~([\d,]+) coins/)
+				if (match && /^[^,]+\. \(Q1,/.test(result)) {
+					// Item-lookup path at Q1 — verify cost is base cost only
+					q1Costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+					foundQ1Item = true
+				}
+			}
+			expect(foundQ1Item).toBe(true)
+			// Q1 gear/supply items cost 5–50 coins; no bonus should be added
+			const maxQ1 = Math.max(...q1Costs)
+			expect(maxQ1).toBeLessThanOrEqual(50)
+		})
+
+		it('should not apply craftsmanship bonus to utility items', () => {
+			// At Q3, equipment items (Luxury Rations=120, Advanced Materials=250, Rope Silk=125)
+			// have fixed costs. If bonus were added, max would be 250 + 2d4×10 = 250+80 = 330.
+			// We verify items only show their true base cost.
+			const q3MaxEquipCost = 250 // max Q3 supply/gear item cost
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 3)
+				const match = result.match(/~([\d,]+) coins/)
+				if (match && /^[^,]+\. \(Q3,/.test(result)) {
+					// Equipment item path (simple name, no leading comma): cost should equal base cost only
+					const cost = parseInt(match[1].replace(/,/g, ''), 10)
+					expect(cost).toBeLessThanOrEqual(q3MaxEquipCost)
+				}
+			}
+		})
+
+		it('should not show low-quality utility items at high quality tiers', () => {
+			// At Q6+, no utility equipment items exist (max is Q5 for Alchemy), so the
+			// item-lookup path should never trigger. All results should be description fallbacks.
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('utility', 6)
+				// Item-lookup path produces: "<name>. (Q6, ~cost)" with no leading comma
+				// Description fallback produces: "type, detail. (Q6, ~cost)" with a comma before (Q6
+				const isItemPath = /^[^,]+\. \(Q6,/.test(result)
+				// No utility equipment item has quality 6, so item path should never fire
+				expect(isItemPath).toBe(false)
+			}
+		})
+
+		it('should show ammo only at its exact quality tier with base cost only', () => {
+			// Arrows (d6) are Q1 at 15 coins — should only appear at Q1
+			// Arrows should NOT appear at Q3 (exact quality: arrows are Q1 only)
+			for (let i = 0; i < 50; i++) {
+				const result = generateTreasure('weapon', 3).toLowerCase()
+				// "arrows (d6)" is the specific item name; must not appear at Q3
+				expect(result).not.toContain('arrows (d6)')
+			}
+
+			// At Q1, arrows should appear with exactly their base cost (no bonus)
+			let foundArrowsAtQ1 = false
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('weapon', 1)
+				if (result.toLowerCase().includes('arrows (d6)')) {
+					foundArrowsAtQ1 = true
+					const match = result.match(/~([\d,]+) coins/)
+					if (match) {
+						const cost = parseInt(match[1].replace(/,/g, ''), 10)
+						expect(cost).toBe(15) // arrows base cost, no bonus added
+					}
+				}
+			}
+			expect(foundArrowsAtQ1).toBe(true)
 		})
 	})
 
