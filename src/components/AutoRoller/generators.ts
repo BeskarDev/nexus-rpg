@@ -362,6 +362,35 @@ export const treasureGroups = [
 	{ id: 'weapon', label: 'Weapon / Spell Catalyst' },
 ]
 
+const anyOption = { id: 'any', label: 'Any' }
+
+export const treasureSubGroups: Record<string, Array<{ id: string; label: string }>> = {
+	any: [],
+	valuable: [
+		anyOption,
+		...(treasureData.valuables as string[]).map((v) => ({ id: v, label: v })),
+	],
+	utility: [
+		anyOption,
+		...(treasureData.utility as { range: string; type: string }[]).map((u) => ({
+			id: u.type,
+			label: u.type,
+		})),
+	],
+	wearable: [
+		anyOption,
+		...(treasureData.wearableSlots as string[]).map((s) => ({ id: s, label: s })),
+	],
+	armor: [
+		anyOption,
+		...(treasureData.armorShield as string[]).map((a) => ({ id: a, label: a })),
+	],
+	weapon: [
+		anyOption,
+		...(treasureData.weaponCatalyst as string[]).map((w) => ({ id: w, label: w })),
+	],
+}
+
 // Minimum quality tier for each treasure category
 const categoryMinQuality: Record<string, number> = {
 	valuable: 1,
@@ -417,6 +446,49 @@ export function rollMagicItemCost(baseCost: number, quality: number, category: I
 	const enchantCost = hasEnchantment ? enchantmentCosts[tier][category] : 0
 	const bonus = rollTreasureBonus(quality)
 	return baseCost + magicBase + enchantCost + bonus
+}
+
+// Calculate cost for a magical consumable/supply item.
+// modifier: 0.5 for Consumable/Tools/Utilities (alchemical, spell scroll),
+//           0.25 for Supply/Bundle/Ammo (magic ammo items).
+// Calibrated so Q4 consumable = ~350+bonus coins (50 base + 150 magic + 150 enchant).
+// Both magic base and enchant are always applied since magical consumables always have an effect.
+export function rollMagicConsumableCost(quality: number, modifier: number = 0.5): number {
+	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+	const baseFormCost = 50
+	// scale factor: modifier * 0.3  → x0.5 → 0.15 (alchemical baseline), x0.25 → 0.075
+	const factor = modifier * 0.3
+	const magicBase = Math.round(magicItemBaseCosts[tier]['one-handed-weapon'] * factor)
+	const enchantCost = Math.round(enchantmentCosts[tier]['one-handed-weapon'] * factor)
+	const bonus = rollTreasureBonus(quality)
+	return baseFormCost + magicBase + enchantCost + bonus
+}
+
+// Convenience wrapper: alchemical items are consumables (modifier = 0.5)
+export function rollMagicAlchemicalCost(quality: number): number {
+	return rollMagicConsumableCost(quality, 0.5)
+}
+
+// Set of item names that come from the magic utility "Ammo" sub-table (supply items)
+const MAGIC_AMMO_ITEM_NAMES = new Set<string>(
+	((treasureData.magicUtilitySubtables as Record<string, string[]>)['Ammo']) ?? []
+)
+
+// Map a magic utility item name to its pricing category.
+// Assumes input is a valid item type from the magic utility tables (Alchemical is handled before
+// this function is called, so it never appears here).
+function getMagicUtilityItemPricingType(itemType: string): 'consumable' | 'supply' | 'catalyst' | 'permanent' {
+	if (itemType === 'Spell Scroll') return 'consumable'
+	if (itemType === 'Wand' || itemType === 'Staff') return 'catalyst'
+	if (MAGIC_AMMO_ITEM_NAMES.has(itemType)) return 'supply'
+	return 'permanent'
+}
+
+// Get the base-value modifier for a mundane utility sub-type (Q1-Q3)
+// Per docs "Modifiers to Base Values": Supply/Bundle/Ammo = x0.25, Consumable/Tools/Utilities = x0.5
+function getUtilityTypeModifier(type: string): number {
+	if (type === 'Supply') return 0.25
+	return 0.5  // Gear, Alchemical, Tool, Spell Scroll, Knowledge
 }
 
 // Parse cost string that may contain commas (e.g., "2,500")
@@ -536,10 +608,17 @@ function generateMagicItemName(category: 'utility' | 'wearable' | 'armor' | 'wea
 	const adjective = pickField(nameTable, Math.random() < 0.5 ? 'adjective1' : 'adjective2')
 	const noun = pickField(nameTable, Math.random() < 0.5 ? 'noun1' : 'noun2')
 
-	return pattern
+	const raw = pattern
 		.replace('[Adjective]', adjective)
 		.replace('[Noun]', noun)
 		.replace('[Item]', baseItem)
+	// Title-case every word, but keep small prepositions/articles lowercase mid-name
+	// (e.g. "Scale Cuirass of Bloom", "Ring of Chanted Trial")
+	const small = new Set(['of', 'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at'])
+	return raw.replace(/\b\w+\b/g, (word, offset) => {
+		if (offset > 0 && small.has(word.toLowerCase())) return word.toLowerCase()
+		return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+	})
 }
 
 // Generate a magic item effect description
@@ -580,13 +659,21 @@ function generateMagicItemCurse(): string | null {
 }
 
 // Pick a magic utility item type for Q4+ (replaces mundane utility table)
-function pickMagicUtilityItem(): string {
+function pickMagicUtilityItem(forcedType?: string): string {
+	const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
+
+	if (forcedType) {
+		if (subtables && subtables[forcedType]) {
+			return pick(subtables[forcedType])
+		}
+		return forcedType
+	}
+
 	const types = treasureData.magicUtilityTypes as { range: string; type: string }[]
 	if (!types || types.length === 0) return 'Wand'
 
 	const entry = pick(types)
 	const type = entry.type
-	const subtables = treasureData.magicUtilitySubtables as Record<string, string[]>
 
 	// Types with sub-tables get a specific item — return just the item name
 	// without the category suffix (e.g., 'Rope' instead of 'Rope (container)')
@@ -598,18 +685,78 @@ function pickMagicUtilityItem(): string {
 	return type
 }
 
+// Generate a magical knowledge item (for Q4+ quality with Knowledge sub-category)
+function generateMagicKnowledge(quality: number): string {
+	const d = treasureData.utilityDetails['Knowledge'] as KnowledgeEntry[]
+	const entry = pick(d)
+	const format = entry.format
+	const topic = entry.topic
+	const style = entry.style
+	// Knowledge items are permanent magical utilities — always fully enchanted (no 50% chance)
+	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+	const cost = enchantmentCosts[tier]['wearable'] + rollTreasureBonus(quality)
+	const magicName = generateMagicItemName('utility', format)
+	const effect = generateMagicItemEffect()
+	const curse = generateMagicItemCurse()
+	const desc = ` — ${lc(format)} on ${lc(topic)} (${lc(style)})`
+	let result = `✦ "${capitalize(magicName)}"${desc}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+	if (curse) result += ` [${curse}]`
+	return result
+}
+
 // Generate a magical utility item (for Q4+ quality)
-function generateMagicUtility(quality: number): string {
-	const itemType = pickMagicUtilityItem()
-	// Wand/Staff are spell catalysts — use spell-catalyst pricing; everything else is wearable
-	const costCategory: ItemCategory =
-		itemType === 'Wand' || itemType === 'Staff' ? 'spell-catalyst' : 'wearable'
-	const cost = rollMagicItemCost(0, quality, costCategory)
-	const magicName = generateMagicItemName('utility', itemType)
+function generateMagicUtility(quality: number, forcedType?: string): string {
+	const itemType = pickMagicUtilityItem(forcedType)
 	const effect = generateMagicItemEffect()
 	const curse = generateMagicItemCurse()
 
-	// For types with a utility sub-table (Alchemical, Spell Scroll), include their
+	// For Alchemical: use consumable pricing and specific form as the magic item name base
+	if (itemType === 'Alchemical') {
+		const d = treasureData.utilityDetails['Alchemical'] as AlchemicalEntry[]
+		if (d && d.length > 0) {
+			const entry = pick(d)
+			const form = entry.form
+			const effectName = entry.effect
+			const delivery = entry.delivery
+			const cost = rollMagicAlchemicalCost(quality)
+			const magicName = generateMagicItemName('utility', form)
+			const desc = ` — ${lc(effectName)} ${lc(form)} (${lc(delivery)})`
+			let result = `✦ "${capitalize(magicName)}"${desc}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+			if (curse) result += ` [${curse}]`
+			return result
+		}
+	}
+
+	// Calculate cost based on the item type's pricing category:
+	// - Consumable (Spell Scroll): x0.5 modifier per "Consumable/Tools/Utilities" docs rule
+	// - Supply (Ammo): x0.25 modifier per "Supply/Bundle/Ammo" docs rule
+	// - Spell Catalyst (Wand, Staff): standard spell-catalyst pricing
+	// - Permanent (Container, Instrument, Everyday Object, etc.): always-enchanted wearable
+	//   (no 50% chance — all generated magic utilities have a magical effect)
+	const pricingType = getMagicUtilityItemPricingType(itemType)
+	let cost: number
+	switch (pricingType) {
+		case 'consumable':
+			cost = rollMagicConsumableCost(quality, 0.5)
+			break
+		case 'supply':
+			cost = rollMagicConsumableCost(quality, 0.25)
+			break
+		case 'catalyst':
+			cost = rollMagicItemCost(0, quality, 'spell-catalyst')
+			break
+		case 'permanent':
+		default: {
+			// Permanent magic utility items always have an enchantment (they have a magical effect)
+			const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+			cost = enchantmentCosts[tier]['wearable'] + rollTreasureBonus(quality)
+			break
+		}
+	}
+
+	const magicName = generateMagicItemName('utility', itemType)
+
+	// For types with a utility sub-table (Spell Scroll), include their
 	// physical description after an em-dash, using independently-rolled columns
 	const utilityDesc =
 		treasureData.utilityDetails[itemType] != null ? ` — ${formatUtilityDetail(itemType)}` : ''
@@ -637,8 +784,8 @@ function getWeaponItemCategory(weaponType: string, weaponName: string): ItemCate
 	return 'one-handed-weapon'
 }
 
-function generateValuable(quality?: number): string {
-	const type = pick(treasureData.valuables)
+function generateValuable(quality?: number, subCategory?: string): string {
+	const type = (subCategory && subCategory !== 'any') ? subCategory : pick(treasureData.valuables)
 	const details = treasureData.valuableDetails[type] as
 		| { form: string; detail: string }[]
 		| undefined
@@ -699,27 +846,47 @@ function formatUtilityDetail(type: string): string {
 	}
 }
 
-function generateUtility(quality?: number): string {
+// Mapping from mundane utility sub-categories to magic utility types (for Q4+)
+const utilityToMagicTypeMap: Record<string, string> = {
+	'Alchemical': 'Alchemical',
+	'Spell Scroll': 'Spell Scroll',
+}
+
+function generateUtility(quality?: number, subCategory?: string): string {
 	// Q4+ utility items use the Magical Utility Items table
 	if (quality && quality >= 4) {
-		return generateMagicUtility(quality)
+		// Knowledge items retain their category at higher quality
+		if (subCategory === 'Knowledge') {
+			return generateMagicKnowledge(quality)
+		}
+		const forcedMagicType = subCategory && subCategory !== 'any'
+			? utilityToMagicTypeMap[subCategory]
+			: undefined
+		return generateMagicUtility(quality, forcedMagicType)
 	}
 
-	const entry = pick(treasureData.utility)
+	const entry = (subCategory && subCategory !== 'any')
+		? { type: subCategory }
+		: pick(treasureData.utility)
 	const type = entry.type
 
 	if (quality) {
-		// All utility types use their sub-table columns for natural-language descriptions
+		// All utility types use their sub-table columns for natural-language descriptions.
+		// Apply the correct price modifier per docs "Modifiers to Base Values":
+		// Supply = x0.25, all other utility types (Consumable/Tools/Utilities) = x0.5
 		const desc = formatUtilityDetail(type)
-		const cost = rollTreasureCost(quality)
+		const modifier = getUtilityTypeModifier(type)
+		const cost = Math.round(rollTreasureCost(quality) * modifier)
 		return `${desc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
 
 	return `${formatUtilityDetail(type)}.`
 }
 
-function generateWearable(quality?: number): string {
-	const slot = pick(treasureData.wearableSlots)
+function generateWearable(quality?: number, subCategory?: string): string {
+	const slot = (subCategory && subCategory !== 'any')
+		? subCategory
+		: pick(treasureData.wearableSlots)
 	const items = treasureData.wearableItems[slot] as string[] | undefined
 	const itemType = items && items.length > 0 ? pick(items) : slot
 	const ornament = pickField(treasureData.wearableDescription, 'ornament')
@@ -749,11 +916,14 @@ function generateWearable(quality?: number): string {
 	return `${desc}.`
 }
 
-function generateArmor(quality?: number): string {
+function generateArmor(quality?: number, subCategory?: string): string {
 	let armorList = treasureData.armorShield as string[]
 
-	// Filter to items whose base quality ≤ selected quality
-	if (quality) {
+	if (subCategory && subCategory !== 'any') {
+		// Use the explicitly selected armor/shield type
+		armorList = [subCategory]
+	} else if (quality) {
+		// Filter to items whose base quality ≤ selected quality
 		const filtered = armorList.filter(name => {
 			const info = getArmorInfo(name)
 			return !info || info.quality <= quality
@@ -766,11 +936,13 @@ function generateArmor(quality?: number): string {
 		| { material: string; form: string; detail: string }[]
 		| undefined
 	let detailStr: string
+	let armorFormName = type  // specific form used as base for magic item name
 	if (details && details.length > 0) {
 		const material = pickField(details, 'material')
 		const form = pickField(details, 'form')
 		const detail = pickField(details, 'detail')
 		detailStr = `${lc(material)} ${lc(form)}, ${lc(detail)}`
+		armorFormName = form
 	} else {
 		detailStr = lc(type)
 	}
@@ -783,7 +955,7 @@ function generateArmor(quality?: number): string {
 		if (quality >= 4) {
 			const itemCat = getArmorItemCategory(type)
 			const total = rollMagicItemCost(baseCost, quality, itemCat)
-			const magicName = generateMagicItemName('armor', type)
+			const magicName = generateMagicItemName('armor', armorFormName)
 			const effect = generateMagicItemEffect()
 			const curse = generateMagicItemCurse()
 			let result = `✦ "${capitalize(magicName)}" — ${detailStr}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
@@ -798,8 +970,10 @@ function generateArmor(quality?: number): string {
 	return `${detailStr}.`
 }
 
-function generateWeapon(quality?: number): string {
-	const type = pick(treasureData.weaponCatalyst)
+function generateWeapon(quality?: number, subCategory?: string): string {
+	const type = (subCategory && subCategory !== 'any')
+		? subCategory
+		: pick(treasureData.weaponCatalyst)
 	const details = treasureData.weaponDetails[type] as
 		| { material: string; form: string; detail: string }[]
 		| undefined
@@ -868,20 +1042,20 @@ function generateWeapon(quality?: number): string {
 	return `${lc(type)}.`
 }
 
-export function generateTreasure(groupId: string, quality?: number): string {
+export function generateTreasure(groupId: string, quality?: number, subCategory?: string): string {
 	const category = groupId === 'any' ? rollTreasureType(quality) : groupId
 
 	switch (category) {
 		case 'valuable':
-			return generateValuable(quality)
+			return generateValuable(quality, subCategory)
 		case 'utility':
-			return generateUtility(quality)
+			return generateUtility(quality, subCategory)
 		case 'wearable':
-			return generateWearable(quality)
+			return generateWearable(quality, subCategory)
 		case 'armor':
-			return generateArmor(quality)
+			return generateArmor(quality, subCategory)
 		case 'weapon':
-			return generateWeapon(quality)
+			return generateWeapon(quality, subCategory)
 		default:
 			return 'Unknown treasure type'
 	}

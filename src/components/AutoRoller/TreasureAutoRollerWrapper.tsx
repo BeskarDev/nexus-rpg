@@ -13,8 +13,8 @@ import {
 } from '@mui/material'
 import { ThemeSwitcher } from '@site/src/components/ThemeSwitcher'
 import { theme } from '@site/src/hooks/createTheme'
-import React, { useState } from 'react'
-import { generateTreasure, treasureGroups } from './generators'
+import React, { useState, useEffect } from 'react'
+import { generateTreasure, treasureGroups, treasureSubGroups } from './generators'
 
 const COUNT_OPTIONS = [1, 2, 3, 5, 10]
 const QUALITY_OPTIONS = [
@@ -34,9 +34,18 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 	const [selectedGroup, setSelectedGroup] = useState<string>(
 		treasureGroups[0].id,
 	)
+	const [selectedSubGroup, setSelectedSubGroup] = useState<string>('any')
 	const [quality, setQuality] = useState<number>(0)
 	const [count, setCount] = useState<number>(1)
 	const [results, setResults] = useState<string[]>([])
+
+	// Reset sub-group when main group changes
+	useEffect(() => {
+		setSelectedSubGroup('any')
+	}, [selectedGroup])
+
+	const subGroupOptions = treasureSubGroups[selectedGroup] ?? []
+	const showSubGroup = subGroupOptions.length > 0
 
 	const handleRoll = () => {
 		const newResults: string[] = []
@@ -45,7 +54,8 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 				quality === 0
 					? Math.floor(Math.random() * 8) + 1
 					: quality
-			newResults.push(generateTreasure(selectedGroup, q))
+			const sub = showSubGroup ? selectedSubGroup : undefined
+			newResults.push(generateTreasure(selectedGroup, q, sub))
 		}
 		setResults(newResults)
 	}
@@ -96,6 +106,36 @@ export const TreasureAutoRollerWrapper: React.FC = () => {
 									))}
 								</Select>
 							</FormControl>
+
+							{showSubGroup && (
+								<FormControl
+									sx={{ minWidth: 200 }}
+									size="small"
+								>
+									<InputLabel id="treasure-subgroup-label">
+										Sub-category
+									</InputLabel>
+									<Select
+										labelId="treasure-subgroup-label"
+										value={selectedSubGroup}
+										label="Sub-category"
+										onChange={(e) =>
+											setSelectedSubGroup(
+												e.target.value,
+											)
+										}
+									>
+										{subGroupOptions.map((sg) => (
+											<MenuItem
+												key={sg.id}
+												value={sg.id}
+											>
+												{sg.label}
+											</MenuItem>
+										))}
+									</Select>
+								</FormControl>
+							)}
 
 							<FormControl
 								sx={{ minWidth: 180 }}

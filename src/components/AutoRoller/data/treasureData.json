@@ -729,7 +729,7 @@
 				"trait": "Space-saving"
 			},
 			{
-				"item": "Climber\u2019s Kit",
+				"item": "Climber’s Kit",
 				"style": "Silver",
 				"trait": "Secure grip"
 			},
@@ -827,7 +827,7 @@
 			},
 			{
 				"effect": "Burning",
-				"form": "Oil-soaked rag",
+				"form": "Tinder",
 				"delivery": "Ignited"
 			},
 			{
@@ -837,7 +837,7 @@
 			},
 			{
 				"effect": "Choking",
-				"form": "Fumes in sealed jar",
+				"form": "Sealed jar",
 				"delivery": "Broken open"
 			},
 			{
@@ -847,7 +847,7 @@
 			},
 			{
 				"effect": "Soothing",
-				"form": "Emollient salve",
+				"form": "Salve",
 				"delivery": "Rubbed on skin"
 			},
 			{
@@ -857,7 +857,7 @@
 			},
 			{
 				"effect": "Signaling",
-				"form": "Luminescent oil",
+				"form": "Oil flask",
 				"delivery": "Poured"
 			},
 			{
@@ -868,52 +868,52 @@
 		],
 		"Tool": [
 			{
-				"item": "Alchemist\u2019s Tools",
+				"item": "Alchemist’s Tools",
 				"style": "Bronze",
 				"trait": "Multipurpose"
 			},
 			{
-				"item": "Clothweaver\u2019s Tools",
+				"item": "Clothweaver’s Tools",
 				"style": "Bone",
 				"trait": "Precise"
 			},
 			{
-				"item": "Jeweler\u2019s Tools",
+				"item": "Jeweler’s Tools",
 				"style": "Wooden",
 				"trait": "Fine-detail"
 			},
 			{
-				"item": "Leatherworker\u2019s Tools",
+				"item": "Leatherworker’s Tools",
 				"style": "Leather",
 				"trait": "Hardwearing"
 			},
 			{
-				"item": "Mason\u2019s Tools",
+				"item": "Mason’s Tools",
 				"style": "Stone",
 				"trait": "Sturdy"
 			},
 			{
-				"item": "Painter\u2019s Tools",
+				"item": "Painter’s Tools",
 				"style": "Pigment",
 				"trait": "Vibrant"
 			},
 			{
-				"item": "Smith\u2019s Tools",
+				"item": "Smith’s Tools",
 				"style": "Iron",
 				"trait": "Heavy-duty"
 			},
 			{
-				"item": "Thieves\u2019 Tools",
+				"item": "Thieves’ Tools",
 				"style": "Hidden",
 				"trait": "Stealthy"
 			},
 			{
-				"item": "Trapmaker\u2019s Tools",
+				"item": "Trapmaker’s Tools",
 				"style": "Copper",
 				"trait": "Deceptive"
 			},
 			{
-				"item": "Woodworker\u2019s Tools",
+				"item": "Woodworker’s Tools",
 				"style": "Obsidian",
 				"trait": "Smooth-cut"
 			},
@@ -928,7 +928,7 @@
 				"trait": "Reliable"
 			},
 			{
-				"item": "Healer\u2019s Kit",
+				"item": "Healer’s Kit",
 				"style": "Herbal",
 				"trait": "Restorative"
 			},
@@ -1807,7 +1807,7 @@
 			},
 			{
 				"material": "Horn-ridge overlays",
-				"form": "\u014c-yoroi harness",
+				"form": "Ō-yoroi harness",
 				"detail": "Wide shoulder plates"
 			},
 			{
@@ -4076,12 +4076,12 @@
 		}
 	],
 	"magicItemCurseSigns": [
-		"Unsettling sensation \u2014 a chill, nausea, or static prickle",
-		"Subtle resistance \u2014 feels heavier or vibrates faintly",
-		"Whispered echo \u2014 a faint voice no one else hears",
-		"Strange reaction \u2014 fire sputters, animals shy away, shadows bend",
-		"Unnatural aura \u2014 unstable, flickering magical signature",
-		"Disrupted sleep \u2014 vivid nightmares or restless sleep"
+		"Unsettling sensation — a chill, nausea, or static prickle",
+		"Subtle resistance — feels heavier or vibrates faintly",
+		"Whispered echo — a faint voice no one else hears",
+		"Strange reaction — fire sputters, animals shy away, shadows bend",
+		"Unnatural aura — unstable, flickering magical signature",
+		"Disrupted sleep — vivid nightmares or restless sleep"
 	],
 	"magicItemCurseEffects": [
 		{

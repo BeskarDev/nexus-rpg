@@ -15,6 +15,9 @@ import {
 	generateTreasure,
 	rollTreasureCost,
 	rollTreasureBonus,
+	rollMagicItemCost,
+	rollMagicAlchemicalCost,
+	rollMagicConsumableCost,
 	generateQuest,
 	generateNpc,
 	generateSettlement,
@@ -871,6 +874,218 @@ describe('AutoRoller Generators', () => {
 			}
 		})
 
+		it('rollMagicItemCost for wearable should have 0 magic base cost (wearables skip it)', () => {
+			// Wearables intentionally skip magic item base cost per equipment rules.
+			// Without enchantment they only cost the small bonus — this is correct for wearables
+			// but must NOT be used for alchemical consumables (which need their own pricing).
+			for (let i = 0; i < 100; i++) {
+				const cost = rollMagicItemCost(0, 4, 'wearable')
+				// Without enchantment: 0+0+60-240. With enchantment: 0+1000+60-240.
+				// Cost is either low (60-240) or high (1060-1240) — that bimodal distribution is
+				// intentional for wearables which skip the magic base cost.
+				expect(cost).toBeGreaterThanOrEqual(60)
+				expect(cost).toBeLessThanOrEqual(1240)
+			}
+		})
+
+		it('rollMagicAlchemicalCost should return values in the expected consumable range', () => {
+			// Q4 consumable: 50 (base form) + 150 (magic base) + 150 (enchant) + bonus(60-240)
+			// Expected range: 410-590
+			for (let i = 0; i < 200; i++) {
+				const cost = rollMagicAlchemicalCost(4)
+				expect(cost).toBeGreaterThanOrEqual(410)
+				expect(cost).toBeLessThanOrEqual(590)
+			}
+		})
+
+		it('rollMagicAlchemicalCost should scale appropriately with quality tier', () => {
+			// Q4: 50 + 150 + 150 + bonus(60-240) = 410-590, avg ~500
+			const q4Costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				q4Costs.push(rollMagicAlchemicalCost(4))
+			}
+			const q4Avg = q4Costs.reduce((a, b) => a + b, 0) / q4Costs.length
+			expect(q4Avg).toBeGreaterThan(430)
+			expect(q4Avg).toBeLessThan(570)
+
+			// Q6: 50 + round(10000*0.15) + round(10000*0.15) + bonus(600-2400) = 3650-5450, avg ~4550
+			const q6Costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const cost = rollMagicAlchemicalCost(6)
+				expect(cost).toBeGreaterThanOrEqual(3650)
+				expect(cost).toBeLessThanOrEqual(5450)
+				q6Costs.push(cost)
+			}
+			const q6Avg = q6Costs.reduce((a, b) => a + b, 0) / q6Costs.length
+			expect(q6Avg).toBeGreaterThan(4000)
+			expect(q6Avg).toBeLessThan(5100)
+		})
+
+		it('alchemical utility items at Q4 should have costs in the consumable range (no bimodal gap)', () => {
+			// Before the fix, costs were either ~60-240 (no enchant) or ~1060-1240 (enchant) — bimodal.
+			// After the fix, costs should always be in the 410-590 range.
+			const costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('utility', 4, 'Alchemical')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(100)
+			// All costs should be in the expected range — no bimodal low (60-240) or high (1000+) outliers
+			costs.forEach(c => {
+				expect(c).toBeGreaterThanOrEqual(400)
+				expect(c).toBeLessThanOrEqual(600)
+			})
+		})
+
+		it('rollMagicConsumableCost with modifier=0.5 should match rollMagicAlchemicalCost', () => {
+			// rollMagicAlchemicalCost is a convenience wrapper for rollMagicConsumableCost(q, 0.5)
+			// Q4: 50 + round(1000*0.5*0.3) + round(1000*0.5*0.3) + bonus(60-240) = 410-590
+			for (let i = 0; i < 200; i++) {
+				const cost = rollMagicConsumableCost(4, 0.5)
+				expect(cost).toBeGreaterThanOrEqual(410)
+				expect(cost).toBeLessThanOrEqual(590)
+			}
+		})
+
+		it('rollMagicConsumableCost with modifier=0.25 (supply) should return correct range', () => {
+			// Q4 supply (x0.25): 50 + round(1000*0.25*0.3) + round(1000*0.25*0.3) + bonus(60-240)
+			//                  = 50 + 75 + 75 + 60-240 = 260-440
+			for (let i = 0; i < 200; i++) {
+				const cost = rollMagicConsumableCost(4, 0.25)
+				expect(cost).toBeGreaterThanOrEqual(260)
+				expect(cost).toBeLessThanOrEqual(440)
+			}
+		})
+
+		it('rollMagicConsumableCost supply costs should be less than consumable costs on average', () => {
+			// x0.25 supply items should cost about half of x0.5 consumable items
+			let supplyTotal = 0, consumableTotal = 0
+			const N = 200
+			for (let i = 0; i < N; i++) {
+				supplyTotal += rollMagicConsumableCost(4, 0.25)
+				consumableTotal += rollMagicConsumableCost(4, 0.5)
+			}
+			expect(supplyTotal / N).toBeLessThan(consumableTotal / N)
+		})
+
+		it('mundane utility Q1 costs should apply x0.5 modifier (Consumable/Tools/Utilities)', () => {
+			// Q1 base value from quality tier table = 25 coins.
+			// rollTreasureCost(1) = 2d4 * 5 = 10-40 (avg 25 = Q1 base value).
+			// After x0.5 modifier: Math.round(10-40 * 0.5) = 5-20.
+			const costs: number[] = []
+			for (let i = 0; i < 200; i++) {
+				// Use Gear/Tool/Alchemical sub-categories (all use x0.5)
+				const result = generateTreasure('utility', 1, 'Gear')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(200)
+			// Q1 with x0.5: range 5-20 (never up at 40 which would be x1.0)
+			costs.forEach(c => {
+				expect(c).toBeGreaterThanOrEqual(5)
+				expect(c).toBeLessThanOrEqual(20)
+			})
+		})
+
+		it('mundane utility Q3 costs should apply x0.5 modifier', () => {
+			// Q3 base value = 250 coins. With x0.5: Math.round(2d4 * 50 * 0.5) = 50-200
+			const costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('utility', 3, 'Gear')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(100)
+			costs.forEach(c => {
+				expect(c).toBeGreaterThanOrEqual(50)
+				expect(c).toBeLessThanOrEqual(200)
+			})
+		})
+
+		it('mundane Supply utility Q1 costs should apply x0.25 modifier', () => {
+			// Q1 quality tier base value = 25 coins.
+			// rollTreasureCost(1) = 2d4 * 5 = 10-40.
+			// After x0.25 modifier: Math.round(10-40 * 0.25) = 2-10.
+			const costs: number[] = []
+			for (let i = 0; i < 200; i++) {
+				const result = generateTreasure('utility', 1, 'Supply')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(200)
+			costs.forEach(c => {
+				expect(c).toBeGreaterThanOrEqual(2)
+				expect(c).toBeLessThanOrEqual(10)
+			})
+		})
+
+		it('mundane Supply utility Q3 costs should apply x0.25 modifier', () => {
+			// Q3 base value = 250 coins. With x0.25: Math.round(2d4 * 50 * 0.25) = 25-100
+			const costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('utility', 3, 'Supply')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(100)
+			costs.forEach(c => {
+				expect(c).toBeGreaterThanOrEqual(25)
+				expect(c).toBeLessThanOrEqual(100)
+			})
+		})
+
+		it('mundane Supply costs should be less than Gear costs of same quality', () => {
+			// Supply x0.25 < Gear x0.5 — supply is cheaper than other utilities
+			let supplyTotal = 0, gearTotal = 0
+			const N = 100
+			for (let i = 0; i < N; i++) {
+				const s = generateTreasure('utility', 2, 'Supply').match(/~([\d,]+) coins/)
+				const g = generateTreasure('utility', 2, 'Gear').match(/~([\d,]+) coins/)
+				if (s) supplyTotal += parseInt(s[1].replace(/,/g, ''), 10)
+				if (g) gearTotal += parseInt(g[1].replace(/,/g, ''), 10)
+			}
+			expect(supplyTotal / N).toBeLessThan(gearTotal / N)
+		})
+
+		it('magic permanent utility items (Container etc.) should NOT have bimodal costs at Q4', () => {
+			// All magic utility item types now have defined pricing — no bimodal distribution.
+			// Old buggy range: 50% chance 60-240 (no enchant) or 50% chance 1060-1240 (with enchant).
+			// New minimums per type:
+			//   - Permanent (Container, Instrument, etc.): enchantCosts[Q4]['wearable'] (1000) + min bonus (60) = 1060
+			//   - Consumable (Spell Scroll): baseFormCost (50) + magicBase (150) + enchant (150) + min bonus (60) = 410
+			//   - Supply (Ammo): baseFormCost (50) + magicBase (75) + enchant (75) + min bonus (60) = 260
+			//   - Catalyst (Wand/Staff): cost from spell-catalyst table (large)
+			// So NO magic utility item at Q4 should ever cost less than 260 coins.
+			for (let i = 0; i < 200; i++) {
+				const result = generateTreasure('utility', 4)
+				if (!result.includes('✦')) continue
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) {
+					const cost = parseInt(match[1].replace(/,/g, ''), 10)
+					// The old bimodal "no enchantment" path gave 60-240. After the fix, minimum is 260.
+					expect(cost).toBeGreaterThanOrEqual(260)
+				}
+			}
+		})
+
+		it('magic Knowledge items at Q4 should NOT have bimodal costs', () => {
+			// Knowledge items are permanent magic utilities — always enchanted.
+			// Q4: 1000 + 60-240 = 1060-1240 (no 50% gap)
+			const costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('utility', 4, 'Knowledge')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(100)
+			// All should be in the permanent-enchanted range (not bimodal low)
+			costs.forEach(c => {
+				expect(c).toBeGreaterThanOrEqual(1060)
+				expect(c).toBeLessThanOrEqual(1240)
+			})
+		})
+
 		it('should show cost for weapons when quality is provided', () => {
 			for (let i = 0; i < 30; i++) {
 				const result = generateTreasure('weapon', 3)
@@ -987,44 +1202,42 @@ describe('AutoRoller Generators', () => {
 		})
 
 		it('should show only base cost for utility items at their exact quality tier', () => {
-			// Q1 gear items exist (Rope, Shovel, Oil, Pickaxe, Portable Ram at 10-50 coins)
-			// No bonus should be added — max Q1 gear cost is 50 coins
+			// Q1 utility items (Alchemical, Knowledge etc.) use rollTreasureCost * 0.5.
+			// The pattern below matches items whose description has no comma before '. (Q1,'
+			// (e.g. Alchemical "acidic phial (thrown)" or Knowledge "clay tablet on gods (clerical)").
+			// Q1 range after x0.5 modifier: Math.round(2d4 * 5 * 0.5) = 5–20 coins.
 			const q1Costs: number[] = []
 			let foundQ1Item = false
 			for (let i = 0; i < 50; i++) {
 				const result = generateTreasure('utility', 1)
 				const match = result.match(/~([\d,]+) coins/)
 				if (match && /^[^,]+\. \(Q1,/.test(result)) {
-					// Item-lookup path at Q1 — verify cost is base cost only
 					q1Costs.push(parseInt(match[1].replace(/,/g, ''), 10))
 					foundQ1Item = true
 				}
 			}
 			expect(foundQ1Item).toBe(true)
-			// Q1 gear/supply items cost 5–50 coins; no bonus should be added
+			// Q1 utility costs with x0.5 modifier: Math.round(2–8 × 5 × 0.5) = 5–20
 			const maxQ1 = Math.max(...q1Costs)
-			expect(maxQ1).toBeLessThanOrEqual(50)
+			expect(maxQ1).toBeLessThanOrEqual(20)
 		})
 
 		it('should not apply craftsmanship bonus to utility items', () => {
-			// At Q3, equipment items from pickUtilityItem have fixed costs (max ~250).
-			// When pickUtilityItem finds a matching equipment entry, it shows that exact cost.
-			// This test verifies no craftsmanship bonus is added on top of those base costs.
-			let foundEquipItem = false
+			// At Q3, utility items use Math.round(rollTreasureCost(3) * modifier).
+			// rollTreasureCost(3) = 2d4 * 50 = 100–400. With x0.5: 50–200. With x0.25: 25–100.
+			// All Q3 utility costs should be at most 200.
+			let foundUtilItem = false
 			for (let i = 0; i < 100; i++) {
 				const result = generateTreasure('utility', 3)
 				const match = result.match(/~([\d,]+) coins/)
 				if (!match) continue
 				const cost = parseInt(match[1].replace(/,/g, ''), 10)
-				// Equipment items appear as simple lowercase names from equipment.json
-				// Non-equipment items use the formatted detail pattern
-				// Equipment items at Q3 cost at most 250 coins
-				if (cost <= 250) {
-					foundEquipItem = true
+				// x0.5 utility at Q3: max 200. x0.25 supply: max 100.
+				if (cost <= 200) {
+					foundUtilItem = true
 				}
 			}
-			// Should find at least some equipment items at Q3
-			expect(foundEquipItem).toBe(true)
+			expect(foundUtilItem).toBe(true)
 		})
 
 		it('should generate magic utility items at Q6 with ✦ marker (Q4+ always magical)', () => {
