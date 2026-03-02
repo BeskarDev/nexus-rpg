@@ -15,6 +15,8 @@ import {
 	generateTreasure,
 	rollTreasureCost,
 	rollTreasureBonus,
+	rollMagicItemCost,
+	rollMagicAlchemicalCost,
 	generateQuest,
 	generateNpc,
 	generateSettlement,
@@ -869,6 +871,70 @@ describe('AutoRoller Generators', () => {
 				expect(bonus).toBeGreaterThanOrEqual(200)
 				expect(bonus).toBeLessThanOrEqual(800)
 			}
+		})
+
+		it('rollMagicItemCost for wearable should have 0 magic base cost (wearables skip it)', () => {
+			// Wearables intentionally skip magic item base cost per equipment rules.
+			// Without enchantment they only cost the small bonus — this is correct for wearables
+			// but must NOT be used for alchemical consumables (which need their own pricing).
+			for (let i = 0; i < 100; i++) {
+				const cost = rollMagicItemCost(0, 4, 'wearable')
+				// Without enchantment: 0+0+60-240. With enchantment: 0+1000+60-240.
+				// Cost is either low (60-240) or high (1060-1240) — that bimodal distribution is
+				// intentional for wearables which skip the magic base cost.
+				expect(cost).toBeGreaterThanOrEqual(60)
+				expect(cost).toBeLessThanOrEqual(1240)
+			}
+		})
+
+		it('rollMagicAlchemicalCost should return values in the expected consumable range', () => {
+			// Q4 consumable: 50 (base form) + 150 (magic base) + 150 (enchant) + bonus(60-240)
+			// Expected range: 410-590
+			for (let i = 0; i < 200; i++) {
+				const cost = rollMagicAlchemicalCost(4)
+				expect(cost).toBeGreaterThanOrEqual(410)
+				expect(cost).toBeLessThanOrEqual(590)
+			}
+		})
+
+		it('rollMagicAlchemicalCost should scale appropriately with quality tier', () => {
+			// Q4: 50 + 150 + 150 + bonus(60-240) = 410-590, avg ~500
+			const q4Costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				q4Costs.push(rollMagicAlchemicalCost(4))
+			}
+			const q4Avg = q4Costs.reduce((a, b) => a + b, 0) / q4Costs.length
+			expect(q4Avg).toBeGreaterThan(430)
+			expect(q4Avg).toBeLessThan(570)
+
+			// Q6: 50 + round(10000*0.15) + round(10000*0.15) + bonus(600-2400) = 3650-5450, avg ~4550
+			const q6Costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const cost = rollMagicAlchemicalCost(6)
+				expect(cost).toBeGreaterThanOrEqual(3650)
+				expect(cost).toBeLessThanOrEqual(5450)
+				q6Costs.push(cost)
+			}
+			const q6Avg = q6Costs.reduce((a, b) => a + b, 0) / q6Costs.length
+			expect(q6Avg).toBeGreaterThan(4000)
+			expect(q6Avg).toBeLessThan(5100)
+		})
+
+		it('alchemical utility items at Q4 should have costs in the consumable range (no bimodal gap)', () => {
+			// Before the fix, costs were either ~60-240 (no enchant) or ~1060-1240 (enchant) — bimodal.
+			// After the fix, costs should always be in the 410-590 range.
+			const costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('utility', 4, 'Alchemical')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(100)
+			// All costs should be in the expected range — no bimodal low (60-240) or high (1000+) outliers
+			costs.forEach(c => {
+				expect(c).toBeGreaterThanOrEqual(400)
+				expect(c).toBeLessThanOrEqual(600)
+			})
 		})
 
 		it('should show cost for weapons when quality is provided', () => {
