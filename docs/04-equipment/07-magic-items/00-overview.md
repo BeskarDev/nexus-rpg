@@ -55,3 +55,6 @@ Unique materials like Mithril, Dragon Scales, and Adamantite that provide specia
 
 ### [Enchantments](./enchantments)
 Powerful magical effects that can be added to items, from flaming weapons to spell-storing jewelry.
+
+### [Wands & Staffs](./wands-and-staffs)
+Special spell catalysts that store spells and use a charge system, allowing the wielder to cast embedded spells without spending Focus.

@@ -193,17 +193,19 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 		}
 
 		const baseCost = selectedBaseItem.cost
+		// Staffs use two-handed weapon cost structure
+		const costCategory = selectedBaseItem.name === 'Staff' ? 'two-handed-weapon' as ItemCategory : selectedBaseItem.category
 		const magicItemBaseCost = getMagicItemBaseCost(
 			selectedQuality,
-			selectedBaseItem.category,
+			costCategory,
 		)
 		const materialExtraCost = getSpecialMaterialExtraCost(
 			selectedMaterial,
 			selectedQuality,
-			selectedBaseItem.category,
+			costCategory,
 		)
 		const enchantmentCost = selectedEnchantment
-			? getEnchantmentCost(selectedQuality, selectedBaseItem.category)
+			? getEnchantmentCost(selectedQuality, costCategory)
 			: 0
 		const totalCost = calculateMagicItemCost(
 			selectedBaseItem,

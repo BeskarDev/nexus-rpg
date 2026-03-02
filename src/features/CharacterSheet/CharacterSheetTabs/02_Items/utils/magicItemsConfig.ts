@@ -490,6 +490,7 @@ export function getAvailableEnchantments(
  * Calculate total cost of a magic item.
  * Formula: Base Item + Magic Item Base Cost + Special Material Extra Cost + Enchantment Cost
  * Note: Wearables skip the Magic Item Base Cost
+ * Note: Staffs use two-handed weapon pricing despite being in the spell-catalyst category
  */
 export function calculateMagicItemCost(
 	baseItem: BaseItem,
@@ -499,18 +500,21 @@ export function calculateMagicItemCost(
 ): number {
 	const baseCost = baseItem.cost
 
+	// Staffs use two-handed weapon cost structure
+	const costCategory = baseItem.name === 'Staff' ? 'two-handed-weapon' as ItemCategory : baseItem.category
+
 	// Magic Item Base Cost (wearables skip this)
-	const magicBaseCost = magicItemBaseCosts[quality][baseItem.category]
+	const magicBaseCost = magicItemBaseCosts[quality][costCategory]
 
 	// Special Material Extra Cost (0 for base materials, cost from table for special materials)
 	let materialExtraCost = 0
 	if (material && material.materialType === 'special') {
-		materialExtraCost = specialMaterialExtraCosts[quality][baseItem.category]
+		materialExtraCost = specialMaterialExtraCosts[quality][costCategory]
 	}
 
 	// Enchantment Cost
 	const enchantmentCost = enchantment
-		? enchantmentCosts[quality][baseItem.category]
+		? enchantmentCosts[quality][costCategory]
 		: 0
 
 	return baseCost + magicBaseCost + materialExtraCost + enchantmentCost

@@ -16,5 +16,23 @@
 		"load": 0,
 		"quality": 2,
 		"description": "A small object containing a divine symbol or other spiritual relic infused with mystical power used to be able to cast mystic spells."
+	},
+	{
+		"name": "Wand",
+		"category": "spell-catalyst",
+		"cost": 75,
+		"properties": "spell catalyst, wand (1 spell, charges)",
+		"load": 0,
+		"quality": 2,
+		"description": "A slender magical implement with one specific spell embedded. Cast the embedded spell using charges instead of Focus."
+	},
+	{
+		"name": "Staff",
+		"category": "spell-catalyst",
+		"cost": 100,
+		"properties": "spell catalyst, staff (3-5 spells, charges), two-handed",
+		"load": 1,
+		"quality": 2,
+		"description": "A powerful magical implement containing 3-5 spells of differing ranks. Cast embedded spells using charges instead of Focus. Requires both hands."
 	}
 ]

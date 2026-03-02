@@ -1070,6 +1070,106 @@
 				"binding": "Copper-locked"
 			}
 		],
+		"Wand": [
+			{
+				"form": "Slim rod",
+				"detail": "Runes glow faintly"
+			},
+			{
+				"form": "Crystal spike",
+				"detail": "Warm to the touch"
+			},
+			{
+				"form": "Bone needle",
+				"detail": "Hums when held"
+			},
+			{
+				"form": "Glass tube",
+				"detail": "Faint arcane scent"
+			},
+			{
+				"form": "Metal baton",
+				"detail": "Etched with sigils"
+			},
+			{
+				"form": "Coral twig",
+				"detail": "Cold aura radiates"
+			},
+			{
+				"form": "Jade sliver",
+				"detail": "Sparks on contact"
+			},
+			{
+				"form": "Obsidian shard",
+				"detail": "Inner light pulses"
+			},
+			{
+				"form": "Amber wand",
+				"detail": "Whispers in silence"
+			},
+			{
+				"form": "Silver needle",
+				"detail": "Smells of incense"
+			},
+			{
+				"form": "Feathered stem",
+				"detail": "Vibrates softly"
+			},
+			{
+				"form": "Ivory point",
+				"detail": "Leaves rustle nearby"
+			}
+		],
+		"Staff": [
+			{
+				"form": "Twisted branch",
+				"detail": "Runes glow faintly"
+			},
+			{
+				"form": "Gnarled oak",
+				"detail": "Warm to the touch"
+			},
+			{
+				"form": "Iron-shod pole",
+				"detail": "Hums when held"
+			},
+			{
+				"form": "Carved pillar",
+				"detail": "Faint arcane scent"
+			},
+			{
+				"form": "Living wood",
+				"detail": "Etched with sigils"
+			},
+			{
+				"form": "Petrified trunk",
+				"detail": "Cold aura radiates"
+			},
+			{
+				"form": "Bronze-capped rod",
+				"detail": "Sparks on contact"
+			},
+			{
+				"form": "Crystal-topped staff",
+				"detail": "Inner light pulses"
+			},
+			{
+				"form": "Bone-carved staff",
+				"detail": "Whispers in silence"
+			},
+			{
+				"form": "Serpent-wound pole",
+				"detail": "Smells of incense"
+			},
+			{
+				"form": "Rune-etched pillar",
+				"detail": "Vibrates softly"
+			},
+			{
+				"form": "Antler-crowned staff",
+				"detail": "Leaves rustle nearby"
+			}
+		],
 		"Knowledge": [
 			{
 				"topic": "Plants",

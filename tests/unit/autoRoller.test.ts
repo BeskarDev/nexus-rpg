@@ -1266,8 +1266,9 @@ describe('AutoRoller Generators', () => {
 				expect(result).toContain('✦')
 				expect(result).toContain('Q4')
 				expect(result).toContain('coins')
-				// Should include an effect description
-				expect(result).toContain('Effect:')
+				// Should include an effect or spell description
+				const hasEffect = result.includes('Effect:') || result.includes('Spell:')
+				expect(hasEffect).toBe(true)
 			}
 		})
 

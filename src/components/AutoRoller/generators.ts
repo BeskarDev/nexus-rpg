@@ -34,6 +34,7 @@ interface AlchemicalEntry { effect: string; form: string; delivery: string }
 interface ToolEntry { item: string; style: string; trait: string }
 interface SupplyEntry { item: string; style: string; trait: string }
 interface SpellScrollEntry { script: string; binding: string }
+interface WandStaffEntry { form: string; detail: string }
 interface KnowledgeEntry { topic: string; style: string; format: string }
 
 // Utility: pick random element from array
@@ -477,9 +478,10 @@ const MAGIC_AMMO_ITEM_NAMES = new Set<string>(
 // Map a magic utility item name to its pricing category.
 // Assumes input is a valid item type from the magic utility tables (Alchemical is handled before
 // this function is called, so it never appears here).
-function getMagicUtilityItemPricingType(itemType: string): 'consumable' | 'supply' | 'catalyst' | 'permanent' {
+function getMagicUtilityItemPricingType(itemType: string): 'consumable' | 'supply' | 'catalyst' | 'staff' | 'permanent' {
 	if (itemType === 'Spell Scroll') return 'consumable'
-	if (itemType === 'Wand' || itemType === 'Staff') return 'catalyst'
+	if (itemType === 'Wand') return 'catalyst'
+	if (itemType === 'Staff') return 'staff'
 	if (MAGIC_AMMO_ITEM_NAMES.has(itemType)) return 'supply'
 	return 'permanent'
 }
@@ -730,7 +732,8 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 	// Calculate cost based on the item type's pricing category:
 	// - Consumable (Spell Scroll): x0.5 modifier per "Consumable/Tools/Utilities" docs rule
 	// - Supply (Ammo): x0.25 modifier per "Supply/Bundle/Ammo" docs rule
-	// - Spell Catalyst (Wand, Staff): standard spell-catalyst pricing
+	// - Spell Catalyst (Wand): standard spell-catalyst pricing
+	// - Staff: two-handed weapon pricing (staffs require both hands)
 	// - Permanent (Container, Instrument, Everyday Object, etc.): always-enchanted wearable
 	//   (no 50% chance — all generated magic utilities have a magical effect)
 	const pricingType = getMagicUtilityItemPricingType(itemType)
@@ -745,6 +748,9 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 		case 'catalyst':
 			cost = rollMagicItemCost(0, quality, 'spell-catalyst')
 			break
+		case 'staff':
+			cost = rollMagicItemCost(0, quality, 'two-handed-weapon')
+			break
 		case 'permanent':
 		default: {
 			// Permanent magic utility items always have an enchantment (they have a magical effect)
@@ -755,6 +761,18 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 	}
 
 	const magicName = generateMagicItemName('utility', itemType)
+
+	// For Wand/Staff: generate a spell description instead of generic effect
+	if (itemType === 'Wand' || itemType === 'Staff') {
+		const spellType = Math.random() < 0.5 ? 'arcane' : 'mystic'
+		const spellDesc = generateSpell(`${spellType}-any`)
+		const utilityDesc =
+			treasureData.utilityDetails[itemType] != null ? ` — ${formatUtilityDetail(itemType)}` : ''
+		const spellCount = itemType === 'Staff' ? ` (${rollDie(3) + 2} spells)` : ''
+		let result = `✦ "${capitalize(magicName)}"${utilityDesc}. Spell: ${spellDesc}${spellCount}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		if (curse) result += ` [${curse}]`
+		return result
+	}
 
 	// For types with a utility sub-table (Spell Scroll), include their
 	// physical description after an em-dash, using independently-rolled columns
@@ -836,6 +854,14 @@ function formatUtilityDetail(type: string): string {
 		case 'Spell Scroll': {
 			const d = details as SpellScrollEntry[]
 			return `spell scroll with ${lc(pickField(d, 'script'))}, ${lc(pickField(d, 'binding'))}`
+		}
+		case 'Wand': {
+			const d = details as WandStaffEntry[]
+			return `${lc(pickField(d, 'form'))}, ${lc(pickField(d, 'detail'))}`
+		}
+		case 'Staff': {
+			const d = details as WandStaffEntry[]
+			return `${lc(pickField(d, 'form'))}, ${lc(pickField(d, 'detail'))}`
 		}
 		case 'Knowledge': {
 			const d = details as KnowledgeEntry[]
