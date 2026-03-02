@@ -874,16 +874,13 @@ describe('AutoRoller Generators', () => {
 			}
 		})
 
-		it('rollMagicItemCost for wearable should have 0 magic base cost (wearables skip it)', () => {
-			// Wearables intentionally skip magic item base cost per equipment rules.
-			// Without enchantment they only cost the small bonus — this is correct for wearables
-			// but must NOT be used for alchemical consumables (which need their own pricing).
+		it('rollMagicItemCost for wearable should always include enchantment (no bimodal gap)', () => {
+			// Wearables skip magic item base cost per equipment rules (magicBase = 0),
+			// but enchantment cost is ALWAYS included since all generated items have an Effect.
+			// Q4 wearable (baseCost=0): 0 + 0 + 1000 + bonus(60-240) = 1060-1240
 			for (let i = 0; i < 100; i++) {
 				const cost = rollMagicItemCost(0, 4, 'wearable')
-				// Without enchantment: 0+0+60-240. With enchantment: 0+1000+60-240.
-				// Cost is either low (60-240) or high (1060-1240) — that bimodal distribution is
-				// intentional for wearables which skip the magic base cost.
-				expect(cost).toBeGreaterThanOrEqual(60)
+				expect(cost).toBeGreaterThanOrEqual(1060)
 				expect(cost).toBeLessThanOrEqual(1240)
 			}
 		})
@@ -967,6 +964,49 @@ describe('AutoRoller Generators', () => {
 				consumableTotal += rollMagicConsumableCost(4, 0.5)
 			}
 			expect(supplyTotal / N).toBeLessThan(consumableTotal / N)
+		})
+
+		it('rollMagicItemCost should always include enchantment — no bimodal gap for any category', () => {
+			// Q4 one-handed-weapon (wand): 75 + 1000 + 1000 + bonus(60-240) = 2135-2315
+			for (let i = 0; i < 200; i++) {
+				const cost = rollMagicItemCost(75, 4, 'one-handed-weapon')
+				expect(cost).toBeGreaterThanOrEqual(2135)
+				expect(cost).toBeLessThanOrEqual(2315)
+			}
+			// Q4 two-handed-weapon (staff): 100 + 1500 + 1500 + bonus(60-240) = 3160-3340
+			for (let i = 0; i < 200; i++) {
+				const cost = rollMagicItemCost(100, 4, 'two-handed-weapon')
+				expect(cost).toBeGreaterThanOrEqual(3160)
+				expect(cost).toBeLessThanOrEqual(3340)
+			}
+		})
+
+		it('wand Q4 output should have consistent cost (no bimodal gap)', () => {
+			// Q4 wand: baseCost(75) + magicBase(1000) + enchant(1000) + bonus(60-240) = 2135-2315
+			// Before the fix: 50% chance of 1135-1315 (no enchant) OR 2135-2315 (with enchant)
+			const costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('weapon', 4, 'Wand')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(100)
+			// All costs must be in the always-enchanted range; none should be in old no-enchant range
+			costs.forEach(c => expect(c).toBeGreaterThanOrEqual(2000))
+		})
+
+		it('staff Q4 output should have consistent cost (no bimodal gap)', () => {
+			// Q4 staff: baseCost(100) + magicBase(1500) + enchant(1500) + bonus(60-240) = 3160-3340
+			// Before the fix: 50% chance of 1660-1840 (no enchant) OR 3160-3340 (with enchant)
+			const costs: number[] = []
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('weapon', 4, 'Staff')
+				const match = result.match(/~([\d,]+) coins/)
+				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
+			}
+			expect(costs.length).toBe(100)
+			// All costs must be in the always-enchanted range; none should be in old no-enchant range
+			costs.forEach(c => expect(c).toBeGreaterThanOrEqual(3000))
 		})
 
 		it('mundane utility Q1 costs should apply x0.5 modifier (Consumable/Tools/Utilities)', () => {
