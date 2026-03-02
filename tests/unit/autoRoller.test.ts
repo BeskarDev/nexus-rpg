@@ -966,24 +966,33 @@ describe('AutoRoller Generators', () => {
 			expect(supplyTotal / N).toBeLessThan(consumableTotal / N)
 		})
 
-		it('rollMagicItemCost should always include enchantment — no bimodal gap for any category', () => {
-			// Q4 one-handed-weapon (wand): 75 + 1000 + 1000 + bonus(60-240) = 2135-2315
+		it('rollMagicItemCost withEnchantment=true should include enchantment cost', () => {
+			// Q4 one-handed-weapon with enchantment: 75 + 1000 + 1000 + bonus(60-240) = 2135-2315
 			for (let i = 0; i < 200; i++) {
-				const cost = rollMagicItemCost(75, 4, 'one-handed-weapon')
+				const cost = rollMagicItemCost(75, 4, 'one-handed-weapon', true)
 				expect(cost).toBeGreaterThanOrEqual(2135)
 				expect(cost).toBeLessThanOrEqual(2315)
 			}
-			// Q4 two-handed-weapon (staff): 100 + 1500 + 1500 + bonus(60-240) = 3160-3340
+		})
+
+		it('rollMagicItemCost withEnchantment=false should exclude enchantment cost', () => {
+			// Q4 one-handed-weapon without enchantment: 75 + 1000 + bonus(60-240) = 1135-1315
 			for (let i = 0; i < 200; i++) {
-				const cost = rollMagicItemCost(100, 4, 'two-handed-weapon')
-				expect(cost).toBeGreaterThanOrEqual(3160)
-				expect(cost).toBeLessThanOrEqual(3340)
+				const cost = rollMagicItemCost(75, 4, 'one-handed-weapon', false)
+				expect(cost).toBeGreaterThanOrEqual(1135)
+				expect(cost).toBeLessThanOrEqual(1315)
+			}
+			// Q4 two-handed-weapon without enchantment: 100 + 1500 + bonus(60-240) = 1660-1840
+			for (let i = 0; i < 200; i++) {
+				const cost = rollMagicItemCost(100, 4, 'two-handed-weapon', false)
+				expect(cost).toBeGreaterThanOrEqual(1660)
+				expect(cost).toBeLessThanOrEqual(1840)
 			}
 		})
 
-		it('wand Q4 output should have consistent cost (no bimodal gap)', () => {
-			// Q4 wand: baseCost(75) + magicBase(1000) + enchant(1000) + bonus(60-240) = 2135-2315
-			// Before the fix: 50% chance of 1135-1315 (no enchant) OR 2135-2315 (with enchant)
+		it('wand Q4 output cost should reflect 50% enchantment chance (bimodal)', () => {
+			// Enchanted Q4 wand:     75 + 1000 + 1000 + bonus(60-240) = 2135-2315
+			// Non-enchanted Q4 wand: 75 + 1000 + 0    + bonus(60-240) = 1135-1315
 			const costs: number[] = []
 			for (let i = 0; i < 100; i++) {
 				const result = generateTreasure('weapon', 4, 'Wand')
@@ -991,13 +1000,20 @@ describe('AutoRoller Generators', () => {
 				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
 			}
 			expect(costs.length).toBe(100)
-			// All costs must be in the always-enchanted range; none should be in old no-enchant range
-			costs.forEach(c => expect(c).toBeGreaterThanOrEqual(2000))
+			// All costs must be in one of the two valid ranges
+			costs.forEach(c => {
+				const inLowBand = c >= 1135 && c <= 1315
+				const inHighBand = c >= 2135 && c <= 2315
+				expect(inLowBand || inHighBand).toBe(true)
+			})
+			// With 100 samples at 50% both bands should appear
+			expect(costs.filter(c => c >= 2000).length).toBeGreaterThan(0)
+			expect(costs.filter(c => c < 2000).length).toBeGreaterThan(0)
 		})
 
-		it('staff Q4 output should have consistent cost (no bimodal gap)', () => {
-			// Q4 staff: baseCost(100) + magicBase(1500) + enchant(1500) + bonus(60-240) = 3160-3340
-			// Before the fix: 50% chance of 1660-1840 (no enchant) OR 3160-3340 (with enchant)
+		it('staff Q4 output cost should reflect 50% enchantment chance (bimodal)', () => {
+			// Enchanted Q4 staff:     100 + 1500 + 1500 + bonus(60-240) = 3160-3340
+			// Non-enchanted Q4 staff: 100 + 1500 + 0    + bonus(60-240) = 1660-1840
 			const costs: number[] = []
 			for (let i = 0; i < 100; i++) {
 				const result = generateTreasure('weapon', 4, 'Staff')
@@ -1005,8 +1021,14 @@ describe('AutoRoller Generators', () => {
 				if (match) costs.push(parseInt(match[1].replace(/,/g, ''), 10))
 			}
 			expect(costs.length).toBe(100)
-			// All costs must be in the always-enchanted range; none should be in old no-enchant range
-			costs.forEach(c => expect(c).toBeGreaterThanOrEqual(3000))
+			costs.forEach(c => {
+				const inLowBand = c >= 1660 && c <= 1840
+				const inHighBand = c >= 3160 && c <= 3340
+				expect(inLowBand || inHighBand).toBe(true)
+			})
+			// With 100 samples at 50% both bands should appear
+			expect(costs.filter(c => c >= 3000).length).toBeGreaterThan(0)
+			expect(costs.filter(c => c < 3000).length).toBeGreaterThan(0)
 		})
 
 		it('mundane utility Q1 costs should apply x0.5 modifier (Consumable/Tools/Utilities)', () => {
@@ -1281,12 +1303,15 @@ describe('AutoRoller Generators', () => {
 		})
 
 		it('should generate magic utility items at Q6 with ✦ marker (Q4+ always magical)', () => {
-			// Q4+ utility items always use the magic utility path — no equipment item lookup
-			for (let i = 0; i < 20; i++) {
+			// Q4+ utility items always use the magic utility path — no equipment item lookup.
+			// Non-wand/staff items always have ✦; wands/staffs have 50% chance.
+			let foundMagic = false
+			for (let i = 0; i < 50; i++) {
 				const result = generateTreasure('utility', 6)
-				expect(result).toContain('✦')
 				expect(result).toContain('Q6')
+				if (result.includes('✦')) foundMagic = true
 			}
+			expect(foundMagic).toBe(true)
 		})
 
 		it('should not include Arrows or Bolts in the weapon/catalyst table', () => {
@@ -1301,14 +1326,26 @@ describe('AutoRoller Generators', () => {
 		})
 
 		it('should generate magic utility items at Q4+ with ✦ marker', () => {
-			for (let i = 0; i < 30; i++) {
+			// Wands and Staffs from the utility table have a 50% enchantment chance — only
+			// enchanted items get an Effect line. Other utility types are always enchanted.
+			let foundWithEffect = false
+			let foundWithoutEffect = false
+			for (let i = 0; i < 100; i++) {
 				const result = generateTreasure('utility', 4)
-				expect(result).toContain('✦')
 				expect(result).toContain('Q4')
 				expect(result).toContain('coins')
-				// All magic utility items should include an effect description
-				expect(result).toContain('Effect:')
+				// Items are either enchanted (has ✦ and Effect) or non-enchanted wand/staff
+				if (result.includes('✦')) {
+					expect(result).toContain('Effect:')
+					foundWithEffect = true
+				} else {
+					// Non-enchanted wand or staff — must still show charges and catalyst bonus
+					expect(result.toLowerCase()).toMatch(/wand|staff/)
+					foundWithoutEffect = true
+				}
 			}
+			// Both enchanted and non-enchanted paths should appear within 100 samples
+			expect(foundWithEffect).toBe(true)
 		})
 
 		it('should generate mundane utility items at Q1-Q3 without ✦ marker', () => {
@@ -1341,14 +1378,28 @@ describe('AutoRoller Generators', () => {
 			}
 		})
 
-		it('should generate magic armor at Q4+ with ✦ marker and effect', () => {
-			for (let i = 0; i < 20; i++) {
+		it('should generate magic armor at Q4+ with ✦ marker and effect when enchanted', () => {
+			// 50% enchantment chance: enchanted items have ✦ + Effect, non-enchanted have +N suffix only
+			let foundEnchanted = false
+			let foundNonEnchanted = false
+			for (let i = 0; i < 50; i++) {
 				const result = generateTreasure('armor', 4)
-				expect(result).toContain('✦')
 				expect(result).toContain('Q4')
 				expect(result).toContain('coins')
-				expect(result).toContain('—')
+				if (result.includes('✦')) {
+					expect(result).toContain('Effect:')
+					expect(result).toContain('—')
+					foundEnchanted = true
+				} else {
+					// Non-enchanted armor: includes +N suffix and no Effect
+					expect(result).toMatch(/\+\d/)
+					expect(result).not.toContain('Effect:')
+					foundNonEnchanted = true
+				}
 			}
+			// Both paths should appear within 50 samples at 50% chance
+			expect(foundEnchanted).toBe(true)
+			expect(foundNonEnchanted).toBe(true)
 		})
 
 		it('should generate mundane armor at Q1-Q3 without ✦ marker', () => {

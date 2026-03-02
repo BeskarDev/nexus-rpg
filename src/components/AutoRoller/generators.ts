@@ -440,15 +440,27 @@ export function rollTreasureBonus(quality: number): number {
 	return roll2d4() * multipliers[idx]
 }
 
+// 50% chance a weapon, armor, or spell catalyst has an enchantment.
+// Wearables and utility items are always enchanted (they always have a magical Effect).
+const ENCHANTMENT_CHANCE = 0.5
+
 // Calculate magic item cost using the Equipment chapter rules:
-// Base Item Cost + Magic Item Base Cost + Enchantment Cost + small random bonus.
-// Enchantment cost is always included because all generated magic items always have an Effect.
-export function rollMagicItemCost(baseCost: number, quality: number, category: ItemCategory): number {
+// Base Item Cost + Magic Item Base Cost + (optional) Enchantment Cost + small random bonus.
+// withEnchantment=true  → includes enchantment cost (enchanted items and all wearables/utility)
+// withEnchantment=false → omits enchantment cost (non-enchanted weapon/armor/catalyst items)
+export function rollMagicItemCost(baseCost: number, quality: number, category: ItemCategory, withEnchantment = true): number {
 	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
 	const magicBase = magicItemBaseCosts[tier][category]
-	const enchantCost = enchantmentCosts[tier][category]
+	const enchantCost = withEnchantment ? enchantmentCosts[tier][category] : 0
 	const bonus = rollTreasureBonus(quality)
 	return baseCost + magicBase + enchantCost + bonus
+}
+
+// Return the "+N" bonus suffix for a magic weapon, armor, or spell catalyst at a given quality.
+// Q4 → +1, Q5 → +2, Q6 → +3, Q7 → +4, Q8 → +5
+function getMagicQualityBonusSuffix(quality: number): string {
+	const bonus = quality >= 4 ? quality - 3 : 0
+	return bonus > 0 ? ` +${bonus}` : ''
 }
 
 // Calculate cost for a magical consumable/supply item.
@@ -741,43 +753,65 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 	// For Wand: generate with arcane/mystic label, material/detail, charges, catalyst bonus, and Effect
 	if (itemType === 'Wand') {
 		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
-		const cost = rollMagicItemCost(75, quality, 'one-handed-weapon')
 		const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
 		const maxRank = getMaxSpellRank(tier)
 		const charges = getWandCharges(tier)
 		const catalystBonus = getSpellDamageBonus(tier)
-		const magicName = generateMagicItemName('spellCatalyst', 'Wand')
+		const bonusSuffix = getMagicQualityBonusSuffix(quality)
+		const hasEnchantment = Math.random() < ENCHANTMENT_CHANCE
+		const cost = rollMagicItemCost(75, quality, 'one-handed-weapon', hasEnchantment)
 		const wandDetails = (treasureData.weaponDetails as Record<string, { material: string; form: string; detail: string }[]>)['Wand']
-		let wandDesc = ` — ${magicType} wand`
+		let physicalDesc = ''
 		if (wandDetails && wandDetails.length > 0) {
 			const material = lc(pickField(wandDetails, 'material'))
 			const detail = lc(pickField(wandDetails, 'detail'))
-			wandDesc = ` — ${magicType} wand (${material} with ${detail}).`
+			physicalDesc = `(${material} with ${detail})`
 		}
-		let result = `✦ "${capitalize(magicName)}"${wandDesc} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
-		if (curse) result += ` [${curse}]`
-		return result
+		if (hasEnchantment) {
+			const magicName = generateMagicItemName('spellCatalyst', 'Wand')
+			const effect = generateMagicItemEffect()
+			const curse = generateMagicItemCurse()
+			const nameStr = `${capitalize(magicName)}${bonusSuffix}`
+			const descPart = physicalDesc ? ` — ${magicType} wand ${physicalDesc}.` : ` — ${magicType} wand.`
+			let result = `✦ "${nameStr}"${descPart} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+			if (curse) result += ` [${curse}]`
+			return result
+		} else {
+			const descPart = physicalDesc ? `${magicType} wand${bonusSuffix} ${physicalDesc}` : `${magicType} wand${bonusSuffix}`
+			return `${descPart}. Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		}
 	}
 
 	// For Staff: generate with arcane/mystic label, material/detail, charges, catalyst bonus, and Effect
 	if (itemType === 'Staff') {
 		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
-		const cost = rollMagicItemCost(100, quality, 'two-handed-weapon')
 		const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
 		const maxRank = getMaxSpellRank(tier)
 		const charges = getStaffCharges(tier)
 		const catalystBonus = getSpellDamageBonus(tier)
-		const magicName = generateMagicItemName('spellCatalyst', 'Staff')
+		const bonusSuffix = getMagicQualityBonusSuffix(quality)
+		const hasEnchantment = Math.random() < ENCHANTMENT_CHANCE
+		const cost = rollMagicItemCost(100, quality, 'two-handed-weapon', hasEnchantment)
 		const staffDetails = (treasureData.weaponDetails as Record<string, { material: string; form: string; detail: string }[]>)['Staff']
-		let staffDesc = ` — ${magicType} staff`
+		let physicalDesc = ''
 		if (staffDetails && staffDetails.length > 0) {
 			const material = lc(pickField(staffDetails, 'material'))
 			const detail = lc(pickField(staffDetails, 'detail'))
-			staffDesc = ` — ${magicType} staff (${material} with ${detail}).`
+			physicalDesc = `(${material} with ${detail})`
 		}
-		let result = `✦ "${capitalize(magicName)}"${staffDesc} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
-		if (curse) result += ` [${curse}]`
-		return result
+		if (hasEnchantment) {
+			const magicName = generateMagicItemName('spellCatalyst', 'Staff')
+			const effect = generateMagicItemEffect()
+			const curse = generateMagicItemCurse()
+			const nameStr = `${capitalize(magicName)}${bonusSuffix}`
+			const descPart = physicalDesc ? ` — ${magicType} staff ${physicalDesc}.` : ` — ${magicType} staff.`
+			let result = `✦ "${nameStr}"${descPart} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+			if (curse) result += ` [${curse}]`
+			return result
+		} else {
+			const descPart = physicalDesc ? `${magicType} staff${bonusSuffix} ${physicalDesc}` : `${magicType} staff${bonusSuffix}`
+			return `${descPart}. Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		}
 	}
 
 	// Calculate cost based on the item type's pricing category:
@@ -1010,13 +1044,21 @@ function generateArmor(quality?: number, subCategory?: string): string {
 		// Q4+ armor/shields gain magic item properties
 		if (quality >= 4) {
 			const itemCat = getArmorItemCategory(type)
-			const total = rollMagicItemCost(baseCost, quality, itemCat)
-			const magicName = generateMagicItemName('armor', armorFormName)
-			const effect = generateMagicItemEffect()
-			const curse = generateMagicItemCurse()
-			let result = `✦ "${capitalize(magicName)}" — ${detailStr}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
-			if (curse) result += ` [${curse}]`
-			return result
+			const bonusSuffix = getMagicQualityBonusSuffix(quality)
+			const hasEnchantment = Math.random() < ENCHANTMENT_CHANCE
+			const total = rollMagicItemCost(baseCost, quality, itemCat, hasEnchantment)
+			if (hasEnchantment) {
+				const magicName = generateMagicItemName('armor', armorFormName)
+				const effect = generateMagicItemEffect()
+				const curse = generateMagicItemCurse()
+				const nameStr = `${capitalize(magicName)}${bonusSuffix}`
+				let result = `✦ "${nameStr}" — ${detailStr}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+				if (curse) result += ` [${curse}]`
+				return result
+			} else {
+				// Non-enchanted: item name with +N suffix, no magic name, no Effect
+				return `${detailStr}${bonusSuffix}. (Q${quality}, ~${total.toLocaleString()} coins)`
+			}
 		}
 
 		const bonus = rollTreasureBonus(quality)
@@ -1047,10 +1089,9 @@ function generateWeapon(quality?: number, subCategory?: string): string {
 			// Q4+ weapons gain magic item properties
 			if (quality >= 4) {
 				const itemCat = getWeaponItemCategory(type, weaponItem.name)
-				const total = rollMagicItemCost(weaponItem.cost, quality, itemCat)
-				const magicName = generateMagicItemName(nameCategory, weaponItem.name)
-				const effect = generateMagicItemEffect()
-				const curse = generateMagicItemCurse()
+				const bonusSuffix = getMagicQualityBonusSuffix(quality)
+				const hasEnchantment = Math.random() < ENCHANTMENT_CHANCE
+				const total = rollMagicItemCost(weaponItem.cost, quality, itemCat, hasEnchantment)
 
 				// Wands and Staffs get arcane/mystic label, charges, and catalyst bonus
 				if (type === 'Wand' || type === 'Staff') {
@@ -1059,30 +1100,51 @@ function generateWeapon(quality?: number, subCategory?: string): string {
 					const maxRank = getMaxSpellRank(tier)
 					const charges = type === 'Wand' ? getWandCharges(tier) : getStaffCharges(tier)
 					const catalystBonus = getSpellDamageBonus(tier)
-					let detailStr = ''
+					let physicalDesc = ''
 					if (details && details.length > 0) {
 						const material = pickField(details, 'material')
 						const detail = pickField(details, 'detail')
-						detailStr = ` — ${magicType} ${lc(type)} (${lc(material)} with ${lc(detail)}).`
-					} else {
-						detailStr = ` — ${magicType} ${lc(type)}.`
+						physicalDesc = `(${lc(material)} with ${lc(detail)})`
 					}
-					let result = `✦ "${capitalize(magicName)}"${detailStr} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
-					if (curse) result += ` [${curse}]`
-					return result
+					if (hasEnchantment) {
+						const magicName = generateMagicItemName(nameCategory, weaponItem.name)
+						const effect = generateMagicItemEffect()
+						const curse = generateMagicItemCurse()
+						const nameStr = `${capitalize(magicName)}${bonusSuffix}`
+						const descPart = physicalDesc
+							? ` — ${magicType} ${lc(type)} ${physicalDesc}.`
+							: ` — ${magicType} ${lc(type)}.`
+						let result = `✦ "${nameStr}"${descPart} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+						if (curse) result += ` [${curse}]`
+						return result
+					} else {
+						const descPart = physicalDesc
+							? `${magicType} ${lc(type)}${bonusSuffix} ${physicalDesc}`
+							: `${magicType} ${lc(type)}${bonusSuffix}`
+						return `${descPart}. Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. (Q${quality}, ~${total.toLocaleString()} coins)`
+					}
 				}
 
+				// Regular weapons and spell catalysts
 				let detailStr = ''
 				if (details && details.length > 0) {
 					const material = pickField(details, 'material')
 					const detail = pickField(details, 'detail')
-					detailStr = ` — ${lc(material)} ${lc(weaponItem.name)}, ${lc(detail)}.`
+					detailStr = `${lc(material)} ${lc(weaponItem.name)}, ${lc(detail)}`
 				} else {
-					detailStr = ` — ${lc(weaponItem.name)}.`
+					detailStr = lc(weaponItem.name)
 				}
-				let result = `✦ "${capitalize(magicName)}"${detailStr} Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
-				if (curse) result += ` [${curse}]`
-				return result
+				if (hasEnchantment) {
+					const magicName = generateMagicItemName(nameCategory, weaponItem.name)
+					const effect = generateMagicItemEffect()
+					const curse = generateMagicItemCurse()
+					const nameStr = `${capitalize(magicName)}${bonusSuffix}`
+					let result = `✦ "${nameStr}" — ${detailStr}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+					if (curse) result += ` [${curse}]`
+					return result
+				} else {
+					return `${detailStr}${bonusSuffix}. (Q${quality}, ~${total.toLocaleString()} coins)`
+				}
 			}
 
 			const bonus = rollTreasureBonus(quality)
