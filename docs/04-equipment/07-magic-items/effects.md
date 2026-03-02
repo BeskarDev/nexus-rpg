@@ -98,7 +98,7 @@ Wands are single-spell magical implements that function as spell catalysts. Each
 
 **Casting from a Wand:** Invoking a wand requires an Action and follows the same rules as casting a spell scroll. You can roll the attribute die + skill bonus of the wand's Quality tier, or use your own spellcasting roll (Mind + Arcana or Spirit + Mysticism) if the spell matches your skill. Casting from a wand does not count as casting a spell for other effects. It does not cost Focus.
 
-**Charges:** Each use of the wand's spell costs charges equal to the spell's rank (e.g. a Rank 1 spell costs 1 charge). You can cast the spell at a heightened rank for +1 charge per extra rank, up to a maximum of the spell's base rank + 1.
+**Charges:** Each use of the wand's spell costs charges equal to the spell's rank (e.g. a Rank 1 spell costs 1 charge). You can cast the spell at a heightened rank for +1 charge per extra rank, up to a maximum of the wand's max. spell rank + 1.
 
 **Spell Catalyst Bonus:** A wand also functions as a spell catalyst of its Quality tier, granting the corresponding bonus to spell damage.
 
@@ -118,7 +118,7 @@ Staffs are multi-spell magical implements for advanced spellcasters. Each staff 
 
 **Casting from a Staff:** Invoking a staff requires an Action and follows the same rules as casting a spell scroll. You must use your own spellcasting roll (Mind + Arcana or Spirit + Mysticism) matching the staff's spell type, or roll the attribute die + skill bonus of the staff's Quality tier. Rank 0 spells can be cast for free without spending charges.
 
-**Charges:** Each use of a staff spell costs charges equal to the spell's rank. You can cast spells at a heightened rank for +1 charge per extra rank, up to a maximum of the spell's base rank + 1.
+**Charges:** Each use of a staff spell costs charges equal to the spell's rank. You can cast spells at a heightened rank for +1 charge per extra rank, up to a maximum of the staff's max. spell rank + 1.
 
 **Spell Catalyst Bonus:** A staff also functions as a spell catalyst of its Quality tier, granting the corresponding bonus to spell damage.
 
