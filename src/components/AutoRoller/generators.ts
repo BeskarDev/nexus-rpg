@@ -448,6 +448,20 @@ export function rollMagicItemCost(baseCost: number, quality: number, category: I
 	return baseCost + magicBase + enchantCost + bonus
 }
 
+// Calculate cost for a magical consumable (alchemical) item.
+// Consumables use ~15% of one-handed-weapon pricing (per magic item creation docs example:
+// Q4 consumable = 50 base + 150 magic base + 150 enchant = 350 coins before bonus).
+// Both magic base and enchant costs are always applied since every magical alchemical
+// item has an inherent magical effect.
+export function rollMagicAlchemicalCost(quality: number): number {
+	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+	const baseFormCost = 50
+	const magicBase = Math.round(magicItemBaseCosts[tier]['one-handed-weapon'] * 0.15)
+	const enchantCost = Math.round(enchantmentCosts[tier]['one-handed-weapon'] * 0.15)
+	const bonus = rollTreasureBonus(quality)
+	return baseFormCost + magicBase + enchantCost + bonus
+}
+
 // Parse cost string that may contain commas (e.g., "2,500")
 function parseCost(cost: string): number {
 	return parseInt(cost.replace(/,/g, ''), 10) || 0
@@ -662,14 +676,10 @@ function generateMagicKnowledge(quality: number): string {
 // Generate a magical utility item (for Q4+ quality)
 function generateMagicUtility(quality: number, forcedType?: string): string {
 	const itemType = pickMagicUtilityItem(forcedType)
-	// Wand/Staff are spell catalysts — use spell-catalyst pricing; everything else is wearable
-	const costCategory: ItemCategory =
-		itemType === 'Wand' || itemType === 'Staff' ? 'spell-catalyst' : 'wearable'
-	const cost = rollMagicItemCost(0, quality, costCategory)
 	const effect = generateMagicItemEffect()
 	const curse = generateMagicItemCurse()
 
-	// For Alchemical: use the specific form (e.g. "Vial", "Dropper") as the magic item name base
+	// For Alchemical: use consumable pricing and specific form as the magic item name base
 	if (itemType === 'Alchemical') {
 		const d = treasureData.utilityDetails['Alchemical'] as AlchemicalEntry[]
 		if (d && d.length > 0) {
@@ -677,6 +687,7 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 			const form = entry.form
 			const effectName = entry.effect
 			const delivery = entry.delivery
+			const cost = rollMagicAlchemicalCost(quality)
 			const magicName = generateMagicItemName('utility', form)
 			const desc = ` — ${lc(effectName)} ${lc(form)} (${lc(delivery)})`
 			let result = `✦ "${capitalize(magicName)}"${desc}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
@@ -684,6 +695,11 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 			return result
 		}
 	}
+
+	// Wand/Staff are spell catalysts — use spell-catalyst pricing; everything else is wearable
+	const costCategory: ItemCategory =
+		itemType === 'Wand' || itemType === 'Staff' ? 'spell-catalyst' : 'wearable'
+	const cost = rollMagicItemCost(0, quality, costCategory)
 
 	const magicName = generateMagicItemName('utility', itemType)
 
