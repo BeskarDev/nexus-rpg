@@ -14,10 +14,8 @@ import {
 	enchantmentCosts,
 	type QualityTier,
 	type ItemCategory,
-	getMaxSpellRank,
 	getWandCharges,
 	getStaffCharges,
-	getStaffSpellCapacity,
 	getSpellDamageBonus,
 } from '../../features/CharacterSheet/CharacterSheetTabs/02_Items/utils/magicItemsConfig'
 
@@ -232,21 +230,6 @@ export function generateSpell(groupId: string): string {
 	const range = pickField(spellData.effects, 'range')
 
 	return `${lc(name)} — ${lc(effect)} targeting ${lc(target)} (duration: ${lc(duration)}, range: ${lc(range)})`
-}
-
-// Generate a random spell name for a given magic type ('arcane' or 'mystic')
-function generateRandomSpellName(magicType: 'arcane' | 'mystic'): { name: string; school: string } {
-	const list = magicType === 'arcane' ? spellData.arcaneSchools : spellData.mysticTraditions
-	const school = pick(list) as SpellSchool
-	const form = pickField(school.entries, 'form')
-	const adjective = pickField(school.entries, 'adjective')
-	const noun = pickField(school.entries, 'noun')
-	const pattern = pick(spellData.namingPatterns)
-	const name = pattern
-		.replace('[Form]', form)
-		.replace('[Adjective]', adjective)
-		.replace('[Noun]', noun)
-	return { name, school: school.name }
 }
 
 // ===== CREATURES =====
@@ -559,7 +542,7 @@ function pickWeaponItem(weaponType: string, quality: number): { name: string; co
 		return null
 	}
 
-	// Spell catalysts
+	// Spell catalysts (Arcane Conduit, Mystic Talisman)
 	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') {
 		const catalyst = gameEquipment.find(e =>
 			e.name.includes(weaponType) && parseInt(e.quality, 10) <= quality
@@ -568,6 +551,14 @@ function pickWeaponItem(weaponType: string, quality: number): { name: string; co
 			return { name: weaponType, cost: parseCost(catalyst.cost) }
 		}
 		return { name: weaponType, cost: 75 }
+	}
+
+	// Wands and Staffs — use fixed base costs
+	if (weaponType === 'Wand') {
+		return { name: weaponType, cost: 75 }
+	}
+	if (weaponType === 'Staff') {
+		return { name: weaponType, cost: 100 }
 	}
 
 	// Regular weapons — filter by type and quality
@@ -747,37 +738,42 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 		}
 	}
 
-	// For Wand: generate with spell info, charges, and catalyst bonus
+	// For Wand: generate with arcane/mystic label, material/detail, charges, catalyst bonus, and Effect
 	if (itemType === 'Wand') {
 		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
 		const cost = rollMagicItemCost(75, quality, 'spell-catalyst')
-		const magicType = Math.random() < 0.5 ? 'arcane' as const : 'mystic' as const
-		const spell = generateRandomSpellName(magicType)
-		const spellRank = getMaxSpellRank(tier)
+		const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
 		const charges = getWandCharges(tier)
 		const catalystBonus = getSpellDamageBonus(tier)
 		const magicName = generateMagicItemName('spellCatalyst', 'Wand')
-		const spellDesc = ` — ${magicType} wand (${lc(spell.school)}). Spell: "${spell.name}" (rank ${spellRank}). Charges: ${charges}. Spell catalyst +${catalystBonus}`
-		let result = `✦ "${capitalize(magicName)}"${spellDesc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		const wandDetails = (treasureData.weaponDetails as Record<string, { material: string; form: string; detail: string }[]>)['Wand']
+		let wandDesc = ` — ${magicType} wand`
+		if (wandDetails && wandDetails.length > 0) {
+			const material = lc(pickField(wandDetails, 'material'))
+			const detail = lc(pickField(wandDetails, 'detail'))
+			wandDesc = ` — ${magicType} wand (${material} with ${detail}).`
+		}
+		let result = `✦ "${capitalize(magicName)}"${wandDesc} Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 		if (curse) result += ` [${curse}]`
 		return result
 	}
 
-	// For Staff: generate with multiple spells, charges, and catalyst bonus
+	// For Staff: generate with arcane/mystic label, material/detail, charges, catalyst bonus, and Effect
 	if (itemType === 'Staff') {
 		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
 		const cost = rollMagicItemCost(100, quality, 'spell-catalyst')
-		const magicType = Math.random() < 0.5 ? 'arcane' as const : 'mystic' as const
-		const spellCount = getStaffSpellCapacity(tier)
-		const spells = Array.from({ length: spellCount }, () => generateRandomSpellName(magicType))
-		const spellRank = getMaxSpellRank(tier)
+		const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
 		const charges = getStaffCharges(tier)
 		const catalystBonus = getSpellDamageBonus(tier)
 		const magicName = generateMagicItemName('spellCatalyst', 'Staff')
-		const spellList = spells.map(s => `"${s.name}"`).join(', ')
-		const school = spells[0].school
-		const spellDesc = ` — ${magicType} staff (${lc(school)}). Spells (up to rank ${spellRank}): ${spellList}. Charges: ${charges}. Spell catalyst +${catalystBonus}`
-		let result = `✦ "${capitalize(magicName)}"${spellDesc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		const staffDetails = (treasureData.weaponDetails as Record<string, { material: string; form: string; detail: string }[]>)['Staff']
+		let staffDesc = ` — ${magicType} staff`
+		if (staffDetails && staffDetails.length > 0) {
+			const material = lc(pickField(staffDetails, 'material'))
+			const detail = lc(pickField(staffDetails, 'detail'))
+			staffDesc = ` — ${magicType} staff (${material} with ${detail}).`
+		}
+		let result = `✦ "${capitalize(magicName)}"${staffDesc} Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 		if (curse) result += ` [${curse}]`
 		return result
 	}
@@ -823,13 +819,15 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 
 // Determine the name category for weapon/spell catalyst
 function getWeaponNameCategory(weaponType: string): 'weapon' | 'spellCatalyst' {
-	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') return 'spellCatalyst'
+	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman' ||
+		weaponType === 'Wand' || weaponType === 'Staff') return 'spellCatalyst'
 	return 'weapon'
 }
 
 // Map a weapon type/name to its ItemCategory for cost calculation
 function getWeaponItemCategory(weaponType: string, weaponName: string): ItemCategory {
-	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') return 'spell-catalyst'
+	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman' ||
+		weaponType === 'Wand' || weaponType === 'Staff') return 'spell-catalyst'
 	if (weaponType === 'Bow' || weaponType === 'Crossbow') return 'two-handed-weapon'
 	// Check weapon properties for two-handed/heavy
 	const weapon = gameWeapons.find(w => w.name === weaponName)
@@ -1050,6 +1048,26 @@ function generateWeapon(quality?: number, subCategory?: string): string {
 				const magicName = generateMagicItemName(nameCategory, weaponItem.name)
 				const effect = generateMagicItemEffect()
 				const curse = generateMagicItemCurse()
+
+				// Wands and Staffs get arcane/mystic label, charges, and catalyst bonus
+				if (type === 'Wand' || type === 'Staff') {
+					const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+					const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
+					const charges = type === 'Wand' ? getWandCharges(tier) : getStaffCharges(tier)
+					const catalystBonus = getSpellDamageBonus(tier)
+					let detailStr = ''
+					if (details && details.length > 0) {
+						const material = pickField(details, 'material')
+						const detail = pickField(details, 'detail')
+						detailStr = ` — ${magicType} ${lc(type)} (${lc(material)} with ${lc(detail)}).`
+					} else {
+						detailStr = ` — ${magicType} ${lc(type)}.`
+					}
+					let result = `✦ "${capitalize(magicName)}"${detailStr} Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+					if (curse) result += ` [${curse}]`
+					return result
+				}
+
 				let detailStr = ''
 				if (details && details.length > 0) {
 					const material = pickField(details, 'material')

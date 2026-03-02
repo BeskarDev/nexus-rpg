@@ -278,7 +278,7 @@ describe('AutoRoller Data Integrity', () => {
 		})
 
 		it('should have weapon/catalyst types', () => {
-			expect(treasureData.weaponCatalyst).toHaveLength(10)
+			expect(treasureData.weaponCatalyst).toHaveLength(12)
 		})
 
 		it('should have 8 cost multipliers for Q1-Q8', () => {
@@ -1266,13 +1266,8 @@ describe('AutoRoller Generators', () => {
 				expect(result).toContain('✦')
 				expect(result).toContain('Q4')
 				expect(result).toContain('coins')
-				// Wands and Staffs have spell-specific descriptions; others have generic Effect
-				const isWandOrStaff = result.includes('wand') || result.includes('staff')
-				if (isWandOrStaff) {
-					expect(result).toContain('Spell catalyst')
-				} else {
-					expect(result).toContain('Effect:')
-				}
+				// All magic utility items should include an effect description
+				expect(result).toContain('Effect:')
 			}
 		})
 
