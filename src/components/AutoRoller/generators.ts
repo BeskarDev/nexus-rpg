@@ -14,6 +14,7 @@ import {
 	enchantmentCosts,
 	type QualityTier,
 	type ItemCategory,
+	getMaxSpellRank,
 	getWandCharges,
 	getStaffCharges,
 	getSpellDamageBonus,
@@ -741,8 +742,9 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 	// For Wand: generate with arcane/mystic label, material/detail, charges, catalyst bonus, and Effect
 	if (itemType === 'Wand') {
 		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
-		const cost = rollMagicItemCost(75, quality, 'spell-catalyst')
+		const cost = rollMagicItemCost(75, quality, 'one-handed-weapon')
 		const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
+		const maxRank = getMaxSpellRank(tier)
 		const charges = getWandCharges(tier)
 		const catalystBonus = getSpellDamageBonus(tier)
 		const magicName = generateMagicItemName('spellCatalyst', 'Wand')
@@ -753,7 +755,7 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 			const detail = lc(pickField(wandDetails, 'detail'))
 			wandDesc = ` — ${magicType} wand (${material} with ${detail}).`
 		}
-		let result = `✦ "${capitalize(magicName)}"${wandDesc} Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		let result = `✦ "${capitalize(magicName)}"${wandDesc} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 		if (curse) result += ` [${curse}]`
 		return result
 	}
@@ -761,8 +763,9 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 	// For Staff: generate with arcane/mystic label, material/detail, charges, catalyst bonus, and Effect
 	if (itemType === 'Staff') {
 		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
-		const cost = rollMagicItemCost(100, quality, 'spell-catalyst')
+		const cost = rollMagicItemCost(100, quality, 'two-handed-weapon')
 		const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
+		const maxRank = getMaxSpellRank(tier)
 		const charges = getStaffCharges(tier)
 		const catalystBonus = getSpellDamageBonus(tier)
 		const magicName = generateMagicItemName('spellCatalyst', 'Staff')
@@ -773,7 +776,7 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 			const detail = lc(pickField(staffDetails, 'detail'))
 			staffDesc = ` — ${magicType} staff (${material} with ${detail}).`
 		}
-		let result = `✦ "${capitalize(magicName)}"${staffDesc} Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		let result = `✦ "${capitalize(magicName)}"${staffDesc} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 		if (curse) result += ` [${curse}]`
 		return result
 	}
@@ -826,8 +829,9 @@ function getWeaponNameCategory(weaponType: string): 'weapon' | 'spellCatalyst' {
 
 // Map a weapon type/name to its ItemCategory for cost calculation
 function getWeaponItemCategory(weaponType: string, weaponName: string): ItemCategory {
-	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman' ||
-		weaponType === 'Wand' || weaponType === 'Staff') return 'spell-catalyst'
+	if (weaponType === 'Arcane Conduit' || weaponType === 'Mystic Talisman') return 'spell-catalyst'
+	if (weaponType === 'Wand') return 'one-handed-weapon'
+	if (weaponType === 'Staff') return 'two-handed-weapon'
 	if (weaponType === 'Bow' || weaponType === 'Crossbow') return 'two-handed-weapon'
 	// Check weapon properties for two-handed/heavy
 	const weapon = gameWeapons.find(w => w.name === weaponName)
@@ -1053,6 +1057,7 @@ function generateWeapon(quality?: number, subCategory?: string): string {
 				if (type === 'Wand' || type === 'Staff') {
 					const tier = Math.max(4, Math.min(8, quality)) as QualityTier
 					const magicType = Math.random() < 0.5 ? 'arcane' : 'mystic'
+					const maxRank = getMaxSpellRank(tier)
 					const charges = type === 'Wand' ? getWandCharges(tier) : getStaffCharges(tier)
 					const catalystBonus = getSpellDamageBonus(tier)
 					let detailStr = ''
@@ -1063,7 +1068,7 @@ function generateWeapon(quality?: number, subCategory?: string): string {
 					} else {
 						detailStr = ` — ${magicType} ${lc(type)}.`
 					}
-					let result = `✦ "${capitalize(magicName)}"${detailStr} Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
+					let result = `✦ "${capitalize(magicName)}"${detailStr} Max rank ${maxRank}. Charges: ${charges}. Spell catalyst +${catalystBonus}. Effect: ${effect}. (Q${quality}, ~${total.toLocaleString()} coins)`
 					if (curse) result += ` [${curse}]`
 					return result
 				}

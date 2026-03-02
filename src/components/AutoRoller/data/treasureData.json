@@ -2484,32 +2484,32 @@
       {
         "material": "Crystal-tipped",
         "form": "Arcane Wand",
-        "detail": "pulses with inner light"
+        "detail": "inner light pulsing"
       },
       {
         "material": "Bone-carved",
         "form": "Mystic Wand",
-        "detail": "warm to the touch"
+        "detail": "a warm touch"
       },
       {
         "material": "Ironwood",
         "form": "Arcane Wand",
-        "detail": "etched with tiny runes"
+        "detail": "tiny rune etchings"
       },
       {
         "material": "Silver-veined",
         "form": "Mystic Wand",
-        "detail": "hums softly in hand"
+        "detail": "a soft humming"
       },
       {
         "material": "Obsidian-cored",
         "form": "Arcane Wand",
-        "detail": "cold and smooth to the touch"
+        "detail": "a cold, smooth surface"
       },
       {
         "material": "Coral-tipped",
         "form": "Mystic Wand",
-        "detail": "sea-polished, faintly iridescent"
+        "detail": "sea-polished iridescence"
       },
       {
         "material": "Meteorite-infused",
@@ -2519,17 +2519,17 @@
       {
         "material": "Antler-wrapped",
         "form": "Mystic Wand",
-        "detail": "bound with braided cord"
+        "detail": "braided cord binding"
       },
       {
         "material": "Glass-threaded",
         "form": "Arcane Wand",
-        "detail": "refracts light in shifting colours"
+        "detail": "shifting colour refraction"
       },
       {
         "material": "Chitin-sheathed",
         "form": "Mystic Wand",
-        "detail": "soft buzz resonates when gripped"
+        "detail": "a soft resonant buzz"
       },
       {
         "material": "Fossil-veined",
@@ -2546,22 +2546,22 @@
       {
         "material": "Gnarled Darkwood",
         "form": "Arcane Staff",
-        "detail": "sigils glow faintly along its length"
+        "detail": "faintly glowing sigils"
       },
       {
         "material": "Ironwood",
         "form": "Mystic Staff",
-        "detail": "wrapped in prayer cords"
+        "detail": "prayer cord wrappings"
       },
       {
         "material": "Crystal-capped",
         "form": "Arcane Staff",
-        "detail": "inner light pulses with each step"
+        "detail": "a pulsing inner light"
       },
       {
         "material": "Bone-crowned",
         "form": "Mystic Staff",
-        "detail": "carved faces peer from the shaft"
+        "detail": "carved faces on the shaft"
       },
       {
         "material": "Metal-banded",
@@ -2571,7 +2571,7 @@
       {
         "material": "Driftwood",
         "form": "Mystic Staff",
-        "detail": "bleached smooth by sea and sun"
+        "detail": "a sea-bleached smoothness"
       },
       {
         "material": "Meteorite-inlaid",
@@ -2581,7 +2581,7 @@
       {
         "material": "Antler-forked",
         "form": "Mystic Staff",
-        "detail": "hung with small spirit fetishes"
+        "detail": "small spirit fetishes"
       },
       {
         "material": "Elderwood",
@@ -2591,17 +2591,17 @@
       {
         "material": "Stone-headed",
         "form": "Mystic Staff",
-        "detail": "a polished stone set at the crown"
+        "detail": "a polished stone at the crown"
       },
       {
         "material": "Coral-branched",
         "form": "Arcane Staff",
-        "detail": "sea-grown, cold to the touch"
+        "detail": "a cold, sea-grown texture"
       },
       {
         "material": "Fossilised",
         "form": "Mystic Staff",
-        "detail": "ancient creature bones form the shaft"
+        "detail": "ancient creature bone construction"
       }
     ]
   },
