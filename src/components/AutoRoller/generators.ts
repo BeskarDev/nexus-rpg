@@ -565,10 +565,17 @@ function generateMagicItemName(category: 'utility' | 'wearable' | 'armor' | 'wea
 	const adjective = pickField(nameTable, Math.random() < 0.5 ? 'adjective1' : 'adjective2')
 	const noun = pickField(nameTable, Math.random() < 0.5 ? 'noun1' : 'noun2')
 
-	return pattern
+	const raw = pattern
 		.replace('[Adjective]', adjective)
 		.replace('[Noun]', noun)
 		.replace('[Item]', baseItem)
+	// Title-case every word, but keep small prepositions/articles lowercase mid-name
+	// (e.g. "Scale Cuirass of Bloom", "Ring of Chanted Trial")
+	const small = new Set(['of', 'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at'])
+	return raw.replace(/\b\w+\b/g, (word, offset) => {
+		if (offset > 0 && small.has(word.toLowerCase())) return word.toLowerCase()
+		return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+	})
 }
 
 // Generate a magic item effect description
