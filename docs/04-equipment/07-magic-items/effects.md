@@ -64,9 +64,7 @@ In contrast to weapons and armor, magic ammo normally doesn‘t have an enchantm
 
 Spell scrolls contain sacred words or ancient arcane symbols written with magical ink. These magical inscriptions contain single uses of specific spells, which any intelligent creature can read aloud to invoke the spell's effect, after which the scroll turns to dust.
 
-**Casting for Spellcasters:** Reciting the inscription always requires an Action. If you have learned Arcana or Mysticism for arcane or mystic spell scrolls respectively, you can cast the spell normally without paying its Focus cost (you can't use any Metamagic Arts with it).
-
-**Casting for Non-Spellcasters:** If you haven't learned the appropriate magical skill, the scroll itself empowers you with the knowledge to cast it. Use the attribute dice and skill bonus provided by the scroll's Quality tier when making any tests required to cast the spell.
+**Casting Spell Scrolls:** You can invoke a spell scroll as an Action by rolling the attribute die + skill bonus of it’s Quality tier or using your own spell casting roll (Mind + Arcana / Spirit + Mysticism), if the scroll has the same magic skill as you (Arcana / Mysticism). This doesn’t count as you casting a spell and doesn’t cost you Focus. On a success, the spell scroll turns to dust and is destroyed.
 
 **Crafting Spell Scrolls:** When creating a spell scroll yourself, you must have learned the talent "Spell Scribe", be able to cast the chosen spell, and pay half the scroll's cost during the given amount of downtime. Spell scrolls have 0 load.
 
