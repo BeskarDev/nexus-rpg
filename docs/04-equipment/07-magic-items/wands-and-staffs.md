@@ -4,15 +4,13 @@ sidebar_position: 5
 
 # Wands & Staffs
 
-## Wands & Staffs
-
 Wands and staffs are special spell catalysts that store spells within them, allowing the wielder to cast those spells using charges rather than spending their own Focus. They are highly sought after by spellcasters and represent some of the most versatile magical treasures an adventurer can find.
 
 ### Wands
 
 A wand is a slender magical implement created with **one specific spell** embedded into it. The spell is chosen during the wand's creation and cannot be changed. Wands use a **charge system** to fuel their spells.
 
-**Casting from a Wand:** You can use an Action to cast the wand's embedded spell without paying Focus. The spell uses your own casting roll (attribute + skill) as normal. If you haven't learned the appropriate magical skill, the wand empowers you with the casting ability provided by its Quality tier (same as spell scrolls).
+**Casting from a Wand:** You can use an Action to cast the wand's embedded spell without paying Focus. The spell uses your own casting roll (attribute + skill) as normal. If you haven't learned the appropriate magical skill, the wand empowers you with the attribute die and skill bonus provided by its Quality tier (see the [Spell Scrolls](./effects#spell-scrolls) table for these values).
 
 **Charges and Heightening:** Casting the spell at its base rank costs 1 charge. You can heighten the spell by spending additional charges, up to the wand's maximum charge cost per use (determined by Quality).
 

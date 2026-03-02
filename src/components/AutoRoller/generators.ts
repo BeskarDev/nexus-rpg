@@ -768,7 +768,8 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 		const spellDesc = generateSpell(`${spellType}-any`)
 		const utilityDesc =
 			treasureData.utilityDetails[itemType] != null ? ` — ${formatUtilityDetail(itemType)}` : ''
-		const spellCount = itemType === 'Staff' ? ` (${rollDie(3) + 2} spells)` : ''
+		// Staff spell count varies by quality: Q4-Q5: 3, Q6-Q7: 4, Q8: 5
+		const spellCount = itemType === 'Staff' ? ` (${quality <= 5 ? 3 : quality <= 7 ? 4 : 5} spells)` : ''
 		let result = `✦ "${capitalize(magicName)}"${utilityDesc}. Spell: ${spellDesc}${spellCount}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 		if (curse) result += ` [${curse}]`
 		return result
