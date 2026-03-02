@@ -92,6 +92,46 @@ Spell scrolls contain sacred words or ancient arcane symbols written with magica
 |  |  |  |  | | | 7 | Peace |
 |  |  |  |  | | | 8 | War |
 
+### Magic Wands
+
+Wands are single-spell magical implements that function as spell catalysts. Each wand holds exactly one spell and uses a charge-based system.
+
+**Casting from a Wand:** Invoking a wand requires an Action and follows the same rules as casting a spell scroll. You can roll the attribute die + skill bonus of the wand's Quality tier, or use your own spellcasting roll (Mind + Arcana or Spirit + Mysticism) if the spell matches your skill. Casting from a wand does not count as casting a spell for other effects and does not cost Focus.
+
+**Charges:** Each use of the wand's spell costs charges equal to the spell's rank (e.g. a Rank 1 spell costs 1 charge). You can cast the spell at a heightened rank for +1 charge per extra rank, up to a maximum of the spell's base rank + 1.
+
+**Spell Catalyst Bonus:** A wand also functions as a spell catalyst of its Quality tier, granting the corresponding bonus to spell damage.
+
+**Recharging:** During a short break, you can spend 2 Focus per charge to refill the wand. Alternatively, you can pay an enchanter 10 coins per charge to recharge it.
+
+| Quality | Max Spell Rank | Attribute Die | Skill Bonus | Charges | Spell Catalyst Bonus |
+| --- | --- | --- | --- | --- | --- |
+| 4 (Lesser) | 1 | d8 | +1 | 4 | +1 |
+| 5 (Potent) | 2 | d10 | +2 | 8 | +2 |
+| 6 (Greater) | 3 | d10 | +3 | 12 | +3 |
+| 7 (Superior) | 4 | d12 | +4 | 16 | +4 |
+| 8 (Supreme) | 5 | d12 | +5 | 20 | +5 |
+
+### Magic Staffs
+
+Staffs are multi-spell magical implements for advanced spellcasters. Each staff holds multiple spells and uses a charge-based system. You must have the correct magic skill (Arcana or Mysticism) for the staff's spells to use them.
+
+**Casting from a Staff:** Invoking a staff requires an Action and follows the same rules as casting a spell scroll. You must use your own spellcasting roll (Mind + Arcana or Spirit + Mysticism) matching the staff's spell type, or roll the attribute die + skill bonus of the staff's Quality tier. Rank 0 spells can be cast for free (no charges).
+
+**Charges:** Each use of a staff spell costs charges equal to the spell's rank. You can cast spells at a heightened rank for +1 charge per extra rank, up to a maximum of the spell's base rank + 1.
+
+**Spell Catalyst Bonus:** A staff also functions as a spell catalyst of its Quality tier, granting the corresponding bonus to spell damage.
+
+**Recharging:** During a short break, you can spend 2 Focus per charge to refill the staff. Alternatively, you can pay an enchanter 10 coins per charge to recharge it.
+
+| Quality | Max Spell Rank | Attribute Die | Skill Bonus | Charges | Spells Held | Spell Catalyst Bonus |
+| --- | --- | --- | --- | --- | --- | --- |
+| 4 (Lesser) | 1 | d8 | +1 | 6 | 3 | +1 |
+| 5 (Potent) | 2 | d10 | +2 | 12 | 3 | +2 |
+| 6 (Greater) | 3 | d10 | +3 | 18 | 4 | +3 |
+| 7 (Superior) | 4 | d12 | +4 | 24 | 5 | +4 |
+| 8 (Supreme) | 5 | d12 | +5 | 30 | 6 | +5 |
+
 # Materials & Enchantments
 
 Every magic item must be crafted from a material, and may optionally have an enchantment applied to it.

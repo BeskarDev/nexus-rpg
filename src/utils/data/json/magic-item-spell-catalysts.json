@@ -16,5 +16,41 @@
 		"load": 0,
 		"quality": 2,
 		"description": "A small object containing a divine symbol or other spiritual relic infused with mystical power used to be able to cast mystic spells."
+	},
+	{
+		"name": "Arcane Wand",
+		"category": "spell-catalyst",
+		"cost": 75,
+		"properties": "spell catalyst, wand",
+		"load": 0,
+		"quality": 2,
+		"description": "A wand imbued with arcane energy that holds a single arcane spell. Invoked as an Action following spell scroll rules."
+	},
+	{
+		"name": "Mystic Wand",
+		"category": "spell-catalyst",
+		"cost": 75,
+		"properties": "spell catalyst, wand",
+		"load": 0,
+		"quality": 2,
+		"description": "A wand infused with mystic power that holds a single mystic spell. Invoked as an Action following spell scroll rules."
+	},
+	{
+		"name": "Arcane Staff",
+		"category": "spell-catalyst",
+		"cost": 100,
+		"properties": "spell catalyst, staff, two-handed",
+		"load": 1,
+		"quality": 2,
+		"description": "A staff imbued with arcane energy that holds multiple arcane spells. Requires Arcana skill to use. Invoked as an Action following spell scroll rules."
+	},
+	{
+		"name": "Mystic Staff",
+		"category": "spell-catalyst",
+		"cost": 100,
+		"properties": "spell catalyst, staff, two-handed",
+		"load": 1,
+		"quality": 2,
+		"description": "A staff infused with mystic power that holds multiple mystic spells. Requires Mysticism skill to use. Invoked as an Action following spell scroll rules."
 	}
 ]

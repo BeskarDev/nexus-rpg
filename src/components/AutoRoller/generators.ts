@@ -14,6 +14,11 @@ import {
 	enchantmentCosts,
 	type QualityTier,
 	type ItemCategory,
+	getMaxSpellRank,
+	getWandCharges,
+	getStaffCharges,
+	getStaffSpellCapacity,
+	getSpellDamageBonus,
 } from '../../features/CharacterSheet/CharacterSheetTabs/02_Items/utils/magicItemsConfig'
 
 // Type definitions for spell data
@@ -227,6 +232,21 @@ export function generateSpell(groupId: string): string {
 	const range = pickField(spellData.effects, 'range')
 
 	return `${lc(name)} — ${lc(effect)} targeting ${lc(target)} (duration: ${lc(duration)}, range: ${lc(range)})`
+}
+
+// Generate a random spell name for a given magic type ('arcane' or 'mystic')
+function generateRandomSpellName(magicType: 'arcane' | 'mystic'): { name: string; school: string } {
+	const list = magicType === 'arcane' ? spellData.arcaneSchools : spellData.mysticTraditions
+	const school = pick(list) as SpellSchool
+	const form = pickField(school.entries, 'form')
+	const adjective = pickField(school.entries, 'adjective')
+	const noun = pickField(school.entries, 'noun')
+	const pattern = pick(spellData.namingPatterns)
+	const name = pattern
+		.replace('[Form]', form)
+		.replace('[Adjective]', adjective)
+		.replace('[Noun]', noun)
+	return { name, school: school.name }
 }
 
 // ===== CREATURES =====
@@ -725,6 +745,41 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 			if (curse) result += ` [${curse}]`
 			return result
 		}
+	}
+
+	// For Wand: generate with spell info, charges, and catalyst bonus
+	if (itemType === 'Wand') {
+		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+		const cost = rollMagicItemCost(75, quality, 'spell-catalyst')
+		const magicType = Math.random() < 0.5 ? 'arcane' as const : 'mystic' as const
+		const spell = generateRandomSpellName(magicType)
+		const spellRank = getMaxSpellRank(tier)
+		const charges = getWandCharges(tier)
+		const catalystBonus = getSpellDamageBonus(tier)
+		const magicName = generateMagicItemName('spellCatalyst', 'Wand')
+		const spellDesc = ` — ${magicType} wand (${lc(spell.school)}). Spell: "${spell.name}" (rank ${spellRank}). Charges: ${charges}. Spell catalyst +${catalystBonus}`
+		let result = `✦ "${capitalize(magicName)}"${spellDesc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		if (curse) result += ` [${curse}]`
+		return result
+	}
+
+	// For Staff: generate with multiple spells, charges, and catalyst bonus
+	if (itemType === 'Staff') {
+		const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+		const cost = rollMagicItemCost(100, quality, 'spell-catalyst')
+		const magicType = Math.random() < 0.5 ? 'arcane' as const : 'mystic' as const
+		const spellCount = getStaffSpellCapacity(tier)
+		const spells = Array.from({ length: spellCount }, () => generateRandomSpellName(magicType))
+		const spellRank = getMaxSpellRank(tier)
+		const charges = getStaffCharges(tier)
+		const catalystBonus = getSpellDamageBonus(tier)
+		const magicName = generateMagicItemName('spellCatalyst', 'Staff')
+		const spellList = spells.map(s => `"${s.name}"`).join(', ')
+		const school = spells[0].school
+		const spellDesc = ` — ${magicType} staff (${lc(school)}). Spells (up to rank ${spellRank}): ${spellList}. Charges: ${charges}. Spell catalyst +${catalystBonus}`
+		let result = `✦ "${capitalize(magicName)}"${spellDesc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
+		if (curse) result += ` [${curse}]`
+		return result
 	}
 
 	// Calculate cost based on the item type's pricing category:

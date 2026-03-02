@@ -1266,8 +1266,13 @@ describe('AutoRoller Generators', () => {
 				expect(result).toContain('✦')
 				expect(result).toContain('Q4')
 				expect(result).toContain('coins')
-				// Should include an effect description
-				expect(result).toContain('Effect:')
+				// Wands and Staffs have spell-specific descriptions; others have generic Effect
+				const isWandOrStaff = result.includes('wand') || result.includes('staff')
+				if (isWandOrStaff) {
+					expect(result).toContain('Spell catalyst')
+				} else {
+					expect(result).toContain('Effect:')
+				}
 			}
 		})
 
