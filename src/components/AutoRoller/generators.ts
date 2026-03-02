@@ -448,18 +448,47 @@ export function rollMagicItemCost(baseCost: number, quality: number, category: I
 	return baseCost + magicBase + enchantCost + bonus
 }
 
-// Calculate cost for a magical consumable (alchemical) item.
-// Consumables use ~15% of one-handed-weapon pricing (per magic item creation docs example:
-// Q4 consumable = 50 base + 150 magic base + 150 enchant = 350 coins before bonus).
-// Both magic base and enchant costs are always applied since every magical alchemical
-// item has an inherent magical effect.
-export function rollMagicAlchemicalCost(quality: number): number {
+// Calculate cost for a magical consumable/supply item.
+// modifier: 0.5 for Consumable/Tools/Utilities (alchemical, spell scroll),
+//           0.25 for Supply/Bundle/Ammo (magic ammo items).
+// Calibrated so Q4 consumable = ~350+bonus coins (50 base + 150 magic + 150 enchant).
+// Both magic base and enchant are always applied since magical consumables always have an effect.
+export function rollMagicConsumableCost(quality: number, modifier: number = 0.5): number {
 	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
 	const baseFormCost = 50
-	const magicBase = Math.round(magicItemBaseCosts[tier]['one-handed-weapon'] * 0.15)
-	const enchantCost = Math.round(enchantmentCosts[tier]['one-handed-weapon'] * 0.15)
+	// scale factor: modifier * 0.3  → x0.5 → 0.15 (alchemical baseline), x0.25 → 0.075
+	const factor = modifier * 0.3
+	const magicBase = Math.round(magicItemBaseCosts[tier]['one-handed-weapon'] * factor)
+	const enchantCost = Math.round(enchantmentCosts[tier]['one-handed-weapon'] * factor)
 	const bonus = rollTreasureBonus(quality)
 	return baseFormCost + magicBase + enchantCost + bonus
+}
+
+// Convenience wrapper: alchemical items are consumables (modifier = 0.5)
+export function rollMagicAlchemicalCost(quality: number): number {
+	return rollMagicConsumableCost(quality, 0.5)
+}
+
+// Set of item names that come from the magic utility "Ammo" sub-table (supply items)
+const MAGIC_AMMO_ITEM_NAMES = new Set<string>(
+	((treasureData.magicUtilitySubtables as Record<string, string[]>)['Ammo']) ?? []
+)
+
+// Map a magic utility item name to its pricing category.
+// Assumes input is a valid item type from the magic utility tables (Alchemical is handled before
+// this function is called, so it never appears here).
+function getMagicUtilityItemPricingType(itemType: string): 'consumable' | 'supply' | 'catalyst' | 'permanent' {
+	if (itemType === 'Spell Scroll') return 'consumable'
+	if (itemType === 'Wand' || itemType === 'Staff') return 'catalyst'
+	if (MAGIC_AMMO_ITEM_NAMES.has(itemType)) return 'supply'
+	return 'permanent'
+}
+
+// Get the base-value modifier for a mundane utility sub-type (Q1-Q3)
+// Per docs "Modifiers to Base Values": Supply/Bundle/Ammo = x0.25, Consumable/Tools/Utilities = x0.5
+function getUtilityTypeModifier(type: string): number {
+	if (type === 'Supply') return 0.25
+	return 0.5  // Gear, Alchemical, Tool, Spell Scroll, Knowledge
 }
 
 // Parse cost string that may contain commas (e.g., "2,500")
@@ -663,7 +692,9 @@ function generateMagicKnowledge(quality: number): string {
 	const format = entry.format
 	const topic = entry.topic
 	const style = entry.style
-	const cost = rollMagicItemCost(0, quality, 'wearable')
+	// Knowledge items are permanent magical utilities — always fully enchanted (no 50% chance)
+	const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+	const cost = enchantmentCosts[tier]['wearable'] + rollTreasureBonus(quality)
 	const magicName = generateMagicItemName('utility', format)
 	const effect = generateMagicItemEffect()
 	const curse = generateMagicItemCurse()
@@ -696,10 +727,32 @@ function generateMagicUtility(quality: number, forcedType?: string): string {
 		}
 	}
 
-	// Wand/Staff are spell catalysts — use spell-catalyst pricing; everything else is wearable
-	const costCategory: ItemCategory =
-		itemType === 'Wand' || itemType === 'Staff' ? 'spell-catalyst' : 'wearable'
-	const cost = rollMagicItemCost(0, quality, costCategory)
+	// Calculate cost based on the item type's pricing category:
+	// - Consumable (Spell Scroll): x0.5 modifier per "Consumable/Tools/Utilities" docs rule
+	// - Supply (Ammo): x0.25 modifier per "Supply/Bundle/Ammo" docs rule
+	// - Spell Catalyst (Wand, Staff): standard spell-catalyst pricing
+	// - Permanent (Container, Instrument, Everyday Object, etc.): always-enchanted wearable
+	//   (no 50% chance — all generated magic utilities have a magical effect)
+	const pricingType = getMagicUtilityItemPricingType(itemType)
+	let cost: number
+	switch (pricingType) {
+		case 'consumable':
+			cost = rollMagicConsumableCost(quality, 0.5)
+			break
+		case 'supply':
+			cost = rollMagicConsumableCost(quality, 0.25)
+			break
+		case 'catalyst':
+			cost = rollMagicItemCost(0, quality, 'spell-catalyst')
+			break
+		case 'permanent':
+		default: {
+			// Permanent magic utility items always have an enchantment (they have a magical effect)
+			const tier = Math.max(4, Math.min(8, quality)) as QualityTier
+			cost = enchantmentCosts[tier]['wearable'] + rollTreasureBonus(quality)
+			break
+		}
+	}
 
 	const magicName = generateMagicItemName('utility', itemType)
 
@@ -818,9 +871,12 @@ function generateUtility(quality?: number, subCategory?: string): string {
 	const type = entry.type
 
 	if (quality) {
-		// All utility types use their sub-table columns for natural-language descriptions
+		// All utility types use their sub-table columns for natural-language descriptions.
+		// Apply the correct price modifier per docs "Modifiers to Base Values":
+		// Supply = x0.25, all other utility types (Consumable/Tools/Utilities) = x0.5
 		const desc = formatUtilityDetail(type)
-		const cost = rollTreasureCost(quality)
+		const modifier = getUtilityTypeModifier(type)
+		const cost = Math.round(rollTreasureCost(quality) * modifier)
 		return `${desc}. (Q${quality}, ~${cost.toLocaleString()} coins)`
 	}
 
