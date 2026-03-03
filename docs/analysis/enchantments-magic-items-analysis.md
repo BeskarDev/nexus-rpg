@@ -698,7 +698,7 @@ The random treasure generator already includes a "Utility" category but doesn't 
 
 ## Appendix B: Role Coverage Matrix (Current)
 
-> Note: Some enchantments serve multiple roles (e.g., Anchoring is both Defense and Offense). Row totals therefore exceed the unique enchantment count of 50 listed in the Executive Summary. Roles use the six magic system categories: Offense, Defense, Healing, Control, Support, Utility.
+> Note: Some enchantments serve multiple roles (e.g., Anchoring is both Defense and Offense). The total of 51 role assignments exceeds the 50 unique enchantments because multi-role enchantments are counted once per role. Roles use the six magic system categories: Offense, Defense, Healing, Control, Support, Utility.
 
 | Role | Ammo | Weapon | Catalyst | Armor/Shield | Wearable | Total |
 |------|------|--------|----------|-------------|----------|-------|
