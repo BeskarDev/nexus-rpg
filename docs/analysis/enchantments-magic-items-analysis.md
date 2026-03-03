@@ -8,8 +8,8 @@ This document provides a thorough analysis of the enchantment and magic item sys
 
 ### Quick Stats
 
-- **Enchantment Categories**: 5 current (Ammo, Weapon, Spell Catalyst, Armor/Shield combined, Wearable) → 5 proposed (Ammo, Weapon, Armor, Shield, Wearable; catalyst table removed — catalysts use wearable enchantments)
-- **Total Unique Enchantments**: 50 (6 ammo + 12 weapon + 6 spell catalyst + 6 armor/shield + 20 wearable)
+- **Enchantment Categories**: 5 current (Ammo, Weapon, Spell Catalyst, Armor/Shield combined, Wearable) → proposed: remove Catalyst table, split Armor/Shield → 5 tables (Ammo, Weapon, Armor, Shield, Wearable)
+- **Total Unique Enchantments**: 50 current (6 ammo + 12 weapon + 6 spell catalyst + 6 armor/shield + 20 wearable) → 75 proposed after all recommendations
 - **Magic Item Types**: 7 (Weapons, Armor/Shields/Helmets, Ammo, Spell Scrolls, Wands, Staffs, Wearables)
 - **Quality Tiers**: Q3–Q8 (Masterwork through Supreme)
 
@@ -369,7 +369,7 @@ Instead of treating QoL effects as enchantments, make them baseline properties a
 
 | Enchantment | Talent | Issue |
 |-------------|--------|-------|
-| **of Immunity** (condition, Q4, passive) | **Tough Stomach** R2 (end poisoned/frightened/dazed 1/scene), **Strong Mind** R2 (end mind effects 1/scene), **Body of Bronze** R2 (immune to dazed/stunned while unarmored) | **Anti-synergy** — if you wear a Ring of Immunity (dazed), Body of Bronze R2's dazed immunity is partly redundant. Tough Stomach R2's ability to end dazed/poisoned/frightened becomes less valuable if you're already immune to one of those. **Mitigation:** Moving of Immunity to Q6, making it triggered (1×/day) rather than passive, ensures the talent still has value for the many times beyond that one daily use. |
+| **of Immunity** (condition, Q4, passive) | **Tough Stomach** R2 (end poisoned/frightened/dazed 1/scene), **Strong Mind** R2 (end mind effects 1/scene), **Body of Bronze** R2 (immune to dazed/stunned while unarmored) | **Anti-synergy** — if you wear a Ring of Immunity (dazed), Body of Bronze R2's dazed immunity is partly redundant. Tough Stomach R2's ability to end dazed/poisoned/frightened becomes less valuable if you're already immune to one of those. **Mitigation:** Moving of Immunity to Q6 and making it triggered (1×/day, must choose to activate) means the character must decide when to use their limited immunity. Outside of that single daily use, the talent's reliable condition-ending ability remains the primary defense. The triggered nature creates a complementary dynamic: enchantment for one critical moment, talent for reliable ongoing protection. |
 | **of Pure Thought** (Q4, passive charm/sleep/thought-reading immunity) | **Strong Mind** (Fortitude, ends mind effects), **Divine Sense** R2 (immune to charmed, frightened, poisoned) | **Anti-synergy** — of Pure Thought grants passive charm immunity at Q4. Divine Sense R2 also grants charm immunity (but also frightened and poisoned). A Q4 wearable giving a subset of what a Rank 2 talent provides cheapens the talent investment. **Mitigation:** of Pure Thought should be Q5+ or triggered/limited rather than passive. |
 | **Stalwart** (Q4, ignore one condition 1/day) | **Tough Stomach** R2, **Strong Mind** R2, **Body of Bronze** R2 | **Minor overlap** — Stalwart is limited (1/day) while these talents provide repeatable but narrower immunity. The limited nature of Stalwart means the talent still has clear value. This is acceptable. |
 
@@ -559,7 +559,7 @@ Armor enchantments should focus on passive/reactive defense, environmental prote
 | 41–50 | Temperate | Q4 only | Immunity to extreme cold OR heat (travel/exploration) | Utility |
 | 51–60 | Vigilant | Q4/Q6 | You cannot be surprised; gain +1/+2 boon on Initiative | Defense |
 | 61–70 | Warded | Q5/Q6 | Gain resistance to one chosen non-physical damage type (chosen on creation); 1/2× per day. Q6: triggered immunity instead of resistance, 1×/day | Defense |
-| 71–80 | Fortified | Q4/Q5/Q6 | Increase AV by +1/+2/+3 while using the Guard Action or Brace Action | Defense |
+| 71–80 | Fortified | Q4/Q5/Q6 | Increase AV by +1/+2/+3 while using the Guard Action or while you have not moved this turn | Defense |
 | 81–90 | Camouflaged | Q4 only | While outdoors, gain +1 boon on Stealth rolls in the environment the armor was crafted for (choose on creation: forest, desert, mountain, urban, etc.) | Utility |
 | 91–100 | Enduring | Q4/Q5/Q6 | Reduce fatigue from environmental effects or forced marches by 1 per day. At Q5/Q6: reduce by 2/3. During travel, the wearer ignores the first Fatigue they would suffer per journey. | Utility |
 
@@ -574,7 +574,7 @@ Shield enchantments should focus on active defense, reactive abilities, and ally
 | 01–10 | Anchoring | Q4/Q5/Q6 | Resist push/prone; retaliate 2/4/6 damage; 1/2/3× per day | Defense / Offense |
 | 11–20 | Covering | Q4/Q5/Q6 | As a Quick Action, extend your shield's AV to one adjacent ally until start of your next turn; 1/2/3× per day | Support |
 | 21–30 | Reflecting | Q5/Q6 | When you succeed on Resist vs. a spell, the caster takes 2/4 damage of the spell's type; 1/2× per day | Defense |
-| 31–40 | Retaliating | Q4/Q5/Q6 | When a creature in melee range hits you, deal 1/2/3 damage to them (once between your turns) | Defense / Offense |
+| 31–40 | Retaliating | Q4/Q5/Q6 | When a creature in melee range hits you, deal 1/2/3 damage to them (once per round, between your turns) | Defense / Offense |
 | 41–50 | Shielding | Q6 only | Once per day, as a triggered ability, gain immunity to one damage type until end of next turn | Defense |
 | 51–60 | Rallying | Q5/Q6 | When you take a Wound, allies in close range gain +1/+2 to their next attack; 1×/scene | Support |
 | 61–70 | Warding | Q4/Q5/Q6 | While wielding this shield, gain +1/+2/+3 Resist vs. spells (max 10/12/14) | Defense |
@@ -592,7 +592,7 @@ Shield enchantments should focus on active defense, reactive abilities, and ally
 
 | New Wearable Enchantment | Migrated From | Quality | Effect | Role |
 |--------------------------|--------------|---------|--------|------|
-| of Stability | Stabilizing (catalyst) | Q4/Q5/Q6 | While holding a spell catalyst, once per turn if you fail to cast a spell, you can re-roll the test; 1/2/3× per day | Support |
+| of Stability | Stabilizing (catalyst) | Q4/Q5/Q6 | While holding a spell catalyst, if you fail to cast a spell you can re-roll the test (one re-roll per failed casting); 1/2/3× per day | Support |
 | of Volatility | Volatile (catalyst) | Q4/Q5/Q6 | While holding a spell catalyst, once per turn when dealing damage with a spell, add +2/+4/+6 damage. Roll a Durability check for the catalyst. | Offense |
 
 > Note: These enchantments specify "while holding a spell catalyst" to maintain their thematic identity. They can be applied to any wearable slot item (a ring, amulet, bracer, etc.) — the item just needs to be the catalyst or integrate with one. This fits the rules: catalysts must always be integrated into some kind of slot on the wearer, be it as part of a weapon, amulet, or other slot.
@@ -612,9 +612,9 @@ Shield enchantments should focus on active defense, reactive abilities, and ally
 
 | Name | Category | Quality | Effect | Role |
 |------|----------|---------|--------|------|
-| of Pathfinding | Wearable | Q4/Q6 | +1/+2 boon on Nature/Survival rolls for the Navigator role during travel | Utility |
+| of Pathfinding | Wearable | Q4/Q6 | +1/+2 boon on the Navigator's roll (Spirit/Mind + Nature) during travel | Utility |
 | of Vigilance | Wearable | Q4/Q6 | +1/+2 boon on Perception/Survival rolls for the Scout role during travel | Utility |
-| of Endurance | Wearable | Q4/Q5/Q6 | Ignore 1/2/3 Fatigue suffered per journey (from travel events, forced marches, or extreme climate — not from combat) | Support |
+| of Endurance | Wearable | Q4/Q5/Q6 | Ignore 1/2/3 Fatigue suffered per journey from travel-related sources (extreme climate, forced marches, bad navigation, travel events) | Support |
 | of Provisioning | Wearable | Q4 only | When rolling Supply Checks for rations during travel, roll twice and take the better result | Utility |
 | Wayfinder's | Weapon/Shield | Q4 only | While carried during travel, the Navigator gains +1 boon on their next Navigation roll after a failed one | Support |
 
@@ -627,7 +627,7 @@ Shield enchantments should focus on active defense, reactive abilities, and ally
 | of Trapfinding | Wearable | Q4/Q6 | +1/+2 boon on Perception rolls to detect traps and hidden features during dungeon delving or exploration | Utility |
 | of Darkvision | Wearable | Q4/Q6 | See in darkness as dim light for medium/long range | Utility |
 | of Waterbreathing | Wearable | Q4 only | Breathe underwater indefinitely; +1 boon on Athletics rolls to swim | Utility |
-| of Featherfall | Wearable | Q4 only | Reduce fall distance by one category for damage; land safely from up to short range falls | Defense |
+| of Featherfall | Wearable | Q4 only | Reduce fall distance by one category for calculating fall damage (e.g., medium falls count as short); take no damage from short-range falls or less | Defense |
 | Illuminating | Armor/Shield | Q4 only | Emit bright light in close range and dim light in short range on command (no Action). During dungeon delving, +1 boon on Search-related Perception rolls in the current area. | Utility |
 
 > **Talent harmony check:** of Trapfinding grants boons on detection rolls. Dungeon Delver (Perception talent) grants a unique investigation mechanic (spend a minute to analyze a trap, gaining understanding of its effects and bonuses to avoid/disable). These are complementary: the enchantment helps you *find* the trap; the talent helps you *understand and dismantle* it. Neither replaces the other.
@@ -750,7 +750,7 @@ Shield enchantments should focus on active defense, reactive abilities, and ally
 
 | Name | Category | Quality | Effect | Role |
 |------|----------|---------|--------|------|
-| **Sentient** | Shield | Q7 | The shield has limited awareness. 1×/scene, it independently blocks one attack against you without requiring your Quick Action. The shield can also fly to intercept one ranged attack against an ally in close range, 1×/day. | Defense |
+| **Sentient** | Shield | Q7 | The shield has limited awareness. 1×/scene, it independently blocks one attack against you (adds its full AV to your Parry for that attack) without requiring your Quick Action. Additionally, 1×/day, the shield can fly to intercept one ranged attack targeting an ally in close range, adding its AV to their Defense. | Defense |
 | **Avenger's** | Weapon | Q7 | While wielding, you and allies in close range gain +1 Resist. On a hit against undead or spirits, deal +4 radiant damage. Requires a character with a Pact of Devotion or similar oath. 1×/day, deal maximum damage against an undead or spirit creature. | Offense / Support |
 | **Living** | Armor | Q8 | The armor can independently grapple one creature in melee range using your Fortitude, 1×/scene. When you are critically hit, the armor absorbs the wound instead (the armor loses 1 permanent Durability — irreversible). | Defense |
 | **Phase** | Wearable | Q7 | 1×/day, become incorporeal for one turn. Move through solid objects and creatures. Attacks against you have +1 bane. You cannot attack or interact with physical objects while phased. | Defense / Utility |
@@ -861,7 +861,7 @@ This preserves the one-primary-enchantment rule while allowing QoL stacking on h
 
 > **of Pathfinding (Q4/Q6)**
 >
-> These well-worn boots always seem to find the surest path through rough terrain. While wearing them and serving as Navigator during travel, you gain +1 boon on Spirit/Mind + Nature/Survival rolls for navigation. At Q6, the bonus increases to +2 boons.
+> These well-worn boots always seem to find the surest path through rough terrain. While wearing them and serving as Navigator during travel, you gain +1 boon on the Navigator's roll (Spirit/Mind + Nature). At Q6, the bonus increases to +2 boons.
 >
 > **Role:** Utility. **Game Mode:** Travel.
 >
