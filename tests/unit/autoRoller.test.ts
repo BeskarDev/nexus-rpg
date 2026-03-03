@@ -1031,6 +1031,27 @@ describe('AutoRoller Generators', () => {
 			expect(costs.filter(c => c < 3000).length).toBeGreaterThan(0)
 		})
 
+		it('wand output should include Max rank and Charges but NOT "Spell catalyst"', () => {
+			for (let i = 0; i < 40; i++) {
+				const result = generateTreasure('weapon', 4, 'Wand')
+				expect(result).toContain('Max rank')
+				expect(result).toContain('Charges:')
+				expect(result).not.toContain('Spell catalyst')
+				// Wands should NOT include "Spells:" capacity (that is for staffs only)
+				expect(result).not.toContain('Spells:')
+			}
+		})
+
+		it('staff output should include Max rank, Spells count, and Charges but NOT "Spell catalyst"', () => {
+			for (let i = 0; i < 40; i++) {
+				const result = generateTreasure('weapon', 4, 'Staff')
+				expect(result).toContain('Max rank')
+				expect(result).toContain('Spells:')
+				expect(result).toContain('Charges:')
+				expect(result).not.toContain('Spell catalyst')
+			}
+		})
+
 		it('mundane utility Q1 costs should apply x0.5 modifier (Consumable/Tools/Utilities)', () => {
 			// Q1 base value from quality tier table = 25 coins.
 			// rollTreasureCost(1) = 2d4 * 5 = 10-40 (avg 25 = Q1 base value).
@@ -1428,6 +1449,44 @@ describe('AutoRoller Generators', () => {
 				const result = generateTreasure('weapon', 3)
 				expect(result).not.toContain('✦')
 			}
+		})
+
+		it('non-enchanted magic weapons should have +N suffix after item name, not at end', () => {
+			// Non-enchanted format: "bronze longsword +1, etched runes. (...)"
+			// NOT: "bronze longsword, etched runes +1. (...)"
+			let foundNonEnchanted = false
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('weapon', 4, 'Longsword')
+				if (!result.includes('✦')) {
+					foundNonEnchanted = true
+					// +1 should appear before the comma (before the detail), not at end before "."
+					const plusIdx = result.indexOf('+1')
+					const commaIdx = result.indexOf(',')
+					if (plusIdx >= 0 && commaIdx >= 0) {
+						// +1 must come before or at the comma position
+						expect(plusIdx).toBeLessThan(commaIdx)
+					}
+					break
+				}
+			}
+			expect(foundNonEnchanted).toBe(true)
+		})
+
+		it('non-enchanted magic armor should have +N suffix after armor type, not at end', () => {
+			let foundNonEnchanted = false
+			for (let i = 0; i < 100; i++) {
+				const result = generateTreasure('armor', 4, 'Breastplate')
+				if (!result.includes('✦')) {
+					foundNonEnchanted = true
+					const plusIdx = result.indexOf('+1')
+					const commaIdx = result.indexOf(',')
+					if (plusIdx >= 0 && commaIdx >= 0) {
+						expect(plusIdx).toBeLessThan(commaIdx)
+					}
+					break
+				}
+			}
+			expect(foundNonEnchanted).toBe(true)
 		})
 
 		it('should produce diverse magic utility items at Q4+', () => {
