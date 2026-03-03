@@ -9,6 +9,11 @@ import {
 	enchantments,
 	getWeaponDamageBonus,
 	getArmorAVBonus,
+	getMaxSpellRank,
+	getWandCharges,
+	getStaffCharges,
+	getStaffSpellCapacity,
+	getSpellDamageBonus,
 } from '../magicItemsConfig'
 
 describe('MagicItemsConfig - Cost Calculations', () => {
@@ -149,5 +154,70 @@ describe('MagicItemsConfig - AV Bonuses', () => {
 		expect(getArmorAVBonus(6)).toBe(3)
 		expect(getArmorAVBonus(7)).toBe(4)
 		expect(getArmorAVBonus(8)).toBe(5)
+	})
+})
+
+describe('MagicItemsConfig - Wand & Staff Functions', () => {
+	it('getMaxSpellRank returns correct spell rank per quality', () => {
+		expect(getMaxSpellRank(3)).toBe(0)
+		expect(getMaxSpellRank(4)).toBe(1)
+		expect(getMaxSpellRank(5)).toBe(2)
+		expect(getMaxSpellRank(6)).toBe(3)
+		expect(getMaxSpellRank(7)).toBe(4)
+		expect(getMaxSpellRank(8)).toBe(5)
+	})
+
+	it('getWandCharges scales so highest-rank spell can be cast 4 times', () => {
+		// Q4: rank 1 × 4 = 4, Q5: rank 2 × 4 = 8, etc.
+		expect(getWandCharges(3)).toBe(0)
+		expect(getWandCharges(4)).toBe(4)
+		expect(getWandCharges(5)).toBe(8)
+		expect(getWandCharges(6)).toBe(12)
+		expect(getWandCharges(7)).toBe(16)
+		expect(getWandCharges(8)).toBe(20)
+	})
+
+	it('getStaffCharges starts at 6 and scales by rank', () => {
+		expect(getStaffCharges(3)).toBe(0)
+		expect(getStaffCharges(4)).toBe(6)
+		expect(getStaffCharges(5)).toBe(12)
+		expect(getStaffCharges(6)).toBe(18)
+		expect(getStaffCharges(7)).toBe(24)
+		expect(getStaffCharges(8)).toBe(30)
+	})
+
+	it('getStaffSpellCapacity scales from 3 to 6', () => {
+		expect(getStaffSpellCapacity(3)).toBe(0)
+		expect(getStaffSpellCapacity(4)).toBe(3)
+		expect(getStaffSpellCapacity(5)).toBe(3)
+		expect(getStaffSpellCapacity(6)).toBe(4)
+		expect(getStaffSpellCapacity(7)).toBe(5)
+		expect(getStaffSpellCapacity(8)).toBe(6)
+	})
+
+	it('Wand and Staff base items exist in spell-catalyst category', () => {
+		const catalysts = baseItems['spell-catalyst']
+		const arcaneWand = catalysts.find(i => i.name === 'Arcane Wand')
+		const mysticWand = catalysts.find(i => i.name === 'Mystic Wand')
+		const arcaneStaff = catalysts.find(i => i.name === 'Arcane Staff')
+		const mysticStaff = catalysts.find(i => i.name === 'Mystic Staff')
+
+		expect(arcaneWand).toBeDefined()
+		expect(mysticWand).toBeDefined()
+		expect(arcaneStaff).toBeDefined()
+		expect(mysticStaff).toBeDefined()
+
+		expect(arcaneWand!.properties).toContain('wand')
+		expect(arcaneStaff!.properties).toContain('staff')
+		expect(arcaneStaff!.properties).toContain('two-handed')
+		expect(arcaneStaff!.load).toBe(1)
+		expect(arcaneWand!.load).toBe(0)
+	})
+
+	it('Q4 arcane wand cost = 75 + 1,000 = 1,075 coins (no material/enchantment)', () => {
+		const wand = baseItems['spell-catalyst'].find(i => i.name === 'Arcane Wand')!
+		const bronze = specialMaterials.find(m => m.name === 'Bronze')!
+		const totalCost = calculateMagicItemCost(wand, 4, bronze, null)
+		expect(totalCost).toBe(1075)
 	})
 })

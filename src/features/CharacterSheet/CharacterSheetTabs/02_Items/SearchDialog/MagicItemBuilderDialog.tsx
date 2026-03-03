@@ -75,6 +75,10 @@ import {
 	calculatePropertyModifications,
 	calculateFinalLoad,
 	modifyPropertiesString,
+	getMaxSpellRank,
+	getWandCharges,
+	getStaffCharges,
+	getStaffSpellCapacity,
 } from '../utils/magicItemsConfig'
 
 // Color mapping for weapon categories - each category gets a unique color
@@ -98,6 +102,14 @@ const getWeaponCategoryColor = (
 ): 'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' => {
 	return weaponCategoryColorMap[category] || 'default' as any
 }
+
+// Helpers to identify wand/staff base items
+const isWandItem = (item: BaseItem | null): boolean =>
+	!!item && item.properties?.includes('wand') === true
+const isStaffItem = (item: BaseItem | null): boolean =>
+	!!item && item.properties?.includes('staff') === true
+const isWandOrStaff = (item: BaseItem | null): boolean =>
+	isWandItem(item) || isStaffItem(item)
 
 export type MagicItemBuilderDialogProps = {
 	open: boolean
@@ -724,6 +736,15 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 										{selectedCategory === 'spell-catalyst' && (
 											<TableCell>Spell Damage</TableCell>
 										)}
+										{isWandOrStaff(selectedBaseItem) && (
+											<>
+												<TableCell>Spell Rank</TableCell>
+												<TableCell>Charges</TableCell>
+											</>
+										)}
+										{isStaffItem(selectedBaseItem) && (
+											<TableCell>Spells Held</TableCell>
+										)}
 										{selectedCategory === 'ammo' && (
 											<TableCell>Dmg Bonus</TableCell>
 										)}
@@ -788,6 +809,36 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 															label={`+${getSpellDamageBonus(quality)}`}
 															size="small"
 															color="primary"
+															variant="outlined"
+														/>
+													</TableCell>
+												)}
+												{isWandOrStaff(selectedBaseItem) && (
+													<>
+														<TableCell>
+															<Chip
+																label={quality >= 4 ? `Rank ${getMaxSpellRank(quality)}` : '—'}
+																size="small"
+																color="secondary"
+																variant="outlined"
+															/>
+														</TableCell>
+														<TableCell>
+															<Chip
+																label={quality >= 4 ? (isStaffItem(selectedBaseItem) ? getStaffCharges(quality) : getWandCharges(quality)) : '—'}
+																size="small"
+																color="secondary"
+																variant="outlined"
+															/>
+														</TableCell>
+													</>
+												)}
+												{isStaffItem(selectedBaseItem) && (
+													<TableCell>
+														<Chip
+															label={quality >= 4 ? getStaffSpellCapacity(quality) : '—'}
+															size="small"
+															color="secondary"
 															variant="outlined"
 														/>
 													</TableCell>
@@ -1227,6 +1278,32 @@ export const MagicItemBuilderDialog: React.FC<MagicItemBuilderDialogProps> = ({
 														selectedBaseItem.quality,
 														selectedQuality as QualityTier,
 													)}
+											</Typography>
+										</Grid>
+									)}
+									{isWandOrStaff(selectedBaseItem) && selectedQuality && (selectedQuality as number) >= 4 && (
+										<>
+											<Grid item xs={6}>
+												<Typography variant="body2" color="text.secondary">
+													<strong>Max Spell Rank:</strong>{' '}
+													{getMaxSpellRank(selectedQuality as QualityTier)}
+												</Typography>
+											</Grid>
+											<Grid item xs={6}>
+												<Typography variant="body2" color="text.secondary">
+													<strong>Charges:</strong>{' '}
+													{isStaffItem(selectedBaseItem)
+														? getStaffCharges(selectedQuality as QualityTier)
+														: getWandCharges(selectedQuality as QualityTier)}
+												</Typography>
+											</Grid>
+										</>
+									)}
+									{isStaffItem(selectedBaseItem) && selectedQuality && (selectedQuality as number) >= 4 && (
+										<Grid item xs={6}>
+											<Typography variant="body2" color="text.secondary">
+												<strong>Spells Held:</strong>{' '}
+												{getStaffSpellCapacity(selectedQuality as QualityTier)}
 											</Typography>
 										</Grid>
 									)}

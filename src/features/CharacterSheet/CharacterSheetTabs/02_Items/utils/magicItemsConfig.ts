@@ -578,6 +578,60 @@ export function getSpellDamageBonus(quality: QualityTier): number {
 }
 
 /**
+ * Wand and Staff quality tier table.
+ * Shares attribute die and skill bonus with spell scrolls.
+ * Wands and Staffs are Q4+ only.
+ */
+export type WandStaffTierData = {
+	spellRank: number
+	attributeDie: string
+	skillBonus: number
+	wandCharges: number
+	staffCharges: number
+	staffSpellCapacity: number
+}
+
+export const wandStaffTierTable: Record<4 | 5 | 6 | 7 | 8, WandStaffTierData> = {
+	4: { spellRank: 1, attributeDie: 'd8', skillBonus: 1, wandCharges: 4, staffCharges: 6, staffSpellCapacity: 3 },
+	5: { spellRank: 2, attributeDie: 'd10', skillBonus: 2, wandCharges: 8, staffCharges: 12, staffSpellCapacity: 3 },
+	6: { spellRank: 3, attributeDie: 'd10', skillBonus: 3, wandCharges: 12, staffCharges: 18, staffSpellCapacity: 4 },
+	7: { spellRank: 4, attributeDie: 'd12', skillBonus: 4, wandCharges: 16, staffCharges: 24, staffSpellCapacity: 5 },
+	8: { spellRank: 5, attributeDie: 'd12', skillBonus: 5, wandCharges: 20, staffCharges: 30, staffSpellCapacity: 6 },
+}
+
+/**
+ * Get the max spell rank for a wand or staff at a given quality tier.
+ */
+export function getMaxSpellRank(quality: QualityTier): number {
+	if (quality < 4) return 0
+	return wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8].spellRank
+}
+
+/**
+ * Get the base charges for a wand at a given quality tier.
+ */
+export function getWandCharges(quality: QualityTier): number {
+	if (quality < 4) return 0
+	return wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8].wandCharges
+}
+
+/**
+ * Get the base charges for a staff at a given quality tier.
+ */
+export function getStaffCharges(quality: QualityTier): number {
+	if (quality < 4) return 0
+	return wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8].staffCharges
+}
+
+/**
+ * Get the spell capacity (number of spells held) for a staff at a given quality tier.
+ */
+export function getStaffSpellCapacity(quality: QualityTier): number {
+	if (quality < 4) return 0
+	return wandStaffTierTable[quality as 4 | 5 | 6 | 7 | 8].staffSpellCapacity
+}
+
+/**
  * Calculate ammo damage bonus.
  * Q3 = +1, Q4 = +2, Q5 = +3, Q6 = +4, Q7 = +5, Q8 = +6
  */
