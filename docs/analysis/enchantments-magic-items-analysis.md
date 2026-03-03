@@ -30,7 +30,7 @@ This document provides a thorough analysis of the enchantment and magic item sys
 | Item Type | Quality Range | Key Mechanic | Notes |
 |-----------|---------------|--------------|-------|
 | **Weapons** | Q3–Q8 | +1 to +5 weapon damage, durability | Core combat items |
-| **Armor/Shields/Helmets** | Q4–Q8 | +1 to +5 AV, durability | No Q3 masterwork tier for armor |
+| **Armor/Shields/Helmets** | Q4–Q8 | +1 to +5 AV, durability | Magic AV bonuses start at Q4 (no Q3 masterwork AV bonus) |
 | **Ammo** | Q3–Q8 | +1 to +6 flat damage bonus | Supply-based, enchanted ammo is per-piece |
 | **Spell Scrolls** | Q3–Q8 | Single-use spell, rank 0–5 | Craftable with talent |
 | **Wands** | Q4–Q8 | Single spell, 4–20 charges, catalyst bonus | Recently added |
@@ -276,7 +276,7 @@ The spell catalyst enchantment list should grow from 6 to 10–12 options (rolle
 
 | # | Name | Quality | Effect | Design Notes |
 |---|------|---------|--------|--------------|
-| 7 | Efficient | Q4/Q5/Q6 | Once per day, cast a spell from this catalyst at one rank higher without spending additional Focus or charges. Twice/thrice at Q5/Q6. | Rewards heightening, differentiates from Storing |
+| 7 | Efficient | Q4/Q5/Q6 | Once per day, cast a spell from this catalyst at one rank higher without spending additional Focus or charges. Twice/thrice per day at Q5/Q6. | Rewards heightening, differentiates from Storing |
 | 8 | Overflowing | Q4/Q5/Q6 | This catalyst holds 2/4/6 additional charges beyond its normal maximum. | Directly supports wand/staff charge economy |
 | 9 | Siphoning | Q5/Q6 | When you reduce a creature to 0 HP with a spell cast through this catalyst, regain 1/2 charges. Once per scene. | Offensive caster reward, risk/reward |
 | 10 | Warding | Q4/Q5/Q6 | While holding this catalyst, gain +1/+2/+3 Resist against spells and magical effects (max 10/12/14). | Defensive option for casters, mirrors wearable "of Willpower" |
@@ -314,13 +314,13 @@ All materials should have concrete mechanical properties. This is essential for 
 
 | Material | Proposed Properties |
 |----------|-------------------|
-| **Meteorite** | Weapon/Catalyst: Spells and attacks deal +1 bonus damage that ignores AV. Armor: Gain +1 Resist against magical effects. |
+| **Meteorite** | Weapon/Catalyst: Spells and attacks deal +1 damage (item bonus) that ignores AV. Armor: Gain +1 Resist (item bonus) against magical effects. |
 | **Treantwood** | Weapon/Shield: Once per day, if item would lose a Durability use, ignore that loss. Armor: Same, and also self-repairs 1 Durability use during a night's rest. |
-| **Dragon Bone** | Weapon: Choose one element (fire, frost, lightning, acid) at creation. Deal +2 bonus damage of that type on hit. Armor/Shield: Resistance to chosen element. |
-| **Dragon Scales** | Armor/Shield: +1 AV and resistance to the element matching the dragon's type. Weapon: Not applicable (use Dragon Bone). |
+| **Dragon Bone** | Weapon: Choose one element (fire, frost, lightning, acid) at creation. Deal +2 damage (item bonus) of that type on hit. Armor/Shield: Resistance to chosen element. |
+| **Dragon Scales** | Armor/Shield: +1 AV (item bonus) and resistance to the element matching the dragon's type. Weapon: Not applicable (use Dragon Bone). |
 | **Deep Iron** | Any: +1 boon to resist effects that would damage or destroy the item. Armor: Reduce all physical damage taken by 1 (minimum 1). |
 | **Phantom-Silk** | Light Armor: -1 load (min 0), +1 boon on Stealth rolls. Wearable: The item is invisible while worn (still detectable by touch/magic). |
-| **Solarite** | Weapon: Quick Action to ignite, dealing +2 fire damage for short duration (does not stack with Flaming enchantment — take higher). Armor: Creatures that grapple or touch you take 2 fire damage. |
+| **Solarite** | Weapon: Quick Action to ignite, dealing +2 fire damage (item bonus) for short duration (same bonus type as Flaming — only the higher value applies). Armor: Creatures that grapple or touch you take 2 fire damage. |
 | **Lunarite** | Armor/Shield: +1 boon to Resist against spells. Catalyst: Reduce Focus cost of spells by 1 (min 1). |
 | **Adamantite** | Any: Item cannot be damaged or destroyed by non-magical means. Durability checks automatically succeed against mundane damage sources. |
 
@@ -354,7 +354,7 @@ Enchantments should scale to Q7 and Q8 to make legendary and mythical items feel
 | **Flaming** (weapon) | 8 fire damage ignoring AV; once per day, unleash a cone of flame in close range dealing 12 fire damage (vs. Dodge) | 10 fire damage ignoring AV; weapon ignites permanently (no activation needed); immune to fire while wielding |
 | **Tough** (armor) | Gain resistance 4×/day; when activated, also gain +2 AV until end of next turn | Gain resistance 5×/day; at start of each turn, automatically resist the first source of damage |
 | **Storing** (catalyst) | Store rank 4 spell, cast 2×/day without Focus | Store rank 5 spell, cast 3×/day without Focus; stored spell's TN increases by +2 |
-| **Slaying** (weapon) | +8 damage vs. creature type; +1 boon on all rolls involving that type | +10 damage vs. creature type; on critical hit vs. that type, deal an additional wound |
+| **Slaying** (weapon) | +8 damage vs. creature type; +1 boon on all rolls involving that type | +10 damage vs. creature type; on critical hit vs. that type, target must roll Spirit + Fortitude vs. TN 16 or suffer an additional wound |
 | **of Protection** (wearable) | +4 AV (unarmored) | +5 AV (unarmored); once per day, create a magical shield that absorbs 20 damage |
 
 ### 4.5 Priority 5: Fill Weapon Enchantment Gaps
@@ -481,7 +481,7 @@ Fill gaps in the wearable list for non-combat play:
 > This incredibly dense, dark metallic ore is mined from the deepest veins of ancient mountains. Items forged from adamantite are nearly indestructible.
 >
 > - **Any item**: The item cannot be damaged or destroyed by non-magical means. Durability checks caused by mundane damage sources (non-magical attacks, environmental hazards, normal wear) automatically succeed. Magical effects that specifically target or destroy items still apply normally.
-> - **Weapon**: The weapon ignores the first point of a target's AV on each hit (does not stack with Sundering — use the higher value).
+> - **Weapon**: The weapon ignores the first point of a target's AV on each hit (item bonus — same type as Sundering enchantment, only the higher value applies).
 > - **Armor/Shield**: Once per day, when you would take a critical hit, you can reduce it to a strong hit.
 
 ---
@@ -499,6 +499,8 @@ Fill gaps in the wearable list for non-combat play:
 
 ## Appendix B: Role Coverage Matrix (Current)
 
+> Note: Some enchantments serve multiple roles (e.g., Anchoring is both Defense and Offense). Row totals therefore exceed the unique enchantment count of 50 listed in the Executive Summary.
+
 | Role | Ammo | Weapon | Catalyst | Armor/Shield | Wearable | Total |
 |------|------|--------|----------|-------------|----------|-------|
 | Offense | 4 | 8 | 1 | 1 | 1 | 15 |
@@ -508,8 +510,6 @@ Fill gaps in the wearable list for non-combat play:
 | Utility | 0 | 3 | 1 | 1 | 3 | 8 |
 | Attribute | 0 | 0 | 0 | 0 | 4 | 4 |
 | **Total** | **6** | **12** | **6** | **7** | **21** | **52** |
-
-> Note: Some enchantments serve multiple roles (e.g., Anchoring is Defense + Offense). Totals may exceed unique enchantment counts.
 
 ## Appendix C: Role Coverage Matrix (Proposed — After All Recommendations)
 
