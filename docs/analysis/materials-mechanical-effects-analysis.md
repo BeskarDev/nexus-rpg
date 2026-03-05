@@ -94,9 +94,9 @@ Each entry includes the proposed mechanical text (formatted for direct insertion
 
 **Proposed effects:**
 
-Weapon/Ammo: Damage from this weapon ignores resistance granted by spells or magical effects (innate creature resistances still apply).<br/>
-Armor/Shield: Once per day, when you are targeted by a spell, the caster suffers +1 bane on their casting roll against you.<br/>
-Spell Catalyst: Once per day, when you roll a blunder on a spell casting roll, you can treat it as a normal failure instead.
+- Weapon/Ammo: Damage from this weapon ignores resistance granted by spells or magical effects (innate creature resistances still apply).
+- Armor/Shield: Once per day, when you are targeted by a spell, the caster suffers +1 bane on their casting roll against you.
+- Spell Catalyst: Once per day, when you roll a blunder on a spell casting roll, you can treat it as a normal failure instead.
 
 **Design notes:**
 - **Identity:** Anti-magic / spell disruption. Meteorite disrupts the magical field around it.
@@ -113,9 +113,9 @@ Spell Catalyst: Once per day, when you roll a blunder on a spell casting roll, y
 
 **Proposed effects:**
 
-Any: Once per scene, you can ignore a failed Durability check for this item.<br/>
-Armor/Shield: During a short break, you regain +2 additional HP while this item is equipped.<br/>
-Weapon/Spell Catalyst: This item automatically removes the damaged property from itself after a night's rest.
+- Any: Once per scene, you can ignore a failed Durability check for this item.
+- Armor/Shield: During a short break, you regain +2 additional HP while this item is equipped.
+- Weapon/Spell Catalyst: This item automatically removes the damaged property from itself after a night's rest.
 
 **Design notes:**
 - **Identity:** Organic regeneration. The living wood heals itself and its bearer.
@@ -132,9 +132,9 @@ Weapon/Spell Catalyst: This item automatically removes the damaged property from
 
 **Proposed effects:**
 
-Choose fire, frost, lightning, or acid when this item is crafted.<br/>
-Weapon/Ammo: Your attacks with this weapon deal the chosen damage type instead of physical damage.<br/>
-Armor/Shield: You gain resistance against the chosen damage type.
+- Choose fire, frost, lightning, or acid when this item is crafted.
+- Weapon/Ammo: Your attacks with this weapon deal the chosen damage type instead of physical damage.
+- Armor/Shield: You gain resistance against the chosen damage type.
 
 **Design notes:**
 - **Identity:** Elemental attunement. The dragon's elemental nature persists in its bones.
@@ -151,9 +151,9 @@ Armor/Shield: You gain resistance against the chosen damage type.
 
 **Proposed effects:**
 
-Choose fire, frost, lightning, or acid when this item is crafted.<br/>
-Armor: -1 load (min. 0). You gain resistance against the chosen damage type.<br/>
-Shield: You gain resistance against the chosen damage type.
+- Choose fire, frost, lightning, or acid when this item is crafted.
+- Armor: -1 load (min. 0). You gain resistance against the chosen damage type.
+- Shield: You gain resistance against the chosen damage type.
 
 **Design notes:**
 - **Identity:** Defensive elemental plating. Scales are armor-focused where Bone is weapon-focused.
@@ -170,8 +170,8 @@ Shield: You gain resistance against the chosen damage type.
 
 **Proposed effects:**
 
-Weapon: Attacks with this weapon gain the crush property. If the weapon already has crush, instead ignore all of the target's AV on a hit (rather than half).<br/>
-Heavy Armor/Shield: Once per scene, when you take damage from any source, you can gain resistance against that damage.
+- Weapon: Attacks with this weapon gain the crush property. If the weapon already has crush, instead ignore all of the target's AV on a hit (rather than half).
+- Heavy Armor/Shield: Once per scene, when you take damage from any source, you can gain resistance against that damage.
 
 **Design notes:**
 - **Identity:** Raw armor-piercing weight (weapon) and impenetrable density (armor/shield).
@@ -189,8 +189,8 @@ Heavy Armor/Shield: Once per scene, when you take damage from any source, you ca
 
 **Proposed effects:**
 
-Light Armor: -1 load (min. 0). This armor is translucent and nearly invisible while worn, allowing it to be concealed under normal clothing without detection.<br/>
-Wearable: -1 load (min. 0). Once per scene, when you are hit by an attack, you can force the attacker to re-roll their attack and use the lower result.
+- Light Armor: -1 load (min. 0). This armor is translucent and nearly invisible while worn, allowing it to be concealed under normal clothing without detection.
+- Wearable: -1 load (min. 0). Once per scene, when you are hit by an attack, you can force the attacker to re-roll their attack and use the lower result.
 
 **Design notes:**
 - **Identity:** Ghostly concealment and partial incorporeality.
@@ -215,9 +215,9 @@ No changes needed.
 
 **Proposed effects:**
 
-Weapon/Ammo: Your attacks with this weapon deal fire damage instead of physical damage. This weapon sheds dim light in melee range while wielded.<br/>
-Armor/Shield: You gain resistance against fire damage. You are immune to the burning condition.<br/>
-Spell Catalyst: Your spells that deal fire damage ignore the target's resistance to fire damage.
+- Weapon/Ammo: Your attacks with this weapon deal fire damage instead of physical damage. This weapon sheds dim light in melee range while wielded.
+- Armor/Shield: You gain resistance against fire damage. You are immune to the burning condition.
+- Spell Catalyst: Your spells that deal fire damage ignore the target's resistance to fire damage.
 
 **Design notes:**
 - **Identity:** Solar fire specialization. Where Dragon Bone lets you *choose* an element, Solarite is locked to fire but provides *deeper* fire synergy.
@@ -235,9 +235,9 @@ Spell Catalyst: Your spells that deal fire damage ignore the target's resistance
 
 **Proposed effects:**
 
-Weapon/Ammo: Creatures hit by this weapon suffer +1 bane on their next spell casting roll or concentration check. This effect can only trigger once per turn.<br/>
-Armor/Shield: Once per scene, when you are targeted by a spell, you can add your worn armor's AV bonus to your Resist against that spell. If you don't wear armor, add +2 to your Resist instead.<br/>
-Spell Catalyst: Creatures within close range of you suffer +1 bane on concentration checks to maintain spells.
+- Weapon/Ammo: Creatures hit by this weapon suffer +1 bane on their next spell casting roll or concentration check. This effect can only trigger once per turn.
+- Armor/Shield: Once per scene, when you are targeted by a spell, you can add your worn armor's AV bonus to your Resist against that spell. If you don't wear armor, add +2 to your Resist instead.
+- Spell Catalyst: Creatures within close range of you suffer +1 bane on concentration checks to maintain spells.
 
 **Design notes:**
 - **Identity:** Magic suppression and absorption. Lunarite is the anti-caster material.
@@ -254,8 +254,8 @@ Spell Catalyst: Creatures within close range of you suffer +1 bane on concentrat
 
 **Proposed effects:**
 
-Any: This item is indestructible. Failed Durability checks have no effect on it.<br/>
-Weapon: When you attack an object, structure, or construct, ignore its AV entirely.
+- Any: This item is indestructible. Failed Durability checks have no effect on it.
+- Weapon: When you attack an object, structure, or construct, ignore its AV entirely.
 
 **Design notes:**
 - **Identity:** Absolute physical permanence. Adamantite doesn't break and breaks everything else.
@@ -277,10 +277,10 @@ Legendary materials provide two or more distinct benefits per item type, reflect
 
 **Proposed effects:**
 
-Any: -2 load (min. 0).<br/>
-Weapon: This weapon's heavy property is removed. If it has no heavy property, you instead gain +1 boon on attacks with this weapon once per turn.<br/>
-Armor: Reduce the rigid property by 2 (min. 0). Reduce the heavy property requirement by one die size (e.g., heavy (d8) becomes heavy (d6), and heavy (d6) is removed).<br/>
-Shield: Reduce the rigid property by 2 (min. 0).
+- Any: -2 load (min. 0).
+- Weapon: This weapon's heavy property is removed. If it has no heavy property, you instead gain +1 boon on attacks with this weapon once per turn.
+- Armor: Reduce the rigid property by 2 (min. 0). Reduce the heavy property requirement by one step (e.g., heavy (d8) becomes heavy (d6); heavy (d6) is removed entirely).
+- Shield: Reduce the rigid property by 2 (min. 0).
 
 **Design notes:**
 - **Identity:** Ultimate weight reduction. The definitive upgrade over Mithril (-1 load, -1 rigid at Q5–Q6).
@@ -297,9 +297,9 @@ Shield: Reduce the rigid property by 2 (min. 0).
 
 **Proposed effects:**
 
-Any: -1 load (min. 0). You don't take damage from falling, regardless of distance.<br/>
-Light Armor/Wearable: Additionally, once per day, you can fly up to a short distance as part of your Movement. This flight lasts until the end of your turn.<br/>
-Shield: Additionally, allies within melee range of you also don't take damage from falling.
+- Any: -1 load (min. 0). You don't take damage from falling, regardless of distance.
+- Light Armor/Wearable: Additionally, once per day, you can fly up to a short distance as part of your Movement. This flight lasts until the end of your turn.
+- Shield: Additionally, allies within melee range of you also don't take damage from falling.
 
 **Design notes:**
 - **Identity:** Divine lightness and flight. The only material in the game that grants flight.
@@ -316,10 +316,10 @@ Shield: Additionally, allies within melee range of you also don't take damage fr
 
 **Proposed effects:**
 
-Choose fire, frost, lightning, or acid when this item is crafted.<br/>
-Weapon/Ammo: Your attacks with this weapon deal the chosen damage type instead of physical damage. On a critical hit, the target also suffers the associated condition for a short duration — burning (4) for fire, slowed for frost, stunned (briefly) for lightning, or bleeding (4) for acid.<br/>
-Armor/Shield: You gain resistance against two chosen damage types (from fire, frost, lightning, and acid).<br/>
-Spell Catalyst: Spells you cast that deal the chosen damage type ignore the target's resistance to that damage type.
+- Choose fire, frost, lightning, or acid when this item is crafted.
+- Weapon/Ammo: Your attacks with this weapon deal the chosen damage type instead of physical damage. On a critical hit, the target also suffers the associated condition for a short duration — burning (4) for fire, slowed for frost, briefly stunned for lightning, or bleeding (4) for acid.
+- Armor/Shield: You gain resistance against two chosen damage types (from fire, frost, lightning, and acid).
+- Spell Catalyst: Spells you cast that deal the chosen damage type ignore the target's resistance to that damage type.
 
 **Design notes:**
 - **Identity:** Stronger Dragon Bone. Fossils contain concentrated elemental energy from ancient dragons.
@@ -336,8 +336,8 @@ Spell Catalyst: Spells you cast that deal the chosen damage type ignore the targ
 
 **Proposed effects:**
 
-Armor: -1 load (min. 0). You gain resistance against fire, frost, lightning, and acid damage.<br/>
-Shield: You gain resistance against fire, frost, lightning, and acid damage.
+- Armor: -1 load (min. 0). You gain resistance against fire, frost, lightning, and acid damage.
+- Shield: You gain resistance against fire, frost, lightning, and acid damage.
 
 **Design notes:**
 - **Identity:** Ultimate elemental defense. The definitive upgrade from Dragon Scales (one element) to all four.
@@ -354,9 +354,9 @@ Shield: You gain resistance against fire, frost, lightning, and acid damage.
 
 **Proposed effects:**
 
-Weapon/Ammo: Your attacks with this weapon deal radiant damage instead of physical damage. Undead and Spirit (Infernal) creatures hit by this weapon can't use regeneration or healing abilities until the end of their next turn.<br/>
-Armor/Shield: You gain resistance against necrotic and radiant damage. Once per day, when damage would reduce you to 0 HP, you are reduced to 1 HP instead.<br/>
-Spell Catalyst: Mystic spells you cast that restore HP restore +2 additional HP.
+- Weapon/Ammo: Your attacks with this weapon deal radiant damage instead of physical damage. Undead and Spirit (Infernal) creatures hit by this weapon can't use regeneration or healing abilities until the end of their next turn.
+- Armor/Shield: You gain resistance against necrotic and radiant damage. Once per day, when damage would reduce you to 0 HP, you are reduced to 1 HP instead.
+- Spell Catalyst: Mystic spells you cast that restore HP restore +2 additional HP.
 
 **Design notes:**
 - **Identity:** Divine metal. Anti-evil, life-preserving, holy.
@@ -373,15 +373,15 @@ Spell Catalyst: Mystic spells you cast that restore HP restore +2 additional HP.
 
 **Proposed effects:**
 
-Weapon: Your attacks with this weapon deal your choice of radiant or psychic damage (chosen per attack) instead of physical damage.<br/>
-Armor/Shield: You gain resistance against psychic damage. Once per day, when you fail a roll to resist a magical effect, you can re-roll it.<br/>
-Spell Catalyst: Reduce the Focus cost of all spells you cast using this catalyst by 1 (minimum 0).
+- Weapon: Your attacks with this weapon deal your choice of radiant or psychic damage (chosen per attack) instead of physical damage.
+- Armor/Shield: You gain resistance against psychic damage. Once per day, when you fail a roll to resist a magical effect, you can re-roll it.
+- Spell Catalyst: Reduce the Focus cost of all spells you cast using this catalyst by 1 (minimum 0).
 
 **Design notes:**
 - **Identity:** Pure magical potency. The ultimate spellcaster material.
 - **Weapon dual-type choice** provides tactical flexibility — choose radiant vs. undead, psychic vs. armored foes. No enchantment offers per-attack damage type selection.
 - **Armor re-roll vs. magic** is a 1/day reactive defense against magical effects (charms, curses, etc.). Distinct from Strong Mind R1 (re-roll vs. mind effects 1/scene) — Eternite covers *all* magical effects, not just mental ones, but is 1/day instead of 1/scene.
-- **Catalyst Focus reduction** is the signature effect — rank 0 spells become truly free, rank 1 spells cost 1 instead of 2, etc. No enchantment reduces Focus costs (Infused *recovers* Focus, Storing lets you *skip* Focus for one spell/day). This is a distinct and powerful passive for Q7–Q8.
+- **Catalyst Focus reduction** is the signature effect. Since spells cost Focus equal to twice their rank (rank 1 = 2, rank 2 = 4, etc.), this -1 saves one Focus per spell cast. Rank 0 spells already cost 0 Focus and remain unchanged. No enchantment reduces Focus costs (Infused *recovers* Focus, Storing lets you *skip* Focus for one spell/day). This is a distinct and powerful passive for Q7–Q8.
 - **Talent check:** Inexhaustible Mind (Arcana) provides Focus recovery on natural rolls; Eternite reduces costs. These synergize without overlapping.
 
 ---
@@ -392,9 +392,9 @@ Spell Catalyst: Reduce the Focus cost of all spells you cast using this catalyst
 
 **Proposed effects:**
 
-Any: -1 load (min. 0). This item automatically removes the damaged property from itself at the end of each scene.<br/>
-Armor: Additionally, reduce the rigid property by 1 (min. 0).<br/>
-Spell Catalyst: Additionally, once per scene, you can add +1 boon to a spell casting roll when using this catalyst.
+- Any: -1 load (min. 0). This item automatically removes the damaged property from itself at the end of each scene.
+- Armor: Additionally, reduce the rigid property by 1 (min. 0).
+- Spell Catalyst: Additionally, once per scene, you can add +1 boon to a spell casting roll when using this catalyst.
 
 **Design notes:**
 - **Identity:** Living ancient wood — self-repairing, magically responsive, light.
@@ -411,8 +411,8 @@ Spell Catalyst: Additionally, once per scene, you can add +1 boon to a spell cas
 
 **Proposed effects:**
 
-Light Armor/Wearable: You gain resistance against psychic damage. You gain +1 boon on all rolls to resist charm, fear, confusion, and illusion effects.<br/>
-Shield: You gain +1 boon on all rolls to resist charm, fear, confusion, and illusion effects. Once per day, when you fail such a roll, you can choose to succeed instead.
+- Light Armor/Wearable: You gain resistance against psychic damage. You gain +1 boon on all rolls to resist charm, fear, confusion, and illusion effects.
+- Shield: You gain +1 boon on all rolls to resist charm, fear, confusion, and illusion effects. Once per day, when you fail such a roll, you can choose to succeed instead.
 
 **Design notes:**
 - **Identity:** Dream protection. Mental resilience against illusion and psychic assault.
@@ -429,9 +429,9 @@ Shield: You gain +1 boon on all rolls to resist charm, fear, confusion, and illu
 
 **Proposed effects:**
 
-Any: +1 boon on all Durability checks for this item.<br/>
-Weapon: This weapon emits dim light in melee range. Damage from this weapon bypasses resistance granted by spells or magical effects (innate creature resistances still apply).<br/>
-Heavy Armor/Shield: Once per scene, when you take damage from any source, you can gain resistance against that damage. You are unaffected by extreme temperatures (no rolls required for extreme heat or cold during travel or exploration).
+- Any: +1 boon on all Durability checks for this item.
+- Weapon: This weapon emits dim light in melee range. Damage from this weapon bypasses resistance granted by spells or magical effects (innate creature resistances still apply).
+- Heavy Armor/Shield: Once per scene, when you take damage from any source, you can gain resistance against that damage. You are unaffected by extreme temperatures (no rolls required for extreme heat or cold during travel or exploration).
 
 **Design notes:**
 - **Identity:** Rift-forged impact resistance with ambient magic. Titanium is the Legendary upgrade of both Deep Iron (defense) and Meteorite (anti-magic).
@@ -449,13 +449,13 @@ Heavy Armor/Shield: Once per scene, when you take damage from any source, you ca
 
 **Proposed effects:**
 
-Weapon/Ammo: Your attacks with this weapon deal fire damage instead of physical damage. Once per day, on a critical hit, the target is frightened of you for a short duration (no save).<br/>
-Armor/Shield: You gain resistance against fire and necrotic damage.<br/>
-Spell Catalyst: Once per day, when you cast a spell that deals damage, you can change its damage type to fire or necrotic.
+- Weapon/Ammo: Your attacks with this weapon deal fire damage instead of physical damage. Once per day, on a critical hit, the target is frightened of you for a short duration (no save). Creatures immune to the frightened condition are unaffected.
+- Armor/Shield: You gain resistance against fire and necrotic damage.
+- Spell Catalyst: Once per day, when you cast a spell that deals damage, you can change its damage type to fire or necrotic.
 
 **Design notes:**
 - **Identity:** Infernal power. Fire, fear, and dark energy.
-- **Weapon fire conversion + fear on crit** combines an elemental passive with a fear trigger. The fear is auto-applied (no save) but limited to 1/day and only on critical hits — powerful but very unreliable.
+- **Weapon fire conversion + fear on crit** combines an elemental passive with a fear trigger. The fear is auto-applied (no save) but limited to 1/day and only on critical hits — powerful but very unreliable. Standard creature immunities still apply (e.g., constructs and undead immune to frightened are unaffected), which prevents unintended interactions.
 - **Dual resistance** (fire + necrotic) reflects the horn's infernal and death-related nature. A meaningful Q7–Q8 defensive package.
 - **Catalyst damage-type conversion** (1/day) lets spellcasters adapt a spell's element situationally. This is unique — no enchantment changes spell damage types.
 - **Talent check:** No talent inflicts frightened on weapon critical hits. Drunken Technique R1 redirects attacks; Infernal Horn causes fear. Distinct.
