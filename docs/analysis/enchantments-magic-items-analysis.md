@@ -394,12 +394,12 @@ Weapon table stays combat-focused. 8 new entries covering missing elements and r
 
 | d100 | Name | Quality | Effect | Role |
 |------|------|---------|--------|------|
-| 61–70 | Smoke `[minor]` | Q4 only | On hit: smoke cloud in melee range, short duration. Creatures inside blinded | Utility |
+| 61–70 | Smoke | Q4/Q5/Q6 | On hit: smoke cloud in melee/close/short range, briefly duration. Creatures inside blinded | Utility |
 | 71–80 | Frost | Q4/Q5/Q6 | On hit: 4/6/8 frost damage + slowed briefly | Offense / Control |
 | 81–90 | Shocking | Q4/Q5/Q6 | On hit: 4/6/8 lightning. On strong/crit: arcs to adjacent creature for half | Offense |
-| 91–100 | Signaling `[minor]` | Q4 only | On hit: bright light + loud noise at impact, visible/audible at very long range | Utility |
+| 91–100 | Marker | Q5/Q6 | On hit: target is branded with a glowing rune. Cannot benefit from concealment or darkness. All attacks against the marked target gain +1 boon briefly/short duration | Utility / Control |
 
-> Smoke and Signaling are `[minor]` (Q4-only binary). Signaling supports travel/exploration communication.
+> Smoke is now a scaled combat enchantment (no longer [minor]); cloud radius expands with quality. Marker replaces Signaling — a magical brand is more appropriate to the ancient world setting than modern signal flares, and is Q5+ to avoid worldbuilding implications of cheap magical communication projectiles at Q4.
 
 ### 5.6 Differentiate Scaling
 
@@ -496,43 +496,76 @@ These tables cover slotless utility items generated from the random treasure sys
 |------|------|---------|--------|
 | 01–10 | Immovable Rod | Q5 | Activate: the rod fixes in place, bearing up to 500 load. Stays until deactivated |
 | 11–20 | Lantern of Revealing | Q4/Q5 | Emits bright light (close range). Invisible creatures in the light become visible. Q5: extends to short range |
-| 21–30 | Compass of True North | Q4 | Always points true north. +1 boon on Navigator rolls during travel |
+| 21–30 | Astral Disc | Q4 | A flat bronze disc etched with constellations. When held level and spoken to, accurately indicates cardinal directions and time of day. +1 boon on Navigator rolls during travel |
 | 31–40 | Rope of Climbing | Q4 | On command, the rope (short range length) animates to tie itself, climb surfaces, or bridge gaps. +1 boon on Athletics to climb while using |
-| 41–50 | Mirror of Reflection | Q5 | 1×/day: show the wielder what one named person known to them is currently doing (brief glimpse, no sound) |
+| 41–50 | Seer's Mirror | Q5 | 1×/day: gaze into the mirror and name a person known to you; glimpse a brief image of what they are currently doing (no sound, no communication) |
 | 51–60 | Carpet of Flight | Q6 | Can carry up to 2 Medium creatures. Flies at normal Movement speed. Requires concentration (no other actions while piloting) |
-| 61–70 | Key of Opening | Q4/Q5 | 1×/day: open one non-magical lock automatically. Q5: also magical locks, but roll Mind + Arcana vs. the lock's TN |
+| 61–70 | Arcane Key | Q4/Q5 | 1×/day: open one non-magical lock automatically. Q5: also magical locks, but roll Mind + Arcana vs. the lock's TN |
 | 71–80 | Figurine of Summoning | Q5/Q6 | 1×/day: summon a Tier 1/2 beast companion (specific animal chosen on creation) for short duration |
 | 81–90 | Rod of Mending | Q4 | 1×/day: repair one damaged non-magical item to functional condition. Does not restore magical properties or Durability |
-| 91–100 | Token of Return | Q5 | Attune to a location by spending 1 hour there. 1×/day: teleport yourself to the attuned location (same region only, not across continents) |
+| 91–100 | Hearthstone of Return | Q5 | Attune to a location by spending 1 hour there with a short ritual. 1×/day: teleport yourself to the attuned location (same region only, not across continents) |
 
-#### Instruments (d100, 5 entries)
+#### Instruments (d100, 10 entries)
 
 | d100 | Name | Quality | Effect |
 |------|------|---------|--------|
-| 01–20 | Horn of Warning | Q4 | Blow: all allies within long range cannot be surprised for short duration. Audible at very long range |
-| 21–40 | Drums of Marching | Q4 | During travel: allies in close range ignore 1 Fatigue per journey. Uses the instrument's Durability (check after each journey) |
-| 41–60 | Chime of Opening | Q5 | 1×/day: open one locked door, chest, or container (non-magical) within close range |
-| 61–80 | Flute of Calming | Q5 | 1×/day: play for one minute. All hostile creatures in close range must resist (Spirit + Fortitude vs. TN 10) or become non-aggressive for short duration. Ends if they take damage |
-| 81–100 | Bell of Communion | Q6 | 1×/day: ring during a ritual to contact one named spirit or ancestor. The GM provides one truthful answer to a yes/no question |
+| 01–10 | Horn of Warning | Q4 | Blow: all allies within long range cannot be surprised for short duration. Audible at very long range |
+| 11–20 | Horn of Blasting | Q5 | Blow: all creatures in a cone (close range) take 6 blast damage (ignoring half AV) and are deafened briefly. Structures in range may crack. 1×/day |
+| 21–30 | Drums of Marching | Q4 | During travel: allies in close range ignore 1 Fatigue per journey. Uses instrument Durability (check after each journey) |
+| 31–40 | War Drum of Fury | Q5 | Beat as an Action: allies in close range gain +1 boon on their next attack this scene. 1×/scene |
+| 41–50 | Chime of Opening | Q5 | 1×/day: open one locked door, chest, or container (non-magical) within close range |
+| 51–60 | Sistrum of Warding | Q4 | Shake as Quick Action: undead and spirits in close range must resist (Spirit + Fortitude vs. TN 8) or become frightened briefly. 1×/scene |
+| 61–70 | Flute of Calming | Q5 | 1×/day: play for one minute. All hostile creatures in close range must resist (Spirit + Fortitude vs. TN 10) or become non-aggressive for short duration. Ends if they take damage |
+| 71–80 | Lyre of Distraction | Q4 | Play for one minute during Social Intrigue: one target NPC must resist (Mind + Fortitude vs. TN 8) or lose 1 Patience. 1×/intrigue |
+| 81–90 | Pipes of Haunting | Q5/Q6 | Play in darkness or moonlight: all creatures in close range that can hear must resist (Spirit + Fortitude vs. TN 10/12) or become frightened for short/medium duration. 1×/scene |
+| 91–100 | Bell of Communion | Q6 | 1×/day: ring during a ritual to contact one named spirit or ancestor. The GM provides one truthful answer to a yes/no question |
 
 #### Body Parts & Natural Items (d100, 10 entries)
 
-These items draw from creature harvesting and natural materials. Effects are often thematic to the source.
+These items are **consumables** harvested from creatures and natural sources. Making them consumable (rather than permanent wearables) avoids conflict with wearable enchantments and creates a natural tie-in with the alchemy system and creature harvesting.
 
-| d100 | Name | Quality | Effect |
-|------|------|---------|--------|
-| 01–10 | Eye of Eagle Sight | Q4 | Perception rolls don't suffer banes from distance up to very long range |
-| 11–20 | Dragon Scale Charm | Q5 | Resistance to one elemental damage type (chosen on creation, matching dragon type) |
-| 21–30 | Beast Heart Talisman | Q4 | 1×/day: gain the keen senses of the creature type (chosen on creation); +1 boon on Perception for short duration |
-| 31–40 | Serpent Fang Vial | Q4 | Contains 3 doses of venom. Apply to weapon as Quick Action; next hit inflicts poisoned briefly |
-| 41–50 | Feather of Levitation | Q5 | 1×/day: levitate (hover in place, no horizontal movement) for short duration |
-| 51–60 | Luck Stone | Q4 | 1×/day: re-roll one failed roll (any type). Take the new result |
-| 61–70 | Crystal of Clarity | Q5 | 1×/day: end one of the following conditions on yourself: confused, dazed, charmed |
-| 71–80 | Fossilized Amber Ward | Q5 | While carried: +1 Resist vs. poison and disease effects |
-| 81–90 | Moonstone Shard | Q4/Q6 | In moonlight: +1/+2 boon on Spirit rolls. No effect indoors or during the day |
-| 91–100 | Heartwood Core | Q6 | 1×/day: touch a dying creature to stabilize them automatically (no roll needed) |
+| d100 | Name | Quality | Type | Effect |
+|------|------|---------|------|--------|
+| 01–10 | Salve of Eagle's Vision | Q4 | Dose (apply) | Gain +1 boon on all Perception rolls and treat dim light as bright light for short duration |
+| 11–20 | Dragon Scale Ash | Q5 | Dose (burn/inhale) | Gain resistance to one elemental damage type (fire, frost, or lightning) for short duration; specified by the dragon type it was harvested from |
+| 21–30 | Beast Heart Extract | Q4 | Dose (drink) | Gain the keen senses of the harvested creature type; +1 boon on Perception and Survival for short duration |
+| 31–40 | Serpent Fang Vial | Q4 | 3 doses (apply) | Apply to a weapon as Quick Action; the next hit inflicts the poisoned condition briefly |
+| 41–50 | Feather Charm | Q5 | 1 use (crush) | Crush in hand when falling: take no damage from falls up to short range and treat longer falls as one category shorter |
+| 51–60 | Carved Luck Bone | Q4 | 1 use (snap) | Snap before rolling any check: re-roll one failed roll and take the new result |
+| 61–70 | Clarity Crystal Dust | Q5 | Dose (sniff) | End one of the following conditions on yourself: confused, dazed, or charmed |
+| 71–80 | Amber Ward Charm | Q5 | 1 use (break) | Break when you would gain the poisoned condition or suffer a disease effect: negate that instance entirely |
+| 81–90 | Moonstone Draught | Q4/Q6 | Dose (drink) | Must be consumed under open moonlight. Gain +1/+2 boon on all Spirit rolls for short duration |
+| 91–100 | Heartwood Sap | Q6 | Dose (apply) | Apply to a creature at 0 HP: stabilize them automatically (no roll needed) and immediately remove the bleeding condition |
 
-> **Quality tier guidance:** Most utility items are Q4–Q5 (accessible, useful). Items that provide powerful daily-use abilities (teleportation, summoning, unlimited flight) are Q5–Q6. Items could theoretically scale to Q7–Q8 with enhanced versions (Carpet of Flight Q7 = carry 6 creatures, no concentration required), but this should be handled in the separate named-items catalogue.
+> **Quality tier guidance:** Most utility items are Q4–Q5 (accessible, useful). Items that provide powerful daily-use abilities (teleportation, summoning, flight) are Q5–Q6. Items could theoretically scale to Q7–Q8 with enhanced versions (Carpet of Flight Q7 = carry 6 creatures, no concentration required), but this should be handled in the separate named-items catalogue.
+
+#### Bronze Age Style Notes
+
+All utility items should evoke the ancient world aesthetic. Items replaced or renamed for period appropriateness:
+- "Compass of True North" → **Astral Disc** — a magnetic compass is a medieval invention; an enchanted star-disc is suitably ancient
+- "Mirror of Reflection" → **Seer's Mirror** — scrying mirrors are deeply ancient world (Egyptian, Roman oracle tradition)
+- "Key of Opening" → **Arcane Key** — more evocative name
+- "Token of Return" → **Hearthstone of Return** — carved ritual stone is more fitting than "token"
+
+When designing new utility items, avoid: printed maps, mechanical clocks, glass lenses, gunpowder, printing presses, complex gears/machines. Favor: inscribed tablets, ritual vessels, carved bones/stones, woven cloth, bronze tools.
+
+#### Worldbuilding Implications by Quality Tier
+
+The distribution of magic items at different quality tiers implicitly defines the game world's level of magical development and its social structure.
+
+| Quality | World Implication |
+|---------|------------------|
+| **Q3 (Masterwork)** | Accessible to skilled artisans in any major settlement. Non-magical but exceptional craft. Every town has a master craftsperson. |
+| **Q4 (Formidable)** | Available in city-states and trade hubs. Requires a true enchanter — a specialist with Crafting rank 3–4 and Arcana/Mysticism. A few dozen such craftspeople per kingdom. Q4 items are valuable but not rare; wealthy merchants and successful soldiers might own one. |
+| **Q5 (Exceptional)** | Rare. Found only in major cities, prestigious temples, or established arcane academies. Only a handful of Q5 enchanters exist per kingdom; they are known by name and sought after. Q5 items are status markers as much as tools. |
+| **Q6 (Epic)** | Extremely rare. Legendary enchanters producing Q6 work are regional celebrities. Perhaps two or three active in an empire at any time. Q6 items are heirlooms, prizes, and plot hooks. |
+| **Q7–Q8 (Legendary+)** | Effectively unique. Ancient relics, or the once-in-a-generation work of a master approaching the divine. Not produced in modern times without exceptional circumstances. Owning one is itself a statement of importance. |
+
+**Design implications for enchantment availability:**
+- **Communication magic at Q4** (Messenger Bottle) implies that wealthy merchants already have primitive magical postal systems — factor this into political intrigue design.
+- **Navigation aids at Q4** (Astral Disc) are available to any expedition that can afford them, but don't eliminate navigation skill — they grant a boon, not auto-success.
+- **Social enchantments at Q4** (of Discernment, Comprehension) would be common enough at the noble class level to assume that courts already include enchanted interrogation aids — factor this into spy/intrigue scenarios.
+- **High-level utility** (Hearthstone of Return, Carpet of Flight at Q5–Q6) should feel like exceptional resources that reshape a campaign's possibilities, not routine adventuring gear.
 
 ---
 
