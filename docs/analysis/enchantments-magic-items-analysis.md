@@ -151,15 +151,15 @@ Armor and shields share a single 6-entry table despite being mechanically distin
 
 ### 3.2 Catalyst Table Removal
 
-With wands and staffs providing charge-based spellcasting, the catalyst table adds complexity without value. Critically, spell catalysts are slotless items that integrate into a slot — stacking enchantments from both the slot item and the catalyst is bad design. **Remove the catalyst table entirely.** Catalysts use the wearable enchantment list directly.
+With wands and staffs providing charge-based spellcasting, the catalyst table adds complexity without value. Spell catalysts are items without their own equipment slot — they must be integrated into an existing slot (held as a weapon, worn as an amulet, etc.). Because the catalyst shares a slot with another item, having separate catalyst enchantments creates a stacking problem: the slot item has one enchantment and the catalyst adds another, violating the one-enchantment-per-item principle. **Remove the catalyst table entirely.** Catalysts benefit from the enchantment of whatever slot item they are integrated into, using the wearable enchantment list when applicable.
 
 | Current Catalyst | Disposition |
 |-----------------|-------------|
 | Storing | Remove — redundant with wand/staff spell storage |
 | Deflecting | Remove — reclassify as weapon property if desired |
 | Glowing | Remove — make baseline cosmetic feature of magic items |
-| Stabilizing | Remove — does not migrate (avoid catalyst enchantment stacking) |
-| Volatile | Remove — does not migrate (avoid catalyst enchantment stacking) |
+| Stabilizing | Remove — effect overlaps with wand/staff charge economy and creates stacking issues |
+| Volatile | Remove — similar stacking concern; spell damage boosts belong on the item's slot enchantment |
 | Infused | Remove — already on weapon table; wand/staff charges cover this |
 
 Named wands/staffs with bespoke abilities (D&D "Staff of Power" model) should be a separate design document.
@@ -204,7 +204,7 @@ Not all enchantments should follow Q4/Q5/Q6 linearly:
 
 Q4-only binary enchantments tagged `[minor]` can be added to Q5+ items as a secondary enchantment at their normal Q4 cost. This preserves one-primary-enchantment while allowing QoL stacking.
 
-**`[minor]` enchantments:** Morphing, Returning, Temperate, Comprehension, Signaling (ammo), Smoke (ammo), Camouflaged (armor), Illuminating (armor/shield).
+**`[minor]` enchantments:** Morphing, Returning, Temperate, Comprehension, Signaling (ammo), Smoke (ammo), Camouflaged (armor).
 
 ### 3.6 Talent Synergy Analysis
 
@@ -332,7 +332,7 @@ New enchantment resource model guidance:
 | 81–90 | Camouflaged `[minor]` | Q4 only | +1 boon on Stealth in a specific environment (chosen on creation) | Utility |
 | 91–100 | Enduring | Q4/Q5/Q6 | Reduce fatigue from environmental effects by 1/2/3 per day. During travel, ignore the first Fatigue per journey | Utility |
 
-> Stalwart updated to 1/scene (defensive reaction). Temperate and Camouflaged are `[minor]`. Enduring supports Travel without trivializing fatigue management.
+> Stalwart uses 1/scene model with quality-scaled frequency (1/2/3 uses per scene at Q4/Q5/Q6). Temperate and Camouflaged are `[minor]`. Enduring supports Travel without trivializing fatigue management.
 
 **Proposed Shield Enchantments (10 entries):**
 
@@ -452,7 +452,7 @@ Focusing on underrepresented roles (Healing, Control) and game modes (Travel, Ex
 | of Mending | Q4/Q5/Q6 | 1×/day: touch a creature to remove one of: poisoned, bleeding, burning. At Q5: also dazed, frightened. At Q6: also paralyzed, stunned | Healing | Combat |
 | of Vitality | Q5/Q6 | When you take a short break, regain 2/4 additional HP | Healing | Combat |
 | of Warding | Q4/Q5/Q6 | 1×/day: choose one ally in close range; they gain +1/+2/+3 Resist until end of scene | Support | Combat |
-| of Calming | Q5/Q6 | 1×/day: end the frightened or confused condition on one creature in close range | Healing / Control | Combat |
+| of Calming | Q5/Q6 | 1×/day: end the frightened or confused condition on one creature in close range | Support | Combat |
 | of Anchoring | Q4/Q5/Q6 | +1/+2/+3 on saves vs. forced movement, teleportation, and being displaced | Defense | Combat |
 
 #### Additional Shield Enchantments (expansion candidates)
@@ -467,7 +467,7 @@ Focusing on underrepresented roles (Healing, Control) and game modes (Travel, Ex
 | Name | Quality | Effect | Role | Mode |
 |------|---------|--------|------|------|
 | Disorienting | Q5/Q6 | On strong/crit: target suffers +1/+2 bane on next attack; 1/2× per day | Control | Combat |
-| Pacifying | Q5/Q6 | On hit vs. a frightened or charmed target: end that condition on them; 1×/day | Healing / Control | Combat |
+| Pacifying | Q5/Q6 | On hit vs. a frightened or charmed target: end that condition on them; 1×/day | Control | Combat |
 
 ### 5.9 Magic Utility Item Tables
 
@@ -480,11 +480,11 @@ These tables cover slotless utility items generated from the random treasure sys
 | d100 | Name | Quality | Effect |
 |------|------|---------|--------|
 | 01–10 | Bag of Holding | Q4 | Interior is larger than exterior; holds up to 500 load but always weighs 1 load |
-| 11–20 | Preserving Vessel | Q4 | Contents do not decay, spoil, or age. Rations and alchemical supplies last indefinitely |
+| 11–20 | Preserving Vessel | Q4 | Contents decay at half the normal rate. Rations and alchemical supplies stored inside last twice as long |
 | 21–30 | Quenching Flask | Q4/Q5 | 1×/day: produces clean water (1 unit of supply). Q5: 2 units |
 | 31–40 | Messenger Bottle | Q4 | Place a written message inside and speak a name; the bottle vanishes and reappears near the named person within 1 day. Returns empty. 1×/day |
 | 41–50 | Censer of Warding | Q5 | Burn incense (1 supply); all creatures in close range gain +1 Resist for short duration |
-| 51–60 | Bottomless Quiver | Q4 | Mundane ammo drawn from this quiver never runs out (no Supply Checks for basic ammo). Does not apply to enchanted ammo |
+| 51–60 | Bottomless Quiver | Q5 | When you make a Supply Check for basic (non-enchanted) ammo, roll twice and take the better result. Does not apply to enchanted ammo |
 | 61–70 | Chest of Safekeeping | Q5 | Locked by a command word; resists all non-magical attempts to open. Contents are shielded from divination |
 | 71–80 | Brazier of Warmth | Q4 | When lit, all creatures in close range are comfortable regardless of temperature. Counts as adequate shelter during travel |
 | 81–90 | Decanting Vessel | Q5/Q6 | 1×/day: produce one dose of a basic alchemical substance (chosen on creation): antidote, healing salve, or lamp oil. Q6: choose each day |
