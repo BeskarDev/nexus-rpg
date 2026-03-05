@@ -85,7 +85,7 @@ These materials exist in the vault worldbuilding but are not yet in `materials.m
 
 #### 2.2.1 Radiant Bronze (*Glanzbronze*)
 
-> *Magical alloy of bronze and Solarite dust, forged by Ghahar smiths. Warm-golden glow with reddish shimmer, hard as steel despite bronze base, radiates constant warmth and soft light. Sacred to the Anutep — possession by outsiders is a grave sin. Fire spell enhancement (+1 bonus) and constant warmth make it a versatile material for the faithful.*
+> *Magical alloy of bronze and Solarite dust, forged by Ghahar smiths. Warm-golden glow with reddish shimmer, hard as steel despite bronze base, radiates constant warmth and soft light. Sacred to the Anutep — possession by outsiders is a grave sin. Fire spell enhancement (+1 boon) and constant warmth make it a versatile material for the faithful.*
 
 **Design notes:** The vault places Glanzbronze at Q3, accessible due to only needing small amounts of Q5 Solarite dust. It is culturally exclusive (Anutep only) but mechanically functions as a fire-themed exotic material. Fire spell boost and warmth/light define its identity.
 
@@ -270,7 +270,7 @@ These materials exist in the vault worldbuilding but are not yet in `materials.m
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
-| **Light Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. Once per scene, when you take damage of the chosen element, you can gain resistance against that damage. -1 load (min. 0). |
+| **Light Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. Once per scene, when you take damage of the chosen element, you can gain resistance against that damage. This armor has -1 load (min. 0). |
 | **Wearable** | Choose one element (fire, frost, lightning, or acid) when this item is created. Once per scene, when you take damage of the chosen element, you can gain resistance against that damage. |
 
 ---
@@ -461,7 +461,7 @@ These materials exist in the vault worldbuilding but are not yet in `materials.m
 | Item Type | Proposed Effect |
 |-----------|----------------|
 | **Any** | This item is self-repairing. It regains all lost Durability dice after each night's rest. If the item would be destroyed, it instead becomes inert for one day and then reforms. |
-| **Light Armor** | -1 load (min. 0). Once per scene, when you take physical damage, you can reduce that damage by 4 (after applying AV). You gain resistance against necrotic damage. |
+| **Light Armor** | -1 load (min. 0). Once per scene, when you take damage from any source, you can reduce that damage by 4 (after applying AV). You gain resistance against necrotic damage. |
 | **Shield** | Once per scene, when you take damage from any source, you can gain resistance against that damage. You gain resistance against necrotic damage. |
 | **Wearable** | You gain resistance against necrotic damage. While casting nature-tradition mystic spells, you gain +1 boon on the casting roll. |
 
@@ -509,7 +509,7 @@ These materials exist in the vault worldbuilding but are not yet in `materials.m
 | Titanium | Dark resilience | — | Necrotic resist; Armor: reduce physical | +2 vs. Infernal; necrotic option | — | Fortitude boon |
 | Infernal Horn | Fire/infernal | — | Fire resist; burning immune | Fire conversion; +2 vs. Infernal | — | Fire spell boost |
 | Primordial Bone *(vault)* | Ultimate offense | — | — | Ignore 2 AV; bypass magic resist | Indestructible | Nature spell boon, +1 SP |
-| Primordial Hide *(vault)* | Ultimate defense | Light: -1 load | Necrotic resist; 1/scene reduce physical by 4 | — | Self-repairing (full) | Nature spell boon |
+| Primordial Hide *(vault)* | Ultimate defense | Light: -1 load | Necrotic resist; 1/scene reduce any damage by 4 | — | Self-repairing (full) | Nature spell boon |
 
 ---
 
@@ -531,9 +531,9 @@ This appendix verifies that proposed material effects complement rather than rep
 | Radiant Bronze: fire cast boon | Arcana/Mysticism talents (fire spells) | **Complementary.** Material grants boon to fire spells specifically; talents may grant broader casting benefits. |
 | Vine Wood: +1 WD (ranged) | Archery talents (ranged damage) | **Complementary.** Material is item bonus on a specific weapon; talent is skill-based and broader. |
 | Dragon Hide: 1/scene element resist | Wyrmhide (1/scene any element) | **Narrower.** Dragon Hide is single-element, 1/scene — a focused upgrade within light armor. Different tier (Q5 vs Q3). |
-| Shadow Pelt: +1 Stealth boon | Stealth talents (various) | **Complementary.** Item bonus stacks with skill-based bonuses. Slightly stronger than Phantom-Silk (adds psychic resist). |
+| Shadow Pelt: +1 Stealth boon | Stealth talents (various) | **Complementary.** Item bonus stacks with skill-based bonuses. Stronger than Phantom-Silk (adds psychic resist and anti-detection). |
 | Primordial Bone: ignore 2 AV | Adamantite: ignore 1 AV | **Strictly stronger.** Appropriate — Primordial Bone is Q7 Legendary vs. Adamantite's Q5–Q6 Greater. |
-| Primordial Hide: reduce phys by 4 | Titanium: reduce phys by 4 | **Equivalent magnitude.** Both are Q7 Legendary. Primordial Hide adds necrotic resist and self-repair; Titanium adds necrotic resist and Fortitude boon. Different thematic identity (nature vs. dark). |
+| Primordial Hide: reduce any by 4 | Titanium: reduce phys by 4 | **Distinct trigger.** Primordial Hide reduces *any* damage (physical, magical, elemental) while Titanium reduces *physical only*. Both are Q7 Legendary but serve different defensive niches — Primordial Hide is universally protective, Titanium specializes against physical threats with necrotic affinity. |
 
 **Conclusion:** No proposed material effect replaces a talent's signature ability. All interactions are complementary or operate in distinct mechanical spaces. Vault-only materials scale appropriately against existing materials of the same or lower tier.
 
@@ -562,7 +562,7 @@ This appendix checks each proposed material effect against all existing enchantm
 | Dragon Hide: 1/scene element resist | Tough (1-3/day resist any damage) | **Distinct scope.** Dragon Hide is element-specific, 1/scene. Tough is broader, uses daily charges. |
 | Shadow Pelt: +1 Stealth boon | Silent (reduce rigid or +1 Stealth boon) | **Partial.** Same analysis as Phantom-Silk. Shadow Pelt adds psychic resist and anti-detection, making it clearly distinct. |
 | Primordial Bone: ignore 2 AV | Sundering (ignore 1/2 AV, 1-3/day) | **Complementary.** Primordial Bone is passive (always on); sundering is active (daily uses). Both could stack on the same weapon. |
-| Primordial Hide: reduce phys by 4 | Tough (1-3/day resist any damage) | **Distinct trigger.** Primordial Hide is 1/scene physical-only reduction; Tough is daily-use full resistance. |
+| Primordial Hide: reduce any by 4 | Tough (1-3/day resist any damage) | **Distinct trigger.** Primordial Hide is 1/scene flat damage reduction (always reduces by 4); Tough is daily-use full resistance (halves all damage). |
 
 **Conclusion:** No material effect fully duplicates an enchantment's core identity. Where partial overlaps exist, materials operate in narrower scope or on different item types. Vault-only materials maintain the same non-overlap principle.
 
@@ -584,9 +584,9 @@ This table shows how material effects scale across tiers for thematically linked
 | **Durability** | Dwarf-Steel: 1/day re-roll Durability | Treantwood: 1/day ignore Durability; Adamantite: indestructible | Elderwood: self-repairing; Elder Dragon Scales: 1/day ignore Durability; Primordial Bone: indestructible (absolute) |
 | **Fire specialist** | Radiant Bronze: fire conversion + fire cast boon + cold climate | Solarite: fire conversion + burning immune | Infernal Horn: fire conversion + fire resist + anti-Infernal |
 | **Universal magic** | Meteorite (exotic at Q3 in vault): +1 spell bonus | Meteorite: +1 SP, flexible element, Focus | Orichalcum: +2 SP, flexible element, Focus, enchantment synergy |
-| **Physical defense** | Monster Scales: 1/scene physical resist | Adamantite: indestructible + 1/scene reduce phys by 2 | Titanium: 1/scene reduce phys by 4 + necrotic resist; Primordial Hide: 1/scene reduce phys by 4 + necrotic resist + self-repair |
+| **Physical defense** | Monster Scales: 1/scene physical resist | Adamantite: indestructible + 1/scene reduce phys by 2 | Titanium: 1/scene reduce phys by 4 + necrotic resist; Primordial Hide: 1/scene reduce any damage by 4 + necrotic resist + self-repair |
 | **Ranged weapons** | Vine Wood: +1 WD (ranged only) | — | — |
-| **Primal/apex** | — | — | Primordial Bone: indestructible + ignore 2 AV + nature boon; Primordial Hide: self-repair + reduce phys by 4 + necrotic resist |
+| **Primal/apex** | — | — | Primordial Bone: indestructible + ignore 2 AV + nature boon; Primordial Hide: self-repair + reduce any damage by 4 + necrotic resist |
 
 ---
 
