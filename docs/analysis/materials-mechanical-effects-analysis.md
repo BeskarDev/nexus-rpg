@@ -55,8 +55,8 @@ This keeps effects intuitive (the item protects *you*), works consistently regar
 ### 1.5 Talent Harmony Rules
 
 1. Materials grant **item bonuses** or **unnamed effects** — these stack with ability bonuses from talents.
-2. Materials must not replicate a talent's signature ability.
-3. Where overlap is unavoidable, the material effect should be **weaker than** or **complementary to** the talent, never a replacement.
+2. Materials must not replicate a talent's signature ability (e.g., if a talent grants crush to any weapon via training, a material should not grant crush in the same way — the material version should be a passive intrinsic property of the item, distinct from the trained technique).
+3. Where overlap is unavoidable, the material effect should be **narrower in scope**, **weaker in magnitude**, or **complementary** to the talent, never a full replacement.
 
 ---
 
@@ -231,10 +231,10 @@ These are final and included for comparison only.
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
-| **Spell Catalyst** | Your Spell Power increases by +2 (item bonus). |
+| **Spell Catalyst** | Your Spell Power increases by +2 (item bonus). In addition, any enchantment placed on this item never degrades or loses potency — enchantment daily uses recharge fully after a short rest instead of a night's rest. |
 | **Weapon** | Once per scene, when you hit a creature, you can choose to deal your weapon damage as any one elemental damage type (fire, frost, lightning, acid, radiant, or necrotic) instead of its normal type. |
 | **Armor/Shield** | -1 load (min. 0). Reduce rigid by 1 (min. 0). Once per day, when an enchantment on any of your equipped items would expend a daily use, you can choose to not expend it. |
-| **Wearable** | You gain +4 max Focus (item bonus). |
+| **Wearable** | You gain +2 max Focus (item bonus). Once per day, when you spend Focus to cast a spell, you can reduce the Focus cost by 1 (min. 0). |
 
 ---
 
@@ -305,7 +305,7 @@ These are final and included for comparison only.
 | Item Type | Proposed Effect |
 |-----------|----------------|
 | **Any** | -1 load (min. 0). You are immune to extreme heat and extreme cold effects during travel. |
-| **Spell Catalyst** | Your max Focus increases by +4 (item bonus). Once per day, when you cast a spell, you can reduce that spell's Focus cost by 2 (min. 0). |
+| **Spell Catalyst** | Once per day, when you cast a spell, you can reduce that spell's Focus cost by 2 (min. 0). The catalyst weighs nothing (0 load). |
 | **Heavy Armor** | Reduce rigid by 2 (min. 0). |
 | **Wearable** | Once per day, you can levitate yourself or one creature you touch up to a short distance vertically. The target hovers for a short duration (about 1 minute) before descending gently. |
 
@@ -319,7 +319,7 @@ These are final and included for comparison only.
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
-| **Any** | This item never requires Durability checks and cannot be broken by non-magical means. |
+| **Any** | This item is self-repairing. It regains 1 lost Durability die after each night's rest. If the item would be destroyed, it instead becomes inert for one day and then reforms. |
 | **Spell Catalyst** | While casting mystic spells, you gain +1 boon on the casting roll. Once per scene, when you fail a mystic spell casting roll, you can re-roll that test. |
 | **Weapon** | This weapon gains the reach property. If it already has reach, it gains +2 weapon damage (item bonus) instead. |
 | **Shield** | Once per scene, when you are hit by an attack, you can gain resistance against that damage. The shield regains 1 lost Durability die after a night's rest spent in natural surroundings. |
@@ -391,13 +391,13 @@ These are final and included for comparison only.
 
 | Material | Primary Effect Category | Weight | Resistance | Damage | Durability | Utility |
 |----------|------------------------|--------|------------|--------|------------|---------|
-| Orichalcum | Magic potentiation | Armor: -1 load, -1 rigid | — | Weapon: flexible element; Catalyst: +2 SP | — | +4 Focus, enchantment synergy |
+| Orichalcum | Magic potentiation | Armor: -1 load, -1 rigid | — | Weapon: flexible element; Catalyst: +2 SP | — | Enchantment synergy, Focus cost reduction |
 | Celestial Feathers | Divine + movement | -1 load | Shield: vs. Spirit/Undead | — | — | No fall damage, levitation, glow |
 | Elder Dragon Bone | Single element (enhanced) | — | Armor: one + 1/scene another | Element + bonus on strong/crit | — | — |
 | Elder Dragon Scales | All-element resistance | Light: -1 load | All armor: acid/fire/frost/lightning | — | 1/day ignore Durability | — |
 | Aegium | Divine protection | — | Shield: vs. necrotic/poison | +2 radiant vs. Infernal/Undead | — | Poisoned/diseased immune, glow, 1/day survive lethal |
-| Eternite | Gravity + cosmic | -1 load | — | — | — | Climate immune, Focus boost, levitation, -1 rigid |
-| Elderwood | Nature mastery | — | Shield: 1/scene any resist | Reach or +2 WD | Indestructible, shield self-repair | Mystic spell boon + re-roll |
+| Eternite | Gravity + cosmic | -1 load | — | — | — | Climate immune, Focus cost reduction, levitation, -1 rigid |
+| Elderwood | Nature mastery | — | Shield: 1/scene any resist | Reach or +2 WD | Self-repairing, shield self-repair | Mystic spell boon + re-roll |
 | Dreamweave | Mental protection | Light: -1 load | Psychic resist | — | — | Frightened immune, shield: condition block |
 | Titanium | Dark resilience | — | Necrotic resist; Armor: reduce physical | +2 vs. Infernal; necrotic option | — | Fortitude boon |
 | Infernal Horn | Fire/infernal | — | Fire resist; burning immune | Fire conversion; +2 vs. Infernal | — | Fire spell boost |
@@ -456,10 +456,10 @@ This table shows how material effects scale across tiers for thematically linked
 | **Elemental weapon** | — | Dragon Bone: convert to one element | Elder Dragon Bone: convert to one element + bonus on strong/crit |
 | **Weight reduction** | Chitin/Monster Bone/Darkwood: -1 load | Mithril: -1 load, -1 rigid | Orichalcum: -1 load, -1 rigid + magic synergy |
 | **Anti-magic defense** | Runebark: 1/scene resist spell damage | Lunarite: charmed immune + 1/scene or 1/day spell resist | Dreamweave: psychic resist + frightened immune + condition block |
-| **Nature/wood** | Darkwood: -1 load | Treantwood: Durability save + nature boon | Elderwood: indestructible + mystic boon + re-roll |
+| **Nature/wood** | Darkwood: -1 load | Treantwood: Durability save + nature boon | Elderwood: self-repairing + mystic boon + re-roll |
 | **Anti-creature** | Silverroot: +1 boon vs. lycanthropes/undead | — | Aegium: +2 radiant vs. Infernal/Undead; Titanium: +2 vs. Infernal |
 | **Stealth** | — | Phantom-Silk: -1 load + Stealth boon | Dreamweave: -1 load + psychic/mental protection |
-| **Durability** | Dwarf-Steel: 1/day re-roll Durability | Treantwood: 1/day ignore Durability; Adamantite: indestructible | Elderwood: indestructible; Elder Dragon Scales: 1/day ignore Durability |
+| **Durability** | Dwarf-Steel: 1/day re-roll Durability | Treantwood: 1/day ignore Durability; Adamantite: indestructible | Elderwood: self-repairing; Elder Dragon Scales: 1/day ignore Durability |
 | **Fire specialist** | — | Solarite: fire conversion + burning immune | Infernal Horn: fire conversion + fire resist + anti-Infernal |
 | **Universal magic** | Meteorite (exotic at Q3 in vault): +1 spell bonus | Meteorite: +1 SP, flexible element, Focus | Orichalcum: +2 SP, flexible element, Focus, enchantment synergy |
 
