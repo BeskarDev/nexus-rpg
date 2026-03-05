@@ -1,10 +1,10 @@
 # Special Materials — Mechanical Effects Analysis
 
-> **Scope:** Propose concrete mechanical effects for all Greater (Q5–Q6) and Legendary (Q7–Q8) special materials that currently lack them. Exotic (Q3–Q4) materials are included as reference only — their existing effects are already final.
+> **Scope:** Propose concrete mechanical effects for all Greater (Q5–Q6) and Legendary (Q7–Q8) special materials that currently lack them, plus vault-only materials not yet in the game rules. Exotic (Q3–Q4) materials already in game rules are included as reference; new Exotic-tier vault materials also receive proposals.
 >
 > **Prerequisite:** [Enchantments & Magic Items — Design Analysis](./enchantments-magic-items-analysis.md). This document picks up the deferred material-properties task from that analysis.
 >
-> **Source material:** Worldbuilding lore from the [Nexus RPG Vault](https://nexus-rpg-vault.web.app/(12)-%F0%9F%97%9D%EF%B8%8F-Artefakte/Materialien/) is incorporated throughout and supersedes prior game-rules-only drafts where conflicts arise.
+> **Source material:** Worldbuilding lore from the [Nexus RPG Vault](https://nexus-rpg-vault.web.app/(12)-%F0%9F%97%9D%EF%B8%8F-Artefakte/Materialien/) is incorporated throughout and supersedes prior game-rules-only drafts where conflicts arise. All vault materials (including those not yet in `materials.md`) are covered in full.
 
 ---
 
@@ -78,6 +78,47 @@ These are final and included for comparison only.
 | 8 | Dwarf-Steel | Any: 1/day re-roll Durability. Heavy Armor: ignore extreme climate penalty | Durability + utility |
 | 9 | Darkwood | Weapon/Shield/Ammo: -1 load | Weight |
 | 10 | Wyrmhide | Armor/Shield: 1/scene resistance to acid, fire, frost, lightning, or poison | Elemental resistance |
+
+### 2.2 Exotic Materials — Vault-Only Proposals (Q3–Q4)
+
+These materials exist in the vault worldbuilding but are not yet in `materials.md`. They are proposed here with mechanical effects for potential inclusion.
+
+#### 2.2.1 Radiant Bronze (*Glanzbronze*)
+
+> *Magical alloy of bronze and Solarite dust, forged by Ghahar smiths. Warm-golden glow with reddish shimmer, hard as steel despite bronze base, radiates constant warmth and soft light. Sacred to the Anutep — possession by outsiders is a grave sin. Fire spell enhancement (+1 bonus) and constant warmth make it a versatile material for the faithful.*
+
+**Design notes:** The vault places Glanzbronze at Q3, accessible due to only needing small amounts of Q5 Solarite dust. It is culturally exclusive (Anutep only) but mechanically functions as a fire-themed exotic material. Fire spell boost and warmth/light define its identity.
+
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon/Ammo** | This weapon emits dim light in melee range. On a hit, you can choose to deal fire damage instead of physical damage. |
+| **Spell Catalyst** | This catalyst emits dim light in melee range. While casting spells that deal fire damage, you gain +1 boon on the casting roll. |
+| **Heavy Armor** | The armor emits dim light in melee range. You don't suffer a penalty for wearing heavy armor in extreme cold climates. |
+
+---
+
+#### 2.2.2 Vine Wood (*Rankenholz*)
+
+> *Inner fibers of gigantic vine plants from the southern jungles. Extraordinary elasticity and tension — can be bent 180° without breaking. The preferred material for bow-makers worldwide. No magical properties; purely physical superiority.*
+
+**Design notes:** The vault places Rankenholz at Q3, freely traded with no restrictions. Purely non-magical, defined by extreme elasticity and spring force. Natural fit for ranged weapons — bows, crossbows, and flexible spear shafts.
+
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon (ranged only)** | +1 weapon damage (item bonus) when used with ranged weapons (bows, crossbows). This material cannot be used for melee weapons or armor. |
+
+---
+
+#### 2.2.3 Elemental Stones (*Elementarsteine*)
+
+> *Magically charged crystals containing concentrated elemental energy (fire, water, earth, or air). Form naturally at locations where elemental energies seep from the Soul Realms. Enable pseudo-magical effects without spellcasting — "magic for the people." Urduk use fire stones militarily in siege weapons. Variable quality depending on size and purity.*
+
+**Design notes:** The vault describes Elemental Stones as variable-quality (from cheap splinters to rare creature-sourced specimens). They function as consumable/component materials rather than permanent special materials. Mechanically they fit best as ammo or catalyst components. Choose one element (fire, frost, lightning, or acid) when the item is created.
+
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Ammo** | Choose one element (fire, frost, lightning, or acid) when this ammo is created. This ammo deals the chosen element as its damage type instead of physical damage. The ammo shatters on impact (single use, no recovery). |
+| **Spell Catalyst** | Choose one element (fire, frost, lightning, or acid) when this catalyst is created. While casting spells that deal the chosen element's damage, you can re-roll one damage die per spell (take the higher result). |
 
 ---
 
@@ -218,6 +259,32 @@ These are final and included for comparison only.
 | **Any** | This item is practically indestructible. It never requires Durability checks and cannot be broken by non-magical means. |
 | **Weapon** | On a strong or critical hit, you can choose to ignore 1 AV of the target. |
 | **Heavy Armor** | Once per scene, when you take physical damage, you can reduce that damage by 2 (after applying AV). |
+
+---
+
+### 3.11 Dragon Hide (*Drachenhaut*) — Vault-Only
+
+> *Skin from between dragon scales — more flexible than scales but tougher than leather. Retains 50% of the scale's elemental resistance at full freedom of movement. Element-dependent coloring (duller than scales). Light, breathable, and supple. Favored by rangers, rogues, and light fighters who value mobility. Obtained only through dragon-hunting — angering surviving dragons.*
+
+**Design notes:** The vault places Dragon Hide at Q5–Q6. It is the lighter, flexible counterpart to Dragon Scales (which are armor-focused). Dragon Hide provides partial elemental resistance for light armor and wearables where Dragon Scales are too heavy. "50% resistance" translates mechanically to a weaker version of the Dragon Scales effect.
+
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Light Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. Once per scene, when you take damage of the chosen element, you can gain resistance against that damage. -1 load (min. 0). |
+| **Wearable** | Choose one element (fire, frost, lightning, or acid) when this item is created. Once per scene, when you take damage of the chosen element, you can gain resistance against that damage. |
+
+---
+
+### 3.12 Shadow Pelt (*Schattenfell*) — Vault-Only
+
+> *Fur from shadow creatures — shadow panthers, nightmares, shadow wolves — that dwell in the in-between planes and permanent darkness. Deep black that seems to absorb light, unnaturally soft and almost weightless. Dampens all sound in immediate vicinity. Enhances shadow magic, reduces the wearer's presence, and improves stealth dramatically. The creature dissolves into mist within minutes of death — a specialized shadow-mage preservationist must be present immediately. Possession is often illegal and marks the bearer as spy or assassin.*
+
+**Design notes:** The vault places Shadow Pelt at Q5 with strong stealth themes: acoustic dampening, shadow-affinity, presence reduction. Mechanically this is the ultimate stealth material — stronger than Phantom-Silk (+1 boon) but narrower (no ghost-resistance). Shadow Pelt focuses entirely on stealth and concealment.
+
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Light Armor** | -1 load (min. 0). You gain +1 boon on Stealth rolls. You gain resistance against psychic damage. |
+| **Wearable** | You gain +1 boon on Stealth rolls. You cannot be detected by magical means of sensory detection (such as tremorsense, blindsight, or magical alarm effects) while you remain still and hidden. |
 
 ---
 
@@ -370,9 +437,47 @@ These are final and included for comparison only.
 
 ---
 
+### 4.11 Primordial Bone (*Urzeit-Knochen*) — Vault-Only
+
+> *Tusks, fangs, and horns from Apex Beasts — the first living creatures of the world, older than most gods. Ivory-white with pulsing golden veins and unreadable ancient runes. Absolutely unbreakable — nothing in the known world can damage it, and it can shatter even Adamantite. Carries raw, primordial life-force. The material "chooses" its bearer and forms itself through ritual meditation. Obtainable only after the natural death of an Apex Beast (every few centuries) or as a voluntary gift (once per millennium). Killing an Apex Beast is a cosmic crime.*
+
+**Design notes:** The vault places Primordial Bone at Q7 (Legendary). Its defining traits are absolute indestructibility, all-penetrating properties, and primal nature-magic resonance. Mechanically it outclasses Adamantite (Q5–Q6) by combining indestructibility with offensive penetration and nature-magic synergy. The "chooses its bearer" flavor is narrative, not mechanical.
+
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | This item is indestructible. It never requires Durability checks and cannot be broken by any means. |
+| **Weapon** | This weapon ignores 2 AV of the target (before applying damage). On a hit against a creature with magical resistance or immunity, this weapon's damage is treated as non-magical physical damage that bypasses that resistance. |
+| **Spell Catalyst** | While casting nature-tradition mystic spells, you gain +1 boon on the casting roll. Your Spell Power increases by +1 (item bonus). |
+| **Shield** | Once per scene, when you take damage from any source, you can gain resistance against that damage. This shield cannot be sundered or disarmed by any effect. |
+
+---
+
+### 4.12 Primordial Hide (*Urzeit-Leder*) — Vault-Only
+
+> *Skin of Apex Beasts — the first living creatures. Deep earth-brown with golden/green veins of living energy. Unbelievably soft yet indestructible. Feels weightless, adapts to the bearer, always body-warm, pulses faintly at touch. Absorbs kinetic impact energy. Self-repairs damage over time. Ageless and imperishable. Resonates with nature magic and resists necromancy. Only obtainable after natural death (every few centuries) or as a voluntary gift. The material still "lives" — it breathes, reacts to the wearer's emotions, and sends dream-visions.*
+
+**Design notes:** The vault places Primordial Hide at Q7 (Legendary). Its defining traits are kinetic absorption, self-repair, nature-magic resonance, and necromantic resistance. Mechanically it is the ultimate protective leather — combining physical damage reduction with nature-magic synergy and self-healing durability. Complements Primordial Bone (offensive) as the defensive counterpart.
+
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | This item is self-repairing. It regains all lost Durability dice after each night's rest. If the item would be destroyed, it instead becomes inert for one day and then reforms. |
+| **Light Armor** | -1 load (min. 0). Once per scene, when you take physical damage, you can reduce that damage by 4 (after applying AV). You gain resistance against necrotic damage. |
+| **Shield** | Once per scene, when you take damage from any source, you can gain resistance against that damage. You gain resistance against necrotic damage. |
+| **Wearable** | You gain resistance against necrotic damage. While casting nature-tradition mystic spells, you gain +1 boon on the casting roll. |
+
+---
+
 ## 5. Summary Tables
 
-### 5.1 Greater Materials (Q5–Q6) — Effect Overview
+### 5.1 Exotic Materials — Vault-Only Proposals (Q3–Q4)
+
+| Material | Primary Effect Category | Weight | Resistance | Damage | Durability | Utility |
+|----------|------------------------|--------|------------|--------|------------|---------|
+| Radiant Bronze | Fire + cultural | — | Armor: cold climate immune | Weapon: fire conversion | — | Glow |
+| Vine Wood | Ranged specialist | — | — | +1 WD (ranged only) | — | — |
+| Elemental Stones | Element specialist | — | — | Ammo: element conversion | — | Catalyst: re-roll damage die |
+
+### 5.2 Greater Materials (Q5–Q6) — Effect Overview
 
 | Material | Primary Effect Category | Weight | Resistance | Damage | Durability | Utility |
 |----------|------------------------|--------|------------|--------|------------|---------|
@@ -386,8 +491,10 @@ These are final and included for comparison only.
 | Solarite | Fire specialist | — | Armor/Wear: burning immune | Fire conversion | — | Glow |
 | Lunarite | Anti-magic defense | — | Shield: 1/scene spell resist; Armor: 1/day spell resist | — | — | Charmed immune, anti-tracking |
 | Adamantite | Indestructibility | — | Armor: 1/scene reduce physical | AV ignore on strong/crit | Indestructible | — |
+| Dragon Hide *(vault)* | Light elemental resist | Light: -1 load | 1/scene one element | — | — | — |
+| Shadow Pelt *(vault)* | Stealth supreme | Light: -1 load | Psychic resist | — | — | Stealth boon, anti-detection |
 
-### 5.2 Legendary Materials (Q7–Q8) — Effect Overview
+### 5.3 Legendary Materials (Q7–Q8) — Effect Overview
 
 | Material | Primary Effect Category | Weight | Resistance | Damage | Durability | Utility |
 |----------|------------------------|--------|------------|--------|------------|---------|
@@ -401,6 +508,8 @@ These are final and included for comparison only.
 | Dreamweave | Mental protection | Light: -1 load | Psychic resist | — | — | Frightened immune, shield: condition block |
 | Titanium | Dark resilience | — | Necrotic resist; Armor: reduce physical | +2 vs. Infernal; necrotic option | — | Fortitude boon |
 | Infernal Horn | Fire/infernal | — | Fire resist; burning immune | Fire conversion; +2 vs. Infernal | — | Fire spell boost |
+| Primordial Bone *(vault)* | Ultimate offense | — | — | Ignore 2 AV; bypass magic resist | Indestructible | Nature spell boon, +1 SP |
+| Primordial Hide *(vault)* | Ultimate defense | Light: -1 load | Necrotic resist; 1/scene reduce physical by 4 | — | Self-repairing (full) | Nature spell boon |
 
 ---
 
@@ -419,8 +528,14 @@ This appendix verifies that proposed material effects complement rather than rep
 | Aegium: survive lethal 1/day | Fortitude talents (tenacity) | **Complementary.** Both serve survival but trigger differently and stack independently. |
 | Dreamweave: frightened immunity | Fortitude talent (resist fear) | **Complementary.** Material is permanent immunity; talent may provide broader condition resistance. |
 | Elderwood: mystic spell re-roll | Stabilizing enchantment (catalyst) | **Distinct.** Stabilizing is catalyst-only, 1-3/day. Elderwood re-roll is 1/scene on any mystic spell, can be on different item. |
+| Radiant Bronze: fire cast boon | Arcana/Mysticism talents (fire spells) | **Complementary.** Material grants boon to fire spells specifically; talents may grant broader casting benefits. |
+| Vine Wood: +1 WD (ranged) | Archery talents (ranged damage) | **Complementary.** Material is item bonus on a specific weapon; talent is skill-based and broader. |
+| Dragon Hide: 1/scene element resist | Wyrmhide (1/scene any element) | **Narrower.** Dragon Hide is single-element, 1/scene — a focused upgrade within light armor. Different tier (Q5 vs Q3). |
+| Shadow Pelt: +1 Stealth boon | Stealth talents (various) | **Complementary.** Item bonus stacks with skill-based bonuses. Slightly stronger than Phantom-Silk (adds psychic resist). |
+| Primordial Bone: ignore 2 AV | Adamantite: ignore 1 AV | **Strictly stronger.** Appropriate — Primordial Bone is Q7 Legendary vs. Adamantite's Q5–Q6 Greater. |
+| Primordial Hide: reduce phys by 4 | Titanium: reduce phys by 4 | **Equivalent magnitude.** Both are Q7 Legendary. Primordial Hide adds necrotic resist and self-repair; Titanium adds necrotic resist and Fortitude boon. Different thematic identity (nature vs. dark). |
 
-**Conclusion:** No proposed material effect replaces a talent's signature ability. All interactions are complementary or operate in distinct mechanical spaces.
+**Conclusion:** No proposed material effect replaces a talent's signature ability. All interactions are complementary or operate in distinct mechanical spaces. Vault-only materials scale appropriately against existing materials of the same or lower tier.
 
 ---
 
@@ -441,8 +556,15 @@ This appendix checks each proposed material effect against all existing enchantm
 | Aegium: survive lethal 1/day | — | **Unique to material.** No enchantment provides this effect. |
 | Dreamweave: condition block (shield) | Stalwart (1/day ignore condition) | **Distinct trigger.** Dreamweave is shield-only and covers a specific subset. Stalwart is armor/shield and covers a broader set but is 1/day. |
 | Elderwood: mystic re-roll | Stabilizing (re-roll failed cast) | **Distinct slot.** Stabilizing is catalyst-only. Elderwood provides this on any item type. |
+| Radiant Bronze: fire cast boon | Volatile (add damage to spell) | **No overlap.** Radiant Bronze grants +1 boon on casting roll for fire spells; volatile adds flat damage post-cast. |
+| Vine Wood: +1 WD (ranged) | Slaying (+2/4/6 vs creature type) | **No overlap.** Vine Wood is flat +1 WD on ranged; slaying is creature-conditional bonus. |
+| Elemental Stones: element conversion (ammo) | Burning ammo (inflict burning condition) | **No overlap.** Stones convert base damage type; burning ammo adds a condition. |
+| Dragon Hide: 1/scene element resist | Tough (1-3/day resist any damage) | **Distinct scope.** Dragon Hide is element-specific, 1/scene. Tough is broader, uses daily charges. |
+| Shadow Pelt: +1 Stealth boon | Silent (reduce rigid or +1 Stealth boon) | **Partial.** Same analysis as Phantom-Silk. Shadow Pelt adds psychic resist and anti-detection, making it clearly distinct. |
+| Primordial Bone: ignore 2 AV | Sundering (ignore 1/2 AV, 1-3/day) | **Complementary.** Primordial Bone is passive (always on); sundering is active (daily uses). Both could stack on the same weapon. |
+| Primordial Hide: reduce phys by 4 | Tough (1-3/day resist any damage) | **Distinct trigger.** Primordial Hide is 1/scene physical-only reduction; Tough is daily-use full resistance. |
 
-**Conclusion:** No material effect fully duplicates an enchantment's core identity. Where partial overlaps exist, materials operate in narrower scope or on different item types.
+**Conclusion:** No material effect fully duplicates an enchantment's core identity. Where partial overlaps exist, materials operate in narrower scope or on different item types. Vault-only materials maintain the same non-overlap principle.
 
 ---
 
@@ -452,31 +574,50 @@ This table shows how material effects scale across tiers for thematically linked
 
 | Theme | Exotic (Q3–Q4) | Greater (Q5–Q6) | Legendary (Q7–Q8) |
 |-------|----------------|------------------|--------------------|
-| **Elemental resist** | Wyrmhide: 1/scene resist any one elemental | Dragon Scales: permanent resist one element | Elder Dragon Scales: permanent resist acid/fire/frost/lightning |
+| **Elemental resist** | Wyrmhide: 1/scene resist any one elemental | Dragon Scales: permanent resist one element; Dragon Hide: 1/scene resist one element (light) | Elder Dragon Scales: permanent resist acid/fire/frost/lightning |
 | **Elemental weapon** | — | Dragon Bone: convert to one element | Elder Dragon Bone: convert to one element + bonus on strong/crit |
 | **Weight reduction** | Chitin/Monster Bone/Darkwood: -1 load | Mithril: -1 load, -1 rigid | Orichalcum: -1 load, -1 rigid + magic synergy |
 | **Anti-magic defense** | Runebark: 1/scene resist spell damage | Lunarite: charmed immune + 1/scene or 1/day spell resist | Dreamweave: psychic resist + frightened immune + condition block |
 | **Nature/wood** | Darkwood: -1 load | Treantwood: Durability save + nature boon | Elderwood: self-repairing + mystic boon + re-roll |
 | **Anti-creature** | Silverroot: +1 boon vs. lycanthropes/undead | — | Aegium: +2 radiant vs. Infernal/Undead; Titanium: +2 vs. Infernal |
-| **Stealth** | — | Phantom-Silk: -1 load + Stealth boon | Dreamweave: -1 load + psychic/mental protection |
-| **Durability** | Dwarf-Steel: 1/day re-roll Durability | Treantwood: 1/day ignore Durability; Adamantite: indestructible | Elderwood: self-repairing; Elder Dragon Scales: 1/day ignore Durability |
-| **Fire specialist** | — | Solarite: fire conversion + burning immune | Infernal Horn: fire conversion + fire resist + anti-Infernal |
+| **Stealth** | — | Phantom-Silk: -1 load + Stealth boon; Shadow Pelt: -1 load + Stealth boon + psychic resist + anti-detection | Dreamweave: -1 load + psychic/mental protection |
+| **Durability** | Dwarf-Steel: 1/day re-roll Durability | Treantwood: 1/day ignore Durability; Adamantite: indestructible | Elderwood: self-repairing; Elder Dragon Scales: 1/day ignore Durability; Primordial Bone: indestructible (absolute) |
+| **Fire specialist** | Radiant Bronze: fire conversion + fire cast boon + cold climate | Solarite: fire conversion + burning immune | Infernal Horn: fire conversion + fire resist + anti-Infernal |
 | **Universal magic** | Meteorite (exotic at Q3 in vault): +1 spell bonus | Meteorite: +1 SP, flexible element, Focus | Orichalcum: +2 SP, flexible element, Focus, enchantment synergy |
+| **Physical defense** | Monster Scales: 1/scene physical resist | Adamantite: indestructible + 1/scene reduce phys by 2 | Titanium: 1/scene reduce phys by 4 + necrotic resist; Primordial Hide: 1/scene reduce phys by 4 + necrotic resist + self-repair |
+| **Ranged weapons** | Vine Wood: +1 WD (ranged only) | — | — |
+| **Primal/apex** | — | — | Primordial Bone: indestructible + ignore 2 AV + nature boon; Primordial Hide: self-repair + reduce phys by 4 + necrotic resist |
 
 ---
 
-## Appendix D — Materials Not Yet in Game Rules
+## Appendix D — Vault Integration Notes
 
-The following materials appear in the Nexus RPG Vault but are not currently listed in `materials.md`. They are noted here for future consideration:
+This appendix tracks which vault materials have been fully analyzed and which remain excluded.
 
-| Material | Vault Quality | Description |
-|----------|--------------|-------------|
-| Dragon Hide (*Drachenhaut*) | Q5–Q6 | Flexible skin between dragon scales; lighter and more flexible than scales, 50% of scale elemental resistance. Natural fit for light armor. |
-| Shadow Pelt (*Schattenfell*) | Q5 | Fur from shadow creatures (shadow panthers, nightmares). Acoustic dampening, shadow-affinity, presence reduction. Dissolves quickly after creature's death. |
-| Radiant Bronze (*Glanzbronze*) | Q3 | Bronze + Solarite dust alloy. Warm golden glow, hard as steel, enhances fire magic. Exclusive to Anutep elite. |
-| Ichor Crystals (*Ichor-Kristalle*) | varies | Crystallized "titan blood" from volcanic zones. Energy storage and magical amplification. Only safely processed in Giant-Forges. |
-| Elemental Stones (*Elementarsteine*) | varies | Crystals charged with elemental energy from Soul Realm seepage. Enable pseudo-magical effects without spellcasting. |
-| Primordial Bone (*Urzeit-Knochen*) | Q7 | Tusks/fangs of apex beasts — the first living creatures. Absolutely unbreakable; can shatter even Adamantite. |
-| Primordial Hide (*Urzeit-Leder*) | Q7 | Skin of apex beasts. Kinetic absorption, self-repair, ageless. Only obtainable after natural death (every few centuries). |
-| Vine Wood (*Rankenholz*) | — | Extremely flexible jungle vine wood with high tension. Preferred material for longbows. |
-| Runebark (*Runenborke*) as Elderwood precursor | — | Already in Exotic tier. Vault describes ley-line-junction bark that stores spells, controlled by druids. |
+### Fully Analyzed Vault Materials (now in main sections)
+
+| Material | German Name | Vault Quality | Placed In |
+|----------|-------------|--------------|-----------|
+| Radiant Bronze | Glanzbronze | Q3 | Section 2.2.1 (Exotic) |
+| Vine Wood | Rankenholz | Q3 | Section 2.2.2 (Exotic) |
+| Elemental Stones | Elementarsteine | Variable | Section 2.2.3 (Exotic) |
+| Dragon Hide | Drachenhaut | Q5–Q6 | Section 3.11 (Greater) |
+| Shadow Pelt | Schattenfell | Q5 | Section 3.12 (Greater) |
+| Primordial Bone | Urzeit-Knochen | Q7 | Section 4.11 (Legendary) |
+| Primordial Hide | Urzeit-Leder | Q7 | Section 4.12 (Legendary) |
+
+### Excluded Vault Material
+
+| Material | German Name | Reason |
+|----------|-------------|--------|
+| Ichor Crystals | Ichor-Kristalle | Early draft in vault — excluded per reviewer request. |
+
+### Vault Materials Already in Game Rules
+
+These appear in both the vault and `materials.md`. Their vault lore was used to inform the mechanical proposals in Sections 3 and 4:
+
+Meteorite, Treantwood, Dragon Bone, Dragon Scales, Deep Iron, Phantom-Silk, Mithril, Solarite, Lunarite, Adamantite, Orichalcum, Celestial Feathers, Elder Dragon Bone, Elder Dragon Scales, Aegium, Eternite, Elderwood, Dreamweave, Titanium, Infernal Horn.
+
+### Runebark / Elderwood Relationship
+
+The vault describes Runebark (*Runenborke*) as ley-line-junction bark that stores spells, controlled by druids. In game rules, Runebark is already in the Exotic tier (Q3–Q4) with spell-damage resistance. Elderwood (Q7–Q8) serves as its legendary-tier upgrade with full mystic synergy.
