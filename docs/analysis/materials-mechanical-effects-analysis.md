@@ -4,7 +4,7 @@
 >
 > **Prerequisite:** [Enchantments & Magic Items — Design Analysis](./enchantments-magic-items-analysis.md). This document picks up the deferred material-properties task from that analysis.
 >
-> **Source caveat:** The Nexus RPG Vault was unavailable during drafting. All proposals are based on the in-game flavor text. Vault lore supersedes if conflicts arise.
+> **Source material:** Worldbuilding lore from the [Nexus RPG Vault](https://nexus-rpg-vault.web.app/(12)-%F0%9F%97%9D%EF%B8%8F-Artefakte/Materialien/) is incorporated throughout and supersedes prior game-rules-only drafts where conflicts arise.
 
 ---
 
@@ -43,10 +43,19 @@ Every material must specify effects per item type where applicable:
 
 If a material doesn't suit a particular item type, that type is omitted.
 
-### 1.4 Talent Harmony Rules
+### 1.4 Protective Design Philosophy
+
+Material effects should **empower the wearer/wielder** rather than debuff enemies. Specifically:
+
+- **Preferred:** "You can ignore condition X", "You gain resistance to Y damage", "You reduce incoming damage by Z"
+- **Avoided:** "Enemies suffer banes", "Enemy spell casting is penalized"
+
+This keeps effects intuitive (the item protects *you*), works consistently regardless of whether the threat targets you specifically or an area, and avoids edge cases with multi-target or area-of-effect abilities.
+
+### 1.5 Talent Harmony Rules
 
 1. Materials grant **item bonuses** or **unnamed effects** — these stack with ability bonuses from talents.
-2. Materials must not replicate a talent's signature ability (e.g., granting crush via talent should remain distinct from crush via material by operating at different scopes).
+2. Materials must not replicate a talent's signature ability.
 3. Where overlap is unavoidable, the material effect should be **weaker than** or **complementary to** the talent, never a replacement.
 
 ---
@@ -60,405 +69,304 @@ These are final and included for comparison only.
 | # | Material | Key Effects | Effect Category |
 |---|----------|-------------|-----------------|
 | 1 | Chitin | Armor/Shield: -1 load | Weight |
-| 2 | Iron | Weapon: +1 boon vs. spirits; Armor/Shield: +1 bane on Mysticism | Creature-specific / Anti-magic |
-| 3 | Monster Bone | Weapon/Armor/Shield: -1 load | Weight |
-| 4 | Monster Scales | Armor/Shield: 1/scene physical resistance | Defense |
+| 2 | Iron | Weapon: +1 boon vs. spirits. Armor/Shield: +1 bane on Mysticism | Anti-spirit |
+| 3 | Monster Bone | Any: -1 load | Weight |
+| 4 | Monster Scales | Armor/Shield: 1/scene resistance to physical damage | Resistance |
 | 5 | Giant Spider Silk | Light Armor: -1 load | Weight |
-| 6 | Silverroot | Weapon/Ammo: +1 boon vs. lycanthropes and undead | Creature-specific |
-| 7 | Runebark | Armor/Shield: 1/scene spell-damage resistance | Defense |
-| 8 | Dwarf-Steel | Any: 1/day re-roll Durability; Heavy Armor: ignore extreme climate | Durability / Utility |
+| 6 | Silverroot | Weapon/Ammo: +1 boon vs. lycanthropes and undead | Anti-creature |
+| 7 | Runebark | Armor/Shield: 1/scene resistance to spell damage | Resistance |
+| 8 | Dwarf-Steel | Any: 1/day re-roll Durability. Heavy Armor: ignore extreme climate penalty | Durability + utility |
 | 9 | Darkwood | Weapon/Shield/Ammo: -1 load | Weight |
-| 10 | Wyrmhide | Armor/Shield: 1/scene elemental resistance (single source) | Defense |
-
-### 2.2 Effect Patterns Established
-
-| Pattern | Examples | Available at |
-|---------|----------|-------------|
-| Load reduction | Chitin, Monster Bone, Darkwood | Q3–Q4 |
-| 1/scene single-damage resistance | Monster Scales, Runebark, Wyrmhide | Q3–Q4 |
-| Creature-type boon | Iron, Silverroot | Q3–Q4 |
-| Durability benefit | Dwarf-Steel | Q3–Q4 |
-| Environmental protection | Dwarf-Steel | Q3–Q4 |
-| Rigid reduction | Mithril | Q5–Q6 |
-| Anti-magic penalty | Iron | Q3–Q4 |
+| 10 | Wyrmhide | Armor/Shield: 1/scene resistance to acid, fire, frost, lightning, or poison | Elemental resistance |
 
 ---
 
-## 3. Greater Materials (Q5–Q6) — Proposed Effects
-
-Each entry includes the proposed mechanical text (formatted for direct insertion into `materials.md`) and a design note explaining the rationale.
+## 3. Greater Materials (Q5–Q6)
 
 ### 3.1 Meteorite
 
-> *Blue-silver metal found in fallen stars. Imbued with natural magical energy. Some cultures revere or fear it due to its otherworldly origin.*
+> *Blue-silver cosmic mineral charged with stellar energy. Universally enhances magic — "Meteorite does not judge, it simply amplifies what you give." Found in the cores of fallen sky-stones, primarily in mountainous regions. Valued by mages, academies, and temples of star gods alike.*
 
-**Proposed effects:**
+**Design notes:** The vault describes Meteorite as universally magic-enhancing (all schools, +1 effectiveness) with a soft glow in darkness. Placed at Q3 in the vault but Q5–Q6 in game rules. Focus on its universal magic amplification and the glow.
 
-- Weapon/Ammo: Damage from this weapon ignores resistance granted by spells or magical effects (innate creature resistances still apply).
-- Armor/Shield: Once per day, when you are targeted by a spell, the caster suffers +1 bane on their casting roll against you.
-- Spell Catalyst: Once per day, when you roll a blunder on a spell casting roll, you can treat it as a normal failure instead.
-
-**Design notes:**
-- **Identity:** Anti-magic / spell disruption. Meteorite disrupts the magical field around it.
-- **Weapon effect** is passive and distinct from any enchantment (no enchantment bypasses magical resistances).
-- **Armor/Shield effect** is reactive (1/day, triggered by enemy action), not active.
-- **Catalyst effect** prevents the worst-case casting outcome (mishap/penance) — high-value but 1/day.
-- **Talent check:** No overlap with any talent. Complements Battle Mage (who benefits from safer casting) without replicating Disciplined Fighter's re-roll.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Spell Catalyst** | Your Spell Power increases by +1 (item bonus). The catalyst emits dim light in melee range. |
+| **Weapon** | Once per day, when you hit a creature with this weapon, you can choose to deal your weapon damage as any one elemental damage type (fire, frost, lightning, or acid) instead of its normal type. |
+| **Wearable** | You gain +2 max Focus (item bonus). The item emits dim light in melee range. |
 
 ---
 
 ### 3.2 Treantwood
 
-> *Harvested from awakened trees. Tough and slightly regenerative, reacts to magic.*
+> *Wood from awakened tree-beings (Treants) — given only as a voluntary gift, never taken by force. Stolen Treantwood becomes cursed. The material regenerates small damage over time and reacts to nature magic. Druids wield staves of Treantwood that "never break."*
 
-**Proposed effects:**
+**Design notes:** The vault emphasizes regeneration, nature-magic enhancement (+2), and the living connection. Focus on self-repair and nature magic synergy.
 
-- Any: Once per scene, you can ignore a failed Durability check for this item.
-- Armor/Shield: During a short break, you regain +2 additional HP while this item is equipped.
-- Weapon/Spell Catalyst: This item automatically removes the damaged property from itself after a night's rest.
-
-**Design notes:**
-- **Identity:** Organic regeneration. The living wood heals itself and its bearer.
-- **Durability effect** directly upgrades Dwarf-Steel's 1/day re-roll (ignoring a failure is strictly better, justified by higher tier).
-- **Armor +2 HP during short break** is a modest healing boost that doesn't compete with Second Wind (combat Quick Action) or any healing enchantment (none exist on armor). It rewards rest, fitting the regenerative theme.
-- **Self-repair** is a passive durability benefit — thematic for living wood that slowly regrows.
-- **Talent check:** Second Wind (Fortitude) is an in-combat Quick Action; Treantwood's healing is during rests. No conflict.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | Once per day, you can ignore a failed Durability check for this item. |
+| **Spell Catalyst** | While casting nature-tradition mystic spells, you gain +1 boon on the casting roll. |
+| **Weapon** | This weapon gains the reach property. If it already has reach, it gains +1 weapon damage (item bonus) instead. |
+| **Shield** | Once per scene, when you successfully block an attack, this shield regains 1 lost Durability die. |
 
 ---
 
 ### 3.3 Dragon Bone
 
-> *Bones from dragons carry elemental properties tied to their nature. Very strong and magically reactive. Used in powerful weapons or armor.*
+> *Bones from true, intelligent dragons — their marrow still carries the elemental nature of the dragon (fire, frost, lightning, or acid). A Dragon Bone weapon is a symbol of ultimate dominance: the wielder defeated one of the most powerful creatures in existence.*
 
-**Proposed effects:**
+**Design notes:** The vault lists +2 elemental damage for weapons, +1 elemental resistance for armor, and dragon authority (intimidation vs. reptilian creatures). Choose one element at item creation.
 
-- Choose fire, frost, lightning, or acid when this item is crafted.
-- Weapon/Ammo: Your attacks with this weapon deal the chosen damage type instead of physical damage.
-- Armor/Shield: You gain resistance against the chosen damage type.
-
-**Design notes:**
-- **Identity:** Elemental attunement. The dragon's elemental nature persists in its bones.
-- **Weapon damage-type conversion** is passive and unique — no enchantment changes base damage type. Enchantments (Flaming, Sacred, etc.) *add* elemental damage via Quick Action; Dragon Bone *replaces* the base type passively. These combine well: a Flaming Dragon Bone (fire) sword deals all fire damage.
-- **Armor/Shield resistance** is permanent (single type), stronger than Wyrmhide (1/scene, any elemental). Appropriate for Q5–Q6 because it's locked to one element chosen at crafting.
-- **Talent check:** No talent grants permanent elemental resistance or damage-type conversion.
-- **Enchantment check:** of Resistance (wearable) grants the same effect but in a different equipment slot.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon/Ammo** | Choose one element (fire, frost, lightning, or acid) when this item is created. This weapon deals its chosen element as its damage type instead of physical damage. |
+| **Heavy Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. You gain resistance against damage of the chosen element. |
+| **Shield** | Choose one element (fire, frost, lightning, or acid) when this item is created. Once per scene, when you take damage of the chosen element, you can reduce that damage by your shield's AV. |
 
 ---
 
 ### 3.4 Dragon Scales
 
-> *Large scales from dragons. Extremely durable and elementally attuned.*
+> *Legendary hardness with elemental attunement. Scales from true dragons, lighter than metal, passed down through noble families for centuries. The material provides protection against one specific element matching the dragon's nature.*
 
-**Proposed effects:**
+**Design notes:** The vault emphasizes element-specific resistance and lightness. Effect is armor-focused with elemental protection.
 
-- Choose fire, frost, lightning, or acid when this item is crafted.
-- Armor: -1 load (min. 0). You gain resistance against the chosen damage type.
-- Shield: You gain resistance against the chosen damage type.
-
-**Design notes:**
-- **Identity:** Defensive elemental plating. Scales are armor-focused where Bone is weapon-focused.
-- **Differentiator from Dragon Bone:** Scales add -1 load on armor (the natural scale structure is lighter than solid bone), making them the defensive counterpart.
-- **No weapon effect** — scales are primarily defensive materials in the fiction. If a weapon is needed, use Dragon Bone instead.
-- **Talent check:** No overlap. -1 load doesn't replicate any talent.
-- **Enchantment check:** Distinct from Tough enchantment (which is a reactive 1/day choice, not permanent resistance).
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Light Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. You gain resistance against damage of the chosen element. -1 load (min. 0). |
+| **Heavy Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. You gain resistance against damage of the chosen element. |
+| **Shield** | Choose one element (fire, frost, lightning, or acid) when this item is created. You gain resistance against damage of the chosen element. |
 
 ---
 
 ### 3.5 Deep Iron
 
-> *Heavy ore from deep underground. Strong against both physical and magical attacks.*
+> *Heavy ore from the deepest mines, where earth-magic saturates the stone. Dual-resistant against physical blows and magical attacks. Twice the weight of steel, shaped only in lava-forges by dwarf smiths. The material of fortress gates and unbreachable vaults.*
 
-**Proposed effects:**
+**Design notes:** The vault describes dual resistance (physical + magical), extreme weight, and earth-magic resonance. The material adds weight but provides outstanding protection. Distinct from enchantments because the effect is a passive resistance rather than an active ability.
 
-- Weapon: Attacks with this weapon gain the crush property. If the weapon already has crush, instead ignore all of the target's AV on a hit (rather than half).
-- Heavy Armor/Shield: Once per scene, when you take damage from any source, you can gain resistance against that damage.
-
-**Design notes:**
-- **Identity:** Raw armor-piercing weight (weapon) and impenetrable density (armor/shield).
-- **Weapon crush grant** is a new pattern — no other material adds a weapon property. This creates a meaningful choice: Deep Iron makes any weapon better against armored foes. The crush upgrade (full AV ignore) is powerful but requires already having crush.
-- **Armor/shield 1/scene resistance** upgrades the Exotic-tier pattern (Monster Scales = physical only, Runebark = spell only). Deep Iron covers *any* damage source, appropriate for Q5–Q6 "strong against physical and magical."
-- **Heavy Armor only** — Deep Iron is too dense for light armor.
-- **Talent check:** Mace Mastery R3 lets you ignore AV entirely (Quick Action, once per turn). Deep Iron's crush upgrade is passive but requires the weapon to already have crush. These complement — Mace Mastery is broader but resource-costed, Deep Iron is narrower but free.
-- **Enchantment check:** Tough enchantment uses X/day; Deep Iron uses 1/scene. Different resource model, different item slot (material vs. enchantment on same item).
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon** | This weapon gains the crush property. If it already has crush, it gains +1 weapon damage (item bonus) instead. +1 load. |
+| **Heavy Armor** | Once per scene, when you take damage from a spell or magical ability, you can gain resistance against that damage. +1 load. |
+| **Shield** | Once per scene, when you take damage from any source, you can gain resistance against that damage. +1 load. |
 
 ---
 
 ### 3.6 Phantom-Silk
 
-> *Made from spectral spider silk. Very light, hard to detect, and partially intangible.*
+> *Silk from spectral spiders in the Soul Realms — nearly weightless, hard to see, and partially intangible. Absorbs light and makes the wearer's outline blur and shimmer like a ghost. Prized by thieves, assassins, and spies. Once per day, the material can briefly phase through solid walls.*
 
-**Proposed effects:**
+**Design notes:** The vault highlights stealth bonuses (+2), light absorption, weightlessness, and ghost-resistance. Focus on stealth and weight reduction without duplicating the silent enchantment.
 
-- Light Armor: -1 load (min. 0). This armor is translucent and nearly invisible while worn, allowing it to be concealed under normal clothing without detection.
-- Wearable: -1 load (min. 0). Once per scene, when you are hit by an attack, you can force the attacker to re-roll their attack and use the lower result.
-
-**Design notes:**
-- **Identity:** Ghostly concealment and partial incorporeality.
-- **Invisible armor** is a unique utility benefit — no enchantment or talent does this. It enables social infiltration and undercover scenarios without sacrificing protection.
-- **Wearable re-roll** represents the silk's intangible nature causing attacks to partially phase through. It's reactive (triggered by enemy hit, 1/scene), not active.
-- **No heavy armor** — spectral silk doesn't suit heavy plate.
-- **Talent check:** Light Armor Mastery R1 (free Evade 1/scene) is mechanically different — Evade forces the attacker to target Dodge, while re-roll simply makes them re-roll. These stack naturally if both trigger on the same attack.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Light Armor** | -1 load (min. 0). You gain +1 boon on Stealth rolls to hide or move silently. |
+| **Wearable** | You gain +1 boon on Stealth rolls to hide or move silently. |
+| **Shield** | -1 load (min. 0). Once per scene, when a Spirit creature targets you with an attack or ability, you can gain resistance against the damage. |
 
 ---
 
-### 3.7 Mithril
+### 3.7 Mithril *(already defined — no changes)*
 
-> *Already has effects.* Armor/Shield: -1 load (min. 0). Reduce the item's rigid property by 1 (min. 0).
+> *Silver-blue metal, feather-light with tremendous hardness. Found in "sky-veins" of the highest peaks and floating islands.*
 
-No changes needed.
+| Item Type | Current Effect |
+|-----------|---------------|
+| **Armor/Shield** | -1 load (min. 0). Reduce rigid by 1 (min. 0). |
 
 ---
 
 ### 3.8 Solarite
 
-> *Red-gold crystal found on celestial mountain peaks. Mixed with bronze in a ritual to create a glowing, heat-reactive alloy. Generates intense heat when moved quickly.*
+> *Red-gold sun crystal that radiates constant heat. Rapid movement ignites it; strong impact causes explosion. Sacred to the Anutep elves — a "sun-drop" gifted by their god Atep. Possession by non-Anutep is cause for war. Mixed with bronze to form the alloy Radiant Bronze.*
 
-**Proposed effects:**
+**Design notes:** The vault describes fire enhancement (+1 bonus), heat radiation, and ignition on fast movement. Focus on fire damage and heat-related protection for the wearer.
 
-- Weapon/Ammo: Your attacks with this weapon deal fire damage instead of physical damage. This weapon sheds dim light in melee range while wielded.
-- Armor/Shield: You gain resistance against fire damage. You are immune to the burning condition.
-- Spell Catalyst: Your spells that deal fire damage ignore the target's resistance to fire damage.
-
-**Design notes:**
-- **Identity:** Solar fire specialization. Where Dragon Bone lets you *choose* an element, Solarite is locked to fire but provides *deeper* fire synergy.
-- **Weapon fire conversion** with built-in light emission — thematic for a heat-reactive alloy that glows when moved.
-- **Burning immunity** on armor is a unique defensive passive not found on any enchantment. It specifically counters fire-based monsters and traps.
-- **Catalyst fire-resistance bypass** rewards fire-focused casters against resistant targets. No enchantment does this.
-- **Talent check:** No talent grants burning immunity or fire resistance bypass.
-- **Enchantment check:** Flaming enchantment *adds* fire damage via Quick Action; Solarite *converts* base damage to fire passively. Distinct activation and effect.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon/Ammo** | This weapon deals fire damage instead of physical damage. The weapon emits dim light in melee range. |
+| **Spell Catalyst** | While casting spells that deal fire damage, you can add +2 fire damage (ignoring AV) to the spell's damage on a hit. The catalyst emits dim light in melee range. |
+| **Heavy Armor** | You are immune to the burning condition. The armor emits dim light in melee range. |
+| **Wearable** | You are immune to the burning condition. The item emits dim light in melee range. |
 
 ---
 
 ### 3.9 Lunarite
 
-> *Deep blue crystal found in underworld caverns. Absorbs magical energy. Used in armor to resist spells or in restraints to suppress magic.*
+> *Deep blue moon crystal — the dark counterpart to Solarite. Absorbs warmth and magical energy. Suppresses the wearer's own magic, but shields against magical tracking and mental influence. Used in prisons, chains, and restraints to render mages helpless. "The great equalizer — the mightiest archmage is just a mortal when Lunarite forms their chains."*
 
-**Proposed effects:**
+**Design notes:** The vault describes magic suppression of the wearer, protection from magical tracking/influence, and magic absorption. Focus on anti-magic protection for the wearer rather than debuffing enemies. The item protects the wearer's mind and deflects magical threats.
 
-- Weapon/Ammo: Creatures hit by this weapon suffer +1 bane on their next spell casting roll or concentration check. This effect can only trigger once per turn.
-- Armor/Shield: Once per scene, when you are targeted by a spell, you can add your worn armor's AV bonus to your Resist against that spell. If you don't wear armor, add +2 to your Resist instead.
-- Spell Catalyst: Creatures within close range of you suffer +1 bane on concentration checks to maintain spells.
-
-**Design notes:**
-- **Identity:** Magic suppression and absorption. Lunarite is the anti-caster material.
-- **Weapon anti-casting** is passive (triggers on hit, 1/turn cap) and distinct from any enchantment. It creates a tactical role: melee fighters with Lunarite weapons become spell-disruptors.
-- **AV-to-Resist conversion** is a completely new mechanic. It rewards heavy armor users against spells (thematic: thick Lunarite armor absorbs more magic) without granting a flat Resist bonus (which would overlap with of Willpower).
-- **Catalyst concentration disruption** is a passive aura — no enchantment provides anti-magic auras.
-- **Talent check:** No talent disrupts enemy spellcasting passively. Strong Mind (Fortitude) protects the user's own mind; Lunarite suppresses *enemy* casting. Complementary.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Heavy Armor** | You are immune to the charmed condition. Once per day, when you take damage from a spell, you can gain resistance against that damage. |
+| **Shield** | Once per scene, when you take damage from a spell or magical ability, you can gain resistance against that damage. |
+| **Wearable** | You are immune to the charmed condition. You cannot be detected or tracked by magical means (divination, scrying, etc.). |
 
 ---
 
 ### 3.10 Adamantite
 
-> *Extremely hard and dense metal. Almost impossible to break or bend.*
+> *Silver-white metal of near-indestructible hardness from the deepest earth layers — the "roots of the world." Resists physical and magical destruction alike. Blades keep their edge for centuries; immune to rust, acid, and decay. The ancient dwarf clans who knew how to mine it are lost — only finished heirlooms remain.*
 
-**Proposed effects:**
+**Design notes:** The vault describes practical immunity to physical damage, resistance to magical destruction, centuries-long sharpness, and immunity to rust/acid/decay. Focus on indestructibility and the sharpness/penetration that comes from ultimate hardness.
 
-- Any: This item is indestructible. Failed Durability checks have no effect on it.
-- Weapon: When you attack an object, structure, or construct, ignore its AV entirely.
-
-**Design notes:**
-- **Identity:** Absolute physical permanence. Adamantite doesn't break and breaks everything else.
-- **Indestructibility** is passive and unique — no enchantment or material grants this. It eliminates durability management entirely for the item, which is a significant practical benefit (especially for shields that roll Durability frequently).
-- **Anti-object AV bypass** is situational (objects/structures/constructs only) but very impactful when it matters — breaching doors, destroying constructs, sundering enemy equipment.
-- **No combat damage bonus** — Adamantite's hardness is about not breaking, not hitting harder against creatures.
-- **Talent check:** No talent grants item indestructibility. Shield Mastery R3 gives +1 boon on Durability re-rolls — irrelevant when the item can't fail Durability at all (complementary: frees the shield user from worrying about durability).
-- **Enchantment check:** No enchantment grants indestructibility or anti-object AV bypass.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | This item is practically indestructible. It never requires Durability checks and cannot be broken by non-magical means. |
+| **Weapon** | On a strong or critical hit, you can choose to ignore 1 AV of the target. |
+| **Heavy Armor** | Once per scene, when you take physical damage, you can reduce that damage by 2 (after applying AV). |
 
 ---
 
-## 4. Legendary Materials (Q7–Q8) — Proposed Effects
-
-Legendary materials provide two or more distinct benefits per item type, reflecting their artifact-tier rarity.
+## 4. Legendary Materials (Q7–Q8)
 
 ### 4.1 Orichalcum
 
-> *Light-blue metal that is nearly weightless. Enchanted during forging to retain high flexibility and hardness. Very rare and extremely valuable.*
+> *Gold saturated with pure magic over aeons at ley-line intersections. Red to brass-colored with an inner shimmer, heavier than normal gold, harder through magical saturation. Conducts and potentiates magic like no other material — enchantments placed on it last forever. Material for artifacts that shape the fate of empires.*
 
-**Proposed effects:**
+**Design notes:** The vault emphasizes magical conductance, spell potentiation, and perfect energy transfer. Focus on magic enhancement (broadly) and enchantment synergy.
 
-- Any: -2 load (min. 0).
-- Weapon: This weapon's heavy property is removed. If it has no heavy property, you instead gain +1 boon on attacks with this weapon once per turn.
-- Armor: Reduce the rigid property by 2 (min. 0). Reduce the heavy property requirement by one step (e.g., heavy (d8) becomes heavy (d6); heavy (d6) is removed entirely).
-- Shield: Reduce the rigid property by 2 (min. 0).
-
-**Design notes:**
-- **Identity:** Ultimate weight reduction. The definitive upgrade over Mithril (-1 load, -1 rigid at Q5–Q6).
-- **-2 load** is unprecedented and meaningful — a plate harness (load 4) becomes load 2.
-- **Weapon heavy removal** makes greataxes and mauls viable for low-Strength characters; the alternative +1 boon for non-heavy weapons is still valuable.
-- **Armor rigid -2 and heavy reduction** enables heavy armor to feel like light armor mobility-wise, which is appropriate for Q7–Q8 pricing.
-- **Talent check:** Heavy Armor Mastery R1 reduces rigid by 1; Orichalcum reduces by 2. These stack to -3 rigid total, making even plate harness (rigid 3) completely mobile. This is powerful but appropriate for the investment (Q7–Q8 material + talent ranks).
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Spell Catalyst** | Your Spell Power increases by +2 (item bonus). |
+| **Weapon** | Once per scene, when you hit a creature, you can choose to deal your weapon damage as any one elemental damage type (fire, frost, lightning, acid, radiant, or necrotic) instead of its normal type. |
+| **Armor/Shield** | -1 load (min. 0). Reduce rigid by 1 (min. 0). Once per day, when an enchantment on any of your equipped items would expend a daily use, you can choose to not expend it. |
+| **Wearable** | You gain +4 max Focus (item bonus). |
 
 ---
 
 ### 4.2 Celestial Feathers
 
-> *Fallen feathers from divine beings. Extremely light and retains limited flight or levitation properties.*
+> *Fallen feathers from divine beings — angels, celestial messengers, mythic birds. Practically weightless, self-luminous, and indestructible. Retain the flight and levitation properties of their original bearers. A passive aura repels lesser undead and low-rank demons. Sacred relics and symbols of power.*
 
-**Proposed effects:**
+**Design notes:** The vault describes levitation/flight, divine protection aura (repels lesser undead/demons), lightness, and self-luminance. Focus on fall-protection, movement, and divine protection.
 
-- Any: -1 load (min. 0). You don't take damage from falling, regardless of distance.
-- Light Armor/Wearable: Additionally, once per day, you can fly up to a short distance as part of your Movement. This flight lasts until the end of your turn.
-- Shield: Additionally, allies within melee range of you also don't take damage from falling.
-
-**Design notes:**
-- **Identity:** Divine lightness and flight. The only material in the game that grants flight.
-- **No fall damage** is passive and unique. It opens vertical exploration without trivializing it (you can survive falls but can't fly continuously).
-- **1/day flight** is a reactive utility — short distance, end-of-turn duration. Enough to cross a gap or reach a ledge, not enough to bypass encounters.
-- **Shield ally protection** extends the fall-safety aura — thematic for divine protection.
-- **Talent check:** Athletic Movement R3 treats falls as one category lower; Celestial Feathers eliminates fall damage entirely. Stronger but at Q7–Q8 cost.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | -1 load (min. 0). You never take falling damage. The item emits dim light in melee range. |
+| **Light Armor** | You gain +1 Movement per turn. |
+| **Shield** | Once per scene, when a Spirit or Undead creature hits you with an attack, you can gain resistance against that damage. |
+| **Wearable** | Once per day, you can levitate up to a short distance vertically. You hover for a short duration (about 1 minute) before descending gently. |
 
 ---
 
 ### 4.3 Elder Dragon Bone
 
-> *Fossilized remains of ancient dragons. Incredibly strong and still radiates elemental energy.*
+> *Fossilized remains of primordial dragons (5000+ years old), preserved in magically saturated environments — dragon graves, elemental caverns, divinely sealed vaults. The marrow still radiates immense elemental energy. "Destiny weapons" — often found through prophecy.*
 
-**Proposed effects:**
+**Design notes:** The vault describes extreme elemental charge, weapon properties (+2 element damage), and intimidation vs. reptilian creatures. Upgrade from Dragon Bone with broader, stronger effects.
 
-- Choose fire, frost, lightning, or acid when this item is crafted.
-- Weapon/Ammo: Your attacks with this weapon deal the chosen damage type instead of physical damage. On a critical hit, the target also suffers the associated condition for a short duration — burning (4) for fire, slowed for frost, briefly stunned for lightning, or bleeding (4) for acid.
-- Armor/Shield: You gain resistance against two chosen damage types (from fire, frost, lightning, and acid).
-- Spell Catalyst: Spells you cast that deal the chosen damage type ignore the target's resistance to that damage type.
-
-**Design notes:**
-- **Identity:** Stronger Dragon Bone. Fossils contain concentrated elemental energy from ancient dragons.
-- **Weapon** adds a condition trigger on critical hit (passive, no resource cost, but only on criticals). This upgrades Dragon Bone (damage-type change only) with a meaningful but unreliable bonus.
-- **Armor/Shield dual resistance** upgrades Dragon Bone's single-element resistance. Two types from four is a meaningful Q7–Q8 power increase.
-- **Catalyst resistance bypass** for the chosen element rewards specialized casters. No enchantment provides this.
-- **Talent check:** No talent grants elemental conditions on critical hits. Axe Mastery R2 inflicts bleeding on strong/critical — different trigger scope and weapon type.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon/Ammo** | Choose one element (fire, frost, lightning, or acid) when this item is created. This weapon deals its chosen element as its damage type instead of physical damage. On a strong or critical hit, deal +2 bonus damage of the chosen element (ignoring AV). |
+| **Heavy Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. You gain resistance against the chosen element. Once per scene, when you take damage from another element, you can also gain resistance against that damage. |
+| **Spell Catalyst** | Choose one element (fire, frost, lightning, or acid) when this item is created. While casting spells that deal the chosen element's damage, you can add +2 damage of the chosen element (ignoring AV) on a hit. |
 
 ---
 
 ### 4.4 Elder Dragon Scales
 
-> *Rare, hardened scales from elder dragons. Strongly resistant to most elemental forces.*
+> *Scales from primordial dragons (5000+ years). Near-absolute elemental immunity. Self-repairing — scratches heal in a day, cracks in a week. Adaptive hardness that grows stronger against powerful attacks. Only enough scales exist for one armor per era. "The wearer is considered the avatar of a god."*
 
-**Proposed effects:**
+**Design notes:** The vault describes near-immunity to one element, self-repair, and adaptive hardness. Upgrade from Dragon Scales by providing broader multi-element protection and self-repair.
 
-- Armor: -1 load (min. 0). You gain resistance against fire, frost, lightning, and acid damage.
-- Shield: You gain resistance against fire, frost, lightning, and acid damage.
-
-**Design notes:**
-- **Identity:** Ultimate elemental defense. The definitive upgrade from Dragon Scales (one element) to all four.
-- **All-elemental resistance** is powerful but purely defensive and appropriate for Q7–Q8. It protects against the four most common magical damage types while leaving necrotic, psychic, radiant, poison, and blast uncovered.
-- **Armor load reduction** continues the Dragon Scales pattern of scales being lighter than solid materials.
-- **Talent check:** No talent grants broad elemental resistance. Body of Bronze R3 grants physical resistance while unarmored — different scope and condition.
-- **Enchantment check:** of Resistance (wearable) grants one damage type. Elder Dragon Scales cover four types but only on armor/shields.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Light Armor** | You gain resistance against acid, fire, frost, and lightning damage. -1 load (min. 0). |
+| **Heavy Armor** | You gain resistance against acid, fire, frost, and lightning damage. Once per day, you can ignore one failed Durability check for this item. |
+| **Shield** | You gain resistance against acid, fire, frost, and lightning damage. |
 
 ---
 
 ### 4.5 Aegium
 
-> *White-gold metal from the High Realms. Said to be used by divine beings. Very durable and carries innate divine magic.*
+> *White-gold of the divine realms — "god-dust" that falls during rare stellar conjunctions or manifests where divine beings touched the earth. Radiates gentle warmth, a harmonious tone when struck, and constant soft light. Neutralizes poisons and diseases on contact. A sacred energy field reinforces blades. Burns unworthy bearers — only lent to "heroes of light" on sacred missions.*
 
-**Proposed effects:**
+**Design notes:** The vault describes neutralization of poisons/diseases, divine weapon reinforcement, self-cleansing, and worthy-bearer selection. Focus on divine protection (cleansing) and resilience.
 
-- Weapon/Ammo: Your attacks with this weapon deal radiant damage instead of physical damage. Undead and Spirit (Infernal) creatures hit by this weapon can't use regeneration or healing abilities until the end of their next turn.
-- Armor/Shield: You gain resistance against necrotic and radiant damage. Once per day, when damage would reduce you to 0 HP, you are reduced to 1 HP instead.
-- Spell Catalyst: Mystic spells you cast that restore HP restore +2 additional HP.
-
-**Design notes:**
-- **Identity:** Divine metal. Anti-evil, life-preserving, holy.
-- **Weapon radiant conversion + anti-regeneration** makes this the ultimate anti-undead weapon. The regeneration suppression is passive and unique — no enchantment does this.
-- **Armor 1/day death prevention** is a powerful reactive effect appropriate for divine Q7–Q8 metal. It's strictly reactive (triggered by lethal damage) and 1/day.
-- **Catalyst +2 HP healing** is a modest passive bonus for mystic healers. No enchantment boosts healing output directly.
-- **Talent check:** Hard to Kill R2 (ignore one Wound/day) operates at the Wound level, not HP level. These are complementary — Aegium prevents reaching 0 HP, Hard to Kill survives the Wound after. Both can be useful in the same combat but protect against different failure points.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | The item emits dim light in melee range. You are immune to the poisoned and diseased conditions. |
+| **Weapon** | On a hit against a Spirit (Infernal) or Undead creature, deal +2 radiant damage (ignoring AV). |
+| **Heavy Armor** | Once per day, when you would be reduced to 0 HP, you are reduced to 1 HP instead. |
+| **Shield** | Once per scene, when you take necrotic or poison damage, you can gain resistance against that damage. |
 
 ---
 
 ### 4.6 Eternite
 
-> *Ocean-blue crystal, most rare of the three celestial materials. Shaped into dark-blue metal with star-like patterns inside. Highly magical and used for powerful artifacts.*
+> *Cosmic crystal from shattered moons or remnants of astral entities. Midnight-blue to black with star-like points of light sparkling inside. Thermally immune — never hot or cold. Creates gravity effects (makes things lighter or heavier). Draws energy from surroundings, making nearby rooms colder. Enables the construction of "impossibilities" — flying throne rooms, hovering fortresses.*
 
-**Proposed effects:**
+**Design notes:** The vault describes gravity manipulation, thermal immunity, and energy drain. Focus on weight manipulation and the gravity/levitation theme.
 
-- Weapon: Your attacks with this weapon deal your choice of radiant or psychic damage (chosen per attack) instead of physical damage.
-- Armor/Shield: You gain resistance against psychic damage. Once per day, when you fail a roll to resist a magical effect, you can re-roll it.
-- Spell Catalyst: Reduce the Focus cost of all spells you cast using this catalyst by 1 (minimum 0).
-
-**Design notes:**
-- **Identity:** Pure magical potency. The ultimate spellcaster material.
-- **Weapon dual-type choice** provides tactical flexibility — choose radiant vs. undead, psychic vs. armored foes. No enchantment offers per-attack damage type selection.
-- **Armor re-roll vs. magic** is a 1/day reactive defense against magical effects (charms, curses, etc.). Distinct from Strong Mind R1 (re-roll vs. mind effects 1/scene) — Eternite covers *all* magical effects, not just mental ones, but is 1/day instead of 1/scene.
-- **Catalyst Focus reduction** is the signature effect. Since spells cost Focus equal to twice their rank (rank 1 = 2, rank 2 = 4, etc.), this -1 saves one Focus per spell cast. Rank 0 spells already cost 0 Focus and remain unchanged. No enchantment reduces Focus costs (Infused *recovers* Focus, Storing lets you *skip* Focus for one spell/day). This is a distinct and powerful passive for Q7–Q8.
-- **Talent check:** Inexhaustible Mind (Arcana) provides Focus recovery on natural rolls; Eternite reduces costs. These synergize without overlapping.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | -1 load (min. 0). You are immune to extreme heat and extreme cold effects during travel. |
+| **Spell Catalyst** | Your max Focus increases by +4 (item bonus). Once per day, when you cast a spell, you can reduce that spell's Focus cost by 2 (min. 0). |
+| **Heavy Armor** | Reduce rigid by 2 (min. 0). |
+| **Wearable** | Once per day, you can levitate yourself or one creature you touch up to a short distance vertically. The target hovers for a short duration (about 1 minute) before descending gently. |
 
 ---
 
 ### 4.7 Elderwood
 
-> *Wood from ancient magical trees. Exceptionally strong and responds to magical input.*
+> *Wood from ancient magical trees whose roots tap deep ley-line networks — a step below the legendary Worldwood. Exceptionally strong and magically responsive. Druids consider it a sacred gift. Worldbuilding places it as the older, more powerful cousin of Treantwood.*
 
-**Proposed effects:**
+**Design notes:** The vault positions Elderwood as a plant material between Treantwood (Q5) and Worldwood (Q8). Focus on enhanced nature-magic synergy and living resilience, scaling up from Treantwood.
 
-- Any: -1 load (min. 0). This item automatically removes the damaged property from itself at the end of each scene.
-- Armor: Additionally, reduce the rigid property by 1 (min. 0).
-- Spell Catalyst: Additionally, once per scene, you can add +1 boon to a spell casting roll when using this catalyst.
-
-**Design notes:**
-- **Identity:** Living ancient wood — self-repairing, magically responsive, light.
-- **Auto-repair per scene** is a powerful passive durability benefit, upgrading Treantwood's night-rest self-repair to scene-level frequency. Appropriate for Q7–Q8.
-- **Armor rigid reduction** reflects the wood's flexibility. Stacks with Mithril-style benefits if combined (though you can't combine two materials).
-- **Catalyst +1 boon** (1/scene) is a reliable casting boost. No enchantment provides a boon on casting rolls (Stabilizing provides re-rolls, which is different).
-- **Talent check:** No talent grants casting boons from equipment. Disciplined Archer and Disciplined Fighter grant re-rolls; a boon is mechanically distinct.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Any** | This item never requires Durability checks and cannot be broken by non-magical means. |
+| **Spell Catalyst** | While casting mystic spells, you gain +1 boon on the casting roll. Once per scene, when you fail a mystic spell casting roll, you can re-roll that test. |
+| **Weapon** | This weapon gains the reach property. If it already has reach, it gains +2 weapon damage (item bonus) instead. |
+| **Shield** | Once per scene, when you are hit by an attack, you can gain resistance against that damage. The shield regains 1 lost Durability die after a night's rest spent in natural surroundings. |
 
 ---
 
 ### 4.8 Dreamweave
 
-> *Fabric spun from magical dreams. Shifts in form slightly and resists mental or illusion magic.*
+> *Fabric spun from the essence of magical dreams — not physical fibers, but crystallized dream-stuff. Shifts color with the wearer's mood, flows as if underwater, and makes no sound. Provides protection against mental influence and illusion magic. The wearer always has lucid dreams and can resist fear, charm, and confusion.*
 
-**Proposed effects:**
+**Design notes:** The vault describes mental resistance (thought-reading, charm, sleep, fear, illusions), formshifting appearance, silence, and dream-resonance. Focus on mental/psychic protection for the wearer.
 
-- Light Armor/Wearable: You gain resistance against psychic damage. You gain +1 boon on all rolls to resist charm, fear, confusion, and illusion effects.
-- Shield: You gain +1 boon on all rolls to resist charm, fear, confusion, and illusion effects. Once per day, when you fail such a roll, you can choose to succeed instead.
-
-**Design notes:**
-- **Identity:** Dream protection. Mental resilience against illusion and psychic assault.
-- **Psychic resistance** is permanent and appropriate for Q7–Q8 dream-material. The only other source of psychic resistance is Strong Mind R3 (a Rank 3 talent) or of Resistance (wearable enchantment, single type). These operate in different equipment slots.
-- **+1 boon on mental saves** is passive and broad — covers four effect categories. This is additive with Strong Mind R1 (re-roll 1/scene) and of Pure Thought (immunity to specific effects). The boon makes resistance more reliable without granting immunity.
-- **Shield 1/day auto-succeed** is a powerful reactive failsafe for the worst mental effects. Limited to 1/day and only on failed rolls.
-- **Talent check:** Strong Mind R1 (re-roll) + Dreamweave (+1 boon) = very reliable mental defense. This is intentional synergy, not overlap — the talent provides a re-roll, the material makes the roll better.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Light Armor** | -1 load (min. 0). You gain resistance against psychic damage. You are immune to the frightened condition. |
+| **Wearable** | You gain resistance against psychic damage. You are immune to the frightened condition. |
+| **Shield** | Once per scene, when an effect would inflict the charmed, confused, dazed, frightened, or stunned condition on you, you can choose to not suffer that condition. |
 
 ---
 
 ### 4.9 Titanium
 
-> *Magenta metal with glowing edges. Found where magical rifts meet the Lower Realms. Naturally resists impact and holds an ambient magical aura.*
+> *Magenta metal that "grows" at reality rifts to the Lower Realms (death-realms). Surrounded by a thin magenta force field. Absorbs shock and impact. Resonates with death-realm energy — amplifies demonic magic but weakens divine magic. Prolonged exposure causes nightmares, aggression, and eventually corruption. Paradoxically effective as both demon-hunting and demon-empowering equipment.*
 
-**Proposed effects:**
+**Design notes:** The vault describes shock absorption, force field, demonic resonance, and anti-divine properties. Focus on physical impact absorption and the dark resilience theme while keeping the corruption trade-off as flavor.
 
-- Any: +1 boon on all Durability checks for this item.
-- Weapon: This weapon emits dim light in melee range. Damage from this weapon bypasses resistance granted by spells or magical effects (innate creature resistances still apply).
-- Heavy Armor/Shield: Once per scene, when you take damage from any source, you can gain resistance against that damage. You are unaffected by extreme temperatures (no rolls required for extreme heat or cold during travel or exploration).
-
-**Design notes:**
-- **Identity:** Rift-forged impact resistance with ambient magic. Titanium is the Legendary upgrade of both Deep Iron (defense) and Meteorite (anti-magic).
-- **Durability boon** reflects the metal's impact resistance — simple, passive, always useful.
-- **Weapon magic-resistance bypass** upgrades Meteorite's weapon effect at higher tier. Both pierce magical protections, which is thematically consistent for rift-metal.
-- **Armor/Shield 1/scene resistance** matches Deep Iron's effect (appropriate — same defensive niche, higher tier also grants environmental protection).
-- **Temperature immunity** is a passive utility bonus — upgrades Dwarf-Steel (which only covers one extreme on heavy armor) to cover both extremes on any applicable item type.
-- **Talent check:** Explorer's Tenacity (Fortitude) covers environmental hazards via re-rolls; Titanium removes the roll entirely for temperature. These complement — Titanium handles temperature while Explorer's Tenacity covers other hazards.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon** | On a hit against a Spirit (Infernal) creature, deal +2 bonus damage. Once per scene, when you hit a Spirit creature, you can choose to deal necrotic damage instead of physical damage. |
+| **Heavy Armor** | Once per scene, when you take physical damage, you can reduce that damage by 4 (after applying AV). You gain resistance against necrotic damage. |
+| **Shield** | Once per scene, when you take damage from any source, you can gain resistance against that damage. You gain resistance against necrotic damage. |
+| **Wearable** | You gain resistance against necrotic damage. You gain +1 boon on Fortitude rolls to resist conditions. |
 
 ---
 
 ### 4.10 Infernal Horn
 
-> *Taken from powerful infernal beasts. Resistant to heat and can channel demonic energy.*
+> *Horn from arch-demons or powerful beasts of the lower hell-planes. Channels heat and demonic energy. Permanently warm, with natural rune-like patterns. Radiates an aura of unease that can drive weak minds to madness. Possession is punishable by death in most holy cities. Used paradoxically by both demon hunters (against demons) and dark mages (for demons).*
 
-**Proposed effects:**
+**Design notes:** The vault describes heat resistance, demonic channeling, fear-aura, and anti-divine properties. Focus on fire/infernal resilience and the demon-hunting paradox. Corruption remains as flavor.
 
-- Weapon/Ammo: Your attacks with this weapon deal fire damage instead of physical damage. Once per day, on a critical hit, the target is frightened of you for a short duration (no save). Creatures immune to the frightened condition are unaffected.
-- Armor/Shield: You gain resistance against fire and necrotic damage.
-- Spell Catalyst: Once per day, when you cast a spell that deals damage, you can change its damage type to fire or necrotic.
-
-**Design notes:**
-- **Identity:** Infernal power. Fire, fear, and dark energy.
-- **Weapon fire conversion + fear on crit** combines an elemental passive with a fear trigger. The fear is auto-applied (no save) but limited to 1/day and only on critical hits — powerful but very unreliable. Standard creature immunities still apply (e.g., constructs and undead immune to frightened are unaffected), which prevents unintended interactions.
-- **Dual resistance** (fire + necrotic) reflects the horn's infernal and death-related nature. A meaningful Q7–Q8 defensive package.
-- **Catalyst damage-type conversion** (1/day) lets spellcasters adapt a spell's element situationally. This is unique — no enchantment changes spell damage types.
-- **Talent check:** No talent inflicts frightened on weapon critical hits. Drunken Technique R1 redirects attacks; Infernal Horn causes fear. Distinct.
+| Item Type | Proposed Effect |
+|-----------|----------------|
+| **Weapon** | This weapon deals fire damage instead of physical damage. On a hit against a Spirit (Infernal) creature, deal +2 bonus damage (ignoring AV). |
+| **Heavy Armor** | You are immune to the burning condition. You gain resistance against fire damage. |
+| **Spell Catalyst** | While casting spells that deal fire or necrotic damage, you can add +2 damage of that type (ignoring AV) on a hit. |
+| **Wearable** | You are immune to the burning condition. You gain resistance against fire damage. |
 
 ---
 
@@ -466,106 +374,109 @@ Legendary materials provide two or more distinct benefits per item type, reflect
 
 ### 5.1 Greater Materials (Q5–Q6) — Effect Overview
 
-| # | Material | Weapon | Armor | Shield | Catalyst | Special |
-|---|----------|--------|-------|--------|----------|---------|
-| 1 | Meteorite | Bypass magical resistance | 1/day bane on enemy casting | — | 1/day blunder → failure | Anti-magic |
-| 2 | Treantwood | Self-repair (night) | +2 HP on short break | +2 HP on short break | Self-repair (night) | 1/scene ignore Durability failure |
-| 3 | Dragon Bone | Elemental damage type | Elemental resistance (1) | Elemental resistance (1) | — | Choose element at crafting |
-| 4 | Dragon Scales | — | -1 load + elemental resist (1) | Elemental resistance (1) | — | Choose element at crafting |
-| 5 | Deep Iron | Gain crush (or upgrade) | 1/scene any resistance | 1/scene any resistance | — | Heavy armor only |
-| 6 | Phantom-Silk | — | Invisible (concealable) | — | — | Wearable: 1/scene force re-roll |
-| 7 | Mithril | — | -1 load, -1 rigid | -1 load, -1 rigid | — | Already defined |
-| 8 | Solarite | Fire damage + dim light | Fire resist + burning immune | Fire resist + burning immune | Fire spells bypass resist | Fire specialist |
-| 9 | Lunarite | +1 bane on target casting | 1/scene AV → Resist | 1/scene AV → Resist | Aura: bane on concentration | Anti-caster |
-| 10 | Adamantite | Ignore AV vs. objects | — | — | — | Indestructible (any) |
+| Material | Primary Effect Category | Weight | Resistance | Damage | Durability | Utility |
+|----------|------------------------|--------|------------|--------|------------|---------|
+| Meteorite | Magic enhancement | — | — | Weapon: flexible element | — | Glow, Focus |
+| Treantwood | Nature + durability | — | — | Reach or +1 WD | 1/day ignore Durability fail | Nature spell boon |
+| Dragon Bone | Single element | — | Heavy Armor: one element | Element conversion | — | — |
+| Dragon Scales | Single element | Light: -1 load | All armor: one element | — | — | — |
+| Deep Iron | Physical + magical defense | +1 load | 1/scene spell resist (armor), 1/scene any resist (shield) | Crush or +1 WD | — | — |
+| Phantom-Silk | Stealth | -1 load (light/shield) | Shield: vs. Spirit | — | — | Stealth boon |
+| Mithril | Weight reduction | -1 load, -1 rigid | — | — | — | — |
+| Solarite | Fire specialist | — | Armor/Wear: burning immune | Fire conversion | — | Glow |
+| Lunarite | Anti-magic defense | — | Shield: 1/scene spell resist; Armor: 1/day spell resist | — | — | Charmed immune, anti-tracking |
+| Adamantite | Indestructibility | — | Armor: 1/scene reduce physical | AV ignore on strong/crit | Indestructible | — |
 
 ### 5.2 Legendary Materials (Q7–Q8) — Effect Overview
 
-| # | Material | Weapon | Armor | Shield | Catalyst | Special |
-|---|----------|--------|-------|--------|----------|---------|
-| 1 | Orichalcum | Remove heavy (or +1 boon) | -2 rigid, reduce heavy | -2 rigid | — | -2 load (any) |
-| 2 | Celestial Feathers | — | 1/day fly (light) | Allies no fall dmg | — | No fall damage (any) |
-| 3 | Elder Dragon Bone | Element dmg + crit condition | Elemental resist (2) | Elemental resist (2) | Element resist bypass | Choose element |
-| 4 | Elder Dragon Scales | — | -1 load + all 4 resists | All 4 elemental resists | — | Ultimate elemental defense |
-| 5 | Aegium | Radiant dmg + anti-regen | Necrotic/radiant resist, 1/day survive death | Necrotic/radiant resist, 1/day survive death | +2 healing HP | Divine |
-| 6 | Eternite | Radiant or psychic choice | Psychic resist, 1/day magic re-roll | Psychic resist, 1/day magic re-roll | -1 Focus cost | Ultimate magic |
-| 7 | Elderwood | — | -1 rigid | — | 1/scene +1 boon casting | -1 load, auto-repair (any) |
-| 8 | Dreamweave | — | Psychic resist + mental boon | Mental boon + 1/day auto-succeed | — | Dream defense |
-| 9 | Titanium | Light + magic resist bypass | 1/scene any resist + temp immune | 1/scene any resist + temp immune | — | +1 boon Durability (any) |
-| 10 | Infernal Horn | Fire dmg + 1/day fear on crit | Fire + necrotic resist | Fire + necrotic resist | 1/day change dmg type | Infernal |
-
-### 5.3 Effect Category Distribution
-
-| Category | Exotic (Q3–Q4) | Greater (Q5–Q6) | Legendary (Q7–Q8) |
-|----------|----------------|------------------|---------------------|
-| Weight / Load | 5 | 2 | 4 |
-| Durability | 1 | 3 | 2 |
-| Damage Type | 0 | 4 | 5 |
-| Resistance (permanent) | 0 | 5 | 8 |
-| Resistance (reactive) | 3 | 2 | 2 |
-| Creature-Specific | 2 | 1 | 2 |
-| Anti-Magic | 1 | 4 | 2 |
-| Environmental | 1 | 1 | 2 |
-| Weapon Property | 0 | 1 | 1 |
-| Condition Trigger | 0 | 1 | 2 |
-| Healing / Survival | 0 | 1 | 2 |
-| Casting Benefit | 0 | 2 | 2 |
+| Material | Primary Effect Category | Weight | Resistance | Damage | Durability | Utility |
+|----------|------------------------|--------|------------|--------|------------|---------|
+| Orichalcum | Magic potentiation | Armor: -1 load, -1 rigid | — | Weapon: flexible element; Catalyst: +2 SP | — | +4 Focus, enchantment synergy |
+| Celestial Feathers | Divine + movement | -1 load | Shield: vs. Spirit/Undead | — | — | No fall damage, levitation, glow |
+| Elder Dragon Bone | Single element (enhanced) | — | Armor: one + 1/scene another | Element + bonus on strong/crit | — | — |
+| Elder Dragon Scales | All-element resistance | Light: -1 load | All armor: acid/fire/frost/lightning | — | 1/day ignore Durability | — |
+| Aegium | Divine protection | — | Shield: vs. necrotic/poison | +2 radiant vs. Infernal/Undead | — | Poisoned/diseased immune, glow, 1/day survive lethal |
+| Eternite | Gravity + cosmic | -1 load | — | — | — | Climate immune, Focus boost, levitation, -1 rigid |
+| Elderwood | Nature mastery | — | Shield: 1/scene any resist | Reach or +2 WD | Indestructible, shield self-repair | Mystic spell boon + re-roll |
+| Dreamweave | Mental protection | Light: -1 load | Psychic resist | — | — | Frightened immune, shield: condition block |
+| Titanium | Dark resilience | — | Necrotic resist; Armor: reduce physical | +2 vs. Infernal; necrotic option | — | Fortitude boon |
+| Infernal Horn | Fire/infernal | — | Fire resist; burning immune | Fire conversion; +2 vs. Infernal | — | Fire spell boost |
 
 ---
 
-## Appendix A: Talent Synergy Audit
+## Appendix A — Talent Synergy Audit
 
-### Confirmed Synergies (Material + Talent)
+This appendix verifies that proposed material effects complement rather than replace existing talent abilities.
 
-| Material | Talent | Interaction |
-|----------|--------|-------------|
-| Deep Iron (crush) | Mace Mastery R3 (ignore AV) | Mace Mastery adds on-demand AV ignore; Deep Iron provides passive crush. Different scopes. |
-| Orichalcum (-2 rigid) | Heavy Armor Mastery R1 (-1 rigid) | Stack to -3 rigid. Plate harness becomes rigid 0. Powerful but requires Q7+ and talent. |
-| Celestial Feathers (no fall) | Athletic Movement R3 (falls -1 step) | Feathers fully supersede. Talent still useful if feathers are lost/unequipped. |
-| Aegium (survive at 1 HP) | Hard to Kill R2 (ignore Wound) | Different failure points. Aegium prevents 0 HP; Hard to Kill prevents Wound. Both useful. |
-| Eternite (-1 Focus) | Inexhaustible Mind (Focus recovery) | Cost reduction + recovery = sustained casting. Strong synergy, no overlap. |
-| Dreamweave (+1 boon mental) | Strong Mind R1 (re-roll mental) | Boon improves roll quality; re-roll provides second chance. Additive, not redundant. |
-| Adamantite (indestructible) | Shield Mastery R3 (Durability boon) | Shield Mastery becomes irrelevant for Durability. Talent still useful for SL reduction. |
-| Treantwood (+2 HP rest) | Second Wind (in-combat HP) | Different timing. Rest vs. combat. Fully complementary. |
-| Lunarite (AV → Resist) | Heavy Armor Mastery R2 (double AV) | AV → Resist uses base AV; HAM doubles AV for damage. Different defensive layers. |
-| Titanium (temp immune) | Explorer's Tenacity (environmental re-roll) | Titanium removes temperature rolls; Tenacity covers other hazards. Complementary. |
+| Material Effect | Nearest Talent | Interaction |
+|----------------|---------------|-------------|
+| Dragon Bone: element conversion | Fighting talent (elemental weapon style) | **Complementary.** Material sets base element; talent could add rider effects. |
+| Deep Iron: crush property | Fighting talent (crush techniques) | **Complementary.** Material grants property; talent provides advanced techniques with it. |
+| Phantom-Silk: +1 Stealth boon | Stealth talents (various) | **Complementary.** Item bonus stacks with skill-based bonuses. |
+| Solarite: burning immunity | Fortitude talent (resist conditions) | **Complementary.** Material is permanent immunity for one condition; talent covers broader set. |
+| Lunarite: charmed immunity | Wearable "of Immunity" enchantment | **Distinct.** Material provides charmed immunity; enchantment covers any single condition. Different slot (material vs. enchantment). |
+| Adamantite: ignore 1 AV | Sundering enchantment | **Weaker.** Sundering ignores 1/2 AV on demand (1-3/day). Material effect requires strong/critical hit. |
+| Aegium: survive lethal 1/day | Fortitude talents (tenacity) | **Complementary.** Both serve survival but trigger differently and stack independently. |
+| Dreamweave: frightened immunity | Fortitude talent (resist fear) | **Complementary.** Material is permanent immunity; talent may provide broader condition resistance. |
+| Elderwood: mystic spell re-roll | Stabilizing enchantment (catalyst) | **Distinct.** Stabilizing is catalyst-only, 1-3/day. Elderwood re-roll is 1/scene on any mystic spell, can be on different item. |
 
-### Anti-Synergies Identified
-
-None. All material effects operate in different mechanical spaces from existing talents.
+**Conclusion:** No proposed material effect replaces a talent's signature ability. All interactions are complementary or operate in distinct mechanical spaces.
 
 ---
 
-## Appendix B: Enchantment Overlap Audit
+## Appendix B — Enchantment Overlap Audit
 
-| Material Effect | Closest Enchantment | Distinction |
-|----------------|---------------------|-------------|
-| Dragon Bone damage-type change | Flaming / Sacred / Defiled | Material *changes* base type passively; enchantment *adds* extra damage via Quick Action |
-| Deep Iron 1/scene resistance | Tough (X/day resistance) | Different resource model (scene vs. day); can coexist on same item |
-| Dragon Scales / Bone resistance | of Resistance (wearable) | Different equipment slot; material is on armor, enchantment is on wearable |
-| Solarite fire-resist bypass | No equivalent | Unique |
-| Lunarite bane on casting | No equivalent | Unique |
-| Lunarite AV → Resist | No equivalent | Unique |
-| Adamantite indestructible | No equivalent | Unique |
-| Aegium anti-regeneration | Sentinel (detection) | Completely different; Sentinel detects, Aegium suppresses healing |
-| Eternite Focus reduction | Infused (Focus recovery) | Recovery vs. cost reduction — different economic models |
-| Dreamweave mental boon | of Pure Thought (mental immunity) | Boon improves rolls; immunity bypasses rolls. Complementary |
-| Orichalcum weight reduction | Mithril / Silent | Broader and stronger; justified by Q7–Q8 tier |
-| Phantom-Silk force re-roll | Blurring (Mirror Image) | Re-roll vs. Mirror Image duplicate targeting. Distinct mechanics. |
+This appendix checks each proposed material effect against all existing enchantments to ensure no duplication.
 
-**Conclusion:** No material directly replicates an enchantment's core function. All cases involve different activation models, resource costs, or equipment slots.
+| Material Effect | Closest Enchantment | Overlap? | Resolution |
+|----------------|---------------------|----------|------------|
+| Meteorite: +1 Spell Power | Volatile (+2/4/6 spell damage with Durability risk) | **No overlap.** Meteorite is flat SP; volatile is on-demand damage+risk. |
+| Treantwood: 1/day ignore Durability | Dwarf-Steel (1/day re-roll Durability) | **Minimal.** Treantwood auto-ignores; Dwarf-Steel re-rolls. Treantwood is strictly stronger as a Q5+ upgrade. |
+| Dragon Bone: element conversion | Flaming/Sacred/Defiled (add elemental damage on Quick Action) | **No overlap.** Material converts base damage type permanently; enchantments add bonus damage via activation. |
+| Deep Iron: 1/scene resist spell damage | Tough (1-3/day resist any damage) | **Distinct scope.** Deep Iron is spell-specific, 1/scene. Tough is broader, uses daily charges. |
+| Phantom-Silk: +1 Stealth boon | Silent (reduce rigid or +1 Stealth boon) | **Partial.** Both can grant Stealth boons. However, Silent is armor-only and follows a priority order (rigid first). Phantom-Silk is light armor/wearable. A character could potentially have both, but stacking boons is intentional. |
+| Solarite: fire conversion | Flaming (add fire damage on Quick Action) | **No overlap.** Material converts permanently; enchantment adds damage via activation. |
+| Lunarite: charmed immune | Of Immunity (immune to one condition) | **Narrow overlap.** Material provides charmed immunity as part of a broader package. Enchantment can cover any condition. The enchantment remains valuable for other conditions. |
+| Adamantite: indestructible | — | **Unique to material.** No enchantment provides indestructibility. |
+| Aegium: survive lethal 1/day | — | **Unique to material.** No enchantment provides this effect. |
+| Dreamweave: condition block (shield) | Stalwart (1/day ignore condition) | **Distinct trigger.** Dreamweave is shield-only and covers a specific subset. Stalwart is armor/shield and covers a broader set but is 1/day. |
+| Elderwood: mystic re-roll | Stabilizing (re-roll failed cast) | **Distinct slot.** Stabilizing is catalyst-only. Elderwood provides this on any item type. |
+
+**Conclusion:** No material effect fully duplicates an enchantment's core identity. Where partial overlaps exist, materials operate in narrower scope or on different item types.
 
 ---
 
-## Appendix C: Comparison to Exotic Tier Scaling
+## Appendix C — Scaling Comparison
 
-| Property | Exotic Example | Greater Upgrade | Legendary Upgrade |
-|----------|---------------|-----------------|-------------------|
-| Load reduction | -1 load (Chitin) | -1 load + bonus (Dragon Scales) | -2 load (Orichalcum) |
-| Elemental resist | 1/scene, 1 source (Wyrmhide) | Permanent, 1 chosen type (Dragon Bone) | Permanent, 2–4 types (Elder Dragon) |
-| Durability | 1/day re-roll (Dwarf-Steel) | 1/scene ignore failure (Treantwood) | Auto-repair per scene (Elderwood) |
-| Anti-magic | +1 bane on own casting (Iron) | Bypass magical resistance (Meteorite) | Bypass + Durability + light (Titanium) |
-| Environmental | Heavy armor climate (Dwarf-Steel) | Burning immunity (Solarite) | Full temperature immunity (Titanium) |
-| Creature-specific | +1 boon vs. type (Silverroot) | Anti-regen vs. undead (Aegium) | Auto-fear on crit (Infernal Horn) |
+This table shows how material effects scale across tiers for thematically linked materials.
 
-Each tier provides a clear power increase while maintaining the same design language.
+| Theme | Exotic (Q3–Q4) | Greater (Q5–Q6) | Legendary (Q7–Q8) |
+|-------|----------------|------------------|--------------------|
+| **Elemental resist** | Wyrmhide: 1/scene resist any one elemental | Dragon Scales: permanent resist one element | Elder Dragon Scales: permanent resist acid/fire/frost/lightning |
+| **Elemental weapon** | — | Dragon Bone: convert to one element | Elder Dragon Bone: convert to one element + bonus on strong/crit |
+| **Weight reduction** | Chitin/Monster Bone/Darkwood: -1 load | Mithril: -1 load, -1 rigid | Orichalcum: -1 load, -1 rigid + magic synergy |
+| **Anti-magic defense** | Runebark: 1/scene resist spell damage | Lunarite: charmed immune + 1/scene or 1/day spell resist | Dreamweave: psychic resist + frightened immune + condition block |
+| **Nature/wood** | Darkwood: -1 load | Treantwood: Durability save + nature boon | Elderwood: indestructible + mystic boon + re-roll |
+| **Anti-creature** | Silverroot: +1 boon vs. lycanthropes/undead | — | Aegium: +2 radiant vs. Infernal/Undead; Titanium: +2 vs. Infernal |
+| **Stealth** | — | Phantom-Silk: -1 load + Stealth boon | Dreamweave: -1 load + psychic/mental protection |
+| **Durability** | Dwarf-Steel: 1/day re-roll Durability | Treantwood: 1/day ignore Durability; Adamantite: indestructible | Elderwood: indestructible; Elder Dragon Scales: 1/day ignore Durability |
+| **Fire specialist** | — | Solarite: fire conversion + burning immune | Infernal Horn: fire conversion + fire resist + anti-Infernal |
+| **Universal magic** | Meteorite (exotic at Q3 in vault): +1 spell bonus | Meteorite: +1 SP, flexible element, Focus | Orichalcum: +2 SP, flexible element, Focus, enchantment synergy |
+
+---
+
+## Appendix D — Materials Not Yet in Game Rules
+
+The following materials appear in the Nexus RPG Vault but are not currently listed in `materials.md`. They are noted here for future consideration:
+
+| Material | Vault Quality | Description |
+|----------|--------------|-------------|
+| Dragon Hide (*Drachenhaut*) | Q5–Q6 | Flexible skin between dragon scales; lighter and more flexible than scales, 50% of scale elemental resistance. Natural fit for light armor. |
+| Shadow Pelt (*Schattenfell*) | Q5 | Fur from shadow creatures (shadow panthers, nightmares). Acoustic dampening, shadow-affinity, presence reduction. Dissolves quickly after creature's death. |
+| Radiant Bronze (*Glanzbronze*) | Q3 | Bronze + Solarite dust alloy. Warm golden glow, hard as steel, enhances fire magic. Exclusive to Anutep elite. |
+| Ichor Crystals (*Ichor-Kristalle*) | varies | Crystallized "titan blood" from volcanic zones. Energy storage and magical amplification. Only safely processed in Giant-Forges. |
+| Elemental Stones (*Elementarsteine*) | varies | Crystals charged with elemental energy from Soul Realm seepage. Enable pseudo-magical effects without spellcasting. |
+| Primordial Bone (*Urzeit-Knochen*) | Q7 | Tusks/fangs of apex beasts — the first living creatures. Absolutely unbreakable; can shatter even Adamantite. |
+| Primordial Hide (*Urzeit-Leder*) | Q7 | Skin of apex beasts. Kinetic absorption, self-repair, ageless. Only obtainable after natural death (every few centuries). |
+| Vine Wood (*Rankenholz*) | — | Extremely flexible jungle vine wood with high tension. Preferred material for longbows. |
+| Runebark (*Runenborke*) as Elderwood precursor | — | Already in Exotic tier. Vault describes ley-line-junction bark that stores spells, controlled by druids. |
