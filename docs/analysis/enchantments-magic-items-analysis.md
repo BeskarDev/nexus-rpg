@@ -473,69 +473,83 @@ Focusing on underrepresented roles (Healing, Control) and game modes (Travel, Ex
 
 These tables cover slotless utility items generated from the random treasure system. Effects are too diverse for a generic enchantment framework — each entry is a curated named effect.
 
+**Pricing model for utility items:**
+- **Permanent items** (containers, everyday objects, instruments) are priced like wearable enchantments (no magic item base cost). Approximate price = base item cost + enchantment cost at applicable tier: Q4 ≈ 1,100 coins, Q5 ≈ 3,100 coins, Q6 ≈ 10,100 coins.
+- **Consumables** (body parts & natural items) use the ammo/consumable pricing column. Single-use items with one application: Q4 ≈ 350 coins, Q5 ≈ 1,050 coins, Q6 ≈ 3,050 coins. Multi-dose items multiply by number of uses.
+
 > **Note on temporary enchantments:** The alchemy system expansion (future analysis) should include temporary enchantments — potions, oils, and treatments that grant enchantment-like effects for limited durations. This provides consumable alternatives to permanent utility items.
 
 #### Containers (d100, 10 entries)
 
-| d100 | Name | Quality | Effect |
-|------|------|---------|--------|
-| 01–10 | Bag of Holding | Q4 | Interior is larger than exterior; holds up to 500 load but always weighs 1 load |
-| 11–20 | Preserving Vessel | Q4 | Contents decay at half the normal rate. Rations and alchemical supplies stored inside last twice as long |
-| 21–30 | Quenching Flask | Q4/Q5 | 1×/day: produces clean water (1 unit of supply). Q5: 2 units |
-| 31–40 | Messenger Bottle | Q4 | Place a written message inside and speak a name; the bottle vanishes and reappears near the named person within 1 day. Returns empty. 1×/day |
-| 41–50 | Censer of Warding | Q5 | Burn incense (1 supply); all creatures in close range gain +1 Resist for short duration |
-| 51–60 | Bottomless Quiver | Q5 | When you make a Supply Check for basic (non-enchanted) ammo, roll twice and take the better result. Does not apply to enchanted ammo |
-| 61–70 | Chest of Safekeeping | Q5 | Locked by a command word; resists all non-magical attempts to open. Contents are shielded from divination |
-| 71–80 | Brazier of Warmth | Q4 | When lit, all creatures in close range are comfortable regardless of temperature. Counts as adequate shelter during travel |
-| 81–90 | Decanting Vessel | Q5/Q6 | 1×/day: produce one dose of a basic alchemical substance (chosen on creation): antidote, healing salve, or lamp oil. Q6: choose each day |
-| 91–100 | Amphora of Plenty | Q6 | 1×/day: produce enough food for 4 people (4 units of rations supply). Does not produce water |
+| d100 | Name | Quality | Cost | Effect |
+|------|------|---------|------|--------|
+| 01–10 | Bag of Holding | Q4 | 1,100 | Interior is larger than exterior; holds up to 500 load but always weighs 1 load |
+| 11–20 | Preserving Vessel | Q4 | 1,100 | Contents decay at half the normal rate. Rations and alchemical supplies stored inside last twice as long |
+| 21–30 | Quenching Flask | Q4/Q5 | 1,100 / 3,100 | 1×/day: produces clean water (1 unit of supply). Q5: 2 units |
+| 31–40 | Messenger Bottle | Q4 | 1,100 | Place a written message inside and speak a name; the bottle vanishes and reappears near the named person within 1 day. Returns empty. 1×/day |
+| 41–50 | Censer of Warding | Q5 | 3,100 | Burn incense (1 supply); all creatures in close range gain +1 Resist for short duration |
+| 51–60 | Bottomless Quiver | Q5 | 3,100 | When you make a Supply Check for basic (non-enchanted) ammo, roll twice and take the better result. Does not apply to enchanted ammo |
+| 61–70 | Chest of Safekeeping | Q5 | 3,100 | Locked by a command word; resists all non-magical attempts to open. Contents are shielded from divination |
+| 71–80 | Brazier of Warmth | Q4 | 1,100 | When lit, all creatures in close range are comfortable regardless of temperature. Counts as adequate shelter during travel |
+| 81–90 | Decanting Vessel | Q5/Q6 | 3,100 / 10,100 | 1×/day: produce one dose of a basic alchemical substance (chosen on creation): antidote, healing salve, or lamp oil. Q6: choose each day |
+| 91–100 | Amphora of Plenty | Q6 | 10,100 | 1×/day: produce enough food for 4 people (4 units of rations supply). Does not produce water |
 
 #### Everyday Objects (d100, 10 entries)
 
-| d100 | Name | Quality | Effect |
-|------|------|---------|--------|
-| 01–10 | Immovable Rod | Q5 | Activate: the rod fixes in place, bearing up to 500 load. Stays until deactivated |
-| 11–20 | Lantern of Revealing | Q4/Q5 | Emits bright light (close range). Invisible creatures in the light become visible. Q5: extends to short range |
-| 21–30 | Astral Disc | Q4 | A flat bronze disc etched with constellations. When held level and spoken to, accurately indicates cardinal directions and time of day. +1 boon on Navigator rolls during travel |
-| 31–40 | Rope of Climbing | Q4 | On command, the rope (short range length) animates to tie itself, climb surfaces, or bridge gaps. +1 boon on Athletics to climb while using |
-| 41–50 | Seer's Mirror | Q5 | 1×/day: gaze into the mirror and name a person known to you; glimpse a brief image of what they are currently doing (no sound, no communication) |
-| 51–60 | Carpet of Flight | Q6 | Can carry up to 2 Medium creatures. Flies at normal Movement speed. Requires concentration (no other actions while piloting) |
-| 61–70 | Arcane Key | Q4/Q5 | 1×/day: open one non-magical lock automatically. Q5: also magical locks, but roll Mind + Arcana vs. the lock's TN |
-| 71–80 | Figurine of Summoning | Q5/Q6 | 1×/day: summon a Tier 1/2 beast companion (specific animal chosen on creation) for short duration |
-| 81–90 | Rod of Mending | Q4 | 1×/day: repair one damaged non-magical item to functional condition. Does not restore magical properties or Durability |
-| 91–100 | Hearthstone of Return | Q5 | Attune to a location by spending 1 hour there with a short ritual. 1×/day: teleport yourself to the attuned location (same region only, not across continents) |
+| d100 | Name | Quality | Cost | Effect |
+|------|------|---------|------|--------|
+| 01–10 | Immovable Rod | Q5 | 3,100 | Activate: the rod fixes in place, bearing up to 500 load. Stays until deactivated |
+| 11–20 | Lantern of Revealing | Q4/Q5 | 1,100 / 3,100 | Emits bright light (close range). Invisible creatures in the light become visible. Q5: extends to short range |
+| 21–30 | Astral Disc | Q4 | 1,100 | A flat bronze disc etched with constellations. When held level and spoken to, accurately indicates cardinal directions and time of day. +1 boon on Navigator rolls during travel |
+| 31–40 | Rope of Climbing | Q4 | 1,100 | On command, the rope (short range length) animates to tie itself, climb surfaces, or bridge gaps. +1 boon on Athletics to climb while using |
+| 41–50 | Seer's Mirror | Q5 | 3,100 | 1×/day: gaze into the mirror and name a person known to you; glimpse a brief image of what they are currently doing (no sound, no communication) |
+| 51–60 | Carpet of Flight | Q6 | 10,100 | Can carry up to 2 Medium creatures. Flies at normal Movement speed. Requires concentration (no other actions while piloting) |
+| 61–70 | Arcane Key | Q4/Q5 | 1,100 / 3,100 | 1×/day: open one non-magical lock automatically. Q5: also magical locks, but roll Mind + Arcana vs. the lock's TN |
+| 71–80 | Figurine of Summoning | Q5/Q6 | 3,100 / 10,100 | 1×/day: summon a Tier 1/2 beast companion (specific animal chosen on creation) for short duration |
+| 81–90 | Rod of Mending | Q4 | 1,100 | 1×/day: repair one damaged non-magical item to functional condition. Does not restore magical properties or Durability |
+| 91–100 | Hearthstone of Return | Q5 | 3,100 | Attune to a location by spending 1 hour there with a short ritual. 1×/day: teleport yourself to the attuned location (same region only, not across continents) |
 
 #### Instruments (d100, 10 entries)
 
-| d100 | Name | Quality | Effect |
-|------|------|---------|--------|
-| 01–10 | Horn of Warning | Q4 | Blow: all allies within long range cannot be surprised for short duration. Audible at very long range |
-| 11–20 | Horn of Blasting | Q5 | Blow: all creatures in a cone (close range) take 6 blast damage (ignoring half AV) and are deafened briefly. Structures in range may crack. 1×/day |
-| 21–30 | Drums of Marching | Q4 | During travel: allies in close range ignore 1 Fatigue per journey. Uses instrument Durability (check after each journey) |
-| 31–40 | War Drum of Fury | Q5 | Beat as an Action: allies in close range gain +1 boon on their next attack this scene. 1×/scene |
-| 41–50 | Chime of Opening | Q5 | 1×/day: open one locked door, chest, or container (non-magical) within close range |
-| 51–60 | Sistrum of Warding | Q4 | Shake as Quick Action: undead and spirits in close range must resist (Spirit + Fortitude vs. TN 8) or become frightened briefly. 1×/scene |
-| 61–70 | Flute of Calming | Q5 | 1×/day: play for one minute. All hostile creatures in close range must resist (Spirit + Fortitude vs. TN 10) or become non-aggressive for short duration. Ends if they take damage |
-| 71–80 | Lyre of Distraction | Q4 | Play for one minute during Social Intrigue: one target NPC must resist (Mind + Fortitude vs. TN 8) or lose 1 Patience. 1×/intrigue |
-| 81–90 | Pipes of Haunting | Q5/Q6 | Play in darkness or moonlight: all creatures in close range that can hear must resist (Spirit + Fortitude vs. TN 10/12) or become frightened for short/medium duration. 1×/scene |
-| 91–100 | Bell of Communion | Q6 | 1×/day: ring during a ritual to contact one named spirit or ancestor. The GM provides one truthful answer to a yes/no question |
-
-#### Body Parts & Natural Items (d100, 10 entries)
-
-These items are **consumables** harvested from creatures and natural sources. Making them consumable (rather than permanent wearables) avoids conflict with wearable enchantments and creates a natural tie-in with the alchemy system and creature harvesting.
-
-| d100 | Name | Quality | Type | Effect |
+| d100 | Name | Quality | Cost | Effect |
 |------|------|---------|------|--------|
-| 01–10 | Salve of Eagle's Vision | Q4 | Dose (apply) | Gain +1 boon on all Perception rolls and treat dim light as bright light for short duration |
-| 11–20 | Dragon Scale Ash | Q5 | Dose (burn/inhale) | Gain resistance to one elemental damage type (fire, frost, or lightning) for short duration; specified by the dragon type it was harvested from |
-| 21–30 | Beast Heart Extract | Q4 | Dose (drink) | Gain the keen senses of the harvested creature type; +1 boon on Perception and Survival for short duration |
-| 31–40 | Serpent Fang Vial | Q4 | 3 doses (apply) | Apply to a weapon as Quick Action; the next hit inflicts the poisoned condition briefly |
-| 41–50 | Feather Charm | Q5 | 1 use (crush) | Crush in hand when falling: take no damage from falls up to short range and treat longer falls as one category shorter |
-| 51–60 | Carved Luck Bone | Q4 | 1 use (snap) | Snap before rolling any check: re-roll one failed roll and take the new result |
-| 61–70 | Clarity Crystal Dust | Q5 | Dose (sniff) | End one of the following conditions on yourself: confused, dazed, or charmed |
-| 71–80 | Amber Ward Charm | Q5 | 1 use (break) | Break when you would gain the poisoned condition or suffer a disease effect: negate that instance entirely |
-| 81–90 | Moonstone Draught | Q4/Q6 | Dose (drink) | Must be consumed under open moonlight. Gain +1/+2 boon on all Spirit rolls for short duration |
-| 91–100 | Heartwood Sap | Q6 | Dose (apply) | Apply to a creature at 0 HP: stabilize them automatically (no roll needed) and immediately remove the bleeding condition |
+| 01–10 | Horn of Warning | Q4 | 1,100 | Blow: all allies within long range cannot be surprised for short duration. Audible at very long range |
+| 11–20 | Horn of Blasting | Q5 | 3,100 | Blow: all creatures in a cone (close range) take 6 blast damage (ignoring half AV) and are deafened briefly. Structures in range may crack. 1×/day |
+| 21–30 | Drums of Marching | Q4 | 1,100 | During travel: allies in close range ignore 1 Fatigue per journey. Uses instrument Durability (check after each journey) |
+| 31–40 | War Drum of Fury | Q5 | 3,100 | Beat as an Action: allies in close range gain +1 boon on their next attack this scene. 1×/scene |
+| 41–50 | Chime of Opening | Q5 | 3,100 | 1×/day: open one locked door, chest, or container (non-magical) within close range |
+| 51–60 | Sistrum of Warding | Q4 | 1,100 | Shake as Quick Action: undead and spirits in close range must resist (Spirit + Fortitude vs. TN 8) or become frightened briefly. 1×/scene |
+| 61–70 | Flute of Calming | Q5 | 3,100 | 1×/day: play for one minute. All hostile creatures in close range must resist (Spirit + Fortitude vs. TN 10) or become non-aggressive for short duration. Ends if they take damage |
+| 71–80 | Lyre of Distraction | Q4 | 1,100 | Play for one minute during Social Intrigue: one target NPC must resist (Mind + Fortitude vs. TN 8) or lose 1 Patience. 1×/intrigue |
+| 81–90 | Pipes of Haunting | Q5/Q6 | 3,100 / 10,100 | Play in darkness or moonlight: all creatures in close range that can hear must resist (Spirit + Fortitude vs. TN 10/12) or become frightened for short/medium duration. 1×/scene |
+| 91–100 | Bell of Communion | Q6 | 10,100 | 1×/day: ring during a ritual to contact one named spirit or ancestor. The GM provides one truthful answer to a yes/no question |
+
+#### Body Parts & Natural Items (d100, 20 entries)
+
+These items are **consumables** harvested from creatures and natural sources. Making them consumable avoids conflict with wearable enchantments and creates a direct tie-in with the **Harvesting Creature Parts** rules. Each entry reflects the natural properties of the source creature — venom from serpents, sight from eagles, resilience from troll blood.
+
+| d100 | Name | Quality | Cost | Type | Source Part | Effect |
+|------|------|---------|------|------|-------------|--------|
+| 01–05 | Salve of Eagle Sight | Q4 | 350 | Dose (apply to eyes) | Eagle/hawk eyes | +1 boon on all Perception rolls; treat dim light as bright light for short duration |
+| 06–10 | Bat Echolocation Powder | Q4 | 350 | Dose (inhale) | Bat ear membrane | Gain blindsight (close range) for short duration; you do not need sight to perceive creatures within range, and darkness does not impose banes on your attacks |
+| 11–15 | Serpent Venom Vial | Q4 | 700 (3 doses) | 3 doses (apply) | Serpent fangs | Apply to a weapon as Quick Action; next hit inflicts poisoned briefly |
+| 16–20 | Scorpion Venom Extract | Q5 | 1,050 | Dose (apply to weapon) | Scorpion stinger | Apply as Quick Action; next hit inflicts poisoned for short duration with +1 bane on target's saves |
+| 21–25 | Troll Blood Draught | Q5 | 1,050 | Dose (drink) | Troll blood | Regain 8 HP at the start of your next turn. Cannot benefit from healing for the rest of the scene |
+| 26–30 | Beast Heart Extract | Q4 | 350 | Dose (drink) | Large beast heart | Gain the keen senses of the harvested creature; +1 boon on Perception and Survival for short duration |
+| 31–35 | Dire Wolf Musk | Q4 | 350 | Dose (apply) | Dire wolf gland | Beasts of animal intelligence will not willingly attack you for short duration unless provoked |
+| 36–40 | Dragon Scale Ash | Q5 | 1,050 | Dose (burn/inhale) | Dragon scales | Gain resistance to the dragon type's elemental damage (fire, frost, or lightning) for short duration |
+| 41–45 | Wyvern Acid Sac | Q5 | 1,050 | 1 use (throw or pour) | Wyvern acid sac | Throw as Action (close range); 8 acid damage in melee range. Or pour on a surface to dissolve non-magical material |
+| 46–50 | Basilisk Eye Powder | Q5 | 1,050 | Dose (apply to eyes) | Basilisk eye | Once this scene, when a creature meets your gaze and attempts to use a gaze attack on you, it fails automatically and the creature suffers brief blindness instead |
+| 51–55 | Feather of Falling | Q4 | 350 | 1 use (crush) | Large bird wing feather | Crush in hand when falling: take no damage from falls up to short range; treat longer falls as one category shorter |
+| 56–60 | Roc Talon Grip | Q5 | 1,050 | Dose (apply to hands) | Roc talon | Gain +2 boons on Athletics to climb or grapple for short duration |
+| 61–65 | Carved Luck Bone | Q4 | 350 | 1 use (snap) | Creature knuckle bone | Snap before rolling any check: re-roll one failure and take the new result |
+| 66–70 | Divination Knuckles | Q5 | 1,050 | 1 use (cast) | Set of 3 carved bones | Cast before a journey or social encounter; the GM reveals whether the path ahead holds a major obstacle (yes/no only) |
+| 71–75 | Amber Ward Shard | Q5 | 1,050 | 1 use (break) | Fossilized resin | Break when you would gain the poisoned condition or suffer a disease: negate that instance entirely |
+| 76–80 | Clarity Crystal Dust | Q5 | 1,050 | Dose (sniff) | Bioluminescent crystal organ | End one of the following conditions on yourself: confused, dazed, or charmed |
+| 81–85 | Phoenix Ash Vial | Q6 | 3,050 | 1 use (pour on creature) | Phoenix ash | Apply to a creature at 0 HP within the round they fell: immediately restore them to 1 HP and remove the bleeding condition. Consumed on use |
+| 86–90 | Ghost Moth Dust | Q5 | 1,050 | Dose (coat self) | Ghost moth wing scales | Become invisible until the end of your next turn, or until you attack or cast a spell. 1 dose lasts 1 minute outside combat |
+| 91–95 | Moonstone Draught | Q4 | 350 | Dose (drink) | Ground moonstone | Must be consumed under open sky. Gain +1 boon on all Spirit rolls for short duration |
+| 96–100 | Leviathan Oil | Q6 | 3,050 | Dose (drink) | Deep sea creature blubber | Breathe water and ignore all pressure and temperature penalties from underwater environments for medium duration |
 
 > **Quality tier guidance:** Most utility items are Q4–Q5 (accessible, useful). Items that provide powerful daily-use abilities (teleportation, summoning, flight) are Q5–Q6. Items could theoretically scale to Q7–Q8 with enhanced versions (Carpet of Flight Q7 = carry 6 creatures, no concentration required), but this should be handled in the separate named-items catalogue.
 
@@ -724,12 +738,12 @@ The distribution of magic items at different quality tiers implicitly defines th
 
 ## Appendix F: Utility Item Category Summary
 
-| Category | Source Count | d100 Entries | Quality Range | Notes |
-|----------|-------------|-------------|---------------|-------|
-| Containers | d12 sub-table | 10 | Q4–Q6 | Storage, preservation, production |
-| Everyday Objects | d20 sub-table | 10 | Q4–Q6 | Tools, transportation, utility |
-| Instruments | d6 sub-table | 5 | Q4–Q6 | Sound-based effects, bard integration |
-| Body Parts / Natural | d12 + d8 sub-tables | 10 | Q4–Q6 | Creature-themed, harvesting tie-in |
+| Category | d100 Entries | Quality Range | Pricing | Notes |
+|----------|-------------|---------------|---------|-------|
+| Containers | 10 | Q4–Q6 | Q4 ≈ 1,100 / Q5 ≈ 3,100 / Q6 ≈ 10,100 | Storage, preservation, production |
+| Everyday Objects | 10 | Q4–Q6 | Q4 ≈ 1,100 / Q5 ≈ 3,100 / Q6 ≈ 10,100 | Tools, transportation, utility |
+| Instruments | 10 | Q4–Q6 | Q4 ≈ 1,100 / Q5 ≈ 3,100 / Q6 ≈ 10,100 | Sound-based effects, social/combat roles |
+| Body Parts / Natural | 20 | Q4–Q6 | Q4 ≈ 350 / Q5 ≈ 1,050 / Q6 ≈ 3,050 (consumables) | Creature-harvesting tie-in, diverse effects |
 
 > **Deferred:** Full named-items catalogue — separate design document.
 > **Deferred:** Temporary enchantments / alchemy expansion — separate analysis.
