@@ -291,6 +291,71 @@ export function generateCreature(groupId: string): string {
 	return `${lc(typeName)} with ${appearance.join(', ')}. ${lc(behavior)}, attacks with ${lc(bodyPart)} (${lc(attackMode)}). special: ${lc(attackType)} ${lc(deliveryMethod)}. defense: ${lc(defenseMethod)} against ${lc(defenseType)}. ability: ${lc(trigger)} → ${lc(action)} ${lc(subject)}.`
 }
 
+// ===== HARVESTING =====
+
+export const harvestGroups = [
+	{ id: 'random', label: 'Random Category' },
+	{ id: 'food', label: 'Food' },
+	{ id: 'trophy', label: 'Trophy' },
+	{ id: 'toolSubstance', label: 'Tool/Substance' },
+	{ id: 'material', label: 'Material' },
+]
+
+interface HarvestFoodEntry {
+	item: string
+	preparation: string
+	effect: string
+}
+
+interface HarvestTrophyEntry {
+	item: string
+	attribute: string
+	effect: string
+}
+
+interface HarvestToolEntry {
+	item: string
+	attribute: string
+	effect: string
+}
+
+interface HarvestMaterialEntry {
+	item: string
+	attribute: string
+	property: string
+}
+
+export function generateHarvest(groupId: string): string {
+	const categories = ['food', 'trophy', 'toolSubstance', 'material']
+	const category = groupId === 'random' ? pick(categories) : groupId
+
+	if (category === 'food') {
+		const entry = pick(
+			creatureData.harvesting.food as HarvestFoodEntry[],
+		)
+		return `food: ${entry.item} (${lc(entry.preparation)}) — ${lc(entry.effect)}`
+	}
+	if (category === 'trophy') {
+		const entry = pick(
+			creatureData.harvesting.trophy as HarvestTrophyEntry[],
+		)
+		return `trophy: ${entry.item} (${lc(entry.attribute)}) — ${lc(entry.effect)}`
+	}
+	if (category === 'toolSubstance') {
+		const entry = pick(
+			creatureData.harvesting.toolSubstance as HarvestToolEntry[],
+		)
+		return `tool/substance: ${entry.item} (${lc(entry.attribute)}) — ${lc(entry.effect)}`
+	}
+	if (category === 'material') {
+		const entry = pick(
+			creatureData.harvesting.material as HarvestMaterialEntry[],
+		)
+		return `material: ${entry.item} (${lc(entry.attribute)}) — ${lc(entry.property)}`
+	}
+	return 'unknown harvest category'
+}
+
 // ===== CHALLENGES =====
 
 export const challengeGroups = [

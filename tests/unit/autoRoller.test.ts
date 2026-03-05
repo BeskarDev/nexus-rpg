@@ -11,6 +11,7 @@ import {
 	generateName,
 	generateSpell,
 	generateCreature,
+	generateHarvest,
 	generateChallenge,
 	generateTreasure,
 	rollTreasureCost,
@@ -25,6 +26,7 @@ import {
 	nameGroups,
 	spellGroups,
 	creatureGroups,
+	harvestGroups,
 	challengeGroups,
 	treasureGroups,
 	questGroups,
@@ -502,6 +504,15 @@ describe('AutoRoller Groups', () => {
 		expect(creatureGroups[0].id).toBe('random')
 	})
 
+	it('should have 5 harvest groups (random + 4 categories)', () => {
+		expect(harvestGroups).toHaveLength(5)
+		expect(harvestGroups[0].id).toBe('random')
+		expect(harvestGroups.map((g) => g.id)).toContain('food')
+		expect(harvestGroups.map((g) => g.id)).toContain('trophy')
+		expect(harvestGroups.map((g) => g.id)).toContain('toolSubstance')
+		expect(harvestGroups.map((g) => g.id)).toContain('material')
+	})
+
 	it('should have 3 challenge groups', () => {
 		expect(challengeGroups).toHaveLength(3)
 	})
@@ -684,6 +695,45 @@ describe('AutoRoller Generators', () => {
 				results.add(generateCreature('Beast'))
 			}
 			expect(results.size).toBeGreaterThan(5)
+		})
+	})
+
+	describe('generateHarvest', () => {
+		it('should generate a food harvest result', () => {
+			const result = generateHarvest('food')
+			expect(result).toBeTruthy()
+			expect(result).toMatch(/^food:/)
+		})
+
+		it('should generate a trophy harvest result', () => {
+			const result = generateHarvest('trophy')
+			expect(result).toBeTruthy()
+			expect(result).toMatch(/^trophy:/)
+		})
+
+		it('should generate a tool/substance harvest result', () => {
+			const result = generateHarvest('toolSubstance')
+			expect(result).toBeTruthy()
+			expect(result).toMatch(/^tool\/substance:/)
+		})
+
+		it('should generate a material harvest result', () => {
+			const result = generateHarvest('material')
+			expect(result).toBeTruthy()
+			expect(result).toMatch(/^material:/)
+		})
+
+		it('should work with random category', () => {
+			const result = generateHarvest('random')
+			expect(result).toBeTruthy()
+			expect(result.length).toBeGreaterThan(0)
+		})
+
+		it('should work for all harvest groups', () => {
+			harvestGroups.forEach((g) => {
+				const result = generateHarvest(g.id)
+				expect(result.length).toBeGreaterThan(0)
+			})
 		})
 	})
 
