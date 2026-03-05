@@ -125,7 +125,7 @@
 | Strong | 2 | 16 | **32** | ½ AV ignored |
 | Critical | 3 | 16 | **48** | ½ AV ignored |
 
-**Comparison:** A Rank 3 single-target spell like Arcane Blast deals Spell Power + 8/16/24 = 14/22/30 damage. Arcane Missiles at critical success deals **48 damage** — 60% more than a dedicated rank 3 single-target blast, from a rank 1 spell (heightened to 3) that auto-hits and ignores cover.
+**Comparison:** A Rank 3 single-target spell like Arcane Blast deals Spell Power + 8/16/24 (e.g. 14/22/30 with SP 6). Arcane Missiles at critical success deals **48 damage** — 60% more than a dedicated rank 3 single-target blast, from a rank 1 spell (heightened to 3) that auto-hits and ignores cover.
 
 ### 4.2 Arcane Barrage + Arcane Empowerment (HIGHEST CONCERN)
 
@@ -144,7 +144,7 @@
 | Strong | 4 | 15 | **60** | ½ AV ignored |
 | Critical | 5 | 15 | **75** | ½ AV ignored |
 
-**Comparison:** This is a rank 2 spell (heightened to 3) that at critical success deals **75 damage** — well beyond any rank 5 damage ceiling in the system's design guidelines (max +12/+24/+36 single-target at rank 5).
+**Comparison:** This is a rank 2 spell (heightened to 3) that at critical success deals **75 damage** — well beyond any rank 5 damage ceiling in the system's design guidelines (max Spell Power + 12/24/36 single-target at rank 5, typically 18/30/42 with SP 6).
 
 ### 4.3 Arcane Circle + Missile Spells (MEDIUM CONCERN)
 
