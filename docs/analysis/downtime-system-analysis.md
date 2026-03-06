@@ -11,18 +11,18 @@
 ### Key Findings
 
 1. **Core procedure is compatible** — Downtime already operates at the weekly time scale and uses per-activity skill rolls, which fit cleanly into the unified Scenes & Time Scales framework.
-2. **Dice timer integration is implicit but undeveloped** — The Downtime Event Table exists in the time scales document, but the downtime rules themselves never reference it. There is no explicit procedure for when the dice timer ticks or when the Event Die is rolled during downtime.
+2. **Weekly event roll replaces dice timer** — The Downtime Event Table exists in the time scales document, but the downtime rules themselves never reference it. The proposed approach rolls 1d6 every week (mirroring travel's daily event roll), rather than using a countdown dice timer.
 3. **Challenge system is underused** — Multi-week activities (Craft an Item, Research) already track cumulative progress, but they do not use Challenge Dice formally. Aligning them with the challenge framework would unify procedures and reduce cognitive overhead.
 4. **Social intrigue has no downtime entry point** — There is no downtime activity that bridges into the Social Intrigue system (e.g., petitioning a ruler, negotiating a trade agreement, lobbying a faction). The Carouse activity is incomplete and underspecified.
 5. **Travel ↔ downtime handoff is missing** — No rules govern what happens when travel time overlaps with downtime (arriving mid-week, traveling between settlements during downtime, running errands to a nearby village).
-6. **The world does not move** — Current downtime is purely player-driven. There is no mechanic that advances NPC agendas, faction movements, or world events while the party rests. Prolonged downtime carries no narrative risk.
+6. **The world does not move** — Current downtime is purely player-driven. There is no mechanic that advances NPC agendas, faction movements, or world events while the party rests. Prolonged downtime carries no narrative risk. The proposed faction agenda system (§4.2) and weekly settlement events address this.
 7. **Settlement system is minimal** — Four settlement ranks exist but lack mechanical depth beyond item Quality caps. Settlements have no personality, no dynamic economy, and no event tables.
 8. **Magic item availability is undefined** — Players can buy items up to the settlement rank in Quality, but there is no procedure for what specific items are available, how stock rotates, or how to discover rare finds.
 
 ### Design Principles (Inherited from Existing Systems)
 
 1. **Unified time scale framework** — All scenes use the same action loop (Tick → Roll/Act → Results). Downtime should follow this pattern.
-2. **Timer-driven pacing** — Dice timers create urgency and inject events. Downtime should use timers to prevent the phase from feeling static.
+2. **Weekly event pacing** — Just as travel rolls a daily event after each day, downtime rolls a weekly event after each week. This ensures the world moves and creates a consistent rhythm across all time scales.
 3. **Challenge-based progress** — Complex multi-step tasks use challenge dice. Multi-week downtime activities should optionally use this framework.
 4. **Resource management matters** — Supplies, durability, fatigue, and coins are meaningful costs. Downtime should tax resources, not bypass them.
 5. **NPCs and relationships are first-class** — The disposition system and NPC roles exist but have limited downtime hooks. Downtime should be a primary venue for building, maintaining, and testing relationships.
@@ -36,28 +36,28 @@
 | System | Compatibility | Notes |
 |--------|--------------|-------|
 | **Time Scales** | ✅ Full | Downtime is already the weekly time scale. Each activity = one Action (~1 week). Free activities (errands, shop visits, meetings) are defined. |
-| **Dice Timers** | ⚠️ Partial | The Downtime Event Table (d6) exists in the time scales doc, but the downtime rules never reference it. No procedure defines when the timer ticks. |
-| **Event Die** | ⚠️ Partial | The six-category structure (Threat, Wear & Tear, Resource Drain, Shift, Traces, Ambient) is defined for downtime, but it is only an example — no guidance for GMs on when or how to customize it. |
+| **Dice Timers** | ⚠️ Partial | The Downtime Event Table (d6) exists in the time scales doc, but the downtime rules never reference it. Proposed: roll 1d6 weekly (§3.1), mirroring travel's daily event roll rather than using a countdown timer. |
+| **Event Die** | ⚠️ Partial | The six-category structure (Threat, Wear & Tear, Resource Drain, Shift, Traces, Ambient) is defined for downtime but only as an example. The proposed Settlement Event Table (§4.1) expands each category with d6 sub-tables for varied outcomes. |
 | **Challenges** | ⚠️ Partial | Craft an Item already uses cumulative successes, which is mechanically similar to a challenge die. Research could also benefit. But neither activity formally references the challenge system. |
 | **Social Intrigue** | ❌ Missing | No downtime activity feeds into or triggers a Social Intrigue. Carouse produces social outcomes but is underspecified and does not use the Interest/Patience/Motivation framework. |
 | **Travel** | ❌ Missing | No rules for transitioning between travel and downtime, or for conducting short trips (to a nearby settlement) during a downtime phase. |
-| **NPC Relations** | ⚠️ Partial | Carouse can produce NPC connections, but no activity explicitly uses the disposition system, NPC roles, or relationship mechanics. Addressed by proposed Carouse expansion (§3.5) and Tend to Relationships activity (§4.3). |
+| **NPC Relations** | ⚠️ Partial | Carouse can produce NPC connections, but no activity explicitly uses the disposition system, NPC roles, or relationship mechanics. Addressed by proposed Carouse expansion (§3.4) and Tend to Relationships activity (§4.3). |
 | **Crafting Professions** | ✅ Full | Work a Crafting Profession and Craft an Item both reference the professions system directly. |
 | **Harvesting** | ⚠️ Partial | Harvested materials can be used in Craft an Item, but no downtime activity exists for processing, refining, or commissioning items from harvested parts. |
 
 ### 2.2 Identified Conflicts
 
-1. **Timer ambiguity.** The action loop (Tick → Roll/Act → Results) implies that every downtime action should tick a timer. But if each player takes one activity per week, a party of four would tick the timer four times per week — the timer would expire almost every week. This is either intentional (one event per week per party) or needs calibration. See §3.2 for proposed resolution (one tick per week, not per activity).
+1. **Event frequency calibration.** Rolling 1d6 every week means events happen frequently. The Ambient category (6) ensures roughly 1 in 6 weeks is uneventful, but the GM should feel free to skip or defer rolls during narratively intense weeks. This pacing was chosen deliberately to mirror travel's daily event cadence — downtime should not feel like a pause button.
 2. **Crafting uses its own progress system.** Craft an Item tracks "required successes" with its own table, which is functionally identical to a challenge die but uses different terminology. This creates parallel systems for the same concept.
 3. **Complication table is referenced but undefined.** Manual Labour, Work a Crafting Profession, and Research reference a "Complication table" on blunders, but no such table exists in the downtime rules.
 
 ### 2.3 Missing Integration Points
 
-1. **No downtime procedure checklist** — Travel has a clear setup + daily checklist. Downtime has no equivalent step-by-step procedure for the GM.
-2. **No weekly event procedure** — There is no defined moment when the dice timer ticks, the event die is rolled, and the world reacts.
-3. **No faction/NPC advancement rules** — No mechanic allows NPC agendas, faction plots, or world events to advance during downtime.
-4. **No settlement event tables** — The Downtime Event Table is generic. There are no settlement-specific tables (e.g., "City Events", "Hamlet Events") with contextually appropriate results.
-5. **No item market procedure** — Players can buy items up to settlement rank Quality, but there is no procedure for determining what specific magic items, rare goods, or services are available.
+1. **No downtime procedure checklist** — Travel has a clear setup + daily checklist. Downtime has no equivalent step-by-step procedure for the GM. Addressed in §3.1.
+2. **No weekly event procedure** — There is no defined moment when the event die is rolled and the world reacts. Addressed in §3.1 (roll 1d6 every week).
+3. **No faction advancement rules** — No mechanic allows faction plots or world events to advance during downtime. Addressed in §4.2 (Faction Agendas with 4-step clocks).
+4. **No settlement event tables** — The Downtime Event Table is generic. Addressed in §4.1 (Settlement Event Table with d6 sub-tables).
+5. **No item market procedure** — Players can buy items up to settlement rank Quality, but there is no procedure for determining what specific magic items, rare goods, or services are available. Addressed in §5.1.
 
 ---
 
@@ -69,27 +69,20 @@ Add a step-by-step procedure, mirroring the Travel Procedure's structure:
 
 **Downtime Setup (GM, before play)**
 
-1. Determine settlement rank and any special features (e.g., famous smithy, black market, temple of a specific deity).
-2. Set the downtime dice timer (recommended: d6, ticking once per week of downtime).
-3. Prepare or select a settlement event table (or use the default Downtime Event Table).
-4. Note any active NPC agendas, faction goals, or world events that should advance during the downtime.
+1. Determine settlement rank and any special traits (roll or choose from the Settlement Traits table in §4.4).
+2. Prepare or select a settlement event table (or use the default Downtime Event Table).
+3. Generate the settlement market inventory (see §5.1).
+4. Note any active faction agendas that should advance during the downtime (see §4.2).
 
 **Weekly Downtime Procedure (each week)**
 
-1. **Tick** the downtime dice timer by 1.
-2. Each adventurer **declares and resolves** their chosen downtime activity.
-3. **Event check**: If the dice timer hits 0, roll on the Downtime Event Table (d6) and resolve the event. Reset the timer.
-4. **World advancement** *(optional)*: The GM advances any active NPC agendas or faction events by one step.
+1. Each adventurer **declares and resolves** their chosen downtime activity.
+2. **Roll weekly event**: Roll 1d6 on the Settlement Event Table and resolve the result. This happens every week, mirroring how travel rolls a daily event after each day of travel.
+3. **Faction advancement**: The GM advances any active faction agendas by one tick (see §4.2).
 
-> **Design Note:** With a d6 timer and one tick per week, the first event occurs after 6 weeks of downtime. For shorter stays, the GM can start the timer at a lower value (e.g., d4 starting at 4 for a volatile settlement). For longer stays, the timer resets after each event, creating a reliable cadence of world events interspersed with player activities.
+> **Design Note:** Rolling an event every week ensures downtime is never static — the world moves regardless of what the party does. This directly mirrors the travel system's daily event roll (Travel Procedure step 6: "Roll daily event"). Short downtime stays (1–2 weeks) still feel dynamic, while extended stays accumulate meaningful world change. The GM always has the option to skip or replace the roll for a specific week if the narrative demands it.
 
-### 3.2 Clarify Timer Tick Rate
-
-Define that the downtime dice timer ticks once per **week** (not per activity). Each week is one "round" of downtime. All adventurers choose their activities simultaneously, then the timer ticks.
-
-This avoids the issue of party size inflating tick rate and aligns with the Travel system where the timer ticks once per day regardless of party size.
-
-### 3.3 Define the Complication Table
+### 3.2 Define the Complication Table
 
 The following activities reference rolling on a "Complication table" on blunders: Manual Labour, Work a Crafting Profession, Research. Define this table:
 
@@ -104,7 +97,7 @@ The following activities reference rolling on a "Complication table" on blunders
 | 5 | **Lost Time.** The week is wasted on fixing problems. You cannot use this activity again next week. |
 | 6 | **Nothing Extra.** The blunder is bad enough on its own. No additional complication. |
 
-### 3.4 Align Craft an Item with the Challenge Framework
+### 3.3 Align Craft an Item with the Challenge Framework
 
 Reframe the Craft an Item multi-week tracking to use challenge terminology, reducing parallel systems:
 
@@ -115,7 +108,7 @@ Reframe the Craft an Item multi-week tracking to use challenge terminology, redu
 
 > **Design Note:** This is a terminology and framing change, not a mechanical overhaul. The numbers stay the same. The benefit is that players and GMs use one unified language for "multi-step progress tracking" across crafting, chases, research, and other challenges.
 
-### 3.5 Expand the Carouse Activity
+### 3.4 Expand the Carouse Activity
 
 The current Carouse activity is a skeleton (bullet-point outcomes, no full procedure). Expand it to:
 
@@ -133,15 +126,15 @@ You can also multiply this activity's expenses by any factor up to the settlemen
 
 **Failure.** An uneventful week. You enjoy yourself but learn nothing useful and make no lasting connections.
 
-**Weak.** Choose one: learn a local rumor relevant to your interests (GM provides a lead or clue), **or** make a new acquaintance (add an Indifferent NPC relationship with a role appropriate to the settlement).
+**Weak.** Choose one: generate a rumor using the [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx) random tables (Rumor category), **or** make a new acquaintance (add an Indifferent NPC relationship with a role appropriate to the settlement).
 
 **Strong.** Choose two of the above, **or** improve an existing NPC relationship in this settlement by 1 step.
 
 **Critical.** Choose two of the above **and** gain +1 Resolve (max. 3).
 
-> **Design Note:** This revision ties Carouse directly to the NPC relationship and disposition system, making it the primary downtime tool for building social networks. The expense multiplier mirrors Learn a Skill's scaling mechanic.
+> **Design Note:** This revision ties Carouse directly to the NPC relationship and disposition system, making it the primary downtime tool for building social networks. Rumors and quest hooks are generated using the existing [Quest Hooks random tables](../10-gm-tools/01-random-tables/10-random-quests.mdx), keeping content consistent across GM tools. The expense multiplier mirrors Learn a Skill's scaling mechanic.
 
-### 3.6 Add a Downtime Social Intrigue Entry Point
+### 3.5 Add a Downtime Social Intrigue Entry Point
 
 Create a new activity or clarify that Social Intrigue challenges can be initiated during downtime:
 
@@ -149,15 +142,24 @@ Create a new activity or clarify that Social Intrigue challenges can be initiate
 
 | Min. Settlement Rank | Requirements | Expenses |
 | --- | --- | --- |
-| 2 (Village) | An NPC or faction with whom you have a specific request | varies |
+| 2 (Village) | An NPC or faction with whom you have a specific request | see table below |
 
 When you need to convince an NPC or faction of something significant — securing a trade deal, requesting military aid, gaining access to a restricted archive, or resolving a dispute — you initiate a Social Intrigue challenge during downtime.
 
 Follow the full [Social Intrigue](../06-scenes/08-social-intrigue.md) rules. The Patience die, Interest, Motivations, and Pitfalls are set by the GM based on the NPC and the request. Each exchange in the Social Intrigue takes place during one week of downtime (rather than minutes in a conversation). This represents ongoing meetings, negotiations, and political maneuvering.
 
-Expenses depend on the scope of the negotiation (gifts, bribes, hosting feasts, legal fees, etc.) and are determined by the GM based on the situation.
+**Weekly Expenses** scale with the scope of the petition. These represent gifts, bribes, hosting feasts, legal fees, travel within the settlement, and other costs of political maneuvering:
 
-> **Design Note:** This explicitly connects the Social Intrigue system to downtime, filling the identified gap. The weekly-exchange pacing makes Social Intrigue feel appropriately weighty for political or factional negotiations.
+| Scope | Weekly Expenses | Examples |
+|-------|----------------|---------|
+| Minor | 50 coins/week | Access to a restricted area, a letter of introduction, a small favor |
+| Moderate | 200 coins/week | A trade agreement, military escort, formal alliance with a minor faction |
+| Major | 500 coins/week | Military aid, exclusive trade rights, an audience with a ruler, major faction support |
+| Grand | 1,000+ coins/week | Treaties between city-states, legendary artifact access, divine intervention |
+
+On a **blunder** during any exchange, the expenses for that week are wasted and the NPC demands a concession — the GM chooses one: double next week's expenses, the NPC adds a new Pitfall reflecting growing distrust, or the adventurer's reputation in the settlement suffers (+1 bane on all Influence rolls in this settlement for 1d6 weeks).
+
+> **Design Note:** This explicitly connects the Social Intrigue system to downtime, filling the identified gap. The weekly-exchange pacing makes Social Intrigue feel appropriately weighty for political or factional negotiations. The structured expense table gives both players and GMs clear expectations, while the blunder consequence adds real risk to failed diplomacy.
 
 ---
 
@@ -169,43 +171,84 @@ The most significant expansion opportunity is making the world move during downt
 
 **Proposed Mechanic: Settlement Events**
 
-Each time the downtime dice timer expires (typically every 6 weeks with a d6), the GM rolls on a settlement event table. These events affect the settlement, its inhabitants, and potentially the party.
+Each week of downtime, after all activities are resolved, the GM rolls 1d6 on the Settlement Event Table. This mirrors the travel system's daily event roll, ensuring the world moves even during rest. Events affect the settlement as a whole — they are not targeted at the party specifically, though the party may be affected or choose to get involved.
 
-The Downtime Event Table (already defined in Scenes & Time Scales) provides the framework. Below is an expanded, settlement-rank-aware version:
+The table follows the same six-category schema as the generic Downtime Event Table defined in Scenes & Time Scales:
 
-**Settlement Event Table (2d6)**
+**Settlement Event Table (1d6)**
 
-| 2d6 | Event Category | Effect |
-|-----|---------------|--------|
-| 2 | **Crisis!** | A major threat to the settlement: siege, plague, famine, natural disaster, or monster attack. All downtime activities are suspended until the crisis is resolved. The party may choose to help (adventure hook) or flee. |
-| 3 | **Faction Conflict** | Two local factions escalate tensions. The party may be drawn in. One NPC relationship worsens by 1 step (GM's choice based on faction allegiance). |
-| 4 | **Economic Downturn** | Prices rise. All downtime activity expenses increase by 50% for the next 1d6 weeks. |
-| 5 | **Trouble Brewing** | A rival, old enemy, or new threat appears in the settlement. The GM introduces a specific antagonist or complication tied to a party member's backstory or previous adventures. |
-| 6 | **Market Shift** | The settlement's available goods change. The GM re-rolls or adjusts the settlement's market inventory (see Section 5.1). One category of items becomes scarce; another becomes abundant. |
-| 7 | **Quiet Week** | Nothing significant occurs. The settlement is peaceful. |
-| 8 | **Opportunity** | A chance for profit or advancement: a merchant seeks guards for a caravan, a patron offers a commission, or a rare resource is discovered nearby. |
-| 9 | **Rumor Mill** | Interesting information circulates. Each adventurer who succeeds on a Spirit/Mind + Perception or Streetwise test (TN 8) learns one rumor relevant to their interests or current quests. |
-| 10 | **NPC Event** | Something happens to one of the party's NPC contacts. Roll d6: [1–2] Their situation worsens (disposition drops by 1 or they face trouble). [3–4] They reach out with a request or offer. [5–6] Their situation improves (disposition rises by 1 or they gain influence). |
-| 11 | **Festival or Celebration** | A local festival occurs. All Carouse activities this week gain +1 boon. One free Carouse attempt is available at no expense cost. |
-| 12 | **Windfall!** | Unexpected good fortune: a rare item appears on the market, an NPC offers a gift, or the settlement prospers. The GM determines the specific benefit based on context. |
+| d6 | Category | Settlement Effect |
+|----|----------|-------------------|
+| 1 | **Threat** | A danger threatens the settlement. Roll d6: [1] A faction or rival makes a noticeable move (see §4.2 Faction Agendas). [2] A monster or bandit threat emerges nearby. [3] A disease or blight spreads through a district. [4] An old enemy of the settlement resurfaces. [5] A natural disaster strikes (flood, fire, earthquake). [6] A political betrayal or coup attempt rocks the settlement. |
+| 2 | **Wear and Tear** | Infrastructure or resources degrade. Roll d6: [1] A key bridge, road, or building is damaged. [2] Tools or workshop equipment in the settlement need major repair. [3] Water supply or sewage systems fail. [4] A fire damages a market district. [5] Livestock or crops are lost to disease. [6] A warehouse or storehouse collapses or is robbed. |
+| 3 | **Expenses** | Economic pressure mounts. Roll d6: [1] Taxes increase — all activity expenses rise by 50% next week. [2] A key trade route is disrupted — one category of goods becomes scarce. [3] A merchant guild raises prices on a specific service. [4] Currency is debased — coins are worth less. [5] Rent or lodging costs spike due to an influx of refugees or travelers. [6] A patron or employer defaults on payment. |
+| 4 | **Situation Shift** | The social, political, or economic landscape changes. Roll d6: [1] A faction gains or loses power. [2] A new law or decree is announced. [3] A notable NPC arrives in or departs the settlement. [4] A festival, holy day, or mourning period begins (+1 boon on Carouse this week, but some shops may close). [5] Trade agreements shift — available goods change (GM refreshes one market slot). [6] A rumor sweeps the settlement — generate one using the [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx) random tables. |
+| 5 | **Traces** | Signs of coming change or hidden opportunities. Roll d6: [1] Strange travelers arrive with news from afar. [2] Unusual tracks, omens, or signs appear near the settlement. [3] An NPC contact sends word about a developing situation. [4] A hidden cache, passage, or ruin is discovered nearby. [5] Patterns in recent events suggest something larger is at work. [6] A message, map fragment, or coded letter surfaces. |
+| 6 | **Ambient** | Life goes on. Roll d6: [1] A peaceful week — nothing of note occurs. [2] Good weather and high spirits. [3] A minor local celebration or market day. [4] A traveling performer or storyteller passes through. [5] An old tradition is observed. [6] Seasonal change brings new sights and sounds. |
 
-> **Design Note:** This table uses 2d6 for a bell curve distribution, making "Quiet Week" (7) the most common result and extreme events (Crisis, Windfall) rare. This mirrors the natural rhythm of settlement life and prevents downtime from feeling like a constant emergency.
+> **Design Note:** This table uses 1d6 with flat probability, matching the generic event table schema used across all time scales. Each category contains multiple sub-events (d6 each) for variety — the GM can roll the sub-event or choose what fits. A 1-in-6 chance of a threat per week feels appropriately dynamic: over a 6-week downtime, the party will likely face one real threat and several interesting shifts. Festivals and celebrations are sub-events under Situation Shift (result 4-4), not their own category, keeping their frequency appropriately low.
 
-### 4.2 NPC Agenda Advancement
+### 4.2 Faction Agendas
 
-For GMs who want to run living-world downtime, add an optional rule:
+A formalized subsystem for tracking faction and NPC power moves during downtime. Inspired by faction clocks in Blades in the Dark and fronts in Dungeon World, this system treats factions as characters with their own goals, motivations, and consequences — extending the NPC profile model from Social Intrigue to organizations.
 
-**NPC Agenda Advancement (Optional)**
+#### Faction Profiles
 
-Each significant NPC with an active agenda advances their plan by one step per month of downtime (approximately every 4 weeks). The GM tracks NPC agendas using a simple three-step structure:
+Each significant faction in the settlement is defined with a profile that mirrors the Social Intrigue NPC format:
 
-1. **Scheming** — The NPC begins working toward their goal. Clues or rumors about their plans may reach the party.
-2. **Acting** — The NPC takes visible action. The party can observe or interfere.
-3. **Resolution** — The NPC achieves their goal (or fails if interfered with). The world changes accordingly.
+**Faction Profile Template:**
 
-The pace can be accelerated (one step per 2 weeks) for urgent threats or slowed (one step per 6 weeks) for patient schemers.
+- **Name**: The faction's public identity.
+- **Type**: Government, Guild, Temple, Criminal, Military, Merchant, Cult, or Other.
+- **Agenda**: What the faction is currently trying to achieve (1–2 sentences).
+- **Disposition**: The faction's current attitude toward the party (uses the standard disposition scale: Hateful −3 to Intimate +2).
+- **Motivations** (2–3): What the faction wants — desires, fears, bonds, or values. Follows the same format as NPC Motivations in Social Intrigue.
+- **Pitfalls** (1–2): What will turn the faction against someone. Follows the NPC Pitfall format.
+- **Resources**: What the faction can bring to bear (coin, soldiers, information, political influence, magic).
+- **Agenda Clock**: A countdown from 4 to 0 (see below).
 
-> **Design Note:** This gives the GM a lightweight tool for making the world feel dynamic without requiring complex bookkeeping. It pairs naturally with the Settlement Event Table — an NPC Event result (10 on 2d6) can be tied to a specific agenda step.
+> **Example:**
+>
+> **The Copper Merchants' Guild**
+> - **Type:** Merchant
+> - **Agenda:** Secure exclusive mining rights to the new copper vein in the eastern hills.
+> - **Disposition:** Indifferent (0)
+> - **Motivations:** *Desire: Profit* (promise a cut of future trade), *Fear: Rivals* (the Iron Circle threatens their monopoly)
+> - **Pitfalls:** *Insult: Suggesting they need outside help*, *Rival: Any association with the Iron Circle*
+> - **Resources:** Substantial coin, trade contacts across the region, two hired mercenary bands
+> - **Agenda Clock:** ⬜⬜⬜⬜ (4 ticks remaining)
+
+#### Agenda Clocks
+
+Each faction agenda has a **4-step clock** representing how close the faction is to achieving its goal:
+
+| Ticks Remaining | Stage | What's Visible |
+|-----------------|-------|----------------|
+| 4 | **Scheming** | The faction is laying groundwork. Only subtle clues are visible — a flurry of meetings, unusual purchases, or quiet recruitment. Rumors may surface through Carouse or Traces events. |
+| 3 | **Maneuvering** | The faction takes preliminary action. Their moves become noticeable to attentive observers — shipments, hired agents, political favors called in. Players who investigate can learn the faction's Agenda. |
+| 2 | **Acting** | The faction commits openly. Their actions are visible to everyone — public declarations, troop movements, territorial claims, or market manipulation. The party can directly interfere or assist. |
+| 1 | **Climax** | The faction makes its final push. This is the point of no return — a siege begins, a deal closes, a ritual starts, an assassination is attempted. If the party does not intervene this week, the agenda resolves. |
+| 0 | **Resolution** | The faction achieves its goal (or fails, if interfered with). The world changes accordingly — power shifts, NPCs are affected, settlement traits may change. |
+
+**Advancing Clocks:**
+
+- Each week of downtime, the GM ticks one active faction agenda clock by 1 step (as step 3 of the Weekly Downtime Procedure).
+- Not all factions advance every week — the GM chooses which agendas to advance based on narrative pacing. As a guideline, advance 1 faction clock per week. For settlements with many active factions, rotate between them.
+- A **Threat** result (1) on the Settlement Event Table can also advance a faction clock by 1 additional tick, representing external pressure accelerating their plans.
+- Players can **delay** a faction's clock by 1 tick through a successful downtime activity targeting that faction (Petition/Negotiate to convince them to wait, Carouse to learn their plans and spread counter-rumors, or direct action during an adventure).
+- Players can **stop** a faction's agenda entirely by resolving the underlying conflict (through Social Intrigue, negotiation, sabotage, or combat — this becomes an adventure hook).
+
+**Consequences of Resolution:**
+
+When a faction agenda reaches 0, the GM determines the outcome based on the faction's resources and the nature of the agenda. Possible consequences include:
+
+- A settlement trait changes (e.g., Trade Hub → Impoverished if a rival guild succeeds)
+- NPC dispositions shift (allies of the faction improve by +1, opponents worsen by −1)
+- Market availability changes (new goods appear or old ones become scarce)
+- A new adventure hook emerges from the fallout
+- A new faction agenda begins as a result
+
+> **Design Note:** This system extends the Social Intrigue NPC profile format (Motivations, Pitfalls, Disposition) to factions, creating a consistent language for "entities with agendas" across the game. The 4-step clock is simpler than Blades in the Dark's variable-segment clocks, keeping bookkeeping low while still creating a clear narrative arc. The clock pairs naturally with the weekly event roll — a Threat result (1) can represent a faction making an aggressive move, while Traces (5) might hint at a faction in the Scheming or Maneuvering stage.
 
 ### 4.3 New Downtime Activities
 
@@ -219,9 +262,19 @@ The current activity list covers work, learning, social, recovery, and crafting.
 
 You hire a local artisan to craft an item for you. The artisan's skill is limited by the settlement rank (max item Quality = settlement rank + 1). The item is completed in a number of weeks equal to its required successes (see Craft an Item table), assuming the artisan works at a steady pace without the urgency of adventurer crafting.
 
-You can attempt to reduce the time or cost by rolling Mind/Spirit + Influence vs. hard Difficulty (TN 10) to negotiate better terms.
+You can attempt to rush the order or haggle the commission fee by rolling Spirit/Mind + Influence vs. hard Difficulty (TN 10):
 
-> **Design Note:** This provides an alternative to Craft an Item for characters without the Crafting skill, and makes settlement rank mechanically meaningful for non-crafting parties.
+**Blunder.** The artisan is offended and refuses the commission entirely. You cannot commission from this artisan again during this downtime.
+
+**Failure.** No change to the standard terms.
+
+**Weak.** Choose one: reduce the commission fee from 25% to 10%, **or** reduce the crafting time by 1 week (minimum 1 week).
+
+**Strong.** Choose both of the above.
+
+**Critical.** Both of the above, and the artisan offers a minor bonus — a cosmetic flourish, a small discount on materials, or priority for your next commission.
+
+> **Design Note:** This provides an alternative to Craft an Item for characters without the Crafting skill, and makes settlement rank mechanically meaningful for non-crafting parties. The haggling roll has a meaningful risk (losing the commission entirely on a blunder) rather than being a free attempt at better terms.
 
 #### Train with a Master
 
@@ -233,25 +286,47 @@ You seek out a master practitioner and train under their guidance. Choose one sk
 
 **Blunder.** A training accident. Gain 1 Fatigue and roll on the Complication table.
 
-**Failure.** You learn nothing new this week but gain +1 boon on your next attempt.
+**Failure.** You learn nothing new this week but gain +1 boon on your next Train with a Master attempt for this skill.
 
-**Weak.** You gain a valuable insight. The next time you spend XP on this skill, reduce the cost by 1 XP (minimum 1).
+**Weak.** You gain a temporary edge. Choose one: gain +1 boon on your next skill test using this skill during your next adventure, **or** the master shares a useful piece of practical knowledge (the GM provides a specific tip, contact, or lore relevant to the skill).
 
-**Strong.** As weak, and you may immediately re-roll one failed skill test using this skill during your next adventure.
+**Strong.** You gain both benefits above.
 
-**Critical.** As strong, and the master shares a rare technique — you learn a specific piece of lore, tactical advice, or contact relevant to the skill.
+**Critical.** Both of the above, **and** the intense training steels your confidence — gain +1 Resolve (max. 3).
 
-> **Design Note:** This provides an alternative path to skill advancement that leverages NPC relationships (the master must be willing) and settlement infrastructure. It does not replace spending XP but makes it more efficient.
+> **Design Note:** Train with a Master provides temporary, adventure-applicable benefits rather than permanent advancement. It does not reduce XP costs or accelerate the skill rank progression — that system is intentionally paced by XP expenditure. The +1 boon on a future skill test rewards the time investment without breaking the progression curve. The critical success granting Resolve represents the peak inspirational moment of mentorship.
 
 #### Tend to Relationships
 
 | Min. Settlement Rank | Requirements | Expenses |
 | --- | --- | --- |
-| 1 (Hamlet) | An NPC relationship to maintain | varies (gifts, time, favors) |
+| 1 (Hamlet) | An NPC relationship to maintain | see table below |
 
 You spend the week maintaining or improving a relationship with a specific NPC. This might involve helping with their work, sharing meals, offering gifts, or simply being present and reliable.
 
-Roll the appropriate Attribute + Skill vs. a Difficulty determined by the NPC's current disposition:
+**Expenses** depend on the NPC's role and the approach you take:
+
+| NPC Role | Typical Approach | Suggested Expenses |
+|----------|-----------------|-------------------|
+| Adventurer | Train together, share stories, help with a task | 25 coins/week (drinks, supplies) |
+| Artisan | Assist in their workshop, source materials, commission work | 50 coins/week (materials, tools) |
+| Authority | Attend court, deliver favors, make political appearances | 100 coins/week (gifts, formal attire, fees) |
+| Scholar | Assist research, share knowledge, acquire rare texts | 50 coins/week (books, supplies, access fees) |
+| Scoundrel | Run errands, keep secrets, provide cover or coin | 75 coins/week (bribes, debts, contraband) |
+| Seeker | Travel together, share supplies, help with their quest | 25 coins/week (supplies, travel costs) |
+
+**Skill Test** depends on the NPC's role and your chosen approach:
+
+| NPC Role | Suggested Skill Tests |
+|----------|----------------------|
+| Adventurer | Strength + Athletics, Agility + Fighting, Spirit + Survival |
+| Artisan | Strength/Agility + Crafting, Mind + Crafting |
+| Authority | Spirit + Influence, Mind + Education |
+| Scholar | Mind + Education, Mind + Lore, Spirit + Insight |
+| Scoundrel | Agility + Stealth, Spirit + Streetwise, Mind + Insight |
+| Seeker | Spirit + Influence, Mind + Nature, Spirit + Perception |
+
+Roll the chosen Attribute + Skill vs. a Difficulty determined by the NPC's current disposition:
 
 | Disposition | Difficulty |
 |-------------|-----------|
@@ -261,36 +336,46 @@ Roll the appropriate Attribute + Skill vs. a Difficulty determined by the NPC's 
 | Friendly (+1) | Medium (8) |
 | Intimate (+2) | Easy (6) |
 
-The relevant Attribute + Skill depends on the NPC's role and the approach you take (e.g., Strength + Athletics to help an Adventurer train, Mind + Education to assist a Scholar's research, Spirit + Influence to attend an Authority's court).
-
 **Success.** The NPC's disposition toward you improves by 1 step (max. Intimate +2).
 
 **Failure.** No change, but you maintain the current relationship.
 
 **Blunder.** Your attempt backfires. The NPC's disposition worsens by 1 step.
 
-> **Design Note:** This provides a dedicated downtime mechanism for the NPC relationship system, making disposition changes more deliberate and player-driven rather than purely narrative.
+> **Design Note:** This provides a dedicated downtime mechanism for the NPC relationship system, making disposition changes more deliberate and player-driven rather than purely narrative. The expense and skill tables are organized by NPC role, matching the existing relationship categories from the [NPCs and Relationships](../02-adventurers/05-npc-relations.md) system. The GM may adjust expenses and skill tests if the player proposes a creative approach that doesn't fit the suggestions.
 
 ### 4.4 Expanded Settlement Identity
 
-Give each settlement mechanical identity beyond its rank:
+Give each settlement mechanical identity beyond its rank by assigning traits. Settlement traits complement the worldbuilding tables in the [Random Settlement Generator](../10-gm-tools/01-random-tables/12-random-settlement.mdx) — those tables define *what* a settlement is (geography, culture, resources), while traits define *how it plays* mechanically during downtime.
 
-**Settlement Traits (1–3 per settlement)**
+**Assigning Traits:** Each settlement has 1–3 traits depending on its rank (Hamlet: 1 trait, Village: 1–2 traits, Town: 2–3 traits, City: 3 traits). Roll on the table below or choose traits that match the settlement's character.
 
-| Trait | Effect |
-|-------|--------|
-| **Trade Hub** | +1 boon on Haggle rolls. Market inventory includes items from other regions. |
-| **Military Outpost** | Weapons and armor available at +1 Quality above settlement rank. +1 boon on Learn a Skill (Fighting, Archery). |
-| **Sacred Ground** | +1 boon on Provide Offering. Mysticism-related services available at reduced cost. |
-| **Arcane Academy** | Arcana-related services available. Spell scrolls and catalysts available at +1 Quality above settlement rank. |
-| **Black Market** | Illegal goods available. +1 boon on Streetwise rolls. Prices are 50% higher. |
-| **Frontier Settlement** | Survival and Nature supplies are abundant. Urban goods are scarce (−1 Quality cap). |
-| **Cosmopolitan** | NPC contacts from distant cultures available. +1 boon on Carouse. |
-| **Impoverished** | All expenses reduced by 25%, but available item Quality is −1. |
-| **Prosperous** | All expenses increased by 25%, but available item Quality is +1. |
-| **Isolated** | Limited market inventory. −1 bane on Haggle and Carouse. |
+**Settlement Traits Table (d20)**
 
-> **Design Note:** Settlement traits make downtime location-dependent, encouraging parties to choose destinations based on their downtime goals. They also give the GM a fast tool for differentiating settlements without extensive worldbuilding.
+| d20 | Trait | Mechanical Effect |
+|-----|-------|-------------------|
+| 1 | **Trade Hub** | +1 boon on Haggle rolls. Market inventory includes items from other regions. |
+| 2 | **Military Outpost** | Weapons and armor available at +1 Quality above settlement rank. +1 boon on Learn a Skill (Fighting, Archery). |
+| 3 | **Sacred Ground** | +1 boon on Provide Offering. Mysticism-related services available at reduced cost (75%). |
+| 4 | **Arcane Academy** | Arcana-related services available. Spell scrolls and catalysts available at +1 Quality above settlement rank. |
+| 5 | **Black Market** | Illegal and exotic goods available. +1 boon on Streetwise rolls during downtime. All market prices are 50% higher. |
+| 6 | **Frontier Settlement** | Survival and Nature supplies are abundant (75% cost). Urban luxury goods are scarce (−1 Quality cap). |
+| 7 | **Cosmopolitan** | NPC contacts from distant cultures available. +1 boon on Carouse. |
+| 8 | **Impoverished** | All downtime expenses reduced by 25%, but available item Quality is −1 below settlement rank cap. |
+| 9 | **Prosperous** | All downtime expenses increased by 25%, but available item Quality is +1 above settlement rank cap. |
+| 10 | **Isolated** | Limited market inventory (−1 magic item slot, minimum 0). +1 bane on Haggle and Carouse. |
+| 11 | **Artisan Quarter** | +1 boon on Craft an Item and Work a Crafting Profession. One additional crafting profession is available for learning. |
+| 12 | **Scholarly Haven** | +1 boon on Research. Libraries and archives available. Education-related services at reduced cost (75%). |
+| 13 | **Thieves' Den** | +1 boon on Streetwise and Stealth-related activities. Fencing stolen goods is easy. Risk of theft is higher (Complication table results of "Unwanted Attention" involve criminals instead of authorities). |
+| 14 | **Port Town** | +1 magic item slot from overseas trade. Travel by sea is available. Exotic materials appear in the market. |
+| 15 | **Contested Territory** | Two or more factions actively compete for influence. Faction agenda clocks advance 1 additional tick per week. Petition/Negotiate expenses are doubled. |
+| 16 | **Healing Springs** | +1 boon on Recover. Wounds heal 1 week faster. Alchemist supplies at reduced cost (75%). |
+| 17 | **Haunted** | Strange occurrences are common. +1 boon on Lore and Arcana-related activities. Settle events of category 1 (Threat) always involve supernatural elements. |
+| 18 | **Bountiful Land** | Food and rations at 50% cost. +1 boon on Nature-related activities. Manual Labour pays 50% more. |
+| 19 | **War-Torn** | Weapons and armor are plentiful (−25% cost). Civilian goods are scarce (+50% cost). Mercenary work is readily available (Manual Labour pays double, but involves risk — roll on Complication table each week regardless of success). |
+| 20 | **Ancient Ruins Nearby** | Exotic materials and artifacts occasionally surface in the market (+1 magic item slot). Lore and Education-related activities gain +1 boon. Adventure hooks are plentiful. |
+
+> **Design Note:** The d20 table makes settlement traits rollable for random settlement creation, complementing the existing [Settlement Generator](../10-gm-tools/01-random-tables/12-random-settlement.mdx) tables for Geography, Resources, Culture, and Government. Roll once per trait slot (1–3 based on settlement rank). Re-roll duplicates. Traits can also be selected deliberately to match worldbuilding choices — a settlement rolled with "copper mining and smelting" as its resource naturally fits the Artisan Quarter trait, while one "threatened by bandits in hiding" suits War-Torn or Contested Territory.
 
 ---
 
@@ -330,7 +415,7 @@ A streamlined procedure for determining what magic items and rare goods are avai
 
 **Market Refresh (Downtime Event)**
 
-When a "Market Shift" result (6) occurs on the Settlement Event Table, the GM re-rolls all magic item slots, replacing the current inventory. Alternatively, the GM may add one new item and remove one old item.
+When a Situation Shift result (4) with sub-event [5] "Trade agreements shift" occurs on the Settlement Event Table, the GM re-rolls one or more magic item slots, refreshing the available inventory. Alternatively, the GM may add one new item and remove one old item at any time they feel it's appropriate.
 
 Players can also attempt to find specific items using the Haggle activity (modified to include searching for items to buy, not just selling).
 
@@ -370,17 +455,14 @@ A one-page reference for the GM to run downtime efficiently:
 │            DOWNTIME QUICK REFERENCE                  │
 ├─────────────────────────────────────────────────────┤
 │ SETUP                                               │
-│  1. Settlement Rank: ___  Traits: ___               │
-│  2. Dice Timer: d___ starting at ___                │
-│  3. Market Slots: ___ (fill with Magic Item table)  │
-│  4. Active NPC Agendas: ___                         │
+│  1. Settlement Rank: ___  Traits: ___ (d20 table)   │
+│  2. Market Slots: ___ (fill with Magic Item table)  │
+│  3. Active Faction Agendas: ___                     │
 │                                                     │
 │ EACH WEEK                                           │
-│  1. Tick timer (−1)                                 │
-│  2. Each adventurer: declare + resolve activity     │
-│  3. If timer = 0: roll Settlement Event (2d6)       │
-│     → Reset timer                                   │
-│  4. (Optional) Advance NPC agendas                  │
+│  1. Each adventurer: declare + resolve activity     │
+│  2. Roll Settlement Event (1d6)                     │
+│  3. Advance faction agenda clocks (1 tick each)     │
 │                                                     │
 │ ACTIVITIES                                          │
 │  Work:     Manual Labour, Work a Crafting Profession│
@@ -392,11 +474,16 @@ A one-page reference for the GM to run downtime efficiently:
 │  Commerce: Haggle (Buy & Sell), Commission an Item  │
 │  Craft:    Craft an Item                            │
 │                                                     │
-│ SETTLEMENT EVENT TABLE (2d6)                        │
-│  2: Crisis! │ 3: Faction Conflict │ 4: Econ Down   │
-│  5: Trouble │ 6: Market Shift     │ 7: Quiet Week  │
-│  8: Opportunity │ 9: Rumors │ 10: NPC Event        │
-│  11: Festival   │ 12: Windfall!                     │
+│ SETTLEMENT EVENT TABLE (1d6)                        │
+│  1: Threat (d6 sub-table)                           │
+│  2: Wear and Tear (d6 sub-table)                    │
+│  3: Expenses (d6 sub-table)                         │
+│  4: Situation Shift (d6 sub-table)                  │
+│  5: Traces (d6 sub-table)                           │
+│  6: Ambient (d6 sub-table)                          │
+│                                                     │
+│ FACTION AGENDA CLOCK (4 steps)                      │
+│  Scheming → Maneuvering → Acting → Climax → Done   │
 │                                                     │
 │ COMPLICATION TABLE (d6)                             │
 │  1: Injury (1 Fatigue)                              │
@@ -453,27 +540,26 @@ Drawing on the Frontier Town expansion from Shadows of Brimstone, consider the f
 | Change | Effort | Impact |
 |--------|--------|--------|
 | Add Downtime Procedure Checklist (Setup + Weekly) | Low | High — unifies downtime with travel/challenge pattern |
-| Clarify timer tick rate (1/week, not 1/activity) | Low | Medium — removes ambiguity |
+| Roll weekly settlement event (1d6, every week) | Low | High — mirrors travel daily events, world feels alive |
 | Define the Complication Table | Low | Medium — fills a referenced but missing table |
-| Expand Carouse activity with full outcomes | Low | High — connects to NPC system |
+| Expand Carouse activity with full outcomes + random table references | Low | High — connects to NPC system and GM tools |
 
 ### Priority 2: System Alignment (Recommended Changes)
 
 | Change | Effort | Impact |
 |--------|--------|--------|
 | Align Craft an Item with challenge terminology | Medium | Medium — reduces parallel systems |
-| Add Petition/Negotiate activity (Social Intrigue bridge) | Medium | High — fills major gap |
+| Add Petition/Negotiate activity with expense framework | Medium | High — fills major gap, connects Social Intrigue to downtime |
 | Expand Haggle to cover buying items | Low | Medium — fills practical gap |
-| Add Settlement Event Table (2d6) | Medium | High — makes world feel alive |
+| Faction Agenda subsystem (4-step clocks) | Medium | High — makes world dynamic, gives GM structured tool |
 
 ### Priority 3: Expansion Content (Future Development)
 
 | Change | Effort | Impact |
 |--------|--------|--------|
 | Settlement Market Procedure | Medium | High — addresses magic item availability |
-| Settlement Traits system | Medium | Medium — differentiates locations |
+| Settlement Traits table (d20, rollable) | Medium | Medium — differentiates locations, integrates with settlement generator |
 | New activities (Commission, Train, Tend to Relationships) | Medium | Medium — broadens player options |
-| NPC Agenda Advancement rules | Low | High — makes world dynamic |
 | Location Encounter Tables (boardgame-style) | High | Medium — adds flavor and replayability |
 
 ### Document Structure Recommendations
@@ -484,17 +570,19 @@ If these proposals are implemented, the downtime documentation should be restruc
 docs/06-scenes/04-downtime/
 ├── 00-overview.md          (procedure + settlements + settlement traits)
 ├── 01-activities.md        (all activities, including new ones)
-├── 02-settlement-events.md (event tables + complication table)
-└── 03-market.md            (market generation + haggle buying)
+├── 02-settlement-events.md (event table + complication table)
+├── 03-faction-agendas.md   (faction profiles + agenda clocks)
+└── 04-market.md            (market generation + haggle buying)
 ```
 
 ### Next Steps
 
 1. **Review and prioritize** — Discuss which changes to implement first based on campaign needs and development capacity.
-2. **Playtest the procedure** — Test the Downtime Procedure Checklist and timer tick rate with a real group to validate pacing.
+2. **Playtest the weekly event roll** — Test the 1d6 Settlement Event Table with a real group over 4–6 weeks of downtime to validate pacing and variety.
 3. **Write the Complication Table and expanded Carouse** — These are low-effort, high-impact changes that can be implemented immediately.
-4. **Design settlement event tables** — Start with the 2d6 table above and customize for specific campaign settlements.
-5. **Prototype the market procedure** — Test the magic item generation system with a few sample settlements to validate Quality distribution and variety.
+4. **Prototype faction agendas** — Test the 4-step clock system with 2–3 factions during a downtime phase to validate advancement pace.
+5. **Build the settlement traits d20 table** — Integrate with the existing Random Settlement Generator as an additional rollable layer.
+6. **Prototype the market procedure** — Test the magic item generation system with a few sample settlements to validate Quality distribution and variety.
 
 ---
 
@@ -507,9 +595,9 @@ docs/06-scenes/04-downtime/
 | Scenes & Time Scales | Downtime = weekly time scale, free activities defined, Downtime Event Table included | ✅ Aligned |
 | Crafting Professions | Referenced by Work a Crafting Profession and Craft an Item | ✅ Aligned |
 | Harvesting | Materials feed into Craft an Item | ⚠️ No dedicated processing activity |
-| NPC Relations | Disposition system exists but has minimal downtime hooks | ⚠️ Addressed by proposed Carouse expansion (§3.5) and Tend to Relationships (§4.3) |
-| Challenges | Multi-step progress tracking exists in crafting but uses different terminology | ⚠️ Addressed by terminology alignment proposal (§3.4) |
-| Social Intrigue | No downtime entry point | ❌ Addressed by proposed Petition/Negotiate activity (§3.6) |
+| NPC Relations | Disposition system exists but has minimal downtime hooks | ⚠️ Addressed by proposed Carouse expansion (§3.4) and Tend to Relationships (§4.3) |
+| Challenges | Multi-step progress tracking exists in crafting but uses different terminology | ⚠️ Addressed by terminology alignment proposal (§3.3) |
+| Social Intrigue | No downtime entry point | ❌ Addressed by proposed Petition/Negotiate activity (§3.5) |
 | Travel | No downtime ↔ travel transition rules | ❌ Needs handoff procedure (future work) |
 | Resting | Wound healing during downtime is mentioned (1 Wound/week auto-heal) | ✅ Aligned |
 | Talents (Crafting) | Artisan and Efficient Worker directly reference downtime crafting | ✅ Aligned |
@@ -524,7 +612,7 @@ docs/06-scenes/04-downtime/
 
 ### Downtime Event Table (d6) — Currently Defined
 
-Defined in Scenes & Time Scales (lines 125–134) with the standard six-category structure. Not referenced by downtime rules themselves.
+Defined in Scenes & Time Scales (lines 125–134) with the standard six-category structure. The proposed Settlement Event Table (§4.1) follows this same 1d6 schema with settlement-specific sub-events (d6 each), rolled every week of downtime.
 
 | d6 | Category | Downtime Variant |
 |----|----------|-----------------|
