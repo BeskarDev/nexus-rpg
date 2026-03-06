@@ -11,7 +11,7 @@
 ### Key Findings
 
 1. **Core procedure is compatible** — Downtime already operates at the weekly time scale and uses per-activity skill rolls, which fit cleanly into the unified Scenes & Time Scales framework.
-2. **Weekly event roll replaces dice timer** — The Downtime Event Table exists in the time scales document, but the downtime rules themselves never reference it. The proposed approach rolls 1d6 every week (mirroring travel's daily event roll), rather than using a countdown dice timer.
+2. **Weekly event roll replaces countdown timer** — The Downtime Event Table exists in the time scales document, but the downtime rules themselves never reference it. The proposed approach rolls 1d6 every week (mirroring travel's daily event roll), rather than using a countdown timer.
 3. **Challenge system is underused** — Multi-week activities (Craft an Item, Research) already track cumulative progress, but they do not use Challenge Dice formally. Aligning them with the challenge framework would unify procedures and reduce cognitive overhead.
 4. **Social intrigue has no downtime entry point** — There is no downtime activity that bridges into the Social Intrigue system (e.g., petitioning a ruler, negotiating a trade agreement, lobbying a faction). The Carouse activity is incomplete and underspecified.
 5. **Travel ↔ downtime handoff is missing** — No rules govern what happens when travel time overlaps with downtime (arriving mid-week, traveling between settlements during downtime, running errands to a nearby village).
@@ -126,7 +126,7 @@ You can also multiply this activity's expenses by any factor up to the settlemen
 
 **Failure.** An uneventful week. You enjoy yourself but learn nothing useful and make no lasting connections.
 
-**Weak.** Choose one: generate a rumor using the [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx) random tables (Rumor category), **or** make a new acquaintance (add an Indifferent NPC relationship with a role appropriate to the settlement).
+**Weak.** Choose one: generate a rumor using the [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx) random tables (use the "Rumor" sentence seed: *"[Source] says that [rumor subject] near [location]. They say it's because of [cause]."*), **or** make a new acquaintance (add an Indifferent NPC relationship with a role appropriate to the settlement).
 
 **Strong.** Choose two of the above, **or** improve an existing NPC relationship in this settlement by 1 step.
 
@@ -294,7 +294,7 @@ You seek out a master practitioner and train under their guidance. Choose one sk
 
 **Critical.** Both of the above, **and** the intense training steels your confidence — gain +1 Resolve (max. 3).
 
-> **Design Note:** Train with a Master provides temporary, adventure-applicable benefits rather than permanent advancement. It does not reduce XP costs or accelerate the skill rank progression — that system is intentionally paced by XP expenditure. The +1 boon on a future skill test rewards the time investment without breaking the progression curve. The critical success granting Resolve represents the peak inspirational moment of mentorship.
+> **Design Note:** Train with a Master provides temporary, adventure-applicable benefits rather than permanent advancement. It does not reduce XP costs or accelerate the skill rank progression — that system is intentionally paced by XP expenditure. The +1 boon on a future skill test rewards the time investment without breaking the progression curve. The critical success granting +1 Resolve is an immediate, consumable reward (Resolve is spent during play and recovered through rest) that represents the peak inspirational moment of mentorship.
 
 #### Tend to Relationships
 
@@ -366,7 +366,7 @@ Give each settlement mechanical identity beyond its rank by assigning traits. Se
 | 10 | **Isolated** | Limited market inventory (−1 magic item slot, minimum 0). +1 bane on Haggle and Carouse. |
 | 11 | **Artisan Quarter** | +1 boon on Craft an Item and Work a Crafting Profession. One additional crafting profession is available for learning. |
 | 12 | **Scholarly Haven** | +1 boon on Research. Libraries and archives available. Education-related services at reduced cost (75%). |
-| 13 | **Thieves' Den** | +1 boon on Streetwise and Stealth-related activities. Fencing stolen goods is easy. Risk of theft is higher (Complication table results of "Unwanted Attention" involve criminals instead of authorities). |
+| 13 | **Thieves' Den** | +1 boon on Streetwise and Stealth-related activities. Fencing stolen goods is easy. Risk of theft is higher (Complication table results of 4 "Unwanted Attention" involve criminals instead of authorities). |
 | 14 | **Port Town** | +1 magic item slot from overseas trade. Travel by sea is available. Exotic materials appear in the market. |
 | 15 | **Contested Territory** | Two or more factions actively compete for influence. Faction agenda clocks advance 1 additional tick per week. Petition/Negotiate expenses are doubled. |
 | 16 | **Healing Springs** | +1 boon on Recover. Wounds heal 1 week faster. Alchemist supplies at reduced cost (75%). |
@@ -415,7 +415,7 @@ A streamlined procedure for determining what magic items and rare goods are avai
 
 **Market Refresh (Downtime Event)**
 
-When a Situation Shift result (4) with sub-event [5] "Trade agreements shift" occurs on the Settlement Event Table, the GM re-rolls one or more magic item slots, refreshing the available inventory. Alternatively, the GM may add one new item and remove one old item at any time they feel it's appropriate.
+When a Situation Shift result (4) with sub-event [5] "Trade agreements shift — available goods change" occurs on the Settlement Event Table, the GM re-rolls one or more magic item slots, refreshing the available inventory. Alternatively, the GM may add one new item and remove one old item at any time they feel it's appropriate.
 
 Players can also attempt to find specific items using the Haggle activity (modified to include searching for items to buy, not just selling).
 
@@ -483,7 +483,7 @@ A one-page reference for the GM to run downtime efficiently:
 │  6: Ambient (d6 sub-table)                          │
 │                                                     │
 │ FACTION AGENDA CLOCK (4 steps)                      │
-│  Scheming → Maneuvering → Acting → Climax → Done   │
+│  Scheming → Maneuvering → Acting → Climax → Resolve │
 │                                                     │
 │ COMPLICATION TABLE (d6)                             │
 │  1: Injury (1 Fatigue)                              │
