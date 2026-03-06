@@ -41,13 +41,13 @@
 | **Challenges** | ⚠️ Partial | Craft an Item already uses cumulative successes, which is mechanically similar to a challenge die. Research could also benefit. But neither activity formally references the challenge system. |
 | **Social Intrigue** | ❌ Missing | No downtime activity feeds into or triggers a Social Intrigue. Carouse produces social outcomes but is underspecified and does not use the Interest/Patience/Motivation framework. |
 | **Travel** | ❌ Missing | No rules for transitioning between travel and downtime, or for conducting short trips (to a nearby settlement) during a downtime phase. |
-| **NPC Relations** | ⚠️ Partial | Carouse can produce NPC connections, but no activity explicitly uses the disposition system, NPC roles, or relationship mechanics. |
+| **NPC Relations** | ⚠️ Partial | Carouse can produce NPC connections, but no activity explicitly uses the disposition system, NPC roles, or relationship mechanics. Addressed by proposed Carouse expansion (§3.5) and Tend to Relationships activity (§4.3). |
 | **Crafting Professions** | ✅ Full | Work a Crafting Profession and Craft an Item both reference the professions system directly. |
 | **Harvesting** | ⚠️ Partial | Harvested materials can be used in Craft an Item, but no downtime activity exists for processing, refining, or commissioning items from harvested parts. |
 
 ### 2.2 Identified Conflicts
 
-1. **Timer ambiguity.** The action loop (Tick → Roll/Act → Results) implies that every downtime action should tick a timer. But if each player takes one activity per week, a party of four would tick the timer four times per week — the timer would expire almost every week. This is either intentional (one event per week per party) or needs calibration.
+1. **Timer ambiguity.** The action loop (Tick → Roll/Act → Results) implies that every downtime action should tick a timer. But if each player takes one activity per week, a party of four would tick the timer four times per week — the timer would expire almost every week. This is either intentional (one event per week per party) or needs calibration. See §3.2 for proposed resolution (one tick per week, not per activity).
 2. **Crafting uses its own progress system.** Craft an Item tracks "required successes" with its own table, which is functionally identical to a challenge die but uses different terminology. This creates parallel systems for the same concept.
 3. **Complication table is referenced but undefined.** Manual Labour, Work a Crafting Profession, and Research reference a "Complication table" on blunders, but no such table exists in the downtime rules.
 
@@ -127,7 +127,7 @@ The current Carouse activity is a skeleton (bullet-point outcomes, no full proce
 
 You spend the week socializing — frequenting taverns, attending gatherings, making introductions, or exploring the local scene. Roll Spirit/Mind + Streetwise vs. medium Difficulty (TN 8).
 
-You can also multiply this activity's expenses by any factor up to the settlement rank and gain a number of boons on the roll equal to it (representing more lavish entertainment and access to higher social circles).
+You can also multiply this activity's expenses by any factor up to the settlement rank and gain a number of boons on the roll equal to the expense multiplier (representing more lavish entertainment and access to higher social circles).
 
 **Blunder.** You cause a scene. Roll on the Complication table. Additionally, one of your existing NPC relationships in this settlement worsens by 1 step (GM's choice).
 
@@ -324,7 +324,7 @@ A streamlined procedure for determining what magic items and rare goods are avai
 | 5 | Spell Catalyst (wand, staff, orb) |
 | 6 | GM's choice or re-roll |
 
-3. **Determine Quality**: Each magic item is Q3 + 1d3 (capped at the settlement's max Quality). Higher-Quality items are rarer even in cities.
+3. **Determine Quality**: Each magic item is Q2 + 1d3 (producing Q3–Q5, capped at the settlement's max Quality). This means Villages (max Q3) stock only Q3 items, Towns (max Q4) stock Q3–Q4, and Cities (max Q5) stock the full range. Hamlets have no magic item slots.
 
 4. **Determine specifics**: The GM selects or randomly determines the specific item type, material, and enchantment based on the settlement's character and traits.
 
@@ -507,10 +507,10 @@ docs/06-scenes/04-downtime/
 | Scenes & Time Scales | Downtime = weekly time scale, free activities defined, Downtime Event Table included | ✅ Aligned |
 | Crafting Professions | Referenced by Work a Crafting Profession and Craft an Item | ✅ Aligned |
 | Harvesting | Materials feed into Craft an Item | ⚠️ No dedicated processing activity |
-| NPC Relations | Disposition system exists but has minimal downtime hooks | ⚠️ Needs Carouse/Tend to Relationships integration |
-| Challenges | Multi-step progress tracking exists in crafting but uses different terminology | ⚠️ Needs terminology alignment |
-| Social Intrigue | No downtime entry point | ❌ Needs Petition/Negotiate activity |
-| Travel | No downtime ↔ travel transition rules | ❌ Needs handoff procedure |
+| NPC Relations | Disposition system exists but has minimal downtime hooks | ⚠️ Addressed by proposed Carouse expansion (§3.5) and Tend to Relationships (§4.3) |
+| Challenges | Multi-step progress tracking exists in crafting but uses different terminology | ⚠️ Addressed by terminology alignment proposal (§3.4) |
+| Social Intrigue | No downtime entry point | ❌ Addressed by proposed Petition/Negotiate activity (§3.6) |
+| Travel | No downtime ↔ travel transition rules | ❌ Needs handoff procedure (future work) |
 | Resting | Wound healing during downtime is mentioned (1 Wound/week auto-heal) | ✅ Aligned |
 | Talents (Crafting) | Artisan and Efficient Worker directly reference downtime crafting | ✅ Aligned |
 
