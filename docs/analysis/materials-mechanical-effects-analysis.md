@@ -139,7 +139,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 
 > *Magical alloy of bronze and Solarite dust, forged by Ghahar smiths. Warm-golden glow with reddish shimmer, radiates constant warmth and soft light. Sacred to the Anutep — possession by outsiders is a grave sin.*
 
-**Design notes:** Q3 fire-themed exotic. Identity is fire conversion and warmth — the entry-level fire material, below Solarite (Q5). Modest single effects matching Q3 power budget.
+**Design notes:** Q3 fire-themed exotic. Identity is fire conversion and warmth — the entry-level fire material, below Solarite (Q5). Modest single effects matching Q3 power budget. (Name translated as "Shine-Bronze" per reviewer preference — literal translation of *Glanzbronze*.)
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
@@ -350,7 +350,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 
 > *Gold saturated with pure magic over aeons at ley-line intersections. Conducts and potentiates magic like no other material. Enchantments placed on it last forever. Material for artifacts that shape the fate of empires.*
 
-**Design notes:** Core identity is **enchantment amplification** — the material that makes enchantments more powerful. This is unique in the entire system and creates exciting build synergies with the modular enchantment system. Secondary: elemental flexibility for weapons.
+**Design notes:** Core identity is **enchantment amplification** — the material that makes enchantments more powerful. This is unique in the entire system and creates exciting build synergies with the modular enchantment system. Secondary: elemental flexibility for weapons. *Balance consideration:* The +1 daily use is powerful with combat enchantments (tough, blurring) — this is intentional for Q7–Q8 pricing. The GM may rule that unique or artifact-level enchantments are exempt.
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
@@ -370,10 +370,10 @@ The ten published Exotic materials establish the baseline power level. This sect
 | Item Type | Proposed Effect |
 |-----------|----------------|
 | **Any** | -1 load (min. 0). You never take falling damage. The item emits dim light in melee range. |
-| **Light Armor** | You gain +1 Movement per turn. Once per day, you can fly up to a medium distance. While flying this way, you can hover in place. |
-| **Heavy Armor** | Reduce the item's rigid property by 1 (min. 0). Once per day, you can fly up to a short distance. While flying this way, you can hover in place. |
+| **Light Armor** | You gain +1 Movement per turn. Once per day, you can fly up to a medium distance as part of your movement. The flight ends at the end of your turn — you must land or begin hovering (descending gently over a brief duration). |
+| **Heavy Armor** | Reduce the item's rigid property by 1 (min. 0). Once per day, you can fly up to a short distance as part of your movement. The flight ends at the end of your turn. |
 | **Shield** | Once per scene, when a Spirit (Infernal) or Undead creature hits you with an attack, you can gain resistance against that damage. |
-| **Wearable** | Once per day, you can fly up to a short distance. While flying this way, you can hover in place. |
+| **Wearable** | Once per day, you can fly up to a short distance as part of your movement. The flight ends at the end of your turn. |
 
 ---
 
@@ -431,7 +431,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 | Item Type | Proposed Effect |
 |-----------|----------------|
 | **Any** | -1 load (min. 0). You are immune to extreme heat and extreme cold effects during travel. |
-| **Spell Catalyst** | Once per day, when you cast a spell that costs Focus, you can cast it without spending Focus (treat the spell as if Focus was spent normally for all other purposes). This catalyst has 0 load. |
+| **Spell Catalyst** | Once per day, when you cast a spell that costs Focus, you can cast it without spending Focus. The spell's effects (damage, duration, etc.) are calculated as if Focus was spent normally — only the cost is waived. This catalyst has 0 load. |
 | **Heavy Armor** | Reduce the item's rigid property by 2 (min. 0). |
 | **Shield** | Once per scene, when you would be pushed or knocked prone, you can ignore that effect. |
 | **Wearable** | Once per day, you can levitate yourself or one willing creature you touch up to a short distance vertically. The target hovers for a short duration (about 1 minute) before descending gently. |
@@ -507,7 +507,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 | Item Type | Proposed Effect |
 |-----------|----------------|
 | **Any** | This item is indestructible. It never requires Durability checks and cannot be broken or damaged by any means, magical or otherwise. |
-| **Weapon** | This weapon's damage counts as both physical and magical. It ignores resistance to physical damage (such as from creatures that resist non-magical attacks). |
+| **Weapon** | This weapon's damage counts as both physical and magical. It ignores resistance to physical damage (such as from creatures that resist non-magical weapons). Magical resistance or elemental resistance is not bypassed. |
 | **Spell Catalyst** | This catalyst also functions as a melee weapon (quarterstaff) of the same Quality tier. Once per scene, when you fail a mystic nature-tradition spell casting roll, you can re-roll that test (you must accept the new result). |
 | **Shield** | This shield cannot be sundered, disarmed, or destroyed by any effect. Once per scene, when you take damage from any source, you can reduce that damage by 4 (after applying AV). |
 
