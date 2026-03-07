@@ -658,7 +658,7 @@ Each location belongs to a **Group** — all locations in the same group share o
 
 | d6 | Encounter |
 |----|-----------|
-| 1 | **Brawl.** A fight breaks out around you — get involved or duck out. Roll STR + Fighting or AGI + Athletics vs. TN 8 to avoid being caught in it. Failure: 1 Lingering Fatigue. Success: gain +1 disposition with a local Adventurer NPC (or a new Adventurer NPC at Indifferent — these places draw wanderers). |
+| 1 | **Brawl.** A fight breaks out around you — get involved or duck out. Roll STR + Fighting or AGI + Athletics vs. TN 8 to avoid being caught in it. Failure: 1 Lingering Fatigue. Success: gain +1 disposition with a local Adventurer NPC (or create a new Adventurer NPC at Indifferent if none exists — these places draw wanderers). |
 | 2 | **Loose Lips.** A talkative patron overshares. Generate a rumor using the [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx) random tables. |
 | 3 | **Wager.** A gambler or performer challenges you to a contest. Stake up to 50 coins. Roll MND + Insight vs. TN 8. Win: double your stake. Lose: lose your stake. |
 | 4 | **Old Connection.** You run into someone unexpected — a past ally, contact, or familiar face from another life. The GM introduces a brief interaction and may establish an NPC relationship (roll NPC Role Table, §3.7). |
@@ -671,7 +671,7 @@ Each location belongs to a **Group** — all locations in the same group share o
 
 | d6 | Encounter |
 |----|-----------|
-| 1 | **Pickpocket!** Roll AGI + Perception vs. TN 8 or lose 2d6 coins. Success: catch the thief. Choose to turn them in (small reward, 25 coins, gain +1 disposition with an Authority NPC) or let them go (they owe you — gain a Scoundrel NPC contact at Indifferent). |
+| 1 | **Pickpocket!** Roll AGI + Perception vs. TN 8 or lose 2d6 coins. Success: catch the thief. Choose to turn them in (25 coin reward + gain +1 disposition with an Authority NPC) or let them go (gain a Scoundrel NPC contact at Indifferent — they owe you). |
 | 2 | **Unusual Wares.** A vendor has something unexpected — a potential quest hook, a minor magic item, or a rare ingredient the GM describes. It's available at market price this week only. |
 | 3 | **Merchant Intelligence.** A talkative trader shares news about a nearby settlement, trade route, or region. Useful background for future travel planning. |
 | 4 | **Discounted Stock.** A merchant is clearing inventory. One supply type (rations, ammunition, alchemical items, basic tools) is available at 75% cost this week. |
@@ -686,7 +686,7 @@ Each location belongs to a **Group** — all locations in the same group share o
 |----|-----------|
 | 1 | **Prophecy.** A priest, archivist, or oracle delivers an unsolicited message. The GM provides a cryptic but gameable hint about a future event, threat, or opportunity — tied to an active faction agenda (§4.2) if possible. |
 | 2 | **Useful Text.** You discover or are directed to a relevant manuscript, inscription, or record. Gain +1 boon on your next Research or Lore-related activity this downtime. |
-| 3 | **Ritual Observation.** You witness a ceremony and may participate. On participation (Spirit + Lore or Mysticism vs. TN 8): gain +1 boon on your next Provide Offering. On a blunder: inadvertently cause offense — one Authority or Scholar NPC in the settlement gains −1 disposition toward you. |
+| 3 | **Ritual Observation.** You witness a ceremony and may participate. On participation (Spirit + Lore or Mysticism vs. TN 8): success — gain +1 boon on your next Provide Offering; failure — you observe but gain no benefit; blunder — inadvertently cause offense, one Authority or Scholar NPC in the settlement gains −1 disposition toward you. |
 | 4 | **Knowledge Broker.** A scholar, priest, or archivist offers to answer one specific question in their area of expertise. The GM provides reliable information about one historical, religious, or regional fact. |
 | 5 | **Holy Moment.** An act of faith, discovery, or quiet reflection restores you. Remove 1 Lingering Fatigue. |
 | 6 | **Quiet Day.** The place is peaceful but uneventful. No special encounter. |
@@ -710,7 +710,7 @@ Each location belongs to a **Group** — all locations in the same group share o
 
 | d6 | Encounter |
 |----|-----------|
-| 1 | **Confrontation.** A guard, official, or faction agent demands your attention — an accusation, a contraband check, or a political loyalty test. Roll SPI + Influence vs. TN 8. Failure: detained briefly, lose this week's location visit (no other location this week). Success: make a neutral impression — gain a new Authority NPC at Indifferent. |
+| 1 | **Confrontation.** A guard, official, or faction agent demands your attention — an accusation, a contraband check, or a political loyalty test. Roll SPI + Influence vs. TN 8. Failure: detained briefly — you gain no benefit from this visit. Success: make a neutral impression — gain a new Authority NPC at Indifferent. |
 | 2 | **Posting Board.** A public notice board lists active opportunities — a bounty, a legal commission, or a faction-sponsored contract. The GM provides one job or quest lead appropriate to the settlement. |
 | 3 | **Public Spectacle.** A trial, tournament bout, execution, or speech is underway. Choose: participate (relevant skill vs. TN 8 — on success, gain +1 disposition with one Authority NPC) or observe (gain one free rumor via Quest Hooks). |
 | 4 | **Faction Contact.** A faction representative approaches you — offering information, a task, or making a demand. Ties to an active faction agenda (§4.2) if one exists, or may start a new one. |
