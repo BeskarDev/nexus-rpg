@@ -16,7 +16,7 @@
 4. **The world does not move** — Current downtime is purely player-driven. There is no mechanic for faction agendas, settlement events, or world advancement during rest. Prolonged downtime carries no narrative risk.
 5. **Settlement system is minimal** — Four settlement ranks exist but lack mechanical depth beyond item Quality caps. No distinctive traits, no dynamic economy, no event tables.
 6. **Magic item availability is undefined** — No procedure for what specific items are available, how stock rotates, or how to discover rare finds.
-7. **Fatigue healing during downtime is unregulated** — Since normal resting removes up to 2 Fatigue per night, Fatigue suffered during downtime (from events, complications, or activities) has no lasting impact. Downtime Fatigue needs special treatment to carry meaningful weight into the next adventure.
+7. **Fatigue healing during downtime is unregulated** — Since normal resting removes up to 2 Fatigue per night, Fatigue suffered during downtime (from events, complications, or activities) has no lasting impact. Lingering Fatigue needs special treatment to carry meaningful weight into the next adventure.
 
 ### Design Principles
 
@@ -54,7 +54,7 @@
 | **Faction Advancement** | ❌ | No mechanic for world/NPC agendas to advance during downtime. | §4.2 |
 | **Settlement Events** | ❌ | No event tables for settlement-level happenings. | §4.1 |
 | **Market Procedure** | ❌ | No procedure for available magic items or stock rotation. | §5.1 |
-| **Downtime Fatigue** | ❌ | Fatigue from downtime events/complications heals too easily through normal nightly rest. | §3.6 |
+| **Lingering Fatigue** | ❌ | Fatigue from downtime events/complications heals too easily through normal nightly rest. | §3.6 |
 
 ### Conflicts
 
@@ -91,7 +91,7 @@ Activities referencing a "Complication table" on blunders (Manual Labour, Work a
 
 | d6 | Complication |
 |----|--------------|
-| 1 | **Injury.** Gain 1 Fatigue (downtime Fatigue — see §3.6). |
+| 1 | **Injury.** Gain 1 Lingering Fatigue (see §3.6). |
 | 2 | **Reputation Hit.** Word spreads. Suffer +1 bane on your next social interaction in this settlement. |
 | 3 | **Property Damage.** Pay 50 coins for repairs or suffer +1 bane on your next use of the same activity. |
 | 4 | **Unwanted Attention.** Your failure draws scrutiny from an authority, rival, or criminal element. The GM introduces a minor complication. If a faction agenda is active and the attention is related, the GM may advance that faction's dice timer by 1 instead. |
@@ -161,21 +161,21 @@ Players who have no existing relationship with the target NPC must first establi
 
 > **Design Note:** This connects Social Intrigue to downtime. The NPC disposition directly affects starting Interest, making relationship-building through other activities a meaningful prerequisite for political maneuvering. Breakdown consequences ensure failed negotiations have lasting social costs.
 
-### 3.6 Downtime Fatigue
+### 3.6 Lingering Fatigue
 
 Fatigue suffered during downtime — from settlement events, complication table results, or activity failures — represents lingering stress, social exhaustion, or chronic strain that doesn't simply disappear with a night's sleep.
 
-**Rule: Downtime Fatigue persists.**
+**Rule: Lingering Fatigue persists.**
 
 Fatigue gained during a downtime phase is **not removed by normal nightly rest**. It can only be removed by:
 
-- The **Recover** downtime activity (heals all Wounds and removes all downtime Fatigue).
-- The **Provide Offering** activity (on success, removes 1 downtime Fatigue in addition to its normal +1 Resolve benefit).
-- **A full rest week** — spending a week doing nothing productive (no activity, just rest). This uses the adventurer's weekly activity slot. Removes all Fatigue.
+- The **Recover** downtime activity (heals all Wounds and removes all Lingering Fatigue).
+- The **Provide Offering** activity (on success, removes 1 Lingering Fatigue in addition to its normal +1 Resolve benefit).
+- The **Leisure** activity (see §4.3) — spending a week on deliberate rest and recreation. Removes all Lingering Fatigue.
 
-Any downtime Fatigue remaining at the end of the downtime phase carries into the next adventure.
+Any Lingering Fatigue remaining at the end of the downtime phase carries into the next adventure.
 
-> **Design Note:** Normal resting removes up to 2 Fatigue per night, which means any Fatigue suffered during downtime would vanish overnight with no consequence. This rule ensures downtime Fatigue has teeth — it's a meaningful cost that incentivizes the Recover activity and creates tension between productive weeks and rest weeks. The carry-over into adventuring is the key stakes: a party that pushes through 6 weeks of intensive downtime without resting may start their next quest weakened.
+> **Design Note:** Normal resting removes up to 2 Fatigue per night, which means any Fatigue suffered during downtime would vanish overnight with no consequence. This rule ensures Lingering Fatigue has teeth — it's a meaningful cost that incentivizes the Recover and Leisure activities and creates tension between productive weeks and rest weeks. The carry-over into adventuring is the key stakes: a party that pushes through 6 weeks of intensive downtime without resting may start their next quest weakened. Adventurers must always declare an activity each week — there is no "doing nothing" option — but Leisure is the explicit rest activity for those who need it.
 
 ### 3.7 NPC Role Table
 
@@ -212,9 +212,9 @@ A danger or conflict erupts. Roll d6 for specifics:
 |----|-------|------------|
 | 1 | **Faction Move.** A faction makes a visible power play. Advance that faction's agenda dice timer by 1 additional tick this week. If no faction agenda is active, the GM starts a new one — roll on the Faction Goal table (§4.2) to determine the agenda. | The GM describes the faction's action. Players can intervene through Petition/Negotiate or direct action (adventure hook). |
 | 2 | **Raid or Attack.** Bandits, monsters, or raiders threaten the settlement's outskirts. | Each adventurer can choose to help defend (Strength/Agility + Fighting vs. TN 10). Success: gain +1 disposition with a local Authority NPC (or gain a new Authority NPC at Friendly). Failure: suffer 1 Wound. Ignoring: no immediate penalty, but the GM may escalate the threat next week. |
-| 3 | **Disease or Blight.** A sickness spreads through a district. | Recover activity costs double next week. Each adventurer rolls Strength + Fortitude vs. TN 8 or gains 1 downtime Fatigue. Characters with Nature can attempt to help (Mind + Nature vs. TN 10 — success: remove the event's effects). |
+| 3 | **Disease or Blight.** A sickness spreads through a district. | Recover activity costs double next week. Each adventurer rolls Strength + Fortitude vs. TN 8 or gains 1 Lingering Fatigue. Characters with Nature can attempt to help (Mind + Nature vs. TN 10 — success: remove the event's effects). |
 | 4 | **Old Enemy.** An old threat to the settlement resurfaces — a rival, a curse, or a buried danger. | Adventure hook. The GM defines the threat based on the settlement's history (use the [Settlement Generator](../10-gm-tools/01-random-tables/12-random-settlement.mdx) Historical Events table for inspiration). |
-| 5 | **Natural Disaster.** Flood, fire, earthquake, or severe storm. | Infrastructure damage: one market slot is temporarily unavailable until next Situation Shift. All outdoor activities suffer +1 bane next week. Each adventurer rolls Agility + Athletics vs. TN 8 or suffers 1 downtime Fatigue. |
+| 5 | **Natural Disaster.** Flood, fire, earthquake, or severe storm. | Infrastructure damage: one market slot is temporarily unavailable until next Situation Shift. All outdoor activities suffer +1 bane next week. Each adventurer rolls Agility + Athletics vs. TN 8 or suffers 1 Lingering Fatigue. |
 | 6 | **Betrayal or Upheaval.** A political betrayal, coup attempt, or sudden power vacuum. | One faction's disposition toward the party shifts by −1 (or +1 if the party is seen as an ally of the new order). Settlement governance may change — the GM adjusts accordingly. |
 
 #### 2 — Wear and Tear
@@ -241,7 +241,7 @@ Economic pressure mounts. Roll d6:
 | 3 | **Price Gouging.** A merchant guild or monopoly raises prices. | One specific service or material costs 50% more until a Situation Shift occurs. |
 | 4 | **Debt Collection.** A patron, employer, or creditor demands payment. | Each adventurer who earned income this week (Manual Labour, Work a Crafting Profession) must pay 50% of their earnings as "dues." |
 | 5 | **Lodging Spike.** An influx of travelers or refugees drives up costs. | Each adventurer pays 25 extra coins this week for room and board. |
-| 6 | **Bad Investment.** A deal or opportunity goes south. | One adventurer (GM's choice or random) loses 2d6 × 10 coins. If they can't pay, they gain 1 downtime Fatigue from the stress. |
+| 6 | **Bad Investment.** A deal or opportunity goes south. | One adventurer (GM's choice or random) loses 2d6 × 10 coins. If they can't pay, they gain 1 Lingering Fatigue from the stress. |
 
 #### 4 — Situation Shift
 
@@ -280,7 +280,7 @@ Life goes on without incident. Roll d6:
 | 3 | **Market Day.** A minor market day draws extra vendors. | One mundane item category is available at 75% cost this week. |
 | 4 | **Traveling Performer.** Entertainment passes through. | +1 boon on Carouse this week. |
 | 5 | **Seasonal Tradition.** An old custom is observed. | Flavor event. The GM describes a local tradition. |
-| 6 | **Quiet Reflection.** A week of peace. | Each adventurer who takes no activity this week (resting) removes 1 additional downtime Fatigue. |
+| 6 | **Quiet Reflection.** A week of peace. | Each adventurer who takes the Leisure activity this week removes 1 additional Lingering Fatigue (stacking with Leisure's normal full recovery). |
 
 > **Design Note:** Each event category has fully resolved sub-events with clear mechanical consequences. The GM rolls 1d6 for the category, then d6 for the specific event, or simply picks the most fitting result. Every Situation Shift (result 4) also refreshes the market, ensuring magic item stock turns over more frequently than a single specific sub-event would allow.
 
@@ -386,7 +386,8 @@ Activities should note when they interact with factions. For example, a Carouse 
 | Carouse | Social | 1 | 50/week | SPI/MND + Streetwise | Rumors, new NPCs, disposition changes |
 | **Petition / Negotiate** | Social | 2 | 50–1,000+/week | Social Intrigue | Convince NPC/faction of significant request |
 | **Tend to Relationships** | Social | 1 | 25–100/week | Varies by NPC role | Improve NPC disposition |
-| Recover | Recovery | 1 | 50/week | — | Heal Wounds + downtime Fatigue |
+| Recover | Recovery | 1 | 50/week | — | Heal Wounds + Lingering Fatigue |
+| **Leisure** | Recovery | 1 | 25/week | — | Remove all Lingering Fatigue |
 | Provide Offering | Recovery | 1 | 100/week | SPI + Lore/Mysticism | +1 Resolve for party |
 | Haggle (Sell) | Commerce | 1 | varies | SPI/MND + Influence/Streetwise | Sell rare items |
 | **Haggle (Buy)** | Commerce | 1 | varies | SPI/MND + Influence/Streetwise | Find specific items to buy |
@@ -394,6 +395,18 @@ Activities should note when they interact with factions. For example, a Carouse 
 | Craft an Item | Craft | 2 | varies | Profession skill test | Create items |
 
 *New activities in **bold**.*
+
+#### Leisure
+
+| Min. Settlement Rank | Requirements | Expenses |
+| --- | --- | --- |
+| 1 (Hamlet) | — | 25 coins/week |
+
+You spend the week resting and recovering — enjoying the settlement's comforts, sleeping late, taking long meals, and engaging in light entertainment without any pressing demands. At the end of the week, remove all your **Lingering Fatigue**.
+
+If the settlement has a Social Venue location (see §5.3), you may visit it for free as part of this activity and roll on the Social Venues encounter table (Group A) with +1 boon.
+
+> **Design Note:** Leisure is the explicit rest activity. Adventurers must declare an activity every week — there is no option to "do nothing" — but Leisure provides the downtime equivalent of a genuine rest week. Its minimal expense (just living costs) and single clear benefit make the cost of recovery tangible, while still ensuring the weekly settlement event roll fires (the world doesn't pause because you're resting).
 
 #### Commission an Item
 
@@ -423,7 +436,7 @@ You can attempt to negotiate better terms by rolling Spirit/Mind + Influence vs.
 
 Choose one skill you already have at rank 1+. Roll Attribute + Skill vs. hard Difficulty (TN 10).
 
-**Blunder.** Training accident. Gain 1 downtime Fatigue and roll on the Complication table.
+**Blunder.** Training accident. Gain 1 Lingering Fatigue and roll on the Complication table.
 
 **Failure.** You learn nothing this week but gain +1 boon on your next Train with a Master attempt for this skill.
 
@@ -594,35 +607,115 @@ Roll Spirit/Mind + Influence/Streetwise vs. the Difficulty.
 
 > **Design Note:** Players specify the item slot/type (great axe, heavy shield, ring) but not the enchantment — that's what Commission an Item (§4.3) is for, where the player specifies exactly what they want crafted. Haggle Buying creates meaningful discovery: you might find a Flaming great axe when you wanted a Frost one, but that's part of the treasure-hunt appeal. Utility items can be searched for specifically because they don't have the enchantment variability.
 
-### 5.3 Boardgame-Style Location Encounters
+### 5.3 Location Encounters
 
-Drawing on Shadows of Brimstone's Frontier Town, each settlement visit can include brief location encounters as free activities:
+Drawing on Shadows of Brimstone's Frontier Town, each settlement visit can include brief location encounters as free activities. A location visit does not use the adventurer's weekly activity slot — it's a quick scene that adds texture and discovery to downtime.
 
-**Settlement Locations:** Each settlement has a number of locations equal to its rank + 2 (Hamlet: 3, Village: 4, Town: 5, City: 6). Types: Market, Tavern, Temple, Guild Hall, Training Ground, etc.
+#### Settlement Location Table
 
-**Location Visits:** As a free activity during any downtime week, each adventurer can visit one location for a brief encounter. Roll d6:
+Every settlement has two **base locations** (always present): a **Tavern** and a **Market**. Additional locations are generated by rolling on the table below, once per settlement rank (Hamlet: 1 roll, Village: 2 rolls, Town: 3 rolls, City: 4 rolls). Re-roll results below minimum rank. Re-roll duplicates.
 
-**Tavern Encounters (d6)**
+Each location belongs to a **Group** — all locations in the same group share one encounter table. This keeps the system manageable without requiring a separate table for every possible location type.
+
+| d20 | Location | Min. Rank | Group |
+|-----|----------|-----------|-------|
+| 1 | Inn (separate lodgings from Tavern) | 1 | A — Social Venues |
+| 2 | Bathhouse | 2 | A — Social Venues |
+| 3 | Gambling Den | 2 | A — Social Venues |
+| 4 | Pleasure Garden | 3 | A — Social Venues |
+| 5 | Festival Ground | 2 | A — Social Venues |
+| 6 | Harbor / Docks | 2 | B — Trade & Commerce |
+| 7 | Auction House | 3 | B — Trade & Commerce |
+| 8 | Black Market | 2 | B — Trade & Commerce |
+| 9 | Warehouses | 2 | B — Trade & Commerce |
+| 10 | Temple | 1 | C — Faith & Knowledge |
+| 11 | Library / Archive | 3 | C — Faith & Knowledge |
+| 12 | Oracle / Seer | 3 | C — Faith & Knowledge |
+| 13 | Academy | 4 | C — Faith & Knowledge |
+| 14 | Forge / Smithy | 1 | D — Craft & Industry |
+| 15 | Alchemist's Shop | 2 | D — Craft & Industry |
+| 16 | Artisan Quarter | 2 | D — Craft & Industry |
+| 17 | Stable & Stablemaster | 1 | D — Craft & Industry |
+| 18 | Guild Hall | 3 | E — Power & Order |
+| 19 | Barracks / Arena | 2 | E — Power & Order |
+| 20 | Court / Prison | 3 | E — Power & Order |
+
+> **Base Locations** (Tavern = Group A, Market = Group B) always count toward the settlement's location list. A Hamlet therefore has 3 locations total (Tavern + Market + 1 rolled).
+
+#### Location Groups
+
+| Group | Locations | Notes |
+|-------|-----------|-------|
+| **A — Social Venues** | Tavern, Inn, Bathhouse, Gambling Den, Pleasure Garden, Festival Ground | High social interaction, NPC contacts, rest potential |
+| **B — Trade & Commerce** | Market, Harbor/Docks, Auction House, Black Market, Warehouses | Economic opportunities and hazards |
+| **C — Faith & Knowledge** | Temple, Library/Archive, Oracle/Seer, Academy | Information, ritual, and spiritual benefits |
+| **D — Craft & Industry** | Forge/Smithy, Alchemist's Shop, Artisan Quarter, Stable | Crafting shortcuts, materials, and skills |
+| **E — Power & Order** | Guild Hall, Barracks/Arena, Court/Prison | Faction contacts, law, and public spectacle |
+
+---
+
+#### Group A — Social Venues (d6)
 
 | d6 | Encounter |
 |----|-----------|
-| 1 | **Bar Fight.** Roll STR + Fighting or AGI + Athletics vs. TN 8 or suffer 1 downtime Fatigue. Success: +1 disposition with a local Adventurer NPC (or gain a new Adventurer NPC at Indifferent — taverns attract fighters and wanderers). |
-| 2 | **Loose Lips.** An inebriated patron shares a rumor. Generate using [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx). |
-| 3 | **Gambler's Challenge.** Wager up to 50 coins. Roll MND + Insight vs. TN 8. Win: double wager. Lose: lose wager. |
-| 4 | **Old Acquaintance.** Encounter someone from your past. The GM introduces a brief NPC interaction. |
-| 5 | **Entertainment.** +1 boon on your next Carouse in this settlement. |
-| 6 | **Quiet Night.** A peaceful evening. No effect. |
+| 1 | **Brawl.** A fight breaks out around you — get involved or duck out. Roll STR + Fighting or AGI + Athletics vs. TN 8 to avoid being caught in it. Failure: 1 Lingering Fatigue. Success: gain +1 disposition with a local Adventurer NPC (or a new Adventurer NPC at Indifferent — these places draw wanderers). |
+| 2 | **Loose Lips.** A talkative patron overshares. Generate a rumor using the [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx) random tables. |
+| 3 | **Wager.** A gambler or performer challenges you to a contest. Stake up to 50 coins. Roll MND + Insight vs. TN 8. Win: double your stake. Lose: lose your stake. |
+| 4 | **Old Connection.** You run into someone unexpected — a past ally, contact, or familiar face from another life. The GM introduces a brief interaction and may establish an NPC relationship (roll NPC Role Table, §3.7). |
+| 5 | **Good Night.** The atmosphere is warm and welcoming. Gain +1 boon on your next Carouse in this settlement, **or** remove 1 Lingering Fatigue. |
+| 6 | **Uneventful.** Nothing of note. |
 
-**Market Encounters (d6)**
+---
+
+#### Group B — Trade & Commerce (d6)
 
 | d6 | Encounter |
 |----|-----------|
-| 1 | **Pickpocket!** Roll AGI + Perception vs. TN 8 or lose 2d6 coins. Success: catch the thief (gain reputation or a Scoundrel NPC contact at Indifferent). |
-| 2 | **Curiosity.** Spot an unusual item — potential quest hook, minor magic item, or exotic ingredient. |
-| 3 | **Merchant Gossip.** Learn about conditions in a nearby settlement or region. |
-| 4 | **Supply Sale.** One supply category at 75% cost this week. |
-| 5 | **Exotic Trader.** Market gains +1 temporary magic item slot this week. |
-| 6 | **Busy Day.** Nothing catches your eye. |
+| 1 | **Pickpocket!** Roll AGI + Perception vs. TN 8 or lose 2d6 coins. Success: catch the thief. Choose to turn them in (small reward, 25 coins, gain +1 disposition with an Authority NPC) or let them go (they owe you — gain a Scoundrel NPC contact at Indifferent). |
+| 2 | **Unusual Wares.** A vendor has something unexpected — a potential quest hook, a minor magic item, or a rare ingredient the GM describes. It's available at market price this week only. |
+| 3 | **Merchant Intelligence.** A talkative trader shares news about a nearby settlement, trade route, or region. Useful background for future travel planning. |
+| 4 | **Discounted Stock.** A merchant is clearing inventory. One supply type (rations, ammunition, alchemical items, basic tools) is available at 75% cost this week. |
+| 5 | **Visiting Trader.** A traveling merchant from afar is here briefly. The market gains +1 temporary magic item slot this week with goods from a distant region. |
+| 6 | **Busy Day.** Nothing catches your eye among the crowds. |
+
+---
+
+#### Group C — Faith & Knowledge (d6)
+
+| d6 | Encounter |
+|----|-----------|
+| 1 | **Prophecy.** A priest, archivist, or oracle delivers an unsolicited message. The GM provides a cryptic but gameable hint about a future event, threat, or opportunity — tied to an active faction agenda (§4.2) if possible. |
+| 2 | **Useful Text.** You discover or are directed to a relevant manuscript, inscription, or record. Gain +1 boon on your next Research or Lore-related activity this downtime. |
+| 3 | **Ritual Observation.** You witness a ceremony and may participate. On participation (Spirit + Lore or Mysticism vs. TN 8): gain +1 boon on your next Provide Offering. On a blunder: inadvertently cause offense — one Authority or Scholar NPC in the settlement gains −1 disposition toward you. |
+| 4 | **Knowledge Broker.** A scholar, priest, or archivist offers to answer one specific question in their area of expertise. The GM provides reliable information about one historical, religious, or regional fact. |
+| 5 | **Holy Moment.** An act of faith, discovery, or quiet reflection restores you. Remove 1 Lingering Fatigue. |
+| 6 | **Quiet Day.** The place is peaceful but uneventful. No special encounter. |
+
+---
+
+#### Group D — Craft & Industry (d6)
+
+| d6 | Encounter |
+|----|-----------|
+| 1 | **Artisan's Eye.** A master craftsperson notices your equipment and offers unsolicited opinion. Roll MND + Crafting vs. TN 8. Success: they share a useful technique — gain +1 boon on your next Crafting activity this downtime. Failure: dismissive, no effect. |
+| 2 | **Materials Surplus.** A craftsperson is clearing excess stock. Purchase raw materials for one item at 50% of material cost — one item's worth only. |
+| 3 | **Commission Opportunity.** A local patron is seeking someone to create a specific item. If you take it, treat as a Commission an Item activity: no search expenses, pay only the commission fee. |
+| 4 | **Workshop Demonstration.** You observe a skilled craftsperson at work. Gain +1 boon on your next Train with a Master attempt for any Crafting-related skill. |
+| 5 | **Equipment Maintenance.** A skilled artisan offers to inspect and service your equipment. One item of your choice has its current Durability damage reset (if the Durability system is in use). Costs 25 coins. |
+| 6 | **Busy Workshop.** Everyone is absorbed in their work. Nothing available for visitors. |
+
+---
+
+#### Group E — Power & Order (d6)
+
+| d6 | Encounter |
+|----|-----------|
+| 1 | **Confrontation.** A guard, official, or faction agent demands your attention — an accusation, a contraband check, or a political loyalty test. Roll SPI + Influence vs. TN 8. Failure: detained briefly, lose this week's location visit (no other location this week). Success: make a neutral impression — gain a new Authority NPC at Indifferent. |
+| 2 | **Posting Board.** A public notice board lists active opportunities — a bounty, a legal commission, or a faction-sponsored contract. The GM provides one job or quest lead appropriate to the settlement. |
+| 3 | **Public Spectacle.** A trial, tournament bout, execution, or speech is underway. Choose: participate (relevant skill vs. TN 8 — on success, gain +1 disposition with one Authority NPC) or observe (gain one free rumor via Quest Hooks). |
+| 4 | **Faction Contact.** A faction representative approaches you — offering information, a task, or making a demand. Ties to an active faction agenda (§4.2) if one exists, or may start a new one. |
+| 5 | **Overheard.** Conversations, posted decrees, or visible activity reveal the current stage of an active faction agenda. The GM summarizes what's publicly known at that stage. |
+| 6 | **Routine Day.** Guards change, officials pass papers. Nothing involves you. |
 
 ### 5.4 Downtime Quick-Reference Sheet
 
@@ -641,13 +734,13 @@ Drawing on Shadows of Brimstone's Frontier Town, each settlement visit can inclu
 │     → Situation Shift (4) = refresh market          │
 │  3. Tick faction agenda dice timer by 1             │
 │                                                     │
-│ DOWNTIME FATIGUE                                    │
+│ LINGERING FATIGUE                                   │
 │  Fatigue from events/complications/activities       │
 │  does NOT heal overnight. Only healed by:           │
-│  Recover, Provide Offering, or a full rest week.    │
+│  Recover, Provide Offering, or Leisure.             │
 │                                                     │
 │ COMPLICATION TABLE (d6)                             │
-│  1: Injury (1 downtime Fatigue)                     │
+│  1: Injury (1 Lingering Fatigue)                    │
 │  2: Reputation Hit (+1 bane next social roll)       │
 │  3: Property Damage (50 coins or +1 bane)           │
 │  4: Unwanted Attention (GM complication)             │
@@ -677,7 +770,7 @@ Drawing on Shadows of Brimstone's Frontier Town, each settlement visit can inclu
 | Complication Table (d6) | §3.2 |
 | Expanded Carouse with NPC/rumor outcomes | §3.4 |
 | NPC Role Table (d6) | §3.7 |
-| Downtime Fatigue rule | §3.6 |
+| Lingering Fatigue rule + Leisure activity | §3.6, §4.3 |
 
 ### Priority 2: System Alignment (Medium Effort, High Impact)
 
@@ -695,7 +788,7 @@ Drawing on Shadows of Brimstone's Frontier Town, each settlement visit can inclu
 | Settlement Market Procedure | §5.1 |
 | Settlement Traits table (d20) | §4.4 |
 | New activities (Commission, Train, Tend to Relationships) | §4.3 |
-| Location Encounter Tables (boardgame-style) | §5.3 |
+| Location Encounter Tables (5 groups, settlement location table) | §5.3 |
 
 ### Document Structure Recommendations
 
@@ -703,11 +796,12 @@ If implemented, restructure the downtime docs:
 
 ```
 docs/06-scenes/04-downtime/
-├── 00-overview.md          (procedure, settlements, traits, downtime Fatigue)
-├── 01-activities.md        (all activities incl. new ones, summary table)
+├── 00-overview.md          (procedure, settlements, traits, Lingering Fatigue)
+├── 01-activities.md        (all activities incl. Leisure + new ones, summary table)
 ├── 02-settlement-events.md (event table, complication table)
 ├── 03-faction-agendas.md   (faction profiles, dice timers, random tables)
-└── 04-market.md            (market generation, haggle buying)
+├── 04-market.md            (market generation, haggle buying)
+└── 05-locations.md         (settlement location table, 5 group encounter tables)
 ```
 
 ---
@@ -725,7 +819,7 @@ docs/06-scenes/04-downtime/
 | Social Intrigue | No downtime entry point | ❌ Addressed: §3.5 |
 | Travel | No transition rules | ❌ Future work |
 | Resting | 1 Wound/week auto-heal works | ✅ Aligned |
-| Fatigue | Normal nightly rest removes 2 Fatigue — conflicts with downtime | ❌ Addressed: §3.6 |
+| Fatigue | Normal nightly rest removes 2 Fatigue — conflicts with downtime | ❌ Addressed: §3.6 (Lingering Fatigue) |
 
 ### Undefined Table References
 
