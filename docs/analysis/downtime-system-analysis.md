@@ -14,7 +14,7 @@
 2. **Weekly event roll needed** — The Downtime Event Table exists in the time scales document, but the downtime rules never reference it. The proposed approach rolls 1d6 every week (mirroring travel's daily event roll).
 3. **Social intrigue has no downtime entry point** — No downtime activity bridges into the Social Intrigue system. Carouse is incomplete and underspecified.
 4. **The world does not move** — Current downtime is purely player-driven. There is no mechanic for faction agendas, settlement events, or world advancement during rest. Prolonged downtime carries no narrative risk.
-5. **Settlement system is minimal** — Four settlement ranks exist but lack mechanical depth beyond item Quality caps. No personality, no dynamic economy, no event tables.
+5. **Settlement system is minimal** — Four settlement ranks exist but lack mechanical depth beyond item Quality caps. No distinctive traits, no dynamic economy, no event tables.
 6. **Magic item availability is undefined** — No procedure for what specific items are available, how stock rotates, or how to discover rare finds.
 7. **Fatigue healing during downtime is unregulated** — Since normal resting removes up to 2 Fatigue per night, Fatigue suffered during downtime (from events, complications, or activities) has no lasting impact. Downtime Fatigue needs special treatment to carry meaningful weight into the next adventure.
 
@@ -94,7 +94,7 @@ Activities referencing a "Complication table" on blunders (Manual Labour, Work a
 | 1 | **Injury.** Gain 1 Fatigue (downtime Fatigue — see §3.6). |
 | 2 | **Reputation Hit.** Word spreads. Suffer +1 bane on your next social interaction in this settlement. |
 | 3 | **Property Damage.** Pay 50 coins for repairs or suffer +1 bane on your next use of the same activity. |
-| 4 | **Unwanted Attention.** Your failure draws scrutiny from an authority, rival, or criminal element. The GM introduces a minor complication or advances a faction agenda dice timer by 1. |
+| 4 | **Unwanted Attention.** Your failure draws scrutiny from an authority, rival, or criminal element. The GM introduces a minor complication. If a faction agenda is active and the attention is related, the GM may advance that faction's dice timer by 1 instead. |
 | 5 | **Lost Time.** You cannot use this activity again next week. |
 | 6 | **Nothing Extra.** The blunder is bad enough on its own. |
 
@@ -122,7 +122,7 @@ You spend the week socializing — frequenting taverns, attending gatherings, ma
 
 You can multiply this activity's expenses by any factor up to the settlement rank and gain a number of boons on the roll equal to the expense multiplier.
 
-**Blunder.** You cause a scene. Roll on the Complication table. If you have NPC relationships in this settlement, one worsens by 1 step (GM's choice). If you have none, you make a bad impression — roll on the NPC Role Table (see §3.7) and gain a new NPC relationship at Hostile (−2) disposition.
+**Blunder.** You cause a scene. Roll on the Complication table. If you have NPC relationships in this settlement, one worsens by 1 step (GM's choice). If you have none, you make a bad impression — roll on the NPC Role Table (see §3.7) and gain a new NPC relationship at Suspicious (−1) disposition.
 
 **Failure.** An uneventful week. No useful connections.
 
@@ -171,7 +171,7 @@ Fatigue gained during a downtime phase is **not removed by normal nightly rest**
 
 - The **Recover** downtime activity (heals all Wounds and removes all downtime Fatigue).
 - The **Provide Offering** activity (on success, removes 1 downtime Fatigue in addition to its normal +1 Resolve benefit).
-- **A full rest** taken as an explicit downtime Action (spending a week doing nothing productive — no activity, just rest. Removes all Fatigue).
+- **A full rest week** — spending a week doing nothing productive (no activity, just rest). This uses the adventurer's weekly activity slot. Removes all Fatigue.
 
 Any downtime Fatigue remaining at the end of the downtime phase carries into the next adventure.
 
@@ -210,8 +210,8 @@ A danger or conflict erupts. Roll d6 for specifics:
 
 | d6 | Event | Resolution |
 |----|-------|------------|
-| 1 | **Faction Move.** A faction makes a visible power play. Advance that faction's agenda dice timer by 1 additional tick this week. If no faction agenda is active, a new one begins at Scheming. | The GM describes the faction's action. Players can intervene through Petition/Negotiate or direct action (adventure hook). |
-| 2 | **Raid or Attack.** Bandits, monsters, or raiders threaten the settlement's outskirts. | Each adventurer can choose to help defend (Strength/Agility + Fighting vs. TN 10). Success: gain +1 disposition with a local Authority NPC (or gain a new Authority NPC at Friendly). Failure: suffer 1 Wound. Ignoring: no penalty, but settlement morale drops. |
+| 1 | **Faction Move.** A faction makes a visible power play. Advance that faction's agenda dice timer by 1 additional tick this week. If no faction agenda is active, the GM starts a new one — roll on the Faction Goal table (§4.2) to determine the agenda. | The GM describes the faction's action. Players can intervene through Petition/Negotiate or direct action (adventure hook). |
+| 2 | **Raid or Attack.** Bandits, monsters, or raiders threaten the settlement's outskirts. | Each adventurer can choose to help defend (Strength/Agility + Fighting vs. TN 10). Success: gain +1 disposition with a local Authority NPC (or gain a new Authority NPC at Friendly). Failure: suffer 1 Wound. Ignoring: no immediate penalty, but the GM may escalate the threat next week. |
 | 3 | **Disease or Blight.** A sickness spreads through a district. | Recover activity costs double next week. Each adventurer rolls Strength + Fortitude vs. TN 8 or gains 1 downtime Fatigue. Characters with Nature can attempt to help (Mind + Nature vs. TN 10 — success: remove the event's effects). |
 | 4 | **Old Enemy.** An old threat to the settlement resurfaces — a rival, a curse, or a buried danger. | Adventure hook. The GM defines the threat based on the settlement's history (use the [Settlement Generator](../10-gm-tools/01-random-tables/12-random-settlement.mdx) Historical Events table for inspiration). |
 | 5 | **Natural Disaster.** Flood, fire, earthquake, or severe storm. | Infrastructure damage: one market slot is temporarily unavailable until next Situation Shift. All outdoor activities suffer +1 bane next week. Each adventurer rolls Agility + Athletics vs. TN 8 or suffers 1 downtime Fatigue. |
@@ -315,7 +315,7 @@ Each faction agenda uses a **d4 dice timer** (starting at 4), consistent with th
 
 **Advancing the Timer:**
 
-- Each week, tick down 1 active faction agenda by 1 (GM chooses which to advance based on pacing).
+- Each week, tick down 1 active faction agenda by 1. If multiple factions are active, advance the one most relevant to current player actions or rotate between them.
 - A **Trouble** result (1) on the Settlement Event Table can advance a faction's timer by 1 additional tick.
 - Players can **delay** a timer by 1 tick through successful action: Petition/Negotiate to stall, Carouse to spread counter-rumors, or direct sabotage (adventure hook).
 - Players can **stop** an agenda entirely by resolving the underlying conflict.
@@ -558,7 +558,7 @@ Give each settlement mechanical identity beyond rank. Settlement traits compleme
 
 3. **Determine Quality:** Q2 + 1d3 (producing Q3–Q5, capped at settlement's max). Villages stock Q3, Towns Q3–Q4, Cities Q3–Q5.
 
-4. **Determine specifics:** The GM determines the item type and enchantment based on the settlement's traits and character. Each magic item has a random enchantment appropriate to its category.
+4. **Determine specifics:** The GM determines the item type and enchantment based on the settlement's traits and character. For random enchantment selection, use the [Enchantments tables](../04-equipment/07-magic-items/enchantments.md) — roll or choose an enchantment appropriate to the item's category (weapon, armor, wearable, catalyst).
 
 **Market Refresh:** The market refreshes whenever a **Situation Shift** (result 4) occurs on the Settlement Event Table — regardless of the specific sub-event. The GM re-rolls or replaces one or more magic item slots.
 
@@ -592,7 +592,7 @@ Roll Spirit/Mind + Influence/Streetwise vs. the Difficulty.
 
 **Critical.** You find the item at 90% market price, **or** you may choose from two randomly determined enchantments.
 
-> **Design Note:** Players specify the item slot/type (great axe, heavy shield, ring) but not the enchantment — that's what Commissioning is for. This creates meaningful discovery: you might find a Flaming great axe when you wanted a Frost one, but that's part of the treasure-hunt appeal. Utility items can be searched for specifically because they don't have the enchantment variability.
+> **Design Note:** Players specify the item slot/type (great axe, heavy shield, ring) but not the enchantment — that's what Commission an Item (§4.3) is for, where the player specifies exactly what they want crafted. Haggle Buying creates meaningful discovery: you might find a Flaming great axe when you wanted a Frost one, but that's part of the treasure-hunt appeal. Utility items can be searched for specifically because they don't have the enchantment variability.
 
 ### 5.3 Boardgame-Style Location Encounters
 
@@ -606,7 +606,7 @@ Drawing on Shadows of Brimstone's Frontier Town, each settlement visit can inclu
 
 | d6 | Encounter |
 |----|-----------|
-| 1 | **Bar Fight.** Roll STR + Fighting or AGI + Athletics vs. TN 8 or suffer 1 downtime Fatigue. Success: +1 disposition with a local Adventurer NPC (or gain a new one at Indifferent). |
+| 1 | **Bar Fight.** Roll STR + Fighting or AGI + Athletics vs. TN 8 or suffer 1 downtime Fatigue. Success: +1 disposition with a local Adventurer NPC (or gain a new Adventurer NPC at Indifferent — taverns attract fighters and wanderers). |
 | 2 | **Loose Lips.** An inebriated patron shares a rumor. Generate using [Quest Hooks](../10-gm-tools/01-random-tables/10-random-quests.mdx). |
 | 3 | **Gambler's Challenge.** Wager up to 50 coins. Roll MND + Insight vs. TN 8. Win: double wager. Lose: lose wager. |
 | 4 | **Old Acquaintance.** Encounter someone from your past. The GM introduces a brief NPC interaction. |
