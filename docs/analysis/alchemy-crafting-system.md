@@ -1,6 +1,6 @@
 # Alchemy & Potion Crafting — Design Analysis
 
-> **Scope:** Alchemical crafting as a modular, fiction-first system — procedures for downtime and field use, ingredient systems built on the existing Supply framework, integration with challenge dice, magic item creation, and enchantment systems.
+> **Scope:** Alchemical crafting as a modular system — procedures for downtime and field use, ingredient systems built on the existing Supply framework, integration with challenge dice, magic item creation, and enchantment systems.
 >
 > **References:** [Craft an Item](../06-scenes/04-downtime/activities.md) | [Challenges](../06-scenes/07-challenges.md) | [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Downtime Activities](../06-scenes/04-downtime/activities.md) | [Crafting Professions](../06-scenes/05-crafting-professions.md) | [Magic Item Effects](../04-equipment/07-magic-items/effects.md) | [Enchantments](../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../04-equipment/07-magic-items/cost-tables.md) | [Supply](../04-equipment/02-equipment/supply.md) | [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) | [Travel](../06-scenes/09-travel.md)
 >
@@ -69,7 +69,7 @@ All items on the [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) pa
 
 **Mundane Alchemicals (Purchasable Gear, Not Alchemy-Crafted)**
 
-Items proposed in the [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md) — blinding dust, stench gourd, resin adhesive, ochre marking powder, luminous paste, woad war paint, smelling salts, honey poultice, cooling salve, warming tonic, sacred incense, pitch pot, natron solvent, cat's-eye oil, poppy milk, ironblood draught, verdigris blight. These are Q1–Q3 mundane preparations available for purchase at any appropriate settlement. They do **not** require the Alchemist profession to use and are not crafted through the alchemy system — they are standard equipment, like rope or a camping kit. An alchemist *can* craft them using the standard Craft an Item rules with appropriate proficiency, just as a smith can repair a bronze blade.
+The 17 items proposed in the [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md) (e.g., blinding dust, stench gourd, luminous paste, cat's-eye oil, ironblood draught, etc.) are Q1–Q3 mundane preparations available for purchase at any appropriate settlement. They do **not** require the Alchemist profession to use — they are standard equipment, like rope or a camping kit. An alchemist *can* craft them using the standard Craft an Item rules with appropriate proficiency, just as a smith can repair a bronze blade. However, an alchemist who wants more potent (Q4+) or custom-delivery versions of similar effects must use the modular recipe system (§5).
 
 **Custom Products (Alchemy-Only, Require Experimentation)**
 
@@ -85,12 +85,12 @@ Downtime alchemy uses the standard **Craft an Item** activity with the **Alchemi
 
 ### 3.1 Skill Test
 
-The Alchemist profession supports two attributes:
+The Alchemist profession supports two attributes. **The player chooses which to use each time they make an alchemy roll:**
 
 - **Mind + Crafting** — The empirical approach. Methodical measurement, careful observation, and recorded formulas. Fits the apothecary, the temple physician, the court poisoner who keeps meticulous clay-tablet notes.
 - **Spirit + Crafting** — The intuitive approach. Ancestral knowledge, reading the color of smoke, tasting the mixture, trusting tradition. Fits the village herbalist, the wandering healer, the shaman who learned from their grandmother.
 
-The player chooses which attribute to use each time they make an alchemy roll. Both are equally valid — the game world's "ancient science" does not distinguish between empirical and intuitive knowledge the way modern cultures do.
+Both are equally valid — the game world's "ancient science" does not distinguish between empirical and intuitive knowledge the way modern cultures do.
 
 > **Design Note:** This mirrors the Forager travel role, which already allows Spirit/Mind + Nature. The dual-attribute approach also opens alchemy to a wider range of character archetypes (Apothecary, Shaman, Druid, Oracle) without requiring separate professions.
 
@@ -132,7 +132,15 @@ Beyond the basic Essence + Supplies formula, special reagents can modify a produ
 | **Intensifier** | Increases effect potency by one step within the Quality tier | Concentrated naphtha, distilled venom, temple-blessed water |
 | **Carrier** | Changes delivery method (see §5.2) without altering the core effect | Animal bladder (splash), hollow reed (inhaled), clay vessel (contact) |
 
-> **How Supply Items Feed Into Alchemy:** When crafting an alchemical product, you spend 1 use of the appropriate Supply item to provide the catalyst. This replaces the old separate "ingredient cost = ½ item value" model for the catalyst portion. The Essence must still be acquired separately (purchased, gathered, or harvested). Total material cost = Essence cost + Supply use cost. The Supply die tracks how many crafting attempts your materials support before running out.
+**Cost Model: Supply Items Replace Fixed Ingredient Cost**
+
+When crafting an alchemical product, spend **1 use** of the appropriate Supply item to provide the catalyst. This replaces the old "ingredient cost = ½ item value" model for the catalyst portion. The Essence must still be acquired separately (purchased, gathered, or harvested). Total material cost per crafting attempt = Essence cost + Supply use cost. The Supply die tracks how many crafting attempts your materials support before running out.
+
+| Component | Source | Cost Example (Q3 product) |
+|-----------|--------|---------------------------|
+| Essence | Purchase, gather, harvest | 40–100 coins (see §6.1) |
+| Alchemy Supplies (catalyst) | Supply item: Advanced Materials | 1 use of d6 Supply (250 coins for full supply) |
+| Special reagent (optional) | Purchase or gather | Varies by reagent type |
 
 ### 3.3 Downtime Procedure (Step by Step)
 
@@ -242,7 +250,7 @@ Roll **Mind/Spirit + Crafting** vs. the product's Crafting TN with **+1 bane** (
 | Result | Outcome |
 |--------|---------|
 | **Blunder** | The Essence is destroyed. Roll on the Alchemy Consequence Table (§3.4). |
-| **Failure** | The mixture fails. The Essence is spent but you retain your Alchemy Supplies use. |
+| **Failure** | The mixture fails. The Essence is spent but you retain your Alchemy Supplies use. *(Field failure is harsher than downtime: improvised conditions mean the Essence cannot be salvaged from a failed reaction. This is the cost of speed.)* |
 | **Weak Success** | You produce the item, but it is **unstable** — it must be used within a short duration or it loses potency and becomes inert. |
 | **Strong Success** | You produce the item normally. |
 | **Critical Success** | You produce the item and retain the Alchemy Supplies use (no Supply spend). |
@@ -307,7 +315,7 @@ The **Delivery Method** determines how the product reaches its target. Each meth
 
 Changing delivery from the default for an effect adds complexity:
 
-- **Thrown/Inhaled versions** of single-target effects reduce potency by one step (to balance multi-target reach). Example: A Q4 healing draught restores 16 HP to one drinker; a Q4 healing thrown splash restores 8 HP to each target in the area.
+- **Thrown/Inhaled versions** of single-target effects **halve the numeric effect** (to balance multi-target reach). Example: A Q4 healing draught restores 16 HP to one drinker; a Q4 healing thrown splash restores 8 HP to each target in the area. For non-numeric effects (e.g., condition removal), reduce duration by one step instead.
 - **Contact delivery** adds a save for the target (Spirit + Fortitude vs. product's TN) even for effects that normally auto-apply.
 - **Coating delivery** only triggers once (on next hit), then is consumed.
 
@@ -325,6 +333,20 @@ Changing delivery from the default for an effect adds complexity:
 > - **Quality:** Q4 (Crafting rank 2 required, TN 10)
 >
 > This is not a base catalog recipe, so Nima must use the experimentation procedure first. Once learned, she can craft it freely — including via field alchemy.
+
+**Custom Product Cost Guidelines:**
+
+Until a full recipe catalogue is published, use the following formula for pricing custom products:
+
+| Quality | Base Cost (single-target draught) | Thrown/Inhaled (area) modifier | Coating modifier | Contact modifier |
+|---------|----------------------------------|-------------------------------|-----------------|-----------------|
+| Q1 | 15 coins | ×1.5 | ×0.75 | ×0.75 |
+| Q2 | 30–50 coins | ×1.5 | ×0.75 | ×0.75 |
+| Q3 | 125 coins | ×1.5 | ×0.75 | ×0.75 |
+| Q4 | 375 coins | ×1.5 | ×0.75 | ×0.75 |
+| Q5 | 1,250 coins | ×1.5 | ×0.75 | ×0.75 |
+
+Base cost matches existing alchemy item pricing at each tier. Area delivery costs more (multiple targets). Coating/Contact cost less (single-use trigger, limited applicability). GMs may adjust within ±25% for unusual combinations.
 
 ### 5.4 Poison Effects Reference
 
@@ -344,7 +366,16 @@ Poisons follow the modular system but have their own scaling table due to their 
 
 **Stacking:** Same poison doesn't stack. Different poisons track separately.
 
-**Delivery options for poisons:** Injury (coat weapon), Contact (coat surface), Ingested (mix in food/drink), Inhaled (release gas). Each uses the delivery rules from §5.2.
+**Delivery options for poisons:**
+
+| Delivery | Application | Save Attribute | Onset |
+|----------|-----------|----------------|-------|
+| **Injury** (coat weapon) | Quick Action to coat weapon/ammo | Strength + Fortitude | On next successful hit |
+| **Contact** (coat surface) | Action to coat a surface or object | Spirit + Fortitude | Immediate on touch |
+| **Ingested** (mix in food/drink) | Must be mixed into consumable undetected | Strength + Fortitude | 1d10 minutes after consumption |
+| **Inhaled** (release gas) | Action to deploy; cloud fills close range | Spirit + Fortitude | Immediate; all in cloud must save |
+
+These follow the general delivery rules from §5.2 with the poison-specific saves and onsets listed above.
 
 ### 5.5 Experimentation
 
@@ -417,16 +448,29 @@ Choose a target ingredient Quality:
 
 The existing **Forager** travel role (see [Travel](../06-scenes/09-travel.md)) already yields useful materials:
 
-- **Useful materials bonus:** "You gain primitive materials (d6)." These are Q1 Alchemy Supplies — valid as catalysts for Q1 alchemy.
+- **Useful materials bonus:** "You gain primitive materials (d6)." These are Q1 Alchemy Supplies — valid as catalysts for Q1 field alchemy only. (Free travel materials cannot substitute for purchased Q2+ Supply items.)
 - **Edible plants bonus:** While primarily food, an alchemist can repurpose edible plants as Q1 healing or utility essences at the GM's discretion.
 
 Additionally, a **dedicated foraging effort** during travel can yield essences:
 
 - An alchemist filling the Forager role may choose to **forage for essences instead of food/water**. Replace the standard Forager bonuses with:
-  - **Weak Success:** Gather 1 essence of Quality equal to the terrain's ingredient tier (GM assigns based on region — lush jungle = Q2–Q3, barren desert = Q1, enchanted forest = Q3–Q4).
+  - **Weak Success:** Gather 1 essence of Quality equal to the terrain's ingredient tier (see table below).
   - **Strong Success:** Gather 1d3 essences at the terrain's tier.
   - **Critical Success:** Gather 1d3 essences at the terrain's tier, plus 1 essence one tier higher.
 - Consequences remain unchanged from the standard Forager role.
+
+**Default Terrain Ingredient Tiers:**
+
+| Terrain Type | Ingredient Tier | Example Essences |
+|-------------|----------------|-----------------|
+| Barren desert, salt flats, open sea | Q1 | Mineral salts, dried lichens, sand beetle husks |
+| Scrubland, dry steppe, rocky hills | Q1–Q2 | Hardy herbs, copper-bearing stones, scorpion venom |
+| Fertile river valley, temperate forest | Q2 | Medicinal plants, tree resins, common animal parts |
+| Lush jungle, tropical marsh, deep cave | Q2–Q3 | Rare flowers, luminous fungi, exotic reptile glands |
+| Enchanted forest, sacred grove, spirit-touched oasis | Q3–Q4 | Temple flowers, spirit-infused sap, elemental crystals |
+| Primordial wasteland, divine ruins, planar rift zone | Q4+ | Dragon-territory flora, meteor-touched minerals, divine residue |
+
+> GMs may adjust terrain tiers based on specific regions in their campaign. The table above provides default guidelines.
 
 > **Design Note:** This connects adventuring directly to crafting. An alchemist who forages during travel arrives at a settlement with essences ready for downtime crafting — or for field alchemy during the next adventure.
 
@@ -585,29 +629,29 @@ All items on the [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) pa
 
 ## Appendix B: Non-Magical Alchemicals Compatibility
 
-The [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md) proposed 17 new alchemical substances at Q1–Q3. These are **mundane preparations** — not Alchemist-profession products:
+The [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md) proposed 17 new alchemical substances at Q1–Q3. These are **mundane preparations** — purchasable by anyone without the Alchemist profession. They can also be crafted by an alchemist using the standard Craft an Item rules. The "Modular Equivalent" column shows how each item maps to the recipe system, demonstrating that the modular framework is compatible with (but does not replace) these purchasable items.
 
-| Item | Quality | Category | Alchemy System Relationship |
-|------|---------|----------|-----------------------------|
-| Ochre Marking Powder | Q1 | Sensory | Purchasable gear. Not alchemy-crafted. |
-| Woad War Paint | Q1 | Enhancement | Purchasable gear. Cosmetic/intimidation — no alchemical equivalent needed. |
-| Blinding Dust | Q2 | Disruption | Purchasable gear. Could be replicated as Concealment + Q2 + Inhaled in modular system. |
-| Stench Gourd | Q2 | Disruption | Purchasable gear. Maps to Poison (nausea) + Q2 + Thrown. |
-| Resin Adhesive | Q2 | Control | Purchasable gear. Could be replicated as Mobility (impede) + Q2 + Thrown. |
-| Luminous Paste | Q2 | Utility | Purchasable gear. Maps to Perception (light) + Q2 + Salve. |
-| Verdigris Blight | Q2 | Sabotage | Purchasable gear. Unique sabotage niche — no modular equivalent needed. |
-| Smelling Salts | Q2 | Healing | Purchasable gear. Maps to Healing (awaken) + Q2 + Inhaled. |
-| Honey Poultice | Q2 | Healing | Purchasable gear. Maps to Healing (bleeding) + Q2 + Salve. |
-| Cooling Salve | Q2 | Healing | Purchasable gear. Maps to Protection (fire) + Q2 + Salve. |
-| Warming Tonic | Q2 | Enhancement | Purchasable gear. Maps to Protection (cold) + Q2 + Draught. |
-| Sacred Incense | Q2 | Ritual | Purchasable gear. Mystic skill support — unique niche. |
-| Pitch Pot | Q3 | Damage | Purchasable gear. Maps to Damage (fire) + Q3 + Thrown with area denial. |
-| Natron Solvent | Q3 | Utility | Purchasable gear. Unique dissolving niche — no modular equivalent needed. |
-| Cat's-Eye Oil | Q3 | Perception | Purchasable gear. Maps to Perception (dim light) + Q3 + Salve. |
-| Poppy Milk | Q3 | Enhancement | Purchasable gear. Maps to Enhancement (pain suppression) + Q3 + Draught. |
-| Ironblood Draught | Q3 | Enhancement | Purchasable gear. Maps to Protection (bleeding/poison) + Q3 + Draught. |
+| Item | Quality | Category | Modular Equivalent (if crafted) |
+|------|---------|----------|-------------------------------|
+| Ochre Marking Powder | Q1 | Sensory | Concealment (reveal) + Q1 + Thrown |
+| Woad War Paint | Q1 | Enhancement | Enhancement (intimidation) + Q1 + Salve |
+| Blinding Dust | Q2 | Disruption | Concealment + Q2 + Inhaled |
+| Stench Gourd | Q2 | Disruption | Poison (nausea) + Q2 + Thrown |
+| Resin Adhesive | Q2 | Control | Mobility (impede) + Q2 + Thrown |
+| Luminous Paste | Q2 | Utility | Perception (light) + Q2 + Salve |
+| Verdigris Blight | Q2 | Sabotage | Unique niche — no standard modular equivalent |
+| Smelling Salts | Q2 | Healing | Healing (awaken) + Q2 + Inhaled |
+| Honey Poultice | Q2 | Healing | Healing (bleeding) + Q2 + Salve |
+| Cooling Salve | Q2 | Healing | Protection (fire) + Q2 + Salve |
+| Warming Tonic | Q2 | Enhancement | Protection (cold) + Q2 + Draught |
+| Sacred Incense | Q2 | Ritual | Unique niche — mystic skill support |
+| Pitch Pot | Q3 | Damage | Damage (fire) + Q3 + Thrown with area denial |
+| Natron Solvent | Q3 | Utility | Unique niche — dissolving agent |
+| Cat's-Eye Oil | Q3 | Perception | Perception (dim light) + Q3 + Salve |
+| Poppy Milk | Q3 | Enhancement | Enhancement (pain suppression) + Q3 + Draught |
+| Ironblood Draught | Q3 | Enhancement | Protection (bleeding/poison) + Q3 + Draught |
 
-> **Key Insight:** These mundane alchemicals overlap conceptually with the modular system but exist at Q1–Q3 where anyone can buy them without Alchemist proficiency. An alchemist who wants *better* versions (Q4+) or custom delivery methods must use the modular recipe system. This creates a natural tier boundary: Q1–Q3 = mundane preparations anyone can buy; Q4+ = true alchemical products requiring expertise.
+> **Key Insight:** These mundane alchemicals are available for purchase at Q1–Q3 without requiring Alchemist proficiency. An alchemist's unique value starts at the modular recipe system — creating *custom combinations* (e.g., a thrown healing mist, an inhaled sleep cloud) or *higher-Quality versions* of similar effects that mundane preparations cannot achieve. The base catalog (Appendix A) includes some Q4–Q5 items as always-known recipes because these are established alchemical products in the game world — their formulas are widely taught. Custom products at any Quality still require experimentation.
 
 ---
 
@@ -642,7 +686,15 @@ The [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.
 
 **Week 2:** Roll → Result: 12 (weak success despite bane). Die: 6 → 5.
 
-**Weeks 3–7:** Progress continues. On Week 5, a blunder — roll twice on consequences: Toxic Fumes (1 Lingering Fatigue) + Setback (die increases by 1). Nima spends Week 6 on Leisure to remove the fatigue, then finishes in Week 7.
+**Week 3:** Roll → Result: 11 (weak success). Die: 5 → 4.
+
+**Week 4:** Roll → Result: 13 (strong success). Die: 4 → 2.
+
+**Week 5:** Roll → Result: 4 (blunder!). Roll twice on consequences: Toxic Fumes (1 Lingering Fatigue) + Setback (die increases by 1, back to 3).
+
+**Week 6:** Nima takes Leisure to remove the Lingering Fatigue. No crafting this week.
+
+**Week 7:** Roll → Result: 15 (critical success, −3). Die: 3 → 0. **Complete!**
 
 **Result:** Nima learns the recipe. Future crafts of this healing mist have no experimentation penalty.
 
