@@ -1,10 +1,10 @@
 # Alchemy & Potion Crafting — Design Analysis
 
-> **Scope:** Alchemical crafting as a downtime activity — procedures, ingredient systems, product categories, and integration with the challenge dice framework, magic item creation, and enchantment systems.
+> **Scope:** Alchemical crafting as a modular, fiction-first system — procedures for downtime and field use, ingredient systems built on the existing Supply framework, integration with challenge dice, magic item creation, and enchantment systems.
 >
-> **References:** [Craft an Item](../06-scenes/04-downtime/activities.md) | [Challenges](../06-scenes/07-challenges.md) | [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Downtime Activities](../06-scenes/04-downtime/activities.md) | [Crafting Professions](../06-scenes/05-crafting-professions.md) | [Magic Item Effects](../04-equipment/07-magic-items/effects.md) | [Enchantments](../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../04-equipment/07-magic-items/cost-tables.md)
+> **References:** [Craft an Item](../06-scenes/04-downtime/activities.md) | [Challenges](../06-scenes/07-challenges.md) | [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Downtime Activities](../06-scenes/04-downtime/activities.md) | [Crafting Professions](../06-scenes/05-crafting-professions.md) | [Magic Item Effects](../04-equipment/07-magic-items/effects.md) | [Enchantments](../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../04-equipment/07-magic-items/cost-tables.md) | [Supply](../04-equipment/02-equipment/supply.md) | [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) | [Travel](../06-scenes/09-travel.md)
 >
-> **Related Analyses:** [Downtime System Analysis](./downtime-system-analysis.md) | [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) | [Materials Mechanical Effects Analysis](./materials-mechanical-effects-analysis.md)
+> **Related Analyses:** [Downtime System Analysis](./downtime-system-analysis.md) | [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) | [Materials Mechanical Effects Analysis](./materials-mechanical-effects-analysis.md) | [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md)
 
 ---
 
@@ -12,20 +12,23 @@
 
 ### Key Findings
 
-1. **Challenge dice unify crafting progress.** Alchemical crafting uses the same challenge die framework as all other multi-step downtime activities (see [Downtime System Analysis §3.3](./downtime-system-analysis.md)). "Required Successes" become a challenge die placed on the table — visible, shared progress tracking.
-2. **Alchemy is a Crafting profession, not a parallel system.** All alchemical crafting follows the standard Craft an Item activity with alchemy-specific ingredients, consequences, and product types. No separate subsystem required.
-3. **Consequences replace the old mishap table.** Failures and blunders during alchemical crafting trigger consequences aligned with the Complication table ([Downtime System Analysis §3.2](./downtime-system-analysis.md)) plus alchemy-specific results (toxic fumes, explosions, contamination).
-4. **Alchemical products feed into magic item creation.** Potions, oils, and coatings are standalone consumables. Alchemical reagents also serve as **material prerequisites** for enchanting magic items — bridging alchemy and the enchantment system ([Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md)).
-5. **Ingredient acquisition is streamlined.** Gathering uses a single downtime activity (Gather Ingredients) with a standard difficulty/yield table. Creature harvesting and market purchase remain available sources.
-6. **Lingering Fatigue applies.** Fatigue from alchemy consequences is **Lingering Fatigue** — it does not heal through normal nightly rest (see [Downtime System Analysis §3.6](./downtime-system-analysis.md)).
+1. **Modular recipe system.** Alchemical products are built from three choices: **Effect** (what it does) + **Quality** (how potent) + **Delivery Method** (how it reaches the target). This replaces static item lists with a flexible, combinable framework. Equipment list alchemy items are treated as **known recipes** that any alchemist can craft without experimentation.
+2. **Two crafting modes.** Downtime crafting uses challenge dice for multi-week batch production. Field alchemy allows quick, single-item crafting during adventures with a single roll — faster but riskier and less efficient.
+3. **Simplified ingredients.** The old three-tag system (Essence / Catalyst / Binder) is streamlined. Generic **Alchemy Supplies** per Quality tier serve as the baseline catalyst and are drawn from the existing Supply item category. A specific **Essence** determines the product's effect. Special reagents can optionally enhance duration or add secondary properties.
+4. **Mind or Spirit.** Alchemy supports two approaches: **Mind + Crafting** for methodical, empirical preparation (the apothecary grinding minerals in a bronze mortar) and **Spirit + Crafting** for intuitive, tradition-guided practice (the herbalist reading omens and following ancestral recipes). The player chooses which attribute to use when they craft.
+5. **Challenge dice unify crafting progress.** Downtime alchemical crafting uses the same challenge die framework as all other multi-step activities (see [Downtime System Analysis §3.3](./downtime-system-analysis.md)). The die is placed on the table as a visible progress tracker.
+6. **Ingredients from travel.** The existing Forager travel role yields useful materials that feed directly into alchemy. Creature harvesting during adventures also produces essences. These connect adventuring to downtime crafting.
+7. **Base catalog vs. custom products.** Items on the [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) list are always-known recipes — any alchemist can craft them. Items from the [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md) (Q1–Q3 mundane alchemicals) are purchasable gear, not alchemy-crafted. Custom products beyond the base catalog require experimentation to discover.
+8. **Integration with magic items.** Alchemical reagents serve as material prerequisites for enchantment crafting. Temporary alchemical effects (weapon coatings, enhancement draughts) function as non-stacking parallels to permanent enchantments.
 
 ### Design Principles
 
-1. **Unified terminology** — Use challenge dice, consequences, Lingering Fatigue, and other terms consistently with the broader downtime and challenge systems.
-2. **Fiction-first products** — Alchemical items should feel tangible: potions bubble, poisons reek, bombs crackle. Mechanical effects are clear, but flavor comes first.
-3. **Bounded power** — Alchemical products provide temporary, consumable advantages. They complement magic items and talents, never replace them.
-4. **Crafting rank gates power** — Higher-Quality products require higher Crafting ranks, matching the standard Craft an Item table. No shortcuts.
-5. **Integration over isolation** — Alchemy connects to magic items (reagents as materials), enchantments (alchemical prerequisites), and downtime (gathering, crafting, selling).
+1. **Bronze Age aesthetic** — All ingredients, tools, and processes must fit the ancient world setting: clay vessels, bronze mortars, reed-wrapped bundles, plant resins, mineral powders, animal-derived substances. No glass beakers, no gunpowder, no modern chemistry.
+2. **Modular over static** — The recipe system generates products from combinations, not from a fixed list. Known recipes are shortcuts; experimentation expands the alchemist's repertoire.
+3. **Two speeds** — Downtime crafting is efficient and supports batch production. Field alchemy is quick but costly and limited to known recipes.
+4. **Supply integration** — Generic Alchemy Supplies from the Supply category serve as catalysts. Essences are the specific, effect-defining ingredient. This connects to the existing equipment economy.
+5. **Bounded power** — Alchemical products provide temporary, consumable advantages. They complement magic items and talents, never replace them.
+6. **Lingering Fatigue** — Fatigue from alchemy consequences is Lingering Fatigue (see [Downtime System Analysis §3.6](./downtime-system-analysis.md)).
 
 ---
 
@@ -35,32 +38,107 @@
 
 | System | Status | Notes |
 |--------|--------|-------|
-| **Craft an Item** | ✅ | Alchemy uses the same activity, profession requirement, weekly expenses, and success-tracking structure. |
-| **Crafting Professions** | ✅ | "Alchemist" is an established crafting profession. Skill test = Mind + Crafting. |
+| **Craft an Item** | ✅ | Downtime alchemy uses the same activity, profession requirement, weekly expenses, and challenge die structure. |
+| **Crafting Professions** | ✅ | "Alchemist" is an established profession. Skill test = Mind/Spirit + Crafting. |
 | **Quality Tiers** | ✅ | Alchemical products follow Q1–Q7 with the same Crafting rank requirements and difficulty TNs. |
-| **Consumable Pricing** | ✅ | Existing consumable items (healing potions, bombs, poisons) have established costs that align with the ingredient system. |
+| **Supply Items** | ✅ | Existing Supply category includes crafting materials at Q1–Q4 that map directly to alchemy catalysts. |
+| **Travel Forager** | ✅ | The Forager role already yields "useful materials (primitive materials d6)" — these are valid alchemy inputs. |
+| **Consumable Pricing** | ✅ | Existing alchemy items (healing potions, bombs, poisons) have established costs compatible with the ingredient system. |
 
 ### Gaps Addressed
 
 | System | Status | Gap | Addressed In |
 |--------|--------|-----|-------------|
-| **Challenge Dice** | ⚠️ | Old alchemy document used "track successes" rather than challenge die terminology. | §3.1 |
-| **Consequences** | ⚠️ | Old mishap table was alchemy-specific and disconnected from the Complication table. | §3.2 |
-| **Magic Item Integration** | ❌ | No procedure for how alchemical products connect to enchantment creation or magic item crafting. | §5 |
-| **Lingering Fatigue** | ❌ | Old document referenced generic "Fatigue" without the Lingering Fatigue rule. | §3.2 |
-| **Gathering Activity** | ⚠️ | Gathering existed but used an isolated complication table. Aligned with the standard Complication table. | §4 |
+| **Challenge Dice** | ⚠️ | Old document used "track successes" rather than challenge die terminology. | §3 |
+| **Field Crafting** | ❌ | No procedure for quick crafting during adventures. | §4 |
+| **Modular Recipes** | ❌ | Old system mapped only to static item lists with no combinable framework. | §5 |
+| **Supply Integration** | ❌ | No connection between generic Supply materials and alchemy ingredients. | §3.2 |
+| **Mind vs. Spirit** | ❌ | Only Mind + Crafting was specified; intuitive/traditional approach excluded. | §3.1 |
+| **Non-Magical Alchemicals** | ❌ | Relationship between mundane alchemicals (equipment analysis) and crafted products undefined. | §2.1 |
+| **Magic Item Integration** | ❌ | No procedure for alchemy ↔ enchantment pipeline. | §7 |
+| **Travel Foraging** | ⚠️ | Forager yields materials but no explicit link to alchemy ingredients. | §6.3 |
+| **Consequences** | ⚠️ | Old mishap table was disconnected from Complication table format. | §3.4 |
+
+### 2.1 Base Catalog vs. Custom Products
+
+The question of which alchemical items belong where:
+
+**Base Catalog (Always Available as Known Recipes)**
+
+All items on the [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) page — healing salves, healing potions, weapon poisons, paralyzing poisons, fire/smoke bombs, flammable paste, acid vial, antitoxin, heightening potion. These are purchasable in settlements at their listed cost, and any alchemist can craft them without experimentation.
+
+**Mundane Alchemicals (Purchasable Gear, Not Alchemy-Crafted)**
+
+Items proposed in the [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md) — blinding dust, stench gourd, resin adhesive, ochre marking powder, luminous paste, woad war paint, smelling salts, honey poultice, cooling salve, warming tonic, sacred incense, pitch pot, natron solvent, cat's-eye oil, poppy milk, ironblood draught, verdigris blight. These are Q1–Q3 mundane preparations available for purchase at any appropriate settlement. They do **not** require the Alchemist profession to use and are not crafted through the alchemy system — they are standard equipment, like rope or a camping kit. An alchemist *can* craft them using the standard Craft an Item rules with appropriate proficiency, just as a smith can repair a bronze blade.
+
+**Custom Products (Alchemy-Only, Require Experimentation)**
+
+Any product assembled through the modular recipe system (§5) that goes beyond the base catalog. These require either a known recipe (learned through experimentation or taught by a mentor) or the experimentation procedure. This is the exclusive domain of the Alchemist profession.
+
+> **Design Note:** This three-tier distinction keeps the equipment list clean, ensures non-alchemists can buy useful consumables, and reserves the modular recipe system as the alchemist's unique value proposition.
 
 ---
 
-## 3. Alchemical Crafting Procedure
+## 3. Downtime Alchemical Crafting
 
-Alchemical crafting uses the standard **Craft an Item** downtime activity with the **Alchemist** profession. The procedure below incorporates challenge dice and the consequence framework from the [Downtime System Analysis](./downtime-system-analysis.md).
+Downtime alchemy uses the standard **Craft an Item** activity with the **Alchemist** profession. The procedure incorporates challenge dice and the consequence framework from the [Downtime System Analysis](./downtime-system-analysis.md).
 
-### 3.1 Step-by-Step Procedure
+### 3.1 Skill Test
+
+The Alchemist profession supports two attributes:
+
+- **Mind + Crafting** — The empirical approach. Methodical measurement, careful observation, and recorded formulas. Fits the apothecary, the temple physician, the court poisoner who keeps meticulous clay-tablet notes.
+- **Spirit + Crafting** — The intuitive approach. Ancestral knowledge, reading the color of smoke, tasting the mixture, trusting tradition. Fits the village herbalist, the wandering healer, the shaman who learned from their grandmother.
+
+The player chooses which attribute to use each time they make an alchemy roll. Both are equally valid — the game world's "ancient science" does not distinguish between empirical and intuitive knowledge the way modern cultures do.
+
+> **Design Note:** This mirrors the Forager travel role, which already allows Spirit/Mind + Nature. The dual-attribute approach also opens alchemy to a wider range of character archetypes (Apothecary, Shaman, Druid, Oracle) without requiring separate professions.
+
+### 3.2 Ingredients: Essence + Alchemy Supplies
+
+The ingredient system is simplified to two components:
+
+**Essence** — The specific, effect-defining ingredient. Determines *what* the product does. Acquired through gathering, harvesting, purchase, or questing.
+
+| Essence Type | Examples (Bronze Age flavoring) |
+|-------------|-------------------------------|
+| Healing | Honey, willow bark, comfrey root, sacred lotus |
+| Fire | Sulfur crystals, naphtha resin, salamander gland |
+| Frost | Snowmelt essence, white mineral salt, cave lichen |
+| Poison | Scorpion venom, hemlock extract, toad secretion |
+| Enhancement | Bull's blood, lion mane extract, eagle-eye berries |
+| Sleep | Poppy extract, mandrake root, lotus pollen |
+| Perception | Desert hawk bile, cave-fish oil, starflower tincture |
+| Protection | Turtle shell powder, iron-rich clay, boar tusk dust |
+
+**Alchemy Supplies** — The generic catalyst that activates and stabilizes the essence. Represented by the existing **Supply** category items, which already scale by Quality:
+
+| Supply Item | Quality | Cost | Alchemy Role |
+|-------------|---------|------|-------------|
+| Primitive Materials (d6) | Q1 | 25 coins | Basic catalyst — binds Q1 essences into crude preparations |
+| Simple Materials (d6) | Q2 | 75 coins | Standard catalyst — stable enough for common salves and poisons |
+| Advanced Materials (d6) | Q3 | 250 coins | Refined catalyst — supports complex potions and bombs |
+| Formidable Materials (d6) | Q4 | 750 coins | Potent catalyst — enables magical-quality alchemical products |
+
+For Q5+ products, catalysts must be sourced from rare or magical materials (quest rewards, creature harvests, or specialist merchants). No generic Supply item exists at these tiers.
+
+**Special Reagents (Optional Modifiers)**
+
+Beyond the basic Essence + Supplies formula, special reagents can modify a product's properties:
+
+| Reagent Type | Effect | Example |
+|-------------|--------|---------|
+| **Stabilizer** | Extends duration by one step (briefly → short, short → medium) | Cedar resin, beeswax, rendered tallow |
+| **Intensifier** | Increases effect potency by one step within the Quality tier | Concentrated naphtha, distilled venom, temple-blessed water |
+| **Carrier** | Changes delivery method (see §5.2) without altering the core effect | Animal bladder (splash), hollow reed (inhaled), clay vessel (contact) |
+
+> **How Supply Items Feed Into Alchemy:** When crafting an alchemical product, you spend 1 use of the appropriate Supply item to provide the catalyst. This replaces the old separate "ingredient cost = ½ item value" model for the catalyst portion. The Essence must still be acquired separately (purchased, gathered, or harvested). Total material cost = Essence cost + Supply use cost. The Supply die tracks how many crafting attempts your materials support before running out.
+
+### 3.3 Downtime Procedure (Step by Step)
 
 #### Step 1: Choose Product and Quality
 
-Select what you want to create and its Quality tier. This determines the challenge die size, crafting difficulty, and material costs.
+Select what you want to create — either a **known recipe** from the base catalog or a **custom product** using the modular system (§5). Determine the Quality tier.
 
 | Quality | Crafting Rank | Challenge Die | Crafting TN | Weekly Expenses |
 |---------|---------------|---------------|-------------|-----------------|
@@ -74,32 +152,22 @@ Select what you want to create and its Quality tier. This determines the challen
 
 > **Challenge Die:** Place the appropriate die on the table showing its starting value. This is your visible progress tracker — identical to challenge dice used in other activities and scenes (see [Challenges](../06-scenes/07-challenges.md)).
 
-#### Step 2: Gather Materials
+#### Step 2: Provide Materials
 
-You need ingredients totaling **½ the product's final cost**. Sources:
+You need:
+- **1 Essence** of the appropriate type and Quality (or higher).
+- **1 use of Alchemy Supplies** at the product's Quality tier (or higher). Spend 1 use from the appropriate Supply item.
+- **Optional special reagents** (stabilizer, intensifier, or carrier) if modifying the base recipe.
 
-- **Purchase** at a settlement market (availability capped by settlement rank).
-- **Gather Ingredients** downtime activity (see §4).
-- **Creature Harvesting** — harvested creature parts count as alchemical ingredients at the creature's tier Quality.
-- **Quest Rewards** — Q5+ materials are rarely available for purchase and must be quested for or harvested.
-
-**Ingredient Tags:**
-
-| Tag | Role | Examples |
-|-----|------|---------|
-| **Essence** | Core effect — defines what the product does | Healing herbs, fire salts, monster venom, sleep pollen |
-| **Catalyst** | Activates or amplifies the essence | Pure water, volatile spirits, elemental dust |
-| **Binder** | Extends duration or stabilizes the mixture | Tree resin, mineral powder, animal fat |
-
-**Minimum Recipe:** 1 Essence + 1 Catalyst. Add Binders for extended duration, additional Essences for combined effects.
+For products Q5+, the catalyst must be a specific rare material rather than a generic Supply item (see §3.2).
 
 #### Step 3: Pay Expenses and Roll
 
-Pay weekly expenses (see table above) and roll **Mind + Crafting** vs. the product's Crafting TN.
+Pay weekly expenses and roll **Mind/Spirit + Crafting** vs. the product's Crafting TN.
 
 | Result | Challenge Die Reduction |
 |--------|------------------------|
-| **Blunder** | No reduction. Trigger an **Alchemy Consequence** (see §3.2). |
+| **Blunder** | No reduction. Trigger an **Alchemy Consequence** (see §3.4). |
 | **Failure** | No reduction. Optionally reduce by 1 by **doubling** weekly expenses for this week. |
 | **Weak Success** | Reduce challenge die by 1. |
 | **Strong Success** | Reduce challenge die by 2. |
@@ -107,50 +175,39 @@ Pay weekly expenses (see table above) and roll **Mind + Crafting** vs. the produ
 
 #### Step 4: Track Progress
 
-When the challenge die reaches **0**, the product is complete. Pay the material cost and receive the finished item.
+When the challenge die reaches **0**, the product is complete. Receive the finished item.
 
-If the challenge die has not reached 0, you may continue crafting in a subsequent downtime week (paying weekly expenses again). Record the current challenge die value between sessions.
+If the challenge die has not reached 0, continue crafting in a subsequent downtime week (paying weekly expenses again). Record the current challenge die value between sessions.
 
-**Batch Crafting:** If a single roll produces enough reduction to complete multiple identical products (e.g., rolling a critical on a Q1 item), you may create up to your Crafting rank identical items. Pay full material cost for each additional item.
+**Batch Crafting:** If a single roll produces enough reduction to complete multiple identical products (e.g., rolling a critical on a Q1 item), you may create up to your Crafting rank identical items. Spend 1 additional Supply use per extra item.
 
 > **Example — Brewing a Healing Potion (Q3):**
-> Alara (Crafting 2, Mind d8) decides to brew a healing potion. She places a d6 showing 4 on the table (Q3 challenge die). She has healing herbs (Essence) and pure water (Catalyst) totaling 62 coins in materials. She pays 50 coins weekly expenses and rolls Mind + Crafting vs. TN 8.
+> Kesra the herbalist (Crafting 2, Spirit d8) decides to brew a healing potion — a known recipe from the base catalog. She places a d6 showing 4 on the table (Q3 challenge die). She has sacred lotus (Essence: healing, Q3) and spends 1 use of her Advanced Materials (Q3 Supply). She pays 50 coins weekly expenses and rolls Spirit + Crafting vs. TN 8.
 >
-> *Week 1:* She rolls a strong success — the die drops from 4 to 2. Good progress.
+> *Week 1:* Strong success — the die drops from 4 to 2. The lotus pulp dissolves cleanly into the mineral carrier.
 >
-> *Week 2:* She rolls a weak success — the die drops from 2 to 1. Almost there.
+> *Week 2:* Weak success — the die drops from 2 to 1. She sun-dries the mixture in shallow clay bowls.
 >
-> *Week 3:* She rolls a weak success — the die reaches 0. She pays 62 coins for materials and receives the finished healing potion. Total time: 3 weeks, 150 coins expenses + 62 coins materials.
+> *Week 3:* Weak success — the die reaches 0. The potion is sealed in a stoppered clay flask. Total: 3 weeks × 50 coins expenses.
 
-### 3.2 Alchemy Consequences
+### 3.4 Alchemy Consequences
 
-On a **blunder** during alchemical crafting, roll on the **Alchemy Consequence Table** below. These replace the generic Complication table for alchemy-specific results, reflecting the volatile nature of alchemical work.
+On a **blunder** during alchemical crafting, roll on the **Alchemy Consequence Table**. These replace the generic Complication table for alchemy-specific results.
 
 **Alchemy Consequence Table (d6)**
 
 | d6 | Consequence |
 |----|-------------|
-| 1 | **Toxic Fumes.** Noxious vapors fill your workspace. Gain 1 **Lingering Fatigue**. |
-| 2 | **Explosion.** Your mixture detonates. Suffer 2d6 blast damage. Your workspace is unusable for 1d4 days (costs an additional 50 coins to repair). |
-| 3 | **Contamination.** The batch is ruined. Lose half your invested ingredient value (rounded up). |
-| 4 | **Unstable Result.** The product appears finished but is flawed. It functions normally but has one unpredictable side effect determined by the GM (e.g., changes the user's skin color, emits a foul odor, causes brief nausea after use). |
+| 1 | **Toxic Fumes.** Acrid vapors fill your workspace. Gain 1 **Lingering Fatigue**. |
+| 2 | **Explosion.** Your clay vessel shatters violently. Suffer 2d6 blast damage. Your workspace is unusable for 1d4 days (costs 50 coins in replacement vessels and tools). |
+| 3 | **Contamination.** The batch is ruined. The Essence is destroyed — you must acquire a new one. |
+| 4 | **Unstable Result.** The product appears finished but is flawed. It functions normally but has one unpredictable side effect determined by the GM (e.g., changes the user's skin color, emits a foul odor, causes brief nausea). |
 | 5 | **Setback.** The reaction stalls. Increase the challenge die by 1 (up to its starting value). |
-| 6 | **Severe Burn.** Suffer 1 Wound. You cannot continue any crafting activity until the Wound is healed. |
+| 6 | **Severe Burn.** Suffer 1 Wound from boiling liquid or caustic splash. You cannot continue any crafting activity until the Wound is healed. |
 
-On a **failure** (not a blunder), there is no additional consequence beyond the lack of progress — unless the alchemist chooses to force progress by doubling weekly expenses (see Step 3).
+> **Lingering Fatigue Note:** Fatigue from alchemy consequences is **Lingering Fatigue** — not removed by normal nightly rest. Removed by the Recover, Leisure, or Provide Offering activities (see [Downtime System Analysis §3.6](./downtime-system-analysis.md)).
 
-> **Lingering Fatigue Note:** Fatigue gained from alchemy consequences is Lingering Fatigue. It is not removed by normal nightly rest. It can be removed by the Recover activity, the Leisure activity, or the Provide Offering activity (see [Downtime System Analysis §3.6](./downtime-system-analysis.md)).
-
-### 3.3 Experimentation
-
-An alchemist can attempt to create a product from an **untested recipe** — combining ingredients without a known formula.
-
-- The alchemist describes the intended effect and the GM assigns an appropriate Quality tier.
-- All crafting rolls for the experimental product suffer **+1 bane**.
-- On a **blunder**, roll twice on the Alchemy Consequence Table and apply both results.
-- If the product is completed successfully, the alchemist **learns the recipe** and can craft it again without the experimentation penalty.
-
-### 3.4 Talent Synergies
+### 3.5 Talent Synergies
 
 Existing Crafting talents apply to alchemical crafting:
 
@@ -159,151 +216,119 @@ Existing Crafting talents apply to alchemical crafting:
 | **Artisan R1** | Re-roll one crafting test per scene (applies to alchemy rolls). |
 | **Artisan R2** | When reducing the challenge die by 1+, reduce it by an additional 1. |
 | **Artisan R3** | When reducing the challenge die by 1+, reduce it by an additional 2. |
-| **Efficient Worker R1** | When rolling a Supply check for materials, roll twice and take the higher result. |
+| **Efficient Worker R1** | When rolling a Supply check for alchemy materials, roll twice and take the higher result. |
 | **Efficient Worker R2** | When you finish crafting an alchemical item, regain 1/10 of the item's cost in coins. |
 | **Efficient Worker R3** | Every crafting roll reduces the challenge die by at least 1 (even on failure). |
 
 ---
 
-## 4. Gathering Ingredients
+## 4. Field Alchemy (Quick Crafting During Adventures)
 
-Gathering alchemical ingredients is a downtime activity. Roll **Mind/Spirit + Nature** or **Agility/Spirit + Survival** (player's choice based on approach: foraging knowledge vs. wilderness scouting).
+Not all alchemy happens in a workshop. An alchemist in the field — crouched behind a ruin wall, working by firelight in camp, or hastily mixing reagents before a battle — can produce a single item with a quick, improvised procedure.
 
-### Gather Ingredients Activity
+### 4.1 Requirements
 
-| Min. Settlement Rank | Requirements | Expenses |
-|----------------------|-------------|---------|
-| 1 (Hamlet) | Nature or Survival skill | 0 coins/week |
+- **Alchemist profession** and **Alchemist's Supplies** (50 coins, 1 load — the standard toolkit of bronze mortar, clay vessels, reed stirring rods, and a pouch of common reagents).
+- The product must be a **known recipe** (base catalog or previously learned through experimentation). No experimentation in the field.
+- **1 Essence** of appropriate type and Quality.
+- **1 use of Alchemy Supplies** (the toolkit's Supply die — functions as the catalyst).
 
-Choose a target ingredient Quality. The TN matches the standard Crafting difficulty for that Quality:
+### 4.2 Procedure
 
-| Quality | Gathering TN | Yield on Success |
-|---------|-------------|-----------------|
-| Q1 | Easy (6) | 1d6 ingredients |
-| Q2 | Easy (6) | 1d4 ingredients |
-| Q3 | Medium (8) | 1d3 ingredients |
-| Q4 | Hard (10) | 1d2 ingredients |
-| Q5 | Very Hard (12) | 1 ingredient |
-| Q6 | Extreme (14) | 1 ingredient |
-| Q7 | Legendary (16) | 1 ingredient |
+Field alchemy takes **one Action during a rest** (short or long rest) or **10 minutes of uninterrupted work** outside of combat. It produces a **single item** — no batch crafting.
 
-**Blunder.** No yield. Roll on the Complication table ([Downtime System Analysis §3.2](./downtime-system-analysis.md)) with the following alchemy-flavored substitutions:
+Roll **Mind/Spirit + Crafting** vs. the product's Crafting TN with **+1 bane** (reflecting improvised conditions — no proper workspace, limited temperature control, rushed preparation).
 
-| d6 | Gathering Complication |
-|----|----------------------|
-| 1 | **Poisonous Contact.** Save Spirit + Fortitude vs. TN 10 or gain **poisoned** (short duration). Gain 1 Lingering Fatigue on failure. |
-| 2 | **Hostile Creature.** You stumble into a creature's territory. The GM introduces a brief combat encounter or a tense escape. |
-| 3 | **Spoiled Yield.** Your collected ingredients are contaminated by weather or parasites. Lose any ingredients gathered this week. |
-| 4 | **Unwanted Attention.** A rival herbalist, local authority, or territorial faction notices your foraging. The GM introduces a minor complication. |
-| 5 | **Lost Time.** You cannot use this activity again next week. |
-| 6 | **Nothing Extra.** The blunder is bad enough on its own. |
+| Result | Outcome |
+|--------|---------|
+| **Blunder** | The Essence is destroyed. Roll on the Alchemy Consequence Table (§3.4). |
+| **Failure** | The mixture fails. The Essence is spent but you retain your Alchemy Supplies use. |
+| **Weak Success** | You produce the item, but it is **unstable** — it must be used within a short duration or it loses potency and becomes inert. |
+| **Strong Success** | You produce the item normally. |
+| **Critical Success** | You produce the item and retain the Alchemy Supplies use (no Supply spend). |
 
-**Failure.** No yield. No additional consequence.
+### 4.3 Limitations
 
-**Weak Success.** Yield as listed in the table above.
+- **One item per rest.** Field alchemy is quick and dirty — you cannot mass-produce.
+- **Known recipes only.** The pressure of field conditions does not allow experimentation.
+- **Maximum Quality = Crafting rank + 1.** You cannot attempt field alchemy beyond your practical skill ceiling. A Crafting 2 alchemist can field-craft up to Q3.
+- **No challenge die.** Field alchemy is resolved in a single roll — it does not use multi-week tracking.
 
-**Strong Success.** Yield as listed, plus one additional ingredient of one Quality tier lower (minimum Q1).
+> **Example — Field-Mixing an Antitoxin:**
+> The party's scout has been bitten by a venomous asp. Tadese the apothecary (Crafting 1, Mind d8) has Alchemist's Supplies and a vial of purified serpent gland (Essence: antivenom, Q2). During the party's short rest, he crushes the gland in his bronze mortar, mixes it with mineral powder from his supplies, and rolls Mind + Crafting vs. TN 6 with +1 bane. He rolls a strong success — the antitoxin is ready. The scout drinks it and is cured.
 
-**Critical Success.** Double the listed yield.
+### 4.4 Field vs. Downtime Comparison
 
-### Other Acquisition Methods
-
-- **Market Purchase:** Settlements stock ingredients up to settlement rank + 1 in Quality (Hamlet = Q2, Village = Q3, Town = Q4, City = Q5). Costs follow the Ingredient Cost table in §6.1.
-- **Creature Harvesting:** Use the Harvesting Creature Parts rules. Harvested parts count as alchemical ingredients at the creature's tier Quality. A creature harvested for alchemical purposes yields 1d4 ingredient units per successful harvest.
-- **Quest Rewards:** Q5+ ingredients are rare treasures. They are seldom available for purchase and typically must be obtained through adventuring, trade with specialists, or faction connections.
-
----
-
-## 5. Integration with Magic Items & Enchantments
-
-This section describes how the alchemy system connects to the magic item and enchantment systems. See the [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) for the full enchantment framework.
-
-### 5.1 Alchemical Reagents as Enchantment Materials
-
-When crafting a magic item via the Craft an Item activity, higher-Quality items require magical ingredients as part of their material cost. **Alchemical reagents satisfy this requirement.** An alchemist who can produce or source the correct reagents provides a direct material pipeline for magic item creation.
-
-| Magic Item Quality | Reagent Role | Example |
-|-------------------|-------------|---------|
-| Q3 (Masterwork) | No reagent needed — mundane materials only. | Fine steel, seasoned wood. |
-| Q4 (Lesser Magic) | Alchemical reagent as activating agent. | Elemental salts to awaken a weapon's enchantment. |
-| Q5 (Potent Magic) | Rare reagent as magical binding agent. | Phoenix ash to stabilize a Flaming enchantment. |
-| Q6 (Greater Magic) | Exotic reagent as core magical component. | Elder dragon bile to fuel a Q6 Slaying weapon. |
-| Q7+ (Legendary) | Legendary reagent as essential catalyst. | Cosmic essence, divine ichor — quest-only materials. |
-
-> **Design Note:** This creates a natural workflow: an adventuring party's alchemist gathers and refines reagents during downtime, which then feed into the party smith's or enchanter's magic item projects. Neither role is strictly required — you can always purchase materials — but the synergy rewards investment in both crafting professions.
-
-### 5.2 Alchemical Products as Temporary Enchantments
-
-Some alchemical products function as **temporary enchantments** — short-duration enhancements applied to weapons, armor, or the user's body. These explicitly do not stack with permanent enchantments of the same type (following the standard stacking rule: only the highest bonus of a given type applies).
-
-| Product Type | Enchantment Parallel | Stacking Rule |
-|-------------|---------------------|---------------|
-| **Weapon Coating (fire)** | Functions like Flaming weapon (temporary) | Does not stack with a permanent Flaming enchantment. The higher bonus applies. |
-| **Armor Oil (resistance)** | Functions like Tough armor (temporary) | Does not stack with a permanent Tough enchantment. The higher bonus applies. |
-| **Attribute Potion** | Functions like a wearable "of Might/Swiftness" (temporary) | Does not stack with a permanent attribute enchantment. The higher bonus applies. |
-| **Enhancement Paste** | Grants a temporary weapon property | Does not stack with the same permanent property. |
-
-> **Design Note:** Temporary alchemical effects let characters without magic items access enchantment-like benefits for a scene or encounter, and let characters with magic items gain different (non-overlapping) temporary benefits. This preserves the value of permanent enchantments while giving alchemy a clear combat niche. The [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) deferred "Temporary enchantments / alchemy" to this document — the above framework fulfills that deferral.
-
-### 5.3 Alchemical Augmentation of Enchantment Crafting
-
-When crafting a magic item that includes an enchantment, an alchemist can contribute by preparing specialized reagents during the enchanting process. This is a **support role**, not a replacement for the smith or enchanter:
-
-- **Alchemical Preparation (optional step):** Before or during a magic item's crafting, an alchemist can spend one downtime week preparing reagents specifically for that item. Roll Mind + Crafting vs. the item's Crafting TN.
-  - **Success:** The crafter working on the magic item gains **+1 boon** on their next crafting roll for that item.
-  - **Failure:** No benefit, but no additional cost beyond the week's expenses.
-  - **Blunder:** Roll on the Alchemy Consequence Table (§3.2). The reagents are wasted.
-
-This models the collaborative nature of high-Quality item creation without bypassing the challenge die progress system.
+| Aspect | Field Alchemy | Downtime Alchemy |
+|--------|--------------|-----------------|
+| **Time** | 1 rest / 10 minutes | 1+ weeks (challenge die) |
+| **Output** | Single item | Batch possible |
+| **Recipes** | Known only | Known or experimental |
+| **Quality Cap** | Crafting rank + 1 | Per standard table |
+| **Roll Modifier** | +1 bane | None |
+| **Efficiency** | Essence consumed even on failure | Essence only lost on blunder (contamination) |
+| **Best For** | Emergency healing, quick poisons, mid-adventure needs | Stockpiling, experimentation, high-Quality products |
 
 ---
 
-## 6. Product Categories
+## 5. Modular Recipe System
 
-Alchemical products fall into five categories. Each includes a design guideline for effects by Quality tier.
+The heart of the alchemy system is its modularity. Rather than referencing a fixed product list, an alchemist builds products by combining three choices.
 
-### 6.1 Ingredient Cost Reference
+### 5.1 Effect Categories
 
-| Quality | Ingredient Cost | Example Sources |
-|---------|----------------|----------------|
-| Q1 | 1–5 coins | Common herbs, ash, basic minerals |
-| Q2 | 5–25 coins | Medicinal plants, copper dust, charcoal, animal parts |
-| Q3 | 40–100 coins | Rare flowers, monster blood, elemental salts |
-| Q4 | 200–400 coins | Dragon bile, troll blood, giant organs |
-| Q5 | 800–1,500 coins | Phoenix ash, unicorn horn, celestial minerals |
-| Q6 | 4,000–8,000 coins | Elder dragon parts, divine ichor |
-| Q7 | 15,000+ coins | Legendary materials, cosmic essences |
+The **Effect** determines what the product does. Each effect has a base mechanical result that scales with Quality.
 
-### 6.2 Healing Products
+| Effect | Base Result | Scaling by Quality |
+|--------|------------|-------------------|
+| **Healing** | Restore HP or treat Wounds | Q1: +1 boon on Wound healing. Q2: +2 boons. Q3: regain 8 HP. Q4: 16 HP. Q5: 24 HP. |
+| **Damage (element)** | Deal elemental damage (fire, acid, frost, lightning) | Q2: +2. Q3: +3. Q4: +4. Q5: +6. Q6: +8. |
+| **Poison** | Inflict poison damage + condition | Per poison table (§5.4) |
+| **Enhancement** | Temporary attribute or combat boost | Q2–Q3: +1 boon on narrow category. Q4: +1 die size to attribute (max d10). Q5+: stronger/broader effects. |
+| **Protection** | Grant resistance or condition immunity | Q3: +1 boon on saves vs. one element. Q4: resistance to one damage type (short). Q5: immunity to one condition (short). |
+| **Perception** | Enhance or alter senses | Q2: dim light treated as bright (eyes sting in bright light). Q3: darkvision. Q4: see invisible. Q5: tremorsense. |
+| **Mobility** | Grant movement modes | Q3: water breathing. Q4: spider climb. Q5: gaseous form. |
+| **Concealment** | Hide, mask, or alter appearance | Q2: mask scent. Q3: muffle sound. Q4: invisibility (breaks on attack/cast). |
 
-Restore HP, cure conditions, or aid recovery.
+### 5.2 Delivery Methods
 
-| Quality | Example Product | Effect |
-|---------|----------------|--------|
-| Q1 | Healing Salve (weak) | Apply to Wound, +1 boon on healing roll |
-| Q2 | Healing Salve (simple) | Apply to Wound, +2 boons on healing roll |
-| Q2 | Antitoxin | Drink as Action — automatic success on next poison save |
-| Q3 | Healing Potion (weak) | Drink as Action — regain 8 HP |
-| Q3 | Healing Salve (potent) | Apply to Wound — auto-heal Wound on next rest |
-| Q4 | Healing Potion (decent) | Drink as Action — regain 16 HP |
-| Q5 | Healing Potion (strong) | Drink as Action — regain 24 HP |
-| Q5 | Curative Elixir | Drink as Action — cure one non-magical disease or remove one poison |
-| Q6 | Restorative Draught | Drink as Action — regain 32 HP and remove one condition (GM's choice of eligible conditions) |
+The **Delivery Method** determines how the product reaches its target. Each method has a mechanical implication.
 
-### 6.3 Poisons
+| Delivery | Application | Range | Target | Notes |
+|----------|-----------|-------|--------|-------|
+| **Draught** (drink) | Action to consume | Self | Single (drinker) | Default for self-buffs. Can be administered to willing/unconscious creature. |
+| **Salve** (apply) | Action to apply | Melee | Single (touched) | External application — wounds, skin, armor. Slower onset but longer lasting. |
+| **Coating** (weapon) | Quick Action to coat | — | Single (next hit) | Applied to weapon or ammo. Effect triggers on next successful hit. Lasts short duration or until triggered. |
+| **Thrown** (splash) | Action to throw | Short | Area (melee range of impact) | Clay vessel or bladder. Shatters on impact. Affects all in splash radius. Uses bundle Supply die. |
+| **Inhaled** (vapor) | Action to deploy | Close | Area (close range cloud) | Smoke, gas, or powder. Lingers for short duration. Targets must save or be affected. |
+| **Contact** (surface) | Action to coat surface | Melee | Single (first creature to touch) | Trap-like application — doors, weapons, coins. Delayed onset. |
 
-Poisons use Poison-tagged Essences and a specific delivery type.
+**Delivery Method Modifiers:**
 
-**Delivery Types:**
+Changing delivery from the default for an effect adds complexity:
 
-| Type | Application | Save | Onset |
-|------|------------|------|-------|
-| **Contact** | Coat surface (Action) | Spirit + Fortitude | Immediate |
-| **Ingested** | Mix in food/drink | Strength + Fortitude | 1d10 minutes |
-| **Inhaled** | Release gas (close area) | Spirit + Fortitude | Immediate |
-| **Injury** | Coat weapon (Quick Action) | Strength + Fortitude | On hit |
+- **Thrown/Inhaled versions** of single-target effects reduce potency by one step (to balance multi-target reach). Example: A Q4 healing draught restores 16 HP to one drinker; a Q4 healing thrown splash restores 8 HP to each target in the area.
+- **Contact delivery** adds a save for the target (Spirit + Fortitude vs. product's TN) even for effects that normally auto-apply.
+- **Coating delivery** only triggers once (on next hit), then is consumed.
 
-**Effects by Quality:**
+### 5.3 Building a Custom Product
+
+**Step 1:** Choose an **Effect** from §5.1.
+**Step 2:** Choose a **Quality** tier (determines potency, crafting requirements, and cost).
+**Step 3:** Choose a **Delivery Method** from §5.2 (apply any delivery modifiers).
+**Step 4:** Check if this combination is a **known recipe**. If not, it requires **experimentation** (§5.5).
+
+> **Example — Multi-Target Healing Cloud (Q4):**
+> Nima wants to create a thrown healing mist — a clay vessel that shatters and releases a healing vapor cloud. She chooses:
+> - **Effect:** Healing (Q4 = 16 HP to single target)
+> - **Delivery:** Thrown (splash) — area delivery reduces single-target potency by one step → **8 HP to each target in melee range of impact**
+> - **Quality:** Q4 (Crafting rank 2 required, TN 10)
+>
+> This is not a base catalog recipe, so Nima must use the experimentation procedure first. Once learned, she can craft it freely — including via field alchemy.
+
+### 5.4 Poison Effects Reference
+
+Poisons follow the modular system but have their own scaling table due to their condition-based mechanics:
 
 | Quality | Save TN | Damage | Condition | Duration |
 |---------|---------|--------|-----------|----------|
@@ -319,151 +344,326 @@ Poisons use Poison-tagged Essences and a specific delivery type.
 
 **Stacking:** Same poison doesn't stack. Different poisons track separately.
 
-### 6.4 Bombs and Offensive Consumables
+**Delivery options for poisons:** Injury (coat weapon), Contact (coat surface), Ingested (mix in food/drink), Inhaled (release gas). Each uses the delivery rules from §5.2.
 
-Thrown or deployed items dealing area damage or inflicting conditions.
+### 5.5 Experimentation
 
-| Quality | Example Product | Effect |
-|---------|----------------|--------|
-| Q2 | Smoke Bomb | Throw (close range) — creates obscured area for short duration |
-| Q3 | Fire Bomb | Throw (short range) — +3 fire damage to all in melee of target |
-| Q3 | Acid Flask | Throw (short range) — +3 acid damage, target's AV reduced by 1 for short duration |
-| Q4 | Frost Bomb | Throw (short range) — +4 frost damage to all in melee of target, targets are **slowed** (briefly) |
-| Q4 | Thunderstone | Throw (short range) — +4 blast damage, targets save Spirit + Fortitude vs. TN 10 or **deafened** (short) |
-| Q5 | Alchemist's Fire | Throw (medium range) — +6 fire damage to all in close range of target, targets are **burning** (short) |
+When an alchemist wants to create a product that is **not** a known recipe — a novel Effect + Quality + Delivery combination — they must experiment.
 
-### 6.5 Enhancement Consumables
+- The alchemist describes the intended product. The GM confirms the combination is valid and assigns the appropriate Quality tier.
+- All crafting rolls for the experimental product suffer **+1 bane**.
+- On a **blunder**, roll twice on the Alchemy Consequence Table and apply both results.
+- If the product is completed successfully, the alchemist **learns the recipe** and can craft it again without the experimentation penalty (including via field alchemy).
+- Recipes can also be learned from **mentors, ancient texts, or recovered formula tablets** without experimentation.
 
-Temporary buffs applied to weapons, armor, or the user's body.
-
-| Quality | Example Product | Effect |
-|---------|----------------|--------|
-| Q2 | Weapon Poison (weak) | Coat weapon — +2 poison damage on next hit |
-| Q3 | Weapon Poison (decent) | Coat weapon — +4 poison damage on next hit |
-| Q3 | Heightening Potion | Drink — +1 Movement, +1 boon on attacks (short duration) |
-| Q4 | Weapon Poison (strong) | Coat weapon — +6 poison damage on next hit |
-| Q4 | Potion of Strength | Drink — increase STR by one die size (max d10) for medium duration |
-| Q4 | Armor Oil | Apply to armor — gain resistance to one damage type (short duration, 1 use) |
-| Q5 | Invisibility Potion | Drink — become invisible (short duration). Ends if you attack or cast a spell. |
-| Q5 | Potion of Giant's Might | Drink — increase STR by one die size (max d12) and grow to Large size for short duration |
-| Q6 | Elixir of Elemental Form | Drink — gain resistance to one element, +2 weapon damage of that element, immunity to related conditions (medium duration) |
-
-### 6.6 Utility Consumables
-
-Non-combat products for exploration, travel, and social situations.
-
-| Quality | Example Product | Effect |
-|---------|----------------|--------|
-| Q2 | Glowvial | Shake to produce bright light in close range for medium duration |
-| Q2 | Tanglefoot Bag | Throw (close range) — area becomes difficult terrain (short duration) |
-| Q3 | Darkvision Elixir | Drink — gain darkvision for medium duration |
-| Q3 | Waterbreathing Potion | Drink — breathe underwater for medium duration |
-| Q4 | Spider Climb Oil | Apply to hands/feet — climb any surface for short duration |
-| Q4 | Scent Mask | Apply — you emit no scent for medium duration (+2 boons on Stealth vs. creatures with keen smell) |
-| Q5 | Gaseous Form Potion | Drink — become a cloud of vapor for short duration. Can pass through small gaps. Cannot attack or cast spells. |
-| Q5 | Potion of Tongues | Drink — understand and speak all languages for medium duration |
+> **Known Recipe Rule:** All items on the [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) page are **always known recipes** for any character with the Alchemist profession. No experimentation is needed for these base catalog items.
 
 ---
 
-## 7. Quick Reference: Player Summary
+## 6. Ingredient Acquisition
 
-### Alchemical Crafting at a Glance
+### 6.1 Essence Cost Reference
 
-1. **Choose** product and Quality tier → determines challenge die, TN, and costs.
-2. **Acquire** ingredients (purchase, gather, or harvest) totaling ½ the product's cost.
-3. **Pay** weekly expenses and **roll** Mind + Crafting vs. Crafting TN.
+| Quality | Essence Cost | Example Sources (Bronze Age) |
+|---------|-------------|------------------------------|
+| Q1 | 1–5 coins | Common herbs, mineral ash, river clay, dried beetles |
+| Q2 | 5–25 coins | Medicinal plants, copper dust, charcoal, animal glands |
+| Q3 | 40–100 coins | Rare temple flowers, monster blood, volcanic mineral salts |
+| Q4 | 200–400 coins | Dragon bile, troll blood, giant organs, deep-earth crystals |
+| Q5 | 800–1,500 coins | Phoenix ash, celestial minerals, primordial tree sap |
+| Q6 | 4,000–8,000 coins | Elder dragon parts, divine ichor, meteor fragments |
+| Q7 | 15,000+ coins | Legendary materials, cosmic essences, god-touched substances |
+
+### 6.2 Gather Ingredients (Downtime Activity)
+
+Gathering essences is a downtime activity. Roll **Mind/Spirit + Nature** or **Agility/Spirit + Survival** (player's choice — foraging knowledge vs. wilderness scouting).
+
+| Min. Settlement Rank | Requirements | Expenses |
+|----------------------|-------------|---------|
+| 1 (Hamlet) | Nature or Survival skill | 0 coins/week |
+
+Choose a target ingredient Quality:
+
+| Quality | Gathering TN | Yield on Success |
+|---------|-------------|-----------------|
+| Q1 | Easy (6) | 1d6 essences |
+| Q2 | Easy (6) | 1d4 essences |
+| Q3 | Medium (8) | 1d3 essences |
+| Q4 | Hard (10) | 1d2 essences |
+| Q5 | Very Hard (12) | 1 essence |
+| Q6 | Extreme (14) | 1 essence |
+| Q7 | Legendary (16) | 1 essence |
+
+**Blunder.** No yield. Roll on the Gathering Complication table:
+
+| d6 | Gathering Complication |
+|----|----------------------|
+| 1 | **Poisonous Contact.** Save Spirit + Fortitude vs. TN 10 or gain **poisoned** (short duration). Gain 1 Lingering Fatigue on failure. |
+| 2 | **Hostile Creature.** You stumble into a creature's territory. The GM introduces a brief combat encounter or a tense escape. |
+| 3 | **Spoiled Yield.** Your collected ingredients are contaminated by weather or parasites. Lose any ingredients gathered this week. |
+| 4 | **Unwanted Attention.** A rival herbalist, local authority, or territorial faction notices your foraging. The GM introduces a minor complication. |
+| 5 | **Lost Time.** You cannot use this activity again next week. |
+| 6 | **Nothing Extra.** The blunder is bad enough on its own. |
+
+**Failure.** No yield. No additional consequence.
+
+**Weak Success.** Yield as listed.
+
+**Strong Success.** Yield as listed, plus one additional essence of one Quality tier lower (minimum Q1).
+
+**Critical Success.** Double the listed yield.
+
+### 6.3 Travel Foraging
+
+The existing **Forager** travel role (see [Travel](../06-scenes/09-travel.md)) already yields useful materials:
+
+- **Useful materials bonus:** "You gain primitive materials (d6)." These are Q1 Alchemy Supplies — valid as catalysts for Q1 alchemy.
+- **Edible plants bonus:** While primarily food, an alchemist can repurpose edible plants as Q1 healing or utility essences at the GM's discretion.
+
+Additionally, a **dedicated foraging effort** during travel can yield essences:
+
+- An alchemist filling the Forager role may choose to **forage for essences instead of food/water**. Replace the standard Forager bonuses with:
+  - **Weak Success:** Gather 1 essence of Quality equal to the terrain's ingredient tier (GM assigns based on region — lush jungle = Q2–Q3, barren desert = Q1, enchanted forest = Q3–Q4).
+  - **Strong Success:** Gather 1d3 essences at the terrain's tier.
+  - **Critical Success:** Gather 1d3 essences at the terrain's tier, plus 1 essence one tier higher.
+- Consequences remain unchanged from the standard Forager role.
+
+> **Design Note:** This connects adventuring directly to crafting. An alchemist who forages during travel arrives at a settlement with essences ready for downtime crafting — or for field alchemy during the next adventure.
+
+### 6.4 Creature Harvesting
+
+Use the existing Harvesting Creature Parts rules. Harvested creature parts count as essences at the creature's tier Quality:
+
+- A **venomous creature** yields poison essences.
+- An **elemental creature** (fire salamander, frost serpent) yields elemental damage essences.
+- A **regenerating creature** (troll, hydra) yields healing essences.
+- A **magical creature** yields essences appropriate to its nature (GM's judgment).
+
+A successful harvest yields **1d4 essence units** per creature.
+
+### 6.5 Market Purchase
+
+Settlements stock essences up to their market tier:
+
+| Settlement Rank | Max Essence Quality | Notes |
+|----------------|--------------------|----|
+| 1 (Hamlet) | Q2 | Common herbs, mineral powders |
+| 2 (Village) | Q3 | Rare plants, monster-derived ingredients from local hunters |
+| 3 (Town) | Q4 | Specialty merchants, temple apothecaries, trade caravan goods |
+| 4 (City) | Q5 | Master alchemists, guild storehouses, imported rarities |
+| 5+ (Capital) | Q6 | Royal apothecaries, planar materials, legendary reagents (extremely rare, GM discretion) |
+
+Q7 essences are never available for purchase — they must be quested for.
+
+---
+
+## 7. Integration with Magic Items & Enchantments
+
+See the [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) for the full enchantment framework.
+
+### 7.1 Alchemical Reagents as Enchantment Materials
+
+When crafting a magic item via Craft an Item, higher-Quality items require magical ingredients as material cost. **Alchemical essences and refined reagents satisfy this requirement.** An alchemist who can produce or source the correct reagents provides a direct material pipeline.
+
+| Magic Item Quality | Reagent Role | Example (Bronze Age) |
+|-------------------|-------------|---------|
+| Q3 (Masterwork) | No reagent needed — mundane materials. | Fine bronze, seasoned cedar wood. |
+| Q4 (Lesser Magic) | Alchemical reagent as activating agent. | Volcanic mineral salts to awaken a blade's enchantment. |
+| Q5 (Potent Magic) | Rare reagent as magical binding agent. | Phoenix ash to stabilize a Flaming enchantment. |
+| Q6 (Greater Magic) | Exotic reagent as core magical component. | Elder dragon bile to fuel a Q6 Slaying weapon. |
+| Q7+ (Legendary) | Legendary reagent as essential catalyst. | Cosmic essence, divine ichor — quest-only materials. |
+
+> **Design Note:** This creates a party collaboration pipeline: the alchemist gathers and refines reagents, which feed into the smith's or inscriber's magic item projects. Neither role is strictly required — materials can always be purchased — but the synergy rewards investment in both professions.
+
+### 7.2 Alchemical Products as Temporary Enchantments
+
+Some alchemical products function as **temporary enchantments** — short-duration enhancements applied to weapons, armor, or the body. These do not stack with permanent enchantments of the same type (only the highest bonus applies).
+
+| Product Type | Enchantment Parallel | Stacking Rule |
+|-------------|---------------------|---------------|
+| **Weapon Coating (fire/frost/acid)** | Functions like Flaming/Frost/Corrosive weapon (temporary) | Higher bonus applies; does not stack with permanent equivalent. |
+| **Armor Oil (resistance)** | Functions like Tough armor (temporary) | Higher bonus applies. |
+| **Attribute Draught** | Functions like a wearable "of Might/Swiftness" (temporary) | Higher bonus applies. |
+| **Flammable Paste** | Grants a temporary weapon property | Does not stack with the same permanent property. |
+
+> **Design Note:** Temporary alchemical effects let characters without magic items access enchantment-like benefits, and let characters with magic items gain *different* (non-overlapping) temporary benefits. The [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) deferred "Temporary enchantments / alchemy" — this framework fulfills that deferral.
+
+### 7.3 Alchemical Augmentation of Enchantment Crafting
+
+An alchemist can contribute to a magic item's creation as a **support role**:
+
+- **Alchemical Preparation (optional step):** Spend one downtime week preparing reagents for a specific magic item. Roll Mind/Spirit + Crafting vs. the item's Crafting TN.
+  - **Success:** The primary crafter gains **+1 boon** on their next crafting roll for that item.
+  - **Failure:** No benefit beyond the week's expenses.
+  - **Blunder:** Roll on the Alchemy Consequence Table (§3.4). Reagents wasted.
+
+---
+
+## 8. Quick Reference: Player Summary
+
+### Downtime Crafting at a Glance
+
+1. **Choose** a known recipe or design a custom product (Effect + Quality + Delivery).
+2. **Provide** 1 Essence + 1 Supply use (+ optional special reagents).
+3. **Pay** weekly expenses and **roll** Mind/Spirit + Crafting vs. Crafting TN.
 4. **Reduce** the challenge die: weak = −1, strong = −2, critical = −3.
 5. **On blunder:** Roll on Alchemy Consequence Table (d6). No progress.
 6. **On failure:** No progress (optionally force −1 by doubling expenses).
 7. **Repeat** each downtime week until the challenge die reaches 0.
-8. **Pay** material cost → receive finished product.
+8. **Receive** finished product.
 
-### Quick Crafting Reference Table
+### Field Alchemy at a Glance
 
-| Quality | Challenge Die | TN | Material Cost | Weekly Expenses | Weeks (avg) |
-|---------|--------------|-----|--------------|-----------------|-------------|
-| Q1 | 1 | 6 | ½ item cost | 10 | 1 |
-| Q2 | 2 | 6 | ½ item cost | 20 | 1–2 |
-| Q3 | 4 | 8 | ½ item cost | 50 | 2–4 |
-| Q4 | 6 | 10 | ½ item cost | 200 | 3–6 |
-| Q5 | 8 | 12 | ½ item cost | 1,000 | 4–8 |
-| Q6 | 10 | 14 | ½ item cost | 5,000 | 5–10 |
-| Q7 | 12 | 16 | ½ item cost | 25,000 | 6–12 |
+1. Must be a **known recipe**. Need Alchemist's Supplies + 1 Essence.
+2. Takes **one rest Action** or **10 minutes**. Single item only.
+3. Roll Mind/Spirit + Crafting vs. TN with **+1 bane**.
+4. Weak = unstable (use quickly). Strong = normal. Critical = no Supply spend.
 
-> **Average weeks** assumes a mix of weak and strong successes. Talented alchemists with high Crafting ranks complete products faster.
+### Quick Reference Table
+
+| Quality | Challenge Die | TN | Weekly Expenses | Max Field Quality |
+|---------|--------------|-----|-----------------|-------------------|
+| Q1 | 1 | 6 | 10 | Crafting 0+ |
+| Q2 | 2 | 6 | 20 | Crafting 1+ |
+| Q3 | 4 | 8 | 50 | Crafting 2+ |
+| Q4 | 6 | 10 | 200 | Crafting 3+ |
+| Q5 | 8 | 12 | 1,000 | Crafting 4+ |
+| Q6 | 10 | 14 | 5,000 | Crafting 5+ |
+| Q7 | 12 | 16 | 25,000 | — (downtime only) |
 
 ---
 
-## 8. Summary of Recommendations
+## 9. Summary of Recommendations
 
 | # | Recommendation | Impact | Effort |
 |---|---------------|--------|--------|
-| 1 | Adopt challenge dice for all alchemical crafting progress tracking | Unifies terminology with Craft an Item and challenge system | Low |
-| 2 | Replace old mishap table with Alchemy Consequence Table aligned to Complication table format | Consistent consequence framework across all downtime activities | Low |
-| 3 | Define Gather Ingredients as a formal downtime activity with standard result tiers | Clear procedure for ingredient acquisition during downtime | Low |
-| 4 | Establish alchemical reagents as valid materials for magic item enchantment crafting | Creates alchemy ↔ enchantment pipeline and party collaboration | Medium |
-| 5 | Define temporary alchemical effects as non-stacking parallels to permanent enchantments | Preserves enchantment value while giving alchemy a clear combat niche | Medium |
-| 6 | Add alchemical preparation as optional support step during enchantment crafting | Rewards party collaboration without bypassing challenge die progress | Low |
-| 7 | Expand product catalogue with utility and exploration consumables | Fills non-combat gap (matching enchantment analysis findings) | Medium |
-| 8 | Apply Lingering Fatigue rule to all alchemy-related Fatigue consequences | Consistent with downtime fatigue framework | Low |
+| 1 | Adopt modular recipe system (Effect + Quality + Delivery) | Transforms alchemy from static list to flexible crafting | High |
+| 2 | Add field alchemy for single-item quick crafting during adventures | Enables mid-adventure alchemy without full downtime | Medium |
+| 3 | Support Mind OR Spirit for alchemy skill tests | Opens alchemy to broader archetype range (Apothecary, Shaman, Druid) | Low |
+| 4 | Use existing Supply items as generic alchemy catalysts | Connects alchemy to existing equipment economy, simplifies ingredients | Low |
+| 5 | Define base catalog vs. mundane alchemicals vs. custom products | Clarifies what alchemists uniquely provide vs. purchasable gear | Low |
+| 6 | Integrate travel Forager role as essence acquisition method | Connects adventuring to downtime crafting pipeline | Low |
+| 7 | Adopt challenge dice for all downtime alchemical progress tracking | Unifies terminology with Craft an Item and challenge system | Low |
+| 8 | Replace old mishap table with Alchemy Consequence Table | Consistent consequence framework across downtime activities | Low |
+| 9 | Establish alchemical reagents as materials for enchantment crafting | Creates alchemy ↔ enchantment pipeline and party collaboration | Medium |
+| 10 | Define temporary alchemical effects as non-stacking enchantment parallels | Preserves enchantment value while giving alchemy a clear combat niche | Medium |
+| 11 | Bronze Age thematic pass on all ingredient and process flavor | Consistent with game world aesthetic | Low |
+| 12 | Apply Lingering Fatigue rule to all alchemy consequences | Consistent with downtime fatigue framework | Low |
 
-> **Deferred:** Full alchemical recipe catalogue with exact costs — separate document.
+> **Deferred:** Full recipe catalogue with exact costs per Effect + Delivery combination — separate document.
 > **Deferred:** Alchemist-specific talents beyond existing Crafting talents — talent analysis scope.
 > **Deferred:** Poison crafting as a distinct profession vs. Alchemist sub-specialty — professions scope.
 
 ---
 
-## Appendix A: Legacy Item Conversion
+## Appendix A: Base Catalog Conversion
 
-Existing Equipment alchemy items map to this system's categories and costs:
+All items on the [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) page are known recipes. The modular system maps them as follows:
 
-| Item Name | Quality | Material Cost (½ item value) | Category | Effect Summary |
-|-----------|---------|------------------------------|----------|---------------|
-| Healing Salve (weak) | Q1 | ~7 coins | Healing | Apply to Wound, +1 boon healing |
-| Antitoxin | Q2 | ~15 coins | Healing | Cure one poison |
-| Healing Salve (simple) | Q2 | ~15 coins | Healing | Apply to Wound, +2 boons healing |
-| Weapon Poison (weak) | Q2 | ~25 coins | Enhancement | +2 poison damage on hit |
-| Paralyzing Poison (weak) | Q2 | ~15 coins | Poison | **Poisoned** (short), save TN 8 |
-| Fire Bomb | Q3 | ~62 coins | Bomb | +3 fire to all in melee |
-| Healing Potion (weak) | Q3 | ~62 coins | Healing | Regain 8 HP |
-| Healing Salve (potent) | Q3 | ~62 coins | Healing | Auto-heal Wound on next rest |
-| Heightening Potion | Q3 | ~62 coins | Enhancement | +1 Move, +1 boon attacks (short) |
-| Weapon Poison (decent) | Q3 | ~62 coins | Enhancement | +4 poison damage |
-| Paralyzing Poison (decent) | Q3 | ~62 coins | Poison | **Poisoned** + **staggered**, save TN 10 |
-| Healing Potion (decent) | Q4 | ~187 coins | Healing | Regain 16 HP |
-| Weapon Poison (strong) | Q4 | ~187 coins | Enhancement | +6 poison damage |
-| Paralyzing Poison (strong) | Q5 | ~625 coins | Poison | **Stunned**, save TN 14 |
-| Healing Potion (strong) | Q5 | ~625 coins | Healing | Regain 24 HP |
+| Item Name | Quality | Effect | Delivery | Modular Equivalent |
+|-----------|---------|--------|----------|--------------------|
+| Healing Salve (weak) | Q1 | Healing | Salve | Healing + Q1 + Salve |
+| Acid Vial | Q2 | Damage (acid) | Thrown | Damage (acid) + Q2 + Thrown |
+| Antitoxin | Q2 | Protection (poison) | Draught | Protection + Q2 + Draught |
+| Flammable Paste | Q2 | Damage (fire) | Coating | Damage (fire) + Q2 + Coating |
+| Healing Salve (simple) | Q2 | Healing | Salve | Healing + Q2 + Salve |
+| Paralyzing Poison (weak) | Q2 | Poison | Coating | Poison + Q2 + Coating |
+| Weapon Poison (weak) | Q2 | Poison (damage) | Coating | Poison + Q2 + Coating |
+| Fire Bomb | Q3 | Damage (fire) | Thrown | Damage (fire) + Q3 + Thrown |
+| Healing Salve (potent) | Q3 | Healing | Salve | Healing + Q3 + Salve |
+| Heightening Potion | Q3 | Enhancement | Draught | Enhancement + Q3 + Draught |
+| Paralyzing Poison (decent) | Q3 | Poison | Coating | Poison + Q3 + Coating |
+| Potion of Healing (weak) | Q3 | Healing | Draught | Healing + Q3 + Draught |
+| Smoke Bomb | Q3 | Concealment | Thrown | Concealment + Q3 + Thrown |
+| Weapon Poison (decent) | Q3 | Poison (damage) | Coating | Poison + Q3 + Coating |
+| Potion of Healing (decent) | Q4 | Healing | Draught | Healing + Q4 + Draught |
+| Weapon Poison (strong) | Q4 | Poison (damage) | Coating | Poison + Q4 + Coating |
+| Paralyzing Poison (strong) | Q5 | Poison | Coating | Poison + Q5 + Coating |
+| Potion of Healing (strong) | Q5 | Healing | Draught | Healing + Q5 + Draught |
 
 ---
 
-## Appendix B: Example Crafting Walkthrough
+## Appendix B: Non-Magical Alchemicals Compatibility
 
-### Crafting a Fire Bomb (Q3)
+The [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md) proposed 17 new alchemical substances at Q1–Q3. These are **mundane preparations** — not Alchemist-profession products:
+
+| Item | Quality | Category | Alchemy System Relationship |
+|------|---------|----------|-----------------------------|
+| Ochre Marking Powder | Q1 | Sensory | Purchasable gear. Not alchemy-crafted. |
+| Woad War Paint | Q1 | Enhancement | Purchasable gear. Cosmetic/intimidation — no alchemical equivalent needed. |
+| Blinding Dust | Q2 | Disruption | Purchasable gear. Could be replicated as Concealment + Q2 + Inhaled in modular system. |
+| Stench Gourd | Q2 | Disruption | Purchasable gear. Maps to Poison (nausea) + Q2 + Thrown. |
+| Resin Adhesive | Q2 | Control | Purchasable gear. Could be replicated as Mobility (impede) + Q2 + Thrown. |
+| Luminous Paste | Q2 | Utility | Purchasable gear. Maps to Perception (light) + Q2 + Salve. |
+| Verdigris Blight | Q2 | Sabotage | Purchasable gear. Unique sabotage niche — no modular equivalent needed. |
+| Smelling Salts | Q2 | Healing | Purchasable gear. Maps to Healing (awaken) + Q2 + Inhaled. |
+| Honey Poultice | Q2 | Healing | Purchasable gear. Maps to Healing (bleeding) + Q2 + Salve. |
+| Cooling Salve | Q2 | Healing | Purchasable gear. Maps to Protection (fire) + Q2 + Salve. |
+| Warming Tonic | Q2 | Enhancement | Purchasable gear. Maps to Protection (cold) + Q2 + Draught. |
+| Sacred Incense | Q2 | Ritual | Purchasable gear. Mystic skill support — unique niche. |
+| Pitch Pot | Q3 | Damage | Purchasable gear. Maps to Damage (fire) + Q3 + Thrown with area denial. |
+| Natron Solvent | Q3 | Utility | Purchasable gear. Unique dissolving niche — no modular equivalent needed. |
+| Cat's-Eye Oil | Q3 | Perception | Purchasable gear. Maps to Perception (dim light) + Q3 + Salve. |
+| Poppy Milk | Q3 | Enhancement | Purchasable gear. Maps to Enhancement (pain suppression) + Q3 + Draught. |
+| Ironblood Draught | Q3 | Enhancement | Purchasable gear. Maps to Protection (bleeding/poison) + Q3 + Draught. |
+
+> **Key Insight:** These mundane alchemicals overlap conceptually with the modular system but exist at Q1–Q3 where anyone can buy them without Alchemist proficiency. An alchemist who wants *better* versions (Q4+) or custom delivery methods must use the modular recipe system. This creates a natural tier boundary: Q1–Q3 = mundane preparations anyone can buy; Q4+ = true alchemical products requiring expertise.
+
+---
+
+## Appendix C: Example Crafting Walkthroughs
+
+### Downtime: Brewing Fire Bombs (Q3, Batch)
 
 **Setup:**
-- Alchemist: Crafting 1, Mind d8
-- Product: Fire Bomb (Q3) — challenge die d6 starting at 4, TN 8
-- Ingredients: Elemental sulfur (Essence: fire, Q3, 50 coins) + Volatile spirits (Catalyst, Q3, 65 coins) + Pitch (Binder, Q2, 10 coins) = 62 coins material cost (½ the item value)
+- Alchemist: Kenet, Crafting 2, Mind d8
+- Product: Fire Bomb (Q3, known recipe) — challenge die d6 starting at 4, TN 8
+- Materials: Sulfur crystals (Essence: fire, Q3) + 1 use of Advanced Materials (Q3 Supply, 250 coins)
 - Weekly expenses: 50 coins/week
 
-**Week 1:** Roll Mind (d8) + Crafting (1) + 1d6 vs. TN 8 → Result: 11 (strong success). Challenge die: 4 → 2.
+**Week 1:** Roll Mind (d8) + Crafting (2) + 1d6 vs. TN 8 → Result: 11 (strong success). Die: 4 → 2.
 
-**Week 2:** Roll again → Result: 9 (weak success). Challenge die: 2 → 1.
+**Week 2:** Roll → Result: 9 (weak success). Die: 2 → 1.
 
-**Week 3:** Roll again → Result: 13 (critical success). Challenge die: 1 → 0. **Complete!**
+**Week 3:** Roll → Result: 14 (critical success, −3). Die: 1 → 0. **Complete!** Kenet has Crafting 2, so he could batch-craft a second fire bomb by spending another Supply use.
 
-**Total Cost:** 150 coins expenses (3 weeks × 50) + 62 coins materials = **212 coins**.
+**Total:** 3 weeks × 50 coins + 1 Supply use + 1 Essence = 150 coins expenses.
 
-### Crafting a Potion of Strength (Q4) with Alchemical Preparation Support
+### Downtime: Experimenting with a Healing Mist (Q4, Custom)
 
 **Setup:**
-- Alchemist (support): Crafting 2, Mind d8 — prepares reagents
-- Smith (primary crafter): Crafting 3, Mind d10 — crafting a Q4 magic sword with an enchantment
-- The alchemist spends one downtime week preparing enchantment reagents
+- Alchemist: Nima, Crafting 2, Spirit d8
+- Custom Product: Healing + Q4 + Thrown (splash). Not a known recipe — requires experimentation.
+- Effect: 8 HP to each target in melee range (reduced from 16 HP due to area delivery).
+- Materials: Sacred lotus (Essence: healing, Q4) + 1 use of Formidable Materials (Q4 Supply) + carrier reagent (clay vessel for splash delivery)
+- Challenge die d6 starting at 6, TN 10, +1 bane for experimentation
 
-**Alchemist's Preparation Week:** Roll Mind (d8) + Crafting (2) + 1d6 vs. TN 10 → Result: 12 (success). The smith gains +1 boon on their next crafting roll for the magic sword.
+**Week 1:** Roll Spirit (d8) + Crafting (2) + 1d6 vs. TN 10, +1 bane → Result: 8 (failure). No progress. Nima chooses not to double expenses.
 
-**Smith's Crafting Week:** The smith rolls with +1 boon from the alchemist's preparation, improving their chance of a strong or critical success on the Q4 magic item's challenge die.
+**Week 2:** Roll → Result: 12 (weak success despite bane). Die: 6 → 5.
 
-> This illustrates the collaborative pipeline: the alchemist contributes expertise that accelerates (but does not bypass) the enchantment crafting process.
+**Weeks 3–7:** Progress continues. On Week 5, a blunder — roll twice on consequences: Toxic Fumes (1 Lingering Fatigue) + Setback (die increases by 1). Nima spends Week 6 on Leisure to remove the fatigue, then finishes in Week 7.
+
+**Result:** Nima learns the recipe. Future crafts of this healing mist have no experimentation penalty.
+
+### Field: Emergency Antitoxin (Q2)
+
+**Setup:**
+- Alchemist: Tadese, Crafting 1, Mind d8
+- Known recipe: Antitoxin (Q2)
+- Materials: Serpent gland (Essence: antivenom, Q2) + 1 use of Alchemist's Supplies
+
+**During short rest:** Roll Mind (d8) + Crafting (1) + 1d6 vs. TN 6, +1 bane → Result: 9 (strong success). Antitoxin produced normally. The poisoned ally drinks it and is cured.
+
+### Collaborative: Alchemist Supporting Enchantment Crafting
+
+**Setup:**
+- Alchemist: Kenet, Crafting 2, Mind d8 — preparing reagents
+- Smith: Barak, Crafting 3, Strength d10 — crafting a Q4 enchanted bronze blade
+- Kenet spends one downtime week on alchemical preparation
+
+**Kenet's Week:** Roll Mind (d8) + Crafting (2) + 1d6 vs. TN 10 → Result: 12 (success). Barak gains +1 boon on his next crafting roll.
+
+**Barak's Week:** Rolls with +1 boon from Kenet's preparation, improving his chance of a strong or critical success on the magic item's challenge die.
+
+> This models the collaborative workshop: the alchemist refines reagents that the smith hammers into the blade during enchanting. Neither bypasses the challenge die — Kenet's preparation only improves Barak's odds.
