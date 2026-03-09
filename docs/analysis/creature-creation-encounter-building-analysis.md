@@ -28,9 +28,9 @@
 
 ### 2.1 Creature Tier vs. Adventurer Level — Statistical Comparison
 
-The following table compares creature statistics at each tier against a typical adventurer of the corresponding level. Adventurer values assume a primary combat skill (Fighting or Archery) and standard progression.
+The following table compares creature statistics at each tier against a typical adventurer of the corresponding level. The system assumes a 1:1 mapping between adventurer level and creature tier. Adventurer values assume a primary combat skill (Fighting or Archery) and standard progression.
 
-| Level / Tier | Creature HP | Adventurer HP | Creature Defense | Adventurer Defense | Creature Max Die | Adventurer Max Die | Creature Skill | Adventurer Skill |
+| Adventurer Level / Creature Tier | Creature HP | Adventurer HP | Creature Defense | Adventurer Defense | Creature Max Die | Adventurer Max Die | Creature Skill | Adventurer Skill |
 |---|---|---|---|---|---|---|---|---|
 | 1 | 10 | 18–20 | 7 | 7–8 | d6 | d6–d8 | 1 | 1 |
 | 2 | 20 | 20–22 | 8 | 8–9 | d8 | d8 | 1–2 | 1–2 |
@@ -211,10 +211,10 @@ Roll on this table to add a secondary effect to any creature attack.
 | 4 | **Bleed** — On a strong or critical hit, the target suffers bleeding (weapon damage). | Claw slash, jagged bite |
 | 5 | **Poison** — On a strong or critical hit, the target is poisoned for a short duration. | Venomous bite, toxic spit |
 | 6 | **Burn** — On a strong or critical hit, the target suffers burning (weapon damage). | Flaming strike, fire breath |
-| 7 | **Stun** — On a critical hit, the target is dazed until end of their next turn. | Thunder slam, psychic lash |
+| 7 | **Stun** — On a strong or critical hit, the target is dazed until end of their next turn. | Thunder slam, psychic lash |
 | 8 | **Disarm** — On a strong or critical hit, the target drops one held item. | Weapon snatch, tail whip |
 | 9 | **Slow** — On a strong or critical hit, the target is slowed until end of their next turn. | Frost touch, entangling web |
-| 10 | **Fear** — On a critical hit, the target is frightened until end of their next turn. | Terrifying screech, death gaze |
+| 10 | **Fear** — On a strong or critical hit, the target is frightened until end of their next turn. | Terrifying screech, death gaze |
 | 11 | **Drain** — On a hit, the creature regains HP equal to half the damage dealt. | Life drain, blood siphon |
 | 12 | **Chain** — On a strong or critical hit, one additional creature in close range takes half damage. | Lightning arc, psychic echo |
 
@@ -244,7 +244,7 @@ Roll on this table to add an active ability (costs an Action) to any creature.
 | d12 | Ability | Effect |
 |---|---|---|
 | 1 | **Frightful Presence** | Each opponent within short range must roll Spirit + Fortitude vs. ability TN or become frightened for a short duration. |
-| 2 | **Breath Weapon** | Recharge (d6). All creatures in a cone/line to short range must roll vs. Dodge. Deal (weapon damage × 3) damage of an appropriate type. |
+| 2 | **Breath Weapon** | Recharge (d6). All creatures in a cone/line to short range must roll vs. Dodge. On a hit, deal damage as a normal attack of an appropriate type. On a strong or critical hit, targets also suffer an appropriate condition (burning, slowed, poisoned, etc.). |
 | 3 | **Summon Allies** | 1/day. Summon 1d4 Basic creatures of equal or lower tier. They arrive at the start of the next round. |
 | 4 | **Web/Entangle** | One target in short range is restrained until they escape (Strength + Athletics vs. ability TN). |
 | 5 | **Charm/Command** | One target in short range must roll Spirit + Fortitude vs. ability TN or become charmed for a short duration. |
@@ -397,14 +397,14 @@ Following the steps above:
 **Skills:** Arcana (3), Fortitude (3), Insight (3), Perception (3)
 
 **Step 3 — Attacks:**
-- **Hellfire Bolt** (*range (medium)*). 9/15/21 fire damage. On a strong or critical hit, the target suffers burning (4).
+- **Hellfire Bolt** (*range (medium)*). 11/17/23 fire damage. On a strong or critical hit, the target suffers burning (6).
 
 **Step 4 — Abilities:**
 - **Magic Resistance (Passive).** +1 boon on saves against spells and magical effects.
-- **Aura of Dread (Passive).** Opponents starting their turn in melee range take 4 psychic damage.
+- **Aura of Dread (Passive).** Opponents starting their turn in melee range take (tier) psychic damage.
 - **Charm/Command (Action).** One target in short range rolls Spirit + Fortitude vs. TN 10 or is charmed for a short duration.
 - **Intimidating Growl (Quick Action, Proactive).** One opponent in short range suffers +1 bane on their next attack.
-- **Terrain Hazard (Elite Trigger).** When the first life pool is depleted, the creature's area erupts in hellfire. Creatures starting their turn in melee range take 6 fire damage for the rest of the scene.
+- **Terrain Hazard (Elite Trigger).** When the first life pool is depleted, the creature's area erupts in hellfire. Creatures starting their turn in melee range take (weapon damage) fire damage for the rest of the scene.
 
 **Immunities:** fire damage, charmed, frightened
 
@@ -507,7 +507,7 @@ For quick reference when building creature attacks:
 | 9 | 11 | 18 | 29 | 40 |
 | 10 | 12 | 20 | 32 | 44 |
 
-> **Note:** Multi-target attacks should deal half weapon damage. The table above assumes a d8 (base damage 4) primary attribute for reference; adjust base damage for the creature's actual primary attribute.
+> **Note:** Multi-target attacks use half the creature's weapon damage in the damage formula (i.e., halve only the weapon damage component, not the base damage). The table above assumes a d8 (base damage 4) primary attribute for reference; adjust base damage for the creature's actual primary attribute.
 
 ## Appendix B: Creature Category Quick Reference
 
