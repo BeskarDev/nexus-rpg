@@ -151,10 +151,12 @@ Each effect has a **per-tier formula** that determines potency at any Quality le
 | **Enhancement** | Q1–Q3: +1 boon on narrow action category. Q4+: +1 die size to one attribute (max d10) | Reduce duration by one step | Short (Q1–Q3) / Medium (Q4+) | 15 / 30 / 125 / 375 / 1,250 |
 | **Protection** | Q1–Q2: +1 boon on saves vs. one element. Q3–Q4: resistance to one damage type. Q5+: immunity to one condition | Reduce duration by one step | Short | 15 / 30 / 125 / 375 / 1,250 |
 | **Perception** | Q1: sharpen one sense (+1 boon). Q2: dim light as bright. Q3: darkvision. Q4: see invisible. Q5: tremorsense | Not applicable — self-only | Medium | 15 / 30 / 125 / 375 / 1,250 |
-| **Mobility** | Q2: +1 Movement. Q3: water breathing. Q4: spider climb. Q5: gaseous form | Not applicable — self-only | Short (Q2–Q3) / Medium (Q4+) | — / 30 / 125 / 375 / 1,250 |
+| **Mobility** | Q2: +1 Movement. Q3: water breathing. Q4: spider climb. Q5: gaseous form | Not applicable — self-only | Short (Q2–Q3) / Medium (Q4+) | — / 30 / 125 / 375 / 1,250 (no Q1) |
 | **Concealment** | Q1: mask scent/tracks. Q2: muffle sound (+1 boon Stealth). Q3: obscure area (smoke). Q4: invisibility (breaks on attack/cast) | Reduce duration by one step | Short | 15 / 30 / 125 / 375 / 1,250 |
 
-> **Reading the Table:** "4 HP × tier" means a Q3 Healing product restores 12 HP to a single target, or 6 HP per target when delivered as a Thrown splash or Inhaled cloud. Costs listed are base prices for single-target Draught delivery; see §4.4 for delivery cost modifiers.
+> **Reading the Table:** "4 HP × tier" means a Q3 Healing product restores 12 HP to a single target, or 6 HP per target when delivered as a Thrown splash or Inhaled cloud. Costs listed are base prices for single-target Draught delivery; see §4.3 for delivery cost modifiers.
+>
+> **On Duration:** Effects with "Instant" duration (Healing, Damage) are resolved immediately — no ongoing effect. For these, the Salve delivery extension has no mechanical impact on the effect itself, but extends the *shelf life* of the applied preparation (the salve remains active on the skin/wound for one step longer before losing potency). Enhancement, Protection, and Concealment effects have timed durations — the Salve extension applies directly to those.
 
 ### 4.3 Delivery Methods
 
@@ -179,7 +181,7 @@ Binders are optional modifiers that enhance the delivery of a product. Each bind
 | Binder | Effect | Reagent Examples | Cost Modifier |
 |--------|--------|-----------------|---------------|
 | **Stabilizer** | Extends product duration by one step (briefly → short → medium) | Cedar resin, beeswax, rendered tallow | +50% base cost |
-| **Intensifier** | Increases numeric effect by +25% (round down) | Concentrated naphtha, distilled venom, temple-blessed water | +100% base cost |
+| **Intensifier** | Increases numeric effect by +25% (round down). Applied to the base single-target value *before* any multi-target halving. | Concentrated naphtha, distilled venom, temple-blessed water | +100% base cost |
 | **Expander** | Increases area of Thrown/Inhaled by one range step (melee → close, close → short) | Animal fat, powdered sulfur, fine mineral dust | +75% base cost |
 | **Delayed Release** | After the primary effect ends, a weaker secondary effect triggers (half the original numeric value, briefly duration) | Slow-burning pitch, clay microspheres, layered resin | +50% base cost |
 
@@ -215,8 +217,8 @@ Poisons use the modular system but have their own scaling due to condition-based
 
 | Quality | Crafting Rank | Challenge Die | Crafting TN | Weekly Expenses | Batch Yield |
 |---------|---------------|---------------|-------------|-----------------|-------------|
-| Q1 | 0 | d4 @ 1 | Easy (6) | 10 coins | Crafting rank items |
-| Q2 | 0 | d4 @ 2 | Easy (6) | 20 coins | Crafting rank items |
+| Q1 | 0 | d4 @ 1 | Easy (6) | 10 coins | 1 item (rank 0) or Crafting rank |
+| Q2 | 0 | d4 @ 2 | Easy (6) | 20 coins | 1 item (rank 0) or Crafting rank |
 | Q3 | 1 | d6 @ 4 | Medium (8) | 50 coins | Crafting rank items |
 | Q4 | 2 | d6 @ 6 | Hard (10) | 200 coins | Crafting rank items |
 | Q5 | 3 | d8 @ 8 | Very Hard (12) | 1,000 coins | Crafting rank items |
@@ -225,7 +227,7 @@ Poisons use the modular system but have their own scaling due to condition-based
 
 **Challenge Die Reduction:** Weak success = −1. Strong success = −2. Critical success = −3.
 
-**Batch Yield:** When the challenge die reaches 0, the alchemist produces a batch of identical products equal to their **Crafting rank** (minimum 1). This represents the efficiency of a proper workshop and sustained effort.
+**Batch Yield:** When the challenge die reaches 0, the alchemist produces a batch of identical products equal to their **Crafting rank** (minimum 1). At Crafting rank 0, batch yield is always 1. This represents the efficiency of a proper workshop and sustained effort.
 
 ### 4.7 Alchemy Consequence Table
 
@@ -363,7 +365,7 @@ When an alchemist wants to create a product that is **not** a known recipe — a
 
 | Result | Effect |
 |--------|--------|
-| **Blunder** | No progress. Experimentation die increases by 1 (up to starting value). Consume 1 Essence of the target type (wasted on a failed experiment). |
+| **Blunder** | No progress. Experimentation die increases by 1 (up to starting value). Consume 1 additional Essence of the target type (this is a separate cost beyond weekly expenses — the blunder destroys a full Essence in a catastrophic failed experiment). |
 | **Failure** | No progress. |
 | **Weak Success** | Experimentation die −1. |
 | **Strong Success** | Experimentation die −2. |
@@ -603,7 +605,7 @@ All items on the [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) pa
 | Paralyzing Poison (strong) | 5 | Poison | Coating | Poison + Q5 + Coating |
 | Potion of Healing (strong) | 5 | Healing | Draught | Healing + Q5 + Draught |
 
-> **Compatibility Note:** The per-tier healing formula (4 HP × tier) produces Q3: 12 HP, Q4: 16 HP, Q5: 20 HP. Existing items list 8/16/24 HP. The modular formula takes precedence for consistency — existing item values should be updated to match. The Q4 value (16 HP) is already aligned; Q3 and Q5 shift slightly.
+> **Compatibility Note — Healing Values:** The per-tier healing formula (4 HP × tier) produces Q3: 12 HP, Q4: 16 HP, Q5: 20 HP. Existing equipment values are 8/16/24 HP. The modular formula provides a consistent progression that should supersede the current values. **This is an intentional breaking change** — the Q4 value (16 HP) is already aligned; Q3 increases from 8 → 12 HP, Q5 decreases from 24 → 20 HP. The Equipment page should be updated once this analysis is approved. The per-tier formula enables the modular system to work predictably for all custom combinations (e.g., thrown healing mists, healing salves at novel tiers).
 
 ---
 
@@ -663,7 +665,7 @@ Experimentation cost: 400 coins expenses.
 *Week 6:* Roll 14 (critical). Die: 4 → 1.
 *Week 7:* Roll 10 (weak). Die: 1 → 0. **Complete!**
 
-**Result:** 2 healing mists (Crafting rank 2). Each: Healing + Q4 + Thrown = 8 HP per target in melee range of impact (16 HP single-target halved for area delivery). Total: 600 coins crafting expenses + 1 essence. Grand total including experimentation: 1,000 coins + 1 experimentation essence wasted on week 1 blunder (if any) + 1 production essence.
+**Result:** 2 healing mists (Crafting rank 2). Each: Healing + Q4 + Thrown = 8 HP per target in melee range of impact (16 HP single-target halved for area delivery). **Grand total:** 400 coins experimentation expenses + 600 coins crafting expenses + 1 production essence = 1,000 coins + 1 essence. (Had Nima blundered during experimentation, she would have also lost an additional essence to a failed experiment.)
 
 ### Example 3: Field Emergency — Antitoxin (Q2)
 
