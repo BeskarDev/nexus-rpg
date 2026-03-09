@@ -9,7 +9,7 @@
 ### Key Findings
 
 1. **Tier-to-level scaling is well-calibrated but under-documented.** Creature tiers map cleanly to adventurer levels for 1v1 encounters, but the rules lack explicit encounter-building math for parties of 3–5 adventurers. GMs must rely on intuition rather than guidelines.
-2. **Creature damage output is appropriately bounded.** The system deliberately avoids D&D 5E-style HP bloat — creature survivability should come from defensive abilities, not inflated HP pools. Creature damage output must thread the needle between threatening glass-cannon Sorcerers (16 HP, AV 2) without being oppressive against heavy-armor Champions (20+ HP, AV 5–6). The current tier scaling achieves this through its linear weapon damage (+1/tier) against adventurers whose effective HP pool is much larger than their raw HP (3 Wounds, Resolve, healing, fatigue buffer).
+2. **Creature damage output is appropriately bounded.** The system deliberately avoids D&D 5E-style HP bloat — creature survivability should come from defensive abilities, not inflated HP pools. Creature damage output must thread the needle between threatening glass-cannon Sorcerers (16 HP, AV 2) without being oppressive against heavy-armor Champions (20+ HP, AV 5–6). The current tier scaling achieves this through linear weapon damage (+1/tier). Note: adventurers do NOT regain HP on suffering a Wound (unlike Elite/Lord creatures), making their first HP pool and party healing the primary survival factors.
 3. **The Creature Builder has strong preset content but no rules-side catalogue.** The React builder already offers 27 preset attacks and 46 preset abilities with auto-calculated damage. However, these exist only in the app — the "Creature Abilities" section in the rules is a TODO stub. GMs building without the app have no reference.
 4. **Random tables exist for creature *concepts* but not for creature *mechanics*.** The random creature generator (`06-random-creature.mdx`) generates appearance and flavor but provides no mechanical attacks or abilities. The rules need tables that output gameable effects.
 5. **Elite Triggers and Lord Triggers need a catalogue.** Currently, these are bespoke per creature. A categorized ability catalogue — organized by the six roles (Offense, Defense, Healing, Control, Support, Utility) — would dramatically reduce GM prep time.
@@ -53,51 +53,61 @@ The system deliberately avoids HP bloat. Adventurer survivability comes from mul
 - **Base HP** = 12 + Strength die value (d4=16, d6=18, d8=20, d10=22, d12=24). Hard cap: 50.
 - **Level HP** = +2 per level after Level 1.
 - **Fatigue buffer** = 6 points × 2 HP each = 12 HP of emergency capacity (reduces max HP).
-- **Wounds** = 3 total. Each wound at 0 HP resets the HP pool (adventurer regains HP after rest; in combat, subsequent wounds are taken at 0 HP).
-- **AV** = reduces each incoming hit. Over many hits, this multiplies effective HP.
+- **Wounds** = 3 total. When HP drops to 0, the adventurer suffers a Wound and **remains at 0 HP** — unlike Elite/Lord creatures, adventurers do **not** regain HP on suffering a Wound. Each subsequent hit at 0 HP inflicts another Wound. If damage equals or exceeds max HP, it inflicts an additional Wound.
+- **AV** = reduces each incoming hit. Over many hits, this extends the first HP pool.
 - **Resolve** = re-rolls (3 max). Not directly HP but prevents hits or improves saves.
+- **Healing** = the primary way adventurers survive past their first Wound. Allies can heal them back above 0 HP mid-combat, resetting the cycle.
+
+> **Critical distinction:** Elite and Lord creatures regain full HP when suffering a Wound — each life pool is a separate HP bar. Adventurers do not. Once an adventurer hits 0 HP, they are at extreme risk unless healed by an ally. This makes adventurer survivability depend heavily on **the first HP pool** (how many hits before the first Wound) and **party healing** (whether allies can restore HP before the next hit).
 
 #### High-End Survivability: "The Champion" (Tank Build)
 
 Assumes: STR d8→d10→d12 over levels, Fighting primary, heavy armor + shield investment.
 
-| Level | Raw HP | AV (Armor + Shield + Helm) | Defense (Parry / Dodge) | Effective HP per Wound | Notes |
-|---|---|---|---|---|---|
-| 1 | 20 | 4 (scale mail) + 1 (shield) = 5 | 8 / 6 | ~35 (20 HP, 5 AV absorbs ~3 per hit) | Low level, basic gear |
-| 3 | 26 | 5 (breastplate) + 2 (shield) + 1 (helm) = 8 | 10 / 8 | ~65 (26 HP, AV 8 negates most weak hits) | Shield + heavy armor online |
-| 5 | 30 | 5 + 2 + 1 = 8, +magic items | 12 / 10 | ~80+ (AV blocks most single-target damage) | Talents add mitigation |
-| 7 | 34 | 6 (plate) + 3 (Q3 shield) + 1 = 10 | 14 / 12 | ~110+ (most attacks deal 1 damage) | Nearly immune to weak hits |
-| 10 | 42 | 6 + 3 + 1 + magic = 12+ | 16 / 14 | ~150+ (only strong/critical hits threaten) | Peak mortal defense |
+| Level | Raw HP | AV (Armor + Shield + Helm) | Defense (Parry / Dodge) | Weak Hits to 1st Wound | Strong Hits to 1st Wound | Notes |
+|---|---|---|---|---|---|---|
+| 1 | 20 | 4 (scale mail) + 1 (shield) = 5 | 8 / 6 | 20 (1 damage per hit) | 5 (4 damage per hit) | Weak hits are nearly meaningless |
+| 3 | 26 | 5 (breastplate) + 2 (shield) + 1 (helm) = 8 | 10 / 8 | 26+ (1 damage per hit) | 4 (6 damage per hit) | AV 8 negates most weak hits entirely |
+| 5 | 30 | 5 + 2 + 1 = 8, +magic items | 12 / 10 | 8 (4 damage per hit) | 3 (11 damage per hit) | Magic items extend ceiling |
+| 7 | 34 | 6 (plate) + 3 (Q3 shield) + 1 = 10 | 14 / 12 | 7 (5 damage per hit) | 3 (14 damage per hit) | Talents add mitigation |
+| 10 | 42 | 6 + 3 + 1 + magic = 12+ | 16 / 14 | 6 (8 damage per hit) | 3 (20 damage per hit) | Peak mortal defense |
+
+> **After the first wound:** The Champion remains at 0 HP. Each subsequent hit that deals any damage (after AV) inflicts another Wound immediately. Without healing from an ally, the Champion is 2 more hits from dying.
 
 #### Low-End Survivability: "The Sorcerer" (Glass Cannon Build)
 
 Assumes: STR d4, MND primary, light armor only, no Fighting investment.
 
-| Level | Raw HP | AV (Armor) | Defense (Parry / Dodge / Resist) | Effective HP per Wound | Notes |
-|---|---|---|---|---|---|
-| 1 | 16 | 2 (leather) | 7 / 8 / 9 | ~20 (AV 2 barely helps) | Extremely fragile |
-| 3 | 20 | 2–3 (leather/banded) | 8 / 9 / 10 | ~28 | One strong creature hit is a wound |
-| 5 | 24 | 3 + wearables | 9 / 10 / 11 | ~35 | Relies on Dodge/Resist, not Parry |
-| 7 | 28 | 3–4 + magic items | 10 / 11 / 12 | ~42 | Mana Shield talent provides emergency AV |
-| 10 | 34 | 4 + magic items | 11 / 12 / 14 | ~55 | Still fragile in melee, strong vs. spells |
+| Level | Raw HP | AV (Armor) | Defense (Parry / Dodge / Resist) | Weak Hits to 1st Wound | Strong Hits to 1st Wound | Notes |
+|---|---|---|---|---|---|---|
+| 1 | 16 | 2 (leather) | 7 / 8 / 9 | 4 (4 damage per hit) | 3 (7 damage per hit) | Extremely fragile |
+| 3 | 20 | 2–3 (leather/banded) | 8 / 9 / 10 | 3 (6 damage per hit) | 2 (11 damage per hit) | One strong creature hit is nearly a wound |
+| 5 | 24 | 3 + wearables | 9 / 10 / 11 | 3 (9 damage per hit) | 2 (16 damage per hit) | Relies on Dodge/Resist, not Parry |
+| 7 | 28 | 3–4 + magic items | 10 / 11 / 12 | 3 (11 damage per hit) | 2 (20 damage per hit) | Mana Shield talent provides emergency AV |
+| 10 | 34 | 4 + magic items | 11 / 12 / 14 | 3 (16 damage per hit) | 2 (28 damage per hit) | Still fragile in melee, strong vs. spells |
+
+> **After the first wound:** The Sorcerer remains at 0 HP and is 2 more hits from dying — likely 1 round without intervention. Party healing, Resolve, and positioning are essential.
 
 #### Creature Damage vs. Adventurer Survivability
 
 The critical question: **Does creature damage output scale appropriately against both defensive and offensive adventurers?**
 
-| Tier | Creature Weak Hit | Creature Strong Hit | Creature Critical Hit | Champion EHP (per Wound) | Sorcerer EHP (per Wound) | Hits to Wound Champion | Hits to Wound Sorcerer |
-|---|---|---|---|---|---|---|---|
-| 1 | 6 | 9 | 12 | ~35 | ~20 | 4–6 weak hits | 3–4 weak hits |
-| 3 | 9 | 14 | 19 | ~65 | ~28 | 7+ weak hits | 3 weak hits |
-| 5 | 12 | 19 | 26 | ~80 | ~35 | 7+ weak hits | 3 weak hits |
-| 7 | 15 | 24 | 33 | ~110 | ~42 | 7+ weak hits | 3 weak hits |
-| 10 | 20 | 32 | 44 | ~150 | ~55 | 7+ weak hits | 3 weak hits |
+| Tier | Creature Weak Hit | Creature Strong Hit | Champion Hits to 1st Wound | Sorcerer Hits to 1st Wound | Champion Total Hits to Dying | Sorcerer Total Hits to Dying |
+|---|---|---|---|---|---|---|
+| 1 | 6 | 9 | 20 (1 dmg after AV 5) | 4 (4 dmg after AV 2) | ~22 | ~6 |
+| 3 | 9 | 14 | 26+ (1 dmg after AV 8) | 3 (6 dmg after AV 3) | ~28+ | ~5 |
+| 5 | 12 | 19 | 8 (4 dmg after AV 8) | 3 (9 dmg after AV 3) | ~10 | ~5 |
+| 7 | 15 | 24 | 7 (5 dmg after AV 10) | 3 (11 dmg after AV 4) | ~9 | ~5 |
+| 10 | 20 | 32 | 6 (8 dmg after AV 12) | 3 (16 dmg after AV 4) | ~8 | ~5 |
+
+> **"Total Hits to Dying"** = hits to first wound + 2 (since at 0 HP, each hit = another Wound, and 3 Wounds = dying). Assumes no healing between wounds, which understates actual survivability — a party with a healer can reset the cycle multiple times.
 
 **Key findings:**
 
-- **Glass-cannon adventurers are consistently threatened by ~3 weak hits.** Creature damage keeps pace with Sorcerer-type HP growth, ensuring these builds feel dangerous without being impossible. This is correct — offensive builds *should* fear sustained combat.
-- **Defensive adventurers scale away from creature damage.** By mid-tiers (5+), Champions can shrug off weak hits entirely (AV absorbs most of the damage). This is also correct — it rewards investment in heavy armor and creates a meaningful difference from glass cannons.
-- **Strong and critical hits are the real threat.** Against all builds, creature strong/critical hits deal dangerous damage. This means fights hinge on success levels, not raw volume — keeping combat snappy and decisive.
+- **Glass-cannon adventurers are consistently at ~3 hits to first Wound.** Creature damage keeps pace with Sorcerer-type HP growth, ensuring these builds feel dangerous without being impossible. After the first wound, they are 2 hits from dying. This is correct — offensive builds *should* fear sustained combat and require party support.
+- **Defensive adventurers benefit enormously from AV at early tiers.** At Tiers 1–3, a Champion's AV nearly negates creature weak hits. By mid-tiers (5+), the gap narrows as creature damage outpaces AV growth. This is intentional — it rewards early armor investment while ensuring creatures remain threatening at higher tiers.
+- **The first Wound is the critical threshold.** Once at 0 HP, both builds become equally vulnerable — 2 more hits to dying regardless of AV. This makes **party healing the primary mid-combat survival tool**, not personal defense. GMs should note that a party without healing capability is significantly more fragile than one with it.
+- **Strong and critical hits are the real threat at all tiers.** Against Champions, strong hits bypass AV meaningfully; against Sorcerers, even weak hits are dangerous. This means fights hinge on success levels, not raw volume — keeping combat snappy and decisive.
 - **Creature damage scaling is intentionally linear.** The +1 weapon damage per tier avoids the HP-bloat treadmill. Formidable creatures should enhance their threat through **defensive abilities** (regeneration, damage reduction, condition immunities, phase shifts) rather than through ever-increasing HP pools. This keeps every hit meaningful and every fight fast.
 
 ### 2.3 Scaling Assessment
@@ -107,7 +117,7 @@ The critical question: **Does creature damage output scale appropriately against
 - **Defense parity.** Creature base defense (6 + tier) closely tracks adventurer defenses (Parry 7 + Fighting rank + level bonus; Dodge 5 + ½ Agility + level bonus). At every tier, creatures and adventurers trade hits at comparable rates.
 - **Attribute die parity.** Creature max attributes and adventurer max attributes follow nearly identical progressions (d6 → d8 → d10 → d12), ensuring roll distributions stay matched.
 - **Skill rank parity.** Creature primary skill ranks (0 → 1 → 2 → 3 → 4 → 5) closely mirror adventurer skill rank progression through XP investment.
-- **HP asymmetry is intentional and correct.** Creatures have higher single-pool HP (60–100 at high tiers) vs. adventurers (28–42 raw HP). But adventurers have 3 Wounds, Resolve, healing, and fatigue buffer, making their total EHP competitive with creature HP — particularly for defensive builds.
+- **HP asymmetry is intentional and creates distinct survival models.** Creatures have higher single-pool HP (60–100 at high tiers). Adventurers have lower raw HP (28–42) but 3 Wounds — however, since adventurers do NOT regain HP on suffering a Wound, their survival after the first Wound depends entirely on party healing. Elite/Lord creatures regain full HP on each Wound, making their life pools true phase transitions. This asymmetry means creature fights are about depleting HP bars, while adventurer survival is about keeping HP above 0 through teamwork.
 - **Linear creature damage avoids HP bloat.** This is a deliberate design choice. Creature survivability comes from abilities (regeneration, resistances, condition recovery for Elite/Lord) not from inflated HP. This keeps fights snappy — hits always matter.
 
 **Areas of concern:**
@@ -122,6 +132,49 @@ The critical question: **Does creature damage output scale appropriately against
 2. **Document the intentional design choice** — creatures scale through abilities, not HP bloat. Defensive adventurers require ability-based threats (conditions, AV-ignoring damage, forced saves), not higher raw damage.
 3. **Flag Tier 0 explicitly** as "non-threatening / environmental creatures" in both the rules and the builder.
 4. **Add guidance for threatening tanky adventurers** — use crush property (ignores half AV), conditions that bypass armor, forced saves against Dodge (their weak defense), and multi-target attacks.
+5. **Emphasize party healing as the key survival multiplier.** Since adventurers do not regain HP on Wound, a party with healing capability is dramatically more resilient than one without. Encounter difficulty should account for whether the party has a dedicated healer.
+
+### 2.5 Elite/Lord Condition Recovery: Investigation
+
+**Current mechanic:** When an Elite or Lord creature suffers a Wound and regains full HP, it also **recovers from all negative conditions and effects.** Additionally, Lords gain immunity to any condition they successfully save against for the rest of the scene.
+
+**Design question:** Is auto-clearing all conditions on a Wound too powerful? Does it invalidate CC (crowd control) strategies from the party?
+
+#### Analysis: Why Auto-Clear Works
+
+| Factor | Assessment |
+|---|---|
+| **CC stacking threat** | Without auto-clear, a party with 2+ CC-capable characters (e.g., Controller + Sorcerer) can perma-lock a boss through overlapping stun, fear, charm, etc. This trivializes the encounter regardless of creature stats. |
+| **Phase transition feel** | The Wound threshold creates a clear "phase change" — the creature resets, the battlefield shifts, the fight enters a new stage. This is dramatically satisfying and mirrors boss fight design in other media. |
+| **Tactical depth** | Auto-clear rewards timing: *"Do we CC now to prevent damage, or save it for after the phase transition?"* This creates meaningful decisions rather than "always CC." |
+| **Simplicity** | The GM doesn't need to track which conditions carry over and which don't. Clean state on phase change is easy to run. |
+| **Existing defenses layer well** | Lord creatures already have 3 Resolve (re-roll saves), double turn (less time spent in CC), and post-save condition immunity. Auto-clear on Wound is one layer of a multi-layered defense. |
+
+#### Alternative Approaches (Considered)
+
+| Alternative | Pros | Cons | Verdict |
+|---|---|---|---|
+| **A) Selective Recovery** — On Wound, end only 1–2 conditions (creature's choice) | Rewards CC specialists; sustained CC has value | GM decision overhead; less dramatic phase transition | Viable variant for CC-heavy groups |
+| **B) Save Bonus** — On Wound, gain +2 boon to save vs. all current conditions at start of next turn | Conditions have a chance to stick through phases | Adds rolls during an already dramatic moment; may fail and feel like nothing happened | Too unreliable |
+| **C) Graduated Resistance** — After each Wound, gain cumulative +1 boon vs. conditions | CC gets harder over time; earlier CC is rewarded | Tracking stacking bonuses; conditions become irrelevant by Wound 3 | Too complex |
+| **D) Resolve-Powered** — Spend 1 Resolve to end 1 condition (instead of auto-clear) | Uses existing resource; creates meaningful choices | Elite only has 1 Resolve; may feel punishing if Resolve is needed for saves | Interesting but changes Resolve economy |
+| **E) Condition Timer Reset** — On Wound, all condition durations restart from maximum but aren't removed | Conditions persist; phase transition still feels meaningful | Confusing to track; feels arbitrary | Too fiddly |
+
+#### Recommendation
+
+**Keep auto-clear as the baseline.** It is the cleanest mechanic, creates the best boss-fight feel, prevents CC lock-down, and layers well with Resolve and condition immunity. The alternatives add complexity without proportional benefit.
+
+**For GMs who want to reward CC-focused parties, offer a variant rule:**
+
+> **Variant: Selective Recovery.** When an Elite or Lord creature suffers a Wound and regains HP, it may end a number of conditions equal to its remaining Wounds (1–2 for Elite, 1–3 for Lord) instead of all conditions. This allows sustained CC to carry some value through phase transitions while still giving the creature partial recovery.
+
+**Additional methods for boss staying power against CC (that don't involve modifying condition recovery):**
+
+1. **Legendary Resistance (built into Lord Resolve):** Lords already have 3 Resolve, which can be spent to re-roll failed saves against conditions. This is effectively 3 "free saves" per encounter.
+2. **Post-save condition immunity (Lord-only):** After successfully saving against any condition type, the Lord is immune to that type for the rest of the scene. This prevents repeated application of the same CC.
+3. **Double turn action economy:** Lords act twice per round, meaning they spend less time under any single condition's effect relative to their total actions.
+4. **Passive abilities:** Magic Resistance (+1 boon on saves vs. spells), Constructed Resilience (immunity to charm/fear), and similar abilities provide type-appropriate CC resistance.
+5. **Aura effects and environmental triggers:** Lord Triggers that create hazard zones force the party to split attention between CC and survival, reducing CC pressure.
 
 ---
 
@@ -327,35 +380,47 @@ Attack creation uses two independent rolls: (1) choose or roll an **Attack Type*
 
 > **Example:** Roll a "Bite (crush)" from Table 1a as the attack type, then roll "Poison" from Table 2 as the effect = a venomous bite that poisons on a strong or critical hit.
 
-#### Table 1a: Melee Attack Types (d12)
+#### Table 1a: Melee Attack Types (d20)
 
-| d12 | Attack Type | Properties | Notes |
-|---|---|---|---|
-| 1 | **Bite** | crush | Standard predator attack. |
-| 2 | **Bite** | pierce | Piercing variant — snakes, lizards. |
-| 3 | **Claw** | slash, light | Fast slashing — cats, raptors. -1 weapon damage for light. |
-| 4 | **Claw** | slash | Heavy slashing — bears, demons. |
-| 5 | **Slam/Fist** | crush | Blunt force — golems, giants. |
-| 6 | **Beak** | agile, pierce | Birds, insectoids. |
-| 7 | **Horn/Antlers** | pierce | Charging beasts, minotaurs. |
-| 8 | **Tail Swipe** | crush, reach | Large reptiles, dragons. |
-| 9 | **Tusks** | crush | Boars, elephants, orcs. |
-| 10 | **Pincer/Mandibles** | crush | Insects, crustaceans. |
-| 11 | **Constrict** | crush | Serpents, tentacle creatures. Grapple + restrain on hit. |
-| 12 | **Tentacles** | pierce | Aberrations, cephalopods. |
+| d20 | Attack Type | Properties | Creature Types | Notes |
+|---|---|---|---|---|
+| 1 | **Bite** | crush | Beast, Draconic, Monstrosity | Standard predator attack. |
+| 2 | **Bite** | pierce | Beast, Draconic | Piercing variant — snakes, lizards, wyverns. |
+| 3 | **Claw** | slash, light | Beast, Monstrosity | Fast slashing — cats, raptors. -1 weapon damage for light. |
+| 4 | **Claw** | slash | Beast, Draconic, Monstrosity | Heavy slashing — bears, demons, dragons. |
+| 5 | **Slam/Fist** | crush | Automaton, Giant, Humanoid | Blunt force — golems, ogres, brawlers. |
+| 6 | **Beak** | agile, pierce | Beast | Birds, insectoids. |
+| 7 | **Horn/Antlers** | pierce | Beast, Monstrosity | Charging beasts, minotaurs. |
+| 8 | **Tail Swipe** | crush, reach | Draconic, Beast, Monstrosity | Large reptiles, dragons, dinosaurs. |
+| 9 | **Tusks** | crush | Beast, Giant | Boars, elephants, orcs, trolls. |
+| 10 | **Pincer/Mandibles** | crush | Beast | Insects, crustaceans, scorpions. |
+| 11 | **Constrict** | crush | Beast, Monstrosity | Serpents, tentacle creatures. Grapple + restrain on hit. |
+| 12 | **Tentacles** | pierce, reach | Aberration, Monstrosity | Aberrations, cephalopods. Can grapple at reach. |
+| 13 | **Pseudopod** | crush | Ooze | Amorphous limb. Acid damage type. |
+| 14 | **Vine Whip** | slash, reach | Plant | Treants, vine creatures. Can grapple at reach. |
+| 15 | **Thorn Strike** | pierce | Plant | Myconids, thorn-covered plants. |
+| 16 | **Life Drain Touch** | — | Undead, Spirit | Necrotic damage type. No weapon properties — pure supernatural force. |
+| 17 | **Spectral Claw** | slash | Undead (ethereal) | Ignores non-magical AV. Ghosts, wraiths, spectres. |
+| 18 | **Stinger** | pierce, agile | Beast, Monstrosity | Insects, scorpions, wyverns. Pairs well with Poison effect. |
+| 19 | **Engulf** | crush | Ooze, Monstrosity | Grapple + ongoing acid/crush damage each turn. Large amorphous creatures. |
+| 20 | **Tendril Grab** | crush, reach | Aberration, Monstrosity, Plant | Grapple at reach distance. Pulls target into melee range on hit. |
 
-#### Table 1b: Ranged Attack Types (d8)
+#### Table 1b: Ranged Attack Types (d12)
 
-| d8 | Attack Type | Properties | Notes |
-|---|---|---|---|
-| 1 | **Rock Throw** | crush, thrown (short/medium) | Giants, apes, constructs. |
-| 2 | **Web** | thrown (close/short) | Spiders, silk-producing creatures. No damage — restrains target. |
-| 3 | **Screech/Sonic Blast** | blast, cone | Sound-based. -1 weapon damage for AoE. |
-| 4 | **Flame Bolt** | thrown (short/medium) | Fire elementals, demons. Fire damage type. |
-| 5 | **Lightning Strike** | thrown (medium) | Storm creatures, spirits. Lightning damage type. |
-| 6 | **Acid Spit** | thrown (short) | Oozes, insects. Acid damage type. |
-| 7 | **Spine/Quill Volley** | thrown (short/medium), light | Porcupine-type creatures. |
-| 8 | **Tongue** | agile, reach | Amphibians. No damage — grapple and pull target. |
+| d12 | Attack Type | Properties | Creature Types | Notes |
+|---|---|---|---|---|
+| 1 | **Rock Throw** | crush, thrown (short/medium) | Giant, Automaton | Giants, apes, constructs. |
+| 2 | **Web** | thrown (close/short) | Beast, Monstrosity | Spiders, silk creatures. No damage — restrains target. |
+| 3 | **Screech/Sonic Blast** | blast, cone | Beast, Draconic, Monstrosity | Sound-based. -1 weapon damage for AoE. |
+| 4 | **Flame Bolt** | thrown (short/medium) | Spirit (Primordial), Draconic | Fire elementals, demons. Fire damage type. |
+| 5 | **Lightning Strike** | thrown (medium) | Spirit (Primordial), Draconic | Storm creatures, spirits. Lightning damage type. |
+| 6 | **Acid Spit** | thrown (short) | Ooze, Beast | Oozes, insects, acid creatures. Acid damage type. |
+| 7 | **Spine/Quill Volley** | thrown (short/medium), light | Beast, Monstrosity | Porcupine-type creatures, manticores. |
+| 8 | **Tongue** | agile, reach | Beast | Amphibians. No damage — grapple and pull target. |
+| 9 | **Spore Cloud** | blast, cone | Plant | Fungal creatures, myconids. Poison damage type. |
+| 10 | **Necrotic Bolt** | thrown (short/medium) | Undead, Spirit (Chthonic) | Liches, death priests, spirits of decay. Necrotic damage type. |
+| 11 | **Psychic Blast** | thrown (short/medium) | Aberration, Spirit (Astral) | Mind flayers, aberrations. Psychic damage type. Targets Resist instead of Dodge. |
+| 12 | **Frost Breath** | blast, cone | Draconic, Spirit (Primordial) | Frost dragons, ice elementals. Cold damage type. |
 
 #### Table 1c: Weapon Attack Types (d8)
 
@@ -402,75 +467,105 @@ Roll on this table to add a secondary effect to any non-spell attack. Each effec
 
 Abilities are organized by the six roles from the magic system: **Offense, Defense, Healing, Control, Support, and Utility.** Within each role, abilities are tagged as Passive, Active (costs Action), or Reactive (Quick Action, triggered).
 
-#### Offense Abilities (d8)
+#### Offense Abilities (d10)
 
-| d8 | Ability | Type | Effect |
+| d10 | Ability | Type | Effect |
 |---|---|---|---|
-| 1 | **Charge** | Passive | If this creature spends Movement towards its target during the turn it attacks, it gains +1 boon on the attack and deals +2 damage. |
-| 2 | **Ambush Predator** | Passive | This creature deals +(weapon damage) extra damage against surprised targets. |
-| 3 | **Aura of Pain** | Passive | At the start of this creature's turn, each opponent within melee range takes (tier) damage of an appropriate type. |
-| 4 | **Frenzy** | Active (1/day) | For a short duration, this creature gains +1 boon on attacks and +1 additional attack per turn. |
-| 5 | **Breath Weapon** | Active (recharge d6) | All creatures in a cone/line to short range must roll vs. Dodge. On a hit, deal damage as a normal attack of an appropriate type. On strong/critical, targets also suffer a condition. |
-| 6 | **Ground Slam** | Active | All creatures in melee range must roll Agility + Athletics vs. ability TN or take (weapon damage × 2) damage and fall prone. |
-| 7 | **Reactive Strike** | Reactive | When an opponent in melee range attacks an ally, this creature can make a melee attack against that opponent. |
-| 8 | **Tail/Wing Sweep** | Reactive (proactive) | All opponents in melee range must roll Agility + Athletics vs. ability TN or take (weapon damage) damage and fall prone. |
+| 1 | **Charge** | Passive | If this creature spends Movement towards its target during the turn it attacks, it gains +1 boon on the attack and deals +2 damage. *Beasts, Giants, Monstrosities.* |
+| 2 | **Ambush Predator** | Passive | This creature deals +(weapon damage) extra damage against surprised targets. *Beasts, Humanoids (rogues), Monstrosities.* |
+| 3 | **Aura of Pain** | Passive | At the start of this creature's turn, each opponent within melee range takes (tier) damage of an appropriate type. *Spirits, Undead, Aberrations.* |
+| 4 | **Corrosive Body** | Passive | Creatures that hit this creature with a melee attack take (tier) acid damage. This creature's melee attacks deal an additional (tier) acid damage. *Oozes, acid Spirits.* |
+| 5 | **Frenzy** | Active (1/day) | For a short duration, this creature gains +1 boon on attacks and +1 additional attack per turn. *Beasts, Giants, Humanoids (berserkers).* |
+| 6 | **Breath Weapon** | Active (recharge d6) | All creatures in a cone/line to short range must roll vs. Dodge. On a hit, deal damage as a normal attack of an appropriate type. On strong/critical, targets also suffer a condition. *Draconic creatures, some Monstrosities and Spirits.* |
+| 7 | **Ground Slam** | Active | All creatures in melee range must roll Agility + Athletics vs. ability TN or take (weapon damage × 2) damage and fall prone. *Giants, Automatons, large Beasts.* |
+| 8 | **Pounce** | Active | Move up to close range and make a melee attack in the same Action. On a strong or critical hit, the target is also knocked prone. *Beasts, Monstrosities, Skirmishers.* |
+| 9 | **Reactive Strike** | Reactive | When an opponent in melee range attacks an ally, this creature can make a melee attack against that opponent. *Humanoids (trained warriors), Giants, Defenders.* |
+| 10 | **Tail/Wing Sweep** | Reactive (proactive) | All opponents in melee range must roll Agility + Athletics vs. ability TN or take (weapon damage) damage and fall prone. *Draconic, large Beasts, Monstrosities.* |
 
-#### Defense Abilities (d8)
+#### Defense Abilities (d10)
 
-| d8 | Ability | Type | Effect |
+| d10 | Ability | Type | Effect |
 |---|---|---|---|
-| 1 | **Relentless** | Passive | The first time this creature would suffer an Injury, it can ignore it. |
-| 2 | **Regeneration** | Passive | This creature regains (tier × 2) HP at the start of its turn if it has at least 1 HP. |
-| 3 | **Magic Resistance** | Passive | This creature gains +1 boon on saves against spells and magical effects. |
-| 4 | **Incorporeal** | Passive | This creature can move through other creatures and objects as difficult terrain. Takes (tier) damage if ending turn inside an object. Resistant to physical damage from non-magical weapons. |
-| 5 | **Hard Shell** | Reactive | As a Quick Action, this creature retracts into its shell, doubling AV but preventing Actions and Movement until re-emerging. |
-| 6 | **Shield Wall** | Reactive | When targeted by an attack, gain +2 to the targeted defense until end of turn. |
-| 7 | **Dodge Roll** | Reactive | When targeted by an attack, move close without provoking attacks. |
-| 8 | **Absorb Magic** | Reactive | When targeted by a spell, roll Spirit + Fortitude vs. the caster's result. On success, negate the spell and regain (tier × 2) HP. |
+| 1 | **Relentless** | Passive | The first time this creature would suffer an Injury, it can ignore it. *Beasts (boars, wolves), Giants, tenacious Humanoids.* |
+| 2 | **Regeneration** | Passive | This creature regains (tier × 2) HP at the start of its turn if it has at least 1 HP. Specify a weakness that prevents regeneration (e.g., fire, acid, radiant). *Giants (trolls), Monstrosities, some Spirits.* |
+| 3 | **Magic Resistance** | Passive | This creature gains +1 boon on saves against spells and magical effects. *Spirits, some Monstrosities, Draconic.* |
+| 4 | **Incorporeal** | Passive | This creature can move through other creatures and objects as difficult terrain. Takes (tier) damage if ending turn inside an object. Resistant to physical damage from non-magical weapons. *Spirits, ethereal Undead (ghosts, wraiths).* |
+| 5 | **Constructed Resilience** | Passive | Immune to poisoned, diseased, charmed, frightened, and unconscious conditions. Doesn't need to breathe, eat, or sleep. *Automatons, Golems.* |
+| 6 | **Undead Fortitude** | Reactive | When reduced to 0 HP by non-radiant damage, roll Spirit + Fortitude vs. the damage dealt as the TN. On a success, drop to 1 HP instead. Once per scene. *Physical Undead (zombies, mummies, skeletal warriors).* |
+| 7 | **Hard Shell** | Reactive | As a Quick Action, this creature retracts into its shell, doubling AV but preventing Actions and Movement until re-emerging. *Beasts (turtles), Automatons, armored Monstrosities.* |
+| 8 | **Shield Wall** | Reactive | When targeted by an attack, gain +2 to the targeted defense until end of turn. *Humanoids (trained soldiers), Giants (with shields).* |
+| 9 | **Dodge Roll** | Reactive | When targeted by an attack, move close without provoking attacks. *Beasts (small/agile), Humanoids (skirmishers), Monstrosities.* |
+| 10 | **Absorb Magic** | Reactive | When targeted by a spell, roll Spirit + Fortitude vs. the caster's result. On success, negate the spell and regain (tier × 2) HP. *Aberrations, some Spirits, magic-resistant Monstrosities.* |
 
-#### Healing Abilities (d4)
-
-| d4 | Ability | Type | Effect |
-|---|---|---|---|
-| 1 | **Life Drain Aura** | Passive | When this creature deals damage with a melee attack, it regains HP equal to half the damage dealt. |
-| 2 | **Rally Cry** | Active (1/day) | All allied creatures within short range regain (tier × 3) HP. |
-| 3 | **Consume Ally** | Active | This creature consumes one adjacent allied Basic creature to regain HP equal to that creature's remaining HP. |
-| 4 | **Rejuvenating Burst** | Reactive | When this creature drops below half HP, it immediately regains (tier × 2) HP. 1/day. |
-
-#### Control Abilities (d8)
-
-| d8 | Ability | Type | Effect |
-|---|---|---|---|
-| 1 | **Frightful Presence** | Active | Each opponent within short range must roll Spirit + Fortitude vs. ability TN or become frightened for a short duration. |
-| 2 | **Web/Entangle** | Active | One target in short range is restrained until they escape (Strength + Athletics vs. ability TN). |
-| 3 | **Charm/Command** | Active | One target in short range must roll Spirit + Fortitude vs. ability TN or become charmed for a short duration. |
-| 4 | **Terrifying Roar** | Active | All opponents within short range must roll Spirit + Fortitude vs. ability TN or be frightened and pushed close. |
-| 5 | **Dreadful Gaze** | Active | One target in short range must roll Spirit + Fortitude vs. ability TN or be paralyzed until end of their next turn. |
-| 6 | **Toxic Cloud** | Active | Creates a poison cloud in close range for a short duration. Creatures entering or starting their turn in the cloud take (weapon damage) poison damage. |
-| 7 | **Intimidating Growl** | Reactive (proactive) | One opponent in short range suffers +1 bane on their next attack. |
-| 8 | **Burrowing Ambush** | Active | This creature burrows underground and reappears in any unoccupied space within short range. The first attack after resurfacing gains +1 boon. |
-
-#### Support Abilities (d6)
+#### Healing Abilities (d6)
 
 | d6 | Ability | Type | Effect |
 |---|---|---|---|
-| 1 | **Pack Tactics** | Passive | While in a troop or in melee range of allies, this creature's attacks gain +1 boon. |
-| 2 | **Formation Fighting** | Passive | While adjacent to an ally, this creature gains +1 Parry. |
-| 3 | **Commanding Shout** | Reactive (proactive) | One allied creature within short range can immediately move or make an attack. |
-| 4 | **Summon Allies** | Active (1/day) | Summon 1d4 Basic creatures of equal or lower tier. They arrive at the start of the next round. |
-| 5 | **Innate Spellcasting** | Passive | This creature can cast 2–3 spells (matching its tier's skill rank) once per scene each. Choose thematically appropriate spells from the arcane or mystic spell lists. |
-| 6 | **Quick Cast** | Reactive (proactive) | Cast a rank 0 or rank 1 spell as a Quick Action. |
+| 1 | **Life Drain Aura** | Passive | When this creature deals damage with a melee attack, it regains HP equal to half the damage dealt. *Undead (vampires, wraiths), some Spirits.* |
+| 2 | **Photosynthesis** | Passive | While in natural light or rooted in earth, this creature regains (tier) HP at the start of its turn. Deprived of both light and earth, this ability is suppressed. *Plant creatures.* |
+| 3 | **Rally Cry** | Active (1/day) | All allied creatures within short range regain (tier × 3) HP. *Humanoid leaders, Spirit (celestial), Support archetypes.* |
+| 4 | **Consume Ally** | Active | This creature consumes one adjacent allied Basic creature to regain HP equal to that creature's remaining HP. *Aberrations, Oozes, predatory Beasts.* |
+| 5 | **Rejuvenating Burst** | Reactive | When this creature drops below half HP, it immediately regains (tier × 2) HP. 1/day. *Spirits (nature), Plant, regenerative Monstrosities.* |
+| 6 | **Siphon Life** | Active (recharge d4) | One target in close range must roll Spirit + Fortitude vs. ability TN. On failure, the target takes (weapon damage) necrotic damage and the creature regains HP equal to the damage dealt. *Undead, Aberrations, some Spirits.* |
 
-#### Utility Abilities (d6)
+#### Control Abilities (d10)
 
-| d6 | Ability | Type | Effect |
+| d10 | Ability | Type | Effect |
 |---|---|---|---|
-| 1 | **Keen Senses** | Passive | +1 boon on Perception rolls (specify sense: scent, hearing, or sight). |
-| 2 | **Flying** | Passive | This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total. |
-| 3 | **Spider Climb** | Passive | This creature can climb difficult surfaces, including ceilings, without treating it as difficult terrain. |
-| 4 | **Sunlight/Element Sensitivity** | Passive (weakness) | This creature suffers +1 bane on attacks while exposed to a specific element or condition. |
-| 5 | **Detect** | Reactive (proactive) | Make a Perception check to locate hidden creatures. |
-| 6 | **Reposition** | Reactive (proactive) | Move close without provoking attacks. |
+| 1 | **Frightful Presence** | Active | Each opponent within short range must roll Spirit + Fortitude vs. ability TN or become frightened for a short duration. *Draconic, powerful Undead, Giants, large Monstrosities.* |
+| 2 | **Web/Entangle** | Active | One target in short range is restrained until they escape (Strength + Athletics vs. ability TN). *Beasts (spiders), Plant creatures, some Monstrosities.* |
+| 3 | **Charm/Command** | Active | One target in short range must roll Spirit + Fortitude vs. ability TN or become charmed for a short duration. *Spirits (fey, celestial), Undead (vampires), Aberrations.* |
+| 4 | **Terrifying Roar** | Active | All opponents within short range must roll Spirit + Fortitude vs. ability TN or be frightened and pushed close. *Draconic, Giants, large Beasts, Monstrosities.* |
+| 5 | **Dreadful Gaze** | Active | One target in short range must roll Spirit + Fortitude vs. ability TN or be paralyzed until end of their next turn. *Undead (liches, vampires), Aberrations, some Spirits.* |
+| 6 | **Toxic Cloud** | Active | Creates a poison cloud in close range for a short duration. Creatures entering or starting their turn in the cloud take (weapon damage) poison damage. *Oozes, Plant (fungal), Draconic (poison dragons).* |
+| 7 | **Spore Burst** | Active | All creatures in melee range must roll Strength + Fortitude vs. ability TN or become poisoned for a short duration. On a critical failure, the target is also confused until end of their next turn. *Plant (myconids, fungi), some Oozes.* |
+| 8 | **Reality Distortion** | Active | One target within short range must roll Mind + Fortitude vs. ability TN or be teleported to a random location within short range and suffer +1 bane on all rolls until end of their next turn. *Aberrations, Spirits (astral).* |
+| 9 | **Intimidating Growl** | Reactive (proactive) | One opponent in short range suffers +1 bane on their next attack. *Beasts, Giants, Humanoids (intimidators).* |
+| 10 | **Burrowing Ambush** | Active | This creature burrows underground and reappears in any unoccupied space within short range. The first attack after resurfacing gains +1 boon. *Beasts (burrowing), Monstrosities, some Giants (earth).* |
+
+#### Support Abilities (d8)
+
+| d8 | Ability | Type | Effect |
+|---|---|---|---|
+| 1 | **Pack Tactics** | Passive | While in a troop or in melee range of allies, this creature's attacks gain +1 boon. *Beasts (wolves, hyenas), Humanoids (goblins, soldiers), Monstrosities.* |
+| 2 | **Formation Fighting** | Passive | While adjacent to an ally, this creature gains +1 Parry. *Humanoids (trained soldiers, guards), Automatons (linked constructs).* |
+| 3 | **Death Burst** | Passive | When this creature dies, it explodes. All creatures in melee range take (weapon damage × 2) damage of an appropriate type (acid for oozes, fire for elementals, necrotic for undead). *Oozes, Spirits (elemental), Automatons, volatile Plants.* |
+| 4 | **Commanding Shout** | Reactive (proactive) | One allied creature within short range can immediately move or make an attack. *Humanoid leaders, Spirits (celestial), Giant chieftains.* |
+| 5 | **Summon Allies** | Active (1/day) | Summon 1d4 Basic creatures of equal or lower tier. They arrive at the start of the next round. *Undead (necromancers), Spirits, Aberrations, Humanoid leaders.* |
+| 6 | **Innate Spellcasting** | Passive | This creature can cast 2–3 spells (matching its tier's skill rank) once per scene each. Choose thematically appropriate spells from the arcane or mystic spell lists. *Spirits, Humanoid spellcasters, Aberrations, Draconic.* |
+| 7 | **Aura of Command** | Passive | Allied creatures within close range gain +1 boon on Morale rolls and +1 to one Defense of the GM's choice. *Humanoid leaders, Spirits (celestial/infernal), powerful Undead (vampire lords).* |
+| 8 | **Quick Cast** | Reactive (proactive) | Cast a rank 0 or rank 1 spell as a Quick Action. *Humanoid spellcasters, Spirits, Aberrations.* |
+
+#### Utility Abilities (d8)
+
+| d8 | Ability | Type | Effect |
+|---|---|---|---|
+| 1 | **Keen Senses** | Passive | +1 boon on Perception rolls (specify sense: scent, hearing, or sight). *Beasts, Monstrosities, Humanoid scouts.* |
+| 2 | **Flying** | Passive | This creature can fly with 2 Movement per turn. If on the ground, it can only spend 1 Movement during its turn in total. *Beasts (birds), Draconic, Spirits, some Monstrosities.* |
+| 3 | **Spider Climb** | Passive | This creature can climb difficult surfaces, including ceilings, without treating it as difficult terrain. *Beasts (spiders, insects), Aberrations, some Monstrosities.* |
+| 4 | **Amorphous** | Passive | This creature can move through spaces as small as 1 inch wide and is immune to the grappled and restrained conditions. *Oozes, ethereal Undead, some Aberrations.* |
+| 5 | **Tremorsense** | Passive | This creature can detect and locate creatures within short range through vibrations in the ground, even if those creatures are invisible or hidden. *Beasts (burrowing), Giants, some Aberrations, Automatons.* |
+| 6 | **Sunlight/Element Sensitivity** | Passive (weakness) | This creature suffers +1 bane on attacks while exposed to a specific element or condition (sunlight, fire, cold, etc.). *Undead, some Spirits, subterranean creatures.* |
+| 7 | **Detect** | Reactive (proactive) | Make a Perception check to locate hidden creatures. *Beasts (guard animals), Humanoid sentries, Automatons.* |
+| 8 | **Reposition** | Reactive (proactive) | Move close without provoking attacks. *Humanoid skirmishers, Beasts (agile), Spirits, Aberrations.* |
+
+### 5.4 Creature Type Coverage Reference
+
+The following table shows which creature types are best served by each attack type and ability role, helping GMs quickly find appropriate options:
+
+| Creature Type | Primary Attack Types | Primary Ability Roles | Common Immunities/Resistances |
+|---|---|---|---|
+| **Aberration** | Tentacles, Tendril Grab, Psychic Blast | Control, Offense, Utility | Psychic resistance, frightened immunity |
+| **Automaton** | Slam/Fist, Rock Throw | Defense, Support, Utility | Poisoned, diseased, charmed, frightened, unconscious |
+| **Beast** | Bite, Claw, Horn, Beak, Stinger | Offense, Utility | Varies by species |
+| **Draconic** | Bite, Claw, Tail Swipe, Breath Weapons | Offense, Control | Elemental resistance (matching breath type) |
+| **Giant** | Slam/Fist, Tusks, Rock Throw | Offense, Defense | Varies; often physical resistance |
+| **Humanoid** | Weapon Types (Table 1c), Fist | Support, Offense, Control | None typical |
+| **Monstrosity** | Bite, Claw, Constrict, Horn, Spine Volley | Offense, Control | Varies by origin |
+| **Ooze** | Pseudopod, Engulf, Acid Spit | Defense (Amorphous), Offense (Corrosive) | Grappled, restrained; acid resistance |
+| **Plant** | Vine Whip, Thorn Strike, Spore Cloud | Control, Healing, Utility | Deafened; often poison resistance |
+| **Spirit** | Life Drain Touch, Flame/Lightning/Frost, Necrotic Bolt | Varies by aspect | Elemental resistance; often incorporeal |
+| **Undead** | Life Drain Touch, Spectral Claw, Necrotic Bolt | Control, Offense, Healing (drain) | Bleeding, charmed, frightened, poisoned, unconscious |
 
 ---
 
@@ -554,7 +649,11 @@ Use the Creature Builder tool or the tier table:
 
 #### Step 3: Attacks (1 minute)
 
-Every creature needs at least one attack.
+Every creature needs at least one attack. Use the creature type coverage table (§5.4) to find appropriate attack types.
+
+- **Basic creatures:** 1–2 attacks.
+- **Elite creatures:** 2–3 attacks.
+- **Lord creatures:** 3–4 attacks.
 
 1. **Choose an attack type** — roll on or choose from the Attack Type tables (§5.2, Tables 1a/1b/1c): Melee for beasts and brawlers, Ranged for casters and archers, Weapon for humanoids.
 2. **Choose an attack effect** — roll on or choose from the Attack Effects table (§5.2, Table 2). Common choices: Knockdown for brutes, Poison for beasts, Grapple for predators. Spells do not add attack effects.
@@ -570,8 +669,8 @@ Every creature needs at least one attack.
 Choose abilities from the six role tables (§5.3), using the archetype's recommended primary/secondary roles (§6.3) as guidance:
 
 - **Basic creatures:** 1–2 abilities. Choose from the archetype's primary role table.
-- **Elite creatures:** 2–3 abilities from primary + secondary role tables + 1 Elite Trigger (§6.1).
-- **Lord creatures:** 3–5 abilities spanning primary, secondary, and one additional role + 1 Lord Trigger (§6.2).
+- **Elite creatures:** 2–3 abilities (including 1 Elite Trigger from §6.1) from primary + secondary role tables.
+- **Lord creatures:** 4–5 abilities (including 1+ Lord Triggers from §6.2) spanning primary, secondary, and one additional role.
 
 Each ability is already tagged as Passive, Active, or Reactive — distribute them for variety:
 - Every Elite needs at least 1 Reactive ability (Quick Action).
@@ -601,16 +700,13 @@ Following the steps above:
 
 **Skills:** Arcana (3), Fortitude (3), Insight (3), Perception (3)
 
-**Step 3 — Attacks:**
-- **Attack Type:** Flame Bolt (from Table 1b, row 4) — thrown (short/medium), fire damage type.
-- **Attack Effect:** Burn (from Table 2, row 6) — on strong or critical, target suffers burning.
-- **Hellfire Bolt** (*thrown, short/medium*). 11/17/23 fire damage. On a strong or critical hit, the target suffers burning (6).
+**Step 3 — Attacks (2 attacks for Elite):**
+- **Hellfire Bolt** (*thrown, short/medium*). Attack Type: Flame Bolt (Table 1b, row 4). Attack Effect: Burn (Table 2, row 6). 11/17/23 fire damage. On a strong or critical hit, the target suffers burning (6).
+- **Spectral Claw** (*slash, melee*). Attack Type: Spectral Claw (Table 1a, row 17). No attack effect. 11/17/23 necrotic damage. Ignores non-magical AV.
 
-**Step 4 — Abilities:**
+**Step 4 — Abilities (3 abilities including trigger):**
 - **Primary role (Control):** Charm/Command (Active) — One target in short range rolls Spirit + Fortitude vs. TN 10 or is charmed for a short duration.
-- **Primary role (Control):** Intimidating Growl (Reactive, proactive) — One opponent in short range suffers +1 bane on their next attack.
 - **Secondary role (Defense):** Magic Resistance (Passive) — +1 boon on saves against spells and magical effects.
-- **Extra flavor:** Aura of Dread (Passive, from Offense role) — Opponents starting their turn in melee range take 4 psychic damage.
 - **Elite Trigger:** Terrain Hazard (from §6.1, row 6) — When the first life pool is depleted, the creature's area erupts in hellfire. Creatures starting their turn in melee range take (weapon damage) fire damage for the rest of the scene.
 
 **Immunities:** fire damage, charmed, frightened
@@ -725,13 +821,14 @@ For quick reference when building creature attacks:
 | **Life Pools** | 1 | 2 | 3 |
 | **Wounds** | 1 (instant death) | 2 | 3 |
 | **HP Format** | "40" | "2×40" | "3×40" |
-| **Attacks** | 1–2 | 2–3 | 3–5 |
-| **Abilities** | 1–3 | 2–4 (incl. trigger) | 3–6 (incl. triggers) |
+| **HP Reset on Wound** | No (creature dies) | Yes (regain all HP) | Yes (regain all HP) |
+| **Attacks** | 1–2 | 2–3 | 3–4 |
+| **Abilities** | 1–2 | 2–3 (incl. trigger) | 4–5 (incl. triggers) |
 | **Quick Actions** | 0–1 | 1+ required | 2+ required (reactive + proactive) |
 | **Resolve** | 0 | 1 | 3 |
 | **Morale** | Must roll | +1 boon on roll | No roll needed |
 | **Second Turn** | No | No | Yes (½ Initiative) |
-| **Condition Recovery** | No | On first Wound | On every Wound |
+| **Condition Recovery** | No | All conditions on first Wound | All conditions on every Wound |
 | **Condition Immunity** | No | No | After succeeding once |
 | **Threat Points** | 1 TP | 4 TP | 8 TP |
 
