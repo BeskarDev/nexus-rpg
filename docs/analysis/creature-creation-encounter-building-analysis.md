@@ -53,7 +53,7 @@ The system deliberately avoids HP bloat. Adventurer survivability comes from mul
 - **Base HP** = 12 + Strength die value (d4=16, d6=18, d8=20, d10=22, d12=24). Hard cap: 50.
 - **Level HP** = +2 per level after Level 1.
 - **Fatigue buffer** = 6 points × 2 HP each = 12 HP of emergency capacity (reduces max HP).
-- **Wounds** = 3 total. When HP drops to 0, the adventurer suffers a Wound and **remains at 0 HP** — unlike Elite/Lord creatures, adventurers do **not** regain HP on suffering a Wound. Each subsequent hit at 0 HP inflicts another Wound. If damage equals or exceeds max HP, it inflicts an additional Wound.
+- **Wounds** = 3 total. When HP drops to 0, the adventurer suffers a Wound and **remains at 0 HP** — unlike Elite/Lord creatures, adventurers do **not** regain HP on suffering a Wound. Each subsequent hit at 0 HP inflicts another Wound. Additionally, if a single instance of damage equals or exceeds max HP, it inflicts +1 additional Wound (this applies to any hit, whether from full HP or at 0 HP).
 - **AV** = reduces each incoming hit. Over many hits, this extends the first HP pool.
 - **Resolve** = re-rolls (3 max). Not directly HP but prevents hits or improves saves.
 - **Healing** = the primary way adventurers survive past their first Wound. Allies can heal them back above 0 HP mid-combat, resetting the cycle.
@@ -62,7 +62,7 @@ The system deliberately avoids HP bloat. Adventurer survivability comes from mul
 
 #### High-End Survivability: "The Champion" (Tank Build)
 
-Assumes: STR d8→d10→d12 over levels, Fighting primary, heavy armor + shield investment.
+Assumes: STR d8→d10→d12 over levels, Fighting primary, heavy armor + shield investment. **Each row faces a creature of the same tier as the adventurer's level** (e.g., Level 5 Champion vs. Tier 5 creature).
 
 | Level | Raw HP | AV (Armor + Shield + Helm) | Defense (Parry / Dodge) | Weak Hits to 1st Wound | Strong Hits to 1st Wound | Notes |
 |---|---|---|---|---|---|---|
@@ -76,7 +76,7 @@ Assumes: STR d8→d10→d12 over levels, Fighting primary, heavy armor + shield 
 
 #### Low-End Survivability: "The Sorcerer" (Glass Cannon Build)
 
-Assumes: STR d4, MND primary, light armor only, no Fighting investment.
+Assumes: STR d4, MND primary, light armor only, no Fighting investment. **Each row faces a creature of the same tier as the adventurer's level.**
 
 | Level | Raw HP | AV (Armor) | Defense (Parry / Dodge / Resist) | Weak Hits to 1st Wound | Strong Hits to 1st Wound | Notes |
 |---|---|---|---|---|---|---|
@@ -100,7 +100,7 @@ The critical question: **Does creature damage output scale appropriately against
 | 7 | 15 | 24 | 7 (5 dmg after AV 10) | 3 (11 dmg after AV 4) | ~9 | ~5 |
 | 10 | 20 | 32 | 6 (8 dmg after AV 12) | 3 (16 dmg after AV 4) | ~8 | ~5 |
 
-> **"Total Hits to Dying"** = hits to first wound + 2 (since at 0 HP, each hit = another Wound, and 3 Wounds = dying). Assumes no healing between wounds, which understates actual survivability — a party with a healer can reset the cycle multiple times.
+> **"Total Hits to Dying"** = hits to first wound + 2 (since at 0 HP, each hit = another Wound, and 3 Wounds = dying). Assumes no healing between wounds. Note: the rules specify damage after AV has a minimum of 1, so any successful attack at 0 HP always inflicts a Wound regardless of AV. A party with a healer can restore HP above 0 between wounds, resetting the cycle.
 
 **Key findings:**
 
@@ -166,7 +166,7 @@ The critical question: **Does creature damage output scale appropriately against
 
 **For GMs who want to reward CC-focused parties, offer a variant rule:**
 
-> **Variant: Selective Recovery.** When an Elite or Lord creature suffers a Wound and regains HP, it may end a number of conditions equal to its remaining Wounds (1–2 for Elite, 1–3 for Lord) instead of all conditions. This allows sustained CC to carry some value through phase transitions while still giving the creature partial recovery.
+> **Variant: Selective Recovery.** When an Elite or Lord creature suffers a Wound and regains HP, it may end a number of conditions equal to the number of Wounds it has already suffered (1 condition after the first Wound, 2 after the second, etc.) instead of all conditions. This means condition recovery grows stronger as the fight progresses — the creature's desperation allows it to shrug off more effects, while early-phase CC is harder to clear.
 
 **Additional methods for boss staying power against CC (that don't involve modifying condition recovery):**
 
@@ -666,11 +666,11 @@ Every creature needs at least one attack. Use the creature type coverage table (
 
 #### Step 4: Abilities (1–2 minutes)
 
-Choose abilities from the six role tables (§5.3), using the archetype's recommended primary/secondary roles (§6.3) as guidance:
+Choose abilities from the six role tables (§5.3), using the archetype's recommended primary/secondary roles (§6.3) as guidance. **Elite Triggers and Lord Triggers count toward the total ability budget.**
 
 - **Basic creatures:** 1–2 abilities. Choose from the archetype's primary role table.
-- **Elite creatures:** 2–3 abilities (including 1 Elite Trigger from §6.1) from primary + secondary role tables.
-- **Lord creatures:** 4–5 abilities (including 1+ Lord Triggers from §6.2) spanning primary, secondary, and one additional role.
+- **Elite creatures:** 2–3 abilities total (including 1 mandatory Elite Trigger from §6.1) from primary + secondary role tables.
+- **Lord creatures:** 4–5 abilities total (including 1+ mandatory Lord Triggers from §6.2) spanning primary, secondary, and one additional role.
 
 Each ability is already tagged as Passive, Active, or Reactive — distribute them for variety:
 - Every Elite needs at least 1 Reactive ability (Quick Action).
@@ -701,8 +701,8 @@ Following the steps above:
 **Skills:** Arcana (3), Fortitude (3), Insight (3), Perception (3)
 
 **Step 3 — Attacks (2 attacks for Elite):**
-- **Hellfire Bolt** (*thrown, short/medium*). Attack Type: Flame Bolt (Table 1b, row 4). Attack Effect: Burn (Table 2, row 6). 11/17/23 fire damage. On a strong or critical hit, the target suffers burning (6).
-- **Spectral Claw** (*slash, melee*). Attack Type: Spectral Claw (Table 1a, row 17). No attack effect. 11/17/23 necrotic damage. Ignores non-magical AV.
+- **Hellfire Bolt** (*thrown, short/medium*). Attack Type: Flame Bolt (Table 1b, row 4). Attack Effect: Burn (Table 2, row 6). Base Damage = ½ Spirit d10 = 5, Weapon Damage = Tier 4 + 2 = 6. Damage: 11/17/23 fire. On a strong or critical hit, the target suffers burning (6).
+- **Spectral Claw** (*slash, melee*). Attack Type: Spectral Claw (Table 1a, row 17). No attack effect. Damage: 11/17/23 necrotic. Ignores non-magical AV.
 
 **Step 4 — Abilities (3 abilities including trigger):**
 - **Primary role (Control):** Charm/Command (Active) — One target in short range rolls Spirit + Fortitude vs. TN 10 or is charmed for a short duration.
