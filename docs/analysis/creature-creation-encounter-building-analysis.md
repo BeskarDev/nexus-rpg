@@ -95,7 +95,7 @@ The critical question: **Does creature damage output scale appropriately against
 
 **Key findings:**
 
-- **Glass-cannon adventurers consistently fall in ~3 weak hits.** Creature damage keeps pace with Sorcerer-type HP growth, ensuring these builds feel dangerous without being impossible. This is correct — offensive builds *should* fear sustained combat.
+- **Glass-cannon adventurers are consistently threatened by ~3 weak hits.** Creature damage keeps pace with Sorcerer-type HP growth, ensuring these builds feel dangerous without being impossible. This is correct — offensive builds *should* fear sustained combat.
 - **Defensive adventurers scale away from creature damage.** By mid-tiers (5+), Champions can shrug off weak hits entirely (AV absorbs most of the damage). This is also correct — it rewards investment in heavy armor and creates a meaningful difference from glass cannons.
 - **Strong and critical hits are the real threat.** Against all builds, creature strong/critical hits deal dangerous damage. This means fights hinge on success levels, not raw volume — keeping combat snappy and decisive.
 - **Creature damage scaling is intentionally linear.** The +1 weapon damage per tier avoids the HP-bloat treadmill. Formidable creatures should enhance their threat through **defensive abilities** (regeneration, damage reduction, condition immunities, phase shifts) rather than through ever-increasing HP pools. This keeps every hit meaningful and every fight fast.
@@ -203,7 +203,7 @@ Each tier of difference between creature and party represents a significant powe
 
 **Assessment:** The "turn after every adventurer" variant is **too powerful** for standard play. A Lord already has 3 Resolve, condition recovery, and powerful triggers. Giving it 4–5 actions per round would make it nearly unkillable by a same-tier party without highly optimized builds. The current ½ Initiative second turn is the correct balance — it gives the Lord two distinct action windows that the party can strategize around, creating meaningful tactical decisions.
 
-**Recommendation:** Keep the current rule. If a Lord feels too easy, the solution is stronger abilities and higher tier, not more actions. A Lord should feel like "two dangerous creatures in one body," not "an unstoppable force that acts every other turn."
+**Recommendation:** Keep the current rule. If a Lord feels too easy, the solution is stronger abilities and higher tier, not more actions. A Lord should represent the threat level of two coordinated dangerous creatures, not an overwhelming presence that dominates action economy.
 
 ### 3.4 Troop Efficiency: Statistical Validation
 
@@ -230,7 +230,7 @@ A troop rolls once: Attribute die + 1d6 + Troop Bonus (replacing skill rank).
 - **On Weak:** (3 + 3) × 3 = **18 damage** → 18 - 8 = **10 damage.**
 - **On Strong:** (3 + 3) × 4 = **24 damage** → 24 - 8 = **16 damage.**
 
-**Without troop rules:** 4 individual Tier 1 goblins rolling separately against Parry 12 would need to roll 12+ on d6 + 1d6 + 1 (average 8). They'd hit roughly 10% of the time and deal 5–7 damage per hit, minus AV 8 = mostly 0–1 damage. They're functionally irrelevant.
+**Without troop rules:** 4 individual Tier 1 goblins rolling separately against Parry 12 would need to roll 12+ on d6 + 1d6 + 1 (average 8). They would hit roughly 10% of the time and deal 5–7 damage per hit, minus AV 8 = mostly 0–1 damage. They would be functionally irrelevant.
 
 **With troop rules:** The troop deals **4+ damage even on failure** and **10+ on a weak success.** Against the Level 5 Fighter's 30 HP, this is meaningful — a troop of goblins can contribute to an encounter even when dramatically out-leveled.
 
@@ -324,6 +324,8 @@ The existing concept tables (`06-random-creature.mdx`) are excellent for inspira
 ### 5.2 Attack Tables: Types and Effects (Separate)
 
 Attack creation uses two independent rolls: (1) choose or roll an **Attack Type** for the physical form and base properties, then (2) choose or roll an **Attack Effect** for the secondary condition. Spells use only the Attack Type table and never add attack effects — spell effects come from the spell itself.
+
+> **Example:** Roll a "Bite (crush)" from Table 1a as the attack type, then roll "Poison" from Table 2 as the effect = a venomous bite that poisons on a strong or critical hit.
 
 #### Table 1a: Melee Attack Types (d12)
 
