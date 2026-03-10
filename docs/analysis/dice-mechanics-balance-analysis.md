@@ -17,7 +17,7 @@
 7. **Re-rolls are powerful but appropriately scarce.** A single re-roll on failure adds 17–25 percentage points to success rates (most impactful when base success is ~45–55%). The combined re-roll budget (1 Disciplined Fighter/Archer per scene + 1–3 Resolve) provides 2–4 re-rolls per combat. This is well-calibrated — powerful enough to feel meaningful, scarce enough to require strategic spending.
 8. **SL-shifting abilities are powerful but well-gated.** Only 3 talents shift SL upward (Assassination, Expert Rider, Shield Mastery for defense). All have narrow triggers, costs, or conditions that prevent abuse. These represent the system's most potent non-boon modifiers and should remain rare.
 9. **Magic items are a core progression pillar, not optional.** The game world's design intent places magic items alongside talents as fundamental character advancement. Weapon damage (+1 to +5), AV bonuses (+1 to +5), and enchantments (flat damage ignoring AV) are essential for maintaining combat efficacy at mid-to-high tiers.
-10. **XP progression pacing is well-designed.** Characters begin with 6 XP spent (3 skills at Rank 1), needing only 4 more XP for Level 2 (~3 sessions). First Rank 2 access comes at Level 3 (~8 sessions from start at 1.3 avg XP). At 2 XP/session (appropriate for biweekly groups), L1→L10 takes ~38 sessions; at 1 XP/session it takes ~65 sessions.
+10. **XP progression pacing is well-designed.** Characters begin with 6 XP spent (3 skills at Rank 1), needing only 4 more XP for Level 2 (~3 sessions at 1.3 avg XP including milestones). First Rank 2 access comes at Level 3 (~8 sessions from start at 1.3 avg XP). At 2 XP/session (appropriate for biweekly groups), L1→L10 takes ~38 sessions; at 1 XP/session it takes ~65 sessions.
 
 ### Design Principles Validated
 
@@ -485,7 +485,9 @@ The tank's reduction of Weak hits from ~6–18 to 2–3 represents a substantial
 
 #### Level Progression Pacing
 
-**Important**: Characters begin play with 6 XP already spent (3 starting skills × 2 XP each = Rank 1). The Level 1 threshold is 0 total XP. To reach Level 2 (10 total XP), a fresh character needs only **4 more XP** from play.
+**Important**: Characters begin play with 6 XP already spent (3 starting skills × 2 XP each = Rank 1). The Level threshold represents total XP spent during play. To reach Level 2 (10 total XP spent in play), a fresh character needs only **4 more XP** from sessions — the creation XP of 6 is not counted against the thresholds, but does advance the character to where they immediately have 6 XP of creation skills to start from.
+
+> *Note: "Total XP" in the table below means total XP spent including creation XP; "XP from Start" means XP earned in play sessions only.*
 
 | Level | Total XP | XP from Start | Sessions @1 XP | Sessions @1.3 XP | Sessions @2 XP | Max XP/Skill |
 |-------|----------|---------------|----------------|-------------------|----------------|--------------|
@@ -500,7 +502,7 @@ The tank's reduction of Weak hits from ~6–18 to 2–3 represents a substantial
 | 9 | 76 | 70 | 70 | ~54 | 35 | 24 (Rank 5) |
 | 10 | 90 | 84 | 84 | ~65 | 42 | 28 (Rank 5) |
 
-*(Assumes starting XP = 6 from character creation. All session counts from first session of play.)*
+*(All session counts in "XP from Start" and session columns count XP earned during play sessions only, not the 6 creation XP. "Total XP" includes both creation and session XP.)*
 
 #### Does XP Pacing Fulfill Design Goals?
 
@@ -510,7 +512,7 @@ The tank's reduction of Weak hits from ~6–18 to 2–3 represents a substantial
 
 **Goal 2: "Early levels shouldn't just fly by"**
 
-With the corrected starting XP of 6, Level 1→2 requires only **4 more XP** — approximately **3 sessions** at average XP rates. This is meaningfully faster than the previous (incorrect) estimate of ~8 sessions. This pacing is more appropriate: players experience Level 1 for 2–4 sessions (establishing their character) and then quickly enter Level 2. The first Rank 2 talent access comes at Level 3 (~8 sessions from start at 1.3 avg XP), which is the more meaningful early milestone.
+With the corrected starting XP of 6, Level 1→2 requires only **4 more XP** — approximately **3 sessions** at 1.3 XP/session average (or 4 sessions at exactly 1 XP/session). This is meaningfully faster than the previous (incorrect) estimate of ~8 sessions. This pacing is more appropriate: players experience Level 1 for 2–4 sessions (establishing their character) and then quickly enter Level 2. The first Rank 2 talent access comes at Level 3 (~8 sessions from start at 1.3 avg XP/session), which is the more meaningful early milestone.
 
 **Goal 3: "Later levels should take longer but not drag"**
 
@@ -582,7 +584,7 @@ At standard rates (~8 sessions to first Rank 2), players can deepen their primar
 - **Mid game** (L4–6): ~20 sessions — characters deepen mastery, acquire magic items, define archetype
 - **Late game** (L7–10): ~37 sessions — characters refine, face legendary challenges, build toward mythic status
 
-*(Assumes 1.3 XP average per session from start. For 2 XP/session, divide all session counts by ~1.5.)*
+*(For 2 XP/session, divide all session counts by ~1.54, approximately 1.5.)*
 
 The overall campaign arc (8 sessions of early game, 20 mid, 37 late) progresses from "rugged low-level adventurers" to "renowned figures of myths and legends" at a pacing that creates meaningful story arcs at each phase.
 
