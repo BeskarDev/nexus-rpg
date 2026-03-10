@@ -2,7 +2,7 @@
 
 > **Scope:** Modular alchemical crafting — procedures for downtime and field use, ingredient systems built on the existing Supply framework, integration with challenge dice, magic item creation, and enchantment systems.
 >
-> **References:** [Craft an Item](../06-scenes/04-downtime/activities.md) | [Challenges](../06-scenes/07-challenges.md) | [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Crafting Professions](../06-scenes/05-crafting-professions.md) | [Magic Item Effects](../04-equipment/07-magic-items/effects.md) | [Enchantments](../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../04-equipment/07-magic-items/cost-tables.md) | [Supply](../04-equipment/02-equipment/supply.md) | [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) | [Travel](../06-scenes/09-travel.md)
+> **References:** [Craft an Item](../06-scenes/04-downtime/activities.md) | [Challenges](../06-scenes/07-challenges/00-overview.md) | [Downtime Overview](../06-scenes/04-downtime/00-overview.md) | [Crafting Professions](../06-scenes/05-crafting-professions.md) | [Magic Item Effects](../04-equipment/07-magic-items/effects.md) | [Enchantments](../04-equipment/07-magic-items/enchantments.md) | [Cost Tables](../04-equipment/07-magic-items/cost-tables.md) | [Supply](../04-equipment/02-equipment/supply.md) | [Alchemy Equipment](../04-equipment/02-equipment/alchemy.md) | [Travel](../06-scenes/07-challenges/02-travel.md)
 >
 > **Related Analyses:** [Downtime System Analysis](./downtime-system-analysis.md) | [Enchantments & Magic Items Analysis](./enchantments-magic-items-analysis.md) | [Materials Mechanical Effects Analysis](./materials-mechanical-effects-analysis.md) | [Non-Magical Equipment Analysis](./equipment/non-magical-equipment-analysis.md)
 
@@ -101,7 +101,7 @@
 | **Crafting Professions** | ✅ | "Alchemist" is an established profession. Proposal extends to Mind/Spirit + Crafting. |
 | **Quality Tiers** | ✅ | Products follow Q1–Q7 with standard Crafting rank requirements and TNs. |
 | **Supply Items** | ✅ | Existing Supply materials (Q1–Q4) map to field alchemy catalysts. |
-| **Challenge Dice** | ✅ | Same framework as all challenge activities (see [Challenges](../06-scenes/07-challenges.md)). |
+| **Challenge Dice** | ✅ | Same framework as all challenge activities (see [Challenges](../06-scenes/07-challenges/00-overview.md)). |
 | **Travel Forager** | ✅ | Forager role yields materials that feed into field alchemy. |
 | **Consumable Pricing** | ✅ | Existing alchemy item costs are compatible with the per-tier pricing model. |
 
@@ -442,7 +442,7 @@ Roll **Mind/Spirit + Nature** or **Agility/Spirit + Survival** (player's choice)
 
 ### 8.3 Travel Foraging
 
-The **Forager** travel role (see [Travel](../06-scenes/09-travel.md)) yields useful materials:
+The **Forager** travel role (see [Travel](../06-scenes/07-challenges/02-travel.md)) yields useful materials:
 
 - **Useful materials bonus:** "You gain primitive materials (d6)." These are Q1 Alchemy Supplies — valid catalysts for Q1 field alchemy.
 - **Edible plants bonus:** An alchemist can repurpose edible plants as Q1 healing or utility essences (GM discretion).

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 0
 ---
 
 # 🎯 Challenges
@@ -159,7 +159,7 @@ Insight (predict behavior), Education (knowledge of species habits), Streetwise 
 
 Navigating a tense negotiation, swaying a court, uncovering a conspiracy, or manipulating a social situation over multiple exchanges.
 
-Social Intrigue uses additional parameters, **Interest**, **Patience**, **Motivations**, and **Pitfalls**, to give NPCs a visible stance and predictable behavior during the challenge. See [Social Intrigue](./08-social-intrigue.md) for the full rules.
+Social Intrigue uses additional parameters, **Interest**, **Patience**, **Motivations**, and **Pitfalls**, to give NPCs a visible stance and predictable behavior during the challenge. See [Social Intrigue](./01-social-intrigue.md) for the full rules.
 
 **Additional Parameters**
 

@@ -58,7 +58,7 @@
 
 > **Full Analysis:** [TRAVEL_TALENT_INTEGRATION.md](./TRAVEL_TALENT_INTEGRATION.md)
 
-The [travel system](../../06-scenes/09-travel.md) introduces mechanics for multi-day overland journeys with specific roles (Navigator, Scout, Quartermaster, Forager, Hunter, Fisher), challenge dice for progress, and daily events. The travel talent integration analysis reviews all existing talents for travel interactions and proposes 6 new travel-focused talents:
+The [travel system](../../06-scenes/07-challenges/02-travel.md) introduces mechanics for multi-day overland journeys with specific roles (Navigator, Scout, Quartermaster, Forager, Hunter, Fisher), challenge dice for progress, and daily events. The travel talent integration analysis reviews all existing talents for travel interactions and proposes 6 new travel-focused talents:
 
 | Proposed Talent | Skill | Travel Role |
 |----------------|-------|-------------|
@@ -81,7 +81,7 @@ See [TRAVEL_TALENT_INTEGRATION.md](./TRAVEL_TALENT_INTEGRATION.md) for the full 
 
 > **Full Analysis:** [CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md)
 
-The [Challenge system](../../06-scenes/07-challenges.md) and [Social Intrigue system](../../06-scenes/08-social-intrigue.md) introduce structured mechanics for chases, research, tracking, negotiations, and other multi-step dramatic scenes. The talent integration analysis audits all 115 existing talents for compatibility with these systems and proposes new talents:
+The [Challenge system](../../06-scenes/07-challenges/00-overview.md) and [Social Intrigue system](../../06-scenes/07-challenges/01-social-intrigue.md) introduce structured mechanics for chases, research, tracking, negotiations, and other multi-step dramatic scenes. The talent integration analysis audits all 115 existing talents for compatibility with these systems and proposes new talents:
 
 ### Key Findings
 

@@ -1,12 +1,12 @@
 ---
-sidebar_position: 9
+sidebar_position: 2
 ---
 
 # 🧭 Travel
 
 ![banner-img](/img/banner/scenes-banner.png)
 
-Travel covers multi-day overland journeys between known locations. It is a specialized application of the [Challenge rules](./07-challenges.md), built for situations where the party must navigate dangerous terrain, manage supplies, and deal with the unpredictable hazards of the road.
+Travel covers multi-day overland journeys between known locations. It is a specialized application of the [Challenge rules](./00-overview.md), built for situations where the party must navigate dangerous terrain, manage supplies, and deal with the unpredictable hazards of the road.
 
 This page adds the travel-specific layer on top: **roles**, **daily procedures**, **checkpoints**, and **travel events**.
 
@@ -47,7 +47,7 @@ If you use a map for your game, you can also plot the course of the journey coll
 
 ### 2. Choose Challenge Dice and Difficulty
 
-The travel system uses the same concept of **Challenge Dice** as introduced in the [Challenges](./07-challenges.md) section as well as a universal travel difficulty for any rolls during the journey.
+The travel system uses the same concept of **Challenge Dice** as introduced in the [Challenges](./00-overview.md) section as well as a universal travel difficulty for any rolls during the journey.
 
 **Challenge Dice**
 
@@ -197,7 +197,7 @@ If any optional roles were picked and are possible in the current terrain, they 
 
 ### 8. Make Camp
 
-At the end of the day, the group needs to find shelter, consume rations, and sleep for the night. The group must meet **all** of the following conditions or else they suffer 1 Fatigue each and a bad night (described in the [Resting](./03-resting.md) section):
+At the end of the day, the group needs to find shelter, consume rations, and sleep for the night. The group must meet **all** of the following conditions or else they suffer 1 Fatigue each and a bad night (described in the [Resting](../03-resting.md) section):
 
 - The Scout finds shelter.
 - Everyone consumes food and water. This includes companions and mounts.

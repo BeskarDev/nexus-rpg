@@ -1,10 +1,10 @@
 ---
-sidebar_position: 8
+sidebar_position: 1
 ---
 
 # 🗣️ Social Intrigue
 
-Social Intrigue covers the messy, back-and-forth work of negotiation, persuasion, deception, and alliance-building. It is a specialized application of the [Challenge rules](./07-challenges.md), built for situations where a single skill roll is not enough and the NPC's stance needs to be tracked over time.
+Social Intrigue covers the messy, back-and-forth work of negotiation, persuasion, deception, and alliance-building. It is a specialized application of the [Challenge rules](./00-overview.md), built for situations where a single skill roll is not enough and the NPC's stance needs to be tracked over time.
 
 This page adds the social-specific layer on top: **Interest**, **Patience**, **Motivations**, and **Pitfalls**.
 
@@ -35,7 +35,7 @@ Do **not** use a Social Intrigue for:
 
 Combine two modifiers to find the starting value:
 
-1. **Disposition.** Use the NPC's current disposition from the [NPCs and Relationships](../02-adventurers/05-npc-relations.md) table (Intimate +2, Friendly +1, Indifferent 0, Suspicious −1, Hostile −2, Hateful −3).
+1. **Disposition.** Use the NPC's current disposition from the [NPCs and Relationships](../../02-adventurers/05-npc-relations.md) table (Intimate +2, Friendly +1, Indifferent 0, Suspicious −1, Hostile −2, Hateful −3).
 
 2. **Request Alignment.** How well the request fits the NPC's own goals:
 
