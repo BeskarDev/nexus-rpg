@@ -309,13 +309,13 @@ The "sweet spot" for engaging rolls is approximately 55–85% total success with
 | 7 | d10 | d8 | R4 | +3 | 13 | 12 |
 | 9 | d12 | d8 | R5 | +4 | 15 | 13 |
 
-**Defense scaling sources:**
+**Defense scaling sources** (using the game's ½ × Attribute lookup table: d6=3, d8=4, d10=5, d12=6)**:**
 - Parry: 7 + Fighting rank (R1→R5 = +4) + defense base bonus (+4 at L9) = **+8 total**
 - Dodge: 5 + ½ Agility (d6→d10 = +2) + defense base bonus (+4 at L9) = **+6 total**
 - Resist: 5 + ½ Spirit (d8→d12 = +2) + defense base bonus (+4 at L9) = **+6 total**
 
 **Offense scaling sources:**
-- Attack roll: Attribute die improvement (~+2 average from d6→d12) + Skill Rank improvement (+4 from R1→R5) + d6 (unchanged) = **~+6 total**
+- Attack roll: Attribute die average improvement (+2 from d8→d12 for a typical martial) + Skill Rank improvement (+4 from R1→R5) + d6 (unchanged) = **~+6 total**
 
 **Critical observation**: Defense outpaces offense. Parry gains +8 while attack rolls gain ~+6. This creates a 2-point gap that widens over the campaign. This is intentional — it ensures combats don't become trivial one-shot affairs as characters advance. However, it also means the system relies on boons, talents, and magic items to close the gap for offense.
 
