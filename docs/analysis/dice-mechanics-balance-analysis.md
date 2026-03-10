@@ -676,7 +676,7 @@ Converts enemy Weak→Fail, Strong→Weak, Crit→Strong. This:
 
 ### 9.1 Low-Attribute Rolls (d4 Attribute)
 
-Characters with d4 in an attribute (the dump stat in the default d8/d6/d6/d4 spread) rolling against TN 8 have only 25% success (with no skill) or 41.7% with Rank 1. This is appropriately punishing — a d4 represents a clear weakness. The 4.2% blunder rate (1 in 24 rolls) is low enough that blunders don't dominate their experience.
+Characters with d4 in an attribute (the lowest attribute in the default d8/d6/d6/d4 spread) rolling against TN 8 have only 25% success (with no skill) or 41.7% with Rank 1. This is appropriately punishing — a d4 represents a clear weakness. The 4.2% blunder rate (1 in 24 rolls) is low enough that blunders don't dominate their experience.
 
 **Risk**: None. Working as intended.
 
@@ -730,7 +730,7 @@ This is by design — the Attribute Die becomes dominant as characters grow, mak
 
 | Item | Concern | Recommendation |
 |------|---------|----------------|
-| AV stacking vs Weak hits | Tank builds reduce all Weak hits to minimum 1 damage from L3+ | Monitor if this makes combats grindy. Ensure creature designs use AV-bypassing abilities (crush weapons, special attacks). Low-tier enemies should challenge tanks through conditions, grappling, and flanking (forcing Dodge) rather than raw damage. |
+| AV stacking vs Weak hits | Tank builds reduce all Weak hits to minimum 1 damage from L3+ | Monitor whether this creates excessively prolonged combats. Ensure creature designs use AV-bypassing abilities (crush weapons, special attacks). Low-tier enemies should challenge tanks through conditions, grappling, and flanking (forcing Dodge) rather than raw damage. |
 | High-tier offense-defense gap | Success rates drop to ~46% at L10 vs same-tier | The system compensates through magic items and talents. Ensure item availability in published adventures scales appropriately. |
 | Damage throughput at T8–T10 | Base weapon damage declines vs AV growth | Magic weapon bonuses (+1 to +5) and enchantments (flat damage ignoring AV) are the core solution. This is by design — character power grows through items. |
 
