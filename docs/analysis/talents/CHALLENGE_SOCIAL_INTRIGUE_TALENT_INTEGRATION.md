@@ -1,8 +1,8 @@
 # Challenge & Social Intrigue Talent Integration Analysis
 
-**Purpose:** Review all existing talents for interactions with the [Challenge system](../../06-scenes/07-challenges.md) and [Social Intrigue system](../../06-scenes/08-social-intrigue.md), propose new talents that interact with these mechanics, and update existing talents where appropriate.
+**Purpose:** Review all existing talents for interactions with the [Challenge system](../../06-scenes/07-challenges/00-overview.md) and [Social Intrigue system](../../06-scenes/07-challenges/01-social-intrigue.md), propose new talents that interact with these mechanics, and update existing talents where appropriate.
 
-> **Reference:** [Challenge Rules](../../06-scenes/07-challenges.md) | [Social Intrigue Rules](../../06-scenes/08-social-intrigue.md) | [Talent System Analysis](./TALENT_SYSTEM_ANALYSIS.md) | [NPC Relations](../../02-adventurers/05-npc-relations.md)
+> **Reference:** [Challenge Rules](../../06-scenes/07-challenges/00-overview.md) | [Social Intrigue Rules](../../06-scenes/07-challenges/01-social-intrigue.md) | [Talent System Analysis](./TALENT_SYSTEM_ANALYSIS.md) | [NPC Relations](../../02-adventurers/05-npc-relations.md)
 
 ---
 

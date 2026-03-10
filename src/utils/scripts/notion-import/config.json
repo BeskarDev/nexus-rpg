@@ -315,8 +315,18 @@
         "banner": "/img/banner/effect-duration-banner.png"
       },
       "Challenges": {
-        "target": "docs/06-scenes/07-challenges.md",
+        "target": "docs/06-scenes/07-challenges/00-overview.md",
         "title": "🎯 Challenges",
+        "banner": "/img/banner/scenes-banner.png"
+      },
+      "Social Intrigue": {
+        "target": "docs/06-scenes/07-challenges/01-social-intrigue.md",
+        "title": "🗣️ Social Intrigue",
+        "banner": "/img/banner/scenes-banner.png"
+      },
+      "Travel": {
+        "target": "docs/06-scenes/07-challenges/02-travel.md",
+        "title": "🗺️ Travel",
         "banner": "/img/banner/scenes-banner.png"
       },
       "Weapons": {

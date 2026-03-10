@@ -1,8 +1,8 @@
 # Travel Talent Integration Analysis
 
-**Purpose:** Review all existing talents for interactions with the [travel system](../../06-scenes/09-travel.md), propose new travel-focused talents, and ensure the talent system fully supports the travel rules.
+**Purpose:** Review all existing talents for interactions with the [travel system](../../06-scenes/07-challenges/02-travel.md), propose new travel-focused talents, and ensure the talent system fully supports the travel rules.
 
-> **Reference:** [Travel Rules](../../06-scenes/09-travel.md) | [Talent System Analysis](./TALENT_SYSTEM_ANALYSIS.md) | [Travel System Design](../travel-system-design.md)
+> **Reference:** [Travel Rules](../../06-scenes/07-challenges/02-travel.md) | [Talent System Analysis](./TALENT_SYSTEM_ANALYSIS.md) | [Travel System Design](../travel-system-design.md)
 
 ---
 
@@ -171,7 +171,7 @@ The following talent categories have minimal meaningful interaction with travel 
 
 ## 4. New Talent Proposals
 
-The following new talents are designed to fill the gaps identified above, with specific interactions with the [travel system](../../06-scenes/09-travel.md) mechanics. All talents follow the established design guidelines and the rank progression of Unlock (1) → Payoff (2) → Mastery (3).
+The following new talents are designed to fill the gaps identified above, with specific interactions with the [travel system](../../06-scenes/07-challenges/02-travel.md) mechanics. All talents follow the established design guidelines and the rank progression of Unlock (1) → Payoff (2) → Mastery (3).
 
 ---
 
