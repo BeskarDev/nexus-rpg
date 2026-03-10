@@ -1,15 +1,15 @@
 # Hex & Point Crawl Exploration — Design Analysis
 
-This document proposes a hex/point crawl procedure for Nexus RPG, built on the existing [Challenge System](challenges-system.md) and [Scene & Time Scale Procedures](scene-timescale-procedures.md). It operates at the **Exploration time scale** (2–4 hours per action) and provides a structured game loop for open-map adventuring — exploring unknown regions, discovering hidden locations, and navigating uncharted territory.
+This document proposes a hex/point crawl procedure for Nexus RPG, built on the existing [Challenge System](../06-scenes/07-challenges/00-overview.md) and [Scene & Time Scale Procedures](../06-scenes/01-scenes-time-intervals.md). It operates at the **Exploration time scale** (2–4 hours per action) and provides a structured game loop for open-map adventuring — exploring unknown regions, discovering hidden locations, and navigating uncharted territory.
 
-Where the [Travel System](travel-system-design.md) handles **journeys between known destinations** (daily time scale, route-based), this system handles **freeform exploration of unmapped areas** (hourly time scale, discovery-based).
+Where the [Travel System](../06-scenes/07-challenges/02-travel.md) handles **journeys between known destinations** (daily time scale, route-based), this system handles **freeform exploration of unmapped areas** (hourly time scale, discovery-based).
 
 ---
 
 ## Design Goals
 
 - Provide a **structured game loop** for open-map exploration that keeps every player engaged each "turn" (2–4 hours of in-game time).
-- Use the existing **dice timer** and **event table** framework from the [Scene & Time Scale Procedures](scene-timescale-procedures.md) to generate events and pacing.
+- Use the existing **dice timer** and **event table** framework from the [Scene & Time Scale Procedures](../06-scenes/01-scenes-time-intervals.md) to generate events and pacing.
 - Integrate with the **Challenge System** for goal-oriented exploration (finding a lost ruin, tracking a creature to its lair).
 - Distinguish clearly from the **Travel System**: exploration is about discovery and uncertainty, not progress toward a known destination.
 - Support both **hex crawl** (gridded map with terrain hexes) and **point crawl** (node-and-path map) formats.
@@ -28,8 +28,8 @@ Use this exploration procedure for **freeform movement through unknown or partia
 - Sandbox play where players choose their own direction
 
 **Do not use for:**
-- Journeys between two known destinations (use the [Travel System](travel-system-design.md))
-- Exploring a single dungeon or building interior (use the [Delving Procedure](scene-timescale-procedures.md))
+- Journeys between two known destinations (use the [Travel System](../06-scenes/07-challenges/02-travel.md))
+- Exploring a single dungeon or building interior (use the [Delving Procedure](../06-scenes/01-scenes-time-intervals.md))
 - Quick overland travel that should be abstracted for pacing
 
 ---
@@ -143,7 +143,7 @@ Place a **d6 dice timer** starting at 6. This timer ticks down by 1 each time th
 Prepare the following for the region:
 
 - **Encounter table** (d6 or d8) with terrain-appropriate creatures and NPCs
-- **Weather conditions** if relevant (use the weather rules from the [Travel System](travel-system-design.md))
+- **Weather conditions** if relevant (use the weather rules from the [Travel System](../06-scenes/07-challenges/02-travel.md))
 - **Ration availability** — can the party forage or hunt in this terrain?
 - **Any active threats** — pursuing enemies, spreading corruption, approaching storms
 
@@ -395,7 +395,7 @@ Assign watches. If an event occurs during the night (only if the dice timer expi
 
 ## Exploration Challenges
 
-When the party has a **specific exploration goal** — finding a lost ruin, tracking a creature to its lair, locating a water source — combine this crawl procedure with a **Challenge** from the [Challenge System](challenges-system.md).
+When the party has a **specific exploration goal** — finding a lost ruin, tracking a creature to its lair, locating a water source — combine this crawl procedure with a **Challenge** from the [Challenge System](../06-scenes/07-challenges/00-overview.md).
 
 ### Structure
 

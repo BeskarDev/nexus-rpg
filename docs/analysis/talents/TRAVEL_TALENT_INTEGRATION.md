@@ -2,7 +2,7 @@
 
 **Purpose:** Review all existing talents for interactions with the [travel system](../../06-scenes/07-challenges/02-travel.md), propose new travel-focused talents, and ensure the talent system fully supports the travel rules.
 
-> **Reference:** [Travel Rules](../../06-scenes/07-challenges/02-travel.md) | [Talent System Analysis](./TALENT_SYSTEM_ANALYSIS.md) | [Travel System Design](../travel-system-design.md)
+> **Reference:** [Travel Rules](../../06-scenes/07-challenges/02-travel.md) | [Talent System Analysis](./TALENT_SYSTEM_ANALYSIS.md) | [Travel System Design](../../06-scenes/07-challenges/02-travel.md)
 
 ---
 
