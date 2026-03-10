@@ -13,11 +13,11 @@
 3. **The sweet spot of difficulty tracks correctly with level.** Medium difficulty (TN 8) is the sweet spot at Level 1 (68.8% success with d8+R1), aligns perfectly at Level 3, and scales upward to Hard (TN 10) at Level 5 and Very Hard (TN 12) at Level 8–10.
 4. **Boons and banes are elegantly designed and impactful.** The first boon or bane shifts the d6 component by ~0.97 on average via advantage/disadvantage, while additional boons/banes add a flat +1/−1 each. The system avoids flat numerical bonuses entirely — all roll modifications use the boon/bane framework. This is clean, intuitive, and avoids the variance-vs-certainty trap of flat modifiers.
 5. **Parry scaling with shields rewards tanky builds but hits the defense cap at high levels.** A shield user's Parry exceeds Dodge by 1–3 points across levels. At Level 9+, unshielded Parry already hits the 16 cap, making the shield's +1 Parry redundant. This is a self-correcting ceiling, though mid-level shield users (L5–8) enjoy a significant defensive advantage. The current Parry formula (7 + Fighting) is justified as an intended reward for frontline investment.
-6. **AV stacking reduces Weak hits to minimum damage (1) at all levels for tanky builds.** A shield-and-armor character's total AV meets or exceeds base damage + weapon damage for Weak hits throughout the campaign. Only Strong and Critical hits deal meaningful damage to heavily armored characters. This is a ⚠️ concern — it may make low-tier enemies feel irrelevant against tanks, and combats with many Weak hits could feel grindy.
+6. **AV stacking against tier-appropriate enemies is well-calibrated.** Using correct Tier N creature stats against Level N players, Weak hits deal **2–3 damage** to maximum tank builds — not minimum 1 as a previous (incorrect) calculation suggested. The AV system is working as intended.
 7. **Re-rolls are powerful but appropriately scarce.** A single re-roll on failure adds 17–25 percentage points to success rates (most impactful when base success is ~45–55%). The combined re-roll budget (1 Disciplined Fighter/Archer per scene + 1–3 Resolve) provides 2–4 re-rolls per combat. This is well-calibrated — powerful enough to feel meaningful, scarce enough to require strategic spending.
 8. **SL-shifting abilities are powerful but well-gated.** Only 3 talents shift SL upward (Assassination, Expert Rider, Shield Mastery for defense). All have narrow triggers, costs, or conditions that prevent abuse. These represent the system's most potent non-boon modifiers and should remain rare.
 9. **Magic items are a core progression pillar, not optional.** The game world's design intent places magic items alongside talents as fundamental character advancement. Weapon damage (+1 to +5), AV bonuses (+1 to +5), and enchantments (flat damage ignoring AV) are essential for maintaining combat efficacy at mid-to-high tiers.
-10. **XP progression pacing fulfills the "new ability every 1–2 sessions" goal.** At 1 XP/session, players earn a new talent point every 2 sessions. The per-skill caps naturally force horizontal investment. Level progression is appropriately slow (8 sessions L1→L2, ~72 sessions to L10), with early levels providing meaningful advancement without flying by.
+10. **XP progression pacing is well-designed.** Characters begin with 6 XP spent (3 skills at Rank 1), needing only 4 more XP for Level 2 (~3 sessions). First Rank 2 access comes at Level 3 (~8 sessions from start at 1.3 avg XP). At 2 XP/session (appropriate for biweekly groups), L1→L10 takes ~38 sessions; at 1 XP/session it takes ~65 sessions.
 
 ### Design Principles Validated
 
@@ -29,8 +29,8 @@
 | Lethal combat with consequences | ✅ Confirmed | Low HP pools + bounded damage = fast, decisive fights |
 | Bounded power ceiling | ✅ Confirmed | Max roll of 23 (d12+d6+R5), max defense 16 |
 | Magic items as core pillar | ✅ Confirmed | Essential for damage throughput and defense at T5+ |
-| Tanky frontliners rewarded | ✅ Confirmed | Shield + armor creates meaningful defensive advantage |
-| AV vs damage balance | ⚠️ Monitor | Weak hits reduced to 1 vs heavy armor at all levels |
+| Tanky frontliners rewarded | ✅ Confirmed | Shield + armor creates meaningful defensive advantage; Weak hits reduced from ~6 to 2–3 vs tier-matched foes |
+| AV vs damage balance | ✅ Confirmed | Correct tier-matching shows Weak hits deal 2–3 vs max tank builds; system is well-calibrated |
 | Diminishing returns at mastery | ⚠️ Monitor | High-level mirror matches trend toward ~45–55% success |
 
 ---
@@ -454,58 +454,53 @@ Despite these mitigations, GMs should be aware that high-tier combats rely more 
 
 **Note**: Magic weapon damage bonuses (+1 to +5) are part of the game's **core progression**, not optional enhancement. Additionally, weapon enchantments (e.g., Flaming: +2/+4/+6 fire damage ignoring AV) provide essential damage bypassing AV at higher tiers. Expected damage with enchantments active is significantly higher than raw weapon calculations above.
 
-#### ⚠️ AV Stacking Investigation
+#### AV Stacking Investigation
 
-A dedicated tank build (heavy armor + shield + helmet) creates significant AV totals at every level:
+A dedicated tank build (heavy armor + shield + helmet) creates significant AV totals at every level. The table below uses **Tier N creature stats against a Level N character** (the game's intended same-tier matchup). Creature base damage = ½ × max attribute; all values from the creature design table.
 
-| Level | Equipment | Total AV | Typical Enemy WD | Weak Hit Damage | Strong Hit Damage | Crit Hit Damage |
-|-------|-----------|----------|-------------------|-----------------|-------------------|-----------------|
-| 1 | Leather + Light Shield | 3 | 3 | 4 | 7 | 10 |
-| 1 | Scale Mail + Light Shield | 5 | 3 | 2 | 5 | 8 |
-| 3 | Breastplate + Light Shield + Helmet | 7 | 4 | **1 (min)** | 5 | 9 |
-| 5 | Plate + Heavy Shield + Helmet | 9 | 5 | **1 (min)** | 6 | 11 |
-| 5 | Q4 Breastplate + Q4 Heavy Shield + Helmet | 10 | 6 | **1 (min)** | 7 | 13 |
-| 7 | Q5 Plate + Q5 Heavy Shield + Helmet | 13 | 8 | **1 (min)** | 8 | 15 |
-| 9 | Q6 Plate + Q6 Heavy Shield + Helmet | 15 | 10 | **1 (min)** | 11 | 21 |
+| Level | Equipment | Total AV | Creature Base | Creature WD | Weak Hit | Strong Hit | Crit Hit |
+|-------|-----------|----------|---------------|-------------|----------|------------|----------|
+| 1 | Leather + Light Shield | 3 | 3 (d6) | 3 (T1) | 3 | 6 | 9 |
+| 1 | Scale Mail + Light Shield | 5 | 3 (d6) | 3 (T1) | **1 (min)** | 4 | 7 |
+| 3 | Breastplate + Light Shield + Helmet | 7 | 4 (d8) | 5 (T3) | **2** | 7 | 12 |
+| 5 | Plate + Heavy Shield + Helmet | 9 | 5 (d10) | 7 (T5) | **3** | 10 | 17 |
+| 5 | Q4 Breastplate + Q4 Heavy Shield + Helmet | 10 | 5 (d10) | 7 (T5) | **2** | 9 | 16 |
+| 7 | Q5 Plate + Q5 Heavy Shield + Helmet | 13 | 6 (d12) | 9 (T7) | **2** | 11 | 20 |
+| 9 | Q6 Plate + Q6 Heavy Shield + Helmet | 15 | 7 (d12+1) | 11 (T9) | **3** | 14 | 25 |
 
-*Weak Hit Damage = base + 1×WD − AV (minimum 1). Base damage = ½ × attacking attribute.*
+*Formula: Damage = creature base + N×WD − tank AV (minimum 1), where N = 1 (Weak), 2 (Strong), 3 (Crit).*
 
-**Key finding**: Against heavily armored characters, **all Weak hits deal minimum 1 damage** from Level 3 onward. This is because AV meets or exceeds (base + weapon damage) for Weak success. Only Strong and Critical hits penetrate meaningfully.
+**Key finding**: Against tier-appropriate creatures, Weak hits deal **2–3 damage** against the heaviest tank builds, never reducing to the minimum of 1 (except when using Scale Mail + shield at Level 1, which is an atypically expensive early build). This is meaningfully reduced from the raw attack of base+WD (6–18 across the levels), but far from negligible — Weak hits still chip away at HP over the course of a fight.
 
-**Is this a problem?** Partially:
+**Assessment: AV progression is well-calibrated.**
 
-**Arguments that it's working as intended:**
-- Tank builds sacrifice offense (no two-handed weapon bonus, no dual-wielding) and mobility (heavy/rigid penalties) for this defense
-- The system already has AV-bypassing mechanics: crush property (ignore half AV), pierce (re-roll misses), Precise Strike/Shot combat art (ignore ½ AV on Strong/Crit), and weapon enchantments (flat damage ignoring AV)
-- Multiple Weak hits still accumulate 1 damage each, which matters in a low-HP system (adventurers have 18–42 HP)
-- Creatures with high weapon damage or special abilities bypass AV limitations
+The tank's reduction of Weak hits from ~6–18 to 2–3 represents a substantial benefit that rewards the defensive investment. However, the tier-matched numbers show:
+- Tank builds do **not** reduce Weak hits to minimum 1 against same-tier opponents
+- Strong hits (dealing 7–14 damage) and Critical hits (12–25 damage) remain highly threatening
+- Multiple Weak hits at 2–3 damage each accumulate meaningfully in a system where adventurers have 18–42 HP
 
-**Arguments for concern:**
-- Low-tier enemies (T1–T3) become essentially harmless against mid-level tanks — their Weak hits do 1 damage and they rarely score Strong hits
-- Combats against many weak enemies could feel grindy (many 1-damage hits)
-- The "minimum 1 damage" floor means armor never provides complete immunity, but it can make Weak hits feel meaningless
-
-**Recommendation**: Monitor during playtesting. If tank characters trivialize low-tier encounters, consider:
-- Ensuring creature design uses AV-bypassing abilities (crush weapons, special attacks that ignore AV)
-- Using creature archetypes that challenge tanks through non-damage mechanics (conditions, grappling, flanking to force Dodge instead of Parry)
-- The existing system tools (multiple attackers, conditions, environmental hazards) are likely sufficient mitigation
+**The AV system is not too fast or overpowered** against tier-appropriate enemies. The earlier concern arose from an error in the original analysis (using lower-tier creature stats rather than matching Level N to Tier N). With correct tier matching, the numbers confirm the system is working as intended.
 
 ### 5.6 Progression Timeline & XP Analysis
 
 #### Level Progression Pacing
 
-| Level | Total XP | Delta | Sessions @1 XP | Sessions @1.3 XP | Cumulative (1.3) | Max XP/Skill |
-|-------|----------|-------|-----------------|-------------------|-------------------|--------------|
-| 1 | 0 | — | — | — | 0 | 2 (Rank 1) |
-| 2 | 10 | 10 | 10 | ~8 | ~8 | 4 (Rank 1) |
-| 3 | 16 | 6 | 6 | ~5 | ~13 | 6 (Rank 2) |
-| 4 | 24 | 8 | 8 | ~6 | ~19 | 10 (Rank 2) |
-| 5 | 32 | 8 | 8 | ~6 | ~25 | 12 (Rank 3) |
-| 6 | 42 | 10 | 10 | ~8 | ~33 | 16 (Rank 3) |
-| 7 | 52 | 10 | 10 | ~8 | ~41 | 18 (Rank 4) |
-| 8 | 64 | 12 | 12 | ~9 | ~50 | 22 (Rank 4) |
-| 9 | 76 | 12 | 12 | ~9 | ~59 | 24 (Rank 5) |
-| 10 | 90 | 14 | 14 | ~11 | ~70 | 28 (Rank 5) |
+**Important**: Characters begin play with 6 XP already spent (3 starting skills × 2 XP each = Rank 1). The Level 1 threshold is 0 total XP. To reach Level 2 (10 total XP), a fresh character needs only **4 more XP** from play.
+
+| Level | Total XP | XP from Start | Sessions @1 XP | Sessions @1.3 XP | Sessions @2 XP | Max XP/Skill |
+|-------|----------|---------------|----------------|-------------------|----------------|--------------|
+| 1 (start) | 0 | 0 | — | — | — | 2 (Rank 1) |
+| 2 | 10 | 4 | 4 | ~3 | 2 | 4 (Rank 1) |
+| 3 | 16 | 10 | 10 | ~8 | 5 | 6 (Rank 2) |
+| 4 | 24 | 18 | 18 | ~14 | 9 | 10 (Rank 2) |
+| 5 | 32 | 26 | 26 | ~20 | 13 | 12 (Rank 3) |
+| 6 | 42 | 36 | 36 | ~28 | 18 | 16 (Rank 3) |
+| 7 | 52 | 46 | 46 | ~35 | 23 | 18 (Rank 4) |
+| 8 | 64 | 58 | 58 | ~45 | 29 | 22 (Rank 4) |
+| 9 | 76 | 70 | 70 | ~54 | 35 | 24 (Rank 5) |
+| 10 | 90 | 84 | 84 | ~65 | 42 | 28 (Rank 5) |
+
+*(Assumes starting XP = 6 from character creation. All session counts from first session of play.)*
 
 #### Does XP Pacing Fulfill Design Goals?
 
@@ -513,11 +508,9 @@ A dedicated tank build (heavy armor + shield + helmet) creates significant AV to
 
 1 Talent Point costs 2 XP. At 1 XP/session: new talent every **2 sessions**. At 1.3 XP (with milestones): every **~1.5 sessions**. ✅ This meets the design goal.
 
-However, the **per-skill caps** at early levels (2 XP at L1, 4 XP at L2) mean players can't deepen their primary skill beyond Rank 1 until reaching Level 3 (which requires 16 total XP). This forces horizontal investment — after maxing one skill at 2 XP, remaining XP must go into other skills. This is good for breadth, but players may feel limited in deepening their primary combat identity during the first 8–13 sessions.
-
 **Goal 2: "Early levels shouldn't just fly by"**
 
-Level 1→2 takes **8–10 sessions** at standard XP rates. This is substantial — it means players spend approximately 2–3 months of weekly play at Level 1. This provides ample time for establishing character identity and world familiarity. ✅ Early levels are appropriately paced.
+With the corrected starting XP of 6, Level 1→2 requires only **4 more XP** — approximately **3 sessions** at average XP rates. This is meaningfully faster than the previous (incorrect) estimate of ~8 sessions. This pacing is more appropriate: players experience Level 1 for 2–4 sessions (establishing their character) and then quickly enter Level 2. The first Rank 2 talent access comes at Level 3 (~8 sessions from start at 1.3 avg XP), which is the more meaningful early milestone.
 
 **Goal 3: "Later levels should take longer but not drag"**
 
@@ -525,38 +518,73 @@ Level 1→2 takes **8–10 sessions** at standard XP rates. This is substantial 
 - L8→L9: ~9 sessions
 - L9→L10: ~11 sessions
 
-The late-game pacing is 10–50% slower than early-game transitions, creating an appropriate sense of progression without dragging. Each late-game level takes roughly 2–3 months of weekly play. ✅ Late-game pacing is reasonable.
+Late-game pacing is 50–80% slower per level than early-game transitions. ✅
 
 **Goal 4: "Guide players toward horizontal progression"**
 
-The per-skill XP caps are the primary tool:
+The per-skill XP caps remain the primary tool for horizontal pressure. With starting XP of 6, Level 1 already requires 5 more skills at Rank 1 (10 XP total needed for L2, with 6 starting + 4 from play). A player maxing one skill (2 XP cap at L1) must invest the remaining 8 XP of their creation budget plus early XP into other skills.
 
-| Level | Max XP/Skill | Total XP Available | Min Skills to Invest | Example Spread |
-|-------|--------------|--------------------|-----------------------|----------------|
-| 1 | 2 | 6 (creation) | 3 (from creation) | 2+2+2 across 3 skills |
+| Level | Max XP/Skill | Total XP at Level | Min Skills Invested | Example Spread |
+|-------|--------------|--------------------|--------------------|----------------|
+| 1 | 2 | 6 (creation) | 3 | 2+2+2 across 3 skills |
 | 2 | 4 | 10 | 3 | 4+4+2 across 3 skills |
 | 3 | 6 | 16 | 3 | 6+6+4 across 3+ skills |
 | 5 | 12 | 32 | 3 | 12+6+6+4+2+2 across 6 skills |
 | 7 | 18 | 52 | 3 | 18+12+6+6+6+4 across 6 skills |
 | 10 | 28 | 90 | 4 | 28+24+18+12+6+2 across 6 skills |
 
-At Level 5, a vertically-focused player could max one skill at 12 XP, but still has 20 XP that must go elsewhere. A balanced player might spread 6+6+6+6+4+2+2 across 7 skills. Both approaches are viable, and both produce characters with multiple talents. ✅ Horizontal pressure works well.
+#### 2 XP Per Session Scenario
 
-#### XP Pacing Recommendations
+If standard sessions granted **2 XP** (with major milestones granting 3 XP instead of 2):
 
-The current progression is well-calibrated for the stated goals. Two minor observations:
+| Metric | Current (1 XP / 2 XP milestone) | Proposed (2 XP / 3 XP milestone) |
+|--------|----------------------------------|-----------------------------------|
+| New talent per session | Every ~1.5 sessions | Every session |
+| L1→L2 (4 XP needed) | ~3 sessions | ~2 sessions |
+| L1→L3 / first Rank 2 | ~8 sessions | ~5 sessions |
+| L1→L10 total | ~65 sessions | ~38 sessions |
+| Campaign: weekly play | ~15 months | ~9 months |
+| Campaign: biweekly play | ~30 months | ~18 months |
+| Campaign: monthly play | ~65 months | ~38 months |
 
-1. **Level 1→2 gap (10 XP) feels slightly large** relative to L2→L3 (6 XP). The first level-up takes ~8 sessions while the second takes only ~5. Consider whether L2 should require 8 XP instead of 10 (making it ~6 sessions) — this would make the first level-up feel more achievable while maintaining the overall campaign length. However, the current 10 XP threshold does ensure players invest broadly before leveling, which aligns with the horizontal progression goal.
+**Assessment**:
 
-2. **Skill Rank XP costs are well-structured**: R0→R1 (2 XP) is cheap enough for quick breadth, R2→R3 (6 XP) and beyond require commitment. The Rank 2 XP cost (6 total = 4 XP from R1) is an important inflection point where casual dabbling transitions to meaningful investment.
+- **For casual/biweekly groups**: The 2 XP/session system is strongly recommended. A full campaign at 1 XP/biweekly would take ~30 months — nearly 3 years. At 2 XP, it's ~18 months, which is a more realistic campaign arc for non-weekly groups.
+- **For weekly groups**: Both rates produce reasonable campaign lengths (15 vs 9 months). The 1 XP/session rate may feel more appropriate for groups that want a longer campaign and slower advancement. The 2 XP rate produces a ~9-month campaign, which is a satisfying "season" arc.
+- **For monthly groups**: Even at 2 XP/session, a full L1–10 campaign takes ~38 months. Monthly groups may benefit from starting at higher levels or running a compressed Level 1–6 arc.
+- **New ability frequency**: At 2 XP/session, players earn 1 TP per session — a new talent every session. This is on the high end of the design goal ("every 1–2 sessions"). It doesn't feel excessive because per-skill caps still force horizontal investment, and each talent is a meaningful ability rather than a minor number bump.
 
-#### Campaign Arc Pacing
+**Recommendation**: Consider documenting both rates as options — 1 XP/session for long-form weekly campaigns and 2 XP/session for biweekly/casual groups or groups that prefer faster character advancement. The per-skill caps naturally regulate power growth regardless of which rate is used.
 
-- **Early game** (L1–3): ~13 sessions — characters establish identity, learn core abilities, acquire first talents
-- **Mid game** (L4–6): ~20 sessions — characters develop mastery, acquire magic items, define archetype
+#### Primary Skill Deepening Timeline
+
+A concern was raised about players feeling limited in deepening their primary combat identity during early sessions. With the corrected starting XP of 6, the timeline is more favorable than previously assessed:
+
+**Path to first Rank 2 in primary skill:**
+- Starting position: primary skill at 2 XP (Rank 1) from character creation
+- Level 1 cap (2 XP/skill): already at cap; no further investment possible
+- Level 2 cap (4 XP/skill): add 2 XP to primary → total 4 XP, still Rank 1
+- **Level 3 cap (6 XP/skill): add 2 more XP → total 6 XP = Rank 2 unlocked**
+
+| XP Rate | Sessions to L3 (first Rank 2) | Sessions to L2 |
+|---------|-------------------------------|----------------|
+| 1 XP/session | ~10 sessions | ~4 sessions |
+| 1.3 XP avg | ~8 sessions | ~3 sessions |
+| 2 XP/session | ~5 sessions | ~2 sessions |
+
+At standard rates (~8 sessions to first Rank 2), players can deepen their primary identity within 2 months of weekly play. This is a reasonable balance between establishing the character and rewarding vertical investment.
+
+**If earlier Rank 2 access is desired**, one option is to raise the Level 2 per-skill cap from 4 XP to 6 XP. This would allow a dedicated player (who had already invested 4 XP into their primary at L2) to push to Rank 2 as soon as they reach L2, bringing the first Rank 2 access to ~3 sessions. The trade-off is reduced horizontal pressure at Level 2.
+
+#### Campaign Arc Pacing (Corrected)
+
+- **Early game** (L1–3): ~8 sessions — characters establish identity, unlock first Rank 2 abilities
+- **Mid game** (L4–6): ~20 sessions — characters deepen mastery, acquire magic items, define archetype
 - **Late game** (L7–10): ~37 sessions — characters refine, face legendary challenges, build toward mythic status
 
-The slow late-game pacing is appropriate for a system where power growth is bounded and mastery is about breadth and versatility, not exponential power. The game world's theme — from "rugged low-level adventurers to renowned figures of myths and legends" — maps well to this arc.
+*(Assumes 1.3 XP average per session from start. For 2 XP/session, divide all session counts by ~1.5.)*
+
+The overall campaign arc (8 sessions of early game, 20 mid, 37 late) progresses from "rugged low-level adventurers" to "renowned figures of myths and legends" at a pacing that creates meaningful story arcs at each phase.
 
 ---
 
@@ -730,7 +758,7 @@ This is by design — the Attribute Die becomes dominant as characters grow, mak
 
 | Item | Concern | Recommendation |
 |------|---------|----------------|
-| AV stacking vs Weak hits | Tank builds reduce all Weak hits to minimum 1 damage from L3+ | Monitor whether this creates excessively prolonged combats. Ensure creature designs use AV-bypassing abilities (crush weapons, special attacks). Low-tier enemies should challenge tanks through conditions, grappling, and flanking (forcing Dodge) rather than raw damage. |
+| AV vs off-tier matchups | Tank builds significantly outclass enemies more than 2 tiers below their level | Ensure encounters include tier-appropriate challenges; off-tier enemies should threaten through conditions and numbers rather than raw damage |
 | High-tier offense-defense gap | Success rates drop to ~46% at L10 vs same-tier | The system compensates through magic items and talents. Ensure item availability in published adventures scales appropriately. |
 | Damage throughput at T8–T10 | Base weapon damage declines vs AV growth | Magic weapon bonuses (+1 to +5) and enchantments (flat damage ignoring AV) are the core solution. This is by design — character power grows through items. |
 
@@ -749,7 +777,8 @@ This is by design — the Attribute Die becomes dominant as characters grow, mak
 | Sweet spot reference | GMs need to know which TN to use at each level | Include a "recommended difficulty by level" sidebar in GM tools, referencing the sweet spot analysis from Section 3.4. TN 8 works from Level 1. |
 | Progression plateau levels | Levels 2, 6, and 10 have no primary roll growth | Note in progression rules that these levels are ideal for broadening secondary skills or investing in new skill trees. |
 | Magic item pacing guidance | Items are core to maintaining combat efficacy | Provide guidelines for magic item availability by level: Q4 items by L3–4, Q5 by L5–6, Q6 by L7–8, Q7+ by L9–10. |
-| XP spending guidance | Players may not realize per-skill caps encourage breadth | Consider adding a sidebar in character progression explaining the horizontal investment incentive and showing example skill spreads. |
+| XP rate by play frequency | Different groups need different XP rates | Document 1 XP/session for weekly campaigns (L1→L10 in ~15 months), 2 XP/session for biweekly/casual groups (~9 months weekly, ~18 months biweekly). Both rates fulfill the "new talent every 1–2 sessions" goal. |
+| XP spending guidance | Players may not realize per-skill caps encourage breadth | Add a sidebar explaining horizontal investment incentive and showing example skill spreads at each level. |
 
 ---
 
