@@ -315,7 +315,7 @@
         "banner": "/img/banner/effect-duration-banner.png"
       },
       "Challenges": {
-        "target": "docs/06-scenes/07-challenges.md",
+        "target": "docs/06-scenes/07-challenges/00-overview.md",
         "title": "🎯 Challenges",
         "banner": "/img/banner/scenes-banner.png"
       },
