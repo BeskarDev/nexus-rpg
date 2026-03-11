@@ -11,8 +11,8 @@
 1. **Supreme Combat Arts are 93% Offense-focused.** Of 15 supreme arts, 14 are pure damage/AoE abilities. Only Supreme Disarm serves a Control role. Defense, Support, and Utility have zero supreme representation — martial masters currently lack endgame tactical versatility.
 2. **Basic Combat Arts have solid role diversity — supreme arts collapse it.** Basic arts distribute 45% Offense / 41% Control / 7% Defense / 3% Support / 3% Utility. The jump to supreme narrows to 93% Offense / 7% Control, eliminating all non-damage roles at the mastery tier.
 3. **Shield and ranged weapon categories are under-served at the supreme tier.** Shield has 1 supreme art (Shield Avalanche), Crossbow has 1 (Devastating Piercer), and Thrown has 1 unique option (Projectile Storm) plus Supreme Barrage. Blade leads with 6 supreme options.
-4. **The Hoplite archetype is critically bottlenecked.** With only Shield + Polearm weapon access, the Hoplite has access to approximately 10 combat arts total and only 1 supreme art (Shield Avalanche or Death from Above). This is a 3:1 disadvantage compared to Blade-focused archetypes.
-5. **The upgrade model is sound: most supreme arts should be new abilities.** Only 4 of 15 supreme arts replace basic versions (Barrage, Cleave, Disarm, Feint). The remaining 11 are entirely new — this is a healthy ratio that preserves basic art relevance while adding fresh mastery-tier options.
+4. **The Hoplite archetype is critically bottlenecked.** With only Shield + Polearm weapon access, the Hoplite has access to approximately 8 basic combat arts and only 2 supreme arts (Shield Avalanche, Death from Above). This is a 3:1 disadvantage compared to Blade-focused archetypes.
+5. **The upgrade model is sound: most supreme arts should be new abilities.** Only 4 of 15 supreme arts replace basic versions (Barrage, Cleave, Disarm, Feint). The remaining 11 are entirely new — a ~27% upgrade / ~73% new ratio that preserves basic art relevance while adding fresh mastery-tier options.
 6. **Combat Arts successfully provide "spell-like options for martial characters"** at the basic tier, with condition infliction, AoE, and tactical maneuvers. However, the supreme tier retreats into raw damage, undercutting this design goal at the mastery level.
 7. **Power scale is well-calibrated for a sword-and-sorcery setting.** Supreme arts like Dashing Strike, Force Slash, and Earth-shattering Strike evoke mythic warrior tropes (Achilles, Gilgamesh) without crossing into reality-warping territory. A few arts trend toward anime-style spectacle (Hundred Palm Strike, Devastating Piercer) that may need tonal review.
 
@@ -260,17 +260,14 @@ The following maps key martial archetypes to their available combat arts based o
 | Brawler | Brawling, Shield | 17 | 4 | Dashing Strike, Hundred Palm Strike, Shield Avalanche, Supreme Disarm |
 | Monk | Brawling | 16 | 4 | Dashing Strike, Hundred Palm Strike, Supreme Disarm, Supreme Feint |
 | Fighter | Blade, Mace, Shield | 18 | 7 | Dashing Strike, Earth-shattering Strike, Phantom Cut, Shield Avalanche, Supreme Cleave, Supreme Disarm, Supreme Feint |
-| Ranger | Bow, Thrown | 11 | 4 | Devastating Piercer*†, Perfect Shot, Projectile Storm, Supreme Barrage |
+| Ranger | Bow, Thrown | 11 | 3 | Perfect Shot, Projectile Storm, Supreme Barrage (note: Devastating Piercer is Crossbow-only) |
 | Slinger | Thrown | 11 | 2 | Projectile Storm, Supreme Barrage |
-| Hoplite | Shield, Polearm | 8 | 3 | Death from Above, Shield Avalanche, Supreme Cleave*‡ |
-
-*† Ranger typically uses Bow, not Crossbow, so Devastating Piercer may not apply.
-*‡ Supreme Cleave requires a two-handed weapon, conflicting with Shield + Polearm.
+| Hoplite | Shield, Polearm | 8 | 2 | Death from Above, Shield Avalanche (note: Supreme Cleave requires two-handed, conflicting with shield) |
 
 **Critical Gaps:**
-- **Hoplite** has the fewest options by a wide margin. The shield-and-spear warrior archetype — one of the most iconic Bronze Age military roles — has effectively 2 usable supreme arts (Death from Above, Shield Avalanche). Supreme Cleave requires two-handed, which conflicts with shield use.
+- **Hoplite** has the fewest options by a wide margin. The shield-and-spear warrior archetype — one of the most iconic Bronze Age military roles — has effectively 2 usable supreme arts (Death from Above, Shield Avalanche).
 - **Slinger** has only 2 supreme options, limiting the thrown weapon specialist's endgame identity.
-- **Ranger** has limited supreme diversity with only 4 options, and most are pure Offense.
+- **Ranger** has limited supreme diversity with only 3 options (Perfect Shot, Projectile Storm, Supreme Barrage), and all are pure Offense.
 
 ### 6.2 Role Coverage by Archetype
 
@@ -396,7 +393,7 @@ Based on this analysis, the following principles should guide the creation of ne
 
 ### 9.1 Should Every Basic Art Have a Supreme Version?
 
-**No.** The current 4-of-29 upgrade ratio (~14%) is appropriate. Supreme upgrades should be reserved for basic arts that:
+**No.** The current 4-of-15 upgrade ratio (~27%) is appropriate. Supreme upgrades should be reserved for basic arts that:
 
 1. **Define a playstyle** — Cleave is the core of "AoE melee fighter"; it earns an upgrade. Defensive Strike is a utility tool; it doesn't need one.
 2. **Have room to grow narratively** — Barrage → Supreme Barrage works because "shoot more arrows faster" scales naturally. Evasive Strike → "Supreme Evasive Strike" would just be... retreating harder?
