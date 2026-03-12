@@ -156,7 +156,7 @@ Basic arts are well-designed with clear triggers, costs, and scaling through Suc
 
 ### 4.2 Upgrade Philosophy Assessment
 
-The current split is **4 upgrades vs. 11 new abilities** (~27% upgrade / ~73% new). The signature arts — one per weapon category — are working well as the design's primary achievement: they give every martial playstyle a "this is MY move" moment. The question is whether the four "Supreme X" upgrades are pulling their weight alongside the signatures, and if the pattern should continue.
+The current split is **4 upgrades vs. 11 new abilities** (~27% upgrade / ~73% new). The 11 new abilities — one unique "signature" art per weapon category (e.g., Death from Above for Polearm, Perfect Shot for Bow) — are working well as the design's primary achievement: they give every martial playstyle a "this is MY move" moment. The question is whether the four "Supreme X" upgrades (which replace their basic versions) are pulling their weight alongside the signatures, and if the pattern should continue.
 
 #### 4.2.1 The Problem with "Supreme X" Upgrades
 
@@ -426,7 +426,7 @@ Adopt the creature system's approach, mirrored for player characters:
 2. **Gradual scaling.** The progression from TN 6 to TN 11 is modest — it won't make low-tier saves impossible but keeps high-tier saves meaningful.
 3. **Replaces talent-based scaling.** This eliminates the need for individual talents to boost save TNs (which the designer noted feels "fiddly"). The scaling is baked into the combat art system universally.
 4. **Doesn't affect non-save arts.** Arts like Cleave, Charge, Brutal Strike, and Defensive Strike have no save mechanic and are unaffected.
-5. **Success Level scaling still layers on top.** A Critical hit making the save "hard" would now mean TN (6 + Rank) at hard difficulty — a Critical from a Rank 4 fighter forces a TN 10 save made at hard difficulty (+1 bane), which is genuinely threatening.
+5. **Success Level scaling still layers on top.** The existing SL modifiers (e.g., Critical making the save "hard," which imposes +1 bane on the target's roll) continue to apply on top of the new base TN. A Critical from a Rank 4 fighter would force a TN 10 save made with +1 bane — genuinely threatening at any level.
 
 **Implementation:** This would be a single-sentence rule addition to the Combat Arts overview page, applying universally to all arts that force saves. No individual art text needs to change — they already say "the target must roll X" without specifying a TN, so the new rule fills that gap cleanly.
 
@@ -790,7 +790,7 @@ This single rule affects Knockout, Disabling Shot, Head Smack, and the end-of-tu
 **Current:** If you don't move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon. On a hit, you also deal +4 damage and the target is marked (4).
 
 **Proposed:** *You can only learn this Combat Art if you already know Feint. This Combat Art replaces Feint.*
-Your feint is so masterful that your opponent loses track of your true position. If you don't move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon. On a hit, the target is briefly staggered as they are thrown off balance by your deception. Until the start of your next turn, attacks against you suffer +1 bane as enemies struggle to track your true position.
+Your feint is so masterful that your opponent loses track of your true position. If you don't move during your turn, you gain +1 boon on the attack with a non-heavy melee weapon. On a hit, the target is briefly dazed as they are thrown off balance by your deception. Until the start of your next turn, attacks against you suffer +1 bane as enemies struggle to track your true position.
 
 **Rationale:** This creates a unique tactical loop — the Ghost Step user becomes harder to hit after executing their feint, rewarding the "no movement" constraint with both offensive and defensive value. The stagger condition is more impactful than flat damage and marked.
 
@@ -833,9 +833,9 @@ You channel your soul's power into a devastating sweeping strike that sends a sh
 
 **Weapons:** Bow, Crossbow, Thrown
 
-**Effect:** Instead of attacking a creature, target an incoming ranged attack or thrown weapon aimed at you or an ally within close range. Roll Agility + Archery vs. the attacker's roll. On a success, the projectile is deflected and deals no damage. On a failure, the original attack resolves normally.
+**Effect:** You can use this Combat Art as your Action on your turn instead of making a normal attack. Choose an ally within short range. Until the start of your next turn, whenever that ally is targeted by a ranged attack, you can use your Quick Action to attempt to deflect the projectile. Roll Agility + Archery vs. the attacker's attack roll. On a success, the projectile is deflected and deals no damage. You can only deflect one attack this way per turn.
 
-**Rationale:** Fills the ranged Defense gap. Gives archers a reactive defense option that feels cinematic (shooting an arrow out of the air) without being automatic.
+**Rationale:** Fills the ranged Defense gap. The timing is now clear: you spend your Action to enter a "covering" stance, then use your Quick Action reactively. Limited to one deflection per turn to prevent it from trivializing ranged enemies.
 
 ### C.4 Suggested New Supreme Combat Arts
 
@@ -851,9 +851,9 @@ You channel your soul's power into a devastating sweeping strike that sends a sh
 
 **Weapons:** Polearm, Shield
 
-**Effect:** You strike with such authority that your target is compelled to face you. On a hit, the target is distracted by you for a short duration. While distracted by you from this art, you gain +1 boon on all attacks and defensive rolls against that target. Additionally, if the target attempts to move away from you, you can make an Opportunity Attack against them even if you already used your Quick Action this turn.
+**Effect:** You strike with such authority that your target is compelled to face you. On a hit, the target is distracted by you for a short duration. While distracted by you from this art, you gain +1 boon on all attacks and defensive rolls against that target. Additionally, if the target attempts to move away from you while distracted, you can make one free Opportunity Attack against them (this does not require or consume your Quick Action, but can only trigger once per round).
 
-**Rationale:** Fills the supreme Support gap and supports Hoplite/Fighter archetypes. Creates a "taunt" mechanic that draws enemy attention, enabling tanks to protect their allies.
+**Rationale:** Fills the supreme Support gap and supports Hoplite/Fighter archetypes. Creates a "taunt" mechanic that draws enemy attention, enabling tanks to protect their allies. The free Opportunity Attack is limited to once per round to prevent abuse.
 
 #### Thundering Blow (Supreme, Control — replaces Terrifying Strike)
 
