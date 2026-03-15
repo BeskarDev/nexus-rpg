@@ -102,11 +102,11 @@
 | Max Rank | Count | % |
 |----------|-------|---|
 | Rank 3 | 113 | 93% |
-| Rank 4 | 5 | 4% |
+| Rank 4 | 6 | 5% |
 | Stub (no ranks) | 4 | 3% |
 | Rank 5 | 0 | 0% |
 
-The five Rank 4 talents are: Arcane Spell Knowledge, Mystical Spell Knowledge, Art of Fighting, Art of Archery, and Magical Sense.
+The six Rank 4 talents are: Arcane Spell Knowledge, Battle Mage, Mystical Spell Knowledge, Art of Fighting, Art of Archery, and Magical Sense.
 
 ---
 
@@ -309,10 +309,10 @@ Characters at Levels 7–10 can invest in Skill Ranks 4–5, but the talent syst
 | Skill Rank | XP Invested | TP Available | Talents Available | Effective TP |
 |------------|-------------|--------------|-------------------|--------------|
 | 3 (Expert) | 12 | 6 | All (Rank 1–3) | 6 usable |
-| 4 (Master) | 18 | 9 | 5 talents (Rank 4) | ~6–7 usable |
-| 5 (Grandmaster) | 24 | 12 | 0 talents (Rank 5) | ~6–7 usable |
+| 4 (Master) | 18 | 9 | 6 talents (Rank 4) | ~7 usable |
+| 5 (Grandmaster) | 24 | 12 | 0 talents (Rank 5) | ~7 usable |
 
-**Impact:** At Ranks 4–5, characters accumulate 3–6 unspendable TP per skill. This creates:
+**Impact:** At Ranks 4–5, characters accumulate 2–5 unspendable TP per skill. This creates:
 - **Diminishing returns** on XP investment at high levels.
 - **Progression flatline** where leveling up feels unrewarding.
 - **Narrative disconnect** where a "Grandmaster" has no abilities beyond an Expert.
@@ -351,7 +351,7 @@ To address the TP dead zone, each skill needs:
 | General skills (Athletics, etc.) | 0 | +2–3 each | +1 each |
 | Expert skills (Crafting, etc.) | 1 | +2–3 each | +1 each |
 
-**Minimum additions needed:** ~32 Rank 4 talents + ~16 Rank 5 talents across all 16 skills.
+**Minimum additions needed:** ~2–3 Rank 4 talents per skill (totaling ~26–42 across 16 skills) and ~1 Rank 5 talent per skill (~16 total).
 
 ---
 
@@ -469,7 +469,7 @@ Rank 5 talents should represent the absolute pinnacle of mortal ability:
 |----------|-------|-------------------|-------------------|
 | Critical | Fighting | Shield Mastery, Defensive Dueling, Martial Artist | Art of Fighting (extend to R5) |
 | Critical | Archery | Sharpshooter, Rapid Shot | Art of Archery (extend to R5) |
-| Critical | Arcana | Battle Mage, Spellweaver | Arcane Spell Knowledge (extend to R5) |
+| Critical | Arcana | Spellweaver, Wild Overload | Battle Mage (extend to R5), Arcane Spell Knowledge (extend to R5) |
 | Critical | Mysticism | Mystic Champion, Divine Rites | Mystical Spell Knowledge (extend to R5) |
 | High | Athletics | Evasion, Fast Stride | Supernatural Mobility (flesh out as R4–5) |
 | High | Fortitude | Hard to Kill, Battle Rage | Juggernaut or new capstone |
@@ -492,12 +492,23 @@ Rank 5 talents should represent the absolute pinnacle of mortal ability:
 
 **Goal:** Complete incomplete talents and address critical skill gaps.
 
-#### 9.1.1 Complete Incomplete Talents (8 talents)
+#### 9.1.1 Complete Incomplete Talents (17 entries across 8 talents)
+
+Complete all placeholder (XXX/???) ranks and flesh out all stub talents:
 
 | Talent | Skill | Action |
 |--------|-------|--------|
+| Adrenaline Rush | Fortitude | Design Ranks 1–3 (damage-triggered benefits, temp HP surge) |
+| Supernatural Mobility | Athletics | Design Ranks 1–3 (wall-running, long jumps, fall reduction) |
+| Performer | Influence | Design Ranks 1–3 (entertainment, crowd manipulation) |
+| Presence of Conquest | Influence | Design Ranks 1–3 (fear aura, group intimidation) |
+| Foresight | Insight | Design Ranks 1–3 (intuitive prediction, avoid surprise) |
+| Divine Favor | Mysticism | Design Ranks 1–3 (prayer benefits, divine intervention) |
+| Herbalist | Nature | Design Ranks 1–3 (potent remedies, identification) |
+| Master Artisan | Crafting | Design Ranks 1–3 (requires Artisan R3 as prerequisite talent) |
 | Plant Lore R3 | Nature | Design Rank 3 effect (plant identification, terrain interaction) |
 | Knowledgeable Wanderer R3 | Nature | Design Rank 3 effect (bonus progress on successful travel rolls) |
+| Magical Sense R4 | Lore | Design Rank 4 effect (enhanced magical detection) |
 | Roguish Wits R3 | Stealth | Design Rank 3 effect (escape captivity, misdirect pursuit) |
 | Sleight of Hand R3 | Stealth | Design Rank 3 effect (plant items, pick pockets in combat) |
 | I Know A Guy R2–3 | Streetwise | Design Ranks 2–3 (expand contact network, favor mechanics) |
@@ -505,18 +516,7 @@ Rank 5 talents should represent the absolute pinnacle of mortal ability:
 | Relentless Tracker R2–3 | Survival | Design Ranks 2–3 (long-range tracking, quarry mechanics) |
 | Wilderness Expert R3 | Survival | Design Rank 3 effect (advanced campcraft, shelter construction) |
 
-#### 9.1.2 Flesh Out Stub Talents (6 talents)
-
-| Talent | Skill | Design Direction |
-|--------|-------|-----------------|
-| Adrenaline Rush | Fortitude | Damage-triggered benefits (boons after taking hits, temporary HP surge) |
-| Supernatural Mobility | Athletics | High-rank parkour/movement (wall-running, standing long jumps, fall reduction) |
-| Performer | Influence | Entertainment and crowd manipulation (performance rolls, crowd mood, tips) |
-| Presence of Conquest | Influence | High-rank fear aura (intimidation at range, demoralize groups, combat authority) |
-| Foresight | Insight | High-rank intuitive prediction (avoid surprise, predict enemy actions, fate sense) |
-| Divine Favor | Mysticism | Divine patron relationship (prayer benefits, divine intervention, sacred duty) |
-
-#### 9.1.3 Expand Critically Low Skills (+15–20 talents)
+#### 9.1.2 Expand Critically Low Skills (+15–20 talents)
 
 | Skill | Current | Target | New Talents Needed | Focus Areas |
 |-------|---------|--------|--------------------|-------------|
@@ -580,7 +580,7 @@ Every skill should have 2–3 talents that extend to Rank 4. Priority candidates
 |-------|------------------|--------------|
 | Fighting | Shield Mastery, Defensive Dueling, Martial Artist, Dual Wielder | Multi-target defense, encounter control |
 | Archery | Sharpshooter, Rapid Shot, Disciplined Archer | Extreme range, multi-target volleys |
-| Arcana | Battle Mage, Spellweaver, Wild Overload | Spell-melee integration, metamagic |
+| Arcana | Spellweaver, Wild Overload, Mana Shield | Spell enhancement, metamagic, defense |
 | Mysticism | Mystic Champion, Divine Rites, Communal Practices | Party-wide blessings, extended rites |
 | Athletics | Evasion, Fast Stride, Grappler | Supernatural agility, movement mastery |
 | Fortitude | Hard to Kill, Battle Rage, Juggernaut | Death defiance, fury escalation |
@@ -632,7 +632,7 @@ Implement 15–20 Prestige Talents across combat, magic, and skill categories (s
 
 | Phase | Scope | Talent Count | Priority | Dependencies |
 |-------|-------|-------------|----------|-------------|
-| **1a** | Complete incomplete talents | ~14 (fill stubs and XXX) | Immediate | None |
+| **1a** | Complete incomplete talents | ~17 entries (fill stubs and XXX) | Immediate | None |
 | **1b** | Expand critically low skills | ~15–20 new | Immediate | None |
 | **2** | System integration talents | ~12–16 new | High | Challenge/SI/Travel rules stable |
 | **3a** | Rank 4 extensions | ~32 (extend existing) | Medium | Phase 1 complete |
@@ -650,7 +650,7 @@ Implement 15–20 Prestige Talents across combat, magic, and skill categories (s
 | Challenge-interactive | ~5 | 10 | 15+ | 20+ |
 | Social Intrigue-interactive | ~8 | 12 | 15+ | 20+ |
 | Travel-interactive | ~3 | 8 | 15+ | 18+ |
-| Skills with Rank 4 talent | 4 | 4 | 8 | 16 |
+| Skills with Rank 4 talent | 5 | 5 | 8 | 16 |
 | Skills with Rank 5 talent | 0 | 0 | 4 | 16 |
 | Prestige Talents | 0 | 0 | 0 | 15–20 |
 | Defensive redirection % | 0% | 3% | 5–10% | 5–10% |
