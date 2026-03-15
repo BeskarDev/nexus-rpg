@@ -1,6 +1,6 @@
 # Talent System Analysis
 
-> **Scope:** Comprehensive audit of the talent system against archetype instructions, talent creation guidelines, and modern game systems (Challenges, Social Intrigue, Travel). Covers progression evaluation through Rank 5, Prestige Talent feasibility, capstone talent design, and a prioritized implementation roadmap.
+> **Scope:** Comprehensive audit of the talent system against archetype instructions, talent creation guidelines, and modern game systems (Challenges, Social Intrigue, Travel). Covers combat balance and power scaling, design pattern review, archetype signature talent coverage, martial/hybrid/caster differentiation, progression evaluation through Rank 5, Prestige Talent feasibility, capstone talent design, and a complete catalog of proposed new and updated talents.
 >
 > **References:** [Character Progression](../../01-basic-rules/04-character-progression.md) | [Talent Creation Guidelines](../../../.github/instructions/talent-system-design-guidelines.md) | [Archetype Instructions](../../../.github/instructions/archetype-design-guidelines.md) | [Challenge System](../../06-scenes/07-challenges/00-overview.md) | [Social Intrigue](../../06-scenes/07-challenges/01-social-intrigue.md) | [Travel](../../06-scenes/07-challenges/02-travel.md) | [Combat Arts](../../05-combat/02-combat-arts.md) | [Challenge & Social Intrigue Talent Integration](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md) | [Travel Talent Integration](./TRAVEL_TALENT_INTEGRATION.md)
 
@@ -12,12 +12,14 @@
 
 1. **122 talents across 16 skills** form a functional foundation. 114 are fully implemented (94%), with 8 containing placeholder or stub content across 4 skills.
 2. **Combat talents dominate** (~58% combat-primary), while utility, exploration, and social talents are under-represented — particularly in skills like Archery, Athletics, and Perception.
-3. **Talent progression caps at Rank 3** for the vast majority of talents (only Arcane Spell Knowledge, Mystical Spell Knowledge, Art of Fighting, Art of Archery, and Magical Sense reach Rank 4). No talents currently reach Rank 5, creating a dead zone for Grandmaster-level characters.
+3. **Talent progression caps at Rank 3** for the vast majority of talents (only Arcane Spell Knowledge, Battle Mage, Mystical Spell Knowledge, Art of Fighting, Art of Archery, and Magical Sense reach Rank 4). No talents currently reach Rank 5, creating a dead zone for Grandmaster-level characters.
 4. **Modern system integration is minimal.** Only 5 talents interact with the Challenge system, 8 with Social Intrigue, and 3 with Travel mechanics — all well below the 15+ target per system.
 5. **Critical archetype gaps remain.** Oracle, Bard, Tamer, Hoplite, and Warlock lack dedicated mechanical support from the talent system. Key identity tags (Infiltration, Whip Control, Zone Control, Prophecy) have zero or near-zero talent representation.
 6. **Skill disparity is significant.** Fighting has 14 talents while Streetwise has only 4. Four skills (Insight, Streetwise, Influence, Perception) have ≤5 talents, limiting build diversity for dependent archetypes.
 7. **Defensive variety is thin.** Redirection (0%), Avoidance (5%), and reactive defense talents are critically under-developed for a system with lethal combat.
 8. **No Rank 4–5 talent framework exists.** The progression system supports Ranks 4–5, but talent design has not followed. This gap leaves high-level characters investing XP without commensurate talent payoff.
+9. **Internal scaling creates bookkeeping.** At least 28 talents have bonuses that recalculate when skill ranks or attributes increase. This creates hidden complexity for players leveling up.
+10. **Several talents have problematic design patterns** including overloaded rank entries, vague triggers, stances with unclear activation/deactivation rules, and passive abilities that are strictly superior to alternatives at the same rank.
 
 ### Design Principles
 
@@ -26,6 +28,7 @@
 3. **Bounded power ceiling.** Rank 5 = mortal pinnacle (≈ D&D level 10–12). Growth comes from efficiency, reliability, and breadth — not raw power inflation.
 4. **System integration.** Talents should create meaningful interactions with Challenges, Social Intrigue, Travel, and Combat Arts.
 5. **Archetype enablement.** Talents empower archetypes without locking builds. Multi-skill synergies should be rewarding, not mandatory.
+6. **Minimal bookkeeping.** Talents should avoid internal scaling that forces recalculation when skill ranks or attributes change. Prefer fixed bonuses and tiered unlocks over formulas.
 
 ---
 
@@ -215,9 +218,353 @@ In a system with lethal combat, defensive variety is essential. Current defensiv
 
 ---
 
-## 5. Modern System Integration
+## 5. Combat Talent Balance & Power Scale Analysis
 
-### 5.1 Challenge System Integration
+This section analyzes the damage contribution, defensive value, and overall power of combat-relevant talents across progression tiers. The goal is to identify bonuses that are too powerful, too weak, or that create excessive bookkeeping through internal scaling.
+
+### 5.1 Damage Formula Context
+
+The core damage formula is: **½ Attribute (base) + Weapon Damage × SL multiplier + flat bonuses − AV**
+
+| Success Level | Formula | Example (d10 STR, Longsword 3) |
+|---------------|---------|-------------------------------|
+| Weak | ½ Attr + 1 × WD | 5 + 3 = **8** |
+| Strong | ½ Attr + 2 × WD | 5 + 6 = **11** |
+| Critical | ½ Attr + 3 × WD | 5 + 9 = **14** |
+
+Ability bonuses and other flat damage are added to the total (not multiplied by SL). This means a +3 ability bonus to damage always adds exactly +3, regardless of success level. This is a crucial balance property.
+
+**Benchmark HP pools** (creature HP by tier, adventurer HP by level):
+
+| Tier/Level | Creature HP | Adventurer HP (approx) |
+|------------|------------|----------------------|
+| 1 | 10 | 18 |
+| 3 | 30 | 22 |
+| 5 | 50 | 26 |
+| 7 | 70 | 30 |
+| 10 | 100 | 38 |
+
+**Benchmark AV** (light 1–4 AV, heavy 4–6 AV, shields +2–3). A level 5 character in chain mail + shield has ~7 AV. This matters because flat damage bonuses become proportionally more important as AV rises.
+
+### 5.2 Ability Bonus Damage Audit
+
+**Ability bonus** is the most common talent-sourced damage modifier. Since only one ability bonus applies (highest wins), stacking is impossible — a good design property. However, the *value* of these bonuses varies considerably.
+
+| Talent | Rank | Bonus Type | Value at R3 Skill | Value at R5 Skill | Scaling? | Assessment |
+|--------|------|-----------|-------------------|-------------------|----------|------------|
+| Battle Mage | R3 | +Arcana damage | +3 | +5 | ⚠️ Yes (skill rank) | Strong — +5 at R5 is the largest flat ability bonus in the system |
+| Master of Fundamentals | R2 | +Arcana to R0 spell damage | +2 | +4 | ⚠️ Yes (skill rank) | Moderate — restricted to cantrips only |
+| Mystic Champion / Spellblade | R1–3 | +spell damage to weapon | Varies by spell | Varies by spell | ⚠️ Yes (spell selection) | Complex — damage depends on spell choice, not a fixed value |
+| Master of Principles | R2 | +Mysticism to R0 damage | +2 | +4 | ⚠️ Yes (skill rank) | Moderate — mirrors Master of Fundamentals |
+| Martial Artist | R3 | +Fighting damage | +3 | +5 | ⚠️ Yes (skill rank) | Strong — applies to improvised/unarmed, which are otherwise weaker |
+| Heavy Weapon Mastery | R3 | +½ Strength damage | +3 (d10) | +3 (d10) | ⚠️ Yes (attribute) | Moderate — requires giving up all movement |
+| Polearm Mastery | R3 | +½ Strength on charge | +3 (d10) | +3 (d10) | ⚠️ Yes (attribute) | Moderate — Charge is situational |
+| Ammo Specialist | R3 | +Archery damage | +3 | +5 | ⚠️ Yes (skill rank) | Moderate — requires Supply checks |
+| Expert Slinger | R2 | +Archery at close/short | +2 | +4 | ⚠️ Yes (skill rank) | Moderate — range restricted |
+| Grappler | R3 | +Athletics damage | +3 | +5 | ⚠️ Yes (skill rank) | Moderate — only while grappling |
+| Assassination | R3 | +Stealth damage | +3 | +5 | ⚠️ Yes (skill rank) | Strong — combined with SL boost from R1, this is very high burst |
+| Inspire Ally | R1 | +Influence damage | +1 at R1 | +5 | ⚠️ Yes (skill rank) | ⚠️ Over-powered at R1 — grants flat damage bonus from the first rank, scaling to +5 |
+| Insult to Injury | R2 | +Influence damage vs distracted | +2 | +4 | ⚠️ Yes (skill rank) | Strong — party-wide damage bonus |
+| Commander | R2 | +Education damage (ally) | +2 | +4 | ⚠️ Yes (skill rank) | Strong — no action cost for ally |
+| Tactician | R3 | +Education damage (once/scene) | +2 | +4 | ⚠️ Yes (skill rank) | Moderate — limited use |
+| Identify Weakness | R1 | +Perception damage | +1 at R1 | +4 | ⚠️ Yes (skill rank) | Strong — applies to entire party's attacks against focused target |
+| Monster Hunter | R1 | +Survival damage | +1 at R1 | +4 | ⚠️ Yes (skill rank) | Moderate — only vs larger creatures |
+| Animal Companion | R3 | +Nature damage | +3 | +5 | ⚠️ Yes (skill rank) | Moderate — companion attack only |
+
+**Key Pattern:** 22 of 28 damage-relevant talents use internal scaling (bonus = skill rank or ½ attribute). This means every time a character increases a skill rank or attribute, they must recalculate the bonus from potentially multiple talents. At level-up this creates significant bookkeeping.
+
+### 5.3 Power Level Assessment
+
+#### Over-Performing Talents
+
+| Talent | Issue | Details |
+|--------|-------|---------|
+| **Inspire Ally R1** | Damage bonus at R1 | Grants +Influence damage to ally attacks from Rank 1. At Influence 1 this is minor (+1), but the talent scales to +5 at R5 without increasing rank — a R1 talent shouldn't reach +5 damage. |
+| **Insult to Injury R2** | Party-wide damage | Every ally in melee with a distracted target adds +Influence to damage. With a 4-person party, this is effectively +8 to +20 total party damage per round from a single R2 talent. |
+| **Assassination R1+R3** | Burst damage stacking | R1 upgrades SL by one step (weak→strong, strong→critical) AND R3 adds +Stealth flat damage. Against an unaware target, a R3 Assassin with d10 AGI, Shortbow (3), Stealth 3 deals: 5 + 6 (strong, upgraded from weak) + 3 = **14 damage** minimum. With actual strong hit: 5 + 9 + 3 = **17**. This is nearly a one-shot on same-tier creatures. |
+| **Battle Mage R3** | Scaling ceiling | +Arcana to all weapon damage. At R5 Arcana, this is +5 to every hit — the largest unconditional ability bonus in the system. Combined with R4's free cantrip, this makes Battle Mage the strongest sustained-damage talent line. |
+| **Identify Weakness R1** | Party multiplier | The +Perception damage applies to the focused creature from *any* attacker, not just the user. In a 4-person party, this effectively quadruples the bonus value. |
+
+#### Under-Performing Talents
+
+| Talent | Issue | Details |
+|--------|-------|---------|
+| **Pugilist R3** | Damage cap | Unarmed damage caps at 4 weapon damage at R3. With ½ Strength (d10=5), a weak hit deals 5+4=9. A Longsword user deals 5+3=8 at weak, but 5+6=11 at strong. Unarmed needs critical hits to compete with one-handed weapons at strong hits. |
+| **Strong Grip R3** | Condition + low bonus | Requires giving up all movement AND uses +½ Strength (max +3 with d10). The damage bonus is half what Battle Mage R3 provides (+5 at R5) with a harsher restriction. |
+| **Mace Mastery R1** | Weak baseline | "Minimum weapon damage" sounds good but is rarely relevant. Against any AV-wearing target, weapon damage minus AV often exceeds 0 anyway. This ability matters only at high AV differentials. |
+| **Expert Slinger R2** | Range restriction | +Archery damage only at close/short range with thrown weapons puts the user in melee danger for a modest bonus. Ranged fighters want to stay at medium+ range. |
+| **Peak Performance R1** | Tiny bonus | +1 weapon damage (enhancement bonus) on one item overnight is negligible compared to talent opportunity cost. At R3 it becomes +2/+4 which is decent but requires 3 TP for a marginal combat bonus. |
+
+#### Appropriately Powered Talents
+
+| Talent | Why It Works |
+|--------|-------------|
+| **Riposte** | Reactive counterattack with clear trigger (enemy misses melee vs Parry), escalating utility (R2: stop movement, R3: daze). No internal scaling — effects are fixed conditions. |
+| **Rapid Shot** | Clear tradeoff (R1: two attacks with banes; R2: remove banes). Power comes from action economy, not scaling numbers. |
+| **Defensive Dueling** | Flat +1 Parry at R1 with a clear condition (single weapon, no shield). No recalculation needed. R2 adds a reactive option (spend Quick Action for temporary defense). |
+| **Shield Mastery** | Reduces incoming SL (R1), reduces armor penalty (R2), improves durability (R3). Each rank provides a distinct mechanical benefit without scaling numbers. |
+| **Evasion** | R1: Retreat as Quick Action. R2: Extra Quick Action. R3: Halve damage once per scene. Clean progression of new capabilities, no recalculation. |
+
+### 5.4 Internal Scaling Audit
+
+**Internal scaling** = a talent bonus that changes value when the character's skill rank or attribute die changes, requiring recalculation.
+
+| Scaling Type | Talents Using It | Bookkeeping Impact |
+|-------------|-----------------|-------------------|
+| **+Skill Rank to damage** | Battle Mage, Master of Fundamentals, Master of Principles, Ammo Specialist, Expert Slinger, Grappler, Assassination, Martial Artist, Inspire Ally, Insult to Injury, Commander, Tactician, Identify Weakness, Monster Hunter, Animal Companion | **15 talents** — High impact. Must recalculate on every skill rank increase. |
+| **+½ Attribute to damage** | Heavy Weapon Mastery, Polearm Mastery, Strong Grip | **3 talents** — Moderate impact. Recalculate on attribute increase (less frequent). |
+| **+Skill Rank to healing** | Second Wind, Field Medic, Commander, Tactician, Inspire Ally, Pact of Devotion (Protection) | **6 talents** — Moderate impact. |
+| **+Skill Rank to AV** | Body of Bronze, Armor of the Faithful, Mana Shield, Juggernaut, Expert Rider | **5 talents** — Moderate impact. Defensive scaling is less urgent to track. |
+| **+Skill Rank to conditions** | Sharpshooter (marked), Defensive Dueling (marked), Drunken Technique (marked), Devious Tactics (marked) | **4 talents** — Low impact. Marked values change infrequently. |
+| **+Skill Rank to uses/day** | Inexhaustible Mind, Divine Rites, Divine Sense | **3 talents** — Low impact. Recalculate once on rank-up. |
+
+**Total:** 28 talents with some form of internal scaling. Of these, 15 scale damage with skill rank — the most impactful form of bookkeeping.
+
+### 5.5 Recommendations: Reducing Internal Scaling
+
+**Principle:** Replace "+Skill Rank" scaling with fixed bonuses appropriate to the talent's rank. A talent learned at R3 should have a damage bonus fixed at R3 power level — it shouldn't silently increase when the player later raises the skill to R4 or R5.
+
+**Proposed pattern:**
+
+| Talent Rank Acquired | Fixed Damage Bonus | Fixed Healing Bonus | Rationale |
+|---------------------|-------------------|---------------------|-----------|
+| R1 | +1 | +2 | Minor supplement — about +12% of a Weak hit |
+| R2 | +2 | +4 | Moderate payoff — about +25% of a Weak hit |
+| R3 | +3 | +6 | Strong payoff — about +35% of a Weak hit |
+| R4 | +4 | +8 | Encounter-shaping territory |
+| R5 | +5 | +10 | Peak mortal — the absolute ceiling |
+
+**Example conversion:** Battle Mage R3 currently reads "add your Arcana to weapon damage (ability bonus)." At R3 Arcana this is +3, at R5 it's +5. Proposed revision: "add +3 damage to weapon attacks (ability bonus)." The bonus is now fixed and won't create surprise power spikes when Arcana increases.
+
+**Exception:** Talents where internal scaling IS the core identity (e.g., Spell Knowledge granting +2 Focus per rank, Pugilist increasing unarmed weapon damage per rank) should keep their scaling because the rank-up *is* the investment. The concern is talents where the bonus silently scales with an unrelated progression.
+
+### 5.6 Defensive Talent Power Assessment
+
+| Talent | Rank | Defensive Value | Assessment |
+|--------|------|----------------|------------|
+| **Defensive Dueling R1** | R1 | +1 Parry (ability bonus) | ✅ Appropriate — equivalent to a shield's parry bonus, with a clear restriction |
+| **Body of Bronze R1** | R1 | AV = 1 + Fortitude (armor bonus) | ⚠️ Scales from 2 to 6 AV — matches light/medium armor at low levels, exceeds it at high levels. At Fortitude 5, this grants 6 AV with no load, no rigid, and no durability concerns — strictly superior to all physical armor. |
+| **Armor of the Faithful R1** | R1 | AV = 1 + Mysticism (armor bonus) | ⚠️ Same scaling issue as Body of Bronze. |
+| **Heavy Armor Mastery R2** | R2 | Double AV bonus once per scene | ✅ Appropriate — limited use, reactive timing |
+| **Evasion R3** | R3 | Halve physical damage once per scene | ✅ Appropriate — powerful but once per scene |
+| **Mana Shield R1** | R1 | AV = 2 + spell rank (armor bonus) | ⚠️ At spell rank 5, this is 7 temporary AV — potentially higher than Plate Harness. Duration-limited but still very high ceiling. |
+| **Protective Stance R3** | R3 | Resistance to damage when protecting ally | ✅ Appropriate — requires ally positioning and shield |
+
+**Key concern:** Body of Bronze and Armor of the Faithful both scale AV with skill rank, creating unarmored characters who exceed plate armor at high levels. This contradicts the bounded power ceiling — consider capping at a fixed value (e.g., AV 4) or requiring the bonus to replace, not supplement, armor.
+
+---
+
+## 6. Design Pattern Audit
+
+This section identifies talents with problematic design patterns and recommends structural improvements.
+
+### 12.1 Problematic Design Patterns
+
+#### Pattern A: Overloaded Rank Entries
+
+Some talent ranks cram multiple distinct abilities into a single rank, making them hard to remember and track.
+
+| Talent | Rank | Abilities in Single Rank | Issue |
+|--------|------|------------------------|-------|
+| **Battle Rage** | R1 | +1 boon on STR rolls, spend HP for damage, +1 bane on MND, can't cast spells, fatigue on end | 5 distinct effects in one rank — excessive cognitive load |
+| **Pact of Devotion** | R1–R3 | Each pact type has 3–5 effects per rank across 4 pact options | Effectively 12+ sub-abilities — the most complex talent in the system |
+| **Explorer's Tenacity** | R2–R3 | R2: double fatigue healing, choose fatigue over injury; R3: heal injury, double ration rolls | Multiple unrelated abilities per rank |
+| **Wilderness Expert** | R2 | Establish camp boon + wake-from-rest perception roll | Two unrelated abilities |
+
+**Recommendation:** Limit each talent rank to 1–2 mechanically distinct effects. If a talent needs more breadth, split it into separate talents or use sub-choices (like Pact of Devotion's pact types, but each type should be simpler).
+
+#### Pattern B: Stances Without Clear Activation/Deactivation
+
+Several talents create ongoing states ("while enraged," "while in drunken stance") without explicit rules for starting and stopping.
+
+| Talent | Issue |
+|--------|-------|
+| **Battle Rage** | When does rage start? Is it a Quick Action? An Action? Can you end it early? The talent says "while enraged" but never specifies how you enter or voluntarily exit the rage state. |
+| **Drunken Technique** | "While in drunken stance" — is this always on while intoxicated, or does it require activation? Can you leave the stance? |
+
+**Recommendation:** All stance-type talents should explicitly state: (1) activation cost (Quick Action, Action, or free on turn), (2) duration (until end of scene, concentration, or voluntary), and (3) termination conditions.
+
+#### Pattern C: Passive Abilities That Obsolete Alternatives
+
+Some passive talents provide permanent benefits that make comparable active/limited abilities irrelevant.
+
+| Talent | Issue |
+|--------|-------|
+| **Escape Artist R3** | "Movement doesn't provoke Opportunity Attacks" — this is a permanent passive that obsoletes the Retreat Action entirely. Why ever Retreat when movement is free? |
+| **Body of Bronze / Armor of the Faithful** | At high skill ranks, these provide better AV than the best physical armor with zero load and no rigid penalty. This makes Heavy Armor Mastery and Light Armor Mastery irrelevant for monks and mystics. |
+| **General Education R1** | "No +1 bane for untrained expert skills using Mind" — this removes the core cost of being untrained in half the expert skills. Very powerful for a R1 talent with zero ongoing cost. |
+
+**Recommendation:** Permanent passives that remove core system penalties should either (1) be placed at higher ranks (R3+), (2) have restrictions, or (3) provide a partial mitigation rather than full removal.
+
+#### Pattern D: Talents With Unclear or Missing Limits
+
+| Talent | Issue |
+|--------|-------|
+| **Inspire Ally R1** | Adds +Influence damage to any ally's successful attack via Quick Action. No per-scene limit at R1, no range limit beyond "can see/hear within medium distance." Could theoretically be used every turn forever. |
+| **Insult to Injury R2** | "You and your allies add Influence to damage" against distracted targets. No limit on how many allies benefit or for how long. |
+| **Communal Practices R1** | "Exclude any number of targets" from multi-target spells. No cost, no limit — always beneficial, never requires a choice. |
+
+**Recommendation:** Talents that provide ongoing team benefits should have either (1) a per-scene/per-day limit, (2) an action cost that prevents other actions, or (3) a condition that can be removed/countered.
+
+### 12.2 Limited Resources vs Passive/Active Analysis
+
+The talent system uses three resource models:
+
+| Model | Examples | Count | Strengths | Weaknesses |
+|-------|---------|-------|-----------|------------|
+| **Always-on passive** | Defensive Dueling R1, Dual Wielder R1, Sharpshooter R1–R2 | ~35 | Zero tracking, always relevant | Can feel "invisible" — players forget they have them |
+| **Per-scene limited** | Disciplined Fighter R1, Evasion R3, Light Armor Mastery R1 | ~40 | Creates meaningful per-encounter decisions | Can feel wasted if scene ends early |
+| **Per-day limited** | Hard to Kill R2, Inexhaustible Mind R1, Divine Sense R1 | ~15 | Creates strategic resource management | Punishes players who use abilities "wrong" |
+| **Conditional trigger** | Riposte (enemy misses), Stand Your Ground (pushed/prone), Reflexive Shooter (enemy enters range) | ~20 | Emerge naturally from play, reward positioning | Inconsistent — may never trigger in some combats |
+| **HP/Focus cost** | Battle Rage (2 HP for damage), Inexhaustible Mind R2 (2 HP per Focus) | ~5 | Creates risk/reward tension | Complex to track, can spiral into death |
+
+**Balance assessment:**
+
+The system has a healthy mix of passive and limited abilities. The main issue is **inconsistent limiting patterns within the same rank tier:**
+
+- Some R1 talents are unlimited (Inspire Ally R1: use every turn), while others are once-per-scene (Disciplined Fighter R1: reroll once). These are comparable in power but wildly different in frequency.
+- Per-day abilities are rare and concentrated in Fortitude/Mysticism. More per-day abilities would create interesting daily resource management.
+
+**Recommendation:** Establish a standard resource budget per rank:
+- **R1:** One significant ability, usable once per scene OR one minor passive
+- **R2:** One payoff ability, unlimited if conditional OR once per scene if unconditional
+- **R3:** One mastery ability, once per scene for powerful effects OR unlimited for moderate effects
+
+### 12.3 Specific Talent Redesign Recommendations
+
+| Talent | Issue | Proposed Fix |
+|--------|-------|-------------|
+| **Inspire Ally R1** | Unlimited +Influence damage with no cost | Add "once per scene" limit at R1; R2 upgrades to "once between each of your turns" |
+| **Insult to Injury R2** | Party-wide scaling damage with no limit | Cap at "+2 damage (ability bonus)" fixed, not +Influence |
+| **Battle Rage** | 5 effects in R1, unclear activation | Split into: R1 = activation (Quick Action) + core benefit (+1 boon STR, spend HP for +2 damage); R2 = drawbacks reduced (no bane on Mind, temp HP); R3 = damage resistance |
+| **Body of Bronze R1** | AV scales beyond armor ceiling | Cap at "AV = 1 + Fortitude (max 4)" |
+| **Armor of the Faithful R1** | AV scales beyond armor ceiling | Cap at "AV = 1 + Mysticism (max 4)" |
+| **Mana Shield R1** | AV can reach 7+ at high spell ranks | Cap at "AV = 2 + spell rank (max 5)" |
+| **General Education R1** | Removes untrained penalty entirely at R1 | Move to R2, or change to "reduce +1 bane to +1 bane only on first use per scene" |
+| **Escape Artist R3** | Removes OA system entirely | Change to "once between turns, move without provoking" (mirrors Evasion's limited approach) |
+| **Pact of Devotion** | 12+ sub-abilities across 4 pacts | Reduce each pact to 2 effects per rank maximum |
+
+---
+
+## 7. Archetype Signature Talents & Build Differentiation
+
+### 10.1 Archetype Signature Talent Coverage
+
+A **signature talent** is a talent that directly enables an archetype's core fantasy — the one talent a player of that archetype would consider mandatory. Every archetype should have at least one signature talent available at R1 in their pillar skill.
+
+| Archetype | Pillar Skill | Signature Talent(s) | Coverage | Notes |
+|-----------|-------------|---------------------|----------|-------|
+| Barbarian | Fighting | Battle Rage (Fortitude) | ✅ Partial | Signature is in support skill, not pillar |
+| Bard | Mysticism | *None* | ❌ Missing | No performance/music magic talent exists |
+| Brawler | Fighting | Pugilist, Martial Artist | ✅ Good | Two complementary options |
+| Champion | Fighting | Mystic Champion (Mysticism) | ✅ Partial | Signature is in support skill |
+| Druid | Mysticism | Shape Changer | ✅ Good | Clear identity talent |
+| Duelist | Fighting | Defensive Dueling, Riposte | ✅ Good | Strong mechanical identity |
+| Engineer | Crafting | *None* | ❌ Missing | No contraption/device talent exists |
+| Fighter | Fighting | Art of Fighting, weapon masteries | ✅ Good | Weapon mastery = identity |
+| Gladiator | Fighting | Grappler (Athletics) | ✅ Partial | Grappling is in support skill |
+| Hoplite | Fighting | Shield Mastery, Polearm Mastery | ✅ Partial | Has weapon talents but no formation/zone control |
+| Magus | Arcana | Battle Mage, Spellblade | ✅ Good | Two complementary martial-caster talents |
+| Monk | Fighting | Pugilist, Martial Artist | ✅ Good | |
+| Oracle | Mysticism | *None* | ❌ Missing | No prophecy/foresight talent in Mysticism |
+| Priest | Mysticism | Pact of Devotion | ✅ Good | |
+| Ranger | Archery | Sharpshooter, Monster Hunter (Survival) | ✅ Good | |
+| Rogue | Fighting | Assassination (Stealth) | ✅ Partial | Signature is in support skill |
+| Shaman | Mysticism | Divine Sense | ✅ Partial | No spirit communion talent |
+| Slinger | Archery | Expert Slinger | ✅ Good | |
+| Sorcerer | Arcana | Wild Overload, Spellweaver | ✅ Good | |
+| Summoner | Arcana | *None* | ❌ Missing | No summoning/conjuration talent |
+| Swashbuckler | Fighting | Swashbuckler (Streetwise) | ✅ Partial | Signature is in support skill |
+| Tamer | Fighting | Animal Companion (Nature) | ✅ Partial | Companion is in support skill, no whip talent |
+| Warlock | Arcana | *None* | ❌ Missing | No pact/patron talent for Arcana |
+| Warlord | Fighting | Commander (Education) | ✅ Partial | Commands are in support skill |
+| Apothecary | Crafting | *None* | ❌ Missing | No alchemy talent exists |
+
+**Summary:** 6 archetypes lack a signature talent entirely (Bard, Engineer, Oracle, Summoner, Warlock, Apothecary). 8 archetypes have their signature talent in a support skill rather than their pillar skill, which works but weakens the pillar's identity.
+
+### 10.2 Rank 1 Signature Talent Design Principles
+
+Rank 1 talents unlock a new playstyle. For signature talents, the design must balance accessibility (the archetype should work from R1) with restraint (R1 shouldn't provide the archetype's full power).
+
+**Guidelines for R1 signature talents:**
+
+1. **Unlock, don't master.** R1 should open the door to the playstyle, not fully realize it. Example: Animal Companion R1 lets you control *one* animal at a limited tier — mastery comes at R3.
+2. **One clear mechanical change.** R1 should provide exactly one new thing the character can do. Example: Defensive Dueling R1 gives +1 Parry with a single weapon.
+3. **Fixed bonuses, not scaling.** R1 bonuses should be small and fixed (+1, +2, one reroll). Never "+Skill Rank" at R1 — the bonus is too small to matter early and too large later.
+4. **No party-wide effects at R1.** Team buffs should start at R2 earliest. R1 is personal mastery.
+5. **Clear restrictions.** Every R1 talent should state what it requires (weapon type, armor restriction, stance requirement, etc.).
+
+**Anti-patterns to avoid at R1:**
+- ❌ "+Skill damage" (scales too aggressively)
+- ❌ Unlimited party buffs (too powerful for 1 TP)
+- ❌ Multiple unrelated effects (overloaded)
+- ❌ Removal of core system penalties (too cheap)
+
+### 10.3 Talent Exclusivity Groups
+
+Some archetypes draw power from fundamentally incompatible sources. The talent system should enforce these incompatibilities through **exclusivity groups** — sets of talents where you can only take one.
+
+**Proposed exclusivity groups:**
+
+#### Group 1: Unarmored Defense Source
+- **Body of Bronze** (Fortitude) — AV from physical conditioning
+- **Armor of the Faithful** (Mysticism) — AV from divine protection
+
+**Rule:** You may only benefit from one unarmored AV talent. If you take both, only the highest AV applies (which is already true via armor bonus stacking, but should be made explicit).
+
+#### Group 2: Arcane Power Source
+- **Arcane Spell Knowledge** (Arcana) — Standard spell learning
+- **Wild Overload** (Arcana) — Chaotic wild magic
+- *Proposed:* **Eldritch Pact** (Arcana) — Patron-granted power
+
+**Rule:** Eldritch Pact and Arcane Spell Knowledge should be compatible (the pact grants *additional* abilities, not replacement spellcasting). However, Wild Overload's chaotic nature could conflict with a pact's structured power. **Recommendation:** Eldritch Pact and Wild Overload are mutually exclusive. A character must choose between controlled pact magic and chaotic wild magic.
+
+#### Group 3: Spell Infusion Style
+- **Battle Mage** (Arcana) — Arcane spell-weapon hybrid
+- **Spellblade** (Arcana) — Arcane spell channeled through weapon
+- **Mystic Champion** (Mysticism) — Mystic spell-weapon hybrid
+
+**Rule:** These are already implicitly exclusive (Arcana vs Mysticism prevents taking all three). However, Battle Mage and Spellblade are in the same skill and a character could take both. **Recommendation:** Battle Mage and Spellblade should be compatible — they offer different playstyles (Battle Mage = use weapon attack stat for spells + add damage; Spellblade = combine weapon + spell in one roll). Taking both is a heavy TP investment (6+ TP) that rewards specialization.
+
+#### Group 4: Weapon Style
+No current exclusivity needed — weapon mastery talents are already tied to specific weapon types and taking multiple weapon masteries is a valid build choice (versatile warrior). No restriction recommended.
+
+### 10.4 Martial, Hybrid, and Full-Caster Differentiation
+
+**Current state:** The talent system does not formally differentiate between martial, hybrid, and full-caster characters. Any character with the relevant skill can take any talent.
+
+**The hybrid temptation:** Because talents are cheap (1 TP each) and skills are free-form, a Fighting character can easily dip into Mysticism or Arcana for powerful hybrid abilities. For example, a Fighter with Arcana 1 can take Battle Mage R1, gaining the ability to add Arcana to Parry/Dodge — an extremely efficient defensive boost for 1 TP.
+
+**Is this a problem?** Analysis suggests it is **mostly a non-issue** for three reasons:
+
+1. **XP scarcity limits dipping.** Each skill rank requires significant XP (2/6/12/18/24). A fighter who invests 2 XP for Arcana 1 + Battle Mage R1 sacrifices 2 XP that could go toward Fighting 3 or Fortitude 2. The opportunity cost is real.
+
+2. **Spell access requires investment.** Casting actual spells requires both Arcana/Mysticism skill rank AND Spell Knowledge talents. A 1-point dip grants Battle Mage R1 but no spells — you need at least 4 XP (Arcana 1 + Arcane Spell Knowledge R1) to cast a single cantrip.
+
+3. **Flavor alignment is natural.** The Champion archetype is explicitly a Fighting + Mysticism hybrid. The Magus is Fighting + Arcana. Hybrids are a design feature, not a bug.
+
+**Where intervention may be needed:**
+
+The concern arises at **Rank 3+ magic skills** where hybrid characters can access powerful spell infusion (Spellblade R3 = rank 2 spells through weapons, Mystic Champion R3 = rank 2 mystic spells through weapons) while also having Fighting 3+ for combat arts. This combination — full weapon mastery AND rank 2 spell infusion — may outperform pure martials who get similar damage but without the spell utility.
+
+**Proposed solution — Soft differentiation through Focus economy:**
+
+- Pure casters have high Focus pools (Spell Knowledge grants +2 per rank = up to +8 Focus) and Focus recovery talents (Inexhaustible Mind, Divine Rites).
+- Hybrids spend Focus on spell infusion (Spellblade/Mystic Champion cost +2 Focus per use) but lack Focus recovery, creating a natural limit on how many infused attacks they can make.
+- Pure martials have no Focus costs but also no spell utility.
+
+This creates a natural triad:
+- **Full caster:** Many spells, high Focus, weak weapons → High versatility, lower sustained damage
+- **Hybrid:** Spell-infused weapons, limited Focus, moderate weapons → Burst damage, resource-constrained
+- **Full martial:** No spells, no Focus costs, best weapons + combat arts → Highest sustained damage, no spell utility
+
+**Recommendation:** The current implicit differentiation through Focus economy is sufficient. No talent exclusivity between martial and magic talents is needed. However, ensure that future R4–R5 martial talents provide enough power to keep pure martials competitive with hybrids at high levels.
+
+---
+
+## 8. Modern System Integration
+
+### 14.1 Challenge System Integration
 
 The Challenge system (challenge die + TN + skill-once rule) supports talent interaction through several hooks:
 
@@ -237,7 +584,7 @@ The Challenge system (challenge die + TN + skill-once rule) supports talent inte
 - **Silver Tongue** (Influence): Delay Patience, gain boons after appealing to Motivations, block Interest drops.
 - **Read the Room** (Insight): Boons on Investigate actions, learn Interest/Patience state, warn allies about Pitfalls.
 
-### 5.2 Social Intrigue Integration
+### 14.2 Social Intrigue Integration
 
 The Social Intrigue system (Interest, Patience, Motivations, Pitfalls) has specific mechanical hooks:
 
@@ -252,7 +599,7 @@ The Social Intrigue system (Interest, Patience, Motivations, Pitfalls) has speci
 
 **Current state:** ~8 talents with social intrigue relevance, target 15+.
 
-### 5.3 Travel System Integration
+### 14.3 Travel System Integration
 
 The Travel system (Navigator, Scout, Quartermaster, Forager, Hunter, Fisher roles) provides role-based hooks:
 
@@ -275,7 +622,7 @@ The Travel system (Navigator, Scout, Quartermaster, Forager, Hunter, Fisher role
 - **Road Warden** (Streetwise): Civilized travel bonuses, NPC contact for aid.
 - **Seasoned Forager** (Nature): Enhanced forage yields, identify edible plants.
 
-### 5.4 Integration Summary
+### 14.4 Integration Summary
 
 | System | Current Talents | Proposed Additions | Target |
 |--------|----------------|-------------------|--------|
@@ -288,9 +635,9 @@ The Travel system (Navigator, Scout, Quartermaster, Forager, Hunter, Fisher role
 
 ---
 
-## 6. Talent Progression Evaluation
+## 9. Talent Progression Evaluation
 
-### 6.1 Current State: Ranks 1–3
+### 9.1 Current State: Ranks 1–3
 
 The original talent system was designed for Ranks 1–3, following a clean progression:
 
@@ -302,7 +649,7 @@ The original talent system was designed for Ranks 1–3, following a clean progr
 
 This structure works well for characters through Level 6 (Skill Rank 3 cap).
 
-### 6.2 The Rank 4–5 Gap
+### 9.2 The Rank 4–5 Gap
 
 Characters at Levels 7–10 can invest in Skill Ranks 4–5, but the talent system offers almost nothing:
 
@@ -317,7 +664,7 @@ Characters at Levels 7–10 can invest in Skill Ranks 4–5, but the talent syst
 - **Progression flatline** where leveling up feels unrewarding.
 - **Narrative disconnect** where a "Grandmaster" has no abilities beyond an Expert.
 
-### 6.3 Rank 4 Design Expectations
+### 9.3 Rank 4 Design Expectations
 
 Following the established progression pattern (*unlock → payoff → mastery → mythic*):
 
@@ -329,7 +676,7 @@ Following the established progression pattern (*unlock → payoff → mastery �
 - Provide meaningful interaction with multiple game systems.
 - Require tactical decisions — not automatic bonuses.
 
-### 6.4 Rank 5 Design Expectations
+### 9.4 Rank 5 Design Expectations
 
 **Rank 5 (Grandmaster):** The pinnacle of mortal skill. Abilities define the character as legendary within the setting. Effects should be powerful but bounded — impressive and reality-stretching, not reality-breaking.
 
@@ -340,7 +687,7 @@ Following the established progression pattern (*unlock → payoff → mastery �
 - Clear distinction from magic (mundane mastery, not supernatural).
 - Bounded power ceiling: equivalent to D&D levels 10–12, not 17–20.
 
-### 6.5 Rank 4–5 Talent Quantity Targets
+### 9.5 Rank 4–5 Talent Quantity Targets
 
 To address the TP dead zone, each skill needs:
 
@@ -353,17 +700,137 @@ To address the TP dead zone, each skill needs:
 
 **Minimum additions needed:** ~2–3 Rank 4 talents per skill (totaling ~26–42 across 16 skills) and ~1 Rank 5 talent per skill (~16 total).
 
+### 9.6 Extension Strategy: Which Talents Extend to R4–R5, Which Cap at R3
+
+Not every talent should extend beyond R3. The following classification determines which talents should grow to R4–R5, which should remain at R3, and where new R4–R5-only talents are needed.
+
+**Classification criteria:**
+- **Extend to R5** = Core identity talents that define a playstyle. These are the "career" talents a character invests in for their entire progression.
+- **Extend to R4 only** = Talents with strong mechanical foundations that can benefit from one more rank of scope expansion, but don't need grandmaster-level effects.
+- **Cap at R3** = Talents that are complete at R3 (their design space is fully explored), situational talents, or talents that would become too powerful at higher ranks.
+- **New R4–R5 only** = Talents that exist only at R4+ because they require master/grandmaster skill to even attempt. These solve the TP dead zone without extending existing designs.
+
+#### Fighting (14 talents)
+
+| Talent | Current Max | Recommendation | Rationale |
+|--------|-----------|----------------|-----------|
+| Art of Fighting | R4 | **Extend to R5** | Core combat art access — the career talent for martial fighters |
+| Shield Mastery | R3 | **Extend to R4** | Scope expansion: shield benefits to allies, advanced shield techniques |
+| Defensive Dueling | R3 | **Extend to R4** | Master duelist: automatic riposte, untouchable single-combat |
+| Martial Artist | R3 | **Extend to R5** | Career talent for monks/brawlers — pinnacle unarmed mastery |
+| Dual Wielder | R3 | **Extend to R4** | Master dual wielder: coordinated two-weapon strikes |
+| Polearm Mastery | R3 | **Extend to R4** | Zone control: area denial, formation anchoring |
+| Riposte | R3 | **Cap at R3** | Complete design — counterattack with daze is a satisfying capstone |
+| Disciplined Fighter | R3 | **Cap at R3** | Utility talent — reroll and extra attack are sufficient |
+| Axe Mastery | R3 | **Cap at R3** | Weapon-specific — rend + bleed is a full kit |
+| Blade Mastery | R3 | **Cap at R3** | Weapon-specific — property swap + boon is complete |
+| Heavy Weapon Mastery | R3 | **Cap at R3** | Damage bonus + cleave synergy is sufficient |
+| Mace Mastery | R3 | **Cap at R3** | Minimum damage + daze is complete |
+| Protective Stance | R3 | **Cap at R3** | Ally protection is fully developed at R3 |
+| Pugilist | R3 | **Cap at R3** | Unarmed damage progression — extends through Martial Artist instead |
+
+#### Archery (9 talents)
+
+| Talent | Current Max | Recommendation | Rationale |
+|--------|-----------|----------------|-----------|
+| Art of Archery | R4 | **Extend to R5** | Core combat art access for ranged fighters |
+| Sharpshooter | R3 | **Extend to R4** | Extreme range mastery, anti-cover |
+| Rapid Shot | R3 | **Extend to R4** | Multi-target volley, suppression fire |
+| Disciplined Archer | R3 | **Cap at R3** | Mirrors Disciplined Fighter — utility complete |
+| Crossbow Mastery | R3 | **Cap at R3** | Weapon-specific — stun on hit is complete |
+| Expert Slinger | R3 | **Cap at R3** | Weapon-specific — throw-and-move is complete |
+| Ammo Specialist | R3 | **Cap at R3** | Ammo variety is fully explored |
+| Reflexive Shooter | R3 | **Cap at R3** | Reactive defense is complete |
+| Strong Grip | R3 | **Cap at R3** | Heavy bow mastery is complete |
+
+#### Arcana (8 talents)
+
+| Talent | Current Max | Recommendation | Rationale |
+|--------|-----------|----------------|-----------|
+| Arcane Spell Knowledge | R4 | **Extend to R5** | Core spell access — must extend to unlock R5 spells |
+| Battle Mage | R4 | **Extend to R5** | Career talent for magus archetype |
+| Spellweaver | R3 | **Extend to R4** | Metamagic mastery: more arts, reduced Focus costs |
+| Spellblade | R3 | **Extend to R4** | Higher-rank spell infusion |
+| Wild Overload | R3 | **Cap at R3** | Chaotic design — R3's "choose your result" is already very powerful |
+| Mana Shield | R3 | **Cap at R3** | Defensive scaling is sufficient |
+| Master of Fundamentals | R3 | **Cap at R3** | Cantrip mastery is complete |
+| Inexhaustible Mind | R3 | **Cap at R3** | Focus recovery is fully developed |
+
+#### Mysticism (11 talents)
+
+| Talent | Current Max | Recommendation | Rationale |
+|--------|-----------|----------------|-----------|
+| Mystical Spell Knowledge | R4 | **Extend to R5** | Core spell access for mystics |
+| Pact of Devotion | R3 | **Extend to R5** | Career talent for priests — pact mastery at R4–R5 |
+| Mystic Champion | R3 | **Extend to R4** | Higher-rank spell infusion (mirrors Spellblade) |
+| Divine Rites | R3 | **Cap at R3** | Focus recovery complete |
+| Communal Practices | R3 | **Cap at R3** | Targeting flexibility complete |
+| Elemental Adept | R3 | **Cap at R3** | Resistance piercing complete |
+| Shape Changer | R3 | **Extend to R4** | Career talent for druids — advanced forms |
+| Armor of the Faithful | R3 | **Cap at R3** | Defensive scaling sufficient (with proposed cap) |
+| Divine Sense | R3 | **Cap at R3** | Detection is fully developed |
+| Master of Principles | R3 | **Cap at R3** | Cantrip mastery mirrors Master of Fundamentals |
+| Divine Favor | Stub | **New: Design R1–R3** | Then assess for R4–R5 extension |
+
+#### General Skills
+
+| Skill | Talent | Recommendation | Rationale |
+|-------|--------|----------------|-----------|
+| Athletics | Evasion | **Extend to R4** | Master evasion: reaction-based dodge |
+| Athletics | Fast Stride | **Extend to R4** | Supernatural speed |
+| Athletics | Grappler | **Cap at R3** | Grappling complete |
+| Athletics | Others | **Cap at R3** | Utility complete |
+| Fortitude | Hard to Kill | **Extend to R5** | Career talent for tanks — death defiance |
+| Fortitude | Battle Rage | **Extend to R4** | Barbarian career — fury escalation |
+| Fortitude | Juggernaut | **Extend to R4** | Multi-enemy defense expansion |
+| Fortitude | Others | **Cap at R3** | Utility/defense complete |
+| Influence | Inspire Ally | **Extend to R4** | Warlord career — mass inspiration |
+| Influence | Leading Presence | **Extend to R4** | Commander aura expansion |
+| Influence | Others | **Cap at R3** | Social talents complete at R3 |
+| Insight | Empath | **Extend to R4** | Combat reading mastery |
+| Insight | Piercing Look | **Cap at R3** | Investigation complete |
+| Perception | Danger Sense | **Extend to R4** | Preternatural awareness |
+| Perception | Identify Weakness | **Extend to R4** | Master tactical analysis |
+| Stealth | Assassination | **Extend to R4** | Master assassin: advanced stealth kills |
+| Stealth | Hidden Strike | **Cap at R3** | One-shot technique complete |
+| Survival | Monster Hunter | **Extend to R4** | Legendary hunter career |
+| Survival | Trap Maker | **Extend to R4** | Master trapper |
+| Nature | Animal Companion | **Extend to R5** | Career talent for tamers/druids |
+| Nature | Field Medic | **Extend to R4** | Advanced battlefield medicine |
+| Education | Tactician | **Extend to R4** | Battlefield command expansion |
+| Education | Commander | **Extend to R4** | Mass command abilities |
+| Crafting | Artisan | **Extend to R4** | Masterwork creation |
+| Crafting | Peak Performance | **Cap at R3** | Enhancement bonuses sufficient |
+| Lore | Magical Sense | R4 (incomplete) | **Extend to R5** | Career talent for mage hunters |
+| Lore | Mage Hunter | **Extend to R4** | Anti-caster mastery |
+| Streetwise | Swashbuckler | **Extend to R4** | Light weapon mastery |
+| Streetwise | Thug Tactics | **Cap at R3** | Numerical advantage complete |
+
+#### Summary
+
+| Category | Extend to R5 | Extend to R4 | Cap at R3 | New R4–R5 Only |
+|----------|-------------|-------------|-----------|----------------|
+| Fighting | 2 (Art of Fighting, Martial Artist) | 4 | 8 | — |
+| Archery | 1 (Art of Archery) | 2 | 6 | — |
+| Arcana | 2 (Spell Knowledge, Battle Mage) | 2 | 4 | — |
+| Mysticism | 2 (Spell Knowledge, Pact of Devotion) | 2 | 6 | 1 (Divine Favor) |
+| General Skills | 2 (Hard to Kill, Animal Companion) | 10 | ~15 | — |
+| Expert Skills | 1 (Magical Sense) | 5 | ~10 | — |
+| **Total** | **10** | **25** | **~49** | **1** |
+
+This gives 10 talents reaching R5 and 25 reaching R4 from existing talent lines, plus new talents to fill remaining TP budget gaps (see §12 for the complete catalog).
+
 ---
 
-## 7. Prestige Talents
+## 10. Prestige Talents
 
-### 7.1 Concept
+### 10.1 Concept
 
 Prestige Talents (inspired by D&D 3.5e Prestige Classes) are advanced talents requiring Rank 3+ in multiple skills. They reward multi-skill investment and define archetype mastery.
 
 **Example prerequisites:** "Requires Fighting 3 and Athletics 3" or "Requires Arcana 3 and Lore 3."
 
-### 7.2 Feasibility Assessment
+### 10.2 Feasibility Assessment
 
 | Factor | Assessment | Notes |
 |--------|------------|-------|
@@ -373,7 +840,7 @@ Prestige Talents (inspired by D&D 3.5e Prestige Classes) are advanced talents re
 | **Build diversity** | ✅ Positive | Creates meaningful choices between deep (single-skill) and wide (multi-skill) investment. |
 | **Balance risk** | ⚠️ Moderate | Multi-skill prerequisites inherently limit availability. Must ensure single-skill paths remain viable. |
 
-### 7.3 Recommendation: Adopt Prestige Talents
+### 10.3 Recommendation: Adopt Prestige Talents
 
 Prestige Talents are a natural fit for Nexus RPG's free-form progression model. They solve three problems:
 
@@ -381,7 +848,7 @@ Prestige Talents are a natural fit for Nexus RPG's free-form progression model. 
 2. **Archetype definition** — Let players mechanically commit to an archetype identity.
 3. **Cross-skill synergy** — The design guidelines call for inter-skill synergies; Prestige Talents make these explicit.
 
-### 7.4 Prestige Talent Design Framework
+### 10.4 Prestige Talent Design Framework
 
 **Structure:**
 - **Prerequisites:** Rank 3+ in two named skills (the "pillar" and one supporting skill).
@@ -391,7 +858,7 @@ Prestige Talents are a natural fit for Nexus RPG's free-form progression model. 
 
 **Naming convention:** Evocative names that reflect the archetype's identity, not mechanical descriptions.
 
-### 7.5 Prestige Talent Proposals
+### 10.5 Prestige Talent Proposals
 
 The following are representative designs. Each addresses a specific archetype gap and requires cross-skill investment.
 
@@ -428,9 +895,9 @@ The following are representative designs. Each addresses a specific archetype ga
 
 ---
 
-## 8. Capstone Talent Design
+## 11. Capstone Talent Design
 
-### 8.1 Philosophy
+### 14.1 Philosophy
 
 Capstone talents (Rank 4–5) should feel like the culmination of a character's investment. They should be:
 
@@ -439,7 +906,7 @@ Capstone talents (Rank 4–5) should feel like the culmination of a character's 
 - **Bounded** — Impressive within the fiction, not mechanically game-breaking.
 - **Gated** — Use costs (once per day, Resolve, conditions) to prevent abuse.
 
-### 8.2 Rank 4 Capstone Templates
+### 14.2 Rank 4 Capstone Templates
 
 Rank 4 talents should extend Rank 3 mastery into encounter-shaping territory:
 
@@ -451,7 +918,7 @@ Rank 4 talents should extend Rank 3 mastery into encounter-shaping territory:
 | **System Bridge** | Combat → non-combat | Disciplined Fighter R4: Add Fighting rank to Fortitude rolls vs. fear and morale during challenges. |
 | **Recovery** | Mitigate → reverse | Hard to Kill R4: Once per day, when you would suffer a Wound, remain at 1 HP instead. |
 
-### 8.3 Rank 5 Capstone Templates
+### 14.3 Rank 5 Capstone Templates
 
 Rank 5 talents should represent the absolute pinnacle of mortal ability:
 
@@ -463,7 +930,7 @@ Rank 5 talents should represent the absolute pinnacle of mortal ability:
 | **Capstone Synergy** | Combine two talent lines | Battle Mage R5: When you cast a spell, you may also make a melee attack as part of the same Action. |
 | **Grandmaster Signature** | Unique pinnacle ability | Martial Artist R5: Your unarmed strikes deal weapon damage equal to your equipped weapon's best damage type. Your body counts as a magic weapon. |
 
-### 8.4 Priority Capstone Talents by Skill
+### 14.4 Priority Capstone Talents by Skill
 
 | Priority | Skill | Rank 4 Candidates | Rank 5 Candidates |
 |----------|-------|-------------------|-------------------|
@@ -486,13 +953,13 @@ Rank 5 talents should represent the absolute pinnacle of mortal ability:
 
 ---
 
-## 9. Concrete Design Recommendations
+## 12. Concrete Design Recommendations
 
-### 9.1 Phase 1: Foundation (Immediate Priority)
+### 12.1 Phase 1: Foundation (Immediate Priority)
 
 **Goal:** Complete incomplete talents and address critical skill gaps.
 
-#### 9.1.1 Complete Incomplete Talents (17 entries across 8 talents)
+#### 12.1.1 Complete Incomplete Talents (17 entries across 8 talents)
 
 Complete all placeholder (XXX/???) ranks and flesh out all stub talents:
 
@@ -516,7 +983,7 @@ Complete all placeholder (XXX/???) ranks and flesh out all stub talents:
 | Relentless Tracker R2–3 | Survival | Design Ranks 2–3 (long-range tracking, quarry mechanics) |
 | Wilderness Expert R3 | Survival | Design Rank 3 effect (advanced campcraft, shelter construction) |
 
-#### 9.1.2 Expand Critically Low Skills (+15–20 talents)
+#### 12.1.2 Expand Critically Low Skills (+15–20 talents)
 
 | Skill | Current | Target | New Talents Needed | Focus Areas |
 |-------|---------|--------|--------------------|-------------|
@@ -527,11 +994,11 @@ Complete all placeholder (XXX/???) ranks and flesh out all stub talents:
 | **Survival** | 7 | 9–10 | +2–3 | Travel integration, advanced tracking, wilderness mastery |
 | **Stealth** | 6 | 8–9 | +2–3 | Infiltration, escape, combat stealth |
 
-### 9.2 Phase 2: System Integration (High Priority)
+### 12.2 Phase 2: System Integration (High Priority)
 
 **Goal:** Create talents that interact meaningfully with Challenges, Social Intrigue, and Travel.
 
-#### 9.2.1 Challenge Talents (+6–8 talents)
+#### 12.2.1 Challenge Talents (+6–8 talents)
 
 New talents that interact with challenge die mechanics:
 
@@ -544,7 +1011,7 @@ New talents that interact with challenge die mechanics:
 | **Streetwise Informant** | Streetwise | Learn challenge details in advance; reduce starting die by 1 in urban settings |
 | **Tactical Assessment** | Education | Reveal TN of current challenge step; plan approach for allies |
 
-#### 9.2.2 Social Intrigue Talents (+4–6 talents)
+#### 12.2.2 Social Intrigue Talents (+4–6 talents)
 
 New talents that interact with Interest, Patience, and social actions:
 
@@ -555,7 +1022,7 @@ New talents that interact with Interest, Patience, and social actions:
 | **Courtly Grace** | Education | Use Education for etiquette; reduce TN for formal negotiations |
 | **Threatening Presence** | Fortitude | Use Fortitude for intimidation; impose banes on enemy social actions |
 
-#### 9.2.3 Travel Talents (+6 talents)
+#### 12.2.3 Travel Talents (+6 talents)
 
 New talents that interact with travel roles:
 
@@ -568,11 +1035,11 @@ New talents that interact with travel roles:
 | **Road Warden** | Streetwise | Civilized travel bonuses; NPC contact for aid |
 | **Seasoned Forager** | Nature | Enhanced forage yields; identify edible plants |
 
-### 9.3 Phase 3: High-Rank Progression (Medium Priority)
+### 12.3 Phase 3: High-Rank Progression (Medium Priority)
 
 **Goal:** Extend talent progression to Ranks 4–5 across all skills.
 
-#### 9.3.1 Rank 4 Extensions (~32 talents)
+#### 12.3.1 Rank 4 Extensions (~32 talents)
 
 Every skill should have 2–3 talents that extend to Rank 4. Priority candidates:
 
@@ -595,7 +1062,7 @@ Every skill should have 2–3 talents that extend to Rank 4. Priority candidates
 | Lore | Mage Hunter, Consult the Myths | Anti-magic expertise, ritual mastery |
 | Streetwise | Swashbuckler, Thug Tactics | Urban legend, criminal empire |
 
-#### 9.3.2 Rank 5 Extensions (~16 talents)
+#### 12.3.2 Rank 5 Extensions (~16 talents)
 
 One signature talent per skill reaching Rank 5:
 
@@ -618,15 +1085,15 @@ One signature talent per skill reaching Rank 5:
 | Lore | Magical Sense | Permanent detect magic; identify enchantments on sight |
 | Streetwise | Swashbuckler (or new) | Once per scene, automatically escape a grapple, trap, or restraint |
 
-### 9.4 Phase 4: Prestige Talents (Lower Priority)
+### 12.4 Phase 4: Prestige Talents (Lower Priority)
 
 **Goal:** Introduce multi-skill talents that define archetype mastery.
 
-Implement 15–20 Prestige Talents across combat, magic, and skill categories (see §7.5 for initial proposals). Prioritize archetypes with the weakest talent support: Oracle, Bard, Tamer, Hoplite, Warlock, Rogue.
+Implement 15–20 Prestige Talents across combat, magic, and skill categories (see §10.5 for initial proposals). Prioritize archetypes with the weakest talent support: Oracle, Bard, Tamer, Hoplite, Warlock, Rogue.
 
 ---
 
-## 10. Implementation Roadmap
+## 13. Implementation Roadmap
 
 ### Priority Matrix
 
@@ -658,9 +1125,9 @@ Implement 15–20 Prestige Talents across combat, magic, and skill categories (s
 
 ---
 
-## 11. Forward-Looking Guidance
+## 14. Forward-Looking Guidance
 
-### 11.1 Talent Design for Ongoing System Evolution
+### 14.1 Talent Design for Ongoing System Evolution
 
 As new game systems are introduced, talent design should follow this integration protocol:
 
@@ -669,7 +1136,7 @@ As new game systems are introduced, talent design should follow this integration
 3. **Design integration talents** — Create 2–3 talents per system that use system-specific triggers and effects.
 4. **Validate against archetypes** — Ensure integration talents benefit the archetypes that thematically align.
 
-### 11.2 Scaling Talent Power at High Ranks
+### 14.2 Scaling Talent Power at High Ranks
 
 | Rank | Power Budget | Frequency | Scope |
 |------|-------------|-----------|-------|
@@ -679,7 +1146,7 @@ As new game systems are introduced, talent design should follow this integration
 | 4 | Encounter-defining | Daily or costly | Short range / party |
 | 5 | Session-defining | Daily / session | Scene-wide / narrative |
 
-### 11.3 Avoiding Common Pitfalls
+### 14.3 Avoiding Common Pitfalls
 
 - **Don't inflate numbers.** Rank 4–5 talents should provide new options, not just +2 instead of +1.
 - **Don't obsolete lower ranks.** Rank 5 Evasion shouldn't make Rank 3 Evasion feel pointless — it should expand the ability's scope.
@@ -687,10 +1154,10 @@ As new game systems are introduced, talent design should follow this integration
 - **Don't ignore non-combat.** Every Rank 4–5 talent should have at least secondary utility, exploration, or social applications.
 - **Don't break bounded power.** Rank 5 is mortal pinnacle. No auto-wins, no reality-warping, no effects that bypass all defenses.
 
-### 11.4 Talent Maintenance Schedule
+### 14.4 Talent Maintenance Schedule
 
 - **Per release cycle:** Audit new talents against archetype coverage, system integration, and role distribution.
-- **Per new system:** Run an integration analysis (see §5 pattern) and produce talent proposals.
+- **Per new system:** Run an integration analysis (see §8 pattern) and produce talent proposals.
 - **Per 20 new talents:** Re-evaluate skill balance, rank distribution, and defensive variety metrics.
 
 ---
