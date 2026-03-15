@@ -343,7 +343,7 @@ Ability bonuses and other flat damage are added to the total (not multiplied by 
 | Talent | Rank | Defensive Value | Assessment |
 |--------|------|----------------|------------|
 | **Defensive Dueling R1** | R1 | +1 Parry (ability bonus) | ✅ Appropriate — equivalent to a shield's parry bonus, with a clear restriction |
-| **Body of Bronze R1** | R1 | AV = 1 + Fortitude (armor bonus) | ⚠️ Scales from 2 to 6 AV — matches light/medium armor at low levels, exceeds it at high levels. At Fortitude 5, this grants 6 AV with no load, no rigid, and no durability concerns — strictly superior to all physical armor. |
+| **Body of Bronze R1** | R1 | AV = 1 + Fortitude (armor bonus) | ⚠️ Scales from 2 to 6 AV — matches light/medium armor at low levels, exceeds it at high levels. At Skill Rank 5 Fortitude, this grants 6 AV with no load, no rigid, and no durability concerns — strictly superior to all physical armor. |
 | **Armor of the Faithful R1** | R1 | AV = 1 + Mysticism (armor bonus) | ⚠️ Same scaling issue as Body of Bronze. |
 | **Heavy Armor Mastery R2** | R2 | Double AV bonus once per scene | ✅ Appropriate — limited use, reactive timing |
 | **Evasion R3** | R3 | Halve physical damage once per scene | ✅ Appropriate — powerful but once per scene |
@@ -1336,6 +1336,20 @@ These are revisions to talents identified in §6.3 as having problematic design 
 **Rank 3.** While not wearing armor, your AV equals 4 (armor bonus). You are immune to the frightened and confused conditions.
 
 *Changes: AV is now fixed per rank (2/3/4) instead of "1 + Mysticism." Weapon attack attribute swap moved from R2 to R1 since it's the core identity.*
+
+#### Battle Mage (Arcana) — Redesigned
+
+> You blend arcane study with martial training, weaving magic into your combat technique.
+
+**Rank 1.** You can spend 2 Focus as a Quick Action to add +2 to your Parry or Dodge against one attack (reactive). You can also spend 4 Focus to make an additional melee weapon attack without using an Action (once per turn).
+
+**Rank 2.** You can use Mind + Arcana for melee weapon attacks instead of the normal attribute.
+
+**Rank 3.** Your weapon attacks deal +3 damage (ability bonus).
+
+**Rank 4.** After making a weapon attack, you can use a Quick Action to cast a rank 0 spell targeting a single creature.
+
+*Changes: R3 damage is fixed at +3 instead of "+Arcana" which scaled from +1 to +5. This prevents the talent from becoming the strongest flat damage bonus in the system at high Arcana ranks. The fixed +3 is appropriate for a R3 ability.*
 
 ---
 
