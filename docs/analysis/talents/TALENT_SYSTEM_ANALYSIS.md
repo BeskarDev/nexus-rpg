@@ -1716,7 +1716,7 @@ Six talents addressing defensive variety gaps across archetype identities.
 
 > You read combat flow and interpose yourself to protect allies.
 
-**Rank 1.** Once per scene, when an ally within melee range is targeted by a melee attack, you can use a Quick Action to interpose yourself. Roll Spirit + Insight vs. the attacker's Resist. On success, the attack targets you instead of your ally.
+**Rank 1.** Once per scene, when an ally in melee range of you is targeted by a melee attack from a creature also in melee range of you, you can use a Quick Action to interpose yourself. Roll Spirit + Insight vs. the attacker's Resist. On success, the attack targets you instead of your ally.
 
 **Rank 2.** You can use Deflecting Presence once between each of your turns. When the redirected attack misses you, the attacker suffers +1 bane on their next attack.
 
@@ -1756,7 +1756,7 @@ Six talents addressing defensive variety gaps across archetype identities.
 
 **Rank 2.** You can use Desperate Gambit once between each of your turns. On a success, you can also move to an unoccupied space within close range.
 
-**Rank 3.** On a critical success (beat TN by 6+), you avoid all damage from the attack. On a normal success, you no longer fall prone on failure (you still take full damage on failure, but remain standing).
+**Rank 3.** On a critical success (beat TN by 6+), you avoid all damage from the attack. On failure, you no longer fall prone (you still take full damage, but remain standing).
 
 *High-risk, high-reward defense for glass cannons and squishy melee (Rogues, Bards, Slingers). Cannot be used in heavy armor.*
 
@@ -1768,7 +1768,7 @@ Six talents addressing defensive variety gaps across archetype identities.
 
 **Rank 2.** When you successfully resist a spell, the caster suffers +1 bane on their next spell. Your Arcane Warding also works against non-magical ranged attacks (conjuring a brief force barrier for +2 Dodge instead of +2 Resist).
 
-**Rank 3.** Once per scene, when you would take damage from any source, spend 4 Focus to create an arcane barrier that absorbs damage equal to twice your Arcana rank (e.g., Arcana 3 = absorb 6 damage, applied after AV).
+**Rank 3.** Once per scene, when you would take damage from any source, spend 4 Focus to create an arcane barrier that absorbs up to 6 damage (applied after AV subtraction).
 
 *Focus-costed defense for Sorcerers, Summoners, and the Magus. Complements Mana Shield (proactive AV) with reactive protection.*
 
