@@ -205,8 +205,8 @@ Coming from once violent and brutal cultures, the orcs have a reputation for sav
 
 | Culture | Region | Description |
 | --- | --- | --- |
-| Orgon (Island-Orcs) | Eternal Desert | Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed |
-| Zakhar (Coastal-Orcs) | Eternal Desert | Seafaring raiders and pirates along the coasts of the Great Desert |
+| Orgon (Island-Orcs) | Western Island Realms | Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed |
+| Zakhar (Wasteland-Orcs) | Eternal Desert | Canyon dwelling raiders and pirates. Invade the lands of the river during harvest season and rob the villages along it |
 | Jinkai (Mountain-Orcs) | Eastern Mist Realms | Honor-bound metalsmiths and warriors of the Eastern Mist Realms; known for their smithing, strict honor code and ritualized combat traditions |
 | Thuran (Jungle-Orcs) | Southern Jungle | Rice farmers and river warriors; adapted to life in the jungle |
 
