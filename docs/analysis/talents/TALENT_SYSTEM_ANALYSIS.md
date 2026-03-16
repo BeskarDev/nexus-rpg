@@ -2,7 +2,7 @@
 
 > **Scope:** Comprehensive audit of the talent system against archetype instructions, talent creation guidelines, and modern game systems (Challenges, Social Intrigue, Travel). Covers combat balance and power scaling, design pattern review, archetype signature talent coverage, martial/hybrid/caster differentiation, progression evaluation through Rank 5, Prestige Talent feasibility, capstone talent design, and a complete catalog of proposed new and updated talents.
 >
-> **References:** [Character Progression](../../01-basic-rules/04-character-progression.md) | [Talent Creation Guidelines](../../../.github/instructions/talent-system-design-guidelines.md) | [Archetype Instructions](../../../.github/instructions/archetype-design-guidelines.md) | [Challenge System](../../06-scenes/07-challenges/00-overview.md) | [Social Intrigue](../../06-scenes/07-challenges/01-social-intrigue.md) | [Travel](../../06-scenes/07-challenges/02-travel.md) | [Combat Arts](../../05-combat/02-combat-arts.md) | [Challenge & Social Intrigue Talent Integration](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md) | [Travel Talent Integration](./TRAVEL_TALENT_INTEGRATION.md)
+> **References:** [Character Progression](../../01-basic-rules/04-character-progression.md) | Talent Creation Guidelines | Archetype Instructions | [Challenge System](../../06-scenes/07-challenges/00-overview.md) | [Social Intrigue](../../06-scenes/07-challenges/01-social-intrigue.md) | [Travel](../../06-scenes/07-challenges/02-travel.md) | [Combat Arts](../../05-combat/05-combat-arts/00-overview.md) | [Challenge & Social Intrigue Talent Integration](./CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md) | [Travel Talent Integration](./TRAVEL_TALENT_INTEGRATION.md)
 
 ---
 

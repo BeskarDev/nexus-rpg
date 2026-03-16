@@ -22,8 +22,8 @@
       },
       {
         "name": "Dharok (Hill-Dwarves)",
-        "region": "Southern Jungle",
-        "description": "Temple builders and stonemasons in volcanic caves of the Southern Jungle"
+        "region": "Eastern Mist Realms",
+        "description": "Temple builders and stonemasons of the table mountains and jungle in the southern Eastern Mist Realms"
       },
       {
         "name": "Mahruk (Sea-Dwarves)",
@@ -58,7 +58,7 @@
       {
         "name": "Ho'shien (River-Elves)",
         "region": "Eastern Mist Realms",
-        "description": "Nomadic traders following the great rivers of the High East"
+        "description": "Ancient elven high culture between two great rivers; once a united empire, now split into three sovereign kingdoms"
       },
       {
         "name": "Anutep (Sun-Elves)",
@@ -84,6 +84,11 @@
         "name": "Xilvan (Jungle-Elves)",
         "region": "Southern Jungle",
         "description": "Reclusive, wild guardians of the deep jungle wilderness"
+      },
+      {
+        "name": "Morvael (Vampire-Elves)",
+        "region": "Frozen North",
+        "description": "Isolationist vampire-elf culture in fortified mountain settlements of the eastern Frozen North; warrior aristocracy with blood and bronze culture"
       }
     ],
     "abilities": [
@@ -158,17 +163,12 @@
       {
         "name": "Hataar (Mountain-Hune)",
         "region": "Eternal Desert",
-        "description": "Solitary herders and pass wardens of the mountain passes in the Great Desert"
+        "description": "Nomadic mountain herders who developed astronomy and navigation through their migrations; their gods embody the star constellations that guide them"
       },
       {
         "name": "Jotnir (Ice-Hune)",
         "region": "Frozen North",
         "description": "Frost-resistant nomads of the Frozen North; living in eternal harmony with the ice"
-      },
-      {
-        "name": "Mammuthar (Mammoth-Hune)",
-        "region": "Frozen North",
-        "description": "Tundra wanderers with deep bonds to mammoths; legendary animal handlers"
       },
       {
         "name": "Empyros (Island-Hune)",
@@ -177,8 +177,8 @@
       },
       {
         "name": "Ta'uuri (Island-Hune)",
-        "region": "Western Island Realms",
-        "description": "Coastal builders of stone harbors and lighthouses"
+        "region": "Eastern Mist Realms",
+        "description": "Seafaring Hunes in the southern island chains of the Eastern Mist Realms; fishers, maritime warriors and explorers"
       }
     ],
     "abilities": [
@@ -202,11 +202,6 @@
     "description": "Coming from once violent and brutal cultures, the orcs have a reputation for savagery that many have worked hard to overcome. While many have adopted a more civilized life, the Old Folk often reduce them to the evil deeds of their ancestors. Despite this, orcs value strength and honor above all else, and their fierce determination and indomitable will make them formidable allies. In Atakhet, many orcs serve as elite mercenaries or skilled craftspeople, gradually earning respect through their deeds rather than their lineage.",
     "cultures": [
       {
-        "name": "Gataka (Valley-Orcs)",
-        "region": "Eastern Mist Realms",
-        "description": "Warriors with strict honor culture; following rigid combat traditions"
-      },
-      {
         "name": "Orgon (Island-Orcs)",
         "region": "Eternal Desert",
         "description": "Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed"
@@ -218,8 +213,8 @@
       },
       {
         "name": "Jinkai (Mountain-Orcs)",
-        "region": "Frozen North",
-        "description": "Honor-bound metalsmiths from misty valleys; known for their smithing and honor code"
+        "region": "Eastern Mist Realms",
+        "description": "Honor-bound metalsmiths and warriors of the Eastern Mist Realms; known for their smithing, strict honor code and ritualized combat traditions"
       },
       {
         "name": "Thuran (Jungle-Orcs)",
@@ -293,14 +288,9 @@
         "description": "Nomadic human tribes of the grasslands; many were brought to labor in Atakhet"
       },
       {
-        "name": "Sefkari (Scholar-Humans)",
+        "name": "Sefkari (Oasis-Humans)",
         "region": "Eternal Desert",
-        "description": "Arcane academics of the temple universities; keepers of forbidden knowledge"
-      },
-      {
-        "name": "Zaubererfürsten (Sorcerer-Princes)",
-        "region": "Eternal Desert",
-        "description": "Decentralized magocracy in the Kesheret desert; isolated citadel-states of arcane tyrants hoarding forbidden knowledge"
+        "description": "Oasis dwellers of the Great Desert; harnessing human affinity for arcane magic at the watering holes of Atakhet"
       },
       {
         "name": "Vornheimr (Snow-Humans)",
@@ -376,7 +366,7 @@
       {
         "name": "Vaashk (Swamp-Lizardfolk)",
         "region": "Eternal Desert",
-        "description": "Lizardfolk of the Satimaha Swamps; amphibious wetland dwellers with tribal traditions"
+        "description": "Lizardfolk of the Oshet-Delta; amphibious wetland dwellers with tribal traditions"
       },
       {
         "name": "Ceratos (Threehorns)",
@@ -436,12 +426,7 @@
       {
         "name": "Yettnar (Mountain-Minotaurs)",
         "region": "Frozen North",
-        "description": "Solitary guardians of ancient passes and shrines; legendarily silent and watchful"
-      },
-      {
-        "name": "Firbeol (Firbolg-Minotaurs)",
-        "region": "Frozen North",
-        "description": "Druidic forest minotaurs; guardian groves, ancient stone circles, and ancestor worship"
+        "description": "Druidically inclined mountain minotaurs of the Frozen North; guardians of ancient passes, stone circles, and sacred groves with deep nature affinity"
       },
       {
         "name": "Minokos (Island-Minotaurs)",
@@ -490,7 +475,7 @@
       },
       {
         "name": "Kithar (Fox-Folk)",
-        "region": "Western Island Realms",
+        "region": "Eastern Mist Realms",
         "description": "Shrewd traders and diplomats of the Island Realms; known for their negotiation skills"
       }
     ],
