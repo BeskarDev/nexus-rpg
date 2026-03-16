@@ -214,7 +214,23 @@ In a system with lethal combat, defensive variety is essential. Current defensiv
 | **Redirection** | — | 0 | ❌ Missing entirely |
 | **Reactive defense** | Reflexive Shooter | 1 | ❌ Near-missing |
 
-**Recommendation:** Add redirection talents (Insight-based: redirect attacks), avoidance talents (Stealth-based: vanish in combat), and reactive defense talents (Perception-based: danger sense in combat).
+**Recommendation:** Add redirection talents (Insight-based: redirect attacks), avoidance talents (Stealth-based: vanish in combat), and reactive defense talents (Perception-based: danger sense in combat). See §4.5.1 below for concrete proposals.
+
+#### 4.5.1 Proposed Defensive Talents
+
+The following new talents address each missing defensive category. Full write-ups appear in Appendix D.
+
+**Redirection — Redirecting Presence (Insight), New**
+
+Uses empathic reading to manipulate enemy targeting. R1: Once per scene, when an ally within close range is attacked, use a Quick Action to redirect the attack to a different valid target (including yourself) by rolling Spirit + Insight vs. the attacker's Resist. R2: Redirection can be used once between each of your turns. R3: When you redirect an attack to yourself and the attack misses, the attacker is briefly dazed.
+
+**Avoidance — Shadow Slip (Stealth), New**
+
+Uses misdirection and positioning to avoid attacks entirely. R1: Once per scene, when you are attacked in melee and there is an enemy adjacent to your attacker, you can use a Quick Action to impose +1 bane on the attack against you by slipping behind cover. R2: When a melee attack against you misses, you can move to any unoccupied space within close range without provoking Opportunity Attacks. R3: Once per scene, when you are targeted by any attack, you can use a Quick Action to become briefly hidden (as if you had used the Hide action). The attack still resolves, but if it misses, you begin your next turn hidden.
+
+**Reactive Defense — Combat Instincts (Perception), New**
+
+Situational awareness grants split-second defensive reactions. R1: Once per scene, when you are targeted by an attack you can see coming, you can use a Quick Action to gain +2 to the targeted Defense against that attack. R2: When an ally within close range is targeted by an attack and you can see the attacker, you can use a Quick Action to warn the ally — they gain +1 to their targeted Defense. R3: You gain +1 Quick Action that can only be used for defensive Quick Actions (Evade, Protect Ally, or abilities from this talent) between your turns.
 
 ---
 
@@ -533,32 +549,46 @@ No current exclusivity needed — weapon mastery talents are already tied to spe
 
 **Current state:** The talent system does not formally differentiate between martial, hybrid, and full-caster characters. Any character with the relevant skill can take any talent.
 
-**The hybrid temptation:** Because talents are cheap (1 TP each) and skills are free-form, a Fighting character can easily dip into Mysticism or Arcana for powerful hybrid abilities. For example, a Fighter with Arcana 1 can take Battle Mage R1, gaining the ability to add Arcana to Parry/Dodge — an extremely efficient defensive boost for 1 TP.
+**Critical rule context — spell acquisition is automatic:** When a character gains a rank in Arcana or Mysticism, they **automatically learn new spells as part of the skill rank-up** (Arcana: 2 spells per rank; Mysticism: 2 spells for Balance path, 3 spells for Devotion path). The Spell Knowledge talents (Arcane Spell Knowledge, Mystical Spell Knowledge) provide *additional* spells and +2 Focus per rank on top of this baseline. This means:
 
-**Is this a problem?** Analysis suggests it is **mostly a non-issue** for three reasons:
+- A character with Arcana 1 already knows **two rank 0 spells and one discipline** — they can cast immediately.
+- A character with Mysticism 2 already knows **four spells** (Balance) or **six spells** (Devotion) across their traditions.
+- Spell Knowledge talents add breadth (more spells, more disciplines) and resources (+2 Focus), but they are **not required for basic spellcasting**.
 
-1. **XP scarcity limits dipping.** Each skill rank requires significant XP (2/6/12/18/24). A fighter who invests 2 XP for Arcana 1 + Battle Mage R1 sacrifices 2 XP that could go toward Fighting 3 or Fortitude 2. The opportunity cost is real.
+**The hybrid temptation — real cost assessment:**
 
-2. **Spell access requires investment.** Casting actual spells requires both Arcana/Mysticism skill rank AND Spell Knowledge talents. A 1-point dip grants Battle Mage R1 but no spells — you need at least 4 XP (Arcana 1 + Arcane Spell Knowledge R1) to cast a single cantrip.
+Because spell access is inherent to the magic skill rank, a Fighter who invests just 2 XP for Arcana 1 gains: one discipline, two rank 0 spells, a Focus pool, and eligibility for Battle Mage R1. This is a significant capability package for a modest XP investment.
 
-3. **Flavor alignment is natural.** The Champion archetype is explicitly a Fighting + Mysticism hybrid. The Magus is Fighting + Arcana. Hybrids are a design feature, not a bug.
+However, analysis suggests this is **mostly a non-issue** for the following reasons:
+
+1. **XP scarcity limits dipping.** Each skill rank requires significant XP (2/6/12/18/24). A fighter who invests 2 XP for Arcana 1 sacrifices 2 XP that could go toward Fighting 3 or Fortitude 2. The opportunity cost is real — at early levels, every 2 XP matters for hitting key skill rank thresholds.
+
+2. **Focus pools are small without investment.** A d6 Mind character at Arcana 1 has only 4 Focus — enough for two rank 0 spells (0 Focus) and no rank 1 spells without going to HP. Without Spell Knowledge's +2 Focus per rank, sustained casting is impractical. The hybrid gets a few utility cantrips, not a full spell repertoire.
+
+3. **Spell power scales with attributes.** Spell Power = ½ Mind (Arcana) or ½ Spirit (Mysticism). A martial character typically prioritizes Strength/Agility, leaving their casting attribute at d6 (Spell Power 3). This makes their spells significantly weaker than a dedicated caster's.
+
+4. **Flavor alignment is intentional.** The Champion (Fighting + Mysticism) and Magus (Fighting + Arcana) are explicitly designed archetypes. Hybrids are a feature, not a bug.
 
 **Where intervention may be needed:**
 
-The concern arises at **Rank 3+ magic skills** where hybrid characters can access powerful spell infusion (Spellblade R3 = rank 2 spells through weapons, Mystic Champion R3 = rank 2 mystic spells through weapons) while also having Fighting 3+ for combat arts. This combination — full weapon mastery AND rank 2 spell infusion — may outperform pure martials who get similar damage but without the spell utility.
+The concern arises at **Rank 3+ magic skills** where hybrid characters can access powerful spell infusion (Spellblade R3 = rank 2 spells through weapons, Mystic Champion R3 = rank 2 mystic spells through weapons) while also having Fighting 3+ for Combat Arts. This combination — full weapon mastery AND rank 2 spell infusion — may outperform pure martials who get similar damage but without the spell utility.
 
-**Proposed solution — Soft differentiation through Focus economy:**
+**Natural differentiation through Focus economy:**
 
-- Pure casters have high Focus pools (Spell Knowledge grants +2 per rank = up to +8 Focus) and Focus recovery talents (Inexhaustible Mind, Divine Rites).
-- Hybrids spend Focus on spell infusion (Spellblade/Mystic Champion cost +2 Focus per use) but lack Focus recovery, creating a natural limit on how many infused attacks they can make.
-- Pure martials have no Focus costs but also no spell utility.
+The system already provides meaningful differentiation through three mechanisms:
+
+1. **Focus pool scaling.** Pure casters with Spell Knowledge have Focus pools of 12–20+. Hybrids without Spell Knowledge talents have Focus pools of 4–10. This limits how many spell-infused attacks a hybrid can make per scene.
+
+2. **Focus recovery access.** Pure casters have Focus recovery talents (Inexhaustible Mind, Divine Rites) that let them sustain casting across multiple encounters. Hybrids who invest in combat talents instead lack these recovery mechanisms.
+
+3. **Attribute tension.** Pure casters maximize Mind or Spirit (boosting Spell Power, Focus, and Resist). Pure martials maximize Strength or Agility (boosting weapon damage and Dodge/Parry). Hybrids must compromise, gaining moderate effectiveness in both areas but excelling in neither.
 
 This creates a natural triad:
-- **Full caster:** Many spells, high Focus, weak weapons → High versatility, lower sustained damage
-- **Hybrid:** Spell-infused weapons, limited Focus, moderate weapons → Burst damage, resource-constrained
-- **Full martial:** No spells, no Focus costs, best weapons + combat arts → Highest sustained damage, no spell utility
+- **Full caster:** Many spells, high Focus + recovery, high Spell Power → Versatile, sustained magical output
+- **Hybrid:** Spell-infused weapons, limited Focus, moderate Spell Power → Burst potential, resource-constrained, falls off without rests
+- **Full martial:** No spells, no Focus costs, best weapons + Combat Arts → Highest sustained physical damage, most reliable turn-to-turn output
 
-**Recommendation:** The current implicit differentiation through Focus economy is sufficient. No talent exclusivity between martial and magic talents is needed. However, ensure that future R4–R5 martial talents provide enough power to keep pure martials competitive with hybrids at high levels.
+**Recommendation:** The current implicit differentiation through Focus economy and attribute tension is sufficient. No talent exclusivity between martial and magic talents is needed. However, R4–R5 martial talents must provide enough power to keep pure martials competitive with hybrids at high levels — pure martials should gain abilities that match the versatility advantage hybrids get from their spell access.
 
 ---
 
@@ -700,104 +730,55 @@ To address the TP dead zone, each skill needs:
 
 **Minimum additions needed:** ~2–3 Rank 4 talents per skill (totaling ~26–42 across 16 skills) and ~1 Rank 5 talent per skill (~16 total).
 
-### 9.6 Extension Strategy: Which Talents Extend to R4–R5, Which Cap at R3
+### 9.6 Extension Strategy: Simplified Talent Progression Framework
 
-Not every talent should extend beyond R3. The following classification determines which talents should grow to R4–R5, which should remain at R3, and where new R4–R5-only talents are needed.
+Based on designer guidance, talent progression should follow **exactly three paths**. This avoids proliferating different talent types and keeps the system clean:
 
-**Classification criteria:**
-- **Extend to R5** = Core identity talents that define a playstyle. These are the "career" talents a character invests in for their entire progression.
-- **Extend to R4 only** = Talents with strong mechanical foundations that can benefit from one more rank of scope expansion, but don't need grandmaster-level effects.
-- **Cap at R3** = Talents that are complete at R3 (their design space is fully explored), situational talents, or talents that would become too powerful at higher ranks.
-- **New R4–R5 only** = Talents that exist only at R4+ because they require master/grandmaster skill to even attempt. These solve the TP dead zone without extending existing designs.
+| Path | Ranks | Purpose | Example |
+|------|-------|---------|---------|
+| **Signature Talent (R1–R5)** | 1, 2, 3, 4, 5 | Core archetype identity. A character's defining talent line that grows with them from Novice to Grandmaster. | Art of Fighting, Pact of Devotion, Animal Companion |
+| **Basic Low-Level Talent (R1–R3)** | 1, 2, 3 | Standard talents that unlock and complete a playstyle at the Expert tier. Design space is fully explored by R3. | Blade Mastery, Evasion, Born Haggler |
+| **High-Level Talent (R4–R5)** | 4, 5 | New talents that only exist at Master/Grandmaster tier. Require high skill rank to even attempt. Represent abilities that only masters would develop. | New talents designed specifically for R4+ |
 
-#### Fighting (14 talents)
+**This means:**
+- No talent spans R1–R4 only (either it's signature and goes to R5, or it caps at R3).
+- Prestige Talents and single-skill capstones are not separate categories — they are both implementations of the "high-level talent" path. The question is only which design principle serves better for R4–R5 content (see §10).
+- The TP dead zone is solved by a combination of extending ~8–10 signature talents to R5, and creating new high-level R4–R5 talents for each skill.
 
-| Talent | Current Max | Recommendation | Rationale |
-|--------|-----------|----------------|-----------|
-| Art of Fighting | R4 | **Extend to R5** | Core combat art access — the career talent for martial fighters |
-| Shield Mastery | R3 | **Extend to R4** | Scope expansion: shield benefits to allies, advanced shield techniques |
-| Defensive Dueling | R3 | **Extend to R4** | Master duelist: automatic riposte, untouchable single-combat |
-| Martial Artist | R3 | **Extend to R5** | Career talent for monks/brawlers — pinnacle unarmed mastery |
-| Dual Wielder | R3 | **Extend to R4** | Master dual wielder: coordinated two-weapon strikes |
-| Polearm Mastery | R3 | **Extend to R4** | Zone control: area denial, formation anchoring |
-| Riposte | R3 | **Cap at R3** | Complete design — counterattack with daze is a satisfying capstone |
-| Disciplined Fighter | R3 | **Cap at R3** | Utility talent — reroll and extra attack are sufficient |
-| Axe Mastery | R3 | **Cap at R3** | Weapon-specific — rend + bleed is a full kit |
-| Blade Mastery | R3 | **Cap at R3** | Weapon-specific — property swap + boon is complete |
-| Heavy Weapon Mastery | R3 | **Cap at R3** | Damage bonus + cleave synergy is sufficient |
-| Mace Mastery | R3 | **Cap at R3** | Minimum damage + daze is complete |
-| Protective Stance | R3 | **Cap at R3** | Ally protection is fully developed at R3 |
-| Pugilist | R3 | **Cap at R3** | Unarmed damage progression — extends through Martial Artist instead |
+#### Which Existing Talents Become Signature (R1–R5)?
 
-#### Archery (9 talents)
+These are the "career" talents — a character's defining investment from level 1 through endgame. Each should represent a core archetype identity.
 
-| Talent | Current Max | Recommendation | Rationale |
-|--------|-----------|----------------|-----------|
-| Art of Archery | R4 | **Extend to R5** | Core combat art access for ranged fighters |
-| Sharpshooter | R3 | **Extend to R4** | Extreme range mastery, anti-cover |
-| Rapid Shot | R3 | **Extend to R4** | Multi-target volley, suppression fire |
-| Disciplined Archer | R3 | **Cap at R3** | Mirrors Disciplined Fighter — utility complete |
-| Crossbow Mastery | R3 | **Cap at R3** | Weapon-specific — stun on hit is complete |
-| Expert Slinger | R3 | **Cap at R3** | Weapon-specific — throw-and-move is complete |
-| Ammo Specialist | R3 | **Cap at R3** | Ammo variety is fully explored |
-| Reflexive Shooter | R3 | **Cap at R3** | Reactive defense is complete |
-| Strong Grip | R3 | **Cap at R3** | Heavy bow mastery is complete |
+| Skill | Signature Talent (R1–R5) | Archetype Served |
+|-------|-------------------------|------------------|
+| Fighting | Art of Fighting | Fighter, Gladiator, Hoplite (Combat Art access) |
+| Fighting | Martial Artist | Monk, Brawler (unarmed combat) |
+| Archery | Art of Archery | Ranger, Slinger (Combat Art access) |
+| Arcana | Arcane Spell Knowledge | Sorcerer, Summoner (spell access) |
+| Arcana | Battle Mage | Magus (weapon-magic hybrid) |
+| Mysticism | Mystical Spell Knowledge | Priest, Druid, Shaman (spell access) |
+| Mysticism | Pact of Devotion | Champion (divine warrior pact) |
+| Fortitude | Hard to Kill | Barbarian, Fighter (survivability career) |
+| Nature | Animal Companion | Tamer, Druid (companion career) |
+| Lore | Magical Sense | Warlock, Sorcerer (arcane awareness career) |
 
-#### Arcana (8 talents)
+**Total: 10 signature talents that extend to R5.**
 
-| Talent | Current Max | Recommendation | Rationale |
-|--------|-----------|----------------|-----------|
-| Arcane Spell Knowledge | R4 | **Extend to R5** | Core spell access — must extend to unlock R5 spells |
-| Battle Mage | R4 | **Extend to R5** | Career talent for magus archetype |
-| Spellweaver | R3 | **Extend to R4** | Metamagic mastery: more arts, reduced Focus costs |
-| Spellblade | R3 | **Extend to R4** | Higher-rank spell infusion |
-| Wild Overload | R3 | **Cap at R3** | Chaotic design — R3's "choose your result" is already very powerful |
-| Mana Shield | R3 | **Cap at R3** | Defensive scaling is sufficient |
-| Master of Fundamentals | R3 | **Cap at R3** | Cantrip mastery is complete |
-| Inexhaustible Mind | R3 | **Cap at R3** | Focus recovery is fully developed |
+#### Which Existing Talents Cap at R3 (Basic Low-Level)?
 
-#### Mysticism (11 talents)
+All remaining talents. Their design space is fully explored at R3, they're situational, or extending them further would cause power issues. This includes:
 
-| Talent | Current Max | Recommendation | Rationale |
-|--------|-----------|----------------|-----------|
-| Mystical Spell Knowledge | R4 | **Extend to R5** | Core spell access for mystics |
-| Pact of Devotion | R3 | **Extend to R5** | Career talent for priests — pact mastery at R4–R5 |
-| Mystic Champion | R3 | **Extend to R4** | Higher-rank spell infusion (mirrors Spellblade) |
-| Divine Rites | R3 | **Cap at R3** | Focus recovery complete |
-| Communal Practices | R3 | **Cap at R3** | Targeting flexibility complete |
-| Elemental Adept | R3 | **Cap at R3** | Resistance piercing complete |
-| Shape Changer | R3 | **Extend to R4** | Career talent for druids — advanced forms |
-| Armor of the Faithful | R3 | **Cap at R3** | Defensive scaling sufficient (with proposed cap) |
-| Divine Sense | R3 | **Cap at R3** | Detection is fully developed |
-| Master of Principles | R3 | **Cap at R3** | Cantrip mastery mirrors Master of Fundamentals |
-| Divine Favor | Stub | **New: Design R1–R3** | Then assess for R4–R5 extension |
+- **All weapon mastery talents** (Axe, Blade, Heavy Weapon, Mace, Polearm) — weapon-specific technique is complete at R3
+- **All defensive stance talents** (Defensive Dueling, Protective Stance, Shield Mastery) — defensive kit is complete
+- **All utility talents** (Born Haggler, Fast Talking, Athletic Movement, etc.) — utility effects don't need R5 power
+- **All focus recovery talents** (Inexhaustible Mind, Divine Rites) — recovery scaling is sufficient
+- **All cantrip mastery** (Master of Fundamentals, Master of Principles) — cantrip enhancement is complete
 
-#### General Skills
+#### What Goes in the R4–R5 High-Level Category?
 
-| Skill | Talent | Recommendation | Rationale |
-|-------|--------|----------------|-----------|
-| Athletics | Evasion | **Extend to R4** | Master evasion: reaction-based dodge |
-| Athletics | Fast Stride | **Extend to R4** | Supernatural speed |
-| Athletics | Grappler | **Cap at R3** | Grappling complete |
-| Athletics | Others | **Cap at R3** | Utility complete |
-| Fortitude | Hard to Kill | **Extend to R5** | Career talent for tanks — death defiance |
-| Fortitude | Battle Rage | **Extend to R4** | Barbarian career — fury escalation |
-| Fortitude | Juggernaut | **Extend to R4** | Multi-enemy defense expansion |
-| Fortitude | Others | **Cap at R3** | Utility/defense complete |
-| Influence | Inspire Ally | **Extend to R4** | Warlord career — mass inspiration |
-| Influence | Leading Presence | **Extend to R4** | Commander aura expansion |
-| Influence | Others | **Cap at R3** | Social talents complete at R3 |
-| Insight | Empath | **Extend to R4** | Combat reading mastery |
-| Insight | Piercing Look | **Cap at R3** | Investigation complete |
-| Perception | Danger Sense | **Extend to R4** | Preternatural awareness |
-| Perception | Identify Weakness | **Extend to R4** | Master tactical analysis |
-| Stealth | Assassination | **Extend to R4** | Master assassin: advanced stealth kills |
-| Stealth | Hidden Strike | **Cap at R3** | One-shot technique complete |
-| Survival | Monster Hunter | **Extend to R4** | Legendary hunter career |
-| Survival | Trap Maker | **Extend to R4** | Master trapper |
-| Nature | Animal Companion | **Extend to R5** | Career talent for tamers/druids |
-| Nature | Field Medic | **Extend to R4** | Advanced battlefield medicine |
-| Education | Tactician | **Extend to R4** | Battlefield command expansion |
+New talents designed specifically for Master and Grandmaster tiers. These fill the remaining TP budget and provide fresh options that couldn't exist at lower ranks.
+
+The open question is **what design principle** to use for these high-level talents. Section 10 evaluates two approaches: single-skill capstones vs. cross-skill prestige talents.
 | Education | Commander | **Extend to R4** | Mass command abilities |
 | Crafting | Artisan | **Extend to R4** | Masterwork creation |
 | Crafting | Peak Performance | **Cap at R3** | Enhancement bonuses sufficient |
@@ -808,150 +789,130 @@ Not every talent should extend beyond R3. The following classification determine
 
 #### Summary
 
-| Category | Extend to R5 | Extend to R4 | Cap at R3 | New R4–R5 Only |
-|----------|-------------|-------------|-----------|----------------|
-| Fighting | 2 (Art of Fighting, Martial Artist) | 4 | 8 | — |
-| Archery | 1 (Art of Archery) | 2 | 6 | — |
-| Arcana | 2 (Spell Knowledge, Battle Mage) | 2 | 4 | — |
-| Mysticism | 2 (Spell Knowledge, Pact of Devotion) | 2 | 6 | 1 (Divine Favor) |
-| General Skills | 2 (Hard to Kill, Animal Companion) | 10 | ~15 | — |
-| Expert Skills | 1 (Magical Sense) | 5 | ~10 | — |
-| **Total** | **10** | **25** | **~49** | **1** |
+| Progression Path | Count | Talent Types |
+|-----------------|-------|--------------|
+| **Signature (R1–R5)** | 10 | Art of Fighting, Martial Artist, Art of Archery, Arcane/Mystical Spell Knowledge, Battle Mage, Pact of Devotion, Hard to Kill, Animal Companion, Magical Sense |
+| **Basic Low-Level (R1–R3)** | ~112 | All remaining existing talents |
+| **High-Level (R4–R5)** | TBD | New talents — see §10 for design framework |
 
-This gives 10 talents reaching R5 and 25 reaching R4 from existing talent lines, plus new talents to fill remaining TP budget gaps (see §12 for the complete catalog).
+This three-path structure keeps the system clean: every talent is either a signature career talent (R1–R5), a complete low-level talent (R1–R3), or a new high-level talent (R4–R5). No talent awkwardly stops at R4.
 
 ---
 
-## 10. Prestige Talents
+## 10. High-Level Talent Design: R4–R5 Framework
 
-### 10.1 Concept
+The core design question for R4–R5 is: **what type of new talents should fill the high-level slot?** Two approaches are evaluated below. They are not mutually exclusive — the final system may use one, the other, or both.
 
-Prestige Talents (inspired by D&D 3.5e Prestige Classes) are advanced talents requiring Rank 3+ in multiple skills. They reward multi-skill investment and define archetype mastery.
+### 10.1 Approach A: Single-Skill Capstone Talents
 
-**Example prerequisites:** "Requires Fighting 3 and Athletics 3" or "Requires Arcana 3 and Lore 3."
-
-### 10.2 Feasibility Assessment
+**Concept:** New R4–R5 talents within a single skill that represent advanced mastery only a Master or Grandmaster could achieve.
 
 | Factor | Assessment | Notes |
 |--------|------------|-------|
-| **System fit** | ✅ Strong | TP economy supports multi-skill builds. Characters naturally spread XP. |
-| **Archetype alignment** | ✅ Strong | Each archetype uses 4 skills. Prestige Talents reward thematic investment. |
-| **Complexity cost** | ⚠️ Moderate | Adds a prerequisite layer that must be clearly communicated. |
-| **Build diversity** | ✅ Positive | Creates meaningful choices between deep (single-skill) and wide (multi-skill) investment. |
-| **Balance risk** | ⚠️ Moderate | Multi-skill prerequisites inherently limit availability. Must ensure single-skill paths remain viable. |
+| **System fit** | ✅ Strong | Simple extension of existing talent model. No new rules needed. |
+| **TP budget** | ✅ Efficient | Each skill gets 2–3 new talents at R4 and 1 at R5, absorbing surplus TP cleanly. |
+| **Complexity** | ✅ Low | Players already understand single-skill talents. |
+| **Archetype definition** | ⚠️ Moderate | Provides depth within a skill but doesn't reward cross-skill investment. |
+| **Design space** | ⚠️ Limited | Some skills (Streetwise, Insight) struggle to fill R4–R5 with compelling single-skill effects. |
 
-### 10.3 Recommendation: Adopt Prestige Talents
+**Design principles for single-skill capstones:**
+- R4 talents should be **encounter-shaping**: broader scope, multi-target, reduced action costs.
+- R5 talents should be **session-defining**: once-per-day or once-per-scene dramatic abilities.
+- Both should feel like fundamentally new capabilities, not just bigger numbers.
+- Use clear cost gates (once per day, Resolve spend, HP cost) to prevent abuse.
 
-Prestige Talents are a natural fit for Nexus RPG's free-form progression model. They solve three problems:
+### 10.2 Approach B: Prestige Talents (Cross-Skill)
 
-1. **High-rank TP surplus** — Give Rank 4–5 characters meaningful spending options.
-2. **Archetype definition** — Let players mechanically commit to an archetype identity.
-3. **Cross-skill synergy** — The design guidelines call for inter-skill synergies; Prestige Talents make these explicit.
+**Concept:** Advanced talents requiring Rank 3+ in two skills. They reward multi-skill investment and define archetype identity through cross-skill synergy.
 
-### 10.4 Prestige Talent Design Framework
+| Factor | Assessment | Notes |
+|--------|------------|-------|
+| **System fit** | ✅ Strong | TP economy supports multi-skill builds. Characters naturally spread XP across 3–4 skills. |
+| **Archetype alignment** | ✅ Strong | Each archetype uses 4 skills. Prestige Talents mechanically reward thematic investment. |
+| **Complexity** | ⚠️ Moderate | Adds a prerequisite layer that must be clearly communicated. New concept for players. |
+| **Archetype definition** | ✅ Strong | Explicitly ties talent access to archetype skill combinations. |
+| **Design space** | ✅ Rich | Cross-skill combinations open many unique effects (shield+leadership, archery+crafting, magic+social). |
 
-**Structure:**
+**Design principles for Prestige Talents:**
 - **Prerequisites:** Rank 3+ in two named skills (the "pillar" and one supporting skill).
-- **Ranks:** 1–2 (to keep investment modest alongside normal talent spending).
-- **Placement:** Listed under the pillar skill's talent file, with prerequisites clearly noted.
-- **Budget:** 2–4 Prestige Talents per skill, focused on archetypes that use that skill as a pillar.
+- **Ranks:** 2 maximum (R4 and R5 only — modest investment alongside signature talents).
+- **Placement:** Listed under the pillar skill, with prerequisites clearly noted.
+- **Budget:** 2–4 per skill, focused on archetypes that use that skill as a pillar.
 
-**Naming convention:** Evocative names that reflect the archetype's identity, not mechanical descriptions.
+### 10.3 Recommendation
+
+Both approaches have merit and address different needs:
+
+| Need | Single-Skill Capstones | Prestige Talents |
+|------|----------------------|------------------|
+| TP dead zone | ✅ Directly fills surplus | ✅ Also fills surplus |
+| Archetype identity | ⚠️ Moderate (skill-defined) | ✅ Strong (combination-defined) |
+| System complexity | ✅ Minimal (no new rules) | ⚠️ Moderate (new prerequisite type) |
+| Build pressure | ⚠️ None (free picks) | ✅ Rewards planned investment |
+| Design uniqueness | ⚠️ Must avoid being "R3 but bigger" | ✅ Cross-skill effects are inherently novel |
+
+**Recommended decision path:**
+1. **If simplicity is paramount:** Use only single-skill capstones. Design 2–3 new R4–R5 talents per skill.
+2. **If archetype identity matters most:** Use only prestige talents. Design 2–4 cross-skill talents per archetype cluster.
+3. **If both goals matter (recommended):** Use both. Each skill gets 1–2 single-skill capstones (simple, universally accessible) AND 1–2 prestige talents (archetype-specific, cross-skill). This provides enough R4–R5 options to absorb the TP surplus while rewarding both deep and wide investment strategies.
+
+### 10.4 R4–R5 Templates
+
+Whether single-skill or prestige, R4–R5 talents should follow these templates:
+
+#### Rank 4 Templates (Encounter-Shaping)
+
+| Template | Pattern | Example |
+|----------|---------|---------|
+| **Scope Expansion** | Single-target → multi-target | Shield Mastery (new R4): Shield bonus applies to adjacent allies |
+| **Action Economy** | Full Action → Quick Action | Second Wind (new R4): Use as Quick Action once per day |
+| **Reliability** | Conditional → consistent | Evasion (new R4): Use even when surprised or restrained |
+| **System Bridge** | Combat → Challenge/Travel | Disciplined Fighter (new R4): Add Fighting to Fortitude rolls during challenges |
+| **Recovery** | Mitigate → reverse | Hard to Kill R4: When reduced to 0 HP, remain at 1 HP instead (once per day) |
+
+#### Rank 5 Templates (Session-Defining)
+
+| Template | Pattern | Example |
+|----------|---------|---------|
+| **Legendary Action** | Once per day, dramatic effect | Art of Fighting R5: Treat any Fighting roll as a Critical Success |
+| **Permanent Enhancement** | Passive mastery bonus | Sharpshooter (new R5): Ranged attacks never suffer banes from range/cover/weather |
+| **Narrative Authority** | Player-directed story impact | Tactician (new R5): Once per session, declare a tactical insight (GM adjudicates) |
+| **Capstone Synergy** | Combine two talent lines | Battle Mage R5: Cast a spell and make a weapon attack as one Action |
+| **Grandmaster Signature** | Unique pinnacle ability | Martial Artist R5: Unarmed strikes count as magic weapons; 6 weapon damage |
 
 ### 10.5 Prestige Talent Proposals
 
-The following are representative designs. Each addresses a specific archetype gap and requires cross-skill investment.
+If prestige talents are adopted, the following representative designs each address a specific archetype gap. Full write-ups appear in Appendix D.
 
 #### Martial Prestige Talents (Fighting pillar)
 
 | Prestige Talent | Prerequisites | Archetype | Core Effect |
 |----------------|---------------|-----------|-------------|
-| **Phalanx Commander** | Fighting 3, Influence 3 | Hoplite/Warlord | Adjacent shield-bearing allies gain +1 AV; once per scene, command a coordinated strike where all allies in melee attack simultaneously. |
-| **Iron Tempest** | Fighting 3, Athletics 3 | Barbarian/Gladiator | When you reduce an enemy to 0 HP, immediately make a free melee attack against an adjacent enemy. Once per day, enter a fighting fury for a short duration: gain +1 boon on melee attacks but −2 to all defenses. |
-| **Blade Dancer** | Fighting 3, Stealth 3 | Duelist/Swashbuckler | After hitting an enemy, you may move 1 area without provoking attacks. Once per scene, when you dodge an attack, make a free counter-attack. |
+| **Phalanx Commander** | Fighting 3, Influence 3 | Hoplite/Warlord | Adjacent shield-bearing allies gain +1 AV; once per scene, command a coordinated strike |
+| **Iron Tempest** | Fighting 3, Athletics 3 | Barbarian/Gladiator | Free attack on killing blow; once per day, enter fighting fury (+1 boon attacks, −2 defenses) |
+| **Blade Dancer** | Fighting 3, Stealth 3 | Duelist/Swashbuckler | Move 1 area after hitting without provoking; once per scene, counter-attack on dodge |
 
 #### Ranged Prestige Talents (Archery pillar)
 
 | Prestige Talent | Prerequisites | Archetype | Core Effect |
 |----------------|---------------|-----------|-------------|
-| **Predator's Mark** | Archery 3, Survival 3 | Ranger | Mark a target (Quick Action). Attacks against marked targets gain +1 boon and ignore half cover. Mark persists for a short duration or until a new target is marked. |
-| **Siege Engineer** | Archery 3, Crafting 3 | Engineer | You can construct and operate siege devices during downtime. In combat, thrown contraptions (alchemist fire, smoke bombs, caltrops) gain +1 boon and affect a close area. |
+| **Predator's Mark** | Archery 3, Survival 3 | Ranger | Mark target (Quick Action): +1 boon, ignore half cover (short duration) |
+| **Siege Engineer** | Archery 3, Crafting 3 | Engineer | Construct siege devices; thrown contraptions gain +1 boon and affect close area |
 
 #### Spellcaster Prestige Talents (Arcana/Mysticism pillar)
 
 | Prestige Talent | Prerequisites | Archetype | Core Effect |
 |----------------|---------------|-----------|-------------|
-| **Eldritch Pact** | Arcana 3, Lore 3 | Warlock | Choose a Patron (Fiend, Fey, or Void). Gain a patron-specific passive benefit and one patron spell that doesn't cost Focus. Once per day, invoke your patron for a dramatic spell-like effect. |
-| **Song of Power** | Mysticism 3, Influence 3 | Bard | You can weave mystic energy into performances. As an Action, perform to grant all allies in close range +1 boon on their next roll. At Rank 2, the performance also imposes −1 bane on enemies in range. Requires concentration. |
-| **Prophetic Sight** | Mysticism 3, Insight 3 | Oracle | Once per day, enter a prophetic trance (1 minute) to receive a cryptic vision relevant to the current situation. At Rank 2, you can also spend 1 Resolve to grant an ally a re-roll, representing fated intervention. |
+| **Song of Power** | Mysticism 3, Influence 3 | Bard | Mystic performance grants allies +1 boon; R2 also imposes −1 bane on enemies |
+| **Prophetic Sight** | Mysticism 3, Insight 3 | Oracle | Daily prophetic trance; R2 grants Resolve-spend re-roll to allies |
 
 #### Skill Prestige Talents (Non-combat pillars)
 
 | Prestige Talent | Prerequisites | Archetype | Core Effect |
 |----------------|---------------|-----------|-------------|
-| **Beast Bond** | Nature 3, Survival 3 | Tamer/Druid | Your animal companion gains +1 to all attributes (one die size). You can communicate simple commands without a roll. At Rank 2, your companion can act independently on your Initiative. |
-| **Underworld Contact** | Streetwise 3, Influence 3 | Rogue | In any settlement, you can locate a black market contact (Mind + Streetwise vs. settlement difficulty). Contacts provide fencing, forgery, information, or smuggling services. At Rank 2, contacts offer one free favor per visit. |
-| **Master Alchemist** | Crafting 3, Nature 3 | Apothecary | Your alchemy crafting yields double batches. You can identify any potion or substance on sight. At Rank 2, your potions and remedies have their effects increased by one tier. |
-
----
-
-## 11. Capstone Talent Design
-
-### 11.1 Philosophy
-
-Capstone talents (Rank 4–5) should feel like the culmination of a character's investment. They should be:
-
-- **Transformative** — Not just bigger numbers, but fundamentally new capabilities.
-- **Signature** — Define what makes a Master or Grandmaster different from an Expert.
-- **Bounded** — Impressive within the fiction, not mechanically game-breaking.
-- **Gated** — Use costs (once per day, Resolve, conditions) to prevent abuse.
-
-### 11.2 Rank 4 Capstone Templates
-
-Rank 4 talents should extend Rank 3 mastery into encounter-shaping territory:
-
-| Template | Pattern | Example |
-|----------|---------|---------|
-| **Scope Expansion** | Single-target → multi-target | Shield Mastery R4: Your shield bonus applies to adjacent allies. |
-| **Action Economy** | Full Action → Quick Action | Second Wind R4: Use as Quick Action once per day. |
-| **Reliability** | Conditional → consistent | Evasion R4: You can use Evasion even when surprised or restrained. |
-| **System Bridge** | Combat → non-combat | Disciplined Fighter R4: Add Fighting rank to Fortitude rolls vs. fear and morale during challenges. |
-| **Recovery** | Mitigate → reverse | Hard to Kill R4: Once per day, when you would suffer a Wound, remain at 1 HP instead. |
-
-### 11.3 Rank 5 Capstone Templates
-
-Rank 5 talents should represent the absolute pinnacle of mortal ability:
-
-| Template | Pattern | Example |
-|----------|---------|---------|
-| **Legendary Action** | Once per day, dramatic effect | Art of Fighting R5: Once per day, treat any Fighting roll as a Critical Success. |
-| **Permanent Enhancement** | Passive mastery bonus | Sharpshooter R5: Your ranged attacks never suffer banes from range, cover, or weather. |
-| **Narrative Authority** | Player-directed story impact | Tactician R5: Once per session, declare a tactical insight that grants the party a major advantage in the current scene (GM adjudicates). |
-| **Capstone Synergy** | Combine two talent lines | Battle Mage R5: When you cast a spell, you may also make a melee attack as part of the same Action. |
-| **Grandmaster Signature** | Unique pinnacle ability | Martial Artist R5: Your unarmed strikes deal weapon damage equal to your equipped weapon's best damage type. Your body counts as a magic weapon. |
-
-### 11.4 Priority Capstone Talents by Skill
-
-| Priority | Skill | Rank 4 Candidates | Rank 5 Candidates |
-|----------|-------|-------------------|-------------------|
-| Critical | Fighting | Shield Mastery, Defensive Dueling, Martial Artist | Art of Fighting (extend to R5) |
-| Critical | Archery | Sharpshooter, Rapid Shot | Art of Archery (extend to R5) |
-| Critical | Arcana | Spellweaver, Wild Overload | Battle Mage (extend to R5), Arcane Spell Knowledge (extend to R5) |
-| Critical | Mysticism | Mystic Champion, Divine Rites | Mystical Spell Knowledge (extend to R5) |
-| High | Athletics | Evasion, Fast Stride | Supernatural Mobility (flesh out as R4–5) |
-| High | Fortitude | Hard to Kill, Battle Rage | Juggernaut or new capstone |
-| High | Influence | Inspire Ally, Leading Presence | Presence of Conquest (flesh out as R4–5) |
-| High | Insight | Sense of Deduction, Empath | Foresight (flesh out as R4–5) |
-| Medium | Perception | Danger Sense, Identify Weakness | New capstone |
-| Medium | Stealth | Assassination, Hidden Strike | New capstone |
-| Medium | Survival | Monster Hunter, Trap Maker | New capstone |
-| Medium | Nature | Animal Companion, Field Medic | New capstone |
-| Medium | Education | Tactician, Commander | New capstone |
-| Medium | Crafting | Artisan, Peak Performance | Master Artisan (flesh out as R4–5) |
-| Medium | Lore | Mage Hunter, Consult the Myths | Magical Sense (complete R4, extend to R5) |
-| Medium | Streetwise | Swashbuckler, Thug Tactics | New capstone |
-
----
+| **Beast Bond** | Nature 3, Survival 3 | Tamer/Druid | Companion gains +1 to all attributes; R2 companion acts independently |
+| **Underworld Contact** | Streetwise 3, Influence 3 | Rogue | Locate black market contacts in any settlement; R2 one free favor per visit |
+| **Master Alchemist** | Crafting 3, Nature 3 | Apothecary | Double alchemy batch yield; R2 effects increased by one tier |
 
 ## 12. Concrete Design Recommendations
 
@@ -1359,25 +1320,27 @@ These talents fill the critical gaps identified in §7.1 where archetypes lack a
 
 #### Performer (Influence) — New (fills Bard gap)
 
-> You are a master entertainer whose performances captivate audiences and stir emotions.
+> You captivate audiences and stir emotions through song, story, or spectacle.
 
-**Rank 1.** You can use Spirit + Influence to perform for an audience. During a rest or downtime, a successful performance grants you and all allies who listen +1 boon on their next Spirit roll (short duration). In social encounters, you can use Performance as an alternative approach for social actions.
+**Rank 1.** During a rest, you can roll Spirit + Influence (TN 8) to perform for your allies. On a success, choose one ally who listened — they gain +1 boon on their next Spirit roll (short duration). You can use this ability once per rest.
 
-**Rank 2.** As an Action in combat, you can begin a performance (requires concentration). While performing, allies within close range who can hear you gain +1 boon on their next roll each turn. You can maintain the performance as a Quick Action on subsequent turns.
+**Rank 2.** As an Action in combat, you can begin a performance (requires concentration). While performing, one ally within close range who can hear you gains +1 boon on their next roll each turn. You can maintain the performance as a Quick Action on subsequent turns.
 
-**Rank 3.** While performing in combat, enemies within close range who can hear you suffer +1 bane on their next roll each turn (Spirit + Fortitude vs. your Resist to negate, once per scene per creature). Your performance range extends to short distance.
+**Rank 3.** While performing in combat, your performance affects all allies within close range instead of one. Additionally, one enemy within close range who can hear you suffers +1 bane on their next roll each turn (Spirit + Fortitude vs. your Resist to negate, once per scene per creature).
 
-*Design note: This is the Bard's signature talent. R1 unlocks social/downtime performance. R2 provides combat support through an action-economy tradeoff (Action to start, Quick Action to maintain). R3 adds control.*
+*Design note: This is the Bard's signature talent. R1 unlocks rest-based support for one ally — limited scope appropriate for a first talent point. R2 provides combat support through an action-economy tradeoff (Action to start, Quick Action to maintain) for one ally. R3 expands to party-wide. Performance rolls use Spirit + Influence (for social/emotional impact), Spirit + Athletics (for acrobatic or dance performances), or Mind + Education (for formal recitals) as appropriate to the fiction.*
 
 #### Prophetic Visions (Insight) — New (fills Oracle gap)
 
 > You receive cryptic flashes of the future — brief moments of clarity that guide your actions.
 
-**Rank 1.** Once per scene, when you or an ally within short range is about to make a roll, you can declare you had a vision about this moment. The creature gains +1 boon on the roll. You must declare this before the roll is made.
+**Rank 1.** Once per day, during a rest, you can enter a brief prophetic trance. Describe a question about the immediate situation to the GM. The GM provides a cryptic but truthful impression (one sentence) — this could be a warning, an image, or a sensation. This does not require a roll.
 
-**Rank 2.** Once per day, during a rest, you can enter a prophetic trance (requires 10 minutes). Describe a question about the current situation to the GM. The GM provides a cryptic but truthful vision (one sentence) related to the question.
+**Rank 2.** Once per scene, when you or an ally within short range is about to make a roll, you can declare you glimpsed this moment in a vision. The creature gains +1 boon on the roll. You must declare this before the roll is made.
 
-**Rank 3.** When you use your R1 vision ability and the creature succeeds, you regain the use of the ability (it doesn't count as your once-per-scene use). Additionally, once per day, you can spend 1 Resolve to grant an ally a reroll on any roll, declaring it was "fated."
+**Rank 3.** When you use your R2 vision ability and the creature succeeds on the roll, you regain the use of the ability (it doesn't count against your once-per-scene limit). Additionally, once per day, you can spend 1 Resolve to grant an ally a re-roll on any roll, declaring it was "fated."
+
+*Design note: Oracle signature. R1 provides narrative utility only (information, not mechanical bonuses) — appropriately modest for a first talent point. R2 introduces the combat-relevant boon ability. R3 adds reliability and the dramatic Resolve-spend option.*
 
 *Design note: Oracle signature. R1 is a simple once-per-scene boon. R2 adds divination utility. R3 provides reliability and a powerful (but costly) reroll.*
 
@@ -1385,24 +1348,26 @@ These talents fill the critical gaps identified in §7.1 where archetypes lack a
 
 > You have forged a bargain with a being of immense power — a spirit lord, elder entity, or cosmic force.
 
-**Prerequisite:** Arcane Spell Knowledge R1. You cannot also take Wild Overload (exclusivity group).
+**Prerequisite:** Cannot also take Wild Overload (exclusivity group — structured pact magic conflicts with chaotic wild magic).
 
 **Rank 1.** Choose a Patron type when you take this talent:
 - **Fiend:** Once per scene, when you deal damage with an arcane spell, you regain 2 HP.
 - **Fey:** Once per scene, after casting an arcane spell, you can teleport to an unoccupied space within close range.
 - **Void:** Once per scene, when you hit with an arcane spell, the target suffers +1 bane on their next roll.
 
-**Rank 2.** You learn one additional rank 0 spell from any discipline (this doesn't require Arcane Spell Knowledge). Your patron grants an enhanced benefit:
-- **Fiend:** Regain 4 HP instead of 2. Also deal +2 fire damage to the target.
-- **Fey:** Teleport range extends to short distance. You become invisible until the start of your next turn.
+Your pact carries obligations — the GM determines what your patron demands in return. Breaking these terms may cause you to temporarily lose access to your pact abilities until you atone.
+
+**Rank 2.** Your patron grants enhanced benefits:
+- **Fiend:** Regain 4 HP instead of 2. The target also takes +2 fire damage.
+- **Fey:** Teleport range extends to short distance. You become briefly invisible after teleporting.
 - **Void:** Target suffers +1 bane on all rolls until the end of their next turn.
 
 **Rank 3.** Once per day, you can invoke your patron's direct intervention:
 - **Fiend:** All enemies within close range take 6 fire damage (Spirit + Fortitude vs. TN 10 for half).
 - **Fey:** You and up to 3 allies become invisible for a short duration or until attacking.
-- **Void:** One creature within medium range must roll Spirit + Fortitude vs. TN 10 or be stunned for a short duration.
+- **Void:** One creature within medium range must roll Spirit + Fortitude vs. TN 10 or be stunned briefly.
 
-*Design note: Warlock signature. The exclusivity with Wild Overload prevents combining chaotic and structured power sources. Each patron provides a distinct flavor. R3 daily abilities are powerful but bounded.*
+*Design note: Warlock signature. R1 provides one clear once-per-scene benefit per patron — no spell learning, no free spells, just a thematic combat trigger. The exclusivity with Wild Overload prevents combining chaotic and structured power sources. R3 daily abilities are powerful but bounded.*
 
 #### Contraption Builder (Crafting) — New (fills Engineer gap)
 
@@ -1432,153 +1397,217 @@ These talents fill the critical gaps identified in §7.1 where archetypes lack a
 
 > You understand the medicinal properties of plants and can prepare remedies in the field.
 
-**Rank 1.** During a rest, you can prepare 2 herbal remedies using 1 supply item. Remedies restore 4 HP when consumed (Action). You can identify poisonous plants, medicinal herbs, and natural toxins with a Mind + Nature roll (no supply required).
+**Rank 1.** During a rest, you can prepare 1 herbal remedy using 1 supply item. A remedy restores 4 HP when consumed (Action). Prepared remedies last until your next rest. You can also identify poisonous plants, medicinal herbs, and natural toxins without a roll.
 
-**Rank 2.** Your remedies now restore 8 HP. You can also prepare antidotes (cure one poison/disease effect) and stimulants (remove 1 Fatigue). Prepared remedies last until your next rest.
+**Rank 2.** Your remedy output increases to 2 per rest. You can also prepare antidotes (cure one poison or disease effect) and stimulants (remove 1 Fatigue) in place of healing remedies.
 
-**Rank 3.** Your remedy output increases to 4 per rest. You can prepare advanced remedies: fortifying tonic (+2 temporary HP for short duration) or numbing salve (resistance to one damage type for short duration, chosen when applied).
+**Rank 3.** Your remedy output increases to 3 per rest. Each remedy now restores 8 HP instead of 4. You can also prepare advanced remedies: fortifying tonic (+2 temporary HP for short duration) or numbing salve (resistance to one damage type of your choice for short duration).
 
-*Design note: Apothecary signature. Works alongside the alchemy crafting system but focuses on field-prepared remedies rather than laboratory alchemy.*
+*Design note: Apothecary signature. R1 provides one remedy per rest — modest but useful. R2 adds variety. R3 increases both output and potency. Works alongside the alchemy crafting system but focuses on quick field preparation rather than laboratory work.*
 
 #### Summoner's Bond (Arcana) — New (fills Summoner gap)
 
 > You specialize in conjuration magic, maintaining stronger and more reliable summoned entities.
 
-**Prerequisite:** Arcane Spell Knowledge R1 with at least one conjuration spell.
+**Rank 1.** When you cast a conjuration spell that summons a creature, the summoned creature gains +2 temporary HP. If the summoned creature makes an attack, it uses your Mind + Arcana roll (instead of its own stats) to determine if it hits.
 
-**Rank 1.** When you cast a conjuration spell that summons a creature or object, the summoned entity gains +2 temporary HP and lasts for one additional round beyond the spell's normal duration.
+**Rank 2.** Your summoned creatures gain +1 boon on their attacks. When a summoned creature would be destroyed or dismissed before its duration ends, you can spend 2 Focus to sustain it for 2 additional rounds.
 
-**Rank 2.** You can maintain concentration on two conjuration spells simultaneously (instead of one). Your summoned creatures gain +1 boon on their attacks.
+**Rank 3.** Your summoned creatures can act on your Initiative (instead of at the end of the round). Once per scene, when you summon a creature, you can summon an additional creature of the same type (both share the same spell duration and concentration).
 
-**Rank 3.** Once per scene, when a summoned creature would be destroyed or dismissed, you can spend 2 Focus to sustain it for 2 additional rounds. Additionally, your summoned creatures can act on your Initiative instead of at the end of the round.
-
-*Design note: Summoner signature. Enhances conjuration spells specifically. R2's dual concentration is the headline ability.*
+*Design note: Summoner signature. R1 provides a modest HP buffer and uses your casting roll for attacks, making summoned creatures more reliable. R2 adds offensive power and duration extension. R3's dual summon is the headline ability. Does not break the core concentration rule — both creatures share one concentration slot.*
 
 ---
 
-### D.3 Rank 4 Extensions
+### D.3 High-Level Talents (R4–R5)
 
-These are new R4 entries for existing talents identified in §9.6 as needing extension.
+These are organized into two categories matching the three-path framework from §9.6:
+- **Signature talent extensions (R4–R5):** New ranks for the 10 signature talents identified in §9.6.
+- **New high-level talents (R4–R5):** Fresh talents that only exist at R4+ and represent abilities a Master/Grandmaster would develop. These absorb the remaining TP surplus.
 
-#### Fighting R4 Extensions
+#### D.3.1 Signature Talent R4–R5 Extensions
+
+These add R4 and R5 to the 10 career talents.
 
 **Art of Fighting R4** *(already exists — learn 2 more Combat Arts or Supreme Combat Arts)*
 
-**Shield Mastery R4.** When you use Shield Mastery to reduce an attack's SL, adjacent allies wielding shields can also reduce the same attack's SL by one step (if the attack targeted them). Once per scene, you can use Shield Bash as a Quick Action instead of an Action.
-
-**Defensive Dueling R4.** When you successfully parry a melee attack (the attack fails against your Parry), you can immediately make an Opportunity Attack against the attacker without spending a Quick Action. You can do this once between each of your turns.
+**Art of Fighting R5.** Learn 2 more Combat Arts or Supreme Combat Arts. Once per day, when you make a Fighting roll, you can declare it an automatic Critical Success (no roll needed). This represents a moment of perfect martial execution.
 
 **Martial Artist R4.** Your unarmed attacks deal 5 weapon damage. When you hit with an unarmed or improvised weapon attack, you can spend a Quick Action to force the target to roll Strength + Fortitude vs. TN 10 or be briefly stunned. Once per scene.
 
-**Dual Wielder R4.** When you attack with two melee weapons, you can attack two different targets in reach (one attack per weapon, no additional bane). Once per scene, you can make attacks with both weapons against a single target as a single Action, applying the higher damage result.
-
-**Polearm Mastery R4.** Enemies within your weapon's reach that move to a different position (not just entering your reach) provoke an Opportunity Attack from you. You can make these Opportunity Attacks without spending Quick Actions, up to twice between your turns.
-
-#### Archery R4 Extensions
+**Martial Artist R5.** Your unarmed attacks deal 6 weapon damage. Your body counts as a magical weapon (bypasses resistance to non-magical physical damage). Once per day, you can perform a stunning blow — on a successful unarmed hit, the target must roll Strength + Fortitude vs. TN 12 or be stunned for short duration.
 
 **Art of Archery R4** *(already exists — learn 2 more Combat Arts or Supreme Combat Arts)*
 
-**Sharpshooter R4.** Your ranged attacks ignore cover bonuses entirely (light and heavy cover). Once per scene, you can make a "called shot" — if you hit, you can choose one: disarm the target, pin them (restrained, briefly), or blind them (briefly).
-
-**Rapid Shot R4.** When you use Rapid Shot, you can target up to 3 different creatures within range (one attack against each, +1 bane on all rolls). On a strong or critical hit, the marked condition duration extends to short.
-
-#### Arcana R4 Extensions
+**Art of Archery R5.** Learn 2 more Combat Arts or Supreme Combat Arts. Once per day, when you make an Archery roll, you can declare it an automatic Critical Success. This represents the legendary shot — an arrow that finds its mark against all odds.
 
 **Arcane Spell Knowledge R4** *(already exists — +2 Focus, learn 2 R4 spells)*
 
+**Arcane Spell Knowledge R5.** +2 Focus. Learn two rank 5 or lower arcane spells.
+
 **Battle Mage R4** *(already exists — Quick Action cast R0 spell after weapon attack)*
 
-**Spellweaver R4.** +2 Focus. Learn 2 more Metamagic Arts. Once per scene, you can apply one Metamagic Art to a spell without increasing its Focus cost.
-
-**Spellblade R4.** You can use rank 3 spells with Spellblade. When you infuse a weapon attack with a spell, you can choose to apply the spell's strong-success effects regardless of the attack's actual SL (once per scene).
-
-#### Mysticism R4 Extensions
+**Battle Mage R5.** When you make a weapon attack, you can simultaneously cast a rank 0 or 1 spell at the same target as part of the same Action (no Quick Action or additional Focus required beyond the spell's normal cost). Once per day, you can cast a rank 2 spell as part of a weapon attack.
 
 **Mystical Spell Knowledge R4** *(already exists — +2 Focus, learn 2 R4 spells)*
 
-**Mystic Champion R4.** You can use rank 3 spells with Mystic Champion. When you infuse a weapon attack with a mystic spell, you can extend the spell's condition effects to short duration (instead of brief).
-
-**Shape Changer R4.** While in an alternate form, you gain an additional natural attack (can attack twice per Action, once with each natural weapon). Your form-change spells' duration extends by one step.
+**Mystical Spell Knowledge R5.** +2 Focus. Learn two rank 5 or lower mystic spells.
 
 **Pact of Devotion R4.** Each pact gains an additional R4 benefit:
-- **Glory:** When you trigger the Glory benefit, all allies within close range can also trigger it (deal +2 damage OR regain 2 HP).
-- **Piety:** Your Piety Focus bonus increases to +3 per Mysticism rank. Aura defense extends to medium range.
-- **Protection:** Your healing pool increases to 8×Mysticism HP. You can cure one Wound per day (costs 15 HP from your pool).
+- **Glory:** When you trigger the Glory benefit, all allies within close range can also benefit (deal +2 damage OR regain 2 HP on their next attack).
+- **Piety:** Your Piety aura defense extends to medium range. Once per scene, when an ally within range is hit by a spell, they can use your Resist instead of their own.
+- **Protection:** Your healing pool increases to 40 HP. You can cure one Wound per day (costs 15 HP from your pool).
 - **Vengeance:** Vow of Enmity now affects two creatures simultaneously. Your Focus-to-damage conversion becomes +3 damage per Focus spent.
 
-#### General Skill R4 Extensions
-
-**Evasion R4 (Athletics).** Once per scene, when you are targeted by an attack, you can use a Quick Action to roll Agility + Athletics vs. the attack roll. On success, you completely avoid the attack and can move 1 area without provoking Opportunity Attacks.
-
-**Fast Stride R4 (Athletics).** You gain +2 Movement per turn (instead of +1). After using Fast Stride's hit-and-move ability, you don't provoke Opportunity Attacks for the rest of your turn.
-
-**Hard to Kill R4 (Fortitude).** +2 HP. Once per day, when you would be reduced to 0 HP, you are reduced to 1 HP instead.
-
-**Battle Rage R4 (Fortitude).** While enraged, you can spend 2 HP for +8 damage (instead of +6). When you reduce an enemy to 0 HP while enraged, you immediately regain 4 HP.
-
-**Juggernaut R4 (Fortitude).** In melee with multiple enemies, your AV bonus cap increases to 2 + Fortitude. Once per scene, when you hit an enemy, all enemies within close range take 2 damage (your sheer presence threatens them).
-
-**Inspire Ally R4 (Influence).** When you use Inspire Ally, you can target up to 2 allies simultaneously. Inspired allies deal +3 damage (ability bonus, instead of +2) and regain 6 HP (instead of 4).
-
-**Leading Presence R4 (Influence).** Your aura range extends to extreme distance. Allies within your aura gain +2 Resist (ability bonus, instead of +1) and +3 damage (instead of +2).
-
-**Empath R4 (Insight).** When you use Empath's combat reading ability on a creature and succeed, you also learn their current HP range (full/healthy/injured/critical/near death). Once per scene, you can warn an ally about an incoming attack — the ally gains +2 to their defense against that attack.
-
-**Danger Sense R4 (Perception).** You cannot be surprised. You can take actions during surprise rounds even if your allies cannot. Your Initiative minimum increases to 10 (ignore results below 10).
-
-**Identify Weakness R4 (Perception).** When you focus on a creature, the damage bonus increases to +3 (ability bonus). If the focused creature has any vulnerabilities, you automatically learn them.
-
-**Assassination R4 (Stealth).** When you attack an unaware enemy from stealth, your attack's SL is upgraded by two steps (instead of one, max critical). If you reduce a creature to 0 HP from stealth, nearby enemies within close range must roll Spirit + Fortitude vs. TN 10 or become frightened of you (briefly).
-
-**Monster Hunter R4 (Survival).** Your focused creature damage bonus increases to +4. You can maintain focus on two creatures simultaneously. When a focused creature takes a Wound, you learn one of its immunities, resistances, or weaknesses.
-
-**Trap Maker R4 (Survival).** You can set traps during a delving turn without a Supply check (the skill itself is sufficient). Trap difficulty becomes very hard (TN 12). You can place up to 2 traps per delving turn.
-
-**Animal Companion R4 (Nature).** Your animal companion's tier limit increases to Nature + 1. Your companion can act on its own Initiative (instead of yours) and can use 2 Combat Arts per scene.
-
-**Field Medic R4 (Nature).** When you stabilize a dying creature, they regain consciousness with 6 HP instead of 0. Once per day, you can treat an Injury without requiring a rest (takes 10 minutes and a Supply check).
-
-**Tactician R4 (Education).** Your Tactician scheme affects all allies (not just you). On a critical success, the first enemy to act suffers +1 bane on all rolls during their first turn. You can use Tactician once per scene (instead of once per combat).
-
-**Commander R4 (Education).** The ally you command can choose from 3 effects (instead of 2). New option: "immediately take a movement action toward or away from the target you designate." You can command 2 allies per turn.
-
-**Artisan R4 (Crafting).** Your crafting with ≥1 success adds +3 successes (instead of +2). You can craft items one Quality tier higher than your normal maximum (requires appropriate materials).
-
-**Mage Hunter R4 (Lore).** When you use your Quick Action to add Lore to defenses against spells, the bonus lasts until the end of your next turn (instead of one attack). Once per scene, when you interrupt an enemy's spell (via OA or Spell Concentration failure), the enemy also loses 2 Focus.
-
-**Magical Sense R4 (Lore).** Range extends to long distance. When detecting magic, you can also determine the specific school (tradition/discipline) and approximate rank of magical effects. You can maintain Magical Sense without Spell Concentration.
-
-**Swashbuckler R4 (Streetwise).** +2 HP. When you hit with a light melee weapon, the target cannot use Opportunity Attacks until the start of your next turn. Once per scene, when you would be hit by a melee attack, you can use a Quick Action to roll Agility + Streetwise vs. the attack roll — on success, you avoid the hit entirely and move 1 area.
-
-#### R5 Capstone Talents
-
-These represent the absolute pinnacle of mortal skill. Each uses a once-per-day or once-per-session resource.
-
-**Art of Fighting R5 (Fighting).** Learn 2 more Combat Arts or Supreme Combat Arts. Once per day, when you make a Fighting roll, you can declare it an automatic Critical Success (no roll needed). This represents a moment of perfect martial execution.
-
-**Martial Artist R5 (Fighting).** Your unarmed attacks deal 6 weapon damage. Your body counts as a magical weapon (bypasses resistance to non-magical physical damage). Once per day, you can perform a stunning blow — on a successful unarmed hit, the target must roll Strength + Fortitude vs. TN 12 or be stunned for short duration.
-
-**Art of Archery R5 (Archery).** Learn 2 more Combat Arts or Supreme Combat Arts. Once per day, when you make an Archery roll, you can declare it an automatic Critical Success. This represents the legendary shot — an arrow that finds its mark against all odds.
-
-**Arcane Spell Knowledge R5 (Arcana).** +2 Focus. Learn two rank 5 or lower arcane spells.
-
-**Battle Mage R5 (Arcana).** When you make a weapon attack, you can simultaneously cast a rank 0 or 1 spell at the same target as part of the same Action (no Quick Action or additional Focus required beyond the spell's normal cost). Once per day, you can cast a rank 2 spell as part of a weapon attack.
-
-**Mystical Spell Knowledge R5 (Mysticism).** +2 Focus. Learn two rank 5 or lower mystic spells.
-
-**Pact of Devotion R5 (Mysticism).** Each pact gains a pinnacle ability:
+**Pact of Devotion R5.** Each pact gains a pinnacle ability:
 - **Glory:** Once per day, you and all allies within short range gain +1 boon on all rolls for short duration. Each ally also deals +3 damage and regains 3 HP on each hit during this time.
 - **Piety:** Once per day, you can cast any mystic spell you know without spending Focus. You can also restore one ally's spent Resolve point (once per day per ally).
 - **Protection:** Once per day, you can create a protective ward around all allies within short range. For a short duration, all allies gain +3 AV (ability bonus) and resistance to one damage type you choose.
 - **Vengeance:** Once per day, when your Vow target deals damage to you or an ally, you can immediately make a free attack against them with +2 boons. If this attack reduces the target to 0 HP, you regain all spent Focus.
 
-**Hard to Kill R5 (Fortitude).** +2 HP. Once per day, when you would die (suffer your third Wound), you don't. Instead, you remain at 0 HP with 2 Wounds, regain 10 HP, and can act normally on your next turn. This ability represents sheer refusal to fall.
+**Hard to Kill R4 (Fortitude).** +2 HP. Once per day, when you would be reduced to 0 HP, you are reduced to 1 HP instead.
 
-**Animal Companion R5 (Nature).** Your animal companion's tier limit increases to Nature + 2. Your companion gains +1 to all attributes (one die size increase). Once per day, your companion can act as though it has 3 Actions this turn (instead of the normal Action + Quick Action + Movement), representing a moment of perfect coordination.
+**Hard to Kill R5 (Fortitude).** +2 HP. Once per day, when you would die (suffer your third Wound), you don't. Instead, you remain at 0 HP with 2 Wounds, regain 10 HP, and can act normally on your next turn.
+
+**Animal Companion R4 (Nature).** Your animal companion's tier limit increases to Nature + 1. Your companion can act on its own Initiative (instead of yours) and can use 2 Combat Arts per scene.
+
+**Animal Companion R5 (Nature).** Your animal companion's tier limit increases to Nature + 2. Your companion gains +1 to all attributes (one die size increase). Once per day, your companion can take 3 Actions this turn (instead of the normal Action + Quick Action + Movement).
+
+**Magical Sense R4 (Lore).** Range extends to long distance. When detecting magic, you can also determine the specific school (tradition/discipline) and approximate rank of magical effects. You can maintain Magical Sense without Spell Concentration.
 
 **Magical Sense R5 (Lore).** Your magical detection is now permanent and passive — you always sense magic within long range. Once per day, you can completely suppress one magical effect within short range for a short duration (as if it were dispelled). This works on enchantments, active spells, and magical traps.
 
----
+#### D.3.2 New High-Level Talents (R4–R5 Only)
+
+These are entirely new talents that only exist at the Master/Grandmaster tier. They fill the remaining TP surplus for skills where signature extensions alone aren't enough.
+
+**Fighting — Warlord's Presence (R4–R5)**
+
+> Your mere presence on the battlefield changes how allies and enemies fight.
+
+**R4.** When you hit an enemy with a melee attack, one ally within close range can immediately move one area without provoking Opportunity Attacks. You can use this once between each of your turns.
+
+**R5.** Once per day, at the start of combat, you can issue a battlefield command. All allies who can hear you gain +1 boon on their first attack and +2 to all defenses until the end of the first round.
+
+**Fighting — Weapon Grandmastery (R4–R5)**
+
+> You have transcended the limitations of individual weapon styles.
+
+**R4.** Choose a second weapon type (blade, axe, mace, polearm, brawling). You gain the benefits of that weapon type's R1 mastery talent without spending TP on it. This does not count as taking that talent for prerequisite purposes.
+
+**R5.** Once per scene, when you attack with any melee weapon, you can apply the R2 or R3 effect of any weapon mastery talent you have (even if you're using a different weapon type). This represents transcendent weapon skill.
+
+**Archery — Overwatch (R4–R5)**
+
+> You control a zone with your ranged weapon, punishing any enemy who dares act within it.
+
+**R4.** Designate an area within your weapon's range as your overwatch zone (Quick Action). The first enemy that enters, leaves, or takes an action within that area each round provokes a free ranged attack from you (+1 bane). You can maintain one overwatch zone at a time.
+
+**R5.** Your overwatch zone expands to include the designated area and all adjacent areas. You can make up to 2 free attacks per round against enemies in your zone. These attacks do not suffer the +1 bane.
+
+**Arcana — Arcane Mastery (R4–R5)**
+
+> Your understanding of arcane forces transcends conventional spellcasting limitations.
+
+**R4.** Once per scene, when you cast an arcane spell of rank 2 or lower, you can reduce its Focus cost by 2 (minimum 0). Additionally, when you blunder on an arcane spell, you can spend 2 Focus to avoid rolling on the Wild Surge table.
+
+**R5.** Once per day, you can cast any arcane spell you know as if it were heightened by one rank (increasing both its effects and Focus cost). If this would heighten it beyond rank 5, you cannot use this ability on that spell.
+
+**Mysticism — Divine Authority (R4–R5)**
+
+> Your connection to the divine grants you commanding spiritual presence.
+
+**R4.** Once per scene, when you cast a mystic spell, you can choose to empower it: increase the spell's range by one step (max extreme) or its duration by one step (max long). This does not increase its Focus cost.
+
+**R5.** Once per day, you can invoke a moment of divine authority. All enemies within short range who can see you must roll Spirit + Fortitude vs. your Resist or become briefly frightened. Undead and spirits suffer +1 bane on this roll.
+
+**Athletics — Supernatural Mobility (R4–R5)**
+
+> Your physical prowess defies ordinary human limitations.
+
+**R4.** You can jump short distances without a roll. You can climb at full speed without Athletics rolls (except on magical/impossible surfaces). You can stand from prone without spending Movement.
+
+**R5.** Once per scene, you can take an additional Movement on your turn (stacks with other Movement bonuses). While falling, you can reduce the effective distance by one category. You can move through difficult terrain at full speed.
+
+**Fortitude — Unbreakable (R4–R5)**
+
+> Your endurance is legendary — you have survived what would kill lesser warriors.
+
+**R4.** You are immune to the exhaustion effects of Fatigue (you still track Fatigue but don't suffer its mechanical penalties until you would suffer a Wound from it). Once per scene, when you suffer a condition, you can choose to delay its effect until the end of your next turn.
+
+**R5.** Once per day, when you are affected by any condition (stunned, frightened, paralyzed, etc.), you can immediately end it without spending an Action or Quick Action. You also gain +2 HP.
+
+**Influence — Presence of Conquest (R4–R5)**
+
+> Your force of personality overwhelms the will of lesser creatures.
+
+**R4.** As an Action, you can project an aura of command. All enemies within close range who can hear you must roll Spirit + Fortitude vs. your Resist or be briefly dazed. You can use this once per scene.
+
+**R5.** Once per day, you can intensify your presence. All enemies within short range must roll Spirit + Fortitude vs. your Resist or be stunned briefly (on failure) or dazed briefly (on success but not by enough to avoid the lesser effect). Allies within range gain +1 boon on their next roll from your inspiring display.
+
+**Insight — Foresight (R4–R5)**
+
+> Your intuition borders on the supernatural — you anticipate events moments before they happen.
+
+**R4.** You can never be surprised. At the start of each scene, the GM tells you one piece of information about the scene that your character would intuitively sense (danger level, hidden presence, emotional undercurrent, etc.).
+
+**R5.** Once per day, you can declare that you "saw this coming." Choose one: (a) you and one ally can re-roll any one roll this scene, or (b) you gain +2 to all Defenses for the first round of an encounter, or (c) you automatically succeed on one Insight roll to read a creature's intentions.
+
+**Perception — Perfect Awareness (R4–R5)**
+
+> Nothing escapes your notice — your senses are honed to an inhuman edge.
+
+**R4.** You gain +1 boon on all Perception rolls. You can detect hidden creatures within close range without a roll (you sense them through sound, vibration, or other cues, even if you can't see them).
+
+**R5.** Once per day, you can declare total awareness for a short duration. During this time, you cannot be flanked, all attacks against you suffer +1 bane, and you automatically detect any hidden, invisible, or disguised creature within short range.
+
+**Stealth — Master of Shadows (R4–R5)**
+
+> You move through shadows as naturally as others walk through light.
+
+**R4.** While in dim light or darkness, you can use the Hide action as a Quick Action. You can hide even while being observed, provided there is dim light or darkness within close range.
+
+**R5.** Once per scene, you can disappear from sight entirely for one round (as if invisible) — this works even in bright light and does not require a roll. At the end of the round, you reappear in any unoccupied space within short range.
+
+**Education — Grand Strategist (R4–R5)**
+
+> Your tactical mind operates on a level that reshapes entire encounters.
+
+**R4.** Once per scene, you can spend an Action to analyze the battlefield. Until the end of the scene, you and all allies gain +1 to all Defenses against creatures you have analyzed (you must have observed them for at least one round).
+
+**R5.** Once per day, before Initiative is rolled, you can declare a strategic plan. All allies gain +1 boon on their Initiative rolls and +1 boon on all rolls during the first round of combat.
+
+**Crafting — Master Artisan (R4–R5)**
+
+> Your craftsmanship produces works that border on the magical in their quality.
+
+**R4.** When crafting, you can choose to take extra time (double the normal duration) to create items at one Quality tier higher than normal (stacks with Artisan R4 if applicable, but max Q6 without magical materials). Items you repair never suffer quality loss.
+
+**R5.** Once per day, you can jury-rig any broken item to function for a short duration. During downtime, you can attempt to modify a magic item's enchantment (Mind + Crafting vs. very hard TN, on success the enchantment is replaced with a different one of the same tier).
+
+**Nature — Primal Bond (R4–R5)**
+
+> Your connection to the natural world grants you an almost supernatural harmony with living things.
+
+**R4.** You can communicate with animals using simple concepts (danger, food, direction) without a roll. You gain +1 boon on all Nature rolls. Plants and non-hostile animals within close range instinctively aid you (providing cover, clearing paths, etc.) when possible.
+
+**R5.** Once per day, you can call upon the land itself for aid. Choose one: (a) summon a swarm of creatures to distract enemies in a close area (all enemies suffer +1 bane on rolls for short duration), (b) cause natural terrain to shift in your favor (one area becomes difficult terrain or stops being difficult terrain), or (c) restore 10 HP to all allies within close range through natural energy.
+
+**Survival — Apex Predator (R4–R5)**
+
+> You are the ultimate hunter — no quarry escapes you, no terrain stops you.
+
+**R4.** You can track any creature across any terrain without a roll, provided the trail is less than a day old. Your traps deal +2 damage and their TN increases to Extreme (14). When traveling, your group cannot be surprised by natural hazards.
+
+**R5.** Once per day, you can declare a creature your quarry. For the rest of the scene, you gain +1 boon on all rolls against the quarry, your attacks against it deal +3 damage (ability bonus), and you always know its approximate location if it's within long range.
+
+**Streetwise — Kingpin (R4–R5)**
+
+> Your network of contacts, favors, and threats makes you a power broker in any settlement.
+
+**R4.** In any settlement, you can establish a safe house within one day (Mind + Streetwise vs. settlement difficulty). Safe houses provide: a hidden rest location, access to black market goods at 75% price, and one free rumor about the settlement's current events.
+
+**R5.** Once per day, you can call in a major favor from your network. Choose one: (a) arrange passage, lodging, or supplies for your group at no cost, (b) gain detailed intelligence about a target (location, habits, defenses), or (c) arrange for a distraction or diversion at a specific location and time.
 
 ### D.4 Prestige Talents (Fully Written)
 
@@ -1640,7 +1669,7 @@ These require R3+ in two specified skills. Each has 2 ranks maximum.
 
 **Prerequisites:** Arcana 3, Lore 3.
 
-**Rank 1.** Choose a Patron type (Fiend, Fey, or Void). You gain the patron's R1 benefit from the Eldritch Pact talent (D.2) and learn one rank 0 spell from any discipline without requiring Arcane Spell Knowledge.
+**Rank 1.** Choose a Patron type (Fiend, Fey, or Void). You gain the patron's R1 benefit from the Eldritch Pact talent (D.2). Additionally, when you cast a spell from the discipline most associated with your patron (Evocation for Fiend, Illusion for Fey, Necromancy for Void), reduce the Focus cost by 1 (minimum 0).
 
 **Rank 2.** You gain the patron's R2 benefit. Once per day, you can invoke your patron to reroll any one failed roll and take the new result.
 
@@ -1761,6 +1790,48 @@ These talents interact with the Challenge, Social Intrigue, and Travel systems. 
 **Rank 2.** When the party camps for the night, allies who rest gain +1 boon on their recovery rolls. You can organize watches such that all party members gain the benefits of a full rest (even with interrupted sleep).
 
 **Rank 3.** Once per journey, you can declare "efficient march" — the party gains +1 daily progress for 3 consecutive days. Supply checks during your journey gain +1 boon.
+
+---
+
+### D.6 New Defensive Talents (Addressing §4.5 Gaps)
+
+These talents directly address the defensive variety gaps identified in §4.5: missing redirection, thin avoidance, and near-absent reactive defense.
+
+#### Redirecting Presence (Insight) — New (fills Redirection gap)
+
+> You read the flow of combat and subtly manipulate enemy targeting through positioning and empathic misdirection.
+
+**Rank 1.** Once per scene, when an ally within close range is targeted by a melee or ranged attack, you can use a Quick Action to attempt to redirect the attack. Roll Spirit + Insight vs. the attacker's Resist. On success, the attack targets a different valid creature of your choice within the attack's range (this can be you).
+
+**Rank 2.** You can use your Redirecting Presence ability once between each of your turns (not limited to once per scene). When you redirect an attack to yourself and the attacker misses you, the attacker suffers +1 bane on their next attack.
+
+**Rank 3.** When you redirect an attack to yourself and the attack misses you, the attacker is briefly dazed. Additionally, when you redirect an attack to an enemy, you gain +1 boon on the roll.
+
+*Design note: This is the first redirection talent in the system, filling a critical 0% gap. R1 is once-per-scene and requires a contested roll (Spirit + Insight vs. Resist), keeping it balanced. R2 unlocks repeated use. R3 adds counterplay.*
+
+#### Shadow Slip (Stealth) — New (fills Avoidance gap)
+
+> Through misdirection and clever positioning, you make yourself a difficult target to pin down.
+
+**Rank 1.** Once per scene, when you are targeted by a melee attack, you can use a Quick Action to impose +1 bane on that attack. You must not be wearing heavy armor.
+
+**Rank 2.** When a melee attack against you misses, you can move to any unoccupied space within close range without provoking Opportunity Attacks. You can use this once between each of your turns.
+
+**Rank 3.** Once per scene, when you are targeted by any attack, you can use a Quick Action to attempt to vanish. Roll Agility + Stealth vs. the attacker's Perception roll. On success, you become hidden (as if you had used the Hide action) and the attack suffers +1 bane. Whether the attack hits or misses, you can move to any unoccupied space within close range.
+
+*Design note: Stealth-based avoidance for rogues and assassins. R1 is a simple defensive tool — modest but useful. R2 adds repositioning. R3 provides a dramatic disappearing act that uses the existing Hide mechanic. Requires no heavy armor, fitting stealth-focused characters.*
+
+#### Combat Instincts (Perception) — New (fills Reactive Defense gap)
+
+> Your acute awareness of your surroundings gives you split-second reactions to incoming threats.
+
+**Rank 1.** Once per scene, when you are targeted by an attack you can see coming (the attacker is not hidden), you can use a Quick Action to gain +2 to the targeted Defense against that attack.
+
+**Rank 2.** When an ally within close range is targeted by an attack you can see, you can use a Quick Action to warn them — the ally gains +2 to their targeted Defense against that attack. You can use this once between each of your turns.
+
+**Rank 3.** You gain +1 Quick Action per round that can only be spent on defensive Quick Actions (Evade, Protect Ally, or abilities from this talent). This does not stack with Evasion's +1 Quick Action from R2.
+
+*Design note: Perception-based reactive defense for scouts and watchful warriors. R1 provides personal defense. R2 extends to ally protection. R3's extra defensive Quick Action is powerful but limited to defense only. The explicit non-stacking clause with Evasion R2 prevents abuse.*
 
 ---
 
