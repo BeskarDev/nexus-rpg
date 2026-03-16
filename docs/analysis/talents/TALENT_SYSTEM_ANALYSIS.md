@@ -914,13 +914,13 @@ If prestige talents are adopted, the following representative designs each addre
 | **Underworld Contact** | Streetwise 3, Influence 3 | Rogue | Locate black market contacts in any settlement; R2 one free favor per visit |
 | **Master Alchemist** | Crafting 3, Nature 3 | Apothecary | Double alchemy batch yield; R2 effects increased by one tier |
 
-## 12. Concrete Design Recommendations
+## 11. Concrete Design Recommendations
 
-### 12.1 Phase 1: Foundation (Immediate Priority)
+### 11.1 Phase 1: Foundation (Immediate Priority)
 
 **Goal:** Complete incomplete talents and address critical skill gaps.
 
-#### 12.1.1 Complete Incomplete Talents (17 entries across 8 talents)
+#### 11.1.1 Complete Incomplete Talents (17 entries across 8 talents)
 
 Complete all placeholder (XXX/???) ranks and flesh out all stub talents:
 
@@ -944,7 +944,7 @@ Complete all placeholder (XXX/???) ranks and flesh out all stub talents:
 | Relentless Tracker R2–3 | Survival | Design Ranks 2–3 (long-range tracking, quarry mechanics) |
 | Wilderness Expert R3 | Survival | Design Rank 3 effect (advanced campcraft, shelter construction) |
 
-#### 12.1.2 Expand Critically Low Skills (+15–20 talents)
+#### 11.1.2 Expand Critically Low Skills (+15–20 talents)
 
 | Skill | Current | Target | New Talents Needed | Focus Areas |
 |-------|---------|--------|--------------------|-------------|
@@ -955,11 +955,11 @@ Complete all placeholder (XXX/???) ranks and flesh out all stub talents:
 | **Survival** | 7 | 9–10 | +2–3 | Travel integration, advanced tracking, wilderness mastery |
 | **Stealth** | 6 | 8–9 | +2–3 | Infiltration, escape, combat stealth |
 
-### 12.2 Phase 2: System Integration (High Priority)
+### 11.2 Phase 2: System Integration (High Priority)
 
 **Goal:** Create talents that interact meaningfully with Challenges, Social Intrigue, and Travel.
 
-#### 12.2.1 Challenge Talents (+6–8 talents)
+#### 11.2.1 Challenge Talents (+6–8 talents)
 
 New talents that interact with challenge die mechanics:
 
@@ -972,7 +972,7 @@ New talents that interact with challenge die mechanics:
 | **Streetwise Informant** | Streetwise | Learn challenge details in advance; reduce starting die by 1 in urban settings |
 | **Tactical Assessment** | Education | Reveal TN of current challenge step; plan approach for allies |
 
-#### 12.2.2 Social Intrigue Talents (+4–6 talents)
+#### 11.2.2 Social Intrigue Talents (+4–6 talents)
 
 New talents that interact with Interest, Patience, and social actions:
 
@@ -983,7 +983,7 @@ New talents that interact with Interest, Patience, and social actions:
 | **Courtly Grace** | Education | Use Education for etiquette; reduce TN for formal negotiations |
 | **Threatening Presence** | Fortitude | Use Fortitude for intimidation; impose banes on enemy social actions |
 
-#### 12.2.3 Travel Talents (+6 talents)
+#### 11.2.3 Travel Talents (+6 talents)
 
 New talents that interact with travel roles:
 
@@ -996,65 +996,58 @@ New talents that interact with travel roles:
 | **Road Warden** | Streetwise | Civilized travel bonuses; NPC contact for aid |
 | **Seasoned Forager** | Nature | Enhanced forage yields; identify edible plants |
 
-### 12.3 Phase 3: High-Rank Progression (Medium Priority)
+### 11.3 Phase 3: High-Rank Progression (Medium Priority)
 
-**Goal:** Extend talent progression to Ranks 4–5 across all skills.
+**Goal:** Implement R4–R5 content using the three-path framework from §9.6.
 
-#### 12.3.1 Rank 4 Extensions (~32 talents)
+#### 11.3.1 Signature Talent R4–R5 Extensions (10 talents × 2 ranks = ~20 entries)
 
-Every skill should have 2–3 talents that extend to Rank 4. Priority candidates:
+Extend the 10 identified signature talents to R4 and R5. These are the highest priority because they define the core archetype experience at Grandmaster tier.
 
-| Skill | Talents to Extend | Design Focus |
+| Skill | Signature Talent | Design Focus |
+|-------|-----------------|--------------|
+| Fighting | Art of Fighting | R4: more Combat Arts; R5: auto-Critical once per day |
+| Fighting | Martial Artist | R4: 5 weapon damage + stun; R5: magic weapon + 6 damage |
+| Archery | Art of Archery | R4: more Combat Arts; R5: auto-Critical once per day |
+| Arcana | Arcane Spell Knowledge | R4: R4 spells (exists); R5: R5 spells |
+| Arcana | Battle Mage | R4: Quick Action cantrip (exists); R5: spell + weapon in one Action |
+| Mysticism | Mystical Spell Knowledge | R4: R4 spells (exists); R5: R5 spells |
+| Mysticism | Pact of Devotion | R4: pact enhancement; R5: pinnacle pact ability |
+| Fortitude | Hard to Kill | R4: survive at 1 HP; R5: refuse death once per day |
+| Nature | Animal Companion | R4: independent companion; R5: exceptional companion |
+| Lore | Magical Sense | R4: long range + school ID; R5: permanent detection + dispel |
+
+#### 11.3.2 New High-Level Talents (R4–R5 only, ~16–32 entries)
+
+Create 1–2 entirely new R4–R5 talents per skill. These fill the remaining TP surplus and provide fresh options that couldn't exist at lower ranks.
+
+| Skill | New R4–R5 Talent | Design Focus |
 |-------|------------------|--------------|
-| Fighting | Shield Mastery, Defensive Dueling, Martial Artist, Dual Wielder | Multi-target defense, encounter control |
-| Archery | Sharpshooter, Rapid Shot, Disciplined Archer | Extreme range, multi-target volleys |
-| Arcana | Spellweaver, Wild Overload, Mana Shield | Spell enhancement, metamagic, defense |
-| Mysticism | Mystic Champion, Divine Rites, Communal Practices | Party-wide blessings, extended rites |
-| Athletics | Evasion, Fast Stride, Grappler | Supernatural agility, movement mastery |
-| Fortitude | Hard to Kill, Battle Rage, Juggernaut | Death defiance, fury escalation |
-| Influence | Inspire Ally, Leading Presence, Fast Talking | Mass inspiration, social dominance |
-| Insight | Empath, Sense of Deduction, Piercing Look | Combat prediction, truth compulsion |
-| Perception | Danger Sense, Identify Weakness, Eagle Eye | Preternatural awareness |
-| Stealth | Assassination, Hidden Strike, Devious Tactics | Perfect stealth, shadow mastery |
-| Survival | Monster Hunter, Trap Maker | Legendary tracking, master traps |
-| Nature | Animal Companion, Field Medic | Bonded companion, advanced herbalism |
-| Education | Tactician, Commander, General Education | Battlefield control, knowledge mastery |
-| Crafting | Artisan, Peak Performance | Masterwork creation, quality bonuses |
-| Lore | Mage Hunter, Consult the Myths | Anti-magic expertise, ritual mastery |
-| Streetwise | Swashbuckler, Thug Tactics | Urban legend, criminal empire |
+| Fighting | Warlord's Presence, Weapon Grandmastery | Battlefield command, transcendent technique |
+| Archery | Overwatch | Zone control, suppression fire |
+| Arcana | Arcane Mastery | Focus efficiency, spell heightening |
+| Mysticism | Divine Authority | Spell empowerment, spiritual dominance |
+| Athletics | Supernatural Mobility | Inhuman movement, fall resistance |
+| Fortitude | Unbreakable | Condition immunity, Fatigue resistance |
+| Influence | Presence of Conquest | Mass intimidation, morale breaking |
+| Insight | Foresight | Predictive defense, scene awareness |
+| Perception | Perfect Awareness | Total battlefield awareness |
+| Stealth | Master of Shadows | Advanced hiding, combat vanishing |
+| Education | Grand Strategist | Tactical analysis, party-wide bonuses |
+| Crafting | Master Artisan | Quality escalation, item repair |
+| Nature | Primal Bond | Animal communication, nature manipulation |
+| Survival | Apex Predator | Ultimate tracking, trap mastery |
+| Streetwise | Kingpin | Network establishment, favor calling |
 
-#### 12.3.2 Rank 5 Extensions (~16 talents)
+### 11.4 Phase 4: Prestige Talents (If Adopted — Lower Priority)
 
-One signature talent per skill reaching Rank 5:
+**Goal:** Introduce multi-skill talents that define archetype mastery. This phase is contingent on the design decision in §10.3.
 
-| Skill | Rank 5 Talent | Signature Effect |
-|-------|---------------|-----------------|
-| Fighting | Art of Fighting | Once per day, auto-Critical on a Fighting roll |
-| Archery | Art of Archery | Once per day, auto-Critical on an Archery roll |
-| Arcana | Arcane Spell Knowledge | Access Rank 5 spells; +1 Focus |
-| Mysticism | Mystical Spell Knowledge | Access Rank 5 spells; +1 Focus |
-| Athletics | Supernatural Mobility | Move through enemies, wall-run, reduce fall damage dramatically |
-| Fortitude | Hard to Kill | Once per day, survive lethal damage at 1 HP |
-| Influence | Presence of Conquest | Demoralize all enemies in short range; shatter morale |
-| Insight | Foresight | Once per day, declare you foresaw a threat and take a prepared action |
-| Perception | Eagle Eye (or new) | Preternatural senses; cannot be surprised; detect invisible |
-| Stealth | Assassination (or new) | Once per day, guaranteed stealth kill on unaware target (if damage sufficient) |
-| Survival | Monster Hunter | Legendary hunter; +1 boon and +weapon damage vs. studied prey |
-| Nature | Animal Companion | Companion becomes exceptional (acts independently, gains abilities) |
-| Education | Tactician | Once per scene, declare a tactical advantage for the entire party |
-| Crafting | Master Artisan | Create items one Quality tier higher; halve crafting time |
-| Lore | Magical Sense | Permanent detect magic; identify enchantments on sight |
-| Streetwise | Swashbuckler (or new) | Once per scene, automatically escape a grapple, trap, or restraint |
-
-### 12.4 Phase 4: Prestige Talents (Lower Priority)
-
-**Goal:** Introduce multi-skill talents that define archetype mastery.
-
-Implement 15–20 Prestige Talents across combat, magic, and skill categories (see §10.5 for initial proposals). Prioritize archetypes with the weakest talent support: Oracle, Bard, Tamer, Hoplite, Warlock, Rogue.
+If prestige talents are adopted, implement 10–15 across combat, magic, and skill categories (see §10.5 for proposals). Prioritize archetypes with the weakest talent support: Oracle, Bard, Tamer, Hoplite, Warlock, Rogue.
 
 ---
 
-## 13. Implementation Roadmap
+## 12. Implementation Roadmap
 
 ### Priority Matrix
 
@@ -1086,9 +1079,9 @@ Implement 15–20 Prestige Talents across combat, magic, and skill categories (s
 
 ---
 
-## 14. Forward-Looking Guidance
+## 13. Forward-Looking Guidance
 
-### 14.1 Talent Design for Ongoing System Evolution
+### 13.1 Talent Design for Ongoing System Evolution
 
 As new game systems are introduced, talent design should follow this integration protocol:
 
@@ -1097,7 +1090,7 @@ As new game systems are introduced, talent design should follow this integration
 3. **Design integration talents** — Create 2–3 talents per system that use system-specific triggers and effects.
 4. **Validate against archetypes** — Ensure integration talents benefit the archetypes that thematically align.
 
-### 14.2 Scaling Talent Power at High Ranks
+### 13.2 Scaling Talent Power at High Ranks
 
 | Rank | Power Budget | Frequency | Scope |
 |------|-------------|-----------|-------|
@@ -1107,7 +1100,7 @@ As new game systems are introduced, talent design should follow this integration
 | 4 | Encounter-defining | Daily or costly | Short range / party |
 | 5 | Session-defining | Daily / session | Scene-wide / narrative |
 
-### 14.3 Avoiding Common Pitfalls
+### 13.3 Avoiding Common Pitfalls
 
 - **Don't inflate numbers.** Rank 4–5 talents should provide new options, not just +2 instead of +1.
 - **Don't obsolete lower ranks.** Rank 5 Evasion shouldn't make Rank 3 Evasion feel pointless — it should expand the ability's scope.
@@ -1115,7 +1108,7 @@ As new game systems are introduced, talent design should follow this integration
 - **Don't ignore non-combat.** Every Rank 4–5 talent should have at least secondary utility, exploration, or social applications.
 - **Don't break bounded power.** Rank 5 is mortal pinnacle. No auto-wins, no reality-warping, no effects that bypass all defenses.
 
-### 14.4 Talent Maintenance Schedule
+### 13.4 Talent Maintenance Schedule
 
 - **Per release cycle:** Audit new talents against archetype coverage, system integration, and role distribution.
 - **Per new system:** Run an integration analysis (see §8 pattern) and produce talent proposals.
