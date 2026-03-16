@@ -779,13 +779,6 @@ All remaining talents. Their design space is fully explored at R3, they're situa
 New talents designed specifically for Master and Grandmaster tiers. These fill the remaining TP budget and provide fresh options that couldn't exist at lower ranks.
 
 The open question is **what design principle** to use for these high-level talents. Section 10 evaluates two approaches: single-skill capstones vs. cross-skill prestige talents.
-| Education | Commander | **Extend to R4** | Mass command abilities |
-| Crafting | Artisan | **Extend to R4** | Masterwork creation |
-| Crafting | Peak Performance | **Cap at R3** | Enhancement bonuses sufficient |
-| Lore | Magical Sense | R4 (incomplete) | **Extend to R5** | Career talent for mage hunters |
-| Lore | Mage Hunter | **Extend to R4** | Anti-caster mastery |
-| Streetwise | Swashbuckler | **Extend to R4** | Light weapon mastery |
-| Streetwise | Thug Tactics | **Cap at R3** | Numerical advantage complete |
 
 #### Summary
 
@@ -1335,7 +1328,7 @@ These talents fill the critical gaps identified in §7.1 where archetypes lack a
 
 *Design note: Oracle signature. R1 provides narrative utility only (information, not mechanical bonuses) — appropriately modest for a first talent point. R2 introduces the combat-relevant boon ability. R3 adds reliability and the dramatic Resolve-spend option.*
 
-*Design note: Oracle signature. R1 is a simple once-per-scene boon. R2 adds divination utility. R3 provides reliability and a powerful (but costly) reroll.*
+*Design note: Oracle signature. R1 provides narrative utility only (information, not mechanical bonuses) — appropriately modest for a first talent point. R2 introduces the combat-relevant boon ability. R3 adds reliability and the dramatic Resolve-spend option.*
 
 #### Eldritch Pact (Arcana) — New (fills Warlock gap)
 
