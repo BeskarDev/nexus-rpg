@@ -56,13 +56,13 @@
     "description": "Living in a spiritual symbiotic state with the life force of nature in their immediate environment, elves are intimately connected to the natural world. They are sensitive to changes in their surroundings and suffer physically when in barren or lifeless terrain for too long. They are often aloof and unapproachable, but their fierce loyalty to their home and way of life is unwavering. In the realm of Atakhet, the Ra'thep sun-elves have adapted to channel the desert's harsh energies, ruling as divine representatives blessed by the sun.",
     "cultures": [
       {
-        "name": "Hoshien (River-Elves)",
+        "name": "Ho'shien (River-Elves)",
         "region": "Eastern Mist Realms",
         "description": "Ancient elven high culture between two great rivers; once a united empire, now split into three sovereign kingdoms"
       },
       {
         "name": "Anutep (Sun-Elves)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Ruling elven culture of Atakhet; governed by divine twin emperors, protectors of the sacred rivers"
       },
       {
@@ -122,7 +122,7 @@
       },
       {
         "name": "Burrin (Desert-Gnomes)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Nomadic gnomes of the Taharet Desert; the only culture permanently living there, gifted with psychic abilities"
       },
       {
@@ -176,7 +176,7 @@
         "description": "Seafaring traders with far-reaching trade networks"
       },
       {
-        "name": "Tauuri (Island-Hune)",
+        "name": "Ta'uuri (Island-Hune)",
         "region": "Eastern Mist Realms",
         "description": "Seafaring Hunes in the southern island chains of the Eastern Mist Realms; fishers, maritime warriors and explorers"
       }
@@ -203,7 +203,7 @@
     "cultures": [
       {
         "name": "Orgon (Island-Orcs)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed"
       },
       {
@@ -284,18 +284,13 @@
     "cultures": [
       {
         "name": "Khatok (Savanna-Humans)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Nomadic human tribes of the grasslands; many were brought to labor in Atakhet"
       },
       {
-        "name": "Sefkari (Scholar-Humans)",
+        "name": "Sefkari (Oasis-Humans)",
         "region": "Eternal Desert",
         "description": "Oasis dwellers of the Great Desert; harnessing human affinity for arcane magic at the watering holes of Atakhet"
-      },
-      {
-        "name": "Zaubererfürsten (Sorcerer-Princes)",
-        "region": "Kesheret",
-        "description": "Decentralized magocracy in the Kesheret desert; isolated citadel-states of arcane tyrants hoarding forbidden knowledge"
       },
       {
         "name": "Vornheimr (Snow-Humans)",
@@ -330,7 +325,7 @@
       },
       {
         "name": "Jakharii (Savanna-Lionfolk)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Proud lion-folk of the southern savannas; nominally sovereign city-state, effectively under Atakhet's control"
       },
       {
@@ -370,7 +365,7 @@
     "cultures": [
       {
         "name": "Vaashk (Swamp-Lizardfolk)",
-        "region": "Atakhet",
+        "region": "Eternal Desert",
         "description": "Lizardfolk of the Oshet-Delta; amphibious wetland dwellers with tribal traditions"
       },
       {
@@ -465,7 +460,7 @@
     "cultures": [
       {
         "name": "Kerbei (Jackal-Folk)",
-        "region": "Kesheret",
+        "region": "Eternal Desert",
         "description": "Jackal-like dog-folk of the Great Desert; people of Baaphor; dwelling in hidden ruins, bound to a forgotten ancient duty"
       },
       {

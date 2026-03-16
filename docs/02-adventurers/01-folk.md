@@ -113,8 +113,8 @@ Living in a spiritual symbiotic state with the life force of nature in their imm
 
 | Culture | Region | Description |
 | --- | --- | --- |
-| Hoshien (River-Elves) | Eastern Mist Realms | Ancient elven high culture between two great rivers; once a united empire, now split into three sovereign kingdoms |
-| Anutep (Sun-Elves) | Atakhet | Ruling elven culture of Atakhet; governed by divine twin emperors, protectors of the sacred rivers |
+| Ho'shien (River-Elves) | Eastern Mist Realms | Ancient elven high culture between two great rivers; once a united empire, now split into three sovereign kingdoms |
+| Anutep (Sun-Elves) | Eternal Desert | Ruling elven culture of Atakhet; governed by divine twin emperors, protectors of the sacred rivers |
 | Imentep (Shadow-Elves) | Eternal Desert | Nocturnal elves dwelling in the underrealms and ancient tombs of the desert; guardians of the dead; cursed descendants of the fallen Elven Pharakhet |
 | Alfir (Dark-Elves) | Frozen North | Nocturnal elves in twilight realms; agents of dark gods and masters of shadow magic |
 | Sylvar (Wood-Elves) | Frozen North | Mysterious forest protectors of the Frozen North; living in harmony with ancient woodlands |
@@ -145,7 +145,7 @@ Natural psychics with the ability to read other people's intentions and surface 
 | Culture | Region | Description |
 | --- | --- | --- |
 | Shangri (Cloud-Gnomes) | Eastern Mist Realms | High-monastery dwellers seeking enlightenment; masters of meditation |
-| Burrin (Desert-Gnomes) | Atakhet | Nomadic gnomes of the Taharet Desert; the only culture permanently living there, gifted with psychic abilities |
+| Burrin (Desert-Gnomes) | Eternal Desert | Nomadic gnomes of the Taharet Desert; the only culture permanently living there, gifted with psychic abilities |
 | Auflin (Willow-Gnomes) | Eternal Desert | Gentle river-dwellers near oases; empathy-gifted traders and trackers |
 
 **Size.** Gnomes are of small size, growing up to 0.90 to 1.00 meters tall on average with a stout build.
@@ -179,7 +179,7 @@ A race of towering beings with incredible strength and endurance. They are often
 | Hataar (Mountain-Hune) | Eternal Desert | Nomadic mountain herders who developed astronomy and navigation through their migrations; their gods embody the star constellations that guide them |
 | Jotnir (Ice-Hune) | Frozen North | Frost-resistant nomads of the Frozen North; living in eternal harmony with the ice |
 | Empyros (Island-Hune) | Western Island Realms | Seafaring traders with far-reaching trade networks |
-| Tauuri (Island-Hune) | Eastern Mist Realms | Seafaring Hunes in the southern island chains of the Eastern Mist Realms; fishers, maritime warriors and explorers |
+| Ta'uuri (Island-Hune) | Eastern Mist Realms | Seafaring Hunes in the southern island chains of the Eastern Mist Realms; fishers, maritime warriors and explorers |
 
 **Size.** Hunes are medium sized, growing to 2.10 to 2.30 meters tall on average.
 
@@ -205,7 +205,7 @@ Coming from once violent and brutal cultures, the orcs have a reputation for sav
 
 | Culture | Region | Description |
 | --- | --- | --- |
-| Orgon (Island-Orcs) | Atakhet | Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed |
+| Orgon (Island-Orcs) | Eternal Desert | Military-hierarchical orcs on volcanic islands; worship a liberator god; lead a multi-racial society; beacon of hope for the oppressed |
 | Zakhar (Coastal-Orcs) | Eternal Desert | Seafaring raiders and pirates along the coasts of the Great Desert |
 | Jinkai (Mountain-Orcs) | Eastern Mist Realms | Honor-bound metalsmiths and warriors of the Eastern Mist Realms; known for their smithing, strict honor code and ritualized combat traditions |
 | Thuran (Jungle-Orcs) | Southern Jungle | Rice farmers and river warriors; adapted to life in the jungle |
@@ -262,9 +262,8 @@ A resilient and adaptable people, humans possess a natural arcane ability that s
 
 | Culture | Region | Description |
 | --- | --- | --- |
-| Khatok (Savanna-Humans) | Atakhet | Nomadic human tribes of the grasslands; many were brought to labor in Atakhet |
-| Sefkari (Scholar-Humans) | Eternal Desert | Oasis dwellers of the Great Desert; harnessing human affinity for arcane magic at the watering holes of Atakhet |
-| Zaubererfürsten (Sorcerer-Princes) | Kesheret | Decentralized magocracy in the Kesheret desert; isolated citadel-states of arcane tyrants hoarding forbidden knowledge |
+| Khatok (Savanna-Humans) | Eternal Desert | Nomadic human tribes of the grasslands; many were brought to labor in Atakhet |
+| Sefkari (Oasis-Humans) | Eternal Desert | Oasis dwellers of the Great Desert; harnessing human affinity for arcane magic at the watering holes of Atakhet |
 | Vornheimr (Snow-Humans) | Frozen North | Hardy northerners; adapted to life in extreme cold |
 
 **Size.** Humans are medium sized, growing to 1.60 to 1.80 meters tall on average.
@@ -289,7 +288,7 @@ A proud and regal race, with a deep connection to the natural world and a revere
 | Culture | Region | Description |
 | --- | --- | --- |
 | Vyaghral (Tiger-Folk) | Eastern Mist Realms | Solitary jungle and mountain hunters; legendary for patience and deadly precision |
-| Jakharii (Savanna-Lionfolk) | Atakhet | Proud lion-folk of the southern savannas; nominally sovereign city-state, effectively under Atakhet's control |
+| Jakharii (Savanna-Lionfolk) | Eternal Desert | Proud lion-folk of the southern savannas; nominally sovereign city-state, effectively under Atakhet's control |
 | Tuvak (Sabertooth-Folk) | Frozen North | Ice-age megafauna hunters; living in the coldest regions |
 | Saghal (Jungle-Pantherfolk) | Southern Jungle | Stealthy predators blending with their surroundings; controlling the mythwood trade |
 
@@ -316,7 +315,7 @@ A cold-blooded and inscrutable species, with a deep connection to the swamps and
 
 | Culture | Region | Description |
 | --- | --- | --- |
-| Vaashk (Swamp-Lizardfolk) | Atakhet | Lizardfolk of the Oshet-Delta; amphibious wetland dwellers with tribal traditions |
+| Vaashk (Swamp-Lizardfolk) | Eternal Desert | Lizardfolk of the Oshet-Delta; amphibious wetland dwellers with tribal traditions |
 | Ceratos (Threehorns) | Southern Jungle | Armored jungle guardians; massively built and deadly in melee |
 | Nakhash (Serpentfolk) | Southern Jungle | Hypnotic temple priests; masters of influence and ritual magic |
 | Quexa-kul (Jungle-Lizardfolk) | Southern Jungle | Colorful tribes moving through undergrowth with surprising stealth; worshipping the Ur-Serpent |
@@ -376,7 +375,7 @@ Dogfolk are a canine folk with keen senses and an unshakable loyalty to their ki
 
 | Culture | Region | Description |
 | --- | --- | --- |
-| Kerbei (Jackal-Folk) | Kesheret | Jackal-like dog-folk of the Great Desert; people of Baaphor; dwelling in hidden ruins, bound to a forgotten ancient duty |
+| Kerbei (Jackal-Folk) | Eternal Desert | Jackal-like dog-folk of the Great Desert; people of Baaphor; dwelling in hidden ruins, bound to a forgotten ancient duty |
 | Lycanin (Wolf-Folk) | Frozen North | Pack warriors of the snowy forests with strict pack hierarchy |
 | Coyotl (Coyote-Folk) | Southern Jungle | Tricksters, survivalists, and scavengers; cunning and adaptable |
 | Kithar (Fox-Folk) | Eastern Mist Realms | Shrewd traders and diplomats of the Island Realms; known for their negotiation skills |
