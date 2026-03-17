@@ -9,20 +9,24 @@
 ### Key Findings
 
 1. **Low-to-mid tier coverage is strong; high-tier coverage is sparse.** Ranks 0–2 contain 219 of 279 total spells (~78%), providing robust foundations. Ranks 3–4 have 52 spells with limited variety, and Rank 5 has zero spells — all 14 schools lack legendary capstones.
-2. **The AoE damage penalty becomes proportionally weaker at higher ranks.** The "one rank lower" guideline is generally well-applied (95%+ of spells follow it), but because it applies a fixed absolute reduction (−2 per success level), the proportional penalty shrinks from −50% at Rank 1 to just −17% at Rank 5. When Spell Power is added, AoE total throughput can exceed single-target throughput by 2–5× depending on target count.
-3. **Missile spells combined with per-hit modifiers create multiplicative scaling.** Arcane Barrage (3–5 missiles) combined with Arcane Empowerment (+Arcana per missile) can reach 75+ damage at Rank 3, exceeding the Rank 5 damage ceiling of 36–42.
+2. **Multi-target damage should use half single-target scaling at Rank 2+.** The previous "one rank lower" guideline used a flat −2 reduction that became proportionally weaker at higher ranks. The revised approach halves the single-target spell bonus for multi-target spells at R2+ (R0–R1 unchanged), creating a consistent 50% penalty that remains meaningful at all ranks. Spell Power and spell catalyst bonuses apply equally, so the actual per-target gap narrows in play — but still rewards clustering 3+ targets as an intentional AoE payoff.
+3. **Missile spells need damage type reconsideration.** Arcane Missiles/Barrage currently use blast damage (ignoring ½ AV), but the intended weakness is per-missile AV reduction. The blast property undermines this by halving AV before it applies. A neutral "arcane" damage type with full AV application per missile would better serve the design intent. Moving Arcane Barrage to Rank 3 is also under consideration as an alternative or complementary fix.
 4. **War and Peace traditions are undersized.** War has 11 spells (no Rank 3+) and Peace has 13 spells. Both lack core thematic aspects — War needs higher-rank battle magic; Peace is missing travel and law enforcement spells entirely.
 5. **~30 classic fantasy spells are absent.** Expected utility staples (Knock, Identify, Water Breathing, Comprehend Languages) and combat classics (Sleep, Web, Grease, Banishment) have no equivalents.
 6. **18 spells remain incomplete** (lacking full mechanical descriptions), with 64% of Rank 4 spells affected.
 7. **Thematic identity is well-executed.** The Arcane (transgressive/selfish) vs Mystic (reverent/communal) distinction is clear and consistently applied across all schools. Necromancy, Nature, and Tempest are exemplary in depth and coherence.
+8. **Five schools lack a Rank 1 reactive Quick Action spell.** Conjuration, Telekinetics, Death, Nature, and Twilight have no quick defensive or support spell at R1. Every school should have at least one to ensure baseline reactive play for casters of any tradition/discipline.
+9. **School internal design needs systematic attention.** Many schools lack clear setup+payoff spell combos, consistent condition/gimmick identities, or balanced role coverage. A per-school gap analysis (§14) identifies specific deficiencies and proposes concrete new spells.
 
 ### Design Principles
 
 1. **Bounded power ceiling** — Rank 5 equals D&D Level 7 (Delayed Blast Fireball, Plane Shift), not Level 9 (Wish, Meteor Swarm). All effects must be temporary, escapable, and mortal-scale.
-2. **AoE must trade damage for targets** — Multi-target spells should deal meaningfully less per-target than single-target equivalents at the same rank. The current "one rank lower" guideline needs stricter enforcement.
+2. **AoE must trade damage for targets** — Multi-target spells deal half single-target spell bonus at Rank 2+ (R0–R1 unchanged). This ensures AoE is rewarding against clustered groups (3+ targets) but never strictly superior to focused fire.
 3. **Spell Power adds depth, not dominance** — The ½ Attribute base damage ensures casters always contribute, but total throughput with modifiers must not exceed bounded ceilings.
 4. **Focus is the primary resource constraint** — Higher-rank spells cost more Focus (2/4/6/8/10 by rank), gating power behind resource management rather than unlimited scaling.
 5. **Traditions/disciplines should cover their Excel and Decent roles** — Each school should have spells across its primary and secondary roles, with Weak roles deliberately limited.
+6. **Area scales with rank** — R0–R1 spells are almost all single-target (rare melee AoE). R2 affects close area or short line. R3 affects short area. R4 affects medium area. R5 affects up to long area.
+7. **Every school needs internal completeness** — Each school should have: at least one R1 Quick Action reactive spell, defensive options, utility/non-combat effects, some damage capability (even if restricted), repeating conditions/gimmick identity, and setup+payoff synergies.
 
 ---
 
@@ -159,31 +163,69 @@ Mage Armor (arcane AC), Stoneskin (damage reduction), Haste (Arcane version), Sl
 
 ### 6.1 Standard Damage by Rank
 
-| Rank | Focus | TN | Single-Target (W/S/C) | AoE Standard (W/S/C) | Range | Duration | Area |
+| Rank | Focus | TN | Single-Target (W/S/C) | Multi-Target (W/S/C) | Default Range | Duration | Default Area |
 |---|---|---|---|---|---|---|---|
-| **0** | 0 | 6 | +2/+4/+6 | +0/+2/+4 | Medium | Brief–Short | Melee–Close |
-| **1** | 2 | 8 | +4/+8/+12 | +2/+4/+6 | Medium | Short–Medium | Close–Short |
-| **2** | 4 | 10 | +6/+12/+18 | +4/+8/+12 | Medium–Long | Short–Medium | Short–Medium |
-| **3** | 6 | 12 | +8/+16/+24 | +6/+12/+18 | Long | Short–Medium | Medium–Long |
-| **4** | 8 | 14 | +10/+20/+30 | +8/+16/+24 | Long–Extreme | Short–Medium | Large |
-| **5** | 10 | 16 | +12/+24/+36 | +10/+20/+30 | Extreme | Short–Medium | Large–Extreme |
+| **0** | 0 | 6 | +2/+4/+6 | +0/+2/+4 | Medium | Brief–Short | Single / Melee |
+| **1** | 2 | 8 | +4/+8/+12 | +2/+4/+6 | Medium | Short–Medium | Single / Melee |
+| **2** | 4 | 10 | +6/+12/+18 | +3/+6/+9 | Medium–Long | Short–Medium | Close area / Short line |
+| **3** | 6 | 12 | +8/+16/+24 | +4/+8/+12 | Long | Short–Medium | Short area |
+| **4** | 8 | 14 | +10/+20/+30 | +5/+10/+15 | Long–Extreme | Short–Medium | Medium area |
+| **5** | 10 | 16 | +12/+24/+36 | +6/+12/+18 | Extreme | Short–Medium | Long area |
 
 **Scaling Rules**:
 - **Single-target**: +2 weak damage per rank (2→4→6→8→10→12).
-- **AoE standard**: One rank lower damage to balance multi-target advantage.
-- **Rank 0 AoE**: Special case +0/+2/+4 to balance unlimited casting.
+- **Multi-target (R2+)**: Half single-target spell bonus — consistently 50% per-target penalty at all ranks.
+- **Multi-target (R0–R1)**: Legacy scaling preserved (+0/+2/+4 and +2/+4/+6) because at-will and low-Focus spells need stronger constraints.
+- **Duo-target spells**: Edge case between single and multi. Use ~75% of single-target damage (+4/+9/+13 at R2) or full single-target damage with a limiting condition (e.g., targets must be adjacent).
 
-### 6.2 Damage Deviation Scenarios
+**Note on Spell Power and Spell Catalysts**: Spell Power (½ Attribute) and spell catalyst damage bonuses apply equally to single-target and multi-target spells. This narrows the effective per-target gap in play (see §7.2), but the 50% spell bonus penalty still creates meaningful differentiation. The design intent is that AoE rewards clustering 3+ targets — hitting 3 targets at half damage per target yields 150% total throughput vs single-target, which is the intended payoff.
+
+### 6.2 Area Progression by Rank
+
+| Rank | Default Area | Notes |
+|---|---|---|
+| **0** | Single-target | Rare exceptions: melee-range AoE only |
+| **1** | Single-target | Rare exceptions: melee-range AoE only |
+| **2** | Close area or short line | First true AoE tier. Lightning Bolt/Strike should be nerfed from medium line to short line. |
+| **3** | Short area | Encounter-shaping AoE begins |
+| **4** | Medium area | Major battlefield control |
+| **5** | Long area | Maximum AoE reach |
+
+**Existing spells requiring area adjustment**: Lightning Strike (Evocation R2) and Lightning Bolt (Tempest R2) currently use a line in medium range. Under this framework, they should be reduced to a short line to match R2 area progression.
+
+### 6.3 Range Modification Framework
+
+| Default Range | Rank Reference |
+|---|---|
+| Medium | R0–R1 |
+| Medium–Long | R2 |
+| Long | R3 |
+| Long–Extreme | R4 |
+| Extreme | R5 |
+
+**Range Tradeoffs**:
+
+| Modification | Cost / Benefit | Example |
+|---|---|---|
+| **Longer range** (+1 step) | −1 per success level damage, or +1 Focus cost, or lose secondary effect | A R2 spell at Long range deals +2/+4/+6 instead of +3/+6/+9 |
+| **Shorter range** (−1 step) | +1 per success level damage, or gain secondary condition, or reduced Focus | A R2 melee-only AoE can deal full single-target damage (+6/+12/+18) |
+| **Touch/Melee only** | Up to full single-target damage on AoE, or strong secondary effect | Melee AoE justified at full damage due to positioning risk |
+| **Self only** | Stronger effect than targeted equivalent, or longer duration | Self-buffs can be more potent than ally-targeted versions |
+
+**Principle**: Range and area are part of the power budget. Spells with reduced range/area can be more potent per-target; spells with extended range/area should be less potent per-target or cost more Focus.
+
+### 6.4 Damage Deviation Scenarios
 
 | Scenario | Adjustment | Rationale | Example |
 |---|---|---|---|
-| **Smaller area** (melee AoE) | Up to standard rank damage | Fewer targets, higher risk | Rank 2 melee AoE: +6/+12/+18 |
-| **Larger area** | Two ranks lower damage | More targets, easier to land | Rank 2 medium area: +2/+4/+6 |
-| **Strong secondary effect** | −1 to −2 steps | Trade damage for utility | Damage + fear: +3/+6/+9 |
+| **Melee AoE** | Up to standard single-target damage | Fewer targets, positioning risk | Rank 2 melee AoE: +6/+12/+18 |
+| **Larger area** (one step up) | Reduce by −1 per SL from multi-target | More targets, easier to land | Rank 3 medium area: +3/+6/+9 |
+| **Strong secondary effect** | −1 to −2 steps from base | Trade damage for utility | Multi-target + fear: +2/+4/+6 at R2 |
 | **Control-primary** | Minimal damage | Powerful condition justifies low damage | Rank 0 fear: +0/+2/+4 |
-| **Chain/split** | Secondary reduced | Primary damage preserved | Primary +2/+4/+6, chain +0/+2/+4 |
+| **Chain/split** | Secondary hit reduced | Primary damage preserved | Primary +4/+8/+12, chain +2/+4/+6 |
+| **Duo-target** | ~75% single-target | Between single and multi | Rank 2 duo: +4/+9/+13 |
 
-### 6.3 Damage Types
+### 6.5 Damage Types
 
 | Category | Types | Notes |
 |---|---|---|
@@ -192,92 +234,132 @@ Mage Armor (arcane AC), Stoneskin (damage reduction), Haste (Arcane version), Sl
 | Energy | Radiant, Necrotic, Blast, Psychic | Blast ignores ½ AV |
 | Special | Poison | Resisted differently |
 
-### 6.4 Power Level Equivalence
+**Open Question — Arcane/Force Damage Type**: Missile spells (Arcane Missiles, Arcane Barrage) currently use blast damage, which ignores ½ AV. However, the intended weakness of missile spells is per-missile AV reduction. Blast's ½ AV ignore undermines this. A neutral "arcane" or "force" damage type that applies full AV per hit would better serve the design intent. See §8.2 for detailed analysis.
+
+### 6.6 Power Level Equivalence
 
 | Nexus Rank | D&D Equivalent | Power Tier | Good D&D Models |
 |---|---|---|---|
 | 0 | Level 0 | At-will cantrips | Prestidigitation, Light |
 | 1 | Levels 1–2 | Basic magic | Magic Missile, Cure Wounds |
 | 2 | Levels 3–4 | Moderate power | Fireball, Lightning Bolt |
-| 3 | Level 5 | High power | Cone of Cold, Cloudkill |
-| 4 | Level 6 | Very high power | Disintegrate, Chain Lightning |
-| 5 | **Level 7** | Peak mortal | Delayed Blast Fireball, Plane Shift |
+| 3 | Level 5 | High power | Cone of Cold, Cloudkill, **Revivify** |
+| 4 | Level 6 | Very high power | Disintegrate, Chain Lightning, **Raise Dead** |
+| 5 | **Level 7** | Peak mortal | Delayed Blast Fireball, Plane Shift, **Resurrection** |
 
 **Critical**: Rank 5 = D&D Level 7, NOT Level 9. Impressive but mortal-scale, not world-shattering. Avoid models like Wish, True Resurrection, Meteor Swarm, Time Stop, or Imprisonment.
+
+**Resurrection Framework**: Due to the gritty bronze age / sword & sorcery feel, resurrection magic is placed higher than D&D defaults:
+- **Revivify** (restore recently dead) → Rank 3 — already a powerful, world-affecting ability
+- **Raise Dead** (restore dead within days) → Rank 4
+- **Resurrection** (restore dead within weeks/months) → Rank 5
+- **True Resurrection** → Does not exist. Too powerful for mortal-scale magic.
 
 ---
 
 ## 7. Single-Target vs Multi-Target Damage Analysis
 
-This section performs a deep comparison of single-target and multi-target spell damage throughput to evaluate whether the current AoE scaling adequately balances multi-target advantage.
+This section compares single-target and multi-target spell damage throughput under the revised half-damage scaling to evaluate balance.
 
-### 7.1 Raw Spell Bonus Comparison (Per-Target)
+### 7.1 Spell Bonus Comparison (Per-Target, Before Spell Power)
 
-The table below compares spell bonus damage (before adding Spell Power) for single-target vs AoE spells at each rank, using the design guidelines and actual spells in the system.
-
-| Rank | Single-Target (W/S/C) | AoE Guideline (W/S/C) | AoE Penalty | Typical # Targets |
+| Rank | Single-Target (W/S/C) | Multi-Target (W/S/C) | Penalty | Penalty % |
 |---|---|---|---|---|
-| 0 | +2/+4/+6 | +0/+2/+4 | −2 per SL | 2–3 |
-| 1 | +4/+8/+12 | +2/+4/+6 | −2 per SL | 2–4 |
-| 2 | +6/+12/+18 | +4/+8/+12 | −2 per SL | 3–6 |
-| 3 | +8/+16/+24 | +6/+12/+18 | −2 per SL | 3–8 |
-| 4 | +10/+20/+30 | +8/+16/+24 | −2 per SL | 4–10 |
-| 5 | +12/+24/+36 | +10/+20/+30 | −2 per SL | 4–12 |
+| 0 | +2/+4/+6 | +0/+2/+4 | −2 per SL | −100% / −50% / −33% |
+| 1 | +4/+8/+12 | +2/+4/+6 | −2 per SL | −50% |
+| 2 | +6/+12/+18 | +3/+6/+9 | −3/−6/−9 | **−50%** |
+| 3 | +8/+16/+24 | +4/+8/+12 | −4/−8/−12 | **−50%** |
+| 4 | +10/+20/+30 | +5/+10/+15 | −5/−10/−15 | **−50%** |
+| 5 | +12/+24/+36 | +6/+12/+18 | −6/−12/−18 | **−50%** |
 
-**Observation**: The AoE penalty is a flat −2 per success level compared to single-target — a fixed absolute reduction that becomes proportionally smaller as rank increases (−100% at Rank 0 weak, −50% at Rank 1, but only −17% at Rank 5).
+**Key Improvement**: The revised scaling maintains a consistent 50% spell bonus penalty at R2+, compared to the old system where the penalty shrank from −33% at R2 to −17% at R5.
 
-### 7.2 Total Throughput with Spell Power (Expected Combat Scenarios)
+### 7.2 Total Throughput with Spell Power (SP 5, Mind/Spirit d10)
 
-Adding Spell Power (½ Attribute) to base damage reveals the actual total damage output. Assuming a competent caster with Spell Power 5 (Mind d10 or Spirit d10):
+Spell Power is a flat additive bonus that narrows the per-target gap. Spell catalyst bonuses (+1 to +3 at higher levels) have the same effect. This table shows the actual per-target and total damage in realistic play:
 
-**Rank 2 — Weak Success Comparison**:
+**Rank 2 — Weak Success**:
 
-| Spell Type | Per-Target Damage | × 1 Target | × 3 Targets | × 5 Targets |
+| Spell Type | Per-Target | × 1 Target | × 3 Targets | × 5 Targets |
 |---|---|---|---|---|
 | Single-target (+6 + SP 5) | 11 | **11** | 11 | 11 |
-| AoE standard (+4 + SP 5) | 9 | 9 | **27** | **45** |
-| AoE deviation (+3 + SP 5) | 8 | 8 | **24** | **40** |
+| Multi-target (+3 + SP 5) | 8 | 8 | **24** | **40** |
 
-**Rank 2 — Strong Success Comparison**:
+**Rank 2 — Strong Success**:
 
-| Spell Type | Per-Target Damage | × 1 Target | × 3 Targets | × 5 Targets |
+| Spell Type | Per-Target | × 1 Target | × 3 Targets | × 5 Targets |
 |---|---|---|---|---|
 | Single-target (+12 + SP 5) | 17 | **17** | 17 | 17 |
-| AoE standard (+8 + SP 5) | 13 | 13 | **39** | **65** |
+| Multi-target (+6 + SP 5) | 11 | 11 | **33** | **55** |
 
-**Rank 3 — Strong Success Comparison**:
+**Rank 3 — Strong Success**:
 
-| Spell Type | Per-Target Damage | × 1 Target | × 3 Targets | × 5 Targets |
+| Spell Type | Per-Target | × 1 Target | × 3 Targets | × 5 Targets |
 |---|---|---|---|---|
 | Single-target (+16 + SP 5) | 21 | **21** | 21 | 21 |
-| AoE standard (+12 + SP 5) | 17 | 17 | **51** | **85** |
+| Multi-target (+8 + SP 5) | 13 | 13 | **39** | **65** |
 
-### 7.3 Actual Spell Damage Audit
+**Rank 3 — With Spell Catalyst +2**:
 
-Comparing real spells at Rank 2 reveals the guideline is inconsistently applied:
+| Spell Type | Per-Target | × 1 Target | × 3 Targets | × 5 Targets |
+|---|---|---|---|---|
+| Single-target (+16 + SP 5 + cat 2) | 23 | **23** | 23 | 23 |
+| Multi-target (+8 + SP 5 + cat 2) | 15 | 15 | **45** | **75** |
 
-| Spell | Rank | Type | Damage (W/S/C) | Targets | Follows Guideline? |
-|---|---|---|---|---|---|
-| Ice Lance | 2 | Single | +6/+12/+18 | 1 | ✅ Standard single |
-| Fireball | 2 | AoE (close) | +4/+8/+12 | All in area | ✅ Standard AoE |
-| Frost Wave | 2 | AoE (cone) | +4/+8/+12 | All in cone | ✅ Standard AoE |
-| Lightning Strike | 2 | AoE (line) | +4/+8/+12 | All in line | ✅ Standard AoE |
-| Corpse Explosion | 2 | AoE (close) | +6/+12/+18 | All in area | ⚠️ Single-target damage on AoE (corpse requirement may justify) |
-| Eldritch Tendrils | 2 | AoE (close) | +4/+8/+12 | All in area | ✅ Standard AoE |
-| Thorn Barrage | 2 | AoE (line) | +4/+8/+12 | All in line | ✅ Standard AoE |
-| Toxic Mist | 2 | AoE (cone) | +4/+8/+12 | All in cone | ✅ Standard AoE |
+### 7.3 Balance Assessment of Revised Scaling
+
+**Is multi-target too weak?** No. Against 3 targets (the design assumption for standard AoE), total throughput is:
+- R2 Weak: 24 vs 11 single = **218%** total throughput
+- R2 Strong: 33 vs 17 single = **194%** total throughput
+- R3 Strong: 39 vs 21 single = **186%** total throughput
+
+AoE delivers roughly 2× total damage against 3 targets, which rewards clustering and punishes tight formations. Against 5 targets, total throughput reaches 3–4×, which is a powerful positional payoff.
+
+**Is multi-target too strong?** Per-target damage is consistently lower:
+- R2 Weak: 8 vs 11 = 73% per-target (with SP included)
+- R3 Strong: 13 vs 21 = 62% per-target
+
+This means AoE never replaces single-target for priority target elimination. The trade-off is genuine: focus fire vs area pressure.
+
+**Impact of spell catalysts**: At higher levels, spell catalyst damage bonuses (+1 to +3) are flat additives that apply equally. This narrows the gap slightly (as shown in the R3 catalyst example above), which is acceptable because catalyst investment represents character progression that should empower all spell types.
+
+### 7.4 Comparison to Previous System
+
+| Rank | Old AoE as % of Single (bonus only) | New AoE as % of Single (bonus only) | Change |
+|---|---|---|---|
+| 0 | 0–50% | 0–50% | No change |
+| 1 | 50% | 50% | No change |
+| 2 | 67% | **50%** | −17% per-target |
+| 3 | 75% | **50%** | −25% per-target |
+| 4 | 80% | **50%** | −30% per-target |
+| 5 | 83% | **50%** | −33% per-target |
+
+The revised scaling creates the most significant impact at high ranks, where the old system was weakest.
+
+### 7.5 Actual Spell Damage Audit
+
+Comparing real spells at Rank 2 against the revised guidelines:
+
+| Spell | Rank | Type | Damage (W/S/C) | Targets | Revised Guideline | Status |
+|---|---|---|---|---|---|---|
+| Ice Lance | 2 | Single | +6/+12/+18 | 1 | +6/+12/+18 | ✅ Correct |
+| Fireball | 2 | AoE (close) | +4/+8/+12 | All in area | +3/+6/+9 | ⚠️ Above revised guideline |
+| Frost Wave | 2 | AoE (cone) | +4/+8/+12 | All in cone | +3/+6/+9 | ⚠️ Above revised guideline |
+| Lightning Strike | 2 | AoE (line) | +4/+8/+12 | All in line | +3/+6/+9 | ⚠️ Above revised guideline + area too large |
+| Corpse Explosion | 2 | AoE (close) | +6/+12/+18 | All in area | +3/+6/+9 | ⚠️ Full single-target damage (corpse cost may justify) |
+| Thorn Barrage | 2 | AoE (line) | +4/+8/+12 | All in line | +3/+6/+9 | ⚠️ Above revised guideline |
+| Toxic Mist | 2 | AoE (cone) | +4/+8/+12 | All in cone | +3/+6/+9 | ⚠️ Above revised guideline |
 
 At Rank 3:
 
-| Spell | Rank | Type | Damage (W/S/C) | Targets | Follows Guideline? |
-|---|---|---|---|---|---|
-| Wither | 3 | Single | +8/+16/+24 | 1 | ✅ Standard single |
-| Purifying Light | 3 | AoE (cone) | +6/+12/+18 | All in cone | ✅ Standard AoE |
-| Chain Lightning | 3 | Multi (chain) | +6/+12/+18 | Chain targets | ✅ Standard AoE |
-| Cone of Cold | 3 | AoE (cone) | +6/+12/+18 | All in cone | ✅ Standard AoE |
-| Negative Energy Flood | 3 | AoE (cone) | +4/+8/+12 | All in cone | ⚠️ Below AoE guideline (control-primary trade-off) |
+| Spell | Rank | Type | Damage (W/S/C) | Targets | Revised Guideline | Status |
+|---|---|---|---|---|---|---|
+| Wither | 3 | Single | +8/+16/+24 | 1 | +8/+16/+24 | ✅ Correct |
+| Purifying Light | 3 | AoE (cone) | +6/+12/+18 | All in cone | +4/+8/+12 | ⚠️ Above revised guideline |
+| Chain Lightning | 3 | Multi (chain) | +6/+12/+18 | Chain | +4/+8/+12 | ⚠️ Above revised guideline |
+| Cone of Cold | 3 | AoE (cone) | +6/+12/+18 | All in cone | +4/+8/+12 | ⚠️ Above revised guideline |
 
-**Assessment**: Most spells correctly follow the scaling guidelines. Corpse Explosion (R2) is an outlier dealing single-target damage (+6/+12/+18) to an AoE, though it requires a corpse in the area as a material condition.
+**Note**: All existing AoE spells were built under the old "one rank lower" system. Adopting half-damage scaling means existing R2+ AoE spells would need their damage reduced. This is a significant but systematic change — roughly −1 per SL at R2, −2 per SL at R3, etc.
 
 ### 7.4 Missile Spell Throughput (The Scaling Problem)
 
@@ -314,156 +396,143 @@ For comparison, the Rank 5 single-target damage ceiling at critical success is +
 
 ## 8. Multi-Target Damage Balance Assessment
 
-### 8.1 Is AoE Damage Per Tier Too High?
+### 8.1 Revised AoE Scaling Adequacy
 
-**Finding: Standard AoE damage per-target is appropriately scaled, but total throughput is not adequately constrained.**
+With the half-damage scaling adopted for R2+, the proportional penalty is now consistent:
 
-The "one rank lower" rule correctly reduces per-target damage by −2 per success level. However, this analysis reveals two balance concerns:
-
-**Concern 1 — Proportional Penalty Shrinks at Higher Ranks**
-
-| Rank | Single (Weak) | AoE (Weak) | AoE as % of Single | Effective Penalty |
+| Rank | Single (Weak) | Multi (Weak) | Multi as % of Single (bonus only) | With SP 5 |
 |---|---|---|---|---|
-| 0 | +2 | +0 | 0% | −100% ✅ |
-| 1 | +4 | +2 | 50% | −50% ✅ |
-| 2 | +6 | +4 | 67% | −33% ⚠️ |
-| 3 | +8 | +6 | 75% | −25% ⚠️ |
-| 4 | +10 | +8 | 80% | −20% ❌ |
-| 5 | +12 | +10 | 83% | −17% ❌ |
+| 0 | +2 | +0 | 0% | 29% (5 vs 7) |
+| 1 | +4 | +2 | 50% | 78% (7 vs 9) |
+| 2 | +6 | +3 | **50%** | 73% (8 vs 11) |
+| 3 | +8 | +4 | **50%** | 69% (9 vs 13) |
+| 4 | +10 | +5 | **50%** | 67% (10 vs 15) |
+| 5 | +12 | +6 | **50%** | 65% (11 vs 17) |
 
-At Rank 0–1, the penalty is severe enough to make AoE a genuine trade-off. By Rank 4–5, AoE spells deal 80–83% of single-target damage to **every target in the area**, making them almost strictly superior in any multi-enemy scenario.
+**Assessment**: The 50% bonus penalty creates a meaningful and consistent per-target reduction. With Spell Power included, per-target damage ranges from 65–73% of single-target at R2+, which is a genuine trade-off. AoE becomes worthwhile at 2 targets (130–146% total throughput) and strongly rewarded at 3+ targets (195–219% total throughput).
 
-**Concern 2 — Spell Power Amplifies the Imbalance**
+### 8.2 Missile Spell Analysis
 
-Spell Power (½ Attribute) is a flat additive bonus applied equally to both single-target and AoE damage. Because this constant is added to both, it narrows the gap further:
+Missile spells (Arcane Missiles, Arcane Barrage) represent a unique design challenge — they hit multiple targets (or focus on one) with individual projectiles, each applying Spell Power and being reduced by AV independently.
 
-| Rank | Single (Weak + SP 5) | AoE (Weak + SP 5) | AoE as % of Single |
-|---|---|---|---|
-| 1 | 9 | 7 | 78% |
-| 2 | 11 | 9 | 82% |
-| 3 | 13 | 11 | 85% |
-| 4 | 15 | 13 | 87% |
-| 5 | 17 | 15 | 88% |
+#### Current Missile Statistics
 
-With Spell Power included, a Rank 3 AoE spell deals 85% of single-target damage to each target. Against 3 targets, total throughput is **2.5× single-target**. Against 5 targets, it is **4.2× single-target**.
-
-**Concern 3 — Missile Spells Bypass AoE Scaling Entirely**
-
-Missile spells (Arcane Missiles, Arcane Barrage) deal multiple instances of single-target damage, each benefiting from full Spell Power. They are functionally "multi-target with single-target scaling per hit," making them the highest-throughput option in the system when combined with per-hit modifiers.
-
-### 8.2 Recommendations for AoE Balance
-
-#### Recommendation A: Enforce Proportional AoE Penalty (Primary)
-
-**Current**: AoE deals "one rank lower" damage (flat −2 per SL).
-**Proposed**: Scale the penalty to maintain a consistent ~60% ratio of single-target damage at all ranks.
-
-| Rank | Single (W/S/C) | Current AoE (W/S/C) | Proposed AoE (W/S/C) | Change |
+| Spell | Rank | Missiles (W/S/C) | Per-Missile Damage | Current Damage Type |
 |---|---|---|---|---|
-| 0 | +2/+4/+6 | +0/+2/+4 | +0/+2/+4 | No change |
-| 1 | +4/+8/+12 | +2/+4/+6 | +2/+4/+6 | No change |
-| 2 | +6/+12/+18 | +4/+8/+12 | +4/+8/+12 | No change |
-| 3 | +8/+16/+24 | +6/+12/+18 | +5/+10/+15 | −1/−2/−3 |
-| 4 | +10/+20/+30 | +8/+16/+24 | +6/+12/+18 | −2/−4/−6 |
-| 5 | +12/+24/+36 | +10/+20/+30 | +7/+14/+21 | −3/−6/−9 |
+| Arcane Missiles | 1 | 1/2/3 | +2 blast (ignores ½ AV) | Blast |
+| Arcane Barrage | 2 | 3/4/5 | +2 blast (ignores ½ AV) | Blast |
 
-This keeps Ranks 0–2 untouched (where AoE balance is acceptable) while tightening Ranks 3–5 where total throughput becomes problematic.
+#### The Blast Damage Type Problem
 
-#### Recommendation B: Cap Spell Power on AoE Spells (Alternative)
+The intended weakness of missile spells is that **AV reduces each missile independently** — against high-AV targets, most of the missile damage is absorbed. However, the blast property (ignores ½ AV) directly undermines this:
 
-Apply only ½ Spell Power (rounded down) when casting AoE spells. This preserves spell bonus scaling but reduces the flat additive contribution:
-
-- Current: AoE damage = spell bonus + full Spell Power
-- Proposed: AoE damage = spell bonus + ½ Spell Power
-
-**Effect at Rank 3, SP 5**: AoE per-target changes from 11 (6 + 5) to 8 (6 + 2), a 27% reduction in per-target throughput.
-
-#### Recommendation C: Address Missile Spell Stacking (Critical)
-
-The multi-hit damage interaction analysis (separate document) identifies Arcane Barrage + Arcane Empowerment as a **high-severity** balance risk. Recommended approaches:
-
-1. **Cap per-hit modifiers to once per cast** — Arcane Empowerment adds +Arcana once to total missile damage, not per missile.
-2. **Reduce missile base damage at higher heighten ranks** — Heightened Arcane Barrage at R3 deals +2 per missile (not +4), maintaining the auto-hit tax.
-3. **Limit missile count scaling** — Cap Arcane Barrage at 3/3/4 missiles (instead of 3/4/5) to bound maximum throughput.
-
-#### Recommendation D: Maintain Current System (Monitor)
-
-If the design intent is for AoE to be powerful and the GM controls balance through encounter design (fewer clustered enemies, spread formations), the current scaling may be acceptable. In this case:
-
-- Document the intended AoE throughput ratios explicitly.
-- Provide GM guidance on encounter positioning to limit AoE value.
-- Monitor missile spell interactions during playtesting.
-
-### 8.3 Summary of Damage Balance Assessment
-
-| Issue | Severity | Current State | Recommendation |
+| Target AV | Full AV per missile | ½ AV per missile (blast) | Damage lost per missile |
 |---|---|---|---|
-| AoE per-target damage at R0–2 | Low | Appropriately scaled | No change needed |
-| AoE per-target damage at R3–5 | Medium | Per-target gap narrows to 17–25% | Consider proportional penalty (Rec. A) |
-| AoE total throughput (3+ targets) | Medium | 2.5–4× single-target | Accept or apply ½ SP on AoE (Rec. B) |
-| Missile spell stacking | **High** | Exceeds R5 ceiling at R3 | Cap per-hit modifiers (Rec. C) — Critical |
-| Corpse Explosion anomaly | Low | R2 AoE with R2 single-target damage | Review; corpse requirement may justify |
+| 4 | −4 | −2 | Blast saves 2 per missile |
+| 8 | −8 | −4 | Blast saves 4 per missile |
+| 12 | −12 | −6 | Blast saves 6 per missile |
+
+With 5 missiles (Arcane Barrage critical), blast saves 10–30 total damage against medium-to-heavy armor. This is the opposite of the design intent.
+
+**Recommendation**: Replace blast with a neutral "arcane" or "force" damage type that applies **full AV per missile**. This restores the intended weakness (AV reduces each hit fully) while maintaining the strength (auto-hit, flexible targeting, multiplicative Spell Power).
+
+#### Option A: Move Arcane Barrage to Rank 3
+
+If Arcane Barrage stays at +2 per missile but moves to R3:
+
+| Scenario | Barrage R3 (Critical, 5 missiles) | Wither R3 (Critical) | Comparison |
+|---|---|---|---|
+| SP 5, no AV | 5 × (2 + 5) = **35** | 8 + 16 + 24... wait — damage = SP + 3×WD = 5 + 24 = **29** | Barrage 121% |
+| SP 5, AV 4 (full per missile) | 5 × (7 − 4) = **15** | 29 − 4 = **25** | Barrage 60% |
+| SP 5, AV 8 (full per missile) | 5 × (7 − 8) = **0** (min 5) | 29 − 8 = **21** | Barrage 24% |
+| SP 5, AV 4 (blast ½ AV) | 5 × (7 − 2) = **25** | 29 − 4 = **25** | Barrage 100% |
+
+With full AV per missile and no blast, Arcane Barrage at R3 is balanced: excellent against unarmored targets (35 vs 29), poor against armored (15 vs 25), and terrible against heavy armor (min damage vs 21). This creates genuine tactical choice.
+
+#### Option B: Apply Multi-Target Damage Scaling to Missiles
+
+If missiles use half-damage scaling: at R2, each missile would deal +3 instead of +2; at R3, each would deal +4. This is a modest increase but treats missiles as standard multi-target, losing their unique identity.
+
+**Assessment**: Option A (move to R3 + force damage type) is the stronger design. It preserves missile identity (auto-hit, flexible targeting, strong vs unarmored) while creating clear counterplay (armor) and removing the blast damage type conflict.
+
+#### Arcane Empowerment Interaction
+
+With Arcane Empowerment (+Arcana per arcane spell damage), missiles still gain the bonus per missile. At Arcana 4 with R3 Barrage and force damage:
+
+| Target AV | Per-Missile (2 + SP 5 + Arcana 4 = 11) | × 5 Missiles | Net Damage |
+|---|---|---|---|
+| 0 | 11 | **55** | Very high but unarmored |
+| 4 | 7 | **35** | Strong |
+| 8 | 3 | **15** | Weak |
+| 12 | 0 (min 5 total) | **5** | Minimal |
+
+At AV 0, this is extremely high — but Arcane Empowerment is a R4 concentration spell with significant costs (fatigue + paralysis on end). The combination of R3 Barrage + R4 Empowerment represents a 10 Focus investment (6 + 4 minimum). The ceiling is high but the resource cost and AV counterplay keep it bounded.
+
+### 8.3 Summary of Multi-Target Damage Assessment
+
+| Issue | Severity | Resolution |
+|---|---|---|
+| AoE spell bonus scaling at R2+ | **Resolved** | Half single-target adopted. Consistent 50% penalty. |
+| AoE total throughput (3+ targets) | **Acceptable** | ~2× total at 3 targets is the intended payoff for clustering. |
+| Missile blast damage type | **High** | Replace with force/arcane (full AV per missile). Restores intended weakness. |
+| Arcane Barrage rank placement | **Medium** | Move to R3 (recommended) or keep at R2 with force damage. |
+| Missile + Empowerment stacking | **Medium** | High ceiling acceptable with R4 concentration cost + full AV counterplay. |
+| Corpse Explosion anomaly | **Low** | R2 AoE with full single-target damage. Corpse requirement may justify. |
+| Existing AoE spells above new guideline | **Medium** | Systematic reduction needed (~−1 per SL at R2, ~−2 per SL at R3). |
 
 ---
 
 ## 9. Rank Placement Audit
 
-### 9.1 Potentially Overranked (Too Strong for Current Rank)
+This section evaluates whether spell concepts are placed at appropriate ranks. The focus is on **conceptual power level** — whether the type of effect belongs at that rank — rather than specific damage values.
 
-| Spell | Current Rank | Issue | Recommended Action |
+### 9.1 Potentially Overranked (Concept Too Strong for Current Rank)
+
+| Spell | Current Rank | Conceptual Issue | Recommended Action |
 |---|---|---|---|
-| **Elemental Ward** (Evocation) | 1 | Resistance to 5 damage types simultaneously is R2 breadth | Limit to single type at R1 or move to R2 |
-| **Protect from Influence** (Light) | 1 | Triple-benefit protection (boon + resistance + bane) is R2 power | Reduce to one benefit at R1 or move to R2 |
-| **Shadow Stride** (Twilight) | 2 | Positional teleportation is encounter-shaping (R3 territory) | Change to enhanced movement or move to R3 |
+| **Elemental Ward** (Evocation) | 1 | Resistance to 5 damage types simultaneously is an R2 breadth concept | Limit to 1–2 chosen types at R1, or move to R2 |
+| **Protect from Influence** (Light) | 1 | Triple-benefit protection (boon + resistance + bane) is an R2 layered concept | Reduce to one benefit at R1, or move to R2 |
+| **Shadow Stride** (Twilight) | 2 | Tactical teleportation is an encounter-shaping concept (R3 territory) | Change to enhanced movement, or move to R3 |
+| **Silence** (Twilight) | 1 | Anti-caster zone is a powerful denial concept (D&D Level 2 equivalent) | Consider R2 for area silence; R1 for single-target only |
 
-### 9.2 Potentially Underranked (Too Weak for Current Rank or Too Strong for Unlimited Use)
+### 9.2 Potentially Underranked (Concept Too Weak for Current Rank or Too Strong for Unlimited Use)
 
-| Spell | Current Rank | Issue | Recommended Action |
+| Spell | Current Rank | Conceptual Issue | Recommended Action |
 |---|---|---|---|
-| **Mind Blast** (Telepathy) | 0 | Daze (action denial) at-will is strong | Move to R1 or change to weaker condition |
-| **Horrific Vision** (Telepathy) | 0 | AoE fear at-will may trivialize early encounters | Move to R1 or add minimal damage (+0/+2/+4) |
-| **Mending** (Conjuration) | 0 | Free infinite repairs trivializes durability system | Add material requirement or move to R1 |
-| **Charm** (Telepathy) | 1 | Social encounter resolution at R1 is borderline | Clarify limitations; consider R2 if scope is broad |
-| **Silence** (Twilight) | 1 | Powerful anti-caster effect, D&D Level 2 equivalent | Consider moving to R2 or reducing area/duration |
+| **Mind Blast** (Telepathy) | 0 | Daze (action denial) at-will is a strong control concept | Move to R1, or change to weaker condition (e.g., briefly distracted) |
+| **Charm** (Telepathy) | 1 | Social encounter resolution is a strong concept for R1 | Clarify limitations; consider R2 if scope is broad |
 
-### 9.3 Power Creep Concerns
+### 9.3 Resurrection Magic Framework
 
-| Spell | Rank | Issue | Recommended Action |
+Resurrection is placed higher than D&D defaults due to the game's gritty bronze age / sword & sorcery setting. Bringing back the dead should feel weighty, costly, and rare.
+
+| Concept | Nexus Rank | D&D Equivalent | Rationale |
 |---|---|---|---|
-| **Solar Flare** (Light) | 2 | Three separate benefits (damage + healing + condition removal) | Reduce to two benefits or move to R3 |
-| **Corpse Explosion** (Necromancy) | 2 | AoE with single-target damage (+6/+12/+18) | Review; corpse requirement may justify, but monitor |
+| **Revivify** (restore recently dead, within minutes) | **3** | D&D Level 3 (R2) | Even immediate resurrection is already powerful and world-affecting in a gritty setting. R3 ensures it requires a skilled caster. |
+| **Raise Dead** (restore dead within days, conditions apply) | **4** | D&D Level 5 (R3) | Restoring someone dead for days is a major miracle. R4 gates this behind expert practitioners. |
+| **Resurrection** (restore dead within weeks/months) | **5** | D&D Level 7 (R4) | Peak mortal magic. Reversing death at this scale is the pinnacle of Life tradition mastery. |
+| **True Resurrection** | **Does not exist** | D&D Level 9 | Too powerful for mortal-scale magic. Exceeds the bounded power ceiling. |
 
-### 9.4 Incomplete Spells Requiring Rank Validation
+All resurrection spells should carry heavy costs: material costs (consumed), fatigue, long casting times (ritual), and narrative consequences.
 
-| Spell | Current Rank | Likely Correct Rank | Concern |
+### 9.4 Power Creep Concerns
+
+| Spell | Rank | Conceptual Issue | Recommended Action |
 |---|---|---|---|
-| Finger of Death (Necromancy) | 3 | **4** | Iconic death spell — D&D Level 7 equivalent too powerful for R3 |
-| Force Cage (Conjuration) | 4 | **4–5** | Complete battlefield control may warrant R5 |
-| Astral Body (Conjuration) | 4 | **5** | Astral projection is D&D Level 9; bounded version still R5 |
-| Teleportation Circle (Conjuration) | 3 | **4** | Long-distance network is R4 territory |
-| Wave of Madness (Telepathy) | 3 | **3–4** | Depends on area and duration of mass confusion |
-| Silent Night (Twilight) | 2 | **2–3** | Sleep + silence combo may exceed R2 scope |
+| **Solar Flare** (Light) | 2 | Three separate benefits (damage + healing + condition removal) in one cast | Reduce to two benefits or move to R3 |
+| **Corpse Explosion** (Necromancy) | 2 | AoE with single-target damage values | Review; corpse requirement may justify, but monitor under new scaling |
+
+### 9.5 Incomplete Spells Requiring Rank Validation
+
+| Spell | Current Rank | Likely Correct Rank | Conceptual Concern |
+|---|---|---|---|
+| Finger of Death (Necromancy) | 3 | **4** | Iconic death spell — direct killing magic is an R4 concept |
+| Force Cage (Conjuration) | 4 | **4–5** | Complete battlefield imprisonment may warrant R5 |
+| Astral Body (Conjuration) | 4 | **5** | Astral projection is peak mortal magic, even bounded |
+| Teleportation Circle (Conjuration) | 3 | **4** | Long-distance network creation is an R4 infrastructure concept |
+| Wave of Madness (Telepathy) | 3 | **3–4** | Mass confusion depends on area and duration |
+| Silent Night (Twilight) | 2 | **2–3** | Sleep + silence combo may exceed R2 conceptual scope |
 | Sense Spirits (Light) | 1 | **1–2** | Wide-area spiritual detection unclear in scope |
-
-### 9.5 Scaling Validation
-
-**Damage progression across ranks** (single-target):
-- Rank 0: +2/+4/+6 ✅
-- Rank 1: +4/+8/+12 ✅
-- Rank 2: +6/+12/+18 ✅
-- Rank 3: +8/+16/+24 ✅
-- Rank 4: +10/+20/+30 (guidelines — incomplete spells prevent verification)
-- Rank 5: +12/+24/+36 (guidelines — no spells exist)
-
-**AoE damage progression** (standard area):
-- Rank 0: +0/+2/+4 ✅
-- Rank 1: +2/+4/+6 ✅
-- Rank 2: +4/+8/+12 ✅
-- Rank 3: +6/+12/+18 ✅
-- Rank 4: +8/+16/+24 (guidelines)
-- Rank 5: +10/+20/+30 (guidelines)
-
-**Overall assessment**: 95%+ of completed spells are correctly ranked. Deviation cases (Shroud of Fear at +3/+6/+9) are intentional and justified by secondary effect trade-offs.
 
 ---
 
