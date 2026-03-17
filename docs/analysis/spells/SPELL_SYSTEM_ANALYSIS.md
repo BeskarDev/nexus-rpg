@@ -686,43 +686,362 @@ Warlord's Presence (R5), Battlefield Commander (R5), Blood Frenzy (R4), Righteou
 
 ## 13. Summary of Recommendations
 
-### Priority 1 — Critical Balance (Immediate)
+### Priority 1 — Adopted Scaling Changes (Implement Now)
 
 | # | Action | Impact |
 |---|---|---|
-| 1.1 | Address missile spell + per-hit modifier stacking (Arcane Barrage + Arcane Empowerment exceeds R5 ceiling at R3) | Prevents multiplicative scaling from breaking damage bounds |
-| 1.2 | Review Corpse Explosion (R2) AoE dealing single-target damage | Ensure consistent AoE scaling or document exception |
-| 1.3 | Audit 5 potentially mis-ranked spells (Mind Blast, Horrific Vision, Mending, Elemental Ward, Silence) | Tighten R0–R1 balance for unlimited/cheap casting |
+| 1.1 | **Adopt half-damage AoE scaling at R2+** — Multi-target spell bonus = 50% of single-target (R0–R1 unchanged). Existing R2+ AoE spells need systematic damage reduction. | Consistent 50% penalty replaces shrinking "one rank lower" gap |
+| 1.2 | **Adopt area progression by rank** — R0–R1 single/melee only, R2 close/short line, R3 short area, R4 medium area, R5 long area. Nerf Lightning Strike/Bolt from medium line to short line. | Clear area-power budget per rank |
+| 1.3 | **Replace blast damage on missiles with force/arcane type** — Full AV per missile hit, restoring intended per-missile AV weakness | Fixes blast property undermining missile balance design |
 
-### Priority 2 — Complete Existing Content
-
-| # | Action | Impact |
-|---|---|---|
-| 2.1 | Complete 18 incomplete spells (5 critical, 6 high-tier, 7 environmental) | Fills core gaps, enables full R4 tier |
-| 2.2 | Validate rank placement of incomplete spells during implementation | Prevents creating new misalignment |
-
-### Priority 3 — Expand High Tiers
+### Priority 2 — Critical Balance (Immediate)
 
 | # | Action | Impact |
 |---|---|---|
-| 3.1 | Design and implement 28 Rank 5 capstones (2 per school) | Creates legendary magic tier across all schools |
-| 3.2 | Fill Rank 3–4 gaps in Evocation, War, Death | Provides progression path variety |
+| 2.1 | Move Arcane Barrage to Rank 3 (or apply multi-target scaling at R2) | Prevents R2 missile throughput exceeding R3 single-target |
+| 2.2 | Audit 3 potentially mis-ranked spells (Mind Blast, Elemental Ward, Silence) | Tighten R0–R1 balance for unlimited/cheap casting |
+| 2.3 | Review Corpse Explosion (R2) AoE dealing single-target damage | Ensure consistent scaling or document exception |
 
-### Priority 4 — Fill Classic & Thematic Gaps
-
-| # | Action | Impact |
-|---|---|---|
-| 4.1 | Add ~30 classic fantasy spells (utility, combat, support) | Meets player expectations from genre |
-| 4.2 | Expand War (→ ~20 spells) and Peace (→ ~25 spells) traditions | Addresses smallest-school problem |
-| 4.3 | Add missing thematic content (disease, memory, resurrection, prophecy) | Fills narrative gaps |
-
-### Priority 5 — Scaling Refinement (Consider for Future)
+### Priority 3 — School Internal Completeness (See §14)
 
 | # | Action | Impact |
 |---|---|---|
-| 5.1 | Evaluate proportional AoE penalty for R3–5 (see §8.2 Recommendation A) | Prevents AoE dominance at high tiers |
-| 5.2 | Consider ½ Spell Power on AoE as alternative (see §8.2 Recommendation B) | Simpler implementation, broader impact |
-| 5.3 | Document intended AoE throughput ratios and provide GM encounter guidance | Supports balance even without mechanical changes |
+| 3.1 | Add R1 Quick Action reactive spells to 5 schools missing them (Conjuration, Telekinetics, Death, Nature, Twilight) | Every school gets baseline reactive play |
+| 3.2 | Add defensive options to offense-heavy schools (Evocation, War, Tempest) | Ensures no school is purely one-dimensional |
+| 3.3 | Add utility/non-combat spells to combat-focused schools | Supports exploration and downtime for all caster types |
+| 3.4 | Establish consistent condition/gimmick identities per school | Creates recognizable mechanical personality |
+| 3.5 | Design setup+payoff spell combos within each school | Rewards investing deeply in one school |
+
+### Priority 4 — Complete Existing Content
+
+| # | Action | Impact |
+|---|---|---|
+| 4.1 | Complete 18 incomplete spells (5 critical, 6 high-tier, 7 environmental) | Fills core gaps, enables full R4 tier |
+| 4.2 | Validate rank placement of incomplete spells during implementation | Prevents creating new misalignment |
+
+### Priority 5 — Expand High Tiers
+
+| # | Action | Impact |
+|---|---|---|
+| 5.1 | Design and implement 28 Rank 5 capstones (2 per school) | Creates legendary magic tier across all schools |
+| 5.2 | Fill Rank 3–4 gaps in Evocation, War, Death | Provides progression path variety |
+| 5.3 | Implement resurrection framework: Revivify R3, Raise Dead R4, Resurrection R5 | Provides gritty bronze age resurrection scaling |
+
+### Priority 6 — Fill Classic & Thematic Gaps
+
+| # | Action | Impact |
+|---|---|---|
+| 6.1 | Add ~30 classic fantasy spells (utility, combat, support) | Meets player expectations from genre |
+| 6.2 | Expand War (→ ~20 spells) and Peace (→ ~25 spells) traditions | Addresses smallest-school problem |
+| 6.3 | Add missing thematic content (disease, memory, resurrection, prophecy) | Fills narrative gaps |
+
+---
+
+## 14. School Internal Design Gap Analysis
+
+This section evaluates each of the 14 schools against the internal completeness requirements:
+1. **R1 Quick Action** — At least one reactive (quick) spell at Rank 1
+2. **Defensive options** — Spells that protect, mitigate, or shield
+3. **Utility/non-combat** — Exploration, travel, downtime, knowledge effects
+4. **Damage capability** — Every school should deal damage (even if restricted)
+5. **Condition/gimmick identity** — Repeating conditions and signature effects
+6. **Setup + Payoff synergies** — Spell combos that reward investing in one school
+
+### 14.1 Arcane Disciplines
+
+#### Conjuration (24 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ❌ **Missing** | No reactive quick spell |
+| Defensive options | ✅ | Arcane Barrier, Wall of Force |
+| Utility/non-combat | ✅ | Conjure Familiar, Extraplanar Pocket, Arcane Eye |
+| Damage capability | ✅ | Arcane Missiles, Arcane Barrage, Force Bolt, Burst of Tendrils |
+| Condition identity | ⚠️ Weak | Restrained (2), invisible (2) — no strong repeating theme |
+| Setup + Payoff | ⚠️ Weak | Summoning is the main through-line but lacks explicit combo triggers |
+
+**Identity**: Summoning, teleportation, force constructs. The school creates things from nothing.
+
+**Proposed R1 Quick Action**: *Arcane Deflection* — Quick Action when targeted by an attack. Conjure a brief force barrier; gain +2 to Parry or Dodge against the triggering attack. On a critical success, the barrier persists until your next turn.
+
+**Proposed condition identity**: Restrained (force bindings), displaced (forced teleportation). Add restrained effects to more spells for consistent identity.
+
+**Proposed synergy**: Setup = Conjure Familiar (scout/mark target) → Payoff = Missiles/spells gain +1 boon against marked targets. Setup = Wall of Force (split battlefield) → Payoff = enemies near walls vulnerable to force damage.
+
+#### Evocation (18 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Elemental Ward (resistance to 5 types) |
+| Defensive options | ✅ | Elemental Ward |
+| Utility/non-combat | ❌ **Missing** | Zero non-combat spells (100% damage/combat) |
+| Damage capability | ✅ | Strongest damage school — fire, frost, lightning, acid |
+| Condition identity | ✅ | Burning (5), slowed (4), staggered (3) — strong elemental conditions |
+| Setup + Payoff | ⚠️ Weak | Elemental variety exists but no explicit combo chain |
+
+**Identity**: Raw elemental destruction. Best-in-class damage across fire, frost, lightning, acid.
+
+**Gap — Utility**: Evocation has zero non-combat spells. Even a pure damage school should have some environmental manipulation.
+
+**Proposed utility spells**: *Elemental Shaping* (R1, reshape small amounts of fire/water/earth/air for environmental effect — light fires, freeze water, clear smoke), *Thermal Control* (R0, regulate temperature in an area — comfort, preserve food, prevent freezing).
+
+**Proposed synergy**: Setup = Apply burning/slowed/staggered condition → Payoff = Evocation spells deal +2 bonus damage to targets already suffering an elemental condition (a hypothetical "Elemental Exploitation" pattern that could be a talent rather than a spell).
+
+#### Illusion (18 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Mirror Image (create decoys when attacked) |
+| Defensive options | ✅ | Mirror Image, Invisibility |
+| Utility/non-combat | ✅ | Disguise Form, Illusionary Terrain, Minor Illusion |
+| Damage capability | ✅ | Phantasmal Killer, psychic damage spells |
+| Condition identity | ✅ | Frightened (2), invisible (2), grappled (illusory restraints) |
+| Setup + Payoff | ✅ | Concentration-based layering (6 concentration spells build false reality) |
+
+**Identity**: Deception, false reality, mental manipulation. Well-designed school with good internal completeness.
+
+**Minor gap**: Could benefit from a R0 sensory trick cantrip (create a brief sound/smell/visual to distract).
+
+#### Necromancy (28 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Death Ward (absorb damage into necrotic shield) |
+| Defensive options | ✅ | Death Ward, Necrotic Shield |
+| Utility/non-combat | ✅ | Animate Horde, Control Undead, Reaper's Harvest, Speak with Dead |
+| Damage capability | ✅ | Excellent — 22/28 spells deal damage |
+| Condition identity | ✅ | Stunned (5), paralyzed (3), life drain — strong death/decay theme |
+| Setup + Payoff | ✅ | Summon undead → Control Undead. Kill enemies → Corpse Explosion. Drain life → fuel abilities |
+
+**Identity**: Best-in-class design. Death, undead, life manipulation. Strong synergies and coherent identity. Model school for others to emulate.
+
+#### Telekinetics (14 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ❌ **Missing** | No reactive quick spell |
+| Defensive options | ⚠️ Weak | No explicit defensive spell (some positioning can serve defensively) |
+| Utility/non-combat | ✅ | Levitation, Gravity Orb, Invert Gravity |
+| Damage capability | ✅ | Force-based damage, physical manipulation |
+| Condition identity | ⚠️ Weak | Prone (2), invisible (2) — no strong repeating theme |
+| Setup + Payoff | ⚠️ Weak | Positioning manipulation exists but lacks explicit combo triggers |
+
+**Identity**: Force and movement manipulation. Move things, crush things, alter gravity.
+
+**Proposed R1 Quick Action**: *Kinetic Deflection* — Quick Action when targeted by a ranged attack. Telekinetically deflect the projectile; gain +2 to Dodge against the triggering ranged attack. On a critical success, redirect the projectile to another target in close range.
+
+**Proposed defensive spell**: *Force Shield* (R1, concentrate) — Maintain a telekinetic barrier. Gain +1 AV (situational bonus) for the duration.
+
+**Proposed condition identity**: Prone (knocked down), restrained (held in place), pushed/pulled (forced movement). Add forced movement effects more consistently.
+
+**Proposed synergy**: Setup = Push/pull target into hazard or ally's reach → Payoff = Prone targets take +2 damage from next attack. Setup = Levitate ally → Payoff = Gravity-enhanced attacks deal bonus damage.
+
+#### Telepathy (15 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Foresight (warn ally), True Strike (enhance next attack) |
+| Defensive options | ⚠️ Weak | Foresight is supportive but no direct protection |
+| Utility/non-combat | ✅ | Detect Magic, Control Beast, telepathic communication |
+| Damage capability | ✅ | Psychic damage spells |
+| Condition identity | ✅ | Dazed (2), confused, charmed, dominated — mind control theme |
+| Setup + Payoff | ⚠️ Weak | Limited combo potential within the school |
+
+**Identity**: Mind control, mental manipulation, psychic assault. Good condition identity but needs more synergies.
+
+**Proposed defensive spell**: *Mental Shield* (R1) — Briefly gain resistance to psychic damage and +1 boon on saves against charm/fear effects.
+
+**Proposed synergy**: Setup = Charm/daze target (lower mental defenses) → Payoff = Subsequent Telepathy spells against charmed/dazed targets gain +1 boon. Setup = Read thoughts → Payoff = Insight into target grants +1 boon on social or combat interactions.
+
+### 14.2 Mystic Traditions
+
+#### Death (15 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ❌ **Missing** | No reactive quick spell |
+| Defensive options | ✅ | Curse of Death (retaliatory curse on attackers) |
+| Utility/non-combat | ⚠️ Weak | Limited — mostly combat curses and damage |
+| Damage capability | ✅ | 12/15 spells deal damage, necrotic/frost |
+| Condition identity | ✅ | Poisoned (3), decay (2), cursed effects — strong plague/curse theme |
+| Setup + Payoff | ⚠️ Moderate | Curse chains exist but could be stronger |
+
+**Identity**: Plagues, curses, fear, decay, ancestry. Strong thematic identity but missing reactive play and utility.
+
+**Proposed R1 Quick Action**: *Death's Rebuke* — Quick Action when you take damage from an attack. The attacker suffers +2 necrotic damage (ignoring AV) and is briefly poisoned on a strong success.
+
+**Proposed utility spells**: *Commune with Ancestors* (R1, ritual) — Speak with dead ancestors for guidance on a question. *Sense Death* (R0) — Detect dead creatures, undead, or necrotic energy within close range.
+
+**Proposed synergy**: Setup = Apply curse/poison → Payoff = Death spells deal +2 bonus damage to cursed/poisoned targets. Curse stacking: multiple minor curses build toward a major affliction.
+
+#### Life (15 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Rapid Vitality (quick healing) |
+| Defensive options | ✅ | Life Shield, Blessing of Life, Abundance of Life |
+| Utility/non-combat | ✅ | Detect Life, various healing in downtime |
+| Damage capability | ⚠️ Restricted | 6/15 spells deal damage — radiant/force, mostly as overload effects |
+| Condition identity | ✅ | Dazed (2), stunned (2) — life force overload |
+| Setup + Payoff | ⚠️ Moderate | Healing chains exist (heal → buff → sustain) |
+
+**Identity**: Vitality, blessings, community, hope. Primarily healing/support with restricted damage (life force overload).
+
+**Gap — Damage**: Life's damage should feel restricted and defensive — overloading life force, punishing undead, or retaliatory bursts. It should never be efficient for pure offense.
+
+**Proposed damage patterns**: *Vitality Overload* (R1) — Deal radiant damage to a target by overwhelming their body with life energy. Deals +4/+8/+12 but heals the caster for half the damage dealt. Effective against undead, less efficient than Evocation against living targets.
+
+**Proposed synergy**: Setup = Heal ally (activate blessing) → Payoff = Blessed allies gain +1 boon on their next action. Setup = Life Shield (absorb damage) → Payoff = When shield breaks, release stored energy as radiant burst.
+
+#### Light (18 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Protect from Influence, True Strike |
+| Defensive options | ✅ | Blessing of Dawn, Blessing of Light |
+| Utility/non-combat | ✅ | Break Curse, Detect Lies, Illuminated Sight (7 utility spells) |
+| Damage capability | ✅ | 10/18 spells deal radiant/magical damage |
+| Condition identity | ✅ | Blinded (3), reveal invisible (3) — revelation/purification theme |
+| Setup + Payoff | ✅ | Anti-undead/illusion combos (reveal → destroy). Blessing → enhanced ally actions |
+
+**Identity**: Sun, illumination, truth, clarity, judgement. Well-rounded tradition with strong identity. Good model alongside Necromancy.
+
+#### Nature (35 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ❌ **Missing** | No reactive quick spell |
+| Defensive options | ✅ | Blessing of Nature, Sudden Growth (barrier) |
+| Utility/non-combat | ✅ | Excellent — 11+ utility spells (animal messenger, speak with animals, purify water, etc.) |
+| Damage capability | ✅ | 19/35 spells deal damage — poison, physical, acid |
+| Condition identity | ✅ | Poisoned (4), restrained (3), entangled — strong natural hazard theme |
+| Setup + Payoff | ✅ | Beast form → enhanced attacks. Plant growth → entangle → poison. Weather → terrain control |
+
+**Identity**: Harmonious adaptation with natural world. Most versatile tradition (35 spells). Strong across all categories.
+
+**Proposed R1 Quick Action**: *Bark Shield* — Quick Action when targeted by an attack. Briefly harden your skin with bark-like growth; gain +2 AV (situational bonus) against the triggering attack. On a critical success, the attacker takes +2 physical damage from thorns.
+
+#### Peace (13 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Share Harm (retaliatory damage reflection) |
+| Defensive options | ✅ | Blessing of Peace, protective barriers |
+| Utility/non-combat | ⚠️ Weak | Anti-Magic Field, Spell-breaking Wave — but missing travel and law enforcement |
+| Damage capability | ⚠️ Restricted | 8/13 spells deal damage, but low — psychic/blast deterrent damage |
+| Condition identity | ✅ | Dazed (2), charmed, calmed — pacification theme |
+| Setup + Payoff | ⚠️ Weak | Limited combo potential; mostly independent effects |
+
+**Identity**: Calmness, protection, selflessness, travel, law. Strong concept but undersized (13 spells) with major thematic gaps.
+
+**Gap — Travel magic**: Core aspect entirely absent. Needs Swift Journey, Sanctuary Path, safe rest, road ward spells.
+
+**Gap — Law enforcement**: No truth/oath/binding spells. Needs Zone of Truth, Binding Oath, Compel Testimony.
+
+**Proposed synergy**: Setup = Calm/pacify target → Payoff = Calmed targets more susceptible to truth-telling or persuasion (social synergy). Setup = Blessing of Peace (protection) → Payoff = Protected allies who don't attack gain enhanced healing or resistance.
+
+#### Tempest (33 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | Storm Shield (defend with Resist, melee counterattack) |
+| Defensive options | ✅ | Storm Shield |
+| Utility/non-combat | ⚠️ Moderate | Conjure Elemental, Control Winds — limited non-combat variety |
+| Damage capability | ✅ | Strongest damage tradition — 28/33 spells deal damage |
+| Condition identity | ✅ | Staggered (6), prone (5), deafened (4) — powerful storm/impact theme |
+| Setup + Payoff | ✅ | Elemental summon → enhanced storms. Wind control → positioning → lightning strike |
+
+**Identity**: Hurricanes, earthquakes, thunderstorms, sandstorms, floods. Excellent offensive tradition.
+
+**Gap — Utility**: Could benefit from non-combat weather manipulation (calm storms, predict weather, create favorable winds for travel).
+
+#### Twilight (22 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ❌ **Missing** | No reactive quick spell |
+| Defensive options | ⚠️ Weak | Obscuring Veil provides concealment but no direct protection |
+| Utility/non-combat | ✅ | Dark Sight, Everlasting Night, Obscuring Veil, Shadow Clone (8 utility spells) |
+| Damage capability | ✅ | 14/22 spells deal damage — frost/psychic |
+| Condition identity | ✅ | Slowed (2), invisible (2), frightened (2) — shadow/dream/fear theme |
+| Setup + Payoff | ✅ | Shadow clone → dual attack. Darkness → stealth → ambush. Dream → prophecy |
+
+**Identity**: Moon, dreams, secrets, fate, illusion. Good utility depth but missing reactive play and defense.
+
+**Proposed R1 Quick Action**: *Shadow Veil* — Quick Action when targeted by an attack. Wrap yourself in shadow; the attacker suffers +1 bane on the triggering attack. On a critical success, you become briefly invisible after the attack resolves.
+
+**Proposed defensive spell**: *Moonlight Ward* (R1) — Briefly gain resistance to psychic and frost damage, and +1 boon on saves against fear and sleep effects.
+
+**Proposed synergy**: Setup = Create darkness/shadow area → Payoff = Twilight spells cast from within darkness gain +1 boon or +2 damage. Setup = Dream/prophecy → Payoff = Foreseen events grant allies +1 boon on related actions.
+
+#### War (11 spells)
+
+| Requirement | Status | Details |
+|---|---|---|
+| R1 Quick Action | ✅ | War Cry (frighten enemies in range) |
+| Defensive options | ❌ **Missing** | No defensive spells — entirely offensive/buff focused |
+| Utility/non-combat | ⚠️ Weak | Only Haste has non-combat utility |
+| Damage capability | ✅ | 9/11 spells deal damage or enhance weapons |
+| Condition identity | ✅ | Frightened (3), bleeding (2) — battle fury/intimidation theme |
+| Setup + Payoff | ⚠️ Weak | Buff + attack exists but no explicit combo chain |
+
+**Identity**: Fury, pride, blood, justice, triumph. Strong concept but severely undersized (11 spells, no R3+).
+
+**Gap — Defensive**: War tradition should have a "stand your ground" defensive spell (inspired by warrior valor, not pacifism).
+
+**Proposed defensive spell**: *Shield of Valor* (R1) — Briefly gain +2 AV (situational bonus) and immunity to the frightened condition. Fits the "courage in battle" theme.
+
+**Gap — R3+ content**: No spells above R2. Needs Battle Cry (R3, mass buff), Warlord's Presence (R5, avatar of war).
+
+**Proposed synergy**: Setup = Frighten enemy with War Cry → Payoff = Attacks against frightened targets deal +2 damage (a "fear exploitation" pattern). Setup = Weapon blessing → Payoff = Blessed weapon crits apply bleeding.
+
+### 14.3 Gap Summary
+
+#### Missing R1 Quick Action Spells (5 schools)
+
+| School | Proposed Spell | Effect |
+|---|---|---|
+| Conjuration | Arcane Deflection | Quick, +2 Parry/Dodge vs triggering attack |
+| Telekinetics | Kinetic Deflection | Quick, +2 Dodge vs ranged attack, possible redirect |
+| Death | Death's Rebuke | Quick, +2 necrotic counterattack when hit |
+| Nature | Bark Shield | Quick, +2 AV vs triggering attack, thorn damage |
+| Twilight | Shadow Veil | Quick, +1 bane on attacker, possible invisibility |
+
+#### Schools Missing Defensive Options (3 schools)
+
+| School | Gap | Proposed Solution |
+|---|---|---|
+| Evocation | No defense beyond Elemental Ward | Already has Elemental Ward — but may want an R2 option |
+| War | Zero defensive spells | Shield of Valor (R1, +2 AV + fear immunity) |
+| Telekinetics | No explicit defense | Force Shield (R1, concentrate, +1 AV) |
+
+#### Schools Missing Utility/Non-Combat (4 schools)
+
+| School | Gap | Proposed Solution |
+|---|---|---|
+| Evocation | Zero non-combat spells | Elemental Shaping (R1), Thermal Control (R0) |
+| War | Minimal utility | Tactical Assessment (R1, read enemy dispositions) |
+| Death | Limited utility | Commune with Ancestors (R1, ritual), Sense Death (R0) |
+| Tempest | Limited non-combat | Weather Prediction (R0), Favorable Winds (R1, travel aid) |
+
+#### Condition/Gimmick Identity Summary
+
+| School | Primary Conditions | Signature Gimmick |
+|---|---|---|
+| Conjuration | Restrained, displaced | Summoning, teleportation |
+| Evocation | Burning, slowed, staggered | Element choice (fire/frost/lightning/acid) |
+| Illusion | Frightened, invisible | False reality, detection vs belief |
+| Necromancy | Stunned, paralyzed, life drain | Undead creation, corpse manipulation |
+| Telekinetics | Prone, restrained, forced movement | Positioning control, gravity |
+| Telepathy | Dazed, confused, charmed, dominated | Mind reading, mental command |
+| Death | Poisoned, decayed, cursed | Curse stacking, plague |
+| Life | Dazed, stunned (overload) | Healing, blessing, vitality transfer |
+| Light | Blinded, revealed | Anti-undead, truth revelation |
+| Nature | Poisoned, restrained, entangled | Beast/plant synergy, natural hazards |
+| Peace | Dazed, calmed, charmed | Pacification, protection, law |
+| Tempest | Staggered, prone, deafened | Storm power, environmental destruction |
+| Twilight | Slowed, frightened, invisible | Shadow manipulation, dream/fate |
+| War | Frightened, bleeding | Weapon blessing, battle fury |
 
 ---
 
