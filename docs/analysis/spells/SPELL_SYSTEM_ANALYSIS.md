@@ -9,7 +9,7 @@
 ### Key Findings
 
 1. **Low-to-mid tier coverage is strong; high-tier coverage is sparse.** Ranks 0–2 contain 219 of 279 total spells (~78%), providing robust foundations. Ranks 3–4 have 52 spells with limited variety, and Rank 5 has zero spells — all 14 schools lack legendary capstones.
-2. **Multi-target (AoE) spell damage matches single-target baselines per hit at every rank.** The "one rank lower" guideline is inconsistently applied. AoE spells frequently deal standard-rank damage to each target (e.g., Fireball at Rank 2 deals +4/+8/+12 per target, identical to the intended single-target baseline for Rank 1). When Spell Power is added, AoE total throughput can exceed single-target throughput by 2–5× depending on target count.
+2. **The AoE damage penalty becomes proportionally weaker at higher ranks.** The "one rank lower" guideline is generally well-applied (95%+ of spells follow it), but because it applies a fixed absolute reduction (−2 per success level), the proportional penalty shrinks from −50% at Rank 1 to just −17% at Rank 5. When Spell Power is added, AoE total throughput can exceed single-target throughput by 2–5× depending on target count.
 3. **Missile spells combined with per-hit modifiers create multiplicative scaling.** Arcane Barrage (3–5 missiles) combined with Arcane Empowerment (+Arcana per missile) can reach 75+ damage at Rank 3, exceeding the Rank 5 damage ceiling of 36–42.
 4. **War and Peace traditions are undersized.** War has 11 spells (no Rank 3+) and Peace has 13 spells. Both lack core thematic aspects — War needs higher-rank battle magic; Peace is missing travel and law enforcement spells entirely.
 5. **~30 classic fantasy spells are absent.** Expected utility staples (Knock, Identify, Water Breathing, Comprehend Languages) and combat classics (Sleep, Web, Grease, Banishment) have no equivalents.
@@ -224,7 +224,7 @@ The table below compares spell bonus damage (before adding Spell Power) for sing
 | 4 | +10/+20/+30 | +8/+16/+24 | −2 per SL | 4–10 |
 | 5 | +12/+24/+36 | +10/+20/+30 | −2 per SL | 4–12 |
 
-**Observation**: The AoE penalty is a flat −2 per success level compared to single-target — a fixed absolute reduction that becomes proportionally smaller as rank increases (−33% at Rank 0, but only −17% at Rank 5).
+**Observation**: The AoE penalty is a flat −2 per success level compared to single-target — a fixed absolute reduction that becomes proportionally smaller as rank increases (−100% at Rank 0 weak, −50% at Rank 1, but only −17% at Rank 5).
 
 ### 7.2 Total Throughput with Spell Power (Expected Combat Scenarios)
 
@@ -262,7 +262,7 @@ Comparing real spells at Rank 2 reveals the guideline is inconsistently applied:
 | Fireball | 2 | AoE (close) | +4/+8/+12 | All in area | ✅ Standard AoE |
 | Frost Wave | 2 | AoE (cone) | +4/+8/+12 | All in cone | ✅ Standard AoE |
 | Lightning Strike | 2 | AoE (line) | +4/+8/+12 | All in line | ✅ Standard AoE |
-| Corpse Explosion | 2 | AoE (close) | +6/+12/+18 | All in area | ❌ Single-target damage on AoE |
+| Corpse Explosion | 2 | AoE (close) | +6/+12/+18 | All in area | ⚠️ Single-target damage on AoE (corpse requirement may justify) |
 | Eldritch Tendrils | 2 | AoE (close) | +4/+8/+12 | All in area | ✅ Standard AoE |
 | Thorn Barrage | 2 | AoE (line) | +4/+8/+12 | All in line | ✅ Standard AoE |
 | Toxic Mist | 2 | AoE (cone) | +4/+8/+12 | All in cone | ✅ Standard AoE |
@@ -308,7 +308,7 @@ Missile spells (Arcane Missiles, Arcane Barrage) create a separate balance chall
 | A. Barrage R2 | 5 | 2 + 5 + 4 = 11 | **55** |
 | A. Barrage R3 | 5 | 4 + 5 + 4 = 13 | **65** |
 
-For comparison, the Rank 5 single-target damage ceiling is +12/+24/+36 (critical total with SP 5 = 41). Arcane Barrage R3 with Arcane Empowerment reaches **65 damage** — exceeding the Rank 5 ceiling by 59%.
+For comparison, the Rank 5 single-target damage ceiling at critical success is +36 spell bonus + SP 5 = 41. Arcane Barrage R3 with Arcane Empowerment reaches **65 damage** at critical — exceeding the Rank 5 ceiling by 59%.
 
 ---
 
