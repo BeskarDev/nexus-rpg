@@ -87,19 +87,19 @@
 
 > **Design Note**: Defensive spell for War — "courage in battle" theme. Addresses the missing defensive options.
 
-### Battle Cry
+### Commander's Shout
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
 3 | 6 | vs. Resist | Close | —
 
-*You unleash a thunderous war cry that shakes the resolve of your enemies and steels the hearts of your allies.*
+*You unleash a thunderous shout of divine authority that shakes the resolve of your enemies and steels the hearts of your allies.*
 
 **Weak.** All enemies in close range must save or be briefly frightened. All allies in close range gain +1 boon on their next attack roll.
 **Strong.** Enemies are frightened for a short duration. Allies gain +2 to weapon damage for a short duration.
 **Critical.** Enemies are frightened for a short duration and suffer +1 bane on all rolls. Allies gain +2 weapon damage and +1 movement for a short duration.
 
-> **Design Note**: R3 mass buff/debuff — the first R3 spell for War. Combines fear control with ally empowerment.
+> **Design Note**: R3 mass buff/debuff — the first R3 spell for War. Combines fear control with ally empowerment. Named distinctly from R1 War Cry.
 
 ### Blood Frenzy
 

@@ -253,7 +253,7 @@ Mage Armor (arcane AC), Stoneskin (damage reduction), Haste (Arcane version), Sl
 
 **Critical**: Rank 5 = D&D Level 7, NOT Level 9. Impressive but mortal-scale, not world-shattering. Avoid models like Wish, True Resurrection, Meteor Swarm, Time Stop, or Imprisonment.
 
-**Resurrection Framework**: Resurrection is placed higher than D&D defaults — Revivify at R3, Raise Dead at R4, Resurrection at R5. True Resurrection does not exist. See §8.3 for the detailed resurrection framework.
+**Resurrection Framework**: Resurrection is placed higher than D&D defaults — Revivify at R3, Raise Dead at R4, Resurrection at R5. True Resurrection does not exist. See §8.3 below for the detailed resurrection framework.
 
 ---
 

@@ -56,7 +56,7 @@
 
 **Weak.** The target feels briefly nauseous. They suffer +1 bane on their next physical action (attack, athletics, etc.).
 **Strong.** The target is briefly poisoned.
-**Critical.** The target is poisoned for a short duration. If they are already poisoned, they also suffer +1 bane on all rolls for the duration.
+**Critical.** The target is poisoned for a short duration and suffers +1 bane on their next Fortitude check.
 
 > **Design Note**: Fills the R0 plagues gap. Disease/sickness cantrip that introduces the poisoned condition.
 

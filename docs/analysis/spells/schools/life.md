@@ -97,9 +97,9 @@
 
 *You perform an all-day ritual of immense spiritual power, calling a soul back from the realm of the dead. The body is restored and the spirit returns.*
 
-**Weak.** A creature dead for up to one month returns to life with 1 HP. They gain 3 levels of fatigue, suffer two permanent injuries, and lose 1 point from their highest attribute permanently. The body is restored even if damaged.
-**Strong.** The target returns with HP equal to your Spell Power. They gain 2 levels of fatigue, suffer one permanent injury, and lose 1 point from their highest attribute. Body is restored.
-**Critical.** The target returns with HP equal to twice your Spell Power. They gain 1 level of fatigue, suffer one minor permanent injury, and lose 1 point from their lowest attribute. Body is fully restored.
+**Weak.** A creature dead for up to one month returns to life with 1 HP. They gain 3 levels of fatigue, suffer two permanent injuries, and their highest attribute is reduced by one die size permanently. The body is restored even if damaged.
+**Strong.** The target returns with HP equal to your Spell Power. They gain 2 levels of fatigue, suffer one permanent injury, and their highest attribute is reduced by one die size. Body is restored.
+**Critical.** The target returns with HP equal to twice your Spell Power. They gain 1 level of fatigue, suffer one minor permanent injury, and their lowest attribute is reduced by one die size. Body is fully restored.
 
 > **Design Note**: R5 capstone resurrection. Peak mortal power — reversing death at this scale carries enormous cost. No True Resurrection exists (exceeds mortal-scale magic).
 

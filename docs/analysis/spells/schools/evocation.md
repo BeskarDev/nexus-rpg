@@ -86,8 +86,8 @@
 
 *You release a small burst of concussive force in your immediate vicinity.*
 
-**Weak.** Deal +0 blast damage to all creatures in melee range.
-**Strong.** Deal +2 blast damage to all creatures in melee range.
+**Weak.** All creatures in melee range are briefly pushed back (forced movement to close range edge).
+**Strong.** Deal +2 blast damage to all creatures in melee range and push them into close range.
 **Critical.** Deal +4 blast damage to all creatures in melee range and push them into close range.
 
 > **Design Note**: Fills the R0 blast gap. Melee-only AoE at cantrip level is within R0 guidelines for rare exceptions.

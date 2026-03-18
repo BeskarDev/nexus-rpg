@@ -111,7 +111,7 @@
 
 **Weak.** Target one creature or object. Increase or decrease its effective weight by half for a brief duration. Heavier: target's movement is reduced by 1. Lighter: target can jump twice as far.
 **Strong.** Increase or decrease weight more dramatically. Heavier: target's movement is reduced by 2 and they can't jump. Lighter: target gains +1 movement.
-**Critical.** Extreme weight alteration. Heavier: target is briefly prone as gravity pins them. Lighter: target floats 1 meter off the ground and is briefly immobilized (can't move but can act).
+**Critical.** Extreme weight alteration. Heavier: target is briefly prone as gravity pins them. Lighter: target gains +2 movement and ignores difficult terrain for a brief duration.
 
 > **Design Note**: Fills R0 gravity gap. Versatile utility with both offensive (heavy) and supportive (light) options.
 
