@@ -102,15 +102,15 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-2 | 4 | Willing allies | Close | enchant (medium)
+2 | 4 | Medium TN | Close | —
 
-*You link the minds of your allies, allowing wordless communication across distance.*
+*You forge a silent mental link between yourself and nearby creatures, allowing wordless communication across any distance.*
 
-**Weak.** Link up to 3 willing creatures for a medium duration. Linked creatures can communicate telepathically within long range. Communication is limited to simple thoughts and emotions.
-**Strong.** Link up to 5 creatures. Communication includes full sentences and shared sensory impressions (one creature can briefly share what they see/hear). Range extends to extreme.
-**Critical.** Link up to 5 creatures. Full telepathic communication with no range limit (same plane). Linked creatures can share a Perception check result once per scene (one creature spots danger, all are aware).
+**Weak.** Link up to 4 willing creatures within close range. For a short duration, all linked creatures can communicate telepathically regardless of distance, as long as they are on the same plane.
+**Strong.** As above, and linked creatures gain +1 boon on Insight rolls to read each other's emotional states.
+**Critical.** As above, and linked creatures can share sensory input — one creature can see through another's eyes as a Quick Action (briefly).
 
-> **Design Note**: Fills R2 communication gap. Practical exploration/tactical utility — coordination without speaking. Medium duration prevents permanent always-on communication. Range limits prevent it from replacing mundane messaging systems.
+> **Design Note**: R2 communication spell. Core effect (telepathic link, 4 creatures, short duration) is reliable on any success — SL adds sensory bonuses.
 
 ### Implant Suggestion
 
@@ -148,11 +148,11 @@
 
 *You probe deeper into a creature's memories, extracting specific information.*
 
-**Weak.** Extract one specific memory from the past day. The target is aware their mind is being read and can attempt to resist each round.
-**Strong.** Extract memories from the past week. You can search for specific topics. The target feels discomfort but may not immediately realize the source.
-**Critical.** Extract memories from the past month. You can search for specific topics with precision. The target is unaware of the intrusion unless they succeed on a Spirit + Insight check.
+**Weak.** Extract memories from the target spanning the past week. You can search for specific topics or events. The target is aware their mind is being read and can attempt to resist each round.
+**Strong.** As above, and the memories are vivid — you perceive full sensory details (sights, sounds, smells). The target feels discomfort but may not immediately realize the source.
+**Critical.** As above with vivid detail, and the target is unaware of the intrusion unless they succeed on a Spirit + Insight check.
 
-> **Design Note**: Fills R2 memory gap — bridges Surface Recall (R0) and Modify Memory (R4). Concentration and per-round resistance prevent casual abuse. Requires being within close range, limiting use to willing/restrained targets.
+> **Design Note**: R2 memory spell. Core effect (extract week of memories, search for topics) is reliable on any success — SL adds sensory clarity and stealth of intrusion.
 
 ### Modify Memory
 
@@ -172,29 +172,29 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-4 | 8 | vs. Resist | Close | concentrate
+4 | 8 | vs. Resist | Medium | concentrate
 
-*You project your will outward in a crushing wave of mental authority, seizing control of multiple minds simultaneously.*
+*You impose your will on multiple minds simultaneously, seizing control of a group of creatures.*
 
-**Weak.** All creatures in a close area must resist or be briefly dominated — they act on your behalf until the end of their next turn. You can issue a single simple command to all dominated creatures (move, attack a target, drop items).
-**Strong.** Dominated creatures remain under your control for a short duration. You can issue different commands to each creature. Creatures can attempt to break free (Spirit + Fortitude vs. your casting result) at the end of each of their turns.
-**Critical.** Dominated creatures remain under your control for a short duration with no immediate escape attempt — they can only attempt to break free after the first round. You can issue complex commands and coordinate dominated creatures' actions.
+**Weak.** Choose up to 3 creatures within medium range. Each must save vs. Resist or be dominated for a short duration. Dominated creatures follow your simple verbal commands. At the end of each of their turns, a dominated creature can attempt a new save to break free.
+**Strong.** As above, and dominated creatures suffer +1 bane on their break-free saves.
+**Critical.** As above, and you can issue different commands to each dominated creature simultaneously (normally all receive the same command).
 
-> **Design Note**: R4 mass control capstone. Close range limits use to melee/close encounters. Concentration and per-turn escape attempts prevent permanent lockdown. The "simple command" limit at weak prevents combat-ending abuse.
+> **Design Note**: R4 domination capstone. Core effect (dominate 3 creatures, short duration, break-free saves) is reliable on any success — SL adds save penalty and command flexibility.
 
 ### Psychic Maelstrom
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | vs. Resist | Long | concentrate
+5 | 10 | vs. Resist | Medium | concentrate
 
-*You unleash a devastating storm of psychic energy that tears through the minds of all creatures in an area.*
+*You unleash a devastating psychic storm across the battlefield, overwhelming the minds of every creature in range with torrents of mental anguish.*
 
-**Weak.** All creatures in a short area take +6 psychic damage and are briefly dazed.
-**Strong.** All creatures take +12 psychic damage and are dazed for a short duration. Creatures that fail their save by 3+ are confused instead.
-**Critical.** All creatures take +18 psychic damage and are confused for a short duration. Creatures that fail by 6+ are dominated briefly — they act on your behalf until the end of their next turn.
+**Weak.** All creatures in a medium area must save vs. Resist or be dazed for a short duration and take +6 psychic damage.
+**Strong.** As above with +12 psychic damage, and dazed creatures also suffer +1 bane on all mental attribute rolls.
+**Critical.** As above with +18 psychic damage, and dazed creatures also suffer +1 bane on all attribute rolls (not just mental).
 
-> **Design Note**: R5 capstone. AoE at R5 uses half single-target scaling (+6/+12/+18). The condition escalation (dazed → confused → dominated) rewards high casting rolls.
+> **Design Note**: R5 psychic capstone. AoE at half-damage scaling. Core condition (dazed) is reliable on any success — SL adds damage and expanded debuffs, not escalating conditions.
 
 ### Absolute Control
 
@@ -202,13 +202,13 @@
 ---|---|---|---|---
 5 | 10 | vs. Resist | Medium | concentrate
 
-*You drive your consciousness into a single creature's mind like a spike, overwriting their will entirely. Their body becomes your puppet, their thoughts silenced under the weight of your absolute dominion.*
+*You seize total control of a creature's mind, body, and actions — bending their will completely to yours.*
 
-**Weak.** One creature is dominated for a short duration. The target acts entirely on your behalf — you control their movement, actions, and speech. The target can attempt to break free (Spirit + Fortitude vs. your casting result) at the end of each of their turns.
-**Strong.** The domination lasts for a medium duration. Break-free attempts suffer +1 bane. You can access the target's surface thoughts and memories while controlling them, gaining knowledge of their abilities and skills.
-**Critical.** The domination lasts for a medium duration. Break-free attempts suffer +2 banes. You gain full access to the target's skills and abilities, using them as if they were your own. The target is unaware of the domination after it ends.
+**Weak.** The target is dominated for a short duration. You control all their actions, including movement, attacks, and speech. The target can attempt to break free at the end of each of their turns (vs. Resist, +1 bane).
+**Strong.** As above, and the target cannot communicate their dominated state to allies (they appear to act normally).
+**Critical.** As above, and you can access the target's surface thoughts while dominating them, gaining +1 boon on any rolls to maintain the deception.
 
-> **Design Note**: R5 single-target control capstone — the pinnacle of telepathic domination. Concentration requirement means the caster is vulnerable while maintaining control. Per-turn escape attempts prevent permanent mind slavery. More powerful than Mass Domination (R4) but single-target only.
+> **Design Note**: R5 domination capstone. Core effect (total domination, short duration, break-free with bane) is reliable on any success — SL adds deception capabilities.
 
 ## Cross-School Spell Sharing
 

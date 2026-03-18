@@ -63,11 +63,11 @@
 
 *You weave elaborate disguises over yourself and up to four willing allies, transforming their appearance entirely.*
 
-**Weak.** You and up to 2 willing creatures in close range take on illusory appearances of your choice for a short duration. The disguises are convincing but imperfect — observers gain +1 boon on attempts to see through them.
-**Strong.** You and up to 4 willing creatures are disguised for a short duration. The disguises are convincing with no detection bonus.
-**Critical.** You and up to 4 willing creatures are disguised for a medium duration. Observers suffer +1 bane on detection attempts.
+**Weak.** You and up to 4 willing creatures in close range take on illusory appearances of your choice for a short duration. The disguises are convincing — observers can attempt Spirit + Perception vs. your casting result to see through them.
+**Strong.** As above, and the disguises include matching sounds (voice, footsteps) — observers suffer +1 bane on detection attempts.
+**Critical.** As above with +1 bane on detection, and the disguises also include tactile elements (texture of clothing, warmth of skin) — only magical detection automatically pierces the illusion.
 
-> **Design Note**: Group disguise is essential utility. R3 matches the power level — multiple simultaneous disguises with extended duration.
+> **Design Note**: R3 group disguise. Core effect (disguise 4 creatures, short duration) is reliable on any success — SL improves disguise quality, not target count or duration.
 
 ## Proposed New Spells
 
@@ -121,11 +121,11 @@
 
 *You trap a creature's mind in an ever-shifting maze of reflections and false corridors, leaving their body standing helpless.*
 
-**Weak.** One creature is briefly trapped in an illusory maze. They are dazed and cannot take Actions (only Quick Actions) as they try to navigate the false corridors. At the end of each of their turns, they can roll Mind + Perception vs. your casting result to escape.
-**Strong.** The target is trapped for up to a short duration. They are confused and cannot take any actions. Each turn they can attempt to escape.
-**Critical.** The target is trapped for up to a short duration and is confused. Escape attempts suffer +1 bane. When they escape, they are briefly disoriented (dazed for one additional turn).
+**Weak.** One creature is trapped in an illusory maze for a short duration. They are confused and cannot take Actions (only Quick Actions) as they try to navigate the false corridors. At the end of each of their turns, they can roll Mind + Perception vs. your casting result to escape.
+**Strong.** As above, and escape attempts suffer +1 bane as the maze shifts and adapts.
+**Critical.** As above with +1 bane on escape, and when the target finally escapes, they are briefly dazed from disorientation.
 
-> **Design Note**: R4 single-target lockdown. The "maze" theme fits illusion's trickery identity. Concentration requirement and per-turn escape attempts prevent permanent disable.
+> **Design Note**: R4 single-target lockdown. Core effect (confused, short duration, per-turn escape) is reliable on any success — SL adds escape difficulty and exit penalty.
 
 ### Phantasmal Catastrophe
 
@@ -135,11 +135,11 @@
 
 *You project a terrifying mass hallucination — the earth splitting, the sky falling, buildings collapsing — flooding the minds of all creatures in the area with overwhelming psychic horror.*
 
-**Weak.** All creatures in a short area experience a vivid hallucination of catastrophe. They take +5 psychic damage and are briefly confused as they struggle to distinguish reality from illusion.
-**Strong.** Targets take +10 psychic damage and are confused for a short duration. Creatures that fail by 3+ are also frightened.
-**Critical.** Targets take +15 psychic damage and are confused for a short duration. Creatures that fail by 3+ are frightened and flee the area if possible.
+**Weak.** All creatures in a short area experience a vivid hallucination of catastrophe. They take +5 psychic damage and are confused for a short duration.
+**Strong.** As above with +10 psychic damage, and confused creatures suffer +1 bane on all Perception-based rolls for the duration.
+**Critical.** As above with +15 psychic damage, and confused creatures also take +4 psychic damage at the start of each of their turns from the phantom terrors.
 
-> **Design Note**: R4 AoE hallucination. Damage uses half single-target R4 scaling (+5/+10/+15). The mass confusion effect represents Illusion's control role at high ranks.
+> **Design Note**: R4 AoE hallucination. Damage uses half single-target R4 scaling (+5/+10/+15). Core condition (confused, short duration) is reliable on any success — SL adds damage and perception debuffs, not escalating conditions.
 
 ### Grand Illusion
 
@@ -177,11 +177,11 @@
 
 *You trap multiple creatures in a shared nightmarish hallucination — a labyrinth of impossible geometry, shifting walls, and maddening whispers that break the will of those caught within.*
 
-**Weak.** All creatures in a close area are drawn into a shared hallucination. They take +6 psychic damage and are briefly confused, unable to distinguish allies from enemies or real threats from phantom ones.
-**Strong.** Targets take +12 psychic damage and are confused for a short duration. Creatures that fail by 3+ are briefly dominated — they act on your behalf until the end of their next turn.
-**Critical.** Targets take +18 psychic damage and are confused for a short duration. Creatures that fail by 3+ are dominated for a short duration, fully under your control. You can direct their actions each turn.
+**Weak.** All creatures in a close area are drawn into a shared hallucination. They take +6 psychic damage and are confused for a short duration, unable to distinguish allies from enemies or real threats from phantom ones.
+**Strong.** As above with +12 psychic damage, and confused creatures suffer +1 bane on all Perception-based rolls for the duration.
+**Critical.** As above with +18 psychic damage, and confused creatures also suffer +1 bane on all saves to break free of the confusion.
 
-> **Design Note**: R5 offensive capstone for Illusion. AoE uses half single-target R5 scaling (+6/+12/+18). The confusion/domination escalation represents the pinnacle of illusory mind control. Concentration and vs. Resist prevent auto-wins.
+> **Design Note**: R5 offensive capstone for Illusion. AoE uses half single-target R5 scaling (+6/+12/+18). Core condition (confused, short duration) is reliable on any success — SL adds damage and debuffs, not escalating to domination.
 
 ## Cross-School Spell Sharing
 
