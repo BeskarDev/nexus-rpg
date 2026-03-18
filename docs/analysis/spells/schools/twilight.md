@@ -77,11 +77,11 @@
 
 *You weave threads of fate around a creature, subtly influencing the probability of their near-future actions.*
 
-**Weak.** Choose one ally or enemy within close range. Ally: they gain +1 boon on their next skill check or save. Enemy: they suffer +1 bane on their next attack roll or save.
-**Strong.** Ally: +1 boon on their next two rolls. Enemy: +1 bane on their next two rolls.
-**Critical.** Ally: +1 boon on all rolls until the end of their next turn. Enemy: +1 bane on all rolls until the end of their next turn.
+**Weak.** Choose one ally or enemy within close range. Ally: they gain +1 boon on all rolls until the end of their next turn. Enemy (vs. Resist): they suffer +1 bane on all rolls until the end of their next turn.
+**Strong.** As Weak. Additionally, ally gains +2 temporary HP or enemy takes +4 psychic damage from the strain of resisting fate.
+**Critical.** As Strong, but the boon/bane increases to +2. Temporary HP increases to +4 or psychic damage to +8.
 
-> **Design Note**: Fills R2 fate gap. Probability manipulation is the mechanical expression of fate magic. Small but reliable bonuses/penalties — the power is in versatility (can buff or debuff) and reliability.
+> **Design Note**: Fills R2 fate gap. Probability manipulation is the mechanical expression of fate magic. The boon/bane scope (all rolls until end of next turn) is fixed on any success — SL scales the bonus magnitude and adds secondary damage/temp HP. Reliable on any success, with escalating potency.
 
 ### Moonfire
 
@@ -91,11 +91,11 @@
 
 *You call down a beam of concentrated moonlight that sears your target with cold silver radiance.*
 
-**Weak.** Deal +8 frost damage. The target is briefly revealed — invisibility, concealment, and illusions affecting them are suppressed until the end of their next turn.
-**Strong.** Deal +16 frost damage. Revealed for a short duration. The target also emits dim light (revealing their position even in darkness).
-**Critical.** Deal +24 frost damage. Revealed for a short duration. The target is also briefly slowed as moonlight saps their warmth.
+**Weak.** Deal +8 frost damage. The target is revealed for a short duration — invisibility, concealment, and illusions affecting them are suppressed. The target emits dim light (revealing their position even in darkness).
+**Strong.** Deal +16 frost damage. The target is also briefly slowed as moonlight saps their warmth.
+**Critical.** Deal +24 frost damage. The target is slowed for a short duration. Illusions or magical disguises on the target are permanently dispelled.
 
-> **Design Note**: Fills R3 moon gap. Single-target damage with anti-stealth utility — revealing hidden creatures is the overlap between moon (illumination) and secrets (uncovering). Frost damage fits the cold moonlight theme.
+> **Design Note**: Fills R3 moon gap. Single-target damage with anti-stealth utility — revealing hidden creatures is the overlap between moon (illumination) and secrets (uncovering). The revealed condition is fixed at short duration on any success — SL scales damage and adds secondary control (slowed) and dispelling.
 
 ### Shadow Veil (Quick Action Reactive)
 
@@ -133,11 +133,11 @@
 
 *You pull multiple creatures into a shared dreamscape — a twilight realm of your design where you control the environment.*
 
-**Weak.** You and up to 2 willing or unconscious creatures enter a shared dream for a brief duration. You control the environment of the dream. Unwilling creatures can resist.
-**Strong.** Up to 4 creatures. Duration extends to short. Within the dream, you can communicate, show visions, or create a safe resting space (creatures can benefit from a short rest equivalent in 10 minutes of real time).
-**Critical.** Up to 6 creatures. Duration extends to medium. Unwilling creatures trapped in the dream take +6 psychic damage per turn as you reshape reality around them. Willing creatures gain the benefits of a full rest in 1 hour of real time.
+**Weak.** You and up to 4 willing or unconscious creatures enter a shared dream for a short duration. You control the environment of the dream. Unwilling creatures can resist. Within the dream, you can communicate and show visions.
+**Strong.** As Weak. Within the dream, you can create a safe resting space (creatures can benefit from a short rest equivalent in 10 minutes of real time). You can also inflict nightmares on unwilling targets, dealing +6 psychic damage per turn.
+**Critical.** As Strong. Willing creatures gain the benefits of a full rest in 1 hour of real time. Nightmare damage increases to +12 psychic per turn. You can reshape the dreamscape to reveal one secret the unwilling target knows (GM provides a brief, truthful answer to one question).
 
-> **Design Note**: R5 capstone. Unique utility — accelerated rest for allies, psychic torture for enemies. Concentration and ritual requirements balance the power.
+> **Design Note**: R5 capstone. Target count (up to 4) and duration (short) are fixed on any success — the shared dream is reliable. SL scales the dream's power: accelerated rest quality, psychic damage to unwilling targets, and information extraction. Concentration and ritual requirements balance the power.
 
 ### Eclipse
 
@@ -147,11 +147,11 @@
 
 *You call down the eclipse — the moon swallowing the sun. A sphere of absolute darkness and biting cold descends upon the battlefield.*
 
-**Weak.** Create an area of magical darkness in a medium area for a short duration (concentrate). All creatures within the area take +5 frost damage at the start of each of your turns and are briefly slowed.
-**Strong.** Damage increases to +10 per turn. Creatures are slowed for a short duration. Non-magical light sources within the area are extinguished.
-**Critical.** Damage increases to +15 per turn. Creatures are slowed for a short duration and suffer +1 bane on all attack rolls while in the darkness. All light sources (including magical) are suppressed.
+**Weak.** Create an area of magical darkness in a medium area for a short duration (concentrate). All creatures within the area take +5 frost damage at the start of each of your turns and are slowed for a short duration. Non-magical light sources within the area are extinguished.
+**Strong.** Damage increases to +10 per turn. Creatures also suffer +1 bane on all attack rolls while in the darkness.
+**Critical.** Damage increases to +15 per turn. +1 bane on attack rolls. All light sources (including magical) are suppressed. Creatures that start their turn in the darkness must save (vs. Resist) or be briefly frightened.
 
-> **Design Note**: R4 control/offense hybrid. Per-turn AoE damage at half single-target scaling (+5/+10/+15). Concentration limits other spellcasting. The moon/secrets capstone for Twilight's darkness manipulation.
+> **Design Note**: R4 control/offense hybrid. Per-turn AoE damage at half single-target scaling (+5/+10/+15). The slowed condition and darkness are fixed on any success — SL scales per-turn damage and adds secondary penalties (attack banes, magical light suppression, frightened). Concentration limits other spellcasting.
 
 ### Prophecy
 
@@ -175,11 +175,11 @@
 
 *You dissolve into living shadow — your body becomes darkness itself, flowing through cracks and passing through walls like ink through water.*
 
-**Weak.** For a brief duration, you transform into a shadow. You gain immunity to physical damage and can move through solid objects (walls, doors, floors) at your normal speed. While in shadow form, you can only deal psychic damage and cannot cast other spells. You emit no sound and are invisible in darkness.
-**Strong.** Duration extends to short. You also gain resistance to all non-physical damage (reduce by 4). You can interact minimally with physical objects (turn a key, press a lever).
-**Critical.** Duration extends to short. Resistance to non-physical damage increases to 6. You can briefly solidify once during the duration to make a single attack or cast a single spell, then return to shadow form.
+**Weak.** For a short duration, you transform into a shadow. You gain immunity to physical damage and can move through solid objects (walls, doors, floors) at your normal speed. While in shadow form, you can only deal psychic damage and cannot cast other spells. You emit no sound and are invisible in darkness.
+**Strong.** All Weak benefits. You also gain resistance to all non-physical damage (reduce by 4). You can interact minimally with physical objects (turn a key, press a lever).
+**Critical.** All Weak and Strong benefits. Resistance to non-physical damage increases to 6. You can briefly solidify once during the duration to make a single attack or cast a single spell, then return to shadow form.
 
-> **Design Note**: R5 secrets/illusion capstone. Powerful infiltration and survival tool. Concentration prevents other sustained spells. The inability to deal physical damage or cast spells (except once at Critical) prevents it from being a pure combat advantage — it excels at escape, scouting, and bypassing obstacles.
+> **Design Note**: R5 secrets/illusion capstone. Duration is fixed at short on any success — the transformation is reliable. SL scales secondary defenses (non-physical resistance) and unlocks utility (object interaction, solidify once). Concentration prevents other sustained spells. The inability to deal physical damage or cast spells (except once at Critical) prevents it from being a pure combat advantage.
 
 ### Fate's Decree
 
@@ -189,11 +189,11 @@
 
 *You speak a decree of fate — words that reshape destiny itself. The threads of fortune bend to your pronouncement, cursing an enemy or blessing an ally.*
 
-**Weak.** Choose one creature within medium range. Enemy (vs. Resist): their critical successes become strong successes for a short duration. Ally: their failures become weak successes for a short duration (once per turn).
-**Strong.** Enemy: critical successes become strong, and strong successes become weak for the duration. Ally: failures become weak successes (once per turn), and weak successes become strong successes (once per turn).
-**Critical.** Enemy: all success levels are reduced by one step for the duration. Ally: all success levels are improved by one step for the duration (each improvement once per turn).
+**Weak.** Choose one creature within medium range. Enemy (vs. Resist): all their success levels are reduced by one step for a short duration (critical → strong, strong → weak, weak → failure). Ally: all their success levels are improved by one step for a short duration (each improvement applies once per turn).
+**Strong.** As Weak. Additionally, the enemy takes +8 psychic damage from the strain of fate twisting against them, or the ally gains +4 temporary HP from fate's favor.
+**Critical.** As Weak. Enemy takes +16 psychic damage and suffers +1 bane on Resist checks for the duration. Ally gains +8 temporary HP and +1 boon on their next save.
 
-> **Design Note**: R5 fate capstone. Probability manipulation at its peak — rewriting the odds for or against a creature. Concentration limits other sustained effects. The "once per turn" limit on ally benefits prevents runaway stacking. Culmination of Thread of Fate (R0) → Fate's Web (R2) → Prophecy (R4) → Fate's Decree (R5).
+> **Design Note**: R5 fate capstone. The core probability rewrite (one-step shift on all success levels) is fixed on any success — SL scales psychic damage/temp HP and adds secondary modifiers. Concentration limits other sustained effects. The "once per turn" limit on ally improvements prevents runaway stacking. Culmination of Thread of Fate (R0) → Fate's Web (R2) → Prophecy (R4) → Fate's Decree (R5).
 
 ## Cross-School Spell Sharing
 

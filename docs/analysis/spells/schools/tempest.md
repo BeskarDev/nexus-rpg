@@ -85,11 +85,11 @@
 
 *You stamp the ground and send a localized tremor rippling outward.*
 
-**Weak.** One creature in melee range must succeed or stumble. They suffer +1 bane on their next movement.
-**Strong.** The target is briefly prone.
-**Critical.** The target is prone and the ground in melee range becomes briefly difficult terrain.
+**Weak.** One creature in melee range is briefly prone as the ground lurches beneath them.
+**Strong.** The target is briefly prone. The ground in melee range becomes briefly difficult terrain.
+**Critical.** The target is briefly prone. The ground in melee range becomes briefly difficult terrain. One adjacent object (shelf, pillar, stack of crates) is knocked over.
 
-> **Design Note**: Fills the R0 earthquakes gap. Melee-range ground effect.
+> **Design Note**: Fills the R0 earthquakes gap. Melee-range ground effect. Prone is the core earthquake condition and is reliable on any success — SL adds environmental effects rather than gating the primary condition.
 
 ### Sand Gust
 
@@ -100,10 +100,10 @@
 *You whip up a blast of sand or dust, stinging eyes and obscuring vision.*
 
 **Weak.** One target in close range is briefly blinded (sand in eyes).
-**Strong.** The target is blinded for a short duration.
-**Critical.** The target is blinded for a short duration. You also create a small cloud of dust in melee range (lightly obscured) for a brief duration.
+**Strong.** The target is briefly blinded. You also deal +2 physical damage from stinging grit.
+**Critical.** The target is briefly blinded and takes +4 physical damage. You also create a small cloud of dust in melee range (lightly obscured) for a brief duration.
 
-> **Design Note**: Fills the R0 sandstorms gap. Blinding effect ties into the sand/dust theme.
+> **Design Note**: Fills the R0 sandstorms gap. Blinding is the core sandstorm condition and is reliable on any success (briefly at all SL). SL adds damage and environmental effects rather than extending the blind duration.
 
 ### Splash
 
@@ -169,11 +169,11 @@
 
 *You become one with the storm, transforming into an avatar of elemental fury. Lightning crackles around you, winds howl at your command, and the sky darkens.*
 
-**Weak.** For a brief duration, you gain: flight (movement 6), resistance to lightning and frost damage (reduce by 4), and your melee attacks deal an additional +4 lightning damage. You can call one lightning strike per turn as a Quick Action (vs. Dodge, medium range, +6/+12/+18 lightning damage).
-**Strong.** Duration extends to short. Lightning strike damage increases to +8/+16/+24. You also emit an aura of storm winds — ranged attacks against you suffer +1 bane.
-**Critical.** Duration extends to short. All bonuses active. You can call two lightning strikes per turn. Creatures within melee range take +2 lightning damage at the start of each of your turns.
+**Weak.** For a short duration, you gain: flight (movement 6), resistance to lightning and frost damage (reduce by 4), and your melee attacks deal an additional +4 lightning damage. You can call one lightning strike per turn as a Quick Action (vs. Dodge, medium range, +6 lightning damage).
+**Strong.** All Weak benefits. Lightning strike damage increases to +12. You also emit an aura of storm winds — ranged attacks against you suffer +1 bane.
+**Critical.** All Weak and Strong benefits. Lightning strike damage increases to +18. You can call two lightning strikes per turn. Creatures within melee range take +2 lightning damage at the start of each of your turns.
 
-> **Design Note**: R5 capstone — transformation into a storm avatar. Concentration limits other spellcasting while transformed.
+> **Design Note**: R5 capstone — transformation into a storm avatar. Duration is fixed at short for all SL — the transformation is reliable on any success. SL scales lightning strike damage and unlocks secondary benefits (aura, extra strikes). Concentration limits other spellcasting while transformed.
 
 ### World Shaker
 
@@ -197,11 +197,11 @@
 
 *You call upon the primal forces of wind and water, and a massive vortex of churning waves and howling gale descends upon the battlefield — a hurricane given divine purpose, or a whirlpool that swallows the earth itself.*
 
-**Weak.** Create a swirling vortex in a large area at long range. All creatures in the area take +6 frost/blast damage and are pulled one range increment toward the center. Creatures in the center are restrained by churning winds and water.
-**Strong.** Deal +12 frost/blast damage. Creatures are pulled two range increments toward the center. Restrained creatures in the center take an additional +4 frost damage at the start of each of their turns. The area is heavily obscured.
-**Critical.** Deal +18 frost/blast damage. All creatures are pulled to the center and restrained. Restrained creatures take +6 frost damage per turn. The area is heavily obscured. Flying creatures are grounded (lose flight for the duration).
+**Weak.** Create a swirling vortex in a medium area at long range. All creatures in the area take +6 frost/blast damage and are pulled one range increment toward the center. Creatures in the center are restrained by churning winds and water. The area is heavily obscured.
+**Strong.** Deal +12 frost/blast damage. Restrained creatures in the center take an additional +4 frost damage at the start of each of their turns. Flying creatures are grounded (lose flight for the duration).
+**Critical.** Deal +18 frost/blast damage. Restrained creatures take +6 frost damage per turn. Flying creatures are grounded. You can selectively exclude up to 4 allies from the pull and restrain effects.
 
-> **Design Note**: R5 floods/hurricanes combined capstone — massive area denial and forced movement. Damage follows R5 AoE scaling (+6/+12/+18). The pull-to-center mechanic creates a tactical vortex that punishes creatures who remain in the area. Concentration can be broken to end the effect.
+> **Design Note**: R5 floods/hurricanes combined capstone — massive area denial and forced movement. Damage follows R5 AoE scaling (+6/+12/+18). Pull distance, restrained condition, area, and obscurement are fixed on any success — SL scales damage and adds secondary benefits (per-turn damage, flight grounding, ally exclusion). Concentration can be broken to end the effect.
 
 ## Cross-School Spell Sharing
 

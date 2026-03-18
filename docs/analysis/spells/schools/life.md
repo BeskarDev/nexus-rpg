@@ -77,11 +77,11 @@
 
 *You radiate an aura of hope and inspiration, bolstering the resolve of nearby allies.*
 
-**Weak.** Up to 3 allies gain +1 boon on their next save against a negative condition (fear, charm, daze, etc.) for a short duration.
-**Strong.** The boon applies to their next two saves. Allies also gain +2 temporary HP.
-**Critical.** The boon applies to all saves for the duration. Allies gain +4 temporary HP.
+**Weak.** Up to 3 allies gain +1 boon on all saves against negative conditions (fear, charm, daze, etc.) for a short duration. Allies also gain +2 temporary HP.
+**Strong.** As Weak. Temporary HP increases to +4. Allies also gain +1 boon on Morale checks for the duration.
+**Critical.** As Weak. Temporary HP increases to +6. +1 boon on Morale. Any ally currently suffering the frightened condition can immediately re-save to end it.
 
-> **Design Note**: Fills R1 hope gap. Proactive defensive buff — complements Blessing of Life (R1) by protecting against conditions rather than healing damage. Temporary HP provides a small buffer without replacing healing.
+> **Design Note**: Fills R1 hope gap. The boon scope (all saves for short duration) is fixed on any success — SL scales temporary HP and adds secondary benefits (Morale boon, fear re-save). Complements Blessing of Life (R1) by protecting against conditions rather than healing damage.
 
 ### Circle of Renewal
 

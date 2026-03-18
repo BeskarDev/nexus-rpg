@@ -146,11 +146,11 @@
 
 *You unleash a thunderous shout of divine authority that shakes the resolve of your enemies and steels the hearts of your allies.*
 
-**Weak.** All enemies in close range must save or be briefly frightened. All allies in close range gain +1 boon on their next attack roll.
-**Strong.** Enemies are frightened for a short duration. Allies gain +2 to weapon damage for a short duration.
-**Critical.** Enemies are frightened for a short duration and suffer +1 bane on all rolls. Allies gain +2 weapon damage and +1 movement for a short duration.
+**Weak.** All enemies in close range must save or be frightened for a short duration. All allies in close range gain +1 boon on their next attack roll.
+**Strong.** Enemies are frightened for a short duration and suffer +1 bane on all rolls. Allies gain +2 to weapon damage for a short duration.
+**Critical.** Enemies are frightened for a short duration, suffer +1 bane on all rolls, and take +4 psychic damage from the shout's force. Allies gain +2 weapon damage and +1 movement for a short duration.
 
-> **Design Note**: R3 mass buff/debuff — the first R3 spell for War. Combines fear control with ally empowerment. Named distinctly from R1 War Cry.
+> **Design Note**: R3 mass buff/debuff. Frightened duration (short) is fixed on any success — SL scales secondary penalties and ally buffs.
 
 ### Blood Frenzy
 
@@ -174,11 +174,11 @@
 
 *You become an avatar of divine war — an inspiring, terrifying presence on the battlefield that turns the tide of battle.*
 
-**Weak.** For a brief duration: you gain +2 to all attributes, +4 weapon damage, and enemies within close range must save or be briefly frightened. Allies within close range gain +1 to all attack rolls.
-**Strong.** Duration extends to short. Your bonuses: +2 attributes, +4 weapon damage. Enemy fear lasts for a short duration. Allies gain +2 to all attack rolls and +2 weapon damage.
-**Critical.** Duration short. All bonuses as Strong. Additionally, once per turn you can make an additional weapon attack as a Quick Action. Frightened enemies that attempt to flee provoke attacks of opportunity from all allies.
+**Weak.** For a short duration: you gain +2 to all attributes, +4 weapon damage, and enemies within close range must save or be frightened for a short duration. Allies within close range gain +1 to all attack rolls.
+**Strong.** All Weak benefits. Allies gain +2 to all attack rolls and +2 weapon damage. You also emit an aura — enemies within melee range take +4 fire damage at the start of each of your turns.
+**Critical.** All Strong benefits. Once per turn you can make an additional weapon attack as a Quick Action. Frightened enemies that attempt to flee provoke attacks of opportunity from all allies.
 
-> **Design Note**: R5 capstone — avatar of war transformation. Mass buff + self-enhancement + fear aura. Concentration limits other spellcasting.
+> **Design Note**: R5 capstone — avatar of war transformation. Duration (short) and fear duration (short) are fixed on any success — SL scales ally buff magnitude and unlocks secondary abilities (aura, extra attack). Concentration limits other spellcasting.
 
 ### Righteous Fury
 
@@ -222,19 +222,19 @@
 
 > **Design Note**: R4 justice/pride capstone — divine duel mechanic. Forces single combat by punishing the target for attacking others. The caster also gains offensive bonuses, making this a commitment to a specific enemy. Critical's triumph surge rewards the climactic kill.
 
-### Battle Standard
+### Siege Breaker
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-4 | 8 | Allies | Close | concentrate
+4 | 8 | vs. Dodge | Medium | —
 
-*You drive your weapon or banner into the ground and channel divine war magic through it. A pillar of fiery light erupts skyward, and all allies who fight beneath the standard feel the fury of righteous war coursing through them.*
+*You channel the fury of war into a devastating strike that sunders fortifications, shatters shield walls, and breaks the defenses of even the most entrenched foe. The ground cracks and barriers crumble before divine wrath.*
 
-**Weak.** All allies within close range gain +2 weapon damage and +2 AV (situational bonus) for as long as you maintain concentration. Allies are immune to the frightened condition while in range. You cannot move while maintaining the standard (your weapon is planted in the ground).
-**Strong.** Weapon damage bonus increases to +3, AV to +3. Allies also gain +1 boon on all attack rolls while in range.
-**Critical.** Weapon damage +3, AV +3, +1 boon on attacks. Allies who start their turn within close range also regain +2 HP. Enemies within close range suffer +1 bane on Morale checks.
+**Weak.** Deal +10 blast damage to one target or structure. This attack ignores half the target's AV (rounded up). If the target is behind cover, the cover is destroyed. Structures and objects take double damage.
+**Strong.** Deal +20 blast damage. Ignore half AV. Cover is destroyed. If the target is using a shield, the shield's AV is reduced by 2 for the rest of the scene (damaged).
+**Critical.** Deal +30 blast damage. Ignore half AV. Cover destroyed. Shield AV reduced by 3. The impact creates a shockwave — all creatures within melee range of the target are briefly prone.
 
-> **Design Note**: R4 pride/triumph capstone — planted banner that creates a zone of empowerment. The caster cannot move, creating a meaningful tactical tradeoff. Concentration can be broken by damage. This is the group-buff counterpart to Blood Frenzy's self-buff at the same rank.
+> **Design Note**: R4 fury/pride capstone — replaces the previously proposed "Battle Standard" (which was essentially "bigger War Banner"). Siege Breaker introduces a genuinely different concept: anti-fortification single-target destruction. Fills the gap for War's "break through defenses" fantasy. Damage follows R4 single-target scaling (+10/+20/+30). The AV ignore and cover destruction create a unique tactical niche — this is the spell for breaching shield walls, smashing barricades, and ending sieges. If a group buff power increase is desired, use War Banner with heightened Focus instead.
 
 ### Avatar of War
 
@@ -244,9 +244,9 @@
 
 *You invoke the ultimate blessing of the war gods, and divine power transforms you into a living avatar of battle. Your form grows, your weapon blazes with holy fire, and wings of golden flame spread from your back. You are War incarnate.*
 
-**Weak.** For a brief duration: gain +3 to all attribute die sizes (up to d12+2), +6 weapon damage, and flight (movement 6). You are immune to the frightened, staggered, and dazed conditions. Your melee attacks deal fire damage in addition to physical.
-**Strong.** Duration extends to short. All Weak benefits. You also emit an aura of divine fury — enemies within melee range take +4 fire damage at the start of each of your turns.
-**Critical.** Duration short. All Strong benefits. Once per turn, you may make an additional weapon attack as a Quick Action. When you reduce an enemy to 0 HP, all allies within close range gain +2 to their next attack roll.
+**Weak.** For a short duration: gain +3 to all attribute die sizes (up to d12+2), +6 weapon damage, and flight (movement 6). You are immune to the frightened, staggered, and dazed conditions. Your melee attacks deal fire damage in addition to physical.
+**Strong.** All Weak benefits. You also emit an aura of divine fury — enemies within melee range take +4 fire damage at the start of each of your turns. When you reduce an enemy to 0 HP, all allies within close range gain +2 to their next attack roll.
+**Critical.** All Strong benefits. Aura damage increases to +8. Once per turn, you may make an additional weapon attack as a Quick Action.
 
 > **Design Note**: R5 fury/blood ultimate — divine warrior transformation. The most powerful self-buff in War's arsenal. Concentration limits other spellcasting. Brief/short duration ensures this is a climactic moment, not a sustained state. Attribute bonuses are capped at d12+2 to respect the mortal power ceiling.
 
@@ -279,10 +279,10 @@ War does not currently share spells with any arcane discipline.
 
 ### Spell Progression Chains
 1. **Fury chain**: Battle Surge (R0) → War Cry (R1) → Haste (R2) → Commander's Shout/Righteous Fury (R3 proposed) → Blood Frenzy (R4 proposed) → Avatar of War/Warlord's Presence (R5 proposed) — **complete R0-R5**
-2. **Pride chain**: Mighty Strike (R0) → Heroic Weapon (R1) → War Banner (R2 proposed) → *gap at R3* → Battle Standard (R4 proposed) → Warlord's Presence (R5 proposed) — **near-complete R0-R5**
+2. **Pride chain**: Mighty Strike (R0) → Heroic Weapon (R1) → War Banner (R2 proposed) → *gap at R3* → Siege Breaker (R4 proposed) → Warlord's Presence (R5 proposed) — **near-complete R0-R5**
 3. **Blood chain**: Spectral Slash (R0) → Tear Wound/Curse of War (R1) → Blood Sacrifice (R2) → Ancestral Blade (R3 proposed) → Blood Frenzy (R4 proposed) → Avatar of War/Final Triumph (R5 proposed) — **complete R0-R5**
 4. **Justice chain**: Righteous Strike (R0 proposed) → Retaliating Fury (R1 proposed) → Avenging Oath (R2 proposed) → Righteous Fury (R3 proposed) → Champion's Challenge (R4 proposed) → Final Triumph (R5 proposed) — **complete R0-R5**
-5. **Triumph chain**: Victor's Rush (R0 proposed) → Weapon Spirit (R1) → Ancestral Warriors (R2) → Commander's Shout (R3 proposed) → Battle Standard (R4 proposed) → Warlord's Presence/Final Triumph (R5 proposed) — **complete R0-R5**
+5. **Triumph chain**: Victor's Rush (R0 proposed) → Weapon Spirit (R1) → Ancestral Warriors (R2) → Commander's Shout (R3 proposed) → Siege Breaker (R4 proposed) → Warlord's Presence/Final Triumph (R5 proposed) — **complete R0-R5**
 
 ### Setup + Payoff Combos
 - ✅ **Fear → exploit**: War Cry (R1) frightens enemies → attacks against frightened targets deal bonus damage or gain advantage

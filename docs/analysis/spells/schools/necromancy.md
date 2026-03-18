@@ -87,11 +87,11 @@
 
 *You channel massive necrotic energy into the ground, raising a host of spectral warriors from the realm of the dead.*
 
-**Weak.** Summon 2 spectral warriors (Tier 2 undead) in close range. They act on your initiative and obey your mental commands. They last for a brief duration.
-**Strong.** Summon 4 spectral warriors. They last for a short duration.
-**Critical.** Summon 6 spectral warriors. They last for a short duration. You can command them as a group with a single mental command (no action required).
+**Weak.** Summon 4 spectral warriors (Tier 2 undead) in close range. They act on your initiative and obey your mental commands. They last for a short duration.
+**Strong.** As Weak. The spectral warriors are empowered — each deals +2 bonus necrotic damage on their attacks. You can command them as a group with a single mental command (no action required).
+**Critical.** As Strong. Bonus necrotic damage increases to +4. When a spectral warrior is destroyed, it explodes in a burst of necrotic energy, dealing +4 necrotic damage to all creatures within melee range (vs. Dodge).
 
-> **Design Note**: R5 capstone — army summoning. Concentration limits total minion output, and the material cost adds resource pressure. Tier 2 minions are useful but not overwhelming.
+> **Design Note**: R5 capstone — army summoning. Warrior count (4) and duration (short) are fixed on any success — the army is reliable. SL scales the warriors' combat effectiveness (bonus damage, death burst) rather than their numbers. This is NOT a bigger version of Spectral Army (R3) — Spectral Army summons temporary phantoms for distraction and harassment, while Army of Shadows creates empowered warriors with scaling necrotic abilities. Concentration limits total minion output, and the material cost adds resource pressure.
 
 ### Soul Harvest
 
@@ -101,11 +101,11 @@
 
 *You open a dark conduit between yourself and the boundary of death. When any creature's life ebbs away nearby, you drink in the released soul energy — each death feeding your growing power.*
 
-**Weak.** For a short duration while you concentrate, whenever a creature dies within medium range, you harvest its departing soul: regain 6 HP and gain +1 on your next spell roll. You can benefit from this effect up to 3 times per casting.
-**Strong.** Regain 8 HP per death and gain +1 on your next spell roll. You can benefit up to 5 times. Additionally, each harvest grants you +1 temporary HP (stacking) that lasts for the duration.
-**Critical.** Regain 10 HP per death and gain +2 on your next spell roll. You can benefit up to 5 times. Each harvest also extends the spell's duration by one round, potentially lasting beyond the initial short duration.
+**Weak.** For a short duration while you concentrate, whenever a creature dies within medium range, you harvest its departing soul: regain 6 HP and gain +1 on your next spell roll. You can benefit from this effect up to 5 times per casting.
+**Strong.** Regain 8 HP per death and gain +1 on your next spell roll. Additionally, each harvest grants you +2 temporary HP (stacking) that lasts for the duration.
+**Critical.** Regain 10 HP per death and gain +2 on your next spell roll. Temporary HP per harvest increases to +4. Each harvest also extends the spell's duration by one round, potentially lasting beyond the initial short duration.
 
-> **Design Note**: R5 siphoning capstone — the ultimate life drain. Rewards the kill → exploit cycle that defines Necromancy. Concentration and the "per casting" cap prevent infinite scaling. Self-healing is the only arcane healing, maintaining the school's selfish identity. Synergizes with Finger of Death and Army of Shadows — kill enemies to fuel yourself while raising undead armies.
+> **Design Note**: R5 siphoning capstone — the ultimate life drain. The harvest limit (5 times) and duration (short) are fixed on any success — SL scales HP recovered per death and adds secondary benefits (temp HP, duration extension). Concentration and the "per casting" cap prevent infinite scaling. Self-healing is the only arcane healing, maintaining the school's selfish identity.
 
 ### Eternal Servitude
 
@@ -115,11 +115,11 @@
 
 *You perform an elaborate ritual of binding over a suitable corpse, pouring necrotic energy and precious reagents into it. The dead rises not as a shambling thrall, but as a powerful, permanent servant — bound to your will for eternity.*
 
-**Weak.** Animate one corpse as a permanent undead servant (Tier 3). The undead is loyal and follows your commands but has limited initiative — it cannot act independently or make complex decisions. It persists until destroyed.
-**Strong.** The undead is Tier 4 with enhanced durability (+20 HP). It can follow complex standing orders and act semi-independently within those parameters.
-**Critical.** The undead is Tier 4 with enhanced durability (+20 HP) and retains fragments of its former skills and knowledge. It can act independently within your broad directives and makes tactical decisions in combat.
+**Weak.** Animate one corpse as a permanent undead servant (Tier 4). The undead is loyal and follows your commands but has limited initiative — it cannot act independently or make complex decisions. It persists until destroyed.
+**Strong.** As Weak. The undead has enhanced durability (+20 HP) and can follow complex standing orders and act semi-independently within those parameters.
+**Critical.** As Strong. The undead also retains fragments of its former skills and knowledge. It can act independently within your broad directives and makes tactical decisions in combat.
 
-> **Design Note**: R5 undeath capstone — permanent high-tier undead creation. The 1-hour ritual, 500-coin material cost, and single target prevent casual use. Only one instance at a time (recasting on a new corpse releases the previous servant). Culmination of the undeath chain: Animate Corpse (R1) → Animate Horde (R2) → Spectral Army (R3) → Death's Embrace (R4) → Eternal Servitude (R5).
+> **Design Note**: R5 undeath capstone — permanent high-tier undead creation. The undead tier (Tier 4) is fixed on any success — SL scales durability and intelligence rather than raw power tier. The 1-hour ritual, 500-coin material cost, and single target prevent casual use. Only one instance at a time (recasting on a new corpse releases the previous servant). Culmination of the undeath chain: Animate Corpse (R1) → Animate Horde (R2) → Spectral Army (R3) → Death's Embrace (R4) → Eternal Servitude (R5).
 
 ## Cross-School Spell Sharing
 

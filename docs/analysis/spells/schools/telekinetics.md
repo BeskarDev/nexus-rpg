@@ -106,11 +106,11 @@
 
 *You close your fist and telekinetic force crushes around a target.*
 
-**Weak.** Deal +2 physical damage. The target feels intense pressure but is not restrained.
-**Strong.** Deal +4 physical damage. The target is briefly slowed as the crushing force restricts their movement.
+**Weak.** Deal +2 physical damage. The target is briefly slowed as crushing pressure restricts their movement.
+**Strong.** Deal +4 physical damage. The target is briefly slowed.
 **Critical.** Deal +6 physical damage. The target is briefly restrained by the crushing force.
 
-> **Design Note**: Fills R0 crush gap. Single-target damage with escalating restraint.
+> **Design Note**: Fills R0 crush gap. The primary crush condition (slowed — movement restriction from pressure) is reliable on any success. SL scales damage, with restrained as a Critical bonus. Slowed at R0 is appropriate for a no-Focus cantrip; restrained is reserved for Critical to prevent free-cantrip lockdown every turn.
 
 ### Gravity Shift
 
@@ -134,11 +134,11 @@
 
 *You invert gravity in a large area, causing everything within to fall upward.*
 
-**Weak.** Gravity reverses in a short area for a brief duration. All creatures and loose objects in the area "fall" upward to the ceiling or 10 meters, taking fall damage. Creatures can attempt to grab onto fixed objects (Strength + Athletics vs. Hard TN).
-**Strong.** The area expands to medium and lasts for a short duration. Creatures that fail their save are suspended in the air, prone and unable to move normally. They can make ranged attacks at +1 bane.
-**Critical.** The area is medium and lasts for a medium duration. You can selectively exclude up to 4 creatures from the effect. Suspended creatures are prone and suffer +2 banes on all attack rolls.
+**Weak.** Gravity reverses in a medium area for a short duration. All creatures and loose objects in the area "fall" upward to the ceiling or 10 meters, taking fall damage. Creatures can attempt to grab onto fixed objects (Strength + Athletics vs. Hard TN). Creatures that fail their save are suspended in the air, prone and unable to move normally.
+**Strong.** As Weak. Suspended creatures also suffer +1 bane on all attack rolls. You can selectively exclude up to 2 creatures from the effect.
+**Critical.** As Weak. Suspended creatures suffer +2 banes on all attack rolls. You can selectively exclude up to 4 creatures. Ranged attacks made into or out of the reversed gravity zone suffer +1 bane.
 
-> **Design Note**: R5 capstone — area control through gravity manipulation. Powerful but not instant-win — creatures can grab objects, and the caster must concentrate.
+> **Design Note**: R5 capstone — area control through gravity manipulation. Area (medium) and duration (short) are fixed on any success — the reversal is reliable. SL scales combat penalties on suspended creatures and ally exclusion. Powerful but not instant-win — creatures can grab objects, and the caster must concentrate.
 
 ### Kinetic Barrage
 
@@ -162,11 +162,11 @@
 
 *You encase a creature in a sphere of concentrated telekinetic force that slowly crushes inward.*
 
-**Weak.** One creature is briefly restrained as the sphere closes around them. At the start of their next turn, they take +3 physical damage (crush).
-**Strong.** The target is restrained for a short duration. They take +6 physical damage at the start of each of their turns. They can attempt to escape (Strength + Athletics vs. your casting result).
-**Critical.** As Strong, but damage increases to +9 per turn and escape attempts suffer +1 bane.
+**Weak.** One creature is restrained for a short duration as the sphere closes around them. At the start of each of their turns, they take +3 physical damage (crush). They can attempt to escape (Strength + Athletics vs. your casting result) at the end of each of their turns.
+**Strong.** As Weak, but damage increases to +6 per turn.
+**Critical.** As Weak, but damage increases to +9 per turn and escape attempts suffer +1 bane.
 
-> **Design Note**: Fills R2 crush gap. Sustained single-target control — escalating damage rewards maintaining concentration. Pairs well with Telekinetic Crush (R1) as a setup → payoff chain.
+> **Design Note**: Fills R2 crush gap. The primary condition (restrained for short duration) is fixed on any success — SL scales crushing damage. Escape is always possible, and concentration is required. Pairs well with Telekinetic Crush (R1) as a setup → payoff chain.
 
 ### Force Wall
 
@@ -204,11 +204,11 @@
 
 *You extend your will across the battlefield with absolute authority over matter and motion — lifting gates, hurling boulders, pinning warriors in place, reshaping the physical world through sheer mental force.*
 
-**Weak.** You can telekinetically manipulate any single object or creature within long range for a short duration. Objects: lift and move massive objects (boulders, gates, wagons) at will. Creatures: the target is briefly restrained as you hold them in place. Restrained creatures can attempt to break free (Strength + Athletics vs. your casting result) at the end of each of their turns.
-**Strong.** Manipulate up to 3 objects or creatures simultaneously for a short duration. Restrained creatures take +6 physical damage per turn from crushing force. You can hurl objects at targets, dealing +8 physical damage on impact.
-**Critical.** Manipulate up to 3 objects or creatures for a medium duration. Restrained creatures take +9 physical damage per turn. You can hurl massive objects (ships' masts, building columns) for +12 physical damage. Restrained creatures suffer +1 bane on break-free attempts.
+**Weak.** You can telekinetically manipulate up to 3 objects or creatures within long range for a short duration. Objects: lift and move massive objects (boulders, gates, wagons) at will. Creatures (vs. Dodge): the target is briefly restrained as you hold them in place. Restrained creatures can attempt to break free (Strength + Athletics vs. your casting result) at the end of each of their turns. You can hurl objects at targets, dealing +6 physical damage on impact.
+**Strong.** As Weak. Restrained creatures take +4 physical damage per turn from crushing force. Hurled object damage increases to +10.
+**Critical.** As Strong. Restrained creatures take +6 physical damage per turn and suffer +1 bane on break-free attempts. Hurled object damage increases to +14. You can hurl massive objects (ships' masts, building columns).
 
-> **Design Note**: R5 utility/offense capstone — the pinnacle of telekinetic power. Massive environmental manipulation within mortal limits. Concentration prevents passive abuse. The versatility (move objects, restrain creatures, hurl projectiles) represents mastery over all telekinetic applications.
+> **Design Note**: R5 utility/offense capstone — the pinnacle of telekinetic power. Target count (up to 3) and duration (short) are fixed on any success — mastery is reliable. SL scales damage dealt through crushing and hurled objects. Concentration prevents passive abuse.
 
 ## Cross-School Spell Sharing
 
