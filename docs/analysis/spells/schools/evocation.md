@@ -1,0 +1,165 @@
+# Evocation — Spell School Design Space
+
+## School Identity
+
+**Discipline**: Evocation (Arcane)
+**Traits**: fire, frost, lightning, acid, blast
+**Identity**: Transgressive elemental manipulation — raw, destructive power over the elements
+**Role Spread**: Excels: Offense | Decent: Control, Defense | Weak: Healing, Support, Utility
+
+### Mechanical Identity
+- **Primary Conditions**: Burning (fire), slowed (frost), staggered (lightning), corroding (acid)
+- **Signature Gimmick**: Element choice — many spells let the caster pick between fire/frost/lightning/acid, each with distinct secondary effects
+- **Damage Types**: Fire, Frost, Lightning, Acid, Blast
+
+### Design Principles
+1. Evocation is the premier damage school — highest raw damage output across all arcane disciplines
+2. Elemental variety provides tactical depth: fire for sustained damage (burning), frost for control (slowed), lightning for disruption (staggered), acid for armor penetration
+3. Defensive options exist but are limited to elemental wards and barriers
+4. **Major gap**: Zero utility/non-combat spells — needs environmental manipulation
+
+### Internal Synergies
+- **Setup**: Apply elemental condition (burning/slowed/staggered) → **Payoff**: Follow-up spells deal bonus damage or have enhanced effects against conditioned targets
+- **Element stacking**: Apply multiple elemental conditions to the same target for compounding penalties
+
+## Current Spell Inventory (18 spells)
+
+| Rank | Count | Spells |
+|------|-------|--------|
+| 0 | 3 | Flickering Flame, Frost Snap, Static Spark |
+| 1 | 9 | Chromatic Orb, Elemental Ward, Flame Burst, Flaming Weapon, Frozen Weapon, Ice Shards, Lightning Arc, Lightning Weapon, Scorching Ray |
+| 2 | 5 | Fireball, Frost Wave, Ice Lance, Lightning Strike, Prismatic Missile |
+| 3 | 1 | Black Flame Bolt |
+| 4–5 | 0 | — |
+
+### Trait Coverage Gaps
+
+| Trait | R0 | R1+ | Gap |
+|-------|-----|------|-----|
+| fire | ✅ | ✅ | — |
+| frost | ✅ | ✅ | — |
+| lightning | ✅ | ✅ | — |
+| acid | ❌ | ✅ (Chromatic Orb) | Missing R0 acid cantrip |
+| blast | ❌ | ❌ | No dedicated blast spells (concussive force) |
+
+## Proposed Spell Changes
+
+### Lightning Strike — Area Reduction
+
+**Current**: Line in medium range at Rank 2
+**Proposed**: Reduce to **short line** to match R2 area progression (close area / short line)
+**Rationale**: R2 spells should affect a close area or short line per the area progression framework.
+
+### Fireball — Damage Reduction
+
+**Current**: +4/+8/+12 AoE at Rank 2
+**Proposed**: Reduce to **+3/+6/+9** to match half single-target scaling for multi-target R2
+**Rationale**: Under the revised half-damage AoE scaling, R2 multi-target should be +3/+6/+9.
+
+### Frost Wave — Damage Reduction
+
+**Current**: +4/+8/+12 AoE cone at Rank 2
+**Proposed**: Reduce to **+3/+6/+9** to match half single-target scaling
+**Rationale**: Same as Fireball — consistent multi-target scaling.
+
+## Proposed New Spells
+
+### Acid Splash
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | vs. Dodge | Medium | —
+
+*You fling a glob of corrosive acid at your target, sizzling on contact.*
+
+**Weak.** Deal +2 acid damage.
+**Strong.** Deal +4 acid damage. The target's AV is reduced by 1 until the end of their next turn.
+**Critical.** Deal +6 acid damage. The target's AV is reduced by 2 until the end of their next turn.
+
+> **Design Note**: Fills the R0 acid gap. Gives acid a unique identity at cantrip level — AV reduction rather than a condition.
+
+### Concussive Pop
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | vs. Dodge | Melee | blast
+
+*You release a small burst of concussive force in your immediate vicinity.*
+
+**Weak.** Deal +0 blast damage to all creatures in melee range.
+**Strong.** Deal +2 blast damage to all creatures in melee range.
+**Critical.** Deal +4 blast damage to all creatures in melee range and push them into close range.
+
+> **Design Note**: Fills the R0 blast gap. Melee-only AoE at cantrip level is within R0 guidelines for rare exceptions.
+
+### Thermal Control
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | Medium TN | Close | —
+
+*You regulate the temperature in a small area — warming, cooling, or maintaining a comfortable environment.*
+
+**Weak.** Regulate temperature in close range for a brief duration. You can light or extinguish small fires, warm or cool food and drink, or prevent frost damage to objects.
+**Strong.** Regulate temperature for a short duration. You can keep a small shelter comfortably warm or cool despite external conditions.
+**Critical.** Regulate temperature for a medium duration. Creatures in the area gain resistance to environmental heat or cold effects for the duration.
+
+> **Design Note**: Fills the utility/non-combat gap. Pure environmental manipulation with no combat application.
+
+### Elemental Shaping
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Medium TN | Close | concentrate
+
+*You manipulate raw elemental matter — reshaping fire, water, earth, or air to your will.*
+
+**Weak.** Shape a small amount of one element within close range for a brief duration. Create a wall of flame (melee area, 5 HP), freeze water into a bridge, part smoke, or sculpt earth.
+**Strong.** Shape a larger amount for a short duration. The elemental construct is more durable (10 HP) and the area is larger (close range).
+**Critical.** Shape a significant amount for a medium duration. The elemental construct has 15 HP and can serve as a barrier, bridge, or environmental feature.
+
+> **Design Note**: R1 utility spell — environmental manipulation for exploration and creative problem-solving.
+
+### Fire Shield
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Self | Self | concentrate, enchant (short)
+
+*You wreathe yourself in protective flames or frost, lashing back at any who dare strike you.*
+
+**Weak.** Choose fire or frost. You gain resistance 2 to the opposing element (frost if fire chosen, fire if frost chosen). When a creature in melee range hits you with an attack, they take +2 fire or frost damage.
+**Strong.** Resistance increases to 4. Retaliatory damage increases to +4.
+**Critical.** Resistance increases to 6. Retaliatory damage increases to +6. The shield also sheds bright light in close range.
+
+> **Design Note**: R2 defensive option that reinforces the elemental identity while providing meaningful protection.
+
+### Chain Lightning
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Dodge | Long | —
+
+*You unleash a bolt of lightning that arcs from target to target, leaping between foes with devastating effect.*
+
+**Weak.** Deal +8 lightning damage to the primary target. The lightning arcs to one additional target in close range of the first, dealing +4 lightning damage.
+**Strong.** Deal +16 lightning damage to the primary target. Arcs to two additional targets, each taking +8 lightning damage. Targets are briefly staggered.
+**Critical.** Deal +24 lightning damage to the primary target. Arcs to three additional targets, each taking +12 lightning damage. All targets are staggered for a short duration.
+
+> **Design Note**: R3 chain spell — primary target takes single-target damage, secondary targets take half (multi-target scaling).
+
+### Delayed Blast Meteor
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Long | concentrate
+
+*You conjure a swirling mass of superheated elemental energy suspended in the air, which detonates after a delay — or at your command.*
+
+**Weak.** The meteor detonates in a short area. All creatures in the area take +6 fire damage and are briefly burning.
+**Strong.** All creatures take +12 fire damage. Burning lasts for a short duration.
+**Critical.** All creatures take +18 fire damage. Burning lasts for a short duration and deals +4 fire damage per turn.
+
+**Heighten.** You can delay detonation for up to 1 minute while concentrating. Each turn of delay increases the damage by +2/+4/+6 (weak/strong/critical), up to a maximum of +12/+24/+36 after 3 turns of delay.
+
+> **Design Note**: R5 capstone. Delayed detonation creates tactical depth — do you detonate immediately or risk losing concentration for higher damage? AoE at R5 uses half single-target scaling (+6/+12/+18 base).
