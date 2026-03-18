@@ -238,7 +238,7 @@ Mage Armor (arcane AC), Stoneskin (damage reduction), Haste (Arcane version), Sl
 | Energy | Radiant, Necrotic, Blast, Psychic | Blast ignores ½ AV |
 | Special | Poison | Resisted differently |
 
-**Open Question — Arcane/Force Damage Type**: Missile spells (Arcane Missiles, Arcane Barrage) currently use blast damage, which ignores ½ AV. However, the intended weakness of missile spells is per-missile AV reduction. Blast's ½ AV ignore undermines this. A neutral "arcane" or "force" damage type that applies full AV per hit would better serve the design intent. See §7.6 for detailed analysis.
+**Open Question — Force Damage Type**: Missile spells (Arcane Missiles, Arcane Barrage) currently use blast damage, which ignores ½ AV. However, the intended weakness of missile spells is per-missile AV reduction. Blast's ½ AV ignore undermines this. A "force" damage type that applies full AV per hit would better serve the design intent. See §7.6 for detailed analysis and §15 for the full force vs. blast type split proposal.
 
 ### 6.6 Power Level Equivalence
 
@@ -253,7 +253,7 @@ Mage Armor (arcane AC), Stoneskin (damage reduction), Haste (Arcane version), Sl
 
 **Critical**: Rank 5 = D&D Level 7, NOT Level 9. Impressive but mortal-scale, not world-shattering. Avoid models like Wish, True Resurrection, Meteor Swarm, Time Stop, or Imprisonment.
 
-**Resurrection Framework**: See §8.3 for the detailed resurrection framework.
+**Resurrection Framework**: Resurrection is placed higher than D&D defaults — Revivify at R3, Raise Dead at R4, Resurrection at R5. True Resurrection does not exist. See §8.3 for the detailed resurrection framework.
 
 ---
 
@@ -1371,7 +1371,7 @@ Each school defines 3–5 traits (aspects) that represent its thematic identity.
 |---|---|---|---|---|---|---|---|
 | sun | ✅ | ✅ | ✅ | ✅ | — | — | Sacred Light, Solar Flare |
 | illumination | ✅ | ✅ | ✅ | — | — | — | Light cantrip, Illuminated Sight |
-| truth | — | ✅ | ✅ | — | — | — | Detect Lies, Break Curse |
+| truth | ⚠️ | ✅ | ✅ | — | — | — | Weakly covered at R0 (Sacred Light reveals hidden things) |
 | clarity | ❌ | — | — | — | — | — | No R0 clarity cantrip — gap |
 | judgement | ❌ | — | — | — | — | — | No R0 judgement cantrip — gap |
 
@@ -1394,7 +1394,7 @@ Each school defines 3–5 traits (aspects) that represent its thematic identity.
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
 |---|---|---|---|---|---|---|---|
 | vitality | ✅ | ✅ | ✅ | ✅ | — | — | Restore Life, Healing Touch |
-| blessings | — | ✅ | ✅ | — | — | — | Blessing of Life |
+| blessings | ⚠️ | ✅ | ✅ | — | — | — | Weakly covered at R0 (Life Shield, Restore Life are blessing-adjacent) |
 | community | ✅ | ✅ | ✅ | — | — | — | Verdant Blast (heal allies), Aid |
 | hope | ✅ | ✅ | — | — | — | — | Life Shield (protection from despair) |
 | fertility | ❌ | — | — | — | — | — | No fertility spells — gap |
@@ -1455,7 +1455,7 @@ Each school defines 3–5 traits (aspects) that represent its thematic identity.
 |---|---|---|---|---|---|---|---|
 | fury | ✅ | ✅ | ✅ | — | — | — | War Cry, weapon blessings |
 | pride | ✅ | ✅ | — | — | — | — | Battle presence effects |
-| blood | — | ✅ | ✅ | — | — | — | Blood-themed combat spells |
+| blood | ⚠️ | ✅ | ✅ | — | — | — | Weakly covered at R0 (combat spells involve blood thematically) |
 | justice | ❌ | — | — | — | — | — | No R0 justice cantrip — arguably covered by War's combat honor |
 | triumph | ❌ | — | — | — | — | — | No R0 triumph cantrip — gap |
 
