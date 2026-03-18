@@ -38,20 +38,19 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| sun | Dazzling Light | Sun Sphere, Radiant Weapon | Sunbeam | Solar Flare | — | — |
-| illumination | Illuminated Sight | Blessing of Light, Locate Trinket | — | Blessing of Dawn | — | — |
-| truth | Detect Lies | Protect from Influence | Break Curse | — | — | — |
-| clarity | ❌ **GAP** | — | — | — | — | — |
-| judgement | ❌ **GAP** | — | — | — | — | — |
+| sun | Dazzling Light | Sun Sphere, Radiant Weapon | Sunbeam | Solar Flare | Blinding Radiance | Radiant Convergence |
+| illumination | Illuminated Sight | Blessing of Light, Locate Trinket | — | Blessing of Dawn | — | Dawn's Embrace |
+| truth | Detect Lies | Protect from Influence | Break Curse | Zone of Truth | — | Radiance of Truth |
+| clarity | Moment of Clarity | — | Clarity of Purpose | — | Purifying Aura | — |
+| judgement | Stern Gaze | Radiant Rebuke | — | — | Divine Judgement | — |
 
-**Coverage**: 11/30 slots filled (37%) — decent at R0-R1, thin above R2
+**Coverage** (existing + proposed): 21/30 slots filled (70%) — all traits represented, R4-R5 filled
 
-**Critical Gaps**:
-- **Clarity**: Zero spells at any rank — mental clarity and condition removal absent
-- **Judgement**: Zero spells at any rank — divine authority/justice absent
-- **Illumination R2**: Gap between R1 and R3
-- **Truth R3+**: No high-rank truth magic
-- **All traits R4-R5**: No spells above R3
+**Remaining Gaps**:
+- **Clarity R1, R3, R5**: No mid-rank or capstone clarity spells
+- **Judgement R2-R3**: Gap between R1 reactive and R4 offensive
+- **Illumination R2, R4**: Gaps in middle ranks
+- **Truth R4**: No R4 truth spell
 
 ## Proposed Spell Changes
 
@@ -147,30 +146,122 @@
 
 > **Design Note**: R5 capstone. AoE uses half single-target scaling (+6/+12/+18). Double damage against undead is the signature Light payoff.
 
+### Radiant Rebuke
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Attacker | Close | quick
+
+*When you or a nearby ally is struck, you channel a flash of divine radiance back at the attacker — a searing retort of holy judgement.*
+
+**Weak.** As a Quick Action when you or an ally within close range is hit by an attack, deal +2 radiant damage to the attacker (ignoring AV).
+**Strong.** Deal +4 radiant damage. The attacker suffers +1 bane on their next attack roll.
+**Critical.** Deal +6 radiant damage. The attacker is briefly blinded.
+
+> **Design Note**: Fills the R1 Quick Action gap. Reactive radiant damage fits the judgement trait — divine retribution for aggression. Modest damage (+2/+4/+6) matches R1 single-target scaling.
+
+### Purifying Aura
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Allies | Close | concentrate, enchant (short)
+
+*You radiate a warm golden aura that burns away corruption and shields allies from the touch of darkness.*
+
+**Weak.** For a short duration, allies within close range gain resistance to necrotic damage (reduce by 4). At the start of each of your turns, remove one curse or disease affecting one ally within the aura.
+**Strong.** Necrotic resistance increases to 6. Remove one curse or disease from each ally per turn. Allies also gain +2 to Resist against curse and disease effects.
+**Critical.** Necrotic resistance 8. Remove up to two curses or diseases from each ally per turn. Allies gain +4 to Resist against curse and disease effects. Undead within the aura suffer +4 radiant damage at the start of each of your turns.
+
+> **Design Note**: R4 support/healing hybrid. Concentration limits other spellcasting. The anti-necrotic and curse-removal effects position this as the answer to Death tradition magic and undead encounters.
+
+### Blinding Radiance
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Long | —
+
+*You unleash a concentrated burst of searing divine light directly at a creature, overwhelming their senses with holy radiance.*
+
+**Weak.** Deal +5 radiant damage (+10 vs. undead). The target is blinded for a short duration.
+**Strong.** Deal +10 radiant damage (+20 vs. undead). Blinded for a short duration. The target cannot benefit from invisibility or concealment for the duration.
+**Critical.** Deal +15 radiant damage (+30 vs. undead). Blinded for a medium duration. Invisibility and concealment stripped. If the target is undead, they are also briefly stunned.
+
+> **Design Note**: R4 single-target anti-undead offense. Base damage uses half single-target scaling (+5/+10/+15) with double vs. undead (+10/+20/+30). The blinding condition is Light's signature — reliable at all success levels.
+
+### Dawn's Embrace
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Allies | Close | —
+
+*You call forth the warmth of a new dawn, flooding the area with golden light that heals the faithful and sears the undead.*
+
+**Weak.** All allies in close range regain +6 HP. Remove one curse or negative condition from each ally. Undead in the area take +6 radiant damage.
+**Strong.** Allies regain +12 HP. Remove up to two conditions from each ally. Undead take +12 radiant damage and are briefly blinded.
+**Critical.** Allies regain +18 HP. Remove all curses and negative conditions from each ally. Undead take +18 radiant damage, are blinded for a short duration, and cannot regenerate HP for a short duration.
+
+> **Design Note**: R5 mass healing + blessing capstone. AoE healing uses half single-target R5 scaling (+6/+12/+18). Dual-purpose as anti-undead offense. Complements Radiant Convergence (R5 AoE damage) by providing the healing/support alternative.
+
+### Radiance of Truth
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Area | Short | concentrate, enchant (short)
+
+*You fill an area with piercing divine light that lays bare all deception — illusions shatter, the invisible are revealed, and falsehood cannot survive.*
+
+**Weak.** Create a zone of absolute truth in a short area for a short duration. All invisible creatures within the area are revealed. All magical illusions are dispelled. Creatures within the zone cannot willingly speak lies (they may remain silent instead).
+**Strong.** Disguised and shapechanged creatures are shown in their true form for the duration. Creatures suffer +2 banes on attempts to resist the truth compulsion. You can sense the surface intentions of any creature in the zone.
+**Critical.** All concealment (magical and mundane) is stripped. Truth compulsion cannot be resisted — creatures must speak truthfully or remain silent. You gain +2 boons on Insight checks against creatures in the zone.
+
+> **Design Note**: R5 truth/clarity capstone. Combines Zone of Truth (R3 truth compulsion) with Revealing Burst (R0 anti-invisibility) at capstone scale. Concentration and Focus 10 cost are significant. Does not compel speech — targets can remain silent. Anti-illusion effect positions Light as the premier counter to Illusion discipline and Twilight tradition.
+
+## Cross-School Spell Sharing
+
+Light's "truth" and "revelation" themes overlap with the Arcane **Illusion** discipline's detection and anti-illusion effects. Both schools deal with perceiving or stripping away deception, though from opposite philosophical angles — Light reveals truth through divine authority while Illusion understands deception through mastery of it.
+
+### Existing Shared Spells
+- **True Strike** (R1): Already exists in both Light (Mystic) and Telepathy (Arcane). Provides attack accuracy through insight — Light frames it as divine clarity, Telepathy as mental prediction. Identical mechanics.
+
+### Potential Sharing Candidates
+- **Protect from Influence** (Light R1) ↔ Telepathy: Mental protection overlaps with Telepathy's understanding of mental intrusion. Could share as identical spell with different flavor.
+- **Revealing Burst** (Light R0) ↔ Illusion: Both schools have anti-invisibility tools. Light's version uses divine radiance while Illusion's detection works through understanding deception — thematically different enough to remain separate.
+- **Radiance of Truth** (Light R5) ↔ Illusion: The anti-illusion component directly counters Illusion, but the truth compulsion is uniquely Mystic. Not a sharing candidate — too thematically bound to divine revelation.
+
+### Design Notes
+- Cross-school sharing is **arcane ↔ mystic only** (never within the same category).
+- Shared spells must be **mechanically identical** even if flavor differs.
+- Light's anti-deception spells serve a fundamentally different purpose (divine revelation) than Illusion's detection spells (understanding false reality), so most should remain school-specific.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Sun chain**: Dazzling Light (R0) → Sun Sphere/Radiant Weapon (R1) → Sunbeam (R2) → Solar Flare (R3) → *gap at R4* → Radiant Convergence (R5 proposed) — near-complete
-2. **Illumination chain**: Illuminated Sight (R0) → Blessing of Light/Locate Trinket (R1) → *gap at R2* → Blessing of Dawn (R3) → *gap at R4-R5*
-3. **Truth chain**: Detect Lies (R0) → Protect from Influence (R1) → Break Curse (R2) → Zone of Truth (R3 proposed) → *gap at R4-R5*
-4. **Clarity chain**: Moment of Clarity (R0 proposed) → *gap at R1* → Clarity of Purpose (R2 proposed) → *gap at R3-R5*
-5. **Judgement chain**: Stern Gaze (R0 proposed) → *gap at R1-R3* → Divine Judgement (R4 proposed) → *needs R5* — sparsest chain
+1. **Sun chain**: Dazzling Light (R0) → Sun Sphere/Radiant Weapon (R1) → Sunbeam (R2) → Solar Flare (R3) → Blinding Radiance (R4) → Radiant Convergence (R5) — **complete R0-R5**
+2. **Illumination chain**: Illuminated Sight (R0) → Blessing of Light/Locate Trinket (R1) → *gap at R2* → Blessing of Dawn (R3) → Purifying Aura (R4) → Dawn's Embrace (R5) — near-complete, R2 gap only
+3. **Truth chain**: Detect Lies (R0) → Protect from Influence (R1) → Break Curse (R2) → Zone of Truth (R3) → *gap at R4* → Radiance of Truth (R5) — near-complete, R4 gap only
+4. **Clarity chain**: Moment of Clarity (R0) → *gap at R1* → Clarity of Purpose (R2) → *gap at R3* → Purifying Aura (R4) → *gap at R5* — scattered but functional
+5. **Judgement chain**: Stern Gaze (R0) → Radiant Rebuke (R1) → *gap at R2-R3* → Divine Judgement (R4) → *gap at R5* — functional with R2-R3 gap
 
 ### Setup + Payoff Combos
-- ✅ **Reveal → Destroy**: Revealing hidden/invisible targets enables follow-up attacks with advantage
-- ✅ **Anti-undead chain**: Radiant Weapon (R1) → Destroy Undeath (R2) → Divine Judgement (R4 proposed) → Radiant Convergence (R5 proposed) — strong escalation
-- ⚠️ **Clarity → Buff**: Moment of Clarity removes conditions but removing a condition doesn't grant any explicit follow-up bonus
-- ❌ **Truth → Judgement**: Detect Lies and Zone of Truth provide social utility but have no mechanical link to judgement-based damage spells
+- ✅ **Reveal → Destroy**: Revealing hidden/invisible targets enables follow-up attacks with advantage. Radiance of Truth (R5) is the ultimate setup.
+- ✅ **Anti-undead chain**: Radiant Weapon (R1) → Destroy Undeath (R2) → Blinding Radiance/Divine Judgement (R4) → Radiant Convergence/Dawn's Embrace (R5) — strong escalation with dual R4 and R5 options
+- ✅ **Rebuke → Judgement**: Radiant Rebuke (R1 reactive) → Divine Judgement (R4 active) — retributive damage scales from quick reaction to deliberate condemnation
+- ⚠️ **Clarity → Buff**: Moment of Clarity removes conditions and Purifying Aura prevents them, but no explicit follow-up bonus from condition removal
+- ⚠️ **Truth → Judgement**: Zone of Truth (R3) and Radiance of Truth (R5) reveal information; Divine Judgement (R4) punishes — thematic link but no mechanical trigger
 
 ### Design Completeness Checklist
-- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
-- ⚠️ Defensive options: Protect from Influence (R1) covers mental defense only — no physical/general reactive defense
-- [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Locate Trinket (R1), Moment of Clarity (R0 proposed)
-- [x] Damage across ranks: R0-R5 fully covered with proposals — sun chain provides continuous damage escalation
+- [x] **R1 Quick Action**: Radiant Rebuke — reactive radiant damage when ally is hit
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 9, R2: 4, R3: 4, R4: 3, R5: 3)
+- ⚠️ Defensive options: Protect from Influence (R1) covers mental defense, Purifying Aura (R4) provides necrotic resistance — no general reactive physical defense
+- [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Locate Trinket (R1), Moment of Clarity (R0), Radiance of Truth (R5)
+- [x] Damage across ranks: R0-R5 fully covered — sun chain provides continuous damage escalation with anti-undead bonuses throughout
 - [x] Repeating conditions: Blinded, revealed, burning — consistent anti-darkness identity
-- ⚠️ Setup+payoff: Reveal → attack is strong, but truth → judgement and clarity → enhancement lack explicit mechanical links
-- ⚠️ **Remaining gaps**: R1 Quick Action, Clarity R1/R3+, Judgement R1-R3, Illumination R2
+- ⚠️ Setup+payoff: Reveal → attack and anti-undead chains are strong; truth → judgement is thematic but lacks explicit mechanical triggers
+- ⚠️ **Remaining gaps**: Clarity R1/R3, Judgement R2-R3, Illumination R2, Truth R4
 
 ### Impact & Trivialization Review
 - **Zone of Truth (R3)**: Moderate risk — truth compulsion is powerful in social scenes. **Mitigations**: targets can choose silence over truth, concentration required, R3 Focus cost (6) is significant. Does not replace Influence/Insight checks — it prevents lies but doesn't compel answers or cooperation. GMs can design around it (NPCs use careful truths, omission, or leave the zone).
+- **Radiance of Truth (R5)**: Moderate risk — ultimate anti-deception tool. **Mitigations**: R5 Focus cost (10), concentration required, targets can remain silent, does not compel answers. At R5 this is appropriate power — it is the pinnacle of truth magic.
+- **Purifying Aura (R4)**: Low risk — necrotic resistance and curse removal are powerful but situational. Concentration limits other casting. Primarily useful against undead and Death tradition enemies.
+- **Dawn's Embrace (R5)**: Moderate risk — mass healing + condition removal is very strong. **Mitigations**: R5 Focus cost (10), AoE healing uses half scaling (+6/+12/+18), single use (not sustained). Appropriate for a capstone-level support spell.
 - **Moment of Clarity (R0)**: Minimal risk — condition removal is purely supportive and tactical, no social or exploration bypass.

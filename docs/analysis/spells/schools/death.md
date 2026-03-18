@@ -38,20 +38,18 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| plagues | ❌ **GAP** | — | Cloud of Sickness | — | — | — |
-| curses | ❌ **GAP** | Curse of Death | — | — | — | — |
+| plagues | Miasma | Festering Wound | Cloud of Sickness | Spreading Contagion | Pestilence | Plague Wind |
+| curses | Minor Hex | Curse of Death | — | — | Greater Curse | — |
 | fear | Glimpse of Mortality | Early Grave, Shivering Ray | — | Death's Door | — | — |
-| decay | Decay, Chill Touch, Enfeebling Touch | Necrotic Weapon, Rotting Grasp, Blood Shards | Circle of Death | Grave's Bloom | — | — |
-| ancestry | Spared from Death | — | — | — | — | — |
+| decay | Decay, Chill Touch, Enfeebling Touch | Necrotic Weapon, Rotting Grasp, Blood Shards | Circle of Death | Grave's Bloom | — | Death's Dominion |
+| ancestry | Spared from Death | Commune with Ancestors | Ancestral Guardian | — | Ancestral Judgment | Ancestral Army |
 
-**Coverage**: 12/30 slots filled (40%) — decay is strong, but plagues/curses/ancestry severely under-served
+**Coverage** (existing + proposed): 22/30 slots filled (73%) — plagues and ancestry now complete R0-R5
 
-**Critical Gaps**:
-- **Plagues R0-R1**: No disease/pestilence cantrip or low-level spell — only Cloud of Sickness at R2
-- **Curses R0**: No curse cantrip — first curse is R1 (Curse of Death)
-- **Ancestry R1+**: Only one R0 spell — communing with ancestors and death rites are a thematic pillar with almost no spells
-- **All traits R3+**: Only 2 R3 spells, zero R4-R5
-- **Plagues R3+**: No high-rank plague magic at all
+**Remaining Gaps**:
+- **Curses R2-R3, R5**: Minimal expansion beyond R1 — curse stacking needs more mid-rank tools
+- **Fear R2, R4-R5**: Fear gaps at mid and high ranks
+- **Decay R4**: No R4 decay spell
 
 ## Proposed New Spells
 
@@ -167,29 +165,126 @@
 
 > **Design Note**: R5 capstone. AoE uses half single-target scaling (+6/+12/+18). The heal-blocking effect at critical is the Death tradition's signature anti-healing identity.
 
+### Greater Curse
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | enchant (medium)
+
+*You speak a malediction of terrible power, weaving ancestral dread into a curse that saps the very essence of your target.*
+
+**Weak.** One attribute of your choice (Strength, Agility, Spirit, or Mind) is reduced by one die size for a medium duration. The target feels the curse as a gnawing dread — they know they have been cursed.
+**Strong.** The chosen attribute is reduced by one die size. The target also suffers +1 bane on all rolls using the cursed attribute for the duration.
+**Critical.** The chosen attribute is reduced by two die sizes (minimum d4). The target suffers +1 bane on all rolls using the cursed attribute. Removing the curse requires a successful dispel at R4 or higher.
+
+> **Design Note**: R4 curses trait capstone. Attribute reduction is a powerful debuff but targets a single attribute and allows a Resist save. Medium duration means it lasts through an encounter but not indefinitely. The curse-stacking identity is fulfilled — Minor Hex (R0 bane) → Curse of Death (R1 ongoing) → Greater Curse (R4 attribute drain).
+
+### Pestilence
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | concentrate
+
+*You release a virulent cloud of supernatural plague — a sickly green miasma that chokes the air and rots flesh on contact.*
+
+**Weak.** All creatures in a short area take +5 poison damage and are briefly poisoned. Poisoned creatures cannot benefit from healing for the duration.
+**Strong.** Damage increases to +10. Creatures are poisoned for a short duration with healing blocked. Poisoned creatures also lose 2 HP at the start of each of their turns.
+**Critical.** Damage increases to +15. Poisoned for a short duration with healing blocked. HP loss increases to 4 per turn. Creatures that drop to 0 HP from the plague cannot be revived for a short duration.
+
+> **Design Note**: R4 plagues trait capstone. AoE damage at half single-target R4 scaling (+5/+10/+15). Anti-healing is Death's signature mechanic. Concentration limits other spellcasting. Bridges Spreading Contagion (R3 single-target spreading) and Plague Wind (R5 mass devastation).
+
+### Ancestral Judgment
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Long | —
+
+*You call upon the spirits of the dead to pass judgment on a creature — spectral ancestors materialize around the target, their hollow eyes burning with ancient authority.*
+
+**Weak.** Deal +5 necrotic damage (+10 vs. undead). The target is briefly dazed as ancestral voices assail their mind.
+**Strong.** Deal +10 necrotic damage (+20 vs. undead). The target is dazed for a short duration. If the target is undead, they are also briefly frightened of you.
+**Critical.** Deal +15 necrotic damage (+30 vs. undead). The target is stunned for a short duration. Undead targets are frightened for a short duration. You gain +1 boon on your next attack or spell against the judged target.
+
+> **Design Note**: R4 ancestry trait offensive option. Base damage at half single-target scaling (+5/+10/+15) with double vs. undead (+10/+20/+30), mirroring Light's Blinding Radiance. The daze/stun conditions fit the ancestry theme — overwhelmed by ancestral authority.
+
+### Death's Dominion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Self | Self | concentrate
+
+*You become an avatar of death — your eyes become hollow voids, your touch carries the chill of the grave, and the boundary between life and death bends to your will.*
+
+**Weak.** For a brief duration, you gain immunity to necrotic and poison damage. Your melee attacks deal an additional +6 necrotic damage (ignoring AV). When any creature dies within medium range, it immediately rises as an undead under your control (Tier 1, lasts until end of the spell).
+**Strong.** Duration extends to short. Risen undead are Tier 2. You also gain resistance to all other damage types (reduce by 4). Allies within close range gain +2 to Resist against fear and death effects.
+**Critical.** Duration extends to short. Risen undead are Tier 3. Damage resistance increases to 6. Once during the duration, you can use an Action to channel a wave of necrotic energy — all living creatures within close range take +10 necrotic damage (vs. Resist).
+
+> **Design Note**: R5 death capstone. Transforms the caster into a battlefield terror. The undead-raising mechanic rewards killing blows — but risen undead are temporary and limited in tier. Concentration and duration limits prevent permanent army-building. The +6 melee necrotic bonus is modest (matches half R5 single-target scaling).
+
+### Ancestral Army
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Special | Close | material cost (500 coins)
+
+*You perform a solemn rite of ancestral summoning, calling forth the honored dead to fight alongside the living. Spectral warriors materialize from mist, bearing weapons of ghostly silver.*
+
+**Weak.** Summon 3 spectral ancestor warriors in close range. Each warrior is Tier 2, acts on your initiative, and lasts for a short duration. Warriors deal necrotic damage and can be targeted normally (they have spectral HP). They follow your verbal commands.
+**Strong.** Summon 4 spectral warriors at Tier 2, or 3 warriors at Tier 3. Duration extends to short. Warriors gain +1 boon on attack rolls against undead enemies.
+**Critical.** Summon 6 spectral warriors at Tier 2, or 4 warriors at Tier 3. Duration extends to short. Warriors gain +1 boon on attack rolls and can absorb one attack that would hit an ally (each warrior can do this once).
+
+> **Design Note**: R5 ancestry/combat capstone. The summoned warriors provide action economy and battlefield presence. Material cost (500 coins) prevents casual use. Short duration and tier limits keep power bounded — these are spectral soldiers, not an unstoppable army. Compare to Death's Dominion (R5 personal transformation) as the alternative R5 combat option.
+
+## Cross-School Spell Sharing
+
+Death's themes of decay, undeath, and ancestral communion overlap heavily with the Arcane **Necromancy** discipline. Both schools manipulate death and the dead, though Death does so through reverent acceptance of endings and ancestral respect, while Necromancy is transgressive defilement and exploitation of corpses.
+
+### Proposed Shared Spells
+- **Animate Corpse** (Necromancy R1) → Death: Raising a corpse as a servant could exist in both schools. Necromancy animates through puppetry and defilement; Death commands through ancestral authority and acceptance of the death cycle. Strong sharing candidate — identical mechanics with different flavor.
+- **Control Undead** (Necromancy R1) → Death: Dominating existing undead overlaps with Death's authority over endings. Necromancy uses force and binding; Death uses natural authority over the dead. Strong sharing candidate.
+- **Corpse Explosion** (Necromancy R2) → Death: Detonating a corpse as a weapon fits both the transgressive Necromancy and the "decay" aspect of Death. Strong sharing candidate — both schools can weaponize the dead, though Death does so with less relish.
+
+### Sharing Impact on Spell Counts
+If shared spells are adopted, Death would gain:
+- R1: +2 spells (Animate Corpse, Control Undead) → R1 total: 11
+- R2: +1 spell (Corpse Explosion) → R2 total: 4
+
+### Design Notes
+- Cross-school sharing is **arcane ↔ mystic only** (never within the same category).
+- Shared spells must be **mechanically identical** even if flavor differs.
+- Death and Necromancy have the **strongest thematic overlap** of any mystic-arcane pair. Sharing these spells reflects that communing with and commanding the dead is both a sacred and profane art.
+- Sharing gives Death casters access to undead manipulation without requiring Arcane study, broadening their combat toolkit while maintaining the tradition's reverent identity.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Plagues chain**: Miasma (R0 proposed) → Festering Wound (R1 proposed) → Cloud of Sickness (R2) → Spreading Contagion (R3 proposed) → *gap at R4* → Plague Wind (R5 proposed) — near-complete
-2. **Curses chain**: Minor Hex (R0 proposed) → Curse of Death (R1) → *gap at R2-R5* — needs significant expansion
-3. **Fear chain**: Glimpse of Mortality (R0) → Early Grave/Shivering Ray (R1) → *gap at R2* → Death's Door (R3) → *gap at R4-R5*
-4. **Decay chain**: Decay/Chill Touch/Enfeebling Touch (R0) → Necrotic Weapon/Rotting Grasp/Blood Shards (R1) → Circle of Death (R2) → Grave's Bloom (R3) → *gap at R4-R5*
-5. **Ancestry chain**: Spared from Death (R0) → Commune with Ancestors (R1 proposed) → Ancestral Guardian (R2 proposed) → *gap at R3-R5*
+1. **Plagues chain**: Miasma (R0) → Festering Wound (R1) → Cloud of Sickness (R2) → Spreading Contagion (R3) → Pestilence (R4) → Plague Wind (R5) — **complete R0-R5**
+2. **Curses chain**: Minor Hex (R0) → Curse of Death (R1) → *gap at R2-R3* → Greater Curse (R4) → *gap at R5* — functional with mid-rank gap
+3. **Fear chain**: Glimpse of Mortality (R0) → Early Grave/Shivering Ray (R1) → *gap at R2* → Death's Door (R3) → *gap at R4-R5* — mid-rank gaps
+4. **Decay chain**: Decay/Chill Touch/Enfeebling Touch (R0) → Necrotic Weapon/Rotting Grasp/Blood Shards (R1) → Circle of Death (R2) → Grave's Bloom (R3) → *gap at R4* → Death's Dominion (R5) — near-complete
+5. **Ancestry chain**: Spared from Death (R0) → Commune with Ancestors (R1) → Ancestral Guardian (R2) → *gap at R3* → Ancestral Judgment (R4) → Ancestral Army (R5) — near-complete, R3 gap only
 
 ### Setup + Payoff Combos
-- ✅ **Poison → Decay**: Miasma (R0) poisons target → Festering Wound (R1) deals bonus to injured/poisoned creatures with heal-reduction
-- ✅ **Curse stacking**: Minor Hex (R0) + Curse of Death (R1) → multiple debuffs compound, increasing vulnerability
-- ⚠️ **Ancestry → guidance**: Commune with Ancestors provides info and Ancestral Guardian provides combat aid, but they don't explicitly chain together
-- ❌ **Fear → curse link**: No mechanic connecting the frightened condition to enhanced curse effectiveness
+- ✅ **Poison → Decay → Plague**: Miasma (R0 poison) → Festering Wound (R1 enhanced vs. poisoned) → Spreading Contagion (R3 spreading disease) → Pestilence (R4 AoE plague) → Plague Wind (R5 mass devastation) — the complete plague escalation
+- ✅ **Curse stacking**: Minor Hex (R0 bane) → Curse of Death (R1 ongoing penalty) → Greater Curse (R4 attribute drain) — curses compound to cripple targets
+- ✅ **Ancestry chain**: Commune with Ancestors (R1 information) → Ancestral Guardian (R2 protection) → Ancestral Judgment (R4 offense) → Ancestral Army (R5 summoning) — ancestors serve as advisors, protectors, judges, and warriors
+- ✅ **Death mastery**: Death's Dominion (R5 avatar transformation) + Pestilence (R4 AoE plague) — kill with plague, raise the dead, unstoppable capstone combo
+- ⚠️ **Fear → curse link**: No mechanic connecting the frightened condition to enhanced curse effectiveness
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Death's Rebuke (R1 proposed) — retaliatory necrotic damage with poison
-- [x] Defensive options: Death's Rebuke (R1 proposed retaliatory), Spared from Death (R0 death-prevention)
-- [x] Utility: Commune with Ancestors (R1 proposed), Ancestral Guardian (R2 proposed)
-- ⚠️ Damage across ranks: R0-R3 well-covered, R5 Plague Wind — but R4 has no damage spell
-- [x] Repeating conditions: Poisoned, frightened, bleeding, cursed (bane debuff) — strong condition variety
-- ⚠️ Setup+payoff: Poison→decay is explicit and well-supported; curse stacking is conceptual but needs more curse spells at R2+ to fully deliver
-- ⚠️ **Remaining gaps**: Curses R2-R5, Fear R2/R4+, Decay R4+, Ancestry R3+, R4 damage spell
+- [x] **R1 Quick Action**: Death's Rebuke — retaliatory necrotic damage with poison
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 9, R2: 3, R3: 3, R4: 3, R5: 3)
+- [x] Defensive options: Death's Rebuke (R1 retaliatory), Spared from Death (R0 death-prevention), Ancestral Guardian (R2 protective spirit)
+- [x] Utility: Commune with Ancestors (R1 divination), Ancestral Guardian (R2 guidance)
+- [x] Damage across ranks: R0-R5 fully covered — Ancestral Judgment and Pestilence fill the critical R4 gap, Death's Dominion and Plague Wind provide R5 options
+- [x] Repeating conditions: Poisoned, frightened, cursed (bane debuff), dazed, stunned — strong condition variety
+- ✅ Setup+payoff: Poison → decay and curse stacking chains are strong and explicit; ancestry chain provides clear progression from utility to combat
+- ⚠️ **Remaining gaps**: Curses R2-R3/R5, Fear R2/R4-R5, Decay R4
 
 ### Impact & Trivialization Review
-- **Commune with Ancestors (R1 spirit guidance)**: Moderate risk — information from the dead could shortcut investigation scenes. **Mitigations**: ritual (10 min) prevents combat use, answers are GM-mediated and can be cryptic, limited to what the dead would know, only 1-2 questions per casting. This provides leads rather than solutions — the party still needs to investigate, verify, and act on the information. GMs should treat it as an additional clue source, not a mystery-solver.
+- **Greater Curse (R4 attribute reduction)**: High risk — reducing an attribute by one die size is a powerful debuff. **Mitigations**: vs. Resist save, single target, medium duration (not permanent), only one attribute affected. At R4 this is appropriate power — it requires significant Focus investment and can be dispelled.
+- **Pestilence (R4 AoE plague)**: Moderate risk — AoE poison + healing block is very strong in combat. **Mitigations**: concentration required, short area, damage at half single-target scaling (+5/+10/+15). The healing block is Death's signature but can be cleansed by Life tradition magic.
+- **Ancestral Judgment (R4 anti-undead)**: Low risk — single-target damage with condition. Mirrors Light's Blinding Radiance with necrotic flavor. Daze/stun are standard R4 conditions.
+- **Death's Dominion (R5 avatar)**: High risk — immunity to necrotic/poison + auto-raising undead is very powerful. **Mitigations**: concentration (can be broken), brief/short duration, risen undead are temporary and low-tier, R5 Focus cost (10). The transformation is dramatic but time-limited — not a permanent state.
+- **Ancestral Army (R5 summoning)**: Moderate risk — summoning multiple combatants is a strong action-economy advantage. **Mitigations**: material cost (500 coins), short duration, warriors are Tier 2-3 (appropriate for R5 content), limited commands. Cannot be sustained indefinitely.
+- **Commune with Ancestors (R1 spirit guidance)**: Moderate risk — information from the dead could shortcut investigation scenes. **Mitigations**: ritual (10 min) prevents combat use, answers are GM-mediated and can be cryptic, limited to what the dead would know, only 1-2 questions per casting.

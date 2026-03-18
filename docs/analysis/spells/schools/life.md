@@ -39,20 +39,19 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| vitality | Restore Life | Rapid Vitality, Healing Touch | Aid, Healing Burst | Vitality Surge | — | — |
-| blessings | Life Shield (⚠️ weak) | Blessing of Life, Vitalizing Weapon | Hallow Ground | — | — | — |
-| community | — | Overflow of Life | Cleanse | Abundance of Life | — | — |
-| hope | Verdant Blast | — | — | — | — | — |
-| fertility | ❌ **GAP** | — | — | — | — | — |
+| vitality | Restore Life | Rapid Vitality, Healing Touch, Vital Surge | Aid, Healing Burst, Detect Life | Vitality Surge, Revivify | Greater Restoration | Resurrection |
+| blessings | Life Shield | Blessing of Life, Vitalizing Weapon | Hallow Ground | Circle of Renewal | Life Ward | — |
+| community | — | Overflow of Life | Cleanse | Abundance of Life | Raise Dead | Mass Restoration, Wellspring of Life |
+| hope | Verdant Blast | Beacon of Hope | — | — | — | — |
+| fertility | Nurturing Touch | — | — | — | — | — |
 
-**Coverage**: 12/30 slots filled (40%) — healing core is solid but thematic breadth is narrow
+**Coverage** (existing + proposed): 19/30 slots filled (63%) — healing core fully represented, thematic breadth improved
 
-**Critical Gaps**:
-- **Fertility**: Zero spells at any rank — growth, agriculture, reproduction absent
-- **Hope R1+**: Only one R0 spell — hope/inspiration theme barely explored
+**Remaining Gaps**:
+- **Blessings R5**: No capstone blessing spell
 - **Community R0**: No cantrip-level communal effect
-- **Blessings R3+**: No high-rank blessings
-- **All traits R4-R5**: Zero spells — Life has no high-rank options at all (resurrection spells proposed fill this)
+- **Hope R2+**: Sparse after R1 — hope/inspiration theme needs expansion
+- **Fertility R1+**: Only one spell — non-combat focus limits expansion
 
 ## Proposed New Spells
 
@@ -154,29 +153,104 @@
 
 > **Design Note**: R5 AoE healing capstone. Uses half single-target R5 scaling (+6/+12/+18 = half of +12/+24/+36).
 
+### Vital Surge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Ally | Close | quick
+
+*When an ally is struck, you instinctively channel a burst of life energy to close their wounds before the blood can flow.*
+
+**Weak.** As a Quick Action when an ally within close range takes damage, immediately heal them for +2 HP.
+**Strong.** Heal +4 HP. The ally gains +1 boon on their next Fortitude check this round.
+**Critical.** Heal +6 HP. The ally gains +1 boon on their next Fortitude check and is immune to the bleeding condition until the end of their next turn.
+
+> **Design Note**: Fills the R1 Quick Action gap. Emergency reactive healing that matches R1 single-target scaling (+2/+4/+6). Simple and reliable — the quintessential healer's reaction.
+
+### Greater Restoration
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Touch | Melee | —
+
+*You channel an overwhelming surge of life energy into a creature, mending what lesser magic cannot — knitting bones, purging toxins, and restoring what was broken.*
+
+**Weak.** Cure all diseases and poisons affecting the target. End one of the following conditions: blinded, deafened, paralyzed, or stunned.
+**Strong.** As Weak. Additionally, heal one wound the target has suffered.
+**Critical.** As Strong. Additionally, end one permanent injury (lost limb regrows over the next week, scarred organ heals, etc.). The target regains HP equal to your Spell Power.
+
+> **Design Note**: R4 major healing milestone between Revivify (R3 emergency resurrection) and Resurrection (R5 full restoration). Wound healing is rare and intentionally gated at R4+. Permanent injury removal at Critical only — keeps the gritty tone.
+
+### Life Ward
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Ally | Close | enchant (medium)
+
+*You weave a ward of golden life energy around a creature — an invisible cocoon that holds their soul to their body at the moment of greatest peril.*
+
+**Weak.** For a medium duration, the first time the target would be reduced to 0 HP, they are instead reduced to 1 HP. The ward then ends.
+**Strong.** As Weak. When the ward triggers, the target also regains HP equal to your Spell Power and is briefly immune to all damage.
+**Critical.** As Strong. The ward triggers twice before ending (it can save the target from death on two separate occasions during the duration).
+
+> **Design Note**: R4 death prevention — the "death ward" this tradition was missing. Fills the gap between Revivify (R3 post-death) and Resurrection (R5). Proactive rather than reactive — cast it before combat. Medium duration and single-trigger (except Critical) prevent it from trivializing death.
+
+### Wellspring of Life
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Allies | Close | concentrate, enchant (short)
+
+*You become a living conduit of overwhelming life energy — vitality radiates from you in visible golden waves, and every healing word you speak carries the weight of creation itself.*
+
+**Weak.** For a short duration (concentrate), all healing spells you cast have their HP restoration increased by +4. Allies within close range regain +2 HP at the start of each of your turns.
+**Strong.** Healing bonus increases to +8. Passive regeneration increases to +4 per turn. Allies within the aura gain resistance to poison and necrotic damage (reduce by 4).
+**Critical.** Healing bonus increases to +12. Passive regeneration +4 per turn. Poison/necrotic resistance 6. The first time each turn an ally in the aura would gain a negative condition, that condition is suppressed for one round.
+
+> **Design Note**: R5 healing amplification capstone. The ultimate healer fantasy — every heal is stronger, allies passively regenerate. Concentration limits other sustained spells. Complements Mass Restoration (R5 burst AoE heal) as the sustained healing alternative.
+
+## Cross-School Spell Sharing
+
+Life's healing and blessing identity has minimal overlap with Arcane disciplines. No Arcane school excels at or even decently handles healing — it is exclusively a Mystic strength. The closest thematic connections are narrow.
+
+### Potential Sharing Candidates
+- **Detect Life** (Life R2) ↔ Telepathy: Both schools sense living creatures — Life through vital energy, Telepathy through mental presence. Could share as identical detection spell with different flavor. Weak candidate — the detection methods differ significantly (life force vs. thoughts).
+- **Life Shield** (Life R0, temp HP) ↔ Conjuration: Temporary HP could be framed as conjuring a force barrier or as blessing with vitality. Very weak candidate — the blessing identity is uniquely Mystic.
+
+### Design Notes
+- Cross-school sharing is **arcane ↔ mystic only** (never within the same category).
+- Shared spells must be **mechanically identical** even if flavor differs.
+- Life has the **weakest arcane overlap** of any Mystic tradition because healing is an exclusively Mystic domain. No identical spells are recommended at this time.
+- Within Mystic traditions, Life and Nature both heal, but sharing applies only across the arcane ↔ mystic boundary, not within Mystic.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Vitality/Healing chain**: Restore Life (R0) → Rapid Vitality/Healing Touch (R1) → Aid/Healing Burst (R2) → Vitality Surge/Abundance of Life (R3) → Raise Dead (R4 proposed) → Mass Restoration/Resurrection (R5 proposed) — **complete R0-R5**
-2. **Blessings chain**: Life Shield (R0) → Blessing of Life/Vitalizing Weapon (R1) → Hallow Ground (R2) → Circle of Renewal (R3 proposed) → *gap at R4-R5*
-3. **Community chain**: *gap at R0* → Overflow of Life (R1) → Cleanse (R2) → Abundance of Life (R3) → *gap at R4-R5*
-4. **Hope chain**: Verdant Blast (R0) → Beacon of Hope (R1 proposed) → *gap at R2-R5* — sparse after R1
-5. **Fertility chain**: Nurturing Touch (R0 proposed) → *gap at R1-R5* — weakest chain, non-combat only
+1. **Vitality/Healing chain**: Restore Life (R0) → Rapid Vitality/Healing Touch/Vital Surge (R1) → Aid/Healing Burst (R2) → Vitality Surge/Abundance of Life/Revivify (R3) → Greater Restoration/Raise Dead (R4) → Mass Restoration/Resurrection/Wellspring of Life (R5) — **complete R0-R5**
+2. **Blessings chain**: Life Shield (R0) → Blessing of Life/Vitalizing Weapon (R1) → Hallow Ground (R2) → Circle of Renewal (R3) → Life Ward (R4) → *gap at R5* — near-complete
+3. **Community chain**: *gap at R0* → Overflow of Life (R1) → Cleanse (R2) → Abundance of Life (R3) → Raise Dead (R4) → Mass Restoration/Wellspring of Life (R5) — near-complete, R0 gap only
+4. **Hope chain**: Verdant Blast (R0) → Beacon of Hope (R1) → *gap at R2-R5* — sparse after R1
+5. **Fertility chain**: Nurturing Touch (R0) → *gap at R1-R5* — weakest chain, non-combat only
 
 ### Setup + Payoff Combos
 - ✅ **Heal → Bless**: Healing Touch restores HP, then Blessing of Life enhances the healed ally's next action
 - ✅ **Life Shield → Burst**: Temp HP from Life Shield absorbs damage; when broken, stored energy bursts
-- ⚠️ **Resurrection chain**: Revivify (R3) → Raise Dead (R4) → Resurrection (R5) has clean escalation with increasing costs, but no R1-R2 death-prevention setup spell (e.g., a "death ward" equivalent)
-- ❌ **Fertility → Community**: No mechanical connection between plant growth (Nurturing Touch) and communal healing effects
+- ✅ **Ward → Resurrect**: Life Ward (R4 death prevention) → Revivify (R3 post-death) → Raise Dead (R4 delayed) → Resurrection (R5) — full death-handling chain from proactive to reactive
+- ✅ **Wellspring → Mass Heal**: Wellspring of Life (R5 healing amplification) → Mass Restoration or any healing spell — amplified healing output creates a clear capstone combo
+- ⚠️ **Fertility → Community**: No mechanical connection between plant growth (Nurturing Touch) and communal healing effects
 
 ### Design Completeness Checklist
-- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
-- ⚠️ Defensive options: Life Shield (R0 temp HP) and Beacon of Hope (R1 proposed save bonus) provide indirect defense — no reactive damage mitigation
-- [x] Utility: Nurturing Touch (R0 proposed), Detect Life (R2\*) — limited but appropriate for healing focus
-- ⚠️ Damage across ranks: Verdant Blast (R0) is the only dedicated damage spell — very limited offense, appropriate for a Healing-excels school but R1+ has zero damage
+- [x] **R1 Quick Action**: Vital Surge — reactive healing when ally takes damage
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 4, R1: 7, R2: 6, R3: 4, R4: 3, R5: 3)
+- [x] Defensive options: Life Shield (R0 temp HP), Beacon of Hope (R1 save bonus), Life Ward (R4 death prevention) — solid defensive coverage
+- [x] Utility: Nurturing Touch (R0), Detect Life (R2), Greater Restoration (R4 condition/wound removal)
+- ⚠️ Damage across ranks: Verdant Blast (R0) is the only dedicated damage spell — very limited offense, appropriate for a Healing-excels school
 - [x] Repeating conditions: Blessed (positive condition), dazed/stunned (life force overload)
-- ⚠️ Setup+payoff: Heal→bless exists conceptually but lacks explicit mechanical triggers (healing doesn't grant a stated bonus to the next blessing)
-- ⚠️ **Remaining gaps**: R1 Quick Action, Hope R2+, Fertility R1+, Community R0, Blessings R4+
+- ✅ Setup+payoff: Heal → bless, ward → resurrect, wellspring → mass heal chains are well-defined
+- ⚠️ **Remaining gaps**: Blessings R5, Community R0, Hope R2+, Fertility R1+
 
 ### Impact & Trivialization Review
-- **Nurturing Touch (R0 agriculture)**: Minimal risk — purely flavor/downtime cantrip for plant growth and animal care. No combat application, no game mechanic trivialized. Enriching soil and accelerating crop growth is a worldbuilding tool, not a gameplay bypass.
+- **Greater Restoration (R4 wound healing)**: Moderate risk — wound healing bypasses the gritty injury system. **Mitigations**: R4 Focus cost (8), touch range, wound healing only at Strong+ success, permanent injury only at Critical. In a gritty system, this is appropriately rare and costly.
+- **Life Ward (R4 death prevention)**: Moderate risk — negating death is powerful. **Mitigations**: single-trigger (twice at Critical only), medium duration requires pre-combat casting, ward ends after triggering. Cannot be stacked with multiple castings on the same target.
+- **Wellspring of Life (R5 healing amplification)**: Moderate risk — doubled healing could make the party nearly unkillable. **Mitigations**: concentration required (breaks if caster takes damage or acts), R5 Focus cost (10), short duration. The amplification applies only to the caster's own healing spells, not all healing.
+- **Nurturing Touch (R0 agriculture)**: Minimal risk — purely flavor/downtime cantrip for plant growth and animal care. No combat application, no game mechanic trivialized.
