@@ -117,11 +117,11 @@
 
 *You regulate the temperature in a small area — warming, cooling, or maintaining a comfortable environment.*
 
-**Weak.** Regulate temperature in close range for a brief duration. You can light or extinguish small fires, warm or cool food and drink, or prevent frost damage to objects.
-**Strong.** Regulate temperature for a short duration. You can keep a small shelter comfortably warm or cool despite external conditions.
-**Critical.** Regulate temperature for a medium duration. Creatures in the area gain resistance to environmental heat or cold effects for the duration.
+**Weak.** Regulate temperature in close range for a short duration. You can light or extinguish small fires, warm or cool food and drink, or prevent frost damage to objects.
+**Strong.** As above. You can also keep a small shelter comfortably warm or cool despite external conditions.
+**Critical.** As above. Creatures in the area also gain resistance to environmental heat or cold effects for the duration.
 
-> **Design Note**: Fills the utility/non-combat gap. Pure environmental manipulation with no combat application.
+> **Design Note**: R0 utility cantrip. Core effect (temperature regulation, short duration) is reliable on any success — SL adds comfort and environmental resistance. Pure environmental manipulation with no combat application.
 
 ### Elemental Shaping
 
@@ -131,11 +131,11 @@
 
 *You manipulate raw elemental matter — reshaping fire, water, earth, or air to your will.*
 
-**Weak.** Shape a small amount of one element within close range for a brief duration. Create a wall of flame (melee area, 5 HP), freeze water into a bridge, part smoke, or sculpt earth.
-**Strong.** Shape a larger amount for a short duration. The elemental construct is more durable (10 HP) and the area is larger (close range).
-**Critical.** Shape a significant amount for a medium duration. The elemental construct has 15 HP and can serve as a barrier, bridge, or environmental feature.
+**Weak.** Shape one element within close range for a short duration while you concentrate. Create a wall of flame (melee area, 5 HP), freeze water into a bridge, part smoke, or sculpt earth.
+**Strong.** The elemental construct is more durable (10 HP) and the shaped area is larger (close range).
+**Critical.** The elemental construct has 15 HP, and you can shape two elements simultaneously (e.g., a flame wall atop an earth barricade).
 
-> **Design Note**: R1 utility spell — environmental manipulation for exploration and creative problem-solving.
+> **Design Note**: R1 utility spell. Core effect (shape one element, short duration, close range) is reliable on any success — SL adds construct durability and versatility. Environmental manipulation for exploration and creative problem-solving.
 
 ### Fire Shield
 
@@ -173,11 +173,11 @@
 
 *You unleash a bolt of lightning that arcs from target to target, leaping between foes with devastating effect.*
 
-**Weak.** Deal +8 lightning damage to the primary target. The lightning arcs to one additional target in close range of the first, dealing +4 lightning damage.
-**Strong.** Deal +16 lightning damage to the primary target. Arcs to two additional targets, each taking +8 lightning damage. Targets are briefly staggered.
-**Critical.** Deal +24 lightning damage to the primary target. Arcs to three additional targets, each taking +12 lightning damage. All targets are staggered for a short duration.
+**Weak.** Deal +8 lightning damage to the primary target. The lightning arcs to up to two additional targets in close range of the first, dealing +4 lightning damage each.
+**Strong.** Deal +16 lightning damage to the primary target. Secondary targets take +8 lightning damage each. All targets are briefly staggered.
+**Critical.** Deal +24 lightning damage to the primary target. Secondary targets take +12 lightning damage each. All targets are staggered for a short duration.
 
-> **Design Note**: R3 chain spell — primary target takes single-target damage, secondary targets take half (multi-target scaling). Fills R3 lightning gap.
+> **Design Note**: R3 chain spell. Core effect (primary target + two chain targets) is reliable on any success — SL adds damage. Primary target takes single-target damage, secondary targets take half (multi-target scaling). Fills R3 lightning gap.
 
 ### Corrosive Torrent
 
@@ -243,11 +243,11 @@
 
 *You create a sphere of total vacuum that implodes violently, crushing everything within and sucking the air from lungs.*
 
-**Weak.** Create a close area of vacuum. All creatures in the area take +5 blast damage and are briefly staggered (no air to breathe). Creatures are pulled toward the center.
-**Strong.** Deal +10 blast damage. Creatures are staggered for a short duration and pulled to the center of the area. Ranged attacks through the area suffer +2 banes (no air for projectiles).
-**Critical.** Deal +15 blast damage. Creatures are staggered for a short duration and pulled to center. Creatures that fail their save by 3+ are briefly restrained by the implosion. Ranged attacks through the area fail automatically.
+**Weak.** Create a close area of vacuum. All creatures in the area take +5 blast damage, are staggered for a short duration (no air to breathe), and are pulled toward the center. Ranged attacks through the area suffer +2 banes (no air for projectiles).
+**Strong.** Deal +10 blast damage with the same effects. Creatures that fail their save by 3+ are briefly restrained by the implosion.
+**Critical.** Deal +15 blast damage with the same effects. All creatures in the area are briefly restrained. Ranged attacks through the area fail automatically.
 
-> **Design Note**: R4 air spell — control through air manipulation. AoE uses half single-target R4 scaling (+5/+10/+15). The vacuum theme is distinctly transgressive (violating natural air pressure) vs. Tempest's natural wind.
+> **Design Note**: R4 air spell — control through air manipulation. Core effect (staggered for short duration, pull to center, ranged attack banes) is reliable on any success — SL adds damage and restrained escalation. AoE uses half single-target R4 scaling (+5/+10/+15). The vacuum theme is distinctly transgressive vs. Tempest's natural wind.
 
 ### Elemental Tempest
 
@@ -257,11 +257,11 @@
 
 *You conjure a vortex of all five elements — fire, frost, lightning, acid, and compressed air — swirling in a devastating maelstrom of pure elemental destruction.*
 
-**Weak.** Create a medium area storm. Each turn at the start of your turn, all creatures in the area take +6 damage of a random element (roll d6: 1=fire, 2=frost, 3=lightning, 4=acid, 5=blast, 6=your choice) and suffer the corresponding condition briefly. Lasts for a brief duration.
-**Strong.** Duration extends to short. Damage increases to +8 per turn. You choose the element each turn instead of rolling.
-**Critical.** Duration short. +8 per turn with element choice. Two different elements strike simultaneously each turn (both damage and conditions apply).
+**Weak.** Create a medium area storm for a short duration while you concentrate. Each turn at the start of your turn, all creatures in the area take +6 damage of a random element (roll d6: 1=fire, 2=frost, 3=lightning, 4=acid, 5=blast, 6=your choice) and suffer the corresponding condition briefly.
+**Strong.** Damage increases to +8 per turn.
+**Critical.** Damage increases to +10 per turn. You choose the element each turn instead of rolling, and two different elements strike simultaneously (both damage and conditions apply).
 
-> **Design Note**: R5 AoE capstone alongside Delayed Blast Meteor. The sustained storm vs. delayed detonation provides distinct tactical options. AoE damage per turn (+6/+8) is appropriate for a concentration-sustained effect — total damage over time exceeds single-hit AoE.
+> **Design Note**: R5 AoE capstone alongside Delayed Blast Meteor. Core effect (medium area elemental storm, short duration, random element) is reliable on any success — SL adds per-turn damage. Only Critical grants element choice and double-element strikes. AoE damage per turn (+6/+8/+10) is appropriate for a concentration-sustained effect.
 
 ### Dissolving Wave
 

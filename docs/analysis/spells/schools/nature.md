@@ -102,13 +102,13 @@
 ---|---|---|---|---
 5 | 10 | Very Hard TN | Close | concentrate, material cost (300 coins)
 
-*You channel the primal force of nature into earth and wood, awakening a massive elemental construct to fight at your command.*
+*You pour primal energy into the earth itself. Trees uproot and walk, stones grind into motion, and the land answers your call — not as a single conjured servant, but as the living terrain awakening around you.*
 
-**Weak.** Animate a Tier 3 earth/wood construct in close range. It acts on your initiative, obeys your commands, and lasts for a brief duration.
-**Strong.** The construct is Tier 4. It lasts for a short duration.
-**Critical.** The construct is Tier 4 with enhanced abilities (+2 to all attributes). It lasts for a short duration and can use one special ability (chosen from: stone throw, root entangle, or tremor stomp).
+**Weak.** For a short duration while you concentrate, all natural terrain in a medium area becomes animated and obeys your commands. Each turn, the awakened terrain performs one of the following: all enemies in the area are attacked by roots and stones (vs. Dodge, +6 physical damage); all enemies must save (Spirit + Fortitude vs. TN 16) or be restrained by grasping plants; or the terrain reshapes itself (create or remove difficult terrain, walls of earth/wood with 20 HP, or bridges).
+**Strong.** As above with +10 damage on terrain attacks. Restrained creatures also suffer the poisoned condition (toxic sap) briefly.
+**Critical.** As above with +14 damage on terrain attacks. The awakened terrain can perform two actions per turn instead of one.
 
-> **Design Note**: R5 capstone — powerful summoning. Concentration and material cost balance the tier 3–4 construct.
+> **Design Note**: R5 capstone fundamentally different from Primal Guardian (R4 single summon). Instead of summoning one creature, Primal Awakening animates the entire battlefield — providing area control, damage, and terrain manipulation. Core effect (animated terrain, short duration, one action per turn) is reliable on any success — SL adds damage and action economy. Material cost and concentration balance the power. Use Primal Guardian's Heighten (R5) option for a stronger single-summon alternative.
 
 ### Primal Guardian
 
@@ -118,11 +118,13 @@
 
 *You call upon the deep roots of the earth and the ancient trees, summoning a guardian spirit of nature — a towering tree guardian wreathed in vines or a hulking earth elemental of moss-covered stone.*
 
-**Weak.** Summon a Tier 3 nature spirit (tree guardian or earth elemental) in close range. It acts on your initiative, obeys your commands, and lasts for a short duration.
-**Strong.** The spirit lasts for a medium duration. It gains +2 AV from dense bark or stone plating.
-**Critical.** The spirit lasts for a medium duration with +2 AV. It can use one special ability per turn (chosen at summoning: root entangle vs. Dodge in close range, or stone slam dealing +6 physical damage).
+**Weak.** Summon a Tier 3 nature spirit (tree guardian or earth elemental) in close range. It acts on your initiative, obeys your commands, and lasts for a medium duration while you concentrate.
+**Strong.** The spirit gains +2 AV from dense bark or stone plating.
+**Critical.** The spirit has +2 AV and can use one special ability per turn (chosen at summoning: root entangle vs. Dodge in close range, or stone slam dealing +6 physical damage).
 
-> **Design Note**: Fills R4 animals/earth gap. Nature spirit summoning at a tier below R5's Primal Awakening — provides a stepping stone in the summoning chain. Concentration prevents stacking with other concentrate spells.
+**Heighten (R5).** The spirit is Tier 4 instead of Tier 3.
+
+> **Design Note**: R4 animals/earth gap filler. Core effect (Tier 3 nature spirit, medium duration) is reliable on any success — SL adds durability and special abilities. Heighten to R5 increases summon tier, replacing the need for a separate higher-rank summon spell. Concentration prevents stacking.
 
 ### Verdant Restoration
 
@@ -132,11 +134,11 @@
 
 *You channel the life force of the earth itself, and a wave of verdant energy pulses outward — flowers bloom, moss spreads, and the very air shimmers with restorative power.*
 
-**Weak.** All allies in close range regain +5 HP. Allies suffering from the poisoned condition are cured. Allies suffering from the restrained or entangled condition are freed.
-**Strong.** Allies regain +10 HP. Cure poisoned, restrained, and entangled conditions. Allies also gain +1 boon on Fortitude checks for a short duration.
-**Critical.** Allies regain +15 HP. Cure poisoned, restrained, entangled, and diseased conditions. Allies gain +2 boons on Fortitude checks for a short duration and regain +2 HP at the start of their next turn.
+**Weak.** All allies in close range regain +5 HP. Cure the poisoned, restrained, entangled, and diseased conditions on each ally.
+**Strong.** Allies regain +10 HP with the same condition cures. Allies also gain +1 boon on Fortitude checks for a short duration.
+**Critical.** Allies regain +15 HP with the same condition cures. Allies gain +2 boons on Fortitude checks for a short duration and regain +2 HP at the start of their next turn.
 
-> **Design Note**: R4 nature healing capstone — mass heal + condition removal. The nature healing identity focuses on purification (removing natural afflictions) rather than raw HP restoration like Life tradition. Conditions cured are specifically nature-themed (poisons, entanglement, disease).
+> **Design Note**: R4 nature healing capstone. Core effect (mass heal + cure all nature-themed conditions) is reliable on any success — SL adds healing and Fortitude bonuses. Nature's healing identity focuses on purification rather than raw HP like Life tradition.
 
 ### Cataclysmic Eruption
 
@@ -146,11 +148,11 @@
 
 *The earth splits open as primal fury erupts — jagged stone spires thrust upward, thorned vines lash from every crack, and clouds of poisonous spores billow from the tortured ground. All elements of nature attack as one.*
 
-**Weak.** All creatures in a short area take +6 physical/poison damage. The area becomes difficult terrain for a short duration. Creatures that fail must save (Spirit + Fortitude vs. TN 16) or be restrained by erupting vines.
-**Strong.** Deal +12 physical/poison damage. Restrained creatures also suffer the poisoned condition for a short duration. Difficult terrain persists for a medium duration.
-**Critical.** Deal +18 physical/poison damage. Restrained and poisoned. The area spawns toxic spore clouds — creatures that start their turn in the area take +4 poison damage. Difficult terrain persists for a medium duration.
+**Weak.** All creatures in a short area take +6 physical/poison damage. The area becomes difficult terrain for a medium duration. Creatures must save (Spirit + Fortitude vs. TN 16) or be restrained by erupting vines. Restrained creatures also suffer the poisoned condition for a short duration.
+**Strong.** Deal +12 physical/poison damage with the same effects. Creatures that start their turn in the area take +2 poison damage from toxic spores.
+**Critical.** Deal +18 physical/poison damage with the same effects. Toxic spore damage increases to +4 poison per turn. The restrained condition's save suffers +1 bane.
 
-> **Design Note**: R5 AoE capstone — all elements of nature attack simultaneously. Damage follows AoE scaling (+6/+12/+18). Combines terrain control, restraint, and poison for Nature's full identity in one spell. Concentration limits other casting.
+> **Design Note**: R5 AoE capstone. Core effect (damage, medium difficult terrain, restrain save, poison) is reliable on any success — SL adds damage and toxic spore intensity. Concentration limits other casting.
 
 ### Primeval Form
 
@@ -160,11 +162,11 @@
 
 *You shed your mortal shape and become a creature of primal legend — a massive dire beast, a winged serpent, or a thundering megafauna of the ancient world. The transformation is total: you become the apex predator.*
 
-**Weak.** Transform into a Tier 4 creature (chosen from: dire bear, giant serpent, or similar apex beast) for a brief duration. You gain the creature's Strength, Agility, natural armor (AV 8), and natural attacks (+10/+20/+30 damage). You cannot cast spells while transformed.
-**Strong.** Duration extends to short. You retain your Spirit and Mind attributes. Your natural attacks gain +2 weapon damage.
-**Critical.** Duration short. Retain Spirit and Mind. You may choose a legendary beast form (young dragon, giant eagle, or similar Tier 4 creature with flight or swimming). Natural attacks gain +4 weapon damage.
+**Weak.** Transform into a Tier 4 creature of your choice (dire bear, giant serpent, young dragon, giant eagle, or similar apex beast) for a short duration. You gain the creature's Strength, Agility, natural armor (AV 8), and natural attacks (+10/+20/+30 damage). You retain your Spirit and Mind attributes. You cannot cast spells while transformed.
+**Strong.** Your natural attacks gain +2 weapon damage.
+**Critical.** Your natural attacks gain +4 weapon damage, and you may use one special movement mode (flight, swimming, or burrowing) even if the chosen form doesn't normally possess it.
 
-> **Design Note**: R5 ultimate beast form — the culmination of the Beast Form chain (R1 → R5). Tier 4 creature is powerful but bounded (not reality-warping). Concentration and inability to cast spells while transformed are significant costs. Brief/short duration prevents extended exploration abuse.
+> **Design Note**: R5 ultimate beast form — the culmination of the Beast Form chain (R1 → R5). Core effect (Tier 4 transformation, short duration, full form choice including legendary beasts, retain Spirit/Mind) is reliable on any success — SL adds weapon damage and movement options. Concentration and inability to cast spells while transformed are significant costs.
 
 ## Cross-School Spell Sharing
 
@@ -202,7 +204,7 @@ The following spells are shared between Nature and arcane disciplines (same spel
 - [x] Repeating conditions: Poisoned, restrained/entangled, difficult terrain — consistent natural hazard identity
 - [x] Setup+payoff: Plant→entangle→poison explicitly supported and practical
 - [x] Healing capstone: Verdant Restoration (R4) provides mass heal + condition removal
-- [x] Summoning chain: Wild Companion (R1) → Primal Guardian (R4) → Primal Awakening (R5)
+- [x] Summoning chain: Wild Companion (R1) → Primal Guardian (R4, with Heighten to R5 for Tier 4 spirit)
 - [x] Beast Form chain: Beast Form (R1) → Primeval Form (R5) — transformation progression complete
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 9, R2: 11, R3: 8, R4: 4, R5: 3)
 - ⚠️ **Remaining gaps**: Water R3 still empty, Poison R4 dedicated spell missing

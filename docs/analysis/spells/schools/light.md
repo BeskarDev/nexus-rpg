@@ -70,11 +70,11 @@
 
 *You touch a creature's brow with radiant light, briefly cutting through mental fog and confusion.*
 
-**Weak.** End one of the following conditions affecting the target: dazed, confused, or frightened. The condition ends briefly (it returns at the end of the target's next turn if the source persists).
-**Strong.** End one of the above conditions. It does not return for a short duration even if the source persists.
-**Critical.** End up to two of the above conditions for a short duration.
+**Weak.** End one of the following conditions affecting the target: dazed, confused, or frightened. The condition does not return for a short duration even if the source persists.
+**Strong.** As above. The target also gains +1 boon on their next save against the removed condition's source.
+**Critical.** As above with +2 boons on the next save. You may end one additional condition from the list.
 
-> **Design Note**: Fills the R0 clarity gap. Condition removal at cantrip level — limited to mental conditions, brief duration.
+> **Design Note**: R0 clarity cantrip. Core effect (end one mental condition, short suppression) is reliable on any success — SL adds save bonuses. Only Critical adds a second condition removal.
 
 ### Stern Gaze
 
@@ -84,11 +84,11 @@
 
 *Your eyes flash with divine judgement, compelling a creature to pause and face your authority.*
 
-**Weak.** The target hesitates briefly. They suffer +1 bane on their next attack roll.
-**Strong.** The target is briefly dazed as they feel the weight of divine scrutiny.
-**Critical.** The target is briefly dazed and cannot willingly move away from you until the end of their next turn.
+**Weak.** The target suffers +1 bane on their next attack roll as they feel the weight of divine scrutiny.
+**Strong.** Deal +2 radiant damage with the same bane effect.
+**Critical.** Deal +4 radiant damage with the same bane effect, and the target is briefly dazed.
 
-> **Design Note**: Fills the R0 judgement gap. Divine authority as a minor control cantrip.
+> **Design Note**: R0 judgement cantrip. Core effect (attack bane) is reliable on any success — SL adds damage. Only Critical escalates to dazed.
 
 ### Zone of Truth
 
@@ -98,11 +98,11 @@
 
 *You create a zone of divine radiance where falsehood is impossible. All creatures within the area feel compelled to speak truthfully.*
 
-**Weak.** Create a zone in close range lasting a short duration. Creatures within the zone must succeed on a Spirit + Fortitude check vs. your casting result to knowingly speak a lie. On failure, they must speak truthfully or remain silent.
-**Strong.** Duration extends to medium. Creatures suffer +1 bane on attempts to resist the truth compulsion.
-**Critical.** Duration extends to medium. Creatures suffer +2 banes on resistance. You can sense when a creature successfully resists (you know they chose silence over truth).
+**Weak.** Create a zone in close range lasting a medium duration. Creatures within the zone must succeed on a Spirit + Fortitude check vs. your casting result to knowingly speak a lie. On failure, they must speak truthfully or remain silent.
+**Strong.** As above. Creatures suffer +1 bane on attempts to resist the truth compulsion.
+**Critical.** As above with +2 banes on resistance. You can sense when a creature successfully resists (you know they chose silence over truth).
 
-> **Design Note**: R3 truth spell. Area truth compulsion is a significant social tool but does NOT replace interrogation — targets can remain silent, and the zone requires concentration. Compare to Binding Word (Peace R0) which compels one statement, and Zone of Truth which compels ongoing truth within an area. Social scenes still require Influence and Insight checks for effective questioning.
+> **Design Note**: R3 truth spell. Core effect (truth zone, medium duration) is reliable on any success — SL adds resistance banes and sensory awareness. The area truth compulsion is a significant social tool but does NOT replace interrogation — targets can remain silent, and the zone requires concentration.
 
 ### Clarity of Purpose
 
@@ -112,11 +112,11 @@
 
 *You flood an ally's mind with divine clarity, burning away mental fog and enchantment.*
 
-**Weak.** End one of the following conditions on a willing creature: charmed, confused, dazed, or frightened. If the condition was caused by magic, the source must succeed on a Spirit + casting skill check or the dispel is permanent.
-**Strong.** End up to two of the above conditions. If the conditions were magically caused, the source suffers +1 bane on the resistance check.
-**Critical.** End all of the above conditions. Magical sources automatically fail the resistance check. The target also gains +2 to Resist against mental conditions for a short duration.
+**Weak.** End up to two of the following conditions on a willing creature: charmed, confused, dazed, or frightened. If any condition was caused by magic, the source must succeed on a Spirit + casting skill check or the dispel is permanent.
+**Strong.** As above. If the conditions were magically caused, the source suffers +1 bane on the resistance check.
+**Critical.** As above with +2 banes on the resistance check. The target also gains +2 to Resist against mental conditions for a short duration.
 
-> **Design Note**: Fills R2 clarity gap. Upgrades Moment of Clarity (R0) from brief condition suppression to proper condition removal. Appropriate for R2 — dispelling another caster's work costs Focus and a turn.
+> **Design Note**: R2 clarity spell. Core effect (end up to two mental conditions, dispel check) is reliable on any success — SL adds dispel banes and Resist bonus. Upgrades Moment of Clarity (R0) from single-condition suppression to multi-condition removal with dispel.
 
 ### Divine Judgement
 
@@ -168,11 +168,11 @@
 
 *You radiate a warm golden aura that burns away corruption and shields allies from the touch of darkness.*
 
-**Weak.** For a short duration, allies within close range gain resistance to necrotic damage (reduce by 4). At the start of each of your turns, remove one curse or disease affecting one ally within the aura.
-**Strong.** Necrotic resistance increases to 6. Remove one curse or disease from each ally per turn. Allies also gain +2 to Resist against curse and disease effects.
-**Critical.** Necrotic resistance 8. Remove up to two curses or diseases from each ally per turn. Allies gain +4 to Resist against curse and disease effects. Undead within the aura suffer +4 radiant damage at the start of each of your turns.
+**Weak.** For a short duration, allies within close range gain resistance to necrotic damage (reduce by 4) and +2 to Resist against curse and disease effects. At the start of each of your turns, remove one curse or disease from each ally within the aura.
+**Strong.** Necrotic resistance increases to 6 and Resist bonus increases to +3.
+**Critical.** Necrotic resistance increases to 8 and Resist bonus increases to +4. Undead within the aura suffer +4 radiant damage at the start of each of your turns.
 
-> **Design Note**: R4 support/healing hybrid. Concentration limits other spellcasting. The anti-necrotic and curse-removal effects position this as the answer to Death tradition magic and undead encounters.
+> **Design Note**: R4 support/healing hybrid. Core effect (necrotic resistance, Resist bonus, curse/disease removal from each ally) is reliable on any success — SL increases resistance values and adds anti-undead damage at Critical. Concentration limits other spellcasting.
 
 ### Blinding Radiance
 
@@ -196,11 +196,11 @@
 
 *You call forth the warmth of a new dawn, flooding the area with golden light that heals the faithful and sears the undead.*
 
-**Weak.** All allies in close range regain +6 HP. Remove one curse or negative condition from each ally. Undead in the area take +6 radiant damage.
-**Strong.** Allies regain +12 HP. Remove up to two conditions from each ally. Undead take +12 radiant damage and are briefly blinded.
-**Critical.** Allies regain +18 HP. Remove all curses and negative conditions from each ally. Undead take +18 radiant damage, are blinded for a short duration, and cannot regenerate HP for a short duration.
+**Weak.** All allies in close range regain +6 HP. Remove all curses and negative conditions from each ally. Undead in the area take +6 radiant damage.
+**Strong.** Allies regain +12 HP with the same condition removal. Undead take +12 radiant damage and are briefly blinded.
+**Critical.** Allies regain +18 HP with the same condition removal. Undead take +18 radiant damage, are blinded for a short duration, and cannot regenerate HP for a short duration.
 
-> **Design Note**: R5 mass healing + blessing capstone. AoE healing uses half single-target R5 scaling (+6/+12/+18). Dual-purpose as anti-undead offense. Complements Radiant Convergence (R5 AoE damage) by providing the healing/support alternative.
+> **Design Note**: R5 mass healing + blessing capstone. Core effect (AoE healing, full condition removal) is reliable on any success — SL adds healing and anti-undead damage/conditions. AoE healing uses half single-target R5 scaling (+6/+12/+18).
 
 ### Radiance of Truth
 
@@ -210,11 +210,11 @@
 
 *You fill an area with piercing divine light that lays bare all deception — illusions shatter, the invisible are revealed, and falsehood cannot survive.*
 
-**Weak.** Create a zone of absolute truth in a short area for a short duration. All invisible creatures within the area are revealed. All magical illusions are dispelled. Creatures within the zone cannot willingly speak lies (they may remain silent instead).
-**Strong.** Disguised and shapechanged creatures are shown in their true form for the duration. Creatures suffer +2 banes on attempts to resist the truth compulsion. You can sense the surface intentions of any creature in the zone.
-**Critical.** All concealment (magical and mundane) is stripped. Truth compulsion cannot be resisted — creatures must speak truthfully or remain silent. You gain +2 boons on Insight checks against creatures in the zone.
+**Weak.** Create a zone of absolute truth in a short area for a short duration. All invisible creatures are revealed, all magical illusions and disguises are dispelled, and shapechanged creatures are shown in their true form. All concealment (magical and mundane) is stripped. Creatures within the zone cannot willingly speak lies (they may remain silent instead).
+**Strong.** As above. Creatures suffer +2 banes on attempts to resist the truth compulsion. You can sense the surface intentions of any creature in the zone.
+**Critical.** As above. Truth compulsion cannot be resisted — creatures must speak truthfully or remain silent. You gain +2 boons on Insight checks against creatures in the zone.
 
-> **Design Note**: R5 truth/clarity capstone. Combines Zone of Truth (R3 truth compulsion) with Revealing Burst (R0 anti-invisibility) at capstone scale. Concentration and Focus 10 cost are significant. Does not compel speech — targets can remain silent. Anti-illusion effect positions Light as the premier counter to Illusion discipline and Twilight tradition.
+> **Design Note**: R5 truth/clarity capstone. Core effect (full revelation zone — invisibility, illusions, disguises, concealment all stripped; truth compulsion) is reliable on any success — SL adds compulsion banes and Insight bonuses. Concentration and Focus 10 cost are significant. Does not compel speech — targets can remain silent.
 
 ## Cross-School Spell Sharing
 
