@@ -34,15 +34,24 @@
 | 3 | 3 | Blessing of Dawn, Purifying Light, Solar Flare |
 | 4–5 | 0 | — |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| sun | ✅ | ✅ | — |
-| illumination | ✅ | ✅ | — |
-| truth | ✅ | ✅ | — |
-| clarity | ❌ | ❌ | No clarity spells at any rank |
-| judgement | ❌ | ❌ | No judgement spells at any rank |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| sun | Dazzling Light | Sun Sphere, Radiant Weapon | Sunbeam | Solar Flare | — | — |
+| illumination | Illuminated Sight | Blessing of Light, Locate Trinket | — | Blessing of Dawn | — | — |
+| truth | Detect Lies | Protect from Influence | Break Curse | — | — | — |
+| clarity | ❌ **GAP** | — | — | — | — | — |
+| judgement | ❌ **GAP** | — | — | — | — | — |
+
+**Coverage**: 11/30 slots filled (37%) — decent at R0-R1, thin above R2
+
+**Critical Gaps**:
+- **Clarity**: Zero spells at any rank — mental clarity and condition removal absent
+- **Judgement**: Zero spells at any rank — divine authority/justice absent
+- **Illumination R2**: Gap between R1 and R3
+- **Truth R3+**: No high-rank truth magic
+- **All traits R4-R5**: No spells above R3
 
 ## Proposed Spell Changes
 
@@ -94,7 +103,35 @@
 **Strong.** Duration extends to medium. Creatures suffer +1 bane on attempts to resist the truth compulsion.
 **Critical.** Duration extends to medium. Creatures suffer +2 banes on resistance. You can sense when a creature successfully resists (you know they chose silence over truth).
 
-> **Design Note**: Classic truth-telling spell. R3 matches the power level — area truth compulsion is a significant social tool.
+> **Design Note**: R3 truth spell. Area truth compulsion is a significant social tool but does NOT replace interrogation — targets can remain silent, and the zone requires concentration. Compare to Binding Word (Peace R0) which compels one statement, and Zone of Truth which compels ongoing truth within an area. Social scenes still require Influence and Insight checks for effective questioning.
+
+### Clarity of Purpose
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Ally | Close | —
+
+*You flood an ally's mind with divine clarity, burning away mental fog and enchantment.*
+
+**Weak.** End one of the following conditions on a willing creature: charmed, confused, dazed, or frightened. If the condition was caused by magic, the source must succeed on a Spirit + casting skill check or the dispel is permanent.
+**Strong.** End up to two of the above conditions. If the conditions were magically caused, the source suffers +1 bane on the resistance check.
+**Critical.** End all of the above conditions. Magical sources automatically fail the resistance check. The target also gains +2 to Resist against mental conditions for a short duration.
+
+> **Design Note**: Fills R2 clarity gap. Upgrades Moment of Clarity (R0) from brief condition suppression to proper condition removal. Appropriate for R2 — dispelling another caster's work costs Focus and a turn.
+
+### Divine Judgement
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Long | —
+
+*You call down divine judgement upon a creature, searing them with holy radiance proportional to their transgressions.*
+
+**Weak.** Deal +10 radiant damage. If the target is undead or a spirit, deal +15 instead. The target is briefly blinded.
+**Strong.** Deal +20 radiant damage (undead/spirits: +30). The target is blinded for a short duration.
+**Critical.** Deal +30 radiant damage (undead/spirits: +45). The target is blinded for a short duration and cannot benefit from invisibility or concealment for the duration.
+
+> **Design Note**: Fills R4 judgement gap. Light's first dedicated high-rank offensive spell. The anti-undead bonus multiplier continues the signature theme. Radiant damage against undead/spirits is Light's primary offensive niche.
 
 ### Radiant Convergence
 

@@ -33,15 +33,24 @@
 | 2 | 3 | Ancestral Warriors, Blood Sacrifice, Haste |
 | 3–5 | 0 | — |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| fury | ✅ | ✅ | — |
-| pride | ✅ | ✅ | — |
-| blood | ⚠️ | ✅ | Weakly covered at R0 |
-| justice | ❌ | ❌ | No justice spells — gap |
-| triumph | ❌ | ❌ | No triumph spells — gap |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| fury | Battle Surge | War Cry | Haste | — | — | — |
+| pride | Mighty Strike | Heroic Weapon | — | — | — | — |
+| blood | Spectral Slash (⚠️ weak) | Tear Wound, Curse of War | Blood Sacrifice | — | — | — |
+| justice | ❌ **GAP** | — | — | — | — | — |
+| triumph | ❌ **GAP** | Weapon Spirit | Ancestral Warriors | — | — | — |
+
+**Coverage**: 8/30 slots filled (27%) — smallest and most gap-heavy school in the entire system
+
+**Critical Gaps**:
+- **Justice**: Zero spells at any rank — retribution and righteous punishment completely absent
+- **Triumph R0**: No victory/morale cantrip
+- **ALL traits R3+**: War has zero spells above R2 — the most combat-focused tradition lacks high-rank battle magic
+- **Pride R2+**: Weapon enhancement theme drops off after R1
+- **Blood R3+**: Blood magic only goes to R2
 
 ## Proposed New Spells
 
@@ -86,6 +95,34 @@
 **Critical.** AV bonus +3. Fear immunity. Allies in melee range are also immune to the frightened condition for the duration.
 
 > **Design Note**: Defensive spell for War — "courage in battle" theme. Addresses the missing defensive options.
+
+### Avenging Oath
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Self | Self | enchant (short)
+
+*You swear a divine oath of retribution against a creature that has wronged you or your allies, marking them for justice.*
+
+**Weak.** Choose one enemy you can see. For a short duration, your attacks against the marked target deal +2 weapon damage. If the target damaged one of your allies this scene, this bonus increases to +3.
+**Strong.** Damage bonus +3 (or +4 if the target harmed an ally). You also gain +1 boon on attack rolls against the marked target.
+**Critical.** Damage bonus +4 (or +5 if harmed ally). +1 boon on attacks. If you reduce the marked target to 0 HP, you regain +4 HP.
+
+> **Design Note**: Fills R2 justice gap. Retribution mechanic — stronger against enemies who hurt allies. Rewards the "protector" playstyle without trivializing encounters. Single-target mark limits to one focus enemy.
+
+### War Banner
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Allies | Close | concentrate, enchant (short)
+
+*You plant your weapon in the ground and channel divine war magic through it, creating a rallying point that inspires all nearby allies.*
+
+**Weak.** All allies within close range gain +1 weapon damage for a short duration. You cannot move while maintaining the banner (your weapon is planted).
+**Strong.** Weapon damage bonus increases to +2. Allies also gain +1 boon on Morale/fear saves.
+**Critical.** Weapon damage +2, +1 boon on Morale. Allies who start their turn within close range gain +1 movement for that turn.
+
+> **Design Note**: Fills R2 pride/triumph gap. Group buff requiring the caster to remain stationary — meaningful tactical tradeoff. Planted weapon prevents casting other spells or attacking.
 
 ### Commander's Shout
 

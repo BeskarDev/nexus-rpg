@@ -34,17 +34,68 @@
 | 3 | 2 | Nightmare Realm, Shadow Clone |
 | 4 | 1 | Embrace of Night |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| moon | ✅ | ✅ | — |
-| dreams | ✅ | ✅ | — |
-| secrets | ✅ | ✅ | — |
-| fate | ❌ | ❌ | Poorly covered at all ranks |
-| illusion | ✅ | ✅ | — |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| moon | Night's Grasp | Moon Sphere, Lunar Weapon | Moonbeam | — | — | — |
+| dreams | Whispers of Doubt | Whisper of Dreams | Terrors of the Dark | Nightmare Realm | — | — |
+| secrets | Dark Sight, Shadow Veil | Shadow Meld, Cloak of Night | Silent Night, Everlasting Night | — | — | — |
+| fate | ❌ **GAP** | Curse of Twilight | — | — | — | — |
+| illusion | Obscuring Veil | Haunting Shadows | Aura of Fear, Shadow Step, Twilight Bind | Shadow Clone | Embrace of Night | — |
+
+**Coverage**: 17/30 slots filled (57%) — strong at R0-R2, weak at R3+
+
+**Critical Gaps**:
+- **Fate R0**: No cantrip-level divination — a thematic pillar with minimal mechanical presence
+- **Moon R3+**: No high-rank lunar magic
+- **Dreams R4+**: No advanced dreamscape beyond R3
+- **Secrets R3+**: No high-rank shadow manipulation beyond R2
+- **All traits R5**: No R5 capstone
 
 ## Proposed New Spells
+
+### Thread of Fate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | Easy TN | Self | —
+
+*You briefly glimpse the threads of fate, gaining a flash of insight into the immediate future.*
+
+**Weak.** Gain a vague sense of whether an action you're about to take will have a positive or negative outcome (GM provides a one-word hint: "favorable" or "unfavorable").
+**Strong.** Gain a clearer sense — the GM provides a brief phrase describing the likely outcome.
+**Critical.** Gain a clear vision of the immediate consequence. You gain +1 boon on your next roll related to the foreseen action.
+
+> **Design Note**: Fills the R0 fate gap. Minor divination cantrip. The information is GM-mediated and deliberately vague at low success levels — it provides a nudge, not a roadmap. Does not bypass investigation or decision-making, merely adds intuitive guidance.
+
+### Fate's Web
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | vs. Resist (ally: auto) | Close | enchant (short)
+
+*You weave threads of fate around a creature, subtly influencing the probability of their near-future actions.*
+
+**Weak.** Choose one ally or enemy within close range. Ally: they gain +1 boon on their next skill check or save. Enemy: they suffer +1 bane on their next attack roll or save.
+**Strong.** Ally: +1 boon on their next two rolls. Enemy: +1 bane on their next two rolls.
+**Critical.** Ally: +1 boon on all rolls until the end of their next turn. Enemy: +1 bane on all rolls until the end of their next turn.
+
+> **Design Note**: Fills R2 fate gap. Probability manipulation is the mechanical expression of fate magic. Small but reliable bonuses/penalties — the power is in versatility (can buff or debuff) and reliability.
+
+### Moonfire
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Dodge | Long | —
+
+*You call down a beam of concentrated moonlight that sears your target with cold silver radiance.*
+
+**Weak.** Deal +8 frost damage. The target is briefly revealed — invisibility, concealment, and illusions affecting them are suppressed until the end of their next turn.
+**Strong.** Deal +16 frost damage. Revealed for a short duration. The target also emits dim light (revealing their position even in darkness).
+**Critical.** Deal +24 frost damage. Revealed for a short duration. The target is also briefly slowed as moonlight saps their warmth.
+
+> **Design Note**: Fills R3 moon gap. Single-target damage with anti-stealth utility — revealing hidden creatures is the overlap between moon (illumination) and secrets (uncovering). Frost damage fits the cold moonlight theme.
 
 ### Shadow Veil (Quick Action Reactive)
 

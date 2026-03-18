@@ -34,15 +34,26 @@
 | 3 | 7 | Chain Lightning, Cone of Cold, Cyclone, Lightning Volley, Sandstorm (incomplete), Shattering Orb, Wind Wall |
 | 4 | 5 | Avatar of Storms, Control Water (incomplete), Control Winds (incomplete), Earthquake (incomplete), Lightning Storm (incomplete) |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| hurricanes | ✅ | ✅ | — |
-| earthquakes | ❌ | ✅ (R1+) | Missing R0 earthquake cantrip |
-| thunderstorms | ✅ | ✅ | — |
-| sandstorms | ❌ | ✅ (R3+) | Missing R0 sandstorm cantrip |
-| floods | ❌ | ✅ (R2+) | Missing R0 flood cantrip |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| hurricanes | Gust, Wind Slash | Wind Hose | Torrent, Wind Ward | Cyclone, Wind Wall | Control Winds* | — |
+| earthquakes | ❌ **GAP** | Earthen Tremor | — | — | Earthquake* | — |
+| thunderstorms | Static Shock | Bursting Crackle, Lightning Javelin, Electrified Weapon, Storm Coat | Lightning Bolt, Lightning Step, Storm Cloud, Thunder Clap | Chain Lightning, Lightning Volley, Shattering Orb | Avatar of Storms, Lightning Storm* | — |
+| sandstorms | ❌ **GAP** | — | Pyroclasm | Sandstorm*, Cone of Cold | — | — |
+| floods | ❌ **GAP** | — | Conjure Elemental, Magma Burst | — | Control Water* | — |
+
+*Asterisk = incomplete spell*
+
+**Coverage**: 21/30 slots filled (70%) — thunderstorms dominate, other traits sparse
+
+**Critical Gaps**:
+- **Earthquakes R0**: No earthquake cantrip — fundamental earth-shaking effect missing at low level
+- **Sandstorms R0-R1**: No sandstorm effects below R2
+- **Floods R0-R1**: No water/flood effects below R2
+- **All traits R5**: No R5 capstone
+- **Earthquakes R2-R3**: Massive gap between R1 Earthen Tremor and R4 Earthquake
 
 ## Proposed Spell Changes
 
@@ -107,6 +118,34 @@
 **Critical.** Deal +6 physical damage. The target is pushed into close range and the ground in melee range becomes briefly difficult terrain (wet/slippery).
 
 > **Design Note**: Fills the R0 floods gap. Water damage with push effect.
+
+### Aftershock
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | vs. Dodge | Close | —
+
+*You slam the ground with divine fury, sending a powerful shockwave rippling through the earth.*
+
+**Weak.** All creatures in a close area take +3 blast damage and must save or be briefly prone.
+**Strong.** Deal +6 blast damage. Prone creatures in the area take an additional +3 physical damage from debris. The area becomes difficult terrain briefly.
+**Critical.** Deal +9 blast damage. Prone creatures take +6 additional physical damage. Difficult terrain persists for a short duration. Structures in the area take double damage.
+
+> **Design Note**: Fills R2 earthquakes gap. AoE uses half single-target R2 scaling (+3/+6/+9). The prone-check-then-bonus-damage creates a setup+payoff within a single spell — hitting already-prone targets harder rewards prior knockdown effects.
+
+### Tidal Surge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | vs. Dodge | Medium | —
+
+*You summon a powerful wave of water that crashes forward, sweeping away everything in its path.*
+
+**Weak.** A short line of water rushes forward. All creatures in the line take +3 physical damage and are pushed one range increment away from you.
+**Strong.** Deal +6 physical damage. Creatures are pushed and must save or be briefly prone. Small creatures are pushed two range increments.
+**Critical.** Deal +9 physical damage. All creatures are pushed two range increments and briefly prone. The line becomes difficult terrain (flooded) for a short duration.
+
+> **Design Note**: Fills R2 floods gap. Line AoE uses half single-target R2 scaling (+3/+6/+9). The push effect is the floods identity — repositioning + terrain alteration.
 
 ### Weather Prediction
 

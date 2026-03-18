@@ -34,15 +34,24 @@
 | 3 | 2 | Death's Door, Grave's Bloom |
 | 4–5 | 0 | — |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| plagues | ❌ | ❌ | No plague/disease spells at any rank |
-| curses | ❌ | ✅ (R1+) | No R0 curse cantrip |
-| fear | ✅ | ✅ | — |
-| decay | ✅ | ✅ | — |
-| ancestry | ✅ | ✅ | — |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| plagues | ❌ **GAP** | — | Cloud of Sickness | — | — | — |
+| curses | ❌ **GAP** | Curse of Death | — | — | — | — |
+| fear | Glimpse of Mortality | Early Grave, Shivering Ray | — | Death's Door | — | — |
+| decay | Decay, Chill Touch, Enfeebling Touch | Necrotic Weapon, Rotting Grasp, Blood Shards | Circle of Death | Grave's Bloom | — | — |
+| ancestry | Spared from Death | — | — | — | — | — |
+
+**Coverage**: 12/30 slots filled (40%) — decay is strong, but plagues/curses/ancestry severely under-served
+
+**Critical Gaps**:
+- **Plagues R0-R1**: No disease/pestilence cantrip or low-level spell — only Cloud of Sickness at R2
+- **Curses R0**: No curse cantrip — first curse is R1 (Curse of Death)
+- **Ancestry R1+**: Only one R0 spell — communing with ancestors and death rites are a thematic pillar with almost no spells
+- **All traits R3+**: Only 2 R3 spells, zero R4-R5
+- **Plagues R3+**: No high-rank plague magic at all
 
 ## Proposed New Spells
 
@@ -100,7 +109,49 @@
 **Strong.** You contact a clearer presence. You can ask one open-ended question and receive a brief, helpful answer.
 **Critical.** You contact a strong ancestral presence. You can ask two questions and receive clear, detailed answers. You also gain +1 boon on your next roll related to the information gained.
 
-> **Design Note**: R1 utility spell — fills the utility/non-combat gap. Ritual requirement prevents combat use.
+> **Design Note**: R1 utility spell — fills the ancestry R1+ gap. Ritual requirement prevents combat use. Information is helpful but limited — the GM controls how much is revealed, preventing it from bypassing investigation or exploration scenes.
+
+### Festering Wound
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | vs. Resist | Close | —
+
+*You infect a creature's wounds with supernatural disease, causing them to fester and spread.*
+
+**Weak.** One creature that is currently bleeding or has taken damage this scene takes +2 poison damage and is briefly poisoned.
+**Strong.** Deal +4 poison damage. The target is poisoned for a short duration. While poisoned, any healing they receive is halved.
+**Critical.** Deal +6 poison damage. Poisoned for a short duration with halved healing. If the target is below half HP, the poison worsens — they lose 1 HP at the start of each of their turns.
+
+> **Design Note**: Fills R1 plagues gap. Requires the target to already be injured — rewards focus fire and pairs with the Death tradition's decay theme. Heal-reduction is a signature Death mechanic.
+
+### Ancestral Guardian
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Self or ally | Close | enchant (short)
+
+*You call upon an ancestral spirit to watch over and protect a creature, guiding their actions.*
+
+**Weak.** One creature gains +1 boon on their next attack roll or skill check within a short duration. The guardian whispers guidance audible only to the target.
+**Strong.** The target gains +1 boon on their next two rolls. The guardian also provides +1 boon on saves against fear and charm effects.
+**Critical.** +1 boon on the next three rolls. Fear/charm save bonus. The guardian can also absorb the first 4 points of damage the target takes.
+
+> **Design Note**: Fills R2 ancestry gap. Ancestral protection and guidance — a support spell that fits Death's communal ancestor theme. Limited boon charges prevent over-stacking.
+
+### Spreading Contagion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist | Medium | concentrate
+
+*You release a virulent magical disease that spreads from creature to creature.*
+
+**Weak.** One target is afflicted with a supernatural disease for a short duration. They are poisoned and suffer +1 bane on all physical rolls. At the end of each of their turns, one creature within melee range of them must save vs. Resist or also contract the disease.
+**Strong.** As Weak, but the disease lasts for a medium duration and the spreading range increases to close. Infected creatures also lose 2 HP at the start of each of their turns.
+**Critical.** As Strong, but infected creatures lose 3 HP per turn and suffer +2 banes on physical rolls. The initial target cannot benefit from healing for the duration.
+
+> **Design Note**: Fills R3 plagues gap. Spreading disease is the plague fantasy — rewarding clustering punishment. Concentration limits the caster's other actions. Compare to Plague Wind (R5) which is the ultimate mass-plague capstone.
 
 ### Plague Wind
 

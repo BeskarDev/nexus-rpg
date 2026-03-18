@@ -35,9 +35,25 @@
 | 3 | 8 | Animal Messenger, Fungal Growth, Impalement, Insect Swarm, Life from Stone, Nature's Judgment, Petrification, Stone Pillar (incomplete) |
 | 4 | 2 | Control Weather (incomplete), Tree Stride (incomplete) |
 
-### Trait Coverage — Perfect ✅
+### Trait × Rank Coverage — Strong ✅
 
-All 5 traits are represented at R0 and across all ranks. Nature is a model for trait coverage alongside Necromancy.
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| earth | Shillelagh | Rock Throw | Melt Ground, Heat Metal | Life from Stone, Petrification, Stone Pillar* | — | — |
+| water | — | Purify Water | Water Prison, Nature's Passage | — | Control Weather* | — |
+| poison | Poison Mist, Acid Splash | Venomous Weapon, Sticks to Snakes | Toxic Mist | Fungal Growth, Insect Swarm | — | — |
+| animals | Bestial Adaptation | Beast Form, Wild Companion | Law of the Strongest, Speak with Animals and Plants | Animal Messenger, Nature's Judgment | — | — |
+| plants | Lashing Vine, Rejuvenation | Blessing of Nature, Mesh of Vines | Living Plants, Sudden Growth, Thorn Barrage, Rock Skin | Impalement | Tree Stride* | — |
+
+*Asterisk = incomplete spell*
+
+**Coverage**: 26/30 slots filled (87%) — second-best coverage after Necromancy
+
+**Minor Gaps**:
+- **Water R0**: No water cantrip — a basic element lacks entry-level representation
+- **Water R3**: Gap between R2 and R4
+- **Earth R4+**: No high-rank earth magic
+- **All traits R5**: No R5 capstone
 
 ## Proposed New Spells
 
@@ -54,6 +70,20 @@ All 5 traits are represented at R0 and across all ranks. Nature is a model for t
 **Critical.** Gain +4 AV against the triggering attack. The attacker takes +2 physical damage from thorns.
 
 > **Design Note**: Fills the missing R1 Quick Action reactive spell for Nature. Natural armor theme.
+
+### Water Jet
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | vs. Dodge | Close | —
+
+*You conjure a pressurized stream of water from your palm, striking with surprising force.*
+
+**Weak.** Deal +2 physical damage. The target is drenched (extinguishes burning condition).
+**Strong.** Deal +4 physical damage. The target is pushed back into close range.
+**Critical.** Deal +6 physical damage. The target is pushed and briefly prone from the force of the stream.
+
+> **Design Note**: Fills R0 water gap. Cantrip-level water manipulation with push utility — pairs with other Nature spells that benefit from wet/drenched targets.
 
 ### Primal Awakening
 

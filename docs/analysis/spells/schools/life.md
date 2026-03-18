@@ -35,15 +35,24 @@
 | 3 | 2 | Abundance of Life, Vitality Surge |
 | 4–5 | 0 | — |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| vitality | ✅ | ✅ | — |
-| blessings | ⚠️ | ✅ | Weakly covered at R0 |
-| community | ✅ | ✅ | — |
-| hope | ✅ | ✅ | — |
-| fertility | ❌ | ❌ | No fertility spells at any rank |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| vitality | Restore Life | Rapid Vitality, Healing Touch | Aid, Healing Burst | Vitality Surge | — | — |
+| blessings | Life Shield (⚠️ weak) | Blessing of Life, Vitalizing Weapon | Hallow Ground | — | — | — |
+| community | — | Overflow of Life | Cleanse | Abundance of Life | — | — |
+| hope | Verdant Blast | — | — | — | — | — |
+| fertility | ❌ **GAP** | — | — | — | — | — |
+
+**Coverage**: 12/30 slots filled (40%) — healing core is solid but thematic breadth is narrow
+
+**Critical Gaps**:
+- **Fertility**: Zero spells at any rank — growth, agriculture, reproduction absent
+- **Hope R1+**: Only one R0 spell — hope/inspiration theme barely explored
+- **Community R0**: No cantrip-level communal effect
+- **Blessings R3+**: No high-rank blessings
+- **All traits R4-R5**: Zero spells — Life has no high-rank options at all (resurrection spells proposed fill this)
 
 ## Proposed New Spells
 
@@ -59,7 +68,35 @@
 **Strong.** Accelerate growth by a month. Heal a small animal of 2 HP. Alternatively, enrich soil in melee range (improve crop yield for next harvest).
 **Critical.** Accelerate growth by a season. Heal a small animal of 4 HP and remove one minor condition. Enriched soil produces exceptional yields.
 
-> **Design Note**: Fills the R0 fertility gap. Pure non-combat utility — plant growth, animal care, agriculture.
+> **Design Note**: Fills the R0 fertility gap. Pure non-combat utility — plant growth, animal care, agriculture. Has no combat application, making it a flavor/downtime cantrip.
+
+### Beacon of Hope
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Allies | Close | enchant (short)
+
+*You radiate an aura of hope and inspiration, bolstering the resolve of nearby allies.*
+
+**Weak.** Up to 3 allies gain +1 boon on their next save against a negative condition (fear, charm, daze, etc.) for a short duration.
+**Strong.** The boon applies to their next two saves. Allies also gain +2 temporary HP.
+**Critical.** The boon applies to all saves for the duration. Allies gain +4 temporary HP.
+
+> **Design Note**: Fills R1 hope gap. Proactive defensive buff — complements Blessing of Life (R1) by protecting against conditions rather than healing damage. Temporary HP provides a small buffer without replacing healing.
+
+### Circle of Renewal
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Allies | Close | concentrate, enchant (short)
+
+*You consecrate the ground with life energy, creating a zone where vitality flows freely and blessings strengthen.*
+
+**Weak.** Create a blessed zone in close range for a short duration. Allies who start their turn in the zone regain +2 HP and gain +1 boon on their next Fortitude check.
+**Strong.** HP recovery increases to +4 per turn. Allies also gain resistance 2 to necrotic and poison damage while in the zone.
+**Critical.** HP recovery +4 per turn. Necrotic/poison resistance 4. The first time each turn an ally in the zone would be reduced to 0 HP, they are instead reduced to 1 HP.
+
+> **Design Note**: Fills R3 blessings gap. Area healing zone that rewards positioning — allies must stay in the zone. Concentration limits other spellcasting. The R3 "death prevention" at Critical is appropriate for the rank but only triggers once per turn and requires the zone be maintained.
 
 ### Revivify
 
