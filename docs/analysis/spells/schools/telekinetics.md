@@ -168,26 +168,80 @@
 
 > **Design Note**: Fills R2 crush gap. Sustained single-target control — escalating damage rewards maintaining concentration. Pairs well with Telekinetic Crush (R1) as a setup → payoff chain.
 
+### Force Wall
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Hard TN | Close | concentrate
+
+*You thrust your hands outward and an invisible wall of pure telekinetic force materializes, blocking passage and deflecting attacks.*
+
+**Weak.** Create an impassable wall of telekinetic force up to close area in length and 3 meters tall within close range. The wall lasts for a short duration while you concentrate. Creatures and projectiles cannot pass through it. The wall is invisible but shimmers faintly when struck.
+**Strong.** The wall lasts for a short duration and can be shaped (curved, angled, or circular). Ranged attacks that strike the wall are deflected harmlessly. Creatures pushed against the wall take +4 physical damage from the impact.
+**Critical.** The wall lasts for a medium duration. Creatures pushed against it take +6 physical damage. You can create openings in the wall at will, allowing selective passage for allies.
+
+> **Design Note**: R3 defensive/control spell. Creates tactical battlefield division — fits "repel" trait. Concentration prevents stacking multiple walls. Pairs with Kinetic Push/Shockwave to push enemies into the wall for bonus damage.
+
+### Telekinetic Storm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Dodge | Medium | —
+
+*You seize every loose object in the area — stones, debris, weapons, furniture — and hurl them in a devastating whirlwind of telekinetic fury.*
+
+**Weak.** All creatures in a short area take +5 physical damage as objects batter them from every direction. Targets are briefly prone from the barrage.
+**Strong.** Targets take +10 physical damage, are prone, and the area becomes difficult terrain (scattered debris) for a short duration.
+**Critical.** Targets take +15 physical damage, are prone, the area becomes difficult terrain for a short duration, and each target is pushed one area away from the center of the storm.
+
+> **Design Note**: R4 AoE damage with battlefield control. Damage uses half single-target R4 scaling (+5/+10/+15). The prone + difficult terrain + push effects create a devastating area denial tool. Requires loose objects in the environment — doesn't work in an empty room.
+
+### Absolute Telekinesis
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge (creatures) or Hard TN (objects) | Long | concentrate
+
+*You extend your will across the battlefield with absolute authority over matter and motion — lifting gates, hurling boulders, pinning warriors in place, reshaping the physical world through sheer mental force.*
+
+**Weak.** You can telekinetically manipulate any single object or creature within long range for a short duration. Objects: lift and move massive objects (boulders, gates, wagons) at will. Creatures: the target is briefly restrained as you hold them in place. Restrained creatures can attempt to break free (Strength + Athletics vs. your casting result) at the end of each of their turns.
+**Strong.** Manipulate up to 3 objects or creatures simultaneously for a short duration. Restrained creatures take +6 physical damage per turn from crushing force. You can hurl objects at targets, dealing +8 physical damage on impact.
+**Critical.** Manipulate up to 3 objects or creatures for a medium duration. Restrained creatures take +9 physical damage per turn. You can hurl massive objects (ships' masts, building columns) for +12 physical damage. Restrained creatures suffer +1 bane on break-free attempts.
+
+> **Design Note**: R5 utility/offense capstone — the pinnacle of telekinetic power. Massive environmental manipulation within mortal limits. Concentration prevents passive abuse. The versatility (move objects, restrain creatures, hurl projectiles) represents mastery over all telekinetic applications.
+
+## Cross-School Spell Sharing
+
+**No Natural Mystic Overlap**
+
+Telekinetics has no significant thematic overlap with any Mystic tradition. The discipline's identity — transgressive force without physical contact — is distinctly arcane in nature. While Tempest (Mystic) involves physical force through storms, the mechanism (divine weather control vs. mental kinetic manipulation) is fundamentally different.
+
+No shared spells are recommended for this discipline.
+
+> **Design Note**: Telekinetics is one of the most purely arcane disciplines, with no reverent or communal equivalent in Mystic traditions.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Move chain**: Weak Telekinesis (R0) → Telekinetic Volley (R1) → Strong Telekinesis (R2) → Kinetic Barrage (R3 proposed) → *gap at R4* → *needs R5 move capstone*
-2. **Repel chain**: Kinetic Push (R0) → Shockwave (R1) → *gap at R2* → Distortion Field (R3\*) → *gap at R4-R5*
+1. **Move chain**: Weak Telekinesis (R0) → Telekinetic Volley (R1) → Strong Telekinesis (R2) → Kinetic Barrage (R3 proposed) → *gap at R4* → Absolute Telekinesis (R5 proposed)
+2. **Repel chain**: Kinetic Push (R0) → Shockwave (R1) → *gap at R2* → Distortion Field (R3\*)/Force Wall (R3 proposed) → *gap at R4-R5*
 3. **Levitate chain**: Minor Levitation (R0 proposed) → *gap at R1* → Levitation (R2) → *gap at R3-R4* → Gravity Reversal (R5 proposed)
-4. **Crush chain**: Pressure Grip (R0 proposed) → Telekinetic Crush (R1) → Crushing Sphere (R2 proposed) → *gap at R3-R5*
-5. **Gravity chain**: Gravity Shift (R0 proposed) → Gravity Orb (R1) → Stasis (R2) → *gap at R3* → Invert Gravity (R4\*) → Gravity Reversal (R5 proposed)
+4. **Crush chain**: Pressure Grip (R0 proposed) → Telekinetic Crush (R1) → Crushing Sphere (R2 proposed) → *gap at R3* → *gap at R4* → Absolute Telekinesis (R5 proposed, restraint + crush damage)
+5. **Gravity chain**: Gravity Shift (R0 proposed) → Gravity Orb (R1) → Stasis (R2) → *gap at R3* → Invert Gravity (R4\*)/Telekinetic Storm (R4 proposed) → Gravity Reversal (R5 proposed)
 
 ### Setup + Payoff Combos
-- ✅ **Push into hazard → bonus damage**: Forced movement into environmental hazards is a core tactical loop
-- ✅ **Prone → follow-up attacks**: Kinetic Push/Gravity Shift knock prone → melee allies exploit prone targets
+- ✅ **Push into hazard → bonus damage**: Forced movement into environmental hazards or Force Wall is a core tactical loop
+- ✅ **Prone → follow-up attacks**: Kinetic Push/Gravity Shift/Telekinetic Storm knock prone → melee allies exploit prone targets
+- ✅ **Force Wall + Push**: Create wall, then push enemies into it for bonus damage — explicit spell-to-spell synergy
+- ✅ **Crush chain escalation**: Pressure Grip (R0) → Crushing Sphere (R2) → Absolute Telekinesis (R5) provides escalating restraint + damage
 - ⚠️ **Levitate → gravity drop**: Minor Levitation (R0) → Gravity Reversal (R5) conceptually linked but massive rank gap with no mid-rank gravity payoff
-- ❌ **Crush → sustained loop**: Pressure Grip → Crushing Sphere escalates well but no explicit mechanic chains them or rewards sequential use
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Kinetic Deflection (R1 proposed) — ranged attack deflection
-- [x] Defensive options: Reflective Barrier (R1), Force Shield (R1 proposed), Kinetic Deflection (R1 proposed) — strong defensive suite
-- [x] Utility: Weak/Strong Telekinesis (R0/R2), Minor Levitation (R0 proposed), Gravity Shift (R0 proposed)
-- ⚠️ Damage across ranks: R0-R3 covered, R5 via Gravity Reversal (fall damage) — but no dedicated R4 damage spell
+- [x] Defensive options: Reflective Barrier (R1), Force Shield (R1 proposed), Kinetic Deflection (R1 proposed), Force Wall (R3 proposed) — strong defensive suite
+- [x] Utility: Weak/Strong Telekinesis (R0/R2), Minor Levitation (R0 proposed), Gravity Shift (R0 proposed), Absolute Telekinesis (R5 proposed)
+- [x] Damage across ranks: R0-R5 covered — Kinetic Barrage (R3), Telekinetic Storm (R4), Absolute Telekinesis/Gravity Reversal (R5)
 - [x] Repeating conditions: Prone, restrained, pushed/pulled — consistent forced movement identity
-- ⚠️ Setup+payoff: Positional control creates opportunities but relies on environmental/ally interactions rather than explicit spell-to-spell rewards
-- ⚠️ **Remaining gaps**: Levitate R1/R3-R4, Crush R3+, Repel R2, dedicated R4 damage spell
+- [x] Setup+payoff: Force Wall + Push combo, Crush chain escalation, Prone → ally exploitation
+- ⚠️ **3 spells per rank minimum**: Met at R0-R3 (R0: 6, R1: 7, R2: 5, R3: 3). R4 has 2, R5 has 2 — both need one more spell
+- ⚠️ **Remaining gaps**: Levitate R1/R3-R4, Crush R3-R4, Repel R2/R4-R5, R4 and R5 each need one more spell for 3-per-rank

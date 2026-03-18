@@ -36,22 +36,22 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| trickery | Minor Illusion | Illusory Trap, False Enemy | Illusionary Terrain, Trap Room | — | — | — |
-| misdirection | — | Mirror Image | Misdirection, Invisibility | Mislead | — | — |
-| obfuscation | Maddening Whispers | Color Spray, Disguise Form | Waking Dream | Seeming* | — | — |
-| hallucinations | Horrific Vision | — | Hallucinated Swarm, Major Illusion | Phantasmal Killer | — | — |
-| distortion | ❌ **GAP** | — | — | — | — | — |
+| trickery | Minor Illusion | Illusory Trap, False Enemy | Illusionary Terrain, Trap Room | — | Grand Illusion† | — |
+| misdirection | — | Mirror Image, Illusory Dodge† | Misdirection, Invisibility | Mislead | — | Perfect Disguise† |
+| obfuscation | Maddening Whispers | Color Spray, Disguise Form | Waking Dream, Phantasmal Armor† | Seeming | — | — |
+| hallucinations | Horrific Vision | — | Hallucinated Swarm, Major Illusion | Phantasmal Killer | Phantasmal Catastrophe†, Labyrinth of Mirrors† | Maze of Madness† |
+| distortion | Sensory Trick† | — | — | — | — | — |
 
-*Asterisk = incomplete spell*
+*†Proposed new spell*
 
-**Coverage**: 14/30 slots filled (47%) — strong at R1-R2, very weak at R3-R5
+**Coverage (with proposed)**: 18/30 slots filled (60%) — strong at R0-R2, improving at R3-R5
 
-**Critical Gaps**:
-- **Distortion R0**: No sensory distortion cantrip
-- **Trickery R3+**: No advanced trickery beyond R2
-- **All traits R4-R5**: Zero spells above R3 — Illusion has no high-rank options at all
-- **Hallucinations R1**: Gap between R0 and R2
-- **Misdirection R0**: No cantrip-level misdirection
+**Remaining Gaps**:
+- **Distortion R1+**: Still nearly empty beyond cantrip — weakest trait
+- **Hallucinations R1**: Gap between R0 and R2 persists
+- **Trickery R3, R5**: No advanced trickery at R3 or capstone level
+- **Misdirection R0, R4**: No cantrip-level or R4 misdirection
+- **Obfuscation R4-R5**: No high-rank obfuscation
 
 ## Proposed Spell Changes
 
@@ -85,6 +85,20 @@
 
 > **Design Note**: Fills R0 distortion/hallucination gap. Pure utility cantrip for creative misdirection.
 
+### Illusory Dodge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Self | Self | quick
+
+*You conjure a flickering illusory double of yourself at the last instant, confusing your attacker's aim.*
+
+**Weak.** As a Quick Action when targeted by an attack, create a brief illusory copy of yourself. Gain +2 to Dodge against the triggering attack.
+**Strong.** Gain +4 to Dodge against the triggering attack. If the attack misses, the illusion persists briefly, granting +1 bane on the next attack targeting you before the end of your next turn.
+**Critical.** Gain +4 to Dodge against the triggering attack. The illusion persists briefly, granting +1 bane on all attacks targeting you until the end of your next turn.
+
+> **Design Note**: Fills the missing R1 Quick Action reactive spell for Illusion. Creates a brief illusory double as defense through deception — fits "misdirection" trait.
+
 ### Phantasmal Armor
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -113,6 +127,34 @@
 
 > **Design Note**: R4 single-target lockdown. The "maze" theme fits illusion's trickery identity. Concentration requirement and per-turn escape attempts prevent permanent disable.
 
+### Phantasmal Catastrophe
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Short | concentrate
+
+*You project a terrifying mass hallucination — the earth splitting, the sky falling, buildings collapsing — flooding the minds of all creatures in the area with overwhelming psychic horror.*
+
+**Weak.** All creatures in a short area experience a vivid hallucination of catastrophe. They take +5 psychic damage and are briefly confused as they struggle to distinguish reality from illusion.
+**Strong.** Targets take +10 psychic damage and are confused for a short duration. Creatures that fail by 3+ are also frightened.
+**Critical.** Targets take +15 psychic damage and are confused for a short duration. Creatures that fail by 3+ are frightened and flee the area if possible.
+
+> **Design Note**: R4 AoE hallucination. Damage uses half single-target R4 scaling (+5/+10/+15). The mass confusion effect represents Illusion's control role at high ranks.
+
+### Grand Illusion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Hard TN | Long | concentrate, illusory
+
+*You weave an enormous, detailed illusion that fills an entire area — phantom buildings, false terrain, illusory armies, or elaborate environmental changes.*
+
+**Weak.** Create a large, detailed illusion filling a close area within long range. The illusion includes visual, auditory, and olfactory elements. It lasts for a short duration. Creatures interacting with the illusion can roll Spirit + Perception vs. your casting result to detect it.
+**Strong.** The illusion fills a short area and lasts for a medium duration. The illusion is convincing enough to include moving elements (marching soldiers, flowing water, swaying trees). Detection attempts suffer +1 bane.
+**Critical.** The illusion fills a medium area and lasts for a medium duration. The illusion is near-perfect, with tactile elements (illusory walls feel solid to casual touch). Detection attempts suffer +2 banes.
+
+> **Design Note**: R4 capstone utility — the ultimate illusory creation. Concentration limits abuse. Scaling area and duration reward high casting rolls. Fits "trickery" trait.
+
 ### Perfect Disguise
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -127,26 +169,56 @@
 
 > **Design Note**: R5 capstone — the pinnacle of illusory deception. Not combat-focused, reflecting Illusion's utility identity.
 
+### Maze of Madness
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Medium | concentrate
+
+*You trap multiple creatures in a shared nightmarish hallucination — a labyrinth of impossible geometry, shifting walls, and maddening whispers that break the will of those caught within.*
+
+**Weak.** All creatures in a close area are drawn into a shared hallucination. They take +6 psychic damage and are briefly confused, unable to distinguish allies from enemies or real threats from phantom ones.
+**Strong.** Targets take +12 psychic damage and are confused for a short duration. Creatures that fail by 3+ are briefly dominated — they act on your behalf until the end of their next turn.
+**Critical.** Targets take +18 psychic damage and are confused for a short duration. Creatures that fail by 3+ are dominated for a short duration, fully under your control. You can direct their actions each turn.
+
+> **Design Note**: R5 offensive capstone for Illusion. AoE uses half single-target R5 scaling (+6/+12/+18). The confusion/domination escalation represents the pinnacle of illusory mind control. Concentration and vs. Resist prevent auto-wins.
+
+## Cross-School Spell Sharing
+
+**Potential Overlap: Illusion (Arcane) ↔ Twilight (Mystic)**
+
+The Twilight tradition shares the "illusion" aspect with the Illusion discipline. Both schools deal in deception, false perception, and manipulation of what creatures believe to be real. Key overlap areas:
+
+- **Illusory creation spells** (Minor Illusion, Major Illusion, Grand Illusion) could appear in the Twilight spell list, reflecting the moon's association with shadows and false visions
+- **Fear/dream effects** (Horrific Vision, Waking Dream, Phantasmal Killer) thematically align with Twilight's dream and secret aspects
+- **Disguise spells** (Disguise Form, Seeming) overlap with Twilight's shapeshifting and mystery themes
+
+**Shared Spell Candidates**: Any spell with the `illusory` property is a natural candidate for cross-school sharing between Illusion (Arcane) and Twilight (Mystic). Shared spells must be mechanically identical in both lists.
+
+> **Design Note**: Twilight approaches illusion reverently (mysteries of the moon, prophetic visions) while Illusion approaches it selfishly (deception for personal gain). The same spell mechanics can serve both philosophies with different flavor text.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Trickery chain**: Minor Illusion (R0) → Illusory Trap/False Enemy (R1) → Illusionary Terrain/Trap Room (R2) → *gap at R3-R5*
-2. **Misdirection chain**: *gap at R0* → Mirror Image (R1) → Misdirection/Invisibility (R2) → Mislead (R3) → *gap at R4* → Perfect Disguise (R5 proposed)
-3. **Obfuscation chain**: Maddening Whispers (R0) → Color Spray/Disguise Form (R1) → Waking Dream (R2) → Seeming (R3 proposed complete) → *gap at R4-R5*
-4. **Hallucinations chain**: Horrific Vision (R0) → *gap at R1* → Hallucinated Swarm/Major Illusion (R2) → Phantasmal Killer (R3) → Labyrinth of Mirrors (R4 proposed) → *needs R5 hallucination capstone*
+1. **Trickery chain**: Minor Illusion (R0) → Illusory Trap/False Enemy (R1) → Illusionary Terrain/Trap Room (R2) → *gap at R3* → Grand Illusion (R4 proposed) → *gap at R5*
+2. **Misdirection chain**: *gap at R0* → Mirror Image/Illusory Dodge (R1, R1 proposed) → Misdirection/Invisibility (R2) → Mislead (R3) → *gap at R4* → Perfect Disguise (R5 proposed)
+3. **Obfuscation chain**: Maddening Whispers (R0) → Color Spray/Disguise Form (R1) → Waking Dream/Phantasmal Armor (R2, R2 proposed) → Seeming (R3) → *gap at R4-R5*
+4. **Hallucinations chain**: Horrific Vision (R0) → *gap at R1* → Hallucinated Swarm/Major Illusion (R2) → Phantasmal Killer (R3) → Phantasmal Catastrophe/Labyrinth of Mirrors (R4 proposed) → Maze of Madness (R5 proposed) — **complete R0-R5** (except R1)
 5. **Distortion chain**: Sensory Trick (R0 proposed) → *gap at R1-R5* — weakest chain, nearly empty
 
 ### Setup + Payoff Combos
-- ✅ **Illusion belief → psychic vulnerability**: Targets who believe illusions are vulnerable to Phantasmal Killer/Labyrinth of Mirrors
+- ✅ **Illusion belief → psychic vulnerability**: Targets who believe illusions are vulnerable to Phantasmal Killer/Labyrinth of Mirrors/Phantasmal Catastrophe
+- ✅ **Illusory Dodge → misdirection defense**: Brief reactive defense plays into the "deception as protection" identity
 - ⚠️ **Invisibility → surprise attack**: Mechanically supported via advantage, but no Illusion spell explicitly rewards attacking from invisibility
 - ⚠️ **Layer stacking**: Multiple illusions compound false reality, but most spells require concentration, limiting simultaneous layers
 - ❌ **Distortion → condition stack**: No distortion-based condition-building mechanic exists — distortion trait is mechanically hollow
 
 ### Design Completeness Checklist
-- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
-- ⚠️ Defensive options: Phantasmal Armor (R2 proposed) only — no R1-level defense
-- [x] Utility: Strong across disguise (Disguise Form, Seeming, Perfect Disguise), invisibility, terrain illusions
-- ⚠️ Damage across ranks: Psychic damage sparse — Horrific Vision (R0), Phantasmal Killer (R3), Labyrinth (R4) — no R1-R2 or R5 damage spell
-- [x] Repeating conditions: Frightened, confused, charmed, blinded well-covered
+- [x] R1 Quick Action: Illusory Dodge (R1 proposed) — reactive illusory defense
+- ⚠️ Defensive options: Illusory Dodge (R1 proposed), Phantasmal Armor (R2 proposed) — improved but no sustained defense
+- [x] Utility: Strong across disguise (Disguise Form, Seeming, Perfect Disguise), invisibility, terrain illusions, Grand Illusion (R4 proposed)
+- [x] Damage across ranks: Psychic damage now covered — Horrific Vision (R0), Phantasmal Killer (R3), Phantasmal Catastrophe (R4 proposed), Maze of Madness (R5 proposed)
+- [x] Repeating conditions: Frightened, confused, charmed, blinded, dominated well-covered
 - ⚠️ Setup+payoff: "Believe illusion → vulnerable" is conceptually strong but lacks explicit mechanical triggers
-- ⚠️ **Remaining gaps**: R1 Quick Action, distortion trait R1+, hallucinations R1, R5 offensive option, R1-R2 psychic damage
+- ⚠️ **3 spells per rank minimum**: Met at R0-R4 (R0: 4, R1: 6, R2: 8, R3: 3, R4: 3). R5 has 2 — needs one more spell
+- ⚠️ **Remaining gaps**: Distortion trait R1+, hallucinations R1, R5 needs one more spell for 3-per-rank minimum

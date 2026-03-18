@@ -126,6 +126,20 @@
 
 > **Design Note**: Fills R3 influence gap. Escalation from R2 Forced Suggestion — longer-lasting, more complex commands. Not instant mind control — the command must be "reasonable" (GM adjudication), preventing use as a combat win-button.
 
+### Psychic Lance
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist | Long | —
+
+*You focus your mental power into a razor-sharp lance of psychic energy and drive it into a single creature's mind, shattering their concentration and overwhelming their senses.*
+
+**Weak.** Deal +8 psychic damage to a single target. The target is briefly dazed as their thoughts scatter.
+**Strong.** Deal +16 psychic damage. The target is dazed for a short duration. If the target was already dazed before this spell was cast, they become confused instead.
+**Critical.** Deal +24 psychic damage. The target is confused for a short duration. If the target was already dazed or confused before this spell was cast, they are also briefly stunned.
+
+> **Design Note**: Fills the R3 damage gap in Telepathy. Single-target damage matches R3 scaling (+8/+16/+24). The condition escalation (dazed → confused → stunned) rewards targeting already-impaired enemies, creating a setup → payoff chain within the school.
+
 ### Memory Sieve
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -154,6 +168,20 @@
 
 > **Design Note**: R4 memory spell — fills the critical memory gap at a power level appropriate for significant mental manipulation.
 
+### Mass Domination
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Close | concentrate
+
+*You project your will outward in a crushing wave of mental authority, seizing control of multiple minds simultaneously.*
+
+**Weak.** All creatures in a close area must resist or be briefly dominated — they act on your behalf until the end of their next turn. You can issue a single simple command to all dominated creatures (move, attack a target, drop items).
+**Strong.** Dominated creatures remain under your control for a short duration. You can issue different commands to each creature. Creatures can attempt to break free (Spirit + Fortitude vs. your casting result) at the end of each of their turns.
+**Critical.** Dominated creatures remain under your control for a short duration with no immediate escape attempt — they can only attempt to break free after the first round. You can issue complex commands and coordinate dominated creatures' actions.
+
+> **Design Note**: R4 mass control capstone. Close range limits use to melee/close encounters. Concentration and per-turn escape attempts prevent permanent lockdown. The "simple command" limit at weak prevents combat-ending abuse.
+
 ### Psychic Maelstrom
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -168,32 +196,64 @@
 
 > **Design Note**: R5 capstone. AoE at R5 uses half single-target scaling (+6/+12/+18). The condition escalation (dazed → confused → dominated) rewards high casting rolls.
 
+### Absolute Control
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Medium | concentrate
+
+*You drive your consciousness into a single creature's mind like a spike, overwriting their will entirely. Their body becomes your puppet, their thoughts silenced under the weight of your absolute dominion.*
+
+**Weak.** One creature is dominated for a short duration. The target acts entirely on your behalf — you control their movement, actions, and speech. The target can attempt to break free (Spirit + Fortitude vs. your casting result) at the end of each of their turns.
+**Strong.** The domination lasts for a medium duration. Break-free attempts suffer +1 bane. You can access the target's surface thoughts and memories while controlling them, gaining knowledge of their abilities and skills.
+**Critical.** The domination lasts for a medium duration. Break-free attempts suffer +2 banes. You gain full access to the target's skills and abilities, using them as if they were your own. The target is unaware of the domination after it ends.
+
+> **Design Note**: R5 single-target control capstone — the pinnacle of telepathic domination. Concentration requirement means the caster is vulnerable while maintaining control. Per-turn escape attempts prevent permanent mind slavery. More powerful than Mass Domination (R4) but single-target only.
+
+## Cross-School Spell Sharing
+
+**Potential Overlap: Telepathy (Arcane) ↔ Peace (Mystic)**
+
+The Mental Shield spell concept overlaps with Peace tradition's protective magic. Both schools offer mental/spiritual protection, though from different philosophical angles. Key overlap areas:
+
+- **Mental Shield** (R1) provides psychic defense similar to Peace's protective wards and calming effects
+- **Calming/charm resistance** effects exist in both schools — Telepathy defends against mental intrusion, Peace provides serenity and mental fortitude
+
+**Shared Spell Candidates**: Mental Shield could serve as a shared spell between Telepathy (Arcane) and Peace (Mystic), providing identical psychic defense mechanics in both lists.
+
+> **Design Note**: Telepathy's mental defense is selfish (protecting the caster's own mind from rival psychics) while Peace's protection is communal (shielding the faithful from mental corruption). The same mechanics serve both philosophies.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
 1. **Influence chain**: Mind Blast (R0) → Subtle Suggestion/Attack Thoughts (R1) → Forced Suggestion (R2) → Implant Suggestion (R3 proposed) → *gap at R4* → Psychic Maelstrom (R5 proposed)
 2. **Communication chain**: Mental Link (R0) → *gap at R1* → Telepathic Bond (R2 proposed) → Invade Dreams (R3\*) → *gap at R4-R5*
 3. **Insight chain**: Detect Magic (R0) → Foresight/Psychometry/True Strike (R1) → Counterspell (R2) → *gap at R3-R5*
-4. **Domination chain**: Commanding Thought (R0 proposed) → Control Beast (R1) → Wave of Madness (R2\*) → *gap at R3-R4* → Psychic Maelstrom (R5 proposed, dominated at critical)
-5. **Memory chain**: Surface Recall (R0 proposed) → *gap at R1* → Memory Sieve (R2 proposed) → *gap at R3* → Modify Memory (R4 proposed) → *needs R5*
+4. **Domination chain**: Commanding Thought (R0 proposed) → Control Beast (R1) → Wave of Madness (R2\*) → *gap at R3* → Mass Domination (R4 proposed) → Absolute Control/Psychic Maelstrom (R5 proposed)
+5. **Memory chain**: Surface Recall (R0 proposed) → *gap at R1* → Memory Sieve (R2 proposed) → *gap at R3* → Modify Memory (R4 proposed) → *gap at R5*
+6. **Damage chain**: Mind Blast (R0) → Attack Thoughts (R1) → Psychic Wave (R2) → Psychic Lance (R3 proposed) → *gap at R4* → Psychic Maelstrom (R5 proposed)
 
 ### Setup + Payoff Combos
 - ✅ **Charm/daze → telepathy boon**: Charmed or dazed targets are vulnerable to follow-up mental attacks
 - ✅ **Read thoughts → social advantage**: Psychometry/Surface Recall → +1 boon on social interactions
+- ✅ **Psychic Lance condition escalation**: Dazed targets become confused, confused targets become stunned — rewards repeated targeting
 - ⚠️ **Memory chain progression**: Surface Recall → Memory Sieve → Modify Memory has clean escalation but R1 and R3 gaps break the chain
-- ❌ **Communication → Domination**: No mechanic linking established telepathic contact to easier domination attempts
+- ⚠️ **Communication → Domination**: No mechanic linking established telepathic contact to easier domination attempts
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Mental Shield (R1 proposed) — reactive psychic defense
 - [x] Defensive options: Mental Shield (R1 proposed) provides Resist bonus and psychic resistance
 - [x] Utility: Detect Magic (R0), Psychometry (R1), Telepathic Bond (R2 proposed)
-- ⚠️ Damage across ranks: Mind Blast (R0), Attack Thoughts (R1), Psychic Wave (R2) → *R3-R4 damage gap* → Psychic Maelstrom (R5)
-- [x] Repeating conditions: Dazed, confused, charmed, dominated — strong condition ladder
-- [x] Setup+payoff: Charm → vulnerability chain well-supported across ranks
-- ⚠️ **Remaining gaps**: Communication R1, Memory R1/R3, Insight R3+, Domination R3-R4, R3-R4 damage spells
+- [x] Damage across ranks: Mind Blast (R0), Attack Thoughts (R1), Psychic Wave (R2), Psychic Lance (R3 proposed), Psychic Maelstrom (R5 proposed) — R4 damage gap remains
+- [x] Repeating conditions: Dazed, confused, charmed, dominated — strong condition ladder with escalation via Psychic Lance
+- [x] Setup+payoff: Charm → vulnerability chain, Psychic Lance condition escalation, daze → domination pipeline
+- ⚠️ **3 spells per rank minimum**: Met at R0-R4 (R0: 5, R1: 7, R2: 6, R3: 3, R4: 3). R5 has 2 — needs one more spell
+- ⚠️ **Remaining gaps**: Communication R1, Memory R1/R3/R5, Insight R3+, R4 damage spell, R5 needs one more for 3-per-rank
 
 ### Impact & Trivialization Review
 - **Surface Recall (R0 memory reading)**: Moderate risk — reading recent memories could shortcut investigation. **Mitigations**: only surface/recent memories (seconds to minutes), unwilling targets resist, close range required. GM controls information depth. Provides leads, not answers.
 - **Commanding Thought (R0 mind control)**: Low risk — single Quick Action or Action, non-harmful commands only. Cannot compel complex, dangerous, or self-harmful actions. Well-bounded at cantrip level.
 - **Implant Suggestion (R3)**: Moderate risk — "reasonable" command clause and GM adjudication prevent worst abuses. Target rationalizes action as their own, but obviously suicidal commands auto-fail. Comparable to classic Suggestion spell constraints.
 - **Modify Memory (R4)**: Highest risk in Telepathy — altering memories could bypass entire social intrigue arcs. **Mitigations**: vs. Resist, close range (effectively requires restrained/willing target), concentration, R4 Focus cost is heavy. GMs should treat important NPCs as having resistance, wards, or allies who notice behavioral changes. The spell changes memory, not personality — altered targets may still act unpredictably.
+- **Mass Domination (R4)**: High risk — multi-target mind control. **Mitigations**: close range only (caster must be in the thick of combat), concentration, per-turn escape attempts, brief/short duration. Simple commands at weak level prevent army-stealing.
+- **Absolute Control (R5)**: Highest risk — total single-target domination. **Mitigations**: concentration (caster is vulnerable and immobile), vs. Resist, per-turn escape attempts even at critical, medium duration maximum. Appropriate for R5 peak mortal power but GMs should ensure important NPCs have high Resist values or ally intervention.

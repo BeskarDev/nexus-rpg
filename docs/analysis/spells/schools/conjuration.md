@@ -180,31 +180,76 @@
 
 > **Design Note**: R5 capstone — bounded teleportation. Short duration, concentration, expensive material cost. Not unlimited (mortal-scale).
 
+### Conjure Army
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Very Hard TN | Close | concentrate, material cost (300 coins)
+
+*You tear open multiple rifts in reality, pulling forth a host of extraplanar warriors bound to your will — conjured soldiers that fight and die at your command.*
+
+**Weak.** Summon 3 conjured warriors (Tier 2 creatures) in close range. They act on your initiative and obey your mental commands. They last for a brief duration.
+**Strong.** Summon 5 conjured warriors. They last for a short duration and can be directed as a group with a single mental command (no action required).
+**Critical.** Summon 6 conjured warriors. They last for a short duration. You can direct them as a group, and they gain +1 boon on all attack rolls while within close range of each other.
+
+> **Design Note**: R5 summoning capstone — army-scale conjuration. Concentration limits total action economy abuse, material cost adds resource pressure. Tier 2 creatures are useful but not overwhelming individually. Scales with success level for both quantity and duration.
+
+### Force Cataclysm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Long | —
+
+*You channel an overwhelming surge of raw arcane force into a single devastating blast, striking your target with the full, focused power of conjured destruction.*
+
+**Weak.** Deal +12 force damage to a single target.
+**Strong.** Deal +24 force damage. The target is briefly staggered as the force impact overwhelms them.
+**Critical.** Deal +36 force damage. The target is restrained for a short duration as residual force energy pins them in place.
+
+> **Design Note**: R5 single-target offensive capstone for the force chain. Damage follows standard R5 single-target scaling (+12/+24/+36). The restrained condition on critical ties into Conjuration's binding identity. No concentration — a pure burst finisher.
+
+## Cross-School Spell Sharing
+
+**Potential Overlap: Conjuration (Arcane) ↔ Nature (Mystic)**
+
+The Conjure Familiar spell concept overlaps with Nature's Wild Companion — both provide an animal or creature companion for scouting and utility. Key overlap areas:
+
+- **Conjure Familiar** (R1) and Nature's **Wild Companion** serve similar mechanical roles (scout, minor utility, action economy) but differ in flavor: conjuration pulls an extraplanar entity, Nature bonds with a natural animal
+- **Summoning spells** at higher ranks could overlap with Nature's animal summoning, though Conjuration summons extraplanar creatures while Nature calls natural beasts
+
+**Shared Spell Candidates**: Conjure Familiar is a strong candidate for cross-school sharing between Conjuration (Arcane) and Nature (Mystic), as both provide a creature companion for scouting and utility. The shared version should use identical mechanics in both spell lists.
+
+> **Design Note**: Conjuration summons are unnatural (forced, extraplanar) while Nature summons are harmonious (willing, natural). Despite different flavor, the mechanical effect of "gain a small companion creature" is identical.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Force chain**: Arcane Bolt (R0) → Arcane Missiles/Hale of Blades (R1) → Arcane Barrage (R2) → Arcane Blast (R3) → Arcane Empowerment (R4) → *needs R5 offensive capstone*
-2. **Creatures chain**: Conjure Vermin (R0 proposed) → Conjure Familiar (R1) → Summon Aberration (R2) → Conjure Guardian (R3 proposed) → *gap at R4-R5*
+1. **Force chain**: Arcane Bolt (R0) → Arcane Missiles/Hale of Blades (R1) → Arcane Barrage (R2) → Arcane Blast (R3) → Arcane Empowerment (R4) → Force Cataclysm (R5 proposed) — **complete R0-R5**
+2. **Creatures chain**: Conjure Vermin (R0 proposed) → Conjure Familiar (R1) → Summon Aberration (R2) → Conjure Guardian (R3 proposed) → *gap at R4* → Conjure Army (R5 proposed)
 3. **Teleportation chain**: Blink Step (R0 proposed) → *gap at R1* → Phase Step (R2) → Dimension Door/Astral Gate (R3) → Teleportation Circle (R4\*) → Planar Gateway (R5 proposed)
-4. **Binding chain**: Arcane Snare (R0 proposed) → Alarm (R1) → Arcane Circle/Eldritch Tendrils (R2) → *gap at R3* → Force Cage (R4\*) → *needs R5*
+4. **Binding chain**: Arcane Snare (R0 proposed) → Alarm (R1) → Arcane Circle/Eldritch Tendrils (R2) → *gap at R3* → Force Cage (R4\*) → *gap at R5*
 5. **Objects chain**: Arcane Glyph/Extraplanar Pocket (R0) → Infuse Item (R1) → Fabricate (R2 proposed) → *gap at R3-R5*
 
 ### Setup + Payoff Combos
 - ✅ **Familiar scout → targeting**: Conjure Familiar marks targets, follow-up spells gain +1 boon
 - ✅ **Wall of Force → isolation**: Split battlefield creates tactical advantage for force spells
+- ✅ **Force chain → Force Cataclysm**: Full R0-R5 force damage progression with devastating single-target capstone
 - ⚠️ **Binding → force damage payoff**: Restrained targets should be vulnerable to force attacks, but no explicit mechanic links them
-- ❌ **Summon → teleport combo**: No synergy between summoning and teleportation effects
+- ⚠️ **Summon → teleport combo**: No synergy between summoning and teleportation effects
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Arcane Deflection (R1 proposed) — force barrier reactive defense
 - [x] Defensive options: Arcane Barrier (R1), Arcane Deflection (R1 proposed)
-- [x] Utility: Extraplanar Pocket (R0), Arcane Eye (R2), Fabricate (R2 proposed)
-- [x] Damage across ranks: R0-R4 covered via force chain; R5 needs an offensive capstone
+- [x] Utility: Extraplanar Pocket (R0), Arcane Eye (R2), Fabricate (R2 proposed), Planar Gateway (R5 proposed)
+- [x] Damage across ranks: R0-R5 fully covered via force chain — Force Cataclysm (R5 proposed) completes the progression
 - ⚠️ Repeating conditions: Restrained via binding spells, but limited condition variety overall
-- [x] Setup+payoff: Familiar → boon, Wall → isolation are well-defined
-- ⚠️ **Remaining gaps**: Teleportation R1, Objects R3+, Binding R3, no R5 force damage spell
+- [x] Setup+payoff: Familiar → boon, Wall → isolation, Force chain R0-R5
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 7, R2: 7, R3: 6, R4: 5, R5: 3)
+- ⚠️ **Remaining gaps**: Teleportation R1, Objects R3+, Binding R3, Creatures R4
 
 ### Impact & Trivialization Review
 - **Blink Step (R0 teleport)**: Minimal risk — melee/close range only, cantrip-level repositioning. Does not bypass exploration.
 - **Fabricate (R2 item creation)**: Moderate risk — could bypass Crafting challenges. **Mitigations**: ritual (10 min), requires raw materials, caps at Q2 quality, cannot create magical items. Crafting skill remains essential for anything above basic goods.
 - **Planar Gateway (R5 portal)**: Low risk at R5 power level — Very Hard TN, concentration, 500-coin material cost consumed, must have visited the destination. Appropriate for peak mortal magic. GMs retain narrative control over which locations qualify as "visited."
+- **Conjure Army (R5 summons)**: Moderate risk — multiple summons create action economy advantage. **Mitigations**: concentration (lose all summons if broken), material cost (300 coins), Tier 2 creatures are individually weak, brief/short duration limits. Cannot sustain an army across multiple encounters.
+- **Force Cataclysm (R5 damage)**: Low risk — straightforward single-target damage at appropriate R5 scaling. No unusual interactions or edge cases. The restrained condition on critical is a bonus, not the primary effect.
