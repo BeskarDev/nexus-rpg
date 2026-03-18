@@ -33,15 +33,26 @@
 | 3 | 1 | Invade Dreams (incomplete) |
 | 4 | 1 | Astral Body (incomplete) |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| influence | ✅ | ✅ | — |
-| communication | ✅ | ✅ (weak) | — |
-| insight | ✅ | ✅ | — |
-| domination | ❌ | ✅ (R1+) | Missing R0 domination cantrip |
-| memory | ❌ | ❌ | **Missing at ALL ranks** — critical gap |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| influence | Mind Blast | Subtle Suggestion, Attack Thoughts | Forced Suggestion | — | — | — |
+| communication | Mental Link | — | — | Invade Dreams* | — | — |
+| insight | Detect Magic | Foresight, Psychometry, True Strike | Counterspell | — | — | — |
+| domination | ❌ **GAP** | Control Beast | Wave of Madness* | — | — | — |
+| memory | ❌ **GAP** | — | — | — | — | — |
+
+*Asterisk = incomplete spell*
+
+**Coverage**: 10/30 slots filled (33%) — weakest arcane discipline by coverage
+
+**Critical Gaps**:
+- **Memory**: Zero spells at ANY rank — the most critical gap across all schools
+- **Domination R0**: No cantrip-level command
+- **Communication R1-R2**: Only Mental Link (R0) and Invade Dreams (R3) — massive mid-rank gap
+- **Influence R3+**: No high-rank influence spells
+- **All traits R4-R5**: Only Astral Body (incomplete) — effectively no high-rank Telepathy
 
 ## Proposed New Spells
 
@@ -86,6 +97,48 @@
 **Critical.** The bonus increases to +4 Resist and resistance to psychic damage (reduce by 4). If a charm or fear effect fails against the shielded target, the attacker takes +2 psychic damage from the backlash.
 
 > **Design Note**: Defensive option for Telepathy — mental protection fits the school's identity.
+
+### Telepathic Bond
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Willing allies | Close | enchant (medium)
+
+*You link the minds of your allies, allowing wordless communication across distance.*
+
+**Weak.** Link up to 3 willing creatures for a medium duration. Linked creatures can communicate telepathically within long range. Communication is limited to simple thoughts and emotions.
+**Strong.** Link up to 5 creatures. Communication includes full sentences and shared sensory impressions (one creature can briefly share what they see/hear). Range extends to extreme.
+**Critical.** Link up to 5 creatures. Full telepathic communication with no range limit (same plane). Linked creatures can share a Perception check result once per scene (one creature spots danger, all are aware).
+
+> **Design Note**: Fills R2 communication gap. Practical exploration/tactical utility — coordination without speaking. Medium duration prevents permanent always-on communication. Range limits prevent it from replacing mundane messaging systems.
+
+### Implant Suggestion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist | Medium | —
+
+*You plant a deep mental command in a creature's mind, compelling them to carry out a complex course of action.*
+
+**Weak.** The target must carry out a reasonable course of action you describe (one sentence). The action can last up to a short duration. The target rationalizes the action as their own idea. Obviously suicidal commands fail automatically.
+**Strong.** The implanted suggestion can be more complex (two sentences) and lasts for a medium duration. The target is unaware they were influenced after the effect ends.
+**Critical.** Complex suggestion (three sentences) lasting for a long duration. The target is completely unaware of the manipulation, even after the effect ends.
+
+> **Design Note**: Fills R3 influence gap. Escalation from R2 Forced Suggestion — longer-lasting, more complex commands. Not instant mind control — the command must be "reasonable" (GM adjudication), preventing use as a combat win-button.
+
+### Memory Sieve
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | vs. Resist | Close | concentrate
+
+*You probe deeper into a creature's memories, extracting specific information.*
+
+**Weak.** Extract one specific memory from the past day. The target is aware their mind is being read and can attempt to resist each round.
+**Strong.** Extract memories from the past week. You can search for specific topics. The target feels discomfort but may not immediately realize the source.
+**Critical.** Extract memories from the past month. You can search for specific topics with precision. The target is unaware of the intrusion unless they succeed on a Spirit + Insight check.
+
+> **Design Note**: Fills R2 memory gap — bridges Surface Recall (R0) and Modify Memory (R4). Concentration and per-round resistance prevent casual abuse. Requires being within close range, limiting use to willing/restrained targets.
 
 ### Modify Memory
 

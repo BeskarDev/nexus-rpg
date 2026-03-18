@@ -34,15 +34,26 @@
 | 3 | 5 | Arcane Blast, Astral Gate, Burst of Tendrils, Dimension Door, Wall of Force |
 | 4 | 4 | Arcane Empowerment, Astral Body (incomplete), Force Cage (incomplete), Teleportation Circle (incomplete) |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| objects | ✅ | ✅ | — |
-| creatures | ❌ | ✅ | Missing R0 creature summon |
-| teleportation | ❌ | ✅ (R2+) | Missing R0 teleport cantrip |
-| binding | ❌ | ✅ | Covered at R1+ (Eldritch Tendrils, Force Cage) |
-| force | ✅ | ✅ | — |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| objects | Arcane Glyph, Extraplanar Pocket | Infuse Item | — | — | — | — |
+| creatures | ❌ **GAP** | Conjure Familiar | Summon Aberration | — | — | — |
+| teleportation | ❌ **GAP** | — | Phase Step | Dimension Door, Astral Gate | Teleportation Circle* | — |
+| binding | — | Alarm | Arcane Circle, Eldritch Tendrils | — | Force Cage* | — |
+| force | Arcane Bolt | Arcane Missiles, Arcane Barrier, Hale of Blades | Arcane Barrage, Arcane Eye | Arcane Blast, Burst of Tendrils, Wall of Force | Arcane Empowerment | — |
+
+*Asterisk = incomplete spell*
+
+**Coverage**: 17/30 slots filled (57%) — strong at R1-R3, weak at R0 and R4-R5
+
+**Critical Gaps**:
+- **Creatures R0**: No summoning cantrip — the first summon isn't until R1
+- **Teleportation R0-R1**: No teleport below R2 — a core identity trait locked to mid-ranks
+- **Objects R2+**: No object-creation spells above R1
+- **Binding R0, R3**: Gaps in the binding progression
+- **All traits R5**: No capstone spells
 
 ## Proposed Spell Changes
 
@@ -112,6 +123,48 @@
 **Critical.** Teleport to an unoccupied space within close range. You don't provoke attacks of opportunity from this movement.
 
 > **Design Note**: Fills R0 teleportation gap. Very short range, cantrip-level repositioning.
+
+### Arcane Snare
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | vs. Dodge | Close | —
+
+*You conjure a brief tether of arcane force that wraps around a creature's limbs.*
+
+**Weak.** The target's movement is reduced by 1 until the end of their next turn.
+**Strong.** The target's movement is reduced by 2 until the end of their next turn.
+**Critical.** The target is briefly restrained as the tether locks tight.
+
+> **Design Note**: Fills R0 binding gap. Cantrip-level movement denial — weak version of Eldritch Tendrils.
+
+### Conjure Guardian
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Hard TN | Close | concentrate
+
+*You summon a formidable extraplanar entity — a hulking creature of force and shadow bound to your will.*
+
+**Weak.** Summon a Tier 2 guardian in close range. It acts on your initiative, has basic melee attacks, and lasts for a brief duration.
+**Strong.** The guardian is Tier 3. It lasts for a short duration and can intercept attacks targeting adjacent allies (redirect one attack per round to itself).
+**Critical.** The guardian is Tier 3 with enhanced durability (+10 HP). It lasts for a short duration and can intercept two attacks per round.
+
+> **Design Note**: Fills R3 creatures gap. Mid-tier summon with defensive utility — a bodyguard rather than a damage dealer, complementing R2's offensive Summon Aberration.
+
+### Fabricate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Medium TN | Close | ritual (10 minutes)
+
+*You channel arcane energy into raw materials, reshaping them into a finished product.*
+
+**Weak.** Transform raw materials within close range into a simple finished object (rope from plant fiber, a wooden door from timber, a stone block from rubble). The object is functional but crude.
+**Strong.** Create a more refined object. You can produce items that would normally require basic Crafting tools. The quality is equivalent to a skilled artisan.
+**Critical.** Create a finely crafted object. You can produce items up to Q2 quality. Complex mechanisms (locks, hinges) are possible if you have the relevant Crafting knowledge.
+
+> **Design Note**: Fills R2 objects gap. Ritual prevents combat abuse. Requires raw materials — doesn't create something from nothing. Doesn't replace Crafting skill (no Q3+ items, no magical items).
 
 ### Planar Gateway
 

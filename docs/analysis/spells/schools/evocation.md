@@ -20,7 +20,10 @@
 
 ### Internal Synergies
 - **Setup**: Apply elemental condition (burning/slowed/staggered) → **Payoff**: Follow-up spells deal bonus damage or have enhanced effects against conditioned targets
-- **Element stacking**: Apply multiple elemental conditions to the same target for compounding penalties
+- **Element stacking**: Apply multiple elemental conditions to the same target for compounding penalties (Elemental Cataclysm at R4 is the ultimate payoff for this)
+- **AV strip → Focus fire**: Acid spells reduce AV → subsequent fire/lightning spells deal more effective damage
+- **Terrain control**: Frost spells create ice terrain → enemies slowed in terrain take extra damage from lightning (conductivity)
+- **Cantrip → R1 escalation**: Flickering Flame/Static Spark apply conditions → Chromatic Orb or elemental weapon follow-ups exploit them
 
 ## Current Spell Inventory (18 spells)
 
@@ -32,15 +35,24 @@
 | 3 | 1 | Black Flame Bolt |
 | 4–5 | 0 | — |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| fire | ✅ | ✅ | — |
-| frost | ✅ | ✅ | — |
-| lightning | ✅ | ✅ | — |
-| acid | ❌ | ✅ (Chromatic Orb) | Missing R0 acid cantrip |
-| blast | ❌ | ❌ | No dedicated blast spells (concussive force) |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| fire | Flickering Flame | Flame Burst, Flaming Weapon, Scorching Ray | Fireball | Black Flame Bolt | — | — |
+| frost | Frost Snap | Frozen Weapon, Ice Shards | Frost Wave, Ice Lance | — | — | — |
+| lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | — | — | — |
+| acid | ❌ **GAP** | Chromatic Orb (multi) | — | — | — | — |
+| blast | ❌ **GAP** | — | — | — | — | — |
+
+**Coverage**: 11/30 slots filled (37%) — significant R3-R5 gaps across all traits
+
+**Critical Gaps**:
+- **Acid**: No R0 cantrip, only accessible via Chromatic Orb (multi-element). No dedicated acid spells at R2+
+- **Blast**: Zero spells at any rank — concussive force entirely absent
+- **All traits R4-R5**: Evocation has no spells above R3 — the premier damage school lacks high-rank options
+- **Frost R3+**: No dedicated frost spells above R2
+- **Lightning R3+**: No dedicated lightning spells above R2
 
 ## Proposed Spell Changes
 
@@ -134,6 +146,20 @@
 
 > **Design Note**: R2 defensive option that reinforces the elemental identity while providing meaningful protection.
 
+### Glacial Spike
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Dodge | Long | —
+
+*You conjure a massive shard of crystallized frost and hurl it at your target, where it detonates in a burst of freezing cold.*
+
+**Weak.** Deal +8 frost damage to the primary target. They are briefly slowed.
+**Strong.** Deal +16 frost damage. The target is slowed for a short duration and the area around them (melee range) becomes difficult terrain (ice) briefly.
+**Critical.** Deal +24 frost damage. The target is slowed for a short duration and briefly restrained as ice encases their legs. Ice terrain persists for a short duration.
+
+> **Design Note**: Fills R3 frost gap. Single-target with area denial secondary effect — trades multi-target for control.
+
 ### Chain Lightning
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -146,7 +172,35 @@
 **Strong.** Deal +16 lightning damage to the primary target. Arcs to two additional targets, each taking +8 lightning damage. Targets are briefly staggered.
 **Critical.** Deal +24 lightning damage to the primary target. Arcs to three additional targets, each taking +12 lightning damage. All targets are staggered for a short duration.
 
-> **Design Note**: R3 chain spell — primary target takes single-target damage, secondary targets take half (multi-target scaling).
+> **Design Note**: R3 chain spell — primary target takes single-target damage, secondary targets take half (multi-target scaling). Fills R3 lightning gap.
+
+### Corrosive Torrent
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Dodge | Medium | —
+
+*You unleash a stream of concentrated acid that eats through armor, flesh, and stone alike.*
+
+**Weak.** Deal +8 acid damage to a single target. Reduce the target's AV by 2 until the end of their next turn.
+**Strong.** Deal +16 acid damage. AV reduced by 3 for a short duration.
+**Critical.** Deal +24 acid damage. AV reduced by 4 for a short duration. If the target's AV reaches 0, excess reduction applies as bonus acid damage.
+
+> **Design Note**: Fills R3 acid gap. Acid's identity is AV stripping — rewards focus fire after debuffing. No AoE to justify full single-target damage.
+
+### Elemental Cataclysm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Dodge | Long | —
+
+*You channel all four elemental forces simultaneously into a devastating strike — fire, frost, lightning, and acid converge on a single point.*
+
+**Weak.** Deal +10 damage (choose fire, frost, lightning, or acid). Apply the element's signature condition: burning, slowed, staggered, or AV −2 briefly.
+**Strong.** Deal +20 damage. Apply the condition for a short duration. You may choose a second element — the target also takes +4 damage of that type.
+**Critical.** Deal +30 damage. Apply the condition for a short duration. Choose two additional elements — the target takes +8 damage of each and suffers all corresponding conditions briefly.
+
+> **Design Note**: R4 capstone single-target. Rewards element mastery by stacking multiple conditions. Raw power justifies R4 Focus cost.
 
 ### Delayed Blast Meteor
 

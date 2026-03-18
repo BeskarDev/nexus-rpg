@@ -33,15 +33,26 @@
 | 3 | 1 | Distortion Field (incomplete) |
 | 4 | 1 | Invert Gravity (incomplete) |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| move | ✅ | ✅ | — |
-| repel | ✅ | ✅ | — |
-| levitate | ❌ | ✅ (R2) | Missing R0 levitate cantrip |
-| crush | ❌ | ✅ (R1) | Missing R0 crush cantrip |
-| gravity | ❌ | ✅ (R1) | Missing R0 gravity cantrip |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| move | Weak Telekinesis | Telekinetic Volley | Strong Telekinesis | — | — | — |
+| repel | Kinetic Push | Shockwave | — | Distortion Field* | — | — |
+| levitate | ❌ **GAP** | — | Levitation | — | — | — |
+| crush | ❌ **GAP** | Telekinetic Crush | — | — | — | — |
+| gravity | ❌ **GAP** | Gravity Orb | Stasis | — | Invert Gravity* | — |
+
+*Asterisk = incomplete spell*
+
+**Coverage**: 10/30 slots filled (33%) — tied with Telepathy for weakest arcane discipline
+
+**Critical Gaps**:
+- **Levitate R0**: No levitation cantrip — a core fantasy expectation
+- **Crush R0**: No crushing force cantrip
+- **Gravity R0**: No gravity manipulation cantrip
+- **Move R3+**: No advanced telekinesis above R2
+- **All traits R5**: No R5 capstone. R3-R4 also extremely thin (1 each, both incomplete)
 
 ## Proposed New Spells
 
@@ -128,3 +139,31 @@
 **Critical.** The area is medium and lasts for a medium duration. You can selectively exclude up to 4 creatures from the effect. Suspended creatures are prone and suffer +2 banes on all attack rolls.
 
 > **Design Note**: R5 capstone — area control through gravity manipulation. Powerful but not instant-win — creatures can grab objects, and the caster must concentrate.
+
+### Kinetic Barrage
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Dodge | Long | —
+
+*You seize multiple objects in the environment — stones, debris, weapons — and hurl them at your enemies in a devastating volley.*
+
+**Weak.** Deal +4 physical damage to all creatures in a close area. Targets are briefly pushed (forced movement 1 area away from the center).
+**Strong.** Deal +8 physical damage. Targets are pushed and briefly prone.
+**Critical.** Deal +12 physical damage. Targets are pushed, prone, and the area becomes difficult terrain (scattered debris) for a short duration.
+
+> **Design Note**: Fills R3 move/repel gap. AoE at R3 uses half single-target scaling (+4/+8/+12). Environmental manipulation — uses terrain objects rather than pure force.
+
+### Crushing Sphere
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | vs. Dodge | Medium | concentrate
+
+*You encase a creature in a sphere of concentrated telekinetic force that slowly crushes inward.*
+
+**Weak.** One creature is briefly restrained as the sphere closes around them. At the start of their next turn, they take +3 physical damage (crush).
+**Strong.** The target is restrained for a short duration. They take +6 physical damage at the start of each of their turns. They can attempt to escape (Strength + Athletics vs. your casting result).
+**Critical.** As Strong, but damage increases to +9 per turn and escape attempts suffer +1 bane.
+
+> **Design Note**: Fills R2 crush gap. Sustained single-target control — escalating damage rewards maintaining concentration. Pairs well with Telekinetic Crush (R1) as a setup → payoff chain.

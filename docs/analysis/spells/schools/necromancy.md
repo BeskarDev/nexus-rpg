@@ -35,9 +35,24 @@
 | 3 | 6 | Curse of Mortality, Negative Energy Flood, Reaper's Harvest, Soul Prison, Spectral Army, Wither |
 | 4 | 2 | Death's Embrace, Finger of Death (incomplete) |
 
-### Trait Coverage — Perfect ✅
+### Trait × Rank Coverage — Perfect ✅
 
-All 5 traits are represented at R0 and across all ranks. Necromancy is the gold standard for trait coverage.
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| decay | Enfeebling Grasp | Grasp of Decay, Ray of Lethargy | Shroud of Blight | Wither, Curse of Mortality | — | — |
+| undeath | Necromantic Sight | Animate Corpse, Control Undead | Animate Horde | Spectral Army, Negative Energy Flood | Death's Embrace | — |
+| siphoning | Drain Life, Soul Drain | Death Bolt | Bone Shatter, Corpse Explosion | Reaper's Harvest | — | — |
+| defilement | Life Echo | Necrotic Shield, Death Ward | Inflict Curse, Death Mark | Soul Prison | Finger of Death* | — |
+| puppetry | — | Bone Armor | Soul Veil | — | — | — |
+
+*Asterisk = incomplete spell*
+
+**Coverage**: 23/30 slots filled (77%) — best-in-class among all schools. Model for trait coverage.
+
+**Minor Gaps**:
+- **Puppetry R0, R3+**: Corpse/skeleton manipulation under-represented at low and high ranks
+- **All traits R5**: No R5 capstone — even the gold-standard school needs a legendary finisher
+- **Decay R4**: No advanced decay effect at high rank
 
 ## Proposed Spell Changes
 

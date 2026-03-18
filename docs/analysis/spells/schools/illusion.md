@@ -32,15 +32,26 @@
 | 3 | 3 | Mislead, Phantasmal Killer, Seeming (incomplete) |
 | 4–5 | 0 | — |
 
-### Trait Coverage Gaps
+### Trait × Rank Coverage Matrix
 
-| Trait | R0 | R1+ | Gap |
-|-------|-----|------|-----|
-| trickery | ✅ | ✅ | — |
-| misdirection | ✅ | ✅ | — |
-| obfuscation | ✅ | ✅ | — |
-| hallucinations | ❌ | ✅ | R0 gap (Horrific Vision is more fear than hallucination) |
-| distortion | ❌ | ✅ | Arguable R0 gap (Minor Illusion is adjacent) |
+| Trait | R0 | R1 | R2 | R3 | R4 | R5 |
+|-------|-----|-----|-----|-----|-----|-----|
+| trickery | Minor Illusion | Illusory Trap, False Enemy | Illusionary Terrain, Trap Room | — | — | — |
+| misdirection | — | Mirror Image | Misdirection, Invisibility | Mislead | — | — |
+| obfuscation | Maddening Whispers | Color Spray, Disguise Form | Waking Dream | Seeming* | — | — |
+| hallucinations | Horrific Vision | — | Hallucinated Swarm, Major Illusion | Phantasmal Killer | — | — |
+| distortion | ❌ **GAP** | — | — | — | — | — |
+
+*Asterisk = incomplete spell*
+
+**Coverage**: 14/30 slots filled (47%) — strong at R1-R2, very weak at R3-R5
+
+**Critical Gaps**:
+- **Distortion R0**: No sensory distortion cantrip
+- **Trickery R3+**: No advanced trickery beyond R2
+- **All traits R4-R5**: Zero spells above R3 — Illusion has no high-rank options at all
+- **Hallucinations R1**: Gap between R0 and R2
+- **Misdirection R0**: No cantrip-level misdirection
 
 ## Proposed Spell Changes
 
@@ -87,6 +98,20 @@
 **Critical.** All attackers within medium range are affected. On a failed detection, they also take +2 psychic damage from the terrifying illusion.
 
 > **Design Note**: Defensive illusion spell — fits the "deception as defense" identity without being a traditional shield.
+
+### Labyrinth of Mirrors
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | concentrate, illusory
+
+*You trap a creature's mind in an ever-shifting maze of reflections and false corridors, leaving their body standing helpless.*
+
+**Weak.** One creature is briefly trapped in an illusory maze. They are dazed and cannot take Actions (only Quick Actions) as they try to navigate the false corridors. At the end of each of their turns, they can roll Mind + Perception vs. your casting result to escape.
+**Strong.** The target is trapped for up to a short duration. They are confused and cannot take any actions. Each turn they can attempt to escape.
+**Critical.** The target is trapped for up to a short duration and is confused. Escape attempts suffer +1 bane. When they escape, they are briefly disoriented (dazed for one additional turn).
+
+> **Design Note**: R4 single-target lockdown. The "maze" theme fits illusion's trickery identity. Concentration requirement and per-turn escape attempts prevent permanent disable.
 
 ### Perfect Disguise
 
