@@ -1071,38 +1071,38 @@ This section evaluates each of the 14 schools against the internal completeness 
 
 ### Rank 0 (Cantrips)
 - At-will, unlimited use, minor effects.
-- Damage: +2/+4/+6 single, +0/+2/+4 AoE.
-- Duration: Briefly–Short. Area: Melee–Close. Range: up to Medium.
+- Damage: +2/+4/+6 single, +0/+2/+4 multi-target.
+- Duration: Briefly–Short. Area: Single-target (rare melee AoE). Range: up to Medium.
 - No lasting effects beyond "briefly." No permanent creation.
 
 ### Rank 1 (Basic Spells)
 - Bread-and-butter combat and utility. Focus 2, TN 8.
-- Damage: +4/+8/+12 single, +2/+4/+6 AoE.
-- Duration: up to Medium. Area: Close–Short. Range: up to Medium.
+- Damage: +4/+8/+12 single, +2/+4/+6 multi-target.
+- Duration: up to Medium. Area: Single-target (rare melee AoE). Range: up to Medium.
 - Single-target control. Short buffs/debuffs. Basic utility.
 
 ### Rank 2 (Intermediate Spells)
 - Fireball-tier power, concentration common. Focus 4, TN 10.
-- Damage: +6/+12/+18 single, +4/+8/+12 AoE.
-- Duration: Short–Medium. Area: Short–Medium. Range: Medium–Long.
-- Multi-target effects. Battlefield control (small areas). Moderate healing.
+- Damage: +6/+12/+18 single, +3/+6/+9 multi-target (half single).
+- Duration: Short–Medium. Area: Close area or short line. Range: Medium–Long.
+- First true AoE tier. Battlefield control (small areas). Moderate healing.
 
 ### Rank 3 (High-Power Spells)
 - Encounter-defining effects. Focus 6, TN 12.
-- Damage: +8/+16/+24 single, +6/+12/+18 AoE.
-- Duration: Short–Medium. Area: Medium–Long. Range: Long.
+- Damage: +8/+16/+24 single, +4/+8/+12 multi-target (half single).
+- Duration: Short–Medium. Area: Short area. Range: Long.
 - Powerful control and transformation. Hybrid damage + utility.
 
 ### Rank 4 (Transformation Spells)
 - Major transformations and powerful effects. Focus 8, TN 14.
-- Damage: +10/+20/+30 single, +8/+16/+24 AoE.
-- Duration: Short–Medium. Area: Large. Range: Long–Extreme.
+- Damage: +10/+20/+30 single, +5/+10/+15 multi-target (half single).
+- Duration: Short–Medium. Area: Medium area. Range: Long–Extreme.
 - Form alterations, major barriers, planar interaction.
 
 ### Rank 5 (Peak Mortal Power)
 - Legendary mastery, NOT world-shattering. Focus 10, TN 16.
-- Damage: +12/+24/+36 single, +10/+20/+30 AoE.
-- Duration: Short–Medium (max). Area: Large–Extreme. Range: Extreme.
+- Damage: +12/+24/+36 single, +6/+12/+18 multi-target (half single).
+- Duration: Short–Medium (max). Area: Long area. Range: Extreme.
 - Mass buffs/healing, major control, legendary utility. Always costly, always escapable.
 
 ## Appendix C: Spell Properties Reference
