@@ -183,13 +183,13 @@
 - ❌ **Law → Protection link**: No mechanic connecting oath enforcement or truth effects to protective spell benefits
 
 ### Design Completeness Checklist
-- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
+- [x] R1 Quick Action: Absorb Harm (R1 proposed) provides reactive damage absorption for allies — fills this gap
 - [x] Defensive options: Blessing of Peace (R1), Dome of Sanctuary (R2), Anti-Magic Field (R3) — strong defensive core
 - [x] Utility: Wayfinder's Mark (R0 proposed), Swift Journey (R1 proposed), Safe Passage (R3 proposed) — travel pillar now represented
 - ⚠️ Damage across ranks: Righteous Verdict (R4 proposed) is the only significant damage spell — appropriate for Peace's weak offense role but leaves R0-R3 without any offensive option
 - [x] Repeating conditions: Dazed (pacification), charmed (calmed), protected (sanctuary)
 - ⚠️ Setup+payoff: Calm→truth is conceptually strong but lacks an explicit mechanical bonus (calmed targets don't get a stated penalty to resisting truth effects)
-- ⚠️ **Remaining gaps**: R1 Quick Action, Selflessness R0/R2/R4+, Law R1/R3/R5, Travel R2/R4+
+- ⚠️ **Remaining gaps**: Selflessness R0/R2/R4+, Law R1/R3/R5, Travel R2/R4+
 
 ### Impact & Trivialization Review
 - **Wayfinder's Mark (R0 navigation)**: Minimal risk — provides boon on navigation checks, doesn't auto-succeed. Pure assistance, not bypass.

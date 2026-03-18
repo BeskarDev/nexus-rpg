@@ -20,7 +20,7 @@
 10. **Spell tags between schools and spell lists add complexity without meaningful gameplay benefit.** Traits work better as design tools for coverage auditing (§17) than as a player-facing mechanical layer.
 11. **A "force" damage type (full AV per hit) should replace blast on 5 arcane projectile spells**, preserving blast (½ AV ignore) for concussive effects only. This clarifies the mechanical distinction between magical projectiles and explosive concussive force (§15).
 12. **Healing spell scaling matches damage scaling 1:1 for single-target**, with Quick Action healing appropriately halved and AoE healing following multi-target scaling. No major rebalancing needed (§16).
-13. **Multiple schools have significant R0 trait coverage gaps**, with Evocation, Telepathy, Telekinetics, Peace, and Tempest each missing 2–3 cantrips for uncovered aspects (§17).
+13. **Trait coverage gaps extend beyond R0 into all ranks**, with War (27% coverage), Telekinetics (33%), Telepathy (33%), and Peace (33%) having the weakest trait×rank representation. Full trait×rank matrices for all 14 schools are provided in the per-school files (`docs/analysis/spells/schools/`), including spell progression chains, setup+payoff combo audits, and design completeness checklists.
 
 ### Design Principles
 
@@ -31,6 +31,7 @@
 5. **Traditions/disciplines should cover their Excel and Decent roles** — Each school should have spells across its primary and secondary roles, with Weak roles deliberately limited.
 6. **Area scales with rank** — R0–R1 spells are almost all single-target (rare melee AoE). R2 affects close area or short line. R3 affects short area. R4 affects medium area. R5 affects up to long area.
 7. **Every school needs internal completeness** — Each school should have: at least one R1 Quick Action reactive spell, defensive options, utility/non-combat effects, some damage capability (even if restricted), repeating conditions/gimmick identity, and setup+payoff synergies.
+8. **Spells assist, never bypass** — Travel, social, and exploration spells should provide bonuses on skill checks (boons, reduced difficulty) rather than automatically succeeding at challenges. Magic enhances the game modes without trivializing them.
 
 ---
 

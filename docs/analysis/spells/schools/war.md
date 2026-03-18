@@ -196,10 +196,10 @@
 - ❌ **Justice → triumph link**: No mechanic connecting retribution damage (Righteous Strike, Avenging Oath) to triumph rewards (Victor's Rush)
 
 ### Design Completeness Checklist
-- ⚠️ R1 Quick Action: Shield of Valor (R1 proposed) is enchant (proactive buff), not a reactive Quick Action — **no reactive R1 Quick Action**
+- [x] R1 Quick Action: Retaliating Fury (R1 proposed) provides reactive counterattack when hit — fills this gap
 - [x] Defensive options: Shield of Valor (R1 proposed) fills War's previously absent defensive niche with AV bonus + fear immunity
 - ⚠️ Utility: Very limited — appropriate for War's weak utility role, but no exploration or downtime spells exist
 - [x] Damage across ranks: R0-R5 fully covered with proposals — fury chain provides continuous damage/buff escalation
 - [x] Repeating conditions: Frightened, bleeding — consistent battle identity
 - [x] Setup+payoff: Fear→exploit is the core loop and well-supported by War Cry → Commander's Shout escalation
-- ⚠️ **Remaining gaps**: Reactive R1 Quick Action, Justice R1/R3+, Pride R3-R4, Blood R3/R5
+- ⚠️ **Remaining gaps**: Justice R1/R3+, Pride R3-R4, Blood R3/R5
