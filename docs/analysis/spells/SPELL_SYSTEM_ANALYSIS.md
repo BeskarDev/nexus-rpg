@@ -32,6 +32,8 @@
 6. **Area scales with rank** — R0–R1 spells are almost all single-target (rare melee AoE). R2 affects close area or short line. R3 affects short area. R4 affects medium area. R5 affects up to long area.
 7. **Every school needs internal completeness** — Each school should have: at least one R1 Quick Action reactive spell, defensive options, utility/non-combat effects, some damage capability (even if restricted), repeating conditions/gimmick identity, and setup+payoff synergies.
 8. **Spells assist, never bypass** — Travel, social, and exploration spells should provide bonuses on skill checks (boons, reduced difficulty) rather than automatically succeeding at challenges. Magic enhances the game modes without trivializing them.
+9. **SL scales magnitude, not effect type** — Primary utility and control effects (conditions, target counts, durations) must be reliable on any success. Only damage, healing, and secondary effects (bonus banes, tactical options) should scale by Success Level. A control spell that applies "dazed" on Weak should still apply "dazed" on Critical — the Critical adds damage or secondary debuffs, not an upgrade to "stunned" or "dominated."
+10. **Heighten, don't duplicate** — Higher-rank versions of existing spells should use the Heightened mechanic, not become entirely new spells. "Conjure Guardian" at R3 is a heightened "Conjure Familiar" — not a separate spell entry. Reserve new spell slots for genuinely different concepts.
 
 ---
 
@@ -1184,10 +1186,9 @@ Spells may be shared between arcane disciplines and mystic traditions (cross-cat
 |---|---|---|---|---|
 | **Acid Splash** | Evocation | Nature | 0 | Acid is both a raw element (Evocation) and a natural toxin (Nature). Same Durability-based mechanic in both. |
 | **Chain Lightning** | Evocation | Tempest | 3 | Lightning is both raw elemental power (Evocation) and natural storm force (Tempest). |
-| **Animate Corpse** | Necromancy | Death | 1 | Raising undead is core to both transgressive (Necromancy) and reverent death magic (Death tradition). |
-| **Control Undead** | Necromancy | Death | 1 | Commanding undead fits both arcane exploitation and spiritual authority over death. |
-| **Corpse Explosion** | Necromancy | Death | 2 | Corpse manipulation is shared thematic territory. |
 | **True Strike** | Telepathy | Light | 1 | Foresight-based combat buff fits both mental insight (Telepathy) and divine clarity (Light). |
+
+> **Note**: Necromancy (arcane) and Death (mystic) were initially considered for cross-school sharing (Animate Corpse, Control Undead, Corpse Explosion). However, despite thematic overlap, their fundamentally opposed philosophies (transgressive defilement vs. reverential acceptance) should produce mechanically distinct spells. Cross-school sharing between these two is **not recommended**.
 
 ### 15A.3 Guidelines for Future Sharing
 
