@@ -38,22 +38,21 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| objects | Arcane Glyph, Extraplanar Pocket | Infuse Item | — | — | — | — |
-| creatures | ❌ **GAP** | Conjure Familiar | Summon Aberration | — | — | — |
-| teleportation | ❌ **GAP** | — | Phase Step | Dimension Door, Astral Gate | Teleportation Circle* | — |
-| binding | — | Alarm | Arcane Circle, Eldritch Tendrils | — | Force Cage* | — |
-| force | Arcane Bolt | Arcane Missiles, Arcane Barrier, Hale of Blades | Arcane Barrage, Arcane Eye | Arcane Blast, Burst of Tendrils, Wall of Force | Arcane Empowerment | — |
+| objects | Arcane Glyph, Extraplanar Pocket | Infuse Item | Fabricate (proposed) | — | — | — |
+| creatures | Conjure Vermin (proposed) | Conjure Familiar | Summon Aberration | — | — | — |
+| teleportation | Spatial Distortion (proposed) | — | Phase Step | Dimension Door, Astral Gate | Teleportation Circle* | Planar Gateway (proposed) |
+| binding | Arcane Snare (proposed) | Alarm | Arcane Circle, Eldritch Tendrils | Binding Cage (proposed) | Force Cage* | — |
+| force | Arcane Bolt | Arcane Missiles, Arcane Barrier, Hale of Blades | Arcane Barrage, Arcane Eye | Arcane Blast, Burst of Tendrils, Wall of Force | Arcane Empowerment | Force Cataclysm (proposed), Dimensional Rift (proposed) |
 
 *Asterisk = incomplete spell*
 
-**Coverage**: 17/30 slots filled (57%) — strong at R1-R3, weak at R0 and R4-R5
+**Coverage**: 22/30 slots filled (73%) — strong at R0-R3 with proposed spells, R4-R5 improving
 
 **Critical Gaps**:
-- **Creatures R0**: No summoning cantrip — the first summon isn't until R1
-- **Teleportation R0-R1**: No teleport below R2 — a core identity trait locked to mid-ranks
-- **Objects R2+**: No object-creation spells above R1
-- **Binding R0, R3**: Gaps in the binding progression
-- **All traits R5**: No capstone spells
+- **Teleportation R1**: No teleport or spatial spell at R1
+- **Objects R3+**: No object-creation spells above R2
+- **Creatures R3+**: No dedicated summon above R2 — use heightened Summon Aberration instead
+- **Binding R5**: No capstone binding spell
 
 ## Proposed Spell Changes
 
@@ -104,25 +103,25 @@
 
 *You conjure a small creature from thin air — a rat, spider, beetle, or similar vermin — for a brief task.*
 
-**Weak.** Conjure a tiny creature that lasts briefly. It can carry a small item, serve as a brief distraction, or scout a melee-range area. The creature has 1 HP and no combat capability.
-**Strong.** The creature lasts for a short duration and can scout up to close range, carrying messages or triggering simple mechanisms.
-**Critical.** The creature lasts for a short duration, can carry small items up to close range, and you can see through its eyes briefly.
+**Weak.** Conjure a tiny creature that lasts briefly. It can carry a small item, serve as a brief distraction, or scout up to close range. The creature has 1 HP and no combat capability.
+**Strong.** As above, and the creature can trigger simple mechanisms (pull a lever, push a button) or retrieve a small item within close range.
+**Critical.** As above, and you can see through the creature's eyes for its duration.
 
-> **Design Note**: Fills R0 creatures gap. Non-combat utility summon.
+> **Design Note**: Fills R0 creatures gap. Non-combat utility summon. Core effect (summon creature, brief duration) is reliable on any success — SL adds capabilities, not duration.
 
-### Blink Step
+### Spatial Distortion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-0 | 0 | Easy TN | Self | quick
+0 | 0 | Medium TN | Self | quick
 
-*You briefly dissolve into arcane energy and reappear a short distance away.*
+*You briefly warp the space around yourself, causing your position to blur and shift — not true teleportation, but a flicker of displaced reality.*
 
-**Weak.** Teleport to an unoccupied space within melee range.
-**Strong.** Teleport to an unoccupied space within close range.
-**Critical.** Teleport to an unoccupied space within close range. You don't provoke attacks of opportunity from this movement.
+**Weak.** Until the end of your next turn, the first attack against you suffers +1 bane as your position seems slightly off.
+**Strong.** Until the end of your next turn, all attacks against you suffer +1 bane.
+**Critical.** Until the end of your next turn, all attacks against you suffer +1 bane. Additionally, you can shift 1 space in any direction without provoking opportunity attacks.
 
-> **Design Note**: Fills R0 teleportation gap. Very short range, cantrip-level repositioning.
+> **Design Note**: Fills R0 teleportation gap without actual teleportation — a spatial warp that hints at the school's mastery of space without granting true relocation at cantrip level.
 
 ### Arcane Snare
 
@@ -132,25 +131,25 @@
 
 *You conjure a brief tether of arcane force that wraps around a creature's limbs.*
 
-**Weak.** The target's movement is reduced by 1 until the end of their next turn.
-**Strong.** The target's movement is reduced by 2 until the end of their next turn.
-**Critical.** The target is briefly restrained as the tether locks tight.
+**Weak.** The target's movement is reduced by 2 until the end of their next turn.
+**Strong.** As above, and the target suffers +1 bane on Dodge rolls until the end of their next turn.
+**Critical.** As above, and the target suffers +1 bane on all Athletics rolls until the end of their next turn.
 
-> **Design Note**: Fills R0 binding gap. Cantrip-level movement denial — weak version of Eldritch Tendrils.
+> **Design Note**: Fills R0 binding gap. Cantrip-level movement denial. Core effect (movement reduction) is reliable on any success — SL adds secondary debuffs, not escalating conditions.
 
-### Conjure Guardian
+### Binding Cage
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-3 | 6 | Hard TN | Close | concentrate
+3 | 6 | vs. Dodge | Medium | concentrate
 
-*You summon a formidable extraplanar entity — a hulking creature of force and shadow bound to your will.*
+*You conjure interlocking bars and walls of shimmering force around a creature, trapping it in an arcane cage.*
 
-**Weak.** Summon a Tier 2 guardian in close range. It acts on your initiative, has basic melee attacks, and lasts for a brief duration.
-**Strong.** The guardian is Tier 3. It lasts for a short duration and can intercept attacks targeting adjacent allies (redirect one attack per round to itself).
-**Critical.** The guardian is Tier 3 with enhanced durability (+10 HP). It lasts for a short duration and can intercept two attacks per round.
+**Weak.** Conjure a cage of force around one target. The target is restrained for a short duration. The cage has 30 HP and 6 AV. The target or allies can attack the cage to free the trapped creature.
+**Strong.** As above, and the cage deals +4 force damage to any creature that starts its turn inside.
+**Critical.** As above with +8 force damage per turn, and the cage suppresses spellcasting inside it (creatures inside suffer +1 bane on all spell rolls).
 
-> **Design Note**: Fills R3 creatures gap. Mid-tier summon with defensive utility — a bodyguard rather than a damage dealer, complementing R2's offensive Summon Aberration.
+> **Design Note**: Fills R3 binding gap with a genuinely new concept — force imprisonment rather than another summon. Creature summoning at R3 should use heightened Summon Aberration instead. Restrained condition is reliable on any success.
 
 ### Fabricate
 
@@ -174,25 +173,25 @@
 
 *You tear open a shimmering portal connecting two distant locations, allowing passage between them.*
 
-**Weak.** Create a portal to a location you have visited before on the same plane. The portal is large enough for one creature to pass through per turn. It remains open for a brief duration.
-**Strong.** The portal remains open for a short duration. Up to two creatures can pass through per turn.
-**Critical.** The portal remains open for a medium duration. Up to four creatures can pass through per turn. You can choose to make the portal one-way or two-way.
+**Weak.** Create a two-way portal to a location you have visited before on the same plane. The portal is large enough for two creatures to pass through per turn. It remains open for a short duration while you concentrate.
+**Strong.** As above, and creatures passing through the portal arrive precisely at their intended position (no disorientation or scatter).
+**Critical.** As above, and you can make the portal one-way (preventing passage from the other side) or disguise its appearance at the destination.
 
-> **Design Note**: R5 capstone — bounded teleportation. Short duration, concentration, expensive material cost. Not unlimited (mortal-scale).
+> **Design Note**: R5 capstone — bounded teleportation. Core effect (portal, 2 creatures/turn, short duration) is reliable on any success. SL adds tactical options, not throughput.
 
-### Conjure Army
+### Dimensional Rift
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | Very Hard TN | Close | concentrate, material cost (300 coins)
+5 | 10 | Very Hard TN | Long | concentrate, material cost (500 coins)
 
-*You tear open multiple rifts in reality, pulling forth a host of extraplanar warriors bound to your will — conjured soldiers that fight and die at your command.*
+*You tear a permanent wound in the fabric of reality, creating an unstable dimensional rift that warps space, gravity, and matter around it.*
 
-**Weak.** Summon 3 conjured warriors (Tier 2 creatures) in close range. They act on your initiative and obey your mental commands. They last for a brief duration.
-**Strong.** Summon 5 conjured warriors. They last for a short duration and can be directed as a group with a single mental command (no action required).
-**Critical.** Summon 6 conjured warriors. They last for a short duration. You can direct them as a group, and they gain +1 boon on all attack rolls while within close range of each other.
+**Weak.** Create a dimensional rift in a short area at long range. Creatures inside the area are pulled toward the center (movement toward the center costs nothing, movement away costs double). Creatures that start their turn in the rift take +6 force damage. The rift lasts for a short duration while you concentrate.
+**Strong.** As above, and creatures inside the rift are slowed (half movement). Damage increases to +12 force damage.
+**Critical.** As above, and creatures inside the rift are restrained unless they succeed on a Strength + Athletics check vs. TN 16. Damage increases to +18 force damage.
 
-> **Design Note**: R5 summoning capstone — army-scale conjuration. Concentration limits total action economy abuse, material cost adds resource pressure. Tier 2 creatures are useful but not overwhelming individually. Scales with success level for both quantity and duration.
+> **Design Note**: R5 capstone — battlefield-warping force magic. Concentration and material cost limit abuse. Area denial + damage + movement control represents the pinnacle of spatial manipulation. Army-scale summoning at R5 should use heightened versions of existing summon spells instead.
 
 ### Force Cataclysm
 
@@ -224,17 +223,17 @@ The Conjure Familiar spell concept overlaps with Nature's Wild Companion — bot
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Force chain**: Arcane Bolt (R0) → Arcane Missiles/Hale of Blades (R1) → Arcane Barrage (R2) → Arcane Blast (R3) → Arcane Empowerment (R4) → Force Cataclysm (R5 proposed) — **complete R0-R5**
-2. **Creatures chain**: Conjure Vermin (R0 proposed) → Conjure Familiar (R1) → Summon Aberration (R2) → Conjure Guardian (R3 proposed) → *gap at R4* → Conjure Army (R5 proposed)
-3. **Teleportation chain**: Blink Step (R0 proposed) → *gap at R1* → Phase Step (R2) → Dimension Door/Astral Gate (R3) → Teleportation Circle (R4\*) → Planar Gateway (R5 proposed)
-4. **Binding chain**: Arcane Snare (R0 proposed) → Alarm (R1) → Arcane Circle/Eldritch Tendrils (R2) → *gap at R3* → Force Cage (R4\*) → *gap at R5*
+1. **Force chain**: Arcane Bolt (R0) → Arcane Missiles/Hale of Blades (R1) → Arcane Barrage (R2) → Arcane Blast (R3) → Arcane Empowerment (R4) → Force Cataclysm/Dimensional Rift (R5 proposed) — **complete R0-R5**
+2. **Creatures chain**: Conjure Vermin (R0 proposed) → Conjure Familiar (R1) → Summon Aberration (R2) → *heightened summons at R3+* — use heightened Summon Aberration for higher-tier summoning
+3. **Teleportation chain**: Spatial Distortion (R0 proposed) → *gap at R1* → Phase Step (R2) → Dimension Door/Astral Gate (R3) → Teleportation Circle (R4\*) → Planar Gateway (R5 proposed)
+4. **Binding chain**: Arcane Snare (R0 proposed) → Alarm (R1) → Arcane Circle/Eldritch Tendrils (R2) → Binding Cage (R3 proposed) → Force Cage (R4\*) → *gap at R5*
 5. **Objects chain**: Arcane Glyph/Extraplanar Pocket (R0) → Infuse Item (R1) → Fabricate (R2 proposed) → *gap at R3-R5*
 
 ### Setup + Payoff Combos
 - ✅ **Familiar scout → targeting**: Conjure Familiar marks targets, follow-up spells gain +1 boon
 - ✅ **Wall of Force → isolation**: Split battlefield creates tactical advantage for force spells
 - ✅ **Force chain → Force Cataclysm**: Full R0-R5 force damage progression with devastating single-target capstone
-- ⚠️ **Binding → force damage payoff**: Restrained targets should be vulnerable to force attacks, but no explicit mechanic links them
+- ⚠️ **Binding → force damage payoff**: Restrained targets (from Binding Cage, Arcane Snare) should be vulnerable to force attacks, but no explicit mechanic links them
 - ⚠️ **Summon → teleport combo**: No synergy between summoning and teleportation effects
 
 ### Design Completeness Checklist
@@ -242,14 +241,15 @@ The Conjure Familiar spell concept overlaps with Nature's Wild Companion — bot
 - [x] Defensive options: Arcane Barrier (R1), Arcane Deflection (R1 proposed)
 - [x] Utility: Extraplanar Pocket (R0), Arcane Eye (R2), Fabricate (R2 proposed), Planar Gateway (R5 proposed)
 - [x] Damage across ranks: R0-R5 fully covered via force chain — Force Cataclysm (R5 proposed) completes the progression
-- ⚠️ Repeating conditions: Restrained via binding spells, but limited condition variety overall
+- ⚠️ Repeating conditions: Restrained via binding spells (Arcane Snare, Binding Cage, Force Cage), but limited condition variety overall
 - [x] Setup+payoff: Familiar → boon, Wall → isolation, Force chain R0-R5
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 7, R2: 7, R3: 6, R4: 5, R5: 3)
-- ⚠️ **Remaining gaps**: Teleportation R1, Objects R3+, Binding R3, Creatures R4
+- ⚠️ **Remaining gaps**: Teleportation R1, Objects R3+, Creatures R3+, Binding R5
 
 ### Impact & Trivialization Review
-- **Blink Step (R0 teleport)**: Minimal risk — melee/close range only, cantrip-level repositioning. Does not bypass exploration.
+- **Spatial Distortion (R0 spatial warp)**: Minimal risk — defensive bane only, no actual teleportation. Thematically hints at conjuration's spatial mastery without granting relocation at cantrip level.
 - **Fabricate (R2 item creation)**: Moderate risk — could bypass Crafting challenges. **Mitigations**: ritual (10 min), requires raw materials, caps at Q2 quality, cannot create magical items. Crafting skill remains essential for anything above basic goods.
-- **Planar Gateway (R5 portal)**: Low risk at R5 power level — Very Hard TN, concentration, 500-coin material cost consumed, must have visited the destination. Appropriate for peak mortal magic. GMs retain narrative control over which locations qualify as "visited."
-- **Conjure Army (R5 summons)**: Moderate risk — multiple summons create action economy advantage. **Mitigations**: concentration (lose all summons if broken), material cost (300 coins), Tier 2 creatures are individually weak, brief/short duration limits. Cannot sustain an army across multiple encounters.
+- **Binding Cage (R3 imprisonment)**: Low risk — concentration required, cage is destructible (30 HP, 6 AV). The trapped creature or their allies can break the cage. Restrained condition is reliable on any success — SL adds damage and spellcasting suppression.
+- **Planar Gateway (R5 portal)**: Low risk at R5 power level — Very Hard TN, concentration, 500-coin material cost consumed, must have visited the destination. Core effect (2 creatures/turn, short duration) is reliable — SL adds tactical options. GMs retain narrative control over which locations qualify as "visited."
+- **Dimensional Rift (R5 area control)**: Low risk at R5 power level — Very Hard TN, concentration, 500-coin material cost. Area denial with damage and movement control. Replaces army-scale summoning which should use heightened existing summon spells instead.
 - **Force Cataclysm (R5 damage)**: Low risk — straightforward single-target damage at appropriate R5 scaling. No unusual interactions or edge cases. The restrained condition on critical is a bonus, not the primary effect.
