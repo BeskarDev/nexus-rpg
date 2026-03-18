@@ -123,21 +123,13 @@
 
 ## Cross-School Spell Sharing
 
-**Significant Overlap: Necromancy (Arcane) ↔ Death (Mystic)**
+**No sharing recommended with Death tradition.**
 
-Necromancy and the Death tradition share extensive thematic territory — both deal with the boundary between life and death, corpse manipulation, and the power of ending. The key distinction is philosophical: Necromancy exploits death selfishly (puppetry, siphoning), while Death tradition approaches it reverently (natural cycles, ancestral respect).
+Despite both schools dealing with death and the dead, Necromancy and Death have fundamentally opposed philosophies that should produce mechanically distinct spells:
+- **Necromancy** (arcane): Transgressive defilement and exploitation — puppeting corpses, siphoning life force, violating the natural order for personal gain
+- **Death** (mystic): Reverential acceptance of endings — honoring ancestors, guiding the dead, channeling the natural death cycle respectfully
 
-**Shared Spell Candidates** (mechanically identical in both lists):
-- **Animate Corpse** (R1) — raising the dead is central to both schools. Necromancy frames it as puppetry; Death tradition frames it as calling the spirit to serve willingly
-- **Control Undead** (R1) — commanding existing undead serves both the selfish manipulator and the ancestral authority
-- **Corpse Explosion** (R2) — detonating a corpse for tactical effect works mechanically the same regardless of philosophical framing
-
-**Additional Overlap Areas**:
-- Life drain effects (Drain Life, Soul Drain) may overlap with Death's decay and curse aspects
-- Curse and disease effects (Inflict Curse, Curse of Mortality) align with Death's plagues and curses identity
-- Speaking with the dead overlaps with Death's ancestry aspect
-
-> **Design Note**: This is the strongest arcane↔mystic overlap of any discipline/tradition pair. Shared spells should be identical mechanically. The philosophical distinction (selfish exploitation vs. respectful communion with death) provides narrative differentiation without requiring mechanical separation.
+Even spells with similar concepts (e.g., raising the dead) should function differently: Necromancy forcibly puppets corpses while Death calls willing ancestral spirits. Sharing spells between these schools would undermine their distinct identities.
 
 ## Synergy & Completeness Assessment
 

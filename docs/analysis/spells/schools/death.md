@@ -237,23 +237,13 @@
 
 ## Cross-School Spell Sharing
 
-Death's themes of decay, undeath, and ancestral communion overlap heavily with the Arcane **Necromancy** discipline. Both schools manipulate death and the dead, though Death does so through reverent acceptance of endings and ancestral respect, while Necromancy is transgressive defilement and exploitation of corpses.
+**No sharing recommended with Necromancy discipline.**
 
-### Proposed Shared Spells
-- **Animate Corpse** (Necromancy R1) → Death: Raising a corpse as a servant could exist in both schools. Necromancy animates through puppetry and defilement; Death commands through ancestral authority and acceptance of the death cycle. Strong sharing candidate — identical mechanics with different flavor.
-- **Control Undead** (Necromancy R1) → Death: Dominating existing undead overlaps with Death's authority over endings. Necromancy uses force and binding; Death uses natural authority over the dead. Strong sharing candidate.
-- **Corpse Explosion** (Necromancy R2) → Death: Detonating a corpse as a weapon fits both the transgressive Necromancy and the "decay" aspect of Death. Strong sharing candidate — both schools can weaponize the dead, though Death does so with less relish.
+Despite both schools dealing with death and the dead, Death and Necromancy have fundamentally opposed philosophies that should produce mechanically distinct spells:
+- **Death** (mystic): Reverential acceptance of endings — honoring ancestors, guiding the dead, channeling the natural death cycle respectfully
+- **Necromancy** (arcane): Transgressive defilement and exploitation — puppeting corpses, siphoning life force, violating the natural order for personal gain
 
-### Sharing Impact on Spell Counts
-If shared spells are adopted, Death would gain:
-- R1: +2 spells (Animate Corpse, Control Undead) → R1 total: 11
-- R2: +1 spell (Corpse Explosion) → R2 total: 4
-
-### Design Notes
-- Cross-school sharing is **arcane ↔ mystic only** (never within the same category).
-- Shared spells must be **mechanically identical** even if flavor differs.
-- Death and Necromancy have the **strongest thematic overlap** of any mystic-arcane pair. Sharing these spells reflects that communing with and commanding the dead is both a sacred and profane art.
-- Sharing gives Death casters access to undead manipulation without requiring Arcane study, broadening their combat toolkit while maintaining the tradition's reverent identity.
+Even spells with similar concepts (e.g., raising the dead) should function differently: Death calls willing ancestral spirits to serve while Necromancy forcibly puppets corpses. Sharing spells between these schools would undermine their distinct identities.
 
 ## Synergy & Completeness Assessment
 
