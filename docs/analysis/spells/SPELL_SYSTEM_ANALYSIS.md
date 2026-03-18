@@ -725,7 +725,7 @@ Warlord's Presence (R5), Battlefield Commander (R5), Blood Frenzy (R4), Righteou
 
 | # | Action | Impact |
 |---|---|---|
-| 8.1 | Fill R0 trait gaps for worst-coverage schools (Evocation acid/blast, Telepathy domination/memory, Telekinetics levitate/crush/gravity) | Ensures all traditions/disciplines have cantrip-level representation of their core aspects |
+| 8.1 | Fill R0 trait gaps for worst-coverage schools (Evocation acid/air, Telepathy domination/memory, Telekinetics levitate/crush/gravity) | Ensures all traditions/disciplines have cantrip-level representation of their core aspects |
 | 8.2 | Fill R0 trait gaps for mystic traditions (Peace travel/law, Tempest earthquakes/sandstorms/floods, Twilight fate) | Provides thematic completeness at the entry level |
 | 8.3 | Use trait coverage table (§17) as ongoing design audit tool when adding new spells | Systematic approach to filling gaps across all ranks |
 
@@ -1043,7 +1043,9 @@ This section evaluates each of the 14 schools against the internal completeness 
 
 ### 14.1 Proposed System
 
-Each discipline/tradition currently lists 3–5 **traits** (aspects) that define its thematic identity — e.g., Evocation lists *fire, frost, lightning, acid, blast*; Death lists *plagues, curses, fear, decay, ancestry*. These traits serve as design guidelines for which spells belong to which school.
+Each discipline/tradition currently lists 3–5 **traits** (aspects) that define its thematic identity — e.g., Evocation lists *fire, frost, lightning, acid, air*; Death lists *plagues, curses, fear, decay, ancestry*. These traits serve as design guidelines for which spells belong to which school.
+
+> **Evocation Trait Rename**: The former "blast" trait has been renamed to **"air"** — representing raw elemental air pressure (concussive blasts, vacuum pockets, compressed wind). This distinguishes Evocation's transgressive air manipulation from Tempest's reverent natural storm weather. Air-trait spells still deal blast *damage type* (½ AV ignore); only the trait name changes.
 
 The proposed **spell tags system** would formalize these traits into a mechanical layer between schools and individual spells:
 
@@ -1170,6 +1172,55 @@ The analysis in §7.6 identified that blast damage on missile spells undermines 
 
 ---
 
+## 15A. Cross-School Spell Sharing
+
+### 15A.1 Principle
+
+Spells may be shared between arcane disciplines and mystic traditions (cross-category only — never within arcane-to-arcane or mystic-to-mystic). When a spell appears in multiple schools, it must be **identical** in both lists — same rank, same Focus cost, same effects, same properties. This ensures consistent rules and avoids confusion.
+
+### 15A.2 Identified Cross-School Overlaps
+
+| Spell | Arcane School | Mystic School | Rank | Rationale |
+|---|---|---|---|---|
+| **Acid Splash** | Evocation | Nature | 0 | Acid is both a raw element (Evocation) and a natural toxin (Nature). Same Durability-based mechanic in both. |
+| **Chain Lightning** | Evocation | Tempest | 3 | Lightning is both raw elemental power (Evocation) and natural storm force (Tempest). |
+| **Animate Corpse** | Necromancy | Death | 1 | Raising undead is core to both transgressive (Necromancy) and reverent death magic (Death tradition). |
+| **Control Undead** | Necromancy | Death | 1 | Commanding undead fits both arcane exploitation and spiritual authority over death. |
+| **Corpse Explosion** | Necromancy | Death | 2 | Corpse manipulation is shared thematic territory. |
+| **True Strike** | Telepathy | Light | 1 | Foresight-based combat buff fits both mental insight (Telepathy) and divine clarity (Light). |
+
+### 15A.3 Guidelines for Future Sharing
+
+1. **Thematic fit required**: Both schools must have a clear thematic reason for the spell
+2. **Mechanical identity**: The spell must use damage types and conditions consistent with both schools
+3. **No balance bypass**: Sharing should not give one school access to a role it should be Weak in
+4. **Limit scope**: Most schools should share 1–3 spells maximum — heavy overlap undermines school identity
+
+---
+
+## 15B. Acid / Corroding Mechanic Rework
+
+### 15B.1 Design Intent
+
+Acid damage's unique identity is **equipment degradation** — weakening enemies by destroying their gear over time. This creates a distinct tactical niche: Evocation casters choosing acid trade raw damage for strategic advantage against armored foes.
+
+### 15B.2 Mechanic: Durability Interaction
+
+Acid spells interact with the existing **Durability system** (items have 3 uses, Durability die rolled on check, 1–3 = lose a use, last use = damaged, damaged + fail = broken):
+
+- **R0 (Acid Splash)**: Force a **Durability check** on one piece of equipment. No direct AV reduction — the degradation is gradual but permanent (failed checks are real equipment damage, not temporary).
+- **R2 (Acid Rain)**: Zone-based Durability pressure — creatures staying in the zone face repeated checks. No immediate AV reduction.
+- **R3 (Corrosive Torrent)**: Combine Durability checks with **temporary AV reduction** lasting at least a **short duration**. This is the payoff rank where acid becomes tactically impactful.
+- **R5 (Dissolving Wave)**: Mass Durability devastation with significant AV reduction (short duration). The capstone acid spell.
+
+### 15B.3 Balance Rationale
+
+- **No R0 AV reduction**: Direct AV reduction at cantrip level is too fiddly (track −1 AV for one turn) and too powerful (free permanent damage reduction bypass). Durability checks have existing tracking infrastructure and create meaningful long-term consequences.
+- **Short duration minimum**: When AV reduction does appear (R3+), it lasts at least a short duration. Brief (1-turn) AV reduction creates excessive bookkeeping for minimal tactical impact. Short duration (several rounds) creates a meaningful window to exploit.
+- **Durability as identity**: Unlike other elements (fire=burning, frost=slowed, lightning=staggered), acid's identity is "your stuff gets worse." This interacts with the Crafting/repair downtime system, creating cross-pillar gameplay.
+
+---
+
 ## 16. Healing Spell Power Level Investigation
 
 ### 16.1 Healing Spell Inventory
@@ -1292,17 +1343,19 @@ Each school defines 3–5 traits (aspects) that represent its thematic identity.
 
 ### 17.2 Arcane Discipline Coverage
 
-#### Evocation: fire, frost, lightning, acid, blast
+#### Evocation: fire, frost, lightning, acid, air
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
 |---|---|---|---|---|---|---|---|
 | fire | ✅ | ✅ | ✅ | ✅ | — | — | Well-covered (Firebolt, Fireball, etc.) |
 | frost | ✅ | ✅ | ✅ | — | — | — | Frost Bolt, Ice Lance, Frost Wave |
 | lightning | ✅ | ✅ | ✅ | — | — | — | Shock, Lightning Strike |
-| acid | ❌ | ✅ | — | — | — | — | No R0 acid cantrip — gap |
-| blast | ❌ | — | — | — | — | — | No R0 blast cantrip — gap |
+| acid | ❌ | ✅ | — | — | — | — | No R0 acid cantrip — gap (proposed: Acid Splash via Durability) |
+| air | ❌ | — | — | — | — | — | No R0 air cantrip — gap (proposed: Air Burst) |
 
-**R0 gaps**: acid, blast (2 missing). Evocation cantrips cover fire/frost/lightning but lack acid and pure blast options.
+**R0 gaps**: acid, air (2 missing). Evocation cantrips cover fire/frost/lightning but lack acid and air pressure options.
+
+> **Trait Rename**: The "blast" trait has been renamed to **"air"** to represent raw elemental air pressure (concussive blasts, vacuum, compressed wind). This distinguishes Evocation's transgressive air manipulation from Tempest's natural storm weather. Spells using this trait still deal blast *damage type* (½ AV ignore) — the trait name changes, not the damage type.
 
 #### Illusion: trickery, misdirection, obfuscation, hallucinations, distortion
 
@@ -1475,7 +1528,7 @@ Each school defines 3–5 traits (aspects) that represent its thematic identity.
 | **Light** | 5 | **3/5** | clarity, judgement | Medium |
 | **Death** | 5 | **3/5** | plagues, curses | Medium |
 | **War** | 5 | **3/5** | justice, triumph | Medium |
-| **Evocation** | 5 | **3/5** | acid, blast | Medium |
+| **Evocation** | 5 | **3/5** | acid, air | Medium |
 | **Telepathy** | 5 | **3/5** | domination, memory | Medium–High |
 | **Peace** | 5 | **3/5** | travel, law | High (absent ALL ranks) |
 | **Telekinetics** | 5 | **2/5** | levitate, crush, gravity | High |
@@ -1502,7 +1555,7 @@ Each school defines 3–5 traits (aspects) that represent its thematic identity.
 
 | School | Missing Traits | Proposed Cantrips |
 |---|---|---|
-| **Evocation** | acid, blast | *Acid Splash* (R0, +2/+4/+6 acid damage), *Concussive Pop* (R0, +0/+2/+4 blast in melee area) |
+| **Evocation** | acid, air | *Acid Splash* (R0, +2/+4/+6 acid damage + Durability check, shared with Nature), *Air Burst* (R0, +0/+2/+4 blast in melee area with push) |
 | **Conjuration** | creatures, teleportation | *Conjure Vermin* (R0, summon tiny creature briefly for distraction), *Blink Step* (R0, teleport to melee range briefly) |
 | **Telepathy** | domination, memory | *Commanding Thought* (R0, one brief mental command — move/stop), *Surface Recall* (see above) |
 | **Death** | plagues, curses | *Miasma* (R0, sicken one target briefly), *Minor Hex* (R0, target suffers +1 bane on next roll) |
