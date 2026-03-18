@@ -166,3 +166,30 @@
 **Critical.** All creatures take +18 necrotic damage and are poisoned for a short duration. Poisoned creatures lose 4 HP at the start of each turn and cannot benefit from healing for the duration.
 
 > **Design Note**: R5 capstone. AoE uses half single-target scaling (+6/+12/+18). The heal-blocking effect at critical is the Death tradition's signature anti-healing identity.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Plagues chain**: Miasma (R0 proposed) → Festering Wound (R1 proposed) → Cloud of Sickness (R2) → Spreading Contagion (R3 proposed) → *gap at R4* → Plague Wind (R5 proposed) — near-complete
+2. **Curses chain**: Minor Hex (R0 proposed) → Curse of Death (R1) → *gap at R2-R5* — needs significant expansion
+3. **Fear chain**: Glimpse of Mortality (R0) → Early Grave/Shivering Ray (R1) → *gap at R2* → Death's Door (R3) → *gap at R4-R5*
+4. **Decay chain**: Decay/Chill Touch/Enfeebling Touch (R0) → Necrotic Weapon/Rotting Grasp/Blood Shards (R1) → Circle of Death (R2) → Grave's Bloom (R3) → *gap at R4-R5*
+5. **Ancestry chain**: Spared from Death (R0) → Commune with Ancestors (R1 proposed) → Ancestral Guardian (R2 proposed) → *gap at R3-R5*
+
+### Setup + Payoff Combos
+- ✅ **Poison → Decay**: Miasma (R0) poisons target → Festering Wound (R1) deals bonus to injured/poisoned creatures with heal-reduction
+- ✅ **Curse stacking**: Minor Hex (R0) + Curse of Death (R1) → multiple debuffs compound, increasing vulnerability
+- ⚠️ **Ancestry → guidance**: Commune with Ancestors provides info and Ancestral Guardian provides combat aid, but they don't explicitly chain together
+- ❌ **Fear → curse link**: No mechanic connecting the frightened condition to enhanced curse effectiveness
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Death's Rebuke (R1 proposed) — retaliatory necrotic damage with poison
+- [x] Defensive options: Death's Rebuke (R1 proposed retaliatory), Spared from Death (R0 death-prevention)
+- [x] Utility: Commune with Ancestors (R1 proposed), Ancestral Guardian (R2 proposed)
+- ⚠️ Damage across ranks: R0-R3 well-covered, R5 Plague Wind — but R4 has no damage spell
+- [x] Repeating conditions: Poisoned, frightened, bleeding, cursed (bane debuff) — strong condition variety
+- ⚠️ Setup+payoff: Poison→decay is explicit and well-supported; curse stacking is conceptual but needs more curse spells at R2+ to fully deliver
+- ⚠️ **Remaining gaps**: Curses R2-R5, Fear R2/R4+, Decay R4+, Ancestry R3+, R4 damage spell
+
+### Impact & Trivialization Review
+- **Commune with Ancestors (R1 spirit guidance)**: Moderate risk — information from the dead could shortcut investigation scenes. **Mitigations**: ritual (10 min) prevents combat use, answers are GM-mediated and can be cryptic, limited to what the dead would know, only 1-2 questions per casting. This provides leads rather than solutions — the party still needs to investigate, verify, and act on the information. GMs should treat it as an additional clue source, not a mystery-solver.

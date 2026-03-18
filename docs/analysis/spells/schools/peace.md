@@ -152,3 +152,34 @@
 **Critical.** Duration extends to short. AV bonus +6. Failed hostile creatures are dazed and pushed out of the dome. Allies within the dome regain +2 HP at the start of each of their turns.
 
 > **Design Note**: R5 capstone — ultimate sanctuary. Defensive powerhouse that discourages violence. Concentration can be broken.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Calmness chain**: Calming Influence/Tranquil Mind (R0) → Pacifying Weapon (R1) → Slow (R2) → Pacifying Presence (R3) → *gap at R4* → Sanctuary Sphere (R5 proposed, calming aura)
+2. **Protection chain**: Aura of Sanctuary (R0) → Blessing of Peace/Share Harm (R1) → Dome of Sanctuary/Spell-breaking Wave (R2) → Anti-Magic Field (R3) → *gap at R4* → Sanctuary Sphere (R5 proposed)
+3. **Selflessness chain**: *gap at R0* → Harmonic Link (R1) → *gap at R2* → Martyrdom's Blessing (R3) → *gap at R4-R5*
+4. **Travel chain**: Wayfinder's Mark (R0 proposed) → Swift Journey (R1 proposed) → *gap at R2* → Safe Passage (R3 proposed) → *gap at R4-R5*
+5. **Law chain**: Binding Word (R0 proposed) → *gap at R1* → Binding Oath (R2 proposed) → *gap at R3* → Righteous Verdict (R4 proposed) → *needs R5*
+
+### Setup + Payoff Combos
+- ✅ **Calm → Truth**: Calming Influence pacifies target → calmed targets less likely to resist Binding Word truth compulsion
+- ✅ **Sanctuary chain**: Aura of Sanctuary (R0) → Dome of Sanctuary (R2) → Sanctuary Sphere (R5 proposed) provides clean defensive escalation
+- ⚠️ **Travel buffing**: Wayfinder's Mark → Swift Journey → Safe Passage has good thematic progression but each spell operates independently with no explicit chain bonus
+- ❌ **Law → Protection link**: No mechanic connecting oath enforcement or truth effects to protective spell benefits
+
+### Design Completeness Checklist
+- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
+- [x] Defensive options: Blessing of Peace (R1), Dome of Sanctuary (R2), Anti-Magic Field (R3) — strong defensive core
+- [x] Utility: Wayfinder's Mark (R0 proposed), Swift Journey (R1 proposed), Safe Passage (R3 proposed) — travel pillar now represented
+- ⚠️ Damage across ranks: Righteous Verdict (R4 proposed) is the only significant damage spell — appropriate for Peace's weak offense role but leaves R0-R3 without any offensive option
+- [x] Repeating conditions: Dazed (pacification), charmed (calmed), protected (sanctuary)
+- ⚠️ Setup+payoff: Calm→truth is conceptually strong but lacks an explicit mechanical bonus (calmed targets don't get a stated penalty to resisting truth effects)
+- ⚠️ **Remaining gaps**: R1 Quick Action, Selflessness R0/R2/R4+, Law R1/R3/R5, Travel R2/R4+
+
+### Impact & Trivialization Review
+- **Wayfinder's Mark (R0 navigation)**: Minimal risk — provides boon on navigation checks, doesn't auto-succeed. Pure assistance, not bypass.
+- **Swift Journey (R1 travel buff)**: Low risk — +1/+2 movement and ignore natural difficult terrain assist travel but don't bypass it. Party still navigates, forages, and camps. Trackless travel is a defensive feature (anti-pursuit), not exploration bypass. **Well-mitigated.**
+- **Binding Word (R0 truth compulsion)**: Moderate risk — cantrip-level truth compulsion is very accessible. **Mitigations**: only 1-3 statements, target is aware of compulsion, can choose silence over truth. Does not replace Influence/Insight checks — merely prevents lying if the target speaks. Repeated use on the same target should be subject to GM escalation (target becomes hostile, calls for help, etc.).
+- **Safe Passage (R3 overland travel)**: Moderate risk — +2 boons on travel checks and 25-50% speed increase significantly smooth overland journeys. "Cannot become lost" at Critical is the strongest effect. **Mitigations**: ritual (10 min), R3 Focus cost (6), natural terrain only (magical misdirection still works), still requires actual travel (not teleportation). GMs retain full encounter design control — Safe Passage makes the road safer, not empty.
+- **Binding Oath (R2)**: Low risk — requires willing participants, ritual, cannot be used offensively. Supernatural oath enforcement is a narrative tool, not a gameplay bypass.

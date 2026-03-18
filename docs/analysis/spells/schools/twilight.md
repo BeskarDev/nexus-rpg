@@ -152,3 +152,31 @@
 **Critical.** Up to 6 creatures. Duration extends to medium. Unwilling creatures trapped in the dream take +6 psychic damage per turn as you reshape reality around them. Willing creatures gain the benefits of a full rest in 1 hour of real time.
 
 > **Design Note**: R5 capstone. Unique utility — accelerated rest for allies, psychic torture for enemies. Concentration and ritual requirements balance the power.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Moon chain**: Night's Grasp (R0) → Moon Sphere/Lunar Weapon (R1) → Moonbeam (R2) → Moonfire (R3 proposed) → *gap at R4-R5*
+2. **Dreams chain**: Whispers of Doubt (R0) → Whisper of Dreams (R1) → Terrors of the Dark (R2) → Nightmare Realm (R3) → *gap at R4* → Dream Realm (R5 proposed)
+3. **Secrets chain**: Dark Sight/Shadow Veil (R0) → Shadow Meld/Cloak of Night (R1) → Silent Night/Everlasting Night (R2) → *gap at R3-R5*
+4. **Fate chain**: Thread of Fate (R0 proposed) → Curse of Twilight (R1) → Fate's Web (R2 proposed) → *gap at R3-R5* — weakest high-rank chain
+5. **Illusion chain**: Obscuring Veil (R0) → Haunting Shadows (R1) → Aura of Fear/Shadow Step/Twilight Bind (R2) → Shadow Clone (R3) → Embrace of Night (R4) → *needs R5*
+
+### Setup + Payoff Combos
+- ✅ **Darkness → shadow advantage**: Create darkness with Everlasting Night → Twilight spells and Stealth benefit within shadow areas
+- ✅ **Fear → vulnerability**: Frightened targets (Aura of Fear, Haunting Shadows) are easier to hit and control
+- ⚠️ **Fate → probability**: Thread of Fate (R0) provides GM-mediated info and Fate's Web (R2) manipulates probability, but no explicit mechanic links divination results to probability bonuses
+- ❌ **Dream → waking control**: No mechanic connecting dream-state spells to effects on waking targets
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Shadow Veil (R1 proposed) — reactive shadow defense imposing bane on attacker
+- [x] Defensive options: Shadow Veil (R1 proposed), Moonlight Ward (R1 proposed) — good dual coverage (evasion + resistance)
+- [x] Utility: Dark Sight (R0), Thread of Fate (R0 proposed), Shadow Meld (R1), Shadow Step (R2)
+- ⚠️ Damage across ranks: Night's Grasp (R0) → Moonbeam (R2) → Moonfire (R3 proposed) — R1 damage gap (Moon Sphere is utility), R4-R5 lack dedicated damage
+- [x] Repeating conditions: Slowed, frightened, invisible — consistent shadow/fear identity
+- ⚠️ Setup+payoff: Darkness → advantage conceptually strong but mechanically implicit rather than spelled out in spell text
+- ⚠️ **Remaining gaps**: Secrets R3+, Fate R3+, Moon R4+, R4-R5 dedicated damage spells
+
+### Impact & Trivialization Review
+- **Thread of Fate (R0 divination)**: Low risk — GM-mediated, deliberately vague at weak success (one-word hint). Provides intuitive nudge, not a roadmap. Does not bypass investigation or decision-making — the party still needs to interpret and act on the information.
+- **Dream Realm (R5 accelerated rest)**: Moderate risk — accelerated rest could trivialize resource management and pacing. **Mitigations**: R5 Focus cost (10) is the maximum investment, concentration required, ritual (1 minute) setup, full rest in 1 hour only at Critical success. At lower success levels, the rest acceleration is modest (short rest in 10 min). GMs can independently limit resting frequency per adventure. The high cost ensures this is a capstone-level resource, not a routine ability.

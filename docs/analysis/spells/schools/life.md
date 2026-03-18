@@ -153,3 +153,30 @@
 **Critical.** All allies regain +18 HP. Remove all conditions from each ally. One ally of your choice heals 1 wound.
 
 > **Design Note**: R5 AoE healing capstone. Uses half single-target R5 scaling (+6/+12/+18 = half of +12/+24/+36).
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Vitality/Healing chain**: Restore Life (R0) → Rapid Vitality/Healing Touch (R1) → Aid/Healing Burst (R2) → Vitality Surge/Abundance of Life (R3) → Raise Dead (R4 proposed) → Mass Restoration/Resurrection (R5 proposed) — **complete R0-R5**
+2. **Blessings chain**: Life Shield (R0) → Blessing of Life/Vitalizing Weapon (R1) → Hallow Ground (R2) → Circle of Renewal (R3 proposed) → *gap at R4-R5*
+3. **Community chain**: *gap at R0* → Overflow of Life (R1) → Cleanse (R2) → Abundance of Life (R3) → *gap at R4-R5*
+4. **Hope chain**: Verdant Blast (R0) → Beacon of Hope (R1 proposed) → *gap at R2-R5* — sparse after R1
+5. **Fertility chain**: Nurturing Touch (R0 proposed) → *gap at R1-R5* — weakest chain, non-combat only
+
+### Setup + Payoff Combos
+- ✅ **Heal → Bless**: Healing Touch restores HP, then Blessing of Life enhances the healed ally's next action
+- ✅ **Life Shield → Burst**: Temp HP from Life Shield absorbs damage; when broken, stored energy bursts
+- ⚠️ **Resurrection chain**: Revivify (R3) → Raise Dead (R4) → Resurrection (R5) has clean escalation with increasing costs, but no R1-R2 death-prevention setup spell (e.g., a "death ward" equivalent)
+- ❌ **Fertility → Community**: No mechanical connection between plant growth (Nurturing Touch) and communal healing effects
+
+### Design Completeness Checklist
+- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
+- ⚠️ Defensive options: Life Shield (R0 temp HP) and Beacon of Hope (R1 proposed save bonus) provide indirect defense — no reactive damage mitigation
+- [x] Utility: Nurturing Touch (R0 proposed), Detect Life (R2\*) — limited but appropriate for healing focus
+- ⚠️ Damage across ranks: Verdant Blast (R0) is the only dedicated damage spell — very limited offense, appropriate for a Healing-excels school but R1+ has zero damage
+- [x] Repeating conditions: Blessed (positive condition), dazed/stunned (life force overload)
+- ⚠️ Setup+payoff: Heal→bless exists conceptually but lacks explicit mechanical triggers (healing doesn't grant a stated bonus to the next blessing)
+- ⚠️ **Remaining gaps**: R1 Quick Action, Hope R2+, Fertility R1+, Community R0, Blessings R4+
+
+### Impact & Trivialization Review
+- **Nurturing Touch (R0 agriculture)**: Minimal risk — purely flavor/downtime cantrip for plant growth and animal care. No combat application, no game mechanic trivialized. Enriching soil and accelerating crop growth is a worldbuilding tool, not a gameplay bypass.

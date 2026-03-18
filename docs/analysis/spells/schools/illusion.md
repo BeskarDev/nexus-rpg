@@ -126,3 +126,27 @@
 **Critical.** Duration extends to long. The disguise is undetectable by any non-legendary means. You can change the disguise at will once per turn without recasting.
 
 > **Design Note**: R5 capstone — the pinnacle of illusory deception. Not combat-focused, reflecting Illusion's utility identity.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Trickery chain**: Minor Illusion (R0) → Illusory Trap/False Enemy (R1) → Illusionary Terrain/Trap Room (R2) → *gap at R3-R5*
+2. **Misdirection chain**: *gap at R0* → Mirror Image (R1) → Misdirection/Invisibility (R2) → Mislead (R3) → *gap at R4* → Perfect Disguise (R5 proposed)
+3. **Obfuscation chain**: Maddening Whispers (R0) → Color Spray/Disguise Form (R1) → Waking Dream (R2) → Seeming (R3 proposed complete) → *gap at R4-R5*
+4. **Hallucinations chain**: Horrific Vision (R0) → *gap at R1* → Hallucinated Swarm/Major Illusion (R2) → Phantasmal Killer (R3) → Labyrinth of Mirrors (R4 proposed) → *needs R5 hallucination capstone*
+5. **Distortion chain**: Sensory Trick (R0 proposed) → *gap at R1-R5* — weakest chain, nearly empty
+
+### Setup + Payoff Combos
+- ✅ **Illusion belief → psychic vulnerability**: Targets who believe illusions are vulnerable to Phantasmal Killer/Labyrinth of Mirrors
+- ⚠️ **Invisibility → surprise attack**: Mechanically supported via advantage, but no Illusion spell explicitly rewards attacking from invisibility
+- ⚠️ **Layer stacking**: Multiple illusions compound false reality, but most spells require concentration, limiting simultaneous layers
+- ❌ **Distortion → condition stack**: No distortion-based condition-building mechanic exists — distortion trait is mechanically hollow
+
+### Design Completeness Checklist
+- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
+- ⚠️ Defensive options: Phantasmal Armor (R2 proposed) only — no R1-level defense
+- [x] Utility: Strong across disguise (Disguise Form, Seeming, Perfect Disguise), invisibility, terrain illusions
+- ⚠️ Damage across ranks: Psychic damage sparse — Horrific Vision (R0), Phantasmal Killer (R3), Labyrinth (R4) — no R1-R2 or R5 damage spell
+- [x] Repeating conditions: Frightened, confused, charmed, blinded well-covered
+- ⚠️ Setup+payoff: "Believe illusion → vulnerable" is conceptually strong but lacks explicit mechanical triggers
+- ⚠️ **Remaining gaps**: R1 Quick Action, distortion trait R1+, hallucinations R1, R5 offensive option, R1-R2 psychic damage

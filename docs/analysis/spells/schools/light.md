@@ -146,3 +146,31 @@
 **Critical.** All creatures take +18 radiant damage (undead: +36). Creatures are blinded for a short duration. All magical darkness in the area is dispelled.
 
 > **Design Note**: R5 capstone. AoE uses half single-target scaling (+6/+12/+18). Double damage against undead is the signature Light payoff.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Sun chain**: Dazzling Light (R0) → Sun Sphere/Radiant Weapon (R1) → Sunbeam (R2) → Solar Flare (R3) → *gap at R4* → Radiant Convergence (R5 proposed) — near-complete
+2. **Illumination chain**: Illuminated Sight (R0) → Blessing of Light/Locate Trinket (R1) → *gap at R2* → Blessing of Dawn (R3) → *gap at R4-R5*
+3. **Truth chain**: Detect Lies (R0) → Protect from Influence (R1) → Break Curse (R2) → Zone of Truth (R3 proposed) → *gap at R4-R5*
+4. **Clarity chain**: Moment of Clarity (R0 proposed) → *gap at R1* → Clarity of Purpose (R2 proposed) → *gap at R3-R5*
+5. **Judgement chain**: Stern Gaze (R0 proposed) → *gap at R1-R3* → Divine Judgement (R4 proposed) → *needs R5* — sparsest chain
+
+### Setup + Payoff Combos
+- ✅ **Reveal → Destroy**: Revealing hidden/invisible targets enables follow-up attacks with advantage
+- ✅ **Anti-undead chain**: Radiant Weapon (R1) → Destroy Undeath (R2) → Divine Judgement (R4 proposed) → Radiant Convergence (R5 proposed) — strong escalation
+- ⚠️ **Clarity → Buff**: Moment of Clarity removes conditions but removing a condition doesn't grant any explicit follow-up bonus
+- ❌ **Truth → Judgement**: Detect Lies and Zone of Truth provide social utility but have no mechanical link to judgement-based damage spells
+
+### Design Completeness Checklist
+- ❌ R1 Quick Action: No reactive Quick Action spell proposed — **critical remaining gap**
+- ⚠️ Defensive options: Protect from Influence (R1) covers mental defense only — no physical/general reactive defense
+- [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Locate Trinket (R1), Moment of Clarity (R0 proposed)
+- [x] Damage across ranks: R0-R5 fully covered with proposals — sun chain provides continuous damage escalation
+- [x] Repeating conditions: Blinded, revealed, burning — consistent anti-darkness identity
+- ⚠️ Setup+payoff: Reveal → attack is strong, but truth → judgement and clarity → enhancement lack explicit mechanical links
+- ⚠️ **Remaining gaps**: R1 Quick Action, Clarity R1/R3+, Judgement R1-R3, Illumination R2
+
+### Impact & Trivialization Review
+- **Zone of Truth (R3)**: Moderate risk — truth compulsion is powerful in social scenes. **Mitigations**: targets can choose silence over truth, concentration required, R3 Focus cost (6) is significant. Does not replace Influence/Insight checks — it prevents lies but doesn't compel answers or cooperation. GMs can design around it (NPCs use careful truths, omission, or leave the zone).
+- **Moment of Clarity (R0)**: Minimal risk — condition removal is purely supportive and tactical, no social or exploration bypass.

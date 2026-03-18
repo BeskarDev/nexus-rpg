@@ -98,3 +98,32 @@
 **Critical.** The construct is Tier 4 with enhanced abilities (+2 to all attributes). It lasts for a short duration and can use one special ability (chosen from: stone throw, root entangle, or tremor stomp).
 
 > **Design Note**: R5 capstone — powerful summoning. Concentration and material cost balance the tier 3–4 construct.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Earth chain**: Shillelagh (R0) → Rock Throw (R1) → Melt Ground/Heat Metal (R2) → Life from Stone/Petrification/Stone Pillar (R3) → *gap at R4-R5*
+2. **Water chain**: Water Jet (R0 proposed) → Purify Water (R1) → Water Prison/Nature's Passage (R2) → *gap at R3* → Control Weather (R4\*) → *needs R5*
+3. **Poison chain**: Poison Mist/Acid Splash (R0) → Venomous Weapon/Sticks to Snakes (R1) → Toxic Mist (R2) → Fungal Growth/Insect Swarm (R3) → *gap at R4-R5*
+4. **Animals chain**: Bestial Adaptation (R0) → Beast Form/Wild Companion (R1) → Law of the Strongest/Speak with Animals (R2) → Animal Messenger/Nature's Judgment (R3) → *gap at R4-R5*
+5. **Plants chain**: Lashing Vine/Rejuvenation (R0) → Blessing of Nature/Mesh of Vines (R1) → Living Plants/Sudden Growth/Thorn Barrage (R2) → Impalement (R3) → Tree Stride (R4\*) → Primal Awakening (R5 proposed)
+
+### Setup + Payoff Combos
+- ✅ **Plant growth → Entangle → Poison**: Mesh of Vines (R1) restrains → Toxic Mist (R2) poisons trapped targets — strong synergy
+- ✅ **Beast Form → enhanced combat**: Transform grants natural weapons, then exploit beast abilities for situational advantage
+- ⚠️ **Weather → terrain**: Control Weather (R4\*) could create advantageous terrain, but spell is incomplete and no lower-rank weather exists
+- ❌ **Water → poison combo**: No explicit mechanic linking water and poison effects (e.g., poison spreading through water)
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Bark Shield (R1 proposed) — reactive natural armor
+- [x] Defensive options: Bark Shield (R1 proposed), Rock Skin (R2) — good physical defense
+- [x] Utility: Bestial Adaptation (R0), Speak with Animals and Plants (R2), Nature's Passage (R2) — excellent breadth
+- [x] Damage across ranks: R0-R3 well-covered across all traits; R5 Primal Awakening provides offense via summoned construct
+- [x] Repeating conditions: Poisoned, restrained/entangled, difficult terrain — consistent natural hazard identity
+- [x] Setup+payoff: Plant→entangle→poison explicitly supported and practical
+- ⚠️ **Remaining gaps**: Water R3, Earth R4+, Poison R4+, Animals R4+, no dedicated R4 damage spell
+
+### Impact & Trivialization Review
+- **Water Jet (R0 water utility)**: Minimal risk — cantrip-level push/drench effect with modest damage. No exploration bypass.
+- **Beast Form (R1 exploration bypass)**: Moderate risk — flying, swimming, or climbing forms could bypass physical obstacles (walls, rivers, chasms). **Mitigations**: R1 Focus cost, likely concentration, can't use equipment or cast while transformed, beast form stats limit capabilities. GMs should ensure beast form stat blocks have appropriate movement limitations and that key obstacles require more than simple physical traversal. Still the highest bypass risk in Nature.
+- **Nature's Passage (R2)**: Low risk — terrain traversal assistance (ignore difficult terrain), not teleportation. Party still travels through the environment.

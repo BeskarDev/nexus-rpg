@@ -179,3 +179,32 @@
 **Critical.** The portal remains open for a medium duration. Up to four creatures can pass through per turn. You can choose to make the portal one-way or two-way.
 
 > **Design Note**: R5 capstone — bounded teleportation. Short duration, concentration, expensive material cost. Not unlimited (mortal-scale).
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Force chain**: Arcane Bolt (R0) → Arcane Missiles/Hale of Blades (R1) → Arcane Barrage (R2) → Arcane Blast (R3) → Arcane Empowerment (R4) → *needs R5 offensive capstone*
+2. **Creatures chain**: Conjure Vermin (R0 proposed) → Conjure Familiar (R1) → Summon Aberration (R2) → Conjure Guardian (R3 proposed) → *gap at R4-R5*
+3. **Teleportation chain**: Blink Step (R0 proposed) → *gap at R1* → Phase Step (R2) → Dimension Door/Astral Gate (R3) → Teleportation Circle (R4\*) → Planar Gateway (R5 proposed)
+4. **Binding chain**: Arcane Snare (R0 proposed) → Alarm (R1) → Arcane Circle/Eldritch Tendrils (R2) → *gap at R3* → Force Cage (R4\*) → *needs R5*
+5. **Objects chain**: Arcane Glyph/Extraplanar Pocket (R0) → Infuse Item (R1) → Fabricate (R2 proposed) → *gap at R3-R5*
+
+### Setup + Payoff Combos
+- ✅ **Familiar scout → targeting**: Conjure Familiar marks targets, follow-up spells gain +1 boon
+- ✅ **Wall of Force → isolation**: Split battlefield creates tactical advantage for force spells
+- ⚠️ **Binding → force damage payoff**: Restrained targets should be vulnerable to force attacks, but no explicit mechanic links them
+- ❌ **Summon → teleport combo**: No synergy between summoning and teleportation effects
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Arcane Deflection (R1 proposed) — force barrier reactive defense
+- [x] Defensive options: Arcane Barrier (R1), Arcane Deflection (R1 proposed)
+- [x] Utility: Extraplanar Pocket (R0), Arcane Eye (R2), Fabricate (R2 proposed)
+- [x] Damage across ranks: R0-R4 covered via force chain; R5 needs an offensive capstone
+- ⚠️ Repeating conditions: Restrained via binding spells, but limited condition variety overall
+- [x] Setup+payoff: Familiar → boon, Wall → isolation are well-defined
+- ⚠️ **Remaining gaps**: Teleportation R1, Objects R3+, Binding R3, no R5 force damage spell
+
+### Impact & Trivialization Review
+- **Blink Step (R0 teleport)**: Minimal risk — melee/close range only, cantrip-level repositioning. Does not bypass exploration.
+- **Fabricate (R2 item creation)**: Moderate risk — could bypass Crafting challenges. **Mitigations**: ritual (10 min), requires raw materials, caps at Q2 quality, cannot create magical items. Crafting skill remains essential for anything above basic goods.
+- **Planar Gateway (R5 portal)**: Low risk at R5 power level — Very Hard TN, concentration, 500-coin material cost consumed, must have visited the destination. Appropriate for peak mortal magic. GMs retain narrative control over which locations qualify as "visited."

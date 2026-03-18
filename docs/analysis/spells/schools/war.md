@@ -165,3 +165,27 @@
 **Critical.** Duration short. All bonuses as Strong. Additionally, once per turn you can make an additional weapon attack as a Quick Action. Frightened enemies that attempt to flee provoke attacks of opportunity from all allies.
 
 > **Design Note**: R5 capstone — avatar of war transformation. Mass buff + self-enhancement + fear aura. Concentration limits other spellcasting.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Fury chain**: Battle Surge (R0) → War Cry (R1) → Haste (R2) → Commander's Shout (R3 proposed) → Blood Frenzy (R4 proposed) → Warlord's Presence (R5 proposed) — **complete R0-R5**
+2. **Pride chain**: Mighty Strike (R0) → Heroic Weapon (R1) → War Banner (R2 proposed) → *gap at R3-R4* → Warlord's Presence (R5 proposed)
+3. **Blood chain**: Spectral Slash (R0) → Tear Wound/Curse of War (R1) → Blood Sacrifice (R2) → *gap at R3* → Blood Frenzy (R4 proposed) → *needs R5*
+4. **Justice chain**: Righteous Strike (R0 proposed) → *gap at R1* → Avenging Oath (R2 proposed) → *gap at R3-R5* — sparsest chain
+5. **Triumph chain**: Victor's Rush (R0 proposed) → Weapon Spirit (R1) → Ancestral Warriors (R2) → Commander's Shout (R3 proposed) → *gap at R4* → Warlord's Presence (R5 proposed)
+
+### Setup + Payoff Combos
+- ✅ **Fear → exploit**: War Cry (R1) frightens enemies → attacks against frightened targets deal bonus damage or gain advantage
+- ✅ **Weapon blessing → crit trigger**: Heroic Weapon (R1) enhances weapon → critical hits apply bleeding condition
+- ⚠️ **Blood chain**: Tear Wound (R1) → Blood Sacrifice (R2) → Blood Frenzy (R4 proposed) has thematic progression but each spell operates independently — no explicit "bleeding target" payoff mechanic
+- ❌ **Justice → triumph link**: No mechanic connecting retribution damage (Righteous Strike, Avenging Oath) to triumph rewards (Victor's Rush)
+
+### Design Completeness Checklist
+- ⚠️ R1 Quick Action: Shield of Valor (R1 proposed) is enchant (proactive buff), not a reactive Quick Action — **no reactive R1 Quick Action**
+- [x] Defensive options: Shield of Valor (R1 proposed) fills War's previously absent defensive niche with AV bonus + fear immunity
+- ⚠️ Utility: Very limited — appropriate for War's weak utility role, but no exploration or downtime spells exist
+- [x] Damage across ranks: R0-R5 fully covered with proposals — fury chain provides continuous damage/buff escalation
+- [x] Repeating conditions: Frightened, bleeding — consistent battle identity
+- [x] Setup+payoff: Fear→exploit is the core loop and well-supported by War Cry → Commander's Shout escalation
+- ⚠️ **Remaining gaps**: Reactive R1 Quick Action, Justice R1/R3+, Pride R3-R4, Blood R3/R5

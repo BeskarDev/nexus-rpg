@@ -167,3 +167,33 @@
 **Critical.** All creatures take +18 psychic damage and are confused for a short duration. Creatures that fail by 6+ are dominated briefly — they act on your behalf until the end of their next turn.
 
 > **Design Note**: R5 capstone. AoE at R5 uses half single-target scaling (+6/+12/+18). The condition escalation (dazed → confused → dominated) rewards high casting rolls.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Influence chain**: Mind Blast (R0) → Subtle Suggestion/Attack Thoughts (R1) → Forced Suggestion (R2) → Implant Suggestion (R3 proposed) → *gap at R4* → Psychic Maelstrom (R5 proposed)
+2. **Communication chain**: Mental Link (R0) → *gap at R1* → Telepathic Bond (R2 proposed) → Invade Dreams (R3\*) → *gap at R4-R5*
+3. **Insight chain**: Detect Magic (R0) → Foresight/Psychometry/True Strike (R1) → Counterspell (R2) → *gap at R3-R5*
+4. **Domination chain**: Commanding Thought (R0 proposed) → Control Beast (R1) → Wave of Madness (R2\*) → *gap at R3-R4* → Psychic Maelstrom (R5 proposed, dominated at critical)
+5. **Memory chain**: Surface Recall (R0 proposed) → *gap at R1* → Memory Sieve (R2 proposed) → *gap at R3* → Modify Memory (R4 proposed) → *needs R5*
+
+### Setup + Payoff Combos
+- ✅ **Charm/daze → telepathy boon**: Charmed or dazed targets are vulnerable to follow-up mental attacks
+- ✅ **Read thoughts → social advantage**: Psychometry/Surface Recall → +1 boon on social interactions
+- ⚠️ **Memory chain progression**: Surface Recall → Memory Sieve → Modify Memory has clean escalation but R1 and R3 gaps break the chain
+- ❌ **Communication → Domination**: No mechanic linking established telepathic contact to easier domination attempts
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Mental Shield (R1 proposed) — reactive psychic defense
+- [x] Defensive options: Mental Shield (R1 proposed) provides Resist bonus and psychic resistance
+- [x] Utility: Detect Magic (R0), Psychometry (R1), Telepathic Bond (R2 proposed)
+- ⚠️ Damage across ranks: Mind Blast (R0), Attack Thoughts (R1), Psychic Wave (R2) → *R3-R4 damage gap* → Psychic Maelstrom (R5)
+- [x] Repeating conditions: Dazed, confused, charmed, dominated — strong condition ladder
+- [x] Setup+payoff: Charm → vulnerability chain well-supported across ranks
+- ⚠️ **Remaining gaps**: Communication R1, Memory R1/R3, Insight R3+, Domination R3-R4, R3-R4 damage spells
+
+### Impact & Trivialization Review
+- **Surface Recall (R0 memory reading)**: Moderate risk — reading recent memories could shortcut investigation. **Mitigations**: only surface/recent memories (seconds to minutes), unwilling targets resist, close range required. GM controls information depth. Provides leads, not answers.
+- **Commanding Thought (R0 mind control)**: Low risk — single Quick Action or Action, non-harmful commands only. Cannot compel complex, dangerous, or self-harmful actions. Well-bounded at cantrip level.
+- **Implant Suggestion (R3)**: Moderate risk — "reasonable" command clause and GM adjudication prevent worst abuses. Target rationalizes action as their own, but obviously suicidal commands auto-fail. Comparable to classic Suggestion spell constraints.
+- **Modify Memory (R4)**: Highest risk in Telepathy — altering memories could bypass entire social intrigue arcs. **Mitigations**: vs. Resist, close range (effectively requires restrained/willing target), concentration, R4 Focus cost is heavy. GMs should treat important NPCs as having resistance, wards, or allies who notice behavioral changes. The spell changes memory, not personality — altered targets may still act unpredictably.

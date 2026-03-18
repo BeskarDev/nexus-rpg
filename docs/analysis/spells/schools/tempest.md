@@ -174,3 +174,27 @@
 **Critical.** Duration extends to short. All bonuses active. You can call two lightning strikes per turn. Creatures within melee range take +2 lightning damage at the start of each of your turns.
 
 > **Design Note**: R5 capstone — transformation into a storm avatar. Concentration limits other spellcasting while transformed.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Hurricanes chain**: Gust/Wind Slash (R0) → Wind Hose (R1) → Torrent/Wind Ward (R2) → Cyclone/Wind Wall (R3) → Control Winds (R4\*) → Storm Lord (R5 proposed) — near-complete
+2. **Earthquakes chain**: Tremor (R0 proposed) → Earthen Tremor (R1) → Aftershock (R2 proposed) → *gap at R3* → Earthquake (R4\*) → *needs R5*
+3. **Thunderstorms chain**: Static Shock (R0) → Bursting Crackle/Lightning Javelin/Electrified Weapon/Storm Coat (R1) → Lightning Bolt/Storm Cloud/Thunder Clap (R2) → Chain Lightning/Lightning Volley/Shattering Orb (R3) → Avatar of Storms/Lightning Storm (R4) → Storm Lord (R5 proposed) — **complete R0-R5**
+4. **Sandstorms chain**: Sand Gust (R0 proposed) → *gap at R1* → Pyroclasm (R2) → Sandstorm/Cone of Cold (R3) → *gap at R4-R5*
+5. **Floods chain**: Splash (R0 proposed) → *gap at R1* → Conjure Elemental/Magma Burst/Tidal Surge (R2 proposed) → *gap at R3* → Control Water (R4\*) → *needs R5*
+
+### Setup + Payoff Combos
+- ✅ **Wind push → lightning**: Push targets into exposed positions with Gust/Wind Hose → strike with lightning spells for full effect
+- ✅ **Prone → AoE bonus**: Tremor/Earthen Tremor knocks prone → Aftershock (R2 proposed) explicitly deals bonus damage to prone targets
+- ⚠️ **Storm buildup**: Minor storm effects → major storm conceptually fits, but no explicit mechanic rewards casting multiple storm spells in sequence
+- ❌ **Sand → flood combo**: No mechanical link between sandstorm and flood effects
+
+### Design Completeness Checklist
+- ⚠️ R1 Quick Action: Storm Coat (R1) provides reactive lightning damage when hit, but is not a dedicated Quick Action cast — **partial coverage, could use explicit R1 Quick Action**
+- [x] Defensive options: Storm Shield (R1), Wind Ward (R2), Storm Coat (R1) — solid defensive suite
+- [x] Utility: Weather Prediction (R0 proposed) — fills the non-combat gap; Control Weather (R4\*) for advanced utility
+- [x] Damage across ranks: R0-R5 fully covered, especially via thunderstorms — strongest damage progression of any school
+- [x] Repeating conditions: Staggered, prone, deafened, pushed — consistent storm-force identity
+- [x] Setup+payoff: Prone → Aftershock bonus damage is explicitly designed as setup+payoff within a single spell
+- ⚠️ **Remaining gaps**: Sandstorms R1, Floods R1/R3, Earthquakes R3, explicit R1 Quick Action spell

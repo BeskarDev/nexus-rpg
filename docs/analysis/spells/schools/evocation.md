@@ -217,3 +217,27 @@
 **Heighten.** You can delay detonation for up to 1 minute while concentrating. Each turn of delay increases the damage by +2/+4/+6 (weak/strong/critical), up to a maximum of +12/+24/+36 after 3 turns of delay.
 
 > **Design Note**: R5 capstone. Delayed detonation creates tactical depth — do you detonate immediately or risk losing concentration for higher damage? AoE at R5 uses half single-target scaling (+6/+12/+18 base).
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Fire chain**: Flickering Flame (R0 condition apply) → Flame Burst/Scorching Ray (R1 damage) → Fireball (R2 AoE) → Black Flame Bolt (R3 single) → Elemental Cataclysm (R4 multi-element) → Delayed Blast Meteor (R5 AoE)
+2. **Frost chain**: Frost Snap (R0) → Ice Shards/Frozen Weapon (R1) → Frost Wave/Ice Lance (R2) → Glacial Spike (R3) → *needs R4* → Delayed Blast Meteor (R5, fire)
+3. **Lightning chain**: Static Spark (R0) → Lightning Arc (R1) → Lightning Strike (R2) → Chain Lightning (R3) → Elemental Cataclysm (R4) → *needs R5 lightning*
+4. **Acid chain**: Acid Splash (R0 proposed) → Chromatic Orb (R1 multi) → *needs R2 dedicated* → Corrosive Torrent (R3) → Elemental Cataclysm (R4)
+5. **AV-strip combo**: Acid Splash/Corrosive Torrent → reduced AV → Fire/Lightning follow-ups deal more effective damage
+
+### Setup + Payoff Combos
+- ✅ **Element condition → bonus damage**: Well-supported across ranks
+- ✅ **AV strip → focus fire**: Acid spells enable other elements
+- ⚠️ **Frost terrain → lightning conductor**: Conceptually strong but needs explicit mechanical support in spell text
+- ❌ **Fire → Frost synergy**: No explicit mechanical link between burning and slowed conditions
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Elemental Ward (R1) serves as reactive defense
+- [x] Defensive options: Elemental Ward (R1), Fire Shield (R2 proposed)
+- [x] Utility: Thermal Control (R0 proposed), Elemental Shaping (R1 proposed)
+- [x] Damage across all ranks: R0-R5 covered with proposals
+- [x] Repeating conditions: Burning, slowed, staggered, AV reduction
+- [x] Setup+payoff: Condition application → condition exploitation
+- ⚠️ **Remaining gap**: No dedicated R2 acid spell, R4-R5 frost, R5 lightning

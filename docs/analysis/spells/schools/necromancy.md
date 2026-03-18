@@ -92,3 +92,28 @@
 **Critical.** Summon 6 spectral warriors. They last for a short duration. You can command them as a group with a single mental command (no action required).
 
 > **Design Note**: R5 capstone — army summoning. Concentration limits total minion output, and the material cost adds resource pressure. Tier 2 minions are useful but not overwhelming.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Decay chain**: Enfeebling Grasp (R0) → Grasp of Decay/Ray of Lethargy (R1) → Shroud of Blight (R2) → Wither/Curse of Mortality (R3) → *gap at R4-R5*
+2. **Undeath chain**: Necromantic Sight (R0) → Animate Corpse/Control Undead (R1) → Animate Horde (R2) → Spectral Army/Negative Energy Flood (R3) → Death's Embrace (R4) → Army of Shadows (R5 proposed) — **complete R0-R5**
+3. **Siphoning chain**: Drain Life/Soul Drain (R0) → Death Bolt (R1) → Bone Shatter/Corpse Explosion (R2) → Reaper's Harvest (R3) → *gap at R4-R5*
+4. **Defilement chain**: Life Echo (R0) → Necrotic Shield/Death Ward (R1) → Inflict Curse/Death Mark (R2) → Soul Prison (R3) → Finger of Death (R4 proposed complete) → *needs R5*
+5. **Puppetry chain**: *gap at R0* → Bone Armor (R1) → Soul Veil (R2) → *gap at R3-R5* — weakest chain
+
+### Setup + Payoff Combos
+- ✅ **Slay → Corpse Explosion**: Defeat enemy → detonate corpse for AoE — the model gameplay loop
+- ✅ **Death Mark → bonus damage**: Mark target → all subsequent attacks deal enhanced damage
+- ✅ **Summon → Control**: Animate Corpse → Control Undead upgrades minion quality
+- ✅ **Drain → Shield**: Life siphoning fuels Necrotic Shield self-protection
+- ⚠️ **Puppetry synergy**: Bone Armor and Soul Veil exist but don't connect to the core slay→exploit cycle
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Death Ward (R1) — reactive protective ward
+- [x] Defensive options: Bone Armor (R1), Necrotic Shield (R1), Death Ward (R1) — strong triple coverage
+- [x] Utility: Necromantic Sight (R0), Life Echo (R0), Soul Veil (R2)
+- [x] Damage across ranks: R0-R4 fully covered; R5 Army of Shadows provides offense through summoned minions
+- [x] Repeating conditions: Stunned, paralyzed, bleeding, poisoned, life drain — widest condition variety
+- [x] Setup+payoff: Slay→corpse, mark→bonus, drain→shield — best-in-class synergy loops
+- ⚠️ **Remaining gaps**: Puppetry R0/R3+, Decay R4-R5, Siphoning R4-R5, Defilement R5

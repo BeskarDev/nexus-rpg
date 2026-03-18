@@ -167,3 +167,27 @@
 **Critical.** As Strong, but damage increases to +9 per turn and escape attempts suffer +1 bane.
 
 > **Design Note**: Fills R2 crush gap. Sustained single-target control — escalating damage rewards maintaining concentration. Pairs well with Telekinetic Crush (R1) as a setup → payoff chain.
+
+## Synergy & Completeness Assessment
+
+### Spell Progression Chains
+1. **Move chain**: Weak Telekinesis (R0) → Telekinetic Volley (R1) → Strong Telekinesis (R2) → Kinetic Barrage (R3 proposed) → *gap at R4* → *needs R5 move capstone*
+2. **Repel chain**: Kinetic Push (R0) → Shockwave (R1) → *gap at R2* → Distortion Field (R3\*) → *gap at R4-R5*
+3. **Levitate chain**: Minor Levitation (R0 proposed) → *gap at R1* → Levitation (R2) → *gap at R3-R4* → Gravity Reversal (R5 proposed)
+4. **Crush chain**: Pressure Grip (R0 proposed) → Telekinetic Crush (R1) → Crushing Sphere (R2 proposed) → *gap at R3-R5*
+5. **Gravity chain**: Gravity Shift (R0 proposed) → Gravity Orb (R1) → Stasis (R2) → *gap at R3* → Invert Gravity (R4\*) → Gravity Reversal (R5 proposed)
+
+### Setup + Payoff Combos
+- ✅ **Push into hazard → bonus damage**: Forced movement into environmental hazards is a core tactical loop
+- ✅ **Prone → follow-up attacks**: Kinetic Push/Gravity Shift knock prone → melee allies exploit prone targets
+- ⚠️ **Levitate → gravity drop**: Minor Levitation (R0) → Gravity Reversal (R5) conceptually linked but massive rank gap with no mid-rank gravity payoff
+- ❌ **Crush → sustained loop**: Pressure Grip → Crushing Sphere escalates well but no explicit mechanic chains them or rewards sequential use
+
+### Design Completeness Checklist
+- [x] R1 Quick Action: Kinetic Deflection (R1 proposed) — ranged attack deflection
+- [x] Defensive options: Reflective Barrier (R1), Force Shield (R1 proposed), Kinetic Deflection (R1 proposed) — strong defensive suite
+- [x] Utility: Weak/Strong Telekinesis (R0/R2), Minor Levitation (R0 proposed), Gravity Shift (R0 proposed)
+- ⚠️ Damage across ranks: R0-R3 covered, R5 via Gravity Reversal (fall damage) — but no dedicated R4 damage spell
+- [x] Repeating conditions: Prone, restrained, pushed/pulled — consistent forced movement identity
+- ⚠️ Setup+payoff: Positional control creates opportunities but relies on environmental/ally interactions rather than explicit spell-to-spell rewards
+- ⚠️ **Remaining gaps**: Levitate R1/R3-R4, Crush R3+, Repel R2, dedicated R4 damage spell
