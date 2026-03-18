@@ -54,6 +54,20 @@
 
 ## Proposed New Spells
 
+### Retaliating Fury
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Attacker | Melee | quick
+
+*When struck in battle, you channel the fury of war into an immediate counterstrike.*
+
+**Weak.** As a Quick Action when you take damage from a melee attack, deal +2 physical damage to the attacker.
+**Strong.** Deal +4 physical damage. The attacker is briefly frightened by your furious counterattack.
+**Critical.** Deal +6 physical damage. The attacker is frightened for a short duration.
+
+> **Design Note**: Fills the critical R1 Quick Action reactive gap. War's offensive identity means its reaction should be a counterattack, not a defensive ability. Frightened condition ties into the fear→exploit synergy.
+
 ### Righteous Strike
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

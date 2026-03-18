@@ -55,6 +55,20 @@
 
 ## Proposed New Spells
 
+### Absorb Harm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Ally | Close | quick
+
+*You extend a hand toward an ally under attack, absorbing a portion of their pain into yourself.*
+
+**Weak.** As a Quick Action when an ally within close range takes damage, reduce the damage they take by 2. You take 1 damage instead (this damage cannot be reduced).
+**Strong.** Reduce the ally's damage by 4. You take 2 damage.
+**Critical.** Reduce the ally's damage by 6. You take 3 damage. If the ally would be reduced to 0 HP, they are instead reduced to 1 HP (this effect only triggers once per scene).
+
+> **Design Note**: Fills the critical R1 Quick Action reactive gap. Peace's selflessness identity means its reaction is self-sacrifice — taking pain for others. The caster pays a real cost, fitting the communal ethos.
+
 ### Wayfinder's Mark
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
