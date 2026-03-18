@@ -180,14 +180,109 @@
 
 > **Design Note**: R5 capstone — avatar of war transformation. Mass buff + self-enhancement + fear aura. Concentration limits other spellcasting.
 
+### Righteous Fury
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Self | Self | enchant (short)
+
+*Divine wrath surges through your veins like molten bronze, and your strikes carry the weight of righteous judgement. Your eyes burn with holy fury, and the unjust tremble before you.*
+
+**Weak.** For a short duration, gain +4 weapon damage on all melee attacks. Attacks against frightened targets deal an additional +2 bonus damage.
+**Strong.** Weapon damage bonus increases to +6. Frightened bonus increases to +3. You also gain +1 boon on attack rolls against creatures that have damaged your allies this scene.
+**Critical.** Weapon damage +6, frightened bonus +4. +1 boon on attacks vs. ally-harmers. Your melee attacks that score a critical hit also inflict the frightened condition for a short duration.
+
+> **Design Note**: R3 fury/justice capstone — self-buff that synergizes with the fear→exploit loop. The frightened bonus explicitly rewards War's signature combo. Single-target focus distinguishes it from Commander's Shout's group orientation.
+
+### Ancestral Blade
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Self | Close | concentrate, enchant (short)
+
+*You call upon the spirits of fallen warriors, and a spectral weapon materializes beside you — a ghostly blade wielded by an ancestral champion who fights with tireless fury at your command.*
+
+**Weak.** Conjure a spectral weapon in close range that lasts for a short duration. It acts on your initiative and makes one attack per turn, dealing +5 physical damage (vs. Dodge). The spectral blade cannot be targeted by physical attacks.
+**Strong.** The spectral blade deals +10 physical damage per attack. It can also make attacks of opportunity against enemies that move through close range.
+**Critical.** The blade deals +15 physical damage per attack with attacks of opportunity. Once per scene, the blade can make a sweeping strike hitting all enemies in melee range of it for +5 physical damage each.
+
+> **Design Note**: R3 triumph/blood capstone — spectral ally. The conjured weapon acts as an independent attacker, providing action economy advantage. Concentration prevents stacking with other concentrate spells. The ancestral warrior theme ties into War's blood/triumph identity.
+
+### Champion's Challenge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | enchant (short)
+
+*You point your weapon at a foe and issue a divine challenge that rings with the authority of gods of war. A burning sigil appears on both you and your sworn foe, binding you in single combat.*
+
+**Weak.** Mark one enemy as your sworn foe for a short duration. You gain +4 weapon damage against the marked target. The marked target suffers +1 bane on attack rolls against anyone other than you.
+**Strong.** Weapon damage bonus increases to +6. The marked target suffers +2 banes on attacks against others. You gain +1 boon on Dodge and Parry against the marked target's attacks.
+**Critical.** Weapon damage +6, +2 banes on target's attacks against others, +1 boon on your defenses. If you reduce the marked target to 0 HP, all allies who can see you gain +2 weapon damage for a short duration (triumph surge).
+
+> **Design Note**: R4 justice/pride capstone — divine duel mechanic. Forces single combat by punishing the target for attacking others. The caster also gains offensive bonuses, making this a commitment to a specific enemy. Critical's triumph surge rewards the climactic kill.
+
+### Battle Standard
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Allies | Close | concentrate
+
+*You drive your weapon or banner into the ground and channel divine war magic through it. A pillar of fiery light erupts skyward, and all allies who fight beneath the standard feel the fury of righteous war coursing through them.*
+
+**Weak.** All allies within close range gain +2 weapon damage and +2 AV (situational bonus) for as long as you maintain concentration. Allies are immune to the frightened condition while in range. You cannot move while maintaining the standard (your weapon is planted in the ground).
+**Strong.** Weapon damage bonus increases to +3, AV to +3. Allies also gain +1 boon on all attack rolls while in range.
+**Critical.** Weapon damage +3, AV +3, +1 boon on attacks. Allies who start their turn within close range also regain +2 HP. Enemies within close range suffer +1 bane on Morale checks.
+
+> **Design Note**: R4 pride/triumph capstone — planted banner that creates a zone of empowerment. The caster cannot move, creating a meaningful tactical tradeoff. Concentration can be broken by damage. This is the group-buff counterpart to Blood Frenzy's self-buff at the same rank.
+
+### Avatar of War
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Self | Self | concentrate
+
+*You invoke the ultimate blessing of the war gods, and divine power transforms you into a living avatar of battle. Your form grows, your weapon blazes with holy fire, and wings of golden flame spread from your back. You are War incarnate.*
+
+**Weak.** For a brief duration: gain +3 to all attribute die sizes (up to d12+2), +6 weapon damage, and flight (movement 6). You are immune to the frightened, staggered, and dazed conditions. Your melee attacks deal fire damage in addition to physical.
+**Strong.** Duration extends to short. All Weak benefits. You also emit an aura of divine fury — enemies within melee range take +4 fire damage at the start of each of your turns.
+**Critical.** Duration short. All Strong benefits. Once per turn, you may make an additional weapon attack as a Quick Action. When you reduce an enemy to 0 HP, all allies within close range gain +2 to their next attack roll.
+
+> **Design Note**: R5 fury/blood ultimate — divine warrior transformation. The most powerful self-buff in War's arsenal. Concentration limits other spellcasting. Brief/short duration ensures this is a climactic moment, not a sustained state. Attribute bonuses are capped at d12+2 to respect the mortal power ceiling.
+
+### Final Triumph
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Allies | Close | —
+
+*As your foe falls, divine glory erupts from the killing blow in a shockwave of golden light. Your allies feel the surge of righteous victory — wounds close, exhaustion fades, and the will to fight burns brighter than ever.*
+
+**Weak.** When you reduce an enemy to 0 HP, all allies within close range regain +6 HP and gain +2 movement for their next turn. This spell can trigger once per scene.
+**Strong.** Allies regain +12 HP, gain +2 movement, and gain +1 boon on their next attack roll.
+**Critical.** Allies regain +18 HP, gain +2 movement, +1 boon on next attack, and any frightened or dazed conditions on allies are immediately removed.
+
+> **Design Note**: R5 triumph/blood capstone — victory burst. Kill-triggered mass heal + buff. Once per scene limits abuse. This rewards the War tradition's aggressive playstyle: killing enemies heals and empowers allies. Thematically, the moment of triumph inspires the entire party.
+
+## Cross-School Spell Sharing
+
+War does not currently share spells with any arcane discipline.
+
+**Concept Overlaps** (not shared, but thematically adjacent):
+- **Heroic Weapon** (War R1) overlaps with **Flaming Weapon/Frozen Weapon/Lightning Weapon** (Evocation, Arcane) — both enhance weapons with magical effects. War's enhancement is divine and battle-themed; Evocation's is elemental. Different mechanics and flavor.
+- **Haste** (War R2) is a unique War identity spell — no arcane equivalent exists. This is intentional: divine battle swiftness is distinct from arcane time manipulation.
+- **Lightning Strike** (Evocation R2) could theoretically be shared with War for AoE tactical combat, but War's damage types (Physical, Fire, Blast) don't include Lightning — sharing would violate War's thematic identity.
+
+> **Design Note**: War's combat magic is thematically distinct from arcane offense (divine battle fury vs. elemental destruction). No spells are currently shared. Haste remains uniquely War — it represents the god of war's gift of supernatural speed, not arcane manipulation of time.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Fury chain**: Battle Surge (R0) → War Cry (R1) → Haste (R2) → Commander's Shout (R3 proposed) → Blood Frenzy (R4 proposed) → Warlord's Presence (R5 proposed) — **complete R0-R5**
-2. **Pride chain**: Mighty Strike (R0) → Heroic Weapon (R1) → War Banner (R2 proposed) → *gap at R3-R4* → Warlord's Presence (R5 proposed)
-3. **Blood chain**: Spectral Slash (R0) → Tear Wound/Curse of War (R1) → Blood Sacrifice (R2) → *gap at R3* → Blood Frenzy (R4 proposed) → *needs R5*
-4. **Justice chain**: Righteous Strike (R0 proposed) → *gap at R1* → Avenging Oath (R2 proposed) → *gap at R3-R5* — sparsest chain
-5. **Triumph chain**: Victor's Rush (R0 proposed) → Weapon Spirit (R1) → Ancestral Warriors (R2) → Commander's Shout (R3 proposed) → *gap at R4* → Warlord's Presence (R5 proposed)
+1. **Fury chain**: Battle Surge (R0) → War Cry (R1) → Haste (R2) → Commander's Shout/Righteous Fury (R3 proposed) → Blood Frenzy (R4 proposed) → Avatar of War/Warlord's Presence (R5 proposed) — **complete R0-R5**
+2. **Pride chain**: Mighty Strike (R0) → Heroic Weapon (R1) → War Banner (R2 proposed) → *gap at R3* → Battle Standard (R4 proposed) → Warlord's Presence (R5 proposed) — **near-complete R0-R5**
+3. **Blood chain**: Spectral Slash (R0) → Tear Wound/Curse of War (R1) → Blood Sacrifice (R2) → Ancestral Blade (R3 proposed) → Blood Frenzy (R4 proposed) → Avatar of War/Final Triumph (R5 proposed) — **complete R0-R5**
+4. **Justice chain**: Righteous Strike (R0 proposed) → Retaliating Fury (R1 proposed) → Avenging Oath (R2 proposed) → Righteous Fury (R3 proposed) → Champion's Challenge (R4 proposed) → Final Triumph (R5 proposed) — **complete R0-R5**
+5. **Triumph chain**: Victor's Rush (R0 proposed) → Weapon Spirit (R1) → Ancestral Warriors (R2) → Commander's Shout (R3 proposed) → Battle Standard (R4 proposed) → Warlord's Presence/Final Triumph (R5 proposed) — **complete R0-R5**
 
 ### Setup + Payoff Combos
 - ✅ **Fear → exploit**: War Cry (R1) frightens enemies → attacks against frightened targets deal bonus damage or gain advantage

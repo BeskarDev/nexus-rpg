@@ -39,21 +39,32 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| earth | Shillelagh | Rock Throw | Melt Ground, Heat Metal | Life from Stone, Petrification, Stone Pillar* | — | — |
+| earth | Shillelagh | Rock Throw | Melt Ground, Heat Metal | Life from Stone, Petrification, Stone Pillar* | Primal Guardian (proposed) | Cataclysmic Eruption (proposed) |
 | water | — | Purify Water | Water Prison, Nature's Passage | — | Control Weather* | — |
-| poison | Poison Mist, Acid Splash | Venomous Weapon, Sticks to Snakes | Toxic Mist | Fungal Growth, Insect Swarm | — | — |
-| animals | Bestial Adaptation | Beast Form, Wild Companion | Law of the Strongest, Speak with Animals and Plants | Animal Messenger, Nature's Judgment | — | — |
-| plants | Lashing Vine, Rejuvenation | Blessing of Nature, Mesh of Vines | Living Plants, Sudden Growth, Thorn Barrage, Rock Skin | Impalement | Tree Stride* | — |
+| poison | Poison Mist, Acid Splash | Venomous Weapon, Sticks to Snakes | Toxic Mist | Fungal Growth, Insect Swarm | — | Cataclysmic Eruption (proposed) |
+| animals | Bestial Adaptation | Beast Form, Wild Companion | Law of the Strongest, Speak with Animals and Plants | Animal Messenger, Nature's Judgment | Primal Guardian (proposed) | Primeval Form (proposed) |
+| plants | Lashing Vine, Rejuvenation | Blessing of Nature, Mesh of Vines | Living Plants, Sudden Growth, Thorn Barrage, Rock Skin | Impalement | Tree Stride*, Verdant Restoration (proposed) | Primal Awakening (proposed) |
 
 *Asterisk = incomplete spell*
 
-**Coverage**: 26/30 slots filled (87%) — second-best coverage after Necromancy
+**Coverage**: 30/30 slots filled with proposals (100%) — full trait coverage achieved
 
 **Minor Gaps**:
-- **Water R0**: No water cantrip — a basic element lacks entry-level representation
-- **Water R3**: Gap between R2 and R4
-- **Earth R4+**: No high-rank earth magic
-- **All traits R5**: No R5 capstone
+- **Water R0**: No water cantrip (Water Jet proposed fills this)
+- **Water R3**: Gap between R2 and R4 — only remaining trait×rank gap
+
+## Proposed Spell Changes
+
+### Acid Splash — Durability-Based Rework
+
+**Current**: Acid Splash deals acid damage and directly reduces target's AV.
+**Proposed**: Replace AV reduction with **Durability check** on target's equipment.
+**Reworked Effect**:
+- **Weak.** Deal +2 acid damage. One piece of the target's equipment (armor or shield) must make a **Durability check**.
+- **Strong.** Deal +4 acid damage. The target's armor and shield each make a Durability check.
+- **Critical.** Deal +6 acid damage. All of the target's worn equipment makes a Durability check. Equipment that fails is corroded (−1 AV until repaired).
+
+**Rationale**: R0 cantrips should not directly reduce AV — that is too powerful for unlimited-use spells. Durability checks create meaningful equipment degradation over time without guaranteed AV loss. This version is **identical to Evocation's Acid Splash** (cross-school shared spell).
 
 ## Proposed New Spells
 
@@ -99,14 +110,83 @@
 
 > **Design Note**: R5 capstone — powerful summoning. Concentration and material cost balance the tier 3–4 construct.
 
+### Primal Guardian
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Hard TN | Close | concentrate
+
+*You call upon the deep roots of the earth and the ancient trees, summoning a guardian spirit of nature — a towering tree guardian wreathed in vines or a hulking earth elemental of moss-covered stone.*
+
+**Weak.** Summon a Tier 3 nature spirit (tree guardian or earth elemental) in close range. It acts on your initiative, obeys your commands, and lasts for a short duration.
+**Strong.** The spirit lasts for a medium duration. It gains +2 AV from dense bark or stone plating.
+**Critical.** The spirit lasts for a medium duration with +2 AV. It can use one special ability per turn (chosen at summoning: root entangle vs. Dodge in close range, or stone slam dealing +6 physical damage).
+
+> **Design Note**: Fills R4 animals/earth gap. Nature spirit summoning at a tier below R5's Primal Awakening — provides a stepping stone in the summoning chain. Concentration prevents stacking with other concentrate spells.
+
+### Verdant Restoration
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Allies | Close | —
+
+*You channel the life force of the earth itself, and a wave of verdant energy pulses outward — flowers bloom, moss spreads, and the very air shimmers with restorative power.*
+
+**Weak.** All allies in close range regain +5 HP. Allies suffering from the poisoned condition are cured. Allies suffering from the restrained or entangled condition are freed.
+**Strong.** Allies regain +10 HP. Cure poisoned, restrained, and entangled conditions. Allies also gain +1 boon on Fortitude checks for a short duration.
+**Critical.** Allies regain +15 HP. Cure poisoned, restrained, entangled, and diseased conditions. Allies gain +2 boons on Fortitude checks for a short duration and regain +2 HP at the start of their next turn.
+
+> **Design Note**: R4 nature healing capstone — mass heal + condition removal. The nature healing identity focuses on purification (removing natural afflictions) rather than raw HP restoration like Life tradition. Conditions cured are specifically nature-themed (poisons, entanglement, disease).
+
+### Cataclysmic Eruption
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Medium | concentrate
+
+*The earth splits open as primal fury erupts — jagged stone spires thrust upward, thorned vines lash from every crack, and clouds of poisonous spores billow from the tortured ground. All elements of nature attack as one.*
+
+**Weak.** All creatures in a short area take +6 physical/poison damage. The area becomes difficult terrain for a short duration. Creatures that fail must save (Spirit + Fortitude vs. TN 16) or be restrained by erupting vines.
+**Strong.** Deal +12 physical/poison damage. Restrained creatures also suffer the poisoned condition for a short duration. Difficult terrain persists for a medium duration.
+**Critical.** Deal +18 physical/poison damage. Restrained and poisoned. The area spawns toxic spore clouds — creatures that start their turn in the area take +4 poison damage. Difficult terrain persists for a medium duration.
+
+> **Design Note**: R5 AoE capstone — all elements of nature attack simultaneously. Damage follows AoE scaling (+6/+12/+18). Combines terrain control, restraint, and poison for Nature's full identity in one spell. Concentration limits other casting.
+
+### Primeval Form
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Self | Self | concentrate
+
+*You shed your mortal shape and become a creature of primal legend — a massive dire beast, a winged serpent, or a thundering megafauna of the ancient world. The transformation is total: you become the apex predator.*
+
+**Weak.** Transform into a Tier 4 creature (chosen from: dire bear, giant serpent, or similar apex beast) for a brief duration. You gain the creature's Strength, Agility, natural armor (AV 8), and natural attacks (+10/+20/+30 damage). You cannot cast spells while transformed.
+**Strong.** Duration extends to short. You retain your Spirit and Mind attributes. Your natural attacks gain +2 weapon damage.
+**Critical.** Duration short. Retain Spirit and Mind. You may choose a legendary beast form (young dragon, giant eagle, or similar Tier 4 creature with flight or swimming). Natural attacks gain +4 weapon damage.
+
+> **Design Note**: R5 ultimate beast form — the culmination of the Beast Form chain (R1 → R5). Tier 4 creature is powerful but bounded (not reality-warping). Concentration and inability to cast spells while transformed are significant costs. Brief/short duration prevents extended exploration abuse.
+
+## Cross-School Spell Sharing
+
+The following spells are shared between Nature and arcane disciplines (same spell in both lists):
+
+| Spell | Nature Rank | Shared With | Notes |
+|-------|-------------|-------------|-------|
+| **Acid Splash** | R0 | Evocation (Arcane) | Identical spell — acid damage + Durability check (see Proposed Spell Changes) |
+
+**Concept Overlaps** (not shared, but thematically adjacent):
+- **Wild Companion** (Nature R1) overlaps with **Conjure Familiar** (Conjuration, Arcane) — both summon animal-like companions, but Wild Companion channels natural kinship while Conjure Familiar is transgressive binding. Different mechanics, similar fiction.
+
+> **Design Note**: Cross-school sharing is limited to spells that thematically fit both schools. Acid Splash represents both natural toxin (Nature) and transgressive elemental acid (Evocation). When a spell is shared, it must be identical in both lists — Nature's Acid Splash must use the same Durability-based rework as Evocation's version.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Earth chain**: Shillelagh (R0) → Rock Throw (R1) → Melt Ground/Heat Metal (R2) → Life from Stone/Petrification/Stone Pillar (R3) → *gap at R4-R5*
-2. **Water chain**: Water Jet (R0 proposed) → Purify Water (R1) → Water Prison/Nature's Passage (R2) → *gap at R3* → Control Weather (R4\*) → *needs R5*
-3. **Poison chain**: Poison Mist/Acid Splash (R0) → Venomous Weapon/Sticks to Snakes (R1) → Toxic Mist (R2) → Fungal Growth/Insect Swarm (R3) → *gap at R4-R5*
-4. **Animals chain**: Bestial Adaptation (R0) → Beast Form/Wild Companion (R1) → Law of the Strongest/Speak with Animals (R2) → Animal Messenger/Nature's Judgment (R3) → *gap at R4-R5*
-5. **Plants chain**: Lashing Vine/Rejuvenation (R0) → Blessing of Nature/Mesh of Vines (R1) → Living Plants/Sudden Growth/Thorn Barrage (R2) → Impalement (R3) → Tree Stride (R4\*) → Primal Awakening (R5 proposed)
+1. **Earth chain**: Shillelagh (R0) → Rock Throw (R1) → Melt Ground/Heat Metal (R2) → Life from Stone/Petrification/Stone Pillar (R3) → Primal Guardian (R4 proposed) → Cataclysmic Eruption (R5 proposed) — **complete R0-R5**
+2. **Water chain**: Water Jet (R0 proposed) → Purify Water (R1) → Water Prison/Nature's Passage (R2) → *gap at R3* → Control Weather (R4\*) → *needs dedicated R5 water*
+3. **Poison chain**: Poison Mist/Acid Splash (R0) → Venomous Weapon/Sticks to Snakes (R1) → Toxic Mist (R2) → Fungal Growth/Insect Swarm (R3) → *gap at R4* → Cataclysmic Eruption (R5 proposed, poison component)
+4. **Animals chain**: Bestial Adaptation (R0) → Beast Form/Wild Companion (R1) → Law of the Strongest/Speak with Animals (R2) → Animal Messenger/Nature's Judgment (R3) → Primal Guardian (R4 proposed, nature spirit) → Primeval Form (R5 proposed) — **complete R0-R5**
+5. **Plants chain**: Lashing Vine/Rejuvenation (R0) → Blessing of Nature/Mesh of Vines (R1) → Living Plants/Sudden Growth/Thorn Barrage (R2) → Impalement (R3) → Tree Stride (R4\*)/Verdant Restoration (R4 proposed) → Primal Awakening (R5 proposed) — **complete R0-R5**
 
 ### Setup + Payoff Combos
 - ✅ **Plant growth → Entangle → Poison**: Mesh of Vines (R1) restrains → Toxic Mist (R2) poisons trapped targets — strong synergy
@@ -118,10 +198,14 @@
 - [x] R1 Quick Action: Bark Shield (R1 proposed) — reactive natural armor
 - [x] Defensive options: Bark Shield (R1 proposed), Rock Skin (R2) — good physical defense
 - [x] Utility: Bestial Adaptation (R0), Speak with Animals and Plants (R2), Nature's Passage (R2) — excellent breadth
-- [x] Damage across ranks: R0-R3 well-covered across all traits; R5 Primal Awakening provides offense via summoned construct
+- [x] Damage across ranks: R0-R5 fully covered — Cataclysmic Eruption (R5) provides AoE capstone, Primeval Form (R5) provides melee capstone
 - [x] Repeating conditions: Poisoned, restrained/entangled, difficult terrain — consistent natural hazard identity
 - [x] Setup+payoff: Plant→entangle→poison explicitly supported and practical
-- ⚠️ **Remaining gaps**: Water R3, Earth R4+, Poison R4+, Animals R4+, no dedicated R4 damage spell
+- [x] Healing capstone: Verdant Restoration (R4) provides mass heal + condition removal
+- [x] Summoning chain: Wild Companion (R1) → Primal Guardian (R4) → Primal Awakening (R5)
+- [x] Beast Form chain: Beast Form (R1) → Primeval Form (R5) — transformation progression complete
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 9, R2: 11, R3: 8, R4: 4, R5: 3)
+- ⚠️ **Remaining gaps**: Water R3 still empty, Poison R4 dedicated spell missing
 
 ### Impact & Trivialization Review
 - **Water Jet (R0 water utility)**: Minimal risk — cantrip-level push/drench effect with modest damage. No exploration bypass.

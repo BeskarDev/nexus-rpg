@@ -175,14 +175,55 @@
 
 > **Design Note**: R5 capstone — transformation into a storm avatar. Concentration limits other spellcasting while transformed.
 
+### World Shaker
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Medium | concentrate
+
+*You channel the fury of the deep earth, and the world answers. The ground heaves, splits, and buckles — buildings topple, chasms yawn open, and the very foundations of civilization shudder under divine wrath.*
+
+**Weak.** All creatures in a medium area take +6 blast damage and must save (Strength + Athletics vs. TN 16) or be prone. Structures in the area take triple damage. The area becomes difficult terrain for a short duration.
+**Strong.** Deal +12 blast damage. Prone creatures cannot stand until the start of their next turn. Structures automatically suffer critical structural damage. Chasms open — GM determines if creatures fall. Difficult terrain persists for a medium duration.
+**Critical.** Deal +18 blast damage. All creatures are prone (no save). Structures collapse. Chasms open beneath up to 2 targets (vs. Dodge, fall damage if applicable). Difficult terrain persists for a medium duration. The area is permanently altered.
+
+> **Design Note**: R5 earthquake capstone — the culmination of the earthquakes chain (Tremor → Earthen Tremor → Aftershock → Earthquake → World Shaker). AoE damage follows R5 scaling (+6/+12/+18). Structure damage and terrain destruction fit the earthquakes identity of permanent environmental alteration. Concentration limits other casting.
+
+### Maelstrom
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Long | concentrate
+
+*You call upon the primal forces of wind and water, and a massive vortex of churning waves and howling gale descends upon the battlefield — a hurricane given divine purpose, or a whirlpool that swallows the earth itself.*
+
+**Weak.** Create a swirling vortex in a large area at long range. All creatures in the area take +6 frost/blast damage and are pulled one range increment toward the center. Creatures in the center are restrained by churning winds and water.
+**Strong.** Deal +12 frost/blast damage. Creatures are pulled two range increments toward the center. Restrained creatures in the center take an additional +4 frost damage at the start of each of their turns. The area is heavily obscured.
+**Critical.** Deal +18 frost/blast damage. All creatures are pulled to the center and restrained. Restrained creatures take +6 frost damage per turn. The area is heavily obscured. Flying creatures are grounded (lose flight for the duration).
+
+> **Design Note**: R5 floods/hurricanes combined capstone — massive area denial and forced movement. Damage follows R5 AoE scaling (+6/+12/+18). The pull-to-center mechanic creates a tactical vortex that punishes creatures who remain in the area. Concentration can be broken to end the effect.
+
+## Cross-School Spell Sharing
+
+The following spells are shared between Tempest and arcane disciplines (same spell in both lists):
+
+| Spell | Tempest Rank | Shared With | Notes |
+|-------|-------------|-------------|-------|
+| **Chain Lightning** | R3 | Evocation (Arcane) | Identical spell — primary target + chain to secondary targets |
+
+**Concept Overlaps** (not shared, but thematically adjacent):
+- **Lightning Bolt** (Tempest R2) overlaps with **Lightning Strike** (Evocation R2) — both are line-based lightning damage spells. Tempest channels divine storm power; Evocation channels raw elemental force. Similar mechanics, different flavor sources.
+
+> **Design Note**: Cross-school sharing is limited to spells that thematically fit both schools. Chain Lightning represents both raw elemental control (Evocation) and natural storm power (Tempest). When a spell is shared, it must be identical in both lists.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Hurricanes chain**: Gust/Wind Slash (R0) → Wind Hose (R1) → Torrent/Wind Ward (R2) → Cyclone/Wind Wall (R3) → Control Winds (R4\*) → Storm Lord (R5 proposed) — near-complete
-2. **Earthquakes chain**: Tremor (R0 proposed) → Earthen Tremor (R1) → Aftershock (R2 proposed) → *gap at R3* → Earthquake (R4\*) → *needs R5*
+1. **Hurricanes chain**: Gust/Wind Slash (R0) → Wind Hose (R1) → Torrent/Wind Ward (R2) → Cyclone/Wind Wall (R3) → Control Winds (R4\*) → Storm Lord/Maelstrom (R5 proposed) — **complete R0-R5**
+2. **Earthquakes chain**: Tremor (R0 proposed) → Earthen Tremor (R1) → Aftershock (R2 proposed) → *gap at R3* → Earthquake (R4\*) → World Shaker (R5 proposed) — **near-complete R0-R5** (R3 gap)
 3. **Thunderstorms chain**: Static Shock (R0) → Bursting Crackle/Lightning Javelin/Electrified Weapon/Storm Coat (R1) → Lightning Bolt/Storm Cloud/Thunder Clap (R2) → Chain Lightning/Lightning Volley/Shattering Orb (R3) → Avatar of Storms/Lightning Storm (R4) → Storm Lord (R5 proposed) — **complete R0-R5**
-4. **Sandstorms chain**: Sand Gust (R0 proposed) → *gap at R1* → Pyroclasm (R2) → Sandstorm/Cone of Cold (R3) → *gap at R4-R5*
-5. **Floods chain**: Splash (R0 proposed) → *gap at R1* → Conjure Elemental/Magma Burst/Tidal Surge (R2 proposed) → *gap at R3* → Control Water (R4\*) → *needs R5*
+4. **Sandstorms chain**: Sand Gust (R0 proposed) → *gap at R1* → Pyroclasm (R2) → Sandstorm/Cone of Cold (R3) → *gap at R4* → *gap at R5*
+5. **Floods chain**: Splash (R0 proposed) → *gap at R1* → Conjure Elemental/Magma Burst/Tidal Surge (R2 proposed) → *gap at R3* → Control Water (R4\*) → Maelstrom (R5 proposed) — near-complete (R1/R3 gaps)
 
 ### Setup + Payoff Combos
 - ✅ **Wind push → lightning**: Push targets into exposed positions with Gust/Wind Hose → strike with lightning spells for full effect
@@ -194,7 +235,9 @@
 - ⚠️ R1 Quick Action: Storm Coat (R1) provides reactive lightning damage when hit, but is not a dedicated Quick Action cast — **partial coverage, could use explicit R1 Quick Action**
 - [x] Defensive options: Storm Shield (R1), Wind Ward (R2), Storm Coat (R1) — solid defensive suite
 - [x] Utility: Weather Prediction (R0 proposed) — fills the non-combat gap; Control Weather (R4\*) for advanced utility
-- [x] Damage across ranks: R0-R5 fully covered, especially via thunderstorms — strongest damage progression of any school
-- [x] Repeating conditions: Staggered, prone, deafened, pushed — consistent storm-force identity
+- [x] Damage across ranks: R0-R5 fully covered — Storm Lord, World Shaker, and Maelstrom provide three distinct R5 capstones
+- [x] Repeating conditions: Staggered, prone, deafened, pushed, restrained — consistent storm-force identity
 - [x] Setup+payoff: Prone → Aftershock bonus damage is explicitly designed as setup+payoff within a single spell
-- ⚠️ **Remaining gaps**: Sandstorms R1, Floods R1/R3, Earthquakes R3, explicit R1 Quick Action spell
+- [x] R5 capstone diversity: Storm Lord (transformation), World Shaker (earthquake AoE), Maelstrom (vortex control) — three different tactical roles
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 9, R2: 11, R3: 7, R4: 5, R5: 3)
+- ⚠️ **Remaining gaps**: Sandstorms R1/R4+, Floods R1/R3, Earthquakes R3, explicit R1 Quick Action spell

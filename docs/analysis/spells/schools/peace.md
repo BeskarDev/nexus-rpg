@@ -167,14 +167,80 @@
 
 > **Design Note**: R5 capstone — ultimate sanctuary. Defensive powerhouse that discourages violence. Concentration can be broken.
 
+### Diplomatic Immunity
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Ally or Self | Close | enchant (medium)
+
+*You invoke the divine right of the peacekeeper, surrounding a creature with an aura of inviolable sanctity. Those who have not been wronged by the protected creature find themselves unable to raise a hand against them.*
+
+**Weak.** For a medium duration, the target cannot be attacked by creatures they have not attacked first. A hostile creature can attempt to override this protection (Spirit + Fortitude vs. your casting result). If they succeed, the protection against that creature ends. If they fail, they are briefly dazed by divine rebuke.
+**Strong.** Hostile creatures that fail the override check are dazed for a short duration and take +5 psychic damage from the divine rebuke.
+**Critical.** Hostile creatures that fail take +10 psychic damage and are dazed for a short duration. The protected creature also gains +2 AV (situational bonus) for the duration against any creature that successfully overrides the protection.
+
+> **Design Note**: R4 protection/law capstone — divine diplomatic immunity. The override mechanic (vs. Resist) prevents it from being absolute — determined enemies can break through, but pay a cost for doing so. Requires the protected creature to refrain from violence to maintain full effect.
+
+### Pilgrimage
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Allies | Close | ritual (1 hour), enchant (long)
+
+*You perform an extended rite of blessing over a group of travelers, invoking divine protection for their journey. Golden light settles over each pilgrim like a mantle, and the road ahead seems to welcome their passage.*
+
+**Weak.** Up to 8 creatures gain a travel blessing for a long duration: +2 movement per turn, ignore natural difficult terrain (mud, undergrowth, rocky ground), and +2 boon on Fortitude checks against travel fatigue and exhaustion.
+**Strong.** All benefits of Weak. The group also gains +1 boon on Perception checks to detect ambushes and +1 boon on Survival checks for navigation during the journey.
+**Critical.** All benefits of Strong. The group cannot become lost in natural terrain for the duration (magical misdirection still works). Pilgrims also gain +2 AV (situational bonus) against the first attack they receive from any ambush.
+
+> **Design Note**: R4 travel capstone — the ultimate overland travel blessing. Ritual requirement (1 hour) prevents combat use. Long duration covers multi-day journeys. Effects assist but never bypass — the group still travels, camps, and encounters dangers. This is the capstone of the travel chain: Wayfinder's Mark (R0) → Swift Journey (R1) → Safe Passage (R3) → Pilgrimage (R4).
+
+### Edict of Peace
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Medium | concentrate
+
+*You speak with the voice of divine law, and the command resonates through every creature's soul — "CEASE." Weapons lower, fists unclench, and a profound stillness descends. Those who defy the edict suffer the cosmos's wrath.*
+
+**Weak.** All creatures in a medium area must save (Spirit + Fortitude vs. your casting result) or cease all hostilities for a short duration. Affected creatures cannot attack, cast harmful spells, or take hostile actions. A creature that attacks while under the edict takes +12 psychic backlash damage (no save) and the effect on them ends.
+**Strong.** Duration extends to medium. Psychic backlash increases to +16 damage. Creatures that fail the save also feel compelled to lower their weapons (drop held weapons unless they succeed on a second save).
+**Critical.** Duration medium. Backlash +16 damage. Weapons dropped. Affected creatures also cannot willingly lie for the duration. Creatures that break the edict are branded with a visible divine mark for a long duration (others instinctively distrust them).
+
+> **Design Note**: R5 calmness/law ultimate capstone — forced ceasefire. Powerful but not absolute: creatures save to resist, and breaking the edict is possible (with painful consequences). Concentration means the caster must maintain focus. The backlash damage discourages but doesn't prevent violence — a determined enemy can still fight through the pain.
+
+### Sacred Covenant
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Area | Close | ritual (1 hour), material cost (500 coins)
+
+*You perform an elaborate consecration ritual, inscribing divine law into the very stone and air of a location. The space shimmers with faint golden light, and all who enter feel the weight of cosmic truth pressing upon their tongues and hearts.*
+
+**Weak.** Create a permanent divine law zone in a fixed location (temple, hall of justice, throne room) up to a close area. Within the zone: deliberate lies cause the speaker +4 psychic damage (they feel the pain before completing the lie), oaths sworn within are supernaturally binding (breaking them inflicts fatigue as per Binding Oath R2), and creatures that initiate violence must save (vs. your casting result) or be briefly dazed.
+**Strong.** Lie-detection damage increases to +6. Oath-breaking consequences are enhanced (as per Binding Oath Critical effect). The violence suppression daze lasts for a short duration.
+**Critical.** Lie-detection damage +8. Enhanced oaths. Violence suppression extends to dazed + prone. The zone also reveals hidden weapons and concealed hostile magic (glow faintly to all observers).
+
+> **Design Note**: R5 law ultimate — permanent consecrated ground. Ritual (1 hour) + material cost (500 coins) + fixed location prevent battlefield use. This is a worldbuilding spell: temples, courts, and diplomatic halls become zones of enforced truth and peace. Effects are meaningful but not absolute — lies cause pain but a determined liar can speak through it; violence is suppressed but not impossible.
+
+## Cross-School Spell Sharing
+
+Peace does not currently share spells with any arcane discipline.
+
+**Concept Overlaps** (not shared, but thematically adjacent):
+- **Tranquil Mind** (Peace R0) overlaps with **Mental Shield** (Telepathy, Arcane) — both protect against mental intrusion. Peace protects through divine calm; Telepathy protects through mental fortification. Different mechanics and flavor, same tactical niche.
+- **Dome of Sanctuary** (Peace R2) overlaps with defensive conjuration effects — both create protective barriers, but Peace's barrier discourages violence while Conjuration's barriers physically block.
+
+> **Design Note**: Peace's protective magic is thematically distinct from arcane defense (divine calm vs. mental/physical force). No spells are currently shared, but Mental Shield represents the closest overlap — future design could consider a shared "mental protection" spell if mechanics align.
+
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Calmness chain**: Calming Influence/Tranquil Mind (R0) → Pacifying Weapon (R1) → Slow (R2) → Pacifying Presence (R3) → *gap at R4* → Sanctuary Sphere (R5 proposed, calming aura)
-2. **Protection chain**: Aura of Sanctuary (R0) → Blessing of Peace/Share Harm (R1) → Dome of Sanctuary/Spell-breaking Wave (R2) → Anti-Magic Field (R3) → *gap at R4* → Sanctuary Sphere (R5 proposed)
-3. **Selflessness chain**: *gap at R0* → Harmonic Link (R1) → *gap at R2* → Martyrdom's Blessing (R3) → *gap at R4-R5*
-4. **Travel chain**: Wayfinder's Mark (R0 proposed) → Swift Journey (R1 proposed) → *gap at R2* → Safe Passage (R3 proposed) → *gap at R4-R5*
-5. **Law chain**: Binding Word (R0 proposed) → *gap at R1* → Binding Oath (R2 proposed) → *gap at R3* → Righteous Verdict (R4 proposed) → *needs R5*
+1. **Calmness chain**: Calming Influence/Tranquil Mind (R0) → Pacifying Weapon (R1) → Slow (R2) → Pacifying Presence (R3) → *gap at R4* → Edict of Peace (R5 proposed) — **near-complete R0-R5**
+2. **Protection chain**: Aura of Sanctuary (R0) → Blessing of Peace/Share Harm (R1) → Dome of Sanctuary/Spell-breaking Wave (R2) → Anti-Magic Field (R3) → Diplomatic Immunity (R4 proposed) → Sanctuary Sphere (R5 proposed) — **complete R0-R5**
+3. **Selflessness chain**: *gap at R0* → Harmonic Link/Absorb Harm (R1 proposed) → *gap at R2* → Martyrdom's Blessing (R3) → *gap at R4-R5*
+4. **Travel chain**: Wayfinder's Mark (R0 proposed) → Swift Journey (R1 proposed) → *gap at R2* → Safe Passage (R3 proposed) → Pilgrimage (R4 proposed) → *gap at R5* — **near-complete R0-R4**
+5. **Law chain**: Binding Word (R0 proposed) → *gap at R1* → Binding Oath (R2 proposed) → *gap at R3* → Righteous Verdict (R4 proposed) → Sacred Covenant (R5 proposed) — **near-complete R0-R5**
 
 ### Setup + Payoff Combos
 - ✅ **Calm → Truth**: Calming Influence pacifies target → calmed targets less likely to resist Binding Word truth compulsion
@@ -184,12 +250,15 @@
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Absorb Harm (R1 proposed) provides reactive damage absorption for allies — fills this gap
-- [x] Defensive options: Blessing of Peace (R1), Dome of Sanctuary (R2), Anti-Magic Field (R3) — strong defensive core
-- [x] Utility: Wayfinder's Mark (R0 proposed), Swift Journey (R1 proposed), Safe Passage (R3 proposed) — travel pillar now represented
-- ⚠️ Damage across ranks: Righteous Verdict (R4 proposed) is the only significant damage spell — appropriate for Peace's weak offense role but leaves R0-R3 without any offensive option
+- [x] Defensive options: Blessing of Peace (R1), Dome of Sanctuary (R2), Anti-Magic Field (R3), Diplomatic Immunity (R4 proposed), Sanctuary Sphere (R5 proposed) — strong defensive core through R5
+- [x] Utility: Wayfinder's Mark (R0 proposed), Swift Journey (R1 proposed), Safe Passage (R3 proposed), Pilgrimage (R4 proposed) — travel pillar fully represented R0-R4
+- ⚠️ Damage across ranks: Righteous Verdict (R4 proposed), Edict of Peace (R5 backlash) — appropriate for Peace's weak offense role
 - [x] Repeating conditions: Dazed (pacification), charmed (calmed), protected (sanctuary)
+- [x] Law capstone chain: Binding Word (R0) → Binding Oath (R2) → Righteous Verdict (R4) → Sacred Covenant (R5) — truth and justice progression complete
+- [x] R5 diversity: Sanctuary Sphere (defensive), Edict of Peace (control/ceasefire), Sacred Covenant (permanent worldbuilding) — three distinct capstones
 - ⚠️ Setup+payoff: Calm→truth is conceptually strong but lacks an explicit mechanical bonus (calmed targets don't get a stated penalty to resisting truth effects)
-- ⚠️ **Remaining gaps**: Selflessness R0/R2/R4+, Law R1/R3/R5, Travel R2/R4+
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 5, R1: 6, R2: 4, R3: 4, R4: 3, R5: 3)
+- ⚠️ **Remaining gaps**: Selflessness R0/R2/R4+, Law R1/R3, Travel R2/R5
 
 ### Impact & Trivialization Review
 - **Wayfinder's Mark (R0 navigation)**: Minimal risk — provides boon on navigation checks, doesn't auto-succeed. Pure assistance, not bypass.
