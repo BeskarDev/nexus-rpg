@@ -34,6 +34,9 @@
 8. **Spells assist, never bypass** — Travel, social, and exploration spells should provide bonuses on skill checks (boons, reduced difficulty) rather than automatically succeeding at challenges. Magic enhances the game modes without trivializing them.
 9. **SL scales magnitude, not effect type** — Primary utility and control effects (conditions, target counts, durations) must be reliable on any success. Only damage, healing, and secondary effects (bonus banes, tactical options) should scale by Success Level. A control spell that applies "dazed" on Weak should still apply "dazed" on Critical — the Critical adds damage or secondary debuffs, not an upgrade to "stunned" or "dominated."
 10. **Heighten, don't duplicate** — Higher-rank versions of existing spells should use the Heightened mechanic, not become entirely new spells. "Conjure Guardian" at R3 is a heightened "Conjure Familiar" — not a separate spell entry. Reserve new spell slots for genuinely different concepts.
+11. **Standardized reactive defense pattern** — Every school's R1 Quick Action reactive spell follows the same base template: "+2 to Dodge or Parry against the triggering attack" with one school-specific secondary effect (no SL scaling). This mirrors the weapon enhancement pattern where all traditions share the same base (+2 damage) with unique secondaries.
+12. **R5 material costs match item economy** — Rank 5 spells with material cost components should use costs appropriate to the Q6-Q7 item economy (5,000+ coins), not trivial amounts. These spells are available at the same power level where Q6-Q7 items circulate.
+13. **Aspects are thematic seeds, not literal requirements** — When filling trait×rank gaps, don't force literal interpretations. A "teleportation" cantrip doesn't require actual teleportation at R0 — it means spatial manipulation appropriate for that power level. Think creatively: interact-at-range, spatial awareness, dimensional echoes.
 
 ---
 
