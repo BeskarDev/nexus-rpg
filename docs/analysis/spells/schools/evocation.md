@@ -42,22 +42,21 @@
 
 ### Trait × Rank Coverage Matrix
 
+> Existing spells in normal text. *Proposed new spells in italics.*
+
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| fire | Flickering Flame | Flame Burst, Flaming Weapon, Scorching Ray | Fireball | Black Flame Bolt | — | — |
-| frost | Frost Snap | Frozen Weapon, Ice Shards | Frost Wave, Ice Lance | — | — | — |
-| lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | — | — | — |
-| acid | ❌ **GAP** | Chromatic Orb (multi) | — | — | — | — |
-| air | ❌ **GAP** | — | — | — | — | — |
+| fire | Flickering Flame | Flame Burst, Flaming Weapon, Scorching Ray | Fireball | Black Flame Bolt | *Wall of Fire* | *Delayed Blast Meteor* |
+| frost | Frost Snap | Frozen Weapon, Ice Shards | Frost Wave, Ice Lance | *Glacial Spike* | *Cone of Cold* | *Glacial Cataclysm* |
+| lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | *Chain Lightning* | *Voltaic Surge* | *Lightning Maelstrom* |
+| acid | *Acid Splash* | Chromatic Orb (multi) | *Acid Rain* | *Corrosive Torrent* | *Vitriol* | *Dissolving Wave* |
+| air | *Air Burst* | *Concussive Bolt* | *Gale Force* | *Shockwave* | *Vacuum Sphere* | *Annihilating Vortex* |
 
-**Coverage**: 11/30 slots filled (37%) — significant R3-R5 gaps across all traits
+**Additional multi-element / utility spells**: *Thermal Control* (R0), Elemental Ward (R1), *Elemental Shaping* (R1), Chromatic Orb (R1), *Fire Shield* (R2, fire/frost), Prismatic Missile (R2), *Elemental Cataclysm* (R4), *Elemental Tempest* (R5)
 
-**Critical Gaps**:
-- **Acid**: No R0 cantrip, only accessible via Chromatic Orb (multi-element). No dedicated acid spells at R2+
-- **Air**: Zero spells at any rank — concussive air pressure entirely absent
-- **All traits R4-R5**: Evocation has no spells above R3 — the premier damage school lacks high-rank options
-- **Frost R3+**: No dedicated frost spells above R2
-- **Lightning R3+**: No dedicated lightning spells above R2
+**Coverage**: 30/30 trait×rank slots filled (100%) — all gaps addressed
+
+**All five traits now have dedicated spells at every rank R0–R5**, plus multi-element options providing additional flexibility at R1, R2, R4, and R5.
 
 ## Proposed Spell Changes
 
@@ -78,6 +77,14 @@
 **Current**: +4/+8/+12 AoE cone at Rank 2
 **Proposed**: Reduce to **+3/+6/+9** to match half single-target scaling
 **Rationale**: Same as Fireball — consistent multi-target scaling.
+
+### Elemental Ward — Standardized Reactive Defense
+
+**Current**: Quick Action self-buff that grants brief elemental resistance (acid, fire, frost, lightning, poison). Heightened versions add damage reflection (half at R2, full at R3).
+**Proposed**: Realign to the standardized R1 reactive defense pattern:
+- **Quick Action** (reactive): When an enemy targets you with an attack, gain **+2 to Dodge or Parry** (your choice) against the triggering attack. If the attacker is within melee range, they take 2 damage of an element you choose (fire, frost, lightning, acid, or blast). Effect is identical on any success — no SL scaling.
+- Remove heightened versions (damage reflection moves to Fire Shield at R2 which already fills that niche).
+**Rationale**: All schools follow the same standardized R1 reactive defense pattern: base +2 Dodge/Parry, one school-specific secondary, no SL scaling. Evocation's secondary is elemental backlash damage — thematically fitting as transgressive energy lashes out reflexively at attackers. The current "elemental resistance" version is more of a buff than a reactive defense and doesn't match the standard.
 
 ## Proposed New Spells
 
@@ -293,6 +300,132 @@
 
 > **Design Note**: R5 capstone. Delayed detonation creates tactical depth — do you detonate immediately or risk losing concentration for higher damage? AoE at R5 uses half single-target scaling (+6/+12/+18 base).
 
+### Concussive Bolt
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | vs. Dodge | Medium | —
+
+*You compress the air between your hands into a dense sphere of invisible force and hurl it at your target — the impact strikes like an unseen battering ram, slamming through armor with concussive fury.*
+
+**Weak.** Deal +4 blast damage. The target is pushed one range increment away from you.
+**Strong.** Deal +8 blast damage. The target is pushed one range increment and knocked prone.
+**Critical.** Deal +12 blast damage. The target is pushed two range increments and knocked prone.
+
+> **Design Note**: Fills the R1 air gap. Single-target blast damage (½ AV) with air's signature push/prone repositioning. Gives Evocation a ranged knockback tool from R1, complementing Air Burst's melee-range utility. Distinct from lightning (staggered) or frost (slowed) — air is about repositioning.
+
+### Shockwave
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Dodge | Self | —
+
+*You gather compressed air around your body until the pressure becomes unbearable, then release it in a devastating omnidirectional pulse — the concussive shockwave ripples outward, flattening everything in its wake.*
+
+**Weak.** All creatures in a short area centered on you take +4 blast damage and are pushed one range increment away from you.
+**Strong.** Deal +8 blast damage. Pushed creatures are also knocked prone.
+**Critical.** Deal +12 blast damage. Creatures are pushed two range increments, knocked prone, and the area becomes difficult terrain briefly (scattered debris and dust).
+
+> **Design Note**: Fills the R3 air gap. Self-centered AoE creates risk/reward — the caster must be in the thick of combat. Uses R3 AoE scaling (+4/+8/+12) for a short area. Push + prone combination rewards aggressive positioning and sets up allied follow-up attacks. A natural complement to the Magus archetype (Fighting + Arcana).
+
+### Wall of Fire
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Dodge | Long | concentrate
+
+*You raise a roaring curtain of flame across the battlefield — a shimmering wall of superheated air and blazing fire that punishes any who approach and agonizes any who dare cross through.*
+
+**Weak.** Create a wall of fire up to medium length for a short duration while concentrating. Choose one side of the wall as the hot side. Creatures that pass through the wall or start their turn in melee range of the hot side take +5 fire damage and are burning for a short duration.
+**Strong.** Damage increases to +10. Burning for a short duration.
+**Critical.** Damage increases to +15. Burning for a short duration. You can shape the wall as a curve or ring enclosing an area.
+
+> **Design Note**: Fills the R4 fire gap. Classic control spell — Evocation's role spread includes "Decent: Control." Uses AoE scaling (+5/+10/+15) since it's a persistent multi-target effect. The hot-side mechanic creates tactical depth — position the wall to maximize one-sided pressure. Concentration limits simultaneous spellcasting. Burning fixed at short duration on all SLs per the principle that primary conditions don't scale by SL. Pairs with Air push spells to force enemies through the wall.
+
+### Cone of Cold
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Dodge | Self (cone) | —
+
+*You exhale a blast of supernaturally cold air that flash-freezes everything before you — moisture crystallizes in an instant, metal becomes brittle, and living creatures are rimed in frost.*
+
+**Weak.** All creatures in a medium cone take +5 frost damage and are slowed for a short duration.
+**Strong.** Deal +10 frost damage. Slowed for a short duration. Creatures already slowed from another source are briefly restrained (ice encasement).
+**Critical.** Deal +15 frost damage. Slowed for a short duration. The area becomes ice terrain (difficult terrain) for a medium duration. Water in the area freezes solid.
+
+> **Design Note**: Fills the R4 frost gap. Classic cone AoE at medium area (R4 appropriate). Uses AoE scaling (+5/+10/+15). Frost's slowed identity with ice terrain creation on Critical. The Strong success rewards stacking slowed from prior frost spells — setup (Frost Snap/Ice Shards apply slowed) → payoff (Cone of Cold escalates to restrained).
+
+### Voltaic Surge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Dodge | Long | —
+
+*You channel an overwhelming lance of raw lightning into your target — not the forking discharge of a natural storm, but a concentrated, transgressive torrent of electrical power that courses through every nerve and sinew.*
+
+**Weak.** Deal +10 lightning damage. The target is staggered for a short duration.
+**Strong.** Deal +20 lightning damage. Staggered for a short duration. The electrical overload breaks any concentration effect the target is maintaining.
+**Critical.** Deal +30 lightning damage. Staggered for a short duration. Concentration broken. If the target is wearing metal armor, the charge persists — they take +5 lightning damage at the start of their next turn.
+
+> **Design Note**: Fills the R4 lightning gap. Single-target nuke with lightning's staggered identity. The concentration-breaking secondary on Strong distinguishes it from Chain Lightning's multi-target approach — Voltaic Surge is the "anti-caster" option. Metal armor rider on Critical adds tactical depth without dominating design.
+
+### Vitriol
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Dodge | Long | —
+
+*You conjure a jet of impossibly concentrated acid and direct it at your foe — the vitriol eats through armor, flesh, and bone with horrifying speed, leaving only smoking ruin and the acrid stench of dissolution.*
+
+**Weak.** Deal +10 acid damage. The target's AV is reduced by 3 for a short duration. All equipped armor and shields require a **Durability check**.
+**Strong.** Deal +20 acid damage. AV reduced by 4 for a short duration. Durability checks for all equipped armor, shields, and helmets with +1 bane.
+**Critical.** Deal +30 acid damage. AV reduced by 5 for a short duration. Durability checks with +2 banes for all equipment. If any Durability check fails, the AV reduction extends to medium duration.
+
+> **Design Note**: Fills the R4 acid gap. The premier single-target acid nuke — combines massive damage with acid's corroding identity (Durability pressure + AV reduction at minimum short duration). Rewards focus fire: strip AV with Vitriol, then follow up with fire/lightning for devastating effective damage. Scales the acid progression naturally from Corrosive Torrent (R3).
+
+### Glacial Cataclysm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Long | —
+
+*You plunge a vast expanse into supernatural cold, flash-freezing the very air itself — creatures become ice statues, water solidifies in an instant, and even stone cracks from the thermal shock. This is frost wielded not as nature intended, but as a weapon of transgressive annihilation.*
+
+**Weak.** All creatures in a long area take +6 frost damage and are slowed for a short duration. The entire area becomes ice terrain (difficult terrain) for a medium duration. Water in the area freezes solid.
+**Strong.** Deal +12 frost damage. Slowed for a short duration. Creatures that are already slowed when hit are briefly restrained (frozen in place).
+**Critical.** Deal +18 frost damage. Slowed for a short duration. All creatures are briefly restrained. Ice terrain provides half cover from outside the area. Fire damage within the area is halved for the duration.
+
+> **Design Note**: R5 frost capstone. Long area AoE with R5 AoE scaling (+6/+12/+18). Ice terrain fixed at medium duration on all SLs per the principle that utility/control effects don't scale by SL — only damage and the restrained secondary escalation scale. Creates massive ice terrain that reshapes the battlefield. The fire-dampening effect on Critical adds anti-synergy pressure, and the slowed→restrained escalation rewards stacking frost conditions across multiple spells.
+
+### Lightning Maelstrom
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Extreme | —
+
+*You raise your hands and tear open the sky, calling down a barrage of lightning bolts — dozens of searing electrical strikes hammer the battlefield in rapid succession, each powerful enough to shatter stone, the combined onslaught overwhelming all within.*
+
+**Weak.** All creatures in a long area take +6 lightning damage and are staggered for a short duration.
+**Strong.** Deal +12 lightning damage. Staggered for a short duration. All ongoing concentration effects maintained by creatures within the area are automatically broken.
+**Critical.** Deal +18 lightning damage. Staggered for a short duration. Concentration broken. The area becomes electrified terrain for a short duration — creatures that enter or start their turn in the area take +3 lightning damage.
+
+> **Design Note**: R5 lightning capstone. Long area AoE with R5 scaling (+6/+12/+18) at Extreme range. The mass concentration-breaking on Strong builds on Voltaic Surge's R4 single-target version — Lightning Maelstrom is the "anti-caster battlefield" spell. Electrified terrain on Critical creates lasting area denial, complementing frost's ice terrain for different tactical contexts.
+
+### Annihilating Vortex
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Dodge | Long | —
+
+*You rip the atmosphere asunder, collapsing air pressure across a vast area before releasing it in a catastrophic pressure wave — a transgressive display of absolute dominion over the invisible element, the shockwave flattening structures and hurling creatures like ragdolls.*
+
+**Weak.** All creatures in a long area take +6 blast damage, are pushed two range increments away from the center, and are knocked prone. Unsecured objects are scattered. The area becomes difficult terrain for a short duration (devastated landscape).
+**Strong.** Deal +12 blast damage. Creatures pushed into solid objects (walls, terrain) take an additional +6 physical damage from the collision.
+**Critical.** Deal +18 blast damage. Collision damage increases to +12. Structures and fortifications in the area take double damage.
+
+> **Design Note**: R5 air capstone. Long area AoE with R5 scaling (+6/+12/+18). Difficult terrain fixed at short duration on all SLs per the principle that utility/control effects don't scale by SL — only damage and collision damage scale. Blast damage (½ AV) combined with physical collision damage on Strong/Critical creates devastating effective damage against armored targets. The collision mechanic rewards tactical positioning — pushing enemies into walls or each other. Distinct from Vacuum Sphere's (R4) inward-pulling implosion; this is the outward-exploding counterpart.
+
 ## Cross-School Spell Sharing
 
 The following spells are shared between Evocation and mystic traditions (same spell in both lists):
@@ -307,28 +440,34 @@ The following spells are shared between Evocation and mystic traditions (same sp
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Fire chain**: Flickering Flame (R0 condition apply) → Flame Burst/Scorching Ray (R1 damage) → Fireball (R2 AoE) → Black Flame Bolt (R3 single) → Elemental Cataclysm (R4 multi-element) → Delayed Blast Meteor (R5 AoE)
-2. **Frost chain**: Frost Snap (R0) → Ice Shards/Frozen Weapon (R1) → Frost Wave/Ice Lance (R2) → Glacial Spike (R3) → Elemental Cataclysm (R4) → Elemental Tempest (R5)
-3. **Lightning chain**: Static Spark (R0) → Lightning Arc (R1) → Lightning Strike (R2) → Chain Lightning (R3) → Elemental Cataclysm (R4) → Elemental Tempest (R5)
-4. **Acid chain**: Acid Splash (R0 Durability) → Chromatic Orb (R1 multi) → Acid Rain (R2 zone) → Corrosive Torrent (R3 single) → Elemental Cataclysm (R4) → Dissolving Wave (R5 AoE)
-5. **Air chain**: Air Burst (R0 push) → Elemental Shaping (R1 utility) → Gale Force (R2 line) → *gap at R3* → Vacuum Sphere (R4 implosion) → Elemental Tempest (R5)
-6. **AV-strip combo**: Acid Splash/Acid Rain (Durability + zone) → Corrosive Torrent (short-duration AV reduction) → Fire/Lightning follow-ups deal more effective damage
+1. **Fire chain**: Flickering Flame (R0 condition) → Flame Burst/Scorching Ray (R1 damage) → Fireball (R2 AoE) → Black Flame Bolt (R3 single) → Wall of Fire (R4 control) → Delayed Blast Meteor (R5 AoE)
+2. **Frost chain**: Frost Snap (R0 condition) → Ice Shards/Frozen Weapon (R1) → Frost Wave/Ice Lance (R2) → Glacial Spike (R3 single) → Cone of Cold (R4 cone AoE) → Glacial Cataclysm (R5 AoE)
+3. **Lightning chain**: Static Spark (R0 condition) → Lightning Arc (R1) → Lightning Strike (R2 line) → Chain Lightning (R3 chain) → Voltaic Surge (R4 single) → Lightning Maelstrom (R5 AoE)
+4. **Acid chain**: Acid Splash (R0 Durability) → Chromatic Orb (R1 multi) → Acid Rain (R2 zone) → Corrosive Torrent (R3 single) → Vitriol (R4 single) → Dissolving Wave (R5 AoE)
+5. **Air chain**: Air Burst (R0 push) → Concussive Bolt (R1 single) → Gale Force (R2 line) → Shockwave (R3 self-AoE) → Vacuum Sphere (R4 implosion) → Annihilating Vortex (R5 AoE)
+6. **AV-strip combo**: Acid Splash/Acid Rain (Durability pressure) → Corrosive Torrent (R3 AV reduction) → Vitriol (R4 heavy AV strip) → fire/lightning follow-ups deal devastating effective damage
+7. **Multi-element**: Chromatic Orb (R1) → Prismatic Missile (R2) → Elemental Cataclysm (R4) → Elemental Tempest (R5)
+8. **Frost stacking**: Frost Snap/Ice Shards (apply slowed) → Cone of Cold (slowed→restrained on Strong) / Glacial Cataclysm (slowed→restrained on Strong)
+9. **Anti-caster**: Voltaic Surge (R4 single-target concentration break) → Lightning Maelstrom (R5 mass concentration break)
 
 ### Setup + Payoff Combos
 - ✅ **Element condition → bonus damage**: Well-supported across ranks
-- ✅ **AV strip → focus fire**: Acid Splash (Durability) → Acid Rain (zone Durability) → Corrosive Torrent (AV reduction, short duration) → all subsequent damage more effective
-- ✅ **Air push → AoE cluster**: Air Burst/Gale Force push enemies together → Fireball/Frost Wave hit more targets
+- ✅ **AV strip → focus fire**: Acid Splash (Durability) → Acid Rain (zone Durability) → Corrosive Torrent/Vitriol (AV reduction, short duration) → all subsequent damage more effective
+- ✅ **Air push → AoE cluster**: Air Burst/Concussive Bolt/Gale Force/Shockwave push enemies together → Fireball/Frost Wave/Cone of Cold hit more targets
+- ✅ **Air push → Wall of Fire**: Push enemies through Wall of Fire with Concussive Bolt/Shockwave/Annihilating Vortex for forced damage
+- ✅ **Frost stacking → restrained**: Frost Snap/Ice Shards apply slowed → Cone of Cold/Glacial Cataclysm escalates slowed to restrained on Strong success
+- ✅ **Concentration breaking**: Voltaic Surge (R4 single) → Lightning Maelstrom (R5 mass) — dedicated anti-caster progression
 - ⚠️ **Frost terrain → lightning conductor**: Conceptually strong but needs explicit mechanical support in spell text
 - ❌ **Fire → Frost synergy**: No explicit mechanical link between burning and slowed conditions
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Elemental Ward (R1) serves as reactive defense
-
-> **Review Note**: Elemental Ward should be evaluated for alignment with the standardized R1 reactive defense pattern (base +2 Dodge/Parry, school-specific secondary, no SL scaling).
-- [x] Defensive options: Elemental Ward (R1), Fire Shield (R2 proposed)
-- [x] Utility: Thermal Control (R0 proposed), Elemental Shaping (R1 proposed)
+- [x] R1 Quick Action: Elemental Ward (R1) — proposed standardization to +2 Dodge/Parry, elemental backlash secondary, no SL scaling
+- [x] Defensive options: Elemental Ward (R1), Fire Shield (R2), Wall of Fire (R4)
+- [x] Utility: Thermal Control (R0), Elemental Shaping (R1)
 - [x] Damage across all ranks: R0-R5 fully covered with 3+ spells per rank
-- [x] Repeating conditions: Burning, slowed, staggered, corroding (Durability), pushed/prone (air)
-- [x] Setup+payoff: Condition application → condition exploitation, Durability → AV strip → focus fire
+- [x] Repeating conditions: Burning, slowed, staggered, corroding (Durability + AV reduction), pushed/prone (air)
+- [x] Setup+payoff: Condition stacking (frost→restrained), Durability→AV strip→focus fire, air push→AoE/wall, anti-caster (concentration breaking)
 - [x] Cross-school sharing: Acid Splash (Nature), Chain Lightning (Tempest)
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 10, R2: 9, R3: 4, R4: 3, R5: 3)
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 11, R2: 8, R3: 5, R4: 6, R5: 6)
+- [x] **Every trait at every rank R0-R5**: 30/30 trait×rank slots filled (100%)
+- [x] **Dedicated element capstones at R5**: Fire (Delayed Blast Meteor), Frost (Glacial Cataclysm), Lightning (Lightning Maelstrom), Acid (Dissolving Wave), Air (Annihilating Vortex) — plus multi-element Elemental Tempest
