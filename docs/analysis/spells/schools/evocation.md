@@ -323,6 +323,8 @@ The following spells are shared between Evocation and mystic traditions (same sp
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Elemental Ward (R1) serves as reactive defense
+
+> **Review Note**: Elemental Ward should be evaluated for alignment with the standardized R1 reactive defense pattern (base +2 Dodge/Parry, school-specific secondary, no SL scaling).
 - [x] Defensive options: Elemental Ward (R1), Fire Shield (R2 proposed)
 - [x] Utility: Thermal Control (R0 proposed), Elemental Shaping (R1 proposed)
 - [x] Damage across all ranks: R0-R5 fully covered with 3+ spells per rank

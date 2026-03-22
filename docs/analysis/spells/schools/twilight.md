@@ -105,11 +105,9 @@
 
 *You wrap yourself in a veil of shadow as an attack comes, making the attacker's aim uncertain.*
 
-**Weak.** As a Quick Action when targeted by an attack, the attacker suffers +1 bane on the triggering attack.
-**Strong.** The attacker suffers +1 bane. If the attack misses, you gain +1 boon on your next Stealth check this turn.
-**Critical.** The attacker suffers +2 banes. If the attack misses, you become briefly invisible until the end of your next turn.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. You gain +1 boon on your next Stealth roll before the end of your next turn.
 
-> **Design Note**: Fills the missing R1 Quick Action reactive spell for Twilight.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Twilight's shadow stealth as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Moonlight Ward
 
@@ -225,7 +223,7 @@ Twilight's "illusion" trait overlaps significantly with the Arcane **Illusion** 
 - ⚠️ **Dream → waking control**: Nightmare Realm (R3) creates nightmares and Dream Realm (R5) traps in dreams, but no mechanic connecting dream-state effects to waking targets
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Shadow Veil — reactive shadow defense imposing bane on attacker
+- [x] **R1 Quick Action**: Shadow Veil — standardized reactive defense (+2 Dodge/Parry, stealth boon secondary)
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 9, R2: 8, R3: 3, R4: 3, R5: 3)
 - [x] Defensive options: Shadow Veil (R1 evasion), Moonlight Ward (R1 resistance) — good dual coverage
 - [x] Utility: Dark Sight (R0), Thread of Fate (R0), Shadow Meld (R1), Shadow Step (R2), Prophecy (R4), Shadowform (R5)

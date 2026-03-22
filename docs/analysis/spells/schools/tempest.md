@@ -40,7 +40,7 @@
 |-------|-----|-----|-----|-----|-----|-----|
 | hurricanes | Gust, Wind Slash | Wind Hose | Torrent, Wind Ward | Cyclone, Wind Wall | Control Winds* | — |
 | earthquakes | ❌ **GAP** | Earthen Tremor | — | — | Earthquake* | — |
-| thunderstorms | Static Shock | Bursting Crackle, Lightning Javelin, Electrified Weapon, Storm Coat | Lightning Bolt, Lightning Step, Storm Cloud, Thunder Clap | Chain Lightning, Lightning Volley, Shattering Orb | Avatar of Storms, Lightning Storm* | — |
+| thunderstorms | Static Shock | Bursting Crackle, Lightning Javelin, Electrified Weapon, Storm Coat, Thunder Guard† | Lightning Bolt, Lightning Step, Storm Cloud, Thunder Clap | Chain Lightning, Lightning Volley, Shattering Orb | Avatar of Storms, Lightning Storm* | — |
 | sandstorms | ❌ **GAP** | — | Pyroclasm | Sandstorm*, Cone of Cold | — | — |
 | floods | ❌ **GAP** | — | Conjure Elemental, Magma Burst | — | Control Water* | — |
 
@@ -76,6 +76,18 @@
 **Rationale**: Chain spell pattern — primary target at full damage, secondary targets at half.
 
 ## Proposed New Spells
+
+### Thunder Guard
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Self | Self | quick
+
+*You summon a crackling shell of static charge around yourself as an attack comes, the air snapping with electricity.*
+
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. The attacker takes +2 lightning damage from static discharge.
+
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Tempest's lightning retribution as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Tremor
 
@@ -232,12 +244,12 @@ The following spells are shared between Tempest and arcane disciplines (same spe
 - ❌ **Sand → flood combo**: No mechanical link between sandstorm and flood effects
 
 ### Design Completeness Checklist
-- ⚠️ R1 Quick Action: Storm Coat (R1) provides reactive lightning damage when hit, but is not a dedicated Quick Action cast — **partial coverage, could use explicit R1 Quick Action**
+- [x] R1 Quick Action: Thunder Guard (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, lightning damage secondary)
 - [x] Defensive options: Storm Shield (R1), Wind Ward (R2), Storm Coat (R1) — solid defensive suite
 - [x] Utility: Weather Prediction (R0 proposed) — fills the non-combat gap; Control Weather (R4\*) for advanced utility
 - [x] Damage across ranks: R0-R5 fully covered — Storm Lord, World Shaker, and Maelstrom provide three distinct R5 capstones
 - [x] Repeating conditions: Staggered, prone, deafened, pushed, restrained — consistent storm-force identity
 - [x] Setup+payoff: Prone → Aftershock bonus damage is explicitly designed as setup+payoff within a single spell
 - [x] R5 capstone diversity: Storm Lord (transformation), World Shaker (earthquake AoE), Maelstrom (vortex control) — three different tactical roles
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 9, R2: 11, R3: 7, R4: 5, R5: 3)
-- ⚠️ **Remaining gaps**: Sandstorms R1/R4+, Floods R1/R3, Earthquakes R3, explicit R1 Quick Action spell
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 10, R2: 11, R3: 7, R4: 5, R5: 3)
+- ⚠️ **Remaining gaps**: Sandstorms R1/R4+, Floods R1/R3, Earthquakes R3

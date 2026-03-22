@@ -151,6 +151,8 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Death Ward (R1) — reactive protective ward
+
+> **Review Note**: Death Ward should be evaluated for alignment with the standardized R1 reactive defense pattern (base +2 Dodge/Parry, school-specific secondary, no SL scaling).
 - [x] Defensive options: Bone Armor (R1), Necrotic Shield (R1), Death Ward (R1) — strong triple coverage
 - [x] Utility: Necromantic Sight (R0), Life Echo (R0), Soul Veil (R2)
 - [x] Damage across ranks: R0-R4 fully covered; R5 Army of Shadows provides offense through summons, Soul Harvest rewards kills with self-healing

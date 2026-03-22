@@ -64,11 +64,9 @@
 
 *You telekinetically deflect an incoming projectile, redirecting its force.*
 
-**Weak.** As a Quick Action when targeted by a ranged attack, gain +2 to Dodge against the triggering attack.
-**Strong.** Gain +4 to Dodge. If the attack misses, you deflect the projectile harmlessly.
-**Critical.** Gain +4 to Dodge. If the attack misses, you redirect the projectile to another target within close range, dealing +2 physical damage to them.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attack is ranged and misses, you can redirect the projectile to one target within close range, dealing +2 physical damage.
 
-> **Design Note**: Fills the missing R1 Quick Action reactive spell. Ranged-only deflection fits the telekinetic theme.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Telekinetics' projectile redirection as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Force Shield
 
@@ -237,7 +235,7 @@ No shared spells are recommended for this discipline.
 - ⚠️ **Levitate → gravity drop**: Minor Levitation (R0) → Gravity Reversal (R5) conceptually linked but massive rank gap with no mid-rank gravity payoff
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Kinetic Deflection (R1 proposed) — ranged attack deflection
+- [x] R1 Quick Action: Kinetic Deflection (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, projectile redirection secondary)
 - [x] Defensive options: Reflective Barrier (R1), Force Shield (R1 proposed), Kinetic Deflection (R1 proposed), Force Wall (R3 proposed) — strong defensive suite
 - [x] Utility: Weak/Strong Telekinesis (R0/R2), Minor Levitation (R0 proposed), Gravity Shift (R0 proposed), Absolute Telekinesis (R5 proposed)
 - [x] Damage across ranks: R0-R5 covered — Kinetic Barrage (R3), Telekinetic Storm (R4), Absolute Telekinesis/Gravity Reversal (R5)

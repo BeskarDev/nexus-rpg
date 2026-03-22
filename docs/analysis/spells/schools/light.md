@@ -154,11 +154,9 @@
 
 *When you or a nearby ally is struck, you channel a flash of divine radiance back at the attacker — a searing retort of holy judgement.*
 
-**Weak.** As a Quick Action when you or an ally within close range is hit by an attack, deal +2 radiant damage to the attacker (ignoring AV).
-**Strong.** Deal +4 radiant damage. The attacker suffers +1 bane on their next attack roll.
-**Critical.** Deal +6 radiant damage. The attacker is briefly blinded.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. The attacker takes +2 radiant damage from divine retribution.
 
-> **Design Note**: Fills the R1 Quick Action gap. Reactive radiant damage fits the judgement trait — divine retribution for aggression. Modest damage (+2/+4/+6) matches R1 single-target scaling.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Light's divine retribution as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Purifying Aura
 
@@ -250,7 +248,7 @@ Light's "truth" and "revelation" themes overlap with the Arcane **Illusion** dis
 - ⚠️ **Truth → Judgement**: Zone of Truth (R3) and Radiance of Truth (R5) reveal information; Divine Judgement (R4) punishes — thematic link but no mechanical trigger
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Radiant Rebuke — reactive radiant damage when ally is hit
+- [x] **R1 Quick Action**: Radiant Rebuke — standardized reactive defense (+2 Dodge/Parry, radiant damage secondary)
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 9, R2: 4, R3: 4, R4: 3, R5: 3)
 - ⚠️ Defensive options: Protect from Influence (R1) covers mental defense, Purifying Aura (R4) provides necrotic resistance — no general reactive physical defense
 - [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Locate Trinket (R1), Moment of Clarity (R0), Radiance of Truth (R5)

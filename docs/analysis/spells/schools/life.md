@@ -161,11 +161,9 @@
 
 *When an ally is struck, you instinctively channel a burst of life energy to close their wounds before the blood can flow.*
 
-**Weak.** As a Quick Action when an ally within close range takes damage, immediately heal them for +2 HP.
-**Strong.** Heal +4 HP. The ally gains +1 boon on their next Fortitude check this round.
-**Critical.** Heal +6 HP. The ally gains +1 boon on their next Fortitude check and is immune to the bleeding condition until the end of their next turn.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. You also heal +2 HP from the surge of vital energy.
 
-> **Design Note**: Fills the R1 Quick Action gap. Emergency reactive healing that matches R1 single-target scaling (+2/+4/+6). Simple and reliable — the quintessential healer's reaction.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Life's vital healing as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Greater Restoration
 
@@ -240,7 +238,7 @@ Life's healing and blessing identity has minimal overlap with Arcane disciplines
 - ⚠️ **Fertility → Community**: No mechanical connection between plant growth (Nurturing Touch) and communal healing effects
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Vital Surge — reactive healing when ally takes damage
+- [x] **R1 Quick Action**: Vital Surge — standardized reactive defense (+2 Dodge/Parry, healing secondary)
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 4, R1: 7, R2: 6, R3: 4, R4: 3, R5: 3)
 - [x] Defensive options: Life Shield (R0 temp HP), Beacon of Hope (R1 save bonus), Life Ward (R4 death prevention) — solid defensive coverage
 - [x] Utility: Nurturing Touch (R0), Detect Life (R2), Greater Restoration (R4 condition/wound removal)

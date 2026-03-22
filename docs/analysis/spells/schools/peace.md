@@ -63,11 +63,9 @@
 
 *You extend a hand toward an ally under attack, absorbing a portion of their pain into yourself.*
 
-**Weak.** As a Quick Action when an ally within close range takes damage, reduce the damage they take by 2. You take 1 damage instead (this damage cannot be reduced).
-**Strong.** Reduce the ally's damage by 4. You take 2 damage.
-**Critical.** Reduce the ally's damage by 6. You take 3 damage. If the ally would be reduced to 0 HP, they are instead reduced to 1 HP (this effect only triggers once per scene).
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. You can cast this spell on an ally within close range instead of yourself.
 
-> **Design Note**: Fills the critical R1 Quick Action reactive gap. Peace's selflessness identity means its reaction is self-sacrifice — taking pain for others. The caster pays a real cost, fitting the communal ethos.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Peace's selfless ally-targeting as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Wayfinder's Mark
 
@@ -249,7 +247,7 @@ Peace does not currently share spells with any arcane discipline.
 - ❌ **Law → Protection link**: No mechanic connecting oath enforcement or truth effects to protective spell benefits
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Absorb Harm (R1 proposed) provides reactive damage absorption for allies — fills this gap
+- [x] R1 Quick Action: Absorb Harm (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, ally-targeting secondary)
 - [x] Defensive options: Blessing of Peace (R1), Dome of Sanctuary (R2), Anti-Magic Field (R3), Diplomatic Immunity (R4 proposed), Sanctuary Sphere (R5 proposed) — strong defensive core through R5
 - [x] Utility: Wayfinder's Mark (R0 proposed), Swift Journey (R1 proposed), Safe Passage (R3 proposed), Pilgrim's Gate (R4 proposed) — travel pillar fully represented R0-R4
 - ⚠️ Damage across ranks: Righteous Verdict (R4 proposed), Edict of Peace (R5 backlash) — appropriate for Peace's weak offense role

@@ -89,11 +89,9 @@
 
 *When struck, you channel the cold touch of death back through the wound, punishing your attacker.*
 
-**Weak.** As a Quick Action when you take damage from a melee attack, the attacker takes +2 necrotic damage (ignoring AV).
-**Strong.** The attacker takes +4 necrotic damage and is briefly poisoned.
-**Critical.** The attacker takes +6 necrotic damage, is poisoned for a short duration, and you regain +2 HP from the life energy drained.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. The attacker takes +2 necrotic damage as ancestral spirits lash out in your defense.
 
-> **Design Note**: Fills the missing R1 Quick Action reactive spell for Death. Retaliatory necrotic damage with poison synergy.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Death's ancestral retribution as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Commune with Ancestors
 
@@ -262,7 +260,7 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 - ⚠️ **Fear → curse link**: No mechanic connecting the frightened condition to enhanced curse effectiveness
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Death's Rebuke — retaliatory necrotic damage with poison
+- [x] **R1 Quick Action**: Death's Rebuke — standardized reactive defense (+2 Dodge/Parry, necrotic damage secondary)
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 9, R2: 3, R3: 3, R4: 3, R5: 3)
 - [x] Defensive options: Death's Rebuke (R1 retaliatory), Spared from Death (R0 death-prevention), Ancestral Guardian (R2 protective spirit)
 - [x] Utility: Commune with Ancestors (R1 divination), Ancestral Guardian (R2 guidance)

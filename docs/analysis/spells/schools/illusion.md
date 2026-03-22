@@ -93,11 +93,9 @@
 
 *You conjure a flickering illusory double of yourself at the last instant, confusing your attacker's aim.*
 
-**Weak.** As a Quick Action when targeted by an attack, create a brief illusory copy of yourself. Gain +2 to Dodge against the triggering attack.
-**Strong.** Gain +4 to Dodge against the triggering attack. If the attack misses, the illusion persists briefly, granting +1 bane on the next attack targeting you before the end of your next turn.
-**Critical.** Gain +4 to Dodge against the triggering attack. The illusion persists briefly, granting +1 bane on all attacks targeting you until the end of your next turn.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attack misses, the illusory double persists briefly, imposing +1 bane on the next attack against you before the end of your next turn.
 
-> **Design Note**: Fills the missing R1 Quick Action reactive spell for Illusion. Creates a brief illusory double as defense through deception — fits "misdirection" trait.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Illusion's misdirection as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Phantasmal Armor
 
@@ -214,7 +212,7 @@ The Twilight tradition shares the "illusion" aspect with the Illusion discipline
 - ❌ **Distortion → condition stack**: No distortion-based condition-building mechanic exists — distortion trait is mechanically hollow
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Illusory Dodge (R1 proposed) — reactive illusory defense
+- [x] R1 Quick Action: Illusory Dodge (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, illusory double secondary)
 - ⚠️ Defensive options: Illusory Dodge (R1 proposed), Phantasmal Armor (R2 proposed) — improved but no sustained defense
 - [x] Utility: Strong across disguise (Disguise Form, Seeming, Perfect Disguise), invisibility, terrain illusions, Grand Illusion (R4 proposed)
 - [x] Damage across ranks: Psychic damage now covered — Horrific Vision (R0), Phantasmal Killer (R3), Phantasmal Catastrophe (R4 proposed), Maze of Madness (R5 proposed)

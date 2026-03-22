@@ -62,11 +62,9 @@
 
 *When struck in battle, you channel the fury of war into an immediate counterstrike.*
 
-**Weak.** As a Quick Action when you take damage from a melee attack, deal +2 physical damage to the attacker.
-**Strong.** Deal +4 physical damage. The attacker is briefly frightened by your furious counterattack.
-**Critical.** Deal +6 physical damage. The attacker is frightened for a short duration.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attack is melee, you deal +2 physical damage to the attacker as a counterstrike.
 
-> **Design Note**: Fills the critical R1 Quick Action reactive gap. War's offensive identity means its reaction should be a counterattack, not a defensive ability. Frightened condition ties into the fear→exploit synergy.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with War's melee counterstrike as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Righteous Strike
 
@@ -291,7 +289,7 @@ War does not currently share spells with any arcane discipline.
 - ❌ **Justice → triumph link**: No mechanic connecting retribution damage (Righteous Strike, Avenging Oath) to triumph rewards (Victor's Rush)
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Retaliating Fury (R1 proposed) provides reactive counterattack when hit — fills this gap
+- [x] R1 Quick Action: Retaliating Fury (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, melee counterstrike secondary)
 - [x] Defensive options: Shield of Valor (R1 proposed) fills War's previously absent defensive niche with AV bonus + fear immunity
 - ⚠️ Utility: Very limited — appropriate for War's weak utility role, but no exploration or downtime spells exist
 - [x] Damage across ranks: R0-R5 fully covered with proposals — fury chain provides continuous damage/buff escalation

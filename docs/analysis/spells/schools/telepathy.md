@@ -92,11 +92,9 @@
 
 *You fortify a mind with psychic barriers, shielding against mental intrusion.*
 
-**Weak.** As a Quick Action, grant yourself or one ally within close range +2 to Resist against the next charm, fear, or psychic effect targeting them. Lasts briefly.
-**Strong.** The bonus increases to +4 Resist. Also grants resistance to psychic damage (reduce by 2) for the duration.
-**Critical.** The bonus increases to +4 Resist and resistance to psychic damage (reduce by 4). If a charm or fear effect fails against the shielded target, the attacker takes +2 psychic damage from the backlash.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. You also gain +2 to Resist against any mental effect (charm, fear, psychic) accompanying the triggering attack.
 
-> **Design Note**: Defensive option for Telepathy — mental protection fits the school's identity.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Telepathy's mental protection as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Telepathic Bond
 
@@ -241,7 +239,7 @@ The Mental Shield spell concept overlaps with Peace tradition's protective magic
 - ⚠️ **Communication → Domination**: No mechanic linking established telepathic contact to easier domination attempts
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Mental Shield (R1 proposed) — reactive psychic defense
+- [x] R1 Quick Action: Mental Shield (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, mental resistance secondary)
 - [x] Defensive options: Mental Shield (R1 proposed) provides Resist bonus and psychic resistance
 - [x] Utility: Detect Magic (R0), Psychometry (R1), Telepathic Bond (R2 proposed)
 - [x] Damage across ranks: Mind Blast (R0), Attack Thoughts (R1), Psychic Wave (R2), Psychic Lance (R3 proposed), Psychic Maelstrom (R5 proposed) — R4 damage gap remains

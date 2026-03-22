@@ -76,11 +76,9 @@
 
 *Your skin briefly hardens with bark-like growth as an attack lands, absorbing the impact.*
 
-**Weak.** As a Quick Action when targeted by an attack, gain +2 AV (situational bonus) against the triggering attack.
-**Strong.** Gain +4 AV against the triggering attack.
-**Critical.** Gain +4 AV against the triggering attack. The attacker takes +2 physical damage from thorns.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attacker is within melee range, they take +2 physical damage from thorns that erupt from the bark.
 
-> **Design Note**: Fills the missing R1 Quick Action reactive spell for Nature. Natural armor theme.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Nature's thorn retribution as secondary effect. No SL scaling — one reliable defensive reaction.
 
 ### Water Jet
 
@@ -197,7 +195,7 @@ The following spells are shared between Nature and arcane disciplines (same spel
 - ❌ **Water → poison combo**: No explicit mechanic linking water and poison effects (e.g., poison spreading through water)
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Bark Shield (R1 proposed) — reactive natural armor
+- [x] R1 Quick Action: Bark Shield (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, thorn damage secondary)
 - [x] Defensive options: Bark Shield (R1 proposed), Rock Skin (R2) — good physical defense
 - [x] Utility: Bestial Adaptation (R0), Speak with Animals and Plants (R2), Nature's Passage (R2) — excellent breadth
 - [x] Damage across ranks: R0-R5 fully covered — Cataclysmic Eruption (R5) provides AoE capstone, Primeval Form (R5) provides melee capstone
