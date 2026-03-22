@@ -13,14 +13,14 @@
 
 ### Spell Rank Statistics
 
-| Rank | Focus | TN | Single | AoE | Range | Duration | Area | Power Level |
+| Rank | Focus | TN | Single | AoE (R2+ = ½ single-target) | Range | Duration | Area | Power Level |
 |------|-------|-----|--------|-----|-------|----------|------|-------------|
 | 0 | 0 | 6 | +2/+4/+6 | +0/+2/+4 | Medium | Brief-Short | Melee-Close | Cantrips (≈D&D 0) |
 | 1 | 2 | 8 | +4/+8/+12 | +2/+4/+6 | Medium | Short-Medium | Close-Short | Basic (≈D&D 1-2) |
-| 2 | 4 | 10 | +6/+12/+18 | +4/+8/+12 | Medium-Long | Short-Medium | Short-Medium | Moderate (≈D&D 3-4) |
-| 3 | 6 | 12 | +8/+16/+24 | +6/+12/+18 | Long | Short-Medium | Medium-Long | High (≈D&D 5) |
-| 4 | 8 | 14 | +10/+20/+30 | +8/+16/+24 | Long-Extreme | Short-Medium | Large | Very high (≈D&D 6) |
-| 5 | 10 | 16 | +12/+24/+36 | +10/+20/+30 | Extreme | Short-Medium | Large-Extreme | Peak mortal (≈D&D 7) |
+| 2 | 4 | 10 | +6/+12/+18 | +3/+6/+9 | Medium-Long | Short-Medium | Close-Short line | Moderate (≈D&D 3-4) |
+| 3 | 6 | 12 | +8/+16/+24 | +4/+8/+12 | Long | Short-Medium | Short | High (≈D&D 5) |
+| 4 | 8 | 14 | +10/+20/+30 | +5/+10/+15 | Long-Extreme | Short-Medium | Medium | Very high (≈D&D 6) |
+| 5 | 10 | 16 | +12/+24/+36 | +6/+12/+18 | Extreme | Short-Medium | Long | Peak mortal (≈D&D 7) |
 
 **Damage Formula**: Spell Power + spell bonus
 **Success Levels**: Weak (0-2 over TN), Strong (3-5), Critical (6+)
@@ -255,15 +255,15 @@ You conjure a crackling sphere of elemental energy and hurl it at your foe. Choo
 
 ### Damage Spells
 - Single-target: Standard damage progression by rank
-- AoE: One rank lower, specify area (cone/line/burst)
+- **AoE**: Half single-target spell bonus at R2+ (R0-R1 as-is), specify area (cone/line/burst)
 - Hybrid: Reduced damage + condition/utility effect
 - Consider damage type implications (burning, slowed, stunned, etc.)
 
 ### Control Spells
 - Target Resist TN (6 + rank)
-- Duration appropriate to rank (briefly → medium max)
+- Duration appropriate to rank (briefly → medium max) — fixed on any success, NOT varying by SL
 - Condition from appropriate list for tradition/discipline
-- Strong/Critical increase duration or targets
+- Strong/Critical add secondary effects or bonus damage, NOT escalating the primary condition
 
 ### Utility Spells
 - Non-combat applications emphasized
@@ -287,6 +287,37 @@ You conjure a crackling sphere of elemental energy and hurl it at your foe. Choo
 ❌ **Balance Blindness**: Ignoring spell interaction with other abilities
 ❌ **Vague Wording**: Ambiguous targeting, duration, or mechanical effects
 ❌ **Weak Role Violation**: Creating spells in categories the tradition/discipline should avoid
+❌ **SL-Dependent Core Effects**: Primary utility/control effects (conditions, durations, target counts) should NOT depend on Success Level — only damage, healing, and secondary effects scale by SL
+❌ **Heightened Duplicates**: Creating new spells that are just higher-rank versions of existing spells — use Heightened mechanics instead
+❌ **Literal Aspect Interpretation**: Forcing literal trait representation (e.g., R0 teleportation cantrip = actual teleportation) — think creatively about what aspects mean at each power level
+❌ **Trivializing Game Modes**: Spells that automatically bypass skill challenges (travel, social, exploration) instead of providing boons/assistance
+❌ **Volatile Control Spells**: Control/utility spells where the core effect changes by SL (e.g., "briefly" on Weak, "short duration" on Strong, "medium" on Critical) — the duration should be fixed for reliability
+
+---
+
+## Designer-Derived Principles
+
+These principles are extracted from iterative designer feedback and should be applied to all spell creation:
+
+1. **Spells assist, never bypass** — Travel, social, and exploration spells provide boons on checks and reduced difficulty, not automatic success. Magic enhances game modes without trivializing them.
+
+2. **SL scales magnitude, not effect type** — Primary utility and control effects must be reliable on any success. Only damage/healing numbers and secondary effects scale by Success Level. A control spell that applies "dazed" on Weak should still apply "dazed" on Critical — the Critical adds bonus damage or secondary debuffs.
+
+3. **Heighten, don't duplicate** — Higher-rank versions of existing spells use the Heightened mechanic. Reserve new spell entries for genuinely different concepts.
+
+4. **Standardized reactive defense** — Every school's R1 Quick Action reactive spell follows the same base: "+2 to Dodge or Parry against the triggering attack" with one school-specific secondary effect. No SL scaling. Mirrors the weapon enhancement pattern (same base, unique secondaries).
+
+5. **R5 material costs match item economy** — Rank 5 material cost components should be 5,000+ coins (matching Q6-Q7 item economy), not trivial amounts.
+
+6. **Aspects are thematic seeds, not literal requirements** — Trait coverage gaps should be filled with creative interpretations appropriate for the rank's power level. A "teleportation" R0 cantrip means spatial manipulation (interact at range, sense space), not actual teleportation.
+
+7. **Arcane defiles, Mystic honors** — Even when arcane disciplines and mystic traditions share thematic territory (e.g., Necromancy and Death both deal with death), their philosophies are fundamentally opposed. Arcane is transgressive and selfish; Mystic is reverential and communal. Spells should NEVER be shared between schools with opposed philosophies.
+
+8. **Binding means containment, not just movement** — The "binding" aspect in Conjuration represents lasting magical constructs: wards, barriers, force cages, dimensional anchors. Not merely movement reduction debuffs.
+
+9. **Every school needs internal completeness** — Each school must have: R1 Quick Action reactive spell, defensive options, utility/non-combat effects, some damage capability, repeating conditions/gimmick identity, and setup+payoff synergies.
+
+10. **AoE trades damage for targets** — Multi-target spells deal half single-target spell bonus at R2+ (R0-R1 unchanged). Area scales with rank: R0-R1 single-target, R2 close/short line, R3 short area, R4 medium area, R5 long area.
 
 ---
 
