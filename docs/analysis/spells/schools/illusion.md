@@ -105,11 +105,9 @@
 
 *You shroud yourself in an illusion of shifting, menacing forms — enemies perceive attacking you as dangerous or futile.*
 
-**Weak.** For a short duration, when a creature targets you with a melee attack, they must roll Spirit + Perception vs. your casting result or suffer +1 bane on their attack.
-**Strong.** The illusion also affects ranged attackers within close range. Bane increases to +2 on failure.
-**Critical.** All attackers within medium range are affected. On a failed detection, they also take +2 psychic damage from the terrifying illusion.
+**Effect.** On a success, for a short duration, whenever a creature within close range attacks you, they must make a Spirit + Insight roll vs. your casting result. On a failure, they perceive illusory armor and flinch — they suffer +1 bane on the triggering attack and take +2 psychic damage from the hallucination.
 
-> **Design Note**: Defensive illusion spell — fits the "deception as defense" identity without being a traditional shield.
+> **Design Note**: Defensive illusion. Single reliable effect — no SL scaling. The effect is modest (bane + minor damage) but applies to all attacks, making it a strong sustained defense.
 
 ### Labyrinth of Mirrors
 

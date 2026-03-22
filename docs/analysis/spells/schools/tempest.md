@@ -139,11 +139,11 @@
 
 *You slam the ground with divine fury, sending a powerful shockwave rippling through the earth.*
 
-**Weak.** All creatures in a close area take +3 blast damage and must save or be briefly prone.
-**Strong.** Deal +6 blast damage. Prone creatures in the area take an additional +3 physical damage from debris. The area becomes difficult terrain briefly.
-**Critical.** Deal +9 blast damage. Prone creatures take +6 additional physical damage. Difficult terrain persists for a short duration. Structures in the area take double damage.
+**Weak.** Deal +3 blast damage to all creatures in a close area. Each target must roll Strength + Athletics vs. TN 10 or be knocked prone. The area becomes difficult terrain briefly.
+**Strong.** Deal +6 blast damage. As above.
+**Critical.** Deal +9 blast damage. As above, and the difficult terrain persists for a short duration.
 
-> **Design Note**: Fills R2 earthquakes gap. AoE uses half single-target R2 scaling (+3/+6/+9). The prone-check-then-bonus-damage creates a setup+payoff within a single spell — hitting already-prone targets harder rewards prior knockdown effects.
+> **Design Note**: R2 earthquake AoE. Prone and difficult terrain are reliable on any success. SL scales damage. Difficult terrain duration extends at Critical as a secondary benefit.
 
 ### Tidal Surge
 
@@ -239,7 +239,7 @@ The following spells are shared between Tempest and arcane disciplines (same spe
 
 ### Setup + Payoff Combos
 - ✅ **Wind push → lightning**: Push targets into exposed positions with Gust/Wind Hose → strike with lightning spells for full effect
-- ✅ **Prone → AoE bonus**: Tremor/Earthen Tremor knocks prone → Aftershock (R2 proposed) explicitly deals bonus damage to prone targets
+- ✅ **Prone → AoE bonus**: Tremor/Earthen Tremor knocks prone → Aftershock (R2 proposed) adds another reliable prone check plus AoE damage, keeping targets locked down for melee allies to exploit
 - ⚠️ **Storm buildup**: Minor storm effects → major storm conceptually fits, but no explicit mechanic rewards casting multiple storm spells in sequence
 - ❌ **Sand → flood combo**: No mechanical link between sandstorm and flood effects
 
@@ -249,7 +249,7 @@ The following spells are shared between Tempest and arcane disciplines (same spe
 - [x] Utility: Weather Prediction (R0 proposed) — fills the non-combat gap; Control Weather (R4\*) for advanced utility
 - [x] Damage across ranks: R0-R5 fully covered — Storm Lord, World Shaker, and Maelstrom provide three distinct R5 capstones
 - [x] Repeating conditions: Staggered, prone, deafened, pushed, restrained — consistent storm-force identity
-- [x] Setup+payoff: Prone → Aftershock bonus damage is explicitly designed as setup+payoff within a single spell
+- [x] Setup+payoff: Prone → Aftershock prone check rewards prior knockdown effects with reliable battlefield control
 - [x] R5 capstone diversity: Storm Lord (transformation), World Shaker (earthquake AoE), Maelstrom (vortex control) — three different tactical roles
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 10, R2: 11, R3: 7, R4: 5, R5: 3)
 - ⚠️ **Remaining gaps**: Sandstorms R1/R4+, Floods R1/R3, Earthquakes R3

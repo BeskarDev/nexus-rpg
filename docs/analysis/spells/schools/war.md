@@ -172,11 +172,11 @@
 
 *You become an avatar of divine war — an inspiring, terrifying presence on the battlefield that turns the tide of battle.*
 
-**Weak.** For a short duration: you gain +2 to all attributes, +4 weapon damage, and enemies within close range must save or be frightened for a short duration. Allies within close range gain +1 to all attack rolls.
-**Strong.** All Weak benefits. Allies gain +2 to all attack rolls and +2 weapon damage. You also emit an aura — enemies within melee range take +4 fire damage at the start of each of your turns.
-**Critical.** All Strong benefits. Once per turn you can make an additional weapon attack as a Quick Action. Frightened enemies that attempt to flee provoke attacks of opportunity from all allies.
+**Weak.** For a short duration, you emanate an aura of command in a close area. Allies within the aura gain +2 to attack rolls and +2 weapon damage. Enemies that enter the aura must roll Spirit + Fortitude vs. TN 16 or be briefly frightened. You can issue one tactical command per turn as a Quick Action, granting one ally within the aura an extra movement or Quick Action.
+**Strong.** As above, and allies also gain +2 to Dodge and Parry while in the aura.
+**Critical.** As above, and the aura extends to short area.
 
-> **Design Note**: R5 capstone — avatar of war transformation. Duration (short) and fear duration (short) are fixed on any success — SL scales ally buff magnitude and unlocks secondary abilities (aura, extra attack). Concentration limits other spellcasting.
+> **Design Note**: R5 battlefield command. Core buff (+2 attacks, +2 weapon damage, fear aura, tactical commands) reliable on any success. SL adds defensive bonuses and area expansion.
 
 ### Righteous Fury
 
@@ -242,11 +242,11 @@
 
 *You invoke the ultimate blessing of the war gods, and divine power transforms you into a living avatar of battle. Your form grows, your weapon blazes with holy fire, and wings of golden flame spread from your back. You are War incarnate.*
 
-**Weak.** For a short duration: gain +3 to all attribute die sizes (up to d12+2), +6 weapon damage, and flight (movement 6). You are immune to the frightened, staggered, and dazed conditions. Your melee attacks deal fire damage in addition to physical.
-**Strong.** All Weak benefits. You also emit an aura of divine fury — enemies within melee range take +4 fire damage at the start of each of your turns. When you reduce an enemy to 0 HP, all allies within close range gain +2 to their next attack roll.
-**Critical.** All Strong benefits. Aura damage increases to +8. Once per turn, you may make an additional weapon attack as a Quick Action.
+**Weak.** For a short duration, you transform into an avatar of war. You gain: all attributes increase by 2 die sizes, +4 weapon damage, flight (movement 6), immunity to frightened and charmed conditions, and a damage aura (creatures that start their turn within melee range take +4 fire damage). When you reduce a creature to 0 HP, you gain +2 temporary HP.
+**Strong.** As above, but weapon damage bonus increases to +6 and aura damage increases to +6 fire damage.
+**Critical.** As above, but weapon damage bonus increases to +8 and aura damage increases to +8 fire damage. Temporary HP from kills increases to +4.
 
-> **Design Note**: R5 fury/blood ultimate — divine warrior transformation. The most powerful self-buff in War's arsenal. Concentration limits other spellcasting. Brief/short duration ensures this is a climactic moment, not a sustained state. Attribute bonuses are capped at d12+2 to respect the mortal power ceiling.
+> **Design Note**: R5 war capstone transformation. All transformation features (attribute boost, weapon damage, flight, immunities, damage aura, kill trigger) available on any success. SL scales the numerical values.
 
 ### Final Triumph
 

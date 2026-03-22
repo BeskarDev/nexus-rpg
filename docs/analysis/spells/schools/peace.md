@@ -159,11 +159,11 @@
 
 *You create a shimmering dome of divine peace that shields all within from harm and hostility.*
 
-**Weak.** Create a dome in close range lasting a short duration. All allies within gain +4 AV (situational bonus). Hostile creatures must succeed on a Spirit + Fortitude check (vs. your casting result) to enter the dome or attack creatures within it. Hostile creatures that fail the check are briefly dazed by the calming aura.
-**Strong.** AV bonus increases to +6. Hostile creatures that fail the check are also pushed out of the dome.
-**Critical.** AV bonus +6. Failed hostile creatures are dazed and pushed out. Allies within the dome regain +2 HP at the start of each of their turns.
+**Weak.** Create a dome of protective energy (close area) for a short duration while you concentrate. The dome grants +4 AV to all creatures inside. Hostile creatures attempting to enter must roll Spirit + Fortitude vs. TN 16 or be briefly dazed and pushed back. Allies inside heal +2 HP at the start of each turn.
+**Strong.** As above, but AV bonus increases to +6 and healing increases to +4 HP per turn.
+**Critical.** As above, but AV bonus increases to +8 and healing increases to +6 HP per turn.
 
-> **Design Note**: R5 capstone — ultimate sanctuary. Duration (short) and the core dome + hostility check are fixed on any success — SL scales AV bonus and adds secondary effects (push, regeneration). Concentration can be broken.
+> **Design Note**: R5 defensive capstone. All protective features (AV, hostile push, healing) available on any success. SL scales the numerical values.
 
 ### Diplomatic Immunity
 
@@ -201,11 +201,11 @@
 
 *You speak with the voice of divine law, and the command resonates through every creature's soul — "CEASE." Weapons lower, fists unclench, and a profound stillness descends. Those who defy the edict suffer the cosmos's wrath.*
 
-**Weak.** All creatures in a medium area must save (Spirit + Fortitude vs. your casting result) or cease all hostilities for a short duration. Affected creatures cannot attack, cast harmful spells, or take hostile actions. A creature that attacks while under the edict takes +12 psychic backlash damage (no save) and the effect on them ends.
-**Strong.** Psychic backlash increases to +16 damage. Creatures that fail the save also feel compelled to lower their weapons (drop held weapons unless they succeed on a second save).
-**Critical.** Backlash +20 damage. Weapons dropped. Affected creatures also cannot willingly lie for the duration. Creatures that break the edict are branded with a visible divine mark for a long duration (others instinctively distrust them).
+**Weak.** All creatures within a short area must roll Spirit + Fortitude vs. TN 16. On failure, they cease all hostilities for a short duration — they cannot attack, cast offensive spells, or take aggressive actions. Creatures that violate the edict take +8 psychic damage from the oath's backlash. Affected creatures also drop their weapons and are compelled to speak truthfully while under the effect.
+**Strong.** As above, and psychic backlash increases to +12 damage.
+**Critical.** As above, and psychic backlash increases to +16 damage. Creatures that violated the edict are visibly branded with a mark of oathbreaker for a medium duration.
 
-> **Design Note**: R5 calmness/law ultimate capstone — forced ceasefire. Duration (short) is fixed on any success — the ceasefire is reliable. SL scales backlash damage and adds secondary consequences (weapon drop, truth compulsion, brand). Concentration means the caster must maintain focus.
+> **Design Note**: R5 law ultimate. Full ceasefire, weapon drop, and truth compulsion available on any success. SL scales backlash damage and adds oathbreaker branding at Critical.
 
 ### Sacred Covenant
 

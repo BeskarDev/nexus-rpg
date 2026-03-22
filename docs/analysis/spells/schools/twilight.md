@@ -91,11 +91,11 @@
 
 *You call down a beam of concentrated moonlight that sears your target with cold silver radiance.*
 
-**Weak.** Deal +8 frost damage. The target is revealed for a short duration — invisibility, concealment, and illusions affecting them are suppressed. The target emits dim light (revealing their position even in darkness).
-**Strong.** Deal +16 frost damage. The target is also briefly slowed as moonlight saps their warmth.
-**Critical.** Deal +24 frost damage. The target is slowed for a short duration. Illusions or magical disguises on the target are permanently dispelled.
+**Weak.** Deal +4 radiant damage. The target is revealed (glowing moonlight) for a short duration, preventing invisibility and granting +1 boon on attacks against them. The target is briefly slowed as moonlight weighs on them.
+**Strong.** Deal +8 radiant damage. As above.
+**Critical.** Deal +12 radiant damage. As above, and the revealing light dispels one active illusion or concealment effect on the target.
 
-> **Design Note**: Fills R3 moon gap. Single-target damage with anti-stealth utility — revealing hidden creatures is the overlap between moon (illumination) and secrets (uncovering). The revealed condition is fixed at short duration on any success — SL scales damage and adds secondary control (slowed) and dispelling.
+> **Design Note**: R3 moon offense. Reveal + slowed are reliable on any success. SL scales damage and adds dispel at Critical.
 
 ### Shadow Veil (Quick Action Reactive)
 
@@ -145,11 +145,11 @@
 
 *You call down the eclipse — the moon swallowing the sun. A sphere of absolute darkness and biting cold descends upon the battlefield.*
 
-**Weak.** Create an area of magical darkness in a medium area for a short duration (concentrate). All creatures within the area take +5 frost damage at the start of each of your turns and are slowed for a short duration. Non-magical light sources within the area are extinguished.
-**Strong.** Damage increases to +10 per turn. Creatures also suffer +1 bane on all attack rolls while in the darkness.
-**Critical.** Damage increases to +15 per turn. +1 bane on attack rolls. All light sources (including magical) are suppressed. Creatures that start their turn in the darkness must save (vs. Resist) or be briefly frightened.
+**Weak.** Create an area of magical darkness (short area, medium range) for a short duration. All light (including magical) is suppressed within the zone. Creatures inside take +5 frost damage at the start of each turn and are slowed. Creatures that start their turn in the zone must roll Spirit + Fortitude vs. TN 14 or become briefly frightened.
+**Strong.** As above, and frost damage increases to +10 per turn.
+**Critical.** As above, and frost damage increases to +15 per turn. Frightened creatures also suffer +1 bane on all rolls while frightened.
 
-> **Design Note**: R4 control/offense hybrid. Per-turn AoE damage at half single-target scaling (+5/+10/+15). The slowed condition and darkness are fixed on any success — SL scales per-turn damage and adds secondary penalties (attack banes, magical light suppression, frightened). Concentration limits other spellcasting.
+> **Design Note**: R4 darkness capstone. Darkness, slowed, frightened save, and light suppression are all reliable on any success. SL scales damage and adds secondary bane at Critical.
 
 ### Prophecy
 
