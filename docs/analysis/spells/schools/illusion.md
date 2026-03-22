@@ -22,36 +22,32 @@
 - **Setup**: Create an illusion (Minor Illusion, Major Illusion) → **Payoff**: Enemies who believe the illusion are vulnerable to follow-up psychic attacks
 - **Layer stacking**: Multiple concentration-free illusions compound the false reality
 
-## Current Spell Inventory (18 spells)
+## Spell Inventory (38 spells — 18 existing, 20 proposed†)
 
 | Rank | Count | Spells |
 |------|-------|--------|
-| 0 | 3 | Horrific Vision, Maddening Whispers, Minor Illusion |
-| 1 | 5 | Color Spray, Disguise Form, False Enemy, Illusory Trap, Mirror Image |
-| 2 | 7 | Hallucinated Swarm, Illusionary Terrain, Invisibility, Major Illusion, Misdirection, Trap Room, Waking Dream |
-| 3 | 3 | Mislead, Phantasmal Killer, Seeming (incomplete) |
-| 4–5 | 0 | — |
+| 0 | 5 | Horrific Vision, Maddening Whispers, Minor Illusion, Phantom Feint†, Sensory Trick† |
+| 1 | 8 | Color Spray, Disguise Form, False Enemy, Illusory Dodge†, Illusory Trap, Mirror Image, Phantom Pain†, Warped Perspective† |
+| 2 | 9 | Funhouse Mirror†, Hallucinated Swarm, Illusionary Terrain, Invisibility, Major Illusion, Misdirection, Phantasmal Armor†, Trap Room, Waking Dream |
+| 3 | 5 | Mislead, Phantasmal Killer, Programmed Illusion†, Seeming, Shattered Perspective† |
+| 4 | 6 | Grand Illusion†, Impossible Geometry†, Labyrinth of Mirrors†, Phantasmal Catastrophe†, Shroud of Forgotten Faces†, Veil of Deception† |
+| 5 | 5 | Dream Shroud†, Maze of Madness†, Mirage Arcane†, Perfect Disguise†, Unraveled Reality† |
 
 ### Trait × Rank Coverage Matrix
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| trickery | Minor Illusion | Illusory Trap, False Enemy | Illusionary Terrain, Trap Room | — | Grand Illusion† | — |
-| misdirection | — | Mirror Image, Illusory Dodge† | Misdirection, Invisibility | Mislead | — | Perfect Disguise† |
-| obfuscation | Maddening Whispers | Color Spray, Disguise Form | Waking Dream, Phantasmal Armor† | Seeming | — | — |
-| hallucinations | Horrific Vision | — | Hallucinated Swarm, Major Illusion | Phantasmal Killer | Phantasmal Catastrophe†, Labyrinth of Mirrors† | Maze of Madness† |
-| distortion | Sensory Trick† | — | — | — | — | — |
+| trickery | Minor Illusion | Illusory Trap, False Enemy | Illusionary Terrain, Trap Room | Programmed Illusion† | Grand Illusion† | Mirage Arcane† |
+| misdirection | Phantom Feint† | Mirror Image, Illusory Dodge† | Misdirection, Invisibility | Mislead | Veil of Deception† | Perfect Disguise† |
+| obfuscation | Maddening Whispers | Color Spray, Disguise Form | Waking Dream, Phantasmal Armor† | Seeming | Shroud of Forgotten Faces† | Dream Shroud† |
+| hallucinations | Horrific Vision | Phantom Pain† | Hallucinated Swarm, Major Illusion | Phantasmal Killer | Phantasmal Catastrophe†, Labyrinth of Mirrors† | Maze of Madness† |
+| distortion | Sensory Trick† | Warped Perspective† | Funhouse Mirror† | Shattered Perspective† | Impossible Geometry† | Unraveled Reality† |
 
 *†Proposed new spell*
 
-**Coverage (with proposed)**: 18/30 slots filled (60%) — strong at R0-R2, improving at R3-R5
+**Coverage (with proposed)**: 30/30 slots filled (100%) — all trait×rank gaps filled
 
-**Remaining Gaps**:
-- **Distortion R1+**: Still nearly empty beyond cantrip — weakest trait
-- **Hallucinations R1**: Gap between R0 and R2 persists
-- **Trickery R3, R5**: No advanced trickery at R3 or capstone level
-- **Misdirection R0, R4**: No cantrip-level or R4 misdirection
-- **Obfuscation R4-R5**: No high-rank obfuscation
+**Remaining Gaps**: None — all 30 trait×rank slots are covered.
 
 ## Proposed Spell Changes
 
@@ -93,9 +89,9 @@
 
 *You conjure a flickering illusory double of yourself at the last instant, confusing your attacker's aim.*
 
-**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attack misses, the illusory double persists briefly, imposing +1 bane on the next attack against you before the end of your next turn.
+**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attack misses, you become briefly invisible until the end of your next turn or until you attack or cast a spell.
 
-> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Illusion's misdirection as secondary effect. No SL scaling — one reliable defensive reaction.
+> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Illusion's signature secondary: brief invisibility on successful dodge. No SL scaling — one reliable defensive reaction.
 
 ### Phantasmal Armor
 
@@ -178,6 +174,174 @@
 **Critical.** As above with +18 psychic damage, and confused creatures also suffer +1 bane on all saves to break free of the confusion.
 
 > **Design Note**: R5 offensive capstone for Illusion. AoE uses half single-target R5 scaling (+6/+12/+18). Core condition (confused, short duration) is reliable on any success — SL adds damage and debuffs, not escalating to domination.
+
+### Phantom Feint
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | Medium TN | Close | illusory
+
+*You conjure a brief illusory afterimage of yourself darting in another direction while your real form fades momentarily from notice.*
+
+**Weak.** You create a flickering duplicate of yourself that dashes up to close range in any direction and then vanishes. Until the end of your next turn, you gain +1 boon on Stealth checks against creatures that saw the duplicate.
+**Strong.** As above with +2 boons on Stealth checks.
+**Critical.** As above with +2 boons, and one creature of your choice that saw the duplicate is briefly misdirected — it believes the duplicate was real and must use a Quick Action to reorient.
+
+> **Design Note**: R0 misdirection cantrip. Pure utility for stealth and evasion — fills the R0 misdirection gap. No damage, emphasizing Illusion's utility identity.
+
+### Phantom Pain
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | vs. Resist | Medium | —
+
+*You implant a vivid hallucination of injury in a creature's mind — a phantom blade in the gut, searing fire on the skin, or crushing pressure on the chest. The pain feels entirely real.*
+
+**Weak.** One creature within medium range experiences illusory agony. They take +4 psychic damage and are briefly frightened as their body recoils from the phantom wound.
+**Strong.** As above with +8 psychic damage, and the target suffers +1 bane on its next action from lingering phantom pain.
+**Critical.** As above with +12 psychic damage, and the target's concentration is broken if they are maintaining a spell.
+
+> **Design Note**: R1 hallucination offense. Fills the R1 hallucinations gap between Horrific Vision (R0) and Hallucinated Swarm (R2). Single-target R1 damage (+4/+8/+12). Core: psychic damage + briefly frightened on any success. SL scales damage and adds secondary effects.
+
+### Warped Perspective
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Medium TN | Medium | concentrate, illusory
+
+*You twist spatial perception in a close area — walls bend, floors tilt, and distances shift unpredictably. Creatures within struggle to judge depth and direction.*
+
+**Weak.** For a short duration, a close area within medium range becomes difficult terrain as creatures misjudge distances and steps. Ranged attacks targeting or originating from creatures in the area suffer +1 bane. Creatures that enter the area or start their turn there take +2 psychic damage from vertigo.
+**Strong.** As above with +4 psychic damage.
+**Critical.** As above with +6 psychic damage, and creatures starting their turn in the area are also briefly dazed from the disorientation.
+
+> **Design Note**: R1 distortion control/utility. Establishes distortion's mechanical identity: spatial manipulation that impairs movement and ranged combat. Core: difficult terrain + ranged bane on any success. AoE R1 damage (+2/+4/+6). Begins the distortion chain.
+
+### Funhouse Mirror
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | vs. Resist | Medium | concentrate, illusory
+
+*You conjure a zone of distorted reflections and warped angles. Creatures within see twisted versions of their surroundings — stretched corridors, multiplied reflections, and impossible perspectives that fracture certainty.*
+
+**Weak.** For a short duration, creatures in a close area within medium range suffer +1 bane on all attacks as they misjudge where targets truly stand. Creatures take +3 psychic damage from the warped perceptions when they enter the area or start their turn there.
+**Strong.** As above with +6 psychic damage, and creatures also suffer +1 bane on Dodge as reflections conceal the direction of incoming attacks.
+**Critical.** As above with +9 psychic damage, and creatures entering the area are briefly confused as they lose track of which reflection is real.
+
+> **Design Note**: R2 distortion control. Advances the distortion chain with stronger area denial. Core: attack bane on any success. AoE R2 damage (+3/+6/+9). SL adds defensive penalty and confusion as secondary effects.
+
+### Programmed Illusion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Medium TN | Medium | illusory
+
+*You weave a dormant illusion that lies in wait for a trigger you specify — a creature entering an area, a word spoken aloud, a door opened — then activates with vivid, pre-scripted detail.*
+
+**Weak.** You create a detailed illusory scene (up to a close area) at a point within medium range. The illusion lies dormant and invisible until a trigger condition you specify occurs. When triggered, the illusion plays out for a short duration, then vanishes. Observers can attempt Spirit + Perception vs. your casting result to detect it.
+**Strong.** As above, and the illusion includes convincing auditory and olfactory elements. Detection attempts suffer +1 bane.
+**Critical.** As above with +1 bane on detection, and the illusion can react to nearby creatures in limited ways (turn to face them, repeat pre-set phrases, gesture). Duration extends to medium once triggered.
+
+> **Design Note**: R3 trickery utility. A "set and forget" illusion — notably does NOT require concentration, making it uniquely powerful for ambushes and long-term deceptions. Fills the trickery R3 gap. Core: triggered illusion on any success. SL improves fidelity and duration.
+
+### Shattered Perspective
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist | Medium | concentrate
+
+*You fracture a creature's spatial perception, forcing them to see multiple overlapping versions of reality simultaneously — contradictory viewpoints that strain the mind to breaking.*
+
+**Weak.** One creature within medium range is overwhelmed by contradictory perspectives for a short duration. They are confused and take +8 psychic damage as their mind strains to reconcile impossible viewpoints.
+**Strong.** As above with +16 psychic damage, and the target suffers +1 bane on saves against illusion spells for the duration.
+**Critical.** As above with +24 psychic damage, and the target is also briefly blinded as their vision fractures completely.
+
+> **Design Note**: R3 distortion offense/control. Single-target lockdown with heavy psychic damage. Core: confused on any success. Single-target R3 damage (+8/+16/+24). SL scales damage and adds illusion vulnerability or blinding.
+
+### Veil of Deception
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Hard TN | Close | concentrate, enchant (short)
+
+*You weave a potent veil of misdirection around a creature, obscuring its presence from all senses. Unlike lesser invisibility, this veil repairs itself after each action — attacking, casting, and interacting do not break the concealment.*
+
+**Weak.** One willing creature within close range becomes invisible for a short duration. This invisibility does not break when the target attacks, casts spells, or interacts with objects. Detecting the invisible creature requires Spirit + Perception vs. your casting result.
+**Strong.** As above, and the target leaves no traces (footprints, displaced air, sound of movement). Detection attempts suffer +1 bane.
+**Critical.** As above with +1 bane on detection, and the target can extend the veil to one adjacent ally for the duration. Both creatures benefit from the full effect.
+
+> **Design Note**: R4 misdirection utility. "Persistent invisibility" that doesn't break on actions — a fundamentally different mechanic from R2 Invisibility, not a numerical upgrade (justifying a new spell over heightening). Fills the R4 misdirection gap. Core: persistent invisibility on any success.
+
+### Shroud of Forgotten Faces
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Hard TN | Close | concentrate, illusory
+
+*You shroud yourself and your allies in a veil of anonymity — faces blur, voices become indistinct, and identifying features fade from perception and memory.*
+
+**Weak.** For a short duration, you and up to 6 willing creatures within close range become unidentifiable. Observers cannot remember distinguishing features, and divination magic targeting any shrouded creature suffers +2 banes. Shrouded creatures gain +2 boons on Stealth checks in crowds.
+**Strong.** As above, and observers who try to focus on a shrouded creature must succeed on Spirit + Perception vs. your casting result or lose track of them entirely, as though the creature vanished in the crowd.
+**Critical.** As above, and shrouded creatures can change their apparent height, build, and gender at will. Even magical tracking fails to identify them.
+
+> **Design Note**: R4 obfuscation utility. Group anonymity — distinct from Seeming (R3, which provides fake identities). This spell makes identity *unreadable* rather than *replaced*. Fills the R4 obfuscation gap. Core: anonymity on any success. SL improves detection resistance.
+
+### Impossible Geometry
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | concentrate, illusory
+
+*You reshape perceived space into impossible architecture — stairs that loop endlessly, corridors that lead back to their beginnings, doors that open onto walls. The area becomes a spatial trap with no valid exit.*
+
+**Weak.** For a short duration, creatures in a close area within medium range are trapped in warped space. They cannot willingly leave the area — every exit loops back inside. They take +5 psychic damage from the spatial disorientation. At the end of each of their turns, a trapped creature can attempt Mind + Perception vs. your casting result to navigate free.
+**Strong.** As above with +10 psychic damage, and escape attempts suffer +1 bane as the geometry shifts in response to movement.
+**Critical.** As above with +15 psychic damage, and creatures that fail their escape attempt are also briefly dazed by the impossible angles.
+
+> **Design Note**: R4 distortion control. AoE spatial trap — distinct from Labyrinth of Mirrors (R4 hallucinations, single-target mental maze). This affects an area through warped space rather than one mind through false visions. AoE R4 damage (+5/+10/+15). Core: can't leave, per-turn escape on any success.
+
+### Mirage Arcane
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Hard TN | Long | concentrate, illusory, material cost (rare illusory pigments worth 5,000 coins)
+
+*You reshape the perceived landscape across an enormous area, creating a false environment indistinguishable from reality. Unlike lesser illusions, this mirage has substance — walls block movement, bridges support weight, water feels wet and cold.*
+
+**Weak.** You alter terrain in a medium area within long range for a short duration. The changes are total: add, remove, or reshape terrain features as you wish. The illusory terrain is semi-tangible — walls and floors support weight and block movement, though they deal no damage. Creatures can attempt Spirit + Perception vs. your casting result to detect the illusion, but even aware creatures must physically navigate the false terrain.
+**Strong.** As above, and the duration extends to medium. Detection attempts suffer +1 bane. The semi-tangible elements can include simple mechanisms (doors that open, drawbridges that lower).
+**Critical.** As above, and the duration extends to long. Aware creatures can pass through illusory walls, but doing so is disorienting (difficult terrain).
+
+> **Design Note**: R5 trickery capstone. The ultimate terrain illusion — semi-tangible false reality. Distinct from Grand Illusion (R4, visual/auditory only, no physical substance). Material cost of 5,000 coins constrains casual use. Core: semi-tangible terrain on any success. SL scales duration and fidelity.
+
+### Dream Shroud
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Medium | concentrate, material cost (a dreamcatcher woven from shadow-silk worth 5,000 coins)
+
+*You engulf an area in a veil of dreamlike unreality. All sensory information becomes unreliable — sounds echo from wrong directions, faces shift and blur, the ground feels uncertain, and the boundary between real and imagined dissolves completely.*
+
+**Weak.** All creatures in a short area within medium range are engulfed in dreamlike obfuscation for a short duration. They are blinded beyond melee range and confused. All Perception checks within the area automatically fail. Creatures take +6 psychic damage from the overwhelming sensory dissolution.
+**Strong.** As above with +12 psychic damage, and confused creatures suffer +1 bane on saves to end the confusion.
+**Critical.** As above with +18 psychic damage, and the area expands to medium range. Creatures that recover from confusion are briefly frightened as reality reasserts itself.
+
+> **Design Note**: R5 obfuscation capstone. Total sensory denial — distinct from Maze of Madness (R5 hallucinations, shared nightmare). This spell drowns the area in formless unreality rather than crafting a specific false vision. AoE R5 damage (+6/+12/+18). Core: blinded + confused on any success.
+
+### Unraveled Reality
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Medium | concentrate, material cost (a shattered prism of perfect clarity worth 5,000 coins)
+
+*You tear at the fabric of perceived space, unraveling spatial coherence across a wide area. Distances become meaningless, directions contradict themselves, and the geometry of reality breaks down into a shifting, impossible maze.*
+
+**Weak.** All creatures in a short area within medium range experience total spatial breakdown for a short duration. They are confused and cannot willingly move — every step leads somewhere unexpected. Creatures take +6 psychic damage from the impossible geometry. At the end of each of their turns, a trapped creature can attempt Mind + Perception vs. your casting result to anchor their spatial awareness and escape the effect.
+**Strong.** As above with +12 psychic damage. Escape attempts suffer +1 bane, and all ranged attacks within or through the zone automatically fail as spatial paths no longer connect.
+**Critical.** As above with +18 psychic damage. The area expands to medium range, and creatures that escape are briefly dazed from residual spatial disorientation.
+
+> **Design Note**: R5 distortion capstone. The pinnacle of spatial manipulation — complete spatial breakdown. Distinct from Impossible Geometry (R4, creatures can't *leave* the area) — here, creatures can't *move at all* and space itself is incoherent. AoE R5 damage (+6/+12/+18). Material cost of 5,000 coins. Core: confused + immobile, per-turn escape on any success.
 
 ## Cross-School Spell Sharing
 
