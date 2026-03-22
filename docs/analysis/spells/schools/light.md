@@ -39,18 +39,14 @@
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
 | sun | Dazzling Light | Sun Sphere, Radiant Weapon | Sunbeam | Solar Flare | Blinding Radiance | Radiant Convergence |
-| illumination | Illuminated Sight | Blessing of Light, Locate Trinket | — | Blessing of Dawn | — | Dawn's Embrace |
-| truth | Detect Lies | Protect from Influence | Break Curse | Zone of Truth | — | Radiance of Truth |
-| clarity | Moment of Clarity | — | Clarity of Purpose | — | Purifying Aura | — |
-| judgement | Stern Gaze | Radiant Rebuke | — | — | Divine Judgement | — |
+| illumination | Illuminated Sight | Blessing of Light, Locate Trinket | Guiding Light | Blessing of Dawn | Pillar of Dawn | Dawn's Embrace |
+| truth | Detect Lies | Protect from Influence | Break Curse | Zone of Truth | Oath of Binding Light | Radiance of Truth |
+| clarity | Moment of Clarity | Clear Sight | Clarity of Purpose | Luminous Mind | Purifying Aura | Absolute Clarity |
+| judgement | Stern Gaze | Radiant Rebuke | Mark of Judgement | Righteous Condemnation | Divine Judgement | Final Judgement |
 
-**Coverage** (existing + proposed): 21/30 slots filled (70%) — all traits represented, R4-R5 filled
+**Coverage** (existing + proposed): 30/30 slots filled (100%) — all traits fully represented across all ranks
 
-**Remaining Gaps**:
-- **Clarity R1, R3, R5**: No mid-rank or capstone clarity spells
-- **Judgement R2-R3**: Gap between R1 reactive and R4 offensive
-- **Illumination R2, R4**: Gaps in middle ranks
-- **Truth R4**: No R4 truth spell
+**Remaining Gaps**: No remaining gaps — 100% coverage
 
 ## Proposed Spell Changes
 
@@ -214,6 +210,132 @@
 
 > **Design Note**: R5 truth/clarity capstone. Core effect (full revelation zone — invisibility, illusions, disguises, concealment all stripped; truth compulsion) is reliable on any success — SL adds compulsion banes and Insight bonuses. Concentration and Focus 10 cost are significant. Does not compel speech — targets can remain silent.
 
+### Clear Sight
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | Ally | Close | enchant (short)
+
+*A nimbus of soft golden light settles around the target's eyes, burning away illusion and sharpening perception to preternatural clarity.*
+
+**Weak.** For a short duration, the target gains +1 boon on Perception and Insight checks and +1 to Resist against illusions and deception effects.
+**Strong.** As Weak. The target can also see through magical darkness within close range.
+**Critical.** As Strong. The target can see invisible creatures within close range as faint luminous outlines.
+
+> **Design Note**: Fills R1 clarity gap. Proactive perception enhancement — distinct from Moment of Clarity (R0 reactive condition removal). Core effect (Perception/Insight boon, illusion Resist, short duration) is fixed on any success. SL adds magical darkness penetration and invisible creature detection. Bridges Moment of Clarity (R0) and Clarity of Purpose (R2 dispel).
+
+### Luminous Mind
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Allies | Close | enchant (short)
+
+*You project a wave of crystalline radiance that washes through the minds of your allies, burning away confusion and leaving only diamond-sharp clarity.*
+
+**Weak.** All allies in close range gain +1 boon on Resist against all mental conditions (charmed, confused, dazed, frightened, stunned) for a short duration. Remove one mental condition from each ally.
+**Strong.** As Weak. Resist bonus increases to +2. Remove up to two mental conditions from each ally.
+**Critical.** As Strong. Allies also gain +1 boon on all Mind-based and Spirit-based skill checks for the duration.
+
+> **Design Note**: Fills R3 clarity gap. AoE mental clarity — upgrades Clarity of Purpose (R2 single-target) to affect the whole party. Core effect (Resist boon vs mental conditions, one condition removal per ally) is fixed on any success. SL adds higher Resist and more condition removal. Complements Purifying Aura (R4 necrotic/curse focus) by specializing in mental conditions.
+
+### Absolute Clarity
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Allies | Close | enchant (short)
+
+*You open your eyes and the world goes white — then resolves into absolute, terrifying clarity. Every detail is visible, every lie transparent, every illusion paper-thin. You share this transcendent perception with your allies.*
+
+**Weak.** All allies in close range gain the following for a short duration: immunity to charmed, confused, dazed, and frightened conditions; +2 to Resist against all other negative effects; all illusions and disguises within the area are automatically seen through. Any mental condition currently affecting an ally ends immediately.
+**Strong.** As Weak. Allies also gain +1 boon on all attack rolls (perfect awareness of enemy positioning) and cannot be surprised or flanked.
+**Critical.** As Strong. Allies gain +2 boons on Perception and Insight checks. Once during the duration, each ally may re-roll a failed Resist check.
+
+> **Design Note**: Fills R5 clarity capstone. The pinnacle of mental clarity — mass condition immunity, illusion penetration, and combat awareness. Core effects (condition immunity, Resist bonus, illusion transparency, condition removal) are fixed on any success. SL adds attack boons, flanking immunity, and Resist re-rolls. Distinct from Radiance of Truth (R5 truth zone — reveals hidden things and compels honesty) by focusing on mental protection and combat awareness rather than information extraction.
+
+### Mark of Judgement
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | vs. Resist | Medium | enchant (short)
+
+*You point at a creature and speak a word of divine condemnation. A glowing sigil appears on their flesh — the mark of one judged and found wanting.*
+
+**Weak.** The target is marked with divine judgement for a short duration. While marked, the target suffers +1 bane on all attack rolls. Allies attacking the marked target gain +1 boon on their attack rolls against it.
+**Strong.** As Weak. Deal +6 radiant damage when the mark is applied.
+**Critical.** As Weak. Deal +12 radiant damage. The mark also reduces the target's Resist by 2 for the duration.
+
+> **Design Note**: Fills R2 judgement gap. Support/offense hybrid — the "judge and punish" fantasy. Core effect (mark with attack bane and ally attack boon, short duration) is fixed on any success. SL adds radiant damage and Resist reduction. Bridges Radiant Rebuke (R1 reactive) and Divine Judgement (R4 direct damage) with a debuff-focused mid-rank option. The ally attack boon reinforces Light's Support role.
+
+### Righteous Condemnation
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist | Medium | —
+
+*You speak a divine condemnation, and radiant chains of light momentarily bind your target as judgement is passed.*
+
+**Weak.** Deal +8 radiant damage. The target is briefly dazed as they reel under the weight of divine condemnation. If the target is undead or a spirit, deal +12 damage instead.
+**Strong.** Deal +16 radiant damage (+24 vs undead/spirits). The target also suffers +1 bane on all rolls until the end of their next turn.
+**Critical.** Deal +24 radiant damage (+36 vs undead/spirits). The bane effect lasts for a short duration.
+
+> **Design Note**: Fills R3 judgement gap. Direct damage + debuff — continuing the judgement chain's escalation. Core effect (damage + brief daze) is fixed on any success. SL scales damage and adds/extends bane effect. The +50% anti-undead bonus continues Light's signature theme. Bridges Mark of Judgement (R2 debuff) and Divine Judgement (R4 heavy damage).
+
+### Final Judgement
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Long | —
+
+*You raise your hand toward the heavens and speak the words of final judgement. A column of searing divine radiance descends upon the condemned — an execution of light that burns the corrupt to their very essence.*
+
+**Weak.** Deal +12 radiant damage. The target is blinded for a short duration. If the target is undead or a spirit, deal +18 damage instead and the target cannot regenerate HP for a short duration.
+**Strong.** Deal +24 radiant damage (+36 vs undead/spirits). Blinded for short duration. No regeneration. The target's resistances to radiant damage are suppressed for a short duration.
+**Critical.** Deal +36 radiant damage (+54 vs undead/spirits). Blinded for short duration. No regeneration. Radiant resistances suppressed. The target is also briefly stunned by the overwhelming divine force.
+
+> **Design Note**: Fills R5 judgement capstone. The ultimate single-target divine condemnation. Standard R5 single-target damage (+12/+24/+36) with Light's signature +50% vs undead/spirits. Core effect (damage, blinding, anti-regeneration vs undead) is fixed on any success. SL scales damage and adds resistance suppression and stun. Distinct from Radiant Convergence (R5 AoE) — this is precision divine execution vs a single target.
+
+### Guiding Light
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Area | Medium | enchant (short)
+
+*You raise your hand and a sphere of warm, golden light rises into the air — a miniature sun that banishes shadows and illuminates hidden dangers.*
+
+**Weak.** Create a brilliant sphere of light at a location within medium range. The sphere illuminates a short area with bright light and an additional short area with dim light for a short duration. Magical darkness within the bright area is suppressed. All hidden creatures and invisible beings within the bright light are revealed (lose invisibility and stealth bonuses).
+**Strong.** As Weak. Allies within the bright light gain +1 boon on Perception checks. The sphere can be moved to a new location within medium range once per turn as a Quick Action.
+**Critical.** As Strong. Undead and spirits within the bright light suffer +1 bane on all rolls. The sphere emits a comforting warmth — allies within it gain +1 boon on saves vs. frightened.
+
+> **Design Note**: Fills R2 illumination gap. Battlefield illumination with tactical utility — Light's "daylight" spell equivalent. Core effect (bright light, darkness suppression, reveal hidden/invisible, short duration) is fixed on any success. SL adds Perception boon, sphere mobility, and anti-undead bane. Bridges Blessing of Light (R1 personal light) and Blessing of Dawn (R3 healing light).
+
+### Pillar of Dawn
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Area | Long | concentrate, enchant (short)
+
+*You call down a pillar of radiant dawn-light that blazes from the heavens, a beacon of divine illumination that sears the corrupt and shelters the faithful.*
+
+**Weak.** A pillar of radiant light strikes a short area within long range, lasting a short duration. The pillar illuminates a medium area around it with bright light. Within the pillar: allies gain +4 temporary HP at the start of each of your turns; undead and spirits take +5 radiant damage at the start of each of your turns. All magical darkness, illusions, and concealment within the bright area are dispelled.
+**Strong.** Temporary HP increases to +8. Undead/spirit damage increases to +10. Allies within the pillar also gain +1 boon on all saves.
+**Critical.** Temporary HP +8. Undead/spirit damage +15. +1 boon on saves. Allies who start their turn within the pillar regain +4 HP.
+
+> **Design Note**: Fills R4 illumination gap. Powerful sustained illumination with offensive and supportive effects. Core effect (bright area, temp HP, undead damage, dispel darkness/illusions) is fixed on any success. SL scales temp HP, damage, and adds save boon / healing. Concentration limits other sustained spells. Bridges Blessing of Dawn (R3 healing light) and Dawn's Embrace (R5 mass heal/illuminate).
+
+### Oath of Binding Light
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Close | ritual (10 minutes)
+
+*You invoke a sacred ritual of binding truth — divine light wraps around the participants as golden chains, sealing an oath that cannot be broken without consequence.*
+
+**Weak.** You bind up to 4 willing or compelled creatures (including yourself if desired) to a spoken oath. The oath lasts for a medium duration. If any bound creature knowingly violates the oath, they immediately suffer +10 radiant damage and the violation is sensed by all other bound creatures. The oath's terms must be clear and specific — vague or impossible conditions invalidate the binding.
+**Strong.** As Weak. Duration extends to long. Violators suffer +20 radiant damage instead and also suffer the dazed condition for a short duration.
+**Critical.** As Strong. Violators suffer +30 radiant damage instead and also have their location revealed to all bound creatures for a short duration (cannot hide or flee in secret).
+
+> **Design Note**: Fills R4 truth gap. The "geas" equivalent — a binding oath enforced by divine truth. Core effect (oath binding, violation damage, mutual awareness of betrayal, medium duration) is fixed on any success. SL scales violation damage (+10/+20/+30, matching R4 single-target progression) and adds condition / tracking penalties. Ritual casting (10 min) prevents combat use — this is a social/negotiation tool. Bridges Zone of Truth (R3 truth compulsion) and Radiance of Truth (R5 absolute revelation).
+
 ## Cross-School Spell Sharing
 
 Light's "truth" and "revelation" themes overlap with the Arcane **Illusion** discipline's detection and anti-illusion effects. Both schools deal with perceiving or stripping away deception, though from opposite philosophical angles — Light reveals truth through divine authority while Illusion understands deception through mastery of it.
@@ -235,27 +357,27 @@ Light's "truth" and "revelation" themes overlap with the Arcane **Illusion** dis
 
 ### Spell Progression Chains
 1. **Sun chain**: Dazzling Light (R0) → Sun Sphere/Radiant Weapon (R1) → Sunbeam (R2) → Solar Flare (R3) → Blinding Radiance (R4) → Radiant Convergence (R5) — **complete R0-R5**
-2. **Illumination chain**: Illuminated Sight (R0) → Blessing of Light/Locate Trinket (R1) → *gap at R2* → Blessing of Dawn (R3) → Purifying Aura (R4) → Dawn's Embrace (R5) — near-complete, R2 gap only
-3. **Truth chain**: Detect Lies (R0) → Protect from Influence (R1) → Break Curse (R2) → Zone of Truth (R3) → *gap at R4* → Radiance of Truth (R5) — near-complete, R4 gap only
-4. **Clarity chain**: Moment of Clarity (R0) → *gap at R1* → Clarity of Purpose (R2) → *gap at R3* → Purifying Aura (R4) → *gap at R5* — scattered but functional
-5. **Judgement chain**: Stern Gaze (R0) → Radiant Rebuke (R1) → *gap at R2-R3* → Divine Judgement (R4) → *gap at R5* — functional with R2-R3 gap
+2. **Illumination chain**: Illuminated Sight (R0) → Blessing of Light/Locate Trinket (R1) → Guiding Light (R2) → Blessing of Dawn (R3) → Pillar of Dawn (R4) → Dawn's Embrace (R5) — **complete R0-R5**
+3. **Truth chain**: Detect Lies (R0) → Protect from Influence (R1) → Break Curse (R2) → Zone of Truth (R3) → Oath of Binding Light (R4) → Radiance of Truth (R5) — **complete R0-R5**
+4. **Clarity chain**: Moment of Clarity (R0) → Clear Sight (R1) → Clarity of Purpose (R2) → Luminous Mind (R3) → Purifying Aura (R4) → Absolute Clarity (R5) — **complete R0-R5**
+5. **Judgement chain**: Stern Gaze (R0) → Radiant Rebuke (R1) → Mark of Judgement (R2) → Righteous Condemnation (R3) → Divine Judgement (R4) → Final Judgement (R5) — **complete R0-R5**
 
 ### Setup + Payoff Combos
-- ✅ **Reveal → Destroy**: Revealing hidden/invisible targets enables follow-up attacks with advantage. Radiance of Truth (R5) is the ultimate setup.
-- ✅ **Anti-undead chain**: Radiant Weapon (R1) → Destroy Undeath (R2) → Blinding Radiance/Divine Judgement (R4) → Radiant Convergence/Dawn's Embrace (R5) — strong escalation with dual R4 and R5 options
-- ✅ **Rebuke → Judgement**: Radiant Rebuke (R1 reactive) → Divine Judgement (R4 active) — retributive damage scales from quick reaction to deliberate condemnation
-- ⚠️ **Clarity → Buff**: Moment of Clarity removes conditions and Purifying Aura prevents them, but no explicit follow-up bonus from condition removal
-- ⚠️ **Truth → Judgement**: Zone of Truth (R3) and Radiance of Truth (R5) reveal information; Divine Judgement (R4) punishes — thematic link but no mechanical trigger
+- ✅ **Reveal → Destroy**: Revealing hidden/invisible targets enables follow-up attacks with advantage. Guiding Light (R2) → Pillar of Dawn (R4) → Radiance of Truth (R5) is the full reveal chain.
+- ✅ **Anti-undead chain**: Radiant Weapon (R1) → Destroy Undeath (R2) → Righteous Condemnation (R3) → Blinding Radiance/Divine Judgement (R4) → Radiant Convergence/Final Judgement (R5) — strong escalation with dual R4 and R5 options
+- ✅ **Rebuke → Judgement**: Radiant Rebuke (R1 reactive) → Mark of Judgement (R2 debuff) → Righteous Condemnation (R3 damage+debuff) → Divine Judgement (R4 active) → Final Judgement (R5 execution) — retributive damage scales from quick reaction to deliberate condemnation
+- ✅ **Clarity → Immunity**: Moment of Clarity (R0 condition removal) → Clear Sight (R1 perception boost) → Clarity of Purpose (R2 dispel) → Luminous Mind (R3 AoE mental protection) → Purifying Aura (R4 curse/necrotic protection) → Absolute Clarity (R5 total mental immunity) — full mental defense chain
+- ✅ **Truth → Oath**: Detect Lies (R0 sense falsehood) → Zone of Truth (R3 truth compulsion) → Oath of Binding Light (R4 binding oath) → Radiance of Truth (R5 absolute revelation) — information gathering escalates to contractual enforcement
 
 ### Design Completeness Checklist
 - [x] **R1 Quick Action**: Radiant Rebuke — standardized reactive defense (+2 Dodge/Parry, radiant damage secondary)
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 9, R2: 4, R3: 4, R4: 3, R5: 3)
-- ⚠️ Defensive options: Protect from Influence (R1) covers mental defense, Purifying Aura (R4) provides necrotic resistance — no general reactive physical defense
-- [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Locate Trinket (R1), Moment of Clarity (R0), Radiance of Truth (R5)
-- [x] Damage across ranks: R0-R5 fully covered — sun chain provides continuous damage escalation with anti-undead bonuses throughout
-- [x] Repeating conditions: Blinded, revealed, burning — consistent anti-darkness identity
-- ⚠️ Setup+payoff: Reveal → attack and anti-undead chains are strong; truth → judgement is thematic but lacks explicit mechanical triggers
-- ⚠️ **Remaining gaps**: Clarity R1/R3, Judgement R2-R3, Illumination R2, Truth R4
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 10, R2: 6, R3: 6, R4: 6, R5: 6)
+- [x] Defensive options: Protect from Influence (R1), Clear Sight (R1), Luminous Mind (R3), Purifying Aura (R4), Absolute Clarity (R5) — strong mental defense coverage
+- [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Locate Trinket (R1), Clear Sight (R1), Guiding Light (R2), Oath of Binding Light (R4), Radiance of Truth (R5)
+- [x] Damage across ranks: R0-R5 fully covered — sun chain + judgement chain provide continuous damage escalation with anti-undead bonuses throughout
+- [x] Repeating conditions: Blinded, revealed, burning, dazed — consistent anti-darkness identity
+- ✅ Setup+payoff: Reveal → attack, anti-undead chain, rebuke → judgement, clarity → immunity, truth → oath chains are all complete with explicit mechanical escalation
+- [x] **All gaps filled**: 30/30 coverage — every trait×rank slot occupied
 
 ### Impact & Trivialization Review
 - **Zone of Truth (R3)**: Moderate risk — truth compulsion is powerful in social scenes. **Mitigations**: targets can choose silence over truth, concentration required, R3 Focus cost (6) is significant. Does not replace Influence/Insight checks — it prevents lies but doesn't compel answers or cooperation. GMs can design around it (NPCs use careful truths, omission, or leave the zone).
