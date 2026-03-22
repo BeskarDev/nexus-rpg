@@ -14,10 +14,10 @@
 
 ### Design Principles
 1. Peace excels at defense and protection — sanctuary, barriers, damage sharing
-2. Travel and law are core thematic pillars but completely absent from the current spell list
+2. Travel and law are core thematic pillars — now fully represented R0-R5 with proposed spells
 3. Damage should feel defensive/deterrent rather than aggressive
-4. **Critical gaps**: "Travel" and "law" traits have zero spells at ANY rank
-5. Peace is undersized (13 spells) — needs significant expansion
+4. Selflessness emphasizes self-sacrifice costs (HP transfer, taking hits, absorbing deaths)
+5. Peace is now a full-sized school (34 spells with proposals) — expanded from 13 original
 
 ### Internal Synergies
 - **Calm → Truth**: Pacify target → calmed targets more susceptible to truth-telling
@@ -38,20 +38,24 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| calmness | Calming Influence, Tranquil Mind | Pacifying Weapon | Slow | Pacifying Presence | — | — |
-| protection | Aura of Sanctuary | Blessing of Peace, Share Harm | Dome of Sanctuary, Spell-breaking Wave | Anti-Magic Field | — | — |
-| selflessness | — | Harmonic Link | — | Martyrdom's Blessing | — | — |
-| travel | ❌ **GAP** | — | — | — | — | — |
-| law | ❌ **GAP** | — | — | — | — | — |
+| calmness | Calming Influence, Tranquil Mind | Pacifying Weapon | Slow | Pacifying Presence | ✨ Tranquil Command | ✨ Edict of Peace |
+| protection | Aura of Sanctuary | Blessing of Peace, Share Harm | Dome of Sanctuary, Spell-breaking Wave | Anti-Magic Field | ✨ Diplomatic Immunity | ✨ Sanctuary Sphere |
+| selflessness | ✨ Shared Burden | Harmonic Link, ✨ Absorb Harm | ✨ Guardian's Sacrifice | Martyrdom's Blessing | ✨ Redemptive Sacrifice | ✨ Undying Devotion |
+| travel | ✨ Wayfinder's Mark | ✨ Swift Journey | ✨ Wayfarer's Shield | ✨ Safe Passage | ✨ Pilgrim's Gate | ✨ The Pilgrim's Road |
+| law | ✨ Binding Word | ✨ Compel Truth | ✨ Binding Oath | ✨ Arbiter's Circle | ✨ Righteous Verdict | ✨ Sacred Covenant, ✨ Edict of Peace |
 
-**Coverage**: 10/30 slots filled (33%) — undersized school with two traits completely absent
+✨ = proposed new spell
 
-**Critical Gaps**:
-- **Travel**: Zero spells at ANY rank — a defining thematic pillar with no mechanical representation
-- **Law**: Zero spells at ANY rank — justice and oath enforcement entirely missing
-- **Selflessness R0, R2**: Gaps in the self-sacrifice theme
-- **All traits R4-R5**: Zero spells — Peace has no high-rank options at all
-- **Calmness/Protection R4+**: Even the strongest traits lack high-level evolution
+**Coverage**: 30/30 slots filled (100%) — all trait×rank gaps filled with proposed spells
+
+**Spell Totals (existing + proposed):**
+- R0: 3 existing + 3 proposed = 6
+- R1: 4 existing + 3 proposed = 7
+- R2: 3 existing + 3 proposed = 6
+- R3: 3 existing + 2 proposed = 5
+- R4: 0 existing + 5 proposed = 5
+- R5: 0 existing + 5 proposed = 5
+- **Total: 13 existing + 21 proposed = 34 spells**
 
 ## Proposed New Spells
 
@@ -221,6 +225,132 @@
 
 > **Design Note**: R5 law ultimate — permanent consecrated ground. The core zone effects (lie pain, binding oaths, violence suppression with short daze) are fixed on any success — SL scales damage numbers and adds secondary detection (hidden weapons, hostile magic). Ritual (1 hour) + material cost (5,000 coins) + fixed location prevent battlefield use. This is a worldbuilding spell.
 
+### Shared Burden
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | Ally | Melee | —
+
+*You press your palm against an injured ally and draw their pain into yourself, bearing the weight of their suffering so they may carry on.*
+
+**Weak.** Touch one willing creature. You take 2 damage (ignoring your AV) and the target heals 2 HP.
+**Strong.** You take 2 damage and the target heals 4 HP.
+**Critical.** You take 2 damage and the target heals 6 HP. The target also gains +1 boon on their next Fortitude check.
+
+> **Design Note**: R0 selflessness cantrip. HP transfer from ally to self — you sacrifice your own vitality to heal another. Healing follows R0 single-target scaling (+2/+4/+6). The fixed 2 self-damage (ignoring AV) is the selflessness tax — you always pay the same cost regardless of success, but divine grace amplifies the healing at higher SLs. Pairs with Absorb Harm (R1) as early selflessness options.
+
+### Compel Truth
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+1 | 2 | vs. Resist | Close | —
+
+*You speak a word of binding law, and divine authority wraps around the target's tongue. The truth becomes the only speech their lips can form.*
+
+**Weak.** One creature within close range must roll Spirit + Fortitude vs. your casting result. On failure, the target cannot speak deliberate lies for a short duration. They are aware of the compulsion and may choose silence instead.
+**Strong.** As Weak. When the target speaks truth, a faint golden glow appears around them — observers gain +1 boon on Insight checks to read the target's sincerity and intent.
+**Critical.** As Strong. If the target attempts to speak a lie, they take +4 psychic damage and the attempt is visibly painful — observers immediately know a lie was attempted.
+
+> **Design Note**: R1 law spell bridging Binding Word (R0, 2 statements) and Binding Oath (R2, ritual oath enforcement). Duration-based (short) rather than statement-limited — an escalation from the cantrip. Core truth compulsion fixed on any success — SL adds lie-detection glow and psychic punishment. The +4 psychic damage at Critical matches R1 single-target scaling. Silence remains an option at all SLs, preserving free will.
+
+### Guardian's Sacrifice
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Self | — | enchant (short)
+
+*You invoke a divine oath of protection, marking yourself as the shield for your companions. A faint golden light settles over you — an outward sign of your willingness to suffer for others.*
+
+**Weak.** For a short duration, whenever an ally within close range is targeted by an attack, you can use your reaction to become the target of that attack instead. You make your own Parry or Dodge roll against the redirected attack. While this spell is active, you gain +2 AV (situational bonus).
+**Strong.** As Weak. AV bonus increases to +3.
+**Critical.** As Strong. You also gain +1 boon on defense rolls made against redirected attacks.
+
+> **Design Note**: R2 selflessness spell. You literally become the bodyguard — attacks aimed at allies hit you instead. Distinct from Share Harm (R1, reflects damage back to attacker) in that this fully redirects the attack to you. The AV bonus makes the self-sacrifice survivable. SL scales defensive numbers, not the core redirection effect. Pairs with Martyrdom's Blessing (R3) for a selflessness progression: share pain → take hits → sacrifice for healing.
+
+### Wayfarer's Shield
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+2 | 4 | Allies | Close | enchant (medium)
+
+*You invoke the traveler's blessing, and the wind softens, the rain parts, and the road seems to smooth itself before your companions' feet.*
+
+**Weak.** Up to 4 creatures gain divine protection against the hazards of travel for a medium duration. Protected creatures gain +2 AV against environmental damage (weather, falling debris, natural hazards), cannot be swept away by currents or strong winds, and gain +1 boon on Athletics checks to traverse difficult terrain.
+**Strong.** As Weak. AV against environmental damage increases to +4. Protected creatures also gain +1 boon on Fortitude checks against exposure (heat, cold, altitude sickness).
+**Critical.** As Strong. Protected creatures also ignore movement penalties from natural terrain (snow, mud, underbrush, rocky ground) and gain +1 boon on Perception checks to spot natural hazards.
+
+> **Design Note**: R2 travel spell bridging Swift Journey (R1, speed buff) and Safe Passage (R3, full journey protection). Focuses specifically on environmental protection — weather, terrain hazards, and natural dangers. Does not increase speed (that's Swift Journey) or provide navigation (that's Wayfinder's Mark). The AV against environmental damage is a concrete defensive mechanic fitting Peace's Defense focus. SL scales AV numbers and adds secondary boons.
+
+### Arbiter's Circle
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist | Close | concentrate
+
+*You plant your feet and speak a word of divine law. A circle of faint golden light expands outward from where you stand, and all within feel the weight of cosmic truth pressing upon their tongues.*
+
+**Weak.** Create a zone of truth in a short area centered on you for a short duration while you concentrate. All creatures in the zone cannot speak deliberate lies — they are aware of the compulsion and can choose silence. Creatures that attempt to lie take +4 psychic damage.
+**Strong.** Psychic damage for lying increases to +8. Observers in the zone gain +1 boon on Insight checks to detect evasions, half-truths, and misleading omissions.
+**Critical.** Psychic damage increases to +12. Insight boon increases to +2. Magical disguises and illusions within the zone flicker visibly, granting +2 boons to detect them.
+
+> **Design Note**: R3 law spell — area truth enforcement. Bridges Compel Truth (R1, single-target) and Righteous Verdict (R4, divine judgment). Psychic damage follows R3 AoE scaling (+4/+8/+12). Core truth compulsion fixed on any success — SL scales damage and adds detection benefits. The anti-illusion effect at Critical connects law's truth theme to illusion-piercing. Concentration requirement prevents use as a "set and forget" interrogation tool.
+
+### Tranquil Command
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | concentrate
+
+*You fix your gaze upon a creature and speak a word of absolute serenity. The divine command resonates through their spirit, extinguishing fury like water drowning a flame.*
+
+**Weak.** One creature within medium range must roll Spirit + Fortitude vs. your casting result or be calmed for a short duration while you concentrate. The calmed target cannot initiate attacks, cast offensive spells, or take hostile actions. Unlike lesser calm effects, being attacked does not break this calm — only breaking line of sight to the caster or the caster losing concentration ends the effect early.
+**Strong.** As Weak. The target also takes +5 psychic damage as violent impulses are forcibly suppressed, and observers gain +1 boon on Influence checks against the calmed target.
+**Critical.** As Strong, but +10 psychic damage. The calmed target is also compelled to speak truthfully for the duration (as Compel Truth).
+
+> **Design Note**: R4 calmness capstone for single-target use. Bridges Pacifying Presence (R3, area calm) and Edict of Peace (R5, mass ceasefire). The unbreakable calm (not broken by attacks) is the key escalation from lower ranks — at this level, only concentration break or line-of-sight break can end it. Psychic damage at Strong/Critical uses AoE-level scaling (+5/+10 from the +5/+10/+15 R4 AoE pattern) because damage is secondary to the control effect. Truth compulsion at Critical creates a calmness×law synergy. Concentration requirement balances the powerful single-target lockdown.
+
+### Redemptive Sacrifice
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Ally | Melee | —
+
+*You pour your own life force into a fallen companion, divine light flowing from your hands into their broken body. The cost is terrible — but the faithful do not hesitate.*
+
+**Weak.** Touch one ally who is at 0 HP or unconscious. The ally immediately regains consciousness and heals +10 HP. You take 10 damage (ignoring your AV).
+**Strong.** The ally heals +20 HP. You take 10 damage. The ally also removes one negative condition.
+**Critical.** The ally heals +30 HP. You take 10 damage. The ally removes all negative conditions and gains +1 boon on all checks for a short duration, inspired by your devotion.
+
+> **Design Note**: R4 selflessness spell — revival through self-sacrifice. Healing follows R4 single-target scaling (+10/+20/+30). The fixed 10 self-damage (ignoring AV) is a meaningful cost that enforces the selflessness theme — you always pay the same price regardless of success level. Only works on downed allies (0 HP or unconscious), preventing use as generic healing. SL scales healing and adds condition removal. Pairs with Shared Burden (R0, small HP transfer) and Martyrdom's Blessing (R3) in the selflessness progression of escalating sacrifice.
+
+### Undying Devotion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Allies | Close | concentrate, material cost (sanctified golden cord, 5,000 coins)
+
+*You invoke the supreme rite of the selfless guardian, binding your life force to your companions with threads of golden light. As long as your heart beats, theirs will not stop.*
+
+**Weak.** For a short duration while you concentrate, up to 6 allies within a short area are bound to your life force. Whenever a bound ally would be reduced to 0 HP, they instead remain at 1 HP and you take +12 damage (ignoring your AV). If you are reduced to 0 HP by this absorbed damage, the spell ends and each bound ally receives a final burst of healing: +6 HP per ally.
+**Strong.** As Weak. Bound allies also gain +2 AV (situational bonus) for the duration. Final healing burst increases to +12 HP per ally.
+**Critical.** As Strong. AV bonus increases to +4. Final healing burst increases to +18 HP per ally. If you fall from absorbed damage, bound allies gain +1 boon on all checks for a short duration — your sacrifice inspires them to fight on.
+
+> **Design Note**: R5 selflessness ultimate — the supreme expression of self-sacrifice. You literally keep allies alive by absorbing their deaths. The final healing burst when you fall is the dramatic payoff: your devotion manifests one last time as you go down. Material cost (5,000 coins) + concentration + self-damage costs balance the extreme power of death prevention. Final burst healing uses R5 AoE scaling (+6/+12/+18). This spell tells a story in play: the healer holds the line until they can't, then falls and empowers allies for a final stand.
+
+### The Pilgrim's Road
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Area | Close | ritual (1 hour), material cost (consecrated waystone, 5,000 coins)
+
+*You walk a path and consecrate every step with divine authority. Behind you, the road transforms — stones smooth, thorns part, and a faint golden light shimmers along the trail. The road of the faithful opens for all who walk it in peace.*
+
+**Weak.** Create a consecrated divine road between your current location and a destination you have visited before, up to 100 miles away. The road lasts for a long duration. Travelers on the road: travel at double speed, gain +2 boons on Survival and Perception checks, are immune to natural weather effects (rain, heat, cold, wind), and hostile creatures that attempt violence on the road must roll Spirit + Fortitude vs. TN 16 or be dazed for a short duration.
+**Strong.** As Weak. Travelers on the road also gain +4 AV (situational bonus) against all attacks while on the road.
+**Critical.** As Strong. The road also conceals travelers from hostile detection (+2 boons on Stealth checks while on the road). Hostile creatures that fail the violence check also take +6 psychic damage from divine rebuke.
+
+> **Design Note**: R5 travel ultimate — the supreme expression of safe passage. Creates an actual divine road rather than a portal (that's Pilgrim's Gate R4). The violence suppression mechanic (daze for aggressors) fits Peace's non-violent identity. Core effects (speed, boons, weather immunity, violence daze) all fixed on any success — SL adds AV, concealment, and damage. Material cost (5,000 coins) + ritual (1 hour) prevent casual use. This completes the travel chain: Wayfinder's Mark (R0 navigation marks) → Swift Journey (R1 speed buff) → Wayfarer's Shield (R2 environmental protection) → Safe Passage (R3 hazard boons) → Pilgrim's Gate (R4 portal) → The Pilgrim's Road (R5 divine road).
+
 ## Cross-School Spell Sharing
 
 Peace does not currently share spells with any arcane discipline.
@@ -234,29 +364,35 @@ Peace does not currently share spells with any arcane discipline.
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Calmness chain**: Calming Influence/Tranquil Mind (R0) → Pacifying Weapon (R1) → Slow (R2) → Pacifying Presence (R3) → *gap at R4* → Edict of Peace (R5 proposed) — **near-complete R0-R5**
+1. **Calmness chain**: Calming Influence/Tranquil Mind (R0) → Pacifying Weapon (R1) → Slow (R2) → Pacifying Presence (R3) → Tranquil Command (R4 proposed) → Edict of Peace (R5 proposed) — **complete R0-R5**
 2. **Protection chain**: Aura of Sanctuary (R0) → Blessing of Peace/Share Harm (R1) → Dome of Sanctuary/Spell-breaking Wave (R2) → Anti-Magic Field (R3) → Diplomatic Immunity (R4 proposed) → Sanctuary Sphere (R5 proposed) — **complete R0-R5**
-3. **Selflessness chain**: *gap at R0* → Harmonic Link/Absorb Harm (R1 proposed) → *gap at R2* → Martyrdom's Blessing (R3) → *gap at R4-R5*
-4. **Travel chain**: Wayfinder's Mark (R0 proposed) → Swift Journey (R1 proposed) → *gap at R2* → Safe Passage (R3 proposed) → Pilgrim's Gate (R4 proposed) → *gap at R5* — **near-complete R0-R4**
-5. **Law chain**: Binding Word (R0 proposed) → *gap at R1* → Binding Oath (R2 proposed) → *gap at R3* → Righteous Verdict (R4 proposed) → Sacred Covenant (R5 proposed) — **near-complete R0-R5**
+3. **Selflessness chain**: Shared Burden (R0 proposed) → Harmonic Link/Absorb Harm (R1/R1 proposed) → Guardian's Sacrifice (R2 proposed) → Martyrdom's Blessing (R3) → Redemptive Sacrifice (R4 proposed) → Undying Devotion (R5 proposed) — **complete R0-R5**
+4. **Travel chain**: Wayfinder's Mark (R0 proposed) → Swift Journey (R1 proposed) → Wayfarer's Shield (R2 proposed) → Safe Passage (R3 proposed) → Pilgrim's Gate (R4 proposed) → The Pilgrim's Road (R5 proposed) — **complete R0-R5**
+5. **Law chain**: Binding Word (R0 proposed) → Compel Truth (R1 proposed) → Binding Oath (R2 proposed) → Arbiter's Circle (R3 proposed) → Righteous Verdict (R4 proposed) → Sacred Covenant/Edict of Peace (R5 proposed) — **complete R0-R5**
 
 ### Setup + Payoff Combos
-- ✅ **Calm → Truth**: Calming Influence pacifies target → calmed targets less likely to resist Binding Word truth compulsion
+- ✅ **Calm → Truth**: Calming Influence pacifies target → calmed targets less likely to resist Binding Word/Compel Truth compulsion
 - ✅ **Sanctuary chain**: Aura of Sanctuary (R0) → Dome of Sanctuary (R2) → Sanctuary Sphere (R5 proposed) provides clean defensive escalation
-- ⚠️ **Travel buffing**: Wayfinder's Mark → Swift Journey → Safe Passage → Pilgrim's Gate has good thematic progression; Pilgrim's Gate (portal travel) synergizes explicitly with Wayfinder's Mark (portal destinations)
-- ❌ **Law → Protection link**: No mechanic connecting oath enforcement or truth effects to protective spell benefits
+- ✅ **Travel buffing**: Wayfinder's Mark (R0 marks) → Swift Journey (R1 speed) → Wayfarer's Shield (R2 protection) → Safe Passage (R3 hazards) → Pilgrim's Gate (R4 portal to Wayfinder's Marks) → The Pilgrim's Road (R5 divine road) — complete thematic progression with explicit R0↔R4 synergy
+- ✅ **Law escalation**: Binding Word (R0 brief truth) → Compel Truth (R1 short truth) → Arbiter's Circle (R3 zone truth) → escalating scope of truth enforcement
+- ✅ **Selflessness progression**: Shared Burden (R0 trade HP) → Guardian's Sacrifice (R2 redirect attacks) → Redemptive Sacrifice (R4 revive fallen) → Undying Devotion (R5 prevent deaths) — escalating self-sacrifice from minor to ultimate
+- ✅ **Calm × Law crossover**: Tranquil Command (R4) forces calm AND truth at Critical — pacification enables interrogation
+- ✅ **Law → Protection link**: Diplomatic Immunity (R4) protects creatures who haven't attacked — enforces peaceful behavior through protection. Edict of Peace (R5) combines ceasefire + truth compulsion
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Absorb Harm (R1 proposed) — standardized reactive defense (+2 Dodge/Parry, ally-targeting secondary)
 - [x] Defensive options: Blessing of Peace (R1), Dome of Sanctuary (R2), Anti-Magic Field (R3), Diplomatic Immunity (R4 proposed), Sanctuary Sphere (R5 proposed) — strong defensive core through R5
-- [x] Utility: Wayfinder's Mark (R0 proposed), Swift Journey (R1 proposed), Safe Passage (R3 proposed), Pilgrim's Gate (R4 proposed) — travel pillar fully represented R0-R4
-- ⚠️ Damage across ranks: Righteous Verdict (R4 proposed), Edict of Peace (R5 backlash) — appropriate for Peace's weak offense role
+- [x] Utility: Wayfinder's Mark (R0), Swift Journey (R1), Wayfarer's Shield (R2), Safe Passage (R3), Pilgrim's Gate (R4), The Pilgrim's Road (R5) — travel pillar fully represented R0-R5
+- [x] Damage across ranks: Righteous Verdict (R4 proposed), Edict of Peace (R5 backlash), Arbiter's Circle (R3 lie damage), Tranquil Command (R4 psychic) — appropriate for Peace's weak offense role
 - [x] Repeating conditions: Dazed (pacification), charmed (calmed), protected (sanctuary)
-- [x] Law capstone chain: Binding Word (R0) → Binding Oath (R2) → Righteous Verdict (R4) → Sacred Covenant (R5) — truth and justice progression complete
-- [x] R5 diversity: Sanctuary Sphere (defensive), Edict of Peace (control/ceasefire), Sacred Covenant (permanent worldbuilding) — three distinct capstones
-- ⚠️ Setup+payoff: Calm→truth is conceptually strong but lacks an explicit mechanical bonus (calmed targets don't get a stated penalty to resisting truth effects)
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 5, R1: 6, R2: 4, R3: 4, R4: 3, R5: 3)
-- ⚠️ **Remaining gaps**: Selflessness R0/R2/R4+, Law R1/R3, Travel R2/R5
+- [x] Law capstone chain: Binding Word (R0) → Compel Truth (R1) → Binding Oath (R2) → Arbiter's Circle (R3) → Righteous Verdict (R4) → Sacred Covenant/Edict of Peace (R5) — complete R0-R5
+- [x] R5 diversity: Sanctuary Sphere (defensive), Edict of Peace (control/ceasefire), Sacred Covenant (permanent worldbuilding), Undying Devotion (selfless protection), The Pilgrim's Road (travel) — five distinct capstones
+- [x] Setup+payoff: Calm→truth (Tranquil Command R4 Critical enforces truth on calmed target), Wayfinder's Mark→Pilgrim's Gate (R0 marks become R4 portal destinations)
+- [x] **3+ spells per rank**: R0: 6, R1: 7, R2: 6, R3: 5, R4: 5, R5: 5 — met at all ranks
+- [x] **All trait×rank gaps filled**: 30/30 coverage (100%)
+- [x] **Selflessness chain complete**: R0 Shared Burden → R1 Absorb Harm → R2 Guardian's Sacrifice → R3 Martyrdom's Blessing → R4 Redemptive Sacrifice → R5 Undying Devotion
+- [x] **Travel chain complete**: R0 Wayfinder's Mark → R1 Swift Journey → R2 Wayfarer's Shield → R3 Safe Passage → R4 Pilgrim's Gate → R5 The Pilgrim's Road
+- [x] **Law chain complete**: R0 Binding Word → R1 Compel Truth → R2 Binding Oath → R3 Arbiter's Circle → R4 Righteous Verdict → R5 Sacred Covenant/Edict of Peace
 
 ### Impact & Trivialization Review
 - **Wayfinder's Mark (R0 navigation)**: Minimal risk — provides boon on navigation checks, doesn't auto-succeed. Pure assistance, not bypass.
@@ -264,3 +400,12 @@ Peace does not currently share spells with any arcane discipline.
 - **Binding Word (R0 truth compulsion)**: Moderate risk — cantrip-level truth compulsion is very accessible. **Mitigations**: only 1-3 statements, target is aware of compulsion, can choose silence over truth. Does not replace Influence/Insight checks — merely prevents lying if the target speaks. Repeated use on the same target should be subject to GM escalation (target becomes hostile, calls for help, etc.).
 - **Safe Passage (R3 overland travel)**: Moderate risk — +2 boons on travel checks and 25-50% speed increase significantly smooth overland journeys. "Cannot become lost" at Critical is the strongest effect. **Mitigations**: ritual (10 min), R3 Focus cost (6), natural terrain only (magical misdirection still works), still requires actual travel (not teleportation). GMs retain full encounter design control — Safe Passage makes the road safer, not empty.
 - **Binding Oath (R2)**: Low risk — requires willing participants, ritual, cannot be used offensively. Supernatural oath enforcement is a narrative tool, not a gameplay bypass.
+- **Shared Burden (R0 HP transfer)**: Minimal risk — cantrip-level HP transfer with self-damage cost. Net-neutral or net-negative for the party's total HP pool. The selflessness tax (you always take damage) prevents exploitation. Pure thematic utility.
+- **Compel Truth (R1 truth compulsion)**: Moderate risk — duration-based (short) truth compulsion is more potent than Binding Word (R0, 2 statements). **Mitigations**: vs. Resist save, target aware of compulsion, silence remains an option. Does not force speech — only prevents lying if the target chooses to speak. Requires Focus (2) unlike the cantrip. Psychic damage at Critical is only +4, matching R1 scaling.
+- **Guardian's Sacrifice (R2 attack redirection)**: Low risk — powerful defensive effect but self-targeting cost (you take the hits instead of allies). Requires your reaction each time, limiting action economy. AV bonus (+2/+3) is modest. Concentration on maintaining awareness of allies creates natural tactical costs.
+- **Wayfarer's Shield (R2 environmental protection)**: Low risk — protects against weather and terrain hazards only, not combat damage. Does not increase speed or provide navigation. The AV against environmental damage is situational and doesn't affect normal combat encounters. Fills a specific niche between Swift Journey (speed) and Safe Passage (full journey protection).
+- **Arbiter's Circle (R3 zone of truth)**: Moderate risk — area truth enforcement is powerful for social encounters. **Mitigations**: concentration (can be broken), short area (short range centered on caster), creatures can still choose silence, and it doesn't compel speech. Psychic damage for lying (+4/+8/+12) follows AoE scaling and creates consequences but doesn't prevent all deception (omission, misleading truth). Concentration prevents simultaneous combat casting.
+- **Tranquil Command (R4 unbreakable calm)**: Moderate risk — single-target calm that can't be broken by attacks is very strong for removing one enemy from combat. **Mitigations**: concentration requirement (caster must maintain focus), line-of-sight requirement (can be broken by cover), vs. Resist save, single-target only (unlike Edict of Peace R5). The calm still allows self-defense — the target can Dodge/Parry. This is Peace's signature single-target lockdown at the appropriate rank for such power.
+- **Redemptive Sacrifice (R4 ally revival)**: Low risk — powerful revival but restricted to downed allies (0 HP/unconscious). The fixed 10 self-damage cost is meaningful at any level. Does not exceed R4 healing scaling (+10/+20/+30). Cannot be used as combat healing on standing allies — only revives the fallen.
+- **Undying Devotion (R5 death prevention)**: High risk — preventing ally deaths is extremely powerful. **Mitigations**: material cost (5,000 coins) severely limits use frequency, concentration can be broken, caster absorbs +12 damage per prevented death (unsustainable for more than a few), caster's own death ends the spell immediately. The spell creates a dramatic countdown: the caster absorbs death after death until they fall. Balanced by economy, concentration, and self-destruction. Comparable in power to other R5 capstones (Sacred Covenant, Sanctuary Sphere).
+- **The Pilgrim's Road (R5 divine road)**: Moderate risk — doubled travel speed and weather immunity are potent but don't bypass travel encounters. **Mitigations**: ritual (1 hour) prevents combat use, material cost (5,000 coins) limits frequency, destination must be previously visited, road follows physical terrain (not a portal). Violence suppression on the road is identical to other Peace effects (save or daze). GMs can still place encounters along the road — the travelers are protected, not invisible. The concealment at Critical (+2 Stealth boons) helps avoid encounters but doesn't guarantee it.
