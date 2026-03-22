@@ -211,7 +211,7 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | Area | Close | ritual (1 hour), material cost (500 coins)
+5 | 10 | Area | Close | ritual (1 hour), material cost (5,000 coins)
 
 *You perform an elaborate consecration ritual, inscribing divine law into the very stone and air of a location. The space shimmers with faint golden light, and all who enter feel the weight of cosmic truth pressing upon their tongues and hearts.*
 
@@ -219,7 +219,7 @@
 **Strong.** Lie-detection damage increases to +6. Oath-breaking consequences are enhanced (as per Binding Oath Critical effect). The zone also reveals hidden weapons (glow faintly to all observers).
 **Critical.** Lie-detection damage +8. Enhanced oaths. Hidden weapons and concealed hostile magic are revealed. Creatures that initiate violence are dazed for a short duration and prone.
 
-> **Design Note**: R5 law ultimate — permanent consecrated ground. The core zone effects (lie pain, binding oaths, violence suppression with short daze) are fixed on any success — SL scales damage numbers and adds secondary detection (hidden weapons, hostile magic). Ritual (1 hour) + material cost (500 coins) + fixed location prevent battlefield use. This is a worldbuilding spell.
+> **Design Note**: R5 law ultimate — permanent consecrated ground. The core zone effects (lie pain, binding oaths, violence suppression with short daze) are fixed on any success — SL scales damage numbers and adds secondary detection (hidden weapons, hostile magic). Ritual (1 hour) + material cost (5,000 coins) + fixed location prevent battlefield use. This is a worldbuilding spell.
 
 ## Cross-School Spell Sharing
 

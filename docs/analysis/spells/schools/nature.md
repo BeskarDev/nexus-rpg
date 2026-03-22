@@ -98,7 +98,7 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | Very Hard TN | Close | concentrate, material cost (300 coins)
+5 | 10 | Very Hard TN | Close | concentrate, material cost (5,000 coins)
 
 *You pour primal energy into the earth itself. Trees uproot and walk, stones grind into motion, and the land answers your call — not as a single conjured servant, but as the living terrain awakening around you.*
 

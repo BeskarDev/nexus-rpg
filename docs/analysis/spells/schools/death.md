@@ -223,7 +223,7 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | Very Hard TN | Medium | concentrate, material cost (500 coins)
+5 | 10 | Very Hard TN | Medium | concentrate, material cost (5,000 coins)
 
 *You perform a solemn rite of convergence, inviting the honored dead to merge their power with the living. A host of ancestral spirits descends, each binding to an ally and granting them the strength and knowledge of the fallen.*
 
@@ -274,5 +274,5 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 - **Pestilence (R4 AoE plague)**: Moderate risk — AoE poison + healing block is very strong in combat. **Mitigations**: concentration required, short area, damage at half single-target scaling (+5/+10/+15). The healing block is Death's signature but can be cleansed by Life tradition magic.
 - **Ancestral Judgment (R4 anti-undead)**: Low risk — single-target damage with condition. Mirrors Light's Blinding Radiance with necrotic flavor. Daze/stun are standard R4 conditions.
 - **Death's Dominion (R5 avatar)**: High risk — immunity to necrotic/poison + auto-raising undead is very powerful. **Mitigations**: concentration (can be broken), brief/short duration, risen undead are temporary and low-tier, R5 Focus cost (10). The transformation is dramatic but time-limited — not a permanent state.
-- **Ancestral Convergence (R5 empowerment)**: Moderate risk — buffing up to 4 allies with +2 attribute rolls and +2 AV is a powerful party-wide enhancement. **Mitigations**: material cost (500 coins), concentration required, short duration, spirit bonus type (doesn't stack with other spirit bonuses). The empowerment approach is thematically distinct from Necromancy's forced servitude.
+- **Ancestral Convergence (R5 empowerment)**: Moderate risk — buffing up to 4 allies with +2 attribute rolls and +2 AV is a powerful party-wide enhancement. **Mitigations**: material cost (5,000 coins), concentration required, short duration, spirit bonus type (doesn't stack with other spirit bonuses). The empowerment approach is thematically distinct from Necromancy's forced servitude.
 - **Commune with Ancestors (R1 spirit guidance)**: Moderate risk — information from the dead could shortcut investigation scenes. **Mitigations**: ritual (10 min) prevents combat use, answers are GM-mediated and can be cryptic, limited to what the dead would know, only 1-2 questions per casting.

@@ -104,11 +104,11 @@
 
 *You close your fist and telekinetic force crushes around a target.*
 
-**Weak.** Deal +2 physical damage. The target is briefly slowed as crushing pressure restricts their movement.
+**Weak.** Deal +2 physical damage. The target is briefly slowed.
 **Strong.** Deal +4 physical damage. The target is briefly slowed.
-**Critical.** Deal +6 physical damage. The target is briefly restrained by the crushing force.
+**Critical.** Deal +6 physical damage. The target is briefly slowed and suffers +1 bane on their next attack roll.
 
-> **Design Note**: Fills R0 crush gap. The primary crush condition (slowed — movement restriction from pressure) is reliable on any success. SL scales damage, with restrained as a Critical bonus. Slowed at R0 is appropriate for a no-Focus cantrip; restrained is reserved for Critical to prevent free-cantrip lockdown every turn.
+> **Design Note**: R0 crush cantrip. Slowed is the primary condition — reliable on any success. SL scales damage and adds a secondary bane at Critical. Does NOT escalate to restrained (reserved for higher-rank spells).
 
 ### Gravity Shift
 
@@ -118,11 +118,11 @@
 
 *You alter the pull of gravity on a creature or object, making it briefly lighter or heavier.*
 
-**Weak.** Target one creature or object. Increase or decrease its effective weight by half for a brief duration. Heavier: target's movement is reduced by 1. Lighter: target can jump twice as far.
-**Strong.** Increase or decrease weight more dramatically. Heavier: target's movement is reduced by 2 and they can't jump. Lighter: target gains +1 movement.
-**Critical.** Extreme weight alteration. Heavier: target is briefly prone as gravity pins them. Lighter: target gains +2 movement and ignores difficult terrain for a brief duration.
+**Effect.** On a success, choose one target within close range. Apply one of the following effects for a short duration:
+- **Heavier**: The target's movement is reduced by 2 and they cannot jump.
+- **Lighter**: The target can jump twice as far and gains +1 boon on Athletics checks to climb or jump.
 
-> **Design Note**: Fills R0 gravity gap. Versatile utility with both offensive (heavy) and supportive (light) options.
+> **Design Note**: R0 gravity cantrip. Utility spell with two modes — no SL scaling for the primary effect. Movement modification is predictable and reliable.
 
 ### Gravity Reversal
 
@@ -160,9 +160,9 @@
 
 *You encase a creature in a sphere of concentrated telekinetic force that slowly crushes inward.*
 
-**Weak.** One creature is restrained for a short duration as the sphere closes around them. At the start of each of their turns, they take +3 physical damage (crush). They can attempt to escape (Strength + Athletics vs. your casting result) at the end of each of their turns.
-**Strong.** As Weak, but damage increases to +6 per turn.
-**Critical.** As Weak, but damage increases to +9 per turn and escape attempts suffer +1 bane.
+**Weak.** Target is restrained for a short duration. At the start of each of their turns, they take +3 physical damage from the crushing force. The target can roll Strength + Athletics vs. TN 10 to escape.
+**Strong.** As above, but crushing damage is +6 per turn.
+**Critical.** As above, but crushing damage is +9 per turn.
 
 > **Design Note**: Fills R2 crush gap. The primary condition (restrained for short duration) is fixed on any success — SL scales crushing damage. Escape is always possible, and concentration is required. Pairs well with Telekinetic Crush (R1) as a setup → payoff chain.
 
@@ -174,11 +174,11 @@
 
 *You thrust your hands outward and an invisible wall of pure telekinetic force materializes, blocking passage and deflecting attacks.*
 
-**Weak.** Create an impassable wall of telekinetic force up to close area in length and 3 meters tall within close range. The wall lasts for a short duration while you concentrate. Creatures and projectiles cannot pass through it. The wall is invisible but shimmers faintly when struck.
-**Strong.** The wall lasts for a short duration and can be shaped (curved, angled, or circular). Ranged attacks that strike the wall are deflected harmlessly. Creatures pushed against the wall take +4 physical damage from the impact.
-**Critical.** The wall lasts for a medium duration. Creatures pushed against it take +6 physical damage. You can create openings in the wall at will, allowing selective passage for allies.
+**Weak.** Create a wall of telekinetic force in a short line at medium range. The wall blocks movement and line of sight. It has 30 HP and 6 AV. Creatures pushed into the wall take +4 physical damage.
+**Strong.** As above, but the wall has 40 HP and creatures pushed into it take +8 physical damage.
+**Critical.** As above, but the wall has 50 HP and creatures pushed into it take +12 physical damage.
 
-> **Design Note**: R3 defensive/control spell. Creates tactical battlefield division — fits "repel" trait. Concentration prevents stacking multiple walls. Pairs with Kinetic Push/Shockwave to push enemies into the wall for bonus damage.
+> **Design Note**: R3 defensive telekinetic barrier. Wall durability and push damage scale by SL. Duration is fixed at short — no SL escalation.
 
 ### Telekinetic Storm
 

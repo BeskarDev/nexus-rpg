@@ -129,7 +129,7 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | Touch | Melee | ritual (8 hours), material cost (2,000 coins)
+5 | 10 | Touch | Melee | ritual (8 hours), material cost (5,000 coins)
 
 *You perform an all-day ritual of immense spiritual power, calling a soul back from the realm of the dead. The body is restored and the spirit returns.*
 

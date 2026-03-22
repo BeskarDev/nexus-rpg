@@ -83,7 +83,7 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | Very Hard TN | Close | concentrate, material cost (200 coins)
+5 | 10 | Very Hard TN | Close | concentrate, material cost (5,000 coins)
 
 *You channel massive necrotic energy into the ground, raising a host of spectral warriors from the realm of the dead.*
 
@@ -91,7 +91,7 @@
 **Strong.** As Weak. The spectral warriors are empowered — each deals +2 bonus necrotic damage on their attacks. You can command them as a group with a single mental command (no action required).
 **Critical.** As Strong. Bonus necrotic damage increases to +4. When a spectral warrior is destroyed, it explodes in a burst of necrotic energy, dealing +4 necrotic damage to all creatures within melee range (vs. Dodge).
 
-> **Design Note**: R5 capstone — army summoning. Warrior count (4) and duration (short) are fixed on any success — the army is reliable. SL scales the warriors' combat effectiveness (bonus damage, death burst) rather than their numbers. This is NOT a bigger version of Spectral Army (R3) — Spectral Army summons temporary phantoms for distraction and harassment, while Army of Shadows creates empowered warriors with scaling necrotic abilities. Concentration limits total minion output, and the material cost adds resource pressure.
+> **Design Note**: R5 capstone — army summoning. Warrior count (4) and duration (short) are fixed on any success — the army is reliable. SL scales the warriors' combat effectiveness (bonus damage, death burst) rather than their numbers. This is NOT a bigger version of Spectral Army (R3) — Spectral Army summons temporary phantoms for distraction and harassment, while Army of Shadows creates empowered warriors with scaling necrotic abilities. Concentration limits total minion output, and the material cost (5,000 coins) adds resource pressure.
 
 ### Soul Harvest
 
@@ -111,7 +111,7 @@
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
-5 | 10 | Very Hard TN | Close | ritual (1 hour), material cost (500 coins)
+5 | 10 | Very Hard TN | Close | ritual (1 hour), material cost (5,000 coins)
 
 *You perform an elaborate ritual of binding over a suitable corpse, pouring necrotic energy and precious reagents into it. The dead rises not as a shambling thrall, but as a powerful, permanent servant — bound to your will for eternity.*
 
@@ -119,7 +119,7 @@
 **Strong.** As Weak. The undead has enhanced durability (+20 HP) and can follow complex standing orders and act semi-independently within those parameters.
 **Critical.** As Strong. The undead also retains fragments of its former skills and knowledge. It can act independently within your broad directives and makes tactical decisions in combat.
 
-> **Design Note**: R5 undeath capstone — permanent high-tier undead creation. The undead tier (Tier 4) is fixed on any success — SL scales durability and intelligence rather than raw power tier. The 1-hour ritual, 500-coin material cost, and single target prevent casual use. Only one instance at a time (recasting on a new corpse releases the previous servant). Culmination of the undeath chain: Animate Corpse (R1) → Animate Horde (R2) → Spectral Army (R3) → Death's Embrace (R4) → Eternal Servitude (R5).
+> **Design Note**: R5 undeath capstone — permanent high-tier undead creation. The undead tier (Tier 4) is fixed on any success — SL scales durability and intelligence rather than raw power tier. The 1-hour ritual, 5,000-coin material cost, and single target prevent casual use. Only one instance at a time (recasting on a new corpse releases the previous servant). Culmination of the undeath chain: Animate Corpse (R1) → Animate Horde (R2) → Spectral Army (R3) → Death's Embrace (R4) → Eternal Servitude (R5).
 
 ## Cross-School Spell Sharing
 
