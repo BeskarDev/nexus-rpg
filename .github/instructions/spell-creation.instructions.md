@@ -13,7 +13,7 @@
 
 ### Spell Rank Statistics
 
-| Rank | Focus | TN | Single | AoE (R2+ = ½ single) | Range | Duration | Area | Power Level |
+| Rank | Focus | TN | Single | AoE (R2+ = ½ single-target) | Range | Duration | Area | Power Level |
 |------|-------|-----|--------|-----|-------|----------|------|-------------|
 | 0 | 0 | 6 | +2/+4/+6 | +0/+2/+4 | Medium | Brief-Short | Melee-Close | Cantrips (≈D&D 0) |
 | 1 | 2 | 8 | +4/+8/+12 | +2/+4/+6 | Medium | Short-Medium | Close-Short | Basic (≈D&D 1-2) |

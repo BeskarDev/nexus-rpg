@@ -100,9 +100,9 @@
 ---|---|---|---|---
 0 | 0 | Medium TN | Close | —
 
-*You conjure a tiny, semi-translucent servant of arcane energy — barely visible, shaped vaguely like a small humanoid figure — to perform simple tasks.*
+*You conjure a tiny, barely-visible servant of arcane energy — shaped vaguely like a small humanoid figure — to perform simple tasks.*
 
-**Effect.** On a success, conjure an invisible arcane servant that lasts for a short duration. The servant can perform simple manual tasks: carry objects up to 5 load, open unlocked doors, hold items, clean surfaces, or fetch nearby unattended objects within close range. It has 1 HP, no combat capability, and cannot attack or be used as a shield. It moves at your command but cannot travel beyond close range from you.
+**Effect.** On a success, conjure an invisible arcane servant that lasts for a short duration. The servant can perform simple manual tasks: carry objects up to 5 load, open unlocked doors, hold items, clean surfaces, or fetch nearby unattended objects within close range. It has 1 HP, no combat capability, and cannot attack or be used as a shield. It moves at your command but cannot travel beyond close range from you. The servant is invisible but can be detected with a Perception check vs. your casting result.
 
 > **Design Note**: R0 creatures cantrip, modeled on D&D's Unseen Servant. No SL escalation — one predictable utility effect. The servant provides minor convenience but cannot replace skill checks, carry heavy loads, or contribute in combat.
 
