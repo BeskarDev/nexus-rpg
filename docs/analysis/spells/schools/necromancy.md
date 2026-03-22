@@ -39,20 +39,15 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| decay | Enfeebling Grasp | Grasp of Decay, Ray of Lethargy | Shroud of Blight | Wither, Curse of Mortality | — | — |
-| undeath | Necromantic Sight | Animate Corpse, Control Undead | Animate Horde | Spectral Army, Negative Energy Flood | Death's Embrace | — |
-| siphoning | Drain Life, Soul Drain | Death Bolt | Bone Shatter, Corpse Explosion | Reaper's Harvest | — | — |
-| defilement | Life Echo | Necrotic Shield, Death Ward | Inflict Curse, Death Mark | Soul Prison | Finger of Death* | — |
-| puppetry | — | Bone Armor | Soul Veil | — | — | — |
+| decay | Enfeebling Grasp | Grasp of Decay, Ray of Lethargy | Shroud of Blight | Wither, Curse of Mortality | Necrotic Plague | Entropy |
+| undeath | Necromantic Sight | Animate Corpse, Control Undead | Animate Horde | Spectral Army, Negative Energy Flood | Death's Embrace | Army of Shadows, Eternal Servitude |
+| siphoning | Drain Life, Soul Drain | Death Bolt | Bone Shatter, Corpse Explosion | Reaper's Harvest | Soul Cage | Soul Harvest |
+| defilement | Life Echo | Necrotic Shield, Death Ward | Inflict Curse, Death Mark | Soul Prison | Finger of Death | Desecration |
+| puppetry | Ghostly Hand | Bone Armor | Soul Veil | Marionette | Possess Corpse | Eternal Servitude |
 
-*Asterisk = incomplete spell*
+**Coverage** (existing + proposed): 30/30 slots filled (100%) — all traits fully represented across all ranks
 
-**Coverage**: 23/30 slots filled (77%) — best-in-class among all schools. Model for trait coverage.
-
-**Minor Gaps**:
-- **Puppetry R0, R3+**: Corpse/skeleton manipulation under-represented at low and high ranks
-- **All traits R5**: No R5 capstone — even the gold-standard school needs a legendary finisher
-- **Decay R4**: No advanced decay effect at high rank
+**Remaining Gaps**: No remaining gaps — 100% coverage
 
 ## Proposed Spell Changes
 
@@ -121,6 +116,104 @@
 
 > **Design Note**: R5 undeath capstone — permanent high-tier undead creation. The undead tier (Tier 4) is fixed on any success — SL scales durability and intelligence rather than raw power tier. The 1-hour ritual, 5,000-coin material cost, and single target prevent casual use. Only one instance at a time (recasting on a new corpse releases the previous servant). Culmination of the undeath chain: Animate Corpse (R1) → Animate Horde (R2) → Spectral Army (R3) → Death's Embrace (R4) → Eternal Servitude (R5).
 
+### Ghostly Hand
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+0 | 0 | vs. Dodge | Close | —
+
+*You extend a spectral hand from your own, a translucent claw of necrotic energy that grasps and manipulates at a distance.*
+
+**Weak.** Manipulate one unattended object within close range as though you were touching it — open a latch, turn a page, pull a lever, pick up a small item. The hand is visible as a ghostly appendage.
+**Strong.** As above. You can also deal +2 necrotic damage to a creature by grasping them briefly (vs. Dodge).
+**Critical.** As above with +4 necrotic damage. The grasped creature is briefly slowed as necrotic cold seeps into them.
+
+> **Design Note**: Fills R0 puppetry gap. Minor telekinetic manipulation through necromantic spectral hand — the puppetry theme at its simplest level. Core effect (object manipulation at range) is reliable on any success. SL adds damage and the slowed condition. Distinct from Telekinetics' Weak Telekinesis by using a visible necrotic hand rather than invisible force.
+
+### Necrotic Plague
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | concentrate
+
+*You unleash a wave of necrotic corruption that rots flesh and weakens the body, spreading decay to all nearby enemies.*
+
+**Weak.** All creatures in a medium area take +5 necrotic damage and are briefly weakened (suffer +1 bane on Strength and Agility rolls). The area becomes tainted — creatures that start their turn in the area take +2 necrotic damage.
+**Strong.** Initial damage increases to +10. The weakened condition lasts for a short duration instead of briefly.
+**Critical.** Initial damage increases to +15. Weakened for short duration. Tainted area damage increases to +4 per turn.
+
+> **Design Note**: Fills R4 decay gap. AoE decay at half single-target scaling (+5/+10/+15 for R4 multi-target). Core effect (AoE necrotic damage, weakened, persistent area) is reliable on any success — SL scales damage and condition duration. Concentration limits other sustained effects.
+
+### Entropy
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Long | concentrate
+
+*You channel the fundamental force of entropy itself — the inevitable decay that claims all things. Everything within your target area begins to crumble, rust, rot, and fall apart as time accelerates toward ruin.*
+
+**Weak.** All creatures in a medium area take +6 necrotic damage per turn for a short duration. All equipment worn by affected creatures must make a Durability check at the start of each turn. The area itself decays — wooden structures rot, stone cracks, metal rusts. Magical barriers lose 4 HP per turn.
+**Strong.** Necrotic damage increases to +12 per turn. Equipment suffers +1 bane on Durability checks. Structures in the area take double structural damage.
+**Critical.** Necrotic damage increases to +18 per turn. Equipment Durability checks automatically fail on the first turn. All ongoing magical effects in the area (barriers, enchantments, wards) are suppressed for the duration.
+
+> **Design Note**: R5 decay capstone. AoE damage follows R5 scaling (+6/+12/+18). The anti-equipment and anti-structure effects represent ultimate entropy — everything decays. Core effect (per-turn necrotic damage, Durability checks, structural damage) is reliable on any success — SL scales damage and Durability check difficulty. Concentration limits other sustained effects. Distinct from Death's Dominion (R5 personal transformation) and Army of Shadows (R5 summons) as a pure environmental destruction spell.
+
+### Soul Cage
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist | Medium | —
+
+*You reach out with necrotic tendrils and tear at a creature's life essence, attempting to cage a portion of their soul within a spectral prison that feeds you power.*
+
+**Weak.** Deal +10 necrotic damage. You siphon life force from the target, regaining HP equal to half the damage dealt. The target is briefly dazed as their soul partially separates.
+**Strong.** Deal +20 necrotic damage with the same HP recovery (half damage dealt). The target is briefly stunned instead of dazed.
+**Critical.** Deal +30 necrotic damage with the same HP recovery. The target is stunned for a short duration. For the remainder of the encounter, you deal +2 bonus necrotic damage against the targeted creature (soul link).
+
+> **Design Note**: Fills R4 siphoning gap. Single-target damage at R4 scaling (+10/+20/+30) with life drain recovery. The self-healing is the siphoning gimmick — selfish arcane "healing" through exploitation. Dazed/stunned conditions are reliable on any success — SL scales from dazed to stunned and adds the soul link damage bonus at Critical.
+
+### Marionette
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist | Medium | concentrate
+
+*You lash spectral strings of necrotic energy to a creature's limbs, seizing control of their body like a puppet on strings. The target's eyes go vacant as you force them to move and act against their will.*
+
+**Weak.** Take control of one creature's physical actions for a short duration (concentrate). On each of your turns, you can force the target to move up to their full movement and take one Action (attack, interact, etc.). The target is aware of what is happening but cannot resist physically. The target can attempt a Spirit + Fortitude check vs. TN 12 at the end of each of their turns to break free.
+**Strong.** As above, and the target suffers +1 bane on their escape checks. You can also force the target to use abilities (but not cast spells).
+**Critical.** As above with +2 banes on escape checks. The target takes +4 psychic damage at the start of each of their turns from the strain of puppetry.
+
+> **Design Note**: Fills R3 puppetry gap. Body control through spectral strings — the quintessential puppetry spell. Core effect (full body control, short duration, escape check each turn) is reliable on any success — SL adds escape difficulty and psychic damage. Concentration means the caster must dedicate their focus to maintaining control. Distinct from Telepathy's mind control (which dominates will) — Necromancy's puppetry controls the body directly, leaving the mind aware but helpless.
+
+### Possess Corpse
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Very Hard TN | Touch | concentrate
+
+*You pour your consciousness into a corpse, animating it from within. Your original body falls inert as your awareness inhabits the dead flesh — you see through its eyes, move its limbs, and speak with its tongue.*
+
+**Weak.** You possess a corpse for a short duration. Your body falls unconscious and is vulnerable. The corpse rises and acts on your initiative using your mental attributes (Mind, Spirit) but the corpse's physical attributes (Strength, Agility). You can cast spells through the corpse. If the corpse is destroyed, your consciousness returns to your body. You retain your skills and talents.
+**Strong.** As above. The corpse gains +10 temporary HP and resistance to physical damage (reduce by 2) from necrotic reinforcement.
+**Critical.** As above with +20 temporary HP and resistance to physical (reduce by 4). The corpse also gains +1 boon on Intimidation-related Influence checks (unnerving possessed dead).
+
+> **Design Note**: Fills R4 puppetry gap. Body-hopping into a corpse — the ultimate puppetry expression. Core effect (consciousness transfer, short duration, corpse uses your Mind/Spirit) is reliable on any success — SL scales the corpse's durability. The vulnerability of the original body provides meaningful tactical risk. Concentration limits other sustained effects. Distinct from Shadowform (Twilight R5 incorporeal infiltration) — this is about using a dead body as a vessel, not becoming intangible.
+
+### Desecration
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Very Hard TN | Medium | concentrate, material cost (5,000 coins)
+
+*You pour overwhelming necrotic energy into the ground, corrupting the very earth. A zone of absolute defilement spreads outward — the soil blackens, plants wither, and the boundary between life and death thins to nothing within the defiled area.*
+
+**Weak.** Create a desecrated zone in a medium area for a short duration. Within the zone: all healing effects are halved, undead creatures gain +2 to all rolls, living creatures suffer +1 bane on Fortitude rolls. Corpses within the zone spontaneously rise as Tier 1 undead under your control (maximum 4 at a time).
+**Strong.** As above. Undead bonus increases to +3. Living creatures also take +4 necrotic damage at the start of each turn. You can raise up to 6 corpse-undead.
+**Critical.** As above. Undead bonus increases to +4 and they gain +10 temporary HP. Living creature per-turn damage increases to +6. Corpse-undead raised are Tier 2 instead of Tier 1.
+
+> **Design Note**: R5 defilement capstone. Zone of corruption that flips the battlefield in favor of undead. Core effect (healing halved, undead buffed, living debuffed, auto-raise corpses) is reliable on any success — SL scales bonuses and necrotic damage. Concentration and 5,000-coin material cost balance the massive zone effect. Combines with Army of Shadows (R5 summons) and Eternal Servitude (R5 permanent servant) to provide three distinct R5 capstone strategies: mass summon, elite permanent servant, or battlefield domination.
+
 ## Cross-School Spell Sharing
 
 **No sharing recommended with Death tradition.**
@@ -134,20 +227,21 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Decay chain**: Enfeebling Grasp (R0) → Grasp of Decay/Ray of Lethargy (R1) → Shroud of Blight (R2) → Wither/Curse of Mortality (R3) → *gap at R4-R5*
-2. **Undeath chain**: Necromantic Sight (R0) → Animate Corpse/Control Undead (R1) → Animate Horde (R2) → Spectral Army/Negative Energy Flood (R3) → Death's Embrace (R4) → Army of Shadows/Eternal Servitude (R5 proposed) — **complete R0-R5**
-3. **Siphoning chain**: Drain Life/Soul Drain (R0) → Death Bolt (R1) → Bone Shatter/Corpse Explosion (R2) → Reaper's Harvest (R3) → *gap at R4* → Soul Harvest (R5 proposed)
-4. **Defilement chain**: Life Echo (R0) → Necrotic Shield/Death Ward (R1) → Inflict Curse/Death Mark (R2) → Soul Prison (R3) → Finger of Death (R4 proposed complete) → *gap at R5*
-5. **Puppetry chain**: *gap at R0* → Bone Armor (R1) → Soul Veil (R2) → *gap at R3-R5* — weakest chain
+1. **Decay chain**: Enfeebling Grasp (R0) → Grasp of Decay/Ray of Lethargy (R1) → Shroud of Blight (R2) → Wither/Curse of Mortality (R3) → Necrotic Plague (R4) → Entropy (R5) — **complete R0-R5**
+2. **Undeath chain**: Necromantic Sight (R0) → Animate Corpse/Control Undead (R1) → Animate Horde (R2) → Spectral Army/Negative Energy Flood (R3) → Death's Embrace (R4) → Army of Shadows/Eternal Servitude (R5) — **complete R0-R5**
+3. **Siphoning chain**: Drain Life/Soul Drain (R0) → Death Bolt (R1) → Bone Shatter/Corpse Explosion (R2) → Reaper's Harvest (R3) → Soul Cage (R4) → Soul Harvest (R5) — **complete R0-R5**
+4. **Defilement chain**: Life Echo (R0) → Necrotic Shield/Death Ward (R1) → Inflict Curse/Death Mark (R2) → Soul Prison (R3) → Finger of Death (R4) → Desecration (R5) — **complete R0-R5**
+5. **Puppetry chain**: Ghostly Hand (R0) → Bone Armor (R1) → Soul Veil (R2) → Marionette (R3) → Possess Corpse (R4) → Eternal Servitude (R5) — **complete R0-R5**
 
 ### Setup + Payoff Combos
 - ✅ **Slay → Corpse Explosion**: Defeat enemy → detonate corpse for AoE — the model gameplay loop
 - ✅ **Death Mark → bonus damage**: Mark target → all subsequent attacks deal enhanced damage
 - ✅ **Summon → Control**: Animate Corpse → Control Undead upgrades minion quality
 - ✅ **Drain → Shield**: Life siphoning fuels Necrotic Shield self-protection
-- ✅ **Kill → Soul Harvest**: Soul Harvest (R5 proposed) rewards the kill cycle with HP recovery and spell power — the ultimate siphoning payoff
+- ✅ **Kill → Soul Harvest**: Soul Harvest (R5) rewards the kill cycle with HP recovery and spell power — the ultimate siphoning payoff
 - ✅ **Undeath chain capstones**: Army of Shadows (mass temporary summons) vs. Eternal Servitude (single permanent elite) provides meaningful R5 choice
-- ⚠️ **Puppetry synergy**: Bone Armor and Soul Veil exist but don't connect to the core slay→exploit cycle
+- ✅ **Puppetry escalation**: Ghostly Hand (R0 spectral manipulation) → Bone Armor (R1 corpse defense) → Soul Veil (R2 soul concealment) → Marionette (R3 body control) → Possess Corpse (R4 consciousness transfer) → Eternal Servitude (R5 permanent servant) — complete puppetry fantasy from spectral hands to full body possession
+- ✅ **Desecration + undead combo**: Desecration (R5 zone) + Army of Shadows/Eternal Servitude — desecrated zone buffs all undead while debuffing living enemies, the ultimate necromancer battlefield
 
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Death Ward (R1) — reactive protective ward
@@ -155,8 +249,8 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 > **Review Note**: Death Ward should be evaluated for alignment with the standardized R1 reactive defense pattern (base +2 Dodge/Parry, school-specific secondary, no SL scaling).
 - [x] Defensive options: Bone Armor (R1), Necrotic Shield (R1), Death Ward (R1) — strong triple coverage
 - [x] Utility: Necromantic Sight (R0), Life Echo (R0), Soul Veil (R2)
-- [x] Damage across ranks: R0-R4 fully covered; R5 Army of Shadows provides offense through summons, Soul Harvest rewards kills with self-healing
-- [x] Repeating conditions: Stunned, paralyzed, bleeding, poisoned, life drain — widest condition variety
-- [x] Setup+payoff: Slay→corpse, mark→bonus, drain→shield, kill→Soul Harvest — best-in-class synergy loops
-- [x] **3 spells per rank minimum**: Met at R0-R3 and R5 (R0: 5, R1: 8, R2: 7, R3: 6, R4: 2, R5: 3). R4 has 2 — needs one more spell
-- ⚠️ **Remaining gaps**: Puppetry R0/R3+, Decay R4-R5, Siphoning R4, Defilement R5, R4 needs one more spell for 3-per-rank
+- [x] Damage across ranks: R0-R5 fully covered — Soul Cage (R4 siphoning), Necrotic Plague (R4 AoE), Finger of Death (R4 burst), Entropy (R5 AoE), Army of Shadows (R5 summons)
+- [x] Repeating conditions: Stunned, paralyzed, bleeding, poisoned, weakened, dazed, life drain — widest condition variety
+- [x] Setup+payoff: Slay→corpse, mark→bonus, drain→shield, kill→Soul Harvest, Desecration+undead — best-in-class synergy loops
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 8, R2: 7, R3: 7, R4: 5, R5: 5)
+- [x] **All trait×rank slots filled**: 30/30 coverage — all 5 trait chains complete R0-R5

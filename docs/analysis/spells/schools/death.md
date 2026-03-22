@@ -42,12 +42,11 @@
 | curses | Minor Hex | Curse of Death | Curse of Frailty | Mark of Doom | Greater Curse | Inexorable Doom |
 | fear | Glimpse of Mortality | Early Grave, Shivering Ray | Dread Presence | Death's Door | Visage of the Reaper | Pall of the Grave |
 | decay | Decay, Chill Touch, Enfeebling Touch | Necrotic Weapon, Rotting Grasp, Blood Shards | Circle of Death | Grave's Bloom | Wither | Death's Dominion |
-| ancestry | Spared from Death | Commune with Ancestors | Ancestral Guardian | — | Ancestral Judgment | Ancestral Convergence |
+| ancestry | Spared from Death | Commune with Ancestors | Ancestral Guardian | Speak with Dead | Ancestral Judgment | Ancestral Convergence |
 
-**Coverage** (existing + proposed): 29/30 slots filled (97%) — all traits complete except ancestry R3
+**Coverage** (existing + proposed): 30/30 slots filled (100%) — all traits fully represented across all ranks
 
-**Remaining Gap**:
-- **Ancestry R3**: No mid-rank ancestral spell — low priority as the ancestry chain (R0→R1→R2→R4→R5) provides sufficient coverage
+**Remaining Gaps**: No remaining gaps — 100% coverage
 
 ## Proposed New Spells
 
@@ -132,6 +131,20 @@
 **Critical.** +1 boon on the next three rolls. Fear/charm save bonus. The guardian can also absorb the first 4 points of damage the target takes.
 
 > **Design Note**: Fills R2 ancestry gap. Ancestral protection and guidance — a support spell that fits Death's communal ancestor theme. Limited boon charges prevent over-stacking.
+
+### Speak with Dead
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Medium TN | Touch | ritual (10 minutes)
+
+*You lay your hand upon a corpse and call its spirit back briefly, asking it to share what it knew in life.*
+
+**Weak.** You animate the mouth of a corpse that has been dead for up to one month. You may ask it up to three questions. The spirit answers truthfully from its knowledge at the time of death, but answers are brief (one or two sentences). The spirit cannot speculate or reveal information it did not possess in life.
+**Strong.** As above. Answers are more detailed and the spirit offers relevant context it considers important. You may ask up to four questions.
+**Critical.** As above with four questions. The spirit also shares one piece of information it considers vital, even if unasked. You gain +1 boon on your next roll related to the information received.
+
+> **Design Note**: Fills R3 ancestry gap. Classic "speak with dead" effect — the Death tradition respectfully communes with the departed (distinct from Necromancy's forced interrogation). Core effect (three questions, truthful answers) is reliable on any success — SL adds detail and question count. Ritual requirement prevents combat use. Complements Commune with Ancestors (R1 vague ancestral guidance) with more specific, targeted questioning of a particular deceased individual.
 
 ### Spreading Contagion
 
@@ -346,12 +359,12 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 2. **Curses chain**: Minor Hex (R0) → Curse of Death (R1) → Curse of Frailty (R2) → Mark of Doom (R3) → Greater Curse (R4) → Inexorable Doom (R5) — **complete R0-R5**
 3. **Fear chain**: Glimpse of Mortality (R0) → Early Grave/Shivering Ray (R1) → Dread Presence (R2) → Death's Door (R3) → Visage of the Reaper (R4) → Pall of the Grave (R5) — **complete R0-R5**
 4. **Decay chain**: Decay/Chill Touch/Enfeebling Touch (R0) → Necrotic Weapon/Rotting Grasp/Blood Shards (R1) → Circle of Death (R2) → Grave's Bloom (R3) → Wither (R4) → Death's Dominion (R5) — **complete R0-R5**
-5. **Ancestry chain**: Spared from Death (R0) → Commune with Ancestors (R1) → Ancestral Guardian (R2) → *gap at R3* → Ancestral Judgment (R4) → Ancestral Convergence (R5) — near-complete, R3 gap only
+5. **Ancestry chain**: Spared from Death (R0) → Commune with Ancestors (R1) → Ancestral Guardian (R2) → Speak with Dead (R3) → Ancestral Judgment (R4) → Ancestral Convergence (R5) — **complete R0-R5**
 
 ### Setup + Payoff Combos
 - ✅ **Poison → Decay → Plague**: Miasma (R0 poison) → Festering Wound (R1 enhanced vs. poisoned) → Spreading Contagion (R3 spreading disease) → Pestilence (R4 AoE plague) → Plague Wind (R5 mass devastation) — the complete plague escalation
 - ✅ **Curse stacking**: Minor Hex (R0 bane) → Curse of Death (R1 HP/healing) → Curse of Frailty (R2 AV reduction) → Mark of Doom (R3 damage vulnerability) → Greater Curse (R4 attribute drain) → Inexorable Doom (R5 all-in-one) — each curse targets a different defensive layer, compounding into devastating debilitation
-- ✅ **Ancestry chain**: Commune with Ancestors (R1 information) → Ancestral Guardian (R2 protection) → Ancestral Judgment (R4 offense) → Ancestral Convergence (R5 empowerment) — ancestors serve as advisors, protectors, judges, and empowerers of the living
+- ✅ **Ancestry chain**: Commune with Ancestors (R1 information) → Ancestral Guardian (R2 protection) → Speak with Dead (R3 specific interrogation) → Ancestral Judgment (R4 offense) → Ancestral Convergence (R5 empowerment) — ancestors serve as advisors, protectors, witnesses, judges, and empowerers of the living
 - ✅ **Fear → curse synergy**: Pall of the Grave (R5 mass fear) inflicts bonus necrotic damage when frightened creatures fail saves against other Death spells — combine with Curse of Frailty/Mark of Doom for devastating curse-fear combos
 - ✅ **Death mastery**: Death's Dominion (R5 avatar transformation) + Pestilence (R4 AoE plague) — kill with plague, raise the dead, unstoppable capstone combo
 - ✅ **Wither → Plague Wind**: Wither (R4 ongoing decay + halved healing) → Plague Wind (R5 mass poison + halved healing) — healing suppression stacks thematically across single-target and AoE
@@ -365,7 +378,7 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 - [x] Repeating conditions: Poisoned, frightened, cursed (bane/AV/vulnerability debuff), dazed, stunned, staggered — strong condition variety
 - [x] Setup+payoff: Poison → decay, curse stacking (five ranks of escalating curses), fear → curse synergy via Pall of the Grave — all chains are strong and explicit
 - [x] R5 capstone diversity: Death's Dominion (decay avatar), Plague Wind (mass plague), Ancestral Convergence (party empowerment), Inexorable Doom (ultimate curse), Pall of the Grave (mass fear) — five distinct tactical roles
-- [x] **All major trait×rank slots filled**: 29/30 coverage — only ancestry R3 remains (low priority)
+- [x] **All trait×rank slots filled**: 30/30 coverage — all 5 trait chains complete R0-R5
 
 ### Impact & Trivialization Review
 - **Curse of Frailty (R2 AV reduction)**: Low risk — -2 AV is meaningful but modest. **Mitigations**: vs. Resist save, single target, singular property, short duration. Standard debuff for R2 power level.
