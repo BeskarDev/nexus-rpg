@@ -38,20 +38,13 @@
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| moon | Night's Grasp | Moon Sphere, Lunar Weapon, Moonlight Ward | Moonbeam | Moonfire | Eclipse | — |
-| dreams | Whispers of Doubt | Whisper of Dreams | Terrors of the Dark | Nightmare Realm | — | Dream Realm |
-| secrets | Dark Sight, Shadow Veil | Shadow Meld, Cloak of Night, Shadow Veil (QA) | Silent Night, Everlasting Night | — | — | Shadowform |
-| fate | Thread of Fate | Curse of Twilight | Fate's Web | — | Prophecy | Fate's Decree |
-| illusion | Obscuring Veil | Haunting Shadows | Aura of Fear, Shadow Step, Twilight Bind | Shadow Clone | Embrace of Night | — |
+| moon | Night's Grasp | Moon Sphere, Lunar Weapon, Moonlight Ward | Moonbeam | Moonfire | Eclipse | Lunar Apotheosis |
+| dreams | Whispers of Doubt | Whisper of Dreams | Terrors of the Dark | Nightmare Realm | Dreamwalking | Dream Realm |
+| secrets | Dark Sight, Shadow Veil | Shadow Meld, Cloak of Night, Shadow Veil (QA) | Silent Night, Everlasting Night | Shadow Passage | Veil of Secrets | Shadowform |
+| fate | Thread of Fate | Curse of Twilight | Fate's Web | Twist of Fate | Prophecy | Fate's Decree |
+| illusion | Obscuring Veil | Haunting Shadows | Aura of Fear, Shadow Step, Twilight Bind | Shadow Clone | Embrace of Night | Phantom World |
 
-**Coverage** (existing + proposed): 24/30 slots filled (80%) — strong across all ranks
-
-**Remaining Gaps**:
-- **Moon R5**: No capstone lunar spell
-- **Dreams R4**: No R4 dream spell
-- **Secrets R3-R4**: No mid/high-rank shadow manipulation
-- **Fate R3**: Gap between R2 and R4
-- **Illusion R5**: No capstone illusion spell
+**Coverage** (existing + proposed): 30/30 slots filled (100%) — all trait×rank gaps filled
 
 ## Proposed New Spells
 
@@ -191,7 +184,91 @@
 **Strong.** As Weak. Additionally, the enemy takes +8 psychic damage from the strain of fate twisting against them, or the ally gains +4 temporary HP from fate's favor.
 **Critical.** As Weak. Enemy takes +16 psychic damage and suffers +1 bane on Resist checks for the duration. Ally gains +8 temporary HP and +1 boon on their next save.
 
-> **Design Note**: R5 fate capstone. The core probability rewrite (one-step shift on all success levels) is fixed on any success — SL scales psychic damage/temp HP and adds secondary modifiers. Concentration limits other sustained effects. The "once per turn" limit on ally improvements prevents runaway stacking. Culmination of Thread of Fate (R0) → Fate's Web (R2) → Prophecy (R4) → Fate's Decree (R5).
+> **Design Note**: R5 fate capstone. The core probability rewrite (one-step shift on all success levels) is fixed on any success — SL scales psychic damage/temp HP and adds secondary modifiers. Concentration limits other sustained effects. The "once per turn" limit on ally improvements prevents runaway stacking. Culmination of Thread of Fate (R0) → Fate's Web (R2) → Twist of Fate (R3) → Prophecy (R4) → Fate's Decree (R5).
+
+### Lunar Apotheosis
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | Self | Self | concentrate
+
+*You draw upon the full power of the moon, becoming an avatar of lunar energy. Your skin turns silver, your eyes glow with cold white light, and moonbeams radiate from your form.*
+
+**Weak.** For a short duration, you gain: your melee attacks deal an additional +4 frost damage, you emit bright light in close range (revealing invisible creatures), you gain resistance to psychic and frost damage (reduce by 4), and you can use a Quick Action each turn to fire a moonbeam at a target within medium range (vs. Dodge, +6 frost damage, target is briefly slowed).
+**Strong.** All Weak benefits. Moonbeam damage increases to +12. You also gain +2 to all defenses (Parry, Dodge, Resist) from the lunar aura.
+**Critical.** All Weak and Strong benefits. Moonbeam damage increases to +18. Creatures slowed by your moonbeam are also briefly blinded by the radiance.
+
+> **Design Note**: Fills the R5 moon gap. Lunar transformation — duration is fixed at short on any success. SL scales moonbeam damage and adds secondary defenses/blinding. Distinct from Eclipse (R4 darkness zone) — Lunar Apotheosis is the LIGHT of the moon unleashed, while Eclipse blocks light. Completes the moon chain: Night's Grasp (R0) → Moon Sphere/Lunar Weapon (R1) → Moonbeam (R2) → Moonfire (R3) → Eclipse (R4) → **Lunar Apotheosis (R5)**.
+
+### Dreamwalking
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | vs. Resist (willing: auto) | Long | ritual (10 minutes)
+
+*You project your consciousness through the dream world, entering the dreams of a sleeping creature or sending messages across vast distances through the shared dreamscape.*
+
+**Weak.** You enter the dream of one sleeping creature within long range. You can observe the dream and communicate with the dreamer for a short duration. The dreamer perceives you as a dream figure and can converse freely. Willing creatures accept your presence automatically; unwilling creatures can resist.
+**Strong.** As above. You can also shape minor elements of the dream environment (create scenery, show images, replay memories) to communicate complex ideas. You gain +1 boon on Influence or Insight rolls made within the dream.
+**Critical.** As Strong. You can also implant a suggestion in the dreamer's mind — a single course of action they feel compelled to consider (but not forced to obey) upon waking. The suggestion fades after a medium duration.
+
+> **Design Note**: Fills the R4 dreams gap. Dream entry and communication are the core effect — reliable on any success. SL adds dream shaping and suggestion (not compulsion — the dreamer can freely reject). Ritual (10 minutes) prevents combat use. Builds: Whisper of Dreams (R1 sleep) → Terrors of the Dark (R2 nightmare) → Nightmare Realm (R3 group nightmare) → **Dreamwalking (R4 dream communication)** → Dream Realm (R5 shared dreamscape).
+
+### Shadow Passage
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | Hard TN (12) | Long | —
+
+*You step into one shadow and emerge from another, traveling through the twilight realm that connects all darkness.*
+
+**Weak.** You teleport from your current area of dim light or darkness to another area of dim light or darkness within long range that you can see or have visited before. You can bring one willing creature you are touching.
+**Strong.** As above, and you can bring up to 3 willing creatures you are touching. Upon arrival, all transported creatures are briefly invisible (until they attack or cast a spell).
+**Critical.** As Strong, and you can bring up to 5 willing creatures. Briefly invisible on arrival. You can also teleport to an area of shadow you have visited before, even if you cannot currently see it (within long range).
+
+> **Design Note**: Fills the R3 secrets gap. Teleportation between shadows is the core effect — reliable on any success. SL adds passenger capacity and brief invisibility. Builds on Shadow Step (R2 short-range solo shadow teleport) with increased range and group transport. Builds: Shadow Meld (R1) → Shadow Step (R2) → **Shadow Passage (R3)** → Veil of Secrets (R4) → Shadowform (R5).
+
+### Veil of Secrets
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+4 | 8 | Hard TN (14) | Medium | concentrate
+
+*You weave a dense shroud of twilight magic over an area, concealing everything within from all forms of detection — sight, sound, scrying, and divination.*
+
+**Weak.** A close area within medium range is shrouded in a veil of twilight for a short duration. Creatures and objects within the veil are invisible and inaudible to those outside. Divination and scrying magic cannot perceive anything within the veil. Creatures within the veil can see and hear each other normally.
+**Strong.** As above. The veil also suppresses magical tracking — creatures within cannot be located by magical means. Allies inside gain +2 boons on Stealth rolls against creatures outside.
+**Critical.** As Strong. The veil extends to a short area. You can also make the veil mobile, centered on yourself, moving with you for the duration.
+
+> **Design Note**: Fills the R4 secrets gap. Area concealment from all detection is the core effect — reliable on any success. SL adds anti-tracking and expanded area/mobility. Utility-focused (Twilight excels at Utility). Distinct from Shadowform (R5 personal shadow transformation) — Veil of Secrets protects a group or location.
+
+### Twist of Fate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+3 | 6 | vs. Resist (ally: auto) | Medium | —
+
+*You seize the threads of fate and violently twist them, forcing fortune to shift in a single decisive moment.*
+
+**Weak.** Choose one creature within medium range. After the target makes their next roll (within a short duration), you force them to reroll and take the new result. Enemy (vs. Resist): you choose which result they must use. Ally: they choose which result to keep. Deal +4 psychic damage to an enemy target from the disorienting wrench of fate.
+**Strong.** Deal +8 psychic damage (enemy). As above, and the forced reroll imposes +1 bane (enemy) or grants +1 boon (ally).
+**Critical.** Deal +12 psychic damage (enemy). As above, and the target is briefly dazed (enemy) or gains +2 temporary HP (ally) from fate's turbulence.
+
+> **Design Note**: Fills the R3 fate gap. The forced reroll is the core effect — reliable on any success. SL scales damage to enemies and adds secondary bane/boon/daze. Damage follows control-primary scaling (+4/+8/+12). Builds: Thread of Fate (R0 glimpse) → Fate's Web (R2 boon/bane aura) → **Twist of Fate (R3 forced reroll)** → Prophecy (R4 vision) → Fate's Decree (R5 success level shift).
+
+### Phantom World
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+5 | 10 | vs. Resist | Long | concentrate
+
+*You weave a grand illusion of such scope and complexity that it replaces reality itself for those within. The world around your targets shifts — walls move, terrain changes, companions become enemies, and enemies vanish.*
+
+**Weak.** You create a grand illusion in a medium area within long range for a short duration. Within this area, you control what all creatures see, hear, and feel. You can create illusory terrain (walls, pits, fire), hide real features, and disguise creatures. Hostile creatures that interact with the illusion can roll Spirit + Perception vs. your Resist to see through it. While they believe the illusion, creatures treat illusory terrain and threats as real. Creatures that believe illusory hazards (fire, pits) take +6 psychic damage (ignoring AV) when "harmed" by them.
+**Strong.** Psychic damage from illusory hazards increases to +12. As above, and creatures that fail to see through the illusion suffer +1 bane on all attacks against real targets (confused by false positions).
+**Critical.** Psychic damage from illusory hazards increases to +18. As Strong, and you can perfectly disguise up to 4 allies as other creatures or make them appear invisible within the illusion.
+
+> **Design Note**: R5 illusion capstone. Grand illusory environment is the core effect — reliable on any success. SL scales psychic damage from illusory hazards and adds secondary deception (attack bane, ally disguise). Distinct from Shadowform (R5 personal shadow transformation) — Phantom World reshapes the perceived battlefield. AoE psychic damage follows R5 scaling (+6/+12/+18). Concentration limits other sustained effects.
 
 ## Cross-School Spell Sharing
 
@@ -210,30 +287,39 @@ Twilight's "illusion" trait overlaps significantly with the Arcane **Illusion** 
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Moon chain**: Night's Grasp (R0) → Moon Sphere/Lunar Weapon/Moonlight Ward (R1) → Moonbeam (R2) → Moonfire (R3) → Eclipse (R4) → *gap at R5* — near-complete
-2. **Dreams chain**: Whispers of Doubt (R0) → Whisper of Dreams (R1) → Terrors of the Dark (R2) → Nightmare Realm (R3) → *gap at R4* → Dream Realm (R5) — near-complete, R4 gap only
-3. **Secrets chain**: Dark Sight/Shadow Veil (R0) → Shadow Meld/Cloak of Night/Shadow Veil QA (R1) → Silent Night/Everlasting Night (R2) → *gap at R3-R4* → Shadowform (R5) — strong ends, weak middle
-4. **Fate chain**: Thread of Fate (R0) → Curse of Twilight (R1) → Fate's Web (R2) → *gap at R3* → Prophecy (R4) → Fate's Decree (R5) — near-complete, R3 gap only
-5. **Illusion chain**: Obscuring Veil (R0) → Haunting Shadows (R1) → Aura of Fear/Shadow Step/Twilight Bind (R2) → Shadow Clone (R3) → Embrace of Night (R4) → *gap at R5* — near-complete
+1. **Moon chain**: Night's Grasp (R0) → Moon Sphere/Lunar Weapon/Moonlight Ward (R1) → Moonbeam (R2) → Moonfire (R3) → Eclipse (R4) → Lunar Apotheosis (R5) — **complete R0-R5**
+2. **Dreams chain**: Whispers of Doubt (R0) → Whisper of Dreams (R1) → Terrors of the Dark (R2) → Nightmare Realm (R3) → Dreamwalking (R4) → Dream Realm (R5) — **complete R0-R5**
+3. **Secrets chain**: Dark Sight/Shadow Veil (R0) → Shadow Meld/Cloak of Night/Shadow Veil QA (R1) → Silent Night/Everlasting Night (R2) → Shadow Passage (R3) → Veil of Secrets (R4) → Shadowform (R5) — **complete R0-R5**
+4. **Fate chain**: Thread of Fate (R0) → Curse of Twilight (R1) → Fate's Web (R2) → Twist of Fate (R3) → Prophecy (R4) → Fate's Decree (R5) — **complete R0-R5**
+5. **Illusion chain**: Obscuring Veil (R0) → Haunting Shadows (R1) → Aura of Fear/Shadow Step/Twilight Bind (R2) → Shadow Clone (R3) → Embrace of Night (R4) → Phantom World (R5) — **complete R0-R5**
 
 ### Setup + Payoff Combos
-- ✅ **Darkness → shadow advantage**: Create darkness with Everlasting Night/Eclipse → Twilight spells and Stealth benefit within shadow areas. Eclipse (R4) is the ultimate darkness zone.
+- ✅ **Darkness → shadow advantage**: Create darkness with Everlasting Night/Eclipse → Twilight spells and Stealth benefit within shadow areas. Shadow Passage (R3) enables tactical repositioning through darkness zones. Eclipse (R4) is the ultimate darkness zone.
 - ✅ **Fear → vulnerability**: Frightened targets (Aura of Fear, Haunting Shadows) are easier to hit and control
-- ✅ **Fate → probability → decree**: Thread of Fate (R0 glimpse) → Fate's Web (R2 probability nudge) → Prophecy (R4 future vision) → Fate's Decree (R5 rewrite destiny) — clear escalation chain
-- ⚠️ **Dream → waking control**: Nightmare Realm (R3) creates nightmares and Dream Realm (R5) traps in dreams, but no mechanic connecting dream-state effects to waking targets
+- ✅ **Fate → probability → decree**: Thread of Fate (R0 glimpse) → Fate's Web (R2 probability nudge) → Twist of Fate (R3 forced reroll) → Prophecy (R4 future vision) → Fate's Decree (R5 rewrite destiny) — clear five-step escalation chain
+- ✅ **Dream → waking control**: Nightmare Realm (R3 nightmares in combat) → Dreamwalking (R4 dream communication/suggestion) → Dream Realm (R5 shared dreamscape) — dreams progress from combat terror to utility/social tool
+- ✅ **Shadow → infiltration**: Shadow Meld (R1 invisibility) → Shadow Step (R2 short teleport) → Shadow Passage (R3 long group teleport) → Veil of Secrets (R4 area concealment) → Shadowform (R5 incorporeal form) — complete infiltration toolkit
+- ✅ **Lunar → radiant offense**: Night's Grasp (R0 frost) → Moonbeam (R2 frost zone) → Moonfire (R3 radiant + reveal) → Eclipse (R4 frost zone + fear) → Lunar Apotheosis (R5 frost transformation + moonbeam attacks)
 
 ### Design Completeness Checklist
 - [x] **R1 Quick Action**: Shadow Veil — standardized reactive defense (+2 Dodge/Parry, stealth boon secondary)
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 9, R2: 8, R3: 3, R4: 3, R5: 3)
-- [x] Defensive options: Shadow Veil (R1 evasion), Moonlight Ward (R1 resistance) — good dual coverage
-- [x] Utility: Dark Sight (R0), Thread of Fate (R0), Shadow Meld (R1), Shadow Step (R2), Prophecy (R4), Shadowform (R5)
-- [x] Damage across ranks: Night's Grasp (R0) → Moonbeam (R2) → Moonfire (R3) → Eclipse (R4) — R1 and R5 damage gaps (Moon Sphere is utility, R5 spells are utility/control focused)
-- [x] Repeating conditions: Slowed, frightened, invisible — consistent shadow/fear identity
-- ⚠️ Setup+payoff: Darkness → advantage and Fate → probability chains are strong; dream → waking lacks explicit mechanical link
-- ⚠️ **Remaining gaps**: Secrets R3-R4, Dreams R4, Moon R5, Illusion R5, R5 dedicated damage spell
+- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 9, R2: 8, R3: 5, R4: 5, R5: 5)
+- [x] Defensive options: Shadow Veil (R1 evasion), Moonlight Ward (R1 resistance), Veil of Secrets (R4 area concealment) — good coverage
+- [x] Utility: Dark Sight (R0), Thread of Fate (R0), Shadow Meld (R1), Shadow Step (R2), Shadow Passage (R3), Dreamwalking (R4), Prophecy (R4), Veil of Secrets (R4), Shadowform (R5) — excellent utility suite (Twilight excels at Utility)
+- [x] Damage across ranks: Night's Grasp (R0) → Moonbeam (R2) → Moonfire (R3) → Eclipse (R4) → Lunar Apotheosis/Phantom World (R5) — complete damage chain
+- [x] Repeating conditions: Slowed, frightened, invisible, blinded, dazed — consistent shadow/fear/moon identity
+- [x] Setup+payoff: Darkness → shadow advantage, Fate → probability escalation, Shadow → infiltration toolkit, Dream → combat-to-utility progression — all chains strong and explicit
+- [x] R5 capstone diversity: Lunar Apotheosis (moon transformation), Dream Realm (shared dreamscape), Shadowform (incorporeal infiltration), Fate's Decree (probability rewrite), Phantom World (grand illusion) — five distinct tactical roles
+- [x] **All trait×rank slots filled**: 30/30 coverage — no remaining gaps
 
 ### Impact & Trivialization Review
 - **Thread of Fate (R0 divination)**: Low risk — GM-mediated, deliberately vague at weak success (one-word hint). Provides intuitive nudge, not a roadmap. Does not bypass investigation or decision-making.
+- **Twist of Fate (R3 forced reroll)**: Moderate risk — forcing a reroll is powerful action economy manipulation. **Mitigations**: single target, one reroll per casting, vs. Resist for enemies, short duration window. The forced reroll is a gamble, not guaranteed — you might get a better result, or not.
+- **Shadow Passage (R3 group teleport)**: Moderate risk — group teleportation could bypass obstacles. **Mitigations**: requires dim light/darkness at both ends, long range limit, needs line of sight or prior visit, no combat advantage beyond positioning. Extends Shadow Step logically.
+- **Dreamwalking (R4 dream entry)**: Moderate risk — dream suggestion could shortcut social encounters. **Mitigations**: ritual (10 min) prevents combat use, suggestion is not compulsion (target can freely reject), only affects sleeping creatures, vs. Resist for unwilling targets. The suggestion is a nudge, not a command.
+- **Veil of Secrets (R4 area concealment)**: Moderate risk — undetectable hiding zone is very strong for infiltration. **Mitigations**: concentration required, close area only (small zone), short duration, stationary by default (mobile only at Critical). Anti-divination is the niche — physical searchers can still walk into the area.
+- **Lunar Apotheosis (R5 transformation)**: High risk — frost transformation with Quick Action moonbeam attacks is strong offense. **Mitigations**: concentration required, R5 Focus cost (10), short duration, moonbeam is vs. Dodge (can miss), frost damage has common resistances. The defense bonus only at Strong+ and blinding only at Critical prevent the spell from doing everything well at once.
+- **Phantom World (R5 grand illusion)**: High risk — controlling what everyone perceives in a medium area is extremely powerful. **Mitigations**: concentration required, R5 Focus cost (10), creatures can save (Spirit + Perception vs. Resist) when interacting, psychic damage is the only real harm (no physical effects), short duration. Creatures that see through it are immune. The illusion replaces perception but doesn't create physical reality.
 - **Prophecy (R4 divination)**: Moderate risk — extended future visions could shortcut planning. **Mitigations**: ritual (1 hour) prevents combat use, visions are symbolic and require interpretation, GM controls detail level, boon bonuses are modest (+1). Provides leads and preparation bonuses, not certainty.
 - **Shadowform (R5 incorporeality)**: High risk — physical damage immunity and wall-passing is extremely powerful. **Mitigations**: concentration required, cannot cast spells or deal physical damage, brief/short duration only, R5 Focus cost (10). Cannot be used as an invincible combat form — it is an infiltration/escape tool.
 - **Fate's Decree (R5 probability rewrite)**: Moderate risk — reducing enemy success levels is very strong. **Mitigations**: concentration required, single target, vs. Resist for enemies, ally benefits capped at once per turn. R5 Focus cost ensures this is a capstone investment.
