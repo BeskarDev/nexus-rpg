@@ -322,7 +322,7 @@ export const glossary: GlossaryEntry[] = [
 	{
 		term: 'Armor Value (AV)',
 		summary:
-			'A protective value from worn armor that reduces incoming damage from attacks.',
+			'A protective value from worn armor subtracted from incoming attack damage (damage cannot be reduced below 1).',
 		origin: 'Equipment',
 		link: '/docs/combat/attacking#damage',
 	},
@@ -487,7 +487,7 @@ export const glossary: GlossaryEntry[] = [
 	{
 		term: 'Damage',
 		summary:
-			'Harm dealt by attacks, calculated as half attribute + weapon damage × Success Level, minus Armor Value.',
+			'Harm dealt by attacks, calculated as half attribute + weapon damage (×1/×2/×3 by Success Level), minus Armor Value (minimum 1).',
 		origin: 'Combat',
 		link: '/docs/combat/attacking#damage',
 	},
