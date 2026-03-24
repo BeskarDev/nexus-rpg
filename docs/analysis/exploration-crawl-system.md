@@ -1,29 +1,28 @@
 # Hex & Point Crawl Exploration — Design Analysis
 
-This document proposes a hex/point crawl procedure for Nexus RPG, built on the existing [Challenge System](../06-scenes/07-challenges/00-overview.md) and [Scene & Time Scale Procedures](../06-scenes/01-scenes-time-intervals.md). It operates at the **Exploration time scale** (2–4 hours per action) and provides a structured game loop for open-map adventuring — exploring unknown regions, discovering hidden locations, and navigating uncharted territory.
+This document proposes a hex/point crawl procedure for Nexus RPG, built on the existing [Challenge System](../06-scenes/07-challenges/00-overview.md) and [Scene & Time Scale Procedures](../06-scenes/01-scenes-time-intervals.md). It operates at the **Exploration time scale** (~4 hours per turn) and provides a lightweight game loop for open-map adventuring — exploring unknown regions, discovering hidden locations, and navigating uncharted territory.
 
-Where the [Travel System](../06-scenes/07-challenges/02-travel.md) handles **journeys between known destinations** (daily time scale, route-based), this system handles **freeform exploration of unmapped areas** (hourly time scale, discovery-based).
+Where the [Travel System](../06-scenes/07-challenges/02-travel.md) handles **journeys between known destinations** (daily time scale, role-based), this system handles **freeform exploration of unmapped areas** (turn-based, player-driven).
 
 ---
 
 ## Design Goals
 
-- Provide a **structured game loop** for open-map exploration that keeps every player engaged each "turn" (2–4 hours of in-game time).
-- Use the existing **dice timer** and **event table** framework from the [Scene & Time Scale Procedures](../06-scenes/01-scenes-time-intervals.md) to generate events and pacing.
-- Integrate with the **Challenge System** for goal-oriented exploration (finding a lost ruin, tracking a creature to its lair).
-- Distinguish clearly from the **Travel System**: exploration is about discovery and uncertainty, not progress toward a known destination.
+- Provide a **turn-based exploration loop** where each player chooses an action each turn, mirroring the structure of combat or dungeon delves.
+- Emphasize **player agency**: each character decides what to do — move, search, scout, forage, hunt — rather than being locked into a role.
+- Use a **day clock** to track time of day, including two night turns, and trigger events.
+- Keep the procedure **lightweight**: movement costs turns, not rolls. Only searching, scouting, and survival actions require checks.
 - Support both **hex crawl** (gridded map with terrain hexes) and **point crawl** (node-and-path map) formats.
-- Keep overhead low: the GM needs a map, a few tables, and the standard dice.
 
 ---
 
 ## When to Use These Rules
 
-Use this exploration procedure for **freeform movement through unknown or partially known regions** at the 2–4 hour time scale.
+Use this exploration procedure for **freeform movement through unknown or partially known regions** at the ~4-hour time scale.
 
 **Use for:**
 - Exploring uncharted wilderness, ruins, or island chains
-- Searching a region for a hidden location (lost temple, bandit camp, dragon's lair)
+- Searching a region for a hidden location (lost tomb, raider camp, beast's lair)
 - Aimless or investigative movement where the destination is unknown
 - Sandbox play where players choose their own direction
 
@@ -38,551 +37,608 @@ Use this exploration procedure for **freeform movement through unknown or partia
 
 ### Hex Crawl vs. Point Crawl
 
-Both formats work with the same procedure. The only difference is map structure.
+Both formats use the same procedure. The only difference is map structure.
 
-**Hex Crawl**
-- The region is divided into hexes, each representing a few miles across.
-- Each hex has a terrain type and may contain a point of interest.
-- Moving to an adjacent hex costs one exploration action (2–4 hours).
-- The party can move in any direction.
+| Format | Structure | Best For |
+|--------|-----------|----------|
+| **Hex Crawl** | Region divided into hexes (~6 miles / 10 km across). Each hex has a terrain type and may hold a location. Party moves in any direction. | Wide-open wilderness with many possible routes |
+| **Point Crawl** | Network of named locations connected by paths. Each path has a terrain type and length (1–2 turns). Movement follows connections. | Regions shaped by geography (river valleys, mountain passes) or tighter narrative control |
 
-**Point Crawl**
-- The region is a network of named locations (points) connected by paths.
-- Each path has a terrain type and an estimated travel time (one or more exploration actions).
-- Movement follows paths between connected points.
-- Simpler to prepare; better for regions with clear routes and chokepoints.
+### The Day Clock
 
-> **Which should I use?** Use a hex crawl for wide-open wilderness with many possible routes. Use a point crawl for regions shaped by geography (river valleys, mountain passes, archipelagos) or when you want tighter narrative control over possible paths.
+A day of exploration is divided into **six watches**, tracked by a **d6 placed on the table** as a shared clock visible to all players. Each watch represents roughly 4 hours. The clock advances by 1 each time the party completes a turn.
 
-### The Exploration Action
+| Clock | Watch | Notes |
+|:-----:|-------|-------|
+| **1** | Morning | First turn of the day |
+| **2** | Midday | Second turn |
+| **3** | Afternoon | Third turn |
+| **4** | Evening | Fourth turn — party should camp |
+| **5** | Before Midnight | Night turn. All rolls suffer +1 bane |
+| **6** | After Midnight | Night turn. All rolls suffer +1 bane |
 
-Each exploration action represents **2–4 hours** of in-game time — roughly one stretch of a day. A typical day of exploration allows **3 actions** before the party must make camp (morning, afternoon, evening), with a fourth possible if the party pushes into the night.
+**Camping.** The party should take the Camp action on turn 4 (Evening). Each night turn taken without camping inflicts **1 Fatigue** on every adventurer.
 
-Actions include:
-- **Move** to an adjacent hex or along a path to the next point
-- **Search** the current hex/point for hidden features
-- **Investigate** a discovered site in detail
-- **Set up camp** and rest
-- **Track** a creature or follow a trail
-- **Forage** for food, water, or materials
+### Movement
 
-### Exploration vs. Travel — Key Differences
+Each turn, the party can move up to **two hexes** (or along a path to the next point in a point crawl). Movement requires no roll — the party simply arrives. Direction is the players' choice.
+
+**Reduced movement (1 hex per turn):** Moving through difficult terrain (dense forest, swamp, mountains, trackless desert), scouting an adjacent hex, or tracking a quarry each reduce movement to 1 hex. These reductions do not stack — any one of them caps movement at 1 hex.
+
+### Exploration vs. Travel
 
 | Feature | Travel | Exploration |
 |---------|--------|-------------|
-| **Destination** | Known — the party has a specific target | Unknown or vague — the party is searching, wandering, or discovering |
-| **Time scale** | ~1 day per action | 2–4 hours per action |
-| **Progress tracker** | Challenge die counts down to arrival | No linear progress die — movement is spatial across the map |
-| **Map** | Route-based (origin → destination) | Area-based (hex grid or point network) |
-| **Roles** | Navigator, Scout, and optional daily roles | Pathfinder, Lookout, and optional per-action roles |
-| **Event trigger** | Once per day (daily event roll) | Dice timer ticks per action; event on timer expiry |
-| **Discovery** | Scout's bonus option | Core loop — searching and uncovering the map is the point |
-| **Retracing** | Not relevant (forward progress only) | Common — party may revisit explored hexes/points |
-| **Supplies** | Daily ration checks | Supply checks triggered by events or camping |
+| **Destination** | Known target | Unknown — searching, wandering, discovering |
+| **Time scale** | ~1 day per action | ~4 hours per turn (4 turns per day) |
+| **Progress** | Challenge die counts down to arrival | Spatial — party moves across the map |
+| **Map** | Route-based (A → B) | Area-based (hex grid or point network) |
+| **Structure** | Role-based daily procedure | Turn-based — each player picks an action |
+| **Events** | Once per day | Once per turn (subtle, frequent) |
+| **Movement** | Abstracted into daily progress | Explicit — move across hexes/points |
+| **Discovery** | Scout's bonus option | Core loop — the point of play |
+| **Day length** | One day per session phase | 6 turns (4 day + 2 night) per day |
 
 ---
 
-## Exploration Setup (GM, Before Play)
+## Exploration Setup
 
-### Step 1: Prepare the Map
+Use these checklists at the table. Full details for each step follow below.
 
-**Hex crawl:** Draw or select a hex map. Assign a terrain type to each hex. A region of 20–40 hexes provides several sessions of exploration.
+**Region Setup (GM, before play)**
 
-**Point crawl:** Draw a network of named points (landmarks, crossroads, settlements, ruins) connected by paths. Label each path with a terrain type and length (1–3 actions).
+1. Prepare the map and assign terrain
+2. Place locations (visible and hidden)
+3. Set the exploration difficulty
+4. Roll or choose starting weather
+5. Prepare the encounter table
 
-### Step 2: Place Points of Interest
+> **d66 tables.** Several tables in this document use d66: roll two d6, the first picks the row, the second picks the column. This gives 36 results from a simple 6×6 grid.
 
-Scatter **points of interest** (POIs) across the map. These are the rewards for exploration — the things players discover. Not every hex/point needs one; roughly **1 in 3 hexes** (or half of named points) should have something notable.
+### 1. Prepare the Map
 
-POIs fall into several categories:
+**Hex crawl:** Draw or select a hex map. Assign a base terrain type to each hex (plains, forest, hills, desert, swamp, mountains, coast, etc.) based on the region's climate and geography. A region of 15–30 hexes provides several sessions of exploration.
 
-| Category | Examples |
-|----------|----------|
-| **Landmark** | Ancient monument, massive tree, waterfall, distinctive rock formation |
-| **Resource** | Fresh spring, herb grove, mineral deposit, game trail |
-| **Shelter** | Cave, ruins with a roof, abandoned camp, friendly hermit |
-| **Danger** | Monster lair, bandit camp, cursed ground, natural hazard |
-| **Secret** | Hidden entrance, buried treasure, concealed shrine, illusory terrain |
-| **Settlement** | Village, outpost, nomad camp, trading post |
+**Point crawl:** Draw a network of named points (landmarks, crossroads, settlements, ruins) connected by paths. Label each path with a terrain type and length (1–2 turns).
 
-### Step 3: Mark Secrets and Hidden Features
+To add variety, overlay **terrain features** onto your base terrain using the **Terrain Feature Table (d66)** in the [Random Tables](#random-tables) section. Features like ravines, groves, and ruins work with any climate and terrain type. Use them to differentiate hexes that share the same base terrain.
 
-Some POIs are **hidden** — they do not appear on the party's map and can only be found through successful Search actions or by following clues (Traces results from the event table). The GM notes these separately.
+### 2. Place Locations
 
-For each hidden POI, assign a **Discovery TN** representing how hard it is to find:
+Scatter **locations** across the map. Use the **Location Distribution Table** in the [Random Tables](#random-tables) section to determine whether each hex holds no location, a hidden location, or a visible one.
+
+Locations are either **visible** (immediately apparent when entering the hex) or **hidden** (require a successful Search to find). For each hidden location, assign a **Discovery TN**:
 
 | Difficulty | TN | Examples |
 |------------|----|---------|
-| Obvious | 6 | Large ruins visible from a distance, major water source |
-| Moderate | 8 | Overgrown trail, partially hidden cave, old campsite |
-| Hard | 10 | Concealed entrance, buried cache, camouflaged lair |
-| Very Hard | 12 | Magically hidden site, ancient sealed vault, underground passage |
-| Legendary | 14 | Mythic locations, divine sanctuaries, extraplanar doorways |
+| Moderate | 8 | Overgrown trail, partially hidden cave |
+| Hard | 10 | Concealed entrance, buried cache |
+| Very Hard | 12 | Magically hidden site, sealed vault |
+| Legendary | 14 | Mythic locations, sacred sanctuaries |
 
-### Step 4: Set the Exploration Difficulty
+To randomly generate location types and discovery rewards, use the **Random Location Type Table (d66)** and **Location Discovery Reward Table** in the [Random Tables](#random-tables) section.
 
-Choose an overall **Exploration Difficulty** (TN) for the region based on terrain and conditions. This serves as the default TN for navigation, searching, and survival rolls within the region.
+**Supernatural locations.** The Location Distribution Table can place supernatural locations during setup. These are always hidden, with Discovery TN Very Hard (12) or Legendary (14). When a supernatural location is placed, roll on each of the three **Supernatural Feature tables** (Origin, Twist, Effect) in the [Random Tables](#random-tables) section to create a unique combination ready for play. Each supernatural feature can be described as: *"[Origin] that [Twist], [Effect]."* Perceiving the location's true nature may require specific rituals or magical senses.
+
+> **Seeding clues.** Place trace clues in hexes adjacent to hidden locations. When the event table produces a Traces result in those hexes, the pre-placed clue is used instead of rolling randomly. NPCs, found maps, and visible landmarks (smoke columns, distinctive peaks) also guide players. Each clue pointing to a hex grants **+1 boon** on Search rolls there (max +2 boons from multiple clues).
+
+### 3. Set the Exploration Difficulty
+
+Choose an **Exploration Difficulty** (TN) for the region. This is the default TN for searching, scouting, and survival rolls.
 
 | Difficulty (TN) | Terrain Examples |
 |------------------|-----------------|
-| Medium (8) | Plains, light forest, gentle hills, coastal areas |
+| Medium (8) | Open plains, light woodland, gentle hills, coastal flats |
 | Hard (10) | Dense forest, swamp, rocky desert, foothills |
-| Very Hard (12) | Mountains, deep jungle, magical wasteland, trackless tundra |
-| Extreme (14) | Supernaturally obscured, shifting terrain, planar borders |
+| Very Hard (12) | Mountains, deep jungle, magical wasteland, trackless waste |
+| Extreme (14) | Supernaturally obscured, shifting terrain, cursed lands |
 
-> The Exploration Difficulty can vary per hex/point if the terrain changes across the region. For simplicity, use a single TN for the whole region and adjust only for notably different hexes.
+> The difficulty can vary per hex if terrain changes significantly. For simplicity, use a single TN for the whole region and adjust only for notably different hexes.
 
-### Step 5: Set the Dice Timer
+### 4. Roll or Choose Starting Weather
 
-Place a **d6 dice timer** starting at 6. This timer ticks down by 1 each time the party takes an exploration action. When it reaches 0, roll on the **Exploration Event Table** and reset the timer.
+Roll d6 on the **Weather Table** (see [Random Tables](#random-tables)) to set starting conditions. Weather persists until a **Weather Shift** event occurs, at which point the GM consults the Weather Shift Sub-Table to determine how conditions change.
 
-> **Adjusting pacing:** Use a d4 timer for dangerous, event-heavy regions. Use a d8 timer for vast, empty stretches where events are rare but impactful.
+### 5. Prepare the Encounter Table
 
-### Step 6: Note Region-Specific Details
+Create a d66 encounter table for the region, or use the **Generic Encounter Table** from the [Random Tables](#random-tables) section. When an Encounter event occurs during play, roll three times:
 
-Prepare the following for the region:
+1. **Subject** — roll d66 on the Generic Encounter Table (or region-specific table)
+2. **Activity** — roll d6 on the Encounter Activity Table (what are they doing right now?)
+3. **Complication** — roll d6 on the Encounter Complication Table (what makes this interesting?)
 
-- **Encounter table** (d6 or d8) with terrain-appropriate creatures and NPCs
-- **Weather conditions** if relevant (use the weather rules from the [Travel System](../06-scenes/07-challenges/02-travel.md))
-- **Ration availability** — can the party forage or hunt in this terrain?
-- **Any active threats** — pursuing enemies, spreading corruption, approaching storms
-
----
-
-## Exploration Roles
-
-During exploration, each party member fills a role. Roles are chosen at the start of each day and remain fixed for that day. Unlike travel roles, not all roles roll every action — only the active roles for the current action roll.
-
-### Pathfinder (Mandatory)
-
-**Roll:** Spirit/Mind + Nature or Survival vs. Exploration Difficulty
-
-The Pathfinder leads the group through the terrain, choosing routes and reading the landscape.
-
-**When:** Roll once per Move action.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Lost — the party moves to a random adjacent hex/point instead of the intended one. +1 bane on next Pathfinder roll |
-| Failure | Slow going — the Move action takes extra time (tick the dice timer by 1 additional) |
-| Weak Success | Arrive at the intended hex/point as normal |
-| Strong Success | Arrive and choose one bonus (see below) |
-| Critical Success | Arrive and choose two bonuses |
-
-**Bonuses:**
-- Efficient route (do not tick the dice timer for this Move)
-- Lay of the land (learn the terrain type of one adjacent unexplored hex/point)
-- Keen eye (gain +1 boon on the next Search action in the destination hex/point)
-
-### Lookout (Mandatory)
-
-**Roll:** Spirit + Perception vs. Exploration Difficulty
-
-The Lookout watches for threats, notes surroundings, and provides early warning.
-
-**When:** Roll once per Move action, simultaneously with the Pathfinder.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Ambushed — if a Threat event occurs before the next roll, the party is surprised |
-| Failure | No useful warning |
-| Weak Success | Choose one bonus (see below) |
-| Strong Success | Choose two bonuses |
-| Critical Success | Choose all three bonuses |
-
-**Bonuses:**
-- Spot feature (learn whether the destination hex/point contains a point of interest, without details)
-- Avoid danger (if the next event is a Threat, the party may choose to avoid it by retreating to the previous hex/point — costs 1 additional timer tick)
-- Landmark sighting (learn the terrain type of up to two adjacent hexes/points visible from the current position)
-
-### Forager (Optional)
-
-**Roll:** Spirit/Mind + Nature vs. Exploration Difficulty
-
-**When:** Roll once per day, or once per Search/Camp action in suitable terrain.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Poisonous find — one party member rolls Spirit + Fortitude vs. the Exploration Difficulty or gains the poisoned condition |
-| Failure | Nothing found |
-| Weak Success | Gather enough food and water for 1 party member today (skip their Supply Check) |
-| Strong Success | Gather enough for 2 party members |
-| Critical Success | Gather enough for the entire party; additionally find 1d4 useful herbs or materials |
-
-### Scout (Optional)
-
-**Roll:** Agility/Spirit + Stealth or Survival vs. Exploration Difficulty
-
-The Scout ranges ahead of the group, gathering intelligence without committing the party.
-
-**When:** Instead of a Move action, the Scout can spend an exploration action to reconnoiter an adjacent hex/point without the party entering it.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Detected — if the hex/point contains hostile creatures, they are now alerted and may pursue the party |
-| Failure | Unclear — learn the terrain type only |
-| Weak Success | Learn the terrain type and whether a visible point of interest exists |
-| Strong Success | Learn terrain, visible POIs, and the presence of any creatures or NPCs |
-| Critical Success | Full reconnaissance — learn all of the above plus the Discovery TN of any hidden features |
-
-> Scouting consumes the Scout's action for the current stretch. The dice timer still ticks once as normal for the stretch (time passes while the Scout is away and the party waits). However, scouting does not require a Pathfinder roll since the party itself is not moving.
+Frame the encounter as: *"[Subject] is [Activity], but [Complication]."* Adjust freely for context.
 
 ---
 
-## Exploration Procedure (Per Action)
+## Exploration Procedure
 
-Each exploration action follows this sequence:
+Use this checklist each turn. Full details for each step follow below.
 
-### 1. Declare Action
+**Each Exploration Turn**
 
-The party declares what they do this stretch:
+1. Declare actions (each player chooses)
+2. Resolve actions
+3. Advance the day clock
+4. Roll for event (d6, with sub-table if needed)
+5. Check for day's end
 
-| Action | Description | Ticks Timer? |
-|--------|-------------|:------------:|
-| **Move** | Travel to an adjacent hex or along a path to the next point | Yes |
-| **Search** | Thoroughly search the current hex/point for hidden features | Yes |
-| **Investigate** | Examine a discovered POI in detail (enter a ruin, study an inscription, interact with an NPC) | Yes |
-| **Camp** | Set up camp and rest. Required before nightfall | Yes |
-| **Forage** | Gather food, water, or materials in the current hex/point | Yes |
-| **Track** | Follow tracks, trails, or clues to determine direction of a target | Yes |
-| **Backtrack** | Return to a previously explored hex/point along a known route | Yes (but no Pathfinder roll needed) |
+### 1. Declare Actions
 
-**Free activities** (do not tick the timer):
+Each player declares what their character does this turn. The party typically acts as a group but may split up.
+
+| Action | Description |
+|--------|-------------|
+| **Move** | Move up to 2 hexes in open terrain, or 1 hex in difficult terrain. No roll needed |
+| **Search** | Thoroughly search the current hex/point for hidden features |
+| **Scout** | Range ahead to observe an adjacent hex without the party entering it |
+| **Forage** | Gather edible plants, clean water, and useful materials |
+| **Hunt** | Track and kill game for food (requires game in the region and weapons/traps) |
+| **Fish** | Catch fish or seafood (requires a water source and fishing gear) |
+| **Track** | Follow tracks, trails, or clues to determine the direction of a target |
+| **Investigate** | Examine a discovered location in detail (enter a ruin, interact with an NPC, study an inscription) |
+| **Camp** | Set up camp and rest. Requires a suitable spot; without one, roll Survival or suffer a bad night |
+
+**Free activities** (do not cost a turn):
 - Short discussion about direction or plans
 - Consult a map or notes
 - Eat a quick meal from rations
 - Note the current hex/point on the party's map
 - Brief conversation with a willing NPC
 
-### 2. Tick the Dice Timer
+> **Moving as a group.** When the party moves together, one character leads navigation while each other character may perform a secondary action alongside the Move: keeping watch (Perception check), foraging (Nature check), or assisting the navigator (+1 boon). Secondary actions do not cost a separate turn.
 
-Reduce the dice timer by 1 (or more, if the Pathfinder failed or the action is especially time-consuming).
+> **Splitting up.** Characters may act independently (e.g., one searches while another scouts ahead). The clock advances once for the turn regardless — they act simultaneously within the same ~4-hour watch.
 
-### 3. Roll for Active Roles
+### 2. Resolve Actions
 
-- **Move:** Pathfinder and Lookout roll simultaneously.
-- **Search:** The searching character rolls Spirit + Perception or Mind + Survival vs. the hex/point's Discovery TN (or the Exploration Difficulty if no hidden feature is present). Other characters may assist.
-- **Track:** The tracking character rolls Spirit + Survival or Mind + Nature vs. the Exploration Difficulty (or a TN set by the quarry's Stealth).
-- **Forage:** The Forager rolls as described above.
-- **Investigate / Camp:** Resolved narratively or with specific skill checks as needed.
+**Move.** The party moves up to 2 hexes in open terrain or 1 hex in difficult terrain. The GM describes each hex entered and any visible features or locations. No roll is needed.
 
-### 4. Resolve Results
+**Search.** Roll Spirit + Perception or Mind + Survival vs. the Exploration Difficulty.
 
-Apply the effects of the rolls. If moving, the party arrives at the new hex/point and the GM describes what is immediately visible. If searching, the GM reveals any hidden features the roll uncovers.
-
-### 5. Check the Dice Timer
-
-If the dice timer reached 0 during this action, roll on the **Exploration Event Table** and reset the timer.
-
-### 6. Check for Day's End
-
-After the third action of the day (evening stretch), the party should camp. A fourth action is possible but pushes into the night:
-- Night actions suffer **+1 bane** on all rolls.
-- If the party does not camp by the end of the fourth action, each party member gains **1 Fatigue**.
-
----
-
-## Exploration Event Table (d6)
-
-When the dice timer reaches 0, the GM rolls 1d6:
-
-| d6 | Category | Effect |
-|----|----------|--------|
-| 1 | **Encounter** | A creature or group appears. Roll on the region's encounter table. Determine disposition (hostile, wary, neutral, friendly) with a d6: 1–2 hostile, 3–4 wary, 5 neutral, 6 friendly. |
-| 2 | **Wear and Tear** | The terrain punishes gear. Each adventurer chooses one item: footwear, clothing, a tool, or a weapon requires a Durability check, or a carried item loses 1 use. |
-| 3 | **Provisions Dwindle** | Rations spoil, waterskins leak, or the environment drains supplies faster than expected. Each party member rolls a Supply Check for rations or water. |
-| 4 | **Terrain Shift** | The environment changes. Roll d3: [1] Weather worsens — next action suffers +1 bane. [2] Path blocked — a natural obstacle requires an Athletics or Survival check to bypass or a detour to another hex/point. [3] Hazard — a natural danger emerges (rockslide, flash flood, sinkhole, animal stampede). Each party member rolls an appropriate save or suffers consequences. |
-| 5 | **Traces** | The party discovers signs of something nearby. Roll on the **Traces Sub-Table** below. Traces provide directional clues — the GM indicates which adjacent hex/point the trace points toward (see Directing Traces below). |
-| 6 | **Ambient** | Atmosphere and scenery. Wind through the trees, distant mountains catching the light, a beautiful sunset. Nothing mechanically significant — a moment to breathe. |
-
-### Directing Traces
-
-When a Traces event fires, the GM must decide which direction the clue points. Use the following priority:
-
-1. **Pre-placed clue:** If the GM has assigned a specific Traces result to this hex/point (because it is adjacent to a hidden POI), use that clue as written.
-2. **Nearest POI:** If no pre-placed clue exists, point the trace toward the nearest undiscovered point of interest.
-3. **Random direction:** If no POIs are nearby or the GM prefers randomness, roll a die corresponding to the number of adjacent hexes/paths (d6 for hex crawl, or choose randomly among connected points in a point crawl) to determine the direction.
-
-### Traces Sub-Table (d6)
-
-When a Traces result occurs, roll d6 for specifics:
-
-| d6 | Trace | Detail |
-|----|-------|--------|
-| 1 | **Tracks** | Footprints, hoofprints, claw marks, or drag marks. A successful Survival check (vs. Exploration Difficulty) reveals the creature type, number, and how recently they passed. |
-| 2 | **Markings** | Carved symbols, trail blazes, boundary markers, or warning signs. An Education or Lore check may reveal their meaning. |
-| 3 | **Remains** | An old campsite, scattered bones, discarded equipment, or signs of a battle. Investigation may yield useful salvage or information. |
-| 4 | **Sounds** | Distant animal calls, rushing water, voices carried on the wind, or ominous silence. Indicates something in an adjacent hex/point. |
-| 5 | **Smoke or Light** | A campfire, signal fire, magical glow, or distant torchlight. Indicates an occupied location within 1–2 hexes/points. |
-| 6 | **Scent or Feeling** | An unusual smell (sulfur, decay, cooking food, flowers) or a prickling sensation (magic, unease, divine presence). Points toward a hidden feature. |
-
----
-
-## Discovery Procedure
-
-Discovery is the core reward loop of exploration. When the party searches a hex/point or follows clues from Traces, they may uncover hidden features.
-
-### Searching a Hex/Point
-
-When a character spends an action to Search:
-
-1. **Roll** Spirit + Perception or Mind + Survival vs. the **Discovery TN** of the hidden feature (or the Exploration Difficulty if no hidden feature exists).
-2. **Apply results:**
+The player does not know whether a hidden location exists in the hex or what its Discovery TN is. The GM compares the roll result against any hidden location's Discovery TN. If the result meets or exceeds the TN, the location is found. If the result is below the TN (or no location exists), the GM simply says "you find nothing" — the player cannot tell whether they missed something or the hex is truly empty.
 
 | Result | Effect |
 |--------|--------|
-| Blunder | Trigger a hazard or alert nearby creatures. The hidden feature remains undiscovered |
-| Failure | Nothing found (the character may try again on a later action with +1 bane, representing diminishing returns) |
-| Weak Success | Discover the feature but with a complication — a guardian is present, access is difficult, or the discovery is incomplete |
-| Strong Success | Discover the feature cleanly — full access, no complications |
-| Critical Success | Discover the feature and gain additional insight — learn about connected features, find bonus loot, or receive a clue about another hidden POI in an adjacent hex/point |
+| Meets Discovery TN | Discover the hidden location. The GM describes what is found |
+| Below Discovery TN | Nothing found. The player does not know if something was missed |
+| No location exists | Nothing found. The GM says "you find nothing" (same response as above) |
+| Blunder | Trigger a hazard or alert nearby creatures |
 
-### Following Clues
+> A character may retry a Search on a later turn with +1 bane (diminishing returns).
 
-When the party has received a Traces result or other clue pointing toward a specific hex/point, searching that hex/point gains **+1 boon** on the discovery roll. Multiple clues pointing to the same location stack (up to +2 boons).
+When the party has received a Traces clue pointing to this hex, the Search gains **+1 boon**. Multiple clues stack (up to +2 boons).
 
-### Discovery Event Table (d6)
-
-When a hidden feature is discovered, roll d6 to determine its nature (or the GM selects based on pre-placed content):
-
-| d6 | Discovery | Description |
-|----|-----------|-------------|
-| 1 | **Hidden Treasure** | A cache, buried hoard, or valuable resource. Roll on the Treasure Sub-Table |
-| 2 | **Ancient Site** | Ruins, a shrine, standing stones, or a forgotten structure. May contain lore, puzzles, or dungeon entrances |
-| 3 | **Natural Wonder** | A hot spring, crystal cave, ancient grove, or geologic formation. Each party member regains 1 Resolve. May have resource value |
-| 4 | **Lair or Refuge** | A creature's den, hidden camp, or concealed shelter. May be occupied (hostile or neutral) or abandoned. Provides shelter if cleared |
-| 5 | **Passage** | A shortcut, hidden path, underground tunnel, or river crossing that connects to a distant hex/point — reducing future travel time |
-| 6 | **Enigma** | Something strange — a magical anomaly, prophetic inscription, trapped spirit, or mysterious artifact. Requires investigation to understand. May lead to a quest or deeper mystery |
-
-### Treasure Sub-Table (d6)
-
-| d6 | Find |
-|----|------|
-| 1 | Abandoned supply cache: 2d4 simple rations (d4) and basic gear (rope, torches, tools) |
-| 2 | Mineral deposit or rare herbs: 2d6 × 10 coins worth of raw materials. Requires Crafting or Nature to harvest |
-| 3 | A dead adventurer's pack: 1d4 rations, a Q3 weapon or piece of equipment, and a partial map (reveals 1d3 adjacent hexes/points) |
-| 4 | Hidden chest or buried cache: 3d6 × 10 coins and 1d3 trade goods. May be trapped (Mind + Crafting vs. Exploration Difficulty to disarm) |
-| 5 | A shrine offering or ritual site: 4d6 × 10 coins in offerings. Taking them may anger local spirits (+1 bane on Resist until leaving the region) or nearby communities |
-| 6 | A minor magic item (Q3–Q4) placed by the GM, or the entrance to a dungeon containing greater treasure |
-
----
-
-## Camping in the Wilderness
-
-When the party spends an exploration action to camp, resolve the following:
-
-### Shelter
-
-One party member rolls Spirit + Survival vs. the Exploration Difficulty.
+**Scout.** Roll Agility/Spirit + Stealth or Survival vs. the Exploration Difficulty. Movement is reduced to 1 hex this turn (see Movement).
 
 | Result | Effect |
 |--------|--------|
-| Blunder | No shelter; camp is exposed. Each party member gains 1 Fatigue and +1 bane on night watch rolls |
-| Failure | No shelter found. Each party member rolls Strength + Fortitude vs. the Exploration Difficulty or gains 1 Fatigue |
-| Weak Success | Basic shelter found. Adequate rest |
-| Strong Success | Good shelter. Choose one: each party member may remove 1 Fatigue, or the camp is concealed (+1 boon on night watch rolls) |
-| Critical Success | Excellent shelter. Each party member removes 1 Fatigue, and the camp is concealed |
+| Success | Learn terrain type, visible locations, and whether creatures or NPCs are present in the scouted hex |
+| Failure | Learn the terrain type only |
+| Blunder | Detected — hostile creatures in the hex are alerted and may pursue |
 
-### Rations
+**Forage.** Roll Spirit/Mind + Nature vs. the Exploration Difficulty (requires plant life and water sources in the region).
 
-Each party member rolls a **Supply Check** for rations (unless fed by a Forager result). In terrain with extreme resource pressure, roll Supply Checks twice.
+| Result | Effect |
+|--------|--------|
+| Success | Choose one: fresh water (each party member rolls their next Supply Check twice, choose either result), edible plants (gain 1 × simple rations (d4), lose 1 use per day as they spoil), or useful materials (gain primitive materials (d6)) |
+| Failure | Nothing found |
+| Blunder | Poisonous harvest — each party member must roll Strength + Fortitude or Mind + Nature vs. the Exploration Difficulty during camp. On a failure, suffer 1 Fatigue |
 
-### Night Watch
+**Hunt.** Roll Agility/Spirit + Survival vs. the Exploration Difficulty (requires game in the region and appropriate weapons or traps).
 
-Assign watches. If an event occurs during the night (only if the dice timer expires during camp or the GM determines it), the watch character rolls Spirit + Perception vs. the Exploration Difficulty to detect the threat in time.
+| Result | Effect |
+|--------|--------|
+| Weak Success | Small game — gain raw meat equal to 1 × simple rations (d4). Loses 1 use per day as it spoils |
+| Strong Success | Good catch — gain raw meat equal to 2 × simple rations (d4). Loses 1 use per day as it spoils |
+| Critical Success | Excellent catch — gain raw meat equal to 4 × simple rations (d4). Loses 1 use per day as it spoils |
+| Failure | Nothing caught |
+| Blunder | Dangerous prey — attacked by a predator. Roll Strength/Agility + Survival vs. the Exploration Difficulty. On a failure, suffer 1 Fatigue. On a blunder, suffer 1 Wound instead |
 
----
+> An adventurer with the Wilderness Expert talent may turn raw meat into non-perishable rations.
 
-## Exploration Challenges
+**Fish.** Roll Spirit/Mind + Survival vs. the Exploration Difficulty (requires a water source and fishing gear).
 
-When the party has a **specific exploration goal** — finding a lost ruin, tracking a creature to its lair, locating a water source — combine this crawl procedure with a **Challenge** from the [Challenge System](../06-scenes/07-challenges/00-overview.md).
+| Result | Effect |
+|--------|--------|
+| Weak Success | Small catch — gain raw fish equal to 1 × simple rations (d4). Loses 1 use per day as it spoils |
+| Strong Success | Good catch — gain raw fish equal to 2 × simple rations (d4). Loses 1 use per day as it spoils |
+| Critical Success | Excellent catch — gain raw fish equal to 4 × simple rations (d4). Loses 1 use per day as it spoils |
+| Failure | Nothing caught |
+| Blunder | Dangerous waters — attract a water predator. Roll Strength/Agility + Survival vs. the Exploration Difficulty. On a failure, suffer 1 Fatigue. On a blunder, suffer 1 Wound instead |
 
-### Structure
+> An adventurer with the Wilderness Expert talent may turn raw fish into non-perishable rations.
 
-1. **Challenge die:** Represents how close the party is to finding their goal. Use d6 when the goal is within a few hexes/points and the party has some clues or leads. Use d8 when the goal is farther away, clues are sparse, or the search area is large (8+ hexes/points to cover).
-2. **TN:** Use the Exploration Difficulty for the region.
-3. **Progress:** The challenge die is reduced by successful Search, Track, or Investigate actions — not by movement alone.
-4. **Timer (optional):** Use the exploration dice timer as a dual-purpose timer, or add a separate challenge timer (d6 or d8) for external pressure (a storm approaching, a rival expedition, supplies running out).
+**Track.** Roll Spirit + Survival or Mind + Nature vs. the Exploration Difficulty (or a TN set by the quarry's Stealth). Movement is reduced to 1 hex this turn regardless of the result (see Movement). On success, the GM indicates which direction the quarry went and how recently. This includes following any trails discovered from Traces events.
 
-> **Example:** The party is searching for a hidden tomb in a forest region (Exploration Difficulty TN 10). The GM sets a d6 challenge die. Each time a party member succeeds on a Search or Track action, the challenge die is reduced. When it reaches 0, the party discovers the tomb entrance. Meanwhile, the exploration dice timer continues generating events.
+**Investigate.** Examine a discovered location in detail — enter a ruin, interact with an NPC, study an inscription, or deal with whatever the site contains. Resolved narratively or with specific skill checks as appropriate. Successfully clearing a location's challenges earns the discovery reward assigned during setup (see Location Discovery Reward Table).
 
-### Combining Movement and Progress
+**Camp.** Set up camp and rest for the night. Follow the standard [Resting](../06-scenes/03-resting.md) rules. Each adventurer rolls a **Supply Check** for rations (unless fed by a Forage, Hunt, or Fish result). Assign night watches as desired. The camping turn still advances the day clock and triggers an event roll.
 
-Movement itself does not reduce the challenge die — the party must take deliberate Search or investigative actions. However, the GM may allow progress when the party moves to a hex/point that contains a relevant clue or the destination itself.
+**Suitable camping spots** include any location that provides shelter (such as a cave shelter, settlement, or abandoned camp) or a terrain feature that affords natural protection (such as a clearing, overhang, or cave mouth). If no suitable spot is available, one character rolls Spirit + Survival vs. the Exploration Difficulty to establish a makeshift shelter:
 
-This creates a tension: **move to cover ground, or stop to search?** Moving quickly covers more area but may miss the goal. Searching thoroughly finds hidden features but consumes daylight and triggers more events.
+- **Success:** Makeshift shelter found. The party rests normally.
+- **Failure:** No adequate shelter. The party suffers a **bad night** (per the [Resting](../06-scenes/03-resting.md) rules).
 
----
+> Each night turn taken without camping inflicts **1 Fatigue** on every adventurer.
 
-## GM Guidance: Building an Exploration Region
+### 3. Advance the Day Clock
 
-### Minimal Prep Method
+Move the d6 clock forward by 1.
 
-For a quick exploration setup, prepare the following:
+### 4. Roll for Event
 
-1. **A map** with 15–25 hexes or 8–15 points, each labeled with terrain type.
-2. **3–5 placed POIs** (at least one major site, one danger, one resource, and one settlement or shelter).
-3. **2–3 hidden POIs** with Discovery TNs.
-4. **A d6 encounter table** for the region.
-5. **The Exploration Difficulty** (one TN for the whole region).
+At the end of each turn, the GM rolls **1d6** on the Exploration Event Table, then rolls a second **1d6** on the matching sub-table. All sub-tables are in the [Random Tables](#random-tables) section.
 
-Everything else can be improvised using the event and discovery tables during play.
+**Exploration Event Table (d6)**
 
-### Revealing the Map
+| d6 | Event |
+|:--:|-------|
+| **1** | **Encounter** — roll Subject (Generic Encounter Table), Activity, and Complication (see Random Tables) |
+| **2** | **Weather Shift** — roll on the Weather Shift Sub-Table (see Random Tables) |
+| **3** | **Wear and Tear** — each adventurer chooses one item they carry; items with Durability make a Durability check, items with uses lose 1 use, all other items are unaffected |
+| **4** | **Traces** — signs of something nearby; roll on the Traces Sub-Table (see Random Tables), pointing toward a pre-placed hidden location if one is adjacent |
+| **5** | **Terrain Feature** — an obstacle or hazard; roll on the Terrain Feature Sub-Table (see Random Tables) |
+| **6** | **Nothing** — the stretch passes without incident |
 
-There are three approaches to revealing map information to players:
+> **Traces and clue direction.** When Traces occur, point the clue toward a pre-placed hidden location if one is adjacent. Otherwise, point toward the nearest undiscovered location. If none are nearby, roll d6 for a random adjacent hex (clockwise from north: 1=N, 2=NE, etc.) or select randomly among connected paths in a point crawl.
 
-**Fog of War (default):** Players start with a blank map (or one showing only their starting hex/point and general direction/distance to any known features). As they explore, they fill in hexes/points they visit and ones revealed by Lookout or Pathfinder bonuses.
+> **Event frequency.** Rolling each turn means up to 6 events per day. Most results (Weather, Traces, Nothing) are low-impact, keeping the pace moving. Only Encounters and Hazards demand immediate resolution.
 
-**Partial Map:** Players start with a rough map showing terrain types and major landmarks, but no POIs or hidden features. This is appropriate when the party has access to an incomplete map, local guides, or cartographic knowledge.
+### 5. Check for Day's End
 
-**Full Map:** Players see the entire terrain map but POIs are unmarked. Only appropriate for well-surveyed regions where the terrain is known but specific sites have not been explored.
-
-### Seeding Clues
-
-Hidden POIs become more engaging when the party can find them through detective work rather than brute-force searching of every hex. Seed clues by:
-
-- **Pre-placing Traces:** Assign specific Traces results to hexes/points adjacent to hidden POIs. When the party triggers a Traces event in those hexes, the clue points toward the hidden feature.
-- **NPC Information:** Travelers, hermits, or settlement NPCs may share rumors or directions pointing toward hidden POIs.
-- **Partial Maps:** Found on dead adventurers, in ruins, or sold by merchants. Reveal 1–3 hexes/points and may indicate hidden features with vague descriptions.
-- **Landmark Chains:** Visible landmarks (columns of smoke, distinctive peaks, unusual formations) are visible from multiple hexes, drawing the party toward them naturally.
-
-### Restocking and Region Passage
-
-If the party revisits explored hexes/points, the GM should consider:
-
-- **Restocking:** After 1d6 days, cleared dangers may be replaced by new creatures. Resource POIs may replenish after longer periods.
-- **Trail Familiarity:** Backtracking through explored hexes does not require Pathfinder rolls and does not tick the dice timer (the route is known).
-- **Region Exhaustion:** After the party has explored most of a region, consider transitioning to the Travel System for moving through it to reach other regions.
+After the 4th turn (Evening), the party should camp. If they continue into the night (turns 5–6), each turn without camping inflicts **1 Fatigue** on every adventurer. All rolls during night turns also suffer **+1 bane**. The day resets when the party wakes after a successful night's rest.
 
 ---
 
 ## Example: Exploring the Thornwood
 
-This example illustrates a full exploration session using the hex crawl procedure.
-
 ### Setup
 
 **Region:** The Thornwood — a dense, hilly forest rumored to contain the ruins of an ancient watchtower.
 
-**Exploration Difficulty:** TN 10 (Hard — dense forest, easy to get lost)
+- **Exploration Difficulty:** TN 10 (Hard — dense forest)
+- **Map:** 20 hexes (4×5 grid). Mostly dense forest (difficult), with two hill hexes, one stream hex, and one clearing (open).
+- **Starting Weather:** Overcast (no effect).
 
-**Map:** 20 hexes arranged in a roughly 4×5 grid. Terrain: mostly forest, with two hill hexes, one stream hex, and one clearing.
+**Placed Locations:**
+- Hex 7 (clearing): Abandoned logging camp (visible). Reward: sheltered campsite (automatic shelter when camping here).
+- Hex 12 (forest): Raider camp (hidden, Discovery TN 10). Reward: buried chest (3d6 × 10 coins, may be trapped).
+- Hex 15 (hills): Ancient watchtower ruins (hidden, Discovery TN 12). Reward: dungeon entrance (deeper adventure site).
+- Hex 18 (stream): Fresh water source (visible). Reward: clean water (+1 boon on Forage).
 
-**Placed POIs:**
-- Hex 7 (clearing): Abandoned logging camp (visible). Shelter + basic supplies.
-- Hex 12 (forest): Bandit camp (hidden, Discovery TN 10). Hostile NPCs + stolen goods.
-- Hex 15 (hills): Ancient watchtower ruins (hidden, Discovery TN 12). The party's goal — contains a sealed vault with lore and treasure.
-- Hex 18 (stream): Fresh water source (visible). Good foraging (+1 boon on Forager rolls).
-
-**Hidden clue placement:**
-- Hex 11 (adjacent to bandit camp): Traces event here reveals "boot prints and broken branches heading east."
-- Hex 14 (adjacent to watchtower): Traces event here reveals "worked stone fragments half-buried in the undergrowth."
-
-**Encounter Table (d6):**
-
-| d6 | Encounter |
-|----|-----------|
-| 1 | 1d4 Wolves (wary, flee if outmatched) |
-| 2 | 1d3 Bandits (scouts from the camp in Hex 12) |
-| 3 | 1 Black Bear (territorial, guards a food source) |
-| 4 | Giant Spider ambush (1d2 spiders, hidden in canopy) |
-| 5 | Traveling Herbalist (friendly, trades in healing supplies) |
-| 6 | Patrol of foresters from a nearby village (neutral, share regional info) |
-
-**Dice Timer:** d6, starting at 6.
+**Clue placement:** Hex 11 → "boot prints heading east" (points to raider camp). Hex 14 → "worked stone fragments" (points to watchtower).
 
 ### Play
 
+The party: a Ranger, a Rogue, a Druid, and a Fighter.
+
 **Day 1**
 
-The party consists of four adventurers. They assign roles:
-- **Pathfinder:** Ranger (Spirit d10, Nature rank 3)
-- **Lookout:** Rogue (Spirit d8, Perception rank 3)
-- **Forager:** Druid (Spirit d10, Nature rank 2)
-- **Scout:** Fighter (no scouting today — acts as general support)
+**Turn 1 — Morning (clock: 1).** The party moves into the Thornwood. Dense forest is difficult terrain, so they move 1 hex to Hex 2 (no roll needed — movement doesn't require rolls). The Ranger leads, the Rogue keeps watch, the Druid forages.
 
-**Action 1 — Morning: Move to Hex 2 (forest)**
+> **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 9 — nothing spotted.
+>
+> **Druid (Forage)** rolls Spirit + Nature vs. TN 10: result 8 — nothing useful found.
+>
+> **Event roll (d6):** 6 → Nothing. The stretch passes quietly. Dense forest, occasional game trails.
 
-> Timer: 6 → 5.
->
-> **Pathfinder** rolls Spirit + Nature vs. TN 10: result 13 (Strong Success). The party arrives. The Ranger chooses "Lay of the land" — learns that Hex 3 to the east is also forest.
->
-> **Lookout** rolls Spirit + Perception vs. TN 10: result 9 (Failure). No useful observations.
->
-> The GM describes dense forest with occasional game trails. Nothing immediately notable.
+**Turn 2 — Midday (clock: 2).** The party pushes to Hex 6 (forest — difficult, 1 hex). The Druid leads, the Rogue watches.
 
-**Action 2 — Afternoon: Move to Hex 6 (forest)**
+> **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 12 — success. Spots something: the GM notes Hex 7 to the south is a clearing.
+>
+> **Event roll (d6):** 4, sub-table 2 → Traces (markings). Faded trail blazes carved into tree trunks, heading south. The GM notes this naturally points toward Hex 7.
 
-> Timer: 5 → 4.
->
-> **Pathfinder** rolls: result 11 (Weak Success). The party arrives, no bonus.
->
-> **Lookout** rolls: result 12 (Strong Success). Chooses "Spot feature" — the GM confirms there is no notable POI in this hex. Also chooses "Landmark sighting" — learns Hex 7 to the south is a clearing.
->
-> The Druid uses a free activity to note findings on the party's map.
+**Turn 3 — Afternoon (clock: 3).** The party heads south. Hex 7 is a clearing (open terrain), so they can move 2 hexes — but the clearing is just 1 hex away. They arrive at Hex 7 and discover the abandoned logging camp (visible location).
 
-**Action 3 — Evening: Move to Hex 7 (clearing)**
+> No roll needed — open terrain.
+>
+> **Event roll (d6):** 2, sub-table 1 → Weather Shift (improves one step). The overcast sky clears. Weather shifts to Clear skies.
+>
+> The party finds the logging camp: basic shelter, a rusty axe, some rope, dried herbs.
 
-> Timer: 4 → 3.
->
-> **Pathfinder** rolls: result 15 (Critical Success). Chooses "Efficient route" (timer does not tick — stays at 3) and "Keen eye" (+1 boon on next Search here).
->
-> **Lookout** rolls: result 10 (Weak Success). Chooses "Spot feature" — the GM confirms there is a point of interest here (the abandoned logging camp, visible).
->
-> The party arrives at the clearing and finds the abandoned logging camp. They decide to camp here for the night.
+**Turn 4 — Evening (clock: 4).** The party camps at the logging camp.
 
-**Action 4 — Camp**
-
-> Timer: 3 → 2.
+> The logging camp is a suitable camping spot. The Druid forages at camp: result 12 (Success) — chooses edible plants, gaining 1 × simple rations (d4). These spoil, losing 1 use at the start of each day. The others roll Supply Checks.
 >
-> The logging camp provides automatic shelter (it's a visible POI with shelter). The party skips the shelter roll.
->
-> Each party member rolls Supply Checks for rations. The Druid's Forager roll is made: result 12 (Strong Success) — gathers enough food for 2 party members, so two of them skip their Supply Check.
->
-> The party finds basic supplies in the camp (some rope, a rusty axe, dried herbs). They rest for the night.
+> **Event roll (d6):** 6 → Nothing. Quiet night. The party rests.
 
 **Day 2**
 
-**Action 1 — Morning: Move to Hex 11 (forest)**
+**Turn 1 — Morning (clock: 1).** The party moves toward Hex 11 (forest — difficult terrain, 1 hex).
 
-> Timer: 2 → 1.
->
-> Pathfinder rolls: result 8 (Failure). Slow going — the party arrives but the timer ticks an additional time. Timer: 1 → 0.
->
-> **Event fires!** The GM rolls d6: result 5 (Traces). The GM rolls on the Traces Sub-Table: result 1 (Tracks). Since Hex 11 is adjacent to the bandit camp, the GM describes: "You find boot prints and broken branches heading east — several people passed through here recently, moving with purpose."
->
-> Timer resets to 6.
->
-> The party now knows something lies to the east (Hex 12). The Rogue suggests scouting.
+> **Event roll (d6):** 5, sub-table 1 → Terrain feature (path blocked). A fallen tree blocks the main approach. The GM calls for an Athletics check to bypass — the Fighter clears the way.
 
-**Action 2 — Afternoon: Scout Hex 12**
+**Turn 2 — Midday (clock: 2).** The party arrives at Hex 11. The Ranger searches the area.
 
-> The party stays in Hex 11. The Rogue (reassigned to Scout for this action) ranges ahead to reconnoiter Hex 12.
+> **Ranger (Search)** rolls Spirit + Survival vs. TN 10: result 11. The GM checks: no hidden location here. "You find nothing hidden in this hex."
 >
-> **Scout** rolls Agility + Stealth vs. TN 10: result 14 (Critical Success). Full reconnaissance — the GM reveals: "Dense forest with a concealed camp. You count five people, lightly armed. Cooking fire, stolen trade goods stacked under canvas. Discovery TN 10 if you were searching blind, but you've found them."
+> **Event roll (d6):** 4, sub-table 1 → Traces (tracks). The GM reveals the pre-placed clue for this hex: "Boot prints and broken branches heading east — several people passed through recently." This points toward the raider camp in Hex 12. Combined with the earlier trail blazes, the party now has two clues pointing east (+2 boons on Search in Hex 12).
 >
-> Timer: 6 → 5. Although scouting itself does not tick the timer for the rest of the party, time still passes during this stretch — the party rests, forages, or keeps watch while the Scout is away. The timer ticks once as normal for the stretch.
+> The Rogue suggests scouting before the party commits.
 
-**Action 3 — Evening: The party decides what to do**
+**Turn 3 — Afternoon (clock: 3).** The Rogue scouts Hex 12 while the Fighter hunts.
 
-> Armed with intelligence about the bandit camp, the party plans their approach. This becomes a new scene — possibly an Encounter (combat) or a Challenge (infiltration) — and the exploration procedure pauses until resolved.
+> **Rogue (Scout)** rolls Agility + Stealth vs. TN 10: result 14 — success. "Dense forest with a concealed camp. Five people, lightly armed. Cooking fire, stolen trade goods stacked under canvas."
+>
+> **Fighter (Hunt)** rolls Agility + Survival vs. TN 10: result 12 (Strong Success). Good catch — gains 2 × simple rations of raw meat.
+>
+> **Event roll (d6):** 3 → Wear and Tear. Each adventurer picks one item. The Druid's rope and the Ranger's shortbow both require Durability checks from heavy use in the thicket.
+>
+> Armed with intelligence, the party plans their approach. The exploration procedure pauses as the scene transitions to an encounter or infiltration challenge.
 
 ---
 
-## Summary
+## Random Tables
 
-| Concept | Description |
-|---------|-------------|
-| **Time scale** | Exploration (2–4 hours per action). 3 actions per day before camp, 4th possible with penalties |
-| **Map format** | Hex crawl (gridded hexes) or Point crawl (nodes and paths). Same procedure for both |
-| **Dice timer** | d6 starting at 6. Ticks once per action. Event roll on expiry, then reset |
-| **Roles** | Pathfinder (mandatory, navigation), Lookout (mandatory, awareness), Forager/Scout (optional) |
-| **Move** | Enter an adjacent hex/point. Pathfinder rolls for route quality, Lookout rolls for awareness |
-| **Search** | Spend an action to find hidden features. Roll vs. Discovery TN |
-| **Discovery** | Core reward loop. Hidden POIs found through searching, clues, or events |
-| **Events** | Same d6 structure as all time scales: Threat → Wear → Resource → Shift → Traces → Ambient |
-| **Camping** | End-of-day action. Shelter roll, Supply Checks, night watch |
-| **Challenges** | Overlay a Challenge die when the party has a specific search goal. Progress via Search/Track, not movement |
-| **Backtracking** | Explored hexes/points can be re-entered without Pathfinder rolls or timer ticks |
-| **Clue chains** | Traces, NPCs, and found maps seed clues that give +1 boon on discovery rolls in target hexes/points |
+All tables used during setup and play are collected here. The procedures in the sections above reference each table by name.
+
+---
+
+### Terrain Feature Table (d66)
+
+Roll d66 and overlay the result onto the hex's base terrain. A ravine in a desert is a dry wadi; in forest, it is a tree-choked gorge.
+
+| d66 | 1 | 2 | 3 | 4 | 5 | 6 |
+|:---:|---|---|---|---|---|---|
+| **1** | Ravine | Ridge | Cliff face | Boulder field | Sinkhole | Crevasse |
+| **2** | Grove | Thicket | Deadfall | Canopy break | Hollow | Bramble patch |
+| **3** | Stream crossing | Waterfall | Dry riverbed | Spring | Bog | Tidal pool |
+| **4** | Cave mouth | Overhang | Rock arch | Cairn | Exposed bedrock | Quarry |
+| **5** | Clearing | Plateau | Overlook | Depression | Terraced slope | Windswept flat |
+| **6** | Ruins | Ancient road | Boundary marker | Abandoned camp | Burial mound | Stone circle |
+
+---
+
+### Location Distribution (d6)
+
+Roll once per hex to determine what it holds before assigning a type or reward.
+
+| d6 | Result |
+|:--:|--------|
+| 1–3 | No location — the hex holds nothing notable |
+| 4 | Hidden location — present but not apparent; requires a successful Search to find |
+| 5 | Visible location — immediately apparent when entering the hex |
+| 6 | Supernatural location — always hidden; roll on the Supernatural Feature tables during setup |
+
+---
+
+### Random Location Type Table (d66)
+
+| d66 | 1 | 2 | 3 | 4 | 5 | 6 |
+|:---:|---|---|---|---|---|---|
+| **1** | Spring or oasis | Herb patch | Mineral vein | Game trail | Fruit grove | Medicinal plants |
+| **2** | Ancient monument | Sacred tree | Waterfall shrine | Rock formation | Standing stones | Carved cliff |
+| **3** | Cave shelter | Crumbling ruin | Abandoned camp | Hermit's dwelling | Overhang | Hot spring |
+| **4** | Beast's lair | Raider camp | Natural trap | Predator den | Trapped ravine | Ancient road section |
+| **5** | Hidden entrance | Buried cache | Concealed shrine | Sealed tomb | Underground passage | Collapsed structure |
+| **6** | Village | Outpost | Nomad camp | Trading post | Abandoned settlement | Temple or shrine |
+
+---
+
+### Supernatural Feature Tables
+
+Rolled during setup when a supernatural location is placed (see Location Distribution Table). Roll once on each of the three sub-tables to define the feature. Combine the results to describe the site: *"[Origin] that [Twist], [Effect]."*
+
+#### Supernatural Feature Origin (d6)
+
+The magical source that created or claimed this place.
+
+| d6 | Origin |
+|:--:|--------|
+| 1 | **Sorcerous Corruption** — forbidden arcane rites were practiced here until the earth itself was defiled |
+| 2 | **Blood Consecration** — an ancient sacrifice or binding oath was performed here; its power endures undimmed by time |
+| 3 | **Ancestor's Claim** — honored or restless dead have marked this as their territory and refuse to release it |
+| 4 | **Divine Mandate** — a deity or primordial spirit touched this place, leaving an enduring mark of favor or wrath |
+| 5 | **Elemental Saturation** — a primal force (tempest, flame, earth, or water) has thoroughly seeped into the land |
+| 6 | **Fate's Mark** — prophecy or destiny has singled out this place; those with the sight feel it instinctively |
+
+#### Supernatural Feature Twist (d6)
+
+How the feature alters the surrounding environment.
+
+| d6 | Twist |
+|:--:|-------|
+| 1 | **Unnatural Silence** — sound dies within the area; voices, footsteps, and distant noises are swallowed |
+| 2 | **Warped Growth** — vegetation is discolored, gnarled, or dead; animals avoid the site without apparent cause |
+| 3 | **Clinging Haze** — mist, smoke, or shimmering heat clings to the location regardless of weather or wind |
+| 4 | **Stained Earth** — soil, stone, or water is discolored in unnatural patterns that cannot be washed away |
+| 5 | **False Reflections** — shadows lag behind their sources; still water and polished metal show subtly wrong images |
+| 6 | **Watching Presence** — invisible eyes seem to observe all within; symbols or faces appear in bark, stone, and still water |
+
+#### Supernatural Feature Effect (d6)
+
+How the feature mechanically impacts adventurers who enter or stay.
+
+| d6 | Effect |
+|:--:|--------|
+| 1 | **Disturbed Rest** — those who camp here roll Strength + Fortitude vs. TN 10 or gain 1 Fatigue despite resting; Supply Checks have +1 bane |
+| 2 | **Arcane Instability** — each spell cast here triggers a d6 roll: 1–2 mishap (roll on the mishap table), 3–4 double Focus cost, 5–6 normal |
+| 3 | **Spiritual Attunement** — a character who meditates here for 1 turn may roll Spirit + Mysticism vs. TN 10: success reveals one hidden location or regional clue |
+| 4 | **Restorative Touch** — first contact with the feature's source (pool, stone, spring) removes 1 Fatigue and 1 Wound (once per visit) |
+| 5 | **Creeping Dread** — each adventurer rolls Spirit + Fortitude vs. TN 10 on entering or becomes briefly Frightened; repeat each full turn spent here |
+| 6 | **Primal Surge** — spellcasters recover 1 bonus Focus when resting here; all adventurers regain 1 Resolve on their first visit |
+
+---
+
+### Location Discovery Reward Table
+
+Rolled (or chosen by the GM) when the party fully discovers and clears a location. Roll 1d6 for the category, then 1d6 on the matching sub-table.
+
+| d6 | Discovery | Effect |
+|:--:|-----------|--------|
+| 1 | **Treasure** | Valuables, with complications. Roll on sub-table |
+| 2 | **Breathtaking Sight** | Each adventurer regains 1 Resolve. Roll on sub-table for the description |
+| 3 | **Useful Find** | A practical boon for continued exploration. Roll on sub-table |
+| 4 | **Haven** | Shelter and a rest bonus. Roll on sub-table |
+| 5 | **Intelligence** | Information about the region. Roll on sub-table |
+| 6 | **Wanderers** | An NPC encounter. Roll on sub-table |
+
+#### Treasure
+
+| d6 | Situation |
+|:--:|-----------|
+| 1 | Buried cache — 2d6 × 10 coins, 2d4 rations, and basic gear. No complications |
+| 2 | Creature-guarded hoard — drive off or outwit the guardian to claim it (3d6 × 10 coins) |
+| 3 | Trapped container — Mind + Crafting vs. Exploration Difficulty to open safely; failure causes 2d6 damage |
+| 4 | Dead explorer's pack — 1d4 rations, one Q3 item, and a partial map of the region |
+| 5 | Shrine offering — worth 4d6 × 10 coins, but taking it invites spiritual hostility (+1 bane on Resist until next rest) |
+| 6 | Concealed vault — a minor magic item (Q3–Q4) |
+
+#### Breathtaking Sight
+
+| d6 | Sight |
+|:--:|-------|
+| 1 | A half-buried colossus, ancient and enormous, gazing toward a forgotten horizon |
+| 2 | An overlook revealing the full sweep of the land — hidden valleys, distant peaks, a glinting river |
+| 3 | A spring-fed pool, perfectly still, in a glade carpeted with wildflowers |
+| 4 | Elaborate carvings covering an entire cliff face, depicting gods or histories long lost |
+| 5 | A tower ruin whose topmost course still stands against all reason, wrapped in flowering vines |
+| 6 | A grove of enormous ancient trees, their roots slowly consuming the stonework of a forgotten city |
+
+#### Useful Find
+
+| d6 | Find |
+|:--:|------|
+| 1 | Clean water source — each party member rolls their next Supply Check twice and takes the better result |
+| 2 | Vantage point — the next Scout action taken from this hex gains +1 boon |
+| 3 | Shortcut — travel to one adjacent hex this day costs 0 turns instead of 1 |
+| 4 | Rare materials — gain crafting components (Q3–Q4 quality, 2d6 × 10 coins value) |
+| 5 | Trail markers or an old map fragment — reveals 1d3 adjacent hexes and any visible locations within them |
+| 6 | Forgotten cache of tools — gain a d6 supply die of general equipment (rope, torches, tools) |
+
+#### Haven
+
+| d6 | Location |
+|:--:|----------|
+| 1 | Old campsite with fire pit — automatic shelter and 1d4 simple rations |
+| 2 | Hunter's hut or shepherd's refuge — automatic shelter and basic tools (d6 supply die) |
+| 3 | Roadside shrine — automatic shelter and one party member who prays regains 1 Resolve |
+| 4 | Mine or cave entrance — automatic shelter and 1d4 units of primitive materials |
+| 5 | Hermit's dwelling — automatic shelter and one piece of local knowledge (GM reveals a hidden location) |
+| 6 | Sacred grove or waystone — automatic shelter and each adventurer skips today's ration Supply Check |
+
+#### Intelligence
+
+| d6 | Information |
+|:--:|-------------|
+| 1 | Warning signs — GM reveals one danger or hostile group in an adjacent hex |
+| 2 | Map fragment — reveals 1d3 adjacent hexes and their terrain and location status |
+| 3 | Ancient inscription — answers one yes/no question about the region's history or threats |
+| 4 | Trail markers — grants +1 boon on all Track rolls in this region for the rest of the session |
+| 5 | Prophetic omen — GM reveals one outcome if the party takes a specific route or action today |
+| 6 | Local legend — GM reveals the location of one hidden location anywhere in the region |
+
+#### Wanderers
+
+| d6 | Encounter |
+|:--:|-----------|
+| 1 | Merchant or peddler — offers trade at standard prices; carrying one unusual or rare item |
+| 2 | Patrol or soldiers — reveal one settlement, checkpoint, or known danger in the region |
+| 3 | Hermit or sage — grants +1 boon on one skill roll of the party's choice; asks a small service in return |
+| 4 | Fellow adventurers — share regional knowledge; offer to camp together tonight (automatic shelter) |
+| 5 | Refugees or displaced folk — reveal the next exploration event category before it occurs |
+| 6 | Suspicious individual — uncertain intentions; could trade, help, or be scouting for enemies |
+
+---
+
+### Generic Encounter Table (d66)
+
+Roll d66 for the **Subject** of the encounter. Combine with the Activity and Complication tables below.
+
+| d66 | 1 | 2 | 3 | 4 | 5 | 6 |
+|:---:|---|---|---|---|---|---|
+| **1** | Predator (stalking) | Predator (territorial) | Predator pack | Scavengers | Venomous creatures | Apex predator |
+| **2** | Raiders (scouts) | Raiders (ambush) | Raiders (camp) | Smugglers | Deserters | Cultists |
+| **3** | Patrol (local) | Soldiers (marching) | Tax collectors | Bounty hunter | Mercenaries | Warlord's vanguard |
+| **4** | Merchant (traveling) | Merchant (lost) | Peddler | Caravan | Prospectors | Artisan |
+| **5** | Hermit | Pilgrims | Refugees | Fellow adventurers | Wandering healer | Sage or scholar |
+| **6** | Monster (solitary) | Monster (pair) | Monster (lair) | Undead | Spirit or apparition | Rare creature |
+
+---
+
+### Encounter Activity Table (d6)
+
+Roll d6 to determine what the encounter subject is **doing** when first encountered.
+
+| d6 | Activity |
+|:--:|----------|
+| 1 | **Traveling through** — moving toward a destination; wary of strangers but not hostile |
+| 2 | **Resting or camped** — settled and off-guard; may be caught by surprise |
+| 3 | **Hunting or foraging** — actively searching for prey or resources; focused and alert to movement |
+| 4 | **Guarding or patrolling** — watching over a location, path, or object; alert and suspicious |
+| 5 | **Fleeing or hiding** — evading a threat elsewhere in the region; desperate and fast-moving |
+| 6 | **Stalking or pursuing** — tracking the party or another target with hostile intent |
+
+---
+
+### Encounter Complication Table (d6)
+
+Roll d6 for the **complication** — the twist, quirk, or problem that makes the encounter memorable.
+
+| d6 | Complication |
+|:--:|--------------|
+| 1 | **Carrying something valuable** — supplies, loot, a message, or a captive |
+| 2 | **Injured or exhausted** — weakened and possibly desperate for aid or rest |
+| 3 | **Lost or disoriented** — uncertain of their location; may ask for directions or aid |
+| 4 | **Pursued by another threat** — something dangerous follows close behind them |
+| 5 | **Acting under orders** — have specific instructions that put them in conflict with the party's interests |
+| 6 | **Concealing a secret** — hidden motives, dangerous cargo, or information they won't share willingly |
+
+---
+
+### Weather Table (d6)
+
+Roll to set starting weather or to determine new weather when conditions reset.
+
+| d6 | Weather | Effect |
+|:--:|---------|--------|
+| 1 | **Clear skies** | No effect. Pleasant conditions |
+| 2 | **Overcast** | No mechanical effect. Grey skies, diffused light |
+| 3 | **Light rain or wind** | Ranged attacks and Perception checks beyond close range suffer +1 bane |
+| 4 | **Heavy rain, strong wind, or fog** | All Perception checks suffer +1 bane. Tracks are obscured (Track and Search for tracks suffer +1 bane) |
+| 5 | **Storm or extreme heat/cold** | All outdoor rolls suffer +1 bane. Each adventurer rolls Strength + Fortitude vs. the Exploration Difficulty at end of day or gains 1 Fatigue |
+| 6 | **Severe storm or sandstorm** | As above, plus movement is reduced to 1 hex per turn even in open terrain. Supply Checks use +1d, keep lowest |
+
+---
+
+### Exploration Event Sub-Tables
+
+The following sub-tables are used when the Exploration Event Table result calls for one.
+
+#### Encounter Activity Sub-Table → *see Encounter Activity Table above*
+
+When an Encounter event occurs, roll on the Generic Encounter Table for the subject, then use the Encounter Activity and Encounter Complication tables to build the scene.
+
+#### Weather Shift Sub-Table (d6)
+
+| d6 | Result |
+|:--:|--------|
+| 1 | **Improves** — weather shifts one step toward Clear on the Weather Table |
+| 2 | **Worsens** — weather shifts one step toward Severe on the Weather Table |
+| 3 | **Sign of improvement** — weather automatically improves one step at the start of next turn |
+| 4 | **Sign of worsening** — weather automatically worsens one step at the start of next turn |
+| 5 | **Back to neutral** — weather resets to Overcast regardless of current conditions |
+| 6 | **No change** — skies shift and settle, but conditions remain the same |
+
+#### Traces Sub-Table (d6)
+
+| d6 | Trace |
+|:--:|-------|
+| 1 | Tracks — footprints, claw marks, or drag marks |
+| 2 | Markings — carved symbols, trail blazes, or boundary stones |
+| 3 | Remains — old campsite, scattered bones, or discarded gear |
+| 4 | Sounds — distant calls, rushing water, or voices on the wind |
+| 5 | Smoke or light — campfire smoke, signal fire, or an unnatural glow |
+| 6 | Scent or sensation — sulfur, decay, incense, or a preternatural prickling |
+
+#### Terrain Feature Sub-Table (d6)
+
+| d6 | Feature |
+|:--:|---------|
+| 1 | Path blocked — fallen tree, collapsed bridge, or rockfall. Bypass with Athletics/Survival vs. Exploration Difficulty, or detour to an adjacent hex |
+| 2 | Sudden hazard — rockslide, flash flood, or sinkhole. Each adventurer rolls Agility vs. Exploration Difficulty or suffers 1 Fatigue |
+| 3 | Treacherous ground — unstable footing, flooded lowland, or dense thicket. Movement is limited to 1 hex this turn |
+| 4 | Predator sign — fresh kills, territorial markings, or warning calls. Forage and Hunt suffer +1 bane until the next turn |
+| 5 | Natural barrier — ravine, cliff face, or river crossing. Bypass requires a turn or a successful Athletics check |
+| 6 | Ominous area — unnatural silence, strange markings, or a malignant chill. Each adventurer rolls Spirit + Fortitude vs. Exploration Difficulty or is briefly frightened |
