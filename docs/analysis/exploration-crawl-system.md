@@ -180,7 +180,7 @@ Each player declares what their character does this round. Characters may act in
 
 > **Moving as a group.** When the party moves together, one character leads navigation and the others choose a secondary action to perform along the way — keeping watch, foraging, or assisting the navigator. These secondary actions do not require a separate round; they resolve alongside the Move.
 
-> **Splitting up.** Characters may act independently (e.g., one searches while another scouts an adjacent hex). Each independent action ticks the timer once. If multiple characters take independent actions in the same round, the timer ticks once for the round (not once per character) — they are acting simultaneously.
+> **Splitting up.** Characters may act independently (e.g., one searches while another scouts an adjacent hex). The timer ticks once for the round regardless of how many characters act — they are working simultaneously within the same 2–4 hour stretch. Splitting up allows parallel activities but does not grant extra rounds per day. The party is still limited to 3–4 rounds before camp.
 
 ### 2. Resolve Actions
 
@@ -466,15 +466,15 @@ The party consists of four adventurers: a Ranger, a Rogue, a Druid, and a Fighte
 
 **Round 1 — Morning: Move to Hex 2 (forest)**
 
-> The party moves together. The Ranger leads navigation, the Rogue watches for threats, the Druid forages along the way, and the Fighter assists the Ranger.
+> The party moves together. The Ranger leads navigation (with the Fighter's assistance), the Rogue watches for threats, and the Druid forages along the way.
 >
-> **Ranger (Navigate)** rolls Spirit + Nature vs. TN 10: result 13 (Strong Success). The party arrives. The Ranger chooses "Lay of the land" — learns that Hex 3 to the east is also forest.
+> **Fighter (Assist)** supports the Ranger's navigation — grants +1 boon on the roll.
+>
+> **Ranger (Navigate)** rolls Spirit + Nature vs. TN 10 (with +1 boon from the Fighter): result 13 (Strong Success). The party arrives. The Ranger chooses "Lay of the land" — learns that Hex 3 to the east is also forest.
 >
 > **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 9 (Failure). No useful observations.
 >
 > **Druid (Forage, secondary)** rolls Spirit + Nature vs. TN 10: result 8 (Failure). Nothing useful found while moving through dense forest.
->
-> **Fighter (Assist)** grants +1 boon to the Ranger's navigation roll (already resolved above).
 >
 > Timer: 6 → 5. The GM describes dense forest with occasional game trails. Nothing immediately notable.
 
@@ -514,7 +514,7 @@ The party consists of four adventurers: a Ranger, a Rogue, a Druid, and a Fighte
 
 > The Ranger navigates again, the Rogue watches, and the Fighter keeps an eye out too.
 >
-> **Ranger (Navigate)** rolls Spirit + Nature vs. TN 10: result 8 (Failure). Slow going — the party arrives but the timer ticks an additional time. Timer: 3 → 2 → 1.
+> **Ranger (Navigate)** rolls Spirit + Nature vs. TN 10: result 8 (Failure). Slow going — the party arrives but the timer ticks an additional time. Timer: 3 → 2 (normal tick), then 2 → 1 (additional tick for slow going).
 >
 > **Event does not fire yet** (timer is at 1, not 0).
 >
