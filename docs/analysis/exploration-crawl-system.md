@@ -55,13 +55,13 @@ A day of exploration is divided into **four watches**, tracked by a **d4 placed 
 | **3** | Afternoon | Third turn |
 | **4** | Evening | Fourth turn |
 
-**Camping.** By default, the party must take the Camp action on the **5th turn** each day. If they choose not to camp, they suffer **1 Fatigue** for each additional turn taken after the 4th.
+**Camping.** After the 4th turn, the party should camp. If they continue without camping, they suffer **1 Fatigue** for each turn taken after the 4th.
 
 ### Movement
 
-Each turn, the party can move up to **two hexes** (or along a path to the next point in a point crawl). **Difficult terrain** (dense forest, swamp, mountains, trackless desert), **scouting**, and **tracking** reduce movement to **one hex** per turn.
+Each turn, the party can move up to **two hexes** (or along a path to the next point in a point crawl). Movement requires no roll — the party simply arrives. Direction is the players' choice.
 
-Movement requires no roll — the party simply arrives. Direction is the players' choice.
+**Reduced movement (1 hex per turn):** Moving through difficult terrain (dense forest, swamp, mountains, trackless desert), scouting an adjacent hex, or tracking a quarry each reduce movement to 1 hex. These reductions do not stack — any one of them caps movement at 1 hex.
 
 ### Exploration vs. Travel
 
@@ -224,7 +224,7 @@ Each player declares what their character does this turn. The party typically ac
 | **Fish** | Catch fish or seafood (requires a water source and fishing gear) |
 | **Track** | Follow tracks, trails, or clues to determine the direction of a target |
 | **Investigate** | Examine a discovered POI in detail (enter a ruin, interact with an NPC, study an inscription) |
-| **Camp** | Set up camp and rest. Required by the 5th turn each day |
+| **Camp** | Set up camp and rest. After the 4th turn, each turn without camping inflicts 1 Fatigue |
 
 **Free activities** (do not cost a turn):
 - Short discussion about direction or plans
@@ -239,25 +239,24 @@ Each player declares what their character does this turn. The party typically ac
 
 ### 2. Resolve Actions
 
-**Move.** The party moves up to 2 hexes in open terrain or 1 hex in difficult terrain. The GM describes each hex entered and any visible features or POIs.
-
-No roll is needed for movement. The players choose their direction and the party arrives.
-
-> Scouting, tracking, and difficult terrain each reduce movement to 1 hex per turn. These reductions do not stack — any one of them caps movement at 1 hex.
+**Move.** The party moves up to 2 hexes in open terrain or 1 hex in difficult terrain. The GM describes each hex entered and any visible features or POIs. No roll is needed.
 
 **Search.** Roll Spirit + Perception or Mind + Survival vs. the Exploration Difficulty.
 
-The player does not know the Discovery TN for any hidden POI in the hex. On a success, the GM reveals what is found — or confirms nothing is hidden. On a failure, the character finds nothing, but cannot be certain whether something was missed or nothing exists.
+The player does not know whether a hidden POI exists in the hex or what its Discovery TN is. The GM compares the roll result against any hidden POI's Discovery TN. If the result meets or exceeds the TN, the POI is found. If the result is below the TN (or no POI exists), the GM simply says "you find nothing" — the player cannot tell whether they missed something or the hex is truly empty.
 
 | Result | Effect |
 |--------|--------|
-| Success | Discover any hidden POI whose Discovery TN is met by the roll. If no POI exists, the GM confirms the hex is clear |
-| Failure | Nothing found. May retry on a later turn with +1 bane (diminishing returns) |
+| Meets Discovery TN | Discover the hidden POI. The GM describes what is found |
+| Below Discovery TN | Nothing found. The player does not know if something was missed |
+| No POI exists | Nothing found. The GM says "you find nothing" (same response as above) |
 | Blunder | Trigger a hazard or alert nearby creatures |
+
+> A character may retry a Search on a later turn with +1 bane (diminishing returns).
 
 When the party has received a Traces clue pointing to this hex, the Search gains **+1 boon**. Multiple clues stack (up to +2 boons).
 
-**Scout.** Roll Agility/Spirit + Stealth or Survival vs. the Exploration Difficulty. Movement is reduced to 1 hex this turn.
+**Scout.** Roll Agility/Spirit + Stealth or Survival vs. the Exploration Difficulty. Movement is reduced to 1 hex this turn (see Movement).
 
 | Result | Effect |
 |--------|--------|
@@ -297,15 +296,13 @@ When the party has received a Traces clue pointing to this hex, the Search gains
 
 > An adventurer with the Wilderness Expert talent may turn raw fish into non-perishable rations.
 
-**Track.** Roll Spirit + Survival or Mind + Nature vs. the Exploration Difficulty (or a TN set by the quarry's Stealth). On success, the GM indicates which direction the quarry went and how recently. This includes following any trails discovered from Traces events.
-
-> Movement is reduced to 1 hex this turn while following a trail.
+**Track.** Roll Spirit + Survival or Mind + Nature vs. the Exploration Difficulty (or a TN set by the quarry's Stealth). Movement is reduced to 1 hex this turn regardless of the result (see Movement). On success, the GM indicates which direction the quarry went and how recently. This includes following any trails discovered from Traces events.
 
 **Investigate.** Examine a discovered POI in detail — enter a ruin, interact with an NPC, study an inscription, or deal with whatever the site contains. Resolved narratively or with specific skill checks as appropriate. Successfully clearing a POI's challenges earns the discovery reward assigned during setup (see POI Discovery Reward Table).
 
 **Camp.** Set up camp and rest for the night. Follow the standard [Resting](../06-scenes/03-resting.md) rules. Each adventurer rolls a **Supply Check** for rations (unless fed by a Forage, Hunt, or Fish result). Assign night watches as desired. The camping turn still advances the day clock and triggers an event roll.
 
-> By default, the party must Camp by the **5th turn** each day. Each turn taken after the 4th without camping inflicts **1 Fatigue** on every adventurer.
+> After the 4th turn each day, each turn taken without camping inflicts **1 Fatigue** on every adventurer.
 
 ### 3. Advance the Day Clock
 
@@ -332,7 +329,7 @@ At the end of each turn, the GM rolls **d66** on the Exploration Event Table. Th
 
 ### 5. Check for Day's End
 
-After the 4th turn each day, the party should camp. Continuing past the 4th turn inflicts **1 Fatigue per additional turn** on every adventurer who does not camp. Night actions also suffer **+1 bane** on all rolls.
+After the 4th turn each day, the party should camp. Continuing past the 4th turn inflicts **1 Fatigue per additional turn** on every adventurer who does not camp. Night turns also suffer **+1 bane** on all rolls.
 
 ---
 
@@ -360,7 +357,7 @@ The party: a Ranger, a Rogue, a Druid, and a Fighter.
 
 **Day 1**
 
-**Turn 1 — Morning (clock: 1).** The party moves into the Thornwood. Dense forest is difficult terrain, so they move 1 hex to Hex 2. The Ranger leads, the Rogue keeps watch, the Druid forages.
+**Turn 1 — Morning (clock: 1).** The party moves into the Thornwood. Dense forest is difficult terrain, so they move 1 hex to Hex 2 (no roll needed — movement doesn't require rolls). The Ranger leads, the Rogue keeps watch, the Druid forages.
 
 > **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 9 — nothing spotted.
 >
@@ -384,7 +381,7 @@ The party: a Ranger, a Rogue, a Druid, and a Fighter.
 
 **Turn 4 — Evening (clock: 4).** The party camps at the logging camp.
 
-> The camp provides automatic shelter (it's a visible POI with shelter). The Druid forages at camp: result 12 (Success) — chooses edible plants, gaining 1 × simple rations. The others roll Supply Checks.
+> The camp provides automatic shelter (it's a visible POI with shelter). The Druid forages at camp: result 12 (Success) — chooses edible plants, gaining 1 × simple rations (d4). These spoil, losing 1 use at the start of each day. The others roll Supply Checks.
 >
 > **Event roll (d66):** 6, 1 → Nothing. Quiet night. The party rests.
 
@@ -394,11 +391,11 @@ The party: a Ranger, a Rogue, a Druid, and a Fighter.
 
 > **Event roll (d66):** 5, 1 → Terrain feature (path blocked). A fallen tree blocks the main approach. The GM calls for an Athletics check to bypass — the Fighter clears the way.
 
-**Turn 2 — Midday (clock: 2).** The party arrives at Hex 11 and decides to search.
+**Turn 2 — Midday (clock: 2).** The party arrives at Hex 11. The Ranger searches the area.
 
-> **Ranger (Search)** rolls Spirit + Survival vs. TN 10: result 11 — success. The GM checks: no hidden POI here, but reveals the pre-placed clue: "Boot prints and broken branches heading east — several people passed through recently." This is the trace pointing toward the raider camp in Hex 12.
+> **Ranger (Search)** rolls Spirit + Survival vs. TN 10: result 11. The GM checks: no hidden POI here. "You find nothing hidden in this hex."
 >
-> **Event roll (d66):** 4, 1 → Traces (tracks). Reinforces the boot prints — now the party has two clues pointing east (+2 boons on Search in Hex 12).
+> **Event roll (d66):** 4, 1 → Traces (tracks). The GM reveals the pre-placed clue for this hex: "Boot prints and broken branches heading east — several people passed through recently." This points toward the raider camp in Hex 12. Combined with the earlier trail blazes, the party now has two clues pointing east (+2 boons on Search in Hex 12).
 >
 > The Rogue suggests scouting before the party commits.
 
