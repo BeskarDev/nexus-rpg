@@ -41,7 +41,7 @@ Both formats use the same procedure. The only difference is map structure.
 
 | Format | Structure | Best For |
 |--------|-----------|----------|
-| **Hex Crawl** | Region divided into hexes (~6 miles / 10 km across). Each hex has a terrain type and may hold a POI. Party moves in any direction. | Wide-open wilderness with many possible routes |
+| **Hex Crawl** | Region divided into hexes (~6 miles / 10 km across). Each hex has a terrain type and may hold a location. Party moves in any direction. | Wide-open wilderness with many possible routes |
 | **Point Crawl** | Network of named locations connected by paths. Each path has a terrain type and length (1–2 turns). Movement follows connections. | Regions shaped by geography (river valleys, mountain passes) or tighter narrative control |
 
 ### The Day Clock
@@ -88,7 +88,7 @@ Use these checklists at the table. Full details for each step follow below.
 **Region Setup (GM, before play)**
 
 1. Prepare the map and assign terrain
-2. Place points of interest (visible and hidden)
+2. Place locations (visible and hidden)
 3. Set the exploration difficulty
 4. Roll or choose starting weather
 5. Prepare the encounter table
@@ -103,11 +103,11 @@ Use these checklists at the table. Full details for each step follow below.
 
 To add variety, overlay **terrain features** onto your base terrain using the **Terrain Feature Table (d66)** in the [Random Tables](#random-tables) section. Features like ravines, groves, and ruins work with any climate and terrain type. Use them to differentiate hexes that share the same base terrain.
 
-### 2. Place Points of Interest
+### 2. Place Locations
 
-Scatter **points of interest** (POIs) across the map. Use the **POI Distribution Table** in the [Random Tables](#random-tables) section to determine whether each hex holds no POI, a hidden POI, or a visible one.
+Scatter **locations** across the map. Use the **Location Distribution Table** in the [Random Tables](#random-tables) section to determine whether each hex holds no location, a hidden location, or a visible one.
 
-POIs are either **visible** (immediately apparent when entering the hex) or **hidden** (require a successful Search to find). For each hidden POI, assign a **Discovery TN**:
+Locations are either **visible** (immediately apparent when entering the hex) or **hidden** (require a successful Search to find). For each hidden location, assign a **Discovery TN**:
 
 | Difficulty | TN | Examples |
 |------------|----|---------|
@@ -116,11 +116,11 @@ POIs are either **visible** (immediately apparent when entering the hex) or **hi
 | Very Hard | 12 | Magically hidden site, sealed vault |
 | Legendary | 14 | Mythic locations, sacred sanctuaries |
 
-To randomly generate POI types and discovery rewards, use the **Random POI Type Table (d66)** and **POI Discovery Reward Table** in the [Random Tables](#random-tables) section.
+To randomly generate location types and discovery rewards, use the **Random Location Type Table (d66)** and **Location Discovery Reward Table** in the [Random Tables](#random-tables) section.
 
-**Supernatural hexes.** Roughly 1 in 10 hexes may hold a supernatural or magical quality — cursed ground, a divine wellspring, an arcane anomaly, or a place where the veil between worlds is thin. Mark these during setup, then roll on the **Supernatural Feature Table** in the [Random Tables](#random-tables) section to determine the specific type and its mechanical effects. A supernatural hex is always hidden; its Discovery TN is Very Hard (12) or Legendary (14), and perceiving it may require specific rituals or magical senses.
+**Supernatural locations.** The Location Distribution Table can place supernatural locations during setup. These are always hidden, with Discovery TN Very Hard (12) or Legendary (14). When a supernatural location is placed, roll on each of the three **Supernatural Feature tables** (Origin, Twist, Effect) in the [Random Tables](#random-tables) section to create a unique combination ready for play. Each supernatural feature can be described as: *"[Origin] that [Twist], [Effect]."* Perceiving the location's true nature may require specific rituals or magical senses.
 
-> **Seeding clues.** Place trace clues in hexes adjacent to hidden POIs. When the event table produces a Traces result in those hexes, the pre-placed clue is used instead of rolling randomly. NPCs, found maps, and visible landmarks (smoke columns, distinctive peaks) also guide players. Each clue pointing to a hex grants **+1 boon** on Search rolls there (max +2 boons from multiple clues).
+> **Seeding clues.** Place trace clues in hexes adjacent to hidden locations. When the event table produces a Traces result in those hexes, the pre-placed clue is used instead of rolling randomly. NPCs, found maps, and visible landmarks (smoke columns, distinctive peaks) also guide players. Each clue pointing to a hex grants **+1 boon** on Search rolls there (max +2 boons from multiple clues).
 
 ### 3. Set the Exploration Difficulty
 
@@ -176,7 +176,7 @@ Each player declares what their character does this turn. The party typically ac
 | **Hunt** | Track and kill game for food (requires game in the region and weapons/traps) |
 | **Fish** | Catch fish or seafood (requires a water source and fishing gear) |
 | **Track** | Follow tracks, trails, or clues to determine the direction of a target |
-| **Investigate** | Examine a discovered POI in detail (enter a ruin, interact with an NPC, study an inscription) |
+| **Investigate** | Examine a discovered location in detail (enter a ruin, interact with an NPC, study an inscription) |
 | **Camp** | Set up camp and rest. Requires a suitable spot; without one, roll Survival or suffer a bad night |
 
 **Free activities** (do not cost a turn):
@@ -192,17 +192,17 @@ Each player declares what their character does this turn. The party typically ac
 
 ### 2. Resolve Actions
 
-**Move.** The party moves up to 2 hexes in open terrain or 1 hex in difficult terrain. The GM describes each hex entered and any visible features or POIs. No roll is needed.
+**Move.** The party moves up to 2 hexes in open terrain or 1 hex in difficult terrain. The GM describes each hex entered and any visible features or locations. No roll is needed.
 
 **Search.** Roll Spirit + Perception or Mind + Survival vs. the Exploration Difficulty.
 
-The player does not know whether a hidden POI exists in the hex or what its Discovery TN is. The GM compares the roll result against any hidden POI's Discovery TN. If the result meets or exceeds the TN, the POI is found. If the result is below the TN (or no POI exists), the GM simply says "you find nothing" — the player cannot tell whether they missed something or the hex is truly empty.
+The player does not know whether a hidden location exists in the hex or what its Discovery TN is. The GM compares the roll result against any hidden location's Discovery TN. If the result meets or exceeds the TN, the location is found. If the result is below the TN (or no location exists), the GM simply says "you find nothing" — the player cannot tell whether they missed something or the hex is truly empty.
 
 | Result | Effect |
 |--------|--------|
-| Meets Discovery TN | Discover the hidden POI. The GM describes what is found |
+| Meets Discovery TN | Discover the hidden location. The GM describes what is found |
 | Below Discovery TN | Nothing found. The player does not know if something was missed |
-| No POI exists | Nothing found. The GM says "you find nothing" (same response as above) |
+| No location exists | Nothing found. The GM says "you find nothing" (same response as above) |
 | Blunder | Trigger a hazard or alert nearby creatures |
 
 > A character may retry a Search on a later turn with +1 bane (diminishing returns).
@@ -213,7 +213,7 @@ When the party has received a Traces clue pointing to this hex, the Search gains
 
 | Result | Effect |
 |--------|--------|
-| Success | Learn terrain type, visible POIs, and whether creatures or NPCs are present in the scouted hex |
+| Success | Learn terrain type, visible locations, and whether creatures or NPCs are present in the scouted hex |
 | Failure | Learn the terrain type only |
 | Blunder | Detected — hostile creatures in the hex are alerted and may pursue |
 
@@ -251,11 +251,11 @@ When the party has received a Traces clue pointing to this hex, the Search gains
 
 **Track.** Roll Spirit + Survival or Mind + Nature vs. the Exploration Difficulty (or a TN set by the quarry's Stealth). Movement is reduced to 1 hex this turn regardless of the result (see Movement). On success, the GM indicates which direction the quarry went and how recently. This includes following any trails discovered from Traces events.
 
-**Investigate.** Examine a discovered POI in detail — enter a ruin, interact with an NPC, study an inscription, or deal with whatever the site contains. Resolved narratively or with specific skill checks as appropriate. Successfully clearing a POI's challenges earns the discovery reward assigned during setup (see POI Discovery Reward Table).
+**Investigate.** Examine a discovered location in detail — enter a ruin, interact with an NPC, study an inscription, or deal with whatever the site contains. Resolved narratively or with specific skill checks as appropriate. Successfully clearing a location's challenges earns the discovery reward assigned during setup (see Location Discovery Reward Table).
 
 **Camp.** Set up camp and rest for the night. Follow the standard [Resting](../06-scenes/03-resting.md) rules. Each adventurer rolls a **Supply Check** for rations (unless fed by a Forage, Hunt, or Fish result). Assign night watches as desired. The camping turn still advances the day clock and triggers an event roll.
 
-**Suitable camping spots** include any POI that provides shelter (such as a cave shelter, settlement, or abandoned camp) or a terrain feature that affords natural protection (such as a clearing, overhang, or cave mouth). If no suitable spot is available, one character rolls Spirit + Survival vs. the Exploration Difficulty to establish a makeshift shelter:
+**Suitable camping spots** include any location that provides shelter (such as a cave shelter, settlement, or abandoned camp) or a terrain feature that affords natural protection (such as a clearing, overhang, or cave mouth). If no suitable spot is available, one character rolls Spirit + Survival vs. the Exploration Difficulty to establish a makeshift shelter:
 
 - **Success:** Makeshift shelter found. The party rests normally.
 - **Failure:** No adequate shelter. The party suffers a **bad night** (per the [Resting](../06-scenes/03-resting.md) rules).
@@ -277,11 +277,11 @@ At the end of each turn, the GM rolls **1d6** on the Exploration Event Table, th
 | **1** | **Encounter** — roll Subject (Generic Encounter Table), Activity, and Complication (see Random Tables) |
 | **2** | **Weather Shift** — roll on the Weather Shift Sub-Table (see Random Tables) |
 | **3** | **Wear and Tear** — each adventurer chooses one item they carry; items with Durability make a Durability check, items with uses lose 1 use, all other items are unaffected |
-| **4** | **Traces** — signs of something nearby; roll on the Traces Sub-Table (see Random Tables), pointing toward a pre-placed hidden POI if one is adjacent |
+| **4** | **Traces** — signs of something nearby; roll on the Traces Sub-Table (see Random Tables), pointing toward a pre-placed hidden location if one is adjacent |
 | **5** | **Terrain Feature** — an obstacle or hazard; roll on the Terrain Feature Sub-Table (see Random Tables) |
 | **6** | **Nothing** — the stretch passes without incident |
 
-> **Traces and clue direction.** When Traces occur, point the clue toward a pre-placed hidden POI if one is adjacent. Otherwise, point toward the nearest undiscovered POI. If none are nearby, roll d6 for a random adjacent hex (clockwise from north: 1=N, 2=NE, etc.) or select randomly among connected paths in a point crawl.
+> **Traces and clue direction.** When Traces occur, point the clue toward a pre-placed hidden location if one is adjacent. Otherwise, point toward the nearest undiscovered location. If none are nearby, roll d6 for a random adjacent hex (clockwise from north: 1=N, 2=NE, etc.) or select randomly among connected paths in a point crawl.
 
 > **Event frequency.** Rolling each turn means up to 6 events per day. Most results (Weather, Traces, Nothing) are low-impact, keeping the pace moving. Only Encounters and Hazards demand immediate resolution.
 
@@ -301,7 +301,7 @@ After the 4th turn (Evening), the party should camp. If they continue into the n
 - **Map:** 20 hexes (4×5 grid). Mostly dense forest (difficult), with two hill hexes, one stream hex, and one clearing (open).
 - **Starting Weather:** Overcast (no effect).
 
-**Placed POIs:**
+**Placed Locations:**
 - Hex 7 (clearing): Abandoned logging camp (visible). Reward: sheltered campsite (automatic shelter when camping here).
 - Hex 12 (forest): Raider camp (hidden, Discovery TN 10). Reward: buried chest (3d6 × 10 coins, may be trapped).
 - Hex 15 (hills): Ancient watchtower ruins (hidden, Discovery TN 12). Reward: dungeon entrance (deeper adventure site).
@@ -329,7 +329,7 @@ The party: a Ranger, a Rogue, a Druid, and a Fighter.
 >
 > **Event roll (d6):** 4, sub-table 2 → Traces (markings). Faded trail blazes carved into tree trunks, heading south. The GM notes this naturally points toward Hex 7.
 
-**Turn 3 — Afternoon (clock: 3).** The party heads south. Hex 7 is a clearing (open terrain), so they can move 2 hexes — but the clearing is just 1 hex away. They arrive at Hex 7 and discover the abandoned logging camp (visible POI).
+**Turn 3 — Afternoon (clock: 3).** The party heads south. Hex 7 is a clearing (open terrain), so they can move 2 hexes — but the clearing is just 1 hex away. They arrive at Hex 7 and discover the abandoned logging camp (visible location).
 
 > No roll needed — open terrain.
 >
@@ -351,7 +351,7 @@ The party: a Ranger, a Rogue, a Druid, and a Fighter.
 
 **Turn 2 — Midday (clock: 2).** The party arrives at Hex 11. The Ranger searches the area.
 
-> **Ranger (Search)** rolls Spirit + Survival vs. TN 10: result 11. The GM checks: no hidden POI here. "You find nothing hidden in this hex."
+> **Ranger (Search)** rolls Spirit + Survival vs. TN 10: result 11. The GM checks: no hidden location here. "You find nothing hidden in this hex."
 >
 > **Event roll (d6):** 4, sub-table 1 → Traces (tracks). The GM reveals the pre-placed clue for this hex: "Boot prints and broken branches heading east — several people passed through recently." This points toward the raider camp in Hex 12. Combined with the earlier trail blazes, the party now has two clues pointing east (+2 boons on Search in Hex 12).
 >
@@ -390,19 +390,20 @@ Roll d66 and overlay the result onto the hex's base terrain. A ravine in a deser
 
 ---
 
-### POI Distribution (d6)
+### Location Distribution (d6)
 
 Roll once per hex to determine what it holds before assigning a type or reward.
 
 | d6 | Result |
 |:--:|--------|
-| 1–3 | No POI — the hex holds nothing notable |
-| 4–5 | Hidden POI — present but not apparent; requires a successful Search to find |
-| 6 | Visible POI — immediately apparent when entering the hex |
+| 1–3 | No location — the hex holds nothing notable |
+| 4 | Hidden location — present but not apparent; requires a successful Search to find |
+| 5 | Visible location — immediately apparent when entering the hex |
+| 6 | Supernatural location — always hidden; roll on the Supernatural Feature tables during setup |
 
 ---
 
-### Random POI Type Table (d66)
+### Random Location Type Table (d66)
 
 | d66 | 1 | 2 | 3 | 4 | 5 | 6 |
 |:---:|---|---|---|---|---|---|
@@ -415,24 +416,54 @@ Roll once per hex to determine what it holds before assigning a type or reward.
 
 ---
 
-### Supernatural Feature Table (d6)
+### Supernatural Feature Tables
 
-Rolled when the party discovers a supernatural hex (see Exploration Setup §2). Each result includes a specific mechanical effect so the GM has a ready-to-use encounter.
+Rolled during setup when a supernatural location is placed (see Location Distribution Table). Roll once on each of the three sub-tables to define the feature. Combine the results to describe the site: *"[Origin] that [Twist], [Effect]."*
 
-| d6 | Feature | Mechanical Effect |
-|:--:|---------|-----------------|
-| 1 | **Cursed Ground** — soil blackened and barren, unnatural chill in the air | Creatures resting here gain no benefit from the rest. Supply Checks have +1 bane while camped here. The curse lifts if a character succeeds on a Spirit + Mysticism roll vs. Exploration Difficulty (ritual takes 1 turn) |
-| 2 | **Divine Wellspring** — a pool or spring that pulses faintly with warm light | Each adventurer who drinks removes 1 Fatigue and 1 Wound (once per visit). The site is sacred; desecrating it (looting offerings, violence) triggers a Morale-style consequence |
-| 3 | **Arcane Anomaly** — drifting motes of light, items levitating, or echoes of words never spoken | Arcane magic is unstable here. Each time a spell is cast, roll d6: 1 it misfires (reroll on the mishap table), 2–3 it costs double Focus, 4–6 it functions normally. The anomaly radiates visible light — visible from adjacent hexes |
-| 4 | **Spirit-Haunted Ground** — whispers at the edge of hearing, faces in reflective surfaces | Ancestors or bound spirits dwell here. A character may attempt communion (Spirit + Mysticism vs. TN 10) to gain one of: reveal a hidden POI in the region, answer one yes/no question about local history, or receive a blessing (+1 boon on one skill until the next rest) |
-| 5 | **Ley Line Nexus** — cracks of light in the earth, subtle vibration in metal and bone | Spellcasters may spend 1 turn in communion here to recover 1 additional Focus (once per visit). The nexus is visible from adjacent hexes as a faint glow. Staying overnight here counts as a full rest for spellcasters |
-| 6 | **Thin Veil** — reflections move a heartbeat late, temperature swings without cause | The boundary between worlds is weak. When the hex is first entered, the GM rolls d6: 1–2 a hostile spirit manifests (treat as an Encounter with a spirit from Generic Encounter Table row 6), 3–4 a curious spirit offers cryptic information (GM reveals one clue or hidden POI), 5–6 a vision of the site's past plays out (purely narrative, no mechanical effect) |
+#### Supernatural Feature Origin (d6)
+
+The magical source that created or claimed this place.
+
+| d6 | Origin |
+|:--:|--------|
+| 1 | **Sorcerous Corruption** — forbidden arcane rites were practiced here until the earth itself was defiled |
+| 2 | **Blood Consecration** — an ancient sacrifice or binding oath was performed here; its power endures undimmed by time |
+| 3 | **Ancestor's Claim** — honored or restless dead have marked this as their territory and refuse to release it |
+| 4 | **Divine Mandate** — a deity or primordial spirit touched this place, leaving an enduring mark of favor or wrath |
+| 5 | **Elemental Saturation** — a primal force (tempest, flame, earth, or water) has thoroughly seeped into the land |
+| 6 | **Fate's Mark** — prophecy or destiny has singled out this place; those with the sight feel it instinctively |
+
+#### Supernatural Feature Twist (d6)
+
+How the feature alters the surrounding environment.
+
+| d6 | Twist |
+|:--:|-------|
+| 1 | **Unnatural Silence** — sound dies within the area; voices, footsteps, and distant noises are swallowed |
+| 2 | **Warped Growth** — vegetation is discolored, gnarled, or dead; animals avoid the site without apparent cause |
+| 3 | **Clinging Haze** — mist, smoke, or shimmering heat clings to the location regardless of weather or wind |
+| 4 | **Stained Earth** — soil, stone, or water is discolored in unnatural patterns that cannot be washed away |
+| 5 | **False Reflections** — shadows lag behind their sources; still water and polished metal show subtly wrong images |
+| 6 | **Watching Presence** — invisible eyes seem to observe all within; symbols or faces appear in bark, stone, and still water |
+
+#### Supernatural Feature Effect (d6)
+
+How the feature mechanically impacts adventurers who enter or stay.
+
+| d6 | Effect |
+|:--:|--------|
+| 1 | **Disturbed Rest** — those who camp here roll Strength + Fortitude vs. TN 10 or gain 1 Fatigue despite resting; Supply Checks have +1 bane |
+| 2 | **Arcane Instability** — each spell cast here triggers a d6 roll: 1–2 mishap (roll on the mishap table), 3–4 double Focus cost, 5–6 normal |
+| 3 | **Spiritual Attunement** — a character who meditates here for 1 turn may roll Spirit + Mysticism vs. TN 10: success reveals one hidden location or regional clue |
+| 4 | **Restorative Touch** — first contact with the feature's source (pool, stone, spring) removes 1 Fatigue and 1 Wound (once per visit) |
+| 5 | **Creeping Dread** — each adventurer rolls Spirit + Fortitude vs. TN 10 on entering or becomes briefly Frightened; repeat each full turn spent here |
+| 6 | **Primal Surge** — spellcasters recover 1 bonus Focus when resting here; all adventurers regain 1 Resolve on their first visit |
 
 ---
 
-### POI Discovery Reward Table
+### Location Discovery Reward Table
 
-Rolled (or chosen by the GM) when the party fully discovers and clears a POI. Roll 1d6 for the category, then 1d6 on the matching sub-table.
+Rolled (or chosen by the GM) when the party fully discovers and clears a location. Roll 1d6 for the category, then 1d6 on the matching sub-table.
 
 | d6 | Discovery | Effect |
 |:--:|-----------|--------|
@@ -473,7 +504,7 @@ Rolled (or chosen by the GM) when the party fully discovers and clears a POI. Ro
 | 2 | Vantage point — the next Scout action taken from this hex gains +1 boon |
 | 3 | Shortcut — travel to one adjacent hex this day costs 0 turns instead of 1 |
 | 4 | Rare materials — gain crafting components (Q3–Q4 quality, 2d6 × 10 coins value) |
-| 5 | Trail markers or an old map fragment — reveals 1d3 adjacent hexes and any visible POIs within them |
+| 5 | Trail markers or an old map fragment — reveals 1d3 adjacent hexes and any visible locations within them |
 | 6 | Forgotten cache of tools — gain a d6 supply die of general equipment (rope, torches, tools) |
 
 #### Haven
@@ -484,7 +515,7 @@ Rolled (or chosen by the GM) when the party fully discovers and clears a POI. Ro
 | 2 | Hunter's hut or shepherd's refuge — automatic shelter and basic tools (d6 supply die) |
 | 3 | Roadside shrine — automatic shelter and one party member who prays regains 1 Resolve |
 | 4 | Mine or cave entrance — automatic shelter and 1d4 units of primitive materials |
-| 5 | Hermit's dwelling — automatic shelter and one piece of local knowledge (GM reveals a hidden POI) |
+| 5 | Hermit's dwelling — automatic shelter and one piece of local knowledge (GM reveals a hidden location) |
 | 6 | Sacred grove or waystone — automatic shelter and each adventurer skips today's ration Supply Check |
 
 #### Intelligence
@@ -492,11 +523,11 @@ Rolled (or chosen by the GM) when the party fully discovers and clears a POI. Ro
 | d6 | Information |
 |:--:|-------------|
 | 1 | Warning signs — GM reveals one danger or hostile group in an adjacent hex |
-| 2 | Map fragment — reveals 1d3 adjacent hexes and their terrain and POI status |
+| 2 | Map fragment — reveals 1d3 adjacent hexes and their terrain and location status |
 | 3 | Ancient inscription — answers one yes/no question about the region's history or threats |
 | 4 | Trail markers — grants +1 boon on all Track rolls in this region for the rest of the session |
 | 5 | Prophetic omen — GM reveals one outcome if the party takes a specific route or action today |
-| 6 | Local legend — GM reveals the location of one hidden POI anywhere in the region |
+| 6 | Local legend — GM reveals the location of one hidden location anywhere in the region |
 
 #### Wanderers
 
