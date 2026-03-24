@@ -8,7 +8,8 @@ Where the [Travel System](../06-scenes/07-challenges/02-travel.md) handles **jou
 
 ## Design Goals
 
-- Provide a **structured game loop** for open-map exploration that keeps every player engaged each "turn" (2–4 hours of in-game time).
+- Provide a **round-based exploration loop** where each player chooses an action each round, mirroring the structure and pacing of combat or dungeon delves.
+- Emphasize **player agency**: each character independently decides what to do — move, search, scout, forage, or assist — rather than being locked into a fixed role.
 - Use the existing **dice timer** and **event table** framework from the [Scene & Time Scale Procedures](../06-scenes/01-scenes-time-intervals.md) to generate events and pacing.
 - Integrate with the **Challenge System** for goal-oriented exploration (finding a lost ruin, tracking a creature to its lair).
 - Distinguish clearly from the **Travel System**: exploration is about discovery and uncertainty, not progress toward a known destination.
@@ -74,8 +75,8 @@ Actions include:
 | **Time scale** | ~1 day per action | 2–4 hours per action |
 | **Progress tracker** | Challenge die counts down to arrival | No linear progress die — movement is spatial across the map |
 | **Map** | Route-based (origin → destination) | Area-based (hex grid or point network) |
-| **Roles** | Navigator, Scout, and optional daily roles | Pathfinder, Lookout, and optional per-action roles |
-| **Event trigger** | Once per day (daily event roll) | Dice timer ticks per action; event on timer expiry |
+| **Structure** | Role-based daily procedure | Round-based — each player picks an action per round |
+| **Event trigger** | Once per day (daily event roll) | Dice timer ticks per round; event on timer expiry |
 | **Discovery** | Scout's bonus option | Core loop — searching and uncovering the map is the point |
 | **Retracing** | Not relevant (forward progress only) | Common — party may revisit explored hexes/points |
 | **Supplies** | Daily ration checks | Supply checks triggered by events or camping |
@@ -149,103 +150,26 @@ Prepare the following for the region:
 
 ---
 
-## Exploration Roles
+## Exploration Procedure (Per Round)
 
-During exploration, each party member fills a role. Roles are chosen at the start of each day and remain fixed for that day. Unlike travel roles, not all roles roll every action — only the active roles for the current action roll.
+Each exploration round represents one stretch of time (2–4 hours). The procedure follows a round-based structure similar to combat or delving — each player chooses what their character does, actions resolve, and the GM advances pacing.
 
-### Pathfinder (Mandatory)
+### 1. Declare Actions
 
-**Roll:** Spirit/Mind + Nature or Survival vs. Exploration Difficulty
-
-The Pathfinder leads the group through the terrain, choosing routes and reading the landscape.
-
-**When:** Roll once per Move action.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Lost — the party moves to a random adjacent hex/point instead of the intended one. +1 bane on next Pathfinder roll |
-| Failure | Slow going — the Move action takes extra time (tick the dice timer by 1 additional) |
-| Weak Success | Arrive at the intended hex/point as normal |
-| Strong Success | Arrive and choose one bonus (see below) |
-| Critical Success | Arrive and choose two bonuses |
-
-**Bonuses:**
-- Efficient route (do not tick the dice timer for this Move)
-- Lay of the land (learn the terrain type of one adjacent unexplored hex/point)
-- Keen eye (gain +1 boon on the next Search action in the destination hex/point)
-
-### Lookout (Mandatory)
-
-**Roll:** Spirit + Perception vs. Exploration Difficulty
-
-The Lookout watches for threats, notes surroundings, and provides early warning.
-
-**When:** Roll once per Move action, simultaneously with the Pathfinder.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Ambushed — if a Threat event occurs before the next roll, the party is surprised |
-| Failure | No useful warning |
-| Weak Success | Choose one bonus (see below) |
-| Strong Success | Choose two bonuses |
-| Critical Success | Choose all three bonuses |
-
-**Bonuses:**
-- Spot feature (learn whether the destination hex/point contains a point of interest, without details)
-- Avoid danger (if the next event is a Threat, the party may choose to avoid it by retreating to the previous hex/point — costs 1 additional timer tick)
-- Landmark sighting (learn the terrain type of up to two adjacent hexes/points visible from the current position)
-
-### Forager (Optional)
-
-**Roll:** Spirit/Mind + Nature vs. Exploration Difficulty
-
-**When:** Roll once per day, or once per Search/Camp action in suitable terrain.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Poisonous find — one party member rolls Spirit + Fortitude vs. the Exploration Difficulty or gains the poisoned condition |
-| Failure | Nothing found |
-| Weak Success | Gather enough food and water for 1 party member today (skip their Supply Check) |
-| Strong Success | Gather enough for 2 party members |
-| Critical Success | Gather enough for the entire party; additionally find 1d4 useful herbs or materials |
-
-### Scout (Optional)
-
-**Roll:** Agility/Spirit + Stealth or Survival vs. Exploration Difficulty
-
-The Scout ranges ahead of the group, gathering intelligence without committing the party.
-
-**When:** Instead of a Move action, the Scout can spend an exploration action to reconnoiter an adjacent hex/point without the party entering it.
-
-| Result | Effect |
-|--------|--------|
-| Blunder | Detected — if the hex/point contains hostile creatures, they are now alerted and may pursue the party |
-| Failure | Unclear — learn the terrain type only |
-| Weak Success | Learn the terrain type and whether a visible point of interest exists |
-| Strong Success | Learn terrain, visible POIs, and the presence of any creatures or NPCs |
-| Critical Success | Full reconnaissance — learn all of the above plus the Discovery TN of any hidden features |
-
-> Scouting consumes the Scout's action for the current stretch. The dice timer still ticks once as normal for the stretch (time passes while the Scout is away and the party waits). However, scouting does not require a Pathfinder roll since the party itself is not moving.
-
----
-
-## Exploration Procedure (Per Action)
-
-Each exploration action follows this sequence:
-
-### 1. Declare Action
-
-The party declares what they do this stretch:
+Each player declares what their character does this round. Characters may act independently or as a group.
 
 | Action | Description | Ticks Timer? |
 |--------|-------------|:------------:|
-| **Move** | Travel to an adjacent hex or along a path to the next point | Yes |
+| **Move** | Travel to an adjacent hex or along a path to the next point. One character leads navigation; others moving with the group choose a secondary action (Watch, Forage, or Assist) | Yes |
 | **Search** | Thoroughly search the current hex/point for hidden features | Yes |
 | **Investigate** | Examine a discovered POI in detail (enter a ruin, study an inscription, interact with an NPC) | Yes |
 | **Camp** | Set up camp and rest. Required before nightfall | Yes |
-| **Forage** | Gather food, water, or materials in the current hex/point | Yes |
+| **Forage** | Gather food, water, or materials in the current hex/point (or while moving with the group) | Yes (or free as secondary during Move) |
 | **Track** | Follow tracks, trails, or clues to determine direction of a target | Yes |
-| **Backtrack** | Return to a previously explored hex/point along a known route | Yes (but no Pathfinder roll needed) |
+| **Scout** | Range ahead to an adjacent hex/point without the party entering it. Roll Agility/Spirit + Stealth or Survival vs. Exploration Difficulty | Yes |
+| **Watch** | Stay alert for threats, note surroundings, and provide early warning (or while moving with the group). Roll Spirit + Perception vs. Exploration Difficulty | Yes (or free as secondary during Move) |
+| **Assist** | Help another character's action — grant them +1 boon on their roll | Free (as secondary during Move) |
+| **Backtrack** | Return to a previously explored hex/point along a known route | Yes (but no navigation roll needed) |
 
 **Free activities** (do not tick the timer):
 - Short discussion about direction or plans
@@ -254,31 +178,73 @@ The party declares what they do this stretch:
 - Note the current hex/point on the party's map
 - Brief conversation with a willing NPC
 
-### 2. Tick the Dice Timer
+> **Moving as a group.** When the party moves together, one character leads navigation and the others choose a secondary action to perform along the way — keeping watch, foraging, or assisting the navigator. These secondary actions do not require a separate round; they resolve alongside the Move.
 
-Reduce the dice timer by 1 (or more, if the Pathfinder failed or the action is especially time-consuming).
+> **Splitting up.** Characters may act independently (e.g., one searches while another scouts an adjacent hex). Each independent action ticks the timer once. If multiple characters take independent actions in the same round, the timer ticks once for the round (not once per character) — they are acting simultaneously.
 
-### 3. Roll for Active Roles
+### 2. Resolve Actions
 
-- **Move:** Pathfinder and Lookout roll simultaneously.
-- **Search:** The searching character rolls Spirit + Perception or Mind + Survival vs. the hex/point's Discovery TN (or the Exploration Difficulty if no hidden feature is present). Other characters may assist.
-- **Track:** The tracking character rolls Spirit + Survival or Mind + Nature vs. the Exploration Difficulty (or a TN set by the quarry's Stealth).
-- **Forage:** The Forager rolls as described above.
-- **Investigate / Camp:** Resolved narratively or with specific skill checks as needed.
+Resolve each character's action using the appropriate skill check:
 
-### 4. Resolve Results
+**Navigate (Move action):** The character leading the group rolls Spirit/Mind + Nature or Survival vs. the Exploration Difficulty.
 
-Apply the effects of the rolls. If moving, the party arrives at the new hex/point and the GM describes what is immediately visible. If searching, the GM reveals any hidden features the roll uncovers.
+| Result | Effect |
+|--------|--------|
+| Blunder | Lost — the party moves to a random adjacent hex/point instead of the intended one. +1 bane on the next navigation roll |
+| Failure | Slow going — the Move takes extra time (tick the dice timer by 1 additional) |
+| Weak Success | Arrive at the intended hex/point as normal |
+| Strong Success | Arrive and choose one bonus: efficient route (do not tick the dice timer), lay of the land (learn terrain of one adjacent unexplored hex/point), or keen eye (+1 boon on the next Search in this hex/point) |
+| Critical Success | Arrive and choose two bonuses from the list above |
 
-### 5. Check the Dice Timer
+**Watch (secondary or standalone):** The watching character rolls Spirit + Perception vs. the Exploration Difficulty.
 
-If the dice timer reached 0 during this action, roll on the **Exploration Event Table** and reset the timer.
+| Result | Effect |
+|--------|--------|
+| Blunder | Distracted — if an Encounter event occurs before the next round, the party is surprised |
+| Failure | No useful observations |
+| Weak Success | Choose one bonus: spot feature (learn whether the current or destination hex/point contains a POI, without details) or landmark sighting (learn terrain of up to two adjacent hexes/points) |
+| Strong Success | Choose two bonuses from the list above, or choose one and also gain early warning (if the next event is a Threat, the party may avoid it by retreating — costs 1 additional timer tick) |
+| Critical Success | Choose all three bonuses |
 
-### 6. Check for Day's End
+**Search:** Roll Spirit + Perception or Mind + Survival vs. the Discovery TN of the hidden feature (or the Exploration Difficulty if no hidden feature exists). See [Discovery Procedure](#discovery-procedure) below.
 
-After the third action of the day (evening stretch), the party should camp. A fourth action is possible but pushes into the night:
+**Track:** Roll Spirit + Survival or Mind + Nature vs. the Exploration Difficulty (or a TN set by the quarry's Stealth).
+
+**Forage:** Roll Spirit/Mind + Nature vs. the Exploration Difficulty.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | Poisonous find — one character rolls Spirit + Fortitude vs. the Exploration Difficulty or gains the poisoned condition |
+| Failure | Nothing found |
+| Weak Success | Gather enough food and water for 1 party member today (skip their Supply Check) |
+| Strong Success | Gather enough for 2 party members |
+| Critical Success | Gather enough for the entire party; additionally find 1d4 useful herbs or materials |
+
+**Scout:** Roll Agility/Spirit + Stealth or Survival vs. the Exploration Difficulty.
+
+| Result | Effect |
+|--------|--------|
+| Blunder | Detected — if the hex/point contains hostile creatures, they are now alerted and may pursue |
+| Failure | Unclear — learn the terrain type only |
+| Weak Success | Learn the terrain type and whether a visible POI exists |
+| Strong Success | Learn terrain, visible POIs, and the presence of any creatures or NPCs |
+| Critical Success | Full reconnaissance — learn all of the above plus the Discovery TN of any hidden features |
+
+**Investigate / Camp:** Resolved narratively or with specific skill checks as needed.
+
+### 3. Tick the Dice Timer
+
+Reduce the dice timer by 1 (or more, if navigation failed or the action is especially time-consuming).
+
+### 4. Check for Events
+
+If the dice timer reached 0 during this round, roll on the **Exploration Event Table** and reset the timer.
+
+### 5. Check for Day's End
+
+After the third round of the day (evening stretch), the party should camp. A fourth round is possible but pushes into the night:
 - Night actions suffer **+1 bane** on all rolls.
-- If the party does not camp by the end of the fourth action, each party member gains **1 Fatigue**.
+- If the party does not camp by the end of the fourth round, each party member gains **1 Fatigue**.
 
 ---
 
@@ -385,7 +351,7 @@ One party member rolls Spirit + Survival vs. the Exploration Difficulty.
 
 ### Rations
 
-Each party member rolls a **Supply Check** for rations (unless fed by a Forager result). In terrain with extreme resource pressure, roll Supply Checks twice.
+Each party member rolls a **Supply Check** for rations (unless fed by a successful Forage result). In terrain with extreme resource pressure, roll Supply Checks twice.
 
 ### Night Watch
 
@@ -432,7 +398,7 @@ Everything else can be improvised using the event and discovery tables during pl
 
 There are three approaches to revealing map information to players:
 
-**Fog of War (default):** Players start with a blank map (or one showing only their starting hex/point and general direction/distance to any known features). As they explore, they fill in hexes/points they visit and ones revealed by Lookout or Pathfinder bonuses.
+**Fog of War (default):** Players start with a blank map (or one showing only their starting hex/point and general direction/distance to any known features). As they explore, they fill in hexes/points they visit and ones revealed by Watch or Navigate bonuses.
 
 **Partial Map:** Players start with a rough map showing terrain types and major landmarks, but no POIs or hidden features. This is appropriate when the party has access to an incomplete map, local guides, or cartographic knowledge.
 
@@ -452,7 +418,7 @@ Hidden POIs become more engaging when the party can find them through detective 
 If the party revisits explored hexes/points, the GM should consider:
 
 - **Restocking:** After 1d6 days, cleared dangers may be replaced by new creatures. Resource POIs may replenish after longer periods.
-- **Trail Familiarity:** Backtracking through explored hexes does not require Pathfinder rolls and does not tick the dice timer (the route is known).
+- **Trail Familiarity:** Backtracking through explored hexes does not require navigation rolls and does not tick the dice timer (the route is known).
 - **Region Exhaustion:** After the party has explored most of a region, consider transitioning to the Travel System for moving through it to reach other regions.
 
 ---
@@ -473,7 +439,7 @@ This example illustrates a full exploration session using the hex crawl procedur
 - Hex 7 (clearing): Abandoned logging camp (visible). Shelter + basic supplies.
 - Hex 12 (forest): Bandit camp (hidden, Discovery TN 10). Hostile NPCs + stolen goods.
 - Hex 15 (hills): Ancient watchtower ruins (hidden, Discovery TN 12). The party's goal — contains a sealed vault with lore and treasure.
-- Hex 18 (stream): Fresh water source (visible). Good foraging (+1 boon on Forager rolls).
+- Hex 18 (stream): Fresh water source (visible). Good foraging (+1 boon on Forage rolls).
 
 **Hidden clue placement:**
 - Hex 11 (adjacent to bandit camp): Traces event here reveals "boot prints and broken branches heading east."
@@ -496,77 +462,85 @@ This example illustrates a full exploration session using the hex crawl procedur
 
 **Day 1**
 
-The party consists of four adventurers. They assign roles:
-- **Pathfinder:** Ranger (Spirit d10, Nature rank 3)
-- **Lookout:** Rogue (Spirit d8, Perception rank 3)
-- **Forager:** Druid (Spirit d10, Nature rank 2)
-- **Scout:** Fighter (no scouting today — acts as general support)
+The party consists of four adventurers: a Ranger, a Rogue, a Druid, and a Fighter.
 
-**Action 1 — Morning: Move to Hex 2 (forest)**
+**Round 1 — Morning: Move to Hex 2 (forest)**
 
-> Timer: 6 → 5.
+> The party moves together. The Ranger leads navigation, the Rogue watches for threats, the Druid forages along the way, and the Fighter assists the Ranger.
 >
-> **Pathfinder** rolls Spirit + Nature vs. TN 10: result 13 (Strong Success). The party arrives. The Ranger chooses "Lay of the land" — learns that Hex 3 to the east is also forest.
+> **Ranger (Navigate)** rolls Spirit + Nature vs. TN 10: result 13 (Strong Success). The party arrives. The Ranger chooses "Lay of the land" — learns that Hex 3 to the east is also forest.
 >
-> **Lookout** rolls Spirit + Perception vs. TN 10: result 9 (Failure). No useful observations.
+> **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 9 (Failure). No useful observations.
 >
-> The GM describes dense forest with occasional game trails. Nothing immediately notable.
+> **Druid (Forage, secondary)** rolls Spirit + Nature vs. TN 10: result 8 (Failure). Nothing useful found while moving through dense forest.
+>
+> **Fighter (Assist)** grants +1 boon to the Ranger's navigation roll (already resolved above).
+>
+> Timer: 6 → 5. The GM describes dense forest with occasional game trails. Nothing immediately notable.
 
-**Action 2 — Afternoon: Move to Hex 6 (forest)**
+**Round 2 — Afternoon: Move to Hex 6 (forest)**
 
-> Timer: 5 → 4.
+> The party moves together again. The Druid leads navigation this time, and the Rogue keeps watch.
 >
-> **Pathfinder** rolls: result 11 (Weak Success). The party arrives, no bonus.
+> **Druid (Navigate)** rolls Spirit + Nature vs. TN 10: result 11 (Weak Success). The party arrives, no bonus.
 >
-> **Lookout** rolls: result 12 (Strong Success). Chooses "Spot feature" — the GM confirms there is no notable POI in this hex. Also chooses "Landmark sighting" — learns Hex 7 to the south is a clearing.
+> **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 12 (Strong Success). Chooses "Spot feature" — the GM confirms there is no notable POI in this hex. Also chooses "Landmark sighting" — learns Hex 7 to the south is a clearing.
 >
-> The Druid uses a free activity to note findings on the party's map.
+> Timer: 5 → 4. The Rogue notes findings on the party's map.
 
-**Action 3 — Evening: Move to Hex 7 (clearing)**
+**Round 3 — Evening: Move to Hex 7 (clearing)**
+
+> The party moves to the clearing. The Ranger leads navigation again.
+>
+> **Ranger (Navigate)** rolls Spirit + Nature vs. TN 10: result 15 (Critical Success). Chooses "Efficient route" (timer does not tick) and "Keen eye" (+1 boon on next Search here).
+>
+> **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 10 (Weak Success). Chooses "Spot feature" — the GM confirms there is a POI here (the abandoned logging camp, visible).
+>
+> Timer: stays at 4 (efficient route). The party arrives at the clearing and finds the abandoned logging camp. They decide to camp here for the night.
+
+**Round 4 — Camp**
 
 > Timer: 4 → 3.
 >
-> **Pathfinder** rolls: result 15 (Critical Success). Chooses "Efficient route" (timer does not tick — stays at 3) and "Keen eye" (+1 boon on next Search here).
->
-> **Lookout** rolls: result 10 (Weak Success). Chooses "Spot feature" — the GM confirms there is a point of interest here (the abandoned logging camp, visible).
->
-> The party arrives at the clearing and finds the abandoned logging camp. They decide to camp here for the night.
-
-**Action 4 — Camp**
-
-> Timer: 3 → 2.
->
 > The logging camp provides automatic shelter (it's a visible POI with shelter). The party skips the shelter roll.
 >
-> Each party member rolls Supply Checks for rations. The Druid's Forager roll is made: result 12 (Strong Success) — gathers enough food for 2 party members, so two of them skip their Supply Check.
+> Each party member rolls Supply Checks for rations. The Druid forages at camp: result 12 (Strong Success) — gathers enough food for 2 party members, so two of them skip their Supply Check.
 >
 > The party finds basic supplies in the camp (some rope, a rusty axe, dried herbs). They rest for the night.
 
 **Day 2**
 
-**Action 1 — Morning: Move to Hex 11 (forest)**
+**Round 1 — Morning: Move to Hex 11 (forest)**
 
-> Timer: 2 → 1.
+> The Ranger navigates again, the Rogue watches, and the Fighter keeps an eye out too.
 >
-> Pathfinder rolls: result 8 (Failure). Slow going — the party arrives but the timer ticks an additional time. Timer: 1 → 0.
+> **Ranger (Navigate)** rolls Spirit + Nature vs. TN 10: result 8 (Failure). Slow going — the party arrives but the timer ticks an additional time. Timer: 3 → 2 → 1.
 >
-> **Event fires!** The GM rolls d6: result 5 (Traces). The GM rolls on the Traces Sub-Table: result 1 (Tracks). Since Hex 11 is adjacent to the bandit camp, the GM describes: "You find boot prints and broken branches heading east — several people passed through here recently, moving with purpose."
+> **Event does not fire yet** (timer is at 1, not 0).
 >
-> Timer resets to 6.
->
-> The party now knows something lies to the east (Hex 12). The Rogue suggests scouting.
+> The GM describes a patch of forest with signs of recent passage.
 
-**Action 2 — Afternoon: Scout Hex 12**
+**Round 2 — Afternoon: Search Hex 11**
 
-> The party stays in Hex 11. The Rogue (reassigned to Scout for this action) ranges ahead to reconnoiter Hex 12.
+> The Rogue notices signs of activity and suggests searching. The party splits their efforts.
 >
-> **Scout** rolls Agility + Stealth vs. TN 10: result 14 (Critical Success). Full reconnaissance — the GM reveals: "Dense forest with a concealed camp. You count five people, lightly armed. Cooking fire, stolen trade goods stacked under canvas. Discovery TN 10 if you were searching blind, but you've found them."
+> **Rogue (Search)** rolls Spirit + Perception vs. TN 10: result 11 (Weak Success). The Rogue finds boot prints and broken branches heading east — the pre-placed clue for the bandit camp. The party now knows something lies to the east (Hex 12).
 >
-> Timer: 6 → 5. Although scouting itself does not tick the timer for the rest of the party, time still passes during this stretch — the party rests, forages, or keeps watch while the Scout is away. The timer ticks once as normal for the stretch.
+> **Druid (Forage)** rolls Spirit + Nature vs. TN 10: result 10 (Weak Success). Gathers enough food for 1 party member.
+>
+> Timer: 1 → 0. **Event fires!** The GM rolls d6: result 5 (Traces). The GM rolls on the Traces Sub-Table: result 3 (Remains). "You find an old campfire ring with discarded tin cups and a torn cloak. Someone camped here not long ago." This reinforces the clue pointing east. Timer resets to 6.
+>
+> The Rogue suggests scouting the bandit camp before committing the party.
 
-**Action 3 — Evening: The party decides what to do**
+**Round 3 — Evening: Scout Hex 12**
 
-> Armed with intelligence about the bandit camp, the party plans their approach. This becomes a new scene — possibly an Encounter (combat) or a Challenge (infiltration) — and the exploration procedure pauses until resolved.
+> The Rogue scouts ahead while the rest of the party waits in Hex 11.
+>
+> **Rogue (Scout)** rolls Agility + Stealth vs. TN 10: result 14 (Critical Success). Full reconnaissance — the GM reveals: "Dense forest with a concealed camp. You count five people, lightly armed. Cooking fire, stolen trade goods stacked under canvas."
+>
+> **Fighter (Watch)** rolls Spirit + Perception vs. TN 10: result 11 (Weak Success). Spots a landmark — learns Hex 16 to the south is hilly terrain.
+>
+> Timer: 6 → 5. Armed with intelligence about the bandit camp, the party plans their approach. This becomes a new scene — possibly an Encounter (combat) or a Challenge (infiltration) — and the exploration procedure pauses until resolved.
 
 ---
 
@@ -574,15 +548,15 @@ The party consists of four adventurers. They assign roles:
 
 | Concept | Description |
 |---------|-------------|
-| **Time scale** | Exploration (2–4 hours per action). 3 actions per day before camp, 4th possible with penalties |
+| **Time scale** | Exploration (2–4 hours per round). 3 rounds per day before camp, 4th possible with penalties |
 | **Map format** | Hex crawl (gridded hexes) or Point crawl (nodes and paths). Same procedure for both |
-| **Dice timer** | d6 starting at 6. Ticks once per action. Event roll on expiry, then reset |
-| **Roles** | Pathfinder (mandatory, navigation), Lookout (mandatory, awareness), Forager/Scout (optional) |
-| **Move** | Enter an adjacent hex/point. Pathfinder rolls for route quality, Lookout rolls for awareness |
-| **Search** | Spend an action to find hidden features. Roll vs. Discovery TN |
+| **Dice timer** | d6 starting at 6. Ticks once per round. Event roll on expiry, then reset |
+| **Player actions** | Each player chooses an action per round: Move, Search, Scout, Forage, Track, Watch, Investigate, Assist, Camp, or Backtrack |
+| **Move** | Party moves together to an adjacent hex/point. One character navigates; others choose a secondary action (Watch, Forage, Assist) |
+| **Search** | Spend a round to find hidden features. Roll vs. Discovery TN |
 | **Discovery** | Core reward loop. Hidden POIs found through searching, clues, or events |
 | **Events** | Same d6 structure as all time scales: Threat → Wear → Resource → Shift → Traces → Ambient |
-| **Camping** | End-of-day action. Shelter roll, Supply Checks, night watch |
+| **Camping** | End-of-day round. Shelter roll, Supply Checks, night watch |
 | **Challenges** | Overlay a Challenge die when the party has a specific search goal. Progress via Search/Track, not movement |
-| **Backtracking** | Explored hexes/points can be re-entered without Pathfinder rolls or timer ticks |
+| **Backtracking** | Explored hexes/points can be re-entered without navigation rolls or timer ticks |
 | **Clue chains** | Traces, NPCs, and found maps seed clues that give +1 boon on discovery rolls in target hexes/points |
