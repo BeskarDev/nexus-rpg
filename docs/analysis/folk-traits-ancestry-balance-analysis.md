@@ -368,7 +368,7 @@ For each folk, the following ability is the best candidate for cultural replacem
 
 #### R6. Reduce Small Stature Tax
 **Problem:** Gnome and Goblin pay a steep combat penalty for non-combat benefits.
-**Recommendation:** Soften the heavy weapon restriction (increase Strength requirement by +1d instead of the current +1d, but allow it at max d10 instead of d12) or add a compensating combat benefit to Small Stature (e.g., +1 Dodge when attacked by Large or larger creatures).
+**Recommendation:** Add a compensating combat benefit to Small Stature (e.g., "+1 boon on Dodge rolls against attacks from Large or larger creatures") to offset the weapon restrictions. Alternatively, allow small folk to wield versatile weapons one-handed at the cost of −1 weapon damage instead of the current full prohibition.
 
 #### R7. Add Goblin Trickery Mechanic
 **Problem:** Goblin's lore emphasizes cunning and trickery, but no ability reflects this.
