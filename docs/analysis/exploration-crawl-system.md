@@ -56,7 +56,7 @@ A day of exploration is divided into **four watches**, tracked by a **d4 placed 
 | **3** | Afternoon | Third turn |
 | **4** | Evening | Party should camp. A 5th turn pushes into night (see below) |
 
-At the **end of each turn**, the GM rolls on the **Exploration Event Table** (2d6). Events during exploration are frequent but subtle — minor environmental shifts, traces of nearby activity, and occasional encounters, reflecting the granular pace compared to travel (which rolls once per day).
+At the **end of each turn**, the GM rolls on the **Exploration Event Table** (2d6). This means ~4 events per day, but most results are low-impact (weather shifts, traces, quiet stretches). Only encounters and hazards demand immediate resolution — the higher frequency compared to travel (once per day) reflects the granular pace of exploration.
 
 **Pushing into the night.** The party may take a 5th turn after evening, but night actions suffer **+1 bane** on all rolls. If the party does not camp by the end of the 5th turn, each adventurer gains **1 Fatigue**.
 
@@ -89,6 +89,8 @@ Use these checklists at the table. Full details for each step follow below.
 
 ### 1. Prepare the Map
 
+> **d66 tables.** Several tables in this document use d66: roll two d6, the first picks the row, the second picks the column. This gives 36 results from a simple 6×6 grid.
+
 **Hex crawl:** Draw or select a hex map. Assign a terrain type to each hex. A region of 15–30 hexes provides several sessions of exploration.
 
 **Point crawl:** Draw a network of named points (landmarks, crossroads, settlements, ruins) connected by paths. Label each path with a terrain type and length (1–3 turns).
@@ -104,7 +106,7 @@ To quickly generate terrain for a hex map, roll d66 on the **Random Terrain Tabl
 | **5** | Scrubland | Rocky desert | Swamp | Marsh | Mountains | Tundra |
 | **6** | Coast | River/Stream | Lake | Clearing | Canyon/Ravine | Special |
 
-> **d66:** Roll two d6. The first die picks the row, the second picks the column. "Special" means the GM places a unique feature — volcanic vent, ancient battlefield, magical anomaly, or similar.
+> "Special" means the GM places a unique feature — volcanic vent, ancient battlefield, magical anomaly, or similar.
 
 ### 2. Place Points of Interest
 
@@ -131,7 +133,7 @@ To randomly generate POI types, roll d66 on the **Random POI Table**:
 | **5** | Hidden entrance | Buried treasure | Concealed shrine | Illusory terrain | Sealed vault | Underground passage |
 | **6** | Village | Outpost | Nomad camp | Trading post | Abandoned settlement | Shrine or temple |
 
-> **Seeding clues.** Place trace clues in hexes adjacent to hidden POIs. When the party triggers a Traces event there, the clue naturally points toward the hidden feature. NPCs, found maps, and visible landmarks (smoke columns, distinctive peaks) also guide players toward hidden discoveries without brute-force searching.
+> **Seeding clues.** Place trace clues in hexes adjacent to hidden POIs. When the event table produces a Traces result (category 4) in those hexes, the pre-placed clue is used instead of rolling randomly. NPCs, found maps, and visible landmarks (smoke columns, distinctive peaks) also guide players. Each clue pointing to a hex grants **+1 boon** on Search rolls there (max +2 boons from multiple clues).
 
 ### 3. Set the Exploration Difficulty
 
@@ -212,7 +214,7 @@ Each player declares what their character does this turn. The party typically ac
 - Note the current hex/point on the party's map
 - Brief conversation with a willing NPC
 
-> **Moving as a group.** When the party moves together, each character not leading navigation may perform a secondary action alongside the Move: keeping watch (Perception), foraging (Nature), or assisting the navigator (+1 boon). These resolve alongside the Move without costing a separate turn.
+> **Moving as a group.** When the party moves together, each character not leading navigation may perform a secondary action alongside the Move: keeping watch (Perception check), foraging (Nature check), or assisting the navigator (+1 boon). Secondary actions use the same skill checks described in Resolve Actions and do not cost a separate turn.
 
 > **Splitting up.** Characters may act independently (e.g., one searches while another scouts ahead). The clock advances once for the turn regardless — they act simultaneously within the same ~4-hour watch.
 
@@ -225,7 +227,7 @@ Each player declares what their character does this turn. The party typically ac
 
 | Result | Effect |
 |--------|--------|
-| Blunder | Lost — the party ends up in a random adjacent hex/point instead. +1 bane on next navigation roll |
+| Blunder | Lost — the party ends up in a random adjacent hex/point instead. +1 bane on next navigation roll. The turn is still consumed and the clock advances |
 | Failure | Stuck — the party cannot enter the hex this turn. They may try again next turn or choose a different route |
 | Weak Success | Arrive at the intended hex/point |
 | Strong Success | Arrive and choose one bonus: learn terrain of one adjacent unexplored hex/point, or gain +1 boon on the next Search in this hex/point |
@@ -277,16 +279,18 @@ At the end of each turn, the GM rolls **2d6** on the Exploration Event Table. Th
 
 | 1st d6 | Category | 2nd d6 Details |
 |:------:|----------|------|
-| **1** | **Encounter** | Roll on the region's encounter table. Determine disposition with a separate d6 (1–2 hostile, 3–4 wary, 5 neutral, 6 friendly) |
+| **1** | **Encounter** | Roll on the region's encounter table |
 | **2** | **Weather Shift** | The weather changes. Roll d6 on the Weather Table or shift one step: *(1–2)* improve one step, *(3–4)* no change (false alarm — clouds gather then disperse), *(5–6)* worsen one step |
 | **3** | **Wear and Tear** | The terrain punishes gear: *(1–2)* footwear or clothing requires a Durability check, *(3–4)* a tool or weapon requires a Durability check, *(5–6)* a carried consumable loses 1 use (rope frays, waterskin leaks, torch dampens) |
 | **4** | **Traces** | Signs of something nearby. The GM indicates which adjacent hex/point the trace points toward: *(1)* tracks — footprints, claw marks, drag marks, *(2)* markings — carved symbols, trail blazes, boundary markers, *(3)* remains — old campsite, bones, discarded gear, *(4)* sounds — distant calls, rushing water, voices on the wind, *(5)* smoke or light — campfire, signal fire, magical glow, *(6)* scent or feeling — sulfur, decay, cooking food, magical prickling |
 | **5** | **Terrain Feature** | An environmental obstacle or feature: *(1–2)* path blocked — natural obstacle requiring Athletics or Survival vs. Exploration Difficulty to bypass, or detour to another hex/point, *(3–4)* hazard — rockslide, flash flood, sinkhole, or animal stampede (each adventurer rolls an appropriate save or suffers consequences), *(5–6)* natural boon — sheltered clearing, clean water source, or vantage point (party gains +1 boon on next Search or Scout in this hex) |
 | **6** | **Nothing** | The stretch passes quietly. Distant scenery, birdsong, wind through the canopy. A moment to breathe |
 
-> **Traces and clue direction.** When Traces occur, point the clue toward a pre-placed hidden POI if one is adjacent. Otherwise, point toward the nearest undiscovered POI. If none are nearby, roll a die for a random adjacent direction.
+> **Traces and clue direction.** When Traces occur, point the clue toward a pre-placed hidden POI if one is adjacent. Otherwise, point toward the nearest undiscovered POI. If none are nearby, roll d6 for a random adjacent hex (clockwise from north: 1=N, 2=NE, etc.) or select randomly among connected paths in a point crawl.
 
 > **Event frequency.** Rolling each turn means ~4 events per day. Most results (Weather, Traces, Nothing) are low-impact, keeping the pace moving without overwhelming the table. Only Encounters and Hazards demand immediate resolution.
+
+> **Events and actions.** Events occur independently of action results, but the GM can narrate them to complement or complicate the current situation. A path-blocked event after a navigation failure, for example, might explain why the party got stuck.
 
 ### 5. Camping
 
