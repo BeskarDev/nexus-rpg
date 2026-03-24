@@ -10,7 +10,7 @@ Where the [Travel System](../06-scenes/07-challenges/02-travel.md) handles **jou
 
 - Provide a **turn-based exploration loop** where each player chooses an action each turn, mirroring the structure of combat or dungeon delves.
 - Emphasize **player agency**: each character decides what to do — move, search, scout, forage, hunt — rather than being locked into a role.
-- Use a **day clock** to track time of day and trigger events.
+- Use a **day clock** to track time of day, including two night turns, and trigger events.
 - Keep the procedure **lightweight**: movement costs turns, not rolls. Only searching, scouting, and survival actions require checks.
 - Support both **hex crawl** (gridded map with terrain hexes) and **point crawl** (node-and-path map) formats.
 
@@ -46,16 +46,18 @@ Both formats use the same procedure. The only difference is map structure.
 
 ### The Day Clock
 
-A day of exploration is divided into **four watches**, tracked by a **d4 placed on the table** as a shared clock visible to all players. Each watch represents roughly 4 hours. The clock advances by 1 each time the party completes a turn.
+A day of exploration is divided into **six watches**, tracked by a **d6 placed on the table** as a shared clock visible to all players. Each watch represents roughly 4 hours. The clock advances by 1 each time the party completes a turn.
 
 | Clock | Watch | Notes |
 |:-----:|-------|-------|
 | **1** | Morning | First turn of the day |
 | **2** | Midday | Second turn |
 | **3** | Afternoon | Third turn |
-| **4** | Evening | Fourth turn |
+| **4** | Evening | Fourth turn — party should camp |
+| **5** | Before Midnight | Night turn. All rolls suffer +1 bane |
+| **6** | After Midnight | Night turn. All rolls suffer +1 bane |
 
-**Camping.** After the 4th turn, the party should camp. If they continue without camping, they suffer **1 Fatigue** for each turn taken after the 4th.
+**Camping.** The party should take the Camp action on turn 4 (Evening). Each night turn taken without camping inflicts **1 Fatigue** on every adventurer.
 
 ### Movement
 
@@ -75,6 +77,7 @@ Each turn, the party can move up to **two hexes** (or along a path to the next p
 | **Events** | Once per day | Once per turn (subtle, frequent) |
 | **Movement** | Abstracted into daily progress | Explicit — move across hexes/points |
 | **Discovery** | Scout's bonus option | Core loop — the point of play |
+| **Day length** | One day per session phase | 6 turns (4 day + 2 night) per day |
 
 ---
 
@@ -113,17 +116,26 @@ To add variety, roll on the **Random Terrain Feature Table** (d66) and overlay r
 
 ### 2. Place Points of Interest
 
-Scatter **points of interest** (POIs) across the map. Not every hex/point needs one; roughly **1 in 3 hexes** (or half of named points) should have something notable.
+Scatter **points of interest** (POIs) across the map. Use the following table to quickly determine what (if anything) each hex holds, then roll for type and discovery reward:
+
+**POI Distribution (d6)**
+
+| d6 | Result |
+|:--:|--------|
+| 1–3 | No POI — the hex holds nothing notable |
+| 4–5 | Hidden POI — present but not apparent; requires a successful Search to find |
+| 6 | Visible POI — immediately apparent when entering the hex |
 
 POIs are either **visible** (immediately apparent when entering the hex) or **hidden** (require a successful Search to find). For each hidden POI, assign a **Discovery TN**:
 
 | Difficulty | TN | Examples |
 |------------|----|---------|
-| Obvious | 6 | Large ruins, major water source |
 | Moderate | 8 | Overgrown trail, partially hidden cave |
 | Hard | 10 | Concealed entrance, buried cache |
 | Very Hard | 12 | Magically hidden site, sealed vault |
 | Legendary | 14 | Mythic locations, sacred sanctuaries |
+
+**Supernatural hexes.** A small number of hexes (roughly 1 in 10) may hold a supernatural or magical quality — cursed ground, a divine wellspring, an arcane anomaly, or a place where the veil between worlds is thin. Mark these hexes during setup. Their effects are purely narrative or GM-designed; the POI Discovery Reward Table row 6 provides mechanical anchors for such sites (magical anomaly, portal, ancient artifact). A supernatural hex may be immediately apparent to those with relevant knowledge, or hidden behind a Legendary TN requiring specific rituals or magical senses to perceive.
 
 To randomly generate POI types, roll d66:
 
@@ -207,7 +219,7 @@ Use this checklist each turn. Full details for each step follow below.
 1. Declare actions (each player chooses)
 2. Resolve actions
 3. Advance the day clock
-4. Roll for event (d66)
+4. Roll for event (d6, with sub-table if needed)
 5. Check for day's end
 
 ### 1. Declare Actions
@@ -224,7 +236,7 @@ Each player declares what their character does this turn. The party typically ac
 | **Fish** | Catch fish or seafood (requires a water source and fishing gear) |
 | **Track** | Follow tracks, trails, or clues to determine the direction of a target |
 | **Investigate** | Examine a discovered POI in detail (enter a ruin, interact with an NPC, study an inscription) |
-| **Camp** | Set up camp and rest. After the 4th turn, each turn without camping inflicts 1 Fatigue |
+| **Camp** | Set up camp and rest. Requires a suitable spot; without one, roll Survival or suffer a bad night |
 
 **Free activities** (do not cost a turn):
 - Short discussion about direction or plans
@@ -302,34 +314,83 @@ When the party has received a Traces clue pointing to this hex, the Search gains
 
 **Camp.** Set up camp and rest for the night. Follow the standard [Resting](../06-scenes/03-resting.md) rules. Each adventurer rolls a **Supply Check** for rations (unless fed by a Forage, Hunt, or Fish result). Assign night watches as desired. The camping turn still advances the day clock and triggers an event roll.
 
-> After the 4th turn each day, each turn taken without camping inflicts **1 Fatigue** on every adventurer.
+**Suitable camping spots** include any POI that provides shelter (a cave shelter, settlement, abandoned camp, etc.) or a terrain feature that affords natural protection (clearing, overhang, cave mouth, etc.). If no suitable spot is available, one character rolls Spirit + Survival vs. the Exploration Difficulty to establish a makeshift shelter:
+
+- **Success:** Makeshift shelter found. The party rests normally.
+- **Failure:** No adequate shelter. The party suffers a **bad night** (per the [Resting](../06-scenes/03-resting.md) rules).
+
+> Each night turn taken without camping inflicts **1 Fatigue** on every adventurer.
 
 ### 3. Advance the Day Clock
 
-Move the d4 clock forward by 1.
+Move the d6 clock forward by 1.
 
 ### 4. Roll for Event
 
-At the end of each turn, the GM rolls **d66** on the Exploration Event Table. The first die picks the **category**, the second die picks the **specific event** within that category.
+At the end of each turn, the GM rolls **1d6** on the Exploration Event Table, then rolls a second **1d6** on the matching sub-table if one is listed.
 
-**Exploration Event Table (d66)**
+**Exploration Event Table (d6)**
 
-| d66 | 1 | 2 | 3 | 4 | 5 | 6 |
-|:---:|---|---|---|---|---|---|
-| **1** | Encounter — hostile creature or group. Roll on encounter table | Encounter — wary creature or group, may negotiate | Encounter — neutral NPC, offers trade or information | Encounter — creature stalking the party (Perception to notice) | Encounter — territorial beast, blocks the path | Encounter — roaming creature, passes through unless provoked |
-| **2** | Weather shift — improve one step | Weather shift — worsen one step | Weather shift — sudden squall (worsen two steps, returns next turn) | Weather shift — fog rolls in (+1 bane on Perception until next turn) | Weather shift — calm before the storm (no change, ominous signs) | Weather shift — reroll on Weather Table |
-| **3** | Wear and tear — footwear or clothing requires a Durability check | Wear and tear — a tool or weapon requires a Durability check | Wear and tear — a carried consumable loses 1 use | Wear and tear — mount or pack animal suffers (loses 1 supply or gains 1 Fatigue) | Wear and tear — rope, torch, or similar expendable frays | Wear and tear — nothing breaks, but gear looks worse for wear |
-| **4** | Traces — tracks (footprints, claw marks, drag marks) | Traces — markings (carved symbols, trail blazes, boundary markers) | Traces — remains (old campsite, bones, discarded gear) | Traces — sounds (distant calls, rushing water, voices on the wind) | Traces — smoke or light (campfire, signal fire, magical glow) | Traces — scent or feeling (sulfur, decay, cooking food, magical prickling) |
-| **5** | Terrain feature — path blocked (natural obstacle, requires Athletics/Survival to bypass or detour) | Terrain feature — hazard (rockslide, flash flood, sinkhole; each adventurer saves or suffers consequences) | Terrain feature — vantage point (+1 boon on next Search or Scout in this hex) | Terrain feature — sheltered spot (can camp here with automatic shelter) | Terrain feature — roaming creature (signs of a large beast passing through) | Terrain feature — ancient marker or waystone (reveals one adjacent hex's terrain) |
-| **6** | Nothing — the stretch passes quietly | Nothing — distant scenery, birdsong, wind through the canopy | Nothing — ominous silence, but nothing happens | Nothing — the party finds a pleasant resting spot (remove 1 bane if any) | Nothing — a brief but beautiful vista | Nothing — a moment to breathe |
+| d6 | Event |
+|:--:|-------|
+| **1** | **Encounter** — roll on the Encounter Sub-Table |
+| **2** | **Weather Shift** — roll on the Weather Shift Sub-Table |
+| **3** | **Wear and Tear** — each adventurer chooses one item they carry; items with Durability make a Durability check, all others lose 1 use |
+| **4** | **Traces** — signs of something nearby; roll on the Traces Sub-Table, pointing toward a pre-placed hidden POI if one is adjacent |
+| **5** | **Terrain Feature** — an obstacle or hazard; roll on the Terrain Feature Sub-Table |
+| **6** | **Nothing** — the stretch passes without incident |
+
+**Encounter Sub-Table (d6)**
+
+| d6 | Encounter |
+|:--:|-----------|
+| 1 | Hostile creature or group — attacks on sight. Roll on the encounter table |
+| 2 | Wary creature or group — defensive, may be negotiated with |
+| 3 | Neutral NPC — traveler, pilgrim, or lost merchant; offers information or trade |
+| 4 | Creature stalking the party — roll Spirit + Perception vs. Exploration Difficulty to notice before it acts |
+| 5 | Territorial beast blocking the path — must be driven off, bypassed, or avoided |
+| 6 | Roaming creature — passes through unless provoked |
+
+**Weather Shift Sub-Table (d6)**
+
+| d6 | Result |
+|:--:|--------|
+| 1 | **Improves** — weather shifts one step toward Clear on the Weather Table |
+| 2 | **Worsens** — weather shifts one step toward Severe on the Weather Table |
+| 3 | **Sign of improvement** — weather automatically improves one step at the start of next turn |
+| 4 | **Sign of worsening** — weather automatically worsens one step at the start of next turn |
+| 5 | **Back to neutral** — weather resets to Overcast regardless of current conditions |
+| 6 | **No change** — skies shift and settle, but conditions remain the same |
+
+**Traces Sub-Table (d6)**
+
+| d6 | Trace |
+|:--:|-------|
+| 1 | Tracks — footprints, claw marks, or drag marks |
+| 2 | Markings — carved symbols, trail blazes, or boundary stones |
+| 3 | Remains — old campsite, scattered bones, or discarded gear |
+| 4 | Sounds — distant calls, rushing water, or voices on the wind |
+| 5 | Smoke or light — campfire smoke, signal fire, or an unnatural glow |
+| 6 | Scent or sensation — sulfur, decay, incense, or a preternatural prickling |
+
+**Terrain Feature Sub-Table (d6)**
+
+| d6 | Feature |
+|:--:|---------|
+| 1 | Path blocked — fallen tree, collapsed bridge, or rockfall. Bypass with Athletics/Survival vs. Exploration Difficulty, or detour to an adjacent hex |
+| 2 | Sudden hazard — rockslide, flash flood, or sinkhole. Each adventurer rolls Agility vs. Exploration Difficulty or suffers 1 Fatigue |
+| 3 | Treacherous ground — unstable footing, flooded lowland, or dense thicket. Movement is limited to 1 hex this turn |
+| 4 | Predator sign — fresh kills, territorial markings, or warning calls. Forage and Hunt suffer +1 bane until the next turn |
+| 5 | Natural barrier — ravine, cliff face, or river crossing. Bypass requires a turn or a successful Athletics check |
+| 6 | Ominous area — unnatural silence, strange markings, or a malignant chill. Each adventurer rolls Spirit + Fortitude vs. Exploration Difficulty or is briefly frightened |
 
 > **Traces and clue direction.** When Traces occur, point the clue toward a pre-placed hidden POI if one is adjacent. Otherwise, point toward the nearest undiscovered POI. If none are nearby, roll d6 for a random adjacent hex (clockwise from north: 1=N, 2=NE, etc.) or select randomly among connected paths in a point crawl.
 
-> **Event frequency.** Rolling each turn means ~4 events per day. Most results (Weather, Traces, Nothing) are low-impact, keeping the pace moving without overwhelming the table. Only Encounters and Hazards demand immediate resolution.
+> **Event frequency.** Rolling each turn means up to 6 events per day. Most results (Weather, Traces, Nothing) are low-impact, keeping the pace moving. Only Encounters and Hazards demand immediate resolution.
 
 ### 5. Check for Day's End
 
-After the 4th turn each day, the party should camp. Continuing past the 4th turn inflicts **1 Fatigue per additional turn** on every adventurer who does not camp. Night turns also suffer **+1 bane** on all rolls.
+After the 4th turn (Evening), the party should camp. If they continue into the night (turns 5–6), each turn without camping inflicts **1 Fatigue** on every adventurer. All rolls during night turns also suffer **+1 bane**. The day resets when the party wakes after a successful night's rest.
 
 ---
 
@@ -363,39 +424,39 @@ The party: a Ranger, a Rogue, a Druid, and a Fighter.
 >
 > **Druid (Forage)** rolls Spirit + Nature vs. TN 10: result 8 — nothing useful found.
 >
-> **Event roll (d66):** 6, 3 → Nothing. The stretch passes quietly. Dense forest, occasional game trails.
+> **Event roll (d6):** 6 → Nothing. The stretch passes quietly. Dense forest, occasional game trails.
 
 **Turn 2 — Midday (clock: 2).** The party pushes to Hex 6 (forest — difficult, 1 hex). The Druid leads, the Rogue watches.
 
 > **Rogue (Watch)** rolls Spirit + Perception vs. TN 10: result 12 — success. Spots something: the GM notes Hex 7 to the south is a clearing.
 >
-> **Event roll (d66):** 4, 2 → Traces (markings). Faded trail blazes carved into tree trunks, heading south. The GM notes this naturally points toward Hex 7.
+> **Event roll (d6):** 4, sub-table 2 → Traces (markings). Faded trail blazes carved into tree trunks, heading south. The GM notes this naturally points toward Hex 7.
 
 **Turn 3 — Afternoon (clock: 3).** The party heads south. Hex 7 is a clearing (open terrain), so they can move 2 hexes — but the clearing is just 1 hex away. They arrive at Hex 7 and discover the abandoned logging camp (visible POI).
 
 > No roll needed — open terrain.
 >
-> **Event roll (d66):** 2, 4 → Weather Shift (fog rolls in). +1 bane on Perception checks until next turn.
+> **Event roll (d6):** 2, sub-table 1 → Weather Shift (improves one step). The overcast sky clears. Weather shifts to Clear skies.
 >
 > The party finds the logging camp: basic shelter, a rusty axe, some rope, dried herbs.
 
 **Turn 4 — Evening (clock: 4).** The party camps at the logging camp.
 
-> The camp provides automatic shelter (it's a visible POI with shelter). The Druid forages at camp: result 12 (Success) — chooses edible plants, gaining 1 × simple rations (d4). These spoil, losing 1 use at the start of each day. The others roll Supply Checks.
+> The logging camp is a suitable camping spot. The Druid forages at camp: result 12 (Success) — chooses edible plants, gaining 1 × simple rations (d4). These spoil, losing 1 use at the start of each day. The others roll Supply Checks.
 >
-> **Event roll (d66):** 6, 1 → Nothing. Quiet night. The party rests.
+> **Event roll (d6):** 6 → Nothing. Quiet night. The party rests.
 
 **Day 2**
 
 **Turn 1 — Morning (clock: 1).** The party moves toward Hex 11 (forest — difficult terrain, 1 hex).
 
-> **Event roll (d66):** 5, 1 → Terrain feature (path blocked). A fallen tree blocks the main approach. The GM calls for an Athletics check to bypass — the Fighter clears the way.
+> **Event roll (d6):** 5, sub-table 1 → Terrain feature (path blocked). A fallen tree blocks the main approach. The GM calls for an Athletics check to bypass — the Fighter clears the way.
 
 **Turn 2 — Midday (clock: 2).** The party arrives at Hex 11. The Ranger searches the area.
 
 > **Ranger (Search)** rolls Spirit + Survival vs. TN 10: result 11. The GM checks: no hidden POI here. "You find nothing hidden in this hex."
 >
-> **Event roll (d66):** 4, 1 → Traces (tracks). The GM reveals the pre-placed clue for this hex: "Boot prints and broken branches heading east — several people passed through recently." This points toward the raider camp in Hex 12. Combined with the earlier trail blazes, the party now has two clues pointing east (+2 boons on Search in Hex 12).
+> **Event roll (d6):** 4, sub-table 1 → Traces (tracks). The GM reveals the pre-placed clue for this hex: "Boot prints and broken branches heading east — several people passed through recently." This points toward the raider camp in Hex 12. Combined with the earlier trail blazes, the party now has two clues pointing east (+2 boons on Search in Hex 12).
 >
 > The Rogue suggests scouting before the party commits.
 
@@ -405,6 +466,6 @@ The party: a Ranger, a Rogue, a Druid, and a Fighter.
 >
 > **Fighter (Hunt)** rolls Agility + Survival vs. TN 10: result 12 (Strong Success). Good catch — gains 2 × simple rations of raw meat.
 >
-> **Event roll (d66):** 3, 5 → Wear and Tear (expendable frays). The Druid's rope shows signs of fraying from thorn snags.
+> **Event roll (d6):** 3 → Wear and Tear. Each adventurer picks one item. The Druid's rope and the Ranger's shortbow both require Durability checks from heavy use in the thicket.
 >
 > Armed with intelligence, the party plans their approach. The exploration procedure pauses as the scene transitions to an encounter or infiltration challenge.
