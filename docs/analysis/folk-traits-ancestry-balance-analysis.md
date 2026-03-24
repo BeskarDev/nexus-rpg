@@ -397,7 +397,7 @@ This section presents complete, concrete ability set reworks for all 12 folk bas
 
 ### 9.1 Design Goals
 
-1. **Narrow the budget spread.** Current range is 3–8 (2.7× spread). Target: 5–8 (1.6× spread).
+1. **Narrow the budget spread.** Current range is 3–8 (2.7× spread). Target: 6–8 (1.33× spread).
 2. **Standardize at 3 abilities per folk** where biologically justified. Two-ability folk (Hune, Orc, Human) gain a third innate trait.
 3. **Eliminate shared abilities.** Night Vision (Elf/Goblin/Catfolk) and Giant's Blood (Hune/Minotaur) are replaced with folk-specific variants that share the same base effect but add a unique secondary.
 4. **Ensure every folk has at least one combat-relevant ability.** No folk should be purely utility-focused.
@@ -411,6 +411,8 @@ This section presents complete, concrete ability set reworks for all 12 folk bas
 - 🔄 **REWORK** — Ability modified (text changed).
 - 🆕 **NEW** — Ability added (folk previously had fewer abilities).
 - ❌ **REMOVED** — Ability or effect removed.
+
+References like **(R1)**, **(R5)**, etc. in design rationale sections refer to the corresponding recommendation numbers in Section 8.
 
 ---
 
@@ -600,7 +602,7 @@ Re-roll the result of one test and take the new result. You can use this ability
 **Arcane Awakening.** 🔄 REWORK
 You have a natural talent for the arcane arts. If you have learned Arcana, you gain +1 Focus. You can cast arcane spells without a Spell Catalyst, but suffer +1 bane on the roll.
 
-> *Design rationale: Reducing from +2 Focus to +1 (R2) halves the caster advantage. At Arcana Rank 1 with d8 Mind, the Focus formula gives (8-2) + 2×1 = 8 Focus baseline. Human previously gained 10 (25% bonus); now gains 9 (12.5% bonus). This still makes Human the best Arcana folk but no longer creates a dominant gap. Catalyst-free casting with +1 bane remains as an interesting situational option.*
+> *Design rationale: Reducing from +2 Focus to +1 (R2) halves the caster advantage. At Arcana Rank 1 with d8 Mind (attribute value 8 for formula purposes), the Focus formula (Mind − 2) + 2 × Arcana gives (8 − 2) + 2 × 1 = 8 Focus baseline. Human previously gained 10 (25% bonus); now gains 9 (12.5% bonus). This still makes Human the best Arcana folk but no longer creates a dominant gap. Catalyst-free casting with +1 bane remains as an interesting situational option.*
 
 **Arcane Sensitivity.** 🆕 NEW
 Your innate connection to arcane energy grants you a subtle awareness of magic. You can detect the presence of active magical effects, enchanted objects, and magical auras within close range, perceiving them as a faint shimmer or tingling sensation. This ability reveals the presence and general location of magic but not its specific nature or school.
@@ -702,7 +704,12 @@ After you spend 1 or more Movement towards a creature and hit them with an attac
 **Verdict: Significant combat buffs.** Keen Senses gains a blood-scent combat application (boon vs. bleeding targets). Pack Loyalty broadens to any attack type (not just melee) and gains a second use. These changes make Dogfolk the "teamwork and pursuit" folk without changing their core identity.
 
 **Keen Senses.** 🔄 REWORK
-You have an extraordinary sense of smell and hearing. You gain +1 boon on Perception rolls based on smell or hearing. You can detect the presence and general direction of creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location. In combat, you gain +1 boon on attack rolls against bleeding creatures — you can smell their wounds. Weather or other environmental factors may hinder scent-based abilities.
+You have an extraordinary sense of smell and hearing.
+
+- You gain +1 boon on Perception rolls based on smell or hearing.
+- You can detect the presence and general direction of creatures within close range by scent alone, even if you can't see them, as long as air can reach you from their location.
+- In combat, you gain +1 boon on attack rolls against bleeding creatures — you can smell their wounds.
+- Weather or other environmental factors may hinder scent-based abilities.
 
 > *Design rationale: The bleeding-target boon (R5) transforms a pure-utility ability into a combat/utility hybrid. It reinforces the hunting-pack fantasy — dogfolk pursue wounded prey — and synergizes naturally with allies who inflict bleeding (via weapons with the bloody enchantment, bleeding conditions from combat arts, etc.). This gives Dogfolk a combat identity without removing their exploration strengths.*
 
@@ -735,7 +742,7 @@ When you take damage from a spell or are affected by a magical effect that appli
 You can use your horns (2 weapon damage, crush) as a brawling weapon instead of unarmed attacks.
 
 **Woodland Stride.** 🔄 REWORK
-You treat difficult terrain caused by natural vegetation as normal terrain. Your sure-footed hooves grant you +1 boon on Agility + Athletics rolls to climb, balance, or traverse natural environments. You also gain +1 boon on rolls to resist being knocked prone while on natural ground.
+You treat difficult terrain caused by natural vegetation as normal terrain. Your sure-footed hooves grant you +1 boon on Agility + Athletics rolls to climb, balance, or traverse natural environments. You also impose +1 bane on rolls that attempt to knock you prone while you are on natural ground.
 
 > *Design rationale: The prone-resistance boon on natural ground gives Woodland Stride a minor defensive combat application in outdoor encounters. Satyrs with goat legs should be among the hardest creatures to topple on uneven ground. This is narrower than Dwarf's Squat Build (which works on any surface) but provides some combat relevance in the right environments.*
 
@@ -764,7 +771,7 @@ You treat difficult terrain caused by natural vegetation as normal terrain. Your
 | **Dogfolk** | 5 | 8 | +3 | A |
 | **Satyr** | 5 | 6 | +1 | B |
 
-**New range:** 6–8 (1.3× spread, down from 2.7×).
+**New range:** 6–8 (1.33× spread, down from 2.7×).
 **New tiers:** 8 folk at A-tier, 4 at B-tier, 0 at S-tier or C-tier.
 
 The B-tier folk (Gnome, Goblin, Minotaur, Satyr) all have clear reasons for their slightly lower budget:
