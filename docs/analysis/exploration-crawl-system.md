@@ -409,7 +409,7 @@ Roll once per hex to determine what it holds before assigning a type or reward.
 | **1** | Spring or oasis | Herb patch | Mineral vein | Game trail | Fruit grove | Medicinal plants |
 | **2** | Ancient monument | Sacred tree | Waterfall shrine | Rock formation | Standing stones | Carved cliff |
 | **3** | Cave shelter | Crumbling ruin | Abandoned camp | Hermit's dwelling | Overhang | Hot spring |
-| **4** | Beast's lair | Raider camp | Natural hazard | Predator den | Trapped ravine | Ancient road section |
+| **4** | Beast's lair | Raider camp | Natural trap | Predator den | Trapped ravine | Ancient road section |
 | **5** | Hidden entrance | Buried cache | Concealed shrine | Sealed tomb | Underground passage | Collapsed structure |
 | **6** | Village | Outpost | Nomad camp | Trading post | Abandoned settlement | Temple or shrine |
 
@@ -424,9 +424,9 @@ Rolled when the party discovers a supernatural hex (see Exploration Setup §2). 
 | 1 | **Cursed Ground** — soil blackened and barren, unnatural chill in the air | Creatures resting here gain no benefit from the rest. Supply Checks have +1 bane while camped here. The curse lifts if a character succeeds on a Spirit + Mysticism roll vs. Exploration Difficulty (ritual takes 1 turn) |
 | 2 | **Divine Wellspring** — a pool or spring that pulses faintly with warm light | Each adventurer who drinks removes 1 Fatigue and 1 Wound (once per visit). The site is sacred; desecrating it (looting offerings, violence) triggers a Morale-style consequence |
 | 3 | **Arcane Anomaly** — drifting motes of light, items levitating, or echoes of words never spoken | Arcane magic is unstable here. Each time a spell is cast, roll d6: 1 it misfires (reroll on the mishap table), 2–3 it costs double Focus, 4–6 it functions normally. The anomaly radiates visible light — visible from adjacent hexes |
-| 4 | **Spirit-Haunted Ground** — whispers at the edge of hearing, faces in reflective surfaces | Ancestors or bound spirits dwell here. A character may attempt communion (Spirit + Mysticism vs. TN 10) to gain one of: reveal a hidden POI in the region, answer one yes/no question about local history, or receive a short-duration blessing (+1 boon on one skill for the rest of the day) |
-| 5 | **Ley Line Nexus** — cracks of light in the earth, subtle vibration in metal and bone | Spellcasters recover 1 Focus at the start of each turn spent here (in addition to normal recovery). The nexus is visible from adjacent hexes as a faint glow. Staying overnight here counts as a full rest for spellcasters |
-| 6 | **Thin Veil** — reflections move a heartbeat late, temperature swings without cause | The boundary between worlds is weak. At the start of each turn spent here, the GM rolls d6: 1–2 a hostile spirit manifests (treat as Encounter with spirit from Generic Encounter Table row 6), 3–4 a curious spirit offers cryptic information (GM reveals one clue or hidden POI), 5–6 a vision of the site's past plays out (purely narrative, no mechanical effect) |
+| 4 | **Spirit-Haunted Ground** — whispers at the edge of hearing, faces in reflective surfaces | Ancestors or bound spirits dwell here. A character may attempt communion (Spirit + Mysticism vs. TN 10) to gain one of: reveal a hidden POI in the region, answer one yes/no question about local history, or receive a blessing (+1 boon on one skill until the next rest) |
+| 5 | **Ley Line Nexus** — cracks of light in the earth, subtle vibration in metal and bone | Spellcasters may spend 1 turn in communion here to recover 1 additional Focus (once per visit). The nexus is visible from adjacent hexes as a faint glow. Staying overnight here counts as a full rest for spellcasters |
+| 6 | **Thin Veil** — reflections move a heartbeat late, temperature swings without cause | The boundary between worlds is weak. When the hex is first entered, the GM rolls d6: 1–2 a hostile spirit manifests (treat as an Encounter with a spirit from Generic Encounter Table row 6), 3–4 a curious spirit offers cryptic information (GM reveals one clue or hidden POI), 5–6 a vision of the site's past plays out (purely narrative, no mechanical effect) |
 
 ---
 
