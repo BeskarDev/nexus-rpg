@@ -135,7 +135,7 @@ POIs are either **visible** (immediately apparent when entering the hex) or **hi
 | Very Hard | 12 | Magically hidden site, sealed vault |
 | Legendary | 14 | Mythic locations, sacred sanctuaries |
 
-**Supernatural hexes.** A small number of hexes (roughly 1 in 10) may hold a supernatural or magical quality — cursed ground, a divine wellspring, an arcane anomaly, or a place where the veil between worlds is thin. Mark these hexes during setup. Their effects are purely narrative or GM-designed; the POI Discovery Reward Table row 6 provides mechanical anchors for such sites (magical anomaly, portal, ancient artifact). A supernatural hex may be immediately apparent to those with relevant knowledge, or hidden behind a Legendary TN requiring specific rituals or magical senses to perceive.
+**Supernatural hexes.** A small number of hexes (roughly 1 in 10) may hold a supernatural or magical quality — cursed ground, a divine wellspring, an arcane anomaly, or a place where the veil between worlds is thin. Mark these hexes during setup. Their effects are purely narrative or GM-designed. The POI Discovery Reward Table row 6 provides mechanical anchors for such sites (magical anomaly, portal, ancient artifact). A supernatural hex may be immediately apparent to those with relevant knowledge, or hidden behind a Legendary TN requiring specific rituals or magical senses to perceive.
 
 To randomly generate POI types, roll d66:
 
@@ -314,7 +314,7 @@ When the party has received a Traces clue pointing to this hex, the Search gains
 
 **Camp.** Set up camp and rest for the night. Follow the standard [Resting](../06-scenes/03-resting.md) rules. Each adventurer rolls a **Supply Check** for rations (unless fed by a Forage, Hunt, or Fish result). Assign night watches as desired. The camping turn still advances the day clock and triggers an event roll.
 
-**Suitable camping spots** include any POI that provides shelter (a cave shelter, settlement, abandoned camp, etc.) or a terrain feature that affords natural protection (clearing, overhang, cave mouth, etc.). If no suitable spot is available, one character rolls Spirit + Survival vs. the Exploration Difficulty to establish a makeshift shelter:
+**Suitable camping spots** include any POI that provides shelter (such as a cave shelter, settlement, or abandoned camp) or a terrain feature that affords natural protection (such as a clearing, overhang, or cave mouth). If no suitable spot is available, one character rolls Spirit + Survival vs. the Exploration Difficulty to establish a makeshift shelter:
 
 - **Success:** Makeshift shelter found. The party rests normally.
 - **Failure:** No adequate shelter. The party suffers a **bad night** (per the [Resting](../06-scenes/03-resting.md) rules).
@@ -335,7 +335,7 @@ At the end of each turn, the GM rolls **1d6** on the Exploration Event Table, th
 |:--:|-------|
 | **1** | **Encounter** — roll on the Encounter Sub-Table |
 | **2** | **Weather Shift** — roll on the Weather Shift Sub-Table |
-| **3** | **Wear and Tear** — each adventurer chooses one item they carry; items with Durability make a Durability check, all others lose 1 use |
+| **3** | **Wear and Tear** — each adventurer chooses one item they carry; items with Durability make a Durability check, items with uses lose 1 use, all other items are unaffected |
 | **4** | **Traces** — signs of something nearby; roll on the Traces Sub-Table, pointing toward a pre-placed hidden POI if one is adjacent |
 | **5** | **Terrain Feature** — an obstacle or hazard; roll on the Terrain Feature Sub-Table |
 | **6** | **Nothing** — the stretch passes without incident |
