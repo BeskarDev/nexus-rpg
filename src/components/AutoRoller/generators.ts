@@ -1468,7 +1468,8 @@ export function generateBuilding(groupId: string): string {
 export const terrainGroups = [
 	{ id: 'terrain', label: 'Natural Terrain' },
 	{ id: 'supernatural', label: 'Supernatural Terrain' },
-	{ id: 'location', label: 'Location' },
+	{ id: 'mundaneLocation', label: 'Mundane Location' },
+	{ id: 'supernaturalLocation', label: 'Supernatural Location' },
 ]
 
 export function generateTerrain(groupId: string): string {
@@ -1485,10 +1486,16 @@ export function generateTerrain(groupId: string): string {
 			const detail = pick(terrainData.supernaturalDetails)
 			return `${article(theme)} ${lc(theme)} ${lc(feature)} with ${lc(detail)}.`
 		}
-		case 'location': {
-			const theme = pick(terrainData.locationThemes)
-			const feature = pick(terrainData.locationFeatures)
-			const detail = pick(terrainData.locationDetails)
+		case 'mundaneLocation': {
+			const theme = pick(terrainData.mundaneLocationThemes)
+			const feature = pick(terrainData.mundaneLocationFeatures)
+			const detail = pick(terrainData.mundaneLocationDetails)
+			return `${article(theme)} ${lc(theme)} ${lc(feature)} with ${lc(detail)}.`
+		}
+		case 'supernaturalLocation': {
+			const theme = pick(terrainData.supernaturalLocationThemes)
+			const feature = pick(terrainData.supernaturalLocationFeatures)
+			const detail = pick(terrainData.supernaturalLocationDetails)
 			return `${article(theme)} ${lc(theme)} ${lc(feature)} with ${lc(detail)}.`
 		}
 		default:
