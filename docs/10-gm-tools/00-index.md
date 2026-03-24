@@ -20,6 +20,7 @@ Welcome to the GM Tools section — a collection of printable references and Ran
 - [Random Spell](./random-tables/random-spell)
 - [Random Name](./random-tables/random-name)
 - [Random Challenge](./random-tables/random-challenge)
+- [Terrain & Locations](./random-tables/random-terrain)
 
 ## 🛠️ Builder Tools
 

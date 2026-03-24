@@ -6,6 +6,7 @@ import treasureData from './data/treasureData.json'
 import questData from './data/questData.json'
 import npcData from './data/npcData.json'
 import settlementData from './data/settlementData.json'
+import terrainData from './data/terrainData.json'
 import weaponsGameData from '../../utils/data/json/weapons.json'
 import armorGameData from '../../utils/data/json/armor.json'
 import equipmentGameData from '../../utils/data/json/equipment.json'
@@ -1460,4 +1461,44 @@ export function generateBuilding(groupId: string): string {
 	const buildings = (settlementData.buildings as Record<string, string[]>)[groupId]
 	if (!buildings) return 'Unknown district type'
 	return `Prominent building: ${lc(pick(buildings))}.`
+}
+
+// ===== TERRAIN & LOCATIONS =====
+
+export const terrainGroups = [
+	{ id: 'terrain', label: 'Natural Terrain' },
+	{ id: 'supernatural', label: 'Supernatural Terrain' },
+	{ id: 'mundaneLocation', label: 'Mundane Location' },
+	{ id: 'supernaturalLocation', label: 'Supernatural Location' },
+]
+
+export function generateTerrain(groupId: string): string {
+	switch (groupId) {
+		case 'terrain': {
+			const theme = pick(terrainData.terrainThemes)
+			const feature = pick(terrainData.terrainFeatures)
+			const detail = pick(terrainData.terrainDetails)
+			return `${article(theme)} ${lc(theme)} ${lc(feature)} with ${lc(detail)}.`
+		}
+		case 'supernatural': {
+			const theme = pick(terrainData.supernaturalThemes)
+			const feature = pick(terrainData.supernaturalFeatures)
+			const detail = pick(terrainData.supernaturalDetails)
+			return `${article(theme)} ${lc(theme)} ${lc(feature)} with ${lc(detail)}.`
+		}
+		case 'mundaneLocation': {
+			const theme = pick(terrainData.mundaneLocationThemes)
+			const feature = pick(terrainData.mundaneLocationFeatures)
+			const detail = pick(terrainData.mundaneLocationDetails)
+			return `${article(theme)} ${lc(theme)} ${lc(feature)} with ${lc(detail)}.`
+		}
+		case 'supernaturalLocation': {
+			const theme = pick(terrainData.supernaturalLocationThemes)
+			const feature = pick(terrainData.supernaturalLocationFeatures)
+			const detail = pick(terrainData.supernaturalLocationDetails)
+			return `${article(theme)} ${lc(theme)} ${lc(feature)} with ${lc(detail)}.`
+		}
+		default:
+			return 'Unknown terrain type'
+	}
 }
