@@ -26,25 +26,11 @@ The following systems already have dedicated analysis reports:
 | Talent–challenge & social intrigue integration | `talents/CHALLENGE_SOCIAL_INTRIGUE_TALENT_INTEGRATION.md` |
 | Spell system (overview + all 14 schools) | `spells/SPELL_SYSTEM_ANALYSIS.md`, `spells/schools/*.md` |
 | Folk naming conventions (12 folk) | `names/*.md` |
+| Folk traits & ancestry balance | `folk-traits-ancestry-balance-analysis.md` |
 
 ---
 
 ## Proposed Analysis Opportunities
-
-### 1. Folk Traits & Ancestry Balance
-
-**Relevant Rules:** `docs/02-adventurers/01-folk.md`
-
-**Rationale:** The game features 12 playable folk (Dwarf, Elf, Gnome, Hune, Orc, Goblin, Human, Catfolk, Lizardfolk, Minotaur, Dogfolk, Satyr), each with unique attribute modifiers, innate abilities, and cultural traits. No analysis currently evaluates whether these traits are mechanically balanced against one another or whether any folk are disproportionately strong or weak for specific archetypes.
-
-**Questions to Explore:**
-- Are attribute modifiers distributed fairly across folk, or do some folk have a clear mechanical advantage?
-- Do innate folk abilities vary meaningfully in combat value, utility, and flexibility?
-- Are there folk that are mechanically dominant for popular archetypes (e.g., certain folk always optimal for casters or fighters)?
-- Do all folk have interesting trade-offs, or are some strictly superior to others?
-- How well do folk traits support the Bronze Age cultural identities described in the lore?
-
----
 
 ### 2. Character Progression & XP Economy
 
