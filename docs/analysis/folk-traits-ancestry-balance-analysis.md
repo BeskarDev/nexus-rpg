@@ -517,7 +517,7 @@ You are of small size. This grants you the following effects:
 +1 Resist. You gain +1 boon on Spirit + Fortitude rolls.
 
 **Imposing Stature.** 🆕 NEW
-Your towering frame commands respect and inspires caution. You gain +1 boon on Influence rolls to intimidate creatures of medium or smaller Size. Creatures attempting to intimidate or frighten you suffer +1 bane on the roll.
+Your towering frame commands respect and inspires caution. You gain +1 boon on Influence rolls to intimidate creatures of medium or smaller size. Creatures attempting to intimidate or frighten you suffer +1 bane on the roll.
 
 > *Design rationale: Hune had only 2 abilities — the fewest of any folk. Imposing Stature fills a social/defensive niche that reflects their biological reality (they're 2+ meters tall). The intimidation boon is restricted to medium or smaller creatures — you can't intimidate a huge dragon just by being tall. The anti-frighten/intimidate defense is unrestricted because a Hune's stoic composure isn't diminished by creature size.*
 
@@ -775,7 +775,7 @@ The B-tier folk (Gnome, Goblin, Catfolk, Satyr, Human*) all have clear reasons f
 - **Catfolk**: Abilities are well-rounded but Intimidating Roar costs a full Action (opportunity cost) and Sharp Claws are 2 damage (lower than Lizardfolk/Minotaur). Cultural abilities can raise this.
 - **Satyr**: Wild Resilience is meta-dependent (strongest in magic-heavy campaigns). Value varies by campaign.
 
-*Note: Human drops to budget 7 in the innate set, but Sefkari humans with Arcane Awakening as a cultural ability reach effective budget 10+. This is intentional — culture choice becomes a meaningful decision for Human characters.
+*Note: Human drops to budget 7 in the innate set, but Sefkari humans with Arcane Awakening as a cultural ability gain an additional +3 to their effective power (equivalent to adding the old Arcane Awakening's combat value). Cultural abilities are scored separately from the innate budget — the 6–8 range above covers innate abilities only.
 
 ### 9.16 Change Summary Matrix
 
@@ -802,7 +802,7 @@ This section presents fully designed cultural abilities for all 50 cultures acro
 
 ### 10.1 Design Principles
 
-1. **Power level ≈ Rank 1 talent.** Reference examples: Born Haggler (sell at 60% instead of 50%), Expert Rider (+1 boon on mount rolls), Beast Lore (re-roll Nature test once/scene), Sharpshooter (ignore first range bane).
+1. **Power level ≈ Rank 1 talent.** Reference examples: Born Haggler (sell at 60% instead of 50%), Expert Rider (+1 boon on mount rolls), Beast Lore (re-roll Nature test once/scene), Sharpshooter (ignore first range bane). **Exception:** Sefkari Arcane Awakening is deliberately at Rank 2 talent power level — it is an intentional archetype enabler and the most powerful cultural ability in the system (see Sefkari design note below).
 2. **Cultural, not biological.** These abilities reflect training, environment, and tradition — not innate physiology. A Fortress-Dwarf's architectural knowledge is learned, not genetic.
 3. **Not build-defining.** No cultural ability should be so powerful that it forces a specific archetype. The exception is Sefkari (Oasis-Humans), whose Arcane Awakening is intentionally archetype-enabling — this is the design's highest-impact cultural ability.
 4. **Context-specific boons only.** Boons must be limited to specific situations (e.g., "+1 boon on Fortitude rolls to resist cold-based hazards"), not blanket skill bonuses.
