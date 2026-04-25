@@ -10,7 +10,7 @@ sidebar_position: 2
 
 ## Creation Overview
 
-Creating your adventurer is the first step in your journey through the sun-scorched lands of Atakhet and beyond. This chapter guides you through the process of breathing life into your character—from their innate attributes to their learned skills and chosen equipment.
+Creating your adventurer is the first step in your journey through the sun-scorched lands of Atakhet and beyond. This chapter guides you through the process of breathing life into your character, from their innate attributes to their learned skills and chosen equipment.
 
 ## Creation Steps
 
@@ -21,7 +21,7 @@ When creating a new adventurer, follow these nine steps:
 > 3. Upbringing
 > 4. Background
 > 5. NPC Relationships
-> 6. Motivation
+> 6. Personality
 > 7. Skills
 > 8. Equipment
 > 9. Final Details
@@ -41,7 +41,7 @@ Begin with a d6 in all attributes. You may choose to increase one attribute to d
 
 ### 2. Choose Your Folk
 
-Select your adventurer's folk—the people they were born among—and their associated culture. This choice shapes not only your adventurer's appearance but also their perspective on the world.
+Select your adventurer's folk, the people they were born among, and their associated culture. This choice shapes not only your adventurer's appearance but also their perspective on the world.
 
 Each folk has unique cultural practices and values. Also choose a specific culture within your folk, such as the sun elves of Atakhet or the ghahar dwarves of the Crimson Mountains.
 
@@ -51,13 +51,13 @@ You automatically learn the language of your chosen culture, in addition to the 
 
 ### 3. Choose Your Upbringing
 
-Select your adventurer's upbringing from the list provided in the adventurers section. Your upbringing represents how and where you were raised—whether in the grand cities of Atakhet, the nomadic caravans of the outer deserts, or the bustling markets of river settlements. Each upbringing option comes with suggested skills that reflect the capabilities typically learned in that environment.
+Select your adventurer's upbringing from the list provided in the adventurers section. Your upbringing represents how and where you were raised, whether in the grand cities of Atakhet, the nomadic caravans of the outer deserts, or the bustling markets of river settlements. Each upbringing option comes with suggested skills that reflect the capabilities typically learned in that environment.
 
 > Example: Sephi the Seer chose the "Monk" upbringing, which suggested the Education, Insight, and Mysticism skills.
 
 ### 4. Choose Your Background
 
-Select your adventurer's background from the list provided in the adventurers section. Your background represents what your adventurer did before answering the call to adventure—whether they served as a temple guardian, worked as a market trader, studied as a scholar of forgotten texts, or hunted with nomadic tribes. Each background comes with additional suggested skills that reflect the expertise developed during that period of your life.
+Select your adventurer's background from the list provided in the adventurers section. Your background represents what your adventurer did before answering the call to adventure, whether they served as a temple guardian, worked as a market trader, studied as a scholar of forgotten texts, or hunted with nomadic tribes. Each background comes with additional suggested skills that reflect the expertise developed during that period of your life.
 
 Also, you can gain an advantage in the form of +1 boon on rolls through your background. This is further explained in the Backgrounds section.
 
@@ -80,13 +80,50 @@ No adventurer exists in isolation. You begin the game with three significant con
 >
 > - A rival warrior from a neighboring clan (adventurer role, hostile, -2) who believes Arzhag stole their glory
 
-### 6. Define Your Motivation
+### 6. Define Your Personality
 
-What drives your adventurer to leave the safety of home and face the unknown dangers of the world? Choose one of the following motivations or create your own:
+Every adventurer is shaped not only by where they came from, but by what drives them and what they cannot escape. Choose one **Motivation** and one **Vice** to define the twin forces that pull your character forward and drag them astray.
 
-*Duty, Fame, Fortune, Freedom, Justice, Knowledge, Power, Redemption, Revenge, Survival*
+- **Motivation:** your core drive; the purpose that pushes you beyond safety and comfort.
+- **Vice:** your defining flaw; the compulsion or weakness that will betray you at the worst moment.
 
-Record your chosen motivation, as it will guide your adventurer's actions and decisions. You can invoke your Motivation once per gaming session to gain Resolve. The rules for this can be found in the Resolve section.
+Both can be invoked during play to gain Resolve. The GM can invoke your Vice to offer you a reward for indulging in it. See the Resolve section for details.
+
+#### Motivations
+
+| d12 | Motivation | How it plays |
+|:---:|---|---|
+| 1 | **Duty** | You act on an obligation you already made, even when it costs you and no one would call you out for skipping it. |
+| 2 | **Fame** | You push harder because people are watching and this moment could become a story worth telling. |
+| 3 | **Fortune** | You take the riskier option because the payoff is worth it to you, and say so. |
+| 4 | **Freedom** | Someone is trying to control, bind, or pressure you into compliance and you refuse outright. |
+| 5 | **Glory** | You do something the hard way because it will be worth claiming later, not because it is practical now. |
+| 6 | **Honor** | The easy path would mean breaking your own code, so you take the harder one and explain why. |
+| 7 | **Justice** | You act to expose a wrong, hold someone accountable, or make sure a victim gets something they are owed. |
+| 8 | **Knowledge** | You pursue a question or secret even when doing so is inconvenient, costly, or unwelcome to others. |
+| 9 | **Power** | You use the moment to shift influence your way, through information, persuasion, or positioning. |
+| 10 | **Redemption** | You take a chance to make something right that you got wrong, or to be better than you were before. |
+| 11 | **Revenge** | Your old grievance is directly relevant to what is happening right now and you act on that connection. |
+| 12 | **Survival** | You explain that you are doing whatever it takes to get through this, and mean it. |
+
+#### Vices
+
+| d12 | Vice | How it plays |
+|:---:|---|---|
+| 1 | **Addiction** | When you reach for your habit under stress, boredom, grief, or temptation before trying anything else. |
+| 2 | **Cowardice** | When you find a reason to hang back, delay, or let someone else carry the risk that was yours to take. |
+| 3 | **Cruelty** | When you have leverage over someone and press it further than the situation calls for. |
+| 4 | **Greed** | When an opportunity for more than your share appears and you move on it before weighing what it costs others. |
+| 5 | **Hubris** | When you dismiss advice, ignore a warning, or take on more than you should because you are sure you know better. |
+| 6 | **Jealousy** | When someone else's success, praise, or advantage makes you act in a way that serves spite more than sense. |
+| 7 | **Lust for Power** | When you maneuver for influence, information, or authority that was not part of the original agreement. |
+| 8 | **Obsession** | When your fixation pulls your attention away from what the group needs and toward what you cannot stop thinking about. |
+| 9 | **Paranoia** | When you treat an ally's reasonable action as suspect, demand proof of loyalty, or withhold information that would help everyone. |
+| 10 | **Pride** | When criticism, failure, or someone else's competence makes you dig in rather than adapt or concede. |
+| 11 | **Recklessness** | When you commit to a course of action before thinking through what you are giving up or who else it affects. |
+| 12 | **Wrath** | When a slight, real or imagined, changes your priorities and you make someone else's situation worse because of it. |
+
+You can roll randomly on either table or choose freely. You can also invent your own: keep it to a single word and be ready to say plainly how it will complicate your life.
 
 ### 7. Choose Your Skills
 
@@ -146,7 +183,7 @@ As you journey through the lands of Atakhet and beyond, your adventurer will gro
 - Forge new relationships with NPCs
 - Discover ancient secrets and powerful artifacts
 
-Remember that the journey of an adventurer is never complete—there are always new horizons to explore and challenges to overcome.
+Remember that the journey of an adventurer is never complete. There are always new horizons to explore and challenges to overcome.
 
 ## Level 1 → Early Progression (Quick Example)
 
