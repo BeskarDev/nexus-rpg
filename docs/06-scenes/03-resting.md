@@ -24,7 +24,7 @@ After setting up camp, having a decent meal, and having a full night's sleep, yo
 
 - regain up to 1 Resolve
 - regain all of your Focus
-- remove up to 2 points of Exhaustion
+- remove 1 point of Fatigue
 - regain 1/day Abilities
 - roll a hard Strength + Fortitude test to heal one previously treated Wound
 - long-lasting effects end
@@ -47,7 +47,7 @@ At the end of a full rest, you:
 
 - regain up to 1 Resolve
 - regain all of your Focus
-- remove all of your Exhaustion
+- remove all of your Fatigue
 - regain 1/day Abilities
 - for each treated Wound, roll a hard Strength + Fortitude test to potentially heal it
 - long-lasting effects end

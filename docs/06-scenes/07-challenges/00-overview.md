@@ -106,7 +106,7 @@ Stealth (cut through shadows), Influence (shout for help to block the path), Nat
 - **Wrong Turn.** The path doubles back. The die doesn't decrease on the next successful roll.
 - **Obstacle.** A cart, crowd, or debris blocks the way. +1 bane on the next roll.
 - **Attracted Attention.** The commotion draws a patrol. 1d4 guards are waiting at the finish point.
-- **Fatigue.** The brutal pace forces one character to suffer 1 Exhaustion immediately.
+- **Fatigue.** The brutal pace forces one character to suffer 1 Fatigue immediately.
 - **Crash (Blunder).** The character careens into an obstacle, falls **prone**, and suffers 1d6 damage.
 
 ---
@@ -150,7 +150,7 @@ Insight (predict behavior), Education (knowledge of species habits), Streetwise 
 - **Lost Trail.** The tracks vanish. The die doesn't decrease on the next successful roll.
 - **Become Noticed.** The quarry is aware and grows cautious. TN increases by 2 for all remaining rolls.
 - **Target Gains Distance.** The die value increases by 1 (up to its starting value).
-- **Environmental Hazard.** Treacherous terrain: each adventurer makes a Fortitude check (TN 8) or suffers 1 Exhaustion.
+- **Environmental Hazard.** Treacherous terrain: each adventurer makes a Fortitude check (TN 8) or suffers 1 Fatigue.
 - **Ambush (Blunder).** The quarry has circled back. Transition immediately into a combat scene.
 
 ---

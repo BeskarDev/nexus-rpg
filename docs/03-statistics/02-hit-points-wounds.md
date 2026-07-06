@@ -38,7 +38,7 @@ Where HP represents your short-term condition and stamina, Fatigue covers your l
 
 Once you hit 6 points of Fatigue, you fall unconscious and only regain your consciousness after reducing your Fatigue naturally through rest or from other effects.
 
-You naturally recover 2 points of Fatigue after a night’s rest or all of your Fatigue after a full rest.
+You naturally recover 1 point of Fatigue after a night’s rest or all of your Fatigue after a full rest.
 
 ## Wounds
 

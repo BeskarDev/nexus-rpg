@@ -46,7 +46,7 @@ sidebar_position: 3
 ---|---|---|---|---
  1 | 2 | Medium (8) | Touch | -
 
-**Effect** <br/> You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. Any single creature can only benefit from the effect of this spell once per day. 
+**Effect** <br/> You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. A creature can only benefit from one Wound-healing spell effect per day. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> When using your Action, restore +6/12/16 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.
 
@@ -136,6 +136,14 @@ sidebar_position: 3
 
 >
 
+### Hallowed Rest
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | ritual (minutes), singular
+
+**Effect** <br/> You consecrate your camp with the soft glow of communal life energy, blessing all who sleep within its warmth.<br/>On a success, you bless the area in short range of the target location for a long duration. Choose any number of creatures within the blessed area — they are warded by the blessing. Warded creatures completing a night’s rest within the blessed area gain the following benefits:<br/>- They remove 1 additional point of Fatigue.<br/>- They gain +1 boon on their roll to heal a treated Wound.<br/>- If their rest is reduced to a bad night, they still regain all of their Focus.
+
 ### Healing Burst
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -154,7 +162,7 @@ sidebar_position: 3
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone’s life force and instantly heal one of their Wounds and regain +8 HP. Any single creature can only benefit from this effect of this spell once per day.<br/>The zone lasts for a medium duration. 
+**Effect** <br/> You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone’s life force and instantly heal one of their Wounds and regain +8 HP. A creature can only benefit from one Wound-healing spell effect per day.<br/>The zone lasts for a short duration. 
 
 ### Vitality Surge
 
