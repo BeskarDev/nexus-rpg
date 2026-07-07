@@ -78,6 +78,18 @@ sidebar_position: 5
 
 **Effect** <br/> You telekinetically take hold of multiple small items. Choose up to three tiny objects, such as ammo, stones, or household objects taking up 2 or less load each. The objects can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the objects towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the objects in a cluster up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the objects until your next turn. During your next turn, you can cast this spell again to move the objects further. On a failure, you drop the objects at their current location.<br/><br/><strong>Throw.</strong> Once per object, roll vs. Dodge against a target in range. You can choose the same or different targets for each thrown object. On a hit, each object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
 
+### Grease
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | -
+
+**Effect** <br/> You flatten your palm and a film of frictionless force spreads across the ground, slick as oil. On a success, an area close to the target location becomes slippery. The area is difficult terrain. When a creature tries to move through the slippery area for the first time on their turn, or is pushed or pulled into it, they must succeed on an Agility + Athletics roll vs. this spell’s target Difficulty or fall prone. A prone creature that tries to stand while in the area must succeed on the same roll or remain prone. The effect lasts for a short duration. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one, the slippery area extends to medium range from the target location, or the effect lasts for a medium duration instead.<br/><strong>(Rank 3)</strong> Both, the slippery area extends to medium range and the effect lasts for a medium duration.
+
+>
+
 ### Knock
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

@@ -110,6 +110,14 @@ sidebar_position: 7
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one of the benefits below when you cast the spell.<br/><strong>(Rank 4)</strong> Choose two instead.<br/><strong>(Rank 5)</strong> Choose three instead.<br/>- You sense it the moment any creature touches the warded portal, even while asleep, as long as you are within an hour's travel of it.<br/>- The first creature to force the portal is briefly dazed as the sanctuary turns their will aside.<br/>- You bless one additional portal you touch during the casting with the same effect.<br/>- The blessing lasts for a very long duration instead of a long one.
 
+### Serene Exile
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You speak a word of stillness and the target vanishes from sight. Target one creature of a tier equal to or lower than your Mysticism, using your roll’s result vs. their Resist. On a success, the target is drawn out of the world and into a serene pocket realm beyond it while you concentrate, up to a short duration. While set aside, they cannot act, move, be targeted, or affect anything in the world, and nothing in the world can affect them. When the spell ends, the target returns to the space they left, or the nearest open space if that space is occupied. If the target is a conjured or extraplanar creature and you concentrate for the full short duration, they are instead sent to their native sphere of existence and any effect summoning or binding them ends. 
+
 ### Anti-Magic Field
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

@@ -49,6 +49,7 @@ yarn creature:build   # Creature builder CLI
 
 - **Bold** for mechanical terms and conditions; *italics* for flavor, spell names, tradition/discipline names.
 - Active voice, exact established terminology ("Success Level", "Target Number", "bane/boon", "roll Strength + Athletics").
+- **Refer to creatures as "they/their/them," never "it/its"** (singular *they*, even for one creature). Reserve "it/its" for objects, zones, areas, and spells.
 - **No semicolons or em/en dashes in game content.** The game uses natural, direct language. Split into separate sentences, or use "such as" / "and". (Applies to all published rules, spells, creatures, items, and talents. Meta-docs like this file are exempt.)
 - Every ability states its trigger, effect, and limit. No vague narrative-only effects.
 - **Give the GM parameters, never open-ended "GM decides."** When an effect hands a decision to the GM (what a divination reveals, what an omen means), spell out a concrete menu of answer types or bounded options, with a safety-valve option for when nothing concrete fits. Keeps play flowing and avoids forcing on-the-spot creativity.

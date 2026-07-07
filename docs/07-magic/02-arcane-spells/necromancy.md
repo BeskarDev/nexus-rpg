@@ -280,6 +280,10 @@ sidebar_position: 6
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 | vs. Dodge | Long | -
+ 4 | 8 | vs. Resist | Long | -
 
-**Effect** <br/> <em>bzzzz…</em>
+**Effect** <br/> You level a finger at your target and speak the last word, and a pulse of killing negativity withers them from within.<br/><strong>Weak.</strong> Deal +10 necrotic damage.<br/><strong>Strong.</strong> Deal +20 necrotic damage.<br/><strong>Critical.</strong> Deal +30 necrotic damage.<br/>If this damage reduces the target to 0 HP, their corpse rises under your control at the start of your next turn as a zombie with the statistics of a tier 1 companion and the zombie undead companion trait (as <em>Animate Corpse</em>). The zombie obeys you for a short duration and then collapses into a lifeless corpse. You can have only one zombie from this spell at a time. 
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Deal +12/+24/+36 instead.
+
+>

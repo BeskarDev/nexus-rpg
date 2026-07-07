@@ -47,9 +47,12 @@ Use the template below. Flavor ties to 1–3 school traits; arcane feels transgr
 ### 6. Validate
 Run the checklist below, then sanity-check against neighbors: pull 2–3 published spells of the same rank and role and compare — the new spell must not strictly dominate any of them.
 
+### 7. Check worldbuilding implications
+Before finalizing any spell with social, legal, economic, informational, or logistical reach, ask what happens if it becomes a *routine* tool of courts, markets, armies, or rulers. Nexus is Bronze Age sword & sorcery — magic is rare, feared, priest/sorcerer-gated, never institutionalized. Keep it rare/costly, prefer constrain-not-extract over auto-solve, leave in-world counterplay, and add a short GM framing note when the reach is setting-shaping. See principle 33.
+
 ## Designer Principles
 
-**Binding rules distilled from owner feedback — read [references/designer-principles.md](references/designer-principles.md) in full before designing any spell.** Currently 29 principles; the most frequently violated: spells assist, never bypass (1); SL scales magnitude, not effect type (2); heighten, don't duplicate (3); limits live in the fiction, not game structure (12); effect text states the general application first, exceptions after (15); a flat single-success effect is often correct, especially for utility (24); optional modifiers belong on Heighten, never on SL (25); Heighten cascades through every remaining rank up to R5 (26); validate against talents and subsystems, not just other spells (27); ground info-gathering tiers in the real anatomy of what is examined (28); GM-facing effects give the GM parameters to move within, never open-ended "GM decides" (29).
+**Binding rules distilled from owner feedback — read [references/designer-principles.md](references/designer-principles.md) in full before designing any spell.** Currently 33 principles; the most frequently violated: spells assist, never bypass (1); SL scales magnitude, not effect type (2); heighten, don't duplicate (3); limits live in the fiction, not game structure (12); effect text states the general application first, exceptions after (15); a flat single-success effect is often correct, especially for utility (24); optional modifiers belong on Heighten, never on SL (25); Heighten cascades through every remaining rank up to R5 (26); validate against talents and subsystems, not just other spells (27); ground info-gathering tiers in the real anatomy of what is examined (28); GM-facing effects give the GM parameters to move within, never open-ended "GM decides" (29); refer to creatures as they/their, never it/its (30); never scale the tier cap on Heighten (31); every Heighten rank restates all inherited effects, not just the delta (32); weigh worldbuilding implications as an explicit balance axis, keep setting-shaping magic rare, constraining, and circumventable (33).
 
 ## Pitfalls
 
@@ -93,7 +96,9 @@ Run the checklist below, then sanity-check against neighbors: pull 2–3 publish
 
 **Balance**: not strictly superior to same-rank neighbors; interesting tactical choice; R5 respects the D&D-7 ceiling; deviations paid for by trade-offs.
 
-**Writing**: mechanical terms **bold**, school names *italic*, effects unambiguous, active voice.
+**Worldbuilding**: setting-shaping reach (social/legal/economic/informational/logistical) does not modernize or industrialize the Bronze Age S&S setting; kept rare/costly, constrains rather than auto-solves, has in-world counterplay; GM framing note added where reach is significant (principle 33).
+
+**Writing**: mechanical terms **bold**, school names *italic*, effects unambiguous, active voice; creatures are they/their not it/its (principle 30).
 
 ## Publication Pipeline
 

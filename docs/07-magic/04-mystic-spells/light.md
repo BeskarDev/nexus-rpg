@@ -140,6 +140,18 @@ sidebar_position: 1
 
 **Effect** <br/> You call down a pillar of light at the target location, revealing any falsehoods and burning creatures within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines bright light in close range and dim light in short range of it. Any magical falsehoods, such as illusions, shapeshifters, or invisible creatures inside the beam is immediately revealed.<br/>Any creatures inside the beam take +8 radiant damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
 
+### Zone of Truth
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You consecrate a close area within range with a clear, revealing radiance in which falsehood cannot hold. Target each creature in the area, using your roll’s result vs. their Resist. Each affected creature knows they are being compelled. While an affected creature remains in the area, they cannot speak a deliberate lie. They can still stay silent, give a short or evasive answer, or say what they believe to be true even if they are mistaken. A creature that leaves the area is no longer affected. A creature that enters the area after the spell is cast is targeted when they enter, using your roll’s result vs. their Resist. The zone lasts for a medium duration. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> The zone covers a short area and lasts for a long duration instead.
+
+>
+
 ### Blessing of Dawn
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

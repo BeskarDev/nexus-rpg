@@ -104,13 +104,17 @@ sidebar_position: 2
 
 **Effect** <br/> You submerge into the shadows around you. Cast this spell while standing in dim light or darkness.<br/>On a success, you merge with the shadows and become invisible. While invisible, you are hidden from any creature which hasn‘t an ability to see through invisibility.<br/>This spell lasts for a short duration, until you attack or cast another spell, or until you enter bright light. 
 
-### Whisper of Dreams
+### Sleep
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Resist | Short | -
+ 2 | 4 | vs. Resist | Medium | -
 
-**Effect** <br/> You lull a creature’s mind with whispers of sleep. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a medium duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they wake up. 
+**Effect** <br/> You breathe out a soft dream-mist that settles over a close area within range, and eyelids grow heavy. Target each hostile creature in the area whose tier is equal to or lower than your Mysticism, using your roll’s result vs. their Resist. On a success, each target falls unconscious for a short duration. A sleeping creature wakes and the condition ends immediately if they take any damage or suffer any other physical disturbance, such as being shaken, shoved, or moved, or if an adjacent creature spends an Action to rouse them. Loud noise alone does not wake them. Creatures that do not sleep, such as most undead and constructs, are unaffected. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The sleep lasts for a medium duration instead.<br/><strong>(Rank 4)</strong> The sleep lasts for a medium duration and the dream-mist covers a short area instead.<br/><strong>(Rank 5)</strong> The sleep lasts for a long duration and the dream-mist covers a medium area instead.
+
+>
 
 ### Augury
 
@@ -203,6 +207,18 @@ sidebar_position: 2
  3 | 6 | vs. Resist | Special | ritual (minutes),  material (mirror or vessel of still water),  concentrate
 
 **Effect** <br/> Under open sky or candlelight you tilt a reflecting surface toward the unseen, and the moon's pale light parts the distance between you and the one you seek. Target one creature you know, anywhere in the same sphere of existence. Unwilling creatures roll their Resist against your casting. You must channel the vision through a connection to the target: a possession of theirs, a part of their body, or deep personal familiarity. Without any such connection, suffer +2 banes.<br/>On a success, the surface shows the target and their immediate surroundings for a short duration while you concentrate.<br/><strong>Weak.</strong> The vision is hazy and silent. You make out general surroundings and activity, but no fine detail.<br/><strong>Strong.</strong> The vision is clear. You recognize faces and objects and hear muffled sound.<br/><strong>Critical.</strong> The vision is vivid with clear sound, and you sense whether any magic conceals, protects, or misleads what you see.<br/>A scried creature with any magical senses can roll Spirit + Perception vs. your Resist to feel that they are being watched. 
+
+### Gaseous Form
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Self | concentrate,  enchant (body)
+
+**Effect** <br/> Your body unravels into a slow coil of shadowy vapor, cool and near-formless. On a success, you take gaseous form for a medium duration while you concentrate. While in this form you gain the following.<br/>- You can slip through any gap or crack that is not airtight, and you hover, moving up to a close distance in any direction each turn.<br/>- You have resistance to physical damage and you cannot be grappled, restrained, or knocked prone.<br/>- You cannot attack, cast spells, or manipulate objects, and you cannot enter water or other liquid.<br/>- Strong wind pushes you as it would smoke, and you are pushed a short distance by any effect that would move you.<br/>You can end the spell at will, returning to your normal shape in an open space you occupy. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> You can instead target one willing creature you touch, or the form lasts for a long duration.<br/><strong>(Rank 5)</strong> You can target up to three willing creatures you touch, and the form lasts for a long duration.
+
+>
 
 ### Nightmare Realm
 

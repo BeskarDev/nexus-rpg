@@ -168,9 +168,21 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | enchant (body),  singular
 
-**Effect** <br/> You fill a creature‘s body with empowering nature magic. The target has to be a creature of medium or smaller Size.<br/>On a success, the target‘s body grows one Size larger along with all of their worn equipment and held items (as long as they stay in contact with their body). While enlarged by this spell, they gain the following effects:<br/>- Gain 5 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You gain +1 AV.<br/>- You deal +2 damage with attacks based on Strength.<br/>This spell lasts for a short duration or until the target falls unconscious. 
+**Effect** <br/> You fill a creature‘s body with empowering nature magic. The target has to be a creature of medium or smaller Size.<br/>On a success, the target‘s body grows one Size larger along with all of their worn equipment and held items (as long as they stay in contact with their body). While enlarged by this spell, they gain the following effects:<br/>- Gain 5 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You gain +1 AV.<br/>- You deal +2 damage with Strength-based attacks.<br/>This spell lasts for a short duration or until the target falls unconscious. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- Gain 10 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +2 Parry and lose -2 Dodge.<br/>- You gain +2 AV.<br/>- You deal +4 damage with attacks based on Strength.
+> **Heightened** <br/> <strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- Gain 10 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +2 Parry and lose -2 Dodge.<br/>- You gain +2 AV.<br/>- You deal +4 damage with Strength-based attacks.
+
+>
+
+### Diminish
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Special | Medium | enchant (body),  singular
+
+**Effect** <br/> You point at a creature and draw the vigor from their frame until their body dwindles. Target one creature within range. A willing creature is affected automatically. Against an unwilling creature, roll vs. their Resist. On a success, the target’s body shrinks one Size smaller along with their worn equipment and held items, for a short duration. While diminished by this spell, they suffer the following effects.<br/>- They suffer +1 bane on Strength rolls.<br/>- They suffer -1 Parry and gain +1 Dodge.<br/>- They lose 1 AV (min. 0).<br/>- They deal -2 damage with Strength-based attacks (min. 0). 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The target suffers the following effects instead. They suffer +1 bane on Strength rolls, suffer -2 Parry and gain +2 Dodge, lose 2 AV (min. 0), and deal -4 damage with Strength-based attacks (min. 0).
 
 >
 

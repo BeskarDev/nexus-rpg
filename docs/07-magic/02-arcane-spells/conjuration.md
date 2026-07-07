@@ -212,6 +212,14 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> You also sense any magical auras within short range of the eye, as per <em>Detect Magic</em>.<br/><strong>(Rank 5)</strong> As Rank 4, and the eye can move a medium distance with your Action instead of a short one.
 
+### Banishment
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You tear a seam in the air and cast a creature into an empty pocket of the astral void. Target one creature of a tier equal to or lower than your Arcana, using your roll’s result vs. their Resist. On a success, the target vanishes from the scene while you concentrate, up to a short duration. While banished, they cannot act, move, be targeted, or affect anything in the world, and nothing in the world can affect them. When the spell ends, the target reappears in the space they left, or the nearest open space if that space is occupied. If the target is a conjured or extraplanar creature and you concentrate for the full short duration, they are instead sent to their native sphere of existence and any effect summoning or binding them ends. 
+
 ### Wall of Force
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -219,6 +227,18 @@ sidebar_position: 3
  3 | 6 | Very Hard (12) | Long | concentrate
 
 **Effect** <br/> You form a translucent wall of pure arcane force. Choose any shape for the wall in a continuous path along the ground with up to a medium distance from start to end within range. The wall also extends a short distance into the air.<br/>On a success, the wall appears. Any creature standing in the walls path is pushed a close distance away from it.<br/>The barrier is immovable and lasts for a medium duration or until destroyed. The barrier can be destroyed like any other object. It has 10 Parry and Dodge, 8 AV, and 40 HP. 
+
+### Disintegrate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | vs. Dodge | Long | -
+
+**Effect** <br/> You level your hand and a thin lance of raw conjured force bores through your target, unmaking flesh and matter alike.<br/><strong>Weak.</strong> Deal +10 force damage.<br/><strong>Strong.</strong> Deal +20 force damage.<br/><strong>Critical.</strong> Deal +30 force damage.<br/>If this damage reduces the target to 0 HP, their body crumbles to a small heap of fine grey ash. They cannot be raised as undead, and only a <em>Resurrection</em> spell worked upon those ashes can call them back to life. You can instead target one unattended nonmagical object no larger than a large Size or one conjured construct of force, such as a <em>Wall of Force</em> or <em>Force Cage</em>, destroying it outright on a success. 
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Deal +12/+24/+36 instead.
+
+>
 
 ### Arcane Empowerment
 
@@ -242,7 +262,7 @@ sidebar_position: 3
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Long | concentrate
 
-**Effect** <br/> <em>trap a creature within a cage of arcane force. Hard to break and immovable.</em> 
+**Effect** <br/> You conjure an immovable prison of latticed arcane force around your target. On a success, a barred cage of force encloses a melee-range area at the target location, trapping every creature of large Size or smaller inside it. A trapped creature cannot leave the cage by any nonmagical means and cannot be pushed or pulled out of it. They can still act, attack, and cast through the bars. A trapped creature that tries to teleport or otherwise travel out by magic must first succeed on a roll vs. your Resist, or the attempt fails and is wasted. The cage is immovable, but it can be attacked and destroyed like any other object from either side, with 12 Parry, 12 Dodge, 10 AV, and 60 HP. It also ends if an effect that ends spells removes it, or when its duration ends. The cage lasts for a medium duration. 
 
 ### Teleportation Circle
 

@@ -319,17 +319,6 @@
         "heightened": "-"
     },
     {
-        "name": "Whisper of Dreams",
-        "tradition": "Twilight",
-        "rank": "1",
-        "focus": "2",
-        "target": "vs. Resist",
-        "range": "Short",
-        "properties": "-",
-        "effect": "You lull a creature\u2019s mind with whispers of sleep. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a medium duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they wake up.",
-        "heightened": "-"
-    },
-    {
         "name": "Aura of Fear",
         "tradition": "Twilight",
         "rank": "2",
@@ -953,8 +942,8 @@
         "target": "Hard (10)",
         "range": "Medium",
         "properties": "enchant (body), singular",
-        "effect": "You fill a creature\u2018s body with empowering nature magic. The target has to be a creature of medium or smaller Size.<br/>On a success, the target\u2018s body grows one Size larger along with all of their worn equipment and held items (as long as they stay in contact with their body). While enlarged by this spell, they gain the following effects:<br/>- Gain 5 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You gain +1 AV.<br/>- You deal +2 damage with attacks based on Strength.<br/>This spell lasts for a short duration or until the target falls unconscious.",
-        "heightened": "<strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- Gain 10 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +2 Parry and lose -2 Dodge.<br/>- You gain +2 AV.<br/>- You deal +4 damage with attacks based on Strength."
+        "effect": "You fill a creature\u2018s body with empowering nature magic. The target has to be a creature of medium or smaller Size.<br/>On a success, the target\u2018s body grows one Size larger along with all of their worn equipment and held items (as long as they stay in contact with their body). While enlarged by this spell, they gain the following effects:<br/>- Gain 5 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You gain +1 AV.<br/>- You deal +2 damage with Strength-based attacks.<br/>This spell lasts for a short duration or until the target falls unconscious.",
+        "heightened": "<strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- Gain 10 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +2 Parry and lose -2 Dodge.<br/>- You gain +2 AV.<br/>- You deal +4 damage with Strength-based attacks."
     },
     {
         "name": "Living Plants",
@@ -1868,5 +1857,71 @@
         "properties": "quick",
         "effect": "You call up a sudden column of rushing air that swells beneath a falling body and bears it gently down. Cast this spell as a Quick Action when you or a creature you can see within range falls.<br/>On a success, the target rides the updraft softly downward a short distance per round instead of falling and takes no falling damage when they land. On the way down they can drift up to a short distance horizontally on the wind. The effect lasts for a short duration. If it ends while the target is still airborne, they fall the remaining distance as normal.",
         "heightened": "<strong>(Rank 2)</strong> Affect up to two falling creatures within range instead.<br/><strong>(Rank 3)</strong> Up to three creatures instead.<br/><strong>(Rank 4)</strong> Up to four creatures instead.<br/><strong>(Rank 5)</strong> Up to five creatures instead."
+    },
+    {
+        "name": "Sleep",
+        "tradition": "Twilight",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You breathe out a soft dream-mist that settles over a close area within range, and eyelids grow heavy. Target each hostile creature in the area whose tier is equal to or lower than your Mysticism, using your roll’s result vs. their Resist. On a success, each target falls unconscious for a short duration. A sleeping creature wakes and the condition ends immediately if they take any damage or suffer any other physical disturbance, such as being shaken, shoved, or moved, or if an adjacent creature spends an Action to rouse them. Loud noise alone does not wake them. Creatures that do not sleep, such as most undead and constructs, are unaffected.",
+        "heightened": "<strong>(Rank 3)</strong> The sleep lasts for a medium duration instead.<br/><strong>(Rank 4)</strong> The sleep lasts for a medium duration and the dream-mist covers a short area instead.<br/><strong>(Rank 5)</strong> The sleep lasts for a long duration and the dream-mist covers a medium area instead."
+    },
+    {
+        "name": "Zone of Truth",
+        "tradition": "Light",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "concentrate",
+        "effect": "You consecrate a close area within range with a clear, revealing radiance in which falsehood cannot hold. Target each creature in the area, using your roll’s result vs. their Resist. Each affected creature knows they are being compelled. While an affected creature remains in the area, they cannot speak a deliberate lie. They can still stay silent, give a short or evasive answer, or say what they believe to be true even if they are mistaken. A creature that leaves the area is no longer affected. A creature that enters the area after the spell is cast is targeted when they enter, using your roll’s result vs. their Resist. The zone lasts for a medium duration.",
+        "heightened": "<strong>(Rank 4)</strong> The zone covers a short area and lasts for a long duration instead."
+    },
+    {
+        "name": "Serene Exile",
+        "tradition": "Peace",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "concentrate",
+        "effect": "You speak a word of stillness and the target vanishes from sight. Target one creature of a tier equal to or lower than your Mysticism, using your roll’s result vs. their Resist. On a success, the target is drawn out of the world and into a serene pocket realm beyond it while you concentrate, up to a short duration. While set aside, they cannot act, move, be targeted, or affect anything in the world, and nothing in the world can affect them. When the spell ends, the target returns to the space they left, or the nearest open space if that space is occupied. If the target is a conjured or extraplanar creature and you concentrate for the full short duration, they are instead sent to their native sphere of existence and any effect summoning or binding them ends.",
+        "heightened": "-"
+    },
+    {
+        "name": "Diminish",
+        "tradition": "Nature",
+        "rank": "2",
+        "focus": "4",
+        "target": "Special",
+        "range": "Medium",
+        "properties": "enchant (body), singular",
+        "effect": "You point at a creature and draw the vigor from their frame until their body dwindles. Target one creature within range. A willing creature is affected automatically. Against an unwilling creature, roll vs. their Resist. On a success, the target’s body shrinks one Size smaller along with their worn equipment and held items, for a short duration. While diminished by this spell, they suffer the following effects.<br/>- They suffer +1 bane on Strength rolls.<br/>- They suffer -1 Parry and gain +1 Dodge.<br/>- They lose 1 AV (min. 0).<br/>- They deal -2 damage with Strength-based attacks (min. 0).",
+        "heightened": "<strong>(Rank 3)</strong> The target suffers the following effects instead. They suffer +1 bane on Strength rolls, suffer -2 Parry and gain +2 Dodge, lose 2 AV (min. 0), and deal -4 damage with Strength-based attacks (min. 0)."
+    },
+    {
+        "name": "Gaseous Form",
+        "tradition": "Twilight",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Self",
+        "properties": "concentrate, enchant (body)",
+        "effect": "Your body unravels into a slow coil of shadowy vapor, cool and near-formless. On a success, you take gaseous form for a medium duration while you concentrate. While in this form you gain the following.<br/>- You can slip through any gap or crack that is not airtight, and you hover, moving up to a close distance in any direction each turn.<br/>- You have resistance to physical damage and you cannot be grappled, restrained, or knocked prone.<br/>- You cannot attack, cast spells, or manipulate objects, and you cannot enter water or other liquid.<br/>- Strong wind pushes you as it would smoke, and you are pushed a short distance by any effect that would move you.<br/>You can end the spell at will, returning to your normal shape in an open space you occupy.",
+        "heightened": "<strong>(Rank 4)</strong> You can instead target one willing creature you touch, or the form lasts for a long duration.<br/><strong>(Rank 5)</strong> You can target up to three willing creatures you touch, and the form lasts for a long duration."
+    },
+    {
+        "name": "Resurrection",
+        "tradition": "Life",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Touch",
+        "properties": "ritual (hours), material cost (5000 coins), singular",
+        "effect": "Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one turning of the moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration.",
+        "heightened": "-"
     }
 ]
