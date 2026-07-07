@@ -58,6 +58,8 @@ Durability bonus by quality: +1d/+1d/+2d/+2d/+3d (Q4–Q8). Magic ammo uses flat
 6. **Match power to level** — see quality table. Q6+ in a level-1 party breaks the game economy and math.
 7. **Thematic materials** — dragon scales from dragon hoards, mithril from dwarf vaults. Prefer materials the party could plausibly have harvested.
 8. **Damage/healing effects follow the spell scaling frameworks** — `docs/analysis/spells/SPELL_SYSTEM_ANALYSIS.md` §6 (damage per rank, AoE half-scaling) and §16 (healing: single-target 1:1 with damage, Quick Action ½, AoE half; temp HP never stacks; wound healing extremely rare). An item's effect must not exceed what a same-tier spell delivers — quality tier ≈ spell rank as the power yardstick (healing potion ≈ the equivalent-rank healing spell).
+9. **Never gate an ongoing effect on a static-TN save** — a flat difficulty (`roll vs. 8`) trivializes as characters grow (attribute die + 1d6 + skill vs. a fixed number is a near-autopass by mid-tier), so a recurring "save or suffer" is meaningless at higher levels. Enforce recurring effects through mechanics that don't decay with level instead: forced or forbidden actions, compulsions, mounting/unremovable Fatigue, contextual banes, or opportunity cost. If a roll is genuinely needed, scale its difficulty to the character (vs. their own Resist/Defense, or an escalating TN), never a bare constant.
+10. **A drawback must enact its own fiction, not tax a generic stat** — a curse or penalty should mechanically *make the character behave the cursed way*, not just deduct an unrelated resource. Paranoia forces isolation to rest; wrath compels retaliation; a cruel-tongue curse simply forbids lying. A flat attribute-die reduction or generic Fatigue hit that has nothing to do with the theme is lazy and inert. Ask "does this mechanic produce the behaviour the fiction describes?" Also do not touch **Resolve** (special meta-currency) — drawbacks trade in Fatigue, Wounds, HP, banes, or forced/forbidden actions.
 
 ## Creation Workflow
 
@@ -120,7 +122,7 @@ Don't make every treasure magical — mix coins, trade goods, consumables.
 ## Optional Rules (use when the owner asks)
 
 - **Attunement**: short rest to bond, max 3 attuned items per character.
-- **Cursed items**: appear beneficial, reveal after use, need magic to remove — balance benefit vs. drawback.
+- **Cursed items**: now a defined subsystem in `docs/04-equipment/07-magic-items/curses.mdx` (found loot only, GM-chosen not forced-roll, permanent equip/wield items only, d12 curse table). Each curse pairs a comply-benefit with a defy-price and must obey principles 9 and 10 (no static-TN saves, drawback enacts its own fiction, never touches Resolve). *Break Curse* suppresses an item curse temporarily rather than destroying it; permanent removal needs destroying the item or fulfilling its release condition.
 - **Artifacts (beyond Q8)**: may break standard rules (multiple enchantments, intelligence, growth) — sparingly, for major story beats only.
 
 ## Publication Pipeline

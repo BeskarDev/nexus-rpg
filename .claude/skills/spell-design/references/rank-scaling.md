@@ -12,6 +12,25 @@ Canonical numbers for spell design (aligned with `docs/analysis/spells/SPELL_SYS
 **Failure consequences**: Arcana → mishap table; Mysticism → lose access until penance.
 **Damage** = Spell Power + spell bonus. Success levels: Weak (0–2 over TN), Strong (3–5), Critical (6+).
 
+## In-World Power by Rank
+
+Qualitative anchor for judging whether a *concept* sits at the right rank, independent of its damage math. Use it together with the D&D-equivalence column: ask "what does a working of this rank look like in the fiction?" and "does this spell's real-world impact match?" A utility spell with no damage still has a rank, set by how much it changes the world.
+
+| Rank | In-world tier | What a spell of this rank can plausibly do |
+|------|---------------|---------------------------------------------|
+| 0 | Apprentice trick | A sensory cue, a tiny force, a momentary effect. Changes one small thing briefly. Never decides a scene. |
+| 1 | Novice working | One reliable minor effect: mend a problem, a short personal buff, read a language, break a fall, open a stuck latch. Solves a single ordinary obstacle. |
+| 2 | Practiced working | Affects a small area or a lasting utility. Defeats mundane defenses (locks, mundane wards), scouts a short way, protects a threshold, reshapes a body, reaches a known mind anywhere. A journeyman's craft. |
+| 3 | Expert working | Reaches across real distance (scry a place, teleport, remote senses), commands notable force, or divines a hidden truth. Shapes an encounter or a leg of a journey. |
+| 4 | Master working | Battlefield-scale control, raising the dead, potent transformation, true prophecy. Rare, remembered, story-defining. |
+| 5 | Mortal pinnacle | The greatest working a mortal can perform (D&D 7 ceiling): seal a soul, tear space, resurrect, unleash a storm. Always costs dearly. Never reality-warping. |
+
+**Rank-placement heuristics**:
+- If a spell defeats a *magical* defense of rank N, it usually wants to be rank N itself (e.g. Knock suppresses an Arcane Lock ward, so both sit at R2).
+- Sustained mobility that rewrites how a body moves (breathe water, climb walls) is R2+, not R1. A single short personal boon is R1.
+- Effect that acts at a distance you have never seen, or on a whole battlefield, is R3+.
+- When a concept spans two D&D levels that straddle a Nexus rank boundary, let *in-world impact* break the tie, not the lower number.
+
 ## Standard Scaling by Rank
 
 | Rank | Focus | TN | Single-Target (W/S/C) | Multi-Target (W/S/C) | Default Range | Duration | Default Area | Power |
@@ -28,6 +47,23 @@ Canonical numbers for spell design (aligned with `docs/analysis/spells/SPELL_SYS
 - Multi-target R2+: half the single-target spell bonus (consistent 50% per-target penalty). Spell Power and catalyst bonuses apply to every target, so AoE pays off at 3+ clustered targets.
 - Multi-target R0–R1: legacy values kept (at-will/low-Focus spells need tighter limits).
 - Duo-target: ~75% of single-target (e.g. +4/+9/+13 at R2), or full single-target with a limiting condition (targets adjacent).
+
+## Material Costs (consumed coins)
+
+Only use the **material cost (X)** property when the spell literally consumes coins or a coin-valued good on every cast (incense, precious offerings, rare reagents). A reusable focus item (a mirror, a bone set, a holy symbol) is **material (X)** — *not* a cost — and does not use coin values. Never attach a coin cost to a spell that doesn't actually burn value.
+
+Anchor: spell scroll costs (`docs/04-equipment/07-magic-items/effects.md`) — 50 / 150 / 500 / 1,500 / 5,000 / 15,000 coins for R0–R5. A consumed component is cheaper than a full single-use scroll (you still spend Focus + Action + a casting roll), so budget a consumed material at roughly **one rank-tier below the same-rank scroll**:
+
+| Rank | Consumed material cost | Notes |
+|------|-----------------------|-------|
+| 0 | none | cantrips never burn coins |
+| 1 | ~50 | trivial reagent |
+| 2 | ~150 | modest offering |
+| 3 | ~500 | valuable offering / incense |
+| 4 | ~1,500 | rare reagent |
+| 5 | 5,000+ | Q6–Q7 tier (matches R5 principle) |
+
+R5 consumed cost is the only *mandatory* one (peak spells must bite the economy — see Rank 5 Limits). Below R5, add a consumed cost only when the fiction demands it; most spells consume nothing.
 
 ## Range Modification (power budget)
 
@@ -134,3 +170,7 @@ Conditions and durations are established keywords — use them exactly:
 - **Durations**: briefly, short, medium, long, very long — definitions in `docs/06-scenes/02-effect-durations.md`. Ritual time intervals map to turn structures: minutes → delving, hours → exploration, days → travel, weeks → downtime.
 
 Complete lists: [../../game-basics.md](../../game-basics.md#canonical-keyword-sources).
+
+## Target Column Values
+
+The **Target** column holds only these valid values: a fixed TN label (`Medium (8)`, `Hard (10)`, `Very Hard (12)`, …), `vs. Resist`, `vs. Dodge`, `vs. Parry`, `Self`, or `Special`. A computed or variable difficulty (e.g. 5 + the item's Quality) is **not** written in the column — put `Special` there and state the exact calculation in the effect text ("Roll against a difficulty of 5 + the item's Quality."). Example: Identify uses `Special` + an in-text Quality-scaled difficulty.

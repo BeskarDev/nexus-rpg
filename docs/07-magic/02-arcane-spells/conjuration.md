@@ -124,6 +124,16 @@ sidebar_position: 3
 
 **Effect** <br/> You create an invisible, magical eye hovering in the air. On a success, the eye appears at the target location.<br/>You telepathically receive visual information from the eye. The eye has darkvision (medium/long) and moves by hovering. As an Action, you can move the eye a short distance in any direction. The eye can fit through any gap as small as one centimetre.<br/>Creatures with abilities to sense creatures non-visually can perceive the eye. The eye has 8 Defense and 1 HP.<br/>The eye lasts for a medium duration or until moved away more than one kilometre from you. 
 
+### Arcane Lock
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Touch | ritual (minutes),  enchant (long),  singular
+
+**Effect** <br/> You trace a sigil of binding force across a closed portal, and unseen bonds settle over it like a second frame. Target one closed door, window, gate, chest, lid, or other entryway no larger than a large Size that you touch. On a success, it is held fast and counts as a magically sealed fastening. It cannot be opened, picked, or forced by nonmagical means while the ward holds. When you cast this spell, you may name any creatures who can still open the portal freely. A <em>Knock</em> spell suppresses the ward for a short duration, during which the portal can be opened and shut normally, and any effect that ends spells removes it. The ward lasts for a long duration. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one of the benefits below when you cast the spell.<br/><strong>(Rank 4)</strong> Choose two instead.<br/><strong>(Rank 5)</strong> Choose three instead.<br/>- The sigil is nearly invisible, requiring a Mind + Perception roll against your casting to notice.<br/>- The first creature to force the portal by strength takes +6 force damage from the recoiling bonds.<br/>- You ward one additional portal you touch during the casting with the same effect.<br/>- The ward lasts for a very long duration instead of a long one.
+
 ### Eldritch Tendrils
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -191,6 +201,16 @@ sidebar_position: 3
  3 | 3 | Very Hard (12) | Very Long | -
 
 **Effect** <br/> You mentally focus on any location within range you can see or visualize because you were there before.<br/>On a success, you open a glimmering door of arcane energy before you and step through to teleport to your chosen location. You must be able to move to step through the door.<br/>You can bring along objects you are able to carry, as well as one willing creature or one creature you are grappling that is of equal or smaller Size than you.<br/>If the target location is already occupied by a creature or object, you and any creature that moves with you instead take 10 psychic damage (ignoring AV) and fail to teleport. 
+
+### Distant Eye
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Special | ritual (minutes),  concentrate
+
+**Effect** <br/> You fold a sliver of space and push a conjured eye through it, opening your senses onto somewhere far away. Choose any location you have visited before within the same sphere of existence.<br/>On a success, an invisible, magical eye appears at that location. You telepathically receive what it sees and hears for a short duration while you concentrate. The eye has darkvision (medium/long) and moves by hovering. As an Action, you can move it a short distance in any direction. It fits through any gap as small as one centimetre. Creatures with abilities to sense creatures non-visually can perceive the eye. The eye has 8 Defense and 1 HP. If it is destroyed, the spell ends. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> You also sense any magical auras within short range of the eye, as per <em>Detect Magic</em>.<br/><strong>(Rank 5)</strong> As Rank 4, and the eye can move a medium distance with your Action instead of a short one.
 
 ### Wall of Force
 

@@ -18,6 +18,7 @@
 3. Frost damage represents the cold of shadow and moonlight
 4. **Gaps**: No R1 Quick Action reactive spell, weak defensive options, "fate" trait poorly covered
 5. Dream and prophecy effects provide unique utility absent in other traditions
+6. **Divination boundary (Twilight vs. Light)**: Twilight owns the *hidden, distant, and yet-to-come* — secrets and scrying across distance, dreams, omens, and prophecy (fate). Present, local truth-revelation (piercing lies, illusions, invisibility, obfuscation on what is before you) belongs to Light. Litmus: *learn a distant secret or what is to come* → Twilight; *reveal a falsehood in front of me* → Light.
 
 ### Internal Synergies
 - **Setup**: Create darkness/shadow area → **Payoff**: Twilight spells cast from within darkness gain benefits

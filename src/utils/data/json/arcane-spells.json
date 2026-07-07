@@ -728,13 +728,13 @@
     {
         "name": "Psychometry",
         "discipline": "Telepathy",
-        "rank": "1",
-        "focus": "2",
-        "target": "Medium (8)",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
         "range": "Touch",
         "properties": "ritual (minutes)",
         "effect": "Touching an inanimate object, you gain insights into it\u2019s recent history and what events took place around it.<br/><strong>Weak. </strong>You gain one Discovery.<br/><strong>Strong. </strong>You gain two Discovery.<br/><strong>Critical. </strong>You gain three Discovery.<br/>You can spend one Discovery, the same as when rolling for Discovery, to gain insights into the objects history or what events took place around them. Both have to have taken place during the last week.<br/>You can only cast this spell once per object.",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 3)</strong> Your insights can reach back up to one year.<br/><strong>(Rank 4)</strong> Your insights can reach back through the object's entire history, including the circumstances of its making."
     },
     {
         "name": "Subtle Suggestion",
@@ -1285,5 +1285,82 @@
         "properties": "-",
         "effect": "<em>bzzzz\u2026</em>",
         "heightened": "-"
+    },
+    {
+        "name": "Feather Fall",
+        "discipline": "Telekinetics",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Medium",
+        "properties": "quick",
+        "effect": "You throw out your hand and catch a falling body on a pillow of unseen force. Cast this spell as a Quick Action when you or a creature you can see within range falls.<br/>On a success, the target glides softly downward a short distance per round instead of falling and takes no falling damage when they land. The effect lasts for a short duration. If it ends while the target is still airborne, they fall the remaining distance as normal.",
+        "heightened": "<strong>(Rank 2)</strong> Affect up to two falling creatures within range instead.<br/><strong>(Rank 3)</strong> Up to three creatures instead.<br/><strong>(Rank 4)</strong> Up to four creatures instead.<br/><strong>(Rank 5)</strong> Up to five creatures instead."
+    },
+    {
+        "name": "Knock",
+        "discipline": "Telekinetics",
+        "rank": "2",
+        "focus": "4",
+        "target": "Special",
+        "range": "Short",
+        "properties": "-",
+        "effect": "You open your hand, and unseen force works a fastening as a key would. Target one door, window, gate, chest, lid, set of manacles, or other fastening within range that holds something shut. On a success, a single loud knock resounds from it, audible up to a long distance away, and it yields by the means available to it.<br/>- A bar, latch, bolt, or a fitting merely stuck or jammed comes unbarred or unstuck.<br/>- A mundane lock of Quality 2 or lower springs open. If the fastening has several locks, only one of them opens.<br/>- A lock of Quality 3 does not open on its own. Instead the force works it loose, granting a boon on rolls to pick or force it (<strong>Weak</strong> +1, <strong>Strong</strong> +2, <strong>Critical</strong> +3) until it is opened.<br/>- A fastening held shut by a sealing spell, such as <em>Arcane Lock</em> or <em>Warded Threshold</em>, has that spell suppressed for a short duration, during which the fastening can be opened and shut normally.",
+        "heightened": "-"
+    },
+    {
+        "name": "Borrowed Tongue",
+        "discipline": "Telepathy",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You skim the surface of nearby minds, hearing the intent beneath the words rather than the words themselves.<br/>On a success, for a medium duration you understand the intended meaning of speech from any creature you can see within medium range, regardless of language. You read meaning from the speaker's mind, not their words. This grants no understanding of writing, recordings, or speakers you can't see.",
+        "heightened": "-"
+    },
+    {
+        "name": "Identify",
+        "discipline": "Telepathy",
+        "rank": "1",
+        "focus": "2",
+        "target": "Special",
+        "range": "Touch",
+        "properties": "ritual (minutes)",
+        "effect": "You lay your hands on an item and unravel the weave of its enchantment thread by thread, prying loose what its maker bound into it. Target one magical item you touch throughout the ritual. Roll against a difficulty of 5 + the item's Quality.<br/><strong>Weak.</strong> You learn the general nature of the item's magic, such as whether it harms, protects, stores a spell, or wards against certain creatures.<br/><strong>Strong.</strong> You learn the item's enchantment in full, its exact effect and values and how to activate or use it, and whether the item is cursed.<br/><strong>Critical.</strong> As strong, and if the item is cursed you learn exactly how the curse works, its demand and its price. If it is one of the rare items carrying more than one enchantment, you learn all of them.<br/>You can only cast this spell once per item. On a failure, you must find another means to identify it.",
+        "heightened": "-"
+    },
+    {
+        "name": "Sending",
+        "discipline": "Telepathy",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Special",
+        "properties": "-",
+        "effect": "You cast your thought across the world like a stone across still water, letting it land in a distant mind. Target one creature you have met before, anywhere within the same sphere of existence.<br/>On a success, you send the target a short message of a few sentences, which may include simple images or emotions. The target hears it in their mind, understands its meaning regardless of any shared language, recognizes you as the sender if they know you, and can send a reply of the same length before the link fades. An unwilling target may simply refuse to reply.<br/>A creature that receives your message can refuse any further messages from you until the next dawn. While a creature refuses you this way, you know the sending fails the moment you attempt it.",
+        "heightened": "<strong>(Rank 3)</strong> The link holds open for a two-way conversation lasting a short duration, rather than a single message and reply.<br/><strong>(Rank 4)</strong> The conversation can last a medium duration instead.<br/><strong>(Rank 5)</strong> As Rank 4, and you can reach a creature on another sphere of existence, though the message may fail to cross the distance. The GM determines whether it arrives, and you know if it fails."
+    },
+    {
+        "name": "Distant Eye",
+        "discipline": "Conjuration",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Special",
+        "properties": "ritual (minutes), concentrate",
+        "effect": "You fold a sliver of space and push a conjured eye through it, opening your senses onto somewhere far away. Choose any location you have visited before within the same sphere of existence.<br/>On a success, an invisible, magical eye appears at that location. You telepathically receive what it sees and hears for a short duration while you concentrate. The eye has darkvision (medium/long) and moves by hovering. As an Action, you can move it a short distance in any direction. It fits through any gap as small as one centimetre. Creatures with abilities to sense creatures non-visually can perceive the eye. The eye has 8 Defense and 1 HP. If it is destroyed, the spell ends.",
+        "heightened": "<strong>(Rank 4)</strong> You also sense any magical auras within short range of the eye, as per <em>Detect Magic</em>.<br/><strong>(Rank 5)</strong> As Rank 4, and the eye can move a medium distance with your Action instead of a short one."
+    },
+    {
+        "name": "Arcane Lock",
+        "discipline": "Conjuration",
+        "rank": "2",
+        "focus": "4",
+        "target": "Medium (8)",
+        "range": "Touch",
+        "properties": "ritual (minutes), enchant (long), singular",
+        "effect": "You trace a sigil of binding force across a closed portal, and unseen bonds settle over it like a second frame. Target one closed door, window, gate, chest, lid, or other entryway no larger than a large Size that you touch. On a success, it is held fast and counts as a magically sealed fastening. It cannot be opened, picked, or forced by nonmagical means while the ward holds. When you cast this spell, you may name any creatures who can still open the portal freely. A <em>Knock</em> spell suppresses the ward for a short duration, during which the portal can be opened and shut normally, and any effect that ends spells removes it. The ward lasts for a long duration.",
+        "heightened": "<strong>(Rank 3)</strong> Choose one of the benefits below when you cast the spell.<br/><strong>(Rank 4)</strong> Choose two instead.<br/><strong>(Rank 5)</strong> Choose three instead.<br/>- The sigil is nearly invisible, requiring a Mind + Perception roll against your casting to notice.<br/>- The first creature to force the portal by strength takes +6 force damage from the recoiling bonds.<br/>- You ward one additional portal you touch during the casting with the same effect.<br/>- The ward lasts for a very long duration instead of a long one."
     }
 ]

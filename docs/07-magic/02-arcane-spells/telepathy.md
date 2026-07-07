@@ -36,6 +36,14 @@ sidebar_position: 4
 
 **Effect** <br/> You blast the thoughts of a creature, making them unable to think clearly.<br/><strong>Weak. </strong>Deal +2 psychic damage (ignoring AV).<br/><strong>Strong. </strong>Deal +4 psychic damage (ignoring AV) and the target is briefly confused.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
+### Borrowed Tongue
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | -
+
+**Effect** <br/> You skim the surface of nearby minds, hearing the intent beneath the words rather than the words themselves.<br/>On a success, for a medium duration you understand the intended meaning of speech from any creature you can see within medium range, regardless of language. You read meaning from the speaker's mind, not their words. This grants no understanding of writing, recordings, or speakers you can't see. 
+
 ### Control Beast
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -52,13 +60,13 @@ sidebar_position: 4
 
 **Effect** <br/> You heighten your senses, granting you an instinctual glimpse into the immediate future. Cast this when being attacked or on your turn.<br/><strong>Weak. </strong>Attacks against you briefly suffer +1 bane.<br/><strong>Strong.</strong> Attacks against you briefly suffer +1 bane and you briefly gain +1 boon on your next attack roll.<br/><strong>Critical.</strong> Attacks against you briefly suffer +1 bane, you briefly gain +1 boon and add your Arcana as damage on your next attack roll. 
 
-### Psychometry
+### Identify
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | Medium (8) | Touch | ritual (minutes)
+ 1 | 2 | Special | Touch | ritual (minutes)
 
-**Effect** <br/> Touching an inanimate object, you gain insights into it’s recent history and what events took place around it.<br/><strong>Weak. </strong>You gain one Discovery.<br/><strong>Strong. </strong>You gain two Discovery.<br/><strong>Critical. </strong>You gain three Discovery.<br/>You can spend one Discovery, the same as when rolling for Discovery, to gain insights into the objects history or what events took place around them. Both have to have taken place during the last week.<br/>You can only cast this spell once per object. 
+**Effect** <br/> You lay your hands on an item and unravel the weave of its enchantment thread by thread, prying loose what its maker bound into it. Target one magical item you touch throughout the ritual. Roll against a difficulty of 5 + the item's Quality.<br/><strong>Weak.</strong> You learn the general nature of the item's magic, such as whether it harms, protects, stores a spell, or wards against certain creatures.<br/><strong>Strong.</strong> You learn the item's enchantment in full, its exact effect and values and how to activate or use it, and whether the item is cursed.<br/><strong>Critical.</strong> As strong, and if the item is cursed you learn exactly how the curse works, its demand and its price. If it is one of the rare items carrying more than one enchantment, you learn all of them.<br/>You can only cast this spell once per item. On a failure, you must find another means to identify it. 
 
 ### Subtle Suggestion
 
@@ -92,6 +100,16 @@ sidebar_position: 4
 
 **Effect** <br/> You speak an word of command, forcing your target to take a certain course of action.<br/>Choose any reasonable sounding course of action that doesn‘t inflict harm on the creature itself. If the creature is in combat with you or otherwise actively aggressive towards you, you suffer +1 bane on the roll.<br/>On a success, the target is forced to pursue your suggested course of action without distraction.<br/>This spell lasts until the course of action is complete or for a short duration. The target can roll Spirit + Insight vs. your Resist at the end of their turns to end the effect early. The effect also ends early if the target takes damage from any source.<br/>After the spell ends, the target is aware you influenced their mind.  
 
+### Psychometry
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Touch | ritual (minutes)
+
+**Effect** <br/> Touching an inanimate object, you gain insights into it’s recent history and what events took place around it.<br/><strong>Weak. </strong>You gain one Discovery.<br/><strong>Strong. </strong>You gain two Discovery.<br/><strong>Critical. </strong>You gain three Discovery.<br/>You can spend one Discovery, the same as when rolling for Discovery, to gain insights into the objects history or what events took place around them. Both have to have taken place during the last week.<br/>You can only cast this spell once per object. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Your insights can reach back up to one year.<br/><strong>(Rank 4)</strong> Your insights can reach back through the object's entire history, including the circumstances of its making.
+
 ### Psychic Wave
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -99,6 +117,16 @@ sidebar_position: 4
  2 | 4 | vs. Resist | Short | blast (cone)
 
 **Effect** <br/> You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignoring AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+
+### Sending
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Special | -
+
+**Effect** <br/> You cast your thought across the world like a stone across still water, letting it land in a distant mind. Target one creature you have met before, anywhere within the same sphere of existence.<br/>On a success, you send the target a short message of a few sentences, which may include simple images or emotions. The target hears it in their mind, understands its meaning regardless of any shared language, recognizes you as the sender if they know you, and can send a reply of the same length before the link fades. An unwilling target may simply refuse to reply.<br/>A creature that receives your message can refuse any further messages from you until the next dawn. While a creature refuses you this way, you know the sending fails the moment you attempt it. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The link holds open for a two-way conversation lasting a short duration, rather than a single message and reply.<br/><strong>(Rank 4)</strong> The conversation can last a medium duration instead.<br/><strong>(Rank 5)</strong> As Rank 4, and you can reach a creature on another sphere of existence, though the message may fail to cross the distance. The GM determines whether it arrives, and you know if it fails.
 
 ### Wave of Madness
 

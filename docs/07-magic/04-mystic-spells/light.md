@@ -48,6 +48,14 @@ sidebar_position: 1
 
 >
 
+### Illuminated Script
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Touch | ritual (minutes)
+
+**Effect** <br/> You hold light over a text and pray for revelation. The truth of the words rises glowing from the surface. Target one text, inscription, or set of markings you study during the ritual.<br/><strong>Weak.</strong> You learn the text's general subject and the intent of its author.<br/><strong>Strong.</strong> You understand the text's plain meaning in full, as if fluent in its language.<br/><strong>Critical.</strong> As strong, and the light reveals whether hidden layers exist, such as ciphers, concealed messages, or magical obfuscation, and you gain +1 boon on rolls to uncover them.<br/>You can only cast this spell once per text. 
+
 ### Locate Trinket
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -114,7 +122,7 @@ sidebar_position: 1
 ---|---|---|---|---
  2 | 4 | Hard (10) | Touch | ritual (minutes)
 
-**Effect** <br/> You initiate a purifying ritual to remove harmful influences from a creature’s soul.<br/>On a success, you break one curse the creature is afflicted with. Any single creature can only benefit from this spell once per day. 
+**Effect** <br/> You initiate a purifying ritual to remove harmful influences from a creature’s soul.<br/>On a success, you break one curse the creature is afflicted with. A curse bound into a magic item is not destroyed this way. Instead you suppress it for a short duration, long enough to use the item without its price, or to remove the item and set it aside or hand it to another without the curse fighting back.<br/>Any single creature can only benefit from this spell once per day. 
 
 ### Destroy Undeath
 

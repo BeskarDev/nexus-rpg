@@ -1791,5 +1791,82 @@
         "properties": "concentrate, enchant (body)",
         "effect": "You drastically heighten a creature\u2019s senses, granting them supernatural speed at the cost of straining their body.<br/>Choose a willing creature in range. On a success, the target gains the following effects:<br/>- gain +1 Movement per turn<br/>- gain +1 Parry and Dodge<br/>- gain +1 boon on all Strength and Agility rolls<br/>- you can replace your Quick Action on your turn for a second Action<br/>The spell lasts for a short duration. When the spell ends, the target suffers one Fatigue and is briefly paralyzed.",
         "heightened": "<strong>(Rank 3)</strong> Choose a second target to also gain the spell\u2018s effects."
+    },
+    {
+        "name": "Illuminated Script",
+        "tradition": "Light",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Touch",
+        "properties": "ritual (minutes)",
+        "effect": "You hold light over a text and pray for revelation. The truth of the words rises glowing from the surface. Target one text, inscription, or set of markings you study during the ritual.<br/><strong>Weak.</strong> You learn the text's general subject and the intent of its author.<br/><strong>Strong.</strong> You understand the text's plain meaning in full, as if fluent in its language.<br/><strong>Critical.</strong> As strong, and the light reveals whether hidden layers exist, such as ciphers, concealed messages, or magical obfuscation, and you gain +1 boon on rolls to uncover them.<br/>You can only cast this spell once per text.",
+        "heightened": "-"
+    },
+    {
+        "name": "Gift of the Wild",
+        "tradition": "Nature",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Touch",
+        "properties": "enchant (body)",
+        "effect": "You call on the beasts of deep water, sheer cliff, and high grass, reshaping a creature's body with their gifts. Target one willing creature you touch and choose one of the following:<br/>- <strong>Gills</strong> (the target can breathe underwater and gains +1 boon on Athletics rolls for swimming)<br/>- <strong>Spiderlimbs</strong> (the target can attempt to climb sheer, overhanging, or ceiling surfaces that would normally be impossible, climbs at full Movement, and gains +1 boon on Athletics rolls for climbing)<br/>- <strong>Springlegs</strong> (the target's jumping distances are doubled and they gain +1 boon on Athletics rolls for jumping)<br/>On a success, the target gains the chosen gift for a medium duration. A creature can only benefit from one gift at a time. A new casting replaces the old.",
+        "heightened": "<strong>(Rank 3)</strong> Target up to three willing creatures you touch instead, all gaining the same chosen gift.<br/><strong>(Rank 4)</strong> Up to five creatures instead.<br/><strong>(Rank 5)</strong> Up to seven creatures instead."
+    },
+    {
+        "name": "Augury",
+        "tradition": "Twilight",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Self",
+        "properties": "ritual (minutes)",
+        "effect": "You cast bones beneath the night sky, read the drift of smoke, or trace the pattern of stars, seeking an omen for what is to come. Describe one specific course of action you intend to take within the coming hour.<br/>On a success, you receive an omen of its likely outcome, one of the following: <em>favorable</em>, <em>unfavorable</em>, <em>mixed</em> (both good and bad are likely to come of it), or <em>nothing</em> (no strong outcome either way). The omen does not account for choices or events that might later change the outcome.<br/>Further castings about the same course of action show the same omen until circumstances meaningfully change.",
+        "heightened": "-"
+    },
+    {
+        "name": "Divination",
+        "tradition": "Twilight",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Self",
+        "properties": "ritual (minutes), material cost (500 coins)",
+        "effect": "You burn a precious offering under the open night and pose your question to the powers beyond the veil of stars. Ask one question about a specific goal, event, or activity set to occur or conclude within the next seven days.<br/>On a success, the powers answer truthfully. The GM gives you one truthful insight for a weak success, two for a strong success, and three for a critical success, drawn from the options below (or fewer if fewer meaningfully apply). Each insight is a short, plain statement.<br/>- The most likely outcome of the course of action.<br/>- The single greatest obstacle standing in its way.<br/>- The single most helpful ally, action, or resource toward it.<br/>- A symbolic omen or portent, given when the outcome is genuinely uncertain or hidden even from the powers.<br/>The answer does not account for choices or events that might later change the outcome. Asking again about the same matter yields the same insights until circumstances meaningfully change.",
+        "heightened": "-"
+    },
+    {
+        "name": "Moonlit Mirror",
+        "tradition": "Twilight",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Special",
+        "properties": "ritual (minutes), material (mirror or vessel of still water), concentrate",
+        "effect": "Under open sky or candlelight you tilt a reflecting surface toward the unseen, and the moon's pale light parts the distance between you and the one you seek. Target one creature you know, anywhere in the same sphere of existence. Unwilling creatures roll their Resist against your casting. You must channel the vision through a connection to the target: a possession of theirs, a part of their body, or deep personal familiarity. Without any such connection, suffer +2 banes.<br/>On a success, the surface shows the target and their immediate surroundings for a short duration while you concentrate.<br/><strong>Weak.</strong> The vision is hazy and silent. You make out general surroundings and activity, but no fine detail.<br/><strong>Strong.</strong> The vision is clear. You recognize faces and objects and hear muffled sound.<br/><strong>Critical.</strong> The vision is vivid with clear sound, and you sense whether any magic conceals, protects, or misleads what you see.<br/>A scried creature with any magical senses can roll Spirit + Perception vs. your Resist to feel that they are being watched.",
+        "heightened": "-"
+    },
+    {
+        "name": "Warded Threshold",
+        "tradition": "Peace",
+        "rank": "2",
+        "focus": "4",
+        "target": "Medium (8)",
+        "range": "Touch",
+        "properties": "ritual (minutes), enchant (long), singular",
+        "effect": "You lay your hand on a threshold and speak a vow of sanctuary, and a blessing settles over it that turns away all who would force their way through. Target one closed door, window, gate, chest, lid, or other entryway no larger than a large Size that you touch. On a success, it is held fast and counts as a magically sealed fastening. It cannot be opened, picked, or forced by nonmagical means while the blessing holds. When you cast this spell, you may name any creatures who can still open the portal freely. A <em>Knock</em> spell suppresses the blessing for a short duration, during which the portal can be opened and shut normally, and any effect that ends spells removes it. The blessing lasts for a long duration.",
+        "heightened": "<strong>(Rank 3)</strong> Choose one of the benefits below when you cast the spell.<br/><strong>(Rank 4)</strong> Choose two instead.<br/><strong>(Rank 5)</strong> Choose three instead.<br/>- You sense it the moment any creature touches the warded portal, even while asleep, as long as you are within an hour's travel of it.<br/>- The first creature to force the portal is briefly dazed as the sanctuary turns their will aside.<br/>- You bless one additional portal you touch during the casting with the same effect.<br/>- The blessing lasts for a very long duration instead of a long one."
+    },
+    {
+        "name": "Updraft",
+        "tradition": "Tempest",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Medium",
+        "properties": "quick",
+        "effect": "You call up a sudden column of rushing air that swells beneath a falling body and bears it gently down. Cast this spell as a Quick Action when you or a creature you can see within range falls.<br/>On a success, the target rides the updraft softly downward a short distance per round instead of falling and takes no falling damage when they land. On the way down they can drift up to a short distance horizontally on the wind. The effect lasts for a short duration. If it ends while the target is still airborne, they fall the remaining distance as normal.",
+        "heightened": "<strong>(Rank 2)</strong> Affect up to two falling creatures within range instead.<br/><strong>(Rank 3)</strong> Up to three creatures instead.<br/><strong>(Rank 4)</strong> Up to four creatures instead.<br/><strong>(Rank 5)</strong> Up to five creatures instead."
     }
 ]

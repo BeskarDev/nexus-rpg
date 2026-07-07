@@ -112,6 +112,16 @@ sidebar_position: 6
 
 >
 
+### Updraft
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | quick
+
+**Effect** <br/> You call up a sudden column of rushing air that swells beneath a falling body and bears it gently down. Cast this spell as a Quick Action when you or a creature you can see within range falls.<br/>On a success, the target rides the updraft softly downward a short distance per round instead of falling and takes no falling damage when they land. On the way down they can drift up to a short distance horizontally on the wind. The effect lasts for a short duration. If it ends while the target is still airborne, they fall the remaining distance as normal. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Affect up to two falling creatures within range instead.<br/><strong>(Rank 3)</strong> Up to three creatures instead.<br/><strong>(Rank 4)</strong> Up to four creatures instead.<br/><strong>(Rank 5)</strong> Up to five creatures instead.
+
 ### Volcanic Bolt
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

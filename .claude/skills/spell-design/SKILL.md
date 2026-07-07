@@ -49,7 +49,7 @@ Run the checklist below, then sanity-check against neighbors: pull 2–3 publish
 
 ## Designer Principles
 
-**Binding rules distilled from owner feedback — read [references/designer-principles.md](references/designer-principles.md) in full before designing any spell.** Currently 17 principles; the most frequently violated: spells assist, never bypass (1); SL scales magnitude, not effect type (2); heighten, don't duplicate (3); limits live in the fiction, not game structure (12); effect text states the general application first, exceptions after (15).
+**Binding rules distilled from owner feedback — read [references/designer-principles.md](references/designer-principles.md) in full before designing any spell.** Currently 29 principles; the most frequently violated: spells assist, never bypass (1); SL scales magnitude, not effect type (2); heighten, don't duplicate (3); limits live in the fiction, not game structure (12); effect text states the general application first, exceptions after (15); a flat single-success effect is often correct, especially for utility (24); optional modifiers belong on Heighten, never on SL (25); Heighten cascades through every remaining rank up to R5 (26); validate against talents and subsystems, not just other spells (27); ground info-gathering tiers in the real anatomy of what is examined (28); GM-facing effects give the GM parameters to move within, never open-ended "GM decides" (29).
 
 ## Pitfalls
 
@@ -73,7 +73,7 @@ Run the checklist below, then sanity-check against neighbors: pull 2–3 publish
 **Strong.** [Enhanced — typically 2× damage/healing; primary effect unchanged.]
 **Critical.** [Maximum — typically 3×; may add secondary effect.]
 
-**Heighten.** [Optional: per additional rank of Focus, what scales.]
+**Heighten.** [Optional: explicit per-rank lines to R5, house idiom — **(Rank 2)** … instead. **(Rank 3)** … instead. … Never the "for each additional rank" formula (principle 26).]
 ```
 
 > Example:
@@ -83,7 +83,7 @@ Run the checklist below, then sanity-check against neighbors: pull 2–3 publish
 > **Weak.** Deal +4 damage of the chosen type.
 > **Strong.** Deal +8 damage. Fire: target is burning. Frost: target is slowed. Lightning: arcs to one adjacent enemy for +2 damage.
 > **Critical.** Deal +12 damage. Apply the appropriate condition for a short duration.
-> **Heighten.** For each additional rank of Focus spent, damage increases by +4/+8/+12.
+> **Heighten.** **(Rank 2)** Deal +8/+16/+24 instead. **(Rank 3)** Deal +12/+24/+36 instead. **(Rank 4)** Deal +16/+32/+48 instead. **(Rank 5)** Deal +20/+40/+60 instead.
 
 ## Validation Checklist
 

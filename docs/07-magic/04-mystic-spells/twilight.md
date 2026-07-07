@@ -112,6 +112,14 @@ sidebar_position: 2
 
 **Effect** <br/> You lull a creature’s mind with whispers of sleep. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a medium duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they wake up. 
 
+### Augury
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | ritual (minutes)
+
+**Effect** <br/> You cast bones beneath the night sky, read the drift of smoke, or trace the pattern of stars, seeking an omen for what is to come. Describe one specific course of action you intend to take within the coming hour.<br/>On a success, you receive an omen of its likely outcome, one of the following: <em>favorable</em>, <em>unfavorable</em>, <em>mixed</em> (both good and bad are likely to come of it), or <em>nothing</em> (no strong outcome either way). The omen does not account for choices or events that might later change the outcome.<br/>Further castings about the same course of action show the same omen until circumstances meaningfully change. 
+
 ### Aura of Fear
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -179,6 +187,22 @@ sidebar_position: 2
 > **Heightened** <br/> <strong>(Rank 3)</strong> The spell lasts for a medium duration instead.
 
 >
+
+### Divination
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Self | ritual (minutes),  material cost (500 coins)
+
+**Effect** <br/> You burn a precious offering under the open night and pose your question to the powers beyond the veil of stars. Ask one question about a specific goal, event, or activity set to occur or conclude within the next seven days.<br/>On a success, the powers answer truthfully. The GM gives you one truthful insight for a weak success, two for a strong success, and three for a critical success, drawn from the options below (or fewer if fewer meaningfully apply). Each insight is a short, plain statement.<br/>- The most likely outcome of the course of action.<br/>- The single greatest obstacle standing in its way.<br/>- The single most helpful ally, action, or resource toward it.<br/>- A symbolic omen or portent, given when the outcome is genuinely uncertain or hidden even from the powers.<br/>The answer does not account for choices or events that might later change the outcome. Asking again about the same matter yields the same insights until circumstances meaningfully change. 
+
+### Moonlit Mirror
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Special | ritual (minutes),  material (mirror or vessel of still water),  concentrate
+
+**Effect** <br/> Under open sky or candlelight you tilt a reflecting surface toward the unseen, and the moon's pale light parts the distance between you and the one you seek. Target one creature you know, anywhere in the same sphere of existence. Unwilling creatures roll their Resist against your casting. You must channel the vision through a connection to the target: a possession of theirs, a part of their body, or deep personal familiarity. Without any such connection, suffer +2 banes.<br/>On a success, the surface shows the target and their immediate surroundings for a short duration while you concentrate.<br/><strong>Weak.</strong> The vision is hazy and silent. You make out general surroundings and activity, but no fine detail.<br/><strong>Strong.</strong> The vision is clear. You recognize faces and objects and hear muffled sound.<br/><strong>Critical.</strong> The vision is vivid with clear sound, and you sense whether any magic conceals, protects, or misleads what you see.<br/>A scried creature with any magical senses can roll Spirit + Perception vs. your Resist to feel that they are being watched. 
 
 ### Nightmare Realm
 

@@ -29,3 +29,6 @@ __pycache__/
 # Copilot Agent files (these can be regenerated)
 .env.agent
 .copilot-commands.md
+
+# In-repo scratch/draft workspace (not published docs, not committed)
+/.drafts/

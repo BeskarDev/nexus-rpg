@@ -25,3 +25,17 @@ sidebar_position: 5
 | 2 | Spell Catalyst (Arcane Conduit) | 0 | 75 | A small object infused by an elemental gem or similar arcane conduit used to be able to cast arcane spells. Can be combined with another hand-held (weapon, shield, etc.) or worn (helmet, necklace, etc.) item. |
 | 2 | Spell Catalyst (Mystic Talisman) | 0 | 75 | A small object containing a divine symbol or other spiritual relic infused with mystical power used to be able to cast mystic spells. Can be combined with another hand-held (weapon, shield, etc.) or worn (helmet, necklace, etc.) item. |
 | 3 | Rope (Silk) | 1 | 125 | Covers a long distance. More delicate than hemp without suffering in strength. |
+
+## Locks
+
+A lock secures a door, chest, or container against anyone without its key. Like any item, a lock has a Quality, which sets how hard it is to open by other means.
+
+To pick a lock, you need Thieves' Tools and roll Agility + Stealth against the lock's Difficulty. Each time you fail, you spend one use of the Thieves' Tools. To break a lock or its fitting open instead, roll Strength + Athletics against the same Difficulty. Forcing a lock is loud and often damages what it protects.
+
+| Quality | Lock | Cost | Difficulty |
+| --- | --- | --- | --- |
+| 1 | Simple Lock | 25 | medium (8) |
+| 2 | Sturdy Lock | 75 | hard (10) |
+| 3 | Complex Lock | 200 | very hard (12) |
+
+A magically sealed lock cannot be picked or forced while its enchantment holds. The sealing magic must be ended first.

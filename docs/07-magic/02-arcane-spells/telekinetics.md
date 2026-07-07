@@ -28,6 +28,16 @@ sidebar_position: 5
 
 **Effect** <br/> You hold out your hand and grasp at an object in range, slowly levitating it it into the air. The object can be of small or tiny size and take up to your encumbrance limit in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range.  On a hit, the object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
 
+### Feather Fall
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Medium | quick
+
+**Effect** <br/> You throw out your hand and catch a falling body on a pillow of unseen force. Cast this spell as a Quick Action when you or a creature you can see within range falls.<br/>On a success, the target glides softly downward a short distance per round instead of falling and takes no falling damage when they land. The effect lasts for a short duration. If it ends while the target is still airborne, they fall the remaining distance as normal. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Affect up to two falling creatures within range instead.<br/><strong>(Rank 3)</strong> Up to three creatures instead.<br/><strong>(Rank 4)</strong> Up to four creatures instead.<br/><strong>(Rank 5)</strong> Up to five creatures instead.
+
 ### Gravity Orb
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -67,6 +77,14 @@ sidebar_position: 5
  1 | 2 | Special | Short | -
 
 **Effect** <br/> You telekinetically take hold of multiple small items. Choose up to three tiny objects, such as ammo, stones, or household objects taking up 2 or less load each. The objects can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the objects towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the objects in a cluster up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the objects until your next turn. During your next turn, you can cast this spell again to move the objects further. On a failure, you drop the objects at their current location.<br/><br/><strong>Throw.</strong> Once per object, roll vs. Dodge against a target in range. You can choose the same or different targets for each thrown object. On a hit, each object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
+
+### Knock
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Special | Short | -
+
+**Effect** <br/> You open your hand, and unseen force works a fastening as a key would. Target one door, window, gate, chest, lid, set of manacles, or other fastening within range that holds something shut. On a success, a single loud knock resounds from it, audible up to a long distance away, and it yields by the means available to it.<br/>- A bar, latch, bolt, or a fitting merely stuck or jammed comes unbarred or unstuck.<br/>- A mundane lock of Quality 2 or lower springs open. If the fastening has several locks, only one of them opens.<br/>- A lock of Quality 3 does not open on its own. Instead the force works it loose, granting a boon on rolls to pick or force it (<strong>Weak</strong> +1, <strong>Strong</strong> +2, <strong>Critical</strong> +3) until it is opened.<br/>- A fastening held shut by a sealing spell, such as <em>Arcane Lock</em> or <em>Warded Threshold</em>, has that spell suppressed for a short duration, during which the fastening can be opened and shut normally. 
 
 ### Levitation
 

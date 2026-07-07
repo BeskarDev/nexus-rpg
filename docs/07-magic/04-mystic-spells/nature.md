@@ -140,6 +140,16 @@ sidebar_position: 5
 
 >
 
+### Gift of the Wild
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Touch | enchant (body)
+
+**Effect** <br/> You call on the beasts of deep water, sheer cliff, and high grass, reshaping a creature's body with their gifts. Target one willing creature you touch and choose one of the following:<br/>- <strong>Gills</strong> (the target can breathe underwater and gains +1 boon on Athletics rolls for swimming)<br/>- <strong>Spiderlimbs</strong> (the target can attempt to climb sheer, overhanging, or ceiling surfaces that would normally be impossible, climbs at full Movement, and gains +1 boon on Athletics rolls for climbing)<br/>- <strong>Springlegs</strong> (the target's jumping distances are doubled and they gain +1 boon on Athletics rolls for jumping)<br/>On a success, the target gains the chosen gift for a medium duration. A creature can only benefit from one gift at a time. A new casting replaces the old. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Target up to three willing creatures you touch instead, all gaining the same chosen gift.<br/><strong>(Rank 4)</strong> Up to five creatures instead.<br/><strong>(Rank 5)</strong> Up to seven creatures instead.
+
 ### Heat Metal
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

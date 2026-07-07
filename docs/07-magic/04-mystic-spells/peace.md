@@ -100,6 +100,16 @@ sidebar_position: 7
 
 **Effect** <br/> You send a wave of pacifying energy towards a creature, removing enchantments and breaking spell effects. Either choose one enchantment affecting them or choose one spell they are concentrating on or that has an effect that lasts for a duration.<br/>On a success, the enchantment or spell effect ends. 
 
+### Warded Threshold
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Touch | ritual (minutes),  enchant (long),  singular
+
+**Effect** <br/> You lay your hand on a threshold and speak a vow of sanctuary, and a blessing settles over it that turns away all who would force their way through. Target one closed door, window, gate, chest, lid, or other entryway no larger than a large Size that you touch. On a success, it is held fast and counts as a magically sealed fastening. It cannot be opened, picked, or forced by nonmagical means while the blessing holds. When you cast this spell, you may name any creatures who can still open the portal freely. A <em>Knock</em> spell suppresses the blessing for a short duration, during which the portal can be opened and shut normally, and any effect that ends spells removes it. The blessing lasts for a long duration. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one of the benefits below when you cast the spell.<br/><strong>(Rank 4)</strong> Choose two instead.<br/><strong>(Rank 5)</strong> Choose three instead.<br/>- You sense it the moment any creature touches the warded portal, even while asleep, as long as you are within an hour's travel of it.<br/>- The first creature to force the portal is briefly dazed as the sanctuary turns their will aside.<br/>- You bless one additional portal you touch during the casting with the same effect.<br/>- The blessing lasts for a very long duration instead of a long one.
+
 ### Anti-Magic Field
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

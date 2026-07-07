@@ -18,6 +18,7 @@
 3. Healing is secondary but present (Solar Flare, Blessing of Dawn)
 4. Offensive spells primarily use radiant damage — especially effective against undead
 5. Truth/revelation effects provide social and exploration utility
+6. **Divination boundary (Light vs. Twilight)**: Light owns *present, local truth* (the True keyword) — piercing lies, illusions, invisibility, disguise, and obfuscation on what is before you, and revealing the real nature of a thing in hand. Future-seeing, dreams, omens, prophecy, and scrying distant secrets belong to Twilight. Litmus: *reveal a falsehood in front of me* → Light; *learn a distant secret or what is to come* → Twilight.
 
 ### Internal Synergies
 - **Reveal → Destroy**: Reveal invisible/hidden targets → follow-up attacks against revealed targets gain bonuses

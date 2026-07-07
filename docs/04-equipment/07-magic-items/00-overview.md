@@ -14,6 +14,8 @@ Magic items are higher Quality versions of normal equipment that enhance your ch
 
 Adventurers typically acquire magic items by **finding them in treasure hoards** (ancient tombs, dragon lairs, ruins), **looting defeated enemies**, or **receiving them as quest rewards**. In large cities, you may **purchase** magic items from specialty merchants or auction houses, though availability depends on the settlement's size and importance. Alternatively, you can **commission** an enchanter or runesmith to craft custom items, or **create them yourself** with the appropriate Crafting talents and magical skills (Arcana or Mysticism).
 
+> **Beware curses.** Items you craft or commission are safe, but treasure found as loot may carry a curse. See [Cursed Items](./curses).
+
 > **Materials matter.** Magic items require special materials (mithril, dragon scales, adamantite) and magical ingredients (creature parts, rare herbs, elemental essences). These can be harvested from defeated monsters, discovered in magical locations, or purchased from specialized traders. The right materials enable specific enchantments—a phoenix feather might grant fire resistance, while a monster's heart could power a life-draining weapon.
 
 
@@ -55,3 +57,6 @@ Unique materials like Mithril, Dragon Scales, and Adamantite that provide specia
 
 ### [Enchantments](./enchantments)
 Powerful magical effects that can be added to items, from flaming weapons to spell-storing jewelry.
+
+### [Cursed Items](./curses)
+When found treasure turns out to be a gamble. Curse odds, how curses bind and break, and curse effects by item type.
