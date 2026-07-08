@@ -90,6 +90,16 @@ sidebar_position: 5
 
 >
 
+### Haste
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | concentrate,  enchant (body)
+
+**Effect** <br/> You seize a willing creature in a web of kinetic force, wrenching their movements faster than flesh should allow.<br/>Choose a willing creature in range. On a success, the target gains the following effects:<br/>- gain +1 Movement per turn<br/>- gain +1 Parry and Dodge<br/>- gain +1 boon on all Strength and Agility rolls<br/>- you can replace your Quick Action on your turn for a second Action<br/>The spell lasts for a short duration. When the spell ends, the target suffers one Fatigue and is briefly paralyzed as the released force overtaxes their body. 
+
+>
+
 ### Knock
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

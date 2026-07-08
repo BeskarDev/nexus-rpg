@@ -92,6 +92,18 @@ sidebar_position: 3
 
 >
 
+### Mage Armor
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | singular
+
+**Effect** <br/> You weave a lattice of arcane force around your body that hardens into unseen armor.<br/>On a success, you gain +2 AV (armor bonus) for a long duration. This bonus does not stack with other armor bonuses such as worn armor, <em>Bone Armor</em>, or the <em>Mana Shield</em> talent. Use only the highest. The armor holds until the duration ends, even after you take damage. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> You gain +3 AV (armor bonus) instead.<br/><strong>(Rank 3)</strong> You gain +4 AV (armor bonus) instead.<br/><strong>(Rank 4)</strong> You gain +5 AV (armor bonus) instead.<br/><strong>(Rank 5)</strong> You gain +6 AV (armor bonus) instead.
+
+>
+
 ### Arcane Barrage
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

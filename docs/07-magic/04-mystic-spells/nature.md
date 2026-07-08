@@ -218,7 +218,7 @@ sidebar_position: 5
 
 **Effect** <br/> You conjure up an aura around you, gently warping plants and vegetation in your vicinity as you move.<br/>On a success, apply the following effects:<br/>- You can Dash as a Quick Action on your turns.<br/>- Any difficult terrain in short distance of you temporarily becomes normal terrain.<br/>- You gain +1 boon on Navigation rolls during travel.<br/>This spell lasts for a long duration. 
 
-### Rock Skin
+### Stone Skin
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -226,7 +226,7 @@ sidebar_position: 5
 
 **Effect** <br/> You create a protective shell of hardened rock plates around a creature within range. On a success, the creature gains the following effects:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 20 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +2 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 30 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +4 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn.
+> **Heightened** <br/> <strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 30 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +4 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn.<br/><strong>(Rank 4)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 40 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +6 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn.<br/><strong>(Rank 5)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 50 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +8 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn.
 
 >
 

@@ -495,6 +495,17 @@
         "heightened": "<strong>(Rank 2)</strong> Depending on the type of item it grants +2 AV (enhancement bonus), +4 damage, weapon damage increased by 2 (enhancement bonus), increased spell damage by +2/4/6 (enhancement bonus), or +4 to your carry capacity limits respectively instead.<br/><strong>(Rank 3)</strong> Depending on the type of item it grants +3 AV (enhancement bonus), +6 damage, weapon damage increased by 3 (enhancement bonus), increased spell damage by +3/6/9 (enhancement bonus), or +6 to your carry capacity limits respectively instead."
     },
     {
+        "name": "Mage Armor",
+        "discipline": "Conjuration",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Self",
+        "properties": "singular",
+        "effect": "You weave a lattice of arcane force around your body that hardens into unseen armor.<br/>On a success, you gain +2 AV (armor bonus) for a long duration. This bonus does not stack with other armor bonuses such as worn armor, <em>Bone Armor</em>, or the <em>Mana Shield</em> talent. Use only the highest. The armor holds until the duration ends, even after you take damage.",
+        "heightened": "<strong>(Rank 2)</strong> You gain +3 AV (armor bonus) instead.<br/><strong>(Rank 3)</strong> You gain +4 AV (armor bonus) instead.<br/><strong>(Rank 4)</strong> You gain +5 AV (armor bonus) instead.<br/><strong>(Rank 5)</strong> You gain +6 AV (armor bonus) instead."
+    },
+    {
         "name": "Arcane Barrage",
         "discipline": "Conjuration",
         "rank": "2",
@@ -1373,6 +1384,17 @@
         "properties": "-",
         "effect": "You flatten your palm and a film of frictionless force spreads across the ground, slick as oil. On a success, an area close to the target location becomes slippery. The area is difficult terrain. When a creature tries to move through the slippery area for the first time on their turn, or is pushed or pulled into it, they must succeed on an Agility + Athletics roll vs. this spell’s target Difficulty or fall prone. A prone creature that tries to stand while in the area must succeed on the same roll or remain prone. The effect lasts for a short duration.",
         "heightened": "<strong>(Rank 2)</strong> Choose one, the slippery area extends to medium range from the target location, or the effect lasts for a medium duration instead.<br/><strong>(Rank 3)</strong> Both, the slippery area extends to medium range and the effect lasts for a medium duration."
+    },
+    {
+        "name": "Haste",
+        "discipline": "Telekinetics",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Short",
+        "properties": "concentrate, enchant (body)",
+        "effect": "You seize a willing creature in a web of kinetic force, wrenching their movements faster than flesh should allow.<br/>Choose a willing creature in range. On a success, the target gains the following effects:<br/>- gain +1 Movement per turn<br/>- gain +1 Parry and Dodge<br/>- gain +1 boon on all Strength and Agility rolls<br/>- you can replace your Quick Action on your turn for a second Action<br/>The spell lasts for a short duration. When the spell ends, the target suffers one Fatigue and is briefly paralyzed as the released force overtaxes their body.",
+        "heightened": "-"
     },
     {
         "name": "Banishment",

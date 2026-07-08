@@ -979,7 +979,7 @@
         "heightened": "-"
     },
     {
-        "name": "Rock Skin",
+        "name": "Stone Skin",
         "tradition": "Nature",
         "rank": "2",
         "focus": "4",
@@ -987,7 +987,7 @@
         "range": "Medium",
         "properties": "enchant (body), singular",
         "effect": "You create a protective shell of hardened rock plates around a creature within range. On a success, the creature gains the following effects:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 20 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +2 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can\u2019t use more than 1 Movement per turn.",
-        "heightened": "<strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 30 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +4 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can\u2019t use more than 1 Movement per turn."
+        "heightened": "<strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 30 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +4 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can\u2019t use more than 1 Movement per turn.<br/><strong>(Rank 4)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 40 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +6 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can\u2019t use more than 1 Movement per turn.<br/><strong>(Rank 5)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 50 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +8 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can\u2019t use more than 1 Movement per turn."
     },
     {
         "name": "Speak with Animals and Plants",
