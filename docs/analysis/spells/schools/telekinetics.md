@@ -16,25 +16,42 @@
 1. Telekinetics excels at battlefield repositioning — push, pull, levitate, drop
 2. Forced movement is the primary control tool (different from conditions)
 3. Blast damage (½ AV ignore) fits kinetic shockwave effects
-4. **All identified gaps addressed**: R1 Quick Action reactive (Kinetic Deflection), defensive suite across ranks, full R0–R5 trait coverage
+4. **Known gaps**: no published R1 Quick Action reactive spell, thin R3+ coverage (only incomplete spells above R2) — concept seeds exist for all slots but none are designed
 5. Complete levitate/crush/gravity chains from R0 cantrips through R5 capstones
 
 ### Internal Synergies
-- **Setup**: Push/pull target into hazard or ally's reach → **Payoff**: Prone targets take +2 damage from next attack
-- **Setup**: Levitate ally → **Payoff**: Gravity-enhanced melee attacks deal bonus damage
 
-## Spell Inventory (35 spells — 14 existing, 21 proposed)
+Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+
+**Setup levers** — states Telekinetics emits: **position itself** — *prone* (slams and drops), *pushed/pulled* into hazards, walls, or ally reach, *clusters* (dragging enemies together with Gravity Orb's pull), and *restrained/grappled* (kinetic holds, Stasis). The world is the weapon: every ledge, campfire, and spiked barricade the table describes is a payoff surface for its forced movement.
+
+**Payoff levers** — Telekinetics rewards targets that are *already down or held*: crush effects that hit harder on a pinned or prone body, drops that convert its own levitation into falling damage, slams whose damage comes from what the target hits. Cold, a push does no damage at all — the purest cold-cast deficit in the game; the entire value is where the target ends up.
+
+**Extenders** — *refresh* by re-shoving (cantrip pushes and pulls cost nothing and keep a target out of position every round), *prolong* holds (Stasis and grapples keep a body fixed while allies line up), and *convert* (pushed → prone → restrained escalation as the kinetic grip tightens).
+
+**Solo engine** (multi-turn): T1 Gravity Orb (drag the pack into one struggling knot) → T2 Shockwave (blast payoff into the cluster, knocking the knot *prone*) → T3 Telekinetic Crush on the priority target while everyone else stands back up. Gated by concentration on the orb and by the fact that cantrip pushes deal no damage — the engine spends whole turns on position instead of direct harm.
+
+**Party interlock**: **emits** *prone*, *clusters*, *restrained*, and delivery (throwing an enemy to the martial's feet, or holding one still for the assassin) — the premier battery school, feeding every damage-dealer at the table. **wants** damage payoffs it cannot supply: an Evocation AoE for its clusters, a martial's heavy blow for its prone and held targets. Cross-player line: Telekinetics pins the ogre *prone* with a kinetic hold and the fighter's greataxe falls on a target that cannot dodge.
+
+**Synergy gaps**: overwhelming setup, near-zero **in-school payoff** — the discipline can arrange the battlefield perfectly and then has little of its own to spend it on (its crush damage is modest). One honest mid-rank payoff against *prone/restrained* targets would close the loop without stealing Evocation's role. Extenders beyond re-casting are also thin.
+
+**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
+- **Grinding Weight** (R2, payoff) — slam crushing force down onto a *prone* or *restrained* creature: physical damage and they stay down (standing up costs their full Movement this turn). Near-useless against a standing target — the pin is the price of the power.
+- **Relentless Grip** (R2, extender/prolong) — your kinetic hold tightens on a creature you have *grappled* or *restrained* with a spell: the hold persists without concentration for a short duration and drags the target a close distance each of your turns. Frees the caster's concentration for the payoff while the setup holds.
+- **Meteoric Throw** (R3, payoff/convert) — hurl a creature you are levitating or holding at another enemy: both take physical damage and fall *prone*. Converts the school's signature hold into its own finisher, damage scaled by the thrown body's Size.
+
+## Current Spell Inventory (18 published spells)
+
+*Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
 | Rank | Count | Spells |
 |------|-------|--------|
-| 0 | 6 | Kinetic Pull, Kinetic Push, Weak Telekinesis, Minor Levitation†, Pressure Grip†, Gravity Shift† |
-| 1 | 8 | Gravity Orb, Reflective Barrier, Shockwave, Telekinetic Crush, Telekinetic Volley, Kinetic Deflection†, Force Shield†, Kinetic Lift† |
-| 2 | 6 | Levitation, Orbiting Shards*, Stasis, Strong Telekinesis, Crushing Sphere†, Kinetic Wave† |
-| 3 | 6 | Distortion Field*, Kinetic Barrage†, Force Wall†, Aerial Grasp†, Kinetic Implosion†, Gravity Well† |
-| 4 | 6 | Invert Gravity*, Telekinetic Storm†, Kinetic Catapult†, Telekinetic Flight†, Force Cage†, Repulsion Field† |
-| 5 | 3 | Gravity Reversal†, Absolute Telekinesis†, Annihilating Wave† |
-
-*\* = incomplete existing  † = proposed*
+| 0 | 3 | Kinetic Pull, Kinetic Push, Weak Telekinesis |
+| 1 | 7 | Feather Fall, Gravity Orb, Grease, Reflective Barrier, Shockwave, Telekinetic Crush, Telekinetic Volley |
+| 2 | 6 | Haste, Knock, Levitation, Orbiting Shards (incomplete), Stasis, Strong Telekinesis |
+| 3 | 1 | Distortion Field (incomplete) |
+| 4 | 1 | Invert Gravity (incomplete) |
+| 5 | 0 | — |
 
 ### Trait × Rank Coverage Matrix
 
@@ -48,303 +65,37 @@
 
 *\* = incomplete existing  † = proposed*
 
-**Coverage**: 30/30 slots filled (100%) — full trait × rank coverage achieved
+**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
 
 **All prior critical gaps resolved.** Every trait has complete R0–R5 progression. Minimum 3 spells per rank met (R0: 6, R1: 8, R2: 6, R3: 6, R4: 6, R5: 3).
 
 ## Proposed New Spells
 
-### Kinetic Deflection
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | Self | Self | quick
-
-*You telekinetically deflect an incoming projectile, redirecting its force.*
-
-**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attack is ranged and misses, you can redirect the projectile to one target within close range, dealing +2 physical damage.
-
-> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Telekinetics' projectile redirection as secondary effect. No SL scaling — one reliable defensive reaction.
-
-### Force Shield
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | Self | Self | concentrate, enchant (short)
-
-*You maintain a shimmering barrier of telekinetic force around yourself.*
-
-**Weak.** Gain +1 AV (situational bonus) for a short duration while concentrating.
-**Strong.** Gain +2 AV (situational bonus) for a short duration.
-**Critical.** Gain +2 AV (situational bonus) for a short duration. When a melee attacker hits you, they are pushed into close range.
-
-> **Design Note**: Defensive spell for Telekinetics — force barrier fits the identity.
-
-### Minor Levitation
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | Easy TN | Close | —
-
-*You lift a small object into the air with a thought, holding it aloft briefly.*
-
-**Weak.** Levitate one unattended object (up to 1 load) to a height of close range for a brief duration. You can move it slowly within close range.
-**Strong.** Levitate up to 2 load. You can move the object more precisely, manipulating it at distance (open doors, pull levers).
-**Critical.** Levitate up to 3 load. You can throw the levitated object at a target within close range, dealing +2 physical damage.
-
-> **Design Note**: Fills R0 levitate gap. Object-only levitation at cantrip level.
-
-### Pressure Grip
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | vs. Dodge | Close | —
-
-*You close your fist and telekinetic force crushes around a target.*
-
-**Weak.** Deal +2 physical damage. The target is briefly slowed.
-**Strong.** Deal +4 physical damage. The target is briefly slowed.
-**Critical.** Deal +6 physical damage. The target is briefly slowed and suffers +1 bane on their next attack roll.
-
-> **Design Note**: R0 crush cantrip. Slowed is the primary condition — reliable on any success. SL scales damage and adds a secondary bane at Critical. Does NOT escalate to restrained (reserved for higher-rank spells).
-
-### Gravity Shift
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | vs. Dodge | Close | —
-
-*You alter the pull of gravity on a creature or object, making it briefly lighter or heavier.*
-
-**Effect.** On a success, choose one target within close range. Apply one of the following effects for a short duration:
-- **Heavier**: The target's movement is reduced by 2 and they cannot jump.
-- **Lighter**: The target can jump twice as far and gains +1 boon on Athletics checks to climb or jump.
-
-> **Design Note**: R0 gravity cantrip. Utility spell with two modes — no SL scaling for the primary effect. Movement modification is predictable and reliable.
-
-### Gravity Reversal
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | vs. Dodge | Long | concentrate
-
-*You invert gravity in a large area, causing everything within to fall upward.*
-
-**Weak.** Gravity reverses in a medium area for a short duration. All creatures and loose objects in the area "fall" upward to the ceiling or 10 meters, taking fall damage. Creatures can attempt to grab onto fixed objects (Strength + Athletics vs. Hard TN). Creatures that fail their save are suspended in the air, prone and unable to move normally.
-**Strong.** As Weak. Suspended creatures also suffer +1 bane on all attack rolls. You can selectively exclude up to 2 creatures from the effect.
-**Critical.** As Weak. Suspended creatures suffer +2 banes on all attack rolls. You can selectively exclude up to 4 creatures. Ranged attacks made into or out of the reversed gravity zone suffer +1 bane.
-
-> **Design Note**: R5 capstone — area control through gravity manipulation. Area (medium) and duration (short) are fixed on any success — the reversal is reliable. SL scales combat penalties on suspended creatures and ally exclusion. Powerful but not instant-win — creatures can grab objects, and the caster must concentrate.
-
-### Kinetic Barrage
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | vs. Dodge | Long | —
-
-*You seize multiple objects in the environment — stones, debris, weapons — and hurl them at your enemies in a devastating volley.*
-
-**Weak.** Deal +4 physical damage to all creatures in a close area. Targets are briefly pushed (forced movement 1 area away from the center).
-**Strong.** Deal +8 physical damage. Targets are pushed and briefly prone.
-**Critical.** Deal +12 physical damage. Targets are pushed, prone, and the area becomes difficult terrain (scattered debris) for a short duration.
-
-> **Design Note**: Fills R3 move/repel gap. AoE at R3 uses half single-target scaling (+4/+8/+12). Environmental manipulation — uses terrain objects rather than pure force.
-
-### Crushing Sphere
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-2 | 4 | vs. Dodge | Medium | concentrate
-
-*You encase a creature in a sphere of concentrated telekinetic force that slowly crushes inward.*
-
-**Weak.** Target is restrained for a short duration. At the start of each of their turns, they take +3 physical damage from the crushing force. The target can roll Strength + Athletics vs. TN 10 to escape.
-**Strong.** As above, but crushing damage is +6 per turn.
-**Critical.** As above, but crushing damage is +9 per turn.
-
-> **Design Note**: Fills R2 crush gap. The primary condition (restrained for short duration) is fixed on any success — SL scales crushing damage. Escape is always possible, and concentration is required. Pairs well with Telekinetic Crush (R1) as a setup → payoff chain.
-
-### Force Wall
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | Hard TN | Close | concentrate
-
-*You thrust your hands outward and an invisible wall of pure telekinetic force materializes, blocking passage and deflecting attacks.*
-
-**Weak.** Create a wall of telekinetic force in a short line at medium range. The wall blocks movement and line of sight. It has 30 HP and 6 AV. Creatures pushed into the wall take +4 physical damage.
-**Strong.** As above, but the wall has 40 HP and creatures pushed into it take +8 physical damage.
-**Critical.** As above, but the wall has 50 HP and creatures pushed into it take +12 physical damage.
-
-> **Design Note**: R3 defensive telekinetic barrier. Wall durability and push damage scale by SL. Duration is fixed at short — no SL escalation.
-
-### Telekinetic Storm
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Dodge | Medium | —
-
-*You seize every loose object in the area — stones, debris, weapons, furniture — and hurl them in a devastating whirlwind of telekinetic fury.*
-
-**Weak.** All creatures in a short area take +5 physical damage as objects batter them from every direction. Targets are briefly prone from the barrage.
-**Strong.** Targets take +10 physical damage, are prone, and the area becomes difficult terrain (scattered debris) for a short duration.
-**Critical.** Targets take +15 physical damage, are prone, the area becomes difficult terrain for a short duration, and each target is pushed one area away from the center of the storm.
-
-> **Design Note**: R4 AoE damage with battlefield control. Damage uses half single-target R4 scaling (+5/+10/+15). The prone + difficult terrain + push effects create a devastating area denial tool. Requires loose objects in the environment — doesn't work in an empty room.
-
-### Absolute Telekinesis
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | vs. Dodge (creatures) or Hard TN (objects) | Long | concentrate
-
-*You extend your will across the battlefield with absolute authority over matter and motion — lifting gates, hurling boulders, pinning warriors in place, reshaping the physical world through sheer mental force.*
-
-**Weak.** You can telekinetically manipulate up to 3 objects or creatures within long range for a short duration. Objects: lift and move massive objects (boulders, gates, wagons) at will. Creatures (vs. Dodge): the target is briefly restrained as you hold them in place. Restrained creatures can attempt to break free (Strength + Athletics vs. your casting result) at the end of each of their turns. You can hurl objects at targets, dealing +6 physical damage on impact.
-**Strong.** As Weak. Restrained creatures take +4 physical damage per turn from crushing force. Hurled object damage increases to +10.
-**Critical.** As Strong. Restrained creatures take +6 physical damage per turn and suffer +1 bane on break-free attempts. Hurled object damage increases to +14. You can hurl massive objects (ships' masts, building columns).
-
-> **Design Note**: R5 utility/offense capstone — the pinnacle of telekinetic power. Target count (up to 3) and duration (short) are fixed on any success — mastery is reliable. SL scales damage dealt through crushing and hurled objects. Concentration prevents passive abuse.
-
-### Kinetic Lift
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | Willing creature | Close | concentrate
-
-*You extend your will beneath a creature, buoying them on an invisible cushion of telekinetic force. They drift upward, floating just above the ground.*
-
-**Weak.** One willing creature within close range levitates up to 2 meters off the ground for a short duration while you concentrate. They hover in place and can move horizontally at half speed. They ignore ground-based hazards and difficult terrain.
-**Strong.** As Weak. The creature can rise up to close range height and gains +1 boon on Dodge rolls against melee attacks from grounded creatures.
-**Critical.** As Strong. The creature moves at full speed while levitating and can ascend up to short range height.
-
-> **Design Note**: R1 levitate utility. Primary effect (levitation, short duration) is fixed on any success. SL improves height, mobility, and defensive benefit. Concentrate limits abuse. Builds from Minor Levitation (R0) toward Levitation (R2).
-
-### Kinetic Wave
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-2 | 4 | vs. Dodge | Self (close area) | —
-
-*You thrust both arms outward and a concussive wave of telekinetic force erupts from your body, slamming into everything nearby.*
-
-**Weak.** Deal +3 blast damage to all creatures in a close area centered on you. Each target is pushed one area away from you.
-**Strong.** Deal +6 blast damage. Targets are pushed and knocked prone.
-**Critical.** Deal +9 blast damage. Targets are pushed two areas away, knocked prone, and briefly dazed.
-
-> **Design Note**: R2 repel AoE. Half single-target scaling (+3/+6/+9). Blast damage (½ AV ignored) fits kinetic shockwave. Push is reliable on any success; SL adds prone and daze. Self-centered AoE fits the "repel" identity — push everything away from caster.
-
-### Aerial Grasp
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | vs. Dodge | Medium | concentrate
-
-*You seize an enemy with telekinetic force and wrench them skyward, suspending them helplessly in mid-air where they dangle like a puppet on invisible strings.*
-
-**Weak.** One creature within medium range is lifted into the air at short range height and restrained for a short duration while you concentrate. The target hovers helplessly — melee attacks from grounded creatures cannot reach them, but ranged attacks target them normally. The target can attempt to break free (Strength + Athletics vs. TN 12) at the end of each of their turns. If concentration is broken, the target falls and takes appropriate fall damage.
-**Strong.** As Weak. You can slam the suspended target into the ground or a surface as an Action, dealing +8 physical damage and ending the suspension.
-**Critical.** As Strong. Slam damage increases to +12. The target is briefly prone and dazed after landing.
-
-> **Design Note**: R3 levitate control. Primary effect (restrain + suspend at height) is fixed on any success. SL adds a slam attack as payoff — the "lift then drop" combo is quintessential telekinetics. Fall damage on concentration break provides natural counterplay.
-
-### Kinetic Implosion
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | vs. Dodge | Long | —
-
-*You clench your fist and the air itself contracts — an invisible crushing force collapses inward on a point, dragging everything toward the center and grinding it together.*
-
-**Weak.** All creatures in a close area within long range are dragged toward the center point (forced movement) and take +4 physical damage.
-**Strong.** Deal +8 physical damage. Targets dragged to center are briefly restrained as they are crushed together.
-**Critical.** Deal +12 physical damage. Targets are restrained and the area becomes difficult terrain (buckled ground, compressed debris) for a short duration.
-
-> **Design Note**: R3 crush AoE. Half single-target scaling (+4/+8/+12). Forced movement inward is the primary effect — reliable on any success. SL adds restraint and terrain effects. Pairs with Force Wall — implode enemies into the wall for bonus damage.
-
-### Gravity Well
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | vs. Dodge | Long | concentrate
-
-*You warp gravity around a point, creating a relentless downward pull that drags everything inward like a whirlpool in the earth itself.*
-
-**Weak.** Create a gravity well in a short area within long range for a short duration while you concentrate. The area becomes difficult terrain. Any creature that starts its turn in the area or enters it must roll Strength + Athletics vs. TN 12 or be dragged one area toward the center. Creatures at the center are knocked prone.
-**Strong.** As Weak. Creatures pulled to the center also take +4 physical damage from gravitational compression.
-**Critical.** As Strong. Damage at center increases to +8. Creatures in the area suffer +1 bane on attempts to move away from the center.
-
-> **Design Note**: R3 gravity control. The gravity well (difficult terrain + pull toward center) is fixed on any success — reliable battlefield control. SL adds damage and escape penalties. Concentrate limits stacking. Area (short) matches R3 guidelines.
-
-### Kinetic Catapult
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Dodge | Medium | —
-
-*You seize a creature or massive object with overwhelming telekinetic force and hurl it across the battlefield at devastating speed, turning matter into a weapon.*
-
-**Weak.** Choose one creature (vs. Dodge) or unattended object (up to large size) within medium range. The target is hurled up to long range in a direction you choose, taking +10 physical damage on impact. If the target strikes another creature or solid surface, both take +5 physical damage. Hurled creatures land prone.
-**Strong.** Impact damage increases to +20. Collision damage increases to +10. If the hurled target strikes a creature, that creature must also roll Strength + Athletics vs. TN 14 or be knocked prone.
-**Critical.** Impact damage increases to +30. Collision damage increases to +15. The landing zone becomes difficult terrain (crater and debris) for a short duration.
-
-> **Design Note**: R4 move offense. Full single-target scaling (+10/+20/+30) on the primary target. Collision is a secondary effect at reduced damage. The "catapult" fantasy — hurling boulders and enemies — is quintessential telekinetics. Works with objects (utility) or creatures (offense).
-
-### Telekinetic Flight
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | Willing creature | Touch | concentrate, enchant (medium)
-
-*You wrap yourself or an ally in a cocoon of sustained telekinetic force, granting true flight — soaring through the air by will alone.*
-
-**Weak.** One willing creature you touch gains a flying movement equal to their normal movement speed for a medium duration while you concentrate. The creature can hover in place and is not required to keep moving. If concentration is broken, the creature descends gently (as if affected by Kinetic Lift) rather than falling.
-**Strong.** As Weak. The creature's flying speed increases by 2 and they gain +1 boon on Dodge rolls while airborne.
-**Critical.** As Strong. The creature can carry one additional creature of equal or smaller size while flying, though flying speed is reduced by 2 while carrying.
-
-> **Design Note**: R4 levitate utility capstone. True flight is the natural R4 payoff — built from Minor Levitation (R0) → Kinetic Lift (R1) → Levitation (R2). Primary effect (flight, medium duration) is fixed on any success. SL enhances speed and flexibility. Gentle descent on lost concentration prevents death spirals.
-
-### Force Cage
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Dodge | Medium | concentrate
-
-*You snap your fingers and bars of pure telekinetic force materialize around a creature, forming an inescapable cage that slowly constricts inward.*
-
-**Weak.** One creature within medium range is trapped inside a cage of telekinetic force for a short duration while you concentrate. The target is restrained and cannot leave the cage by physical means. The cage has 50 HP and 8 AV. At the start of each of the target's turns, the cage constricts, dealing +5 physical damage. External allies can attack the cage to free the target.
-**Strong.** As Weak. Constriction damage increases to +10 per turn. The cage also blocks line of effect for spells cast from inside — the trapped creature cannot target creatures outside the cage with spells.
-**Critical.** As Strong. Constriction damage increases to +15 per turn. Teleportation and magical movement out of the cage requires a Hard TN (14) casting check.
-
-> **Design Note**: R4 crush control. The cage (restrain + physical barrier) is fixed on any success — reliable imprisonment. SL scales crush damage and cage properties. Destructible cage (50 HP, 8 AV) provides counterplay for allies. Classic "Forcecage" fantasy realized through telekinetic force.
-
-### Repulsion Field
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Dodge | Self | concentrate
-
-*You project an invisible dome of outward-pressing telekinetic force that repels everything that approaches, holding enemies at bay with sheer kinetic pressure.*
-
-**Weak.** Create a repulsive force field in a close area centered on you for a short duration while you concentrate. Hostile creatures cannot willingly enter the field. Creatures already inside the field when cast are immediately pushed to the edge. Ranged attacks passing through the field suffer +1 bane.
-**Strong.** As Weak. The field expands to a short area. Creatures pushed out of the field take +5 blast damage.
-**Critical.** As Strong. Pushed creatures take +10 blast damage and are knocked prone. The ranged attack penalty increases to +2 banes.
-
-> **Design Note**: R4 repel defense. The repulsion field (push + entry denial) is fixed on any success — reliable zone control. SL expands area and adds damage/prone. Concentrate limits duration abuse. Fills Telekinetics' defensive gap at higher ranks — force barriers are the discipline's answer to protection magic.
-
-### Annihilating Wave
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | vs. Dodge | Self (long line) | material cost (enchanted lodestone, 5,000 coins)
-
-*You channel an overwhelming surge of telekinetic force through an enchanted lodestone, unleashing a cataclysmic wave of pure kinetic devastation that flattens everything in its path — shattering walls, uprooting trees, and hurling creatures like ragdolls.*
-
-**Weak.** Deal +6 blast damage to all creatures in a long line originating from you. Every target is pushed two areas away from you and knocked prone. Structures, walls, and objects in the path take double damage. The line becomes difficult terrain (rubble and debris) for a medium duration.
-**Strong.** Deal +12 blast damage. Pushed creatures that strike a solid surface take an additional +6 physical damage on impact.
-**Critical.** Deal +18 blast damage. Impact damage increases to +12. Creatures struck are also briefly stunned by the concussive force.
-
-> **Design Note**: R5 repel capstone. AoE scaling (+6/+12/+18) over a long line — area matches R5 guidelines. Material cost (5,000 coins) matches R5 item economy. Blast damage (½ AV ignored) suits kinetic devastation. Push + prone reliable on any success; SL adds impact damage and stun. Complements Gravity Reversal (R5 gravity) — one flattens horizontally, the other vertically.
+These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
+
+| Concept | Rank | Seed |
+|---|---|---|
+| Kinetic Deflection | 1 | You telekinetically deflect an incoming projectile, redirecting its force. (R1 Quick Action reactive defense) |
+| Force Shield | 1 | You maintain a shimmering barrier of telekinetic force around yourself. (Defensive spell for Telekinetics — force barrier fits the identity) |
+| Minor Levitation | 0 | You lift a small object into the air with a thought, holding it aloft briefly. (Fills R0 levitate gap) |
+| Pressure Grip | 0 | You close your fist and telekinetic force crushes around a target. (R0 crush cantrip) |
+| Gravity Shift | 0 | You alter the pull of gravity on a creature or object, making it briefly lighter or heavier. (R0 gravity cantrip) |
+| Gravity Reversal | 5 | You invert gravity in a large area, causing everything within to fall upward. (R5 capstone — area control through gravity manipulation) |
+| Kinetic Barrage | 3 | You seize multiple objects in the environment — stones, debris, weapons — and hurl them at your enemies in a devastating volley. (Fills R3 move/repel gap) |
+| Crushing Sphere | 2 | You encase a creature in a sphere of concentrated telekinetic force that slowly crushes inward. (Fills R2 crush gap) |
+| Force Wall | 3 | You thrust your hands outward and an invisible wall of pure telekinetic force materializes, blocking passage and deflecting attacks. (R3 defensive telekinetic barrier) |
+| Telekinetic Storm | 4 | You seize every loose object in the area — stones, debris, weapons, furniture — and hurl them in a devastating whirlwind of telekinetic fury. (R4 AoE damage with battlefield control) |
+| Absolute Telekinesis | 5 | You extend your will across the battlefield with absolute authority over matter and motion — lifting gates, hurling boulders, pinning warriors in place, reshaping the physical world through sheer mental force. (R5 utility/offense capstone — the pinnacle of telekinetic power) |
+| Kinetic Lift | 1 | You extend your will beneath a creature, buoying them on an invisible cushion of telekinetic force. They drift upward, floating just above the ground. (R1 levitate utility) |
+| Kinetic Wave | 2 | You thrust both arms outward and a concussive wave of telekinetic force erupts from your body, slamming into everything nearby. (R2 repel AoE. Half single-target scaling (+3/+6/+9)) |
+| Aerial Grasp | 3 | You seize an enemy with telekinetic force and wrench them skyward, suspending them helplessly in mid-air where they dangle like a puppet on invisible strings. (R3 levitate control) |
+| Kinetic Implosion | 3 | You clench your fist and the air itself contracts — an invisible crushing force collapses inward on a point, dragging everything toward the center and grinding it together. (R3 crush AoE. Half single-target scaling (+4/+8/+12)) |
+| Gravity Well | 3 | You warp gravity around a point, creating a relentless downward pull that drags everything inward like a whirlpool in the earth itself. (R3 gravity control) |
+| Kinetic Catapult | 4 | You seize a creature or massive object with overwhelming telekinetic force and hurl it across the battlefield at devastating speed, turning matter into a weapon. (R4 move offense) |
+| Telekinetic Flight | 4 | You wrap yourself or an ally in a cocoon of sustained telekinetic force, granting true flight — soaring through the air by will alone. (R4 levitate utility capstone) |
+| Force Cage | 4 | You snap your fingers and bars of pure telekinetic force materialize around a creature, forming an inescapable cage that slowly constricts inward. (R4 crush control) |
+| Repulsion Field | 4 | You project an invisible dome of outward-pressing telekinetic force that repels everything that approaches, holding enemies at bay with sheer kinetic pressure. (R4 repel defense) |
+| Annihilating Wave | 5 | You channel an overwhelming surge of telekinetic force through an enchanted lodestone, unleashing a cataclysmic wave of pure kinetic devastation that flattens everything in its path — shattering walls, uprooting trees, and hurling creatures like ragdolls. (R5 repel capstone) |
 
 ## Cross-School Spell Sharing
 

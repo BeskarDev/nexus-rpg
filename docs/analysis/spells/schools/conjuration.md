@@ -22,22 +22,38 @@
 6. **Key change**: Missile spells should use force damage (full AV per hit) instead of blast
 
 ### Internal Synergies
-- **Setup**: Conjure Familiar (scout/mark target) → **Payoff**: Spells against familiar-marked targets gain +1 boon
-- **Setup**: Wall of Force (split battlefield) → **Payoff**: Enemies near walls vulnerable to force damage
-- **Summoning chain**: Conjure Familiar (R1) → Summon Aberration (R2) → Enhanced summoning (R5)
 
-## Current Spell Inventory (24 existing + 16 proposed = 40 total)
+Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+
+**Setup levers** — states Conjuration emits: **reshaped field** above all else (walls, barriers, cages, glyphs, and summoned bodies that create cover, chokepoints, and *clusters* by cutting off escape routes), *restrained/grappled* (tendrils, force containment), and **planted anchors** (a glyph on the floor, a familiar's eyes on a target, a circle prepared in advance).
+
+**Payoff levers** — Conjuration cashes in **position**: enemies pinned against a Wall of Force or funneled through the one gap eat its auto-hit missiles and blasts with no cover to hide behind, a triggered glyph detonates on whoever the field forced across it, and a summon flanks whoever the wall traps. The cold-cast deficit shows as action cost — a wall or summon does no damage the turn it is cast, and the missiles are on-curve alone; only the combination converts board control into kills.
+
+**Extenders** — *prolong* is the school's native strength: its constructs are lasting, diegetic objects (a wall stands, a cage holds, a glyph waits) that keep the window open for the whole party, often without concentration. Summons *refresh* pressure every round with their own actions. Teleports (Phase Step, Dimension Door) reposition the caster to re-angle the field mid-fight.
+
+**Solo engine** (multi-turn): T1 Wall of Force (split the enemy line, trap the priority target on your side) → T2 Arcane Barrage (auto-hit payoff on the target that now has no cover and no escape) → T3 Summon Aberration to hold the gap as the wall's duration runs down. Gated hard by Focus (constructs and summons are expensive) and by concentration on the summon.
+
+**Party interlock**: **emits** walls, cover, chokepoints, *restrained*, and *clusters* — terrain currency every ally spends (the martial holds the one gap, the Evocation caster fireballs the pocket the wall created). **wants** enemies pushed or dragged into its constructs (forced movement from Telekinetics or Tempest slams enemies into cage range) and conditions that hold a target still long enough to seal (slowed, prone, stunned). Cross-player line: Telekinetics hurls the enemy champion against the Wall of Force and Conjuration drops the Force Cage over them while they are pinned.
+
+**Synergy gaps**: field setup and lasting extenders are excellent, but explicit **payoffs are implicit** — almost nothing in the school mechanically rewards a trapped, walled, or restrained target (the benefit is only positional). A mid-rank payoff that bites contained enemies, and a *convert* extender (restrained → sealed), are design targets.
+
+**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
+- **Grinding Walls** (R2, payoff) — command one of your force constructs to grind against a creature pinned to or trapped inside it: force damage and briefly *staggered* as the barrier presses. Only works with a construct standing and a target against it — pure contained-target payoff.
+- **Seal the Cage** (R3, extender/convert) — a creature currently *restrained* or *grappled* (by anything — tendrils, a net, an ally's hold) is bound in conjured force shackles, converting the hold into *restrained* that persists after the original grip ends. The construct has durability stats per Wall of Force scaling. Converts anyone's hold into the school's lasting containment.
+- **Hail of Splinters** (R3, payoff) — your standing wall or barrier fractures its surface into a storm of force shards along its length, hitting every enemy in close range of it. Turns the wall itself into a weapon — no wall, no spell.
+
+## Current Spell Inventory (29 published spells)
+
+*Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
 | Rank | Count | Spells |
 |------|-------|--------|
 | 0 | 3 | Arcane Bolt, Arcane Glyph, Extraplanar Pocket |
-| 1 | 6 | Alarm, Arcane Barrier, Arcane Missiles, Conjure Familiar, Hale of Blades, Infuse Item |
-| 2 | 6 | Arcane Barrage, Arcane Circle, Arcane Eye, Eldritch Tendrils, Phase Step, Summon Aberration |
-| 3 | 5 | Arcane Blast, Astral Gate, Burst of Tendrils, Dimension Door, Wall of Force |
-| 4 | 4 | Arcane Empowerment, Astral Body (incomplete), Force Cage (incomplete), Teleportation Circle (incomplete) |
+| 1 | 7 | Alarm, Arcane Barrier, Arcane Missiles, Conjure Familiar, Hale of Blades, Infuse Item, Mage Armor |
+| 2 | 7 | Arcane Barrage, Arcane Circle, Arcane Eye, Arcane Lock, Eldritch Tendrils, Phase Step, Summon Aberration |
+| 3 | 7 | Arcane Blast, Astral Gate, Banishment, Burst of Tendrils, Dimension Door, Distant Eye, Wall of Force |
+| 4 | 5 | Arcane Empowerment, Astral Body (incomplete), Disintegrate, Force Cage, Teleportation Circle (incomplete) |
 | 5 | 0 | — |
-
-**Proposed spells (16):** Arcane Snare (R0), Conjure Servant (R0), Far Reach (R0), Arcane Deflection (R1), *Spatial Echo (R1, NEW)*, Fabricate (R2), Binding Cage (R3), *Transmute Material (R3, NEW)*, *Conjure Steed (R3, NEW)*, *Conjure Apparatus (R4, NEW)*, *Forge Construct (R4, NEW)*, Binding Seal (R5), Dimensional Rift (R5), Planar Gateway (R5), *Arcane Genesis (R5, NEW)*, *Planar Conscription (R5, NEW)*
 
 ### Trait × Rank Coverage Matrix
 
@@ -46,14 +62,13 @@
 | objects | Arcane Glyph, Extraplanar Pocket | Infuse Item | Fabricate (proposed) | Transmute Material (NEW) | Conjure Apparatus (NEW) | Arcane Genesis (NEW) |
 | creatures | Conjure Servant (proposed) | Conjure Familiar | Summon Aberration | Conjure Steed (NEW) | Forge Construct (NEW) | Planar Conscription (NEW) |
 | teleportation | Far Reach (proposed) | Spatial Echo (NEW) | Phase Step | Dimension Door, Astral Gate | Teleportation Circle* | Planar Gateway (proposed) |
-| binding | Arcane Snare (proposed) | Alarm | Arcane Circle, Eldritch Tendrils | Binding Cage (proposed) | Force Cage* | Binding Seal (proposed) |
+| binding | Arcane Snare (proposed) | Alarm | Arcane Circle, Eldritch Tendrils | Binding Cage (proposed) | Force Cage | Binding Seal (proposed) |
 | force | Arcane Bolt | Arcane Missiles, Arcane Barrier, Hale of Blades | Arcane Barrage, Arcane Eye | Arcane Blast, Burst of Tendrils, Wall of Force | Arcane Empowerment | Dimensional Rift (proposed) |
 
 *Asterisk = incomplete spell*
 
-**Coverage**: 30/30 slots filled (100%) — all aspects covered at all ranks R0-R5. Every progression chain complete.
+**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
 
-**Critical Gaps**: None — all gaps filled.
 - ~~**Teleportation R1**: No teleport or spatial spell at R1~~ → Filled by **Spatial Echo** (NEW)
 - ~~**Objects R3+**: No object-creation spells above R2~~ → Filled by **Transmute Material** (R3 NEW), **Conjure Apparatus** (R4 NEW), **Arcane Genesis** (R5 NEW)
 - ~~**Creatures R3+**: No dedicated summon above R2~~ → Filled by **Conjure Steed** (R3 NEW), **Forge Construct** (R4 NEW), **Planar Conscription** (R5 NEW)
@@ -85,219 +100,26 @@
 
 ## Proposed New Spells
 
-### Arcane Deflection
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | Self | Self | quick
-
-*You conjure a brief barrier of arcane force to deflect an incoming attack.*
-
-**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. If the attack misses, a force fragment strikes the attacker for +2 force damage.
-
-> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Conjuration's force-damage secondary. No SL scaling — one reliable defensive reaction.
-
-### Conjure Servant
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | Medium TN | Close | —
-
-*You conjure a tiny, barely-visible servant of arcane energy — shaped vaguely like a small humanoid figure — to perform simple tasks.*
-
-**Effect.** On a success, conjure an invisible arcane servant that lasts for a short duration. The servant can perform simple manual tasks: carry objects up to 5 load, open unlocked doors, hold items, clean surfaces, or fetch nearby unattended objects within close range. It has 1 HP, no combat capability, and cannot attack or be used as a shield. It moves at your command but cannot travel beyond close range from you. The servant is invisible but can be detected with a Perception check vs. your casting result.
-
-> **Design Note**: R0 creatures cantrip, modeled on D&D's Unseen Servant. No SL escalation — one predictable utility effect. The servant provides minor convenience but cannot replace skill checks, carry heavy loads, or contribute in combat.
-
-### Far Reach
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | Medium TN | Close | —
-
-*You extend an invisible tether of spatial energy, allowing you to manipulate objects at a distance as if they were within arm's reach.*
-
-**Effect.** On a success, you can interact with one unattended object within close range as if you were touching it: pull a lever, turn a key, pick up a small item (up to 1 load), open an unlocked container, or press a button. The interaction must be something you could accomplish with one hand. The effect is instantaneous.
-
-> **Design Note**: Replaces Spatial Distortion. Fills R0 teleportation/spatial gap without actual teleportation — spatial manipulation (interact at range) rather than defensive warping. Simple, predictable utility cantrip with no SL scaling.
-
-### Arcane Snare
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | vs. Dodge | Close | —
-
-*You conjure a coiling tendril of arcane force that lashes out and wraps around a creature like a constricting serpent.*
-
-**Effect.** On a hit, the target is briefly grappled as the tendril constricts around them. They can escape by rolling Strength + Athletics vs. your casting result.
-**Weak.** Deal +0 force damage.
-**Strong.** Deal +2 force damage.
-**Critical.** Deal +4 force damage.
-
-> **Design Note**: Fills R0 binding gap. Grapple condition (primary containment effect) is reliable on any success — consistent with "SL scales magnitude, not effect type" principle. Control-primary damage (+0/+2/+4) appropriate for R0. Uses binding as containment, not just movement debuff.
-
-### Binding Cage
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | vs. Dodge | Medium | concentrate
-
-*You conjure interlocking bars and walls of shimmering force around a creature, trapping it in an arcane cage.*
-
-**Weak.** Conjure a cage of force around one target. The target is restrained for a short duration. The cage has 30 HP and 6 AV. The target or allies can attack the cage to free the trapped creature.
-**Strong.** As above, and the cage deals +4 force damage to any creature that starts its turn inside.
-**Critical.** As above with +8 force damage per turn, and the cage suppresses spellcasting inside it (creatures inside suffer +1 bane on all spell rolls).
-
-> **Design Note**: Fills R3 binding gap with a genuinely new concept — force imprisonment rather than another summon. Creature summoning at R3 should use heightened Summon Aberration instead. Restrained condition is reliable on any success.
-
-### Fabricate
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-2 | 4 | Medium TN | Close | ritual (10 minutes)
-
-*You channel arcane energy into raw materials, reshaping them into a finished product.*
-
-**Weak.** Transform raw materials within close range into a simple finished object (rope from plant fiber, a wooden door from timber, a stone block from rubble). The object is functional but crude.
-**Strong.** Create a more refined object. You can produce items that would normally require basic Crafting tools. The quality is equivalent to a skilled artisan.
-**Critical.** Create a finely crafted object. You can produce items up to Q2 quality. Complex mechanisms (locks, hinges) are possible if you have the relevant Crafting knowledge.
-
-> **Design Note**: Fills R2 objects gap. Ritual prevents combat abuse. Requires raw materials — doesn't create something from nothing. Doesn't replace Crafting skill (no Q3+ items, no magical items).
-
-### Planar Gateway
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | Very Hard TN | Long | concentrate, ritual (10 minutes), material cost (5,000 coins)
-
-*You tear open a shimmering portal connecting two distant locations, allowing passage between them.*
-
-**Effect.** On a success, create a two-way portal to a location you have visited before on the same plane. The portal is large enough for two creatures to pass through per turn. It remains open for a short duration while you concentrate. You can make the portal one-way (preventing passage from the other side) or disguise its appearance at the destination.
-
-> **Design Note**: R5 capstone teleportation. Predictable effect on any success — no SL scaling for a spell whose core function must be reliable. Material cost increased to 5,000 coins (appropriate for R5 power level in Q6-Q7 item economy). Concentration prevents combat abuse.
-
-### Dimensional Rift
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | Very Hard TN | Long | concentrate, material cost (5,000 coins)
-
-*You tear a wound in the fabric of reality, creating an unstable dimensional rift that warps space, gravity, and matter around it.*
-
-**Effect.** On a success, create a dimensional rift in a short area at long range. Creatures inside the area are pulled toward the center (movement toward the center costs nothing, movement away costs double). Creatures that start their turn in the rift take +6 force damage. The rift lasts for a short duration while you concentrate.
-
-> **Design Note**: R5 force capstone — battlefield-warping area denial. Damage (+6 base, appropriate for R5 multi-target) with movement control. No SL scaling on primary effect — the rift just works. Material cost increased to 5,000 coins (R5 economy). Concentration limits duration.
-
-### Binding Seal
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | vs. Resist | Medium | ritual (1 hour), material cost (5,000 coins)
-
-*You inscribe a complex pattern of arcane sigils in a circle, weaving a powerful containment ward that persists until deliberately broken.*
-
-**Effect.** On a success, create one of the following binding effects:
-- **Creature Binding**: Target one willing or restrained creature. The creature is bound to the warded area (short area). It cannot leave the warded area, use teleportation, or travel between planes. The binding lasts for a long duration or until the sigils are physically destroyed (the sigils have 40 HP and 8 AV).
-- **Portal Seal**: Permanently close one portal, dimensional rift, or planar breach within the warded area. The seal persists until the sigils are destroyed.
-- **Dimensional Anchor**: Create a warded area (short area) that prevents all teleportation and planar travel into or out of the area for a long duration.
-
-> **Design Note**: R5 binding capstone — replaces Force Cataclysm (which duplicated the force aspect at R5). Represents the pinnacle of conjuration's binding power: containment, sealing, and dimensional anchoring. Three modes give tactical flexibility. Ritual casting prevents combat abuse. Material cost 5,000 coins appropriate for R5 economy. No SL scaling — predictable capstone effect.
-
-### Spatial Echo
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | Medium TN | Short | concentrate
-
-*You attune your senses to the fabric of space itself, perceiving folds, tears, and hidden dimensions invisible to mundane sight.*
-
-**Effect.** On a success, for a short duration while you concentrate, you gain awareness of spatial distortions within short range. You can detect extradimensional spaces (such as those created by Extraplanar Pocket), concealed portals or doorways, active teleportation effects, and dimensional wards or anchors. You also sense the approximate location of invisible or phasing creatures within range. This grants +1 boon on Perception checks to locate or analyze such phenomena.
-
-> **Design Note**: Fills teleportation R1 gap with dimensional perception rather than actual teleportation. "Teleportation" at R1 means spatial awareness — sensing the dimensional fabric. Assists rather than bypasses Perception checks (+1 boon). Concentration limits duration.
-
-### Transmute Material
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | Hard TN | Close | ritual (10 minutes)
-
-*You press your hands against raw matter and channel arcane force through it, unraveling its substance at a fundamental level and reweaving it into something entirely different.*
-
-**Weak.** Transmute up to 10 load of one non-magical material into another non-magical material of equal or lesser value (stone to iron, wood to stone, clay to glass). The transmuted material is functional but impure — items crafted from it suffer +1 bane on durability checks. The transmutation is permanent.
-**Strong.** As above, but the transmutation is clean and complete. No durability penalty.
-**Critical.** As above, and the transmuted material is of exceptional purity. Items crafted from it gain +1 boon on their first durability check.
-
-You cannot create precious metals (gold, silver), magical materials (mithril, adamantite), or living matter.
-
-> **Design Note**: Fills objects R3 gap. Genuinely new concept from Fabricate (R2) — changes material composition rather than reshaping form. Ritual prevents combat abuse. Cannot create precious or magical materials (prevents economy abuse). Primary effect (transmutation) works on any success; SL scales quality (magnitude).
-
-### Conjure Steed
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | Hard TN | Close | singular
-
-*You tear a seam in reality and pull through a beast of semi-translucent arcane force — shaped like a horse but shimmering with otherworldly energy, its hooves leaving faint glowing prints.*
-
-**Effect.** On a success, conjure an arcane steed (large creature) for a medium duration. The steed serves as a willing mount and can carry up to two riders. It has 30 HP, 6 AV, and Defense 9. It moves at twice normal movement speed and can traverse difficult terrain without penalty. For brief bursts (one turn at a time), the steed can gallop across water or up vertical surfaces. The steed cannot attack and dissipates harmlessly if destroyed — riders land safely in their current area. Casting this spell again dismisses the previous steed.
-
-> **Design Note**: Fills creatures R3 with a genuinely new concept — conjured mount for mobility and travel, not a combat creature. Different from heightened Summon Aberration (which upgrades the combat companion). Stats match Tier 3 creature guidelines. Predictable effect on any success (no SL scaling for a transport summon). Singular property prevents stacking.
-
-### Conjure Apparatus
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | Hard TN | Close | ritual (1 hour)
-
-*You weave strands of arcane force into a complex, self-operating mechanism — a device of impossible precision that hums and clicks with contained magical energy.*
-
-**Effect.** On a success, conjure a magical apparatus that performs one complex function for a medium duration. Choose one mode:
-- **Forge**: A magical workstation that grants +2 boons on Crafting checks and can work with materials up to Q5 quality. Includes conjured tools appropriate to any trade.
-- **Engine**: A self-operating mechanism (crane, pump, mill, or press) that performs heavy labor equivalent to ten workers for the duration. Can lift up to 50 load, move earth, process raw materials, or power simple constructions.
-- **Sentinel**: A ward construct that monitors a medium area. It sounds a mental alarm when creatures enter the area and can illuminate intruders with arcane light, granting +1 boon on Perception checks to detect them.
-
-> **Design Note**: Fills objects R4 gap. Three utility modes give Conjuration its "versatile utility" identity. Ritual prevents combat abuse. Enhances skills and labor without replacing them. Forge mode synergizes with Transmute Material (R3) for an objects crafting chain.
-
-### Forge Construct
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | Hard TN | Close | ritual (1 hour), material cost (1,000 coins)
-
-*You bind arcane force into a physical shell — stone, clay, or metal — inscribing command sigils and breathing unnatural, obedient life into a hulking servant.*
-
-**Effect.** On a success, animate a medium or large construct from available materials. The construct is permanent and follows your verbal commands. It uses Tier 4 creature statistics: 40 HP, 8 AV (heavy armor), Defense 10, Strength d10, and attacks with a slam (weapon damage 6, physical). The construct is immune to bleeding, charmed, confused, frightened, poisoned, and unconscious conditions. It cannot speak, use tools requiring fine manipulation, or exercise independent judgment. You can only have one active construct — creating a new one causes the previous to crumble. If you are incapacitated, the construct becomes inert until you recover.
-
-> **Design Note**: Fills creatures R4 with a permanent golem-like construct — a qualitatively different concept from Summon Aberration's temporary extraplanar creature. Material cost (1,000 coins) reflects physical crafting. Tier 4 stats provide reliable combat support. Permanent duration balanced by single-construct limit and material investment. Transgressive arcane identity: forcing unnatural life into dead matter.
-
-### Arcane Genesis
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | Very Hard TN | Close | ritual (8 hours), material cost (5,000 coins)
-
-*Over hours of painstaking labor, you channel raw arcane power into the fabric of matter itself, permanently imbuing mundane materials with lasting magical properties or conjuring structures from pure force.*
-
-**Effect.** On a success, create one of the following permanent magical works:
-- **Enchanted Object**: Permanently imbue one non-magical item with a single minor magical property (perpetual glow, self-cleaning, temperature regulation, resistance to mundane wear, or similar utility enchantment). This cannot grant combat bonuses or replicate weapon/armor enchantments.
-- **Arcane Structure**: Create a permanent structure of conjured force — a bridge, tower, wall, or similar construction up to a medium area in size. The structure has 60 HP and 10 AV. It repairs itself at 10 HP per day.
-- **Conjured Repository**: Create a permanent extradimensional storage space anchored to a physical location (a door, chest, or archway). The space can hold up to 100 load of items and can only be accessed from the anchor point.
-
-> **Design Note**: Fills objects R5 capstone. Material cost 5,000 coins (R5 economy). 8-hour ritual prevents any combat relevance. Creates lasting magical utility without granting combat power — weapon/armor enchanting remains Crafting's domain. Three modes give the "utility master" capstone fitting Conjuration's identity.
-
-### Planar Conscription
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | Very Hard TN | Medium | ritual (1 hour), material cost (5,000 coins), singular
-
-*You inscribe a summoning circle of terrible potency and speak words of binding that echo across planes. A rift tears open, and through it you drag a powerful extraplanar entity into forced, resentful servitude.*
-
-**Effect.** On a success, summon a powerful extraplanar entity (Tier 5 elite creature, determined by the GM) bound to your service for a short duration. The entity obeys your verbal commands but is openly hostile — it seeks any loophole or ambiguity in your orders. The entity has its own initiative, takes its own turns, and can attack and use abilities appropriate to its nature.
-
-The binding is maintained by the summoning circle (short area). If the circle is physically disrupted (the sigils have 40 HP and 8 AV) or you fall unconscious, the entity breaks free and is no longer bound to obey you. At the end of the duration, the entity is banished to its plane of origin.
-
-> **Design Note**: Fills creatures R5 capstone with a qualitatively different concept — forcing a powerful named entity into service rather than a generic aberration. Hostile binding creates dramatic tension (the entity wants to break free). Material cost 5,000 coins and ritual balance the power of a Tier 5 elite creature. Circle-based binding (not concentration) allows the caster to act freely but creates a targetable vulnerability. Quintessentially transgressive arcane magic.
+These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
+
+| Concept | Rank | Seed |
+|---|---|---|
+| Arcane Deflection | 1 | You conjure a brief barrier of arcane force to deflect an incoming attack. (R1 Quick Action reactive defense) |
+| Conjure Servant | 0 | You conjure a tiny, barely-visible servant of arcane energy — shaped vaguely like a small humanoid figure — to perform simple tasks. (R0 creatures cantrip, modeled on D&D's Unseen Servant) |
+| Far Reach | 0 | You extend an invisible tether of spatial energy, allowing you to manipulate objects at a distance as if they were within arm's reach. (Replaces Spatial Distortion) |
+| Arcane Snare | 0 | You conjure a coiling tendril of arcane force that lashes out and wraps around a creature like a constricting serpent. (Fills R0 binding gap) |
+| Binding Cage | 3 | You conjure interlocking bars and walls of shimmering force around a creature, trapping it in an arcane cage. (Fills R3 binding gap with a genuinely new concept — force imprisonment rather than another summon) |
+| Fabricate | 2 | You channel arcane energy into raw materials, reshaping them into a finished product. (Fills R2 objects gap) |
+| Planar Gateway | 5 | You tear open a shimmering portal connecting two distant locations, allowing passage between them. (R5 capstone teleportation) |
+| Dimensional Rift | 5 | You tear a wound in the fabric of reality, creating an unstable dimensional rift that warps space, gravity, and matter around it. (R5 force capstone — battlefield-warping area denial) |
+| Binding Seal | 5 | You inscribe a complex pattern of arcane sigils in a circle, weaving a powerful containment ward that persists until deliberately broken. (R5 binding capstone — replaces Force Cataclysm (which duplicated the force aspect at R5)) |
+| Spatial Echo | 1 | You attune your senses to the fabric of space itself, perceiving folds, tears, and hidden dimensions invisible to mundane sight. (Fills teleportation R1 gap with dimensional perception rather than actual teleportation) |
+| Transmute Material | 3 | You press your hands against raw matter and channel arcane force through it, unraveling its substance at a fundamental level and reweaving it into something entirely different. (Fills objects R3 gap) |
+| Conjure Steed | 3 | You tear a seam in reality and pull through a beast of semi-translucent arcane force — shaped like a horse but shimmering with otherworldly energy, its hooves leaving faint glowing prints. (Fills creatures R3 with a genuinely new concept — conjured mount for mobility and travel, not a combat creature) |
+| Conjure Apparatus | 4 | You weave strands of arcane force into a complex, self-operating mechanism — a device of impossible precision that hums and clicks with contained magical energy. (Fills objects R4 gap) |
+| Forge Construct | 4 | You bind arcane force into a physical shell — stone, clay, or metal — inscribing command sigils and breathing unnatural, obedient life into a hulking servant. (Fills creatures R4 with a permanent golem-like construct — a qualitatively different concept from Summon Aberration's temporary extraplanar creature) |
+| Arcane Genesis | 5 | Over hours of painstaking labor, you channel raw arcane power into the fabric of matter itself, permanently imbuing mundane materials with lasting magical properties or conjuring structures from pure force. (Fills objects R5 capstone) |
+| Planar Conscription | 5 | You inscribe a summoning circle of terrible potency and speak words of binding that echo across planes. A rift tears open, and through it you drag a powerful extraplanar entity into forced, resentful servitude. (Fills creatures R5 capstone with a qualitatively different concept — forcing a powerful named entity into service rather than a generic aberration) |
 
 ## Cross-School Spell Sharing
 
@@ -339,7 +161,7 @@ The Conjure Familiar spell concept overlaps with Nature's Wild Companion — bot
 - [x] Setup+payoff: Familiar → boon, Wall → isolation, Snare → Cage (binding chain), Force chain R0-R5, Objects crafting chain (Fabricate → Transmute → Apparatus → Genesis)
 - [x] Creatures across ranks: Conjure Servant (R0) → Conjure Familiar (R1) → Summon Aberration (R2) → Conjure Steed (R3 NEW) → Forge Construct (R4 NEW) → Planar Conscription (R5 NEW) — each a genuinely distinct concept
 - [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 8, R2: 7, R3: 8, R4: 6, R5: 5)
-- [x] **All aspect × rank gaps filled**: 30/30 coverage (100%)
+- [ ] **All aspect × rank gaps filled**: all 30 trait×rank slots seeded with concepts; published coverage is partial (see inventory) coverage (100%)
 
 ### Impact & Trivialization Review
 - **Far Reach (R0 spatial manipulation)**: Minimal risk — interact with one unattended object within close range. Cannot bypass locks, traps, or skill checks. Pure convenience cantrip.

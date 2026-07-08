@@ -20,19 +20,38 @@
 5. Damage is efficient but condition-focused — necrotic with ongoing effects
 
 ### Internal Synergies
-- **Curse stacking**: Apply multiple minor curses → build toward major affliction
-- **Poison → Decay**: Poison target → decay spells deal enhanced damage to poisoned creatures
-- **Ancestry**: Commune with dead → gain knowledge/advantage
 
-## Current Spell Inventory (15 spells)
+Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+
+**Setup levers** — states Death emits: **curses** (lingering, named dooms hung on a target), *poisoned* (plague and sickness), *frightened* (a glimpse of one's own mortality), and **decay** (attribute erosion — the body failing ahead of its time). Death's setups are slow and inevitable rather than explosive: an afflicted target is not hurt yet, they are *dying by degrees*.
+
+**Payoff levers** — Death harvests the afflicted: decay bites deeper into a *poisoned* body, an execution-weight spell lands hardest on a target already carrying a curse, and the frightened die faster in a school themed on accepting the end. Cold-cast deficit: Death's direct damage is deliberately mid-curve — the school is Control-first, and its damage only pulls ahead against a target it has already begun to unmake.
+
+**Extenders** — *convert* is the signature: minor afflictions **stack toward a major one** (curse upon plague upon fear building to a final doom), *prolong* through curse durations that outlast the scene, and *refresh* via sickness that spreads and re-applies on contact (Cloud of Sickness holding a zone of contagion).
+
+**Solo engine** (multi-turn): T1 Curse of Death (the doom is spoken) → T2 Rotting Grasp (*poisoned*, the flesh begins to fail) → T3 Early Grave against a target now cursed, poisoned, and shaken — the harvest of two turns of affliction. Gated by Resist rolls on every affliction, Focus, and the slow clock — the engine loses to burst damage in short fights, which is the intended trade.
+
+**Party interlock**: **emits** *poisoned*, *frightened*, attribute decay — erosion currency (a Strength-decayed brute hits the whole party softer; a frightened enemy breaks formation for everyone). **wants** time and containment: someone must keep the dying target in the fight while the afflictions mature (a tank's lockdown, Telekinetics' hold, Peace's slow). Cross-player line: the martial pins the plague-bearer in melee while Death's curses ripen, and the ancestors collect on schedule.
+
+**Synergy gaps**: the curse-stacking *convert* chain is the school's stated gimmick but has **no published mechanical rung** — nothing actually counts afflictions or defines the major doom they build toward; it lives only in this analysis. R2+ coverage is thin (2/2/0 above R1), so the engine has a start and no finish. Defining the affliction-harvest payoff at R3–R4 is the top design target.
+
+**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
+- **Weight of Dooms** (R2, extender/convert) — deepen an existing affliction: a target already *poisoned*, *frightened*, or cursed by you has that state's duration extended and suffers +1 bane on rolls to shake it. The ripening mechanic — nothing to deepen, nothing happens.
+- **The Reckoning** (R3, payoff harvest) — speak the target's accumulated dooms aloud: necrotic damage per distinct affliction they carry (*poisoned*, *frightened*, bleeding, any curse), consuming your curses in the tally. The counting rung the gimmick has always implied — far below curve cold, the school's finisher when the dooms have ripened. Diegetic: the ancestors weigh what the target already owes.
+- **Grave Chill** (R3, setup, shared-socket) — the target's limbs grow grave-cold: *slowed* for a short duration and their next roll to resist any Death spell suffers +1 bane. Feeds both the party (slowed is anyone's currency) and the school's own ladder.
+
+## Current Spell Inventory (15 published spells)
+
+*Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
 | Rank | Count | Spells |
 |------|-------|--------|
 | 0 | 5 | Chill Touch, Decay, Enfeebling Touch, Glimpse of Mortality, Spared from Death |
 | 1 | 6 | Blood Shards, Curse of Death, Early Grave, Necrotic Weapon, Rotting Grasp, Shivering Ray |
 | 2 | 2 | Circle of Death, Cloud of Sickness |
-| 3 | 2 | Death's Door, Grave's Bloom |
-| 4–5 | 0 | — |
+| 3 | 2 | Death's Door, Grave’s Bloom |
+| 4 | 0 | — |
+| 5 | 0 | — |
 
 ### Trait × Rank Coverage Matrix
 
@@ -44,303 +63,36 @@
 | decay | Decay, Chill Touch, Enfeebling Touch | Necrotic Weapon, Rotting Grasp, Blood Shards | Circle of Death | Grave's Bloom | Wither | Death's Dominion |
 | ancestry | Spared from Death | Commune with Ancestors | Ancestral Guardian | Speak with Dead | Ancestral Judgment | Ancestral Convergence |
 
-**Coverage** (existing + proposed): 30/30 slots filled (100%) — all traits fully represented across all ranks
+**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
 
-**Remaining Gaps**: No remaining gaps — 100% coverage
 
 ## Proposed New Spells
 
-### Miasma
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | vs. Resist | Close | —
-
-*You exhale a cloud of pestilent breath that sickens a nearby creature.*
-
-**Weak.** The target is briefly poisoned (suffers +1 bane on all physical rolls until the end of their next turn).
-**Strong.** As above, and the target takes +2 poison damage.
-**Critical.** As above, and the target takes +4 poison damage.
-
-> **Design Note**: R0 plagues cantrip. Core effect (briefly poisoned) is reliable on any success — SL adds damage, not escalating conditions.
-
-### Minor Hex
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-0 | 0 | vs. Resist | Close | —
-
-*You mutter a petty curse under your breath, bringing misfortune to a nearby creature.*
-
-**Weak.** The target suffers +1 bane on their next roll (any type) before the end of their next turn.
-**Strong.** As above, and if the cursed roll fails, the target takes +2 necrotic damage from the hex's backlash.
-**Critical.** As above, and the necrotic backlash damage increases to +4.
-
-> **Design Note**: R0 curses cantrip. Core effect (bane on next roll) is reliable on any success — SL adds damage consequence, not expanded scope.
-
-### Death's Rebuke
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | Attacker | Melee | quick
-
-*When struck, you channel the cold touch of death back through the wound, punishing your attacker.*
-
-**Effect.** As a Quick Action when targeted by an attack, gain +2 to your Dodge or Parry against the triggering attack. The attacker takes +2 necrotic damage as ancestral spirits lash out in your defense.
-
-> **Design Note**: R1 Quick Action reactive defense. Standardized base (+2 Dodge/Parry) with Death's ancestral retribution as secondary effect. No SL scaling — one reliable defensive reaction.
-
-### Commune with Ancestors
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | Medium TN | Self | ritual (10 minutes)
-
-*You enter a meditative trance, reaching out to the spirits of the dead for guidance.*
-
-**Weak.** You contact a vague ancestral presence. You can ask one yes/no question about a topic the dead would know about. The answer is correct but may be cryptic.
-**Strong.** You contact a clearer presence. You can ask one open-ended question and receive a brief, helpful answer.
-**Critical.** You contact a strong ancestral presence. You can ask two questions and receive clear, detailed answers. You also gain +1 boon on your next roll related to the information gained.
-
-> **Design Note**: R1 utility spell — fills the ancestry R1+ gap. Ritual requirement prevents combat use. Information is helpful but limited — the GM controls how much is revealed, preventing it from bypassing investigation or exploration scenes.
-
-### Festering Wound
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-1 | 2 | vs. Resist | Close | —
-
-*You curse an open wound on a creature, causing it to fester and spread corruption through their body.*
-
-**Weak.** The target is poisoned for a short duration (suffers +1 bane on all physical rolls). While poisoned this way, the target takes +2 poison damage at the start of each of their turns.
-**Strong.** As above, and the ongoing damage increases to +4.
-**Critical.** As above with +4 ongoing damage, and healing effects on the target are halved for the duration.
-
-> **Design Note**: R1 plagues spell. Core effect (poisoned for short duration + ongoing damage) is reliable on any success — SL increases damage and adds healing suppression at Critical.
-
-### Ancestral Guardian
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-2 | 4 | Self or ally | Close | enchant (short)
-
-*You call upon an ancestral spirit to watch over and protect a creature, guiding their actions.*
-
-**Weak.** One creature gains +1 boon on their next attack roll or skill check within a short duration. The guardian whispers guidance audible only to the target.
-**Strong.** The target gains +1 boon on their next two rolls. The guardian also provides +1 boon on saves against fear and charm effects.
-**Critical.** +1 boon on the next three rolls. Fear/charm save bonus. The guardian can also absorb the first 4 points of damage the target takes.
-
-> **Design Note**: Fills R2 ancestry gap. Ancestral protection and guidance — a support spell that fits Death's communal ancestor theme. Limited boon charges prevent over-stacking.
-
-### Speak with Dead
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | Medium TN | Touch | ritual (10 minutes)
-
-*You lay your hand upon a corpse and call its spirit back briefly, asking it to share what it knew in life.*
-
-**Weak.** You animate the mouth of a corpse that has been dead for up to one month. You may ask it up to three questions. The spirit answers truthfully from its knowledge at the time of death, but answers are brief (one or two sentences). The spirit cannot speculate or reveal information it did not possess in life.
-**Strong.** As above. Answers are more detailed and the spirit offers relevant context it considers important. You may ask up to four questions.
-**Critical.** As above with four questions. The spirit also shares one piece of information it considers vital, even if unasked. You gain +1 boon on your next roll related to the information received.
-
-> **Design Note**: Fills R3 ancestry gap. Classic "speak with dead" effect — the Death tradition respectfully communes with the departed (distinct from Necromancy's forced interrogation). Core effect (three questions, truthful answers) is reliable on any success — SL adds detail and question count. Ritual requirement prevents combat use. Complements Commune with Ancestors (R1 vague ancestral guidance) with more specific, targeted questioning of a particular deceased individual.
-
-### Spreading Contagion
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | vs. Resist | Medium | —
-
-*You curse a creature with a virulent disease that leaps to nearby creatures. The contagion spreads like wildfire through clustered enemies.*
-
-**Weak.** The target is diseased for a short duration (poisoned + +1 bane on Fortitude rolls). At the end of each of the target's turns, one creature within melee range of them must save vs. Resist or contract the same disease.
-**Strong.** As above, and diseased creatures take +4 poison damage at the start of each of their turns.
-**Critical.** As above with +4 ongoing damage, and the disease spreads to up to two creatures within close range instead of one in melee range.
-
-> **Design Note**: R3 plagues payoff. Core effect (disease that spreads) is reliable on any success — SL adds damage and expanded spread radius.
-
-### Plague Wind
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | vs. Resist | Long | concentrate
-
-*You unleash a devastating wind carrying every pestilence and plague known to the mortal world. The wind sweeps across the battlefield, infecting all who breathe it.*
-
-**Weak.** All creatures in a long area are poisoned for a short duration and take +6 poison damage. Poisoned creatures have their healing received halved. The wind persists in the area for the duration — creatures entering the area must also save.
-**Strong.** As above, and the poison damage increases to +12.
-**Critical.** As above with +18 poison damage, and poisoned creatures also suffer +1 bane on all attribute rolls for the duration.
-
-> **Design Note**: R5 plagues capstone — mass plague devastation. Core effect (AoE poison, short duration, healing suppression) is reliable on any success — SL adds damage and additional debuffs.
-
-### Greater Curse
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Resist | Medium | —
-
-*You speak a terrible curse that reaches into the target's very essence, eroding their fundamental capabilities.*
-
-**Weak.** Choose one of the target's attributes (Strength, Agility, Spirit, or Mind). That attribute is reduced by one die size for a short duration. The curse is visible as dark marks spreading across the target's skin.
-**Strong.** As above, and the target suffers +1 bane on all rolls using the cursed attribute.
-**Critical.** As above, and the curse affects two attributes of your choice instead of one.
-
-> **Design Note**: R4 curses capstone. Core effect (attribute reduction for short duration) is reliable on any success — SL adds secondary debuffs and expanded scope.
-
-### Pestilence
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Resist | Medium | concentrate
-
-*You call down a devastating plague upon an area, filling it with choking pestilence that rots flesh and weakens the body.*
-
-**Weak.** All creatures in a medium area are poisoned for a short duration and take +5 poison damage. While poisoned, their healing received is halved. The pestilent area persists while you concentrate.
-**Strong.** As above, and the poison damage increases to +10.
-**Critical.** As above with +15 poison damage, and poisoned creatures suffer +1 bane on Strength and Agility rolls for the duration.
-
-> **Design Note**: R4 plagues capstone. AoE plague at half damage scaling (+5/+10/+15 for R4 multi-target). Core effect (AoE poison + healing suppression) is reliable on any success.
-
-### Ancestral Judgment
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Resist | Medium | —
-
-*You call upon the ancestors to judge a creature, channeling their collective wrath into a devastating spiritual assault. A host of spectral faces surrounds the target, screaming judgment.*
-
-**Weak.** Deal +10 necrotic damage. The target is briefly dazed as the ancestral spirits overwhelm their senses. Against undead creatures, deal +14 necrotic damage instead.
-**Strong.** Deal +20 necrotic damage (or +28 vs. undead). The target is briefly dazed.
-**Critical.** Deal +30 necrotic damage (or +42 vs. undead). The target is dazed for a short duration.
-
-> **Design Note**: R4 ancestry/offense capstone. Anti-undead specialist with bonus damage. Core condition (dazed) is reliable on any success — SL adds damage. Only at Critical does daze extend to short duration.
-
-### Death's Dominion
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | Very Hard TN | Self | concentrate
-
-*You open yourself as a conduit to the realm of endings, becoming an avatar of death itself. Your body transforms — skin pale as bone, eyes burning with necrotic fire, an aura of decay spreading from you like a living shroud.*
-
-**Weak.** For a short duration while you concentrate, you gain: immunity to necrotic and poison damage, +3 AV (spirit bonus), and your melee attacks deal +6 additional necrotic damage. Any creature that dies within close range of you rises as a Tier 2 undead under your control at the start of your next turn (maximum 3 risen undead at a time).
-**Strong.** As above, and you gain resistance to physical damage for the duration.
-**Critical.** As above, and risen undead gain +1 boon on all attack rolls while within close range of you.
-
-> **Design Note**: R5 decay capstone — personal transformation into a death avatar. Core effect (transformation, immunities, risen undead) is reliable on any success. SL adds defensive bonuses and undead enhancement, not scaling undead tier.
-
-### Ancestral Convergence
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | Very Hard TN | Medium | concentrate, material cost (5,000 coins)
-
-*You perform a solemn rite of convergence, inviting the honored dead to merge their power with the living. A host of ancestral spirits descends, each binding to an ally and granting them the strength and knowledge of the fallen.*
-
-**Weak.** Choose up to 4 allies within medium range. Each gains the blessing of an ancestral spirit for a short duration: +2 to all attribute rolls, +2 AV (spirit bonus), and they can see invisible/ethereal creatures. Blessed allies glow with ghostly silver light.
-**Strong.** As above, and each blessed ally can once during the duration make an attack using the ancestor's combat skill (+4 damage bonus, necrotic damage type).
-**Critical.** As above, and each blessed ally gains resistance to necrotic damage for the duration. The ancestral spirits can communicate tactically, granting +1 boon on all attack rolls against enemies the spirits can identify as threats.
-
-> **Design Note**: R5 ancestry capstone — empowering the living through ancestral communion, not summoning an army. The Death tradition honors ancestors who empower the worthy, distinct from Necromancy's forced servitude. Core effect (blessing 4 allies, short duration, attribute/AV bonus) is reliable on any success.
-
-### Curse of Frailty
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-2 | 4 | vs. Resist | Medium | singular
-
-*You whisper a curse that seeps into the target's bones, making their body fragile and vulnerable to harm.*
-
-**Weak.** The target is cursed for a short duration. While cursed, their AV is reduced by 2 (minimum 0). Deal +3 necrotic damage as the curse takes hold.
-**Strong.** Deal +6 necrotic damage. As above.
-**Critical.** Deal +9 necrotic damage. As above, and the target also suffers +1 bane on Fortitude rolls for the duration.
-
-> **Design Note**: Fills the R2 curses gap. AV reduction is the core effect and is reliable on any success. SL scales damage and adds secondary Fortitude debuff at Critical. Singular property prevents stacking with Curse of Death. Damage reduced to +3/+6/+9 (control-primary with strong secondary). Builds: Minor Hex (R0 bane) → Curse of Death (R1 HP/healing) → **Curse of Frailty (R2 AV)** → Mark of Doom (R3 vulnerability) → Greater Curse (R4 attribute).
-
-### Mark of Doom
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-3 | 6 | vs. Resist | Medium | singular
-
-*You speak a word of ending over your target, marking them with the sign of inevitable death. Dark runes appear on their skin, pulsing with each heartbeat.*
-
-**Weak.** The target is cursed with the Mark of Doom for a short duration. While marked, the target takes +2 additional damage from all attacks (from any source, any type). Deal +4 necrotic damage as the mark brands itself into their spirit.
-**Strong.** Deal +8 necrotic damage. As above.
-**Critical.** Deal +12 necrotic damage. As above, and the first attack against the marked target each turn also ignores half their AV (rounded up).
-
-> **Design Note**: Fills the R3 curses gap. Damage vulnerability (+2 from all attacks) is the core effect and is reliable on any success. SL scales the initial necrotic damage and adds AV penetration at Critical. Damage follows control-primary scaling (+4/+8/+12). Singular prevents stacking. Builds: Minor Hex (R0 bane) → Curse of Death (R1 HP/healing) → Curse of Frailty (R2 AV reduction) → **Mark of Doom (R3 damage vulnerability)** → Greater Curse (R4 attribute drain).
-
-### Inexorable Doom
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | vs. Resist | Medium | concentrate, material cost (5,000 coins)
-
-*You pronounce the ultimate curse — a death sentence spoken in the language of endings. The words hang in the air like a funeral bell's toll, and the target's very fate is rewritten.*
-
-**Weak.** The target is cursed with Inexorable Doom for a short duration. While cursed, the target suffers all of the following: their max HP is reduced by 20, their AV is reduced by 4 (minimum 0), they cannot benefit from healing of any kind, and all damage they receive is increased by +4. The curse manifests as a shadowy shroud visible to all. Deal +6 necrotic damage.
-**Strong.** Deal +12 necrotic damage. As above, and the target's highest attribute is reduced by one die size for the duration.
-**Critical.** Deal +18 necrotic damage. As above (attribute reduction), and the target suffers +1 bane on all rolls for the duration.
-
-> **Design Note**: R5 curses capstone — the culmination of the curse chain. Combines elements of all prior curses (HP reduction from Curse of Death, AV reduction from Curse of Frailty, damage vulnerability from Mark of Doom, attribute reduction from Greater Curse). All curse effects are reliable on any success. SL scales damage and adds attribute reduction/universal bane. Material cost (5,000 coins) and concentration required. Control-primary damage (+6/+12/+18).
-
-### Dread Presence
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-2 | 4 | vs. Resist | Self | concentrate
-
-*You project an aura of mortal dread, forcing nearby creatures to confront their own mortality. Your eyes darken and the air grows cold around you.*
-
-**Weak.** For a short duration, you emanate an aura of dread in close range. Any hostile creature that starts its turn within the aura must roll Spirit + Fortitude vs. TN 10 or become briefly frightened of you. Frightened creatures take +3 necrotic damage (ignoring AV) from the crushing weight of mortality.
-**Strong.** Necrotic damage increases to +6.
-**Critical.** Necrotic damage increases to +9. Frightened creatures also suffer +1 bane on all attack rolls while frightened.
-
-> **Design Note**: Fills the R2 fear gap. Fear save is the core effect and is reliable on any success (always available each turn). SL scales necrotic damage and adds secondary debuff at Critical. Damage follows R2 AoE scaling (+3/+6/+9). Distinct from Twilight's Aura of Fear (psychic/shadow fear) — Death's fear comes from mortality itself. Builds: Glimpse of Mortality (R0) → Early Grave (R1) → **Dread Presence (R2)** → Death's Door (R3).
-
-### Visage of the Reaper
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Resist | Medium | —
-
-*You project the face of death itself upon your visage — hollow eyes, skeletal features, the unmistakable countenance of the end. The target's soul recoils in primal terror.*
-
-**Weak.** Deal +10 psychic damage (ignoring AV). The target is frightened of you for a short duration and must spend their movement each turn moving away from you. The target must be of a tier equal to or lower than your Mysticism.
-**Strong.** Deal +20 psychic damage (ignoring AV). As above, and the target is also briefly stunned with terror.
-**Critical.** Deal +30 psychic damage (ignoring AV). As above (stunned briefly), and the target drops whatever they are holding.
-
-> **Design Note**: Fills the R4 fear gap. Single-target damage follows R4 scaling (+10/+20/+30). Frightened for short duration with forced flee is the core effect — reliable on any success. SL scales damage and adds stun/disarm as secondary effects. Tier limit prevents trivializing powerful foes. Builds: Glimpse of Mortality (R0) → Early Grave (R1) → Dread Presence (R2) → Death's Door (R3) → **Visage of the Reaper (R4)** → Pall of the Grave (R5).
-
-### Pall of the Grave
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-5 | 10 | vs. Resist | Long | concentrate
-
-*You open a channel to the realm of death, and the dread of that place pours forth. A cold pall settles over the battlefield — the unmistakable chill of the grave. Every living creature feels the weight of their own mortality pressing down upon them.*
-
-**Weak.** All hostile creatures in a medium area take +6 necrotic damage (ignoring AV) and are frightened for a short duration. While frightened by this spell, creatures suffer +1 bane on all rolls. The pall of cold and shadow persists in the area — creatures that enter it must also save. Frightened creatures that fail a save against any other Death spell while this effect persists take an additional +4 necrotic damage.
-**Strong.** Initial necrotic damage increases to +12. As above.
-**Critical.** Initial necrotic damage increases to +18. As above, and frightened creatures cannot willingly move closer to you for the duration.
-
-> **Design Note**: R5 fear capstone. AoE damage follows R5 scaling (+6/+12/+18). Frightened for short duration with universal bane is the core effect — reliable on any success. SL scales damage and adds movement restriction at Critical. The "bonus damage on subsequent Death spell saves" rewards curse stacking, creating a fear → curse synergy the school previously lacked.
-
-### Wither
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
-4 | 8 | vs. Resist | Medium | —
-
-*You reach out and accelerate the decay within a living creature's body. Flesh withers, joints stiffen, and vitality drains away as the target ages decades in an instant.*
-
-**Weak.** Deal +10 necrotic damage. The target suffers ongoing decay for a short duration — they take +4 necrotic damage at the start of each of their turns. While decaying, the target's healing received is halved.
-**Strong.** Deal +20 necrotic damage. As above.
-**Critical.** Deal +30 necrotic damage. As above, and the target is briefly staggered as their body seizes.
-
-> **Design Note**: Fills the R4 decay gap. Single-target damage follows R4 scaling (+10/+20/+30). Ongoing decay (+4 per turn) and healing suppression are the core effects — reliable on any success. SL scales initial damage and adds stagger at Critical. This is Death's "Finger of Death" equivalent — a devastating necrotic strike. Builds: Enfeebling Touch (R0) → Rotting Grasp (R1) → Circle of Death (R2) → Grave's Bloom (R3) → **Wither (R4)** → Death's Dominion (R5).
+These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
+
+| Concept | Rank | Seed |
+|---|---|---|
+| Miasma | 0 | You exhale a cloud of pestilent breath that sickens a nearby creature. (R0 plagues cantrip) |
+| Minor Hex | 0 | You mutter a petty curse under your breath, bringing misfortune to a nearby creature. (R0 curses cantrip) |
+| Death's Rebuke | 1 | When struck, you channel the cold touch of death back through the wound, punishing your attacker. (R1 Quick Action reactive defense) |
+| Commune with Ancestors | 1 | You enter a meditative trance, reaching out to the spirits of the dead for guidance. (R1 utility spell — fills the ancestry R1+ gap) |
+| Festering Wound | 1 | You curse an open wound on a creature, causing it to fester and spread corruption through their body. (R1 plagues spell) |
+| Ancestral Guardian | 2 | You call upon an ancestral spirit to watch over and protect a creature, guiding their actions. (Fills R2 ancestry gap) |
+| Speak with Dead | 3 | You lay your hand upon a corpse and call its spirit back briefly, asking it to share what it knew in life. (Fills R3 ancestry gap) |
+| Spreading Contagion | 3 | You curse a creature with a virulent disease that leaps to nearby creatures. The contagion spreads like wildfire through clustered enemies. (R3 plagues payoff) |
+| Plague Wind | 5 | You unleash a devastating wind carrying every pestilence and plague known to the mortal world. The wind sweeps across the battlefield, infecting all who breathe it. (R5 plagues capstone — mass plague devastation) |
+| Greater Curse | 4 | You speak a terrible curse that reaches into the target's very essence, eroding their fundamental capabilities. (R4 curses capstone) |
+| Pestilence | 4 | You call down a devastating plague upon an area, filling it with choking pestilence that rots flesh and weakens the body. (R4 plagues capstone) |
+| Ancestral Judgment | 4 | You call upon the ancestors to judge a creature, channeling their collective wrath into a devastating spiritual assault. A host of spectral faces surrounds the target, screaming judgment. (R4 ancestry/offense capstone) |
+| Death's Dominion | 5 | You open yourself as a conduit to the realm of endings, becoming an avatar of death itself. Your body transforms — skin pale as bone, eyes burning with necrotic fire, an aura of decay spreading from you like a living shroud. (R5 decay capstone — personal transformation into a death avatar) |
+| Ancestral Convergence | 5 | You perform a solemn rite of convergence, inviting the honored dead to merge their power with the living. A host of ancestral spirits descends, each binding to an ally and granting them the strength and knowledge of the fallen. (R5 ancestry capstone — empowering the living through ancestral communion, not summoning an army) |
+| Curse of Frailty | 2 | You whisper a curse that seeps into the target's bones, making their body fragile and vulnerable to harm. (Fills the R2 curses gap) |
+| Mark of Doom | 3 | You speak a word of ending over your target, marking them with the sign of inevitable death. Dark runes appear on their skin, pulsing with each heartbeat. (Fills the R3 curses gap) |
+| Inexorable Doom | 5 | You pronounce the ultimate curse — a death sentence spoken in the language of endings. The words hang in the air like a funeral bell's toll, and the target's very fate is rewritten. (R5 curses capstone — the culmination of the curse chain) |
+| Dread Presence | 2 | You project an aura of mortal dread, forcing nearby creatures to confront their own mortality. Your eyes darken and the air grows cold around you. (Fills the R2 fear gap) |
+| Visage of the Reaper | 4 | You project the face of death itself upon your visage — hollow eyes, skeletal features, the unmistakable countenance of the end. The target's soul recoils in primal terror. (Fills the R4 fear gap) |
+| Pall of the Grave | 5 | You open a channel to the realm of death, and the dread of that place pours forth. A cold pall settles over the battlefield — the unmistakable chill of the grave. Every living creature feels the weight of their own mortality pressing down upon them. (R5 fear capstone) |
+| Wither | 4 | You reach out and accelerate the decay within a living creature's body. Flesh withers, joints stiffen, and vitality drains away as the target ages decades in an instant. (Fills the R4 decay gap) |
 
 ## Cross-School Spell Sharing
 
@@ -378,7 +130,7 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 - [x] Repeating conditions: Poisoned, frightened, cursed (bane/AV/vulnerability debuff), dazed, stunned, staggered — strong condition variety
 - [x] Setup+payoff: Poison → decay, curse stacking (five ranks of escalating curses), fear → curse synergy via Pall of the Grave — all chains are strong and explicit
 - [x] R5 capstone diversity: Death's Dominion (decay avatar), Plague Wind (mass plague), Ancestral Convergence (party empowerment), Inexorable Doom (ultimate curse), Pall of the Grave (mass fear) — five distinct tactical roles
-- [x] **All trait×rank slots filled**: 30/30 coverage — all 5 trait chains complete R0-R5
+- [ ] **All trait×rank slots filled**: all 30 trait×rank slots seeded with concepts; published coverage is partial (see inventory) coverage — all 5 trait chains complete R0-R5
 
 ### Impact & Trivialization Review
 - **Curse of Frailty (R2 AV reduction)**: Low risk — -2 AV is meaningful but modest. **Mitigations**: vs. Resist save, single target, singular property, short duration. Standard debuff for R2 power level.
