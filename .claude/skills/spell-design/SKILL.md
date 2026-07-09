@@ -41,8 +41,10 @@ Match concept power to the rank table (rank ≈ D&D level equivalence in referen
 - Control spells: target Resist, fixed duration on any success.
 - Properties from the official list only.
 
-### 5. Write it
+### 5. Write it into a draft document
 Use the template below. Flavor ties to 1–3 school traits; arcane feels transgressive, mystic feels reverent.
+
+**Always write a new design as a draft document first — never straight into the published surfaces.** Create (or append to) a batch file under the repo-root `.drafts/` directory (e.g. `.drafts/<school>-r<rank>-batch.md`, or a concept-named file). The draft holds: a status banner ("pending owner approval, not yet published"), scope, chassis note, per-spell design rationale (role, synergy intent, any rank/deviation justification), the full spell text in publish-ready format, and an "open questions for owner" section flagging unresolved forks. The draft is the review artifact; publication (step in Publication Pipeline) only happens after the owner approves it. This keeps design reasoning reviewable and separate from live rules.
 
 ### 6. Validate
 Run the checklist below, then sanity-check against neighbors: pull 2–3 published spells of the same rank and role and compare — the new spell must not strictly dominate any of them.
@@ -102,7 +104,7 @@ Before finalizing any spell with social, legal, economic, informational, or logi
 
 ## Publication Pipeline
 
-A spell is a draft until the owner explicitly approves it as production-ready. Then publish to **all three surfaces**:
+Every new design starts life in a draft document under the repo-root `.drafts/` directory (step 5). A spell stays a draft until the owner explicitly approves it as production-ready. On approval, publish to **all three surfaces** (then optionally delete or archive the draft file):
 
 1. **Docs** — insert into the school's file (`docs/07-magic/02-arcane-spells/<discipline>.md` or `04-mystic-spells/<tradition>.md`), matching the existing per-spell format exactly: `### Name` heading, the 5-column mini-table (`**Rank** | **Focus** | **Target** | **Range** | **Properties**`), then the `**Effect** <br/>` block with `<strong>Weak./Strong./Critical.</strong>` inline HTML. Keep rank order within the file.
 2. **App JSON** — append to `src/utils/data/json/arcane-spells.json` or `mystic-spells.json` (consumed by the spell search dialogs and spell list pages). Match the existing schema (`name, discipline/tradition, rank, focus, target, range, properties, effect, heightened`) and HTML conventions (`<br/>`, `<strong>`). ⚠️ Do NOT run the legacy `convert-tables.sh` regeneration — it's deprecated and sources from Notion exports, not docs; edit the JSON directly. ⚠️ For edits to existing entries, use surgical string replacement — never parse + re-serialize the whole file (reformats every line, drowns the real diff).

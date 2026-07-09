@@ -50,7 +50,7 @@ sidebar_position: 5
 ---|---|---|---|---
  0 | 0 | Special | Self | -
 
-**Effect** <br/> You imbue a wooden weapon with nature’s power to strike your enemy with. Choose any crush weapon you are holding that is made from wood. Roll an attack with that weapon using Spirit + Mysticism. On a hit, also use your spell power instead of the attribute you would use for the weapon (Strength/Agility). 
+**Effect** <br/> You imbue a wooden weapon with nature’s power to strike your enemy with. Choose any crush weapon you are holding that is made from wood. Roll an attack with that weapon using Spirit + Mysticism. On a hit, use your spell power instead of the attack's base damage. 
 
 ### Beast Form
 
