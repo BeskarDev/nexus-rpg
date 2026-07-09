@@ -26,7 +26,7 @@ sidebar_position: 7
 ---|---|---|---|---
  0 | 0 | Special | Short | -
 
-**Effect** <br/> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br/><strong>Weak.</strong> Restore +2 HP to an ally or deal +0 psychic damage (ignoring AV) against an enemy.<br/><strong>Strong.</strong> Restore +4 HP to an ally or deal +2 psychic damage (ignoring AV) against an enemy and they are briefly dazed.<br/><strong>Critical. </strong>Restore +6 HP to an ally or deal +4 psychic damage (ignoring AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
+**Effect** <br/> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br/><strong>Weak.</strong> Restore +2 HP to an ally or deal +0 psychic damage (ignore AV) against an enemy.<br/><strong>Strong.</strong> Restore +4 HP to an ally or deal +2 psychic damage (ignore AV) against an enemy and they are briefly dazed.<br/><strong>Critical. </strong>Restore +6 HP to an ally or deal +4 psychic damage (ignore AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
 
 ### Blessing of Peace
 
@@ -70,7 +70,7 @@ sidebar_position: 7
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | quick
 
-**Effect** <br/> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignoring AV). 
+**Effect** <br/> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignore AV). 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Add your Mysticism to the damage the attacker takes.<br/><strong>(Rank 3)</strong> Add 2 x your Mysticism to the damage the attacker takes.
 
@@ -82,7 +82,7 @@ sidebar_position: 7
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against every target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome and fall prone.<br/>Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can’t enter.<br/>Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration. 
+**Effect** <br/> You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against every target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against every target and they are pushed close outside of the dome.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignore AV) against every target and they are pushed close outside of the dome and fall prone.<br/>Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can’t enter.<br/>Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration. 
 
 ### Slow
 
@@ -140,4 +140,4 @@ sidebar_position: 7
 ---|---|---|---|---
  3 | 6 | vs. Resist | Long | concentrate
 
-**Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignoring AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect.
+**Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignore AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect.

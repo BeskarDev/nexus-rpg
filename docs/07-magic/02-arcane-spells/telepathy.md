@@ -26,7 +26,7 @@ sidebar_position: 4
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You concentrate to overwhelm a creature‘s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You concentrate to overwhelm a creature‘s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Attack Thoughts
 
@@ -34,7 +34,7 @@ sidebar_position: 4
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | -
 
-**Effect** <br/> You blast the thoughts of a creature, making them unable to think clearly.<br/><strong>Weak. </strong>Deal +2 psychic damage (ignoring AV).<br/><strong>Strong. </strong>Deal +4 psychic damage (ignoring AV) and the target is briefly confused.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You blast the thoughts of a creature, making them unable to think clearly.<br/><strong>Weak. </strong>Deal +2 psychic damage (ignore AV).<br/><strong>Strong. </strong>Deal +4 psychic damage (ignore AV) and the target is briefly confused.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Borrowed Tongue
 
@@ -90,7 +90,7 @@ sidebar_position: 4
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | quick
 
-**Effect** <br/> You invade the mind of a creature, interrupting them in the middle of casting a spell.<br/>Cast this spell when a creature in range casts a spell. Add their spell‘s rank to their Resist against this spell.<br/><strong>Weak.</strong> You nullify the spell they were about to cast.<br/><strong>Strong. </strong>Deal +2 psychic damage (ignoring AV) and you nullify the spell they were about to cast.<br/><strong>Critical. </strong>Deal +4 psychic damage (ignoring AV) and you nullify the spell they were about to cast. 
+**Effect** <br/> You invade the mind of a creature, interrupting them in the middle of casting a spell.<br/>Cast this spell when a creature in range casts a spell. Add their spell‘s rank to their Resist against this spell.<br/><strong>Weak.</strong> You nullify the spell they were about to cast.<br/><strong>Strong. </strong>Deal +2 psychic damage (ignore AV) and you nullify the spell they were about to cast.<br/><strong>Critical. </strong>Deal +4 psychic damage (ignore AV) and you nullify the spell they were about to cast. 
 
 ### Forced Suggestion
 
@@ -116,7 +116,7 @@ sidebar_position: 4
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | blast (cone)
 
-**Effect** <br/> You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignoring AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Sending
 
@@ -132,9 +132,11 @@ sidebar_position: 4
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Resist | Short | blast (cone),  illusory
+ 2 | 4 | vs. Resist | Short | blast (cone)
 
-**Effect** <br/>  
+**Effect** <br/> You fling a cone of raw, screaming thought, and the minds it washes over buckle under visions that were never theirs. Target all creatures in the cone.<br/><strong>Weak.</strong> Deal +2 psychic damage to each target and they are briefly confused.<br/><strong>Strong.</strong> Deal +4 psychic damage to each target and they are briefly confused.<br/><strong>Critical.</strong> Deal +6 psychic damage to each target and they are confused for a short duration.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 psychic damage to each target instead.<br/>- Increase the spell's range to medium.  
 
 ### Invade Dreams
 
@@ -142,12 +144,22 @@ sidebar_position: 4
 ---|---|---|---|---
  3 | 6 | vs. Resist | Touch | ritual (minutes)
 
-**Effect** <br/> <em>You invade the dreams of a sleeping, intelligent creature and make them believe anything they see in their dreams to be prophecies or visions.</em> 
+**Effect** <br/> You lay a hand on the sleeper's brow and slip beneath their eyelids, walking the halls of their dreams as an unseen architect. You enter the dreams of a touched sleeping, intelligent creature. If they fail to resist, choose one effect for the duration of the dream:<br/>- <strong>Plant a vision.</strong> You author a dream the creature will remember as a true omen or prophecy. On waking they believe the vision was genuine until events plainly contradict it.<br/>- <strong>Sift the sleeping mind.</strong> Ask their dreaming self up to three questions. The GM answers with what the creature knows, one of: a place, a person, a past event, a fear, or a held secret. If they know nothing relevant, the dream turns evasive and you learn nothing from that question.<br/>- <strong>Sow unrest.</strong> The creature suffers restless nightmares, waking unrested (they gain no benefit from the sleep) and frightened of a subject you weave into the dream for a short duration after waking.<br/>The ritual takes minutes and requires the target to remain asleep throughout. A creature can attempt this against the same target only once per night. 
 
 ### Astral Body
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 | Extreme (14) | Self | ritual (minutes)
+ 4 | 8 | Extreme (14) | Self | concentrate
 
-**Effect** <br/> You sever your astral body from your physical self being able to move freely around with it. You can even pass over to other spheres of existence. Lasts for a medium duration.
+**Effect** <br/> You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration. 
+
+>
+
+### Mass Hold
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You clench your outstretched hand and a crushing weight of will falls upon every mind before you. Target each hostile creature in a close area around the target location whose tier is equal to or lower than your Arcana, using your roll's result vs. their Resist.<br/>On a success, each target is paralyzed as their body refuses every command. At the end of each of their turns, an affected creature can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever an affected creature takes damage, they immediately make this roll as well. Creatures without a mind, such as most constructs and oozes, are unaffected. This spell lasts for a short duration. 

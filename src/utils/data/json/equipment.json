@@ -93,7 +93,7 @@
         "category": "Alchemy",
         "load": "1",
         "cost": "30",
-        "description": "Spend 1 use as an Action to apply the paste to one non-light weapon, two light weapons, or one type of ammo item. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort (this counts as a temporary weapon enchantment).<br/>Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignoring AV) to the target. The ignited paste lasts for a short duration, after which it is fully burned away.<br/>"
+        "description": "Spend 1 use as an Action to apply the paste to one non-light weapon, two light weapons, or one type of ammo item. The paste holds onto the surface it is applied to for a medium duration. During that time, the paste can be instantly ignited by any flame without effort (this counts as a temporary weapon enchantment).<br/>Once ignited and when you hit with the coated weapon or ammo, you also deal 2 fire damage (ignore AV) to the target. The ignited paste lasts for a short duration, after which it is fully burned away.<br/>"
     },
     {
         "name": "Healing Salve (simple)",
@@ -117,7 +117,7 @@
         "category": "Alchemy",
         "load": "1",
         "cost": "50",
-        "description": "Spend 1 use to coat one non-light weapon, two light weapons, or one type of ammo item in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignoring AV) to the target.<br/>"
+        "description": "Spend 1 use to coat one non-light weapon, two light weapons, or one type of ammo item in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 2 poison damage (ignore AV) to the target.<br/>"
     },
     {
         "name": "Fire Bomb",
@@ -173,7 +173,7 @@
         "category": "Alchemy",
         "load": "1",
         "cost": "125",
-        "description": "Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignoring AV) to the target.<br/>"
+        "description": "Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 4 poison damage (ignore AV) to the target.<br/>"
     },
     {
         "name": "Potion of Healing (decent)",
@@ -189,7 +189,7 @@
         "category": "Alchemy",
         "load": "1",
         "cost": "375",
-        "description": "Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignoring AV) to the target.<br/>"
+        "description": "Spend 1 use to coat one weapon or one type of ammo supply in poison (this counts as a temporary weapon enchantment). The poison coat lasts for a short duration.<br/>When you hit with the coated weapon or ammo, you also deal 6 poison damage (ignore AV) to the target.<br/>"
     },
     {
         "name": "Paralyzing Poison (strong)",

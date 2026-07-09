@@ -10,7 +10,7 @@ sidebar_position: 2
 ---|---|---|---|---
  0 | 0 | Medium (8) | Self | enchant (eyes)
 
-**Effect** <br/> You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br/>On a success, you can see a medium distance in absolute darkness as in dim light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration. 
+**Effect** <br/> You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br/>On a success, you can see a medium distance through areas of Total Darkness as though they were Dim Light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration. 
 
 ### Night’s Grasp
 
@@ -34,7 +34,7 @@ sidebar_position: 2
 ---|---|---|---|---
  0 | 0 | Medium (8) | Medium | -
 
-**Effect** <br/> You create an area of magical shadow, making it hard to see through it. Target any area of dim light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered as absolute darkness.<br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area. 
+**Effect** <br/> You create an area of magical shadow, making it hard to see through it. Target any area of Dim Light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered Total Darkness.<br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area. 
 
 ### Whispers of Doubt
 
@@ -42,7 +42,7 @@ sidebar_position: 2
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignoring AV) and the target is briefly confused.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignore AV) and the target is briefly confused.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignore AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Cloak of Night
 
@@ -70,9 +70,9 @@ sidebar_position: 2
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> You conjure vengeful shadows that follow and torment a target with chilling whispers and ghostly touches. On a success, imaginary spectral shadows begin haunting the target. The target takes +2 psychic damage (ignoring AV) at the start of each of their turns. The shadows whisper disturbing thoughts, causing the target to suffer +1 bane on Spirit and Mind rolls.<br/>The haunting lasts for a short duration. The target can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You conjure vengeful shadows that follow and torment a target with chilling whispers and ghostly touches. On a success, imaginary spectral shadows begin haunting the target. The target takes +2 psychic damage (ignore AV) at the start of each of their turns. The shadows whisper disturbing thoughts, causing the target to suffer +1 bane on Spirit and Mind rolls.<br/>The haunting lasts for a short duration. The target can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> The target takes +4 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>The target takes +6 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> The target takes +4 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>The target takes +6 psychic damage (ignore AV) instead.
 
 >
 
@@ -130,9 +130,9 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Self | concentrate
 
-**Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range. On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you for the rest of their turn and take +4 psychic damage (ignoring AV). A creature can only be affected by this spell once per turn. Creatures that succeed on their test are immune to this spell's fear effect until the spell ends. 
+**Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range. On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you for the rest of their turn and take +4 psychic damage (ignore AV). A creature can only be affected by this spell once per turn. Creatures that succeed on their test are immune to this spell's fear effect until the spell ends. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignore AV) instead.
 
 >
 
@@ -142,7 +142,7 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes absolute darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration. 
+**Effect** <br/> You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes Total Darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration. 
 
 ### Moonbeam
 
@@ -164,9 +164,11 @@ sidebar_position: 2
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | Hard (10) | Medium | -
+ 2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> create an area of absolute silence. stealthing creatures aren't revealed by sound within it 
+**Effect** <br/> Moonless quiet pools out from your gesture and swallows every sound, as though the night itself held its breath. You create a zone of absolute silence in close range of the target location for up to a medium duration while you concentrate. While it lasts:<br/>- No sound can be made or heard inside the zone, and none crosses its border.<br/>- Creatures inside are deafened and their Stealth is never given away by sound.<br/>- Speech and any effect that must be spoken or heard fails inside the zone.<br/>- No spell can be cast inside the zone, unless cast by silent means such as the <em>Silent Spell</em> metamagic.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The zone's radius extends to short range of the target location instead.<br/><strong>(Rank 4)</strong> As Rank 3, and you may anchor the zone to a moving creature or object you touch when casting so it travels with them.<br/><strong>(Rank 5)</strong> As Rank 4, and the duration extends to a long duration. 
 
 ### Terrors of the Dark
 
@@ -174,9 +176,9 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | -
 
-**Effect** <br/> You fill an area with frightening shadows that take the shape of each creature's worst fears. Choose a close area within range that contains dim light or darkness. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target is briefly frightened and takes +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Each target is frightened for a short duration and takes +4 psychic damage (ignoring AV).<br/><strong>Critical.</strong> Each target is frightened for a short duration, briefly stunned, and takes +6 psychic damage (ignoring AV).<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You fill an area with frightening shadows that take the shape of each creature's worst fears. Choose a close area within range that contains dim light or darkness. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target is briefly frightened and takes +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Each target is frightened for a short duration and takes +4 psychic damage (ignore AV).<br/><strong>Critical.</strong> Each target is frightened for a short duration, briefly stunned, and takes +6 psychic damage (ignore AV).<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Each target takes +4/+8/+12 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Each target takes +4/+8/+12 psychic damage (ignore AV) instead.
 
 >
 
@@ -226,7 +228,7 @@ sidebar_position: 2
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Medium | concentrate
 
-**Effect** <br/> You trap targets in a twilight realm of their own fears and doubts, where they manifest monsters of their own mind. Choose a close area within range. Target all hostile creatures within the area.<br/>On a success, the realm persists for a short duration. Use your roll’s result vs. their Resist.<br/><strong>Weak. </strong>Each target takes +4 psychic damage (ignoring AV).<br/><strong>Strong. </strong>Each target takes +8 psychic damage (ignoring AV) and is briefly staggered.<br/><strong>Critical. </strong>Each target takes +12 psychic damage (ignoring AV) and is briefly stunned.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Resist against all hostile creatures within the nightmare realm. 
+**Effect** <br/> You trap targets in a twilight realm of their own fears and doubts, where they manifest monsters of their own mind. Choose a close area within range. Target all hostile creatures within the area.<br/>On a success, the realm persists for a short duration. Use your roll’s result vs. their Resist.<br/><strong>Weak. </strong>Each target takes +4 psychic damage (ignore AV).<br/><strong>Strong. </strong>Each target takes +8 psychic damage (ignore AV) and is briefly staggered.<br/><strong>Critical. </strong>Each target takes +12 psychic damage (ignore AV) and is briefly stunned.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Resist against all hostile creatures within the nightmare realm. 
 
 ### Shadow Clone
 

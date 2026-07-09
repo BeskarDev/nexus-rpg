@@ -10,7 +10,7 @@ sidebar_position: 2
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You conjure false visions into the target‘s mind, making them project horrific events of them or their loved ones.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly frightened.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You conjure false visions into the target‘s mind, making them project horrific events of them or their loved ones.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly frightened.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Maddening Whispers
 
@@ -18,7 +18,7 @@ sidebar_position: 2
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You produce unintelligible voices of madness into the target’s mind, distracting them and breaking their mental fortitude.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly distracted by the whispers.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You produce unintelligible voices of madness into the target’s mind, distracting them and breaking their mental fortitude.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly distracted by the whispers.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Minor Illusion
 
@@ -50,9 +50,9 @@ sidebar_position: 2
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | concentrate,  illusory
 
-**Effect** <br/> Using an illusionary creature, you fool your target into believing they are attacked by the illusion. Choose a small or medium sized form for your false enemy. On a success, the target imagines the false enemy to be attacking them in melee.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy. The target’s roll to see through the false enemy’s illusion is hard.<br/>You can use your Quick Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, apply the spell’s effects again. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it without spending additional Focus. 
+**Effect** <br/> Using an illusionary creature, you fool your target into believing they are attacked by the illusion. Choose a small or medium sized form for your false enemy. On a success, the target imagines the false enemy to be attacking them in melee.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) and the target is briefly distracted by the false enemy.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) and the target is briefly distracted by the false enemy. The target’s roll to see through the false enemy’s illusion is hard.<br/>You can use your Quick Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, apply the spell’s effects again. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can’t continue to cast it without spending additional Focus. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead.
 
 >
 
@@ -62,9 +62,9 @@ sidebar_position: 2
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | illusory
 
-**Effect** <br/> You make a creature believe that they triggered a trap.<br/>On a success, they believe they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. hunting trap or trap hole).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is grappled and restrained by the illusory trap.<br/>After the target believes it was pinned by the trap, the illusion lasts for a short duration or until they see through it. 
+**Effect** <br/> You make a creature believe that they triggered a trap.<br/>On a success, they believe they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. hunting trap or trap hole).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) and the target is grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) and the target is grappled and restrained by the illusory trap.<br/>After the target believes it was pinned by the trap, the illusion lasts for a short duration or until they see through it. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead.
 
 >
 
@@ -82,9 +82,9 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | blast (cone)
 
-**Effect** <br/> Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignoring AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignore AV) instead.
 
 >
 
@@ -134,9 +134,9 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | illusory
 
-**Effect** <br/> You create a spacial illusion where a deadly trap or hazard springs into being. Target all creatures in close range of the target location.<br/>On a success, each target believes they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. crumbling ceiling or spikes from the ground).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against each target and they are grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) against each target and they are grappled and restrained by the illusory trap.<br/>After a target believes they were pinned by the trap, the illusion lasts for a short duration or until they see through it. 
+**Effect** <br/> You create a spacial illusion where a deadly trap or hazard springs into being. Target all creatures in close range of the target location.<br/>On a success, each target believes they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. crumbling ceiling or spikes from the ground).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are grappled and restrained by the illusory trap.<br/>After a target believes they were pinned by the trap, the illusion lasts for a short duration or until they see through it. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) against each target instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) against each target instead.
 
 >
 
@@ -166,12 +166,12 @@ sidebar_position: 2
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | concentrate,  illusory
 
-**Effect** <br/> You force a creature to be surrounded by their nightmares and deepest fears, only perceivable by them.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignoring AV).<br/><strong>Critical. </strong>Deal +12 psychic damage (ignoring AV).<br/>On a success, the target is also frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/><br/>While frightened by this spell, you can use your Quick Action on your following turns to repeat the roll vs. Resist. On a success, deal another +4 psychic damage (ignoring AV) to them. 
+**Effect** <br/> You force a creature to be surrounded by their nightmares and deepest fears, only perceivable by them.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV).<br/><strong>Critical. </strong>Deal +12 psychic damage (ignore AV).<br/>On a success, the target is also frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/><br/>While frightened by this spell, you can use your Quick Action on your following turns to repeat the roll vs. Resist. On a success, deal another +4 psychic damage (ignore AV) to them. 
 
 ### Seeming
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | Very Hard (12) |  | -
+ 3 | 6 | Very Hard (12) | Short | illusory
 
-**Effect** <br/> <em>Change the appearance of a group of creatures with illusions.</em>
+**Effect** <br/> You draw a shimmer of borrowed faces over your companions, and strangers look back where friends once stood. You cloak up to six creatures of your choice within range (including yourself) in an illusory disguise for a medium duration. You choose each creature's new appearance, altering face, build, clothing, and voice, and you may make a creature seem any height within their own Size category (a Medium creature can appear as any Medium build from short to tall, but cannot seem Small or Large). The illusion holds to the body and moves with it, but cannot mimic a specific real individual well enough to fool those who know them. A creature that has reason to doubt what they see may roll Insight vs. your casting result to see through one disguise.

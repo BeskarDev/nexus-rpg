@@ -172,10 +172,26 @@ sidebar_position: 3
 
 **Effect** <br/> You unleash a devastating explosion of pure life force that overwhelms your enemies' vital systems while gently reinvigorating your allies.<br/>Target all hostile creatures and your allies within the spell’s area. Compare the roll against a very hard Difficulty (12) to calculate the SL for your allies.<br/><strong>Weak.</strong> Deal +6 radiant damage to each hostile target. Restore +3 HP to each ally.<br/><strong>Strong.</strong> Deal +12 radiant damage to each hostile target and they are briefly dazed. Restore +6 HP to each ally.<br/><strong>Critical.</strong> Deal +18 radiant damage to each hostile target and they are briefly stunned. Restore +9 HP to each ally.
 
+### Revivify
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Touch | material cost (500 coins)
+
+**Effect** <br/> You pour life force into a body whose soul still lingers at the threshold, calling it back before it crosses. Target a creature that died since the end of your last turn, or within the last minute outside of combat. The casting consumes 500 coins worth of sacred oils and offerings whether or not it succeeds.<br/>On a success, the creature returns to life with 1 HP and suffers one Wound from the trauma of death. On a failure, their soul slips too far for swift recall. They can still be returned by a <em>Raise Dead</em> or <em>Resurrection</em> spell. 
+
+### Raise Dead
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Touch | ritual (hours),  material cost (1500 coins)
+
+**Effect** <br/> Through hours of rites you call a soul back along the fading path to its body. Target the body of a creature that died within the last seven days. The body must be whole. If it is missing crucial parts or is too badly destroyed, only a <em>Resurrection</em> spell can return them. The ritual consumes 1500 coins worth of offerings and incense whether or not it succeeds. Roll vs. TN 14.<br/>On a success, the creature returns to life with 1 HP. They suffer 2 Fatigue that cannot be removed until they complete a full rest, and all Wounds they had when they died remain. On a failure, the soul cannot be called back by this spell again. They can still be returned by a <em>Resurrection</em> spell. 
+
 ### Resurrection
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 5 | 10 | Legendary (16) | Touch | ritual (hours),  material cost (5000 coins),  singular
+ 5 | 10 | Legendary (16) | Touch | ritual (hours),  material cost (5000 coins)
 
 **Effect** <br/> Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one turning of the moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration. 

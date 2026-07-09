@@ -212,7 +212,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
-| **Weapon/Ammo** | Choose one element (fire, frost, lightning, or acid) when this item is created. This weapon deals the chosen element as its damage type instead of physical damage. Once per scene, on a hit, you can deal an additional 2 damage of the chosen element (ignoring AV). |
+| **Weapon/Ammo** | Choose one element (fire, frost, lightning, or acid) when this item is created. This weapon deals the chosen element as its damage type instead of physical damage. Once per scene, on a hit, you can deal an additional 2 damage of the chosen element (ignore AV). |
 | **Heavy Armor** | Choose one element (fire, frost, lightning, or acid) when this item is created. You gain resistance against damage of the chosen element. |
 | **Shield** | Choose one element (fire, frost, lightning, or acid) when this item is created. You gain resistance against damage of the chosen element. |
 | **Wearable** | Choose one element (fire, frost, lightning, or acid) when this item is created. Once per scene, when you take damage of the chosen element, you can gain resistance against that damage. |
@@ -416,7 +416,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 | Item Type | Proposed Effect |
 |-----------|----------------|
 | **Any** | The item emits dim light in melee range. You are immune to the poisoned and diseased conditions. |
-| **Weapon** | On a hit against a Spirit (Infernal) or Undead creature, deal +2 radiant damage (ignoring AV). |
+| **Weapon** | On a hit against a Spirit (Infernal) or Undead creature, deal +2 radiant damage (ignore AV). |
 | **Heavy Armor** | Once per day, when you would be reduced to 0 HP, you are reduced to 1 HP instead. |
 | **Shield** | Once per scene, when you take necrotic or poison damage, you can gain resistance against that damage. |
 
@@ -476,7 +476,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
-| **Weapon** | Once per scene, when you hit a creature, you can choose to deal the damage as necrotic damage instead of its normal type. On a hit against a Spirit (Infernal) creature, deal +2 bonus damage (ignoring AV). |
+| **Weapon** | Once per scene, when you hit a creature, you can choose to deal the damage as necrotic damage instead of its normal type. On a hit against a Spirit (Infernal) creature, deal +2 bonus damage (ignore AV). |
 | **Heavy Armor** | Once per scene, when you take physical damage, you can reduce that damage by 4 (after applying AV). You gain resistance against necrotic damage. |
 | **Shield** | Once per scene, when you take damage from any source, you can gain resistance against that damage. You gain resistance against necrotic damage. |
 | **Wearable** | You gain resistance against necrotic damage. Once per scene, when you take physical damage, you can reduce that damage by 2 (after applying AV). |
@@ -491,7 +491,7 @@ The ten published Exotic materials establish the baseline power level. This sect
 
 | Item Type | Proposed Effect |
 |-----------|----------------|
-| **Weapon** | This weapon deals fire damage instead of physical damage. On a hit against a Spirit (Infernal) creature, deal +2 bonus damage (ignoring AV). |
+| **Weapon** | This weapon deals fire damage instead of physical damage. On a hit against a Spirit (Infernal) creature, deal +2 bonus damage (ignore AV). |
 | **Heavy Armor** | You gain resistance against fire damage. You are immune to the burning condition. |
 | **Spell Catalyst** | Once per scene, when you deal fire or necrotic damage with a spell, you can change it to deal the other type instead (fire → necrotic, or necrotic → fire). |
 | **Wearable** | You gain resistance against fire damage. Once per day, when the burning condition would be applied to you, you can ignore it. |

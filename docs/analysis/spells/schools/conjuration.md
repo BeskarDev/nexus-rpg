@@ -42,7 +42,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 - **Seal the Cage** (R3, extender/convert) — a creature currently *restrained* or *grappled* (by anything — tendrils, a net, an ally's hold) is bound in conjured force shackles, converting the hold into *restrained* that persists after the original grip ends. The construct has durability stats per Wall of Force scaling. Converts anyone's hold into the school's lasting containment.
 - **Hail of Splinters** (R3, payoff) — your standing wall or barrier fractures its surface into a storm of force shards along its length, hitting every enemy in close range of it. Turns the wall itself into a weapon — no wall, no spell.
 
-## Current Spell Inventory (29 published spells)
+## Current Spell Inventory (30 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -50,9 +50,9 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 |------|-------|--------|
 | 0 | 3 | Arcane Bolt, Arcane Glyph, Extraplanar Pocket |
 | 1 | 7 | Alarm, Arcane Barrier, Arcane Missiles, Conjure Familiar, Hale of Blades, Infuse Item, Mage Armor |
-| 2 | 7 | Arcane Barrage, Arcane Circle, Arcane Eye, Arcane Lock, Eldritch Tendrils, Phase Step, Summon Aberration |
+| 2 | 8 | Arcane Barrage, Arcane Circle, Arcane Eye, Arcane Lock, Eldritch Tendrils, Phase Step, Summon Aberration, Web |
 | 3 | 7 | Arcane Blast, Astral Gate, Banishment, Burst of Tendrils, Dimension Door, Distant Eye, Wall of Force |
-| 4 | 5 | Arcane Empowerment, Astral Body (incomplete), Disintegrate, Force Cage, Teleportation Circle (incomplete) |
+| 4 | 5 | Arcane Empowerment, Astral Body, Disintegrate, Force Cage, Teleportation Circle |
 | 5 | 0 | — |
 
 ### Trait × Rank Coverage Matrix

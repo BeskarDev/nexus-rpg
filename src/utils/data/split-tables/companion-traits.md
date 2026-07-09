@@ -45,7 +45,7 @@
 
 **Attacks:**
 - <strong>Bite</strong> (<em>agile, pierce</em>). Deals normal weapon damage. On a strong or critical hit, the target is poisoned for a short duration.
-- <strong>Screech.</strong> Roll Agility + Perception vs. Resist against all creatures within a cone in short range. Deals -1 weapon damage (min. 1) (ignoring 1/2 AV) as blast damage. This creature can use this attack once per scene.
+- <strong>Screech.</strong> Roll Agility + Perception vs. Resist against all creatures within a cone in short range. Deals -1 weapon damage (min. 1) (ignore 1/2 AV) as blast damage. This creature can use this attack once per scene.
 
 **Abilities:**
 - <strong>Echolocation (medium).</strong> This creature can perceive its surroundings without relying on sight within range, even around corners or behind cover.
@@ -500,7 +500,7 @@
 - <strong>Flame Bolt </strong>(<em>thrown (short/medium)</em>). Deals -1 weapon damage (min. 1) as fire damage. On a strong or critical hit, inflicts burning (equal to 2 x Tier) for a short duration.
 
 **Abilities:**
-- <strong>Fire Form.</strong> This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers it’s Tier x 2 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+- <strong>Fire Form.</strong> This creature can move through any space as narrow as a keyhole. This creature is immune against fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers it’s Tier x 2 fire damage (ignore AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignore AV) each turn doing so.
 - <strong>Flying (hover). </strong>This creature can fly freely by hovering in the air with +1 Movement per turn.
 
 

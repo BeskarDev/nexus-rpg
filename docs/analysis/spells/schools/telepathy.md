@@ -36,11 +36,11 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 **Synergy gaps**: the influence ladder is strong in theory but has R3+ holes (Invade Dreams incomplete, no published high-rank domination), so the *convert* chain currently dead-ends. Combat payoff is also thin — beyond a boon vs charmed/dazed there is no published spell that spends an opened mind for decisive effect. Both are design targets.
 
 **Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Mind Fracture** (R2, payoff) — drive a psychic spike into a mind that is already *dazed*, *confused*, or *charmed*: psychic damage (ignoring AV) and the existing condition extends. Against a clear-headed target the spell fizzles to minor damage — the deficit is explicit.
+- **Mind Fracture** (R2, payoff) — drive a psychic spike into a mind that is already *dazed*, *confused*, or *charmed*: psychic damage (ignore AV) and the existing condition extends. Against a clear-headed target the spell fizzles to minor damage — the deficit is explicit.
 - **Puppet's Step** (R3, payoff/convert) — seize the limbs of a *charmed* or *confused* creature for one moment: they immediately move up to their speed and make one weapon attack at a target of your choice, then know what they did. The ladder's combat rung — horrifying in the fiction, tier-capped, Resist-rolled.
 - **Break the Will** (R4, convert capstone) — full domination, castable only against a creature currently *charmed* by you: the charm deepens into obedience for a short duration (tier cap constant, re-rolls on damage). Completes dazed → charmed → commanded as an actual spell chain instead of theory.
 
-## Current Spell Inventory (18 published spells)
+## Current Spell Inventory (19 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -50,7 +50,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 | 1 | 7 | Attack Thoughts, Borrowed Tongue, Control Beast, Foresight, Identify, Subtle Suggestion, True Strike |
 | 2 | 6 | Counterspell, Forced Suggestion, Psychic Wave, Psychometry, Sending, Wave of Madness (incomplete) |
 | 3 | 1 | Invade Dreams (incomplete) |
-| 4 | 1 | Astral Body |
+| 4 | 2 | Astral Body, Mass Hold |
 | 5 | 0 | — |
 
 ### Existing Spells (in game)

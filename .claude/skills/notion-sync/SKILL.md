@@ -225,6 +225,8 @@ Use `mcp__notion__notion-update-page` to write updated content.
 
 Categories match Notion Status values: `Basic Rules`, `Adventurers`, `Statistics`, `Combat`, `Items`, `Magic`, `Time Intervals`, `NPCs`, `GM Tools`.
 
+**⚠️ Balance `</details>` tags when editing blocks.** Every version is one `<details>…</details>` toggle. When merging or removing version blocks via `update_content`, the `old_str` and `new_str` must contain the **same number of `</details>` closers** — if `old_str` swallows a closing tag that `new_str` does not restore, the affected toggle stays open and Notion silently **nests every following version inside it** (they collapse and look deleted, though nothing is lost). Before running such an edit, count the `<details>` / `</details>` tags on both sides. If a merge would unbalance them, prefer a full-body `replace_content` with clean, correctly-closed markdown over a surgical `update_content`. (This exact bug hid v0.9.1 and older after the v0.9.2→v0.10.0 merge; the fix was a full `replace_content` rewrite.)
+
 **When to add a Changelog entry:**
 - Rule text changed (mechanics, numbers, wording that affects play)
 - New section or content added
@@ -234,7 +236,9 @@ Categories match Notion Status values: `Basic Rules`, `Adventurers`, `Statistics
 - Pure formatting fixes (em-dash → comma, etc.)
 - Sync-only runs where Notion was just catching up to already-released wiki content (the wiki commit already caused a Changelog entry at release time)
 
-**How to determine the current version:** fetch the Changelog page and read the most recent `<summary>` tag. Increment the patch version (Z) for small changes, minor version (Y) for significant new systems, major version (X) for complete overhauls.
+**Default: append to the current latest version, do NOT create a new one.** A version number stands for a *release*, not a sync. Until the owner cuts an actual release, every sync's changes go into the topmost existing `<details>` block — add or extend bullets under the right Category (create the Category sub-list if absent), keeping them grouped. The owner explicitly folds interim version bumps back into one open version (e.g. v0.10.0–v0.11.1 were merged into a single open v0.10.0 for the whole spell-design cycle). Only start a **new** `<summary>` block when the owner says they are releasing / cutting a version, or explicitly asks for a new version number.
+
+**When you do bump (owner's call only):** fetch the Changelog, read the most recent `<summary>` tag, and increment the patch version (Z) for small changes, minor version (Y) for significant new systems, major version (X) for complete overhauls.
 
 If the changes being synced were already released (i.e. the git commit predates today and the Changelog already has an entry covering them), do not add a duplicate entry — just confirm the existing entry covers it.
 

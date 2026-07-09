@@ -78,7 +78,7 @@ Everything else is medium-priority dilution or framing-level noise.
 
 ### 1.6 Focus-Below-Zero HP Damage
 
-**Mechanic:** Spending Focus that would take you below 0 instead deals 2 HP per point below 0, ignoring AV. If this drops HP to 0, suffer Fatigue.
+**Mechanic:** Spending Focus that would take you below 0 instead deals 2 HP per point below 0, ignore AV. If this drops HP to 0, suffer Fatigue.
 
 **S&S behavior produced:** Desperate casting is physically dangerous on a mechanical level. The incentive to push magic beyond safe limits (because a spell might win the fight) is real, and the cost is real immediate HP damage and potential Fatigue. This is the "overreaching sorcerer burns himself out" trope with actual rules teeth.
 

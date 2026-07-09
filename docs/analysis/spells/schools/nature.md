@@ -41,7 +41,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 - **Deepening Venom** (R2, extender/convert) — toxin already in a *poisoned* creature's blood turns virulent: the condition extends and they suffer +1 bane on Strength and Agility rolls while it lasts. Ripens the poison window for the whole party.
 - **Complete Control Weather** (R4, grand extender) — finish the incomplete slot as the field-scale extender: choose rain (ground becomes difficult terrain, fire magic suffers), wind (ranged attacks suffer, flight labors), or fog (heavy concealment) over a wide area for the scene. Not damage — the sky as standing setup all other Nature (and party) play cashes in.
 
-## Current Spell Inventory (37 published spells)
+## Current Spell Inventory (38 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -50,7 +50,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 | 0 | 6 | Acid Splash, Bestial Adaptation, Lashing Vine, Poison Mist, Rejuvenation, Shillelagh |
 | 1 | 8 | Beast Form, Blessing of Nature, Mesh of Vines, Purify Water, Rock Throw, Sticks to Snakes, Venomous Weapon, Wild Companion |
 | 2 | 13 | Diminish, Gift of the Wild, Heat Metal, Law of the Strongest, Living Plants, Melt Ground, Nature’s Passage, Speak with Animals and Plants, Stone Skin, Sudden Growth, Thorn Barrage, Toxic Mist, Water Prison |
-| 3 | 8 | Animal Messenger, Fungal Growth, Impalement, Insect Swarm, Life from Stone, Nature's Judgment, Petrification, Stone Pillar (incomplete) |
+| 3 | 9 | Animal Messenger, Fungal Growth, Impalement, Insect Swarm, Life from Stone, Nature's Judgment, Petrification, Polymorph, Stone Pillar (incomplete) |
 | 4 | 2 | Control Weather (incomplete), Tree Stride (incomplete) |
 | 5 | 0 | — |
 

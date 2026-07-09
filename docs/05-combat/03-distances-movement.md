@@ -93,6 +93,8 @@ Examples of area properties include:
 
 - **Dim Light.** Any rolls requiring sight in or through this area suffer +1 bane.
 - **Total Darkness.** Any creature is considered blinded for looking into or through this area.
+- **Lightly Obscured.** Mist, smoke, light foliage, or similar partly blocks sight. Any rolls requiring sight in or through this area suffer +1 bane.
+- **Heavily Obscured.** Dense fog, thick smoke, or blinding sand fully blocks sight. Any creature is considered blinded for seeing into, through, or within this area.
 - **Difficult Terrain.** Requires 2 Movement to move into this area (you can spend this Movement over multiple turns). Moving into or out of melee range requires 1 Movement.
 - **Elevated.** This area is uphill or on a higher elevation. Ranged attacks from this area to an un-elevated area gain +1 boon. Special movements such as climbing or flying might be required to enter this area.
 - **Tiny.** All creatures in this area are automatically in melee range of each other.

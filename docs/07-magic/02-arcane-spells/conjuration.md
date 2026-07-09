@@ -10,7 +10,7 @@ sidebar_position: 3
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Medium | -
 
-**Effect** <br/> Produce a small arcane projectile and hurl it against a target.<br/><strong>Weak.</strong> Deals +2 blast damage (ignoring 1/2 AV).<br/><strong>Strong. </strong>Deals +4 blast damage (ignoring 1/2 AV) and the target is briefly dazed.<br/><strong>Critical. </strong>Deals +6 blast damage (ignoring 1/2 AV) and the target is briefly dazed. 
+**Effect** <br/> Produce a small arcane projectile and hurl it against a target.<br/><strong>Weak.</strong> Deals +2 blast damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deals +4 blast damage (ignore 1/2 AV) and the target is briefly dazed.<br/><strong>Critical. </strong>Deals +6 blast damage (ignore 1/2 AV) and the target is briefly dazed. 
 
 ### Arcane Glyph
 
@@ -18,7 +18,7 @@ sidebar_position: 3
 ---|---|---|---|---
  0 | 0 | Medium (8) | Touch | ritual (minutes),  singular
 
-**Effect** <br/> Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br/><br/><strong>Explosion. </strong>Roll vs. Dodge targeting each creature close to the glyph. On a hit, each target takes +2/4/6 blast damage (ignoring 1/2 AV).<br/><br/><strong>Alarm.</strong> A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br/><br/><strong>Spell Effect. </strong>Choose one of your other non-ritual spells targeting one or multiple creatures in no more than short range.<strong> </strong>Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br/><br/>Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br/>Once the condition is met, the glyph erupts with the chosen effect. 
+**Effect** <br/> Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br/><br/><strong>Explosion. </strong>Roll vs. Dodge targeting each creature close to the glyph. On a hit, each target takes +2/4/6 blast damage (ignore 1/2 AV).<br/><br/><strong>Alarm.</strong> A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br/><br/><strong>Spell Effect. </strong>Choose one of your other non-ritual spells targeting one or multiple creatures in no more than short range.<strong> </strong>Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br/><br/>Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br/>Once the condition is met, the glyph erupts with the chosen effect. 
 
 ### Extraplanar Pocket
 
@@ -54,9 +54,9 @@ sidebar_position: 3
 ---|---|---|---|---
  1 | 2 | Medium (8) | Medium | -
 
-**Effect** <br/> Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignoring 1/2 AV). 
+**Effect** <br/> Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignore 1/2 AV). 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Each missile deals +4 blast damage (ignoring 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 blast damage (ignoring 1/2 AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Each missile deals +4 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 blast damage (ignore 1/2 AV) instead.
 
 >
 
@@ -110,9 +110,9 @@ sidebar_position: 3
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> Conjure a barrage of small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missile.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignoring 1/2 AV). 
+**Effect** <br/> Conjure a barrage of small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missile.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignore 1/2 AV). 
 
-> **Heightened** <br/> (Rank 3) Each missile deals +4 blast damage (ignoring 1/2 AV) instead.
+> **Heightened** <br/> (Rank 3) Each missile deals +4 blast damage (ignore 1/2 AV) instead.
 
 >
 
@@ -152,9 +152,9 @@ sidebar_position: 3
 ---|---|---|---|---
  2 | 4 | vs. Parry | Medium | concentrate
 
-**Effect** <br/> You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +4 acid damage (ignoring 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +8 acid damage (ignoring 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +12 acid (ignoring 1/2 AV) damage to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril’s area is considered difficult terrain. The tendrils stay at the target location for a short duration. 
+**Effect** <br/> You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +4 acid damage (ignore 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +8 acid damage (ignore 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +12 acid (ignore 1/2 AV) damage to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril’s area is considered difficult terrain. The tendrils stay at the target location for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +6/12/18 acid damage (ignoring 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +6/12/18 acid damage (ignore 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead.
 
 >
 
@@ -182,13 +182,25 @@ sidebar_position: 3
 
 >
 
+### Web
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Medium | -
+
+**Effect** <br/> You hurl a mote of conjured matter that erupts into a mass of thick, sticky strands, filling the area with layered webbing.<br/>On a success, webs fill an area close to the target location. The webbed area is difficult terrain. When a creature tries to move through the webs for the first time on their turn, or is pushed or pulled into them, they must succeed on a Strength + Athletics roll vs. this spell's target Difficulty or become grappled and restrained by the strands. A grappled creature can repeat the roll as an Action to break free. The webs must be anchored between at least two solid surfaces, such as walls, floor and ceiling, or trees, or they collapse and the spell fails. The webs are flammable. Any fire damage in the area burns them away in an instant, and each creature caught in the webs when they burn takes 4 fire damage (ignore AV). The webs last for a short duration. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The webs fill an area within short range of the target location and last for a medium duration instead.<br/><strong>(Rank 4)</strong> The webs fill an area within medium range of the target location and last for a medium duration instead.<br/><strong>(Rank 5)</strong> The webs fill an area within medium range of the target location and last for a long duration instead.
+
+>
+
 ### Arcane Blast
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Long | -
 
-**Effect** <br/> You form a dense swirling sphere of arcane energy and shoot it against a creature at rapid speed.<br/><strong>Weak.</strong><em> </em>Deal +6 blast damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +12 blast damage (ignoring 1/2 AV) and the target is pushed a short distance.<br/><strong>Critical.</strong> Deal +18 blast damage (ignoring 1/2 AV) and the target is pushed a short distance. 
+**Effect** <br/> You form a dense swirling sphere of arcane energy and shoot it against a creature at rapid speed.<br/><strong>Weak.</strong><em> </em>Deal +6 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) and the target is pushed a short distance.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) and the target is pushed a short distance. 
 
 ### Astral Gate
 
@@ -196,7 +208,7 @@ sidebar_position: 3
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You open up an unstable hole into the astral void, sucking in creatures and potentially trapping them in the unknown dark.<br/>On a success, you summon the gate within short distance of the target area. The gate’s area is considered difficult terrain. Target each creature in the gate’s range and use your roll’s result vs. their Parry.<br/>On a hit, each target takes +8 damage (ignoring 1/2 AV) is pushed a short distance into the center of the gate. If they are already within the center area of the gate, they take +8 damage (ignoring 1/2 AV) and fall prone instead. If they were already prone within the center of the gate, they are sucked into the astral void instead. Loose light objects and dead or unconscious creatures within the center of gate are also sucked into the astral void. Creatures within the astral void can breath but are restrained for the duration.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Parry against all creatures within the gate. The gate lasts for a short duration.<br/>When the gate closes, all objects and creatures sucked into it re-appear. 
+**Effect** <br/> You open up an unstable hole into the astral void, sucking in creatures and potentially trapping them in the unknown dark.<br/>On a success, you summon the gate within short distance of the target area. The gate’s area is considered difficult terrain. Target each creature in the gate’s range and use your roll’s result vs. their Parry.<br/>On a hit, each target takes +8 damage (ignore 1/2 AV) is pushed a short distance into the center of the gate. If they are already within the center area of the gate, they take +8 damage (ignore 1/2 AV) and fall prone instead. If they were already prone within the center of the gate, they are sucked into the astral void instead. Loose light objects and dead or unconscious creatures within the center of gate are also sucked into the astral void. Creatures within the astral void can breath but are restrained for the duration.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Parry against all creatures within the gate. The gate lasts for a short duration.<br/>When the gate closes, all objects and creatures sucked into it re-appear. 
 
 ### Burst of Tendrils
 
@@ -212,7 +224,7 @@ sidebar_position: 3
 ---|---|---|---|---
  3 | 3 | Very Hard (12) | Very Long | -
 
-**Effect** <br/> You mentally focus on any location within range you can see or visualize because you were there before.<br/>On a success, you open a glimmering door of arcane energy before you and step through to teleport to your chosen location. You must be able to move to step through the door.<br/>You can bring along objects you are able to carry, as well as one willing creature or one creature you are grappling that is of equal or smaller Size than you.<br/>If the target location is already occupied by a creature or object, you and any creature that moves with you instead take 10 psychic damage (ignoring AV) and fail to teleport. 
+**Effect** <br/> You mentally focus on any location within range you can see or visualize because you were there before.<br/>On a success, you open a glimmering door of arcane energy before you and step through to teleport to your chosen location. You must be able to move to step through the door.<br/>You can bring along objects you are able to carry, as well as one willing creature or one creature you are grappling that is of equal or smaller Size than you.<br/>If the target location is already occupied by a creature or object, you and any creature that moves with you instead take 10 psychic damage (ignore AV) and fail to teleport. 
 
 ### Distant Eye
 
@@ -266,7 +278,7 @@ sidebar_position: 3
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Self | concentrate
 
-**Effect** <br/> <em>Leave your body behind and move around as an astral projection.</em> 
+**Effect** <br/> You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration. 
 
 ### Force Cage
 
@@ -280,6 +292,8 @@ sidebar_position: 3
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 | Extreme (14) |  | -
+ 4 | 8 | Extreme (14) | Touch | ritual (hours),  material cost (1500 coins),  singular
 
-**Effect** <br/> <em>Inscribe an arcane circle on the ground and connect two of these to teleport between them.</em>
+**Effect** <br/> Over hours of exacting ritual you inscribe a circle of arcane sigils into a solid floor, attuned to its one distant twin. Each circle is inscribed separately with its own casting of this spell, and each casting consumes 1500 coins worth of rare inks and powdered silver.<br/>On a success, the circle is inscribed and attuned to its twin. You can maintain at most one linked pair. Inscribing a new circle beyond the pair causes your oldest circle to fade. The two circles can lie at most a week's travel apart. While both circles remain intact, you can activate the link as an Action while standing in either circle. The link holds until the start of your next turn, and during that time any creature that steps into one circle instantly steps out of the other. A circle is a physical inscription. Scratching it open, breaking the floor, or a single casting that ends spells destroys it, and destroying either circle severs the link. 
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> You may inscribe your circles anywhere within the same sphere of existence with no limit on the distance between them, and you are no longer bound to a single linked pair. You can maintain any number of your own circles at once and a creature stepping into one may step out of any other you choose. Each casting consumes 5000 coins worth of materials instead.

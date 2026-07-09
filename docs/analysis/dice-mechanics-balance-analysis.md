@@ -442,7 +442,7 @@ Expected damage with core magic item progression:
 | L8 (d12+R4, WD 7+2 magic) vs. T8 (Def 14, AV 8) | 5.33 |
 | L10 (d12+R5, WD 8+3 magic) vs. T10 (Def 16, AV 10) | 3.83 |
 
-Magic weapon damage bonuses (+1 to +5) are part of the game's **core progression**. Weapon enchantments (e.g., Flaming: +2/+4/+6 fire damage ignoring AV) provide essential damage bypassing at higher tiers. Expected damage with enchantments active is significantly higher than these base calculations.
+Magic weapon damage bonuses (+1 to +5) are part of the game's **core progression**. Weapon enchantments (e.g., Flaming: +2/+4/+6 fire damage ignore AV) provide essential damage bypassing at higher tiers. Expected damage with enchantments active is significantly higher than these base calculations.
 
 #### AV Stacking vs. Tank Builds
 

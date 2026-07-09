@@ -110,7 +110,7 @@ Don't make every treasure magical — mix coins, trade goods, consumables.
   "material": "Glacial Steel",
   "cost": 2100,
   "load": 1,
-  "description": "Forged from steel tempered in glacial waters, the blade emits a faint mist of frost. While wielding this weapon, you can use a Quick Action on your turn to encase it in frost for a short duration. While frosted, the weapon deals 2 frost damage (ignoring AV) on a hit and emits dim light in close range.",
+  "description": "Forged from steel tempered in glacial waters, the blade emits a faint mist of frost. While wielding this weapon, you can use a Quick Action on your turn to encase it in frost for a short duration. While frosted, the weapon deals 2 frost damage (ignore AV) on a hit and emits dim light in close range.",
   "properties": "slash, pierce, versatile (+1)"
 }
 ```

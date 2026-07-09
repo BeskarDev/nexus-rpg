@@ -43,7 +43,7 @@ Like Peace, Life is a support school whose "payoff" is usually measured in allie
 - **Bursting Ward** (R2, payoff/trigger) — lay a vitality ward on an ally: when its temp HP breaks from enemy damage, it detonates as radiant light, damaging the attacker and briefly *dazing* them. The shield-break burst; enemies learn that breaking the priest's ward has a price.
 - **Revivify** (R3, ladder rung) — the swift rite for the just-fallen: touch a creature dead only since your last turn, no ritual, heavy Focus and a costly consumed offering (~500 coins), they return at 1 HP with a Wound. Fresh-death-only keeps Resurrection's remains-and-moon rite meaningful above it. (Raise Dead R4 — dead up to days, ritual hours, ~1500 coins — completes the ladder.)
 
-## Current Spell Inventory (17 published spells)
+## Current Spell Inventory (19 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -52,8 +52,8 @@ Like Peace, Life is a support school whose "payoff" is usually measured in allie
 | 0 | 3 | Life Shield, Restore Life, Verdant Blast |
 | 1 | 5 | Blessing of Life, Healing Touch, Overflow of Life, Rapid Vitality, Vitalizing Weapon |
 | 2 | 6 | Aid, Cleanse, Detect Life (incomplete), Hallow Ground, Hallowed Rest, Healing Burst |
-| 3 | 2 | Abundance of Life, Vitality Surge |
-| 4 | 0 | — |
+| 3 | 3 | Abundance of Life, Revivify, Vitality Surge |
+| 4 | 1 | Raise Dead |
 | 5 | 1 | Resurrection |
 
 ### Trait × Rank Coverage Matrix

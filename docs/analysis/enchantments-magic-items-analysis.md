@@ -72,13 +72,13 @@
 |---|------|---------|--------|------|
 | 1 | Bloody | Q4/Q5/Q6 | Inflict/increase bleeding (2/4/6) on strong/crit | Offense |
 | 2 | Booming | Q4/Q5/Q6 | Blast damage + push; 1/2/3× per day | Offense |
-| 3 | Defiled | Q4/Q5/Q6 | Necrotic (2/4/6) ignoring AV | Offense |
-| 4 | Flaming | Q4/Q5/Q6 | Fire (2/4/6) ignoring AV | Offense |
+| 3 | Defiled | Q4/Q5/Q6 | Necrotic (2/4/6) ignore AV | Offense |
+| 4 | Flaming | Q4/Q5/Q6 | Fire (2/4/6) ignore AV | Offense |
 | 5 | Infused | Q4/Q5/Q6 | Regain 4/6/8 Focus, 1×/day | Support |
 | 6 | Morphing | Q4 only | Transform between two weapon forms | Utility |
 | 7 | Poisoner's | Q4/Q6 | +2/+4 poison damage or increased difficulty | Offense |
 | 8 | Returning | Q4 only | Thrown + recall as Quick Action | Utility |
-| 9 | Sacred | Q4/Q5/Q6 | Radiant (2/4/6) ignoring AV | Offense |
+| 9 | Sacred | Q4/Q5/Q6 | Radiant (2/4/6) ignore AV | Offense |
 | 10 | Sentinel | Q4/Q5 | Glow near creature type; Q5 +1 boon vs. type | Utility |
 | 11 | Slaying | Q4/Q5/Q6 | +2/+4/+6 damage vs. creature type | Offense |
 | 12 | Sundering | Q4/Q5/Q6 | Ignore ½ AV; 1/2/3× per day | Offense |
@@ -375,11 +375,11 @@ Weapon table stays combat-focused. 8 new entries covering missing elements and r
 
 | d100 | Name | Quality | Effect | Role |
 |------|------|---------|--------|------|
-| 61–65 | Frosted | Q4/Q5/Q6 | Quick Action: frost for short duration. +2/4/6 frost ignoring AV. On strong/crit: target slowed briefly | Offense / Control |
-| 66–70 | Shocking | Q4/Q5/Q6 | Quick Action: lightning for short duration. +2/4/6 lightning ignoring AV. On crit: arcs to one creature in melee range for half damage | Offense |
+| 61–65 | Frosted | Q4/Q5/Q6 | Quick Action: frost for short duration. +2/4/6 frost ignore AV. On strong/crit: target slowed briefly | Offense / Control |
+| 66–70 | Shocking | Q4/Q5/Q6 | Quick Action: lightning for short duration. +2/4/6 lightning ignore AV. On crit: arcs to one creature in melee range for half damage | Offense |
 | 71–75 | Binding | Q5/Q6 | On strong/crit: target resists TN 10/12 or slowed; 1/2× per day | Control |
 | 76–80 | Guardian's | Q4/Q5/Q6 | +1/+1/+2 Parry. 1×/day: redirect attack on adjacent ally to yourself | Defense / Support |
-| 81–85 | Corrosive | Q4/Q5/Q6 | Quick Action: acid for short duration. +2/4/6 acid ignoring AV. On strong/crit: reduce target AV by 1 briefly | Offense |
+| 81–85 | Corrosive | Q4/Q5/Q6 | Quick Action: acid for short duration. +2/4/6 acid ignore AV. On strong/crit: reduce target AV by 1 briefly | Offense |
 | 86–90 | Silencing | Q5/Q6 | On crit: target resists TN 10/12 or silenced briefly; 1/2× per day | Control |
 | 91–95 | Vigilant | Q4/Q5 | Cannot be surprised while holding. Q5: +1 boon on Initiative | Defense |
 | 96–100 | Draining | Q5/Q6 | On hit: regain 2/4 HP. 1×/day | Healing |
@@ -420,7 +420,7 @@ Weapon table stays combat-focused. 8 new entries covering missing elements and r
 
 | Enchantment | Q6 | Q7 | Q8 |
 |-------------|-----|-----|-----|
-| Flaming | 6 fire ignoring AV | +1×/day cone of flame (close, 12 fire vs. Dodge) | Permanent ignition + 1×/day flame burst (short range, 16 vs. Dodge) |
+| Flaming | 6 fire ignore AV | +1×/day cone of flame (close, 12 fire vs. Dodge) | Permanent ignition + 1×/day flame burst (short range, 16 vs. Dodge) |
 | Tough | Resistance 3×/day | +1×/day also gain +2 AV until end of next turn | +1×/scene immunity to all damage until end of next turn |
 | Slaying | +6 vs. type | +1 boon vs. type | On crit, target resists TN 16 or suffers additional wound |
 
@@ -617,7 +617,7 @@ The distribution of magic items at different quality tiers implicitly defines th
 
 ### 6.5 Weapon — Frosted (Q4/Q5/Q6)
 
-> Quick Action: intensify frost for **short duration**. +2/4/6 frost damage ignoring AV. On strong/crit: target **slowed** briefly.
+> Quick Action: intensify frost for **short duration**. +2/4/6 frost damage ignore AV. On strong/crit: target **slowed** briefly.
 >
 > **Role:** Offense / Control. **Mode:** Combat.
 > **Talent synergy:** Slowed complements Polearm Mastery (reduced Movement on slowed targets).

@@ -292,7 +292,7 @@ Tier 2 creatures are slightly more dangerous, including stronger undead, minor m
 **Abilities:**
 
 - **Ethereal Form (Passive).** This creature is immune to bleeding, poison damage, being poisoned, being grappled, restrained, stunned, or falling unconscious.
-- **Flame Body (Passive).** This creature is immune to fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 4 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+- **Flame Body (Passive).** This creature is immune to fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 4 fire damage (ignore AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignore AV) each turn doing so.
 
 ---
 

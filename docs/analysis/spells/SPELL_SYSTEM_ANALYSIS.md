@@ -113,10 +113,9 @@
 
 **Added — Support** (batch 3, v0.11.1): Mage Armor, Haste (arcane, Telekinetics), Stoneskin (*Rock Skin* renamed to *Stone Skin* + R5 heighten). Already covered by existing spells: Shield (*Necrotic Shield*), Death Ward (*Death Ward*, Necromancy), Regenerate (*Healing* wound ritual, *Vitality Field*), Slow (mystic *Slow* exists; the slowed condition is widely available in arcane spells as riders).
 
-**Still missing**:
-- **Utility**: Water Breathing (underwater), Spider Climb (walls), Passwall (phase walls).
-- **Combat**: Web (sticky trap), Polymorph Others (transform enemy), Mass Hold Person (paralyze group).
-- **Resurrection ladder**: Revivify (R3, fresh deaths) and Raise Dead (R4) between *Healing Touch* and *Resurrection* (see Life school seeds).
+**Added — Batch 4** (completes the classic gap list): Web (Conjuration R2), Polymorph (Nature R3), Mass Hold (Telepathy R4), Part Stone (Telekinetics R3, the classic Passwall as a permanent bore), Revivify (Life R3) and Raise Dead (Life R4) completing the resurrection ladder, plus the two remaining Conjuration R4 stubs filled: Astral Body (shared Conjuration/Telepathy) and Teleportation Circle. Water Breathing and Spider Climb were confirmed already covered by *Gift of the Wild* (Nature R2, its Gills and Spiderlimbs options).
+
+**Still missing** (deliberately deferred, not classic staples): Passwall's phase-through variant (Part Stone bores instead), and niche transmutation like Flesh to Stone beyond *Petrification*. The high-priority classic gap list from this section is now **cleared**.
 
 ---
 

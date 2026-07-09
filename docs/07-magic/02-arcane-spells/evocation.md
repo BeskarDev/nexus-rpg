@@ -48,7 +48,7 @@ sidebar_position: 1
 
 **Effect** <br/> You surround yourself in a ward that absorbs elemental energies affecting you. Cast this spell before taking damage or on your turn.<br/>On a success, you briefly gain resistance against acid, fire, frost, lightning, and poison damage. 
 
-> **Heightened** <br/> <strong>(Rank 2) </strong>While the spell lasts, inflict half of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignoring AV).<br/><strong>(Rank 3) </strong>While the spell lasts, inflict the same amount of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 2) </strong>While the spell lasts, inflict half of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV).<br/><strong>(Rank 3) </strong>While the spell lasts, inflict the same amount of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV) instead.
 
 >
 
@@ -203,3 +203,11 @@ sidebar_position: 1
  3 | 6 | vs. Dodge | Long | -
 
 **Effect** <br/> You conjure an unnatural black flame which relentlessly consumes everything it touches.<br/><strong>Weak.</strong> Deal +6 fire damage and the target suffers burning (2).<br/><strong>Strong. </strong>Deal +12 fire damage and the target suffers burning (4).<br/><strong>Critical. </strong>Deal +18 fire damage and the target suffers burning (6).<br/>The black fire ignores fire resistance and reduces immunity against fire damage to a resistance against it. Burning from black fire can‘t be put out by mundane means and only does, once the caster of it is unconscious or dead. Alternately it can be put out by magic that removes a magical effect to be stopped.
+
+### Fulminate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Dodge | Very Long | -
+
+**Effect** <br/> You tear a torrent of raw lightning out of the sky and hurl it into your enemies in a single blinding cataclysm. Target all creatures in medium range of the target location.<br/><strong>Weak.</strong> Deal +6 lightning damage to each target.<br/><strong>Strong.</strong> Deal +12 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +18 lightning damage to each target and they are staggered for a short duration.

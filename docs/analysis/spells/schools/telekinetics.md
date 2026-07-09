@@ -40,7 +40,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 - **Relentless Grip** (R2, extender/prolong) — your kinetic hold tightens on a creature you have *grappled* or *restrained* with a spell: the hold persists without concentration for a short duration and drags the target a close distance each of your turns. Frees the caster's concentration for the payoff while the setup holds.
 - **Meteoric Throw** (R3, payoff/convert) — hurl a creature you are levitating or holding at another enemy: both take physical damage and fall *prone*. Converts the school's signature hold into its own finisher, damage scaled by the thrown body's Size.
 
-## Current Spell Inventory (18 published spells)
+## Current Spell Inventory (19 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -49,7 +49,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 | 0 | 3 | Kinetic Pull, Kinetic Push, Weak Telekinesis |
 | 1 | 7 | Feather Fall, Gravity Orb, Grease, Reflective Barrier, Shockwave, Telekinetic Crush, Telekinetic Volley |
 | 2 | 6 | Haste, Knock, Levitation, Orbiting Shards (incomplete), Stasis, Strong Telekinesis |
-| 3 | 1 | Distortion Field (incomplete) |
+| 3 | 2 | Distortion Field (incomplete), Part Stone |
 | 4 | 1 | Invert Gravity (incomplete) |
 | 5 | 0 | — |
 

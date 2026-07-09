@@ -18,7 +18,7 @@ sidebar_position: 5
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Short | -
 
-**Effect** <br/> You rapidly extend your open hand forward, shooting a blast wave against the target from it.<br/><strong>Weak.</strong> Deal +2 blast damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignoring 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage (ignoring 1/2 AV) and push the target a short distance. 
+**Effect** <br/> You rapidly extend your open hand forward, shooting a blast wave against the target from it.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) and push the target a short distance. 
 
 ### Weak Telekinesis
 
@@ -60,7 +60,7 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Close | -
 
-**Effect** <br/> You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignoring 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignoring 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignoring 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone. 
+**Effect** <br/> You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone. 
 
 ### Telekinetic Crush
 
@@ -120,9 +120,11 @@ sidebar_position: 5
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | Hard (10) | Self | concentrate
+ 3 | 6 | Very Hard (12) | Self | concentrate
 
-**Effect** <br/> <em>You let five small objects orbit around your body. They can block attacks against you, or you can send them out to deal damage.</em> 
+**Effect** <br/> Five slivers of stone and metal tear loose and wheel about you in a slow, humming orbit, ready to turn a blow or leap at your command. You raise five shards that orbit you while you concentrate, for up to a medium duration. As a Quick Action when you are attacked, expend one shard to gain +5 AV against that attack. As your Action, hurl any number of remaining shards: make one Arcana attack roll vs. Dodge and divide the hurled shards among any creatures in short range, each shard dealing +2 damage to its target on a hit. When the last shard is spent or lost, the spell ends.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> The block grants +6 AV and each shard deals +3 damage instead.<br/><strong>(Rank 5)</strong> The block grants +7 AV and each shard deals +4 damage instead. 
 
 ### Stasis
 
@@ -140,18 +142,28 @@ sidebar_position: 5
 
 **Effect** <br/> You hold out your hand and grasp at a large object in range, slowly levitating it it into the air. The object can be of large or smaller size and take up to 10 x your encumbrance limit in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. very hard difficulty (12). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range. On a hit, the object deals 6 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
 
+### Part Stone
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Touch | ritual (minutes),  singular
+
+**Effect** <br/> Over long minutes of murmured intent you lay your hands upon the barrier and bend your will into it, and the matter loosens and draws aside as though it had never been solid.<br/>Choose a section of mundane earth, stone, clay, brick, or wood you are touching, up to a close distance in thickness. The material must not be metal, magically created, or warded by any magical effect. The section must also be plain and free of attached mechanisms, fixtures, or moving parts, such as levers, hinges, sconces, or pipes, and it must not be load-bearing to the point that removing it would collapse the structure. On a success, the chosen material crumbles away into a heap of loose rubble and sand at the base of the passage, leaving an opening wide and tall enough for a medium creature to pass through walking upright. The opening is permanent. It is an ordinary hole in an ordinary wall and can only be closed again by mundane means, such as masonry or filling it in. 
+
 ### Distortion Field
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | vs. Resist | Medium | concentrate
+ 3 | 6 | Very Hard (12) | Medium | concentrate
 
-**Effect** <br/> <em>you create a field through which any ranged attack gets bend away, possibly hitting another target in range outside of it. Enemies inside the field take damage and it is considered difficult terrain for them</em> 
+**Effect** <br/> The air within warps like heat over sand, and anything crossing it is shoved from its true course. On a success, you create a distortion zone in short range of the target location for up to a medium duration while you concentrate. Ranged attacks that pass into or through the zone suffer +1 bane, and the zone is difficult terrain for your enemies. When a creature enters the zone for the first time on their turn or starts their turn within it, they must succeed on an Agility + Fortitude roll vs. your Resist or take 6 damage (ignore AV). 
 
-### Invert Gravity
+### Reverse Gravity
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 | vs. Resist | Medium | concentrate
+ 4 | 8 | Extreme (14) | Very Long | concentrate
 
-**Effect** <br/> <em>you know what it does… but it can also create a field of no gravity, making everyone float!</em>
+**Effect** <br/> You seize the pull of the earth itself and turn it on its head, and everything not rooted down plunges toward the sky. On a success, gravity reverses within a cylinder in short range of the target location, rising to a height of up to medium range, for up to a short duration while you concentrate. Each creature and unsecured object in the cylinder falls upward toward its top. A creature may succeed on an Agility + Athletics roll vs. your Resist to grab hold of a fixed object they can reach and avoid the rise. A creature or object that strikes a ceiling or an anchored object as it rises takes falling damage for the distance risen. A creature that reaches the top of the cylinder without striking anything hovers there until the spell ends, when they fall back down and take falling damage for the distance fallen.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The cylinder's radius extends to medium range and its height to long range of the target location instead.

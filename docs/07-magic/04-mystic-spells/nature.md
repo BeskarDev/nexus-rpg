@@ -10,7 +10,7 @@ sidebar_position: 5
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Medium | -
 
-**Effect** <br/> You conjure a short spray of acid, burning through the target’s surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignoring 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignoring 1/2 AV). 
+**Effect** <br/> You conjure a short spray of acid, burning through the target’s surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignore 1/2 AV). 
 
 ### Bestial Adaptation
 
@@ -156,9 +156,9 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | concentrate
 
-**Effect** <br/> You let a metallic object rapidly increase in temperature, harming anyone touching it.<br/>You must be not wearing any armor or weapon primarily made from a metal to cast this spell. Choose any metallic object or creature of up to medium Size.<br/>On a success, the target becomes burning hot. Any creature holding or wearing the object suffers +2 fire damage (ignoring AV) at the start of each turn they continue to do so.<br/>If the target is a weapon, it imposes +1 bane on attacks with it.<br/>If the target is a piece of armor or a helmet, it‘s AV bonus is halved.<br/>This spell lasts for a short duration. 
+**Effect** <br/> You let a metallic object rapidly increase in temperature, harming anyone touching it.<br/>You must be not wearing any armor or weapon primarily made from a metal to cast this spell. Choose any metallic object or creature of up to medium Size.<br/>On a success, the target becomes burning hot. Any creature holding or wearing the object suffers +2 fire damage (ignore AV) at the start of each turn they continue to do so.<br/>If the target is a weapon, it imposes +1 bane on attacks with it.<br/>If the target is a piece of armor or a helmet, it‘s AV bonus is halved.<br/>This spell lasts for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- You can also target objects with up to large Size.<br/>- The object inflicts +4 fire damage (ignoring AV) each turn instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- You can also target objects with up to huge Size.<br/>- The object inflicts +6 fire damage (ignoring AV) each turn instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- You can also target objects with up to large Size.<br/>- The object inflicts +4 fire damage (ignore AV) each turn instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- You can also target objects with up to huge Size.<br/>- The object inflicts +6 fire damage (ignore AV) each turn instead.
 
 >
 
@@ -180,7 +180,7 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | Special | Medium | enchant (body),  singular
 
-**Effect** <br/> You point at a creature and draw the vigor from their frame until their body dwindles. Target one creature within range. A willing creature is affected automatically. Against an unwilling creature, roll vs. their Resist. On a success, the target’s body shrinks one Size smaller along with their worn equipment and held items, for a short duration. While diminished by this spell, they suffer the following effects.<br/>- They suffer +1 bane on Strength rolls.<br/>- They suffer -1 Parry and gain +1 Dodge.<br/>- They lose 1 AV (min. 0).<br/>- They deal -2 damage with Strength-based attacks (min. 0). 
+**Effect** <br/> You point at a creature and draw the vigor from their frame until their body dwindles. Target one creature within range. Against a willing creature, roll vs. moderate difficulty (8). Against an unwilling creature, roll vs. their Resist. On a success, the target’s body shrinks one Size smaller along with their worn equipment and held items, for a short duration. While diminished by this spell, they suffer the following effects.<br/>- They suffer +1 bane on Strength rolls.<br/>- They suffer -1 Parry and gain +1 Dodge.<br/>- They lose 1 AV (min. 0).<br/>- They deal -2 damage with Strength-based attacks (min. 0). 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The target suffers the following effects instead. They suffer +1 bane on Strength rolls, suffer -2 Parry and gain +2 Dodge, lose 2 AV (min. 0), and deal -4 damage with Strength-based attacks (min. 0).
 
@@ -268,9 +268,9 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Short | blast (cone)
 
-**Effect** <br/> You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +4 poison damage (ignoring 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +8 poison damage (ignoring 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +12 poison damage (ignoring 1/2 AV) to each target and they are poisoned for a short duration. 
+**Effect** <br/> You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +4 poison damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +8 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +12 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 poison damage (ignoring 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 poison damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium.
 
 >
 
@@ -308,7 +308,7 @@ sidebar_position: 5
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Long | -
 
-**Effect** <br/> You cause a massive stone spike to erupt from the ground beneath your target.<br/><strong>Weak.</strong> Deal +6 damage (ignoring 1/2 AV) to the target.<br/><strong>Strong.</strong> Deal +12 damage (ignoring 1/2 AV) to the target and they are pushed up to a short distance upward or away from you.<br/><strong>Critical.</strong> Deal +18 damage (ignoring 1/2 AV) to the target and they are pushed up to a short distance upward or away from you. 
+**Effect** <br/> You cause a massive stone spike to erupt from the ground beneath your target.<br/><strong>Weak.</strong> Deal +6 damage (ignore 1/2 AV) to the target.<br/><strong>Strong.</strong> Deal +12 damage (ignore 1/2 AV) to the target and they are pushed up to a short distance upward or away from you.<br/><strong>Critical.</strong> Deal +18 damage (ignore 1/2 AV) to the target and they are pushed up to a short distance upward or away from you. 
 
 ### Insect Swarm
 
@@ -316,7 +316,7 @@ sidebar_position: 5
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignoring 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration. 
+**Effect** <br/> You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignore 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration. 
 
 ### Life from Stone
 
@@ -342,6 +342,14 @@ sidebar_position: 5
 
 **Effect** <br/> You turn a creature into inanimate stone. The target has to be of a tier equal to or lower than your Mysticism. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the target starts to turn to stone and is stunned.<br/>At the end of their next turn, repeat the roll for this spell. If you succeed, the petrification continues and they are now paralyzed.<br/>At the end of their turn after that, repeat the roll for this spell again. If you succeed again, they are fully petrified.<br/>A petrified creature is paralyzed and unconscious. A petrified creature also has 10 AV (heavy natural armor) unless they had more AV normally.<br/>The creature remains petrified while you remain concentrated on the spell. When the creature takes damage during this time, make a Concentration roll as if you took the same amount of damage. After a medium duration concentrating on this spell, the petrification becomes permanent and has to be lifted by an effect that can break curses or petrification (for example, the Break Curse spell or a Potion of Stone to Flesh). 
 
+### Polymorph
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Special | Short | concentrate
+
+**Effect** <br/> You unravel a creature's shape and re-weave it into the form of a harmless beast. Target one creature of a tier equal to or lower than your Mysticism. Against a willing creature, roll vs. moderate difficulty (8). Against an unwilling creature, roll vs. their Resist.<br/>On a success, the target's body transforms into a tiny or small harmless beast of your choice, such as a mouse, toad, or sheep, along with all their worn and held equipment. You must choose a form that can naturally survive at the target's current location. Underwater you can only choose aquatic forms. While transformed, they use the statistics of a Tier 0 companion of the chosen form, they keep their own HP, and they cannot speak or cast spells. They still act on their turns and can move, flee, hide, or attack as the beast allows.<br/>At the end of each of their turns, an unwilling target can roll Spirit + Fortitude vs. your Resist to end the effect early. Any physical disturbance grants them an immediate additional roll, such as being grabbed, carried, shoved, thrown, or taking any damage. A willing target can instead end the effect on themselves at will. When the spell ends, the target returns to their true form in the same space, with the same HP they currently have. This spell lasts for a short duration. 
+
 ### Stone Pillar
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -358,14 +366,16 @@ sidebar_position: 5
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 | Extreme (14) | Extreme | concentrate
+ 5 | 10 | Legendary (16) | Extreme | concentrate,  ritual (minutes)
 
-**Effect** <br/> TODO: <em>change the weather on a large scale</em> 
+**Effect** <br/> You commune with sky and season, and the weather bends by slow degrees to the shape of your will. Through a ritual of minutes you begin to turn the prevailing weather across the surrounding region, then hold and deepen it for as long as you concentrate (up to a day of dedicated tending). You may shift the weather one stage at a time toward a chosen condition, never conjuring what the season and land could not plausibly produce. Choose the target condition:<br/>- <strong>Clear.</strong> Skies open and the air stills. Any weather-based obscurement, difficult terrain, or wind effect across the region ends, and rolls to travel or to see over long distances through the region gain +1 boon.<br/>- <strong>Rain.</strong> A steady downpour soaks the region. The land beyond short range is Lightly Obscured, unsheltered open flames are extinguished and mundane fires struggle to catch, and empty vessels and cisterns fill with clean water.<br/>- <strong>Storm.</strong> A tempest of driving rain and wind builds. The region is difficult terrain (including for flight) and ranged attacks through it suffer +1 bane. A creature that travels through the storm without shelter gains +1 Fatigue for the day.<br/>- <strong>Fog.</strong> A thick mist settles. The land beyond short range is Heavily Obscured, and creatures gain +1 boon on Stealth rolls to hide within it.<br/>- <strong>Heat or Cold.</strong> The air turns oppressively hot or bitterly cold. A creature that goes a day without proper protection (shade and water against the heat, warmth against the cold) gains +1 Fatigue.<br/>Ending your concentration lets the natural weather reassert itself over the following hours. 
 
 ### Tree Stride
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 | Extreme (14) | Extreme | -
+ 4 | 8 | Extreme (14) | Extreme | concentrate
 
-**Effect** <br/> TODO: Step into one tree and emerge from another within range
+**Effect** <br/> You step into the living wood and the tree takes you in like an old friend, passing you along the green road to emerge far away. You enter a living tree at least your own size that you touch. While the spell lasts, up to a medium duration while you concentrate, you may step into such a tree and emerge from another living tree of similar size within extreme range as your movement, once per turn.<br/>When you enter a tree, your awareness spreads through the green road and you sense every living tree of similar size within range, even those out of sight. To travel, name where you wish to emerge, such as a tree you can see, a known landmark, or a direction and rough distance, and you step out of the nearest suitable tree to that point. If no tree large enough stands within range of your chosen destination, you sense this before you commit and simply do not step, losing nothing. The GM tells you what trees are within reach whenever the surroundings make it uncertain, such as sparse woodland, a lone orchard, or open country where few or none may qualify.<br/>When the spell ends or your concentration breaks, you are expelled from the nearest tree unharmed.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> You may carry up to five willing creatures who touch you through the green road with each stride, and the range extends across any forested expanse in the same region.

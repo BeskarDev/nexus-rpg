@@ -52,7 +52,7 @@
         "range": "Self",
         "properties": "quick",
         "effect": "You surround yourself in a ward that absorbs elemental energies affecting you. Cast this spell before taking damage or on your turn.<br/>On a success, you briefly gain resistance against acid, fire, frost, lightning, and poison damage.",
-        "heightened": "<strong>(Rank 2) </strong>While the spell lasts, inflict half of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignoring AV).<br/><strong>(Rank 3) </strong>While the spell lasts, inflict the same amount of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignoring AV) instead."
+        "heightened": "<strong>(Rank 2) </strong>While the spell lasts, inflict half of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV).<br/><strong>(Rank 3) </strong>While the spell lasts, inflict the same amount of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV) instead."
     },
     {
         "name": "Flame Burst",
@@ -205,7 +205,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "-",
-        "effect": "You conjure false visions into the target\u2018s mind, making them project horrific events of them or their loved ones.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly frightened.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+        "effect": "You conjure false visions into the target\u2018s mind, making them project horrific events of them or their loved ones.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly frightened.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
         "heightened": "-"
     },
     {
@@ -216,7 +216,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "-",
-        "effect": "You produce unintelligible voices of madness into the target\u2019s mind, distracting them and breaking their mental fortitude.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly distracted by the whispers.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+        "effect": "You produce unintelligible voices of madness into the target\u2019s mind, distracting them and breaking their mental fortitude.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly distracted by the whispers.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is distracted by the whispers for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
         "heightened": "-"
     },
     {
@@ -260,8 +260,8 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "concentrate, illusory",
-        "effect": "Using an illusionary creature, you fool your target into believing they are attacked by the illusion. Choose a small or medium sized form for your false enemy. On a success, the target imagines the false enemy to be attacking them in melee.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is briefly distracted by the false enemy. The target\u2019s roll to see through the false enemy\u2019s illusion is hard.<br/>You can use your Quick Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, apply the spell\u2019s effects again. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can\u2019t continue to cast it without spending additional Focus.",
-        "heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) instead."
+        "effect": "Using an illusionary creature, you fool your target into believing they are attacked by the illusion. Choose a small or medium sized form for your false enemy. On a success, the target imagines the false enemy to be attacking them in melee.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) and the target is briefly distracted by the false enemy.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) and the target is briefly distracted by the false enemy. The target\u2019s roll to see through the false enemy\u2019s illusion is hard.<br/>You can use your Quick Action on your next turn to repeat the roll for this spell without spending additional Focus. On a success, apply the spell\u2019s effects again. On a failure or if you choose not to use your Action to continue the spell, the spell ends and you can\u2019t continue to cast it without spending additional Focus.",
+        "heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead."
     },
     {
         "name": "Illusory Trap",
@@ -271,8 +271,8 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "illusory",
-        "effect": "You make a creature believe that they triggered a trap.<br/>On a success, they believe they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. hunting trap or trap hole).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) and the target is grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is grappled and restrained by the illusory trap.<br/>After the target believes it was pinned by the trap, the illusion lasts for a short duration or until they see through it.",
-        "heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) instead."
+        "effect": "You make a creature believe that they triggered a trap.<br/>On a success, they believe they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. hunting trap or trap hole).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) and the target is grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) and the target is grappled and restrained by the illusory trap.<br/>After the target believes it was pinned by the trap, the illusion lasts for a short duration or until they see through it.",
+        "heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead."
     },
     {
         "name": "Mirror Image",
@@ -293,8 +293,8 @@
         "target": "vs. Resist",
         "range": "Short",
         "properties": "blast (cone)",
-        "effect": "Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell\u2019s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignoring AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
-        "heightened": "<strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignoring AV) instead."
+        "effect": "Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell\u2019s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+        "heightened": "<strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignore AV) instead."
     },
     {
         "name": "Illusionary Terrain",
@@ -348,8 +348,8 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "illusory",
-        "effect": "You create a spacial illusion where a deadly trap or hazard springs into being. Target all creatures in close range of the target location.<br/>On a success, each target believes they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. crumbling ceiling or spikes from the ground).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against each target and they are grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) against each target and they are grappled and restrained by the illusory trap.<br/>After a target believes they were pinned by the trap, the illusion lasts for a short duration or until they see through it.",
-        "heightened": "<strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignoring AV) against each target instead."
+        "effect": "You create a spacial illusion where a deadly trap or hazard springs into being. Target all creatures in close range of the target location.<br/>On a success, each target believes they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. crumbling ceiling or spikes from the ground).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are grappled and restrained by the illusory trap.<br/>After a target believes they were pinned by the trap, the illusion lasts for a short duration or until they see through it.",
+        "heightened": "<strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) against each target instead."
     },
     {
         "name": "Waking Dream",
@@ -381,7 +381,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "concentrate, illusory",
-        "effect": "You force a creature to be surrounded by their nightmares and deepest fears, only perceivable by them.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignoring AV).<br/><strong>Critical. </strong>Deal +12 psychic damage (ignoring AV).<br/>On a success, the target is also frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>While frightened by this spell, you can use your Quick Action on your following turns to repeat the roll vs. Resist. On a success, deal another +4 psychic damage (ignoring AV) to them.",
+        "effect": "You force a creature to be surrounded by their nightmares and deepest fears, only perceivable by them.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV).<br/><strong>Critical. </strong>Deal +12 psychic damage (ignore AV).<br/>On a success, the target is also frightened for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>While frightened by this spell, you can use your Quick Action on your following turns to repeat the roll vs. Resist. On a success, deal another +4 psychic damage (ignore AV) to them.",
         "heightened": "-"
     },
     {
@@ -390,9 +390,9 @@
         "rank": "3",
         "focus": "6",
         "target": "Very Hard (12)",
-        "range": "-",
-        "properties": "-",
-        "effect": "<em>Change the appearance of a group of creatures with illusions.</em>",
+        "range": "Short",
+        "properties": "illusory",
+        "effect": "You draw a shimmer of borrowed faces over your companions, and strangers look back where friends once stood. You cloak up to six creatures of your choice within range (including yourself) in an illusory disguise for a medium duration. You choose each creature's new appearance, altering face, build, clothing, and voice, and you may make a creature seem any height within their own Size category (a Medium creature can appear as any Medium build from short to tall, but cannot seem Small or Large). The illusion holds to the body and moves with it, but cannot mimic a specific real individual well enough to fool those who know them. A creature that has reason to doubt what they see may roll Insight vs. your casting result to see through one disguise.",
         "heightened": "-"
     },
     {
@@ -403,7 +403,7 @@
         "target": "vs. Dodge",
         "range": "Medium",
         "properties": "-",
-        "effect": "Produce a small arcane projectile and hurl it against a target.<br/><strong>Weak.</strong> Deals +2 blast damage (ignoring 1/2 AV).<br/><strong>Strong. </strong>Deals +4 blast damage (ignoring 1/2 AV) and the target is briefly dazed.<br/><strong>Critical. </strong>Deals +6 blast damage (ignoring 1/2 AV) and the target is briefly dazed.",
+        "effect": "Produce a small arcane projectile and hurl it against a target.<br/><strong>Weak.</strong> Deals +2 blast damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deals +4 blast damage (ignore 1/2 AV) and the target is briefly dazed.<br/><strong>Critical. </strong>Deals +6 blast damage (ignore 1/2 AV) and the target is briefly dazed.",
         "heightened": "-"
     },
     {
@@ -414,7 +414,7 @@
         "target": "Medium (8)",
         "range": "Touch",
         "properties": "ritual (minutes), singular",
-        "effect": "Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br/><strong>Explosion. </strong>Roll vs. Dodge targeting each creature close to the glyph. On a hit, each target takes +2/4/6 blast damage (ignoring 1/2 AV).<br/><strong>Alarm.</strong> A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br/><strong>Spell Effect. </strong>Choose one of your other non-ritual spells targeting one or multiple creatures in no more than short range.<strong> </strong>Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br/>Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br/>Once the condition is met, the glyph erupts with the chosen effect.",
+        "effect": "Conjure a small arcane glyph that is almost invisible on a stationary object or surface you touch. On a success, choose one of the following effects:<br/><strong>Explosion. </strong>Roll vs. Dodge targeting each creature close to the glyph. On a hit, each target takes +2/4/6 blast damage (ignore 1/2 AV).<br/><strong>Alarm.</strong> A loud continuous sound blasts from the glyph, hearable anywhere within a very long range of it.<br/><strong>Spell Effect. </strong>Choose one of your other non-ritual spells targeting one or multiple creatures in no more than short range.<strong> </strong>Immediately spend the Focus required to cast the spell. Once the glyph activates, cast the chosen spell with random targets within range.<br/>Also determine a condition for when the glyph is supposed to activate, such as somebody touching it, stepping on it, or moving directly past it. The condition has to be met in close range of the glyph.<br/>Once the condition is met, the glyph erupts with the chosen effect.",
         "heightened": "-"
     },
     {
@@ -458,8 +458,8 @@
         "target": "Medium (8)",
         "range": "Medium",
         "properties": "-",
-        "effect": "Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignoring 1/2 AV).",
-        "heightened": "<strong>(Rank 2)</strong> Each missile deals +4 blast damage (ignoring 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 blast damage (ignoring 1/2 AV) instead."
+        "effect": "Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignore 1/2 AV).",
+        "heightened": "<strong>(Rank 2)</strong> Each missile deals +4 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 blast damage (ignore 1/2 AV) instead."
     },
     {
         "name": "Conjure Familiar",
@@ -513,8 +513,41 @@
         "target": "Hard (10)",
         "range": "Medium",
         "properties": "-",
-        "effect": "Conjure a barrage of small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missile.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignoring 1/2 AV).",
-        "heightened": "(Rank 3) Each missile deals +4 blast damage (ignoring 1/2 AV) instead."
+        "effect": "Conjure a barrage of small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire three missile.<br/><strong>Strong. </strong>You fire four missiles.<br/><strong>Critical. </strong>You fire five missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignore 1/2 AV).",
+        "heightened": "(Rank 3) Each missile deals +4 blast damage (ignore 1/2 AV) instead."
+    },
+    {
+        "name": "Web",
+        "discipline": "Conjuration",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You hurl a mote of conjured matter that erupts into a mass of thick, sticky strands, filling the area with layered webbing.<br/>On a success, webs fill an area close to the target location. The webbed area is difficult terrain. When a creature tries to move through the webs for the first time on their turn, or is pushed or pulled into them, they must succeed on a Strength + Athletics roll vs. this spell's target Difficulty or become grappled and restrained by the strands. A grappled creature can repeat the roll as an Action to break free. The webs must be anchored between at least two solid surfaces, such as walls, floor and ceiling, or trees, or they collapse and the spell fails. The webs are flammable. Any fire damage in the area burns them away in an instant, and each creature caught in the webs when they burn takes 4 fire damage (ignore AV). The webs last for a short duration.",
+        "heightened": "<strong>(Rank 3)</strong> The webs fill an area within short range of the target location and last for a medium duration instead.<br/><strong>(Rank 4)</strong> The webs fill an area within medium range of the target location and last for a medium duration instead.<br/><strong>(Rank 5)</strong> The webs fill an area within medium range of the target location and last for a long duration instead."
+    },
+    {
+        "name": "Mass Hold",
+        "discipline": "Telepathy",
+        "rank": "4",
+        "focus": "8",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "concentrate",
+        "effect": "You clench your outstretched hand and a crushing weight of will falls upon every mind before you. Target each hostile creature in a close area around the target location whose tier is equal to or lower than your Arcana, using your roll's result vs. their Resist.<br/>On a success, each target is paralyzed as their body refuses every command. At the end of each of their turns, an affected creature can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever an affected creature takes damage, they immediately make this roll as well. Creatures without a mind, such as most constructs and oozes, are unaffected. This spell lasts for a short duration.",
+        "heightened": "-"
+    },
+    {
+        "name": "Part Stone",
+        "discipline": "Telekinetics",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Touch",
+        "properties": "ritual (minutes), singular",
+        "effect": "Over long minutes of murmured intent you lay your hands upon the barrier and bend your will into it, and the matter loosens and draws aside as though it had never been solid.<br/>Choose a section of mundane earth, stone, clay, brick, or wood you are touching, up to a close distance in thickness. The material must not be metal, magically created, or warded by any magical effect. The section must also be plain and free of attached mechanisms, fixtures, or moving parts, such as levers, hinges, sconces, or pipes, and it must not be load-bearing to the point that removing it would collapse the structure. On a success, the chosen material crumbles away into a heap of loose rubble and sand at the base of the passage, leaving an opening wide and tall enough for a medium creature to pass through walking upright. The opening is permanent. It is an ordinary hole in an ordinary wall and can only be closed again by mundane means, such as masonry or filling it in.",
+        "heightened": "-"
     },
     {
         "name": "Arcane Circle",
@@ -546,8 +579,8 @@
         "target": "vs. Parry",
         "range": "Medium",
         "properties": "concentrate",
-        "effect": "You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +4 acid damage (ignoring 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +8 acid damage (ignoring 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +12 acid (ignoring 1/2 AV) damage to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril\u2019s area is considered difficult terrain. The tendrils stay at the target location for a short duration.",
-        "heightened": "<strong>(Rank 3) </strong>Deal +6/12/18 acid damage (ignoring 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead."
+        "effect": "You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +4 acid damage (ignore 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +8 acid damage (ignore 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +12 acid (ignore 1/2 AV) damage to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril\u2019s area is considered difficult terrain. The tendrils stay at the target location for a short duration.",
+        "heightened": "<strong>(Rank 3) </strong>Deal +6/12/18 acid damage (ignore 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead."
     },
     {
         "name": "Phase Step",
@@ -579,7 +612,7 @@
         "target": "vs. Dodge",
         "range": "Long",
         "properties": "-",
-        "effect": "You form a dense swirling sphere of arcane energy and shoot it against a creature at rapid speed.<br/><strong>Weak.</strong><em> </em>Deal +6 blast damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +12 blast damage (ignoring 1/2 AV) and the target is pushed a short distance.<br/><strong>Critical.</strong> Deal +18 blast damage (ignoring 1/2 AV) and the target is pushed a short distance.",
+        "effect": "You form a dense swirling sphere of arcane energy and shoot it against a creature at rapid speed.<br/><strong>Weak.</strong><em> </em>Deal +6 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) and the target is pushed a short distance.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) and the target is pushed a short distance.",
         "heightened": "-"
     },
     {
@@ -590,7 +623,7 @@
         "target": "Very Hard (12)",
         "range": "Long",
         "properties": "concentrate",
-        "effect": "You open up an unstable hole into the astral void, sucking in creatures and potentially trapping them in the unknown dark.<br/>On a success, you summon the gate within short distance of the target area. The gate\u2019s area is considered difficult terrain. Target each creature in the gate\u2019s range and use your roll\u2019s result vs. their Parry.<br/>On a hit, each target takes +8 damage (ignoring 1/2 AV) is pushed a short distance into the center of the gate. If they are already within the center area of the gate, they take +8 damage (ignoring 1/2 AV) and fall prone instead. If they were already prone within the center of the gate, they are sucked into the astral void instead. Loose light objects and dead or unconscious creatures within the center of gate are also sucked into the astral void. Creatures within the astral void can breath but are restrained for the duration.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Parry against all creatures within the gate. The gate lasts for a short duration.<br/>When the gate closes, all objects and creatures sucked into it re-appear.",
+        "effect": "You open up an unstable hole into the astral void, sucking in creatures and potentially trapping them in the unknown dark.<br/>On a success, you summon the gate within short distance of the target area. The gate\u2019s area is considered difficult terrain. Target each creature in the gate\u2019s range and use your roll\u2019s result vs. their Parry.<br/>On a hit, each target takes +8 damage (ignore 1/2 AV) is pushed a short distance into the center of the gate. If they are already within the center area of the gate, they take +8 damage (ignore 1/2 AV) and fall prone instead. If they were already prone within the center of the gate, they are sucked into the astral void instead. Loose light objects and dead or unconscious creatures within the center of gate are also sucked into the astral void. Creatures within the astral void can breath but are restrained for the duration.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Parry against all creatures within the gate. The gate lasts for a short duration.<br/>When the gate closes, all objects and creatures sucked into it re-appear.",
         "heightened": "-"
     },
     {
@@ -612,7 +645,7 @@
         "target": "Very Hard (12)",
         "range": "Very Long",
         "properties": "-",
-        "effect": "You mentally focus on any location within range you can see or visualize because you were there before.<br/>On a success, you open a glimmering door of arcane energy before you and step through to teleport to your chosen location. You must be able to move to step through the door.<br/>You can bring along objects you are able to carry, as well as one willing creature or one creature you are grappling that is of equal or smaller Size than you.<br/>If the target location is already occupied by a creature or object, you and any creature that moves with you instead take 10 psychic damage (ignoring AV) and fail to teleport.",
+        "effect": "You mentally focus on any location within range you can see or visualize because you were there before.<br/>On a success, you open a glimmering door of arcane energy before you and step through to teleport to your chosen location. You must be able to move to step through the door.<br/>You can bring along objects you are able to carry, as well as one willing creature or one creature you are grappling that is of equal or smaller Size than you.<br/>If the target location is already occupied by a creature or object, you and any creature that moves with you instead take 10 psychic damage (ignore AV) and fail to teleport.",
         "heightened": "-"
     },
     {
@@ -645,7 +678,7 @@
         "target": "Extreme (14)",
         "range": "Self",
         "properties": "concentrate",
-        "effect": "<em>Leave your body behind and move around as an astral projection.</em>",
+        "effect": "You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration.",
         "heightened": "-"
     },
     {
@@ -665,10 +698,10 @@
         "rank": "4",
         "focus": "8",
         "target": "Extreme (14)",
-        "range": "-",
-        "properties": "-",
-        "effect": "<em>Inscribe an arcane circle on the ground and connect two of these to teleport between them.</em>",
-        "heightened": "-"
+        "range": "Touch",
+        "properties": "ritual (hours), material cost (1500 coins), singular",
+        "effect": "Over hours of exacting ritual you inscribe a circle of arcane sigils into a solid floor, attuned to its one distant twin. Each circle is inscribed separately with its own casting of this spell, and each casting consumes 1500 coins worth of rare inks and powdered silver.<br/>On a success, the circle is inscribed and attuned to its twin. You can maintain at most one linked pair. Inscribing a new circle beyond the pair causes your oldest circle to fade. The two circles can lie at most a week's travel apart. While both circles remain intact, you can activate the link as an Action while standing in either circle. The link holds until the start of your next turn, and during that time any creature that steps into one circle instantly steps out of the other. A circle is a physical inscription. Scratching it open, breaking the floor, or a single casting that ends spells destroys it, and destroying either circle severs the link.",
+        "heightened": "<strong>(Rank 5)</strong> You may inscribe your circles anywhere within the same sphere of existence with no limit on the distance between them, and you are no longer bound to a single linked pair. You can maintain any number of your own circles at once and a creature stepping into one may step out of any other you choose. Each casting consumes 5000 coins worth of materials instead."
     },
     {
         "name": "Detect Magic",
@@ -700,7 +733,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "-",
-        "effect": "You concentrate to overwhelm a creature\u2018s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignoring AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignoring AV) and the target is dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+        "effect": "You concentrate to overwhelm a creature\u2018s mind with mental energy.<br/><strong>Weak.</strong> Deal +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +2 psychic damage (ignore AV) and the target is briefly dazed.<strong> <br/>Critical. </strong>Deal +4 psychic damage (ignore AV) and the target is dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
         "heightened": "-"
     },
     {
@@ -711,7 +744,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "-",
-        "effect": "You blast the thoughts of a creature, making them unable to think clearly.<br/><strong>Weak. </strong>Deal +2 psychic damage (ignoring AV).<br/><strong>Strong. </strong>Deal +4 psychic damage (ignoring AV) and the target is briefly confused.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+        "effect": "You blast the thoughts of a creature, making them unable to think clearly.<br/><strong>Weak. </strong>Deal +2 psychic damage (ignore AV).<br/><strong>Strong. </strong>Deal +4 psychic damage (ignore AV) and the target is briefly confused.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
         "heightened": "-"
     },
     {
@@ -777,7 +810,7 @@
         "target": "vs. Resist",
         "range": "Short",
         "properties": "quick",
-        "effect": "You invade the mind of a creature, interrupting them in the middle of casting a spell.<br/>Cast this spell when a creature in range casts a spell. Add their spell\u2018s rank to their Resist against this spell.<br/><strong>Weak.</strong> You nullify the spell they were about to cast.<br/><strong>Strong. </strong>Deal +2 psychic damage (ignoring AV) and you nullify the spell they were about to cast.<br/><strong>Critical. </strong>Deal +4 psychic damage (ignoring AV) and you nullify the spell they were about to cast.",
+        "effect": "You invade the mind of a creature, interrupting them in the middle of casting a spell.<br/>Cast this spell when a creature in range casts a spell. Add their spell\u2018s rank to their Resist against this spell.<br/><strong>Weak.</strong> You nullify the spell they were about to cast.<br/><strong>Strong. </strong>Deal +2 psychic damage (ignore AV) and you nullify the spell they were about to cast.<br/><strong>Critical. </strong>Deal +4 psychic damage (ignore AV) and you nullify the spell they were about to cast.",
         "heightened": "-"
     },
     {
@@ -799,7 +832,7 @@
         "target": "vs. Resist",
         "range": "Short",
         "properties": "blast (cone)",
-        "effect": "You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignoring AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
+        "effect": "You send out a wave of destructive mental energy.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are briefly dazed.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are dazed for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
         "heightened": "-"
     },
     {
@@ -809,9 +842,9 @@
         "focus": "4",
         "target": "vs. Resist",
         "range": "Short",
-        "properties": "blast (cone), illusory",
-        "effect": "-",
-        "heightened": "-"
+        "properties": "blast (cone)",
+        "effect": "You fling a cone of raw, screaming thought, and the minds it washes over buckle under visions that were never theirs. Target all creatures in the cone.<br/><strong>Weak.</strong> Deal +2 psychic damage to each target and they are briefly confused.<br/><strong>Strong.</strong> Deal +4 psychic damage to each target and they are briefly confused.<br/><strong>Critical.</strong> Deal +6 psychic damage to each target and they are confused for a short duration.",
+        "heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 psychic damage to each target instead.<br/>- Increase the spell's range to medium."
     },
     {
         "name": "Invade Dreams",
@@ -821,7 +854,7 @@
         "target": "vs. Resist",
         "range": "Touch",
         "properties": "ritual (minutes)",
-        "effect": "<em>You invade the dreams of a sleeping, intelligent creature and make them believe anything they see in their dreams to be prophecies or visions.</em>",
+        "effect": "You lay a hand on the sleeper's brow and slip beneath their eyelids, walking the halls of their dreams as an unseen architect. You enter the dreams of a touched sleeping, intelligent creature. If they fail to resist, choose one effect for the duration of the dream:<br/>- <strong>Plant a vision.</strong> You author a dream the creature will remember as a true omen or prophecy. On waking they believe the vision was genuine until events plainly contradict it.<br/>- <strong>Sift the sleeping mind.</strong> Ask their dreaming self up to three questions. The GM answers with what the creature knows, one of: a place, a person, a past event, a fear, or a held secret. If they know nothing relevant, the dream turns evasive and you learn nothing from that question.<br/>- <strong>Sow unrest.</strong> The creature suffers restless nightmares, waking unrested (they gain no benefit from the sleep) and frightened of a subject you weave into the dream for a short duration after waking.<br/>The ritual takes minutes and requires the target to remain asleep throughout. A creature can attempt this against the same target only once per night.",
         "heightened": "-"
     },
     {
@@ -831,8 +864,8 @@
         "focus": "8",
         "target": "Extreme (14)",
         "range": "Self",
-        "properties": "ritual (minutes)",
-        "effect": "You sever your astral body from your physical self being able to move freely around with it. You can even pass over to other spheres of existence. Lasts for a medium duration.",
+        "properties": "concentrate",
+        "effect": "You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration.",
         "heightened": "-"
     },
     {
@@ -854,7 +887,7 @@
         "target": "vs. Dodge",
         "range": "Short",
         "properties": "-",
-        "effect": "You rapidly extend your open hand forward, shooting a blast wave against the target from it.<br/><strong>Weak.</strong> Deal +2 blast damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignoring 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage (ignoring 1/2 AV) and push the target a short distance.",
+        "effect": "You rapidly extend your open hand forward, shooting a blast wave against the target from it.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) and push the target a short distance.",
         "heightened": "-"
     },
     {
@@ -898,7 +931,7 @@
         "target": "vs. Dodge",
         "range": "Close",
         "properties": "-",
-        "effect": "You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignoring 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignoring 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignoring 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone.",
+        "effect": "You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone.",
         "heightened": "-"
     },
     {
@@ -937,13 +970,13 @@
     {
         "name": "Orbiting Shards",
         "discipline": "Telekinetics",
-        "rank": "2",
-        "focus": "4",
-        "target": "Hard (10)",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
         "range": "Self",
         "properties": "concentrate",
-        "effect": "<em>You let five small objects orbit around your body. They can block attacks against you, or you can send them out to deal damage.</em>",
-        "heightened": "-"
+        "effect": "Five slivers of stone and metal tear loose and wheel about you in a slow, humming orbit, ready to turn a blow or leap at your command. You raise five shards that orbit you while you concentrate, for up to a medium duration. As a Quick Action when you are attacked, expend one shard to gain +5 AV against that attack. As your Action, hurl any number of remaining shards: make one Arcana attack roll vs. Dodge and divide the hurled shards among any creatures in short range, each shard dealing +2 damage to its target on a hit. When the last shard is spent or lost, the spell ends.",
+        "heightened": "<strong>(Rank 4)</strong> The block grants +6 AV and each shard deals +3 damage instead.<br/><strong>(Rank 5)</strong> The block grants +7 AV and each shard deals +4 damage instead."
     },
     {
         "name": "Stasis",
@@ -972,22 +1005,22 @@
         "discipline": "Telekinetics",
         "rank": "3",
         "focus": "6",
-        "target": "vs. Resist",
+        "target": "Very Hard (12)",
         "range": "Medium",
         "properties": "concentrate",
-        "effect": "<em>you create a field through which any ranged attack gets bend away, possibly hitting another target in range outside of it. Enemies inside the field take damage and it is considered difficult terrain for them</em>",
+        "effect": "The air within warps like heat over sand, and anything crossing it is shoved from its true course. On a success, you create a distortion zone in short range of the target location for up to a medium duration while you concentrate. Ranged attacks that pass into or through the zone suffer +1 bane, and the zone is difficult terrain for your enemies. When a creature enters the zone for the first time on their turn or starts their turn within it, they must succeed on an Agility + Fortitude roll vs. your Resist or take 6 damage (ignore AV).",
         "heightened": "-"
     },
     {
-        "name": "Invert Gravity",
+        "name": "Reverse Gravity",
         "discipline": "Telekinetics",
         "rank": "4",
         "focus": "8",
-        "target": "vs. Resist",
-        "range": "Medium",
+        "target": "Extreme (14)",
+        "range": "Very Long",
         "properties": "concentrate",
-        "effect": "<em>you know what it does\u2026 but it can also create a field of no gravity, making everyone float!</em>",
-        "heightened": "-"
+        "effect": "You seize the pull of the earth itself and turn it on its head, and everything not rooted down plunges toward the sky. On a success, gravity reverses within a cylinder in short range of the target location, rising to a height of up to medium range, for up to a short duration while you concentrate. Each creature and unsecured object in the cylinder falls upward toward its top. A creature may succeed on an Agility + Athletics roll vs. your Resist to grab hold of a fixed object they can reach and avoid the rise. A creature or object that strikes a ceiling or an anchored object as it rises takes falling damage for the distance risen. A creature that reaches the top of the cylinder without striking anything hovers there until the spell ends, when they fall back down and take falling damage for the distance fallen.",
+        "heightened": "<strong>(Rank 5)</strong> The cylinder's radius extends to medium range and its height to long range of the target location instead."
     },
     {
         "name": "Drain Life",
@@ -1118,8 +1151,8 @@
         "target": "Medium (8)",
         "range": "Self",
         "properties": "-",
-        "effect": "You draw life energy from the environment around you, converting it into a protective barrier.<br/>On a success, deal 2 necrotic damage (ignoring AV) to yourself and all creatures in close range. Any smaller plant life within range withers and dies as their life force is drained.<br/>The necrotic shield charges 6 HP + the total amount of HP drained.<br/>When you take damage, the necrotic shield absorbs it first. It has resistance to necrotic and weakness to radiant damage. The shield lasts for a short duration or until it\u2019s charged HP are lost.",
-        "heightened": "<strong>(Rank 2)</strong> Deal 4 necrotic damage (ignoring AV) instead. The necrotic shield charges 12 HP + the total amount of HP drained instead.<br/><strong>(Rank 3)</strong> Deal 6 necrotic damage (ignoring AV) instead. The necrotic shield charges 18 HP + the total amount of HP drained instead."
+        "effect": "You draw life energy from the environment around you, converting it into a protective barrier.<br/>On a success, deal 2 necrotic damage (ignore AV) to yourself and all creatures in close range. Any smaller plant life within range withers and dies as their life force is drained.<br/>The necrotic shield charges 6 HP + the total amount of HP drained.<br/>When you take damage, the necrotic shield absorbs it first. It has resistance to necrotic and weakness to radiant damage. The shield lasts for a short duration or until it\u2019s charged HP are lost.",
+        "heightened": "<strong>(Rank 2)</strong> Deal 4 necrotic damage (ignore AV) instead. The necrotic shield charges 12 HP + the total amount of HP drained instead.<br/><strong>(Rank 3)</strong> Deal 6 necrotic damage (ignore AV) instead. The necrotic shield charges 18 HP + the total amount of HP drained instead."
     },
     {
         "name": "Ray of Lethargy",
@@ -1173,7 +1206,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "singular",
-        "effect": "You place a spectral mark of death upon a creature, making them vulnerable to necromantic energies.<br/>On a success, the target suffers the death mark for a short duration. The mark is visible as a faint skull sigil on their forehead. It inflicts the following effects:<br/>- Attacks against them gain +1 boon.<br/>- Each time they take damage, also inflict 4 necrotic damage (ignoring AV) to them.<br/>- If the marked creature dies while under this effect, you regain Focus equal to half the spell's cost.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the mark early.",
+        "effect": "You place a spectral mark of death upon a creature, making them vulnerable to necromantic energies.<br/>On a success, the target suffers the death mark for a short duration. The mark is visible as a faint skull sigil on their forehead. It inflicts the following effects:<br/>- Attacks against them gain +1 boon.<br/>- Each time they take damage, also inflict 4 necrotic damage (ignore AV) to them.<br/>- If the marked creature dies while under this effect, you regain Focus equal to half the spell's cost.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the mark early.",
         "heightened": "<strong>(Rank 3)</strong> You can target up to two creatures in range with the spell instead."
     },
     {
@@ -1261,7 +1294,7 @@
         "target": "Very Hard (12)",
         "range": "Short",
         "properties": "concentrate",
-        "effect": "You summon spectral warriors from beyond the veil to fight alongside you.<br/>On a success, you conjure four spectral warriors with incorporeal weapons and shields that appear at any location within range. The spectral army acts as a single unit under your control with the following properties:<br/>- The spectral warriors have 40 HP as a single unit. Every 10 damage destroys one of the spectral warriors.<br/>- They have 0 AV and uses your Resist for all Defenses.<br/>- They are immune to all conditions, resistant to necrotic, and weak to radiant damage.<br/>As a Quick Action on your turn, you can command the spectral army to perform one of these actions:<br/>- <strong>Attack.</strong> Split the attacks of the spectral army between up to four targets within melee range. Roll Mind + Arcana vs. Dodge. On a hit, each target takes 4 necrotic damage (ignoring AV) for each spectral warrior hitting them.<br/>- <strong>Defend. </strong>Any attacks against allied creatures in close range of the spectral army suffer +1 bane and each of those allies gains +2 AV while in range.<br/>- <strong>Advance. </strong>They move up to a short distance, ignoring any obstacles, solid objects, or walls. They still have to end their Movement at an unobstructed location.<br/>The spectral army lasts for a short duration or until they are reduced to 0 HP.",
+        "effect": "You summon spectral warriors from beyond the veil to fight alongside you.<br/>On a success, you conjure four spectral warriors with incorporeal weapons and shields that appear at any location within range. The spectral army acts as a single unit under your control with the following properties:<br/>- The spectral warriors have 40 HP as a single unit. Every 10 damage destroys one of the spectral warriors.<br/>- They have 0 AV and uses your Resist for all Defenses.<br/>- They are immune to all conditions, resistant to necrotic, and weak to radiant damage.<br/>As a Quick Action on your turn, you can command the spectral army to perform one of these actions:<br/>- <strong>Attack.</strong> Split the attacks of the spectral army between up to four targets within melee range. Roll Mind + Arcana vs. Dodge. On a hit, each target takes 4 necrotic damage (ignore AV) for each spectral warrior hitting them.<br/>- <strong>Defend. </strong>Any attacks against allied creatures in close range of the spectral army suffer +1 bane and each of those allies gains +2 AV while in range.<br/>- <strong>Advance. </strong>They move up to a short distance, ignoring any obstacles, solid objects, or walls. They still have to end their Movement at an unobstructed location.<br/>The spectral army lasts for a short duration or until they are reduced to 0 HP.",
         "heightened": "-"
     },
     {
@@ -1283,7 +1316,7 @@
         "target": "Extreme (14)",
         "range": "Self",
         "properties": "concentrate, enchant (body)",
-        "effect": "You undergo a profound necromantic transformation, separating your soul from your mortal body to become a semi-incorporeal undead entity that exists between life and death.<br/>On a success, your soul leaves your physical body behind (which becomes unconscious and unresponsive) as you gain the following abilities for a short duration:<br/>- <strong>Ethereal Form.</strong> You can fly by hovering and gain +1 Movement per turn. You can move through solid objects and walls, but cannot fully interact with physical objects unless you concentrate to become solid as a Quick Action. Ending your turn within a solid object deals 10 psychic damage (ignoring AV) to you.<br/>- <strong>Ghostly Resistance.</strong> You gain resistance to frost, necrotic, and physical damage and weakness to radiant damage.<br/>- <strong>Spectral Strikes.</strong> You gain +1 boon on all unarmed attacks and necromancy spells you cast. Your spectral claws count as natural weapons (4 weapon damage, agile, light) that deal necrotic damage and ignore AV. Whenever you deal damage with your unarmed attacks or necromancy spells, add your Arcana to that damage.<br/>- <strong>Fear Presence.</strong> Any creature that sees you for the first time during the transformation must make a Spirit + Fortitude roll vs. your Resist or become frightened for a short duration. They can re-roll the test at the end of their turns to end the effect early.<br/>- <strong>Undead Nature.</strong> You no longer need to breathe, eat, or sleep. You are immune to charm, fear, and mind control effects.<br/>Your mortal body remains where you cast the spell. If your physical body is killed while you are in ghostly form, you become permanently trapped as an undead spirit and slowly lose your personality and sanity over the course of a week.<br/>When you voluntarily end the spell or at the end of the duration, you instantly return to your body. When you return to your body, you suffer two Fatigue and are briefly paralyzed as your soul violently returns to your physical form.",
+        "effect": "You undergo a profound necromantic transformation, separating your soul from your mortal body to become a semi-incorporeal undead entity that exists between life and death.<br/>On a success, your soul leaves your physical body behind (which becomes unconscious and unresponsive) as you gain the following abilities for a short duration:<br/>- <strong>Ethereal Form.</strong> You can fly by hovering and gain +1 Movement per turn. You can move through solid objects and walls, but cannot fully interact with physical objects unless you concentrate to become solid as a Quick Action. Ending your turn within a solid object deals 10 psychic damage (ignore AV) to you.<br/>- <strong>Ghostly Resistance.</strong> You gain resistance to frost, necrotic, and physical damage and weakness to radiant damage.<br/>- <strong>Spectral Strikes.</strong> You gain +1 boon on all unarmed attacks and necromancy spells you cast. Your spectral claws count as natural weapons (4 weapon damage, agile, light) that deal necrotic damage and ignore AV. Whenever you deal damage with your unarmed attacks or necromancy spells, add your Arcana to that damage.<br/>- <strong>Fear Presence.</strong> Any creature that sees you for the first time during the transformation must make a Spirit + Fortitude roll vs. your Resist or become frightened for a short duration. They can re-roll the test at the end of their turns to end the effect early.<br/>- <strong>Undead Nature.</strong> You no longer need to breathe, eat, or sleep. You are immune to charm, fear, and mind control effects.<br/>Your mortal body remains where you cast the spell. If your physical body is killed while you are in ghostly form, you become permanently trapped as an undead spirit and slowly lose your personality and sanity over the course of a week.<br/>When you voluntarily end the spell or at the end of the duration, you instantly return to your body. When you return to your body, you suffer two Fatigue and are briefly paralyzed as your soul violently returns to your physical form.",
         "heightened": "-"
     },
     {
@@ -1417,5 +1450,16 @@
         "properties": "-",
         "effect": "You level your hand and a thin lance of raw conjured force bores through your target, unmaking flesh and matter alike.<br/><strong>Weak.</strong> Deal +10 force damage.<br/><strong>Strong.</strong> Deal +20 force damage.<br/><strong>Critical.</strong> Deal +30 force damage.<br/>If this damage reduces the target to 0 HP, their body crumbles to a small heap of fine grey ash. They cannot be raised as undead, and only a <em>Resurrection</em> spell worked upon those ashes can call them back to life. You can instead target one unattended nonmagical object no larger than a large Size or one conjured construct of force, such as a <em>Wall of Force</em> or <em>Force Cage</em>, destroying it outright on a success.",
         "heightened": "<strong>(Rank 5)</strong> Deal +12/+24/+36 instead."
+    },
+    {
+        "name": "Fulminate",
+        "discipline": "Evocation",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Dodge",
+        "range": "Very Long",
+        "properties": "-",
+        "effect": "You tear a torrent of raw lightning out of the sky and hurl it into your enemies in a single blinding cataclysm. Target all creatures in medium range of the target location.<br/><strong>Weak.</strong> Deal +6 lightning damage to each target.<br/><strong>Strong.</strong> Deal +12 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +18 lightning damage to each target and they are staggered for a short duration.",
+        "heightened": "-"
     }
 ]

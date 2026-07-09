@@ -34,7 +34,7 @@ sidebar_position: 6
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | -
 
-**Effect** <br/> You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage (ignoring 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignoring 1/2 AV) against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage (ignoring 1/2 AV) against each target and they are briefly dazed and deafened. 
+**Effect** <br/> You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target all creatures in short range of the target location instead.
 
@@ -94,9 +94,9 @@ sidebar_position: 6
 ---|---|---|---|---
  1 | 2 | Medium (8) | Short | enchant (body),  singular
 
-**Effect** <br/> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects:<br/>- You gain resistance against blast, frost, and lightning damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignoring AV). 
+**Effect** <br/> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects:<br/>- You gain resistance against blast, frost, and lightning damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignore AV). 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignore AV) instead.
 
 >
 
@@ -106,9 +106,9 @@ sidebar_position: 6
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | quick
 
-**Effect** <br/> You quickly conjure a personal barrier of swirling air. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you can defend with your Resist instead of Parry or Dodge until your next turn. When a melee attack against you fails, the attacker takes +0 blast damage (ignoring AV). If a ranged attack against you fails, you can divert the attack towards another creature in close range. If the ranged attack blunders, you can even divert it back to the attacker. When diverting an attack to another creature, it automatically hits with a weak success. 
+**Effect** <br/> You quickly conjure a personal barrier of swirling air. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you can defend with your Resist instead of Parry or Dodge until your next turn. When a melee attack against you fails, the attacker takes +0 blast damage (ignore AV). If a ranged attack against you fails, you can divert the attack towards another creature in close range. If the ranged attack blunders, you can even divert it back to the attacker. When diverting an attack to another creature, it automatically hits with a weak success. 
 
-> **Heightened** <br/> <strong>(Rank 2) </strong>Failed melee attacks inflict +2 blast damage (ignoring AV) instead. Diverted ranged attacks deal +2 damage.<br/><strong>(Rank 3) </strong>Failed melee attacks inflict +4 blast damage (ignoring AV) instead. Diverted ranged attacks deal +4 damage.
+> **Heightened** <br/> <strong>(Rank 2) </strong>Failed melee attacks inflict +2 blast damage (ignore AV) instead. Diverted ranged attacks deal +2 damage.<br/><strong>(Rank 3) </strong>Failed melee attacks inflict +4 blast damage (ignore AV) instead. Diverted ranged attacks deal +4 damage.
 
 >
 
@@ -224,7 +224,7 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | -
 
-**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignoring 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignoring 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignoring 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
+**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Increase the spell‘s range to medium.
 
@@ -290,9 +290,9 @@ sidebar_position: 6
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 |  |  | -
+ 4 | 8 | Extreme (14) | Long | concentrate
 
-**Effect** <br/> <em>obscures vision, reduces movement and deals repeated damaged without needing to roll for an attack</em> 
+**Effect** <br/> A wall of stinging grit rises at your call and grinds across the battlefield in a howling ochre haze. On a success, you raise a sandstorm in short range of the target location for up to a medium duration while you concentrate. The area is heavily obscured and difficult terrain. A creature that ends their turn inside takes 8 damage (ignore AV) from the scouring sand.<br/>On each of your following turns, you can use your Quick Action to move the sandstorm a short distance within range. 
 
 ### Shattering Orb
 
@@ -300,7 +300,7 @@ sidebar_position: 6
 ---|---|---|---|---
  3 | 6 | vs. Resist | Long | -
 
-**Effect** <br/> You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +6 blast damage (ignoring 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignoring 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +18 blast damage (ignoring 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
+**Effect** <br/> You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
 ### Wind Wall
 
@@ -316,7 +316,7 @@ sidebar_position: 6
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Self | concentrate,  enchant (body)
 
-**Effect** <br/> You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain 10 temporary HP.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignoring AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in this form for a longer time. 
+**Effect** <br/> You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain 10 temporary HP.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignore AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in this form for a longer time. 
 
 ### Control Water
 
@@ -324,28 +324,28 @@ sidebar_position: 6
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Extreme | concentrate
 
-**Effect** <br/> You control a large amount of water and shape it to your will. Choose an area of water covering a long distance in all directions from the target location within range. In addition, you can choose one of the following options to manipulate the water in your affected area.<br/><strong>Flood. </strong>You rise the standing water level in your spell’s area by up to a close distance up (which then counts as a large body of water on your next turn). The water levels stay elevated for a medium duration or until you choose another option for this spell.<br/>If using this option on a large body of water, you instead cause the water in your spell’s area to cause a massive wave that travels from one end of the area to the other and then crashes violently. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the wave and takes +12 damage (ignoring 1/2 AV). Aquatic creatures take no damage but are still forced to move with the wave. The flood repeats during each of your turns for a medium duration or until you choose another option for this spell.<br/><strong>Split.</strong> Choose any line within the waters area from end to end where you part the water and create a trench with a width covering a close distance. The sides of the trench for a wall of water. The trench remains for a medium duration or until you choose another option for this spell. When the trench closes, the waters snap back violently. Any creature within the closing trench takes +16 damage (ignoring 1/2 AV), is briefly staggered, and remains underwater where the trench used to be.<br/><strong>Redirect. </strong>You force the water in the spell’s area to flow in any direction of your choosing. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the water’s flow until reaching the end of the spell’s area. The redirected flow remains for a medium duration or until you choose another option for this spell.<br/>Whirlpool. TODO<br/>On each of your following turns, you can use your Action to repeat the roll for the same or a different option. If you fail the roll, the spell ends. 
+**Effect** <br/> You control a large amount of water and shape it to your will. Choose an area of water covering a long distance in all directions from the target location within range. In addition, you can choose one of the following options to manipulate the water in your affected area.<br/><strong>Flood. </strong>You rise the standing water level in your spell’s area by up to a close distance up (which then counts as a large body of water on your next turn). The water levels stay elevated for a medium duration or until you choose another option for this spell.<br/>If using this option on a large body of water, you instead cause the water in your spell’s area to cause a massive wave that travels from one end of the area to the other and then crashes violently. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the wave and takes +12 damage (ignore 1/2 AV). Aquatic creatures take no damage but are still forced to move with the wave. The flood repeats during each of your turns for a medium duration or until you choose another option for this spell.<br/><strong>Split.</strong> Choose any line within the waters area from end to end where you part the water and create a trench with a width covering a close distance. The sides of the trench for a wall of water. The trench remains for a medium duration or until you choose another option for this spell. When the trench closes, the waters snap back violently. Any creature within the closing trench takes +16 damage (ignore 1/2 AV), is briefly staggered, and remains underwater where the trench used to be.<br/><strong>Redirect. </strong>You force the water in the spell’s area to flow in any direction of your choosing. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the water’s flow until reaching the end of the spell’s area. The redirected flow remains for a medium duration or until you choose another option for this spell.<br/><strong>Whirlpool.</strong> You set the water spinning into a churning vortex centered on a point in the spell's area, filling a close area around it. At the start of each of their turns, any huge or smaller creature or vehicle in the whirlpool is pulled a short distance toward the center. A creature that starts its turn in the center must roll Strength + Athletics vs. your Resist or be dragged beneath the surface and begin suffocating until they escape the whirlpool. Swimming within the whirlpool counts as difficult terrain. The whirlpool remains for a medium duration or until you choose another option for this spell.<br/>On each of your following turns, you can use your Action to repeat the roll for the same or a different option. If you fail the roll, the spell ends. 
 
 ### Control Winds
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 | Extreme (14) | Extreme | concentrate
+ 4 | 8 | Extreme (14) | Extreme | concentrate,  ritual (minutes)
 
-**Effect** <br/> <em>control the winds around you in different ways over a longer period of time. Options: Gust, Downdraft, Updraft</em> 
+**Effect** <br/> You spread your arms and the sky obeys, winds bending to your will across the whole reach of the land. You command the winds over a large area within range for up to a long duration while you concentrate. Choose one mode, and you may change modes on your turn as a Quick Action:<br/>- <strong>Gale.</strong> Strong horizontal winds blow in one direction you choose. Ranged attacks through the area suffer +1 bane, airborne gases and fogs disperse, and at the start of each of their turns, unsecured objects and creatures are pushed in the wind's direction: those of Small Size or lighter a short distance, those of Medium Size a close distance. Larger creatures stand firm. Moving against the wind's direction is difficult terrain.<br/>- <strong>Downdraft.</strong> Winds press downward. Ranged attacks through the area suffer +1 bane. At the start of each of their turns, flying creatures in the area are forced a short distance toward the ground and no creature can gain height while in the area. A flying creature driven all the way to the ground this way lands and is knocked prone.<br/>- <strong>Updraft.</strong> Winds rush upward. Falls within the area are slowed to a drift (no falling damage). At the start of each of their turns, unsecured objects and willing creatures of Medium Size or lighter can be lifted a short distance upward (a willing creature is one that chooses to be raised).<br/>While you concentrate, the wind's area moves with you, so you can stand aboard a moving vehicle or ship and drive it before a steady gale. 
 
 ### Earthquake
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 |  |  | -
+ 5 | 10 | Legendary (16) | Very Long | concentrate
 
-**Effect** <br/> <em>break up a large area of earth</em> 
+**Effect** <br/> The ground groans and bucks beneath you, stone splitting as the earth throws off everything standing upon it. On a success, you shake the earth in medium range of the target location for up to a short duration while you concentrate. The ground in the area becomes difficult terrain of broken rubble. When the quake begins and at the start of each of your turns while it lasts, compare your casting result to the Parry of each creature on the ground in the area. Each creature whose Parry you meet or beat is knocked prone and takes 8 damage (ignore AV) from falling debris.<br/><strong>Fissures.</strong> When the quake begins, up to three fissures tear open at locations of your choice within the area, but never beneath a structure. Each is a short distance wide and up to a medium distance deep. A creature standing where a fissure opens must roll Agility + Athletics vs. your Resist. On a failure, they drop in and take falling damage for the fissure's depth. On a success, they scramble to the nearest edge and stay on solid ground. Climbing out of a fissure takes an Action and a Strength + Athletics roll, and its rubble walls are difficult terrain.<br/><strong>Structures.</strong> Freestanding structures and unattended stonework in the area take heavy damage when the quake begins and at the start of each of your turns, and unsound ones collapse. A creature beneath or beside a collapsing structure takes falling damage for the structure's height and is knocked prone. 
 
 ### Lightning Storm
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 4 | 8 |  |  | -
+ 5 | 10 | Legendary (16) | Very Long | concentrate
 
-**Effect** <br/> <em>repeated lightning bolts hitting multiple targets</em>
+**Effect** <br/> Black thunderheads boil across the whole sky, and at your command the heavens answer in a barrage of searing white spears. On a success, you raise a raging storm within range for up to a short duration while you concentrate. When you cast it and at the start of each of your turns while it lasts, six bolts of lightning crash down at points of your choice within range, no two in the same area. Each bolt strikes every creature in close range of its point. Compare your casting result to the Dodge of each struck creature.<br/><strong>Weak.</strong> Deal +6 lightning damage to each struck creature.<br/><strong>Strong.</strong> Deal +12 lightning damage to each struck creature and they are briefly dazed.<br/><strong>Critical.</strong> Deal +18 lightning damage to each struck creature and they are dazed for a short duration.

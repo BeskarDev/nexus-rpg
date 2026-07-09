@@ -49,7 +49,7 @@ Tier 3 creatures represent meaningful threats. They include more powerful undead
 **Abilities:**
 
 - **Knockback (Passive).** On a strong hit or critical hit from this creature's attacks, all targets have to roll Strength/Agility + Athletics vs. TN 9. On a failure, they are pushed close and also knocked prone.
-- **Ear-shattering Roar (Elite Trigger).** When this creature loses its first life pool, it immediately lets loose an ear-shattering roar. Every enemy within short distance has to roll Spirit + Fortitude vs. TN 9. If they fail, they take 6 sonic damage (ignoring AV) and are frightened of this creature. They can re-roll against their fear at the start of their turns.
+- **Ear-shattering Roar (Elite Trigger).** When this creature loses its first life pool, it immediately lets loose an ear-shattering roar. Every enemy within short distance has to roll Spirit + Fortitude vs. TN 9. If they fail, they take 6 sonic damage (ignore AV) and are frightened of this creature. They can re-roll against their fear at the start of their turns.
 
 ---
 
@@ -148,7 +148,7 @@ Tier 3 creatures represent meaningful threats. They include more powerful undead
 **Abilities:**
 
 - **Ethereal Form (Passive).** This creature is immune to bleeding, poison damage, being poisoned, being grappled, restrained, stunned, or falling unconscious.
-- **Flame Body (Passive).** This creature is immune to fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 6 fire damage (ignoring AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignoring AV) each turn doing so.
+- **Flame Body (Passive).** This creature is immune to fire damage and burning. This creature illuminates the area in short distance around it in bright light. If this creature is hit by an attack at melee range, the attacker suffers 6 fire damage (ignore AV). If this creature comes into contact with a large amount of water, it takes 5 damage (ignore AV) each turn doing so.
 
 ---
 

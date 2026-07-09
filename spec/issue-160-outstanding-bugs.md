@@ -616,7 +616,7 @@ sidebar_position: 4
 
 | Name | Description |
 | --- | --- |
-| bleeding (X) | When you take any amount of damage, also take X damage (ignoring AV)...
+| bleeding (X) | When you take any amount of damage, also take X damage (ignore AV)...
 ```
 
 **Expected State** (From main branch):

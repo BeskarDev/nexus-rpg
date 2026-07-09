@@ -29,7 +29,7 @@
 	{
 		"id": "shattering",
 		"name": "Shattering",
-		"description": "On a hit, the projectile explodes into a loud bang, dealing 4/6/8 blast damage (ignoring AV) to the target and each other creature within melee range of them. On a strong or critical hit, the target is also knocked prone.",
+		"description": "On a hit, the projectile explodes into a loud bang, dealing 4/6/8 blast damage (ignore AV) to the target and each other creature within melee range of them. On a strong or critical hit, the target is also knocked prone.",
 		"qualityTiers": [4, 5, 6],
 		"type": "prefix",
 		"applicableCategories": ["ammo"],
@@ -74,7 +74,7 @@
 	{
 		"id": "defiled",
 		"name": "Defiled",
-		"description": "This weapon is tainted with dark energy, causing nearby plants to slowly wither and exuding a faint aura of malevolence. You can use your Quick Action on your turn to amplify this corruption for a short duration. While amplified, the weapon turns bright light to dim light in close range and deals 2/4/6 necrotic damage (ignoring AV) on a hit.",
+		"description": "This weapon is tainted with dark energy, causing nearby plants to slowly wither and exuding a faint aura of malevolence. You can use your Quick Action on your turn to amplify this corruption for a short duration. While amplified, the weapon turns bright light to dim light in close range and deals 2/4/6 necrotic damage (ignore AV) on a hit.",
 		"qualityTiers": [4, 5, 6],
 		"type": "prefix",
 		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
@@ -83,7 +83,7 @@
 	{
 		"id": "flaming",
 		"name": "Flaming",
-		"description": "While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration. While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignoring AV) on a hit.",
+		"description": "While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration. While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignore AV) on a hit.",
 		"qualityTiers": [4, 5, 6],
 		"type": "prefix",
 		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
@@ -128,7 +128,7 @@
 	{
 		"id": "sacred",
 		"name": "Sacred",
-		"description": "This weapon is blessed with divine power, emanating a gentle warmth and providing comfort to the faithful. You can use your Quick Action on your turn to channel greater divine energy through it for a short duration. While channeling, the weapon radiates bright light in melee range, dim light in close range, and deals 2/4/6 radiant damage (ignoring AV) on a hit.",
+		"description": "This weapon is blessed with divine power, emanating a gentle warmth and providing comfort to the faithful. You can use your Quick Action on your turn to channel greater divine energy through it for a short duration. While channeling, the weapon radiates bright light in melee range, dim light in close range, and deals 2/4/6 radiant damage (ignore AV) on a hit.",
 		"qualityTiers": [4, 5, 6],
 		"type": "prefix",
 		"applicableCategories": ["one-handed-weapon", "two-handed-weapon"],
@@ -218,7 +218,7 @@
 	{
 		"id": "anchoring",
 		"name": "Anchoring",
-		"description": "While wearing this item, when you would be pushed or knocked prone, you can ignore these effects. If it was a creature in melee range that attempted to push or knock you prone, they also take 2/4/6 damage (ignoring AV). You can use this ability once/twice/thrice per day.",
+		"description": "While wearing this item, when you would be pushed or knocked prone, you can ignore these effects. If it was a creature in melee range that attempted to push or knock you prone, they also take 2/4/6 damage (ignore AV). You can use this ability once/twice/thrice per day.",
 		"qualityTiers": [4, 5, 6],
 		"type": "prefix",
 		"applicableCategories": ["light-armor", "heavy-armor", "shield"],

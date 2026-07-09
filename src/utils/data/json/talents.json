@@ -227,7 +227,7 @@
     {
         "name": "Mace Mastery",
         "skill requirement": "Fighting",
-        "description": "(<strong>Rank 1)</strong> When you attack with a mace and don\u2018t blunder (even on a normal failure), you always at least deal damage equal to your weapon damage (ignoring AV) to the target. This applies even if the target\u2018s AV or a resistance would reduce the damage to a lower value. The only exception is the enemy being fully immune to your attack.<br/><br/><strong>(Rank 2)</strong> On a strong or critical hit with a mace, your target is briefly dazed.<br/><br/><strong>(Rank 3)</strong> On a hit with a mace, you can use your Quick Action to ignore the target\u2018s AV completely."
+        "description": "(<strong>Rank 1)</strong> When you attack with a mace and don\u2018t blunder (even on a normal failure), you always at least deal damage equal to your weapon damage (ignore AV) to the target. This applies even if the target\u2018s AV or a resistance would reduce the damage to a lower value. The only exception is the enemy being fully immune to your attack.<br/><br/><strong>(Rank 2)</strong> On a strong or critical hit with a mace, your target is briefly dazed.<br/><br/><strong>(Rank 3)</strong> On a hit with a mace, you can use your Quick Action to ignore the target\u2018s AV completely."
     },
     {
         "name": "Martial Artist",

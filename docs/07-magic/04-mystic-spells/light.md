@@ -96,9 +96,9 @@ sidebar_position: 1
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 |  |  | -
+ 2 | 4 | Hard (10) | Self | -
 
-**Effect** <br/> you sense the auras of daimon and other spiritual creatures around you 
+**Effect** <br/> You open your inner eye to the sacred and the profane, and the presence of the otherworldly burns clear before you. You sense the presence of Spirit and Undead creatures within long range for a medium duration, even through obstacles, and whether any ground within range has been consecrated or desecrated. While the spell lasts, you perceive such creatures even while they are ethereal, invisible, or otherwise hidden, and you can target them normally.<br/><strong>Weak.</strong> You learn the number of such creatures and the rough direction of each.<br/><strong>Strong.</strong> You also learn each one's precise location and its kind, such as a celestial, an infernal spirit, or a restless ghost.<br/><strong>Critical.</strong> As Strong, and for each you sense its disposition toward you, one of bound, hostile, or at rest, and a rough sense of its current purpose or command, whichever the GM finds fitting, such as guarding, hunting, waiting, or serving a master's order. If nothing concrete fits, you catch only a wordless impression of its mood. 
 
 ### Sun Sphere
 

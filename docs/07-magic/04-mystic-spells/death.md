@@ -34,7 +34,7 @@ sidebar_position: 4
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You project a scene of the target‘s final moments before death into their mind, in which they die in agony at the hands of yourself and your allies.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignoring AV) and the target is briefly frightened.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You project a scene of the target‘s final moments before death into their mind, in which they die in agony at the hands of yourself and your allies.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignore AV) and the target is briefly frightened.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignore AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Spared from Death
 
@@ -114,9 +114,9 @@ sidebar_position: 4
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You draw a mystical circle filled with symbols of mortality, creating a zone where death is inevitable. On a success, you create the circle in close range of the target location. While the circle remains, any creature that starts their turn within it takes +4 necrotic damage (ignoring AV) and can’t regain HP. Any undead creature takes +4 radiant damage (ignoring AV) instead, as their souls long to return to the grave.<br/>The circle lasts for a short duration. 
+**Effect** <br/> You draw a mystical circle filled with symbols of mortality, creating a zone where death is inevitable. On a success, you create the circle in close range of the target location. While the circle remains, any creature that starts their turn within it takes +4 necrotic damage (ignore AV) and can’t regain HP. Any undead creature takes +4 radiant damage (ignore AV) instead, as their souls long to return to the grave.<br/>The circle lasts for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Each creature takes +6 necrotic or radiant damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Each creature takes +6 necrotic or radiant damage (ignore AV) instead.
 
 >
 
@@ -138,7 +138,7 @@ sidebar_position: 4
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | -
 
-**Effect** <br/> You show the target a vision of their own death, paralyzing them with the certainty of mortality. The target must be of a tier equal to or lower than your Mysticism.<br/><strong>Weak.</strong> The target takes +4 psychic damage (ignoring AV) and is briefly stunned.<br/><strong>Strong.</strong> The target takes +8 psychic damage (ignoring AV) and is stunned for a short duration.<br/><strong>Critical.</strong> The target takes +12 psychic damage (ignoring AV) and is paralyzed for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>If they take damage from any source, they can immediately make the roll with +1 boon.<br/>You can only cast this spell once against any creature per scene. 
+**Effect** <br/> You show the target a vision of their own death, paralyzing them with the certainty of mortality. The target must be of a tier equal to or lower than your Mysticism.<br/><strong>Weak.</strong> The target takes +4 psychic damage (ignore AV) and is briefly stunned.<br/><strong>Strong.</strong> The target takes +8 psychic damage (ignore AV) and is stunned for a short duration.<br/><strong>Critical.</strong> The target takes +12 psychic damage (ignore AV) and is paralyzed for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>If they take damage from any source, they can immediately make the roll with +1 boon.<br/>You can only cast this spell once against any creature per scene. 
 
 ### Grave’s Bloom
 

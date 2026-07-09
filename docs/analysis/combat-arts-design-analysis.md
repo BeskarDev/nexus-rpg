@@ -799,7 +799,7 @@ Your feint is so masterful that your opponent loses track of your true position.
 **Current:** You can roll two additional attacks with a non-heavy ranged weapon. You suffer +1 bane and +2 banes on the first and second additional attack respectively.
 
 **Proposed:** *You can only learn this Combat Art if you already know Barrage. This Combat Art replaces Barrage.*
-You unleash a devastating barrage that overwhelms your target's defenses. You can roll two additional attacks with a non-heavy ranged weapon, suffering +1 bane on the first additional attack. On the second additional attack, instead of rolling, automatically deal damage equal to your weapon damage (ignoring AV) to the same or a different target within range.
+You unleash a devastating barrage that overwhelms your target's defenses. You can roll two additional attacks with a non-heavy ranged weapon, suffering +1 bane on the first additional attack. On the second additional attack, instead of rolling, automatically deal damage equal to your weapon damage (ignore AV) to the same or a different target within range.
 
 **Rationale:** The current escalating bane (+2 banes on the third shot) makes it nearly worthless. The auto-hit-for-weapon-damage on the third attack guarantees value and creates a "rain of arrows" feel where sheer volume overwhelms defense.
 

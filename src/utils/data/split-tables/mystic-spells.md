@@ -192,7 +192,7 @@
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignoring AV) and the target is briefly confused.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignoring AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You summon ghostly whispers into the mind of the target, seeding doubt and confusing them.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignore AV) and the target is briefly confused.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignore AV) and the target is confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Cloak of Night
 
@@ -220,9 +220,9 @@
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> You conjure vengeful shadows that follow and torment a target with chilling whispers and ghostly touches. On a success, imaginary spectral shadows begin haunting the target. The target takes +2 psychic damage (ignoring AV) at the start of each of their turns. The shadows whisper disturbing thoughts, causing the target to suffer +1 bane on Spirit and Mind rolls.<br/>The haunting lasts for a short duration. The target can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You conjure vengeful shadows that follow and torment a target with chilling whispers and ghostly touches. On a success, imaginary spectral shadows begin haunting the target. The target takes +2 psychic damage (ignore AV) at the start of each of their turns. The shadows whisper disturbing thoughts, causing the target to suffer +1 bane on Spirit and Mind rolls.<br/>The haunting lasts for a short duration. The target can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> The target takes +4 psychic damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>The target takes +6 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> The target takes +4 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>The target takes +6 psychic damage (ignore AV) instead.
 
 >
 
@@ -268,9 +268,9 @@
 ---|---|---|---|---
  2 | 4 | Hard (10) | Self | concentrate
 
-**Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range. On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you for the rest of their turn and take +4 psychic damage (ignoring AV). A creature can only be affected by this spell once per turn. Creatures that succeed on their test are immune to this spell's fear effect until the spell ends. 
+**Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range. On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you for the rest of their turn and take +4 psychic damage (ignore AV). A creature can only be affected by this spell once per turn. Creatures that succeed on their test are immune to this spell's fear effect until the spell ends. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignore AV) instead.
 
 >
 
@@ -312,9 +312,9 @@
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | -
 
-**Effect** <br/> You fill an area with frightening shadows that take the shape of each creature's worst fears. Choose a close area within range that contains dim light or darkness. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target is briefly frightened and takes +2 psychic damage (ignoring AV).<br/><strong>Strong.</strong> Each target is frightened for a short duration and takes +4 psychic damage (ignoring AV).<br/><strong>Critical.</strong> Each target is frightened for a short duration, briefly stunned, and takes +6 psychic damage (ignoring AV).<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You fill an area with frightening shadows that take the shape of each creature's worst fears. Choose a close area within range that contains dim light or darkness. Target all hostile creatures within the area.<br/><strong>Weak.</strong> Each target is briefly frightened and takes +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Each target is frightened for a short duration and takes +4 psychic damage (ignore AV).<br/><strong>Critical.</strong> Each target is frightened for a short duration, briefly stunned, and takes +6 psychic damage (ignore AV).<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Each target takes +4/+8/+12 psychic damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Each target takes +4/+8/+12 psychic damage (ignore AV) instead.
 
 >
 
@@ -336,7 +336,7 @@
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Medium | concentrate
 
-**Effect** <br/> You trap targets in a twilight realm of their own fears and doubts, where they manifest monsters of their own mind. Choose a close area within range. Target all hostile creatures within the area.<br/>On a success, the realm persists for a short duration. Use your roll’s result vs. their Resist.<br/><strong>Weak. </strong>Each target takes +4 psychic damage (ignoring AV).<br/><strong>Strong. </strong>Each target takes +8 psychic damage (ignoring AV) and is briefly staggered.<br/><strong>Critical. </strong>Each target takes +12 psychic damage (ignoring AV) and is briefly stunned.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Resist against all hostile creatures within the nightmare realm. 
+**Effect** <br/> You trap targets in a twilight realm of their own fears and doubts, where they manifest monsters of their own mind. Choose a close area within range. Target all hostile creatures within the area.<br/>On a success, the realm persists for a short duration. Use your roll’s result vs. their Resist.<br/><strong>Weak. </strong>Each target takes +4 psychic damage (ignore AV).<br/><strong>Strong. </strong>Each target takes +8 psychic damage (ignore AV) and is briefly staggered.<br/><strong>Critical. </strong>Each target takes +12 psychic damage (ignore AV) and is briefly stunned.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Resist against all hostile creatures within the nightmare realm. 
 
 ### Shadow Clone
 
@@ -548,7 +548,7 @@
 ---|---|---|---|---
  0 | 0 | vs. Resist | Medium | -
 
-**Effect** <br/> You project a scene of the target‘s final moments before death into their mind, in which they die in agony at the hands of yourself and your allies.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignoring AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignoring AV) and the target is briefly frightened.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignoring AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
+**Effect** <br/> You project a scene of the target‘s final moments before death into their mind, in which they die in agony at the hands of yourself and your allies.<br/><strong>Weak. </strong>The target suffers +0 psychic damage (ignore AV).<br/><strong>Strong.</strong> The target suffers +2 psychic damage (ignore AV) and the target is briefly frightened.<br/><strong>Critical.</strong> The target suffers +4 psychic damage (ignore AV) and the target is frightened for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 ### Spared from Death
 
@@ -628,9 +628,9 @@
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You draw a mystical circle filled with symbols of mortality, creating a zone where death is inevitable. On a success, you create the circle in close range of the target location. While the circle remains, any creature that starts their turn within it takes +4 necrotic damage (ignoring AV) and can’t regain HP. Any undead creature takes +4 radiant damage (ignoring AV) instead, as their souls long to return to the grave.<br/>The circle lasts for a short duration. 
+**Effect** <br/> You draw a mystical circle filled with symbols of mortality, creating a zone where death is inevitable. On a success, you create the circle in close range of the target location. While the circle remains, any creature that starts their turn within it takes +4 necrotic damage (ignore AV) and can’t regain HP. Any undead creature takes +4 radiant damage (ignore AV) instead, as their souls long to return to the grave.<br/>The circle lasts for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Each creature takes +6 necrotic or radiant damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Each creature takes +6 necrotic or radiant damage (ignore AV) instead.
 
 >
 
@@ -652,7 +652,7 @@
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | -
 
-**Effect** <br/> You show the target a vision of their own death, paralyzing them with the certainty of mortality. The target must be of a tier equal to or lower than your Mysticism.<br/><strong>Weak.</strong> The target takes +4 psychic damage (ignoring AV) and is briefly stunned.<br/><strong>Strong.</strong> The target takes +8 psychic damage (ignoring AV) and is stunned for a short duration.<br/><strong>Critical.</strong> The target takes +12 psychic damage (ignoring AV) and is paralyzed for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>If they take damage from any source, they can immediately make the roll with +1 boon.<br/>You can only cast this spell once against any creature per scene. 
+**Effect** <br/> You show the target a vision of their own death, paralyzing them with the certainty of mortality. The target must be of a tier equal to or lower than your Mysticism.<br/><strong>Weak.</strong> The target takes +4 psychic damage (ignore AV) and is briefly stunned.<br/><strong>Strong.</strong> The target takes +8 psychic damage (ignore AV) and is stunned for a short duration.<br/><strong>Critical.</strong> The target takes +12 psychic damage (ignore AV) and is paralyzed for a short duration. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.<br/>If they take damage from any source, they can immediately make the roll with +1 boon.<br/>You can only cast this spell once against any creature per scene. 
 
 ### Grave’s Bloom
 
@@ -670,7 +670,7 @@
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Medium | -
 
-**Effect** <br/> You conjure a short spray of acid, burning through the target’s surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignoring 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignoring 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignoring 1/2 AV). 
+**Effect** <br/> You conjure a short spray of acid, burning through the target’s surface.<br/><strong>Weak.</strong> Deal +2 acid damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 acid damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +6 acid damage (ignore 1/2 AV). 
 
 ### Bestial Adaptation
 
@@ -806,9 +806,9 @@
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | concentrate
 
-**Effect** <br/> You let a metallic object rapidly increase in temperature, harming anyone touching it.<br/>You must be not wearing any armor or weapon primarily made from a metal to cast this spell. Choose any metallic object or creature of up to medium Size.<br/>On a success, the target becomes burning hot. Any creature holding or wearing the object suffers +2 fire damage (ignoring AV) at the start of each turn they continue to do so.<br/>If the target is a weapon, it imposes +1 bane on attacks with it.<br/>If the target is a piece of armor or a helmet, it‘s AV bonus is halved.<br/>This spell lasts for a short duration. 
+**Effect** <br/> You let a metallic object rapidly increase in temperature, harming anyone touching it.<br/>You must be not wearing any armor or weapon primarily made from a metal to cast this spell. Choose any metallic object or creature of up to medium Size.<br/>On a success, the target becomes burning hot. Any creature holding or wearing the object suffers +2 fire damage (ignore AV) at the start of each turn they continue to do so.<br/>If the target is a weapon, it imposes +1 bane on attacks with it.<br/>If the target is a piece of armor or a helmet, it‘s AV bonus is halved.<br/>This spell lasts for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- You can also target objects with up to large Size.<br/>- The object inflicts +4 fire damage (ignoring AV) each turn instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- You can also target objects with up to huge Size.<br/>- The object inflicts +6 fire damage (ignoring AV) each turn instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- You can also target objects with up to large Size.<br/>- The object inflicts +4 fire damage (ignore AV) each turn instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- You can also target objects with up to huge Size.<br/>- The object inflicts +6 fire damage (ignore AV) each turn instead.
 
 >
 
@@ -906,9 +906,9 @@
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Short | blast (cone)
 
-**Effect** <br/> You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +4 poison damage (ignoring 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +8 poison damage (ignoring 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +12 poison damage (ignoring 1/2 AV) to each target and they are poisoned for a short duration. 
+**Effect** <br/> You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +4 poison damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +8 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +12 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 poison damage (ignoring 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 poison damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium.
 
 >
 
@@ -946,7 +946,7 @@
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Long | -
 
-**Effect** <br/> You cause a massive stone spike to erupt from the ground beneath your target.<br/><strong>Weak.</strong> Deal +6 damage (ignoring 1/2 AV) to the target.<br/><strong>Strong.</strong> Deal +12 damage (ignoring 1/2 AV) to the target and they are pushed up to a short distance upward or away from you.<br/><strong>Critical.</strong> Deal +18 damage (ignoring 1/2 AV) to the target and they are pushed up to a short distance upward or away from you. 
+**Effect** <br/> You cause a massive stone spike to erupt from the ground beneath your target.<br/><strong>Weak.</strong> Deal +6 damage (ignore 1/2 AV) to the target.<br/><strong>Strong.</strong> Deal +12 damage (ignore 1/2 AV) to the target and they are pushed up to a short distance upward or away from you.<br/><strong>Critical.</strong> Deal +18 damage (ignore 1/2 AV) to the target and they are pushed up to a short distance upward or away from you. 
 
 ### Insect Swarm
 
@@ -954,7 +954,7 @@
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignoring 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration. 
+**Effect** <br/> You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignore 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration. 
 
 ### Life from Stone
 
@@ -1040,7 +1040,7 @@
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | -
 
-**Effect** <br/> You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage (ignoring 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignoring 1/2 AV) against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage (ignoring 1/2 AV) against each target and they are briefly dazed and deafened. 
+**Effect** <br/> You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target all creatures in short range of the target location instead.
 
@@ -1100,9 +1100,9 @@
 ---|---|---|---|---
  1 | 2 | Medium (8) | Short | enchant (body),  singular
 
-**Effect** <br/> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects:<br/>- You gain resistance against blast, frost, and lightning damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignoring AV). 
+**Effect** <br/> You weave a protective coat of elemental energies around a creature.<br/>On a success, the creature gains the following effects:<br/>- You gain resistance against blast, frost, and lightning damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +0 lightning damage (ignore AV). 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignoring AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignoring AV) instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignore AV) instead.
 
 >
 
@@ -1112,9 +1112,9 @@
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | quick
 
-**Effect** <br/> You quickly conjure a personal barrier of swirling air. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you can defend with your Resist instead of Parry or Dodge until your next turn. When a melee attack against you fails, the attacker takes +0 blast damage (ignoring AV). If a ranged attack against you fails, you can divert the attack towards another creature in close range. If the ranged attack blunders, you can even divert it back to the attacker. When diverting an attack to another creature, it automatically hits with a weak success. 
+**Effect** <br/> You quickly conjure a personal barrier of swirling air. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you can defend with your Resist instead of Parry or Dodge until your next turn. When a melee attack against you fails, the attacker takes +0 blast damage (ignore AV). If a ranged attack against you fails, you can divert the attack towards another creature in close range. If the ranged attack blunders, you can even divert it back to the attacker. When diverting an attack to another creature, it automatically hits with a weak success. 
 
-> **Heightened** <br/> <strong>(Rank 2) </strong>Failed melee attacks inflict +2 blast damage (ignoring AV) instead. Diverted ranged attacks deal +2 damage.<br/><strong>(Rank 3) </strong>Failed melee attacks inflict +4 blast damage (ignoring AV) instead. Diverted ranged attacks deal +4 damage.
+> **Heightened** <br/> <strong>(Rank 2) </strong>Failed melee attacks inflict +2 blast damage (ignore AV) instead. Diverted ranged attacks deal +2 damage.<br/><strong>(Rank 3) </strong>Failed melee attacks inflict +4 blast damage (ignore AV) instead. Diverted ranged attacks deal +4 damage.
 
 >
 
@@ -1220,7 +1220,7 @@
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | -
 
-**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignoring 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignoring 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignoring 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
+**Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Increase the spell‘s range to medium.
 
@@ -1296,7 +1296,7 @@
 ---|---|---|---|---
  3 | 6 | vs. Resist | Long | -
 
-**Effect** <br/> You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +6 blast damage (ignoring 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignoring 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +18 blast damage (ignoring 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
+**Effect** <br/> You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
 ### Wind Wall
 
@@ -1312,7 +1312,7 @@
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Self | concentrate,  enchant (body)
 
-**Effect** <br/> You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain 10 temporary HP.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignoring AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in this form for a longer time. 
+**Effect** <br/> You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain 10 temporary HP.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignore AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in this form for a longer time. 
 
 ### Control Water
 
@@ -1320,7 +1320,7 @@
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Extreme | concentrate
 
-**Effect** <br/> You control a large amount of water and shape it to your will. Choose an area of water covering a long distance in all directions from the target location within range. In addition, you can choose one of the following options to manipulate the water in your affected area.<br/><strong>Flood. </strong>You rise the standing water level in your spell’s area by up to a close distance up (which then counts as a large body of water on your next turn). The water levels stay elevated for a medium duration or until you choose another option for this spell.<br/>If using this option on a large body of water, you instead cause the water in your spell’s area to cause a massive wave that travels from one end of the area to the other and then crashes violently. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the wave and takes +12 damage (ignoring 1/2 AV). Aquatic creatures take no damage but are still forced to move with the wave. The flood repeats during each of your turns for a medium duration or until you choose another option for this spell.<br/><strong>Split.</strong> Choose any line within the waters area from end to end where you part the water and create a trench with a width covering a close distance. The sides of the trench for a wall of water. The trench remains for a medium duration or until you choose another option for this spell. When the trench closes, the waters snap back violently. Any creature within the closing trench takes +16 damage (ignoring 1/2 AV), is briefly staggered, and remains underwater where the trench used to be.<br/><strong>Redirect. </strong>You force the water in the spell’s area to flow in any direction of your choosing. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the water’s flow until reaching the end of the spell’s area. The redirected flow remains for a medium duration or until you choose another option for this spell.<br/>Whirlpool. TODO<br/>On each of your following turns, you can use your Action to repeat the roll for the same or a different option. If you fail the roll, the spell ends. 
+**Effect** <br/> You control a large amount of water and shape it to your will. Choose an area of water covering a long distance in all directions from the target location within range. In addition, you can choose one of the following options to manipulate the water in your affected area.<br/><strong>Flood. </strong>You rise the standing water level in your spell’s area by up to a close distance up (which then counts as a large body of water on your next turn). The water levels stay elevated for a medium duration or until you choose another option for this spell.<br/>If using this option on a large body of water, you instead cause the water in your spell’s area to cause a massive wave that travels from one end of the area to the other and then crashes violently. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the wave and takes +12 damage (ignore 1/2 AV). Aquatic creatures take no damage but are still forced to move with the wave. The flood repeats during each of your turns for a medium duration or until you choose another option for this spell.<br/><strong>Split.</strong> Choose any line within the waters area from end to end where you part the water and create a trench with a width covering a close distance. The sides of the trench for a wall of water. The trench remains for a medium duration or until you choose another option for this spell. When the trench closes, the waters snap back violently. Any creature within the closing trench takes +16 damage (ignore 1/2 AV), is briefly staggered, and remains underwater where the trench used to be.<br/><strong>Redirect. </strong>You force the water in the spell’s area to flow in any direction of your choosing. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the water’s flow until reaching the end of the spell’s area. The redirected flow remains for a medium duration or until you choose another option for this spell.<br/>Whirlpool. TODO<br/>On each of your following turns, you can use your Action to repeat the roll for the same or a different option. If you fail the roll, the spell ends. 
 
 ### Control Winds
 
@@ -1370,7 +1370,7 @@
 ---|---|---|---|---
  0 | 0 | Special | Short | -
 
-**Effect** <br/> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br/><strong>Weak.</strong> Restore +2 HP to an ally or deal +0 psychic damage (ignoring AV) against an enemy.<br/><strong>Strong.</strong> Restore +4 HP to an ally or deal +2 psychic damage (ignoring AV) against an enemy and they are briefly dazed.<br/><strong>Critical. </strong>Restore +6 HP to an ally or deal +4 psychic damage (ignoring AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
+**Effect** <br/> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br/><strong>Weak.</strong> Restore +2 HP to an ally or deal +0 psychic damage (ignore AV) against an enemy.<br/><strong>Strong.</strong> Restore +4 HP to an ally or deal +2 psychic damage (ignore AV) against an enemy and they are briefly dazed.<br/><strong>Critical. </strong>Restore +6 HP to an ally or deal +4 psychic damage (ignore AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
 
 ### Blessing of Peace
 
@@ -1414,7 +1414,7 @@
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | quick
 
-**Effect** <br/> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignoring AV). 
+**Effect** <br/> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignore AV). 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Add your Mysticism to the damage the attacker takes.<br/><strong>(Rank 3)</strong> Add 2 x your Mysticism to the damage the attacker takes.
 
@@ -1426,7 +1426,7 @@
 ---|---|---|---|---
  2 | 4 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignoring AV) against every target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignoring AV) against every target and they are pushed close outside of the dome and fall prone.<br/>Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can’t enter.<br/>Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration. 
+**Effect** <br/> You create a dome of translucent energy around the target location, emitting calm and peacefulness. The dome surrounds an area in melee range of the target location. You can choose which creatures are tolerated within the dome. This spell targets any creature not tolerated within the dome.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against every target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against every target and they are pushed close outside of the dome.<br/><strong>Critical.</strong> Deal +6 psychic damage (ignore AV) against every target and they are pushed close outside of the dome and fall prone.<br/>Any creature not tolerated in the dome trying to enter it from the outside must succeed on a Spirit + Fortitude roll vs. your Resist, otherwise they can’t enter.<br/>Attacks targeting any creature inside the dome suffer +1 bane. The dome lasts for a short duration. 
 
 ### Slow
 
@@ -1466,7 +1466,7 @@
 ---|---|---|---|---
  3 | 6 | vs. Resist | Long | concentrate
 
-**Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignoring AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect. 
+**Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignore AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect. 
 
 ## War
 
