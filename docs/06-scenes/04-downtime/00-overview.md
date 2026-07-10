@@ -31,7 +31,6 @@ Each type of civilized settlement falls into one of the following categories, wh
 
 > Note that there will always be exceptions to these Settlement Ranks. For example, a small outpost in the borderlands being frequently passed by shrewd merchants collecting rare artifacts will have a higher Settlement Rank for obtaining and selling magical items.
 Anything with a Quality above 4 will also only be available in unique settlements outside of mortal realms. You might for instance have to find a village of forest spirits on the border of the mortal realm and those beyond to find high Quality enchanted items.
->
 
 ## Available Activities
 

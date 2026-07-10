@@ -62,7 +62,13 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target suffers a weakness to either frost or psychic damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to both frost and psychic damage for the spell‘s duration.
 
->
+### Dusk Veil
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> You draw the halflight around you like a cloak, and for a heartbeat you are more shadow than flesh. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If you are in dim light or darkness, you can immediately move a close distance without provoking Opportunity Attacks after the attack resolves, melting into the nearest shadow.
 
 ### Haunting Shadows
 
@@ -74,8 +80,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target takes +4 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>The target takes +6 psychic damage (ignore AV) instead.
 
->
-
 ### Lunar Weapon
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -85,8 +89,6 @@ sidebar_position: 2
 **Effect** <br/> Imbue a weapon with the power of the night. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, the weapon emits dim light in close range of it and deals +2 frost damage. On a strong or critical hit, the attack‘s target is briefly slowed. Each creature can suffer the condition from this spell only once per scene. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 frost damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 frost damage instead.
-
->
 
 ### Moon Sphere
 
@@ -114,8 +116,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The sleep lasts for a medium duration instead.<br/><strong>(Rank 4)</strong> The sleep lasts for a medium duration and the dream-mist covers a short area instead.<br/><strong>(Rank 5)</strong> The sleep lasts for a long duration and the dream-mist covers a medium area instead.
 
->
-
 ### Augury
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -133,8 +133,6 @@ sidebar_position: 2
 **Effect** <br/> You emanate an aura of primal terror that affects all hostile creatures in close range. On a success, you create an aura that moves with you for a short duration. Any hostile creature that starts their turn within close range of you must roll Spirit + Mysticism vs. your Resist. On a failure, they become frightened of you for the rest of their turn and take +4 psychic damage (ignore AV). A creature can only be affected by this spell once per turn. Creatures that succeed on their test are immune to this spell's fear effect until the spell ends. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignore AV) instead.
-
->
 
 ### Everlasting Night
 
@@ -154,8 +152,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12/+18 frost damage, and the additional damage is +8 instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 frost damage, and the additional damage is +10 instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 frost damage, and the additional damage is +12 instead.
 
->
-
 ### Moonbeam
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -166,8 +162,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The beam deals +8 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 4)</strong> The beam deals +10 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 5)</strong> The beam extends in close range of the target location instead, deals +12 frost damage, and shines dim light in short range of it.
 
->
-
 ### Shadow Mantle
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -177,8 +171,6 @@ sidebar_position: 2
 **Effect** <br/> You peel a creature's shadow up from the ground and drape it over their shoulders, where it clings like a second skin of night.<br/>On a success, choose one creature in range. While they are in dim light or darkness:<br/>- Attacks against them suffer +1 bane.<br/>- Their attacks against creatures that cannot see them deal +2 damage.<br/>The mantle lasts for a medium duration. If the wearer spends a full turn in bright light, it burns away and the spell ends. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Their attacks against creatures that cannot see them deal +4 damage instead.<br/><strong>(Rank 4)</strong> Their attacks against creatures that cannot see them deal +6 damage instead.<br/><strong>(Rank 5)</strong> Their attacks against creatures that cannot see them deal +8 damage instead.
-
->
 
 ### Shadow Step
 
@@ -208,8 +200,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Each target takes +4/+8/+12 psychic damage (ignore AV) instead.
 
->
-
 ### Twilight Bind
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -220,8 +210,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The spell lasts for a medium duration instead.
 
->
-
 ### Written in the Stars
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -231,8 +219,6 @@ sidebar_position: 2
 **Effect** <br/> You read the target's death in the night sky and pronounce it aloud, and for a moment everyone present can feel where the blow is fated to land.<br/>On a success, the target is marked (4) for a short duration. The attack that ends the mark has its SL increased by one step (max. critical success). 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The target is marked (6) instead.<br/><strong>(Rank 4)</strong> The target is marked (8) instead.<br/><strong>(Rank 5)</strong> The target is marked (10) instead.
-
->
 
 ### Divination
 
@@ -259,8 +245,6 @@ sidebar_position: 2
 **Effect** <br/> Your body unravels into a slow coil of shadowy vapor, cool and near-formless. On a success, you take gaseous form for a medium duration while you concentrate. While in this form you gain the following.<br/>- You can slip through any gap or crack that is not airtight, and you hover, moving up to a close distance in any direction each turn.<br/>- You have resistance to physical damage and you cannot be grappled, restrained, or knocked prone.<br/>- You cannot attack, cast spells, or manipulate objects, and you cannot enter water or other liquid.<br/>- Strong wind pushes you as it would smoke, and you are pushed a short distance by any effect that would move you.<br/>You can end the spell at will, returning to your normal shape in an open space you occupy. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> You can instead target one willing creature you touch, or the form lasts for a long duration.<br/><strong>(Rank 5)</strong> You can target up to three willing creatures you touch, and the form lasts for a long duration.
-
->
 
 ### Nightmare Realm
 

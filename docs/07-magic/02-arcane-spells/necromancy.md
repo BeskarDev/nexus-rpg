@@ -54,8 +54,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You can target up to large corpses and the undead creature has the statistics of a tier 2 creature instead. Also, reduce your HP by 6 instead.<br/><strong>(Rank 3)</strong> You can target up to huge corpses and the undead creature has the statistics of a tier 3 creature instead. Also, reduce your HP by 8 instead.
 
->
-
 ### Bone Armor
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -65,8 +63,6 @@ sidebar_position: 6
 **Effect** <br/> You harvest bone fragments from a corpse to create protective armor around yourself.<br/>You must be within touching distance of a corpse of medium or larger size with most of it’s larger bones intact.<br/>On a success, the bones transform into different armor parts that attach themselves to your body. While the bone armor holds, you gain +3 AV (armor bonus) and resistance against necrotic damage. After taking 10 or more damage from a single hit, spend 1 use for the bone armor. Once you spend all three uses of the bone armor, it shatters and the spell ends. The bone armor lasts for a long duration. You can only cast this spell once per corpse. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target gains +4 AV (armor bonus) and the bone armor only loses a use from 15 or more damage form a single hit instead.<br/><strong>(Rank 3)</strong> The target gains +5 AV (armor bonus) and the bone armor only loses a use from 20 or more damage form a single hit instead.
-
->
 
 ### Control Undead
 
@@ -78,8 +74,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target can be Tier 3 or lower instead.<br/><strong>(Rank 3)</strong> The target can be Tier 5 or lower instead.
 
->
-
 ### Death Bolt
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -89,8 +83,6 @@ sidebar_position: 6
 **Effect** <br/> You conjure a bolt of pure negative energy and hurl it against the target.<br/><strong>Weak.</strong> Deal +4 necrotic damage.<br/><strong>Strong.</strong> Deal +8 necrotic damage.<br/><strong>Critical.</strong> Deal +12 necrotic damage. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +6/+12/+18 necrotic damage instead.<br/><strong>(Rank 3)</strong> Deal +8/+16/+24 necrotic damage instead.
-
->
 
 ### Death Ward
 
@@ -110,8 +102,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 necrotic damage instead and the lasting damage increases to 3/6/9.<br/><strong>(Rank 3)</strong> Deal +5/+10/+15 necrotic damage instead and the lasting damage increases to 4/8/12.
 
->
-
 ### Necrotic Shield
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -121,8 +111,6 @@ sidebar_position: 6
 **Effect** <br/> You draw life energy from the environment around you, converting it into a protective barrier.<br/>On a success, deal 2 necrotic damage (ignore AV) to yourself and all creatures in close range. Any smaller plant life within range withers and dies as their life force is drained.<br/>The necrotic shield charges 6 HP + the total amount of HP drained.<br/>When you take damage, the necrotic shield absorbs it first. It has resistance to necrotic and weakness to radiant damage. The shield lasts for a short duration or until it’s charged HP are lost. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal 4 necrotic damage (ignore AV) instead. The necrotic shield charges 12 HP + the total amount of HP drained instead.<br/><strong>(Rank 3)</strong> Deal 6 necrotic damage (ignore AV) instead. The necrotic shield charges 18 HP + the total amount of HP drained instead.
-
->
 
 ### Ray of Lethargy
 
@@ -134,8 +122,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/+8/+12 damage instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 damage instead.
 
->
-
 ### Animate Horde
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -145,8 +131,6 @@ sidebar_position: 6
 **Effect** <br/> With an incantation of ancient power, you call forth a dark surge of necromantic energy that animates multiple corpses to rise as loyal undead servants under your command.<br/>This spell works the same way as the Animate Corpse spell, but you can target up to two corpses in range to animate as undead with tier 1 statistics instead. You must choose the same type of undead for all creatures animated by this spell.<br/>You also have to reduce your current and max. HP by 4 for each undead creature animated this way.<br/>You can only give the horde of undead the same commands, not different ones to singular creatures within the horde. In combat, they always act as a troop if their numbers are large enough (three or more).<br/>After forgoing a night’s rest, the entire horde remains under your control without requiring concentration on this spell. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You can animate up to three corpses instead.<br/><strong>(Rank 3)</strong> You can animate up to four corpses instead.
-
->
 
 ### Bone Shatter
 
@@ -158,8 +142,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12/+18 damage instead.
 
->
-
 ### Corpse Explosion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -169,8 +151,6 @@ sidebar_position: 6
 **Effect** <br/> You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +4 damage against each target.<br/><strong>Strong.</strong> Deal +8 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +12 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The explosion deals +5/+10/+15 damage to all targets instead.
-
->
 
 ### Death Mark
 
@@ -182,8 +162,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You can target up to two creatures in range with the spell instead.
 
->
-
 ### Inflict Curse
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -193,8 +171,6 @@ sidebar_position: 6
 **Effect** <br/> With a malevolent chant and a wave of your hand, you cast a powerful curse upon a target, subjecting them to a lingering maleficent influence.<br/>Choose one of their attributes (Strength, Agility, Spirit, or Mind).<br/>On a success, the target suffers the following effects:<br/>- Their attribute die for the chosen attribute is reduced by one step.<br/>- They suffer +1 bane on any attack rolls against you.<br/>- You gain +1 boon on attacks against the target.<br/>The curse lasts for a long duration. Lowering an Attribute die temporarily doesn't change any statistics derived from it.  
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You can reduce two different attributes by one step each, or reduce one attribute by two steps instead.
-
->
 
 ### Shroud of Blight
 
@@ -206,8 +182,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8/+12 necrotic damage and creatures entering the shroud take +8 necrotic damage instead.
 
->
-
 ### Soul Veil
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -217,8 +191,6 @@ sidebar_position: 6
 **Effect** <br/> You shroud your life force with an illusion of death, making yourself harder to detect and target.<br/>On a success, you gain the following benefits for a short duration:<br/>- You gain +1 boons on Stealth checks.<br/>- Creatures attempting to target you with a spell suffer +1 bane on their spellcasting roll.<br/>- Undead creatures treat you as one of their own and won't attack you unless you attack them first.<br/>- You appear as a corpse visually and to magical detection that reveals life force or living creatures. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You can choose any willing creatures in your melee range to also gain the benefits of this spell.
-
->
 
 ### Curse of Mortality
 
@@ -262,8 +234,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> You conjure six spectral warriors with 60 HP as a single unit instead. Each warrior hitting deals 5 necrotic damage (ignore AV).<br/><strong>(Rank 5)</strong> You conjure eight spectral warriors with 80 HP as a single unit instead. Each warrior hitting deals 6 necrotic damage (ignore AV).
 
->
-
 ### Wither
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -289,5 +259,3 @@ sidebar_position: 6
 **Effect** <br/> You level a finger at your target and speak the last word, and a pulse of killing negativity withers them from within.<br/><strong>Weak.</strong> Deal +10 necrotic damage.<br/><strong>Strong.</strong> Deal +20 necrotic damage.<br/><strong>Critical.</strong> Deal +30 necrotic damage.<br/>If this damage reduces the target to 0 HP, their corpse rises under your control at the start of your next turn as a zombie with the statistics of a tier 1 companion and the zombie undead companion trait (as <em>Animate Corpse</em>). The zombie obeys you for a short duration and then collapses into a lifeless corpse. You can have only one zombie from this spell at a time. 
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> Deal +12/+24/+36 instead.
-
->

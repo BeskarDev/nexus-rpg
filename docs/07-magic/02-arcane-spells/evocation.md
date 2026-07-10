@@ -38,19 +38,13 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>Deal +6/12/18 damage instead.<br/><strong>(Rank 3) </strong>Deal +8/16/24 damage instead.
 
->
-
 ### Elemental Ward
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | quick
 
-**Effect** <br/> You surround yourself in a ward that absorbs elemental energies affecting you. Cast this spell before taking damage or on your turn.<br/>On a success, you briefly gain resistance against acid, fire, frost, lightning, and poison damage. 
-
-> **Heightened** <br/> <strong>(Rank 2) </strong>While the spell lasts, inflict half of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV).<br/><strong>(Rank 3) </strong>While the spell lasts, inflict the same amount of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV) instead.
-
->
+**Effect** <br/> You snap a ward of crackling elemental energy into place against the incoming blow. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the attacker is within your melee range, raw energy lashes back at them and they take 2 damage (ignore AV) of one type you choose among acid, fire, frost, lightning, or poison. 
 
 ### Flame Burst
 
@@ -62,8 +56,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/8/12 damage against each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 damage against each target instead.
 
->
-
 ### Flaming Weapon
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -73,8 +65,6 @@ sidebar_position: 1
 **Effect** <br/> Enchant your weapon with magical flames.<br/>On a success, the weapon emits bright light in melee range and dim light in close range of it and deals +2 fire damage. You can make a weapon attack as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 fire damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 fire damage instead.
-
->
 
 ### Frozen Weapon
 
@@ -86,8 +76,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 frost damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 frost damage instead.
 
->
-
 ### Ice Shards
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -97,8 +85,6 @@ sidebar_position: 1
 **Effect** <br/> You form an icicle in your grasp. The icicle explodes on impact, sending out razor sharp shards around it.<br/><strong>Weak.</strong> Deal +4 frost damage to the target.<br/><strong>Strong. </strong>Deal +8 frost damage to the target.<br/><strong>Critical. </strong>Deal +12 frost damage to the target.<br/>Also on a success, the icicle explodes upon impact, dealing +2 frost damage to all other creatures in melee range of the target. 
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>Deal +6/12/18 damage to the target and +4 damage with the explosion instead.<br/><strong>(Rank 3) </strong>Deal +8/16/24 damage to the target and +6 damage with the explosion instead.
-
->
 
 ### Lightning Arc
 
@@ -110,8 +96,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/8/12 damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +6/12/18 damage to each target instead.
 
->
-
 ### Lightning Weapon
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -121,8 +105,6 @@ sidebar_position: 1
 **Effect** <br/> Enchant your weapon with magical frost.<br/>On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the target is briefly staggered. You can make a weapon attack as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 lightning damage instead.<br/><strong>(Rank 3)</strong> The weapon deals +6 lightning damage instead.
-
->
 
 ### Scorching Ray
 
@@ -134,8 +116,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Each beam deals +3/6/9 damage instead.<br/><strong>(Rank 3)</strong> Each beam deals +4/8/12 damage instead.
 
->
-
 ### Fireball
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -145,8 +125,6 @@ sidebar_position: 1
 **Effect** <br/> You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll’s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +3 fire damage to all targets and each of them suffers burning (2) for a short duration.<br/><strong>Strong.</strong> Deals +6 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +9 fire damage to all targets and each of them suffers burning (6) for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to all targets instead and increase the burning to (4/6/8).
-
->
 
 ### Frost Wave
 
@@ -158,7 +136,15 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead. On a critical success, the slowed condition lasts for a medium duration instead.
 
->
+### Frostfire Shield
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Medium (8) | Self | -
+
+**Effect** <br/> Wreathing flames or biting rime cloak your body without harming you. Choose flame or frost when casting this spell.<br/>On a success, you gain the chosen shield for a short duration:<br/>- <strong>Flame.</strong> You have resistance against frost damage. When a creature hits you with a melee attack, they take 4 fire damage (ignore AV) and suffer burning (2).<br/>- <strong>Frost.</strong> You have resistance against fire damage. When a creature hits you with a melee attack, they take 4 frost damage (ignore AV) and are briefly slowed.
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Attackers take 6 damage of the chosen type instead.<br/><strong>(Rank 4)</strong> Attackers take 8 damage of the chosen type instead.<br/><strong>(Rank 5)</strong> Attackers take 10 damage of the chosen type instead.
 
 ### Ice Lance
 
@@ -170,8 +156,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The ice lance deals +7 frost weapon damage instead. When thrown, deal +8/16/24 damage instead.
 
->
-
 ### Lightning Strike
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -182,8 +166,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead. On a strong or critical success, targets are briefly stunned instead of staggered.
 
->
-
 ### Prismatic Missile
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -193,8 +175,6 @@ sidebar_position: 1
 **Effect** <br/> You split raw elemental energy through a prism of will and loose a beam that shimmers with two colors at once. When casting the spell, choose two damage types among acid, fire, frost, lightning, and poison. The beam's damage counts as both chosen types. The target only applies resistance against this damage if they are resistant to both chosen types, and applies weakness if they are weak to either.<br/><strong>Weak.</strong> Deal +6 damage of the chosen types.<br/><strong>Strong.</strong> Deal +12 damage of the chosen types.<br/><strong>Critical.</strong> Deal +18 damage of the chosen types. The target also suffers the condition associated with one of the chosen types (acid: ignore 1/2 AV on this damage, fire: burning (2), frost: briefly slowed, lightning: briefly staggered, poison: briefly poisoned). 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +8/16/24 damage instead.<br/><strong>(Rank 4)</strong> Deal +10/20/30 damage instead.<br/><strong>(Rank 5)</strong> Deal +12/24/36 damage instead.
-
->
 
 ### Black Flame Bolt
 
@@ -214,8 +194,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +10/+20/+30 lightning damage to the first target instead.<br/><strong>(Rank 5)</strong> Deal +12/+24/+36 lightning damage to the first target instead.
 
->
-
 ### Dissolving Ray
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -225,8 +203,6 @@ sidebar_position: 1
 **Effect** <br/> You lock a thin, sustained ray of vitriol onto a single foe, holding it on them until their armor smokes, runs, and drips from their shoulders.<br/><strong>Weak.</strong> Deal +6 acid damage.<br/><strong>Strong.</strong> Deal +12 acid damage.<br/><strong>Critical.</strong> Deal +18 acid damage.<br/>Also on a success, the target loses 2 AV (min. 0) for a short duration, and one piece of their worn equipment of your choice (armor, helmet, or shield) must make a Durability check. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +8/+16/+24 acid damage and the target loses 3 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 acid damage and the target loses 4 AV (min. 0) instead.
-
->
 
 ### Cone of Cold
 
@@ -238,8 +214,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> Deal +5/+10/+15 frost damage to each target instead.
 
->
-
 ### Voltaic Surge
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -250,8 +224,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> Deal +10/+20/+30 lightning damage, and a staggered target takes +8 additional lightning damage and is briefly stunned instead.
 
->
-
 ### Wall of Fire
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -261,8 +233,6 @@ sidebar_position: 1
 **Effect** <br/> You draw a line across the world and set it alight, raising a roaring curtain of flame that turns the battlefield into territory.<br/>Choose any shape for the wall in a continuous path along the ground with up to a medium distance from start to end within range. The wall also extends a short distance into the air.<br/>On a success, the wall of flame rises along the chosen path, and you choose one side of the wall to be its scorching side. Any creature standing in the wall's path when it rises takes 8 fire damage (ignore AV) and starts burning (4).<br/>The wall lasts for up to a medium duration while you concentrate. It sheds bright light in short range and dim light in medium range of it, and it blocks sight as a Heavily Obscured area.<br/>When a creature moves through the wall, starts their turn inside it, or starts their turn in melee range of its scorching side, they take 8 fire damage (ignore AV) and start burning (4). 
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> The wall's path can be up to a long distance from start to end, and creatures take 10 fire damage (ignore AV) from it instead.
-
->
 
 ### Fulminate
 

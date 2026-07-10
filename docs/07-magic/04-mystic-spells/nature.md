@@ -52,6 +52,14 @@ sidebar_position: 5
 
 **Effect** <br/> You imbue a wooden weapon with nature’s power to strike your enemy with. Choose any crush weapon you are holding that is made from wood. Roll an attack with that weapon using Spirit + Mysticism. On a hit, use your spell power instead of the attack's base damage. 
 
+### Bark Shield
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> Rough bark sheathes your skin in an instant, hard as old oak. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. The bark clings to you afterwards for a moment, granting you +1 AV briefly.
+
 ### Beast Form
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -61,8 +69,6 @@ sidebar_position: 5
 **Effect** <br/> You shape shift into the form of a land-based animal. You can change into any animal form you encountered before. For this, reference the Tier 1 or lower Companion Statistics and pick any valid Animal Trait from the Animal Companions section.<br/>Apply the given statistics in the following way:<br/>- Pick any Size valid for the beast form’s Tier.<br/>- You gain half of the HP your beast form would have as an Animal Companion as temporary HP (you keep your own current and max. HP).<br/>- Apply the beast form’s AV bonus as an armor bonus.<br/>- Replace your Strength and Agility with that of your beast form if they are higher. Your Spirit and Mind aren’t changed.<br/>- You keep your own skill ranks and don’t use those of the beast form.<br/>- Apply the beast form’s weapon damage to any attacks made with natural weapons. If you have any bonuses to the damage of these attacks, you can apply them normally.<br/>- You gain the amount of base Movement per turn of your beast form, unless your normal Movement is higher.<br/>- You can use any abilities your beast form’s animal traits provide.<br/><br/>You can’t cast spells while in beast form, except for re-casting this spell to extend it‘s duration without interruption. You can still speak and understand any languages you would normally while in your beast form. Your beast form lasts for a medium duration, until you end it willingly, or until you fall unconscious. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You can choose from the Companion Statistics up to Tier 2.<br/><strong>(Rank 3)</strong> You can choose from the Companion Statistics up to Tier 3.
-
->
 
 ### Blessing of Nature
 
@@ -74,8 +80,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target gains resistance to acid and poison damage for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target gains resistance to acid, frost, lightning, and poison damage for the spell‘s duration.
 
->
-
 ### Mesh of Vines
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -85,8 +89,6 @@ sidebar_position: 5
 **Effect** <br/> Instantly sprout a mesh of spiked vines, covering the target location. On a success, spiked vines fill an area close to the target location. Target each creature in the area and use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +0 damage against each target.<br/><strong>Strong. </strong>Deal +2 damage against each target and they are grappled by the vines.<br/><strong>Critical.</strong> Deal +2 damage against each target and they are grappled and restrained by the vines.<br/>The area is also considered difficult terrain. The vines last for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The vines deal +2/+4/+6 damage against each target instead.<br/><strong>(Rank 3) </strong>The vines deal +4/+8/+12 damage against each target instead.
-
->
 
 ### Purify Water
 
@@ -106,8 +108,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 damage (ignore 1/2 AV) instead.
 
->
-
 ### Sticks to Snakes
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -126,8 +126,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 poison damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 poison damage instead.
 
->
-
 ### Wild Companion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -137,8 +135,6 @@ sidebar_position: 5
 **Effect** <br/> You can’t cast this spell if you haven’t learned the “Animal Companion” talent.<br/>You set up a ritual to summon a spiritual beast of the land. As part of casting this spell, you must also spend 100 coins in incense and other sacred ingredients (they are spend even on a failure). Follow the normal rules, described in the “Animal Companion” talent for choosing a form for your animal companion (you can still only control as many animal companions, as you are allowed by the talent).<br/>On a success, you summon a spiritual being in your chosen animal form. Apply the following traits to it:<br/>- It’s It's creature type becomes Spirit (Primordial subtype)<br/>
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>As part of casting this spell, you must spend 200 coins instead. Also apply the following traits to your companion:<br/>- It can cast any rank 0 or 1 spells you know. It casts them with it’s Spirit + your Nature. Instead of spending Focus, it can only cast a number of rank 1 spells per day equal to your Nature.<br/><strong>(Rank 3) </strong>As part of casting this spell, you must spend 500 coins instead. Also apply the following traits to your companion:<br/>- It can cast any rank 0, 1, or 2 spells you know (rank 1 spells are heightened to rank 2). It casts them with it’s Spirit + your Nature. Instead of spending Focus, it can only cast a combined number of rank 1 or 2 spells per day equal to your Nature.
-
->
 
 ### Gift of the Wild
 
@@ -160,8 +156,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- You can also target objects with up to large Size.<br/>- The object inflicts +4 fire damage (ignore AV) each turn instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- You can also target objects with up to huge Size.<br/>- The object inflicts +6 fire damage (ignore AV) each turn instead.
 
->
-
 ### Law of the Strongest
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -171,8 +165,6 @@ sidebar_position: 5
 **Effect** <br/> You fill a creature‘s body with empowering nature magic. The target has to be a creature of medium or smaller Size.<br/>On a success, the target‘s body grows one Size larger along with all of their worn equipment and held items (as long as they stay in contact with their body). While enlarged by this spell, they gain the following effects:<br/>- Gain 5 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You gain +1 AV.<br/>- You deal +2 damage with Strength-based attacks.<br/>This spell lasts for a short duration or until the target falls unconscious. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- Gain 10 temporary HP.<br/>- Gain +1 boon on Strength rolls.<br/>- You gain +2 Parry and lose -2 Dodge.<br/>- You gain +2 AV.<br/>- You deal +4 damage with Strength-based attacks.
-
->
 
 ### Diminish
 
@@ -184,8 +176,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The target suffers the following effects instead. They suffer +1 bane on Strength rolls, suffer -2 Parry and gain +2 Dodge, lose 2 AV (min. 0), and deal -4 damage with Strength-based attacks (min. 0).
 
->
-
 ### Living Plants
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -196,8 +186,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Choose one:<br/>- The plants fill in short range of the target location.<br/>- The plants deal +4/+8/+12 damage with attacks instead.
 
->
-
 ### Melt Ground
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -207,8 +195,6 @@ sidebar_position: 5
 **Effect** <br/> You cause the ground in the target area to become soft and muddy, creating a natural trap. On a success, the ground in an area close to the target location becomes muddy and creatures sink slightly into it.<br/>The muddy area is difficult terrain. Also, when any creature attempts to move though the muddy area for the first time during their turn, they have to first succeed on a Strength + Athletics test vs. this spell’s target Difficulty. If they fail, their Movement becomes 0 for the rest of the turn.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>The affected area extends to medium range from the target location instead.
-
->
 
 ### Nature’s Passage
 
@@ -228,8 +214,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 30 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +4 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn.<br/><strong>(Rank 4)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 40 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +6 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn.<br/><strong>(Rank 5)</strong> The target gains the following effects instead:<br/>- The rock plates absorbs any non-psychic damage inflicted on you. When the rock plates have absorbed a total of 50 HP, they break and the spell ends.<br/>- Your unarmed attacks deal +8 damage.<br/>- You gain +1 Parry and lose -1 Dodge.<br/>- You can’t use more than 1 Movement per turn.
 
->
-
 ### Speak with Animals and Plants
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -248,8 +232,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Apply these effects for each option:<br/><strong>Barrier. </strong>The wall can cover up to a short distance in width and height instead. It also has 30 HP and 4 AV instead.<br/><strong>Platform. </strong>The platform can grow up to a medium distance above ground level instead.<br/><strong>Harvest.</strong> Fertilize soil within long range of the target area instead.
 
->
-
 ### Thorn Barrage
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -259,8 +241,6 @@ sidebar_position: 5
 **Effect** <br/> You launch a volley of magically-created thorns that tear through multiple targets in a line.<br/>Target all creatures in a straight line from you up to a target point within range.<br/><strong>Weak.</strong> Deal +3 damage to each target.<br/><strong>Strong.</strong> Deal +6 damage to each target and they are bleeding (2).<br/><strong>Critical.</strong> Deal +9 damage to each target and they are bleeding (4). 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target and inflict bleeding (-/4/6) instead.<br/>- Increase the spell‘s range to long.
-
->
 
 ### Toxic Mist
 
@@ -272,8 +252,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 poison damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium.
 
->
-
 ### Water Prison
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -283,8 +261,6 @@ sidebar_position: 5
 **Effect** <br/> You conjure a sphere of water that engulfs and traps a target of up to medium Size, causing them to begin drowning.<br/>On a success, the target is grappled and restrained by the sphere of water and suffocating until they escape.<br/>This spell lasts for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>You can target a creature of up to large Size instead.
-
->
 
 ### Animal Messenger
 
@@ -360,16 +336,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> The pillar can rise up to a medium distance high instead, and you may raise up to two pillars with one casting, each up to close range wide and placed anywhere in range. A creature caught between a pillar and an obstacle takes 10 damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> You may raise up to three pillars with one casting, each up to close range wide, each rising up to a medium distance high, and placed anywhere in range. A creature caught between a pillar and an obstacle takes 12 damage (ignore AV) instead.
 
->
-
-### Control Weather
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 5 | 10 | Legendary (16) | Extreme | concentrate,  ritual (minutes)
-
-**Effect** <br/> You commune with sky and season, and the weather bends by slow degrees to the shape of your will. Through a ritual of minutes you begin to turn the prevailing weather across the surrounding region, then hold and deepen it for as long as you concentrate (up to a day of dedicated tending). You may shift the weather one stage at a time toward a chosen condition, never conjuring what the season and land could not plausibly produce. Choose the target condition:<br/>- <strong>Clear.</strong> Skies open and the air stills. Any weather-based obscurement, difficult terrain, or wind effect across the region ends, and rolls to travel or to see over long distances through the region gain +1 boon.<br/>- <strong>Rain.</strong> A steady downpour soaks the region. The land beyond short range is Lightly Obscured, unsheltered open flames are extinguished and mundane fires struggle to catch, and empty vessels and cisterns fill with clean water.<br/>- <strong>Storm.</strong> A tempest of driving rain and wind builds. The region is difficult terrain (including for flight) and ranged attacks through it suffer +1 bane. A creature that travels through the storm without shelter gains +1 Fatigue for the day.<br/>- <strong>Fog.</strong> A thick mist settles. The land beyond short range is Heavily Obscured, and creatures gain +1 boon on Stealth rolls to hide within it.<br/>- <strong>Heat or Cold.</strong> The air turns oppressively hot or bitterly cold. A creature that goes a day without proper protection (shade and water against the heat, warmth against the cold) gains +1 Fatigue.<br/>Ending your concentration lets the natural weather reassert itself over the following hours. 
-
 ### Tree Stride
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -379,3 +345,11 @@ sidebar_position: 5
 **Effect** <br/> You step into the living wood and the tree takes you in like an old friend, passing you along the green road to emerge far away. You enter a living tree at least your own size that you touch. While the spell lasts, up to a medium duration while you concentrate, you may step into such a tree and emerge from another living tree of similar size within extreme range as your movement, once per turn.<br/>When you enter a tree, your awareness spreads through the green road and you sense every living tree of similar size within range, even those out of sight. To travel, name where you wish to emerge, such as a tree you can see, a known landmark, or a direction and rough distance, and you step out of the nearest suitable tree to that point. If no tree large enough stands within range of your chosen destination, you sense this before you commit and simply do not step, losing nothing. The GM tells you what trees are within reach whenever the surroundings make it uncertain, such as sparse woodland, a lone orchard, or open country where few or none may qualify.<br/>When the spell ends or your concentration breaks, you are expelled from the nearest tree unharmed.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> You may carry up to five willing creatures who touch you through the green road with each stride, and the range extends across any forested expanse in the same region.
+
+### Control Weather
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Extreme | concentrate,  ritual (minutes)
+
+**Effect** <br/> You commune with sky and season, and the weather bends by slow degrees to the shape of your will. Through a ritual of minutes you begin to turn the prevailing weather across the surrounding region, then hold and deepen it for as long as you concentrate (up to a day of dedicated tending). You may shift the weather one stage at a time toward a chosen condition, never conjuring what the season and land could not plausibly produce. Choose the target condition:<br/>- <strong>Clear.</strong> Skies open and the air stills. Any weather-based obscurement, difficult terrain, or wind effect across the region ends, and rolls to travel or to see over long distances through the region gain +1 boon.<br/>- <strong>Rain.</strong> A steady downpour soaks the region. The land beyond short range is Lightly Obscured, unsheltered open flames are extinguished and mundane fires struggle to catch, and empty vessels and cisterns fill with clean water.<br/>- <strong>Storm.</strong> A tempest of driving rain and wind builds. The region is difficult terrain (including for flight) and ranged attacks through it suffer +1 bane. A creature that travels through the storm without shelter gains +1 Fatigue for the day.<br/>- <strong>Fog.</strong> A thick mist settles. The land beyond short range is Heavily Obscured, and creatures gain +1 boon on Stealth rolls to hide within it.<br/>- <strong>Heat or Cold.</strong> The air turns oppressively hot or bitterly cold. A creature that goes a day without proper protection (shade and water against the heat, warmth against the cold) gains +1 Fatigue.<br/>Ending your concentration lets the natural weather reassert itself over the following hours.

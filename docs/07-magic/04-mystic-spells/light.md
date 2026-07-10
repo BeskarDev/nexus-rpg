@@ -46,8 +46,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target gains resistance to fire and radiant damage for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target gains resistance to fire, necrotic, psychic, and radiant damage for the spell‘s duration.
 
->
-
 ### Illuminated Script
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -89,8 +87,6 @@ sidebar_position: 1
 **Effect** <br/> Imbue a weapon with the power of the sun. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, the weapon emits bright light in melee range and dim light in close range of it and deals +2 radiant damage. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon emits bright light in close range and dim light in short range and deals +4 radiant damage instead.<br/><strong>(Rank 3) </strong>The weapon emits bright light in short range and dim light in medium range and deals +6 radiant damage instead.
-
->
 
 ### Sense Spirits
 
@@ -149,8 +145,6 @@ sidebar_position: 1
 **Effect** <br/> You consecrate a close area within range with a clear, revealing radiance in which falsehood cannot hold. Target each creature in the area, using your roll’s result vs. their Resist. Each affected creature knows they are being compelled. While an affected creature remains in the area, they cannot speak a deliberate lie. They can still stay silent, give a short or evasive answer, or say what they believe to be true even if they are mistaken. A creature that leaves the area is no longer affected. A creature that enters the area after the spell is cast is targeted when they enter, using your roll’s result vs. their Resist. The zone lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> The zone covers a short area and lasts for a long duration instead.
-
->
 
 ### Blessing of Dawn
 

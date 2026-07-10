@@ -60,7 +60,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | creatures | *Conjure Servant* | Conjure Familiar | Summon Aberration | *Conjure Steed* | *Forge Construct* | *Planar Conscription* |
 | teleportation | *Far Reach* | *Spatial Echo* | Phase Step | Dimension Door, Astral Gate, Banishment | Teleportation Circle | *Planar Gateway* |
 | binding | *Arcane Snare* | Alarm | Arcane Lock, Eldritch Tendrils, Web | *Seal the Cage* | Force Cage | *Binding Seal* |
-| force | Arcane Bolt | Arcane Missiles, Arcane Barrier, Hale of Blades, Mage Armor | Arcane Barrage, Arcane Circle, *Grinding Walls* | Arcane Blast, Burst of Tendrils, Wall of Force, *Hail of Splinters* | Disintegrate, Arcane Empowerment | — (Disintegrate Heighten) |
+| force | Arcane Bolt | Arcane Missiles, Arcane Barrier, Arcane Deflection, Hale of Blades, Mage Armor | Arcane Barrage, Arcane Circle, *Grinding Walls* | Arcane Blast, Burst of Tendrils, Wall of Force, *Hail of Splinters* | Disintegrate, Arcane Empowerment | — (Disintegrate Heighten) |
 
 **Coverage**: only published spells count as real coverage — proposed entries (italics) are undesigned seeds (principle 19). Force R5 is a deliberate open cell: Disintegrate's published Heighten already carries the force line to R5 (principle 3), so no separate force capstone is seeded.
 
@@ -100,7 +100,6 @@ Role reads "combat-role / synergy-role" (synergy roles per the framework: setup 
 | Conjure Servant | 0 | Utility / standalone | Conjure a faint servant of force that performs simple physical tasks in close range: carry, fetch, hold, tidy. No combat capability and no skill rolls of its own (Unseen Servant model). Pure Excels-Utility coverage at R0 for the creatures trait. |
 | Far Reach | 0 | Utility / standalone | Fold space so your reach extends to a point you can see in close range: interact with one unattended object as if touching it (teleportation trait at trick scale, principle 6). Interaction at range only — hurling, dragging, and force movement stay Telekinetics territory. |
 | Arcane Snare | 0 | Offense / setup | A loop of conjured force lashes around one target: minor damage and the target is briefly grappled (binding at cantrip scale, principle 6). Emits the held state that Seal the Cage converts and that martials and Web exploit. |
-| Arcane Deflection | 1 | Defense / standalone | Standardized R1 reactive Quick Action (principle 4): +2 to Dodge or Parry against the triggering attack, no SL scaling. School secondary: the flash-conjured pane lingers briefly, granting you cover against ranged attacks — a micro-dose of the reshaped-field identity. |
 | Spatial Echo | 1 | Utility / standalone | Attune to the fabric of space: gain +1 boon on Perception rolls to notice hidden openings and concealed spaces, and automatically sense active teleportation effects, extraplanar pockets, and dimensional breaches in range (bounded reveal list per principle 29). The school's counter-intelligence against its own signature tricks. |
 | Fabricate | 2 | Utility / standalone | Ritual (minutes) that reshapes provided raw materials into a finished mundane product, capped at Q2 quality, never magical items. Assists rather than bypasses Crafting (principles 1 and 27): the skill stays essential above basic goods. |
 | Grinding Walls | 2 | Offense / payoff | Command one of your standing force constructs (Arcane Barrier, Wall of Force) to grind against a creature pinned against or trapped inside it: force damage and briefly staggered. Cold-cast dead — no construct in contact, no spell. The school's first mechanical payoff on its own field. |
@@ -146,8 +145,8 @@ The Conjure Familiar spell concept overlaps with Nature's Wild Companion — bot
 - ⚠️ **Summon → teleport combo**: No direct synergy between summoning and teleportation effects (acceptable — chains are internally complete)
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Arcane Deflection (R1 seed) — standardized reactive defense (+2 Dodge/Parry, lingering-cover secondary)
-- [x] Defensive options: Arcane Barrier (R1), Mage Armor (R1), Arcane Deflection (R1 seed)
+- [x] R1 Quick Action: Arcane Deflection (R1, published 2026-07-10) — standardized reactive defense (+2 Dodge/Parry, lingering-cover secondary)
+- [x] Defensive options: Arcane Barrier (R1), Mage Armor (R1), Arcane Deflection (R1)
 - [x] Utility: Extraplanar Pocket (R0), Arcane Eye (R2), Distant Eye (R3) published; Far Reach, Conjure Servant, Spatial Echo, Fabricate, Transmute Material, Conjure Steed, Conjure Apparatus, Arcane Genesis, Planar Gateway seeds
 - [x] Damage across ranks: published complete R0–R5 (Arcane Bolt → Missiles → Barrage → Blast → Disintegrate with R5 Heighten)
 - [x] Repeating conditions: grappled/restrained via the binding chain (Arcane Snare, Eldritch Tendrils, Web, Seal the Cage, Force Cage, Binding Seal)

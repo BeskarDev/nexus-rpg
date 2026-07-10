@@ -38,8 +38,6 @@ sidebar_position: 8
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target takes +4 damage from any source.<br/><strong>(Rank 3)</strong> The target takes +6 damage from any source.
 
->
-
 ### Heroic Weapon
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -49,8 +47,6 @@ sidebar_position: 8
 **Effect** <br/> Imbue a weapon with the power of courage. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, the weapon deals +2 damage. On a strong or critical hit, the attack‘s target is briefly frightened. Each creature can suffer the condition from this spell only once per scene. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 damage instead.
-
->
 
 ### Tear Wound
 
@@ -102,8 +98,6 @@ sidebar_position: 8
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose a second target to also gain the spell‘s effects.
 
->
-
 ### Commander's Shout
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -113,8 +107,6 @@ sidebar_position: 8
 **Effect** <br/> You cry out a battle-order that ripples down the line, and your allies surge forward as one.<br/>On a success, each ally in range may immediately make one weapon or spell attack, or move a short distance. An ally that does so suffers 1 Fatigue.<br/>Each creature can benefit from this spell only once per scene. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> The spell affects allies in medium range instead.<br/><strong>(Rank 5)</strong> The spell affects allies in long range instead, and each affected ally gains +1 boon on the attack they make.
-
->
 
 ### Righteous Fury
 
@@ -126,8 +118,6 @@ sidebar_position: 8
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Your weapon attacks deal +6 damage, and +6 additional damage against frightened creatures, instead.<br/><strong>(Rank 5)</strong> Your weapon attacks deal +8 damage, and +8 additional damage against frightened creatures, instead.
 
->
-
 ### Glorious Strike
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -138,8 +128,6 @@ sidebar_position: 8
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +6/+12/+18 fire damage instead.<br/><strong>(Rank 5)</strong> Deal +8/+16/+24 fire damage instead.
 
->
-
 ### Ancestral Guardian
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -149,5 +137,3 @@ sidebar_position: 8
 **Effect** <br/> You call the spirits of fallen warriors, and a spectral champion rises to stand watch, shield raised and blade ready.<br/>On a success, summon a spectral guardian at a location in range for a short duration. It acts as a bulwark under your control with the following properties:<br/>- The guardian has 30 HP, 4 AV, and uses your Resist for all its Defenses. It is immune to all conditions.<br/>- It holds its space and cannot be moved by enemies. On each of your turns, you can move it a short distance.<br/>- <strong>Guard.</strong> Once per round, when a creature adjacent to the guardian is hit by an attack, you can have the guardian intercept the blow. The guardian takes the damage instead, reduced by its AV.<br/>- <strong>Strike.</strong> On your turn, you can spend your Quick Action to have the guardian attack. Roll Spirit + Mysticism vs. Parry of a target in reach of it. On a hit, it deals +4/+8/+12 force damage.<br/>The guardian remains for a short duration, until you dismiss it, or until its HP are reduced to 0. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> The guardian has 40 HP and 6 AV, its Strike deals +6/+12/+18 force damage, and it can use Guard twice per round, instead.<br/><strong>(Rank 5)</strong> The guardian has 50 HP and 8 AV, its Strike deals +8/+16/+24 force damage, and it can use Guard three times per round, instead.
-
->

@@ -92,7 +92,6 @@ Research about a topic to learn facts or rumors. Choose one of the following exp
 Discuss with your GM what kind of information you want to research about and they will set the Difficulty of that topic.
 
 > Keep in mind that the GM has the last word in determining the Difficulty of the research test or if it is simply impossible to gain any information about a topic. For example, you won’t be able to find any information on a mythical figure which has been erased from historical records in a small town.
-> 
 
 After determining the research difficulty, roll Mind + your chosen Expert Skill vs. that Difficulty.
 
@@ -148,7 +147,6 @@ At the end of the week, roll Spirit/Mind + Influence/Streetwise vs. the Difficul
 **Critical Success.** The buyer offers 70 percent of the normal cost of the item.
 
 > Refusing to close the deal, for example after blundering the negotiation, will very likely anger the buyer and impose +1 bane to all further attempts to sell the same item (this penalty will apply each time additionally when refusing a deal multiple times). This represents the buyer spreading the news about your bad deal within their sphere of influence.
-> 
 
 ### Recover
 
@@ -242,7 +240,6 @@ After selecting the type of item you want to create and determining it‘s cost,
 
 > If you get enough successes in a single crafting activity to finish crafting multiple items of the same Quality, you can choose to do so. You still have to pay the material cost of all created items.
 For example, you roll a strong success for a Q1 item. You can check 2 successes, but only require 1 for a Q1 item. You can then craft two Q1 instead, but still have to pay both of their material costs.
-> 
 
 Once you check the amount of successes required, pay the material cost and you have successfully created the item.
 

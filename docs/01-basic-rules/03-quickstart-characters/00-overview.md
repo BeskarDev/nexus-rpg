@@ -7,7 +7,6 @@ sidebar_position: 0
 ![banner-img](/img/banner/character-creation-banner.png)
 
 > "The greatest warriors were once novices with nothing but determination and a well-chosen path."
->
 
 ## Using These Examples
 

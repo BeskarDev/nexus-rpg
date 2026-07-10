@@ -38,8 +38,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage (ignore 1/2 AV) to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Target all creatures in short range of the target location instead.
 
->
-
 ### Curse of Tempest
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -49,8 +47,6 @@ sidebar_position: 6
 **Effect** <br/> You curse a creature with the magical power of tempest, turning nature itself against them.<br/>On a success, the creature suffers the following effects:<br/>- While moving in natural environments, it is always considered difficult terrain for them.<br/>- They suffer +1 bane on Athletics and Survival rolls.<br/>This curse lasts for a long duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target suffers a weakness to blast, fire, or lightning damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to blast, fire, and lightning damage for the spell‘s duration.
-
->
 
 ### Earthen Tremor
 
@@ -62,8 +58,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to medium.<br/><strong>(Rank 3) </strong>Choose one:<br/>- Deal +6/+12/+18 damage to each target instead.<br/>- Increase the spell‘s range to long.
 
->
-
 ### Electrified Weapon
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -73,8 +67,6 @@ sidebar_position: 6
 **Effect** <br/> Imbue a weapon with the power of storms. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, the weapon deals +2 lightning damage. On a strong or critical hit, the attack‘s target is briefly staggered. Each creature can suffer the condition from this spell only once per scene. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 lightning damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 lightning damage instead.
-
->
 
 ### Lightning Javelin
 
@@ -86,8 +78,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +6/+12/+18 lightning damage instead.<br/><strong>(Rank 3) </strong>Deal +8/+16/+24 lightning damage instead.
 
->
-
 ### Storm Coat
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -98,8 +88,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The attacker takes +2 lightning damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>The attacker takes +4 lightning damage (ignore AV) instead.
 
->
-
 ### Storm Shield
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -109,8 +97,6 @@ sidebar_position: 6
 **Effect** <br/> You quickly conjure a personal barrier of swirling air. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you can defend with your Resist instead of Parry or Dodge until your next turn. When a melee attack against you fails, the attacker takes +0 blast damage (ignore AV). If a ranged attack against you fails, you can divert the attack towards another creature in close range. If the ranged attack blunders, you can even divert it back to the attacker. When diverting an attack to another creature, it automatically hits with a weak success. 
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>Failed melee attacks inflict +2 blast damage (ignore AV) instead. Diverted ranged attacks deal +2 damage.<br/><strong>(Rank 3) </strong>Failed melee attacks inflict +4 blast damage (ignore AV) instead. Diverted ranged attacks deal +4 damage.
-
->
 
 ### Updraft
 
@@ -132,8 +118,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +6/+12/+18 fire damage instead and inflict burning (4/6) on a strong or critical success.<br/><strong>(Rank 3) </strong>Deal +8/+16/+24 fire damage instead and inflict burning (6/8) on a strong or critical success.
 
->
-
 ### Wind Hose
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -143,8 +127,6 @@ sidebar_position: 6
 **Effect** <br/> You create a powerful swirl of air around the target location, pulling smaller, loose objects into it’s vortex.<br/><strong>Weak.</strong><em> </em>Deal +3 damage.<br/><strong>Strong.</strong> Deal +6 damage and if the target is medium or smaller in size, they are also grappled by the wind hose.<br/><strong>Critical.</strong> Deal +9 damage and if the target is medium or smaller in size, they are also grappled and restrained by the wind hose.<br/>When you successfully cast this spell against a target and it is grappled by the wind hose, you gain +1 boon when casting the spell again against the same target on your next turn. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +5/+10/+15 damage instead.<br/>- You can also target large creatures for grappling.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +7/+14/+21 damage instead.<br/>- You can also target huge creatures for grappling.
-
->
 
 ### Conjure Elemental
 
@@ -156,8 +138,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You conjure an elemental with the statistics of a tier 3 companion instead.
 
->
-
 ### Lightning Bolt
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -167,8 +147,6 @@ sidebar_position: 6
 **Effect** <br/> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point up to a short distance away, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +3 lightning damage to each target.<br/><strong>Strong.</strong> Deal +6 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +9 lightning damage to each target and they are briefly staggered. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 lightning damage to each target instead.<br/>- Increase the spell‘s range to long.
-
->
 
 ### Lightning Step
 
@@ -180,8 +158,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Increase the spell’s range to long and deal +4 blast damage (ignore 1/2 AV) instead.
 
->
-
 ### Magma Burst
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -191,8 +167,6 @@ sidebar_position: 6
 **Effect** <br/> You channel the earth’s wrath, making the target location’s ground burst with lava. Target all creatures in melee range of it.<br/><strong>Weak.</strong><em> </em>Deal +4 fire damage to each target. <br/><strong>Strong.</strong> Deal +8 fire damage to each target and they suffer burning (2) for a short duration.<br/><strong>Critical.</strong> Deal +12 fire damage to each target and they suffer burning (4) for a short duration.<br/>The target location remains covered with cracks filled with lava for a short duration, after which it cools down and remains as solid rock.<br/>Each creature ending their turn in melee range of it automatically suffer the effects of a weak hit.<br/>If any creature has direct contact with the lava, they instead automatically suffer the effects of a critical hit. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 fire damage to each target and inflict burning (4/6) on a strong or critical success instead.<br/>- Target all creatures in close range of the target location instead.
-
->
 
 ### Pyroclasm
 
@@ -204,8 +178,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 fire damage to each target instead.<br/>- Increase the spell‘s range to medium.
 
->
-
 ### Storm Cloud
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -215,8 +187,6 @@ sidebar_position: 6
 **Effect** <br/> You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can use your Action to target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Target up to five creatures below the cloud instead.
-
->
 
 ### Thunder Clap
 
@@ -228,8 +198,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell‘s range to medium.
 
->
-
 ### Torrent
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -239,8 +207,6 @@ sidebar_position: 6
 **Effect** <br/> You create a high pressure stream of water, pulling anything in it’s way along with it.<br/><strong>Weak. </strong>Deal +3 damage to each target and they are pushed a close distance.<br/><strong>Strong. </strong>Deal +6 damage to each target and they are pushed a short distance.<br/><strong>Critical. </strong>Deal +9 damage to each target and they are pushed a short distance and fall prone. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to long.
-
->
 
 ### Wind Ward
 
@@ -252,8 +218,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The wind extends in short range of you and other creatures in the wind’s area takes +4 damage at the start of each of their turns instead.
 
->
-
 ### Chain Lightning
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -264,8 +228,6 @@ sidebar_position: 6
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +10/+20/+30 lightning damage to the first target instead.<br/><strong>(Rank 5)</strong> Deal +12/+24/+36 lightning damage to the first target instead.
 
->
-
 ### Cone of Cold
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -275,8 +237,6 @@ sidebar_position: 6
 **Effect** <br/> You exhale the cold between the stars, and a fan of white silence rolls out from your hands, flash-freezing everything it touches.<br/>Target all creatures in the cone.<br/><strong>Weak.</strong> Deal +4 frost damage to each target.<br/><strong>Strong.</strong> Deal +8 frost damage to each target.<br/><strong>Critical.</strong> Deal +12 frost damage to each target.<br/>Also on a success, each target is briefly slowed. A target that was already slowed is briefly restrained instead, frozen in a shell of ice. 
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> Deal +5/+10/+15 frost damage to each target instead.
-
->
 
 ### Cyclone
 

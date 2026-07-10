@@ -38,8 +38,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You gain 10 temporary HP instead.<br/><strong>(Rank 3)</strong> You gain 20 temporary HP instead.
 
->
-
 ### Healing Touch
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -49,8 +47,6 @@ sidebar_position: 3
 **Effect** <br/> You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. A creature can only benefit from one Wound-healing spell effect per day. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> When using your Action, restore +6/12/18 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.
-
->
 
 ### Overflow of Life
 
@@ -62,8 +58,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> If the target is conscious, they take +5/10/15 radiant damage instead.<br/><strong>(Rank 3)</strong> If the target is conscious, they take +7/14/21 radiant damage instead.
 
->
-
 ### Rapid Vitality
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -73,8 +67,6 @@ sidebar_position: 3
 **Effect** <br/> You quickly envigorate a creature. Cast this spell on your turn.<br/><strong>Weak.</strong> Restore +2 HP to your target.<br/><strong>Strong.</strong> Restore +4 HP to your target.<br/><strong>Critical. </strong>Restore +6 HP to your target. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Restore +3/6/9 HP instead.<br/><strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +5/10/15 HP instead.<br/><strong>(Rank 5)</strong> Restore +6/12/18 HP instead.
-
->
 
 ### Vitalizing Weapon
 
@@ -86,8 +78,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> On a strong or critical hit, restore 6 HP instead.<br/><strong>(Rank 3)</strong> On a strong or critical hit, restore 8 HP instead.
 
->
-
 ### Aid
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -97,8 +87,6 @@ sidebar_position: 3
 **Effect** <br/> Bolster your allies’ toughness with a blessing.<br/>On a success, choose up to four creatures in range. They each gain 10 temporary HP for a long duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Each target gains 20 temporary HP instead.
-
->
 
 ### Cleanse
 
@@ -110,8 +98,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose an additional willing target in range.
 
->
-
 ### Detect Life
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -122,8 +108,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The spell reaches within long range of you instead, and you also sense each creature's vitality: whether they are unharmed, wounded, or close to death.<br/><strong>(Rank 4)</strong> The spell reaches within long range of you, you sense each creature's vitality, and you also recognize each sensed creature's type (such as Beast, Humanoid, or Plant).
 
->
-
 ### Hallow Ground
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -133,8 +117,6 @@ sidebar_position: 3
 **Effect** <br/> You hallow the ground around you, healing all allies standing on it.<br/>On a success, each ally in range of the hallow ground restores +2 HP when you cast the spell and at the start of each of their turns.<br/>The hallow ground remains stationary at the position where you cast it for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4 HP instead.
-
->
 
 ### Hallowed Rest
 
@@ -153,8 +135,6 @@ sidebar_position: 3
 **Effect** <br/> You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4/8/12 HP instead.
-
->
 
 ### Abundance of Life
 

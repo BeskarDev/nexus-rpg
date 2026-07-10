@@ -38,8 +38,6 @@ sidebar_position: 7
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target gains resistance to blast and psychic damage for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target gains resistance to blast, physical, and psychic damage for the spell‘s duration.
 
->
-
 ### Harmonic Link
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -49,8 +47,6 @@ sidebar_position: 7
 **Effect** <br/> You build a empathetic link with one of your allies, sharing your surface thoughts and senses.<br/>On a success, you establish the link between you and your ally. While the link holds, if either one of you takes damage, both of you take half of the damage instead.<br/>The link lasts for a medium duration or until you are further away from each other than the range of this spell. 
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/><strong>(Rank 3) </strong>While the link holds you and your ally also gain the following effect(s):<br/>- You gain +1 on all Defenses.<br/>- Attacks against a target both of you can perceive gain +1 boon.<br/>- Attacks from creatures both of you can perceive suffer +1 bane against you.
-
->
 
 ### Pacifying Weapon
 
@@ -62,8 +58,6 @@ sidebar_position: 7
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon‘s bearer gains +1 on all Defenses instead (doesn‘t stack from dual-wielding weapons enchanted by this spell).<br/><strong>(Rank 3) </strong>The weapon‘s bearer gains +2 on all Defenses instead (doesn‘t stack from dual-wielding weapons enchanted by this spell).
 
->
-
 ### Share Harm
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -73,8 +67,6 @@ sidebar_position: 7
 **Effect** <br/> Cast this spell after you have taken damage from an attack. On a success, the attacker takes the same amount of damage you took from them (ignore AV). 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Add your Mysticism to the damage the attacker takes.<br/><strong>(Rank 3)</strong> Add 2 x your Mysticism to the damage the attacker takes.
-
->
 
 ### Dome of Sanctuary
 

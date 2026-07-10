@@ -57,7 +57,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | water | ✨ Shape Water | Purify Water | Water Prison, Nature's Passage | — | — | Control Weather |
 | poison | Poison Mist, Acid Splash | Venomous Weapon, Sticks to Snakes | Toxic Mist, ✨ Deepening Venom | Fungal Growth, Insect Swarm, ✨ Devouring Bloom | — | ✨ Cataclysmic Eruption |
 | animals | Bestial Adaptation | Beast Form, Wild Companion | Law of the Strongest, Speak with Animals and Plants | Animal Messenger, Nature's Judgment | ✨ Primal Guardian | ✨ Primeval Form |
-| plants | Lashing Vine, Rejuvenation | Blessing of Nature, Mesh of Vines, ✨ Bark Shield | Living Plants, Sudden Growth, Thorn Barrage, Stone Skin | Impalement, ✨ Devouring Bloom | Tree Stride, ✨ Verdant Restoration | ✨ Primal Awakening |
+| plants | Lashing Vine, Rejuvenation | Blessing of Nature, Mesh of Vines, Bark Shield | Living Plants, Sudden Growth, Thorn Barrage, Stone Skin | Impalement, ✨ Devouring Bloom | Tree Stride, ✨ Verdant Restoration | ✨ Primal Awakening |
 
 ✨ = proposed new spell (undesigned seed). *Asterisk = incomplete published spell (stub).*
 
@@ -76,7 +76,6 @@ These are **conceptual placeholders only** — thematic seeds naming the gap eac
 | Concept | Rank | Role | Seed |
 |---|---|---|---|
 | Shape Water | 0 | Utility / standalone | Water cantrip (water trait): a pressurized stream that shoves a small object or creature a close distance, extinguishes open flames, and fills or empties a vessel. Utility-first in the school's Excels role; the shove feeds the terrain engine (into the vines, off the ledge) without duplicating Telekinetics' dedicated push kit. |
-| Bark Shield | 1 | Defense / standalone | The standardized R1 Quick Action reactive (+2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (plants trait): if the triggering attack was a melee hit, the bark's thorns deal a small amount of physical damage back to the attacker. |
 | Deepening Venom | 2 | Control / extender | Toxin already in a *poisoned* creature's blood turns virulent (poison trait): the condition's duration extends and they suffer +1 bane on Strength and Agility rolls while it lasts. Ripens the poison window that Poison Mist, Venomous Weapon, and Toxic Mist open — does nothing to the unpoisoned. |
 | Devouring Bloom | 3 | Offense / payoff | The plants holding a *restrained* or *entangled* creature flower and feed (plants and poison traits): heavy poison damage and the hold persists as the tendrils tighten. Castable only on a target the land has already caught — the convert chain's missing final link, spending Mesh of Vines, Water Prison, and Sudden Growth. Offense in a Weak role, justified as the terrain engine's dedicated payoff. |
 | Primal Guardian | 4 | Support / standalone | Summon a guardian spirit of root and stone (animals and earth traits) on the companion-statistics chassis, one tier below the caster's ceiling. The summon chain's upper rung above Wild Companion (R1) and Sticks to Snakes — a body that holds ground inside the school's living terrain. Watch the Conjuration border: this is a reverent calling with a bound duration, not a bound servant. |
@@ -106,7 +105,7 @@ The following spells are shared between Nature and arcane disciplines (same spel
 2. **Water chain**: ✨ Shape Water (R0) → Purify Water (R1) → Water Prison / Nature's Passage (R2) → honest gaps (R3, R4) → Control Weather (R5)
 3. **Poison chain**: Poison Mist / Acid Splash (R0) → Venomous Weapon / Sticks to Snakes (R1) → Toxic Mist / ✨ Deepening Venom (R2) → Fungal Growth / Insect Swarm / ✨ Devouring Bloom (R3) → honest gap (R4) → ✨ Cataclysmic Eruption (R5)
 4. **Animals chain**: Bestial Adaptation (R0) → Beast Form / Wild Companion (R1) → Law of the Strongest / Speak with Animals and Plants (R2) → Animal Messenger / Nature's Judgment (R3) → ✨ Primal Guardian (R4) → ✨ Primeval Form (R5)
-5. **Plants chain**: Lashing Vine / Rejuvenation (R0) → Blessing of Nature / Mesh of Vines / ✨ Bark Shield (R1) → Living Plants / Sudden Growth / Thorn Barrage (R2) → Impalement / ✨ Devouring Bloom (R3) → Tree Stride / ✨ Verdant Restoration (R4) → ✨ Primal Awakening (R5)
+5. **Plants chain**: Lashing Vine / Rejuvenation (R0) → Blessing of Nature / Mesh of Vines / Bark Shield (R1) → Living Plants / Sudden Growth / Thorn Barrage (R2) → Impalement / ✨ Devouring Bloom (R3) → Tree Stride / ✨ Verdant Restoration (R4) → ✨ Primal Awakening (R5)
 
 ### Setup + Payoff Combos
 (✨ = undesigned seed)
@@ -118,8 +117,8 @@ The following spells are shared between Nature and arcane disciplines (same spel
 - ✨ **Living terrain → renewal**: ✨ Primal Awakening (R5) keeps the zones growing and re-threatening *restrained* each round — the grand extender seed
 
 ### Design Completeness Checklist
-- [ ] R1 Quick Action: ✨ Bark Shield seeded — standardized reactive defense (+2 Dodge/Parry, thorn damage secondary), not yet designed
-- [x] Defensive options: Stone Skin (R2) published; ✨ Bark Shield seeded — appropriate for a Weak defense role
+- [x] R1 Quick Action: Bark Shield (R1, published 2026-07-10) — standardized reactive defense (+2 Dodge/Parry, brief +1 AV secondary; owner replaced the seeded thorn rider, principle 61)
+- [x] Defensive options: Stone Skin (R2), Bark Shield (R1) published — appropriate for a Weak defense role
 - [x] Utility: Bestial Adaptation, Purify Water, Speak with Animals and Plants, Nature's Passage, Animal Messenger, Tree Stride, Control Weather — the Excels role is the school's deepest
 - [x] Damage across ranks: mid-curve by design (Weak offense role) — the payoffs (Impalement published, ✨ Devouring Bloom, ✨ Cataclysmic Eruption) only outperform where the terrain fights alongside
 - [x] Repeating conditions: poisoned, restrained/entangled, difficult terrain — consistent natural-hazard identity across published spells and seeds

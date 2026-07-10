@@ -73,7 +73,6 @@ For this school, "affliction" in a seed means any Death-inflicted state: *poison
 |---|---|---|---|
 | Miasma | 0 | Control / setup | A breath of grave-damp air briefly *poisons* one nearby creature with minimal damage (plagues). The at-will affliction tap: it opens the school's poisoned socket at R0 and stocks every affliction-counting payoff (*The Reckoning*, *Inexorable Doom*). |
 | Minor Hex | 0 | Control / setup | A muttered petty curse inflicts +1 bane on the target's next roll (curses). Counts as a curse affliction while it lasts, so even the cantrip rung feeds the doom-harvest engine. |
-| Death's Rebuke | 1 | Defense / standalone | Standardized R1 Quick Action reactive (principle 4): +2 Dodge or Parry against the triggering attack, plus a school secondary that returns a small pulse of necrotic damage through the wound (decay). Fills the mandatory reactive-defense slot. |
 | Commune with Ancestors | 1 | Utility / standalone | Ritual trance seeking ancestral guidance (ancestry). Bounded per principle 29: ask about one problem, the GM answers with one of a fixed menu (a warning, a name or place, a symbolic omen when nothing concrete fits). Distinct from Necromancy's *Life Echo*, which pries a corpse's brain: this petitions willing spirits and needs no body. |
 | Festering Wound | 1 | Offense / payoff | Curse an open wound so it corrupts (plagues): against a *bleeding* or Wounded target, lasting necrotic damage and *poisoned*. Cold-cast against an unhurt target it is a weak dart (cold-cast deficit). Spends the shared bleeding socket that martials and War priests emit, converting it into Death's own poisoned state. |
 | Grave Chill | 2 | Control / setup | The cold of the grave settles into the marrow (decay): the target is *slowed* and their rolls to resist or end Death spells suffer +1 bane for a short duration. A defense-strip setup that itself counts as an affliction, making every following curse and plague stick harder. Distinct from *Shivering Ray* (R1 frost damage dart): this is a near-damageless affliction anchor. |
@@ -115,9 +114,9 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 - **Ancestry line**: Commune with Ancestors (R1) → Ancestral Guardian (R2) → Speak with Dead (R3) → Ancestral Convergence (R5) — the tradition's utility and support corner, deliberately outside the combat engine.
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Death's Rebuke seed — standardized reactive defense (+2 Dodge/Parry, necrotic secondary)
+- [x] **R1 Quick Action**: Death's Rebuke (R1, published 2026-07-10) — standardized reactive defense (+2 Dodge/Parry, unconditional 2 necrotic ignore-AV retaliation on any attacker)
 - [ ] **3 spells per rank minimum**: published + seeds gives R0: 7, R1: 9, R2: 6, R3: 5, R4: 1, R5: 3 — **R4 is not met** (Pestilence only) and is the next expansion target
-- [x] Defensive options: Spared from Death (R0, published), Death's Rebuke (R1 seed), Ancestral Guardian (R2 seed) — minimal on purpose, Defense is a Weak role
+- [x] Defensive options: Spared from Death (R0, published), Death's Rebuke (R1), Ancestral Guardian (R2 seed) — minimal on purpose, Defense is a Weak role
 - [x] Utility: Decay (R0, published), Commune with Ancestors (R1 seed), Speak with Dead (R3 seed)
 - [x] Damage across ranks: R0–R3 published; R4–R5 via Pestilence's zone tick, The Reckoning, and Inexorable Doom — no dedicated R4 single-target nuke yet (accepted gap, see checklist item above)
 - [x] Repeating conditions: poisoned, frightened, curses, attribute decay — the affliction set the whole school counts

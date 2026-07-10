@@ -136,11 +136,8 @@ Some situations call for unique checks that don’t involve a TN but instead hav
 > Example:
 > When exposed to the terrifying form of Nakesh, Nagkhan must roll a **d6** Fear Check:
 >
->
 > • On a **1**, they freeze in fear and can’t act
 >
->
 > • On **2–5**, they flee in panic
->
 >
 > • On a **6**, they act normally but suffer **+1 bane** on all rolls involving their fears

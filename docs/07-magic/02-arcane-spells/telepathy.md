@@ -164,8 +164,6 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) instead.
 
->
-
 ### Psychic Probe
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -189,8 +187,6 @@ sidebar_position: 4
  4 | 8 | Extreme (14) | Self | concentrate
 
 **Effect** <br/> You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration. 
-
->
 
 ### Mass Hold
 

@@ -127,7 +127,7 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 ### Design Completeness Checklist
 - [x] R1 Quick Action: Death Ward (R1, published) — reactive damage-halving ward
 
-> **Review Note**: Death Ward should be evaluated for alignment with the standardized R1 reactive defense pattern (base +2 Dodge/Parry, school-specific secondary, no SL scaling). Its current form (Fatigue cost, half damage) predates the standard.
+> **Review Note — RESOLVED (2026-07-10, P3 batch)**: Death Ward stays as-is by owner-approved verdict. Its identity (ally-targetable, post-hit damage halving paid in Fatigue) is mitigation, not evasion — the same school-flavored exemption granted to Tempest's Storm Shield. It fills the R1 reactive slot without the standard chassis.
 - [x] Defensive options: Bone Armor (R1), Necrotic Shield (R1), Death Ward (R1) — strong triple coverage
 - [x] Utility: Necromantic Sight (R0), Life Echo (R0), Soul Veil (R2); ✨ Ghostly Hand and ✨ Possess Corpse extend the corpse-utility line
 - [x] Damage across ranks: R0–R4 published (Death Bolt, Corpse Explosion, Reaper's Harvest, Finger of Death); R5 rests on ✨ Entropy and ✨ Soul Harvest

@@ -54,8 +54,6 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +5/+10/+15 necrotic damage and regain 3/6/9 HP instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 necrotic damage and regain 4/8/12 HP instead.
 
->
-
 ### Curse of Death
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -66,7 +64,13 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The target suffers a weakness to either necrotic or poison damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to both necrotic and poison damage for the spell‘s duration.
 
->
+### Death's Rebuke
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> You meet the blow with the grave's patience, and what harms you withers in answer. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. Decay crawls back along the strike and the attacker takes 2 necrotic damage (ignore AV), whether their attack hits you or not.
 
 ### Early Grave
 
@@ -86,8 +90,6 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon deals +4 necrotic damage instead. On a strong or critical hit, inflict 4 lasting necrotic damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 necrotic damage instead. On a strong or critical hit, inflict 6 lasting necrotic damage instead.
 
->
-
 ### Rotting Grasp
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -97,8 +99,6 @@ sidebar_position: 4
 **Effect** <br/> Your touch carries the power of decay, causing flesh to wither and rot where you grasp your target.<br/><strong>Weak.</strong> Deal +4 necrotic damage and the target is briefly poisoned.<br/><strong>Strong.</strong> Deal +8 necrotic damage and the target is briefly poisoned and staggered.<br/><strong>Critical.</strong> Deal +12 necrotic damage and the target is poisoned for a short duration. While poisoned by this effect, they are also staggered. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +6/+12/+18 necrotic damage instead.<br/><strong>(Rank 3)</strong> Deal +8/+16/+24 necrotic damage instead.
-
->
 
 ### Shivering Ray
 
@@ -118,8 +118,6 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Each creature takes +6 necrotic or radiant damage (ignore AV) instead.
 
->
-
 ### Cloud of Sickness
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -129,8 +127,6 @@ sidebar_position: 4
 **Effect** <br/> You summon a cloud of necrotic energy, sickening creatures within it. The cloud extends in a close area around the target location and targets all living creatures within it.<br/><strong>Weak.</strong> Deal +3 necrotic damage to each target.<br/><strong>Strong.</strong> Deal +6 necrotic damage to each target.<br/><strong>Critical.</strong> Deal +9 necrotic damage to each target.<br/>Any creature is also poisoned while inside the cloud’s area.<br/>The cloud lasts for a short duration. It can also be expelled early by any effect causing strong winds in the same area of influence. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8/+12 necrotic damage to each target instead.
-
->
 
 ### Curse of Frailty
 
@@ -142,8 +138,6 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> They lose 3 AV (min. 0) instead.<br/><strong>(Rank 4)</strong> They lose 4 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> They lose 5 AV (min. 0) instead.
 
->
-
 ### Grave Chill
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -154,8 +148,6 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> They take 4 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.<br/><strong>(Rank 4)</strong> They take 6 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.<br/><strong>(Rank 5)</strong> They take 8 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.
 
->
-
 ### Weight of Dooms
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -165,8 +157,6 @@ sidebar_position: 4
 **Effect** <br/> You lay your will upon a doom already written on the target, and it sinks deeper, like a wound the body refuses to close.<br/>Choose one condition the target currently suffers among poisoned, frightened, bleeding, slowed, dazed, or staggered.<br/><strong>Weak.</strong> The target suffers +1 bane on rolls to end the chosen condition early, and if the condition has a set duration, it extends by one step.<br/><strong>Strong.</strong> Same as a weak success, and deal +4 necrotic damage.<br/><strong>Critical.</strong> Same as a weak success, and deal +8 necrotic damage.<br/>This spell has no effect on a target that suffers none of the listed conditions. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12 necrotic damage on a strong or critical success instead.<br/><strong>(Rank 4)</strong> Deal +8/+16 necrotic damage on a strong or critical success instead.<br/><strong>(Rank 5)</strong> Deal +10/+20 necrotic damage on a strong or critical success instead.
-
->
 
 ### Death's Door
 
@@ -193,8 +183,6 @@ sidebar_position: 4
 **Effect** <br/> You breathe on an existing sickness and it wakes with a will of its own, leaping from body to body like sparks through dry grass.<br/>Target one creature that is currently poisoned.<br/><strong>Weak.</strong> Deal +4 poison damage to the target.<br/><strong>Strong.</strong> Deal +8 poison damage to the target.<br/><strong>Critical.</strong> Deal +12 poison damage to the target.<br/>Also target each enemy in close range of the first target, using your roll's result vs. their Resist. On a success, they become poisoned for a short duration.<br/>This spell has no effect on a target that is not poisoned. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 poison damage instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 poison damage instead.
-
->
 
 ### The Reckoning
 

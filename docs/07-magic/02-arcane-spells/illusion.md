@@ -54,8 +54,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead.
 
->
-
 ### Illusory Trap
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -65,8 +63,6 @@ sidebar_position: 2
 **Effect** <br/> You make a creature believe that they triggered a trap.<br/>On a success, they believe they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. hunting trap or trap hole).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) and the target is grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) and the target is grappled and restrained by the illusory trap.<br/>After the target believes it was pinned by the trap, the illusion lasts for a short duration or until they see through it. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead.
-
->
 
 ### Mirror Image
 
@@ -86,8 +82,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Deal +3/+6/+9 psychic damage (ignore AV) instead.
 
->
-
 ### Illusionary Terrain
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -97,8 +91,6 @@ sidebar_position: 2
 **Effect** <br/> Create a large scale illusion, blending into the environment by mimicking the surrounding scenery.<br/>Choose any inanimate object, structure, or environmental feature that encompasses up to a close three dimensional area.<br/>On a success, the illusion appears and lasts for a medium duration, even if you move out of range of it. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The illusion can cover up to a short distance in all three dimensions instead.
-
->
 
 ### Invisibility
 
@@ -110,8 +102,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You can remain invisible up to a medium duration instead.
 
->
-
 ### Major Illusion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -121,8 +111,6 @@ sidebar_position: 2
 **Effect** <br/> You summon the image of an object, creature, or other visible phenomenon, which can be large or smaller. I appears absolutely real, mimicking sounds, smells, movements, and even temperature (tough it won’t deal actual damage).<br/>On a success, your chosen illusion appears at the target location in range.<br/>While you are in range of the illusion, you can use your Quick Action to let the illusion change in any way or move within range. It will follow your instructions as long as it takes, so it can mimic walking to another location or having a conversation with another creature.<br/>Attempts to physically interact with the illusion automatically reveal it to be an illusion. The illusion lasts for up to a short duration, even if you move out of range. You can immediately recast this spell as an Action at the end of the duration to maintain the illusion for a longer time. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The illusion can be of huge or smaller size and lasts up to a medium duration instead.<br/><strong>(Rank 4)</strong> The illusion can fill a close area with several moving, interacting elements, such as a market stall with a vendor or a campfire ringed by sleeping soldiers, and lasts up to a medium duration instead.
-
->
 
 ### Misdirection
 
@@ -142,8 +130,6 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Deal +3/+6/+9 psychic damage (ignore AV) against each target instead.
 
->
-
 ### Waking Dream
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -153,8 +139,6 @@ sidebar_position: 2
 **Effect** <br/> You trap a creature in their dreams. The target has to be of a tier equal to or lower than your Arcana. If the creature is at full HP, you suffer +1 bane on the roll.<br/>On a success, the creature falls unconscious for a short duration. If any creature uses an Action to shake them, they take any damage, or are otherwise disturbed, they can roll Spirit + Perception vs. your Resist to break free of the illusion. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The target remains unconscious for up to a medium duration instead.
-
->
 
 ### Mislead
 

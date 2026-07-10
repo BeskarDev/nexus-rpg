@@ -36,6 +36,14 @@ sidebar_position: 3
 
 **Effect** <br/> You mark an area with an arcane sigil that functions as an alarm.<br/>When beginning to cast the spell, choose an opening or passage way no larger than a close distance. You can also choose individual creatures which should be ignored by the alarm and if the alarm activates audibly or mentally.<br/>On a success, you set an alarm that activates once a tiny or larger creature moves through or touches the enchanted area given your specified instructions.<br/>A mental alarm is only perceptibly by you while you are no more than an hour’s walk away from the alarm and even wakes you up if you are sleeping.<br/>An audible alarm briefly produces the sound of a bell which is hearable within of medium distance of the alarm.<br/>The alarm lasts until triggered by a creature or for a long duration. 
 
+### Arcane Deflection
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> You flash a pane of shimmering force into being between yourself and the blow. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. The pane lingers afterwards, granting you cover against ranged attacks briefly.
+
 ### Arcane Barrier
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -46,8 +54,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The barrier has 8 Parry and Dodge, 6 AV, and 30 HP instead.<br/><strong>(Rank 3)</strong> The barrier has 10 Parry and Dodge, 8 AV, and 40 HP instead.
 
->
-
 ### Arcane Missiles
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -57,8 +63,6 @@ sidebar_position: 3
 **Effect** <br/> Conjure one or multiple small projectiles or pure arcane energy and lunge them against a number of creatures.<br/><strong>Weak.</strong> You fire one missile.<br/><strong>Strong. </strong>You fire two missiles.<br/><strong>Critical. </strong>You fire three missiles.<br/>Choose any number of creatures in range you can see as targets to divide the missiles between. The missiles ignore cover and can take any clear path towards the targets. Each missile automatically hits, counting as a weak success, and deals +2 blast damage (ignore 1/2 AV). 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Each missile deals +4 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Each missile deals +6 blast damage (ignore 1/2 AV) instead.
-
->
 
 ### Conjure Familiar
 
@@ -78,8 +82,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2) </strong>Deal +4/8/12 damage to each target instead.<br/><strong>(Rank 3) </strong>Deal +6/12/18 damage to each target instead.
 
->
-
 ### Infuse Item
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -89,8 +91,6 @@ sidebar_position: 3
 **Effect** <br/> You touch any medium or smaller item, temporarily infusing it with arcane energy.<br/>On a success, the item increases it’s Durability die by one step. Apply one of the following effects based on the type of item it is:<br/>- Armor, Shield, or Helmet: It grants +1 AV (enhancement bonus).<br/>- Ammo: It deals +2 damage.<br/>- Weapon: Increase it’s weapon damage by 1 (enhancement bonus).<br/>- Spell Catalyst: Increase your spell damage by +1/2/3 (enhancement bonus).<br/>- Backpack: While using this to carry items, it adds +2 to your carry capacity limits.<br/>These effects last for a long duration. This spell counts as an enchantment for the type of item which you infused (for example, it counts as an enchant (weapon) spell effect for an infused weapon). 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Depending on the type of item it grants +2 AV (enhancement bonus), +4 damage, weapon damage increased by 2 (enhancement bonus), increased spell damage by +2/4/6 (enhancement bonus), or +4 to your carry capacity limits respectively instead.<br/><strong>(Rank 3)</strong> Depending on the type of item it grants +3 AV (enhancement bonus), +6 damage, weapon damage increased by 3 (enhancement bonus), increased spell damage by +3/6/9 (enhancement bonus), or +6 to your carry capacity limits respectively instead.
-
->
 
 ### Mage Armor
 
@@ -102,8 +102,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> You gain +3 AV (armor bonus) instead.<br/><strong>(Rank 3)</strong> You gain +4 AV (armor bonus) instead.<br/><strong>(Rank 4)</strong> You gain +5 AV (armor bonus) instead.<br/><strong>(Rank 5)</strong> You gain +6 AV (armor bonus) instead.
 
->
-
 ### Arcane Barrage
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -114,8 +112,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> (Rank 3) Each missile deals +4 blast damage (ignore 1/2 AV) instead.
 
->
-
 ### Arcane Circle
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -125,8 +121,6 @@ sidebar_position: 3
 **Effect** <br/> You summon a magical circle under your feet, depicting arcane sigils.<br/>On a success, you summon the arcane circle in your melee range. Any creature casting an arcane spell while standing on the circle gains +1 boon when casting or concentrating on an arcane spell and deals +2 damage per SL with any arcane spell.<br/>The arcane circle remains stationary at the position you cast it at for a medium duration, or until you cast another one at a different position. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> While standing in the circle, a creature deals +4 damage per SL with any arcane spell instead.
-
->
 
 ### Arcane Eye
 
@@ -156,8 +150,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Deal +3/6/9 acid damage (ignore 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead.
 
->
-
 ### Phase Step
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -167,8 +159,6 @@ sidebar_position: 3
 **Effect** <br/> You step through the veil of the material sphere, quickly teleporting yourself to a viable location you can see in range.<br/>On a success, you re-appear at the target location without spending Movement. 
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Increase this spell’s range to long.
-
->
 
 ### Summon Aberration
 
@@ -180,8 +170,6 @@ sidebar_position: 3
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You conjure an aberrant creature with the statistics of a tier 3 companion instead.
 
->
-
 ### Web
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -191,8 +179,6 @@ sidebar_position: 3
 **Effect** <br/> You hurl a mote of conjured matter that erupts into a mass of thick, sticky strands, filling the area with layered webbing.<br/>On a success, webs fill an area close to the target location. The webbed area is difficult terrain. When a creature tries to move through the webs for the first time on their turn, or is pushed or pulled into them, they must succeed on a Strength + Athletics roll vs. this spell's target Difficulty or become grappled and restrained by the strands. A grappled creature can repeat the roll as an Action to break free. The webs must be anchored between at least two solid surfaces, such as walls, floor and ceiling, or trees, or they collapse and the spell fails. The webs are flammable. Any fire damage in the area burns them away in an instant, and each creature caught in the webs when they burn takes 4 fire damage (ignore AV). The webs last for a short duration. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The webs fill an area within short range of the target location and last for a medium duration instead.<br/><strong>(Rank 4)</strong> The webs fill an area within medium range of the target location and last for a medium duration instead.<br/><strong>(Rank 5)</strong> The webs fill an area within medium range of the target location and last for a long duration instead.
-
->
 
 ### Arcane Blast
 
@@ -261,8 +247,6 @@ sidebar_position: 3
 **Effect** <br/> You level your hand and a thin lance of raw conjured force bores through your target, unmaking flesh and matter alike.<br/><strong>Weak.</strong> Deal +10 force damage.<br/><strong>Strong.</strong> Deal +20 force damage.<br/><strong>Critical.</strong> Deal +30 force damage.<br/>If this damage reduces the target to 0 HP, their body crumbles to a small heap of fine grey ash. They cannot be raised as undead, and only a <em>Resurrection</em> spell worked upon those ashes can call them back to life. You can instead target one unattended nonmagical object no larger than a large Size or one conjured construct of force, such as a <em>Wall of Force</em> or <em>Force Cage</em>, destroying it outright on a success. 
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> Deal +12/+24/+36 instead.
-
->
 
 ### Arcane Empowerment
 

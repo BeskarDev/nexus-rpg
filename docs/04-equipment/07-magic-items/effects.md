@@ -20,14 +20,12 @@ Magic weapons and spell catalysts increase their weapon or spell damage by +1 fo
 | 8 | +5 | +3d |
 
 > Weapons which are already Quality 3 in their mundane form can also be made as masterwork versions for the extra cost but only to gain access to a masterwork property. Such weapons **don’t** get an increase to their weapon damage as their base form is already of the same Quality.
->
 
 ### Magic Armor, Shields, and Helmets
 
 Masterwork armor, shields, and helmets increase their defensive capabilities with increased Quality. These higher Quality pieces are only available at minimum Quality 4 in contrast to weapons.
 
 > Shields are treated as both weapons and armor for the benefits of masterwork items. This means that a Quality 4 light shield will both increase it’s weapon damage from 2 to 3 and it’s AV bonus from 1 to 2. Bucklers also gain the magic item AV bonus, although they don’t grant one in their mundane form.
->
 
 | Quality | AV Bonus | Durability |
 | --- | --- | --- |

@@ -275,6 +275,17 @@
 		"heightened": "<strong>(Rank 2)</strong> The target suffers a weakness to either frost or psychic damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to both frost and psychic damage for the spell‘s duration."
 	},
 	{
+		"name": "Dusk Veil",
+		"tradition": "Twilight",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "You draw the halflight around you like a cloak, and for a heartbeat you are more shadow than flesh. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If you are in dim light or darkness, you can immediately move a close distance without provoking Opportunity Attacks after the attack resolves, melting into the nearest shadow.",
+		"heightened": "-"
+	},
+	{
 		"name": "Haunting Shadows",
 		"tradition": "Twilight",
 		"rank": "1",
@@ -682,6 +693,17 @@
 		"heightened": "<strong>(Rank 2)</strong> The target suffers a weakness to either necrotic or poison damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to both necrotic and poison damage for the spell‘s duration."
 	},
 	{
+		"name": "Death's Rebuke",
+		"tradition": "Death",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "You meet the blow with the grave's patience, and what harms you withers in answer. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. Decay crawls back along the strike and the attacker takes 2 necrotic damage (ignore AV), whether their attack hits you or not.",
+		"heightened": "-"
+	},
+	{
 		"name": "Early Grave",
 		"tradition": "Death",
 		"rank": "1",
@@ -833,6 +855,17 @@
 		"range": "Self",
 		"properties": "-",
 		"effect": "You imbue a wooden weapon with nature’s power to strike your enemy with. Choose any crush weapon you are holding that is made from wood. Roll an attack with that weapon using Spirit + Mysticism. On a hit, use your spell power instead of the attack's base damage.",
+		"heightened": "-"
+	},
+	{
+		"name": "Bark Shield",
+		"tradition": "Nature",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "Rough bark sheathes your skin in an instant, hard as old oak. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. The bark clings to you afterwards for a moment, granting you +1 AV briefly.",
 		"heightened": "-"
 	},
 	{

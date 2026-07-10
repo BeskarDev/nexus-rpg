@@ -51,8 +51,8 @@
         "target": "Medium (8)",
         "range": "Self",
         "properties": "quick",
-        "effect": "You surround yourself in a ward that absorbs elemental energies affecting you. Cast this spell before taking damage or on your turn.<br/>On a success, you briefly gain resistance against acid, fire, frost, lightning, and poison damage.",
-        "heightened": "<strong>(Rank 2) </strong>While the spell lasts, inflict half of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV).<br/><strong>(Rank 3) </strong>While the spell lasts, inflict the same amount of the acid, fire, frost, lightning, or poison damage you take (after AV and resistances) from an attacker back to them (ignore AV) instead."
+        "effect": "You snap a ward of crackling elemental energy into place against the incoming blow. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the attacker is within your melee range, raw energy lashes back at them and they take 2 damage (ignore AV) of one type you choose among acid, fire, frost, lightning, or poison.",
+        "heightened": "-"
     },
     {
         "name": "Flame Burst",
@@ -152,6 +152,17 @@
         "properties": "blast (cone)",
         "effect": "You conjure a chilling wave of frost that emanates an icy blast in front of you.<br/><strong>Weak.</strong> Deal +3 frost damage to each target.<br/><strong>Strong.</strong> Deal +6 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +9 frost damage to each target and they are slowed for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early.",
         "heightened": "<strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead. On a critical success, the slowed condition lasts for a medium duration instead."
+    },
+    {
+        "name": "Frostfire Shield",
+        "discipline": "Evocation",
+        "rank": "2",
+        "focus": "4",
+        "target": "Medium (8)",
+        "range": "Self",
+        "properties": "-",
+        "effect": "Wreathing flames or biting rime cloak your body without harming you. Choose flame or frost when casting this spell.<br/>On a success, you gain the chosen shield for a short duration:<br/>- <strong>Flame.</strong> You have resistance against frost damage. When a creature hits you with a melee attack, they take 4 fire damage (ignore AV) and suffer burning (2).<br/>- <strong>Frost.</strong> You have resistance against fire damage. When a creature hits you with a melee attack, they take 4 frost damage (ignore AV) and are briefly slowed.",
+        "heightened": "<strong>(Rank 3)</strong> Attackers take 6 damage of the chosen type instead.<br/><strong>(Rank 4)</strong> Attackers take 8 damage of the chosen type instead.<br/><strong>(Rank 5)</strong> Attackers take 10 damage of the chosen type instead."
     },
     {
         "name": "Ice Lance",
@@ -437,6 +448,17 @@
         "range": "Short",
         "properties": "ritual (minutes), singular",
         "effect": "You mark an area with an arcane sigil that functions as an alarm.<br/>When beginning to cast the spell, choose an opening or passage way no larger than a close distance. You can also choose individual creatures which should be ignored by the alarm and if the alarm activates audibly or mentally.<br/>On a success, you set an alarm that activates once a tiny or larger creature moves through or touches the enchanted area given your specified instructions.<br/>A mental alarm is only perceptibly by you while you are no more than an hour\u2019s walk away from the alarm and even wakes you up if you are sleeping.<br/>An audible alarm briefly produces the sound of a bell which is hearable within of medium distance of the alarm.<br/>The alarm lasts until triggered by a creature or for a long duration.",
+        "heightened": "-"
+    },
+    {
+        "name": "Arcane Deflection",
+        "discipline": "Conjuration",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Self",
+        "properties": "quick",
+        "effect": "You flash a pane of shimmering force into being between yourself and the blow. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. The pane lingers afterwards, granting you cover against ranged attacks briefly.",
         "heightened": "-"
     },
     {

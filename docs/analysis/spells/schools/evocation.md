@@ -45,11 +45,11 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | Rank | Count | Spells |
 |------|-------|--------|
 | 0 | 3 | Flickering Flame, Frost Snap, Static Spark |
-| 1 | 9 | Chromatic Orb, Elemental Ward, Flame Burst, Flaming Weapon, Frozen Weapon, Ice Shards, Lightning Arc, Lightning Weapon, Scorching Ray |
-| 2 | 5 | Fireball, Frost Wave, Ice Lance, Lightning Strike, Prismatic Missile (incomplete) |
-| 3 | 1 | Black Flame Bolt |
-| 4 | 0 | — |
-| 5 | 0 | — |
+| 1 | 9 | Chromatic Orb, Elemental Ward (reactive), Flame Burst, Flaming Weapon, Frozen Weapon, Ice Shards, Lightning Arc, Lightning Weapon, Scorching Ray |
+| 2 | 6 | Fireball, Frost Wave, Frostfire Shield, Ice Lance, Lightning Strike, Prismatic Missile |
+| 3 | 3 | Black Flame Bolt, Chain Lightning, Dissolving Ray |
+| 4 | 3 | Cone of Cold, Voltaic Surge, Wall of Fire |
+| 5 | 1 | Fulminate |
 
 ### Trait × Rank Coverage Matrix
 
@@ -57,13 +57,13 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| fire | Flickering Flame | Flame Burst, Flaming Weapon, Scorching Ray | Fireball, *Wildfire* | Black Flame Bolt | *Wall of Fire* | *Delayed Blast Meteor* |
-| frost | Frost Snap | Frozen Weapon, Ice Shards | Frost Wave, Ice Lance | *Conducting Chill* | *Cone of Cold* | — |
-| lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | *Chain Lightning* | *Voltaic Surge* | Fulminate |
-| acid | *Acid Splash* | Chromatic Orb (multi) | *Acid Rain* | *Dissolving Ray* | — (Dissolving Ray Heighten) | — |
+| fire | Flickering Flame | Flame Burst, Flaming Weapon, Scorching Ray | Fireball, *Wildfire* | Black Flame Bolt | Wall of Fire | *Delayed Blast Meteor* |
+| frost | Frost Snap | Frozen Weapon, Ice Shards | Frost Wave, Ice Lance | *Conducting Chill* | Cone of Cold | — |
+| lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | Chain Lightning | Voltaic Surge | Fulminate |
+| acid | *Acid Splash* | Chromatic Orb (multi) | *Acid Rain* | Dissolving Ray | — (Dissolving Ray Heighten) | — |
 | air | *Air Burst* | *Concussive Bolt* | *Gale Force* | *Thunderous Rupture* | *Vacuum Sphere* | — |
 
-**Additional multi-element / utility spells**: *Thermal Control* (R0), Elemental Ward (R1), *Elemental Shaping* (R1), Chromatic Orb (R1), *Fire Shield* (R2, fire/frost), Prismatic Missile (R2), *Elemental Ruin* (R4)
+**Additional multi-element / utility spells**: *Thermal Control* (R0), Elemental Ward (R1), *Elemental Shaping* (R1), Chromatic Orb (R1), Frostfire Shield (R2, fire/frost), Prismatic Missile (R2), *Elemental Ruin* (R4)
 
 **Coverage**: only published spells count as real coverage — proposed entries (italics) are undesigned seeds (principle 19). The empty R4–R5 cells are deliberate: fire and lightning each carry one R5 capstone (seeded Delayed Blast Meteor, published Fulminate), and high-rank acid rides Dissolving Ray's Heighten cascade (principle 3) instead of a duplicate spell entry. A trait does not need a dedicated capstone at every rank — an honest gap beats a filler seed. If a frost or air R5 concept with a genuinely distinct identity emerges, it earns a seed then.
 
@@ -73,13 +73,9 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 Lightning Strike (short line, +3/+6/+9), Fireball (+3/+6/+9), Frost Wave (+3/+6/+9), and Scorching Ray Heighten (+3/6/9 and +4/8/12 per beam) now conform to the half-scaling rule in the published docs.
 
-### Elemental Ward — Standardized Reactive Defense
+### Elemental Ward — Standardized Reactive Defense — RESOLVED (published 2026-07-10, P3 batch)
 
-**Current**: Quick Action self-buff that grants brief elemental resistance (acid, fire, frost, lightning, poison). Heightened versions add damage reflection (half at R2, full at R3).
-**Proposed**: Realign to the standardized R1 reactive defense pattern:
-- **Quick Action** (reactive): When an enemy targets you with an attack, gain **+2 to Dodge or Parry** (your choice) against the triggering attack. If the attacker is within melee range, they take 2 damage of an element you choose (fire, frost, lightning, acid, or blast). Effect is identical on any success — no SL scaling.
-- Remove heightened versions (damage reflection moves to Fire Shield at R2 which already fills that niche).
-**Rationale**: All schools follow the same standardized R1 reactive defense pattern: base +2 Dodge/Parry, one school-specific secondary, no SL scaling. Evocation's secondary is elemental backlash damage — thematically fitting as transgressive energy lashes out reflexively at attackers. The current "elemental resistance" version is more of a buff than a reactive defense and doesn't match the standard.
+Realigned to the standardized R1 reactive defense (principle 4): +2 to Parry or Dodge against the triggering attack, and a melee attacker takes 2 damage (ignore AV) of one chosen elemental type (acid, fire, frost, lightning, or poison — the canonical elemental set per Chromatic Orb / Prismatic Missile, owner ruling). Heightened reflection removed; the reflection and resistance niche moved to the published **Frostfire Shield** (R2).
 
 ## Proposed New Spells
 
@@ -94,7 +90,6 @@ Role reads "combat-role / synergy-role" (synergy roles per the framework: setup 
 | Thermal Control | 0 | Utility / standalone | Warm, chill, or hold the temperature of a small area or object (fire and frost traits at trick scale, principle 6). Weak-role seed kept deliberately: the school identity flags zero non-combat spells as its major gap, and this is the R0 utility answer. |
 | Concussive Bolt | 1 | Offense / setup | Single-target bolt of compressed air: blast damage (ignores half AV), and on a strong or critical success the target is pushed a close distance and falls prone if they collide with an obstacle. Emits pushed/prone, the shared socket martials and Telekinetics payoffs spend. |
 | Elemental Shaping | 1 | Utility / standalone | Reshape or move existing elemental material in range: bend a bonfire around a camp, carve or melt ice, part smoke or fumes (fire, frost, air traits — earth and water belong to Nature). Weak-role seed justified by the school's declared utility gap. |
-| Fire Shield | 2 | Defense / setup | Sustained self-aura, choose flame or frost: melee attackers take flat elemental damage and start burning (2) or are briefly slowed. Takes over the damage-reflection job removed from Elemental Ward's Heighten, and emits burning/slowed on attackers for the school's condition payoffs. |
 | Acid Rain | 2 | Control / extender | Placed caustic zone (fixed-TN cast, flat per-tick acid damage per principle 44) that also forces a Durability check on the armor of any creature ending their turn inside. Prolong extender: keeps stripped-AV pressure open across turns for focus fire and Elemental Ruin. |
 | Gale Force | 2 | Offense / setup | Short line of compressed wind: blast damage to each target and pushes them toward the line's far end, packing them together. Emits cluster — the exact state Fireball and Chain Lightning pay off. |
 | Wildfire | 2 | Offense / extender | A creature already burning erupts: modest fire damage to them, and the flames leap to enemies in close range, who start burning too. Cold-cast dead (requires a burning target). This is the school's missing spread extender, chaining Flickering Flame or Fireball burns across the field, countered by water or spacing. |
@@ -144,8 +139,8 @@ The following spells are shared between Evocation and mystic traditions (same sp
 - ✅ **Concentration breaking**: staggered emitters → Voltaic Surge (R4 stagger-to-stunned)
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Elemental Ward (R1) — proposed standardization to +2 Dodge/Parry, elemental backlash secondary, no SL scaling
-- [x] Defensive options: Elemental Ward (R1, published), Fire Shield (R2 seed), Wall of Fire (R4 seed)
+- [x] R1 Quick Action: Elemental Ward (R1, realigned 2026-07-10) — standardized reactive defense (+2 Dodge/Parry, elemental backlash secondary)
+- [x] Defensive options: Elemental Ward (R1), Frostfire Shield (R2), Wall of Fire (R4) — all published
 - [x] Utility: Thermal Control (R0 seed), Elemental Shaping (R1 seed) — the school's only non-combat coverage, kept despite the Weak role because the identity section names utility as the major gap
 - [x] Damage across all ranks: published R0–R3 plus Fulminate (R5); seeds fill R4 and reinforce R5
 - [x] Repeating conditions: burning, slowed, staggered, corroding (Durability + AV reduction), pushed/prone (air)

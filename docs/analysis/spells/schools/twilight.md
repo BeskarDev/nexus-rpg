@@ -57,7 +57,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 |-------|-----|-----|-----|-----|-----|-----|
 | moon | Night's Grasp | Moon Sphere, Lunar Weapon | Moonbeam | — (Moonbeam Heighten) | ✨ Eclipse | — |
 | dreams | Whispers of Doubt | — | Sleep, Terrors of the Dark | Nightmare Realm | ✨ Dreamwalking | ✨ Dream Realm |
-| secrets | Dark Sight, Shadow Veil | Shadow Meld, Cloak of Night, ✨ Dusk Veil (QA) | Silent Night, Everlasting Night, ✨ Fangs of the Dark, ✨ Shadow Mantle | ✨ Shadow Passage | ✨ Veil of Secrets | ✨ Shadowform |
+| secrets | Dark Sight, Shadow Veil | Shadow Meld, Cloak of Night, Dusk Veil (QA) | Silent Night, Everlasting Night, Fangs of the Dark, Shadow Mantle | ✨ Shadow Passage | ✨ Veil of Secrets | ✨ Shadowform |
 | fate | ✨ Thread of Fate | Curse of Twilight | ✨ Written in the Stars | ✨ Twist of Fate | ✨ Prophecy | ✨ Fate's Decree |
 | illusion | Obscuring Veil | Haunting Shadows | Aura of Fear, Shadow Step, Twilight Bind | Shadow Clone | Embrace of Night | ✨ Phantom World |
 
@@ -78,7 +78,6 @@ These are **conceptual placeholders only** — thematic seeds naming the gap eac
 | Concept | Rank | Role | Seed |
 |---|---|---|---|
 | Thread of Fate | 0 | Utility / standalone | Divination cantrip (fate trait): a one-breath glimpse of the immediate future, GM-parameterized per principle 29 (a bounded menu: safest of two paths, whether a named act brings harm within the scene, a one-word omen). No combat rider — the fate chain's information rung. |
-| Dusk Veil | 1 | Defense / standalone | The standardized R1 Quick Action reactive (+2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (secrets trait): if you are in dim light or darkness when it triggers, you may immediately move a close distance without provoking, melting into the nearest shadow. Renamed from the old "Shadow Veil" seed, which collided with the published R0 spell of that name. |
 | Fangs of the Dark | 2 | Offense / payoff | Shadow-strike whose teeth are the dark itself (secrets and moon traits): psychic or frost damage, on-curve cold, with heavy bonus damage if the target is in dim light or darkness or cannot see you. The school's stated "cast from darkness" core given its first mechanical rung — spends Everlasting Night, Moon Sphere, and Shadow Meld. Offense in a Weak role, justified as the engine's dedicated payoff, deliberately below Evocation's curve when cold-cast. |
 | Shadow Mantle | 2 | Support / extender | Wrap an ally in living shadow (secrets trait): while in dim light or darkness they gain concealment and their attacks against creatures that cannot see them carry a small rider. Extends the darkness engine to the party — the rogue fights inside the night the caster made. Prolongs as an enchant while the darkness holds. |
 | Written in the Stars | 2 | Control / setup | Pronounce a creature's doom (fate trait): a visible mark for a short duration during which the next attack roll against them by anyone gains +1 boon, and their next roll to resist a Twilight spell suffers +1 bane. The fate-to-combat bridge at the rank where the party can spend it — shared socket, near worthless alone. Replaces the vaguer "Fate's Web" seed. |
@@ -113,25 +112,25 @@ Twilight's "illusion" trait overlaps significantly with the Arcane **Illusion** 
 (✨ = undesigned seed)
 1. **Moon chain**: Night's Grasp (R0) → Moon Sphere / Lunar Weapon (R1) → Moonbeam (R2) → Moonbeam Heighten (R3+) → ✨ Eclipse (R4) → honest gap (R5)
 2. **Dreams chain**: Whispers of Doubt (R0) → honest gap (R1) → Sleep / Terrors of the Dark (R2) → Nightmare Realm (R3) → ✨ Dreamwalking (R4) → ✨ Dream Realm (R5)
-3. **Secrets chain**: Dark Sight / Shadow Veil (R0) → Shadow Meld / Cloak of Night / ✨ Dusk Veil (R1) → Silent Night / Everlasting Night / ✨ Fangs of the Dark / ✨ Shadow Mantle (R2) → ✨ Shadow Passage (R3) → ✨ Veil of Secrets (R4) → ✨ Shadowform (R5)
+3. **Secrets chain**: Dark Sight / Shadow Veil (R0) → Shadow Meld / Cloak of Night / Dusk Veil (R1) → Silent Night / Everlasting Night / Fangs of the Dark / Shadow Mantle (R2) → ✨ Shadow Passage (R3) → ✨ Veil of Secrets (R4) → ✨ Shadowform (R5)
 4. **Fate chain**: ✨ Thread of Fate (R0) → Curse of Twilight (R1) → ✨ Written in the Stars (R2) → ✨ Twist of Fate (R3) → ✨ Prophecy (R4) → ✨ Fate's Decree (R5)
 5. **Illusion chain**: Obscuring Veil (R0) → Haunting Shadows (R1) → Aura of Fear / Shadow Step / Twilight Bind (R2) → Shadow Clone (R3) → Embrace of Night (R4) → ✨ Phantom World (R5)
 
 ### Setup + Payoff Combos
 (✨ = undesigned seed)
 - ✅ **Darkness → shadow advantage**: Everlasting Night and Moon Sphere make the field dark → Shadow Meld, Stealth, and dark-sighted allies operate freely; ✨ Eclipse (R4) is the engine compressed into one spell
-- ✨ **Darkness → in-school payoff**: the dark the school makes → ✨ Fangs of the Dark bites from it and ✨ Shadow Mantle arms the party inside it — the stated core loop, currently seeds only
+- ✨ **Darkness → in-school payoff**: the dark the school makes → Fangs of the Dark bites from it and Shadow Mantle arms the party inside it — the stated core loop, currently seeds only
 - ✅ **Fear → compounding terror**: Aura of Fear and Haunting Shadows frighten → Terrors of the Dark and Nightmare Realm collect on the already-shaken
 - ✨ **Fate → doom → spend**: ✨ Thread of Fate (glimpse) → ✨ Written in the Stars (pronounced doom, shared socket) → ✨ Twist of Fate (forced reroll) → ✨ Fate's Decree (weighted destiny) — the fate-to-combat bridge, all seeds
 - ✅/✨ **Sleep → collected at leisure**: Sleep drops the sentry → the ambush follows; ✨ Dreamwalking (R4) extends the *asleep* state into dream intrusion
 - ✅/✨ **Shadow → infiltration**: Shadow Meld (R1) → Shadow Step (R2) → ✨ Shadow Passage (R3) → ✨ Veil of Secrets (R4) → ✨ Shadowform (R5) — the toolkit's upper rungs are seeds
 
 ### Design Completeness Checklist
-- [ ] **R1 Quick Action**: ✨ Dusk Veil seeded — standardized reactive defense (+2 Dodge/Parry, shadow-slip secondary), not yet designed
+- [x] **R1 Quick Action**: Dusk Veil (R1, published 2026-07-10) — standardized reactive defense (+2 Dodge/Parry, shadow-slip secondary in dim light or darkness)
 - [x] **3 published spells per rank through R3**: R0: 5, R1: 6, R2: 9, R3: 5; R4: 1 and R5: 0 need the seeded buildout
-- [x] Defensive options: Shadow Veil (R0), Cloak of Night (R1) published; ✨ Dusk Veil and ✨ Veil of Secrets seeded — thin by design (Weak role)
+- [x] Defensive options: Shadow Veil (R0), Cloak of Night (R1), Dusk Veil (R1) published; ✨ Veil of Secrets seeded — thin by design (Weak role)
 - [x] Utility: Dark Sight, Shadow Meld, Shadow Step, Silent Night, Augury, Divination, Gaseous Form, Moonlit Mirror published — the Excels role is rich, and the seeds extend it to R4-R5
-- [ ] Damage across ranks: Night's Grasp (R0) → Moonbeam (R2, plus proposed Heighten) is the whole published damage kit; ✨ Fangs of the Dark is the only seeded addition — intentionally sparse (Weak offense role)
+- [ ] Damage across ranks: Night's Grasp (R0) → Moonbeam (R2, plus proposed Heighten) is the whole published damage kit; Fangs of the Dark is the only seeded addition — intentionally sparse (Weak offense role)
 - [x] Repeating conditions: slowed, frightened, blinded, asleep — consistent shadow/fear/dream identity across published spells and seeds
 - [ ] Setup+payoff: darkness and fear setups are published and rich; the in-school darkness payoff and the whole fate spend are seeds — top production priority
 - [ ] **Trait × rank coverage**: 28/30 slots hold a published spell, seed, or Heighten extension; honest gaps at dreams R1 and moon R5

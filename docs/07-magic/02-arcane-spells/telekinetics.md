@@ -48,8 +48,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The orb affects large or smaller creatures and lasts a medium duration instead.<br/><strong>(Rank 3)</strong> The orb affects large or smaller creatures and lasts a medium duration, and its pull extends in short range of it instead: the whole area is difficult terrain, and creatures entering it or starting their turn there roll the entry save.
 
->
-
 ### Reflective Barrier
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -67,8 +65,6 @@ sidebar_position: 5
 **Effect** <br/> You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone. 
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +6/+12/+18 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you.
-
->
 
 ### Telekinetic Crush
 
@@ -88,8 +84,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose up to four objects of up to 4 load each instead. Each thrown object deals 4 weapon damage.<br/><strong>(Rank 3)</strong> Choose up to five objects of up to 6 load each instead. Each thrown object deals 6 weapon damage.
 
->
-
 ### Grease
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -100,8 +94,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Choose one, the slippery area extends to medium range from the target location, or the effect lasts for a medium duration instead.<br/><strong>(Rank 3)</strong> Both, the slippery area extends to medium range and the effect lasts for a medium duration.
 
->
-
 ### Haste
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -109,8 +101,6 @@ sidebar_position: 5
  2 | 4 | Hard (10) | Short | concentrate,  enchant (body)
 
 **Effect** <br/> You seize a willing creature in a web of kinetic force, wrenching their movements faster than flesh should allow.<br/>Choose a willing creature in range. On a success, the target gains the following effects:<br/>- gain +1 Movement per turn<br/>- gain +1 Parry and Dodge<br/>- gain +1 boon on all Strength and Agility rolls<br/>- you can replace your Quick Action on your turn for a second Action<br/>The spell lasts for a short duration. When the spell ends, the target suffers one Fatigue and is briefly paralyzed as the released force overtaxes their body. 
-
->
 
 ### Knock
 
@@ -156,8 +146,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The object can be of huge or smaller size and take up to 20 x your carrying capacity in load. A thrown object deals 8 weapon damage.<br/><strong>(Rank 4)</strong> The object can be of gargantuan or smaller size and take up to 30 x your carrying capacity in load. A thrown object deals 10 weapon damage.<br/><strong>(Rank 5)</strong> The object can be of gargantuan or smaller size and take up to 50 x your carrying capacity in load. You can move it up to a medium distance within range. A thrown object deals 12 weapon damage.
 
->
-
 ### Grinding Weight
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -167,8 +155,6 @@ sidebar_position: 5
 **Effect** <br/> You lean invisible tonnage onto the target, and the ground itself seems to rise hungry beneath them.<br/><strong>Weak.</strong> Deal +4 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +8 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +12 damage (ignore 1/2 AV).<br/>If the target is prone, restrained, or grappled, they take +4 additional damage as the weight grinds them against what already holds them. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12/+18 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +6 additional damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +8 additional damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +10 additional damage instead.
-
->
 
 ### Relentless Grip
 
@@ -180,8 +166,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 4)</strong> Deal +5/+10 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 5)</strong> Deal +6/+12 damage (ignore 1/2 AV) on a strong or critical success instead.
 
->
-
 ### Kinetic Implosion
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -192,8 +176,6 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +4/+8/+12 damage (ignore 1/2 AV) to each target, and a prone or restrained target takes +6 additional damage (ignore 1/2 AV) instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) to each target, and a prone or restrained target takes +8 additional damage (ignore 1/2 AV) instead.
 
->
-
 ### Meteoric Throw
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -203,8 +185,6 @@ sidebar_position: 5
 **Effect** <br/> You tear a held enemy off the ground and turn them into ammunition.<br/>Target a creature of large or smaller Size that is currently grappled or restrained.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV).<br/>Also on a success, the target is pushed up to a short distance in any direction you choose. Being slammed into a creature, solid object, or the ground follows the normal rules of the pushed condition, and the throw ends any grapple holding them.<br/>This spell has no effect on a target that is neither grappled nor restrained. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Target a creature of huge or smaller Size instead, and deal +4/+8/+12 damage (ignore 1/2 AV).<br/><strong>(Rank 5)</strong> Target a creature of huge or smaller Size instead, and deal +5/+10/+15 damage (ignore 1/2 AV).
-
->
 
 ### Part Stone
 
