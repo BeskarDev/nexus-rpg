@@ -132,7 +132,7 @@ sidebar_position: 1
 
 **Effect** <br/> You form three flaming orbs hovering before you. From each orb, you can shoot a beam of scorching flame. You can choose the same or different targets and roll one attack for each beam.<br/><strong>Weak.</strong><em> </em>The beam deals +2 fire damage.<br/><strong>Strong.</strong> The beam deals +4 fire damage.<br/><strong>Critical.</strong> The beam deals +6 fire damage. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Each beam deals +4/8/12 damage instead.<br/><strong>(Rank 3)</strong> Each beam deals +6/12/18 damage instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Each beam deals +3/6/9 damage instead.<br/><strong>(Rank 3)</strong> Each beam deals +4/8/12 damage instead.
 
 >
 
@@ -142,9 +142,9 @@ sidebar_position: 1
 ---|---|---|---|---
  2 | 4 | Hard (10) | Long | -
 
-**Effect** <br/> You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll’s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +4 fire damage to all targets and each of them suffers burning (2) for a short duration.<br/><strong>Strong.</strong> Deals +8 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +12 fire damage to all targets and each of them suffers burning (6) for a short duration. 
+**Effect** <br/> You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll’s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +3 fire damage to all targets and each of them suffers burning (2) for a short duration.<br/><strong>Strong.</strong> Deals +6 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +9 fire damage to all targets and each of them suffers burning (6) for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/12/18 damage to all targets instead and increase the burning to (4/6/8).
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to all targets instead and increase the burning to (4/6/8).
 
 >
 
@@ -154,9 +154,9 @@ sidebar_position: 1
 ---|---|---|---|---
  2 | 4 | vs. Resist | Short | blast (cone)
 
-**Effect** <br/> You conjure a chilling wave of frost that emanates an icy blast in front of you.<br/><strong>Weak.</strong> Deal +4 frost damage to each target.<br/><strong>Strong.</strong> Deal +8 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +12 frost damage to each target and they are slowed for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. 
+**Effect** <br/> You conjure a chilling wave of frost that emanates an icy blast in front of you.<br/><strong>Weak.</strong> Deal +3 frost damage to each target.<br/><strong>Strong.</strong> Deal +6 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +9 frost damage to each target and they are slowed for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/12/18 damage to each target instead. On a critical success, the slowed condition lasts for a medium duration instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead. On a critical success, the slowed condition lasts for a medium duration instead.
 
 >
 
@@ -178,9 +178,9 @@ sidebar_position: 1
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Medium | blast (line)
 
-**Effect** <br/> You summon a powerful strike of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly staggered. 
+**Effect** <br/> You summon a powerful strike of lightning that streaks forth in a straight line from you to a target point up to a short distance away, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +3 lightning damage to each target.<br/><strong>Strong.</strong> Deal +6 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +9 lightning damage to each target and they are briefly staggered. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/12/18 damage to each target instead. On a strong or critical success, targets are briefly stunned instead of staggered.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead. On a strong or critical success, targets are briefly stunned instead of staggered.
 
 >
 
@@ -203,6 +203,66 @@ sidebar_position: 1
  3 | 6 | vs. Dodge | Long | -
 
 **Effect** <br/> You conjure an unnatural black flame which relentlessly consumes everything it touches.<br/><strong>Weak.</strong> Deal +6 fire damage and the target suffers burning (2).<br/><strong>Strong. </strong>Deal +12 fire damage and the target suffers burning (4).<br/><strong>Critical. </strong>Deal +18 fire damage and the target suffers burning (6).<br/>The black fire ignores fire resistance and reduces immunity against fire damage to a resistance against it. Burning from black fire can‘t be put out by mundane means and only does, once the caster of it is unconscious or dead. Alternately it can be put out by magic that removes a magical effect to be stopped.
+
+### Chain Lightning
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Long | -
+
+**Effect** <br/> You loose a bolt that strikes like a whip and then goes hunting, leaping from body to body along the paths of least resistance.<br/><strong>Weak.</strong> Deal +8 lightning damage to the target.<br/><strong>Strong.</strong> Deal +16 lightning damage to the target.<br/><strong>Critical.</strong> Deal +24 lightning damage to the target.<br/>Also on a success, the lightning arcs from the target to up to three additional creatures, each within close range of the previously struck creature, using your roll's result vs. their Dodge. On a hit, each of them takes half as much damage as the first target. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +10/+20/+30 lightning damage to the first target instead.<br/><strong>(Rank 5)</strong> Deal +12/+24/+36 lightning damage to the first target instead.
+
+>
+
+### Dissolving Ray
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Dodge | Medium | -
+
+**Effect** <br/> You lock a thin, sustained ray of vitriol onto a single foe, holding it on them until their armor smokes, runs, and drips from their shoulders.<br/><strong>Weak.</strong> Deal +6 acid damage.<br/><strong>Strong.</strong> Deal +12 acid damage.<br/><strong>Critical.</strong> Deal +18 acid damage.<br/>Also on a success, the target loses 2 AV (min. 0) for a short duration, and one piece of their worn equipment of your choice (armor, helmet, or shield) must make a Durability check. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +8/+16/+24 acid damage and the target loses 3 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 acid damage and the target loses 4 AV (min. 0) instead.
+
+>
+
+### Cone of Cold
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | vs. Resist | Medium | blast (cone)
+
+**Effect** <br/> You exhale the cold between the stars, and a fan of white silence rolls out from your hands, flash-freezing everything it touches.<br/>Target all creatures in the cone.<br/><strong>Weak.</strong> Deal +4 frost damage to each target.<br/><strong>Strong.</strong> Deal +8 frost damage to each target.<br/><strong>Critical.</strong> Deal +12 frost damage to each target.<br/>Also on a success, each target is briefly slowed. A target that was already slowed is briefly restrained instead, frozen in a shell of ice. 
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Deal +5/+10/+15 frost damage to each target instead.
+
+>
+
+### Voltaic Surge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | vs. Dodge | Long | -
+
+**Effect** <br/> You hold the bolt until the moment their footing falters, then release it through the flaw, and the lightning knows exactly where to go.<br/><strong>Weak.</strong> Deal +8 lightning damage.<br/><strong>Strong.</strong> Deal +16 lightning damage.<br/><strong>Critical.</strong> Deal +24 lightning damage.<br/>If the target was staggered when this spell hits them, they take +6 additional lightning damage and are briefly stunned. 
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Deal +10/+20/+30 lightning damage, and a staggered target takes +8 additional lightning damage and is briefly stunned instead.
+
+>
+
+### Wall of Fire
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Long | concentrate
+
+**Effect** <br/> You draw a line across the world and set it alight, raising a roaring curtain of flame that turns the battlefield into territory.<br/>Choose any shape for the wall in a continuous path along the ground with up to a medium distance from start to end within range. The wall also extends a short distance into the air.<br/>On a success, the wall of flame rises along the chosen path, and you choose one side of the wall to be its scorching side. Any creature standing in the wall's path when it rises takes 8 fire damage (ignore AV) and starts burning (4).<br/>The wall lasts for up to a medium duration while you concentrate. It sheds bright light in short range and dim light in medium range of it, and it blocks sight as a Heavily Obscured area.<br/>When a creature moves through the wall, starts their turn inside it, or starts their turn in melee range of its scorching side, they take 8 fire damage (ignore AV) and start burning (4). 
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The wall's path can be up to a long distance from start to end, and creatures take 10 fire damage (ignore AV) from it instead.
+
+>
 
 ### Fulminate
 

@@ -76,7 +76,7 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | vs. Resist | Medium | -
 
-**Effect** <br/> You telekinetically grasp at a creature, suffocating them inside a giant, invisible hand.<br/><strong>Weak. </strong>Deal +4 crush damage.<br/><strong>Strong. </strong>Deal +8 crush damage.<br/><strong>Critical. </strong>Deal +12 crush damage. 
+**Effect** <br/> You telekinetically grasp at a creature, suffocating them inside a giant, invisible hand.<br/><strong>Weak. </strong>Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical. </strong>Deal +9 damage (ignore 1/2 AV). 
 
 ### Telekinetic Volley
 
@@ -155,6 +155,54 @@ sidebar_position: 5
 **Effect** <br/> You hold out your hand and grasp at a large object in range, slowly levitating it it into the air. The object can be of large or smaller size and take up to 10 x your carrying capacity in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. very hard difficulty (12). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range. On a hit, the object deals 6 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The object can be of huge or smaller size and take up to 20 x your carrying capacity in load. A thrown object deals 8 weapon damage.<br/><strong>(Rank 4)</strong> The object can be of gargantuan or smaller size and take up to 30 x your carrying capacity in load. A thrown object deals 10 weapon damage.<br/><strong>(Rank 5)</strong> The object can be of gargantuan or smaller size and take up to 50 x your carrying capacity in load. You can move it up to a medium distance within range. A thrown object deals 12 weapon damage.
+
+>
+
+### Grinding Weight
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> You lean invisible tonnage onto the target, and the ground itself seems to rise hungry beneath them.<br/><strong>Weak.</strong> Deal +4 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +8 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +12 damage (ignore 1/2 AV).<br/>If the target is prone, restrained, or grappled, they take +4 additional damage as the weight grinds them against what already holds them. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12/+18 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +6 additional damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +8 additional damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +10 additional damage instead.
+
+>
+
+### Relentless Grip
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> You add your will to a hold already closed around the target, and it tightens like a knot pulled wet.<br/>Target a creature that is currently grappled or restrained.<br/><strong>Weak.</strong> The target suffers +1 bane on rolls to escape or end the grappled or restrained state, and if the state has a set duration, it extends by one step.<br/><strong>Strong.</strong> Same as a weak success, and deal +3 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Same as a weak success, and deal +6 damage (ignore 1/2 AV).<br/>This spell has no effect on a target that is neither grappled nor restrained. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 4)</strong> Deal +5/+10 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 5)</strong> Deal +6/+12 damage (ignore 1/2 AV) on a strong or critical success instead.
+
+>
+
+### Kinetic Implosion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | Very Hard (12) | Medium | -
+
+**Effect** <br/> You clench your fist and the air itself collapses inward on a point, dragging everything toward a center that gives nothing back.<br/>On a success, this spell targets every creature in close range of the target location. Use your roll's result vs. their Dodge. Each creature hit is pulled a close distance toward the target location.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV) to each target.<br/>A target that is prone or restrained when hit takes +4 additional damage (ignore 1/2 AV), ground against the earth by the collapse. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +4/+8/+12 damage (ignore 1/2 AV) to each target, and a prone or restrained target takes +6 additional damage (ignore 1/2 AV) instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) to each target, and a prone or restrained target takes +8 additional damage (ignore 1/2 AV) instead.
+
+>
+
+### Meteoric Throw
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You tear a held enemy off the ground and turn them into ammunition.<br/>Target a creature of large or smaller Size that is currently grappled or restrained.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV).<br/>Also on a success, the target is pushed up to a short distance in any direction you choose. Being slammed into a creature, solid object, or the ground follows the normal rules of the pushed condition, and the throw ends any grapple holding them.<br/>This spell has no effect on a target that is neither grappled nor restrained. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Target a creature of huge or smaller Size instead, and deal +4/+8/+12 damage (ignore 1/2 AV).<br/><strong>(Rank 5)</strong> Target a creature of huge or smaller Size instead, and deal +5/+10/+15 damage (ignore 1/2 AV).
 
 >
 

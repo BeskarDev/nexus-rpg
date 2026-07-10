@@ -166,9 +166,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | -
 
-**Effect** <br/> You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +6 damage against each target.<br/><strong>Strong.</strong> Deal +12 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +18 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects. 
+**Effect** <br/> You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll’s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +4 damage against each target.<br/><strong>Strong.</strong> Deal +8 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +12 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> The explosion deals +8/+16/+24 damage to all targets instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> The explosion deals +5/+10/+15 damage to all targets instead.
 
 >
 
@@ -188,7 +188,7 @@ sidebar_position: 6
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 2 | 4 | vs. Resist | Short | singular
+ 2 | 4 | vs. Resist | Short | curse,  singular
 
 **Effect** <br/> With a malevolent chant and a wave of your hand, you cast a powerful curse upon a target, subjecting them to a lingering maleficent influence.<br/>Choose one of their attributes (Strength, Agility, Spirit, or Mind).<br/>On a success, the target suffers the following effects:<br/>- Their attribute die for the chosen attribute is reduced by one step.<br/>- They suffer +1 bane on any attack rolls against you.<br/>- You gain +1 boon on attacks against the target.<br/>The curse lasts for a long duration. Lowering an Attribute die temporarily doesn't change any statistics derived from it.  
 
@@ -224,9 +224,9 @@ sidebar_position: 6
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | vs. Resist | Short | concentrate
+ 3 | 6 | vs. Resist | Short | concentrate,  curse
 
-**Effect** <br/> You afflict a creature with a specialized curse that makes them vulnerable to disease and accelerates their aging.<br/>On a success, the target suffers the following effects:<br/>- They are deprived and can’t remove this condition by eating, drinking, or sleeping.<br/>- They lose any immunity or resistance to disease, being poisoned, or poison damage.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the curse early. If they are unable to end the curse for a short duration, it becomes permanent without you having to concentrate on it. It can then only be removed by magical means, such as the Remove Curse spell. 
+**Effect** <br/> You afflict a creature with a specialized curse that makes them vulnerable to disease and accelerates their aging.<br/>On a success, the target suffers the following effects:<br/>- They are deprived and can’t remove this condition by eating, drinking, or sleeping.<br/>- They lose any immunity or resistance to disease, being poisoned, or poison damage.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the curse early. If they are unable to end the curse for a short duration, it becomes permanent without you having to concentrate on it. It can then only be removed by magical means, such as the <em>Break Curse</em> spell. 
 
 ### Negative Energy Flood
 
@@ -234,7 +234,7 @@ sidebar_position: 6
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | blast (cone)
 
-**Effect** <br/> You release a torrent of pure negative energy that devastates living creatures while empowering the undead. Target all living creatures in the spell's area.<br/><strong>Weak.</strong> Each target takes +4 necrotic damage.<br/><strong>Strong.</strong> Each target takes +8 necrotic damage and is briefly shaken.<br/><strong>Critical.</strong> Each target takes +12 necrotic damage and and is briefly stunned.<br/>Plant life in the area immediately withers and dies. Any living creatures being killed by this spell animate as tier 1 zombies (see the companion rules for more details) under your control at the start of your next turn and last for a short duration (they crumble to dust when the duration ends). 
+**Effect** <br/> You release a torrent of pure negative energy that devastates living creatures while empowering the undead. Target all living creatures in the spell's area.<br/><strong>Weak.</strong> Each target takes +4 necrotic damage.<br/><strong>Strong.</strong> Each target takes +8 necrotic damage and is briefly dazed.<br/><strong>Critical.</strong> Each target takes +12 necrotic damage and is briefly stunned.<br/>Plant life in the area immediately withers and dies. Any living creatures being killed by this spell animate as tier 1 zombies (see the companion rules for more details) under your control at the start of your next turn and last for a short duration (they crumble to dust when the duration ends). 
 
 ### Reaper’s Harvest
 
@@ -270,7 +270,7 @@ sidebar_position: 6
 ---|---|---|---|---
  3 | 6 | vs. Resist | Long | -
 
-**Effect** <br/> You channel concentrated negative energy to rapidly age and decay a single target, causing their body to wither and weaken.<br/>On a hit, the target cannot regain HP for a short duration.<br/><strong>Weak.</strong> Deal +8 necrotic damage.<br/><strong>Strong.</strong> Deal +16 necrotic damage and they are briefly shaken.<br/><strong>Critical.</strong> Deal +24 necrotic damage and they are briefly stunned. 
+**Effect** <br/> You channel concentrated negative energy to rapidly age and decay a single target, causing their body to wither and weaken.<br/>On a hit, the target cannot regain HP for a short duration.<br/><strong>Weak.</strong> Deal +8 necrotic damage.<br/><strong>Strong.</strong> Deal +16 necrotic damage and they are briefly dazed.<br/><strong>Critical.</strong> Deal +24 necrotic damage and they are briefly stunned. 
 
 ### Death’s Embrace
 

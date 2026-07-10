@@ -145,4 +145,47 @@ The five designs below complete Magical Sense as a full Signature talent (R1–R
 
 ---
 
-> **Status:** All five designs complete. Magical Sense is now a full Signature talent (R1–R5). Four new Basic and High-Level talents address ritual knowledge (Ancient Rites), curse mechanics (Curse Lore), challenge integration (Scholar's Preparation), and mythological capstone (Master of Myths). Lore now has 11 talent proposals (6 existing + 5 new) with complete coverage of its Oracle, Warlock, and Shaman archetype dependencies.
+> **Status:** Five designs complete. Magical Sense is now a full Signature talent (R1–R5). Four new Basic and High-Level talents address ritual knowledge (Ancient Rites), curse mechanics (Curse Lore), challenge integration (Scholar's Preparation), and mythological capstone (Master of Myths). Lore has 11 talent proposals (6 existing + 5 new) with coverage of Oracle, Warlock, and Shaman dependencies. Master of Myths is the first High-Level talent.
+
+---
+
+### True Name (Lore, High-Level)
+*In ancient traditions, knowing a being's true name grants authority over it — and you have studied deeply enough to know names that should not be spoken.*
+
+**Rank 4.** Once per scene, when you face a supernatural creature (spirit, undead, demon, extraplanar entity, or mythological beast), you can attempt to recall its true name through your scholarship as a **Quick Action**. Roll MND + Lore vs. TN 12. On a success, you know its true name for this scene. Invoking the true name is an **Action**: roll MND + Lore vs. the creature's Resist.
+- **Weak success:** The creature cannot move toward you or any ally for a **brief** duration.
+- **Strong success:** The creature is also **briefly stunned**.
+- **Critical success:** The creature is also compelled to answer one question truthfully before the stun ends.
+
+**Rank 5.** Once per day, when you know a supernatural creature's true name (through this talent or any other means), you can perform a rite of binding as a 1-minute ritual. Roll MND + Lore vs. the creature's Resist. On a success, choose one constraint that lasts for a **medium** duration:
+- The creature cannot take harmful actions against any creature.
+- The creature must answer any yes-or-no question you ask truthfully.
+- The creature cannot leave the area it currently occupies.
+- The creature must obey one specific command you have spoken aloud during the rite.
+
+The binding ends early if the creature is attacked by you or any ally.
+
+**Archetype enablement:** Warlock (eldritch pact knowledge extended to naming authority), Summoner (binding summoned entities rather than fighting them), Oracle (ancient naming traditions as prophetic practice), Shaman (spirit names and ancestor names as tools of communion)
+**Capstone feeling:** The scholar who knows what things are truly called — and therefore what authority over them truly means.
+**Design notes:** TN 12 for the naming roll is intentionally difficult; failing to recall the name of a major spirit or demon is plausible even at Lore R4 and raises the stakes of research before a confrontation. The three-tier invoke follows standard success-level structure. R5's 1-minute ritual cost prevents mid-combat use, making it a preparation and interrogation tool rather than a fight-ender. The binding ends if the party attacks, creating a genuine tension between information-gathering and combat. All four binding options come from a bounded menu per the design principle of giving the GM parameters rather than open-ended discretion.
+
+---
+
+### Voice of Ages (Lore, High-Level)
+*Your command of historical cycles is so complete that you can read what forces are at work and predict what they will do next.*
+
+**Rank 4.** Once per scene, after observing a faction, location, or group for at least 5 minutes (or when you have relevant prior information from research), you can identify its historical pattern as a **Quick Action**. Roll MND + Lore vs. TN 10. On a success, choose two of the following. The GM answers from this bounded menu:
+- **Faction movement:** The faction's most likely immediate action. The GM names one of: aggressive expansion, defensive consolidation, pursuit of a specific resource, internal conflict, or preparation for a ritual or ceremony.
+- **Location significance:** One item, danger, or historical artifact this site has held in its past, and whether current conditions suggest it is likely still present.
+- **Historical weakness:** One specific failure point this type of group has shown in the past. The GM names one condition, circumstance, or opponent type that has undone similar groups before.
+- **Alliance forecast:** The most unstable relationship within this faction. The GM names one specific pairing at risk of betrayal or an unexpected alliance.
+
+**Rank 5.** Once per day, before entering any scene (combat, negotiation, challenge, or exploration), you can spend 10 minutes in contemplation or study. State one specific prediction aloud: what an enemy will do, where a threat will emerge, or what offer a person will make. If your prediction proves correct, your whole party gains +1 boon on all rolls directly related to that predicted event for its entire duration. If your prediction proves incorrect, you gain +1 boon on your next roll — the analysis was still instructive.
+
+**Archetype enablement:** Oracle (the prophetic-history identity that distinguishes Oracle from Insight's Foresight), Shaman (ancestor-pattern recognition as spirit knowledge), Warlock (forbidden historical lore applied to tactical advantage), Summoner (understanding the historical conditions that created and constrain summoned entities)
+**Capstone feeling:** The scholar who can walk into a room and already understand the forces at play — not through supernatural vision, but by knowing what has always happened under these conditions.
+**Design notes:** R4's four-category bounded menu prevents "tell me everything about the dungeon" from being a valid use; the GM picks one answer within the named category rather than inventing freely. Each category maps to a distinct decision-point type players face in play. R5 is high-risk in the sense that the prediction must be stated before the scene begins — no retroactive application. The consolation prize (single +1 boon on a wrong prediction) prevents the ability from being purely punishing when the situation shifts mid-session.
+
+---
+
+> **Status:** Seven designs complete. Lore now has 13 talent proposals (6 existing + 7 new). Magical Sense is a full Signature talent (R1–R5). Master of Myths, True Name, and Voice of Ages are the three High-Level talents (R4–R5).

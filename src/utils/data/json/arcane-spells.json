@@ -129,7 +129,7 @@
         "range": "Medium",
         "properties": "-",
         "effect": "You form three flaming orbs hovering before you. From each orb, you can shoot a beam of scorching flame. You can choose the same or different targets and roll one attack for each beam.<br/><strong>Weak.</strong><em> </em>The beam deals +2 fire damage.<br/><strong>Strong.</strong> The beam deals +4 fire damage.<br/><strong>Critical.</strong> The beam deals +6 fire damage.",
-        "heightened": "<strong>(Rank 2)</strong> Each beam deals +4/8/12 damage instead.<br/><strong>(Rank 3)</strong> Each beam deals +6/12/18 damage instead."
+        "heightened": "<strong>(Rank 2)</strong> Each beam deals +3/6/9 damage instead.<br/><strong>(Rank 3)</strong> Each beam deals +4/8/12 damage instead."
     },
     {
         "name": "Fireball",
@@ -139,8 +139,8 @@
         "target": "Hard (10)",
         "range": "Long",
         "properties": "-",
-        "effect": "You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll\u2019s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +4 fire damage to all targets and each of them suffers burning (2) for a short duration.<br/><strong>Strong.</strong> Deals +8 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +12 fire damage to all targets and each of them suffers burning (6) for a short duration.",
-        "heightened": "<strong>(Rank 3)</strong> Deal +6/12/18 damage to all targets instead and increase the burning to (4/6/8)."
+        "effect": "You channel a violent sphere of flame, pulsing with raw elemental energy. On a success, you throw it towards the target location where it explodes upon impact.<br/>This spell targets every creature in close range of the target location. Use your roll\u2019s result vs. Dodge.<br/><strong>Weak.</strong><em> </em>Deals +3 fire damage to all targets and each of them suffers burning (2) for a short duration.<br/><strong>Strong.</strong> Deals +6 fire damage to all targets and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deals +9 fire damage to all targets and each of them suffers burning (6) for a short duration.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +4/8/12 damage to all targets instead and increase the burning to (4/6/8)."
     },
     {
         "name": "Frost Wave",
@@ -150,8 +150,8 @@
         "target": "vs. Resist",
         "range": "Short",
         "properties": "blast (cone)",
-        "effect": "You conjure a chilling wave of frost that emanates an icy blast in front of you.<br/><strong>Weak.</strong> Deal +4 frost damage to each target.<br/><strong>Strong.</strong> Deal +8 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +12 frost damage to each target and they are slowed for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early.",
-        "heightened": "<strong>(Rank 3)</strong> Deal +6/12/18 damage to each target instead. On a critical success, the slowed condition lasts for a medium duration instead."
+        "effect": "You conjure a chilling wave of frost that emanates an icy blast in front of you.<br/><strong>Weak.</strong> Deal +3 frost damage to each target.<br/><strong>Strong.</strong> Deal +6 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +9 frost damage to each target and they are slowed for a short duration. They can roll Strength + Fortitude at the end of their turns to end the effect early.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead. On a critical success, the slowed condition lasts for a medium duration instead."
     },
     {
         "name": "Ice Lance",
@@ -172,8 +172,8 @@
         "target": "vs. Dodge",
         "range": "Medium",
         "properties": "blast (line)",
-        "effect": "You summon a powerful strike of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly staggered.",
-        "heightened": "<strong>(Rank 3)</strong> Deal +6/12/18 damage to each target instead. On a strong or critical success, targets are briefly stunned instead of staggered."
+        "effect": "You summon a powerful strike of lightning that streaks forth in a straight line from you to a target point up to a short distance away, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +3 lightning damage to each target.<br/><strong>Strong.</strong> Deal +6 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +9 lightning damage to each target and they are briefly staggered.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +4/8/12 damage to each target instead. On a strong or critical success, targets are briefly stunned instead of staggered."
     },
     {
         "name": "Prismatic Missile",
@@ -294,7 +294,7 @@
         "range": "Short",
         "properties": "blast (cone)",
         "effect": "Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell\u2019s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early.",
-        "heightened": "<strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignore AV) instead."
+        "heightened": "<strong>(Rank 3) </strong>Deal +3/+6/+9 psychic damage (ignore AV) instead."
     },
     {
         "name": "Illusionary Terrain",
@@ -349,7 +349,7 @@
         "range": "Medium",
         "properties": "illusory",
         "effect": "You create a spacial illusion where a deadly trap or hazard springs into being. Target all creatures in close range of the target location.<br/>On a success, each target believes they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. crumbling ceiling or spikes from the ground).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are grappled and restrained by the illusory trap.<br/>After a target believes they were pinned by the trap, the illusion lasts for a short duration or until they see through it.",
-        "heightened": "<strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) against each target instead."
+        "heightened": "<strong>(Rank 3) </strong>Deal +3/+6/+9 psychic damage (ignore AV) against each target instead."
     },
     {
         "name": "Waking Dream",
@@ -579,8 +579,8 @@
         "target": "vs. Parry",
         "range": "Medium",
         "properties": "concentrate",
-        "effect": "You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +4 acid damage (ignore 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +8 acid damage (ignore 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +12 acid (ignore 1/2 AV) damage to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril\u2019s area is considered difficult terrain. The tendrils stay at the target location for a short duration.",
-        "heightened": "<strong>(Rank 3) </strong>Deal +6/12/18 acid damage (ignore 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead."
+        "effect": "You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +2 acid damage (ignore 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +4 acid damage (ignore 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +6 acid damage (ignore 1/2 AV) to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril\u2019s area is considered difficult terrain. The tendrils stay at the target location for a short duration.",
+        "heightened": "<strong>(Rank 3) </strong>Deal +3/6/9 acid damage (ignore 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead."
     },
     {
         "name": "Phase Step",
@@ -634,7 +634,7 @@
         "target": "vs. Dodge",
         "range": "Medium",
         "properties": "blast (cone)",
-        "effect": "A cluster of fleshy, razor-tipped tendrils erupt from your body and lash out at creatures in front of you. Target all creatures in the spell\u2019s area.<br/><strong>Weak.</strong> Deal +6 damage to each target.<br/><strong>Strong.</strong> Deal +12 damage to each target and they suffer bleeding (4) until healed.<br/><strong>Critical.</strong> Deal +18 damage to each target and they suffer bleeding (6) until healed.",
+        "effect": "A cluster of fleshy, razor-tipped tendrils erupt from your body and lash out at creatures in front of you. Target all creatures in the spell\u2019s area.<br/><strong>Weak.</strong> Deal +4 damage to each target.<br/><strong>Strong.</strong> Deal +8 damage to each target and they suffer bleeding (2) until healed.<br/><strong>Critical.</strong> Deal +12 damage to each target and they suffer bleeding (4) until healed.",
         "heightened": "-"
     },
     {
@@ -942,7 +942,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "-",
-        "effect": "You telekinetically grasp at a creature, suffocating them inside a giant, invisible hand.<br/><strong>Weak. </strong>Deal +4 crush damage.<br/><strong>Strong. </strong>Deal +8 crush damage.<br/><strong>Critical. </strong>Deal +12 crush damage.",
+        "effect": "You telekinetically grasp at a creature, suffocating them inside a giant, invisible hand.<br/><strong>Weak. </strong>Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong. </strong>Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical. </strong>Deal +9 damage (ignore 1/2 AV).",
         "heightened": "-"
     },
     {
@@ -1195,8 +1195,8 @@
         "target": "Hard (10)",
         "range": "Medium",
         "properties": "-",
-        "effect": "You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll\u2019s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +6 damage against each target.<br/><strong>Strong.</strong> Deal +12 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +18 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects.",
-        "heightened": "<strong>(Rank 3)</strong> The explosion deals +8/+16/+24 damage to all targets instead."
+        "effect": "You cause a corpse to violently explode in a burst of necrotic energy and bone fragments.<br/>Target any mostly intact corpse of at least small Size in range. On a success, the corpse explodes, target all creatures in close range of it. For a corpse with at least large Size, target all creatures in short range instead. Use your roll\u2019s result vs. their Dodge.<br/><strong>Weak. </strong>Deal +4 damage against each target.<br/><strong>Strong.</strong> Deal +8 damage against each target and they are knocked prone.<br/><strong>Critical.</strong> Deal +12 damage against each target and they are knocked prone.<br/>The explosion destroys the corpse completely, making it unusable for any necromantic spells or effects.",
+        "heightened": "<strong>(Rank 3)</strong> The explosion deals +5/+10/+15 damage to all targets instead."
     },
     {
         "name": "Death Mark",
@@ -1216,7 +1216,7 @@
         "focus": "4",
         "target": "vs. Resist",
         "range": "Short",
-        "properties": "singular",
+        "properties": "curse, singular",
         "effect": "With a malevolent chant and a wave of your hand, you cast a powerful curse upon a target, subjecting them to a lingering maleficent influence.<br/>Choose one of their attributes (Strength, Agility, Spirit, or Mind).<br/>On a success, the target suffers the following effects:<br/>- Their attribute die for the chosen attribute is reduced by one step.<br/>- They suffer +1 bane on any attack rolls against you.<br/>- You gain +1 boon on attacks against the target.<br/>The curse lasts for a long duration. Lowering an Attribute die temporarily doesn't change any statistics derived from it.",
         "heightened": "<strong>(Rank 3)</strong> You can reduce two different attributes by one step each, or reduce one attribute by two steps instead."
     },
@@ -1249,8 +1249,8 @@
         "focus": "6",
         "target": "vs. Resist",
         "range": "Short",
-        "properties": "concentrate",
-        "effect": "You afflict a creature with a specialized curse that makes them vulnerable to disease and accelerates their aging.<br/>On a success, the target suffers the following effects:<br/>- They are deprived and can\u2019t remove this condition by eating, drinking, or sleeping.<br/>- They lose any immunity or resistance to disease, being poisoned, or poison damage.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the curse early. If they are unable to end the curse for a short duration, it becomes permanent without you having to concentrate on it. It can then only be removed by magical means, such as the Remove Curse spell.",
+        "properties": "concentrate, curse",
+        "effect": "You afflict a creature with a specialized curse that makes them vulnerable to disease and accelerates their aging.<br/>On a success, the target suffers the following effects:<br/>- They are deprived and can\u2019t remove this condition by eating, drinking, or sleeping.<br/>- They lose any immunity or resistance to disease, being poisoned, or poison damage.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the curse early. If they are unable to end the curse for a short duration, it becomes permanent without you having to concentrate on it. It can then only be removed by magical means, such as the <em>Break Curse</em> spell.",
         "heightened": "-"
     },
     {
@@ -1261,7 +1261,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "blast (cone)",
-        "effect": "You release a torrent of pure negative energy that devastates living creatures while empowering the undead. Target all living creatures in the spell's area.<br/><strong>Weak.</strong> Each target takes +4 necrotic damage.<br/><strong>Strong.</strong> Each target takes +8 necrotic damage and is briefly shaken.<br/><strong>Critical.</strong> Each target takes +12 necrotic damage and and is briefly stunned.<br/>Plant life in the area immediately withers and dies. Any living creatures being killed by this spell animate as tier 1 zombies (see the companion rules for more details) under your control at the start of your next turn and last for a short duration (they crumble to dust when the duration ends).",
+        "effect": "You release a torrent of pure negative energy that devastates living creatures while empowering the undead. Target all living creatures in the spell's area.<br/><strong>Weak.</strong> Each target takes +4 necrotic damage.<br/><strong>Strong.</strong> Each target takes +8 necrotic damage and is briefly dazed.<br/><strong>Critical.</strong> Each target takes +12 necrotic damage and is briefly stunned.<br/>Plant life in the area immediately withers and dies. Any living creatures being killed by this spell animate as tier 1 zombies (see the companion rules for more details) under your control at the start of your next turn and last for a short duration (they crumble to dust when the duration ends).",
         "heightened": "-"
     },
     {
@@ -1305,7 +1305,7 @@
         "target": "vs. Resist",
         "range": "Long",
         "properties": "-",
-        "effect": "You channel concentrated negative energy to rapidly age and decay a single target, causing their body to wither and weaken.<br/>On a hit, the target cannot regain HP for a short duration.<br/><strong>Weak.</strong> Deal +8 necrotic damage.<br/><strong>Strong.</strong> Deal +16 necrotic damage and they are briefly shaken.<br/><strong>Critical.</strong> Deal +24 necrotic damage and they are briefly stunned.",
+        "effect": "You channel concentrated negative energy to rapidly age and decay a single target, causing their body to wither and weaken.<br/>On a hit, the target cannot regain HP for a short duration.<br/><strong>Weak.</strong> Deal +8 necrotic damage.<br/><strong>Strong.</strong> Deal +16 necrotic damage and they are briefly dazed.<br/><strong>Critical.</strong> Deal +24 necrotic damage and they are briefly stunned.",
         "heightened": "-"
     },
     {
@@ -1461,5 +1461,148 @@
         "properties": "-",
         "effect": "You tear a torrent of raw lightning out of the sky and hurl it into your enemies in a single blinding cataclysm. Target all creatures in medium range of the target location.<br/><strong>Weak.</strong> Deal +6 lightning damage to each target.<br/><strong>Strong.</strong> Deal +12 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +18 lightning damage to each target and they are staggered for a short duration.",
         "heightened": "-"
+    },
+    {
+        "name": "Chain Lightning",
+        "discipline": "Evocation",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Dodge",
+        "range": "Long",
+        "properties": "-",
+        "effect": "You loose a bolt that strikes like a whip and then goes hunting, leaping from body to body along the paths of least resistance.<br/><strong>Weak.</strong> Deal +8 lightning damage to the target.<br/><strong>Strong.</strong> Deal +16 lightning damage to the target.<br/><strong>Critical.</strong> Deal +24 lightning damage to the target.<br/>Also on a success, the lightning arcs from the target to up to three additional creatures, each within close range of the previously struck creature, using your roll's result vs. their Dodge. On a hit, each of them takes half as much damage as the first target.",
+        "heightened": "<strong>(Rank 4)</strong> Deal +10/+20/+30 lightning damage to the first target instead.<br/><strong>(Rank 5)</strong> Deal +12/+24/+36 lightning damage to the first target instead."
+    },
+    {
+        "name": "Dissolving Ray",
+        "discipline": "Evocation",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You lock a thin, sustained ray of vitriol onto a single foe, holding it on them until their armor smokes, runs, and drips from their shoulders.<br/><strong>Weak.</strong> Deal +6 acid damage.<br/><strong>Strong.</strong> Deal +12 acid damage.<br/><strong>Critical.</strong> Deal +18 acid damage.<br/>Also on a success, the target loses 2 AV (min. 0) for a short duration, and one piece of their worn equipment of your choice (armor, helmet, or shield) must make a Durability check.",
+        "heightened": "<strong>(Rank 4)</strong> Deal +8/+16/+24 acid damage and the target loses 3 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 acid damage and the target loses 4 AV (min. 0) instead."
+    },
+    {
+        "name": "Cone of Cold",
+        "discipline": "Evocation",
+        "rank": "4",
+        "focus": "8",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "blast (cone)",
+        "effect": "You exhale the cold between the stars, and a fan of white silence rolls out from your hands, flash-freezing everything it touches.<br/>Target all creatures in the cone.<br/><strong>Weak.</strong> Deal +4 frost damage to each target.<br/><strong>Strong.</strong> Deal +8 frost damage to each target.<br/><strong>Critical.</strong> Deal +12 frost damage to each target.<br/>Also on a success, each target is briefly slowed. A target that was already slowed is briefly restrained instead, frozen in a shell of ice.",
+        "heightened": "<strong>(Rank 5)</strong> Deal +5/+10/+15 frost damage to each target instead."
+    },
+    {
+        "name": "Voltaic Surge",
+        "discipline": "Evocation",
+        "rank": "4",
+        "focus": "8",
+        "target": "vs. Dodge",
+        "range": "Long",
+        "properties": "-",
+        "effect": "You hold the bolt until the moment their footing falters, then release it through the flaw, and the lightning knows exactly where to go.<br/><strong>Weak.</strong> Deal +8 lightning damage.<br/><strong>Strong.</strong> Deal +16 lightning damage.<br/><strong>Critical.</strong> Deal +24 lightning damage.<br/>If the target was staggered when this spell hits them, they take +6 additional lightning damage and are briefly stunned.",
+        "heightened": "<strong>(Rank 5)</strong> Deal +10/+20/+30 lightning damage, and a staggered target takes +8 additional lightning damage and is briefly stunned instead."
+    },
+    {
+        "name": "Wall of Fire",
+        "discipline": "Evocation",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You draw a line across the world and set it alight, raising a roaring curtain of flame that turns the battlefield into territory.<br/>Choose any shape for the wall in a continuous path along the ground with up to a medium distance from start to end within range. The wall also extends a short distance into the air.<br/>On a success, the wall of flame rises along the chosen path, and you choose one side of the wall to be its scorching side. Any creature standing in the wall's path when it rises takes 8 fire damage (ignore AV) and starts burning (4).<br/>The wall lasts for up to a medium duration while you concentrate. It sheds bright light in short range and dim light in medium range of it, and it blocks sight as a Heavily Obscured area.<br/>When a creature moves through the wall, starts their turn inside it, or starts their turn in melee range of its scorching side, they take 8 fire damage (ignore AV) and start burning (4).",
+        "heightened": "<strong>(Rank 5)</strong> The wall's path can be up to a long distance from start to end, and creatures take 10 fire damage (ignore AV) from it instead."
+    },
+    {
+        "name": "Implant Suggestion",
+        "discipline": "Telepathy",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Short",
+        "properties": "-",
+        "effect": "You bury a whisper beneath the target's waking mind, folded and waiting, like a seed under snow.<br/>On a success, plant a suggested course of action in the target's mind together with a trigger you define: a phrase heard, a person seen, a place entered, or a plainly observable event. The suggestion must be a reasonable course of action that doesn't inflict harm on the target or their allies.<br/>The suggestion lies dormant for up to a very long duration or until triggered. When the trigger occurs, the target is compelled to pursue the suggested course of action without distraction. The compulsion lasts until the course of action is complete or for a short duration, and it ends early if the target takes damage from any source. After the compulsion ends, the target knows their mind was influenced.<br/>A creature can only carry one suggestion from this spell at a time. Until it triggers, the dormant suggestion registers as an aura of influence to effects like <em>Detect Magic</em>.",
+        "heightened": "-"
+    },
+    {
+        "name": "Psychic Lance",
+        "discipline": "Telepathy",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You compress your will to a single point and drive it through the target's thoughts like a needle through wax.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV).<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV).<br/>Also on a success, the lance climbs the cracks already in their mind: if the target is dazed, they are instead confused for a short duration. If the target is already confused, they are briefly stunned. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end these effects early.",
+        "heightened": "<strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) instead."
+    },
+    {
+        "name": "Psychic Probe",
+        "discipline": "Telepathy",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Short",
+        "properties": "-",
+        "effect": "You slide past the target's surface thoughts into the currents beneath, reading what drives them the way a tracker reads ground.<br/><strong>Weak.</strong> You learn the target's present goal: what they are trying to achieve in this scene, in one plain sentence.<br/><strong>Strong.</strong> Same as a weak success, and the GM reveals one of the following about the target: a fear that moves them, a secret they hold, a loyalty they will not break, or an action they are planning. If nothing concrete fits, you instead learn their dominant emotion and what stoked it.<br/><strong>Critical.</strong> Same as a weak success, and the GM reveals two entries from the list above.<br/>The target feels the intrusion into their mind. You can only cast this spell once against any creature per scene.",
+        "heightened": "-"
+    },
+    {
+        "name": "Puppet's Step",
+        "discipline": "Telepathy",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You reach into a mind already stumbling and, for one terrible moment, walk it like a garment.<br/>Target a creature that is currently charmed or confused. The target must be of a tier equal to or lower than your Arcana.<br/>On a success, the target immediately moves up to a short distance and performs one simple physical action, both directed by you. The action can be a single weapon attack, or a bodily deed of similar scope, such as dropping or picking up an item, opening or barring a door, pulling a lever, or handing what they carry to a creature in reach. You can't force the target to speak. Their movement does not trigger Opportunity Attacks against them.<br/>The target then knows what they did and that a will not their own moved them. This spell has no effect on a target that is neither charmed nor confused.",
+        "heightened": "-"
+    },
+    {
+        "name": "Grinding Weight",
+        "discipline": "Telekinetics",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You lean invisible tonnage onto the target, and the ground itself seems to rise hungry beneath them.<br/><strong>Weak.</strong> Deal +4 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +8 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +12 damage (ignore 1/2 AV).<br/>If the target is prone, restrained, or grappled, they take +4 additional damage as the weight grinds them against what already holds them.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +6/+12/+18 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +6 additional damage instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +8 additional damage instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 damage (ignore 1/2 AV), and a prone, restrained, or grappled target takes +10 additional damage instead."
+    },
+    {
+        "name": "Relentless Grip",
+        "discipline": "Telekinetics",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You add your will to a hold already closed around the target, and it tightens like a knot pulled wet.<br/>Target a creature that is currently grappled or restrained.<br/><strong>Weak.</strong> The target suffers +1 bane on rolls to escape or end the grappled or restrained state, and if the state has a set duration, it extends by one step.<br/><strong>Strong.</strong> Same as a weak success, and deal +3 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Same as a weak success, and deal +6 damage (ignore 1/2 AV).<br/>This spell has no effect on a target that is neither grappled nor restrained.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +4/+8 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 4)</strong> Deal +5/+10 damage (ignore 1/2 AV) on a strong or critical success instead.<br/><strong>(Rank 5)</strong> Deal +6/+12 damage (ignore 1/2 AV) on a strong or critical success instead."
+    },
+    {
+        "name": "Kinetic Implosion",
+        "discipline": "Telekinetics",
+        "rank": "3",
+        "focus": "6",
+        "target": "Very Hard (12)",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You clench your fist and the air itself collapses inward on a point, dragging everything toward a center that gives nothing back.<br/>On a success, this spell targets every creature in close range of the target location. Use your roll's result vs. their Dodge. Each creature hit is pulled a close distance toward the target location.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV) to each target.<br/>A target that is prone or restrained when hit takes +4 additional damage (ignore 1/2 AV), ground against the earth by the collapse.",
+        "heightened": "<strong>(Rank 4)</strong> Deal +4/+8/+12 damage (ignore 1/2 AV) to each target, and a prone or restrained target takes +6 additional damage (ignore 1/2 AV) instead.<br/><strong>(Rank 5)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) to each target, and a prone or restrained target takes +8 additional damage (ignore 1/2 AV) instead."
+    },
+    {
+        "name": "Meteoric Throw",
+        "discipline": "Telekinetics",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You tear a held enemy off the ground and turn them into ammunition.<br/>Target a creature of large or smaller Size that is currently grappled or restrained.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV).<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV).<br/>Also on a success, the target is pushed up to a short distance in any direction you choose. Being slammed into a creature, solid object, or the ground follows the normal rules of the pushed condition, and the throw ends any grapple holding them.<br/>This spell has no effect on a target that is neither grappled nor restrained.",
+        "heightened": "<strong>(Rank 4)</strong> Target a creature of huge or smaller Size instead, and deal +4/+8/+12 damage (ignore 1/2 AV).<br/><strong>(Rank 5)</strong> Target a creature of huge or smaller Size instead, and deal +5/+10/+15 damage (ignore 1/2 AV)."
     }
 ]

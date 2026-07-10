@@ -151,3 +151,49 @@ Tracking is the second major design space: Relentless Tracker's R2–3 are entir
 **Archetype enablement:** Ranger's pinnacle hunting identity. Roll-free tracking at R4 is mastery, not magic. The Scout anti-surprise clause gives the Ranger's scouting role reliable group protection at high tiers. R5's Quarry mechanic makes encounters against major threats feel decisive: you chose this target, you hunted them, and when they fall you shift to the next. The Trap Maker cross-synergy rewards deep Survival builds.
 
 **Design notes:** Prerequisites (Survival R4 + Nature R3) require investment across both wilderness skills, appropriate for a capstone of the hunting fantasy. The +3 damage on Quarry is an ability bonus. Monster Hunter's damage (adds your Survival as ability bonus) is the same bonus type and does not stack with the Quarry bonus: only the higher value applies. The "once per day regardless of new declarations" clause prevents chaining Quarry designations into an all-day effect. "Approximate direction within long range" is situational awareness, not exact position tracking.
+
+---
+
+### Ghost of the Wilderness (Survival, High-Level, Requires Explorer of Nature R3)
+*In natural terrain, this character does not hide — they cease to be detectable through any mundane means.*
+
+**Rank 4.** In any of your chosen environments (from Explorer of Nature), you can Hide as a Quick Action instead of an Action and you do not require cover or shadow to do so — the natural terrain itself provides sufficient concealment for someone of your skill. While hidden in natural terrain, your Stealth roll gains +1 boon.
+
+Once per scene, spend a Quick Action to erase your trail: all tracking rolls made to follow your path from this point forward automatically fail unless the tracker has the Relentless Tracker R3 ambush ability or uses magical detection.
+
+**Rank 5.** Once per day, take a Quick Action to become a Ghost for the rest of the scene. While the Ghost effect is active:
+
+- You leave no tracks, produce no detectable scent, and make no unintended sound.
+- Any creature that has not already spotted you this scene cannot locate you through mundane means — their Perception rolls against your position are made at +2 banes.
+- The first time you emerge and take an aggressive action this scene (attack, shove, disarm), the target is treated as unaware: they cannot Evade or Guard that action and do not apply their Guard defense bonus.
+
+The Ghost effect ends immediately if you take damage or willingly reveal yourself.
+
+**Archetype enablement:** Ranger's "never been ambushed" capstone — the character who controls where and when every encounter starts. Slinger's positional play: vanish after a throw, reappear elsewhere. Druid's "part of the forest" identity in their chosen terrain. Combined with R4, in your known environments you are the one deciding when others see you.
+
+**Capstone feeling:** You do not move through the wilderness. The wilderness is empty until you choose to appear.
+
+**Design notes:** Limited to chosen environments (Explorer of Nature prereq) prevents this from being a universal invisibility ability. R4's Quick Action hide is reflexive concealment from mastery, not magic. The +2 banes at R5 stack with existing Stealth rolls but do not make detection impossible — a skilled tracker still has a real chance. The "unaware on emergence" clause requires the character to have maintained the Ghost state through the scene, rewarding patience and tactical restraint. Trail erasure at R4 creates meaningful counterplay with Relentless Tracker R3: two high-investment wilderness characters can engage in genuine cat-and-mouse.
+
+---
+
+### Against All Odds (Survival, High-Level, Requires Wilderness Expert R3)
+*When the situation is genuinely, catastrophically wrong, the survival grandmaster finds the one thread that holds — and pulls the whole party back from the edge.*
+
+**Rank 4.** Once per scene, when any of the following occurs — your group is subjected to a surprise attack, a travel roll results in a blunder, or an ally drops to 0 HP in the first round of an encounter — you may immediately react even if it is not your turn. Choose one:
+
+- **Call Out.** Your group ignores the Surprised condition this encounter — they act normally in the first round rather than being caught flat-footed.
+- **Quick Read.** The blundering travel roll is treated as a failure instead. The worst outcome does not occur, though progress is still lost.
+- **Fast Triage.** Move up to your Speed toward an ally at 0 HP as a free Movement and immediately roll to save them from dying (using Field Medic rules if you have that talent; SPI + Nature otherwise).
+
+**Rank 5.** Once per day, when two or more allies are at 0 HP or your group has no clear retreat path, take a free action on any turn to direct the response. Choose one:
+
+- **Emergency Rally.** All allies within short range who are dying or at 0 HP immediately make a dying roll with +1 boon. Each who succeeds regains 1 HP and may take one Action this round before their normal turn.
+- **Escape Route.** You identify a way out that was not apparent to others. The entire group may Retreat as a free action this round — no Opportunity Attacks are triggered by this movement.
+- **Hold the Line.** You improvise a defensive position from the terrain. All allies within short range gain +2 AV (situational bonus) and +1 boon on Fortitude rolls until the end of the encounter or until they leave the position.
+
+**Archetype enablement:** Ranger's "we're making it out alive" guarantee alongside Apex Predator's offensive capstone. Barbarian's primal group survival — not just personal toughness but keeping the pack alive. Druid's role as protector of the natural group. Universal utility makes this the capstone for any Survival-invested character whose identity centers on group endurance.
+
+**Capstone feeling:** You are the reason your party walked out of that cave, swamp, and desert. There is no situation so bad you cannot find a way through it.
+
+**Design notes:** R4's three triggers are specific enough to be predictable but broad enough to fire in multiple encounter types. Fast Triage crosses over with Field Medic (Nature): characters who invest in both skills have exceptional emergency response, which rewards multi-skill investment. R5's three options address three distinct disaster scenarios — "allies dying" (Emergency Rally), "surrounded" (Escape Route), and "taking too much incoming damage" (Hold the Line). Situational bonus type means the AV bonus will not stack with most armor bonuses but will also not be cancelled by the armor cap. Free action trigger means it does not consume the character's turn — the survival master remains fully functional after pulling the party together.

@@ -143,4 +143,41 @@ Your carry limit increases to 5.
 
 ---
 
-> **Status:** All four designs complete. Crafting now has 10 talent proposals (6 existing + 4 new). Master Artisan completes the stub. Contraption Builder and Alchemist provide pillar identity for Engineer and Apothecary respectively. Siege Engineer is the first R4–R5 Crafting talent.
+> **Status:** Four designs complete. Crafting has 10 talent proposals (6 existing + 4 new). Master Artisan completes the stub. Contraption Builder and Alchemist provide pillar identity for Engineer and Apothecary respectively. Siege Engineer is the first High-Level talent.
+
+---
+
+### Works of Legend (Crafting, High-Level)
+*The legendary artificer — the character whose name alone on a piece of work makes it worth more, and perform better, than anything else its materials could produce.*
+
+**Rank 4.** Once per scene, when an ally is about to make a roll using an item you crafted or enhanced with a Crafting talent (such as Peak Performance or Alchemist), you can invoke its superior quality as a **Quick Action** before the roll. Choose one of the following:
+- The roll gains +2 boon.
+- If the roll succeeds, treat the Success Level as one step higher (weak becomes strong, strong becomes critical).
+- If the roll fails, treat it as a weak success instead.
+
+**Rank 5.** All items you craft from this point forward permanently bear a grandmaster's quality. Weapons you craft deal +2 damage. Armor you craft provides +1 AV (item bonus). Consumables you craft — potions, alchemical compounds, remedies — restore or deal 2 more than their listed value. All items you craft automatically succeed Durability checks on results of 3 or lower.
+
+**Archetype enablement:** Engineer (the artificer whose equipment defines what allies can accomplish), Apothecary (consumables that exceed what any supplier can offer), Magus (blades and tools matched to their wielder's power)
+**Capstone feeling:** The character's work is recognized by anyone who examines it — a weapon bearing their mark is a weapon known to perform.
+**Design notes:** R4's three-option menu gives moment-to-moment control over how the quality advantage is spent. Each option is meaningful: boon supports reliable success, SL upgrade rewards succeeding on a hit, and failure-catch requires correctly anticipating a miss. R5's permanent passive is explicitly permitted at this rank per the design guidance. All bonuses are item-bonus type and do not stack with other item bonuses. Durability protection at 3 or lower mirrors Maintenance R3's precedent, making it feel like a mastery reward rather than an exception.
+
+---
+
+### Apex Synthesis (Crafting, High-Level — Requires: Alchemist R3)
+*The Apothecary at their pinnacle — combining ingredients into preparations that exceed the limits of standard alchemical art.*
+
+**Rank 4.** Once per scene during a short rest, you can combine the effects of any two compounds you currently carry into a single dual-compound preparation without spending additional Supply. The preparation occupies one carry slot and delivers both effects simultaneously when used. You can only have one dual-compound preparation at a time; creating a new one replaces the previous one.
+
+**Rank 5.** Once per day during any rest, using 2 Supply, you can synthesize a Grand Compound — a preparation that exceeds what standard alchemical work can achieve. Choose one of the following:
+- **Universal Cure:** One creature that consumes this is cured of one poison, one disease, one condition, and one mundane or naturally-sourced curse they currently have.
+- **Grand Draught:** One creature that consumes this restores 18 HP and gains +2 AV (item bonus) for a short duration.
+- **Incendiary Compound:** All creatures in a close area take 10 fire damage. Any creature that fails STR + Fortitude vs. TN 12 is also **briefly restrained** by flame and heat.
+- **Paralytic Agent:** One target in close range who fails SPI + Fortitude vs. TN 12 is **briefly stunned**.
+
+**Archetype enablement:** Apothecary (pillar — the synthesis pinnacle that rewards deep Crafting investment), Engineer (supplementary alchemical tools for field operations), Sorcerer (consumable offensive tools that match spell output without requiring Focus)
+**Capstone feeling:** The Apothecary who produces miracles from materials — their compounds do what spells do, through mastery of substance rather than magical power.
+**Design notes:** R4 rewards a well-stocked compound inventory — two different compounds must already be synthesized to combine them. The no-Supply cost rewards preparation; the one-at-a-time limit creates a genuine carrying decision. R5 costs 2 Supply (vs. standard 1 Supply) to signal its exceptional nature. The four Grand Compound options are calibrated to high-tier consumable effects appropriate for R5's once-per-day limit. Universal Cure's curse removal specifies "mundane or naturally-sourced" to preserve the role of dedicated ritual removal for magically-bound curses — that domain belongs to Curse Lore.
+
+---
+
+> **Status:** Six designs complete. Crafting now has 12 talent proposals (6 existing + 6 new). Master Artisan completes the stub. Contraption Builder and Alchemist provide pillar identity for Engineer and Apothecary respectively. Siege Engineer, Works of Legend, and Apex Synthesis are the three High-Level talents (R4–R5).

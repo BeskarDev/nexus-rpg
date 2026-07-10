@@ -60,7 +60,7 @@ sidebar_position: 4
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Resist | Short | singular
+ 1 | 2 | vs. Resist | Short | curse,  singular
 
 **Effect** <br/> You curse a creature with the magical power of death, withering their mortal body.<br/>On a success, the creature suffers the following effects:<br/>- Their max. HP are reduced by 5.<br/>- They can't regain HP. <br/>- They suffer +1 bane on Fortitude rolls.<br/>This curse lasts for a long duration. 
 
@@ -128,7 +128,43 @@ sidebar_position: 4
 
 **Effect** <br/> You summon a cloud of necrotic energy, sickening creatures within it. The cloud extends in a close area around the target location and targets all living creatures within it.<br/><strong>Weak.</strong> Deal +3 necrotic damage to each target.<br/><strong>Strong.</strong> Deal +6 necrotic damage to each target.<br/><strong>Critical.</strong> Deal +9 necrotic damage to each target.<br/>Any creature is also poisoned while inside the cloud’s area.<br/>The cloud lasts for a short duration. It can also be expelled early by any effect causing strong winds in the same area of influence. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +5/+10/+15 necrotic damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 necrotic damage to each target instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +4/+8/+12 necrotic damage to each target instead.
+
+>
+
+### Curse of Frailty
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Short | curse,  singular
+
+**Effect** <br/> You curse a creature with the brittleness of old bones, and their body begins to fail them like a corpse rehearsing.<br/>On a success, the creature suffers the following effects:<br/>- They lose 2 AV (min. 0).<br/>- They suffer +1 bane on Strength rolls.<br/>This curse lasts for a long duration. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> They lose 3 AV (min. 0) instead.<br/><strong>(Rank 4)</strong> They lose 4 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> They lose 5 AV (min. 0) instead.
+
+>
+
+### Grave Chill
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> The cold of the grave seeps into the target's marrow, and their body begins answering to the world below before their time.<br/>On a success, the target is slowed for a short duration, and they suffer +1 bane on rolls to resist or end early the effects of <em>Death</em> spells, including this one. Whenever they fail a roll to end a <em>Death</em> spell early, they take 2 frost damage (ignore AV) as the grave's cold pulls at them. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end this spell's effects early. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> They take 4 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.<br/><strong>(Rank 4)</strong> They take 6 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.<br/><strong>(Rank 5)</strong> They take 8 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.
+
+>
+
+### Weight of Dooms
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> You lay your will upon a doom already written on the target, and it sinks deeper, like a wound the body refuses to close.<br/>Choose one condition the target currently suffers among poisoned, frightened, bleeding, slowed, dazed, or staggered.<br/><strong>Weak.</strong> The target suffers +1 bane on rolls to end the chosen condition early, and if the condition has a set duration, it extends by one step.<br/><strong>Strong.</strong> Same as a weak success, and deal +4 necrotic damage.<br/><strong>Critical.</strong> Same as a weak success, and deal +8 necrotic damage.<br/>This spell has no effect on a target that suffers none of the listed conditions. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12 necrotic damage on a strong or critical success instead.<br/><strong>(Rank 4)</strong> Deal +8/+16 necrotic damage on a strong or critical success instead.<br/><strong>(Rank 5)</strong> Deal +10/+20 necrotic damage on a strong or critical success instead.
 
 >
 
@@ -147,3 +183,26 @@ sidebar_position: 4
  3 | 6 | vs. Resist | Medium | -
 
 **Effect** <br/> You channel the essence of natural toxins into an area, creating a blooming field of highly poisonous flowers, which then erupt into a cloud of death. Choose a close area within range. Target all living creatures within the area.<br/><strong>Weak.</strong> Each target takes +4 poison damage and is briefly poisoned.<br/><strong>Strong.</strong> Each target takes +8 poison damage and is poisoned for a short duration.<br/><strong>Critical.</strong> Each target takes +12 poison damage, is briefly confused, and is poisoned for a short duration.<br/>They can roll Strength + Fortitude vs. your Resist at the end of their turns to end the effect early.
+
+### Spreading Contagion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You breathe on an existing sickness and it wakes with a will of its own, leaping from body to body like sparks through dry grass.<br/>Target one creature that is currently poisoned.<br/><strong>Weak.</strong> Deal +4 poison damage to the target.<br/><strong>Strong.</strong> Deal +8 poison damage to the target.<br/><strong>Critical.</strong> Deal +12 poison damage to the target.<br/>Also target each enemy in close range of the first target, using your roll's result vs. their Resist. On a success, they become poisoned for a short duration.<br/>This spell has no effect on a target that is not poisoned. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 poison damage instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 poison damage instead.
+
+>
+
+### The Reckoning
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You speak the target's accumulated dooms aloud, and every sickness, terror, and curse upon them comes due at once, called home by the world below.<br/>Count the target's afflictions: each condition they currently suffer among poisoned, frightened, bleeding, slowed, dazed, staggered, and stunned, and each <strong>curse</strong> spell affecting them.<br/><strong>Weak.</strong> Deal +2 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Strong.</strong> Deal +4 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Critical.</strong> Deal +6 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/>Also on a success, all counted conditions on the target end and all counted <strong>curse</strong> spells on them are lifted. The tally consumes what it counts. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5 necrotic damage for each affliction counted instead.<br/><strong>(Rank 5)</strong> Deal +6 necrotic damage for each affliction counted instead.
+

@@ -60,32 +60,18 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | fire | Flickering Flame | Flame Burst, Flaming Weapon, Scorching Ray | Fireball, *Wildfire* | Black Flame Bolt | *Wall of Fire* | *Delayed Blast Meteor* |
 | frost | Frost Snap | Frozen Weapon, Ice Shards | Frost Wave, Ice Lance | *Conducting Chill* | *Cone of Cold* | — |
 | lightning | Static Spark | Lightning Arc, Lightning Weapon | Lightning Strike, Prismatic Missile | *Chain Lightning* | *Voltaic Surge* | Fulminate |
-| acid | *Acid Splash* | Chromatic Orb (multi) | *Acid Rain* | *Corrosive Torrent* | — (Corrosive Torrent Heighten) | — |
+| acid | *Acid Splash* | Chromatic Orb (multi) | *Acid Rain* | *Dissolving Ray* | — (Dissolving Ray Heighten) | — |
 | air | *Air Burst* | *Concussive Bolt* | *Gale Force* | *Thunderous Rupture* | *Vacuum Sphere* | — |
 
 **Additional multi-element / utility spells**: *Thermal Control* (R0), Elemental Ward (R1), *Elemental Shaping* (R1), Chromatic Orb (R1), *Fire Shield* (R2, fire/frost), Prismatic Missile (R2), *Elemental Ruin* (R4)
 
-**Coverage**: only published spells count as real coverage — proposed entries (italics) are undesigned seeds (principle 19). The empty R4–R5 cells are deliberate: fire and lightning each carry one R5 capstone (seeded Delayed Blast Meteor, published Fulminate), and high-rank acid rides Corrosive Torrent's Heighten cascade (principle 3) instead of a duplicate spell entry. A trait does not need a dedicated capstone at every rank — an honest gap beats a filler seed. If a frost or air R5 concept with a genuinely distinct identity emerges, it earns a seed then.
+**Coverage**: only published spells count as real coverage — proposed entries (italics) are undesigned seeds (principle 19). The empty R4–R5 cells are deliberate: fire and lightning each carry one R5 capstone (seeded Delayed Blast Meteor, published Fulminate), and high-rank acid rides Dissolving Ray's Heighten cascade (principle 3) instead of a duplicate spell entry. A trait does not need a dedicated capstone at every rank — an honest gap beats a filler seed. If a frost or air R5 concept with a genuinely distinct identity emerges, it earns a seed then.
 
 ## Proposed Spell Changes
 
-### Lightning Strike — Area Reduction
+### Resolved (published 2026-07-10, multi-target scaling audit)
 
-**Current**: Line in medium range at Rank 2
-**Proposed**: Reduce to **short line** to match R2 area progression (close area / short line)
-**Rationale**: R2 spells should affect a close area or short line per the area progression framework.
-
-### Fireball — Damage Reduction
-
-**Current**: +4/+8/+12 AoE at Rank 2
-**Proposed**: Reduce to **+3/+6/+9** to match half single-target scaling for multi-target R2
-**Rationale**: Under the revised half-damage AoE scaling, R2 multi-target should be +3/+6/+9.
-
-### Frost Wave — Damage Reduction
-
-**Current**: +4/+8/+12 AoE cone at Rank 2
-**Proposed**: Reduce to **+3/+6/+9** to match half single-target scaling
-**Rationale**: Same as Fireball — consistent multi-target scaling.
+Lightning Strike (short line, +3/+6/+9), Fireball (+3/+6/+9), Frost Wave (+3/+6/+9), and Scorching Ray Heighten (+3/6/9 and +4/8/12 per beam) now conform to the half-scaling rule in the published docs.
 
 ### Elemental Ward — Standardized Reactive Defense
 
@@ -114,7 +100,7 @@ Role reads "combat-role / synergy-role" (synergy roles per the framework: setup 
 | Wildfire | 2 | Offense / extender | A creature already burning erupts: modest fire damage to them, and the flames leap to enemies in close range, who start burning too. Cold-cast dead (requires a burning target). This is the school's missing spread extender, chaining Flickering Flame or Fireball burns across the field, countered by water or spacing. |
 | Chain Lightning | 3 | Offense / payoff | Full-damage primary lightning bolt with reduced-damage chain hits leaping to enemies close to each other (chain scaling per the deviation table). Payoff on the cluster socket, and the natural spender of a Conducting Chill lightning rod. Shared with Tempest (identical in both lists). |
 | Conducting Chill | 3 | Control / extender | Deep-freeze a slowed target: they are briefly restrained in ice (convert extender, slowed to restrained), and the ice acts as a lightning rod so the next lightning spell that hits them arcs to enemies in close range of them. Converts frost setup into a lightning payoff socket. |
-| Corrosive Torrent | 3 | Offense / setup | Single-target acid stream: damage plus AV reduction (min. 0) for a short duration and a Durability check — the corroding identity in full. Emits stripped AV as shared party currency. Its Heighten cascade carries dedicated acid to R4–R5, so no separate high-rank acid nuke is seeded (principle 3). |
+| Dissolving Ray | 3 | Offense / setup | Single-target acid stream: damage plus AV reduction (min. 0) for a short duration and a Durability check — the corroding identity in full. Emits stripped AV as shared party currency. Its Heighten cascade carries dedicated acid to R4–R5, so no separate high-rank acid nuke is seeded (principle 3). |
 | Thunderous Rupture | 3 | Offense / setup | Self-centered omnidirectional pressure pulse: blast damage in a close area, pushing targets away, and knocking them prone on a strong or critical success. Emits prone and buys the caster space when surrounded. |
 | Wall of Fire | 4 | Control / extender | Standing curtain of flame with flat crossing/adjacency fire damage (principle 44) and burning on anyone who passes through. Prolong extender and field reshape. Pairs with the air push seeds (Air Burst, Gale Force, Thunderous Rupture, Vacuum Sphere) that force enemies through it. Needs concrete durability stats per principle 35. |
 | Cone of Cold | 4 | Offense / payoff | Medium frost cone at reduced multi-target damage (strong-secondary trade per the deviation table): targets are briefly slowed, and targets that were already slowed are briefly restrained instead (slowed to restrained convert). Cold-cast it seeds its own follow-up; on Frost Wave setup it is the frost engine's R4 payoff. |
@@ -140,16 +126,16 @@ The following spells are shared between Evocation and mystic traditions (same sp
 1. **Fire chain**: Flickering Flame (R0 condition) → Flame Burst/Scorching Ray (R1 damage) → Fireball (R2 AoE) → Wildfire (R2 spread) → Black Flame Bolt (R3 single) → Wall of Fire (R4 control) → Delayed Blast Meteor (R5)
 2. **Frost chain**: Frost Snap (R0 condition) → Ice Shards/Frozen Weapon (R1) → Frost Wave/Ice Lance (R2) → Conducting Chill (R3 convert) → Cone of Cold (R4 payoff)
 3. **Lightning chain**: Static Spark (R0 condition) → Lightning Arc (R1) → Lightning Strike (R2 line) → Chain Lightning (R3 chain) → Voltaic Surge (R4 payoff) → Fulminate (R5 AoE, published)
-4. **Acid chain**: Acid Splash (R0 weak rider) → Chromatic Orb (R1 multi) → Acid Rain (R2 zone, Durability entry rank) → Corrosive Torrent (R3 single, Heighten carries to R4–R5)
+4. **Acid chain**: Acid Splash (R0 weak rider) → Chromatic Orb (R1 multi) → Acid Rain (R2 zone, Durability entry rank) → Dissolving Ray (R3 single, Heighten carries to R4–R5)
 5. **Air chain**: Air Burst (R0 push) → Concussive Bolt (R1 single) → Gale Force (R2 line) → Thunderous Rupture (R3 self-AoE) → Vacuum Sphere (R4 implosion)
-6. **AV-strip combo**: Acid Rain (R2 Durability pressure) → Corrosive Torrent (AV reduction, heightened for deeper strip) → fire/lightning follow-ups and martial focus fire deal more effective damage
+6. **AV-strip combo**: Acid Rain (R2 Durability pressure) → Dissolving Ray (AV reduction, heightened for deeper strip) → fire/lightning follow-ups and martial focus fire deal more effective damage
 7. **Condition-stack engine**: any two elemental setups (burning, slowed, staggered, prone, reduced AV) → Elemental Ruin (R4 payoff consumes the stack)
 8. **Frost-to-lightning convert**: Frost Snap/Frost Wave (slowed) → Conducting Chill (restrained + lightning rod) → Lightning Strike/Chain Lightning (arcing payoff)
 9. **Anti-caster**: Lightning Strike/Lightning Weapon (staggered) → Voltaic Surge (R4 stagger-to-stunned concentration break)
 
 ### Setup + Payoff Combos
 - ✅ **Element condition → bonus damage**: well-supported across ranks, capped by Elemental Ruin (R4) consuming the full stack
-- ✅ **AV strip → focus fire**: Acid Rain (zone Durability, the R2 entry rank) → Corrosive Torrent (AV reduction, short duration) → all subsequent damage more effective
+- ✅ **AV strip → focus fire**: Acid Rain (zone Durability, the R2 entry rank) → Dissolving Ray (AV reduction, short duration) → all subsequent damage more effective
 - ✅ **Air push → AoE cluster**: Gale Force packs a line, Vacuum Sphere drags a room together → Fireball/Chain Lightning/Delayed Blast Meteor hit more targets
 - ✅ **Air push → Wall of Fire**: shove enemies through the wall with Air Burst/Concussive Bolt/Thunderous Rupture for forced crossing damage
 - ✅ **Frost convert**: Frost Snap/Frost Wave/Ice Shards apply slowed → Conducting Chill (R3) or Cone of Cold (R4) converts slowed to restrained

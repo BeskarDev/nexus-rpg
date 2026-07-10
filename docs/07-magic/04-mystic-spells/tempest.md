@@ -10,7 +10,7 @@ sidebar_position: 6
 ---|---|---|---|---
  0 | 0 | vs. Dodge | Short | -
 
-**Effect** <br/> You summon a vortex of swirling air, clashing against your target and pulling them off their feet.<br/><strong>Weak.</strong> Deal +2 blast damage.<br/><strong>Strong.</strong> Deal +4 blast damage and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage and push the target a short distance.<br/>You can also cast this spell to create a continuous stream of air from your palm that has enough pressure to move small, loose objects in range. 
+**Effect** <br/> You summon a vortex of swirling air, clashing against your target and pulling them off their feet.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) and push the target a short distance.<br/>You can also cast this spell to create a continuous stream of air from your palm that has enough pressure to move small, loose objects in range. 
 
 ### Static Shock
 
@@ -36,7 +36,7 @@ sidebar_position: 6
 
 **Effect** <br/> You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target all creatures in short range of the target location instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage (ignore 1/2 AV) to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Target all creatures in short range of the target location instead.
 
 >
 
@@ -44,7 +44,7 @@ sidebar_position: 6
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Resist | Short | singular
+ 1 | 2 | vs. Resist | Short | curse,  singular
 
 **Effect** <br/> You curse a creature with the magical power of tempest, turning nature itself against them.<br/>On a success, the creature suffers the following effects:<br/>- While moving in natural environments, it is always considered difficult terrain for them.<br/>- They suffer +1 bane on Athletics and Survival rolls.<br/>This curse lasts for a long duration. 
 
@@ -164,9 +164,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Medium | blast (line)
 
-**Effect** <br/> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly staggered. 
+**Effect** <br/> You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point up to a short distance away, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +3 lightning damage to each target.<br/><strong>Strong.</strong> Deal +6 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +9 lightning damage to each target and they are briefly staggered. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Increase the spell‘s range to long.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 lightning damage to each target instead.<br/>- Increase the spell‘s range to long.
 
 >
 
@@ -176,9 +176,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | quick
 
-**Effect** <br/> In a sudden flash of lightning you move at the speed of sound to another place. Cast this spell on your turn.<br/>Choose any point within range you can see, where you would be able to move to by walking, climbing, swimming, or jumping.<br/>On a success, you instantly move to the chosen location (this isn’t teleportation) without provoking Opportunity Attacks. When you arrive, you produce a loud booming sound, dealing +2 blast damage to all creatures in close range of you. Your Movement for the rest of the turn becomes 0. 
+**Effect** <br/> In a sudden flash of lightning you move at the speed of sound to another place. Cast this spell on your turn.<br/>Choose any point within range you can see, where you would be able to move to by walking, climbing, swimming, or jumping.<br/>On a success, you instantly move to the chosen location (this isn’t teleportation) without provoking Opportunity Attacks. When you arrive, you produce a loud booming sound, dealing +2 blast damage (ignore 1/2 AV) to all creatures in close range of you. Your Movement for the rest of the turn becomes 0. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Increase the spell’s range to long and deal +4 blast damage instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Increase the spell’s range to long and deal +4 blast damage (ignore 1/2 AV) instead.
 
 >
 
@@ -200,9 +200,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Short | blast (cone)
 
-**Effect** <br/> You slam the earth before you and it erupts with force, spitting flaming hot lava into the air.<br/><strong>Weak.</strong><em> </em>Deal +4 fire damage to each target. <br/><strong>Strong.</strong> Deal +8 fire damage to each target and they fall prone.<br/><strong>Critical.</strong> Deal +12 fire damage to each target, they fall prone, and their Movement briefly becomes 0.<br/>The area affected by this spell remains as broken ground and is considered difficult terrain. 
+**Effect** <br/> You slam the earth before you and it erupts with force, spitting flaming hot lava into the air.<br/><strong>Weak.</strong><em> </em>Deal +3 fire damage to each target. <br/><strong>Strong.</strong> Deal +6 fire damage to each target and they fall prone.<br/><strong>Critical.</strong> Deal +9 fire damage to each target, they fall prone, and their Movement briefly becomes 0.<br/>The area affected by this spell remains as broken ground and is considered difficult terrain. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 fire damage to each target instead.<br/>- Increase the spell‘s range to medium.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 fire damage to each target instead.<br/>- Increase the spell‘s range to medium.
 
 >
 
@@ -212,9 +212,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration. 
+**Effect** <br/> You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can use your Action to target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target up to five creatures below the cloud instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Target up to five creatures below the cloud instead.
 
 >
 
@@ -226,7 +226,7 @@ sidebar_position: 6
 
 **Effect** <br/> You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Increase the spell‘s range to medium.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell‘s range to medium.
 
 >
 
@@ -236,9 +236,9 @@ sidebar_position: 6
 ---|---|---|---|---
  2 | 4 | vs. Parry | Medium | blast (line)
 
-**Effect** <br/> You create a high pressure stream of water, pulling anything in it’s way along with it.<br/><strong>Weak. </strong>Deal +4 damage to each target and they are pushed a close distance.<br/><strong>Strong. </strong>Deal +8 damage to each target and they are pushed a short distance.<br/><strong>Critical. </strong>Deal +12 damage to each target and they are pushed a short distance and fall prone. 
+**Effect** <br/> You create a high pressure stream of water, pulling anything in it’s way along with it.<br/><strong>Weak. </strong>Deal +3 damage to each target and they are pushed a close distance.<br/><strong>Strong. </strong>Deal +6 damage to each target and they are pushed a short distance.<br/><strong>Critical. </strong>Deal +9 damage to each target and they are pushed a short distance and fall prone. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 damage to each target instead.<br/>- Increase the spell‘s range to long.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to long.
 
 >
 
@@ -258,17 +258,25 @@ sidebar_position: 6
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | vs. Dodge | Medium | -
+ 3 | 6 | vs. Dodge | Long | -
 
-**Effect** <br/> You conjure a bolt of lightning which arcs from creature to creature. Choose a first target within range and a second target in short range of the first. Repeat this for up to a third and fourth target which each have to be in short range of the previous target respectively.<br/><strong>Weak.</strong> Deal +6 lightning damage to each target.<br/><strong>Strong.</strong> Deal +12 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +18 lightning damage to each target and they are briefly staggered. 
+**Effect** <br/> You loose a bolt that strikes like a whip and then goes hunting, leaping from body to body along the paths of least resistance.<br/><strong>Weak.</strong> Deal +8 lightning damage to the target.<br/><strong>Strong.</strong> Deal +16 lightning damage to the target.<br/><strong>Critical.</strong> Deal +24 lightning damage to the target.<br/>Also on a success, the lightning arcs from the target to up to three additional creatures, each within close range of the previously struck creature, using your roll's result vs. their Dodge. On a hit, each of them takes half as much damage as the first target. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +10/+20/+30 lightning damage to the first target instead.<br/><strong>(Rank 5)</strong> Deal +12/+24/+36 lightning damage to the first target instead.
+
+>
 
 ### Cone of Cold
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 3 | 6 | vs. Dodge | Medium | blast (cone)
+ 4 | 8 | vs. Resist | Medium | blast (cone)
 
-**Effect** <br/> You invoke the power of a blizzard and unleash a wave of freezing cold air and icy shards.<br/><strong>Weak.</strong> Deal +6 frost damage to each target.<br/><strong>Strong.</strong> Deal +12 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +18 frost damage to each target and they are briefly slowed. 
+**Effect** <br/> You exhale the cold between the stars, and a fan of white silence rolls out from your hands, flash-freezing everything it touches.<br/>Target all creatures in the cone.<br/><strong>Weak.</strong> Deal +4 frost damage to each target.<br/><strong>Strong.</strong> Deal +8 frost damage to each target.<br/><strong>Critical.</strong> Deal +12 frost damage to each target.<br/>Also on a success, each target is briefly slowed. A target that was already slowed is briefly restrained instead, frozen in a shell of ice. 
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Deal +5/+10/+15 frost damage to each target instead.
+
+>
 
 ### Cyclone
 
@@ -300,7 +308,7 @@ sidebar_position: 6
 ---|---|---|---|---
  3 | 6 | vs. Resist | Long | -
 
-**Effect** <br/> You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
+**Effect** <br/> You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened. 
 
 ### Wind Wall
 

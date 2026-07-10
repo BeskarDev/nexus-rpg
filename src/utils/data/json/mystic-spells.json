@@ -40,7 +40,7 @@
 		"target": "vs. Resist",
 		"range": "Short",
 		"properties": "-",
-		"effect": "You let loose a quick burst of radiant energy in all directions, revealing any magical falsehoods, such as illusions, shapeshifters, or invisible creatures in range. For illusions, compare your result vs. the Resist of the illusion’s creator to see if they are broken.<br/><strong>Weak.</strong> Any magical falsehood is marked by a shimmer of light. Rolls that target any marked target gain +1 boon. The mark lasts for a short duration.<br/><strong>Strong.</strong> Any magical falsehood is immediately broken.<br/><strong>Critical.</strong> Any magical falsehood is immediately broken and any creature revealed by this is briefly shaken.",
+		"effect": "You let loose a quick burst of radiant energy in all directions, revealing any magical falsehoods, such as illusions, shapeshifters, or invisible creatures in range. For illusions, compare your result vs. the Resist of the illusion’s creator to see if they are broken.<br/><strong>Weak.</strong> Any magical falsehood is marked by a shimmer of light. Rolls that target any marked target gain +1 boon. The mark lasts for a short duration.<br/><strong>Strong.</strong> Any magical falsehood is immediately broken.<br/><strong>Critical.</strong> Any magical falsehood is immediately broken and any creature revealed by this is briefly dazed.",
 		"heightened": "-"
 	},
 	{
@@ -84,7 +84,7 @@
 		"target": "vs. Dodge",
 		"range": "Medium",
 		"properties": "-",
-		"effect": "You let forth a burst of radiant energy, streaking towards a target location and exploding in burning light.<br/><strong>Weak.</strong> Deal +2 radiant damage to any creature in melee range of the target location.<br/><strong>Strong. </strong>Deal +4 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded.<br/><strong>Critical.</strong> Deal +6 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded. Each target is also briefly blinded and dazed.",
+		"effect": "You let forth a burst of radiant energy, streaking towards a target location and exploding in burning light.<br/><strong>Weak.</strong> Deal +2 radiant damage to any creature in melee range of the target location.<br/><strong>Strong. </strong>Deal +4 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded.<br/><strong>Critical.</strong> Deal +6 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded and dazed.",
 		"heightened": "-"
 	},
 	{
@@ -183,7 +183,7 @@
 		"target": "vs. Dodge",
 		"range": "Medium",
 		"properties": "blast (cone)",
-		"effect": "You unleash a devastating cone of solar energy that burns and blinds everything in its path.<br/><strong>Weak.</strong> Deal +6 radiant damage to each target and they are briefly blinded.<br/><strong>Strong.</strong> Deal +12 radiant damage to each target and they are blinded for a short duration.<br/><strong>Critical.</strong> Deal +18 radiant damage to each target and they are blinded for a short duration and briefly stunned.",
+		"effect": "You unleash a devastating cone of solar energy that burns and blinds everything in its path.<br/><strong>Weak.</strong> Deal +4 radiant damage to each target.<br/><strong>Strong.</strong> Deal +8 radiant damage to each target.<br/><strong>Critical.</strong> Deal +12 radiant damage to each target and they are briefly stunned.<br/>Also on a success, each target is briefly blinded.",
 		"heightened": "-"
 	},
 	{
@@ -194,7 +194,7 @@
 		"target": "Very Hard (12)",
 		"range": "Long",
 		"properties": "-",
-		"effect": "You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +6 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +12 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +18 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.",
+		"effect": "You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +4 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +8 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +12 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.",
 		"heightened": "-"
 	},
 	{
@@ -270,7 +270,7 @@
 		"focus": "2",
 		"target": "vs. Resist",
 		"range": "Short",
-		"properties": "singular",
+		"properties": "curse, singular",
 		"effect": "You curse a creature with the magical power of twilight, bringing the fear of night into their heart.<br/>On a success, the creature suffers the following effects:<br/>- They see in bright light as in dim light.<br/>- They suffer +1 bane on Perception and Initiative rolls.<br/>This curse lasts for a long duration.",
 		"heightened": "<strong>(Rank 2)</strong> The target suffers a weakness to either frost or psychic damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to both frost and psychic damage for the spell‘s duration."
 	},
@@ -348,8 +348,8 @@
 		"target": "Hard (10)",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +8 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.",
-		"heightened": "<strong>(Rank 3)</strong> The beam deals +10 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 4)</strong> The beam deals +12 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 5)</strong> The beam extends in close range of the target location instead, deals +14 frost damage, and shines dim light in short range of it."
+		"effect": "You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +6 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.",
+		"heightened": "<strong>(Rank 3)</strong> The beam deals +8 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 4)</strong> The beam deals +10 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 5)</strong> The beam extends in close range of the target location instead, deals +12 frost damage, and shines dim light in short range of it."
 	},
 	{
 		"name": "Shadow Step",
@@ -481,7 +481,7 @@
 		"range": "Touch",
 		"properties": "-",
 		"effect": "You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. A creature can only benefit from one Wound-healing spell effect per day.",
-		"heightened": "<strong>(Rank 2)</strong> When using your Action, restore +6/12/16 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature."
+		"heightened": "<strong>(Rank 2)</strong> When using your Action, restore +6/12/18 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature."
 	},
 	{
 		"name": "Overflow of Life",
@@ -503,7 +503,7 @@
 		"range": "Medium",
 		"properties": "quick",
 		"effect": "You quickly envigorate a creature. Cast this spell on your turn.<br/><strong>Weak.</strong> Restore +2 HP to your target.<br/><strong>Strong.</strong> Restore +4 HP to your target.<br/><strong>Critical. </strong>Restore +6 HP to your target.",
-		"heightened": "<strong>(Rank 2)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 3)</strong> Restore +6/12/18 HP instead."
+		"heightened": "<strong>(Rank 2)</strong> Restore +3/6/9 HP instead.<br/><strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +5/10/15 HP instead.<br/><strong>(Rank 5)</strong> Restore +6/12/18 HP instead."
 	},
 	{
 		"name": "Vitalizing Weapon",
@@ -580,7 +580,7 @@
 		"range": "Short",
 		"properties": "blast (cone)",
 		"effect": "You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally.",
-		"heightened": "<strong>(Rank 3)</strong> Restore +5/10/15 HP instead."
+		"heightened": "<strong>(Rank 3)</strong> Restore +4/8/12 HP instead."
 	},
 	{
 		"name": "Abundance of Life",
@@ -601,7 +601,7 @@
 		"target": "vs. Dodge",
 		"range": "Medium",
 		"properties": "blast (cone)",
-		"effect": "You unleash a devastating explosion of pure life force that overwhelms your enemies' vital systems while gently reinvigorating your allies.<br/>Target all hostile creatures and your allies within the spell’s area. Compare the roll against a very hard Difficulty (12) to calculate the SL for your allies.<br/><strong>Weak.</strong> Deal +6 radiant damage to each hostile target. Restore +3 HP to each ally.<br/><strong>Strong.</strong> Deal +12 radiant damage to each hostile target and they are briefly dazed. Restore +6 HP to each ally.<br/><strong>Critical.</strong> Deal +18 radiant damage to each hostile target and they are briefly stunned. Restore +9 HP to each ally.",
+		"effect": "You unleash a devastating explosion of pure life force that overwhelms your enemies' vital systems while gently reinvigorating your allies.<br/>Target all hostile creatures and your allies within the spell’s area. Compare the roll against a very hard Difficulty (12) to calculate the SL for your allies.<br/><strong>Weak.</strong> Deal +4 radiant damage to each hostile target. Restore +3 HP to each ally.<br/><strong>Strong.</strong> Deal +8 radiant damage to each hostile target and they are briefly dazed. Restore +6 HP to each ally.<br/><strong>Critical.</strong> Deal +12 radiant damage to each hostile target and they are briefly stunned. Restore +9 HP to each ally.",
 		"heightened": "-"
 	},
 	{
@@ -677,7 +677,7 @@
 		"focus": "2",
 		"target": "vs. Resist",
 		"range": "Short",
-		"properties": "singular",
+		"properties": "curse, singular",
 		"effect": "You curse a creature with the magical power of death, withering their mortal body.<br/>On a success, the creature suffers the following effects:<br/>- Their max. HP are reduced by 5.<br/>- They can't regain HP. <br/>- They suffer +1 bane on Fortitude rolls.<br/>This curse lasts for a long duration.",
 		"heightened": "<strong>(Rank 2)</strong> The target suffers a weakness to either necrotic or poison damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to both necrotic and poison damage for the spell‘s duration."
 	},
@@ -745,7 +745,7 @@
 		"range": "Medium",
 		"properties": "-",
 		"effect": "You summon a cloud of necrotic energy, sickening creatures within it. The cloud extends in a close area around the target location and targets all living creatures within it.<br/><strong>Weak.</strong> Deal +3 necrotic damage to each target.<br/><strong>Strong.</strong> Deal +6 necrotic damage to each target.<br/><strong>Critical.</strong> Deal +9 necrotic damage to each target.<br/>Any creature is also poisoned while inside the cloud’s area.<br/>The cloud lasts for a short duration. It can also be expelled early by any effect causing strong winds in the same area of influence.",
-		"heightened": "<strong>(Rank 2)</strong> Deal +5/+10/+15 necrotic damage to each target instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 necrotic damage to each target instead."
+		"heightened": "<strong>(Rank 3)</strong> Deal +4/+8/+12 necrotic damage to each target instead."
 	},
 	{
 		"name": "Death's Door",
@@ -887,8 +887,8 @@
 		"target": "vs. Dodge",
 		"range": "Medium",
 		"properties": "-",
-		"effect": "Magically animate a large stone and throw it against your target in range.<br/><strong>Weak.</strong> Deal +4 crush damage.<br/><strong>Strong.</strong> Deal +8 crush damage and the target is pushed close.<br/><strong>Critical.</strong> Deal +12 crush damage, the target is pushed close and falls prone.",
-		"heightened": "<strong>(Rank 2)</strong> Deal +6/+12/+18 crush damage instead.<br/><strong>(Rank 3)</strong> Deal +8/+16/+21 crush damage instead."
+		"effect": "Magically animate a large stone and throw it against your target in range.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV) and the target is pushed close.<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV), the target is pushed close and falls prone.",
+		"heightened": "<strong>(Rank 2)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 damage (ignore 1/2 AV) instead."
 	},
 	{
 		"name": "Sticks to Snakes",
@@ -953,7 +953,7 @@
 		"target": "Hard (10)",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You manipulate nearby plants to grow rapidly and attack your enemies or form structures. Choose any location in range. On a success, plants grow and animate under your control, filling an area close to the target location.<br/>You can command the plants to perform one of the following abilities during each of your turns:<br/><strong>Attack.</strong> Target any number of creatures in the area and use your roll's result vs. their Dodge. Deal +2/+4/+6 damage against each target.<br/><strong>Restrain. </strong>Target any number of creatures in the area and use your roll's result vs. their Dodge. On a success, each target is grappled. On a strong or critical success, each target is grappled and restrained.<br/>If you choose any other ability during one of your turns, this ability ends.<br/><strong>Shape. </strong>Form the plants into a simple structure (such as a shelter, bridge, or barrier). The structure is solid and provides cover. If you end the spell while the plants are shaped, the shape remains stable for a long duration, after which the plants wither and decay.<br/>The plants last for a medium duration or until you dismiss them.",
+		"effect": "You manipulate nearby plants to grow rapidly and attack your enemies or form structures. Choose any location in range. On a success, plants grow and animate under your control, filling an area close to the target location.<br/>You can use your Action during each of your turns to command the plants to perform one of the following abilities:<br/><strong>Attack.</strong> Target any number of creatures in the area and use your roll's result vs. their Dodge. Deal +2/+4/+6 damage against each target.<br/><strong>Restrain. </strong>Target any number of creatures in the area and use your roll's result vs. their Dodge. On a success, each target is grappled. On a strong or critical success, each target is grappled and restrained.<br/>If you choose any other ability during one of your turns, this ability ends.<br/><strong>Shape. </strong>Form the plants into a simple structure (such as a shelter, bridge, or barrier). The structure is solid and provides cover. If you end the spell while the plants are shaped, the shape remains stable for a long duration, after which the plants wither and decay.<br/>The plants last for a medium duration or until you dismiss them.",
 		"heightened": "<strong>(Rank 3) </strong>Choose one:<br/>- The plants fill in short range of the target location.<br/>- The plants deal +4/+8/+12 damage with attacks instead."
 	},
 	{
@@ -1019,8 +1019,8 @@
 		"target": "vs. Dodge",
 		"range": "Medium",
 		"properties": "blast (line)",
-		"effect": "You launch a volley of magically-created thorns that tear through multiple targets in a line.<br/>Target all creatures in a straight line from you up to a target point within range.<br/><strong>Weak.</strong> Deal +4 damage to each target.<br/><strong>Strong.</strong> Deal +8 damage to each target and they are bleeding (2).<br/><strong>Critical.</strong> Deal +12 damage to each target and they are bleeding (4).",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 damage to each target and inflict bleeding (-/4/6) instead.<br/>- Increase the spell‘s range to long."
+		"effect": "You launch a volley of magically-created thorns that tear through multiple targets in a line.<br/>Target all creatures in a straight line from you up to a target point within range.<br/><strong>Weak.</strong> Deal +3 damage to each target.<br/><strong>Strong.</strong> Deal +6 damage to each target and they are bleeding (2).<br/><strong>Critical.</strong> Deal +9 damage to each target and they are bleeding (4).",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target and inflict bleeding (-/4/6) instead.<br/>- Increase the spell‘s range to long."
 	},
 	{
 		"name": "Toxic Mist",
@@ -1030,8 +1030,8 @@
 		"target": "vs. Dodge",
 		"range": "Short",
 		"properties": "blast (cone)",
-		"effect": "You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +4 poison damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +8 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +12 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 poison damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium."
+		"effect": "You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +2 poison damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +4 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +6 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 poison damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium."
 	},
 	{
 		"name": "Water Prison",
@@ -1085,7 +1085,7 @@
 		"target": "Very Hard (12)",
 		"range": "Long",
 		"properties": "concentrate",
-		"effect": "You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignore 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration.",
+		"effect": "You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignore 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration.",
 		"heightened": "-"
 	},
 	{
@@ -1173,7 +1173,7 @@
 		"target": "vs. Dodge",
 		"range": "Short",
 		"properties": "-",
-		"effect": "You summon a vortex of swirling air, clashing against your target and pulling them off their feet.<br/><strong>Weak.</strong> Deal +2 blast damage.<br/><strong>Strong.</strong> Deal +4 blast damage and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage and push the target a short distance.<br/>You can also cast this spell to create a continuous stream of air from your palm that has enough pressure to move small, loose objects in range.",
+		"effect": "You summon a vortex of swirling air, clashing against your target and pulling them off their feet.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) and push the target close.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) and push the target a short distance.<br/>You can also cast this spell to create a continuous stream of air from your palm that has enough pressure to move small, loose objects in range.",
 		"heightened": "-"
 	},
 	{
@@ -1207,7 +1207,7 @@
 		"range": "Medium",
 		"properties": "-",
 		"effect": "You gather an electric charge at a single point within range and release it with a powerful blast, creating loud thunder. Target all creatures in melee range of the target location.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against each target.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against each target and they are briefly dazed and deafened.",
-		"heightened": "<strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target all creatures in short range of the target location instead."
+		"heightened": "<strong>(Rank 2)</strong> Choose one:<br/>- Deal +4/+8/+12 blast damage (ignore 1/2 AV) to each target instead.<br/>- Target all creatures in close range of the target location instead.<br/><strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Target all creatures in short range of the target location instead."
 	},
 	{
 		"name": "Curse of Tempest",
@@ -1216,7 +1216,7 @@
 		"focus": "2",
 		"target": "vs. Resist",
 		"range": "Short",
-		"properties": "singular",
+		"properties": "curse, singular",
 		"effect": "You curse a creature with the magical power of tempest, turning nature itself against them.<br/>On a success, the creature suffers the following effects:<br/>- While moving in natural environments, it is always considered difficult terrain for them.<br/>- They suffer +1 bane on Athletics and Survival rolls.<br/>This curse lasts for a long duration.",
 		"heightened": "<strong>(Rank 2)</strong> The target suffers a weakness to blast, fire, or lightning damage (choose one) for the spell‘s duration.<br/><strong>(Rank 3)</strong> The target suffers a weakness to blast, fire, and lightning damage for the spell‘s duration."
 	},
@@ -1316,8 +1316,8 @@
 		"target": "vs. Dodge",
 		"range": "Medium",
 		"properties": "blast (line)",
-		"effect": "You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +4 lightning damage to each target.<br/><strong>Strong.</strong> Deal +8 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +12 lightning damage to each target and they are briefly staggered.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Increase the spell‘s range to long."
+		"effect": "You summon a powerful bolt of lightning that streaks forth in a straight line from you to a target point up to a short distance away, electrifying every creature it passes.<br/><strong>Weak.</strong> Deal +3 lightning damage to each target.<br/><strong>Strong.</strong> Deal +6 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +9 lightning damage to each target and they are briefly staggered.",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 lightning damage to each target instead.<br/>- Increase the spell‘s range to long."
 	},
 	{
 		"name": "Lightning Step",
@@ -1327,8 +1327,8 @@
 		"target": "Hard (10)",
 		"range": "Medium",
 		"properties": "quick",
-		"effect": "In a sudden flash of lightning you move at the speed of sound to another place. Cast this spell on your turn.<br/>Choose any point within range you can see, where you would be able to move to by walking, climbing, swimming, or jumping.<br/>On a success, you instantly move to the chosen location (this isn’t teleportation) without provoking Opportunity Attacks. When you arrive, you produce a loud booming sound, dealing +2 blast damage to all creatures in close range of you. Your Movement for the rest of the turn becomes 0.",
-		"heightened": "<strong>(Rank 3)</strong> Increase the spell’s range to long and deal +4 blast damage instead."
+		"effect": "In a sudden flash of lightning you move at the speed of sound to another place. Cast this spell on your turn.<br/>Choose any point within range you can see, where you would be able to move to by walking, climbing, swimming, or jumping.<br/>On a success, you instantly move to the chosen location (this isn’t teleportation) without provoking Opportunity Attacks. When you arrive, you produce a loud booming sound, dealing +2 blast damage (ignore 1/2 AV) to all creatures in close range of you. Your Movement for the rest of the turn becomes 0.",
+		"heightened": "<strong>(Rank 3)</strong> Increase the spell’s range to long and deal +4 blast damage (ignore 1/2 AV) instead."
 	},
 	{
 		"name": "Magma Burst",
@@ -1349,8 +1349,8 @@
 		"target": "vs. Dodge",
 		"range": "Short",
 		"properties": "blast (cone)",
-		"effect": "You slam the earth before you and it erupts with force, spitting flaming hot lava into the air.<br/><strong>Weak.</strong><em> </em>Deal +4 fire damage to each target. <br/><strong>Strong.</strong> Deal +8 fire damage to each target and they fall prone.<br/><strong>Critical.</strong> Deal +12 fire damage to each target, they fall prone, and their Movement briefly becomes 0.<br/>The area affected by this spell remains as broken ground and is considered difficult terrain.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 fire damage to each target instead.<br/>- Increase the spell‘s range to medium."
+		"effect": "You slam the earth before you and it erupts with force, spitting flaming hot lava into the air.<br/><strong>Weak.</strong><em> </em>Deal +3 fire damage to each target. <br/><strong>Strong.</strong> Deal +6 fire damage to each target and they fall prone.<br/><strong>Critical.</strong> Deal +9 fire damage to each target, they fall prone, and their Movement briefly becomes 0.<br/>The area affected by this spell remains as broken ground and is considered difficult terrain.",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 fire damage to each target instead.<br/>- Increase the spell‘s range to medium."
 	},
 	{
 		"name": "Storm Cloud",
@@ -1360,8 +1360,8 @@
 		"target": "Hard (10)",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Target up to five creatures below the cloud instead."
+		"effect": "You summon a dark cloud brewing with electricity. On a success, the cloud extends in close range of the target location and hovers up to a medium distance above it. Target up to three creatures below the cloud use your roll’s result vs. their Dodge.<br/><strong>Weak.</strong> Deal +4 lightning damage against each target.<br/><strong>Strong. </strong>Deal +8 lightning damage against each target.<br/><strong>Critical. </strong>Deal +12 lightning damage against each target.<br/>On each of your following turns, you can use your Action to target another one creature with this spell and repeat the roll vs. Dodge. Before or after the roll, you can choose to move the cloud a short distance within range.<br/>The cloud lasts for a short duration.",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 lightning damage to each target instead.<br/>- Target up to five creatures below the cloud instead."
 	},
 	{
 		"name": "Thunder Clap",
@@ -1372,7 +1372,7 @@
 		"range": "Short",
 		"properties": "-",
 		"effect": "You intensely clap your hands, summoning a thunderous shockwave that ripples outward from you. Target all creatures in range.<br/><strong>Weak. </strong>Deal +4 blast (ignore 1/2 AV) damage to each target.<br/><strong>Strong. </strong>Deal +8 blast (ignore 1/2 AV) damage to each target and they are knocked prone and briefly deafened.<br/><strong>Critical. </strong>Deal +12 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage to each target instead.<br/>- Increase the spell‘s range to medium."
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 blast damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell‘s range to medium."
 	},
 	{
 		"name": "Torrent",
@@ -1382,8 +1382,8 @@
 		"target": "vs. Parry",
 		"range": "Medium",
 		"properties": "blast (line)",
-		"effect": "You create a high pressure stream of water, pulling anything in it’s way along with it.<br/><strong>Weak. </strong>Deal +4 damage to each target and they are pushed a close distance.<br/><strong>Strong. </strong>Deal +8 damage to each target and they are pushed a short distance.<br/><strong>Critical. </strong>Deal +12 damage to each target and they are pushed a short distance and fall prone.",
-		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 damage to each target instead.<br/>- Increase the spell‘s range to long."
+		"effect": "You create a high pressure stream of water, pulling anything in it’s way along with it.<br/><strong>Weak. </strong>Deal +3 damage to each target and they are pushed a close distance.<br/><strong>Strong. </strong>Deal +6 damage to each target and they are pushed a short distance.<br/><strong>Critical. </strong>Deal +9 damage to each target and they are pushed a short distance and fall prone.",
+		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target instead.<br/>- Increase the spell‘s range to long."
 	},
 	{
 		"name": "Wind Ward",
@@ -1402,21 +1402,21 @@
 		"rank": "3",
 		"focus": "6",
 		"target": "vs. Dodge",
-		"range": "Medium",
+		"range": "Long",
 		"properties": "-",
-		"effect": "You conjure a bolt of lightning which arcs from creature to creature. Choose a first target within range and a second target in short range of the first. Repeat this for up to a third and fourth target which each have to be in short range of the previous target respectively.<br/><strong>Weak.</strong> Deal +6 lightning damage to each target.<br/><strong>Strong.</strong> Deal +12 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +18 lightning damage to each target and they are briefly staggered.",
-		"heightened": "-"
+		"effect": "You loose a bolt that strikes like a whip and then goes hunting, leaping from body to body along the paths of least resistance.<br/><strong>Weak.</strong> Deal +8 lightning damage to the target.<br/><strong>Strong.</strong> Deal +16 lightning damage to the target.<br/><strong>Critical.</strong> Deal +24 lightning damage to the target.<br/>Also on a success, the lightning arcs from the target to up to three additional creatures, each within close range of the previously struck creature, using your roll's result vs. their Dodge. On a hit, each of them takes half as much damage as the first target.",
+		"heightened": "<strong>(Rank 4)</strong> Deal +10/+20/+30 lightning damage to the first target instead.<br/><strong>(Rank 5)</strong> Deal +12/+24/+36 lightning damage to the first target instead."
 	},
 	{
 		"name": "Cone of Cold",
 		"tradition": "Tempest",
-		"rank": "3",
-		"focus": "6",
-		"target": "vs. Dodge",
+		"rank": "4",
+		"focus": "8",
+		"target": "vs. Resist",
 		"range": "Medium",
 		"properties": "blast (cone)",
-		"effect": "You invoke the power of a blizzard and unleash a wave of freezing cold air and icy shards.<br/><strong>Weak.</strong> Deal +6 frost damage to each target.<br/><strong>Strong.</strong> Deal +12 frost damage to each target and they are briefly slowed.<br/><strong>Critical.</strong> Deal +18 frost damage to each target and they are briefly slowed.",
-		"heightened": "-"
+		"effect": "You exhale the cold between the stars, and a fan of white silence rolls out from your hands, flash-freezing everything it touches.<br/>Target all creatures in the cone.<br/><strong>Weak.</strong> Deal +4 frost damage to each target.<br/><strong>Strong.</strong> Deal +8 frost damage to each target.<br/><strong>Critical.</strong> Deal +12 frost damage to each target.<br/>Also on a success, each target is briefly slowed. A target that was already slowed is briefly restrained instead, frozen in a shell of ice.",
+		"heightened": "<strong>(Rank 5)</strong> Deal +5/+10/+15 frost damage to each target instead."
 	},
 	{
 		"name": "Cyclone",
@@ -1459,7 +1459,7 @@
 		"target": "vs. Resist",
 		"range": "Long",
 		"properties": "-",
-		"effect": "You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened.",
+		"effect": "You summon a tiny translucent orb containing a thunder storm within what shatters violently. Target all creatures in short range of the target location within range.<br/><strong>Weak.</strong> Deal +3 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target and they are knocked prone and briefly deafened.<br/><strong>Critical.</strong> Deal +9 blast damage (ignore 1/2 AV) to each target and they are pushed close, knocked prone, and briefly deafened.",
 		"heightened": "-"
 	},
 	{
@@ -1711,7 +1711,7 @@
 		"focus": "2",
 		"target": "vs. Resist",
 		"range": "Short",
-		"properties": "singular",
+		"properties": "curse, singular",
 		"effect": "You curse a creature with the magical power of war, suffocating them in the agony of battle.<br/>On a success, the creature suffers the following effects:<br/>- They take +2 damage from any source.<br/>- Whenever they take 10 or more damage from one attack, they have to roll Spirit + Fortitude. On a failure, they are briefly frightened.<br/>This curse lasts for a long duration.",
 		"heightened": "<strong>(Rank 2)</strong> The target takes +4 damage from any source.<br/><strong>(Rank 3)</strong> The target takes +6 damage from any source."
 	},
@@ -2000,5 +2000,93 @@
 		"properties": "ritual (hours), material cost (5000 coins)",
 		"effect": "Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one turning of the moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration.",
 		"heightened": "-"
-	}
+	},
+    {
+        "name": "Curse of Frailty",
+        "tradition": "Death",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Short",
+        "properties": "curse, singular",
+        "effect": "You curse a creature with the brittleness of old bones, and their body begins to fail them like a corpse rehearsing.<br/>On a success, the creature suffers the following effects:<br/>- They lose 2 AV (min. 0).<br/>- They suffer +1 bane on Strength rolls.<br/>This curse lasts for a long duration.",
+        "heightened": "<strong>(Rank 3)</strong> They lose 3 AV (min. 0) instead.<br/><strong>(Rank 4)</strong> They lose 4 AV (min. 0) instead.<br/><strong>(Rank 5)</strong> They lose 5 AV (min. 0) instead."
+    },
+    {
+        "name": "Grave Chill",
+        "tradition": "Death",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "The cold of the grave seeps into the target's marrow, and their body begins answering to the world below before their time.<br/>On a success, the target is slowed for a short duration, and they suffer +1 bane on rolls to resist or end early the effects of <em>Death</em> spells, including this one. Whenever they fail a roll to end a <em>Death</em> spell early, they take 2 frost damage (ignore AV) as the grave's cold pulls at them. They can roll Strength + Fortitude vs. your Resist at the end of their turns to end this spell's effects early.",
+        "heightened": "<strong>(Rank 3)</strong> They take 4 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.<br/><strong>(Rank 4)</strong> They take 6 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead.<br/><strong>(Rank 5)</strong> They take 8 frost damage (ignore AV) whenever they fail a roll to end a <em>Death</em> spell early instead."
+    },
+    {
+        "name": "Weight of Dooms",
+        "tradition": "Death",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You lay your will upon a doom already written on the target, and it sinks deeper, like a wound the body refuses to close.<br/>Choose one condition the target currently suffers among poisoned, frightened, bleeding, slowed, dazed, or staggered.<br/><strong>Weak.</strong> The target suffers +1 bane on rolls to end the chosen condition early, and if the condition has a set duration, it extends by one step.<br/><strong>Strong.</strong> Same as a weak success, and deal +4 necrotic damage.<br/><strong>Critical.</strong> Same as a weak success, and deal +8 necrotic damage.<br/>This spell has no effect on a target that suffers none of the listed conditions.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +6/+12 necrotic damage on a strong or critical success instead.<br/><strong>(Rank 4)</strong> Deal +8/+16 necrotic damage on a strong or critical success instead.<br/><strong>(Rank 5)</strong> Deal +10/+20 necrotic damage on a strong or critical success instead."
+    },
+    {
+        "name": "Spreading Contagion",
+        "tradition": "Death",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You breathe on an existing sickness and it wakes with a will of its own, leaping from body to body like sparks through dry grass.<br/>Target one creature that is currently poisoned.<br/><strong>Weak.</strong> Deal +4 poison damage to the target.<br/><strong>Strong.</strong> Deal +8 poison damage to the target.<br/><strong>Critical.</strong> Deal +12 poison damage to the target.<br/>Also target each enemy in close range of the first target, using your roll's result vs. their Resist. On a success, they become poisoned for a short duration.<br/>This spell has no effect on a target that is not poisoned.",
+        "heightened": "<strong>(Rank 4)</strong> Deal +5/+10/+15 poison damage instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 poison damage instead."
+    },
+    {
+        "name": "The Reckoning",
+        "tradition": "Death",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You speak the target's accumulated dooms aloud, and every sickness, terror, and curse upon them comes due at once, called home by the world below.<br/>Count the target's afflictions: each condition they currently suffer among poisoned, frightened, bleeding, slowed, dazed, staggered, and stunned, and each <strong>curse</strong> spell affecting them.<br/><strong>Weak.</strong> Deal +2 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Strong.</strong> Deal +4 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Critical.</strong> Deal +6 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/>Also on a success, all counted conditions on the target end and all counted <strong>curse</strong> spells on them are lifted. The tally consumes what it counts.",
+        "heightened": "<strong>(Rank 4)</strong> Deal +5 necrotic damage for each affliction counted instead.<br/><strong>(Rank 5)</strong> Deal +6 necrotic damage for each affliction counted instead."
+    },
+    {
+        "name": "Fangs of the Dark",
+        "tradition": "Twilight",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Dodge",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "The shadows nearest the target grow teeth, and for a heartbeat the night itself feeds.<br/><strong>Weak.</strong> Deal +4 frost damage.<br/><strong>Strong.</strong> Deal +8 frost damage.<br/><strong>Critical.</strong> Deal +12 frost damage.<br/>If the target is in dim light or darkness, or cannot see you, they take +6 additional frost damage and are briefly frightened as the dark closes its jaws.",
+        "heightened": "<strong>(Rank 3)</strong> Deal +6/+12/+18 frost damage, and the additional damage is +8 instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 frost damage, and the additional damage is +10 instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 frost damage, and the additional damage is +12 instead."
+    },
+    {
+        "name": "Shadow Mantle",
+        "tradition": "Twilight",
+        "rank": "2",
+        "focus": "4",
+        "target": "Hard (10)",
+        "range": "Short",
+        "properties": "singular",
+        "effect": "You peel a creature's shadow up from the ground and drape it over their shoulders, where it clings like a second skin of night.<br/>On a success, choose one creature in range. While they are in dim light or darkness:<br/>- Attacks against them suffer +1 bane.<br/>- Their attacks against creatures that cannot see them deal +2 damage.<br/>The mantle lasts for a medium duration. If the wearer spends a full turn in bright light, it burns away and the spell ends.",
+        "heightened": "<strong>(Rank 3)</strong> Their attacks against creatures that cannot see them deal +4 damage instead.<br/><strong>(Rank 4)</strong> Their attacks against creatures that cannot see them deal +6 damage instead.<br/><strong>(Rank 5)</strong> Their attacks against creatures that cannot see them deal +8 damage instead."
+    },
+    {
+        "name": "Written in the Stars",
+        "tradition": "Twilight",
+        "rank": "2",
+        "focus": "4",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You read the target's death in the night sky and pronounce it aloud, and for a moment everyone present can feel where the blow is fated to land.<br/>On a success, the target is marked (4) for a short duration. The attack that ends the mark has its SL increased by one step (max. critical success).",
+        "heightened": "<strong>(Rank 3)</strong> The target is marked (6) instead.<br/><strong>(Rank 4)</strong> The target is marked (8) instead.<br/><strong>(Rank 5)</strong> The target is marked (10) instead."
+    }
 ]

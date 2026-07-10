@@ -102,9 +102,9 @@ sidebar_position: 5
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Medium | -
 
-**Effect** <br/> Magically animate a large stone and throw it against your target in range.<br/><strong>Weak.</strong> Deal +4 crush damage.<br/><strong>Strong.</strong> Deal +8 crush damage and the target is pushed close.<br/><strong>Critical.</strong> Deal +12 crush damage, the target is pushed close and falls prone. 
+**Effect** <br/> Magically animate a large stone and throw it against your target in range.<br/><strong>Weak.</strong> Deal +3 damage (ignore 1/2 AV).<br/><strong>Strong.</strong> Deal +6 damage (ignore 1/2 AV) and the target is pushed close.<br/><strong>Critical.</strong> Deal +9 damage (ignore 1/2 AV), the target is pushed close and falls prone. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +6/+12/+18 crush damage instead.<br/><strong>(Rank 3)</strong> Deal +8/+16/+21 crush damage instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +5/+10/+15 damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +7/+14/+21 damage (ignore 1/2 AV) instead.
 
 >
 
@@ -192,7 +192,7 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You manipulate nearby plants to grow rapidly and attack your enemies or form structures. Choose any location in range. On a success, plants grow and animate under your control, filling an area close to the target location.<br/>You can command the plants to perform one of the following abilities during each of your turns:<br/><strong>Attack.</strong> Target any number of creatures in the area and use your roll's result vs. their Dodge. Deal +2/+4/+6 damage against each target.<br/><strong>Restrain. </strong>Target any number of creatures in the area and use your roll's result vs. their Dodge. On a success, each target is grappled. On a strong or critical success, each target is grappled and restrained.<br/>If you choose any other ability during one of your turns, this ability ends.<br/><strong>Shape. </strong>Form the plants into a simple structure (such as a shelter, bridge, or barrier). The structure is solid and provides cover. If you end the spell while the plants are shaped, the shape remains stable for a long duration, after which the plants wither and decay.<br/>The plants last for a medium duration or until you dismiss them. 
+**Effect** <br/> You manipulate nearby plants to grow rapidly and attack your enemies or form structures. Choose any location in range. On a success, plants grow and animate under your control, filling an area close to the target location.<br/>You can use your Action during each of your turns to command the plants to perform one of the following abilities:<br/><strong>Attack.</strong> Target any number of creatures in the area and use your roll's result vs. their Dodge. Deal +2/+4/+6 damage against each target.<br/><strong>Restrain. </strong>Target any number of creatures in the area and use your roll's result vs. their Dodge. On a success, each target is grappled. On a strong or critical success, each target is grappled and restrained.<br/>If you choose any other ability during one of your turns, this ability ends.<br/><strong>Shape. </strong>Form the plants into a simple structure (such as a shelter, bridge, or barrier). The structure is solid and provides cover. If you end the spell while the plants are shaped, the shape remains stable for a long duration, after which the plants wither and decay.<br/>The plants last for a medium duration or until you dismiss them. 
 
 > **Heightened** <br/> <strong>(Rank 3) </strong>Choose one:<br/>- The plants fill in short range of the target location.<br/>- The plants deal +4/+8/+12 damage with attacks instead.
 
@@ -256,9 +256,9 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Medium | blast (line)
 
-**Effect** <br/> You launch a volley of magically-created thorns that tear through multiple targets in a line.<br/>Target all creatures in a straight line from you up to a target point within range.<br/><strong>Weak.</strong> Deal +4 damage to each target.<br/><strong>Strong.</strong> Deal +8 damage to each target and they are bleeding (2).<br/><strong>Critical.</strong> Deal +12 damage to each target and they are bleeding (4). 
+**Effect** <br/> You launch a volley of magically-created thorns that tear through multiple targets in a line.<br/>Target all creatures in a straight line from you up to a target point within range.<br/><strong>Weak.</strong> Deal +3 damage to each target.<br/><strong>Strong.</strong> Deal +6 damage to each target and they are bleeding (2).<br/><strong>Critical.</strong> Deal +9 damage to each target and they are bleeding (4). 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 damage to each target and inflict bleeding (-/4/6) instead.<br/>- Increase the spell‘s range to long.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +4/+8/+12 damage to each target and inflict bleeding (-/4/6) instead.<br/>- Increase the spell‘s range to long.
 
 >
 
@@ -268,9 +268,9 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Short | blast (cone)
 
-**Effect** <br/> You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +4 poison damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +8 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +12 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration. 
+**Effect** <br/> You create a cone of toxic fog that spreads from your position. Target all creatures within the spell’s area.<br/><strong>Weak.</strong> Deal +2 poison damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +4 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration.<br/><strong>Critical.</strong> Deal +6 poison damage (ignore 1/2 AV) to each target and they are poisoned for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +6/+12/+18 poison damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 poison damage (ignore 1/2 AV) to each target instead.<br/>- Increase the spell’s range to medium.
 
 >
 
@@ -316,7 +316,7 @@ sidebar_position: 5
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | concentrate
 
-**Effect** <br/> You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignore 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration. 
+**Effect** <br/> You summon a dense cloud of biting and stinging insects that fill an area within short range from the target location.<br/>On a success, the insect swarm appears and attacks all creatures within the area that you choose. Use your roll’s result vs. their Dodge.<br/>On a success, each target takes +4 damage (ignore 1/2 AV) and is briefly distracted by the insects.<br/>On each of your following turns, you can use your Action to repeat the roll vs. Dodge against any amount of creatures within the swarm’s area to repeat the spell’s effect. Before or after the roll, you can choose to move the swarm a short distance within range.<br/>The swarm is immune against attacks but if they would suffer any amount of fire damage, roll a Concentration test for this spell as if you took that damage.<br/>The swarm remains for a short duration. 
 
 ### Life from Stone
 

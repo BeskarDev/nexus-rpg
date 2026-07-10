@@ -84,7 +84,7 @@ sidebar_position: 2
 
 **Effect** <br/> Create an illusory swarm of creatures or projectiles that a group of creatures believe to be attacked by. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) to each target and they are briefly confused.<strong> <br/>Critical. </strong>Deal +6 psychic damage (ignore AV) to each target and they are confused for a short time. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +4/+8/+12 psychic damage (ignore AV) instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +3/+6/+9 psychic damage (ignore AV) instead.
 
 >
 
@@ -140,7 +140,7 @@ sidebar_position: 2
 
 **Effect** <br/> You create a spacial illusion where a deadly trap or hazard springs into being. Target all creatures in close range of the target location.<br/>On a success, each target believes they set off the trap and are getting pinned by it. Choose any plausible form for the illusory trap to take (e.g. crumbling ceiling or spikes from the ground).<br/><strong>Weak.</strong> Deal +2 psychic damage (ignore AV) against each target.<br/><strong>Strong.</strong> Deal +4 psychic damage (ignore AV) against each target and they are grappled by the illusory trap.<br/><strong>Critical. </strong>Deal +6 psychic damage (ignore AV) against each target and they are grappled and restrained by the illusory trap.<br/>After a target believes they were pinned by the trap, the illusion lasts for a short duration or until they see through it. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) against each target instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +3/+6/+9 psychic damage (ignore AV) against each target instead.
 
 >
 

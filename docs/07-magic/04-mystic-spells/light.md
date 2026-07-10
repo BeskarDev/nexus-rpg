@@ -34,7 +34,7 @@ sidebar_position: 1
 ---|---|---|---|---
  0 | 0 | vs. Resist | Short | -
 
-**Effect** <br/> You let loose a quick burst of radiant energy in all directions, revealing any magical falsehoods, such as illusions, shapeshifters, or invisible creatures in range. For illusions, compare your result vs. the Resist of the illusion’s creator to see if they are broken.<br/><strong>Weak.</strong> Any magical falsehood is marked by a shimmer of light. Rolls that target any marked target gain +1 boon. The mark lasts for a short duration.<br/><strong>Strong.</strong> Any magical falsehood is immediately broken.<br/><strong>Critical.</strong> Any magical falsehood is immediately broken and any creature revealed by this is briefly shaken. 
+**Effect** <br/> You let loose a quick burst of radiant energy in all directions, revealing any magical falsehoods, such as illusions, shapeshifters, or invisible creatures in range. For illusions, compare your result vs. the Resist of the illusion’s creator to see if they are broken.<br/><strong>Weak.</strong> Any magical falsehood is marked by a shimmer of light. Rolls that target any marked target gain +1 boon. The mark lasts for a short duration.<br/><strong>Strong.</strong> Any magical falsehood is immediately broken.<br/><strong>Critical.</strong> Any magical falsehood is immediately broken and any creature revealed by this is briefly dazed. 
 
 ### Blessing of Light
 
@@ -78,7 +78,7 @@ sidebar_position: 1
 ---|---|---|---|---
  1 | 2 | vs. Dodge | Medium | -
 
-**Effect** <br/> You let forth a burst of radiant energy, streaking towards a target location and exploding in burning light.<br/><strong>Weak.</strong> Deal +2 radiant damage to any creature in melee range of the target location.<br/><strong>Strong. </strong>Deal +4 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded.<br/><strong>Critical.</strong> Deal +6 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded. Each target is also briefly blinded and dazed. 
+**Effect** <br/> You let forth a burst of radiant energy, streaking towards a target location and exploding in burning light.<br/><strong>Weak.</strong> Deal +2 radiant damage to any creature in melee range of the target location.<br/><strong>Strong. </strong>Deal +4 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded.<br/><strong>Critical.</strong> Deal +6 radiant damage to any creature in melee range of the target location. Each target is also briefly blinded and dazed. 
 
 ### Radiant Weapon
 
@@ -166,7 +166,7 @@ sidebar_position: 1
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Medium | blast (cone)
 
-**Effect** <br/> You unleash a devastating cone of solar energy that burns and blinds everything in its path.<br/><strong>Weak.</strong> Deal +6 radiant damage to each target and they are briefly blinded.<br/><strong>Strong.</strong> Deal +12 radiant damage to each target and they are blinded for a short duration.<br/><strong>Critical.</strong> Deal +18 radiant damage to each target and they are blinded for a short duration and briefly stunned. 
+**Effect** <br/> You unleash a devastating cone of solar energy that burns and blinds everything in its path.<br/><strong>Weak.</strong> Deal +4 radiant damage to each target.<br/><strong>Strong.</strong> Deal +8 radiant damage to each target.<br/><strong>Critical.</strong> Deal +12 radiant damage to each target and they are briefly stunned.<br/>Also on a success, each target is briefly blinded. 
 
 ### Solar Flare
 
@@ -174,4 +174,4 @@ sidebar_position: 1
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Long | -
 
-**Effect** <br/> You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +6 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +12 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +18 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.
+**Effect** <br/> You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +4 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +8 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +12 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.

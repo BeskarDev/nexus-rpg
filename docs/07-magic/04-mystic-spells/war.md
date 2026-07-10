@@ -32,7 +32,7 @@ sidebar_position: 8
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Resist | Short | singular
+ 1 | 2 | vs. Resist | Short | curse,  singular
 
 **Effect** <br/> You curse a creature with the magical power of war, suffocating them in the agony of battle.<br/>On a success, the creature suffers the following effects:<br/>- They take +2 damage from any source.<br/>- Whenever they take 10 or more damage from one attack, they have to roll Spirit + Fortitude. On a failure, they are briefly frightened.<br/>This curse lasts for a long duration. 
 

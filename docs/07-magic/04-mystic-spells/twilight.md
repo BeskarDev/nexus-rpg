@@ -56,7 +56,7 @@ sidebar_position: 2
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
- 1 | 2 | vs. Resist | Short | singular
+ 1 | 2 | vs. Resist | Short | curse,  singular
 
 **Effect** <br/> You curse a creature with the magical power of twilight, bringing the fear of night into their heart.<br/>On a success, the creature suffers the following effects:<br/>- They see in bright light as in dim light.<br/>- They suffer +1 bane on Perception and Initiative rolls.<br/>This curse lasts for a long duration. 
 
@@ -144,15 +144,39 @@ sidebar_position: 2
 
 **Effect** <br/> You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes Total Darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration. 
 
+### Fangs of the Dark
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Dodge | Medium | -
+
+**Effect** <br/> The shadows nearest the target grow teeth, and for a heartbeat the night itself feeds.<br/><strong>Weak.</strong> Deal +4 frost damage.<br/><strong>Strong.</strong> Deal +8 frost damage.<br/><strong>Critical.</strong> Deal +12 frost damage.<br/>If the target is in dim light or darkness, or cannot see you, they take +6 additional frost damage and are briefly frightened as the dark closes its jaws. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +6/+12/+18 frost damage, and the additional damage is +8 instead.<br/><strong>(Rank 4)</strong> Deal +8/+16/+24 frost damage, and the additional damage is +10 instead.<br/><strong>(Rank 5)</strong> Deal +10/+20/+30 frost damage, and the additional damage is +12 instead.
+
+>
+
 ### Moonbeam
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +8 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
+**Effect** <br/> You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +6 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> The beam deals +10 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 4)</strong> The beam deals +12 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 5)</strong> The beam extends in close range of the target location instead, deals +14 frost damage, and shines dim light in short range of it.
+> **Heightened** <br/> <strong>(Rank 3)</strong> The beam deals +8 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 4)</strong> The beam deals +10 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 5)</strong> The beam extends in close range of the target location instead, deals +12 frost damage, and shines dim light in short range of it.
+
+>
+
+### Shadow Mantle
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Short | singular
+
+**Effect** <br/> You peel a creature's shadow up from the ground and drape it over their shoulders, where it clings like a second skin of night.<br/>On a success, choose one creature in range. While they are in dim light or darkness:<br/>- Attacks against them suffer +1 bane.<br/>- Their attacks against creatures that cannot see them deal +2 damage.<br/>The mantle lasts for a medium duration. If the wearer spends a full turn in bright light, it burns away and the spell ends. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> Their attacks against creatures that cannot see them deal +4 damage instead.<br/><strong>(Rank 4)</strong> Their attacks against creatures that cannot see them deal +6 damage instead.<br/><strong>(Rank 5)</strong> Their attacks against creatures that cannot see them deal +8 damage instead.
 
 >
 
@@ -195,6 +219,18 @@ sidebar_position: 2
 **Effect** <br/> You weave twilight magic into a creature's mind, temporarily turning them from foe to friend through shadow manipulation clouding their perception of reality. The target must be of a tier equal to or lower than your Mysticism. On a success, the target becomes charmed by you and treats you and your allies as friends for a short duration.<br/>The creature can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. If the creature takes damage from you or your allies, they can immediately make this roll with +1 boon.<br/>You can only cast this spell once against any individual creature once per day. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> The spell lasts for a medium duration instead.
+
+>
+
+### Written in the Stars
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | vs. Resist | Medium | -
+
+**Effect** <br/> You read the target's death in the night sky and pronounce it aloud, and for a moment everyone present can feel where the blow is fated to land.<br/>On a success, the target is marked (4) for a short duration. The attack that ends the mark has its SL increased by one step (max. critical success). 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The target is marked (6) instead.<br/><strong>(Rank 4)</strong> The target is marked (8) instead.<br/><strong>(Rank 5)</strong> The target is marked (10) instead.
 
 >
 

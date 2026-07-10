@@ -48,7 +48,7 @@ sidebar_position: 3
 
 **Effect** <br/> You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. A creature can only benefit from one Wound-healing spell effect per day. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> When using your Action, restore +6/12/16 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.
+> **Heightened** <br/> <strong>(Rank 2)</strong> When using your Action, restore +6/12/18 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.
 
 >
 
@@ -72,7 +72,7 @@ sidebar_position: 3
 
 **Effect** <br/> You quickly envigorate a creature. Cast this spell on your turn.<br/><strong>Weak.</strong> Restore +2 HP to your target.<br/><strong>Strong.</strong> Restore +4 HP to your target.<br/><strong>Critical. </strong>Restore +6 HP to your target. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 3)</strong> Restore +6/12/18 HP instead.
+> **Heightened** <br/> <strong>(Rank 2)</strong> Restore +3/6/9 HP instead.<br/><strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +5/10/15 HP instead.<br/><strong>(Rank 5)</strong> Restore +6/12/18 HP instead.
 
 >
 
@@ -152,7 +152,7 @@ sidebar_position: 3
 
 **Effect** <br/> You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +5/10/15 HP instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4/8/12 HP instead.
 
 >
 
@@ -170,7 +170,7 @@ sidebar_position: 3
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Medium | blast (cone)
 
-**Effect** <br/> You unleash a devastating explosion of pure life force that overwhelms your enemies' vital systems while gently reinvigorating your allies.<br/>Target all hostile creatures and your allies within the spell’s area. Compare the roll against a very hard Difficulty (12) to calculate the SL for your allies.<br/><strong>Weak.</strong> Deal +6 radiant damage to each hostile target. Restore +3 HP to each ally.<br/><strong>Strong.</strong> Deal +12 radiant damage to each hostile target and they are briefly dazed. Restore +6 HP to each ally.<br/><strong>Critical.</strong> Deal +18 radiant damage to each hostile target and they are briefly stunned. Restore +9 HP to each ally.
+**Effect** <br/> You unleash a devastating explosion of pure life force that overwhelms your enemies' vital systems while gently reinvigorating your allies.<br/>Target all hostile creatures and your allies within the spell’s area. Compare the roll against a very hard Difficulty (12) to calculate the SL for your allies.<br/><strong>Weak.</strong> Deal +4 radiant damage to each hostile target. Restore +3 HP to each ally.<br/><strong>Strong.</strong> Deal +8 radiant damage to each hostile target and they are briefly dazed. Restore +6 HP to each ally.<br/><strong>Critical.</strong> Deal +12 radiant damage to each hostile target and they are briefly stunned. Restore +9 HP to each ally.
 
 ### Revivify
 

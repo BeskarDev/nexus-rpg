@@ -138,6 +138,14 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- Deal +3/+6/+9 psychic damage to each target instead.<br/>- Increase the spell's range to medium.  
 
+### Implant Suggestion
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Short | -
+
+**Effect** <br/> You bury a whisper beneath the target's waking mind, folded and waiting, like a seed under snow.<br/>On a success, plant a suggested course of action in the target's mind together with a trigger you define: a phrase heard, a person seen, a place entered, or a plainly observable event. The suggestion must be a reasonable course of action that doesn't inflict harm on the target or their allies.<br/>The suggestion lies dormant for up to a very long duration or until triggered. When the trigger occurs, the target is compelled to pursue the suggested course of action without distraction. The compulsion lasts until the course of action is complete or for a short duration, and it ends early if the target takes damage from any source. After the compulsion ends, the target knows their mind was influenced.<br/>A creature can only carry one suggestion from this spell at a time. Until it triggers, the dormant suggestion registers as an aura of influence to effects like <em>Detect Magic</em>. 
+
 ### Invade Dreams
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -145,6 +153,34 @@ sidebar_position: 4
  3 | 6 | vs. Resist | Touch | ritual (minutes)
 
 **Effect** <br/> You lay a hand on the sleeper's brow and slip beneath their eyelids, walking the halls of their dreams as an unseen architect. You enter the dreams of a touched sleeping, intelligent creature. If they fail to resist, choose one effect for the duration of the dream:<br/>- <strong>Plant a vision.</strong> You author a dream the creature will remember as a true omen or prophecy. On waking they believe the vision was genuine until events plainly contradict it.<br/>- <strong>Sift the sleeping mind.</strong> Ask their dreaming self up to three questions. The GM answers with what the creature knows, one of: a place, a person, a past event, a fear, or a held secret. If they know nothing relevant, the dream turns evasive and you learn nothing from that question.<br/>- <strong>Sow unrest.</strong> The creature suffers restless nightmares, waking unrested (they gain no benefit from the sleep) and frightened of a subject you weave into the dream for a short duration after waking.<br/>The ritual takes minutes and requires the target to remain asleep throughout. A creature can attempt this against the same target only once per night. 
+
+### Psychic Lance
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You compress your will to a single point and drive it through the target's thoughts like a needle through wax.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV).<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV).<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV).<br/>Also on a success, the lance climbs the cracks already in their mind: if the target is dazed, they are instead confused for a short duration. If the target is already confused, they are briefly stunned. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end these effects early. 
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) instead.
+
+>
+
+### Psychic Probe
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Short | -
+
+**Effect** <br/> You slide past the target's surface thoughts into the currents beneath, reading what drives them the way a tracker reads ground.<br/><strong>Weak.</strong> You learn the target's present goal: what they are trying to achieve in this scene, in one plain sentence.<br/><strong>Strong.</strong> Same as a weak success, and the GM reveals one of the following about the target: a fear that moves them, a secret they hold, a loyalty they will not break, or an action they are planning. If nothing concrete fits, you instead learn their dominant emotion and what stoked it.<br/><strong>Critical.</strong> Same as a weak success, and the GM reveals two entries from the list above.<br/>The target feels the intrusion into their mind. You can only cast this spell once against any creature per scene. 
+
+### Puppet's Step
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You reach into a mind already stumbling and, for one terrible moment, walk it like a garment.<br/>Target a creature that is currently charmed or confused. The target must be of a tier equal to or lower than your Arcana.<br/>On a success, the target immediately moves up to a short distance and performs one simple physical action, both directed by you. The action can be a single weapon attack, or a bodily deed of similar scope, such as dropping or picking up an item, opening or barring a door, pulling a lever, or handing what they carry to a creature in reach. You can't force the target to speak. Their movement does not trigger Opportunity Attacks against them.<br/>The target then knows what they did and that a will not their own moved them. This spell has no effect on a target that is neither charmed nor confused. 
 
 ### Astral Body
 

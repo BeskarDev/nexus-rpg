@@ -51,7 +51,7 @@ Removing an enchantment is difficult and often destroys the item.
 | d12 | Prefix |
 | --- | --- |
 | 1 | **bloody (Q4/Q5/Q6).** On a strong or critical hit with this weapon, inflict bleeding (2/4/6) on the target. If your hit would inflict bleeding already, increase the amount by +2/+4/+6 instead. |
-| 2 | **booming (Q4/Q5/Q6).** On a hit with this weapon, you can choose to deal blast damage instead. On a strong or critical hit, the target is also pushed a close/short/medium distance.<br/>You can use this ability once/twice/thrice per day. |
+| 2 | **booming (Q4/Q5/Q6).** On a hit with this weapon, you can choose to deal blast damage (ignore 1/2 AV) instead. On a strong or critical hit, the target is also pushed a close/short/medium distance.<br/>You can use this ability once/twice/thrice per day. |
 | 3 | **defiled (Q4/Q5/Q6).** This weapon is tainted with dark energy, causing nearby plants to slowly wither and exuding a faint aura of malevolence. You can use your Quick Action on your turn to amplify this corruption for a short duration.<br/>While amplified, the weapon turns bright light to dim light in close range and deals 2/4/6 necrotic damage (ignore AV) on a hit. |
 | 4 | **flaming (Q4/Q5/Q6).** While holding this weapon, you can use your Quick Action on your turn to ignite it with flames for a short duration.<br/>While ignited, the weapon emits bright light in melee range, dim light in close range, and deals 2/4/6 fire damage (ignore AV) on a hit. |
 | 5 | **infused (Q4/Q5/Q6).** While holding this weapon, you can use your Quick Action on your turn to regain 4/6/8 Focus. You can use this ability once per day. |

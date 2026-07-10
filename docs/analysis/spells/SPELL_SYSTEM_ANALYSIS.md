@@ -623,7 +623,7 @@ The old concept lists formerly in this section are superseded by the per-school 
 | # | Batch | Why first |
 |---|---|---|
 | 2.1 | **Death R2–R3** (Grave Chill, Curse of Frailty, Weight of Dooms, Harvest seeds through The Reckoning) | Thinnest school above R1 (2/2/0/0); its signature affliction-harvest gimmick has zero published rungs |
-| 2.2 | **Evocation R3–R4** (Chain Lightning, Corrosive Torrent, Cone of Cold, Wall of Fire, Voltaic Surge tier) | The flagship damage school has 1 spell at R3 and 0 at R4 — casters lose their damage curve exactly where it should peak |
+| 2.2 | **Evocation R3–R4** (Chain Lightning, Dissolving Ray, Cone of Cold, Wall of Fire, Voltaic Surge tier) | The flagship damage school has 1 spell at R3 and 0 at R4 — casters lose their damage curve exactly where it should peak |
 | 2.3 | **Telepathy R3** (Psychic Lance, Psychic Probe, Puppet's Step, Implant Suggestion) | 1 spell at R3; the influence ladder (dazed → charmed → commanded) is missing its middle rungs |
 | 2.4 | **Telekinetics R2–R3 payoffs** (Grinding Weight, Relentless Grip, Kinetic Implosion, Meteoric Throw) | The premier setup school has near-zero in-school payoff — its engine cannot close a loop alone |
 | 2.5 | **Twilight R2 engine rungs** (Fangs of the Dark, Shadow Mantle, Written in the Stars) | The stated "cast from darkness" core and the fate trait have no published mechanics |
@@ -853,7 +853,7 @@ Acid spells interact with the existing **Durability system** (items have 3 uses,
 
 - **R0 (Acid Splash)**: **No Durability interaction — owner decision (2026-07-10, principle 51).** The published weak static rider (ignore 1/2 AV) is intentional and stays. At-will Durability checks are far too powerful: an R0 spell spammed every turn grinds equipment to dust for free. Attrition riders start at Focus-costed ranks.
 - **R2 (Acid Rain)**: Zone-based Durability pressure — creatures staying in the zone face repeated checks. No immediate AV reduction. **The entry rank for acid's Durability identity.**
-- **R3 (Corrosive Torrent)**: Combine Durability checks with **temporary AV reduction** lasting at least a **short duration**. This is the payoff rank where acid becomes tactically impactful.
+- **R3 (Dissolving Ray)**: Combine Durability checks with **temporary AV reduction** lasting at least a **short duration**. This is the payoff rank where acid becomes tactically impactful.
 - **R5 (Dissolving Wave)**: Mass Durability devastation with significant AV reduction (short duration). The capstone acid spell.
 
 ### 15B.3 Balance Rationale

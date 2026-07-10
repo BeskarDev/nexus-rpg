@@ -152,9 +152,9 @@ sidebar_position: 3
 ---|---|---|---|---
  2 | 4 | vs. Parry | Medium | concentrate
 
-**Effect** <br/> You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +4 acid damage (ignore 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +8 acid damage (ignore 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +12 acid (ignore 1/2 AV) damage to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril’s area is considered difficult terrain. The tendrils stay at the target location for a short duration. 
+**Effect** <br/> You create small fractures in reality at the target location, spewing dark, unnatural tendrils covered in acidic ichor, which furiously lash at creatures in their reach. Target all enemies in close range of the target location.<br/><strong>Weak.</strong> Deal +2 acid damage (ignore 1/2 AV) to each target.<br/><strong>Strong. </strong>Deal +4 acid damage (ignore 1/2 AV) to each target and they are grappled by the tendrils. While grappled by them, the target takes 2 lasting acid damage.<br/><strong>Critical. </strong>Deal +6 acid damage (ignore 1/2 AV) to each target and they are grappled and restrained by the tendrils. While grappled by them, the target takes 4 lasting acid damage.<br/>On each of your following turns, you can use your Quick Action to let the tendrils lash at all enemies in their reach again, but they stop grappling or restraining their previous target. Roll your spell attack again when doing so.<br/>Then tendril’s area is considered difficult terrain. The tendrils stay at the target location for a short duration. 
 
-> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +6/12/18 acid damage (ignore 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead.
+> **Heightened** <br/> <strong>(Rank 3) </strong>Deal +3/6/9 acid damage (ignore 1/2 AV) instead. The target takes 4 or 6 lasting acid damage on a strong or critical hit respectively instead.
 
 >
 
@@ -216,7 +216,7 @@ sidebar_position: 3
 ---|---|---|---|---
  3 | 6 | vs. Dodge | Medium | blast (cone)
 
-**Effect** <br/> A cluster of fleshy, razor-tipped tendrils erupt from your body and lash out at creatures in front of you. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +6 damage to each target.<br/><strong>Strong.</strong> Deal +12 damage to each target and they suffer bleeding (4) until healed.<br/><strong>Critical.</strong> Deal +18 damage to each target and they suffer bleeding (6) until healed. 
+**Effect** <br/> A cluster of fleshy, razor-tipped tendrils erupt from your body and lash out at creatures in front of you. Target all creatures in the spell’s area.<br/><strong>Weak.</strong> Deal +4 damage to each target.<br/><strong>Strong.</strong> Deal +8 damage to each target and they suffer bleeding (2) until healed.<br/><strong>Critical.</strong> Deal +12 damage to each target and they suffer bleeding (4) until healed. 
 
 ### Dimension Door
 

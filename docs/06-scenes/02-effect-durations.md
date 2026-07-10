@@ -25,3 +25,7 @@ This effect on you lasts until the end of a night’s rest or for one travel tur
 ## Very Long
 
 This effect on you lasts for one downtime turn.
+
+## Extending Durations
+
+Some effects extend a duration by one step. The duration moves up one entry on this ladder: briefly, then short, then medium, then long, then very long. A duration can't be extended beyond very long.

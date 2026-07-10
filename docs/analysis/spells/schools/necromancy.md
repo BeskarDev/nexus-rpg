@@ -67,12 +67,9 @@ Necromancy runs a **partly private economy** — the framework's identity except
 
 ## Proposed Spell Changes
 
-### Corpse Explosion — Review Under New AoE Scaling
+### Corpse Explosion — Resolved (published 2026-07-10, multi-target scaling audit)
 
-**Current**: R2 AoE dealing +6/+12/+18 (full single-target damage)
-**Under New Scaling**: R2 AoE should deal +3/+6/+9
-**Question**: Does the corpse requirement (must have a corpse to detonate) justify keeping higher damage?
-**Recommendation**: Reduce to +4/+8/+12 (between single-target and standard AoE) as a compromise — the corpse cost is a real constraint but full single-target AoE damage is too high.
+Reduced to +4/+8/+12 (Heighten R3 +5/+10/+15), the corpse-cost compromise between single-target and standard AoE scaling.
 
 ### Spectral Army — Heighten Extension
 
