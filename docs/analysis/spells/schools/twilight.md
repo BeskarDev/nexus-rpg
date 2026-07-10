@@ -22,7 +22,7 @@
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 **Setup levers** — states Twilight emits: **darkness as terrain** (Everlasting Night, Moon Sphere's dim veil — an area where sight fails and shadows have weight), *frightened* (terrors given form in the dark), *slowed* (the night's grasping cold), **concealment** (Shadow Meld, Cloak of Night — allies unseen), and *asleep* (dream-mist, the school's hardest state).
 
@@ -36,10 +36,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 **Synergy gaps**: the "cast from darkness" payoff — the school's stated core — has **no published mechanical rung** (no spell actually gains power in dim light or darkness); it lives only in flavor. Dream/fate divination also runs parallel to combat without feeding it (prophecy sets up story, not turns). A darkness-empowered payoff at R2–R3 is the top design target.
 
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Fangs of the Dark** (R2, payoff) — shadows lash out at a target standing in dim light or darkness: frost damage and briefly *frightened* as the dark itself bites. Against a lit target the shadows have nothing to grip and the spell deals only glancing damage — the darkness-empowered rung, finally mechanical.
-- **Night's Embrace** (R2, extender/refresh, ally-facing) — an ally in dim light or darkness melts deeper into it: they are concealed until they attack, and their next attack from that concealment gains +1 boon. Spends the school's darkness on martial turns (the rogue's spell).
-- **Written in the Stars** (R3, setup, fate-line) — a small prophecy bound to one named enemy: choose one of three bounded omens (their weapon will turn, their footing will fail, their nerve will break — GM picks the concrete moment within the scene) and once this scene, when it fires, they suffer +2 banes on that roll. Bridges fate-divination into combat with GM parameters, not open-ended prophecy.
+**Seed coverage of the gaps**: the darkness-empowered payoff (*Fangs of the Dark*, R2), the ally-facing darkness extender (*Shadow Mantle*, R2), and the fate-to-combat bridge (*Written in the Stars*, R2; *Twist of Fate*, R3; *Fate's Decree*, R5) sit in the seed table below — the missing payoff rung and the fate bridge are the seed set's spine.
 
 ## Current Spell Inventory (26 published spells)
 
@@ -58,36 +55,43 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| moon | Night's Grasp | Moon Sphere, Lunar Weapon, Moonlight Ward | Moonbeam | Moonfire | Eclipse | Lunar Apotheosis |
-| dreams | Whispers of Doubt | Sleep | Terrors of the Dark | Nightmare Realm | Dreamwalking | Dream Realm |
-| secrets | Dark Sight, Shadow Veil | Shadow Meld, Cloak of Night, Shadow Veil (QA) | Silent Night, Everlasting Night | Shadow Passage | Veil of Secrets | Shadowform |
-| fate | Thread of Fate | Curse of Twilight | Fate's Web | Twist of Fate | Prophecy | Fate's Decree |
-| illusion | Obscuring Veil | Haunting Shadows | Aura of Fear, Shadow Step, Twilight Bind | Shadow Clone | Embrace of Night | Phantom World |
+| moon | Night's Grasp | Moon Sphere, Lunar Weapon | Moonbeam | — (Moonbeam Heighten) | ✨ Eclipse | — |
+| dreams | Whispers of Doubt | — | Sleep, Terrors of the Dark | Nightmare Realm | ✨ Dreamwalking | ✨ Dream Realm |
+| secrets | Dark Sight, Shadow Veil | Shadow Meld, Cloak of Night, ✨ Dusk Veil (QA) | Silent Night, Everlasting Night, ✨ Fangs of the Dark, ✨ Shadow Mantle | ✨ Shadow Passage | ✨ Veil of Secrets | ✨ Shadowform |
+| fate | ✨ Thread of Fate | Curse of Twilight | ✨ Written in the Stars | ✨ Twist of Fate | ✨ Prophecy | ✨ Fate's Decree |
+| illusion | Obscuring Veil | Haunting Shadows | Aura of Fear, Shadow Step, Twilight Bind | Shadow Clone | Embrace of Night | ✨ Phantom World |
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+✨ = proposed new spell (undesigned seed)
+
+**Coverage**: 28 of 30 trait×rank slots hold a published spell, a seed, or a Heighten extension. Honest gaps: dreams R1 (Sleep anchors the trait at R2) and moon R5 (an offense capstone would sit in the school's Weak role — an honest empty cell beats a filler seed). Only published spells count as real coverage; proposed entries are undesigned seeds (principle 19).
+
+## Proposed Spell Changes (Heighten Extensions)
+
+Per principle 3, "bigger version of X" concepts are Heighten notes on published spells, not new seeds:
+
+- **Moonbeam (R2)**: add (Rank 3) through (Rank 5) Heighten lines scaling the beam's frost damage and light radius. Absorbs the old "Moonfire" seed — a hotter beam of moonlight is the same spell, heightened.
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Thread of Fate | 0 | You briefly glimpse the threads of fate, gaining a flash of insight into the immediate future. (Fills the R0 fate gap) |
-| Fate's Web | 2 | You weave threads of fate around a creature, subtly influencing the probability of their near-future actions. (Fills R2 fate gap) |
-| Moonfire | 3 | You call down a beam of concentrated moonlight that sears your target with cold silver radiance. (R3 moon offense) |
-| Shadow Veil | 1 | You wrap yourself in a veil of shadow as an attack comes, making the attacker's aim uncertain. (R1 Quick Action reactive defense) |
-| Moonlight Ward | 1 | You weave moonlight into a shimmering ward around a creature, protecting against shadow and mental intrusion. (Defensive option for Twilight — protection against the tradition's own damage types and conditions) |
-| Dream Realm | 5 | You pull multiple creatures into a shared dreamscape — a twilight realm of your design where you control the environment. (R5 capstone) |
-| Eclipse | 4 | You call down the eclipse — the moon swallowing the sun. A sphere of absolute darkness and biting cold descends upon the battlefield. (R4 darkness capstone) |
-| Prophecy | 4 | You enter a deep trance beneath the stars, opening your inner eye to the threads of fate. Visions of what may come appear as shifting symbols and scenes. (R4 fate trait capstone) |
-| Shadowform | 5 | You dissolve into living shadow — your body becomes darkness itself, flowing through cracks and passing through walls like ink through water. (R5 secrets/illusion capstone) |
-| Fate's Decree | 5 | You speak a decree of fate — words that reshape destiny itself. The threads of fortune bend to your pronouncement, cursing an enemy or blessing an ally. (R5 fate capstone) |
-| Lunar Apotheosis | 5 | You draw upon the full power of the moon, becoming an avatar of lunar energy. Your skin turns silver, your eyes glow with cold white light, and moonbeams radiate from your form. (Fills the R5 moon gap) |
-| Dreamwalking | 4 | You project your consciousness through the dream world, entering the dreams of a sleeping creature or sending messages across vast distances through the shared dreamscape. (Fills the R4 dreams gap) |
-| Shadow Passage | 3 | You step into one shadow and emerge from another, traveling through the twilight realm that connects all darkness. (Fills the R3 secrets gap) |
-| Veil of Secrets | 4 | You weave a dense shroud of twilight magic over an area, concealing everything within from all forms of detection — sight, sound, scrying, and divination. (Fills the R4 secrets gap) |
-| Twist of Fate | 3 | You seize the threads of fate and violently twist them, forcing fortune to shift in a single decisive moment. (Fills the R3 fate gap) |
-| Phantom World | 5 | You weave a grand illusion of such scope and complexity that it replaces reality itself for those within. The world around your targets shifts — walls move, terrain changes, companions become enemies, and enemies vanish. (R5 illusion capstone) |
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Thread of Fate | 0 | Utility / standalone | Divination cantrip (fate trait): a one-breath glimpse of the immediate future, GM-parameterized per principle 29 (a bounded menu: safest of two paths, whether a named act brings harm within the scene, a one-word omen). No combat rider — the fate chain's information rung. |
+| Dusk Veil | 1 | Defense / standalone | The standardized R1 Quick Action reactive (+2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (secrets trait): if you are in dim light or darkness when it triggers, you may immediately move a close distance without provoking, melting into the nearest shadow. Renamed from the old "Shadow Veil" seed, which collided with the published R0 spell of that name. |
+| Fangs of the Dark | 2 | Offense / payoff | Shadow-strike whose teeth are the dark itself (secrets and moon traits): psychic or frost damage, on-curve cold, with heavy bonus damage if the target is in dim light or darkness or cannot see you. The school's stated "cast from darkness" core given its first mechanical rung — spends Everlasting Night, Moon Sphere, and Shadow Meld. Offense in a Weak role, justified as the engine's dedicated payoff, deliberately below Evocation's curve when cold-cast. |
+| Shadow Mantle | 2 | Support / extender | Wrap an ally in living shadow (secrets trait): while in dim light or darkness they gain concealment and their attacks against creatures that cannot see them carry a small rider. Extends the darkness engine to the party — the rogue fights inside the night the caster made. Prolongs as an enchant while the darkness holds. |
+| Written in the Stars | 2 | Control / setup | Pronounce a creature's doom (fate trait): a visible mark for a short duration during which the next attack roll against them by anyone gains +1 boon, and their next roll to resist a Twilight spell suffers +1 bane. The fate-to-combat bridge at the rank where the party can spend it — shared socket, near worthless alone. Replaces the vaguer "Fate's Web" seed. |
+| Shadow Passage | 3 | Utility / extender | Step into one shadow and out of another within long range (secrets trait): requires dim light or darkness at both ends, carries willing allies in reach on higher effort. Extends Shadow Step from repositioning to infiltration and spends the school's standing-night zones as its road network. |
+| Twist of Fate | 3 | Control / payoff | Seize the threads at one decisive moment (fate trait): force one creature in range to reroll a roll they just made, vs. Resist for the unwilling. One reroll per casting, a gamble not a guarantee. Cashes in the doom Written in the Stars pronounced and gives fate its combat spend. |
+| Eclipse | 4 | Control / setup + extender | The moon swallows the sun (moon and secrets traits): a wide zone of supernatural darkness and biting cold — enemies inside are blinded to what they cannot see, take flat rank-scaled frost damage at the start of their turns (principle 44), and re-test against *frightened* each round the dark holds. The solo engine (Everlasting Night + Aura of Fear) compressed into one R4 statement, and the field on which Fangs of the Dark and Shadow Mantle feed. Counterplay stands: strong light burns it away. |
+| Dreamwalking | 4 | Utility / payoff | Ritual projection into the dreams of a sleeping creature (dreams trait): converse, observe, or plant a suggestion that is a nudge, never a command (vs. Resist for the unwilling). Spends the *asleep* state the school's Sleep emits and carries messages across any distance through the shared dreamscape. Ritual-gated, no combat use. |
+| Prophecy | 4 | Utility / standalone | Hour-long trance beneath the stars (fate trait): symbolic visions of what may come, GM-parameterized (a danger, a hand behind events, a place or time that will matter), granting a modest preparation boon when the vision comes to pass. Twilight owns the yet-to-come per the divination boundary; leads and readiness, never certainty. |
+| Veil of Secrets | 4 | Utility / setup | Shroud a close area against detection (secrets trait): sight, sound, scrying, and divination all slide off while you concentrate. The anti-divination niche — physical searchers can still walk in, which is the counterplay. Sets up ambushes from concealment for Fangs of the Dark and the party's rogues. |
+| Dream Realm | 5 | Utility / standalone | Pull willing creatures into a shared dreamscape (dreams trait, ritual): a twilight realm of the caster's design for council, memory-walking, or true rest — a full rest's recovery in one sleeping hour at the top end. The dreams capstone as sanctuary and meeting-hall, not a combat arena. |
+| Shadowform | 5 | Utility / standalone | Dissolve into living shadow (secrets and illusion traits): incorporeal for a brief duration — pass through cracks and walls, immune to physical harm, but unable to attack or cast, and strong light forces you back into flesh. The infiltration capstone, hard-gated as escape and entry, never an invincible combat form. |
+| Fate's Decree | 5 | Control / payoff | Speak destiny aloud over one creature (fate trait): for a short duration, reduce the success level of their rolls once per turn (vs. Resist), or grant an ally the mirrored blessing. The fate chain's capstone spend — single target, concentrate, the mortal limit of bending fortune (no rewriting outcomes, only weighting the dice). |
+| Phantom World | 5 | Control / standalone | Replace what a group perceives within a medium area (illusion and dreams traits): terrain, walls, and faces shift as the caster directs; creatures save vs. Resist when they interact and psychic backlash is the only real harm. Perception is rewritten, reality is not — no physical effects, and those who see through it are free. The illusion capstone; overlaps Arcane Illusion's territory by declared trait, distinct as dream-logic imposed on the waking. |
 
 ## Cross-School Spell Sharing
 
@@ -106,40 +110,41 @@ Twilight's "illusion" trait overlaps significantly with the Arcane **Illusion** 
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Moon chain**: Night's Grasp (R0) → Moon Sphere/Lunar Weapon/Moonlight Ward (R1) → Moonbeam (R2) → Moonfire (R3) → Eclipse (R4) → Lunar Apotheosis (R5) — **complete R0-R5**
-2. **Dreams chain**: Whispers of Doubt (R0) → Sleep (R2) → Terrors of the Dark (R2) → Nightmare Realm (R3) → Dreamwalking (R4) → Dream Realm (R5) — **complete R0-R5**
-3. **Secrets chain**: Dark Sight/Shadow Veil (R0) → Shadow Meld/Cloak of Night/Shadow Veil QA (R1) → Silent Night/Everlasting Night (R2) → Shadow Passage (R3) → Veil of Secrets (R4) → Shadowform (R5) — **complete R0-R5**
-4. **Fate chain**: Thread of Fate (R0) → Curse of Twilight (R1) → Fate's Web (R2) → Twist of Fate (R3) → Prophecy (R4) → Fate's Decree (R5) — **complete R0-R5**
-5. **Illusion chain**: Obscuring Veil (R0) → Haunting Shadows (R1) → Aura of Fear/Shadow Step/Twilight Bind (R2) → Shadow Clone (R3) → Embrace of Night (R4) → Phantom World (R5) — **complete R0-R5**
+(✨ = undesigned seed)
+1. **Moon chain**: Night's Grasp (R0) → Moon Sphere / Lunar Weapon (R1) → Moonbeam (R2) → Moonbeam Heighten (R3+) → ✨ Eclipse (R4) → honest gap (R5)
+2. **Dreams chain**: Whispers of Doubt (R0) → honest gap (R1) → Sleep / Terrors of the Dark (R2) → Nightmare Realm (R3) → ✨ Dreamwalking (R4) → ✨ Dream Realm (R5)
+3. **Secrets chain**: Dark Sight / Shadow Veil (R0) → Shadow Meld / Cloak of Night / ✨ Dusk Veil (R1) → Silent Night / Everlasting Night / ✨ Fangs of the Dark / ✨ Shadow Mantle (R2) → ✨ Shadow Passage (R3) → ✨ Veil of Secrets (R4) → ✨ Shadowform (R5)
+4. **Fate chain**: ✨ Thread of Fate (R0) → Curse of Twilight (R1) → ✨ Written in the Stars (R2) → ✨ Twist of Fate (R3) → ✨ Prophecy (R4) → ✨ Fate's Decree (R5)
+5. **Illusion chain**: Obscuring Veil (R0) → Haunting Shadows (R1) → Aura of Fear / Shadow Step / Twilight Bind (R2) → Shadow Clone (R3) → Embrace of Night (R4) → ✨ Phantom World (R5)
 
 ### Setup + Payoff Combos
-- ✅ **Darkness → shadow advantage**: Create darkness with Everlasting Night/Eclipse → Twilight spells and Stealth benefit within shadow areas. Shadow Passage (R3) enables tactical repositioning through darkness zones. Eclipse (R4) is the ultimate darkness zone.
-- ✅ **Fear → vulnerability**: Frightened targets (Aura of Fear, Haunting Shadows) are easier to hit and control
-- ✅ **Fate → probability → decree**: Thread of Fate (R0 glimpse) → Fate's Web (R2 probability nudge) → Twist of Fate (R3 forced reroll) → Prophecy (R4 future vision) → Fate's Decree (R5 rewrite destiny) — clear five-step escalation chain
-- ✅ **Dream → waking control**: Nightmare Realm (R3 nightmares in combat) → Dreamwalking (R4 dream communication/suggestion) → Dream Realm (R5 shared dreamscape) — dreams progress from combat terror to utility/social tool
-- ✅ **Shadow → infiltration**: Shadow Meld (R1 invisibility) → Shadow Step (R2 short teleport) → Shadow Passage (R3 long group teleport) → Veil of Secrets (R4 area concealment) → Shadowform (R5 incorporeal form) — complete infiltration toolkit
-- ✅ **Lunar → radiant offense**: Night's Grasp (R0 frost) → Moonbeam (R2 frost zone) → Moonfire (R3 radiant + reveal) → Eclipse (R4 frost zone + fear) → Lunar Apotheosis (R5 frost transformation + moonbeam attacks)
+(✨ = undesigned seed)
+- ✅ **Darkness → shadow advantage**: Everlasting Night and Moon Sphere make the field dark → Shadow Meld, Stealth, and dark-sighted allies operate freely; ✨ Eclipse (R4) is the engine compressed into one spell
+- ✨ **Darkness → in-school payoff**: the dark the school makes → ✨ Fangs of the Dark bites from it and ✨ Shadow Mantle arms the party inside it — the stated core loop, currently seeds only
+- ✅ **Fear → compounding terror**: Aura of Fear and Haunting Shadows frighten → Terrors of the Dark and Nightmare Realm collect on the already-shaken
+- ✨ **Fate → doom → spend**: ✨ Thread of Fate (glimpse) → ✨ Written in the Stars (pronounced doom, shared socket) → ✨ Twist of Fate (forced reroll) → ✨ Fate's Decree (weighted destiny) — the fate-to-combat bridge, all seeds
+- ✅/✨ **Sleep → collected at leisure**: Sleep drops the sentry → the ambush follows; ✨ Dreamwalking (R4) extends the *asleep* state into dream intrusion
+- ✅/✨ **Shadow → infiltration**: Shadow Meld (R1) → Shadow Step (R2) → ✨ Shadow Passage (R3) → ✨ Veil of Secrets (R4) → ✨ Shadowform (R5) — the toolkit's upper rungs are seeds
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Shadow Veil — standardized reactive defense (+2 Dodge/Parry, stealth boon secondary)
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 9, R2: 8, R3: 5, R4: 5, R5: 5)
-- [x] Defensive options: Shadow Veil (R1 evasion), Moonlight Ward (R1 resistance), Veil of Secrets (R4 area concealment) — good coverage
-- [x] Utility: Dark Sight (R0), Thread of Fate (R0), Shadow Meld (R1), Shadow Step (R2), Shadow Passage (R3), Dreamwalking (R4), Prophecy (R4), Veil of Secrets (R4), Shadowform (R5) — excellent utility suite (Twilight excels at Utility)
-- [x] Damage across ranks: Night's Grasp (R0) → Moonbeam (R2) → Moonfire (R3) → Eclipse (R4) → Lunar Apotheosis/Phantom World (R5) — complete damage chain
-- [x] Repeating conditions: Slowed, frightened, invisible, blinded, dazed — consistent shadow/fear/moon identity
-- [x] Setup+payoff: Darkness → shadow advantage, Fate → probability escalation, Shadow → infiltration toolkit, Dream → combat-to-utility progression — all chains strong and explicit
-- [x] R5 capstone diversity: Lunar Apotheosis (moon transformation), Dream Realm (shared dreamscape), Shadowform (incorporeal infiltration), Fate's Decree (probability rewrite), Phantom World (grand illusion) — five distinct tactical roles
-- [ ] **All trait×rank slots filled**: all 30 trait×rank slots seeded with concepts; published coverage is partial (see inventory) coverage — no remaining gaps
+- [ ] **R1 Quick Action**: ✨ Dusk Veil seeded — standardized reactive defense (+2 Dodge/Parry, shadow-slip secondary), not yet designed
+- [x] **3 published spells per rank through R3**: R0: 5, R1: 6, R2: 9, R3: 5; R4: 1 and R5: 0 need the seeded buildout
+- [x] Defensive options: Shadow Veil (R0), Cloak of Night (R1) published; ✨ Dusk Veil and ✨ Veil of Secrets seeded — thin by design (Weak role)
+- [x] Utility: Dark Sight, Shadow Meld, Shadow Step, Silent Night, Augury, Divination, Gaseous Form, Moonlit Mirror published — the Excels role is rich, and the seeds extend it to R4-R5
+- [ ] Damage across ranks: Night's Grasp (R0) → Moonbeam (R2, plus proposed Heighten) is the whole published damage kit; ✨ Fangs of the Dark is the only seeded addition — intentionally sparse (Weak offense role)
+- [x] Repeating conditions: slowed, frightened, blinded, asleep — consistent shadow/fear/dream identity across published spells and seeds
+- [ ] Setup+payoff: darkness and fear setups are published and rich; the in-school darkness payoff and the whole fate spend are seeds — top production priority
+- [ ] **Trait × rank coverage**: 28/30 slots hold a published spell, seed, or Heighten extension; honest gaps at dreams R1 and moon R5
 
 ### Impact & Trivialization Review
-- **Thread of Fate (R0 divination)**: Low risk — GM-mediated, deliberately vague at weak success (one-word hint). Provides intuitive nudge, not a roadmap. Does not bypass investigation or decision-making.
-- **Twist of Fate (R3 forced reroll)**: Moderate risk — forcing a reroll is powerful action economy manipulation. **Mitigations**: single target, one reroll per casting, vs. Resist for enemies, short duration window. The forced reroll is a gamble, not guaranteed — you might get a better result, or not.
-- **Shadow Passage (R3 group teleport)**: Moderate risk — group teleportation could bypass obstacles. **Mitigations**: requires dim light/darkness at both ends, long range limit, needs line of sight or prior visit, no combat advantage beyond positioning. Extends Shadow Step logically.
-- **Dreamwalking (R4 dream entry)**: Moderate risk — dream suggestion could shortcut social encounters. **Mitigations**: ritual (10 min) prevents combat use, suggestion is not compulsion (target can freely reject), only affects sleeping creatures, vs. Resist for unwilling targets. The suggestion is a nudge, not a command.
-- **Veil of Secrets (R4 area concealment)**: Moderate risk — undetectable hiding zone is very strong for infiltration. **Mitigations**: concentration required, close area only (small zone), short duration, stationary by default (mobile only at Critical). Anti-divination is the niche — physical searchers can still walk into the area.
-- **Lunar Apotheosis (R5 transformation)**: High risk — frost transformation with Quick Action moonbeam attacks is strong offense. **Mitigations**: concentration required, R5 Focus cost (10), short duration, moonbeam is vs. Dodge (can miss), frost damage has common resistances. The defense bonus only at Strong+ and blinding only at Critical prevent the spell from doing everything well at once.
-- **Phantom World (R5 grand illusion)**: High risk — controlling what everyone perceives in a medium area is extremely powerful. **Mitigations**: concentration required, R5 Focus cost (10), creatures can save (Spirit + Perception vs. Resist) when interacting, psychic damage is the only real harm (no physical effects), short duration. Creatures that see through it are immune. The illusion replaces perception but doesn't create physical reality.
-- **Prophecy (R4 divination)**: Moderate risk — extended future visions could shortcut planning. **Mitigations**: ritual (1 hour) prevents combat use, visions are symbolic and require interpretation, GM controls detail level, boon bonuses are modest (+1). Provides leads and preparation bonuses, not certainty.
-- **Shadowform (R5 incorporeality)**: High risk — physical damage immunity and wall-passing is extremely powerful. **Mitigations**: concentration required, cannot cast spells or deal physical damage, brief/short duration only, R5 Focus cost (10). Cannot be used as an invincible combat form — it is an infiltration/escape tool.
-- **Fate's Decree (R5 probability rewrite)**: Moderate risk — reducing enemy success levels is very strong. **Mitigations**: concentration required, single target, vs. Resist for enemies, ally benefits capped at once per turn. R5 Focus cost ensures this is a capstone investment.
-- **Dream Realm (R5 accelerated rest)**: Moderate risk — accelerated rest could trivialize resource management. **Mitigations**: R5 Focus cost (10), concentration required, ritual (1 minute) setup, full rest in 1 hour only at Critical success.
+
+Risk notes for the seeds with setting-shaping reach (principle 33) — design targets, not resolved mechanics:
+
+- **✨ Thread of Fate / ✨ Prophecy (divination)**: keep GM-parameterized with a bounded answer menu; leads and readiness, never certainty. Prophecy stays ritual-gated out of combat.
+- **✨ Twist of Fate / ✨ Fate's Decree (fortune manipulation)**: rerolls and success-level shifts are action-economy gold — single target, vs. Resist, one spend per casting, weighting dice rather than rewriting outcomes.
+- **✨ Shadow Passage (travel)**: darkness required at both ends keeps it an infiltrator's road, not a logistics network; no Bronze Age courier revolution.
+- **✨ Dreamwalking (dream intrusion)**: ritual-gated, suggestion is a nudge the target can reject, unwilling targets save — it cannot replace diplomacy or interrogation.
+- **✨ Veil of Secrets (anti-detection)**: physical searchers still walk in; the counterplay is mundane.
+- **✨ Shadowform (incorporeality)**: escape and entry only — no attacks, no casting, strong light forces reversion.
+- **✨ Phantom World (grand illusion)**: perception only, saves on interaction, psychic backlash is the only harm; those who disbelieve are free.
+- **✨ Dream Realm (accelerated rest)**: recovery acceleration must stay at the top end of effort and cost, or it trivializes the rest economy.

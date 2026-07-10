@@ -349,7 +349,7 @@
 		"range": "Medium",
 		"properties": "concentrate",
 		"effect": "You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +8 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.",
-		"heightened": "-"
+		"heightened": "<strong>(Rank 3)</strong> The beam deals +10 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 4)</strong> The beam deals +12 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 5)</strong> The beam extends in close range of the target location instead, deals +14 frost damage, and shines dim light in short range of it."
 	},
 	{
 		"name": "Shadow Step",
@@ -546,8 +546,8 @@
 		"target": "Hard (10)",
 		"range": "Self",
 		"properties": "concentrate",
-		"effect": "<em>You detect all living beings around you</em>",
-		"heightened": "<em>Increased range or details</em>"
+		"effect": "You close your eyes and open your senses to the warm current of life itself, feeling every living spark around you like embers in the dark.<br/>On a success, for up to a short duration while you concentrate, you sense the presence, direction, and Size category of every living creature within medium range of you. You learn each creature's exact Size (tiny up to colossal) but not what kind of creature they are. This sense does not depend on sight and reaches through walls, cover, and darkness. Undead, constructs, and other unliving things are not revealed by this spell. A creature standing among many others, such as in a dense crowd or a herd, blends into a single mass of life unless within close range of you.",
+		"heightened": "<strong>(Rank 3)</strong> The spell reaches within long range of you instead, and you also sense each creature's vitality: whether they are unharmed, wounded, or close to death.<br/><strong>(Rank 4)</strong> The spell reaches within long range of you, you sense each creature's vitality, and you also recognize each sensed creature's type (such as Beast, Humanoid, or Plant)."
 	},
 	{
 		"name": "Hallow Ground",
@@ -1140,8 +1140,8 @@
 		"target": "Very Hard (12)",
 		"range": "Short",
 		"properties": "singular",
-		"effect": "<em>Summon a solid pillar of stone either  to block an area or push creatures in an area higher up. Can be used as utility for you and your allies, or to disrupt enemy positioning. Can also lead to crushing creatures above the pillar into the ceiling.</em>",
-		"heightened": "<em>Summon multiple pillars</em>"
+		"effect": "You press your palm to the ground and call the bones of the earth upward, and a column of living rock rises with a deep grinding groan.<br/>On a success, a pillar of solid stone rises from an unoccupied surface of earth, stone, or clay at the target location. The pillar is up to close range wide and rises up to a short distance high, with a flat top that creatures can stand on. You choose its exact height when it rises. Any creature standing on the pillar is carried up with it. An unwilling creature can roll Agility + Athletics vs. your Resist to leap off before it rises, landing prone in an adjacent space.<br/>If the pillar meets a ceiling or other solid obstacle, it stops. A creature caught between the pillar and the obstacle takes 8 damage (ignore AV) and is squeezed into the gap, which counts as a constricted area.<br/>The pillar is ordinary stone. It remains after the spell, can be climbed with a Strength + Athletics roll, and can only be removed by mundane means or magic that affects stone. When you cast this spell again, all pillars from your previous casting crumble into harmless rubble as the new one rises.",
+		"heightened": "<strong>(Rank 4)</strong> The pillar can rise up to a medium distance high instead, and you may raise up to two pillars with one casting, each up to close range wide and placed anywhere in range. A creature caught between a pillar and an obstacle takes 10 damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> You may raise up to three pillars with one casting, each up to close range wide, each rising up to a medium distance high, and placed anywhere in range. A creature caught between a pillar and an obstacle takes 12 damage (ignore AV) instead."
 	},
 	{
 		"name": "Control Weather",

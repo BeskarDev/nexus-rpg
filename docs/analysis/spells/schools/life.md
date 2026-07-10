@@ -22,7 +22,7 @@
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 Like Peace, Life is a support school whose "payoff" is usually measured in allies still standing — but Life has a real second engine: **overflowing vitality as a weapon** (life force overload, anti-undead radiance).
 
@@ -36,12 +36,7 @@ Like Peace, Life is a support school whose "payoff" is usually measured in allie
 
 **Party interlock**: **emits** temp HP, condition removal (Cleanse), *blessed* boons, and standing ground that makes a position worth holding — endurance currency for whoever fights longest in melee. **wants** a frontline worth sustaining (its magic multiplies allies who are in harm's way, doing nothing for a party that hides) and undead-heavy foes where its damage engine wakes up. Cross-player line: the fighter holds the shrine door inside Hallow Ground, unkillable while the priest channels, and the horde breaks against one spear.
 
-**Synergy gaps**: sustain setup and extenders are complete, but the **trigger-payoff design is unbuilt** — blessings mostly grant flat bonuses rather than firing at a defined moment (heal-then-strike, shield-break bursts exist only as ideas). The R3→R5 death-reversal ladder is now anchored at both ends (Healing Touch rituals low, Resurrection R5 high) but Revivify R3 / Raise Dead R4 remain unbuilt. Both are design targets.
-
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Surge of Renewal** (R2, payoff/trigger) — when you heal an ally, the overflow steels them: their next attack or roll before your next turn gains +1 boon and +2 radiant damage. The heal-then-strike trigger — cast on an unhurt ally it heals nothing and grants nothing.
-- **Bursting Ward** (R2, payoff/trigger) — lay a vitality ward on an ally: when its temp HP breaks from enemy damage, it detonates as radiant light, damaging the attacker and briefly *dazing* them. The shield-break burst; enemies learn that breaking the priest's ward has a price.
-- **Revivify** (R3, ladder rung) — the swift rite for the just-fallen: touch a creature dead only since your last turn, no ritual, heavy Focus and a costly consumed offering (~500 coins), they return at 1 HP with a Wound. Fresh-death-only keeps Resurrection's remains-and-moon rite meaningful above it. (Raise Dead R4 — dead up to days, ritual hours, ~1500 coins — completes the ladder.)
+**Synergy gaps**: sustain setup and extenders are complete, and the death-reversal ladder is published in full (Revivify R3, Raise Dead R4, Resurrection R5). The remaining gap is the **trigger-payoff design** — blessings mostly grant flat bonuses rather than firing at a defined moment (heal-then-strike, shield-break bursts, crisis-point rallies). The seed table below targets exactly this engine.
 
 ## Current Spell Inventory (19 published spells)
 
@@ -58,44 +53,44 @@ Like Peace, Life is a support school whose "payoff" is usually measured in allie
 
 ### Trait × Rank Coverage Matrix
 
+Published spells in plain text, proposed seeds in *italics*, — marks a deliberately empty slot (an honest gap beats a filler seed).
+
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| vitality | Restore Life | Rapid Vitality, Healing Touch, Vital Surge | Aid, Healing Burst, Detect Life | Vitality Surge, Revivify | Greater Restoration | Resurrection |
-| blessings | Life Shield | Blessing of Life, Vitalizing Weapon | Hallow Ground | Circle of Renewal | Life Ward | Mantle of the Blessed |
-| community | Kindred Bond | Overflow of Life | Cleanse | Abundance of Life | Raise Dead | Mass Restoration, Wellspring of Life |
-| hope | Verdant Blast | Beacon of Hope | Courage of the Faithful | Rallying Cry | Undaunted | Triumph of the Living |
-| fertility | Nurturing Touch | Bloom | Lifespring | Garden of Renewal | Verdant Surge | Genesis |
+| vitality | Restore Life | Rapid Vitality, Healing Touch, *Sustaining Grace* | Aid, Healing Burst, Detect Life | Vitality Surge, Revivify | *Greater Restoration* | *Wellspring of Life* |
+| blessings | Life Shield | Blessing of Life, Vitalizing Weapon | Hallow Ground, *Bursting Ward* | — | *Life Ward* | — |
+| community | *Kindred Bond* | Overflow of Life | Cleanse, Hallowed Rest | Abundance of Life | Raise Dead | Resurrection |
+| hope | Verdant Blast | *Beacon of Hope* | *Surge of Renewal* | *Rallying Cry* | — | — |
+| fertility | *Nurturing Touch* | — | *Blessing of the Harvest* | — | — | *Genesis* |
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+**Coverage**: only published spells count as real coverage; italicized entries are undesigned seeds (principle 19). Empty cells are deliberate — blessings R3/R5 resolve as Heighten extensions on existing spells (see notes under the seed table), hope tops out at R3 (a morale trait does not need a capstone nuke), and fertility is a sparse downtime trait by design.
 
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Nurturing Touch | 0 | You channel life energy into a plant, animal, or small creature, encouraging growth and vitality. (Fills the R0 fertility gap) |
-| Beacon of Hope | 1 | You radiate an aura of hope and inspiration, bolstering the resolve of nearby allies. (Fills R1 hope gap) |
-| Circle of Renewal | 3 | You consecrate the ground with life energy, creating a zone where vitality flows freely and blessings strengthen. (Fills R3 blessings gap) |
-| Revivify | 3 | You pour life energy into a creature that has died within the last minute, pulling their soul back from the threshold of death. (R3 resurrection) |
-| Raise Dead | 4 | Through an hour-long ritual of prayer and life channeling, you restore a creature that has been dead for up to one week. (R4 resurrection) |
-| Mass Restoration | 5 | You release a wave of overwhelming life energy, restoring all allies in the area. (R5 AoE healing capstone) |
-| Vital Surge | 1 | When an ally is struck, you instinctively channel a burst of life energy to close their wounds before the blood can flow. (R1 Quick Action reactive defense) |
-| Greater Restoration | 4 | You channel an overwhelming surge of life energy into a creature, mending what lesser magic cannot — knitting bones, purging toxins, and restoring what was broken. (R4 major healing milestone between Revivify (R3 emergency resurrection) and Resurrection (R5 full restoration)) |
-| Life Ward | 4 | You weave a ward of golden life energy around a creature — an invisible cocoon that holds their soul to their body at the moment of greatest peril. (R4 death prevention — the "death ward" this tradition was missing) |
-| Wellspring of Life | 5 | You become a living conduit of overwhelming life energy — vitality radiates from you in visible golden waves, and every healing word you speak carries the weight of creation itself. (R5 healing amplification capstone) |
-| Kindred Bond | 0 | You touch another creature and forge a brief spiritual bond — a thread of shared life energy that lets you sense their condition across distance. (Fills R0 community gap) |
-| Mantle of the Blessed | 5 | You raise your hands and speak a blessing of absolute sanctity — golden light descends upon your allies like a mantle, and for a transcendent moment, each creature you bless radiates the full power of life itself. (Fills R5 blessings capstone) |
-| Courage of the Faithful | 2 | You place your hand over an ally's heart, kindling a flame of divine courage that burns away fear and doubt. (Fills R2 hope gap) |
-| Rallying Cry | 3 | You raise your voice in a cry that echoes with divine power — a sound of pure hope that reaches the hearts of all who fight beside you. (Fills R3 hope gap) |
-| Undaunted | 4 | You weave an enchantment of unbreakable hope around an ally — their eyes blaze with inner fire, and no hardship can dim their resolve. (Fills R4 hope gap) |
-| Triumph of the Living | 5 | You call upon the deepest wellspring of hope — the defiant belief that life endures, that dawn follows darkness. Golden light erupts from your heart, washing over your allies like a tidal wave of courage. (Fills R5 hope capstone) |
-| Bloom | 1 | You press your palm to the earth and pour life energy into the soil. Flowers burst open, vines crawl, and greenery spreads in moments. (Fills R1 fertility gap) |
-| Lifespring | 2 | You channel life energy into the earth, calling forth a spring of clean water and enriching the surrounding soil with vital energy. (Fills R2 fertility gap) |
-| Garden of Renewal | 3 | Life energy erupts from the ground, transforming barren earth into a lush garden of healing plants and sheltering vines. The air fills with the scent of blossoms. (Fills R3 fertility gap) |
-| Verdant Surge | 4 | You unleash a torrent of life energy that erupts from the earth in a wave of impossible growth — trees sprout from stone, vines burst from cracks, and the landscape transforms before your eyes. (Fills R4 fertility gap) |
-| Genesis | 5 | You perform a ritual of primal creation, channeling overwhelming life energy through consecrated offerings into the earth. Life erupts in its purest form — the ground softens, springs emerge, and plants burst into bloom. (Fills R5 fertility capstone) |
+Role = combat-role / synergy-role (per the synergy framework).
+
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Kindred Bond | 0 | Utility / setup | Touch an ally to forge a life-thread for a medium duration: while they are within long range you know their rough state from a bounded menu (unharmed, hurt, close to falling, dying, dead) and which conditions afflict them, even without line of sight (community trait, principle 29 parameters). Timing tool for the crisis-point engine — tells the healer exactly when to fire Rallying Cry, Overflow of Life, or Revivify. |
+| Nurturing Touch | 0 | Utility / standalone | Channel a trickle of vitality into one touched plant or Beast: cure a minor blight or sickness, calm a distressed animal, and grant +1 boon on the next roll to tend it (fertility trait). Pure downtime/husbandry cantrip, no combat application. |
+| Beacon of Hope | 1 | Support / setup | A standing aura of hope in close range for a short duration: allies inside gain +1 boon on rolls to resist fear and despair effects, and an ally who starts their turn frightened may immediately re-roll against it (hope trait). Emits the steadied-morale state that Rallying Cry escalates at R3. |
+| Sustaining Grace | 1 | Defense / standalone | The standardized R1 reactive Quick Action (principle 4): +2 to Dodge or Parry against the triggering attack, no SL scaling, plus the Life secondary — if the attack still hits, the target restores 2 HP as vitality cushions the blow. Fills the school's missing reactive-defense slot. |
+| Surge of Renewal | 2 | Support / payoff | Rider on your own healing: when you restore HP to an ally this turn, the overflow steels them — their next attack or roll before your next turn gains +1 boon and +2 radiant damage (vitality/hope). Cast without a heal it does nothing (cold-cast deficit is total). Plugs into Healing Touch, Rapid Vitality, and Healing Burst. |
+| Bursting Ward | 2 | Support / setup | Lay a vitality ward granting temp HP on an ally: when that temp HP breaks from enemy damage, it detonates — radiant damage to the attacker and they are briefly dazed (blessings trait, stored-charge state, dazed = the school's overload condition). Extends the Life Shield/Aid temp-HP economy into a trap enemies must respect. |
+| Blessing of the Harvest | 2 | Utility / standalone | Ritual (hours): bless a field, herd, or grove for a season — crops resist blight, animals bear healthy young, and the holding's harvest counts one step more plentiful for downtime subsistence (fertility/community). Temple-rite framing per principle 33: a rite communities petition for, not an economy engine. |
+| Rallying Cry | 3 | Support / payoff | The crisis-point payoff (hope trait): each dying ally in short range stabilizes, and each ally below half HP gains temp HP and +1 boon on their next roll. Against a healthy party it does nothing — the cold-cast deficit is the trigger condition itself. Combos with Kindred Bond (timing) and Hallow Ground (holding the line at the brink). |
+| Greater Restoration | 4 | Support / standalone | Action-cast major restoration (vitality trait): heal Wounds without a ritual (wound healing gated R4+ per principle 13, the one-Wound-heal-per-day sentence applies verbatim) and purge lasting bodily afflictions from a bounded list (disease, poison, attribute reduction). Body only — curses stay Light's territory (Break Curse). |
+| Life Ward | 4 | Support / setup | Stored-vitality trigger ward (blessings trait): for a medium duration, when the target would drop to 0 HP they instead stay at 1 HP and the ward ends. Singular, one ward per creature, no stacking. Emits the stored-charge state at its apex — lets the frontline hold Hallow Ground and Abundance of Life zones through the enemy's best turn. |
+| Wellspring of Life | 5 | Support / extender | Capstone extender (vitality/community): while you concentrate, you become a living font — your healing spells restore extra HP and splash half their healing onto a second ally in close range of the target, and allies in close range of you regain a small flat HP amount at the start of their turns (flat per principle 44). R5 mandatory material cost 5,000+. Spreads and prolongs every heal in the kit. |
+| Genesis | 5 | Utility / standalone | Fertility capstone: ritual (hours), material cost 5,000+ — restore one bounded tract of blighted, defiled, or barren land (up to a valley or holding) to living fertility, ending unnatural corruption on it. The mortal-pinnacle answer to Death's blights; story-scale, no combat use, needs a GM worldbuilding framing note per principle 33. |
+
+**Heighten extensions instead of new spells** (principle 3 — bigger versions of published spells are Heighten notes, not seeds):
+- **Healing Burst** — cascade its Heighten past R3 to R4 (+7/+14/+21) and R5 (+9/+18/+27, hits the ~half-single-target AoE ceiling) per principle 26. This replaces the former "Mass Restoration" R5 AoE-heal concept.
+- **Aid** — cascade its temp-HP Heighten to R4/R5. Covers the "mass blessing capstone" space the former "Mantle of the Blessed" seed occupied.
+- **Life Ward** (once designed) — an R5 Heighten targeting additional creatures covers party-wide death protection without a separate capstone spell.
 
 ## Cross-School Spell Sharing
 

@@ -16,12 +16,12 @@
 1. Telepathy is the premier control school — charm, dominate, confuse
 2. Information gathering (thoughts, memories, lies) provides social and exploration utility
 3. Damage is secondary — psychic attacks are real but less efficient than Evocation
-4. **Gaps addressed**: Memory and communication trait gaps filled by proposed spells below. All 30 trait × rank slots now covered.
-5. Defensive options provided through Mental Shield (R1), Prescient Awareness (R4), and Omniscient Eye (R5) — layered psychic defense.
+4. **Heighten-first coverage**: memory reading and communication scale by Heighten on one entry (Memory Echo, Telepathic Bond, published Sending) rather than ladders of near-duplicate spells at each rank (principle 3).
+5. **Domination is priced by the ladder**: cold full domination of an alert mind exists only at R5 (Absolute Control). Below that, control is reachable only by climbing dazed → charmed → commanded through payoff spells — the ladder IS the cold-cast pricing.
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 **Setup levers** — states Telepathy emits: **the opened mind** — *dazed*, *confused*, *charmed* (a target whose mental footing is already broken), and **stolen knowledge** (read thoughts, foresight, a psychic link planted in a mind). Its setups are invisible in the fiction: no burning flesh, just a target who hesitates, trusts, or reveals.
 
@@ -33,12 +33,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 **Party interlock**: **emits** *dazed*, *confused*, *charmed* — mental disruption every attacker exploits (a confused enemy swings at nobody; a charmed guard opens the gate without a fight) — plus **intelligence** (patrol routes, passwords, intentions) that shapes the party's whole plan. **wants** martial pressure that forces enemy attention away from the caster, and *frightened* (Illusion, War) since a shaken mind is easier to crack. Cross-player line: Illusion's horror show breaks the captain's nerve, then Telepathy's suggestion tells the terrified man exactly where to run.
 
-**Synergy gaps**: the influence ladder is strong in theory but has R3+ holes (Invade Dreams incomplete, no published high-rank domination), so the *convert* chain currently dead-ends. Combat payoff is also thin — beyond a boon vs charmed/dazed there is no published spell that spends an opened mind for decisive effect. Both are design targets.
-
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Mind Fracture** (R2, payoff) — drive a psychic spike into a mind that is already *dazed*, *confused*, or *charmed*: psychic damage (ignore AV) and the existing condition extends. Against a clear-headed target the spell fizzles to minor damage — the deficit is explicit.
-- **Puppet's Step** (R3, payoff/convert) — seize the limbs of a *charmed* or *confused* creature for one moment: they immediately move up to their speed and make one weapon attack at a target of your choice, then know what they did. The ladder's combat rung — horrifying in the fiction, tier-capped, Resist-rolled.
-- **Break the Will** (R4, convert capstone) — full domination, castable only against a creature currently *charmed* by you: the charm deepens into obedience for a short duration (tier cap constant, re-rolls on damage). Completes dazed → charmed → commanded as an actual spell chain instead of theory.
+**Synergy gaps**: the influence ladder is strong in theory but has R3+ holes (Invade Dreams incomplete, no published high-rank domination), so the *convert* chain currently dead-ends. Combat payoff is also thin — beyond a boon vs charmed/dazed there is no published spell that spends an opened mind for decisive effect. Both targets are now seeded in the Proposed New Spells table below: *Mind Fracture* and *Psychic Maelstrom* (payoffs that spend an opened mind, with explicit cold-cast deficits), *Puppet's Step* and *Break the Will* (the convert chain's combat rung and capstone), and *Psychic Lance* (the in-combat convert extender that climbs the condition ladder).
 
 ## Current Spell Inventory (19 published spells)
 
@@ -53,72 +48,49 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 | 4 | 2 | Astral Body, Mass Hold |
 | 5 | 0 | — |
 
-### Existing Spells (in game)
-
-| Rank | Count | Spells |
-|------|-------|--------|
-| 0 | 3 | Detect Magic, Mental Link, Mind Blast |
-| 1 | 6 | Attack Thoughts, Control Beast, Foresight, Psychometry, Subtle Suggestion, True Strike |
-| 2 | 4 | Counterspell, Forced Suggestion, Psychic Wave, Wave of Madness (incomplete) |
-| 3 | 1 | Invade Dreams (incomplete) |
-| 4 | 1 | Astral Body (incomplete, shared with Conjuration) |
-| 5 | 0 | — |
-
-### Proposed Spells (in this document)
-
-| Rank | Count | Spells |
-|------|-------|--------|
-| 0 | 2 | Surface Recall, Commanding Thought |
-| 1 | 3 | Mental Shield, Memory Echo (NEW), Mindspeak (NEW) |
-| 2 | 2 | Telepathic Bond, Memory Sieve |
-| 3 | 5 | Implant Suggestion, Psychic Lance, Psychic Probe (NEW), Seize Will (NEW), Deep Memory Dive (NEW) |
-| 4 | 5 | Modify Memory, Mass Domination, Shatter Psyche (NEW), Mind Network (NEW), Prescient Awareness (NEW) |
-| 5 | 5 | Psychic Maelstrom, Absolute Control, Astral Communion (NEW), Omniscient Eye (NEW), Mindwipe (NEW) |
-
 ### Trait × Rank Coverage Matrix
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| influence | Mind Blast | Subtle Suggestion, Attack Thoughts | Forced Suggestion, Psychic Wave | Implant Suggestion, Psychic Lance | Shatter Psyche (NEW) | Psychic Maelstrom |
-| communication | Mental Link | Mindspeak (NEW) | Telepathic Bond | Invade Dreams* | Astral Body*, Mind Network (NEW) | Astral Communion (NEW) |
-| insight | Detect Magic | Foresight, Psychometry, True Strike, Mental Shield | Counterspell | Psychic Probe (NEW) | Prescient Awareness (NEW) | Omniscient Eye (NEW) |
-| domination | Commanding Thought | Control Beast | Wave of Madness* | Seize Will (NEW) | Mass Domination | Absolute Control |
-| memory | Surface Recall | Memory Echo (NEW) | Memory Sieve | Deep Memory Dive (NEW) | Modify Memory | Mindwipe (NEW) |
+| influence | Mind Blast | Subtle Suggestion, Attack Thoughts | Forced Suggestion, Psychic Wave, Mind Fracture† | Implant Suggestion†, Psychic Lance† | Shatter Psyche† | Psychic Maelstrom† |
+| communication | Mental Link | Borrowed Tongue | Sending, Telepathic Bond† | Invade Dreams* | Astral Body | — (Sending's R5 Heighten reaches other spheres) |
+| insight | Detect Magic | Foresight, True Strike, Identify, Mental Shield† | Counterspell, Psychometry | Psychic Probe† | Prescient Awareness† | — |
+| domination | Commanding Thought† | Control Beast | Wave of Madness* | Puppet's Step† | Break the Will† | Absolute Control† |
+| memory | Surface Recall† | Memory Echo† | — (Memory Echo Heighten) | — (Memory Echo Heighten) | Modify Memory† | Mindwipe† |
 
-*Asterisk = incomplete spell in game files*
+*† = proposed seed (undesigned) · \* = incomplete spell in game files*
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+**Coverage**: 25 of 30 trait×rank slots hold a published spell or a seed. Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
 
-**Spells per rank**: R0: 5, R1: 9, R2: 6, R3: 6, R4: 6, R5: 5 — minimum 3 per rank met at all ranks
+**Remaining Gaps** (deliberate — an honest empty cell beats a filler seed): memory R2–R3 and communication R5 are covered by Heighten cascades on lower entries (Memory Echo's timeframe scaling, Sending's cross-sphere R5 line), not by separate spells (principle 3). Insight R5 is genuinely open: an all-seeing mind capstone was cut for overlapping Prescient Awareness and for modernizing the setting into surveillance magic (principle 33). Fill it only if a batch finds a bounded concept.
+
+**Spells per rank**: published R0: 3, R1: 7, R2: 6, R3: 1, R4: 2, R5: 0 (with seeds: 5 / 9 / 8 / 5 / 6 / 3). The 3-per-rank minimum is met at R0–R2 by published spells alone; R3–R5 depend entirely on seeds and are the school's real construction site.
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Surface Recall | 0 | You brush against a creature's thoughts, skimming their most recent experiences like fingers across still water. (R0 memory cantrip) |
-| Commanding Thought | 0 | You project a single, forceful thought into a creature's mind, compelling a moment of obedience. (R0 domination cantrip) |
-| Mental Shield | 1 | You fortify a mind with psychic barriers, shielding against mental intrusion. (R1 Quick Action reactive defense) |
-| Memory Echo | 1 | You reach into a creature's mind and pull forth a vivid echo of a recent experience, reliving it through their senses. (R1 memory spell) |
-| Mindspeak | 1 | You forge a sustained mental bridge between yourself and another mind, allowing silent conversation across any distance. (R1 communication spell) |
-| Telepathic Bond | 2 | You forge a silent mental link between yourself and nearby creatures, allowing wordless communication across any distance. (R2 communication spell) |
-| Memory Sieve | 2 | You probe deeper into a creature's memories, extracting specific information with methodical precision. (R2 memory spell) |
-| Implant Suggestion | 3 | You plant a deep mental command in a creature's mind, burying it beneath their conscious thoughts where it takes root like a seed of compulsion. (R3 influence spell) |
-| Psychic Lance | 3 | You focus your mental power into a razor-sharp lance of psychic energy and drive it into a single creature's mind, shattering their concentration and overwhelming their senses. (R3 damage spell) |
-| Psychic Probe | 3 | You plunge into a creature's mind like a blade, cutting through surface thoughts to expose their deepest intentions and hidden plans. (R3 insight spell) |
-| Seize Will | 3 | You overpower a creature's will with your own, seizing control of their body and actions like a puppeteer grasping invisible strings. (R3 domination spell) |
-| Deep Memory Dive | 3 | You plunge into the deepest recesses of a creature's mind, descending through layers of forgotten experiences to dredge up memories buried by time. (R3 memory spell) |
-| Modify Memory | 4 | You reach into a creature's mind and reshape their recollections, reweaving the threads of their past like a weaver at a loom of stolen experiences. (R4 memory spell) |
-| Mass Domination | 4 | You impose your will on multiple minds simultaneously, seizing control of a group of creatures like a tyrant commanding an army of puppets. (R4 domination capstone) |
-| Shatter Psyche | 4 | You assault a creature's deepest sense of self, driving a spike of psychic force through their identity until their mind fractures under the pressure. (R4 influence damage spell) |
-| Mind Network | 4 | You weave a web of psychic threads connecting the minds of many, creating a silent network of shared thought that spans any distance. (R4 communication spell) |
-| Prescient Awareness | 4 | You open your mind to the surface thoughts of every creature nearby, reading their intentions before they act — an unsettling web of precognition that turns the battlefield transparent. (R4 insight combat spell) |
-| Psychic Maelstrom | 5 | You unleash a devastating psychic storm, an invisible hurricane of mental anguish that tears through every mind in range, leaving shattered thoughts and broken wills in its wake. (R5 AoE capstone with material cost (5,000 coins)) |
-| Absolute Control | 5 | You seize total control of a creature's mind, body, and actions — crushing their will beneath yours until they are nothing but an extension of your desires. (R5 domination capstone with material cost (5,000 coins)) |
-| Astral Communion | 5 | You project your psychic voice across the boundaries of reality itself, reaching through the veil between planes to touch a distant mind. (R5 communication capstone with material cost (5,000 coins)) |
-| Omniscient Eye | 5 | You open your mind completely, becoming a nexus of psychic awareness that perceives every thought, every intention, every hidden presence within an enormous radius. (R5 insight capstone with material cost (5,000 coins)) |
-| Mindwipe | 5 | You seize the totality of a creature's memories and unmake them — erasing, rewriting, or fabricating an entire lifetime of experiences with the cold precision of a scribe scratching through parchment. (R5 memory capstone with material cost (5,000 coins)) |
+Role = combat-role / synergy-role. Each seed names the trait(s) it expresses, the condition/state/gimmick it emits or exploits, and what it plugs into. Mind-reading and control seeds carry principle 33 constraints explicitly (resisted, target aware, once-per-target, seams that can be exposed) so the school never modernizes the Bronze Age setting.
+
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Surface Recall | 0 | Utility / setup | Skim the trailing minute of a creature's memory: what they just saw, said, or did (their present thoughts belong to Mental Link). Resisted, and the GM answers from a bounded menu (a face, an action, a spoken phrase, a route taken) per principle 29. Memory trait at cantrip scale; emits stolen knowledge as setup for social payoffs. |
+| Commanding Thought | 0 | Control / setup | Bark a single mental command of one word ("halt", "drop", "flee"). The target suffers +1 bane on their next action unless they comply. The influence ladder's first rung: a moment of hesitation, never obedience, at cantrip scale (principle 6). Opens the mind for the ladder to climb. |
+| Mental Shield | 1 | Defense / standalone | Standardized R1 Quick Action reactive defense (principle 4): +2 to Dodge or Parry against the triggering attack. School secondary: briefly gain +2 Resist against mental effects. Weak-role entry mandated by internal completeness; shared-spell candidate with Peace (see Cross-School section). |
+| Memory Echo | 1 | Utility / setup | Draw one specific memory of the past day from a close creature and relive it through their senses. Resisted, the target knows their mind was touched, once per target per day (principle 33 keeps interrogation rare and circumventable). Heighten extends the reach in time on the Psychometry model, (Rank 2) the past week, (Rank 3) anything the target clearly remembers, replacing separate deeper-dive spells at every rank (principle 3). |
+| Mind Fracture | 2 | Offense / payoff | A psychic spike into a mind already dazed, confused, or charmed: psychic damage (ignore AV) and the existing condition's duration extends. Against a clear-headed target it fizzles to minor damage. The explicit cold-cast-deficit payoff the school's combat game was missing; also spends conditions allies emit (Illusion's confused, a fear-broken mind). |
+| Telepathic Bond | 2 | Utility / extender | Link yourself and up to four willing creatures into a silent mental web for the scene, sharing words and simple images across any distance within the same region. The standing-link extender for party coordination. Heighten scales targets and duration rather than spawning larger network spells at higher ranks (principle 3). |
+| Implant Suggestion | 3 | Control / extender | Bury a dormant suggestion beneath a creature's conscious mind, bound to a trigger you specify (a phrase heard, a person seen, a threshold crossed). Same bounds as its published siblings: a reasonable course of action, no harm to self or allies, resisted, and the target knows their mind was touched once it fires. The influence ladder's standing trap, converting a present intrusion into a future one. |
+| Psychic Lance | 3 | Offense / extender | Drive a lance of psychic force into one mind: single-target psychic damage (ignore AV), and the school's convert gimmick in combat form: if the target is already dazed they become confused, if already confused they are briefly stunned. Climbs the condition ladder instead of restarting it; feeds Puppet's Step and Mind Fracture. |
+| Psychic Probe | 3 | Utility / setup | Cut through a waking creature's surface thoughts to their intent: learn their present goal plus one item from a bounded menu (a fear, a held secret, a loyalty, a planned action), the GM picks what fits (principle 29). Resisted, the target feels the intrusion, once per creature per scene. Stolen intelligence as setup for suggestion spells and the party's plan. |
+| Puppet's Step | 3 | Control / payoff | Seize the limbs of a charmed or confused creature for one moment: they immediately move up to their speed and make one weapon attack at a target of your choice, then know what they did. The ladder's combat rung, horrifying in the fiction. Tier-capped, Resist-rolled, and uncastable against a clear mind: the cold-cast deficit is absolute. |
+| Break the Will | 4 | Control / payoff | Full domination, castable only against a creature currently charmed by you: the charm deepens into obedience for a short duration. Tier cap constant (principle 31), any damage or disturbance grants an immediate re-roll (principle 37). Completes dazed → charmed → commanded as an actual spell chain, priced below a cold dominate because the setup is the cost. |
+| Modify Memory | 4 | Utility / standalone | Reweave one memory of the past day in a restrained or willing creature's mind: dim it, alter its details, or overlay a false version. Resisted, concentration over minutes, and the seam remains (a probing mind, Memory Echo, or contradicting evidence can unravel it). Master-working rarity keeps testimony-rewriting a feared crime, never a routine tool (principle 33). |
+| Shatter Psyche | 4 | Offense / setup | The school's heaviest single-target strike: high psychic damage (ignore AV, deliberately a step under Evocation par) and the target's mental footing breaks: they are briefly confused and suffer +1 bane on their next Resist roll against your spells. Damage that opens the door for the influence ladder rather than ending the fight itself. |
+| Prescient Awareness | 4 | Support / setup | Open a web of precognition while you concentrate: you and allies in close range cannot be surprised, you know the position of every hidden thinking creature in range, and attacks against you suffer +1 bane. Insight turned outward as party defense, emitting ambush-proof positioning rather than raw stacked boons. |
+| Psychic Maelstrom | 5 | Offense / payoff | A storm of mental anguish in a medium area: moderate psychic damage (below Evocation par, the school's Weak Offense discount) and each target is briefly dazed. Targets already dazed, confused, or charmed take damage one step higher and are confused instead. The influence ladder's payoff at battlefield scale. Concentrate, material cost (5,000+). |
+| Absolute Control | 5 | Control / standalone | The cold-cast cap of the influence ladder: dominate one creature without prior conditioning. Tier up to your Arcana (cap never scales, principle 31), concentrate, any damage or disturbance grants an immediate re-roll (principle 37), material cost (5,000+). Deliberately R5-priced so that below this rank domination is only reachable by climbing the ladder. |
+| Mindwipe | 5 | Utility / standalone | Excise all memory of one subject (a person, a place, an event) from a restrained or willing creature's mind. Ritual over minutes, resisted, material cost (5,000+), and the excision leaves gaps the target can notice and others can expose. Never fabricates a lifetime: unmaking stays bounded so history remains recoverable in play (principle 33, mortal pinnacle). |
 
 ## Cross-School Spell Sharing
 

@@ -260,6 +260,10 @@ sidebar_position: 6
 
 **Effect** <br/> You summon spectral warriors from beyond the veil to fight alongside you.<br/>On a success, you conjure four spectral warriors with incorporeal weapons and shields that appear at any location within range. The spectral army acts as a single unit under your control with the following properties:<br/>- The spectral warriors have 40 HP as a single unit. Every 10 damage destroys one of the spectral warriors.<br/>- They have 0 AV and uses your Resist for all Defenses.<br/>- They are immune to all conditions, resistant to necrotic, and weak to radiant damage.<br/>As a Quick Action on your turn, you can command the spectral army to perform one of these actions:<br/>- <strong>Attack.</strong> Split the attacks of the spectral army between up to four targets within melee range. Roll Mind + Arcana vs. Dodge. On a hit, each target takes 4 necrotic damage (ignore AV) for each spectral warrior hitting them.<br/>- <strong>Defend. </strong>Any attacks against allied creatures in close range of the spectral army suffer +1 bane and each of those allies gains +2 AV while in range.<br/>- <strong>Advance. </strong>They move up to a short distance, ignoring any obstacles, solid objects, or walls. They still have to end their Movement at an unobstructed location.<br/>The spectral army lasts for a short duration or until they are reduced to 0 HP. 
 
+> **Heightened** <br/> <strong>(Rank 4)</strong> You conjure six spectral warriors with 60 HP as a single unit instead. Each warrior hitting deals 5 necrotic damage (ignore AV).<br/><strong>(Rank 5)</strong> You conjure eight spectral warriors with 80 HP as a single unit instead. Each warrior hitting deals 6 necrotic damage (ignore AV).
+
+>
+
 ### Wither
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

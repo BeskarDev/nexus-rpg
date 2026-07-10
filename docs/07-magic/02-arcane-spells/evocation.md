@@ -190,9 +190,9 @@ sidebar_position: 1
 ---|---|---|---|---
  2 | 4 | vs. Dodge | Long | -
 
-**Effect** <br/> <em>A beam of any one elemental damage type. Caster can choose which, secondary effect depends on chosen type</em> 
+**Effect** <br/> You split raw elemental energy through a prism of will and loose a beam that shimmers with two colors at once. When casting the spell, choose two damage types among acid, fire, frost, lightning, and poison. The beam's damage counts as both chosen types. The target only applies resistance against this damage if they are resistant to both chosen types, and applies weakness if they are weak to either.<br/><strong>Weak.</strong> Deal +6 damage of the chosen types.<br/><strong>Strong.</strong> Deal +12 damage of the chosen types.<br/><strong>Critical.</strong> Deal +18 damage of the chosen types. The target also suffers the condition associated with one of the chosen types (acid: ignore 1/2 AV on this damage, fire: burning (2), frost: briefly slowed, lightning: briefly staggered, poison: briefly poisoned). 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Increase damage by +2/+4/+6 and enhance the secondary effect based on chosen type.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Deal +8/16/24 damage instead.<br/><strong>(Rank 4)</strong> Deal +10/20/30 damage instead.<br/><strong>(Rank 5)</strong> Deal +12/24/36 damage instead.
 
 >
 

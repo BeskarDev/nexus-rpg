@@ -120,6 +120,10 @@ sidebar_position: 2
 
 **Effect** <br/> You summon the image of an object, creature, or other visible phenomenon, which can be large or smaller. I appears absolutely real, mimicking sounds, smells, movements, and even temperature (tough it won’t deal actual damage).<br/>On a success, your chosen illusion appears at the target location in range.<br/>While you are in range of the illusion, you can use your Quick Action to let the illusion change in any way or move within range. It will follow your instructions as long as it takes, so it can mimic walking to another location or having a conversation with another creature.<br/>Attempts to physically interact with the illusion automatically reveal it to be an illusion. The illusion lasts for up to a short duration, even if you move out of range. You can immediately recast this spell as an Action at the end of the duration to maintain the illusion for a longer time. 
 
+> **Heightened** <br/> <strong>(Rank 3)</strong> The illusion can be of huge or smaller size and lasts up to a medium duration instead.<br/><strong>(Rank 4)</strong> The illusion can fill a close area with several moving, interacting elements, such as a market stall with a vendor or a campfire ringed by sleeping soldiers, and lasts up to a medium duration instead.
+
+>
+
 ### Misdirection
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

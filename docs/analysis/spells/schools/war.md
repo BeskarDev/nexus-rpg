@@ -21,7 +21,7 @@
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 War is unusual: its caster is **also the martial**. Setups and payoffs mostly run through weapon attacks, so the school's synergy engine is the tightest fusion of spell and steel in the game.
 
@@ -35,12 +35,7 @@ War is unusual: its caster is **also the martial**. Setups and payoffs mostly ru
 
 **Party interlock**: **emits** *frightened*, *bleeding*, and weapon blessings **castable on allies' steel** — the martial-multiplier school (the fighter's axe carries the god of battle's edge). **wants** more attacks to carry its riders (every extra martial swing is War's payoff vector) and enemies held in reach (Telekinetics, Nature). Cross-player line: the priest blesses the champion's blade and breaks the enemy line's nerve with War Cry, and the champion's next charge hits frightened men with a god-touched edge.
 
-**Synergy gaps**: the R3 tier now escalates the fear-and-steel engine — Glorious Strike *emits* frightened (crit spreads to onlookers) and Righteous Fury is the first **formal** mechanical fear-exploit (+1 boon, +damage vs *frightened*), closing the "informal fear-exploit" gap. Ancestral Guardian adds the school's first defense. Remaining: no R4-R5 battle magic (mass-fear payoff, battle-lord capstone) — the next design agenda.
-
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Terror's Edge** (R2, payoff) — your weapon attack against a *frightened* creature strikes with the weight of their own dread: +damage and on a strong or critical hit they stay *frightened* (no roll to end this turn). The formal fear-exploit — on-curve steel against the unshaken.
-- **Rout** (R3, payoff, mass-fear) — a thunderous kill-cry over the battle: every *frightened* enemy in short range must roll Spirit + Fortitude or spend their next turn fleeing you; those who hold suffer +1 bane on attacks. Spends an entire field of fear at once — worthless against firm hearts.
-- **Ancestral Champion** (R4, engine capstone) — the war-ancestors pour into your body for a short duration: weapon attacks gain +1 boon and bonus damage, you cannot be *frightened*, and each enemy you drop re-tests the nerve of their allies in close range (feeding the fear engine with every kill). Paid in blood — HP cost each turn it lasts.
+**Synergy gaps**: the R3 tier now escalates the fear-and-steel engine — Glorious Strike *emits* frightened (crit spreads to onlookers) and Righteous Fury is the first **formal** mechanical fear-exploit (+1 boon, +damage vs *frightened*), closing the "informal fear-exploit" gap. Ancestral Guardian adds the school's first defense. Remaining: nothing published above R3, no cheap fear-payoff below Righteous Fury, and the *bleeding* the school emits has no formal exploit. The seed table below carries those design targets (Terror's Edge, Rout, Blood Frenzy, the R5 capstones).
 
 ## Current Spell Inventory (15 published spells)
 
@@ -59,45 +54,41 @@ War is unusual: its caster is **also the martial**. Setups and payoffs mostly ru
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| fury | Battle Surge | War Cry | Haste | Righteous Fury, Commander's Shout | Siege Breaker | Avatar of War, Warlord's Presence |
-| pride | Mighty Strike | Heroic Weapon | War Banner | Glorious Strike | Champion's Challenge, Siege Breaker | Warlord's Presence |
-| blood | Spectral Slash | Tear Wound, Curse of War | Blood Sacrifice | Ancestral Guardian | Blood Frenzy | Avatar of War, Final Triumph |
-| justice | Righteous Strike | Retaliating Fury | Avenging Oath | Righteous Fury | Champion's Challenge | Divine Retribution |
-| triumph | Victor's Shout | Weapon Spirit | Ancestral Warriors, War Banner | Ancestral Guardian, Commander's Shout | Triumphant Advance | Final Triumph |
+| fury | Battle Surge | War Cry | Haste, ✨ Terror's Edge | Righteous Fury, Commander's Shout, ✨ Rout | ✨ Blood Frenzy | ✨ Avatar of War |
+| pride | Mighty Strike | Heroic Weapon | ✨ War Banner | Glorious Strike | ✨ Champion's Challenge, ✨ Siege Breaker | ✨ Avatar of War |
+| blood | Spectral Slash | Tear Wound, Curse of War | Blood Sacrifice | Ancestral Guardian | ✨ Blood Frenzy | ✨ Final Triumph |
+| justice | ✨ Righteous Strike | ✨ Retaliating Fury | ✨ Avenging Oath | Righteous Fury | ✨ Champion's Challenge | ✨ Divine Retribution |
+| triumph | ✨ Victor's Shout | Weapon Spirit | Ancestral Warriors, ✨ War Banner | Commander's Shout | — | ✨ Final Triumph |
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+✨ = proposed new spell (undesigned seed)
 
-**Critical Gaps**: ~~All resolved~~
-- ~~**Justice**: Zero spells at any rank~~ → Filled R0-R5: Righteous Strike → Retaliating Fury → Avenging Oath → Righteous Fury → Champion's Challenge → Divine Retribution
-- ~~**Triumph R0**: No victory/morale cantrip~~ → Filled by **Victor's Shout**
-- ~~**ALL traits R3+**: Zero spells above R2~~ → Filled with 12 proposed spells across R3-R5
-- ~~**Pride R2+**: Theme drops off after R1~~ → Filled by War Banner (R2), Glorious Strike (R3), Champion's Challenge/Siege Breaker (R4), Warlord's Presence (R5)
-- ~~**Blood R3+**: Only goes to R2~~ → Filled by Ancestral Guardian (R3), Blood Frenzy (R4), Avatar of War/Final Triumph (R5)
+**Coverage**: 29 of 30 trait×rank slots hold a published spell or a seed. Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+
+**Critical Gaps**:
+- **Nothing published above R3** — all R4-R5 slots are seeds only. This is the school's top buildout.
+- **Triumph R4 is intentionally empty** — the old "Triumphant Advance" seed was a bigger Commander's Shout, and Commander's Shout's published (Rank 4)/(Rank 5) Heighten already covers the mass-advance escalation. An honest empty cell beats a filler seed (principle 3).
+- **Fear payoffs are seeds, not spells** — the engine's cheap payoff (Terror's Edge R2) and mass-fear spend (Rout R3) remain undesigned; until then Righteous Fury is the only formal fear-exploit.
+- **Bleeding has no formal payoff** — the school emits bleeding from R0 but only Blood Frenzy (R4 seed) spends it.
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Retaliating Fury | 1 | When struck in battle, you channel the fury of war into an immediate counterstrike. (R1 Quick Action reactive defense) |
-| Righteous Strike | 0 | You channel divine justice into your weapon strike, punishing those who have wronged your allies. (Fills the R0 justice gap) |
-| Victor's Shout | 0 | You strike with triumphant conviction, channeling the spirit of victory into your blow and inspiring allies through martial prowess. (Fills the R0 triumph gap) |
-| Shield of Valor | 1 | You channel the courage of warriors past, surrounding yourself with an aura of unyielding valor. (Defensive spell for War — "courage in battle" theme) |
-| Avenging Oath | 2 | You swear a divine oath of retribution against a creature that has wronged you or your allies, marking them for justice. (Fills R2 justice gap) |
-| War Banner | 2 | You plant your weapon in the ground and channel divine war magic through it, creating a rallying point that inspires all nearby allies. (Fills R2 pride/triumph gap) |
-| Commander's Shout | 3 | You unleash a thunderous shout of divine authority that shakes the resolve of your enemies and steels the hearts of your allies. (R3 mass buff/debuff) |
-| Blood Frenzy | 4 | You enter a state of controlled battle fury, your blood singing with divine power. Each wound you deal feeds the frenzy. (R4 self-buff — sustained combat enhancement) |
-| Warlord's Presence | 5 | You become an avatar of divine war — an inspiring, terrifying presence on the battlefield that turns the tide of battle. (R5 battlefield command) |
-| Righteous Fury | 3 | Divine wrath surges through your veins like molten bronze, and your strikes carry the weight of righteous judgement. Your eyes burn with holy fury, and the unjust tremble before you. (R3 fury/justice capstone — self-buff that synergizes with the fear→exploit loop) |
-| Ancestral Guardian | 3 | You call upon the spirits of fallen warriors, and a spectral weapon materializes beside you — a ghostly blade wielded by an ancestral champion who fights with tireless fury at your command. (R3 triumph/blood capstone — spectral ally) |
-| Glorious Strike | 3 | You channel the war gods' pride in martial excellence, wreathing yourself in golden fire that marks you as a champion beyond equal. Enemies quail before your prowess. (Fills R3 pride gap) |
-| Champion's Challenge | 4 | You point your weapon at a foe and issue a divine challenge that rings with the authority of gods of war. A burning sigil appears on both you and your sworn foe, binding you in single combat. (R4 justice/pride capstone — divine duel mechanic) |
-| Siege Breaker | 4 | You channel the fury of war into a devastating strike that sunders fortifications, shatters shield walls, and breaks the defenses of even the most entrenched foe. The ground cracks and barriers crumble before divine wrath. (R4 fury/pride capstone — replaces the previously proposed "Battle Standard" (which was essentially "bigger War Banner")) |
-| Avatar of War | 5 | You invoke the ultimate blessing of the war gods, and divine power transforms you into a living avatar of battle. Your form grows, your weapon blazes with holy fire, and wings of golden flame spread from your back. You are War incarnate. (R5 war capstone transformation) |
-| Final Triumph | 5 | As your foe falls, divine glory erupts from the killing blow in a shockwave of golden light. Your allies feel the surge of righteous victory — wounds close, exhaustion fades, and the will to fight burns brighter than ever. (R5 triumph/blood capstone — victory burst) |
-| Triumphant Advance | 4 | You raise your weapon high and let out a thunderous battle cry that echoes with divine authority. Golden light surges forward from your position, and your allies feel an irresistible urge to press the attack — feet moving faster, weapons striking harder, fear melting away before righteous momentum. (Fills R4 triumph gap) |
-| Divine Retribution | 5 | You invoke the ultimate judgment of the war gods upon a creature that has committed grievous wrongs — betrayed allies, broken oaths, or committed atrocities. A pillar of golden fire descends from the heavens, burning away falsehood and punishing the guilty. (R5 justice capstone — divine punishment) |
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Righteous Strike | 0 | Offense / payoff | Weapon-strike cantrip on the Mighty Strike chassis (Spirit + Mysticism attack) that adds a small damage rider only against a creature that has damaged you or an ally since your last turn (justice trait: retribution as a diegetic trigger). Cold-cast it is worse than Mighty Strike, so the payoff needs the party to have bled first. Plugs into any martial frontline taking hits. |
+| Victor's Shout | 0 | Support / extender | Quick Action cantrip usable only when an enemy drops to 0 HP in sight (triumph trait): allies in short range gain a small morale rider on their next attack and may end the frightened condition on themselves. Refreshes the morale window each kill, feeding Commander's Shout and Final Triumph lines. Distinct from Battle Surge (single target, HP cost, no kill gate). |
+| Retaliating Fury | 1 | Defense / standalone | The standardized R1 Quick Action reactive (principle 4: +2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (fury trait): if the triggering attacker is in your melee reach and their attack fails, they take a small amount of damage from your instant counterstroke. War's only reactive defense. |
+| Terror's Edge | 2 | Offense / payoff | Single weapon strike that exploits *frightened*: bonus damage against a frightened target, and on a strong or critical hit their fear does not end this turn (prolong rider). The engine's cheap formal fear-exploit below Righteous Fury. Cold-cast deficit: on-curve at best against the unshaken. Spends the fear that War Cry, Heroic Weapon, and Glorious Strike emit. |
+| Avenging Oath | 2 | Control / setup | Swear retribution against one creature that has damaged an ally this scene: they are visibly marked (shared *marked* socket) for a short duration, and weapon attacks against them by anyone gain a small rider (justice trait). Pure setup — near worthless alone, cashed by martial allies, Terror's Edge, and Divine Retribution. |
+| War Banner | 2 | Support / extender | Plant your weapon as a rallying standard (pride and triumph traits): a stationary close-range aura in which allies cannot become frightened and their weapon attacks carry a small flat rider. Prolongs the morale window across turns and anchors the melee the engine needs. Concentrate or fixed duration; the banner is a destructible object (principle 35). |
+| Rout | 3 | Control / payoff | A thunderous kill-cry that spends a whole field of fear: every *frightened* enemy in short range must roll Spirit + Fortitude vs. your Resist or spend their next turn fleeing you, and those who hold suffer +1 bane on attacks. No effect on the unafraid (hard cold-cast deficit). Mass payoff for War Cry and Glorious Strike setups. |
+| Blood Frenzy | 4 | Offense / payoff + extender | Short-duration frenzy paid in your own HP each turn (blood trait): weapon attacks gain a rider that bites harder against *bleeding* targets (the school's first bleeding payoff, spending Spectral Slash / Tear Wound / Heroic Weapon crits), you cannot be frightened, and each enemy you drop forces their allies in close range to re-test against frightened (refresh extender — every kill feeds the fear engine). Merges the old "Ancestral Champion" sketch. |
+| Champion's Challenge | 4 | Control / setup | Divine duel (justice and pride traits): a burning sigil binds you and one sworn foe of a tier up to your Mysticism. They suffer banes attacking anyone but you, your attacks against them gain a rider, and if they flee the duel they become frightened of you (feeding the engine). Save-ends and tier-capped, never an auto-lockdown of a boss. |
+| Siege Breaker | 4 | Offense / setup | A single devastating blow (fury and pride) against a structure, barrier, shield wall, or armored foe: heavy blast damage to objects and fortifications, destroys mundane cover, and on a creature strips AV for a short duration (min. 0) — the shared *stripped AV* socket the whole party spends. War's anti-fortification statement piece. |
+| Avatar of War | 5 | Offense / standalone + extender | Transformation capstone (fury, pride, blood): for a short duration your weapon attacks gain boons and heavy riders, you are immune to frightened, and your presence re-tests the nerve of enemies in close range at the start of each of your turns (refresh extender). Paid in blood — HP cost each turn — plus a 5,000+ coin material cost (principle 5). Mortal pinnacle: a champion at their peak, no flight, no invulnerability, no auto-win. |
+| Final Triumph | 5 | Support / payoff | Quick Action burst usable only when you or an ally drops an enemy (triumph and blood): allies in short range regain HP on the multi-target healing chassis and shed the frightened condition, while enemies who saw their champion fall must test against frightened. Kill-gated healing justifies War's weak Healing role — it rewards aggression, never replaces Life's dedicated healing. |
+| Divine Retribution | 5 | Offense / payoff | Pillar of golden fire on one creature: on-curve single-target damage cold, but against a target under your Avenging Oath mark or one that has dropped an ally this scene it deals heavy bonus damage and they are frightened of you (justice capstone — judgement lands hardest on the guilty). Cold-cast deficit keeps the mark setup meaningful. Material cost 5,000+ coins. |
 
 ## Cross-School Spell Sharing
 
@@ -113,25 +104,26 @@ War does not currently share spells with any arcane discipline.
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Fury chain**: Battle Surge (R0) → War Cry (R1) → Haste (R2) → Commander's Shout/Righteous Fury (R3) → Blood Frenzy (R4) → Avatar of War/Warlord's Presence (R5) — **complete R0-R5**
-2. **Pride chain**: Mighty Strike (R0) → Heroic Weapon (R1) → War Banner (R2) → Glorious Strike (R3) → Champion's Challenge/Siege Breaker (R4) → Warlord's Presence (R5) — **complete R0-R5**
-3. **Blood chain**: Spectral Slash (R0) → Tear Wound/Curse of War (R1) → Blood Sacrifice (R2) → Ancestral Guardian (R3) → Blood Frenzy (R4) → Avatar of War/Final Triumph (R5) — **complete R0-R5**
-4. **Justice chain**: Righteous Strike (R0) → Retaliating Fury (R1) → Avenging Oath (R2) → Righteous Fury (R3) → Champion's Challenge (R4) → Divine Retribution (R5) — **complete R0-R5**
-5. **Triumph chain**: Victor's Shout (R0) → Weapon Spirit (R1) → Ancestral Warriors (R2) → Commander's Shout (R3) → Triumphant Advance (R4) → Final Triumph (R5) — **complete R0-R5**
+(✨ = undesigned seed)
+1. **Fury chain**: Battle Surge (R0) → War Cry (R1) → Haste / ✨ Terror's Edge (R2) → Righteous Fury / ✨ Rout (R3) → ✨ Blood Frenzy (R4) → ✨ Avatar of War (R5)
+2. **Pride chain**: Mighty Strike (R0) → Heroic Weapon (R1) → ✨ War Banner (R2) → Glorious Strike (R3) → ✨ Champion's Challenge / ✨ Siege Breaker (R4) → ✨ Avatar of War (R5)
+3. **Blood chain**: Spectral Slash (R0) → Tear Wound / Curse of War (R1) → Blood Sacrifice (R2) → Ancestral Guardian (R3) → ✨ Blood Frenzy (R4) → ✨ Final Triumph (R5)
+4. **Justice chain**: ✨ Righteous Strike (R0) → ✨ Retaliating Fury (R1) → ✨ Avenging Oath (R2) → Righteous Fury (R3) → ✨ Champion's Challenge (R4) → ✨ Divine Retribution (R5)
+5. **Triumph chain**: ✨ Victor's Shout (R0) → Weapon Spirit (R1) → Ancestral Warriors / ✨ War Banner (R2) → Commander's Shout (R3) → *(R4 covered by Commander's Shout's Heighten)* → ✨ Final Triumph (R5)
 
 ### Setup + Payoff Combos
-- ✅ **Fear → exploit**: War Cry (R1) frightens enemies → attacks against frightened targets deal bonus damage
-- ✅ **Weapon blessing → crit trigger**: Heroic Weapon (R1) enhances weapon → critical hits apply bleeding condition
-- ✅ **Justice → retribution**: Avenging Oath (R2) marks enemy → Champion's Challenge (R4) forces duel → Divine Retribution (R5) punishes those who harm allies
-- ✅ **Triumph → snowball**: Triumphant Advance (R4) gives allies bonus on kills → Final Triumph (R5) heals entire party on kill
-- ✅ **Blood chain**: Tear Wound (R1) → Blood Sacrifice (R2) → Blood Frenzy (R4) has thematic progression with blood/wound escalation
+- ✅ **Fear engine**: War Cry / Heroic Weapon / Glorious Strike emit *frightened* → Righteous Fury (published), ✨ Terror's Edge (R2 single-strike spend), ✨ Rout (R3 mass spend), and ✨ Divine Retribution cash it → ✨ Blood Frenzy and ✨ Avatar of War refresh it on every kill
+- ✅ **Bleeding engine**: Spectral Slash / Tear Wound / Heroic Weapon crits emit *bleeding* → ✨ Blood Frenzy is the formal payoff (until designed, bleeding is pure attrition value)
+- ✅ **Justice mark**: ✨ Righteous Strike (ally-harm trigger) → ✨ Avenging Oath marks → allies, ✨ Champion's Challenge, and ✨ Divine Retribution collect on the marked
+- ✅ **Triumph kill-loop**: ✨ Victor's Shout refreshes morale per kill → Commander's Shout converts it to action economy → ✨ Final Triumph turns a kill into party healing and fresh enemy fear
+- ✅ **Party interlock**: ✨ Siege Breaker strips AV and cover (shared sockets) for every ally; weapon blessings ride allies' steel
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Retaliating Fury — standardized reactive defense (+2 Dodge/Parry, melee counterstrike secondary)
-- [x] Defensive options: Shield of Valor (R1) provides AV bonus + fear immunity
-- [x] Utility: Limited but appropriate for War's weak utility role
-- [x] Damage across ranks: R0-R5 fully covered — fury chain provides continuous damage/buff escalation
-- [x] Repeating conditions: Frightened, bleeding, emboldened, dazed — consistent battle identity
-- [x] Setup+payoff: Fear→exploit, justice→retribution, triumph→snowball loops are well-supported
-- [x] **3 spells per rank minimum**: Met at all ranks
-- [ ] **All aspects covered R0-R5**: all 30 trait×rank slots seeded with concepts; published coverage is partial (see inventory) (100%)
+- [ ] R1 Quick Action: ✨ Retaliating Fury (seed) — standardized reactive defense (+2 Dodge/Parry, melee counterstroke secondary); nothing published yet
+- [x] Defensive options: Ancestral Guardian (R3, published) — appropriate for War's weak Defense role; ✨ Retaliating Fury adds the reactive layer
+- [x] Utility: intentionally thin — Utility is a Weak role, no filler seeds added
+- [x] Damage across ranks: published R0-R3 solid; R4-R5 damage rests on ✨ Blood Frenzy, ✨ Siege Breaker, ✨ Avatar of War, ✨ Divine Retribution
+- [x] Repeating conditions: frightened and bleeding — consistent battle identity across published spells and seeds
+- [x] Setup+payoff: fear engine and justice mark both have explicit setup, payoff, and extender seeds (see combos above)
+- [x] **3 spells per rank minimum**: met R0-R3 published; R4 (4 seeds) and R5 (3 seeds) pending design
+- [ ] **All trait×rank slots covered**: 29/30 seeded or published (triumph R4 intentionally empty — Commander's Shout Heighten covers it); published coverage stops at R3

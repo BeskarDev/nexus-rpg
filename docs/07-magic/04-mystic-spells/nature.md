@@ -356,9 +356,9 @@ sidebar_position: 5
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Short | singular
 
-**Effect** <br/> <em>Summon a solid pillar of stone either  to block an area or push creatures in an area higher up. Can be used as utility for you and your allies, or to disrupt enemy positioning. Can also lead to crushing creatures above the pillar into the ceiling.</em> 
+**Effect** <br/> You press your palm to the ground and call the bones of the earth upward, and a column of living rock rises with a deep grinding groan.<br/>On a success, a pillar of solid stone rises from an unoccupied surface of earth, stone, or clay at the target location. The pillar is up to close range wide and rises up to a short distance high, with a flat top that creatures can stand on. You choose its exact height when it rises. Any creature standing on the pillar is carried up with it. An unwilling creature can roll Agility + Athletics vs. your Resist to leap off before it rises, landing prone in an adjacent space.<br/>If the pillar meets a ceiling or other solid obstacle, it stops. A creature caught between the pillar and the obstacle takes 8 damage (ignore AV) and is squeezed into the gap, which counts as a constricted area.<br/>The pillar is ordinary stone. It remains after the spell, can be climbed with a Strength + Athletics roll, and can only be removed by mundane means or magic that affects stone. When you cast this spell again, all pillars from your previous casting crumble into harmless rubble as the new one rises. 
 
-> **Heightened** <br/> <em>Summon multiple pillars</em>
+> **Heightened** <br/> <strong>(Rank 4)</strong> The pillar can rise up to a medium distance high instead, and you may raise up to two pillars with one casting, each up to close range wide and placed anywhere in range. A creature caught between a pillar and an obstacle takes 10 damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> You may raise up to three pillars with one casting, each up to close range wide, each rising up to a medium distance high, and placed anywhere in range. A creature caught between a pillar and an obstacle takes 12 damage (ignore AV) instead.
 
 >
 

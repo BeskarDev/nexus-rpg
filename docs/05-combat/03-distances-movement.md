@@ -98,5 +98,6 @@ Examples of area properties include:
 - **Difficult Terrain.** Requires 2 Movement to move into this area (you can spend this Movement over multiple turns). Moving into or out of melee range requires 1 Movement.
 - **Elevated.** This area is uphill or on a higher elevation. Ranged attacks from this area to an un-elevated area gain +1 boon. Special movements such as climbing or flying might be required to enter this area.
 - **Tiny.** All creatures in this area are automatically in melee range of each other.
+- **Constricted.** This area is very narrow, such as a crevice, a low crawlspace, or the gap between a collapsing block and the ceiling. Creatures can only move through this area by squeezing. While squeezing, this area counts as difficult terrain for them and they can't make attacks.
 - **Special Location.** This area includes a special location that creatures can move into melee range with, to gain certain effects. Examples are a lever for a nearby drawbridge, a magical fountain with healing water, or a pillar that can be climbed or hidden behind.
 - **Underwater.** Creatures can’t breathe or fire missile weapons. Lightning damage spreads around the source and target, automatically dealing 1/2 of its damage to any creature close to either of them if in contact with the water.

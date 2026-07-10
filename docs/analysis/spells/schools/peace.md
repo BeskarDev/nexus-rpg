@@ -21,7 +21,7 @@
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 Peace is a **defensive** school, so its setup states are protective rather than offensive, and it stress-tests the framework: its "payoff" is usually an ally staying alive or an attacker shut down, not bonus damage. That still fits the three roles.
 
@@ -35,12 +35,7 @@ Peace is a **defensive** school, so its setup states are protective rather than 
 
 **Party interlock**: **emits** *protected*, *cover*, *slowed*, *dazed* — defensive currency that keeps fragile allies alive and shuts an attacker down for a turn (a dazed, slowed enemy is a free reposition or focus-kill for the martials). **wants** a frontline that will body-block and enemies funneled into one place (a tank holding a chokepoint, or a Telekinetics wall channeling the mob). Cross-player line: a martial guardian holds a doorway inside the Dome while Peace redirects the blows the tank cannot avoid and dazes whoever pushes through.
 
-**Synergy gaps**: heavy on setup (protection), light on **ally-facing payoff** — few Peace effects let *another* player cash the *protected* state into offense, so the school can feel like a pure battery. Pacification also lacks a strong **convert** extender (daze → a longer, harder control). Both are design targets, especially an effect that turns "my ally is safe" into "so my ally hits harder."
-
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Steady Hands** (R2, payoff, ally-facing) — an ally under one of your protective effects (warded, shielded, linked) fights from perfect calm: their next attack gains +1 boon and cannot be interrupted by Quick Actions. "Safe → hits harder," but framed as serenity, not battle-lust — the protected hand does not shake. Dead with no ward standing.
-- **Binding Calm** (R3, extender/convert) — deepen pacification on a creature already *dazed* or *charmed* by a Peace spell: they are briefly *stunned* as the calm settles into stillness, then remain *dazed* after. The daze → harder-control rung, Resist-rolled, tier-capped, only from an existing calm.
-- **Shield of the Meek** (R2, payoff/redirect) — when an enemy damages an ally warded by you, the ward flares: the attacker takes psychic backlash and suffers +1 bane on their next attack against that ally. Makes striking into sanctuary visibly cost something — deterrence as the school's damage identity.
+**Synergy gaps**: heavy on setup (protection), light on **ally-facing payoff** — few Peace effects let *another* player cash the *protected* state into offense, so the school can feel like a pure battery. Pacification also lacks a strong **convert** extender (daze → a longer, harder control). Both design targets now live in the seed table below (Steady Hands, Shield of the Meek, Binding Calm).
 
 ## Current Spell Inventory (15 published spells)
 
@@ -59,52 +54,47 @@ Peace is a **defensive** school, so its setup states are protective rather than 
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| calmness | Calming Influence, Tranquil Mind | Pacifying Weapon | Slow | Pacifying Presence | ✨ Tranquil Command | ✨ Edict of Peace |
-| protection | Aura of Sanctuary | Blessing of Peace, Share Harm | Dome of Sanctuary, Spell-breaking Wave | Anti-Magic Field | ✨ Diplomatic Immunity | ✨ Sanctuary Sphere |
-| selflessness | ✨ Shared Burden | Harmonic Link, ✨ Absorb Harm | ✨ Guardian's Sacrifice | Martyrdom's Blessing | ✨ Redemptive Sacrifice | ✨ Undying Devotion |
+| calmness | Calming Influence, Tranquil Mind | Pacifying Weapon | Slow | Pacifying Presence, ✨ Binding Calm | — | — |
+| protection | Aura of Sanctuary | Blessing of Peace, Share Harm | Dome of Sanctuary, Spell-breaking Wave, Warded Threshold, ✨ Steady Hands, ✨ Shield of the Meek | Anti-Magic Field, Serene Exile | — | ✨ Sanctuary Sphere |
+| selflessness | ✨ Shared Burden | Harmonic Link, ✨ Absorb Harm | — | Martyrdom's Blessing | ✨ Redemptive Sacrifice | ✨ Undying Devotion |
 | travel | ✨ Wayfinder's Mark | ✨ Swift Journey | ✨ Wayfarer's Shield | ✨ Safe Passage | ✨ Pilgrim's Gate | ✨ The Pilgrim's Road |
-| law | ✨ Binding Word | ✨ Compel Truth | ✨ Binding Oath | ✨ Arbiter's Circle | ✨ Righteous Verdict | ✨ Sacred Covenant, ✨ Edict of Peace |
+| law | ✨ Oathmark | ✨ Peace Bond | ✨ Binding Oath | ✨ Righteous Verdict | — | ✨ Sacred Covenant |
 
-✨ = proposed new spell
+✨ = proposed new spell (undesigned seed)
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
-
-**Spell Totals (existing + proposed):**
-- R0: 3 existing + 3 proposed = 6
-- R1: 4 existing + 3 proposed = 7
-- R2: 3 existing + 3 proposed = 6
-- R3: 3 existing + 2 proposed = 5
-- R4: 0 existing + 5 proposed = 5
-- R5: 0 existing + 5 proposed = 5
-- **Total: 13 existing + 21 proposed = 34 spells**
+**Coverage**: 25 of 30 trait×rank slots hold a published spell or a seed. The five empty cells are deliberate, not oversights (an honest empty cell beats a filler seed):
+- **Calmness R4/R5** — the old "Tranquil Command" (bigger Calming Influence) and "Edict of Peace" (bigger Pacifying Presence) seeds were cut per principle 3. The escalation path is a **Heighten cascade on Pacifying Presence** (R4/R5: more targets, larger range, the effect no longer ending when the target takes outside damage) — a design task on the published spell, not a new entry.
+- **Protection R4** — the old "Diplomatic Immunity" seed was a bigger Aura of Sanctuary; its escalation belongs on a **Heighten cascade for Aura of Sanctuary** (longer duration, harder save, more targets), not a new spell.
+- **Selflessness R2** — the old "Guardian's Sacrifice" seed was a smaller Martyrdom's Blessing (R3, published) and was cut; the rung is covered from both sides (Harmonic Link R1, Martyrdom's Blessing R3).
+- **Law R4** — no honest concept between Righteous Verdict (R3) and Sacred Covenant (R5); left open rather than padded.
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Absorb Harm | 1 | You extend a hand toward an ally under attack, absorbing a portion of their pain into yourself. (R1 Quick Action reactive defense) |
-| Wayfinder's Mark | 0 | You leave a faintly glowing mark on the ground or a surface, guiding travelers along the right path. (Fills the R0 travel gap) |
-| Binding Word | 0 | You speak a word of divine authority, compelling a creature to speak truthfully for a single statement. (Fills the R0 law gap) |
-| Swift Journey | 1 | You bless a group of travelers with divine swiftness, easing their journey. (R1 travel spell) |
-| Safe Passage | 3 | You invoke divine protection for a journey, warding travelers against the hazards of the road. (Fills R3 travel gap) |
-| Righteous Verdict | 4 | You pronounce divine judgement upon a creature, and the cosmos answers. The weight of their transgressions bears down upon them. (Fills R4 law gap) |
-| Binding Oath | 2 | You invoke divine law to seal an oath between two or more willing parties. Breaking the oath carries supernatural consequences. (R2 law spell — supernatural oath enforcement) |
-| Sanctuary Sphere | 5 | You create a shimmering dome of divine peace that shields all within from harm and hostility. (R5 defensive capstone) |
-| Diplomatic Immunity | 4 | You invoke the divine right of the peacekeeper, surrounding a creature with an aura of inviolable sanctity. Those who have not been wronged by the protected creature find themselves unable to raise a hand against them. (R4 protection/law capstone — divine diplomatic immunity) |
-| Pilgrim's Gate | 4 | You consecrate a doorway, archway, or natural passage with divine travel magic. Golden light fills the threshold, and those who step through emerge at a distant destination you have previously consecrated with a matching gate. (R4 travel capstone — replaces the previously proposed "Pilgrimage" (which was essentially "bigger Safe Passage")) |
-| Edict of Peace | 5 | You speak with the voice of divine law, and the command resonates through every creature's soul — "CEASE." Weapons lower, fists unclench, and a profound stillness descends. Those who defy the edict suffer the cosmos's wrath. (R5 law ultimate) |
-| Sacred Covenant | 5 | You perform an elaborate consecration ritual, inscribing divine law into the very stone and air of a location. The space shimmers with faint golden light, and all who enter feel the weight of cosmic truth pressing upon their tongues and hearts. (R5 law ultimate — permanent consecrated ground) |
-| Shared Burden | 0 | You press your palm against an injured ally and draw their pain into yourself, bearing the weight of their suffering so they may carry on. (R0 selflessness cantrip) |
-| Compel Truth | 1 | You speak a word of binding law, and divine authority wraps around the target's tongue. The truth becomes the only speech their lips can form. (R1 law spell bridging Binding Word (R0, 2 statements) and Binding Oath (R2, ritual oath enforcement)) |
-| Guardian's Sacrifice | 2 | You invoke a divine oath of protection, marking yourself as the shield for your companions. A faint golden light settles over you — an outward sign of your willingness to suffer for others. (R2 selflessness spell) |
-| Wayfarer's Shield | 2 | You invoke the traveler's blessing, and the wind softens, the rain parts, and the road seems to smooth itself before your companions' feet. (R2 travel spell bridging Swift Journey (R1, speed buff) and Safe Passage (R3, full journey protection)) |
-| Arbiter's Circle | 3 | You plant your feet and speak a word of divine law. A circle of faint golden light expands outward from where you stand, and all within feel the weight of cosmic truth pressing upon their tongues. (R3 law spell — area truth enforcement) |
-| Tranquil Command | 4 | You fix your gaze upon a creature and speak a word of absolute serenity. The divine command resonates through their spirit, extinguishing fury like water drowning a flame. (R4 calmness capstone for single-target use) |
-| Redemptive Sacrifice | 4 | You pour your own life force into a fallen companion, divine light flowing from your hands into their broken body. The cost is terrible — but the faithful do not hesitate. (R4 selflessness spell — revival through self-sacrifice) |
-| Undying Devotion | 5 | You invoke the supreme rite of the selfless guardian, binding your life force to your companions with threads of golden light. As long as your heart beats, theirs will not stop. (R5 selflessness ultimate — the supreme expression of self-sacrifice) |
-| The Pilgrim's Road | 5 | You walk a path and consecrate every step with divine authority. Behind you, the road transforms — stones smooth, thorns part, and a faint golden light shimmers along the trail. The road of the faithful opens for all who walk it in peace. (R5 travel ultimate — the supreme expression of safe passage) |
+> **Law boundary note**: Light publishes *Zone of Truth*, and the truth-revealing/truth-compelling space is Light's territory. Peace's law trait is therefore built here as **oaths, covenants, and bindings on behavior** — constraining what creatures may do, never extracting what is true. The old truth-compulsion seeds (Binding Word, Compel Truth, Arbiter's Circle) were cut for this reason.
+
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Shared Burden | 0 | Support / standalone | Touch cantrip of selflessness: take one minor condition (briefly dazed, briefly frightened, or similar) from an ally onto yourself, suffering it for its remaining duration. Not healing (principle 11 keeps R0 free of HP restoration — Tranquil Mind already covers the R0 heal). Condition-transfer is Peace's selflessness identity in miniature and cleans setup states off allies. |
+| Wayfinder's Mark | 0 | Utility / setup | Leave a subtle blessed mark on a place or waypost (travel trait): creatures you designate gain +1 boon on navigation rolls toward it, and you always know the direction to your own marks. Assist, never bypass (principle 1). Long-game setup: marks are the anchor points Pilgrim's Gate (R4) consecrates into destinations. |
+| Oathmark | 0 | Utility / setup | Witness an oath spoken in your presence and seal it with a visible blessed mark (law trait): you know the moment the marked oath is broken, and the breaker knows they are known. Emits the diegetic *oathbreaker* state that Righteous Verdict (R3) and Sacred Covenant (R5) collect on. Bounded GM parameters: the mark tracks the oath's literal wording, nothing more. |
+| Absorb Harm | 1 | Defense / standalone | The standardized R1 Quick Action reactive (principle 4: +2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (selflessness): you may instead cast it when an ally in close range is attacked, and if the attack still hits you take half of the damage in their place. Peace's reactive rung in the redirect engine. |
+| Swift Journey | 1 | Utility / standalone | Bless a traveling group (travel trait): reduced travel Fatigue risk and a boon on travel-pace rolls for the day. Assists the journey game mode, never skips it (principle 1); respects the Fatigue ceiling (principle 17). |
+| Peace Bond | 1 | Control / setup | Speak a word of law over a creature's weapons: their arms grow heavy with the weight of the bond, and each attack they make while it holds deals reduced damage and feeds back a small psychic sting (deterrent damage identity). Resist-rolled, save-ends. Law as constraint on violence, not on truth. Softens the attacker the redirect engine must absorb. |
+| Steady Hands | 2 | Support / payoff | Ally-facing payoff, the school's declared top gap ("safe → hits harder"): an ally currently under one of your protective effects (Aura of Sanctuary, Dome, Harmonic Link, Martyrdom's Blessing) strikes from perfect calm — their next attack gains +1 boon and cannot be interrupted. Dead with no ward standing (hard cold-cast deficit). Turns Peace from pure battery into a force-multiplier. |
+| Shield of the Meek | 2 | Defense / payoff | When an enemy damages an ally warded by you, the ward flares: the attacker takes psychic backlash (ignore AV) and suffers +1 bane on their next attack against that ally. Striking into sanctuary visibly costs something — deterrence as Peace's damage identity. Payoff spends the *protected* state the school's setups emit. |
+| Binding Oath | 2 | Utility / setup | Ritual sealing an oath between willing parties (law trait): the breaker suffers a defined, bounded consequence (psychic backlash and the *oathbreaker* state Oathmark tracks, never death or compulsion). Worldbuilding lever per principle 33: it constrains, it cannot force answers or actions, so intrigue survives. |
+| Wayfarer's Shield | 2 | Defense / standalone | Travel ward for a group: protection against weather and environmental hazards on the road (heat, cold, rain, sandstorm exposure), no combat value. Bridges Swift Journey (R1 pace) and Safe Passage (R3 full journey ward). |
+| Binding Calm | 3 | Control / extender | The convert rung the school lacks: deepen pacification on a creature already *dazed* or *charmed* by a Peace spell — they are briefly *stunned* as the calm settles into stillness, then remain *dazed* after. Resist-rolled, tier-capped (cap fixed, never Heightened per principle 31), castable only against an existing calm (hard cold-cast deficit). |
+| Safe Passage | 3 | Utility / standalone | Ritual journey ward (travel trait): boons on travel rolls, eased navigation, and hostile weather softened along one journey leg. Assists overland travel without emptying the road — encounters still happen, the travelers are just harder to break. |
+| Righteous Verdict | 3 | Control / payoff | Pronounce judgement on one creature (tier up to your Mysticism) that has broken an oath you witnessed (Oathmark, Binding Oath) or harmed a creature under your protection this scene: psychic backlash and they are dazed as the weight of the covenant presses down. Near worthless cold (law payoff, not a nuke — Peace stays weak in Offense); the setups make it land. |
+| Pilgrim's Gate | 4 | Utility / payoff | Consecrate a threshold as one end of a paired gate; stepping through emerges at another consecrated gate or a Wayfinder's Mark you have blessed for the purpose. R4 per the travel-ranks-higher rule (principle 39, matching Teleportation Circle). Ritual plus material cost keeps transit rare and temple-gated (principle 33). Cashes the R0 mark setups. |
+| Redemptive Sacrifice | 4 | Healing / payoff | Selflessness capstone of the redirect engine: pull a dying ally back from death's edge by pouring your own life in — they are stabilized and healed on the single-target chassis, and you take a matching cost in HP and a level of Fatigue or a Wound. Wound recovery only at this rank or above (principle 13). Not resurrection — that framework belongs to Life; this prevents the death instead. |
+| Sanctuary Sphere | 5 | Defense / extender | Capstone of the Aura → Dome escalation (prolong/expand extender): a wide standing sanctuary for a medium duration in which allies have cover, attackers must repeatedly save to press attacks into it, and violence inside feeds back psychic backlash. Escapable and enterable, concentration-gated, never an impregnable bubble (principle 35 counterplay applies to its warding effects). Material cost 5,000+ coins. |
+| Sacred Covenant | 5 | Utility / setup | Consecration ritual inscribing divine law into a place for a very long duration (never permanent, per R5 limits): oaths sworn within are sealed as by Binding Oath, violence within provokes save-or-dazed backlash, and the caster knows when the covenant ground is defiled. A temple rite, not a courtroom gadget — GM-facing framing note required (principle 33). Material cost 5,000+ coins. |
+| Undying Devotion | 5 | Defense / payoff | Selflessness pinnacle: link yourself to allies in range (spread extender on the Harmonic Link engine); while you concentrate, the first time each linked ally would drop to 0 HP they hold at 1 and you take heavy backlash damage instead. Each absorbed death bites the caster hard enough that a few will fell them — a countdown, not an immortality field. Material cost 5,000+ coins. |
+| The Pilgrim's Road | 5 | Utility / standalone | Travel pinnacle: a consecrated road-blessing (hour-long ritual, material cost 5,000+ coins) that carries a caravan-scale group swiftly and shielded along a real route to a place you have visited — faster pace, weather warded, and violence on the road provokes the pacifying save. Follows terrain, never a portal; encounters remain possible. |
 
 ## Cross-School Spell Sharing
 

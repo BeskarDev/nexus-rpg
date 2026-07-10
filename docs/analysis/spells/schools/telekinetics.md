@@ -16,12 +16,12 @@
 1. Telekinetics excels at battlefield repositioning — push, pull, levitate, drop
 2. Forced movement is the primary control tool (different from conditions)
 3. Blast damage (½ AV ignore) fits kinetic shockwave effects
-4. **Known gaps**: no published R1 Quick Action reactive spell, thin R3+ coverage (only incomplete spells above R2) — concept seeds exist for all slots but none are designed
+4. **Known gaps**: no published R1 Quick Action reactive spell, thin R3+ coverage (R3: 3, R4: 1, R5: 0 published), and near-zero in-school payoff for the school's own setups
 5. Complete levitate/crush/gravity chains from R0 cantrips through R5 capstones
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 **Setup levers** — states Telekinetics emits: **position itself** — *prone* (slams and drops), *pushed/pulled* into hazards, walls, or ally reach, *clusters* (dragging enemies together with Gravity Orb's pull), and *restrained/grappled* (kinetic holds, Stasis). The world is the weapon: every ledge, campfire, and spiked barricade the table describes is a payoff surface for its forced movement.
 
@@ -33,12 +33,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 **Party interlock**: **emits** *prone*, *clusters*, *restrained*, and delivery (throwing an enemy to the martial's feet, or holding one still for the assassin) — the premier battery school, feeding every damage-dealer at the table. **wants** damage payoffs it cannot supply: an Evocation AoE for its clusters, a martial's heavy blow for its prone and held targets. Cross-player line: Telekinetics pins the ogre *prone* with a kinetic hold and the fighter's greataxe falls on a target that cannot dodge.
 
-**Synergy gaps**: overwhelming setup, near-zero **in-school payoff** — the discipline can arrange the battlefield perfectly and then has little of its own to spend it on (its crush damage is modest). One honest mid-rank payoff against *prone/restrained* targets would close the loop without stealing Evocation's role. Extenders beyond re-casting are also thin.
-
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Grinding Weight** (R2, payoff) — slam crushing force down onto a *prone* or *restrained* creature: physical damage and they stay down (standing up costs their full Movement this turn). Near-useless against a standing target — the pin is the price of the power.
-- **Relentless Grip** (R2, extender/prolong) — your kinetic hold tightens on a creature you have *grappled* or *restrained* with a spell: the hold persists without concentration for a short duration and drags the target a close distance each of your turns. Frees the caster's concentration for the payoff while the setup holds.
-- **Meteoric Throw** (R3, payoff/convert) — hurl a creature you are levitating or holding at another enemy: both take physical damage and fall *prone*. Converts the school's signature hold into its own finisher, damage scaled by the thrown body's Size.
+**Synergy gaps**: overwhelming setup, near-zero **in-school payoff** — the discipline can arrange the battlefield perfectly and then has little of its own to spend it on (its crush damage is modest). Extenders beyond re-casting are also thin. The seed table below carries these design targets: *Grinding Weight* (R2) and *Kinetic Implosion* (R3) as priced payoffs against *prone/held* targets, *Meteoric Throw* (R3) converting the signature hold into a finisher, and *Relentless Grip* (R2) as the missing prolong-extender.
 
 ## Current Spell Inventory (19 published spells)
 
@@ -48,54 +43,54 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 |------|-------|--------|
 | 0 | 3 | Kinetic Pull, Kinetic Push, Weak Telekinesis |
 | 1 | 7 | Feather Fall, Gravity Orb, Grease, Reflective Barrier, Shockwave, Telekinetic Crush, Telekinetic Volley |
-| 2 | 6 | Haste, Knock, Levitation, Orbiting Shards (incomplete), Stasis, Strong Telekinesis |
-| 3 | 2 | Distortion Field (incomplete), Part Stone |
-| 4 | 1 | Invert Gravity (incomplete) |
+| 2 | 5 | Haste, Knock, Levitation, Stasis, Strong Telekinesis |
+| 3 | 3 | Distortion Field, Orbiting Shards, Part Stone |
+| 4 | 1 | Reverse Gravity (published R5 Heighten) |
 | 5 | 0 | — |
 
 ### Trait × Rank Coverage Matrix
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| move | Weak Telekinesis | Telekinetic Volley | Strong Telekinesis | Kinetic Barrage† | Kinetic Catapult† | Absolute Telekinesis† |
-| repel | Kinetic Push | Shockwave | Kinetic Wave† | Distortion Field* / Force Wall† | Repulsion Field† | Annihilating Wave† |
-| levitate | Minor Levitation† | Kinetic Lift† | Levitation | Aerial Grasp† | Telekinetic Flight† | Gravity Reversal† |
-| crush | Pressure Grip† | Telekinetic Crush | Crushing Sphere† | Kinetic Implosion† | Force Cage† | Absolute Telekinesis† |
-| gravity | Gravity Shift† | Gravity Orb | Stasis | Gravity Well† | Invert Gravity* / Telekinetic Storm† | Gravity Reversal† |
+| move | Weak Telekinesis | Telekinetic Volley | Strong Telekinesis | Orbiting Shards, Meteoric Throw† | Telekinetic Storm† | — (Strong Telekinesis Heighten) |
+| repel | Kinetic Push | Shockwave, Kinetic Deflection† | — (Shockwave Heighten) | Distortion Field | Repulsion Field† | Annihilating Wave† |
+| levitate | Weak Telekinesis | Feather Fall | Levitation | Aerial Grasp† | Telekinetic Flight† | — |
+| crush | — | Telekinetic Crush | Grinding Weight†, Relentless Grip† | Kinetic Implosion† | — | Annihilating Wave† |
+| gravity | Gravity Shift† | Gravity Orb | Stasis | — (Gravity Orb Heighten) | Reverse Gravity | Reverse Gravity (Heighten) |
 
-*\* = incomplete existing  † = proposed*
+*† = proposed seed (undesigned). Ranks follow the current published file: Orbiting Shards and Distortion Field are complete at R3, and Reverse Gravity is complete at R4 with a published R5 Heighten. Knock, Grease, Haste, and Part Stone sit outside the trait rows as utility.*
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+**Coverage**: 27/30 trait×rank slots hold a published spell, a seed, or a proposed Heighten extension (see below). Honest gaps: crush R0, crush R4, levitate R5 — an honest empty cell beats a filler seed. Only published spells count as real coverage; proposed entries are undesigned seeds (principle 19).
 
-**All prior critical gaps resolved.** Every trait has complete R0–R5 progression. Minimum 3 spells per rank met (R0: 6, R1: 8, R2: 6, R3: 6, R4: 6, R5: 3).
+**Critical gaps**: the missing R1 Quick Action reactive (Kinetic Deflection†) and the missing in-school payoff (Grinding Weight†, Kinetic Implosion†, Meteoric Throw†) are seeded. Published coverage above R2 remains thin (R3: 3, R4: 1, R5: 0), so the R3+ seeds and Heighten extensions are the production priority.
+
+## Proposed Spell Changes (Heighten Extensions)
+
+Per principle 3, "bigger version of X" concepts are Heighten notes on published spells, not new seeds:
+
+- **Shockwave (R1)**: add (Rank 2) and (Rank 3) Heighten lines scaling damage and push distance. Covers the R2 repel AoE slot.
+- **Telekinetic Volley (R1)**: add (Rank 2) and (Rank 3) Heighten lines for more or heavier hurled objects. Covers the mid-rank object-barrage concept.
+- **Gravity Orb (R1)**: add (Rank 2) and (Rank 3) Heighten lines growing the orb's area, duration, and the creature Size it can grapple. Covers the R3 gravity-pull zone.
+- **Strong Telekinesis (R2)**: add (Rank 3) through (Rank 5) Heighten lines scaling object Size and load. Covers the top-end "battlefield authority" concept.
+- **Reverse Gravity (R4)** already carries its published R5 Heighten — the R5 gravity capstone exists and needs no seed.
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Kinetic Deflection | 1 | You telekinetically deflect an incoming projectile, redirecting its force. (R1 Quick Action reactive defense) |
-| Force Shield | 1 | You maintain a shimmering barrier of telekinetic force around yourself. (Defensive spell for Telekinetics — force barrier fits the identity) |
-| Minor Levitation | 0 | You lift a small object into the air with a thought, holding it aloft briefly. (Fills R0 levitate gap) |
-| Pressure Grip | 0 | You close your fist and telekinetic force crushes around a target. (R0 crush cantrip) |
-| Gravity Shift | 0 | You alter the pull of gravity on a creature or object, making it briefly lighter or heavier. (R0 gravity cantrip) |
-| Gravity Reversal | 5 | You invert gravity in a large area, causing everything within to fall upward. (R5 capstone — area control through gravity manipulation) |
-| Kinetic Barrage | 3 | You seize multiple objects in the environment — stones, debris, weapons — and hurl them at your enemies in a devastating volley. (Fills R3 move/repel gap) |
-| Crushing Sphere | 2 | You encase a creature in a sphere of concentrated telekinetic force that slowly crushes inward. (Fills R2 crush gap) |
-| Force Wall | 3 | You thrust your hands outward and an invisible wall of pure telekinetic force materializes, blocking passage and deflecting attacks. (R3 defensive telekinetic barrier) |
-| Telekinetic Storm | 4 | You seize every loose object in the area — stones, debris, weapons, furniture — and hurl them in a devastating whirlwind of telekinetic fury. (R4 AoE damage with battlefield control) |
-| Absolute Telekinesis | 5 | You extend your will across the battlefield with absolute authority over matter and motion — lifting gates, hurling boulders, pinning warriors in place, reshaping the physical world through sheer mental force. (R5 utility/offense capstone — the pinnacle of telekinetic power) |
-| Kinetic Lift | 1 | You extend your will beneath a creature, buoying them on an invisible cushion of telekinetic force. They drift upward, floating just above the ground. (R1 levitate utility) |
-| Kinetic Wave | 2 | You thrust both arms outward and a concussive wave of telekinetic force erupts from your body, slamming into everything nearby. (R2 repel AoE. Half single-target scaling (+3/+6/+9)) |
-| Aerial Grasp | 3 | You seize an enemy with telekinetic force and wrench them skyward, suspending them helplessly in mid-air where they dangle like a puppet on invisible strings. (R3 levitate control) |
-| Kinetic Implosion | 3 | You clench your fist and the air itself contracts — an invisible crushing force collapses inward on a point, dragging everything toward the center and grinding it together. (R3 crush AoE. Half single-target scaling (+4/+8/+12)) |
-| Gravity Well | 3 | You warp gravity around a point, creating a relentless downward pull that drags everything inward like a whirlpool in the earth itself. (R3 gravity control) |
-| Kinetic Catapult | 4 | You seize a creature or massive object with overwhelming telekinetic force and hurl it across the battlefield at devastating speed, turning matter into a weapon. (R4 move offense) |
-| Telekinetic Flight | 4 | You wrap yourself or an ally in a cocoon of sustained telekinetic force, granting true flight — soaring through the air by will alone. (R4 levitate utility capstone) |
-| Force Cage | 4 | You snap your fingers and bars of pure telekinetic force materialize around a creature, forming an inescapable cage that slowly constricts inward. (R4 crush control) |
-| Repulsion Field | 4 | You project an invisible dome of outward-pressing telekinetic force that repels everything that approaches, holding enemies at bay with sheer kinetic pressure. (R4 repel defense) |
-| Annihilating Wave | 5 | You channel an overwhelming surge of telekinetic force through an enchanted lodestone, unleashing a cataclysmic wave of pure kinetic devastation that flattens everything in its path — shattering walls, uprooting trees, and hurling creatures like ragdolls. (R5 repel capstone) |
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Gravity Shift | 0 | Control / setup | Cantrip that briefly makes one creature's gravity heavier or lighter (gravity trait). Heavier: their next roll to resist forced movement or being knocked *prone* suffers +1 bane (feeds every push and slam in the school). Lighter: they count as one Size smaller for the school's lift and throw effects (feeds Strong Telekinesis and Meteoric Throw). Pure setup, no damage. |
+| Kinetic Deflection | 1 | Defense / standalone | The standardized R1 Quick Action reactive (+2 to Dodge or Parry against the triggering attack, no SL scaling). School secondary (repel trait): if the triggering attack was a thrown weapon or projectile and it misses, you redirect it at another creature in short range with a modest flat damage rider. |
+| Grinding Weight | 2 | Offense / payoff | Concentrated crushing pressure on one creature (crush and gravity traits): modest damage cold, but heavy bonus damage against a target that is *prone*, *restrained*, or *grappled*. The school's missing in-school payoff — spends the *prone/held* states its own pushes, Stasis, and Gravity Orb emit. Cold-cast deficit is the design center. |
+| Relentless Grip | 2 | Control / extender | Kinetic hold that tightens instead of striking (crush trait): a target currently *grappled* or *restrained* by any effect has that state prolonged and suffers +1 bane on rolls to escape it. The missing prolong-extender — converts the pushed → prone → restrained escalation into a lasting pin for allies to exploit. Does nothing to a free target. |
+| Meteoric Throw | 3 | Offense / payoff | Hurl a creature you or an ally holds *restrained* or *grappled* (move trait) at another target: both take blast damage and fall *prone*. Converts the school's signature hold (Stasis, Gravity Orb's grapple) into a finisher and re-emits prone for the martials. Castable only on a held target — hard cold-cast deficit. |
+| Kinetic Implosion | 3 | Offense / payoff | Crushing force collapses inward on a point (crush and gravity traits): creatures in the area are dragged toward the center and take damage on the half single-target AoE chassis, with bonus damage against *prone* or *restrained* targets. The AoE payoff for Gravity Orb's clusters — cold on a spread field, brutal on the knot the school built. |
+| Aerial Grasp | 3 | Control / setup | Wrench one creature skyward (levitate trait): *restrained* in mid-air while you concentrate, and when the spell ends or you release them they take falling damage for the height. Sets up Grinding Weight and Meteoric Throw (target is held), and the drop is its own delayed payoff. Tier-capped by Size like Stasis. |
+| Telekinetic Storm | 4 | Offense / setup | Whirlwind of seized debris in an area (move and repel traits): blast damage to creatures in the zone and each is pushed and knocked *prone* on a failed save vs. your Resist. The school's first real AoE damage, still setup-heavy — the prone field it leaves is the party's payoff surface. Flat recurring zone damage per principle 44 if made a lasting zone. |
+| Telekinetic Flight | 4 | Utility / standalone | Sustained true flight for yourself or a touched ally (levitate trait), enchant duration. The levitate chain's utility capstone in the school's Excels role. Rank justified against Levitation (R2, hover only) — this is the D&D Fly-and-above tier with full aerial mobility. |
+| Repulsion Field | 4 | Defense / setup | A dome of outward kinetic pressure around you (repel trait): enemies treat the dome as difficult terrain, must save vs. your Resist to enter, and a failed save pushes them back and can leave them *prone*. Denies melee and manufactures the forced-movement states the party spends. Concentrate. |
+| Annihilating Wave | 5 | Offense / payoff | The repel and crush capstone: a devastating kinetic wave in a line or cone — heavy blast damage, destroys mundane structures and cover, pushes creatures and knocks them *prone*, with bonus damage against targets that strike a wall or obstacle (the collision payoff writ large). Material cost 5,000+ coins. Mortal pinnacle: Delayed-Blast-Fireball tier, not Meteor Swarm. |
 
 ## Cross-School Spell Sharing
 
@@ -110,28 +105,28 @@ No shared spells are recommended for this discipline.
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Move chain**: Weak Telekinesis (R0) → Telekinetic Volley (R1) → Strong Telekinesis (R2) → Kinetic Barrage (R3) → Kinetic Catapult (R4) → Absolute Telekinesis (R5)
-2. **Repel chain**: Kinetic Push (R0) → Shockwave (R1) → Kinetic Wave (R2) → Distortion Field (R3\*)/Force Wall (R3) → Repulsion Field (R4) → Annihilating Wave (R5)
-3. **Levitate chain**: Minor Levitation (R0) → Kinetic Lift (R1) → Levitation (R2) → Aerial Grasp (R3) → Telekinetic Flight (R4) → Gravity Reversal (R5)
-4. **Crush chain**: Pressure Grip (R0) → Telekinetic Crush (R1) → Crushing Sphere (R2) → Kinetic Implosion (R3) → Force Cage (R4) → Absolute Telekinesis (R5)
-5. **Gravity chain**: Gravity Shift (R0) → Gravity Orb (R1) → Stasis (R2) → Gravity Well (R3) → Invert Gravity (R4\*)/Telekinetic Storm (R4) → Gravity Reversal (R5)
+(✨ = undesigned seed; Heighten extensions cover several upper slots — see Proposed Spell Changes)
+1. **Move chain**: Weak Telekinesis (R0) → Telekinetic Volley (R1) → Strong Telekinesis (R2) → Orbiting Shards / ✨ Meteoric Throw (R3) → ✨ Telekinetic Storm (R4) → Strong Telekinesis Heighten (R5)
+2. **Repel chain**: Kinetic Push (R0) → Shockwave / ✨ Kinetic Deflection (R1) → Shockwave Heighten (R2) → Distortion Field (R3) → ✨ Repulsion Field (R4) → ✨ Annihilating Wave (R5)
+3. **Levitate chain**: Weak Telekinesis (R0) → Feather Fall (R1) → Levitation (R2) → ✨ Aerial Grasp (R3) → ✨ Telekinetic Flight (R4) → honest gap (R5)
+4. **Crush chain**: honest gap (R0) → Telekinetic Crush (R1) → ✨ Grinding Weight / ✨ Relentless Grip (R2) → ✨ Kinetic Implosion (R3) → honest gap (R4) → ✨ Annihilating Wave (R5)
+5. **Gravity chain**: ✨ Gravity Shift (R0) → Gravity Orb (R1) → Stasis (R2) → Gravity Orb Heighten (R3) → Reverse Gravity (R4) → Reverse Gravity Heighten (R5)
 
 ### Setup + Payoff Combos
-- ✅ **Push into hazard → bonus damage**: Forced movement into environmental hazards or Force Wall is a core tactical loop
-- ✅ **Prone → follow-up attacks**: Kinetic Push/Kinetic Wave/Telekinetic Storm knock prone → melee allies exploit prone targets
-- ✅ **Force Wall + Push/Implosion**: Create wall, then push enemies into it — or use Kinetic Implosion to drag enemies into the wall for bonus damage
-- ✅ **Crush chain escalation**: Pressure Grip (R0) → Crushing Sphere (R2) → Force Cage (R4) → Absolute Telekinesis (R5) — escalating restraint + damage
-- ✅ **Levitate → slam/drop**: Minor Levitation (R0) → Kinetic Lift (R1) → Aerial Grasp (R3, slam payoff) → Telekinetic Flight (R4) → Gravity Reversal (R5) — complete chain with mid-rank payoffs
-- ✅ **Gravity Well + AoE**: Gravity Well (R3) pulls enemies to center → Kinetic Implosion (R3) or Telekinetic Storm (R4) damages clustered targets
-- ✅ **Catapult combos**: Kinetic Catapult (R4) hurls creatures into Force Wall or allies' reach for collision + follow-up damage
-- ✅ **Repulsion Field + ranged allies**: Repulsion Field (R4) denies melee approach → ranged allies exploit helpless enemies at range
+(✨ = undesigned seed)
+- ✅ **Push into hazard → damage**: cantrip pushes and pulls into fires, ledges, and Distortion Field's zone — the core published loop, damage comes from where the target ends up
+- ✅ **Prone / held → martial exploit**: Shockwave and Stasis feed the party's damage-dealers; the premier battery-school interlock
+- ✨ **Held → in-school payoff**: Stasis / Gravity Orb / ✨ Aerial Grasp hold the target → ✨ Grinding Weight crushes the pinned body, ✨ Meteoric Throw hurls it — the missing in-school spend, currently seeds only
+- ✨ **Cluster → AoE**: Gravity Orb drags the pack together → ✨ Kinetic Implosion or ✨ Telekinetic Storm punishes the knot (today the payoff must come from Evocation or the martials)
+- ✨ **Escalation extender**: pushed → *prone* → *restrained*, prolonged by ✨ Relentless Grip while allies line up
+- ✨ **Levitate → drop**: ✨ Aerial Grasp suspends → release converts height into falling damage; Reverse Gravity is the published area version
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Kinetic Deflection — standardized reactive defense (+2 Dodge/Parry, projectile redirection secondary)
-- [x] Defensive options: Reflective Barrier (R1), Force Shield (R1), Kinetic Deflection (R1), Force Wall (R3), Repulsion Field (R4) — defensive suite across ranks
-- [x] Utility: Weak/Strong Telekinesis (R0/R2), Minor Levitation (R0), Gravity Shift (R0), Kinetic Lift (R1), Telekinetic Flight (R4), Absolute Telekinesis (R5)
-- [x] Damage across ranks: R0–R5 covered — Kinetic Wave (R2), Kinetic Barrage/Kinetic Implosion (R3), Telekinetic Storm/Kinetic Catapult (R4), Annihilating Wave/Absolute Telekinesis (R5)
-- [x] Repeating conditions: Prone, restrained, pushed/pulled — consistent forced movement identity
-- [x] Setup+payoff: Force Wall + Push combo, Crush chain escalation, Gravity Well + AoE clustering, Levitate → slam/drop, Catapult collision
-- [x] **3 spells per rank minimum**: R0: 6, R1: 8, R2: 6, R3: 6, R4: 6, R5: 3 — all ranks meet minimum
-- [x] **100% trait × rank coverage**: All 30 slots filled — every trait has complete R0–R5 progression
+- [ ] R1 Quick Action: ✨ Kinetic Deflection seeded — standardized reactive defense (+2 Dodge/Parry, projectile redirect secondary), not yet designed
+- [x] Defensive options: Reflective Barrier (R1), Feather Fall (R1), Distortion Field (R3) published; ✨ Repulsion Field (R4) seeded
+- [x] Utility: Weak/Strong Telekinesis, Grease, Knock, Levitation, Part Stone published — the school's Excels role is well covered; ✨ Telekinetic Flight extends it to R4
+- [ ] Damage across ranks: thin above R1 by design (setup school), but the in-school payoffs (✨ Grinding Weight R2, ✨ Kinetic Implosion R3, ✨ Meteoric Throw R3, ✨ Annihilating Wave R5) are all seeds — top production priority
+- [x] Repeating conditions: prone, restrained, pushed/pulled — consistent forced-movement identity across published spells and seeds
+- [ ] Setup+payoff: published setups are rich; in-school payoff loop exists only as seeds (see combos above)
+- [x] **3 spells per rank minimum (published)**: R0: 3, R1: 7, R2: 5, R3: 3 — met through R3; R4: 1, R5: 0 need the seeded buildout
+- [ ] **Trait × rank coverage**: 27/30 slots hold a published spell, seed, or Heighten extension; honest gaps at crush R0, crush R4, levitate R5

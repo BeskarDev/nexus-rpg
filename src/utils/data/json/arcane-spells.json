@@ -183,8 +183,8 @@
         "target": "vs. Dodge",
         "range": "Long",
         "properties": "-",
-        "effect": "<em>A beam of any one elemental damage type. Caster can choose which, secondary effect depends on chosen type</em>",
-        "heightened": "<strong>(Rank 3)</strong> Increase damage by +2/+4/+6 and enhance the secondary effect based on chosen type."
+        "effect": "You split raw elemental energy through a prism of will and loose a beam that shimmers with two colors at once. When casting the spell, choose two damage types among acid, fire, frost, lightning, and poison. The beam's damage counts as both chosen types. The target only applies resistance against this damage if they are resistant to both chosen types, and applies weakness if they are weak to either.<br/><strong>Weak.</strong> Deal +6 damage of the chosen types.<br/><strong>Strong.</strong> Deal +12 damage of the chosen types.<br/><strong>Critical.</strong> Deal +18 damage of the chosen types. The target also suffers the condition associated with one of the chosen types (acid: ignore 1/2 AV on this damage, fire: burning (2), frost: briefly slowed, lightning: briefly staggered, poison: briefly poisoned).",
+        "heightened": "<strong>(Rank 3)</strong> Deal +8/16/24 damage instead.<br/><strong>(Rank 4)</strong> Deal +10/20/30 damage instead.<br/><strong>(Rank 5)</strong> Deal +12/24/36 damage instead."
     },
     {
         "name": "Black Flame Bolt",
@@ -327,7 +327,7 @@
         "range": "Medium",
         "properties": "concentrate, illusory",
         "effect": "You summon the image of an object, creature, or other visible phenomenon, which can be large or smaller. I appears absolutely real, mimicking sounds, smells, movements, and even temperature (tough it won\u2019t deal actual damage).<br/>On a success, your chosen illusion appears at the target location in range.<br/>While you are in range of the illusion, you can use your Quick Action to let the illusion change in any way or move within range. It will follow your instructions as long as it takes, so it can mimic walking to another location or having a conversation with another creature.<br/>Attempts to physically interact with the illusion automatically reveal it to be an illusion. The illusion lasts for up to a short duration, even if you move out of range. You can immediately recast this spell as an Action at the end of the duration to maintain the illusion for a longer time.",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 3)</strong> The illusion can be of huge or smaller size and lasts up to a medium duration instead.<br/><strong>(Rank 4)</strong> The illusion can fill a close area with several moving, interacting elements, such as a market stall with a vendor or a campfire ringed by sleeping soldiers, and lasts up to a medium duration instead."
     },
     {
         "name": "Misdirection",
@@ -898,7 +898,7 @@
         "target": "Special",
         "range": "Short",
         "properties": "-",
-        "effect": "You hold out your hand and grasp at an object in range, slowly levitating it it into the air. The object can be of small or tiny size and take up to your encumbrance limit in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it\u2019s current location.<br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range.  On a hit, the object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it\u2019s properties and effects in addition to the spell effect.",
+        "effect": "You hold out your hand and grasp at an object in range, slowly levitating it it into the air. The object can be of small or tiny size and take up to your carrying capacity in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it\u2019s current location.<br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range.  On a hit, the object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it\u2019s properties and effects in addition to the spell effect.",
         "heightened": "-"
     },
     {
@@ -910,7 +910,7 @@
         "range": "Medium",
         "properties": "concentrate",
         "effect": "You create a tiny orb of pure force at the target location, pulling everything around it towards it. This spell targets every medium or smaller sized creature in close range of the orb.<br/><strong>Weak.</strong> Each target is briefly slowed.<br/><strong>Strong.</strong> Each target is briefly grappled by the orb.<br/><strong>Critical.</strong> Each target is briefly grappled and restrained by orb.<br/>The close area around the orb is considered difficult terrain. When any medium or smaller sized creature first enters the orb\u2018s range or starts it\u2018s turn there, they have to roll Strength + Athletics. On a failure, they are briefly grappled and restrained by the orb.<br/>The orb lasts for a short duration.",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 2)</strong> The orb affects large or smaller creatures and lasts a medium duration instead.<br/><strong>(Rank 3)</strong> The orb affects large or smaller creatures and lasts a medium duration, and its pull extends in short range of it instead: the whole area is difficult terrain, and creatures entering it or starting their turn there roll the entry save."
     },
     {
         "name": "Reflective Barrier",
@@ -932,7 +932,7 @@
         "range": "Close",
         "properties": "-",
         "effect": "You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone.",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +6/+12/+18 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you."
     },
     {
         "name": "Telekinetic Crush",
@@ -954,7 +954,7 @@
         "range": "Short",
         "properties": "-",
         "effect": "You telekinetically take hold of multiple small items. Choose up to three tiny objects, such as ammo, stones, or household objects taking up 2 or less load each. The objects can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the objects towards a target location.<br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the objects in a cluster up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the objects until your next turn. During your next turn, you can cast this spell again to move the objects further. On a failure, you drop the objects at their current location.<br/><strong>Throw.</strong> Once per object, roll vs. Dodge against a target in range. You can choose the same or different targets for each thrown object. On a hit, each object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it\u2019s properties and effects in addition to the spell effect.",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 2)</strong> Choose up to four objects of up to 4 load each instead. Each thrown object deals 4 weapon damage.<br/><strong>(Rank 3)</strong> Choose up to five objects of up to 6 load each instead. Each thrown object deals 6 weapon damage."
     },
     {
         "name": "Levitation",
@@ -997,8 +997,8 @@
         "target": "Special",
         "range": "Medium",
         "properties": "-",
-        "effect": "You hold out your hand and grasp at a large object in range, slowly levitating it it into the air. The object can be of large or smaller size and take up to 10 x your encumbrance limit in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><strong>Move.</strong> Roll vs. very hard difficulty (12). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it\u2019s current location.<br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range. On a hit, the object deals 6 weapon damage in addition to your spell base damage. If you throw a weapon, apply it\u2019s properties and effects in addition to the spell effect.",
-        "heightened": "-"
+        "effect": "You hold out your hand and grasp at a large object in range, slowly levitating it it into the air. The object can be of large or smaller size and take up to 10 x your carrying capacity in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><strong>Move.</strong> Roll vs. very hard difficulty (12). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it\u2019s current location.<br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range. On a hit, the object deals 6 weapon damage in addition to your spell base damage. If you throw a weapon, apply it\u2019s properties and effects in addition to the spell effect.",
+        "heightened": "<strong>(Rank 3)</strong> The object can be of huge or smaller size and take up to 20 x your carrying capacity in load. A thrown object deals 8 weapon damage.<br/><strong>(Rank 4)</strong> The object can be of gargantuan or smaller size and take up to 30 x your carrying capacity in load. A thrown object deals 10 weapon damage.<br/><strong>(Rank 5)</strong> The object can be of gargantuan or smaller size and take up to 50 x your carrying capacity in load. You can move it up to a medium distance within range. A thrown object deals 12 weapon damage."
     },
     {
         "name": "Distortion Field",
@@ -1295,7 +1295,7 @@
         "range": "Short",
         "properties": "concentrate",
         "effect": "You summon spectral warriors from beyond the veil to fight alongside you.<br/>On a success, you conjure four spectral warriors with incorporeal weapons and shields that appear at any location within range. The spectral army acts as a single unit under your control with the following properties:<br/>- The spectral warriors have 40 HP as a single unit. Every 10 damage destroys one of the spectral warriors.<br/>- They have 0 AV and uses your Resist for all Defenses.<br/>- They are immune to all conditions, resistant to necrotic, and weak to radiant damage.<br/>As a Quick Action on your turn, you can command the spectral army to perform one of these actions:<br/>- <strong>Attack.</strong> Split the attacks of the spectral army between up to four targets within melee range. Roll Mind + Arcana vs. Dodge. On a hit, each target takes 4 necrotic damage (ignore AV) for each spectral warrior hitting them.<br/>- <strong>Defend. </strong>Any attacks against allied creatures in close range of the spectral army suffer +1 bane and each of those allies gains +2 AV while in range.<br/>- <strong>Advance. </strong>They move up to a short distance, ignoring any obstacles, solid objects, or walls. They still have to end their Movement at an unobstructed location.<br/>The spectral army lasts for a short duration or until they are reduced to 0 HP.",
-        "heightened": "-"
+        "heightened": "<strong>(Rank 4)</strong> You conjure six spectral warriors with 60 HP as a single unit instead. Each warrior hitting deals 5 necrotic damage (ignore AV).<br/><strong>(Rank 5)</strong> You conjure eight spectral warriors with 80 HP as a single unit instead. Each warrior hitting deals 6 necrotic damage (ignore AV)."
     },
     {
         "name": "Wither",

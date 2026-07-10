@@ -26,7 +26,7 @@ sidebar_position: 5
 ---|---|---|---|---
  0 | 0 | Special | Short | -
 
-**Effect** <br/> You hold out your hand and grasp at an object in range, slowly levitating it it into the air. The object can be of small or tiny size and take up to your encumbrance limit in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range.  On a hit, the object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
+**Effect** <br/> You hold out your hand and grasp at an object in range, slowly levitating it it into the air. The object can be of small or tiny size and take up to your carrying capacity in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range.  On a hit, the object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
 
 ### Feather Fall
 
@@ -46,6 +46,10 @@ sidebar_position: 5
 
 **Effect** <br/> You create a tiny orb of pure force at the target location, pulling everything around it towards it. This spell targets every medium or smaller sized creature in close range of the orb.<br/><strong>Weak.</strong> Each target is briefly slowed.<br/><strong>Strong.</strong> Each target is briefly grappled by the orb.<br/><strong>Critical.</strong> Each target is briefly grappled and restrained by orb.<br/>The close area around the orb is considered difficult terrain. When any medium or smaller sized creature first enters the orb‘s range or starts it‘s turn there, they have to roll Strength + Athletics. On a failure, they are briefly grappled and restrained by the orb.<br/>The orb lasts for a short duration. 
 
+> **Heightened** <br/> <strong>(Rank 2)</strong> The orb affects large or smaller creatures and lasts a medium duration instead.<br/><strong>(Rank 3)</strong> The orb affects large or smaller creatures and lasts a medium duration, and its pull extends in short range of it instead: the whole area is difficult terrain, and creatures entering it or starting their turn there roll the entry save.
+
+>
+
 ### Reflective Barrier
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -62,6 +66,10 @@ sidebar_position: 5
 
 **Effect** <br/> You spread your arms out from you, sending a shockwave of kinetic energy in all directions.<br/><strong>Weak.</strong> Deal +2 blast damage (ignore 1/2 AV) against all creatures and objects in range.<br/><strong>Strong.</strong> Deal +4 blast damage (ignore 1/2 AV) against all creatures and objects in range and push them close away from you.<br/><strong>Critical.</strong> Deal +6 blast damage (ignore 1/2 AV) against all creatures and objects in range, push them close away from you, and they fall prone. 
 
+> **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 blast damage (ignore 1/2 AV) instead.<br/><strong>(Rank 3)</strong> Deal +6/+12/+18 blast damage (ignore 1/2 AV) instead, and on a strong or critical success targets are pushed a short distance away from you.
+
+>
+
 ### Telekinetic Crush
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -77,6 +85,10 @@ sidebar_position: 5
  1 | 2 | Special | Short | -
 
 **Effect** <br/> You telekinetically take hold of multiple small items. Choose up to three tiny objects, such as ammo, stones, or household objects taking up 2 or less load each. The objects can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the objects towards a target location.<br/><br/><strong>Move.</strong> Roll vs. moderate difficulty (8). On a success, you move the objects in a cluster up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the objects until your next turn. During your next turn, you can cast this spell again to move the objects further. On a failure, you drop the objects at their current location.<br/><br/><strong>Throw.</strong> Once per object, roll vs. Dodge against a target in range. You can choose the same or different targets for each thrown object. On a hit, each object deals 2 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
+
+> **Heightened** <br/> <strong>(Rank 2)</strong> Choose up to four objects of up to 4 load each instead. Each thrown object deals 4 weapon damage.<br/><strong>(Rank 3)</strong> Choose up to five objects of up to 6 load each instead. Each thrown object deals 6 weapon damage.
+
+>
 
 ### Grease
 
@@ -140,7 +152,11 @@ sidebar_position: 5
 ---|---|---|---|---
  2 | 4 | Special | Medium | -
 
-**Effect** <br/> You hold out your hand and grasp at a large object in range, slowly levitating it it into the air. The object can be of large or smaller size and take up to 10 x your encumbrance limit in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. very hard difficulty (12). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range. On a hit, the object deals 6 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
+**Effect** <br/> You hold out your hand and grasp at a large object in range, slowly levitating it it into the air. The object can be of large or smaller size and take up to 10 x your carrying capacity in load. The object can be any loose object lying around, or ammo, a weapon, or another item you carry.<br/>You can choose to either move or throw the object towards a target location.<br/><br/><strong>Move.</strong> Roll vs. very hard difficulty (12). On a success, you move the object up to a short distance within range. You can choose to concentrate on this spell and hold your grasp on the object until your next turn. During your next turn, you can cast this spell again to move the object further. On a failure, you drop the object at it’s current location.<br/><br/><strong>Throw.</strong> Roll vs. Dodge against a single target in range. On a hit, the object deals 6 weapon damage in addition to your spell base damage. If you throw a weapon, apply it’s properties and effects in addition to the spell effect. 
+
+> **Heightened** <br/> <strong>(Rank 3)</strong> The object can be of huge or smaller size and take up to 20 x your carrying capacity in load. A thrown object deals 8 weapon damage.<br/><strong>(Rank 4)</strong> The object can be of gargantuan or smaller size and take up to 30 x your carrying capacity in load. A thrown object deals 10 weapon damage.<br/><strong>(Rank 5)</strong> The object can be of gargantuan or smaller size and take up to 50 x your carrying capacity in load. You can move it up to a medium distance within range. A thrown object deals 12 weapon damage.
+
+>
 
 ### Part Stone
 

@@ -152,6 +152,10 @@ sidebar_position: 2
 
 **Effect** <br/> You call down a beam of moonlight at the target location, blinding and freezing anything within it.<br/>On a success, the beam extends in melee range of the target location and a medium distance in height. It also shines dim light in close range of it. Any creatures inside the beam are blinded and take +8 frost damage when they first come into contact with it and at the start of each of their turns.<br/>On each of your following turns, you can use your Quick Action to move the beam a short distance within range. The beam lasts for a short duration.  
 
+> **Heightened** <br/> <strong>(Rank 3)</strong> The beam deals +10 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 4)</strong> The beam deals +12 frost damage instead and shines dim light in short range of it.<br/><strong>(Rank 5)</strong> The beam extends in close range of the target location instead, deals +14 frost damage, and shines dim light in short range of it.
+
+>
+
 ### Shadow Step
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**

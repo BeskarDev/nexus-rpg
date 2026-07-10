@@ -21,7 +21,7 @@
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 **Setup levers** — states Death emits: **curses** (lingering, named dooms hung on a target), *poisoned* (plague and sickness), *frightened* (a glimpse of one's own mortality), and **decay** (attribute erosion — the body failing ahead of its time). Death's setups are slow and inevitable rather than explosive: an afflicted target is not hurt yet, they are *dying by degrees*.
 
@@ -35,10 +35,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 **Synergy gaps**: the curse-stacking *convert* chain is the school's stated gimmick but has **no published mechanical rung** — nothing actually counts afflictions or defines the major doom they build toward; it lives only in this analysis. R2+ coverage is thin (2/2/0 above R1), so the engine has a start and no finish. Defining the affliction-harvest payoff at R3–R4 is the top design target.
 
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Weight of Dooms** (R2, extender/convert) — deepen an existing affliction: a target already *poisoned*, *frightened*, or cursed by you has that state's duration extended and suffers +1 bane on rolls to shake it. The ripening mechanic — nothing to deepen, nothing happens.
-- **The Reckoning** (R3, payoff harvest) — speak the target's accumulated dooms aloud: necrotic damage per distinct affliction they carry (*poisoned*, *frightened*, bleeding, any curse), consuming your curses in the tally. The counting rung the gimmick has always implied — far below curve cold, the school's finisher when the dooms have ripened. Diegetic: the ancestors weigh what the target already owes.
-- **Grave Chill** (R3, setup, shared-socket) — the target's limbs grow grave-cold: *slowed* for a short duration and their next roll to resist any Death spell suffers +1 bane. Feeds both the party (slowed is anyone's currency) and the school's own ladder.
+**Seed coverage of the gaps**: the ripening extender (*Weight of Dooms*, R2), the affliction-harvest payoffs (*The Reckoning*, R3; *Inexorable Doom*, R5), and the shared-socket setups (*Grave Chill* and *Curse of Frailty*, R2) sit in the seed table below — the engine's missing rungs are the seed set's spine.
 
 ## Current Spell Inventory (15 published spells)
 
@@ -57,42 +54,39 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| plagues | Miasma | Festering Wound | Cloud of Sickness | Spreading Contagion | Pestilence | Plague Wind |
-| curses | Minor Hex | Curse of Death | Curse of Frailty | Mark of Doom | Greater Curse | Inexorable Doom |
-| fear | Glimpse of Mortality | Early Grave, Shivering Ray | Dread Presence | Death's Door | Visage of the Reaper | Pall of the Grave |
-| decay | Decay, Chill Touch, Enfeebling Touch | Necrotic Weapon, Rotting Grasp, Blood Shards | Circle of Death | Grave's Bloom | Wither | Death's Dominion |
-| ancestry | Spared from Death | Commune with Ancestors | Ancestral Guardian | Speak with Dead | Ancestral Judgment | Ancestral Convergence |
+| plagues | Miasma | Festering Wound | Cloud of Sickness | Spreading Contagion | Pestilence | — (Pestilence Heighten) |
+| curses | Minor Hex | Curse of Death | Curse of Frailty, Weight of Dooms | The Reckoning | — | Inexorable Doom |
+| fear | Glimpse of Mortality | Early Grave, Shivering Ray | — | Death's Door | — | Pall of the Grave |
+| decay | Decay, Chill Touch, Enfeebling Touch | Necrotic Weapon, Rotting Grasp, Blood Shards, Death's Rebuke | Circle of Death, Grave Chill | Grave's Bloom | — | — |
+| ancestry | Spared from Death | Commune with Ancestors | Ancestral Guardian | Speak with Dead | — | Ancestral Convergence |
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+**Coverage**: only published spells count as real coverage (see the inventory above); other names are undesigned seeds (principle 19). Empty cells are deliberate, not oversights: the plagues R5 slot is covered by Pestilence's Heighten cascade, decay's top end lives inside the harvest payoffs (*The Reckoning*, *Inexorable Doom*) that consume decay afflictions, and fear is a support socket for the affliction engine rather than a full ladder of its own. R4 overall is the thinnest rank (one seed) and the next honest expansion target.
 
 
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Miasma | 0 | You exhale a cloud of pestilent breath that sickens a nearby creature. (R0 plagues cantrip) |
-| Minor Hex | 0 | You mutter a petty curse under your breath, bringing misfortune to a nearby creature. (R0 curses cantrip) |
-| Death's Rebuke | 1 | When struck, you channel the cold touch of death back through the wound, punishing your attacker. (R1 Quick Action reactive defense) |
-| Commune with Ancestors | 1 | You enter a meditative trance, reaching out to the spirits of the dead for guidance. (R1 utility spell — fills the ancestry R1+ gap) |
-| Festering Wound | 1 | You curse an open wound on a creature, causing it to fester and spread corruption through their body. (R1 plagues spell) |
-| Ancestral Guardian | 2 | You call upon an ancestral spirit to watch over and protect a creature, guiding their actions. (Fills R2 ancestry gap) |
-| Speak with Dead | 3 | You lay your hand upon a corpse and call its spirit back briefly, asking it to share what it knew in life. (Fills R3 ancestry gap) |
-| Spreading Contagion | 3 | You curse a creature with a virulent disease that leaps to nearby creatures. The contagion spreads like wildfire through clustered enemies. (R3 plagues payoff) |
-| Plague Wind | 5 | You unleash a devastating wind carrying every pestilence and plague known to the mortal world. The wind sweeps across the battlefield, infecting all who breathe it. (R5 plagues capstone — mass plague devastation) |
-| Greater Curse | 4 | You speak a terrible curse that reaches into the target's very essence, eroding their fundamental capabilities. (R4 curses capstone) |
-| Pestilence | 4 | You call down a devastating plague upon an area, filling it with choking pestilence that rots flesh and weakens the body. (R4 plagues capstone) |
-| Ancestral Judgment | 4 | You call upon the ancestors to judge a creature, channeling their collective wrath into a devastating spiritual assault. A host of spectral faces surrounds the target, screaming judgment. (R4 ancestry/offense capstone) |
-| Death's Dominion | 5 | You open yourself as a conduit to the realm of endings, becoming an avatar of death itself. Your body transforms — skin pale as bone, eyes burning with necrotic fire, an aura of decay spreading from you like a living shroud. (R5 decay capstone — personal transformation into a death avatar) |
-| Ancestral Convergence | 5 | You perform a solemn rite of convergence, inviting the honored dead to merge their power with the living. A host of ancestral spirits descends, each binding to an ally and granting them the strength and knowledge of the fallen. (R5 ancestry capstone — empowering the living through ancestral communion, not summoning an army) |
-| Curse of Frailty | 2 | You whisper a curse that seeps into the target's bones, making their body fragile and vulnerable to harm. (Fills the R2 curses gap) |
-| Mark of Doom | 3 | You speak a word of ending over your target, marking them with the sign of inevitable death. Dark runes appear on their skin, pulsing with each heartbeat. (Fills the R3 curses gap) |
-| Inexorable Doom | 5 | You pronounce the ultimate curse — a death sentence spoken in the language of endings. The words hang in the air like a funeral bell's toll, and the target's very fate is rewritten. (R5 curses capstone — the culmination of the curse chain) |
-| Dread Presence | 2 | You project an aura of mortal dread, forcing nearby creatures to confront their own mortality. Your eyes darken and the air grows cold around you. (Fills the R2 fear gap) |
-| Visage of the Reaper | 4 | You project the face of death itself upon your visage — hollow eyes, skeletal features, the unmistakable countenance of the end. The target's soul recoils in primal terror. (Fills the R4 fear gap) |
-| Pall of the Grave | 5 | You open a channel to the realm of death, and the dread of that place pours forth. A cold pall settles over the battlefield — the unmistakable chill of the grave. Every living creature feels the weight of their own mortality pressing down upon them. (R5 fear capstone) |
-| Wither | 4 | You reach out and accelerate the decay within a living creature's body. Flesh withers, joints stiffen, and vitality drains away as the target ages decades in an instant. (Fills the R4 decay gap) |
+For this school, "affliction" in a seed means any Death-inflicted state: *poisoned*, *frightened* by a Death spell, an active Death curse, or attribute decay. The signature gimmick is that these count and compound toward a harvest.
+
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Miasma | 0 | Control / setup | A breath of grave-damp air briefly *poisons* one nearby creature with minimal damage (plagues). The at-will affliction tap: it opens the school's poisoned socket at R0 and stocks every affliction-counting payoff (*The Reckoning*, *Inexorable Doom*). |
+| Minor Hex | 0 | Control / setup | A muttered petty curse inflicts +1 bane on the target's next roll (curses). Counts as a curse affliction while it lasts, so even the cantrip rung feeds the doom-harvest engine. |
+| Death's Rebuke | 1 | Defense / standalone | Standardized R1 Quick Action reactive (principle 4): +2 Dodge or Parry against the triggering attack, plus a school secondary that returns a small pulse of necrotic damage through the wound (decay). Fills the mandatory reactive-defense slot. |
+| Commune with Ancestors | 1 | Utility / standalone | Ritual trance seeking ancestral guidance (ancestry). Bounded per principle 29: ask about one problem, the GM answers with one of a fixed menu (a warning, a name or place, a symbolic omen when nothing concrete fits). Distinct from Necromancy's *Life Echo*, which pries a corpse's brain: this petitions willing spirits and needs no body. |
+| Festering Wound | 1 | Offense / payoff | Curse an open wound so it corrupts (plagues): against a *bleeding* or Wounded target, lasting necrotic damage and *poisoned*. Cold-cast against an unhurt target it is a weak dart (cold-cast deficit). Spends the shared bleeding socket that martials and War priests emit, converting it into Death's own poisoned state. |
+| Grave Chill | 2 | Control / setup | The cold of the grave settles into the marrow (decay): the target is *slowed* and their rolls to resist or end Death spells suffer +1 bane for a short duration. A defense-strip setup that itself counts as an affliction, making every following curse and plague stick harder. Distinct from *Shivering Ray* (R1 frost damage dart): this is a near-damageless affliction anchor. |
+| Curse of Frailty | 2 | Control / setup | A curse that turns the body brittle (curses): AV reduction, vs. Resist, singular. Emits the shared stripped-AV socket the whole party spends, counts as a curse affliction for the harvest payoffs, and attacks a different defensive layer than *Curse of Death* (max HP and healing). |
+| Weight of Dooms | 2 | Control / extender | The ripening rung of the signature gimmick (curses): touch one existing Death affliction on a target and deepen it — extend its duration a step or worsen its ongoing effect one notch, from a bounded per-affliction list. The convert-extender that keeps afflictions alive until a payoff consumes them. |
+| Ancestral Guardian | 2 | Support / setup | An ancestral spirit wards one ally (ancestry): a small protective bonus, and the first enemy to strike the warded ally must resist or be briefly *frightened* by the risen shade. Support is a Weak role for Death, justified: ancestry is the tradition's sanctioned protective corner (heir to *Spared from Death*), and the fear rider still feeds the affliction engine. |
+| Speak with Dead | 3 | Utility / standalone | Lay hands on a corpse and respectfully call its spirit back (ancestry). Bounded per principle 29: a set number of questions answered from what the dead knew in life, with a menu of answer types and a symbolic-response safety valve. Boundary with Necromancy: the arcane school interrogates remains by force, Death petitions, and the spirit may keep its secrets. |
+| Spreading Contagion | 3 | Control / extender | The spread-extender for plagues: a virulent disease on one *poisoned* target leaps to enemies adjacent to them, carrying the poisoned state onward. Turns *Cloud of Sickness* or *Rotting Grasp* into a field-wide affliction engine against clusters. |
+| The Reckoning | 3 | Offense / payoff | The affliction harvest (curses, decay): necrotic damage that starts below curve and rises per distinct Death affliction on the target, consuming them as it lands. Honest cold-cast deficit: near worthless unafflicted, devastating after two turns of setup with *Grave Chill* and *Curse of Frailty*. |
+| Pestilence | 4 | Control / setup | A standing plague zone (plagues): medium area where living creatures are *poisoned* and cannot regain HP, flat rank-scaled zone damage per principle 44, concentrate. Mass affliction emission for the harvest payoffs. Its Heighten cascades to R5 (larger area, hotter tick), which is why the plagues line needs no separate R5 spell. |
+| Inexorable Doom | 5 | Offense / payoff | The spoken death sentence, the gimmick's capstone (curses): consumes every Death affliction on one target for a doom scaled by their count, vs. Resist, tier-capped, material cost 5,000+. Damage stays on the R5 single-target chassis and is never an auto-kill — the peak of the harvest engine at mortal-pinnacle power. |
+| Pall of the Grave | 5 | Control / setup | The dread of the realm of death settles over a long area (fear): living creatures must resist each turn or be *frightened*, and while frightened by the pall they count as afflicted for Death payoffs. Mass fear as mass setup — concentrate, save each turn, the R5-scale battery for the harvest engine. |
+| Ancestral Convergence | 5 | Support / standalone | A solemn rite inviting honored ancestors to lend the living their strength (ancestry): modest bounded blessings on several allies, concentrate, material cost 5,000+. Support is a Weak role for Death, justified: this is the ancestry capstone and the school's clearest philosophical contrast to Necromancy — willing spirits empowering the living, never bound servants. |
 
 ## Cross-School Spell Sharing
 
@@ -107,42 +101,35 @@ Even spells with similar concepts (e.g., raising the dead) should function diffe
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Plagues chain**: Miasma (R0) → Festering Wound (R1) → Cloud of Sickness (R2) → Spreading Contagion (R3) → Pestilence (R4) → Plague Wind (R5) — **complete R0-R5**
-2. **Curses chain**: Minor Hex (R0) → Curse of Death (R1) → Curse of Frailty (R2) → Mark of Doom (R3) → Greater Curse (R4) → Inexorable Doom (R5) — **complete R0-R5**
-3. **Fear chain**: Glimpse of Mortality (R0) → Early Grave/Shivering Ray (R1) → Dread Presence (R2) → Death's Door (R3) → Visage of the Reaper (R4) → Pall of the Grave (R5) — **complete R0-R5**
-4. **Decay chain**: Decay/Chill Touch/Enfeebling Touch (R0) → Necrotic Weapon/Rotting Grasp/Blood Shards (R1) → Circle of Death (R2) → Grave's Bloom (R3) → Wither (R4) → Death's Dominion (R5) — **complete R0-R5**
-5. **Ancestry chain**: Spared from Death (R0) → Commune with Ancestors (R1) → Ancestral Guardian (R2) → Speak with Dead (R3) → Ancestral Judgment (R4) → Ancestral Convergence (R5) — **complete R0-R5**
+1. **Plagues chain**: Miasma (R0) → Festering Wound (R1) → Cloud of Sickness (R2, published) → Spreading Contagion (R3) → Pestilence (R4, Heighten carries to R5) — complete via Heighten, no separate R5 spell needed
+2. **Curses chain**: Minor Hex (R0) → Curse of Death (R1, published) → Curse of Frailty / Weight of Dooms (R2) → The Reckoning (R3) → Inexorable Doom (R5) — R4 slot deliberately open
+3. **Fear chain**: Glimpse of Mortality (R0, published) → Early Grave / Shivering Ray (R1, published) → Death's Door (R3, published) → Pall of the Grave (R5) — R2/R4 open; fear is a support socket for the affliction engine, not a full ladder of its own
+4. **Decay chain**: Decay / Chill Touch / Enfeebling Touch (R0, published) → Necrotic Weapon / Rotting Grasp / Blood Shards (R1, published) → Grave Chill / Circle of Death (R2) → Grave's Bloom (R3, published) — upper ranks open by design; decay's top end is harvested by The Reckoning and Inexorable Doom rather than escalating on its own
+5. **Ancestry chain**: Spared from Death (R0, published) → Commune with Ancestors (R1) → Ancestral Guardian (R2) → Speak with Dead (R3) → Ancestral Convergence (R5) — R4 open
 
 ### Setup + Payoff Combos
-- ✅ **Poison → Decay → Plague**: Miasma (R0 poison) → Festering Wound (R1 enhanced vs. poisoned) → Spreading Contagion (R3 spreading disease) → Pestilence (R4 AoE plague) → Plague Wind (R5 mass devastation) — the complete plague escalation
-- ✅ **Curse stacking**: Minor Hex (R0 bane) → Curse of Death (R1 HP/healing) → Curse of Frailty (R2 AV reduction) → Mark of Doom (R3 damage vulnerability) → Greater Curse (R4 attribute drain) → Inexorable Doom (R5 all-in-one) — each curse targets a different defensive layer, compounding into devastating debilitation
-- ✅ **Ancestry chain**: Commune with Ancestors (R1 information) → Ancestral Guardian (R2 protection) → Speak with Dead (R3 specific interrogation) → Ancestral Judgment (R4 offense) → Ancestral Convergence (R5 empowerment) — ancestors serve as advisors, protectors, witnesses, judges, and empowerers of the living
-- ✅ **Fear → curse synergy**: Pall of the Grave (R5 mass fear) inflicts bonus necrotic damage when frightened creatures fail saves against other Death spells — combine with Curse of Frailty/Mark of Doom for devastating curse-fear combos
-- ✅ **Death mastery**: Death's Dominion (R5 avatar transformation) + Pestilence (R4 AoE plague) — kill with plague, raise the dead, unstoppable capstone combo
-- ✅ **Wither → Plague Wind**: Wither (R4 ongoing decay + halved healing) → Plague Wind (R5 mass poison + halved healing) — healing suppression stacks thematically across single-target and AoE
+- **The affliction engine (signature gimmick)**: setups Miasma / Minor Hex / Grave Chill / Curse of Frailty (plus published Rotting Grasp, Curse of Death, Grave's Bloom) → Weight of Dooms ripens and prolongs → The Reckoning (R3) or Inexorable Doom (R5) consume distinct afflictions for the harvest. This is the school's stated convert-chain, now with explicit rungs at every step.
+- **Fear as affliction**: Glimpse of Mortality (R0, published) and Pall of the Grave (R5) make *frightened* count toward the harvest payoffs, tying the fear trait into the engine instead of running parallel to it.
+- **Shared-socket giving**: Curse of Frailty strips AV for the whole party, Grave Chill emits *slowed*, and Festering Wound spends the *bleeding* socket allies emit — Death both gives and takes.
+- **Plague spread**: Cloud of Sickness / Rotting Grasp (published, emit *poisoned*) → Spreading Contagion (R3, carries it across clusters) → Pestilence (R4, holds a whole zone poisoned for the payoffs).
+- **Ancestry line**: Commune with Ancestors (R1) → Ancestral Guardian (R2) → Speak with Dead (R3) → Ancestral Convergence (R5) — the tradition's utility and support corner, deliberately outside the combat engine.
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Death's Rebuke — standardized reactive defense (+2 Dodge/Parry, necrotic damage secondary)
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 9, R2: 5, R3: 4, R4: 6, R5: 6)
-- [x] Defensive options: Death's Rebuke (R1 retaliatory), Spared from Death (R0 death-prevention), Ancestral Guardian (R2 protective spirit)
-- [x] Utility: Commune with Ancestors (R1 divination), Ancestral Guardian (R2 guidance)
-- [x] Damage across ranks: R0-R5 fully covered — Wither/Visage of the Reaper/Ancestral Judgment at R4, Death's Dominion/Plague Wind/Pall of the Grave/Inexorable Doom at R5
-- [x] Repeating conditions: Poisoned, frightened, cursed (bane/AV/vulnerability debuff), dazed, stunned, staggered — strong condition variety
-- [x] Setup+payoff: Poison → decay, curse stacking (five ranks of escalating curses), fear → curse synergy via Pall of the Grave — all chains are strong and explicit
-- [x] R5 capstone diversity: Death's Dominion (decay avatar), Plague Wind (mass plague), Ancestral Convergence (party empowerment), Inexorable Doom (ultimate curse), Pall of the Grave (mass fear) — five distinct tactical roles
-- [ ] **All trait×rank slots filled**: all 30 trait×rank slots seeded with concepts; published coverage is partial (see inventory) coverage — all 5 trait chains complete R0-R5
+- [x] **R1 Quick Action**: Death's Rebuke seed — standardized reactive defense (+2 Dodge/Parry, necrotic secondary)
+- [ ] **3 spells per rank minimum**: published + seeds gives R0: 7, R1: 9, R2: 6, R3: 5, R4: 1, R5: 3 — **R4 is not met** (Pestilence only) and is the next expansion target
+- [x] Defensive options: Spared from Death (R0, published), Death's Rebuke (R1 seed), Ancestral Guardian (R2 seed) — minimal on purpose, Defense is a Weak role
+- [x] Utility: Decay (R0, published), Commune with Ancestors (R1 seed), Speak with Dead (R3 seed)
+- [x] Damage across ranks: R0–R3 published; R4–R5 via Pestilence's zone tick, The Reckoning, and Inexorable Doom — no dedicated R4 single-target nuke yet (accepted gap, see checklist item above)
+- [x] Repeating conditions: poisoned, frightened, curses, attribute decay — the affliction set the whole school counts
+- [x] Setup+payoff: the affliction engine has explicit setup, extender, and payoff rungs (see combos above), with cold-cast deficits stated on both payoffs
+- [x] R5 capstone diversity: Inexorable Doom (harvest payoff), Pall of the Grave (mass setup), Ancestral Convergence (communal rite) — three distinct roles, no filler avatar
+- [ ] **All trait×rank slots filled**: deliberately not — empty cells are honest gaps (see the coverage note under the matrix)
 
 ### Impact & Trivialization Review
-- **Curse of Frailty (R2 AV reduction)**: Low risk — -2 AV is meaningful but modest. **Mitigations**: vs. Resist save, single target, singular property, short duration. Standard debuff for R2 power level.
-- **Mark of Doom (R3 damage vulnerability)**: Moderate risk — +2 damage from all sources compounds quickly with multi-hit attacks. **Mitigations**: vs. Resist save, single target, singular property, short duration. The +2 is flat and doesn't scale — appropriate for R3.
-- **Dread Presence (R2 fear aura)**: Low risk — briefly frightened with modest necrotic damage. **Mitigations**: creatures save each turn, close range only (caster must be in danger), concentration can be broken. Similar to Twilight's Aura of Fear but with necrotic flavor.
-- **Visage of the Reaper (R4 terror)**: Moderate risk — forced flee + stun is strong single-target shutdown. **Mitigations**: single target, tier limit (≤ Mysticism), vs. Resist save, stun only at Strong+. R4 power budget supports this.
-- **Pall of the Grave (R5 mass fear)**: High risk — AoE frightened with bane on all rolls is devastating battlefield control. **Mitigations**: concentration required, R5 Focus cost (10), creatures save each turn, fear → curse synergy reward is limited (+4 damage per failed save). The bane is Death's signature — powerful but limited by R5 resource investment.
-- **Wither (R4 decay)**: Moderate risk — +10/+20/+30 damage plus ongoing +4/turn and halved healing. **Mitigations**: single target, vs. Resist, short duration ongoing, healing suppression can be cleansed. Standard R4 damage output with thematic ongoing effects.
-- **Inexorable Doom (R5 ultimate curse)**: Very high risk — combines HP reduction, AV reduction, healing block, and damage vulnerability in one package. **Mitigations**: material cost (5,000 coins), concentration, vs. Resist, short duration, single target, R5 Focus cost (10). The combined effect is the curse chain's capstone payoff — justified by enormous resource investment. Can be dispelled by removing the curse.
-- **Greater Curse (R4 attribute reduction)**: High risk — reducing an attribute by one die size is a powerful debuff. **Mitigations**: vs. Resist save, single target, medium duration (not permanent), only one attribute affected. At R4 this is appropriate power — it requires significant Focus investment and can be dispelled.
-- **Pestilence (R4 AoE plague)**: Moderate risk — AoE poison + healing block is very strong in combat. **Mitigations**: concentration required, short area, damage at half single-target scaling (+5/+10/+15). The healing block is Death's signature but can be cleansed by Life tradition magic.
-- **Ancestral Judgment (R4 anti-undead)**: Low risk — single-target damage with condition. Mirrors Light's Blinding Radiance with necrotic flavor. Daze/stun are standard R4 conditions.
-- **Death's Dominion (R5 avatar)**: High risk — immunity to necrotic/poison + auto-raising undead is very powerful. **Mitigations**: concentration (can be broken), brief/short duration, risen undead are temporary and low-tier, R5 Focus cost (10). The transformation is dramatic but time-limited — not a permanent state.
-- **Ancestral Convergence (R5 empowerment)**: Moderate risk — buffing up to 4 allies with +2 attribute rolls and +2 AV is a powerful party-wide enhancement. **Mitigations**: material cost (5,000 coins), concentration required, short duration, spirit bonus type (doesn't stack with other spirit bonuses). The empowerment approach is thematically distinct from Necromancy's forced servitude.
-- **Commune with Ancestors (R1 spirit guidance)**: Moderate risk — information from the dead could shortcut investigation scenes. **Mitigations**: ritual (10 min) prevents combat use, answers are GM-mediated and can be cryptic, limited to what the dead would know, only 1-2 questions per casting.
+- **Commune with Ancestors / Speak with Dead (R1/R3 info)**: Moderate risk of shortcutting investigation. **Mitigations**: ritual casting, bounded answer menus per principle 29, knowledge limited to what the dead knew, spirits may keep secrets.
+- **Curse of Frailty (R2 AV strip)**: Low risk — modest, vs. Resist, singular, endable. Standard R2 debuff.
+- **Weight of Dooms (R2 extender)**: Moderate risk — repeated casting could ripen afflictions indefinitely. **Mitigations at design time**: one deepen-step per affliction, bounded worsening list, Focus cost per cast, afflictions remain save-endable.
+- **The Reckoning / Inexorable Doom (R3/R5 harvests)**: High risk of runaway scaling if afflictions are cheap to stack. **Mitigations at design time**: cap the counted afflictions (about four distinct types), consume them on hit so the engine resets, price base damage below curve (cold-cast deficit), tier cap and material cost at R5, never an auto-kill.
+- **Pall of the Grave (R5 mass fear)**: High risk — battlefield-wide frightened. **Mitigations**: concentration, R5 Focus, save each turn, the affliction rider only feeds payoffs that still need their own casts.
+- **Pestilence (R4 zone)**: Moderate risk — poisoned + no HP regain over an area. **Mitigations**: concentration, flat zone tick per principle 44, cleansable by Life magic, wind-vulnerable like Cloud of Sickness.
+- **Ancestral Convergence (R5 party buff)**: Moderate risk — multi-ally enhancement. **Mitigations**: material cost 5,000+, concentration, modest bounded bonuses of one named bonus type so nothing stacks.

@@ -21,7 +21,7 @@
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 **Setup levers** — states Tempest emits: **weather as field** (a Storm Cloud gathering overhead, a Sandstorm scouring sight away, wind walls and cyclones carving the battlefield), *prone* and forced movement (gusts, tremors, floodwater), *staggered* (thunder), and *deafened*. Its setups are big, loud, and diegetic — the sky itself turns hostile.
 
@@ -33,12 +33,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 **Party interlock**: **emits** *prone*, *staggered*, *deafened*, forced movement, and sight-killing weather (sandstorm cover the rogue hunts through) — disruption currency: a prone, staggered line is a charge target for every martial. **wants** melee allies to finish what the storm knocks down, and tight enemy clusters (Conjuration's walls, Telekinetics' pulls) for its chains and waves to sweep whole. Cross-player line: Telekinetics drags the raiders into one knot and Tempest's Chain Lightning arcs through every one of them.
 
-**Synergy gaps**: setup and extenders are rich, but the **storm build-up escalation is informal** — no published mechanic actually grows a lesser storm into a greater one (the R4 capstones are incomplete, so the matured-sky payoff is unbuilt). Also nothing rewards striking *prone/staggered* targets beyond the conditions themselves. Completing the R4 weather spells as the escalation payoff is the top design target.
-
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Thunderfall** (R2, payoff) — a hammer of pressure drops on a *prone* or *staggered* creature: blast damage (ignore 1/2 AV) and *deafened* as the shockwave lands flush on a body that cannot brace. On-curve at best against the standing — the storm punishes the already-toppled.
-- **Feed the Storm** (R3, extender/escalate) — pour power into your standing Storm Cloud or Cyclone: its area grows one step and its repeated attacks deal +2 damage for the rest of its duration. The build-up rung, castable only with a storm already overhead — the sky visibly darkening turn by turn.
-- **Complete Lightning Storm** (R4, escalation capstone) — finish the incomplete slot as the matured sky: castable at reduced Focus if you have concentrated on a storm spell since your last turn (the tempest already gathered), a wide zone of repeated strikes favoring *prone/staggered* targets. Makes escalation a priced mechanic instead of flavor.
+**Synergy gaps**: setup and extenders are rich, but the **storm build-up escalation is informal** — no published mechanic actually grows a lesser storm into a greater one — and nothing published rewards striking *prone/staggered* targets beyond the conditions themselves. The seed table below carries both design targets: *Thunderfall* (R2 payoff against prone/staggered) and *Feed the Storm* (R3 escalate-extender on a standing storm).
 
 ## Current Spell Inventory (34 published spells)
 
@@ -57,15 +52,15 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| hurricanes | Gust, Wind Slash | Wind Hose | Torrent, Wind Ward | Cyclone, Wind Wall | Control Winds* | Eye of the Storm |
-| earthquakes | Tremor | Earthen Tremor | Aftershock | Fissure | Earthquake* | World Shaker |
-| thunderstorms | Static Shock | Bursting Crackle, Lightning Javelin, Electrified Weapon, Storm Coat, Thunder Guard | Lightning Bolt, Lightning Step, Storm Cloud, Thunder Clap | Chain Lightning, Lightning Volley, Shattering Orb | Avatar of Storms, Lightning Storm* | Storm Lord |
-| sandstorms | Sand Gust | Sandblast | Pyroclasm | Sandstorm*, Cone of Cold | Scouring Winds | Wrath of the Desert |
-| floods | Splash | Water Jet | Conjure Elemental, Magma Burst, Tidal Surge | Flash Flood | Control Water* | Maelstrom |
+| hurricanes | Gust, Wind Slash | Wind Hose, Updraft, Storm Shield | Torrent, Wind Ward | Cyclone, Wind Wall | Control Winds | Eye of the Storm† |
+| earthquakes | Tremor† | Earthen Tremor | Magma Burst | Fissure† | — | Earthquake |
+| thunderstorms | Static Shock | Bursting Crackle, Lightning Javelin, Electrified Weapon, Storm Coat | Lightning Bolt, Lightning Step, Storm Cloud, Thunder Clap, Thunderfall† | Chain Lightning, Lightning Volley, Shattering Orb, Feed the Storm† | Avatar of Storms | Lightning Storm |
+| sandstorms | Sand Gust† | Sandblast† | Pyroclasm | Cone of Cold | Sandstorm | — |
+| floods | Splash† | Water Jet† | Torrent, Conjure Elemental | Flash Flood† | Control Water | — |
 
-*Asterisk = incomplete spell*
+*† = proposed seed (undesigned). Ranks follow the current published file: Sandstorm sits at R4, Earthquake and Lightning Storm at R5, and Control Water/Control Winds are complete at R4. Weather Prediction (R0 utility seed) sits outside the trait rows.*
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+**Coverage**: 27/30 trait×rank slots hold a published spell or a seed. Honest gaps: earthquakes R4 (Earthquake holds R5; Earthen Tremor's Heighten and Fissure cover the mid-ranks), sandstorms R5 and floods R5 (both covered by proposed Heighten extensions on Sandstorm and Control Water rather than new spells, principle 3). Only published spells count as real coverage — proposed entries are undesigned seeds (principle 19). An honest empty cell beats a filler seed.
 
 ## Proposed Spell Changes
 
@@ -87,29 +82,32 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 **Proposed**: Primary target +8/+16/+24 (single-target scaling), chain targets +4/+8/+12 (multi-target scaling)
 **Rationale**: Chain spell pattern — primary target at full damage, secondary targets at half.
 
+### Heighten Extensions (replacing capstone seeds, principle 3)
+
+"Bigger version of X" concepts are Heighten notes on published spells, not new seeds:
+
+- **Avatar of Storms (R4)**: add a (Rank 5) Heighten scaling the form's magnitudes (temp HP, retaliation damage, damage rider). Covers the R5 storm-transformation concept.
+- **Sandstorm (R4)**: add a (Rank 5) Heighten widening the storm's radius one step and raising the flat scouring tick. Covers the R5 sandstorms slot.
+- **Control Water (R4)**: add a (Rank 5) Heighten enlarging the controlled area and the modes' magnitudes (the Whirlpool mode already is a maelstrom). Covers the R5 floods slot.
+- **Earthen Tremor (R1)** already heightens to R2/R3, and Pyroclasm and Magma Burst hold the R2 earth-eruption space — no new R2 quake AoE is needed.
+
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Thunder Guard | 1 | You summon a crackling shell of static charge around yourself as an attack comes, the air snapping with electricity. (R1 Quick Action reactive defense) |
-| Tremor | 0 | You stamp the ground and send a localized tremor rippling outward. (Fills the R0 earthquakes gap) |
-| Sand Gust | 0 | You whip up a blast of sand or dust, stinging eyes and obscuring vision. (Fills the R0 sandstorms gap) |
-| Splash | 0 | You conjure a sudden burst of water that drenches and pushes a target. (Fills the R0 floods gap) |
-| Aftershock | 2 | You slam the ground with divine fury, sending a powerful shockwave rippling through the earth. (R2 earthquake AoE. Prone and difficult terrain are reliable on any success) |
-| Tidal Surge | 2 | You summon a powerful wave of water that crashes forward, sweeping away everything in its path. (Fills R2 floods gap) |
-| Weather Prediction | 0 | You read the winds and sky, predicting the weather for the near future. (Non-combat utility cantrip — fills the Tempest utility gap) |
-| Storm Lord | 5 | You become one with the storm, transforming into an avatar of elemental fury. Lightning crackles around you, winds howl at your command, and the sky darkens. (R5 capstone — transformation into a storm avatar) |
-| World Shaker | 5 | You channel the fury of the deep earth, and the world answers. The ground heaves, splits, and buckles — buildings topple, chasms yawn open, and the very foundations of civilization shudder under divine wrath. (R5 earthquake capstone — the culmination of the earthquakes chain (Tremor → Earthen Tremor → Aftershock → Earthquake → World Shaker)) |
-| Maelstrom | 5 | You call upon the primal forces of wind and water, and a massive vortex of churning waves and howling gale descends upon the battlefield — a hurricane given divine purpose, or a whirlpool that swallows the earth itself. (R5 floods/hurricanes combined capstone — massive area denial and forced movement) |
-| Fissure | 3 | You channel the fury of the deep earth, splitting the ground open in a jagged fissure that swallows the unwary. (Fills the R3 earthquakes gap (between Aftershock R2 and Earthquake R4)) |
-| Sandblast | 1 | You hurl a concentrated blast of scouring sand at a creature, shredding skin and blinding eyes. (Fills the R1 sandstorms gap) |
-| Scouring Winds | 4 | You call upon a devastating wind laden with scouring sand, stripping flesh and obscuring all vision across a vast area. (Fills the R4 sandstorms gap) |
-| Wrath of the Desert | 5 | You invoke the primal fury of the great deserts — a wall of sand that devours the horizon. The sky darkens as an immense sandstorm descends, burying and scouring everything in its path. (R5 sandstorms capstone) |
-| Water Jet | 1 | You conjure a powerful jet of water that slams into a creature, drenching them and knocking them back. (Fills the R1 floods gap) |
-| Flash Flood | 3 | You call upon a sudden torrent of water that crashes through the area, sweeping creatures off their feet and flooding the ground. (Fills the R3 floods gap) |
-| Eye of the Storm | 5 | You become the eye of a divine hurricane. Absolute calm surrounds you while devastating winds spiral outward, shredding everything in their path. The sky darkens, the air screams, and nothing stands against the storm's fury. (R5 hurricanes capstone — distinct from Storm Lord (thunderstorms/lightning transformation) and Maelstrom (floods/vortex pull)) |
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Tremor | 0 | Control / setup | Stamp the ground and a localized shudder rocks one creature's footing (earthquakes trait): minimal control-cantrip damage (+0/+2/+4), briefly *staggered* on a strong or critical success. The at-will tap that feeds Thunderfall and melee allies. Distinct from Earthen Tremor (R1 damage cone), which stays the damage rung. |
+| Sand Gust | 0 | Control / setup | Whip a stinging burst of sand into one creature's face (sandstorms trait): little or no damage, the target briefly suffers +1 bane on sight-based rolls, upgraded to briefly blinded on a critical. Emits the sight-denial state the sandstorm line scales up through Sandblast and Sandstorm; blinded targets are payoff surface for every martial. |
+| Splash | 0 | Utility / setup | Conjure a sudden drench of water (floods trait): douses flames and ends the burning condition, soaks mundane fire hazards, and a creature caught in the wash is briefly *slowed* (soaked and heavy). Deliberately no damage so Gust keeps the push-cantrip role; emits the shared *slowed* socket. |
+| Weather Prediction | 0 | Utility / standalone | Read wind and sky to divine coming weather, the school's only non-combat cantrip. GM answers from a bounded menu (principle 29): dominant weather type, rough onset time, severity band, with a symbolic-omen safety valve when the weather is magically influenced. Feeds travel-mode decisions; no combat role by design. |
+| Sandblast | 1 | Offense / setup | Hurl scouring sand at one creature (sandstorms trait): on-curve R1 single-target damage (+4/+8/+12), and a strong or critical success also inflicts the brief sight bane / blinded state Sand Gust emits. The R1 rung of the sight-denial ladder toward Sandstorm. |
+| Water Jet | 1 | Offense / setup | A high-pressure jet slams one creature (floods trait): R1 single-target damage with forced-movement riders — push close on strong, push short and *prone* on critical — and it douses burning on the target. Emits *prone/pushed* for Thunderfall and melee allies; single-target counterpart to Torrent's R2 line. |
+| Thunderfall | 2 | Offense / payoff | A hammer of pressure drops on one creature (thunderstorms trait): below-curve blast damage (ignore 1/2 AV) when cast cold, full-curve damage plus briefly deafened against a *prone* or *staggered* target that cannot brace (cold-cast deficit). The school's first formal payoff — spends the states Tremor, Thunder Clap, Torrent, Shattering Orb, and Cyclone emit. |
+| Fissure | 3 | Control / setup | Split the ground in a jagged line (earthquakes trait): placed hazard with a fixed cast TN (principle 42), creatures on the line save vs. your Resist or drop in and take falling damage by the general rule (principle 43). The fissure remains as difficult terrain and a battlefield divider. Fills the R3 earthquakes gap between Earthen Tremor and Earthquake. |
+| Feed the Storm | 3 | Offense / extender | Pour power into your standing Storm Cloud or Cyclone (thunderstorms and hurricanes traits): its area grows one step and its repeated attacks gain a flat damage bonus for the rest of its duration. Castable only with such a storm already raised — the storm build-up gimmick as a priced escalate-extender instead of flavor, deepening the two-roll weather engine. |
+| Flash Flood | 3 | Control / setup | A surge of water crashes through a placed area (floods trait): fixed cast TN, compare the casting result to the Parry of each creature caught (principle 42 b2) to sweep them a short distance and knock them *prone*, and the ground stays flooded as difficult terrain for a short duration. Field-reshaping counterpart to Torrent's aimed line; feeds Thunderfall and melee payoffs. |
+| Eye of the Storm | 5 | Control / setup | Become the calm eye of a raging hurricane ring (hurricanes trait, R5 capstone): a caster-centered storm ring dealing flat recurring damage (principle 44), pushing enemies outward or knocking them *prone* by casting result vs. Parry, with ranged attacks through the winds suffering banes. Concentrate-gated and mortal-pinnacle bounded — a walking storm, not battlefield-wide, no immunity inside the eye beyond the wind's cover. Emits mass *prone* and weather cover for the party. |
 
 ## Cross-School Spell Sharing
 
@@ -127,26 +125,25 @@ The following spells are shared between Tempest and arcane disciplines (same spe
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Hurricanes chain**: Gust/Wind Slash (R0) → Wind Hose (R1) → Torrent/Wind Ward (R2) → Cyclone/Wind Wall (R3) → Control Winds (R4\*) → Eye of the Storm/Maelstrom (R5) — **complete R0-R5**
-2. **Earthquakes chain**: Tremor (R0) → Earthen Tremor (R1) → Aftershock (R2) → Fissure (R3) → Earthquake (R4\*) → World Shaker (R5) — **complete R0-R5**
-3. **Thunderstorms chain**: Static Shock (R0) → Bursting Crackle/Lightning Javelin/Electrified Weapon/Storm Coat (R1) → Lightning Bolt/Storm Cloud/Thunder Clap (R2) → Chain Lightning/Lightning Volley/Shattering Orb (R3) → Avatar of Storms/Lightning Storm (R4) → Storm Lord (R5) — **complete R0-R5**
-4. **Sandstorms chain**: Sand Gust (R0) → Sandblast (R1) → Pyroclasm (R2) → Sandstorm/Cone of Cold (R3) → Scouring Winds (R4) → Wrath of the Desert (R5) — **complete R0-R5**
-5. **Floods chain**: Splash (R0) → Water Jet (R1) → Conjure Elemental/Magma Burst/Tidal Surge (R2) → Flash Flood (R3) → Control Water (R4\*) → Maelstrom (R5) — **complete R0-R5**
+1. **Hurricanes chain**: Gust/Wind Slash (R0) → Wind Hose/Updraft/Storm Shield (R1) → Torrent/Wind Ward (R2) → Cyclone/Wind Wall (R3) → Control Winds (R4) → Eye of the Storm† (R5)
+2. **Earthquakes chain**: Tremor† (R0) → Earthen Tremor (R1) → Magma Burst plus Earthen Tremor's Heighten (R2) → Fissure† (R3) → Earthquake (R5) — no R4 rung, honest gap
+3. **Thunderstorms chain**: Static Shock (R0) → Bursting Crackle/Lightning Javelin/Electrified Weapon/Storm Coat (R1) → Lightning Bolt/Storm Cloud/Thunder Clap/Thunderfall† (R2) → Chain Lightning/Lightning Volley/Shattering Orb/Feed the Storm† (R3) → Avatar of Storms (R4) → Lightning Storm (R5) — **complete R0-R5 published**
+4. **Sandstorms chain**: Sand Gust† (R0) → Sandblast† (R1) → Pyroclasm (R2) → Cone of Cold (R3) → Sandstorm (R4) → R5 via Sandstorm Heighten extension
+5. **Floods chain**: Splash† (R0) → Water Jet† (R1) → Torrent/Conjure Elemental (R2) → Flash Flood† (R3) → Control Water (R4) → R5 via Control Water Heighten extension
 
 ### Setup + Payoff Combos
-- ✅ **Wind push → lightning**: Push targets into exposed positions with Gust/Wind Hose → strike with lightning spells for full effect
-- ✅ **Prone → AoE bonus**: Tremor/Earthen Tremor knocks prone → Aftershock/Fissure adds reliable prone checks plus AoE damage, keeping targets locked down for melee allies to exploit
-- ✅ **Sand blind → follow-up**: Sandblast/Sand Gust blinds targets → Scouring Winds/Wrath of the Desert punishes clustered blinded enemies with AoE
-- ✅ **Flood push → prone chain**: Water Jet pushes and prones → Flash Flood mass pushes → Maelstrom pulls and restrains — complete repositioning toolkit
-- ⚠️ **Storm buildup**: Minor storm effects → major storm conceptually fits, but no explicit mechanic rewards casting multiple storm spells in sequence
+- ✅ **Wind push → lightning**: Push targets into exposed positions with Gust/Wind Hose → strike with lightning spells for full effect (published)
+- ✅ **Prone/staggered → Thunderfall**: Tremor†, Thunder Clap, Torrent, Shattering Orb, and Cyclone emit *prone/staggered* → Thunderfall† spends them for full-curve blast damage — the school's first formal in-school payoff (seeded)
+- ✅ **Storm build-up**: Storm Cloud/Cyclone raise a standing storm → Feed the Storm† grows its area and per-attack damage — the signature escalation gimmick as a priced mechanic (seeded)
+- ✅ **Sight denial ladder**: Sand Gust†/Sandblast† blind targets → martial allies and the Sandstorm zone exploit blinded, unbraced enemies (seeded + published)
+- ✅ **Flood control**: Splash† slows and douses → Water Jet† pushes and prones → Torrent/Flash Flood† reshape the field with *prone* plus difficult terrain for melee payoffs (seeded + published)
 
 ### Design Completeness Checklist
-- [x] R1 Quick Action: Thunder Guard (R1) — standardized reactive defense (+2 Dodge/Parry, lightning damage secondary)
-- [x] Defensive options: Storm Shield (R1), Wind Ward (R2), Storm Coat (R1) — solid defensive suite
-- [x] Utility: Weather Prediction (R0) — fills the non-combat gap; Control Weather (R4\*) for advanced utility
-- [x] Damage across ranks: R0-R5 fully covered — Storm Lord, World Shaker, Maelstrom, and Eye of the Storm provide four distinct R5 capstones
-- [x] Repeating conditions: Staggered, prone, deafened, pushed, blinded, restrained — consistent storm-force identity
-- [x] Setup+payoff: Prone → Aftershock/Fissure, blind → sandstorm AoE, push → flood chain — three distinct tactical combos
-- [x] R5 capstone diversity: Storm Lord (lightning transformation), World Shaker (earthquake AoE), Maelstrom (vortex pull), Eye of the Storm (wind push/denial) — four different tactical roles
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 7, R1: 12, R2: 11, R3: 9, R4: 7, R5: 4)
-- [ ] **All trait×rank slots filled**: all 30 trait×rank slots seeded with concepts; published coverage is partial (see inventory) coverage — no remaining gaps
+- [x] R1 Quick Action: Storm Shield (R1, published) — reactive Resist-defense with retaliation and diversion; Updraft (R1, published) covers reactive falls
+- [x] Defensive options: Storm Shield (R1), Storm Coat (R1), Wind Ward (R2), Avatar of Storms (R4) — published suite
+- [x] Utility: Weather Prediction† (R0 seed, the non-combat gap-filler); Control Winds and Control Water (R4, published) for advanced utility
+- [x] Damage across ranks: R0-R5 fully covered by published spells alone (Lightning Storm and Earthquake hold R5)
+- [x] Repeating conditions: staggered, prone, deafened, pushed, sight denial — consistent storm-force identity
+- [x] Setup+payoff: Thunderfall† (payoff) and Feed the Storm† (escalate-extender) close the two declared synergy gaps; sight-denial and flood-control ladders seeded
+- [x] **3 spells per rank minimum**: met by published spells alone at R0-R4 (3/10/9/6/4); R5 holds 2 published plus 1 seed
+- [ ] **All trait×rank slots filled**: 27/30 covered by published spells, seeds, or Heighten extensions — honest gaps at earthquakes R4, sandstorms R5, floods R5 (the latter two via proposed Heighten extensions)

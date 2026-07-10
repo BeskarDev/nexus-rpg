@@ -118,9 +118,9 @@ sidebar_position: 3
 ---|---|---|---|---
  2 | 4 | Hard (10) | Self | concentrate
 
-**Effect** <br/> <em>You detect all living beings around you</em> 
+**Effect** <br/> You close your eyes and open your senses to the warm current of life itself, feeling every living spark around you like embers in the dark.<br/>On a success, for up to a short duration while you concentrate, you sense the presence, direction, and Size category of every living creature within medium range of you. You learn each creature's exact Size (tiny up to colossal) but not what kind of creature they are. This sense does not depend on sight and reaches through walls, cover, and darkness. Undead, constructs, and other unliving things are not revealed by this spell. A creature standing among many others, such as in a dense crowd or a herd, blends into a single mass of life unless within close range of you. 
 
-> **Heightened** <br/> <em>Increased range or details</em>
+> **Heightened** <br/> <strong>(Rank 3)</strong> The spell reaches within long range of you instead, and you also sense each creature's vitality: whether they are unharmed, wounded, or close to death.<br/><strong>(Rank 4)</strong> The spell reaches within long range of you, you sense each creature's vitality, and you also recognize each sensed creature's type (such as Beast, Humanoid, or Plant).
 
 >
 

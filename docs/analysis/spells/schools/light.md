@@ -22,7 +22,7 @@
 
 ### Internal Synergies
 
-Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/references/synergy-framework.md) — roles (setup / payoff / extender), the two axes, and the shared socket set.
+Framework: `.claude/skills/spell-design/references/synergy-framework.md` — roles (setup / payoff / extender), the two axes, and the shared socket set.
 
 **Setup levers** — states Light emits: **revealed** (invisibility burned away, the hidden thing dragged into the open — Revealing Burst, Sun Sphere's merciless light), *blinded* (overwhelming radiance), *burning* (holy fire), and **exposed falsehood** (Detect Lies, curses laid bare) — in the fiction, the sun's judgment stripping every place to hide, physical or moral.
 
@@ -34,12 +34,7 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 **Party interlock**: **emits** *revealed*, *blinded*, *burning*, and light itself (the whole party sees; ambushes die) — targeting currency, since a revealed and blinded enemy is attackable by everyone and threatens no one. **wants** heavy hitters to spend its revelation (the assassin it unveiled still needs killing) and front-liners to guard the vulnerable light-bearer. Cross-player line: Light's burst strips the shadow-stalker's concealment mid-pounce and the archer's waiting arrow takes them out of the air.
 
-**Synergy gaps**: reveal-setup is strong but **the reveal payoff is informal** — no published mechanical bonus against *revealed* targets exists; the advantage is only that attacks become possible. The anti-undead chain also stops at R2 (Destroy Undeath) with no greater rite above it. Formalizing a revealed-target payoff and an R3+ undead capstone are the design targets.
-
-**Synergy gap proposals** (sketches, post-framework — design fresh per current principles):
-- **Judgment's Brand** (R2, payoff) — sear a mark of light onto a creature that was concealed, invisible, or disguised this scene and has been revealed: while branded they cannot hide, become invisible, or take a disguised form, and attacks against them gain +1 boon for a short duration. The formal revealed-payoff — castable only on the exposed.
-- **Pillar of Dawn** (R3, payoff, anti-undead) — a column of sunfire hammers down on one point: heavy radiant damage, doubled riders against undead standing in your own light source (Sun Sphere, Dazzling Light). The greater rite above Destroy Undeath, keyed to the school's standing-light extender.
-- **Oathlight** (R2, extender/prolong, ally-facing) — bless an ally's weapon to carry your light: their hits re-apply *revealed* (briefly, no re-hiding) and deal +2 radiant vs undead. Spreads the reveal engine onto martial turns.
+**Synergy gaps**: reveal-setup is strong but **the reveal payoff is informal** — no published mechanical bonus against *revealed* targets exists; the advantage is only that attacks become possible. The anti-undead chain also stops at R2 (Destroy Undeath) with no greater rite above it. Formalizing a revealed-target payoff and an R3+ undead capstone are the design targets — both are covered by the seed table below.
 
 ## Current Spell Inventory (20 published spells)
 
@@ -58,13 +53,13 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| sun | Dazzling Light | Sun Sphere, Radiant Weapon | Sunbeam | Solar Flare | Blinding Radiance | Radiant Convergence |
-| illumination | Illuminated Sight | Blessing of Light, Locate Trinket | Guiding Light | Blessing of Dawn | Pillar of Dawn | Dawn's Embrace |
-| truth | Detect Lies | Protect from Influence | Break Curse | Zone of Truth | Oath of Binding Light | Radiance of Truth |
-| clarity | Moment of Clarity | Clear Sight | Clarity of Purpose | Luminous Mind | Purifying Aura | Absolute Clarity |
-| judgement | Stern Gaze | Radiant Rebuke | Mark of Judgement | Righteous Condemnation | Divine Judgement | Final Judgement |
+| sun | Dazzling Light | Sun Sphere, Radiant Weapon | Sunbeam | Solar Flare, Purifying Light | *(Solar Flare Heighten)* | Dawnbreak *(seed)* |
+| illumination | Illuminated Sight | Blessing of Light, Locate Trinket | Weapon of Revelation *(seed)* | Blessing of Dawn | Hallowed Radiance *(seed)* | Dawnbreak *(seed)* |
+| truth | Detect Lies, Revealing Burst | Illuminated Script, Protect from Influence | Break Curse, Sense Spirits | Zone of Truth | *(Zone of Truth Heighten)* | — |
+| clarity | Moment of Clarity *(seed)* | True Strike | — | — | — | — |
+| judgement | Stern Gaze *(seed)* | Radiant Rebuke *(seed)* | Mark of Judgement *(seed)*, Destroy Undeath | Pillar of Dawn *(seed)* | Divine Judgement *(seed)* | Final Judgement *(seed)* |
 
-**Coverage**: all 30 trait×rank slots have at least a concept seed (published spell or proposed concept). Only published spells count as real coverage — see the inventory above; proposed entries are undesigned seeds (principle 19).
+**Coverage**: only published spells count as real coverage; *(seed)* entries are undesigned proposals (principle 19) and parenthesized Heighten notes point at proposed Heighten extensions of published spells. The empty cells are deliberate: clarity above R1 and truth above R4 stay empty because high-rank "perfect perception" and "absolute truth" workings would either duplicate the reveal engine or cross the divination boundary into Twilight. Honest empty cells beat filler seeds.
 
 
 ## Proposed Spell Changes
@@ -75,31 +70,30 @@ Framework: [synergy-framework.md](../../../../.claude/skills/spell-design/refere
 **Proposed**: Reduce to **+4/+8/+12** to match half single-target scaling for multi-target R3
 **Rationale**: R3 multi-target should be +4/+8/+12 under revised scaling.
 
+### Heighten Extensions (principle 3 — scale-ups are Heighten notes, not new spells)
+
+Earlier seed lists proposed several "bigger version" capstones. Per principle 3 these become Heighten extensions on the published spells instead (per-rank "…instead" lines, principle 26):
+
+- **Solar Flare** — add (Rank 4) and (Rank 5) Heighten lines scaling damage, healing, and the number of conditions removed. The school's mass heal-and-sear capstone scales here, not in a new spell.
+- **Sun Sphere** — add (Rank 2) and (Rank 3) Heighten lines (larger light radius, hotter contact damage). The standing light source grows instead of a separate greater-orb spell.
+- **Protect from Influence** — add (Rank 2) and (Rank 3) Heighten lines (additional targets). Party-wide mental warding scales here instead of a separate AoE ward spell.
+
 ## Proposed New Spells
 
 These are **conceptual placeholders only** — thematic seeds naming the gap each fills, the intended role, and a one-line concept. They are NOT designed spells (principle 19: earlier full drafts here predated the current design principles and were stale). When a batch is picked up for production, design each spell fresh through the spell-design skill against the current rank chassis, school synergy declaration, and designer principles.
 
-| Concept | Rank | Seed |
-|---|---|---|
-| Moment of Clarity | 0 | You touch a creature's brow with radiant light, briefly cutting through mental fog and confusion. (R0 clarity cantrip) |
-| Stern Gaze | 0 | Your eyes flash with divine judgement, compelling a creature to pause and face your authority. (R0 judgement cantrip) |
-| Clarity of Purpose | 2 | You flood an ally's mind with divine clarity, burning away mental fog and enchantment. (R2 clarity spell) |
-| Divine Judgement | 4 | You call down divine judgement upon a creature, searing them with holy radiance proportional to their transgressions. (Fills R4 judgement gap) |
-| Radiant Convergence | 5 | You call down a concentrated beam of divine radiance from the heavens, a pillar of searing light that burns away darkness and corruption. (R5 capstone) |
-| Radiant Rebuke | 1 | When you or a nearby ally is struck, you channel a flash of divine radiance back at the attacker — a searing retort of holy judgement. (R1 Quick Action reactive defense) |
-| Purifying Aura | 4 | You radiate a warm golden aura that burns away corruption and shields allies from the touch of darkness. (R4 support/healing hybrid) |
-| Blinding Radiance | 4 | You unleash a concentrated burst of searing divine light directly at a creature, overwhelming their senses with holy radiance. (R4 single-target anti-undead offense) |
-| Dawn's Embrace | 5 | You call forth the warmth of a new dawn, flooding the area with golden light that heals the faithful and sears the undead. (R5 mass healing + blessing capstone) |
-| Radiance of Truth | 5 | You fill an area with piercing divine light that lays bare all deception — illusions shatter, the invisible are revealed, and falsehood cannot survive. (R5 truth/clarity capstone) |
-| Clear Sight | 1 | A nimbus of soft golden light settles around the target's eyes, burning away illusion and sharpening perception to preternatural clarity. (Fills R1 clarity gap) |
-| Luminous Mind | 3 | You project a wave of crystalline radiance that washes through the minds of your allies, burning away confusion and leaving only diamond-sharp clarity. (Fills R3 clarity gap) |
-| Absolute Clarity | 5 | You open your eyes and the world goes white — then resolves into absolute, terrifying clarity. Every detail is visible, every lie transparent, every illusion paper-thin. You share this transcendent perception with your allies. (Fills R5 clarity capstone) |
-| Mark of Judgement | 2 | You point at a creature and speak a word of divine condemnation. A glowing sigil appears on their flesh — the mark of one judged and found wanting. (Fills R2 judgement gap) |
-| Righteous Condemnation | 3 | You speak a divine condemnation, and radiant chains of light momentarily bind your target as judgement is passed. (Fills R3 judgement gap) |
-| Final Judgement | 5 | You raise your hand toward the heavens and speak the words of final judgement. A column of searing divine radiance descends upon the condemned — an execution of light that burns the corrupt to their very essence. (Fills R5 judgement capstone) |
-| Guiding Light | 2 | You raise your hand and a sphere of warm, golden light rises into the air — a miniature sun that banishes shadows and illuminates hidden dangers. (Fills R2 illumination gap) |
-| Pillar of Dawn | 4 | You call down a pillar of radiant dawn-light that blazes from the heavens, a beacon of divine illumination that sears the corrupt and shelters the faithful. (Fills R4 illumination gap) |
-| Oath of Binding Light | 4 | You invoke a sacred ritual of binding truth — divine light wraps around the participants as golden chains, sealing an oath that cannot be broken without consequence. (Fills R4 truth gap) |
+| Concept | Rank | Role | Seed |
+|---|---|---|---|
+| Moment of Clarity | 0 | Support / standalone | Quick touch cantrip of the clarity trait. An ally suffering a mental condition (charmed, confused, frightened) immediately re-rolls their save against it. Grants a re-roll, never outright removal — an at-will removal cantrip would trivialize mental attrition (spirit of principle 11). Complements Protect from Influence's prevention. |
+| Stern Gaze | 0 | Offense / payoff | Judgement cantrip, radiant damage vs. Resist, priced below curve when cast cold (+0/+2/+4). Against a target that is *revealed*, *blinded*, or *burning* it deals +2/+4/+6 and briefly dazes them instead. The formal revealed-payoff at will, with the cold-cast deficit built in. |
+| Radiant Rebuke | 1 | Defense / setup | Standardized R1 Quick Action reactive defense (+2 to Dodge or Parry against the triggering attack, no SL scaling, principle 4). School-specific secondary: a flash of light briefly *reveals* the attacker, so they cannot hide or remain invisible. Turns every defensive reaction into fuel for the reveal payoffs. |
+| Mark of Judgement | 2 | Support / payoff and setup | Castable only on a creature that was concealed, invisible, or disguised this scene and has been *revealed*: a searing brand of light. While branded they cannot hide, turn invisible, or take a disguised form, and attacks against them gain +1 boon for a short duration. Spends the school's reveal and converts it into shared party currency. |
+| Weapon of Revelation | 2 | Support / extender | Enchant an ally's weapon with truth-light: their hits briefly re-apply *revealed* (the struck creature cannot hide or turn invisible) and deal +2 radiant damage against Undead. Spread extender that carries the reveal engine onto martial turns between the caster's actions. Distinct from Radiant Weapon, which adds damage and light but emits no state. |
+| Pillar of Dawn | 3 | Offense / payoff | A single column of sunfire hammers one point: on-curve radiant burst with anti-Undead riders, and the riders double against Undead standing in your own light source (Sun Sphere, Sunbeam, Hallowed Radiance). The greater rite above Destroy Undeath, keyed to the school's standing-light extenders. |
+| Divine Judgement | 4 | Offense / payoff | Single-target ray of judgement, priced below curve when cast cold. Against a target that is *revealed*, branded by Mark of Judgement, or Undead it deals full R4 single-target damage and blinds. The R4 execution payoff of both the reveal and anti-undead chains. |
+| Hallowed Radiance | 4 | Support / extender | Placed standing-light zone (fixed TN cast, principle 42): the area counts as bright light, no creature inside can hide or remain invisible (*revealed*), Undead inside take flat radiant damage at the start of their turns (flat tick, principle 44), and allies inside gain +1 boon to resist mental effects. Prolong extender that holds the reveal window open for a whole scene. |
+| Dawnbreak | 5 | Support / setup and extender | Mortal-pinnacle rite: call the dawn early over a long area for a medium duration (concentrate, material cost 5,000+). True sunlight floods the field, magical darkness is dispelled, nothing inside can hide or turn invisible (*revealed*), Undead suffer a flat radiant tick, and allies cannot be frightened. The scene-scale reveal engine every Light payoff cashes in. |
+| Final Judgement | 5 | Offense / payoff | Mortal-pinnacle execution in the Finger of Death mold (respects R5 limits, no auto-kill of the living): peak R5 single-target radiant damage only against a target that is *revealed*, branded, *blinded*, or Undead, priced below curve when cast cold. An Undead reduced to 0 HP by it is destroyed and cannot reanimate. |
 
 ## Cross-School Spell Sharing
 
@@ -111,7 +105,10 @@ Light's "truth" and "revelation" themes overlap with the Arcane **Illusion** dis
 ### Potential Sharing Candidates
 - **Protect from Influence** (Light R1) ↔ Telepathy: Mental protection overlaps with Telepathy's understanding of mental intrusion. Could share as identical spell with different flavor.
 - **Revealing Burst** (Light R0) ↔ Illusion: Both schools have anti-invisibility tools. Light's version uses divine radiance while Illusion's detection works through understanding deception — thematically different enough to remain separate.
-- **Radiance of Truth** (Light R5) ↔ Illusion: The anti-illusion component directly counters Illusion, but the truth compulsion is uniquely Mystic. Not a sharing candidate — too thematically bound to divine revelation.
+
+### Cross-School Boundary Flags
+- **Oath magic belongs to Peace**: Peace's condition identity includes *oath-bound* (law trait). An earlier Light proposal for a binding-oath ritual was cut for this reason — Light enforces present truth (Zone of Truth), Peace binds future conduct. Keep it that way.
+- **Twilight owns what lies beyond present truth**: high-rank "see everything, know every falsehood" capstones drift into Twilight's hidden/distant/fated territory. Light's ceiling for truth magic is Zone of Truth with its R4 Heighten.
 
 ### Design Notes
 - Cross-school sharing is **arcane ↔ mystic only** (never within the same category).
@@ -121,32 +118,31 @@ Light's "truth" and "revelation" themes overlap with the Arcane **Illusion** dis
 ## Synergy & Completeness Assessment
 
 ### Spell Progression Chains
-1. **Sun chain**: Dazzling Light (R0) → Sun Sphere/Radiant Weapon (R1) → Sunbeam (R2) → Solar Flare (R3) → Blinding Radiance (R4) → Radiant Convergence (R5) — **complete R0-R5**
-2. **Illumination chain**: Illuminated Sight (R0) → Blessing of Light/Locate Trinket (R1) → Guiding Light (R2) → Blessing of Dawn (R3) → Pillar of Dawn (R4) → Dawn's Embrace (R5) — **complete R0-R5**
-3. **Truth chain**: Detect Lies (R0) → Protect from Influence (R1) → Break Curse (R2) → Zone of Truth (R3) → Oath of Binding Light (R4) → Radiance of Truth (R5) — **complete R0-R5**
-4. **Clarity chain**: Moment of Clarity (R0) → Clear Sight (R1) → Clarity of Purpose (R2) → Luminous Mind (R3) → Purifying Aura (R4) → Absolute Clarity (R5) — **complete R0-R5**
-5. **Judgement chain**: Stern Gaze (R0) → Radiant Rebuke (R1) → Mark of Judgement (R2) → Righteous Condemnation (R3) → Divine Judgement (R4) → Final Judgement (R5) — **complete R0-R5**
+1. **Sun/offense chain**: Dazzling Light (R0) → Radiant Burst, Sun Sphere (R1) → Sunbeam (R2) → Purifying Light, Solar Flare (R3) → Solar Flare Heighten (R4–R5 proposed) — published through R3
+2. **Reveal engine**: Revealing Burst, Detect Lies (R0) → Radiant Rebuke (R1 seed) → Mark of Judgement, Weapon of Revelation (R2 seeds) → Hallowed Radiance (R4 seed) → Dawnbreak (R5 seed)
+3. **Judgement/payoff chain**: Stern Gaze (R0 seed) → Destroy Undeath (R2) → Pillar of Dawn (R3 seed) → Divine Judgement (R4 seed) → Final Judgement (R5 seed)
+4. **Truth chain**: Detect Lies (R0) → Illuminated Script, Protect from Influence (R1) → Break Curse, Sense Spirits (R2) → Zone of Truth (R3, Heighten to R4) — **capped by design**, Twilight owns what lies beyond present local truth
+5. **Blessing chain**: Blessing of Light (R1) → Blessing of Dawn (R3) → Solar Flare Heighten (R4–R5 proposed)
 
 ### Setup + Payoff Combos
-- ✅ **Reveal → Destroy**: Revealing hidden/invisible targets enables follow-up attacks with advantage. Guiding Light (R2) → Pillar of Dawn (R4) → Radiance of Truth (R5) is the full reveal chain.
-- ✅ **Anti-undead chain**: Radiant Weapon (R1) → Destroy Undeath (R2) → Righteous Condemnation (R3) → Blinding Radiance/Divine Judgement (R4) → Radiant Convergence/Final Judgement (R5) — strong escalation with dual R4 and R5 options
-- ✅ **Rebuke → Judgement**: Radiant Rebuke (R1 reactive) → Mark of Judgement (R2 debuff) → Righteous Condemnation (R3 damage+debuff) → Divine Judgement (R4 active) → Final Judgement (R5 execution) — retributive damage scales from quick reaction to deliberate condemnation
-- ✅ **Clarity → Immunity**: Moment of Clarity (R0 condition removal) → Clear Sight (R1 perception boost) → Clarity of Purpose (R2 dispel) → Luminous Mind (R3 AoE mental protection) → Purifying Aura (R4 curse/necrotic protection) → Absolute Clarity (R5 total mental immunity) — full mental defense chain
-- ✅ **Truth → Oath**: Detect Lies (R0 sense falsehood) → Zone of Truth (R3 truth compulsion) → Oath of Binding Light (R4 binding oath) → Radiance of Truth (R5 absolute revelation) — information gathering escalates to contractual enforcement
+- **Reveal → spend**: Revealing Burst, Radiant Rebuke (seed), Hallowed Radiance (seed), and Dawnbreak (seed) emit *revealed* → Stern Gaze (R0 seed), Mark of Judgement (R2 seed), Divine Judgement (R4 seed), and Final Judgement (R5 seed) spend it. The formerly informal reveal payoff is now explicit at four ranks, each priced with a cold-cast deficit.
+- **Standing light → Pillar of Dawn**: Sun Sphere, Sunbeam, or Hallowed Radiance (seed) hold the field lit → Pillar of Dawn (seed) doubles its anti-Undead riders against Undead inside your own light.
+- **Extender onto martial turns**: Weapon of Revelation (seed) lets an ally's weapon hits keep *revealed* alive between the caster's turns — the party interlock's spread extender.
+- **Anti-undead escalation**: Radiant Weapon (R1) → Destroy Undeath (R2) → Pillar of Dawn (R3 seed) → Divine Judgement (R4 seed) → Final Judgement (R5 seed) — the greater rites above R2 the gap analysis called for.
 
 ### Design Completeness Checklist
-- [x] **R1 Quick Action**: Radiant Rebuke — standardized reactive defense (+2 Dodge/Parry, radiant damage secondary)
-- [x] **3 spells per rank minimum**: Met at all ranks (R0: 6, R1: 10, R2: 6, R3: 6, R4: 6, R5: 6)
-- [x] Defensive options: Protect from Influence (R1), Clear Sight (R1), Luminous Mind (R3), Purifying Aura (R4), Absolute Clarity (R5) — strong mental defense coverage
-- [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Locate Trinket (R1), Clear Sight (R1), Guiding Light (R2), Oath of Binding Light (R4), Radiance of Truth (R5)
-- [x] Damage across ranks: R0-R5 fully covered — sun chain + judgement chain provide continuous damage escalation with anti-undead bonuses throughout
-- [x] Repeating conditions: Blinded, revealed, burning, dazed — consistent anti-darkness identity
-- ✅ Setup+payoff: Reveal → attack, anti-undead chain, rebuke → judgement, clarity → immunity, truth → oath chains are all complete with explicit mechanical escalation
-- [ ] **All gaps filled**: all 30 trait×rank slots seeded with concepts; published coverage is partial (see inventory) coverage — every trait×rank slot occupied
+- [x] **R1 Quick Action**: Radiant Rebuke (seed) — standardized reactive defense (+2 Dodge/Parry, reveal secondary)
+- [ ] **3 spells per rank minimum**: met at R0–R3 with published spells; **R4 and R5 have zero published spells** — the seed table (two R4, two R5) is the priority design batch
+- [x] Defensive options: Protect from Influence (R1), Blessing of Light resistances (R2+ Heighten), Radiant Rebuke (seed)
+- [x] Utility: Illuminated Sight (R0), Detect Lies (R0), Illuminated Script (R1), Locate Trinket (R1), Sense Spirits (R2), Zone of Truth (R3)
+- [x] Damage across ranks: published R0–R3 (Dazzling Light, Radiant Burst, Sunbeam, Destroy Undeath, Purifying Light, Solar Flare); R4–R5 seeded (Divine Judgement, Final Judgement)
+- [x] Repeating conditions: blinded, revealed, burning — consistent anti-darkness identity
+- [x] Setup+payoff: the reveal engine is formalized across the seed table (emitters at R0/R1/R4/R5, spenders at R0/R2/R4/R5, extender at R2)
+- [ ] Trait×rank coverage: clarity above R1 and truth above R4 are deliberate empty cells (see matrix note), not gaps to fill
 
 ### Impact & Trivialization Review
 - **Zone of Truth (R3)**: Moderate risk — truth compulsion is powerful in social scenes. **Mitigations**: targets can choose silence over truth, concentration required, R3 Focus cost (6) is significant. Does not replace Influence/Insight checks — it prevents lies but doesn't compel answers or cooperation. GMs can design around it (NPCs use careful truths, omission, or leave the zone).
-- **Radiance of Truth (R5)**: Moderate risk — ultimate anti-deception tool. **Mitigations**: R5 Focus cost (10), concentration required, targets can remain silent, does not compel answers. At R5 this is appropriate power — it is the pinnacle of truth magic.
-- **Purifying Aura (R4)**: Low risk — necrotic resistance and curse removal are powerful but situational. Concentration limits other casting. Primarily useful against undead and Death tradition enemies.
-- **Dawn's Embrace (R5)**: Moderate risk — mass healing + condition removal is very strong. **Mitigations**: R5 Focus cost (10), AoE healing uses half scaling (+6/+12/+18), single use (not sustained). Appropriate for a capstone-level support spell.
-- **Moment of Clarity (R0)**: Minimal risk — condition removal is purely supportive and tactical, no social or exploration bypass.
+- **Dawnbreak (R5 seed)**: Moderate risk — scene-scale anti-stealth shuts down hiding entirely inside it, and a false dawn is visible for miles. **Mitigations**: R5 Focus cost, concentration, mandatory material cost 5,000+; add a worldbuilding framing note when designed (principle 33) — a temple rite of the risen sun, not a tactical floodlight.
+- **Final Judgement (R5 seed)**: Low risk — damage capstone within R5 limits; no auto-kill of living creatures, and its full output requires an existing revealed/branded/blinded state or an Undead target.
+- **Mark of Judgement (R2 seed)**: Low risk — its precondition (target must have been revealed this scene) prevents cold use; it only converts an earned reveal into a shared window.
+- **Moment of Clarity (R0 seed)**: Minimal risk — grants a re-roll of an existing save, never removal, so mental attrition still functions.

@@ -8,19 +8,19 @@
 
 ### Key Findings
 
-1. **Low-to-mid tier coverage is strong; high-tier coverage is sparse.** Ranks 0–2 contain 235 of 304 total spells (~77%), providing robust foundations. Ranks 3–4 have 68 spells with limited variety, and Rank 5 has exactly one spell (*Resurrection*, Life) — 13 of 14 schools still lack legendary capstones.
+1. **Low-to-mid tier coverage is strong; high-tier coverage is sparse.** Ranks 0–2 contain 235 of 315 total spells (~75%), providing robust foundations. Rank 3 holds 58 spells but is uneven (Evocation and Telepathy have 1 each), Rank 4 has 17, and Rank 5 has 5 (*Fulminate*, *Resurrection*, *Control Weather*, *Earthquake*, *Lightning Storm*) — 10 of 14 schools still lack any R4 or R5 spell at one of those ranks, and 4 schools (War, Peace, Light, Illusion) have nothing published above R3.
 2. **Multi-target damage should use half single-target scaling at Rank 2+.** The previous "one rank lower" guideline used a flat −2 reduction that became proportionally weaker at higher ranks. The revised approach halves the single-target spell bonus for multi-target spells at R2+ (R0–R1 unchanged), creating a consistent 50% penalty that remains meaningful at all ranks. Spell Power and spell catalyst bonuses apply equally, so the actual per-target gap narrows in play — but still rewards clustering 3+ targets as an intentional AoE payoff.
 3. **Missile spells need damage type reconsideration.** Arcane Missiles/Barrage currently use blast damage (ignoring ½ AV), but the intended weakness is per-missile AV reduction. The blast property undermines this by halving AV before it applies. A neutral "arcane" damage type with full AV application per missile would better serve the design intent. Moving Arcane Barrage to Rank 3 is also under consideration as an alternative or complementary fix.
-4. **War and Peace traditions are undersized.** War has 11 spells (no Rank 3+) and Peace has 15 spells. Both lack core thematic aspects — War needs higher-rank battle magic; Peace's travel and law pillars are almost entirely unbuilt (Warded Threshold and Serene Exile are the first steps).
+4. **War, Peace, and Death traditions are undersized.** War (15 spells, R3 tier published in v0.12.0) and Peace (15) now reach R3 but stop there. Death is the thinnest above R1 (only 2 spells each at R2 and R3). All three have full audited seed sets ready for design batches.
 5. **Most classic fantasy spells are now covered.** The v0.10.0–v0.11.1 batches added the missing utility staples (Knock, Identify, Sending, Feather Fall, Comprehend Languages as Borrowed Tongue, Augury, Divination, scrying as Distant Eye/Moonlit Mirror), combat classics (Sleep, Grease, Banishment, Disintegrate, Gaseous Form, Zone of Truth, Diminish), and support classics (Resurrection, Mage Armor, arcane Haste, Stone Skin rename). Remaining absentees: Water Breathing, Spider Climb, Passwall, Web, Polymorph Others, Mass Hold Person, and the mid resurrection rungs (Revivify R3, Raise Dead R4).
-6. **16 spells remain incomplete** (lacking full mechanical descriptions), concentrated at Rank 4. *Finger of Death* and *Force Cage* were completed in v0.11.0.
+6. **Only 3 spells remain incomplete** (stub effect text): *Prismatic Missile* (Evocation R2), *Detect Life* (Life R2), *Stone Pillar* (Nature R3). The former R4 backlog (Control Weather, Tree Stride, Sandstorm, Control Winds, Earthquake, Lightning Storm, Orbiting Shards, Distortion Field, Astral Body, Teleportation Circle, and others) is fully published.
 7. **Thematic identity is well-executed.** The Arcane (transgressive/selfish) vs Mystic (reverent/communal) distinction is clear and consistently applied across all schools. Necromancy, Nature, and Tempest are exemplary in depth and coherence.
-8. **Four schools lack a Rank 1 reactive Quick Action spell.** Conjuration, Death, Nature, and Twilight have no quick defensive or support spell at R1 (Telekinetics gained *Feather Fall*, R1 quick, in v0.10.0). Every school should have at least one to ensure baseline reactive play for casters of any tradition/discipline.
-9. **School internal design needs systematic attention.** Many schools lack clear setup+payoff spell combos, consistent condition/gimmick identities, or balanced role coverage. The per-school design-space files (docs/analysis/spells/schools/) identify specific deficiencies, instantiate the synergy framework, and hold conceptual spell seeds (§13 is now a pointer).
+8. **Four schools still lack any Rank 1 Quick Action spell.** Conjuration, Death, Nature, and Twilight have no quick spell at R1. Each now has a standardized reactive-defense seed in its school file (Death's Rebuke, Bark Shield, Dusk Veil; Conjuration's in its seed table). Separately, several published R1 quick spells predate the standardized reactive pattern (+2 Dodge/Parry, school secondary, no SL scaling) and are flagged for alignment review in their school checklists (e.g. Death Ward, War Cry is offensive not reactive).
+9. **School internal design is now systematically mapped and seeded.** All 14 per-school design-space files (docs/analysis/spells/schools/) carry a full synergy declaration (setup/payoff/extender levers, solo engine, party interlock), a trait×rank coverage matrix, and an **audited seed table** (~200 seeds total) in a uniform format: every seed states its combat role, synergy role, the traits and conditions it engages, and what it combos with. Overlap-with-published and "bigger version of X" seeds were culled or converted to Heighten extensions in the 2026-07 seed audit (§13 is a pointer).
 10. **Spell tags between schools and spell lists add complexity without meaningful gameplay benefit.** Traits work better as design tools for coverage auditing (§17) than as a player-facing mechanical layer.
 11. **A "force" damage type (full AV per hit) should replace blast on 5 arcane projectile spells**, preserving blast (½ AV ignore) for concussive effects only. This clarifies the mechanical distinction between magical projectiles and explosive concussive force (§15).
 12. **Healing spell scaling matches damage scaling 1:1 for single-target**, with Quick Action healing appropriately halved and AoE healing following multi-target scaling. No major rebalancing needed (§16).
-13. **Trait coverage gaps extend beyond R0 into all ranks**, with War (27% coverage), Telekinetics (33%), Telepathy (33%), and Peace (33%) having the weakest trait×rank representation. Full trait×rank matrices for all 14 schools are provided in the per-school files (`docs/analysis/spells/schools/`), including spell progression chains, setup+payoff combo audits, and design completeness checklists.
+13. **Trait×rank coverage is tracked per school with honest gaps.** Every school's matrix in `docs/analysis/spells/schools/` now marks each slot as published, seeded (✨), covered by a proposed Heighten extension, or an honest empty cell (a deliberate non-goal — e.g. Twilight moon R5, Telekinetics crush R0/R4, Nature water R3/R4). Published coverage above R2 remains the systemic weak point; the seeds are the closing plan.
 
 ### Design Principles
 
@@ -42,49 +42,52 @@
 
 ## 2. Spell Coverage by Discipline & Tradition
 
-### 2.1 Arcane Disciplines (117 spells)
+*Counts regenerated from `docs/07-magic` on 2026-07-10.*
 
-| Discipline | R0 | R1 | R2 | R3 | R4 | R5 | Total | Completeness | Strengths | Gaps |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **Conjuration** | 3 | 6 | 6 | 5 | 4 | 0 | **24** | 83% | Versatile summons, missiles, teleport | 3 R4 incomplete, no R5 |
-| **Evocation** | 3 | 9 | 5 | 1 | 0 | 0 | **18** | 100% | Strong elemental coverage, AoE | No R3+ variety |
-| **Illusion** | 3 | 5 | 7 | 3 | 0 | 0 | **18** | 95% | Stealth, deception, utility | Seeming incomplete, no R4–5 |
-| **Necromancy** | 5 | 8 | 7 | 6 | 2 | 0 | **28** | 100% | Best-in-class depth and theme | No R5 capstone |
-| **Telepathy** | 3 | 6 | 4 | 1 | 1 | 0 | **15** | 80% | Mind control, charm | 2 incomplete, memory/communication absent |
-| **Telekinetics** | 3 | 5 | 4 | 1 | 1 | 0 | **14** | 71% | Force manipulation | 3 R2–4 incomplete |
-| **Arcane Total** | **20** | **39** | **33** | **17** | **8** | **0** | **117** | — | — | — |
+### 2.1 Arcane Disciplines (133 spells)
 
-### 2.2 Mystic Traditions (162 spells)
+| Discipline | R0 | R1 | R2 | R3 | R4 | R5 | Total | Strengths | Gaps |
+|---|---|---|---|---|---|---|---|---|---|
+| **Conjuration** | 3 | 7 | 8 | 7 | 5 | 0 | **30** | Versatile summons, missiles, teleport, best R4 tier | No R5, no R1 quick |
+| **Evocation** | 3 | 9 | 5 | 1 | 0 | 1 | **19** | Strong elemental coverage, AoE | R3–R4 hole (1 spell), Prismatic Missile stub |
+| **Illusion** | 3 | 5 | 7 | 3 | 0 | 0 | **18** | Stealth, deception, utility | Nothing above R3 |
+| **Necromancy** | 5 | 8 | 7 | 6 | 2 | 0 | **28** | Best-in-class depth and theme | No R5 capstone |
+| **Telepathy** | 3 | 7 | 6 | 1 | 2 | 0 | **19** | Mind control, influence ladder | R3 hole (1 spell), no R5 |
+| **Telekinetics** | 3 | 7 | 5 | 3 | 1 | 0 | **19** | Forced movement, positioning | Thin R3+, no in-school payoff |
+| **Arcane Total** | **20** | **43** | **38** | **21** | **10** | **1** | **133** | — | — |
 
-| Tradition | R0 | R1 | R2 | R3 | R4 | R5 | Total | Completeness | Strengths | Gaps |
-|---|---|---|---|---|---|---|---|---|---|---|
-| **Death** | 5 | 6 | 2 | 2 | 0 | 0 | **15** | 100% | Curses, decay, fear | No disease mechanics, limited R3+ |
-| **Life** | 3 | 5 | 5 | 2 | 0 | 0 | **15** | 100% | Comprehensive healing | No resurrection, limited R3+ |
-| **Light** | 4 | 8 | 3 | 3 | 0 | 0 | **18** | 94% | Anti-undead, revelation | Sense Spirits incomplete, no R4–5 |
-| **Nature** | 6 | 8 | 11 | 8 | 2 | 0 | **35** | 93% | Comprehensive variety | 2 R4 incomplete |
-| **Peace** | 3 | 4 | 3 | 3 | 0 | 0 | **13** | 100% | Defense, protection | Travel/law magic absent, no R4–5 |
-| **Tempest** | 3 | 9 | 9 | 7 | 5 | 0 | **33** | 91% | Largest tradition, excellent coverage | 3 R4 incomplete |
-| **Twilight** | 5 | 7 | 7 | 2 | 1 | 0 | **22** | 95% | Stealth, shadow, fear | Silent Night incomplete |
-| **War** | 3 | 5 | 3 | 0 | 0 | 0 | **11** | 100% | Combat buffs | Only R0–2, no R3+ |
-| **Mystic Total** | **32** | **52** | **43** | **27** | **8** | **0** | **162** | — | — | — |
+### 2.2 Mystic Traditions (182 spells)
+
+| Tradition | R0 | R1 | R2 | R3 | R4 | R5 | Total | Strengths | Gaps |
+|---|---|---|---|---|---|---|---|---|---|
+| **Death** | 5 | 6 | 2 | 2 | 0 | 0 | **15** | Curses, ancestry, fear | Thinnest above R1 (2/2/0/0), affliction-harvest gimmick unbuilt |
+| **Life** | 3 | 5 | 6 | 3 | 1 | 1 | **19** | Full resurrection ladder (Revivify/Raise Dead/Resurrection) | Detect Life stub, thin R4 breadth |
+| **Light** | 4 | 8 | 4 | 4 | 0 | 0 | **20** | Anti-undead, revelation | Nothing above R3 |
+| **Nature** | 6 | 8 | 13 | 9 | 1 | 1 | **38** | Largest school, full breadth, Control Weather R5 | Stone Pillar stub, thin R4 |
+| **Peace** | 3 | 4 | 4 | 4 | 0 | 0 | **15** | Defense, protection | Nothing above R3, travel/law pillars young |
+| **Tempest** | 3 | 10 | 9 | 6 | 4 | 2 | **34** | Healthiest top end (4×R4, 2×R5) | Near-complete — breadth polish only |
+| **Twilight** | 5 | 6 | 9 | 5 | 1 | 0 | **26** | Stealth, shadow, dreams, divination | Fate trait unbuilt, no R5 |
+| **War** | 3 | 5 | 3 | 4 | 0 | 0 | **15** | Combat buffs, R3 tier published v0.12.0 | Nothing above R3 |
+| **Mystic Total** | **32** | **52** | **50** | **37** | **7** | **4** | **182** | — | — |
 
 ### 2.3 System-Wide Distribution
 
 | Rank | Arcane | Mystic | Total | Status |
 |---|---|---|---|---|
 | 0 | 20 | 32 | **52** | ✅ Excellent — strong cantrip foundations |
-| 1 | 39 | 52 | **91** | ✅ Excellent — broad basic options |
-| 2 | 33 | 43 | **76** | ✅ Strong — Fireball-tier diversity |
-| 3 | 17 | 27 | **44** | ⚠️ Adequate — limited variety in some schools |
-| 4 | 8 | 8 | **16** | ❌ Sparse — 64% incomplete |
-| 5 | 0 | 0 | **0** | ❌ Missing — all schools lack capstones |
-| **Total** | **117** | **162** | **279** | — |
+| 1 | 43 | 52 | **95** | ✅ Excellent — broad basic options |
+| 2 | 38 | 50 | **88** | ✅ Strong — Fireball-tier diversity |
+| 3 | 21 | 37 | **58** | ⚠️ Adequate in total, uneven — Evocation and Telepathy have 1 each |
+| 4 | 10 | 7 | **17** | ❌ Sparse — 8 of 14 schools have zero R4 spells |
+| 5 | 1 | 4 | **5** | ❌ Nascent — Fulminate, Resurrection, Control Weather, Earthquake, Lightning Storm; 10 schools have none |
+| **Total** | **133** | **182** | **315** | — |
 
 **Key Observations**:
-- **Excellent coverage**: Necromancy (28), Nature (35), Tempest (33) are the best-developed schools.
-- **Undersized**: War (11), Peace (13), Telekinetics (14), Telepathy (15), Life (15), Death (15).
-- **Rank 4 bottleneck**: Only 16 spells exist, with 9 incomplete (56%). This is the critical gap in the progression path.
-- **Rank 5 absent**: Zero legendary spells exist across all 14 schools.
+- **Excellent coverage**: Nature (38), Tempest (34), Conjuration (30), Necromancy (28) are the best-developed schools. Tempest is the only school with a healthy R4–R5 tier.
+- **Undersized**: Death, Peace, War (15 each) — and Death is the weakest by shape, not just size (2/2/0/0 above R1).
+- **Rank 3 unevenness**: the total looks adequate but Evocation (1) and Telepathy (1) have holes right where their damage/control curves should peak.
+- **Rank 4–5 is the frontier**: only 22 spells above R3 across the system, concentrated in 6 schools. Four schools (War, Peace, Light, Illusion) have nothing above R3 at all.
+- **Incomplete backlog cleared to 3 stubs**: Prismatic Missile (Evocation R2), Detect Life (Life R2), Stone Pillar (Nature R3).
 
 ---
 
@@ -512,62 +515,47 @@ All resurrection spells should carry heavy costs: material costs (consumed), fat
 |---|---|---|---|
 | ~~Finger of Death (Necromancy)~~ | — | **4** | ✅ Resolved — published at R4 in v0.11.0 |
 | ~~Force Cage (Conjuration)~~ | — | **4** | ✅ Resolved — published at R4 in v0.11.0 (durability stats, breakable) |
-| Astral Body (Conjuration) | 4 | **5** | Astral projection is peak mortal magic, even bounded |
-| Teleportation Circle (Conjuration) | 3 | **4** | Long-distance network creation is an R4 infrastructure concept |
-| Wave of Madness (Telepathy) | 3 | **3–4** | Mass confusion depends on area and duration |
-| Silent Night (Twilight) | 2 | **2–3** | Sleep + silence combo may exceed R2 conceptual scope |
-| Sense Spirits (Light) | 1 | **1–2** | Wide-area spiritual detection unclear in scope |
+| ~~Teleportation Circle (Conjuration)~~ | — | **4** | ✅ Resolved — published at R4 |
+| ~~Wave of Madness, Silent Night, Sense Spirits~~ | — | — | ✅ Resolved — published complete at their ranks |
+| Astral Body (Conjuration/Telepathy, shared) | 4 | **4–5** | Astral projection is peak mortal magic; published at R4, re-validate against the R5 ceiling when the schools' R5 batches are designed |
+| Prismatic Missile (Evocation) | 2 | **2** | Stub — validate on completion |
+| Detect Life (Life) | 2 | **2** | Stub — validate on completion |
+| Stone Pillar (Nature) | 3 | **3** | Stub — validate on completion (ceiling-crush wording needs bounding) |
 
 ---
 
-## 9. Incomplete Spells & Missing Rank 5
+## 9. Incomplete Spells & the R4–R5 Frontier
 
-### 9.1 Incomplete Spells (16 remaining)
+### 9.1 Incomplete Spells (3 remaining)
 
-*Finger of Death (Necromancy R4) and Force Cage (Conjuration R4) were completed and published in v0.11.0.*
+The former 16-spell backlog is cleared. Remaining stubs (placeholder effect text only):
 
-**Critical Priority (core gameplay gaps)**:
-- Silent Night (Twilight R2) — Silence area, blocks spellcasting
-- Seeming (Illusion R3) — Group disguise, essential utility
-- Wave of Madness (Telepathy R2) — AoE mind control
-- Orbiting Shards (Telekinetics R2) — Defensive circling projectiles
+- **Prismatic Missile** (Evocation R2) — multi-element missile concept
+- **Detect Life** (Life R2) — life-sense divination
+- **Stone Pillar** (Nature R3) — terrain-shaping pillar (current stub text implies a ceiling-crush use that needs bounding at design time)
 
-**High-Tier Spells (strengthen R4 options)**:
-- Teleportation Circle (Conjuration R4), Astral Body (Conjuration R4)
-- Invade Dreams (Telepathy R3), Distortion Field (Telekinetics R3), Invert Gravity (Telekinetics R4)
+### 9.2 The Rank 4–5 Frontier
 
-**Environmental/Situational**:
-- Control Weather (Nature R4), Tree Stride (Nature R4)
-- Sandstorm (Tempest R4), Control Winds (Tempest R4), Earthquake (Tempest R4), Lightning Storm (Tempest R4)
-- Sense Spirits (Light R1)
+5 R5 spells and 17 R4 spells are published; 10 schools lack R5 and 8 lack R4. Per-school status (seeds = audited concepts in `docs/analysis/spells/schools/`, 2026-07 audit):
 
-### 9.2 Missing Rank 5 Spells
+| School | Published R4 / R5 | Top-tier seeds ready | Next design target |
+|---|---|---|---|
+| War | 0 / 0 | Blood Frenzy, Champion's Challenge, Siege Breaker (R4); Avatar of War, Final Triumph, Divine Retribution (R5) | R4 batch |
+| Peace | 0 / 0 | R4–R5 seeds incl. travel/law pillar capstones | R4 batch |
+| Light | 0 / 0 | Divine Judgement, Hallowed Radiance (R4); Dawnbreak, Final Judgement (R5) | R4 batch |
+| Illusion | 0 / 0 | Phantasmal Catastrophe (R4); Mirage Arcane, Maze of Madness (R5) + Major Illusion Heighten | R4 batch |
+| Death | 0 / 0 | Pestilence (R4); Inexorable Doom, Pall of the Grave, Ancestral Convergence (R5) — but R2–R3 first | R2–R3 batch first |
+| Evocation | 0 / 1 | R3–R4 seeds (R3 hole is the priority, not R5) | R3–R4 batch |
+| Telepathy | 2 / 0 | Shatter Psyche, Prescient Awareness (R4 additions); Psychic Maelstrom, Absolute Control, Mindwipe (R5) | R3 hole, then R5 |
+| Telekinetics | 1 / 0 | Telekinetic Storm, Telekinetic Flight, Repulsion Field (R4); Annihilating Wave (R5) + Heighten extensions | R2–R3 payoffs first |
+| Twilight | 1 / 0 | Eclipse, Dreamwalking, Prophecy, Veil of Secrets (R4); Dream Realm, Shadowform, Fate's Decree, Phantom World (R5) | R2–R3 engine rungs first |
+| Necromancy | 2 / 0 | Necrotic Plague, Soul Cage, Possess Corpse (R4); Soul Harvest, Entropy, Eternal Servitude, Desecration (R5) | R5 batch |
+| Conjuration | 5 / 0 | R5 seeds (best R4 tier already) | R5 batch |
+| Life | 1 / 1 | R4 breadth seeds around the resurrection ladder | R4 breadth |
+| Nature | 1 / 1 | Primal Guardian, Verdant Restoration (R4); Cataclysmic Eruption, Primeval Form, Primal Awakening (R5) | R4 batch |
+| Tempest | 4 / 2 | Breadth polish seeds only | Healthy — lowest priority |
 
-All 14 schools lack Rank 5 capstones. Recommended concepts (D&D Level 7 power, NOT Level 9):
-
-**Arcane Disciplines**:
-
-| Discipline | Spell Concepts | Role |
-|---|---|---|
-| Evocation | Delayed Meteor (+10/+20/+30 AoE, delayed), Prismatic Barrier (multi-resist defense) | Offense, Defense |
-| Illusion | Perfect Disguise (undetectable), Mass Phantasmal Force (6-target illusions) | Utility, Control |
-| Conjuration | Planar Gateway (bounded portal), Enhanced Summoning (tier 4 creature) | Utility, Support |
-| Telepathy | Mental Fortress (6-ally charm/fear immunity), Psychic Maelstrom (+10/+20/+30 cone) | Support, Offense |
-| Telekinetics | Gravity Reversal (medium area reversal), Kinetic Barrier (40 HP shield) | Utility, Defense |
-| Necromancy | Army of Shadows (4–6 tier 2 undead), Death's Master (undead transformation) | Control, Offense |
-
-**Mystic Traditions**:
-
-| Tradition | Spell Concepts | Role |
-|---|---|---|
-| Light | Radiant Convergence (+10/+20/+30 line), Beacon of Truth (zone of truth) | Offense, Support |
-| Twilight | Dream Realm (shared dream), Shadow Apotheosis (shadow transformation) | Utility, Offense |
-| Life | Mass Restoration (+12/+24/+36 AoE heal), Vitality Field (healing zone) | Healing, Support |
-| Death | Plague Wind (+10/+20/+30 disease cone), Death's Grasp (ongoing necrotic) | Offense, Control |
-| Nature | Primal Awakening (animate tier 4 construct), Nature's Wrath (+10/+20/+30 cone) | Support, Offense |
-| Tempest | Storm Lord (storm transformation + flight), Tempest's Fury (medium area storm) | Offense, Control |
-| Peace | Sanctuary Sphere (zone of peace), Harmonic Bond (6-ally link) | Defense, Support |
-| War | Warlord's Presence (warrior avatar), Battlefield Commander (tactical control) | Offense, Support |
+The old concept lists formerly in this section are superseded by the per-school seed tables, which carry synergy roles and tag engagement per seed.
 
 **Rank 5 Design Principles**:
 1. Maximum +12 weak base damage (single-target) or +10 (AoE).
@@ -584,12 +572,14 @@ All 14 schools lack Rank 5 capstones. Recommended concepts (D&D Level 7 power, N
 
 ### 10.1 Most Urgent Expansions
 
-| School | Current | Target | Priority Additions |
+| School | Current | Target (published + seeds) | Priority Additions |
 |---|---|---|---|
-| **War** | 11 | ~20 | R3–5 battle tactics, champion powers, formations |
-| **Peace** | 15 | ~25 | Travel magic (only Warded Threshold published), law enforcement (Binding Oath, Compel Truth — Zone of Truth went to Light) |
-| **Telepathy** | 18 | ~30 | Memory spells, higher-rank influence ladder (Sending, Identify, Borrowed Tongue published in v0.10.0) |
-| **Telekinetics** | 18 | ~26 | Complete 3 incompletes, movement utility (Spider Climb, Passwall — Feather Fall published), R5 capstones |
+| **Death** | 15 | ~31 | R2–R3 first (2 spells each today): the affliction-harvest engine (Grave Chill, Weight of Dooms, The Reckoning) before any R4–R5 |
+| **War** | 15 | ~28 | R4–R5 battle magic (Blood Frenzy, Champion's Challenge, Avatar of War) — R3 tier published in v0.12.0 |
+| **Peace** | 15 | ~34 | Travel and law pillars through R5 (Binding Oath, Safe Passage, Sanctuary Sphere) |
+| **Evocation** | 19 | ~38 | R3–R4 hole (1 spell at R3, 0 at R4 despite an R5): Chain Lightning, Cone of Cold, Wall of Fire tier |
+| **Telepathy** | 19 | ~36 | R3 hole (1 spell), then the influence-ladder top (Break the Will, Absolute Control) |
+| **Telekinetics** | 19 | ~30 | In-school payoffs at R2–R3 (Grinding Weight, Kinetic Implosion, Meteoric Throw), then R4–R5 |
 
 ### 10.2 Per-School Suggestions
 
@@ -597,15 +587,15 @@ All 14 schools lack Rank 5 capstones. Recommended concepts (D&D Level 7 power, N
 
 ## 11. Strengths to Preserve
 
-✅ **Necromancy excellence** — Comprehensive, flavorful, mechanically sound (28 spells, 97% complete). Best-in-class depth across raising, controlling, draining, and decay.
+✅ **Necromancy excellence** — Comprehensive, flavorful, mechanically sound (28 spells). Best-in-class depth across raising, controlling, draining, and decay.
 
-✅ **Nature breadth** — Excellent variety across animals, plants, earth, weather (35 spells, 93% complete). Covers all tradition aspects meaningfully.
+✅ **Nature breadth** — Largest school (38 spells) with excellent variety across animals, plants, earth, water, poison, and a published R5 (Control Weather).
 
-✅ **Tempest depth** — Largest tradition (33 spells) with strong coverage of storms, lightning, frost, and earthquakes.
+✅ **Tempest depth** — 34 spells and the system's healthiest top end (4 at R4, 2 at R5).
 
 ✅ **Elemental coverage** — Fire, frost, lightning thoroughly represented across Evocation and Tempest with clear mechanical distinction.
 
-✅ **Low-to-mid tier foundations** — Ranks 0–2 provide 219 spells, giving new characters robust options from the start.
+✅ **Low-to-mid tier foundations** — Ranks 0–2 provide 235 spells, giving new characters robust options from the start.
 
 ✅ **Thematic identity** — Clear and consistently applied Arcane (transgressive/selfish) vs Mystic (reverent/communal) distinction. Each school has a recognizable personality.
 
@@ -615,72 +605,69 @@ All 14 schools lack Rank 5 capstones. Recommended concepts (D&D Level 7 power, N
 
 ---
 
-## 12. Summary of Recommendations
+## 12. Summary of Recommendations — Road to Fully Healthy Schools
 
-### Priority 1 — Adopted Scaling Changes (Implement Now)
+*Reworked 2026-07-10 after the seed audit. "Fully healthy" means: no stubs, every school has its R1 reactive, its declared synergy engine has published rungs at every stage (setup, payoff, extender), its Excels/Decent roles are covered R0–R5, and it has at least one R4 and one R5 spell. Every design batch below draws from the audited seed table in the school's file and runs through the spell-design skill.*
 
-| # | Action | Impact |
-|---|---|---|
-| 1.1 | **Adopt half-damage AoE scaling at R2+** — Multi-target spell bonus = 50% of single-target (R0–R1 unchanged). Existing R2+ AoE spells need systematic damage reduction. | Consistent 50% penalty replaces shrinking "one rank lower" gap |
-| 1.2 | **Adopt area progression by rank** — R0–R1 single/melee only, R2 close/short line, R3 short area, R4 medium area, R5 long area. Nerf Lightning Strike/Bolt from medium line to short line. | Clear area-power budget per rank |
-| 1.3 | **Replace blast damage on missiles with force/arcane type** — Full AV per missile hit, restoring intended per-missile AV weakness | Fixes blast property undermining missile balance design |
-
-### Priority 2 — Critical Balance (Immediate)
+### Priority 1 — Finish What Is Started (small, immediate)
 
 | # | Action | Impact |
 |---|---|---|
-| 2.1 | Move Arcane Barrage to Rank 3 (or apply multi-target scaling at R2) | Prevents R2 missile throughput exceeding R3 single-target |
-| 2.2 | Audit 3 potentially mis-ranked spells (Mind Blast, Elemental Ward, Silence) | Tighten R0–R1 balance for unlimited/cheap casting |
-| 2.3 | Review Corpse Explosion (R2) AoE dealing single-target damage | Ensure consistent scaling or document exception |
+| 1.1 | Complete the 3 remaining stubs: **Prismatic Missile** (Evocation R2), **Detect Life** (Life R2), **Stone Pillar** (Nature R3) | Zero incomplete spells in the published docs |
+| 1.2 | Publish the pending Heighten extensions logged in school files: Moonbeam R3–R5 (Twilight), Spectral Army R4–R5 (Necromancy), Shockwave / Telekinetic Volley / Gravity Orb / Strong Telekinesis (Telekinetics), Major Illusion R3–R4 (Illusion) | Covers many upper trait×rank slots without new spell entries (principle 3) |
+| 1.3 | ~~Acid Splash durability rework~~ **Rejected by owner** (2026-07-10, principle 51): published R0 text (ignore 1/2 AV) stays — at-will Durability checks are far too powerful. Acid's Durability identity starts at R2+ (§15B) | Decision recorded; no doc change |
+| 1.4 | Fix stale **"encumbrance limit"** → **carrying capacity** in Weak Telekinesis and Strong Telekinesis (principle 52; system-wide sweep found no other spells) | Published text matches current Carrying Capacity rules |
 
-### Priority 3 — School Internal Completeness (see the per-school files in schools/)
+### Priority 2 — Sick Schools First (design batches, worst shape first)
+
+| # | Batch | Why first |
+|---|---|---|
+| 2.1 | **Death R2–R3** (Grave Chill, Curse of Frailty, Weight of Dooms, Harvest seeds through The Reckoning) | Thinnest school above R1 (2/2/0/0); its signature affliction-harvest gimmick has zero published rungs |
+| 2.2 | **Evocation R3–R4** (Chain Lightning, Corrosive Torrent, Cone of Cold, Wall of Fire, Voltaic Surge tier) | The flagship damage school has 1 spell at R3 and 0 at R4 — casters lose their damage curve exactly where it should peak |
+| 2.3 | **Telepathy R3** (Psychic Lance, Psychic Probe, Puppet's Step, Implant Suggestion) | 1 spell at R3; the influence ladder (dazed → charmed → commanded) is missing its middle rungs |
+| 2.4 | **Telekinetics R2–R3 payoffs** (Grinding Weight, Relentless Grip, Kinetic Implosion, Meteoric Throw) | The premier setup school has near-zero in-school payoff — its engine cannot close a loop alone |
+| 2.5 | **Twilight R2 engine rungs** (Fangs of the Dark, Shadow Mantle, Written in the Stars) | The stated "cast from darkness" core and the fate trait have no published mechanics |
+
+### Priority 3 — R1 Reactive Baseline
 
 | # | Action | Impact |
 |---|---|---|
-| 3.1 | Add R1 Quick Action reactive spells to 4 schools missing them (Conjuration, Death, Nature, Twilight — Telekinetics got Feather Fall in v0.10.0) | Every school gets baseline reactive play |
-| 3.2 | Add defensive options to offense-heavy schools (Evocation, War, Tempest) | Ensures no school is purely one-dimensional |
-| 3.3 | Add utility/non-combat spells to combat-focused schools | Supports exploration and downtime for all caster types |
-| 3.4 | Establish consistent condition/gimmick identities per school | Creates recognizable mechanical personality |
-| 3.5 | Design setup+payoff spell combos within each school | Rewards investing deeply in one school |
+| 3.1 | Design the 4 missing R1 Quick Action reactives from their seeds: Conjuration (Arcane Deflection), Death (Death's Rebuke), Nature (Bark Shield), Twilight (Dusk Veil) | Every school gets baseline reactive play |
+| 3.2 | Align pre-standard R1 quick spells with the reactive pattern where flagged (Death Ward, Rapid Vitality, Share Harm, etc. — see school checklists) | One consistent reactive chassis across all 14 schools (principle 4) |
 
-### Priority 4 — Complete Existing Content
+### Priority 4 — Raise Every School to R4 (four schools have nothing above R3)
 
-| # | Action | Impact |
+| # | Batch | Seeds |
 |---|---|---|
-| 4.1 | Complete the 16 remaining incomplete spells (Finger of Death and Force Cage done in v0.11.0) | Fills core gaps, enables full R4 tier |
-| 4.2 | Validate rank placement of incomplete spells during implementation | Prevents creating new misalignment |
+| 4.1 | **War R4** | Blood Frenzy, Champion's Challenge, Siege Breaker |
+| 4.2 | **Peace R4** | Pilgrim's Gate, Redemptive Sacrifice |
+| 4.3 | **Light R4** | Divine Judgement, Hallowed Radiance |
+| 4.4 | **Illusion R4** | Phantasmal Catastrophe (+ Major Illusion Heighten covers trickery R4) |
+| 4.5 | **Nature / Life / Twilight / Necromancy R4 breadth** (each has 1–2) | Primal Guardian, Verdant Restoration; Greater Restoration, Life Ward; Eclipse, Dreamwalking, Prophecy, Veil of Secrets; Necrotic Plague, Soul Cage, Possess Corpse |
 
-### Priority 5 — Expand High Tiers
+### Priority 5 — R5 Capstones (target: at least one per school; 10 schools have none)
 
-| # | Action | Impact |
+| # | Batch | Seeds |
 |---|---|---|
-| 5.1 | Design and implement 28 Rank 5 capstones (2 per school) | Creates legendary magic tier across all schools |
-| 5.2 | Fill Rank 3–4 gaps in Evocation, War, Death | Provides progression path variety |
-| 5.3 | Implement resurrection framework: Revivify R3, Raise Dead R4, Resurrection R5 | Provides gritty bronze age resurrection scaling |
+| 5.1 | Conjuration (best R4 tier, R5-ready) | Planar Gateway, Binding Seal, Arcane Genesis, Planar Conscription |
+| 5.2 | Necromancy | Soul Harvest, Entropy, Eternal Servitude, Desecration |
+| 5.3 | War, Peace, Light, Illusion (after their P4 batches) | Avatar of War, Final Triumph, Divine Retribution; Sanctuary Sphere, Sacred Covenant, The Pilgrim's Road; Dawnbreak, Final Judgement; Mirage Arcane, Maze of Madness |
+| 5.4 | Telepathy, Telekinetics, Twilight, Death | Psychic Maelstrom, Absolute Control, Mindwipe; Annihilating Wave; Dream Realm, Shadowform, Fate's Decree, Phantom World; Inexorable Doom, Pall of the Grave, Ancestral Convergence |
+| 5.5 | Resolve the two flagged R5 overlaps before designing: **Phantom World vs. Mirage Arcane** (Twilight/Illusion reality-illusions) and **Annihilating Wave vs. Cataclysmic Eruption** (kinetic AoE + terrain destruction) | No duplicate identities at the capstone tier |
 
-### Priority 6 — Fill Classic & Thematic Gaps
+### Priority 6 — Carried-Over Balance Items (still open)
 
-| # | Action | Impact |
+| # | Action | Status |
 |---|---|---|
-| 6.1 | ~~Add ~30 classic fantasy spells~~ Mostly done (v0.10.0–v0.11.1); ~7 remain (Water Breathing, Spider Climb, Passwall, Web, Polymorph Others, Mass Hold Person, Revivify/Raise Dead) | Meets player expectations from genre |
-| 6.2 | Expand War (→ ~20 spells) and Peace (→ ~25 spells) traditions | Addresses smallest-school problem |
-| 6.3 | Add missing thematic content (disease, memory, prophecy; resurrection anchored by R5 Resurrection, mid rungs Revivify/Raise Dead still open) | Fills narrative gaps |
+| 6.1 | **Force damage type conversion** (§15): Arcane Missiles/Barrage and 3 others still use blast | Open — not yet implemented in docs |
+| 6.2 | Review **Corpse Explosion** (R2 AoE at full single-target +6/+12/+18; recommended +4/+8/+12) | Open — unchanged in docs |
+| 6.3 | Audit flagged mis-ranked spells: Mind Blast (R0 daze), Elemental Ward, Silence, Shadow Stride, Protect from Influence, Solar Flare (§8) | Open |
+| 6.4 | Systematic R2+ AoE damage pass under the half-scaling rule (§6–7) | Open — verify per school during its design batch |
+| 6.5 | Re-validate **Astral Body** (R4, shared Conjuration/Telepathy) against the R5 ceiling during those schools' R5 batches | Open |
 
-### Priority 7 — Damage Type Refinement (See §15)
+### Sequencing Note
 
-| # | Action | Impact |
-|---|---|---|
-| 7.1 | **Introduce "force" damage type** — Full AV per hit, for neutral magical projectiles. Convert 5 blast spells (Arcane Bolt, Arcane Glyph, Arcane Missiles, Arcane Barrage, Hale of Blades) to force | Separates magical projectiles (force, full AV) from concussive effects (blast, ½ AV ignore) |
-| 7.2 | Keep blast damage on concussive spells (Kinetic Push, Shockwave, Gust, Thunder Clap, etc.) | Preserves thematic identity of explosive/concussive effects |
-| 7.3 | Audit remaining blast spells for correct categorization | Ensures consistent damage type application |
-
-### Priority 8 — Trait Coverage Gaps (See §17)
-
-| # | Action | Impact |
-|---|---|---|
-| 8.1 | Fill R0 trait gaps for worst-coverage schools (Evocation acid/air, Telepathy domination/memory, Telekinetics levitate/crush/gravity) | Ensures all traditions/disciplines have cantrip-level representation of their core aspects |
-| 8.2 | Fill R0 trait gaps for mystic traditions (Peace travel/law, Tempest earthquakes/sandstorms/floods, Twilight fate) | Provides thematic completeness at the entry level |
-| 8.3 | Use trait coverage table (§17) as ongoing design audit tool when adding new spells | Systematic approach to filling gaps across all ranks |
+Priorities 1–3 are small and unblock the rest. Priorities 4–5 are the bulk design work — run them as per-school batches (a school's P4 and P5 batch can be combined when its seed table is strong, e.g. War, Light, Twilight). Priority 6 items piggyback on whichever batch touches the affected school. When a school's batch lands, update its file's inventory, matrix, chains, and checklist, tick it here, and sync docs → JSON → Notion per the publication pipeline.
 
 ---
 
@@ -737,7 +724,7 @@ The proposed **spell tags system** would formalize these traits into a mechanica
 
 **Pathfinder 2e Traditions + Traits**: PF2e uses a two-layer system where spells belong to traditions (Arcane, Divine, Occult, Primal) AND have traits (fire, mental, healing, etc.). Traits serve mechanical functions (resistance interactions, trigger conditions) beyond organization. This works because PF2e has ~700 spells and complex interactions that benefit from granular tagging.
 
-**Nexus RPG Context**: With 279 spells across 14 schools, the current system is small enough that tradition-level organization is sufficient. Each school has 11–35 spells — small enough to browse directly. The PF2e model works for larger spell lists but adds overhead that isn't justified at Nexus's current scale.
+**Nexus RPG Context**: With 315 spells across 14 schools, the current system is small enough that tradition-level organization is sufficient. Each school has 15–38 spells — small enough to browse directly. The PF2e model works for larger spell lists but adds overhead that isn't justified at Nexus's current scale.
 
 ### 14.5 Conclusion
 
@@ -747,7 +734,7 @@ The existing trait system already provides thematic guidance for spell design wi
 
 **Tags are better used as a DESIGN TOOL** for ensuring trait coverage (see §17) rather than a player-facing mechanic. The trait coverage audit in §17 demonstrates how traits can systematically identify gaps in each school's spell list — this design-side benefit is achieved without exposing tags to players.
 
-If the spell list grows significantly (500+ spells), revisiting tags as an organizational aid may become worthwhile. At the current 279-spell scale, tradition-level access is sufficient.
+If the spell list grows significantly (500+ spells), revisiting tags as an organizational aid may become worthwhile. At the current ~315-spell scale, tradition-level access is sufficient.
 
 ---
 
@@ -864,14 +851,14 @@ Acid damage's unique identity is **equipment degradation** — weakening enemies
 
 Acid spells interact with the existing **Durability system** (items have 3 uses, Durability die rolled on check, 1–3 = lose a use, last use = damaged, damaged + fail = broken):
 
-- **R0 (Acid Splash)**: Force a **Durability check** on one piece of equipment. No direct AV reduction — the degradation is gradual but permanent (failed checks are real equipment damage, not temporary).
-- **R2 (Acid Rain)**: Zone-based Durability pressure — creatures staying in the zone face repeated checks. No immediate AV reduction.
+- **R0 (Acid Splash)**: **No Durability interaction — owner decision (2026-07-10, principle 51).** The published weak static rider (ignore 1/2 AV) is intentional and stays. At-will Durability checks are far too powerful: an R0 spell spammed every turn grinds equipment to dust for free. Attrition riders start at Focus-costed ranks.
+- **R2 (Acid Rain)**: Zone-based Durability pressure — creatures staying in the zone face repeated checks. No immediate AV reduction. **The entry rank for acid's Durability identity.**
 - **R3 (Corrosive Torrent)**: Combine Durability checks with **temporary AV reduction** lasting at least a **short duration**. This is the payoff rank where acid becomes tactically impactful.
 - **R5 (Dissolving Wave)**: Mass Durability devastation with significant AV reduction (short duration). The capstone acid spell.
 
 ### 15B.3 Balance Rationale
 
-- **No R0 AV reduction**: Direct AV reduction at cantrip level is too fiddly (track −1 AV for one turn) and too powerful (free permanent damage reduction bypass). Durability checks have existing tracking infrastructure and create meaningful long-term consequences.
+- **No R0 Durability or AV reduction**: at-will attrition riders are free equipment destruction over enough turns (principle 51), and direct AV reduction at cantrip level is too fiddly and too powerful. The cantrip keeps its weak static rider; the degradation identity begins at R2 where casts cost Focus.
 - **Short duration minimum**: When AV reduction does appear (R3+), it lasts at least a short duration. Brief (1-turn) AV reduction creates excessive bookkeeping for minimal tactical impact. Short duration (several rounds) creates a meaningful window to exploit.
 - **Durability as identity**: Unlike other elements (fire=burning, frost=slowed, lightning=staggered), acid's identity is "your stuff gets worse." This interacts with the Crafting/repair downtime system, creating cross-pillar gameplay.
 
@@ -991,266 +978,39 @@ Based on the established patterns, healing at higher ranks should follow:
 
 ---
 
-## 17. Trait Coverage Audit (Rank 0 and Cross-Rank)
+## 17. Trait Coverage Audit — Moved
 
-### 17.1 Methodology
+**Superseded by the per-school Trait × Rank Coverage Matrices** in `docs/analysis/spells/schools/<school>.md` (2026-07 seed audit). Those matrices are the maintained layer: each of the 30 trait×rank slots per school is marked as published, seeded (✨), covered by a proposed Heighten extension, or an honest empty cell. The R0 cantrip proposals formerly listed here (Surface Recall, Miasma, Minor Hex, Moment of Clarity, Stern Gaze, Righteous Strike, Tremor, Sand Gust, Splash, Gravity Shift, Wayfinder's Mark, and others) were absorbed into the school seed tables with full role and synergy annotations.
 
-Each school defines 3–5 traits (aspects) that represent its thematic identity. This audit checks whether at least one spell exists for each trait at Rank 0 (cantrip level), providing entry-level representation of the school's full identity. Cross-rank coverage is also assessed.
+Use the school matrices as the ongoing design audit tool: before designing a new spell, check the school's matrix and prioritize filling seeded gaps over adding depth to covered traits.
 
-### 17.2 Arcane Discipline Coverage
-
-#### Evocation: fire, frost, lightning, acid, air
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| fire | ✅ | ✅ | ✅ | ✅ | — | — | Well-covered (Firebolt, Fireball, etc.) |
-| frost | ✅ | ✅ | ✅ | — | — | — | Frost Bolt, Ice Lance, Frost Wave |
-| lightning | ✅ | ✅ | ✅ | — | — | — | Shock, Lightning Strike |
-| acid | ❌ | ✅ | — | — | — | — | No R0 acid cantrip — gap (proposed: Acid Splash via Durability) |
-| air | ❌ | — | — | — | — | — | No R0 air cantrip — gap (proposed: Air Burst) |
-
-**R0 gaps**: acid, air (2 missing). Evocation cantrips cover fire/frost/lightning but lack acid and air pressure options.
-
-> **Trait Rename**: The "blast" trait has been renamed to **"air"** to represent raw elemental air pressure (concussive blasts, vacuum, compressed wind). This distinguishes Evocation's transgressive air manipulation from Tempest's natural storm weather. Spells using this trait still deal blast *damage type* (½ AV ignore) — the trait name changes, not the damage type.
-
-#### Illusion: trickery, misdirection, obfuscation, hallucinations, distortion
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| trickery | ✅ | ✅ | ✅ | ✅ | — | — | Minor Illusion, Phantasmal Force |
-| misdirection | ✅ | ✅ | ✅ | — | — | — | Distracting Whisper, Mirror Image |
-| obfuscation | ✅ | ✅ | ✅ | — | — | — | Blur, Invisibility |
-| hallucinations | — | ✅ | ✅ | ✅ | — | — | Phantasmal Force, Phantasmal Killer |
-| distortion | ❌ | — | ✅ | — | — | — | Arguably covered by Minor Illusion; no dedicated R0 distortion |
-
-**R0 gaps**: distortion (1 missing, arguable). Good overall coverage.
-
-#### Conjuration: objects, creatures, teleportation, binding, force
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| objects | ✅ | ✅ | ✅ | ✅ | ✅ | — | Conjure tools, weapons, barriers |
-| creatures | ❌ | ✅ | ✅ | ✅ | ✅ | — | No R0 creature summon — gap |
-| teleportation | ❌ | — | ✅ | ✅ | ✅ | — | No R0 teleport cantrip — gap |
-| binding | — | ✅ | ✅ | ✅ | — | — | Force bindings |
-| force | ✅ | ✅ | ✅ | ✅ | — | — | Arcane Bolt, Missiles, Barrage |
-
-**R0 gaps**: creatures, teleportation (2 missing).
-
-#### Telepathy: influence, communication, insight, domination, memory
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| influence | ✅ | ✅ | ✅ | — | — | — | Mind Blast, Charm |
-| communication | ✅ | ✅ | — | — | — | — | Detect Magic (telepathic sense) |
-| insight | ✅ | ✅ | ✅ | — | — | — | Detect Magic, True Strike |
-| domination | ❌ | ✅ | ✅ | — | ✅ | — | No R0 domination cantrip — gap |
-| memory | ❌ | — | — | — | — | — | No memory spells at any rank — major gap |
-
-**R0 gaps**: domination, memory (2 missing). Memory is absent across ALL ranks.
-
-#### Telekinetics: move, repel, levitate, crush, gravity
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| move | ✅ | ✅ | ✅ | — | — | — | Weak Telekinesis, Kinetic Pull |
-| repel | ✅ | ✅ | — | — | — | — | Kinetic Push |
-| levitate | ❌ | ✅ | ✅ | — | — | — | No R0 levitate — gap |
-| crush | ❌ | — | — | — | — | — | No crush spells at low ranks — gap |
-| gravity | ❌ | — | — | — | ✅ | — | No R0 gravity cantrip — gap |
-
-**R0 gaps**: levitate, crush, gravity (3 missing). Only move and repel have cantrip representation.
-
-#### Necromancy: decay, undeath, siphoning, defilement, puppetry
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| decay | ✅ | ✅ | ✅ | ✅ | — | — | Necrotic Grasp, Wither |
-| undeath | ✅ | ✅ | ✅ | ✅ | ✅ | — | Animate Dead, Control Undead |
-| siphoning | ✅ | ✅ | ✅ | ✅ | — | — | Life Drain, Vampiric Touch |
-| defilement | ✅ | ✅ | ✅ | — | — | — | Desecrate, Corpse Explosion |
-| puppetry | ✅ | ✅ | ✅ | ✅ | — | — | Control Undead, Animate Horde |
-
-**R0 gaps**: None (0 missing). ✅ Excellent — all 5 traits covered at R0.
-
-### 17.3 Mystic Tradition Coverage
-
-#### Light: sun, illumination, truth, clarity, judgement
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| sun | ✅ | ✅ | ✅ | ✅ | — | — | Sacred Light, Solar Flare |
-| illumination | ✅ | ✅ | ✅ | — | — | — | Light cantrip, Illuminated Sight |
-| truth | ⚠️ | ✅ | ✅ | — | — | — | Weakly covered at R0 (Sacred Light reveals hidden things) |
-| clarity | ❌ | — | — | — | — | — | No R0 clarity cantrip — gap |
-| judgement | ❌ | — | — | — | — | — | No R0 judgement cantrip — gap |
-
-**R0 gaps**: clarity, judgement (2 missing).
-
-#### Twilight: moon, dreams, secrets, fate, illusion
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| moon | ✅ | ✅ | ✅ | — | — | — | Moonlight, Dark Sight |
-| dreams | ✅ | ✅ | ✅ | — | — | — | Lullaby, dream-related effects |
-| secrets | ✅ | ✅ | ✅ | — | — | — | Obscuring Veil, Shadow Clone |
-| fate | ❌ | — | — | — | ✅ | — | No R0 fate cantrip — gap (Whispers of Doubt is fear, not fate) |
-| illusion | ✅ | ✅ | ✅ | ✅ | — | — | Shadow-based illusions |
-
-**R0 gaps**: fate (1 missing).
-
-#### Life: vitality, blessings, community, hope, fertility
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| vitality | ✅ | ✅ | ✅ | ✅ | — | — | Restore Life, Healing Touch |
-| blessings | ⚠️ | ✅ | ✅ | — | — | — | Weakly covered at R0 (Life Shield, Restore Life are blessing-adjacent) |
-| community | ✅ | ✅ | ✅ | — | — | — | Verdant Blast (heal allies), Aid |
-| hope | ✅ | ✅ | — | — | — | — | Life Shield (protection from despair) |
-| fertility | ❌ | — | — | — | — | — | No fertility spells — gap |
-
-**R0 gaps**: fertility (1 missing).
-
-#### Death: plagues, curses, fear, decay, ancestry
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| plagues | ❌ | — | — | — | — | — | No disease/plague cantrip — gap |
-| curses | ❌ | ✅ | ✅ | — | — | — | No R0 curse cantrip — gap |
-| fear | ✅ | ✅ | — | ✅ | — | — | Glimpse of Mortality |
-| decay | ✅ | ✅ | ✅ | ✅ | — | — | Decay, Wither |
-| ancestry | ✅ | ✅ | — | — | — | — | Spared from Death |
-
-**R0 gaps**: plagues, curses (2 missing).
-
-#### Nature: earth, water, poison, animals, plants
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| earth | ✅ | ✅ | ✅ | ✅ | ✅ | — | Stone-related spells |
-| water | ✅ | ✅ | ✅ | ✅ | — | — | Water manipulation |
-| poison | ✅ | ✅ | ✅ | ✅ | — | — | Toxic spells |
-| animals | ✅ | ✅ | ✅ | ✅ | ✅ | — | Beast Form, animal spells |
-| plants | ✅ | ✅ | ✅ | ✅ | — | — | Thorn, growth spells |
-
-**R0 gaps**: None (0 missing). ✅ Excellent — all 5 traits covered at R0.
-
-#### Tempest: hurricanes, earthquakes, thunderstorms, sandstorms, floods
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| hurricanes | ✅ | ✅ | ✅ | ✅ | — | — | Gust, wind spells |
-| earthquakes | ❌ | — | — | ✅ | ✅ | — | No R0 earthquake cantrip — gap |
-| thunderstorms | ✅ | ✅ | ✅ | ✅ | ✅ | — | Lightning, thunder spells |
-| sandstorms | ❌ | — | — | — | ✅ | — | No R0 sandstorm cantrip — gap |
-| floods | ❌ | — | — | ✅ | — | — | No R0 flood cantrip — gap |
-
-**R0 gaps**: earthquakes, sandstorms, floods (3 missing). Only hurricanes and thunderstorms have cantrip representation.
-
-#### Peace: calmness, protection, selflessness, travel, law
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| calmness | ✅ | ✅ | ✅ | — | — | — | Calming presence spells |
-| protection | ✅ | ✅ | ✅ | ✅ | — | — | Blessing of Peace, barriers |
-| selflessness | ✅ | ✅ | — | — | — | — | Share Harm |
-| travel | ❌ | — | — | — | — | — | No travel spells at any rank — major gap |
-| law | ❌ | — | — | — | — | — | No law/justice spells at any rank — major gap |
-
-**R0 gaps**: travel, law (2 missing). Both are absent across ALL ranks — major thematic gaps.
-
-#### War: fury, pride, blood, justice, triumph
-
-| Trait | R0 | R1 | R2 | R3 | R4 | R5 | Notes |
-|---|---|---|---|---|---|---|---|
-| fury | ✅ | ✅ | ✅ | — | — | — | War Cry, weapon blessings |
-| pride | ✅ | ✅ | — | — | — | — | Battle presence effects |
-| blood | ⚠️ | ✅ | ✅ | — | — | — | Weakly covered at R0 (combat spells involve blood thematically) |
-| justice | ❌ | — | — | — | — | — | No R0 justice cantrip — arguably covered by War's combat honor |
-| triumph | ❌ | — | — | — | — | — | No R0 triumph cantrip — gap |
-
-**R0 gaps**: justice, triumph (2 missing, arguably covered by War's general combat theme).
-
-### 17.4 R0 Gap Summary
-
-| School | Traits | R0 Coverage | R0 Gaps | Severity |
-|---|---|---|---|---|
-| **Necromancy** | 5 | **5/5** ✅ | None | — |
-| **Nature** | 5 | **5/5** ✅ | None | — |
-| **Illusion** | 5 | **4/5** | distortion (arguable) | Low |
-| **Twilight** | 5 | **4/5** | fate | Low |
-| **Life** | 5 | **4/5** | fertility | Low |
-| **Conjuration** | 5 | **3/5** | creatures, teleportation | Medium |
-| **Light** | 5 | **3/5** | clarity, judgement | Medium |
-| **Death** | 5 | **3/5** | plagues, curses | Medium |
-| **War** | 5 | **3/5** | justice, triumph | Medium |
-| **Evocation** | 5 | **3/5** | acid, air | Medium |
-| **Telepathy** | 5 | **3/5** | domination, memory | Medium–High |
-| **Peace** | 5 | **3/5** | travel, law | High (absent ALL ranks) |
-| **Telekinetics** | 5 | **2/5** | levitate, crush, gravity | High |
-| **Tempest** | 5 | **2/5** | earthquakes, sandstorms, floods | High |
-
-### 17.5 Priority Gap-Fill Recommendations
-
-#### Highest Priority (traits absent across ALL ranks)
-
-| School | Missing Trait | Proposed Cantrip | Effect |
-|---|---|---|---|
-| **Peace** | travel | *Wayfinder's Mark* (R0) | Briefly mark a path; allies gain +1 boon on navigation within close range |
-| **Peace** | law | *Binding Word* (R0) | Target must speak truthfully for one statement (vs. Resist); briefly only |
-| **Telepathy** | memory | *Surface Recall* (R0) | Read one surface memory from willing target; brief flashes only |
-
-#### High Priority (3 traits missing at R0)
-
-| School | Missing Traits | Proposed Cantrips |
-|---|---|---|
-| **Telekinetics** | levitate, crush, gravity | *Minor Levitation* (R0, briefly lift small object), *Pressure Grip* (R0, squeeze held target for +2/+4/+6), *Gravity Shift* (R0, briefly alter gravity on small object) |
-| **Tempest** | earthquakes, sandstorms, floods | *Tremor* (R0, briefly shake ground in melee range), *Sand Gust* (R0, blind one target briefly with sand/dust), *Splash* (R0, conjure a splash of water to push/distract) |
-
-#### Medium Priority (2 traits missing at R0)
-
-| School | Missing Traits | Proposed Cantrips |
-|---|---|---|
-| **Evocation** | acid, air | *Acid Splash* (R0, +2/+4/+6 acid damage + Durability check, shared with Nature), *Air Burst* (R0, +0/+2/+4 blast in melee area with push) |
-| **Conjuration** | creatures, teleportation | *Conjure Vermin* (R0, summon tiny creature briefly for distraction), *Blink Step* (R0, teleport to melee range briefly) |
-| **Telepathy** | domination, memory | *Commanding Thought* (R0, one brief mental command — move/stop), *Surface Recall* (see above) |
-| **Death** | plagues, curses | *Miasma* (R0, sicken one target briefly), *Minor Hex* (R0, target suffers +1 bane on next roll) |
-| **Light** | clarity, judgement | *Moment of Clarity* (R0, remove one minor condition from ally briefly), *Stern Gaze* (R0, compel target to hesitate — briefly dazed vs. Resist) |
-| **War** | justice, triumph | *Righteous Strike* (R0, +2/+4/+6 to weapon attack against enemy who attacked ally), *Victor's Rush* (R0, gain +1 movement after defeating enemy) |
-
-### 17.6 Conclusion
-
-**Two schools (Necromancy, Nature) have perfect R0 trait coverage** — every aspect has cantrip-level representation. These serve as models for other schools.
-
-**Five schools have significant gaps (3+ traits missing at R0)**: Telekinetics, Tempest, Conjuration, Telepathy, and Evocation. These schools lack cantrip-level representation for core aspects of their identity.
-
-**Two schools have traits absent across ALL ranks**: Peace (travel, law) and Telepathy (memory). These are the most critical gaps — entire thematic pillars with zero spell support at any rank.
-
-**Recommendation**: Use this trait coverage audit as an ongoing design tool when adding new spells. Before designing a new spell for a school, check the coverage table and prioritize filling gaps over adding depth to already-covered traits. The trait system works best as an internal design checklist (see §14 conclusion) rather than a player-facing mechanic.
+> **Trait Rename (retained decision)**: The Evocation "blast" trait was renamed to **"air"** to represent raw elemental air pressure (concussive blasts, vacuum, compressed wind), distinguishing Evocation's transgressive air manipulation from Tempest's natural storm weather. Spells using this trait still deal blast *damage type* (½ AV ignore) — the trait name changed, not the damage type.
 
 ---
 
 ## Appendix A: Spell Count by Rank and School
 
+*Regenerated from `docs/07-magic` on 2026-07-10 (matches §2).*
+
 | School / Tradition | R0 | R1 | R2 | R3 | R4 | R5 | Total |
 |---|---|---|---|---|---|---|---|
-| Conjuration | 3 | 6 | 6 | 5 | 4 | 0 | 24 |
-| Evocation | 3 | 9 | 5 | 1 | 0 | 0 | 18 |
+| Conjuration | 3 | 7 | 8 | 7 | 5 | 0 | 30 |
+| Evocation | 3 | 9 | 5 | 1 | 0 | 1 | 19 |
 | Illusion | 3 | 5 | 7 | 3 | 0 | 0 | 18 |
 | Necromancy | 5 | 8 | 7 | 6 | 2 | 0 | 28 |
-| Telepathy | 3 | 6 | 4 | 1 | 1 | 0 | 15 |
-| Telekinetics | 3 | 5 | 4 | 1 | 1 | 0 | 14 |
-| **Arcane Total** | **20** | **39** | **33** | **17** | **8** | **0** | **117** |
+| Telepathy | 3 | 7 | 6 | 1 | 2 | 0 | 19 |
+| Telekinetics | 3 | 7 | 5 | 3 | 1 | 0 | 19 |
+| **Arcane Total** | **20** | **43** | **38** | **21** | **10** | **1** | **133** |
 | Death | 5 | 6 | 2 | 2 | 0 | 0 | 15 |
-| Life | 3 | 5 | 5 | 2 | 0 | 0 | 15 |
-| Light | 4 | 8 | 3 | 3 | 0 | 0 | 18 |
-| Nature | 6 | 8 | 11 | 8 | 2 | 0 | 35 |
-| Peace | 3 | 4 | 3 | 3 | 0 | 0 | 13 |
-| Tempest | 3 | 9 | 9 | 7 | 5 | 0 | 33 |
-| Twilight | 5 | 7 | 7 | 2 | 1 | 0 | 22 |
-| War | 3 | 5 | 3 | 0 | 0 | 0 | 11 |
-| **Mystic Total** | **32** | **52** | **43** | **27** | **8** | **0** | **162** |
-| **Grand Total** | **52** | **91** | **76** | **44** | **16** | **0** | **279** |
+| Life | 3 | 5 | 6 | 3 | 1 | 1 | 19 |
+| Light | 4 | 8 | 4 | 4 | 0 | 0 | 20 |
+| Nature | 6 | 8 | 13 | 9 | 1 | 1 | 38 |
+| Peace | 3 | 4 | 4 | 4 | 0 | 0 | 15 |
+| Tempest | 3 | 10 | 9 | 6 | 4 | 2 | 34 |
+| Twilight | 5 | 6 | 9 | 5 | 1 | 0 | 26 |
+| War | 3 | 5 | 3 | 4 | 0 | 0 | 15 |
+| **Mystic Total** | **32** | **52** | **50** | **37** | **7** | **4** | **182** |
+| **Grand Total** | **52** | **95** | **88** | **58** | **17** | **5** | **315** |
 
 ## Appendix B: Rank-by-Rank Design Reference
 
