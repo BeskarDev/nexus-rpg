@@ -38,7 +38,7 @@ Like Peace, Life is a support school whose "payoff" is usually measured in allie
 
 **Synergy gaps**: sustain setup and extenders are complete, and the death-reversal ladder is published in full (Revivify R3, Raise Dead R4, Resurrection R5). The remaining gap is the **trigger-payoff design** — blessings mostly grant flat bonuses rather than firing at a defined moment (heal-then-strike, shield-break bursts, crisis-point rallies). The seed table below targets exactly this engine.
 
-## Current Spell Inventory (19 published spells)
+## Current Spell Inventory (21 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -46,9 +46,9 @@ Like Peace, Life is a support school whose "payoff" is usually measured in allie
 |------|-------|--------|
 | 0 | 3 | Life Shield, Restore Life, Verdant Blast |
 | 1 | 5 | Blessing of Life, Healing Touch, Overflow of Life, Rapid Vitality, Vitalizing Weapon |
-| 2 | 6 | Aid, Cleanse, Detect Life (incomplete), Hallow Ground, Hallowed Rest, Healing Burst |
+| 2 | 6 | Aid, Cleanse, Detect Life, Hallow Ground, Hallowed Rest, Healing Burst |
 | 3 | 3 | Abundance of Life, Revivify, Vitality Surge |
-| 4 | 1 | Raise Dead |
+| 4 | 3 | Greater Restoration, Life Ward, Raise Dead |
 | 5 | 1 | Resurrection |
 
 ### Trait × Rank Coverage Matrix
@@ -57,8 +57,8 @@ Published spells in plain text, proposed seeds in *italics*, — marks a deliber
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| vitality | Restore Life | Rapid Vitality, Healing Touch, *Sustaining Grace* | Aid, Healing Burst, Detect Life | Vitality Surge, Revivify | *Greater Restoration* | *Wellspring of Life* |
-| blessings | Life Shield | Blessing of Life, Vitalizing Weapon | Hallow Ground, *Bursting Ward* | — | *Life Ward* | — |
+| vitality | Restore Life | Rapid Vitality, Healing Touch, *Sustaining Grace* | Aid, Healing Burst, Detect Life | Vitality Surge, Revivify | Greater Restoration | *Wellspring of Life* |
+| blessings | Life Shield | Blessing of Life, Vitalizing Weapon | Hallow Ground, *Bursting Ward* | — | Life Ward | — |
 | community | *Kindred Bond* | Overflow of Life | Cleanse, Hallowed Rest | Abundance of Life | Raise Dead | Resurrection |
 | hope | Verdant Blast | *Beacon of Hope* | *Surge of Renewal* | *Rallying Cry* | — | — |
 | fertility | *Nurturing Touch* | — | *Blessing of the Harvest* | — | — | *Genesis* |
@@ -82,8 +82,6 @@ Role = combat-role / synergy-role (per the synergy framework).
 | Bursting Ward | 2 | Support / setup | Lay a vitality ward granting temp HP on an ally: when that temp HP breaks from enemy damage, it detonates — radiant damage to the attacker and they are briefly dazed (blessings trait, stored-charge state, dazed = the school's overload condition). Extends the Life Shield/Aid temp-HP economy into a trap enemies must respect. |
 | Blessing of the Harvest | 2 | Utility / standalone | Ritual (hours): bless a field, herd, or grove for a season — crops resist blight, animals bear healthy young, and the holding's harvest counts one step more plentiful for downtime subsistence (fertility/community). Temple-rite framing per principle 33: a rite communities petition for, not an economy engine. |
 | Rallying Cry | 3 | Support / payoff | The crisis-point payoff (hope trait): each dying ally in short range stabilizes, and each ally below half HP gains temp HP and +1 boon on their next roll. Against a healthy party it does nothing — the cold-cast deficit is the trigger condition itself. Combos with Kindred Bond (timing) and Hallow Ground (holding the line at the brink). |
-| Greater Restoration | 4 | Support / standalone | Action-cast major restoration (vitality trait): heal Wounds without a ritual (wound healing gated R4+ per principle 13, the one-Wound-heal-per-day sentence applies verbatim) and purge lasting bodily afflictions from a bounded list (disease, poison, attribute reduction). Body only — curses stay Light's territory (Break Curse). |
-| Life Ward | 4 | Support / setup | Stored-vitality trigger ward (blessings trait): for a medium duration, when the target would drop to 0 HP they instead stay at 1 HP and the ward ends. Singular, one ward per creature, no stacking. Emits the stored-charge state at its apex — lets the frontline hold Hallow Ground and Abundance of Life zones through the enemy's best turn. |
 | Wellspring of Life | 5 | Support / extender | Capstone extender (vitality/community): while you concentrate, you become a living font — your healing spells restore extra HP and splash half their healing onto a second ally in close range of the target, and allies in close range of you regain a small flat HP amount at the start of their turns (flat per principle 44). R5 mandatory material cost 5,000+. Spreads and prolongs every heal in the kit. |
 | Genesis | 5 | Utility / standalone | Fertility capstone: ritual (hours), material cost 5,000+ — restore one bounded tract of blighted, defiled, or barren land (up to a valley or holding) to living fertility, ending unnatural corruption on it. The mortal-pinnacle answer to Death's blights; story-scale, no combat use, needs a GM worldbuilding framing note per principle 33. |
 

@@ -96,3 +96,23 @@ Any successful stabilization roll immediately stops you from dying, though you r
 > Example: Arzhag the Warrior is struck down in battle against a temple guardian, suffering their third Wound. They begin dying and roll a 3 on their d4. On Arzhag's next turn, this count reduces to 2. Sansar rushes to their side and makes a Spirit + Nature roll with their healer's kit vs. hard Difficulty (TN 10). Despite the difficulty, Sansar succeeds! Arzhag is stabilized—no longer dying but still unconscious with three Wounds. Had Sansar achieved a critical success, Arzhag would have regained 1 HP and consciousness.
 
 Regaining HP while dying has no effect on your dying condition—proper medical attention is required.
+
+## Diseases
+
+Creature bites, spoiled provisions, tainted water, and foul magic can all infect you with disease. Diseases are not conditions. They can't be removed by effects that end conditions, and you can suffer any number of different diseases at the same time, but only one instance of the same disease.
+
+**Contracting.** When an effect makes you diseased, the source states which disease you contract. If it doesn't, the GM chooses a fitting disease from the table below. A disease takes hold at the start of your next night's rest after you contract it, and you suffer its effects from then on. Creatures immune to disease can't contract any disease.
+
+**Recovering.** At the end of each night's rest while diseased, roll Strength + Fortitude vs. the disease's TN. On a success, the disease breaks and its effects end. Another creature can tend to you during that rest by rolling Spirit + Nature vs. the disease's TN. On a success, you gain +1 boon on your recovery roll.
+
+**Curing.** Any effect that cures diseases, such as the *Greater Restoration* spell, ends a disease immediately.
+
+**Magical diseases.** A spell or ability that counts as a disease states its own effects, duration, and how it ends. It still counts as a disease for immunity and curing effects.
+
+| Disease | TN | Effects |
+| --- | --- | --- |
+| grave fever | 8 | Chills and a burning brow. You suffer +1 bane on all rolls and gain +1 Fatigue at the start of each day. |
+| swamp ague | 8 | Shivering and cramping fits. You suffer +1 bane on Strength and Agility rolls and you are slowed. |
+| flesh rot | 10 | Skin weeps and flesh sloughs. You only regain up to half your max. HP from short breaks and your Wounds can't be healed. |
+| mind fire | 10 | Fever visions grip your thoughts. You suffer +1 bane on Spirit and Mind rolls and you only regain half your Focus from a night's rest. |
+| the wasting | 12 | Your body consumes itself from within. You are deprived and can't remove that condition by eating, drinking, or sleeping while the disease lasts. |

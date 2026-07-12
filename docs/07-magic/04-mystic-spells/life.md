@@ -144,6 +144,8 @@ sidebar_position: 3
 
 **Effect** <br/> You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone’s life force and instantly heal one of their Wounds and regain +8 HP. A creature can only benefit from one Wound-healing spell effect per day.<br/>The zone lasts for a short duration. 
 
+> **Heightened** <br/> <strong>(Rank 4)</strong> Allies within the zone restore +6 HP when you cast the spell and at the start of each of their turns, and healing effects on them from other sources are increased by 6 HP instead.<br/><strong>(Rank 5)</strong> Allies within the zone restore +8 HP when you cast the spell and at the start of each of their turns, and healing effects on them from other sources are increased by 8 HP instead.
+
 ### Vitality Surge
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -160,6 +162,26 @@ sidebar_position: 3
 
 **Effect** <br/> You pour life force into a body whose soul still lingers at the threshold, calling it back before it crosses. Target a creature that died since the end of your last turn, or within the last minute outside of combat. The casting consumes 500 coins worth of sacred oils and offerings whether or not it succeeds.<br/>On a success, the creature returns to life with 1 HP and suffers one Wound from the trauma of death. On a failure, their soul slips too far for swift recall. They can still be returned by a <em>Raise Dead</em> or <em>Resurrection</em> spell. 
 
+### Greater Restoration
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Touch | -
+
+**Effect** <br/> You lay both hands on the afflicted and pour a flood of pure vitality through them, driving out everything that does not belong in a living body.<br/>On a success, the target is cleansed of bodily afflictions. Apply the following effects:<br/>- Heal up to two Wounds from the target. A creature can only benefit from one Wound-healing spell effect per day.<br/>- The target is cured of any disease and any poison in their body, and the poisoned condition ends.<br/>- Any effect that temporarily reduces an Attribute die of the target ends.<br/>This spell restores the body only. It cannot lift curses or return the dead to life.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Heal up to three Wounds from the target instead.
+
+### Life Ward
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Touch | singular
+
+**Effect** <br/> You seal a reserve of life force beneath the target's skin, a quiet ember that waits for the moment their own strength fails.<br/>Target one willing creature.<br/>On a success, the target is warded for a long duration. While the ward holds, when the target would be reduced to 0 HP, they remain at 1 HP instead and the ward's stored vitality restores +4 HP to them. Then the ward ends in a flash of warm light.<br/>A creature can only benefit from this spell once per day.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Target up to two willing creatures instead.
+
 ### Raise Dead
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -174,4 +196,4 @@ sidebar_position: 3
 ---|---|---|---|---
  5 | 10 | Legendary (16) | Touch | ritual (hours),  material cost (5000 coins)
 
-**Effect** <br/> Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one turning of the moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration. 
+**Effect** <br/> Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration. 

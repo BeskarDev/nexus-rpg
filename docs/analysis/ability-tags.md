@@ -1045,7 +1045,7 @@ All spells reviewed and tagged by discipline/tradition. Only the base rank is ta
 | **Shadow Meld** | 1 | `transformation` | `action` | — | `hidden` |
 | **Whisper of Dreams** | 1 | `debuff` | `action` | — | `unconscious` |
 | **Aura of Fear** | 2 | `debuff`, `damage` | `action` | `psychic` | `frightened` |
-| **Everlasting Night** | 2 | `creation` | `action` | — | `blinded` |
+| **Darkness** | 2 | `creation` | `action` | — | `blinded` |
 | **Moonbeam** | 2 | `damage`, `debuff` | `action` | `frost` | `blinded` |
 | **Shadow Step** | 2 | `movement` | `action` | — | — |
 | **Silent Night** | 2 | `creation`, `debuff` | `action` | — | `deafened` |

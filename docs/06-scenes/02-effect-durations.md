@@ -26,6 +26,18 @@ This effect on you lasts until the end of a night’s rest or for one travel tur
 
 This effect on you lasts for one downtime turn.
 
+## Narrative Durations
+
+Some effects and descriptions span whole stretches of the calendar rather than a scene or a journey's leg:
+
+| Duration | Description | In Modern Terms |
+| --- | --- | --- |
+| one moon | one full turning of the moon | about thirty days or one month |
+| one season | from sowing to harvest, three moons | about three months |
+| one year | the full circle of seasons, twelve moons | one year |
+
+Shorter narrative spans are counted in plain days, such as "within the last seven days."
+
 ## Extending Durations
 
 Some effects extend a duration by one step. The duration moves up one entry on this ladder: briefly, then short, then medium, then long, then very long. A duration can't be extended beyond very long.

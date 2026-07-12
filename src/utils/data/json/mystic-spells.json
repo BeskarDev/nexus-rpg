@@ -374,7 +374,7 @@
 		"heightened": "<strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignore AV) instead."
 	},
 	{
-		"name": "Everlasting Night",
+		"name": "Darkness",
 		"tradition": "Twilight",
 		"rank": "2",
 		"focus": "4",
@@ -635,7 +635,7 @@
 		"range": "Long",
 		"properties": "concentrate",
 		"effect": "You create a powerful zone of life energy that continuously restores vitality to your allies.<br/>On a success, you create the zone in short range of the target location. While the spell is active, apply the following effects:<br/>- Allies within the zone restores +4 HP when you cast the spell and at the start of each of their turns.<br/>- When an ally within the zone is affected by any healing effect other than from this spell, increase that healing by 4 HP.<br/>- Any ally within the zone suffering one or more Wounds can use their Action to bathe in the zone’s life force and instantly heal one of their Wounds and regain +8 HP. A creature can only benefit from one Wound-healing spell effect per day.<br/>The zone lasts for a short duration.",
-		"heightened": "-"
+		"heightened": "<strong>(Rank 4)</strong> Allies within the zone restore +6 HP when you cast the spell and at the start of each of their turns, and healing effects on them from other sources are increased by 6 HP instead.<br/><strong>(Rank 5)</strong> Allies within the zone restore +8 HP when you cast the spell and at the start of each of their turns, and healing effects on them from other sources are increased by 8 HP instead."
 	},
 	{
 		"name": "Vitality Surge",
@@ -1118,7 +1118,7 @@
 		"target": "Very Hard (12)",
 		"range": "Touch",
 		"properties": "singular",
-		"effect": "You enchant a small, friendly animal to carry a message for you.<br/>On a success, you can send a small animal (such as a bird, squirrel, or rat) to a specific recipient or location you know within one day’s distance. You must have personally seen the recipient or location at least once.<br/>You can attach a small physical object with low weight to the animal or have it memorize a spoken message of up to 25 words. The animal will travel at its normal speed but with supernatural determination and direction sense. It will attempt to deliver the message or item directly to the intended recipient, waiting up to one day for a good opportunity.",
+		"effect": "You enchant a small, friendly animal to carry a message for you.<br/>On a success, you can send a small animal (such as a bird, squirrel, or rat) to a specific recipient or location you know within a day’s march. You must have personally seen the recipient or location at least once.<br/>You can attach a small physical object with low weight to the animal or have it memorize a spoken message of up to 25 words. The animal will travel at its normal speed but with supernatural determination and direction sense. It will attempt to deliver the message or item directly to the intended recipient, waiting up to one day for a good opportunity.",
 		"heightened": "-"
 	},
 	{
@@ -1756,7 +1756,7 @@
 		"target": "Extreme (14)",
 		"range": "Touch",
 		"properties": "ritual (hours), material cost (1500 coins), singular",
-		"effect": "Over hours of consecration you anoint a doorway, arch, or gate with sacred oils, binding it in covenant to its one distant twin.<br/>Each threshold is consecrated separately with its own casting of this spell, and each casting consumes 1500 coins worth of sacred oils and offerings.<br/>On a success, the threshold is consecrated and bound to its twin. You can maintain at most one linked pair, and the two thresholds can lie at most a week's travel apart. Consecrating a new threshold beyond the pair causes your oldest to fade. While both thresholds remain intact, you can open the way as an Action while standing at either threshold and speaking the blessing. The way holds until the start of your next turn, and during that time any creature you permit may step through one threshold and out of the other. The consecration is a physical anointing. Defacing the threshold, breaking the doorway, or a single casting that ends spells destroys it, and destroying either threshold severs the covenant.",
+		"effect": "Over hours of consecration you anoint a doorway, arch, or gate with sacred oils, binding it in covenant to its one distant twin.<br/>Each threshold is consecrated separately with its own casting of this spell, and each casting consumes 1500 coins worth of sacred oils and offerings.<br/>On a success, the threshold is consecrated and bound to its twin. You can maintain at most one linked pair, and the two thresholds can lie at most seven days' march apart. Consecrating a new threshold beyond the pair causes your oldest to fade. While both thresholds remain intact, you can open the way as an Action while standing at either threshold and speaking the blessing. The way holds until the start of your next turn, and during that time any creature you permit may step through one threshold and out of the other. The consecration is a physical anointing. Defacing the threshold, breaking the doorway, or a single casting that ends spells destroys it, and destroying either threshold severs the covenant.",
 		"heightened": "<strong>(Rank 5)</strong> Your thresholds can lie anywhere within the same sphere of existence with no limit on the distance between them, and you may maintain any number of consecrated thresholds at once. A creature stepping through one may step out of any other you choose. Each casting consumes 5000 coins worth of materials instead."
 	},
 	{
@@ -2152,7 +2152,7 @@
 		"target": "Legendary (16)",
 		"range": "Touch",
 		"properties": "ritual (hours), material cost (5000 coins)",
-		"effect": "Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one turning of the moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration.",
+		"effect": "Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration.",
 		"heightened": "-"
 	},
     {
@@ -2253,5 +2253,93 @@
         "properties": "-",
         "effect": "You read the target's death in the night sky and pronounce it aloud, and for a moment everyone present can feel where the blow is fated to land.<br/>On a success, the target is marked (4) for a short duration. The attack that ends the mark has its SL increased by one step (max. critical success).",
         "heightened": "<strong>(Rank 3)</strong> The target is marked (6) instead.<br/><strong>(Rank 4)</strong> The target is marked (8) instead.<br/><strong>(Rank 5)</strong> The target is marked (10) instead."
+    },
+    {
+        "name": "Primal Guardian",
+        "tradition": "Nature",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Short",
+        "properties": "concentrate",
+        "effect": "You press your palms to the earth and call, and the land answers: a hulking guardian of gnarled root, packed soil, and living stone rises to stand with you.<br/>On a success, the guardian rises from an unoccupied space of earth, stone, or living soil at the target location and acts as a creature under your control (treat them as a companion for combat). The guardian has the statistics of a Tier 4 companion with large Size and the Earth Elemental trait (see the Spirit (Primordial) companion traits under Mounts &amp; Companions). In addition, apply the following changes:<br/>- Living roots and green growth wind through the guardian's stone. They gain weakness to fire instead of blast.<br/>- <strong>Grasping Roots.</strong> On a strong or critical hit with their Slam attack, the target is also grappled by coiling roots. The roots hold the target without binding the guardian. The grappled creature can use their Action to roll Strength or Agility + Athletics vs. the guardian's Parry. On a success, they tear free. The roots wither and release them if the guardian is reduced to 0 HP.<br/>- <strong>Lashing Roots</strong> (<em>crush</em>). This attack replaces the guardian's Earth Spikes. Thorned roots whip out in all directions. Target all creatures in melee range. On a hit, subtract the weapon damage once from the total damage against each target. On a strong or critical hit, each target is briefly slowed by the tangling growth.<br/>- <strong>Warden's Ground.</strong> The ground in close range of the guardian churns with shifting stone and grasping roots and counts as difficult terrain for your enemies.<br/>The guardian remains for a short duration, until dismissed by you as a Quick Action, or until their HP are reduced to 0, after which they crumble back into soil and stone.",
+        "heightened": "<strong>(Rank 5)</strong> The guardian has the statistics of a Tier 5 companion instead and can rise with up to huge Size."
+    },
+    {
+        "name": "Verdant Restoration",
+        "tradition": "Nature",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Medium",
+        "properties": "singular",
+        "effect": "You bury a seed in a whispered blessing, and the ground answers with a sudden garden: flowering vines and healing herbs unfurl in moments, breathing their medicine into the air.<br/>On a success, verdant regrowth blooms in short range of the target location. While the flowers hold, apply the following effects:<br/>- Allies within the zone restore 4 HP at the start of each of their turns.<br/>- Allies within the zone are immune to being poisoned and bleeding as the herbs' medicine fills their blood.<br/>- The growth stands thick and high. Ranged attacks against allies within the zone suffer +1 bane.<br/>The zone remains for a short duration, even if you move out of range of the area. The blooming plants need living ground and cannot take root on bare stone, worked floors, or sand.",
+        "heightened": "<strong>(Rank 5)</strong> Allies within the zone restore 6 HP at the start of each of their turns instead."
+    },
+    {
+        "name": "Greater Restoration",
+        "tradition": "Life",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Touch",
+        "properties": "-",
+        "effect": "You lay both hands on the afflicted and pour a flood of pure vitality through them, driving out everything that does not belong in a living body.<br/>On a success, the target is cleansed of bodily afflictions. Apply the following effects:<br/>- Heal up to two Wounds from the target. A creature can only benefit from one Wound-healing spell effect per day.<br/>- The target is cured of any disease and any poison in their body, and the poisoned condition ends.<br/>- Any effect that temporarily reduces an Attribute die of the target ends.<br/>This spell restores the body only. It cannot lift curses or return the dead to life.",
+        "heightened": "<strong>(Rank 5)</strong> Heal up to three Wounds from the target instead."
+    },
+    {
+        "name": "Life Ward",
+        "tradition": "Life",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Touch",
+        "properties": "singular",
+        "effect": "You seal a reserve of life force beneath the target's skin, a quiet ember that waits for the moment their own strength fails.<br/>Target one willing creature.<br/>On a success, the target is warded for a long duration. While the ward holds, when the target would be reduced to 0 HP, they remain at 1 HP instead and the ward's stored vitality restores +4 HP to them. Then the ward ends in a flash of warm light.<br/>A creature can only benefit from this spell once per day.",
+        "heightened": "<strong>(Rank 5)</strong> Target up to two willing creatures instead."
+    },
+    {
+        "name": "Dreamwalking",
+        "tradition": "Twilight",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Special",
+        "properties": "ritual (minutes),  concentrate",
+        "effect": "You lie down beneath the veil of sleep and step sideways into the dreaming, following a silver thread to another sleeper's dream. Target one sleeping creature you know, anywhere in the same sphere of existence. You must channel the walk through a connection to the target: a possession of theirs, a part of their body, or deep personal familiarity. Without such a connection, you cannot cast this spell. If the target is not asleep, the spell automatically fails.<br/>On a success, you enter the target's dream for a short duration while you concentrate. Against an unwilling dreamer, your roll must also beat their Resist to enter their dream. Within the dream you can do the following:<br/>- <strong>Observe.</strong> The dream's shape reveals what occupies the sleeper. The GM chooses what the dream shows from the following: a present fear, a desire or ambition, a face or place that fills their thoughts, or a symbolic image when nothing concrete surfaces.<br/>- <strong>Converse.</strong> You appear within the dream in any guise you choose and can speak with the dreamer. They can answer, refuse, or turn away as they choose. Upon waking, they remember the exchange as an unusually vivid dream.<br/>- <strong>Suggest.</strong> You plant a single thought of up to 25 words that feels like the dreamer's own upon waking, using your roll's result vs. their Resist. The thought can incline them toward a course of action they might plausibly consider. It is a nudge, never a command, and it fades after one day if not acted on.<br/>If the sleeper wakes, the spell ends immediately. Nothing within the dream can harm you or the dreamer.",
+        "heightened": "-"
+    },
+    {
+        "name": "Eclipse",
+        "tradition": "Twilight",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You speak the moon's oldest claim, and for a stretch of the world the day is unmade: cold, starless night falls in full.<br/>On a success, unnatural night swallows the area in short range of the target location for a short duration while you concentrate. Apply the following effects:<br/>- The area counts as total darkness and any light source within it immediately goes out.<br/>- You alone see through the eclipse's darkness as if it were dim light, guided by the hidden moon.<br/>- Any hostile creature that starts their turn within the area takes 6 frost damage (ignore AV) as the dark's cold seeps into them and must roll Spirit + Fortitude vs. your Resist. On a failure, they are briefly frightened of the surrounding darkness. A creature that succeeds on this roll is immune to this spell's fear effect until the spell ends.",
+        "heightened": "<strong>(Rank 5)</strong> The night swallows the area in medium range of the target location instead and the frost damage increases to 8 (ignore AV)."
+    },
+    {
+        "name": "Prophecy",
+        "tradition": "Twilight",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Self",
+        "properties": "ritual (hours),  material cost (1500 coins)",
+        "effect": "Through a night-long trance beneath the open stars you let the threads of fate run through your hands, and what is to come brushes against you in signs and visions. Name one person, place, or undertaking. The trance consumes 1500 coins worth of rare incense and offerings whether or not it succeeds.<br/>On a success, you receive visions of what may come to pass for the named matter within the next season. The GM gives you one vision for a weak success, two for a strong success, and three for a critical success, each drawn from the following (or fewer if fewer meaningfully apply):<br/>- <strong>A danger</strong> that approaches the named matter, shown by one telling quality you will know when you meet it, such as a sound, a smell, or a repeated sigil.<br/>- <strong>A hand behind events</strong>, appearing as a shadow or masked figure that openly wears one recognizable detail, such as a scarred hand, a distinctive ring, or the cadence of a voice.<br/>- <strong>A place or time</strong> that will prove decisive, marked by a telling feature of the land or the stand of sun, moon, or stars.<br/>- <strong>A symbolic omen</strong>, given when the future is genuinely unformed or hidden even from the stars.<br/>Each vision is a brief symbolic scene, never plain instruction, and reveals no identity beyond its telling detail. You know a vision has come to pass the moment you perceive its detail before you, never earlier. When that happens, you cannot be surprised in that moment and you gain +1 boon on the first roll you make in response.<br/>The visions do not account for choices or events that might later change what comes. Casting this spell again about the same matter shows the same visions until circumstances meaningfully change.",
+        "heightened": "-"
+    },
+    {
+        "name": "Veil of Secrets",
+        "tradition": "Twilight",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Medium",
+        "properties": "concentrate",
+        "effect": "You draw the dusk over a place like a curtain, and what happens within slips out of the world's sight and memory.<br/>On a success, a veil settles over the area in short range of the target location for a medium duration while you concentrate. Apply the following effects:<br/>- To any observer outside, the area appears still and empty to every sense, as it would seem with no one within it. Creatures and objects inside cannot be perceived from outside, and no sound, smell, light, or smoke from within crosses the veil's edge.<br/>- Any scrying sensor or divination magic targeting the area or anything inside it perceives only the same empty stillness.<br/>- Creatures inside the veil perceive their surroundings and the world outside normally.<br/>The veil does not bar passage. Any creature can walk in, and once inside they perceive everything within normally. An outside observer with reason to be suspicious of the place can roll Spirit + Perception vs. your Resist to sense that the stillness is unnatural, though not what it hides.",
+        "heightened": "<strong>(Rank 5)</strong> The veil extends in medium range of the target location instead and lasts for a long duration."
     }
 ]

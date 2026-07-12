@@ -24,6 +24,19 @@ Various effects and abilities list the following distances to describe their ran
 > **Playing on a grid
 > **When playing on a grid for combat or dungeon delving, you can assume each standard square to be 2x2 meters or 5x5 feet (this is a very abstract simplification). So each adjacent square would be considered melee range, every square two squares away to be close range, and so on. When unsure, count the number of squares between two points, multiply by 2 meters or 5 feet and compare the result to the range bands for each distance detailed above.
 
+### Narrative Distances
+
+Some effects reach beyond any battlefield. These distances are used for magic and abilities that operate at the scale of journeys rather than combat.
+
+| Distance | Description | In Modern Terms |
+| --- | --- | --- |
+| a thousand paces | about a quarter hour's walk, far enough to cover a town quarter or a fort and its surroundings | about 1.5 kilometers or 1 mile |
+| a day's march | as far as a healthy traveler moves in one day on foot, by beast, or by boat | about 30 kilometers or 20 miles |
+| the same region | a connected land a traveler knows as one place, such as a river valley, a coastline, or a kingdom's heartland | up to around 150 kilometers or 100 miles across |
+| the same sphere of existence | anywhere in the mortal world, however distant. The realms of gods and spirits are beyond reach | unbounded |
+
+Effects can count these distances in multiples, such as "within three days' march."
+
 ## Movement
 
 Movement describes your ability to move between or within areas in combat. Normally, 1 Movement lets you move to one area within short distance.

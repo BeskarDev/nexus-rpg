@@ -36,7 +36,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 
 **Synergy gaps**: the fullest three-role school on the mystic side, but the *convert* chain's last link is informal — nothing published mechanically rewards attacking a *restrained* or *poisoned* target beyond the conditions themselves. The grand weather extender is now published (Control Weather, R5) and Tree Stride (R4) is complete; Stone Pillar (R3) remains a stub. The missing convert-payoff (*Devouring Bloom*, R3) and the poison ripener (*Deepening Venom*, R2) sit in the seed table below.
 
-## Current Spell Inventory (38 published spells)
+## Current Spell Inventory (40 published spells)
 
 *Regenerated from `docs/07-magic` — published spells only. Proposed concepts live in the seed table below.*
 
@@ -45,21 +45,21 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 0 | 6 | Acid Splash, Bestial Adaptation, Lashing Vine, Poison Mist, Rejuvenation, Shillelagh |
 | 1 | 8 | Beast Form, Blessing of Nature, Mesh of Vines, Purify Water, Rock Throw, Sticks to Snakes, Venomous Weapon, Wild Companion |
 | 2 | 13 | Diminish, Gift of the Wild, Heat Metal, Law of the Strongest, Living Plants, Melt Ground, Nature’s Passage, Speak with Animals and Plants, Stone Skin, Sudden Growth, Thorn Barrage, Toxic Mist, Water Prison |
-| 3 | 9 | Animal Messenger, Fungal Growth, Impalement, Insect Swarm, Life from Stone, Nature's Judgment, Petrification, Polymorph, Stone Pillar (incomplete) |
-| 4 | 1 | Tree Stride |
+| 3 | 9 | Animal Messenger, Fungal Growth, Impalement, Insect Swarm, Life from Stone, Nature's Judgment, Petrification, Polymorph, Stone Pillar |
+| 4 | 3 | Primal Guardian, Tree Stride, Verdant Restoration |
 | 5 | 1 | Control Weather |
 
 ### Trait × Rank Coverage — Strong ✅
 
 | Trait | R0 | R1 | R2 | R3 | R4 | R5 |
 |-------|-----|-----|-----|-----|-----|-----|
-| earth | Shillelagh | Rock Throw | Melt Ground, Heat Metal | Life from Stone, Petrification, Stone Pillar* | ✨ Primal Guardian | ✨ Cataclysmic Eruption |
+| earth | Shillelagh | Rock Throw | Melt Ground, Heat Metal | Life from Stone, Petrification, Stone Pillar | Primal Guardian | ✨ Cataclysmic Eruption |
 | water | ✨ Shape Water | Purify Water | Water Prison, Nature's Passage | — | — | Control Weather |
 | poison | Poison Mist, Acid Splash | Venomous Weapon, Sticks to Snakes | Toxic Mist, ✨ Deepening Venom | Fungal Growth, Insect Swarm, ✨ Devouring Bloom | — | ✨ Cataclysmic Eruption |
-| animals | Bestial Adaptation | Beast Form, Wild Companion | Law of the Strongest, Speak with Animals and Plants | Animal Messenger, Nature's Judgment | ✨ Primal Guardian | ✨ Primeval Form |
-| plants | Lashing Vine, Rejuvenation | Blessing of Nature, Mesh of Vines, Bark Shield | Living Plants, Sudden Growth, Thorn Barrage, Stone Skin | Impalement, ✨ Devouring Bloom | Tree Stride, ✨ Verdant Restoration | ✨ Primal Awakening |
+| animals | Bestial Adaptation | Beast Form, Wild Companion | Law of the Strongest, Speak with Animals and Plants | Animal Messenger, Nature's Judgment | Primal Guardian | ✨ Primeval Form |
+| plants | Lashing Vine, Rejuvenation | Blessing of Nature, Mesh of Vines, Bark Shield | Living Plants, Sudden Growth, Thorn Barrage, Stone Skin | Impalement, ✨ Devouring Bloom | Tree Stride, Verdant Restoration | ✨ Primal Awakening |
 
-✨ = proposed new spell (undesigned seed). *Asterisk = incomplete published spell (stub).*
+✨ = proposed new spell (undesigned seed).
 
 **Coverage**: 27 of 30 trait×rank slots hold a published spell or a seed. Honest gaps: water R3, water R4 (Control Weather anchors the trait at R5), poison R4 — an honest empty cell beats a filler seed. Only published spells count as real coverage; proposed entries are undesigned seeds (principle 19).
 
@@ -78,8 +78,6 @@ These are **conceptual placeholders only** — thematic seeds naming the gap eac
 | Shape Water | 0 | Utility / standalone | Water cantrip (water trait): a pressurized stream that shoves a small object or creature a close distance, extinguishes open flames, and fills or empties a vessel. Utility-first in the school's Excels role; the shove feeds the terrain engine (into the vines, off the ledge) without duplicating Telekinetics' dedicated push kit. |
 | Deepening Venom | 2 | Control / extender | Toxin already in a *poisoned* creature's blood turns virulent (poison trait): the condition's duration extends and they suffer +1 bane on Strength and Agility rolls while it lasts. Ripens the poison window that Poison Mist, Venomous Weapon, and Toxic Mist open — does nothing to the unpoisoned. |
 | Devouring Bloom | 3 | Offense / payoff | The plants holding a *restrained* or *entangled* creature flower and feed (plants and poison traits): heavy poison damage and the hold persists as the tendrils tighten. Castable only on a target the land has already caught — the convert chain's missing final link, spending Mesh of Vines, Water Prison, and Sudden Growth. Offense in a Weak role, justified as the terrain engine's dedicated payoff. |
-| Primal Guardian | 4 | Support / standalone | Summon a guardian spirit of root and stone (animals and earth traits) on the companion-statistics chassis, one tier below the caster's ceiling. The summon chain's upper rung above Wild Companion (R1) and Sticks to Snakes — a body that holds ground inside the school's living terrain. Watch the Conjuration border: this is a reverent calling with a bound duration, not a bound servant. |
-| Verdant Restoration | 4 | Healing / extender | A blooming zone of verdant regrowth (plants trait): allies inside regain flat rank-scaled HP at the start of their turns and gain +1 boon on rolls to end *poisoned* and *bleeding* while the flowers hold. Healing-over-time as terrain — distinct from Life's burst healing (§16 chassis), and it stacks the school's zone identity. |
 | Cataclysmic Eruption | 5 | Offense / setup | The land itself attacks (earth, plants, poison traits): a large area becomes difficult terrain of split stone and lashing vines, creatures within take mid-curve damage and must save vs. your Resist or become *restrained*, and the ground exhales spores that leave them *poisoned*. Deliberately below Evocation's R5 blast curve — the payoff is the field of held, poisoned targets it leaves behind. Material cost 5,000+ coins. |
 | Primeval Form | 5 | Offense / standalone | Become a beast of primal legend (animals trait): the Beast Form chassis extended to the top companion tiers as its own spell (principle 31: the tier cap never scales on Heighten — Beast Form's published Heighten stops at Tier 3). Dire megafauna of the ancient world; no spellcasting, enchant (body), mortal-pinnacle apex predator rather than a kaiju. |
 | Primal Awakening | 5 | Control / setup + extender | The living terrain wakes (plants and earth traits): for a scene, a wide area of vegetation and soil fights alongside the caster — difficult terrain for enemies, grasping roots that threaten *restrained* each round, and the ground itself renewing the school's zones. The board-wide version of the terrain engine, distinct from Primal Guardian's single body. Geography-gated like the whole engine (the land must live). |
@@ -101,11 +99,11 @@ The following spells are shared between Nature and arcane disciplines (same spel
 
 ### Spell Progression Chains
 (✨ = undesigned seed)
-1. **Earth chain**: Shillelagh (R0) → Rock Throw (R1) → Melt Ground / Heat Metal (R2) → Life from Stone / Petrification / Stone Pillar* (R3) → ✨ Primal Guardian (R4) → ✨ Cataclysmic Eruption (R5)
+1. **Earth chain**: Shillelagh (R0) → Rock Throw (R1) → Melt Ground / Heat Metal (R2) → Life from Stone / Petrification / Stone Pillar (R3) → Primal Guardian (R4) → ✨ Cataclysmic Eruption (R5)
 2. **Water chain**: ✨ Shape Water (R0) → Purify Water (R1) → Water Prison / Nature's Passage (R2) → honest gaps (R3, R4) → Control Weather (R5)
 3. **Poison chain**: Poison Mist / Acid Splash (R0) → Venomous Weapon / Sticks to Snakes (R1) → Toxic Mist / ✨ Deepening Venom (R2) → Fungal Growth / Insect Swarm / ✨ Devouring Bloom (R3) → honest gap (R4) → ✨ Cataclysmic Eruption (R5)
-4. **Animals chain**: Bestial Adaptation (R0) → Beast Form / Wild Companion (R1) → Law of the Strongest / Speak with Animals and Plants (R2) → Animal Messenger / Nature's Judgment (R3) → ✨ Primal Guardian (R4) → ✨ Primeval Form (R5)
-5. **Plants chain**: Lashing Vine / Rejuvenation (R0) → Blessing of Nature / Mesh of Vines / Bark Shield (R1) → Living Plants / Sudden Growth / Thorn Barrage (R2) → Impalement / ✨ Devouring Bloom (R3) → Tree Stride / ✨ Verdant Restoration (R4) → ✨ Primal Awakening (R5)
+4. **Animals chain**: Bestial Adaptation (R0) → Beast Form / Wild Companion (R1) → Law of the Strongest / Speak with Animals and Plants (R2) → Animal Messenger / Nature's Judgment (R3) → Primal Guardian (R4) → ✨ Primeval Form (R5)
+5. **Plants chain**: Lashing Vine / Rejuvenation (R0) → Blessing of Nature / Mesh of Vines / Bark Shield (R1) → Living Plants / Sudden Growth / Thorn Barrage (R2) → Impalement / ✨ Devouring Bloom (R3) → Tree Stride / Verdant Restoration (R4) → ✨ Primal Awakening (R5)
 
 ### Setup + Payoff Combos
 (✨ = undesigned seed)
@@ -123,10 +121,10 @@ The following spells are shared between Nature and arcane disciplines (same spel
 - [x] Damage across ranks: mid-curve by design (Weak offense role) — the payoffs (Impalement published, ✨ Devouring Bloom, ✨ Cataclysmic Eruption) only outperform where the terrain fights alongside
 - [x] Repeating conditions: poisoned, restrained/entangled, difficult terrain — consistent natural-hazard identity across published spells and seeds
 - [x] Setup+payoff: entangle→poison→devour loop published at its base, seeds close the convert chain's last links
-- [ ] Healing: Rejuvenation (R0) and Blessing of Nature (R1) published; ✨ Verdant Restoration (R4) seeds the zone-healing top end
-- [x] Summoning chain: Wild Companion (R1) published → ✨ Primal Guardian (R4) seeded
+- [x] Healing: Rejuvenation (R0), Blessing of Nature (R1), and Verdant Restoration (R4, zone healing-over-time with condition immunity, published 2026-07-13) — capped below Life's ladder per principle 67
+- [x] Summoning chain: Wild Companion (R1) → Primal Guardian (R4, Earth Elemental trait + root abilities, published 2026-07-13)
 - [x] Beast Form chain: Beast Form (R1, Heighten to Tier 3) published → ✨ Primeval Form (R5) seeded as a separate spell per principle 31
-- [x] **3 published spells per rank through R3**: R0: 6, R1: 8, R2: 13, R3: 9; R4: 1, R5: 1 — top ranks need the seeded buildout, plus the Stone Pillar stub needs completion
+- [x] **3 published spells per rank through R3**: R0: 6, R1: 8, R2: 13, R3: 9; R4: 3, R5: 1 — R4 breadth published (P4.5), R5 breadth remains seeded
 - [ ] **Trait × rank coverage**: 27/30; honest gaps at water R3, water R4, poison R4
 
 ### Impact & Trivialization Review

@@ -134,7 +134,7 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> Choose one:<br/>- The aura extends in short range around you instead.<br/>- On a failure, each creature takes +8 psychic damage (ignore AV) instead.
 
-### Everlasting Night
+### Darkness
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
 ---|---|---|---|---
@@ -262,6 +262,24 @@ sidebar_position: 2
 
 **Effect** <br/> You shape shadows into a perfect duplicate of yourself that can act independently in darkened areas. On a success, you create a shadow clone in any area of dim light or darkness within range. The clone has your appearance but is made of living shadow. It has 1 HP, your Movement, and can perform simple tasks and basic attacks (no Combat Arts or other abilities) using your statistics. The clone can only exist in dim light or darkness. If it enters bright light, it is immediately destroyed.<br/>As a Quick Action, you can switch places with your shadow clone, instantly teleporting to its location while it appears where you were standing.<br/>The clone lasts for a medium duration, until destroyed, or until you dismiss it. You can command the clone telepathically. 
 
+### Dreamwalking
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Special | ritual (minutes),  concentrate
+
+**Effect** <br/> You lie down beneath the veil of sleep and step sideways into the dreaming, following a silver thread to another sleeper's dream. Target one sleeping creature you know, anywhere in the same sphere of existence. You must channel the walk through a connection to the target: a possession of theirs, a part of their body, or deep personal familiarity. Without such a connection, you cannot cast this spell. If the target is not asleep, the spell automatically fails.<br/>On a success, you enter the target's dream for a short duration while you concentrate. Against an unwilling dreamer, your roll must also beat their Resist to enter their dream. Within the dream you can do the following:<br/>- <strong>Observe.</strong> The dream's shape reveals what occupies the sleeper. The GM chooses what the dream shows from the following: a present fear, a desire or ambition, a face or place that fills their thoughts, or a symbolic image when nothing concrete surfaces.<br/>- <strong>Converse.</strong> You appear within the dream in any guise you choose and can speak with the dreamer. They can answer, refuse, or turn away as they choose. Upon waking, they remember the exchange as an unusually vivid dream.<br/>- <strong>Suggest.</strong> You plant a single thought of up to 25 words that feels like the dreamer's own upon waking, using your roll's result vs. their Resist. The thought can incline them toward a course of action they might plausibly consider. It is a nudge, never a command, and it fades after one day if not acted on.<br/>If the sleeper wakes, the spell ends immediately. Nothing within the dream can harm you or the dreamer.
+
+### Eclipse
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Long | concentrate
+
+**Effect** <br/> You speak the moon's oldest claim, and for a stretch of the world the day is unmade: cold, starless night falls in full.<br/>On a success, unnatural night swallows the area in short range of the target location for a short duration while you concentrate. Apply the following effects:<br/>- The area counts as total darkness and any light source within it immediately goes out.<br/>- You alone see through the eclipse's darkness as if it were dim light, guided by the hidden moon.<br/>- Any hostile creature that starts their turn within the area takes 6 frost damage (ignore AV) as the dark's cold seeps into them and must roll Spirit + Fortitude vs. your Resist. On a failure, they are briefly frightened of the surrounding darkness. A creature that succeeds on this roll is immune to this spell's fear effect until the spell ends.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The night swallows the area in medium range of the target location instead and the frost damage increases to 8 (ignore AV).
+
 ### Embrace of Night
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -269,3 +287,21 @@ sidebar_position: 2
  4 | 8 | Extreme (14) | Medium | concentrate,  enchant (body)
 
 **Effect** <br/> You merge temporarily with the essence of twilight, gaining supernatural abilities in the balance between light and dark. On a success, you gain the following effects:<br/>- You become invisible while in dim light or darkness<br/>- You gain resistance to psychic and frost damage<br/>- You can pass through solid objects as if they were difficult terrain while invisible<br/>- Your twilight mysticism spells cost 2 less Focus (minimum 0)<br/>This transformation lasts for a short duration.
+
+### Prophecy
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Self | ritual (hours),  material cost (1500 coins)
+
+**Effect** <br/> Through a night-long trance beneath the open stars you let the threads of fate run through your hands, and what is to come brushes against you in signs and visions. Name one person, place, or undertaking. The trance consumes 1500 coins worth of rare incense and offerings whether or not it succeeds.<br/>On a success, you receive visions of what may come to pass for the named matter within the next season. The GM gives you one vision for a weak success, two for a strong success, and three for a critical success, each drawn from the following (or fewer if fewer meaningfully apply):<br/>- <strong>A danger</strong> that approaches the named matter, shown by one telling quality you will know when you meet it, such as a sound, a smell, or a repeated sigil.<br/>- <strong>A hand behind events</strong>, appearing as a shadow or masked figure that openly wears one recognizable detail, such as a scarred hand, a distinctive ring, or the cadence of a voice.<br/>- <strong>A place or time</strong> that will prove decisive, marked by a telling feature of the land or the stand of sun, moon, or stars.<br/>- <strong>A symbolic omen</strong>, given when the future is genuinely unformed or hidden even from the stars.<br/>Each vision is a brief symbolic scene, never plain instruction, and reveals no identity beyond its telling detail. You know a vision has come to pass the moment you perceive its detail before you, never earlier. When that happens, you cannot be surprised in that moment and you gain +1 boon on the first roll you make in response.<br/>The visions do not account for choices or events that might later change what comes. Casting this spell again about the same matter shows the same visions until circumstances meaningfully change.
+
+### Veil of Secrets
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Medium | concentrate
+
+**Effect** <br/> You draw the dusk over a place like a curtain, and what happens within slips out of the world's sight and memory.<br/>On a success, a veil settles over the area in short range of the target location for a medium duration while you concentrate. Apply the following effects:<br/>- To any observer outside, the area appears still and empty to every sense, as it would seem with no one within it. Creatures and objects inside cannot be perceived from outside, and no sound, smell, light, or smoke from within crosses the veil's edge.<br/>- Any scrying sensor or divination magic targeting the area or anything inside it perceives only the same empty stillness.<br/>- Creatures inside the veil perceive their surroundings and the world outside normally.<br/>The veil does not bar passage. Any creature can walk in, and once inside they perceive everything within normally. An outside observer with reason to be suspicious of the place can roll Spirit + Perception vs. your Resist to sense that the stillness is unnatural, though not what it hides.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The veil extends in medium range of the target location instead and lasts for a long duration.

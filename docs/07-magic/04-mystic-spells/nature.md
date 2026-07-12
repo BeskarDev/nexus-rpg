@@ -268,7 +268,7 @@ sidebar_position: 5
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Touch | singular
 
-**Effect** <br/> You enchant a small, friendly animal to carry a message for you.<br/>On a success, you can send a small animal (such as a bird, squirrel, or rat) to a specific recipient or location you know within one day’s distance. You must have personally seen the recipient or location at least once.<br/>You can attach a small physical object with low weight to the animal or have it memorize a spoken message of up to 25 words. The animal will travel at its normal speed but with supernatural determination and direction sense. It will attempt to deliver the message or item directly to the intended recipient, waiting up to one day for a good opportunity. 
+**Effect** <br/> You enchant a small, friendly animal to carry a message for you.<br/>On a success, you can send a small animal (such as a bird, squirrel, or rat) to a specific recipient or location you know within a day’s march. You must have personally seen the recipient or location at least once.<br/>You can attach a small physical object with low weight to the animal or have it memorize a spoken message of up to 25 words. The animal will travel at its normal speed but with supernatural determination and direction sense. It will attempt to deliver the message or item directly to the intended recipient, waiting up to one day for a good opportunity. 
 
 ### Fungal Growth
 
@@ -336,6 +336,16 @@ sidebar_position: 5
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> The pillar can rise up to a medium distance high instead, and you may raise up to two pillars with one casting, each up to close range wide and placed anywhere in range. A creature caught between a pillar and an obstacle takes 10 damage (ignore AV) instead.<br/><strong>(Rank 5)</strong> You may raise up to three pillars with one casting, each up to close range wide, each rising up to a medium distance high, and placed anywhere in range. A creature caught between a pillar and an obstacle takes 12 damage (ignore AV) instead.
 
+### Primal Guardian
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Short | concentrate
+
+**Effect** <br/> You press your palms to the earth and call, and the land answers: a hulking guardian of gnarled root, packed soil, and living stone rises to stand with you.<br/>On a success, the guardian rises from an unoccupied space of earth, stone, or living soil at the target location and acts as a creature under your control (treat them as a companion for combat). The guardian has the statistics of a Tier 4 companion with large Size and the Earth Elemental trait (see the Spirit (Primordial) companion traits under Mounts &amp; Companions). In addition, apply the following changes:<br/>- Living roots and green growth wind through the guardian's stone. They gain weakness to fire instead of blast.<br/>- <strong>Grasping Roots.</strong> On a strong or critical hit with their Slam attack, the target is also grappled by coiling roots. The roots hold the target without binding the guardian. The grappled creature can use their Action to roll Strength or Agility + Athletics vs. the guardian's Parry. On a success, they tear free. The roots wither and release them if the guardian is reduced to 0 HP.<br/>- <strong>Lashing Roots</strong> (<em>crush</em>). This attack replaces the guardian's Earth Spikes. Thorned roots whip out in all directions. Target all creatures in melee range. On a hit, subtract the weapon damage once from the total damage against each target. On a strong or critical hit, each target is briefly slowed by the tangling growth.<br/>- <strong>Warden's Ground.</strong> The ground in close range of the guardian churns with shifting stone and grasping roots and counts as difficult terrain for your enemies.<br/>The guardian remains for a short duration, until dismissed by you as a Quick Action, or until their HP are reduced to 0, after which they crumble back into soil and stone.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The guardian has the statistics of a Tier 5 companion instead and can rise with up to huge Size.
+
 ### Tree Stride
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -345,6 +355,16 @@ sidebar_position: 5
 **Effect** <br/> You step into the living wood and the tree takes you in like an old friend, passing you along the green road to emerge far away. You enter a living tree at least your own size that you touch. While the spell lasts, up to a medium duration while you concentrate, you may step into such a tree and emerge from another living tree of similar size within extreme range as your movement, once per turn.<br/>When you enter a tree, your awareness spreads through the green road and you sense every living tree of similar size within range, even those out of sight. To travel, name where you wish to emerge, such as a tree you can see, a known landmark, or a direction and rough distance, and you step out of the nearest suitable tree to that point. If no tree large enough stands within range of your chosen destination, you sense this before you commit and simply do not step, losing nothing. The GM tells you what trees are within reach whenever the surroundings make it uncertain, such as sparse woodland, a lone orchard, or open country where few or none may qualify.<br/>When the spell ends or your concentration breaks, you are expelled from the nearest tree unharmed.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> You may carry up to five willing creatures who touch you through the green road with each stride, and the range extends across any forested expanse in the same region.
+
+### Verdant Restoration
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Medium | singular
+
+**Effect** <br/> You bury a seed in a whispered blessing, and the ground answers with a sudden garden: flowering vines and healing herbs unfurl in moments, breathing their medicine into the air.<br/>On a success, verdant regrowth blooms in short range of the target location. While the flowers hold, apply the following effects:<br/>- Allies within the zone restore 4 HP at the start of each of their turns.<br/>- Allies within the zone are immune to being poisoned and bleeding as the herbs' medicine fills their blood.<br/>- The growth stands thick and high. Ranged attacks against allies within the zone suffer +1 bane.<br/>The zone remains for a short duration, even if you move out of range of the area. The blooming plants need living ground and cannot take root on bare stone, worked floors, or sand.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Allies within the zone restore 6 HP at the start of each of their turns instead.
 
 ### Control Weather
 
