@@ -77,6 +77,17 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Radiant Rebuke",
+		"tradition": "Light",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "Light flares from you at the moment of violence, and the blow that misses meets the sun. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the triggering attack fails, the flare sears the attacker's eyes and they are briefly blinded.",
+		"heightened": "-"
+	},
+	{
 		"name": "Radiant Burst",
 		"tradition": "Light",
 		"rank": "1",
@@ -198,6 +209,28 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Divine Judgement",
+		"tradition": "Light",
+		"rank": "4",
+		"focus": "8",
+		"target": "vs. Dodge",
+		"range": "Long",
+		"properties": "-",
+		"effect": "You raise your hand and the light itself pronounces sentence, falling on the guilty like a blade of dawn.<br/>You can target a hidden or invisible creature with this spell if you are aware of their presence, and your roll suffers no banes from being unable to see them.<br/><strong>Weak.</strong> Deal +8 radiant damage.<br/><strong>Strong.</strong> Deal +16 radiant damage.<br/><strong>Critical.</strong> Deal +24 radiant damage.<br/>If the target is blinded, burning, or invisible, they are also briefly stunned as the light of judgement sears through them.",
+		"heightened": "-"
+	},
+	{
+		"name": "Hallowed Radiance",
+		"tradition": "Light",
+		"rank": "4",
+		"focus": "8",
+		"target": "Extreme (14)",
+		"range": "Long",
+		"properties": "concentrate",
+		"effect": "You call down a standing column of consecrated daylight, and within it nothing hides, nothing deceives, and nothing unholy endures.<br/>On a success, hallowed light fills the area in short range of the target location for up to a medium duration while you concentrate. The area gains the following effects:<br/>- It is filled with bright light, and any area of dim light, total darkness, or magical darkness within it is suppressed while the radiance lasts.<br/>- No creature inside can be hidden or invisible.<br/>- When the radiance appears, it sears brands of light onto all hostile creatures inside the area, and each of them becomes marked (4).<br/>- undead creatures inside take 6 radiant damage (ignore AV) at the start of each of their turns.<br/>- Allies inside gain +1 boon on rolls to resist the charmed, confused, and frightened conditions.",
+		"heightened": "<strong>(Rank 5)</strong> The radiance fills the area in medium range of the target location, undead creatures inside take 8 radiant damage (ignore AV) at the start of each of their turns, and the light sears its brands anew at the start of each of your turns, marking (4) all hostile creatures inside, instead."
+	},
+	{
 		"name": "Dark Sight",
 		"tradition": "Twilight",
 		"rank": "0",
@@ -205,7 +238,7 @@
 		"target": "Medium (8)",
 		"range": "Self",
 		"properties": "enchant (eyes)",
-		"effect": "You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br/>On a success, you can see a medium distance in absolute darkness as in dim light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration.",
+		"effect": "You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br/>On a success, you can see a medium distance through areas of total darkness as though they were dim light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration.",
 		"heightened": "-"
 	},
 	{
@@ -238,7 +271,7 @@
 		"target": "Medium (8)",
 		"range": "Medium",
 		"properties": "-",
-		"effect": "You create an area of magical shadow, making it hard to see through it. Target any area of dim light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered as absolute darkness.<br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area.",
+		"effect": "You create an area of magical shadow, making it hard to see through it. Target any area of dim light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered total darkness.<br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area.",
 		"heightened": "-"
 	},
 	{
@@ -326,7 +359,7 @@
 		"target": "Medium (8)",
 		"range": "Self",
 		"properties": "concentrate",
-		"effect": "You submerge into the shadows around you. Cast this spell while standing in dim light or darkness.<br/>On a success, you merge with the shadows and become invisible. While invisible, you are hidden from any creature which hasn‘t an ability to see through invisibility.<br/>This spell lasts for a short duration, until you attack or cast another spell, or until you enter bright light.",
+		"effect": "You submerge into the shadows around you. Cast this spell while standing in dim light or darkness.<br/>On a success, you merge with the shadows and become invisible.<br/>This spell lasts for a short duration, until you attack or cast another spell, or until you enter bright light.",
 		"heightened": "-"
 	},
 	{
@@ -348,7 +381,7 @@
 		"target": "Hard (10)",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes absolute darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration.",
+		"effect": "You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes total darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration.",
 		"heightened": "-"
 	},
 	{
@@ -492,7 +525,7 @@
 		"range": "Touch",
 		"properties": "-",
 		"effect": "You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. A creature can only benefit from one Wound-healing spell effect per day.",
-		"heightened": "<strong>(Rank 2)</strong> When using your Action, restore +6/12/18 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature."
+		"heightened": "<strong>(Rank 2)</strong> When using your Action, restore +6/12/18 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.<br/><strong>(Rank 4)</strong> When using your Action, restore +10/20/30 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.<br/><strong>(Rank 5)</strong> When using your Action, restore +12/24/36 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature."
 	},
 	{
 		"name": "Overflow of Life",
@@ -700,7 +733,7 @@
 		"target": "Medium (8)",
 		"range": "Self",
 		"properties": "quick",
-		"effect": "You meet the blow with the grave's patience, and what harms you withers in answer. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. Decay crawls back along the strike and the attacker takes 2 necrotic damage (ignore AV), whether their attack hits you or not.",
+		"effect": "You meet the blow with the grave's patience, and what harms you withers in answer. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. Decay crawls back along the strike and the attacker is briefly poisoned, whether their attack hits you or not.",
 		"heightened": "-"
 	},
 	{
@@ -853,8 +886,8 @@
 		"focus": "0",
 		"target": "Special",
 		"range": "Self",
-		"properties": "-",
-		"effect": "You imbue a wooden weapon with nature’s power to strike your enemy with. Choose any crush weapon you are holding that is made from wood. Roll an attack with that weapon using Spirit + Mysticism. On a hit, use your spell power instead of the attack's base damage.",
+		"properties": "strike",
+		"effect": "You imbue a wooden weapon with nature’s power to strike your enemy with. This spell's strike must be made with a crush weapon you are holding that is made from wood.",
 		"heightened": "-"
 	},
 	{
@@ -1184,7 +1217,7 @@
 		"target": "Legendary (16)",
 		"range": "Extreme",
 		"properties": "concentrate,  ritual (minutes)",
-		"effect": "You commune with sky and season, and the weather bends by slow degrees to the shape of your will. Through a ritual of minutes you begin to turn the prevailing weather across the surrounding region, then hold and deepen it for as long as you concentrate (up to a day of dedicated tending). You may shift the weather one stage at a time toward a chosen condition, never conjuring what the season and land could not plausibly produce. Choose the target condition:<br/>- <strong>Clear.</strong> Skies open and the air stills. Any weather-based obscurement, difficult terrain, or wind effect across the region ends, and rolls to travel or to see over long distances through the region gain +1 boon.<br/>- <strong>Rain.</strong> A steady downpour soaks the region. The land beyond short range is Lightly Obscured, unsheltered open flames are extinguished and mundane fires struggle to catch, and empty vessels and cisterns fill with clean water.<br/>- <strong>Storm.</strong> A tempest of driving rain and wind builds. The region is difficult terrain (including for flight) and ranged attacks through it suffer +1 bane. A creature that travels through the storm without shelter gains +1 Fatigue for the day.<br/>- <strong>Fog.</strong> A thick mist settles. The land beyond short range is Heavily Obscured, and creatures gain +1 boon on Stealth rolls to hide within it.<br/>- <strong>Heat or Cold.</strong> The air turns oppressively hot or bitterly cold. A creature that goes a day without proper protection (shade and water against the heat, warmth against the cold) gains +1 Fatigue.<br/>Ending your concentration lets the natural weather reassert itself over the following hours.",
+		"effect": "You commune with sky and season, and the weather bends by slow degrees to the shape of your will. Through a ritual of minutes you begin to turn the prevailing weather across the surrounding region, then hold and deepen it for as long as you concentrate (up to a day of dedicated tending). You may shift the weather one stage at a time toward a chosen condition, never conjuring what the season and land could not plausibly produce. Choose the target condition:<br/>- <strong>Clear.</strong> Skies open and the air stills. Any weather-based obscurement, difficult terrain, or wind effect across the region ends, and rolls to travel or to see over long distances through the region gain +1 boon.<br/>- <strong>Rain.</strong> A steady downpour soaks the region. The land beyond short range is lightly obscured, unsheltered open flames are extinguished and mundane fires struggle to catch, and empty vessels and cisterns fill with clean water.<br/>- <strong>Storm.</strong> A tempest of driving rain and wind builds. The region is difficult terrain (including for flight) and ranged attacks through it suffer +1 bane. A creature that travels through the storm without shelter gains +1 Fatigue for the day.<br/>- <strong>Fog.</strong> A thick mist settles. The land beyond short range is heavily obscured, and creatures gain +1 boon on Stealth rolls to hide within it.<br/>- <strong>Heat or Cold.</strong> The air turns oppressively hot or bitterly cold. A creature that goes a day without proper protection (shade and water against the heat, warmth against the cold) gains +1 Fatigue.<br/>Ending your concentration lets the natural weather reassert itself over the following hours.",
 		"heightened": "-"
 	},
 	{
@@ -1595,6 +1628,17 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Absorb Harm",
+		"tradition": "Peace",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "You breathe in the violence meant for another and let it break on your own calm. Cast this spell when you or an ally in close range of you is attacked vs. Parry or Dodge.<br/>On a success, the target of the attack gains +2 to their Parry or Dodge against the triggering attack. If you cast it for an ally and the attack still hits them, half of the damage is dealt to you instead of them.",
+		"heightened": "-"
+	},
+	{
 		"name": "Blessing of Peace",
 		"tradition": "Peace",
 		"rank": "1",
@@ -1705,6 +1749,28 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Pilgrim's Gate",
+		"tradition": "Peace",
+		"rank": "4",
+		"focus": "8",
+		"target": "Extreme (14)",
+		"range": "Touch",
+		"properties": "ritual (hours), material cost (1500 coins), singular",
+		"effect": "Over hours of consecration you anoint a doorway, arch, or gate with sacred oils, binding it in covenant to its one distant twin.<br/>Each threshold is consecrated separately with its own casting of this spell, and each casting consumes 1500 coins worth of sacred oils and offerings.<br/>On a success, the threshold is consecrated and bound to its twin. You can maintain at most one linked pair, and the two thresholds can lie at most a week's travel apart. Consecrating a new threshold beyond the pair causes your oldest to fade. While both thresholds remain intact, you can open the way as an Action while standing at either threshold and speaking the blessing. The way holds until the start of your next turn, and during that time any creature you permit may step through one threshold and out of the other. The consecration is a physical anointing. Defacing the threshold, breaking the doorway, or a single casting that ends spells destroys it, and destroying either threshold severs the covenant.",
+		"heightened": "<strong>(Rank 5)</strong> Your thresholds can lie anywhere within the same sphere of existence with no limit on the distance between them, and you may maintain any number of consecrated thresholds at once. A creature stepping through one may step out of any other you choose. Each casting consumes 5000 coins worth of materials instead."
+	},
+	{
+		"name": "Redemptive Sacrifice",
+		"tradition": "Peace",
+		"rank": "4",
+		"focus": "8",
+		"target": "Extreme (14)",
+		"range": "Medium",
+		"properties": "-",
+		"effect": "You open the wellspring of your own life and pour it out, giving freely what violence took.<br/>On a success, sacrifice up to 10 of your own HP. Up to two other creatures in range each restore twice as many HP as you sacrificed. Any of them that are dying also stop dying and stabilize.<br/>The HP you sacrifice cannot be redirected, prevented, or reduced.",
+		"heightened": "<strong>(Rank 5)</strong> The targets each restore three times as many HP as you sacrificed instead."
+	},
+	{
 		"name": "Battle Surge",
 		"tradition": "War",
 		"rank": "0",
@@ -1722,8 +1788,8 @@
 		"focus": "0",
 		"target": "Special",
 		"range": "Self",
-		"properties": "-",
-		"effect": "Conjure raw spiritual strength into your weapon attack.<br/>Choose one weapon you are holding. Roll an attack with that weapon using Spirit + Mysticism. On a hit, use your spell power instead of the attack's base damage.",
+		"properties": "strike",
+		"effect": "Conjure raw spiritual strength into your weapon strike, letting divine force drive the blow instead of muscle.",
 		"heightened": "-"
 	},
 	{
@@ -1758,6 +1824,17 @@
 		"properties": "enchant (weapon), singular",
 		"effect": "Imbue a weapon with the power of courage. If the target is dual-wielding, you can instead target both their held weapons.<br/>On a success, the weapon deals +2 damage. On a strong or critical hit, the attack‘s target is briefly frightened. Each creature can suffer the condition from this spell only once per scene. If you target your own weapon, you can make a weapon attack with it as part of casting this spell.<br/>This spell lasts for a medium duration.",
 		"heightened": "<strong>(Rank 2)</strong> The weapon deals +4 damage instead.<br/><strong>(Rank 3) </strong>The weapon deals +6 damage instead."
+	},
+	{
+		"name": "Retaliating Fury",
+		"tradition": "War",
+		"rank": "1",
+		"focus": "2",
+		"target": "Medium (8)",
+		"range": "Self",
+		"properties": "quick",
+		"effect": "Your ancestors' fury guides your guard, and the answer follows the block like thunder follows lightning. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the triggering attacker is within your melee range and their attack fails, your ancestors' fury lashes out and they take 2 damage (ignore AV).",
+		"heightened": "-"
 	},
 	{
 		"name": "Tear Wound",
@@ -1815,6 +1892,17 @@
 		"heightened": "-"
 	},
 	{
+		"name": "Counterstroke",
+		"tradition": "War",
+		"rank": "2",
+		"focus": "4",
+		"target": "Hard (10)",
+		"range": "Self",
+		"properties": "enchant (body)",
+		"effect": "The war-spirits sharpen your eye until every opening in an enemy's guard shines like polished bronze.<br/>On a success, you enter a vigilant stance for a short duration. When a creature in your melee range fails a melee attack against you, you can use your Quick Action to make an Opportunity Attack against them.",
+		"heightened": "<strong>(Rank 3)</strong> These Opportunity Attacks deal +4 damage.<br/><strong>(Rank 4)</strong> These Opportunity Attacks deal +6 damage instead.<br/><strong>(Rank 5)</strong> These Opportunity Attacks deal +8 damage instead."
+	},
+	{
 		"name": "Haste",
 		"tradition": "War",
 		"rank": "2",
@@ -1854,8 +1942,8 @@
 		"focus": "6",
 		"target": "Special",
 		"range": "Self",
-		"properties": "-",
-		"effect": "You bring your weapon down wreathed in golden war-fire, and the proud blow lays low any who dared stand against you.<br/>Choose one weapon you are holding. Roll an attack with that weapon using Spirit + Mysticism. On a hit, use your spell power instead of the attack's base damage, and add the following fire damage:<br/><strong>Weak.</strong> +4 fire damage.<br/><strong>Strong.</strong> +8 fire damage, and the target is briefly frightened of you.<br/><strong>Critical.</strong> +12 fire damage, and the target is frightened of you for a short duration.",
+		"properties": "strike",
+		"effect": "You bring your weapon down wreathed in golden war-fire, and the proud blow lays low any who dared stand against you.<br/>On a hit, add the following fire damage:<br/><strong>Weak.</strong> +4 fire damage.<br/><strong>Strong.</strong> +8 fire damage, and the target is briefly frightened of you.<br/><strong>Critical.</strong> +12 fire damage, and the target is frightened of you for a short duration.",
 		"heightened": "<strong>(Rank 4)</strong> Deal +6/+12/+18 fire damage instead.<br/><strong>(Rank 5)</strong> Deal +8/+16/+24 fire damage instead."
 	},
 	{
@@ -1868,6 +1956,39 @@
 		"properties": "concentrate",
 		"effect": "You call the spirits of fallen warriors, and a spectral champion rises to stand watch, shield raised and blade ready.<br/>On a success, summon a spectral guardian at a location in range for a short duration. It acts as a bulwark under your control with the following properties:<br/>- The guardian has 30 HP, 4 AV, and uses your Resist for all its Defenses. It is immune to all conditions.<br/>- It holds its space and cannot be moved by enemies. On each of your turns, you can move it a short distance.<br/>- <strong>Guard.</strong> Once per round, when a creature adjacent to the guardian is hit by an attack, you can have the guardian intercept the blow. The guardian takes the damage instead, reduced by its AV.<br/>- <strong>Strike.</strong> On your turn, you can spend your Quick Action to have the guardian attack. Roll Spirit + Mysticism vs. Parry of a target in reach of it. On a hit, it deals +4/+8/+12 force damage.<br/>The guardian remains for a short duration, until you dismiss it, or until its HP are reduced to 0.",
 		"heightened": "<strong>(Rank 4)</strong> The guardian has 40 HP and 6 AV, its Strike deals +6/+12/+18 force damage, and it can use Guard twice per round, instead.<br/><strong>(Rank 5)</strong> The guardian has 50 HP and 8 AV, its Strike deals +8/+16/+24 force damage, and it can use Guard three times per round, instead."
+	},
+	{
+		"name": "Blood Frenzy",
+		"tradition": "War",
+		"rank": "4",
+		"focus": "8",
+		"target": "Extreme (14)",
+		"range": "Self",
+		"properties": "enchant (body)",
+		"effect": "You open your own veins to the war-spirits and let the red song take you.<br/>On a success, you enter a frenzy for a short duration and gain the following effects:<br/>- At the start of each of your turns, you take 2 damage (ignore AV) as the frenzy feeds on you.<br/>- You gain +1 Movement per turn.<br/>- On a strong or critical hit, your weapon attacks inflict bleeding (4).<br/>- When you hit a bleeding creature with a weapon attack, their wounds tear wider and their bleeding increases by 2.<br/>- You are immune to the frightened condition.<br/>- Whenever you reduce an enemy to 0 HP, each of their allies in close range of them with the same or a lower tier than the killed creature must roll Spirit + Fortitude vs. your Resist or be briefly frightened of you.<br/>The frenzy lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in the frenzy for a longer time.",
+		"heightened": "<strong>(Rank 5)</strong> Your weapon attacks inflict bleeding (6) on a strong or critical hit instead."
+	},
+	{
+		"name": "Champion's Challenge",
+		"tradition": "War",
+		"rank": "4",
+		"focus": "8",
+		"target": "vs. Resist",
+		"range": "Short",
+		"properties": "singular",
+		"effect": "You strike your weapon against your chest and name your foe, and a burning sigil seals the duel between you.<br/>Target one creature of a tier equal to or lower than your Mysticism.<br/>On a success, the sigil binds you both for a short duration and the target suffers the following effects:<br/>- They suffer +1 bane on attacks against anyone other than you.<br/>- When they deal damage to anyone other than you, the sigil sears them for 6 damage (ignore AV).<br/>- They cannot benefit from boons granted by their allies on rolls against you.<br/>- Your weapon attacks against them gain +1 boon.<br/>- If they end their turn without you in their sight or beyond medium range of you, the sigil brands their cowardice and they are frightened of you for a short duration.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the duel early.",
+		"heightened": "-"
+	},
+	{
+		"name": "Siege Breaker",
+		"tradition": "War",
+		"rank": "4",
+		"focus": "8",
+		"target": "Special",
+		"range": "Self",
+		"properties": "strike",
+		"effect": "You bring your weapon down with the weight of a falling gate, and walls learn to fear you.<br/>On a hit, add the following damage:<br/><strong>Weak.</strong> +4 damage.<br/><strong>Strong.</strong> +8 damage.<br/><strong>Critical.</strong> +12 damage.<br/>Also on a hit, the target loses 3 AV (min. 0) for a short duration.<br/>Against objects, structures, and stationary barriers, this attack deals double damage, and it destroys any mundane cover it strikes.",
+		"heightened": "<strong>(Rank 5)</strong> Add +6/+12/+18 damage and the target loses 4 AV (min. 0) instead."
 	},
 	{
 		"name": "Illuminated Script",
@@ -2088,6 +2209,17 @@
         "properties": "-",
         "effect": "You speak the target's accumulated dooms aloud, and every sickness, terror, and curse upon them comes due at once, called home by the world below.<br/>Count the target's afflictions: each condition they currently suffer among poisoned, frightened, bleeding, slowed, dazed, staggered, and stunned, and each <strong>curse</strong> spell affecting them.<br/><strong>Weak.</strong> Deal +2 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Strong.</strong> Deal +4 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/><strong>Critical.</strong> Deal +6 necrotic damage, plus +4 necrotic damage for each affliction counted.<br/>Also on a success, all counted conditions on the target end and all counted <strong>curse</strong> spells on them are lifted. The tally consumes what it counts.",
         "heightened": "<strong>(Rank 4)</strong> Deal +5 necrotic damage for each affliction counted instead.<br/><strong>(Rank 5)</strong> Deal +6 necrotic damage for each affliction counted instead."
+    },
+    {
+        "name": "Pestilence",
+        "tradition": "Death",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You breathe out a rolling shroud of grave-air, and where it settles, flesh remembers it is mortal.<br/>On a success, the plague fills the area in short range of the target location for up to a medium duration while you concentrate. The miasma is a lightly obscured area. Living creatures inside the area suffer the following effects:<br/>- They are poisoned while inside the area.<br/>- They cannot regain HP.<br/>- They take 6 necrotic damage (ignore AV) at the start of each of their turns.<br/>A creature that leaves the area remains briefly poisoned.",
+        "heightened": "<strong>(Rank 5)</strong> The plague fills the area in medium range of the target location, and creatures inside take 8 necrotic damage (ignore AV) at the start of each of their turns, instead."
     },
     {
         "name": "Fangs of the Dark",

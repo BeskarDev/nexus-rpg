@@ -28,6 +28,14 @@ sidebar_position: 7
 
 **Effect** <br/> You bring tranquility to the target‘s mind, either to renew their spirits, or to forcefully pacify them. When targeting an ally, roll vs. moderate difficulty (8). When targeting an enemy, roll vs. Resist.<br/><strong>Weak.</strong> Restore +2 HP to an ally or deal +0 psychic damage (ignore AV) against an enemy.<br/><strong>Strong.</strong> Restore +4 HP to an ally or deal +2 psychic damage (ignore AV) against an enemy and they are briefly dazed.<br/><strong>Critical. </strong>Restore +6 HP to an ally or deal +4 psychic damage (ignore AV) against an enemy and they are dazed for a short duration. The enemy can roll Spirit + Fortitude at the end of their turns to end the effect early. 
 
+### Absorb Harm
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> You breathe in the violence meant for another and let it break on your own calm. Cast this spell when you or an ally in close range of you is attacked vs. Parry or Dodge.<br/>On a success, the target of the attack gains +2 to their Parry or Dodge against the triggering attack. If you cast it for an ally and the attack still hits them, half of the damage is dealt to you instead of them.
+
 ### Blessing of Peace
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -133,3 +141,23 @@ sidebar_position: 7
  3 | 6 | vs. Resist | Long | concentrate
 
 **Effect** <br/> You emanate an overwhelming aura of serenity that subdues violent thoughts and actions. Choose up to eight creatures within range.<br/>On a success, all targets suffer the following effects for a short duration:<br/>- They cannot make attacks or cast spells dealing damage unless they succeed on a Spirit + Fortitude roll vs. your Resist.<br/>- Whenever they deal damage to another creature, they take half that amount as psychic damage (ignore AV).<br/>- This spell’s effect ends early when the target suffers any damage, unless it is from this spell’s effect.
+
+### Pilgrim's Gate
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Touch | ritual (hours),  material cost (1500 coins),  singular
+
+**Effect** <br/> Over hours of consecration you anoint a doorway, arch, or gate with sacred oils, binding it in covenant to its one distant twin.<br/>Each threshold is consecrated separately with its own casting of this spell, and each casting consumes 1500 coins worth of sacred oils and offerings.<br/>On a success, the threshold is consecrated and bound to its twin. You can maintain at most one linked pair, and the two thresholds can lie at most a week's travel apart. Consecrating a new threshold beyond the pair causes your oldest to fade. While both thresholds remain intact, you can open the way as an Action while standing at either threshold and speaking the blessing. The way holds until the start of your next turn, and during that time any creature you permit may step through one threshold and out of the other. The consecration is a physical anointing. Defacing the threshold, breaking the doorway, or a single casting that ends spells destroys it, and destroying either threshold severs the covenant.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> Your thresholds can lie anywhere within the same sphere of existence with no limit on the distance between them, and you may maintain any number of consecrated thresholds at once. A creature stepping through one may step out of any other you choose. Each casting consumes 5000 coins worth of materials instead.
+
+### Redemptive Sacrifice
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Medium | -
+
+**Effect** <br/> You open the wellspring of your own life and pour it out, giving freely what violence took.<br/>On a success, sacrifice up to 10 of your own HP. Up to two other creatures in range each restore twice as many HP as you sacrificed. Any of them that are dying also stop dying and stabilize.<br/>The HP you sacrifice cannot be redirected, prevented, or reduced.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The targets each restore three times as many HP as you sacrificed instead.

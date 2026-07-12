@@ -10,7 +10,7 @@ sidebar_position: 2
 ---|---|---|---|---
  0 | 0 | Medium (8) | Self | enchant (eyes)
 
-**Effect** <br/> You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br/>On a success, you can see a medium distance through areas of Total Darkness as though they were Dim Light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration. 
+**Effect** <br/> You magically adjust your senses to adapt to total darkness, allowing you to see without any source of light.<br/>On a success, you can see a medium distance through areas of total darkness as though they were dim light. If you are exposed to bright light while under the effects of these spells, roll Spirit + Fortitude. On a failure, this spell ends and you are briefly dazed. Otherwise, this spell lasts for a medium duration. 
 
 ### Night’s Grasp
 
@@ -34,7 +34,7 @@ sidebar_position: 2
 ---|---|---|---|---
  0 | 0 | Medium (8) | Medium | -
 
-**Effect** <br/> You create an area of magical shadow, making it hard to see through it. Target any area of Dim Light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered Total Darkness.<br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area. 
+**Effect** <br/> You create an area of magical shadow, making it hard to see through it. Target any area of dim light in range.<br/>On a success, the magical shadow appears in a close radius around the target area. The area is now considered total darkness.<br/>The shadow lasts a short duration or is broken early if any source of bright light enters the shadow’s area. 
 
 ### Whispers of Doubt
 
@@ -104,7 +104,7 @@ sidebar_position: 2
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | concentrate
 
-**Effect** <br/> You submerge into the shadows around you. Cast this spell while standing in dim light or darkness.<br/>On a success, you merge with the shadows and become invisible. While invisible, you are hidden from any creature which hasn‘t an ability to see through invisibility.<br/>This spell lasts for a short duration, until you attack or cast another spell, or until you enter bright light. 
+**Effect** <br/> You submerge into the shadows around you. Cast this spell while standing in dim light or darkness.<br/>On a success, you merge with the shadows and become invisible.<br/>This spell lasts for a short duration, until you attack or cast another spell, or until you enter bright light. 
 
 ### Sleep
 
@@ -140,7 +140,7 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Medium | concentrate
 
-**Effect** <br/> You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes Total Darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration. 
+**Effect** <br/> You cloud an area in absolute darkness and no light may pierce through it.<br/>On a success, the close area around the target location becomes total darkness. Any light source within it immediately goes out.<br/>This spell lasts for a medium duration. 
 
 ### Fangs of the Dark
 

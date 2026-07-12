@@ -275,6 +275,17 @@
         "heightened": "<strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead."
     },
     {
+        "name": "Illusory Dodge",
+        "discipline": "Illusion",
+        "rank": "1",
+        "focus": "2",
+        "target": "Medium (8)",
+        "range": "Self",
+        "properties": "quick, illusory",
+        "effect": "You split into a flicker of overlapping selves, and the blow chooses wrong. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the triggering attack fails, the attacker is briefly distracted by the flickering double.",
+        "heightened": "-"
+    },
+    {
         "name": "Illusory Trap",
         "discipline": "Illusion",
         "rank": "1",
@@ -326,7 +337,7 @@
         "target": "Hard (10)",
         "range": "Self",
         "properties": "concentrate, illusory, quick",
-        "effect": "You shroud yourself in illusions of your surroundings, hiding you from the sights of others. Cast this spell on your turn.<br/>On a success, you turn invisible. While invisible, you are hidden from any creature which hasn\u2019t successfully rolled against this spells illusion or has an innate ability to see through invisibility.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time.",
+        "effect": "You shroud yourself in illusions of your surroundings, hiding you from the sights of others. Cast this spell on your turn.<br/>On a success, you become invisible.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time.",
         "heightened": "<strong>(Rank 3)</strong> You can remain invisible up to a medium duration instead."
     },
     {
@@ -381,7 +392,7 @@
         "target": "Very Hard (12)",
         "range": "Self",
         "properties": "concentrate, illusory",
-        "effect": "You turn invisible at the very same time as you create a mirror image of yourself, leading creatures to believe you still remain where you were.<br/>On a success, you turn invisible and can immediately move a close distance (no Quick Actions can be used in response to this Movement). While invisible, you are hidden from any creature which hasn\u2019t successfully rolled against this spells illusion or has an innate ability to see through invisibility.<br/>You also create a duplicate at your previous location which remains for the spell\u2019s duration. On your following turns, you can use your Quick Action to make the duplicate move a short distance, gesture, speak, or act in any other way you choose.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time.",
+        "effect": "You turn invisible at the very same time as you create a mirror image of yourself, leading creatures to believe you still remain where you were.<br/>On a success, you become invisible and can immediately move a close distance (no Quick Actions can be used in response to this Movement).<br/>You also create a duplicate at your previous location which remains for the spell\u2019s duration. On your following turns, you can use your Quick Action to make the duplicate move a short distance, gesture, speak, or act in any other way you choose.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time.",
         "heightened": "-"
     },
     {
@@ -404,6 +415,28 @@
         "range": "Short",
         "properties": "illusory",
         "effect": "You draw a shimmer of borrowed faces over your companions, and strangers look back where friends once stood. You cloak up to six creatures of your choice within range (including yourself) in an illusory disguise for a medium duration. You choose each creature's new appearance, altering face, build, clothing, and voice, and you may make a creature seem any height within their own Size category (a Medium creature can appear as any Medium build from short to tall, but cannot seem Small or Large). The illusion holds to the body and moves with it, but cannot mimic a specific real individual well enough to fool those who know them. A creature that has reason to doubt what they see may roll Insight vs. your casting result to see through one disguise.",
+        "heightened": "-"
+    },
+    {
+        "name": "Shattered Veil",
+        "discipline": "Illusion",
+        "rank": "3",
+        "focus": "6",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "-",
+        "effect": "You snap the threads of every lie you have woven, and the collapsing falsehoods tear through the minds that believed them.<br/>Target each creature in range that is currently deceived by one of your illusory spells or distracted by a source one of your illusion spells created, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV) to each target.<br/>Each target is also briefly confused. The illusions deceiving or distracting them collapse and end.",
+        "heightened": "<strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) to each target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) to each target instead."
+    },
+    {
+        "name": "Phantasmal Catastrophe",
+        "discipline": "Illusion",
+        "rank": "4",
+        "focus": "8",
+        "target": "vs. Resist",
+        "range": "Long",
+        "properties": "illusory",
+        "effect": "You tear the sky open in their minds: the heavens fall, the earth splits, and every terror they carried finds its shape at once.<br/>The catastrophe unfolds in the area in short range of the target location. Target each creature in the area, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +5 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +10 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +15 psychic damage (ignore AV) to each target.<br/>Any target that is frightened or confused is briefly paralyzed as the catastrophe consumes what remains of their reality.",
         "heightened": "-"
     },
     {
@@ -1536,7 +1569,7 @@
         "target": "Extreme (14)",
         "range": "Long",
         "properties": "concentrate",
-        "effect": "You draw a line across the world and set it alight, raising a roaring curtain of flame that turns the battlefield into territory.<br/>Choose any shape for the wall in a continuous path along the ground with up to a medium distance from start to end within range. The wall also extends a short distance into the air.<br/>On a success, the wall of flame rises along the chosen path, and you choose one side of the wall to be its scorching side. Any creature standing in the wall's path when it rises takes 8 fire damage (ignore AV) and starts burning (4).<br/>The wall lasts for up to a medium duration while you concentrate. It sheds bright light in short range and dim light in medium range of it, and it blocks sight as a Heavily Obscured area.<br/>When a creature moves through the wall, starts their turn inside it, or starts their turn in melee range of its scorching side, they take 8 fire damage (ignore AV) and start burning (4).",
+        "effect": "You draw a line across the world and set it alight, raising a roaring curtain of flame that turns the battlefield into territory.<br/>Choose any shape for the wall in a continuous path along the ground with up to a medium distance from start to end within range. The wall also extends a short distance into the air.<br/>On a success, the wall of flame rises along the chosen path, and you choose one side of the wall to be its scorching side. Any creature standing in the wall's path when it rises takes 8 fire damage (ignore AV) and starts burning (4).<br/>The wall lasts for up to a medium duration while you concentrate. It sheds bright light in short range and dim light in medium range of it, and it blocks sight as a heavily obscured area.<br/>When a creature moves through the wall, starts their turn inside it, or starts their turn in melee range of its scorching side, they take 8 fire damage (ignore AV) and start burning (4).",
         "heightened": "<strong>(Rank 5)</strong> The wall's path can be up to a long distance from start to end, and creatures take 10 fire damage (ignore AV) from it instead."
     },
     {

@@ -70,7 +70,7 @@ sidebar_position: 4
 ---|---|---|---|---
  1 | 2 | Medium (8) | Self | quick
 
-**Effect** <br/> You meet the blow with the grave's patience, and what harms you withers in answer. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. Decay crawls back along the strike and the attacker takes 2 necrotic damage (ignore AV), whether their attack hits you or not.
+**Effect** <br/> You meet the blow with the grave's patience, and what harms you withers in answer. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. Decay crawls back along the strike and the attacker is briefly poisoned, whether their attack hits you or not.
 
 ### Early Grave
 
@@ -194,3 +194,12 @@ sidebar_position: 4
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5 necrotic damage for each affliction counted instead.<br/><strong>(Rank 5)</strong> Deal +6 necrotic damage for each affliction counted instead.
 
+### Pestilence
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Long | concentrate
+
+**Effect** <br/> You breathe out a rolling shroud of grave-air, and where it settles, flesh remembers it is mortal.<br/>On a success, the plague fills the area in short range of the target location for up to a medium duration while you concentrate. The miasma is a lightly obscured area. Living creatures inside the area suffer the following effects:<br/>- They are poisoned while inside the area.<br/>- They cannot regain HP.<br/>- They take 6 necrotic damage (ignore AV) at the start of each of their turns.<br/>A creature that leaves the area remains briefly poisoned.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The plague fills the area in medium range of the target location, and creatures inside take 8 necrotic damage (ignore AV) at the start of each of their turns, instead.

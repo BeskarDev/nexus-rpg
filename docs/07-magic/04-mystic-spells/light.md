@@ -70,6 +70,14 @@ sidebar_position: 1
 
 **Effect** <br/> Channel the light’s protective magic into one creature within range, bolstering their mental defenses. Cast this spell as a Quick Action on your turn.<br/>On a success, the target gains +1 boon on rolls to resist any mental effects and gains resistance to psychic damage. Attempts to influence their mind also suffer +1 bane. This spell lasts for a short duration. 
 
+### Radiant Rebuke
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick
+
+**Effect** <br/> Light flares from you at the moment of violence, and the blow that misses meets the sun. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the triggering attack fails, the flare sears the attacker's eyes and they are briefly blinded.
+
 ### Radiant Burst
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -88,14 +96,6 @@ sidebar_position: 1
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> The weapon emits bright light in close range and dim light in short range and deals +4 radiant damage instead.<br/><strong>(Rank 3) </strong>The weapon emits bright light in short range and dim light in medium range and deals +6 radiant damage instead.
 
-### Sense Spirits
-
-**Rank** | **Focus** | **Target** | **Range** | **Properties**
----|---|---|---|---
- 2 | 4 | Hard (10) | Self | -
-
-**Effect** <br/> You open your inner eye to the sacred and the profane, and the presence of the otherworldly burns clear before you. You sense the presence of Spirit and Undead creatures within long range for a medium duration, even through obstacles, and whether any ground within range has been consecrated or desecrated. While the spell lasts, you perceive such creatures even while they are ethereal, invisible, or otherwise hidden, and you can target them normally.<br/><strong>Weak.</strong> You learn the number of such creatures and the rough direction of each.<br/><strong>Strong.</strong> You also learn each one's precise location and its kind, such as a celestial, an infernal spirit, or a restless ghost.<br/><strong>Critical.</strong> As Strong, and for each you sense its disposition toward you, one of bound, hostile, or at rest, and a rough sense of its current purpose or command, whichever the GM finds fitting, such as guarding, hunting, waiting, or serving a master's order. If nothing concrete fits, you catch only a wordless impression of its mood. 
-
 ### Sun Sphere
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -111,6 +111,14 @@ sidebar_position: 1
  1 | 2 | vs. Resist | Short | quick
 
 **Effect** <br/> You focus on a creatures thoughts, gaining insight into their defenses. Cast this spell on your turn.<br/>On a success, increase the SL of your next attack until the end of your next turn by one step (max. critical success). 
+
+### Sense Spirits
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 2 | 4 | Hard (10) | Self | -
+
+**Effect** <br/> You open your inner eye to the sacred and the profane, and the presence of the otherworldly burns clear before you. You sense the presence of Spirit and Undead creatures within long range for a medium duration, even through obstacles, and whether any ground within range has been consecrated or desecrated. While the spell lasts, you perceive such creatures even while they are ethereal, invisible, or otherwise hidden, and you can target them normally.<br/><strong>Weak.</strong> You learn the number of such creatures and the rough direction of each.<br/><strong>Strong.</strong> You also learn each one's precise location and its kind, such as a celestial, an infernal spirit, or a restless ghost.<br/><strong>Critical.</strong> As Strong, and for each you sense its disposition toward you, one of bound, hostile, or at rest, and a rough sense of its current purpose or command, whichever the GM finds fitting, such as guarding, hunting, waiting, or serving a master's order. If nothing concrete fits, you catch only a wordless impression of its mood. 
 
 ### Break Curse
 
@@ -169,3 +177,21 @@ sidebar_position: 1
  3 | 6 | Very Hard (12) | Long | -
 
 **Effect** <br/> You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +4 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +8 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +12 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.
+
+### Divine Judgement
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | vs. Dodge | Long | -
+
+**Effect** <br/> You raise your hand and the light itself pronounces sentence, falling on the guilty like a blade of dawn.<br/>You can target a hidden or invisible creature with this spell if you are aware of their presence, and your roll suffers no banes from being unable to see them.<br/><strong>Weak.</strong> Deal +8 radiant damage.<br/><strong>Strong.</strong> Deal +16 radiant damage.<br/><strong>Critical.</strong> Deal +24 radiant damage.<br/>If the target is blinded, burning, or invisible, they are also briefly stunned as the light of judgement sears through them.
+
+### Hallowed Radiance
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | Extreme (14) | Long | concentrate
+
+**Effect** <br/> You call down a standing column of consecrated daylight, and within it nothing hides, nothing deceives, and nothing unholy endures.<br/>On a success, hallowed light fills the area in short range of the target location for up to a medium duration while you concentrate. The area gains the following effects:<br/>- It is filled with bright light, and any area of dim light, total darkness, or magical darkness within it is suppressed while the radiance lasts.<br/>- No creature inside can be hidden or invisible.<br/>- When the radiance appears, it sears brands of light onto all hostile creatures inside the area, and each of them becomes marked (4).<br/>- undead creatures inside take 6 radiant damage (ignore AV) at the start of each of their turns.<br/>- Allies inside gain +1 boon on rolls to resist the charmed, confused, and frightened conditions.
+
+> **Heightened** <br/> <strong>(Rank 5)</strong> The radiance fills the area in medium range of the target location, undead creatures inside take 8 radiant damage (ignore AV) at the start of each of their turns, and the light sears its brands anew at the start of each of your turns, marking (4) all hostile creatures inside, instead.

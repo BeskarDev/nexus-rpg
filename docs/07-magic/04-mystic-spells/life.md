@@ -46,7 +46,7 @@ sidebar_position: 3
 
 **Effect** <br/> You focus life-giving magic into an injury, mending it quickly or taking longer to close more grievous injuries.<br/>You can cast this spell using an Action or casting it as a ritual (minutes).<br/><strong>Action.</strong> Restore +4/8/12 HP to your target.<br/><strong>Ritual (minutes). </strong>On a success, you heal one Wound from a creature. A creature can only benefit from one Wound-healing spell effect per day. 
 
-> **Heightened** <br/> <strong>(Rank 2)</strong> When using your Action, restore +6/12/18 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.
+> **Heightened** <br/> <strong>(Rank 2)</strong> When using your Action, restore +6/12/18 HP instead. When casting this spell as a ritual (minutes) instead, heal up to two Wounds from a creature.<br/><strong>(Rank 3)</strong> When using your Action, restore +8/16/24 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.<br/><strong>(Rank 4)</strong> When using your Action, restore +10/20/30 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.<br/><strong>(Rank 5)</strong> When using your Action, restore +12/24/36 HP instead. When casting this spell as a ritual (minutes) instead, heal up to three Wounds from a creature.
 
 ### Overflow of Life
 

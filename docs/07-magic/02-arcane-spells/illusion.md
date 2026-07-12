@@ -54,6 +54,14 @@ sidebar_position: 2
 
 > **Heightened** <br/> <strong>(Rank 2)</strong> Deal +4/+8/+12 psychic damage (ignore AV) instead.<br/><strong>(Rank 3) </strong>Deal +6/+12/+18 psychic damage (ignore AV) instead.
 
+### Illusory Dodge
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 1 | 2 | Medium (8) | Self | quick,  illusory
+
+**Effect** <br/> You split into a flicker of overlapping selves, and the blow chooses wrong. Cast this spell when you are attacked vs. your Parry or Dodge.<br/>On a success, you gain +2 to your Parry or Dodge against the triggering attack. If the triggering attack fails, the attacker is briefly distracted by the flickering double.
+
 ### Illusory Trap
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -98,7 +106,7 @@ sidebar_position: 2
 ---|---|---|---|---
  2 | 4 | Hard (10) | Self | concentrate,  illusory,  quick
 
-**Effect** <br/> You shroud yourself in illusions of your surroundings, hiding you from the sights of others. Cast this spell on your turn.<br/>On a success, you turn invisible. While invisible, you are hidden from any creature which hasn’t successfully rolled against this spells illusion or has an innate ability to see through invisibility.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time. 
+**Effect** <br/> You shroud yourself in illusions of your surroundings, hiding you from the sights of others. Cast this spell on your turn.<br/>On a success, you become invisible.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time. 
 
 > **Heightened** <br/> <strong>(Rank 3)</strong> You can remain invisible up to a medium duration instead.
 
@@ -146,7 +154,7 @@ sidebar_position: 2
 ---|---|---|---|---
  3 | 6 | Very Hard (12) | Self | concentrate,  illusory
 
-**Effect** <br/> You turn invisible at the very same time as you create a mirror image of yourself, leading creatures to believe you still remain where you were.<br/>On a success, you turn invisible and can immediately move a close distance (no Quick Actions can be used in response to this Movement). While invisible, you are hidden from any creature which hasn’t successfully rolled against this spells illusion or has an innate ability to see through invisibility.<br/>You also create a duplicate at your previous location which remains for the spell’s duration. On your following turns, you can use your Quick Action to make the duplicate move a short distance, gesture, speak, or act in any other way you choose.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time. 
+**Effect** <br/> You turn invisible at the very same time as you create a mirror image of yourself, leading creatures to believe you still remain where you were.<br/>On a success, you become invisible and can immediately move a close distance (no Quick Actions can be used in response to this Movement).<br/>You also create a duplicate at your previous location which remains for the spell’s duration. On your following turns, you can use your Quick Action to make the duplicate move a short distance, gesture, speak, or act in any other way you choose.<br/>This spell lasts for a short duration or until you attack or cast another spell. You can immediately recast this spell as a Quick Action at the end of the duration to remain invisible for a longer time. 
 
 ### Phantasmal Killer
 
@@ -163,3 +171,21 @@ sidebar_position: 2
  3 | 6 | Very Hard (12) | Short | illusory
 
 **Effect** <br/> You draw a shimmer of borrowed faces over your companions, and strangers look back where friends once stood. You cloak up to six creatures of your choice within range (including yourself) in an illusory disguise for a medium duration. You choose each creature's new appearance, altering face, build, clothing, and voice, and you may make a creature seem any height within their own Size category (a Medium creature can appear as any Medium build from short to tall, but cannot seem Small or Large). The illusion holds to the body and moves with it, but cannot mimic a specific real individual well enough to fool those who know them. A creature that has reason to doubt what they see may roll Insight vs. your casting result to see through one disguise.
+
+### Shattered Veil
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 3 | 6 | vs. Resist | Medium | -
+
+**Effect** <br/> You snap the threads of every lie you have woven, and the collapsing falsehoods tear through the minds that believed them.<br/>Target each creature in range that is currently deceived by one of your illusory spells or distracted by a source one of your illusion spells created, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV) to each target.<br/>Each target is also briefly confused. The illusions deceiving or distracting them collapse and end.
+
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) to each target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) to each target instead.
+
+### Phantasmal Catastrophe
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 4 | 8 | vs. Resist | Long | illusory
+
+**Effect** <br/> You tear the sky open in their minds: the heavens fall, the earth splits, and every terror they carried finds its shape at once.<br/>The catastrophe unfolds in the area in short range of the target location. Target each creature in the area, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +5 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +10 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +15 psychic damage (ignore AV) to each target.<br/>Any target that is frightened or confused is briefly paralyzed as the catastrophe consumes what remains of their reality.

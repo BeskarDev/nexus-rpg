@@ -8,7 +8,7 @@
 
 ### Key Findings
 
-1. **Low-to-mid tier coverage is strong; high-tier coverage is sparse.** Ranks 0–2 contain 248 of 341 total spells (~73%), providing robust foundations. Rank 3 holds 67 spells with every school at 3 or more, Rank 4 has 21, and Rank 5 has 5 (*Fulminate*, *Resurrection*, *Control Weather*, *Earthquake*, *Lightning Storm*) — 10 of 14 schools still lack an R5 spell, and 5 schools (War, Peace, Light, Illusion, Death) have nothing published above R3.
+1. **Low-to-mid tier coverage is strong; the top rank is the last gap.** Ranks 0–2 contain 253 of 356 total spells (~71%), providing robust foundations. Rank 3 holds 68 spells with every school at 3 or more, Rank 4 has 30 with every school represented (P4 batch), and Rank 5 has 5 (*Fulminate*, *Resurrection*, *Control Weather*, *Earthquake*, *Lightning Storm*) — 10 of 14 schools still lack an R5 spell.
 2. **Multi-target damage should use half single-target scaling at Rank 2+.** The previous "one rank lower" guideline used a flat −2 reduction that became proportionally weaker at higher ranks. The revised approach halves the single-target spell bonus for multi-target spells at R2+ (R0–R1 unchanged), creating a consistent 50% penalty that remains meaningful at all ranks. Spell Power and spell catalyst bonuses apply equally, so the actual per-target gap narrows in play — but still rewards clustering 3+ targets as an intentional AoE payoff.
 3. **Missile spells need damage type reconsideration.** Arcane Missiles/Barrage currently use blast damage (ignoring ½ AV), but the intended weakness is per-missile AV reduction. The blast property undermines this by halving AV before it applies. A neutral "arcane" damage type with full AV application per missile would better serve the design intent. Moving Arcane Barrage to Rank 3 is also under consideration as an alternative or complementary fix.
 4. **War, Peace, and Death traditions are undersized.** War (15 spells, R3 tier published in v0.12.0) and Peace (15) now reach R3 but stop there. Death is the thinnest above R1 (only 2 spells each at R2 and R3). All three have full audited seed sets ready for design batches.
@@ -44,43 +44,43 @@
 
 *Counts regenerated from `docs/07-magic` on 2026-07-10.*
 
-### 2.1 Arcane Disciplines (148 spells)
+### 2.1 Arcane Disciplines (151 spells)
 
 | Discipline | R0 | R1 | R2 | R3 | R4 | R5 | Total | Strengths | Gaps |
 |---|---|---|---|---|---|---|---|---|---|
 | **Conjuration** | 3 | 8 | 8 | 7 | 5 | 0 | **31** | Versatile summons, missiles, teleport, best R4 tier | No R5 |
 | **Evocation** | 3 | 9 | 6 | 3 | 3 | 1 | **25** | Full damage curve R0–R5 restored | R5 breadth (Fulminate only) |
-| **Illusion** | 3 | 5 | 7 | 3 | 0 | 0 | **18** | Stealth, deception, utility | Nothing above R3 |
+| **Illusion** | 3 | 6 | 7 | 4 | 1 | 0 | **21** | Stealth, deception, belief-collapse payoffs | No R5 |
 | **Necromancy** | 5 | 8 | 7 | 6 | 2 | 0 | **28** | Best-in-class depth and theme | No R5 capstone |
 | **Telepathy** | 3 | 7 | 6 | 5 | 2 | 0 | **23** | Mind control, influence ladder complete | No R5 |
 | **Telekinetics** | 3 | 7 | 7 | 5 | 1 | 0 | **23** | Forced movement, in-school payoffs published | Thin R4, no R5 |
-| **Arcane Total** | **20** | **44** | **41** | **29** | **13** | **1** | **148** | — | — |
+| **Arcane Total** | **20** | **45** | **41** | **30** | **14** | **1** | **151** | — | — |
 
-### 2.2 Mystic Traditions (193 spells)
+### 2.2 Mystic Traditions (205 spells)
 
 | Tradition | R0 | R1 | R2 | R3 | R4 | R5 | Total | Strengths | Gaps |
 |---|---|---|---|---|---|---|---|---|---|
-| **Death** | 5 | 7 | 5 | 4 | 0 | 0 | **21** | Curses, ancestry, affliction-harvest engine published | Nothing above R3 |
+| **Death** | 5 | 7 | 5 | 4 | 1 | 0 | **22** | Curses, ancestry, affliction-harvest engine with its R4 battery | No R5 |
 | **Life** | 3 | 5 | 6 | 3 | 1 | 1 | **19** | Full resurrection ladder (Revivify/Raise Dead/Resurrection) | Thin R4 breadth |
-| **Light** | 4 | 8 | 4 | 4 | 0 | 0 | **20** | Anti-undead, revelation | Nothing above R3 |
+| **Light** | 4 | 9 | 4 | 4 | 2 | 0 | **23** | Anti-undead, revelation, R4 judgement payoffs | No R5 |
 | **Nature** | 6 | 9 | 13 | 9 | 1 | 1 | **39** | Largest school, full breadth, Control Weather R5 | Thin R4 |
-| **Peace** | 3 | 4 | 4 | 4 | 0 | 0 | **15** | Defense, protection | Nothing above R3, travel/law pillars young |
+| **Peace** | 3 | 5 | 4 | 4 | 2 | 0 | **18** | Defense, protection, travel gate | No R5, law pillar young |
 | **Tempest** | 3 | 10 | 9 | 5 | 5 | 2 | **34** | Healthiest top end (5×R4, 2×R5) | Near-complete — breadth polish only |
 | **Twilight** | 5 | 7 | 12 | 5 | 1 | 0 | **30** | Stealth, shadow, dreams, fate engine started | No R5 |
-| **War** | 3 | 5 | 3 | 4 | 0 | 0 | **15** | Combat buffs, R3 tier published v0.12.0 | Nothing above R3 |
-| **Mystic Total** | **32** | **55** | **56** | **38** | **8** | **4** | **193** | — | — |
+| **War** | 3 | 6 | 4 | 4 | 3 | 0 | **20** | Combat buffs, full fear+bleed engine to R4 | No R5 |
+| **Mystic Total** | **32** | **58** | **57** | **38** | **16** | **4** | **205** | — | — |
 
 ### 2.3 System-Wide Distribution
 
 | Rank | Arcane | Mystic | Total | Status |
 |---|---|---|---|---|
 | 0 | 20 | 32 | **52** | ✅ Excellent — strong cantrip foundations |
-| 1 | 44 | 55 | **99** | ✅ Excellent — broad basic options, every school has its R1 reactive |
-| 2 | 41 | 56 | **97** | ✅ Strong — Fireball-tier diversity |
-| 3 | 29 | 38 | **67** | ✅ Strong — every school holds at least 3 spells |
-| 4 | 13 | 8 | **21** | ❌ Sparse — 5 of 14 schools (Illusion, Death, Light, Peace, War) have zero R4 spells |
+| 1 | 45 | 58 | **103** | ✅ Excellent — broad basic options, every school has its standard-chassis R1 reactive |
+| 2 | 41 | 57 | **98** | ✅ Strong — Fireball-tier diversity |
+| 3 | 30 | 38 | **68** | ✅ Strong — every school holds at least 3 spells |
+| 4 | 14 | 16 | **30** | ✅ Covered — every school now publishes at least one R4 spell (P4 batch, 2026-07-12) |
 | 5 | 1 | 4 | **5** | ❌ Nascent — Fulminate, Resurrection, Control Weather, Earthquake, Lightning Storm; 10 schools have none |
-| **Total** | **148** | **193** | **341** | — |
+| **Total** | **151** | **205** | **356** | — |
 
 **Key Observations**:
 - **Excellent coverage**: Nature (38), Tempest (34), Conjuration (30), Necromancy (28) are the best-developed schools. Tempest is the only school with a healthy R4–R5 tier.
@@ -637,15 +637,18 @@ The old concept lists formerly in this section are superseded by the per-school 
 
 *Still seeded for their school batches (P4/P5): Retaliating Fury (War), Kinetic Deflection (Telekinetics), Sustaining Grace (Life), Absorb Harm (Peace), Radiant Rebuke (Light), Illusory Dodge (Illusion), Mental Shield (Telepathy) — these schools already have some R1 quick spell.*
 
-### Priority 4 — Raise Every School to R4 (four schools have nothing above R3)
+### Priority 4 — Raise Every School to R4 — ✅ DONE (published 2026-07-12)
 
-| # | Batch | Seeds |
+| # | Batch | Outcome |
 |---|---|---|
-| 4.1 | **War R4** | Blood Frenzy, Champion's Challenge, Siege Breaker |
-| 4.2 | **Peace R4** | Pilgrim's Gate, Redemptive Sacrifice |
-| 4.3 | **Light R4** | Divine Judgement, Hallowed Radiance |
-| 4.4 | **Illusion R4** | Phantasmal Catastrophe (+ Major Illusion Heighten covers trickery R4) |
-| 4.5 | **Nature / Life / Twilight / Necromancy R4 breadth** (each has 1–2) | Primal Guardian, Verdant Restoration; Greater Restoration, Life Ward; Eclipse, Dreamwalking, Prophecy, Veil of Secrets; Necrotic Plague, Soul Cage, Possess Corpse |
+| 4.1 | **War R4** | ✅ Blood Frenzy, Champion's Challenge, Siege Breaker published, plus Counterstroke (R2) and Retaliating Fury (R1 reactive) |
+| 4.2 | **Peace R4** | ✅ Pilgrim's Gate, Redemptive Sacrifice published, plus Absorb Harm (R1 reactive) |
+| 4.3 | **Light R4** | ✅ Divine Judgement, Hallowed Radiance published, plus Radiant Rebuke (R1 reactive) |
+| 4.4 | **Illusion R4** | ✅ Phantasmal Catastrophe published, plus Shattered Veil (R3) and Illusory Dodge (R1 reactive) |
+| 4.4b | **Death R4** | ✅ Pestilence published (Death had joined the zero-R4 set after P2) |
+| 4.5 | **Nature / Life / Twilight / Necromancy R4 breadth** (each has 1–2) — **still open** | Primal Guardian, Verdant Restoration; Greater Restoration, Life Ward; Eclipse, Dreamwalking, Prophecy, Veil of Secrets; Necrotic Plague, Soul Cage, Possess Corpse |
+
+*The batch also shipped the **strike** spell property (Mighty Strike, Shillelagh, Glorious Strike, Siege Breaker), the **invisible** condition (Invisibility, Mislead, Shadow Meld reworded), Healing Touch's Heighten extension to R5, and Death's Rebuke's poisoned-back secondary.*
 
 ### Priority 5 — R5 Capstones (target: at least one per school; 10 schools have none)
 

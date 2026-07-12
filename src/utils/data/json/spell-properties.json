@@ -12,6 +12,10 @@
         "description": "You are required to hold your Spell Concentration while this spell\u2018s duration lasts. You can only hold your Spell Concentration on one spell at a time. You can choose to end concentrating on a spell at any time."
     },
     {
+        "name": "curse",
+        "description": "This spell binds a lingering malediction to the target. A creature can suffer any number of different curses at the same time, but only one instance of the same curse. A curse is not a condition and can't be removed by effects that end conditions. It ends with its stated duration, or early through magic that lifts curses, such as *Break Curse*."
+    },
+    {
         "name": "enchant (X)",
         "description": "This spell enchants some part of your person (body, eyes, etc.)  or one piece of equipment (weapon, armor, etc.). You can only benefit from one such enchantment for each individual part at a time. This counts as a temporary enchantment in regards to already enchanted items."
     },
@@ -38,5 +42,9 @@
     {
         "name": "singular",
         "description": "You can only ever cast this spell once at a time. If you cast the spell again, the spell\u2019s lasting effect of the previous cast ends."
+    },
+    {
+        "name": "strike",
+        "description": "When you cast this spell, choose one weapon you are holding and roll an attack with it, using your spellcasting skill (Spirit + Mysticism for mystic spells, Mind + Arcana for arcane spells). On a hit, use your spell power instead of the attack's base damage, then apply the spell's effects. This attack is a basic attack and can't be combined with Combat Arts."
     }
 ]

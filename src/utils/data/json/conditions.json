@@ -33,7 +33,7 @@
     },
     {
         "name": "distracted",
-        "description": "You apply the following effects:<br/>- You suffer +1 bane on all rolls unless they are against the source of your distraction.<br/>- Attacks against you gain +1 boon against you, unless they are from the source of your distraction.<br/>- You can only use Quick Actions against the source of your distraction.<br/>This condition ends early when you take damage from anything different than the source of your distraction.<br/>"
+        "description": "You apply the following effects:<br/>- You suffer +1 bane on all rolls unless they are against the source of your distraction.<br/>- Attacks against you gain +1 boon, unless they are from the source of your distraction.<br/>- You can’t use Quick Actions in response to anyone or anything except the source of your distraction.<br/>This condition ends early when you take damage from anything different than the source of your distraction.<br/>"
     },
     {
         "name": "frightened",
@@ -46,6 +46,10 @@
     {
         "name": "hidden",
         "description": "Any creature not able to perceive you is considered blinded against you and can\u2019t target you with any attack or other ability. Interacting with or making an attack against a creature you are hidden from reveals your location to them and you are no longer hidden from them."
+    },
+    {
+        "name": "invisible",
+        "description": "You apply the following effects:<br/>- You can\u2019t be perceived by sight. You are considered hidden from any creature that can\u2019t perceive you through other senses or see through invisibility.<br/>- When you reveal your location to a creature (such as by attacking them), you are no longer hidden from them, but they are still considered blinded against you while you remain invisible."
     },
     {
         "name": "marked (X)",
