@@ -183,3 +183,27 @@ sidebar_position: 8
 **Effect** <br/> You bring your weapon down with the weight of a falling gate, and walls learn to fear you.<br/>On a hit, add the following damage:<br/><strong>Weak.</strong> +4 damage.<br/><strong>Strong.</strong> +8 damage.<br/><strong>Critical.</strong> +12 damage.<br/>Also on a hit, the target loses 3 AV (min. 0) for a short duration.<br/>Against objects, structures, and stationary barriers, this attack deals double damage, and it destroys any mundane cover it strikes.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> Add +6/+12/+18 damage and the target loses 4 AV (min. 0) instead.
+
+### Avatar of War
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Self | concentrate,  enchant (body)
+
+**Effect** <br/> You call down the war-spirits of your ancestors and they answer in your flesh, and you rise taller, wreathed in the fury of every battle ever won.<br/>On a success, you become an avatar of war for a short duration and gain the following effects:<br/>- At the start of each of your turns, the war-fury feeds on you and you take 4 damage (ignore AV).<br/>- You are immune to the frightened condition and cannot be knocked prone.<br/>- You gain +1 Movement per turn.<br/>- Your weapon attacks gain +1 boon and deal +8 additional damage against frightened creatures.<br/>- At the start of each of your turns, roll Spirit + Mysticism vs. Resist against all enemies in close range of you. On a success, that creature is briefly frightened of you. On a failure, that creature is immune to this fear effect for a short duration.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain an avatar of war for a longer time.
+
+### Final Triumph
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Short | quick
+
+**Effect** <br/> The war-spirits seize upon the kill and shriek the victory across the field, and every warrior present feels the battle turn on its hinge.<br/>Cast this spell as a Quick Action when you or an ally within range reduces an enemy to 0 HP.<br/>On a success, apply the following effects:<br/>- Target each enemy in range who could see the fallen and whose Tier is equal to or lower than the fallen creature's Tier, using your roll's result vs. their Resist. On a success, that creature is frightened of the fallen's killer for a short duration.<br/>- Each ally in range takes heart. They shed the frightened condition, are immune to being frightened for a short duration, and gain +1 boon on their next roll.
+
+### Divine Retribution
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Dodge | Long | -
+
+**Effect** <br/> You raise your weapon to the sky and call down judgement, and a pillar of golden fire falls upon the guilty like the wrath of every wronged ancestor.<br/><strong>Weak.</strong> Deal +8 fire damage.<br/><strong>Strong.</strong> Deal +16 fire damage.<br/><strong>Critical.</strong> Deal +24 fire damage.<br/>If the target is frightened, the judgement hammers their broken nerve and they are briefly stunned.<br/>If the target has reduced one of your allies to 0 HP this scene, deal +12/+24/+36 fire damage instead as retribution.

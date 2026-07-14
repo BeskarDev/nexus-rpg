@@ -45,7 +45,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 2 | 7 | Hallucinated Swarm, Illusionary Terrain, Invisibility, Major Illusion, Misdirection, Trap Room, Waking Dream |
 | 3 | 3 | Mislead, Phantasmal Killer, Seeming (incomplete) |
 | 4 | 0 | — |
-| 5 | 0 | — |
+| 5 | 2 | Maze of Madness, Mirage Arcane |
 
 ### Trait × Rank Coverage Matrix
 

@@ -46,7 +46,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 2 | 5 | Haste, Knock, Levitation, Stasis, Strong Telekinesis |
 | 3 | 3 | Distortion Field, Orbiting Shards, Part Stone |
 | 4 | 1 | Reverse Gravity (published R5 Heighten) |
-| 5 | 0 | — |
+| 5 | 1 | Annihilating Wave |
 
 ### Trait × Rank Coverage Matrix
 

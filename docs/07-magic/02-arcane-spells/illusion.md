@@ -178,7 +178,7 @@ sidebar_position: 2
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | -
 
-**Effect** <br/> You snap the threads of every lie you have woven, and the collapsing falsehoods tear through the minds that believed them.<br/>Target each creature in range that is currently deceived by one of your illusory spells or distracted by a source one of your illusion spells created, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV) to each target.<br/>Each target is also briefly confused. The illusions deceiving or distracting them collapse and end.
+**Effect** <br/> You snap the threads of every lie you have woven, and the collapsing falsehoods tear through the minds that believed them.<br/>Target each creature in range that is currently deceived by one of your illusory spells or distracted by a source one of your illusion spells created.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV) to each target.<br/>Each target is also briefly confused. The illusions deceiving or distracting them collapse and end.
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) to each target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) to each target instead.
 
@@ -188,4 +188,20 @@ sidebar_position: 2
 ---|---|---|---|---
  4 | 8 | vs. Resist | Long | illusory
 
-**Effect** <br/> You tear the sky open in their minds: the heavens fall, the earth splits, and every terror they carried finds its shape at once.<br/>The catastrophe unfolds in the area in short range of the target location. Target each creature in the area, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +5 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +10 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +15 psychic damage (ignore AV) to each target.<br/>Any target that is frightened or confused is briefly paralyzed as the catastrophe consumes what remains of their reality.
+**Effect** <br/> You tear the sky open in their minds: the heavens fall, the earth splits, and every terror they carried finds its shape at once.<br/>The catastrophe unfolds in the area in short range of the target location. Target each creature in the area.<br/><strong>Weak.</strong> Deal +5 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +10 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +15 psychic damage (ignore AV) to each target.<br/>Any target that is frightened or confused is briefly paralyzed as the catastrophe consumes what remains of their reality.
+
+### Maze of Madness
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Long | concentrate, illusory
+
+**Effect** <br/> You fold a labyrinth of false walls, endless stairs, and doubling corridors over an area, and the world inside it disappears.<br/>On a success, the maze unfolds in the area in short range of the target location. It lasts while you concentrate, up to a short duration. To anyone outside, the maze is invisible and its victims seem to stumble through empty air.<br/>Any creature that starts their turn in the maze's area or enters it for the first time on their turn must succeed on a Spirit + Fortitude roll vs. your Resist or become lost in the maze. A creature that is frightened or confused suffers +1 bane on this roll. Creatures of a tier higher than your Arcana and creatures without a mind, such as most constructs and oozes, are unaffected.<br/>While lost in the maze, a creature is confused and can't willingly move out of the maze's area. At the start of each of their turns, they take 6 psychic damage (ignore AV) as the labyrinth gnaws at their reason. At the end of each of their turns, they can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever they take damage from any other source, they immediately make this roll as well. A creature that ends this effect can't become lost in this maze again.
+
+### Mirage Arcane
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Special | ritual (minutes), illusory, singular, material cost (5000 coins)
+
+**Effect** <br/> You spread your hands over the land and teach it to lie. The ritual consumes rare pigments and ground crystal worth 5000 coins, whether or not it succeeds.<br/>On a success, you reshape how an area of terrain up to a thousand paces across is perceived. You can make it look, sound, smell, and even feel like other natural terrain: a road vanishes under false scrub, a lake becomes a meadow, a fortress hill seems a barren dune, a canyon appears as level ground. Structures can be hidden or dressed as terrain, but you cannot create the appearance of creatures. The substance beneath is unchanged: a hidden wall still blocks, a masked ravine still drops, false ground over water still drowns.<br/>A creature that interacts with the false terrain can roll Spirit + Perception vs. your Resist to see through the deception. A creature that sees through it perceives the mirage as a faint shimmer over the truth. The mirage lasts for a long duration. While it holds, you can renew it each dawn by casting this spell again.

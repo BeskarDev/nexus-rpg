@@ -46,7 +46,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 2 | 6 | Counterspell, Forced Suggestion, Psychic Wave, Psychometry, Sending, Wave of Madness (incomplete) |
 | 3 | 1 | Invade Dreams (incomplete) |
 | 4 | 2 | Astral Body, Mass Hold |
-| 5 | 0 | — |
+| 5 | 3 | Absolute Control, Mindwipe, Psychic Maelstrom |
 
 ### Trait × Rank Coverage Matrix
 

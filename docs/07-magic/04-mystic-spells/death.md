@@ -203,3 +203,27 @@ sidebar_position: 4
 **Effect** <br/> You breathe out a rolling shroud of grave-air, and where it settles, flesh remembers it is mortal.<br/>On a success, the plague fills the area in short range of the target location for up to a medium duration while you concentrate. The miasma is a lightly obscured area. Living creatures inside the area suffer the following effects:<br/>- They are poisoned while inside the area.<br/>- They cannot regain HP.<br/>- They take 6 necrotic damage (ignore AV) at the start of each of their turns.<br/>A creature that leaves the area remains briefly poisoned.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> The plague fills the area in medium range of the target location, and creatures inside take 8 necrotic damage (ignore AV) at the start of each of their turns, instead.
+
+### Inexorable Doom
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Resist | Medium | curse,  singular
+
+**Effect** <br/> You speak a creature's death aloud, calling every sickness, terror, and curse that clings to them home at once, and then you name the doom that follows.<br/>Target one creature of a tier equal to or lower than your Mysticism. Count their afflictions, to a maximum of four: each condition they currently suffer among poisoned, frightened, bleeding, slowed, dazed, staggered, and stunned, and each <strong>curse</strong> spell affecting them.<br/><strong>Weak.</strong> Deal +4 necrotic damage, plus +6 necrotic damage for each affliction counted.<br/><strong>Strong.</strong> Deal +8 necrotic damage, plus +6 necrotic damage for each affliction counted.<br/><strong>Critical.</strong> Deal +12 necrotic damage, plus +6 necrotic damage for each affliction counted.<br/>Also on a success, all counted conditions on the target end and all counted <strong>curse</strong> spells on them are lifted, and the doom takes hold of the target as a <strong>curse</strong>. The doom lasts for a short duration, extended by one duration step for each affliction counted. While the doom lasts, the target cannot regain HP, an Attribute die of your choice is reduced by one step, and they take 8 necrotic damage (ignore AV) at the start of each of their turns. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the doom early.
+
+### Pall of the Grave
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Long | concentrate
+
+**Effect** <br/> You call up the cold dread of the realm below, and it settles over the field like a fog the living feel in their bones. Beneath it, the grave has claim on all things.<br/>On a success, the pall fills the area in medium range of the target location for a medium duration while you concentrate. While the pall holds, apply the following effects:<br/>- The grave denies life within the pall. No creature inside it can regain HP.<br/>- Any living creature that starts their turn within the pall takes 6 necrotic damage (ignore AV) as the grave's chill seeps into them.<br/>- At the start of each of your turns, roll Spirit + Mysticism vs. Resist against all living creatures within the pall. On a success, that creature is frightened of the pall for a short duration. On a failure, that creature is immune to this fear effect for a short duration.<br/>- While a creature is frightened of the pall, they count as afflicted for the purposes of your <em>death</em> spells that reward afflicted targets. If such a spell counts the number of afflictions on them, they count as suffering the maximum number instead.<br/>- The realm below calls its own home. Undead and Spirit creatures within the pall suffer +1 bane on all rolls, and any Undead or Spirit creature slain within the pall passes on to the realm below and cannot be raised or reanimated again.
+
+### Ancestral Convergence
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Short | concentrate
+
+**Effect** <br/> You pour out an offering and call the honored dead by name, and they come, not as servants dragged from rest, but as elders standing at the shoulders of the living.<br/>On a success, choose up to four allies in range. An ancestral spirit attends each of them for a medium duration while you concentrate.<br/>Once per turn, an attended ally may call on their ancestor as a special free action that works like an additional Quick Action. Even a condition that prevents Quick Actions does not prevent this call, as the spirit acts in their stead. They choose one of the following:<br/>- <strong>Ward me.</strong> In response to taking damage, the spirit throws itself before the blow. Reduce that damage by 8.<br/>- <strong>Steady me.</strong> In response to suffering the frightened, dazed, slowed, staggered, blinded, or confused condition, the spirit's cold hands settle their body and mind. That condition ends and they are briefly immune to it.<br/>- <strong>Bear me.</strong> During their turn, the spirit carries them up to a short distance. This movement costs no Movement, ignores difficult terrain, passes through creatures, and does not provoke any reaction.<br/>The first time an attended ally would suffer a Wound, their ancestor steps between them and the blow. They do not suffer that Wound, and the spirit that shielded them departs, its duty fulfilled. This spell's effects end for that ally.

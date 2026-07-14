@@ -21,8 +21,8 @@ Various effects and abilities list the following distances to describe their ran
 | Extreme | barely perceivable if at all | 81-160 meters | 241-480 feet | 9-16 areas |
 | Out of Range | too far away to perceive or interact with | - | - | - |
 
-> **Playing on a grid
-> **When playing on a grid for combat or dungeon delving, you can assume each standard square to be 2x2 meters or 5x5 feet (this is a very abstract simplification). So each adjacent square would be considered melee range, every square two squares away to be close range, and so on. When unsure, count the number of squares between two points, multiply by 2 meters or 5 feet and compare the result to the range bands for each distance detailed above.
+> **Playing on a grid**
+> When playing on a grid for combat or dungeon delving, you can assume each standard square to be 2x2 meters or 5x5 feet (this is a very abstract simplification). So each adjacent square would be considered melee range, every square two squares away to be close range, and so on. When unsure, count the number of squares between two points, multiply by 2 meters or 5 feet and compare the result to the range bands for each distance detailed above.
 
 ### Narrative Distances
 
@@ -43,8 +43,8 @@ Movement describes your ability to move between or within areas in combat. Norma
 
 Some areas have the property “difficult terrain” and require 2 Movement to be entered and 1 Movement to move close. This Movement can happen over multiple combat turns, as long as no Movement is spent for any other purpose in between.
 
-> **Playing on a grid
-> **When measuring how far a creature can move during a turn, think of 1 Movement as moving up to 10 meters or 30 feet. With the conversion of 2x2 meters or 5x5 feet per square described above, this would mean 1 Movement equals 5 squares for meters or 6 squares for feet measurements.
+> **Playing on a grid**
+> When measuring how far a creature can move during a turn, think of 1 Movement as moving up to 10 meters or 30 feet. With the conversion of 2x2 meters or 5x5 feet per square described above, this would mean 1 Movement equals 5 squares for meters or 6 squares for feet measurements.
 
 ### Moving into melee range
 

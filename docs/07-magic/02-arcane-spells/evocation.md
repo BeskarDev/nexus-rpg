@@ -241,3 +241,11 @@ sidebar_position: 1
  5 | 10 | vs. Dodge | Very Long | -
 
 **Effect** <br/> You tear a torrent of raw lightning out of the sky and hurl it into your enemies in a single blinding cataclysm. Target all creatures in medium range of the target location.<br/><strong>Weak.</strong> Deal +6 lightning damage to each target.<br/><strong>Strong.</strong> Deal +12 lightning damage to each target and they are briefly staggered.<br/><strong>Critical.</strong> Deal +18 lightning damage to each target and they are staggered for a short duration.
+
+### Smoldering Star
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Long | concentrate
+
+**Effect** <br/> You flick a spark from your fingertip that condenses at a point in the air into a seething bead of compressed fire no larger than a sling stone, smoldering and swelling like a newborn star.<br/>On a success, the star appears at the target location and hangs there while you concentrate. It sheds bright light in close range and dim light in short range of it. For each of your turns that ends while the star still hangs, its growth increases by +2, up to a maximum of +6.<br/>The star detonates when you use an Action on your turn to detonate it, or immediately when you lose concentration. When it detonates, roll Mind + Arcana once and target each creature in medium range of the star, using that roll's result vs. their Dodge.<br/><strong>Weak.</strong> Deal +6 fire damage plus the star's growth to each target.<br/><strong>Strong.</strong> Deal +12 fire damage plus twice the star's growth to each target and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deal +18 fire damage plus three times the star's growth to each target and each of them suffers burning (6) for a short duration.<br/>A creature in melee range of the star can attempt to hurl it as an Action by rolling Strength or Agility + Athletics vs. your Resist. On a failure, the star detonates immediately. On a success, they throw the star up to a short distance, and if it strikes a creature or a solid object, it detonates there.<br/>The detonation ignites flammable materials in the area that are not worn or carried.

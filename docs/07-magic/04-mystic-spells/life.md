@@ -86,7 +86,7 @@ sidebar_position: 3
 
 **Effect** <br/> Bolster your allies’ toughness with a blessing.<br/>On a success, choose up to four creatures in range. They each gain 10 temporary HP for a long duration. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Each target gains 20 temporary HP instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Each target gains 20 temporary HP instead.<br/><strong>(Rank 4)</strong> Each target gains 30 temporary HP instead.<br/><strong>(Rank 5)</strong> Each target gains 40 temporary HP instead.
 
 ### Cleanse
 
@@ -134,7 +134,7 @@ sidebar_position: 3
 
 **Effect** <br/> You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally. 
 
-> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4/8/12 HP instead.
+> **Heightened** <br/> <strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +7/14/21 HP instead.<br/><strong>(Rank 5)</strong> Restore +9/18/27 HP instead.
 
 ### Abundance of Life
 
@@ -196,4 +196,22 @@ sidebar_position: 3
 ---|---|---|---|---
  5 | 10 | Legendary (16) | Touch | ritual (hours),  material cost (5000 coins)
 
-**Effect** <br/> Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration. 
+**Effect** <br/> Over hours of ritual and prayer you call a departed soul back across the threshold of death and bind it once more into flesh. You must have the creature’s physical remains, whether a whole body or only the ashes left by a spell such as <em>Disintegrate</em>, and the creature must have been dead no longer than one moon. The ritual consumes 5000 coins worth of rare offerings and incense whether or not it succeeds. Roll vs. TN 16. On a success, the creature is restored to a whole living body with half their maximum HP and all their Wounds healed. They suffer 2 Fatigue that cannot be removed until they complete a full rest. On a failure, the soul slips beyond reach and this creature cannot be the target of another <em>Resurrection</em> for a long duration.
+
+### Wellspring of Life
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Medium | singular
+
+**Effect** <br/> You open the wellspring that runs beneath all living things and bind your companions to it, and one life flows through many bodies like water through a valley.<br/>On a success, you and up to three willing allies in range are bonded for a medium duration. Apply the following effects:<br/>- Once on each of their turns, a bonded creature may pour their own life into another bonded creature within short range of them as a special free action. They lose any amount of their HP (they cannot drop below 1 HP this way) and the other bonded creature regains that much HP. This is neither damage nor healing and cannot be increased, reduced, or prevented.<br/>- When a bonded creature would be restored above their maximum HP, the excess healing flows to the most wounded bonded creature within short range of them instead of being lost.<br/>- Life given through the bond reaches even the dying. When a dying bonded creature regains HP through this spell’s effects, they stabilize, wake, and keep that HP. This is an exception to the rule that regaining HP does not end dying.
+
+### Genesis
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Touch | ritual (hours),  material cost (5000 coins)
+
+**Effect** <br/> Through a day of rite and patient blessing you kneel on wounded ground and call life back into it, pressing seed and clean water and green intention into soil that had forgotten how to grow. The rite consumes 5000 coins worth of blessed seed, water, and offerings whether or not it succeeds.<br/>On a success, you restore a bounded tract of blighted, defiled, poisoned, or magically corrupted land, up to a valley or a single holding across, to natural fertility. The transformation unfolds over the hours following the rite, never in an instant: any unnatural blight, poison, or desecration on the ground drains away, including a magical corruption such as a <em>Desecration</em>, and the first clean water and green shoots appear by the next dawn. Over the following season, crops and wild growth take root and the land becomes able to sustain life again.<br/>While the genesis magic slowly fades over that first season, the young land overflows with borrowed life and grants these boons within its bounds:<br/>- The land offers itself to the living. Rolls to forage, hunt, or find water gain +1 boon and never come up entirely empty.<br/>- Rest comes easily in the young green. A night’s rest within the land removes 1 additional point of Fatigue, and a night spent there can never be reduced to a bad night.<br/>- Healing herbs spring up wherever they are needed. Rolls to treat or heal Wounds gain +1 boon.<br/>When the season turns, these boons fade and the land remains simply fertile and alive.<br/>You can also cast this rite on naturally barren ground. The land answers only weakly: over the course of several hours, a single patch up to a medium distance across quickens into a lasting oasis, garden, or spring with clean water and green growth. The oasis grants none of the boons above, and the barren land beyond it does not change.<br/>This rite mends what was despoiled and coaxes life where it can barely hold. Beyond the bounds of its oasis, it does not turn a desert into farmland, nor conjure a harvest from nothing.
+
+> **GM framing note.** Genesis is the mortal pinnacle of the fertility trait and the faith’s answer to the blights of Death and Necromancy. It is a rite performed once in a generation to heal a poisoned valley or lift a curse from failing fields. It works at the scale of a season, not a scene, and cannot turn a natural desert into farmland. The oasis mode makes a single garden in the waste, a place of shelter and story, never a colony. The first season’s boons make the healed land itself a reward worth traveling back to. Treat its casting as a story event.

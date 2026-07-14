@@ -49,7 +49,7 @@ Framework: `.claude/skills/spell-design/references/synergy-framework.md` — rol
 | 2 | 6 | Fireball, Frost Wave, Frostfire Shield, Ice Lance, Lightning Strike, Prismatic Missile |
 | 3 | 3 | Black Flame Bolt, Chain Lightning, Dissolving Ray |
 | 4 | 3 | Cone of Cold, Voltaic Surge, Wall of Fire |
-| 5 | 1 | Fulminate |
+| 5 | 2 | Fulminate, Smoldering Star |
 
 ### Trait × Rank Coverage Matrix
 

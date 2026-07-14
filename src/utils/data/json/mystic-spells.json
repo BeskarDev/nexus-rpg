@@ -206,7 +206,7 @@
 		"range": "Long",
 		"properties": "-",
 		"effect": "You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +4 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +8 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +12 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.",
-		"heightened": "-"
+		"heightened": "<strong>(Rank 4)</strong> Deal +5/+10/+15 radiant damage to hostile creatures and restore +4/+8/+12 HP to allies instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 radiant damage to hostile creatures and restore +5/+10/+15 HP to allies instead."
 	},
 	{
 		"name": "Divine Judgement",
@@ -569,7 +569,7 @@
 		"range": "Short",
 		"properties": "enchant (body)",
 		"effect": "Bolster your allies’ toughness with a blessing.<br/>On a success, choose up to four creatures in range. They each gain 10 temporary HP for a long duration.",
-		"heightened": "<strong>(Rank 3)</strong> Each target gains 20 temporary HP instead."
+		"heightened": "<strong>(Rank 3)</strong> Each target gains 20 temporary HP instead.<br/><strong>(Rank 4)</strong> Each target gains 30 temporary HP instead.<br/><strong>(Rank 5)</strong> Each target gains 40 temporary HP instead."
 	},
 	{
 		"name": "Cleanse",
@@ -624,7 +624,7 @@
 		"range": "Short",
 		"properties": "blast (cone)",
 		"effect": "You conjure a wave of healing energy, restoring the endurance of all allies within it.<br/><strong>Weak.</strong> Restore +3 HP to each ally.<br/><strong>Strong.</strong> Restore +6 HP to each ally.<br/><strong>Critical. </strong>Restore +9 HP to each ally.",
-		"heightened": "<strong>(Rank 3)</strong> Restore +4/8/12 HP instead."
+		"heightened": "<strong>(Rank 3)</strong> Restore +4/8/12 HP instead.<br/><strong>(Rank 4)</strong> Restore +7/14/21 HP instead.<br/><strong>(Rank 5)</strong> Restore +9/18/27 HP instead."
 	},
 	{
 		"name": "Abundance of Life",
@@ -1542,12 +1542,12 @@
 	{
 		"name": "Avatar of Storms",
 		"tradition": "Tempest",
-		"rank": "4",
-		"focus": "8",
-		"target": "Extreme (14)",
+		"rank": "5",
+		"focus": "10",
+		"target": "Legendary (16)",
 		"range": "Self",
 		"properties": "concentrate, enchant (body)",
-		"effect": "You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain 10 temporary HP.<br/>- You gain resistance against frost, lightning, and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +2 lightning damage (ignore AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in this form for a longer time.",
+		"effect": "You become one with the storm, transforming into a living tempest of elemental energy.<br/>On a success, you gain the following effects:<br/>- You are able to fly and gain +1 Movement per turn.<br/>- You gain 20 temporary HP.<br/>- You are immune to lightning damage and gain resistance against frost and physical damage.<br/>- Whenever you are hit by a melee attack, the attacker takes +4 lightning damage (ignore AV).<br/>- Whenever you deal blast or lightning damage, add your Mysticism to the damage.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain in this form for a longer time.",
 		"heightened": "-"
 	},
 	{
@@ -1558,8 +1558,8 @@
 		"target": "Extreme (14)",
 		"range": "Extreme",
 		"properties": "concentrate",
-		"effect": "You control a large amount of water and shape it to your will. Choose an area of water covering a long distance in all directions from the target location within range. In addition, you can choose one of the following options to manipulate the water in your affected area.<br/><strong>Flood. </strong>You rise the standing water level in your spell’s area by up to a close distance up (which then counts as a large body of water on your next turn). The water levels stay elevated for a medium duration or until you choose another option for this spell.<br/>If using this option on a large body of water, you instead cause the water in your spell’s area to cause a massive wave that travels from one end of the area to the other and then crashes violently. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the wave and takes +12 damage (ignore 1/2 AV). Aquatic creatures take no damage but are still forced to move with the wave. The flood repeats during each of your turns for a medium duration or until you choose another option for this spell.<br/><strong>Split.</strong> Choose any line within the waters area from end to end where you part the water and create a trench with a width covering a close distance. The sides of the trench for a wall of water. The trench remains for a medium duration or until you choose another option for this spell. When the trench closes, the waters snap back violently. Any creature within the closing trench takes +16 damage (ignore 1/2 AV), is briefly staggered, and remains underwater where the trench used to be.<br/><strong>Redirect. </strong>You force the water in the spell’s area to flow in any direction of your choosing. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the water’s flow until reaching the end of the spell’s area. The redirected flow remains for a medium duration or until you choose another option for this spell.<br/><strong>Whirlpool.</strong> You set the water spinning into a churning vortex centered on a point in the spell's area, filling a close area around it. At the start of each of their turns, any huge or smaller creature or vehicle in the whirlpool is pulled a short distance toward the center. A creature that starts its turn in the center must roll Strength + Athletics vs. your Resist or be dragged beneath the surface and begin suffocating until they escape the whirlpool. Swimming within the whirlpool counts as difficult terrain. The whirlpool remains for a medium duration or until you choose another option for this spell.<br/>On each of your following turns, you can use your Action to repeat the roll for the same or a different option. If you fail the roll, the spell ends.",
-		"heightened": "-"
+		"effect": "You control a large amount of water and shape it to your will. Choose an area of water covering a long distance in all directions from the target location within range. In addition, you can choose one of the following options to manipulate the water in your affected area.<br/><strong>Flood. </strong>You rise the standing water level in your spell’s area by up to a close distance up (which then counts as a large body of water on your next turn). The water levels stay elevated for a medium duration or until you choose another option for this spell.<br/>If using this option on a large body of water, you instead cause the water in your spell’s area to cause a massive wave that travels from one end of the area to the other and then crashes violently. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the wave and takes +12 damage (ignore 1/2 AV). Aquatic creatures take no damage but are still forced to move with the wave. The flood repeats during each of your turns for a medium duration or until you choose another option for this spell.<br/><strong>Split.</strong> Choose any line within the waters area from end to end where you part the water and create a trench with a width covering a close distance. The sides of the trench for a wall of water. The trench remains for a medium duration or until you choose another option for this spell. When the trench closes, the waters snap back violently. Any creature within the closing trench takes +16 damage (ignore 1/2 AV), is briefly staggered, and remains underwater where the trench used to be.<br/><strong>Redirect. </strong>You force the water in the spell’s area to flow in any direction of your choosing. Any huge or smaller creature or vehicle in the spell’s area is forced to move with the water’s flow until reaching the end of the spell’s area. The redirected flow remains for a medium duration or until you choose another option for this spell.<br/><strong>Whirlpool.</strong> You set the water spinning into a churning vortex centered on a point in the spell’s area, filling a close area around it. At the start of each of their turns, any huge or smaller creature or vehicle in the whirlpool is pulled a short distance toward the center. A creature that starts its turn in the center must roll Strength + Athletics vs. your Resist or be dragged beneath the surface and begin suffocating until they escape the whirlpool. Swimming within the whirlpool counts as difficult terrain. The whirlpool remains for a medium duration or until you choose another option for this spell.<br/>On each of your following turns, you can use your Action to repeat the roll for the same or a different option. If you fail the roll, the spell ends.",
+		"heightened": "<strong>(Rank 5)</strong> The affected area covers an extreme distance in all directions from the target location. The Flood option’s wave deals +16 damage (ignore 1/2 AV), and the Split option’s closing trench deals +20 damage (ignore 1/2 AV), instead."
 	},
 	{
 		"name": "Control Winds",
@@ -1580,7 +1580,7 @@
 		"target": "Legendary (16)",
 		"range": "Very Long",
 		"properties": "concentrate",
-		"effect": "The ground groans and bucks beneath you, stone splitting as the earth throws off everything standing upon it. On a success, you shake the earth in medium range of the target location for up to a short duration while you concentrate. The ground in the area becomes difficult terrain of broken rubble. When the quake begins and at the start of each of your turns while it lasts, compare your casting result to the Parry of each creature on the ground in the area. Each creature whose Parry you meet or beat is knocked prone and takes 8 damage (ignore AV) from falling debris.<br/><strong>Fissures.</strong> When the quake begins, up to three fissures tear open at locations of your choice within the area, but never beneath a structure. Each is a short distance wide and up to a medium distance deep. A creature standing where a fissure opens must roll Agility + Athletics vs. your Resist. On a failure, they drop in and take falling damage for the fissure's depth. On a success, they scramble to the nearest edge and stay on solid ground. Climbing out of a fissure takes an Action and a Strength + Athletics roll, and its rubble walls are difficult terrain.<br/><strong>Structures.</strong> Freestanding structures and unattended stonework in the area take heavy damage when the quake begins and at the start of each of your turns, and unsound ones collapse. A creature beneath or beside a collapsing structure takes falling damage for the structure's height and is knocked prone.",
+		"effect": "The ground groans and bucks beneath you, stone splitting as the earth throws off everything standing upon it. On a success, you shake the earth in medium range of the target location for up to a short duration while you concentrate. The ground in the area becomes difficult terrain of broken rubble. When the quake begins and at the start of each of your turns while it lasts, roll Spirit + Mysticism vs. Parry against all creatures on the ground in the area. On a success, that creature is knocked prone and takes 8 damage (ignore AV) from falling debris.<br/><strong>Fissures.</strong> When the quake begins, up to three fissures tear open at locations of your choice within the area, but never beneath a structure. Each is a short distance wide and up to a medium distance deep. A creature standing where a fissure opens must roll Agility + Athletics vs. your Resist. On a failure, they drop in and take falling damage for the fissure's depth. On a success, they scramble to the nearest edge and stay on solid ground. Climbing out of a fissure takes an Action and a Strength + Athletics roll, and its rubble walls are difficult terrain.<br/><strong>Structures.</strong> Freestanding structures and unattended stonework in the area take heavy damage when the quake begins and at the start of each of your turns, and unsound ones collapse. A creature beneath or beside a collapsing structure takes falling damage for the structure's height and is knocked prone.",
 		"heightened": "-"
 	},
 	{
@@ -2075,7 +2075,7 @@
 		"target": "vs. Resist",
 		"range": "Medium",
 		"properties": "-",
-		"effect": "You breathe out a soft dream-mist that settles over a close area within range, and eyelids grow heavy. Target each hostile creature in the area whose tier is equal to or lower than your Mysticism, using your roll’s result vs. their Resist. On a success, each target falls unconscious for a short duration. A sleeping creature wakes and the condition ends immediately if they take any damage or suffer any other physical disturbance, such as being shaken, shoved, or moved, or if an adjacent creature spends an Action to rouse them. Loud noise alone does not wake them. Creatures that do not sleep, such as most undead and constructs, are unaffected.",
+		"effect": "You breathe out a soft dream-mist that settles over a close area within range, and eyelids grow heavy. Target each hostile creature in the area whose tier is equal to or lower than your Mysticism. On a success, each target falls unconscious for a short duration. A sleeping creature wakes and the condition ends immediately if they take any damage or suffer any other physical disturbance, such as being shaken, shoved, or moved, or if an adjacent creature spends an Action to rouse them. Loud noise alone does not wake them. Creatures that do not sleep, such as most undead and constructs, are unaffected.",
 		"heightened": "<strong>(Rank 3)</strong> The sleep lasts for a medium duration instead.<br/><strong>(Rank 4)</strong> The sleep lasts for a medium duration and the dream-mist covers a short area instead.<br/><strong>(Rank 5)</strong> The sleep lasts for a long duration and the dream-mist covers a medium area instead."
 	},
 	{
@@ -2086,7 +2086,7 @@
 		"target": "vs. Resist",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You consecrate a close area within range with a clear, revealing radiance in which falsehood cannot hold. Target each creature in the area, using your roll’s result vs. their Resist. Each affected creature knows they are being compelled. While an affected creature remains in the area, they cannot speak a deliberate lie. They can still stay silent, give a short or evasive answer, or say what they believe to be true even if they are mistaken. A creature that leaves the area is no longer affected. A creature that enters the area after the spell is cast is targeted when they enter, using your roll’s result vs. their Resist. The zone lasts for a medium duration.",
+		"effect": "You consecrate a close area within range with a clear, revealing radiance in which falsehood cannot hold. Target each creature in the area. Each affected creature knows they are being compelled. While an affected creature remains in the area, they cannot speak a deliberate lie. They can still stay silent, give a short or evasive answer, or say what they believe to be true even if they are mistaken. A creature that leaves the area is no longer affected. A creature that enters the area after the spell is cast is targeted when they enter, using your roll’s result vs. their Resist. The zone lasts for a medium duration.",
 		"heightened": "<strong>(Rank 4)</strong> The zone covers a short area and lasts for a long duration instead."
 	},
 	{
@@ -2097,7 +2097,7 @@
 		"target": "vs. Resist",
 		"range": "Medium",
 		"properties": "concentrate",
-		"effect": "You speak a word of stillness and the target vanishes from sight. Target one creature of a tier equal to or lower than your Mysticism, using your roll’s result vs. their Resist. On a success, the target is drawn out of the world and into a serene pocket realm beyond it while you concentrate, up to a short duration. While set aside, they cannot act, move, be targeted, or affect anything in the world, and nothing in the world can affect them. When the spell ends, the target returns to the space they left, or the nearest open space if that space is occupied. If the target is a conjured or extraplanar creature and you concentrate for the full short duration, they are instead sent to their native sphere of existence and any effect summoning or binding them ends.",
+		"effect": "You speak a word of stillness and the target vanishes from sight. Target one creature of a tier equal to or lower than your Mysticism. On a success, the target is drawn out of the world and into a serene pocket realm beyond it while you concentrate, up to a short duration. While set aside, they cannot act, move, be targeted, or affect anything in the world, and nothing in the world can affect them. When the spell ends, the target returns to the space they left, or the nearest open space if that space is occupied. If the target is a conjured or extraplanar creature and you concentrate for the full short duration, they are instead sent to their native sphere of existence and any effect summoning or binding them ends.",
 		"heightened": "-"
 	},
 	{
@@ -2341,5 +2341,247 @@
         "properties": "concentrate",
         "effect": "You draw the dusk over a place like a curtain, and what happens within slips out of the world's sight and memory.<br/>On a success, a veil settles over the area in short range of the target location for a medium duration while you concentrate. Apply the following effects:<br/>- To any observer outside, the area appears still and empty to every sense, as it would seem with no one within it. Creatures and objects inside cannot be perceived from outside, and no sound, smell, light, or smoke from within crosses the veil's edge.<br/>- Any scrying sensor or divination magic targeting the area or anything inside it perceives only the same empty stillness.<br/>- Creatures inside the veil perceive their surroundings and the world outside normally.<br/>The veil does not bar passage. Any creature can walk in, and once inside they perceive everything within normally. An outside observer with reason to be suspicious of the place can roll Spirit + Perception vs. your Resist to sense that the stillness is unnatural, though not what it hides.",
         "heightened": "<strong>(Rank 5)</strong> The veil extends in medium range of the target location instead and lasts for a long duration."
+    },
+    {
+        "name": "Avatar of War",
+        "tradition": "War",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Self",
+        "properties": "concentrate, enchant (body)",
+        "effect": "You call down the war-spirits of your ancestors and they answer in your flesh, and you rise taller, wreathed in the fury of every battle ever won.<br/>On a success, you become an avatar of war for a short duration and gain the following effects:<br/>- At the start of each of your turns, the war-fury feeds on you and you take 4 damage (ignore AV).<br/>- You are immune to the frightened condition and cannot be knocked prone.<br/>- You gain +1 Movement per turn.<br/>- Your weapon attacks gain +1 boon and deal +8 additional damage against frightened creatures.<br/>- At the start of each of your turns, roll Spirit + Mysticism vs. Resist against all enemies in close range of you. On a success, that creature is briefly frightened of you. On a failure, that creature is immune to this fear effect for a short duration.<br/>This form lasts for a short duration. You can immediately recast this spell as an Action at the end of the duration to remain an avatar of war for a longer time.",
+        "heightened": "-"
+    },
+    {
+        "name": "Final Triumph",
+        "tradition": "War",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Short",
+        "properties": "quick",
+        "effect": "The war-spirits seize upon the kill and shriek the victory across the field, and every warrior present feels the battle turn on its hinge.<br/>Cast this spell as a Quick Action when you or an ally within range reduces an enemy to 0 HP.<br/>On a success, apply the following effects:<br/>- Target each enemy in range who could see the fallen and whose Tier is equal to or lower than the fallen creature's Tier, using your roll's result vs. their Resist. On a success, that creature is frightened of the fallen's killer for a short duration.<br/>- Each ally in range takes heart. They shed the frightened condition, are immune to being frightened for a short duration, and gain +1 boon on their next roll.",
+        "heightened": "-"
+    },
+    {
+        "name": "Divine Retribution",
+        "tradition": "War",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Dodge",
+        "range": "Long",
+        "properties": "-",
+        "effect": "You raise your weapon to the sky and call down judgement, and a pillar of golden fire falls upon the guilty like the wrath of every wronged ancestor.<br/><strong>Weak.</strong> Deal +8 fire damage.<br/><strong>Strong.</strong> Deal +16 fire damage.<br/><strong>Critical.</strong> Deal +24 fire damage.<br/>If the target is frightened, the judgement hammers their broken nerve and they are briefly stunned.<br/>If the target has reduced one of your allies to 0 HP this scene, deal +12/+24/+36 fire damage instead as retribution.",
+        "heightened": "-"
+    },
+    {
+        "name": "Sanctuary Sphere",
+        "tradition": "Peace",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You raise a wide sphere of hallowed peace, a truce sworn in the presence of the gods. Within its bounds no hand can be raised in anger, and death itself waits at the threshold.<br/>On a success, the sanctuary fills the area in short range of the target location for a medium duration while you concentrate. Any creature can enter or leave the sanctuary freely.<br/>While the sanctuary holds, apply the following effects on all creatures, including your allies:<br/>- Creatures inside the sanctuary cannot attack or cast spells that deal damage. The peace allows no roll against it.<br/>- Attacks and spells dealing damage cannot cross the sanctuary's edge. Creatures outside cannot harm anyone inside, and creatures inside cannot harm anyone outside.<br/>- A creature inside the sanctuary sheds the frightened condition and cannot gain it, and any recurring damage they suffer from ongoing effects, such as burning, bleeding, or poison, is suppressed while they remain inside.<br/>- A dying creature inside the sanctuary does not count down their remaining dying turns. Death waits until the sanctuary ends or they are carried beyond its edge.<br/>The sanctuary can only be broken early by an effect that ends spells, and only if that effect is cast at rank 5.",
+        "heightened": "-"
+    },
+    {
+        "name": "Sacred Covenant",
+        "tradition": "Peace",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Touch",
+        "properties": "ritual (hours), singular, material cost (5000 coins)",
+        "effect": "Over hours of rite and offering you bind a place to the law of the gods, anointing its threshold and its stones with oil, ash, and the blood of a sacrificed bull. The rite consumes 5000 coins worth of oils, offerings, and sacrifices whether or not it succeeds.<br/>On a success, the covenant settles over a single temple, palace, village, or other bounded site up to a thousand paces across, and holds for one season. You may maintain only one Sacred Covenant at a time. During the rite, you may name any number of keepers of the ground. While the covenant holds, apply the following effects within the covenant ground:<br/>- When a creature freely swears an oath aloud within the ground, the covenant seals it before the gods. Any creature who breaks a sealed oath is branded with a sigil of broken faith, plain to see upon their brow, and suffers +1 bane on all rolls while the brand lasts. The brand only fades when they atone for the breaking at the covenant ground.<br/>- When a creature sheds blood within the ground or defiles its stones and altars, the wrath of the covenant strikes them for 8 psychic damage (ignore AV) and they are branded with the sigil of broken faith as if they had broken a sealed oath.<br/>- When a creature makes an attack within the ground, they must roll Spirit + Fortitude vs. your Resist or be paralyzed for a short duration as the weight of the covenant presses down on them. They can repeat the roll at the end of their turns to end the effect early.<br/>- You and the named keepers know the moment the covenant ground is defiled by bloodshed, desecration, or the breaking of a sealed oath, wherever you are within the same sphere of existence, and you know which of the three it was.<br/>If you recast this spell upon the same ground each time the season turns, four seasons in a row, the covenant becomes permanent. A permanent covenant needs no further renewal and no longer counts as the one covenant you may maintain.<br/>The covenant can be undone by a rite of equal weight, by the ground's destruction, or by an effect that ends spells, but only if that effect is cast at rank 5.",
+        "heightened": "-"
+    },
+    {
+        "name": "The Pilgrim's Road",
+        "tradition": "Peace",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Touch",
+        "properties": "ritual (hours), singular, material cost (5000 coins)",
+        "effect": "Through a night-long rite you consecrate the road ahead, anointing staff and sandal and naming the journey's end aloud before the gods, and the way opens itself to the faithful. The rite consumes 5000 coins worth of blessed oils and offerings whether or not it succeeds.<br/>Name a destination you know of and whose location you know, even if you have never walked the way there. On a success, you bless the journey for yourself and up to twelve willing travelers with you. The blessing holds until the company reaches the destination, forsakes the journey, or one moon passes, whichever comes first. While the blessing holds, apply the following effects:<br/>- The road reveals itself. The company always knows the truest way toward the destination, even through lands unknown to them, and cannot become lost.<br/>- The company travels with supernatural swiftness, tireless as the road itself. The group gains +2 progress on each day of travel, rolls to travel the blessed route gain +1 boon, and no traveler gains Fatigue from the journey itself.<br/>- The road wards its pilgrims from foul weather along the way, and harsh weather inflicts no Fatigue on them.<br/>- When a creature makes an attack against a blessed traveler on the road, the attacker must roll Spirit + Fortitude vs. your Resist or be dazed for a short duration.<br/>The road follows the living land and does not pierce it. It is no portal, and the journey is still made step by step.",
+        "heightened": "-"
+    },
+    {
+        "name": "Dawnbreak",
+        "tradition": "Light",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Extreme",
+        "properties": "concentrate",
+        "effect": "You raise your hands to the dark sky and speak the sun's true name, and dawn breaks hours before its hour, flooding the land in the pale gold of the risen day.<br/>On a success, the light of true dawn fills the land within a thousand paces of the target location and holds for a medium duration while you concentrate. Cast during the night, it brings the day before its hour, bright as the risen sun. Cast during the day, it holds the daylight unbroken against all that would dim or darken it. The daylight fills every space within its reach, under open sky or beneath stone, and no wall, roof, or depth bars the risen sun. Within the daylight, apply the following effects:<br/>- Any area of magical darkness is dispelled, and any spell sustaining darkness, night, or shadow over the land ends.<br/>- The land is filled with bright light, and no creature within it can be hidden or invisible.<br/>- Undead creatures are cowed by the risen sun and suffer +1 bane on all rolls while in the daylight.<br/>- You and your allies gain +1 boon on rolls to cast <em>light</em> spells within the daylight.<br/>- Allies cannot be frightened, and any frightened condition on them ends.",
+        "heightened": "-"
+    },
+    {
+        "name": "Final Judgement",
+        "tradition": "Light",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Dodge",
+        "range": "Long",
+        "properties": "-",
+        "effect": "You pronounce the last sentence of the light, and a blade of pure dawn falls upon the condemned.<br/>You can target a hidden or invisible creature with this spell if you are aware of their presence, and your roll suffers no banes from being unable to see them.<br/><strong>Weak.</strong> Deal +8 radiant damage.<br/><strong>Strong.</strong> Deal +16 radiant damage.<br/><strong>Critical.</strong> Deal +24 radiant damage.<br/>If the target is blinded, burning, or invisible, deal +12/+24/+36 radiant damage instead.<br/>An undead creature slain by this spell is destroyed utterly, their remains burned to ash, and they cannot be raised or reanimated again.",
+        "heightened": "-"
+    },
+    {
+        "name": "Dream Realm",
+        "tradition": "Twilight",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Special",
+        "properties": "ritual (hours), material cost (5000 coins)",
+        "effect": "You burn dream-incense and lie down among the sleepers, and step sideways into a realm of your own shaping, a twilight country of still water and soft stars where minds may meet. The rite consumes 5000 coins worth of dream-incense and offerings whether or not it succeeds.<br/>On a success, you draw yourself and up to six willing creatures who sleep near you, or who you are connected to across any distance within the same sphere of existence, into the shared dream for as long as you remain asleep within it. Within the dream, apply the following:<br/>- All who share the dream can see and speak with one another freely, however far apart their sleeping bodies lie, and remember all that passed on waking.<br/>- You may shape the dream's country as you wish, calling up a remembered place for the sleepers to walk, so that a memory can be revisited and examined together.<br/>- A creature that completes an hour of unbroken sleep within the dream gains the full benefit of a night's rest and +1 additional Resolve from the deep dreaming. A creature can gain the benefit of a night's rest only once in a day, whether they take it in full through the night or swiftly through this dream. The dream shortens a rest, it never grants a second one, and it never counts as a full rest.<br/>The dream cannot harm those within it, and it ends for any sleeper the moment their body wakes. Sleeping bodies remain in the waking world, defenseless and unaware, for the whole of the rite.",
+        "heightened": "-"
+    },
+    {
+        "name": "Shadowform",
+        "tradition": "Twilight",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Self",
+        "properties": "concentrate, enchant (body)",
+        "effect": "You breathe out and unmake your body into a thin ribbon of living shadow, cool and silent, that pours along walls and under doors.<br/>On a success, you take shadowform for a short duration while you concentrate, and gain the following:<br/>- You are immune to physical damage and cannot be grappled, restrained, or knocked prone.<br/>- You can pass through any solid object as though it were open air, and you move up to a close distance in any direction each turn, clinging to surfaces and slipping through the narrowest seam.<br/>- You gain +1 boon on rolls to cast <em>twilight</em> spells.<br/>- When you make a physical attack or cast a spell that deals damage, you must gather substance for the act. Until the start of your next turn you have resistance to physical damage instead of immunity to it.<br/>- You cannot carry or manipulate any object beyond a weapon you already hold.<br/>- You carry the gloom with you. The area within melee range of you is dimmed and counts as lightly obscured, and you yourself always stand in shadow, whatever the light around you.<br/>- Mundane light, however bright, cannot force you from this form. Only magical bright light that expels darkness forces you back into flesh and ends this spell.<br/>You can end the spell at will, returning to your body in an open space you occupy.",
+        "heightened": "-"
+    },
+    {
+        "name": "Fate's Decree",
+        "tradition": "Twilight",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Medium",
+        "properties": "concentrate",
+        "effect": "You read a thread of destiny in the dark between the stars and speak it aloud, and fortune bends to the word. Choose one mode when you cast this spell.<br/><strong>Doom.</strong> Target one enemy creature of a tier equal to or lower than your Mysticism, using your roll's result vs. their Resist. On a success, for a short duration while you concentrate, once on each of their turns when they make a roll, you reduce its Success Level by one step (a weak success becomes a failure).<br/><strong>Blessing.</strong> Target one willing ally. On a success, for a short duration while you concentrate, once on each of their turns, they may increase the Success Level of one roll by one step (maximum critical success).",
+        "heightened": "-"
+    },
+    {
+        "name": "Phantom World",
+        "tradition": "Twilight",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Long",
+        "properties": "concentrate, illusory",
+        "effect": "You draw the dreaming out over the waking world, and within a stretch of ground the land itself becomes a lie of your telling: false walls, false faces, false paths, all obedient to your will.<br/>On a success, the phantom world fills the area in medium range of the target location for a medium duration while you concentrate. You choose what every creature inside perceives, reshaping the seeming of terrain, structures, and faces as you direct, and you may change it on each of your turns.<br/>Target each creature within the area, using your roll's result vs. their Resist. On a success, that creature is affected by the phantom world. On a failure, they perceive the truth as a faint shimmer over the lie. When a creature enters the area for the first time later, roll Spirit + Mysticism vs. their Resist to determine this instead. Creatures of a tier higher than your Mysticism and creatures without a mind are never affected.<br/>An affected creature perceives the phantom world as real and acts on it, though the substance beneath is unchanged: a phantom wall stops no one who does not believe in it, and no illusion within deals true harm.<br/>At the start of each of your turns, choose any number of affected creatures. The false world gnaws at their minds and they take 6 psychic damage (ignore AV).<br/>Once per turn when you reshape the phantom world, choose one affected creature. They are briefly confused as the lie closes in around them.<br/>When a confused creature within the phantom world rolls their Confusion Check, you choose the result instead of rolling.<br/>A creature that sees through the illusion, per its illusory property, is freed from the phantom world and all of its effects, and perceives the truth as a faint shimmer over the lie.",
+        "heightened": "-"
+    },
+    {
+        "name": "Inexorable Doom",
+        "tradition": "Death",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "curse, singular",
+        "effect": "You speak a creature's death aloud, calling every sickness, terror, and curse that clings to them home at once, and then you name the doom that follows.<br/>Target one creature of a tier equal to or lower than your Mysticism. Count their afflictions, to a maximum of four: each condition they currently suffer among poisoned, frightened, bleeding, slowed, dazed, staggered, and stunned, and each <strong>curse</strong> spell affecting them.<br/><strong>Weak.</strong> Deal +4 necrotic damage, plus +6 necrotic damage for each affliction counted.<br/><strong>Strong.</strong> Deal +8 necrotic damage, plus +6 necrotic damage for each affliction counted.<br/><strong>Critical.</strong> Deal +12 necrotic damage, plus +6 necrotic damage for each affliction counted.<br/>Also on a success, all counted conditions on the target end and all counted <strong>curse</strong> spells on them are lifted, and the doom takes hold of the target as a <strong>curse</strong>. The doom lasts for a short duration, extended by one duration step for each affliction counted. While the doom lasts, the target cannot regain HP, an Attribute die of your choice is reduced by one step, and they take 8 necrotic damage (ignore AV) at the start of each of their turns. They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the doom early.",
+        "heightened": "-"
+    },
+    {
+        "name": "Pall of the Grave",
+        "tradition": "Death",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You call up the cold dread of the realm below, and it settles over the field like a fog the living feel in their bones. Beneath it, the grave has claim on all things.<br/>On a success, the pall fills the area in medium range of the target location for a medium duration while you concentrate. While the pall holds, apply the following effects:<br/>- The grave denies life within the pall. No creature inside it can regain HP.<br/>- Any living creature that starts their turn within the pall takes 6 necrotic damage (ignore AV) as the grave's chill seeps into them.<br/>- At the start of each of your turns, roll Spirit + Mysticism vs. Resist against all living creatures within the pall. On a success, that creature is frightened of the pall for a short duration. On a failure, that creature is immune to this fear effect for a short duration.<br/>- While a creature is frightened of the pall, they count as afflicted for the purposes of your <em>death</em> spells that reward afflicted targets. If such a spell counts the number of afflictions on them, they count as suffering the maximum number instead.<br/>- The realm below calls its own home. Undead and Spirit creatures within the pall suffer +1 bane on all rolls, and any Undead or Spirit creature slain within the pall passes on to the realm below and cannot be raised or reanimated again.",
+        "heightened": "-"
+    },
+    {
+        "name": "Ancestral Convergence",
+        "tradition": "Death",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Short",
+        "properties": "concentrate",
+        "effect": "You pour out an offering and call the honored dead by name, and they come, not as servants dragged from rest, but as elders standing at the shoulders of the living.<br/>On a success, choose up to four allies in range. An ancestral spirit attends each of them for a medium duration while you concentrate.<br/>Once per turn, an attended ally may call on their ancestor as a special free action that works like an additional Quick Action. Even a condition that prevents Quick Actions does not prevent this call, as the spirit acts in their stead. They choose one of the following:<br/>- <strong>Ward me.</strong> In response to taking damage, the spirit throws itself before the blow. Reduce that damage by 8.<br/>- <strong>Steady me.</strong> In response to suffering the frightened, dazed, slowed, staggered, blinded, or confused condition, the spirit's cold hands settle their body and mind. That condition ends and they are briefly immune to it.<br/>- <strong>Bear me.</strong> During their turn, the spirit carries them up to a short distance. This movement costs no Movement, ignores difficult terrain, passes through creatures, and does not provoke any reaction.<br/>The first time an attended ally would suffer a Wound, their ancestor steps between them and the blow. They do not suffer that Wound, and the spirit that shielded them departs, its duty fulfilled. This spell's effects end for that ally.",
+        "heightened": "-"
+    },
+    {
+        "name": "Wellspring of Life",
+        "tradition": "Life",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Medium",
+        "properties": "singular",
+        "effect": "You open the wellspring that runs beneath all living things and bind your companions to it, and one life flows through many bodies like water through a valley.<br/>On a success, you and up to three willing allies in range are bonded for a medium duration. Apply the following effects:<br/>- Once on each of their turns, a bonded creature may pour their own life into another bonded creature within short range of them as a special free action. They lose any amount of their HP (they cannot drop below 1 HP this way) and the other bonded creature regains that much HP. This is neither damage nor healing and cannot be increased, reduced, or prevented.<br/>- When a bonded creature would be restored above their maximum HP, the excess healing flows to the most wounded bonded creature within short range of them instead of being lost.<br/>- Life given through the bond reaches even the dying. When a dying bonded creature regains HP through this spell's effects, they stabilize, wake, and keep that HP. This is an exception to the rule that regaining HP does not end dying.",
+        "heightened": "-"
+    },
+    {
+        "name": "Genesis",
+        "tradition": "Life",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Touch",
+        "properties": "ritual (hours), material cost (5000 coins)",
+        "effect": "Through a day of rite and patient blessing you kneel on wounded ground and call life back into it, pressing seed and clean water and green intention into soil that had forgotten how to grow. The rite consumes 5000 coins worth of blessed seed, water, and offerings whether or not it succeeds.<br/>On a success, you restore a bounded tract of blighted, defiled, poisoned, or magically corrupted land, up to a valley or a single holding across, to natural fertility. The transformation unfolds over the hours following the rite, never in an instant: any unnatural blight, poison, or desecration on the ground drains away, including a magical corruption such as a <em>Desecration</em>, and the first clean water and green shoots appear by the next dawn. Over the following season, crops and wild growth take root and the land becomes able to sustain life again.<br/>While the genesis magic slowly fades over that first season, the young land overflows with borrowed life and grants these boons within its bounds:<br/>- The land offers itself to the living. Rolls to forage, hunt, or find water gain +1 boon and never come up entirely empty.<br/>- Rest comes easily in the young green. A night's rest within the land removes 1 additional point of Fatigue, and a night spent there can never be reduced to a bad night.<br/>- Healing herbs spring up wherever they are needed. Rolls to treat or heal Wounds gain +1 boon.<br/>When the season turns, these boons fade and the land remains simply fertile and alive.<br/>You can also cast this rite on naturally barren ground. The land answers only weakly: over the course of several hours, a single patch up to a medium distance across quickens into a lasting oasis, garden, or spring with clean water and green growth. The oasis grants none of the boons above, and the barren land beyond it does not change.<br/>This rite mends what was despoiled and coaxes life where it can barely hold. Beyond the bounds of its oasis, it does not turn a desert into farmland, nor conjure a harvest from nothing.",
+        "heightened": "-"
+    },
+    {
+        "name": "Cataclysmic Eruption",
+        "tradition": "Nature",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You drive your hands into the earth and command it to rise in wrath, and whatever the land is made of answers: soil splits, stone heaves, or sand opens like a hungry mouth.<br/>On a success, the land erupts in the area in medium range of the target location for a medium duration while you concentrate. The area is difficult terrain. The eruption takes the shape of the ground it rises from. Apply the form matching the terrain:<br/><strong>Verdant Ruin</strong> (soil, sod, and living earth). Lashing vines and poisoned blooms burst through the cracks.<br/>- Creatures within the eruption are poisoned by its thick spores while they remain inside.<br/>- When a creature starts their turn within the eruption, the heaving ground deals 8 damage (ignore AV) to them, and they must roll Strength/Agility + Athletics vs. your Resist or be restrained by the vines. A restrained creature can repeat the roll at the end of their turns to break free.<br/><strong>Shattered Stone</strong> (rock, ruin, and paved streets). The ground bucks in grinding slabs and rubble rains from the shearing stone.<br/>- Creatures within the eruption are slowed by the shuddering, treacherous ground while they remain inside.<br/>- When a creature starts their turn within the eruption, falling rubble deals 8 damage (ignore AV) to them, and they must roll Strength/Agility + Athletics vs. your Resist or be knocked prone beneath it.<br/><strong>Hungry Sands</strong> (sand, dust, and loose dry earth). The ground churns in slow spirals that drag everything downward.<br/>- Creatures within the eruption are dazed by the whipping grit while they remain inside.<br/>- When a creature starts their turn within the eruption, the grinding sand deals 8 damage (ignore AV) to them, and they must roll Strength/Agility + Athletics vs. your Resist or sink to their waist and be restrained. A restrained creature can repeat the roll at the end of their turns to pull free.<br/>Cast over shallow water, the eruption rises from the bed beneath in the form matching that ground, and the churned water joins the difficult terrain. The open sea has no land to command and cannot erupt.",
+        "heightened": "-"
+    },
+    {
+        "name": "Primeval Form",
+        "tradition": "Nature",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Self",
+        "properties": "enchant (body)",
+        "effect": "You call the first name of the wild, and your beast shape remembers what its kind once was, swelling into a dire form of the young world.<br/>You can only learn and cast this spell if you know the <em>Beast Form</em> spell.<br/>On a success, you take on a primeval form, whether from your natural shape or from a beast form you already wear: apply the rules of the <em>Beast Form</em> spell, choosing from the Companion Statistics up to Tier 5. Casting this spell ends any beast form already on you. Beyond that spell's rules, your primeval form gains the following:<br/>- The land speaks through you. You can cast <em>nature</em> spells while in this form. This is an exception to the rule that you cannot cast spells while shapeshifted.<br/>- The wild does not hinder its own. You ignore difficult terrain, and your own <em>nature</em> spells never harm or impede you.<br/>- Choose one primeval adaptation when you cast this spell. It marks your form with unmistakable primal magic. Once on each of your turns, you can change your adaptation for free, your form rippling into its new aspect:<br/>&nbsp;&nbsp;- <strong>Venom Glands.</strong> Your fangs and claws weep glowing venom. When you hit with a natural weapon on a strong or critical hit, the target is poisoned for a short duration. You can also spit venom, making your natural weapon attacks at up to short range.<br/>&nbsp;&nbsp;- <strong>Hide of the Old Stone.</strong> Plates of living rock and ancient moss sheathe your body. You gain +2 AV (treat this as part of the armor bonus), and when you hit with a natural weapon on a strong or critical hit, you can push the target close.<br/>&nbsp;&nbsp;- <strong>Thornmane.</strong> Flowering thorn-vines wind through your pelt and trail from your limbs. Your natural weapon attacks can reach targets up to a close distance away, and any creature that hits you with a melee attack takes 4 damage (ignore AV) from the thorns.<br/>This form lasts for a medium duration, until you end it willingly, or until you fall unconscious.",
+        "heightened": "-"
+    },
+    {
+        "name": "Primal Awakening",
+        "tradition": "Nature",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You lay your palms to the soil and wake the sleeping land, and grass, root, hill, and stone stir to an ancient, obedient purpose.<br/>On a success, the land wakes in the area in medium range of the target location for a medium duration while you concentrate. While the land is awake, apply the following effects:<br/>- The ground smooths itself before your allies. They ignore difficult terrain within the area.<br/>- The wakened land sustains your growth. You can concentrate on up to two additional <em>nature</em> spells that create or command plant growth within the area, without breaking your concentration on this spell or on one another. If your concentration on this spell ends, every spell the land sustains ends with it.<br/>- Once on each of your turns, you can command the wakened land as a Quick Action, choosing one:<br/>&nbsp;&nbsp;- <strong>Rise.</strong> Earth and root heave upward within the area into a wall, rampart, bridge, or stair up to a close distance across. It has 10 Parry, 10 Dodge, 8 AV, and 40 HP, and crumbles when the land falls back asleep.<br/>&nbsp;&nbsp;- <strong>Part.</strong> The land opens the way: undergrowth parts, rubble rolls aside, or a passage up to a close distance long opens through earth or growth. The way remains open.<br/>&nbsp;&nbsp;- <strong>Carry.</strong> A slow wave of ground bears any number of willing creatures within the area up to a short distance in a direction of your choice. This movement does not provoke any reaction.<br/>&nbsp;&nbsp;- <strong>Seize.</strong> Roots and turf grasp at one creature within the area. Roll Spirit + Mysticism vs. their Parry or Dodge (their choice). On a success, they are restrained. At the end of their turns, they can roll Strength + Athletics vs. your Resist to break free.<br/>The land can only wake where it lives. Bare worked stone, sand, and a ship's deck lie still and are unaffected. Terrain and structures that are magically created, warded, or otherwise protected by magic cannot be altered or moved by the wakened land.",
+        "heightened": "-"
+    },
+    {
+        "name": "Magma Geyser",
+        "tradition": "Tempest",
+        "rank": "4",
+        "focus": "8",
+        "target": "Extreme (14)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You crack the skin of the world and call the fire beneath it through the wound, and a tower of lava bursts upward with a sound like a god clearing their throat.<br/>On a success, a magma geyser erupts from an unoccupied point on the ground within range for a medium duration while you concentrate. The geyser and each space in melee range of it are difficult terrain. Any creature that enters the geyser's area or starts their turn in it takes 8 fire damage (ignore AV).<br/>Once on each of your turns, you can spend your Quick Action to direct the geyser to erupt, sending a surge of lava in a short blast (cone) in a direction you choose. Roll Spirit + Mysticism vs. the Dodge of each creature in the cone. On a success, each creature takes 12 fire damage (ignore AV) and is briefly burning (4). The geyser vents its pressure with each eruption and then builds anew, so it can only erupt once per turn.<br/>The geyser is a natural-looking volcanic feature. It cannot be moved once placed.",
+        "heightened": "-"
+    },
+    {
+        "name": "Eye of the Storm",
+        "tradition": "Tempest",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Self",
+        "properties": "concentrate, enchant (body)",
+        "effect": "You breathe out and the storm breathes in, and for one suspended moment everything within a great distance of you falls still as the eye opens around you.<br/>On a success, you become the eye of the storm for a medium duration while you concentrate. The effect extends in long range of you, moving with you. While the eye holds, apply the following effects:<br/>- You are immune to blast, frost, and lightning damage.<br/>- The area within the eye is calm. All wind, rain, and natural or magical weather effects within it are stilled.<br/>- Within the eye, your <em>tempest</em> spells gain +1 boon and deal +2 additional damage of their type.<br/>- At the start of each of your turns, up to three bolts of lightning crash down at points of your choice within the eye. Each bolt targets a creature in close range of its point. Roll Spirit + Mysticism vs. their Dodge. On a success, deal 10 lightning damage (ignore AV) to that creature.<br/>- At the edge of the eye, the storm rages all the harder for its stillness at the center. Any creature that crosses from outside the eye into it, or from inside to out, takes 6 blast damage (ignore AV) from the buffeting transition winds.",
+        "heightened": "-"
     }
 ]

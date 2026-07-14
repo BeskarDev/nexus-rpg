@@ -27,6 +27,7 @@ The following systems already have dedicated analysis reports:
 | Spell system (overview + all 14 schools) | `spells/SPELL_SYSTEM_ANALYSIS.md`, `spells/schools/*.md` |
 | Folk naming conventions (12 folk) | `names/*.md` |
 | Folk traits & ancestry balance | `folk-traits-ancestry-balance-analysis.md` |
+| Domain building (strongholds, organizations, agent missions) | `domain/DOMAIN_SYSTEM_GDD.md` + subfiles |
 
 ---
 

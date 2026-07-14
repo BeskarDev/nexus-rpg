@@ -425,7 +425,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "-",
-        "effect": "You snap the threads of every lie you have woven, and the collapsing falsehoods tear through the minds that believed them.<br/>Target each creature in range that is currently deceived by one of your illusory spells or distracted by a source one of your illusion spells created, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV) to each target.<br/>Each target is also briefly confused. The illusions deceiving or distracting them collapse and end.",
+        "effect": "You snap the threads of every lie you have woven, and the collapsing falsehoods tear through the minds that believed them.<br/>Target each creature in range that is currently deceived by one of your illusory spells or distracted by a source one of your illusion spells created.<br/><strong>Weak.</strong> Deal +4 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +8 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +12 psychic damage (ignore AV) to each target.<br/>Each target is also briefly confused. The illusions deceiving or distracting them collapse and end.",
         "heightened": "<strong>(Rank 4)</strong> Deal +5/+10/+15 psychic damage (ignore AV) to each target instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 psychic damage (ignore AV) to each target instead."
     },
     {
@@ -436,7 +436,7 @@
         "target": "vs. Resist",
         "range": "Long",
         "properties": "illusory",
-        "effect": "You tear the sky open in their minds: the heavens fall, the earth splits, and every terror they carried finds its shape at once.<br/>The catastrophe unfolds in the area in short range of the target location. Target each creature in the area, using your roll's result vs. their Resist.<br/><strong>Weak.</strong> Deal +5 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +10 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +15 psychic damage (ignore AV) to each target.<br/>Any target that is frightened or confused is briefly paralyzed as the catastrophe consumes what remains of their reality.",
+        "effect": "You tear the sky open in their minds: the heavens fall, the earth splits, and every terror they carried finds its shape at once.<br/>The catastrophe unfolds in the area in short range of the target location. Target each creature in the area.<br/><strong>Weak.</strong> Deal +5 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +10 psychic damage (ignore AV) to each target.<br/><strong>Critical.</strong> Deal +15 psychic damage (ignore AV) to each target.<br/>Any target that is frightened or confused is briefly paralyzed as the catastrophe consumes what remains of their reality.",
         "heightened": "-"
     },
     {
@@ -480,7 +480,7 @@
         "target": "Medium (8)",
         "range": "Short",
         "properties": "ritual (minutes), singular",
-        "effect": "You mark an area with an arcane sigil that functions as an alarm.<br/>When beginning to cast the spell, choose an opening or passage way no larger than a close distance. You can also choose individual creatures which should be ignored by the alarm and if the alarm activates audibly or mentally.<br/>On a success, you set an alarm that activates once a tiny or larger creature moves through or touches the enchanted area given your specified instructions.<br/>A mental alarm is only perceptibly by you while you are no more than an hour\u2019s walk away from the alarm and even wakes you up if you are sleeping.<br/>An audible alarm briefly produces the sound of a bell which is hearable within of medium distance of the alarm.<br/>The alarm lasts until triggered by a creature or for a long duration.",
+        "effect": "You mark an area with an arcane sigil that functions as an alarm.<br/>When beginning to cast the spell, choose an opening or passage way no larger than a close distance. You can also choose individual creatures which should be ignored by the alarm and if the alarm activates audibly or mentally.<br/>On a success, you set an alarm that activates once a tiny or larger creature moves through or touches the enchanted area given your specified instructions.<br/>A mental alarm is only perceptible by you while you are no more than a thousand paces away from the alarm and even wakes you up if you are sleeping.<br/>An audible alarm briefly produces the sound of a bell which is hearable within of medium distance of the alarm.<br/>The alarm lasts until triggered by a creature or for a long duration.",
         "heightened": "-"
     },
     {
@@ -590,7 +590,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "concentrate",
-        "effect": "You clench your outstretched hand and a crushing weight of will falls upon every mind before you. Target each hostile creature in a close area around the target location whose tier is equal to or lower than your Arcana, using your roll's result vs. their Resist.<br/>On a success, each target is paralyzed as their body refuses every command. At the end of each of their turns, an affected creature can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever an affected creature takes damage, they immediately make this roll as well. Creatures without a mind, such as most constructs and oozes, are unaffected. This spell lasts for a short duration.",
+        "effect": "You clench your outstretched hand and a crushing weight of will falls upon every mind before you. Target each hostile creature in a close area around the target location whose tier is equal to or lower than your Arcana.<br/>On a success, each target is paralyzed as their body refuses every command. At the end of each of their turns, an affected creature can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever an affected creature takes damage, they immediately make this roll as well. Creatures without a mind, such as most constructs and oozes, are unaffected. This spell lasts for a short duration.",
         "heightened": "-"
     },
     {
@@ -733,7 +733,7 @@
         "target": "Extreme (14)",
         "range": "Self",
         "properties": "concentrate",
-        "effect": "You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration.",
+        "effect": "You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to a thousand paces away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration.",
         "heightened": "-"
     },
     {
@@ -920,7 +920,7 @@
         "target": "Extreme (14)",
         "range": "Self",
         "properties": "concentrate",
-        "effect": "You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration.",
+        "effect": "You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to a thousand paces away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration.",
         "heightened": "-"
     },
     {
@@ -1492,7 +1492,7 @@
         "target": "vs. Resist",
         "range": "Medium",
         "properties": "concentrate",
-        "effect": "You tear a seam in the air and cast a creature into an empty pocket of the astral void. Target one creature of a tier equal to or lower than your Arcana, using your roll’s result vs. their Resist. On a success, the target vanishes from the scene while you concentrate, up to a short duration. While banished, they cannot act, move, be targeted, or affect anything in the world, and nothing in the world can affect them. When the spell ends, the target reappears in the space they left, or the nearest open space if that space is occupied. If the target is a conjured or extraplanar creature and you concentrate for the full short duration, they are instead sent to their native sphere of existence and any effect summoning or binding them ends.",
+        "effect": "You tear a seam in the air and cast a creature into an empty pocket of the astral void. Target one creature of a tier equal to or lower than your Arcana. On a success, the target vanishes from the scene while you concentrate, up to a short duration. While banished, they cannot act, move, be targeted, or affect anything in the world, and nothing in the world can affect them. When the spell ends, the target reappears in the space they left, or the nearest open space if that space is occupied. If the target is a conjured or extraplanar creature and you concentrate for the full short duration, they are instead sent to their native sphere of existence and any effect summoning or binding them ends.",
         "heightened": "-"
     },
     {
@@ -1692,5 +1692,170 @@
         "properties": "concentrate",
         "effect": "You tear a sliver of the target's essence loose and snap it into a spectral cage of hooked bone that circles your hand, and through it their whole being lies open to your craft.<br/>On a success, a fragment of the target's soul is caged for a short duration while you concentrate. While the cage holds, apply the following effects:<br/>- The target suffers +1 bane on all rolls against you, including rolls to end your spells' effects and the roll to end this spell.<br/>- Your necromancy spells and effects deal +4 additional necrotic damage (ignore AV) to the target.<br/>- Whenever one of your spells or effects restores HP to you by draining the target, restore 4 additional HP.<br/>They can roll Spirit + Fortitude vs. your Resist at the end of their turns to end the effect early. When the spell ends, the fragment slips free and returns to them.",
         "heightened": "<strong>(Rank 5)</strong> Your necromancy spells and effects deal +6 additional necrotic damage (ignore AV) to the target and you restore 6 additional HP instead."
+    },
+    {
+        "name": "Arcane Genesis",
+        "discipline": "Conjuration",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Short",
+        "properties": "ritual (hours), material cost (5000 coins)",
+        "effect": "Over hours of weaving you condense raw arcane force into lasting matter, smooth and grey like polished stone and worthless to any trader. The ritual consumes 5000 coins worth of rare reagents, whether or not it succeeds.<br/>On a success, you conjure a permanent structure of solidified force. Choose its form: a bridge or span, a wall or rampart, a stair or ramp, a sealed vault or chamber, or a hall or shelter. The entire structure must fit within medium range of the target location, and it must rest on solid ground or anchor to existing stone. It can include simple openings and doors, but no moving mechanisms, and nothing a creature could carry away. You cannot form the structure around a creature. Any creature in the space is pushed to the nearest open side as it forms.<br/>Once made, the structure is real matter. Effects that end spells cannot unmake it, but it can be damaged and broken like worked stone, and it counts as a conjured construct of force for effects such as <em>Disintegrate</em>. Each section of it up to a close distance across has 12 Parry, 12 Dodge, 10 AV, and 80 HP.",
+        "heightened": ""
+    },
+    {
+        "name": "Binding Seal",
+        "discipline": "Conjuration",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Resist",
+        "range": "Touch",
+        "properties": "ritual (minutes), material cost (5000 coins)",
+        "effect": "You inscribe a circle of sigils in silver and powdered gemstone around one creature and speak the words of sealing. The creature must remain within the circle for the whole ritual. They must be grappled, restrained, unconscious, or willing throughout, or the ritual fails. The ritual consumes the inscribed materials, worth 5000 coins, whether or not it succeeds.<br/>On a success, a shell of solidified force closes over the creature and they fall into a deathless slumber. While the seal holds, they do not age, breathe, eat, or dream, and no effect from outside reaches them through the shell. The shell is immovable and anchored to the place of its sealing. It can be attacked and destroyed from outside like any other object. It has 14 Parry, 14 Dodge, 12 AV, and 80 HP. A casting that ends spells destroys it.<br/>At the end of each moon, the sealed creature's spirit strains against the seal. They roll Spirit + Fortitude vs. your Resist. On a success, the shell shatters. The seal lasts for one year, then dissolves on its own. When the shell is destroyed or the seal ends, the creature wakes immediately. You can renew a seal before it fades by casting this spell again on the sealed creature.",
+        "heightened": ""
+    },
+    {
+        "name": "Planar Gateway",
+        "discipline": "Conjuration",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Short",
+        "properties": "ritual (minutes), concentrate, material (attuned object), material cost (5000 coins)",
+        "effect": "You trace a ring of burning sigils in the air and tear space open along its line. You must name your destination as you begin: either a place you have visited before within the same sphere of existence, or another sphere of existence. To open the way into another sphere, you must hold a physical object attuned to that sphere of Quality 6 or higher, such as a relic carried out of it, an idol consecrated to its powers, or a shard of its very substance. The object is not consumed. The ritual consumes engraved sigil materials of precious metals worth 5000 coins, whether or not it succeeds.<br/>On a success, a gateway tall and wide enough for a large creature tears open at the target location. It shows the destination through its frame, and it is open from both sides. Anything can pass through in either direction while it holds. The gateway remains open while you concentrate, for up to a short duration, then seals without a trace.<br/>A destination within the same sphere of existence is exact. If the destination lies in another sphere, you do not choose the spot. The gate opens at one of the following, chosen by the GM to fit the attuned object: a known threshold between the spheres, a landmark tied to the object's origin, or the place in that sphere most attuned to it.",
+        "heightened": ""
+    },
+    {
+        "name": "Subjugation",
+        "discipline": "Conjuration",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Touch",
+        "properties": "ritual (hours), material cost (5000 coins), singular",
+        "effect": "You inscribe a binding circle on solid ground and call an entity out of the spheres beyond, chaining them to service. Name the service you require as you cast (such as guarding a place, fighting your enemies, carrying you and your companions over land or sea, raising or razing a great work, or retrieving something from where only they can go). The ritual consumes offerings and inscribed materials worth 5000 coins, whether or not it succeeds.<br/>On a success, an entity appears within the circle. They have the statistics of a tier 7 creature of the Aberration or Spirit type, chosen and played by the GM to fit the service you named. The binding lasts for one day. While it holds, the entity cannot refuse your spoken commands and cannot harm you or your allies, but they follow the exact wording of each command and take every freedom your wording leaves them, for they serve with resentment. They must stay within a day's march of the circle. In combat, roll initiative for them. The GM controls their actions within your commands.<br/>The circle is a physical inscription. Scratching it open, breaking the ground, or a casting that ends spells destroys it. If the circle is destroyed, or you fall unconscious or die, the binding breaks early. A freed entity keeps their own will. Most turn on their binder or abandon the task and return to their home sphere. When the binding ends, the entity returns to their home sphere in an instant.",
+        "heightened": ""
+    },
+    {
+        "name": "Smoldering Star",
+        "discipline": "Evocation",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Long",
+        "properties": "concentrate",
+        "effect": "You flick a spark from your fingertip that condenses at a point in the air into a seething bead of compressed fire no larger than a sling stone, smoldering and swelling like a newborn star.<br/>On a success, the star appears at the target location and hangs there while you concentrate. It sheds bright light in close range and dim light in short range of it. For each of your turns that ends while the star still hangs, its growth increases by +2, up to a maximum of +6.<br/>The star detonates when you use an Action on your turn to detonate it, or immediately when you lose concentration. When it detonates, roll Mind + Arcana once and target each creature in medium range of the star, using that roll's result vs. their Dodge.<br/><strong>Weak.</strong> Deal +6 fire damage plus the star's growth to each target.<br/><strong>Strong.</strong> Deal +12 fire damage plus twice the star's growth to each target and each of them suffers burning (4) for a short duration.<br/><strong>Critical.</strong> Deal +18 fire damage plus three times the star's growth to each target and each of them suffers burning (6) for a short duration.<br/>A creature in melee range of the star can attempt to hurl it as an Action by rolling Strength or Agility + Athletics vs. your Resist. On a failure, the star detonates immediately. On a success, they throw the star up to a short distance, and if it strikes a creature or a solid object, it detonates there.<br/>The detonation ignites flammable materials in the area that are not worn or carried.",
+        "heightened": ""
+    },
+    {
+        "name": "Maze of Madness",
+        "discipline": "Illusion",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Long",
+        "properties": "concentrate, illusory",
+        "effect": "You fold a labyrinth of false walls, endless stairs, and doubling corridors over an area, and the world inside it disappears.<br/>On a success, the maze unfolds in the area in short range of the target location. It lasts while you concentrate, up to a short duration. To anyone outside, the maze is invisible and its victims seem to stumble through empty air.<br/>Any creature that starts their turn in the maze's area or enters it for the first time on their turn must succeed on a Spirit + Fortitude roll vs. your Resist or become lost in the maze. A creature that is frightened or confused suffers +1 bane on this roll. Creatures of a tier higher than your Arcana and creatures without a mind, such as most constructs and oozes, are unaffected.<br/>While lost in the maze, a creature is confused and can't willingly move out of the maze's area. At the start of each of their turns, they take 6 psychic damage (ignore AV) as the labyrinth gnaws at their reason. At the end of each of their turns, they can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever they take damage from any other source, they immediately make this roll as well. A creature that ends this effect can't become lost in this maze again.",
+        "heightened": ""
+    },
+    {
+        "name": "Mirage Arcane",
+        "discipline": "Illusion",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Special",
+        "properties": "ritual (minutes), illusory, singular, material cost (5000 coins)",
+        "effect": "You spread your hands over the land and teach it to lie. The ritual consumes rare pigments and ground crystal worth 5000 coins, whether or not it succeeds.<br/>On a success, you reshape how an area of terrain up to a thousand paces across is perceived. You can make it look, sound, smell, and even feel like other natural terrain: a road vanishes under false scrub, a lake becomes a meadow, a fortress hill seems a barren dune, a canyon appears as level ground. Structures can be hidden or dressed as terrain, but you cannot create the appearance of creatures. The substance beneath is unchanged: a hidden wall still blocks, a masked ravine still drops, false ground over water still drowns.<br/>A creature that interacts with the false terrain can roll Spirit + Perception vs. your Resist to see through the deception. A creature that sees through it perceives the mirage as a faint shimmer over the truth. The mirage lasts for a long duration. While it holds, you can renew it each dawn by casting this spell again.",
+        "heightened": ""
+    },
+    {
+        "name": "Desecration",
+        "discipline": "Necromancy",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Short",
+        "properties": "ritual (hours), singular, material cost (5000 coins)",
+        "effect": "Through a night-long rite of buried offerings and inverted prayers you curdle the ground itself against life. The ritual consumes defiled offerings worth 5000 coins, whether or not it succeeds.<br/>On a success, the ground in medium range of the target location becomes desecrated for one moon. Grass blackens, carrion never fully rots, and the air tastes of cold iron. When you cast this spell, you can name any number of creatures. You mark them with grave-ash and the hungry ground ignores them. While the desecration holds, apply the following effects within the area:<br/>- Undead creatures under your control gain +2 AV and deal +2 necrotic damage with their attacks.<br/>- Creatures not under your control suffer +1 bane on all rolls against necromancy spells, including rolls to end their effects.<br/>- Living creatures regain no HP from short breaks taken within the area.<br/>Named creatures are unaffected by the desecration's harmful effects.<br/>You can renew the desecration before it fades by casting this spell again. The desecration can be removed early in two ways: by an effect that ends spells, if that effect comes from a spell of rank 5, or by a casting of <em>Solar Flare</em> or <em>Hallowed Radiance</em> heightened to rank 5 upon the area, which purges the desecration entirely.",
+        "heightened": ""
+    },
+    {
+        "name": "Entropy",
+        "discipline": "Necromancy",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Dodge",
+        "range": "Long",
+        "properties": "blast (cone)",
+        "effect": "You exhale a grey wave of accelerated ruin, and everything it touches lives a season of rot in a heartbeat.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +6 necrotic damage to each target.<br/><strong>Strong.</strong> Deal +12 necrotic damage to each target.<br/><strong>Critical.</strong> Deal +18 necrotic damage to each target.<br/>For each creature hit, choose one piece of their worn equipment (armor, helmet, or shield). It rusts and rots. If it is of Quality 3 or lower, it immediately becomes broken. If it is of Quality 4 to 6, it immediately spends 1 use of its Durability. If it is of Quality 7 or higher, it must make a Durability check instead. Mundane wood, leather, cloth, and rope in the cone crumble to ruin. A mundane structure caught in the wave decays over the following minutes, sagging and collapsing section by section, giving those inside time to flee.",
+        "heightened": ""
+    },
+    {
+        "name": "Eternal Servitude",
+        "discipline": "Necromancy",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Touch",
+        "properties": "ritual (hours), singular, material cost (5000 coins)",
+        "effect": "Over hours of rites you pour preserved grave-oils and powdered black salt into a corpse and bind a mockery of life into its frame that will never tire, never rot further, and never leave. The ritual consumes reagents worth 5000 coins, whether or not it succeeds.<br/>You must have the mostly intact corpse of a medium or large creature. Choose any undead trait from the Mounts &amp; Companions section for the servant, including the greater forms only this rite can bind (ghoul, ghost, and wraith). If you bind a ghost or wraith, the rite burns the corpse to ash and binds its lingering spirit instead.<br/>On a success, the corpse rises as your permanent servant. Treat the creature as your companion (see Mounts &amp; Companions for more). The creature has the statistics of a tier 5 companion with your chosen trait. They obey your commands without judgment, need no food, air, or rest, and do not heal naturally, though necromancy spells can restore them.<br/>You can bind only one servant at a time. Binding a new one unravels the old, which collapses into carrion. If you die, the binding frays: the servant becomes an uncontrolled undead with no loyalty to anyone. The servant is plainly an undead horror, and most folk treat its master accordingly.",
+        "heightened": ""
+    },
+    {
+        "name": "Soul Harvest",
+        "discipline": "Necromancy",
+        "rank": "5",
+        "focus": "10",
+        "target": "Legendary (16)",
+        "range": "Self",
+        "properties": "singular",
+        "effect": "You invite the boundary of death into your own flesh. Your skin grays and tightens over your bones, your eyes sink to cold points of light, and a conduit tears open in your chest through which every soul that crosses nearby is pulled screaming on its way. For a moment, you wear the aspect of the deathless.<br/>On a success, you assume this deathless aspect for a medium duration. While it holds, whenever a living creature of tier 1 or higher dies within short range of you, you drink a share of the released essence: you regain 6 HP and 2 Focus, and you catch their soul as a shrieking spectral wisp that circles you. A creature's death can only feed one of your spell effects. If another of your spells would also grant you HP or Focus when a creature dies, such as <em>Reaper's Harvest</em> or <em>Death Mark</em>, choose which one applies.<br/>You can release your harvested souls in the following ways:<br/>- <strong>Necrotic Insight.</strong> When you cast a necromancy spell, you can release one harvested soul to gain +1 boon on the casting roll.<br/>- <strong>Soul Lash.</strong> As a Quick Action, you can release up to three harvested souls and hurl them at creatures within short range, dividing the souls among them as you choose. Each target must succeed on a Spirit + Fortitude roll vs. your Resist or take 8 necrotic damage (ignore AV) for each soul that strikes them.<br/>- <strong>Feed the Dead.</strong> As a Quick Action, you can release up to three harvested souls into undead creatures under your control within short range, dividing the souls among them as you choose. Each undead creature regains 8 HP for each soul released into them.<br/>- <strong>Refuse Death.</strong> When you would suffer a Wound, you can release all souls you hold to ignore that Wound. You must hold at least one soul to do so.<br/>When the aspect fades, your flesh warms back to life and any souls you still hold slip free and pass on. The dead rattle as they cross through you, and every creature that sees the harvest knows exactly what you are.",
+        "heightened": ""
+    },
+    {
+        "name": "Absolute Control",
+        "discipline": "Telepathy",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Resist",
+        "range": "Medium",
+        "properties": "concentrate",
+        "effect": "You drive your will down through a mind like a spear and take the body underneath.<br/>You cannot control a creature of a tier higher than your Arcana, or a creature without a mind.<br/>On a success, you dominate the target. On their turns they act as you direct, using their own statistics and abilities, aware of everything and screaming behind their own eyes. At the end of each of their turns, they can roll Spirit + Fortitude vs. your Resist to throw you out. Whenever they take damage, they immediately make this roll as well. If you command them to directly harm themselves or to act against their deepest bonds, they gain +1 boon on their next roll to throw you out.<br/>The domination lasts while you concentrate, up to a short duration. When it ends, the target remembers everything they did under your control and knows it was you.",
+        "heightened": ""
+    },
+    {
+        "name": "Mindwipe",
+        "discipline": "Telepathy",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Resist",
+        "range": "Touch",
+        "properties": "ritual (minutes), material cost (5000 coins)",
+        "effect": "You comb through a mind strand by strand and pull one thread out of every weave it touches. The ritual consumes rare incense and a graven silver band worth 5000 coins, whether or not it succeeds.<br/>The target must be restrained, unconscious, or willing for the whole ritual. Name one subject as you cast: a person, a place, an event, or a secret. On a success, every memory the target holds of that subject fades to grey fog. Knowledge and skills are never taken, only memory of the subject itself.<br/>The wipe leaves seams. The target notices the gaps where something used to be, magic that reads minds or memories reveals that memories were taken, and strong evidence of the truth leaves the target shaken and searching. Within one moon of the ritual, a casting that ends spells worked upon the target restores everything taken. After one moon, the loss is beyond mortal craft.",
+        "heightened": ""
+    },
+    {
+        "name": "Psychic Maelstrom",
+        "discipline": "Telepathy",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Resist",
+        "range": "Long",
+        "properties": "-",
+        "effect": "You scream without sound, and every mind you turn it upon is caught in the storm of it.<br/>Target each hostile creature in medium range of the target location.<br/><strong>Weak.</strong> Deal +6 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +12 psychic damage (ignore AV) to each target and they are briefly dazed.<br/><strong>Critical.</strong> Deal +18 psychic damage (ignore AV) to each target and they are dazed for a short duration.<br/>Any target that was dazed or charmed when the maelstrom hit becomes briefly confused. Any target that was confused when it hit takes +6 additional psychic damage (ignore AV). Creatures without a mind, such as most constructs and oozes, are unaffected.",
+        "heightened": ""
+    },
+    {
+        "name": "Annihilating Wave",
+        "discipline": "Telekinetics",
+        "rank": "5",
+        "focus": "10",
+        "target": "vs. Dodge",
+        "range": "Long",
+        "properties": "blast (cone)",
+        "effect": "You sweep your arm and hurl a wall of pure kinetic force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).",
+        "heightened": ""
     }
 ]

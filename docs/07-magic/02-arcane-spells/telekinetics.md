@@ -211,3 +211,11 @@ sidebar_position: 5
 **Effect** <br/> You seize the pull of the earth itself and turn it on its head, and everything not rooted down plunges toward the sky. On a success, gravity reverses within a cylinder in short range of the target location, rising to a height of up to medium range, for up to a short duration while you concentrate. Each creature and unsecured object in the cylinder falls upward toward its top. A creature may succeed on an Agility + Athletics roll vs. your Resist to grab hold of a fixed object they can reach and avoid the rise. A creature or object that strikes a ceiling or an anchored object as it rises takes falling damage for the distance risen. A creature that reaches the top of the cylinder without striking anything hovers there until the spell ends, when they fall back down and take falling damage for the distance fallen.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> The cylinder's radius extends to medium range and its height to long range of the target location instead.
+
+### Annihilating Wave
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Dodge | Long | blast (cone)
+
+**Effect** <br/> You sweep your arm and hurl a wall of pure kinetic force that flattens everything before you.<br/>Target each creature in the cone.<br/><strong>Weak.</strong> Deal +6 blast damage (ignore 1/2 AV) to each target.<br/><strong>Strong.</strong> Deal +12 blast damage (ignore 1/2 AV) to each target.<br/><strong>Critical.</strong> Deal +18 blast damage (ignore 1/2 AV) to each target.<br/>Each creature hit is pushed a medium distance away from you and falls prone. Mundane structures, cover, and unattended objects in the cone are shattered and blown apart. A conjured barrier or construct of force in the cone takes 40 damage (ignore AV).

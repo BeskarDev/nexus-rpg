@@ -536,6 +536,50 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 
 ## Undead
 
+> Greater undead forms (ghost, ghoul, and wraith) can only be bound by powerful necromantic rites, such as the *Eternal Servitude* spell.
+
+### **Ghost**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| - | - | -1d Strength, +1d Spirit | +2 Dodge |
+
+**Skills:** Perception, Stealth
+
+**Immunities:** bleeding, blinded, charmed, frightened, grappled, poison, poisoned, unconscious
+
+**Resistances:** necrotic, physical
+
+**Weaknesses:** radiant
+
+**Attacks:**
+- <strong>Spectral Touch</strong> (<em>light</em>). Deals normal weapon damage as necrotic damage (ignore AV).
+
+**Abilities:**
+- <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
+- <strong>Incorporeal.</strong> This creature can fly by hovering and can move through solid objects and walls, but must end their Movement at an unobstructed location. They can't wear equipment or carry objects.
+
+### **Ghoul**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +5 | +1 (light) | +1d Agility | +1 Dodge |
+
+**Skills:** Fighting, Athletics
+
+**Immunities:** bleeding, blinded, charmed, frightened, poison, poisoned, unconscious
+
+**Resistances:** necrotic
+
+**Weaknesses:** radiant
+
+**Attacks:**
+- <strong>Claws</strong> (<em>light, slash</em>). Deals normal weapon damage. On a strong or critical hit, the target must succeed on a Strength + Fortitude roll vs. this creature's Resist or be briefly paralyzed.
+
+**Abilities:**
+- <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
+- <strong>Corpse Feast.</strong> As an Action, this creature can feed on a corpse in melee range to regain 5 HP. The corpse counts as partially devoured and no longer mostly intact.
+
 ### **Skeleton**
 
 | HP | AV | Attributes | Defenses |
@@ -557,6 +601,26 @@ Primordial spirits embodying the fundamental forces of nature - air, earth, fire
 **Abilities:**
 - <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
 
+### **Wraith**
+
+| HP | AV | Attributes | Defenses |
+| --- | --- | --- | --- |
+| +5 | - | +1d Spirit | +1 Dodge |
+
+**Skills:** Fighting, Stealth
+
+**Immunities:** bleeding, blinded, charmed, frightened, poison, poisoned, unconscious
+
+**Resistances:** frost, necrotic
+
+**Weaknesses:** radiant
+
+**Attacks:**
+- <strong>Shadow Grasp</strong> (<em>light</em>). Deals normal weapon damage as necrotic damage. On a strong or critical hit, this creature regains HP equal to half the damage dealt.
+
+**Abilities:**
+- <strong>Undead Nature.</strong> This creature doesn't need to breathe, eat, drink, or sleep.
+- <strong>Shadow Stalker.</strong> This creature gains +1 boon on Stealth rolls while in dim light or total darkness.
 
 ### **Zombie**
 

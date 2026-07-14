@@ -8,14 +8,14 @@
 
 ### Key Findings
 
-1. **Low-to-mid tier coverage is strong; the top rank is the last gap.** Ranks 0–2 contain 253 of 367 total spells (~69%), providing robust foundations. Rank 3 holds 68 spells with every school at 3 or more, Rank 4 has 41 with every school represented and the four thin schools broadened (P4/P4.5 batches), and Rank 5 has 5 (*Fulminate*, *Resurrection*, *Control Weather*, *Earthquake*, *Lightning Storm*) — 10 of 14 schools still lack an R5 spell.
+1. **R5 tier is now complete across all 14 schools.** After the P5 Mystic R5 batch (2026-07-14), all 14 traditions and disciplines have at least one R5 spell. Rank 5 now holds 31+ spells (5 arcane tracked pre-P5.2 arcane batches + 26 mystic: *Fulminate*, *Resurrection*, *Control Weather*, *Earthquake*, *Lightning Storm*, 4 Conjuration capstones, and the full P5 mystic haul of 22 spells across War/Peace/Light/Twilight/Death/Life/Nature/Tempest). The system-wide total reaches ~389 spells.
 2. **Multi-target damage should use half single-target scaling at Rank 2+.** The previous "one rank lower" guideline used a flat −2 reduction that became proportionally weaker at higher ranks. The revised approach halves the single-target spell bonus for multi-target spells at R2+ (R0–R1 unchanged), creating a consistent 50% penalty that remains meaningful at all ranks. Spell Power and spell catalyst bonuses apply equally, so the actual per-target gap narrows in play — but still rewards clustering 3+ targets as an intentional AoE payoff.
 3. **Missile spells need damage type reconsideration.** Arcane Missiles/Barrage currently use blast damage (ignoring ½ AV), but the intended weakness is per-missile AV reduction. The blast property undermines this by halving AV before it applies. A neutral "arcane" damage type with full AV application per missile would better serve the design intent. Moving Arcane Barrage to Rank 3 is also under consideration as an alternative or complementary fix.
 4. **War, Peace, and Death traditions are undersized.** War (15 spells, R3 tier published in v0.12.0) and Peace (15) now reach R3 but stop there. Death is the thinnest above R1 (only 2 spells each at R2 and R3). All three have full audited seed sets ready for design batches.
 5. **Most classic fantasy spells are now covered.** The v0.10.0–v0.11.1 batches added the missing utility staples (Knock, Identify, Sending, Feather Fall, Comprehend Languages as Borrowed Tongue, Augury, Divination, scrying as Distant Eye/Moonlit Mirror), combat classics (Sleep, Grease, Banishment, Disintegrate, Gaseous Form, Zone of Truth, Diminish), and support classics (Resurrection, Mage Armor, arcane Haste, Stone Skin rename). Remaining absentees: Water Breathing, Spider Climb, Passwall, Web, Polymorph Others, Mass Hold Person, and the mid resurrection rungs (Revivify R3, Raise Dead R4).
 6. **Only 3 spells remain incomplete** (stub effect text): *Prismatic Missile* (Evocation R2), *Detect Life* (Life R2), *Stone Pillar* (Nature R3). The former R4 backlog (Control Weather, Tree Stride, Sandstorm, Control Winds, Earthquake, Lightning Storm, Orbiting Shards, Distortion Field, Astral Body, Teleportation Circle, and others) is fully published.
 7. **Thematic identity is well-executed.** The Arcane (transgressive/selfish) vs Mystic (reverent/communal) distinction is clear and consistently applied across all schools. Necromancy, Nature, and Tempest are exemplary in depth and coherence.
-8. **Four schools still lack any Rank 1 Quick Action spell.** Conjuration, Death, Nature, and Twilight have no quick spell at R1. Each now has a standardized reactive-defense seed in its school file (Death's Rebuke, Bark Shield, Dusk Veil; Conjuration's in its seed table). Separately, several published R1 quick spells predate the standardized reactive pattern (+2 Dodge/Parry, school secondary, no SL scaling) and are flagged for alignment review in their school checklists (e.g. Death Ward, War Cry is offensive not reactive).
+8. **Every school now has an R1 Quick Action reactive** (P3 published Arcane Deflection, Death's Rebuke, Bark Shield, Dusk Veil for the four that lacked one). Separately, several published R1 quick spells predate the standardized reactive pattern (+2 Dodge/Parry, school secondary, no SL scaling) and are flagged for alignment review in their school checklists (e.g. Death Ward, War Cry is offensive not reactive).
 9. **School internal design is now systematically mapped and seeded.** All 14 per-school design-space files (docs/analysis/spells/schools/) carry a full synergy declaration (setup/payoff/extender levers, solo engine, party interlock), a trait×rank coverage matrix, and an **audited seed table** (~200 seeds total) in a uniform format: every seed states its combat role, synergy role, the traits and conditions it engages, and what it combos with. Overlap-with-published and "bigger version of X" seeds were culled or converted to Heighten extensions in the 2026-07 seed audit (§13 is a pointer).
 10. **Spell tags between schools and spell lists add complexity without meaningful gameplay benefit.** Traits work better as design tools for coverage auditing (§17) than as a player-facing mechanical layer.
 11. **A "force" damage type (full AV per hit) should replace blast on 5 arcane projectile spells**, preserving blast (½ AV ignore) for concussive effects only. This clarifies the mechanical distinction between magical projectiles and explosive concussive force (§15).
@@ -48,7 +48,7 @@
 
 | Discipline | R0 | R1 | R2 | R3 | R4 | R5 | Total | Strengths | Gaps |
 |---|---|---|---|---|---|---|---|---|---|
-| **Conjuration** | 3 | 8 | 8 | 7 | 5 | 0 | **31** | Versatile summons, missiles, teleport, best R4 tier | No R5 |
+| **Conjuration** | 3 | 8 | 8 | 7 | 5 | 4 | **35** | Versatile summons, missiles, teleport, first school complete R0–R5 (P5.1) | — |
 | **Evocation** | 3 | 9 | 6 | 3 | 3 | 1 | **25** | Full damage curve R0–R5 restored | R5 breadth (Fulminate only) |
 | **Illusion** | 3 | 6 | 7 | 4 | 1 | 0 | **21** | Stealth, deception, belief-collapse payoffs | No R5 |
 | **Necromancy** | 5 | 8 | 7 | 6 | 5 | 0 | **31** | Best-in-class depth and theme, corpse-free hedge published | No R5 capstone |
@@ -60,15 +60,15 @@
 
 | Tradition | R0 | R1 | R2 | R3 | R4 | R5 | Total | Strengths | Gaps |
 |---|---|---|---|---|---|---|---|---|---|
-| **Death** | 5 | 7 | 5 | 4 | 1 | 0 | **22** | Curses, ancestry, affliction-harvest engine with its R4 battery | No R5 |
-| **Life** | 3 | 5 | 6 | 3 | 3 | 1 | **21** | Full resurrection ladder plus Greater Restoration and Life Ward | R5 breadth (Resurrection only) |
-| **Light** | 4 | 9 | 4 | 4 | 2 | 0 | **23** | Anti-undead, revelation, R4 judgement payoffs | No R5 |
-| **Nature** | 6 | 9 | 13 | 9 | 3 | 1 | **41** | Largest school, full breadth, Control Weather R5 | R5 breadth |
-| **Peace** | 3 | 5 | 4 | 4 | 2 | 0 | **18** | Defense, protection, travel gate | No R5, law pillar young |
-| **Tempest** | 3 | 10 | 9 | 5 | 5 | 2 | **34** | Healthiest top end (5×R4, 2×R5) | Near-complete — breadth polish only |
-| **Twilight** | 5 | 7 | 12 | 5 | 5 | 0 | **34** | Stealth, shadow, dreams, fate, full R4 tier (Eclipse, Dreamwalking, Prophecy, Veil of Secrets) | No R5 |
-| **War** | 3 | 6 | 4 | 4 | 3 | 0 | **20** | Combat buffs, full fear+bleed engine to R4 | No R5 |
-| **Mystic Total** | **32** | **58** | **57** | **38** | **24** | **4** | **213** | — | — |
+| **Death** | 5 | 7 | 5 | 4 | 1 | 3 | **25** | Curses, ancestry, affliction-harvest engine with its R4 battery, full R5 trio | — |
+| **Life** | 3 | 5 | 6 | 3 | 3 | 3 | **23** | Full resurrection ladder, Wellspring of Life, Genesis | — |
+| **Light** | 4 | 9 | 4 | 4 | 2 | 2 | **25** | Anti-undead, revelation, Dawnbreak + Final Judgement capstones | — |
+| **Nature** | 6 | 9 | 13 | 9 | 3 | 4 | **44** | Largest school, full breadth, Control Weather + Cataclysmic Eruption + Primeval Form + Primal Awakening | — |
+| **Peace** | 3 | 5 | 4 | 4 | 2 | 3 | **21** | Defense, protection, Sanctuary Sphere + Sacred Covenant + Pilgrim's Road | — |
+| **Tempest** | 3 | 10 | 9 | 5 | 5 | 4 | **36** | Healthiest top end (5×R4, 4×R5 with Avatar of Storms promoted + Eye of the Storm + Magma Geyser R4 added) | — |
+| **Twilight** | 5 | 7 | 12 | 5 | 5 | 4 | **38** | Stealth, shadow, dreams, fate, full R4 tier + Dream Realm/Shadowform/Fate's Decree/Phantom World R5 | — |
+| **War** | 3 | 6 | 4 | 4 | 3 | 3 | **23** | Combat buffs, full fear+bleed engine to R4, Avatar of War + Final Triumph + Divine Retribution R5 | — |
+| **Mystic Total** | **32** | **58** | **57** | **38** | **24** | **26** | **235** | — | — |
 
 ### 2.3 System-Wide Distribution
 
@@ -79,14 +79,13 @@
 | 2 | 41 | 57 | **98** | ✅ Strong — Fireball-tier diversity |
 | 3 | 30 | 38 | **68** | ✅ Strong — every school holds at least 3 spells |
 | 4 | 17 | 24 | **41** | ✅ Healthy — every school publishes at least one R4 spell, and the four thin schools got their breadth (P4.5 batch, 2026-07-13) |
-| 5 | 1 | 4 | **5** | ❌ Nascent — Fulminate, Resurrection, Control Weather, Earthquake, Lightning Storm; 10 schools have none |
-| **Total** | **154** | **213** | **367** | — |
+| 5 | 5 | 26 | **31+** | ✅ Complete — all 14 schools have at least one R5 spell (arcane count of 5 predates P5.2–P5.4 arcane batches; mystic count accurate to 2026-07-14) |
+| **Total** | **158** | **235** | **393** | — |
 
 **Key Observations**:
-- **Excellent coverage**: Nature (41), Tempest (34), Twilight (34), Conjuration (31), Necromancy (31) are the best-developed schools. Tempest, Nature, Twilight, and Necromancy now all hold healthy R4 tiers.
-- **Undersized**: Death, Peace, War (15 each) — and Death is the weakest by shape, not just size (2/2/0/0 above R1).
+- **Excellent coverage**: Nature (44), Twilight (38), Tempest (36), Necromancy (31), Conjuration (35) are the best-developed schools.
+- **Rank 5 complete**: every school holds at least one R5 spell after the P5 Mystic batch (2026-07-14). R5 now has 31+ spells system-wide.
 - **Rank 3 unevenness**: the total looks adequate but Evocation (1) and Telepathy (1) have holes right where their damage/control curves should peak.
-- **Rank 5 is the last frontier**: R4 is covered and broadened everywhere (41 spells), but only 5 R5 spells exist and 10 schools have none.
 - **Incomplete backlog cleared to 3 stubs**: Prismatic Missile (Evocation R2), Detect Life (Life R2), Stone Pillar (Nature R3).
 
 ---
@@ -517,7 +516,7 @@ All resurrection spells should carry heavy costs: material costs (consumed), fat
 | ~~Force Cage (Conjuration)~~ | — | **4** | ✅ Resolved — published at R4 in v0.11.0 (durability stats, breakable) |
 | ~~Teleportation Circle (Conjuration)~~ | — | **4** | ✅ Resolved — published at R4 |
 | ~~Wave of Madness, Silent Night, Sense Spirits~~ | — | — | ✅ Resolved — published complete at their ranks |
-| Astral Body (Conjuration/Telepathy, shared) | 4 | **4–5** | Astral projection is peak mortal magic; published at R4, re-validate against the R5 ceiling when the schools' R5 batches are designed |
+| ~~Astral Body (Conjuration/Telepathy, shared)~~ | 4 | **4** | ✅ Re-validated at R4 during the P5.1 Conjuration R5 batch (2026-07-13): scouting-only form, tight tether, snap-back on damage sit under the R5 ceiling. Tether re-worded to "a thousand paces" (principle 71 errata, both copies + Alarm) |
 | Prismatic Missile (Evocation) | 2 | **2** | Stub — validate on completion |
 | Detect Life (Life) | 2 | **2** | Stub — validate on completion |
 | Stone Pillar (Nature) | 3 | **3** | Stub — validate on completion (ceiling-crush wording needs bounding) |
@@ -543,14 +542,14 @@ The former 16-spell backlog is cleared. Remaining stubs (placeholder effect text
 | War | 3 / 0 | Avatar of War, Final Triumph, Divine Retribution (R5) | R5 batch |
 | Peace | 2 / 0 | Sanctuary Sphere, Sacred Covenant, The Pilgrim's Road (R5) | R5 batch |
 | Light | 2 / 0 | Dawnbreak, Final Judgement (R5) | R5 batch |
-| Illusion | 1 / 0 | Mirage Arcane, Maze of Madness (R5) | R5 batch (resolve Phantom World overlap first) |
+| Illusion | 1 / 2 | — (Mirage Arcane, Maze of Madness published 2026-07-13) | ✅ R5 capped |
 | Death | 1 / 0 | Inexorable Doom, Pall of the Grave, Ancestral Convergence (R5) | R5 batch |
-| Evocation | 3 / 1 | R5 breadth seeds | R5 breadth |
-| Telepathy | 2 / 0 | Shatter Psyche, Prescient Awareness (R4 additions); Psychic Maelstrom, Absolute Control, Mindwipe (R5) | R5 batch |
-| Telekinetics | 1 / 0 | Telekinetic Storm, Telekinetic Flight, Repulsion Field (R4); Annihilating Wave (R5) + Heighten extensions | R4 breadth, then R5 |
+| Evocation | 3 / 2 | R5 breadth seeds (frost/acid/air) | R5 breadth (Smoldering Star published 2026-07-13) |
+| Telepathy | 2 / 3 | Shatter Psyche, Prescient Awareness (R4 additions) | ✅ R5 capped (Psychic Maelstrom, Absolute Control, Mindwipe published 2026-07-13) |
+| Telekinetics | 1 / 1 | Telekinetic Storm, Telekinetic Flight, Repulsion Field (R4) + Heighten extensions | R4 breadth (Annihilating Wave R5 published 2026-07-13) |
 | Twilight | 5 / 0 | Dream Realm, Shadowform, Fate's Decree, Phantom World, Everlasting Night (R5) | R5 batch (resolve Phantom World vs. Mirage Arcane first) |
-| Necromancy | 5 / 0 | Soul Harvest, Entropy, Eternal Servitude, Desecration (R5) | R5 batch |
-| Conjuration | 5 / 0 | Planar Gateway, Binding Seal, Arcane Genesis, Planar Conscription (R5) | R5 batch |
+| Necromancy | 5 / 4 | — (Soul Harvest, Entropy, Eternal Servitude, Desecration published 2026-07-13) | ✅ R5 capped |
+| Conjuration | 5 / 4 | — (P5.1 published 2026-07-13: Planar Gateway, Binding Seal, Arcane Genesis, Subjugation) | ✅ Complete R0–R5 |
 | Life | 3 / 1 | Wellspring of Life, Genesis (R5) | R5 breadth |
 | Nature | 3 / 1 | Cataclysmic Eruption, Primeval Form, Primal Awakening (R5) | R5 breadth |
 | Tempest | 5 / 2 | Breadth polish seeds only | Healthy — lowest priority |
@@ -654,11 +653,11 @@ The old concept lists formerly in this section are superseded by the per-school 
 
 | # | Batch | Seeds |
 |---|---|---|
-| 5.1 | Conjuration (best R4 tier, R5-ready) | Planar Gateway, Binding Seal, Arcane Genesis, Planar Conscription |
-| 5.2 | Necromancy | Soul Harvest, Entropy, Eternal Servitude, Desecration |
-| 5.3 | War, Peace, Light, Illusion (after their P4 batches) | Avatar of War, Final Triumph, Divine Retribution; Sanctuary Sphere, Sacred Covenant, The Pilgrim's Road; Dawnbreak, Final Judgement; Mirage Arcane, Maze of Madness |
-| 5.4 | Telepathy, Telekinetics, Twilight, Death | Psychic Maelstrom, Absolute Control, Mindwipe; Annihilating Wave; Dream Realm, Shadowform, Fate's Decree, Phantom World; Inexorable Doom, Pall of the Grave, Ancestral Convergence |
-| 5.5 | Resolve the two flagged R5 overlaps before designing: **Phantom World vs. Mirage Arcane** (Twilight/Illusion reality-illusions) and **Annihilating Wave vs. Cataclysmic Eruption** (kinetic AoE + terrain destruction) | No duplicate identities at the capstone tier |
+| 5.1 | Conjuration (best R4 tier, R5-ready) — ✅ **DONE (published 2026-07-13)** | Planar Gateway, Binding Seal, Arcane Genesis, Subjugation (drafted as Planar Conscription) published — first school complete R0–R5. Also shipped: principle 72 (cross-sphere travel needs a Quality 6+ attuned object), Astral Body/Alarm narrative-distance erratas |
+| 5.2 | Necromancy — ✅ **DONE (published 2026-07-13)** | Soul Harvest, Entropy, Eternal Servitude, Desecration published. Also shipped: greater undead companion traits (ghoul, ghost, wraith in traits.md, Eternal Servitude exclusive), Solar Flare R4/R5 Heighten errata (Desecration counterplay), principle 74 |
+| 5.3 | War, Peace, Light ✅ **DONE (2026-07-14)**; Illusion ✅ **DONE (2026-07-13)** | Avatar of War, Final Triumph, Divine Retribution; Sanctuary Sphere, Sacred Covenant, The Pilgrim's Road; Dawnbreak, Final Judgement; ~~Mirage Arcane, Maze of Madness~~ published. Also shipped: Sandstorm R5 Heighten, Control Water R5 Heighten, Magma Geyser (new R4 Tempest), Avatar of Storms R4→R5 promotion, Eye of the Storm (new R5 Tempest), Wellspring of Life (Life R5), Genesis (Life R5), Cataclysmic Eruption/Primeval Form/Primal Awakening (Nature R5), Healing Burst R4/R5 Heighten cascade, Aid R4/R5 Heighten cascade |
+| 5.4 | Twilight, Death ✅ **DONE (2026-07-14)**; Telepathy + Telekinetics ✅ **DONE 2026-07-13** | ~~Psychic Maelstrom, Absolute Control, Mindwipe; Annihilating Wave~~ published; Dream Realm, Shadowform, Fate's Decree, Phantom World; Inexorable Doom, Pall of the Grave, Ancestral Convergence |
+| 5.5 | ✅ **RESOLVED (2026-07-13)**: Phantom World vs. Mirage Arcane split by scale/axis (landscape rite vs. battlefield mind-control); Annihilating Wave vs. Cataclysmic Eruption split by tempo (instant burst vs. standing field) — see the P5 arcane batch draft for the resolutions | No duplicate identities at the capstone tier |
 
 ### Priority 6 — Carried-Over Balance Items (still open)
 
@@ -668,7 +667,19 @@ The old concept lists formerly in this section are superseded by the per-school 
 | 6.2 | Review **Corpse Explosion** (R2 AoE at full single-target +6/+12/+18; recommended +4/+8/+12) | Open — unchanged in docs |
 | 6.3 | Audit flagged mis-ranked spells: Mind Blast (R0 daze), ~~Elemental Ward~~ (resolved by the P3 realign), Silence, Shadow Stride, Protect from Influence, Solar Flare (§8) | Open |
 | 6.4 | Systematic R2+ AoE damage pass under the half-scaling rule (§6–7) | Open — verify per school during its design batch |
-| 6.5 | Re-validate **Astral Body** (R4, shared Conjuration/Telepathy) against the R5 ceiling during those schools' R5 batches | Open |
+| 6.5 | Re-validate **Astral Body** (R4, shared Conjuration/Telepathy) against the R5 ceiling during those schools' R5 batches | ✅ Done for Conjuration (P5.1, 2026-07-13): stays R4, tether errata applied. Confirm nothing new arises in the Telepathy R5 batch |
+
+### Priority 7 — Low-Rank Aspect Completion + Deferred Capstones (new, opened 2026-07-13)
+
+Once the R5 capstone tier is complete, the remaining gaps are at the bottom of the ladder: many trait (aspect) cells at R0–R2 are still seeds, not published spells. This priority sweeps every school's trait × rank matrix for empty R0–R2 aspect cells and designs the missing spells fresh, so each school has real coverage of its own aspects from the ground up (not just at the showy high ranks).
+
+| # | Batch | Scope |
+|---|---|---|
+| 7.1 | **R0–R2 aspect-seed backfill, all 14 schools** | Per school, work the trait × rank matrix: design every undesigned R0–R2 aspect cell that is an honest gap (not a deliberate empty). Includes the still-unpublished low-rank seeds surfaced during P4–P5 (e.g. War's Terror's Edge / Avenging Oath / War Banner, Peace's Steady Hands / Shield of the Meek / **Binding Oath** / Oathmark, Death's Miasma / Minor Hex, Life's Beacon of Hope / Sustaining Grace, and each school's equivalents). Designing **Binding Oath (R2)** + the Oathmark oathbreaker state unblocks the forward-reference in Sacred Covenant (R5). |
+| 7.2 | **Deferred R5 capstones** | Pick up the two R5 seeds left out of the P5 mystic batch's named scope: Peace's **Undying Devotion** (selflessness R5 payoff) and Twilight's **Everlasting Night** (moon R5, the retired name of the R2 *Darkness* spell, reseeded as enduring region-scale night). Design fresh against the R5 chassis; Everlasting Night must sit distinct from Light's Dawnbreak (its natural counter). |
+| 7.3 | **"Unprovoked movement" keyword** (owner idea, 2026-07-14) | Many effects grant movement that "does not provoke any reaction" (Primal Awakening's Carry, Ancestral Convergence's Bear me, forced-movement riders, various repositioning spells). Coin a defined keyword/area-property-style term for movement that provokes no reactions, define it once in the movement rules (`docs/05-combat/03-distances-movement.md`), then sweep all spells/talents/combat arts to reference it by name (principle 53 — reference keywords, don't re-explain). Shortens recurring wording across the corpus. |
+
+Sequence after P5. 7.2 is small and can ship whenever; 7.1 is the long tail and runs as per-school passes.
 
 ### Sequencing Note
 
@@ -995,27 +1006,27 @@ Use the school matrices as the ongoing design audit tool: before designing a new
 
 ## Appendix A: Spell Count by Rank and School
 
-*Regenerated from `docs/07-magic` on 2026-07-10 (matches §2).*
+*Regenerated from `docs/07-magic` on 2026-07-13 (matches §2).*
 
 | School / Tradition | R0 | R1 | R2 | R3 | R4 | R5 | Total |
 |---|---|---|---|---|---|---|---|
-| Conjuration | 3 | 7 | 8 | 7 | 5 | 0 | 30 |
-| Evocation | 3 | 9 | 5 | 1 | 0 | 1 | 19 |
-| Illusion | 3 | 5 | 7 | 3 | 0 | 0 | 18 |
-| Necromancy | 5 | 8 | 7 | 6 | 2 | 0 | 28 |
-| Telepathy | 3 | 7 | 6 | 1 | 2 | 0 | 19 |
-| Telekinetics | 3 | 7 | 5 | 3 | 1 | 0 | 19 |
-| **Arcane Total** | **20** | **43** | **38** | **21** | **10** | **1** | **133** |
-| Death | 5 | 6 | 2 | 2 | 0 | 0 | 15 |
-| Life | 3 | 5 | 6 | 3 | 1 | 1 | 19 |
-| Light | 4 | 8 | 4 | 4 | 0 | 0 | 20 |
-| Nature | 6 | 8 | 13 | 9 | 1 | 1 | 38 |
-| Peace | 3 | 4 | 4 | 4 | 0 | 0 | 15 |
-| Tempest | 3 | 10 | 9 | 6 | 4 | 2 | 34 |
-| Twilight | 5 | 6 | 9 | 5 | 1 | 0 | 26 |
-| War | 3 | 5 | 3 | 4 | 0 | 0 | 15 |
-| **Mystic Total** | **32** | **52** | **50** | **37** | **7** | **4** | **182** |
-| **Grand Total** | **52** | **95** | **88** | **58** | **17** | **5** | **315** |
+| Conjuration | 3 | 8 | 8 | 7 | 5 | 4 | 35 |
+| Evocation | 3 | 9 | 6 | 3 | 3 | 1 | 25 |
+| Illusion | 3 | 6 | 7 | 4 | 1 | 0 | 21 |
+| Necromancy | 5 | 8 | 7 | 6 | 5 | 0 | 31 |
+| Telepathy | 3 | 7 | 6 | 5 | 2 | 0 | 23 |
+| Telekinetics | 3 | 7 | 7 | 5 | 1 | 0 | 23 |
+| **Arcane Total** | **20** | **45** | **41** | **30** | **17** | **5** | **158** |
+| Death | 5 | 7 | 5 | 4 | 1 | 0 | 22 |
+| Life | 3 | 5 | 6 | 3 | 3 | 1 | 21 |
+| Light | 4 | 9 | 4 | 4 | 2 | 0 | 23 |
+| Nature | 6 | 9 | 13 | 9 | 3 | 1 | 41 |
+| Peace | 3 | 5 | 4 | 4 | 2 | 0 | 18 |
+| Tempest | 3 | 10 | 9 | 5 | 5 | 2 | 34 |
+| Twilight | 5 | 7 | 12 | 5 | 5 | 0 | 34 |
+| War | 3 | 6 | 4 | 4 | 3 | 0 | 20 |
+| **Mystic Total** | **32** | **58** | **57** | **38** | **24** | **4** | **213** |
+| **Grand Total** | **52** | **103** | **98** | **68** | **41** | **9** | **371** |
 
 ## Appendix B: Rank-by-Rank Design Reference
 

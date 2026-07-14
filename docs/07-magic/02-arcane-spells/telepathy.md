@@ -186,7 +186,7 @@ sidebar_position: 4
 ---|---|---|---|---
  4 | 8 | Extreme (14) | Self | concentrate
 
-**Effect** <br/> You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to an hour's walk away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration. 
+**Effect** <br/> You loosen your soul from your flesh and step out of yourself, joined to your body by a thin silver cord only you can see.<br/>On a success, your body falls unconscious where it rests and your astral form rises from it. Your astral form can fly with +1 Movement per turn, passes through solid objects and walls freely, and perceives its surroundings normally. You cannot touch, carry, or affect anything physical, you cannot cast spells, and you cannot speak to creatures, though creatures able to perceive spirits can see you and speak with you. Your astral form can travel up to a thousand paces away from your body. If your astral form takes damage from any effect that can strike spirits, you immediately snap back into your body and suffer one Fatigue. You can end the spell at will, returning to your body instantly. If your body is moved, disturbed, or takes damage while you are away, you feel it and can return to your body instantly. This spell lasts for a medium duration. 
 
 ### Mass Hold
 
@@ -194,4 +194,28 @@ sidebar_position: 4
 ---|---|---|---|---
  4 | 8 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> You clench your outstretched hand and a crushing weight of will falls upon every mind before you. Target each hostile creature in a close area around the target location whose tier is equal to or lower than your Arcana, using your roll's result vs. their Resist.<br/>On a success, each target is paralyzed as their body refuses every command. At the end of each of their turns, an affected creature can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever an affected creature takes damage, they immediately make this roll as well. Creatures without a mind, such as most constructs and oozes, are unaffected. This spell lasts for a short duration. 
+**Effect** <br/> You clench your outstretched hand and a crushing weight of will falls upon every mind before you. Target each hostile creature in a close area around the target location whose tier is equal to or lower than your Arcana.<br/>On a success, each target is paralyzed as their body refuses every command. At the end of each of their turns, an affected creature can roll Spirit + Fortitude vs. your Resist to end the effect early. Whenever an affected creature takes damage, they immediately make this roll as well. Creatures without a mind, such as most constructs and oozes, are unaffected. This spell lasts for a short duration. 
+
+### Absolute Control
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Resist | Medium | concentrate
+
+**Effect** <br/> You drive your will down through a mind like a spear and take the body underneath.<br/>You cannot control a creature of a tier higher than your Arcana, or a creature without a mind.<br/>On a success, you dominate the target. On their turns they act as you direct, using their own statistics and abilities, aware of everything and screaming behind their own eyes. At the end of each of their turns, they can roll Spirit + Fortitude vs. your Resist to throw you out. Whenever they take damage, they immediately make this roll as well. If you command them to directly harm themselves or to act against their deepest bonds, they gain +1 boon on their next roll to throw you out.<br/>The domination lasts while you concentrate, up to a short duration. When it ends, the target remembers everything they did under your control and knows it was you.
+
+### Mindwipe
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Resist | Touch | ritual (minutes), material cost (5000 coins)
+
+**Effect** <br/> You comb through a mind strand by strand and pull one thread out of every weave it touches. The ritual consumes rare incense and a graven silver band worth 5000 coins, whether or not it succeeds.<br/>The target must be restrained, unconscious, or willing for the whole ritual. Name one subject as you cast: a person, a place, an event, or a secret. On a success, every memory the target holds of that subject fades to grey fog. Knowledge and skills are never taken, only memory of the subject itself.<br/>The wipe leaves seams. The target notices the gaps where something used to be, magic that reads minds or memories reveals that memories were taken, and strong evidence of the truth leaves the target shaken and searching. Within one moon of the ritual, a casting that ends spells worked upon the target restores everything taken. After one moon, the loss is beyond mortal craft.
+
+### Psychic Maelstrom
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Resist | Long | -
+
+**Effect** <br/> You scream without sound, and every mind you turn it upon is caught in the storm of it.<br/>Target each hostile creature in medium range of the target location.<br/><strong>Weak.</strong> Deal +6 psychic damage (ignore AV) to each target.<br/><strong>Strong.</strong> Deal +12 psychic damage (ignore AV) to each target and they are briefly dazed.<br/><strong>Critical.</strong> Deal +18 psychic damage (ignore AV) to each target and they are dazed for a short duration.<br/>Any target that was dazed or charmed when the maelstrom hit becomes briefly confused. Any target that was confused when it hit takes +6 additional psychic damage (ignore AV). Creatures without a mind, such as most constructs and oozes, are unaffected.

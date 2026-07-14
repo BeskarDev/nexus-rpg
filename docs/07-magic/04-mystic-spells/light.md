@@ -150,7 +150,7 @@ sidebar_position: 1
 ---|---|---|---|---
  3 | 6 | vs. Resist | Medium | concentrate
 
-**Effect** <br/> You consecrate a close area within range with a clear, revealing radiance in which falsehood cannot hold. Target each creature in the area, using your roll’s result vs. their Resist. Each affected creature knows they are being compelled. While an affected creature remains in the area, they cannot speak a deliberate lie. They can still stay silent, give a short or evasive answer, or say what they believe to be true even if they are mistaken. A creature that leaves the area is no longer affected. A creature that enters the area after the spell is cast is targeted when they enter, using your roll’s result vs. their Resist. The zone lasts for a medium duration. 
+**Effect** <br/> You consecrate a close area within range with a clear, revealing radiance in which falsehood cannot hold. Target each creature in the area. Each affected creature knows they are being compelled. While an affected creature remains in the area, they cannot speak a deliberate lie. They can still stay silent, give a short or evasive answer, or say what they believe to be true even if they are mistaken. A creature that leaves the area is no longer affected. A creature that enters the area after the spell is cast is targeted when they enter, using your roll’s result vs. their Resist. The zone lasts for a medium duration. 
 
 > **Heightened** <br/> <strong>(Rank 4)</strong> The zone covers a short area and lasts for a long duration instead.
 
@@ -178,6 +178,8 @@ sidebar_position: 1
 
 **Effect** <br/> You create an explosion of pure, cleansing light that burns away darkness and evil influences. Choose a close area within range. All creatures within the area are affected.<br/><strong>Weak.</strong> Deal +4 radiant damage to hostile creatures, restore +3 HP to allies, and remove one negative condition from all allies.<br/><strong>Strong.</strong> Deal +8 radiant damage to hostile creatures, restore +6 HP to allies, and remove up to two negative conditions from all allies.<br/><strong>Critical.</strong> Deal +12 radiant damage to hostile creatures, restore +9 HP to allies, and remove up to three negative conditions from all allies.<br/>Any areas of magical darkness within range are permanently dispelled.
 
+> **Heightened** <br/> <strong>(Rank 4)</strong> Deal +5/+10/+15 radiant damage to hostile creatures and restore +4/+8/+12 HP to allies instead.<br/><strong>(Rank 5)</strong> Deal +6/+12/+18 radiant damage to hostile creatures and restore +5/+10/+15 HP to allies instead.
+
 ### Divine Judgement
 
 **Rank** | **Focus** | **Target** | **Range** | **Properties**
@@ -195,3 +197,21 @@ sidebar_position: 1
 **Effect** <br/> You call down a standing column of consecrated daylight, and within it nothing hides, nothing deceives, and nothing unholy endures.<br/>On a success, hallowed light fills the area in short range of the target location for up to a medium duration while you concentrate. The area gains the following effects:<br/>- It is filled with bright light, and any area of dim light, total darkness, or magical darkness within it is suppressed while the radiance lasts.<br/>- No creature inside can be hidden or invisible.<br/>- When the radiance appears, it sears brands of light onto all hostile creatures inside the area, and each of them becomes marked (4).<br/>- undead creatures inside take 6 radiant damage (ignore AV) at the start of each of their turns.<br/>- Allies inside gain +1 boon on rolls to resist the charmed, confused, and frightened conditions.
 
 > **Heightened** <br/> <strong>(Rank 5)</strong> The radiance fills the area in medium range of the target location, undead creatures inside take 8 radiant damage (ignore AV) at the start of each of their turns, and the light sears its brands anew at the start of each of your turns, marking (4) all hostile creatures inside, instead.
+
+### Dawnbreak
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | Legendary (16) | Extreme | concentrate
+
+**Effect** <br/> You raise your hands to the dark sky and speak the sun's true name, and dawn breaks hours before its hour, flooding the land in the pale gold of the risen day.<br/>On a success, the light of true dawn fills the land within a thousand paces of the target location and holds for a medium duration while you concentrate. Cast during the night, it brings the day before its hour, bright as the risen sun. Cast during the day, it holds the daylight unbroken against all that would dim or darken it. The daylight fills every space within its reach, under open sky or beneath stone, and no wall, roof, or depth bars the risen sun. Within the daylight, apply the following effects:<br/>- Any area of magical darkness is dispelled, and any spell sustaining darkness, night, or shadow over the land ends.<br/>- The land is filled with bright light, and no creature within it can be hidden or invisible.<br/>- Undead creatures are cowed by the risen sun and suffer +1 bane on all rolls while in the daylight.<br/>- You and your allies gain +1 boon on rolls to cast <em>light</em> spells within the daylight.<br/>- Allies cannot be frightened, and any frightened condition on them ends.
+
+> **GM framing note.** Dawnbreak is a temple rite of the risen sun, not a tactical lantern. A dawn called out of its hour is a wonder seen for miles and remembered for years, a thing priests perform at the turning of a siege or the cleansing of a haunted place, at great cost. It is never a light switched on each fight. Treat its casting as an event the world notices.
+
+### Final Judgement
+
+**Rank** | **Focus** | **Target** | **Range** | **Properties**
+---|---|---|---|---
+ 5 | 10 | vs. Dodge | Long | -
+
+**Effect** <br/> You pronounce the last sentence of the light, and a blade of pure dawn falls upon the condemned.<br/>You can target a hidden or invisible creature with this spell if you are aware of their presence, and your roll suffers no banes from being unable to see them.<br/><strong>Weak.</strong> Deal +8 radiant damage.<br/><strong>Strong.</strong> Deal +16 radiant damage.<br/><strong>Critical.</strong> Deal +24 radiant damage.<br/>If the target is blinded, burning, or invisible, deal +12/+24/+36 radiant damage instead.<br/>An undead creature slain by this spell is destroyed utterly, their remains burned to ash, and they cannot be raised or reanimated again.
